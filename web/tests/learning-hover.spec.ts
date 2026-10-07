@@ -56,7 +56,8 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
       await expect(explanation.locator('[data-highlighted="true"]')).toHaveText(name)
       await expect(diagram.locator('.hover-event')).toHaveCount(0)
       if (index === 7 && name === 'S0') await page.screenshot({ path: join(tmpdir(), `bo-explanation-segment-${width}.png`), fullPage: true })
-      const entry = active.getByText(name, { exact: true })
+      // Exiting rows no longer belong to the current active set.
+      const entry = active.getByRole('listitem').filter({ hasText: new RegExp(`^${name}$`) })
       if (await entry.count()) {
         await expect(entry).toHaveAttribute('data-highlighted', 'true')
         await entry.hover()

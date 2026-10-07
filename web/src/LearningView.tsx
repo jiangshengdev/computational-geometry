@@ -82,9 +82,12 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
   const step = trace.steps[index]
-  const eventIds = (state: typeof step) => [...state.pending, ...(state.current ? [state.current] : [])].map(p => `event:${formatPoint(p)}`)
-  const destinations = eventIds(step)
-  const sources = eventIds(trace.steps[navigation.from])
+  const rowIds = (state: typeof step) => [
+    ...[...state.pending, ...(state.current ? [state.current] : [])].map(p => `event:${formatPoint(p)}`),
+    ...state.active.map(id => `segment:${id}`),
+  ]
+  const destinations = rowIds(step)
+  const sources = rowIds(trace.steps[navigation.from])
   const before = trace.steps[Math.max(0, index - 1)]
   const complete = index === trace.steps.length - 1
   const points = results.flatMap(result => result.geometry.type === 'point' ? [result.geometry.point] : [])
@@ -148,9 +151,12 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
         <section aria-label="活动线段顺序"><Card>
           <CardHeader><CardTitle><h2>活动线段顺序</h2></CardTitle></CardHeader>
           <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">序号从下到上递增 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
-            <div data-testid="active-order">{step.active.length ? <ol className="flex list-inside list-decimal flex-col-reverse gap-2">
-              {step.active.map(id => <li key={id} className="coordinates learning-hover-item" {...inputProps(id)}>S{id}</li>)}
-            </ol> : <p>空</p>}</div>
+            <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-2">
+              <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
+                {step.active.map(id => <LearningRow key={id} identity={`segment:${id}`}
+                  existed={sources.includes(`segment:${id}`)} {...inputProps(id)}>S{id}</LearningRow>)}
+              </AnimatePresence>
+            </ol>{!step.active.length && <p>空</p>}</div>
           </CardContent>
         </Card></section>
       </aside>

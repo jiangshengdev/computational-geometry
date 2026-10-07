@@ -160,12 +160,14 @@ for (const preset of ['crossing', 'disjoint']) {
     const states = [await learning.innerText()]
     while (await next.isEnabled()) {
       await next.click()
+      // Capture the settled state, not rows temporarily retained for exit animation.
+      await expect(page.locator('aside [aria-hidden="true"]')).toHaveCount(0)
       states.push(await learning.innerText())
     }
     await expect(page.getByRole('region', { name: '学习结果' })).toContainText(preset === 'crossing' ? 'I0 (2, 2)：S0 × S1' : '结果为空')
     for (const state of states.slice(0, -1).reverse()) {
       await previous.click()
-      expect(await learning.innerText()).toBe(state)
+      await expect.poll(() => learning.innerText()).toBe(state)
       await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
       await expect(next).toBeEnabled()
     }
@@ -174,7 +176,7 @@ for (const preset of ['crossing', 'disjoint']) {
     await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText('I0')
     for (const state of states.slice(1)) {
       await next.click()
-      expect(await learning.innerText()).toBe(state)
+      await expect.poll(() => learning.innerText()).toBe(state)
     }
     await page.getByRole('button', { name: '重新开始', exact: true }).click()
     expect(await learning.innerText()).toBe(states[0])
@@ -229,10 +231,10 @@ for (const preset of ['crossing', 'disjoint']) {
     await page.mouse.up()
     await slider.press('Home')
     for (let i = 0; i < 5; i++) await next.click()
-    expect(await learning.innerText()).toBe(dragged)
+    await expect.poll(() => learning.innerText()).toBe(dragged)
     await next.click()
     await previous.click()
-    expect(await learning.innerText()).toBe(dragged)
+    await expect.poll(() => learning.innerText()).toBe(dragged)
     await page.getByRole('button', { name: '重新开始', exact: true }).click()
     await expect(slider).toHaveAttribute('aria-valuenow', '0')
     expect(await learning.innerText()).toBe(initial)
