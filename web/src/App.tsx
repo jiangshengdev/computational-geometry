@@ -50,13 +50,13 @@ function CaseViewer({ preset }: { preset: Preset }) {
   const highlights = hover ? hoverHighlights(hover, results) : null
   if (learning && computation.status === 'ready' && computation.trace) return <>
     <LearningIntroduction key="learning" />
-    <p className="mb-4">{preset.name} · {preset.description} 从左向右扫描，按 (x, y) 排序，精确计算。</p>
+    <p className="mb-4">{preset.name} · <span className="coordinates">{preset.description}</span> 从左向右扫描，按 <span className="coordinates">(x, y)</span> 排序，精确计算。</p>
     <LearningView preset={preset} trace={computation.trace} results={results} />
     <Button className="mt-6" variant="outline" onClick={() => setLearning(false)}>返回结果查看器</Button>
   </>
   return <>
     <LearningIntroduction />
-    <p className="my-6 text-muted-foreground">{preset.description}</p>
+    <p className="my-6 text-muted-foreground"><span className="coordinates">{preset.description}</span></p>
     {teachable ? <Button className="mb-4" disabled={computation.status !== 'ready'} onClick={() => setLearning(true)}>开始逐步学习</Button>
       : <p className="mb-4 text-muted-foreground">此案例目前提供结果查看；逐步入门请选择普通交叉或无交点。</p>}
     <div className="workspace">
@@ -79,7 +79,7 @@ function CaseViewer({ preset }: { preset: Preset }) {
                         {results.map(result => <ToggleGroupItem key={pairName(result)} value={pairName(result)} className="pair-item w-full justify-start"
                           data-highlighted={highlights ? highlights.pairs.includes(pairName(result)) : result === selected}
                           onPointerEnter={() => setHover({ kind: 'pair', pair: pairName(result) })} onPointerLeave={() => setHover(null)}>
-                          {pairName(result)} · {result.geometry.type === 'point' ? '点' : '重叠区间'}
+                          <span className="coordinates">{pairName(result)}</span> · {result.geometry.type === 'point' ? '点' : '重叠区间'}
                         </ToggleGroupItem>)}
                       </ToggleGroup>
                     </ScrollArea>}
@@ -87,7 +87,7 @@ function CaseViewer({ preset }: { preset: Preset }) {
             <Separator />
             <section aria-label="精确详情" className="flex min-w-0 flex-col gap-3">
               <CardTitle><h2>精确详情</h2></CardTitle>
-              {selected ? <><h3>{pairName(selected)}</h3><p className="coordinates">{formatGeometry(selected.geometry)}</p>
+              {selected ? <><h3 className="coordinates">{pairName(selected)}</h3><p className="coordinates">{formatGeometry(selected.geometry)}</p>
                 {selected.segments.map(i => <p key={i} className="coordinates">S{i}：{formatPoint(preset.segments[i].start)} → {formatPoint(preset.segments[i].end)}</p>)}
               </> : <Empty><EmptyHeader><EmptyDescription>选择一个配对，检查交集和两个输入。</EmptyDescription></EmptyHeader></Empty>}
             </section>
@@ -103,7 +103,7 @@ function CaseViewer({ preset }: { preset: Preset }) {
           <li key={i} className="input-item flex min-w-0 flex-wrap gap-3 text-sm"
             data-highlighted={highlights ? highlights.inputs.includes(i) : selected?.segments.includes(i) ?? false}
             onPointerEnter={() => setHover({ kind: 'input', index: i })} onPointerLeave={() => setHover(null)}>
-            <strong>S{i}</strong><span className="coordinates">{formatPoint(s.start)} → {formatPoint(s.end)}</span></li>)}</ul>}
+            <strong className="coordinates">S{i}</strong><span className="coordinates">{formatPoint(s.start)} → {formatPoint(s.end)}</span></li>)}</ul>}
       </CardContent>
     </Card>
     </section>

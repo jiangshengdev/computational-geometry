@@ -23,7 +23,7 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   await expect(page.getByRole('img', { name: /交集 S0/ })).toHaveCount(0)
   // y=x and y=4-x meet at (2,2). Endpoints are ordered by (x,y).
   const events = ['S0 起点 (0, 0)', 'S1 起点 (0, 4)', 'I0 (2, 2)', 'S1 终点 (4, 0)', 'S0 终点 (4, 4)']
-  const orders = ['S0', 'S0 → S1', 'S1 → S0', 'S0', '空']
+  const orders = ['S0', 'S0S1', 'S1S0', 'S0', '空']
   for (let i = 0; i < events.length; i++) {
     await next.click()
     await expect(current).toContainText(events[i])
@@ -86,7 +86,7 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByTestId('active-order')
   const events = ['S0 起点 (0, 0)', 'S1 起点 (0, 2)', 'S0 终点 (4, 0)', 'S1 终点 (4, 2)']
-  const orders = ['S0', 'S0 → S1', 'S1', '空']
+  const orders = ['S0', 'S0S1', 'S1', '空']
   for (let i = 0; i < events.length; i++) {
     await next.click()
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText(events[i])

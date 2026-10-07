@@ -17,8 +17,8 @@ main { max-width: 1380px; padding: 40px; margin: auto; }
 .intersection.selected { stroke: #c54f13; fill: #ffe1cb; stroke-width: 4; }
 .intersection.selected line { stroke-width: 8; stroke-opacity: .85; }
 .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; padding: 14px 18px; }
-.coordinates { font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
-.input-item { cursor: default; }
+.coordinates, .drawing svg text { font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
+.input-item, .learning-hover-item { cursor: default; }
 .input-item[data-highlighted="true"], .pair-item[data-highlighted="true"] { background: #e5efff; color: #163f7d; outline: 2px solid #7b9fcf; border-radius: 4px; }
 .pair-item[data-highlighted="false"] { background: transparent; }
 .input[data-active="true"] { stroke-width: 4; stroke: #245cb0; }

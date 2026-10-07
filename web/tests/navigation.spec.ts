@@ -105,7 +105,7 @@ for (const preset of ['crossing', 'disjoint']) {
     await page.mouse.move(x + (end.x - start.x) * 5 / finalIndex, y)
     await expect(slider).toHaveAttribute('aria-valuenow', '5')
     await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S1')
-    await expect(page.getByTestId('active-order')).toHaveText('S0 → S1')
+    await expect(page.getByTestId('active-order').getByRole('listitem')).toHaveText(['S0', 'S1'])
     await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText('I0')
     await expect(page.getByRole('img', { name: '输入 S1', exact: true })).toHaveAttribute('data-active', 'true')
     const dragged = await learning.innerText()

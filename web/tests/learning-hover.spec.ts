@@ -120,7 +120,7 @@ for (const preset of ['crossing', 'disjoint']) {
     // The not-yet-discovered crossing must not become an event through hit tolerance.
     await center(page, page.getByRole('img', { name: '输入 S0', exact: true }).locator('line'))
     await expect(ring).toHaveCount(0)
-    await expect(page.locator('.coordinates[data-highlighted="true"]')).toHaveCount(0)
+    await expect(page.getByRole('region', { name: /^(当前事件|待处理事件队列)$/ }).locator('[data-highlighted="true"]')).toHaveCount(0)
     await next.click()
     await page.getByRole('button', { name: '重新开始', exact: true }).focus()
     await current.getByText('S0 起点 (0, 0)', { exact: true }).hover()
@@ -182,7 +182,11 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   await page.getByRole('button', { name: '开始逐步学习' }).click()
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const order = page.getByTestId('active-order')
-  while (await order.innerText() !== 'S0 → S1') await next.click()
+  while (await order.getByRole('listitem').count() < 2) await next.click()
+  await expect(order.getByRole('listitem')).toHaveText(['S0', 'S1'])
+  const firstRow = (await order.getByRole('listitem').nth(0).boundingBox())!
+  const secondRow = (await order.getByRole('listitem').nth(1).boundingBox())!
+  expect(secondRow.y).toBeGreaterThanOrEqual(firstRow.y + firstRow.height)
   const segment = page.getByRole('img', { name: '输入 S1', exact: true })
   const line = segment.locator('line')
   const originalStroke = await line.evaluate(e => getComputedStyle(e).strokeWidth)
@@ -193,7 +197,7 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   await expect(line).not.toHaveCSS('stroke-width', originalStroke)
   await expect(segment).toHaveAttribute('data-active', 'true')
   await expect(page.locator('.drawing .hover-event')).toHaveCount(0)
-  await expect(page.locator('.coordinates[data-highlighted="true"]')).toHaveCount(0)
+  await expect(page.getByRole('region', { name: /^(当前事件|待处理事件队列)$/ }).locator('[data-highlighted="true"]')).toHaveCount(0)
   await expect(page.locator('.drawing text[data-event-point][data-highlighted="true"]')).toHaveCount(0)
   await expect(lesson).toHaveText(content, { useInnerText: true })
   const box = (await line.boundingBox())!
