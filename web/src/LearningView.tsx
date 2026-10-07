@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { GeometryView } from './GeometryView'
 import { formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Slider } from 'radix-ui'
+import { hoverHighlights, type HoverTarget } from './hover'
 
 export function LearningIntroduction() {
   return <details className="my-4"><summary className="cursor-pointer">学习目标、术语与扫描约定</summary>
@@ -31,6 +32,14 @@ export function LearningReferences() {
 export function LearningView({ preset, trace, results }: { preset: Preset; trace: SweepTrace; results: Intersection[] }) {
   const [index, setIndex] = useState(0)
   const [run, setRun] = useState(0)
+  const [hover, setHover] = useState<HoverTarget | null>(null)
+  const highlights = hover ? hoverHighlights(hover, []) : null
+  const eventProps = (point: Point) => ({
+    'data-highlighted': highlights?.points.some(p => samePoint(p, point)) ?? false,
+    onPointerEnter: () => setHover({ kind: 'point', point }),
+    onPointerLeave: () => setHover(null),
+  })
+  const changeStep = (value: number) => { setHover(null); setIndex(value) }
   const step = trace.steps[index]
   const before = trace.steps[Math.max(0, index - 1)]
   const complete = index === trace.steps.length - 1
@@ -49,14 +58,14 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   return <section aria-label="逐步学习" className="flex flex-col gap-4">
     <div className="flex flex-wrap items-center gap-3">
       <Badge variant="secondary">{complete ? '学习完成' : phase} · {index} / {trace.steps.length - 1}</Badge>
-      <Button variant="outline" onClick={() => setIndex(i => i - 1)} disabled={index === 0}>上一步</Button>
-      <Button onClick={() => setIndex(i => i + 1)} disabled={complete}>下一步</Button>
-      <Button variant="outline" onClick={() => { setIndex(0); setRun(r => r + 1) }}>重新开始</Button>
+      <Button variant="outline" onClick={() => changeStep(index - 1)} disabled={index === 0}>上一步</Button>
+      <Button onClick={() => changeStep(index + 1)} disabled={complete}>下一步</Button>
+      <Button variant="outline" onClick={() => { changeStep(0); setRun(r => r + 1) }}>重新开始</Button>
     </div>
     <div className="flex flex-col gap-2">
       <span className="text-sm text-muted-foreground">拖动浏览教学步骤 · {index} / {trace.steps.length - 1}</span>
       <Slider.Root min={0} max={trace.steps.length - 1} step={1} value={[index]}
-        onValueChange={([value]) => setIndex(value)}
+        onValueChange={([value]) => changeStep(value)}
         className="relative flex h-8 w-full touch-none select-none items-center">
         <Slider.Track className="relative h-1.5 grow overflow-hidden rounded-full bg-muted">
           <Slider.Range className="absolute h-full bg-primary" />
@@ -67,22 +76,26 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     </div>
     <div className="workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
+        highlights={highlights} onHover={setHover}
         sweep={{ current: step.current, active: step.active, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
       <aside className="flex min-w-0 flex-col gap-4">
         <section aria-label="当前事件"><Card>
           <CardHeader><CardTitle><h2>当前事件</h2></CardTitle></CardHeader>
-          <CardContent className="flex flex-col gap-2"><p>{phase}</p><p className="coordinates">{step.current ? pointName(step.current) : '尚未处理事件'}</p></CardContent>
+          <CardContent className="flex flex-col gap-2"><p>{phase}</p><p className="coordinates learning-hover-item" {...(step.current ? eventProps(step.current) : {})}>{step.current ? pointName(step.current) : '尚未处理事件'}</p></CardContent>
         </Card></section>
         <section aria-label="待处理事件队列"><Card>
           <CardHeader><CardTitle><h2>待处理事件队列</h2></CardTitle></CardHeader>
           <CardContent><p className="mb-2 text-sm text-muted-foreground">先 x，后 y；队首先处理</p>
-            {step.pending.length ? <ol className="flex list-inside list-decimal flex-col gap-2">{step.pending.map(p => <li key={formatPoint(p)} className="coordinates">{pointName(p)}</li>)}</ol> : <p>空</p>}
+            {step.pending.length ? <ol className="flex list-inside list-decimal flex-col gap-2">{step.pending.map(p => <li key={formatPoint(p)} className="coordinates learning-hover-item" {...eventProps(p)}>{pointName(p)}</li>)}</ol> : <p>空</p>}
           </CardContent>
         </Card></section>
         <section aria-label="活动线段顺序"><Card>
           <CardHeader><CardTitle><h2>活动线段顺序</h2></CardTitle></CardHeader>
           <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">从下到上 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
-            <p data-testid="active-order">{step.active.map(id => `S${id}`).join(' → ') || '空'}</p>
+            <p data-testid="active-order">{step.active.length ? step.active.map((id, position) => <Fragment key={id}>
+              {position > 0 && ' → '}<span className="learning-hover-item" data-highlighted={highlights?.inputs.includes(id) ?? false}
+                onPointerEnter={() => setHover({ kind: 'input', index: id })} onPointerLeave={() => setHover(null)}>S{id}</span>
+            </Fragment>) : '空'}</p>
           </CardContent>
         </Card></section>
       </aside>

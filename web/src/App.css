@@ -27,6 +27,11 @@ main { max-width: 1380px; padding: 40px; margin: auto; }
 .current-point { fill: none; stroke: #7455a8; stroke-width: 3; }
 .sweep-overlay text { fill: #735020; font-size: 12px; }
 .intersection .result-label { fill: #735020; font-size: 12px; }
+.learning-hover-item[data-highlighted="true"] { background: #d3f3ed; color: #075b50; outline: 2px solid #078574; border-radius: 4px; }
+.drawing text[data-event-point][data-highlighted="true"] { fill: #075b50; font-weight: 700; }
+.hover-event { fill: none; stroke: #078574; stroke-width: 3; pointer-events: none; }
+.drawing [data-teaching="true"] .input[data-highlighted="true"] > line { stroke: #078574; stroke-width: 7; }
+.drawing [data-teaching="true"] .input.selected text:not([data-highlighted="true"]) { fill: #41618d; }
 @media (max-width: 850px) {
   main { padding: 24px 16px; }
   .viewer-header { align-items: stretch; flex-direction: column; gap: 16px; }
