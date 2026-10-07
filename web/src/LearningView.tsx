@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { GeometryView } from './GeometryView'
 import { formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Slider } from 'radix-ui'
 import { hoverHighlights, type HoverTarget } from './hover'
@@ -39,6 +38,15 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     onPointerEnter: () => setHover({ kind: 'point', point }),
     onPointerLeave: () => setHover(null),
   })
+  const inputProps = (id: number) => ({
+    'data-highlighted': highlights?.inputs.includes(id) ?? false,
+    onPointerEnter: () => setHover({ kind: 'input', index: id }),
+    onPointerLeave: () => setHover(null),
+  })
+  const inputReferences = (ids: number[], separator: string) => ids.map((id, position) => <Fragment key={id}>
+    {position > 0 && <span>{separator}</span>}
+    <span className="learning-hover-item" {...inputProps(id)}>S{id}</span>
+  </Fragment>)
   const changeStep = (value: number) => { setHover(null); setIndex(value) }
   const step = trace.steps[index]
   const before = trace.steps[Math.max(0, index - 1)]
@@ -53,17 +61,16 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   }
   const discovered = step.pending.filter(p => points.some(point => samePoint(point, p)))
   const newlyScheduled = discovered.filter(p => !before.pending.some(old => samePoint(old, p)))
-  const subjects = step.subjects.map(id => `S${id}`).join(' × ')
+  const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="flex flex-col gap-4">
     <div className="flex flex-wrap items-center gap-3">
-      <Badge variant="secondary">{complete ? '学习完成' : phase} · {index} / {trace.steps.length - 1}</Badge>
       <Button variant="outline" onClick={() => changeStep(index - 1)} disabled={index === 0}>上一步</Button>
       <Button onClick={() => changeStep(index + 1)} disabled={complete}>下一步</Button>
       <Button variant="outline" onClick={() => { changeStep(0); setRun(r => r + 1) }}>重新开始</Button>
     </div>
     <div className="flex flex-col gap-2">
-      <span className="text-sm text-muted-foreground">拖动浏览教学步骤 · {index} / {trace.steps.length - 1}</span>
+      <span className="text-sm text-muted-foreground">拖动浏览教学步骤 · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
       <Slider.Root min={0} max={trace.steps.length - 1} step={1} value={[index]}
         onValueChange={([value]) => changeStep(value)}
         className="relative flex h-8 w-full touch-none select-none items-center">
@@ -93,8 +100,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
           <CardHeader><CardTitle><h2>活动线段顺序</h2></CardTitle></CardHeader>
           <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">从下到上 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
             <div data-testid="active-order">{step.active.length ? <ol className="flex list-inside list-decimal flex-col gap-2">
-              {step.active.map(id => <li key={id} className="coordinates learning-hover-item" data-highlighted={highlights?.inputs.includes(id) ?? false}
-                onPointerEnter={() => setHover({ kind: 'input', index: id })} onPointerLeave={() => setHover(null)}>S{id}</li>)}
+              {step.active.map(id => <li key={id} className="coordinates learning-hover-item" {...inputProps(id)}>S{id}</li>)}
             </ol> : <p>空</p>}</div>
           </CardContent>
         </Card></section>
@@ -104,13 +110,16 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       <CardHeader><CardTitle><h2>这一步为什么这样做？</h2></CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2">
         {step.action === 'initial' && <p>先把所有端点放入事件队列。交点尚未被发现，不预先加入；活动顺序为空。点击下一步，从队首取出最早事件。</p>}
-        {step.action === 'take' && <p>从队首取出 <span className="coordinates">{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
+        {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
         {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。接下来检查新邻居是否会在未来相交。</p>}
         {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。</p>}
-        {step.action === 'record' && <p>记录 <span className="coordinates">{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> 在这里交叉。交集已记入结果，活动顺序尚未换序。</p>}
-        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{step.active.map(id => `S${id}`).join(' → ')}</span>：刚过交点，按事件右侧从下到上的顺序排列，再检查新邻居。</p>}
+        {step.action === 'record' && <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> 在这里交叉。交集已记入结果，活动顺序尚未换序。</p>}
+        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：刚过交点，按事件右侧从下到上的顺序排列，再检查新邻居。</p>}
         {step.action === 'check' && <p>检查相邻线段 <span className="coordinates">{subjects}</span>：加入、退出或换序后只需检查新邻居。此步选定检查配对，未来交点尚未加入队列。</p>}
-        {step.action === 'discover' && <p>发现未来交点 <span className="coordinates">{newlyScheduled.map(pointName).join('、')}</span>：检查 <span className="coordinates">{subjects}</span> 的精确交集后加入队列，等扫描线到达再记录结果。</p>}
+        {step.action === 'discover' && <p>发现未来交点 <span className="coordinates">{newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}>
+          {position > 0 && <span>、</span>}
+          <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span>
+        </Fragment>)}</span>：检查 <span className="coordinates">{subjects}</span> 的精确交集后加入队列，等扫描线到达再记录结果。</p>}
         {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{before.action === 'check' ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
       </CardContent>
     </Card></section>

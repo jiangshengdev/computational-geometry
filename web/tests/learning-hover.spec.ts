@@ -8,6 +8,82 @@ async function center(page: Page, target: Locator) {
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
 }
 
+for (const width of [1360, 390]) {
+test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${width}px`, async ({ page }) => {
+  await page.setViewportSize({ width, height: 1100 })
+  await page.goto('/')
+  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  const next = page.getByRole('button', { name: '下一步', exact: true })
+  const explanation = page.getByRole('region', { name: '操作解释' })
+  const diagram = page.getByRole('region', { name: '几何视图' })
+  const current = page.getByRole('region', { name: '当前事件' })
+  const queue = page.getByRole('region', { name: '待处理事件队列' })
+  const active = page.getByTestId('active-order')
+  const cases = [
+    { step: 1, point: 'S0 起点 (0, 0)', lines: [] },
+    { step: 2, lines: ['S0'] },
+    { step: 5, lines: ['S1'] },
+    { step: 6, lines: ['S0', 'S1'], separator: '×' },
+    { step: 7, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
+    { step: 9, point: 'I0 (2, 2)', lines: [] },
+    { step: 10, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
+    { step: 11, lines: ['S1', 'S0'], separator: '→' },
+    { step: 14, lines: ['S1'] },
+  ]
+  let index = 0
+  for (const scenario of cases) {
+    while (index < scenario.step) { await next.click(); index++ }
+    if (scenario.point) {
+      const token = explanation.getByText(scenario.point, { exact: true })
+      const entry = (index === 7 ? queue : current).getByText(scenario.point, { exact: true })
+      await entry.hover()
+      await expect(token).toHaveAttribute('data-highlighted', 'true')
+      await token.hover()
+      await expect(entry).toHaveAttribute('data-highlighted', 'true')
+      await expect(diagram.locator('.hover-event')).toHaveCount(1)
+      await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
+      if (index === 7) await page.screenshot({ path: join(tmpdir(), `bo-explanation-point-${width}.png`), fullPage: true })
+      const label = diagram.locator('[data-event-point]').filter({ hasText: scenario.point.split(' (')[0] }).first()
+      await label.hover()
+      await expect(token).toHaveAttribute('data-highlighted', 'true')
+    }
+    for (const name of scenario.lines) {
+      const token = explanation.getByText(name, { exact: true })
+      const input = page.getByRole('img', { name: `输入 ${name}`, exact: true })
+      await token.hover()
+      await expect(input).toHaveAttribute('data-highlighted', 'true')
+      await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(1)
+      await expect(explanation.locator('[data-highlighted="true"]')).toHaveText(name)
+      await expect(diagram.locator('.hover-event')).toHaveCount(0)
+      if (index === 7 && name === 'S0') await page.screenshot({ path: join(tmpdir(), `bo-explanation-segment-${width}.png`), fullPage: true })
+      const entry = active.getByText(name, { exact: true })
+      if (await entry.count()) {
+        await expect(entry).toHaveAttribute('data-highlighted', 'true')
+        await entry.hover()
+        await expect(token).toHaveAttribute('data-highlighted', 'true')
+      }
+      const line = input.locator('line')
+      // Stay away from the crossing and endpoints so this hits the segment body.
+      await line.scrollIntoViewIfNeeded()
+      const box = (await line.boundingBox())!
+      await page.mouse.move(box.x + box.width * 0.25, box.y + box.height * (name === 'S0' ? 0.75 : 0.25))
+      await expect(token).toHaveAttribute('data-highlighted', 'true')
+    }
+    if (scenario.separator) {
+      await explanation.getByText(scenario.separator, { exact: true }).hover()
+      await expect(explanation.locator('[data-highlighted="true"]')).toHaveCount(0)
+      await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
+    }
+    await next.focus()
+    await explanation.locator('.learning-hover-item').first().hover()
+    await page.keyboard.press('Enter')
+    index++
+    await expect(page.locator('.learning-hover-item[data-highlighted="true"]')).toHaveCount(0)
+    await expect(diagram.locator('.hover-event')).toHaveCount(0)
+  }
+})
+}
+
 test('教学 hover：队列端点与点标签精确双向对应', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: '开始逐步学习' }).click()
