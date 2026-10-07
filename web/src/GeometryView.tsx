@@ -31,7 +31,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   useEffect(() => {
     const element = svg.current!
     behavior.current.on('zoom', event => setTransform(event.transform))
-    select(element).call(behavior.current)
+    select(element).call(behavior.current).on('wheel.zoom', null)
     const observer = new ResizeObserver(entries => setWidth(entries[0].contentRect.width))
     observer.observe(element)
     return () => { select(element).on('.zoom', null); observer.disconnect() }
@@ -145,6 +145,6 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     <Separator />
     <CardFooter className="legend text-muted-foreground"><span>蓝色：输入</span><span>橙色：交集</span>
       {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
-      <span>滚轮缩放 · 拖动平移</span></CardFooter>
+      <span>按钮缩放 · 拖动平移</span></CardFooter>
   </Card></section>
 }
