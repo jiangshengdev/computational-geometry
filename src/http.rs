@@ -1,0 +1,173 @@
+//! HTTP boundary for exact intersections of submitted closed segments.
+
+use axum::{
+    Json, Router,
+    extract::{DefaultBodyLimit, rejection::JsonRejection},
+    http::StatusCode,
+    routing::post,
+};
+use serde::{Deserialize, Serialize};
+
+use crate::{Geometry, Intersection, Point, Rational, Segment, intersections};
+
+#[derive(Deserialize)]
+struct Request {
+    segments: Vec<SegmentDto>,
+}
+
+#[derive(Deserialize)]
+struct SegmentDto {
+    start: PointDto,
+    end: PointDto,
+}
+
+#[derive(Deserialize, Serialize)]
+struct PointDto {
+    x: RationalDto,
+    y: RationalDto,
+}
+
+#[derive(Deserialize, Serialize)]
+struct RationalDto {
+    numerator: String,
+    denominator: String,
+}
+
+#[derive(Serialize)]
+struct Response {
+    intersections: Vec<IntersectionDto>,
+}
+
+#[derive(Serialize)]
+struct IntersectionDto {
+    segments: [usize; 2],
+    geometry: GeometryDto,
+}
+
+#[derive(Serialize)]
+#[serde(tag = "type", rename_all = "lowercase")]
+enum GeometryDto {
+    Point { point: PointDto },
+    Overlap { start: PointDto, end: PointDto },
+}
+
+#[derive(Serialize)]
+struct ErrorBody {
+    error: String,
+}
+
+type ApiError = (StatusCode, Json<ErrorBody>);
+
+fn bad_request(message: impl Into<String>) -> ApiError {
+    (
+        StatusCode::BAD_REQUEST,
+        Json(ErrorBody {
+            error: message.into(),
+        }),
+    )
+}
+
+fn is_decimal_integer(value: &str) -> bool {
+    let digits = value.strip_prefix(['-', '+']).unwrap_or(value);
+    !digits.is_empty() && digits.bytes().all(|byte| byte.is_ascii_digit())
+}
+
+impl RationalDto {
+    fn into_rational(self) -> Result<Rational, ApiError> {
+        if !is_decimal_integer(&self.numerator) || !is_decimal_integer(&self.denominator) {
+            return Err(bad_request("坐标的分子和分母必须是十进制整数字符串"));
+        }
+        format!("{}/{}", self.numerator, self.denominator)
+            .parse()
+            .map_err(|_| bad_request("坐标分母不得为零"))
+    }
+}
+
+impl PointDto {
+    fn into_point(self) -> Result<Point, ApiError> {
+        Ok(Point {
+            x: self.x.into_rational()?,
+            y: self.y.into_rational()?,
+        })
+    }
+}
+
+impl SegmentDto {
+    fn into_segment(self) -> Result<Segment, ApiError> {
+        Ok(Segment {
+            start: self.start.into_point()?,
+            end: self.end.into_point()?,
+        })
+    }
+}
+
+impl From<Rational> for RationalDto {
+    fn from(value: Rational) -> Self {
+        Self {
+            numerator: value.numer().to_string(),
+            denominator: value.denom().to_string(),
+        }
+    }
+}
+
+impl From<Point> for PointDto {
+    fn from(point: Point) -> Self {
+        Self {
+            x: point.x.into(),
+            y: point.y.into(),
+        }
+    }
+}
+
+impl From<Intersection> for IntersectionDto {
+    fn from(intersection: Intersection) -> Self {
+        Self {
+            segments: intersection.segments,
+            geometry: match intersection.geometry {
+                Geometry::Point(point) => GeometryDto::Point {
+                    point: point.into(),
+                },
+                Geometry::Overlap { start, end } => GeometryDto::Overlap {
+                    start: start.into(),
+                    end: end.into(),
+                },
+            },
+        }
+    }
+}
+
+async fn compute(
+    payload: Result<Json<Request>, JsonRejection>,
+) -> Result<Json<Response>, ApiError> {
+    let Json(request) = payload.map_err(|error| bad_request(error.body_text()))?;
+    let segments = request
+        .segments
+        .into_iter()
+        .map(SegmentDto::into_segment)
+        .collect::<Result<Vec<_>, _>>()?;
+    let result = tokio::task::spawn_blocking(move || {
+        intersections(&segments)
+            .into_iter()
+            .map(IntersectionDto::from)
+            .collect()
+    })
+    .await
+    .map_err(|_| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(ErrorBody {
+                error: "交点计算失败".into(),
+            }),
+        )
+    })?;
+    Ok(Json(Response {
+        intersections: result,
+    }))
+}
+
+/// Serve the submitted geometry directly, independently of viewer presets.
+pub fn router() -> Router {
+    Router::new()
+        .route("/api/intersections", post(compute))
+        .layer(DefaultBodyLimit::disable())
+}

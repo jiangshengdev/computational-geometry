@@ -31,6 +31,8 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
+pub mod http;
+
 mod brute_force;
 pub use brute_force::brute_force_intersections;
 
