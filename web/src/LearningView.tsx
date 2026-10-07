@@ -1,0 +1,98 @@
+import { useState } from 'react'
+import { GeometryView } from './GeometryView'
+import { formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+export function LearningIntroduction() {
+  return <section aria-label="学习目标" className="my-6 flex flex-col gap-3">
+    <h2 className="text-xl font-semibold">从零理解 Bentley–Ottmann 扫描线</h2>
+    <p>目标：能说清何时加入线段、何时发现交点、为什么换序，以及何时退出。线段求交就是找出输入线段共有的点或区间。</p>
+    <p>最直接的方法是两两检查：n 条线段要检查 n(n−1)/2 对。扫描线是一条从左向右移动的竖线；只在端点或已发现的交点停下，这些停靠位置叫事件。</p>
+    <p>事件队列按先 x、后 y 从小到大保存待处理事件；活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。</p>
+    <p>在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。</p>
+    <p className="text-muted-foreground">统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 x 的不同事件按 y 依次处理；当前事件处理完成后只更新该位置的顺序，同 x 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。</p>
+    <p className="text-muted-foreground">本入门流程仅讲普通两线交叉与无交点。两个案例的端点虽有相同 x，但位置不同；这不代表共点、竖直线或重叠等任意退化输入已获得完整教学支持。</p>
+  </section>
+}
+
+export function LearningReferences() {
+  return <section aria-label="学习参考" className="mt-6 flex flex-col gap-2 text-sm">
+    <h2 className="font-semibold">继续阅读</h2>
+    <a className="underline" href="https://www.cs.umd.edu/class/fall2023/cmsc754/Lects/lect04-intersection.pdf">Dave Mount · CMSC 754 Lecture 4：事件、活动顺序与相邻检测</a>
+    <p className="text-muted-foreground">核对依据：讲义的 Plane Sweep、Adjacent-segment rule 与事件处理章节。讲义先假设一般位置；这里另外明示同 x 端点的处理顺序。其平衡树复杂度结论不等于本演示实现的性能保证。</p>
+  </section>
+}
+
+export function LearningView({ preset, trace, results }: { preset: Preset; trace: SweepTrace; results: Intersection[] }) {
+  const [index, setIndex] = useState(0)
+  const [run, setRun] = useState(0)
+  const step = trace.steps[index]
+  const before = trace.steps[Math.max(0, index - 1)]
+  const complete = index === trace.steps.length - 1
+  const points = results.flatMap(result => result.geometry.type === 'point' ? [result.geometry.point] : [])
+  const pointName = (p: Point) => {
+    const endpoints = preset.segments.flatMap((s, id) => [
+      ...(samePoint(p, s.start) ? [`S${id} 起点`] : []),
+      ...(samePoint(p, s.end) ? [`S${id} 终点`] : []),
+    ])
+    return `${endpoints.length ? endpoints.join(' / ') : `I${points.findIndex(point => samePoint(point, p))}`} ${formatPoint(p)}`
+  }
+  const discovered = step.pending.filter(p => points.some(point => samePoint(point, p)))
+  const newlyScheduled = discovered.filter(p => !before.pending.some(old => samePoint(old, p)))
+  const added = step.active.filter(id => !before.active.includes(id))
+  const removed = before.active.filter(id => !step.active.includes(id))
+  const crossing = step.current && points.some(p => samePoint(p, step.current!))
+  const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
+  return <section aria-label="逐步学习" className="flex flex-col gap-4">
+    <div className="flex flex-wrap items-center gap-3">
+      <Badge variant="secondary">{complete ? '学习完成' : phase} · {index} / {trace.steps.length - 1}</Badge>
+      <Button onClick={() => setIndex(i => i + 1)} disabled={complete}>下一步</Button>
+      <Button variant="outline" onClick={() => { setIndex(0); setRun(r => r + 1) }}>重新开始</Button>
+    </div>
+    <div className="workspace">
+      <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
+        sweep={{ current: step.current, active: step.active, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
+      <aside className="flex min-w-0 flex-col gap-4">
+        <section aria-label="当前事件"><Card>
+          <CardHeader><CardTitle><h2>当前事件</h2></CardTitle></CardHeader>
+          <CardContent className="flex flex-col gap-2"><p>{phase}</p><p className="coordinates">{step.current ? pointName(step.current) : '尚未处理事件'}</p></CardContent>
+        </Card></section>
+        <section aria-label="待处理事件队列"><Card>
+          <CardHeader><CardTitle><h2>待处理事件队列</h2></CardTitle></CardHeader>
+          <CardContent><p className="mb-2 text-sm text-muted-foreground">先 x，后 y；队首先处理</p>
+            {step.pending.length ? <ol className="flex list-inside list-decimal flex-col gap-2">{step.pending.map(p => <li key={formatPoint(p)} className="coordinates">{pointName(p)}</li>)}</ol> : <p>空</p>}
+          </CardContent>
+        </Card></section>
+        <section aria-label="活动线段顺序"><Card>
+          <CardHeader><CardTitle><h2>活动线段顺序</h2></CardTitle></CardHeader>
+          <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">从下到上 · {step.phase === 'processing' ? '尚未更新，保留该事件处理前顺序' : '当前已处理事件之后的顺序'}</p>
+            <p data-testid="active-order">{step.active.map(id => `S${id}`).join(' → ') || '空'}</p>
+          </CardContent>
+        </Card></section>
+      </aside>
+    </div>
+    <section aria-label="操作解释" aria-live="polite"><Card>
+      <CardHeader><CardTitle><h2>这一步为什么这样做？</h2></CardTitle></CardHeader>
+      <CardContent className="flex flex-col gap-2">
+        {step.phase === 'initial' ? <p>先把所有端点放入事件队列。交点尚未被发现，不预先加入；活动顺序为空。点击下一步，从队首取出最早事件。</p>
+          : step.phase === 'processing' ? <p>从队首取出 {pointName(step.current!)}，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>
+            : <>
+              {added.map(id => <p key={`add-${id}`}>加入 S{id}：扫描线到达其起点，此后它参与活动顺序。</p>)}
+              {removed.map(id => <p key={`remove-${id}`}>退出 S{id}：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。</p>)}
+              {crossing && <p>记录 {pointName(step.current!)}，参与线段 S0 × S1 在这里交叉。换序为 S1 → S0：刚过交点，S1 在下、S0 在上，维护事件右侧的上下顺序。</p>}
+              {step.checked.length ? step.checked.map(pair => <p key={pair.join('-')}>检查相邻线段 {pair.map(id => `S${id}`).join(' × ')}：{newlyScheduled.length ? `发现未来交点 ${newlyScheduled.map(pointName).join('、')}，加入队列，等扫描线到达再记录结果。` : '没有需要加入队列的未来交点。'}</p>) : <p>没有需要检查的新相邻配对；活动顺序和待处理队列保持一致。</p>}
+            </>}
+      </CardContent>
+    </Card></section>
+    {complete && <section aria-label="学习结果"><Card>
+      <CardHeader><CardTitle><h2>学习完成</h2></CardTitle></CardHeader>
+      <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，所有线段已退出。</p>
+        {step.results.length ? step.results.map(result => <p key={pairName(result)}>{result.geometry.type === 'point' && `${pointName(result.geometry.point)}：${pairName(result)}`}</p>) : <p>结果为空：两条线段平行且高度不同，没有交点。</p>}
+        <p>{preset.id === 'crossing' ? '独立数学核对：S0 满足 y = x，S1 满足 y = 4 − x。联立得 x = y = 2，位于两条线段内部。' : '独立数学核对：S0 的 y = 0，S1 的 y = 2，不可能拥有同一点。'}</p>
+      </CardContent>
+    </Card></section>}
+    <LearningReferences />
+  </section>
+}

@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { scaleLinear, select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
-import { approximate, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
+import { approximate, formatRational, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 
-interface Props { segments: Segment[]; results: Intersection[]; selected: Intersection | null }
+interface Props {
+  segments: Segment[]; results: Intersection[]; selected: Intersection | null
+  sweep?: { current: Point | null; active: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
+}
 
-export function GeometryView({ segments, results, selected }: Props) {
+export function GeometryView({ segments, results, selected, sweep }: Props) {
   const svg = useRef<SVGSVGElement>(null)
   const [width, setWidth] = useState(800)
   const height = 460
@@ -49,13 +52,25 @@ export function GeometryView({ segments, results, selected }: Props) {
         {y.ticks(6).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
         {ordered.map(({ s, index }) => {
           const active = selected?.segments.includes(index) ?? false
-          return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${active ? 'selected' : ''}`}>
+          return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${active ? 'selected' : ''}`} data-active={sweep?.active.includes(index)}>
             {samePoint(s.start, s.end)
               ? <path d={`M${px(s.start)},${py(s.start) - 11} l11,11 l-11,11 l-11,-11 Z`} />
               : <line x1={px(s.start)} y1={py(s.start)} x2={px(s.end)} y2={py(s.end)} />}
-            <text x={px(s.start) + 9} y={py(s.start) - 10}>S{index}</text>
+            <text x={px(s.start) + 9} y={py(s.start) - 10}>S{index}{sweep ? ' 起点' : ''}</text>
+            {sweep && <text textAnchor="end" x={px(s.end) - 9} y={py(s.end) - 10}>S{index} 终点</text>}
           </g>
         })}
+        {sweep && <g className="sweep-overlay">
+          <line role="img" aria-label={`扫描线 ${sweep.current ? `x = ${formatRational(sweep.current.x)}` : '尚未开始'}`}
+            className="sweep-line" x1={sweep.current ? px(sweep.current) : x(minX) - 20} x2={sweep.current ? px(sweep.current) : x(minX) - 20} y1={20} y2={height - 35} />
+          {sweep.discovered.map(({ point, label }) => <g role="img" aria-label={`已发现 ${label}`} key={label}>
+            <circle className="scheduled-point" cx={px(point)} cy={py(point)} r={8} />
+            <text x={px(point) + 12} y={py(point) - 12}>{label}</text>
+          </g>)}
+          {sweep.current && <g role="img" aria-label={`当前事件 ${sweep.labelPoint(sweep.current)}`}>
+            <circle className="current-point" cx={px(sweep.current)} cy={py(sweep.current)} r={10} />
+          </g>}
+        </g>}
         {resultOrder.map(result => {
           const g = result.geometry, active = result === selected
           return <g key={pairName(result)} role="img" aria-label={`交集 ${pairName(result)}${active ? '，已选中' : ''}`} className={`intersection ${active ? 'selected' : ''}`}>
@@ -63,12 +78,15 @@ export function GeometryView({ segments, results, selected }: Props) {
               <line x1={px(g.start)} y1={py(g.start)} x2={px(g.end)} y2={py(g.end)} />
               <circle cx={px(g.start)} cy={py(g.start)} r={5} /><circle cx={px(g.end)} cy={py(g.end)} r={5} />
             </>}
+            {sweep && g.type === 'point' && <text className="result-label" x={px(g.point) + 12} y={py(g.point) - 12}>{sweep.labelPoint(g.point)}</text>}
           </g>
         })}
       </g>
     </svg>
     </CardContent>
     <Separator />
-    <CardFooter className="legend text-muted-foreground"><span>蓝色：输入</span><span>橙色：交集</span><span>菱形：零长度输入</span><span>滚轮缩放 · 拖动平移</span></CardFooter>
+    <CardFooter className="legend text-muted-foreground"><span>蓝色：输入</span><span>橙色：交集</span>
+      {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
+      <span>滚轮缩放 · 拖动平移</span></CardFooter>
   </Card></section>
 }

@@ -17,6 +17,12 @@ main { max-width: 1380px; padding: 40px; margin: auto; }
 .intersection.selected line { stroke-width: 8; stroke-opacity: .85; }
 .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; padding: 14px 18px; }
 .coordinates { font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
+.input[data-active="true"] { stroke-width: 4; stroke: #245cb0; }
+.sweep-line { stroke: #7455a8; stroke-width: 2; stroke-dasharray: 6 4; }
+.scheduled-point { fill: none; stroke: #de8e41; stroke-width: 2; stroke-dasharray: 3 3; }
+.current-point { fill: none; stroke: #7455a8; stroke-width: 3; }
+.sweep-overlay text { fill: #735020; font-size: 12px; }
+.intersection .result-label { stroke: none; fill: #735020; font-size: 12px; }
 @media (max-width: 850px) {
   main { padding: 24px 16px; }
   .viewer-header { align-items: stretch; flex-direction: column; gap: 16px; }

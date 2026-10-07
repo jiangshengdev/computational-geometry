@@ -142,10 +142,12 @@ fn schedule_neighbors(
     segments: &[SweepSegment],
     current: &Point,
     queue: &mut BTreeMap<Point, Event>,
+    checked: &mut Vec<[usize; 2]>,
 ) {
     let Some(neighbors) = active.get(lower..lower + 2) else {
         return;
     };
+    checked.push([neighbors[0], neighbors[1]]);
     let (a, b) = (&segments[neighbors[0]], &segments[neighbors[1]]);
     if a.slope == b.slope {
         return;
@@ -173,6 +175,36 @@ fn schedule_neighbors(
 /// unchecked `new_raw`). See the crate documentation for the currently supported
 /// input domain and cost. Zero-length segments are accepted as points.
 pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
+    sweep(segments, None)
+}
+
+/// Teaching snapshots use sweep coordinates (x + shear*y, y), including the
+/// queue and current event. Results retain original coordinates. Captured only
+/// when requested; ordinary intersection callers retain the same algorithm.
+pub(crate) struct SweepStep {
+    pub phase: &'static str,
+    pub current: Option<Point>,
+    pub pending: Vec<Point>,
+    pub active: Vec<usize>,
+    pub results: Vec<Intersection>,
+    pub checked: Vec<[usize; 2]>,
+}
+
+pub(crate) struct SweepTrace {
+    pub shear: Rational,
+    pub steps: Vec<SweepStep>,
+}
+
+pub(crate) fn trace_intersections(segments: &[Segment]) -> (Vec<Intersection>, SweepTrace) {
+    let mut trace = SweepTrace {
+        shear: choose_shear(segments),
+        steps: Vec::new(),
+    };
+    let results = sweep(segments, Some(&mut trace.steps));
+    (results, trace)
+}
+
+fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<Intersection> {
     let shear = choose_shear(segments);
     let segments: Vec<_> = segments
         .iter()
@@ -189,7 +221,27 @@ pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
     }
     let mut active: Vec<usize> = Vec::new();
     let mut result = Vec::new();
+    if let Some(steps) = &mut steps {
+        steps.push(SweepStep {
+            phase: "initial",
+            current: None,
+            pending: queue.keys().cloned().collect(),
+            active: Vec::new(),
+            results: Vec::new(),
+            checked: Vec::new(),
+        });
+    }
     while let Some((point, event)) = queue.pop_first() {
+        if let Some(steps) = &mut steps {
+            steps.push(SweepStep {
+                phase: "processing",
+                current: Some(point.clone()),
+                pending: queue.keys().cloned().collect(),
+                active: active.clone(),
+                results: result.clone(),
+                checked: Vec::new(),
+            });
+        }
         let mut incident = event.starts;
         // Every active segment spans the current x. Recover the whole equal-y
         // block, including unscheduled participants in a multiway crossing.
@@ -241,8 +293,16 @@ pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
         let position = active.partition_point(|&id| segments[id].y_at(&point.x) < point.y);
         let inserted = incident.len();
         active.splice(position..position, incident);
+        let mut checked = Vec::new();
         if position > 0 {
-            schedule_neighbors(&active, position - 1, &segments, &point, &mut queue);
+            schedule_neighbors(
+                &active,
+                position - 1,
+                &segments,
+                &point,
+                &mut queue,
+                &mut checked,
+            );
         }
         if inserted > 0 {
             schedule_neighbors(
@@ -251,7 +311,18 @@ pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
                 &segments,
                 &point,
                 &mut queue,
+                &mut checked,
             );
+        }
+        if let Some(steps) = &mut steps {
+            steps.push(SweepStep {
+                phase: "processed",
+                current: Some(point),
+                pending: queue.keys().cloned().collect(),
+                active: active.clone(),
+                results: result.clone(),
+                checked,
+            });
         }
     }
     result

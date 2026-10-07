@@ -4,6 +4,15 @@ export interface Segment { start: Point; end: Point }
 export type Geometry = { type: 'point'; point: Point } | { type: 'overlap'; start: Point; end: Point }
 export interface Intersection { segments: [number, number]; geometry: Geometry }
 export interface Preset { id: string; name: string; description: string; segments: Segment[] }
+export interface SweepStep {
+  phase: 'initial' | 'processing' | 'processed'
+  current: Point | null
+  pending: Point[]
+  active: number[]
+  results: Intersection[]
+  checked: [number, number][]
+}
+export interface SweepTrace { shear: Rational; steps: SweepStep[] }
 
 export function rational(value: string): Rational {
   const [numerator, denominator = '1'] = value.split('/')

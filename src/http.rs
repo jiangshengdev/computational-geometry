@@ -8,11 +8,16 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 
-use crate::{Geometry, Intersection, Point, Rational, Segment, intersections};
+use crate::{
+    Geometry, Intersection, Point, Rational, Segment, SweepTrace, intersections,
+    trace_intersections,
+};
 
 #[derive(Deserialize)]
 struct Request {
     segments: Vec<SegmentDto>,
+    #[serde(default)]
+    trace: bool,
 }
 
 #[derive(Deserialize)]
@@ -36,6 +41,48 @@ struct RationalDto {
 #[derive(Serialize)]
 struct Response {
     intersections: Vec<IntersectionDto>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    trace: Option<TraceDto>,
+}
+
+#[derive(Serialize)]
+struct TraceDto {
+    shear: RationalDto,
+    steps: Vec<StepDto>,
+}
+
+#[derive(Serialize)]
+struct StepDto {
+    phase: &'static str,
+    current: Option<PointDto>,
+    pending: Vec<PointDto>,
+    active: Vec<usize>,
+    results: Vec<IntersectionDto>,
+    checked: Vec<[usize; 2]>,
+}
+
+impl From<SweepTrace> for TraceDto {
+    fn from(trace: SweepTrace) -> Self {
+        Self {
+            shear: trace.shear.into(),
+            steps: trace
+                .steps
+                .into_iter()
+                .map(|step| StepDto {
+                    phase: step.phase,
+                    current: step.current.map(PointDto::from),
+                    pending: step.pending.into_iter().map(PointDto::from).collect(),
+                    active: step.active,
+                    results: step
+                        .results
+                        .into_iter()
+                        .map(IntersectionDto::from)
+                        .collect(),
+                    checked: step.checked,
+                })
+                .collect(),
+        }
+    }
 }
 
 #[derive(Serialize)]
@@ -145,11 +192,17 @@ async fn compute(
         .into_iter()
         .map(SegmentDto::into_segment)
         .collect::<Result<Vec<_>, _>>()?;
-    let result = tokio::task::spawn_blocking(move || {
-        intersections(&segments)
-            .into_iter()
-            .map(IntersectionDto::from)
-            .collect()
+    let response = tokio::task::spawn_blocking(move || {
+        let (results, trace) = if request.trace {
+            let (results, trace) = trace_intersections(&segments);
+            (results, Some(trace.into()))
+        } else {
+            (intersections(&segments), None)
+        };
+        Response {
+            intersections: results.into_iter().map(IntersectionDto::from).collect(),
+            trace,
+        }
     })
     .await
     .map_err(|_| {
@@ -160,9 +213,7 @@ async fn compute(
             }),
         )
     })?;
-    Ok(Json(Response {
-        intersections: result,
-    }))
+    Ok(Json(response))
 }
 
 /// Serve the submitted geometry directly, independently of viewer presets.

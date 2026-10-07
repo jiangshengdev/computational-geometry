@@ -24,6 +24,8 @@ test('键盘选择案例、配对和几何操作具有可见焦点', async ({ pa
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   await expect(selector).toBeFocused()
   await page.keyboard.press('Tab')
+  await expect(page.getByRole('button', { name: '开始逐步学习' })).toBeFocused()
+  await page.keyboard.press('Tab')
   const zoomIn = page.getByRole('button', { name: '放大', exact: true })
   await expect(zoomIn).toBeFocused()
   expect(await zoomIn.evaluate(element => {

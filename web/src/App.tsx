@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { GeometryView } from './GeometryView'
-import { formatGeometry, formatPoint, pairName, type Intersection, type Preset } from './geometry'
+import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
+import { LearningIntroduction, LearningView } from './LearningView'
 import { presets } from './presets'
 import './App.css'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@/components/ui/empty'
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
@@ -14,11 +16,13 @@ import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
-type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[] }
+type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace }
 
 function CaseViewer({ preset }: { preset: Preset }) {
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
   const [selected, setSelected] = useState<Intersection | null>(null)
+  const [learning, setLearning] = useState(false)
+  const teachable = preset.id === 'crossing' || preset.id === 'disjoint'
   useEffect(() => {
     let current = true
     const controller = new AbortController()
@@ -26,22 +30,32 @@ function CaseViewer({ preset }: { preset: Preset }) {
       try {
         const response = await fetch('/api/intersections', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ segments: preset.segments }), signal: controller.signal,
+          body: JSON.stringify({ segments: preset.segments, trace: teachable }), signal: controller.signal,
         })
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
-        const data = await response.json() as { intersections: Intersection[] }
+        const data = await response.json() as { intersections: Intersection[]; trace?: SweepTrace }
         if (!Array.isArray(data.intersections)) throw new Error('结果结构无效')
-        if (current) setComputation({ status: 'ready', results: data.intersections })
+        if (teachable && (!data.trace?.steps.length || data.trace.shear.numerator !== '0')) throw new Error('教学轨迹无效')
+        if (current) setComputation({ status: 'ready', results: data.intersections, trace: data.trace })
       } catch (error) {
         if (current) setComputation({ status: 'error', message: error instanceof Error ? error.message : '未知错误' })
       }
     }
     void compute()
     return () => { current = false; controller.abort() }
-  }, [preset])
+  }, [preset, teachable])
   const results = computation.status === 'ready' ? computation.results : []
+  if (learning && computation.status === 'ready' && computation.trace) return <>
+    <details className="my-4"><summary className="cursor-pointer">学习目标、术语与扫描约定</summary><LearningIntroduction /></details>
+    <p className="mb-4">{preset.name} · {preset.description} 从左向右扫描，按 (x, y) 排序，精确计算。</p>
+    <LearningView preset={preset} trace={computation.trace} results={results} />
+    <Button className="mt-6" variant="outline" onClick={() => setLearning(false)}>返回结果查看器</Button>
+  </>
   return <>
+    <LearningIntroduction />
     <p className="my-6 text-muted-foreground">{preset.description}</p>
+    {teachable ? <Button className="mb-4" disabled={computation.status !== 'ready'} onClick={() => setLearning(true)}>开始逐步学习</Button>
+      : <p className="mb-4 text-muted-foreground">此案例目前提供结果查看；逐步入门请选择普通交叉或无交点。</p>}
     <div className="workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} />
       <aside className="min-w-0" aria-label="计算结果">
