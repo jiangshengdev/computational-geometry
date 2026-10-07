@@ -75,7 +75,7 @@ function CaseViewer({ preset }: { preset: Preset }) {
                     : <ScrollArea className="[&_[data-slot=scroll-area-viewport]]:max-h-60">
                       <ToggleGroup type="single" orientation="vertical" spacing={2} className="w-full flex-col p-1" aria-label="相交配对选择"
                         value={selected ? pairName(selected) : ''}
-                        onValueChange={value => { if (value) setSelected(results.find(result => pairName(result) === value)!) }}>
+                        onValueChange={value => setSelected(results.find(result => pairName(result) === value) ?? null)}>
                         {results.map(result => <ToggleGroupItem key={pairName(result)} value={pairName(result)} className="pair-item w-full justify-start"
                           data-highlighted={highlights ? highlights.pairs.includes(pairName(result)) : result === selected}
                           onPointerEnter={() => setHover({ kind: 'pair', pair: pairName(result) })} onPointerLeave={() => setHover(null)}>
