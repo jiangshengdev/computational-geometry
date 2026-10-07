@@ -4,13 +4,16 @@ import { approximate, formatRational, pairName, samePoint, type Intersection, ty
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import type { HoverTarget } from './hover'
 
 interface Props {
   segments: Segment[]; results: Intersection[]; selected: Intersection | null
+  highlights?: { inputs: number[]; pairs: string[] } | null
+  onHover?: (target: HoverTarget | null) => void
   sweep?: { current: Point | null; active: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
 }
 
-export function GeometryView({ segments, results, selected, sweep }: Props) {
+export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
   const svg = useRef<SVGSVGElement>(null)
   const [width, setWidth] = useState(800)
   const height = 460
@@ -69,17 +72,48 @@ export function GeometryView({ segments, results, selected, sweep }: Props) {
     </div></CardHeader>
     <Separator />
     <CardContent className="p-0">
-    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img">
+    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img"
+      onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
+      onPointerMove={event => {
+        if (!onHover || event.buttons) return
+        const label = (event.target as Element).closest<SVGTextElement>('text[data-input]')
+        if (label) { onHover({ kind: 'input', index: Number(label.dataset.input) }); return }
+        const matrix = svg.current!.getScreenCTM()!
+        const screen = (point: Point) => new DOMPoint(...transform.apply([px(point), py(point)])).matrixTransform(matrix)
+        const scale = transform.k * Math.hypot(matrix.a, matrix.b)
+        const pointInput = segments.find(segment => {
+          if (!samePoint(segment.start, segment.end)) return false
+          const center = screen(segment.start)
+          return Math.abs(event.clientX - center.x) + Math.abs(event.clientY - center.y) <= 11 * scale + 3
+        })
+        const pointer = pointInput ? screen(pointInput.start) : new DOMPoint(event.clientX, event.clientY)
+        const distance = (start: Point, end: Point) => {
+          const a = screen(start), b = screen(end)
+          const dx = b.x - a.x, dy = b.y - a.y
+          const lengthSquared = dx * dx + dy * dy
+          const t = lengthSquared ? Math.max(0, Math.min(1, ((pointer.x - a.x) * dx + (pointer.y - a.y) * dy) / lengthSquared)) : 0
+          return Math.hypot(pointer.x - a.x - t * dx, pointer.y - a.y - t * dy)
+        }
+        // Hit all geometry in screen pixels, independently of SVG paint order.
+        const hits = results.filter(({ geometry: g }) => g.type === 'point'
+          ? distance(g.point, g.point) <= Math.max(9, 7 * scale) : distance(g.start, g.end) <= Math.max(7, 4 * scale))
+        const inputs = segments.flatMap((segment, index) => distance(segment.start, segment.end) <= Math.max(7, 2 * scale) ? [index] : [])
+        for (const hit of hits) for (const index of hit.segments) if (!inputs.includes(index)) inputs.push(index)
+        if (!inputs.length) onHover(null)
+        else if (!hits.length && inputs.length === 1) onHover({ kind: 'input', index: inputs[0] })
+        else onHover({ kind: 'geometry', inputs, pairs: hits.map(pairName) })
+      }}>
       <g transform={transform.toString()}>
         {x.ticks(Math.max(2, Math.floor(width / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
         {y.ticks(6).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
         {ordered.map(({ s, index }) => {
           const active = selected?.segments.includes(index) ?? false
-          return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${active ? 'selected' : ''}`} data-active={sweep?.active.includes(index)}>
+          const highlighted = highlights ? highlights.inputs.includes(index) : active
+          return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${highlighted ? 'selected' : ''}`} data-selected={active} data-highlighted={highlighted} data-active={sweep?.active.includes(index)}>
             {samePoint(s.start, s.end)
               ? <path d={`M${px(s.start)},${py(s.start) - 11} l11,11 l-11,11 l-11,-11 Z`} />
               : <line x1={px(s.start)} y1={py(s.start)} x2={px(s.end)} y2={py(s.end)} />}
-            <text x={px(s.start) + 9} y={py(s.start) - 10}>S{index}{sweep ? ' 起点' : ''}</text>
+            <text data-input={index} x={px(s.start) + 9} y={py(s.start) - 10}>S{index}{sweep ? ' 起点' : ''}</text>
             {sweep && <text textAnchor="end" x={px(s.end) - 9} y={py(s.end) - 10}>S{index} 终点</text>}
           </g>
         })}
@@ -96,8 +130,9 @@ export function GeometryView({ segments, results, selected, sweep }: Props) {
         </g>}
         {resultOrder.map(result => {
           const g = result.geometry, active = result === selected
-          return <g key={pairName(result)} role="img" aria-label={`交集 ${pairName(result)}${active ? '，已选中' : ''}`} className={`intersection ${active ? 'selected' : ''}`}>
-            {g.type === 'point' ? <circle cx={px(g.point)} cy={py(g.point)} r={active ? 7 : 5} /> : <>
+          const highlighted = highlights ? highlights.pairs.includes(pairName(result)) : active
+          return <g key={pairName(result)} role="img" aria-label={`交集 ${pairName(result)}${active ? '，已选中' : ''}`} className={`intersection ${highlighted ? 'selected' : ''}`} data-highlighted={highlighted}>
+            {g.type === 'point' ? <circle cx={px(g.point)} cy={py(g.point)} r={highlighted ? 7 : 5} /> : <>
               <line x1={px(g.start)} y1={py(g.start)} x2={px(g.end)} y2={py(g.end)} />
               <circle cx={px(g.start)} cy={py(g.start)} r={5} /><circle cx={px(g.end)} cy={py(g.end)} r={5} />
             </>}

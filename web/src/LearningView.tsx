@@ -7,7 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Slider } from 'radix-ui'
 
 export function LearningIntroduction() {
-  return <section aria-label="学习目标" className="my-6 flex flex-col gap-3">
+  return <details className="my-4"><summary className="cursor-pointer">学习目标、术语与扫描约定</summary>
+    <section aria-label="学习目标" className="my-6 flex flex-col gap-3">
     <h2 className="text-xl font-semibold">从零理解 Bentley–Ottmann 扫描线</h2>
     <p>目标：能说清何时加入线段、何时发现交点、为什么换序，以及何时退出。线段求交就是找出输入线段共有的点或区间。</p>
     <p>最直接的方法是两两检查：n 条线段要检查 n(n−1)/2 对。扫描线是一条从左向右移动的竖线；只在端点或已发现的交点停下，这些停靠位置叫事件。</p>
@@ -15,7 +16,8 @@ export function LearningIntroduction() {
     <p>在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。</p>
     <p className="text-muted-foreground">统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 x 的不同事件按 y 依次处理；当前事件处理完成后只更新该位置的顺序，同 x 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。</p>
     <p className="text-muted-foreground">本入门流程仅讲普通两线交叉与无交点。两个案例的端点虽有相同 x，但位置不同；这不代表共点、竖直线或重叠等任意退化输入已获得完整教学支持。</p>
-  </section>
+    </section>
+  </details>
 }
 
 export function LearningReferences() {

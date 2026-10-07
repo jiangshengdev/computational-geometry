@@ -6,8 +6,11 @@ import { join } from 'node:path'
 test('入门学习：交叉的发现、换序、退出和重新开始', async ({ page }) => {
   await page.goto('/')
   await selectPreset(page, 'crossing')
+  await expect(page.getByText(/两两检查/).first()).toBeHidden()
+  await page.getByText('学习目标、术语与扫描约定', { exact: true }).click()
   await expect(page.getByText(/两两检查/).first()).toBeVisible()
   await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await expect(page.getByText(/两两检查/).first()).toBeHidden()
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByRole('region', { name: '活动线段顺序' })
   const current = page.getByRole('region', { name: '当前事件' })

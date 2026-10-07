@@ -3,6 +3,7 @@ import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
 import { LearningIntroduction, LearningView } from './LearningView'
 import { presets } from './presets'
+import { hoverHighlights, type HoverTarget } from './hover'
 import './App.css'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
@@ -21,6 +22,7 @@ type Computation = { status: 'loading' } | { status: 'error'; message: string } 
 function CaseViewer({ preset }: { preset: Preset }) {
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
   const [selected, setSelected] = useState<Intersection | null>(null)
+  const [hover, setHover] = useState<HoverTarget | null>(null)
   const [learning, setLearning] = useState(false)
   const teachable = preset.id === 'crossing' || preset.id === 'disjoint'
   useEffect(() => {
@@ -45,8 +47,9 @@ function CaseViewer({ preset }: { preset: Preset }) {
     return () => { current = false; controller.abort() }
   }, [preset, teachable])
   const results = computation.status === 'ready' ? computation.results : []
+  const highlights = hover ? hoverHighlights(hover, results) : null
   if (learning && computation.status === 'ready' && computation.trace) return <>
-    <details className="my-4"><summary className="cursor-pointer">学习目标、术语与扫描约定</summary><LearningIntroduction /></details>
+    <LearningIntroduction key="learning" />
     <p className="mb-4">{preset.name} · {preset.description} 从左向右扫描，按 (x, y) 排序，精确计算。</p>
     <LearningView preset={preset} trace={computation.trace} results={results} />
     <Button className="mt-6" variant="outline" onClick={() => setLearning(false)}>返回结果查看器</Button>
@@ -57,7 +60,7 @@ function CaseViewer({ preset }: { preset: Preset }) {
     {teachable ? <Button className="mb-4" disabled={computation.status !== 'ready'} onClick={() => setLearning(true)}>开始逐步学习</Button>
       : <p className="mb-4 text-muted-foreground">此案例目前提供结果查看；逐步入门请选择普通交叉或无交点。</p>}
     <div className="workspace">
-      <GeometryView segments={preset.segments} results={results} selected={selected} />
+      <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
       <aside className="min-w-0" aria-label="计算结果">
         <Card>
           <CardHeader><CardTitle><h2>相交配对</h2></CardTitle></CardHeader>
@@ -73,7 +76,9 @@ function CaseViewer({ preset }: { preset: Preset }) {
                       <ToggleGroup type="single" orientation="vertical" spacing={2} className="w-full flex-col p-1" aria-label="相交配对选择"
                         value={selected ? pairName(selected) : ''}
                         onValueChange={value => { if (value) setSelected(results.find(result => pairName(result) === value)!) }}>
-                        {results.map(result => <ToggleGroupItem key={pairName(result)} value={pairName(result)} className="w-full justify-start">
+                        {results.map(result => <ToggleGroupItem key={pairName(result)} value={pairName(result)} className="pair-item w-full justify-start"
+                          data-highlighted={highlights ? highlights.pairs.includes(pairName(result)) : result === selected}
+                          onPointerEnter={() => setHover({ kind: 'pair', pair: pairName(result) })} onPointerLeave={() => setHover(null)}>
                           {pairName(result)} · {result.geometry.type === 'point' ? '点' : '重叠区间'}
                         </ToggleGroupItem>)}
                       </ToggleGroup>
@@ -95,7 +100,10 @@ function CaseViewer({ preset }: { preset: Preset }) {
       <CardContent>{preset.segments.length === 0
         ? <Empty><EmptyHeader><EmptyTitle>输入集合为空</EmptyTitle></EmptyHeader></Empty>
         : <ul className="flex flex-wrap gap-x-8 gap-y-3">{preset.segments.map((s, i) =>
-          <li key={i} className="flex min-w-0 flex-wrap gap-3 text-sm"><strong>S{i}</strong><span className="coordinates">{formatPoint(s.start)} → {formatPoint(s.end)}</span></li>)}</ul>}
+          <li key={i} className="input-item flex min-w-0 flex-wrap gap-3 text-sm"
+            data-highlighted={highlights ? highlights.inputs.includes(i) : selected?.segments.includes(i) ?? false}
+            onPointerEnter={() => setHover({ kind: 'input', index: i })} onPointerLeave={() => setHover(null)}>
+            <strong>S{i}</strong><span className="coordinates">{formatPoint(s.start)} → {formatPoint(s.end)}</span></li>)}</ul>}
       </CardContent>
     </Card>
     </section>
