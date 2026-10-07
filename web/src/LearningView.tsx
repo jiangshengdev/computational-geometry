@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useEffectEvent, useState } from 'react'
 import { GeometryView } from './GeometryView'
 import { formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@/components/ui/button'
@@ -47,7 +47,30 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     {position > 0 && <span>{separator}</span>}
     <span className="learning-hover-item" {...inputProps(id)}>S{id}</span>
   </Fragment>)
-  const changeStep = (value: number) => { setHover(null); setIndex(value) }
+  const changeStep = (value: number | ((current: number) => number)) => {
+    setHover(null)
+    setIndex(current => Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(current) : value)))
+  }
+  const restart = () => { changeStep(0); setRun(r => r + 1) }
+  const handleShortcut = useEffectEvent((event: KeyboardEvent) => {
+    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+    const target = event.target
+    if (target instanceof Element && (
+      target.closest('input, textarea, select, [role="slider"], [role="combobox"], [role="listbox"]')
+      || (target instanceof HTMLElement && target.isContentEditable)
+    )) return
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key.toLowerCase() !== 'r') return
+    event.preventDefault()
+    if (event.repeat) return
+    if (event.key === 'ArrowLeft') changeStep(current => current - 1)
+    else if (event.key === 'ArrowRight') changeStep(current => current + 1)
+    else restart()
+  })
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => handleShortcut(event)
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
   const step = trace.steps[index]
   const before = trace.steps[Math.max(0, index - 1)]
   const complete = index === trace.steps.length - 1
@@ -65,9 +88,9 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="flex flex-col gap-4">
     <div className="flex flex-wrap items-center gap-3">
-      <Button variant="outline" onClick={() => changeStep(index - 1)} disabled={index === 0}>上一步</Button>
-      <Button onClick={() => changeStep(index + 1)} disabled={complete}>下一步</Button>
-      <Button variant="outline" onClick={() => { changeStep(0); setRun(r => r + 1) }}>重新开始</Button>
+      <Button variant="outline" onClick={() => changeStep(index - 1)} disabled={index === 0} aria-keyshortcuts="ArrowLeft">上一步<kbd aria-hidden="true">←</kbd></Button>
+      <Button onClick={() => changeStep(index + 1)} disabled={complete} aria-keyshortcuts="ArrowRight">下一步<kbd aria-hidden="true">→</kbd></Button>
+      <Button variant="outline" onClick={restart} aria-keyshortcuts="r">重新开始<kbd aria-hidden="true">R</kbd></Button>
     </div>
     <div className="flex flex-col gap-2">
       <span className="text-sm text-muted-foreground">拖动浏览教学步骤 · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
