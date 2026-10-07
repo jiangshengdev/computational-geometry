@@ -1,22 +1,26 @@
-//! Exact Bentley–Ottmann segment intersections, currently for general position.
+//! Exact Bentley–Ottmann intersections of nonzero, nonoverlapping segments.
 //!
-//! This increment supports nonvertical, nonzero segments with distinct x
-//! coordinates for every endpoint and intersection, no endpoint contacts,
-//! no collinear overlaps and no three segments meeting at one point.
-//! Empty and singleton collections are supported within this domain.
-//! These are current preconditions, not restrictions on the eventual #8 API.
-//! Degeneracy support is not yet complete: detected violations return an error,
-//! but this function does not validate every precondition (notably collinearity).
+//! Endpoint contacts, multiway crossings, vertical segments and distinct events
+//! at the same sweep coordinate are supported. Zero-length inputs and positive-
+//! length overlaps remain outside this increment and return an error. Empty and
+//! singleton collections are supported within this domain. These restrictions
+//! do not remove the remaining capabilities from the eventual #8 scope.
 //!
-//! Only neighboring active segments are tested for future intersections. An
-//! ordered event queue drives insertion, removal and crossing swaps. The active
-//! sequence uses a vector: with n inputs and k intersecting pairs, there are
-//! O(n + k) events, O((n + k) * n) sequence work and O((n + k) * log(n + k))
-//! queue work, with O(n + k) storage including output. These counts exclude the
+//! An invertible exact shear (x, y) -> (x + s*y, y) avoids vertical segments in
+//! sweep coordinates; s is chosen from input directions, without enumerating
+//! intersections. Point events are ordered lexicographically and group all
+//! incident segments. Only adjacent active segments schedule future crossings;
+//! pair enumeration is confined to emitting the actual pairs at one event.
+//!
+//! With n inputs and k intersecting pairs, there are O(n + k) events. Shear
+//! selection costs O(n log(n + 1)); the vector status scans and updates cost
+//! O((n + k) * n), incident-block sorting costs O((n + k) * log(n + 1)), and
+//! queue work costs O((n + k) * log(n + k + 1)). Emitting pairs costs O(k).
+//! Storage is O(n + k), including the output. These operation counts exclude the
 //! cost of arbitrary-precision rational arithmetic and comparisons, which
 //! depends on operand bit lengths; this is not an O((n + k) log n) claim.
 
-use std::collections::{BTreeMap, btree_map::Entry};
+use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;
 
 /// Arbitrary-precision rational coordinates; no floating-point approximation.
@@ -44,13 +48,13 @@ pub struct Intersection {
     pub point: Point,
 }
 
-/// An encountered configuration outside the current general-position domain.
+/// A zero-length input or a positive-length overlap, not yet supported.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct UnsupportedDegeneracy;
 
 impl fmt::Display for UnsupportedDegeneracy {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("this increment requires segments in general position; see crate documentation")
+        f.write_str("zero-length inputs and positive-length overlaps are not yet supported")
     }
 }
 
@@ -64,23 +68,26 @@ struct SweepSegment {
 }
 
 impl SweepSegment {
-    fn new(segment: &Segment) -> Result<Self, UnsupportedDegeneracy> {
-        let (left, right) = if segment.start.x < segment.end.x {
-            (&segment.start, &segment.end)
-        } else {
-            (&segment.end, &segment.start)
+    fn new(segment: &Segment, shear: &Rational) -> Self {
+        let transform = |point: &Point| Point {
+            x: &point.x + shear * &point.y,
+            y: point.y.clone(),
         };
-        if left.x == right.x {
-            return Err(UnsupportedDegeneracy);
-        }
+        let start = transform(&segment.start);
+        let end = transform(&segment.end);
+        let (left, right) = if start.x < end.x {
+            (start, end)
+        } else {
+            (end, start)
+        };
         let slope = (&right.y - &left.y) / (&right.x - &left.x);
         let intercept = &left.y - &slope * &left.x;
-        Ok(Self {
-            left: left.clone(),
-            right: right.clone(),
+        Self {
+            left,
+            right,
             slope,
             intercept,
-        })
+        }
     }
 
     fn y_at(&self, x: &Rational) -> Rational {
@@ -88,58 +95,57 @@ impl SweepSegment {
     }
 }
 
-#[derive(PartialEq, Eq)]
-enum Event {
-    Start(usize),
-    End(usize),
-    Crossing { pair: [usize; 2], point: Point },
+fn choose_shear(segments: &[Segment]) -> Result<Rational, UnsupportedDegeneracy> {
+    let mut forbidden = BTreeSet::new();
+    for segment in segments {
+        if segment.start == segment.end {
+            return Err(UnsupportedDegeneracy);
+        }
+        let dy = &segment.end.y - &segment.start.y;
+        if dy != Rational::from_integer(0.into()) {
+            forbidden.insert((&segment.start.x - &segment.end.x) / dy);
+        }
+    }
+    let mut shear = Rational::from_integer(0.into());
+    // At most n forbidden values: one of 0..=n must be available.
+    while forbidden.contains(&shear) {
+        shear += Rational::from_integer(1.into());
+    }
+    Ok(shear)
 }
 
-fn enqueue(
-    queue: &mut BTreeMap<Rational, Event>,
-    x: Rational,
-    event: Event,
-) -> Result<(), UnsupportedDegeneracy> {
-    match queue.entry(x) {
-        Entry::Vacant(entry) => {
-            entry.insert(event);
-        }
-        Entry::Occupied(entry) if entry.get() == &event => {}
-        Entry::Occupied(_) => return Err(UnsupportedDegeneracy),
-    }
-    Ok(())
+#[derive(Default)]
+struct Event {
+    // Ends and interior crossings are recovered from the active sequence at
+    // this exact point, so a discovered crossing needs no stored pair identity.
+    starts: Vec<usize>,
 }
 
 fn schedule_neighbors(
     active: &[usize],
     lower: usize,
     segments: &[SweepSegment],
-    x: &Rational,
-    queue: &mut BTreeMap<Rational, Event>,
-) -> Result<(), UnsupportedDegeneracy> {
+    current: &Point,
+    queue: &mut BTreeMap<Point, Event>,
+) {
     let Some(neighbors) = active.get(lower..lower + 2) else {
-        return Ok(());
+        return;
     };
     let (a, b) = (&segments[neighbors[0]], &segments[neighbors[1]]);
     if a.slope == b.slope {
-        return Ok(());
+        return;
     }
     let cross_x = (&b.intercept - &a.intercept) / (&a.slope - &b.slope);
-    if cross_x <= *x
-        || cross_x < a.left.x
-        || cross_x > a.right.x
-        || cross_x < b.left.x
-        || cross_x > b.right.x
-    {
-        return Ok(());
+    if cross_x < a.left.x || cross_x > a.right.x || cross_x < b.left.x || cross_x > b.right.x {
+        return;
     }
     let point = Point {
         y: a.y_at(&cross_x),
-        x: cross_x.clone(),
+        x: cross_x,
     };
-    let mut pair = [neighbors[0], neighbors[1]];
-    pair.sort_unstable();
-    enqueue(queue, cross_x, Event::Crossing { pair, point })
+    if point > *current {
+        queue.entry(point).or_default();
+    }
 }
 
 /// Return every intersecting input pair with its exact crossing point.
@@ -148,69 +154,72 @@ fn schedule_neighbors(
 /// pair once. Result order is not part of the contract. Coordinates must be
 /// valid, normalized rationals (use `Rational::new` or `from_integer`, not
 /// unchecked `new_raw`). See the crate documentation for the currently supported
-/// input domain and cost. An error discards the partial result; `Ok` does not
-/// certify that all general-position preconditions were met.
+/// input domain and cost. An error discards the partial result.
 pub fn intersections(segments: &[Segment]) -> Result<Vec<Intersection>, UnsupportedDegeneracy> {
+    let shear = choose_shear(segments)?;
     let segments: Vec<_> = segments
         .iter()
-        .map(SweepSegment::new)
-        .collect::<Result<_, _>>()?;
-    let mut queue = BTreeMap::new();
+        .map(|segment| SweepSegment::new(segment, &shear))
+        .collect();
+    let mut queue: BTreeMap<Point, Event> = BTreeMap::new();
     for (id, segment) in segments.iter().enumerate() {
-        enqueue(&mut queue, segment.left.x.clone(), Event::Start(id))?;
-        enqueue(&mut queue, segment.right.x.clone(), Event::End(id))?;
+        queue
+            .entry(segment.left.clone())
+            .or_default()
+            .starts
+            .push(id);
+        queue.entry(segment.right.clone()).or_default();
     }
-    let mut active = Vec::new();
+    let mut active: Vec<usize> = Vec::new();
     let mut result = Vec::new();
-    while let Some((x, event)) = queue.pop_first() {
-        match event {
-            Event::Start(id) => {
-                let y = &segments[id].left.y;
-                let position = match active
-                    .binary_search_by(|&other: &usize| segments[other].y_at(&x).cmp(y))
-                {
-                    Ok(_) => return Err(UnsupportedDegeneracy),
-                    Err(position) => position,
-                };
-                active.insert(position, id);
-                if position > 0 {
-                    schedule_neighbors(&active, position - 1, &segments, &x, &mut queue)?;
-                }
-                schedule_neighbors(&active, position, &segments, &x, &mut queue)?;
+    while let Some((point, event)) = queue.pop_first() {
+        let mut incident = event.starts;
+        // Every active segment spans the current x. Recover the whole equal-y
+        // block, including unscheduled participants in a multiway crossing.
+        active.retain(|&id| {
+            if segments[id].y_at(&point.x) == point.y {
+                incident.push(id);
+                false
+            } else {
+                true
             }
-            Event::End(id) => {
-                let position = active
-                    .iter()
-                    .position(|&other| other == id)
-                    .ok_or(UnsupportedDegeneracy)?;
-                active.remove(position);
-                if position > 0 {
-                    schedule_neighbors(&active, position - 1, &segments, &x, &mut queue)?;
-                }
-            }
-            Event::Crossing { pair, point } => {
-                let first = active
-                    .iter()
-                    .position(|&id| id == pair[0])
-                    .ok_or(UnsupportedDegeneracy)?;
-                let second = active
-                    .iter()
-                    .position(|&id| id == pair[1])
-                    .ok_or(UnsupportedDegeneracy)?;
-                if first.abs_diff(second) != 1 {
-                    return Err(UnsupportedDegeneracy);
-                }
-                let lower = first.min(second);
-                active.swap(lower, lower + 1);
+        });
+        for (i, &a) in incident.iter().enumerate() {
+            for &b in &incident[i + 1..] {
                 result.push(Intersection {
-                    segments: pair,
-                    point,
+                    segments: [a.min(b), a.max(b)],
+                    point: Point {
+                        x: &point.x - &shear * &point.y,
+                        y: point.y.clone(),
+                    },
                 });
-                if lower > 0 {
-                    schedule_neighbors(&active, lower - 1, &segments, &x, &mut queue)?;
-                }
-                schedule_neighbors(&active, lower + 1, &segments, &x, &mut queue)?;
             }
+        }
+        incident.retain(|&id| segments[id].right != point);
+        incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));
+        if incident
+            .windows(2)
+            .any(|pair| segments[pair[0]].slope == segments[pair[1]].slope)
+        {
+            return Err(UnsupportedDegeneracy);
+        }
+        // Equal-x events at different y remain separate. At the current y,
+        // ascending slope is the order immediately after this event; other
+        // equal-y blocks keep their pre-event order until their own event.
+        let position = active.partition_point(|&id| segments[id].y_at(&point.x) < point.y);
+        let inserted = incident.len();
+        active.splice(position..position, incident);
+        if position > 0 {
+            schedule_neighbors(&active, position - 1, &segments, &point, &mut queue);
+        }
+        if inserted > 0 {
+            schedule_neighbors(
+                &active,
+                position + inserted - 1,
+                &segments,
+                &point,
+                &mut queue,
+            );
         }
     }
     Ok(result)

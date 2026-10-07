@@ -145,7 +145,10 @@ fn cross(ax: &Rational, ay: &Rational, bx: &Rational, by: &Rational) -> Rational
     ax * by - ay * bx
 }
 
-fn oracle(segments: &[Segment]) -> PairResults {
+fn oracle(segments: &[Segment]) -> Option<PairResults> {
+    if segments.iter().any(|s| s.start == s.end) {
+        return None;
+    }
     let zero = rational(0, 1);
     let one = rational(1, 1);
     let mut expected = BTreeMap::new();
@@ -159,8 +162,19 @@ fn oracle(segments: &[Segment]) -> PairResults {
             let qy = &b.start.y - &a.start.y;
             let determinant = cross(&rx, &ry, &sx, &sy);
             if determinant == zero {
-                // This oracle's domain excludes collinear lines and point inputs.
-                assert_ne!(cross(&qx, &qy, &rx, &ry), zero);
+                if cross(&qx, &qy, &rx, &ry) == zero {
+                    // Lexicographic projection preserves order on any line,
+                    // including a vertical one. Only a single-point overlap is
+                    // in this increment's domain; positive length is rejected.
+                    let low = (&a.start).min(&a.end).max((&b.start).min(&b.end));
+                    let high = (&a.start).max(&a.end).min((&b.start).max(&b.end));
+                    if low < high {
+                        return None;
+                    }
+                    if low == high {
+                        expected.insert([i, j], low.clone());
+                    }
+                }
                 continue;
             }
             let t = cross(&qx, &qy, &sx, &sy) / &determinant;
@@ -176,7 +190,7 @@ fn oracle(segments: &[Segment]) -> PairResults {
             }
         }
     }
-    expected
+    Some(expected)
 }
 
 fn assert_identity_invariance(segments: &[Segment], expected: &PairResults) {
@@ -264,7 +278,7 @@ fn small_generated_general_position_sets_match_an_independent_exact_oracle() {
         if collinear {
             continue;
         }
-        let expected = oracle(&segments);
+        let expected = oracle(&segments).expect("general-position sample");
         if !expected.values().all(|p| event_x.insert(p.x.clone())) {
             continue;
         }
@@ -327,6 +341,177 @@ fn coordinates_and_intermediate_products_are_not_limited_to_machine_integers() {
 
 #[test]
 fn detected_unsupported_inputs_return_an_error_instead_of_a_partial_result() {
-    assert!(intersections(&[segment(0, 0, 0, 2)]).is_err());
-    assert!(intersections(&[segment(0, 0, 3, 3), segment(0, 2, 5, -3)]).is_err());
+    assert!(intersections(&[segment(0, 0, 0, 0)]).is_err());
+    assert!(intersections(&[segment(0, 0, 4, 0), segment(2, 0, 6, 0)]).is_err());
+}
+
+#[test]
+fn vertical_segments_cross_and_touch_at_exact_fractional_coordinates() {
+    let at = |y| Point {
+        x: rational(1, 3),
+        y: rational(y, 1),
+    };
+    let segments = [
+        Segment {
+            start: at(-2),
+            end: at(3),
+        },
+        segment(-2, 0, 2, 0),
+        Segment {
+            start: point(-1, 1),
+            end: at(1),
+        },
+        Segment {
+            start: at(3),
+            end: point(2, 4),
+        },
+        Segment {
+            start: at(3),
+            end: at(5),
+        },
+        segment(10, 0, 10, 1),
+    ];
+    let expected = BTreeMap::from([
+        ([0, 1], at(0)),
+        ([0, 2], at(1)),
+        ([0, 3], at(3)),
+        ([0, 4], at(3)),
+        ([3, 4], at(3)),
+    ]);
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_identity_invariance(&segments, &expected);
+    assert!(results(&[segments[0].clone()]).is_empty());
+}
+
+#[test]
+fn groups_starts_ends_and_crossings_without_losing_earlier_or_later_pairs() {
+    let segments = [
+        segment(-3, -3, 3, 3),
+        segment(-4, 4, 4, -4),
+        segment(-2, 0, 0, 0),
+        segment(0, 0, 5, 0),
+        segment(-5, 1, 6, 1),
+    ];
+    let expected = BTreeMap::from([
+        ([0, 1], point(0, 0)),
+        ([0, 2], point(0, 0)),
+        ([0, 3], point(0, 0)),
+        ([1, 2], point(0, 0)),
+        ([1, 3], point(0, 0)),
+        ([2, 3], point(0, 0)),
+        ([0, 4], point(1, 1)),
+        ([1, 4], point(-1, 1)),
+    ]);
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_identity_invariance(&segments, &expected);
+}
+
+#[test]
+fn distinct_events_at_the_same_x_remain_separate_and_discover_future_crossings() {
+    // Two crossings at x=0, y=-2 and y=2. Their outgoing branches subsequently
+    // cross at (2,0), so processing one equal-x group must not reorder the other.
+    let segments = [
+        segment(-1, -3, 3, 1),
+        segment(-1, -1, 3, -5),
+        segment(-1, 1, 3, 5),
+        segment(-1, 3, 3, -1),
+    ];
+    let expected = BTreeMap::from([
+        ([0, 1], point(0, -2)),
+        ([2, 3], point(0, 2)),
+        ([0, 3], point(2, 0)),
+    ]);
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_identity_invariance(&segments, &expected);
+}
+
+#[test]
+fn collinear_contacts_and_disjoint_segments_follow_closed_segment_semantics() {
+    for segments in [
+        [
+            segment(-3, 0, 0, 0),
+            segment(0, 0, 2, 0),
+            segment(3, 0, 4, 0),
+        ],
+        [
+            segment(0, -3, 0, 0),
+            segment(0, 0, 0, 2),
+            segment(0, 3, 0, 4),
+        ],
+        [
+            segment(-3, -3, 0, 0),
+            segment(0, 0, 2, 2),
+            segment(3, 3, 4, 4),
+        ],
+    ] {
+        let expected = BTreeMap::from([([0, 1], point(0, 0))]);
+        assert_eq!(results(&segments), expected);
+        assert_eq!(oracle(&segments), Some(expected.clone()));
+        assert_identity_invariance(&segments, &expected);
+    }
+}
+
+#[test]
+fn actively_generated_degeneracies_match_the_independent_oracle() {
+    for case in 0..48 {
+        let transform = |p: &Point| Point {
+            x: &p.x * rational(case % 3 + 1, case % 4 + 1) + rational(case % 7, 3),
+            y: &p.y * rational(case % 5 + 1, case % 3 + 1) + rational(case % 5, 2),
+        };
+        // Deliberately include a multiway crossing with a collinear endpoint
+        // contact, vertical interior crossings and later mixed events. No sample
+        // is filtered: each affine image must remain inside the supported domain.
+        let segments: Vec<_> = [
+            segment(-3, -3, 3, 3),
+            segment(-3, 3, 3, -3),
+            segment(0, -4, 0, 4),
+            segment(-4, 0, 0, 0),
+            segment(0, 0, 4, 0),
+            segment(-5, 2, 5, 2),
+            segment(2, -5, 2, 5),
+            segment(6, 0, 7, 0),
+        ]
+        .iter()
+        .map(|s| Segment {
+            start: transform(&s.start),
+            end: transform(&s.end),
+        })
+        .collect();
+        let expected = oracle(&segments).expect("constructed nonoverlapping sample");
+        assert_eq!(results(&segments), expected, "constructed case {case}");
+        assert_identity_invariance(&segments, &expected);
+    }
+}
+
+#[test]
+fn small_grid_sets_cover_varied_endpoint_and_crossing_degeneracies() {
+    let mut seed = 0x675a_12f0_u64;
+    let mut next = || {
+        seed = seed
+            .wrapping_mul(6364136223846793005)
+            .wrapping_add(1442695040888963407);
+        ((seed >> 32) % 9) as i64 - 4
+    };
+    let mut accepted = 0;
+    for case in 0..240 {
+        let segments: Vec<_> = (0..2 + case % 7)
+            .map(|_| segment(next(), next(), next(), next()))
+            .collect();
+        // Only exclude the two unsupported input classes, never equal-x events,
+        // verticals, contacts or multiway intersections.
+        let Some(expected) = oracle(&segments) else {
+            continue;
+        };
+        assert_eq!(
+            results(&segments),
+            expected,
+            "grid case {case}: {segments:?}"
+        );
+        assert_identity_invariance(&segments, &expected);
+        accepted += 1;
+    }
+    assert!(accepted > 100, "must exercise nonoverlapping grid sets");
 }
