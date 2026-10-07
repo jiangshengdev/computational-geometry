@@ -21,4 +21,6 @@ export const presets: Preset[] = [
   { id: 'collinear-contact', name: '共线点接触', description: '斜向共线段仅在一个端点接触。', segments: [segment('0', '0', '2', '2'), segment('2', '2', '4', '4')] },
   { id: 'collinear-disjoint', name: '共线分离', description: '共线但存在间隙，不返回交集。', segments: [segment('0', '0', '1', '1'), segment('2', '2', '4', '4')] },
   { id: 'overlap-group', name: '长区间与短成员', description: '第三条短线段不会切碎或缩短前两个输入的完整重叠。', segments: [segment('0', '0', '6', '0'), segment('0', '0', '6', '0'), segment('2', '0', '3', '0')] },
+  { id: 'mixed-horizontal', name: '重叠、交叉与重合点', description: '反向重复线段被竖线穿过；内部重合点和边界点保留各自配对，完整重叠不被切碎。', segments: [segment('0', '0', '4', '0'), segment('4', '0', '0', '0'), segment('2', '-2', '2', '2'), segment('2', '0', '2', '0'), segment('0', '0', '0', '0'), segment('2', '0', '2', '0')] },
+  { id: 'mixed-vertical', name: '竖直重叠与多高度混合', description: '在 x = 1/2 的完整重叠上，同时检查内部交叉、端点接触和重合点。', segments: [segment('1/2', '0', '1/2', '4'), segment('1/2', '4', '1/2', '0'), segment('-1', '2', '2', '2'), segment('1/2', '2', '1/2', '2'), segment('1/2', '0', '1/2', '0'), segment('1/2', '4', '2', '4'), segment('1/2', '2', '1/2', '2')] },
 ]

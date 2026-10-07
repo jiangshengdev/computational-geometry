@@ -1,0 +1,49 @@
+import { expect, test } from '@playwright/test'
+import { checkCase, checkResponse, type ExpectedPair } from './cases'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+
+const horizontal: ExpectedPair[] = [
+  { pair: [0, 1], interval: [['0', '0'], ['4', '0']] },
+  { pair: [0, 2], point: ['2', '0'] }, { pair: [1, 2], point: ['2', '0'] },
+  { pair: [0, 3], point: ['2', '0'] }, { pair: [1, 3], point: ['2', '0'] }, { pair: [2, 3], point: ['2', '0'] },
+  { pair: [0, 4], point: ['0', '0'] }, { pair: [1, 4], point: ['0', '0'] },
+  { pair: [0, 5], point: ['2', '0'] }, { pair: [1, 5], point: ['2', '0'] }, { pair: [2, 5], point: ['2', '0'] }, { pair: [3, 5], point: ['2', '0'] },
+]
+const vertical: ExpectedPair[] = [
+  { pair: [0, 1], interval: [['1/2', '0'], ['1/2', '4']] },
+  ...[[0, 2], [1, 2], [0, 3], [1, 3], [2, 3], [0, 6], [1, 6], [2, 6], [3, 6]].map(pair => ({ pair: pair as [number, number], point: ['1/2', '2'] as [string, string] })),
+  { pair: [0, 4], point: ['1/2', '0'] }, { pair: [1, 4], point: ['1/2', '0'] },
+  { pair: [0, 5], point: ['1/2', '4'] }, { pair: [1, 5], point: ['1/2', '4'] },
+]
+
+for (const [id, expected] of [['mixed-horizontal', horizontal], ['mixed-vertical', vertical]] as const) {
+  test(`混合案例 ${id} 全部精确几何与配对`, async ({ page }) => {
+    await checkResponse(page, id, expected)
+    await checkCase(page, id, expected)
+  })
+}
+
+test('混合场景缩放平移切换，完整区间与点配对保持一致', async ({ page }) => {
+  await page.setViewportSize({ width: 1360, height: 900 })
+  await checkCase(page, 'mixed-horizontal', horizontal)
+  await page.getByRole('button', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
+  const intersection = page.getByRole('img', { name: '交集 S0 × S1，已选中', exact: true })
+  const input = page.getByRole('img', { name: '输入 S0，已选中', exact: true })
+  const intervalWidth = await intersection.locator('line').evaluate(el => (el as SVGGraphicsElement).getBBox().width)
+  const inputWidth = await input.locator('line').evaluate(el => (el as SVGGraphicsElement).getBBox().width)
+  expect(intervalWidth).toBeCloseTo(inputWidth, 3)
+  await page.getByRole('button', { name: '放大', exact: true }).click()
+  await page.getByRole('button', { name: 'S2 × S3 · 点', exact: true }).click()
+  await expect(page.getByRole('region', { name: '精确详情' })).toContainText('(2, 0)')
+  await expect(page.getByRole('img', { name: '输入 S0，已选中', exact: true })).toHaveCount(0)
+  await page.getByRole('button', { name: '重置视图' }).click()
+  await page.screenshot({ path: join(tmpdir(), 'bo-viewer-mixed.png'), fullPage: true })
+  await page.getByLabel('预设案例').selectOption('mixed-vertical')
+  await expect(page.getByRole('button', { pressed: true })).toHaveCount(0)
+  await page.getByRole('button', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
+  await expect(page.getByRole('region', { name: '精确详情' })).toContainText('(1/2, 4)')
+  await page.getByLabel('预设案例').selectOption('empty')
+  await expect(page.getByText('没有相交配对', { exact: true })).toBeVisible()
+  await expect(page.getByRole('img', { name: /^交集 / })).toHaveCount(0)
+})
