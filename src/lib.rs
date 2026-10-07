@@ -34,6 +34,9 @@ use std::collections::{BTreeMap, BTreeSet};
 mod brute_force;
 pub use brute_force::brute_force_intersections;
 
+mod validation;
+pub use validation::{DuplicatePair, GeometryMismatch, ValidationReport, validate_intersections};
+
 /// Arbitrary-precision rational coordinates; no floating-point approximation.
 pub use num_rational::BigRational as Rational;
 

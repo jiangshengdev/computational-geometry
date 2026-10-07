@@ -38,6 +38,8 @@ fn reports_an_exact_fractional_crossing_with_original_input_indices() {
             },
         },
     ];
+    let report = computational_geometry::validate_intersections(&segments);
+    assert!(report.is_consistent(), "{report:?}");
     assert_eq!(
         computational_geometry::brute_force_intersections(&segments),
         vec![Intersection {
@@ -94,6 +96,8 @@ fn normalized(geometry: Geometry) -> Geometry {
 }
 
 fn results(segments: &[Segment]) -> PairResults {
+    let report = computational_geometry::validate_intersections(segments);
+    assert!(report.is_consistent(), "{report:?}");
     let pairs = collect_results(segments.len(), intersections(segments));
     assert_eq!(
         pairs,
