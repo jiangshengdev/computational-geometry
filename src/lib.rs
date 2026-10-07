@@ -183,11 +183,40 @@ pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
 /// when requested; ordinary intersection callers retain the same algorithm.
 pub(crate) struct SweepStep {
     pub phase: &'static str,
+    pub action: &'static str,
+    pub subjects: Vec<usize>,
     pub current: Option<Point>,
     pub pending: Vec<Point>,
     pub active: Vec<usize>,
     pub results: Vec<Intersection>,
     pub checked: Vec<[usize; 2]>,
+}
+
+impl SweepStep {
+    fn capture(
+        action: &'static str,
+        current: Option<&Point>,
+        queue: &BTreeMap<Point, Event>,
+        active: &[usize],
+        results: &[Intersection],
+        checked: &[[usize; 2]],
+        subjects: &[usize],
+    ) -> Self {
+        Self {
+            phase: match action {
+                "initial" => "initial",
+                "complete" => "processed",
+                _ => "processing",
+            },
+            action,
+            subjects: subjects.to_vec(),
+            current: current.cloned(),
+            pending: queue.keys().cloned().collect(),
+            active: active.to_vec(),
+            results: results.to_vec(),
+            checked: checked.to_vec(),
+        }
+    }
 }
 
 pub(crate) struct SweepTrace {
@@ -222,37 +251,36 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
     let mut active: Vec<usize> = Vec::new();
     let mut result = Vec::new();
     if let Some(steps) = &mut steps {
-        steps.push(SweepStep {
-            phase: "initial",
-            current: None,
-            pending: queue.keys().cloned().collect(),
-            active: Vec::new(),
-            results: Vec::new(),
-            checked: Vec::new(),
-        });
+        steps.push(SweepStep::capture(
+            "initial",
+            None,
+            &queue,
+            &active,
+            &result,
+            &[],
+            &[],
+        ));
     }
     while let Some((point, event)) = queue.pop_first() {
         if let Some(steps) = &mut steps {
-            steps.push(SweepStep {
-                phase: "processing",
-                current: Some(point.clone()),
-                pending: queue.keys().cloned().collect(),
-                active: active.clone(),
-                results: result.clone(),
-                checked: Vec::new(),
-            });
+            steps.push(SweepStep::capture(
+                "take",
+                Some(&point),
+                &queue,
+                &active,
+                &result,
+                &[],
+                &[],
+            ));
         }
         let mut incident = event.starts;
         // Every active segment spans the current x. Recover the whole equal-y
         // block, including unscheduled participants in a multiway crossing.
-        active.retain(|&id| {
+        for &id in &active {
             if segments[id].y_at(&point.x) == point.y {
                 incident.push(id);
-                false
-            } else {
-                true
             }
-        });
+        }
         for (i, &a) in incident.iter().enumerate() {
             for &b in &incident[i + 1..] {
                 let original = |p: &Point| Point {
@@ -283,8 +311,40 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
                     segments: [a.min(b), a.max(b)],
                     geometry,
                 });
+                if let Some(steps) = &mut steps {
+                    steps.push(SweepStep::capture(
+                        "record",
+                        Some(&point),
+                        &queue,
+                        &active,
+                        &result,
+                        &[],
+                        &[a, b],
+                    ));
+                }
             }
         }
+        if let Some(steps) = &mut steps {
+            let removed: Vec<_> = active
+                .iter()
+                .copied()
+                .filter(|&id| segments[id].right == point)
+                .collect();
+            if !removed.is_empty() {
+                active.retain(|&id| segments[id].right != point);
+                steps.push(SweepStep::capture(
+                    "remove",
+                    Some(&point),
+                    &queue,
+                    &active,
+                    &result,
+                    &[],
+                    &removed,
+                ));
+            }
+        }
+        let previous_order = steps.as_ref().map(|_| active.clone());
+        active.retain(|&id| segments[id].y_at(&point.x) != point.y);
         incident.retain(|&id| segments[id].right != point);
         incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));
         // Equal-x events at different y remain separate. At the current y,
@@ -293,36 +353,89 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
         let position = active.partition_point(|&id| segments[id].y_at(&point.x) < point.y);
         let inserted = incident.len();
         active.splice(position..position, incident);
-        let mut checked = Vec::new();
-        if position > 0 {
-            schedule_neighbors(
-                &active,
-                position - 1,
-                &segments,
-                &point,
-                &mut queue,
-                &mut checked,
-            );
+        if let Some(steps) = &mut steps {
+            let previous_order = previous_order
+                .as_ref()
+                .expect("tracing captures the previous order");
+            let added: Vec<_> = active
+                .iter()
+                .copied()
+                .filter(|&id| segments[id].left == point)
+                .collect();
+            if !added.is_empty() {
+                steps.push(SweepStep::capture(
+                    "insert",
+                    Some(&point),
+                    &queue,
+                    &active,
+                    &result,
+                    &[],
+                    &added,
+                ));
+            }
+            let continuing: Vec<_> = active
+                .iter()
+                .copied()
+                .filter(|id| previous_order.contains(id))
+                .collect();
+            if &continuing != previous_order {
+                steps.push(SweepStep::capture(
+                    "reorder",
+                    Some(&point),
+                    &queue,
+                    &active,
+                    &result,
+                    &[],
+                    &active[position..position + inserted],
+                ));
+            }
         }
-        if inserted > 0 {
-            schedule_neighbors(
-                &active,
-                position + inserted - 1,
-                &segments,
-                &point,
-                &mut queue,
-                &mut checked,
-            );
+        let mut checked = Vec::new();
+        let boundaries = [
+            position.checked_sub(1),
+            (inserted > 0).then(|| position + inserted - 1),
+        ];
+        for lower in boundaries.into_iter().flatten() {
+            let Some(neighbors) = active.get(lower..lower + 2) else {
+                continue;
+            };
+            if let Some(steps) = &mut steps {
+                steps.push(SweepStep::capture(
+                    "check",
+                    Some(&point),
+                    &queue,
+                    &active,
+                    &result,
+                    &[[neighbors[0], neighbors[1]]],
+                    neighbors,
+                ));
+            }
+            let pending_count = queue.len();
+            schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);
+            if let Some(steps) = &mut steps {
+                if queue.len() > pending_count {
+                    steps.push(SweepStep::capture(
+                        "discover",
+                        Some(&point),
+                        &queue,
+                        &active,
+                        &result,
+                        &[[neighbors[0], neighbors[1]]],
+                        neighbors,
+                    ));
+                }
+            }
         }
         if let Some(steps) = &mut steps {
-            steps.push(SweepStep {
-                phase: "processed",
-                current: Some(point),
-                pending: queue.keys().cloned().collect(),
-                active: active.clone(),
-                results: result.clone(),
-                checked,
-            });
+            steps.push(SweepStep::capture(
+                "complete",
+                Some(&point),
+                &queue,
+                &active,
+                &result,
+                &checked,
+                &[],
+            ));
         }
     }
     result

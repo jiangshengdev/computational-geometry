@@ -26,7 +26,18 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
     await expect(current).toContainText(events[i])
     await expect(current).toContainText('处理中')
     await expect(queue).not.toContainText(events[i])
-    await next.click()
+    let sawDiscovery = false
+    let sawReorder = false
+    do {
+      await next.click()
+      const text = await explanation.innerText()
+      if (text.includes('发现未来交点')) {
+        sawDiscovery = true
+        await expect(explanation).toContainText('S0 × S1')
+        await expect(queue).toContainText('I0 (2, 2)')
+      }
+      if (text.includes('换序为')) sawReorder = true
+    } while (!(await current.innerText()).includes('处理完成'))
     await expect(current).toContainText('处理完成')
     await expect(active.getByTestId('active-order')).toHaveText(orders[i])
     const x = i < 2 ? '0' : i === 2 ? '2' : '4'
@@ -41,12 +52,11 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
     snapshots.push(await page.getByRole('region', { name: '逐步学习' }).innerText())
     if (i === 1) {
       await expect(queue).toContainText('I0 (2, 2)')
-      await expect(explanation).toContainText('S0 × S1')
-      await expect(explanation).toContainText('发现')
+      expect(sawDiscovery).toBe(true)
       await expect(page.getByRole('img', { name: '已发现 I0 (2, 2)' })).toBeVisible()
     }
     if (i === 2) {
-      await expect(explanation).toContainText('换序')
+      expect(sawReorder).toBe(true)
       await expect(page.getByRole('img', { name: '交集 S0 × S1' })).toBeVisible()
     }
   }
@@ -60,7 +70,7 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   await expect(next).toBeEnabled()
   for (const snapshot of snapshots) {
     await next.click()
-    await next.click()
+    do { await next.click() } while (!(await current.innerText()).includes('处理完成'))
     expect(await page.getByRole('region', { name: '逐步学习' }).innerText()).toBe(snapshot)
   }
 })
@@ -78,7 +88,7 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
     await next.click()
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText(events[i])
     await expect(queue).not.toContainText(events[i])
-    await next.click()
+    do { await next.click() } while (!(await page.getByRole('region', { name: '当前事件' }).innerText()).includes('处理完成'))
     await expect(active).toHaveText(orders[i])
     await expect(queue).not.toContainText('I0')
     await expect(page.getByRole('img', { name: /交集 S/ })).toHaveCount(0)
@@ -105,7 +115,9 @@ test('入门学习：桌面与手机的图形、队列、操作解释同步且�
     await expect(page).toHaveTitle('BO 结果查看器')
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     await page.getByRole('button', { name: '开始逐步学习' }).click()
-    for (let i = 0; i < 4; i++) await page.getByRole('button', { name: '下一步', exact: true }).click()
+    do {
+      await page.getByRole('button', { name: '下一步', exact: true }).click()
+    } while (!(await page.getByRole('region', { name: '操作解释' }).innerText()).includes('发现未来交点'))
     await expect(page.getByRole('region', { name: '操作解释' })).toContainText('发现未来交点 I0 (2, 2)')
     const diagram = page.getByRole('region', { name: '几何视图' })
     const crossing = page.getByRole('img', { name: '已发现 I0 (2, 2)' }).locator('circle')

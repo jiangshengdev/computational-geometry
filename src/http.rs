@@ -54,6 +54,8 @@ struct TraceDto {
 #[derive(Serialize)]
 struct StepDto {
     phase: &'static str,
+    action: &'static str,
+    subjects: Vec<usize>,
     current: Option<PointDto>,
     pending: Vec<PointDto>,
     active: Vec<usize>,
@@ -70,6 +72,8 @@ impl From<SweepTrace> for TraceDto {
                 .into_iter()
                 .map(|step| StepDto {
                     phase: step.phase,
+                    action: step.action,
+                    subjects: step.subjects,
                     current: step.current.map(PointDto::from),
                     pending: step.pending.into_iter().map(PointDto::from).collect(),
                     active: step.active,

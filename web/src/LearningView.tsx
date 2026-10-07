@@ -41,13 +41,12 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   }
   const discovered = step.pending.filter(p => points.some(point => samePoint(point, p)))
   const newlyScheduled = discovered.filter(p => !before.pending.some(old => samePoint(old, p)))
-  const added = step.active.filter(id => !before.active.includes(id))
-  const removed = before.active.filter(id => !step.active.includes(id))
-  const crossing = step.current && points.some(p => samePoint(p, step.current!))
+  const subjects = step.subjects.map(id => `S${id}`).join(' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="flex flex-col gap-4">
     <div className="flex flex-wrap items-center gap-3">
       <Badge variant="secondary">{complete ? '学习完成' : phase} · {index} / {trace.steps.length - 1}</Badge>
+      <Button variant="outline" onClick={() => setIndex(i => i - 1)} disabled={index === 0}>上一步</Button>
       <Button onClick={() => setIndex(i => i + 1)} disabled={complete}>下一步</Button>
       <Button variant="outline" onClick={() => { setIndex(0); setRun(r => r + 1) }}>重新开始</Button>
     </div>
@@ -67,7 +66,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
         </Card></section>
         <section aria-label="活动线段顺序"><Card>
           <CardHeader><CardTitle><h2>活动线段顺序</h2></CardTitle></CardHeader>
-          <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">从下到上 · {step.phase === 'processing' ? '尚未更新，保留该事件处理前顺序' : '当前已处理事件之后的顺序'}</p>
+          <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">从下到上 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
             <p data-testid="active-order">{step.active.map(id => `S${id}`).join(' → ') || '空'}</p>
           </CardContent>
         </Card></section>
@@ -76,14 +75,15 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     <section aria-label="操作解释" aria-live="polite"><Card>
       <CardHeader><CardTitle><h2>这一步为什么这样做？</h2></CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2">
-        {step.phase === 'initial' ? <p>先把所有端点放入事件队列。交点尚未被发现，不预先加入；活动顺序为空。点击下一步，从队首取出最早事件。</p>
-          : step.phase === 'processing' ? <p>从队首取出 {pointName(step.current!)}，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>
-            : <>
-              {added.map(id => <p key={`add-${id}`}>加入 S{id}：扫描线到达其起点，此后它参与活动顺序。</p>)}
-              {removed.map(id => <p key={`remove-${id}`}>退出 S{id}：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。</p>)}
-              {crossing && <p>记录 {pointName(step.current!)}，参与线段 S0 × S1 在这里交叉。换序为 S1 → S0：刚过交点，S1 在下、S0 在上，维护事件右侧的上下顺序。</p>}
-              {step.checked.length ? step.checked.map(pair => <p key={pair.join('-')}>检查相邻线段 {pair.map(id => `S${id}`).join(' × ')}：{newlyScheduled.length ? `发现未来交点 ${newlyScheduled.map(pointName).join('、')}，加入队列，等扫描线到达再记录结果。` : '没有需要加入队列的未来交点。'}</p>) : <p>没有需要检查的新相邻配对；活动顺序和待处理队列保持一致。</p>}
-            </>}
+        {step.action === 'initial' && <p>先把所有端点放入事件队列。交点尚未被发现，不预先加入；活动顺序为空。点击下一步，从队首取出最早事件。</p>}
+        {step.action === 'take' && <p>从队首取出 {pointName(step.current!)}，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
+        {step.action === 'insert' && <p>加入 {subjects}：扫描线到达其起点，此后它参与活动顺序。接下来检查新邻居是否会在未来相交。</p>}
+        {step.action === 'remove' && <p>退出 {subjects}：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。</p>}
+        {step.action === 'record' && <p>记录 {pointName(step.current!)}：参与线段 {subjects} 在这里交叉。交集已记入结果，活动顺序尚未换序。</p>}
+        {step.action === 'reorder' && <p>换序为 {step.active.map(id => `S${id}`).join(' → ')}：刚过交点，按事件右侧从下到上的顺序排列，再检查新邻居。</p>}
+        {step.action === 'check' && <p>检查相邻线段 {subjects}：加入、退出或换序后只需检查新邻居。此步选定检查配对，未来交点尚未加入队列。</p>}
+        {step.action === 'discover' && <p>发现未来交点 {newlyScheduled.map(pointName).join('、')}：检查 {subjects} 的精确交集后加入队列，等扫描线到达再记录结果。</p>}
+        {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{before.action === 'check' ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
       </CardContent>
     </Card></section>
     {complete && <section aria-label="学习结果"><Card>

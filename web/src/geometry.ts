@@ -6,6 +6,8 @@ export interface Intersection { segments: [number, number]; geometry: Geometry }
 export interface Preset { id: string; name: string; description: string; segments: Segment[] }
 export interface SweepStep {
   phase: 'initial' | 'processing' | 'processed'
+  action: 'initial' | 'take' | 'insert' | 'remove' | 'record' | 'reorder' | 'check' | 'discover' | 'complete'
+  subjects: number[]
   current: Point | null
   pending: Point[]
   active: number[]
