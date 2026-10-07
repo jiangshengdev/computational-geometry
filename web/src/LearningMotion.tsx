@@ -1,17 +1,5 @@
-import { useSyncExternalStore, type ReactNode, type Ref } from 'react'
+import { type ReactNode, type Ref } from 'react'
 import { motion, useIsPresent, usePresenceData } from 'motion/react'
-
-const reducedMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
-const subscribeReducedMotion = (notify: () => void) => {
-  reducedMotionPreference.addEventListener('change', notify)
-  return () => reducedMotionPreference.removeEventListener('change', notify)
-}
-const readReducedMotion = () => reducedMotionPreference.matches
-
-// Motion 14's useReducedMotion only reads the initial setting.
-export function useLearningReducedMotion() {
-  return useSyncExternalStore(subscribeReducedMotion, readReducedMotion)
-}
 
 export function LearningRow({ as = 'li', identity, existed, children, ref, ...hover }: {
   as?: 'li' | 'p'

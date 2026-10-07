@@ -6,7 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Slider } from 'radix-ui'
 import { hoverHighlights, type HoverTarget } from './hover'
 import { AnimatePresence, LayoutGroup } from 'motion/react'
-import { LearningRow, useLearningReducedMotion } from './LearningMotion'
+import { LearningRow } from './LearningMotion'
+import { useLearningReducedMotion } from './useLearningReducedMotion'
 
 export function LearningIntroduction() {
   return <details className="my-4"><summary className="cursor-pointer">学习目标、术语与扫描约定</summary>
