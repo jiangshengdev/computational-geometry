@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { scaleLinear, select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { approximate, formatRational, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
 import { Button } from '@/components/ui/button'
@@ -37,6 +37,29 @@ export function GeometryView({ segments, results, selected, sweep }: Props) {
   const ordered = segments.map((s, index) => ({ s, index }))
     .sort((a, b) => Number(selected?.segments.includes(a.index)) - Number(selected?.segments.includes(b.index)))
   const resultOrder = results.filter(r => r !== selected).concat(selected ? [selected] : [])
+
+  useLayoutEffect(() => {
+    const element = svg.current!
+    const labels = Array.from(element.querySelectorAll<SVGTextElement>('text:not(.tick)'))
+    // Measure the rendered font, including selection weight, in the shared SVG coordinates.
+    for (const label of labels) label.removeAttribute('transform')
+    const boxes = labels.map(label => label.getBBox())
+    const occupied = Array.from(element.querySelectorAll<SVGTextElement>('.tick'), tick => tick.getBBox())
+    const gap = 6 // Includes the white outline and space between adjacent labels.
+    labels.forEach((label, index) => {
+      const box = boxes[index]
+      let top = box.y
+      let collisions
+      do {
+        collisions = occupied.filter(other =>
+          box.x < other.x + other.width + gap && box.x + box.width + gap > other.x &&
+          top < other.y + other.height + gap && top + box.height + gap > other.y)
+        if (collisions.length) top = Math.min(...collisions.map(other => other.y)) - box.height - gap
+      } while (collisions.length)
+      label.setAttribute('transform', `translate(0, ${top - box.y})`)
+      occupied.push(new DOMRect(box.x, top, box.width, box.height))
+    })
+  })
 
   return <section className="drawing" aria-label="几何视图"><Card className="gap-0 overflow-hidden py-0">
     <CardHeader className="drawing-toolbar"><CardTitle><h2>原始坐标平面 · 等比例</h2></CardTitle><div className="flex gap-2">
