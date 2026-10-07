@@ -1,12 +1,12 @@
-import { Fragment, useEffect, useEffectEvent, useState } from 'react'
+import { Fragment, useEffect, useEffectEvent, useId, useState } from 'react'
 import { GeometryView } from './GeometryView'
 import { formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Slider } from 'radix-ui'
 import { hoverHighlights, type HoverTarget } from './hover'
-import { AnimatePresence, LayoutGroup, useReducedMotion } from 'motion/react'
-import { LearningRow } from './LearningMotion'
+import { AnimatePresence, LayoutGroup } from 'motion/react'
+import { LearningRow, useLearningReducedMotion } from './LearningMotion'
 
 export function LearningIntroduction() {
   return <details className="my-4"><summary className="cursor-pointer">学习目标、术语与扫描约定</summary>
@@ -33,7 +33,8 @@ export function LearningReferences() {
 export function LearningView({ preset, trace, results }: { preset: Preset; trace: SweepTrace; results: Intersection[] }) {
   const [navigation, setNavigation] = useState({ index: 0, from: 0, reset: 0 })
   const { index } = navigation
-  const reducedMotion = useReducedMotion()
+  const reducedMotion = useLearningReducedMotion()
+  const animationId = useId()
   const [run, setRun] = useState(0)
   const [hover, setHover] = useState<HoverTarget | null>(null)
   const highlights = hover ? hoverHighlights(hover, []) : null
@@ -119,7 +120,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
         highlights={highlights} onHover={setHover}
         sweep={{ current: step.current, active: step.active, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
-      <LayoutGroup key={`${navigation.reset}:${reducedMotion}`}>
+      <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="flex min-w-0 flex-col gap-4">
         <section aria-label="当前事件"><Card>
           <CardHeader><CardTitle><h2>当前事件</h2></CardTitle></CardHeader>
