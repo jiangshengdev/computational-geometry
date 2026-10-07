@@ -42,7 +42,7 @@ export function GeometryView({ segments, results, selected }: Props) {
           const active = selected?.segments.includes(index) ?? false
           return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${active ? 'selected' : ''}`}>
             {samePoint(s.start, s.end)
-              ? <path d={`M${px(s.start)},${py(s.start) - 7} l7,7 l-7,7 l-7,-7 Z`} />
+              ? <path d={`M${px(s.start)},${py(s.start) - 11} l11,11 l-11,11 l-11,-11 Z`} />
               : <line x1={px(s.start)} y1={py(s.start)} x2={px(s.end)} y2={py(s.end)} />}
             <text x={px(s.start) + 9} y={py(s.start) - 10}>S{index}</text>
           </g>
