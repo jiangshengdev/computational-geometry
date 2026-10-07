@@ -121,8 +121,8 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
         </Card></section>
         <section aria-label="活动线段顺序"><Card>
           <CardHeader><CardTitle><h2>活动线段顺序</h2></CardTitle></CardHeader>
-          <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">从下到上 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
-            <div data-testid="active-order">{step.active.length ? <ol className="flex list-inside list-decimal flex-col gap-2">
+          <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">序号从下到上递增 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
+            <div data-testid="active-order">{step.active.length ? <ol className="flex list-inside list-decimal flex-col-reverse gap-2">
               {step.active.map(id => <li key={id} className="coordinates learning-hover-item" {...inputProps(id)}>S{id}</li>)}
             </ol> : <p>空</p>}</div>
           </CardContent>

@@ -262,7 +262,7 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   await expect(order.getByRole('listitem')).toHaveText(['S0', 'S1'])
   const firstRow = (await order.getByRole('listitem').nth(0).boundingBox())!
   const secondRow = (await order.getByRole('listitem').nth(1).boundingBox())!
-  expect(secondRow.y).toBeGreaterThanOrEqual(firstRow.y + firstRow.height)
+  expect(firstRow.y).toBeGreaterThanOrEqual(secondRow.y + secondRow.height)
   const segment = page.getByRole('img', { name: '输入 S1', exact: true })
   const line = segment.locator('line')
   const originalStroke = await line.evaluate(e => getComputedStyle(e).strokeWidth)
