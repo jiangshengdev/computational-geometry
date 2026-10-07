@@ -4,6 +4,7 @@ import { formatPoint, pairName, samePoint, type Intersection, type Point, type P
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Slider } from 'radix-ui'
 
 export function LearningIntroduction() {
   return <section aria-label="学习目标" className="my-6 flex flex-col gap-3">
@@ -49,6 +50,18 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       <Button variant="outline" onClick={() => setIndex(i => i - 1)} disabled={index === 0}>上一步</Button>
       <Button onClick={() => setIndex(i => i + 1)} disabled={complete}>下一步</Button>
       <Button variant="outline" onClick={() => { setIndex(0); setRun(r => r + 1) }}>重新开始</Button>
+    </div>
+    <div className="flex flex-col gap-2">
+      <span className="text-sm text-muted-foreground">拖动浏览教学步骤 · {index} / {trace.steps.length - 1}</span>
+      <Slider.Root min={0} max={trace.steps.length - 1} step={1} value={[index]}
+        onValueChange={([value]) => setIndex(value)}
+        className="relative flex h-8 w-full touch-none select-none items-center">
+        <Slider.Track className="relative h-1.5 grow overflow-hidden rounded-full bg-muted">
+          <Slider.Range className="absolute h-full bg-primary" />
+        </Slider.Track>
+        <Slider.Thumb aria-label="教学步骤" aria-valuetext={`第 ${index} 步，共 ${trace.steps.length - 1} 步`}
+          className="block size-5 shrink-0 rounded-full border border-primary bg-background shadow-sm ring-ring/50 hover:ring-4 focus-visible:outline-hidden focus-visible:ring-4" />
+      </Slider.Root>
     </div>
     <div className="workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
