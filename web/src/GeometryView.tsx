@@ -6,22 +6,26 @@ interface Props { segments: Segment[]; results: Intersection[]; selected: Inters
 
 export function GeometryView({ segments, results, selected }: Props) {
   const svg = useRef<SVGSVGElement>(null)
+  const [width, setWidth] = useState(800)
+  const height = 460
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity)
   const behavior = useRef(zoom<SVGSVGElement, unknown>().scaleExtent([0.25, 40]))
   const points = segments.flatMap(s => [s.start, s.end])
   const xs = points.map(p => approximate(p.x)), ys = points.map(p => approximate(p.y))
   const minX = Math.min(0, ...xs), maxX = Math.max(1, ...xs)
   const minY = Math.min(0, ...ys), maxY = Math.max(1, ...ys)
-  const unit = Math.min(660 / (maxX - minX), 380 / (maxY - minY))
-  const x = scaleLinear().domain([minX, maxX]).range([400 - (maxX - minX) * unit / 2, 400 + (maxX - minX) * unit / 2])
-  const y = scaleLinear().domain([minY, maxY]).range([250 + (maxY - minY) * unit / 2, 250 - (maxY - minY) * unit / 2])
+  const unit = Math.min((width - 100) / (maxX - minX), (height - 100) / (maxY - minY))
+  const x = scaleLinear().domain([minX, maxX]).range([width / 2 - (maxX - minX) * unit / 2, width / 2 + (maxX - minX) * unit / 2])
+  const y = scaleLinear().domain([minY, maxY]).range([height / 2 + (maxY - minY) * unit / 2, height / 2 - (maxY - minY) * unit / 2])
   const px = (p: Point) => x(approximate(p.x)), py = (p: Point) => y(approximate(p.y))
 
   useEffect(() => {
     const element = svg.current!
     behavior.current.on('zoom', event => setTransform(event.transform))
     select(element).call(behavior.current)
-    return () => { select(element).on('.zoom', null) }
+    const observer = new ResizeObserver(entries => setWidth(entries[0].contentRect.width))
+    observer.observe(element)
+    return () => { select(element).on('.zoom', null); observer.disconnect() }
   }, [])
 
   const ordered = segments.map((s, index) => ({ s, index }))
@@ -34,10 +38,10 @@ export function GeometryView({ segments, results, selected }: Props) {
       <button onClick={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小">−</button>
       <button onClick={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}>重置视图</button>
     </div></div>
-    <svg ref={svg} viewBox="0 0 800 500" aria-label="输入与交集坐标图" role="img">
+    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img">
       <g transform={transform.toString()}>
-        {x.ticks(8).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={480} /><text className="tick" x={x(t)} y={490}>{t}</text></g>)}
-        {y.ticks(6).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={780} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
+        {x.ticks(Math.max(2, Math.floor(width / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
+        {y.ticks(6).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
         {ordered.map(({ s, index }) => {
           const active = selected?.segments.includes(index) ?? false
           return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${active ? 'selected' : ''}`}>
