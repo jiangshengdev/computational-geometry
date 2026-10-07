@@ -1,8 +1,8 @@
-//! Exact Bentley–Ottmann intersections of nonzero, nonoverlapping segments.
+//! Exact Bentley–Ottmann intersections of nonzero segments.
 //!
 //! Endpoint contacts, multiway crossings, vertical segments and distinct events
-//! at the same sweep coordinate are supported. Zero-length inputs and positive-
-//! length overlaps remain outside this increment and return an error. Empty and
+//! at the same sweep coordinate are supported, including positive-length
+//! overlaps and duplicate inputs. Zero-length inputs still return an error. Empty and
 //! singleton collections are supported within this domain. These restrictions
 //! do not remove the remaining capabilities from the eventual #8 scope.
 //!
@@ -10,12 +10,16 @@
 //! sweep coordinates; s is chosen from input directions, without enumerating
 //! intersections. Point events are ordered lexicographically and group all
 //! incident segments. Only adjacent active segments schedule future crossings;
-//! pair enumeration is confined to emitting the actual pairs at one event.
+//! pair enumeration is confined to segments incident at one event. Overlapping
+//! pairs emit their full interval at its beginning, never fragments at later
+//! endpoints or crossings. Coincident active segments retain separate identities.
 //!
-//! With n inputs and k intersecting pairs, there are O(n + k) events. Shear
-//! selection costs O(n log(n + 1)); the vector status scans and updates cost
-//! O((n + k) * n), incident-block sorting costs O((n + k) * log(n + 1)), and
-//! queue work costs O((n + k) * log(n + k + 1)). Emitting pairs costs O(k).
+//! With n inputs and k intersecting pairs, the number of events E is O(n + k).
+//! Shear selection costs O(n log(n + 1)); vector status scans and updates cost
+//! O(E*n), incident-block sorting costs O(E*n*log(n + 1)), and queue work costs
+//! O(E*log(E + 1)). For m incident segments, each event inspects O(m*m) pairs;
+//! overlapping pairs can be inspected at multiple events, so the conservative
+//! total bound for these inspections is O(E*n*n), not O(k). There are k outputs.
 //! Storage is O(n + k), including the output. These operation counts exclude the
 //! cost of arbitrary-precision rational arithmetic and comparisons, which
 //! depends on operand bit lengths; this is not an O((n + k) log n) claim.
@@ -45,16 +49,27 @@ pub struct Segment {
 pub struct Intersection {
     /// Indices into the input slice, in increasing order.
     pub segments: [usize; 2],
-    pub point: Point,
+    pub geometry: Geometry,
 }
 
-/// A zero-length input or a positive-length overlap, not yet supported.
+/// The complete mathematical intersection of a pair of closed segments.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Geometry {
+    Point(Point),
+    /// A nonzero closed interval. Endpoint presentation order is not a contract.
+    Overlap {
+        start: Point,
+        end: Point,
+    },
+}
+
+/// A zero-length input, not yet supported.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct UnsupportedDegeneracy;
 
 impl fmt::Display for UnsupportedDegeneracy {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("zero-length inputs and positive-length overlaps are not yet supported")
+        f.write_str("zero-length inputs are not yet supported")
     }
 }
 
@@ -148,7 +163,7 @@ fn schedule_neighbors(
     }
 }
 
-/// Return every intersecting input pair with its exact crossing point.
+/// Return every intersecting input pair with its exact point or full overlap.
 ///
 /// Input identity is the index in `segments`; results contain each unordered
 /// pair once. Result order is not part of the contract. Coordinates must be
@@ -186,23 +201,38 @@ pub fn intersections(segments: &[Segment]) -> Result<Vec<Intersection>, Unsuppor
         });
         for (i, &a) in incident.iter().enumerate() {
             for &b in &incident[i + 1..] {
+                let original = |p: &Point| Point {
+                    x: &p.x - &shear * &p.y,
+                    y: p.y.clone(),
+                };
+                let geometry = if segments[a].slope == segments[b].slope {
+                    // Incident segments with equal slopes lie on the same line.
+                    // Emit exactly at the later start, using both original ends
+                    // rather than the next event (which may involve a third input).
+                    let start = (&segments[a].left).max(&segments[b].left);
+                    if start != &point {
+                        continue;
+                    }
+                    let end = (&segments[a].right).min(&segments[b].right);
+                    if start < end {
+                        Geometry::Overlap {
+                            start: original(start),
+                            end: original(end),
+                        }
+                    } else {
+                        Geometry::Point(original(start))
+                    }
+                } else {
+                    Geometry::Point(original(&point))
+                };
                 result.push(Intersection {
                     segments: [a.min(b), a.max(b)],
-                    point: Point {
-                        x: &point.x - &shear * &point.y,
-                        y: point.y.clone(),
-                    },
+                    geometry,
                 });
             }
         }
         incident.retain(|&id| segments[id].right != point);
         incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));
-        if incident
-            .windows(2)
-            .any(|pair| segments[pair[0]].slope == segments[pair[1]].slope)
-        {
-            return Err(UnsupportedDegeneracy);
-        }
         // Equal-x events at different y remain separate. At the current y,
         // ascending slope is the order immediately after this event; other
         // equal-y blocks keep their pre-event order until their own event.

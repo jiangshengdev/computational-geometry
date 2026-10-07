@@ -1,4 +1,4 @@
-use computational_geometry::{Intersection, Point, Rational, Segment, intersections};
+use computational_geometry::{Geometry, Intersection, Point, Rational, Segment, intersections};
 use std::collections::{BTreeMap, BTreeSet};
 
 fn rational(numerator: i64, denominator: i64) -> Rational {
@@ -42,10 +42,10 @@ fn reports_an_exact_fractional_crossing_with_original_input_indices() {
         intersections(&segments).unwrap(),
         vec![Intersection {
             segments: [0, 1],
-            point: Point {
+            geometry: Geometry::Point(Point {
                 x: rational(7, 3),
                 y: rational(2, 1)
-            },
+            }),
         }]
     );
 }
@@ -57,7 +57,31 @@ fn segment(x1: i64, y1: i64, x2: i64, y2: i64) -> Segment {
     }
 }
 
-type PairResults = BTreeMap<[usize; 2], Point>;
+type PairResults = BTreeMap<[usize; 2], Geometry>;
+
+fn point_intersections(entries: impl IntoIterator<Item = ([usize; 2], Point)>) -> PairResults {
+    entries
+        .into_iter()
+        .map(|(pair, p)| (pair, Geometry::Point(p)))
+        .collect()
+}
+
+fn normalized(geometry: Geometry) -> Geometry {
+    match geometry {
+        Geometry::Overlap { start, end } => {
+            assert_ne!(start, end, "overlap must have positive length");
+            if start < end {
+                Geometry::Overlap { start, end }
+            } else {
+                Geometry::Overlap {
+                    start: end,
+                    end: start,
+                }
+            }
+        }
+        point => point,
+    }
+}
 
 fn results(segments: &[Segment]) -> PairResults {
     let mut pairs = BTreeMap::new();
@@ -68,7 +92,9 @@ fn results(segments: &[Segment]) -> PairResults {
             "invalid original input indices"
         );
         assert!(
-            pairs.insert([a, b], intersection.point).is_none(),
+            pairs
+                .insert([a, b], normalized(intersection.geometry))
+                .is_none(),
             "duplicate unordered pair"
         );
     }
@@ -93,7 +119,7 @@ fn discovers_initially_nonadjacent_pairs_after_successive_crossings() {
             },
         },
     ];
-    let expected = BTreeMap::from([
+    let expected = point_intersections([
         (
             [0, 2],
             Point {
@@ -121,7 +147,10 @@ fn discovers_a_crossing_after_the_separating_segment_ends() {
         segment(1, 1, 3, 1),
         segment(2, 4, 9, -3),
     ];
-    assert_eq!(results(&segments), BTreeMap::from([([0, 2], point(6, 0))]));
+    assert_eq!(
+        results(&segments),
+        point_intersections([([0, 2], point(6, 0))])
+    );
 }
 
 #[test]
@@ -164,15 +193,21 @@ fn oracle(segments: &[Segment]) -> Option<PairResults> {
             if determinant == zero {
                 if cross(&qx, &qy, &rx, &ry) == zero {
                     // Lexicographic projection preserves order on any line,
-                    // including a vertical one. Only a single-point overlap is
-                    // in this increment's domain; positive length is rejected.
+                    // including a vertical one. Preserve the complete pairwise
+                    // interval independently of all other input segments.
                     let low = (&a.start).min(&a.end).max((&b.start).min(&b.end));
                     let high = (&a.start).max(&a.end).min((&b.start).max(&b.end));
                     if low < high {
-                        return None;
+                        expected.insert(
+                            [i, j],
+                            Geometry::Overlap {
+                                start: low.clone(),
+                                end: high.clone(),
+                            },
+                        );
                     }
                     if low == high {
-                        expected.insert([i, j], low.clone());
+                        expected.insert([i, j], Geometry::Point(low.clone()));
                     }
                 }
                 continue;
@@ -182,10 +217,10 @@ fn oracle(segments: &[Segment]) -> Option<PairResults> {
             if zero <= t && t <= one && zero <= u && u <= one {
                 expected.insert(
                     [i, j],
-                    Point {
+                    Geometry::Point(Point {
                         x: &a.start.x + &t * rx,
                         y: &a.start.y + &t * ry,
-                    },
+                    }),
                 );
             }
         }
@@ -279,7 +314,10 @@ fn small_generated_general_position_sets_match_an_independent_exact_oracle() {
             continue;
         }
         let expected = oracle(&segments).expect("general-position sample");
-        if !expected.values().all(|p| event_x.insert(p.x.clone())) {
+        if !expected.values().all(|geometry| match geometry {
+            Geometry::Point(p) => event_x.insert(p.x.clone()),
+            Geometry::Overlap { .. } => panic!("general-position sample cannot overlap"),
+        }) {
             continue;
         }
 
@@ -329,7 +367,7 @@ fn coordinates_and_intermediate_products_are_not_limited_to_machine_integers() {
     ];
     assert_eq!(
         results(&segments),
-        BTreeMap::from([(
+        point_intersections([(
             [0, 1],
             Point {
                 x: huge + rational(2, 1),
@@ -342,7 +380,6 @@ fn coordinates_and_intermediate_products_are_not_limited_to_machine_integers() {
 #[test]
 fn detected_unsupported_inputs_return_an_error_instead_of_a_partial_result() {
     assert!(intersections(&[segment(0, 0, 0, 0)]).is_err());
-    assert!(intersections(&[segment(0, 0, 4, 0), segment(2, 0, 6, 0)]).is_err());
 }
 
 #[test]
@@ -371,7 +408,7 @@ fn vertical_segments_cross_and_touch_at_exact_fractional_coordinates() {
         },
         segment(10, 0, 10, 1),
     ];
-    let expected = BTreeMap::from([
+    let expected = point_intersections([
         ([0, 1], at(0)),
         ([0, 2], at(1)),
         ([0, 3], at(3)),
@@ -393,7 +430,7 @@ fn groups_starts_ends_and_crossings_without_losing_earlier_or_later_pairs() {
         segment(0, 0, 5, 0),
         segment(-5, 1, 6, 1),
     ];
-    let expected = BTreeMap::from([
+    let expected = point_intersections([
         ([0, 1], point(0, 0)),
         ([0, 2], point(0, 0)),
         ([0, 3], point(0, 0)),
@@ -418,7 +455,7 @@ fn distinct_events_at_the_same_x_remain_separate_and_discover_future_crossings()
         segment(-1, 1, 3, 5),
         segment(-1, 3, 3, -1),
     ];
-    let expected = BTreeMap::from([
+    let expected = point_intersections([
         ([0, 1], point(0, -2)),
         ([2, 3], point(0, 2)),
         ([0, 3], point(2, 0)),
@@ -447,7 +484,7 @@ fn collinear_contacts_and_disjoint_segments_follow_closed_segment_semantics() {
             segment(3, 3, 4, 4),
         ],
     ] {
-        let expected = BTreeMap::from([([0, 1], point(0, 0))]);
+        let expected = point_intersections([([0, 1], point(0, 0))]);
         assert_eq!(results(&segments), expected);
         assert_eq!(oracle(&segments), Some(expected.clone()));
         assert_identity_invariance(&segments, &expected);
@@ -500,8 +537,7 @@ fn small_grid_sets_cover_varied_endpoint_and_crossing_degeneracies() {
         let segments: Vec<_> = (0..2 + case % 7)
             .map(|_| segment(next(), next(), next(), next()))
             .collect();
-        // Only exclude the two unsupported input classes, never equal-x events,
-        // verticals, contacts or multiway intersections.
+        // Only exclude zero-length inputs; overlap is now supported too.
         let Some(expected) = oracle(&segments) else {
             continue;
         };
@@ -513,5 +549,214 @@ fn small_grid_sets_cover_varied_endpoint_and_crossing_degeneracies() {
         assert_identity_invariance(&segments, &expected);
         accepted += 1;
     }
-    assert!(accepted > 100, "must exercise nonoverlapping grid sets");
+    assert!(accepted > 100, "must exercise nonzero grid sets");
+}
+
+#[test]
+fn nested_and_partial_overlaps_return_complete_pairwise_intervals() {
+    let segments = [
+        segment(0, 0, 6, 0),
+        segment(2, 0, 8, 0),
+        segment(3, 0, 4, 0),
+    ];
+    let expected = BTreeMap::from([
+        (
+            [0, 1],
+            Geometry::Overlap {
+                start: point(2, 0),
+                end: point(6, 0),
+            },
+        ),
+        (
+            [0, 2],
+            Geometry::Overlap {
+                start: point(3, 0),
+                end: point(4, 0),
+            },
+        ),
+        (
+            [1, 2],
+            Geometry::Overlap {
+                start: point(3, 0),
+                end: point(4, 0),
+            },
+        ),
+    ]);
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_identity_invariance(&segments, &expected);
+}
+
+#[test]
+fn duplicate_and_reverse_oriented_inputs_keep_three_independent_overlap_pairs() {
+    for (start, end) in [
+        (point(0, 0), point(5, 0)),
+        (point(2, -3), point(2, 4)),
+        (
+            Point {
+                x: rational(-1, 3),
+                y: rational(2, 5),
+            },
+            Point {
+                x: rational(7, 3),
+                y: rational(8, 5),
+            },
+        ),
+    ] {
+        let segments = [
+            Segment {
+                start: start.clone(),
+                end: end.clone(),
+            },
+            Segment {
+                start: end.clone(),
+                end: start.clone(),
+            },
+            Segment {
+                start: start.clone(),
+                end: end.clone(),
+            },
+        ];
+        let geometry = normalized(Geometry::Overlap { start, end });
+        let expected = BTreeMap::from([
+            ([0, 1], geometry.clone()),
+            ([0, 2], geometry.clone()),
+            ([1, 2], geometry),
+        ]);
+        assert_eq!(results(&segments), expected);
+        assert_eq!(oracle(&segments), Some(expected.clone()));
+        assert_identity_invariance(&segments, &expected);
+    }
+}
+
+#[test]
+fn crossing_and_boundary_contacts_preserve_the_full_overlap_intervals() {
+    let segments = [
+        segment(0, 0, 6, 0),
+        segment(2, 0, 8, 0),
+        segment(3, 0, 4, 0),
+        Segment {
+            start: Point {
+                x: rational(7, 2),
+                y: rational(-1, 1),
+            },
+            end: Point {
+                x: rational(7, 2),
+                y: rational(1, 1),
+            },
+        },
+        segment(2, -1, 2, 0),
+    ];
+    let mut expected = BTreeMap::from([
+        (
+            [0, 1],
+            Geometry::Overlap {
+                start: point(2, 0),
+                end: point(6, 0),
+            },
+        ),
+        (
+            [0, 2],
+            Geometry::Overlap {
+                start: point(3, 0),
+                end: point(4, 0),
+            },
+        ),
+        (
+            [1, 2],
+            Geometry::Overlap {
+                start: point(3, 0),
+                end: point(4, 0),
+            },
+        ),
+    ]);
+    expected.extend(point_intersections([
+        (
+            [0, 3],
+            Point {
+                x: rational(7, 2),
+                y: rational(0, 1),
+            },
+        ),
+        (
+            [1, 3],
+            Point {
+                x: rational(7, 2),
+                y: rational(0, 1),
+            },
+        ),
+        (
+            [2, 3],
+            Point {
+                x: rational(7, 2),
+                y: rational(0, 1),
+            },
+        ),
+        ([0, 4], point(2, 0)),
+        ([1, 4], point(2, 0)),
+    ]));
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_identity_invariance(&segments, &expected);
+}
+
+#[test]
+fn ending_a_shorter_overlap_member_does_not_hide_a_later_crossing() {
+    let segments = [
+        segment(0, 0, 10, 0),
+        segment(0, 0, 4, 0),
+        segment(2, 5, 8, -1),
+    ];
+    let expected = BTreeMap::from([
+        (
+            [0, 1],
+            Geometry::Overlap {
+                start: point(0, 0),
+                end: point(4, 0),
+            },
+        ),
+        ([0, 2], Geometry::Point(point(7, 0))),
+    ]);
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_identity_invariance(&segments, &expected);
+}
+
+#[test]
+fn generated_overlap_groups_with_crossings_match_independent_full_intersections() {
+    for case in 0..64 {
+        let transform = |p: &Point| {
+            let (x, y) = match case % 4 {
+                0 => (p.x.clone(), p.y.clone()),
+                1 => (p.y.clone(), p.x.clone()),
+                2 => (p.x.clone(), &p.x + &p.y),
+                _ => (&p.y - &p.x, p.x.clone()),
+            };
+            Point {
+                x: x * rational(case % 3 + 1, case % 5 + 1) + rational(case % 7, 3),
+                y: y * rational(case % 4 + 1, case % 3 + 1) + rational(case % 5, 7),
+            }
+        };
+        let extent = 9 + case % 5;
+        let segments: Vec<_> = [
+            segment(0, 0, extent, 0),
+            segment(2, 0, extent + 2, 0),
+            segment(3, 0, 5, 0),
+            segment(extent, 0, 0, 0),
+            segment(0, 0, extent, 0),
+            segment(4, -3, 4, 3),
+            segment(2, -2, 2, 0),
+            segment(5, 0, 7, 0),
+            segment(-1, -2, extent + 1, 2),
+        ]
+        .iter()
+        .map(|s| Segment {
+            start: transform(&s.start),
+            end: transform(&s.end),
+        })
+        .collect();
+        let expected = oracle(&segments).expect("nonzero overlapping sample");
+        assert_eq!(results(&segments), expected, "overlap case {case}");
+        assert_identity_invariance(&segments, &expected);
+    }
 }
