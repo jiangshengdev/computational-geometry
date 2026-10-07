@@ -1,10 +1,9 @@
-//! Exact Bentley–Ottmann intersections of nonzero segments.
+//! Exact Bentley–Ottmann intersections of closed segments.
 //!
 //! Endpoint contacts, multiway crossings, vertical segments and distinct events
 //! at the same sweep coordinate are supported, including positive-length
-//! overlaps and duplicate inputs. Zero-length inputs still return an error. Empty and
-//! singleton collections are supported within this domain. These restrictions
-//! do not remove the remaining capabilities from the eventual #8 scope.
+//! overlaps and duplicate inputs. Zero-length inputs participate as points;
+//! empty and singleton collections return no pairs.
 //!
 //! An invertible exact shear (x, y) -> (x + s*y, y) avoids vertical segments in
 //! sweep coordinates; s is chosen from input directions, without enumerating
@@ -13,6 +12,7 @@
 //! pair enumeration is confined to segments incident at one event. Overlapping
 //! pairs emit their full interval at its beginning, never fragments at later
 //! endpoints or crossings. Coincident active segments retain separate identities.
+//! Point inputs join their exact event but never enter the active sequence.
 //!
 //! With n inputs and k intersecting pairs, the number of events E is O(n + k).
 //! Shear selection costs O(n log(n + 1)); vector status scans and updates cost
@@ -25,7 +25,6 @@
 //! depends on operand bit lengths; this is not an O((n + k) log n) claim.
 
 use std::collections::{BTreeMap, BTreeSet};
-use std::fmt;
 
 /// Arbitrary-precision rational coordinates; no floating-point approximation.
 pub use num_rational::BigRational as Rational;
@@ -63,22 +62,11 @@ pub enum Geometry {
     },
 }
 
-/// A zero-length input, not yet supported.
-#[derive(Clone, Debug, PartialEq, Eq)]
-pub struct UnsupportedDegeneracy;
-
-impl fmt::Display for UnsupportedDegeneracy {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("zero-length inputs are not yet supported")
-    }
-}
-
-impl std::error::Error for UnsupportedDegeneracy {}
-
 struct SweepSegment {
     left: Point,
     right: Point,
-    slope: Rational,
+    // Points have no supporting line and are removed before status insertion.
+    slope: Option<Rational>,
     intercept: Rational,
 }
 
@@ -95,8 +83,10 @@ impl SweepSegment {
         } else {
             (end, start)
         };
-        let slope = (&right.y - &left.y) / (&right.x - &left.x);
-        let intercept = &left.y - &slope * &left.x;
+        let slope = (left != right).then(|| (&right.y - &left.y) / (&right.x - &left.x));
+        let intercept = slope
+            .as_ref()
+            .map_or_else(|| left.y.clone(), |slope| &left.y - slope * &left.x);
         Self {
             left,
             right,
@@ -106,16 +96,13 @@ impl SweepSegment {
     }
 
     fn y_at(&self, x: &Rational) -> Rational {
-        &self.slope * x + &self.intercept
+        self.slope.as_ref().expect("active segment has a slope") * x + &self.intercept
     }
 }
 
-fn choose_shear(segments: &[Segment]) -> Result<Rational, UnsupportedDegeneracy> {
+fn choose_shear(segments: &[Segment]) -> Rational {
     let mut forbidden = BTreeSet::new();
     for segment in segments {
-        if segment.start == segment.end {
-            return Err(UnsupportedDegeneracy);
-        }
         let dy = &segment.end.y - &segment.start.y;
         if dy != Rational::from_integer(0.into()) {
             forbidden.insert((&segment.start.x - &segment.end.x) / dy);
@@ -126,7 +113,7 @@ fn choose_shear(segments: &[Segment]) -> Result<Rational, UnsupportedDegeneracy>
     while forbidden.contains(&shear) {
         shear += Rational::from_integer(1.into());
     }
-    Ok(shear)
+    shear
 }
 
 #[derive(Default)]
@@ -150,7 +137,9 @@ fn schedule_neighbors(
     if a.slope == b.slope {
         return;
     }
-    let cross_x = (&b.intercept - &a.intercept) / (&a.slope - &b.slope);
+    let cross_x = (&b.intercept - &a.intercept)
+        / (a.slope.as_ref().expect("active segment has a slope")
+            - b.slope.as_ref().expect("active segment has a slope"));
     if cross_x < a.left.x || cross_x > a.right.x || cross_x < b.left.x || cross_x > b.right.x {
         return;
     }
@@ -169,9 +158,9 @@ fn schedule_neighbors(
 /// pair once. Result order is not part of the contract. Coordinates must be
 /// valid, normalized rationals (use `Rational::new` or `from_integer`, not
 /// unchecked `new_raw`). See the crate documentation for the currently supported
-/// input domain and cost. An error discards the partial result.
-pub fn intersections(segments: &[Segment]) -> Result<Vec<Intersection>, UnsupportedDegeneracy> {
-    let shear = choose_shear(segments)?;
+/// input domain and cost. Zero-length segments are accepted as points.
+pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
+    let shear = choose_shear(segments);
     let segments: Vec<_> = segments
         .iter()
         .map(|segment| SweepSegment::new(segment, &shear))
@@ -252,5 +241,5 @@ pub fn intersections(segments: &[Segment]) -> Result<Vec<Intersection>, Unsuppor
             );
         }
     }
-    Ok(result)
+    result
 }

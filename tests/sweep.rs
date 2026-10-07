@@ -39,7 +39,7 @@ fn reports_an_exact_fractional_crossing_with_original_input_indices() {
         },
     ];
     assert_eq!(
-        intersections(&segments).unwrap(),
+        intersections(&segments),
         vec![Intersection {
             segments: [0, 1],
             geometry: Geometry::Point(Point {
@@ -85,7 +85,7 @@ fn normalized(geometry: Geometry) -> Geometry {
 
 fn results(segments: &[Segment]) -> PairResults {
     let mut pairs = BTreeMap::new();
-    for intersection in intersections(segments).unwrap() {
+    for intersection in intersections(segments) {
         let [a, b] = intersection.segments;
         assert!(
             a < b && b < segments.len(),
@@ -174,15 +174,35 @@ fn cross(ax: &Rational, ay: &Rational, bx: &Rational, by: &Rational) -> Rational
     ax * by - ay * bx
 }
 
-fn oracle(segments: &[Segment]) -> Option<PairResults> {
-    if segments.iter().any(|s| s.start == s.end) {
-        return None;
-    }
+fn oracle(segments: &[Segment]) -> PairResults {
     let zero = rational(0, 1);
     let one = rational(1, 1);
     let mut expected = BTreeMap::new();
     for (i, a) in segments.iter().enumerate() {
         for (j, b) in segments.iter().enumerate().skip(i + 1) {
+            if a.start == a.end || b.start == b.end {
+                let (p, line) = if a.start == a.end {
+                    (&a.start, b)
+                } else {
+                    (&b.start, a)
+                };
+                // Collinearity plus the closed axis-aligned bounds also works
+                // when line itself is a point; no slope or shear is involved.
+                if cross(
+                    &(&line.end.x - &line.start.x),
+                    &(&line.end.y - &line.start.y),
+                    &(&p.x - &line.start.x),
+                    &(&p.y - &line.start.y),
+                ) == zero
+                    && (&line.start.x).min(&line.end.x) <= &p.x
+                    && &p.x <= (&line.start.x).max(&line.end.x)
+                    && (&line.start.y).min(&line.end.y) <= &p.y
+                    && &p.y <= (&line.start.y).max(&line.end.y)
+                {
+                    expected.insert([i, j], Geometry::Point(p.clone()));
+                }
+                continue;
+            }
             let rx = &a.end.x - &a.start.x;
             let ry = &a.end.y - &a.start.y;
             let sx = &b.end.x - &b.start.x;
@@ -225,7 +245,7 @@ fn oracle(segments: &[Segment]) -> Option<PairResults> {
             }
         }
     }
-    Some(expected)
+    expected
 }
 
 fn assert_identity_invariance(segments: &[Segment], expected: &PairResults) {
@@ -313,7 +333,7 @@ fn small_generated_general_position_sets_match_an_independent_exact_oracle() {
         if collinear {
             continue;
         }
-        let expected = oracle(&segments).expect("general-position sample");
+        let expected = oracle(&segments);
         if !expected.values().all(|geometry| match geometry {
             Geometry::Point(p) => event_x.insert(p.x.clone()),
             Geometry::Overlap { .. } => panic!("general-position sample cannot overlap"),
@@ -378,8 +398,143 @@ fn coordinates_and_intermediate_products_are_not_limited_to_machine_integers() {
 }
 
 #[test]
-fn detected_unsupported_inputs_return_an_error_instead_of_a_partial_result() {
-    assert!(intersections(&[segment(0, 0, 0, 0)]).is_err());
+fn coincident_points_keep_independent_identity_and_separate_points_have_no_pairs() {
+    let segments = [
+        segment(0, 0, 0, 0),
+        segment(0, 0, 0, 0),
+        segment(0, 0, 0, 0),
+        segment(0, 2, 0, 2),
+        segment(3, 0, 3, 0),
+    ];
+    let expected = point_intersections([
+        ([0, 1], point(0, 0)),
+        ([0, 2], point(0, 0)),
+        ([1, 2], point(0, 0)),
+    ]);
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), expected);
+    assert_identity_invariance(&segments, &expected);
+    assert!(results(&[segments[0].clone()]).is_empty());
+}
+
+#[test]
+fn points_on_fractional_segments_include_endpoints_but_exclude_off_line_and_extension() {
+    for end in [point(0, 4), point(4, 0), point(4, 4)] {
+        let shift = |p: Point| Point {
+            x: p.x + rational(1, 3),
+            y: p.y + rational(2, 7),
+        };
+        let start = shift(point(0, 0));
+        let middle = shift(Point {
+            x: &end.x / rational(2, 1),
+            y: &end.y / rational(2, 1),
+        });
+        let beyond = shift(Point {
+            x: &end.x * rational(2, 1),
+            y: &end.y * rational(2, 1),
+        });
+        let end = shift(end);
+        let mut segments = vec![Segment {
+            start: start.clone(),
+            end: end.clone(),
+        }];
+        for p in [
+            start.clone(),
+            middle.clone(),
+            end.clone(),
+            beyond,
+            shift(point(1, 2)),
+        ] {
+            segments.push(Segment {
+                start: p.clone(),
+                end: p,
+            });
+        }
+        let expected = point_intersections([([0, 1], start), ([0, 2], middle), ([0, 3], end)]);
+        assert_eq!(results(&segments), expected);
+        assert_eq!(oracle(&segments), expected);
+        assert_identity_invariance(&segments, &expected);
+    }
+}
+
+#[test]
+fn points_join_mixed_events_without_losing_later_crossings() {
+    let segments = [
+        segment(-3, -3, 3, 3),
+        segment(-4, 4, 4, -4),
+        segment(-2, 0, 0, 0),
+        segment(0, 0, 5, 0),
+        segment(-5, 1, 6, 1),
+        segment(0, 0, 0, 0),
+        segment(0, 0, 0, 0),
+        segment(0, 2, 0, 2),
+    ];
+    let mut expected = point_intersections([
+        ([0, 1], point(0, 0)),
+        ([0, 2], point(0, 0)),
+        ([0, 3], point(0, 0)),
+        ([1, 2], point(0, 0)),
+        ([1, 3], point(0, 0)),
+        ([2, 3], point(0, 0)),
+        ([0, 4], point(1, 1)),
+        ([1, 4], point(-1, 1)),
+        ([5, 6], point(0, 0)),
+    ]);
+    for line in 0..4 {
+        for p in [5, 6] {
+            expected.insert([line, p], Geometry::Point(point(0, 0)));
+        }
+    }
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), expected);
+    assert_identity_invariance(&segments, &expected);
+}
+
+#[test]
+fn actively_generated_point_inputs_match_independent_exact_pairs() {
+    for case in 0..48 {
+        let transform = |p: &Point| Point {
+            x: &p.x * rational(case % 3 + 1, case % 4 + 1) + rational(case % 7, 3),
+            y: &p.y * rational(case % 5 + 1, case % 3 + 1) + rational(case % 5, 7),
+        };
+        let mut segments = vec![
+            segment(-3, -3, 3, 3),
+            segment(-3, 3, 3, -3),
+            segment(0, -4, 0, 4),
+            segment(-4, 0, 0, 0),
+            segment(0, 0, 4, 0),
+            segment(-5, 2, 5, 2),
+        ];
+        // Every case deliberately contains coincident points, isolated points,
+        // endpoint contacts and interior contacts, without positive overlaps.
+        for p in [
+            point(0, 0),
+            point(0, 0),
+            point(0, 4),
+            point(0, 2),
+            point(2, 2),
+            point(7, 7),
+            point(case % 9 - 4, case % 7 - 3),
+        ] {
+            segments.push(Segment {
+                start: p.clone(),
+                end: p,
+            });
+        }
+        let segments: Vec<_> = segments
+            .iter()
+            .map(|s| Segment {
+                start: transform(&s.start),
+                end: transform(&s.end),
+            })
+            .collect();
+        for inputs in [&segments[..], &segments[6..]] {
+            let expected = oracle(inputs);
+            assert!(expected.values().all(|g| matches!(g, Geometry::Point(_))));
+            assert_eq!(results(inputs), expected, "point case {case}");
+            assert_identity_invariance(inputs, &expected);
+        }
+    }
 }
 
 #[test]
@@ -416,7 +571,7 @@ fn vertical_segments_cross_and_touch_at_exact_fractional_coordinates() {
         ([3, 4], at(3)),
     ]);
     assert_eq!(results(&segments), expected);
-    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_eq!(oracle(&segments), expected);
     assert_identity_invariance(&segments, &expected);
     assert!(results(&[segments[0].clone()]).is_empty());
 }
@@ -441,7 +596,7 @@ fn groups_starts_ends_and_crossings_without_losing_earlier_or_later_pairs() {
         ([1, 4], point(-1, 1)),
     ]);
     assert_eq!(results(&segments), expected);
-    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_eq!(oracle(&segments), expected);
     assert_identity_invariance(&segments, &expected);
 }
 
@@ -461,7 +616,7 @@ fn distinct_events_at_the_same_x_remain_separate_and_discover_future_crossings()
         ([0, 3], point(2, 0)),
     ]);
     assert_eq!(results(&segments), expected);
-    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_eq!(oracle(&segments), expected);
     assert_identity_invariance(&segments, &expected);
 }
 
@@ -486,7 +641,7 @@ fn collinear_contacts_and_disjoint_segments_follow_closed_segment_semantics() {
     ] {
         let expected = point_intersections([([0, 1], point(0, 0))]);
         assert_eq!(results(&segments), expected);
-        assert_eq!(oracle(&segments), Some(expected.clone()));
+        assert_eq!(oracle(&segments), expected);
         assert_identity_invariance(&segments, &expected);
     }
 }
@@ -517,7 +672,7 @@ fn actively_generated_degeneracies_match_the_independent_oracle() {
             end: transform(&s.end),
         })
         .collect();
-        let expected = oracle(&segments).expect("constructed nonoverlapping sample");
+        let expected = oracle(&segments);
         assert_eq!(results(&segments), expected, "constructed case {case}");
         assert_identity_invariance(&segments, &expected);
     }
@@ -537,10 +692,12 @@ fn small_grid_sets_cover_varied_endpoint_and_crossing_degeneracies() {
         let segments: Vec<_> = (0..2 + case % 7)
             .map(|_| segment(next(), next(), next(), next()))
             .collect();
-        // Only exclude zero-length inputs; overlap is now supported too.
-        let Some(expected) = oracle(&segments) else {
+        // Keep this earlier increment's nonzero domain. Point inputs are
+        // deliberately generated in their own nonoverlapping cases below.
+        if segments.iter().any(|s| s.start == s.end) {
             continue;
-        };
+        }
+        let expected = oracle(&segments);
         assert_eq!(
             results(&segments),
             expected,
@@ -583,7 +740,7 @@ fn nested_and_partial_overlaps_return_complete_pairwise_intervals() {
         ),
     ]);
     assert_eq!(results(&segments), expected);
-    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_eq!(oracle(&segments), expected);
     assert_identity_invariance(&segments, &expected);
 }
 
@@ -624,7 +781,7 @@ fn duplicate_and_reverse_oriented_inputs_keep_three_independent_overlap_pairs() 
             ([1, 2], geometry),
         ]);
         assert_eq!(results(&segments), expected);
-        assert_eq!(oracle(&segments), Some(expected.clone()));
+        assert_eq!(oracle(&segments), expected);
         assert_identity_invariance(&segments, &expected);
     }
 }
@@ -696,7 +853,7 @@ fn crossing_and_boundary_contacts_preserve_the_full_overlap_intervals() {
         ([1, 4], point(2, 0)),
     ]));
     assert_eq!(results(&segments), expected);
-    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_eq!(oracle(&segments), expected);
     assert_identity_invariance(&segments, &expected);
 }
 
@@ -718,7 +875,7 @@ fn ending_a_shorter_overlap_member_does_not_hide_a_later_crossing() {
         ([0, 2], Geometry::Point(point(7, 0))),
     ]);
     assert_eq!(results(&segments), expected);
-    assert_eq!(oracle(&segments), Some(expected.clone()));
+    assert_eq!(oracle(&segments), expected);
     assert_identity_invariance(&segments, &expected);
 }
 
@@ -755,7 +912,7 @@ fn generated_overlap_groups_with_crossings_match_independent_full_intersections(
             end: transform(&s.end),
         })
         .collect();
-        let expected = oracle(&segments).expect("nonzero overlapping sample");
+        let expected = oracle(&segments);
         assert_eq!(results(&segments), expected, "overlap case {case}");
         assert_identity_invariance(&segments, &expected);
     }
