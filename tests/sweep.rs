@@ -895,7 +895,7 @@ fn generated_overlap_groups_with_crossings_match_independent_full_intersections(
             }
         };
         let extent = 9 + case % 5;
-        let segments: Vec<_> = [
+        let mut segments: Vec<_> = [
             segment(0, 0, extent, 0),
             segment(2, 0, extent + 2, 0),
             segment(3, 0, 5, 0),
@@ -915,5 +915,168 @@ fn generated_overlap_groups_with_crossings_match_independent_full_intersections(
         let expected = oracle(&segments);
         assert_eq!(results(&segments), expected, "overlap case {case}");
         assert_identity_invariance(&segments, &expected);
+
+        // Keep the nonzero regression above, then combine its partial/nested
+        // overlaps, reverse duplicates and crossings with deliberate points.
+        for p in [
+            point(4, 0),
+            point(4, 0),
+            point(2, 0),
+            point(5, 0),
+            point(extent, 0),
+            point(extent + 2, 0),
+            point(extent + 3, 0),
+            point(case % (extent + 1), 0),
+            point(4, 2),
+        ] {
+            let p = transform(&p);
+            segments.push(Segment {
+                start: p.clone(),
+                end: p,
+            });
+        }
+        let expected = oracle(&segments);
+        assert_eq!(results(&segments), expected, "mixed overlap case {case}");
+        assert_identity_invariance(&segments, &expected);
     }
+}
+
+#[test]
+fn points_on_overlap_groups_preserve_full_intervals_and_all_incident_pairs() {
+    for vertical in [false, true] {
+        let at = |x, y| {
+            let (x, y) = if vertical { (y, x) } else { (x, y) };
+            Point {
+                x: rational(x, 1) + rational(1, 3),
+                y: rational(y, 1) + rational(2, 7),
+            }
+        };
+        let segments: Vec<_> = [
+            (0, 0, 6, 0),
+            (6, 0, 0, 0),
+            (2, 0, 4, 0),
+            (2, -2, 2, 2),
+            (1, -1, 2, 0),
+            (2, 0, 2, 0),
+            (2, 0, 2, 0),
+            (4, 0, 4, 0),
+            (6, 0, 6, 0),
+        ]
+        .into_iter()
+        .map(|(x1, y1, x2, y2)| Segment {
+            start: at(x1, y1),
+            end: at(x2, y2),
+        })
+        .collect();
+        // Inputs 0..=6 all meet at (2,0). Only the three collinear
+        // nonzero pairs intersect in intervals; the other 18 pairs are points.
+        let mut expected = point_intersections([
+            ([0, 3], at(2, 0)),
+            ([0, 4], at(2, 0)),
+            ([0, 5], at(2, 0)),
+            ([0, 6], at(2, 0)),
+            ([1, 3], at(2, 0)),
+            ([1, 4], at(2, 0)),
+            ([1, 5], at(2, 0)),
+            ([1, 6], at(2, 0)),
+            ([2, 3], at(2, 0)),
+            ([2, 4], at(2, 0)),
+            ([2, 5], at(2, 0)),
+            ([2, 6], at(2, 0)),
+            ([3, 4], at(2, 0)),
+            ([3, 5], at(2, 0)),
+            ([3, 6], at(2, 0)),
+            ([4, 5], at(2, 0)),
+            ([4, 6], at(2, 0)),
+            ([5, 6], at(2, 0)),
+            ([0, 7], at(4, 0)),
+            ([1, 7], at(4, 0)),
+            ([2, 7], at(4, 0)),
+            ([0, 8], at(6, 0)),
+            ([1, 8], at(6, 0)),
+        ]);
+        expected.extend([
+            (
+                [0, 1],
+                Geometry::Overlap {
+                    start: at(0, 0),
+                    end: at(6, 0),
+                },
+            ),
+            (
+                [0, 2],
+                Geometry::Overlap {
+                    start: at(2, 0),
+                    end: at(4, 0),
+                },
+            ),
+            (
+                [1, 2],
+                Geometry::Overlap {
+                    start: at(2, 0),
+                    end: at(4, 0),
+                },
+            ),
+        ]);
+        assert_eq!(results(&segments), expected);
+        assert_eq!(oracle(&segments), expected);
+        assert_identity_invariance(&segments, &expected);
+    }
+}
+
+#[test]
+fn equal_x_mixed_events_preserve_earlier_and_later_crossings() {
+    // y=x-2, y=-x-2, y=x+2, y=-x+2. No vertical direction,
+    // so x=0 really is one sweep coordinate with two different event positions.
+    let segments = [
+        segment(-3, -5, 3, 1),
+        segment(-3, 1, 3, -5),
+        segment(-3, -1, 3, 5),
+        segment(-3, 5, 3, -1),
+        segment(3, 1, -3, -5),
+        segment(3, 5, -3, -1),
+        segment(0, -2, 0, -2),
+        segment(0, -2, 0, -2),
+        segment(0, 2, 0, 2),
+        segment(0, 7, 0, 7),
+    ];
+    let mut expected = point_intersections([
+        ([1, 2], point(-2, 0)),
+        ([1, 5], point(-2, 0)),
+        ([0, 1], point(0, -2)),
+        ([1, 4], point(0, -2)),
+        ([2, 3], point(0, 2)),
+        ([3, 5], point(0, 2)),
+        ([0, 3], point(2, 0)),
+        ([3, 4], point(2, 0)),
+        ([0, 6], point(0, -2)),
+        ([1, 6], point(0, -2)),
+        ([4, 6], point(0, -2)),
+        ([0, 7], point(0, -2)),
+        ([1, 7], point(0, -2)),
+        ([4, 7], point(0, -2)),
+        ([6, 7], point(0, -2)),
+        ([2, 8], point(0, 2)),
+        ([3, 8], point(0, 2)),
+        ([5, 8], point(0, 2)),
+    ]);
+    expected.extend([
+        (
+            [0, 4],
+            Geometry::Overlap {
+                start: point(-3, -5),
+                end: point(3, 1),
+            },
+        ),
+        (
+            [2, 5],
+            Geometry::Overlap {
+                start: point(-3, -1),
+                end: point(3, 5),
+            },
+        ),
+    ]);
+    assert_eq!(results(&segments), expected);
+    assert_eq!(oracle(&segments), expected);
+    assert_identity_invariance(&segments, &expected);
 }
