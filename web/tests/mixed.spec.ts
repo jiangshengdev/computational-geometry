@@ -9,6 +9,7 @@ const horizontal: ExpectedPair[] = [
   { pair: [0, 3], point: ['2', '0'] }, { pair: [1, 3], point: ['2', '0'] }, { pair: [2, 3], point: ['2', '0'] },
   { pair: [0, 4], point: ['0', '0'] }, { pair: [1, 4], point: ['0', '0'] },
   { pair: [0, 5], point: ['2', '0'] }, { pair: [1, 5], point: ['2', '0'] }, { pair: [2, 5], point: ['2', '0'] }, { pair: [3, 5], point: ['2', '0'] },
+  { pair: [0, 6], point: ['2', '0'] }, { pair: [1, 6], point: ['2', '0'] }, { pair: [2, 6], point: ['2', '0'] }, { pair: [3, 6], point: ['2', '0'] }, { pair: [5, 6], point: ['2', '0'] },
 ]
 const vertical: ExpectedPair[] = [
   { pair: [0, 1], interval: [['1/2', '0'], ['1/2', '4']] },
