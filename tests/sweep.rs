@@ -39,6 +39,16 @@ fn reports_an_exact_fractional_crossing_with_original_input_indices() {
         },
     ];
     assert_eq!(
+        computational_geometry::brute_force_intersections(&segments),
+        vec![Intersection {
+            segments: [0, 1],
+            geometry: Geometry::Point(Point {
+                x: rational(7, 3),
+                y: rational(2, 1)
+            }),
+        }]
+    );
+    assert_eq!(
         intersections(&segments),
         vec![Intersection {
             segments: [0, 1],
@@ -84,13 +94,20 @@ fn normalized(geometry: Geometry) -> Geometry {
 }
 
 fn results(segments: &[Segment]) -> PairResults {
+    let pairs = collect_results(segments.len(), intersections(segments));
+    assert_eq!(
+        pairs,
+        oracle(segments),
+        "independent public brute-force reference"
+    );
+    pairs
+}
+
+fn collect_results(input_count: usize, output: Vec<Intersection>) -> PairResults {
     let mut pairs = BTreeMap::new();
-    for intersection in intersections(segments) {
+    for intersection in output {
         let [a, b] = intersection.segments;
-        assert!(
-            a < b && b < segments.len(),
-            "invalid original input indices"
-        );
+        assert!(a < b && b < input_count, "invalid original input indices");
         assert!(
             pairs
                 .insert([a, b], normalized(intersection.geometry))
@@ -167,85 +184,16 @@ fn empty_singleton_and_disjoint_inputs_have_no_pairs() {
     );
 }
 
-// Independent test-only oracle: solve p + t*r = q + u*s using determinants.
-// Production uses slopes/intercepts and only neighboring segments. This oracle
-// enumerates every input pair and shares only public data and rational arithmetic.
+// Used only to filter generated general-position samples, not to compute results.
 fn cross(ax: &Rational, ay: &Rational, bx: &Rational, by: &Rational) -> Rational {
     ax * by - ay * bx
 }
 
 fn oracle(segments: &[Segment]) -> PairResults {
-    let zero = rational(0, 1);
-    let one = rational(1, 1);
-    let mut expected = BTreeMap::new();
-    for (i, a) in segments.iter().enumerate() {
-        for (j, b) in segments.iter().enumerate().skip(i + 1) {
-            if a.start == a.end || b.start == b.end {
-                let (p, line) = if a.start == a.end {
-                    (&a.start, b)
-                } else {
-                    (&b.start, a)
-                };
-                // Collinearity plus the closed axis-aligned bounds also works
-                // when line itself is a point; no slope or shear is involved.
-                if cross(
-                    &(&line.end.x - &line.start.x),
-                    &(&line.end.y - &line.start.y),
-                    &(&p.x - &line.start.x),
-                    &(&p.y - &line.start.y),
-                ) == zero
-                    && (&line.start.x).min(&line.end.x) <= &p.x
-                    && &p.x <= (&line.start.x).max(&line.end.x)
-                    && (&line.start.y).min(&line.end.y) <= &p.y
-                    && &p.y <= (&line.start.y).max(&line.end.y)
-                {
-                    expected.insert([i, j], Geometry::Point(p.clone()));
-                }
-                continue;
-            }
-            let rx = &a.end.x - &a.start.x;
-            let ry = &a.end.y - &a.start.y;
-            let sx = &b.end.x - &b.start.x;
-            let sy = &b.end.y - &b.start.y;
-            let qx = &b.start.x - &a.start.x;
-            let qy = &b.start.y - &a.start.y;
-            let determinant = cross(&rx, &ry, &sx, &sy);
-            if determinant == zero {
-                if cross(&qx, &qy, &rx, &ry) == zero {
-                    // Lexicographic projection preserves order on any line,
-                    // including a vertical one. Preserve the complete pairwise
-                    // interval independently of all other input segments.
-                    let low = (&a.start).min(&a.end).max((&b.start).min(&b.end));
-                    let high = (&a.start).max(&a.end).min((&b.start).max(&b.end));
-                    if low < high {
-                        expected.insert(
-                            [i, j],
-                            Geometry::Overlap {
-                                start: low.clone(),
-                                end: high.clone(),
-                            },
-                        );
-                    }
-                    if low == high {
-                        expected.insert([i, j], Geometry::Point(low.clone()));
-                    }
-                }
-                continue;
-            }
-            let t = cross(&qx, &qy, &sx, &sy) / &determinant;
-            let u = cross(&qx, &qy, &rx, &ry) / determinant;
-            if zero <= t && t <= one && zero <= u && u <= one {
-                expected.insert(
-                    [i, j],
-                    Geometry::Point(Point {
-                        x: &a.start.x + &t * rx,
-                        y: &a.start.y + &t * ry,
-                    }),
-                );
-            }
-        }
-    }
-    expected
+    collect_results(
+        segments.len(),
+        computational_geometry::brute_force_intersections(segments),
+    )
 }
 
 fn assert_identity_invariance(segments: &[Segment], expected: &PairResults) {
