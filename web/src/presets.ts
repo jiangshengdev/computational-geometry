@@ -14,4 +14,11 @@ export const presets: Preset[] = [
   { id: 'point-inputs', name: '零长度点与线段', description: '内部点、端点、外部点和重合点均保留独立输入身份。', segments: [segment('0', '0', '4', '0'), segment('2', '0', '2', '0'), segment('0', '0', '0', '0'), segment('5', '1', '5', '1'), segment('2', '0', '2', '0')] },
   { id: 'pure-points', name: '纯点集合', description: '两个重合分数点和一个分离点。', segments: [segment('1/3', '2/3', '1/3', '2/3'), segment('1/3', '2/3', '1/3', '2/3'), segment('2/3', '1/3', '2/3', '1/3')] },
   { id: 'point-multiway', name: '零长度点与多线共点', description: '三条线和一个点同处原点，六个配对分别可查。', segments: [segment('-2', '0', '2', '0'), segment('0', '-2', '0', '2'), segment('-2', '-2', '2', '2'), segment('0', '0', '0', '0')] },
+  { id: 'partial-overlap', name: '部分重叠', description: '水平线段的完整交集为 [2, 4]。', segments: [segment('0', '0', '4', '0'), segment('2', '0', '6', '0')] },
+  { id: 'contained-overlap', name: '斜向包含', description: '较短斜线段完整包含在另一条线段内。', segments: [segment('0', '0', '4', '4'), segment('1', '1', '3', '3')] },
+  { id: 'duplicate-overlap', name: '完全与反向重复', description: '三条几何相同的输入，包括一条反向输入；三个区间配对分别可查。', segments: [segment('0', '0', '4', '0'), segment('0', '0', '4', '0'), segment('4', '0', '0', '0')] },
+  { id: 'vertical-overlap', name: '竖直分数重叠', description: '在 x = 1/2 处重叠，完整区间端点为 y = 1/3 与 5/3。', segments: [segment('1/2', '-1/3', '1/2', '5/3'), segment('1/2', '1/3', '1/2', '7/3')] },
+  { id: 'collinear-contact', name: '共线点接触', description: '斜向共线段仅在一个端点接触。', segments: [segment('0', '0', '2', '2'), segment('2', '2', '4', '4')] },
+  { id: 'collinear-disjoint', name: '共线分离', description: '共线但存在间隙，不返回交集。', segments: [segment('0', '0', '1', '1'), segment('2', '2', '4', '4')] },
+  { id: 'overlap-group', name: '长区间与短成员', description: '第三条短线段不会切碎或缩短前两个输入的完整重叠。', segments: [segment('0', '0', '6', '0'), segment('0', '0', '6', '0'), segment('2', '0', '3', '0')] },
 ]
