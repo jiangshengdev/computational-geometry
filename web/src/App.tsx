@@ -3,6 +3,16 @@ import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset } from './geometry'
 import { presets } from './presets'
 import './App.css'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@/components/ui/empty'
+import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Separator } from '@/components/ui/separator'
+import { Spinner } from '@/components/ui/spinner'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[] }
 
@@ -31,29 +41,49 @@ function CaseViewer({ preset }: { preset: Preset }) {
   }, [preset])
   const results = computation.status === 'ready' ? computation.results : []
   return <>
-    <p className="case-description">{preset.description}</p>
+    <p className="my-6 text-muted-foreground">{preset.description}</p>
     <div className="workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} />
-      <aside className="results" aria-label="计算结果">
-        <h2>相交配对</h2>
-        {computation.status === 'loading' ? <p role="status">正在计算…</p> : computation.status === 'error'
-          ? <p role="alert">计算失败，请检查本地服务。{computation.message}</p>
-          : <><p role="status">{results.length} 个相交配对</p>
-            {results.length === 0 ? <p>没有相交配对</p> : <ul className="pair-list">{results.map(result =>
-              <li key={pairName(result)}><button aria-pressed={selected === result} onClick={() => setSelected(result)}>
-                {pairName(result)} · {result.geometry.type === 'point' ? '点' : '重叠区间'}
-              </button></li>)}</ul>}
-          </>}
-        <section aria-label="精确详情" className="details"><h2>精确详情</h2>
-          {selected ? <><h3>{pairName(selected)}</h3><p className="coordinates">{formatGeometry(selected.geometry)}</p>
-            {selected.segments.map(i => <p key={i} className="coordinates">S{i}：{formatPoint(preset.segments[i].start)} → {formatPoint(preset.segments[i].end)}</p>)}
-          </> : <p>选择一个配对，检查交集和两个输入。</p>}
-        </section>
+      <aside className="min-w-0" aria-label="计算结果">
+        <Card>
+          <CardHeader><CardTitle><h2>相交配对</h2></CardTitle></CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            {computation.status === 'loading'
+              ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在计算…</div>
+              : computation.status === 'error'
+                ? <Alert variant="destructive"><AlertTitle>计算失败</AlertTitle><AlertDescription>请检查本地服务。{computation.message}</AlertDescription></Alert>
+                : <><div role="status"><Badge variant="secondary">{results.length} 个相交配对</Badge></div>
+                  {results.length === 0
+                    ? <Empty><EmptyHeader><EmptyTitle>没有相交配对</EmptyTitle></EmptyHeader></Empty>
+                    : <ScrollArea className="[&_[data-slot=scroll-area-viewport]]:max-h-60">
+                      <ToggleGroup type="single" orientation="vertical" spacing={2} className="w-full flex-col p-1" aria-label="相交配对选择"
+                        value={selected ? pairName(selected) : ''}
+                        onValueChange={value => { if (value) setSelected(results.find(result => pairName(result) === value)!) }}>
+                        {results.map(result => <ToggleGroupItem key={pairName(result)} value={pairName(result)} className="w-full justify-start">
+                          {pairName(result)} · {result.geometry.type === 'point' ? '点' : '重叠区间'}
+                        </ToggleGroupItem>)}
+                      </ToggleGroup>
+                    </ScrollArea>}
+                </>}
+            <Separator />
+            <section aria-label="精确详情" className="flex min-w-0 flex-col gap-3">
+              <CardTitle><h2>精确详情</h2></CardTitle>
+              {selected ? <><h3>{pairName(selected)}</h3><p className="coordinates">{formatGeometry(selected.geometry)}</p>
+                {selected.segments.map(i => <p key={i} className="coordinates">S{i}：{formatPoint(preset.segments[i].start)} → {formatPoint(preset.segments[i].end)}</p>)}
+              </> : <Empty><EmptyHeader><EmptyDescription>选择一个配对，检查交集和两个输入。</EmptyDescription></EmptyHeader></Empty>}
+            </section>
+          </CardContent>
+        </Card>
       </aside>
     </div>
-    <section className="inputs" aria-label="原始输入"><h2>原始输入 <span>{preset.segments.length}</span></h2>
-      {preset.segments.length === 0 ? <p>输入集合为空</p> : <ul>{preset.segments.map((s, i) =>
-        <li key={i}><strong>S{i}</strong><span className="coordinates">{formatPoint(s.start)} → {formatPoint(s.end)}</span></li>)}</ul>}
+    <section className="mt-7" aria-label="原始输入"><Card>
+      <CardHeader><CardTitle><h2 className="flex items-center gap-2">原始输入 <Badge variant="secondary">{preset.segments.length}</Badge></h2></CardTitle></CardHeader>
+      <CardContent>{preset.segments.length === 0
+        ? <Empty><EmptyHeader><EmptyTitle>输入集合为空</EmptyTitle></EmptyHeader></Empty>
+        : <ul className="flex flex-wrap gap-x-8 gap-y-3">{preset.segments.map((s, i) =>
+          <li key={i} className="flex min-w-0 flex-wrap gap-3 text-sm"><strong>S{i}</strong><span className="coordinates">{formatPoint(s.start)} → {formatPoint(s.end)}</span></li>)}</ul>}
+      </CardContent>
+    </Card>
     </section>
   </>
 }
@@ -61,12 +91,19 @@ function CaseViewer({ preset }: { preset: Preset }) {
 export default function App() {
   const [preset, setPreset] = useState(presets[0])
   return <main>
-    <header><div><h1>BO 结果查看器</h1><p>选择案例，检查精确交点与完整重叠区间。</p></div>
-      <label>预设案例<select value={preset.id} onChange={event => setPreset(presets.find(p => p.id === event.target.value)!)}>
-        {presets.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
-      </select></label>
+    <header className="viewer-header"><div><h1 className="text-3xl font-semibold tracking-tight">BO 结果查看器</h1><p className="mt-2 text-muted-foreground">选择案例，检查精确交点与完整重叠区间。</p></div>
+      <FieldGroup className="w-full min-[851px]:w-64"><Field>
+        <FieldLabel htmlFor="preset">预设案例</FieldLabel>
+        <Select value={preset.id} onValueChange={value => setPreset(presets.find(p => p.id === value)!)}>
+          <SelectTrigger id="preset" className="w-full"><SelectValue /></SelectTrigger>
+          <SelectContent position="popper"><SelectGroup>
+            {presets.map(p => <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>)}
+          </SelectGroup></SelectContent>
+        </Select>
+      </Field></FieldGroup>
     </header>
     <CaseViewer key={preset.id} preset={preset} />
-    <footer>每个输入保留独立身份。配对数不是独立几何交点数；图形仅作人工辅助校验。</footer>
+    <Separator className="mt-6" />
+    <footer className="pt-4 text-xs text-muted-foreground">每个输入保留独立身份。配对数不是独立几何交点数；图形仅作人工辅助校验。</footer>
   </main>
 }

@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { scaleLinear, select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { approximate, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 
 interface Props { segments: Segment[]; results: Intersection[]; selected: Intersection | null }
 
@@ -32,12 +35,14 @@ export function GeometryView({ segments, results, selected }: Props) {
     .sort((a, b) => Number(selected?.segments.includes(a.index)) - Number(selected?.segments.includes(b.index)))
   const resultOrder = results.filter(r => r !== selected).concat(selected ? [selected] : [])
 
-  return <section className="drawing" aria-label="几何视图">
-    <div className="drawing-toolbar"><span>原始坐标平面 · 等比例</span><div>
-      <button onClick={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大">＋</button>
-      <button onClick={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小">−</button>
-      <button onClick={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}>重置视图</button>
-    </div></div>
+  return <section className="drawing" aria-label="几何视图"><Card className="gap-0 overflow-hidden py-0">
+    <CardHeader className="drawing-toolbar"><CardTitle><h2>原始坐标平面 · 等比例</h2></CardTitle><div className="flex gap-2">
+      <Button variant="outline" size="icon-sm" onClick={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大">＋</Button>
+      <Button variant="outline" size="icon-sm" onClick={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小">−</Button>
+      <Button variant="outline" size="sm" onClick={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}>重置视图</Button>
+    </div></CardHeader>
+    <Separator />
+    <CardContent className="p-0">
     <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img">
       <g transform={transform.toString()}>
         {x.ticks(Math.max(2, Math.floor(width / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
@@ -62,6 +67,8 @@ export function GeometryView({ segments, results, selected }: Props) {
         })}
       </g>
     </svg>
-    <div className="legend"><span>蓝色：输入</span><span>橙色：交集</span><span>菱形：零长度输入</span><span>滚轮缩放 · 拖动平移</span></div>
-  </section>
+    </CardContent>
+    <Separator />
+    <CardFooter className="legend text-muted-foreground"><span>蓝色：输入</span><span>橙色：交集</span><span>菱形：零长度输入</span><span>滚轮缩放 · 拖动平移</span></CardFooter>
+  </Card></section>
 }

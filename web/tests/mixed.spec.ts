@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { checkCase, checkResponse, type ExpectedPair } from './cases'
+import { checkCase, checkResponse, selectPreset, type ExpectedPair } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -28,23 +28,44 @@ for (const [id, expected] of [['mixed-horizontal', horizontal], ['mixed-vertical
 test('混合场景缩放平移切换，完整区间与点配对保持一致', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 900 })
   await checkCase(page, 'mixed-horizontal', horizontal)
-  await page.getByRole('button', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
+  await page.getByRole('radio', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
   const intersection = page.getByRole('img', { name: '交集 S0 × S1，已选中', exact: true })
   const input = page.getByRole('img', { name: '输入 S0，已选中', exact: true })
   const intervalWidth = await intersection.locator('line').evaluate(el => (el as SVGGraphicsElement).getBBox().width)
   const inputWidth = await input.locator('line').evaluate(el => (el as SVGGraphicsElement).getBBox().width)
   expect(intervalWidth).toBeCloseTo(inputWidth, 3)
   await page.getByRole('button', { name: '放大', exact: true }).click()
-  await page.getByRole('button', { name: 'S2 × S3 · 点', exact: true }).click()
+  await page.getByRole('radio', { name: 'S2 × S3 · 点', exact: true }).click()
   await expect(page.getByRole('region', { name: '精确详情' })).toContainText('(2, 0)')
   await expect(page.getByRole('img', { name: '输入 S0，已选中', exact: true })).toHaveCount(0)
   await page.getByRole('button', { name: '重置视图' }).click()
   await page.screenshot({ path: join(tmpdir(), 'bo-viewer-mixed.png'), fullPage: true })
-  await page.getByLabel('预设案例').selectOption('mixed-vertical')
-  await expect(page.getByRole('button', { pressed: true })).toHaveCount(0)
-  await page.getByRole('button', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
+  await selectPreset(page, 'mixed-vertical')
+  await expect(page.getByRole('radio', { checked: true })).toHaveCount(0)
+  await page.getByRole('radio', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
   await expect(page.getByRole('region', { name: '精确详情' })).toContainText('(1/2, 4)')
-  await page.getByLabel('预设案例').selectOption('empty')
+  await selectPreset(page, 'empty')
   await expect(page.getByText('没有相交配对', { exact: true })).toBeVisible()
   await expect(page.getByRole('img', { name: /^交集 / })).toHaveCount(0)
+})
+
+test('窄屏下可用键盘滚动选择混合结果并读取完整输入与详情', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/')
+  await selectPreset(page, 'mixed-horizontal')
+  await expect(page.getByRole('status')).toHaveText('17 个相交配对')
+  const pairs = page.getByRole('radio')
+  await pairs.first().click()
+  await page.keyboard.press('End')
+  await expect(pairs.last()).toBeFocused()
+  await page.keyboard.press('Space')
+  await expect(pairs.last()).toBeChecked()
+  await expect(page.getByRole('radio', { checked: true })).toHaveCount(1)
+  const details = page.getByRole('region', { name: '精确详情' })
+  await expect(details).toContainText('(2, 0)')
+  await details.scrollIntoViewIfNeeded()
+  await expect(details).toBeInViewport()
+  await expect(page.getByRole('region', { name: '原始输入' }).getByRole('listitem')).toHaveCount(7)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
+  await page.screenshot({ path: join(tmpdir(), 'bo-viewer-mixed-mobile.png'), fullPage: true })
 })
