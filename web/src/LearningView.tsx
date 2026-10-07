@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Slider } from 'radix-ui'
 import { hoverHighlights, type HoverTarget } from './hover'
+import { AnimatePresence, LayoutGroup, useReducedMotion } from 'motion/react'
+import { LearningRow } from './LearningMotion'
 
 export function LearningIntroduction() {
   return <details className="my-4"><summary className="cursor-pointer">学习目标、术语与扫描约定</summary>
@@ -29,7 +31,9 @@ export function LearningReferences() {
 }
 
 export function LearningView({ preset, trace, results }: { preset: Preset; trace: SweepTrace; results: Intersection[] }) {
-  const [index, setIndex] = useState(0)
+  const [navigation, setNavigation] = useState({ index: 0, from: 0, reset: 0 })
+  const { index } = navigation
+  const reducedMotion = useReducedMotion()
   const [run, setRun] = useState(0)
   const [hover, setHover] = useState<HoverTarget | null>(null)
   const highlights = hover ? hoverHighlights(hover, []) : null
@@ -47,9 +51,13 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     {position > 0 && <span>{separator}</span>}
     <span className="learning-hover-item" {...inputProps(id)}>S{id}</span>
   </Fragment>)
-  const changeStep = (value: number | ((current: number) => number)) => {
+  const changeStep = (value: number | ((current: number) => number), singleStep = false) => {
     setHover(null)
-    setIndex(current => Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(current) : value)))
+    setNavigation(current => ({
+      index: Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(current.index) : value)),
+      from: current.index,
+      reset: current.reset + (singleStep && !reducedMotion ? 0 : 1),
+    }))
   }
   const restart = () => { changeStep(0); setRun(r => r + 1) }
   const handleShortcut = useEffectEvent((event: KeyboardEvent) => {
@@ -62,8 +70,8 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key.toLowerCase() !== 'r') return
     event.preventDefault()
     if (event.repeat) return
-    if (event.key === 'ArrowLeft') changeStep(current => current - 1)
-    else if (event.key === 'ArrowRight') changeStep(current => current + 1)
+    if (event.key === 'ArrowLeft') changeStep(current => current - 1, true)
+    else if (event.key === 'ArrowRight') changeStep(current => current + 1, true)
     else restart()
   })
   useEffect(() => {
@@ -72,6 +80,9 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
   const step = trace.steps[index]
+  const eventIds = (state: typeof step) => [...state.pending, ...(state.current ? [state.current] : [])].map(p => `event:${formatPoint(p)}`)
+  const destinations = eventIds(step)
+  const sources = eventIds(trace.steps[navigation.from])
   const before = trace.steps[Math.max(0, index - 1)]
   const complete = index === trace.steps.length - 1
   const points = results.flatMap(result => result.geometry.type === 'point' ? [result.geometry.point] : [])
@@ -88,8 +99,8 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="flex flex-col gap-4">
     <div className="flex flex-wrap items-center gap-3">
-      <Button variant="outline" onClick={() => changeStep(index - 1)} disabled={index === 0} aria-keyshortcuts="ArrowLeft">上一步<kbd aria-hidden="true">←</kbd></Button>
-      <Button onClick={() => changeStep(index + 1)} disabled={complete} aria-keyshortcuts="ArrowRight">下一步<kbd aria-hidden="true">→</kbd></Button>
+      <Button variant="outline" onClick={() => changeStep(current => current - 1, true)} disabled={index === 0} aria-keyshortcuts="ArrowLeft">上一步<kbd aria-hidden="true">←</kbd></Button>
+      <Button onClick={() => changeStep(current => current + 1, true)} disabled={complete} aria-keyshortcuts="ArrowRight">下一步<kbd aria-hidden="true">→</kbd></Button>
       <Button variant="outline" onClick={restart} aria-keyshortcuts="r">重新开始<kbd aria-hidden="true">R</kbd></Button>
     </div>
     <div className="flex flex-col gap-2">
@@ -108,15 +119,28 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
         highlights={highlights} onHover={setHover}
         sweep={{ current: step.current, active: step.active, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
+      <LayoutGroup key={`${navigation.reset}:${reducedMotion}`}>
       <aside className="flex min-w-0 flex-col gap-4">
         <section aria-label="当前事件"><Card>
           <CardHeader><CardTitle><h2>当前事件</h2></CardTitle></CardHeader>
-          <CardContent className="flex flex-col gap-2"><p>{phase}</p><p className="coordinates learning-hover-item" {...(step.current ? eventProps(step.current) : {})}>{step.current ? pointName(step.current) : '尚未处理事件'}</p></CardContent>
+          <CardContent className="relative flex flex-col gap-2"><p>{phase}</p>
+            <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
+              {step.current && <LearningRow as="p" key={formatPoint(step.current)} identity={`event:${formatPoint(step.current)}`}
+                existed={sources.includes(`event:${formatPoint(step.current)}`)} {...eventProps(step.current)}>{pointName(step.current)}</LearningRow>}
+            </AnimatePresence>
+            {!step.current && <p>尚未处理事件</p>}
+          </CardContent>
         </Card></section>
         <section aria-label="待处理事件队列"><Card>
           <CardHeader><CardTitle><h2>待处理事件队列</h2></CardTitle></CardHeader>
           <CardContent><p className="mb-2 text-sm text-muted-foreground">先 <span className="coordinates">x</span>，后 <span className="coordinates">y</span>；队首先处理</p>
-            {step.pending.length ? <ol className="flex list-inside list-decimal flex-col gap-2">{step.pending.map(p => <li key={formatPoint(p)} className="coordinates learning-hover-item" {...eventProps(p)}>{pointName(p)}</li>)}</ol> : <p>空</p>}
+            <ol className="relative flex list-inside list-decimal flex-col gap-2">
+              <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
+                {step.pending.map(p => <LearningRow key={formatPoint(p)} identity={`event:${formatPoint(p)}`}
+                  existed={sources.includes(`event:${formatPoint(p)}`)} {...eventProps(p)}>{pointName(p)}</LearningRow>)}
+              </AnimatePresence>
+            </ol>
+            {!step.pending.length && <p>空</p>}
           </CardContent>
         </Card></section>
         <section aria-label="活动线段顺序"><Card>
@@ -128,6 +152,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
           </CardContent>
         </Card></section>
       </aside>
+      </LayoutGroup>
     </div>
     <section aria-label="操作解释" aria-live="polite"><Card>
       <CardHeader><CardTitle><h2>这一步为什么这样做？</h2></CardTitle></CardHeader>

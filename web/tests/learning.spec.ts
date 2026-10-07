@@ -42,6 +42,7 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
       if (text.includes('换序为')) sawReorder = true
     } while (!(await current.innerText()).includes('处理完成'))
     await expect(current).toContainText('处理完成')
+    await expect(current.locator('.coordinates')).toHaveText([events[i]])
     await expect(active.getByTestId('active-order')).toHaveText(orders[i])
     const x = i < 2 ? '0' : i === 2 ? '2' : '4'
     // A vertical SVG line has a zero-width bounding box in Playwright even
@@ -74,7 +75,7 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   for (const snapshot of snapshots) {
     await next.click()
     do { await next.click() } while (!(await current.innerText()).includes('处理完成'))
-    expect(await page.getByRole('region', { name: '逐步学习' }).innerText()).toBe(snapshot)
+    await expect.poll(() => page.getByRole('region', { name: '逐步学习' }).innerText()).toBe(snapshot)
   }
 })
 
