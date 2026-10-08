@@ -125,8 +125,7 @@ test('状态动画：队首事件整行转移并能反向返回', async ({ page 
   expect(Math.hypot(forward[0][0].x - forward.at(-1)![0].x, start - end)).toBeGreaterThan(30)
   const lower = Math.min(start, end), upper = Math.max(start, end)
   expect(forward.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2))).toBe(true)
-  expect(forward.some(rows => rows.some(row => row.x > Math.min(forward[0][0].x, forward.at(-1)![0].x) + 30
-    && row.x < Math.max(forward[0][0].x, forward.at(-1)![0].x) - 30 && row.unclipped))).toBe(true)
+  expect(forward.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2 && row.unclipped))).toBe(true)
   expect(forward.every(rows => rows.length === 1 && rows[0].opacity > 0.95)).toBe(true)
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText(text)
   await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText(text)
@@ -134,8 +133,7 @@ test('状态动画：队首事件整行转移并能反向返回', async ({ page 
   const backward = await sampleStep(page, text, '上一步')
   expect(backward.at(-1)![0].y).toBeCloseTo(start, 0)
   expect(backward.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2))).toBe(true)
-  expect(backward.some(rows => rows.some(row => row.x > Math.min(backward[0][0].x, backward.at(-1)![0].x) + 30
-    && row.x < Math.max(backward[0][0].x, backward.at(-1)![0].x) - 30 && row.unclipped))).toBe(true)
+  expect(backward.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2 && row.unclipped))).toBe(true)
   expect(backward.every(rows => rows.length === 1 && rows[0].opacity > 0.95)).toBe(true)
 })
 

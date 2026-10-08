@@ -160,6 +160,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
         sweep={{ current: step.current, active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
       <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="learning-state-panels">
+        <div className="learning-event-panels">
         <section aria-label="当前事件" className="workspace-panel learning-current"><Card>
           <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2>当前事件</h2></CardTitle><HelpButton topic="ties">事件说明</HelpButton></CardHeader>
           <CardContent ref={currentPanel} className="relative flex flex-col gap-2"><p>{phase}</p>
@@ -182,6 +183,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
             {!step.pending.length && <p>空</p>}
           </CardContent>
         </Card></section>
+        </div>
         <section aria-label="活动线段顺序" className="workspace-panel learning-active"><Card>
           <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2 {...titleProps('active')}>活动线段顺序</h2></CardTitle><HelpButton topic="active">顺序说明</HelpButton></CardHeader>
           <CardContent ref={activePanel} className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">{step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>

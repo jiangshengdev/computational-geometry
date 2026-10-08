@@ -23,7 +23,11 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 108
       expect(box.y + box.height).toBeLessThanOrEqual(viewport.height)
     }
     const [current, participants, canvas, queue, active, explanation] = boxes
-    expect(current.x + current.width).toBeLessThan(canvas.x)
+    expect(current.x).toBe(queue.x)
+    expect(current.width).toBe(queue.width)
+    expect(current.y).toBe(canvas.y)
+    expect(current.y + current.height).toBeLessThan(queue.y)
+    expect(queue.y + queue.height).toBeCloseTo(canvas.y + canvas.height, 0)
     expect(participants.x + participants.width).toBeLessThan(canvas.x)
     expect(canvas.x + canvas.width).toBeLessThan(queue.x)
     expect(canvas.x + canvas.width).toBeLessThan(active.x)
