@@ -8,6 +8,7 @@ import { hoverHighlights, type HoverTarget } from './hover'
 import { AnimatePresence, LayoutGroup } from 'motion/react'
 import { LearningRow } from './LearningMotion'
 import { useLearningReducedMotion } from './useLearningReducedMotion'
+import { HelpButton } from './CaseHelp'
 
 
 export function LearningView({ preset, trace, results, index, onStepChange }: {
@@ -111,7 +112,6 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
   const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="flex flex-col gap-4">
-    <p>学习目标：{preset.learning?.goal}</p>
     <div className="flex flex-wrap items-center gap-3">
       <Button variant="outline" onClick={() => changeStep(current => current - 1, true)} disabled={index === 0} aria-keyshortcuts="ArrowLeft">上一步<kbd aria-hidden="true">←</kbd></Button>
       <Button onClick={() => changeStep(current => current + 1, true)} disabled={complete} aria-keyshortcuts="ArrowRight">下一步<kbd aria-hidden="true">→</kbd></Button>
@@ -136,7 +136,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
       <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="flex min-w-0 flex-col gap-4">
         <section aria-label="当前事件"><Card>
-          <CardHeader><CardTitle><h2>当前事件</h2></CardTitle></CardHeader>
+          <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2>当前事件</h2></CardTitle><HelpButton topic="ties">事件说明</HelpButton></CardHeader>
           <CardContent className="relative flex flex-col gap-2"><p>{phase}</p>
             <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
               {step.current && <LearningRow as="p" key={formatPoint(step.current)} identity={`event:${formatPoint(step.current)}`}
@@ -146,8 +146,8 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
           </CardContent>
         </Card></section>
         <section aria-label="待处理事件队列"><Card>
-          <CardHeader><CardTitle><h2 {...titleProps('pending')}>待处理事件队列</h2></CardTitle></CardHeader>
-          <CardContent><p className="mb-2 text-sm text-muted-foreground">先 <span className="coordinates">x</span>，后 <span className="coordinates">y</span>；队首先处理</p>
+          <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2 {...titleProps('pending')}>待处理事件队列</h2></CardTitle><HelpButton topic="events">队列说明</HelpButton></CardHeader>
+          <CardContent>
             <ol className="relative flex list-inside list-decimal flex-col gap-2">
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
                 {step.pending.map(p => <LearningRow key={formatPoint(p)} identity={`event:${formatPoint(p)}`}
@@ -158,9 +158,8 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
           </CardContent>
         </Card></section>
         <section aria-label="活动线段顺序"><Card>
-          <CardHeader><CardTitle><h2 {...titleProps('active')}>活动线段顺序</h2></CardTitle></CardHeader>
-          <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">序号从下到上递增 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
-            {overlaps.length > 0 && <p className="text-sm text-muted-foreground">重叠成员在同一高度并列；列表位置只用于逐个辨认，不表示它们之间存在上下差别。图中序号也指向同一几何位置。</p>}
+          <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2 {...titleProps('active')}>活动线段顺序</h2></CardTitle><HelpButton topic="active">顺序说明</HelpButton></CardHeader>
+          <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">{step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
             <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-2">
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
                 {step.active.map(id => <LearningRow key={id} identity={`segment:${id}`}
@@ -173,36 +172,21 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
       </LayoutGroup>
     </div>
     <section aria-label="同点参与线段"><Card>
-      <CardHeader><CardTitle><h2>同点参与线段</h2></CardTitle></CardHeader>
+      <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2>同点参与线段</h2></CardTitle><HelpButton topic="ties">同点说明</HelpButton></CardHeader>
       <CardContent className="flex flex-col gap-2">
         {step.current ? <>
           <p>开始：{step.starts.length ? inputReferences(step.starts, '、') : '无'}</p>
           <p>结束：{step.ends.length ? inputReferences(step.ends, '、') : '无'}</p>
           <p>穿过：{step.passes.length ? inputReferences(step.passes, '、') : '无'}</p>
         </> : <p>取出事件后显示同点参与者。</p>}
-        <p className="text-sm text-muted-foreground">按扫描方向区分开始、结束与内部穿过；这三组属于同一个精确几何点，不随中间动作改变。闭线段包含端点：先记录所有参与者的交集，再移除结束者、加入开始者，并排好继续活动者的顺序。</p>
       </CardContent>
     </Card></section>
-    <section aria-label="同点与并列规则" className="flex flex-col gap-2 text-sm">
-      <h2 className="font-semibold">同一横坐标，不一定是同一个点</h2>
-      <p>先比较 x，再比较 y；只有两个坐标都精确相等才归为同一个事件点。同一扫描坐标不等于所有线段共点。队列里的每个点单独处理，同点的全部参与者一起归组。</p>
-      <p>事件处理中展示的是更新过程，不能当作完成状态。事件处理完成后，当前点的非竖直继续活动线段按紧邻右侧的上下顺序排列；竖直线则继续走向更高的待处理位置。同 x 的较低位置已处理，较高位置仍保留处理前顺序。因此此时的列表不是整条扫描线统一右移后的顺序。</p>
-    </section>
-    {trace.shear.numerator !== '0' && <section aria-label="竖直线处理规则" className="flex flex-col gap-2 text-sm">
-      <h2 className="font-semibold">竖直线：固定横坐标，逐个处理高度</h2>
-      <p>竖直线与扫描线重合为一段，不能用一个普通直线交点代表整段。仍按先 x、后 y 的约定：到下端时加入，在不同高度依次处理交叉和接触，到上端先记录闭线段接触再退出。</p>
-      <p>活动列表中的竖直线代表尚未完成的向上处理前沿；图中它的序号标在当前处理高度，而非唯一的扫描线交点。遇到横穿线段时，处理中先保留之前的顺序并记录交集，完成后竖直线排在该穿过者之上，继续检查更高处的新邻居。上端退出后才算整条竖直线处理完毕。</p>
-      <p>图中的当前事件、队列和结果均使用原坐标；扫描线可停在同一 x，而当前事件沿 y 上移。完成较低交点不会清空更高的待处理事件。</p>
-    </section>}
-    {overlaps.length > 0 && <section aria-label="重叠处理规则" className="flex flex-col gap-2 text-sm">
-      <h2 className="font-semibold">共线重叠：交集是一段线</h2>
-      <p>本案例的 S0 与 S1 都在 y = 0 上，公共范围是 x ∈ [2, 4]。两端之间有无穷多个公共点；普通 BO 的孤立点事件前提在这里不成立，不是上下交换就能处理重叠。</p>
-      <p>本例采用区间扩展解释：在较晚起点 (2, 0) 把同点开始者与穿过者归组，取较晚起点和较早终点，一次记录完整闭区间 (2, 0) → (4, 0)。这不是扫描线已经走过整段，而是根据已知端点精确确定完整交集。</p>
-      <p>队列仍只含有限的端点事件。重叠起界 (2, 0) 与止界 (4, 0) 本来就是端点，无需为区间内部每个点创建事件。到止界时 S0 退出，S1 继续；已记录的完整区间不缩短，也不再追加一个孤立交点。</p>
-      <p>重叠期间两条线段几何并列，活动列表保留各自身份；它们不会像普通交叉那样互换上下位置。这是预设教学案例，不是任意重叠输入的生产级实现保证。</p>
-    </section>}
     <section aria-label="操作解释" aria-live="polite"><Card>
-      <CardHeader><CardTitle><h2>这一步为什么这样做？</h2></CardTitle></CardHeader>
+      <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2>这一步为什么这样做？</h2></CardTitle><div className="flex flex-wrap gap-2">
+        <HelpButton topic="neighbors">相邻性说明</HelpButton>
+        {trace.shear.numerator !== '0' && <HelpButton topic="vertical">竖直线说明</HelpButton>}
+        {overlaps.length > 0 && <HelpButton topic="overlap">重叠说明</HelpButton>}
+      </div></CardHeader>
       <CardContent className="flex flex-col gap-2">
         {step.action === 'initial' && <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步取出最早事件。</p>}
         {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
@@ -232,15 +216,5 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
         <p className="coordinates">独立数学核对：{preset.learning?.verification}</p>
       </CardContent>
     </Card></section>}
-    <section aria-label="为什么不会漏掉交点"><Card>
-      <CardHeader><CardTitle><h2>为什么只检查邻居不会漏掉交点？</h2></CardTitle></CardHeader>
-      <CardContent className="flex flex-col gap-2">
-        <p>在一般位置下，考虑即将发生的下一处交叉：只有两条线段在内部相交，没有第三条线段同时经过该点，也没有端点与交叉重合。</p>
-        <p>越靠近交点，两条线段之间的间隙越小。如果第三条线段一直夹在中间，它就必须也经过这个交点，与没有三线共点的前提矛盾。因此交叉前足够近的位置，两条相交线段必是邻居。</p>
-        <p>再往前看最近一次事件：两个事件之间没有端点或交叉，活动线段的成员和上下顺序不变。所以这对线段在上次事件处理后就已经相邻；在产生这一邻接关系时检查并安排交点，就能让扫描线及时停下。</p>
-        <p>插入会产生新线段两侧的邻居；删除会让原来分隔的两侧相邻；交叉换序会改变外侧邻居。只检查这些发生变化的边界，不必机械枚举所有线段对。</p>
-        <p className="text-muted-foreground">适用边界：共端点、端点落在内部、多线共点、竖直线、同一扫描坐标事件与共线重叠需要额外规则。本页普通案例和相邻性论证不能代替这些退化情况的完整处理证明。</p>
-      </CardContent>
-    </Card></section>
   </section>
 }

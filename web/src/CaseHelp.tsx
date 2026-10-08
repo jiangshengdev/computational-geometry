@@ -2,9 +2,9 @@ import { useContext, useRef, useState, type ReactNode } from 'react'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
-import { LearningIntroduction, LearningReferences } from './HelpContent'
+import { LearningIntroduction, LearningReferences, SamePointRules, VerticalRules, OverlapRules, NeighborRules, EventQueueRules, ActiveOrderRules } from './HelpContent'
 import { HelpContext, type HelpTopic } from './help-context'
-import type { Preset } from './geometry'
+import { samePoint, type Preset } from './geometry'
 
 const topics = [
   { id: 'introduction', title: '学习目标、术语与扫描约定', content: <LearningIntroduction /> },
@@ -18,18 +18,25 @@ const topics = [
     <h2 className="font-semibold">独立输入与端点</h2>
     <p>每条输入保留自己的编号和两个端点。即使几何重合，也保留各自的输入身份。将指针移到输入列表或画布中的对应对象，可查看高亮联动。</p>
   </section> },
+  { id: 'events', title: '事件队列', content: <EventQueueRules /> },
+  { id: 'ties', title: '同点与并列规则', content: <SamePointRules /> },
+  { id: 'neighbors', title: '相邻性论证', content: <NeighborRules /> },
 ] as const
 
 export function CaseHelp({ children, preset }: { children: ReactNode; preset: Preset }) {
   const [open, setOpen] = useState(false)
   const [topic, setTopic] = useState<HelpTopic>('introduction')
   const trigger = useRef<HTMLButtonElement | null>(null)
-  const availableTopics = [...topics, { id: 'case', title: '案例介绍与目标', content: <section aria-label="案例介绍与目标" className="flex flex-col gap-3">
+  const availableTopics: { id: HelpTopic; title: string; content: ReactNode }[] = [...topics, { id: 'case', title: '案例介绍与目标', content: <section aria-label="案例介绍与目标" className="flex flex-col gap-3">
     <h2 className="font-semibold">{preset.name}</h2>
     <p className="coordinates">{preset.description}</p>
     {preset.learning && <p>学习目标：{preset.learning.goal}</p>}
     {!preset.learning && <p>此案例目前提供结果查看；支持教学的案例可从案例列表进入逐步学习。</p>}
-  </section> }]
+  </section> }, { id: 'active', title: '活动线段顺序', content: <ActiveOrderRules overlap={preset.id === 'partial-overlap'} /> }]
+  if (preset.segments.some(segment => samePoint({ x: segment.start.x, y: segment.end.y }, segment.end) && !samePoint(segment.start, segment.end))) {
+    availableTopics.push({ id: 'vertical', title: '竖直线处理规则', content: <VerticalRules /> })
+  }
+  if (preset.id === 'partial-overlap') availableTopics.push({ id: 'overlap', title: '重叠处理规则', content: <OverlapRules /> })
   return <HelpContext value={(next, element) => { trigger.current = element; setTopic(next); setOpen(true) }}>
     {children}
     <Dialog open={open} onOpenChange={setOpen}>
@@ -58,5 +65,5 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
 
 export function HelpButton({ topic = 'introduction', children = '说明与帮助' }: { topic?: HelpTopic; children?: ReactNode }) {
   const showHelp = useContext(HelpContext)
-  return <Button variant="outline" size="sm" onClick={event => showHelp(topic, event.currentTarget)}>{children}</Button>
+  return <Button variant="outline" size="sm" aria-haspopup="dialog" onClick={event => showHelp(topic, event.currentTarget)}>{children}</Button>
 }
