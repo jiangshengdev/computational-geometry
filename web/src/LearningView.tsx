@@ -18,7 +18,7 @@ export function LearningIntroduction() {
     <p>事件队列按先 <span className="coordinates">x</span>、后 <span className="coordinates">y</span> 从小到大保存待处理事件；活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。</p>
     <p>在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。</p>
     <p className="text-muted-foreground">统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 <span className="coordinates">x</span> 的不同事件按 <span className="coordinates">y</span> 依次处理；当前事件处理完成后只更新该位置的顺序，同 <span className="coordinates">x</span> 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。</p>
-    <p className="text-muted-foreground">本学习流程讲普通交叉、无交点、相邻检测、同扫描坐标不同位置与端点接触。多线共点、竖直线和重叠尚未获得完整教学支持。</p>
+    <p className="text-muted-foreground">本学习流程讲普通交叉、无交点、相邻检测、同扫描坐标不同位置、端点接触与多线共点。竖直线和重叠尚未获得完整教学支持。</p>
     </section>
   </details>
 }
@@ -29,7 +29,7 @@ export function LearningReferences() {
     <a className="underline" href="https://www.cs.umd.edu/class/fall2023/cmsc754/Lects/lect04-intersection.pdf">Dave Mount · CMSC 754 Lecture 4：事件、活动顺序与相邻检测</a>
     <p className="text-muted-foreground">核对依据：讲义的 Plane Sweep、Adjacent-segment rule 与事件处理章节（图 4 的相邻性论证、图 5 的插入、删除与交叉）。讲义先假设一般位置；这里另外明示同 <span className="coordinates">x</span> 端点的处理顺序。其平衡树复杂度结论不等于本演示实现的性能保证。</p>
     <a className="underline" href="https://i11www.iti.kit.edu/_media/teaching/winter2015/compgeom/algogeom-ws15-vl02.pdf">KIT · Line Segment Intersection：闭线段与同点事件归组</a>
-    <p className="text-muted-foreground">核对依据：第 4 页定义闭线段，第 6 页按两个坐标确定事件先后，第 8 页 handleEvent 将开始、结束、内部穿过的线段归组，先报告交集再更新状态。讲义从上向下扫描，本页将方向换为从左向右、同 x 时从下向上；对应的是相同的精确字典序规则，不用数值微移。</p>
+    <p className="text-muted-foreground">核对依据：讲义标号 4 定义闭线段，标号 6 按两个坐标确定事件先后，标号 8 的 handleEvent 将开始、结束、内部穿过的线段归组，先报告交点及全部参与者，再移除与重新插入以更新顺序（PDF 第 39–42 页）。讲义从上向下扫描，本页将方向换为从左向右、同 x 时从下向上；对应的是相同的精确字典序规则，不用数值微移。</p>
   </section>
 }
 
@@ -205,10 +205,10 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       <CardContent className="flex flex-col gap-2">
         {step.action === 'initial' && <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步取出最早事件。</p>}
         {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
-        {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。接下来检查新邻居是否会在未来相交。</p>}
+        {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。'}接下来检查新邻居是否会在未来相交。</p>}
         {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。</p>}
-        {step.action === 'record' && <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> {step.starts.length || step.ends.length ? '在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。' : '在这里交叉。'}交集已记入结果，活动顺序尚未更新。</p>}
-        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：本事件参与者按紧邻事件右侧从下到上的顺序排列，再检查新邻居。同 x 的其他事件点保留各自处理进度。</p>}
+        {step.action === 'record' && <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> {step.subjects.every(id => step.passes.includes(id)) ? '在这里交叉。' : '在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。'}交集已记入结果，活动顺序尚未更新。{step.starts.length + step.ends.length + step.passes.length > 2 && '这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。'}</p>}
+        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：本事件参与者按紧邻事件右侧从下到上的顺序排列，再检查新邻居。{step.starts.length > 0 && '本点有开始者，换序已随加入一起展示；此步说明该顺序，没有再次交换。'}同 x 的其他事件点保留各自处理进度。</p>}
         {step.action === 'check' && <p>检查相邻线段 <span className="coordinates">{subjects}</span>：
           {neighborChange?.action === 'insert' && <>加入 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。</>}
           {neighborChange?.action === 'remove' && <>退出 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，原来隔在中间的线段消失，两侧线段成为新邻居。</>}
@@ -225,7 +225,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       <CardHeader><CardTitle><h2>学习完成</h2></CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，所有线段已退出。</p>
         <p>独立交点位置：{points.length}；相交线段对：{step.results.length}。同一位置可由多个线段对共享。</p>
-        {step.results.length ? step.results.map(result => <p className="coordinates" key={pairName(result)}>{result.geometry.type === 'point' && `${pointName(result.geometry.point)}：${pairName(result)}`}</p>) : <p>结果为空：两条线段平行且高度不同，没有交点。</p>}
+        {points.length ? points.map(point => <p className="coordinates" key={formatPoint(point)}>{pointName(point)}：{step.results.filter(result => result.geometry.type === 'point' && samePoint(result.geometry.point, point)).map(pairName).join('、')}</p>) : <p>结果为空：两条线段平行且高度不同，没有交点。</p>}
         <p className="coordinates">独立数学核对：{preset.learning?.verification}</p>
       </CardContent>
     </Card></section>}

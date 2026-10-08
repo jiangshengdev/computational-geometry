@@ -174,7 +174,8 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
               <line x1={px(g.start)} y1={py(g.start)} x2={px(g.end)} y2={py(g.end)} />
               <circle cx={px(g.start)} cy={py(g.start)} r={5} /><circle cx={px(g.end)} cy={py(g.end)} r={5} />
             </>}
-            {sweep && g.type === 'point' && <text {...pointLabelProps(g.point)} className="result-label" x={px(g.point) + 12} y={py(g.point) - 12}>{sweep.labelPoint(g.point)}</text>}
+            {sweep && g.type === 'point' && resultOrder.find(other => other.geometry.type === 'point' && samePoint(other.geometry.point, g.point)) === result &&
+              <text {...pointLabelProps(g.point)} className="result-label" x={px(g.point) + 12} y={py(g.point) - 12}>{sweep.labelPoint(g.point)}</text>}
           </g>
         })}
         {sweep && highlights?.points.filter(p => eventPoints.some(visible => samePoint(p, visible))).map(p =>
