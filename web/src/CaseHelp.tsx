@@ -1,7 +1,9 @@
-import { useContext, useRef, useState, type ReactNode } from 'react'
-import { Button } from '@/components/ui/button'
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { useContext, useId, useRef, useState, type ReactNode } from 'react'
+import { Button } from '@heroui/react/button'
+import { Label } from '@heroui/react/label'
+import { Modal } from '@heroui/react/modal'
+import { Radio } from '@heroui/react/radio'
+import { RadioGroup } from '@heroui/react/radio-group'
 import { LearningIntroduction, LearningReferences, SamePointRules, VerticalRules, OverlapRules, NeighborRules, EventQueueRules, ActiveOrderRules } from './HelpContent'
 import { HelpContext, type HelpTopic } from './help-context'
 import { samePoint, type Preset } from './geometry'
@@ -26,7 +28,7 @@ const topics = [
 export function CaseHelp({ children, preset }: { children: ReactNode; preset: Preset }) {
   const [open, setOpen] = useState(false)
   const [topic, setTopic] = useState<HelpTopic>('introduction')
-  const trigger = useRef<HTMLButtonElement | null>(null)
+  const descriptionId = useId()
   const availableTopics: { id: HelpTopic; title: string; content: ReactNode }[] = [...topics, { id: 'case', title: '案例介绍与目标', content: <section aria-label="案例介绍与目标" className="flex flex-col gap-3">
     <h2 className="font-semibold">{preset.name}</h2>
     <p className="coordinates">{preset.description}</p>
@@ -37,33 +39,46 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
     availableTopics.push({ id: 'vertical', title: '竖直线处理规则', content: <VerticalRules /> })
   }
   if (preset.id === 'partial-overlap') availableTopics.push({ id: 'overlap', title: '重叠处理规则', content: <OverlapRules /> })
-  return <HelpContext value={(next, element) => { trigger.current = element; setTopic(next); setOpen(true) }}>
+  return <HelpContext value={(next, element) => {
+    // Record the actual opener in Modal's focus scope, including touch activation.
+    element.focus({ preventScroll: true })
+    setTopic(next)
+    setOpen(true)
+  }}>
     {children}
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="flex max-h-[90dvh] flex-col sm:max-w-3xl" showCloseButton={false}
-        onCloseAutoFocus={event => { event.preventDefault(); trigger.current?.focus() }}>
-        <DialogHeader>
+    <Modal.Backdrop isOpen={open} onOpenChange={setOpen}>
+      <Modal.Container size="lg" scroll="inside">
+      <Modal.Dialog className="max-h-[90dvh]" aria-describedby={descriptionId}>
+        <Modal.Header>
           <div className="flex items-center justify-between gap-3">
-            <DialogTitle>说明与帮助</DialogTitle>
-            <DialogClose asChild><Button variant="outline" size="sm">关闭帮助</Button></DialogClose>
+            <Modal.Heading>说明与帮助</Modal.Heading>
+            <Button slot="close" variant="outline" size="sm">关闭帮助</Button>
           </div>
-          <DialogDescription>按主题阅读，关闭后继续当前操作。</DialogDescription>
-        </DialogHeader>
-        <div className="min-h-0 overflow-y-auto overscroll-contain">
-          <ToggleGroup type="single" value={topic} onValueChange={value => { if (value) setTopic(value as HelpTopic) }}
-            className="mb-5 flex-wrap justify-start" aria-label="帮助主题">
-            {availableTopics.map(item => <ToggleGroupItem key={item.id} value={item.id}>{item.title}</ToggleGroupItem>)}
-          </ToggleGroup>
+          <p id={descriptionId} className="text-sm text-muted">按主题阅读，关闭后继续当前操作。</p>
+        </Modal.Header>
+        <Modal.Body className="min-h-0 overscroll-contain">
+          <RadioGroup value={topic} onChange={value => setTopic(value as HelpTopic)} orientation="horizontal"
+            className="mb-5 flex flex-row flex-wrap gap-3" aria-label="帮助主题">
+            {availableTopics.map(item => <Radio key={item.id} value={item.id}>
+              <Radio.Content className="min-h-10">
+                <Radio.Control><Radio.Indicator /></Radio.Control>
+                <Label>{item.title}</Label>
+              </Radio.Content>
+            </Radio>)}
+          </RadioGroup>
           <div key={topic} className="flex flex-col gap-3 text-sm leading-relaxed">
             {availableTopics.find(item => item.id === topic)?.content}
           </div>
-        </div>
-      </DialogContent>
-    </Dialog>
+        </Modal.Body>
+      </Modal.Dialog>
+      </Modal.Container>
+    </Modal.Backdrop>
   </HelpContext>
 }
 
 export function HelpButton({ topic = 'introduction', children = '说明与帮助' }: { topic?: HelpTopic; children?: ReactNode }) {
   const showHelp = useContext(HelpContext)
-  return <Button variant="outline" size="sm" aria-haspopup="dialog" onClick={event => showHelp(topic, event.currentTarget)}>{children}</Button>
+  const trigger = useRef<HTMLButtonElement | null>(null)
+  return <Button ref={trigger} variant="outline" size="sm" aria-haspopup="dialog"
+    onPress={() => { if (trigger.current) showHelp(topic, trigger.current) }}>{children}</Button>
 }

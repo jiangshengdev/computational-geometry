@@ -57,9 +57,9 @@ for (const width of [1360, 390]) test(`并列教学：同横坐标不同位置�
   const active = page.getByTestId('active-order')
   const next = page.getByRole('button', { name: '下一步', exact: true })
   await page.getByRole('button', { name: '说明与帮助', exact: true }).click()
-  await page.getByRole('radio', { name: '同点与并列规则', exact: true }).click()
+  await page.getByRole('radiogroup', { name: '帮助主题' }).getByText('同点与并列规则', { exact: true }).click()
   await expect(page.getByRole('region', { name: '同点与并列规则' })).toContainText('不等于所有线段共点')
-  await page.getByRole('radio', { name: '参考资料', exact: true }).click()
+  await page.getByRole('radiogroup', { name: '帮助主题' }).getByText('参考资料', { exact: true }).click()
   await expect(page.getByRole('link', { name: /KIT/ })).toHaveAttribute('href', /algogeom-ws15-vl02.pdf$/)
   await page.getByRole('button', { name: '关闭帮助', exact: true }).click()
   for (let run = 0; run < 2; run++) {

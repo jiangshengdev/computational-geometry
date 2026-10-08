@@ -65,7 +65,7 @@ for (const width of [1360, 390]) test(`竖直教学：状态标记表示处理�
   await selectPreset(page, '竖直线多高度接触')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   await page.getByRole('button', { name: '说明与帮助', exact: true }).click()
-  await page.getByRole('radio', { name: '竖直线处理规则', exact: true }).click()
+  await page.getByRole('radiogroup', { name: '帮助主题' }).getByText('竖直线处理规则', { exact: true }).click()
   const rule = page.getByRole('region', { name: '竖直线处理规则' })
   await expect(rule).toContainText('重合为一段')
   await expect(rule).toContainText('处理高度')
