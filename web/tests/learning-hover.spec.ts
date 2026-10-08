@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 async function center(page: Page, target: Locator) {
+  await target.scrollIntoViewIfNeeded()
   const box = (await target.boundingBox())!
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
 }
