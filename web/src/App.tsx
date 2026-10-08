@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link, Route, Routes, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
-import { LearningIntroduction, LearningView } from './LearningView'
+import { LearningView } from './LearningView'
+import { CaseHelp, HelpButton } from './CaseHelp'
 import { presets } from './presets'
 import { hoverHighlights, type HoverTarget } from './hover'
 import './App.css'
@@ -47,7 +48,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
   const results = computation.status === 'ready' ? computation.results : []
   const highlights = hover ? hoverHighlights(hover, results) : null
   if (learning) return <>
-    <LearningIntroduction key="learning" />
+    <div className="mb-4"><HelpButton /></div>
     <p className="mb-4">{preset.name} · <span className="coordinates">{preset.description}</span> 从左向右扫描，按 <span className="coordinates">(x, y)</span> 排序，精确计算。</p>
     {computation.status === 'loading'
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
@@ -57,7 +58,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
     <Button asChild className="mt-6" variant="outline"><Link to={`/cases/${preset.id}`}>返回结果查看器</Link></Button>
   </>
   return <>
-    <LearningIntroduction />
+    <div className="mb-4"><HelpButton /></div>
     <p className="my-6 text-muted-foreground"><span className="coordinates">{preset.description}</span></p>
     {preset.learning && <p className="mb-4">学习目标：{preset.learning.goal}</p>}
     {teachable ? <Button asChild className="mb-4"><Link to={`/cases/${preset.id}/learn`}>开始逐步学习</Link></Button>
@@ -169,7 +170,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
   return <>
     <nav aria-label="页面导航" className="mb-4"><Button asChild variant="outline"><Link to="/">返回列表</Link></Button></nav>
     <h2 className="mb-4 text-xl font-semibold">{preset.name}</h2>
-    <CaseViewer key={`${preset.id}:${learning}`} preset={preset} learning={learning} />
+    <CaseHelp key={`${preset.id}:${learning}`}><CaseViewer preset={preset} learning={learning} /></CaseHelp>
   </>
 }
 
