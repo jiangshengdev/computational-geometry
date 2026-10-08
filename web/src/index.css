@@ -5,10 +5,6 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  font: 15px/1.6 system-ui, -apple-system, sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -42,7 +38,6 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
-body { margin: 0; min-width: 320px; }
 
 @theme inline {
   --radius-sm: calc(var(--radius) * 0.6);
