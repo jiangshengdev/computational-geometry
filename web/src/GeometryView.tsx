@@ -124,7 +124,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         else onHover({ kind: 'geometry', inputs, pairs: hits.map(pairName) })
       }}>
       <g transform={transform.toString()}>
-        {x.ticks(Math.max(2, Math.floor(width / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
+        {x.ticks(Math.max(2, Math.floor((x(maxX) - x(minX)) / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
         {y.ticks(6).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
         {ordered.map(({ s, index }) => {
           const active = selected?.segments.includes(index) ?? false

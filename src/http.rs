@@ -61,6 +61,9 @@ struct StepDto {
     active: Vec<usize>,
     results: Vec<IntersectionDto>,
     checked: Vec<[usize; 2]>,
+    starts: Vec<usize>,
+    ends: Vec<usize>,
+    passes: Vec<usize>,
 }
 
 impl From<SweepTrace> for TraceDto {
@@ -83,6 +86,9 @@ impl From<SweepTrace> for TraceDto {
                         .map(IntersectionDto::from)
                         .collect(),
                     checked: step.checked,
+                    starts: step.starts,
+                    ends: step.ends,
+                    passes: step.passes,
                 })
                 .collect(),
         }

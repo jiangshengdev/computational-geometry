@@ -59,7 +59,7 @@ function CaseViewer({ preset }: { preset: Preset }) {
     <p className="my-6 text-muted-foreground"><span className="coordinates">{preset.description}</span></p>
     {preset.learning && <p className="mb-4">学习目标：{preset.learning.goal}</p>}
     {teachable ? <Button className="mb-4" disabled={computation.status !== 'ready'} onClick={() => setLearning(true)}>开始逐步学习</Button>
-      : <p className="mb-4 text-muted-foreground">此案例目前提供结果查看；逐步学习请选择普通交叉、无交点或相邻检测案例。</p>}
+      : <p className="mb-4 text-muted-foreground">此案例目前提供结果查看；逐步学习请选择普通交叉、无交点、相邻检测、同扫描坐标不同交点、共端点、起点落在内部或终点落在内部。</p>}
     <div className="workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
       <aside className="min-w-0" aria-label="计算结果">

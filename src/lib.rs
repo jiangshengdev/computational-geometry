@@ -190,6 +190,9 @@ pub(crate) struct SweepStep {
     pub active: Vec<usize>,
     pub results: Vec<Intersection>,
     pub checked: Vec<[usize; 2]>,
+    pub starts: Vec<usize>,
+    pub ends: Vec<usize>,
+    pub passes: Vec<usize>,
 }
 
 impl SweepStep {
@@ -215,6 +218,9 @@ impl SweepStep {
             active: active.to_vec(),
             results: results.to_vec(),
             checked: checked.to_vec(),
+            starts: Vec::new(),
+            ends: Vec::new(),
+            passes: Vec::new(),
         }
     }
 }
@@ -262,6 +268,7 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
         ));
     }
     while let Some((point, event)) = queue.pop_first() {
+        let first_step = steps.as_ref().map_or(0, |steps| steps.len());
         if let Some(steps) = &mut steps {
             steps.push(SweepStep::capture(
                 "take",
@@ -281,6 +288,25 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
                 incident.push(id);
             }
         }
+        // Capture membership once from the same exact incident block used by
+        // the sweep, before removals or insertions change the active state.
+        let participants = steps.as_ref().map(|_| {
+            let mut starts = Vec::new();
+            let mut ends = Vec::new();
+            let mut passes = Vec::new();
+            for &id in &incident {
+                if segments[id].left == point {
+                    starts.push(id);
+                }
+                if segments[id].right == point {
+                    ends.push(id);
+                }
+                if segments[id].left != point && segments[id].right != point {
+                    passes.push(id);
+                }
+            }
+            (starts, ends, passes)
+        });
         for (i, &a) in incident.iter().enumerate() {
             for &b in &incident[i + 1..] {
                 let original = |p: &Point| Point {
@@ -436,6 +462,12 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
                 &checked,
                 &[],
             ));
+            let (starts, ends, passes) = participants.expect("tracing captures participants");
+            for step in &mut steps[first_step..] {
+                step.starts.clone_from(&starts);
+                step.ends.clone_from(&ends);
+                step.passes.clone_from(&passes);
+            }
         }
     }
     result

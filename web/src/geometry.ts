@@ -13,6 +13,9 @@ export interface SweepStep {
   active: number[]
   results: Intersection[]
   checked: [number, number][]
+  starts: number[]
+  ends: number[]
+  passes: number[]
 }
 export interface SweepTrace { shear: Rational; steps: SweepStep[] }
 
