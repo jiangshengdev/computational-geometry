@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useEffectEvent, useId, useState } from 'react'
 import { GeometryView } from './GeometryView'
-import { formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
+import { formatGeometry, formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Slider } from 'radix-ui'
@@ -18,7 +18,7 @@ export function LearningIntroduction() {
     <p>事件队列按先 <span className="coordinates">x</span>、后 <span className="coordinates">y</span> 从小到大保存待处理事件；活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。</p>
     <p>在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。</p>
     <p className="text-muted-foreground">统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 <span className="coordinates">x</span> 的不同事件按 <span className="coordinates">y</span> 依次处理；当前事件处理完成后只更新该位置的顺序，同 <span className="coordinates">x</span> 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。</p>
-    <p className="text-muted-foreground">本学习流程讲普通交叉、无交点、相邻检测、同扫描坐标不同位置、端点接触、多线共点与竖直线。竖直线在固定 x 上按 y 从下向上处理，活动状态代表处理前沿；共线重叠尚未获得完整教学支持。</p>
+    <p className="text-muted-foreground">本学习流程讲普通交叉、无交点、相邻检测、同扫描坐标不同位置、端点接触、多线共点、竖直线与部分重叠。竖直线在固定 x 上按 y 从下向上处理；共线重叠用完整闭区间表达。这些预设教学案例不是任意退化输入的生产级实现保证。</p>
     </section>
   </details>
 }
@@ -31,6 +31,9 @@ export function LearningReferences() {
     <a className="underline" href="https://i11www.iti.kit.edu/_media/teaching/winter2015/compgeom/algogeom-ws15-vl02.pdf">KIT · Line Segment Intersection：闭线段与同点事件归组</a>
     <p className="text-muted-foreground">核对依据：讲义标号 4 定义闭线段，标号 6 按两个坐标确定事件先后，标号 8 的 handleEvent 将开始、结束、内部穿过的线段归组，先报告交点及全部参与者，再移除与重新插入以更新顺序（PDF 第 39–42 页）。讲义从上向下扫描，本页将方向换为从左向右、同 x 时从下向上；对应的是相同的精确字典序规则，不用数值微移。</p>
     <p className="text-muted-foreground">竖直案例沿用上述闭线段、字典序和同点归组规则。图中的竖直状态标记是本页的处理前沿表示，并非扫描线与线段的唯一交点。内部采用可逆精确剪切 (x + s·y, y)，s 的有理数界限由输入坐标推导，保证所有端点及线段交点的原始字典序不变；显示时还原原坐标。这是本实现的保序推导，不将讲义当作该剪切界限的证明，也不用浮点 epsilon 判断几何关系。</p>
+    <a className="underline" href="https://github.com/CGAL/cgal/blob/v6.1.1/Kernel_23/doc/Kernel_23/CGAL/intersections.h">CGAL 6.1.1 · 2D Intersections：交集可以是点或线段</a>
+    <a className="underline" href="https://github.com/CGAL/cgal/blob/v6.1.1/Surface_sweep_2/doc/Surface_sweep_2/Surface_sweep_2.txt">CGAL 6.1.1 · 2D Intersection of Curves：重叠与退化处理</a>
+    <p className="text-muted-foreground">核对依据：CGAL 官方文档源的二维交集表将 Segment_2 与 Segment_2 的非空交集列为 Point_2 或 Segment_2；扫描线文档明确将重叠曲线列入退化情况，并依赖经过认证的几何计算。本页用闭区间公共范围解释预设重叠案例，在较晚起点记录完整区间；这不是 CGAL 的算法复刻，也不把 CGAL 的鲁棒性或复杂度保证移用于本演示。</p>
   </section>
 }
 
@@ -93,6 +96,10 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
   const step = trace.steps[index]
+  const recorded = step.action === 'record' ? step.results.at(-1) : undefined
+  const recordedOverlap = recorded?.geometry.type === 'overlap' ? recorded : undefined
+  const overlaps = results.filter(result => result.geometry.type === 'overlap')
+  const visibleOverlaps = step.results.filter(result => result.geometry.type === 'overlap')
   const checkedInputs = step.action === 'check' || step.action === 'discover' ? step.subjects : []
   let neighborChange: typeof step | undefined
   if (checkedInputs.length) {
@@ -118,7 +125,11 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       ...(samePoint(p, s.start) ? [`S${id} 起点`] : []),
       ...(samePoint(p, s.end) ? [`S${id} 终点`] : []),
     ])
-    return `${endpoints.length ? endpoints.join(' / ') : `I${points.findIndex(point => samePoint(point, p))}`} ${formatPoint(p)}`
+    const boundary = overlaps.flatMap(({ geometry }) => geometry.type === 'overlap' ? [
+      ...(samePoint(p, geometry.start) ? ['重叠起界'] : []),
+      ...(samePoint(p, geometry.end) ? ['重叠止界'] : []),
+    ] : [])
+    return `${endpoints.length ? endpoints.join(' / ') : `I${points.findIndex(point => samePoint(point, p))}`} ${formatPoint(p)}${boundary.length ? ` · ${[...new Set(boundary)].join(' / ')}` : ''}`
   }
   const discovered = step.pending.filter(p => points.some(point => samePoint(point, p)))
   const newlyScheduled = discovered.filter(p => !before.pending.some(old => samePoint(old, p)))
@@ -145,7 +156,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     </div>
     <div className="workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
-        highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights} onHover={setHover}
+        highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights ?? (recordedOverlap ? hoverHighlights({ kind: 'pair', pair: pairName(recordedOverlap) }, step.results) : null)} onHover={setHover}
         sweep={{ current: step.current, active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
       <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="flex min-w-0 flex-col gap-4">
@@ -174,6 +185,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
         <section aria-label="活动线段顺序"><Card>
           <CardHeader><CardTitle><h2 {...titleProps('active')}>活动线段顺序</h2></CardTitle></CardHeader>
           <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">序号从下到上递增 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
+            {overlaps.length > 0 && <p className="text-sm text-muted-foreground">重叠成员在同一高度并列；列表位置只用于逐个辨认，不表示它们之间存在上下差别。图中序号也指向同一几何位置。</p>}
             <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-2">
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
                 {step.active.map(id => <LearningRow key={id} identity={`segment:${id}`}
@@ -207,14 +219,21 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       <p>活动列表中的竖直线代表尚未完成的向上处理前沿；图中它的序号标在当前处理高度，而非唯一的扫描线交点。遇到横穿线段时，处理中先保留之前的顺序并记录交集，完成后竖直线排在该穿过者之上，继续检查更高处的新邻居。上端退出后才算整条竖直线处理完毕。</p>
       <p>图中的当前事件、队列和结果均使用原坐标；扫描线可停在同一 x，而当前事件沿 y 上移。完成较低交点不会清空更高的待处理事件。</p>
     </section>}
+    {overlaps.length > 0 && <section aria-label="重叠处理规则" className="flex flex-col gap-2 text-sm">
+      <h2 className="font-semibold">共线重叠：交集是一段线</h2>
+      <p>本案例的 S0 与 S1 都在 y = 0 上，公共范围是 x ∈ [2, 4]。两端之间有无穷多个公共点；普通 BO 的孤立点事件前提在这里不成立，不是上下交换就能处理重叠。</p>
+      <p>本例采用区间扩展解释：在较晚起点 (2, 0) 把同点开始者与穿过者归组，取较晚起点和较早终点，一次记录完整闭区间 (2, 0) → (4, 0)。这不是扫描线已经走过整段，而是根据已知端点精确确定完整交集。</p>
+      <p>队列仍只含有限的端点事件。重叠起界 (2, 0) 与止界 (4, 0) 本来就是端点，无需为区间内部每个点创建事件。到止界时 S0 退出，S1 继续；已记录的完整区间不缩短，也不再追加一个孤立交点。</p>
+      <p>重叠期间两条线段几何并列，活动列表保留各自身份；它们不会像普通交叉那样互换上下位置。这是预设教学案例，不是任意重叠输入的生产级实现保证。</p>
+    </section>}
     <section aria-label="操作解释" aria-live="polite"><Card>
       <CardHeader><CardTitle><h2>这一步为什么这样做？</h2></CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2">
         {step.action === 'initial' && <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步取出最早事件。</p>}
         {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
         {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。'}接下来检查新邻居是否会在未来相交。</p>}
-        {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。</p>}
-        {step.action === 'record' && <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> {step.subjects.every(id => step.passes.includes(id)) ? '在这里交叉。' : '在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。'}交集已记入结果，活动顺序尚未更新。{step.starts.length + step.ends.length + step.passes.length > 2 && '这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。'}</p>}
+        {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。{visibleOverlaps.some(({ geometry }) => geometry.type === 'overlap' && step.current && samePoint(geometry.end, step.current)) && '此处是重叠止界：较早结束者退出，另一条线段继续。交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。'}</p>}
+        {step.action === 'record' && (recordedOverlap ? <p>记录重叠区间 <span className="coordinates">{formatGeometry(recordedOverlap.geometry)}</span>：参与线段 <span className="coordinates">{inputReferences(recordedOverlap.segments, ' × ')}</span> 从当前较晚起点开始重合，到较早终点为止。取两个闭区间的公共范围，包含两端及其间全部点，不是只记录当前端点。橙色线段和两个端点标出完整交集；活动顺序尚未更新，下一步加入开始者。</p> : <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> {step.subjects.every(id => step.passes.includes(id)) ? '在这里交叉。' : '在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。'}交集已记入结果，活动顺序尚未更新。{step.starts.length + step.ends.length + step.passes.length > 2 && '这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。'}</p>)}
         {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：本事件非竖直参与者按紧邻事件右侧从下到上的顺序排列，竖直参与者移到本点穿过者上方，继续向更高处处理，再检查新邻居。{step.starts.length > 0 && '本点有开始者，换序已随加入一起展示；此步说明该顺序，没有再次交换。'}同 x 的其他事件点保留各自处理进度。</p>}
         {step.action === 'check' && <p>检查相邻线段 <span className="coordinates">{subjects}</span>：
           {neighborChange?.action === 'insert' && <>加入 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。</>}
@@ -231,8 +250,10 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     {complete && <section aria-label="学习结果"><Card>
       <CardHeader><CardTitle><h2>学习完成</h2></CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，所有线段已退出。</p>
-        <p>独立交点位置：{points.length}；相交线段对：{step.results.length}。同一位置可由多个线段对共享。</p>
-        {points.length ? points.map(point => <p className="coordinates" key={formatPoint(point)}>{pointName(point)}：{step.results.filter(result => result.geometry.type === 'point' && samePoint(result.geometry.point, point)).map(pairName).join('、')}</p>) : <p>结果为空：两条线段平行且高度不同，没有交点。</p>}
+        {overlaps.length ? <p>孤立点结果位置：{points.length}；重叠区间：{visibleOverlaps.length}；相交线段对：{step.results.length}。区间包含无穷多个公共点，不能用孤立交点数量表示。</p> : <p>独立交点位置：{points.length}；相交线段对：{step.results.length}。同一位置可由多个线段对共享。</p>}
+        {points.map(point => <p className="coordinates" key={formatPoint(point)}>{pointName(point)}：{step.results.filter(result => result.geometry.type === 'point' && samePoint(result.geometry.point, point)).map(pairName).join('、')}</p>)}
+        {visibleOverlaps.map(result => <p className="coordinates" key={pairName(result)}>{formatGeometry(result.geometry)}：{pairName(result)}（包含两端及其间全部点）</p>)}
+        {!step.results.length && <p>结果为空：两条线段平行且高度不同，没有交点。</p>}
         <p className="coordinates">独立数学核对：{preset.learning?.verification}</p>
       </CardContent>
     </Card></section>}

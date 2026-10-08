@@ -20,7 +20,7 @@ export const presets: Preset[] = [
   { id: 'point-inputs', name: '零长度点与线段', description: '内部点、端点、外部点和重合点均保留独立输入身份。', segments: [segment('0', '0', '4', '0'), segment('2', '0', '2', '0'), segment('0', '0', '0', '0'), segment('5', '1', '5', '1'), segment('2', '0', '2', '0')] },
   { id: 'pure-points', name: '纯点集合', description: '两个重合分数点和一个分离点。', segments: [segment('1/3', '2/3', '1/3', '2/3'), segment('1/3', '2/3', '1/3', '2/3'), segment('2/3', '1/3', '2/3', '1/3')] },
   { id: 'point-multiway', name: '零长度点与多线共点', description: '三条线和一个点同处原点，六个配对分别可查。', segments: [segment('-2', '0', '2', '0'), segment('0', '-2', '0', '2'), segment('-2', '-2', '2', '2'), segment('0', '0', '0', '0')] },
-  { id: 'partial-overlap', name: '部分重叠', description: '水平线段的完整交集为 [2, 4]。', segments: [segment('0', '0', '4', '0'), segment('2', '0', '6', '0')] },
+  { id: 'partial-overlap', name: '部分重叠', description: '水平线段的完整交集为 [2, 4]。', segments: [segment('0', '0', '4', '0'), segment('2', '0', '6', '0')], learning: { goal: '区分非零长度的重叠区间与孤立交点，观察两端边界事件及参与线段的加入和退出。', verification: '两条线段都在 y = 0 上。S0 的 x ∈ [0, 4]，S1 的 x ∈ [2, 6]；公共范围为 [max(0, 2), min(4, 6)] = [2, 4]，所以交集是 (2, 0) → (4, 0) 的闭区间，包含两端及其间全部点。' } },
   { id: 'contained-overlap', name: '斜向包含', description: '较短斜线段完整包含在另一条线段内。', segments: [segment('0', '0', '4', '4'), segment('1', '1', '3', '3')] },
   { id: 'duplicate-overlap', name: '完全与反向重复', description: '三条几何相同的输入，包括一条反向输入；三个区间配对分别可查。', segments: [segment('0', '0', '4', '0'), segment('0', '0', '4', '0'), segment('4', '0', '0', '0')] },
   { id: 'vertical-overlap', name: '竖直分数重叠', description: '在 x = 1/2 处重叠，完整区间端点为 y = 1/3 与 5/3。', segments: [segment('1/2', '-1/3', '1/2', '5/3'), segment('1/2', '1/3', '1/2', '7/3')] },

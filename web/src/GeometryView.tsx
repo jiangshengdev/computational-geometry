@@ -181,6 +181,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
             </>}
             {sweep && g.type === 'point' && resultOrder.find(other => other.geometry.type === 'point' && samePoint(other.geometry.point, g.point)) === result &&
               <text {...pointLabelProps(g.point)} className="result-label" x={px(g.point) + 12} y={py(g.point) - 12}>{sweep.labelPoint(g.point)}</text>}
+            {sweep && g.type === 'overlap' && <text className="result-label" textAnchor="middle" x={(px(g.start) + px(g.end)) / 2} y={(py(g.start) + py(g.end)) / 2 - 12}>重叠区间 {pairName(result)}</text>}
           </g>
         })}
         {sweep && highlights?.points.filter(p => eventPoints.some(visible => samePoint(p, visible))).map(p =>
