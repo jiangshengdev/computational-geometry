@@ -37,9 +37,10 @@ export function LearningReferences() {
   </section>
 }
 
-export function LearningView({ preset, trace, results }: { preset: Preset; trace: SweepTrace; results: Intersection[] }) {
-  const [navigation, setNavigation] = useState({ index: 0, from: 0, reset: 0 })
-  const { index } = navigation
+export function LearningView({ preset, trace, results, index, onStepChange }: {
+  preset: Preset; trace: SweepTrace; results: Intersection[]; index: number; onStepChange: (index: number) => void
+}) {
+  const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const reducedMotion = useLearningReducedMotion()
   const animationId = useId()
   const [run, setRun] = useState(0)
@@ -69,11 +70,12 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   const changeStep = (value: number | ((current: number) => number), singleStep = false) => {
     setHover(null)
     setNumbering(null)
+    const next = Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(index) : value))
     setNavigation(current => ({
-      index: Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(current.index) : value)),
-      from: current.index,
+      from: index,
       reset: current.reset + (singleStep && !reducedMotion ? 0 : 1),
     }))
+    onStepChange(next)
   }
   const restart = () => { changeStep(0); setRun(r => r + 1) }
   const handleShortcut = useEffectEvent((event: KeyboardEvent) => {

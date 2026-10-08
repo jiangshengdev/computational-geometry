@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, Route, Routes, useParams } from 'react-router'
+import { Link, Route, Routes, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
 import { LearningIntroduction, LearningView } from './LearningView'
@@ -53,7 +53,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
       : computation.status === 'error'
         ? <Alert variant="destructive"><AlertTitle>计算失败</AlertTitle><AlertDescription>请检查本地服务。{computation.message}</AlertDescription></Alert>
-        : computation.trace && <LearningView preset={preset} trace={computation.trace} results={results} />}
+        : computation.trace && <LearningPage preset={preset} trace={computation.trace} results={results} />}
     <Button asChild className="mt-6" variant="outline"><Link to={`/cases/${preset.id}`}>返回结果查看器</Link></Button>
   </>
   return <>
@@ -131,11 +131,29 @@ function CaseList() {
   </section>
 }
 
-export function RouteError({ message, preset }: { message: string; preset?: Preset }) {
+function LearningPage({ preset, trace, results }: { preset: Preset; trace: SweepTrace; results: Intersection[] }) {
+  const [search, setSearch] = useSearchParams()
+  const values = search.getAll('step')
+  const value = values[0]
+  if (values.length > 1 || (value !== undefined && !/^[0-9]+$/.test(value))) {
+    return <RouteError message="教学步骤参数无效：请使用非负整数，且只提供一个 step 参数。" preset={preset} showListLink={false} />
+  }
+  const index = value === undefined ? 0 : Number(value)
+  if (!Number.isSafeInteger(index) || index >= trace.steps.length) {
+    return <RouteError message={`教学步骤超出范围：此案例的有效步骤为 0–${trace.steps.length - 1}。`} preset={preset} showListLink={false} />
+  }
+  return <LearningView preset={preset} trace={trace} results={results} index={index} onStepChange={next => {
+    const updated = new URLSearchParams(search)
+    updated.set('step', String(next))
+    setSearch(updated, { replace: true })
+  }} />
+}
+
+function RouteError({ message, preset, showListLink = true }: { message: string; preset?: Preset; showListLink?: boolean }) {
   return <section className="flex flex-col gap-4">
     <Alert variant="destructive"><AlertTitle>链接无效</AlertTitle><AlertDescription>{message}</AlertDescription></Alert>
     <nav aria-label="恢复导航" className="flex flex-wrap gap-3">
-      <Button asChild variant="outline"><Link to="/">返回列表</Link></Button>
+      {showListLink && <Button asChild variant="outline"><Link to="/">返回列表</Link></Button>}
       {preset && <Button asChild variant="outline"><Link to={`/cases/${preset.id}`}>查看详情</Link></Button>}
       {preset?.learning && <Button asChild><Link to={`/cases/${preset.id}/learn`}>从头学习</Link></Button>}
     </nav>

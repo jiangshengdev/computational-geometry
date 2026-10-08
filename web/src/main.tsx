@@ -6,6 +6,7 @@ import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter><App /></BrowserRouter>
+    {/* Step URLs must commit before the next keyboard or slider input. */}
+    <BrowserRouter useTransitions={false}><App /></BrowserRouter>
   </StrictMode>,
 )
