@@ -1,4 +1,8 @@
 main { max-width: 1380px; padding: 40px; margin: auto; }
+.case-card { display: grid; grid-template-columns: minmax(0, 1fr) clamp(80px, 25%, 160px); grid-template-rows: auto 1fr; column-gap: 16px; padding-right: 24px; }
+.case-card > [data-slot="card-header"], .case-card > [data-slot="card-content"] { grid-column: 1; min-width: 0; padding-right: 0; overflow-wrap: anywhere; }
+.case-thumbnail { grid-column: 2; grid-row: 1 / 3; align-self: center; display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: 8px; background: var(--muted); }
+.case-thumbnail text { fill: var(--muted-foreground); font-size: 13px; }
 .viewer-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .workspace { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; min-height: 0; }
 .case-shell { max-width: none; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }

@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
-import { scaleLinear, select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
-import { approximate, formatPoint, formatRational, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
+import { select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
+import { projectPoints } from './projection'
+import { formatPoint, formatRational, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -27,13 +28,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     'data-event-point': formatPoint(point),
     'data-highlighted': highlights?.points.some(p => samePoint(p, point)) ?? false,
   } : {}
-  const xs = points.map(p => approximate(p.x)), ys = points.map(p => approximate(p.y))
-  const minX = Math.min(0, ...xs), maxX = Math.max(1, ...xs)
-  const minY = Math.min(0, ...ys), maxY = Math.max(1, ...ys)
-  const unit = Math.min((width - 100) / (maxX - minX), (height - 100) / (maxY - minY))
-  const x = scaleLinear().domain([minX, maxX]).range([width / 2 - (maxX - minX) * unit / 2, width / 2 + (maxX - minX) * unit / 2])
-  const y = scaleLinear().domain([minY, maxY]).range([height / 2 + (maxY - minY) * unit / 2, height / 2 - (maxY - minY) * unit / 2])
-  const px = (p: Point) => x(approximate(p.x)), py = (p: Point) => y(approximate(p.y))
+  const { minX, maxX, x, y, px, py } = projectPoints(points, width, height, 50)
   // Project the existing list order; approximate coordinates only position the drawing.
   const numberedPoints = sweep?.numbering === 'pending'
     ? sweep.pending.map((point, index) => ({ x: px(point), y: py(point), label: `${index + 1}`, name: `待处理事件 ${index + 1}：${sweep.labelPoint(point)}` }))

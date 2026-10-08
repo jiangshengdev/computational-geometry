@@ -31,6 +31,20 @@ for (const width of [1360, 390]) {
     for (const preset of presets) {
       const card = page.getByRole('article', { name: preset.name, exact: true })
       await expect(card).toContainText(preset.description)
+      const thumbnail = card.getByRole('img', { name: `${preset.name}：输入线段预览`, exact: true })
+      await expect(thumbnail).toBeVisible()
+      await expect(thumbnail.locator('.input')).toHaveCount(preset.segments.length)
+      await expect(thumbnail.locator('.intersection')).toHaveCount(0)
+      const previewBox = (await thumbnail.boundingBox())!
+      const titleBox = (await card.getByRole('heading').boundingBox())!
+      expect(previewBox.x).toBeGreaterThanOrEqual(titleBox.x + titleBox.width)
+      expect(await thumbnail.evaluate(svg => Array.from(svg.querySelectorAll('line, path')).every(shape => {
+        const box = (shape as SVGGraphicsElement).getBBox()
+        return [box.x, box.y, box.width, box.height].every(Number.isFinite)
+          && box.x >= 0 && box.y >= 0 && box.x + box.width <= 160 && box.y + box.height <= 120
+          && (box.width > 0 || box.height > 0)
+      }))).toBe(true)
+      if (preset.segments.length === 0) await expect(thumbnail).toContainText('无输入线段')
       await expect(card.getByRole('link', { name: '查看详情', exact: true })).toHaveAttribute('href', `/cases/${preset.id}`)
       await expect(card.getByText('支持教学', { exact: true })).toHaveCount(preset.learning ? 1 : 0)
       const learn = card.getByRole('link', { name: '开始学习', exact: true })
@@ -38,6 +52,8 @@ for (const width of [1360, 390]) {
       else await expect(learn).toHaveCount(0)
     }
     expect(requests).toEqual([])
+    await page.getByRole('img', { name: '普通交叉：输入线段预览', exact: true }).click()
+    await expect(page).toHaveURL('http://127.0.0.1:4173/')
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     await page.screenshot({ path: `/tmp/geometry-routing-${width === 1360 ? 'desktop' : 'mobile'}.png`, fullPage: true })

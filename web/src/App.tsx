@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, Route, Routes, useMatch, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
+import { CaseThumbnail } from './CaseThumbnail'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
 import { LearningView } from './LearningView'
 import { CaseHelp, HelpButton } from './CaseHelp'
@@ -109,7 +110,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
 function CaseList() {
   return <section aria-label="案例列表" className="grid gap-4 sm:grid-cols-2">
     {presets.map(preset => <article key={preset.id} aria-labelledby={`case-${preset.id}`}>
-      <Card className="h-full">
+      <Card className="case-card h-full">
         <CardHeader><CardTitle><h2 id={`case-${preset.id}`}>{preset.name}</h2></CardTitle></CardHeader>
         <CardContent className="flex flex-col gap-4">
           <p className="text-muted-foreground">{preset.description}</p>
@@ -119,6 +120,7 @@ function CaseList() {
             {preset.learning && <Button asChild><Link to={`/cases/${preset.id}/learn`}>开始学习</Link></Button>}
           </div>
         </CardContent>
+        <CaseThumbnail name={preset.name} segments={preset.segments} />
       </Card>
     </article>)}
   </section>
