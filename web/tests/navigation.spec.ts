@@ -8,11 +8,11 @@ for (const preset of ['crossing', 'disjoint']) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
-    await page.goto('/')
-    await expect(page).toHaveURL('http://127.0.0.1:4173/')
+    await page.goto('/cases/crossing')
+    await expect(page).toHaveURL('http://127.0.0.1:4173/cases/crossing')
     await expect(page).toHaveTitle('BO 结果查看器')
     await selectPreset(page, preset)
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     const slider = page.getByRole('slider', { name: '教学步骤' })
     const previous = page.getByRole('button', { name: '上一步', exact: true })
     const next = page.getByRole('button', { name: '下一步', exact: true })
@@ -74,9 +74,9 @@ for (const preset of ['crossing', 'disjoint']) {
 }
 
 test('教学快捷键：控件优先、组合键和模式隔离', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await slider.focus()
   await page.keyboard.press('ArrowRight')
@@ -92,15 +92,11 @@ test('教学快捷键：控件优先、组合键和模式隔离', async ({ page 
     await page.keyboard.press(`${modifier}+ArrowRight`)
     await expect(slider).toHaveAttribute('aria-valuenow', '1')
   }
-  await page.getByRole('combobox', { name: '预设案例' }).focus()
+  await slider.focus()
   await page.keyboard.press('r')
   await expect(slider).toHaveAttribute('aria-valuenow', '1')
-  await page.keyboard.press('Enter')
-  await expect(page.getByRole('listbox')).toBeVisible()
-  await page.keyboard.press('r')
-  await page.keyboard.press('Escape')
-  await expect(slider).toHaveAttribute('aria-valuenow', '1')
-  await page.getByRole('button', { name: '返回结果查看器' }).click()
+  await page.getByRole('link', { name: '返回结果查看器' }).click()
+  await expect(page.getByRole('region', { name: '原始输入' })).toBeVisible()
   for (const key of ['ArrowLeft', 'ArrowRight', 'r']) {
     const consumed = await page.evaluate(key => {
       const event = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true })
@@ -109,19 +105,21 @@ test('教学快捷键：控件优先、组合键和模式隔离', async ({ page 
     }, key)
     expect(consumed).toBe(false)
   }
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
+  await expect(slider).toHaveAttribute('aria-valuenow', '0')
   await page.keyboard.press('ArrowRight')
   await expect(slider).toHaveAttribute('aria-valuenow', '1')
   await selectPreset(page, 'disjoint')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
+  await expect(slider).toHaveAttribute('aria-valuenow', '0')
   await page.keyboard.press('ArrowRight')
   await expect(slider).toHaveAttribute('aria-valuenow', '1')
 })
 
 test('教学动作：加入、检查、发现分别展示并可回退', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const previous = page.getByRole('button', { name: '上一步', exact: true })
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const explanation = page.getByRole('region', { name: '操作解释' })
@@ -151,9 +149,9 @@ test('教学动作：加入、检查、发现分别展示并可回退', async ({
 
 for (const preset of ['crossing', 'disjoint']) {
   test(`教学动作：${preset} 完整回退与边界隔离`, async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/cases/crossing')
     await selectPreset(page, preset)
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     const previous = page.getByRole('button', { name: '上一步', exact: true })
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const learning = page.getByRole('region', { name: '逐步学习' })
@@ -182,7 +180,7 @@ for (const preset of ['crossing', 'disjoint']) {
     expect(await learning.innerText()).toBe(states[0])
     await next.click()
     await selectPreset(page, preset === 'crossing' ? 'disjoint' : 'crossing')
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     await expect(previous).toBeDisabled()
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
     await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
@@ -191,9 +189,9 @@ for (const preset of ['crossing', 'disjoint']) {
 
 for (const preset of ['crossing', 'disjoint']) {
   test(`步骤滑动条：${preset} 自由跳转、拖动实时同步`, async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/cases/crossing')
     await selectPreset(page, preset)
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     const slider = page.getByRole('slider', { name: '教学步骤' })
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const previous = page.getByRole('button', { name: '上一步', exact: true })
@@ -240,7 +238,7 @@ for (const preset of ['crossing', 'disjoint']) {
     expect(await learning.innerText()).toBe(initial)
     await slider.press('End')
     await selectPreset(page, preset === 'crossing' ? 'disjoint' : 'crossing')
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     await expect(slider).toHaveAttribute('aria-valuenow', '0')
     await expect(previous).toBeDisabled()
     expect(Number(await slider.getAttribute('aria-valuemax'))).not.toBe(finalIndex)

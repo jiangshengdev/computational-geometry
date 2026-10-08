@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test'
+import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 test('竖直教学：多高度交叉、顶端接触及重启保持原坐标顺序', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/')
-  await page.getByRole('combobox', { name: '预设案例' }).click()
-  await page.getByRole('option', { name: '竖直线多高度接触', exact: true }).click()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing')
+  await selectPreset(page, '竖直线多高度接触')
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const group = page.getByRole('region', { name: '同点参与线段' })
   const active = page.getByTestId('active-order')
@@ -60,11 +60,10 @@ for (const width of [1360, 390]) test(`竖直教学：状态标记表示处理�
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await expect(page).toHaveTitle('BO 结果查看器')
-  await page.getByRole('combobox', { name: '预设案例' }).click()
-  await page.getByRole('option', { name: '竖直线多高度接触', exact: true }).click()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await selectPreset(page, '竖直线多高度接触')
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const rule = page.getByRole('region', { name: '竖直线处理规则' })
   await expect(rule).toContainText('重合为一段')
   await expect(rule).toContainText('处理高度')

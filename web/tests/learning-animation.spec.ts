@@ -4,9 +4,9 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 async function startLearning(page: Page) {
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
 }
 
 test('状态动画：活动线段换序与反向恢复，几何线段不移动', async ({ page }) => {
@@ -159,7 +159,7 @@ test('状态动画：快速反向、进度跳转和重启立即采用最新步�
   await expect(page.locator('aside li')).toHaveCount(4)
   await page.keyboard.press('ArrowRight')
   await selectPreset(page, 'disjoint')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   await expect(current).toContainText('尚未处理事件')
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
 })

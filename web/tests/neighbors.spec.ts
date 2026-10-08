@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test'
+import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 test('相邻检测：删除中间线段后发现交点并可重现', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('combobox', { name: '预设案例' }).click()
-  await page.getByRole('option', { name: '退出后成为邻居', exact: true }).click()
+  await page.goto('/cases/crossing')
+  await selectPreset(page, '退出后成为邻居')
   await expect(page.getByText(/学习目标：观察中间线段退出/)).toBeVisible()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByTestId('active-order')
@@ -66,13 +66,10 @@ for (const width of [1360, 390]) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-    await page.goto('/')
+    await page.goto('/cases/crossing')
     await expect(page).toHaveTitle('BO 结果查看器')
-    await page.getByRole('combobox', { name: '预设案例' }).click()
-    const option = page.getByRole('option', { name: '交叉后成为邻居', exact: true })
-    await expect(option).toBeVisible()
-    await option.click()
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await selectPreset(page, 'neighbor-crossing')
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     await expect(page.getByRole('region', { name: '为什么不会漏掉交点' })).toContainText('一般位置')
     await expect(page.getByRole('region', { name: '为什么不会漏掉交点' })).toContainText('第三条线段')
     await expect(page.getByRole('region', { name: '为什么不会漏掉交点' })).toContainText('额外规则')

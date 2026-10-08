@@ -51,7 +51,7 @@ test('混合场景缩放平移切换，完整区间与点配对保持一致', as
 
 test('窄屏下可用键盘滚动选择混合结果并读取完整输入与详情', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await selectPreset(page, 'mixed-horizontal')
   await expect(page.getByRole('status')).toHaveText('17 个相交配对')
   const pairs = page.getByRole('radio')

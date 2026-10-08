@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link, Route, Routes, useParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
 import { LearningIntroduction, LearningView } from './LearningView'
@@ -10,20 +11,17 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@/components/ui/empty'
-import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace }
 
-function CaseViewer({ preset }: { preset: Preset }) {
+function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean }) {
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
   const [selected, setSelected] = useState<Intersection | null>(null)
   const [hover, setHover] = useState<HoverTarget | null>(null)
-  const [learning, setLearning] = useState(false)
   const teachable = Boolean(preset.learning)
   useEffect(() => {
     let current = true
@@ -48,17 +46,21 @@ function CaseViewer({ preset }: { preset: Preset }) {
   }, [preset, teachable])
   const results = computation.status === 'ready' ? computation.results : []
   const highlights = hover ? hoverHighlights(hover, results) : null
-  if (learning && computation.status === 'ready' && computation.trace) return <>
+  if (learning) return <>
     <LearningIntroduction key="learning" />
     <p className="mb-4">{preset.name} · <span className="coordinates">{preset.description}</span> 从左向右扫描，按 <span className="coordinates">(x, y)</span> 排序，精确计算。</p>
-    <LearningView preset={preset} trace={computation.trace} results={results} />
-    <Button className="mt-6" variant="outline" onClick={() => setLearning(false)}>返回结果查看器</Button>
+    {computation.status === 'loading'
+      ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
+      : computation.status === 'error'
+        ? <Alert variant="destructive"><AlertTitle>计算失败</AlertTitle><AlertDescription>请检查本地服务。{computation.message}</AlertDescription></Alert>
+        : computation.trace && <LearningView preset={preset} trace={computation.trace} results={results} />}
+    <Button asChild className="mt-6" variant="outline"><Link to={`/cases/${preset.id}`}>返回结果查看器</Link></Button>
   </>
   return <>
     <LearningIntroduction />
     <p className="my-6 text-muted-foreground"><span className="coordinates">{preset.description}</span></p>
     {preset.learning && <p className="mb-4">学习目标：{preset.learning.goal}</p>}
-    {teachable ? <Button className="mb-4" disabled={computation.status !== 'ready'} onClick={() => setLearning(true)}>开始逐步学习</Button>
+    {teachable ? <Button asChild className="mb-4"><Link to={`/cases/${preset.id}/learn`}>开始逐步学习</Link></Button>
       : <p className="mb-4 text-muted-foreground">此案例目前提供结果查看；逐步学习请选择普通交叉、无交点、相邻检测、同扫描坐标不同交点、共端点、起点落在内部或终点落在内部。</p>}
     <div className="workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
@@ -111,24 +113,58 @@ function CaseViewer({ preset }: { preset: Preset }) {
   </>
 }
 
+function CaseList() {
+  return <section aria-label="案例列表" className="grid gap-4 sm:grid-cols-2">
+    {presets.map(preset => <article key={preset.id} aria-labelledby={`case-${preset.id}`}>
+      <Card className="h-full">
+        <CardHeader><CardTitle><h2 id={`case-${preset.id}`}>{preset.name}</h2></CardTitle></CardHeader>
+        <CardContent className="flex flex-col gap-4">
+          <p className="text-muted-foreground">{preset.description}</p>
+          {preset.learning && <Badge variant="secondary">支持教学</Badge>}
+          <div className="flex flex-wrap gap-3">
+            <Button asChild variant="outline"><Link to={`/cases/${preset.id}`}>查看详情</Link></Button>
+            {preset.learning && <Button asChild><Link to={`/cases/${preset.id}/learn`}>开始学习</Link></Button>}
+          </div>
+        </CardContent>
+      </Card>
+    </article>)}
+  </section>
+}
+
+export function RouteError({ message, preset }: { message: string; preset?: Preset }) {
+  return <section className="flex flex-col gap-4">
+    <Alert variant="destructive"><AlertTitle>链接无效</AlertTitle><AlertDescription>{message}</AlertDescription></Alert>
+    <nav aria-label="恢复导航" className="flex flex-wrap gap-3">
+      <Button asChild variant="outline"><Link to="/">返回列表</Link></Button>
+      {preset && <Button asChild variant="outline"><Link to={`/cases/${preset.id}`}>查看详情</Link></Button>}
+      {preset?.learning && <Button asChild><Link to={`/cases/${preset.id}/learn`}>从头学习</Link></Button>}
+    </nav>
+  </section>
+}
+
+function CasePage({ learning = false, unknownPath = false }: { learning?: boolean; unknownPath?: boolean }) {
+  const { caseId } = useParams()
+  const preset = presets.find(item => item.id === caseId)
+  if (!preset) return <RouteError message={`未知案例：${caseId}`} />
+  if (unknownPath) return <RouteError message="未知页面路径。" preset={preset} />
+  if (learning && !preset.learning) return <RouteError message="此案例不支持教学。" preset={preset} />
+  return <>
+    <nav aria-label="页面导航" className="mb-4"><Button asChild variant="outline"><Link to="/">返回列表</Link></Button></nav>
+    <h2 className="mb-4 text-xl font-semibold">{preset.name}</h2>
+    <CaseViewer key={`${preset.id}:${learning}`} preset={preset} learning={learning} />
+  </>
+}
+
 export default function App() {
-  const [preset, setPreset] = useState(presets[0])
   return <main>
-    <header className="viewer-header"><div><h1 className="text-3xl font-semibold tracking-tight">BO 结果查看器</h1><p className="mt-2 text-muted-foreground">选择案例，检查精确交点与完整重叠区间。</p></div>
-      <FieldGroup className="w-full min-[851px]:w-64"><Field>
-        <FieldLabel htmlFor="preset">预设案例</FieldLabel>
-        <Select value={preset.id} onValueChange={value => setPreset(presets.find(p => p.id === value)!)}>
-          <SelectTrigger id="preset" className="w-full"><SelectValue>{preset.name}</SelectValue></SelectTrigger>
-          <SelectContent position="popper"><SelectGroup>
-            {presets.map(p => <SelectItem key={p.id} value={p.id} textValue={p.name} aria-labelledby={`preset-${p.id}-name`} aria-describedby={p.learning ? `preset-${p.id}-learning` : undefined}>
-              <span id={`preset-${p.id}-name`}>{p.name}</span>
-              {p.learning ? <Badge id={`preset-${p.id}-learning`} variant="secondary">学习</Badge> : null}
-            </SelectItem>)}
-          </SelectGroup></SelectContent>
-        </Select>
-      </Field></FieldGroup>
-    </header>
-    <CaseViewer key={preset.id} preset={preset} />
+    <header className="viewer-header"><div><h1 className="text-3xl font-semibold tracking-tight">BO 结果查看器</h1><p className="mt-2 text-muted-foreground">选择案例，检查精确交点与完整重叠区间。</p></div></header>
+    <Routes>
+      <Route path="/" element={<CaseList />} />
+      <Route path="/cases/:caseId" element={<CasePage />} />
+      <Route path="/cases/:caseId/learn" element={<CasePage learning />} />
+      <Route path="/cases/:caseId/*" element={<CasePage unknownPath />} />
+      <Route path="*" element={<RouteError message="未知页面路径。" />} />
+    </Routes>
     <Separator className="mt-6" />
     <footer className="pt-4 text-xs text-muted-foreground">每个输入保留独立身份。配对数不是独立几何交点数；图形仅作人工辅助校验。</footer>
   </main>

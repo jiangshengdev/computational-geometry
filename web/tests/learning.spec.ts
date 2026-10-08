@@ -4,12 +4,12 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 test('入门学习：交叉的发现、换序、退出和重新开始', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')
   await expect(page.getByText(/两两检查/).first()).toBeHidden()
   await page.getByText('学习目标、术语与扫描约定', { exact: true }).click()
   await expect(page.getByText(/两两检查/).first()).toBeVisible()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   await expect(page.getByText(/两两检查/).first()).toBeHidden()
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByRole('region', { name: '活动线段顺序' })
@@ -80,9 +80,9 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
 })
 
 test('入门学习：无交点完整流程与切换隔离', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await selectPreset(page, 'disjoint')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByTestId('active-order')
@@ -104,7 +104,7 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
   await expect(active).toHaveText('空')
   await expect(queue.locator('li')).toHaveText(events)
   await selectPreset(page, 'crossing')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   await expect(queue).toContainText('S1 起点 (0, 4)')
   await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
 })
@@ -115,10 +115,10 @@ test('入门学习：桌面与手机的图形、队列、操作解释同步且�
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   for (const viewport of [{ width: 1360, height: 1000 }, { width: 390, height: 844 }]) {
     await page.setViewportSize(viewport)
-    await page.goto('/')
+    await page.goto('/cases/crossing')
     await expect(page).toHaveTitle('BO 结果查看器')
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     do {
       await page.getByRole('button', { name: '下一步', exact: true }).click()
     } while (!(await page.getByRole('region', { name: '操作解释' }).innerText()).includes('发现未来交点'))

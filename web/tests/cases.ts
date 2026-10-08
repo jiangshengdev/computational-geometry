@@ -2,8 +2,10 @@ import { expect, type Page } from '@playwright/test'
 import { presets } from '../src/presets'
 
 export async function selectPreset(page: Page, id: string) {
-  await page.getByRole('combobox', { name: '预设案例' }).click()
-  await page.getByRole('option', { name: presets.find(preset => preset.id === id)!.name, exact: true }).click()
+  const preset = presets.find(preset => preset.id === id || preset.name === id)!
+  if (new URL(page.url()).pathname !== '/') await page.getByRole('link', { name: '返回列表', exact: true }).click()
+  await page.getByRole('article').filter({ has: page.getByRole('heading', { name: preset.name, exact: true }) })
+    .getByRole('link', { name: '查看详情', exact: true }).click()
 }
 
 export interface ExpectedPair { pair: [number, number]; point?: [string, string]; interval?: [[string, string], [string, string]] }
@@ -19,7 +21,6 @@ export async function checkCase(page: Page, id: string, expected: ExpectedPair[]
   await page.goto('/')
   const response = page.waitForResponse(r => r.url().endsWith('/api/intersections') && r.request().method() === 'POST')
   await selectPreset(page, id)
-  // If initial crossing response raced with selection, wait for this case's rendered state too.
   await response
   await expect(page.getByText(`${expected.length} 个相交配对`, { exact: true })).toBeVisible()
   await expect(page.getByRole('radio', { name: /S\d+ × S\d+/ })).toHaveCount(expected.length)
@@ -37,7 +38,6 @@ export async function checkCase(page: Page, id: string, expected: ExpectedPair[]
 
 export async function checkResponse(page: Page, id: string, expected: ExpectedPair[]) {
   await page.goto('/')
-  await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   const responsePromise = page.waitForResponse(r => r.url().endsWith('/api/intersections'))
   await selectPreset(page, id)
   const response = await responsePromise

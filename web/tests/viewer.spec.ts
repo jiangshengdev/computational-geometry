@@ -5,26 +5,15 @@ import { selectPreset } from './cases'
 
 test('键盘选择案例、配对和几何操作具有可见焦点', async ({ page }) => {
   await page.goto('/')
-  await page.keyboard.press('Tab')
-  const selector = page.getByRole('combobox', { name: '预设案例' })
-  await expect(selector).toBeFocused()
+  const detail = page.getByRole('article').filter({ has: page.getByRole('heading', { name: '普通交叉', exact: true }) })
+    .getByRole('link', { name: '查看详情', exact: true })
+  await detail.focus()
+  await expect(detail).toBeFocused()
   await page.keyboard.press('Enter')
-  await expect(page.getByRole('listbox')).toBeVisible()
-  await page.keyboard.press('Home')
-  await expect(page.getByRole('option', { name: '普通交叉', exact: true })).toBeFocused()
-  await page.keyboard.press('ArrowDown')
-  await expect(page.getByRole('option', { name: '无交点', exact: true })).toBeFocused()
-  await page.keyboard.press('Enter')
-  await expect(selector).toBeFocused()
-  await expect(page.getByText('没有相交配对', { exact: true })).toBeVisible()
-  await page.keyboard.press('Enter')
-  await page.keyboard.press('Home')
-  await expect(page.getByRole('option', { name: '普通交叉', exact: true })).toBeFocused()
-  await page.keyboard.press('Enter')
+  await expect(page).toHaveURL(/\/cases\/crossing$/)
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
-  await expect(selector).toBeFocused()
-  await page.keyboard.press('Tab')
   const introduction = page.getByText('学习目标、术语与扫描约定', { exact: true })
+  await introduction.focus()
   await expect(introduction).toBeFocused()
   await expect(page.getByRole('region', { name: '学习目标' })).toBeHidden()
   await page.keyboard.press('Enter')
@@ -32,7 +21,7 @@ test('键盘选择案例、配对和几何操作具有可见焦点', async ({ pa
   await page.keyboard.press('Enter')
   await expect(page.getByRole('region', { name: '学习目标' })).toBeHidden()
   await page.keyboard.press('Tab')
-  await expect(page.getByRole('button', { name: '开始逐步学习' })).toBeFocused()
+  await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeFocused()
   await page.keyboard.press('Tab')
   const zoomIn = page.getByRole('button', { name: '放大', exact: true })
   await expect(zoomIn).toBeFocused()
@@ -58,8 +47,8 @@ test('键盘选择案例、配对和几何操作具有可见焦点', async ({ pa
 })
 
 test('普通交叉通过真实服务计算，并联动配对与精确详情', async ({ page }) => {
-  await page.goto('/')
-  await expect(page.getByRole('heading', { name: 'BO 结果查看器' })).toBeVisible()
+  await page.goto('/cases/crossing')
+  await expect(page.getByRole('heading', { name: '普通交叉', exact: true })).toBeVisible()
   await selectPreset(page, 'crossing')
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
@@ -70,7 +59,7 @@ test('普通交叉通过真实服务计算，并联动配对与精确详情', as
 })
 
 test('基础空结果及切换清空旧选择', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
   for (const id of ['disjoint', 'empty', 'single']) {
     await selectPreset(page, id)
@@ -89,7 +78,7 @@ test('加载状态与空结果区分，完成后展示真实结果', async ({ pa
     await gate
     await route.continue()
   })
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await expect(page.getByRole('status')).toHaveText('正在计算…')
   await expect(page.getByText('没有相交配对', { exact: true })).toHaveCount(0)
   await expect(page.getByRole('alert')).toHaveCount(0)
@@ -104,7 +93,7 @@ test('缩放平移保持等比例几何及选中精确详情，桌面和手机�
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (message.type() === 'error' || message.type() === 'warning') errors.push(message.text()) })
   await page.setViewportSize({ width: 1360, height: 900 })
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await expect(page).toHaveTitle('BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
@@ -160,7 +149,7 @@ for (const late of ['success', 'failure']) {
         await operation
       } else await route.continue()
     })
-    await page.goto('/')
+    await page.goto('/cases/crossing')
     await expect.poll(() => pending.length).toBeGreaterThan(0)
     await selectPreset(page, 'empty')
     await expect(page.getByText('没有相交配对', { exact: true })).toBeVisible()
@@ -174,7 +163,7 @@ for (const late of ['success', 'failure']) {
 
 test('服务不可用和计算错误不能显示成空结果', async ({ page }) => {
   await page.route('**/api/intersections', route => route.abort('connectionrefused'))
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await expect(page.getByRole('alert')).toContainText('计算失败')
   await expect(page.getByText('没有相交配对', { exact: true })).toHaveCount(0)
   await page.unroute('**/api/intersections')

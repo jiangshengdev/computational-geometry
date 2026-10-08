@@ -9,10 +9,10 @@ for (const width of [1360, 390]) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
-    await page.goto('/')
+    await page.goto('/cases/crossing')
     await expect(page).toHaveTitle('BO 结果查看器')
     await selectPreset(page, 'neighbor-crossing')
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     const next = page.getByRole('button', { name: '下一步', exact: true })
     for (let i = 0; i < 10; i++) await next.click()
     const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
@@ -70,8 +70,8 @@ for (const width of [1360, 390]) {
 
 test('标题序号：同点错位、换序、缩放平移与空列表', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 1100 })
-  await page.goto('/')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing')
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const activeTitle = page.getByRole('heading', { name: '活动线段顺序', exact: true })
   const pendingTitle = page.getByRole('heading', { name: '待处理事件队列', exact: true })
   const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })

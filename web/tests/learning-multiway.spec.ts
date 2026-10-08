@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -23,13 +24,11 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/')
-  await expect(page).toHaveURL('http://127.0.0.1:4173/')
+  await page.goto('/cases/crossing')
+  await expect(page).toHaveURL('http://127.0.0.1:4173/cases/crossing')
   await expect(page).toHaveTitle('BO 结果查看器')
-  await page.getByRole('combobox', { name: '预设案例' }).click()
-  await expect(page.getByRole('option', { name: example.name, exact: true })).toBeVisible()
-  await page.getByRole('option', { name: example.name, exact: true }).click()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await selectPreset(page, example.name)
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const group = page.getByRole('region', { name: '同点参与线段' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })

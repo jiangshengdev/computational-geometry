@@ -5,10 +5,10 @@ import { join } from 'node:path'
 
 test('重叠教学：区间边界、事件状态、完整结果与重启', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await selectPreset(page, 'partial-overlap')
-  await expect(page.getByRole('button', { name: '开始逐步学习' })).toBeVisible()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByTestId('active-order')
@@ -84,11 +84,11 @@ for (const width of [1360, 390]) test(`重叠教学：边界与并列状态可�
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await expect(page).toHaveTitle('BO 结果查看器')
-  await expect(page).toHaveURL('http://127.0.0.1:4173/')
+  await expect(page).toHaveURL('http://127.0.0.1:4173/cases/crossing')
   await selectPreset(page, 'partial-overlap')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const next = page.getByRole('button', { name: '下一步', exact: true })
   while (await next.isEnabled()) {

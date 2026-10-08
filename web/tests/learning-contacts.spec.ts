@@ -1,14 +1,14 @@
 import { expect, test } from '@playwright/test'
+import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 test('接触教学：共端点先记录闭集交点再完成退出与加入，可重新开始', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/')
-  await page.getByRole('combobox', { name: '预设案例' }).click()
-  await page.getByRole('option', { name: '共端点', exact: true }).click()
-  await expect(page.getByRole('button', { name: '开始逐步学习' })).toBeEnabled()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing')
+  await selectPreset(page, '共端点')
+  await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeEnabled()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const group = page.getByRole('region', { name: '同点参与线段' })
   const active = page.getByTestId('active-order')
@@ -46,12 +46,11 @@ for (const width of [1360, 390]) test(`并列教学：同横坐标不同位置�
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await expect(page).toHaveTitle('BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
-  await page.getByRole('combobox', { name: '预设案例' }).click()
-  await page.getByRole('option', { name: '同扫描坐标不同交点', exact: true }).click()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await selectPreset(page, '同扫描坐标不同交点')
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const group = page.getByRole('region', { name: '同点参与线段' })
@@ -111,10 +110,9 @@ for (const [name, starts, ends, initial, final] of [
   ['终点落在内部', '无', 'S1', 'S0S1', 'S0'],
 ]) test(`接触教学：${name}与穿过者归组`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/')
-  await page.getByRole('combobox', { name: '预设案例' }).click()
-  await page.getByRole('option', { name, exact: true }).click()
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing')
+  await selectPreset(page, name)
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const explanation = page.getByRole('region', { name: '操作解释' })
   const active = page.getByTestId('active-order')

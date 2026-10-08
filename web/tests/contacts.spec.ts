@@ -14,7 +14,7 @@ const cases: { id: string; expected: ExpectedPair[] }[] = [
 ]
 
 test('共点输入标签在选择、缩放和窄屏下不重叠', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   for (const width of [1280, 390]) {
     await page.setViewportSize({ width, height: 900 })
     for (const id of ['point-inputs', 'pure-points', 'duplicate-overlap', 'mixed-horizontal']) {

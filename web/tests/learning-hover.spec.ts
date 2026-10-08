@@ -11,8 +11,8 @@ async function center(page: Page, target: Locator) {
 for (const width of [1360, 390]) {
 test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 1100 })
-  await page.goto('/')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing')
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const explanation = page.getByRole('region', { name: '操作解释' })
   const diagram = page.getByRole('region', { name: '几何视图' })
@@ -86,8 +86,8 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
 }
 
 test('教学 hover：队列端点与点标签精确双向对应', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing')
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const diagram = page.getByRole('region', { name: '几何视图' })
   const input = page.getByRole('img', { name: '输入 S1', exact: true })
@@ -111,8 +111,8 @@ test('教学 hover：队列端点与点标签精确双向对应', async ({ page 
 })
 
 test('教学 hover：发现与当前交点保留虚线圆、紫色和精确标签', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing')
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const current = page.getByRole('region', { name: '当前事件' })
@@ -157,9 +157,9 @@ test('教学 hover：发现与当前交点保留虚线圆、紫色和精确标�
 
 for (const preset of ['crossing', 'disjoint']) {
   test(`教学 hover：${preset} 导航清理与可见对象隔离`, async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/cases/crossing')
     await selectPreset(page, preset)
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     const slider = page.getByRole('slider', { name: '教学步骤' })
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const previous = page.getByRole('button', { name: '上一步', exact: true })
@@ -205,7 +205,7 @@ for (const preset of ['crossing', 'disjoint']) {
     await emptyHover()
     await queue.getByText('S0 起点 (0, 0)', { exact: true }).hover()
     await selectPreset(page, preset === 'crossing' ? 'disjoint' : 'crossing')
-    await page.getByRole('button', { name: '开始逐步学习' }).click()
+    await page.getByRole('link', { name: '开始逐步学习' }).click()
     await emptyHover()
     await expect(slider).toHaveAttribute('aria-valuenow', '0')
   })
@@ -215,9 +215,9 @@ test('教学 hover：缩放平移后的点、标签与线段命中和可读性',
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/')
+  await page.goto('/cases/crossing')
   await expect(page).toHaveTitle('BO 结果查看器')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   for (let i = 0; i < 7; i++) await page.getByRole('button', { name: '下一步', exact: true }).click()
   for (const width of [1360, 390]) {
     await page.setViewportSize({ width, height: 1000 })
@@ -255,8 +255,8 @@ test('教学 hover：缩放平移后的点、标签与线段命中和可读性',
 })
 
 test('教学 hover：活动顺序的单个标识与线段独立联动', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('button', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing')
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const order = page.getByTestId('active-order')
   while (await order.getByRole('listitem').count() < 2) await next.click()
