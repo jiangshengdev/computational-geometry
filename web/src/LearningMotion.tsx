@@ -9,6 +9,8 @@ export function LearningRow({ as = 'li', identity, existed, children, ref, ...ho
   ref?: Ref<HTMLLIElement & HTMLParagraphElement>
   'data-highlighted': boolean
   'data-checked'?: boolean
+  'data-event-id'?: string
+  'data-input-id'?: number
   onPointerEnter: () => void
   onPointerLeave: () => void
 }) {
