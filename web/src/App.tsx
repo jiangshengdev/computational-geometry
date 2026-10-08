@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, Route, Routes, useParams, useSearchParams } from 'react-router'
+import { Link, Route, Routes, useMatch, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
 import { LearningView } from './LearningView'
@@ -48,25 +48,19 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
   const results = computation.status === 'ready' ? computation.results : []
   const highlights = hover ? hoverHighlights(hover, results) : null
   if (learning) return <>
-    <div className="mb-4 flex flex-wrap items-center gap-2"><HelpButton /><HelpButton topic="case">案例说明</HelpButton></div>
     {computation.status === 'loading'
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
       : computation.status === 'error'
         ? <Alert variant="destructive"><AlertTitle>计算失败</AlertTitle><AlertDescription>请检查本地服务。{computation.message}</AlertDescription></Alert>
         : computation.trace && <LearningPage preset={preset} trace={computation.trace} results={results} />}
-    <Button asChild className="mt-6" variant="outline"><Link to={`/cases/${preset.id}`}>返回结果查看器</Link></Button>
   </>
   return <>
-    <div className="mb-4 flex flex-wrap items-center gap-2">
-      <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
-      {teachable && <Button asChild><Link to={`/cases/${preset.id}/learn`}>开始逐步学习</Link></Button>}
-    </div>
-    <div className="workspace">
+    <div className="workspace result-workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
-      <aside className="min-w-0" aria-label="计算结果">
+      <aside className="workspace-panel result-panel" aria-label="计算结果">
         <Card>
           <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2>相交配对</h2></CardTitle><HelpButton topic="results">结果说明</HelpButton></CardHeader>
-          <CardContent className="flex flex-col gap-4">
+          <CardContent className="result-content flex flex-col gap-4">
             {computation.status === 'loading'
               ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在计算…</div>
               : computation.status === 'error'
@@ -74,7 +68,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
                 : <><div role="status"><Badge variant="secondary">{results.length} 个相交配对</Badge></div>
                   {results.length === 0
                     ? <Empty><EmptyHeader><EmptyTitle>没有相交配对</EmptyTitle></EmptyHeader></Empty>
-                    : <ScrollArea className="[&_[data-slot=scroll-area-viewport]]:max-h-60">
+                    : <ScrollArea className="pair-scroll">
                       <ToggleGroup type="single" orientation="vertical" spacing={2} className="w-full flex-col p-1" aria-label="相交配对选择"
                         value={selected ? pairName(selected) : ''}
                         onValueChange={value => setSelected(results.find(result => pairName(result) === value) ?? null)}>
@@ -87,7 +81,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
                     </ScrollArea>}
                 </>}
             <Separator />
-            <section aria-label="精确详情" className="flex min-w-0 flex-col gap-3">
+            <section aria-label="精确详情" className="result-details flex min-w-0 flex-col gap-3" tabIndex={0}>
               <CardTitle><h2>精确详情</h2></CardTitle>
               {selected ? <><h3 className="coordinates">{pairName(selected)}</h3><p className="coordinates">{formatGeometry(selected.geometry)}</p>
                 {selected.segments.map(i => <p key={i} className="coordinates">S{i}：{formatPoint(preset.segments[i].start)} → {formatPoint(preset.segments[i].end)}</p>)}
@@ -96,12 +90,11 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
           </CardContent>
         </Card>
       </aside>
-    </div>
-    <section className="mt-7" aria-label="原始输入"><Card>
+    <section className="workspace-panel input-panel" aria-label="原始输入"><Card>
       <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2 className="flex items-center gap-2">原始输入 <Badge variant="secondary">{preset.segments.length}</Badge></h2></CardTitle><HelpButton topic="inputs">输入说明</HelpButton></CardHeader>
       <CardContent>{preset.segments.length === 0
         ? <Empty><EmptyHeader><EmptyTitle>输入集合为空</EmptyTitle></EmptyHeader></Empty>
-        : <ul className="flex flex-wrap gap-x-8 gap-y-3">{preset.segments.map((s, i) =>
+        : <ul className="flex flex-col gap-3">{preset.segments.map((s, i) =>
           <li key={i} className="input-item flex min-w-0 flex-wrap gap-3 text-sm"
             data-highlighted={highlights ? highlights.inputs.includes(i) : selected?.segments.includes(i) ?? false}
             onPointerEnter={() => setHover({ kind: 'input', index: i })} onPointerLeave={() => setHover(null)}>
@@ -109,6 +102,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
       </CardContent>
     </Card>
     </section>
+    </div>
   </>
 }
 
@@ -165,16 +159,25 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
   if (!preset) return <RouteError message={`未知案例：${caseId}`} />
   if (unknownPath) return <RouteError message="未知页面路径。" preset={preset} />
   if (learning && !preset.learning) return <RouteError message="此案例不支持教学。" preset={preset} />
-  return <>
-    <nav aria-label="页面导航" className="mb-4"><Button asChild variant="outline"><Link to="/">返回列表</Link></Button></nav>
-    <h2 className="mb-4 text-xl font-semibold">{preset.name}</h2>
-    <CaseHelp key={`${preset.id}:${learning}`} preset={preset}><CaseViewer preset={preset} learning={learning} /></CaseHelp>
-  </>
+  return <CaseHelp key={`${preset.id}:${learning}`} preset={preset}>
+    <div className="case-toolbar">
+      <nav aria-label="页面导航"><Button asChild variant="outline"><Link to="/">返回列表</Link></Button></nav>
+      <h2 className="text-xl font-semibold">{preset.name}</h2>
+      <div className="case-actions flex flex-wrap items-center gap-2">
+        <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
+        {learning
+          ? <Button asChild variant="outline"><Link to={`/cases/${preset.id}`}>返回结果查看器</Link></Button>
+          : preset.learning && <Button asChild><Link to={`/cases/${preset.id}/learn`}>开始逐步学习</Link></Button>}
+      </div>
+    </div>
+    <CaseViewer preset={preset} learning={learning} />
+  </CaseHelp>
 }
 
 export default function App() {
-  return <main>
-    <header className="viewer-header"><div><h1 className="text-3xl font-semibold tracking-tight">BO 结果查看器</h1><p className="mt-2 text-muted-foreground">选择案例，检查精确交点与完整重叠区间。</p></div></header>
+  const caseRoute = useMatch('/cases/:caseId/*')
+  return <main className={caseRoute ? 'case-shell' : undefined}>
+    <header className="viewer-header"><div><h1 className="text-3xl font-semibold tracking-tight">BO 结果查看器</h1>{!caseRoute && <p className="mt-2 text-muted-foreground">选择案例，检查精确交点与完整重叠区间。</p>}</div></header>
     <Routes>
       <Route path="/" element={<CaseList />} />
       <Route path="/cases/:caseId" element={<CasePage />} />

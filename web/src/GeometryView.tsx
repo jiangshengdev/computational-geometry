@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { scaleLinear, select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { approximate, formatPoint, formatRational, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
 import { Button } from '@/components/ui/button'
@@ -15,8 +15,8 @@ interface Props {
 
 export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
   const svg = useRef<SVGSVGElement>(null)
-  const [width, setWidth] = useState(800)
-  const height = 460
+  const surface = useRef<HTMLDivElement>(null)
+  const [{ width, height }, setSize] = useState({ width: 800, height: 460 })
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity)
   const behavior = useRef(zoom<SVGSVGElement, unknown>().scaleExtent([0.25, 40]))
   const points = segments.flatMap(s => [s.start, s.end])
@@ -50,12 +50,17 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         return { x: scanX, y: py(segment.start) + fraction * (py(segment.end) - py(segment.start)), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}` }
       }) : []
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = svg.current!
+    const initial = surface.current!.getBoundingClientRect()
+    setSize({ width: initial.width, height: initial.height })
     behavior.current.on('zoom', event => setTransform(event.transform))
     select(element).call(behavior.current).on('wheel.zoom', null)
-    const observer = new ResizeObserver(entries => setWidth(entries[0].contentRect.width))
-    observer.observe(element)
+    const observer = new ResizeObserver(entries => {
+      const { width, height } = entries[0].contentRect
+      setSize({ width, height })
+    })
+    observer.observe(surface.current!)
     return () => { select(element).on('.zoom', null); observer.disconnect() }
   }, [])
 
@@ -73,21 +78,27 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     const gap = 6 // Includes the white outline and space between adjacent labels.
     labels.forEach((label, index) => {
       const box = boxes[index]
-      let top = box.y
-      let collisions
-      do {
-        collisions = occupied.filter(other =>
-          box.x < other.x + other.width + gap && box.x + box.width + gap > other.x &&
-          top < other.y + other.height + gap && top + box.height + gap > other.y)
-        if (collisions.length) top = Math.min(...collisions.map(other => other.y)) - box.height - gap
-      } while (collisions.length)
-      label.setAttribute('transform', `translate(0, ${top - box.y})`)
+      // Short workspaces need space below and beside labels too: moving every
+      // collision upward can put an otherwise readable label under the toolbar.
+      const lefts = [box.x, gap, width - box.width - gap,
+        ...occupied.flatMap(other => [other.x - box.width - gap, other.x + other.width + gap])]
+      const tops = [box.y, gap, height - box.height - gap,
+        ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])]
+      const candidates = lefts.flatMap(left => tops.map(top => ({ left, top })))
+        .filter(({ left, top }) => left >= gap && top >= gap && left + box.width <= width - gap && top + box.height <= height - gap)
+        .filter(({ left, top }) => !sweep?.numbering || (left === box.x && top <= box.y))
+        .sort((a, b) => Math.hypot(a.left - box.x, a.top - box.y) - Math.hypot(b.left - box.x, b.top - box.y))
+      const position = candidates.find(({ left, top }) => !occupied.some(other =>
+        left < other.x + other.width + gap && left + box.width + gap > other.x &&
+        top < other.y + other.height + gap && top + box.height + gap > other.y))
+      const { left, top } = position ?? { left: box.x, top: box.y }
+      label.setAttribute('transform', `translate(${left - box.x}, ${top - box.y})`)
       const leader = label.parentElement?.querySelector('.order-leader')
       if (leader) {
-        leader.setAttribute('x2', String(box.x - 4))
+        leader.setAttribute('x2', String(left - 4))
         leader.setAttribute('y2', String(top + box.height / 2))
       }
-      occupied.push(new DOMRect(box.x, top, box.width, box.height))
+      occupied.push(new DOMRect(left, top, box.width, box.height))
     })
   })
 
@@ -98,7 +109,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
       <Button variant="outline" size="sm" onClick={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}>重置视图</Button>
     </div></CardHeader>
     <Separator />
-    <CardContent className="p-0">
+    <CardContent ref={surface} className="drawing-surface p-0">
     <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
       onPointerMove={event => {
