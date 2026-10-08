@@ -10,7 +10,7 @@ interface Props {
   segments: Segment[]; results: Intersection[]; selected: Intersection | null
   highlights?: HoverHighlights | null
   onHover?: (target: HoverTarget | null) => void
-  sweep?: { current: Point | null; active: number[]; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
+  sweep?: { current: Point | null; active: number[]; pending: Point[]; numbering: 'active' | 'pending' | null; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
 }
 
 export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
@@ -34,6 +34,16 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   const x = scaleLinear().domain([minX, maxX]).range([width / 2 - (maxX - minX) * unit / 2, width / 2 + (maxX - minX) * unit / 2])
   const y = scaleLinear().domain([minY, maxY]).range([height / 2 + (maxY - minY) * unit / 2, height / 2 - (maxY - minY) * unit / 2])
   const px = (p: Point) => x(approximate(p.x)), py = (p: Point) => y(approximate(p.y))
+  // Project the existing list order; approximate coordinates only position the drawing.
+  const numberedPoints = sweep?.numbering === 'pending'
+    ? sweep.pending.map((point, index) => ({ x: px(point), y: py(point), label: `${index + 1}`, name: `待处理事件 ${index + 1}：${sweep.labelPoint(point)}` }))
+    : sweep?.numbering === 'active' && sweep.current
+      ? sweep.active.map((id, index) => {
+        const segment = segments[id]
+        const scanX = px(sweep.current!)
+        const fraction = (scanX - px(segment.start)) / (px(segment.end) - px(segment.start))
+        return { x: scanX, y: py(segment.start) + fraction * (py(segment.end) - py(segment.start)), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}` }
+      }) : []
 
   useEffect(() => {
     const element = svg.current!
@@ -50,7 +60,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
 
   useLayoutEffect(() => {
     const element = svg.current!
-    const labels = Array.from(element.querySelectorAll<SVGTextElement>('text:not(.tick)'))
+    const labels = Array.from(element.querySelectorAll<SVGTextElement>(sweep?.numbering ? 'text.order-number' : 'text:not(.tick)'))
     // Measure the rendered font, including selection weight, in the shared SVG coordinates.
     for (const label of labels) label.removeAttribute('transform')
     const boxes = labels.map(label => label.getBBox())
@@ -67,6 +77,11 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         if (collisions.length) top = Math.min(...collisions.map(other => other.y)) - box.height - gap
       } while (collisions.length)
       label.setAttribute('transform', `translate(0, ${top - box.y})`)
+      const leader = label.parentElement?.querySelector('.order-leader')
+      if (leader) {
+        leader.setAttribute('x2', String(box.x - 4))
+        leader.setAttribute('y2', String(top + box.height / 2))
+      }
       occupied.push(new DOMRect(box.x, top, box.width, box.height))
     })
   })
@@ -79,7 +94,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     </div></CardHeader>
     <Separator />
     <CardContent className="p-0">
-    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep}
+    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
       onPointerMove={event => {
         if (!onHover || event.buttons) return
@@ -164,6 +179,11 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         })}
         {sweep && highlights?.points.filter(p => eventPoints.some(visible => samePoint(p, visible))).map(p =>
           <circle key={formatPoint(p)} className="hover-event" cx={px(p)} cy={py(p)} r={15} />)}
+        {numberedPoints.map(point => <g key={point.name} className="order-marker" role="img" aria-label={point.name}>
+          <line className="order-leader" x1={point.x} y1={point.y} x2={point.x + 8} y2={point.y - 12} />
+          <circle cx={point.x} cy={point.y} r={3} />
+          <text className="order-number" x={point.x + 12} y={point.y - 12}>{point.label}</text>
+        </g>)}
       </g>
     </svg>
     </CardContent>

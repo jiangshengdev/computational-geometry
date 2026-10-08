@@ -40,6 +40,13 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   const animationId = useId()
   const [run, setRun] = useState(0)
   const [hover, setHover] = useState<HoverTarget | null>(null)
+  const [numbering, setNumbering] = useState<'active' | 'pending' | null>(null)
+  const titleProps = (kind: 'active' | 'pending') => ({
+    className: 'learning-hover-item leading-normal transition-colors',
+    'data-highlighted': numbering === kind,
+    onPointerEnter: () => { setHover(null); setNumbering(kind) },
+    onPointerLeave: () => setNumbering(null),
+  })
   const highlights = hover ? hoverHighlights(hover, []) : null
   const eventProps = (point: Point) => ({
     'data-highlighted': highlights?.points.some(p => samePoint(p, point)) ?? false,
@@ -57,6 +64,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   </Fragment>)
   const changeStep = (value: number | ((current: number) => number), singleStep = false) => {
     setHover(null)
+    setNumbering(null)
     setNavigation(current => ({
       index: Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(current.index) : value)),
       from: current.index,
@@ -137,7 +145,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     <div className="workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
         highlights={highlights} onHover={setHover}
-        sweep={{ current: step.current, active: step.active, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
+        sweep={{ current: step.current, active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
       <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="flex min-w-0 flex-col gap-4">
         <section aria-label="当前事件"><Card>
@@ -151,7 +159,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
           </CardContent>
         </Card></section>
         <section aria-label="待处理事件队列"><Card>
-          <CardHeader><CardTitle><h2>待处理事件队列</h2></CardTitle></CardHeader>
+          <CardHeader><CardTitle><h2 {...titleProps('pending')}>待处理事件队列</h2></CardTitle></CardHeader>
           <CardContent><p className="mb-2 text-sm text-muted-foreground">先 <span className="coordinates">x</span>，后 <span className="coordinates">y</span>；队首先处理</p>
             <ol className="relative flex list-inside list-decimal flex-col gap-2">
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
@@ -163,7 +171,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
           </CardContent>
         </Card></section>
         <section aria-label="活动线段顺序"><Card>
-          <CardHeader><CardTitle><h2>活动线段顺序</h2></CardTitle></CardHeader>
+          <CardHeader><CardTitle><h2 {...titleProps('active')}>活动线段顺序</h2></CardTitle></CardHeader>
           <CardContent className="flex flex-col gap-2"><p className="text-sm text-muted-foreground">序号从下到上递增 · {step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
             <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-2">
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>

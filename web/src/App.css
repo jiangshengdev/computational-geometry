@@ -5,6 +5,10 @@ main { max-width: 1380px; padding: 40px; margin: auto; }
 .drawing-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 18px; font-size: 13px; }
 .drawing svg { display: block; width: 100%; touch-action: none; cursor: default; }
 .drawing svg text { paint-order: stroke fill; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
+.drawing svg[data-numbering] text:not(.tick):not(.order-number) { visibility: hidden; }
+.order-marker { pointer-events: none; fill: var(--foreground); }
+.order-number { font-size: 16px; font-weight: 700; }
+.order-leader { stroke: var(--foreground); stroke-width: 1; }
 .drawing .grid { stroke: #edf1f6; stroke-width: 1; }
 .tick { fill: #8a97a9; font-size: 11px; }
 .input { stroke: #7b9fcf; stroke-width: 2; fill: #fff; }
