@@ -114,8 +114,7 @@ function CaseList() {
         <CardHeader><CardTitle><h2 id={`case-${preset.id}`}>{preset.name}</h2></CardTitle></CardHeader>
         <CardContent className="flex flex-col gap-4">
           <p className="text-muted-foreground">{preset.description}</p>
-          {preset.learning && <Badge variant="secondary">支持教学</Badge>}
-          <div className="flex flex-wrap gap-3">
+          <div className="mt-auto flex flex-wrap gap-3">
             <Button asChild variant="outline"><Link to={`/cases/${preset.id}`}>查看详情</Link></Button>
             {preset.learning && <Button asChild><Link to={`/cases/${preset.id}/learn`}>开始学习</Link></Button>}
           </div>

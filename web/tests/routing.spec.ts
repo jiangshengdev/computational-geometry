@@ -47,7 +47,7 @@ for (const width of [1360, 390]) {
       }))).toBe(true)
       if (preset.segments.length === 0) await expect(thumbnail).toContainText('无输入线段')
       await expect(card.getByRole('link', { name: '查看详情', exact: true })).toHaveAttribute('href', `/cases/${preset.id}`)
-      await expect(card.getByText('支持教学', { exact: true })).toHaveCount(preset.learning ? 1 : 0)
+      await expect(card.getByText('支持教学', { exact: true })).toHaveCount(0)
       const learn = card.getByRole('link', { name: '开始学习', exact: true })
       if (preset.learning) await expect(learn).toHaveAttribute('href', `/cases/${preset.id}/learn`)
       else await expect(learn).toHaveCount(0)

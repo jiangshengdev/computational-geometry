@@ -1,4 +1,5 @@
 main { max-width: 1380px; padding: 40px; margin: auto; }
+main:not(.case-shell) > .viewer-header { margin-bottom: 24px; }
 .case-card { display: grid; grid-template-columns: minmax(0, 1fr) clamp(80px, 25%, 160px); grid-template-rows: auto 1fr; column-gap: 16px; padding-right: 24px; }
 .case-card > [data-slot="card-header"], .case-card > [data-slot="card-content"] { grid-column: 1; min-width: 0; padding-right: 0; overflow-wrap: anywhere; }
 .case-thumbnail-link { grid-column: 2; grid-row: 1 / 3; align-self: center; border-radius: 8px; }
