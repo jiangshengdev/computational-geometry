@@ -31,7 +31,11 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 108
     expect(participants.x + participants.width).toBeLessThan(canvas.x)
     expect(canvas.x + canvas.width).toBeLessThan(queue.x)
     expect(canvas.x + canvas.width).toBeLessThan(active.x)
-    expect(explanation.x).toBe(canvas.x)
+    expect(explanation.x).toBe(participants.x)
+    expect(explanation.width).toBe(participants.width)
+    expect(explanation.y).toBe(canvas.y)
+    expect(explanation.y + explanation.height).toBeCloseTo(canvas.y + canvas.height, 0)
+    expect(explanation.y + explanation.height).toBeLessThan(participants.y)
     for (const control of [page.getByRole('button', { name: '下一步', exact: true }), page.getByRole('slider', { name: '教学步骤' })]) {
       const box = await bounds(control)
       expect(box.y).toBeGreaterThanOrEqual(0)

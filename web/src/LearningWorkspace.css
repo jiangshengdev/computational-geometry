@@ -6,7 +6,7 @@
 .learning-event-panels { grid-column: 3; grid-row: 1; display: grid; gap: 16px; min-width: 0; min-height: 0; }
 .learning-participants { grid-column: 1; grid-row: 2; }
 .learning-active { grid-column: 3; grid-row: 2; }
-.learning-explanations { grid-column: 2; grid-row: 2; }
+.learning-explanations { grid-column: 1; grid-row: 1; }
 .learning-event-transfer { position: fixed; pointer-events: none; z-index: 1; }
 [data-event-transfer-hidden="true"] { opacity: 0 !important; }
 
