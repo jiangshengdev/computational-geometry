@@ -49,42 +49,6 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
     {position > 0 && <span>{separator}</span>}
     <span className="learning-hover-item" data-input-id={id} {...inputProps(id)}>S{id}</span>
   </Fragment>)
-  const changeStep = (value: number | ((current: number) => number), singleStep = false) => {
-    setHover(null)
-    setNumbering(null)
-    const next = Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(index) : value))
-    const from = trace.steps[index], to = trace.steps[next]
-    if (singleStep && !reducedMotion && next !== index && to.current && from.pending.some(point => samePoint(point, to.current!))) {
-      prepareTransfer(formatPoint(to.current), 'current')
-    } else if (singleStep && !reducedMotion && next !== index && from.current && to.pending.some(point => samePoint(point, from.current!))) {
-      prepareTransfer(formatPoint(from.current), 'pending')
-    } else prepareTransfer()
-    setNavigation(current => ({
-      from: index,
-      reset: current.reset + (singleStep && !reducedMotion ? 0 : 1),
-    }))
-    onStepChange(next)
-  }
-  const restart = () => { changeStep(0); setRun(r => r + 1) }
-  const handleShortcut = useEffectEvent((event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
-    const target = event.target
-    if (target instanceof Element && (
-      target.closest('input, textarea, select, [role="slider"], [role="combobox"], [role="listbox"], [role="dialog"]')
-      || (target instanceof HTMLElement && target.isContentEditable)
-    )) return
-    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key.toLowerCase() !== 'r') return
-    event.preventDefault()
-    if (event.repeat) return
-    if (event.key === 'ArrowLeft') changeStep(current => current - 1, true)
-    else if (event.key === 'ArrowRight') changeStep(current => current + 1, true)
-    else restart()
-  })
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => handleShortcut(event)
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
   const step = trace.steps[index]
   const recorded = step.action === 'record' ? step.results.at(-1) : undefined
   const recordedOverlap = recorded?.geometry.type === 'overlap' ? recorded : undefined
@@ -134,6 +98,42 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
     { panel: explanationPanel, reset: true },
   ])
   const prepareTransfer = useEventTransfer(step, reducedMotion, currentPanel, pendingPanel)
+  const changeStep = (value: number | ((current: number) => number), singleStep = false) => {
+    setHover(null)
+    setNumbering(null)
+    const next = Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(index) : value))
+    const from = trace.steps[index], to = trace.steps[next]
+    if (singleStep && !reducedMotion && next !== index && to.current && from.pending.some(point => samePoint(point, to.current!))) {
+      prepareTransfer(formatPoint(to.current), 'current')
+    } else if (singleStep && !reducedMotion && next !== index && from.current && to.pending.some(point => samePoint(point, from.current!))) {
+      prepareTransfer(formatPoint(from.current), 'pending')
+    } else prepareTransfer()
+    setNavigation(current => ({
+      from: index,
+      reset: current.reset + (singleStep && !reducedMotion ? 0 : 1),
+    }))
+    onStepChange(next)
+  }
+  const restart = () => { changeStep(0); setRun(r => r + 1) }
+  const handleShortcut = useEffectEvent((event: KeyboardEvent) => {
+    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+    const target = event.target
+    if (target instanceof Element && (
+      target.closest('input, textarea, select, [role="slider"], [role="combobox"], [role="listbox"], [role="dialog"]')
+      || (target instanceof HTMLElement && target.isContentEditable)
+    )) return
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key.toLowerCase() !== 'r') return
+    event.preventDefault()
+    if (event.repeat) return
+    if (event.key === 'ArrowLeft') changeStep(current => current - 1, true)
+    else if (event.key === 'ArrowRight') changeStep(current => current + 1, true)
+    else restart()
+  })
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => handleShortcut(event)
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
   const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="learning-view flex flex-col gap-3">
