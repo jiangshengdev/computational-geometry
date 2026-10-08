@@ -43,13 +43,20 @@ type NavigationAction = '下一步' | '上一步' | '重新开始' | 'Home' | 'E
 
 async function sampleStep(page: Page, text: string, direction: NavigationAction | NavigationAction[]) {
   return page.evaluate(async ({ text, direction }) => {
-    const samples: { x: number; right: number; y: number; opacity: number }[][] = []
-    const read = () => [...document.querySelectorAll<HTMLElement>('aside li, aside p')]
+    const samples: { x: number; right: number; y: number; opacity: number; unclipped: boolean }[][] = []
+    const read = () => [...document.querySelectorAll<HTMLElement>('aside li, aside p, [data-learning-event-transfer]')]
       .filter(element => element.textContent === text)
       .filter(element => getComputedStyle(element).visibility !== 'hidden')
       .map(element => {
-        const { x, right, y } = element.getBoundingClientRect()
-        return { x, right, y, opacity: Number(getComputedStyle(element).opacity) }
+        const { x, right, y, height } = element.getBoundingClientRect()
+        const centerX = (x + right) / 2, centerY = y + height / 2
+        let unclipped = centerX >= 0 && centerX <= innerWidth && centerY >= 0 && centerY <= innerHeight
+        for (let ancestor = element.parentElement; ancestor; ancestor = ancestor.parentElement) {
+          const style = getComputedStyle(ancestor), rect = ancestor.getBoundingClientRect()
+          if (style.overflowX !== 'visible' && (centerX < rect.left || centerX > rect.right)) unclipped = false
+          if (style.overflowY !== 'visible' && (centerY < rect.top || centerY > rect.bottom)) unclipped = false
+        }
+        return { x, right, y, opacity: Number(getComputedStyle(element).opacity), unclipped }
       })
       .filter(row => row.opacity > 0.01)
     samples.push(read())
@@ -118,6 +125,8 @@ test('状态动画：队首事件整行转移并能反向返回', async ({ page 
   expect(Math.hypot(forward[0][0].x - forward.at(-1)![0].x, start - end)).toBeGreaterThan(30)
   const lower = Math.min(start, end), upper = Math.max(start, end)
   expect(forward.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2))).toBe(true)
+  expect(forward.some(rows => rows.some(row => row.x > Math.min(forward[0][0].x, forward.at(-1)![0].x) + 30
+    && row.x < Math.max(forward[0][0].x, forward.at(-1)![0].x) - 30 && row.unclipped))).toBe(true)
   expect(forward.every(rows => rows.length === 1 && rows[0].opacity > 0.95)).toBe(true)
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText(text)
   await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText(text)
@@ -125,6 +134,8 @@ test('状态动画：队首事件整行转移并能反向返回', async ({ page 
   const backward = await sampleStep(page, text, '上一步')
   expect(backward.at(-1)![0].y).toBeCloseTo(start, 0)
   expect(backward.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2))).toBe(true)
+  expect(backward.some(rows => rows.some(row => row.x > Math.min(backward[0][0].x, backward.at(-1)![0].x) + 30
+    && row.x < Math.max(backward[0][0].x, backward.at(-1)![0].x) - 30 && row.unclipped))).toBe(true)
   expect(backward.every(rows => rows.length === 1 && rows[0].opacity > 0.95)).toBe(true)
 })
 

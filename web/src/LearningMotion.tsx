@@ -18,9 +18,11 @@ export function LearningRow({ as = 'li', identity, existed, children, ref, ...ho
   const destinations = usePresenceData() as string[]
   const transferring = destinations.includes(identity)
   const Row = as === 'li' ? motion.li : motion.p
-  return <Row ref={ref} layout="position" layoutId={identity}
+  return <Row ref={ref} layout="position" layoutId={identity.startsWith('event:') ? `${identity}:${as}` : identity}
     initial={existed ? false : { opacity: 0 }} animate={{ opacity: 1 }}
-    exit={{ opacity: transferring ? 1 : 0 }}
+    exit={transferring && identity.startsWith('event:')
+      ? { opacity: 0, transition: { duration: 0 } }
+      : { opacity: transferring ? 1 : 0 }}
     transition={{ duration: 0.32, ease: 'easeInOut' }}
     // Only the destination paints during a shared-layout transfer.
     layoutCrossfade={false}

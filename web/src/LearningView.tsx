@@ -11,6 +11,7 @@ import { useLearningReducedMotion } from './useLearningReducedMotion'
 import { HelpButton } from './CaseHelp'
 import './LearningWorkspace.css'
 import { useStepPanelScroll } from './useStepPanelScroll'
+import { useEventTransfer } from './useEventTransfer'
 
 
 export function LearningView({ preset, trace, results, index, onStepChange }: {
@@ -52,6 +53,12 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
     setHover(null)
     setNumbering(null)
     const next = Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(index) : value))
+    const from = trace.steps[index], to = trace.steps[next]
+    if (singleStep && !reducedMotion && next !== index && to.current && from.pending.some(point => samePoint(point, to.current!))) {
+      prepareTransfer(formatPoint(to.current), 'current')
+    } else if (singleStep && !reducedMotion && next !== index && from.current && to.pending.some(point => samePoint(point, from.current!))) {
+      prepareTransfer(formatPoint(from.current), 'pending')
+    } else prepareTransfer()
     setNavigation(current => ({
       from: index,
       reset: current.reset + (singleStep && !reducedMotion ? 0 : 1),
@@ -126,6 +133,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
     { panel: participantsPanel, reset: step.action === 'initial' || step.action === 'take', selector: participantTarget === undefined ? undefined : `[data-input-id="${participantTarget}"]` },
     { panel: explanationPanel, reset: true },
   ])
+  const prepareTransfer = useEventTransfer(step, reducedMotion, currentPanel, pendingPanel)
   const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="learning-view flex flex-col gap-3">
@@ -157,7 +165,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
           <CardContent ref={currentPanel} className="relative flex flex-col gap-2"><p>{phase}</p>
             <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
               {step.current && <LearningRow as="p" key={formatPoint(step.current)} identity={`event:${formatPoint(step.current)}`}
-                existed={sources.includes(`event:${formatPoint(step.current)}`)} {...eventProps(step.current)}>{pointName(step.current)}</LearningRow>}
+                existed={sources.includes(`event:${formatPoint(step.current)}`)} data-event-id={formatPoint(step.current)} {...eventProps(step.current)}>{pointName(step.current)}</LearningRow>}
             </AnimatePresence>
             {!step.current && <p>尚未处理事件</p>}
           </CardContent>
