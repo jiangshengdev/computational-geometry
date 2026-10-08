@@ -48,6 +48,7 @@ main { max-width: 1380px; padding: 40px; margin: auto; }
 .learning-hover-item[data-checked="true"] { outline: 2px solid var(--primary); border-radius: 4px; }
 .drawing [data-teaching="true"] .input[data-checked="true"] > line { stroke: var(--primary); stroke-width: 6; }
 .learning-hover-item[data-highlighted="true"] { background: #d3f3ed; color: #075b50; outline: 2px solid #078574; border-radius: 4px; }
+.input-item[data-highlighted="true"], .pair-item[data-highlighted="true"], .learning-hover-item[data-highlighted="true"], .learning-hover-item[data-checked="true"] { outline-offset: -2px; }
 .drawing text[data-event-point][data-highlighted="true"] { fill: #075b50; font-weight: 700; }
 .hover-event { fill: none; stroke: #078574; stroke-width: 3; pointer-events: none; }
 .drawing [data-teaching="true"] .input[data-highlighted="true"] > line { stroke: #078574; stroke-width: 7; }
