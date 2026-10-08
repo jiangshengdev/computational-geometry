@@ -37,7 +37,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     const prior = mode === '回退' ? target + 1 : target - 1
     await page.goto(`/cases/multiway-interior/learn?step=${prior}`)
     const slider = page.getByRole('slider', { name: '教学步骤' })
-    await expect(slider).toHaveAttribute('aria-valuenow', String(prior))
+    await expect(slider).toHaveValue(String(prior))
     const active = page.getByRole('region', { name: '活动线段顺序' })
     const row = active.getByRole('listitem').filter({ hasText: `S${trace.steps[target].subjects[0]}` })
     expect((await scrollPanel(row, false)).overflow).toBeGreaterThan(0)
@@ -48,7 +48,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     const canvas = await page.getByRole('region', { name: '几何视图' }).boundingBox()
     if (mode === '前进' || mode === '回退') await control.click()
     else await control.press('ArrowRight')
-    await expect(slider).toHaveAttribute('aria-valuenow', String(target))
+    await expect(slider).toHaveValue(String(target))
     await expect.poll(() => visibilityInPanel(row)).toBe(true)
     await expect(control).toBeFocused()
     expect(await page.evaluate(() => window.scrollY)).toBe(before)
@@ -75,21 +75,15 @@ test('教学定位：点击滑块轨道跨多步跳转后定位目标而非来�
   expect(target - prior).toBeGreaterThan(1)
   await page.goto(`/cases/multiway-interior/learn?step=${prior}`)
   const slider = page.getByRole('slider', { name: '教学步骤' })
-  await expect(slider).toHaveAttribute('aria-valuenow', String(prior))
+  await expect(slider).toHaveValue(String(prior))
   const row = page.getByRole('region', { name: '活动线段顺序' }).getByRole('listitem').filter({ hasText: `S${subject}` })
   expect((await scrollPanel(row, false)).overflow).toBeGreaterThan(0)
   expect(await visibilityInPanel(row)).toBe(false)
   const scrollBefore = await page.evaluate(() => window.scrollY)
-  const track = await slider.evaluate(thumb => {
-    const thumbWidth = thumb.getBoundingClientRect().width
-    let ancestor = thumb.parentElement
-    while (ancestor && ancestor.getBoundingClientRect().width <= thumbWidth) ancestor = ancestor.parentElement
-    if (!ancestor) throw new Error('找不到滑块轨道区域')
-    const { x, y, width, height } = ancestor.getBoundingClientRect()
-    return { x, y, width, height }
-  })
+  const track = await page.getByRole('group', { name: '教学步骤', exact: true }).boundingBox()
+  if (!track) throw new Error('找不到滑块轨道区域')
   await page.mouse.click(track.x + track.width * target / (trace.steps.length - 1), track.y + track.height / 2)
-  await expect(slider).toHaveAttribute('aria-valuenow', String(target))
+  await expect(slider).toHaveValue(String(target))
   await expect.poll(() => visibilityInPanel(row)).toBe(true)
   await expect(slider).toBeFocused()
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore)
@@ -122,7 +116,7 @@ test('教学定位：发现事件按精确身份定位，回退移除未来条�
   await expect(page.getByTestId('active-order')).toHaveText('空')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('学习完成')
   await page.getByRole('button', { name: '重新开始', exact: true }).click()
-  await expect(slider).toHaveAttribute('aria-valuenow', '0')
+  await expect(slider).toHaveValue('0')
   await expect(queue.getByRole('listitem')).toHaveCount(6)
   await expect(row).toHaveCount(0)
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')

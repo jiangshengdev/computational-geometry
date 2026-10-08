@@ -11,7 +11,7 @@ test('三页路由：列表进入详情再进入教学', async ({ page }) => {
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
   await expect(page).toHaveURL(/\/cases\/crossing\/learn(?:\?step=0)?$/)
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
 })
 
@@ -71,7 +71,7 @@ for (const width of [1360, 390]) {
     await page.getByRole('link', { name: '返回列表', exact: true }).click()
     await page.getByRole('article', { name: '普通交叉', exact: true }).getByRole('link', { name: '开始学习', exact: true }).click()
     await expect(page).toHaveURL(/\/cases\/crossing\/learn(?:\?step=0)?$/)
-    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
     await expect(page.getByRole('combobox')).toHaveCount(0)
     await page.getByRole('link', { name: '返回结果查看器', exact: true }).click()
     await expect(page).toHaveURL(/\/cases\/crossing$/)
@@ -96,10 +96,10 @@ test('三页路由：详情与教学直达刷新并可返回列表', async ({ pa
 
   await page.goto('/cases/neighbor-removal/learn')
   await expect(page.getByRole('heading', { name: '退出后成为邻居', exact: true })).toBeVisible()
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
   await page.reload()
   await expect(page).toHaveURL(/\/cases\/neighbor-removal\/learn(?:\?step=0)?$/)
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
   await page.getByRole('link', { name: '返回列表', exact: true }).click()
   await expect(page.getByRole('region', { name: '案例列表' })).toBeVisible()
 })
@@ -153,7 +153,7 @@ for (const invalid of [
     await expect(recovery.getByRole('link', { name: '从头学习', exact: true })).toHaveCount(invalid.learn ? 1 : 0)
     if (invalid.learn) {
       await recovery.getByRole('link', { name: '从头学习', exact: true }).click()
-      await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+      await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
     } else if (invalid.id) {
       await recovery.getByRole('link', { name: '查看详情', exact: true }).click()
       await expect(page).toHaveURL(new RegExp(`/cases/${invalid.id}$`))

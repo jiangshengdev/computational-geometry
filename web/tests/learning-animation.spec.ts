@@ -7,7 +7,7 @@ async function startLearning(page: Page) {
   await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
 }
 
 test('状态动画：活动线段换序与反向恢复，几何线段不移动', async ({ page }) => {
@@ -34,7 +34,7 @@ async function jumpTo(page: Page, step: number) {
   await slider.focus()
   await page.keyboard.press('Home')
   for (let index = 0; index < step; index++) await page.keyboard.press('ArrowRight')
-  await expect(slider).toHaveAttribute('aria-valuenow', String(step))
+  await expect(slider).toHaveValue(String(step))
   await slider.blur()
 }
 
@@ -63,7 +63,7 @@ async function sampleStep(page: Page, text: string, direction: NavigationAction 
     const actions = Array.isArray(direction) ? direction : [direction]
     const act = (action: typeof actions[number]) => {
       if (action === 'Home' || action === 'End') {
-        const slider = document.querySelector<HTMLElement>('[role="slider"]')!
+        const slider = document.querySelector<HTMLInputElement>('input[type="range"]')!
         slider.focus()
         slider.dispatchEvent(new KeyboardEvent('keydown', { key: action, bubbles: true }))
       } else {
@@ -159,7 +159,7 @@ test('状态动画：快速反向、进度跳转和重启立即采用最新步�
   await page.keyboard.press('ArrowRight')
   await page.keyboard.press('ArrowLeft')
   await page.keyboard.press('ArrowRight')
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '1')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('1')
   const current = page.getByRole('region', { name: '当前事件' })
   await expect(current).toContainText('S0 起点 (0, 0)')
   await jumpTo(page, 8)
@@ -172,7 +172,7 @@ test('状态动画：快速反向、进度跳转和重启立即采用最新步�
   await selectPreset(page, 'disjoint')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   await expect(current).toContainText('尚未处理事件')
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
 })
 
 for (const width of [1360, 390]) {
@@ -227,7 +227,7 @@ test(`状态动画：换序中断与跳转隔离 ${width}px`, async ({ page }) =
   await page.keyboard.press('ArrowRight')
   await page.keyboard.press('ArrowLeft')
   await page.keyboard.press('ArrowRight')
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '11')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('11')
   const order = page.getByTestId('active-order')
   await expect(order).toHaveText('S1S0')
   const backwards = await sampleStep(page, 'S0', '上一步')

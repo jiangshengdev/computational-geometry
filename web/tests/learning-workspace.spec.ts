@@ -37,7 +37,7 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 108
     expect(canvas.y + canvas.height).toBeCloseTo(participants.y + participants.height, 0)
     expect(canvas.y + canvas.height).toBeCloseTo(active.y + active.height, 0)
     expect(explanation.y + explanation.height).toBeLessThan(participants.y)
-    for (const control of [page.getByRole('button', { name: '下一步', exact: true }), page.getByRole('slider', { name: '教学步骤' })]) {
+    for (const control of [page.getByRole('button', { name: '下一步', exact: true }), page.getByRole('group', { name: '教学步骤', exact: true })]) {
       const box = await bounds(control)
       expect(box.y).toBeGreaterThanOrEqual(0)
       expect(box.y + box.height).toBeLessThanOrEqual(viewport.height)
@@ -86,7 +86,7 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 1360, height: 600 
     await expect(result).toBeInViewport()
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     await page.getByRole('button', { name: '重新开始', exact: true }).click()
-    await expect(slider).toHaveAttribute('aria-valuenow', '0')
+    await expect(slider).toHaveValue('0')
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
   })
 }

@@ -208,7 +208,7 @@ for (const preset of ['crossing', 'disjoint']) {
     await selectPreset(page, preset === 'crossing' ? 'disjoint' : 'crossing')
     await page.getByRole('link', { name: '开始逐步学习' }).click()
     await emptyHover()
-    await expect(slider).toHaveAttribute('aria-valuenow', '0')
+    await expect(slider).toHaveValue('0')
   })
 }
 

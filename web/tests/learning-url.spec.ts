@@ -1,22 +1,22 @@
 import { expect, test, type Page } from '@playwright/test'
 
 async function expectStep(page: Page, step: number) {
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', String(step))
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(step))
   await expect.poll(() => new URL(page.url()).searchParams.get('step')).toBe(String(step))
 }
 
 test('教学步骤 URL：直达、刷新和新标签恢复同一步骤', async ({ page, context }) => {
   const path = '/cases/crossing/learn?step=2'
   await page.goto(path)
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '2')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('2')
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
   const content = await page.getByRole('region', { name: '逐步学习' }).innerText()
   await page.reload()
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '2')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('2')
   await expect.poll(() => page.getByRole('region', { name: '逐步学习' }).innerText()).toBe(content)
   const shared = await context.newPage()
   await shared.goto(page.url())
-  await expect(shared.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '2')
+  await expect(shared.getByRole('slider', { name: '教学步骤' })).toHaveValue('2')
   await expect.poll(() => shared.getByRole('region', { name: '逐步学习' }).innerText()).toBe(content)
   await shared.close()
 })
@@ -28,7 +28,7 @@ for (const width of [1360, 390]) {
     const slider = page.getByRole('slider', { name: '教学步骤' })
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const previous = page.getByRole('button', { name: '上一步', exact: true })
-    await expect(slider).toHaveAttribute('aria-valuenow', '0')
+    await expect(slider).toHaveValue('0')
     await expect(previous).toBeDisabled()
     await next.click()
     await expectStep(page, 1)
@@ -44,7 +44,7 @@ for (const width of [1360, 390]) {
     await expectStep(page, 1)
     await slider.focus()
     await slider.press('End')
-    const last = Number(await slider.getAttribute('aria-valuemax'))
+    const last = Number(await slider.getAttribute('max'))
     await expectStep(page, last)
     await expect(next).toBeDisabled()
     await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (2, 2)')
@@ -69,7 +69,7 @@ for (const source of ['list', 'detail']) {
     if (source === 'list') {
       await page.getByRole('article', { name: '普通交叉', exact: true }).getByRole('link', { name: '开始学习', exact: true }).click()
     } else await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
-    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
     for (let step = 1; step <= 7; step++) {
       await page.getByRole('button', { name: '下一步', exact: true }).click()
       await expectStep(page, step)
@@ -87,7 +87,7 @@ for (const source of ['list', 'detail']) {
 
 test('教学步骤 URL：前导零是有效整数且不主动改写地址', async ({ page }) => {
   await page.goto('/cases/crossing/learn?step=002')
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '2')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('2')
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
   expect(new URL(page.url()).search).toBe('?step=002')
 })
@@ -104,7 +104,7 @@ for (const query of ['step=', 'step=-1', 'step=1.5', 'step=abc', 'step=1e2', 'st
     await expect(recovery.getByRole('link', { name: '查看详情', exact: true })).toHaveAttribute('href', '/cases/crossing')
     await expect(recovery.getByRole('link', { name: '从头学习', exact: true })).toBeVisible()
     await recovery.getByRole('link', { name: '从头学习', exact: true }).click()
-    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
+    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
     await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText('I0')
   })
