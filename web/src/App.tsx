@@ -118,9 +118,12 @@ export default function App() {
       <FieldGroup className="w-full min-[851px]:w-64"><Field>
         <FieldLabel htmlFor="preset">预设案例</FieldLabel>
         <Select value={preset.id} onValueChange={value => setPreset(presets.find(p => p.id === value)!)}>
-          <SelectTrigger id="preset" className="w-full"><SelectValue /></SelectTrigger>
+          <SelectTrigger id="preset" className="w-full"><SelectValue>{preset.name}</SelectValue></SelectTrigger>
           <SelectContent position="popper"><SelectGroup>
-            {presets.map(p => <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>)}
+            {presets.map(p => <SelectItem key={p.id} value={p.id} textValue={p.name} aria-labelledby={`preset-${p.id}-name`} aria-describedby={p.learning ? `preset-${p.id}-learning` : undefined}>
+              <span id={`preset-${p.id}-name`}>{p.name}</span>
+              {p.learning ? <Badge id={`preset-${p.id}-learning`} variant="secondary">学习</Badge> : null}
+            </SelectItem>)}
           </SelectGroup></SelectContent>
         </Select>
       </Field></FieldGroup>
