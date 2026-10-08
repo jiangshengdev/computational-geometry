@@ -6,7 +6,10 @@ import { join } from 'node:path'
 test('相邻检测：删除中间线段后发现交点并可重现', async ({ page }) => {
   await page.goto('/cases/crossing')
   await selectPreset(page, '退出后成为邻居')
-  await expect(page.getByText(/学习目标：观察中间线段退出/)).toBeVisible()
+  await expect(page.getByText(/学习目标：观察中间线段退出/)).toBeHidden()
+  await page.getByRole('button', { name: '案例说明', exact: true }).click()
+  await expect(page.getByRole('dialog')).toContainText('学习目标：观察中间线段退出')
+  await page.keyboard.press('Escape')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })

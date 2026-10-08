@@ -48,8 +48,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
   const results = computation.status === 'ready' ? computation.results : []
   const highlights = hover ? hoverHighlights(hover, results) : null
   if (learning) return <>
-    <div className="mb-4"><HelpButton /></div>
-    <p className="mb-4">{preset.name} · <span className="coordinates">{preset.description}</span> 从左向右扫描，按 <span className="coordinates">(x, y)</span> 排序，精确计算。</p>
+    <div className="mb-4 flex flex-wrap items-center gap-2"><HelpButton /><HelpButton topic="case">案例说明</HelpButton></div>
     {computation.status === 'loading'
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
       : computation.status === 'error'
@@ -58,16 +57,15 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
     <Button asChild className="mt-6" variant="outline"><Link to={`/cases/${preset.id}`}>返回结果查看器</Link></Button>
   </>
   return <>
-    <div className="mb-4"><HelpButton /></div>
-    <p className="my-6 text-muted-foreground"><span className="coordinates">{preset.description}</span></p>
-    {preset.learning && <p className="mb-4">学习目标：{preset.learning.goal}</p>}
-    {teachable ? <Button asChild className="mb-4"><Link to={`/cases/${preset.id}/learn`}>开始逐步学习</Link></Button>
-      : <p className="mb-4 text-muted-foreground">此案例目前提供结果查看；逐步学习请选择普通交叉、无交点、相邻检测、同扫描坐标不同交点、共端点、起点落在内部或终点落在内部。</p>}
+    <div className="mb-4 flex flex-wrap items-center gap-2">
+      <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
+      {teachable && <Button asChild><Link to={`/cases/${preset.id}/learn`}>开始逐步学习</Link></Button>}
+    </div>
     <div className="workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
       <aside className="min-w-0" aria-label="计算结果">
         <Card>
-          <CardHeader><CardTitle><h2>相交配对</h2></CardTitle></CardHeader>
+          <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2>相交配对</h2></CardTitle><HelpButton topic="results">结果说明</HelpButton></CardHeader>
           <CardContent className="flex flex-col gap-4">
             {computation.status === 'loading'
               ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在计算…</div>
@@ -100,7 +98,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
       </aside>
     </div>
     <section className="mt-7" aria-label="原始输入"><Card>
-      <CardHeader><CardTitle><h2 className="flex items-center gap-2">原始输入 <Badge variant="secondary">{preset.segments.length}</Badge></h2></CardTitle></CardHeader>
+      <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle><h2 className="flex items-center gap-2">原始输入 <Badge variant="secondary">{preset.segments.length}</Badge></h2></CardTitle><HelpButton topic="inputs">输入说明</HelpButton></CardHeader>
       <CardContent>{preset.segments.length === 0
         ? <Empty><EmptyHeader><EmptyTitle>输入集合为空</EmptyTitle></EmptyHeader></Empty>
         : <ul className="flex flex-wrap gap-x-8 gap-y-3">{preset.segments.map((s, i) =>
@@ -170,7 +168,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
   return <>
     <nav aria-label="页面导航" className="mb-4"><Button asChild variant="outline"><Link to="/">返回列表</Link></Button></nav>
     <h2 className="mb-4 text-xl font-semibold">{preset.name}</h2>
-    <CaseHelp key={`${preset.id}:${learning}`}><CaseViewer preset={preset} learning={learning} /></CaseHelp>
+    <CaseHelp key={`${preset.id}:${learning}`} preset={preset}><CaseViewer preset={preset} learning={learning} /></CaseHelp>
   </>
 }
 
