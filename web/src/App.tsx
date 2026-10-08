@@ -37,7 +37,7 @@ function CaseViewer({ preset }: { preset: Preset }) {
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
         const data = await response.json() as { intersections: Intersection[]; trace?: SweepTrace }
         if (!Array.isArray(data.intersections)) throw new Error('结果结构无效')
-        if (teachable && (!data.trace?.steps.length || data.trace.shear.numerator !== '0')) throw new Error('教学轨迹无效')
+        if (teachable && !data.trace?.steps.length) throw new Error('教学轨迹无效')
         if (current) setComputation({ status: 'ready', results: data.intersections, trace: data.trace })
       } catch (error) {
         if (current) setComputation({ status: 'error', message: error instanceof Error ? error.message : '未知错误' })

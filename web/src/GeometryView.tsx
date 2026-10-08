@@ -41,6 +41,11 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
       ? sweep.active.map((id, index) => {
         const segment = segments[id]
         const scanX = px(sweep.current!)
+        // A vertical segment coincides with the drawn sweep line over an
+        // interval. Its marker tracks the event frontier, not a unique cut.
+        if (samePoint({ x: segment.start.x, y: segment.end.y }, segment.end)) {
+          return { x: scanX, y: py(sweep.current!), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}（当前处理高度）` }
+        }
         const fraction = (scanX - px(segment.start)) / (px(segment.end) - px(segment.start))
         return { x: scanX, y: py(segment.start) + fraction * (py(segment.end) - py(segment.start)), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}` }
       }) : []

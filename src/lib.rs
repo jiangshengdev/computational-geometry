@@ -6,8 +6,8 @@
 //! empty and singleton collections return no pairs.
 //!
 //! An invertible exact shear (x, y) -> (x + s*y, y) avoids vertical segments in
-//! sweep coordinates; s is chosen from input directions, without enumerating
-//! intersections. Point events are ordered lexicographically and group all
+//! sweep coordinates; s is bounded from input coordinates to preserve original
+//! event order, without enumerating intersections. Point events group all
 //! incident segments. Only adjacent active segments schedule future crossings;
 //! pair enumeration is confined to segments incident at one event. Overlapping
 //! pairs emit their full interval at its beginning, never fragments at later
@@ -18,7 +18,7 @@
 //! remain intact. Duplicate inputs retain their own pairs in mixed events too.
 //!
 //! With n inputs and k intersecting pairs, the number of events E is O(n + k).
-//! Shear selection costs O(n log(n + 1)); vector status scans and updates cost
+//! Shear selection uses O(n) arithmetic operations; vector status scans and updates cost
 //! O(E*n), and incident-block sorting costs O(E*n*log(n + 1)). Queue work,
 //! including initialization from all n inputs, costs O((n + E)*log(E + 1)).
 //! For m incident segments, each event inspects O(m*m) pairs; overlapping pairs
@@ -29,7 +29,7 @@
 //! cost of arbitrary-precision rational arithmetic and comparisons, which
 //! depends on operand bit lengths; this is not an O((n + k) log n) claim.
 
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::BTreeMap;
 
 pub mod http;
 
@@ -114,19 +114,36 @@ impl SweepSegment {
 }
 
 fn choose_shear(segments: &[Segment]) -> Rational {
-    let mut forbidden = BTreeSet::new();
-    for segment in segments {
-        let dy = &segment.end.y - &segment.start.y;
-        if dy != Rational::from_integer(0.into()) {
-            forbidden.insert((&segment.start.x - &segment.end.x) / dy);
-        }
+    if !segments
+        .iter()
+        .any(|s| s.start.x == s.end.x && s.start.y != s.end.y)
+    {
+        return Rational::from_integer(0.into());
     }
-    let mut shear = Rational::from_integer(0.into());
-    // At most n forbidden values: one of 0..=n must be available.
-    while forbidden.contains(&shear) {
-        shear += Rational::from_integer(1.into());
+    let coordinates = || {
+        segments
+            .iter()
+            .flat_map(|s| [&s.start.x, &s.start.y, &s.end.x, &s.end.y])
+    };
+    // A common denominator D makes all endpoints integral.
+    let mut denominator = Rational::from_integer(1.into());
+    for coordinate in coordinates() {
+        // Multiplication is deliberate: any common multiple is sufficient.
+        denominator *= Rational::from_integer(coordinate.denom().clone());
     }
-    shear
+    let mut bound = Rational::from_integer(1.into());
+    for coordinate in coordinates() {
+        let scaled = coordinate * &denominator;
+        bound = bound.max(scaled.clone()).max(-scaled);
+    }
+    // Let M bound the scaled endpoint coordinates. Intersection denominators
+    // divide a determinant of magnitude <= 8 M^2, so distinct event x values
+    // differ by >= 1/(64 M^4); event y values differ by <= 2 M. Scaling back
+    // divides both bounds by D. Thus s = 1/(256 (M+1)^5) preserves every strict
+    // x ordering and breaks equal x by y. Nonzero segments become nonvertical.
+    // This is exact arithmetic, not a floating-point epsilon or pairwise oracle.
+    let margin = bound + Rational::from_integer(1.into());
+    Rational::from_integer(1.into()) / (Rational::from_integer(256.into()) * margin.pow(5))
 }
 
 #[derive(Default)]
@@ -178,9 +195,8 @@ pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
     sweep(segments, None)
 }
 
-/// Teaching snapshots use sweep coordinates (x + shear*y, y), including the
-/// queue and current event. Results retain original coordinates. Captured only
-/// when requested; ordinary intersection callers retain the same algorithm.
+/// Teaching snapshots expose original coordinates and lexicographic event order.
+/// Captured only when requested; ordinary callers use the same exact sweep.
 pub(crate) struct SweepStep {
     pub phase: &'static str,
     pub action: &'static str,
@@ -236,6 +252,11 @@ pub(crate) fn trace_intersections(segments: &[Segment]) -> (Vec<Intersection>, S
         steps: Vec::new(),
     };
     let results = sweep(segments, Some(&mut trace.steps));
+    for step in &mut trace.steps {
+        for point in step.current.iter_mut().chain(step.pending.iter_mut()) {
+            point.x -= &trace.shear * &point.y;
+        }
+    }
     (results, trace)
 }
 

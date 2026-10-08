@@ -18,7 +18,7 @@ export function LearningIntroduction() {
     <p>事件队列按先 <span className="coordinates">x</span>、后 <span className="coordinates">y</span> 从小到大保存待处理事件；活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。</p>
     <p>在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。</p>
     <p className="text-muted-foreground">统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 <span className="coordinates">x</span> 的不同事件按 <span className="coordinates">y</span> 依次处理；当前事件处理完成后只更新该位置的顺序，同 <span className="coordinates">x</span> 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。</p>
-    <p className="text-muted-foreground">本学习流程讲普通交叉、无交点、相邻检测、同扫描坐标不同位置、端点接触与多线共点。竖直线和重叠尚未获得完整教学支持。</p>
+    <p className="text-muted-foreground">本学习流程讲普通交叉、无交点、相邻检测、同扫描坐标不同位置、端点接触、多线共点与竖直线。竖直线在固定 x 上按 y 从下向上处理，活动状态代表处理前沿；共线重叠尚未获得完整教学支持。</p>
     </section>
   </details>
 }
@@ -30,6 +30,7 @@ export function LearningReferences() {
     <p className="text-muted-foreground">核对依据：讲义的 Plane Sweep、Adjacent-segment rule 与事件处理章节（图 4 的相邻性论证、图 5 的插入、删除与交叉）。讲义先假设一般位置；这里另外明示同 <span className="coordinates">x</span> 端点的处理顺序。其平衡树复杂度结论不等于本演示实现的性能保证。</p>
     <a className="underline" href="https://i11www.iti.kit.edu/_media/teaching/winter2015/compgeom/algogeom-ws15-vl02.pdf">KIT · Line Segment Intersection：闭线段与同点事件归组</a>
     <p className="text-muted-foreground">核对依据：讲义标号 4 定义闭线段，标号 6 按两个坐标确定事件先后，标号 8 的 handleEvent 将开始、结束、内部穿过的线段归组，先报告交点及全部参与者，再移除与重新插入以更新顺序（PDF 第 39–42 页）。讲义从上向下扫描，本页将方向换为从左向右、同 x 时从下向上；对应的是相同的精确字典序规则，不用数值微移。</p>
+    <p className="text-muted-foreground">竖直案例沿用上述闭线段、字典序和同点归组规则。图中的竖直状态标记是本页的处理前沿表示，并非扫描线与线段的唯一交点。内部采用可逆精确剪切 (x + s·y, y)，s 的有理数界限由输入坐标推导，保证所有端点及线段交点的原始字典序不变；显示时还原原坐标。这是本实现的保序推导，不将讲义当作该剪切界限的证明，也不用浮点 epsilon 判断几何关系。</p>
   </section>
 }
 
@@ -198,8 +199,14 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     <section aria-label="同点与并列规则" className="flex flex-col gap-2 text-sm">
       <h2 className="font-semibold">同一横坐标，不一定是同一个点</h2>
       <p>先比较 x，再比较 y；只有两个坐标都精确相等才归为同一个事件点。同一扫描坐标不等于所有线段共点。队列里的每个点单独处理，同点的全部参与者一起归组。</p>
-      <p>事件处理中展示的是更新过程，不能当作完成状态。事件处理完成后，当前点的继续活动线段按紧邻右侧的上下顺序排列；同 x 的较低位置已处理，较高位置仍保留处理前顺序。因此此时的列表不是整条扫描线统一右移后的顺序。</p>
+      <p>事件处理中展示的是更新过程，不能当作完成状态。事件处理完成后，当前点的非竖直继续活动线段按紧邻右侧的上下顺序排列；竖直线则继续走向更高的待处理位置。同 x 的较低位置已处理，较高位置仍保留处理前顺序。因此此时的列表不是整条扫描线统一右移后的顺序。</p>
     </section>
+    {trace.shear.numerator !== '0' && <section aria-label="竖直线处理规则" className="flex flex-col gap-2 text-sm">
+      <h2 className="font-semibold">竖直线：固定横坐标，逐个处理高度</h2>
+      <p>竖直线与扫描线重合为一段，不能用一个普通直线交点代表整段。仍按先 x、后 y 的约定：到下端时加入，在不同高度依次处理交叉和接触，到上端先记录闭线段接触再退出。</p>
+      <p>活动列表中的竖直线代表尚未完成的向上处理前沿；图中它的序号标在当前处理高度，而非唯一的扫描线交点。遇到横穿线段时，处理中先保留之前的顺序并记录交集，完成后竖直线排在该穿过者之上，继续检查更高处的新邻居。上端退出后才算整条竖直线处理完毕。</p>
+      <p>图中的当前事件、队列和结果均使用原坐标；扫描线可停在同一 x，而当前事件沿 y 上移。完成较低交点不会清空更高的待处理事件。</p>
+    </section>}
     <section aria-label="操作解释" aria-live="polite"><Card>
       <CardHeader><CardTitle><h2>这一步为什么这样做？</h2></CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2">
@@ -208,7 +215,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
         {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。'}接下来检查新邻居是否会在未来相交。</p>}
         {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。</p>}
         {step.action === 'record' && <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> {step.subjects.every(id => step.passes.includes(id)) ? '在这里交叉。' : '在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。'}交集已记入结果，活动顺序尚未更新。{step.starts.length + step.ends.length + step.passes.length > 2 && '这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。'}</p>}
-        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：本事件参与者按紧邻事件右侧从下到上的顺序排列，再检查新邻居。{step.starts.length > 0 && '本点有开始者，换序已随加入一起展示；此步说明该顺序，没有再次交换。'}同 x 的其他事件点保留各自处理进度。</p>}
+        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：本事件非竖直参与者按紧邻事件右侧从下到上的顺序排列，竖直参与者移到本点穿过者上方，继续向更高处处理，再检查新邻居。{step.starts.length > 0 && '本点有开始者，换序已随加入一起展示；此步说明该顺序，没有再次交换。'}同 x 的其他事件点保留各自处理进度。</p>}
         {step.action === 'check' && <p>检查相邻线段 <span className="coordinates">{subjects}</span>：
           {neighborChange?.action === 'insert' && <>加入 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。</>}
           {neighborChange?.action === 'remove' && <>退出 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，原来隔在中间的线段消失，两侧线段成为新邻居。</>}
