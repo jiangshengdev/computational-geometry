@@ -6,6 +6,9 @@ export async function setReadingFont(page: Page, size: number) {
   await page.evaluate(async () => {
     await document.fonts.ready
     await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
-    await Promise.all(document.getAnimations().map(animation => animation.finished))
+    // Scroll-driven shadows settle at the current scroll position, not over time.
+    await Promise.all(document.getAnimations()
+      .filter(animation => animation.timeline === document.timeline)
+      .map(animation => animation.finished))
   })
 }
