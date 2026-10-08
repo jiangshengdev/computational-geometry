@@ -438,18 +438,18 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
             }
             let pending_count = queue.len();
             schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);
-            if let Some(steps) = &mut steps {
-                if queue.len() > pending_count {
-                    steps.push(SweepStep::capture(
-                        "discover",
-                        Some(&point),
-                        &queue,
-                        &active,
-                        &result,
-                        &[[neighbors[0], neighbors[1]]],
-                        neighbors,
-                    ));
-                }
+            if let Some(steps) = &mut steps
+                && queue.len() > pending_count
+            {
+                steps.push(SweepStep::capture(
+                    "discover",
+                    Some(&point),
+                    &queue,
+                    &active,
+                    &result,
+                    &[[neighbors[0], neighbors[1]]],
+                    neighbors,
+                ));
             }
         }
         if let Some(steps) = &mut steps {
