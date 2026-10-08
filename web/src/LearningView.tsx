@@ -144,7 +144,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     </div>
     <div className="workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
-        highlights={highlights} onHover={setHover}
+        highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights} onHover={setHover}
         sweep={{ current: step.current, active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
       <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="flex min-w-0 flex-col gap-4">

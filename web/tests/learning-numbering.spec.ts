@@ -23,6 +23,7 @@ for (const width of [1360, 390]) {
     await expect(page.getByTestId('active-order').getByRole('listitem')).toHaveText(['S0', 'S1', 'S2'])
     await activeTitle.hover()
     await expect(svg.locator('.order-number')).toHaveText(['1', '2', '3'])
+    await expect(svg.locator('.input[data-highlighted="true"]')).toHaveCount(3)
     await expect(labels.first()).toBeHidden()
     const scanX = Number(await svg.locator('.sweep-line').getAttribute('x1'))
     // At x = 2, the independent equations give heights 2, 3, 6.
@@ -39,9 +40,11 @@ for (const width of [1360, 390]) {
       await expect(line).toHaveCSS('visibility', 'visible')
       await expect(line).not.toHaveCSS('stroke', 'none')
       await expect(line).not.toHaveCSS('stroke-width', '0px')
+      await expect(line).toHaveCSS('stroke', 'rgb(7, 133, 116)')
     }
     await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-order-active-${width}.png`) })
     await pendingTitle.hover()
+    await expect(svg.locator('.input[data-highlighted="true"]')).toHaveCount(0)
     await expect(svg.locator('.order-number')).toHaveText(['1', '2', '3', '4'])
     const expected = ['I0 (3, 3)', 'S1 终点 (8, 3)', 'S2 终点 (9, 6)', 'S0 终点 (10, 10)']
     for (const [index, name] of expected.entries()) {
