@@ -7,6 +7,7 @@ async function startLearning(page: Page) {
   await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('aria-valuenow', '0')
 }
 
 test('状态动画：活动线段换序与反向恢复，几何线段不移动', async ({ page }) => {
