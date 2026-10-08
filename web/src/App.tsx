@@ -120,7 +120,9 @@ function CaseList() {
             {preset.learning && <Button asChild><Link to={`/cases/${preset.id}/learn`}>开始学习</Link></Button>}
           </div>
         </CardContent>
-        <CaseThumbnail name={preset.name} segments={preset.segments} />
+        <Link className="case-thumbnail-link" to={`/cases/${preset.id}`} aria-label={`查看${preset.name}详情`}>
+          <CaseThumbnail name={preset.name} segments={preset.segments} />
+        </Link>
       </Card>
     </article>)}
   </section>
