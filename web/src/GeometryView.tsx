@@ -2,9 +2,9 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { projectPoints } from './projection'
 import { formatPoint, formatRational, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
+import { Button } from '@heroui/react/button'
+import { Card } from '@heroui/react/card'
+import { Separator } from '@heroui/react/separator'
 import type { HoverHighlights, HoverTarget } from './hover'
 
 interface Props {
@@ -97,14 +97,14 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     })
   })
 
-  return <section className="drawing" aria-label="几何视图"><Card className="gap-0 overflow-hidden py-0">
-    <CardHeader className="drawing-toolbar"><CardTitle><h2>原始坐标平面 · 等比例</h2></CardTitle><div className="flex gap-2">
-      <Button variant="outline" size="icon-sm" onClick={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大">＋</Button>
-      <Button variant="outline" size="icon-sm" onClick={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小">−</Button>
-      <Button variant="outline" size="sm" onClick={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}>重置视图</Button>
-    </div></CardHeader>
+  return <section className="drawing" aria-label="几何视图"><Card className="gap-0 overflow-hidden p-0">
+    <Card.Header className="drawing-toolbar"><Card.Title render={props => <h2 {...props} />}>原始坐标平面 · 等比例</Card.Title><div className="flex gap-2">
+      <Button variant="outline" size="sm" isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大">＋</Button>
+      <Button variant="outline" size="sm" isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小">−</Button>
+      <Button variant="outline" size="sm" onPress={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}>重置视图</Button>
+    </div></Card.Header>
     <Separator />
-    <CardContent ref={surface} className="drawing-surface p-0">
+    <Card.Content ref={surface} className="drawing-surface p-0">
     <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
       onPointerMove={event => {
@@ -199,10 +199,10 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         </g>)}
       </g>
     </svg>
-    </CardContent>
+    </Card.Content>
     <Separator />
-    <CardFooter className="legend text-muted-foreground"><span>蓝色：输入</span><span>橙色：交集</span>
+    <Card.Footer className="legend text-muted"><span>蓝色：输入</span><span>橙色：交集</span>
       {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
-      <span>按钮缩放 · 拖动平移</span></CardFooter>
+      <span>按钮缩放 · 拖动平移</span></Card.Footer>
   </Card></section>
 }
