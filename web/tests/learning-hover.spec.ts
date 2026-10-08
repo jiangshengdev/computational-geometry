@@ -262,9 +262,11 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   const order = page.getByTestId('active-order')
   while (await order.getByRole('listitem').count() < 2) await next.click()
   await expect(order.getByRole('listitem')).toHaveText(['S0', 'S1'])
-  const firstRow = (await order.getByRole('listitem').nth(0).boundingBox())!
-  const secondRow = (await order.getByRole('listitem').nth(1).boundingBox())!
-  expect(firstRow.y).toBeGreaterThanOrEqual(secondRow.y + secondRow.height)
+  await expect.poll(async () => {
+    const firstRow = (await order.getByRole('listitem').nth(0).boundingBox())!
+    const secondRow = (await order.getByRole('listitem').nth(1).boundingBox())!
+    return firstRow.y - secondRow.y - secondRow.height
+  }).toBeGreaterThanOrEqual(0)
   const segment = page.getByRole('img', { name: '输入 S1', exact: true })
   const line = segment.locator('line')
   const originalStroke = await line.evaluate(e => getComputedStyle(e).strokeWidth)
@@ -278,8 +280,18 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   await expect(page.getByRole('region', { name: /^(当前事件|待处理事件队列)$/ }).locator('[data-highlighted="true"]')).toHaveCount(0)
   await expect(page.locator('.drawing text[data-event-point][data-highlighted="true"]')).toHaveCount(0)
   await expect(lesson).toHaveText(content, { useInnerText: true })
-  const box = (await line.boundingBox())!
-  await page.mouse.move(box.x + box.width * 0.25, box.y + box.height * 0.25)
+  const point = await line.evaluate(element => {
+    const segment = element as SVGLineElement
+    for (const fraction of [0.25, 0.75, 0.4, 0.6]) {
+      const point = new DOMPoint(
+        segment.x1.baseVal.value + (segment.x2.baseVal.value - segment.x1.baseVal.value) * fraction,
+        segment.y1.baseVal.value + (segment.y2.baseVal.value - segment.y1.baseVal.value) * fraction,
+      ).matrixTransform(segment.getScreenCTM()!)
+      if (document.elementFromPoint(point.x, point.y) === segment) return { x: point.x, y: point.y }
+    }
+    throw new Error('线段没有可直接悬停的位置')
+  })
+  await page.mouse.move(point.x, point.y)
   await expect(order.locator('[data-highlighted="true"]')).toHaveText('S1')
   await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
   await expect(line).toHaveCSS('stroke-width', originalStroke)

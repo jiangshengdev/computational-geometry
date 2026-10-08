@@ -102,7 +102,7 @@ test('状态动画：跳转无中间移动，中断后不残留旧目标', async
   expect(restart.slice(5).every(rows => rows.length === 1 && rows[0].y === destination && rows[0].opacity === 1)).toBe(true)
   const interrupted = await sampleStep(page, 'S0 起点 (0, 0)', ['下一步', '上一步', '下一步'])
   const final = interrupted.at(-1)![0]
-  expect(final.y).toBeLessThan(destination - 30)
+  expect(Math.hypot(final.x - direct.at(-1)![0].x, final.y - destination)).toBeGreaterThan(30)
   expect(interrupted.every(rows => rows.length === 1 && rows[0].opacity > 0.95)).toBe(true)
   expect(interrupted.slice(-5).every(rows => Math.abs(rows[0].y - final.y) < 1)).toBe(true)
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText('S0 起点 (0, 0)')
@@ -115,15 +115,16 @@ test('状态动画：队首事件整行转移并能反向返回', async ({ page 
   const forward = await sampleStep(page, text, '下一步')
   const start = forward[0][0].y
   const end = forward.at(-1)![0].y
-  expect(start - end).toBeGreaterThan(30)
-  expect(forward.some(rows => rows.some(row => row.y > end + 2 && row.y < start - 2))).toBe(true)
+  expect(Math.hypot(forward[0][0].x - forward.at(-1)![0].x, start - end)).toBeGreaterThan(30)
+  const lower = Math.min(start, end), upper = Math.max(start, end)
+  expect(forward.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2))).toBe(true)
   expect(forward.every(rows => rows.length === 1 && rows[0].opacity > 0.95)).toBe(true)
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText(text)
   await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText(text)
 
   const backward = await sampleStep(page, text, '上一步')
   expect(backward.at(-1)![0].y).toBeCloseTo(start, 0)
-  expect(backward.some(rows => rows.some(row => row.y > end + 2 && row.y < start - 2))).toBe(true)
+  expect(backward.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2))).toBe(true)
   expect(backward.every(rows => rows.length === 1 && rows[0].opacity > 0.95)).toBe(true)
 })
 
@@ -174,7 +175,8 @@ test(`状态动画：事件移动与减少动态效果 ${width}px`, async ({ pag
   const samples = await sampleStep(page, 'S0 起点 (0, 0)', '下一步')
   const start = samples[0][0].y
   const end = samples.at(-1)![0].y
-  expect(samples.some(rows => rows.some(row => row.y > end + 2 && row.y < start - 2))).toBe(true)
+  const lower = Math.min(start, end), upper = Math.max(start, end)
+  expect(samples.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2))).toBe(true)
   expect(samples.every(rows => rows.every(row => row.x >= 0 && row.right <= width))).toBe(true)
   await page.screenshot({ path: join(tmpdir(), `bo-event-motion-${width}.png`), fullPage: true })
   await page.emulateMedia({ reducedMotion: 'reduce' })
