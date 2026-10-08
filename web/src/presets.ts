@@ -1,8 +1,10 @@
 import { segment, type Preset } from './geometry'
 
 export const presets: Preset[] = [
-  { id: 'crossing', name: '普通交叉', description: '两条对角线相交于 (2, 2)。', segments: [segment('0', '0', '4', '4'), segment('0', '4', '4', '0')] },
-  { id: 'disjoint', name: '无交点', description: '两条平行线段，没有相交配对。', segments: [segment('0', '0', '4', '0'), segment('0', '2', '4', '2')] },
+  { id: 'crossing', name: '普通交叉', description: '两条对角线相交于 (2, 2)。', segments: [segment('0', '0', '4', '4'), segment('0', '4', '4', '0')], learning: { goal: '观察加入、发现交点、换序和退出。', verification: 'S0 满足 y = x，S1 满足 y = 4 − x。联立得 x = y = 2，位于两条线段内部。' } },
+  { id: 'disjoint', name: '无交点', description: '两条平行线段，没有相交配对。', segments: [segment('0', '0', '4', '0'), segment('0', '2', '4', '2')], learning: { goal: '观察没有未来交点时如何完成扫描。', verification: 'S0 的 y = 0，S1 的 y = 2，不可能拥有同一点。' } },
+  { id: 'neighbor-removal', name: '退出后成为邻居', description: 'S0 与 S2 起初被 S1 隔开；S1 退出后才能检查这对新邻居。', segments: [segment('0', '0', '10', '10'), segment('1', '5', '3', '5'), segment('2', '8', '9', '1')], learning: { goal: '观察中间线段退出，如何让原先不相邻的 S0 与 S2 成为邻居并发现交点。', verification: 'S0 的 y = x 与 S2 的 y = 10 − x 相交于 (5, 5)。S1 的 y = 5，但 x 仅在 [1, 3]，不包含 x = 5，因此没有其他相交配对。' } },
+  { id: 'neighbor-crossing', name: '交叉后成为邻居', description: 'S0 先穿过 S1，再与原来不相邻的 S2 成为邻居，发现下一处交点。', segments: [segment('0', '0', '10', '10'), segment('1', '3', '8', '3'), segment('2', '6', '9', '6')], learning: { goal: '观察插入时的邻居检查，以及交叉换序如何产生新的外侧邻居。', verification: 'S0 的 y = x 分别与 S1 的 y = 3、S2 的 y = 6 相交于 (3, 3)、(6, 6)，均在对应线段内部。S1 与 S2 平行，互不相交。' } },
   { id: 'empty', name: '空集合', description: '没有输入线段，合法计算返回空结果。', segments: [] },
   { id: 'single', name: '单条输入', description: '只有一条线段，不形成输入配对。', segments: [segment('-2', '-1', '3', '2')] },
   { id: 'endpoint', name: '共端点', description: '闭线段在共同端点接触。', segments: [segment('0', '0', '2', '0'), segment('2', '0', '3', '1')] },

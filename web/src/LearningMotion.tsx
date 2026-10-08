@@ -8,6 +8,7 @@ export function LearningRow({ as = 'li', identity, existed, children, ref, ...ho
   children: ReactNode
   ref?: Ref<HTMLLIElement & HTMLParagraphElement>
   'data-highlighted': boolean
+  'data-checked'?: boolean
   onPointerEnter: () => void
   onPointerLeave: () => void
 }) {

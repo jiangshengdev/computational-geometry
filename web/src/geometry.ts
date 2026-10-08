@@ -3,7 +3,7 @@ export interface Point { x: Rational; y: Rational }
 export interface Segment { start: Point; end: Point }
 export type Geometry = { type: 'point'; point: Point } | { type: 'overlap'; start: Point; end: Point }
 export interface Intersection { segments: [number, number]; geometry: Geometry }
-export interface Preset { id: string; name: string; description: string; segments: Segment[] }
+export interface Preset { id: string; name: string; description: string; segments: Segment[]; learning?: { goal: string; verification: string } }
 export interface SweepStep {
   phase: 'initial' | 'processing' | 'processed'
   action: 'initial' | 'take' | 'insert' | 'remove' | 'record' | 'reorder' | 'check' | 'discover' | 'complete'

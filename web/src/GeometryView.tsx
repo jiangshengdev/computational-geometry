@@ -10,7 +10,7 @@ interface Props {
   segments: Segment[]; results: Intersection[]; selected: Intersection | null
   highlights?: HoverHighlights | null
   onHover?: (target: HoverTarget | null) => void
-  sweep?: { current: Point | null; active: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
+  sweep?: { current: Point | null; active: number[]; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
 }
 
 export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
@@ -129,7 +129,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         {ordered.map(({ s, index }) => {
           const active = selected?.segments.includes(index) ?? false
           const highlighted = highlights ? highlights.inputs.includes(index) : active
-          return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${highlighted ? 'selected' : ''}`} data-selected={active} data-highlighted={highlighted} data-active={sweep?.active.includes(index)}>
+          return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${highlighted ? 'selected' : ''}`} data-selected={active} data-highlighted={highlighted} data-active={sweep?.active.includes(index)} data-checked={sweep?.checked.includes(index)}>
             {samePoint(s.start, s.end)
               ? <path d={`M${px(s.start)},${py(s.start) - 11} l11,11 l-11,11 l-11,-11 Z`} />
               : <line x1={px(s.start)} y1={py(s.start)} x2={px(s.end)} y2={py(s.end)} />}

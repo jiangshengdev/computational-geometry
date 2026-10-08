@@ -18,7 +18,7 @@ export function LearningIntroduction() {
     <p>事件队列按先 <span className="coordinates">x</span>、后 <span className="coordinates">y</span> 从小到大保存待处理事件；活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。</p>
     <p>在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。</p>
     <p className="text-muted-foreground">统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 <span className="coordinates">x</span> 的不同事件按 <span className="coordinates">y</span> 依次处理；当前事件处理完成后只更新该位置的顺序，同 <span className="coordinates">x</span> 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。</p>
-    <p className="text-muted-foreground">本入门流程仅讲普通两线交叉与无交点。两个案例的端点虽有相同 <span className="coordinates">x</span>，但位置不同；这不代表共点、竖直线或重叠等任意退化输入已获得完整教学支持。</p>
+    <p className="text-muted-foreground">本学习流程讲普通交叉、无交点与相邻检测。基础案例的端点虽有相同 <span className="coordinates">x</span>，但位置不同；这不代表共点、竖直线或重叠等任意退化输入已获得完整教学支持。</p>
     </section>
   </details>
 }
@@ -27,7 +27,7 @@ export function LearningReferences() {
   return <section aria-label="学习参考" className="mt-6 flex flex-col gap-2 text-sm">
     <h2 className="font-semibold">继续阅读</h2>
     <a className="underline" href="https://www.cs.umd.edu/class/fall2023/cmsc754/Lects/lect04-intersection.pdf">Dave Mount · CMSC 754 Lecture 4：事件、活动顺序与相邻检测</a>
-    <p className="text-muted-foreground">核对依据：讲义的 Plane Sweep、Adjacent-segment rule 与事件处理章节。讲义先假设一般位置；这里另外明示同 <span className="coordinates">x</span> 端点的处理顺序。其平衡树复杂度结论不等于本演示实现的性能保证。</p>
+    <p className="text-muted-foreground">核对依据：讲义的 Plane Sweep、Adjacent-segment rule 与事件处理章节（图 4 的相邻性论证、图 5 的插入、删除与交叉）。讲义先假设一般位置；这里另外明示同 <span className="coordinates">x</span> 端点的处理顺序。其平衡树复杂度结论不等于本演示实现的性能保证。</p>
   </section>
 }
 
@@ -82,6 +82,16 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
   const step = trace.steps[index]
+  const checkedInputs = step.action === 'check' || step.action === 'discover' ? step.subjects : []
+  let neighborChange: typeof step | undefined
+  if (checkedInputs.length) {
+    for (let i = index - 1; i >= 0 && trace.steps[i].action !== 'take'; i--) {
+      if (['insert', 'remove', 'reorder'].includes(trace.steps[i].action)) {
+        neighborChange = trace.steps[i]
+        break
+      }
+    }
+  }
   const rowIds = (state: typeof step) => [
     ...[...state.pending, ...(state.current ? [state.current] : [])].map(p => `event:${formatPoint(p)}`),
     ...state.active.map(id => `segment:${id}`),
@@ -103,6 +113,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
   const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="flex flex-col gap-4">
+    <p>学习目标：{preset.learning?.goal}</p>
     <div className="flex flex-wrap items-center gap-3">
       <Button variant="outline" onClick={() => changeStep(current => current - 1, true)} disabled={index === 0} aria-keyshortcuts="ArrowLeft">上一步<kbd aria-hidden="true">←</kbd></Button>
       <Button onClick={() => changeStep(current => current + 1, true)} disabled={complete} aria-keyshortcuts="ArrowRight">下一步<kbd aria-hidden="true">→</kbd></Button>
@@ -123,7 +134,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
     <div className="workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
         highlights={highlights} onHover={setHover}
-        sweep={{ current: step.current, active: step.active, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
+        sweep={{ current: step.current, active: step.active, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
       <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="flex min-w-0 flex-col gap-4">
         <section aria-label="当前事件"><Card>
@@ -154,7 +165,7 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
             <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-2">
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
                 {step.active.map(id => <LearningRow key={id} identity={`segment:${id}`}
-                  existed={sources.includes(`segment:${id}`)} {...inputProps(id)}>S{id}</LearningRow>)}
+                  existed={sources.includes(`segment:${id}`)} data-checked={checkedInputs.includes(id)} {...inputProps(id)}>S{id}</LearningRow>)}
               </AnimatePresence>
             </ol>{!step.active.length && <p>空</p>}</div>
           </CardContent>
@@ -171,7 +182,11 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
         {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。</p>}
         {step.action === 'record' && <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> 在这里交叉。交集已记入结果，活动顺序尚未换序。</p>}
         {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：刚过交点，按事件右侧从下到上的顺序排列，再检查新邻居。</p>}
-        {step.action === 'check' && <p>检查相邻线段 <span className="coordinates">{subjects}</span>：加入、退出或换序后只需检查新邻居。此步选定检查配对，未来交点尚未加入队列。</p>}
+        {step.action === 'check' && <p>检查相邻线段 <span className="coordinates">{subjects}</span>：
+          {neighborChange?.action === 'insert' && <>加入 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。</>}
+          {neighborChange?.action === 'remove' && <>退出 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，原来隔在中间的线段消失，两侧线段成为新邻居。</>}
+          {neighborChange?.action === 'reorder' && <>交叉的 {neighborChange.subjects.map(id => `S${id}`).join(' 与 ')} 换序后，这一对处在换序区间的外侧边界，成为新邻居。</>}
+          其他未改变的邻接关系无需重查。图中加粗线段与状态列表边框标出当前配对；此步选定检查配对，未来交点尚未加入队列。</p>}
         {step.action === 'discover' && <p>发现未来交点 <span className="coordinates">{newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}>
           {position > 0 && <span>、</span>}
           <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span>
@@ -183,9 +198,19 @@ export function LearningView({ preset, trace, results }: { preset: Preset; trace
       <CardHeader><CardTitle><h2>学习完成</h2></CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，所有线段已退出。</p>
         {step.results.length ? step.results.map(result => <p className="coordinates" key={pairName(result)}>{result.geometry.type === 'point' && `${pointName(result.geometry.point)}：${pairName(result)}`}</p>) : <p>结果为空：两条线段平行且高度不同，没有交点。</p>}
-        <p>{preset.id === 'crossing' ? <>独立数学核对：<span className="coordinates">S0</span> 满足 <span className="coordinates">y = x</span>，<span className="coordinates">S1</span> 满足 <span className="coordinates">y = 4 − x</span>。联立得 <span className="coordinates">x = y = 2</span>，位于两条线段内部。</> : <>独立数学核对：<span className="coordinates">S0</span> 的 <span className="coordinates">y = 0</span>，<span className="coordinates">S1</span> 的 <span className="coordinates">y = 2</span>，不可能拥有同一点。</>}</p>
+        <p className="coordinates">独立数学核对：{preset.learning?.verification}</p>
       </CardContent>
     </Card></section>}
+    <section aria-label="为什么不会漏掉交点"><Card>
+      <CardHeader><CardTitle><h2>为什么只检查邻居不会漏掉交点？</h2></CardTitle></CardHeader>
+      <CardContent className="flex flex-col gap-2">
+        <p>在一般位置下，考虑即将发生的下一处交叉：只有两条线段在内部相交，没有第三条线段同时经过该点，也没有端点与交叉重合。</p>
+        <p>越靠近交点，两条线段之间的间隙越小。如果第三条线段一直夹在中间，它就必须也经过这个交点，与没有三线共点的前提矛盾。因此交叉前足够近的位置，两条相交线段必是邻居。</p>
+        <p>再往前看最近一次事件：两个事件之间没有端点或交叉，活动线段的成员和上下顺序不变。所以这对线段在上次事件处理后就已经相邻；在产生这一邻接关系时检查并安排交点，就能让扫描线及时停下。</p>
+        <p>插入会产生新线段两侧的邻居；删除会让原来分隔的两侧相邻；交叉换序会改变外侧邻居。只检查这些发生变化的边界，不必机械枚举所有线段对。</p>
+        <p className="text-muted-foreground">适用边界：共端点、端点落在内部、多线共点、竖直线、同一扫描坐标事件与共线重叠需要额外规则。本页普通案例和相邻性论证不能代替这些退化情况的完整处理证明。</p>
+      </CardContent>
+    </Card></section>
     <LearningReferences />
   </section>
 }
