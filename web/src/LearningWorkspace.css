@@ -2,6 +2,8 @@
 .learning-view > :not(.learning-workspace) { flex-shrink: 0; }
 .learning-state-panels { display: contents; }
 .learning-explanations { min-width: 0; overflow-wrap: anywhere; }
+/* Inline monospace metrics must not enlarge the surrounding paragraph's line box. */
+.learning-explanations p .coordinates, .learning-view .font-mono { line-height: 1; }
 .learning-workspace > .drawing { grid-column: 2; grid-row: 1; }
 .learning-event-panels { grid-column: 3; grid-row: 1; display: grid; gap: 16px; min-width: 0; min-height: 0; }
 .learning-participants { grid-column: 1; grid-row: 2; }

@@ -6,7 +6,6 @@ import { Button } from '@heroui/react/button'
 import { Card } from '@heroui/react/card'
 import { Separator } from '@heroui/react/separator'
 import type { HoverHighlights, HoverTarget } from './hover'
-import { useRoundedBlockSize } from './useRoundedBlockSize'
 
 interface Props {
   segments: Segment[]; results: Intersection[]; selected: Intersection | null
@@ -16,7 +15,6 @@ interface Props {
 }
 
 export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
-  const roundedBlock = useRoundedBlockSize()
   const svg = useRef<SVGSVGElement>(null)
   const surface = useRef<HTMLDivElement>(null)
   const [{ width, height }, setSize] = useState({ width: 800, height: 460 })
@@ -99,7 +97,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     })
   })
 
-  return <section ref={roundedBlock} className="drawing" aria-label="几何视图"><Card className="gap-0 overflow-hidden p-0">
+  return <section className="drawing" aria-label="几何视图"><Card className="gap-0 overflow-hidden p-0">
     <Card.Header className="drawing-toolbar"><Card.Title render={props => <h2 {...props} />}>原始坐标平面 · 等比例</Card.Title><div className="flex gap-2">
       <Button variant="outline" size="sm" isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大">＋</Button>
       <Button variant="outline" size="sm" isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小">−</Button>
