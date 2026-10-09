@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { setReadingFont } from './reading-font'
 
 for (const width of [1360, 1920]) {
-  test(`结果工作区三栏同屏 ${width}`, async ({ page }) => {
+  test(`结果工作区画布优先且辅助信息同屏 ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
@@ -17,17 +17,19 @@ for (const width of [1360, 1920]) {
     const canvas = page.getByRole('region', { name: '几何视图', exact: true })
     const results = page.getByRole('complementary', { name: '计算结果' })
     const details = page.getByRole('region', { name: '精确详情' })
-    const [left, center, right] = await Promise.all([inputs, canvas, results].map(item => item.boundingBox()))
-    expect(left!.x + left!.width).toBeLessThan(center!.x)
-    expect(center!.x + center!.width).toBeLessThan(right!.x)
-    expect(left!.x).toBeLessThan(40)
+    const [inputBox, canvasBox, right] = await Promise.all([inputs, canvas, results].map(item => item.boundingBox()))
+    expect(canvasBox!.x + canvasBox!.width).toBeLessThan(right!.x)
+    expect(canvasBox!.width).toBeGreaterThan(right!.width)
+    expect(inputBox!.x).toBe(canvasBox!.x)
+    expect(inputBox!.y).toBeGreaterThan(canvasBox!.y + canvasBox!.height)
+    expect(canvasBox!.x).toBeLessThan(40)
     expect(right!.x + right!.width).toBeGreaterThan(width - 40)
     for (const item of [inputs, canvas, results, details]) {
       const box = (await item.boundingBox())!
       expect(box.y).toBeGreaterThanOrEqual(0)
       expect(box.y + box.height).toBeLessThanOrEqual(900)
     }
-    expect(center!.y).toBeLessThan(180)
+    expect(canvasBox!.y).toBeLessThan(180)
     await page.getByRole('radio', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
     await expect(details).toContainText('(0, 0) → (4, 0)')
     await page.getByRole('radio', { name: 'S0 × S1 · 重叠区间', exact: true }).click()

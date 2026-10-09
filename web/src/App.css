@@ -25,16 +25,16 @@ main > footer { line-height: round(nearest, 1rem, 1px); }
 .case-shell > [data-slot="separator"] { margin-top: 0; }
 .case-shell > footer { padding-top: 0; }
 .workspace-panel { min-width: 0; min-height: 0; }
-.workspace-panel > [data-slot="card"] { gap: 12px; padding: 16px 0; min-height: 0; }
-.workspace-panel [data-slot="card-header"], .workspace-panel [data-slot="card-content"] { padding-inline: 16px; min-width: 0; }
+.workspace-panel > [data-slot="card"] { min-height: 0; }
+.workspace-panel [data-slot="card-header"], .workspace-panel [data-slot="card-content"] { min-width: 0; }
 .workspace-panel [data-slot="card-header"] { flex-shrink: 0; }
 .workspace-panel [data-slot="card-content"] { min-height: 0; overflow: auto; overscroll-behavior: contain; overflow-wrap: anywhere; }
 .pair-scroll { max-height: 240px; overflow: auto; overscroll-behavior: contain; }
 .result-details { overflow: auto; overscroll-behavior: contain; }
 .drawing { min-width: 0; container-type: inline-size; }
 /* CSS owns the surface size; the SVG consumes it without sizing its parent. */
-.drawing-surface { flex: none; height: round(nearest, calc(100cqw * 460 / 800), 1px); min-height: 0; }
-.drawing-toolbar { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 18px; font-size: 13px; }
+.drawing-surface { flex: none; height: round(nearest, calc((100cqw - 32px) * 460 / 800), 1px); min-height: 0; overflow: hidden; }
+.drawing-toolbar { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
 .drawing svg { display: block; width: 100%; height: 100%; touch-action: none; cursor: default; }
 .drawing svg text { paint-order: stroke fill; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
 .drawing svg[data-numbering] text:not(.tick):not(.order-number) { visibility: hidden; }
@@ -52,7 +52,7 @@ main > footer { line-height: round(nearest, 1rem, 1px); }
 .intersection line { stroke-width: 6; stroke-opacity: .6; }
 .intersection.selected { stroke: #c54f13; fill: #ffe1cb; stroke-width: 4; }
 .intersection.selected line { stroke-width: 8; stroke-opacity: .85; }
-.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; padding: 14px 18px; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; }
 .coordinates, .drawing svg text { font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
 .input-item, .learning-hover-item { cursor: default; }
 .input-item[data-highlighted="true"], .pair-item[data-highlighted="true"] { background: #e5efff; color: #163f7d; outline: 2px solid #7b9fcf; border-radius: 4px; }
@@ -72,19 +72,16 @@ main > footer { line-height: round(nearest, 1rem, 1px); }
 .drawing [data-teaching="true"] .input[data-highlighted="true"] > line { stroke: #078574; stroke-width: 7; }
 .drawing [data-teaching="true"] .input.selected text:not([data-highlighted="true"]) { fill: #41618d; }
 @media (min-width: 1100px) {
-  .workspace {
-    /* Keep the existing proportions and minimums; the center takes the integer remainder. */
-    --workspace-unit: min(calc((100% - 32px) / 4.75), calc((100% - 32px - 290px) / 3.6));
-    grid-template-columns: max(240px, round(down, var(--workspace-unit), 1px)) minmax(0, 1fr) max(290px, round(down, calc(var(--workspace-unit) * 1.15), 1px));
-  }
-  .result-workspace > .drawing { grid-column: 2; grid-row: 1; }
-  .result-panel { grid-column: 3; grid-row: 1; }
-  .input-panel { grid-column: 1; grid-row: 1; }
+  .result-workspace { grid-template-columns: round(down, calc((100% - 16px) * .66), 1px) minmax(0, 1fr); }
+  .result-workspace > .drawing { grid-column: 1; grid-row: 1; }
+  .result-panel { grid-column: 2; grid-row: 1 / 3; }
+  .input-panel { grid-column: 1; grid-row: 2; }
 }
 @media (min-width: 1100px) and (min-height: 720px) {
   .case-shell { height: 100dvh; }
   .case-shell > :not(.workspace):not(.learning-view) { flex-shrink: 0; }
   .workspace { flex: 1; align-items: stretch; }
+  .result-workspace { grid-template-rows: minmax(0, 1fr) 180px; }
   .workspace-panel > [data-slot="card"] { height: 100%; }
   .workspace-panel [data-slot="card-content"] { flex: 1; }
   .result-panel .result-content { overflow: hidden; }

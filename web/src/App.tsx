@@ -60,7 +60,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
       <aside className="workspace-panel result-panel" aria-label="计算结果">
         <Card>
-          <Card.Header className="flex flex-row flex-wrap items-center justify-between gap-2"><Card.Title render={props => <h2 {...props} />}>相交配对</Card.Title><HelpButton topic="results">结果说明</HelpButton></Card.Header>
+          <Card.Header className="flex flex-row flex-wrap items-start justify-between gap-2"><div><Card.Title render={props => <h2 {...props} />}>相交配对</Card.Title><Card.Description>选择配对，查看精确交集。</Card.Description></div><HelpButton topic="results">结果说明</HelpButton></Card.Header>
           <Card.Content className="result-content flex flex-col gap-4">
             {computation.status === 'loading'
               ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在计算…</div>
@@ -102,7 +102,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
         </Card>
       </aside>
     <section className="workspace-panel input-panel" aria-label="原始输入"><Card>
-      <Card.Header className="flex flex-row flex-wrap items-center justify-between gap-2"><Card.Title render={props => <h2 {...props} />} className="flex items-center gap-2">原始输入 <Chip>{preset.segments.length}</Chip></Card.Title><HelpButton topic="inputs">输入说明</HelpButton></Card.Header>
+      <Card.Header className="flex flex-row flex-wrap items-start justify-between gap-2"><div><Card.Title render={props => <h2 {...props} />} className="flex items-center gap-2">原始输入 <Chip>{preset.segments.length}</Chip></Card.Title><Card.Description>独立编号与精确端点</Card.Description></div><HelpButton topic="inputs">输入说明</HelpButton></Card.Header>
       <Card.Content>{preset.segments.length === 0
         ? <p className="py-6 text-center text-muted">输入集合为空</p>
         : <ul className="flex flex-col gap-3">{preset.segments.map((s, i) =>
@@ -181,12 +181,12 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
   if (learning && !preset.learning) return <RouteError message="此案例不支持教学。" preset={preset} />
   return <CaseHelp key={`${preset.id}:${learning}`} preset={preset}>
     <div className="case-toolbar">
-      <nav aria-label="页面导航"><Link className={buttonVariants({ variant: 'outline' })} to="/">返回列表</Link></nav>
+      <nav aria-label="页面导航"><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/">返回列表</Link></nav>
       <h2 className="text-xl font-semibold">{preset.name}</h2>
       <div className="case-actions flex flex-wrap items-center gap-2">
         <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
         {learning
-          ? <Link className={buttonVariants({ variant: 'outline' })} to={`/cases/${preset.id}`}>返回结果查看器</Link>
+          ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>返回结果查看器</Link>
           : preset.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>开始逐步学习</Link>}
       </div>
     </div>
