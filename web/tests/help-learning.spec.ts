@@ -39,7 +39,7 @@ for (const width of [1360, 390]) test(`教学帮助：动态内容默认展示�
     const trigger = page.getByRole('button', { name: button, exact: true })
     await trigger.click()
     const dialog = page.getByRole('dialog', { name: '说明与帮助', exact: true })
-    await expect(dialog.getByRole('radio', { name: topic, exact: true })).toBeChecked()
+    await expect(dialog.getByRole('tab', { name: topic, exact: true })).toHaveAttribute('aria-selected', 'true')
     // Real keyboard input stays in the modal and must not mutate the route step.
     for (const key of ['ArrowRight', 'ArrowLeft', 'r']) await page.keyboard.press(key)
     await expect(page).toHaveURL(/step=3$/)
@@ -57,7 +57,7 @@ for (const width of [1360, 390]) test(`教学帮助：动态内容默认展示�
   await page.screenshot({ path: join(tmpdir(), `bo-help-learning-${width}.png`), fullPage: true })
   await page.getByRole('button', { name: '说明与帮助', exact: true }).click()
   const dialog = page.getByRole('dialog')
-  await dialog.getByRole('radiogroup', { name: '帮助主题' }).getByText('参考资料', { exact: true }).click()
+  await dialog.getByRole('tab', { name: '参考资料', exact: true }).click()
   await dialog.getByRole('link', { name: /2D Intersection of Curves/ }).scrollIntoViewIfNeeded()
   await expect(dialog.getByRole('link', { name: /2D Intersection of Curves/ })).toBeInViewport()
   await page.screenshot({ path: join(tmpdir(), `bo-help-modal-${width}.png`) })

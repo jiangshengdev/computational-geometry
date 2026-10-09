@@ -11,7 +11,7 @@ export function LearningIntroduction() {
 }
 
 export function LearningReferences() {
-  return <section aria-label="学习参考" className="mt-6 flex flex-col gap-2 text-sm">
+  return <section aria-label="学习参考" className="flex flex-col gap-2 text-sm">
     <h2 className="font-semibold">继续阅读</h2>
     <a className="underline" href="https://www.cs.umd.edu/class/fall2023/cmsc754/Lects/lect04-intersection.pdf">Dave Mount · CMSC 754 Lecture 4：事件、活动顺序与相邻检测</a>
     <p className="text-muted">核对依据：讲义的 Plane Sweep、Adjacent-segment rule 与事件处理章节（图 4 的相邻性论证、图 5 的插入、删除与交叉）。讲义先假设一般位置；这里另外明示同 <span className="coordinates">x</span> 端点的处理顺序。其平衡树复杂度结论不等于本演示实现的性能保证。</p>

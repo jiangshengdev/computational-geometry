@@ -1,10 +1,8 @@
 import { useContext, useId, useRef, useState, type ReactNode } from 'react'
 import { Button } from '@heroui/react/button'
 import { Description } from '@heroui/react/description'
-import { Label } from '@heroui/react/label'
 import { Modal } from '@heroui/react/modal'
-import { Radio } from '@heroui/react/radio'
-import { RadioGroup } from '@heroui/react/radio-group'
+import { Tabs } from '@heroui/react/tabs'
 import { LearningIntroduction, LearningReferences, SamePointRules, VerticalRules, OverlapRules, NeighborRules, EventQueueRules, ActiveOrderRules } from './HelpContent'
 import { HelpContext, type HelpTopic } from './help-context'
 import { samePoint, type Preset } from './geometry'
@@ -50,32 +48,27 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
     {children}
     <Modal.Backdrop isOpen={open} onOpenChange={setOpen}>
       <Modal.Container size="lg" scroll="inside">
-      <Modal.Dialog aria-describedby={descriptionId}>
+      <Modal.Dialog aria-describedby={descriptionId} className="max-w-4xl">
+        <Modal.CloseTrigger aria-label="关闭帮助" />
         <Modal.Header>
           <Modal.Heading>说明与帮助</Modal.Heading>
           <Description id={descriptionId}>按主题阅读，关闭后继续当前操作。</Description>
         </Modal.Header>
         <Modal.Body className="min-h-0 overscroll-contain">
-          <div className="grid gap-6 sm:grid-cols-[12rem_minmax(0,1fr)]">
-            <RadioGroup value={selectedTopic.id} onChange={value => setTopic(value as HelpTopic)} aria-label="帮助主题">
-              <Label>帮助主题</Label>
-              <div className="grid grid-cols-2 gap-x-3 gap-y-1 sm:grid-cols-1">
-                {availableTopics.map(item => <Radio key={item.id} value={item.id}>
-                  <Radio.Content className="min-h-10">
-                    <Radio.Control><Radio.Indicator /></Radio.Control>
-                    <Label>{item.title}</Label>
-                  </Radio.Content>
-                </Radio>)}
-              </div>
-            </RadioGroup>
-            <div key={selectedTopic.id} className="min-w-0 flex flex-col gap-3 text-sm leading-relaxed">
-              {selectedTopic.content}
-            </div>
-          </div>
+          <Tabs orientation="vertical" align="start" selectedKey={selectedTopic.id} onSelectionChange={key => setTopic(key as HelpTopic)}
+            className="grid gap-6 sm:grid-cols-[12rem_minmax(0,1fr)]">
+            <Tabs.ListContainer className="min-w-0 self-start [--help-tab-radius:calc(var(--radius)*2.5-var(--spacing))]">
+              <Tabs.List aria-label="帮助主题" className="w-full">
+                {availableTopics.map(item => <Tabs.Tab key={item.id} id={item.id} className="h-auto min-h-8 rounded-(--help-tab-radius) whitespace-normal py-2">
+                  {item.title}<Tabs.Indicator className="rounded-[inherit]" />
+                </Tabs.Tab>)}
+              </Tabs.List>
+            </Tabs.ListContainer>
+            {availableTopics.map(item => <Tabs.Panel key={item.id} id={item.id} className="m-0 min-w-0 p-0 text-sm leading-relaxed">
+              {item.content}
+            </Tabs.Panel>)}
+          </Tabs>
         </Modal.Body>
-        <Modal.Footer>
-          <Button slot="close" variant="secondary">关闭帮助</Button>
-        </Modal.Footer>
       </Modal.Dialog>
       </Modal.Container>
     </Modal.Backdrop>

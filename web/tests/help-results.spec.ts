@@ -46,7 +46,7 @@ for (const width of [1360, 390]) {
       await expect(trigger).toBeFocused()
       await page.keyboard.press('Enter')
       await expect(dialog, name).toBeVisible()
-      await expect(dialog.getByRole('radio', { name: topic, exact: true })).toBeChecked()
+      await expect(dialog.getByRole('tab', { name: topic, exact: true })).toHaveAttribute('aria-selected', 'true')
       await expect(dialog).toContainText(content)
       if (name === '案例说明') {
         await expect(dialog).toContainText('两条对角线相交于 (2, 2)。')
