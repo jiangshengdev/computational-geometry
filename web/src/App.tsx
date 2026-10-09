@@ -80,7 +80,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
                       const target = event.key === 'Home' ? options[0] : options[options.length - 1]
                       target.focus()
                     }}>
-                      <ToggleButtonGroup selectionMode="single" orientation="vertical" isDetached className="w-full gap-2 p-1" aria-label="相交配对选择"
+                      <ToggleButtonGroup selectionMode="single" orientation="vertical" isDetached className="w-full gap-1 p-1" aria-label="相交配对选择"
                         selectedKeys={selected ? [pairName(selected)] : []}
                         onSelectionChange={keys => setSelected(results.find(result => keys.has(pairName(result))) ?? null)}>
                         {results.map(result => <ToggleButton key={pairName(result)} id={pairName(result)} className="pair-item w-full justify-start"
@@ -105,7 +105,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
       <Card.Header className="flex flex-row flex-wrap items-start justify-between gap-2"><div><Card.Title render={props => <h2 {...props} />} className="flex items-center gap-2">原始输入 <Chip>{preset.segments.length}</Chip></Card.Title><Card.Description>独立编号与精确端点</Card.Description></div><HelpButton topic="inputs">输入说明</HelpButton></Card.Header>
       <Card.Content>{preset.segments.length === 0
         ? <p className="py-6 text-center text-muted">输入集合为空</p>
-        : <ul className="flex flex-col gap-3">{preset.segments.map((s, i) =>
+        : <ul className="flex flex-col gap-1">{preset.segments.map((s, i) =>
           <li key={i} className="input-item flex min-w-0 flex-wrap gap-3 text-sm"
             data-highlighted={highlights ? highlights.inputs.includes(i) : selected?.segments.includes(i) ?? false}
             onPointerEnter={() => setHover({ kind: 'input', index: i })} onPointerLeave={() => setHover(null)}>

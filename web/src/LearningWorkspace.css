@@ -9,7 +9,7 @@
 .learning-panel-content { min-height: 0; overflow: auto; overscroll-behavior: contain; }
 .learning-panel-content > * { flex-shrink: 0; }
 /* Inline monospace metrics must not enlarge the surrounding paragraph's line box. */
-.learning-explanations p .coordinates, .learning-view .font-mono { line-height: 1; }
+.learning-explanations p .coordinates:not(.learning-hover-item), .learning-view .font-mono { line-height: 1; }
 .learning-event-transfer { position: fixed; pointer-events: none; z-index: 1; }
 [data-event-transfer-hidden="true"] { opacity: 0 !important; }
 

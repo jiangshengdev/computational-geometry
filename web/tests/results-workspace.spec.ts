@@ -3,6 +3,36 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { setReadingFont } from './reading-font'
 
+for (const width of [1360, 390]) {
+  test(`高亮文本留白一致且 hover 不改变尺寸 ${width}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 })
+    const heights: number[] = []
+    for (const path of ['/cases/crossing', '/cases/crossing/learn']) {
+      await page.goto(path)
+      const targets = path.endsWith('/learn')
+        ? [page.getByRole('heading', { name: '待处理事件队列', exact: true }), page.getByRole('region', { name: '待处理事件队列', exact: true }).getByRole('listitem').first()]
+        : [page.getByRole('region', { name: '原始输入', exact: true }).getByRole('listitem').first(), page.getByRole('radio').first()]
+      for (const target of targets) {
+        await expect(target).toBeVisible()
+        await target.scrollIntoViewIfNeeded()
+        const before = (await target.boundingBox())!
+        await target.hover()
+        await expect(target).toHaveAttribute('data-highlighted', 'true')
+        const after = (await target.boundingBox())!
+        expect(after.width).toBe(before.width)
+        expect(after.height).toBe(before.height)
+        heights.push(after.height)
+        expect(await target.evaluate(element => {
+          const style = getComputedStyle(element)
+          return [style.paddingTop, style.paddingRight, style.paddingBottom, style.paddingLeft]
+        })).toEqual(['4px', '8px', '4px', '8px'])
+      }
+      await page.screenshot({ path: join(tmpdir(), `bo-highlight-spacing-${width}-${path.endsWith('/learn') ? 'learning' : 'results'}.png`) })
+    }
+    expect(new Set(heights).size).toBe(1)
+  })
+}
+
 for (const width of [1360, 1920]) {
   test(`结果工作区画布优先且辅助信息同屏 ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
@@ -20,9 +50,11 @@ for (const width of [1360, 1920]) {
     const [inputBox, canvasBox, right] = await Promise.all([inputs, canvas, results].map(item => item.boundingBox()))
     expect(canvasBox!.x + canvasBox!.width).toBeLessThan(right!.x)
     expect(canvasBox!.width).toBeGreaterThan(right!.width)
-    expect(inputBox!.x).toBe(canvasBox!.x)
-    expect(inputBox!.y).toBeGreaterThan(canvasBox!.y + canvasBox!.height)
-    expect(canvasBox!.x).toBeLessThan(40)
+    expect(inputBox!.x + inputBox!.width).toBeLessThan(canvasBox!.x)
+    expect(inputBox!.y).toBe(canvasBox!.y)
+    expect(right!.y).toBe(canvasBox!.y)
+    expect(canvasBox!.width).toBeGreaterThan(inputBox!.width)
+    expect(inputBox!.x).toBeLessThan(40)
     expect(right!.x + right!.width).toBeGreaterThan(width - 40)
     for (const item of [inputs, canvas, results, details]) {
       const box = (await item.boundingBox())!

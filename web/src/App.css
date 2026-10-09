@@ -55,6 +55,9 @@ main > footer { line-height: round(nearest, 1rem, 1px); }
 .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; }
 .coordinates, .drawing svg text { font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
 .input-item, .learning-hover-item { cursor: default; }
+.input-item, .pair-item, .learning-hover-item { padding: var(--spacing) calc(var(--spacing) * 2); line-height: calc(var(--spacing) * 6); }
+.pair-item { height: auto; }
+span.learning-hover-item { display: inline-block; }
 .input-item[data-highlighted="true"], .pair-item[data-highlighted="true"] { background: #e5efff; color: #163f7d; outline: 2px solid #7b9fcf; border-radius: 4px; }
 .pair-item[data-highlighted="false"] { background: transparent; }
 .input[data-active="true"] { stroke-width: 4; stroke: #245cb0; }
@@ -72,16 +75,16 @@ main > footer { line-height: round(nearest, 1rem, 1px); }
 .drawing [data-teaching="true"] .input[data-highlighted="true"] > line { stroke: #078574; stroke-width: 7; }
 .drawing [data-teaching="true"] .input.selected text:not([data-highlighted="true"]) { fill: #41618d; }
 @media (min-width: 1100px) {
-  .result-workspace { grid-template-columns: round(down, calc((100% - 16px) * .66), 1px) minmax(0, 1fr); }
-  .result-workspace > .drawing { grid-column: 1; grid-row: 1; }
-  .result-panel { grid-column: 2; grid-row: 1 / 3; }
-  .input-panel { grid-column: 1; grid-row: 2; }
+  .result-workspace { grid-template-columns: round(down, calc((100% - 32px) * .22), 1px) round(down, calc((100% - 32px) * .5), 1px) minmax(0, 1fr); }
+  .result-workspace > .drawing { grid-column: 2; grid-row: 1; }
+  .result-panel { grid-column: 3; grid-row: 1; }
+  .input-panel { grid-column: 1; grid-row: 1; }
 }
 @media (min-width: 1100px) and (min-height: 720px) {
   .case-shell { height: 100dvh; }
   .case-shell > :not(.workspace):not(.learning-view) { flex-shrink: 0; }
   .workspace { flex: 1; align-items: stretch; }
-  .result-workspace { grid-template-rows: minmax(0, 1fr) 180px; }
+  .result-workspace { grid-template-rows: minmax(0, 1fr); }
   .workspace-panel > [data-slot="card"] { height: 100%; }
   .workspace-panel [data-slot="card-content"] { flex: 1; }
   .result-panel .result-content { overflow: hidden; }
