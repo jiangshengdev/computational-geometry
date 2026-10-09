@@ -129,9 +129,9 @@ function CaseList() {
             <Card.Title render={props => <h2 {...props} />} id={`case-${preset.id}`}>{preset.name}</Card.Title>
             <Card.Description>{preset.description}</Card.Description>
           </Card.Header>
-          <Card.Footer className="mt-auto flex flex-wrap gap-3">
+          <Card.Footer className="mt-auto flex flex-wrap justify-end gap-3">
             {preset.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>开始学习</Link>}
-            <Link className={buttonVariants({ variant: preset.learning ? 'secondary' : 'primary' })} to={`/cases/${preset.id}`}>查看详情</Link>
+            <Link className={buttonVariants({ variant: 'secondary' })} to={`/cases/${preset.id}`}>查看详情</Link>
           </Card.Footer>
         </div>
       </Card>
