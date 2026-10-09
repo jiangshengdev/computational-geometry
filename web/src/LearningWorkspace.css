@@ -16,7 +16,8 @@
   .learning-view { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); align-items: center; }
   .learning-workspace { grid-column: 1 / -1; align-self: stretch; min-height: 0; grid-template-rows: round(down, calc((100% - 16px) * 2 / 3), 1px) minmax(0, 1fr); }
   .learning-workspace > .drawing { grid-row: 1 / 3; }
-  .learning-event-panels { grid-template-rows: minmax(8rem, 1fr) minmax(8rem, 2fr); overflow: auto; overscroll-behavior: contain; }
+  /* Extend the scrollport into the gap so card shadows fit without moving the cards. */
+  .learning-event-panels { grid-template-rows: minmax(8rem, 1fr) minmax(8rem, 2fr); margin: -8px; padding: 8px; overflow: auto; overscroll-behavior: contain; }
   .learning-workspace .drawing-toolbar { padding: 8px 12px; }
   .learning-workspace .legend { padding: 8px 12px; gap: 8px; }
 }

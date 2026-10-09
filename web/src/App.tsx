@@ -139,6 +139,7 @@ function CaseList() {
 
 function LearningPage({ preset, trace, results }: { preset: Preset; trace: SweepTrace; results: Intersection[] }) {
   const [search, setSearch] = useSearchParams()
+  const [preview, setPreview] = useState<{ search: URLSearchParams; index: number } | null>(null)
   const values = search.getAll('step')
   const value = values[0]
   if (values.length > 1 || (value !== undefined && !/^[0-9]+$/.test(value))) {
@@ -148,7 +149,11 @@ function LearningPage({ preset, trace, results }: { preset: Preset; trace: Sweep
   if (!Number.isSafeInteger(index) || index >= trace.steps.length) {
     return <RouteError message={`教学步骤超出范围：此案例的有效步骤为 0–${trace.steps.length - 1}。`} preset={preset} showListLink={false} />
   }
-  return <LearningView preset={preset} trace={trace} results={results} index={index} onStepChange={next => {
+  return <LearningView preset={preset} trace={trace} results={results}
+    index={preview?.search === search ? preview.index : index}
+    onStepPreview={next => setPreview({ search, index: next })} onStepChange={next => {
+    setPreview(null)
+    if (next === index) return
     const updated = new URLSearchParams(search)
     updated.set('step', String(next))
     setSearch(updated, { replace: true })

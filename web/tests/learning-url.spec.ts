@@ -5,6 +5,45 @@ async function expectStep(page: Page, step: number) {
   await expect.poll(() => new URL(page.url()).searchParams.get('step')).toBe(String(step))
 }
 
+for (const browserName of ['chromium', 'webkit'] as const) {
+  test(`教学步骤 URL：连续拖动预览仅在结束时写入 ${browserName}`, async ({ playwright, baseURL }) => {
+    const browser = await playwright[browserName].launch({ headless: true })
+    try {
+      const page = await browser.newPage({ baseURL, viewport: { width: 1360, height: 900 }, reducedMotion: 'reduce' })
+      const errors: string[] = []
+      page.on('pageerror', error => errors.push(error.message))
+      await page.goto('/cases/crossing')
+      await page.getByRole('link', { name: '开始逐步学习' }).click()
+      const slider = page.getByRole('slider', { name: '教学步骤' })
+      await expect(slider).toHaveValue('0')
+      const thumb = (await page.getByTestId('teaching-step-thumb').boundingBox())!
+      const group = (await page.getByRole('group', { name: '教学步骤', exact: true }).boundingBox())!
+      const y = thumb.y + thumb.height / 2
+      await page.mouse.move(thumb.x + thumb.width / 2, y)
+      await page.mouse.down()
+      await page.mouse.move(group.x + group.width - 4, y, { steps: 18 })
+      await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (2, 2)')
+      expect(new URL(page.url()).searchParams.has('step')).toBe(false)
+      for (let i = 0; i < 12; i++) {
+        await page.mouse.move(group.x + (i % 2 ? group.width - 4 : 4), y, { steps: 18 })
+      }
+      expect(new URL(page.url()).searchParams.has('step')).toBe(false)
+      await page.mouse.up()
+      const last = Number(await slider.getAttribute('max'))
+      await expectStep(page, last)
+      await page.reload()
+      await expectStep(page, last)
+      await page.goBack()
+      await expect(page).toHaveURL(/\/cases\/crossing$/)
+      await page.goForward()
+      await expectStep(page, last)
+      expect(errors).toEqual([])
+    } finally {
+      await browser.close()
+    }
+  })
+}
+
 test('教学步骤 URL：直达、刷新和新标签恢复同一步骤', async ({ page, context }) => {
   const path = '/cases/crossing/learn?step=2'
   await page.goto(path)

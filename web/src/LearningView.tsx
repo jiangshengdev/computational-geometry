@@ -14,8 +14,8 @@ import { useStepPanelScroll } from './useStepPanelScroll'
 import { useEventTransfer } from './useEventTransfer'
 
 
-export function LearningView({ preset, trace, results, index, onStepChange }: {
-  preset: Preset; trace: SweepTrace; results: Intersection[]; index: number; onStepChange: (index: number) => void
+export function LearningView({ preset, trace, results, index, onStepChange, onStepPreview }: {
+  preset: Preset; trace: SweepTrace; results: Intersection[]; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void
 }) {
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const reducedMotion = useLearningReducedMotion()
@@ -98,7 +98,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
     { panel: explanationPanel, reset: true },
   ])
   const prepareTransfer = useEventTransfer(step, reducedMotion, currentPanel, pendingPanel)
-  const changeStep = (value: number | ((current: number) => number), singleStep = false) => {
+  const changeStep = (value: number | ((current: number) => number), singleStep = false, preview = false) => {
     setHover(null)
     setNumbering(null)
     const next = Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(index) : value))
@@ -112,7 +112,8 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
       from: index,
       reset: current.reset + (singleStep && !reducedMotion ? 0 : 1),
     }))
-    onStepChange(next)
+    if (preview) onStepPreview(next)
+    else onStepChange(next)
   }
   const restart = () => { changeStep(0); setRun(r => r + 1) }
   const handleShortcut = useEffectEvent((event: KeyboardEvent) => {
@@ -145,7 +146,8 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
     <div className="flex flex-col gap-2">
       <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤 · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
       <Slider aria-label="教学步骤" minValue={0} maxValue={trace.steps.length - 1} step={1} value={index}
-        onChange={value => changeStep(typeof value === 'number' ? value : value[0])}>
+        onChange={value => changeStep(typeof value === 'number' ? value : value[0], false, true)}
+        onChangeEnd={value => onStepChange(typeof value === 'number' ? value : value[0])}>
         <Slider.Track>
           <Slider.Fill />
           <Slider.Thumb data-testid="teaching-step-thumb" aria-label="教学步骤" aria-describedby={`${animationId}-step`} />
