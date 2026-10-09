@@ -38,7 +38,10 @@ for (const width of [1360, 390]) {
       await expect(thumbnail.locator('.intersection')).toHaveCount(0)
       const previewBox = (await thumbnail.boundingBox())!
       const titleBox = (await card.getByRole('heading').boundingBox())!
-      expect(previewBox.x).toBeGreaterThanOrEqual(titleBox.x + titleBox.width)
+      if (width >= 640) expect(previewBox.x + previewBox.width).toBeLessThan(titleBox.x)
+      else expect(previewBox.y + previewBox.height).toBeLessThan(titleBox.y)
+      const detailBox = (await card.getByRole('link', { name: '查看详情', exact: true }).boundingBox())!
+      expect(detailBox.y).toBeGreaterThan(titleBox.y + titleBox.height)
       expect(await thumbnail.evaluate(svg => Array.from(svg.querySelectorAll('line, path')).every(shape => {
         const box = (shape as SVGGraphicsElement).getBBox()
         return [box.x, box.y, box.width, box.height].every(Number.isFinite)
@@ -62,9 +65,12 @@ for (const width of [1360, 390]) {
     await page.getByRole('link', { name: '返回列表', exact: true }).click()
     const thumbnailLink = page.getByRole('link', { name: '查看无交点详情', exact: true })
     await page.getByRole('article', { name: '无交点', exact: true }).getByRole('link', { name: '开始学习', exact: true }).focus()
-    await page.keyboard.press('Tab')
+    await page.keyboard.press('Shift+Tab')
     await expect(thumbnailLink).toBeFocused()
     await expect(thumbnailLink).toHaveCSS('outline-style', 'solid')
+    await page.keyboard.press('Tab')
+    await expect(page.getByRole('article', { name: '无交点', exact: true }).getByRole('link', { name: '开始学习', exact: true })).toBeFocused()
+    await page.keyboard.press('Shift+Tab')
     await page.keyboard.press('Enter')
     await expect(page).toHaveURL(/\/cases\/disjoint$/)
     await expect(page.getByRole('region', { name: '原始输入' })).toBeVisible()

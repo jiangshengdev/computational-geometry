@@ -118,20 +118,22 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
 }
 
 function CaseList() {
-  return <section aria-label="案例列表" className="case-list grid gap-4 sm:grid-cols-2">
+  return <section aria-label="案例列表" className="case-list grid gap-4">
     {presets.map(preset => <article key={preset.id} aria-labelledby={`case-${preset.id}`}>
-      <Card className="case-card h-full">
-        <Card.Header><Card.Title render={props => <h2 {...props} />} id={`case-${preset.id}`}>{preset.name}</Card.Title></Card.Header>
-        <Card.Content className="flex flex-col gap-4">
-          <p className="text-muted">{preset.description}</p>
-          <div className="mt-auto flex flex-wrap gap-3">
-            <Link className={buttonVariants({ variant: 'outline' })} to={`/cases/${preset.id}`}>查看详情</Link>
-            {preset.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>开始学习</Link>}
-          </div>
-        </Card.Content>
+      <Card className="case-card h-full items-stretch">
         <Link className="case-thumbnail-link" to={`/cases/${preset.id}`} aria-label={`查看${preset.name}详情`}>
           <CaseThumbnail name={preset.name} segments={preset.segments} />
         </Link>
+        <div className="flex min-w-0 flex-1 flex-col gap-3">
+          <Card.Header className="gap-1">
+            <Card.Title render={props => <h2 {...props} />} id={`case-${preset.id}`}>{preset.name}</Card.Title>
+            <Card.Description>{preset.description}</Card.Description>
+          </Card.Header>
+          <Card.Footer className="mt-auto flex flex-wrap gap-3">
+            {preset.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>开始学习</Link>}
+            <Link className={buttonVariants({ variant: preset.learning ? 'secondary' : 'primary' })} to={`/cases/${preset.id}`}>查看详情</Link>
+          </Card.Footer>
+        </div>
       </Card>
     </article>)}
   </section>
