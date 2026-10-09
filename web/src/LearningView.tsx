@@ -12,11 +12,13 @@ import { HelpButton } from './CaseHelp'
 import './LearningWorkspace.css'
 import { useStepPanelScroll } from './useStepPanelScroll'
 import { useEventTransfer } from './useEventTransfer'
+import { useRoundedBlockSize } from './useRoundedBlockSize'
 
 
 export function LearningView({ preset, trace, results, index, onStepChange }: {
   preset: Preset; trace: SweepTrace; results: Intersection[]; index: number; onStepChange: (index: number) => void
 }) {
+  const roundedBlock = useRoundedBlockSize()
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const reducedMotion = useLearningReducedMotion()
   const animationId = useId()
@@ -159,7 +161,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
       <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="learning-state-panels">
         <div className="learning-event-panels">
-        <section aria-label="当前事件" className="workspace-panel learning-current"><Card>
+        <section ref={roundedBlock} aria-label="当前事件" className="workspace-panel learning-current"><Card>
           <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />}>当前事件</CardTitle><HelpButton topic="ties">事件说明</HelpButton></CardHeader>
           <CardContent ref={currentPanel} className="relative flex flex-col gap-2"><p>{phase}</p>
             <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
@@ -169,7 +171,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
             {!step.current && <p>尚未处理事件</p>}
           </CardContent>
         </Card></section>
-        <section aria-label="待处理事件队列" className="workspace-panel learning-pending"><Card>
+        <section ref={roundedBlock} aria-label="待处理事件队列" className="workspace-panel learning-pending"><Card>
           <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('pending')}>待处理事件队列</CardTitle><HelpButton topic="events">队列说明</HelpButton></CardHeader>
           <CardContent ref={pendingPanel}>
             <ol className="relative flex list-inside list-decimal flex-col gap-2">
@@ -182,7 +184,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
           </CardContent>
         </Card></section>
         </div>
-        <section aria-label="活动线段顺序" className="workspace-panel learning-active"><Card>
+        <section ref={roundedBlock} aria-label="活动线段顺序" className="workspace-panel learning-active"><Card>
           <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('active')}>活动线段顺序</CardTitle><HelpButton topic="active">顺序说明</HelpButton></CardHeader>
           <CardContent ref={activePanel} className="flex flex-col gap-2"><p className="text-sm text-muted">{step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
             <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-2">
@@ -195,7 +197,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
         </Card></section>
       </aside>
       </LayoutGroup>
-    <section aria-label="同点参与线段" className="workspace-panel learning-participants"><Card>
+    <section ref={roundedBlock} aria-label="同点参与线段" className="workspace-panel learning-participants"><Card>
       <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />}>同点参与线段</CardTitle><HelpButton topic="ties">同点说明</HelpButton></CardHeader>
       <CardContent ref={participantsPanel} className="flex flex-col gap-2">
         {step.current ? <>
@@ -205,7 +207,7 @@ export function LearningView({ preset, trace, results, index, onStepChange }: {
         </> : <p>取出事件后显示同点参与者。</p>}
       </CardContent>
     </Card></section>
-    <section aria-label="操作解释" aria-live="polite" className="workspace-panel learning-explanations"><Card>
+    <section ref={roundedBlock} aria-label="操作解释" aria-live="polite" className="workspace-panel learning-explanations"><Card>
       <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />}>这一步为什么这样做？</CardTitle><div className="flex flex-wrap gap-2">
         <HelpButton topic="neighbors">相邻性说明</HelpButton>
         {trace.shear.numerator !== '0' && <HelpButton topic="vertical">竖直线说明</HelpButton>}

@@ -17,10 +17,12 @@ import { Spinner } from '@heroui/react/spinner'
 import { ToggleButton } from '@heroui/react/toggle-button'
 import { ToggleButtonGroup } from '@heroui/react/toggle-button-group'
 import { buttonVariants } from '@heroui/react/button'
+import { useRoundedBlockSize } from './useRoundedBlockSize'
 
 type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace }
 
 function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean }) {
+  const roundedBlock = useRoundedBlockSize()
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
   const [selected, setSelected] = useState<Intersection | null>(null)
   const [hover, setHover] = useState<HoverTarget | null>(null)
@@ -58,7 +60,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
   return <>
     <div className="workspace result-workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
-      <aside className="workspace-panel result-panel" aria-label="计算结果">
+      <aside ref={roundedBlock} className="workspace-panel result-panel" aria-label="计算结果">
         <Card>
           <Card.Header className="flex flex-row flex-wrap items-center justify-between gap-2"><Card.Title render={props => <h2 {...props} />}>相交配对</Card.Title><HelpButton topic="results">结果说明</HelpButton></Card.Header>
           <Card.Content className="result-content flex flex-col gap-4">
@@ -101,7 +103,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
           </Card.Content>
         </Card>
       </aside>
-    <section className="workspace-panel input-panel" aria-label="原始输入"><Card>
+    <section ref={roundedBlock} className="workspace-panel input-panel" aria-label="原始输入"><Card>
       <Card.Header className="flex flex-row flex-wrap items-center justify-between gap-2"><Card.Title render={props => <h2 {...props} />} className="flex items-center gap-2">原始输入 <Chip>{preset.segments.length}</Chip></Card.Title><HelpButton topic="inputs">输入说明</HelpButton></Card.Header>
       <Card.Content>{preset.segments.length === 0
         ? <p className="py-6 text-center text-muted">输入集合为空</p>
@@ -118,8 +120,9 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
 }
 
 function CaseList() {
-  return <section aria-label="案例列表" className="grid gap-4 sm:grid-cols-2">
-    {presets.map(preset => <article key={preset.id} aria-labelledby={`case-${preset.id}`}>
+  const roundedBlock = useRoundedBlockSize()
+  return <section aria-label="案例列表" className="case-list grid gap-4 sm:grid-cols-2">
+    {presets.map(preset => <article ref={roundedBlock} key={preset.id} aria-labelledby={`case-${preset.id}`}>
       <Card className="case-card h-full">
         <Card.Header><Card.Title render={props => <h2 {...props} />} id={`case-${preset.id}`}>{preset.name}</Card.Title></Card.Header>
         <Card.Content className="flex flex-col gap-4">

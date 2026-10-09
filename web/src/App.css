@@ -1,5 +1,9 @@
-main { max-width: 1380px; padding: 40px; margin: auto; }
+main { max-width: 1380px; padding: 40px; margin-block: 0; margin-left: max(0px, round(down, calc((100% - 1380px) / 2), 1px)); margin-right: auto; }
 main:not(.case-shell) > .viewer-header { margin-bottom: 24px; }
+main > .case-list > article, .drawing, .workspace-panel { padding-bottom: var(--rounded-block-padding, 0px); }
+@media (min-width: 640px) {
+  main > .case-list { grid-template-columns: round(down, calc((100% - 16px) / 2), 1px) minmax(0, 1fr); }
+}
 .case-card { display: grid; grid-template-columns: minmax(0, 1fr) clamp(80px, 25%, 160px); grid-template-rows: auto 1fr; column-gap: 16px; padding-right: 24px; }
 .case-card > [data-slot="card-header"], .case-card > [data-slot="card-content"] { grid-column: 1; min-width: 0; padding-right: 0; overflow-wrap: anywhere; }
 .case-thumbnail-link { grid-column: 2; grid-row: 1 / 3; align-self: center; border-radius: 8px; }
@@ -8,7 +12,7 @@ main:not(.case-shell) > .viewer-header { margin-bottom: 24px; }
 .case-thumbnail text { fill: var(--muted); font-size: 13px; }
 .viewer-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .workspace { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; min-height: 0; }
-.case-shell { max-width: none; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+.case-shell { max-width: none; margin-inline: 0; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
 .case-shell .viewer-header h1 { font-size: 20px; }
 .case-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .case-actions { margin-left: auto; }
@@ -61,7 +65,11 @@ main:not(.case-shell) > .viewer-header { margin-bottom: 24px; }
 .drawing [data-teaching="true"] .input[data-highlighted="true"] > line { stroke: #078574; stroke-width: 7; }
 .drawing [data-teaching="true"] .input.selected text:not([data-highlighted="true"]) { fill: #41618d; }
 @media (min-width: 1100px) {
-  .workspace { grid-template-columns: minmax(240px, 1fr) minmax(0, 2.6fr) minmax(290px, 1.15fr); }
+  .workspace {
+    /* Keep the existing proportions and minimums; the center takes the integer remainder. */
+    --workspace-unit: min(calc((100% - 32px) / 4.75), calc((100% - 32px - 290px) / 3.6));
+    grid-template-columns: max(240px, round(down, var(--workspace-unit), 1px)) minmax(0, 1fr) max(290px, round(down, calc(var(--workspace-unit) * 1.15), 1px));
+  }
   .result-workspace > .drawing { grid-column: 2; grid-row: 1; }
   .result-panel { grid-column: 3; grid-row: 1; }
   .input-panel { grid-column: 1; grid-row: 1; }
@@ -70,13 +78,14 @@ main:not(.case-shell) > .viewer-header { margin-bottom: 24px; }
   .case-shell { height: 100dvh; }
   .case-shell > :not(.workspace):not(.learning-view) { flex-shrink: 0; }
   .workspace { flex: 1; align-items: stretch; }
+  .workspace-panel { padding-bottom: 0; }
   .workspace-panel > [data-slot="card"] { height: 100%; }
   .workspace-panel [data-slot="card-content"] { flex: 1; }
   .result-panel .result-content { overflow: hidden; }
   .pair-scroll { flex: 1; min-height: 0; }
   .pair-scroll { max-height: none; }
   .result-details { flex: 1; min-height: 0; }
-  .drawing { min-height: 0; }
+  .drawing { min-height: 0; padding-bottom: 0; }
   .drawing > [data-slot="card"] { height: 100%; }
   .drawing-surface { flex: 1; height: auto; }
   .drawing-toolbar, .drawing .legend { flex-shrink: 0; }
