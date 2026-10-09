@@ -23,6 +23,46 @@ async function expectIntegerLayout(page: Page) {
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
   test.describe(`外层像素 ${browserName}`, () => {
+    for (const width of [1100, 1361, 1920]) {
+      test(`两页三栏尺寸一致且为整数 20/60/20 ${width}px`, async ({ playwright, baseURL }) => {
+        const browser = await playwright[browserName].launch({ headless: true })
+        try {
+          const page = await browser.newPage({ baseURL, viewport: { width, height: 901 }, deviceScaleFactor: 2 })
+          await page.goto('/cases/crossing')
+          await expect(page.getByRole('radio').first()).toBeVisible()
+          const columns = async (learning: boolean) => {
+            await page.evaluate(() => document.fonts.ready)
+            const boxes = await Promise.all([
+              page.getByRole('region', { name: learning ? '同点参与线段' : '原始输入', exact: true }),
+              page.getByRole('region', { name: '几何视图', exact: true }),
+              learning
+                ? page.getByRole('region', { name: '当前事件', exact: true })
+                : page.getByRole('complementary', { name: '计算结果' }),
+            ].map(async locator => {
+              await expect(locator).toBeVisible()
+              const box = (await locator.boundingBox())!
+              return { x: box.x, width: box.width }
+            }))
+            return boxes
+          }
+          const results = await columns(false)
+          await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
+          await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
+          expect(await columns(true)).toEqual(results)
+          const available = results.reduce((sum, box) => sum + box.width, 0)
+          const side = Math.floor(available * 0.2)
+          expect(results.map(box => box.width)).toEqual([side, available - 2 * side, side])
+          for (const box of results) {
+            expect(Number.isInteger(box.x)).toBe(true)
+            expect(Number.isInteger(box.width)).toBe(true)
+          }
+          await page.getByRole('link', { name: '返回结果查看器', exact: true }).click()
+          expect(await columns(false)).toEqual(results)
+        } finally {
+          await browser.close()
+        }
+      })
+    }
     for (const width of [391, 1361]) {
       test(`列表、结果和全部教学步骤 ${width}px`, async ({ playwright, baseURL }) => {
         test.setTimeout(180_000)
