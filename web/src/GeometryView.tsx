@@ -7,12 +7,13 @@ import { ButtonGroup } from '@heroui/react/button-group'
 import { Card } from '@heroui/react/card'
 import { Separator } from '@heroui/react/separator'
 import type { HoverHighlights, HoverTarget } from './hover'
+import type { EventSide } from './eventSide'
 
 interface Props {
   segments: Segment[]; results: Intersection[]; selected: Intersection | null
   highlights?: HoverHighlights | null
   onHover?: (target: HoverTarget | null) => void
-  sweep?: { current: Point | null; active: number[]; pending: Point[]; numbering: 'active' | 'pending' | null; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
+  sweep?: { current: Point | null; side: EventSide; active: number[]; pending: Point[]; numbering: 'active' | 'pending' | null; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
 }
 
 export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
@@ -30,6 +31,8 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     'data-highlighted': highlights?.points.some(p => samePoint(p, point)) ?? false,
   } : {}
   const { minX, maxX, x, y, px, py } = projectPoints(points, width, height, 50)
+  const sideX = sweep?.current ? transform.applyX(px(sweep.current)) : null
+  const teaching = !!sweep
   // Project the existing list order; approximate coordinates only position the drawing.
   const numberedPoints = sweep?.numbering === 'pending'
     ? sweep.pending.map((point, index) => ({ x: px(point), y: py(point), label: `${index + 1}`, name: `待处理事件 ${index + 1}：${sweep.labelPoint(point)}` }))
@@ -49,16 +52,16 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   useLayoutEffect(() => {
     const element = svg.current!
     const initial = surface.current!.getBoundingClientRect()
-    setSize({ width: initial.width, height: initial.height })
+    setSize({ width: initial.width, height: initial.height - (teaching ? 40 : 0) })
     behavior.current.on('zoom', event => setTransform(event.transform))
     select(element).call(behavior.current).on('wheel.zoom', null)
     const observer = new ResizeObserver(entries => {
       const { width, height } = entries[0].contentRect
-      setSize({ width, height })
+      setSize({ width, height: height - (teaching ? 40 : 0) })
     })
     observer.observe(surface.current!)
     return () => { select(element).on('.zoom', null); observer.disconnect() }
-  }, [])
+  }, [teaching])
 
   const ordered = segments.map((s, index) => ({ s, index }))
     .sort((a, b) => Number(selected?.segments.includes(a.index)) - Number(selected?.segments.includes(b.index)))
@@ -105,7 +108,14 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
       <Button onPress={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}><ButtonGroup.Separator />重置视图</Button>
     </ButtonGroup></Card.Header>
     <Card.Content ref={surface} className="drawing-surface p-0">
-    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
+    {sweep && <div className="sweep-side-strip">
+      {sweep.side && sideX !== null && sideX >= 0 && sideX <= width &&
+        <span className="sweep-side" role="img" aria-label={`事件侧向状态：当前事件${sweep.side === 'left' ? '左' : '右'}侧（Δ）`}
+          style={{ left: Math.max(2, Math.min(width - 50, sideX - 24)) }}>
+          <span>Δ</span><span className="sweep-side-arrow" aria-hidden="true">{sweep.side === 'left' ? '←' : '→'}</span>
+        </span>}
+    </div>}
+    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} style={{ height }} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
       onPointerMove={event => {
         if (!onHover || event.buttons) return
@@ -203,6 +213,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     <Separator />
     <Card.Footer className="legend text-muted"><span>蓝色：输入</span><span>橙色：交集</span>
       {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
+      {sweep && <span>Δ 箭头：当前事件左侧／右侧状态，不表示扫描方向或实际坐标偏移；点上及部分更新时隐藏。同 x 事件分别处理，竖直线保留当前处理高度。</span>}
       <span className="ml-auto whitespace-nowrap">按钮缩放 · 拖动平移</span>
     </Card.Footer>
   </Card></section>

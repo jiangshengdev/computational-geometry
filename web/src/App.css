@@ -59,6 +59,9 @@ span.learning-hover-item { display: inline-block; }
 .pair-item[data-highlighted="false"] { background: transparent; }
 .input[data-active="true"] { stroke-width: 4; stroke: #245cb0; }
 .sweep-line { stroke: #7455a8; stroke-width: 2; stroke-dasharray: 6 4; pointer-events: none; }
+.sweep-side-strip { position: relative; height: 40px; flex: none; }
+.sweep-side { position: absolute; top: 2px; width: 48px; height: 36px; display: flex; flex-direction: column; align-items: center; color: #7455a8; font: 600 14px/16px ui-monospace, monospace; pointer-events: none; }
+.sweep-side-arrow { font-size: 28px; line-height: 20px; }
 .scheduled-point { fill: none; stroke: #de8e41; stroke-width: 2; stroke-dasharray: 3 3; }
 .current-point { fill: none; stroke: #7455a8; stroke-width: 3; }
 .sweep-overlay text { fill: #735020; font-size: 12px; }

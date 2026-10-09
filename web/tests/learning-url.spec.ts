@@ -24,9 +24,12 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       // Drag beyond the endpoint so thumb width cannot leave a narrow slider one step short.
       await page.mouse.move(group.x + group.width + thumb.width, y, { steps: 18 })
       await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (2, 2)')
+      await expect(page.getByRole('img', { name: /事件侧向状态/ })).toContainText('→')
       expect(new URL(page.url()).searchParams.has('step')).toBe(false)
       for (let i = 0; i < 12; i++) {
         await page.mouse.move(group.x + (i % 2 ? group.width + thumb.width : -thumb.width), y, { steps: 18 })
+        if (i % 2) await expect(page.getByRole('img', { name: /事件侧向状态/ })).toContainText('→')
+        else await expect(page.getByRole('img', { name: /事件侧向状态/ })).toHaveCount(0)
       }
       expect(new URL(page.url()).searchParams.has('step')).toBe(false)
       await page.mouse.up()
