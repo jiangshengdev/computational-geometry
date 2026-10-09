@@ -31,9 +31,11 @@ for (const width of [1360, 390]) {
     // Let the drag gesture's end-of-task click suppression finish before
     // starting a separate keyboard interaction.
     await page.evaluate(() => new Promise<void>(resolve => setTimeout(resolve, 0)))
-    const geometry = drawing.locator(':scope > g')
+    const geometry = drawing.locator('g[data-layer="geometry"]')
+    const grid = drawing.locator('g[data-layer="grid"]')
     const transform = await geometry.getAttribute('transform')
     expect(transform).toContain('scale(1.4)')
+    await expect(grid).toHaveAttribute('transform', transform!)
     const detailText = await details.innerText()
     const dialog = page.getByRole('dialog', { name: '说明与帮助', exact: true })
     for (const [name, topic, content] of [
@@ -65,6 +67,7 @@ for (const width of [1360, 390]) {
       await expect(pair).toBeChecked()
       await expect(details).toHaveText(detailText, { useInnerText: true })
       await expect(geometry).toHaveAttribute('transform', transform!)
+      await expect(grid).toHaveAttribute('transform', transform!)
       await expect(page).toHaveURL(/\/cases\/crossing$/)
     }
     await inputs.getByRole('listitem').first().hover()
