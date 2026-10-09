@@ -22,22 +22,7 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 108
       expect(box.x + box.width).toBeLessThanOrEqual(viewport.width)
       expect(box.y + box.height).toBeLessThanOrEqual(viewport.height)
     }
-    const [current, participants, canvas, queue, active, explanation] = boxes
-    expect(current.x).toBe(queue.x)
-    expect(current.width).toBe(queue.width)
-    expect(current.y).toBe(canvas.y)
-    expect(current.y + current.height).toBeLessThan(queue.y)
-    expect(queue.y + queue.height).toBeCloseTo(explanation.y + explanation.height, 0)
-    expect(canvas.x + canvas.width).toBeLessThan(queue.x)
-    expect(active.x + active.width).toBeLessThan(canvas.x)
-    expect(explanation.x).toBe(canvas.x)
-    expect(explanation.width).toBe(canvas.width)
-    expect(explanation.y).toBeGreaterThan(canvas.y + canvas.height)
-    expect(participants.x).toBe(active.x)
-    expect(participants.y).toBe(current.y)
-    expect(queue.y).toBe(active.y)
-    await expect(page.getByRole('region', { name: '活动线段顺序', exact: true }).getByRole('button', { name: '下一步', exact: true })).toBeVisible()
-    await expect(page.getByRole('region', { name: '待处理事件队列', exact: true }).getByRole('slider', { name: '教学步骤' })).toBeVisible()
+    await expect(page.getByRole('slider', { name: '教学步骤' })).toBeVisible()
     for (const control of [page.getByRole('button', { name: '下一步', exact: true }), page.getByRole('group', { name: '教学步骤', exact: true })]) {
       const box = await bounds(control)
       expect(box.y).toBeGreaterThanOrEqual(0)

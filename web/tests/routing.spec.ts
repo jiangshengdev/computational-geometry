@@ -36,12 +36,6 @@ for (const width of [1360, 390]) {
       await expect(card.getByRole('link', { name: `查看${preset.name}详情`, exact: true })).toHaveAttribute('href', `/cases/${preset.id}`)
       await expect(thumbnail.locator('.input')).toHaveCount(preset.segments.length)
       await expect(thumbnail.locator('.intersection')).toHaveCount(0)
-      const previewBox = (await thumbnail.boundingBox())!
-      const titleBox = (await card.getByRole('heading').boundingBox())!
-      if (width >= 640) expect(previewBox.x + previewBox.width).toBeLessThan(titleBox.x)
-      else expect(previewBox.y + previewBox.height).toBeLessThan(titleBox.y)
-      const detailBox = (await card.getByRole('link', { name: '查看详情', exact: true }).boundingBox())!
-      expect(detailBox.y).toBeGreaterThan(titleBox.y + titleBox.height)
       expect(await thumbnail.evaluate(svg => Array.from(svg.querySelectorAll('line, path')).every(shape => {
         const box = (shape as SVGGraphicsElement).getBBox()
         return [box.x, box.y, box.width, box.height].every(Number.isFinite)

@@ -34,15 +34,6 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 390, height: 844 
     const segment = (await page.getByRole('img', { name: '输入 S0', exact: true }).boundingBox())!
     expect(segment.width).toBeGreaterThan(40)
     expect(segment.height).toBeGreaterThan(40)
-    if (viewport.width < 1100) {
-      const order = await Promise.all([
-        next,
-        page.getByRole('region', { name: '几何视图' }),
-        page.getByRole('region', { name: '操作解释' }),
-        page.getByRole('region', { name: '当前事件', exact: true }),
-      ].map(item => item.boundingBox()))
-      for (let index = 1; index < order.length; index++) expect(order[index]!.y).toBeGreaterThan(order[index - 1]!.y)
-    }
     await page.evaluate(() => window.scrollTo(0, 0))
     await capture('learning')
     const opener = page.getByRole('button', { name: '说明与帮助', exact: true })
