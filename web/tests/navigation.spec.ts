@@ -99,7 +99,7 @@ test('教学快捷键：控件优先、组合键和模式隔离', async ({ page 
   await expect(slider).toHaveValue('1')
   await page.getByRole('link', { name: '返回结果查看器' }).click()
   await expect(page.getByRole('region', { name: '原始输入' })).toBeVisible()
-  for (const key of ['ArrowLeft', 'ArrowRight', 'r']) {
+  for (const key of ['ArrowLeft', 'r']) {
     const consumed = await page.evaluate(key => {
       const event = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true })
       document.body.dispatchEvent(event)

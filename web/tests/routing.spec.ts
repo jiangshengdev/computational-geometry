@@ -1,6 +1,53 @@
 import { expect, test } from '@playwright/test'
 import { presets } from '../src/presets'
 
+test('预览快捷键：右方向键进入教程，长按不跳过初始步骤', async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
+  await page.goto('/cases/crossing')
+  await expect(page).toHaveTitle('BO 结果查看器')
+  await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
+  await expect(page.getByRole('link', { name: '开始逐步学习' })).toHaveAttribute('aria-keyshortcuts', 'ArrowRight')
+  for (const modifier of ['Control', 'Meta', 'Alt', 'Shift']) {
+    await page.keyboard.press(`${modifier}+ArrowRight`)
+    await expect(page).toHaveURL(/\/cases\/crossing$/)
+  }
+  await page.getByRole('button', { name: '案例说明', exact: true }).click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await page.keyboard.press('ArrowRight')
+  await expect(page).toHaveURL(/\/cases\/crossing$/)
+  await page.getByRole('button', { name: '关闭帮助' }).click()
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await page.keyboard.down('ArrowRight')
+  await expect(page).toHaveURL(/\/cases\/crossing\/learn(?:\?step=0)?$/)
+  const slider = page.getByRole('slider', { name: '教学步骤' })
+  await expect(slider).toHaveValue('0')
+  await page.keyboard.down('ArrowRight')
+  await page.keyboard.up('ArrowRight')
+  await expect(slider).toHaveValue('0')
+  await page.keyboard.press('ArrowRight')
+  await expect(slider).toHaveValue('1')
+  await page.goBack()
+  await expect(page).toHaveURL(/\/cases\/crossing$/)
+  expect(errors).toEqual([])
+})
+
+for (const path of ['/cases/empty', '/cases/not-a-case', '/cases/crossing/extra', '/']) {
+  test(`预览快捷键：${path} 没有可进入的教程时保持原页`, async ({ page }) => {
+    await page.goto(path)
+    await expect(page.getByRole('heading', { name: 'BO 结果查看器', exact: true })).toBeVisible()
+    const consumed = await page.evaluate(() => {
+      const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true })
+      document.body.dispatchEvent(event)
+      return event.defaultPrevented
+    })
+    expect(consumed).toBe(false)
+    await page.keyboard.press('ArrowRight')
+    expect(new URL(page.url()).pathname).toBe(path)
+  })
+}
+
 test('三页路由：列表进入详情再进入教学', async ({ page }) => {
   await page.goto('/')
   const crossing = page.getByRole('article').filter({ has: page.getByRole('heading', { name: '普通交叉', exact: true }) })

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, Route, Routes, useMatch, useParams, useSearchParams } from 'react-router'
+import { Link, Route, Routes, useMatch, useNavigate, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { CaseThumbnail } from './CaseThumbnail'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
@@ -17,6 +17,7 @@ import { Spinner } from '@heroui/react/spinner'
 import { ToggleButton } from '@heroui/react/toggle-button'
 import { ToggleButtonGroup } from '@heroui/react/toggle-button-group'
 import { buttonVariants } from '@heroui/react/button'
+import { usePageShortcut } from './usePageShortcut'
 
 type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace }
 
@@ -175,7 +176,13 @@ function RouteError({ message, preset, showListLink = true }: { message: string;
 
 function CasePage({ learning = false, unknownPath = false }: { learning?: boolean; unknownPath?: boolean }) {
   const { caseId } = useParams()
+  const navigate = useNavigate()
   const preset = presets.find(item => item.id === caseId)
+  usePageShortcut(event => {
+    if (learning || unknownPath || !preset?.learning || event.key !== 'ArrowRight') return
+    event.preventDefault()
+    if (!event.repeat) navigate(`/cases/${preset.id}/learn`)
+  })
   if (!preset) return <RouteError message={`未知案例：${caseId}`} />
   if (unknownPath) return <RouteError message="未知页面路径。" preset={preset} />
   if (learning && !preset.learning) return <RouteError message="此案例不支持教学。" preset={preset} />
@@ -187,7 +194,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
         <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
         {learning
           ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>返回结果查看器</Link>
-          : preset.learning && <Link className={buttonVariants({ size: 'sm' })} to={`/cases/${preset.id}/learn`}>开始逐步学习</Link>}
+          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">开始逐步学习<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true">→</Chip></Link>}
       </div>
     </div>
     <CaseViewer preset={preset} learning={learning} />

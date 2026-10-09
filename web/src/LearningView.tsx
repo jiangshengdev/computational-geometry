@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useEffectEvent, useId, useRef, useState } from 'react'
+import { Fragment, useId, useRef, useState } from 'react'
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@heroui/react/button'
@@ -14,6 +14,7 @@ import './LearningWorkspace.css'
 import { useStepPanelScroll } from './useStepPanelScroll'
 import { useEventTransfer } from './useEventTransfer'
 import { eventSide } from './eventSide'
+import { usePageShortcut } from './usePageShortcut'
 
 
 export function LearningView({ preset, trace, results, index, onStepChange, onStepPreview }: {
@@ -118,13 +119,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
     else onStepChange(next)
   }
   const restart = () => { changeStep(0); setRun(r => r + 1) }
-  const handleShortcut = useEffectEvent((event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
-    const target = event.target
-    if (target instanceof Element && (
-      target.closest('input, textarea, select, [role="slider"], [role="combobox"], [role="listbox"], [role="dialog"]')
-      || (target instanceof HTMLElement && target.isContentEditable)
-    )) return
+  usePageShortcut((event: KeyboardEvent) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key.toLowerCase() !== 'r') return
     event.preventDefault()
     if (event.repeat) return
@@ -132,11 +127,6 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
     else if (event.key === 'ArrowRight') changeStep(current => current + 1, true)
     else restart()
   })
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => handleShortcut(event)
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
   const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="learning-view">
