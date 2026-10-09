@@ -18,7 +18,6 @@ interface Props {
 
 export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
   const svg = useRef<SVGSVGElement>(null)
-  const surface = useRef<HTMLDivElement>(null)
   const [{ width, height }, setSize] = useState({ width: 800, height: 460 })
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity)
   const behavior = useRef(zoom<SVGSVGElement, unknown>().scaleExtent([0.25, 40]))
@@ -32,7 +31,6 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   } : {}
   const { minX, maxX, x, y, px, py } = projectPoints(points, width, height, 50)
   const sideX = sweep?.current ? transform.applyX(px(sweep.current)) : null
-  const teaching = !!sweep
   // Project the existing list order; approximate coordinates only position the drawing.
   const numberedPoints = sweep?.numbering === 'pending'
     ? sweep.pending.map((point, index) => ({ x: px(point), y: py(point), label: `${index + 1}`, name: `待处理事件 ${index + 1}：${sweep.labelPoint(point)}` }))
@@ -51,17 +49,17 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
 
   useLayoutEffect(() => {
     const element = svg.current!
-    const initial = surface.current!.getBoundingClientRect()
-    setSize({ width: initial.width, height: initial.height - (teaching ? 40 : 0) })
+    const initial = element.getBoundingClientRect()
+    setSize({ width: initial.width, height: initial.height })
     behavior.current.on('zoom', event => setTransform(event.transform))
     select(element).call(behavior.current).on('wheel.zoom', null)
     const observer = new ResizeObserver(entries => {
       const { width, height } = entries[0].contentRect
-      setSize({ width, height: height - (teaching ? 40 : 0) })
+      setSize({ width, height })
     })
-    observer.observe(surface.current!)
+    observer.observe(element)
     return () => { select(element).on('.zoom', null); observer.disconnect() }
-  }, [teaching])
+  }, [])
 
   const ordered = segments.map((s, index) => ({ s, index }))
     .sort((a, b) => Number(selected?.segments.includes(a.index)) - Number(selected?.segments.includes(b.index)))
@@ -107,7 +105,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
       <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小"><ButtonGroup.Separator />−</Button>
       <Button onPress={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}><ButtonGroup.Separator />重置视图</Button>
     </ButtonGroup></Card.Header>
-    <Card.Content ref={surface} className="drawing-surface p-0">
+    <Card.Content className="drawing-surface p-0">
     {sweep && <div className="sweep-side-strip">
       {sweep.side && sideX !== null && sideX >= 0 && sideX <= width &&
         <span className="sweep-side" role="img" aria-label={`事件侧向状态：当前事件${sweep.side === 'left' ? '左' : '右'}侧（Δ）`}
@@ -115,7 +113,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
           <span>Δ</span><span className="sweep-side-arrow" aria-hidden="true">{sweep.side === 'left' ? '←' : '→'}</span>
         </span>}
     </div>}
-    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} height={height} style={{ height }} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
+    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
       onPointerMove={event => {
         if (!onHover || event.buttons) return
