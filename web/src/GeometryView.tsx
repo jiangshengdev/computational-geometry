@@ -224,7 +224,6 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     <Separator />
     <Card.Footer className="legend text-muted"><span>蓝色：输入</span><span>橙色：交集</span>
       {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
-      {sweep && <span>Δ 箭头：顶部左／右表示当前事件前／后状态；有竖直线段参与当前事件时，右侧同步显示下／上箭头及淡水平辅助线。点上及部分更新时同步隐藏。箭头不表示扫描方向或实际坐标偏移，辅助线仅关联当前事件高度。同 x 事件分别处理。</span>}
       <span className="ml-auto whitespace-nowrap">按钮缩放 · 拖动平移</span>
     </Card.Footer>
   </Card></section>
