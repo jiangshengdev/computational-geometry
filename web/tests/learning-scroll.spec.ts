@@ -14,7 +14,12 @@ async function visibilityInPanel(row: Locator) {
     while (panel && !['auto', 'scroll'].includes(getComputedStyle(panel).overflowY)) panel = panel.parentElement
     if (!panel) throw new Error('条目没有内部滚动面板')
     const item = element.getBoundingClientRect(), viewport = panel.getBoundingClientRect()
-    return item.top >= viewport.top - 1 && item.bottom <= viewport.bottom + 1
+    return {
+      visible: item.top >= viewport.top - 1 && item.bottom <= viewport.bottom + 1,
+      rowTop: item.top, rowBottom: item.bottom, rowHeight: item.height,
+      panelTop: viewport.top, panelBottom: viewport.bottom, panelHeight: panel.clientHeight,
+      scrollTop: panel.scrollTop, scrollHeight: panel.scrollHeight,
+    }
   })
 }
 
@@ -44,7 +49,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     const active = page.getByRole('region', { name: '活动线段顺序' })
     const row = active.getByRole('listitem').filter({ hasText: `S${trace.steps[target].subjects[0]}` })
     expect((await scrollPanel(row, false)).overflow).toBeGreaterThan(0)
-    expect(await visibilityInPanel(row)).toBe(false)
+    expect(await visibilityInPanel(row)).toMatchObject({ visible: false })
     const control = mode === '滑块' ? slider : page.getByRole('button', { name: mode === '回退' ? '上一步' : '下一步', exact: true })
     await control.focus()
     const before = await page.evaluate(() => window.scrollY)
@@ -52,7 +57,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     if (mode === '前进' || mode === '回退') await control.click()
     else await control.press('ArrowRight')
     await expect(slider).toHaveValue(String(target))
-    await expect.poll(() => visibilityInPanel(row)).toBe(true)
+    await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))
     await expect(control).toBeFocused()
     expect(await page.evaluate(() => window.scrollY)).toBe(before)
     expect(await page.getByRole('region', { name: '几何视图' }).boundingBox()).toEqual(canvas)
@@ -61,10 +66,10 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     // Manual browsing at this step survives hover-driven rerenders.
     await scrollPanel(row, false)
     await active.getByRole('heading', { name: '活动线段顺序' }).hover()
-    expect(await visibilityInPanel(row)).toBe(false)
+    expect(await visibilityInPanel(row)).toMatchObject({ visible: false })
     await page.getByRole('button', { name: '上一步', exact: true }).click()
     await page.getByRole('button', { name: '下一步', exact: true }).click()
-    await expect.poll(() => visibilityInPanel(row)).toBe(true)
+    await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))
   })
 }
 
@@ -82,13 +87,13 @@ test('教学定位：点击滑块轨道跨多步跳转后定位目标而非来�
   await setReadingFont(page, 24)
   const row = page.getByRole('region', { name: '活动线段顺序' }).getByRole('listitem').filter({ hasText: `S${subject}` })
   expect((await scrollPanel(row, false)).overflow).toBeGreaterThan(0)
-  expect(await visibilityInPanel(row)).toBe(false)
+  expect(await visibilityInPanel(row)).toMatchObject({ visible: false })
   const scrollBefore = await page.evaluate(() => window.scrollY)
   const track = await page.getByRole('group', { name: '教学步骤', exact: true }).boundingBox()
   if (!track) throw new Error('找不到滑块轨道区域')
   await page.mouse.click(track.x + track.width * target / (trace.steps.length - 1), track.y + track.height / 2)
   await expect(slider).toHaveValue(String(target))
-  await expect.poll(() => visibilityInPanel(row)).toBe(true)
+  await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))
   await expect(slider).toBeFocused()
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore)
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('记录')
@@ -108,11 +113,11 @@ test('教学定位：发现事件按精确身份定位，回退移除未来条�
   // Large, readable text supplies a genuinely overflowing existing queue.
   await setReadingFont(page, 24)
   expect((await scrollPanel(row, true)).overflow).toBeGreaterThan(0)
-  expect(await visibilityInPanel(row)).toBe(false)
+  expect(await visibilityInPanel(row)).toMatchObject({ visible: false })
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await expect(row).toHaveCount(0)
   await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await expect.poll(() => visibilityInPanel(row)).toBe(true)
+  await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await slider.focus()
   await slider.press('End')

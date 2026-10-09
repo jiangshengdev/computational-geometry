@@ -77,7 +77,7 @@ for (const width of [1360, 390]) {
     await expect(page.getByRole('region', { name: '为什么不会漏掉交点' })).toContainText('一般位置')
     await expect(page.getByRole('region', { name: '为什么不会漏掉交点' })).toContainText('第三条线段')
     await expect(page.getByRole('region', { name: '为什么不会漏掉交点' })).toContainText('额外规则')
-    await page.getByRole('radiogroup', { name: '帮助主题' }).getByText('参考资料', { exact: true }).click()
+    await page.getByRole('tab', { name: '参考资料', exact: true }).click()
     await expect(page.getByRole('link', { name: /Dave Mount/ })).toHaveAttribute('href', 'https://www.cs.umd.edu/class/fall2023/cmsc754/Lects/lect04-intersection.pdf')
     await page.getByRole('button', { name: '关闭帮助', exact: true }).click()
     const next = page.getByRole('button', { name: '下一步', exact: true })

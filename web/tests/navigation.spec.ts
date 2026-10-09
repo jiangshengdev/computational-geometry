@@ -17,10 +17,12 @@ for (const preset of ['crossing', 'disjoint']) {
     const previous = page.getByRole('button', { name: '上一步', exact: true })
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const restart = page.getByRole('button', { name: '重新开始', exact: true })
-    await expect(previous.locator('kbd')).toHaveText('←')
-    await expect(next.locator('kbd')).toHaveText('→')
-    await expect(restart.locator('kbd')).toHaveText('R')
+    await expect(previous.getByText('←', { exact: true })).toBeVisible()
+    await expect(next.getByText('→', { exact: true })).toBeVisible()
+    await expect(restart.getByText('R', { exact: true })).toBeVisible()
+    await expect(previous).toHaveAttribute('aria-keyshortcuts', 'ArrowLeft')
     await expect(next).toHaveAttribute('aria-keyshortcuts', 'ArrowRight')
+    await expect(restart).toHaveAttribute('aria-keyshortcuts', 'r')
     await page.keyboard.press('ArrowLeft')
     await expect(slider).toHaveValue('0')
     await page.keyboard.down('ArrowRight')
@@ -66,7 +68,7 @@ for (const preset of ['crossing', 'disjoint']) {
     if (preset === 'crossing') {
       for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
         await page.setViewportSize(viewport)
-        await expect(restart.locator('kbd')).toBeVisible()
+        await expect(restart.getByText('R', { exact: true })).toBeVisible()
         await page.screenshot({ path: join(tmpdir(), `bo-keyboard-${viewport.width}.png`) })
       }
     }
@@ -159,7 +161,7 @@ for (const preset of ['crossing', 'disjoint']) {
     while (await next.isEnabled()) {
       await next.click()
       // Capture the settled state, not rows temporarily retained for exit animation.
-      await expect(page.locator('aside [aria-hidden="true"]')).toHaveCount(0)
+      await expect(learning.locator('[data-event-id][aria-hidden="true"], [data-input-id][aria-hidden="true"]')).toHaveCount(0)
       states.push(await learning.innerText())
     }
     await expect(page.getByRole('region', { name: '学习结果' })).toContainText(preset === 'crossing' ? 'I0 (2, 2)：S0 × S1' : '结果为空')
