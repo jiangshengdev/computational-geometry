@@ -2,7 +2,7 @@ import { samePoint, type Segment } from './geometry'
 import { projectPoints } from './projection'
 
 export function CaseThumbnail({ name, segments }: { name: string; segments: Segment[] }) {
-  const { px, py } = projectPoints(segments.flatMap(s => [s.start, s.end]), 160, 120, 14)
+  const { px, py } = projectPoints(segments.flatMap(s => [s.start, s.end]), 160, 120, 16)
   return <svg className="case-thumbnail" viewBox="0 0 160 120" role="img" aria-label={`${name}：输入线段预览`}>
     {segments.length === 0
       ? <text x="80" y="60" textAnchor="middle" dominantBaseline="middle">无输入线段</text>

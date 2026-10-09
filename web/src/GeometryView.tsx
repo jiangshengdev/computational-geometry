@@ -29,7 +29,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     'data-event-point': formatPoint(point),
     'data-highlighted': highlights?.points.some(p => samePoint(p, point)) ?? false,
   } : {}
-  const { minX, maxX, x, y, px, py } = projectPoints(points, width, height, 50)
+  const { minX, maxX, x, y, px, py } = projectPoints(points, width, height, 64)
   const sideX = sweep?.current ? transform.applyX(px(sweep.current)) : null
   const sideY = sweep?.current ? transform.applyY(py(sweep.current)) : null
   const heightSideVisible = sweep?.side && sweep.participants.some(id => isVertical(segments[id])) &&
@@ -57,9 +57,14 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     setSize({ width: initial.width, height: initial.height })
     behavior.current.on('zoom', event => setTransform(event.transform))
     select(element).call(behavior.current).on('wheel.zoom', null)
+    let previousWidth = initial.width, previousHeight = initial.height
     const observer = new ResizeObserver(entries => {
       const { width, height } = entries[0].contentRect
+      if (width === previousWidth && height === previousHeight) return
+      previousWidth = width
+      previousHeight = height
       setSize({ width, height })
+      select(element).call(behavior.current.transform, zoomIdentity)
     })
     observer.observe(element)
     return () => { select(element).on('.zoom', null); observer.disconnect() }
@@ -77,21 +82,39 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     const boxes = labels.map(label => label.getBBox())
     const occupied = Array.from(element.querySelectorAll<SVGTextElement>('.tick'), tick => tick.getBBox())
     const gap = 6 // Includes the white outline and space between adjacent labels.
+    const lines = segments.map(segment => ({ x1: px(segment.start), y1: py(segment.start), x2: px(segment.end), y2: py(segment.end) }))
+    for (const point of [...points, ...eventPoints]) occupied.push(new DOMRect(px(point) - 10, py(point) - 10, 20, 20))
     labels.forEach((label, index) => {
       const box = boxes[index]
       // Short workspaces need space below and beside labels too: moving every
       // collision upward can put an otherwise readable label under the toolbar.
-      const lefts = [box.x, gap, width - box.width - gap,
-        ...occupied.flatMap(other => [other.x - box.width - gap, other.x + other.width + gap])]
-      const tops = [box.y, gap, height - box.height - gap,
-        ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])]
+      const lefts = [...new Set([box.x, gap, width - box.width - gap,
+        ...occupied.flatMap(other => [other.x - box.width - gap, other.x + other.width + gap])])]
+      const tops = [...new Set([box.y, gap, height - box.height - gap,
+        ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
       const candidates = lefts.flatMap(left => tops.map(top => ({ left, top })))
         .filter(({ left, top }) => left >= gap && top >= gap && left + box.width <= width - gap && top + box.height <= height - gap)
         .filter(({ left, top }) => !sweep?.numbering || (left === box.x && top <= box.y))
         .sort((a, b) => Math.hypot(a.left - box.x, a.top - box.y) - Math.hypot(b.left - box.x, b.top - box.y))
       const position = candidates.find(({ left, top }) => !occupied.some(other =>
         left < other.x + other.width + gap && left + box.width + gap > other.x &&
-        top < other.y + other.height + gap && top + box.height + gap > other.y))
+        top < other.y + other.height + gap && top + box.height + gap > other.y) && !lines.some(line => {
+          // Clip the segment against the label's padded rectangle, not its bounding box.
+          let start = 0, end = 1
+          for (const [origin, delta, low, high] of [
+            [line.x1, line.x2 - line.x1, left - gap, left + box.width + gap],
+            [line.y1, line.y2 - line.y1, top - gap, top + box.height + gap],
+          ]) {
+            if (delta === 0) {
+              if (origin < low || origin > high) return false
+            } else {
+              const a = (low - origin) / delta, b = (high - origin) / delta
+              start = Math.max(start, Math.min(a, b))
+              end = Math.min(end, Math.max(a, b))
+            }
+          }
+          return start <= end
+        }))
       const { left, top } = position ?? { left: box.x, top: box.y }
       label.setAttribute('transform', `translate(${left - box.x}, ${top - box.y})`)
       const leader = label.parentElement?.querySelector('.order-leader')
@@ -167,8 +190,8 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         else onHover({ kind: 'geometry', inputs, pairs: hits.map(pairName) })
       }}>
       <g data-layer="grid" transform={transform.toString()}>
-        {x.ticks(Math.max(2, Math.floor((x(maxX) - x(minX)) / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
-        {y.ticks(6).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
+        {x.ticks(Math.max(1, Math.floor((x(maxX) - x(minX)) / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
+        {y.ticks(Math.max(1, Math.min(6, Math.floor(Math.abs(y.range()[1] - y.range()[0]) / 40)))).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
       </g>
       {heightSideVisible && <line className="event-height-guide" aria-label="当前事件水平辅助线" role="img"
         x1={sideX} x2={Math.max(sideX, width - 36)} y1={sideY} y2={sideY} />}
