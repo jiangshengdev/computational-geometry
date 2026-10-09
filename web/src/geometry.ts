@@ -54,3 +54,8 @@ export function samePoint(a: Point, b: Point): boolean {
     return BigInt(av.numerator) * BigInt(bv.denominator) === BigInt(bv.numerator) * BigInt(av.denominator)
   })
 }
+
+export function isVertical(segment: Segment): boolean {
+  return !samePoint(segment.start, segment.end) &&
+    samePoint({ x: segment.start.x, y: segment.end.y }, segment.end)
+}

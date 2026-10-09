@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { projectPoints } from './projection'
-import { formatPoint, formatRational, pairName, samePoint, type Intersection, type Point, type Segment } from './geometry'
+import { formatPoint, formatRational, pairName, samePoint, isVertical, type Intersection, type Point, type Segment } from './geometry'
 import { Button } from '@heroui/react/button'
 import { ButtonGroup } from '@heroui/react/button-group'
 import { Card } from '@heroui/react/card'
@@ -13,7 +13,7 @@ interface Props {
   segments: Segment[]; results: Intersection[]; selected: Intersection | null
   highlights?: HoverHighlights | null
   onHover?: (target: HoverTarget | null) => void
-  sweep?: { current: Point | null; side: EventSide; active: number[]; pending: Point[]; numbering: 'active' | 'pending' | null; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
+  sweep?: { current: Point | null; side: EventSide; participants: number[]; active: number[]; pending: Point[]; numbering: 'active' | 'pending' | null; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
 }
 
 export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
@@ -31,6 +31,10 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   } : {}
   const { minX, maxX, x, y, px, py } = projectPoints(points, width, height, 50)
   const sideX = sweep?.current ? transform.applyX(px(sweep.current)) : null
+  const sideY = sweep?.current ? transform.applyY(py(sweep.current)) : null
+  const heightSideVisible = sweep?.side && sweep.participants.some(id => isVertical(segments[id])) &&
+    sideX !== null && sideX >= 0 && sideX <= width &&
+    sideY !== null && sideY >= 0 && sideY <= height
   // Project the existing list order; approximate coordinates only position the drawing.
   const numberedPoints = sweep?.numbering === 'pending'
     ? sweep.pending.map((point, index) => ({ x: px(point), y: py(point), label: `${index + 1}`, name: `待处理事件 ${index + 1}：${sweep.labelPoint(point)}` }))
@@ -40,7 +44,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         const scanX = px(sweep.current!)
         // A vertical segment coincides with the drawn sweep line over an
         // interval. Its marker tracks the event frontier, not a unique cut.
-        if (samePoint({ x: segment.start.x, y: segment.end.y }, segment.end)) {
+        if (isVertical(segment) || samePoint(segment.start, segment.end)) {
           return { x: scanX, y: py(sweep.current!), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}（当前处理高度）` }
         }
         const fraction = (scanX - px(segment.start)) / (px(segment.end) - px(segment.start))
@@ -113,6 +117,11 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
           <span>Δ</span><span className="sweep-side-arrow" aria-hidden="true">{sweep.side === 'left' ? '←' : '→'}</span>
         </span>}
     </div>}
+    {heightSideVisible && <span className="sweep-side sweep-height-side" role="img"
+      aria-label={`事件高度状态：当前事件${sweep.side === 'left' ? '下' : '上'}侧（Δ）`}
+      style={{ bottom: height - Math.max(18, Math.min(height - 18, sideY)) }}>
+      <span>Δ</span><span className="sweep-side-arrow" aria-hidden="true">{sweep.side === 'left' ? '↓' : '↑'}</span>
+    </span>}
     <svg ref={svg} viewBox={`0 0 ${width} ${height}`} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
       onPointerMove={event => {
@@ -160,6 +169,10 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
       <g transform={transform.toString()}>
         {x.ticks(Math.max(2, Math.floor((x(maxX) - x(minX)) / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
         {y.ticks(6).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
+      </g>
+      {heightSideVisible && <line className="event-height-guide" aria-label="当前事件水平辅助线" role="img"
+        x1={sideX} x2={Math.max(sideX, width - 36)} y1={sideY} y2={sideY} />}
+      <g transform={transform.toString()}>
         {ordered.map(({ s, index }) => {
           const active = selected?.segments.includes(index) ?? false
           const highlighted = highlights ? highlights.inputs.includes(index) : active
@@ -211,7 +224,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     <Separator />
     <Card.Footer className="legend text-muted"><span>蓝色：输入</span><span>橙色：交集</span>
       {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
-      {sweep && <span>Δ 箭头：当前事件左侧／右侧状态，不表示扫描方向或实际坐标偏移；点上及部分更新时隐藏。同 x 事件分别处理，竖直线保留当前处理高度。</span>}
+      {sweep && <span>Δ 箭头：顶部左／右表示当前事件前／后状态；有竖直线段参与当前事件时，右侧同步显示下／上箭头及淡水平辅助线。点上及部分更新时同步隐藏。箭头不表示扫描方向或实际坐标偏移，辅助线仅关联当前事件高度。同 x 事件分别处理。</span>}
       <span className="ml-auto whitespace-nowrap">按钮缩放 · 拖动平移</span>
     </Card.Footer>
   </Card></section>
