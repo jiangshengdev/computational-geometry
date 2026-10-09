@@ -5,7 +5,7 @@ import { join } from 'node:path'
 export default defineConfig({
   testDir: './tests',
   outputDir: join(tmpdir(), 'computational-geometry-playwright'),
-  reporter: 'list',
+  reporter: 'dot',
   use: { headless: true },
   webServer: {
     command: 'pnpm exec vite --host 127.0.0.1 --port 0 --strictPort',
