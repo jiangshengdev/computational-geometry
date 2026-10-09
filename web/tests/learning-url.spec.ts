@@ -21,11 +21,12 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       const y = thumb.y + thumb.height / 2
       await page.mouse.move(thumb.x + thumb.width / 2, y)
       await page.mouse.down()
-      await page.mouse.move(group.x + group.width - 4, y, { steps: 18 })
+      // Drag beyond the endpoint so thumb width cannot leave a narrow slider one step short.
+      await page.mouse.move(group.x + group.width + thumb.width, y, { steps: 18 })
       await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (2, 2)')
       expect(new URL(page.url()).searchParams.has('step')).toBe(false)
       for (let i = 0; i < 12; i++) {
-        await page.mouse.move(group.x + (i % 2 ? group.width - 4 : 4), y, { steps: 18 })
+        await page.mouse.move(group.x + (i % 2 ? group.width + thumb.width : -thumb.width), y, { steps: 18 })
       }
       expect(new URL(page.url()).searchParams.has('step')).toBe(false)
       await page.mouse.up()

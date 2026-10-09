@@ -1,6 +1,5 @@
 .learning-view { display: flex; flex-direction: column; gap: 16px; min-height: 0; flex: 1; }
-.learning-controls { flex-shrink: 0; }
-.learning-controls-content { display: flex; flex-direction: column; gap: 16px; }
+.learning-panel-controls { margin-top: auto; flex-shrink: 0; }
 .learning-workspace { display: grid; gap: 16px; min-width: 0; }
 .learning-workspace > .drawing { min-height: 22rem; }
 .learning-state-panels { display: grid; gap: 16px; min-width: 0; min-height: 0; }
@@ -14,15 +13,17 @@
 [data-event-transfer-hidden="true"] { opacity: 0 !important; }
 
 @media (min-width: 1100px) {
-  .learning-controls-content { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 24px; }
-  .learning-workspace { grid-template-columns: round(down, calc((100% - 16px) * .6), 1px) minmax(0, 1fr); }
-  .learning-workspace > .drawing { grid-column: 1; grid-row: 1; }
-  .learning-explanations { grid-column: 1; grid-row: 2; }
-  .learning-state-panels { grid-column: 2; grid-row: 1 / 3; grid-template-columns: round(down, calc((100% - 16px) / 2), 1px) minmax(0, 1fr); grid-template-rows: auto auto; }
+  .learning-workspace { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr); }
+  .learning-workspace > .drawing { grid-column: 2; grid-row: 1 / 3; }
+  .learning-explanations { grid-column: 2; grid-row: 3; }
+  .learning-state-panels { display: contents; }
+  .learning-participants { grid-column: 1; grid-row: 1; }
+  .learning-active { grid-column: 1; grid-row: 2 / 4; }
+  .learning-current { grid-column: 3; grid-row: 1; }
+  .learning-pending { grid-column: 3; grid-row: 2 / 4; }
 }
 
 @media (min-width: 1100px) and (min-height: 720px) {
-  .learning-workspace { flex: 1; min-height: 0; grid-template-rows: round(down, calc((100% - 16px) * .75), 1px) minmax(0, 1fr); }
-  .learning-state-panels { grid-template-rows: round(down, calc((100% - 16px) / 3), 1px) minmax(0, 1fr); }
+  .learning-workspace { flex: 1; min-height: 0; grid-template-rows: round(down, calc((100% - 16px) / 3), 1px) minmax(0, 1fr) 9rem; }
   .learning-workspace > .drawing { min-height: 0; }
 }

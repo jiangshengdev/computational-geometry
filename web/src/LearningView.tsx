@@ -139,24 +139,6 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="learning-view">
-    <Card className="learning-controls"><CardContent className="learning-controls-content">
-    <div className="flex flex-wrap items-center gap-2">
-      <Button variant="secondary" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Chip color="accent" variant="soft" size="sm" aria-hidden="true">←</Chip></Button>
-      <Button variant="primary" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true">→</Chip></Button>
-      <Button variant="tertiary" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Chip color="accent" variant="soft" size="sm" aria-hidden="true">R</Chip></Button>
-    </div>
-    <div className="flex flex-col gap-2">
-      <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤 · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
-      <Slider aria-label="教学步骤" minValue={0} maxValue={trace.steps.length - 1} step={1} value={index}
-        onChange={value => changeStep(typeof value === 'number' ? value : value[0], false, true)}
-        onChangeEnd={value => onStepChange(typeof value === 'number' ? value : value[0])}>
-        <Slider.Track>
-          <Slider.Fill />
-          <Slider.Thumb data-testid="teaching-step-thumb" aria-label="教学步骤" aria-describedby={`${animationId}-step`} />
-        </Slider.Track>
-      </Slider>
-    </div>
-    </CardContent></Card>
     <div className="learning-workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
         highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights ?? (recordedOverlap ? hoverHighlights({ kind: 'pair', pair: pairName(recordedOverlap) }, step.results) : null)} onHover={setHover}
@@ -196,15 +178,16 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
     </Card></section>}
       </CardContent>
     </Card></section>
-      <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
       <aside className="learning-state-panels">
         <section aria-label="当前事件" className="learning-panel learning-current"><Card className="learning-panel-card">
           <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><div><CardTitle render={props => <h2 {...props} />}>当前事件</CardTitle><CardDescription>{phase}</CardDescription></div><HelpButton topic="ties">事件说明</HelpButton></CardHeader>
           <CardContent ref={currentPanel} className="learning-panel-content relative flex flex-col gap-1">
+            <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:current:${navigation.reset}:${reducedMotion}`}>
             <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
               {step.current && <LearningRow as="p" key={formatPoint(step.current)} identity={`event:${formatPoint(step.current)}`}
                 existed={sources.includes(`event:${formatPoint(step.current)}`)} data-event-id={formatPoint(step.current)} {...eventProps(step.current)}>{pointName(step.current)}</LearningRow>}
             </AnimatePresence>
+            </LayoutGroup>
             {!step.current && <p>尚未处理事件</p>}
           </CardContent>
         </Card></section>
@@ -222,27 +205,46 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
           <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('pending')}>待处理事件队列</CardTitle><HelpButton topic="events">队列说明</HelpButton></CardHeader>
           <CardContent ref={pendingPanel} className="learning-panel-content">
             <ol className="relative flex list-inside list-decimal flex-col gap-1">
+              <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:pending:${navigation.reset}:${reducedMotion}`}>
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
                 {step.pending.map(p => <LearningRow key={formatPoint(p)} identity={`event:${formatPoint(p)}`}
                   existed={sources.includes(`event:${formatPoint(p)}`)} data-event-id={formatPoint(p)} {...eventProps(p)}>{pointName(p)}</LearningRow>)}
               </AnimatePresence>
+              </LayoutGroup>
             </ol>
             {!step.pending.length && <p>空</p>}
           </CardContent>
+          <Card.Footer className="learning-panel-controls flex-col items-stretch gap-2">
+            <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤 · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
+            <Slider aria-label="教学步骤" minValue={0} maxValue={trace.steps.length - 1} step={1} value={index}
+              onChange={value => changeStep(typeof value === 'number' ? value : value[0], false, true)}
+              onChangeEnd={value => onStepChange(typeof value === 'number' ? value : value[0])}>
+              <Slider.Track>
+                <Slider.Fill />
+                <Slider.Thumb data-testid="teaching-step-thumb" aria-label="教学步骤" aria-describedby={`${animationId}-step`} />
+              </Slider.Track>
+            </Slider>
+          </Card.Footer>
         </Card></section>
         <section aria-label="活动线段顺序" className="learning-panel learning-active"><Card className="learning-panel-card">
           <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('active')}>活动线段顺序</CardTitle><HelpButton topic="active">顺序说明</HelpButton></CardHeader>
           <CardContent ref={activePanel} className="learning-panel-content flex flex-col gap-1"><p className="text-sm text-muted">{step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
             <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-1">
+              <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:active:${navigation.reset}:${reducedMotion}`}>
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
                 {step.active.map(id => <LearningRow key={id} identity={`segment:${id}`}
                   existed={sources.includes(`segment:${id}`)} data-input-id={id} data-checked={checkedInputs.includes(id)} {...inputProps(id)}>S{id}</LearningRow>)}
               </AnimatePresence>
+              </LayoutGroup>
             </ol>{!step.active.length && <p>空</p>}</div>
           </CardContent>
+          <Card.Footer className="learning-panel-controls flex-wrap gap-2">
+            <Button variant="secondary" size="sm" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Chip color="accent" variant="soft" size="sm" aria-hidden="true">←</Chip></Button>
+            <Button variant="primary" size="sm" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true">→</Chip></Button>
+            <Button variant="tertiary" size="sm" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Chip color="accent" variant="soft" size="sm" aria-hidden="true">R</Chip></Button>
+          </Card.Footer>
         </Card></section>
       </aside>
-      </LayoutGroup>
     </div>
   </section>
 }

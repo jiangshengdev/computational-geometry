@@ -99,7 +99,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   })
 
   return <section className="drawing" aria-label="几何视图"><Card>
-    <Card.Header className="drawing-toolbar"><div><Card.Title render={props => <h2 {...props} />}>原始坐标平面 · 等比例</Card.Title><Card.Description>按钮缩放 · 拖动平移</Card.Description></div><ButtonGroup variant="tertiary" size="sm" aria-label="画布视图控制">
+    <Card.Header className="drawing-toolbar"><div><Card.Title render={props => <h2 {...props} />}>原始坐标平面 · 等比例</Card.Title></div><ButtonGroup variant="tertiary" size="sm" aria-label="画布视图控制">
       <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大">＋</Button>
       <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小"><ButtonGroup.Separator />−</Button>
       <Button onPress={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}><ButtonGroup.Separator />重置视图</Button>
@@ -203,6 +203,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     <Separator />
     <Card.Footer className="legend text-muted"><span>蓝色：输入</span><span>橙色：交集</span>
       {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
+      <span className="ml-auto whitespace-nowrap">按钮缩放 · 拖动平移</span>
     </Card.Footer>
   </Card></section>
 }
