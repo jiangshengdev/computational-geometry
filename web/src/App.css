@@ -4,9 +4,7 @@ main:not(.case-shell) > .viewer-header { margin-bottom: 24px; }
   main > .case-list { grid-template-columns: round(down, calc((100% - 16px) / 2), 1px) minmax(0, 1fr); }
 }
 .case-card { overflow-wrap: anywhere; }
-.case-thumbnail-link { width: min(100%, 240px); align-self: center; flex-shrink: 0; border-radius: var(--radius-2xl); }
-.case-thumbnail-link { width: round(down, min(100%, 240px), 4px); }
-.case-thumbnail-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+.case-thumbnail-link { width: round(down, calc(100% - 0px), 4px); max-width: 240px; align-self: center; flex-shrink: 0; border-radius: var(--radius-2xl); }
 .case-thumbnail { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius-2xl); background: var(--surface-secondary); }
 .case-card [data-slot="card-footer"] > a { flex-grow: 1; }
 @media (min-width: 640px) {
