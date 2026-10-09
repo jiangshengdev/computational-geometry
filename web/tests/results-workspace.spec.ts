@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { setReadingFont } from './reading-font'
+import { installCase, longResultsCase } from './scrolling-cases'
 
 for (const width of [1360, 390]) {
   test(`hover 高亮不改变文本尺寸 ${width}`, async ({ page }) => {
@@ -60,11 +60,9 @@ for (const width of [1360, 1920]) {
 
 test('结果工作区长内容独立滚动并保留末项和详情', async ({ page }) => {
   await page.setViewportSize({ width: 1100, height: 720 })
-  await page.goto('/cases/mixed-horizontal')
-  await expect(page.getByRole('radio').first()).toBeVisible()
-  // A larger default font is a real accessibility scenario, and makes both
-  // existing lists overflow without replacing the preset or the HTTP result.
-  await setReadingFont(page, 24)
+  await installCase(page, longResultsCase)
+  await page.goto(`/cases/${longResultsCase.id}`)
+  await expect(page.getByRole('radio')).toHaveCount(16)
   const canvas = page.getByRole('region', { name: '几何视图' })
   const details = page.getByRole('region', { name: '精确详情' })
   const before = await Promise.all([canvas, details].map(item => item.boundingBox()))

@@ -1,7 +1,7 @@
 import { expect, test, type Locator } from '@playwright/test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { setReadingFont } from './reading-font'
+import { installCase, scrollingCase } from './scrolling-cases'
 
 async function bounds(locator: Locator) {
   await expect(locator).toBeVisible()
@@ -35,10 +35,10 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 108
 
 test('学习工作区：真实溢出队列内部滚动不移动画布、操作和解释', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 720 })
-  await page.goto('/cases/multiway-endpoints/learn')
+  await installCase(page, scrollingCase)
+  await page.goto(`/cases/${scrollingCase.id}/learn`)
   const queue = page.getByRole('region', { name: '待处理事件队列' })
-  await expect(queue.getByRole('listitem')).toHaveCount(7)
-  await setReadingFont(page, 20)
+  await expect(queue.getByRole('listitem')).toHaveCount(30)
   const stable = [page.getByRole('region', { name: '几何视图' }), page.getByRole('region', { name: '操作解释' }), page.getByRole('button', { name: '下一步', exact: true })]
   const before = await Promise.all(stable.map(bounds))
   const scrollBefore = await page.evaluate(() => window.scrollY)

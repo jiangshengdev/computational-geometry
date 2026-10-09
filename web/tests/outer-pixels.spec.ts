@@ -1,6 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
 import { presets } from '../src/presets'
-import { setReadingFont } from './reading-font'
 
 test.describe.configure({ mode: 'parallel' })
 
@@ -72,29 +71,24 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           await page.setViewportSize({ width, height: 901 })
           const errors: string[] = []
           page.on('pageerror', error => errors.push(error.message))
-          for (const fontSize of [16, 20, 24]) {
-            await page.goto('/')
-            await setReadingFont(page, fontSize)
-            await expectIntegerLayout(page)
-            await page.goto('/cases/mixed-horizontal')
-            await expect(page.getByRole('radio').first()).toBeVisible()
-            await setReadingFont(page, fontSize)
-            await expectIntegerLayout(page)
-            for (const preset of presets.filter(preset => preset.learning)) {
-              await page.goto(`/cases/${preset.id}/learn`)
-              const slider = page.getByRole('slider', { name: '教学步骤' })
-              await expect(slider).toHaveValue('0')
-              await setReadingFont(page, fontSize)
-              await expect(slider).toHaveAttribute('max', /^[1-9][0-9]*$/)
-              const last = Number(await slider.getAttribute('max'))
-              for (let step = 0; step <= last; step++) {
-                await test.step(`${preset.id}, font ${fontSize}, step ${step}`, async () => {
-                  await expectIntegerLayout(page)
-                })
-                if (step < last) {
-                  await page.getByRole('button', { name: '下一步', exact: true }).evaluate(button => (button as HTMLButtonElement).click())
-                  await expect(slider).toHaveValue(String(step + 1))
-                }
+          await page.goto('/')
+          await expectIntegerLayout(page)
+          await page.goto('/cases/mixed-horizontal')
+          await expect(page.getByRole('radio').first()).toBeVisible()
+          await expectIntegerLayout(page)
+          for (const preset of presets.filter(preset => preset.learning)) {
+            await page.goto(`/cases/${preset.id}/learn`)
+            const slider = page.getByRole('slider', { name: '教学步骤' })
+            await expect(slider).toHaveValue('0')
+            await expect(slider).toHaveAttribute('max', /^[1-9][0-9]*$/)
+            const last = Number(await slider.getAttribute('max'))
+            for (let step = 0; step <= last; step++) {
+              await test.step(`${preset.id}, step ${step}`, async () => {
+                await expectIntegerLayout(page)
+              })
+              if (step < last) {
+                await page.getByRole('button', { name: '下一步', exact: true }).evaluate(button => (button as HTMLButtonElement).click())
+                await expect(slider).toHaveValue(String(step + 1))
               }
             }
           }

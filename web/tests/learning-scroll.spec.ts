@@ -1,22 +1,9 @@
 import { expect, test, type Locator, type Page } from '@playwright/test'
-import { formatPoint, samePoint, segment, type Preset, type SweepTrace } from '../src/geometry'
-
-// Enough independent rows to overflow at the normal reading size. Only the
-// bottom three segments intersect; the extra inputs do not add crossing events.
-const scrollingCase: Preset = {
-  id: 'scrolling-test', name: '滚动定位测试', description: '默认字号下的长列表。',
-  segments: [segment('-2', '-2', '2', '2'), segment('-2', '2', '2', '-2'), segment('-2', '0', '2', '0'),
-    ...Array.from({ length: 12 }, (_, i) => segment('-2', String(i + 10), '2', String(i + 10)))],
-  learning: { goal: '定位活动条目与新发现事件。', verification: '只有前三条线段在原点相交。' },
-}
+import { formatPoint, samePoint, type SweepTrace } from '../src/geometry'
+import { installCase, scrollingCase } from './scrolling-cases'
 
 test.beforeEach(async ({ page }) => {
-  // Add a test-only catalog entry to the browser's real module. Its normal UI
-  // still sends these segments through the real HTTP -> BO calculation path.
-  await page.route('**/src/presets.ts', async route => {
-    const response = await route.fetch()
-    await route.fulfill({ response, body: `${await response.text()}\npresets.push(${JSON.stringify(scrollingCase)});\n` })
-  })
+  await installCase(page, scrollingCase)
 })
 
 async function readTrace(page: Page, id: string) {

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Link, Route, Routes, useMatch, useNavigate, useParams, useSearchParams } from 'react-router'
+import { useEffect, useRef, useState } from 'react'
+import { Route, Routes, useMatch, useNavigate, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { CaseThumbnail } from './CaseThumbnail'
 import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
@@ -18,6 +18,7 @@ import { ToggleButton } from '@heroui/react/toggle-button'
 import { ToggleButtonGroup } from '@heroui/react/toggle-button-group'
 import { buttonVariants } from '@heroui/react/button'
 import { usePageShortcut } from './usePageShortcut'
+import { AppLink as Link } from './AppLink'
 
 type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace }
 
@@ -26,6 +27,19 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
   const [selected, setSelected] = useState<Intersection | null>(null)
   const [hover, setHover] = useState<HoverTarget | null>(null)
   const teachable = Boolean(preset.learning)
+  const detailsRef = useRef<HTMLElement>(null)
+  const [detailsScrollable, setDetailsScrollable] = useState(false)
+  useEffect(() => {
+    const element = detailsRef.current
+    if (!element) return
+    const measure = () => setDetailsScrollable(element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth)
+    const observer = new ResizeObserver(measure)
+    observer.observe(element)
+    // Content can grow without changing the constrained scrollport size.
+    for (const child of element.children) observer.observe(child)
+    measure()
+    return () => observer.disconnect()
+  }, [selected, learning])
   useEffect(() => {
     let current = true
     const controller = new AbortController()
@@ -93,7 +107,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
                     </ScrollShadow>}
                 </>}
             <Separator />
-            <section aria-label="精确详情" className="result-details flex min-w-0 flex-col gap-3" tabIndex={0}>
+            <section ref={detailsRef} aria-label="精确详情" className="result-details flex min-w-0 flex-col gap-3" tabIndex={detailsScrollable ? 0 : -1}>
               <Card.Title render={props => <h2 {...props} />}>精确详情</Card.Title>
               {selected ? <><h3 className="coordinates">{pairName(selected)}</h3><p className="coordinates">{formatGeometry(selected.geometry)}</p>
                 {selected.segments.map(i => <p key={i} className="coordinates">S{i}：{formatPoint(preset.segments[i].start)} → {formatPoint(preset.segments[i].end)}</p>)}
@@ -194,7 +208,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
         <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
         {learning
           ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>返回结果查看器</Link>
-          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">开始逐步学习<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true">→</Chip></Link>}
+          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">开始逐步学习<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true">→</Chip></Link>}
       </div>
     </div>
     <CaseViewer preset={preset} learning={learning} />

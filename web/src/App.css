@@ -28,6 +28,7 @@ main:not(.case-shell) > .viewer-header { margin-bottom: 24px; }
 .workspace-panel [data-slot="card-content"] { min-height: 0; overflow: auto; overscroll-behavior: contain; overflow-wrap: anywhere; }
 .pair-scroll { max-height: 240px; overflow: auto; overscroll-behavior: contain; }
 .result-details { overflow: auto; overscroll-behavior: contain; }
+.result-details:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .drawing { min-width: 0; container-type: inline-size; }
 /* CSS owns the surface size; the SVG consumes it without sizing its parent. */
 .drawing-surface { flex: none; height: max(240px, round(nearest, calc((100cqw - 32px) * 460 / 800), 1px)); min-height: 0; overflow: hidden; }
