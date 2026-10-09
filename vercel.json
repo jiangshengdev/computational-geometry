@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npx --yes pnpm@11.8.0 --dir web install --frozen-lockfile",
+  "buildCommand": "npx --yes pnpm@11.8.0 --dir web build",
+  "outputDirectory": "web/dist",
+  "routes": [
+    { "src": "/api(?:/.*)?", "dest": "/api/axum" },
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
+}

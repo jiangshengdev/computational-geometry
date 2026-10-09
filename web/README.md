@@ -19,7 +19,21 @@ cd web
 pnpm dev --host 127.0.0.1
 ```
 
-打开 Vite 输出的地址。服务默认只监听 `127.0.0.1:3001`。可用 `BO_PORT` 改服务端口，并用 `BO_API_URL` 配置 Vite 代理的服务地址。修改 Rust 后必须重新构建并重启服务；修改前端会由 Vite 更新。网页的 `/api` 请求通过 Vite 同源代理转发。静态部署时需要另行配置该代理，`vite preview` 不是本地服务的替代品。
+打开 Vite 输出的地址。服务默认只监听 `127.0.0.1:3001`。可用 `BO_PORT` 改服务端口，并用 `BO_API_URL` 配置 Vite 代理的服务地址。修改 Rust 后必须重新构建并重启服务；修改前端会由 Vite 更新。网页的 `/api` 请求通过 Vite 同源代理转发。`vite preview` 不是本地服务的替代品。
+
+## Vercel：通过 GitHub 部署
+
+前后端部署为一个 Vercel 项目。Rust 入口参考 [Vercel 官方 Axum 模板](https://github.com/vercel/examples/tree/main/rust/axum)，使用 `VercelLayer` 调用现有 `computational_geometry::http::router()`。本地监听端口的入口仍为 `src/main.rs`，算法和 HTTP 契约共用同一实现。
+
+在 Vercel 导入对应 GitHub 仓库时：
+
+- Root Directory 选择仓库根目录（不要选择 `web`）。
+- Framework Preset 选择 **Other**；安装、构建命令和输出目录使用根目录 `vercel.json`。
+- Node.js 选择 **24.x**。云端安装步骤使用固定的 pnpm `11.8.0` 和现有 lockfile。
+
+Vercel 构建 `api/axum.rs` 为 Rust Function，并将 `web/dist` 发布为静态资源。`/api` 和 `/api/*` 优先交给 Rust，未知 API 保持 HTTP 404；其余路径优先匹配静态文件，再回退到 `index.html`，支持直接打开或刷新案例和教学页面。浏览器继续使用同源 `/api/intersections`，无需设置 `BO_API_URL`。
+
+GitHub 接入后的首次 Preview 部署需检查：案例页直接访问和刷新正常、JS/CSS 能加载、`POST /api/intersections` 返回 JSON、非法输入返回 400、未知 API 返回 404。Rust Runtime 目前为 Beta；本地检查不替代 Vercel 云端构建和路由验收。
 
 ## HTTP 契约
 
