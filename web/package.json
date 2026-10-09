@@ -9,7 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "typecheck": "tsc -b",
-    "test:e2e": "cargo test --offline --manifest-path ../Cargo.toml --test web_e2e -- --nocapture"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@heroui/react": "3.2.6",

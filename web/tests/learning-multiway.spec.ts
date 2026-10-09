@@ -25,7 +25,7 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   await page.goto('/cases/crossing')
-  await expect(page).toHaveURL('http://127.0.0.1:4173/cases/crossing')
+  await expect(page).toHaveURL('/cases/crossing')
   await expect(page).toHaveTitle('BO 结果查看器')
   await selectPreset(page, example.name)
   await page.getByRole('link', { name: '开始逐步学习' }).click()

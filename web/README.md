@@ -44,19 +44,49 @@ pnpm dev --host 127.0.0.1
 
 ## 验证
 
+在仓库根目录一键运行全部检查：
+
+```sh
+just check
+```
+
+只运行端到端测试，或筛选用例：
+
+```sh
+just test-e2e
+just test-e2e --grep 普通交叉
+```
+
+这两个入口由使用者运行。根目录 `playwright.config.ts` 负责联合编排：通过 `cargo run --offline` 构建并启动后端，使用系统分配的临时端口，等待后端输出监听地址后通过 `BO_API_URL` 传给前端，再运行无头 Playwright。测试结束、失败或中断时由 Playwright 清理其启动的服务进程；不占用已有开发后端的端口。
+
+Rust 测试独立运行，不依赖 Node.js、pnpm 或浏览器。在仓库根目录执行：
+
+```sh
+just test
+```
+
+前端类型检查和 lint：
+
 ```sh
 cd web
 pnpm typecheck
 pnpm lint
+```
+
+浏览器 E2E 直接运行 Playwright，通过 HTTP 连接独立启动的后端。先按“本地使用”启动后端，然后在 `web` 目录执行：
+
+```sh
 pnpm test:e2e
 ```
 
-`test:e2e` 运行普通 Rust 集成测试：绑定临时回环端口，启动真实 Axum router，然后运行无头 Playwright。Playwright 启动独占的 Vite 测试服务（端口 4173），结束后关闭；不调用 `cargo build` 或 `cargo run`。需要已安装 `@playwright/test` 及匹配的 Chromium。
+前端测试不调用 Cargo，也不管理后端进程。默认连接 `http://127.0.0.1:3001`，可通过 `BO_API_URL` 指定后端地址。Playwright 以 `--port 0` 启动独占的 Vite 测试服务，捕获实际地址作为测试的 `baseURL`，结束后关闭。一键 E2E 的前后端均使用系统分配的临时端口，不占用开发后端的 `3001`、Vite 开发服务的 `5173` 或 preview 的 `4173`。需要已安装 `@playwright/test` 及匹配的 Chromium。
 
-在仓库根目录运行 `cargo test --offline` 包含原有算法测试及上述完整浏览器通路。`BO_E2E_GREP` 可筛选 Playwright 测试，例如：
+使用 Playwright 原生参数筛选测试，例如在 `web` 目录执行：
 
 ```sh
-BO_E2E_GREP=普通交叉 cargo test --offline --test web_e2e -- --nocapture
+pnpm test:e2e --grep 普通交叉
 ```
+
+`web` 内的命令只负责前端，使用已有后端；根目录的入口负责自动启动和清理后端。`just check` 显式汇总类型检查、lint、Rust 测试和 E2E，无需手动启动后端。
 
 测试采用独立数学预期核对 HTTP 输出、配对身份和选择联动；受控响应仅用于错误及迟到响应测试。截图和测试产物写入系统临时目录，不作为算法正确性证明。

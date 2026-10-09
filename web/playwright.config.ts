@@ -6,10 +6,10 @@ export default defineConfig({
   testDir: './tests',
   outputDir: join(tmpdir(), 'computational-geometry-playwright'),
   reporter: 'list',
-  use: { baseURL: 'http://127.0.0.1:4173', headless: true },
+  use: { headless: true },
   webServer: {
-    command: 'pnpm exec vite --host 127.0.0.1 --port 4173 --strictPort',
-    url: 'http://127.0.0.1:4173',
-    reuseExistingServer: false,
+    command: 'pnpm exec vite --host 127.0.0.1 --port 0 --strictPort',
+    // Playwright passes this captured URL to its baseURL fixture.
+    wait: { stdout: /Local:\s+(?<PLAYWRIGHT_TEST_BASE_URL>http:\/\/127\.0\.0\.1:\d+\/)/ },
   },
 })

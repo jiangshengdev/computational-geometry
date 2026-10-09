@@ -116,7 +116,7 @@ for (const source of ['list', 'detail']) {
     }
     await expect(page.getByRole('region', { name: '操作解释' })).toContainText('发现未来交点 I0 (2, 2)')
     await page.goBack()
-    await expect(page).toHaveURL(`http://127.0.0.1:4173${source === 'list' ? '/' : '/cases/crossing'}`)
+    await expect(page).toHaveURL(source === 'list' ? '/' : '/cases/crossing')
     if (source === 'list') await expect(page.getByRole('region', { name: '案例列表' })).toBeVisible()
     else await expect(page.getByRole('region', { name: '原始输入' })).toBeVisible()
     await page.goForward()
@@ -158,7 +158,7 @@ test('教学步骤 URL：错误页详情和列表恢复入口实际导航', asyn
   await page.goBack()
   await expect(page.getByRole('alert')).toContainText('教学步骤参数无效')
   await page.getByRole('link', { name: '返回列表', exact: true }).click()
-  await expect(page).toHaveURL('http://127.0.0.1:4173/')
+  await expect(page).toHaveURL('/')
   await expect(page.getByRole('region', { name: '案例列表' })).toBeVisible()
 })
 
@@ -225,7 +225,7 @@ for (const late of ['success', 'failure']) for (const destination of ['valid', '
     else await expect(page.getByRole('alert')).toContainText('教学步骤超出范围')
     release()
     await Promise.all(pending)
-    await expect(page).toHaveURL(`http://127.0.0.1:4173/cases/crossing/learn?step=${step}`)
+    await expect(page).toHaveURL(`/cases/crossing/learn?step=${step}`)
     if (destination === 'valid') {
       await expectStep(page, 2)
       await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
