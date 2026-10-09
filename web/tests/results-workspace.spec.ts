@@ -34,7 +34,7 @@ for (const width of [1360, 1920]) {
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
     await page.goto('/cases/mixed-horizontal')
     await expect(page.getByRole('radio').first()).toBeVisible()
-    await expect(page).toHaveTitle('BO 结果查看器')
+    await expect(page).toHaveTitle('重叠、交叉与重合点 · 计算结果 · BO 结果查看器')
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     const inputs = page.getByRole('region', { name: '原始输入', exact: true })
     const canvas = page.getByRole('region', { name: '几何视图', exact: true })

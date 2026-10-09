@@ -10,7 +10,7 @@ for (const preset of ['crossing', 'disjoint']) {
     page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
     await page.goto('/cases/crossing')
     await expect(page).toHaveURL('/cases/crossing')
-    await expect(page).toHaveTitle('BO 结果查看器')
+    await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
     await selectPreset(page, preset)
     await page.getByRole('link', { name: '开始逐步学习' }).click()
     const slider = page.getByRole('slider', { name: '教学步骤' })

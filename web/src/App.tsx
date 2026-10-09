@@ -22,6 +22,12 @@ import { AppLink as Link } from './AppLink'
 
 type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace }
 
+function PageTitle({ page, preset }: { page: string; preset?: Preset }) {
+  const title = `${preset ? `${preset.name} · ` : ''}${page} · BO 结果查看器`
+  useEffect(() => { document.title = title }, [title])
+  return null
+}
+
 function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean }) {
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
   const [selected, setSelected] = useState<Intersection | null>(null)
@@ -64,6 +70,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
   const results = computation.status === 'ready' ? computation.results : []
   const highlights = hover ? hoverHighlights(hover, results) : null
   if (learning) return <>
+    {computation.status !== 'ready' && <PageTitle page="逐步学习" preset={preset} />}
     {computation.status === 'loading'
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
       : computation.status === 'error'
@@ -71,6 +78,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
         : computation.trace && <LearningPage preset={preset} trace={computation.trace} results={results} />}
   </>
   return <>
+    <PageTitle page="计算结果" preset={preset} />
     <div className="workspace result-workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
       <aside className="workspace-panel result-panel" aria-label="计算结果">
@@ -134,6 +142,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
 
 function CaseList() {
   return <section aria-label="案例列表" className="case-list grid gap-4">
+    <PageTitle page="案例列表" />
     {presets.map(preset => <article key={preset.id} aria-labelledby={`case-${preset.id}`}>
       <Card className="case-card h-full items-stretch">
         <Link className="case-thumbnail-link" to={`/cases/${preset.id}`} aria-label={`查看${preset.name}详情`}>
@@ -166,7 +175,7 @@ function LearningPage({ preset, trace, results }: { preset: Preset; trace: Sweep
   if (!Number.isSafeInteger(index) || index >= trace.steps.length) {
     return <RouteError message={`教学步骤超出范围：此案例的有效步骤为 0–${trace.steps.length - 1}。`} preset={preset} showListLink={false} />
   }
-  return <LearningView preset={preset} trace={trace} results={results}
+  return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace} results={results}
     index={preview?.search === search ? preview.index : index}
     onStepPreview={next => setPreview({ search, index: next })} onStepChange={next => {
     setPreview(null)
@@ -174,11 +183,12 @@ function LearningPage({ preset, trace, results }: { preset: Preset; trace: Sweep
     const updated = new URLSearchParams(search)
     updated.set('step', String(next))
     setSearch(updated, { replace: true })
-  }} />
+  }} /></>
 }
 
 function RouteError({ message, preset, showListLink = true }: { message: string; preset?: Preset; showListLink?: boolean }) {
   return <section className="flex flex-col gap-4">
+    <PageTitle page={preset ? `链接无效 · ${preset.name}` : '链接无效'} />
     <Alert status="danger" role="alert"><Alert.Content><Alert.Title>链接无效</Alert.Title><Alert.Description>{message}</Alert.Description></Alert.Content></Alert>
     <nav aria-label="恢复导航" className="flex flex-wrap gap-3">
       {showListLink && <Link className={buttonVariants({ variant: 'outline' })} to="/">返回列表</Link>}

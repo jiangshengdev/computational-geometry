@@ -98,7 +98,7 @@ test('缩放平移保持等比例几何及选中精确详情，桌面和手机�
   page.on('console', message => { if (message.type() === 'error' || message.type() === 'warning') errors.push(message.text()) })
   await page.setViewportSize({ width: 1360, height: 900 })
   await page.goto('/cases/crossing')
-  await expect(page).toHaveTitle('BO 结果查看器')
+  await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
   const input = page.getByRole('img', { name: '输入 S0，已选中' })

@@ -47,7 +47,7 @@ for (const width of [1360, 390]) test(`并列教学：同横坐标不同位置�
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   await page.goto('/cases/crossing')
-  await expect(page).toHaveTitle('BO 结果查看器')
+  await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   await selectPreset(page, '同扫描坐标不同交点')
   await page.getByRole('link', { name: '开始逐步学习' }).click()

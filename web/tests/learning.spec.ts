@@ -117,7 +117,7 @@ test('入门学习：桌面与手机的图形、队列、操作解释同步且�
   for (const viewport of [{ width: 1360, height: 1000 }, { width: 390, height: 844 }]) {
     await page.setViewportSize(viewport)
     await page.goto('/cases/crossing')
-    await expect(page).toHaveTitle('BO 结果查看器')
+    await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     await page.getByRole('link', { name: '开始逐步学习' }).click()
     do {

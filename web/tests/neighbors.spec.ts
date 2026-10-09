@@ -70,7 +70,7 @@ for (const width of [1360, 390]) {
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
     await page.goto('/cases/crossing')
-    await expect(page).toHaveTitle('BO 结果查看器')
+    await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
     await selectPreset(page, 'neighbor-crossing')
     await page.getByRole('link', { name: '开始逐步学习' }).click()
     await page.getByRole('button', { name: '相邻性说明', exact: true }).click()

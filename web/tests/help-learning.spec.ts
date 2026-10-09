@@ -9,7 +9,7 @@ for (const width of [1360, 390]) test(`教学帮助：动态内容默认展示�
   await page.setViewportSize({ width, height: 1000 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/cases/crossing/learn?step=3')
-  await expect(page).toHaveTitle('BO 结果查看器')
+  await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('3')
   for (const name of ['几何视图', '当前事件', '待处理事件队列', '活动线段顺序', '同点参与线段', '操作解释']) {
     await expect(page.getByRole('region', { name, exact: true })).toBeVisible()

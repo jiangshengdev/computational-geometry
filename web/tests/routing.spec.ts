@@ -6,7 +6,7 @@ test('预览快捷键：右方向键进入教程，长按不跳过初始步骤',
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   await page.goto('/cases/crossing')
-  await expect(page).toHaveTitle('BO 结果查看器')
+  await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toHaveAttribute('aria-keyshortcuts', 'ArrowRight')
   for (const modifier of ['Control', 'Meta', 'Alt', 'Shift']) {
@@ -71,7 +71,7 @@ for (const width of [1360, 390]) {
     page.on('request', request => { if (request.url().endsWith('/api/intersections')) requests.push(request.url()) })
     await page.setViewportSize({ width, height: 900 })
     await page.goto('/')
-    await expect(page).toHaveTitle('BO 结果查看器')
+    await expect(page).toHaveTitle('案例列表 · BO 结果查看器')
     await expect(page.getByRole('article')).toHaveCount(presets.length)
     await expect(page.getByRole('region', { name: '原始输入' })).toHaveCount(0)
     await expect(page.getByRole('region', { name: '逐步学习' })).toHaveCount(0)
