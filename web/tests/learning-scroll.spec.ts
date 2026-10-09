@@ -38,6 +38,9 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     await page.goto(`/cases/multiway-interior/learn?step=${prior}`)
     const slider = page.getByRole('slider', { name: '教学步骤' })
     await expect(slider).toHaveValue(String(prior))
+    // The wider workspace fits this list at the default size; large text
+    // exercises the same real scrolling behavior without constraining its DOM.
+    await setReadingFont(page, 24)
     const active = page.getByRole('region', { name: '活动线段顺序' })
     const row = active.getByRole('listitem').filter({ hasText: `S${trace.steps[target].subjects[0]}` })
     expect((await scrollPanel(row, false)).overflow).toBeGreaterThan(0)
@@ -76,6 +79,7 @@ test('教学定位：点击滑块轨道跨多步跳转后定位目标而非来�
   await page.goto(`/cases/multiway-interior/learn?step=${prior}`)
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveValue(String(prior))
+  await setReadingFont(page, 24)
   const row = page.getByRole('region', { name: '活动线段顺序' }).getByRole('listitem').filter({ hasText: `S${subject}` })
   expect((await scrollPanel(row, false)).overflow).toBeGreaterThan(0)
   expect(await visibilityInPanel(row)).toBe(false)

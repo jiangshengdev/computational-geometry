@@ -11,7 +11,7 @@ async function bounds(locator: Locator) {
 }
 
 for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 1080 }]) {
-  test(`学习工作区：${viewport.width} 三栏核心区域同时可见`, async ({ page }, testInfo) => {
+  test(`学习工作区：${viewport.width} 画布与核心区域同时可见`, async ({ page }, testInfo) => {
     await page.setViewportSize(viewport)
     await page.goto('/cases/multiway-endpoints/learn')
     const regions = ['当前事件', '同点参与线段', '几何视图', '待处理事件队列', '活动线段顺序', '操作解释']
@@ -28,15 +28,14 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 108
     expect(current.y).toBe(canvas.y)
     expect(current.y + current.height).toBeLessThan(queue.y)
     expect(queue.y + queue.height).toBeCloseTo(explanation.y + explanation.height, 0)
-    expect(participants.x + participants.width).toBeLessThan(canvas.x)
     expect(canvas.x + canvas.width).toBeLessThan(queue.x)
     expect(canvas.x + canvas.width).toBeLessThan(active.x)
-    expect(explanation.x).toBe(participants.x)
-    expect(explanation.width).toBe(participants.width)
-    expect(explanation.y).toBe(canvas.y)
-    expect(canvas.y + canvas.height).toBeCloseTo(participants.y + participants.height, 0)
-    expect(canvas.y + canvas.height).toBeCloseTo(active.y + active.height, 0)
-    expect(explanation.y + explanation.height).toBeLessThan(participants.y)
+    expect(explanation.x).toBe(canvas.x)
+    expect(explanation.width).toBe(canvas.width)
+    expect(explanation.y).toBeGreaterThan(canvas.y + canvas.height)
+    expect(participants.x).toBe(active.x)
+    expect(participants.y).toBe(current.y)
+    expect(queue.y).toBe(active.y)
     for (const control of [page.getByRole('button', { name: '下一步', exact: true }), page.getByRole('group', { name: '教学步骤', exact: true })]) {
       const box = await bounds(control)
       expect(box.y).toBeGreaterThanOrEqual(0)

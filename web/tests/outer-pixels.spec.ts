@@ -9,7 +9,7 @@ async function expectIntegerLayout(page: Page) {
     await document.fonts.ready
     await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
   })
-  const fractional = await page.locator('main, main > *, .case-list > article, .workspace, .workspace > :not(.learning-state-panels), .learning-view')
+  const fractional = await page.locator('main, main > *, .case-list > article, .workspace, .workspace > :not(.learning-state-panels), .learning-view, .learning-workspace, .learning-workspace > *, .learning-panel')
     .evaluateAll(elements => elements.flatMap(element => {
       const rect = element.getBoundingClientRect()
       const values = { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height }

@@ -2,7 +2,8 @@ import { Fragment, useEffect, useEffectEvent, useId, useRef, useState } from 're
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@heroui/react/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@heroui/react/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@heroui/react/card'
+import { Kbd } from '@heroui/react/kbd'
 import { Slider } from '@heroui/react/slider'
 import { hoverHighlights, type HoverTarget } from './hover'
 import { AnimatePresence, LayoutGroup } from 'motion/react'
@@ -137,11 +138,12 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   }, [])
   const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
-  return <section aria-label="逐步学习" className="learning-view flex flex-col gap-3">
-    <div className="flex flex-wrap items-center gap-3">
-      <Button variant="outline" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<kbd aria-hidden="true">←</kbd></Button>
-      <Button onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<kbd aria-hidden="true">→</kbd></Button>
-      <Button variant="outline" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<kbd aria-hidden="true">R</kbd></Button>
+  return <section aria-label="逐步学习" className="learning-view">
+    <Card className="learning-controls"><CardContent className="learning-controls-content">
+    <div className="flex flex-wrap items-center gap-2">
+      <Button variant="secondary" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Kbd aria-hidden="true"><Kbd.Content>←</Kbd.Content></Kbd></Button>
+      <Button variant="primary" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Kbd aria-hidden="true"><Kbd.Content>→</Kbd.Content></Kbd></Button>
+      <Button variant="tertiary" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Kbd aria-hidden="true"><Kbd.Content>R</Kbd.Content></Kbd></Button>
     </div>
     <div className="flex flex-col gap-2">
       <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤 · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
@@ -154,66 +156,18 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
         </Slider.Track>
       </Slider>
     </div>
-    <div className="workspace learning-workspace">
+    </CardContent></Card>
+    <div className="learning-workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null}
         highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights ?? (recordedOverlap ? hoverHighlights({ kind: 'pair', pair: pairName(recordedOverlap) }, step.results) : null)} onHover={setHover}
         sweep={{ current: step.current, active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
-      <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
-      <aside className="learning-state-panels">
-        <div className="learning-event-panels">
-        <section aria-label="当前事件" className="workspace-panel learning-current"><Card>
-          <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />}>当前事件</CardTitle><HelpButton topic="ties">事件说明</HelpButton></CardHeader>
-          <CardContent ref={currentPanel} className="relative flex flex-col gap-2"><p>{phase}</p>
-            <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
-              {step.current && <LearningRow as="p" key={formatPoint(step.current)} identity={`event:${formatPoint(step.current)}`}
-                existed={sources.includes(`event:${formatPoint(step.current)}`)} data-event-id={formatPoint(step.current)} {...eventProps(step.current)}>{pointName(step.current)}</LearningRow>}
-            </AnimatePresence>
-            {!step.current && <p>尚未处理事件</p>}
-          </CardContent>
-        </Card></section>
-        <section aria-label="待处理事件队列" className="workspace-panel learning-pending"><Card>
-          <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('pending')}>待处理事件队列</CardTitle><HelpButton topic="events">队列说明</HelpButton></CardHeader>
-          <CardContent ref={pendingPanel}>
-            <ol className="relative flex list-inside list-decimal flex-col gap-2">
-              <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
-                {step.pending.map(p => <LearningRow key={formatPoint(p)} identity={`event:${formatPoint(p)}`}
-                  existed={sources.includes(`event:${formatPoint(p)}`)} data-event-id={formatPoint(p)} {...eventProps(p)}>{pointName(p)}</LearningRow>)}
-              </AnimatePresence>
-            </ol>
-            {!step.pending.length && <p>空</p>}
-          </CardContent>
-        </Card></section>
-        </div>
-        <section aria-label="活动线段顺序" className="workspace-panel learning-active"><Card>
-          <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('active')}>活动线段顺序</CardTitle><HelpButton topic="active">顺序说明</HelpButton></CardHeader>
-          <CardContent ref={activePanel} className="flex flex-col gap-2"><p className="text-sm text-muted">{step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
-            <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-2">
-              <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
-                {step.active.map(id => <LearningRow key={id} identity={`segment:${id}`}
-                  existed={sources.includes(`segment:${id}`)} data-input-id={id} data-checked={checkedInputs.includes(id)} {...inputProps(id)}>S{id}</LearningRow>)}
-              </AnimatePresence>
-            </ol>{!step.active.length && <p>空</p>}</div>
-          </CardContent>
-        </Card></section>
-      </aside>
-      </LayoutGroup>
-    <section aria-label="同点参与线段" className="workspace-panel learning-participants"><Card>
-      <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />}>同点参与线段</CardTitle><HelpButton topic="ties">同点说明</HelpButton></CardHeader>
-      <CardContent ref={participantsPanel} className="flex flex-col gap-2">
-        {step.current ? <>
-          <p>开始：{step.starts.length ? inputReferences(step.starts, '、') : '无'}</p>
-          <p>结束：{step.ends.length ? inputReferences(step.ends, '、') : '无'}</p>
-          <p>穿过：{step.passes.length ? inputReferences(step.passes, '、') : '无'}</p>
-        </> : <p>取出事件后显示同点参与者。</p>}
-      </CardContent>
-    </Card></section>
-    <section aria-label="操作解释" aria-live="polite" className="workspace-panel learning-explanations"><Card>
-      <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2"><CardTitle render={props => <h2 {...props} />}>这一步为什么这样做？</CardTitle><div className="flex flex-wrap gap-2">
+    <section aria-label="操作解释" aria-live="polite" className="learning-panel learning-explanations"><Card className="learning-panel-card">
+      <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><div><CardTitle render={props => <h2 {...props} />}>这一步为什么这样做？</CardTitle><CardDescription>结合画布与各项状态，理解当前教学动作。</CardDescription></div><div className="flex flex-wrap gap-2">
         <HelpButton topic="neighbors">相邻性说明</HelpButton>
         {trace.shear.numerator !== '0' && <HelpButton topic="vertical">竖直线说明</HelpButton>}
         {overlaps.length > 0 && <HelpButton topic="overlap">重叠说明</HelpButton>}
       </div></CardHeader>
-      <CardContent ref={explanationPanel} className="flex flex-col gap-2">
+      <CardContent ref={explanationPanel} className="learning-panel-content flex flex-col gap-2">
         {step.action === 'initial' && <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步取出最早事件。</p>}
         {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
         {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。'}接下来检查新邻居是否会在未来相交。</p>}
@@ -230,7 +184,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
           <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span>
         </Fragment>)}</span>：检查 <span className="coordinates">{subjects}</span> 的精确交集后加入队列，等扫描线到达再记录结果。</p>}
         {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{before.action === 'check' ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
-    {complete && <section aria-label="学习结果"><Card>
+    {complete && <section aria-label="学习结果"><Card variant="transparent">
       <CardHeader><CardTitle render={props => <h2 {...props} />}>学习完成</CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，所有线段已退出。</p>
         {overlaps.length ? <p>孤立点结果位置：{points.length}；重叠区间：{visibleOverlaps.length}；相交线段对：{step.results.length}。区间包含无穷多个公共点，不能用孤立交点数量表示。</p> : <p>独立交点位置：{points.length}；相交线段对：{step.results.length}。同一位置可由多个线段对共享。</p>}
@@ -242,6 +196,53 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
     </Card></section>}
       </CardContent>
     </Card></section>
+      <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:${navigation.reset}:${reducedMotion}`}>
+      <aside className="learning-state-panels">
+        <section aria-label="当前事件" className="learning-panel learning-current"><Card className="learning-panel-card">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><div><CardTitle render={props => <h2 {...props} />}>当前事件</CardTitle><CardDescription>{phase}</CardDescription></div><HelpButton topic="ties">事件说明</HelpButton></CardHeader>
+          <CardContent ref={currentPanel} className="learning-panel-content relative flex flex-col gap-2">
+            <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
+              {step.current && <LearningRow as="p" key={formatPoint(step.current)} identity={`event:${formatPoint(step.current)}`}
+                existed={sources.includes(`event:${formatPoint(step.current)}`)} data-event-id={formatPoint(step.current)} {...eventProps(step.current)}>{pointName(step.current)}</LearningRow>}
+            </AnimatePresence>
+            {!step.current && <p>尚未处理事件</p>}
+          </CardContent>
+        </Card></section>
+        <section aria-label="同点参与线段" className="learning-panel learning-participants"><Card className="learning-panel-card">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />}>同点参与线段</CardTitle><HelpButton topic="ties">同点说明</HelpButton></CardHeader>
+          <CardContent ref={participantsPanel} className="learning-panel-content flex flex-col gap-2">
+            {step.current ? <>
+              <p>开始：{step.starts.length ? inputReferences(step.starts, '、') : '无'}</p>
+              <p>结束：{step.ends.length ? inputReferences(step.ends, '、') : '无'}</p>
+              <p>穿过：{step.passes.length ? inputReferences(step.passes, '、') : '无'}</p>
+            </> : <p>取出事件后显示同点参与者。</p>}
+          </CardContent>
+        </Card></section>
+        <section aria-label="待处理事件队列" className="learning-panel learning-pending"><Card className="learning-panel-card">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('pending')}>待处理事件队列</CardTitle><HelpButton topic="events">队列说明</HelpButton></CardHeader>
+          <CardContent ref={pendingPanel} className="learning-panel-content">
+            <ol className="relative flex list-inside list-decimal flex-col gap-2">
+              <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
+                {step.pending.map(p => <LearningRow key={formatPoint(p)} identity={`event:${formatPoint(p)}`}
+                  existed={sources.includes(`event:${formatPoint(p)}`)} data-event-id={formatPoint(p)} {...eventProps(p)}>{pointName(p)}</LearningRow>)}
+              </AnimatePresence>
+            </ol>
+            {!step.pending.length && <p>空</p>}
+          </CardContent>
+        </Card></section>
+        <section aria-label="活动线段顺序" className="learning-panel learning-active"><Card className="learning-panel-card">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('active')}>活动线段顺序</CardTitle><HelpButton topic="active">顺序说明</HelpButton></CardHeader>
+          <CardContent ref={activePanel} className="learning-panel-content flex flex-col gap-2"><p className="text-sm text-muted">{step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
+            <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-2">
+              <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
+                {step.active.map(id => <LearningRow key={id} identity={`segment:${id}`}
+                  existed={sources.includes(`segment:${id}`)} data-input-id={id} data-checked={checkedInputs.includes(id)} {...inputProps(id)}>S{id}</LearningRow>)}
+              </AnimatePresence>
+            </ol>{!step.active.length && <p>空</p>}</div>
+          </CardContent>
+        </Card></section>
+      </aside>
+      </LayoutGroup>
     </div>
   </section>
 }

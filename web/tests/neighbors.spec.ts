@@ -24,7 +24,7 @@ test('相邻检测：删除中间线段后发现交点并可重现', async ({ pa
     let discovered = false
     while (await next.isEnabled()) {
       await next.click()
-      const text = await explanation.getByRole('paragraph').first().innerText()
+      const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
       const event = await current.locator('.coordinates:not([aria-hidden="true"])').innerText()
       if (event === 'S2 起点 (2, 8)' && (await current.innerText()).includes('处理完成')) {
         await expect(active).toHaveText('S0S1S2')
@@ -93,7 +93,7 @@ for (const width of [1360, 390]) {
     // are (3,3) and (6,6); the horizontal lines do not intersect.
     while (await next.isEnabled()) {
       await next.click()
-      const text = await explanation.getByRole('paragraph').first().innerText()
+      const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
       const event = await current.locator('.coordinates:not([aria-hidden="true"])').innerText()
       if (text.startsWith('检查相邻线段 S0 × S1')) {
         await expect(explanation).toContainText('加入 S1 后')
