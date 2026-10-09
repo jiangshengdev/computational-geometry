@@ -3,7 +3,7 @@ import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@heroui/react/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@heroui/react/card'
-import { Kbd } from '@heroui/react/kbd'
+import { Chip } from '@heroui/react/chip'
 import { Slider } from '@heroui/react/slider'
 import { hoverHighlights, type HoverTarget } from './hover'
 import { AnimatePresence, LayoutGroup } from 'motion/react'
@@ -141,9 +141,9 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   return <section aria-label="逐步学习" className="learning-view">
     <Card className="learning-controls"><CardContent className="learning-controls-content">
     <div className="flex flex-wrap items-center gap-2">
-      <Button variant="secondary" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Kbd aria-hidden="true"><Kbd.Content>←</Kbd.Content></Kbd></Button>
-      <Button variant="primary" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Kbd aria-hidden="true"><Kbd.Content>→</Kbd.Content></Kbd></Button>
-      <Button variant="tertiary" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Kbd aria-hidden="true"><Kbd.Content>R</Kbd.Content></Kbd></Button>
+      <Button variant="secondary" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Chip color="accent" variant="soft" size="sm" aria-hidden="true">←</Chip></Button>
+      <Button variant="primary" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true">→</Chip></Button>
+      <Button variant="tertiary" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Chip color="accent" variant="soft" size="sm" aria-hidden="true">R</Chip></Button>
     </div>
     <div className="flex flex-col gap-2">
       <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤 · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>

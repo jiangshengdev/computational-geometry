@@ -187,7 +187,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
         <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
         {learning
           ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>返回结果查看器</Link>
-          : preset.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>开始逐步学习</Link>}
+          : preset.learning && <Link className={buttonVariants({ size: 'sm' })} to={`/cases/${preset.id}/learn`}>开始逐步学习</Link>}
       </div>
     </div>
     <CaseViewer preset={preset} learning={learning} />
@@ -205,7 +205,5 @@ export default function App() {
       <Route path="/cases/:caseId/*" element={<CasePage unknownPath />} />
       <Route path="*" element={<RouteError message="未知页面路径。" />} />
     </Routes>
-    <Separator className="mt-6" />
-    <footer className="pt-4 text-xs text-muted">每个输入保留独立身份。配对数不是独立几何交点数；图形仅作人工辅助校验。</footer>
   </main>
 }
