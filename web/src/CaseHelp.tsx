@@ -1,5 +1,6 @@
 import { useContext, useId, useRef, useState, type ReactNode } from 'react'
 import { Button } from '@heroui/react/button'
+import { Description } from '@heroui/react/description'
 import { Label } from '@heroui/react/label'
 import { Modal } from '@heroui/react/modal'
 import { Radio } from '@heroui/react/radio'
@@ -39,6 +40,7 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
     availableTopics.push({ id: 'vertical', title: '竖直线处理规则', content: <VerticalRules /> })
   }
   if (preset.id === 'partial-overlap') availableTopics.push({ id: 'overlap', title: '重叠处理规则', content: <OverlapRules /> })
+  const selectedTopic = availableTopics.find(item => item.id === topic) ?? availableTopics[0]
   return <HelpContext value={(next, element) => {
     // Record the actual opener in Modal's focus scope, including touch activation.
     element.focus({ preventScroll: true })
@@ -48,28 +50,32 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
     {children}
     <Modal.Backdrop isOpen={open} onOpenChange={setOpen}>
       <Modal.Container size="lg" scroll="inside">
-      <Modal.Dialog className="max-h-[90dvh]" aria-describedby={descriptionId}>
+      <Modal.Dialog aria-describedby={descriptionId}>
         <Modal.Header>
-          <div className="flex items-center justify-between gap-3">
-            <Modal.Heading>说明与帮助</Modal.Heading>
-            <Button slot="close" variant="outline" size="sm">关闭帮助</Button>
-          </div>
-          <p id={descriptionId} className="text-sm text-muted">按主题阅读，关闭后继续当前操作。</p>
+          <Modal.Heading>说明与帮助</Modal.Heading>
+          <Description id={descriptionId}>按主题阅读，关闭后继续当前操作。</Description>
         </Modal.Header>
         <Modal.Body className="min-h-0 overscroll-contain">
-          <RadioGroup value={topic} onChange={value => setTopic(value as HelpTopic)} orientation="horizontal"
-            className="mb-5 flex flex-row flex-wrap gap-3" aria-label="帮助主题">
-            {availableTopics.map(item => <Radio key={item.id} value={item.id}>
-              <Radio.Content className="min-h-10">
-                <Radio.Control><Radio.Indicator /></Radio.Control>
-                <Label>{item.title}</Label>
-              </Radio.Content>
-            </Radio>)}
-          </RadioGroup>
-          <div key={topic} className="flex flex-col gap-3 text-sm leading-relaxed">
-            {availableTopics.find(item => item.id === topic)?.content}
+          <div className="grid gap-6 sm:grid-cols-[12rem_minmax(0,1fr)]">
+            <RadioGroup value={selectedTopic.id} onChange={value => setTopic(value as HelpTopic)} aria-label="帮助主题">
+              <Label>帮助主题</Label>
+              <div className="grid grid-cols-2 gap-x-3 gap-y-1 sm:grid-cols-1">
+                {availableTopics.map(item => <Radio key={item.id} value={item.id}>
+                  <Radio.Content className="min-h-10">
+                    <Radio.Control><Radio.Indicator /></Radio.Control>
+                    <Label>{item.title}</Label>
+                  </Radio.Content>
+                </Radio>)}
+              </div>
+            </RadioGroup>
+            <div key={selectedTopic.id} className="min-w-0 flex flex-col gap-3 text-sm leading-relaxed">
+              {selectedTopic.content}
+            </div>
           </div>
         </Modal.Body>
+        <Modal.Footer>
+          <Button slot="close" variant="secondary">关闭帮助</Button>
+        </Modal.Footer>
       </Modal.Dialog>
       </Modal.Container>
     </Modal.Backdrop>
@@ -79,6 +85,6 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
 export function HelpButton({ topic = 'introduction', children = '说明与帮助' }: { topic?: HelpTopic; children?: ReactNode }) {
   const showHelp = useContext(HelpContext)
   const trigger = useRef<HTMLButtonElement | null>(null)
-  return <Button ref={trigger} variant="outline" size="sm" aria-haspopup="dialog"
+  return <Button ref={trigger} variant="tertiary" size="sm" aria-haspopup="dialog"
     onPress={() => { if (trigger.current) showHelp(topic, trigger.current) }}>{children}</Button>
 }
