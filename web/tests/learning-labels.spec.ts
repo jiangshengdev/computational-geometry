@@ -63,7 +63,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         await page.mouse.move(center.x, center.y)
         await expect(page.getByRole('status', { name: '画布对象详情' })).toContainText(`S${position.id} · 起点`)
         expect(await positions(), `hover moved labels at step ${step}`).toEqual(before)
-        await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
+        await page.getByRole('link', { name: '返回列表', exact: true }).hover()
         expect(await positions(), `leaving moved labels at step ${step}`).toEqual(before)
       }
     }
@@ -95,31 +95,21 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const center = trace.steps.findIndex(step => step.action === 'take' && step.current?.x.numerator === '0' && step.current.y.numerator === '0')
     expect(center).toBeGreaterThan(0)
     await page.goto(`/cases/spider-web/learn?step=${center}`)
-    await expect(svg.locator('.current-label')).toHaveText('当前事件 (0, 0)')
-    await expect(svg.locator('.current-label')).toBeVisible()
+    await expect(svg.locator('.current-label')).toHaveCount(0)
+    await expect(svg.locator('.current-point')).toBeVisible()
+    await expect(svg).not.toContainText('当前事件')
     const participants = [...trace.steps[center].starts, ...trace.steps[center].ends, ...trace.steps[center].passes]
     await expect(svg.locator('.input[data-participant="true"]')).toHaveCount(participants.length)
-    await expect(svg.locator('.teaching-labels text[data-related="true"]')).toHaveText([...participants].sort((a, b) => a - b).map(id => `S${id}`))
+    const related = [...new Set([...trace.steps[center].active, ...participants])]
+    await expect(svg.locator('.teaching-labels text[data-related="true"]')).toHaveText(related.sort((a, b) => a - b).map(id => `S${id}`))
+    for (const id of trace.steps[center].active) {
+      await expect(svg.locator(`.teaching-labels text[data-input="${id}"]`)).toBeVisible()
+    }
     await expect(svg).not.toContainText(/起点|终点|重叠区间/)
     await readableLabels(page)
-    if (width === 1920) {
-      const leader = svg.locator('.current-label').locator('..').locator('.label-leader')
-      await expect(leader).toHaveAttribute('visibility', 'visible')
-      // Read both positions in one layout snapshot, including during ResizeObserver updates.
-      await expect.poll(() => leader.evaluate(element => {
-        const line = element as SVGLineElement
-        const box = line.parentElement!.querySelector('text')!.getBoundingClientRect()
-        const point = new DOMPoint(line.x2.baseVal.value, line.y2.baseVal.value).matrixTransform(line.getScreenCTM()!)
-        return Math.max(box.left - point.x, point.x - box.right, box.top - point.y, point.y - box.bottom, 0)
-      })).toBeLessThanOrEqual(6)
-    }
     if (browserName === 'chromium') await page.screenshot({ path: join(tmpdir(), `bo-labels-current-${width}.png`), fullPage: true })
-    // A suppressed ID stays in its slot; hover exposes identity in the detail
-    // panel without moving labels or overriding the collision decision.
-    const hiddenId = await svg.locator('.teaching-labels text[data-related="true"]').evaluateAll(nodes =>
-      nodes.find(node => getComputedStyle(node).visibility === 'hidden')?.getAttribute('data-input'))
-    if (width === 390) expect(hiddenId).toBeTruthy()
-    const inspectedId = hiddenId ?? participants[0]
+    // Inspecting a participant keeps every input label in its reserved slot.
+    const inspectedId = participants[0]
     const placements = () => svg.locator('.teaching-labels text[data-input]').evaluateAll(nodes => nodes.map(node =>
       [node.getAttribute('transform'), node.getAttribute('visibility')]))
     const beforeHover = await placements()
@@ -127,9 +117,9 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(page.getByRole('status', { name: '画布对象详情' })).toContainText(`S${inspectedId} · 起点`)
     await expect(svg.locator(`.input[data-highlighted="true"][aria-label="输入 S${inspectedId}"]`)).toHaveCount(1)
     expect(await placements()).toEqual(beforeHover)
-    if (hiddenId !== undefined) await expect(svg.locator(`.teaching-labels text[data-input="${inspectedId}"]`)).toBeHidden()
-    await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
-    const label = svg.locator('.current-label')
+    await expect(svg.locator(`.teaching-labels text[data-input="${inspectedId}"]`)).toBeVisible()
+    await page.getByRole('link', { name: '返回列表', exact: true }).hover()
+    const label = svg.locator('.teaching-labels text[data-input]').first()
     const fontSize = await label.evaluate(node => getComputedStyle(node).fontSize)
     await page.getByRole('button', { name: '放大', exact: true }).click()
     await expect(label).toHaveCSS('font-size', fontSize)
@@ -150,7 +140,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       const detail = page.getByRole('status', { name: '画布对象详情' })
       await expect(detail).toHaveAttribute('data-pinned', 'true')
       await expect(detail).toHaveText('S0 · 起点 (0, 0) · 终点 (4, 4)')
-      await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
+      await page.getByRole('link', { name: '返回列表', exact: true }).hover()
       await expect(detail).toBeVisible()
       const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
       await svg.scrollIntoViewIfNeeded()
@@ -162,7 +152,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       await page.mouse.down()
       await page.mouse.move(start.x + 30, start.y + 20, { steps: 4 })
       await page.mouse.up()
-      await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
+      await page.getByRole('link', { name: '返回列表', exact: true }).hover()
       await expect(detail).toHaveCount(0)
       const afterPan = await linePosition(line)
       await page.touchscreen.tap(afterPan.x, afterPan.y)
@@ -171,7 +161,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       await page.getByRole('button', { name: '下一步', exact: true }).click()
       await expect(detail).toHaveCount(0)
       bounds = (await svg.boundingBox())!
-      await expect(svg.locator('.current-label')).toBeVisible()
+      await expect(svg.locator('.current-label')).toHaveCount(0)
+      await expect(svg.locator('.current-point')).toBeVisible()
       expect(bounds.width).toBeGreaterThan(0)
     } finally { await page.close() }
   })
@@ -185,7 +176,7 @@ test('教学标签：重叠默认高亮不弹详情，点击临时标签固定�
   expect(record).toBeGreaterThan(0)
   await page.goto(`/cases/partial-overlap/learn?step=${record}`)
   const detail = page.getByRole('status', { name: '画布对象详情' })
-  await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
+  await page.getByRole('link', { name: '返回列表', exact: true }).hover()
   await expect(page.locator('.drawing .input[data-highlighted="true"]')).toHaveCount(2)
   await expect(detail).toHaveCount(0)
   const segment = page.getByRole('img', { name: '输入 S1', exact: true }).locator('line')
@@ -193,7 +184,7 @@ test('教学标签：重叠默认高亮不弹详情，点击临时标签固定�
   await page.mouse.move(point.x, point.y)
   await expect(detail).toContainText('S1 · 起点')
   await page.locator('.teaching-labels text[data-input="1"]').click()
-  await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
+  await page.getByRole('link', { name: '返回列表', exact: true }).hover()
   await expect(detail).toHaveAttribute('data-pinned', 'true')
   await expect(detail).toHaveText('S1 · 起点 (2, 0) · 终点 (6, 0)')
   await page.keyboard.press('Escape')
@@ -203,7 +194,7 @@ test('教学标签：重叠默认高亮不弹详情，点击临时标签固定�
   const transient = await linePosition(page.getByRole('img', { name: '输入 S1', exact: true }).locator('line'))
   await page.mouse.move(transient.x, transient.y)
   await page.locator('.teaching-labels text[data-input="1"]').click()
-  await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
+  await page.getByRole('link', { name: '返回列表', exact: true }).hover()
   await expect(detail).toHaveAttribute('data-pinned', 'true')
   await expect(detail).toContainText('S1 · 起点 (0, 4)')
 })

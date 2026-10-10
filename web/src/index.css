@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
+:root {
+  --tooltip-delay: 0ms;
+}
+
 @layer base {
   body {
     @apply bg-background text-foreground;

@@ -88,9 +88,8 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
           await expect(active).toHaveText(example.after)
           await expect(queue.getByRole('listitem')).toHaveText(example.pending)
           const label = page.locator('.teaching-labels [data-event-point="(0, 0)"]')
-          await expect(label).toHaveCount(1)
-          await expect(label).toHaveText('当前事件 (0, 0)')
-          await expect(label).toBeVisible()
+          await expect(label).toHaveCount(0)
+          await expect(page.getByRole('img', { name: /^当前事件 / })).toBeVisible()
           for (const id of example.inputs) {
             await expect(page.getByRole('img', { name: `输入 S${id}`, exact: true })).toHaveAttribute('data-active', String(example.after.includes(`S${id}`)))
           }
@@ -101,7 +100,8 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
       // Hover details depend on the pointer, not the deterministic teaching trace.
       const state = JSON.stringify({
         panels: await page.locator('.learning-panel, [aria-label="学习结果"]').allInnerTexts(),
-        current: await page.locator('.current-label').allTextContents(),
+        current: await page.locator('.current-point').evaluateAll(points => points.map(point =>
+          [point.getAttribute('cx'), point.getAttribute('cy')])),
         geometry: await page.locator('.drawing .input').evaluateAll(inputs => inputs.map(input =>
           ['data-active', 'data-checked', 'data-participant'].map(name => input.getAttribute(name)))),
       })

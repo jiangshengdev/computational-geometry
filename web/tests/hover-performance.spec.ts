@@ -51,7 +51,7 @@ test('蜘蛛网 hover：同一对象内连续移动不重复排布标签', async
   const label = page.locator('.teaching-labels text[data-event-point="(-24, 0)"]')
   await page.getByRole('region', { name: '待处理事件队列' }).getByRole('listitem').first().hover()
   await expect(label).toHaveCSS('font-weight', '700')
-  await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
+  await page.getByRole('link', { name: '返回列表', exact: true }).hover()
   await expect(label).toHaveCount(0)
   const measured = await report.evaluate(report => { report.running = false; return report })
   measured.frames.sort((a, b) => a - b)

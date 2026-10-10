@@ -228,7 +228,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
 export default function App() {
   const caseRoute = useMatch('/cases/:caseId/*')
   return <main className={caseRoute ? 'case-shell' : undefined}>
-    <header className="viewer-header"><div><h1 className="text-3xl font-semibold tracking-tight">BO 结果查看器</h1>{!caseRoute && <p className="mt-2 text-muted">选择案例，检查精确交点与完整重叠区间。</p>}</div></header>
+    {!caseRoute && <p className="mb-6 text-muted">选择案例，检查精确交点与完整重叠区间。</p>}
     <Routes>
       <Route path="/" element={<CaseList />} />
       <Route path="/cases/:caseId" element={<CasePage />} />

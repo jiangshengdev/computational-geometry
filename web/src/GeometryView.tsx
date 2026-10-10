@@ -2,10 +2,10 @@ import { useLayoutEffect, useRef, useState, type PointerEvent as ReactPointerEve
 import { select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { projectPoints } from './projection'
 import { formatGeometry, formatPoint, formatRational, pairName, samePoint, isVertical, type Intersection, type Point, type Segment } from './geometry'
-import { Button } from '@heroui/react/button'
+import { Button, buttonVariants } from '@heroui/react/button'
 import { ButtonGroup } from '@heroui/react/button-group'
 import { Card } from '@heroui/react/card'
-import { Separator } from '@heroui/react/separator'
+import { Tooltip } from '@heroui/react/tooltip'
 import { hoverHighlights, type HoverHighlights, type HoverTarget } from './hover'
 import type { EventSide } from './eventSide'
 
@@ -44,7 +44,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
   const detail = sweep && !sweep.numbering ? inspectedPoint ? sweep.labelPoint(inspectedPoint)
     : inspectedInput !== undefined ? `S${inspectedInput} · 起点 ${formatPoint(segments[inspectedInput].start)} · 终点 ${formatPoint(segments[inspectedInput].end)}`
     : inspectedPair ? `重叠区间 ${pairName(inspectedPair)} · ${formatGeometry(inspectedPair.geometry)}` : null : null
-  const relatedInputs = sweep ? [...new Set([...sweep.participants, ...sweep.checked, ...(highlights?.inputs ?? [])])] : []
+  const relatedInputs = sweep ? [...new Set([...sweep.active, ...sweep.participants, ...sweep.checked, ...(highlights?.inputs ?? [])])] : []
   const sideX = projection && sweep?.current ? transform.applyX(projection.px(sweep.current)) : null
   const sideY = projection && sweep?.current ? transform.applyY(projection.py(sweep.current)) : null
   const heightSideVisible = sweep?.side && sweep.participants.some(id => isVertical(segments[id])) &&
@@ -152,7 +152,6 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
         ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
         .filter(top => top >= gap && top + box.height <= height - gap && (!sweep?.numbering || top <= box.y))
       const candidates = lefts.flatMap(left => tops.map(top => ({ left, top, distance: Math.hypot(left - box.x, top - box.y) })))
-        .filter(candidate => !teachingLabels || Number(label.dataset.priority) >= 2 || candidate.distance <= 48)
         .sort((a, b) => a.distance - b.distance)
       const position = candidates.find(({ left, top }) => !occupied.some(other =>
         left < other.x + other.width + gap && left + box.width + gap > other.x &&
@@ -173,7 +172,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
           }
           return start <= end
         }))
-      if (!position && teachingLabels) {
+      if (!position && teachingLabels && label.dataset.input === undefined) {
         label.setAttribute('visibility', 'hidden')
         label.parentElement?.querySelector(':scope > .label-leader')?.setAttribute('visibility', 'hidden')
         return
@@ -235,7 +234,17 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
   }
 
   return <section className="drawing" aria-label="几何视图"><Card>
-    <Card.Header className="drawing-toolbar"><div><Card.Title render={props => <h2 {...props} />}>原始坐标平面 · 等比例</Card.Title></div><ButtonGroup variant="tertiary" size="sm" aria-label="画布视图控制">
+    <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1"><Card.Title render={props => <h2 {...props} />}>原始坐标平面 · 等比例</Card.Title>
+      <Tooltip>
+        <Tooltip.Trigger<'button'> render={props => <button {...props} type="button" />} className={buttonVariants({ isIconOnly: true, variant: 'ghost', size: 'sm' })} aria-label="图例与操作说明"><span aria-hidden="true" className="inline-flex size-4 items-center justify-center rounded-full border text-xs font-semibold">i</span></Tooltip.Trigger>
+        <Tooltip.Content placement="bottom" className="max-w-xs">
+          <div className="flex flex-col gap-1 text-sm"><span>蓝色：输入</span><span>橙色：交集</span>
+            {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
+            <span>按钮缩放 · 拖动平移</span>
+          </div>
+        </Tooltip.Content>
+      </Tooltip>
+    </div><ButtonGroup variant="tertiary" size="sm" aria-label="画布视图控制">
       <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大">＋</Button>
       <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小"><ButtonGroup.Separator />−</Button>
       <Button onPress={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}><ButtonGroup.Separator />重置视图</Button>
@@ -324,18 +333,13 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
         </g>)}
       </g>
       {sweep && <g className="teaching-labels">
-        {sweep.current && <g>
-          <line className="label-leader" x1={transform.applyX(projection.px(sweep.current))} y1={transform.applyY(projection.py(sweep.current))} />
-          <text className="current-label" data-current="true" data-priority="3" {...pointLabelProps(sweep.current)}
-            x={transform.applyX(projection.px(sweep.current)) + 12} y={transform.applyY(projection.py(sweep.current)) - 12}>当前事件 {formatPoint(sweep.current)}</text>
-        </g>}
         {segments.map((segment, id) => {
           return <text key={id} data-input={id} data-priority="1" data-related={relatedInputs.includes(id)}
             data-highlighted={highlights?.inputs.includes(id) ?? false}
             x={transform.applyX(projection.px(segment.start) * 0.75 + projection.px(segment.end) * 0.25) + 9}
             y={transform.applyY(projection.py(segment.start) * 0.75 + projection.py(segment.end) * 0.25) - 10}>S{id}</text>
         })}
-        {inspectedPoint && (!sweep.current || !samePoint(inspectedPoint, sweep.current)) && <g>
+        {inspectedPoint && <g>
           <line className="label-leader" x1={transform.applyX(projection.px(inspectedPoint))} y1={transform.applyY(projection.py(inspectedPoint))} />
           <text {...pointLabelProps(inspectedPoint)} data-priority="2"
             x={transform.applyX(projection.px(inspectedPoint)) + 12} y={transform.applyY(projection.py(inspectedPoint)) - 12}>{formatPoint(inspectedPoint)}</text>
@@ -347,10 +351,5 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
       <span>{detail}</span>
     </div>}
     </Card.Content>
-    <Separator />
-    <Card.Footer className="legend text-muted"><span>蓝色：输入</span><span>橙色：交集</span>
-      {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
-      <span className="ml-auto whitespace-nowrap">按钮缩放 · 拖动平移</span>
-    </Card.Footer>
   </Card></section>
 }

@@ -36,7 +36,7 @@ test('预览快捷键：右方向键进入教程，长按不跳过初始步骤',
 for (const path of ['/cases/empty', '/cases/not-a-case', '/cases/crossing/extra', '/']) {
   test(`预览快捷键：${path} 没有可进入的教程时保持原页`, async ({ page }) => {
     await page.goto(path)
-    await expect(page.getByRole('heading', { name: 'BO 结果查看器', exact: true })).toBeVisible()
+    await expect(page).toHaveTitle(/ · BO 结果查看器$/)
     const consumed = await page.evaluate(() => {
       const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true })
       document.body.dispatchEvent(event)
