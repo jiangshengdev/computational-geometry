@@ -15,6 +15,18 @@ frontend:
 test:
     cargo test --offline
 
+# 校验性能样本的已知精确结果，仅运行该集成测试。
+perf-check:
+    cargo test --offline --test performance fixed_samples_have_known_exact_results -- --exact
+
+# 独立测量两种算法；可用 BO_PERF_SAMPLE、BO_PERF_ALGORITHM、BO_PERF_ROUNDS 筛选。
+perf:
+    cargo test --offline --test performance independent_timings -- --exact --ignored --nocapture --test-threads=1
+
+# 单算法采样负载；必须设置 BO_PERF_SAMPLE 和 BO_PERF_ALGORITHM。
+perf-profile:
+    cargo test --offline --test performance profile_one_algorithm -- --exact --ignored --nocapture --test-threads=1
+
 # 一键启动临时后端并运行无头 E2E，结束后自动清理（包含原生编译，由使用者运行）。
 [positional-arguments]
 test-e2e *args:
