@@ -53,6 +53,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
     <span className="learning-hover-item" data-input-id={id} {...inputProps(id)}>S{id}</span>
   </Fragment>)
   const step = trace.steps[index]
+  const pointInputs = step.starts.filter(id => step.ends.includes(id))
   const recorded = step.action === 'record' ? step.results.at(-1) : undefined
   const recordedOverlap = recorded?.geometry.type === 'overlap' ? recorded : undefined
   const overlaps = results.filter(result => result.geometry.type === 'overlap')
@@ -142,7 +143,8 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
       </div></CardHeader>
       <CardContent ref={explanationPanel} className="learning-panel-content flex flex-col gap-2">
         {step.action === 'initial' && (complete ? <p>没有输入，因此没有端点和事件。队列与活动顺序为空，无需推进，学习已完成。</p> : <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步取出最早事件。</p>)}
-        {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
+        {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序。先核对同点参与者并逐对记录交集，再按真实动作更新活动顺序。</p>}
+        {pointInputs.length > 0 && <p>零长度点 <span className="coordinates">{inputReferences(pointInputs, '、')}</span> 的两个端点重合，所以同时属于开始和结束，不进入持续活动顺序。它们只在当前精确位置参与配对：位于线段内部或闭端点都算接触；重合点仍保留独立输入身份。没有配对的点事件也会正常完成。</p>}
         {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。'}接下来检查新邻居是否会在未来相交。</p>}
         {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。{visibleOverlaps.some(({ geometry }) => geometry.type === 'overlap' && step.current && samePoint(geometry.end, step.current)) && '此处是重叠止界：较早结束者退出，另一条线段继续。交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。'}</p>}
         {step.action === 'record' && (recordedOverlap ? <p>记录重叠区间 <span className="coordinates">{formatGeometry(recordedOverlap.geometry)}</span>：参与线段 <span className="coordinates">{inputReferences(recordedOverlap.segments, ' × ')}</span> 从当前较晚起点开始重合，到较早终点为止。取两个闭区间的公共范围，包含两端及其间全部点，不是只记录当前端点。橙色线段和两个端点标出完整交集；活动顺序尚未更新，下一步加入开始者。</p> : <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> {step.subjects.every(id => step.passes.includes(id)) ? '在这里交叉。' : '在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。'}交集已记入结果，活动顺序尚未更新。{step.starts.length + step.ends.length + step.passes.length > 2 && '这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。'}</p>)}
@@ -159,7 +161,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
         {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{complete ? '全部事件已处理，无需再推进。' : before.action === 'check' ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
     {complete && <section aria-label="学习结果"><Card variant="transparent">
       <CardHeader><CardTitle render={props => <h2 {...props} />}>学习完成</CardTitle></CardHeader>
-      <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，所有线段已退出。</p>
+      <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，全部输入已处理完毕；零长度点无需加入或退出活动顺序。</p>
         {overlaps.length ? <p>孤立点结果位置：{points.length}；重叠区间：{visibleOverlaps.length}；相交线段对：{step.results.length}。区间包含无穷多个公共点，不能用孤立交点数量表示。</p> : <p>独立交点位置：{points.length}；相交线段对：{step.results.length}。同一位置可由多个线段对共享。</p>}
         {points.map(point => <p className="coordinates" key={formatPoint(point)}>{pointName(point)}：{step.results.filter(result => result.geometry.type === 'point' && samePoint(result.geometry.point, point)).map(pairName).join('、')}</p>)}
         {visibleOverlaps.map(result => <p className="coordinates" key={pairName(result)}>{formatGeometry(result.geometry)}：{pairName(result)}（包含两端及其间全部点）</p>)}
