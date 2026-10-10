@@ -66,7 +66,6 @@ span.learning-hover-item { display: inline-block; }
 .sweep-overlay text { fill: #735020; font-size: 12px; }
 .intersection .result-label { fill: #735020; font-size: 12px; }
 .learning-hover-item[data-checked="true"] { outline: 2px solid oklch(0.205 0 0); border-radius: 4px; }
-.drawing [data-teaching="true"] .input[data-participant="true"] > line { stroke: #245cb0; stroke-width: 4; }
 .drawing [data-teaching="true"] .input[data-checked="true"] > line { stroke: oklch(0.205 0 0); stroke-width: 6; }
 .learning-hover-item[data-highlighted="true"] { background: #d3f3ed; color: #075b50; outline: 2px solid #078574; border-radius: 4px; }
 .input-item[data-highlighted="true"], .pair-item[data-highlighted="true"], .learning-hover-item[data-highlighted="true"], .learning-hover-item[data-checked="true"] { outline-offset: -2px; }

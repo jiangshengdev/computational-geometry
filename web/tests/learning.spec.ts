@@ -3,6 +3,25 @@ import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
+for (const step of [1, 17, 18]) {
+  test(`非活动参与线段保持普通样式：普通交叉步骤 ${step}`, async ({ page }) => {
+    await page.goto(`/cases/crossing/learn?step=${step}`)
+    const input = page.getByRole('img', { name: '输入 S0', exact: true })
+    await expect(page.getByTestId('active-order')).toHaveText('空')
+    await expect(input).toHaveAttribute('data-active', 'false')
+    await expect(input).toHaveAttribute('data-participant', 'true')
+    await expect(input.locator('line')).toHaveCSS('stroke', 'rgb(123, 159, 207)')
+    await expect(input.locator('line')).toHaveCSS('stroke-width', '2px')
+    if (step === 1) {
+      await page.getByRole('button', { name: '下一步', exact: true }).click()
+      await expect(page.getByTestId('active-order')).toHaveText('S0')
+      await expect(input).toHaveAttribute('data-active', 'true')
+      await expect(input.locator('line')).toHaveCSS('stroke', 'rgb(36, 92, 176)')
+      await expect(input.locator('line')).toHaveCSS('stroke-width', '4px')
+    }
+  })
+}
+
 test('入门学习：交叉的发现、换序、退出和重新开始', async ({ page }) => {
   await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')

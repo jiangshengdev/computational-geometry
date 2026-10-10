@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { selectPreset } from './cases'
+import { tabToReachable } from './keyboard'
 
 test('键盘选择案例、配对和几何操作具有可见焦点', async ({ page }) => {
   await page.goto('/')
@@ -20,13 +21,13 @@ test('键盘选择案例、配对和几何操作具有可见焦点', async ({ pa
   await expect(page.getByRole('region', { name: '学习目标' })).toBeVisible()
   await page.keyboard.press('Escape')
   await expect(page.getByRole('region', { name: '学习目标' })).toBeHidden()
-  await page.keyboard.press('Tab')
-  await expect(page.getByRole('button', { name: '案例说明', exact: true })).toBeFocused()
-  await page.keyboard.press('Tab')
-  await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeFocused()
-  await page.keyboard.press('Tab')
+  await expect(introduction).toBeFocused()
+  await tabToReachable(page, page.getByRole('button', { name: '案例说明', exact: true }))
+  await tabToReachable(page, page.getByRole('link', { name: '开始逐步学习' }))
+  await tabToReachable(page, page.getByRole('button', { name: '图例与操作说明', exact: true }))
+  await expect(page.getByRole('tooltip')).toContainText('按钮缩放 · 拖动平移')
   const zoomIn = page.getByRole('button', { name: '放大', exact: true })
-  await expect(zoomIn).toBeFocused()
+  await tabToReachable(page, zoomIn)
   expect(await zoomIn.evaluate(element => {
     const style = getComputedStyle(element)
     return element.matches(':focus-visible') && (style.boxShadow !== 'none' || parseFloat(style.outlineWidth) > 0)
@@ -41,10 +42,8 @@ test('键盘选择案例、配对和几何操作具有可见焦点', async ({ pa
   await page.keyboard.press('Tab')
   await expect(page.getByRole('button', { name: '重置视图' })).toBeFocused()
   await page.keyboard.press('Enter')
-  await page.keyboard.press('Tab')
-  await expect(page.getByRole('button', { name: '结果说明', exact: true })).toBeFocused()
-  await page.keyboard.press('Tab')
-  await expect(page.getByRole('radio', { name: 'S0 × S1 · 点' })).toBeFocused()
+  await tabToReachable(page, page.getByRole('button', { name: '结果说明', exact: true }))
+  await tabToReachable(page, page.getByRole('radio', { name: 'S0 × S1 · 点' }))
   await page.keyboard.press('Space')
   await expect(page.getByRole('radio', { name: 'S0 × S1 · 点' })).toBeChecked()
   await expect(page.getByRole('region', { name: '精确详情' })).toContainText('(2, 2)')

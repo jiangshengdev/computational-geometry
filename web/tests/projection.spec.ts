@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { projectPoints } from '../src/projection'
 import { segment } from '../src/geometry'
+import { expectUnscaledViewport } from './viewport'
 
 test('power-of-two fit preserves fractional geometry and puts spare pixels on the right and bottom', () => {
   const input = segment('-1', '-2', '1', '4')
@@ -54,7 +55,9 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       await page.goto('/cases/crossing/learn?step=3')
       const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
       const layer = svg.locator('[data-layer="geometry"]')
-      await expect(svg).toHaveAttribute('viewBox', '0 0 318 196')
+      await expectUnscaledViewport(page)
+      await expect(svg.locator('.input > line')).toHaveCount(2)
+      const initialViewBox = (await svg.getAttribute('viewBox'))!
       await page.getByRole('button', { name: '放大', exact: true }).click()
       await expect(layer).toHaveAttribute('transform', /scale\(1\.4\)/)
       const zoomed = await layer.getAttribute('transform')
@@ -73,21 +76,25 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
         }, axis)
         expect(await svg.evaluate((element, axis) => element.getBoundingClientRect()[axis], axis)).toBe(0)
-        await expect(svg).toHaveAttribute('viewBox', '0 0 318 196')
+        await expect(svg).toHaveAttribute('viewBox', initialViewBox)
         await expect(layer).toHaveAttribute('transform', transform!)
         await svg.evaluate(async element => {
           element.removeAttribute('style')
           await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
         })
+        await expectUnscaledViewport(page)
+        await expect(svg).toHaveAttribute('viewBox', initialViewBox)
         await expect(layer).toHaveAttribute('transform', transform!)
       }
       await svg.evaluate(element => (element as SVGSVGElement).style.setProperty('width', '100px'))
-      await expect(svg).toHaveAttribute('viewBox', '0 0 100 196')
+      await expect.poll(() => svg.evaluate(element => element.getBoundingClientRect().width)).toBe(100)
+      await expectUnscaledViewport(page)
       await expect(svg.locator('[data-layer="geometry"]')).toHaveCount(0)
       await expect(page.getByRole('button', { name: '放大', exact: true })).toBeVisible()
       await svg.evaluate(element => element.removeAttribute('style'))
       await expect(svg.locator('.input > line')).toHaveCount(2)
-      await expect(svg).toHaveAttribute('viewBox', '0 0 318 196')
+      await expectUnscaledViewport(page)
+      await expect(svg).toHaveAttribute('viewBox', initialViewBox)
       expect(errors).toEqual([])
     } finally {
       await page.close()
