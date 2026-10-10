@@ -132,7 +132,10 @@ test('入门学习：桌面与手机的图形、队列、操作解释同步且�
     ])
     expect(Number(cx)).toBeCloseTo((Number(x1) + Number(x2)) / 2)
     expect(Number(cy)).toBeCloseTo((Number(y1) + Number(y2)) / 2)
-    await expect(diagram).toContainText('I0 (2, 2)')
+    await crossing.scrollIntoViewIfNeeded()
+    const target = (await crossing.boundingBox())!
+    await page.mouse.move(target.x + target.width / 2, target.y + target.height / 2)
+    await expect(diagram.getByRole('status', { name: '画布对象详情' })).toHaveText('I0 (2, 2)')
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     await page.screenshot({ path: join(tmpdir(), `bo-learning-${viewport.width}.png`), fullPage: true })
   }

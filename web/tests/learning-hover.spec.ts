@@ -9,6 +9,17 @@ async function center(page: Page, target: Locator) {
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
 }
 
+async function endpoint(page: Page, line: Locator, end: 'start' | 'end') {
+  await line.scrollIntoViewIfNeeded()
+  const point = await line.evaluate((element, end) => {
+    const line = element as SVGLineElement
+    const point = new DOMPoint(end === 'start' ? line.x1.baseVal.value : line.x2.baseVal.value,
+      end === 'start' ? line.y1.baseVal.value : line.y2.baseVal.value).matrixTransform(line.getScreenCTM()!)
+    return { x: point.x, y: point.y }
+  }, end)
+  await page.mouse.move(point.x, point.y)
+}
+
 for (const width of [1360, 390]) {
 test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 1100 })
@@ -44,7 +55,9 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
       await expect(diagram.locator('.hover-event')).toHaveCount(1)
       await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
       if (index === 7) await page.screenshot({ path: join(tmpdir(), `bo-explanation-point-${width}.png`), fullPage: true })
-      const label = diagram.locator('[data-event-point]').filter({ hasText: scenario.point.split(' (')[0] }).first()
+      const coordinates = scenario.point.slice(scenario.point.indexOf('('))
+      const label = diagram.locator(`.teaching-labels [data-event-point="${coordinates}"]`)
+      await expect(diagram.getByRole('status', { name: '画布对象详情' })).toContainText(scenario.point)
       await label.hover()
       await expect(token).toHaveAttribute('data-highlighted', 'true')
     }
@@ -93,7 +106,7 @@ test('教学 hover：队列端点与点标签精确双向对应', async ({ page 
   const diagram = page.getByRole('region', { name: '几何视图' })
   const input = page.getByRole('img', { name: '输入 S1', exact: true })
   const entry = queue.getByText('S1 起点 (0, 4)', { exact: true })
-  const label = input.getByText('S1 起点', { exact: true })
+  const label = diagram.locator('.teaching-labels [data-event-point="(0, 4)"]')
   await entry.hover()
   await expect(label).toHaveCSS('font-weight', '700')
   const ring = diagram.locator('.hover-event')
@@ -103,11 +116,14 @@ test('教学 hover：队列端点与点标签精确双向对应', async ({ page 
   await expect(queue.locator('[data-highlighted="true"]')).toHaveText('S1 起点 (0, 4)')
   await label.hover()
   await expect(entry).toHaveAttribute('data-highlighted', 'true')
-  await input.getByText('S1 终点', { exact: true }).hover()
+  await endpoint(page, input.locator('line'), 'end')
+  await expect(queue.locator('[data-highlighted="true"]')).toHaveText('S1 终点 (4, 0)')
+  await expect(diagram.getByRole('status', { name: '画布对象详情' })).toContainText('S1 终点 (4, 0)')
+  await diagram.locator('.teaching-labels [data-event-point="(4, 0)"]').hover()
   await expect(queue.locator('[data-highlighted="true"]')).toHaveText('S1 终点 (4, 0)')
   await page.getByRole('heading', { name: 'BO 结果查看器' }).hover()
   await expect(ring).toHaveCount(0)
-  await expect(label).not.toHaveCSS('font-weight', '700')
+  await expect(label).toHaveCount(0)
   await expect(queue.locator('[data-highlighted="true"]')).toHaveCount(0)
 })
 
@@ -124,12 +140,13 @@ test('教学 hover：发现与当前交点保留虚线圆、紫色和精确标�
   const dash = await dashed.evaluate(e => getComputedStyle(e).strokeDasharray)
   expect(dash).not.toBe('none')
   await queue.getByText('I0 (2, 2)', { exact: true }).hover()
-  await expect(pending.locator('text')).toHaveCSS('font-weight', '700')
+  const pointLabel = diagram.locator('.teaching-labels [data-event-point="(2, 2)"]')
+  await expect(pointLabel).toHaveCSS('font-weight', '700')
   await expect(diagram.locator('.hover-event')).toHaveAttribute('cx', await dashed.getAttribute('cx') as string)
   await expect(dashed).toHaveCSS('stroke-dasharray', dash)
   await center(page, dashed)
   await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-  await pending.locator('text').hover()
+  await pointLabel.hover()
   await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
   await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
   await expect(page.getByTestId('active-order').locator('[data-highlighted="true"]')).toHaveCount(0)
@@ -142,16 +159,18 @@ test('教学 hover：发现与当前交点保留虚线圆、紫色和精确标�
   expect(purple).toBe('rgb(116, 85, 168)')
   const lineStyle = await diagram.locator('.sweep-line').getAttribute('x1')
   await current.getByText('I0 (2, 2)', { exact: true }).hover()
-  await expect(diagram.getByText('I0 (2, 2)', { exact: true })).toHaveCSS('font-weight', '700')
+  await expect(pointLabel).toHaveText('当前事件 (2, 2)')
+  await expect(pointLabel).toHaveCSS('font-weight', '700')
   await expect(diagram.locator('.hover-event')).toHaveCount(1)
   await expect(marker).toHaveCSS('stroke', purple)
   await expect(diagram.locator('.sweep-line')).toHaveAttribute('x1', lineStyle as string)
   await center(page, marker)
   await expect(current.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-  await diagram.getByText('I0 (2, 2)', { exact: true }).hover()
+  await pointLabel.hover()
   await expect(current.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-  await next.click() // Recorded intersection uses the result label at the same exact point.
-  await diagram.getByText('I0 (2, 2)', { exact: true }).hover()
+  await next.click() // Recording retains one current-event label at the exact point.
+  await expect(pointLabel).toHaveText('当前事件 (2, 2)')
+  await pointLabel.hover()
   await expect(current.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
   await expect(marker).toHaveCSS('stroke', purple)
 })
@@ -188,7 +207,7 @@ for (const preset of ['crossing', 'disjoint']) {
     await emptyHover()
     await expect(queue).toContainText('空')
     await expect(page.getByTestId('active-order')).toHaveText('空')
-    await diagram.getByText('S0 起点', { exact: true }).hover()
+    await endpoint(page, page.getByRole('img', { name: '输入 S0', exact: true }).locator('line'), 'start')
     await expect(ring).toHaveCount(1)
     await expect(page.locator('.learning-hover-item[data-highlighted="true"]')).toHaveCount(0)
     await page.keyboard.press('Home')
@@ -235,10 +254,11 @@ test('教学 hover：缩放平移后的点、标签与线段命中和可读性',
     await center(page, pending.locator('circle'))
     const queue = page.getByRole('region', { name: '待处理事件队列' })
     await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-    await expect(pending.locator('text')).toHaveCSS('font-weight', '700')
-    await pending.locator('text').hover()
+    const pointLabel = svg.locator('.teaching-labels [data-event-point="(2, 2)"]')
+    await expect(pointLabel).toHaveCSS('font-weight', '700')
+    await pointLabel.hover()
     await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-    const labels = await svg.locator('text:not(.tick)').evaluateAll(nodes => nodes.map(n => {
+    const labels = await svg.locator('.teaching-labels text:visible').evaluateAll(nodes => nodes.map(n => {
       const r = n.getBoundingClientRect(); return { left: r.left, right: r.right, top: r.top, bottom: r.bottom }
     }))
     for (let a = 0; a < labels.length; a++) for (let b = a + 1; b < labels.length; b++) {
@@ -270,8 +290,8 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   const segment = page.getByRole('img', { name: '输入 S1', exact: true })
   const line = segment.locator('line')
   const originalStroke = await line.evaluate(e => getComputedStyle(e).strokeWidth)
-  const lesson = page.getByRole('region', { name: '逐步学习' })
-  const content = await lesson.innerText()
+  const panels = page.locator('.learning-panel')
+  const content = await panels.allInnerTexts()
   await order.getByText('S1', { exact: true }).hover()
   await expect(segment).toHaveAttribute('data-highlighted', 'true')
   await expect(line).not.toHaveCSS('stroke-width', originalStroke)
@@ -279,7 +299,7 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   await expect(page.locator('.drawing .hover-event')).toHaveCount(0)
   await expect(page.getByRole('region', { name: /^(当前事件|待处理事件队列)$/ }).locator('[data-highlighted="true"]')).toHaveCount(0)
   await expect(page.locator('.drawing text[data-event-point][data-highlighted="true"]')).toHaveCount(0)
-  await expect(lesson).toHaveText(content, { useInnerText: true })
+  await expect(panels).toHaveText(content, { useInnerText: true })
   const point = await line.evaluate(element => {
     const segment = element as SVGLineElement
     for (const fraction of [0.25, 0.75, 0.4, 0.6]) {

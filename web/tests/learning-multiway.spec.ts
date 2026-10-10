@@ -53,7 +53,12 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
         for (const id of example.passes) await expect(group.getByText(/^穿过：/)).toContainText(`S${id}`)
         for (const id of example.inputs) {
           await expect(group.getByText(`S${id}`, { exact: true })).toBeVisible()
-          await expect(page.getByRole('img', { name: `输入 S${id}`, exact: true })).toBeVisible()
+          const line = page.getByRole('img', { name: `输入 S${id}`, exact: true }).locator('line')
+          await expect(line).toHaveCSS('visibility', 'visible')
+          await expect(line).not.toHaveCSS('stroke', 'none')
+          await expect(line).not.toHaveCSS('stroke-width', '0px')
+          const box = (await line.boundingBox())!
+          expect(box.width + box.height).toBeGreaterThan(0)
         }
         if (text.includes('从队首取出')) {
           await expect(active).toHaveText(example.before)
@@ -82,8 +87,10 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
         if (event.includes('事件处理完成')) {
           await expect(active).toHaveText(example.after)
           await expect(queue.getByRole('listitem')).toHaveText(example.pending)
-          await expect(page.locator('.result-label')).toHaveCount(1)
-          await expect(page.locator('.result-label')).toContainText('(0, 0)')
+          const label = page.locator('.teaching-labels [data-event-point="(0, 0)"]')
+          await expect(label).toHaveCount(1)
+          await expect(label).toHaveText('当前事件 (0, 0)')
+          await expect(label).toBeVisible()
           for (const id of example.inputs) {
             await expect(page.getByRole('img', { name: `输入 S${id}`, exact: true })).toHaveAttribute('data-active', String(example.after.includes(`S${id}`)))
           }
@@ -91,7 +98,13 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
           if (!run) await page.screenshot({ path: join(tmpdir(), `bo-multiway-${example.slug}-${width}.png`), fullPage: true })
         }
       }
-      const state = await page.getByRole('region', { name: '逐步学习' }).innerText()
+      // Hover details depend on the pointer, not the deterministic teaching trace.
+      const state = JSON.stringify({
+        panels: await page.locator('.learning-panel, [aria-label="学习结果"]').allInnerTexts(),
+        current: await page.locator('.current-label').allTextContents(),
+        geometry: await page.locator('.drawing .input').evaluateAll(inputs => inputs.map(input =>
+          ['data-active', 'data-checked', 'data-participant'].map(name => input.getAttribute(name)))),
+      })
       if (!run) states.push(state)
       else expect(state).toBe(states[index])
       index++

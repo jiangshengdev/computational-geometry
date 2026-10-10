@@ -112,14 +112,23 @@ for (const width of [1360, 390]) test(`重叠教学：边界与并列状态可�
   await expect(page.getByRole('region', { name: '学习参考' }).getByRole('link', { name: /CGAL/ })).toHaveCount(2)
   await page.getByRole('button', { name: '关闭帮助', exact: true }).click()
   const drawing = page.getByRole('region', { name: '几何视图' })
-  await expect(drawing.getByText('重叠区间 S0 × S1', { exact: true })).toBeVisible()
+  const overlap = drawing.getByRole('img', { name: '交集 S0 × S1', exact: true }).locator('line')
+  await overlap.scrollIntoViewIfNeeded()
+  const overlapCenter = await overlap.evaluate(element => {
+    const line = element as SVGLineElement
+    const point = new DOMPoint((line.x1.baseVal.value + line.x2.baseVal.value) / 2,
+      (line.y1.baseVal.value + line.y2.baseVal.value) / 2).matrixTransform(line.getScreenCTM()!)
+    return { x: point.x, y: point.y }
+  })
+  await page.mouse.move(overlapCenter.x, overlapCenter.y)
+  await expect(drawing.getByRole('status', { name: '画布对象详情' })).toHaveText('重叠区间 S0 × S1 · (2, 0) → (4, 0)')
   await page.getByRole('heading', { name: '活动线段顺序', exact: true }).hover()
   const markers = drawing.getByRole('img', { name: /^活动线段 / })
   await expect(markers).toHaveCount(2)
   const centers = await markers.locator('circle').evaluateAll(elements => elements.map(element => [element.getAttribute('cx'), element.getAttribute('cy')]))
   expect(centers[0]).toEqual(centers[1])
   await page.mouse.move(0, 0)
-  const labelBoxes = await drawing.locator('text:not(.tick)').evaluateAll(elements => elements.filter(element => getComputedStyle(element).opacity !== '0').map(element => {
+  const labelBoxes = await drawing.locator('text:not(.tick):visible').evaluateAll(elements => elements.map(element => {
     const box = element.getBoundingClientRect()
     return { left: box.left, right: box.right, top: box.top, bottom: box.bottom }
   }))

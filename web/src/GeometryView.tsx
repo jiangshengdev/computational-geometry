@@ -1,27 +1,34 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react'
 import { select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { projectPoints } from './projection'
-import { formatPoint, formatRational, pairName, samePoint, isVertical, type Intersection, type Point, type Segment } from './geometry'
+import { formatGeometry, formatPoint, formatRational, pairName, samePoint, isVertical, type Intersection, type Point, type Segment } from './geometry'
 import { Button } from '@heroui/react/button'
 import { ButtonGroup } from '@heroui/react/button-group'
 import { Card } from '@heroui/react/card'
 import { Separator } from '@heroui/react/separator'
-import type { HoverHighlights, HoverTarget } from './hover'
+import { hoverHighlights, type HoverHighlights, type HoverTarget } from './hover'
 import type { EventSide } from './eventSide'
 
 interface Props {
   segments: Segment[]; results: Intersection[]; selected: Intersection | null
   highlights?: HoverHighlights | null
+  hoverTarget?: HoverTarget | null
   onHover?: (target: HoverTarget | null) => void
-  sweep?: { current: Point | null; side: EventSide; participants: number[]; active: number[]; pending: Point[]; numbering: 'active' | 'pending' | null; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
+  sweep?: { step: number; current: Point | null; side: EventSide; participants: number[]; active: number[]; pending: Point[]; numbering: 'active' | 'pending' | null; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
 }
 
-export function GeometryView({ segments, results, selected, sweep, highlights, onHover }: Props) {
+export function GeometryView({ segments, results, selected, sweep, highlights: suppliedHighlights, hoverTarget, onHover }: Props) {
   const svg = useRef<SVGSVGElement>(null)
   const [{ width, height }, setSize] = useState({ width: 800, height: 460 })
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity)
   const behavior = useRef(zoom<SVGSVGElement, unknown>().scaleExtent([0.25, 40]))
   const labelLayout = useRef<{ key: string; labels: SVGTextElement[] } | null>(null)
+  const [inspection, setInspection] = useState<{ step: number | undefined; target: HoverTarget | null }>({ step: sweep?.step, target: null })
+  if (inspection.step !== sweep?.step) setInspection({ step: sweep?.step, target: null })
+  const pinned = inspection.step === sweep?.step ? inspection.target : null
+  const inspecting = hoverTarget ?? pinned
+  const highlights = pinned && !hoverTarget ? hoverHighlights(pinned, pinned.kind === 'pair' ? results : []) : suppliedHighlights
+  const pointerStart = useRef<{ x: number; y: number; moved: boolean; target: HoverTarget | null } | null>(null)
   const points = segments.flatMap(s => [s.start, s.end])
   const eventPoints = sweep ? [...points, ...sweep.discovered.map(d => d.point),
     ...results.flatMap(r => r.geometry.type === 'point' ? [r.geometry.point] : []),
@@ -31,6 +38,13 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     'data-highlighted': highlights?.points.some(p => samePoint(p, point)) ?? false,
   } : {}
   const projection = projectPoints(points, width, height, 64)
+  const inspectedPoint = !sweep?.numbering && inspecting?.kind === 'point' ? inspecting.point : undefined
+  const inspectedInput = !sweep?.numbering && inspecting?.kind === 'input' ? inspecting.index : undefined
+  const inspectedPair = !sweep?.numbering && inspecting?.kind === 'pair' ? results.find(result => pairName(result) === inspecting.pair) : undefined
+  const detail = sweep && !sweep.numbering ? inspectedPoint ? sweep.labelPoint(inspectedPoint)
+    : inspectedInput !== undefined ? `S${inspectedInput} · 起点 ${formatPoint(segments[inspectedInput].start)} · 终点 ${formatPoint(segments[inspectedInput].end)}`
+    : inspectedPair ? `重叠区间 ${pairName(inspectedPair)} · ${formatGeometry(inspectedPair.geometry)}` : null : null
+  const relatedInputs = sweep ? [...new Set([...sweep.participants, ...sweep.checked, ...(highlights?.inputs ?? [])])] : []
   const sideX = projection && sweep?.current ? transform.applyX(projection.px(sweep.current)) : null
   const sideY = projection && sweep?.current ? transform.applyY(projection.py(sweep.current)) : null
   const heightSideVisible = sweep?.side && sweep.participants.some(id => isVertical(segments[id])) &&
@@ -80,20 +94,23 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   useLayoutEffect(() => {
     if (!projection) return
     const element = svg.current!
+    const teachingLabels = !!sweep && !sweep.numbering
     const labels = Array.from(element.querySelectorAll<SVGTextElement>(sweep?.numbering ? 'text.order-number' : 'text:not(.tick)'))
+      .sort((a, b) => (teachingLabels ? Number(b.dataset.input !== undefined) - Number(a.dataset.input !== undefined) : 0) ||
+        Number(b.dataset.priority ?? 0) - Number(a.dataset.priority ?? 0))
     const ticks = Array.from(element.querySelectorAll<SVGTextElement>('.tick'))
     // Depend on layout content, not on freshly allocated sweep/highlight objects.
-    // Coordinates are local to the shared SVG transform, so pan/zoom need no reflow.
-    const key = JSON.stringify([width, height, sweep?.numbering, segments, eventPoints,
+    // Teaching labels stay in screen pixels; geometry and order markers retain their transform.
+    const key = JSON.stringify([width, height, sweep?.numbering, teachingLabels ? transform.toString() : null, segments, eventPoints,
       [...labels, ...ticks].map(label => {
         const style = getComputedStyle(label)
-        return [label.textContent, label.getAttribute('x'), label.getAttribute('y'),
+        return [label.textContent, label.getAttribute('x'), label.getAttribute('y'), label.dataset.priority,
           style.textAnchor, style.fontFamily, style.fontSize, style.fontStyle, style.letterSpacing]
       })])
     if (labelLayout.current?.key === key && labels.every((label, i) => label === labelLayout.current!.labels[i])) return
     // Reserve both normal and bold bounds before placing labels. Hover can then
     // change weight without moving its own hit target or redoing collision searches.
-    for (const label of labels) label.removeAttribute('transform')
+    for (const label of labels) { label.removeAttribute('transform'); label.removeAttribute('visibility') }
     const weights = labels.map(label => label.style.fontWeight)
     for (const label of labels) label.style.fontWeight = '400'
     const normal = labels.map(label => {
@@ -110,12 +127,21 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     labels.forEach((label, i) => { label.style.fontWeight = weights[i] })
     const occupied = ticks.map(tick => {
       const { x, y, width, height } = tick.getBBox()
-      return { x, y, width, height }
+      return teachingLabels ? { x: transform.applyX(x), y: transform.applyY(y), width: width * transform.k, height: height * transform.k } : { x, y, width, height }
     })
     const gap = 6 // Includes the white outline and space between adjacent labels.
-    const lines = segments.map(segment => ({ x1: projection.px(segment.start), y1: projection.py(segment.start), x2: projection.px(segment.end), y2: projection.py(segment.end) }))
-    for (const point of [...points, ...eventPoints]) occupied.push({ x: projection.px(point) - 10, y: projection.py(point) - 10, width: 20, height: 20 })
+    const px = (point: Point) => teachingLabels ? transform.applyX(projection.px(point)) : projection.px(point)
+    const py = (point: Point) => teachingLabels ? transform.applyY(projection.py(point)) : projection.py(point)
+    const lines = segments.map(segment => ({ x1: px(segment.start), y1: py(segment.start), x2: px(segment.end), y2: py(segment.end) }))
+    for (const point of points) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
+    let eventsReserved = false
     labels.forEach((label, index) => {
+      // Reserve every input's slot in input order, even while its label is not
+      // relevant to this step. Events and hover details cannot displace IDs.
+      if (!eventsReserved && (!teachingLabels || label.dataset.input === undefined)) {
+        for (const point of eventPoints) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
+        eventsReserved = true
+      }
       const box = boxes[index]
       // Short workspaces need space below and beside labels too: moving every
       // collision upward can put an otherwise readable label under the toolbar.
@@ -126,6 +152,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
         .filter(top => top >= gap && top + box.height <= height - gap && (!sweep?.numbering || top <= box.y))
       const candidates = lefts.flatMap(left => tops.map(top => ({ left, top, distance: Math.hypot(left - box.x, top - box.y) })))
+        .filter(candidate => !teachingLabels || Number(label.dataset.priority) >= 2 || candidate.distance <= 48)
         .sort((a, b) => a.distance - b.distance)
       const position = candidates.find(({ left, top }) => !occupied.some(other =>
         left < other.x + other.width + gap && left + box.width + gap > other.x &&
@@ -146,17 +173,66 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
           }
           return start <= end
         }))
+      if (!position && teachingLabels) {
+        label.setAttribute('visibility', 'hidden')
+        label.parentElement?.querySelector(':scope > .label-leader')?.setAttribute('visibility', 'hidden')
+        return
+      }
       const { left, top } = position ?? { left: box.x, top: box.y }
       label.setAttribute('transform', `translate(${left - box.x}, ${top - box.y})`)
-      const leader = label.parentElement?.querySelector('.order-leader')
+      const leader = label.parentElement?.querySelector(':scope > .order-leader, :scope > .label-leader')
       if (leader) {
         leader.setAttribute('x2', String(left - 4))
         leader.setAttribute('y2', String(top + box.height / 2))
+        if (leader.classList.contains('label-leader')) leader.setAttribute('visibility', Math.hypot(left - box.x, top - box.y) > 24 ? 'visible' : 'hidden')
       }
       occupied.push({ x: left, y: top, width: box.width, height: box.height })
     })
     labelLayout.current = { key, labels }
   })
+
+  const hitTarget = (event: ReactPointerEvent<SVGSVGElement>): HoverTarget | null => {
+    if (!projection) return null
+    const eventLabel = (event.target as Element).closest<SVGTextElement>('text[data-event-point]')
+    const labelPoint = eventPoints.find(p => formatPoint(p) === eventLabel?.dataset.eventPoint)
+    if (labelPoint) return { kind: 'point', point: labelPoint }
+    const label = (event.target as Element).closest<SVGTextElement>('text[data-input]')
+    if (label) return { kind: 'input', index: Number(label.dataset.input) }
+    const matrix = svg.current!.getScreenCTM()!
+    const screen = (point: Point) => new DOMPoint(...transform.apply([projection.px(point), projection.py(point)])).matrixTransform(matrix)
+    const scale = transform.k * Math.hypot(matrix.a, matrix.b)
+    const pointInput = segments.find(segment => {
+      if (!samePoint(segment.start, segment.end)) return false
+      const center = screen(segment.start)
+      return Math.abs(event.clientX - center.x) + Math.abs(event.clientY - center.y) <= 11 * scale + 3
+    })
+    const pointer = pointInput ? screen(pointInput.start) : new DOMPoint(event.clientX, event.clientY)
+    const distance = (start: Point, end: Point) => {
+      const a = screen(start), b = screen(end)
+      const dx = b.x - a.x, dy = b.y - a.y
+      const lengthSquared = dx * dx + dy * dy
+      const t = lengthSquared ? Math.max(0, Math.min(1, ((pointer.x - a.x) * dx + (pointer.y - a.y) * dy) / lengthSquared)) : 0
+      return Math.hypot(pointer.x - a.x - t * dx, pointer.y - a.y - t * dy)
+    }
+    const inputHits = segments.map((s, index) => ({ index, distance: distance(s.start, s.end) }))
+      .filter(hit => hit.distance <= Math.max(7, 2 * scale))
+    if (sweep) {
+      const point = eventPoints.filter(p => distance(p, p) <= Math.max(10, 10 * scale))
+        .sort((a, b) => distance(a, a) - distance(b, b))[0]
+      if (point) return { kind: 'point', point }
+      const overlap = results.find(({ geometry }) => geometry.type === 'overlap' && distance(geometry.start, geometry.end) <= Math.max(7, 4 * scale))
+      if (overlap) return { kind: 'pair', pair: pairName(overlap) }
+      const input = inputHits.sort((a, b) => a.distance - b.distance)[0]
+      return input ? { kind: 'input', index: input.index } : null
+    }
+    // Hit all geometry in screen pixels, independently of SVG paint order.
+    const hits = results.filter(({ geometry: g }) => g.type === 'point'
+      ? distance(g.point, g.point) <= Math.max(9, 7 * scale) : distance(g.start, g.end) <= Math.max(7, 4 * scale))
+    const inputs = inputHits.map(hit => hit.index)
+    for (const hit of hits) for (const index of hit.segments) if (!inputs.includes(index)) inputs.push(index)
+    return !inputs.length ? null : !hits.length && inputs.length === 1 ? { kind: 'input', index: inputs[0] }
+      : { kind: 'geometry', inputs, pairs: hits.map(pairName) }
+  }
 
   return <section className="drawing" aria-label="几何视图"><Card>
     <Card.Header className="drawing-toolbar"><div><Card.Title render={props => <h2 {...props} />}>原始坐标平面 · 等比例</Card.Title></div><ButtonGroup variant="tertiary" size="sm" aria-label="画布视图控制">
@@ -178,48 +254,28 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
       <span>Δ</span><span className="sweep-side-arrow" aria-hidden="true">{sweep.side === 'left' ? '↓' : '↑'}</span>
     </span>}
     <svg ref={svg} viewBox={`0 0 ${width} ${height}`} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
-      onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
+      tabIndex={sweep ? 0 : undefined}
+      onKeyDown={event => { if (sweep && event.key === 'Escape') { setInspection({ step: sweep.step, target: null }); onHover?.(null) } }}
+      onPointerLeave={() => { onHover?.(null); pointerStart.current = null }}
+      onPointerCancel={() => { pointerStart.current = null }}
+      onPointerDown={event => {
+        if (sweep) pointerStart.current = event.button === 0
+          ? { x: event.clientX, y: event.clientY, moved: !event.isPrimary, target: hitTarget(event) } : null
+        onHover?.(null)
+      }}
+      onPointerUp={event => {
+        const start = pointerStart.current
+        pointerStart.current = null
+        if (!sweep || !start || start.moved || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 4) return
+        setInspection({ step: sweep.step, target: start.target })
+        event.currentTarget.focus({ preventScroll: true })
+        onHover?.(null)
+      }}
       onPointerMove={event => {
-        if (!projection || !onHover || event.buttons) return
-        const eventLabel = (event.target as Element).closest<SVGTextElement>('text[data-event-point]')
-        const labelPoint = eventPoints.find(p => formatPoint(p) === eventLabel?.dataset.eventPoint)
-        if (labelPoint) { onHover({ kind: 'point', point: labelPoint }); return }
-        const label = (event.target as Element).closest<SVGTextElement>('text[data-input]')
-        if (label) { onHover({ kind: 'input', index: Number(label.dataset.input) }); return }
-        const matrix = svg.current!.getScreenCTM()!
-        const screen = (point: Point) => new DOMPoint(...transform.apply([projection.px(point), projection.py(point)])).matrixTransform(matrix)
-        const scale = transform.k * Math.hypot(matrix.a, matrix.b)
-        const pointInput = segments.find(segment => {
-          if (!samePoint(segment.start, segment.end)) return false
-          const center = screen(segment.start)
-          return Math.abs(event.clientX - center.x) + Math.abs(event.clientY - center.y) <= 11 * scale + 3
-        })
-        const pointer = pointInput ? screen(pointInput.start) : new DOMPoint(event.clientX, event.clientY)
-        const distance = (start: Point, end: Point) => {
-          const a = screen(start), b = screen(end)
-          const dx = b.x - a.x, dy = b.y - a.y
-          const lengthSquared = dx * dx + dy * dy
-          const t = lengthSquared ? Math.max(0, Math.min(1, ((pointer.x - a.x) * dx + (pointer.y - a.y) * dy) / lengthSquared)) : 0
-          return Math.hypot(pointer.x - a.x - t * dx, pointer.y - a.y - t * dy)
-        }
-        const inputHits = segments.map((s, index) => ({ index, distance: distance(s.start, s.end) }))
-          .filter(hit => hit.distance <= Math.max(7, 2 * scale))
-        if (sweep) {
-          const point = eventPoints.filter(p => distance(p, p) <= Math.max(10, 10 * scale))
-            .sort((a, b) => distance(a, a) - distance(b, b))[0]
-          if (point) { onHover({ kind: 'point', point }); return }
-          const input = inputHits.sort((a, b) => a.distance - b.distance)[0]
-          onHover(input ? { kind: 'input', index: input.index } : null)
-          return
-        }
-        // Hit all geometry in screen pixels, independently of SVG paint order.
-        const hits = results.filter(({ geometry: g }) => g.type === 'point'
-          ? distance(g.point, g.point) <= Math.max(9, 7 * scale) : distance(g.start, g.end) <= Math.max(7, 4 * scale))
-        const inputs = inputHits.map(hit => hit.index)
-        for (const hit of hits) for (const index of hit.segments) if (!inputs.includes(index)) inputs.push(index)
-        if (!inputs.length) onHover(null)
-        else if (!hits.length && inputs.length === 1) onHover({ kind: 'input', index: inputs[0] })
-        else onHover({ kind: 'geometry', inputs, pairs: hits.map(pairName) })
+        const start = pointerStart.current
+        if (start && Math.hypot(event.clientX - start.x, event.clientY - start.y) > 4) start.moved = true
+        if (event.buttons || event.pointerType === 'touch') return
+        onHover?.(hitTarget(event))
       }}>
       {projection && <>
       <g data-layer="grid" transform={transform.toString()}>
@@ -232,12 +288,11 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         {ordered.map(({ s, index }) => {
           const active = selected?.segments.includes(index) ?? false
           const highlighted = highlights ? highlights.inputs.includes(index) : active
-          return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${highlighted ? 'selected' : ''}`} data-selected={active} data-highlighted={highlighted} data-active={sweep?.active.includes(index)} data-checked={sweep?.checked.includes(index)}>
+          return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${highlighted ? 'selected' : ''}`} data-selected={active} data-highlighted={highlighted} data-active={sweep?.active.includes(index)} data-participant={sweep?.participants.includes(index)} data-checked={sweep?.checked.includes(index)}>
             {samePoint(s.start, s.end)
               ? <path d={`M${projection.px(s.start)},${projection.py(s.start) - 11} l11,11 l-11,11 l-11,-11 Z`} />
               : <line x1={projection.px(s.start)} y1={projection.py(s.start)} x2={projection.px(s.end)} y2={projection.py(s.end)} />}
-            <text data-input={sweep ? undefined : index} {...pointLabelProps(s.start)} x={projection.px(s.start) + 9} y={projection.py(s.start) - 10}>S{index}{sweep ? ' 起点' : ''}</text>
-            {sweep && <text {...pointLabelProps(s.end)} textAnchor="end" x={projection.px(s.end) - 9} y={projection.py(s.end) - 10}>S{index} 终点</text>}
+            {!sweep && <text data-input={index} x={projection.px(s.start) + 9} y={projection.py(s.start) - 10}>S{index}</text>}
           </g>
         })}
         {sweep && <g className="sweep-overlay">
@@ -245,13 +300,9 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
             className="sweep-line" x1={sweep.current ? projection.px(sweep.current) : projection.x(projection.minX) - 20} x2={sweep.current ? projection.px(sweep.current) : projection.x(projection.minX) - 20} y1={20} y2={height - 35} />
           {sweep.discovered.map(({ point, label }) => <g role="img" aria-label={`已发现 ${label}`} key={label}>
             <circle className="scheduled-point" cx={projection.px(point)} cy={projection.py(point)} r={8} />
-            <text {...pointLabelProps(point)} x={projection.px(point) + 12} y={projection.py(point) - 12}>{label}</text>
           </g>)}
           {sweep.current && <g role="img" aria-label={`当前事件 ${sweep.labelPoint(sweep.current)}`}>
             <circle className="current-point" cx={projection.px(sweep.current)} cy={projection.py(sweep.current)} r={10} />
-            {!points.some(p => samePoint(p, sweep.current!)) && !sweep.discovered.some(d => samePoint(d.point, sweep.current!)) &&
-              !results.some(r => r.geometry.type === 'point' && samePoint(r.geometry.point, sweep.current!)) &&
-              <text {...pointLabelProps(sweep.current)} x={projection.px(sweep.current) + 12} y={projection.py(sweep.current) - 12}>{sweep.labelPoint(sweep.current)}</text>}
           </g>}
         </g>}
         {resultOrder.map(result => {
@@ -262,9 +313,6 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
               <line x1={projection.px(g.start)} y1={projection.py(g.start)} x2={projection.px(g.end)} y2={projection.py(g.end)} />
               <circle cx={projection.px(g.start)} cy={projection.py(g.start)} r={5} /><circle cx={projection.px(g.end)} cy={projection.py(g.end)} r={5} />
             </>}
-            {sweep && g.type === 'point' && resultOrder.find(other => other.geometry.type === 'point' && samePoint(other.geometry.point, g.point)) === result &&
-              <text {...pointLabelProps(g.point)} className="result-label" x={projection.px(g.point) + 12} y={projection.py(g.point) - 12}>{sweep.labelPoint(g.point)}</text>}
-            {sweep && g.type === 'overlap' && <text className="result-label" textAnchor="middle" x={(projection.px(g.start) + projection.px(g.end)) / 2} y={(projection.py(g.start) + projection.py(g.end)) / 2 - 12}>重叠区间 {pairName(result)}</text>}
           </g>
         })}
         {sweep && highlights?.points.filter(p => eventPoints.some(visible => samePoint(p, visible))).map(p =>
@@ -275,8 +323,29 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
           <text className="order-number" x={point.x + 12} y={point.y - 12}>{point.label}</text>
         </g>)}
       </g>
+      {sweep && <g className="teaching-labels">
+        {sweep.current && <g>
+          <line className="label-leader" x1={transform.applyX(projection.px(sweep.current))} y1={transform.applyY(projection.py(sweep.current))} />
+          <text className="current-label" data-current="true" data-priority="3" {...pointLabelProps(sweep.current)}
+            x={transform.applyX(projection.px(sweep.current)) + 12} y={transform.applyY(projection.py(sweep.current)) - 12}>当前事件 {formatPoint(sweep.current)}</text>
+        </g>}
+        {segments.map((segment, id) => {
+          return <text key={id} data-input={id} data-priority="1" data-related={relatedInputs.includes(id)}
+            data-highlighted={highlights?.inputs.includes(id) ?? false}
+            x={transform.applyX(projection.px(segment.start) * 0.75 + projection.px(segment.end) * 0.25) + 9}
+            y={transform.applyY(projection.py(segment.start) * 0.75 + projection.py(segment.end) * 0.25) - 10}>S{id}</text>
+        })}
+        {inspectedPoint && (!sweep.current || !samePoint(inspectedPoint, sweep.current)) && <g>
+          <line className="label-leader" x1={transform.applyX(projection.px(inspectedPoint))} y1={transform.applyY(projection.py(inspectedPoint))} />
+          <text {...pointLabelProps(inspectedPoint)} data-priority="2"
+            x={transform.applyX(projection.px(inspectedPoint)) + 12} y={transform.applyY(projection.py(inspectedPoint)) - 12}>{formatPoint(inspectedPoint)}</text>
+        </g>}
+      </g>}
       </>}
     </svg>
+    {detail && <div className="canvas-detail" role="status" aria-label="画布对象详情" data-pinned={!!pinned && !hoverTarget}>
+      <span>{detail}</span>
+    </div>}
     </Card.Content>
     <Separator />
     <Card.Footer className="legend text-muted"><span>蓝色：输入</span><span>橙色：交集</span>

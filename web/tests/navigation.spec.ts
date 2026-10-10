@@ -50,12 +50,14 @@ for (const preset of ['crossing', 'disjoint']) {
     await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
 
     const input = page.getByRole('img', { name: '输入 S0', exact: true })
-    const initialWidth = (await input.boundingBox())!.width
+    // Stroke width reflects the current participants; measure zoom independently.
+    const scale = () => input.evaluate(element => (element as SVGGElement).getScreenCTM()!.a)
+    const initialScale = await scale()
     await page.getByRole('button', { name: '放大', exact: true }).click()
-    await expect.poll(async () => (await input.boundingBox())!.width).toBeGreaterThan(initialWidth)
+    await expect.poll(scale).toBeGreaterThan(initialScale)
     await page.keyboard.down('r')
     await expect(slider).toHaveValue('0')
-    await expect.poll(async () => (await input.boundingBox())!.width).toBeCloseTo(initialWidth)
+    await expect.poll(scale).toBeCloseTo(initialScale)
     await page.keyboard.press('ArrowRight')
     await page.keyboard.down('r')
     await expect(slider).toHaveValue('1')
