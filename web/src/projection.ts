@@ -2,10 +2,12 @@ import { scaleLinear } from 'd3'
 import { approximate, type Point } from './geometry'
 
 export function projectPoints(points: Point[], width: number, height: number, padding: number) {
+  if (!Number.isFinite(width) || !Number.isFinite(height)) return null
   const xs = points.map(p => approximate(p.x)), ys = points.map(p => approximate(p.y))
   const minX = Math.min(0, ...xs), maxX = Math.max(1, ...xs)
   const minY = Math.min(0, ...ys), maxY = Math.max(1, ...ys)
   const available = Math.min((width - padding * 2) / (maxX - minX), (height - padding * 2) / (maxY - minY))
+  if (!Number.isFinite(available) || available <= 0) return null
   const unit = 2 ** Math.floor(Math.log2(available))
   const plotWidth = (maxX - minX) * unit, plotHeight = (maxY - minY) * unit
   // Keep one affine projection: only the plot origin is rounded, never individual points.

@@ -29,43 +29,43 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     'data-event-point': formatPoint(point),
     'data-highlighted': highlights?.points.some(p => samePoint(p, point)) ?? false,
   } : {}
-  const { minX, maxX, x, y, px, py } = projectPoints(points, width, height, 64)
-  const sideX = sweep?.current ? transform.applyX(px(sweep.current)) : null
-  const sideY = sweep?.current ? transform.applyY(py(sweep.current)) : null
+  const projection = projectPoints(points, width, height, 64)
+  const sideX = projection && sweep?.current ? transform.applyX(projection.px(sweep.current)) : null
+  const sideY = projection && sweep?.current ? transform.applyY(projection.py(sweep.current)) : null
   const heightSideVisible = sweep?.side && sweep.participants.some(id => isVertical(segments[id])) &&
     sideX !== null && sideX >= 0 && sideX <= width &&
     sideY !== null && sideY >= 0 && sideY <= height
   // Project the existing list order; approximate coordinates only position the drawing.
-  const numberedPoints = sweep?.numbering === 'pending'
-    ? sweep.pending.map((point, index) => ({ x: px(point), y: py(point), label: `${index + 1}`, name: `待处理事件 ${index + 1}：${sweep.labelPoint(point)}` }))
+  const numberedPoints = !projection ? [] : sweep?.numbering === 'pending'
+    ? sweep.pending.map((point, index) => ({ x: projection.px(point), y: projection.py(point), label: `${index + 1}`, name: `待处理事件 ${index + 1}：${sweep.labelPoint(point)}` }))
     : sweep?.numbering === 'active' && sweep.current
       ? sweep.active.map((id, index) => {
         const segment = segments[id]
-        const scanX = px(sweep.current!)
+        const scanX = projection.px(sweep.current!)
         // A vertical segment coincides with the drawn sweep line over an
         // interval. Its marker tracks the event frontier, not a unique cut.
         if (isVertical(segment) || samePoint(segment.start, segment.end)) {
-          return { x: scanX, y: py(sweep.current!), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}（当前处理高度）` }
+          return { x: scanX, y: projection.py(sweep.current!), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}（当前处理高度）` }
         }
-        const fraction = (scanX - px(segment.start)) / (px(segment.end) - px(segment.start))
-        return { x: scanX, y: py(segment.start) + fraction * (py(segment.end) - py(segment.start)), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}` }
+        const fraction = (scanX - projection.px(segment.start)) / (projection.px(segment.end) - projection.px(segment.start))
+        return { x: scanX, y: projection.py(segment.start) + fraction * (projection.py(segment.end) - projection.py(segment.start)), label: `${index + 1}`, name: `活动线段 ${index + 1}：S${id}` }
       }) : []
 
   useLayoutEffect(() => {
     const element = svg.current!
+    const validSize = ({ width, height }: DOMRect) =>
+      Number.isFinite(width) && width > 0 && Number.isFinite(height) && height > 0
     const initial = element.getBoundingClientRect()
-    setSize({ width: initial.width, height: initial.height })
+    let previous = validSize(initial) ? initial : null
+    if (previous) setSize({ width: initial.width, height: initial.height })
     behavior.current.on('zoom', event => setTransform(event.transform))
     select(element).call(behavior.current).on('wheel.zoom', null)
-    let previousWidth = initial.width, previousHeight = initial.height
     const observer = new ResizeObserver(() => {
-      // Full-page capture can report a zero contentRect while the SVG still has a layout box.
-      // Read the current box, just as on mount, before updating projection or resetting zoom.
-      const { width, height } = element.getBoundingClientRect()
-      if (width === previousWidth && height === previousHeight) return
-      previousWidth = width
-      previousHeight = height
-      setSize({ width, height })
+      // Transient layout collapse must not replace the last valid view or reset zoom.
+      const size = element.getBoundingClientRect()
+      if (!validSize(size) || (size.width === previous?.width && size.height === previous?.height)) return
+      previous = size
+      setSize({ width: size.width, height: size.height })
       select(element).call(behavior.current.transform, zoomIdentity)
     })
     observer.observe(element)
@@ -77,6 +77,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   const resultOrder = results.filter(r => r !== selected).concat(selected ? [selected] : [])
 
   useLayoutEffect(() => {
+    if (!projection) return
     const element = svg.current!
     const labels = Array.from(element.querySelectorAll<SVGTextElement>(sweep?.numbering ? 'text.order-number' : 'text:not(.tick)'))
     // Measure the rendered font, including selection weight, in the shared SVG coordinates.
@@ -90,8 +91,8 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
       return { x, y, width, height }
     })
     const gap = 6 // Includes the white outline and space between adjacent labels.
-    const lines = segments.map(segment => ({ x1: px(segment.start), y1: py(segment.start), x2: px(segment.end), y2: py(segment.end) }))
-    for (const point of [...points, ...eventPoints]) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
+    const lines = segments.map(segment => ({ x1: projection.px(segment.start), y1: projection.py(segment.start), x2: projection.px(segment.end), y2: projection.py(segment.end) }))
+    for (const point of [...points, ...eventPoints]) occupied.push({ x: projection.px(point) - 10, y: projection.py(point) - 10, width: 20, height: 20 })
     labels.forEach((label, index) => {
       const box = boxes[index]
       // Short workspaces need space below and beside labels too: moving every
@@ -156,14 +157,14 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     <svg ref={svg} viewBox={`0 0 ${width} ${height}`} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       onPointerLeave={() => onHover?.(null)} onPointerDown={() => onHover?.(null)}
       onPointerMove={event => {
-        if (!onHover || event.buttons) return
+        if (!projection || !onHover || event.buttons) return
         const eventLabel = (event.target as Element).closest<SVGTextElement>('text[data-event-point]')
         const labelPoint = eventPoints.find(p => formatPoint(p) === eventLabel?.dataset.eventPoint)
         if (labelPoint) { onHover({ kind: 'point', point: labelPoint }); return }
         const label = (event.target as Element).closest<SVGTextElement>('text[data-input]')
         if (label) { onHover({ kind: 'input', index: Number(label.dataset.input) }); return }
         const matrix = svg.current!.getScreenCTM()!
-        const screen = (point: Point) => new DOMPoint(...transform.apply([px(point), py(point)])).matrixTransform(matrix)
+        const screen = (point: Point) => new DOMPoint(...transform.apply([projection.px(point), projection.py(point)])).matrixTransform(matrix)
         const scale = transform.k * Math.hypot(matrix.a, matrix.b)
         const pointInput = segments.find(segment => {
           if (!samePoint(segment.start, segment.end)) return false
@@ -197,9 +198,10 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         else if (!hits.length && inputs.length === 1) onHover({ kind: 'input', index: inputs[0] })
         else onHover({ kind: 'geometry', inputs, pairs: hits.map(pairName) })
       }}>
+      {projection && <>
       <g data-layer="grid" transform={transform.toString()}>
-        {x.ticks(Math.max(1, Math.floor((x(maxX) - x(minX)) / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={x(t)} x2={x(t)} y1={20} y2={height - 35} /><text className="tick" x={x(t)} y={height - 15}>{t}</text></g>)}
-        {y.ticks(Math.max(1, Math.min(6, Math.floor(Math.abs(y.range()[1] - y.range()[0]) / 40)))).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={y(t)} y2={y(t)} /><text className="tick" x={12} y={y(t) - 5}>{t}</text></g>)}
+        {projection.x.ticks(Math.max(1, Math.floor((projection.x(projection.maxX) - projection.x(projection.minX)) / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={projection.x(t)} x2={projection.x(t)} y1={20} y2={height - 35} /><text className="tick" x={projection.x(t)} y={height - 15}>{t}</text></g>)}
+        {projection.y.ticks(Math.max(1, Math.min(6, Math.floor(Math.abs(projection.y.range()[1] - projection.y.range()[0]) / 40)))).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={projection.y(t)} y2={projection.y(t)} /><text className="tick" x={12} y={projection.y(t) - 5}>{t}</text></g>)}
       </g>
       {heightSideVisible && <line className="event-height-guide" aria-label="当前事件水平辅助线" role="img"
         x1={sideX} x2={Math.max(sideX, width - 36)} y1={sideY} y2={sideY} />}
@@ -209,47 +211,48 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
           const highlighted = highlights ? highlights.inputs.includes(index) : active
           return <g key={index} role="img" aria-label={`输入 S${index}${active ? '，已选中' : ''}`} className={`input ${highlighted ? 'selected' : ''}`} data-selected={active} data-highlighted={highlighted} data-active={sweep?.active.includes(index)} data-checked={sweep?.checked.includes(index)}>
             {samePoint(s.start, s.end)
-              ? <path d={`M${px(s.start)},${py(s.start) - 11} l11,11 l-11,11 l-11,-11 Z`} />
-              : <line x1={px(s.start)} y1={py(s.start)} x2={px(s.end)} y2={py(s.end)} />}
-            <text data-input={sweep ? undefined : index} {...pointLabelProps(s.start)} x={px(s.start) + 9} y={py(s.start) - 10}>S{index}{sweep ? ' 起点' : ''}</text>
-            {sweep && <text {...pointLabelProps(s.end)} textAnchor="end" x={px(s.end) - 9} y={py(s.end) - 10}>S{index} 终点</text>}
+              ? <path d={`M${projection.px(s.start)},${projection.py(s.start) - 11} l11,11 l-11,11 l-11,-11 Z`} />
+              : <line x1={projection.px(s.start)} y1={projection.py(s.start)} x2={projection.px(s.end)} y2={projection.py(s.end)} />}
+            <text data-input={sweep ? undefined : index} {...pointLabelProps(s.start)} x={projection.px(s.start) + 9} y={projection.py(s.start) - 10}>S{index}{sweep ? ' 起点' : ''}</text>
+            {sweep && <text {...pointLabelProps(s.end)} textAnchor="end" x={projection.px(s.end) - 9} y={projection.py(s.end) - 10}>S{index} 终点</text>}
           </g>
         })}
         {sweep && <g className="sweep-overlay">
           <line role="img" aria-label={`扫描线 ${sweep.current ? `x = ${formatRational(sweep.current.x)}` : '尚未开始'}`}
-            className="sweep-line" x1={sweep.current ? px(sweep.current) : x(minX) - 20} x2={sweep.current ? px(sweep.current) : x(minX) - 20} y1={20} y2={height - 35} />
+            className="sweep-line" x1={sweep.current ? projection.px(sweep.current) : projection.x(projection.minX) - 20} x2={sweep.current ? projection.px(sweep.current) : projection.x(projection.minX) - 20} y1={20} y2={height - 35} />
           {sweep.discovered.map(({ point, label }) => <g role="img" aria-label={`已发现 ${label}`} key={label}>
-            <circle className="scheduled-point" cx={px(point)} cy={py(point)} r={8} />
-            <text {...pointLabelProps(point)} x={px(point) + 12} y={py(point) - 12}>{label}</text>
+            <circle className="scheduled-point" cx={projection.px(point)} cy={projection.py(point)} r={8} />
+            <text {...pointLabelProps(point)} x={projection.px(point) + 12} y={projection.py(point) - 12}>{label}</text>
           </g>)}
           {sweep.current && <g role="img" aria-label={`当前事件 ${sweep.labelPoint(sweep.current)}`}>
-            <circle className="current-point" cx={px(sweep.current)} cy={py(sweep.current)} r={10} />
+            <circle className="current-point" cx={projection.px(sweep.current)} cy={projection.py(sweep.current)} r={10} />
             {!points.some(p => samePoint(p, sweep.current!)) && !sweep.discovered.some(d => samePoint(d.point, sweep.current!)) &&
               !results.some(r => r.geometry.type === 'point' && samePoint(r.geometry.point, sweep.current!)) &&
-              <text {...pointLabelProps(sweep.current)} x={px(sweep.current) + 12} y={py(sweep.current) - 12}>{sweep.labelPoint(sweep.current)}</text>}
+              <text {...pointLabelProps(sweep.current)} x={projection.px(sweep.current) + 12} y={projection.py(sweep.current) - 12}>{sweep.labelPoint(sweep.current)}</text>}
           </g>}
         </g>}
         {resultOrder.map(result => {
           const g = result.geometry, active = result === selected
           const highlighted = highlights ? highlights.pairs.includes(pairName(result)) : active
           return <g key={pairName(result)} role="img" aria-label={`交集 ${pairName(result)}${active ? '，已选中' : ''}`} className={`intersection ${highlighted ? 'selected' : ''}`} data-highlighted={highlighted}>
-            {g.type === 'point' ? <circle cx={px(g.point)} cy={py(g.point)} r={highlighted ? 7 : 5} /> : <>
-              <line x1={px(g.start)} y1={py(g.start)} x2={px(g.end)} y2={py(g.end)} />
-              <circle cx={px(g.start)} cy={py(g.start)} r={5} /><circle cx={px(g.end)} cy={py(g.end)} r={5} />
+            {g.type === 'point' ? <circle cx={projection.px(g.point)} cy={projection.py(g.point)} r={highlighted ? 7 : 5} /> : <>
+              <line x1={projection.px(g.start)} y1={projection.py(g.start)} x2={projection.px(g.end)} y2={projection.py(g.end)} />
+              <circle cx={projection.px(g.start)} cy={projection.py(g.start)} r={5} /><circle cx={projection.px(g.end)} cy={projection.py(g.end)} r={5} />
             </>}
             {sweep && g.type === 'point' && resultOrder.find(other => other.geometry.type === 'point' && samePoint(other.geometry.point, g.point)) === result &&
-              <text {...pointLabelProps(g.point)} className="result-label" x={px(g.point) + 12} y={py(g.point) - 12}>{sweep.labelPoint(g.point)}</text>}
-            {sweep && g.type === 'overlap' && <text className="result-label" textAnchor="middle" x={(px(g.start) + px(g.end)) / 2} y={(py(g.start) + py(g.end)) / 2 - 12}>重叠区间 {pairName(result)}</text>}
+              <text {...pointLabelProps(g.point)} className="result-label" x={projection.px(g.point) + 12} y={projection.py(g.point) - 12}>{sweep.labelPoint(g.point)}</text>}
+            {sweep && g.type === 'overlap' && <text className="result-label" textAnchor="middle" x={(projection.px(g.start) + projection.px(g.end)) / 2} y={(projection.py(g.start) + projection.py(g.end)) / 2 - 12}>重叠区间 {pairName(result)}</text>}
           </g>
         })}
         {sweep && highlights?.points.filter(p => eventPoints.some(visible => samePoint(p, visible))).map(p =>
-          <circle key={formatPoint(p)} className="hover-event" cx={px(p)} cy={py(p)} r={15} />)}
+          <circle key={formatPoint(p)} className="hover-event" cx={projection.px(p)} cy={projection.py(p)} r={15} />)}
         {numberedPoints.map(point => <g key={point.name} className="order-marker" role="img" aria-label={point.name}>
           <line className="order-leader" x1={point.x} y1={point.y} x2={point.x + 8} y2={point.y - 12} />
           <circle cx={point.x} cy={point.y} r={3} />
           <text className="order-number" x={point.x + 12} y={point.y - 12}>{point.label}</text>
         </g>)}
       </g>
+      </>}
     </svg>
     </Card.Content>
     <Separator />

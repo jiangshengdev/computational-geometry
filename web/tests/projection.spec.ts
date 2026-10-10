@@ -4,7 +4,7 @@ import { segment } from '../src/geometry'
 
 test('power-of-two fit preserves fractional geometry and puts spare pixels on the right and bottom', () => {
   const input = segment('-1', '-2', '1', '4')
-  const p = projectPoints([input.start, input.end], 1079, 561, 64)
+  const p = projectPoints([input.start, input.end], 1079, 561, 64)!
   expect(p.x(1) - p.x(0)).toBe(64)
   expect(p.y(0) - p.y(1)).toBe(64)
   expect(p.x(-1)).toBe(475)
@@ -18,7 +18,7 @@ test('power-of-two fit preserves fractional geometry and puts spare pixels on th
 test('fit changes at the power-of-two boundary and permits negative exponents', () => {
   const input = segment('0', '0', '4', '4')
   for (const [size, unit] of [[639, 64], [640, 128], [641, 128], [130, 0.5]]) {
-    const p = projectPoints([input.start, input.end], size, size, 64)
+    const p = projectPoints([input.start, input.end], size, size, 64)!
     expect(p.x(1) - p.x(0)).toBe(unit)
     expect(p.y(0) - p.y(1)).toBe(unit)
     expect(p.x(0)).toBeGreaterThanOrEqual(64)
@@ -29,13 +29,70 @@ test('fit changes at the power-of-two boundary and permits negative exponents', 
 test('empty and point inputs retain finite projections', () => {
   const point = segment('1/3', '2/3', '1/3', '2/3').start
   for (const points of [[], [point]]) {
-    const p = projectPoints(points, 160, 120, 16)
+    const p = projectPoints(points, 160, 120, 16)!
     expect(Number.isFinite(p.px(point))).toBe(true)
     expect(Number.isFinite(p.py(point))).toBe(true)
   }
 })
 
+test('unusable drawing dimensions have no projection', () => {
+  const input = segment('0', '0', '4', '4')
+  for (const size of [0, 100, 128, NaN, Infinity, -1]) {
+    expect(projectPoints([input.start, input.end], size, 196, 64)).toBeNull()
+    expect(projectPoints([input.start, input.end], 318, size, 64)).toBeNull()
+  }
+})
+
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+  test(`real zero-size layout preserves view and insufficient space hides geometry ${browserName}`, async ({ playwright, baseURL }) => {
+    const browser = await playwright[browserName].launch({ headless: true })
+    try {
+      const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 } })
+      const errors: string[] = []
+      page.on('pageerror', error => errors.push(error.message))
+      page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
+      await page.goto('/cases/crossing/learn?step=3')
+      const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
+      const layer = svg.locator('[data-layer="geometry"]')
+      await expect(svg).toHaveAttribute('viewBox', '0 0 318 196')
+      await page.getByRole('button', { name: '放大', exact: true }).click()
+      await expect(layer).toHaveAttribute('transform', /scale\(1\.4\)/)
+      const zoomed = await layer.getAttribute('transform')
+      const box = (await svg.boundingBox())!
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+      await page.mouse.down()
+      await page.mouse.move(box.x + box.width / 2 + 25, box.y + box.height / 2 + 15, { steps: 5 })
+      await page.mouse.up()
+      await expect(layer).not.toHaveAttribute('transform', zoomed!)
+      const transform = await layer.getAttribute('transform')
+      for (const axis of ['width', 'height'] as const) {
+        await svg.evaluate(async (element, axis) => {
+          const svg = element as SVGSVGElement
+          svg.style.setProperty(axis, '0px', 'important')
+          if (axis === 'height') svg.style.setProperty('flex', 'none')
+          await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
+        }, axis)
+        expect(await svg.evaluate((element, axis) => element.getBoundingClientRect()[axis], axis)).toBe(0)
+        await expect(svg).toHaveAttribute('viewBox', '0 0 318 196')
+        await expect(layer).toHaveAttribute('transform', transform!)
+        await svg.evaluate(async element => {
+          element.removeAttribute('style')
+          await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
+        })
+        await expect(layer).toHaveAttribute('transform', transform!)
+      }
+      await svg.evaluate(element => (element as SVGSVGElement).style.setProperty('width', '100px'))
+      await expect(svg).toHaveAttribute('viewBox', '0 0 100 196')
+      await expect(svg.locator('[data-layer="geometry"]')).toHaveCount(0)
+      await expect(page.getByRole('button', { name: '放大', exact: true })).toBeVisible()
+      await svg.evaluate(element => element.removeAttribute('style'))
+      await expect(svg.locator('.input > line')).toHaveCount(2)
+      await expect(svg).toHaveAttribute('viewBox', '0 0 318 196')
+      expect(errors).toEqual([])
+    } finally {
+      await browser.close()
+    }
+  })
   test(`stale zero-size notifications preserve geometry and zoom ${browserName}`, async ({ playwright, baseURL }) => {
     const browser = await playwright[browserName].launch({ headless: true })
     try {

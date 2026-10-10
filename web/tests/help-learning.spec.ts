@@ -1,6 +1,4 @@
 import { expect, test } from '@playwright/test'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 
 for (const width of [1360, 390]) test(`教学帮助：动态内容默认展示与阅读状态保持 ${width}px`, async ({ page }) => {
   const errors: string[] = []
@@ -57,13 +55,11 @@ for (const width of [1360, 390]) test(`教学帮助：动态内容默认展示�
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('3')
   await page.evaluate(() => window.scrollTo(0, 0))
-  await page.screenshot({ path: join(tmpdir(), `bo-help-learning-${width}.png`), fullPage: true })
   await page.getByRole('button', { name: '说明与帮助', exact: true }).click()
   const dialog = page.getByRole('dialog')
   await dialog.getByRole('tab', { name: '参考资料', exact: true }).click()
   await dialog.getByRole('link', { name: /2D Intersection of Curves/ }).scrollIntoViewIfNeeded()
   await expect(dialog.getByRole('link', { name: /2D Intersection of Curves/ })).toBeInViewport()
-  await page.screenshot({ path: join(tmpdir(), `bo-help-modal-${width}.png`) })
   await dialog.getByRole('button', { name: '关闭帮助', exact: true }).click()
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
