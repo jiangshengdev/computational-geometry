@@ -332,9 +332,9 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
         {sweep && highlights?.points.filter(p => eventPoints.some(visible => samePoint(p, visible))).map(p =>
           <circle key={formatPoint(p)} className="hover-event" cx={projection.px(p)} cy={projection.py(p)} r={15} />)}
         {numberedPoints.map(point => <g key={point.name} className="order-marker" role="img" aria-label={point.name}>
-          <line className="order-leader" x1={point.x} y1={point.y} x2={point.x + 4} y2={point.y - 4} />
+          <line className="order-leader" x1={point.x} y1={point.y} x2={point.x + 8} y2={point.y - 12} />
           <circle cx={point.x} cy={point.y} r={3} />
-          <text className="order-number" x={point.x + 8} y={point.y - 4}>{point.label}</text>
+          <text className="order-number" x={point.x + 12} y={point.y - 12}>{point.label}</text>
         </g>)}
       </g>
       {sweep && <g className="teaching-labels">
