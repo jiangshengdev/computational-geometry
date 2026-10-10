@@ -6,7 +6,7 @@ import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, 
 import { LearningView } from './LearningView'
 import { CaseHelp, HelpButton } from './CaseHelp'
 import { presets } from './presets'
-import { hoverHighlights, type HoverTarget } from './hover'
+import { hoverHighlights, useHoverTarget } from './hover'
 import './App.css'
 import { Alert } from '@heroui/react/alert'
 import { Card } from '@heroui/react/card'
@@ -31,7 +31,7 @@ function PageTitle({ page, preset }: { page: string; preset?: Preset }) {
 function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean }) {
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
   const [selected, setSelected] = useState<Intersection | null>(null)
-  const [hover, setHover] = useState<HoverTarget | null>(null)
+  const [hover, setHover] = useHoverTarget()
   const teachable = Boolean(preset.learning)
   const detailsRef = useRef<HTMLElement>(null)
   const [detailsScrollable, setDetailsScrollable] = useState(false)

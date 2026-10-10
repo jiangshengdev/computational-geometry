@@ -5,7 +5,7 @@ import { Button } from '@heroui/react/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@heroui/react/card'
 import { Chip } from '@heroui/react/chip'
 import { Slider } from '@heroui/react/slider'
-import { hoverHighlights, type HoverTarget } from './hover'
+import { hoverHighlights, useHoverTarget } from './hover'
 import { AnimatePresence, LayoutGroup } from 'motion/react'
 import { LearningRow } from './LearningMotion'
 import { useLearningReducedMotion } from './useLearningReducedMotion'
@@ -24,7 +24,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   const reducedMotion = useLearningReducedMotion()
   const animationId = useId()
   const [run, setRun] = useState(0)
-  const [hover, setHover] = useState<HoverTarget | null>(null)
+  const [hover, setHover] = useHoverTarget()
   const [numbering, setNumbering] = useState<'active' | 'pending' | null>(null)
   const currentPanel = useRef<HTMLDivElement>(null)
   const pendingPanel = useRef<HTMLDivElement>(null)

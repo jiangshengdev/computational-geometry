@@ -21,6 +21,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
   const [{ width, height }, setSize] = useState({ width: 800, height: 460 })
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity)
   const behavior = useRef(zoom<SVGSVGElement, unknown>().scaleExtent([0.25, 40]))
+  const labelLayout = useRef<{ key: string; labels: SVGTextElement[] } | null>(null)
   const points = segments.flatMap(s => [s.start, s.end])
   const eventPoints = sweep ? [...points, ...sweep.discovered.map(d => d.point),
     ...results.flatMap(r => r.geometry.type === 'point' ? [r.geometry.point] : []),
@@ -80,13 +81,34 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     if (!projection) return
     const element = svg.current!
     const labels = Array.from(element.querySelectorAll<SVGTextElement>(sweep?.numbering ? 'text.order-number' : 'text:not(.tick)'))
-    // Measure the rendered font, including selection weight, in the shared SVG coordinates.
+    const ticks = Array.from(element.querySelectorAll<SVGTextElement>('.tick'))
+    // Depend on layout content, not on freshly allocated sweep/highlight objects.
+    // Coordinates are local to the shared SVG transform, so pan/zoom need no reflow.
+    const key = JSON.stringify([width, height, sweep?.numbering, segments, eventPoints,
+      [...labels, ...ticks].map(label => {
+        const style = getComputedStyle(label)
+        return [label.textContent, label.getAttribute('x'), label.getAttribute('y'),
+          style.textAnchor, style.fontFamily, style.fontSize, style.fontStyle, style.letterSpacing]
+      })])
+    if (labelLayout.current?.key === key && labels.every((label, i) => label === labelLayout.current!.labels[i])) return
+    // Reserve both normal and bold bounds before placing labels. Hover can then
+    // change weight without moving its own hit target or redoing collision searches.
     for (const label of labels) label.removeAttribute('transform')
-    const boxes = labels.map(label => {
+    const weights = labels.map(label => label.style.fontWeight)
+    for (const label of labels) label.style.fontWeight = '400'
+    const normal = labels.map(label => {
       const { x, y, width, height } = label.getBBox()
       return { x, y, width, height }
     })
-    const occupied = Array.from(element.querySelectorAll<SVGTextElement>('.tick'), tick => {
+    for (const label of labels) label.style.fontWeight = '700'
+    const boxes = labels.map((label, i) => {
+      const bold = label.getBBox(), regular = normal[i]
+      const x = Math.min(regular.x, bold.x), y = Math.min(regular.y, bold.y)
+      return { x, y, width: Math.max(regular.x + regular.width, bold.x + bold.width) - x,
+        height: Math.max(regular.y + regular.height, bold.y + bold.height) - y }
+    })
+    labels.forEach((label, i) => { label.style.fontWeight = weights[i] })
+    const occupied = ticks.map(tick => {
       const { x, y, width, height } = tick.getBBox()
       return { x, y, width, height }
     })
@@ -133,6 +155,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
       }
       occupied.push({ x: left, y: top, width: box.width, height: box.height })
     })
+    labelLayout.current = { key, labels }
   })
 
   return <section className="drawing" aria-label="几何视图"><Card>
