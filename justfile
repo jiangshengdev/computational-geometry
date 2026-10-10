@@ -27,6 +27,15 @@ perf:
 perf-profile:
     cargo test --offline --test performance profile_one_algorithm -- --exact --ignored --nocapture --test-threads=1
 
+# 从前端案例导出独立性能夹具；不启动后端。
+[working-directory('web')]
+perf-export:
+    pnpm run perf:export
+
+# 只运行 Rust 案例性能诊断；读取已导出夹具，不调用前端工具。
+perf-cases:
+    cargo test --offline --lib http::case_performance::actual_case_timings -- --exact --ignored --nocapture --test-threads=1
+
 # 一键启动临时后端并运行无头 E2E，结束后自动清理（包含原生编译，由使用者运行）。
 [positional-arguments]
 test-e2e *args:

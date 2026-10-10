@@ -8,6 +8,10 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 
+#[cfg(test)]
+#[path = "case_performance.rs"]
+mod case_performance;
+
 use crate::{
     Geometry, Intersection, Point, Rational, Segment, SweepTrace, intersections,
     trace_intersections,
