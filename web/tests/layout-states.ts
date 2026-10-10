@@ -61,7 +61,7 @@ export const layoutCases: { id: string; states: LayoutState[] }[] = [
     states: [
       { reason: '接触记录与同点多配对的附加说明', matches: step => step.action === 'record' && !step.subjects.every(id => step.passes.includes(id)), text: /在这里接触.*同一个几何点/ },
       { reason: '开始者与多个穿过者一起加入的长说明', matches: step => step.action === 'insert' && step.passes.length > 1, text: /开始者与穿过者一起排成/ },
-      { reason: '有开始者时换序不再交换的附加说明', matches: step => step.action === 'reorder' && step.starts.length > 0, text: /本点有开始者/ },
+      { reason: '有非零长度开始者时换序不再交换的附加说明', matches: step => step.action === 'reorder' && step.starts.some(id => !step.ends.includes(id)), text: /本点有非零长度开始者/ },
       completed,
     ],
   },
