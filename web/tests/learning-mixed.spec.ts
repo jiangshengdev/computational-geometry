@@ -26,6 +26,10 @@ for (const width of [1360, 390]) for (const [id, pairs, positions, center, cente
     await expect(explanation).toContainText('不进入持续活动顺序')
     await expect(page.getByRole('region', { name: '待处理事件队列' })).toContainText(upper)
     const text = await explanation.innerText()
+    if (id === 'mixed-vertical' && text.includes('换序为')) {
+      await expect(explanation).not.toContainText('换序已随加入一起展示')
+      await expect(page.getByTestId('active-order')).toHaveText('S2S0S1')
+    }
     if (/记录 .*：参与线段/.test(text)) {
       recordsAtCenter++
       if (!firstCenterRecord) firstCenterRecord = page.url()

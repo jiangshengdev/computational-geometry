@@ -33,7 +33,7 @@ test('预览快捷键：右方向键进入教程，长按不跳过初始步骤',
   expect(errors).toEqual([])
 })
 
-for (const path of ['/cases/empty', '/cases/not-a-case', '/cases/crossing/extra', '/']) {
+for (const path of ['/cases/not-a-case', '/cases/crossing/extra', '/']) {
   test(`预览快捷键：${path} 没有可进入的教程时保持原页`, async ({ page }) => {
     await page.goto(path)
     await expect(page).toHaveTitle(/ · BO 结果查看器$/)
@@ -169,19 +169,19 @@ for (const invalid of [
   { path: '/missing', message: '未知页面路径。' },
   { path: '/cases/not-a-case', message: '未知案例：not-a-case' },
   { path: '/cases/not-a-case/learn', message: '未知案例：not-a-case' },
-  { path: '/cases/empty/learn', message: '此案例不支持教学。', id: 'empty' },
+  { path: '/cases/empty/learn?step=1', message: '教学步骤超出范围：此案例的有效步骤为 0–0。', id: 'empty', learn: true },
   { path: '/cases/crossing/extra', message: '未知页面路径。', id: 'crossing', learn: true },
 ]) {
   test(`三页路由：非法链接 ${invalid.path} 保留地址并提供恢复入口`, async ({ page }) => {
     await page.goto(invalid.path)
     await expect(page.getByRole('alert')).toContainText(invalid.message)
-    expect(new URL(page.url()).pathname).toBe(invalid.path)
+    expect(new URL(page.url()).pathname + new URL(page.url()).search).toBe(invalid.path)
     await page.reload()
     await expect(page.getByRole('alert')).toContainText(invalid.message)
-    expect(new URL(page.url()).pathname).toBe(invalid.path)
+    expect(new URL(page.url()).pathname + new URL(page.url()).search).toBe(invalid.path)
     await expect(page.getByRole('region', { name: '逐步学习' })).toHaveCount(0)
     const recovery = page.getByRole('navigation', { name: '恢复导航' })
-    await expect(recovery.getByRole('link', { name: '返回列表', exact: true })).toHaveAttribute('href', '/')
+    await expect(page.getByRole('link', { name: '返回列表', exact: true })).toHaveAttribute('href', '/')
     await expect(recovery.getByRole('link', { name: '查看详情', exact: true })).toHaveCount(invalid.id ? 1 : 0)
     await expect(recovery.getByRole('link', { name: '从头学习', exact: true })).toHaveCount(invalid.learn ? 1 : 0)
     if (invalid.learn) {

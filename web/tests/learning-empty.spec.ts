@@ -26,3 +26,15 @@ for (const [id, reason] of [
   await expect(page.getByTestId('active-order')).toHaveText('空')
   if (id !== 'empty') await expect(result).toHaveCount(0)
 })
+
+test('空集合快捷键进入已完成教学，刷新保留正确标题和状态', async ({ page }) => {
+  await page.goto('/cases/empty')
+  await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
+  await page.keyboard.press('ArrowRight')
+  await expect(page).toHaveURL(/\/cases\/empty\/learn$/)
+  await expect(page).toHaveTitle('空集合 · 逐步学习 · BO 结果查看器')
+  await expect(page.getByRole('region', { name: '学习结果' })).toBeVisible()
+  await page.reload()
+  await expect(page).toHaveTitle('空集合 · 逐步学习 · BO 结果查看器')
+  await expect(page.getByRole('button', { name: '下一步', exact: true })).toBeDisabled()
+})

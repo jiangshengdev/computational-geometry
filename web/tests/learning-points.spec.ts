@@ -13,12 +13,17 @@ for (const [id, pairs, positions, pointIds, exactPoint] of [
   const active = page.getByTestId('active-order')
   const group = page.getByRole('region', { name: '同点参与线段' })
   const explanation = page.getByRole('region', { name: '操作解释' })
-  let pointEvents = 0
+  let pointEvents = 0, reorders = 0
   while (await next.isEnabled()) {
     await next.click()
     for (const id of pointIds) await expect(active.locator(`[data-input-id="${id}"]`)).toHaveCount(0)
     if (id === 'pure-points') await expect(active).toHaveText('空')
     const text = await explanation.innerText()
+    if (id === 'point-multiway' && text.includes('换序为')) {
+      reorders++
+      await expect(explanation).not.toContainText('换序已随加入一起展示')
+      await expect(active).toHaveText('S0S2S1')
+    }
     if (text.includes('从队首取出') && (await page.getByRole('region', { name: '当前事件' }).innerText()).includes(exactPoint)) {
       pointEvents++
       await expect(explanation).toContainText('零长度')
@@ -32,6 +37,7 @@ for (const [id, pairs, positions, pointIds, exactPoint] of [
     }
   }
   expect(pointEvents).toBe(1)
+  if (id === 'point-multiway') expect(reorders).toBe(1)
   const result = page.getByRole('region', { name: '学习结果' })
   await expect(result).toContainText(`独立交点位置：${positions}；相交线段对：${pairs}`)
   await expect(result).toContainText(exactPoint)

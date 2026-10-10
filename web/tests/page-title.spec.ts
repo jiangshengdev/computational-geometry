@@ -46,7 +46,7 @@ for (const [path, title] of [
   ['/unknown', '链接无效 · BO 结果查看器'],
   ['/cases/not-a-case', '链接无效 · BO 结果查看器'],
   ['/cases/crossing/extra', '链接无效 · 普通交叉 · BO 结果查看器'],
-  ['/cases/empty/learn', '链接无效 · 空集合 · BO 结果查看器'],
+  ['/cases/empty/learn?step=1', '链接无效 · 空集合 · BO 结果查看器'],
   ['/cases/crossing/learn?step=bad', '链接无效 · 普通交叉 · BO 结果查看器'],
   ['/cases/crossing/learn?step=1&step=2', '链接无效 · 普通交叉 · BO 结果查看器'],
   ['/cases/crossing/learn?step=999999', '链接无效 · 普通交叉 · BO 结果查看器'],
