@@ -62,8 +62,9 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         }
       })
     }
-    for (const width of [391, 1361]) {
-      test(`列表、结果和全部教学步骤 ${width}px`, async ({ playwright, baseURL }) => {
+    // Each independent journey keeps its own timeout as the case library grows.
+    for (const width of [391, 1361]) for (const preset of [null, ...presets.filter(preset => preset.learning)]) {
+      test(`${preset ? `${preset.name}全部教学步骤` : '列表与结果'} ${width}px`, async ({ playwright, baseURL }) => {
         test.setTimeout(180_000)
         const browser = await playwright[browserName].launch({ headless: true })
         try {
@@ -71,12 +72,13 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           await page.setViewportSize({ width, height: 901 })
           const errors: string[] = []
           page.on('pageerror', error => errors.push(error.message))
-          await page.goto('/')
-          await expectIntegerLayout(page)
-          await page.goto('/cases/mixed-horizontal')
-          await expect(page.getByRole('radio').first()).toBeVisible()
-          await expectIntegerLayout(page)
-          for (const preset of presets.filter(preset => preset.learning)) {
+          if (!preset) {
+            await page.goto('/')
+            await expectIntegerLayout(page)
+            await page.goto('/cases/mixed-horizontal')
+            await expect(page.getByRole('radio').first()).toBeVisible()
+            await expectIntegerLayout(page)
+          } else {
             await page.goto(`/cases/${preset.id}/learn`)
             const slider = page.getByRole('slider', { name: '教学步骤' })
             await expect(slider).toHaveValue('0')

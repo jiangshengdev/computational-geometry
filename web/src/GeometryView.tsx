@@ -81,23 +81,29 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     const labels = Array.from(element.querySelectorAll<SVGTextElement>(sweep?.numbering ? 'text.order-number' : 'text:not(.tick)'))
     // Measure the rendered font, including selection weight, in the shared SVG coordinates.
     for (const label of labels) label.removeAttribute('transform')
-    const boxes = labels.map(label => label.getBBox())
-    const occupied = Array.from(element.querySelectorAll<SVGTextElement>('.tick'), tick => tick.getBBox())
+    const boxes = labels.map(label => {
+      const { x, y, width, height } = label.getBBox()
+      return { x, y, width, height }
+    })
+    const occupied = Array.from(element.querySelectorAll<SVGTextElement>('.tick'), tick => {
+      const { x, y, width, height } = tick.getBBox()
+      return { x, y, width, height }
+    })
     const gap = 6 // Includes the white outline and space between adjacent labels.
     const lines = segments.map(segment => ({ x1: px(segment.start), y1: py(segment.start), x2: px(segment.end), y2: py(segment.end) }))
-    for (const point of [...points, ...eventPoints]) occupied.push(new DOMRect(px(point) - 10, py(point) - 10, 20, 20))
+    for (const point of [...points, ...eventPoints]) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
     labels.forEach((label, index) => {
       const box = boxes[index]
       // Short workspaces need space below and beside labels too: moving every
       // collision upward can put an otherwise readable label under the toolbar.
       const lefts = [...new Set([box.x, gap, width - box.width - gap,
         ...occupied.flatMap(other => [other.x - box.width - gap, other.x + other.width + gap])])]
+        .filter(left => left >= gap && left + box.width <= width - gap && (!sweep?.numbering || left === box.x))
       const tops = [...new Set([box.y, gap, height - box.height - gap,
         ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
-      const candidates = lefts.flatMap(left => tops.map(top => ({ left, top })))
-        .filter(({ left, top }) => left >= gap && top >= gap && left + box.width <= width - gap && top + box.height <= height - gap)
-        .filter(({ left, top }) => !sweep?.numbering || (left === box.x && top <= box.y))
-        .sort((a, b) => Math.hypot(a.left - box.x, a.top - box.y) - Math.hypot(b.left - box.x, b.top - box.y))
+        .filter(top => top >= gap && top + box.height <= height - gap && (!sweep?.numbering || top <= box.y))
+      const candidates = lefts.flatMap(left => tops.map(top => ({ left, top, distance: Math.hypot(left - box.x, top - box.y) })))
+        .sort((a, b) => a.distance - b.distance)
       const position = candidates.find(({ left, top }) => !occupied.some(other =>
         left < other.x + other.width + gap && left + box.width + gap > other.x &&
         top < other.y + other.height + gap && top + box.height + gap > other.y) && !lines.some(line => {
@@ -124,7 +130,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
         leader.setAttribute('x2', String(left - 4))
         leader.setAttribute('y2', String(top + box.height / 2))
       }
-      occupied.push(new DOMRect(left, top, box.width, box.height))
+      occupied.push({ x: left, y: top, width: box.width, height: box.height })
     })
   })
 
