@@ -105,7 +105,7 @@ test('加入后的检查与发现保持当前事件右侧状态', async ({ page 
   }
 })
 
-for (const width of [1360, 390]) test(`Δ 箭头在缩放、平移与边缘保持可读且位于扫描线上方 ${width}px`, async ({ page }) => {
+for (const width of [1360, 390]) test(`Δ 箭头在缩放、平移与边缘保持可读且悬浮于画布顶部 ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 1000 })
   await page.goto('/cases/crossing/learn?step=11')
   const side = page.getByRole('img', { name: /事件侧向状态/ })
@@ -122,7 +122,11 @@ for (const width of [1360, 390]) test(`Δ 箭头在缩放、平移与边缘保�
     expect(marker.x + marker.width).toBeLessThanOrEqual(surface.x + surface.width)
     expect(scanX).toBeGreaterThanOrEqual(marker.x - 2)
     expect(scanX).toBeLessThanOrEqual(marker.x + marker.width + 2)
-    expect(marker.y + marker.height).toBeLessThanOrEqual((await svg.boundingBox())!.y)
+    const viewport = (await svg.boundingBox())!
+    expect(viewport.y).toBe(surface.y)
+    expect(viewport.height).toBe(surface.height)
+    expect(marker.y).toBe(viewport.y - 22)
+    expect(marker.y + marker.height).toBeLessThanOrEqual(viewport.y + 14)
     const glyph = await side.locator('.sweep-side-arrow').boundingBox()
     expect(glyph!.width).toBeGreaterThan(12)
     expect(glyph!.height).toBeGreaterThanOrEqual(20)
