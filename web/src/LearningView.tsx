@@ -128,7 +128,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
     else restart()
   })
   const subjects = inputReferences(step.subjects, ' × ')
-  const phase = step.phase === 'initial' ? '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
+  const phase = step.phase === 'initial' ? complete ? '学习完成' : '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   return <section aria-label="逐步学习" className="learning-view">
     <div className="learning-workspace">
       <GeometryView key={run} segments={preset.segments} results={step.results} selected={null} hoverTarget={hover}
@@ -141,7 +141,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
         {overlaps.length > 0 && <HelpButton topic="overlap">重叠说明</HelpButton>}
       </div></CardHeader>
       <CardContent ref={explanationPanel} className="learning-panel-content flex flex-col gap-2">
-        {step.action === 'initial' && <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步取出最早事件。</p>}
+        {step.action === 'initial' && (complete ? <p>没有输入，因此没有端点和事件。队列与活动顺序为空，无需推进，学习已完成。</p> : <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步取出最早事件。</p>)}
         {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序，下一步才执行更新。</p>}
         {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。'}接下来检查新邻居是否会在未来相交。</p>}
         {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。{visibleOverlaps.some(({ geometry }) => geometry.type === 'overlap' && step.current && samePoint(geometry.end, step.current)) && '此处是重叠止界：较早结束者退出，另一条线段继续。交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。'}</p>}
@@ -156,14 +156,14 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
           {position > 0 && <span>、</span>}
           <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span>
         </Fragment>)}</span>：检查 <span className="coordinates">{subjects}</span> 的精确交集后加入队列，等扫描线到达再记录结果。</p>}
-        {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{before.action === 'check' ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
+        {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{complete ? '全部事件已处理，无需再推进。' : before.action === 'check' ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
     {complete && <section aria-label="学习结果"><Card variant="transparent">
       <CardHeader><CardTitle render={props => <h2 {...props} />}>学习完成</CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，所有线段已退出。</p>
         {overlaps.length ? <p>孤立点结果位置：{points.length}；重叠区间：{visibleOverlaps.length}；相交线段对：{step.results.length}。区间包含无穷多个公共点，不能用孤立交点数量表示。</p> : <p>独立交点位置：{points.length}；相交线段对：{step.results.length}。同一位置可由多个线段对共享。</p>}
         {points.map(point => <p className="coordinates" key={formatPoint(point)}>{pointName(point)}：{step.results.filter(result => result.geometry.type === 'point' && samePoint(result.geometry.point, point)).map(pairName).join('、')}</p>)}
         {visibleOverlaps.map(result => <p className="coordinates" key={pairName(result)}>{formatGeometry(result.geometry)}：{pairName(result)}（包含两端及其间全部点）</p>)}
-        {!step.results.length && <p>结果为空：两条线段平行且高度不同，没有交点。</p>}
+        {!step.results.length && <p>结果为空：没有相交的独立输入配对。具体几何依据见下方数学核对。</p>}
         <p className="coordinates">独立数学核对：{preset.learning?.verification}</p>
       </CardContent>
     </Card></section>}
@@ -179,7 +179,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
                 existed={sources.includes(`event:${formatPoint(step.current)}`)} data-event-id={formatPoint(step.current)} {...eventProps(step.current)}>{pointName(step.current)}</LearningRow>}
             </AnimatePresence>
             </LayoutGroup>
-            {!step.current && <p>尚未处理事件</p>}
+            {!step.current && <p>{complete ? '没有事件' : '尚未处理事件'}</p>}
           </CardContent>
         </Card></section>
         <section aria-label="同点参与线段" className="learning-panel learning-participants"><Card className="learning-panel-card">
@@ -207,7 +207,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
           </CardContent>
           <Card.Footer className="learning-panel-controls flex-col items-stretch gap-2">
             <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤 · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
-            <Slider aria-label="教学步骤" minValue={0} maxValue={trace.steps.length - 1} step={1} value={index}
+            <Slider aria-label="教学步骤" minValue={0} maxValue={trace.steps.length - 1} step={1} value={index} isDisabled={trace.steps.length === 1}
               onChange={value => changeStep(typeof value === 'number' ? value : value[0], false, true)}
               onChangeEnd={value => onStepChange(typeof value === 'number' ? value : value[0])}>
               <Slider.Track>
