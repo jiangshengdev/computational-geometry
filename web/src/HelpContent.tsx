@@ -6,7 +6,7 @@ export function LearningIntroduction() {
     <p>事件队列按先 <span className="coordinates">x</span>、后 <span className="coordinates">y</span> 从小到大保存待处理事件；活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。</p>
     <p>在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。</p>
     <p className="text-muted">统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 <span className="coordinates">x</span> 的不同事件按 <span className="coordinates">y</span> 依次处理；当前事件处理完成后只更新该位置的顺序，同 <span className="coordinates">x</span> 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。</p>
-    <p className="text-muted">本学习流程讲普通交叉、无交点、相邻检测、同扫描坐标不同位置、端点接触、多线共点、竖直线与部分重叠。竖直线在固定 x 上按 y 从下向上处理；共线重叠用完整闭区间表达。这些预设教学案例不是任意退化输入的生产级实现保证。</p>
+    <p className="text-muted">本学习流程覆盖现有范例中的普通交叉、空集合与无交集、相邻检测、同扫描坐标不同位置、端点接触、多线共点、零长度点、竖直线、共线重叠及混合事件。竖直线在固定 x 上按 y 从下向上处理；共线重叠用完整闭区间表达。这些预设教学案例不是任意退化输入的生产级实现保证。</p>
     </section>
 }
 

@@ -14,6 +14,7 @@ const topics = [
     <h2 className="font-semibold">相交配对与精确交集</h2>
     <p>每个输入保留独立身份。配对数不是独立几何交点数；图形仅作人工辅助校验。</p>
     <p>选择一个配对，检查交集和两个输入。交集可以是点或完整重叠区间；精确详情保留有理数坐标，像素近似只用于绘图。</p>
+    <p>混合结果中的点类型配对可能位于其他配对的重叠区间上，不等于整体交集中的孤立点。点结果位置数、区间配对数与全部相交配对数分别统计，不合并区间或计算几何并集。</p>
   </section> },
   { id: 'inputs', title: '原始输入', content: <section aria-label="原始输入说明" className="flex flex-col gap-3">
     <h2 className="font-semibold">独立输入与端点</h2>
