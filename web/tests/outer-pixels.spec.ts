@@ -1,5 +1,7 @@
 import { expect, test, type Page } from '@playwright/test'
 import { presets } from '../src/presets'
+import type { SweepTrace } from '../src/geometry'
+import { layoutCases } from './layout-states'
 
 test.describe.configure({ mode: 'parallel' })
 
@@ -62,9 +64,9 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         }
       })
     }
-    // Each independent journey keeps its own timeout as the case library grows.
-    for (const width of [391, 1361]) for (const preset of [null, ...presets.filter(preset => preset.learning)]) {
-      test(`${preset ? `${preset.name}全部教学步骤` : '列表与结果'} ${width}px`, async ({ playwright, baseURL }) => {
+    for (const width of [391, 1361]) for (const example of [null, ...layoutCases]) {
+      const preset = example ? presets.find(preset => preset.id === example.id)! : null
+      test(`${preset ? `${preset.name}代表性教学布局` : '列表与结果'} ${width}px`, async ({ playwright, baseURL }) => {
         test.setTimeout(180_000)
         const browser = await playwright[browserName].launch({ headless: true })
         try {
@@ -72,26 +74,36 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           await page.setViewportSize({ width, height: 901 })
           const errors: string[] = []
           page.on('pageerror', error => errors.push(error.message))
-          if (!preset) {
+          if (!example || !preset) {
             await page.goto('/')
             await expectIntegerLayout(page)
             await page.goto('/cases/mixed-horizontal')
             await expect(page.getByRole('radio').first()).toBeVisible()
             await expectIntegerLayout(page)
           } else {
-            await page.goto(`/cases/${preset.id}/learn`)
             const slider = page.getByRole('slider', { name: '教学步骤' })
-            await expect(slider).toHaveValue('0')
-            await expect(slider).toHaveAttribute('max', /^[1-9][0-9]*$/)
-            const last = Number(await slider.getAttribute('max'))
-            for (let step = 0; step <= last; step++) {
-              await test.step(`${preset.id}, step ${step}`, async () => {
+            const [response] = await Promise.all([
+              page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST'),
+              page.goto(`/cases/${preset.id}/learn`).then(() => expect(slider).toHaveValue('0')),
+            ])
+            expect(response.status()).toBe(200)
+            expect(response.request().postDataJSON()).toEqual({ segments: preset.segments, trace: true })
+            const { trace }: { trace: SweepTrace } = await response.json()
+            await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
+            for (const state of example.states) {
+              const step = trace.steps.findIndex(state.matches)
+              expect(step, `${preset.id}: ${state.reason}`).toBeGreaterThanOrEqual(0)
+              await test.step(`${preset.id}, step ${step}: ${state.reason}`, async () => {
+                // Direct URL restoration selects a layout state without replaying
+                // every intermediate action. Navigation/scroll contracts stay in
+                // learning-url, learning-scroll and the teaching journey specs.
+                await page.goto(`/cases/${preset.id}/learn?step=${step}`)
+                await expect(slider).toHaveValue(String(step))
+                await expect(page.getByRole('region', { name: '操作解释' })).toContainText(state.text)
+                await expect(page.getByRole('region', { name: '待处理事件队列' }).getByRole('listitem')).toHaveCount(trace.steps[step].pending.length)
+                await expect(page.getByTestId('active-order').getByRole('listitem')).toHaveCount(trace.steps[step].active.length)
                 await expectIntegerLayout(page)
               })
-              if (step < last) {
-                await page.getByRole('button', { name: '下一步', exact: true }).evaluate(button => (button as HTMLButtonElement).click())
-                await expect(slider).toHaveValue(String(step + 1))
-              }
             }
           }
           expect(errors).toEqual([])
