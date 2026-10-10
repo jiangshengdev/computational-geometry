@@ -18,11 +18,11 @@ async function expectUnscaledViewport(page: Page) {
 }
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+  const browserTest = test.extend({ browserName })
   for (const deviceScaleFactor of [1, 2]) {
-    test(`SVG viewport follows layout ${browserName} DPR=${deviceScaleFactor}`, async ({ playwright, baseURL }) => {
-      const browser = await playwright[browserName].launch({ headless: true })
+    browserTest(`SVG viewport follows layout ${browserName} DPR=${deviceScaleFactor}`, async ({ browser, baseURL }) => {
+      const page = await browser.newPage({ baseURL, deviceScaleFactor, viewport: { width: 1920, height: 996 } })
       try {
-        const page = await browser.newPage({ baseURL, deviceScaleFactor, viewport: { width: 1920, height: 996 } })
         for (const route of ['/cases/crossing', '/cases/crossing/learn?step=0']) {
           await page.goto(route)
           await expectUnscaledViewport(page)
@@ -39,7 +39,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         await page.getByRole('button', { name: '重置视图', exact: true }).click()
         await expectUnscaledViewport(page)
       } finally {
-        await browser.close()
+        await page.close()
       }
     })
   }

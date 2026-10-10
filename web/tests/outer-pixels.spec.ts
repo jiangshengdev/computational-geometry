@@ -23,12 +23,12 @@ async function expectIntegerLayout(page: Page) {
 }
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+  const browserTest = test.extend({ browserName })
   test.describe(`外层像素 ${browserName}`, () => {
     for (const width of [1100, 1361, 1920]) {
-      test(`两页三栏尺寸一致且为整数 20/60/20 ${width}px`, async ({ playwright, baseURL }) => {
-        const browser = await playwright[browserName].launch({ headless: true })
+      browserTest(`两页三栏尺寸一致且为整数 20/60/20 ${width}px`, async ({ browser, baseURL }) => {
+        const page = await browser.newPage({ baseURL, viewport: { width, height: 901 }, deviceScaleFactor: 2 })
         try {
-          const page = await browser.newPage({ baseURL, viewport: { width, height: 901 }, deviceScaleFactor: 2 })
           await page.goto('/cases/crossing')
           await expect(page.getByRole('radio').first()).toBeVisible()
           const columns = async (learning: boolean) => {
@@ -60,17 +60,16 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           await page.getByRole('link', { name: '返回结果查看器', exact: true }).click()
           expect(await columns(false)).toEqual(results)
         } finally {
-          await browser.close()
+          await page.close()
         }
       })
     }
     for (const width of [391, 1361]) for (const example of [null, ...layoutCases]) {
       const preset = example ? presets.find(preset => preset.id === example.id)! : null
-      test(`${preset ? `${preset.name}代表性教学布局` : '列表与结果'} ${width}px`, async ({ playwright, baseURL }) => {
+      browserTest(`${preset ? `${preset.name}代表性教学布局` : '列表与结果'} ${width}px`, async ({ browser, baseURL }) => {
         test.setTimeout(180_000)
-        const browser = await playwright[browserName].launch({ headless: true })
+        const page = await browser.newPage({ baseURL, deviceScaleFactor: 2, reducedMotion: 'reduce' })
         try {
-          const page = await browser.newPage({ baseURL, deviceScaleFactor: 2, reducedMotion: 'reduce' })
           await page.setViewportSize({ width, height: 901 })
           const errors: string[] = []
           page.on('pageerror', error => errors.push(error.message))
@@ -108,7 +107,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           }
           expect(errors).toEqual([])
         } finally {
-          await browser.close()
+          await page.close()
         }
       })
     }

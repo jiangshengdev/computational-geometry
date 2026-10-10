@@ -6,10 +6,10 @@ async function expectStep(page: Page, step: number) {
 }
 
 for (const browserName of ['chromium', 'webkit'] as const) {
-  test(`教学步骤 URL：连续拖动预览仅在结束时写入 ${browserName}`, async ({ playwright, baseURL }) => {
-    const browser = await playwright[browserName].launch({ headless: true })
+  const browserTest = test.extend({ browserName })
+  browserTest(`教学步骤 URL：连续拖动预览仅在结束时写入 ${browserName}`, async ({ browser, baseURL }) => {
+    const page = await browser.newPage({ baseURL, viewport: { width: 1360, height: 900 }, reducedMotion: 'reduce' })
     try {
-      const page = await browser.newPage({ baseURL, viewport: { width: 1360, height: 900 }, reducedMotion: 'reduce' })
       const errors: string[] = []
       page.on('pageerror', error => errors.push(error.message))
       await page.goto('/cases/crossing')
@@ -43,7 +43,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       await expectStep(page, last)
       expect(errors).toEqual([])
     } finally {
-      await browser.close()
+      await page.close()
     }
   })
 }

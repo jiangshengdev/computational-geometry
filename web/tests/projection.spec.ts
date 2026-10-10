@@ -44,10 +44,10 @@ test('unusable drawing dimensions have no projection', () => {
 })
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
-  test(`real zero-size layout preserves view and insufficient space hides geometry ${browserName}`, async ({ playwright, baseURL }) => {
-    const browser = await playwright[browserName].launch({ headless: true })
+  const browserTest = test.extend({ browserName })
+  browserTest(`real zero-size layout preserves view and insufficient space hides geometry ${browserName}`, async ({ browser, baseURL }) => {
+    const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 } })
     try {
-      const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 } })
       const errors: string[] = []
       page.on('pageerror', error => errors.push(error.message))
       page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
@@ -90,13 +90,12 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       await expect(svg).toHaveAttribute('viewBox', '0 0 318 196')
       expect(errors).toEqual([])
     } finally {
-      await browser.close()
+      await page.close()
     }
   })
-  test(`stale zero-size notifications preserve geometry and zoom ${browserName}`, async ({ playwright, baseURL }) => {
-    const browser = await playwright[browserName].launch({ headless: true })
+  browserTest(`stale zero-size notifications preserve geometry and zoom ${browserName}`, async ({ browser, baseURL }) => {
+    const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 } })
     try {
-      const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 } })
       const errors: string[] = []
       page.on('pageerror', error => errors.push(error.message))
       page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
@@ -143,14 +142,13 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       }
       expect(errors).toEqual([])
     } finally {
-      await browser.close()
+      await page.close()
     }
   })
 
-  test(`actual viewport fit, continuous zoom, reset and resize ${browserName}`, async ({ playwright, baseURL }) => {
-    const browser = await playwright[browserName].launch({ headless: true })
+  browserTest(`actual viewport fit, continuous zoom, reset and resize ${browserName}`, async ({ browser, baseURL }) => {
+    const page = await browser.newPage({ baseURL, viewport: { width: 1920, height: 996 }, deviceScaleFactor: 2 })
     try {
-      const page = await browser.newPage({ baseURL, viewport: { width: 1920, height: 996 }, deviceScaleFactor: 2 })
       for (const route of ['/cases/same-x', '/cases/same-x/learn?step=28']) {
         await page.goto(route)
         const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
@@ -187,7 +185,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         await page.setViewportSize({ width: 1920, height: 996 })
       }
     } finally {
-      await browser.close()
+      await page.close()
     }
   })
 }
