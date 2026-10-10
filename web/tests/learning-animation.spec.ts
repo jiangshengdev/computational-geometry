@@ -2,9 +2,7 @@ import { expect, test, type Page } from '@playwright/test'
 import { selectPreset } from './cases'
 
 async function startLearning(page: Page) {
-  await page.goto('/cases/crossing')
-  await selectPreset(page, 'crossing')
-  await page.getByRole('link', { name: '开始逐步学习' }).click()
+  await page.goto('/cases/crossing/learn')
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
 }
 
