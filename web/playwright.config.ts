@@ -6,6 +6,7 @@ export default defineConfig({
   testDir: './tests',
   outputDir: join(tmpdir(), 'computational-geometry-playwright'),
   reporter: 'dot',
+  workers: '67%',
   use: { headless: true },
   webServer: {
     command: 'pnpm exec vite --host 127.0.0.1 --port 0 --strictPort',
