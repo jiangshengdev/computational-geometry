@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { checkCase, checkResponse, selectPreset, type ExpectedPair } from './cases'
+import { checkCase, selectPreset, type ExpectedPair } from './cases'
 
 const cases: { id: string; expected: ExpectedPair[] }[] = [
   { id: 'endpoint', expected: [{ pair: [0, 1], point: ['2', '0'] }] },
@@ -35,7 +35,6 @@ test('共点输入标签在选择、缩放和窄屏下不重叠', async ({ page 
 })
 
 for (const { id, expected } of cases) test(`接触案例 ${id} 完整精确配对与逐项选择`, async ({ page }) => {
-  await checkResponse(page, id, expected)
   await checkCase(page, id, expected)
 })
 

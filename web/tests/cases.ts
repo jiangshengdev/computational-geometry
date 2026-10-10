@@ -21,7 +21,20 @@ export async function checkCase(page: Page, id: string, expected: ExpectedPair[]
   await page.goto('/')
   const response = page.waitForResponse(r => r.url().endsWith('/api/intersections') && r.request().method() === 'POST')
   await selectPreset(page, id)
-  await response
+  // The response and the rendered selection share this one real calculation.
+  const result = await response
+  expect(result.status()).toBe(200)
+  const { intersections } = await result.json()
+  expect(intersections).toHaveLength(expected.length)
+  for (const item of expected) {
+    const actual = intersections.find((r: { segments: number[] }) => r.segments.join(',') === item.pair.join(','))
+    expect(actual).toBeDefined()
+    if (item.point) expect(actual.geometry).toEqual({ type: 'point', point: point(item.point) })
+    else {
+      expect(actual.geometry.type).toBe('overlap')
+      expect([actual.geometry.start, actual.geometry.end]).toEqual(expect.arrayContaining(item.interval!.map(point)))
+    }
+  }
   await expect(page.getByText(`${expected.length} 个相交配对`, { exact: true })).toBeVisible()
   await expect(page.getByRole('radio', { name: /S\d+ × S\d+/ })).toHaveCount(expected.length)
   for (const item of expected) {
@@ -33,24 +46,5 @@ export async function checkCase(page: Page, id: string, expected: ExpectedPair[]
     for (const i of item.pair) await expect(page.getByRole('img', { name: `输入 S${i}，已选中`, exact: true })).toBeVisible()
     await expect(page.getByRole('img', { name: /^输入 S\d+，已选中$/ })).toHaveCount(2)
     await expect(page.getByRole('img', { name: `交集 ${name}，已选中`, exact: true })).toBeVisible()
-  }
-}
-
-export async function checkResponse(page: Page, id: string, expected: ExpectedPair[]) {
-  await page.goto('/')
-  const responsePromise = page.waitForResponse(r => r.url().endsWith('/api/intersections'))
-  await selectPreset(page, id)
-  const response = await responsePromise
-  expect(response.status()).toBe(200)
-  const { intersections } = await response.json()
-  expect(intersections).toHaveLength(expected.length)
-  for (const item of expected) {
-    const actual = intersections.find((r: { segments: number[] }) => r.segments.join(',') === item.pair.join(','))
-    expect(actual).toBeDefined()
-    if (item.point) expect(actual.geometry).toEqual({ type: 'point', point: point(item.point) })
-    else {
-      expect(actual.geometry.type).toBe('overlap')
-      expect([actual.geometry.start, actual.geometry.end]).toEqual(expect.arrayContaining(item.interval!.map(point)))
-    }
   }
 }

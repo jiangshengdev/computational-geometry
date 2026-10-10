@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { checkCase, checkResponse, selectPreset, type ExpectedPair } from './cases'
+import { checkCase, selectPreset, type ExpectedPair } from './cases'
 
 const cases: { id: string; expected: ExpectedPair[] }[] = [
   { id: 'partial-overlap', expected: [{ pair: [0, 1], interval: [['2', '0'], ['4', '0']] }] },
@@ -12,7 +12,6 @@ const cases: { id: string; expected: ExpectedPair[] }[] = [
 ]
 
 for (const { id, expected } of cases) test(`重叠案例 ${id} 精确完整区间与逐项选择`, async ({ page }) => {
-  await checkResponse(page, id, expected)
   await checkCase(page, id, expected)
 })
 

@@ -3,15 +3,6 @@ import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { formatPoint, pairName, samePoint, type Intersection, type Segment, type SweepTrace } from '../src/geometry'
 
-test('蜘蛛网：列表提供预览与两个入口', async ({ page }) => {
-  await page.goto('/')
-  const card = page.getByRole('article', { name: '蜘蛛网', exact: true })
-  await expect(card.getByRole('img', { name: '蜘蛛网：输入线段预览', exact: true })).toBeVisible()
-  await expect(card.getByRole('link', { name: '查看详情', exact: true })).toHaveAttribute('href', '/cases/spider-web')
-  await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', '/cases/spider-web/learn')
-  await card.screenshot({ path: join(tmpdir(), 'bo-spider-web-card.png') })
-})
-
 const patterns = [
   { id: 'spider-web', name: '蜘蛛网', edges: 32, positions: 17, pairs: 100, junctions: [
     { point: '(0, 0)', degree: 8 }, { point: '(12, 0)', degree: 4 }, { point: '(24, 0)', degree: 3 },

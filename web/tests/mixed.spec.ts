@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { checkCase, checkResponse, selectPreset, type ExpectedPair } from './cases'
+import { checkCase, selectPreset, type ExpectedPair } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -20,7 +20,6 @@ const vertical: ExpectedPair[] = [
 
 for (const [id, expected] of [['mixed-horizontal', horizontal], ['mixed-vertical', vertical]] as const) {
   test(`混合案例 ${id} 全部精确几何与配对`, async ({ page }) => {
-    await checkResponse(page, id, expected)
     await checkCase(page, id, expected)
   })
 }
