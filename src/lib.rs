@@ -276,6 +276,7 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
         queue.entry(segment.right.clone()).or_default();
     }
     let mut active: Vec<usize> = Vec::new();
+    let mut height_order = vec![std::cmp::Ordering::Equal; segments.len()];
     let mut result = Vec::new();
     if let Some(steps) = &mut steps {
         steps.push(SweepStep::capture(
@@ -304,8 +305,12 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
         let mut incident = event.starts;
         // Every active segment spans the current x. Recover the whole equal-y
         // block, including unscheduled participants in a multiway crossing.
+        // Refresh every active entry for this event before consulting it. Only
+        // its ordering against the event height is needed by the later removal
+        // and insertion searches; newly starting segments are not read here.
         for &id in &active {
-            if segments[id].y_at(&point.x) == point.y {
+            height_order[id] = segments[id].y_at(&point.x).cmp(&point.y);
+            if height_order[id].is_eq() {
                 incident.push(id);
             }
         }
@@ -391,13 +396,13 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
             }
         }
         let previous_order = steps.as_ref().map(|_| active.clone());
-        active.retain(|&id| segments[id].y_at(&point.x) != point.y);
+        active.retain(|&id| !height_order[id].is_eq());
         incident.retain(|&id| segments[id].right != point);
         incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));
         // Equal-x events at different y remain separate. At the current y,
         // ascending slope is the order immediately after this event; other
         // equal-y blocks keep their pre-event order until their own event.
-        let position = active.partition_point(|&id| segments[id].y_at(&point.x) < point.y);
+        let position = active.partition_point(|&id| height_order[id].is_lt());
         let inserted = incident.len();
         active.splice(position..position, incident);
         if let Some(steps) = &mut steps {
