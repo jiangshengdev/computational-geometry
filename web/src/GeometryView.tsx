@@ -58,8 +58,10 @@ export function GeometryView({ segments, results, selected, sweep, highlights, o
     behavior.current.on('zoom', event => setTransform(event.transform))
     select(element).call(behavior.current).on('wheel.zoom', null)
     let previousWidth = initial.width, previousHeight = initial.height
-    const observer = new ResizeObserver(entries => {
-      const { width, height } = entries[0].contentRect
+    const observer = new ResizeObserver(() => {
+      // Full-page capture can report a zero contentRect while the SVG still has a layout box.
+      // Read the current box, just as on mount, before updating projection or resetting zoom.
+      const { width, height } = element.getBoundingClientRect()
       if (width === previousWidth && height === previousHeight) return
       previousWidth = width
       previousHeight = height

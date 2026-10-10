@@ -36,6 +36,60 @@ test('empty and point inputs retain finite projections', () => {
 })
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+  test(`stale zero-size notifications preserve geometry and zoom ${browserName}`, async ({ playwright, baseURL }) => {
+    const browser = await playwright[browserName].launch({ headless: true })
+    try {
+      const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 } })
+      const errors: string[] = []
+      page.on('pageerror', error => errors.push(error.message))
+      page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
+      await page.addInitScript(() => {
+        const NativeResizeObserver = window.ResizeObserver
+        window.ResizeObserver = class extends NativeResizeObserver {
+          constructor(callback: ResizeObserverCallback) {
+            super((entries, observer) => {
+              callback(entries, observer)
+              const entry = entries.find(entry => entry.target.getAttribute('aria-label') === '输入与交集坐标图')
+              if (!entry) return
+              // Replay the captured notification while leaving the real layout intact.
+              Object.assign(window, {
+                notifyGeometryResize: (axis: 'width' | 'height') => callback([new Proxy(entry, {
+                  get(target, key) {
+                    if (key === 'contentRect') return new DOMRect(0, 0,
+                      axis === 'width' ? 0 : target.contentRect.width,
+                      axis === 'height' ? 0 : target.contentRect.height)
+                    return Reflect.get(target, key, target)
+                  },
+                })], observer),
+              })
+            })
+          }
+        }
+      })
+      await page.goto('/cases/same-x/learn?step=22')
+      const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
+      await expect(svg.locator('.input > line')).toHaveCount(4)
+      await page.waitForFunction(() => 'notifyGeometryResize' in window)
+      await page.getByRole('button', { name: '放大', exact: true }).click()
+      const layer = svg.locator('[data-layer="geometry"]')
+      await expect(layer).toHaveAttribute('transform', /scale\(1\.4\)/)
+      const before = await svg.getAttribute('viewBox')
+      for (const axis of ['width', 'height'] as const) {
+        await page.evaluate(async axis => {
+          const notify = (window as unknown as { notifyGeometryResize: (axis: 'width' | 'height') => void }).notifyGeometryResize
+          notify(axis)
+          await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
+        }, axis)
+        await expect(svg).toHaveAttribute('viewBox', before!)
+        await expect(layer).toHaveAttribute('transform', /scale\(1\.4\)/)
+        expect(await svg.evaluate(element => element.outerHTML.includes('NaN'))).toBe(false)
+      }
+      expect(errors).toEqual([])
+    } finally {
+      await browser.close()
+    }
+  })
+
   test(`actual viewport fit, continuous zoom, reset and resize ${browserName}`, async ({ playwright, baseURL }) => {
     const browser = await playwright[browserName].launch({ headless: true })
     try {
