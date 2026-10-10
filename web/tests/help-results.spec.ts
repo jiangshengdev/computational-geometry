@@ -1,6 +1,4 @@
 import { expect, test } from '@playwright/test'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 
 for (const width of [1360, 390]) {
   test(`结果帮助：默认数据完整，按需说明保持选择与画布 ${width}px`, async ({ page }) => {
@@ -59,7 +57,6 @@ for (const width of [1360, 390]) {
         expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true)
       }
       if (name === '结果说明') {
-        await page.screenshot({ path: join(tmpdir(), `bo-results-help-${width}.png`), fullPage: true })
         await dialog.getByRole('button', { name: '关闭帮助', exact: true }).click()
       } else await page.keyboard.press('Escape')
       await expect(dialog).toBeHidden()
@@ -75,7 +72,6 @@ for (const width of [1360, 390]) {
     await expect(page.getByRole('img', { name: '输入 S1，已选中', exact: true })).toHaveAttribute('data-highlighted', 'false')
     await expect(pair).toBeChecked()
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-    await page.screenshot({ path: join(tmpdir(), `bo-results-default-${width}.png`), fullPage: true })
     await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
     await expect(page).toHaveURL(/\/cases\/crossing\/learn$/)
     await page.getByRole('link', { name: '返回结果查看器', exact: true }).click()

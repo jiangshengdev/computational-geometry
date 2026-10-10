@@ -1,6 +1,4 @@
 import { expect, test } from '@playwright/test'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { installCase, longResultsCase } from './scrolling-cases'
 
 for (const width of [1360, 390]) {
@@ -21,7 +19,6 @@ for (const width of [1360, 390]) {
         expect(after.width).toBe(before.width)
         expect(after.height).toBe(before.height)
       }
-      await page.screenshot({ path: join(tmpdir(), `bo-highlight-spacing-${width}-${path.endsWith('/learn') ? 'learning' : 'results'}.png`) })
     }
   })
 }
@@ -53,7 +50,6 @@ for (const width of [1360, 1920]) {
     await page.getByRole('radio', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
     await expect(details).toContainText('选择一个配对')
     expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBe(900)
-    await page.screenshot({ path: join(tmpdir(), `bo-results-workspace-${width}.png`) })
     expect(errors).toEqual([])
   })
 }

@@ -1,7 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
 import { selectPreset } from './cases'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 
 async function startLearning(page: Page) {
   await page.goto('/cases/crossing')
@@ -187,7 +185,6 @@ test(`状态动画：事件移动与减少动态效果 ${width}px`, async ({ pag
   const lower = Math.min(start, end), upper = Math.max(start, end)
   expect(samples.some(rows => rows.some(row => row.y > lower + 2 && row.y < upper - 2))).toBe(true)
   expect(samples.every(rows => rows.every(row => row.x >= 0 && row.right <= width))).toBe(true)
-  await page.screenshot({ path: join(tmpdir(), `bo-event-motion-${width}.png`), fullPage: true })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await jumpTo(page, 0)
   const reduced = await sampleStep(page, 'S0 起点 (0, 0)', '下一步')
@@ -235,7 +232,6 @@ test(`状态动画：换序中断与跳转隔离 ${width}px`, async ({ page }) =
   expect(backwards.every(rows => rows.every(row => row.x >= 0 && row.right <= width))).toBe(true)
   await order.getByText('S0', { exact: true }).hover()
   await expect(page.getByRole('img', { name: '输入 S0', exact: true })).toHaveAttribute('data-highlighted', 'true')
-  await page.screenshot({ path: join(tmpdir(), `bo-active-motion-${width}.png`), fullPage: true })
   await page.keyboard.press('ArrowRight')
   await jumpTo(page, 0)
   await expect(order).toHaveText('空')

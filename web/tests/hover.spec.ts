@@ -16,7 +16,7 @@ async function pointCenter(page: Page, pair: string) {
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
 }
 
-test('hover 三处双向联动，重合位置整体命中而标签精确命中', async ({ page }, testInfo) => {
+test('hover 三处双向联动，重合位置整体命中而标签精确命中', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/cases/crossing')
@@ -32,7 +32,6 @@ test('hover 三处双向联动，重合位置整体命中而标签精确命中',
   await highlighted(page, [1], ['S0 × S1', 'S1 × S4'])
   await pointCenter(page, 'S0 × S1')
   await highlighted(page, [0, 1, 4], ['S0 × S1', 'S0 × S4', 'S1 × S4'])
-  await page.getByRole('region', { name: '几何视图' }).screenshot({ path: testInfo.outputPath('hover-coincident.png') })
   await page.getByRole('radio', { name: 'S0 × S2 · 点', exact: true }).click()
   await expect(details).toContainText('S0 × S2')
   const saved = await details.innerText()

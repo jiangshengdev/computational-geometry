@@ -1,6 +1,4 @@
 import { expect, test } from '@playwright/test'
-import { join } from 'node:path'
-import { tmpdir } from 'node:os'
 import { formatPoint, pairName, samePoint, type Intersection, type Segment, type SweepTrace } from '../src/geometry'
 
 const patterns = [
@@ -22,7 +20,6 @@ for (const pattern of patterns) for (const width of [1360, 390]) {
     await page.goto('/')
     const card = page.getByRole('article', { name: pattern.name, exact: true })
     await card.scrollIntoViewIfNeeded()
-    await card.screenshot({ path: join(tmpdir(), `bo-${pattern.id}-card-${width}.png`) })
     await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/cases/${pattern.id}/learn`)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()
@@ -61,7 +58,6 @@ for (const pattern of patterns) for (const width of [1360, 390]) {
     const drawing = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
     await drawing.scrollIntoViewIfNeeded()
     await page.mouse.move(0, 0)
-    await drawing.screenshot({ path: join(tmpdir(), `bo-${pattern.id}-default-${width}.png`) })
     const geometry = drawing.locator('[data-layer="geometry"]')
     const initial = await geometry.getAttribute('transform')
     await page.getByRole('button', { name: '放大', exact: true }).click()

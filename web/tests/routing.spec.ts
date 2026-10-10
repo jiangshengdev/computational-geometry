@@ -48,20 +48,6 @@ for (const path of ['/cases/empty', '/cases/not-a-case', '/cases/crossing/extra'
   })
 }
 
-test('三页路由：列表进入详情再进入教学', async ({ page }) => {
-  await page.goto('/')
-  const crossing = page.getByRole('article').filter({ has: page.getByRole('heading', { name: '普通交叉', exact: true }) })
-  await expect(crossing).toBeVisible()
-  await crossing.getByRole('link', { name: '查看详情', exact: true }).click()
-  await expect(page).toHaveURL(/\/cases\/crossing$/)
-  await expect(page.getByRole('region', { name: '原始输入' })).toBeVisible()
-  await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
-  await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
-  await expect(page).toHaveURL(/\/cases\/crossing\/learn(?:\?step=0)?$/)
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
-  await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
-})
-
 for (const width of [1360, 390]) {
   test(`三页路由：列表能力和直接学习 ${width}px`, async ({ page }) => {
     const errors: string[] = []
@@ -99,7 +85,6 @@ for (const width of [1360, 390]) {
     expect(requests).toEqual([])
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-    await page.screenshot({ path: `/tmp/geometry-routing-${width === 1360 ? 'desktop' : 'mobile'}.png`, fullPage: true })
     await page.getByRole('img', { name: '普通交叉：输入线段预览', exact: true }).click()
     await expect(page).toHaveURL(/\/cases\/crossing$/)
     await expect(page.getByRole('region', { name: '原始输入' })).toBeVisible()
