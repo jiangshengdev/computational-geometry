@@ -33,11 +33,11 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
     <p className="coordinates">{preset.description}</p>
     {preset.learning && <p>学习目标：{preset.learning.goal}</p>}
     {!preset.learning && <p>此案例目前提供结果查看；支持教学的案例可从案例列表进入逐步学习。</p>}
-  </section> }, { id: 'active', title: '活动线段顺序', content: <ActiveOrderRules overlap={preset.id === 'partial-overlap'} /> }]
+  </section> }, { id: 'active', title: '活动线段顺序', content: <ActiveOrderRules overlap={Boolean(preset.learning?.overlap)} /> }]
   if (preset.segments.some(segment => samePoint({ x: segment.start.x, y: segment.end.y }, segment.end) && !samePoint(segment.start, segment.end))) {
     availableTopics.push({ id: 'vertical', title: '竖直线处理规则', content: <VerticalRules /> })
   }
-  if (preset.id === 'partial-overlap') availableTopics.push({ id: 'overlap', title: '重叠处理规则', content: <OverlapRules /> })
+  if (preset.learning?.overlap) availableTopics.push({ id: 'overlap', title: '重叠处理规则', content: <OverlapRules /> })
   const selectedTopic = availableTopics.find(item => item.id === topic) ?? availableTopics[0]
   return <HelpContext value={(next, element) => {
     // Record the actual opener in Modal's focus scope, including touch activation.
