@@ -55,7 +55,6 @@ test('蜘蛛网 hover：同一对象内连续移动不重复排布标签', async
   await expect(label).toHaveCount(0)
   const measured = await report.evaluate(report => { report.running = false; return report })
   measured.frames.sort((a, b) => a - b)
-  console.log(JSON.stringify({ frameP95: measured.frames[Math.ceil(measured.frames.length * 0.95) - 1], labelTransforms: measured.transforms }))
   expect(measured.transforms, 'same-target pointer movement must not repeat label placement').toBe(0)
   expect(errors).toEqual([])
 })
