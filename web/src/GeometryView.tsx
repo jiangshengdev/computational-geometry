@@ -129,16 +129,21 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
       const { x, y, width, height } = tick.getBBox()
       return teachingLabels ? { x: transform.applyX(x), y: transform.applyY(y), width: width * transform.k, height: height * transform.k } : { x, y, width, height }
     })
-    const gap = 6 // Includes the white outline and space between adjacent labels.
+    const gap = sweep?.numbering ? 3 : 6 // Includes the white outline and space between adjacent labels.
     const px = (point: Point) => teachingLabels ? transform.applyX(projection.px(point)) : projection.px(point)
     const py = (point: Point) => teachingLabels ? transform.applyY(projection.py(point)) : projection.py(point)
     const lines = segments.map(segment => ({ x1: px(segment.start), y1: py(segment.start), x2: px(segment.end), y2: py(segment.end) }))
-    for (const point of points) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
+    if (sweep?.numbering) {
+      // Numbering belongs to its anchor: reserve the dots, not unrelated event halos.
+      for (const point of numberedPoints) occupied.push({ x: point.x - 3, y: point.y - 3, width: 6, height: 6 })
+    } else {
+      for (const point of points) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
+    }
     let eventsReserved = false
     labels.forEach((label, index) => {
       // Reserve every input's slot in input order, even while its label is not
       // relevant to this step. Events and hover details cannot displace IDs.
-      if (!eventsReserved && (!teachingLabels || label.dataset.input === undefined)) {
+      if (!sweep?.numbering && !eventsReserved && (!teachingLabels || label.dataset.input === undefined)) {
         for (const point of eventPoints) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
         eventsReserved = true
       }
@@ -150,12 +155,12 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
         .filter(left => left >= gap && left + box.width <= width - gap && (!sweep?.numbering || left === box.x))
       const tops = [...new Set([box.y, gap, height - box.height - gap,
         ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
-        .filter(top => top >= gap && top + box.height <= height - gap && (!sweep?.numbering || top <= box.y))
+        .filter(top => top >= gap && top + box.height <= height - gap)
       const candidates = lefts.flatMap(left => tops.map(top => ({ left, top, distance: Math.hypot(left - box.x, top - box.y) })))
         .sort((a, b) => a.distance - b.distance)
       const position = candidates.find(({ left, top }) => !occupied.some(other =>
         left < other.x + other.width + gap && left + box.width + gap > other.x &&
-        top < other.y + other.height + gap && top + box.height + gap > other.y) && !lines.some(line => {
+        top < other.y + other.height + gap && top + box.height + gap > other.y) && (sweep?.numbering || !lines.some(line => {
           // Clip the segment against the label's padded rectangle, not its bounding box.
           let start = 0, end = 1
           for (const [origin, delta, low, high] of [
@@ -171,7 +176,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
             }
           }
           return start <= end
-        }))
+        })))
       if (!position && teachingLabels && label.dataset.input === undefined) {
         label.setAttribute('visibility', 'hidden')
         label.parentElement?.querySelector(':scope > .label-leader')?.setAttribute('visibility', 'hidden')
@@ -327,9 +332,9 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
         {sweep && highlights?.points.filter(p => eventPoints.some(visible => samePoint(p, visible))).map(p =>
           <circle key={formatPoint(p)} className="hover-event" cx={projection.px(p)} cy={projection.py(p)} r={15} />)}
         {numberedPoints.map(point => <g key={point.name} className="order-marker" role="img" aria-label={point.name}>
-          <line className="order-leader" x1={point.x} y1={point.y} x2={point.x + 8} y2={point.y - 12} />
+          <line className="order-leader" x1={point.x} y1={point.y} x2={point.x + 4} y2={point.y - 4} />
           <circle cx={point.x} cy={point.y} r={3} />
-          <text className="order-number" x={point.x + 12} y={point.y - 12}>{point.label}</text>
+          <text className="order-number" x={point.x + 8} y={point.y - 4}>{point.label}</text>
         </g>)}
       </g>
       {sweep && <g className="teaching-labels">

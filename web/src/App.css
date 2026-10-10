@@ -34,7 +34,7 @@ main { max-width: 1380px; padding: 40px; margin-block: 0; margin-left: max(0px, 
 .drawing svg text { paint-order: stroke fill; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
 .drawing svg[data-numbering] text:not(.tick):not(.order-number) { visibility: hidden; }
 .order-marker { pointer-events: none; fill: var(--foreground); }
-.order-number { font-size: 16px; font-weight: 700; }
+.order-number { font-size: 11px; font-weight: 700; }
 .order-leader { stroke: var(--foreground); stroke-width: 1; }
 .drawing .grid { stroke: #edf1f6; stroke-width: 1; }
 .tick { fill: #8a97a9; font-size: 11px; }
