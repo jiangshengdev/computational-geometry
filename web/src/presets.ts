@@ -1,5 +1,9 @@
 import { segment, type Preset } from './geometry'
 import { spiderWeb, hexagonalSnowflake } from './endpointPatterns'
+import { artPresets } from './artPatterns'
+import { carbonLatticePresets } from './carbonLattices'
+import { fullerenePreset } from './fullerene'
+import { penrosePreset } from './penrose'
 
 export const presets: Preset[] = [
   { id: 'crossing', name: '普通交叉', description: '两条对角线相交于 (2, 2)。', segments: [segment('0', '0', '4', '4'), segment('0', '4', '4', '0')], learning: { goal: '观察加入、发现交点、换序和退出。', verification: 'S0 满足 y = x，S1 满足 y = 4 − x。联立得 x = y = 2，位于两条线段内部。' } },
@@ -32,4 +36,8 @@ export const presets: Preset[] = [
   { id: 'mixed-vertical', name: '竖直重叠与多高度混合', description: '在 x = 1/2 的完整重叠上，同时检查内部交叉、端点接触和重合点。', segments: [segment('1/2', '0', '1/2', '4'), segment('1/2', '4', '1/2', '0'), segment('-1', '2', '2', '2'), segment('1/2', '2', '1/2', '2'), segment('1/2', '0', '1/2', '0'), segment('1/2', '4', '2', '4'), segment('1/2', '2', '1/2', '2')], learning: { overlap: true, goal: '按原坐标逐个处理竖直重叠上的不同高度，区分点配对与完整区间。', verification: 'S0 × S1 为 (1/2, 0) → (1/2, 4)。中层 (1/2, 2) 的 S0、S1、S2、S3、S6 产生 5 × 4 / 2 − 1 = 9 个点配对；下端 S4 与 S0、S1 各产生一对，上端 S5 与 S0、S1 各产生一对。共 14 对：13 个点配对位于 3 处，另有 1 个完整区间，未作几何并集合并。' } },
   { id: 'spider-web', name: '蜘蛛网', description: '八条放射骨架连接两层八边形网环，每个网格连接处都是线段端点。', segments: spiderWeb(), learning: { goal: '沿网环观察端点连接，比较普通网结和中心共点的配对数量。', verification: '内层的 8 个网结各连 4 条边，外层的 8 个网结各连 3 条边，中心连 8 条边。不同交点位置为 8 + 8 + 1 = 17；配对数为 8 × 6 + 8 × 3 + 28 = 100。例如 (12, 0) 的四条边产生 6 对，(24, 0) 的三条边产生 3 对。网环之间不交叉，没有重叠边。' } },
   { id: 'hexagonal-snowflake', name: '六角雪花', description: '六条主枝各有两层对称分叉，枝间保留留白。图形以 433/500 近似 √3/2，求交仍对提交的有理坐标精确计算。', segments: hexagonalSnowflake(), learning: { goal: '观察六重对称分枝的端点归组，区分中心和分叉处的相交配对。', verification: '中心连接 6 条主枝，产生 15 对；每条主枝有两个四边相接的分叉点，每点产生 6 对。共有 1 + 6 × 2 = 13 个交点位置、15 + 12 × 6 = 87 对。例如 (3, 0) 和 (6, 0) 各有 6 对；枝梢仅连一条边，不产生配对。分叉之间没有穿越或重叠。六重对称的理想坐标使用确定的有理近似。' } },
+  ...artPresets,
+  ...carbonLatticePresets,
+  fullerenePreset,
+  penrosePreset,
 ]
