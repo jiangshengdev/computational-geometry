@@ -153,6 +153,9 @@ struct Event {
     starts: Vec<usize>,
 }
 
+type NeighborObserver<'a> =
+    dyn FnMut(usize, &BTreeMap<Point, Event>, &[[usize; 2]], Vec<Variable>) + 'a;
+
 fn schedule_neighbors(
     active: &[usize],
     lower: usize,
@@ -160,28 +163,98 @@ fn schedule_neighbors(
     current: &Point,
     queue: &mut BTreeMap<Point, Event>,
     checked: &mut Vec<[usize; 2]>,
-) {
+    mut observer: Option<&mut NeighborObserver<'_>>,
+) -> Option<Point> {
+    macro_rules! observe_geometry {
+        ($boundary:expr, $neighbors:expr, $pair:expr, $point:expr, $returned:expr) => {
+            if let Some(observer) = &mut observer {
+                let neighbors: Option<&[usize]> = $neighbors;
+                let pair: Option<(&SweepSegment, &SweepSegment)> = $pair;
+                let point: Option<&Point> = $point;
+                let returned: Option<&Option<Point>> = $returned;
+                let mut locals = vec![neighbors.map_or_else(
+                    || Variable::absent("neighbors", "&[usize]", "unassigned"),
+                    |neighbors| {
+                        Variable::available("neighbors", "&[usize]", format!("{neighbors:?}"))
+                    },
+                )];
+                for (name, segment) in [
+                    ("a", pair.map(|pair| pair.0)),
+                    ("b", pair.map(|pair| pair.1)),
+                ] {
+                    locals.push(segment.map_or_else(
+                        || Variable::absent(name, "&SweepSegment", "unassigned"),
+                        |segment| {
+                            Variable::available(name, "&SweepSegment", sweep_segment_value(segment))
+                        },
+                    ));
+                }
+                locals.push(point.map_or_else(
+                    || {
+                        Variable::absent(
+                            "point",
+                            "Point",
+                            if $boundary == 8 {
+                                "unavailable"
+                            } else {
+                                "unassigned"
+                            },
+                        )
+                    },
+                    |point| Variable::available("point", "Point", point_value(point)),
+                ));
+                locals.push(returned.map_or_else(
+                    || Variable::absent("return_value", "Option<Point>", "unassigned"),
+                    |returned| {
+                        Variable::available(
+                            "return_value",
+                            "Option<Point>",
+                            optional_point_value(returned),
+                        )
+                    },
+                ));
+                observer($boundary, queue, checked, locals);
+            }
+        };
+    }
+    observe_geometry!(0, None, None, None, None);
     let Some(neighbors) = active.get(lower..lower + 2) else {
-        return;
+        let return_value = None;
+        observe_geometry!(1, None, None, None, Some(&return_value));
+        return return_value;
     };
+    observe_geometry!(1, Some(neighbors), None, None, None);
     checked.push([neighbors[0], neighbors[1]]);
+    observe_geometry!(2, Some(neighbors), None, None, None);
     let (a, b) = (&segments[neighbors[0]], &segments[neighbors[1]]);
+    observe_geometry!(3, Some(neighbors), Some((a, b)), None, None);
     if a.slope == b.slope {
-        return;
+        let return_value = None;
+        observe_geometry!(4, Some(neighbors), Some((a, b)), None, Some(&return_value));
+        return return_value;
     }
     let cross_x = (&b.intercept - &a.intercept)
         / (a.slope.as_ref().expect("active segment has a slope")
             - b.slope.as_ref().expect("active segment has a slope"));
     if cross_x < a.left.x || cross_x > a.right.x || cross_x < b.left.x || cross_x > b.right.x {
-        return;
+        let return_value = None;
+        observe_geometry!(4, Some(neighbors), Some((a, b)), None, Some(&return_value));
+        return return_value;
     }
     let point = Point {
         y: a.y_at(&cross_x),
         x: cross_x,
     };
+    observe_geometry!(4, Some(neighbors), Some((a, b)), Some(&point), None);
     if point > *current {
-        queue.entry(point).or_default();
+        observe_geometry!(5, Some(neighbors), Some((a, b)), Some(&point), None);
+        queue.entry(point.clone()).or_default();
+        observe_geometry!(6, Some(neighbors), Some((a, b)), Some(&point), None);
     }
+    observe_geometry!(7, Some(neighbors), Some((a, b)), Some(&point), None);
+    let return_value = Some(point);
+    observe_geometry!(8, Some(neighbors), Some((a, b)), None, Some(&return_value));
+    return_value
 }
 
 /// Return every intersecting input pair with its exact point or full overlap.
@@ -254,6 +327,37 @@ impl Variable {
 
 fn point_value(point: &Point) -> String {
     format!("({}, {})", point.x, point.y)
+}
+
+fn optional_point_value(point: &Option<Point>) -> String {
+    point.as_ref().map_or_else(
+        || "None".to_owned(),
+        |point| format!("Some({})", point_value(point)),
+    )
+}
+
+fn sweep_segment_value(segment: &SweepSegment) -> String {
+    format!(
+        "SweepSegment {{ left: {}, right: {}, slope: {}, intercept: {} }}",
+        point_value(&segment.left),
+        point_value(&segment.right),
+        segment
+            .slope
+            .as_ref()
+            .map_or_else(|| "None".to_owned(), |slope| format!("Some({slope})")),
+        segment.intercept
+    )
+}
+
+fn sweep_segments_value(segments: &[SweepSegment]) -> String {
+    format!(
+        "[{}]",
+        segments
+            .iter()
+            .map(sweep_segment_value)
+            .collect::<Vec<_>>()
+            .join(", ")
+    )
 }
 
 fn event_value(event: &Event) -> String {
@@ -363,23 +467,7 @@ impl SweepStep {
         locals.push(Variable::available(
             "segments",
             "Vec<SweepSegment>",
-            format!(
-                "[{}]",
-                segments
-                    .iter()
-                    .map(|segment| format!(
-                        "SweepSegment {{ left: {}, right: {}, slope: {}, intercept: {} }}",
-                        point_value(&segment.left),
-                        point_value(&segment.right),
-                        segment
-                            .slope
-                            .as_ref()
-                            .map_or_else(|| "None".to_owned(), |slope| format!("Some({slope})")),
-                        segment.intercept
-                    ))
-                    .collect::<Vec<_>>()
-                    .join(", ")
-            ),
+            sweep_segments_value(segments),
         ));
         locals.push(Variable::available("shear", "Rational", shear.to_string()));
     }
@@ -895,42 +983,207 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
                 step.subjects = active[position..position + inserted].to_vec();
             }
         }
+        macro_rules! neighbors {
+            ($boundary:expr, $checked:expr, $boundaries:expr, $lower:expr, $neighbors:expr, $candidate:expr) => {
+                observe!("neighbors", $boundary, $neighbors.unwrap_or(&[]), {
+                    let checked: Option<&[[usize; 2]]> = $checked;
+                    let boundaries: Option<&[Option<usize>; 2]> = $boundaries;
+                    let lower: Option<usize> = $lower;
+                    let neighbors: Option<&[usize]> = $neighbors;
+                    let candidate: Option<&Option<Point>> = $candidate;
+                    vec![
+                        Variable::available("position", "usize", position.to_string()),
+                        Variable::available("inserted", "usize", inserted.to_string()),
+                        checked.map_or_else(
+                            || Variable::absent("checked", "Vec<[usize; 2]>", "unassigned"),
+                            |checked| {
+                                Variable::available(
+                                    "checked",
+                                    "Vec<[usize; 2]>",
+                                    format!("{checked:?}"),
+                                )
+                            },
+                        ),
+                        boundaries.map_or_else(
+                            || Variable::absent("boundaries", "[Option<usize>; 2]", "unassigned"),
+                            |boundaries| {
+                                Variable::available(
+                                    "boundaries",
+                                    "[Option<usize>; 2]",
+                                    format!("{boundaries:?}"),
+                                )
+                            },
+                        ),
+                        lower.map_or_else(
+                            || {
+                                Variable::absent(
+                                    "lower",
+                                    "usize",
+                                    if $boundary < 3 {
+                                        "unassigned"
+                                    } else {
+                                        "unavailable"
+                                    },
+                                )
+                            },
+                            |lower| Variable::available("lower", "usize", lower.to_string()),
+                        ),
+                        neighbors.map_or_else(
+                            || {
+                                Variable::absent(
+                                    "neighbors",
+                                    "&[usize]",
+                                    if $boundary <= 3 {
+                                        "unassigned"
+                                    } else {
+                                        "unavailable"
+                                    },
+                                )
+                            },
+                            |neighbors| {
+                                Variable::available(
+                                    "neighbors",
+                                    "&[usize]",
+                                    format!("{neighbors:?}"),
+                                )
+                            },
+                        ),
+                        candidate.map_or_else(
+                            || {
+                                Variable::absent(
+                                    "candidate",
+                                    "Option<Point>",
+                                    if $boundary <= 4 {
+                                        "unassigned"
+                                    } else {
+                                        "unavailable"
+                                    },
+                                )
+                            },
+                            |candidate| {
+                                Variable::available(
+                                    "candidate",
+                                    "Option<Point>",
+                                    optional_point_value(candidate),
+                                )
+                            },
+                        ),
+                    ]
+                });
+            };
+        }
+        neighbors!(0, None, None, None, None::<&[usize]>, None);
         let mut checked = Vec::new();
+        neighbors!(1, Some(&checked), None, None, None::<&[usize]>, None);
         let boundaries = [
             position.checked_sub(1),
             (inserted > 0).then(|| position + inserted - 1),
         ];
+        neighbors!(
+            2,
+            Some(&checked),
+            Some(&boundaries),
+            None,
+            None::<&[usize]>,
+            None
+        );
         for lower in boundaries.into_iter().flatten() {
+            neighbors!(
+                3,
+                Some(&checked),
+                Some(&boundaries),
+                Some(lower),
+                None::<&[usize]>,
+                None
+            );
             let Some(neighbors) = active.get(lower..lower + 2) else {
                 continue;
             };
-            if let Some(steps) = &mut steps {
-                steps.push(SweepStep::capture(
-                    "check",
-                    Some(&point),
-                    &queue,
-                    &active,
-                    &result,
-                    &[[neighbors[0], neighbors[1]]],
-                    neighbors,
-                ));
-            }
+            neighbors!(
+                4,
+                Some(&checked),
+                Some(&boundaries),
+                Some(lower),
+                Some(neighbors),
+                None
+            );
             let pending_count = queue.len();
-            schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);
-            if let Some(steps) = &mut steps
-                && queue.len() > pending_count
-            {
-                steps.push(SweepStep::capture(
-                    "discover",
-                    Some(&point),
-                    &queue,
-                    &active,
-                    &result,
-                    &[[neighbors[0], neighbors[1]]],
-                    neighbors,
-                ));
-            }
+            let tracing = steps.is_some();
+            let mut observer =
+                |boundary, queue: &BTreeMap<Point, Event>, checked: &[[usize; 2]], locals| {
+                    if let Some(steps) = &mut steps {
+                        let action = if boundary == 2 {
+                            "check"
+                        } else if boundary == 6 && queue.len() > pending_count {
+                            "discover"
+                        } else {
+                            "micro"
+                        };
+                        let mut step = SweepStep::capture(
+                            action,
+                            Some(&point),
+                            queue,
+                            &active,
+                            &result,
+                            checked,
+                            neighbors,
+                        );
+                        let mut queue_parameter = step.execution.context.locals.remove(0);
+                        queue_parameter.r#type = "&mut BTreeMap<Point, Event>";
+                        step.execution.module = "geometry";
+                        step.execution.boundary = Some(boundary);
+                        step.execution.entry = boundary == 0;
+                        step.execution.context = ExecutionContext {
+                            function: "schedule_neighbors",
+                            parameters: vec![
+                                Variable::available("active", "&[usize]", format!("{active:?}")),
+                                Variable::available("lower", "usize", lower.to_string()),
+                                Variable::available(
+                                    "segments",
+                                    "&[SweepSegment]",
+                                    sweep_segments_value(&segments),
+                                ),
+                                Variable::available("current", "&Point", point_value(&point)),
+                                queue_parameter,
+                                Variable::available(
+                                    "checked",
+                                    "&mut Vec<[usize; 2]>",
+                                    format!("{checked:?}"),
+                                ),
+                            ],
+                            locals,
+                        };
+                        steps.push(step);
+                    }
+                };
+            let observer: Option<&mut NeighborObserver<'_>> =
+                if tracing { Some(&mut observer) } else { None };
+            let candidate = schedule_neighbors(
+                &active,
+                lower,
+                &segments,
+                &point,
+                &mut queue,
+                &mut checked,
+                observer,
+            );
+            neighbors!(
+                5,
+                Some(&checked),
+                Some(&boundaries),
+                Some(lower),
+                Some(neighbors),
+                Some(&candidate)
+            );
         }
+        neighbors!(
+            6,
+            Some(&checked),
+            Some(&boundaries),
+            None,
+            None::<&[usize]>,
+            None
+        );
         if let Some(steps) = &mut steps {
             steps.push(SweepStep::capture(
                 "complete",

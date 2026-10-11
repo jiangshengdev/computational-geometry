@@ -80,7 +80,7 @@ export function ExecutionPanel({ step, previous, shear, values }: {
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}
       <section aria-label="当前执行上下文" className="execution-context">
         <h3>当前函数：<code>{context.function}</code></h3>
-        <p className="text-sm text-muted">{take ? '取事件片段的核心上下文。' : '大步现场可用的核心上下文。'}queue、next、point 与局部 segments 使用扫描坐标 x′ = x + {formatRational(shear)} · y；result 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。参数 segments 已被同名局部变量遮蔽。</p>
+        <p className="text-sm text-muted">当前小步的核心上下文。queue、next、point、current 与扫描线段使用扫描坐标 x′ = x + {formatRational(shear)} · y；result 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。{context.function === 'sweep' && '参数 segments 已被同名局部变量遮蔽。'}</p>
         <h4>核心参数</h4><dl>{context.parameters.map(variable => renderVariable(variable, 'parameters'))}</dl>
         <h4>核心局部变量</h4><dl>{context.locals.map(variable => renderVariable(variable, 'locals'))}</dl>
       </section>

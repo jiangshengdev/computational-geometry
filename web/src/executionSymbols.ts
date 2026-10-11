@@ -6,14 +6,20 @@ const meanings: Record<string, string> = {
   segments: '变换到扫描坐标的线段；遮蔽同名原始输入参数', active: '当前活动线段的编号序列',
   incident: '经过当前事件点的线段编号', height_order: '活动线段在当前横坐标的高度比较结果',
   id: '当前循环访问的线段编号', starts: '在当前点开始的线段', ends: '在当前点结束的线段',
-  passes: '内部经过当前点的线段', i: '当前外层配对索引', a: '当前配对的第一条线段编号',
-  b: '当前配对的第二条线段编号', shear: '扫描坐标的剪切系数',
+  passes: '内部经过当前点的线段', i: '当前外层配对索引', a: '当前配对的第一条线段（扫描循环中使用编号）',
+  b: '当前配对的第二条线段（扫描循环中使用编号）', shear: '扫描坐标的剪切系数',
   p: '坐标还原闭包的参数，仅在该闭包调用期间有效', start: '重叠候选区间的起点',
   end: '重叠候选区间的终点', geometry: '当前线段对的原坐标交集', result: '截至当前小步已记录的交集',
   position: '新活动线段插入到活动序列的位置', inserted: '本次需要插入的线段数量',
+  boundaries: '需检查的插入区间外侧边界', lower: '邻居对中第一条线段的活动序列索引',
+  neighbors: '本次检查的相邻线段编号', current: '正在处理的事件扫描坐标',
+  checked: '本事件已经检查的邻居对', candidate: '已完成的邻居调用返回的交点候选',
+  return_value: '当前调用已经产生的返回值',
 }
 
 export const functions: Record<string, { signature: string; purpose: string; parameters: string }> = {
+  schedule_neighbors: { signature: 'schedule_neighbors(active, lower, segments, current, queue, checked) -> Option<Point>', purpose: '检查实际邻居，将未来交点加入事件队列并返回几何候选。', parameters: 'active：活动顺序；lower：邻居索引；segments：扫描线段；current：当前事件；queue：事件队列；checked：已检查对。' },
+  intersection_candidate: { signature: 'intersection_candidate(a, b) -> Option<Point>', purpose: '教学伪代码中的原子几何计算；对应 Rust 实际精确计算，不展开公式。', parameters: 'a、b：本次参与几何计算的扫描线段。' },
   pop_first: { signature: 'pop_first(&mut self) -> Option<(Point, Event)>', purpose: '移除并返回队列中最早的事件。', parameters: 'self：当前 queue；无显式参数。' },
   y_at: { signature: 'y_at(&self, x: &Rational) -> Rational', purpose: '精确计算线段在指定横坐标的高度。', parameters: 'self：当前线段；x：事件横坐标。' },
   cmp: { signature: 'cmp(&self, other: &Rational) -> Ordering', purpose: '精确比较两个有理数。', parameters: 'self：线段高度；other：事件纵坐标。' },

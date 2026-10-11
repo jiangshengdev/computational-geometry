@@ -14,6 +14,7 @@ export function ExecutionSymbol({ name, kind, expression, children, step, previo
   const context = step.execution.context
   const inCall = context.function === name
   const returnValue = context.locals.find(variable => variable.name === 'return_value')
+  const local = (name: string) => context.locals.find(variable => variable.name === name)
   const references = [...new Set(expression.match(/[A-Za-z_][A-Za-z_0-9]*/g))]
     .map(reference => context.locals.find(variable => variable.name === reference) ?? context.parameters.find(variable => variable.name === reference))
     .filter(variable => variable !== undefined)
@@ -31,6 +32,12 @@ export function ExecutionSymbol({ name, kind, expression, children, step, previo
           {inCall ? <>
             {context.parameters.map(parameter => <p key={parameter.name}>实参 {parameter.name}：<code>{variableValue(parameter, values)}</code></p>)}
             <p>返回值：<code>{variableValue(returnValue, values)}</code></p>
+          </> : name === 'intersection_candidate' && step.execution.module === 'geometry' ? <>
+            {['a', 'b'].map(name => <p key={name}>实参 {name}：<code>{variableValue(local(name), values)}</code></p>)}
+            <p>返回值：<code>{step.execution.boundary! < 4 ? '尚未调用，返回值不可用' : local('point')?.availability === 'available' ? variableValue(local('point'), values) : variableValue(returnValue, values)}</code></p>
+          </> : name === 'schedule_neighbors' && step.execution.module === 'neighbors' ? <>
+            {['active', 'lower', 'segments', 'point', 'queue', 'checked'].map(name => <p key={name}>实参 {name}：<code>{variableValue(local(name), values)}</code></p>)}
+            <p>返回值：<code>{variableValue(local('candidate'), values)}</code></p>
           </> : name === 'pop_first' && step.execution.module === 'take' ? <>
             <p>实参：无显式参数；接收者 queue。</p>
             <p>返回值：<code>{next?.availability === 'unassigned' ? '尚未调用，返回值不可用' : variableValue(next, values)}</code></p>

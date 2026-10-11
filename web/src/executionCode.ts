@@ -2,6 +2,24 @@ export interface TeachingModule { title: string; code: string }
 
 // Boundaries are recorded at the corresponding operations in the Rust sweep.
 export const teachingModules: Record<string, TeachingModule> = {
+  neighbors: { title: '邻居检查', code: [
+    'let mut checked = Vec::new();',
+    'let boundaries = [position.checked_sub(1), (inserted > 0).then(|| position + inserted - 1)];',
+    'for lower in boundaries.into_iter().flatten() {',
+    '    let Some(neighbors) = active.get(lower..lower + 2) else { continue; };',
+    '    let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);',
+    '}',
+  ].join('\n') },
+  geometry: { title: '几何调用与入队', code: [
+    'let Some(neighbors) = active.get(lower..lower + 2) else { return None; };',
+    'checked.push([neighbors[0], neighbors[1]]);',
+    'let (a, b) = (&segments[neighbors[0]], &segments[neighbors[1]]);',
+    'let Some(point) = intersection_candidate(a, b) else { return None; };',
+    'if point > *current {',
+    '    queue.entry(point.clone()).or_default();',
+    '}',
+    'return Some(point);',
+  ].join('\n') },
   activity: { title: '活动集合更新', code: [
     'active.retain(|&id| segments[id].right != point);',
     'active.retain(|&id| !height_order[id].is_eq());',
