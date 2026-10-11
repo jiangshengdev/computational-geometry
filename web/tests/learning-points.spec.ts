@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 
 for (const [id, pairs, positions, pointIds, exactPoint] of [
   ['point-inputs', 4, 2, [1, 2, 3, 4], '(2, 0)'],

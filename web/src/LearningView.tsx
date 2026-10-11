@@ -16,6 +16,7 @@ import { useEventTransfer } from './useEventTransfer'
 import { eventSide } from './eventSide'
 import { usePageShortcut } from './usePageShortcut'
 import { ExecutionPanel } from './ExecutionPanel'
+import { LearningDock } from './LearningDock'
 
 
 export function LearningView({ preset, trace, results, index, onStepChange, onStepPreview }: {
@@ -229,14 +230,21 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
         </Card></section>
   return <section aria-label="逐步学习" className="learning-view">
     <div className="learning-workspace">
-      <aside aria-label="左侧辅助栏" className="learning-state-panels learning-left-sidebar">{participants}{activeSegments}</aside>
+      <LearningDock side="left" panels={[
+        { id: 'participants', name: '同点参与线段', icon: '⋈', content: participants },
+        { id: 'active', name: '活动线段顺序', icon: '≡', content: activeSegments },
+      ]} />
       <div className="learning-center">
         <GeometryView key={run} segments={preset.segments} results={step.results} selected={null} hoverTarget={hover}
           highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights ?? (recordedOverlap ? hoverHighlights({ kind: 'pair', pair: pairName(recordedOverlap) }, step.results) : null)} onHover={setHover}
           sweep={{ step: index, current: step.current, side: eventSide(geometryStep, trace.steps[geometryIndex + 1]), participants: [...step.starts, ...step.ends, ...step.passes], active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
         <ExecutionPanel step={step} previous={before} shear={trace.shear} values={trace.values} />
       </div>
-      <aside aria-label="右侧辅助栏" className="learning-state-panels learning-right-sidebar">{currentEvent}{pendingEvents}{explanations}</aside>
+      <LearningDock side="right" panels={[
+        { id: 'current', name: '当前事件', icon: '◎', content: currentEvent },
+        { id: 'pending', name: '待处理事件队列', icon: '☷', content: pendingEvents },
+        { id: 'explanations', name: '操作解释', icon: '?', content: explanations },
+      ]} />
     </div>
     <section aria-label="回放控制" className="learning-replay-controls">
       <div className="flex flex-wrap items-center gap-2">

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { selectPreset } from './cases'

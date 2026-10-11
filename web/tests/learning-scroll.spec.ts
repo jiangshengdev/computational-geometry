@@ -1,4 +1,4 @@
-import { expect, test, type Locator, type Page } from '@playwright/test'
+import { expect, test, type Locator, type Page } from './learning-test'
 import { formatPoint, samePoint, type SweepTrace } from '../src/geometry'
 import { installCase, scrollingCase } from './scrolling-cases'
 

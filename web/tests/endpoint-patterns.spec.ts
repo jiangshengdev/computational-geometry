@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 import { formatPoint, samePoint, type Intersection, type Segment, type SweepTrace } from '../src/geometry'
 import { captureDemo, checkPairSelection, checkViewportControls, checkLearningCompletion } from './demo-interactions'
 

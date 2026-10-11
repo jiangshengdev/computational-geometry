@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 
 // Independent counts from line equations and junction degrees, not API output.
 for (const [id, pairs, positions] of [

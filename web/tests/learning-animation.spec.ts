@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test'
+import { expect, test, type Page } from './learning-test'
 import { selectPreset } from './cases'
 
 async function startLearning(page: Page) {

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 
 for (const [id, count, intervals] of [
   ['partial-overlap', 1, ['(2, 0) → (4, 0)']],

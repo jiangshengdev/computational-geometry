@@ -1,4 +1,4 @@
-import { expect, test, type Locator } from '@playwright/test'
+import { expect, test, type Locator } from './learning-test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { installCase, scrollingCase } from './scrolling-cases'

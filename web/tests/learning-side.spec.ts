@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 import type { SweepTrace } from '../src/geometry'
 
 test('普通交叉保留步骤与精确位置，取出向左、记录隐藏、处理中换序向右', async ({ page }) => {

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 
 for (const [id, reason] of [
   ['empty', '没有输入'], ['single', '无法组成两个独立输入的配对'],

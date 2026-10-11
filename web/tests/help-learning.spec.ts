@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 
 for (const width of [1360, 390]) test(`教学帮助：动态内容默认展示与阅读状态保持 ${width}px`, async ({ page }) => {
   const errors: string[] = []

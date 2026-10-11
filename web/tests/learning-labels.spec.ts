@@ -1,4 +1,4 @@
-import { expect, test, type Locator, type Page } from '@playwright/test'
+import { expect, test, expandedPanels, type Locator, type Page } from './learning-test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import type { SweepTrace } from '../src/geometry'
@@ -134,6 +134,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
 
   browserTest(`教学标签：触屏固定详情、拖动隔离和换步清理 ${browserName}`, async ({ browser, baseURL }) => {
     const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 }, hasTouch: true })
+    await expandedPanels(page.context())
     try {
       await page.goto('/cases/crossing/learn?step=5')
       const line = page.getByRole('img', { name: '输入 S0', exact: true }).locator('line')

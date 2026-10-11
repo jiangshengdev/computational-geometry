@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test'
+import { expect, test, expandedPanels, type Page } from './learning-test'
 
 async function expectStep(page: Page, step: number) {
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(step))
@@ -9,6 +9,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   browserTest(`教学步骤 URL：连续拖动预览仅在结束时写入 ${browserName}`, async ({ browser, baseURL }) => {
     const page = await browser.newPage({ baseURL, viewport: { width: 1360, height: 900 }, reducedMotion: 'reduce' })
+    await expandedPanels(page.context())
     try {
       const errors: string[] = []
       page.on('pageerror', error => errors.push(error.message))

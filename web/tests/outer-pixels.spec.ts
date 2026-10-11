@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test'
+import { expect, test, expandedPanels, type Page } from './learning-test'
 import { presets } from '../src/presets'
 import type { SweepTrace } from '../src/geometry'
 import { layoutCases } from './layout-states'
@@ -28,6 +28,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     for (const width of [1100, 1361, 1920]) {
       browserTest(`两页三栏尺寸一致且为整数 20/60/20 ${width}px`, async ({ browser, baseURL }) => {
         const page = await browser.newPage({ baseURL, viewport: { width, height: 901 }, deviceScaleFactor: 2 })
+        await expandedPanels(page.context())
         try {
           await page.goto('/cases/crossing')
           await expect(page.getByRole('radio').first()).toBeVisible()
@@ -69,6 +70,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       browserTest(`${preset ? `${preset.name}代表性教学布局` : '列表与结果'} ${width}px`, async ({ browser, baseURL }) => {
         test.setTimeout(180_000)
         const page = await browser.newPage({ baseURL, deviceScaleFactor: 2, reducedMotion: 'reduce' })
+        await expandedPanels(page.context())
         try {
           await page.setViewportSize({ width, height: 901 })
           const errors: string[] = []

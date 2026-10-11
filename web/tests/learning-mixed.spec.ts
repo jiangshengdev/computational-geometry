@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import type { SweepTrace } from '../src/geometry'
