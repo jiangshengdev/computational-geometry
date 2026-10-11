@@ -26,7 +26,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   test.describe(`外层像素 ${browserName}`, () => {
     for (const width of [1100, 1361, 1920]) {
-      browserTest(`两页三栏尺寸一致且为整数 20/60/20 ${width}px`, async ({ browser, baseURL }) => {
+      browserTest(`结果三栏与学习左右工作区均保持整数布局 ${width}px`, async ({ browser, baseURL }) => {
         const page = await browser.newPage({ baseURL, viewport: { width, height: 901 }, deviceScaleFactor: 2 })
         await expandedPanels(page.context())
         try {
@@ -50,11 +50,15 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           const results = await columns(false)
           await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
           await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
-          expect(await columns(true)).toEqual(results)
+          const learning = await columns(true)
+          const code = (await page.getByRole('region', { name: '核心代码回放', exact: true }).boundingBox())!
+          expect(learning[0].width).toBe(learning[2].width)
+          expect(Math.abs(learning[1].width - code.width)).toBeLessThanOrEqual(1)
+          expect(code.x).toBeGreaterThan(learning[1].x + learning[1].width)
           const available = results.reduce((sum, box) => sum + box.width, 0)
           const side = Math.floor(available * 0.2)
           expect(results.map(box => box.width)).toEqual([side, available - 2 * side, side])
-          for (const box of results) {
+          for (const box of [...results, ...learning, code]) {
             expect(Number.isInteger(box.x)).toBe(true)
             expect(Number.isInteger(box.width)).toBe(true)
           }
