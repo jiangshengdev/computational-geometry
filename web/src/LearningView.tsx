@@ -1,4 +1,5 @@
 import { Fragment, useId, useRef, useState } from 'react'
+import { ArrowLeft, ArrowRight, CircleHelp, Crosshair, ListOrdered, ListTree, Waypoints } from 'lucide-react'
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@heroui/react/button'
@@ -232,8 +233,8 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   return <section aria-label="逐步学习" className="learning-view">
     <div className="learning-workspace">
       <LearningDock side="left" panels={[
-        { id: 'participants', name: '同点参与线段', icon: '⋈', content: participants },
-        { id: 'active', name: '活动线段顺序', icon: '≡', content: activeSegments },
+        { id: 'participants', name: '同点参与线段', icon: Waypoints, content: participants },
+        { id: 'active', name: '活动线段顺序', icon: ListOrdered, content: activeSegments },
       ]} />
       <LearningSplit canvas={
         <GeometryView key={run} segments={preset.segments} results={step.results} selected={null} hoverTarget={hover}
@@ -241,16 +242,16 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
           sweep={{ step: index, current: step.current, side: eventSide(geometryStep, trace.steps[geometryIndex + 1]), participants: [...step.starts, ...step.ends, ...step.passes], active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
       } debuggerPanel={<ExecutionPanel step={step} previous={before} shear={trace.shear} values={trace.values} />} />
       <LearningDock side="right" panels={[
-        { id: 'current', name: '当前事件', icon: '◎', content: currentEvent },
-        { id: 'pending', name: '待处理事件队列', icon: '☷', content: pendingEvents },
-        { id: 'explanations', name: '操作解释', icon: '?', content: explanations },
+        { id: 'current', name: '当前事件', icon: Crosshair, content: currentEvent },
+        { id: 'pending', name: '待处理事件队列', icon: ListTree, content: pendingEvents },
+        { id: 'explanations', name: '操作解释', icon: CircleHelp, content: explanations },
       ]} />
     </div>
     <section aria-label="回放控制" className="learning-replay-controls">
       <div className="flex flex-wrap items-center gap-2">
             <Button variant="secondary" size="sm" onPress={() => changeStep(previousEntry)} isDisabled={previousEntry < 0}>上一个大步</Button>
-            <Button variant="secondary" size="sm" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Chip color="accent" variant="soft" size="sm" aria-hidden="true">←</Chip></Button>
-            <Button variant="primary" size="sm" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true">→</Chip></Button>
+            <Button variant="secondary" size="sm" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Chip color="accent" variant="soft" size="sm" aria-hidden="true"><ArrowLeft size={14} /></Chip></Button>
+            <Button variant="primary" size="sm" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Button>
             <Button variant="secondary" size="sm" onPress={() => changeStep(nextEntry)} isDisabled={nextEntry < 0}>下一个大步</Button>
             <Button variant="tertiary" size="sm" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Chip color="accent" variant="soft" size="sm" aria-hidden="true">R</Chip></Button>
       </div>

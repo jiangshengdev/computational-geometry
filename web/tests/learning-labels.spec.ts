@@ -18,7 +18,7 @@ async function linePosition(line: Locator, fraction = 0.25) {
 async function readableLabels(page: Page) {
   await expect.poll(() => page.locator('.teaching-labels text').evaluateAll(nodes => {
     const visible = nodes.filter(node => getComputedStyle(node).visibility === 'visible')
-    const viewport = document.querySelector('.drawing svg')!.getBoundingClientRect()
+    const viewport = document.querySelector('.drawing-surface > svg')!.getBoundingClientRect()
     const boxes = visible.map(node => node.getBoundingClientRect())
     return boxes.every((a, i) => a.width > 0 && a.left >= viewport.left && a.right <= viewport.right &&
       a.top >= viewport.top && a.bottom <= viewport.bottom && !boxes.slice(i + 1).some(b =>

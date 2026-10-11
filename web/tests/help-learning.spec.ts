@@ -34,7 +34,7 @@ for (const width of [1360, 390]) test(`教学帮助：动态内容默认展示�
   }
   await page.getByRole('button', { name: '放大', exact: true }).click()
   const drawing = page.getByRole('region', { name: '几何视图' })
-  const svg = drawing.locator('svg')
+  const svg = drawing.getByRole('img', { name: '输入与交集坐标图', exact: true })
   const box = (await svg.boundingBox())!
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
   await page.mouse.down()

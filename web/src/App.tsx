@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { ArrowRight } from 'lucide-react'
 import { Route, Routes, useMatch, useNavigate, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { CaseThumbnail } from './CaseThumbnail'
@@ -218,7 +219,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
         <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
         {learning
           ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>返回结果查看器</Link>
-          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">开始逐步学习<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true">→</Chip></Link>}
+          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">开始逐步学习<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Link>}
       </div>
     </div>
     <CaseViewer preset={preset} learning={learning} />

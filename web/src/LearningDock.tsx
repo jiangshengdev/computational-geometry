@@ -1,9 +1,10 @@
 import { useId, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { ChevronsLeft, ChevronsRight, type LucideIcon } from 'lucide-react'
 import { FocusScope } from 'react-aria/FocusScope'
 import { useLayoutPreference } from './useLayoutPreference'
 import './LearningDock.css'
 
-interface DockPanel { id: string; name: string; icon: string; content: ReactNode }
+interface DockPanel { id: string; name: string; icon: LucideIcon; content: ReactNode }
 
 export function LearningDock({ side, panels }: { side: 'left' | 'right'; panels: DockPanel[] }) {
   const [expanded, setExpanded] = useLayoutPreference(`bo-learning-layout-v1-${side}`, false,
@@ -26,7 +27,7 @@ export function LearningDock({ side, panels }: { side: 'left' | 'right'; panels:
       <button type="button" className="learning-dock-button" aria-label={`${expanded ? '收起' : '展开'}${label}`}
         aria-expanded={expanded} aria-controls={id}
         onClick={() => { setOpened(null); setExpanded(!expanded) }}>
-        <span aria-hidden="true">{expanded === (side === 'left') ? '«' : '»'}</span>
+        {expanded === (side === 'left') ? <ChevronsLeft size={20} aria-hidden="true" /> : <ChevronsRight size={20} aria-hidden="true" />}
         {expanded && <span>{label}</span>}
       </button>
       {!expanded && panels.map(panel => <button key={panel.id} type="button" className="learning-dock-button"
@@ -36,7 +37,7 @@ export function LearningDock({ side, panels }: { side: 'left' | 'right'; panels:
           trigger.current = event.currentTarget
           if (opened === panel.id) close()
           else setOpened(panel.id)
-        }}><span aria-hidden="true">{panel.icon}</span></button>)}
+        }}><panel.icon size={20} aria-hidden="true" /></button>)}
     </div>
     {opened !== null && !expanded && <div className="learning-dock-dismiss" aria-hidden="true"
       onPointerDown={event => event.preventDefault()} onClick={event => { event.stopPropagation(); close() }} />}

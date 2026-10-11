@@ -1,5 +1,17 @@
 import { expect, test } from './learning-test'
 
+for (const width of [1360, 390]) test(`图例按钮图标居中 ${width}px`, async ({ page }) => {
+  await page.setViewportSize({ width, height: 1000 })
+  await page.goto('/cases/crossing/learn?step=17')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('17')
+  const trigger = page.getByRole('button', { name: '图例与操作说明' })
+  await trigger.hover()
+  const button = (await trigger.boundingBox())!
+  const icon = (await trigger.locator('svg').boundingBox())!
+  expect(Math.abs(button.x + button.width / 2 - icon.x - icon.width / 2)).toBeLessThan(1)
+  expect(Math.abs(button.y + button.height / 2 - icon.y - icon.height / 2)).toBeLessThan(1)
+})
+
 test('帮助：两页集中入口、键盘隔离与焦点返回', async ({ page }) => {
   for (const route of ['/cases/crossing', '/cases/crossing/learn?step=3']) {
     await page.goto(route)

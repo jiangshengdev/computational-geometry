@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react'
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Info, Minus, Plus } from 'lucide-react'
 import { select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { projectPoints } from './projection'
 import { formatGeometry, formatPoint, formatRational, pairName, samePoint, isVertical, type Intersection, type Point, type Segment } from './geometry'
@@ -241,7 +242,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
   return <section className="drawing" aria-label="几何视图"><Card>
     <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1"><Card.Title render={props => <h2 {...props} />}>原始坐标平面 · 等比例</Card.Title>
       <Tooltip>
-        <Tooltip.Trigger<'button'> render={props => <button {...props} type="button" />} className={buttonVariants({ isIconOnly: true, variant: 'ghost', size: 'sm' })} aria-label="图例与操作说明"><span aria-hidden="true" className="inline-flex size-4 items-center justify-center rounded-full border text-xs font-semibold">i</span></Tooltip.Trigger>
+        <Tooltip.Trigger<'button'> render={props => <button {...props} type="button" />} className={buttonVariants({ isIconOnly: true, variant: 'ghost', size: 'sm', className: 'inline-flex' })} aria-label="图例与操作说明"><Info size={16} aria-hidden="true" /></Tooltip.Trigger>
         <Tooltip.Content placement="bottom" className="max-w-xs">
           <div className="flex flex-col gap-1 text-sm"><span>蓝色：输入</span><span>橙色：交集</span>
             {sweep ? <><span>加粗：活动线段</span><span>虚线圆：待处理交点</span><span>紫色：扫描线与当前事件</span><span>扫描方向：从左向右</span></> : <span>菱形：零长度输入</span>}
@@ -250,8 +251,8 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
         </Tooltip.Content>
       </Tooltip>
     </div><ButtonGroup variant="tertiary" size="sm" aria-label="画布视图控制">
-      <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大">＋</Button>
-      <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小"><ButtonGroup.Separator />−</Button>
+      <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1.4)} aria-label="放大"><Plus size={16} aria-hidden="true" /></Button>
+      <Button isIconOnly onPress={() => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4)} aria-label="缩小"><ButtonGroup.Separator /><Minus size={16} aria-hidden="true" /></Button>
       <Button onPress={() => select(svg.current!).call(behavior.current.transform, zoomIdentity)}><ButtonGroup.Separator />重置视图</Button>
     </ButtonGroup></Card.Header>
     <Card.Content className="drawing-surface p-0">
@@ -259,13 +260,13 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
       {sweep.side && sideX !== null && sideX >= 0 && sideX <= width &&
         <span className="sweep-side" role="img" aria-label={`事件侧向状态：当前事件${sweep.side === 'left' ? '左' : '右'}侧（Δ）`}
           style={{ left: Math.max(2, Math.min(width - 50, sideX - 24)) }}>
-          <span>Δ</span><span className="sweep-side-arrow" aria-hidden="true">{sweep.side === 'left' ? '←' : '→'}</span>
+          <span>Δ</span>{sweep.side === 'left' ? <ArrowLeft className="sweep-side-arrow" aria-hidden="true" /> : <ArrowRight className="sweep-side-arrow" aria-hidden="true" />}
         </span>}
     </div>}
     {heightSideVisible && <span className="sweep-side sweep-height-side" role="img"
       aria-label={`事件高度状态：当前事件${sweep.side === 'left' ? '下' : '上'}侧（Δ）`}
       style={{ bottom: height - Math.max(18, Math.min(height - 18, sideY)) }}>
-      <span>Δ</span><span className="sweep-side-arrow" aria-hidden="true">{sweep.side === 'left' ? '↓' : '↑'}</span>
+      <span>Δ</span>{sweep.side === 'left' ? <ArrowDown className="sweep-side-arrow" aria-hidden="true" /> : <ArrowUp className="sweep-side-arrow" aria-hidden="true" />}
     </span>}
     <svg ref={svg} viewBox={`0 0 ${width} ${height}`} aria-label="输入与交集坐标图" role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       tabIndex={sweep ? 0 : undefined}

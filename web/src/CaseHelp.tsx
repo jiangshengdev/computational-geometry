@@ -1,4 +1,5 @@
 import { useContext, useId, useRef, useState, type ReactNode } from 'react'
+import { X } from 'lucide-react'
 import { Button } from '@heroui/react/button'
 import { Description } from '@heroui/react/description'
 import { Modal } from '@heroui/react/modal'
@@ -50,7 +51,7 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
     <Modal.Backdrop isOpen={open} onOpenChange={setOpen}>
       <Modal.Container size="lg" scroll="inside">
       <Modal.Dialog aria-describedby={descriptionId} className="max-w-4xl">
-        <Modal.CloseTrigger aria-label="关闭帮助" />
+        <Modal.CloseTrigger aria-label="关闭帮助"><X size={16} aria-hidden="true" /></Modal.CloseTrigger>
         <Modal.Header>
           <Modal.Heading>说明与帮助</Modal.Heading>
           <Description id={descriptionId}>按主题阅读，关闭后继续当前操作。</Description>

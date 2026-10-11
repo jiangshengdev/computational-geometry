@@ -18,7 +18,7 @@ test('蜘蛛网 hover：同一对象内连续移动不重复排布标签', async
     const observer = new MutationObserver(records => {
       if (report.measuring) report.transforms += records.filter(record => (record.target as Element).tagName === 'text').length
     })
-    observer.observe(document.querySelector('.drawing svg')!, { subtree: true, attributes: true, attributeFilter: ['transform', 'x', 'y', 'visibility'] })
+    observer.observe(document.querySelector('.drawing-surface > svg')!, { subtree: true, attributes: true, attributeFilter: ['transform', 'x', 'y', 'visibility'] })
     let previous: number | undefined
     const frame = (time: number) => {
       if (previous !== undefined) report.frames.push(time - previous)
