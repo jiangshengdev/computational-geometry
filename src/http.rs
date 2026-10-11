@@ -9,6 +9,45 @@ use axum::{
     routing::post,
 };
 use serde::{Deserialize, Serialize};
+use std::{
+    cell::Cell,
+    sync::atomic::{AtomicU64, Ordering},
+    time::Instant,
+};
+
+static NEXT_TRACE_ID: AtomicU64 = AtomicU64::new(1);
+
+struct TraceLifecycle {
+    id: u64,
+    started: Instant,
+    status: Cell<&'static str>,
+    sent_steps: Cell<usize>,
+}
+
+impl TraceLifecycle {
+    fn start(id: u64) -> Self {
+        eprintln!("trace_lifecycle id={id} status=started sent_steps=0 elapsed_ms=0");
+        Self {
+            id,
+            started: Instant::now(),
+            // Unwinding or an unexpected exit must never report completion.
+            status: Cell::new("failed"),
+            sent_steps: Cell::new(0),
+        }
+    }
+}
+
+impl Drop for TraceLifecycle {
+    fn drop(&mut self) {
+        eprintln!(
+            "trace_lifecycle id={} status={} sent_steps={} elapsed_ms={}",
+            self.id,
+            if std::thread::panicking() { "failed" } else { self.status.get() },
+            self.sent_steps.get(),
+            self.started.elapsed().as_millis(),
+        );
+    }
+}
 
 #[cfg(test)]
 #[path = "case_performance.rs"]
@@ -349,18 +388,33 @@ async fn compute(
         .map(SegmentDto::into_segment)
         .collect::<Result<Vec<_>, _>>()?;
     if request.trace {
+        let trace_id = NEXT_TRACE_ID.fetch_add(1, Ordering::Relaxed);
         let (sender, receiver) = tokio::sync::mpsc::channel::<Result<Vec<u8>, std::io::Error>>(1);
         tokio::task::spawn_blocking(move || {
+            let lifecycle = TraceLifecycle::start(trace_id);
+            let serialization_failed = Cell::new(false);
             let shear = crate::choose_shear(&segments);
             let mut encoder = TraceEncoder::default();
             let send = |frame: TraceFrame| {
+                let step_count = frame.trace.steps.len();
                 let bytes = serde_json::to_vec(&frame).map(|mut bytes| {
                     bytes.push(b'\n');
                     bytes
                 });
                 match bytes {
-                    Ok(bytes) => sender.blocking_send(Ok(bytes)).is_ok(),
+                    Ok(bytes) => {
+                        if sender.blocking_send(Ok(bytes)).is_ok() {
+                            // Accepted by the bounded transport queue, not proof of client receipt.
+                            lifecycle.sent_steps.set(lifecycle.sent_steps.get() + step_count);
+                            true
+                        } else {
+                            lifecycle.status.set("cancelled");
+                            false
+                        }
+                    }
                     Err(error) => {
+                        serialization_failed.set(true);
+                        lifecycle.status.set("failed");
                         let _ = sender.blocking_send(Err(std::io::Error::other(error)));
                         false
                     }
@@ -378,15 +432,24 @@ async fn compute(
                 &|| sender.is_closed(),
             );
             if let Some(results) = results {
-                send(TraceFrame {
+                if send(TraceFrame {
                     trace: encoder.encode(SweepTrace { shear, steps: Vec::new() }),
                     complete: true,
                     intersections: Some(results.into_iter().map(IntersectionDto::from).collect()),
-                });
+                }) {
+                    lifecycle.status.set("completed");
+                }
+            } else if !serialization_failed.get() {
+                lifecycle.status.set("cancelled");
             }
         });
         let body = Body::from_stream(tokio_stream::wrappers::ReceiverStream::new(receiver));
-        return Ok(([(axum::http::header::CONTENT_TYPE, "application/x-ndjson")], body).into_response());
+        let mut response = ([(axum::http::header::CONTENT_TYPE, "application/x-ndjson")], body).into_response();
+        response.headers_mut().insert(
+            "x-trace-id",
+            axum::http::HeaderValue::from_str(&trace_id.to_string()).expect("numeric trace id is a valid header"),
+        );
+        return Ok(response);
     }
     let response = tokio::task::spawn_blocking(move || {
         Response {
