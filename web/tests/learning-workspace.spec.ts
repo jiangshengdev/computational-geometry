@@ -2,6 +2,7 @@ import { expect, test, type Locator } from './learning-test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { installCase, scrollingCase } from './scrolling-cases'
+import { waitForTraceCompletion } from './trace-navigation'
 
 async function bounds(locator: Locator) {
   await expect(locator).toBeVisible()
@@ -64,6 +65,7 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 1360, height: 600 
     await page.setViewportSize(viewport)
     await page.goto('/cases/crossing/learn')
     const slider = page.getByRole('slider', { name: '教学步骤' })
+    await waitForTraceCompletion(page)
     await slider.focus()
     await slider.press('End')
     const result = page.getByRole('region', { name: '学习结果' })

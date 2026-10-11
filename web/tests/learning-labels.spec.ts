@@ -37,18 +37,32 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await waitForTraceCompletion(page)
     const last = Number(await slider.getAttribute('max'))
     expect(last).toBeGreaterThan(0)
-    const positions = () => svg.locator('.teaching-labels text[data-input]:visible').evaluateAll(nodes => nodes.map(node => {
-      const text = node as SVGTextElement
-      const point = new DOMPoint(text.x.baseVal[0].value, text.y.baseVal[0].value).matrixTransform(text.getCTM()!)
-      return { id: text.dataset.input!, x: point.x, y: point.y }
-    }))
+    const labelState = () => svg.locator('.teaching-labels text[data-input]:visible').evaluateAll(nodes => {
+      const input = document.querySelector<HTMLInputElement>('input[aria-label="教学步骤"]')!
+      return {
+        step: input.value,
+        focused: document.activeElement === input,
+        positions: nodes.map(node => {
+          const text = node as SVGTextElement
+          const point = new DOMPoint(text.x.baseVal[0].value, text.y.baseVal[0].value).matrixTransform(text.getCTM()!)
+          return { id: text.dataset.input!, x: point.x, y: point.y }
+        }),
+      }
+    })
+    const positions = async () => (await labelState()).positions
     const anchors = new Map<string, { id: string; x: number; y: number }>()
     let hoveredPositions = ''
+    await slider.focus()
     for (let step = 1; step <= last; step++) {
-      await slider.focus()
       await page.keyboard.down('ArrowRight')
-      await expect(slider).toHaveValue(String(step))
-      const before = await positions()
+      let state!: Awaited<ReturnType<typeof labelState>>
+      await expect.poll(async () => {
+        state = await labelState()
+        return state.step
+      }).toBe(String(step))
+      expect(state.focused, `slider lost focus at step ${step}`).toBe(true)
+      // Retry only step readiness; compare the same snapshot's positions once.
+      const before = state.positions
       for (const position of before) {
         if (anchors.has(position.id)) expect(position, `S${position.id} moved at step ${step}`).toEqual(anchors.get(position.id))
         else anchors.set(position.id, position)
