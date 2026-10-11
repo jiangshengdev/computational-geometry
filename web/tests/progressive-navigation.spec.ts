@@ -20,6 +20,9 @@ test('远处步骤生成后准确定位，返回与刷新保持一致', async ({
   await page.goto('/cases/carbon-nanotube/learn?step=2000')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(page.getByRole('status', { name: '步骤等待' })).toBeVisible()
+  // A remote target may take time to generate. Check navigation convergence
+  // after that target exists, within the unchanged overall test deadline.
+  await page.waitForFunction(() => Number(document.querySelector<HTMLInputElement>('input[aria-label="教学步骤"]')?.max ?? -1) >= 2000)
   await expect(slider).toHaveValue('2000')
   const context = page.getByRole('region', { name: '当前执行上下文' })
   const state = await context.innerText()
@@ -29,6 +32,7 @@ test('远处步骤生成后准确定位，返回与刷新保持一致', async ({
   await expect(slider).toHaveValue('2000')
   expect(await context.innerText()).toBe(state)
   await page.reload()
+  await page.waitForFunction(() => Number(document.querySelector<HTMLInputElement>('input[aria-label="教学步骤"]')?.max ?? -1) >= 2000)
   await expect(slider).toHaveValue('2000')
   expect(await context.innerText()).toBe(state)
   await page.getByRole('link', { name: '返回结果查看器' }).click()

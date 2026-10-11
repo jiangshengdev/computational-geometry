@@ -164,6 +164,8 @@ for (const preset of ['crossing', 'disjoint']) {
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const learning = page.getByRole('region', { name: '逐步学习' })
     const slider = page.getByRole('slider', { name: '教学步骤' })
+    await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
+    await expect(page.getByRole('region', { name: '回放控制' })).toContainText(`0 / ${trace.steps.length - 1}`)
     const states = [await learning.innerText()]
     await slider.focus()
     try {
@@ -225,6 +227,8 @@ for (const preset of ['crossing', 'disjoint']) {
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const previous = page.getByRole('button', { name: '上一步', exact: true })
     const learning = page.getByRole('region', { name: '逐步学习' })
+    await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
+    await expect(page.getByRole('region', { name: '回放控制' })).toContainText(`0 / ${trace.steps.length - 1}`)
     const initial = await learning.innerText()
     await expect(slider).toHaveValue('0')
     await slider.focus()

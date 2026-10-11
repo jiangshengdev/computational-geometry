@@ -17,6 +17,7 @@ for (const [id, pairs, positions] of [
   await expect(page.getByRole('region', { name: '案例介绍与目标' })).toContainText('学习目标：')
   await page.getByRole('button', { name: '关闭帮助' }).click()
   const slider = page.getByRole('slider', { name: '教学步骤' })
+  await expect(page.getByRole('region', { name: '回放控制' })).toContainText(/0 \/ \d+/)
   await slider.focus()
   await slider.press('End')
   const result = page.getByRole('region', { name: '学习结果' })

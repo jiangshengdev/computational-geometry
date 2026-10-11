@@ -15,6 +15,7 @@ async function readTrace(page: Page, id: string) {
   expect(result.request().postDataJSON()).toEqual({ segments: scrollingCase.segments, trace: true })
   const body = await readResponse(result)
   expect(body.intersections).toHaveLength(3)
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('max', String(body.trace.steps.length - 1))
   return body.trace
 }
 
@@ -99,6 +100,7 @@ test('教学定位：点击滑块轨道跨多步跳转后定位目标而非来�
   const thumb = page.getByTestId('teaching-step-thumb')
   await page.goto(`/cases/${scrollingCase.id}/learn?step=${prior}`)
   await expect(slider).toHaveValue(String(prior))
+  await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
   const row = page.getByRole('region', { name: '活动线段顺序' }).getByRole('listitem').filter({ hasText: new RegExp(`^S${subject}$`) })
   await hideRowInOverflowingPanel(row, false)
   const scrollBefore = await page.evaluate(() => window.scrollY)
@@ -132,6 +134,8 @@ test('教学定位：发现事件按精确身份定位，回退移除未来条�
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))
   const slider = page.getByRole('slider', { name: '教学步骤' })
+  await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
+  await expect(page.getByRole('region', { name: '回放控制' })).not.toContainText('轨迹生成中')
   await slider.focus()
   await slider.press('End')
   await expect(queue.getByRole('listitem')).toHaveCount(0)

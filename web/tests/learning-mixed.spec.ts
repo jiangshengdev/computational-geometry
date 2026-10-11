@@ -12,11 +12,13 @@ for (const width of [1360, 390]) for (const [id, pairs, positions, center, cente
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(readResponse)
   await page.goto(`/cases/${id}`)
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
-  const { trace } = await response
+  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok() && response.request().postDataJSON().trace === true).then(readResponse)
   await page.getByRole('link', { name: '开始逐步学习' }).click()
+  const { trace } = await response
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('max', String(trace.steps.length - 1))
+  await expect(page.getByRole('region', { name: '回放控制' })).toContainText(`0 / ${trace.steps.length - 1}`)
   await expect(page).toHaveTitle(/逐步学习/)
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const explanation = page.getByRole('region', { name: '操作解释' })

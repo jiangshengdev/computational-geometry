@@ -207,7 +207,7 @@ function LearningPage({ preset, trace, complete }: { preset: Preset; trace: Swee
   }
   return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace}
     complete={complete} index={visibleIndex} onWaitNextEntry={() => setNextEntry({ search, from: visibleIndex })}
-    onStepPreview={next => setPreview({ search, index: next })} onStepChange={changeStep} />
+    onStepPreview={next => setPreview({ search, index: next })} onStepChange={changeStep}>
     {waiting && <div role="status" aria-label="步骤等待" className="flex flex-wrap items-center gap-3">
       <span>{waitingEntry ? '正在等待下一个大步' : `正在等待步骤 ${index}`} · 已生成 0–{trace.steps.length - 1}。可继续浏览已生成步骤。</span>
       <button className={buttonVariants({ variant: 'secondary' })} onClick={() => changeStep(visibleIndex)}>取消跳转等待</button>
@@ -217,9 +217,9 @@ function LearningPage({ preset, trace, complete }: { preset: Preset; trace: Swee
       const target = Number(destination)
       if (destination && Number.isSafeInteger(target) && target >= 0) changeStep(target)
     }}>
-      <label>跳转步骤 <input aria-label="跳转步骤" className="w-32 rounded border p-2" type="number" min="0" step="1" required value={destination} onChange={event => setDestination(event.target.value)} /></label>
-      <button className={buttonVariants({ variant: 'secondary' })} type="submit">前往步骤</button>
-    </form>
+      <label><span className="sr-only">跳转步骤</span><input aria-label="跳转步骤" placeholder="步骤" className="w-20 rounded border p-1" type="number" min="0" step="1" required value={destination} onChange={event => setDestination(event.target.value)} /></label>
+      <button className={buttonVariants({ variant: 'secondary', size: 'sm' })} type="submit">前往步骤</button>
+    </form></LearningView>
   </>
 }
 

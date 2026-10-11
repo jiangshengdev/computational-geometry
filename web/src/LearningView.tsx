@@ -1,4 +1,4 @@
-import { Fragment, useId, useRef, useState } from 'react'
+import { Fragment, useId, useRef, useState, type ReactNode } from 'react'
 import { ArrowLeft, ArrowRight, CircleHelp, Crosshair, ListOrdered, ListTree, Waypoints } from 'lucide-react'
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, samePoint, type Point, type Preset, type SweepTrace } from './geometry'
@@ -21,8 +21,8 @@ import { LearningDock } from './LearningDock'
 import { LearningSplit } from './LearningSplit'
 
 
-export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry }: {
-  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void
+export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry, children }: {
+  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void; children: ReactNode
 }) {
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const keyboardScrub = useRef(false)
@@ -161,7 +161,7 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
       <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><div><CardTitle render={props => <h2 {...props} />}>这一步为什么这样做？</CardTitle><CardDescription>结合画布与各项状态，理解当前教学动作。</CardDescription></div><div className="flex flex-wrap gap-2">
         <HelpButton topic="neighbors">相邻性说明</HelpButton>
         {trace.shear.numerator !== '0' && <HelpButton topic="vertical">竖直线说明</HelpButton>}
-        {overlaps.length > 0 && <HelpButton topic="overlap">重叠说明</HelpButton>}
+        {preset.learning?.overlap && <HelpButton topic="overlap">重叠说明</HelpButton>}
       </div></CardHeader>
       <CardContent ref={explanationPanel} className="learning-panel-content flex flex-col gap-2">
         {step.action === 'initial' && (!preset.segments.length ? <p>没有输入，因此没有端点和事件。队列与活动顺序为空，可以逐小步观察取事件返回 None 并退出循环。</p> : <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步进入取事件模块。</p>)}
@@ -291,6 +291,7 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
           </Slider.Track>
         </Slider>
       </div>
+      {children}
     </section>
   </section>
 }
