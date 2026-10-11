@@ -2,7 +2,7 @@ import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import type { SweepTrace } from '../src/geometry'
+import { readTrace, seekStep } from './trace-navigation'
 
 const cases = [
   {
@@ -29,27 +29,26 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
   await expect(page).toHaveURL('/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(response => response.json())
+  const trace = await readTrace(page, example.slug === 'interior' ? 'multiway-interior' : 'multiway-endpoints')
   await selectPreset(page, example.name)
-  const { trace }: { trace: SweepTrace } = await response
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const group = page.getByRole('region', { name: '同点参与线段' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const explanation = page.getByRole('region', { name: '操作解释' })
   const active = page.getByTestId('active-order')
-  const next = page.getByRole('button', { name: '下一步', exact: true })
   const states: string[] = []
   // Interior: y=x, y=-x, y=0. Mixed: y=x and y=-x pass through
   // the origin, y=2x ends there, y=x/2 starts there. Distinct slopes
   // give exactly one common point, with three or six input pairs.
   for (let run = 0; run < 2; run++) {
     let before = false, after = false, records = 0, index = 0, removed = false, inserted = false
-    while (await next.isEnabled()) {
-      await next.click()
+    for (const [address, step] of trace.steps.entries()) {
+      if (!address || step.action === 'micro') continue
+      await seekStep(page, address)
+      await expect(page.getByText('加载教学代码…', { exact: true })).toHaveCount(0)
       const event = await current.innerText()
       const text = await explanation.innerText()
-      const step = trace.steps[Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue())]
       if (event.includes('(0, 0)') && !['take-entry', 'take-pop', 'take-empty'].includes(step.action)) {
         await expect(queue).not.toContainText('(0, 0)')
         await expect(group).toContainText(`开始：${example.starts}`)

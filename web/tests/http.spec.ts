@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { readResponse } from './trace-navigation'
 
 const r = (numerator: string, denominator = '1') => ({ numerator, denominator })
 const p = (x: ReturnType<typeof r>, y = r('0')) => ({ x, y })
@@ -46,7 +47,7 @@ test('HTTP 竖直轨迹还原分数坐标并保持先横坐标后高度的事件
     { start: p(r('1', '1000'), r('-1')), end: p(r('1', '1000'), r('-1')) },
   ] } })
   expect(response.status()).toBe(200)
-  const { intersections, trace } = await response.json()
+  const { intersections, trace } = await readResponse(response)
   // Near-x points must stay outside the entire vertical event group despite
   // their reversed heights. Expectations come directly from these segments.
   const expected = [p(r('-1')), p(r('-1', '1000'), r('1')), p(r('0'), r('-2')),
@@ -55,5 +56,5 @@ test('HTTP 竖直轨迹还原分数坐标并保持先横坐标后高度的事件
     .map((step: { current: unknown }) => step.current)).toEqual(expected)
   expect(trace.steps[0].pending).toEqual(expected.filter((_, i) => i !== 3))
   expect(intersections).toEqual([{ segments: [0, 1], geometry: { type: 'point', point: p(r('0')) } }])
-  expect(trace.steps.at(-1).results).toEqual(intersections)
+  expect(trace.steps.at(-1)!.results).toEqual(intersections)
 })

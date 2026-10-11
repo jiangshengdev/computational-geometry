@@ -2,18 +2,24 @@ import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
-for (const step of [3, 27, 28]) {
-  test(`非活动参与线段保持普通样式：普通交叉步骤 ${step}`, async ({ page }) => {
-    await page.goto(`/cases/crossing/learn?step=${step}`)
+for (const action of ['take', 'remove', 'complete'] as const) {
+  test(`非活动参与线段保持普通样式：普通交叉 ${action}`, async ({ page }) => {
+    await page.goto('/cases/crossing/learn')
+    const trace = await readTrace(page, 'crossing')
+    const target = stepIndex(trace, step => step.action === action && (action === 'take'
+      || (action === 'remove' ? step.subjects.includes(0) : step.active.length === 0)))
+    await seekStep(page, target)
     const input = page.getByRole('img', { name: '输入 S0', exact: true })
     await expect(page.getByTestId('active-order')).toHaveText('空')
     await expect(input).toHaveAttribute('data-active', 'false')
     await expect(input).toHaveAttribute('data-participant', 'true')
     await expect(input.locator('line')).toHaveCSS('stroke', 'rgb(123, 159, 207)')
     await expect(input.locator('line')).toHaveCSS('stroke-width', '2px')
-    if (step === 3) {
-      await page.getByRole('button', { name: '下一步', exact: true }).click()
+    if (action === 'take') {
+      const inserted = stepIndex(trace, (step, index) => index > target && step.action === 'insert' && step.subjects.includes(0))
+      await seekStep(page, inserted)
       await expect(page.getByTestId('active-order')).toHaveText('S0')
       await expect(input).toHaveAttribute('data-active', 'true')
       await expect(input.locator('line')).toHaveCSS('stroke', 'rgb(36, 92, 176)')
@@ -30,6 +36,9 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   await expect(page.getByText(/两两检查/).first()).toBeVisible()
   await page.getByRole('button', { name: '关闭帮助', exact: true }).click()
   await page.getByRole('link', { name: '开始逐步学习' }).click()
+  const trace = await readTrace(page, 'crossing')
+  const takes = trace.steps.flatMap((step, index) => step.action === 'take' ? [index] : [])
+  const completions = trace.steps.flatMap((step, index) => step.action === 'complete' ? [index] : [])
   await expect(page.getByText(/两两检查/).first()).toBeHidden()
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByRole('region', { name: '活动线段顺序' })
@@ -44,21 +53,28 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   // y=x and y=4-x meet at (2,2). Endpoints are ordered by (x,y).
   const events = ['S0 起点 (0, 0)', 'S1 起点 (0, 4)', 'I0 (2, 2)', 'S1 终点 (4, 0)', 'S0 终点 (4, 4)']
   const orders = ['S0', 'S0S1', 'S1S0', 'S0', '空']
+  expect(takes).toHaveLength(events.length)
+  expect(completions).toHaveLength(events.length)
   for (let i = 0; i < events.length; i++) {
-    await next.click()
+    const entry = stepIndex(trace, (step, index) => step.action === 'take-entry' && index > (completions[i - 1] ?? 0))
+    const popped = stepIndex(trace, (step, index) => step.action === 'take-pop' && index > entry)
+    await seekStep(page, entry)
     await expect(explanation).toContainText('进入取事件模块')
     await expect(queue).toContainText(events[i])
-    await next.click()
+    await seekStep(page, popped)
     await expect(explanation).toContainText('queue.pop_first()')
     await expect(queue).not.toContainText(events[i])
-    await next.click()
+    await seekStep(page, takes[i])
     await expect(current).toContainText(events[i])
     await expect(current).toContainText('处理中')
     await expect(queue).not.toContainText(events[i])
     let sawDiscovery = false
     let sawReorder = false
-    do {
-      await next.click()
+    // Inspect the actual teaching actions; dedicated micro-step tests cover
+    // stepping through every instruction boundary between these actions.
+    for (let index = takes[i] + 1; index <= completions[i]; index++) {
+      if (trace.steps[index].action === 'micro') continue
+      await seekStep(page, index)
       const text = await explanation.innerText()
       if (text.includes('发现未来交点')) {
         sawDiscovery = true
@@ -66,7 +82,7 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
         await expect(queue).toContainText('I0 (2, 2)')
       }
       if (text.includes('换序为')) sawReorder = true
-    } while (!(await current.innerText()).includes('处理完成'))
+    }
     await expect(current).toContainText('处理完成')
     await expect(current.locator('.coordinates')).toHaveText([events[i]])
     await expect(active.getByTestId('active-order')).toHaveText(orders[i])
@@ -90,9 +106,7 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
       await expect(page.getByRole('img', { name: '交集 S0 × S1' })).toBeVisible()
     }
   }
-  await next.click()
-  await next.click()
-  await next.click()
+  await seekStep(page, stepIndex(trace, step => step.action === 'take-empty'))
   await expect(explanation).toContainText('next 为 None')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (2, 2)：S0 × S1')
   await expect(next).toBeDisabled()
@@ -102,12 +116,9 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   await expect(queue).not.toContainText('I0')
   await expect(page.getByRole('img', { name: /交集 S0/ })).toHaveCount(0)
   await expect(next).toBeEnabled()
-  for (const snapshot of snapshots) {
-    await next.click()
-    await next.click()
-    await next.click()
-    do { await next.click() } while (!(await current.innerText()).includes('处理完成'))
-    await expect.poll(() => page.getByRole('region', { name: '逐步学习' }).innerText()).toBe(snapshot)
+  for (let index = 0; index < snapshots.length; index++) {
+    await seekStep(page, completions[index])
+    await expect.poll(() => page.getByRole('region', { name: '逐步学习' }).innerText()).toBe(snapshots[index])
   }
 })
 
@@ -115,26 +126,27 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
   await page.goto('/cases/crossing')
   await selectPreset(page, 'disjoint')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
+  const trace = await readTrace(page, 'disjoint')
+  const takes = trace.steps.flatMap((step, index) => step.action === 'take' ? [index] : [])
+  const completions = trace.steps.flatMap((step, index) => step.action === 'complete' ? [index] : [])
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByTestId('active-order')
   const events = ['S0 起点 (0, 0)', 'S1 起点 (0, 2)', 'S0 终点 (4, 0)', 'S1 终点 (4, 2)']
   const orders = ['S0', 'S0S1', 'S1', '空']
+  expect(takes).toHaveLength(events.length)
+  expect(completions).toHaveLength(events.length)
   for (let i = 0; i < events.length; i++) {
-    await next.click()
-    await next.click()
-    await next.click()
+    await seekStep(page, takes[i])
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText(events[i])
     await expect(queue).not.toContainText(events[i])
-    do { await next.click() } while (!(await page.getByRole('region', { name: '当前事件' }).innerText()).includes('处理完成'))
+    await seekStep(page, completions[i])
     await expect(active).toHaveText(orders[i])
     await expect(queue).not.toContainText('I0')
     await expect(page.getByRole('img', { name: /交集 S/ })).toHaveCount(0)
     if (i === 1) await expect(page.getByRole('region', { name: '操作解释' })).toContainText('没有需要加入队列的未来交点')
   }
-  await next.click()
-  await next.click()
-  await next.click()
+  await seekStep(page, stepIndex(trace, step => step.action === 'take-empty'))
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('next 为 None')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('结果为空')
   await expect(next).toBeDisabled()
@@ -157,9 +169,8 @@ test('入门学习：桌面与手机的图形、队列、操作解释同步且�
     await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     await page.getByRole('link', { name: '开始逐步学习' }).click()
-    do {
-      await page.getByRole('button', { name: '下一步', exact: true }).click()
-    } while (!(await page.getByRole('region', { name: '操作解释' }).innerText()).includes('发现未来交点'))
+    const trace = await readTrace(page, 'crossing')
+    await seekStep(page, stepIndex(trace, step => step.action === 'discover'))
     await expect(page.getByRole('region', { name: '操作解释' })).toContainText('发现未来交点 I0 (2, 2)')
     const diagram = page.getByRole('region', { name: '几何视图' })
     const crossing = page.getByRole('img', { name: '已发现 I0 (2, 2)' }).locator('circle')

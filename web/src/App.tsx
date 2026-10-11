@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { Route, Routes, useMatch, useNavigate, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { CaseThumbnail } from './CaseThumbnail'
-import { formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
+import { decodeTrace, formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace, type WireSweepTrace } from './geometry'
 import { LearningView } from './LearningView'
 import { CaseHelp, HelpButton } from './CaseHelp'
 import { presets } from './presets'
@@ -57,10 +57,10 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
           body: JSON.stringify({ segments: preset.segments, trace: teachable }), signal: controller.signal,
         })
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
-        const data = await response.json() as { intersections: Intersection[]; trace?: SweepTrace }
+        const data = await response.json() as { intersections: Intersection[]; trace?: WireSweepTrace }
         if (!Array.isArray(data.intersections)) throw new Error('结果结构无效')
         if (teachable && !data.trace?.steps.length) throw new Error('教学轨迹无效')
-        if (current) setComputation({ status: 'ready', results: data.intersections, trace: data.trace })
+        if (current) setComputation({ status: 'ready', results: data.intersections, trace: data.trace && decodeTrace(data.trace) })
       } catch (error) {
         if (current) setComputation({ status: 'error', message: error instanceof Error ? error.message : '未知错误' })
       }

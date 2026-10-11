@@ -25,6 +25,14 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   preset: Preset; trace: SweepTrace; results: Intersection[]; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void
 }) {
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
+  const keyboardScrub = useRef(false)
+  const keyboardStep = useRef<number | null>(null)
+  const finishKeyboardScrub = () => {
+    keyboardScrub.current = false
+    const next = keyboardStep.current
+    keyboardStep.current = null
+    if (next !== null) onStepChange(next)
+  }
   const reducedMotion = useLearningReducedMotion()
   const animationId = useId()
   const [run, setRun] = useState(0)
@@ -81,10 +89,13 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   const destinations = rowIds(step)
   const sources = rowIds(trace.steps[navigation.from])
   const before = trace.steps[Math.max(0, index - 1)]
+  const eventStart = trace.steps.findLastIndex((state, position) => position <= index && state.action === 'take')
+  const eventSteps = step.action === 'complete' ? trace.steps.slice(eventStart, index + 1) : []
+  const checkedWithoutDiscovery = eventSteps.some(state => state.action === 'check') && !eventSteps.some(state => state.action === 'discover')
   const previousEntry = trace.steps.findLastIndex((state, position) => position < index && state.execution.entry)
   const nextEntry = trace.steps.findIndex((state, position) => position > index && state.execution.entry)
   // A pop changes the queue, not the displayed sweep position. Keep its side too.
-  const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && (state.execution.module === 'activity' || !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action)))
+  const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && ((state.execution.module === 'activity' && !state.execution.entry && (state.execution.boundary === 7 || state.active.join(',') !== trace.steps[position - 1]?.active.join(','))) || !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action)))
   const geometryStep = trace.steps[geometryIndex]
   const complete = index === trace.steps.length - 1
   const points = results.flatMap(result => result.geometry.type === 'point' ? [result.geometry.point] : [])
@@ -155,11 +166,11 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
         {step.action === 'take-empty' && <p>next 为 None，事件队列已空，退出扫描循环。学习完成。</p>}
         {step.action === 'micro' && <p>算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。</p>}
         {pointInputs.length > 0 && <p>零长度点 <span className="coordinates">{inputReferences(pointInputs, '、')}</span> 的两个端点重合，所以同时属于开始和结束，不进入持续活动顺序。它们只在当前精确位置参与配对：位于线段内部或闭端点都算接触；重合点仍保留独立输入身份。没有配对的点事件也会正常完成。</p>}
-        {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。'}接下来检查新邻居是否会在未来相交。</p>}
+        {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。本点有非零长度开始者，换序与加入是同一次更新，不会再次交换。'}接下来检查新邻居是否会在未来相交。</p>}
         {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。{endingOverlaps.length > 0 && <>此处是重叠止界：{continuingOverlapInputs.length ? <>{inputReferences(continuingOverlapInputs, '、')} 继续，当前结束者退出。</> : '这些配对的成员均在此结束。'}交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。</>}</p>}
         {step.action === 'record' && (recordedOverlap ? <p>记录重叠区间 <span className="coordinates">{formatGeometry(recordedOverlap.geometry)}</span>：参与线段 <span className="coordinates">{inputReferences(recordedOverlap.segments, ' × ')}</span> 从当前较晚起点开始重合，到较早终点为止。取两个闭区间的公共范围，包含两端及其间全部点，不是只记录当前端点。这是根据已知端点确定完整交集，并非扫描线已走完整段。橙色线段和两个端点标出完整交集；活动顺序尚未更新，同点配对全部记录后再处理成员变化。</p> : <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> {step.subjects.every(id => step.passes.includes(id)) ? '在这里交叉。' : '在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。'}交集已记入结果，活动顺序尚未更新。{new Set([...step.starts, ...step.ends, ...step.passes]).size > 2 && '这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。'}</p>)}
         {visibleOverlaps.length > 0 && <p>重叠成员在公共范围内几何并列，列表保留各自输入身份，不表示彼此上下交换。内部的其他事件不切碎已记录的完整区间。</p>}
-        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：本事件非竖直参与者按紧邻事件右侧从下到上的顺序排列，竖直参与者移到本点穿过者上方，继续向更高处处理，再检查新邻居。{step.starts.some(id => !step.ends.includes(id)) && '本点有非零长度开始者，换序已随加入一起展示；此步说明该顺序，没有再次交换。'}同 x 的其他事件点保留各自处理进度。</p>}
+        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：本事件非竖直参与者按紧邻事件右侧从下到上的顺序排列，竖直参与者移到本点穿过者上方，继续向更高处处理，再检查新邻居。同 x 的其他事件点保留各自处理进度。</p>}
         {step.action === 'check' && <p>检查相邻线段 <span className="coordinates">{subjects}</span>：
           {neighborChange?.action === 'insert' && <>加入 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。</>}
           {neighborChange?.action === 'remove' && <>退出 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，原来隔在中间的线段消失，两侧线段成为新邻居。</>}
@@ -169,7 +180,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
           {position > 0 && <span>、</span>}
           <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span>
         </Fragment>)}</span>：检查 <span className="coordinates">{subjects}</span> 的精确交集后加入队列，等扫描线到达再记录结果。</p>}
-        {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{complete ? '全部事件已处理，无需再推进。' : before.action === 'check' ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
+        {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{complete ? '全部事件已处理，无需再推进。' : checkedWithoutDiscovery ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
     {complete && <section aria-label="学习结果"><Card variant="transparent">
       <CardHeader><CardTitle render={props => <h2 {...props} />}>学习完成</CardTitle></CardHeader>
       <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，全部输入已处理完毕；零长度点无需加入或退出活动顺序。</p>
@@ -256,11 +267,19 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
             <Button variant="secondary" size="sm" onPress={() => changeStep(nextEntry)} isDisabled={nextEntry < 0}>下一个大步</Button>
             <Button variant="tertiary" size="sm" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Chip color="accent" variant="soft" size="sm" aria-hidden="true">R</Chip></Button>
       </div>
-      <div className="learning-replay-progress">
+      <div className="learning-replay-progress" onKeyDownCapture={event => {
+        if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) keyboardScrub.current = true
+      }} onKeyUpCapture={() => finishKeyboardScrub()} onBlurCapture={() => finishKeyboardScrub()}>
         <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤（含小步） · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
         <Slider aria-label="教学步骤" minValue={0} maxValue={trace.steps.length - 1} step={1} value={index} isDisabled={trace.steps.length === 1}
           onChange={value => changeStep(typeof value === 'number' ? value : value[0], false, true)}
-          onChangeEnd={value => onStepChange(typeof value === 'number' ? value : value[0])}>
+          onChangeEnd={value => {
+            const next = typeof value === 'number' ? value : value[0]
+            // React Aria emits change-end for every keydown, including repeat.
+            // Match pointer dragging: preview while held, commit on release.
+            if (keyboardScrub.current) keyboardStep.current = next
+            else onStepChange(next)
+          }}>
           <Slider.Track>
             <Slider.Fill />
             <Slider.Thumb data-testid="teaching-step-thumb" aria-label="教学步骤" aria-describedby={`${animationId}-step`} />

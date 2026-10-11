@@ -1,7 +1,7 @@
 import { expect, test, type Locator } from '@playwright/test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
-import type { SweepTrace } from '../src/geometry'
+import { readTrace } from './trace-navigation'
 
 async function box(locator: Locator) {
   await expect(locator).toBeVisible()
@@ -16,9 +16,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-    const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
     await page.goto('/cases/spider-web/learn?step=1')
-    const { trace }: { trace: SweepTrace } = await (await response).json()
+    const trace = await readTrace(page, 'spider-web')
     await expect(page).toHaveTitle('蜘蛛网 · 逐步学习 · BO 结果查看器')
     const canvas = page.getByRole('region', { name: '几何视图', exact: true })
     const debug = page.getByRole('region', { name: '核心代码回放', exact: true })

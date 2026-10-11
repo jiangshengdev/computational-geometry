@@ -61,7 +61,7 @@ export const layoutCases: { id: string; states: LayoutState[] }[] = [
     states: [
       { reason: '接触记录与同点多配对的附加说明', matches: step => step.action === 'record' && !step.subjects.every(id => step.passes.includes(id)), text: /在这里接触.*同一个几何点/ },
       { reason: '开始者与多个穿过者一起加入的长说明', matches: step => step.action === 'insert' && step.passes.length > 1, text: /开始者与穿过者一起排成/ },
-      { reason: '有非零长度开始者时换序不再交换的附加说明', matches: step => step.action === 'reorder' && step.starts.some(id => !step.ends.includes(id)), text: /本点有非零长度开始者/ },
+      { reason: '有非零长度开始者时换序与加入合并的附加说明', matches: step => step.action === 'insert' && step.passes.length > 1 && step.starts.some(id => !step.ends.includes(id)), text: /本点有非零长度开始者/ },
       completed,
     ],
   },
@@ -86,7 +86,17 @@ export const layoutCases: { id: string; states: LayoutState[] }[] = [
   {
     id: 'disjoint',
     states: [
-      { reason: '检查后没有未来交点的完成说明', matches: (step, index, steps) => step.action === 'complete' && steps[index - 1]?.action === 'check', text: /没有需要加入队列的未来交点/ },
+      {
+        reason: '检查后没有未来交点的完成说明',
+        matches: (step, index, steps) => {
+          if (step.action !== 'complete') return false
+          const eventStart = steps.slice(0, index).map(state => state.action).lastIndexOf('take')
+          const eventSteps = steps.slice(eventStart + 1, index)
+          const check = eventSteps.map(state => state.action).lastIndexOf('check')
+          return check >= 0 && !eventSteps.slice(check + 1).some(state => state.action === 'discover')
+        },
+        text: /没有需要加入队列的未来交点/,
+      },
       { ...completed, reason: '无交点完成页的空结果说明', text: /结果为空/ },
     ],
   },

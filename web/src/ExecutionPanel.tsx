@@ -4,7 +4,7 @@ import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
 import { teachingModules } from './executionCode'
 import { ExecutionSymbol } from './ExecutionSymbol'
-import { callExpression, symbolKind, variableValue } from './executionSymbols'
+import { callExpression, symbolKind, variableChange, variableValue } from './executionSymbols'
 
 const highlightedModules = new Map<string, Promise<ThemedToken[][]>>()
 function loadCode(code: string) {
@@ -41,10 +41,8 @@ export function ExecutionPanel({ step, previous, shear, values }: {
     }
   }, [tokens, step.execution.boundary])
   const context = step.execution.context
-  const prior = previous.execution.context
   const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
-    const old = prior.function === context.function ? prior[kind].find(item => item.name === variable.name) : undefined
-    const changed = !!old && (old.value !== variable.value || old.availability !== variable.availability)
+    const { changed } = variableChange(variable, kind, step, previous)
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
       <dt><code>{variable.name}</code> <span className="text-muted">{variable.type}</span>{changed && <span className="execution-change">本步变化</span>}</dt>
       <dd>{variableValue(variable, values)}</dd>
@@ -57,12 +55,13 @@ export function ExecutionPanel({ step, previous, shear, values }: {
     <CardContent className="learning-panel-content execution-content">
       {module ? <div className="execution-source">
         <p className="text-sm">教学代码 · Rust 风格精简片段 · <code>{context.function}</code> / {module.title}</p>
-        <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态'}</p>
+        <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : '已绑定 point 与 event；取事件模块完成' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}</p>
         <div ref={scroll} className="execution-code-scroll" tabIndex={0} role="region" aria-label={`${module.title}教学代码`}>
           {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code"><code>
             {tokens.map((line, index) => {
               const text = line.map(token => token.content).join('')
               let offset = 0
+              const occurrences = new Map<string, number>()
               return <span className="code-line" key={index}>{line.map((token, tokenIndex) => {
                 const tokenStart = offset
                 offset += token.content.length
@@ -71,7 +70,9 @@ export function ExecutionPanel({ step, previous, shear, values }: {
                   const start = tokenStart + partOffset
                   partOffset += part.length
                   const kind = text.slice(0, start).includes('//') ? null : symbolKind(part, text.slice(0, start), text.slice(start + part.length))
-                  return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} expression={callExpression(part, text.slice(start + part.length))} step={step} previous={previous} values={values}>{part}</ExecutionSymbol> : part
+                  const occurrence = occurrences.get(part) ?? 0
+                  if (kind === 'function') occurrences.set(part, occurrence + 1)
+                  return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} line={index + 1} occurrence={occurrence} module={step.execution.module} expression={callExpression(part, text.slice(start + part.length))} step={step} previous={previous} values={values}>{part}</ExecutionSymbol> : part
                 })}</span>
               })}{'\n'}</span>
             })}

@@ -4,7 +4,7 @@ const meanings: Record<string, string> = {
   queue: '按扫描坐标排序的待处理事件队列', next: '本次弹出的队首事件，可为空',
   point: '本次事件的扫描坐标', event: '本次事件携带的线段信息',
   segments: '变换到扫描坐标的线段；遮蔽同名原始输入参数', active: '当前活动线段的编号序列',
-  incident: '经过当前事件点的线段编号', height_order: '活动线段在当前横坐标的高度比较结果',
+  incident: '经过当前事件点的线段编号', height_order: '按线段编号保存的精确高度比较缓存；分类循环逐项刷新，尚未访问的项保留先前值，不能视为全部已按当前事件更新',
   id: '当前循环访问的线段编号', starts: '在当前点开始的线段', ends: '在当前点结束的线段',
   passes: '内部经过当前点的线段', i: '当前外层配对索引', a: '当前配对的第一条线段（扫描循环中使用编号）',
   b: '当前配对的第二条线段（扫描循环中使用编号）', shear: '扫描坐标的剪切系数',
@@ -22,20 +22,29 @@ export const functions: Record<string, { signature: string; purpose: string; par
   intersection_candidate: { signature: 'intersection_candidate(a, b) -> Option<Point>', purpose: '教学伪代码中的原子几何计算；对应 Rust 实际精确计算，不展开公式。', parameters: 'a、b：本次参与几何计算的扫描线段。' },
   pop_first: { signature: 'pop_first(&mut self) -> Option<(Point, Event)>', purpose: '移除并返回队列中最早的事件。', parameters: 'self：当前 queue；无显式参数。' },
   y_at: { signature: 'y_at(&self, x: &Rational) -> Rational', purpose: '精确计算线段在指定横坐标的高度。', parameters: 'self：当前线段；x：事件横坐标。' },
-  cmp: { signature: 'cmp(&self, other: &Rational) -> Ordering', purpose: '精确比较两个有理数。', parameters: 'self：线段高度；other：事件纵坐标。' },
+  cmp: { signature: 'cmp(&self, other: &Self) -> Ordering', purpose: '按当前表达式比较两个值。', parameters: 'self、other：调用点的两个操作数，可为高度或斜率。' },
   is_eq: { signature: 'is_eq(self) -> bool', purpose: '判断比较结果是否相等。', parameters: 'self：当前高度比较结果；无显式参数。' },
+  is_lt: { signature: 'is_lt(self) -> bool', purpose: '判断比较结果是否为小于。', parameters: 'self：调用点的比较结果；无显式参数。' },
   push: { signature: 'push(&mut self, value: T) -> ()', purpose: '向当前目标序列追加一个元素。', parameters: 'self：调用点左侧的序列；value：括号内的元素。' },
   new: { signature: 'Vec::new() -> Vec<T>', purpose: '创建空序列。', parameters: '无参数。' },
-  iter: { signature: 'iter(&self) -> Iter<T>', purpose: '依次访问序列元素。', parameters: 'self：incident；无显式参数。' },
-  enumerate: { signature: 'enumerate(self) -> Enumerate<Self>', purpose: '为迭代元素附加从零开始的索引。', parameters: 'self：incident 的迭代器；无显式参数。' },
+  iter: { signature: 'iter(&self) -> Iter<T>', purpose: '依次访问序列元素。', parameters: 'self：调用点的序列；无显式参数。' },
+  enumerate: { signature: 'enumerate(self) -> Enumerate<Self>', purpose: '为迭代元素附加从零开始的索引。', parameters: 'self：调用点的迭代器；无显式参数。' },
   original: { signature: 'original(p: &Point) -> Point', purpose: '撤销剪切，恢复原坐标。', parameters: 'p：本次调用的扫描坐标点。' },
   min: { signature: 'min(self, other: Self) -> Self', purpose: '返回两个值中的较小者。', parameters: 'self、other：此调用点的两个操作数。' },
   max: { signature: 'max(self, other: Self) -> Self', purpose: '返回两个值中的较大者。', parameters: 'self、other：此调用点的两个操作数。' },
-  retain: { signature: 'retain(&mut self, predicate) -> ()', purpose: '保留满足条件的元素。', parameters: 'predicate：保留条件；self：活动序列。' },
+  retain: { signature: 'retain(&mut self, predicate) -> ()', purpose: '保留满足条件的元素。', parameters: 'predicate：保留条件；self：调用点左侧的序列。' },
   sort_by: { signature: 'sort_by(&mut self, compare) -> ()', purpose: '按比较函数排序。', parameters: 'compare：当前排序规则。' },
   partition_point: { signature: 'partition_point(&self, predicate) -> usize', purpose: '定位有序分区的边界。', parameters: 'predicate：当前分区条件。' },
   len: { signature: 'len(&self) -> usize', purpose: '读取序列长度。', parameters: 'self：调用点的序列；无显式参数。' },
   splice: { signature: 'splice(&mut self, range, replace_with) -> Splice', purpose: '替换指定范围中的元素。', parameters: 'range：替换范围；replace_with：新元素。' },
+  checked_sub: { signature: 'checked_sub(self, rhs: usize) -> Option<usize>', purpose: '执行检查下溢的索引减法。', parameters: 'self：调用点的索引；rhs：减数。' },
+  then: { signature: 'then(self, f) -> Option<T>', purpose: '条件为真时执行闭包并返回其结果，否则返回 None。', parameters: 'self：条件；f：生成值的闭包。' },
+  into_iter: { signature: 'into_iter(self) -> IntoIter<T>', purpose: '将当前集合转为消耗元素的迭代器。', parameters: 'self：调用点的集合。' },
+  flatten: { signature: 'flatten(self) -> Flatten<Self>', purpose: '展开嵌套迭代值；Option 中的 None 不产生元素。', parameters: 'self：调用点的迭代器。' },
+  get: { signature: 'get(&self, range) -> Option<&[T]>', purpose: '取得指定范围；越界时返回 None。', parameters: 'self：调用点的序列；range：索引范围。' },
+  entry: { signature: 'entry(&mut self, key) -> Entry<K, V>', purpose: '取得指定键对应的映射条目。', parameters: 'self：调用点的映射；key：键。' },
+  clone: { signature: 'clone(&self) -> Self', purpose: '复制当前值。', parameters: 'self：调用点的值。' },
+  or_default: { signature: 'or_default(self) -> &mut V', purpose: '取得条目值；键不存在时插入默认值。', parameters: 'self：调用点的映射条目。' },
 }
 
 export function callExpression(name: string, after: string) {
@@ -55,21 +64,52 @@ export function variableValue(variable: ExecutionVariable | undefined, values: s
   return variable.value === null ? '不可用（当前轨迹未提供值）' : values[variable.value]
 }
 
-export function variableDetails(name: string, step: SweepStep, previous: SweepStep, values: string[]) {
+export function symbolScope(name: string, module: string, line: number) {
+  if (module === 'classify' && name === 'id') return line <= 6 ? '活动线段循环' : '参与线段循环'
+  if (module === 'activity' && ['id', 'a', 'b'].includes(name)) return `第 ${line} 行闭包`
+  if (module === 'record' && name === 'p') return 'original 闭包'
+  return `${module} 模块`
+}
+
+export function scopedVariable(name: string, step: SweepStep, line: number) {
+  const { module, boundary, context } = step.execution
+  const variable = context.locals.find(item => item.name === name) ?? context.parameters.find(item => item.name === name)
+  let visible = true
+  if (module === 'classify' && name === 'id') visible = boundary !== null && (line <= 6 ? boundary >= 2 && boundary <= 5 : boundary >= 8 && boundary <= 14)
+  // Callback parameters are distinct bindings. The sweep's a/b/id and a
+  // different invocation's arguments cannot stand in for these parameters.
+  if (module === 'activity' && ['id', 'a', 'b'].includes(name)) visible = false
+  if (module === 'record') {
+    if (name === 'p') visible = false
+    if (['i', 'a'].includes(name)) visible = boundary !== null && boundary >= 1 && boundary < 16
+    if (name === 'b') visible = boundary !== null && boundary >= 2 && boundary < 15
+    if (['start', 'end'].includes(name)) visible = boundary !== null && boundary >= 4 && boundary <= 11
+  }
+  return visible ? variable : { name, type: variable?.type ?? '当前词法作用域变量', availability: 'unavailable' as const, value: null }
+}
+
+export function variableDetails(name: string, step: SweepStep, previous: SweepStep, values: string[], line: number) {
   const context = step.execution.context
   // Locals deliberately win even while unassigned or unavailable: never expose
   // the input parameter hidden by the scan-coordinate local named segments.
-  const variable = context.locals.find(item => item.name === name) ?? context.parameters.find(item => item.name === name)
-  const prior = previous.execution.context
-  const old = prior.function === context.function && previous.execution.module === step.execution.module
-    ? prior.locals.find(item => item.name === name) ?? prior.parameters.find(item => item.name === name)
-    : undefined
+  const variable = scopedVariable(name, step, line)
+  const kind = context.locals.some(item => item.name === name) ? 'locals' : 'parameters'
+  const { old, changed } = variableChange(variable, kind, step, previous, line)
   return {
     meaning: meanings[name], type: variable?.type ?? '当前作用域未提供类型',
     value: variableValue(variable, values),
-    changed: !!old && !!variable && (old.value !== variable.value || old.availability !== variable.availability),
+    changed,
     previous: variableValue(old, values),
+    scope: symbolScope(name, step.execution.module, line),
   }
+}
+
+export function variableChange(variable: ExecutionVariable | undefined, kind: 'locals' | 'parameters', step: SweepStep, previous: SweepStep, line?: number) {
+  const context = step.execution.context, prior = previous.execution.context
+  const binding = prior.function === context.function && previous.execution.module === step.execution.module
+    ? prior[kind].find(item => item.name === variable?.name) : undefined
+  const old = binding && line !== undefined ? scopedVariable(binding.name, previous, line) : binding
+  return { old, changed: !!old && !!variable && (old.value !== variable.value || old.availability !== variable.availability) }
 }
 
 export function symbolKind(name: string, before: string, after: string) {

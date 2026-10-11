@@ -19,16 +19,71 @@ async fn trace_json(segments: &str) -> Response {
     let bytes = axum::body::to_bytes(response.into_body(), usize::MAX)
         .await
         .unwrap();
-    let body = std::str::from_utf8(&bytes).unwrap();
-    if segments != "[]" {
-        assert_eq!(
-            body.matches("SweepSegment {").count(),
-            1,
-            "a singleton's repeated segment context must occur once; response bytes={}",
-            bytes.len()
-        );
+    // A segment may now also occur inside a distinct call argument value.
+    // Value-table uniqueness and reuse are checked by the contract below.
+    let response = Json::<Response>::from_bytes(&bytes).unwrap().0;
+    assert_trace_tables(&response);
+    response
+}
+
+fn assert_trace_tables(response: &Response) {
+    let trace = &response.trace;
+    assert_eq!(
+        trace
+            .point_values
+            .iter()
+            .collect::<std::collections::HashSet<_>>()
+            .len(),
+        trace.point_values.len()
+    );
+    assert_eq!(
+        trace
+            .result_values
+            .iter()
+            .map(|result| result.segments)
+            .collect::<std::collections::HashSet<_>>()
+            .len(),
+        trace.result_values.len()
+    );
+    let mut seen_points = std::collections::HashSet::new();
+    let mut seen_results = std::collections::HashSet::new();
+    for step in &trace.steps {
+        for &index in &step.pending {
+            assert!(index < trace.point_values.len());
+            if !seen_points.contains(&index) {
+                assert_eq!(
+                    index,
+                    seen_points.len(),
+                    "point table follows first appearance"
+                );
+                seen_points.insert(index);
+            }
+        }
+        for &index in &step.results {
+            assert!(index < trace.result_values.len());
+            if !seen_results.contains(&index) {
+                assert_eq!(
+                    index,
+                    seen_results.len(),
+                    "result table follows first appearance"
+                );
+                seen_results.insert(index);
+            }
+        }
     }
-    Json::<Response>::from_bytes(&bytes).unwrap().0
+    assert_eq!(seen_points.len(), trace.point_values.len());
+    assert_eq!(seen_results.len(), trace.result_values.len());
+    assert_eq!(
+        trace
+            .steps
+            .last()
+            .unwrap()
+            .results
+            .iter()
+            .map(|&index| &trace.result_values[index])
+            .collect::<Vec<_>>(),
+        response.intersections.iter().collect::<Vec<_>>()
+    );
 }
 
 #[tokio::test]
@@ -69,6 +124,11 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
     }
     assert_eq!(entry.pending.len(), 2);
     assert_eq!(pop.pending.len(), 1);
+    assert_eq!(pop.pending[0], entry.pending[1]);
+    assert_eq!(
+        response.trace.point_values[entry.pending[0]],
+        *bound.current.as_ref().unwrap()
+    );
     assert!(pop.current.is_none());
     assert!(pop.starts.is_empty());
     assert_eq!(variable(entry, "next").availability, "unassigned");
@@ -111,10 +171,10 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
                 assert!(index < values.len());
             }
         }
-        if matches!(step.action.as_str(), "initial" | "complete") {
+        if step.action == "initial" {
             assert_eq!(step.execution.module, step.action);
             assert_eq!(step.execution.boundary, None);
-            assert!(step.execution.entry);
+            assert!(!step.execution.entry);
         } else {
             assert!(matches!(
                 step.execution.module.as_str(),
@@ -174,6 +234,40 @@ fn variable<'a>(step: &'a Step, name: &str) -> &'a Variable {
         .unwrap()
 }
 
+#[tokio::test]
+async fn trace_tables_preserve_fractional_overlap_and_reuse_result_indices() {
+    let response = trace_json(r#"[{"start":{"x":{"numerator":"0","denominator":"1"},"y":{"numerator":"0","denominator":"1"}},"end":{"x":{"numerator":"3","denominator":"1"},"y":{"numerator":"0","denominator":"1"}}},{"start":{"x":{"numerator":"1","denominator":"3"},"y":{"numerator":"0","denominator":"1"}},"end":{"x":{"numerator":"2","denominator":"1"},"y":{"numerator":"0","denominator":"1"}}}]"#).await;
+    let trace = &response.trace;
+    assert_eq!(trace.point_values.len(), 4);
+    assert_eq!(trace.point_values[1].x.numerator, "1");
+    assert_eq!(trace.point_values[1].x.denominator, "3");
+    assert_eq!(trace.result_values.len(), 1);
+    assert_eq!(trace.result_values[0].segments, [0, 1]);
+    let Geometry::Overlap { start, end } = &trace.result_values[0].geometry else {
+        panic!("the exact overlap must remain an interval");
+    };
+    assert_eq!(start.x.numerator, "1");
+    assert_eq!(start.x.denominator, "3");
+    assert_eq!(end.x.numerator, "2");
+    assert_eq!(end.x.denominator, "1");
+    let recorded = trace
+        .steps
+        .iter()
+        .position(|step| step.action == "record")
+        .unwrap();
+    assert!(recorded + 1 < trace.steps.len());
+    assert!(
+        trace.steps[..recorded]
+            .iter()
+            .all(|step| step.results.is_empty())
+    );
+    assert!(
+        trace.steps[recorded..]
+            .iter()
+            .all(|step| step.results == [0])
+    );
+}
+
 #[derive(Deserialize)]
 struct Execution {
     module: String,
@@ -206,18 +300,22 @@ impl Variable {
 #[derive(Deserialize)]
 struct Response {
     trace: Trace,
+    intersections: Vec<Intersection>,
 }
 
 #[derive(Deserialize)]
 struct Trace {
     steps: Vec<Step>,
     values: Vec<String>,
+    point_values: Vec<Point>,
+    result_values: Vec<Intersection>,
 }
 
 #[derive(Deserialize)]
 struct Step {
     execution: Execution,
-    pending: Vec<Point>,
+    pending: Vec<usize>,
+    results: Vec<usize>,
     action: String,
     current: Option<Point>,
     active: Vec<usize>,
@@ -226,16 +324,29 @@ struct Step {
     passes: Vec<usize>,
 }
 
-#[derive(Debug, PartialEq, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 struct Point {
     x: Coordinate,
     y: Coordinate,
 }
 
-#[derive(Debug, PartialEq, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
 struct Coordinate {
     numerator: String,
     denominator: String,
+}
+
+#[derive(Debug, PartialEq, Deserialize)]
+struct Intersection {
+    segments: [usize; 2],
+    geometry: Geometry,
+}
+
+#[derive(Debug, PartialEq, Deserialize)]
+#[serde(tag = "type", rename_all = "lowercase")]
+enum Geometry {
+    Point { point: Point },
+    Overlap { start: Point, end: Point },
 }
 
 #[tokio::test]
@@ -274,6 +385,7 @@ async fn equal_x_trace_events_reorder_only_their_own_participants() {
         .await
         .unwrap();
     let Json(response) = Json::<Response>::from_bytes(&bytes).unwrap();
+    assert_trace_tables(&response);
     for (x, y, before, after, mut participants, actions) in [
         (
             "0",

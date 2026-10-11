@@ -2,6 +2,7 @@ import { expect, test, type Locator, type Page } from './learning-test'
 import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
 async function center(page: Page, target: Locator) {
   await target.scrollIntoViewIfNeeded()
@@ -31,30 +32,32 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
   const current = page.getByRole('region', { name: '当前事件' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByTestId('active-order')
+  const trace = await readTrace(page, 'crossing')
+  const discovery = stepIndex(trace, step => step.action === 'discover')
   const cases = [
-    { step: 3, point: 'S0 起点 (0, 0)', lines: [] },
-    { step: 4, lines: ['S0'] },
-    { step: 9, lines: ['S1'] },
-    { step: 10, lines: ['S0', 'S1'], separator: '×' },
-    { step: 11, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
-    { step: 15, point: 'I0 (2, 2)', lines: [] },
-    { step: 16, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
-    { step: 17, lines: ['S1', 'S0'], separator: '→' },
-    { step: 22, lines: ['S1'] },
+    { step: stepIndex(trace, step => step.action === 'take'), point: 'S0 起点 (0, 0)', lines: [] },
+    { step: stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(0)), lines: ['S0'] },
+    { step: stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(1)), lines: ['S1'] },
+    { step: stepIndex(trace, step => step.action === 'check'), lines: ['S0', 'S1'], separator: '×' },
+    { step: discovery, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
+    { step: stepIndex(trace, step => step.action === 'take' && step.current?.x.numerator === '2' && step.current.y.numerator === '2'), point: 'I0 (2, 2)', lines: [] },
+    { step: stepIndex(trace, step => step.action === 'record'), point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
+    { step: stepIndex(trace, step => step.action === 'reorder'), lines: ['S1', 'S0'], separator: '→' },
+    { step: stepIndex(trace, step => step.action === 'remove' && step.subjects.includes(1)), lines: ['S1'] },
   ]
   let index = 0
   for (const scenario of cases) {
     while (index < scenario.step) { await next.click(); index++ }
     if (scenario.point) {
       const token = explanation.getByText(scenario.point, { exact: true })
-      const entry = (index === 11 ? queue : current).getByText(scenario.point, { exact: true })
+      const entry = (index === discovery ? queue : current).getByText(scenario.point, { exact: true })
       await entry.hover()
       await expect(token).toHaveAttribute('data-highlighted', 'true')
       await token.hover()
       await expect(entry).toHaveAttribute('data-highlighted', 'true')
       await expect(diagram.locator('.hover-event')).toHaveCount(1)
       await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
-      if (index === 11) await page.screenshot({ path: join(tmpdir(), `bo-explanation-point-${width}.png`), fullPage: true })
+      if (index === discovery) await page.screenshot({ path: join(tmpdir(), `bo-explanation-point-${width}.png`), fullPage: true })
       const coordinates = scenario.point.slice(scenario.point.indexOf('('))
       const label = diagram.locator(`.teaching-labels [data-event-point="${coordinates}"]`)
       await expect(diagram.getByRole('status', { name: '画布对象详情' })).toContainText(scenario.point)
@@ -70,7 +73,7 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
       await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(1)
       await expect(explanation.locator('[data-highlighted="true"]')).toHaveText(name)
       await expect(diagram.locator('.hover-event')).toHaveCount(0)
-      if (index === 11 && name === 'S0') await page.screenshot({ path: join(tmpdir(), `bo-explanation-segment-${width}.png`), fullPage: true })
+      if (index === discovery && name === 'S0') await page.screenshot({ path: join(tmpdir(), `bo-explanation-segment-${width}.png`), fullPage: true })
       // Exiting rows no longer belong to the current active set.
       const entry = active.getByRole('listitem').filter({ hasText: new RegExp(`^${name}$`) })
       if (await entry.count()) {
@@ -131,11 +134,11 @@ test('教学 hover：队列端点与点标签精确双向对应', async ({ page 
 test('教学 hover：当前交点与待处理交点均按悬停显示坐标标签', async ({ page }) => {
   await page.goto('/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
-  const next = page.getByRole('button', { name: '下一步', exact: true })
+  const trace = await readTrace(page, 'crossing')
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const current = page.getByRole('region', { name: '当前事件' })
   const diagram = page.getByRole('region', { name: '几何视图' })
-  for (let i = 0; i < 11; i++) await next.click()
+  await seekStep(page, stepIndex(trace, step => step.action === 'discover'))
   const pending = page.getByRole('img', { name: '已发现 I0 (2, 2)' })
   const dashed = pending.locator('circle')
   const dash = await dashed.evaluate(e => getComputedStyle(e).strokeDasharray)
@@ -151,8 +154,8 @@ test('教学 hover：当前交点与待处理交点均按悬停显示坐标标�
   await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
   await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
   await expect(page.getByTestId('active-order').locator('[data-highlighted="true"]')).toHaveCount(0)
-  // Complete the endpoint, enter take, pop, and bind the intersection before recording it.
-  for (let i = 0; i < 4; i++) await next.click()
+  // Bind the intersection before recording it, through the actual intervening steps.
+  await seekStep(page, stepIndex(trace, step => step.action === 'take' && step.current?.x.numerator === '2' && step.current.y.numerator === '2'))
   await expect(queue).not.toContainText('I0')
   await expect(diagram.locator('.hover-event')).toHaveCount(0)
   const marker = diagram.locator('.current-point')
@@ -173,7 +176,7 @@ test('教学 hover：当前交点与待处理交点均按悬停显示坐标标�
   await expect(current.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
   await page.getByRole('link', { name: '返回列表', exact: true }).hover()
   await expect(pointLabel).toHaveCount(0)
-  await next.click() // Recording keeps the label hidden until the next hover.
+  await seekStep(page, stepIndex(trace, step => step.action === 'record')) // Recording keeps the label hidden until the next hover.
   await expect(pointLabel).toHaveCount(0)
   await center(page, marker)
   await expect(pointLabel).toHaveText('(2, 2)')
@@ -250,7 +253,8 @@ test('教学 hover：缩放平移后的点、标签与线段命中和可读性',
   await page.goto('/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
-  for (let i = 0; i < 11; i++) await page.getByRole('button', { name: '下一步', exact: true }).click()
+  const trace = await readTrace(page, 'crossing')
+  await seekStep(page, stepIndex(trace, step => step.action === 'discover'))
   for (const width of [1360, 390]) {
     await page.setViewportSize({ width, height: 1000 })
     await page.getByRole('button', { name: '重置视图' }).click()

@@ -1,6 +1,7 @@
 import { expect, test } from './learning-test'
-import { formatPoint, samePoint, type Intersection, type Segment, type SweepTrace } from '../src/geometry'
+import { formatPoint, samePoint, type Segment } from '../src/geometry'
 import { captureDemo, checkPairSelection, checkViewportControls, checkLearningCompletion } from './demo-interactions'
+import { captureIntersections } from './trace-navigation'
 
 const patterns = [
   { id: 'spider-web', name: '蜘蛛网', edges: 32, positions: 17, pairs: 100, junctions: [
@@ -23,12 +24,13 @@ for (const pattern of patterns) for (const width of [1360, 390]) {
     await card.scrollIntoViewIfNeeded()
     await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/cases/${pattern.id}/learn`)
     await captureDemo(page, card, pattern.id, width, 'card')
+    const capture = await captureIntersections(page)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()
     const response = await responsePromise
     expect(response.status()).toBe(200)
     const input = response.request().postDataJSON() as { segments: Segment[]; trace: boolean }
-    const { intersections, trace } = await response.json() as { intersections: Intersection[]; trace: SweepTrace }
+    const { intersections, trace } = await capture.result
     expect(input.trace).toBe(true)
     expect(input.segments).toHaveLength(pattern.edges)
     expect(input.segments.every(edge => !samePoint(edge.start, edge.end))).toBe(true)
@@ -72,9 +74,13 @@ for (const pattern of patterns) {
   test(`${pattern.name}：从列表进入学习，连接点逐对记录`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
+    const capture = await captureIntersections(page)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
     await page.getByRole('article', { name: pattern.name, exact: true }).getByRole('link', { name: '开始学习', exact: true }).click()
-    const { trace } = await (await responsePromise).json() as { trace: SweepTrace }
+    const response = await responsePromise
+    expect(response.status()).toBe(200)
+    expect(response.request().postDataJSON().trace).toBe(true)
+    const { trace } = await capture.result
     const junction = pattern.junctions[1]
     const index = trace.steps.findIndex(step => step.action === 'record' && step.current && formatPoint(step.current) === junction.point)
     expect(index).toBeGreaterThan(0)

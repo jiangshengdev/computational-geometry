@@ -2,8 +2,10 @@ import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
 test('竖直教学：多高度交叉、顶端接触及重启保持原坐标顺序', async ({ page }) => {
+  const trace = await readTrace(page, 'vertical')
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/cases/crossing')
   await selectPreset(page, '竖直线多高度接触')
@@ -11,11 +13,12 @@ test('竖直教学：多高度交叉、顶端接触及重启保持原坐标顺�
   const current = page.getByRole('region', { name: '当前事件' })
   const group = page.getByRole('region', { name: '同点参与线段' })
   const active = page.getByTestId('active-order')
-  const next = page.getByRole('button', { name: '下一步', exact: true })
   for (let run = 0; run < 2; run++) {
     const completed: string[] = []
-    while (await next.isEnabled()) {
-      await next.click()
+    for (const [index, step] of trace.steps.entries()) {
+      if (!index || step.action === 'micro') continue
+      await seekStep(page, index)
+      if (['take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
       const event = await current.innerText()
       for (const [point, passes, starts, ends, order] of [
         ['(0, -1)', 'S0、S1', '无', '无', 'S1S0S2'],
@@ -55,6 +58,7 @@ test('竖直教学：多高度交叉、顶端接触及重启保持原坐标顺�
 })
 
 for (const width of [1360, 390]) test(`竖直教学：状态标记表示处理高度 ${width}px`, async ({ page }) => {
+  const trace = await readTrace(page, 'vertical')
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.setViewportSize({ width, height: 1000 })
   const errors: string[] = []
@@ -71,11 +75,8 @@ for (const width of [1360, 390]) test(`竖直教学：状态标记表示处理�
   await expect(rule).toContainText('处理高度')
   await page.getByRole('button', { name: '关闭帮助', exact: true }).click()
   const current = page.getByRole('region', { name: '当前事件' })
-  const next = page.getByRole('button', { name: '下一步', exact: true })
-  while (await next.isEnabled()) {
-    await next.click()
-    if ((await current.innerText()).includes('(0, -1)') && (await current.innerText()).includes('事件处理完成')) break
-  }
+  await seekStep(page, stepIndex(trace, step => step.action === 'complete' && step.current?.x.numerator === '0' && step.current.y.numerator === '-1'))
+  await expect(current).toContainText('事件处理完成')
   await expect(current).toContainText('(0, -1)')
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   await expect(queue).toContainText('(0, 1)')

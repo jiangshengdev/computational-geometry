@@ -1,6 +1,7 @@
 import { expect, test, type Locator, type Page } from './learning-test'
-import { formatPoint, samePoint, type SweepTrace } from '../src/geometry'
+import { formatPoint, samePoint } from '../src/geometry'
 import { installCase, scrollingCase } from './scrolling-cases'
+import { readResponse } from './trace-navigation'
 
 test.beforeEach(async ({ page }) => {
   await installCase(page, scrollingCase)
@@ -12,9 +13,9 @@ async function readTrace(page: Page, id: string) {
   const result = await response
   expect(result.status()).toBe(200)
   expect(result.request().postDataJSON()).toEqual({ segments: scrollingCase.segments, trace: true })
-  const body = await result.json()
+  const body = await readResponse(result)
   expect(body.intersections).toHaveLength(3)
-  return body.trace as SweepTrace
+  return body.trace
 }
 
 async function visibilityInPanel(row: Locator) {

@@ -1,0 +1,70 @@
+import { expect, test } from './learning-test'
+import { readTrace } from './trace-navigation'
+import { presets } from '../src/presets'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+
+for (const id of ['crossing', 'endpoint', 'multiway-interior', 'partial-overlap', 'vertical', 'disjoint', 'empty']) {
+  test(`完整轨迹的入口、终态与普通计算一致：${id}`, async ({ page }) => {
+    const trace = await readTrace(page, id)
+    const response = await page.request.post('/api/intersections', { data: { segments: presets.find(preset => preset.id === id)!.segments } })
+    const { intersections } = await response.json()
+    expect(trace.steps.at(-1)!.results).toEqual(intersections)
+    const entries = trace.steps.filter(step => step.execution.entry)
+    expect(entries.length).toBeGreaterThan(0)
+    expect(entries.every(step => step.execution.boundary === 0)).toBe(true)
+    const modules = new Set<string>()
+    for (const [index, step] of trace.steps.entries()) {
+      if (!step.execution.entry || modules.has(step.execution.module)) continue
+      modules.add(step.execution.module)
+      await page.goto(`/cases/${id}/learn?step=${index}`)
+      const panel = page.getByRole('region', { name: '核心代码回放' })
+      await expect(panel).toContainText('第一条核心语句之前')
+      await expect(panel.getByRole('img', { name: /执行边界/ })).toBeVisible()
+      const before = await panel.locator('dd').allTextContents()
+      await page.getByRole('button', { name: '下一步', exact: true }).click()
+      await page.getByRole('button', { name: '上一步', exact: true }).click()
+      expect(await panel.locator('dd').allTextContents()).toEqual(before)
+    }
+    await page.getByRole('slider', { name: '教学步骤' }).press('End')
+    await expect(page.getByRole('button', { name: '下一步', exact: true })).toBeDisabled()
+    await expect(page.getByRole('region', { name: '核心代码回放' })).toContainText('队列为空，退出循环')
+    await page.getByRole('button', { name: '重新开始', exact: true }).click()
+    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
+  })
+}
+
+for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+  test.extend({ browserName })(`长代码边界与动态浮层滚动不改变排版 ${browserName}`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 900 })
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    const errors: string[] = []
+    page.on('pageerror', error => errors.push(error.message))
+    const trace = await readTrace(page, 'multiway-interior')
+    const index = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8)
+    expect(index).toBeGreaterThan(0)
+    await page.goto(`/cases/multiway-interior/learn?step=${index}`)
+    const panel = page.getByRole('region', { name: '核心代码回放' })
+    const code = panel.getByRole('region', { name: '参与线段分类教学代码' })
+    const boundary = panel.getByRole('img', { name: /执行边界/ })
+    await code.scrollIntoViewIfNeeded()
+    await expect(boundary).toBeInViewport()
+    const layout = () => panel.locator('.code-line').evaluateAll(lines => lines.map(line => ({ top: (line as HTMLElement).offsetTop, height: line.getBoundingClientRect().height })))
+    const before = await layout()
+    const symbol = panel.locator('.code-line').nth(7).locator('[data-symbol="id"]')
+    await symbol.hover()
+    await expect(page.getByRole('tooltip', { name: /^变量 id / })).toContainText('当前值')
+    expect(await layout()).toEqual(before)
+    const offset = () => boundary.evaluate(element => element.getBoundingClientRect().top - element.parentElement!.querySelectorAll('.code-line')[8].getBoundingClientRect().top)
+    const alignment = await offset()
+    await code.evaluate(element => { element.scrollTop = 0; element.scrollLeft = element.scrollWidth })
+    expect(await offset()).toBe(alignment)
+    expect(await layout()).toEqual(before)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+    expect(errors).toEqual([])
+    await code.evaluate(element => { element.scrollLeft = 0 })
+    await symbol.hover()
+    await page.screenshot({ path: join(tmpdir(), `bo-execution-${browserName}-390.png`) })
+  })
+}

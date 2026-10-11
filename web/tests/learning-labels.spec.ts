@@ -1,7 +1,7 @@
 import { expect, test, expandedPanels, type Locator, type Page } from './learning-test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
-import type { SweepTrace } from '../src/geometry'
+import { readResponse, readTrace, stepIndex } from './trace-navigation'
 
 async function linePosition(line: Locator, fraction = 0.25) {
   await line.scrollIntoViewIfNeeded()
@@ -42,9 +42,10 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       return { id: text.dataset.input!, x: point.x, y: point.y }
     }))
     const anchors = new Map<string, { id: string; x: number; y: number }>()
+    let hoveredPositions = ''
     for (let step = 1; step <= last; step++) {
       await slider.focus()
-      await page.keyboard.press('ArrowRight')
+      await page.keyboard.down('ArrowRight')
       await expect(slider).toHaveValue(String(step))
       await svg.scrollIntoViewIfNeeded()
       const before = await positions()
@@ -52,6 +53,9 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         if (anchors.has(position.id)) expect(position, `S${position.id} moved at step ${step}`).toEqual(anchors.get(position.id))
         else anchors.set(position.id, position)
       }
+      const positionKey = JSON.stringify(before)
+      if (positionKey === hoveredPositions) continue
+      hoveredPositions = positionKey
       for (const position of before) {
         const label = svg.locator(`.teaching-labels text[data-input="${position.id}"]`)
         // WebKit's protocol box omits SVG text x/y; use the rendered DOM box
@@ -67,13 +71,16 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         expect(await positions(), `leaving moved labels at step ${step}`).toEqual(before)
       }
     }
+    await page.keyboard.up('ArrowRight')
     expect([...anchors.keys()].sort()).toEqual(['0', '1'])
     expect(anchors.get('0')!.y).not.toBe(anchors.get('1')!.y)
     await slider.focus()
     await page.keyboard.press('ArrowLeft')
     await expect(slider).toHaveValue(String(last - 1))
     for (const position of await positions()) expect(position).toEqual(anchors.get(position.id))
-    await page.goto('/cases/crossing/learn?step=15')
+    const trace = await readTrace(page, 'crossing')
+    const intersection = stepIndex(trace, step => step.action === 'take' && step.current?.x.numerator === '2' && step.current.y.numerator === '2')
+    await page.goto(`/cases/crossing/learn?step=${intersection}`)
     await expect(svg.locator('.teaching-labels text[data-input]:visible')).toHaveCount(2)
     for (const position of await positions()) expect(position).toEqual(anchors.get(position.id))
     if (browserName === 'chromium') await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-labels-stable-${width}.png`) })
@@ -84,9 +91,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-    const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok())
+    const trace = await readTrace(page, 'spider-web')
     await page.goto('/cases/spider-web/learn')
-    const { trace } = await (await response).json() as { trace: SweepTrace }
     const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
     await expect(page).toHaveTitle('蜘蛛网 · 逐步学习 · BO 结果查看器')
     await expect(svg.locator('.input')).toHaveCount(32)
@@ -174,7 +180,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
 test('教学标签：重叠默认高亮不弹详情，点击临时标签固定正确对象', async ({ page }) => {
   const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok())
   await page.goto('/cases/partial-overlap/learn')
-  const { trace } = await (await response).json() as { trace: SweepTrace }
+  const { trace } = await readResponse(await response)
   const record = trace.steps.findIndex(step => step.action === 'record' && step.results.at(-1)?.geometry.type === 'overlap')
   expect(record).toBeGreaterThan(0)
   await page.goto(`/cases/partial-overlap/learn?step=${record}`)

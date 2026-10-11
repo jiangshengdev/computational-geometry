@@ -1,6 +1,6 @@
 import { expect, test, expandedPanels, type Page } from './learning-test'
 import { presets } from '../src/presets'
-import type { SweepTrace } from '../src/geometry'
+import { captureIntersections } from './trace-navigation'
 import { layoutCases } from './layout-states'
 
 test.describe.configure({ mode: 'parallel' })
@@ -87,13 +87,14 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
             await expectIntegerLayout(page)
           } else {
             const slider = page.getByRole('slider', { name: '教学步骤' })
+            const capture = await captureIntersections(page)
             const [response] = await Promise.all([
               page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST'),
               page.goto(`/cases/${preset.id}/learn`).then(() => expect(slider).toHaveValue('0')),
             ])
             expect(response.status()).toBe(200)
             expect(response.request().postDataJSON()).toEqual({ segments: preset.segments, trace: true })
-            const { trace }: { trace: SweepTrace } = await response.json()
+            const { trace } = await capture.result
             await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
             for (const state of example.states) {
               const step = trace.steps.findIndex(state.matches)

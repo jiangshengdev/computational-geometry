@@ -2,13 +2,15 @@ import { expect, test } from './learning-test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { selectPreset } from './cases'
+import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
 for (const width of [1360, 390]) {
   test(`标题序号：小字号贴近独立锚点 ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1100 })
     await page.goto('/cases/neighbor-crossing')
     await page.getByRole('link', { name: '开始逐步学习' }).click()
-    for (let i = 0; i < 9; i++) await page.getByRole('button', { name: '下一步', exact: true }).click()
+    const trace = await readTrace(page, 'neighbor-crossing')
+    await seekStep(page, stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(1)))
     const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
     const activeTitle = page.getByRole('heading', { name: '活动线段顺序', exact: true })
     const pendingTitle = page.getByRole('heading', { name: '待处理事件队列', exact: true })
@@ -51,7 +53,8 @@ for (const width of [1360, 390]) {
     await selectPreset(page, 'neighbor-crossing')
     await page.getByRole('link', { name: '开始逐步学习' }).click()
     const next = page.getByRole('button', { name: '下一步', exact: true })
-    for (let i = 0; i < 16; i++) await next.click()
+    const trace = await readTrace(page, 'neighbor-crossing')
+    await seekStep(page, stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(2)))
     const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
     const labels = svg.locator('.teaching-labels text[data-event-point]')
     const markers = svg.locator('.order-marker')
@@ -116,7 +119,8 @@ test('标题序号：同点错位、换序、缩放平移与空列表', async ({
   const markers = svg.locator('.order-marker')
   await activeTitle.hover()
   await expect(markers).toHaveCount(0)
-  for (let i = 0; i < 17; i++) await page.getByRole('button', { name: '下一步', exact: true }).click()
+  const trace = await readTrace(page, 'crossing')
+  await seekStep(page, stepIndex(trace, step => step.action === 'reorder'))
   await page.getByRole('button', { name: '放大', exact: true }).click()
   const bounds = (await svg.boundingBox())!
   await page.mouse.move(bounds.x + bounds.width / 2, bounds.y + 150)

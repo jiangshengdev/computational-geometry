@@ -1,10 +1,11 @@
 import { expect, test } from './learning-test'
 import type { SweepTrace } from '../src/geometry'
+import { readResponse } from './trace-navigation'
 
 test('真实取事件代码 hover 随前进和回退更新且不改变布局', async ({ page }) => {
   const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
   await page.goto('/cases/crossing/learn')
-  const { trace }: { trace: SweepTrace } = await (await response).json()
+  const { trace }: { trace: SweepTrace } = await readResponse(await response)
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const lines = panel.locator('.code-line')
@@ -23,7 +24,7 @@ test('真实取事件代码 hover 随前进和回退更新且不改变布局', a
   await expect(variableTooltip).toContainText('未赋值')
   expect(await layout()).toEqual(before)
   await pop.hover()
-  await expect(popTooltip).toContainText('尚未调用，返回值不可用')
+  await expect(popTooltip).toContainText('返回值：未赋值')
   await queue.hover()
   const entry = trace.steps.find(step => step.action === 'take-entry')!
   const queueValue = entry.execution.context.locals.find(variable => variable.name === 'queue')!
@@ -40,10 +41,62 @@ test('真实取事件代码 hover 随前进和回退更新且不改变布局', a
   await next.hover()
   await expect(variableTooltip).toContainText('未赋值')
   await pop.hover()
-  await expect(popTooltip).toContainText('尚未调用，返回值不可用')
+  await expect(popTooltip).toContainText('返回值：未赋值')
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
   await expect(panel).toContainText('参与线段分类')
   await expect(panel.locator('[data-symbol="pop_first"]')).toHaveCount(0)
   await panel.locator('[data-symbol="incident"]').first().hover()
   await expect(page.getByRole('tooltip', { name: /^变量 incident / })).toContainText('未赋值')
+})
+
+test('分类同名 id 按词法循环隔离，真实调用按行和函数展示返回值', async ({ page }) => {
+  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
+  await page.goto('/cases/crossing/learn')
+  const { trace }: { trace: SweepTrace } = await readResponse(await response)
+  const secondLoop = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8 && step.execution.context.locals.some(variable => variable.name === 'id' && variable.availability === 'available'))
+  expect(secondLoop).toBeGreaterThan(0)
+  await page.goto(`/cases/crossing/learn?step=${secondLoop}`)
+  const panel = page.getByRole('region', { name: '核心代码回放' })
+  const firstTooltip = page.getByRole('tooltip', { name: /^变量 id .*作用域：活动线段循环/ })
+  const secondTooltip = page.getByRole('tooltip', { name: /^变量 id .*作用域：参与线段循环/ })
+  // Highlight loading positions the viewport at boundary 8. Wait for that
+  // navigation before scrolling back to the other loop's binding.
+  await expect(panel.getByRole('img', { name: '执行边界：参与线段分类 8', exact: true })).toBeInViewport()
+  const firstId = panel.locator('[data-symbol="id"][data-line="3"]').first()
+  await firstId.scrollIntoViewIfNeeded()
+  await firstId.hover()
+  await expect(firstTooltip).toContainText('作用域：活动线段循环')
+  await expect(firstTooltip).toContainText('当前值：不可用（当前作用域未提供）')
+  const secondId = panel.locator('[data-symbol="id"][data-line="8"]')
+  await secondId.scrollIntoViewIfNeeded()
+  await secondId.hover()
+  const id = trace.steps[secondLoop].execution.context.locals.find(variable => variable.name === 'id')!
+  await expect(secondTooltip).toContainText('作用域：参与线段循环')
+  await expect(secondTooltip).toContainText(`当前值：${trace.values[id.value!]}`)
+
+  const calculated = trace.steps.findIndex(step => step.execution.module === 'classify' && ['y_at', 'cmp'].every(name => step.execution.calls.some(call => call.line === 3 && call.function === name && call.result.availability === 'available')))
+  expect(calculated).toBeGreaterThan(0)
+  await page.goto(`/cases/crossing/learn?step=${calculated}`)
+  for (const name of ['y_at', 'cmp']) {
+    const call = trace.steps[calculated].execution.calls.find(call => call.line === 3 && call.function === name)!
+    await panel.locator(`[data-symbol="${name}"][data-line="3"]`).hover()
+    const callTooltip = page.getByRole('tooltip', { name: new RegExp(`^函数 ${name} `) })
+    await expect(callTooltip).toContainText(`返回值：${trace.values[call.result.value!]}`)
+    for (const argument of call.arguments) {
+      expect(argument.availability).toBe('available')
+      await expect(callTooltip).toContainText(`实参 ${argument.name}：${trace.values[argument.value!]}`)
+    }
+  }
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  const before = trace.steps[calculated - 1].execution.calls.find(call => call.line === 3 && call.function === 'y_at')
+  expect(before).toBeDefined()
+  expect(before!.result.availability).toBe('unassigned')
+  expect(before!.result.value).toBeNull()
+  expect(before!.arguments.some(argument => argument.availability === 'available')).toBe(true)
+  await panel.locator('[data-symbol="y_at"][data-line="3"]').hover()
+  const beforeTooltip = page.getByRole('tooltip', { name: /^函数 y_at / })
+  await expect(beforeTooltip).toContainText('返回值：未赋值')
+  for (const argument of before!.arguments.filter(argument => argument.availability === 'available')) {
+    await expect(beforeTooltip).toContainText(`实参 ${argument.name}：${trace.values[argument.value!]}`)
+  }
 })

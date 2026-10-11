@@ -1,5 +1,6 @@
 import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
+import { readTrace, stepIndex } from './trace-navigation'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -121,6 +122,11 @@ test('教学快捷键：控件优先、组合键和模式隔离', async ({ page 
 })
 
 test('教学动作：加入、检查、发现分别展示并可回退', async ({ page }) => {
+  const trace = await readTrace(page, 'crossing')
+  const firstInsert = stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(0))
+  const secondInsert = stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
+  const check = stepIndex(trace, (step, index) => index > secondInsert && step.action === 'check' && step.subjects.includes(0) && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
+  const discover = stepIndex(trace, (step, index) => index > check && step.action === 'discover' && step.subjects.includes(0) && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
   await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
@@ -129,27 +135,20 @@ test('教学动作：加入、检查、发现分别展示并可回退', async ({
   const explanation = page.getByRole('region', { name: '操作解释' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   await expect(previous).toBeDisabled()
-  await next.click() // Enter the first take module.
-  await next.click() // Pop before binding the current event.
-  await next.click() // Take the first endpoint.
-  await next.click() // Insert S0.
+  for (let index = 0; index < firstInsert; index++) await next.click()
   await expect(explanation).toContainText('加入 S0')
   await expect(page.getByTestId('active-order')).toHaveText('S0')
-  await next.click() // Complete the event.
-  await next.click() // Enter the second take module.
-  await next.click() // Pop before binding the current event.
-  await next.click() // Take the second endpoint.
-  await next.click() // Insert S1, before checking its neighbor.
+  for (let index = firstInsert; index < secondInsert; index++) await next.click()
   await expect(explanation).toContainText('加入 S1')
   await expect(queue).not.toContainText('I0')
-  await next.click()
+  for (let index = secondInsert; index < check; index++) await next.click()
   await expect(explanation).toContainText('检查相邻线段 S0 × S1')
   await expect(queue).not.toContainText('I0')
-  await next.click()
+  for (let index = check; index < discover; index++) await next.click()
   await expect(explanation).toContainText('发现未来交点 I0 (2, 2)')
   await expect(queue).toContainText('I0 (2, 2)')
   await expect(page.getByRole('img', { name: '已发现 I0 (2, 2)' })).toBeVisible()
-  await previous.click()
+  for (let index = discover; index > check; index--) await previous.click()
   await expect(explanation).toContainText('检查相邻线段 S0 × S1')
   await expect(queue).not.toContainText('I0')
   await expect(page.getByRole('img', { name: '已发现 I0 (2, 2)' })).toHaveCount(0)
@@ -157,35 +156,52 @@ test('教学动作：加入、检查、发现分别展示并可回退', async ({
 
 for (const preset of ['crossing', 'disjoint']) {
   test(`教学动作：${preset} 完整回退与边界隔离`, async ({ page }) => {
+    const trace = await readTrace(page, preset)
     await page.goto('/cases/crossing')
     await selectPreset(page, preset)
     await page.getByRole('link', { name: '开始逐步学习' }).click()
     const previous = page.getByRole('button', { name: '上一步', exact: true })
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const learning = page.getByRole('region', { name: '逐步学习' })
+    const slider = page.getByRole('slider', { name: '教学步骤' })
     const states = [await learning.innerText()]
-    while (await next.isEnabled()) {
-      await next.click()
-      // Capture the settled state, not rows temporarily retained for exit animation.
-      await expect(learning.locator('[data-event-id][aria-hidden="true"], [data-input-id][aria-hidden="true"]')).toHaveCount(0)
-      if (await page.getByRole('region', { name: '取事件教学代码', exact: true }).count()) {
-        await expect(page.locator('.execution-code .code-line')).toHaveCount(2)
+    await slider.focus()
+    try {
+      while (await next.isEnabled()) {
+        await page.keyboard.down('ArrowRight')
+        // Capture the settled state, not rows temporarily retained for exit animation.
+        await expect(learning.locator('[data-event-id][aria-hidden="true"], [data-input-id][aria-hidden="true"]')).toHaveCount(0)
+        await expect(page.getByText('加载教学代码…', { exact: true })).toHaveCount(0)
+        if (await page.getByRole('region', { name: '取事件教学代码', exact: true }).count()) {
+          await expect(page.locator('.execution-code .code-line')).toHaveCount(2)
+        }
+        states.push(await learning.innerText())
       }
-      states.push(await learning.innerText())
+    } finally {
+      await page.keyboard.up('ArrowRight')
     }
+    expect(states).toHaveLength(trace.steps.length)
     await expect(page.getByRole('region', { name: '学习结果' })).toContainText(preset === 'crossing' ? 'I0 (2, 2)：S0 × S1' : '结果为空')
-    for (const state of states.slice(0, -1).reverse()) {
-      await previous.click()
-      await expect.poll(() => learning.innerText()).toBe(state)
-      await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
-      await expect(next).toBeEnabled()
+    try {
+      for (const state of states.slice(0, -1).reverse()) {
+        await page.keyboard.down('ArrowLeft')
+        await expect.poll(() => learning.innerText()).toBe(state)
+        await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
+        await expect(next).toBeEnabled()
+      }
+    } finally {
+      await page.keyboard.up('ArrowLeft')
     }
     await expect(previous).toBeDisabled()
     await expect(page.getByTestId('active-order')).toHaveText('空')
     await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText('I0')
-    for (const state of states.slice(1)) {
-      await next.click()
-      await expect.poll(() => learning.innerText()).toBe(state)
+    try {
+      for (const state of states.slice(1)) {
+        await page.keyboard.down('ArrowRight')
+        await expect.poll(() => learning.innerText()).toBe(state)
+      }
+    } finally {
+      await page.keyboard.up('ArrowRight')
     }
     await page.getByRole('button', { name: '重新开始', exact: true }).click()
     expect(await learning.innerText()).toBe(states[0])
@@ -200,6 +216,8 @@ for (const preset of ['crossing', 'disjoint']) {
 
 for (const preset of ['crossing', 'disjoint']) {
   test(`步骤滑动条：${preset} 自由跳转、拖动实时同步`, async ({ page }) => {
+    const trace = await readTrace(page, preset)
+    const inserted = stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(1))
     await page.goto('/cases/crossing')
     await selectPreset(page, preset)
     await page.getByRole('link', { name: '开始逐步学习' }).click()
@@ -214,6 +232,7 @@ for (const preset of ['crossing', 'disjoint']) {
     await expect(next).toBeDisabled()
     await expect(page.getByRole('region', { name: '学习结果' })).toContainText(preset === 'crossing' ? 'I0 (2, 2)：S0 × S1' : '结果为空')
     const finalIndex = Number(await slider.inputValue())
+    expect(finalIndex).toBe(trace.steps.length - 1)
     await previous.click()
     await expect(slider).toHaveValue(String(finalIndex - 1))
     await next.click()
@@ -233,8 +252,8 @@ for (const preset of ['crossing', 'disjoint']) {
     await page.mouse.move(x, y)
     await page.mouse.down()
     // Keep the pointer held while checking state, rather than testing release.
-    await page.mouse.move(x + track.width * 9 / finalIndex, y)
-    await expect(slider).toHaveValue('9')
+    await page.mouse.move(x + track.width * inserted / finalIndex, y)
+    await expect(slider).toHaveValue(String(inserted))
     await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S1')
     await expect(page.getByTestId('active-order').getByRole('listitem')).toHaveText(['S0', 'S1'])
     await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText('I0')
@@ -242,7 +261,7 @@ for (const preset of ['crossing', 'disjoint']) {
     const dragged = await learning.innerText()
     await page.mouse.up()
     await slider.press('Home')
-    for (let i = 0; i < 9; i++) await next.click()
+    for (let i = 0; i < inserted; i++) await next.click()
     await expect.poll(() => learning.innerText()).toBe(dragged)
     await next.click()
     await previous.click()

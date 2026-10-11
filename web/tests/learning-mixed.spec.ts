@@ -1,7 +1,7 @@
 import { expect, test } from './learning-test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
-import type { SweepTrace } from '../src/geometry'
+import { readResponse } from './trace-navigation'
 
 for (const width of [1360, 390]) for (const [id, pairs, positions, center, centerPairs, upper] of [
   ['mixed-horizontal', 17, 2, '(2, 0)', 14, '(2, 2)'],
@@ -12,10 +12,10 @@ for (const width of [1360, 390]) for (const [id, pairs, positions, center, cente
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(response => response.json())
+  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(readResponse)
   await page.goto(`/cases/${id}`)
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
-  const { trace }: { trace: SweepTrace } = await response
+  const { trace } = await response
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   await expect(page).toHaveTitle(/逐步学习/)
   const next = page.getByRole('button', { name: '下一步', exact: true })

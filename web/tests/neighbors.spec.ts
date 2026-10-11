@@ -2,8 +2,10 @@ import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { readTrace, seekStep } from './trace-navigation'
 
 test('相邻检测：删除中间线段后发现交点并可重现', async ({ page }) => {
+  const trace = await readTrace(page, 'neighbor-removal')
   await page.goto('/cases/crossing')
   await selectPreset(page, '退出后成为邻居')
   await expect(page.getByText(/学习目标：观察中间线段退出/)).toBeHidden()
@@ -15,20 +17,20 @@ test('相邻检测：删除中间线段后发现交点并可重现', async ({ pa
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByTestId('active-order')
   const explanation = page.getByRole('region', { name: '操作解释' })
-  const next = page.getByRole('button', { name: '下一步', exact: true })
   // y=x and y=10-x meet at (5,5). S1 ends at x=3, before
   // either could meet its horizontal y=5 segment on [1,3].
   for (let run = 0; run < 2; run++) {
     let separated = false
     let checked = false
     let discovered = false
-    while (await next.isEnabled()) {
-      await next.click()
+    for (const [index, step] of trace.steps.entries()) {
+      if (!index || step.action === 'micro') continue
+      await seekStep(page, index)
       for (const label of await active.getByRole('listitem').allTextContents()) {
         await expect(page.locator('.teaching-labels text').filter({ hasText: new RegExp(`^${label}$`) })).toBeVisible()
       }
       const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
-      await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue()) <= 2 ? 0 : 1)
+      await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(step.current ? 1 : 0)
       const event = (await current.locator('.coordinates:not([aria-hidden="true"])').allTextContents()).join('')
       if (event === 'S2 起点 (2, 8)' && (await current.innerText()).includes('处理完成')) {
         await expect(active).toHaveText('S0S1S2')
@@ -69,6 +71,7 @@ test('相邻检测：删除中间线段后发现交点并可重现', async ({ pa
 
 for (const width of [1360, 390]) {
   test(`相邻检测：插入和交叉后发现新邻居 ${width}px`, async ({ page }) => {
+    const trace = await readTrace(page, 'neighbor-crossing')
     await page.setViewportSize({ width, height: 1000 })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
@@ -84,7 +87,6 @@ for (const width of [1360, 390]) {
     await page.getByRole('tab', { name: '参考资料', exact: true }).click()
     await expect(page.getByRole('link', { name: /Dave Mount/ })).toHaveAttribute('href', 'https://www.cs.umd.edu/class/fall2023/cmsc754/Lects/lect04-intersection.pdf')
     await page.getByRole('button', { name: '关闭帮助', exact: true }).click()
-    const next = page.getByRole('button', { name: '下一步', exact: true })
     const explanation = page.getByRole('region', { name: '操作解释' })
     const active = page.getByTestId('active-order')
     const current = page.getByRole('region', { name: '当前事件' })
@@ -95,10 +97,11 @@ for (const width of [1360, 390]) {
     let discovered = false
     // S0: y=x, S1: y=3, S2: y=6. Independent intersections
     // are (3,3) and (6,6); the horizontal lines do not intersect.
-    while (await next.isEnabled()) {
-      await next.click()
+    for (const [index, step] of trace.steps.entries()) {
+      if (!index || step.action === 'micro') continue
+      await seekStep(page, index)
       const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
-      await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue()) <= 2 ? 0 : 1)
+      await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(step.current ? 1 : 0)
       const event = (await current.locator('.coordinates:not([aria-hidden="true"])').allTextContents()).join('')
       if (text.startsWith('检查相邻线段 S0 × S1')) {
         await expect(explanation).toContainText('加入 S1 后')

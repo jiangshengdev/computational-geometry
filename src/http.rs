@@ -54,6 +54,8 @@ struct TraceDto {
     shear: RationalDto,
     steps: Vec<StepDto>,
     values: Vec<String>,
+    point_values: Vec<PointDto>,
+    result_values: Vec<IntersectionDto>,
 }
 
 #[derive(Serialize)]
@@ -63,9 +65,9 @@ struct StepDto {
     action: &'static str,
     subjects: Vec<usize>,
     current: Option<PointDto>,
-    pending: Vec<PointDto>,
+    pending: Vec<usize>,
     active: Vec<usize>,
-    results: Vec<IntersectionDto>,
+    results: Vec<usize>,
     checked: Vec<[usize; 2]>,
     starts: Vec<usize>,
     ends: Vec<usize>,
@@ -78,6 +80,16 @@ struct ExecutionDto {
     boundary: Option<usize>,
     entry: bool,
     context: ExecutionContextDto,
+    calls: Vec<ExecutionCallDto>,
+}
+
+#[derive(Serialize)]
+struct ExecutionCallDto {
+    line: usize,
+    function: &'static str,
+    occurrence: usize,
+    arguments: Vec<VariableDto>,
+    result: VariableDto,
 }
 
 #[derive(Serialize)]
@@ -99,7 +111,7 @@ impl ExecutionDto {
     fn from_execution(
         execution: crate::Execution,
         values: &mut Vec<String>,
-        indices: &mut std::collections::HashMap<String, usize>,
+        indices: &mut std::collections::HashMap<std::sync::Arc<str>, usize>,
     ) -> Self {
         let mut variable = |variable: crate::Variable| VariableDto {
             name: variable.name,
@@ -108,7 +120,7 @@ impl ExecutionDto {
             value: variable.value.map(|value| {
                 *indices.entry(value).or_insert_with_key(|value| {
                     let index = values.len();
-                    values.push(value.clone());
+                    values.push(value.to_string());
                     index
                 })
             }),
@@ -117,6 +129,17 @@ impl ExecutionDto {
             module: execution.module,
             boundary: execution.boundary,
             entry: execution.entry,
+            calls: execution
+                .calls
+                .into_iter()
+                .map(|call| ExecutionCallDto {
+                    line: call.line,
+                    function: call.function,
+                    occurrence: call.occurrence,
+                    arguments: call.arguments.into_iter().map(&mut variable).collect(),
+                    result: variable(call.result),
+                })
+                .collect(),
             context: ExecutionContextDto {
                 function: execution.context.function,
                 parameters: execution
@@ -135,6 +158,10 @@ impl From<SweepTrace> for TraceDto {
     fn from(trace: SweepTrace) -> Self {
         let mut values = Vec::new();
         let mut indices = std::collections::HashMap::new();
+        let mut point_values = Vec::new();
+        let mut point_indices = std::collections::BTreeMap::new();
+        let mut result_values = Vec::new();
+        let mut result_indices = std::collections::HashMap::new();
         Self {
             shear: trace.shear.into(),
             steps: trace
@@ -150,12 +177,30 @@ impl From<SweepTrace> for TraceDto {
                     action: step.action,
                     subjects: step.subjects,
                     current: step.current.map(PointDto::from),
-                    pending: step.pending.into_iter().map(PointDto::from).collect(),
+                    pending: step
+                        .pending
+                        .into_iter()
+                        .map(|point| {
+                            *point_indices.entry(point).or_insert_with_key(|point| {
+                                let index = point_values.len();
+                                point_values.push(PointDto::from(point.clone()));
+                                index
+                            })
+                        })
+                        .collect(),
                     active: step.active,
                     results: step
                         .results
                         .into_iter()
-                        .map(IntersectionDto::from)
+                        .map(|intersection| {
+                            *result_indices
+                                .entry(intersection.segments)
+                                .or_insert_with(|| {
+                                    let index = result_values.len();
+                                    result_values.push(IntersectionDto::from(intersection));
+                                    index
+                                })
+                        })
                         .collect(),
                     checked: step.checked,
                     starts: step.starts,
@@ -164,6 +209,8 @@ impl From<SweepTrace> for TraceDto {
                 })
                 .collect(),
             values,
+            point_values,
+            result_values,
         }
     }
 }

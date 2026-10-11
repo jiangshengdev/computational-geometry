@@ -1,10 +1,10 @@
 import { expect, test } from './learning-test'
-import type { SweepTrace } from '../src/geometry'
+import { readResponse } from './trace-navigation'
 
 test('活动集合中间状态和真实插入可以前进回退', async ({ page }) => {
   const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
   await page.goto('/cases/crossing/learn')
-  const { trace }: { trace: SweepTrace } = await (await response).json()
+  const { trace } = await readResponse(await response)
   const entry = trace.steps.findIndex(step => step.execution.module === 'activity' && step.execution.entry)
   expect(entry).toBeGreaterThan(0)
   await page.goto(`/cases/crossing/learn?step=${entry}`)

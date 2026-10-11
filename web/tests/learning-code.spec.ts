@@ -1,7 +1,7 @@
 import { expect, test } from './learning-test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import type { SweepTrace } from '../src/geometry'
+import { readResponse } from './trace-navigation'
 import { presets } from '../src/presets'
 
 test('取事件的真实小步同步代码、队列和上下文，并可完整回退', async ({ page }) => {
@@ -48,7 +48,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     // Read the real API through the request fixture: Firefox's network inspector
     // evicts large response bodies even when the page consumed them successfully.
     const response = await request.post('/api/intersections', { data: { segments: presets.find(preset => preset.id === 'spider-web')!.segments, trace: true } })
-    const { trace, intersections }: { trace: SweepTrace; intersections: unknown[] } = await response.json()
+    const { trace, intersections } = await readResponse(response)
     const normal = await request.post('/api/intersections', { data: { segments: presets.find(preset => preset.id === 'spider-web')!.segments } })
     expect((await normal.json()).intersections).toEqual(intersections)
     const entry = trace.steps.findIndex(step => step.action === 'take-entry')

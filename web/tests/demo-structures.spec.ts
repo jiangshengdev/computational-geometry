@@ -1,16 +1,19 @@
 import { expect, test, type Page } from '@playwright/test'
-import { approximate, point, samePoint, type Intersection, type Point, type Segment } from '../src/geometry'
+import { approximate, point, samePoint, type Point, type Segment } from '../src/geometry'
 import { selectPreset } from './cases'
+import { captureIntersections } from './trace-navigation'
 
 // Inspect the submitted wire data, not generator-owned vertices or assertions.
 async function submittedGraph(page: Page, id: string) {
   await page.goto('/')
+  const capture = await captureIntersections(page)
   const pending = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
   await selectPreset(page, id)
   const response = await pending
   expect(response.status()).toBe(200)
-  const { segments } = response.request().postDataJSON() as { segments: Segment[] }
-  const { intersections } = await response.json() as { intersections: Intersection[] }
+  const input = response.request().postDataJSON() as { segments: Segment[]; trace: boolean }
+  const { segments } = input
+  const { intersections } = await capture.result
   const vertices: Point[] = []
   const index = (p: Point) => {
     const found = vertices.findIndex(vertex => samePoint(vertex, p))

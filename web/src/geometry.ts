@@ -14,6 +14,7 @@ export interface ExecutionState {
   module: string
   boundary: number | null
   entry: boolean
+  calls: { line: number; function: string; occurrence: number; arguments: ExecutionVariable[]; result: ExecutionVariable }[]
   context: { function: string; parameters: ExecutionVariable[]; locals: ExecutionVariable[] }
 }
 export interface SweepStep {
@@ -31,6 +32,25 @@ export interface SweepStep {
   passes: number[]
 }
 export interface SweepTrace { shear: Rational; steps: SweepStep[]; values: string[] }
+export interface WireSweepTrace {
+  shear: Rational
+  steps: (Omit<SweepStep, 'pending' | 'results'> & { pending: number[]; results: number[] })[]
+  values: string[]
+  point_values: Point[]
+  result_values: Intersection[]
+}
+
+export function decodeTrace(trace: WireSweepTrace): SweepTrace {
+  return {
+    shear: trace.shear,
+    values: trace.values,
+    steps: trace.steps.map(step => ({
+      ...step,
+      pending: step.pending.map(index => trace.point_values[index]),
+      results: step.results.map(index => trace.result_values[index]),
+    })),
+  }
+}
 
 export function rational(value: string): Rational {
   const [numerator, denominator = '1'] = value.split('/')
