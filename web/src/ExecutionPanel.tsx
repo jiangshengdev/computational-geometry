@@ -3,6 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@heroui/react/card'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
 import { teachingModules } from './executionCode'
+import { ExecutionSymbol } from './ExecutionSymbol'
+import { callExpression, symbolKind, variableValue } from './executionSymbols'
 
 const highlightedModules = new Map<string, Promise<ThemedToken[][]>>()
 function loadCode(code: string) {
@@ -45,7 +47,7 @@ export function ExecutionPanel({ step, previous, shear, values }: {
     const changed = !!old && (old.value !== variable.value || old.availability !== variable.availability)
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
       <dt><code>{variable.name}</code> <span className="text-muted">{variable.type}</span>{changed && <span className="execution-change">本步变化</span>}</dt>
-      <dd>{variable.availability === 'available' && variable.value !== null ? values[variable.value] : variable.availability === 'unassigned' ? '未赋值' : '不可用（当前作用域未提供）'}</dd>
+      <dd>{variableValue(variable, values)}</dd>
     </div>
   }
   return <section aria-label="核心代码回放" className="learning-panel learning-code"><Card className="learning-panel-card">
@@ -58,7 +60,21 @@ export function ExecutionPanel({ step, previous, shear, values }: {
         <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态'}</p>
         <div ref={scroll} className="execution-code-scroll" tabIndex={0} role="region" aria-label={`${module.title}教学代码`}>
           {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code"><code>
-            {tokens.map((line, index) => <span className="code-line" key={index}>{line.map((token, tokenIndex) => <span key={tokenIndex} style={{ color: token.color, ...token.htmlStyle } as CSSProperties}>{token.content}</span>)}{'\n'}</span>)}
+            {tokens.map((line, index) => {
+              const text = line.map(token => token.content).join('')
+              let offset = 0
+              return <span className="code-line" key={index}>{line.map((token, tokenIndex) => {
+                const tokenStart = offset
+                offset += token.content.length
+                let partOffset = 0
+                return <span key={tokenIndex} style={{ color: token.color, ...token.htmlStyle } as CSSProperties}>{token.content.split(/([A-Za-z_][A-Za-z_0-9]*)/).map((part, partIndex) => {
+                  const start = tokenStart + partOffset
+                  partOffset += part.length
+                  const kind = text.slice(0, start).includes('//') ? null : symbolKind(part, text.slice(0, start), text.slice(start + part.length))
+                  return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} expression={callExpression(part, text.slice(start + part.length))} step={step} previous={previous} values={values}>{part}</ExecutionSymbol> : part
+                })}</span>
+              })}{'\n'}</span>
+            })}
           </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${step.execution.boundary} * 1.75rem)` }}>➜</span></pre> : <p role="status">加载教学代码…</p>}
         </div>
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}
