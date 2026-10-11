@@ -1,7 +1,7 @@
 import { expect, test } from './learning-test'
 import { formatPoint, samePoint, type Segment } from '../src/geometry'
 import { captureDemo, checkPairSelection, checkViewportControls, checkLearningCompletion } from './demo-interactions'
-import { captureIntersections } from './trace-navigation'
+import { captureResult } from './trace-navigation'
 
 const demos = [
   ['bridge-truss', '桥梁桁架'], ['meander-window', '回纹窗棂'], ['diagonal-weave', '斜向编织'],
@@ -31,14 +31,14 @@ for (const [id, name] of demos) for (const width of [1360, 390]) {
     await card.scrollIntoViewIfNeeded()
     await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/cases/${id}/learn`)
     await captureDemo(page, card, id, width, 'card')
-    const capture = await captureIntersections(page)
+    const capture = await captureResult(page)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()
     const response = await responsePromise
     expect(response.status()).toBe(200)
     const input = response.request().postDataJSON() as { segments: Segment[]; trace: boolean }
-    const { intersections, trace } = await capture.result
-    expect(input.trace).toBe(true)
+    const { intersections } = await capture.result
+    expect(input.trace).toBe(false)
     expect(input.segments.every(edge => !samePoint(edge.start, edge.end))).toBe(true)
     expect(new Set(input.segments.map(edge => [formatPoint(edge.start), formatPoint(edge.end)].sort().join('|'))).size).toBe(input.segments.length)
     expect(intersections.length).toBeGreaterThan(0)
@@ -57,7 +57,7 @@ for (const [id, name] of demos) for (const width of [1360, 390]) {
     }
     await checkViewportControls(page)
     const positions = new Set(intersections.map(item => item.geometry.type === 'point' && formatPoint(item.geometry.point))).size
-    await checkLearningCompletion(page, intersections, trace, positions)
+    await checkLearningCompletion(page, intersections, positions)
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(errors).toEqual([])

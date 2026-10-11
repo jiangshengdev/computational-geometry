@@ -2,7 +2,7 @@ import { expect, type Locator, type Page } from '@playwright/test'
 import { mkdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { formatPoint, pairName, type Intersection, type SweepTrace } from '../src/geometry'
+import { formatPoint, pairName, type Intersection } from '../src/geometry'
 import { captureIntersections } from './trace-navigation'
 
 export async function captureDemo(page: Page, target: Locator, id: string, width: number, view: 'card' | 'drawing') {
@@ -42,14 +42,16 @@ export async function checkViewportControls(page: Page) {
   await expect(geometry).toHaveAttribute('transform', initial!)
 }
 
-export async function checkLearningCompletion(page: Page, intersections: Intersection[], trace: SweepTrace, positions: number) {
+export async function checkLearningCompletion(page: Page, intersections: Intersection[], positions: number) {
   const capture = await captureIntersections(page)
   const learningResponse = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
   await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
   const learning = await learningResponse
   expect(learning.status()).toBe(200)
+  expect(learning.request().postDataJSON().trace).toBe(true)
   expect(await learning.finished()).toBeNull()
-  expect((await capture.result).intersections).toEqual(intersections)
+  const { intersections: learningIntersections, trace } = await capture.result
+  expect(learningIntersections).toEqual(intersections)
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveValue('0')
   await page.getByRole('button', { name: '下一步', exact: true }).click()

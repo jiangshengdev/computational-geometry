@@ -7,17 +7,31 @@ export async function readResponse(response: { json(): Promise<unknown> }): Prom
   return { intersections: data.intersections, trace: decodeTrace(data.trace) }
 }
 
+export async function readResult(response: { json(): Promise<unknown> }): Promise<{ intersections: Intersection[] }> {
+  const data = await response.json() as { intersections: Intersection[] }
+  expect(data).not.toHaveProperty('trace')
+  return data
+}
+
 // Retain the actual HTTP response before the browser's inspector cache evicts
 // large traces. Fulfill with that unmodified response, without a second run.
 export async function captureIntersections(page: Page) {
-  let resolve!: (value: { intersections: Intersection[]; trace: SweepTrace }) => void
+  return captureResponse(page, readResponse)
+}
+
+export async function captureResult(page: Page) {
+  return captureResponse(page, readResult)
+}
+
+async function captureResponse<T>(page: Page, read: (response: { json(): Promise<unknown> }) => Promise<T>) {
+  let resolve!: (value: T) => void
   let reject!: (error: unknown) => void
-  const result = new Promise<{ intersections: Intersection[]; trace: SweepTrace }>((done, fail) => { resolve = done; reject = fail })
+  const result = new Promise<T>((done, fail) => { resolve = done; reject = fail })
   await page.route('**/api/intersections', async route => {
     try {
       const response = await route.fetch()
       expect(response.status()).toBe(200)
-      const data = await readResponse(response)
+      const data = await read(response)
       await route.fulfill({ response })
       resolve(data)
     } catch (error) {

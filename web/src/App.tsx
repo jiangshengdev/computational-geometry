@@ -33,7 +33,6 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
   const [selected, setSelected] = useState<Intersection | null>(null)
   const [hover, setHover] = useHoverTarget()
-  const teachable = Boolean(preset.learning)
   const detailsRef = useRef<HTMLElement>(null)
   const [detailsScrollable, setDetailsScrollable] = useState(false)
   useEffect(() => {
@@ -54,12 +53,12 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
       try {
         const response = await fetch('/api/intersections', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ segments: preset.segments, trace: teachable }), signal: controller.signal,
+          body: JSON.stringify({ segments: preset.segments, trace: learning }), signal: controller.signal,
         })
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
         const data = await response.json() as { intersections: Intersection[]; trace?: WireSweepTrace }
         if (!Array.isArray(data.intersections)) throw new Error('结果结构无效')
-        if (teachable && !data.trace?.steps.length) throw new Error('教学轨迹无效')
+        if (learning && !data.trace?.steps.length) throw new Error('教学轨迹无效')
         if (current) setComputation({ status: 'ready', results: data.intersections, trace: data.trace && decodeTrace(data.trace) })
       } catch (error) {
         if (current) setComputation({ status: 'error', message: error instanceof Error ? error.message : '未知错误' })
@@ -67,7 +66,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
     }
     void compute()
     return () => { current = false; controller.abort() }
-  }, [preset, teachable])
+  }, [preset, learning])
   const results = computation.status === 'ready' ? computation.results : []
   const highlights = hover ? hoverHighlights(hover, results) : null
   if (learning) return <>
