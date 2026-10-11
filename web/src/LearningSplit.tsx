@@ -3,29 +3,32 @@ import { useLayoutPreference } from './useLayoutPreference'
 import './LearningSplit.css'
 
 const gutterWidth = 16
-const minimumPaneWidth = 280
 const validRatio = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value) && value > 0 && value < 1
 
-export function LearningSplit({ canvas, debuggerPanel }: { canvas: ReactNode; debuggerPanel: ReactNode }) {
+export function LearningSplit({ firstPanel, secondPanel, axis = 'x' }: { firstPanel: ReactNode; secondPanel: ReactNode; axis?: 'x' | 'y' }) {
+  const vertical = axis === 'y'
+  const minimumPaneSize = vertical ? 180 : 280
+  const defaultRatio = vertical ? 2 / 3 : 0.5
+  const mediaQuery = vertical ? '(min-width: 1100px) and (min-height: 720px)' : '(min-width: 1100px)'
   const container = useRef<HTMLDivElement>(null)
   const drag = useRef<{ pointerId: number; offset: number } | null>(null)
-  const [width, setWidth] = useState(0)
-  const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1100px)').matches)
+  const [size, setSize] = useState(0)
+  const [desktop, setDesktop] = useState(() => window.matchMedia(mediaQuery).matches)
   const [dragging, setDragging] = useState(false)
-  const [ratio, setRatio] = useLayoutPreference('bo-learning-layout-v1-ratio', 0.5, validRatio)
-  const available = Math.max(0, width - gutterWidth)
-  const minimum = Math.min(minimumPaneWidth, available / 2)
-  const clampWidth = (value: number) => Math.max(minimum, Math.min(available - minimum, value))
-  const leftWidth = Math.floor(clampWidth(available * ratio))
-  const actualRatio = available > 0 ? leftWidth / available : 0.5
+  const [ratio, setRatio] = useLayoutPreference(vertical ? 'bo-learning-layout-v1-height-ratio' : 'bo-learning-layout-v1-ratio', defaultRatio, validRatio)
+  const available = Math.max(0, size - gutterWidth)
+  const minimum = Math.min(minimumPaneSize, available / 2)
+  const clampSize = (value: number) => Math.max(minimum, Math.min(available - minimum, value))
+  const firstSize = Math.floor(clampSize(available * ratio))
+  const actualRatio = available > 0 ? firstSize / available : defaultRatio
 
   useLayoutEffect(() => {
     const element = container.current!
-    const measure = () => setWidth(element.getBoundingClientRect().width)
+    const measure = () => setSize(element.getBoundingClientRect()[vertical ? 'height' : 'width'])
     measure()
     const observer = new ResizeObserver(measure)
     observer.observe(element)
-    const media = window.matchMedia('(min-width: 1100px)')
+    const media = window.matchMedia(mediaQuery)
     const updateDesktop = () => {
       setDesktop(media.matches)
       if (!media.matches) {
@@ -35,18 +38,18 @@ export function LearningSplit({ canvas, debuggerPanel }: { canvas: ReactNode; de
     }
     media.addEventListener('change', updateDesktop)
     return () => { observer.disconnect(); media.removeEventListener('change', updateDesktop) }
-  }, [])
+  }, [vertical, mediaQuery])
 
   const endDrag = () => { drag.current = null; setDragging(false) }
-  const saveWidth = (value: number) => {
-    if (available > 0) setRatio(clampWidth(value) / available)
+  const saveSize = (value: number) => {
+    if (available > 0) setRatio(clampSize(value) / available)
   }
 
-  return <div ref={container} className="learning-center learning-split" data-dragging={dragging}
-    style={{ '--learning-ratio': ratio, '--learning-gutter': `${gutterWidth}px`, '--learning-min-pane': `${minimumPaneWidth}px` } as CSSProperties}>
-    {canvas}
-    <div className="learning-split-handle" role="separator" aria-label="画布与调试区宽度"
-      aria-orientation="vertical" aria-valuemin={available > 0 ? Math.round(minimum / available * 100) : 50}
+  return <div ref={container} className={`${vertical ? 'learning-visual-code' : 'learning-center'} learning-split`} data-axis={axis} data-dragging={dragging}
+    style={{ '--learning-ratio': ratio, '--learning-gutter': `${gutterWidth}px`, '--learning-min-pane': `${minimumPaneSize}px` } as CSSProperties}>
+    {firstPanel}
+    <div className="learning-split-handle" role="separator" aria-label={vertical ? '画布与代码区高度' : '画布与代码区和变量区宽度'}
+      aria-orientation={vertical ? 'horizontal' : 'vertical'} aria-valuemin={available > 0 ? Math.round(minimum / available * 100) : 50}
       aria-valuemax={available > 0 ? Math.round((available - minimum) / available * 100) : 50}
       aria-valuenow={Math.round(actualRatio * 100)} tabIndex={desktop ? 0 : -1}
       onPointerDown={event => {
@@ -54,12 +57,12 @@ export function LearningSplit({ canvas, debuggerPanel }: { canvas: ReactNode; de
         event.preventDefault()
         event.currentTarget.focus()
         event.currentTarget.setPointerCapture(event.pointerId)
-        drag.current = { pointerId: event.pointerId, offset: event.clientX - container.current!.getBoundingClientRect().left - leftWidth }
+        drag.current = { pointerId: event.pointerId, offset: (vertical ? event.clientY : event.clientX) - container.current!.getBoundingClientRect()[vertical ? 'top' : 'left'] - firstSize }
         setDragging(true)
       }}
       onPointerMove={event => {
         if (drag.current?.pointerId !== event.pointerId) return
-        saveWidth(event.clientX - container.current!.getBoundingClientRect().left - drag.current.offset)
+        saveSize((vertical ? event.clientY : event.clientX) - container.current!.getBoundingClientRect()[vertical ? 'top' : 'left'] - drag.current.offset)
       }}
       onPointerUp={event => {
         if (drag.current?.pointerId !== event.pointerId) return
@@ -67,16 +70,16 @@ export function LearningSplit({ canvas, debuggerPanel }: { canvas: ReactNode; de
         if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
       }}
       onPointerCancel={endDrag} onLostPointerCapture={endDrag}
-      onDoubleClick={() => setRatio(0.5)}
+      onDoubleClick={() => setRatio(defaultRatio)}
       onKeyDown={event => {
         // Keep the replay page shortcuts from handling a focused separator.
         event.stopPropagation()
-        if (event.key === 'Home') { event.preventDefault(); setRatio(0.5) }
-        else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        if (event.key === 'Home') { event.preventDefault(); setRatio(defaultRatio) }
+        else if (event.key === (vertical ? 'ArrowUp' : 'ArrowLeft') || event.key === (vertical ? 'ArrowDown' : 'ArrowRight')) {
           event.preventDefault()
-          saveWidth(leftWidth + (event.key === 'ArrowLeft' ? -1 : 1) * available * 0.02)
+          saveSize(firstSize + (event.key === (vertical ? 'ArrowUp' : 'ArrowLeft') ? -1 : 1) * available * 0.02)
         }
       }} />
-    {debuggerPanel}
+    {secondPanel}
   </div>
 }

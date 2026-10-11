@@ -16,8 +16,8 @@ function loadCode(code: string) {
   return highlighted
 }
 
-export function ExecutionPanel({ step, previous, shear, values }: {
-  step: SweepStep; previous: SweepStep; shear: Rational; values: string[]
+export function ExecutionPanel({ step, previous, values }: {
+  step: SweepStep; previous: SweepStep; values: string[]
 }) {
   const [highlight, setHighlight] = useState<{ source: string; tokens: ThemedToken[][] } | null>(null)
   const [error, setError] = useState(false)
@@ -41,21 +41,16 @@ export function ExecutionPanel({ step, previous, shear, values }: {
     }
   }, [tokens, step.execution.boundary])
   const context = step.execution.context
-  const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
-    const { changed } = variableChange(variable, kind, step, previous)
-    return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
-      <dt><code>{variable.name}</code> <span className="text-muted">{variable.type}</span>{changed && <span className="execution-change">本步变化</span>}</dt>
-      <dd>{variableValue(variable, values)}</dd>
-    </div>
-  }
   return <section aria-label="核心代码回放" className="learning-panel learning-code"><Card className="learning-panel-card">
     <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">
       <CardTitle render={props => <h2 {...props} />}>核心代码回放</CardTitle>
     </CardHeader>
     <CardContent className="learning-panel-content execution-content">
       {module ? <div className="execution-source">
+        <div className="execution-summary">
         <p className="text-sm">教学代码 · Rust 风格精简片段 · <code>{context.function}</code> / {module.title}</p>
         <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : '已绑定 point 与 event；取事件模块完成' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}</p>
+        </div>
         <div ref={scroll} className="execution-code-scroll" tabIndex={0} role="region" aria-label={`${module.title}教学代码`}>
           {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code"><code>
             {tokens.map((line, index) => {
@@ -79,7 +74,25 @@ export function ExecutionPanel({ step, previous, shear, values }: {
           </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${step.execution.boundary} * 1.75rem)` }}>➜</span></pre> : <p role="status">加载教学代码…</p>}
         </div>
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}
-      <section aria-label="当前执行上下文" className="execution-context">
+    </CardContent>
+  </Card></section>
+}
+
+export function ExecutionVariablesPanel({ step, previous, shear, values }: {
+  step: SweepStep; previous: SweepStep; shear: Rational; values: string[]
+}) {
+  const context = step.execution.context
+  const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
+    const { changed } = variableChange(variable, kind, step, previous)
+    return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
+      <dt><code>{variable.name}</code> <span className="text-muted">{variable.type}</span>{changed && <span className="execution-change">本步变化</span>}</dt>
+      <dd>{variableValue(variable, values)}</dd>
+    </div>
+  }
+  return <section aria-label="核心变量" className="learning-panel learning-variables"><Card className="learning-panel-card">
+    <CardHeader><CardTitle render={props => <h2 {...props} />}>核心变量</CardTitle></CardHeader>
+    <CardContent className="learning-panel-content execution-context">
+      <section aria-label="当前执行上下文">
         <h3>当前函数：<code>{context.function}</code></h3>
         <p className="text-sm text-muted">当前小步的核心上下文。queue、next、point、current 与扫描线段使用扫描坐标 x′ = x + {formatRational(shear)} · y；result 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。{context.function === 'sweep' && '参数 segments 已被同名局部变量遮蔽。'}</p>
         <h4>核心参数</h4><dl>{context.parameters.map(variable => renderVariable(variable, 'parameters'))}</dl>

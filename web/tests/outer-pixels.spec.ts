@@ -10,7 +10,7 @@ async function expectIntegerLayout(page: Page) {
     await document.fonts.ready
     await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
   })
-  const fractional = await page.locator('main, main > *, .case-list > article, .workspace, .workspace > :not(.learning-state-panels), .learning-view, .learning-workspace, .learning-workspace > *, .learning-panel')
+  const fractional = await page.locator('main, main > *, .case-list > article, .workspace, .workspace > :not(.learning-state-panels), .learning-view, .learning-workspace, .learning-workspace > *, .learning-visual-code, .learning-panel')
     .evaluateAll(elements => elements.flatMap(element => {
       const rect = element.getBoundingClientRect()
       const values = { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height }
@@ -52,13 +52,16 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
           const learning = await columns(true)
           const code = (await page.getByRole('region', { name: '核心代码回放', exact: true }).boundingBox())!
+          const variables = (await page.getByRole('region', { name: '核心变量', exact: true }).boundingBox())!
           expect(learning[0].width).toBe(learning[2].width)
           expect(Math.abs(learning[1].width - code.width)).toBeLessThanOrEqual(1)
-          expect(code.x).toBeGreaterThan(learning[1].x + learning[1].width)
+          expect(code.x).toBe(learning[1].x)
+          expect(Math.abs(learning[1].width - variables.width)).toBeLessThanOrEqual(1)
+          expect(variables.x).toBeGreaterThan(learning[1].x + learning[1].width)
           const available = results.reduce((sum, box) => sum + box.width, 0)
           const side = Math.floor(available * 0.2)
           expect(results.map(box => box.width)).toEqual([side, available - 2 * side, side])
-          for (const box of [...results, ...learning, code]) {
+          for (const box of [...results, ...learning, code, variables]) {
             expect(Number.isInteger(box.x)).toBe(true)
             expect(Number.isInteger(box.width)).toBe(true)
           }

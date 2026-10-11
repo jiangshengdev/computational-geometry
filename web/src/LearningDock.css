@@ -2,6 +2,7 @@
 .learning-dock-controls { display: flex; flex-wrap: wrap; gap: 4px; }
 .learning-dock-panels { display: grid; gap: 12px; min-width: 0; min-height: 0; }
 .learning-dock[data-expanded="true"] { display: flex; flex-direction: column; gap: 12px; }
+.learning-dock-right[data-expanded="true"] > .learning-dock-controls { align-self: flex-end; }
 .learning-dock[data-expanded="true"] .learning-dock-panels { flex: 1; grid-auto-rows: minmax(0, 1fr); }
 .learning-dock-panel { min-width: 0; min-height: 0; }
 .learning-dock-panel > .learning-panel { height: 100%; }

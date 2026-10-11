@@ -16,7 +16,7 @@ import { usePanelScrollRef, useStepPanelScroll } from './useStepPanelScroll'
 import { useEventTransfer } from './useEventTransfer'
 import { eventSide } from './eventSide'
 import { usePageShortcut } from './usePageShortcut'
-import { ExecutionPanel } from './ExecutionPanel'
+import { ExecutionPanel, ExecutionVariablesPanel } from './ExecutionPanel'
 import { LearningDock } from './LearningDock'
 import { LearningSplit } from './LearningSplit'
 
@@ -253,11 +253,12 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
         { id: 'participants', name: '同点参与线段', icon: Waypoints, content: participants },
         { id: 'active', name: '活动线段顺序', icon: ListOrdered, content: activeSegments },
       ]} />
-      <LearningSplit canvas={
+      <LearningSplit firstPanel={<LearningSplit axis="y" firstPanel={
         <GeometryView key={run} segments={preset.segments} results={step.results} selected={null} hoverTarget={hover}
           highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights ?? (recordedOverlap ? hoverHighlights({ kind: 'pair', pair: pairName(recordedOverlap) }, step.results) : null)} onHover={setHover}
           sweep={{ step: index, current: step.current, side: eventSide(geometryStep, trace.steps[geometryIndex + 1]), participants: [...step.starts, ...step.ends, ...step.passes], active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
-      } debuggerPanel={<ExecutionPanel step={step} previous={before} shear={trace.shear} values={trace.values} />} />
+      } secondPanel={<ExecutionPanel step={step} previous={before} values={trace.values} />} />}
+        secondPanel={<ExecutionVariablesPanel step={step} previous={before} shear={trace.shear} values={trace.values} />} />
       <LearningDock side="right" panels={[
         { id: 'current', name: '当前事件', icon: Crosshair, content: currentEvent },
         { id: 'pending', name: '待处理事件队列', icon: ListTree, content: pendingEvents },

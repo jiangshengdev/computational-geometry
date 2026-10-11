@@ -19,12 +19,14 @@ for (const id of ['crossing', 'endpoint', 'multiway-interior', 'partial-overlap'
       modules.add(step.execution.module)
       await page.goto(`/cases/${id}/learn?step=${index}`)
       const panel = page.getByRole('region', { name: '核心代码回放' })
+      const variables = page.getByRole('region', { name: '核心变量', exact: true })
       await expect(panel).toContainText('第一条核心语句之前')
       await expect(panel.getByRole('img', { name: /执行边界/ })).toBeVisible()
-      const before = await panel.locator('dd').allTextContents()
+      const before = await variables.locator('dd').allTextContents()
+      expect(before.length).toBeGreaterThan(0)
       await page.getByRole('button', { name: '下一步', exact: true }).click()
       await page.getByRole('button', { name: '上一步', exact: true }).click()
-      expect(await panel.locator('dd').allTextContents()).toEqual(before)
+      expect(await variables.locator('dd').allTextContents()).toEqual(before)
     }
     await page.getByRole('slider', { name: '教学步骤' }).press('End')
     await expect(page.getByRole('button', { name: '下一步', exact: true })).toBeDisabled()
@@ -35,8 +37,8 @@ for (const id of ['crossing', 'endpoint', 'multiway-interior', 'partial-overlap'
 }
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
-  test.extend({ browserName })(`长代码边界与动态浮层滚动不改变排版 ${browserName}`, async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 900 })
+  for (const width of [1440, 390]) test.extend({ browserName })(`长代码边界与动态浮层滚动不改变排版 ${browserName} ${width}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
@@ -49,6 +51,19 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const boundary = panel.getByRole('img', { name: /执行边界/ })
     await code.scrollIntoViewIfNeeded()
     await expect(boundary).toBeInViewport()
+    const variables = page.getByRole('region', { name: '核心变量', exact: true })
+    const context = variables.locator('.execution-context')
+    const geometry = page.getByRole('region', { name: '几何视图', exact: true })
+    const regions = [geometry, panel, variables]
+    const boxes = await Promise.all(regions.map(region => region.boundingBox()))
+    const codeScroll = await code.evaluate(element => element.scrollTop)
+    const variableScroll = await context.evaluate(element => {
+      element.scrollTop = element.scrollHeight
+      return element.scrollTop
+    })
+    if (width === 1440) expect(variableScroll).toBeGreaterThan(0)
+    expect(await code.evaluate(element => element.scrollTop)).toBe(codeScroll)
+    expect(await Promise.all(regions.map(region => region.boundingBox()))).toEqual(boxes)
     const layout = () => panel.locator('.code-line').evaluateAll(lines => lines.map(line => ({ top: (line as HTMLElement).offsetTop, height: line.getBoundingClientRect().height })))
     const before = await layout()
     const symbol = panel.locator('.code-line').nth(7).locator('[data-symbol="id"]')
@@ -58,6 +73,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const offset = () => boundary.evaluate(element => element.getBoundingClientRect().top - element.parentElement!.querySelectorAll('.code-line')[8].getBoundingClientRect().top)
     const alignment = await offset()
     await code.evaluate(element => { element.scrollTop = 0; element.scrollLeft = element.scrollWidth })
+    expect(await context.evaluate(element => element.scrollTop)).toBe(variableScroll)
     expect(await offset()).toBe(alignment)
     expect(await layout()).toEqual(before)
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
@@ -65,6 +81,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     expect(errors).toEqual([])
     await code.evaluate(element => { element.scrollLeft = 0 })
     await symbol.hover()
-    await page.screenshot({ path: join(tmpdir(), `bo-execution-${browserName}-390.png`) })
+    await page.screenshot({ path: join(tmpdir(), `bo-execution-${browserName}-${width}.png`) })
   })
 }

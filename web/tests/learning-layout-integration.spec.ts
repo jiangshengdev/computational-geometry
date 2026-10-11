@@ -21,7 +21,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(page).toHaveTitle('蜘蛛网 · 逐步学习 · BO 结果查看器')
     const canvas = page.getByRole('region', { name: '几何视图', exact: true })
     const debug = page.getByRole('region', { name: '核心代码回放', exact: true })
-    const original = [await box(canvas), await box(debug)]
+    const variables = page.getByRole('region', { name: '核心变量', exact: true })
+    const original = [await box(canvas), await box(debug), await box(variables)]
     await page.getByRole('button', { name: '待处理事件队列', exact: true }).click()
     const queue = page.getByRole('region', { name: '待处理事件队列', exact: true })
     await expect(queue.getByRole('listitem')).toHaveCount(trace.steps[1].pending.length)
@@ -45,7 +46,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.keyboard.press('Escape')
     await expect(queue).toBeHidden()
     await expect(page.getByRole('button', { name: '待处理事件队列', exact: true })).toBeFocused()
-    expect([await box(canvas), await box(debug)].map(({ width, height }) => ({ width, height })))
+    expect([await box(canvas), await box(debug), await box(variables)].map(({ width, height }) => ({ width, height })))
       .toEqual(original.map(({ width, height }) => ({ width, height })))
     const next = page.getByRole('button', { name: '下一步', exact: true })
     if (width === 1440) {
@@ -56,7 +57,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       await expect(page).toHaveURL(/step=1$/)
     }
     await next.click()
-    await expect(debug.getByTestId('variable-next')).not.toContainText('未赋值')
+    await expect(variables.getByTestId('variable-next')).not.toContainText('未赋值')
     await page.getByRole('button', { name: '操作解释', exact: true }).click()
     await expect(page.getByRole('region', { name: '操作解释', exact: true })).toContainText('queue.pop_first()')
     await page.getByRole('button', { name: '相邻性说明', exact: true }).click()
@@ -85,8 +86,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/cases/crossing/learn?step=1')
     const canvas = page.getByRole('region', { name: '几何视图', exact: true })
-    const debug = page.getByRole('region', { name: '核心代码回放', exact: true })
-    const splitter = page.getByRole('separator', { name: '画布与调试区宽度' })
+    const debug = page.getByRole('region', { name: '核心变量', exact: true })
+    const splitter = page.getByRole('separator', { name: '画布与代码区和变量区宽度' })
     await splitter.focus()
     await splitter.press('ArrowRight')
     await splitter.press('ArrowRight')
