@@ -11,8 +11,6 @@
 .learning-dock-floating { height: 100%; gap: 8px; padding: 12px; overflow: auto; overscroll-behavior: contain; }
 .learning-dock-floating > .learning-panel { flex: 1; min-height: 0; }
 @media (min-width: 1100px) {
-  .learning-dock { width: 44px; }
-  .learning-dock[data-expanded="true"] { width: 220px; }
   .learning-dock-controls { flex-direction: column; align-items: stretch; }
   .learning-dock-overlay-left { left: 64px; }
   .learning-dock-overlay-right { right: 64px; }

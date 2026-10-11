@@ -37,7 +37,12 @@
 [data-event-transfer-hidden="true"] { opacity: 0 !important; }
 
 @media (min-width: 1100px) {
-  .learning-workspace { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .learning-workspace {
+    --learning-sidebar-width: round(down, calc((100% - 32px) * .2), 1px);
+    grid-template-columns: var(--learning-left-width, 44px) minmax(0, 1fr) var(--learning-right-width, 44px);
+  }
+  .learning-workspace:has(> .learning-dock-left[data-expanded="true"]) { --learning-left-width: var(--learning-sidebar-width); }
+  .learning-workspace:has(> .learning-dock-right[data-expanded="true"]) { --learning-right-width: var(--learning-sidebar-width); }
   .learning-center { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 
