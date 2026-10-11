@@ -1,6 +1,5 @@
 import { useEffect, useState, type CSSProperties } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@heroui/react/card'
-import { Button } from '@heroui/react/button'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
 
@@ -14,9 +13,8 @@ function loadTakeCode() {
   return highlightedTake
 }
 
-export function ExecutionPanel({ step, previous, shear, values, onPreviousEntry, onNextEntry }: {
+export function ExecutionPanel({ step, previous, shear, values }: {
   step: SweepStep; previous: SweepStep; shear: Rational; values: string[]
-  onPreviousEntry?: () => void; onNextEntry?: () => void
 }) {
   const [tokens, setTokens] = useState<ThemedToken[][] | null>(null)
   const [error, setError] = useState(false)
@@ -39,10 +37,6 @@ export function ExecutionPanel({ step, previous, shear, values, onPreviousEntry,
   return <section aria-label="核心代码回放" className="learning-panel learning-code"><Card className="learning-panel-card">
     <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">
       <CardTitle render={props => <h2 {...props} />}>核心代码回放</CardTitle>
-      <div className="flex gap-2">
-        <Button size="sm" variant="secondary" isDisabled={!onPreviousEntry} onPress={onPreviousEntry}>上一个大步</Button>
-        <Button size="sm" variant="secondary" isDisabled={!onNextEntry} onPress={onNextEntry}>下一个大步</Button>
-      </div>
     </CardHeader>
     <CardContent className="learning-panel-content execution-content">
       {take ? <div className="execution-source">

@@ -66,7 +66,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       return element.scrollLeft
     })
     if (width === 390) expect(scroll).toBeGreaterThan(0)
-    else expect(scroll).toBe(0) // The two real statements fit at desktop width.
+    expect(await code.evaluate(element => Math.abs(element.scrollWidth - element.clientWidth - element.scrollLeft))).toBeLessThanOrEqual(1)
     expect(await offset()).toBe(before)
     const queue = panel.getByTestId('variable-queue').locator('dd')
     await queue.scrollIntoViewIfNeeded()
