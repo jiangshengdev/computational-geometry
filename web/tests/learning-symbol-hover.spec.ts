@@ -87,10 +87,10 @@ test('核心变量说明默认收起，信息按钮支持悬浮和键盘访问',
 
 test('遮蔽状态对入参与局部变量使用一致文案，其他不可用状态保持独立', () => {
   for (const name of ['segments', 'local']) {
-    expect(variableValue({ name, type: 'usize', availability: 'shadowed', value: 0 }, ['7']))
+    expect(variableValue({ name, type: 'usize', availability: 'shadowed', value: 0, scope: null }, ['7']))
       .toBe('7（已遮蔽，遮蔽前的最后值）')
   }
-  expect(variableValue({ name: 'point', type: 'Point', availability: 'unavailable', value: null }, []))
+  expect(variableValue({ name: 'point', type: 'Point', availability: 'unavailable', value: null, scope: null }, []))
     .toBe('不可用（当前作用域未提供）')
 })
 

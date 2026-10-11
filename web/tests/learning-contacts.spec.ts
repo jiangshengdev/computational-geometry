@@ -18,7 +18,7 @@ test('接触教学：共端点先记录闭集交点再完成退出与加入，�
     let before = false, after = false
     for (const [index, step] of trace.steps.entries()) {
       if (!index || step.action === 'micro') continue
-      await seekStep(page, index)
+      await seekStep(page, index, 'jump')
       if (['take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
       if (!(await current.innerText()).includes('(2, 0)')) continue
       await expect(group).toContainText('开始：S1')
@@ -70,7 +70,7 @@ for (const width of [1360, 390]) test(`并列教学：同横坐标不同位置�
     const completed: string[] = []
     for (const [index, step] of trace.steps.entries()) {
       if (!index || step.action === 'micro') continue
-      await seekStep(page, index)
+      await seekStep(page, index, 'jump')
       if (['take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
       const event = await current.innerText()
       if (event.includes('(0, -1)')) {
@@ -132,7 +132,7 @@ for (const [name, starts, ends, initial, final] of [
     let checkedQueuedEndpoint = false
     for (const [index, step] of trace.steps.entries()) {
       if (!index || step.action === 'micro') continue
-      await seekStep(page, index)
+      await seekStep(page, index, 'jump')
       if (['take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
       if (name === '终点落在内部' && (await explanation.innerText()).includes('检查相邻线段')) {
         await expect(page.getByRole('region', { name: '待处理事件队列' })).toContainText('(2, 0)')

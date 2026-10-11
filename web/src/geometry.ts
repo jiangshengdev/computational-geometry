@@ -9,11 +9,19 @@ export interface ExecutionVariable {
   type: string
   availability: 'available' | 'unassigned' | 'unavailable' | 'shadowed'
   value: number | null
+  scope: string | null
+}
+export interface ExecutionControl {
+  line: number
+  keyword: string
+  occurrence: number
+  state: 'pending' | 'true' | 'false' | 'entered' | 'exhausted' | 'skipped' | 'jumping' | 'returned' | 'completed'
 }
 export interface ExecutionState {
   module: string
   boundary: number | null
   entry: boolean
+  controls: ExecutionControl[]
   calls: { line: number; function: string; occurrence: number; arguments: ExecutionVariable[]; result: ExecutionVariable }[]
   context: { function: string; parameters: ExecutionVariable[]; locals: ExecutionVariable[] }
 }

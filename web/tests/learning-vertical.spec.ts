@@ -17,7 +17,7 @@ test('竖直教学：多高度交叉、顶端接触及重启保持原坐标顺�
     const completed: string[] = []
     for (const [index, step] of trace.steps.entries()) {
       if (!index || step.action === 'micro') continue
-      await seekStep(page, index)
+      await seekStep(page, index, 'jump')
       if (['take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
       const event = await current.innerText()
       for (const [point, passes, starts, ends, order] of [

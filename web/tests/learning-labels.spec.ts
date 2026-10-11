@@ -116,7 +116,9 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const center = trace.steps.findIndex(step => step.action === 'take' && step.current?.x.numerator === '0' && step.current.y.numerator === '0')
     expect(center).toBeGreaterThan(0)
     await page.getByRole('button', { name: '下一个大步', exact: true }).click()
-    await expect(page.locator('.code-line')).toHaveCount(2)
+    await expect(page.locator('.code-line')).toHaveText([
+      'let next = queue.pop_first();\n', 'let Some((point, event)) = next else {\n', '    break;\n', '};\n',
+    ])
     await page.goto(`/cases/spider-web/learn?step=${center}`)
     await expect(svg.locator('.current-label')).toHaveCount(0)
     await expect(svg.locator('.current-point')).toBeVisible()

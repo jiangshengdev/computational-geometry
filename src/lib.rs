@@ -154,8 +154,8 @@ struct Event {
     starts: Vec<usize>,
 }
 
-type NeighborObserver<'a> =
-    dyn FnMut(usize, &BTreeMap<Point, Event>, &[[usize; 2]], Vec<Variable>) + 'a;
+type NeighborObserver<'a> = dyn FnMut(usize, &BTreeMap<Point, Event>, &[[usize; 2]], Vec<Variable>, Vec<ExecutionControl>)
+    + 'a;
 
 fn schedule_neighbors(
     active: &[usize],
@@ -167,6 +167,14 @@ fn schedule_neighbors(
     mut observer: Option<&mut NeighborObserver<'_>>,
     cancelled: &dyn Fn() -> bool,
 ) -> Option<Point> {
+    let mut controls = Vec::new();
+    macro_rules! geometry_control {
+        ($line:expr, $keyword:expr, $state:expr) => {
+            if observer.is_some() {
+                ExecutionControl::set(&mut controls, $line, $keyword, $state);
+            }
+        };
+    }
     macro_rules! observe_geometry {
         ($boundary:expr, $neighbors:expr, $pair:expr, $point:expr, $returned:expr) => {
             if cancelled() {
@@ -199,7 +207,7 @@ fn schedule_neighbors(
                         Variable::absent(
                             "point",
                             "Point",
-                            if $boundary == 8 {
+                            if matches!($boundary, 8 | 9 | 10 | 11 | 12) {
                                 "unavailable"
                             } else {
                                 "unassigned"
@@ -218,46 +226,67 @@ fn schedule_neighbors(
                         )
                     },
                 ));
-                observer($boundary, queue, checked, locals);
+                observer($boundary, queue, checked, locals, controls.clone());
             }
         };
     }
     observe_geometry!(0, None, None, None, None);
     let Some(neighbors) = active.get(lower..lower + 2) else {
+        geometry_control!(1, "else", "entered");
+        geometry_control!(1, "return", "pending");
+        observe_geometry!(9, None, None, None, None);
         let return_value = None;
-        observe_geometry!(8, None, None, None, Some(&return_value));
+        geometry_control!(1, "return", "returned");
+        observe_geometry!(11, None, None, None, Some(&return_value));
         return return_value;
     };
+    geometry_control!(1, "else", "skipped");
+    geometry_control!(1, "return", "skipped");
     observe_geometry!(1, Some(neighbors), None, None, None);
     checked.push([neighbors[0], neighbors[1]]);
     observe_geometry!(2, Some(neighbors), None, None, None);
     let (a, b) = (&segments[neighbors[0]], &segments[neighbors[1]]);
     observe_geometry!(3, Some(neighbors), Some((a, b)), None, None);
     if a.slope == b.slope {
+        geometry_control!(4, "else", "entered");
+        geometry_control!(4, "return", "pending");
+        observe_geometry!(10, Some(neighbors), Some((a, b)), None, None);
         let return_value = None;
-        observe_geometry!(8, Some(neighbors), Some((a, b)), None, Some(&return_value));
+        geometry_control!(4, "return", "returned");
+        observe_geometry!(12, Some(neighbors), Some((a, b)), None, Some(&return_value));
         return return_value;
     }
     let cross_x = (&b.intercept - &a.intercept)
         / (a.slope.as_ref().expect("active segment has a slope")
             - b.slope.as_ref().expect("active segment has a slope"));
     if cross_x < a.left.x || cross_x > a.right.x || cross_x < b.left.x || cross_x > b.right.x {
+        geometry_control!(4, "else", "entered");
+        geometry_control!(4, "return", "pending");
+        observe_geometry!(10, Some(neighbors), Some((a, b)), None, None);
         let return_value = None;
-        observe_geometry!(8, Some(neighbors), Some((a, b)), None, Some(&return_value));
+        geometry_control!(4, "return", "returned");
+        observe_geometry!(12, Some(neighbors), Some((a, b)), None, Some(&return_value));
         return return_value;
     }
     let point = Point {
         y: a.y_at(&cross_x),
         x: cross_x,
     };
+    geometry_control!(4, "else", "skipped");
+    geometry_control!(4, "return", "skipped");
     observe_geometry!(4, Some(neighbors), Some((a, b)), Some(&point), None);
     if point > *current {
+        geometry_control!(5, "if", "true");
         observe_geometry!(5, Some(neighbors), Some((a, b)), Some(&point), None);
         queue.entry(point.clone()).or_default();
         observe_geometry!(6, Some(neighbors), Some((a, b)), Some(&point), None);
+    } else {
+        geometry_control!(5, "if", "false");
     }
+    geometry_control!(8, "return", "pending");
     observe_geometry!(7, Some(neighbors), Some((a, b)), Some(&point), None);
     let return_value = Some(point);
+    geometry_control!(8, "return", "returned");
     observe_geometry!(8, Some(neighbors), Some((a, b)), None, Some(&return_value));
     return_value
 }
@@ -298,6 +327,39 @@ pub(crate) struct Execution {
     pub(crate) entry: bool,
     pub(crate) context: ExecutionContext,
     pub(crate) calls: Vec<ExecutionCall>,
+    pub(crate) controls: Vec<ExecutionControl>,
+}
+
+#[derive(Clone)]
+pub(crate) struct ExecutionControl {
+    pub(crate) line: usize,
+    pub(crate) keyword: &'static str,
+    pub(crate) occurrence: usize,
+    pub(crate) state: &'static str,
+}
+
+impl Execution {
+    fn control(&mut self, line: usize, keyword: &'static str, state: &'static str) {
+        ExecutionControl::set(&mut self.controls, line, keyword, state);
+    }
+}
+
+impl ExecutionControl {
+    fn set(controls: &mut Vec<Self>, line: usize, keyword: &'static str, state: &'static str) {
+        if let Some(control) = controls
+            .iter_mut()
+            .find(|control| control.line == line && control.keyword == keyword)
+        {
+            control.state = state;
+        } else {
+            controls.push(ExecutionControl {
+                line,
+                keyword,
+                occurrence: 0,
+                state,
+            });
+        }
+    }
 }
 
 #[derive(Clone)]
@@ -336,6 +398,7 @@ pub(crate) struct ExecutionContext {
 
 #[derive(Clone)]
 pub(crate) struct Variable {
+    pub(crate) scope: Option<&'static str>,
     pub(crate) name: &'static str,
     pub(crate) r#type: &'static str,
     pub(crate) availability: &'static str,
@@ -346,6 +409,7 @@ impl Variable {
     fn available(name: &'static str, r#type: &'static str, value: impl Into<Arc<str>>) -> Self {
         Self {
             name,
+            scope: None,
             r#type,
             availability: "available",
             value: Some(value.into()),
@@ -355,6 +419,7 @@ impl Variable {
     fn absent(name: &'static str, r#type: &'static str, availability: &'static str) -> Self {
         Self {
             name,
+            scope: None,
             r#type,
             availability,
             value: None,
@@ -444,6 +509,7 @@ impl SweepStep {
         Self {
             execution: Execution {
                 calls: Vec::new(),
+                controls: Vec::new(),
                 module: action,
                 boundary: None,
                 entry: false,
@@ -451,6 +517,7 @@ impl SweepStep {
                     function: "sweep",
                     // The input binding has been shadowed by Vec<SweepSegment>.
                     parameters: vec![Variable {
+                        scope: None,
                         name: "segments",
                         r#type: "&[Segment]",
                         availability: "shadowed",
@@ -852,12 +919,26 @@ fn sweep(
                 );
                 step.preserve_geometry(steps.last().expect("pop snapshot exists"));
                 step.take_context(
-                    2,
+                    3,
                     Some(&next),
                     None,
                     trace_segments.as_ref().expect("tracing captures segments"),
                     &shear,
                 );
+                step.execution.control(2, "else", "entered");
+                step.execution.control(2, "break", "pending");
+                step.execution.calls.clone_from(
+                    &steps
+                        .last()
+                        .expect("pop observation exists")
+                        .execution
+                        .calls,
+                );
+                step.action = "micro";
+                steps.push(step.clone());
+                step.execution.boundary = Some(4);
+                step.execution.control(2, "break", "completed");
+                step.action = "take-empty";
                 steps.push(step);
             }
             break;
@@ -880,6 +961,15 @@ fn sweep(
                 Some((&point, &event)),
                 trace_segments.as_ref().expect("tracing captures segments"),
                 &shear,
+            );
+            step.execution.control(2, "else", "skipped");
+            step.execution.control(2, "break", "skipped");
+            step.execution.calls.clone_from(
+                &steps
+                    .last()
+                    .expect("pop observation exists")
+                    .execution
+                    .calls,
             );
             steps.push(step);
         }
@@ -908,6 +998,14 @@ fn sweep(
                     step.execution.module = $module;
                     step.execution.boundary = Some($boundary);
                     step.execution.entry = $boundary == 0;
+                    if let Some(previous) = steps.last()
+                        && previous.execution.module == $module
+                        && $boundary != 0
+                    {
+                        step.execution
+                            .controls
+                            .clone_from(&previous.execution.controls);
+                    }
                     step.execution.context.locals.push(Variable::available(
                         "point",
                         "Point",
@@ -938,6 +1036,29 @@ fn sweep(
                             arguments: $arguments,
                             result: $result,
                         });
+                }
+            };
+        }
+        macro_rules! control {
+            ($line:expr, $keyword:expr, $state:expr) => {
+                if let Some(steps) = &mut steps {
+                    steps
+                        .last_mut()
+                        .expect("control observation exists")
+                        .execution
+                        .control($line, $keyword, $state);
+                }
+            };
+        }
+        macro_rules! reset_controls {
+            ($line:expr) => {
+                if let Some(steps) = &mut steps {
+                    steps
+                        .last_mut()
+                        .expect("loop observation exists")
+                        .execution
+                        .controls
+                        .retain(|control| control.line < $line);
                 }
             };
         }
@@ -1006,6 +1127,13 @@ fn sweep(
                             |value| Variable::available(name, "Vec<usize>", format!("{value:?}")),
                         ));
                     }
+                    if let Some(id) = locals.iter_mut().find(|variable| variable.name == "id") {
+                        id.scope = Some(if members.is_some() {
+                            "classify.incident"
+                        } else {
+                            "classify.active"
+                        });
+                    }
                     locals
                 });
             };
@@ -1018,6 +1146,8 @@ fn sweep(
         // and insertion searches; newly starting segments are not read here.
         for &id in &active {
             classify!(2, Some(id), None);
+            reset_controls!(2);
+            control!(2, "for", "entered");
             pending_call!(
                 3,
                 "y_at",
@@ -1085,6 +1215,7 @@ fn sweep(
             let equal = height_order[id].is_eq();
             if equal {
                 classify!(4, Some(id), None);
+                control!(4, "if", "true");
                 call!(
                     4,
                     "is_eq",
@@ -1123,6 +1254,7 @@ fn sweep(
                 );
             } else {
                 classify!(5, Some(id), None);
+                control!(4, "if", "false");
                 call!(
                     4,
                     "is_eq",
@@ -1134,8 +1266,12 @@ fn sweep(
                     Variable::available("return_value", "bool", equal.to_string())
                 );
             }
+            classify!(16, None, None);
+            reset_controls!(2);
+            control!(2, "for", "pending");
         }
         classify!(6, None, None);
+        control!(2, "for", "exhausted");
         // Capture membership once from the same exact incident block used by
         // the sweep, before removals or insertions change the active state.
         let participants = if steps.is_some() {
@@ -1145,8 +1281,11 @@ fn sweep(
             classify!(7, None, Some((&starts, &ends, &passes)));
             for &id in &incident {
                 classify!(8, Some(id), Some((&starts, &ends, &passes)));
+                reset_controls!(8);
+                control!(8, "for", "entered");
                 if segments[id].left == point {
                     classify!(9, Some(id), Some((&starts, &ends, &passes)));
+                    control!(9, "if", "true");
                     pending_call!(
                         10,
                         "push",
@@ -1171,9 +1310,11 @@ fn sweep(
                     );
                 } else {
                     classify!(10, Some(id), Some((&starts, &ends, &passes)));
+                    control!(9, "if", "false");
                 }
                 if segments[id].right == point {
                     classify!(11, Some(id), Some((&starts, &ends, &passes)));
+                    control!(11, "if", "true");
                     pending_call!(
                         12,
                         "push",
@@ -1198,9 +1339,11 @@ fn sweep(
                     );
                 } else {
                     classify!(12, Some(id), Some((&starts, &ends, &passes)));
+                    control!(11, "if", "false");
                 }
                 if segments[id].left != point && segments[id].right != point {
                     classify!(13, Some(id), Some((&starts, &ends, &passes)));
+                    control!(13, "if", "true");
                     pending_call!(
                         14,
                         "push",
@@ -1225,9 +1368,14 @@ fn sweep(
                     );
                 } else {
                     classify!(14, Some(id), Some((&starts, &ends, &passes)));
+                    control!(13, "if", "false");
                 }
+                classify!(17, None, Some((&starts, &ends, &passes)));
+                reset_controls!(8);
+                control!(8, "for", "pending");
             }
             classify!(15, None, Some((&starts, &ends, &passes)));
+            control!(8, "for", "exhausted");
             Some((starts, ends, passes))
         } else {
             None
@@ -1277,7 +1425,7 @@ fn sweep(
                             ));
                         }
                         let in_pair = indices.is_some_and(|indices| indices.2.is_some());
-                        locals.push(if in_pair && $boundary >= 3 {
+                        locals.push(if in_pair && matches!($boundary, 3..=14) {
                             Variable::available(
                                 "original",
                                 "closure",
@@ -1296,7 +1444,7 @@ fn sweep(
                                     Variable::absent(
                                         name,
                                         "&Point",
-                                        if in_pair && $boundary < 11 {
+                                        if in_pair && matches!($boundary, 2..=10) {
                                             "unassigned"
                                         } else {
                                             "unavailable"
@@ -1311,7 +1459,7 @@ fn sweep(
                                 Variable::absent(
                                     "geometry",
                                     "Geometry",
-                                    if $boundary < 14 {
+                                    if matches!($boundary, 0..=12) {
                                         "unassigned"
                                     } else {
                                         "unavailable"
@@ -1342,8 +1490,12 @@ fn sweep(
         record!(0, None, (None, None), None);
         for (i, &a) in incident.iter().enumerate() {
             record!(1, Some((i, a, None)), (None, None), None);
+            reset_controls!(1);
+            control!(1, "for", "entered");
             for &b in &incident[i + 1..] {
                 record!(2, Some((i, a, Some(b))), (None, None), None);
+                reset_controls!(2);
+                control!(2, "for", "entered");
                 let mut original_calls = steps.as_ref().map(|_| Vec::new());
                 let mut original_line = 12;
                 let mut original = |p: &Point| {
@@ -1359,6 +1511,8 @@ fn sweep(
                 record!(3, Some((i, a, Some(b))), (None, None), None);
                 let geometry = if segments[a].slope == segments[b].slope {
                     record!(4, Some((i, a, Some(b))), (None, None), None);
+                    control!(4, "if", "true");
+                    control!(12, "else", "skipped");
                     pending_call!(
                         5,
                         "max",
@@ -1385,9 +1539,17 @@ fn sweep(
                     );
                     if start != &point {
                         record!(6, Some((i, a, Some(b))), (Some(start), None), None);
+                        control!(6, "if", "true");
+                        control!(7, "continue", "pending");
+                        record!(17, Some((i, a, None)), (None, None), None);
+                        reset_controls!(2);
+                        control!(2, "for", "pending");
+                        control!(7, "continue", "jumping");
                         continue;
                     }
                     record!(7, Some((i, a, Some(b))), (Some(start), None), None);
+                    control!(6, "if", "false");
+                    control!(7, "continue", "skipped");
                     pending_call!(
                         8,
                         "min",
@@ -1411,6 +1573,8 @@ fn sweep(
                     );
                     if start < end {
                         record!(9, Some((i, a, Some(b))), (Some(start), Some(end)), None);
+                        control!(9, "if", "true");
+                        control!(11, "else", "skipped");
                         pending_call!(
                             10,
                             "original",
@@ -1432,6 +1596,8 @@ fn sweep(
                         }
                     } else {
                         record!(10, Some((i, a, Some(b))), (Some(start), Some(end)), None);
+                        control!(9, "if", "false");
+                        control!(11, "else", "entered");
                         pending_call!(
                             11,
                             "original",
@@ -1444,6 +1610,8 @@ fn sweep(
                     }
                 } else {
                     record!(11, Some((i, a, Some(b))), (None, None), None);
+                    control!(4, "if", "false");
+                    control!(12, "else", "entered");
                     pending_call!(
                         12,
                         "original",
@@ -1554,10 +1722,18 @@ fn sweep(
                     push_arguments.expect("trace captures arguments"),
                     Variable::available("return_value", "()", "()".to_owned())
                 );
+                record!(17, Some((i, a, None)), (None, None), None);
+                reset_controls!(2);
+                control!(2, "for", "pending");
             }
             record!(15, Some((i, a, None)), (None, None), None);
+            control!(2, "for", "exhausted");
+            record!(18, None, (None, None), None);
+            reset_controls!(1);
+            control!(1, "for", "pending");
         }
         record!(16, None, (None, None), None);
+        control!(1, "for", "exhausted");
         macro_rules! activity {
             ($boundary:expr, $incident:expr, $position:expr, $inserted:expr) => {
                 observe!("activity", $boundary, &[], {
@@ -1965,6 +2141,8 @@ fn sweep(
                 None::<&[usize]>,
                 None
             );
+            reset_controls!(3);
+            control!(3, "for", "entered");
             pending_call!(
                 4,
                 "get",
@@ -1976,6 +2154,40 @@ fn sweep(
                 "Option<&[usize]>"
             );
             let Some(neighbors) = active.get(lower..lower + 2) else {
+                neighbors!(
+                    7,
+                    Some(&checked),
+                    Some(&boundaries),
+                    Some(lower),
+                    None::<&[usize]>,
+                    None
+                );
+                control!(4, "else", "entered");
+                control!(4, "continue", "pending");
+                call!(
+                    4,
+                    "get",
+                    vec![
+                        Variable::available("self", "&[usize]", format!("{active:?}")),
+                        Variable::available(
+                            "index",
+                            "Range<usize>",
+                            format!("{lower}..{}", lower + 2)
+                        )
+                    ],
+                    Variable::available("return_value", "Option<&[usize]>", "None")
+                );
+                neighbors!(
+                    8,
+                    Some(&checked),
+                    Some(&boundaries),
+                    None,
+                    None::<&[usize]>,
+                    None
+                );
+                reset_controls!(3);
+                control!(3, "for", "pending");
+                control!(4, "continue", "jumping");
                 continue;
             };
             neighbors!(
@@ -1986,6 +2198,8 @@ fn sweep(
                 Some(neighbors),
                 None
             );
+            control!(4, "else", "skipped");
+            control!(4, "continue", "skipped");
             call!(
                 4,
                 "get",
@@ -2039,196 +2253,257 @@ fn sweep(
             );
             let pending_count = queue.len();
             let tracing = steps.is_some();
-            let mut observer =
-                |boundary, queue: &BTreeMap<Point, Event>, checked: &[[usize; 2]], locals| {
-                    if let Some(steps) = &mut steps {
-                        let action = if boundary == 2 {
-                            "check"
-                        } else if boundary == 6 && queue.len() > pending_count {
-                            "discover"
-                        } else {
-                            "micro"
-                        };
-                        let mut step = SweepStep::capture(
-                            action,
-                            Some(&point),
-                            queue,
-                            &active,
-                            &result,
-                            checked,
-                            neighbors,
-                            input_value.as_ref().expect("tracing captures input"),
-                        );
-                        let mut queue_parameter = step.execution.context.locals.remove(0);
-                        queue_parameter.r#type = "&mut BTreeMap<Point, Event>";
-                        step.execution.module = "geometry";
-                        step.execution.boundary = Some(boundary);
-                        step.execution.entry = boundary == 0;
-                        step.execution.context = ExecutionContext {
-                            function: "schedule_neighbors",
-                            parameters: vec![
-                                Variable::available("active", "&[usize]", format!("{active:?}")),
-                                Variable::available("lower", "usize", lower.to_string()),
-                                Variable::available(
-                                    "segments",
-                                    "&[SweepSegment]",
-                                    Arc::clone(
-                                        trace_segments.as_ref().expect("tracing captures segments"),
-                                    ),
+            let mut observer = |boundary,
+                                queue: &BTreeMap<Point, Event>,
+                                checked: &[[usize; 2]],
+                                locals,
+                                controls| {
+                if let Some(steps) = &mut steps {
+                    let action = if boundary == 2 {
+                        "check"
+                    } else if boundary == 6 && queue.len() > pending_count {
+                        "discover"
+                    } else {
+                        "micro"
+                    };
+                    let mut step = SweepStep::capture(
+                        action,
+                        Some(&point),
+                        queue,
+                        &active,
+                        &result,
+                        checked,
+                        neighbors,
+                        input_value.as_ref().expect("tracing captures input"),
+                    );
+                    let mut queue_parameter = step.execution.context.locals.remove(0);
+                    queue_parameter.r#type = "&mut BTreeMap<Point, Event>";
+                    step.execution.module = "geometry";
+                    step.execution.boundary = Some(boundary);
+                    step.execution.entry = boundary == 0;
+                    step.execution.controls = controls;
+                    step.execution.context = ExecutionContext {
+                        function: "schedule_neighbors",
+                        parameters: vec![
+                            Variable::available("active", "&[usize]", format!("{active:?}")),
+                            Variable::available("lower", "usize", lower.to_string()),
+                            Variable::available(
+                                "segments",
+                                "&[SweepSegment]",
+                                Arc::clone(
+                                    trace_segments.as_ref().expect("tracing captures segments"),
                                 ),
-                                Variable::available("current", "&Point", point_value(&point)),
-                                queue_parameter,
+                            ),
+                            Variable::available("current", "&Point", point_value(&point)),
+                            queue_parameter,
+                            Variable::available(
+                                "checked",
+                                "&mut Vec<[usize; 2]>",
+                                format!("{checked:?}"),
+                            ),
+                        ],
+                        locals,
+                    };
+                    let locals = &step.execution.context.locals;
+                    if boundary == 0 {
+                        step.execution.calls.push(ExecutionCall::pending(
+                            1,
+                            "get",
+                            0,
+                            vec![
+                                Variable::available("self", "&[usize]", format!("{active:?}")),
                                 Variable::available(
-                                    "checked",
+                                    "index",
+                                    "Range<usize>",
+                                    format!("{lower}..{}", lower + 2),
+                                ),
+                            ],
+                            "Option<&[usize]>",
+                        ));
+                    }
+                    if matches!(boundary, 1 | 9 | 11) {
+                        step.execution.calls.push(ExecutionCall {
+                            line: 1,
+                            function: "get",
+                            occurrence: 0,
+                            arguments: vec![
+                                Variable::available("self", "&[usize]", format!("{active:?}")),
+                                Variable::available(
+                                    "index",
+                                    "Range<usize>",
+                                    format!("{lower}..{}", lower + 2),
+                                ),
+                            ],
+                            result: Variable::available(
+                                "return_value",
+                                "Option<&[usize]>",
+                                if boundary == 1 {
+                                    format!("Some({neighbors:?})")
+                                } else {
+                                    "None".to_owned()
+                                },
+                            ),
+                        });
+                    }
+                    if boundary == 1 {
+                        step.execution.calls.push(ExecutionCall::pending(
+                            2,
+                            "push",
+                            0,
+                            vec![
+                                Variable::available(
+                                    "self",
                                     "&mut Vec<[usize; 2]>",
                                     format!("{checked:?}"),
                                 ),
+                                Variable::available(
+                                    "value",
+                                    "[usize; 2]",
+                                    format!("{neighbors:?}"),
+                                ),
                             ],
-                            locals,
-                        };
-                        let locals = &step.execution.context.locals;
-                        if boundary == 0 {
-                            step.execution.calls.push(ExecutionCall::pending(
-                                1,
-                                "get",
-                                0,
-                                vec![
-                                    Variable::available("self", "&[usize]", format!("{active:?}")),
-                                    Variable::available(
-                                        "index",
-                                        "Range<usize>",
-                                        format!("{lower}..{}", lower + 2),
-                                    ),
-                                ],
-                                "Option<&[usize]>",
-                            ));
-                        }
-                        if boundary == 1 {
-                            step.execution.calls.push(ExecutionCall::pending(
-                                2,
-                                "push",
-                                0,
-                                vec![
-                                    Variable::available(
-                                        "self",
-                                        "&mut Vec<[usize; 2]>",
-                                        format!("{checked:?}"),
-                                    ),
-                                    Variable::available(
-                                        "value",
-                                        "[usize; 2]",
-                                        format!("{neighbors:?}"),
-                                    ),
-                                ],
-                                "()",
-                            ));
-                        }
-                        if boundary == 3 {
-                            let arguments = locals
-                                .iter()
-                                .filter(|variable| variable.name == "a" || variable.name == "b")
-                                .cloned()
-                                .collect();
-                            step.execution.calls.push(ExecutionCall::pending(
-                                4,
-                                "intersection_candidate",
-                                0,
-                                arguments,
-                                "Option<Point>",
-                            ));
-                        }
-                        if boundary == 5 {
-                            let point_argument = locals
-                                .iter()
-                                .find(|variable| variable.name == "point")
-                                .and_then(|variable| variable.value.as_ref())
-                                .expect("candidate exists before queue entry")
-                                .clone();
-                            let queue_argument = step
-                                .execution
-                                .context
-                                .parameters
-                                .iter()
-                                .find(|variable| variable.name == "queue")
-                                .and_then(|variable| variable.value.as_ref())
-                                .expect("queue parameter exists")
-                                .clone();
-                            step.execution.calls.push(ExecutionCall::pending(
-                                6,
-                                "clone",
-                                0,
-                                vec![Variable::available("self", "&Point", point_argument)],
-                                "Point",
-                            ));
-                            step.execution.calls.push(ExecutionCall::pending(
-                                6,
-                                "entry",
-                                0,
-                                vec![
-                                    Variable::available(
-                                        "self",
-                                        "&mut BTreeMap<Point, Event>",
-                                        queue_argument,
-                                    ),
-                                    Variable::absent("key", "Point", "unassigned"),
-                                ],
-                                "Entry<Point, Event>",
-                            ));
-                            step.execution.calls.push(ExecutionCall::pending(
-                                6,
-                                "or_default",
-                                0,
-                                vec![Variable::absent(
+                            "()",
+                        ));
+                    }
+                    if boundary == 3 {
+                        let arguments = locals
+                            .iter()
+                            .filter(|variable| variable.name == "a" || variable.name == "b")
+                            .cloned()
+                            .collect();
+                        step.execution.calls.push(ExecutionCall::pending(
+                            4,
+                            "intersection_candidate",
+                            0,
+                            arguments,
+                            "Option<Point>",
+                        ));
+                    }
+                    if boundary == 5 {
+                        let point_argument = locals
+                            .iter()
+                            .find(|variable| variable.name == "point")
+                            .and_then(|variable| variable.value.as_ref())
+                            .expect("candidate exists before queue entry")
+                            .clone();
+                        let queue_argument = step
+                            .execution
+                            .context
+                            .parameters
+                            .iter()
+                            .find(|variable| variable.name == "queue")
+                            .and_then(|variable| variable.value.as_ref())
+                            .expect("queue parameter exists")
+                            .clone();
+                        step.execution.calls.push(ExecutionCall::pending(
+                            6,
+                            "clone",
+                            0,
+                            vec![Variable::available("self", "&Point", point_argument)],
+                            "Point",
+                        ));
+                        step.execution.calls.push(ExecutionCall::pending(
+                            6,
+                            "entry",
+                            0,
+                            vec![
+                                Variable::available(
                                     "self",
-                                    "Entry<Point, Event>",
-                                    "unassigned",
-                                )],
-                                "&mut Event",
-                            ));
-                        }
-                        let failed_candidate = boundary == 8
-                            && locals.iter().any(|variable| {
-                                variable.name == "return_value"
-                                    && variable.value.as_deref() == Some("None")
+                                    "&mut BTreeMap<Point, Event>",
+                                    queue_argument,
+                                ),
+                                Variable::absent("key", "Point", "unassigned"),
+                            ],
+                            "Entry<Point, Event>",
+                        ));
+                        step.execution.calls.push(ExecutionCall::pending(
+                            6,
+                            "or_default",
+                            0,
+                            vec![Variable::absent(
+                                "self",
+                                "Entry<Point, Event>",
+                                "unassigned",
+                            )],
+                            "&mut Event",
+                        ));
+                    }
+                    let failed_candidate = matches!(boundary, 10 | 12);
+                    if boundary == 4 || failed_candidate {
+                        let arguments: Vec<_> = locals
+                            .iter()
+                            .filter(|variable| {
+                                (variable.name == "a" || variable.name == "b")
+                                    && variable.availability == "available"
+                            })
+                            .cloned()
+                            .collect();
+                        if arguments.len() == 2 {
+                            let returned = if failed_candidate {
+                                "None".to_owned()
+                            } else {
+                                format!(
+                                    "Some({})",
+                                    locals
+                                        .iter()
+                                        .find(|variable| variable.name == "point")
+                                        .and_then(|variable| variable.value.as_ref())
+                                        .expect("candidate point exists")
+                                )
+                            };
+                            step.execution.calls.push(ExecutionCall {
+                                line: 4,
+                                function: "intersection_candidate",
+                                occurrence: 0,
+                                arguments,
+                                result: Variable::available(
+                                    "return_value",
+                                    "Option<Point>",
+                                    returned,
+                                ),
                             });
-                        if boundary == 4 || failed_candidate {
-                            let arguments: Vec<_> = locals
-                                .iter()
-                                .filter(|variable| {
-                                    (variable.name == "a" || variable.name == "b")
-                                        && variable.availability == "available"
-                                })
-                                .cloned()
-                                .collect();
-                            if arguments.len() == 2 {
-                                let returned = if failed_candidate {
-                                    "None".to_owned()
-                                } else {
-                                    format!(
-                                        "Some({})",
-                                        locals
+                        }
+                    }
+                    if boundary != 0
+                        && let Some(previous) = steps.last()
+                        && previous.execution.module == "geometry"
+                    {
+                        for call in &previous.execution.calls {
+                            if !step.execution.calls.iter().any(|current| {
+                                current.line == call.line
+                                    && current.function == call.function
+                                    && current.occurrence == call.occurrence
+                            }) {
+                                let mut call = call.clone();
+                                if boundary == 2 && call.function == "push" {
+                                    call.result = Variable::available("return_value", "()", "()");
+                                }
+                                if boundary == 6 && call.line == 6 {
+                                    call.result = if call.function == "clone" {
+                                        let point = step
+                                            .execution
+                                            .context
+                                            .locals
                                             .iter()
                                             .find(|variable| variable.name == "point")
-                                            .and_then(|variable| variable.value.as_ref())
-                                            .expect("candidate point exists")
-                                    )
-                                };
-                                step.execution.calls.push(ExecutionCall {
-                                    line: 4,
-                                    function: "intersection_candidate",
-                                    occurrence: 0,
-                                    arguments,
-                                    result: Variable::available(
-                                        "return_value",
-                                        "Option<Point>",
-                                        returned,
-                                    ),
-                                });
+                                            .and_then(|variable| variable.value.clone())
+                                            .expect("queue insertion retains point");
+                                        Variable::available("return_value", "Point", point)
+                                    } else {
+                                        Variable::absent(
+                                            "return_value",
+                                            call.result.r#type,
+                                            "unavailable",
+                                        )
+                                    };
+                                }
+                                step.execution.calls.push(call);
                             }
                         }
-                        steps.push(step);
                     }
-                };
+                    steps.push(step);
+                }
+            };
             let observer: Option<&mut NeighborObserver<'_>> =
                 if tracing { Some(&mut observer) } else { None };
             let candidate = schedule_neighbors(
@@ -2249,6 +2524,9 @@ fn sweep(
                 Some(neighbors),
                 Some(&candidate)
             );
+            control!(3, "for", "entered");
+            control!(4, "else", "skipped");
+            control!(4, "continue", "skipped");
             call!(
                 5,
                 "schedule_neighbors",
@@ -2259,6 +2537,16 @@ fn sweep(
                     optional_point_value(&candidate)
                 )
             );
+            neighbors!(
+                8,
+                Some(&checked),
+                Some(&boundaries),
+                None,
+                None::<&[usize]>,
+                None
+            );
+            reset_controls!(3);
+            control!(3, "for", "pending");
         }
         neighbors!(
             6,
@@ -2268,6 +2556,7 @@ fn sweep(
             None::<&[usize]>,
             None
         );
+        control!(3, "for", "exhausted");
         if let Some(steps) = &mut steps {
             let completed = steps.last_mut().expect("neighbor loop exit was captured");
             completed.action = "complete";
@@ -2297,6 +2586,139 @@ fn sweep(
 #[cfg(test)]
 mod execution_value_tests {
     use super::*;
+
+    #[test]
+    fn unavailable_neighbor_returns_only_after_its_return_stop() {
+        let point = Point {
+            x: Rational::from_integer(0.into()),
+            y: Rational::from_integer(0.into()),
+        };
+        let mut queue = BTreeMap::new();
+        let mut checked = Vec::new();
+        let mut observations = Vec::new();
+        let mut observer = |boundary,
+                            _: &BTreeMap<Point, Event>,
+                            _: &[[usize; 2]],
+                            locals: Vec<Variable>,
+                            controls: Vec<ExecutionControl>| {
+            observations.push((boundary, locals, controls));
+        };
+        assert_eq!(
+            schedule_neighbors(
+                &[],
+                0,
+                &[],
+                &point,
+                &mut queue,
+                &mut checked,
+                Some(&mut observer),
+                &|| false
+            ),
+            None
+        );
+        assert_eq!(
+            observations
+                .iter()
+                .map(|observation| observation.0)
+                .collect::<Vec<_>>(),
+            vec![0, 9, 11]
+        );
+        assert!(queue.is_empty() && checked.is_empty());
+        let (_, pending, controls) = &observations[1];
+        assert!(
+            pending
+                .iter()
+                .any(|variable| variable.name == "return_value"
+                    && variable.availability == "unassigned"
+                    && variable.value.is_none())
+        );
+        assert!(controls.iter().any(|control| control.line == 1
+            && control.keyword == "return"
+            && control.state == "pending"));
+        let (_, returned, controls) = &observations[2];
+        assert!(
+            returned
+                .iter()
+                .any(|variable| variable.name == "return_value"
+                    && variable.value.as_deref() == Some("None"))
+        );
+        assert!(controls.iter().any(|control| control.line == 1
+            && control.keyword == "return"
+            && control.state == "returned"));
+    }
+
+    #[test]
+    fn streaming_preserves_control_stops_and_scopes_in_collected_order() {
+        let point = |x: i64, y: i64| Point {
+            x: Rational::from_integer(x.into()),
+            y: Rational::from_integer(y.into()),
+        };
+        let segments = [(0, 0, 4, 4), (0, 4, 4, 0), (1, 1, 3, 3)].map(|(x1, y1, x2, y2)| Segment {
+            start: point(x1, y1),
+            end: point(x2, y2),
+        });
+        let (expected_results, trace) = trace_intersections(&segments);
+        let mut streamed = Vec::new();
+        let mut batches = 0;
+        let results = stream_intersections(
+            &segments,
+            &mut |batch| {
+                batches += 1;
+                streamed.extend(batch);
+                true
+            },
+            &|| false,
+        )
+        .unwrap();
+        assert_eq!(results, expected_results);
+        assert!(batches > 1);
+        assert_eq!(streamed.len(), trace.steps.len());
+        for (actual, expected) in streamed.iter().zip(&trace.steps) {
+            assert_eq!(
+                (
+                    actual.execution.module,
+                    actual.execution.boundary,
+                    actual.action
+                ),
+                (
+                    expected.execution.module,
+                    expected.execution.boundary,
+                    expected.action
+                )
+            );
+            let controls = |step: &SweepStep| {
+                step.execution
+                    .controls
+                    .iter()
+                    .map(|control| {
+                        (
+                            control.line,
+                            control.keyword,
+                            control.occurrence,
+                            control.state,
+                        )
+                    })
+                    .collect::<Vec<_>>()
+            };
+            assert_eq!(controls(actual), controls(expected));
+            let locals = |step: &SweepStep| {
+                step.execution
+                    .context
+                    .locals
+                    .iter()
+                    .map(|variable| {
+                        (
+                            variable.name,
+                            variable.scope,
+                            variable.availability,
+                            variable.value.clone(),
+                        )
+                    })
+                    .collect::<Vec<_>>()
+            };
+            assert_eq!(locals(actual), locals(expected));
+        }
+    }
 
     #[test]
     fn trace_values_share_compact_geometry_and_intersection_format() {

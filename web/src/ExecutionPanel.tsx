@@ -55,14 +55,15 @@ export function ExecutionPanel({ step, previous, values }: {
       {module ? <div className="execution-source">
         <div className="execution-summary">
         <p className="text-sm">教学代码 · Rust 风格精简片段 · <code>{context.function}</code> / {module.title}</p>
-        <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : '已绑定 point 与 event；取事件模块完成' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}</p>
+        <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : step.execution.boundary === 2 ? '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}</p>
         </div>
         <div ref={scroll} className="execution-code-scroll" tabIndex={0} role="region" aria-label={`${module.title}教学代码`}>
           {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code"><code>
-            {tokens.map((line, index) => {
+            {(() => {
+              const occurrences = new Map<string, number>()
+              return tokens.map((line, index) => {
               const text = line.map(token => token.content).join('')
               let offset = 0
-              const occurrences = new Map<string, number>()
               return <span className="code-line" key={index}>{line.map((token, tokenIndex) => {
                 const tokenStart = offset
                 offset += token.content.length
@@ -71,13 +72,15 @@ export function ExecutionPanel({ step, previous, values }: {
                   const start = tokenStart + partOffset
                   partOffset += part.length
                   const kind = text.slice(0, start).includes('//') ? null : symbolKind(part, text.slice(0, start), text.slice(start + part.length))
-                  const occurrence = occurrences.get(part) ?? 0
-                  if (kind === 'function') occurrences.set(part, occurrence + 1)
+                  const key = `${module.traceLines[index]}:${part}`
+                  const occurrence = occurrences.get(key) ?? 0
+                  if (kind === 'function' || kind === 'control') occurrences.set(key, occurrence + 1)
                   return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} line={module.traceLines[index]} displayLine={index + 1} occurrence={occurrence} module={step.execution.module} expression={callExpression(part, text.slice(start + part.length))} step={step} previous={previous} values={values}>{part}</ExecutionSymbol> : part
                 })}</span>
               })}{'\n'}</span>
-            })}
-          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${boundaryLine} * 1.75rem)` }}><ArrowRight aria-hidden="true" /></span></pre> : <p role="status">加载教学代码…</p>}
+              })
+            })()}
+          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : step.execution.boundary === 3 ? 'break 之前' : step.execution.boundary === 4 ? 'break 之后' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${boundaryLine} * 1.75rem)` }}><ArrowRight aria-hidden="true" /></span></pre> : <p role="status">加载教学代码…</p>}
         </div>
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}
     </CardContent>

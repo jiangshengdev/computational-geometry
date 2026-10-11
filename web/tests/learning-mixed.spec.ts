@@ -24,8 +24,11 @@ for (const width of [1360, 390]) for (const [id, pairs, positions, center, cente
   const explanation = page.getByRole('region', { name: '操作解释' })
   let recordsAtCenter = 0
   let firstCenterRecord = ''
+  let firstStep = true
   while (await next.isEnabled()) {
-    await next.click()
+    if (firstStep) await next.click()
+    else await next.press('Enter')
+    firstStep = false
     const step = trace.steps[Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue())]
     if (['take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
     const current = page.getByRole('region', { name: '当前事件' })

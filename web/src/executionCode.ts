@@ -5,11 +5,14 @@ export interface TeachingModule {
   boundaryLines: number[]
 }
 
-function teachingModule(title: string, operations: string[]): TeachingModule {
+function teachingModule(title: string, operations: string[], stops: readonly (readonly [line: number, offset?: number])[]): TeachingModule {
   // Each entry retains one Rust trace line even when its display spans several lines.
   const traceLines = operations.flatMap((code, index) => code.split('\n').map(() => index + 1))
-  const boundaryLines = [0]
-  for (const code of operations) boundaryLines.push(boundaryLines[boundaryLines.length - 1] + code.split('\n').length)
+  // A stop names the next logical statement or a specific block boundary.
+  // Source formatting changes display offsets, never control-flow identities.
+  const starts = [0]
+  for (const code of operations) starts.push(starts[starts.length - 1] + code.split('\n').length)
+  const boundaryLines = stops.map(([line, offset = 0]) => starts[line - 1] + offset)
   return { title, code: operations.join('\n'), traceLines, boundaryLines }
 }
 
@@ -22,7 +25,7 @@ export const teachingModules: Record<string, TeachingModule> = {
     '    let Some(neighbors) = active.get(lower..lower + 2) else {\n        continue;\n    };',
     '    let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);',
     '}',
-  ]),
+  ], [[1], [2], [3], [4], [5], [6], [7], [4, 1], [3]]),
   geometry: teachingModule('几何调用与入队', [
     'let Some(neighbors) = active.get(lower..lower + 2) else {\n    return None;\n};',
     'checked.push([neighbors[0], neighbors[1]]);',
@@ -32,7 +35,7 @@ export const teachingModules: Record<string, TeachingModule> = {
     '    queue.entry(point.clone()).or_default();',
     '}',
     'return Some(point);',
-  ]),
+  ], [[1], [2], [3], [4], [5], [6], [8], [8], [9], [1, 1], [4, 1], [1, 2], [4, 2]]),
   activity: teachingModule('活动集合更新', [
     'active.retain(|&id| segments[id].right != point);',
     'active.retain(|&id| !height_order[id].is_eq());',
@@ -41,11 +44,11 @@ export const teachingModules: Record<string, TeachingModule> = {
     'let position = active.partition_point(|&id| height_order[id].is_lt());',
     'let inserted = incident.len();',
     'active.splice(position..position, incident);',
-  ]),
+  ], [[1], [2], [3], [4], [5], [6], [7], [8]]),
   take: teachingModule('取事件', [
     'let next = queue.pop_first();',
     'let Some((point, event)) = next else {\n    break;\n};',
-  ]),
+  ], [[1], [2], [3], [2, 1], [2, 2]]),
   classify: teachingModule('参与线段分类', [
     'let mut incident = event.starts;',
     'for &id in &active {',
@@ -62,7 +65,7 @@ export const teachingModules: Record<string, TeachingModule> = {
     '    }\n    if segments[id].left != point && segments[id].right != point {',
     '        passes.push(id);',
     '    }\n}',
-  ]),
+  ], [[1], [2], [3], [4], [5], [6, 1], [7], [8], [9], [10], [11, 1], [12], [13, 1], [14], [15, 1], [16], [2], [8]]),
   record: teachingModule('配对与记录', [
     'for (i, &a) in incident.iter().enumerate() {',
     '    for &b in &incident[i + 1..] {',
@@ -80,5 +83,5 @@ export const teachingModules: Record<string, TeachingModule> = {
     '        result.push(Intersection { segments: [a.min(b), a.max(b)], geometry });',
     '    }',
     '}',
-  ]),
+  ], [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11, 2], [12, 2], [13], [14], [15], [16], [17], [2], [1]]),
 }

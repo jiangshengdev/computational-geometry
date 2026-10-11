@@ -151,6 +151,15 @@ struct ExecutionDto {
     entry: bool,
     context: ExecutionContextDto,
     calls: Vec<ExecutionCallDto>,
+    controls: Vec<ExecutionControlDto>,
+}
+
+#[derive(Serialize)]
+struct ExecutionControlDto {
+    line: usize,
+    keyword: &'static str,
+    occurrence: usize,
+    state: &'static str,
 }
 
 #[derive(Serialize)]
@@ -171,6 +180,7 @@ struct ExecutionContextDto {
 
 #[derive(Serialize)]
 struct VariableDto {
+    scope: Option<&'static str>,
     name: &'static str,
     r#type: &'static str,
     availability: &'static str,
@@ -185,6 +195,7 @@ impl ExecutionDto {
         offset: usize,
     ) -> Self {
         let mut variable = |variable: crate::Variable| VariableDto {
+            scope: variable.scope,
             name: variable.name,
             r#type: variable.r#type,
             availability: variable.availability,
@@ -200,6 +211,16 @@ impl ExecutionDto {
             module: execution.module,
             boundary: execution.boundary,
             entry: execution.entry,
+            controls: execution
+                .controls
+                .into_iter()
+                .map(|control| ExecutionControlDto {
+                    line: control.line,
+                    keyword: control.keyword,
+                    occurrence: control.occurrence,
+                    state: control.state,
+                })
+                .collect(),
             calls: execution
                 .calls
                 .into_iter()
@@ -274,7 +295,8 @@ impl TraceEncoder {
                         .results
                         .into_iter()
                         .map(|intersection| {
-                            *self.result_indices
+                            *self
+                                .result_indices
                                 .entry(intersection.segments)
                                 .or_insert_with(|| {
                                     let index = result_offset + result_values.len();
@@ -421,7 +443,9 @@ async fn compute(
                     Ok(bytes) => {
                         if sender.blocking_send(Ok(bytes)).is_ok() {
                             // Accepted by the bounded transport queue, not proof of client receipt.
-                            lifecycle.sent_steps.set(lifecycle.sent_steps.get() + step_count);
+                            lifecycle
+                                .sent_steps
+                                .set(lifecycle.sent_steps.get() + step_count);
                             true
                         } else {
                             lifecycle.status.set("cancelled");
@@ -440,7 +464,10 @@ async fn compute(
                 &segments,
                 &mut |steps| {
                     send(TraceFrame {
-                        trace: encoder.encode(SweepTrace { shear: shear.clone(), steps }),
+                        trace: encoder.encode(SweepTrace {
+                            shear: shear.clone(),
+                            steps,
+                        }),
                         complete: false,
                         intersections: None,
                     })
@@ -449,7 +476,10 @@ async fn compute(
             );
             if let Some(results) = results {
                 if send(TraceFrame {
-                    trace: encoder.encode(SweepTrace { shear, steps: Vec::new() }),
+                    trace: encoder.encode(SweepTrace {
+                        shear,
+                        steps: Vec::new(),
+                    }),
                     complete: true,
                     intersections: Some(results.into_iter().map(IntersectionDto::from).collect()),
                 }) {
@@ -460,18 +490,24 @@ async fn compute(
             }
         });
         let body = Body::from_stream(tokio_stream::wrappers::ReceiverStream::new(receiver));
-        let mut response = ([(axum::http::header::CONTENT_TYPE, "application/x-ndjson")], body).into_response();
+        let mut response = (
+            [(axum::http::header::CONTENT_TYPE, "application/x-ndjson")],
+            body,
+        )
+            .into_response();
         response.headers_mut().insert(
             "x-trace-id",
-            axum::http::HeaderValue::from_str(&trace_id.to_string()).expect("numeric trace id is a valid header"),
+            axum::http::HeaderValue::from_str(&trace_id.to_string())
+                .expect("numeric trace id is a valid header"),
         );
         return Ok(response);
     }
-    let response = tokio::task::spawn_blocking(move || {
-        Response {
-            intersections: intersections(&segments).into_iter().map(IntersectionDto::from).collect(),
-            trace: None,
-        }
+    let response = tokio::task::spawn_blocking(move || Response {
+        intersections: intersections(&segments)
+            .into_iter()
+            .map(IntersectionDto::from)
+            .collect(),
+        trace: None,
     })
     .await
     .map_err(|_| {

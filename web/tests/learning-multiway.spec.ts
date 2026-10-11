@@ -45,7 +45,7 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
     let before = false, after = false, records = 0, index = 0, removed = false, inserted = false
     for (const [address, step] of trace.steps.entries()) {
       if (!address || step.action === 'micro') continue
-      await seekStep(page, address)
+      await seekStep(page, address, 'jump')
       await expect(page.getByText('加载教学代码…', { exact: true })).toHaveCount(0)
       const event = await current.innerText()
       const text = await explanation.innerText()
@@ -102,7 +102,9 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
         }
       }
       // Hover details depend on the pointer, not the deterministic teaching trace.
-      if (step.execution.module === 'take') await expect(page.locator('.execution-code .code-line')).toHaveCount(2)
+      if (step.execution.module === 'take') await expect(page.locator('.execution-code .code-line')).toHaveText([
+        'let next = queue.pop_first();\n', 'let Some((point, event)) = next else {\n', '    break;\n', '};\n',
+      ])
       const state = JSON.stringify({
         panels: await page.locator('.learning-panel, [aria-label="学习结果"]').allInnerTexts(),
         current: await page.locator('.current-point').evaluateAll(points => points.map(point =>

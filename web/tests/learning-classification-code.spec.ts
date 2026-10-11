@@ -19,7 +19,7 @@ test('真实分类入口不泄露结果，配对记录可回退', async ({ page 
   const recorded = trace.steps.findIndex(step => step.action === 'record')
   expect(recorded).toBeGreaterThan(entry)
   await page.goto(`/cases/crossing/learn?step=${recorded - 1}`)
-  await expect(variables.getByTestId('variable-geometry')).toContainText('Point')
+  await expect(variables.getByTestId('variable-geometry').locator('dd')).toHaveText('(2, 2)')
   const before = await variables.locator('dd').allTextContents()
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await expect(variables.getByTestId('variable-result')).toContainText('S0 × S1')

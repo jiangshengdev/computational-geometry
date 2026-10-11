@@ -46,6 +46,10 @@ test('空集合快捷键进入教学，观察 None 退出后刷新保留完成�
     await page.keyboard.press('ArrowRight')
     await expect(slider).toHaveValue(String(step))
   }
+  await expect(page.getByRole('img', { name: '执行边界：break 之前' })).toBeVisible()
+  await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
+  await page.keyboard.press('ArrowRight')
+  await expect(slider).toHaveValue('4')
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('next 为 None')
   await expect(page.getByRole('region', { name: '学习结果' })).toBeVisible()
   await page.reload()

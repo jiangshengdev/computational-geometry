@@ -1,4 +1,4 @@
-import type { ExecutionVariable, SweepStep } from './geometry'
+import type { ExecutionControl, ExecutionVariable, SweepStep } from './geometry'
 import { formatExecutionValue } from './executionValue'
 
 const meanings: Record<string, string> = {
@@ -82,20 +82,17 @@ export function symbolScope(name: string, module: string, line: number) {
 }
 
 export function scopedVariable(name: string, step: SweepStep, line: number) {
-  const { module, boundary, context } = step.execution
+  const { module, context } = step.execution
   const variable = context.locals.find(item => item.name === name) ?? context.parameters.find(item => item.name === name)
   let visible = true
-  if (module === 'classify' && name === 'id') visible = boundary !== null && (line <= 6 ? boundary >= 2 && boundary <= 5 : boundary >= 8 && boundary <= 14)
+  if (module === 'classify' && name === 'id') visible = variable?.scope === (line <= 6 ? 'classify.active' : 'classify.incident')
   // Callback parameters are distinct bindings. The sweep's a/b/id and a
   // different invocation's arguments cannot stand in for these parameters.
   if (module === 'activity' && ['id', 'a', 'b'].includes(name)) visible = false
   if (module === 'record') {
     if (name === 'p') visible = false
-    if (['i', 'a'].includes(name)) visible = boundary !== null && boundary >= 1 && boundary < 16
-    if (name === 'b') visible = boundary !== null && boundary >= 2 && boundary < 15
-    if (['start', 'end'].includes(name)) visible = boundary !== null && boundary >= 4 && boundary <= 11
   }
-  return visible ? variable : { name, type: variable?.type ?? '当前词法作用域变量', availability: 'unavailable' as const, value: null }
+  return visible ? variable : { name, type: variable?.type ?? '当前词法作用域变量', availability: 'unavailable' as const, value: null, scope: null }
 }
 
 export function variableDetails(name: string, step: SweepStep, previous: SweepStep, values: string[], line: number) {
@@ -119,13 +116,29 @@ export function variableDetails(name: string, step: SweepStep, previous: SweepSt
 export function variableChange(variable: ExecutionVariable | undefined, kind: 'locals' | 'parameters', step: SweepStep, previous: SweepStep, line?: number) {
   const context = step.execution.context, prior = previous.execution.context
   const binding = prior.function === context.function && previous.execution.module === step.execution.module
-    ? prior[kind].find(item => item.name === variable?.name) : undefined
+    ? prior[kind].find(item => item.name === variable?.name && item.scope === variable?.scope) : undefined
   const old = binding && line !== undefined ? scopedVariable(binding.name, previous, line) : binding
   return { old, changed: !!old && !!variable && (old.value !== variable.value || old.availability !== variable.availability) }
 }
 
 export function symbolKind(name: string, before: string, after: string) {
+  if (['if', 'else', 'for', 'continue', 'return', 'break'].includes(name)) return 'control'
   if (functions[name] && (/^\s*\(/.test(after) || name === 'original')) return 'function'
   if (meanings[name] && !/[.:]\s*$/.test(before) && !/^\s*:/.test(after)) return 'variable'
   return null
+}
+
+export function controlDescription(keyword: string, control: ExecutionControl | undefined) {
+  if (!control) return '本次尚未执行'
+  switch (control.state) {
+    case 'pending': return keyword === 'for' ? '即将检查下一次迭代；本轮尚未判断' : '即将执行；结果尚未产生'
+    case 'true': return '本次条件为真，进入分支'
+    case 'false': return '本次条件为假，跳过分支'
+    case 'entered': return keyword === 'for' ? '本次已取得迭代元素，进入循环体' : '本次进入 else 分支'
+    case 'exhausted': return '本次没有下一个元素，循环已结束'
+    case 'skipped': return keyword === 'else' || keyword === 'if' ? '本次跳过此分支' : '本次未执行此语句'
+    case 'jumping': return keyword === 'continue' ? '已执行 continue，跳往下一次迭代' : '已执行 break，退出循环'
+    case 'returned': return '已执行 return，函数已返回'
+    case 'completed': return keyword === 'break' ? '已执行 break，退出循环' : '本次执行已完成'
+  }
 }
