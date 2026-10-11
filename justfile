@@ -36,6 +36,10 @@ perf-export:
 perf-cases:
     cargo test --offline --lib http::case_performance::actual_case_timings -- --exact --ignored --nocapture --test-threads=1
 
+# 独立临时端口测量真实教学体验；BO_PERF_MODE=full 测完整生成，cancel 测提早取消。
+perf-learning:
+    node tools/measure-learning.mjs
+
 # 一键启动临时后端并运行无头 E2E，结束后自动清理（包含原生编译，由使用者运行）。
 [positional-arguments]
 test-e2e *args:
