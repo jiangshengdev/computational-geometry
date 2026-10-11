@@ -19,8 +19,6 @@
 .execution-summary { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; flex-shrink: 0; }
 .execution-summary > [aria-live] { margin-left: auto; text-align: right; }
 .execution-code-scroll { position: relative; min-height: 0; overflow: auto; max-height: 18rem; border-radius: 4px; }
-/* Keep the focus ring inside the scrollport so its clipping parent cannot cut off an edge. */
-.execution-code-scroll:focus-visible { outline: 2px solid color-mix(in srgb, var(--focus) 65%, var(--surface)); outline-offset: -2px; }
 .execution-code { position: relative; width: max-content; min-width: 100%; padding: .75rem 1.5rem; margin: 0; line-height: 1.75rem; font-size: .8125rem; }
 .code-line { display: block; height: 1.75rem; }
 .execution-boundary { position: absolute; left: 0; right: 0; height: 0; border-top: 2px solid var(--accent); color: var(--accent); line-height: 0; pointer-events: none; }
