@@ -8,7 +8,7 @@ const validRatio = (value: unknown): value is number => typeof value === 'number
 export function LearningSplit({ firstPanel, secondPanel, axis = 'x' }: { firstPanel: ReactNode; secondPanel: ReactNode; axis?: 'x' | 'y' }) {
   const vertical = axis === 'y'
   const minimumPaneSize = vertical ? 180 : 280
-  const defaultRatio = vertical ? 2 / 3 : 0.5
+  const defaultRatio = vertical ? 4 / 7 : 0.5
   const mediaQuery = vertical ? '(min-width: 1100px) and (min-height: 720px)' : '(min-width: 1100px)'
   const container = useRef<HTMLDivElement>(null)
   const drag = useRef<{ pointerId: number; offset: number } | null>(null)

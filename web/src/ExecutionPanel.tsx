@@ -102,9 +102,10 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
   const context = step.execution.context
   const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
     const { changed } = variableChange(variable, kind, step, previous)
+    const hasValue = variable.availability === 'available' && variable.value !== null
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
       <dt><VariableCode>{`${variable.name}: ${variable.type} = `}</VariableCode>{changed && <span className="execution-change">本步变化</span>}</dt>
-      <dd className={variable.availability === 'unavailable' ? 'text-muted' : undefined}>{variable.availability === 'available' && variable.value !== null ? <VariableCode>{variableValue(variable, values)}</VariableCode> : variableValue(variable, values)}</dd>
+      <dd className={hasValue ? undefined : 'text-muted'}>{hasValue ? <VariableCode>{variableValue(variable, values)}</VariableCode> : variableValue(variable, values)}</dd>
     </div>
   }
   return <section aria-label="核心变量" className="learning-panel learning-variables"><Card className="learning-panel-card">

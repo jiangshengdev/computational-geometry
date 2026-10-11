@@ -21,7 +21,7 @@ test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) 
         if (variable.availability === 'available' && variable.value !== null) {
           await expect(row.locator('dd')).toHaveText(trace.values[variable.value])
           await expect(row.locator('dd code span[style]').first()).toBeAttached()
-        } else if (variable.availability === 'unavailable') {
+        } else {
           await expect(row.locator('dd')).toHaveClass('text-muted')
           await expect(row.locator('dd code')).toHaveCount(0)
         }
