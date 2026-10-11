@@ -97,6 +97,7 @@ test('教学步骤 URL：直达、刷新和新标签恢复同一步骤', async (
   await page.goto(path)
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(insert))
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
+  await expect(page.getByRole('region', { name: '核心代码回放' }).getByRole('img', { name: /执行边界/ })).toBeVisible()
   const content = await page.getByRole('region', { name: '逐步学习' }).innerText()
   await page.reload()
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(insert))

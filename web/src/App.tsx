@@ -172,6 +172,21 @@ function CaseList() {
 function LearningPage({ preset, trace, complete }: { preset: Preset; trace: SweepTrace; complete: boolean }) {
   const [search, setSearch] = useSearchParams()
   const [preview, setPreview] = useState<{ search: URLSearchParams; index: number } | null>(null)
+  const [cursor, setCursor] = useState(0)
+  const [destination, setDestination] = useState('')
+  const [nextEntry, setNextEntry] = useState<{ search: URLSearchParams; from: number } | null>(null)
+  const waitingEntry = nextEntry?.search === search ? nextEntry : null
+  const arrivedEntry = waitingEntry ? trace.steps.findIndex((step, position) => position > waitingEntry.from && step.execution.entry) : -1
+  useEffect(() => {
+    if (!waitingEntry || preview?.search === search || (arrivedEntry < 0 && !complete)) return
+    setNextEntry(null)
+    if (arrivedEntry >= 0) {
+      setCursor(arrivedEntry)
+      const updated = new URLSearchParams(search)
+      updated.set('step', String(arrivedEntry))
+      setSearch(updated, { replace: true })
+    }
+  }, [arrivedEntry, complete, preview, search, setSearch, waitingEntry])
   const values = search.getAll('step')
   const value = values[0]
   if (values.length > 1 || (value !== undefined && !/^[0-9]+$/.test(value))) {
@@ -181,15 +196,33 @@ function LearningPage({ preset, trace, complete }: { preset: Preset; trace: Swee
   if (!Number.isSafeInteger(index) || (complete && index >= trace.steps.length)) {
     return <RouteError message={`教学步骤超出范围：此案例的有效步骤为 0–${trace.steps.length - 1}。`} preset={preset} showListLink={false} />
   }
-  return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace}
-    complete={complete} index={preview?.search === search ? preview.index : Math.min(index, trace.steps.length - 1)}
-    onStepPreview={next => setPreview({ search, index: next })} onStepChange={next => {
+  const visibleIndex = preview?.search === search ? preview.index : index < trace.steps.length ? index : cursor
+  const waiting = index >= trace.steps.length || Boolean(waitingEntry)
+  const changeStep = (next: number) => {
     setPreview(null)
+    setNextEntry(null)
+    setCursor(visibleIndex)
     if (next === index) return
     const updated = new URLSearchParams(search)
     updated.set('step', String(next))
     setSearch(updated, { replace: true })
-  }} /></>
+  }
+  return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace}
+    complete={complete} index={visibleIndex} onWaitNextEntry={() => setNextEntry({ search, from: visibleIndex })}
+    onStepPreview={next => setPreview({ search, index: next })} onStepChange={changeStep} />
+    {waiting && <div role="status" aria-label="步骤等待" className="flex flex-wrap items-center gap-3">
+      <span>{waitingEntry ? '正在等待下一个大步' : `正在等待步骤 ${index}`} · 已生成 0–{trace.steps.length - 1}。可继续浏览已生成步骤。</span>
+      <button className={buttonVariants({ variant: 'secondary' })} onClick={() => changeStep(visibleIndex)}>取消跳转等待</button>
+    </div>}
+    <form className="flex flex-wrap items-center gap-2" onSubmit={event => {
+      event.preventDefault()
+      const target = Number(destination)
+      if (destination && Number.isSafeInteger(target) && target >= 0) changeStep(target)
+    }}>
+      <label>跳转步骤 <input aria-label="跳转步骤" className="w-32 rounded border p-2" type="number" min="0" step="1" required value={destination} onChange={event => setDestination(event.target.value)} /></label>
+      <button className={buttonVariants({ variant: 'secondary' })} type="submit">前往步骤</button>
+    </form>
+  </>
 }
 
 function RouteError({ message, preset, showListLink = true }: { message: string; preset?: Preset; showListLink?: boolean }) {

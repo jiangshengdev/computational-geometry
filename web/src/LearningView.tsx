@@ -21,8 +21,8 @@ import { LearningDock } from './LearningDock'
 import { LearningSplit } from './LearningSplit'
 
 
-export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview }: {
-  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void
+export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry }: {
+  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void
 }) {
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const keyboardScrub = useRef(false)
@@ -127,7 +127,12 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
   const changeStep = (value: number | ((current: number) => number), singleStep = false, preview = false) => {
     setHover(null)
     setNumbering(null)
-    const next = Math.max(0, Math.min(trace.steps.length - 1, typeof value === 'function' ? value(index) : value))
+    const requested = typeof value === 'function' ? value(index) : value
+    if (!generated && !preview && requested >= trace.steps.length) {
+      onStepChange(requested)
+      return
+    }
+    const next = Math.max(0, Math.min(trace.steps.length - 1, requested))
     const from = trace.steps[index], to = trace.steps[next]
     if (singleStep && !reducedMotion && next !== index && to.current && from.pending.some(point => samePoint(point, to.current!))) {
       prepareTransfer(formatPoint(to.current), 'current')
@@ -264,7 +269,7 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
             <Button variant="secondary" size="sm" onPress={() => changeStep(previousEntry)} isDisabled={previousEntry < 0}>上一个大步</Button>
             <Button variant="secondary" size="sm" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Chip color="accent" variant="soft" size="sm" aria-hidden="true"><ArrowLeft size={14} /></Chip></Button>
             <Button variant="primary" size="sm" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Button>
-            <Button variant="secondary" size="sm" onPress={() => changeStep(nextEntry)} isDisabled={nextEntry < 0}>下一个大步</Button>
+            <Button variant="secondary" size="sm" onPress={() => nextEntry < 0 ? onWaitNextEntry() : changeStep(nextEntry)} isDisabled={generated && nextEntry < 0}>下一个大步</Button>
             <Button variant="tertiary" size="sm" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Chip color="accent" variant="soft" size="sm" aria-hidden="true">R</Chip></Button>
       </div>
       <div className="learning-replay-progress" onKeyDownCapture={event => {
