@@ -354,6 +354,11 @@ impl SweepStep {
         self.execution.module = "take";
         self.execution.boundary = Some(boundary);
         self.execution.entry = boundary == 0;
+        self.sweep_context(segments, shear);
+        self.take_bindings(boundary, next, bound);
+    }
+
+    fn sweep_context(&mut self, segments: &[SweepSegment], shear: &Rational) {
         let locals = &mut self.execution.context.locals;
         locals.push(Variable::available(
             "segments",
@@ -377,6 +382,15 @@ impl SweepStep {
             ),
         ));
         locals.push(Variable::available("shear", "Rational", shear.to_string()));
+    }
+
+    fn take_bindings(
+        &mut self,
+        boundary: usize,
+        next: Option<&Option<(Point, Event)>>,
+        bound: Option<(&Point, &Event)>,
+    ) {
+        let locals = &mut self.execution.context.locals;
         locals.push(match next {
             Some(next) => Variable::available(
                 "next",
@@ -505,80 +519,303 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
             step.take_context(2, None, Some((&point, &event)), &segments, &shear);
             steps.push(step);
         }
+        // These observations execute beside the operations they describe. The
+        // event-wide membership fields remain a separate teaching summary.
+        macro_rules! observe {
+            ($module:expr, $boundary:expr, $subjects:expr, $locals:expr) => {
+                if let Some(steps) = &mut steps {
+                    let mut step = SweepStep::capture(
+                        "micro",
+                        Some(&point),
+                        &queue,
+                        &active,
+                        &result,
+                        &[],
+                        $subjects,
+                    );
+                    step.sweep_context(&segments, &shear);
+                    step.execution.module = $module;
+                    step.execution.boundary = Some($boundary);
+                    step.execution.entry = $boundary == 0;
+                    step.execution.context.locals.push(Variable::available(
+                        "point",
+                        "Point",
+                        point_value(&point),
+                    ));
+                    step.execution.context.locals.push(Variable::available(
+                        "height_order",
+                        "Vec<Ordering>",
+                        format!("{height_order:?}"),
+                    ));
+                    step.execution.context.locals.extend($locals);
+                    steps.push(step);
+                }
+            };
+        }
+        observe!(
+            "classify",
+            0,
+            &[],
+            vec![
+                Variable::available("event", "Event", event_value(&event)),
+                Variable::absent("incident", "Vec<usize>", "unassigned"),
+                Variable::absent("id", "usize", "unassigned"),
+                Variable::absent("starts", "Vec<usize>", "unassigned"),
+                Variable::absent("ends", "Vec<usize>", "unassigned"),
+                Variable::absent("passes", "Vec<usize>", "unassigned"),
+            ]
+        );
         let mut incident = event.starts;
+        macro_rules! classify {
+            ($boundary:expr, $id:expr, $members:expr) => {
+                observe!("classify", $boundary, &[], {
+                    let id: Option<usize> = $id;
+                    let members: Option<(&Vec<usize>, &Vec<usize>, &Vec<usize>)> = $members;
+                    let mut locals = vec![
+                        Variable::absent("event", "Event", "unavailable"),
+                        Variable::available("incident", "Vec<usize>", format!("{incident:?}")),
+                        id.map_or_else(
+                            || {
+                                Variable::absent(
+                                    "id",
+                                    "usize",
+                                    if $boundary == 1 {
+                                        "unassigned"
+                                    } else {
+                                        "unavailable"
+                                    },
+                                )
+                            },
+                            |id| Variable::available("id", "usize", id.to_string()),
+                        ),
+                    ];
+                    for (name, value) in [
+                        ("starts", members.map(|members| members.0)),
+                        ("ends", members.map(|members| members.1)),
+                        ("passes", members.map(|members| members.2)),
+                    ] {
+                        locals.push(value.map_or_else(
+                            || Variable::absent(name, "Vec<usize>", "unassigned"),
+                            |value| Variable::available(name, "Vec<usize>", format!("{value:?}")),
+                        ));
+                    }
+                    locals
+                });
+            };
+        }
+        classify!(1, None, None);
         // Every active segment spans the current x. Recover the whole equal-y
         // block, including unscheduled participants in a multiway crossing.
         // Refresh every active entry for this event before consulting it. Only
         // its ordering against the event height is needed by the later removal
         // and insertion searches; newly starting segments are not read here.
         for &id in &active {
+            classify!(2, Some(id), None);
             height_order[id] = segments[id].y_at(&point.x).cmp(&point.y);
+            classify!(3, Some(id), None);
             if height_order[id].is_eq() {
+                classify!(4, Some(id), None);
                 incident.push(id);
+                classify!(5, Some(id), None);
+            } else {
+                classify!(5, Some(id), None);
             }
         }
+        classify!(6, None, None);
         // Capture membership once from the same exact incident block used by
         // the sweep, before removals or insertions change the active state.
-        let participants = steps.as_ref().map(|_| {
+        let participants = if steps.is_some() {
             let mut starts = Vec::new();
             let mut ends = Vec::new();
             let mut passes = Vec::new();
+            classify!(7, None, Some((&starts, &ends, &passes)));
             for &id in &incident {
+                classify!(8, Some(id), Some((&starts, &ends, &passes)));
                 if segments[id].left == point {
+                    classify!(9, Some(id), Some((&starts, &ends, &passes)));
                     starts.push(id);
                 }
+                classify!(10, Some(id), Some((&starts, &ends, &passes)));
                 if segments[id].right == point {
+                    classify!(11, Some(id), Some((&starts, &ends, &passes)));
                     ends.push(id);
                 }
+                classify!(12, Some(id), Some((&starts, &ends, &passes)));
                 if segments[id].left != point && segments[id].right != point {
+                    classify!(13, Some(id), Some((&starts, &ends, &passes)));
                     passes.push(id);
                 }
+                classify!(14, Some(id), Some((&starts, &ends, &passes)));
             }
-            (starts, ends, passes)
-        });
+            classify!(15, None, Some((&starts, &ends, &passes)));
+            Some((starts, ends, passes))
+        } else {
+            None
+        };
+        macro_rules! record {
+            ($boundary:expr, $indices:expr, $interval:expr, $geometry:expr) => {
+                observe!(
+                    "record",
+                    $boundary,
+                    &{
+                        let indices: Option<(usize, usize, Option<usize>)> = $indices;
+                        indices
+                            .and_then(|(_, a, b)| b.map(|b| vec![a, b]))
+                            .unwrap_or_default()
+                    },
+                    {
+                        let indices: Option<(usize, usize, Option<usize>)> = $indices;
+                        let (start, end): (Option<&Point>, Option<&Point>) = $interval;
+                        let geometry: Option<&Geometry> = $geometry;
+                        let mut locals = vec![
+                            Variable::absent("event", "Event", "unavailable"),
+                            Variable::available("incident", "Vec<usize>", format!("{incident:?}")),
+                            Variable::available(
+                                "participants",
+                                "Option<(Vec<usize>, Vec<usize>, Vec<usize>)>",
+                                format!("{participants:?}"),
+                            ),
+                        ];
+                        for (name, value) in [
+                            ("i", indices.map(|indices| indices.0)),
+                            ("a", indices.map(|indices| indices.1)),
+                            ("b", indices.and_then(|indices| indices.2)),
+                        ] {
+                            locals.push(value.map_or_else(
+                                || {
+                                    Variable::absent(
+                                        name,
+                                        "usize",
+                                        if $boundary == 0 || ($boundary == 1 && name == "b") {
+                                            "unassigned"
+                                        } else {
+                                            "unavailable"
+                                        },
+                                    )
+                                },
+                                |value| Variable::available(name, "usize", value.to_string()),
+                            ));
+                        }
+                        let in_pair = indices.is_some_and(|indices| indices.2.is_some());
+                        locals.push(if in_pair && $boundary >= 3 {
+                            Variable::available(
+                                "original",
+                                "closure",
+                                "|p| Point { x: p.x - shear * p.y, y: p.y }".to_owned(),
+                            )
+                        } else {
+                            Variable::absent(
+                                "original",
+                                "closure",
+                                if in_pair { "unassigned" } else { "unavailable" },
+                            )
+                        });
+                        for (name, value) in [("start", start), ("end", end)] {
+                            locals.push(value.map_or_else(
+                                || {
+                                    Variable::absent(
+                                        name,
+                                        "&Point",
+                                        if in_pair && $boundary < 11 {
+                                            "unassigned"
+                                        } else {
+                                            "unavailable"
+                                        },
+                                    )
+                                },
+                                |value| Variable::available(name, "&Point", point_value(value)),
+                            ));
+                        }
+                        locals.push(geometry.map_or_else(
+                            || {
+                                Variable::absent(
+                                    "geometry",
+                                    "Geometry",
+                                    if $boundary < 14 {
+                                        "unassigned"
+                                    } else {
+                                        "unavailable"
+                                    },
+                                )
+                            },
+                            |geometry| {
+                                Variable::available(
+                                    "geometry",
+                                    "Geometry",
+                                    match geometry {
+                                        Geometry::Point(point) => {
+                                            format!("Point({})", point_value(point))
+                                        }
+                                        Geometry::Overlap { start, end } => format!(
+                                            "Overlap {{ start: {}, end: {} }}",
+                                            point_value(start),
+                                            point_value(end)
+                                        ),
+                                    },
+                                )
+                            },
+                        ));
+                        locals
+                    }
+                );
+                if $boundary == 14
+                    && let Some(steps) = &mut steps
+                {
+                    steps
+                        .last_mut()
+                        .expect("record observation was captured")
+                        .action = "record";
+                }
+            };
+        }
+        record!(0, None, (None, None), None);
         for (i, &a) in incident.iter().enumerate() {
+            record!(1, Some((i, a, None)), (None, None), None);
             for &b in &incident[i + 1..] {
+                record!(2, Some((i, a, Some(b))), (None, None), None);
                 let original = |p: &Point| Point {
                     x: &p.x - &shear * &p.y,
                     y: p.y.clone(),
                 };
+                record!(3, Some((i, a, Some(b))), (None, None), None);
                 let geometry = if segments[a].slope == segments[b].slope {
+                    record!(4, Some((i, a, Some(b))), (None, None), None);
                     // Incident segments with equal slopes lie on the same line.
                     // Emit exactly at the later start, using both original ends
                     // rather than the next event (which may involve a third input).
                     let start = (&segments[a].left).max(&segments[b].left);
+                    record!(5, Some((i, a, Some(b))), (Some(start), None), None);
                     if start != &point {
+                        record!(6, Some((i, a, Some(b))), (Some(start), None), None);
                         continue;
                     }
+                    record!(7, Some((i, a, Some(b))), (Some(start), None), None);
                     let end = (&segments[a].right).min(&segments[b].right);
+                    record!(8, Some((i, a, Some(b))), (Some(start), Some(end)), None);
                     if start < end {
+                        record!(9, Some((i, a, Some(b))), (Some(start), Some(end)), None);
                         Geometry::Overlap {
                             start: original(start),
                             end: original(end),
                         }
                     } else {
+                        record!(10, Some((i, a, Some(b))), (Some(start), Some(end)), None);
                         Geometry::Point(original(start))
                     }
                 } else {
+                    record!(11, Some((i, a, Some(b))), (None, None), None);
                     Geometry::Point(original(&point))
                 };
+                record!(13, Some((i, a, Some(b))), (None, None), Some(&geometry));
                 result.push(Intersection {
                     segments: [a.min(b), a.max(b)],
                     geometry,
                 });
-                if let Some(steps) = &mut steps {
-                    steps.push(SweepStep::capture(
-                        "record",
-                        Some(&point),
-                        &queue,
-                        &active,
-                        &result,
-                        &[],
-                        &[a, b],
-                    ));
-                }
+                record!(14, Some((i, a, Some(b))), (None, None), None);
             }
+            record!(15, Some((i, a, None)), (None, None), None);
         }
+        record!(16, None, (None, None), None);
         if let Some(steps) = &mut steps {
             let removed: Vec<_> = active
                 .iter()

@@ -1,0 +1,41 @@
+export interface TeachingModule { title: string; code: string }
+
+// Boundaries are recorded at the corresponding operations in the Rust sweep.
+export const teachingModules: Record<string, TeachingModule> = {
+  take: { title: '取事件', code: 'let next = queue.pop_first();\nlet Some((point, event)) = next else { break; };' },
+  classify: { title: '参与线段分类', code: [
+    'let mut incident = event.starts;',
+    'for &id in &active {',
+    '    height_order[id] = segments[id].y_at(&point.x).cmp(&point.y);',
+    '    if height_order[id].is_eq() {',
+    '        incident.push(id);',
+    '    } }',
+    'let (mut starts, mut ends, mut passes) = (Vec::new(), Vec::new(), Vec::new());',
+    'for &id in &incident {',
+    '    if segments[id].left == point {',
+    '        starts.push(id);',
+    '    } if segments[id].right == point {',
+    '        ends.push(id);',
+    '    } if segments[id].left != point && segments[id].right != point {',
+    '        passes.push(id);',
+    '    } }',
+  ].join('\n') },
+  record: { title: '配对与记录', code: [
+    'for (i, &a) in incident.iter().enumerate() {',
+    '    for &b in &incident[i + 1..] {',
+    '        let original = |p| Point { x: p.x - shear * p.y, y: p.y };',
+    '        let geometry = if segments[a].slope == segments[b].slope {',
+    '            let start = segments[a].left.max(segments[b].left);',
+    '            if start != &point {',
+    '                continue; }',
+    '            let end = segments[a].right.min(segments[b].right);',
+    '            if start < end {',
+    '                Geometry::Overlap { start: original(start), end: original(end) }',
+    '            } else { Geometry::Point(original(start)) }',
+    '        } else { Geometry::Point(original(&point)) };',
+    '        // geometry 已赋值',
+    '        result.push(Intersection { segments: [a.min(b), a.max(b)], geometry });',
+    '    }',
+    '}',
+  ].join('\n') },
+}

@@ -1,29 +1,43 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@heroui/react/card'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
+import { teachingModules } from './executionCode'
 
-// These two statements correspond to the actual pop and pattern match in sweep.
-const takeCode = 'let next = queue.pop_first();\nlet Some((point, event)) = next else { break; };'
-let highlightedTake: Promise<ThemedToken[][]> | undefined
-function loadTakeCode() {
-  highlightedTake ??= import('shiki').then(({ codeToTokens }) => codeToTokens(takeCode, {
+const highlightedModules = new Map<string, Promise<ThemedToken[][]>>()
+function loadCode(code: string) {
+  let highlighted = highlightedModules.get(code)
+  highlighted ??= import('shiki').then(({ codeToTokens }) => codeToTokens(code, {
     lang: 'rust', themes: { light: 'github-light', dark: 'github-dark' },
   })).then(result => result.tokens)
-  return highlightedTake
+  highlightedModules.set(code, highlighted)
+  return highlighted
 }
 
 export function ExecutionPanel({ step, previous, shear, values }: {
   step: SweepStep; previous: SweepStep; shear: Rational; values: string[]
 }) {
-  const [tokens, setTokens] = useState<ThemedToken[][] | null>(null)
+  const [highlight, setHighlight] = useState<{ source: string; tokens: ThemedToken[][] } | null>(null)
   const [error, setError] = useState(false)
   const take = step.execution.module === 'take'
+  const module = teachingModules[step.execution.module]
+  const source = module?.code
+  const tokens = highlight?.source === source ? highlight?.tokens : null
+  const scroll = useRef<HTMLDivElement>(null)
   useEffect(() => {
     let active = true
-    void loadTakeCode().then(result => { if (active) setTokens(result) }, () => { if (active) setError(true) })
+    if (source) void loadCode(source).then(result => { if (active) { setHighlight({ source, tokens: result }); setError(false) } }, () => { if (active) setError(true) })
     return () => { active = false }
-  }, [])
+  }, [source])
+  useEffect(() => {
+    const container = scroll.current
+    const boundary = container?.querySelector<HTMLElement>('.execution-boundary')
+    if (!container || !boundary) return
+    const top = boundary.offsetTop
+    if (top < container.scrollTop || top + 12 > container.scrollTop + container.clientHeight) {
+      container.scrollTop = Math.max(0, top - container.clientHeight / 2)
+    }
+  }, [tokens, step.execution.boundary])
   const context = step.execution.context
   const prior = previous.execution.context
   const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
@@ -39,13 +53,13 @@ export function ExecutionPanel({ step, previous, shear, values }: {
       <CardTitle render={props => <h2 {...props} />}>核心代码回放</CardTitle>
     </CardHeader>
     <CardContent className="learning-panel-content execution-content">
-      {take ? <div className="execution-source">
-        <p className="text-sm">教学代码 · Rust 风格精简片段 · <code>sweep</code> / 取事件</p>
-        <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : '已绑定 point 与 event；取事件模块完成'}</p>
-        <div className="execution-code-scroll" tabIndex={0} role="region" aria-label="取事件教学代码">
+      {module ? <div className="execution-source">
+        <p className="text-sm">教学代码 · Rust 风格精简片段 · <code>{context.function}</code> / {module.title}</p>
+        <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态'}</p>
+        <div ref={scroll} className="execution-code-scroll" tabIndex={0} role="region" aria-label={`${module.title}教学代码`}>
           {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code"><code>
             {tokens.map((line, index) => <span className="code-line" key={index}>{line.map((token, tokenIndex) => <span key={tokenIndex} style={{ color: token.color, ...token.htmlStyle } as CSSProperties}>{token.content}</span>)}{'\n'}</span>)}
-          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束'}`} style={{ top: `calc(.75rem + ${step.execution.boundary} * 1.75rem)` }}>➜</span></pre> : <p role="status">加载教学代码…</p>}
+          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${step.execution.boundary} * 1.75rem)` }}>➜</span></pre> : <p role="status">加载教学代码…</p>}
         </div>
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}
       <section aria-label="当前执行上下文" className="execution-context">

@@ -84,7 +84,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   const previousEntry = trace.steps.findLastIndex((state, position) => position < index && state.execution.entry)
   const nextEntry = trace.steps.findIndex((state, position) => position > index && state.execution.entry)
   // A pop changes the queue, not the displayed sweep position. Keep its side too.
-  const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && !['take-entry', 'take-pop', 'take-empty'].includes(state.action))
+  const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action))
   const geometryStep = trace.steps[geometryIndex]
   const complete = index === trace.steps.length - 1
   const points = results.flatMap(result => result.geometry.type === 'point' ? [result.geometry.point] : [])
@@ -153,6 +153,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
         {step.action === 'take-entry' && <p>进入取事件模块，尚未执行第一条核心语句。当前事件与画布保留上一步状态；下一小步将取出队首事件。</p>}
         {step.action === 'take-pop' && <p>已执行 queue.pop_first()，返回值保存在 next 中。尚未匹配和绑定 point、event，所以画布仍保留上一步位置。这是模块中间状态。</p>}
         {step.action === 'take-empty' && <p>next 为 None，事件队列已空，退出扫描循环。学习完成。</p>}
+        {step.action === 'micro' && <p>算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。</p>}
         {pointInputs.length > 0 && <p>零长度点 <span className="coordinates">{inputReferences(pointInputs, '、')}</span> 的两个端点重合，所以同时属于开始和结束，不进入持续活动顺序。它们只在当前精确位置参与配对：位于线段内部或闭端点都算接触；重合点仍保留独立输入身份。没有配对的点事件也会正常完成。</p>}
         {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。'}接下来检查新邻居是否会在未来相交。</p>}
         {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。{endingOverlaps.length > 0 && <>此处是重叠止界：{continuingOverlapInputs.length ? <>{inputReferences(continuingOverlapInputs, '、')} 继续，当前结束者退出。</> : '这些配对的成员均在此结束。'}交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。</>}</p>}

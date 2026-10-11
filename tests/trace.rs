@@ -45,6 +45,7 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
     );
     let segment_indices: Vec<_> = steps
         .iter()
+        .filter(|step| step.execution.module == "take")
         .flat_map(|step| &step.execution.context.locals)
         .filter(|variable| variable.name == "segments")
         .map(|variable| variable.value.unwrap())
@@ -110,7 +111,9 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
                 assert!(index < values.len());
             }
         }
-        if !step.action.starts_with("take") {
+        if !step.action.starts_with("take")
+            && !matches!(step.execution.module.as_str(), "classify" | "record")
+        {
             assert_eq!(step.execution.module, step.action);
             assert_eq!(step.execution.boundary, None);
             assert!(step.execution.entry);
@@ -299,7 +302,7 @@ async fn equal_x_trace_events_reorder_only_their_own_participants() {
             .filter(|step| {
                 !matches!(
                     step.action.as_str(),
-                    "take-entry" | "take-pop" | "take-empty"
+                    "take-entry" | "take-pop" | "take-empty" | "micro"
                 ) && step.current.as_ref().is_some_and(|p| {
                     p.x.numerator == x
                         && p.y.numerator == y

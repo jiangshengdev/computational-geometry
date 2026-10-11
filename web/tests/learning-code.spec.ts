@@ -44,9 +44,11 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
-    const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
     await page.goto('/cases/spider-web/learn')
-    const { trace, intersections }: { trace: SweepTrace; intersections: unknown[] } = await (await response).json()
+    // Read the real API through the request fixture: Firefox's network inspector
+    // evicts large response bodies even when the page consumed them successfully.
+    const response = await request.post('/api/intersections', { data: { segments: presets.find(preset => preset.id === 'spider-web')!.segments, trace: true } })
+    const { trace, intersections }: { trace: SweepTrace; intersections: unknown[] } = await response.json()
     const normal = await request.post('/api/intersections', { data: { segments: presets.find(preset => preset.id === 'spider-web')!.segments } })
     expect((await normal.json()).intersections).toEqual(intersections)
     const entry = trace.steps.findIndex(step => step.action === 'take-entry')
@@ -83,7 +85,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.getByRole('button', { name: '下一个大步', exact: true }).click()
     const following = trace.steps.findIndex((step, index) => index > entry && step.execution.entry)
     await expect(page).toHaveURL(new RegExp(`step=${following}$`))
-    await expect(panel).toContainText('仅提供大步观察点')
+    await expect(panel).toContainText('参与线段分类')
     await page.getByRole('button', { name: '上一个大步', exact: true }).click()
     await expect(panel).toContainText('第一条核心语句之前')
     await expect(page).toHaveTitle('蜘蛛网 · 逐步学习 · BO 结果查看器')
