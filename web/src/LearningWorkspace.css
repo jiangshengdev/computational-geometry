@@ -32,11 +32,11 @@
 .execution-context code { font-family: var(--font-mono); }
 .execution-context-description code { padding: .1em .3em; border-radius: .25rem; background: var(--surface-secondary); font-family: var(--font-mono); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .execution-context h3, .execution-context h4 { font-weight: 600; margin: .5rem 0; }
-.execution-variable { padding: .4rem; border-left: 3px solid transparent; }
+.execution-variable { padding: .4rem; border-left: 3px solid transparent; max-height: 6rem; overflow: auto; overscroll-behavior: contain; }
 .execution-variable[data-changed="true"] { border-color: var(--accent); background: var(--surface-secondary); }
-.execution-variable dt { display: flex; flex-wrap: wrap; gap: .5rem; }
-.execution-variable dd { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: .25rem; max-height: 6rem; overflow: auto; overscroll-behavior: contain; }
-.execution-change { color: var(--accent); }
+.execution-variable dt { display: inline; }
+.execution-variable dd { display: inline; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+.execution-change { float: right; margin-left: .5rem; color: var(--accent); }
 .execution-symbol { cursor: help; border-radius: 2px; text-decoration: underline dotted; text-underline-offset: 3px; }
 .execution-symbol:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .execution-symbol-tooltip { max-width: min(32rem, calc(100vw - 2rem)); max-height: 20rem; overflow: auto; white-space: normal; overflow-wrap: anywhere; font-size: .8125rem; }

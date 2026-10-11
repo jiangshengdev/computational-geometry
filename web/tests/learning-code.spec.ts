@@ -72,7 +72,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     if (width === 390) expect(scroll).toBeGreaterThan(0)
     expect(await code.evaluate(element => Math.abs(element.scrollWidth - element.clientWidth - element.scrollLeft))).toBeLessThanOrEqual(1)
     expect(await offset()).toBe(before)
-    const queue = variables.getByTestId('variable-queue').locator('dd')
+    const queue = variables.getByTestId('variable-queue')
     await queue.scrollIntoViewIfNeeded()
     expect(await offset()).toBe(before)
     expect(await queue.evaluate(element => {

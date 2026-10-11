@@ -17,6 +17,7 @@ test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) 
       const rows = panel.getByRole('region', { name: '当前执行上下文' }).locator('dl').nth(kind === 'parameters' ? 0 : 1)
       for (const variable of trace.steps[stepIndex].execution.context[kind]) {
         const row = rows.getByTestId(`variable-${variable.name}`)
+        await expect(row.locator('dt > code')).toHaveText(`${variable.name}: ${variable.type} =`)
         if (variable.availability === 'available' && variable.value !== null) {
           await expect(row.locator('dd')).toHaveText(trace.values[variable.value])
           await expect(row.locator('dd code span[style]').first()).toBeAttached()
@@ -29,6 +30,15 @@ test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) 
     if (stepIndex === index + 1) await page.getByRole('button', { name: '上一步', exact: true }).click()
     else if (stepIndex === index) await page.getByRole('button', { name: '下一步', exact: true }).click()
   }
+  const result = panel.getByTestId('variable-result')
+  await expect(result.locator('dd')).toHaveText('[]')
+  const inline = await result.evaluate(element => {
+    const term = element.querySelector('dt > code')!.getBoundingClientRect()
+    const value = element.querySelector('dd > code')!.getBoundingClientRect()
+    return { sameLine: Math.abs(term.top - value.top) < 1, followsType: value.left >= term.right }
+  })
+  expect(inline).toEqual({ sameLine: true, followsType: true })
+  await panel.screenshot({ path: join(tmpdir(), 'bo-variable-inline.png') })
   for (const code of await panel.locator('code').all()) await expect(code).toHaveCSS('font-family', /mono/i)
   const token = panel.locator('dd code span[style]').first()
   await expect(token).toBeAttached()

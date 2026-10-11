@@ -103,7 +103,7 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
   const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
     const { changed } = variableChange(variable, kind, step, previous)
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
-      <dt><VariableCode>{variable.name}</VariableCode> <VariableCode>{variable.type}</VariableCode>{changed && <span className="execution-change">本步变化</span>}</dt>
+      <dt><VariableCode>{`${variable.name}: ${variable.type} = `}</VariableCode>{changed && <span className="execution-change">本步变化</span>}</dt>
       <dd className={variable.availability === 'unavailable' ? 'text-muted' : undefined}>{variable.availability === 'available' && variable.value !== null ? <VariableCode>{variableValue(variable, values)}</VariableCode> : variableValue(variable, values)}</dd>
     </div>
   }
