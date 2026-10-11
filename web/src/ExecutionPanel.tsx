@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@heroui/react/card'
+import { ArrowRight } from 'lucide-react'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
 import { teachingModules } from './executionCode'
@@ -71,7 +72,7 @@ export function ExecutionPanel({ step, previous, values }: {
                 })}</span>
               })}{'\n'}</span>
             })}
-          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${step.execution.boundary} * 1.75rem)` }}>➜</span></pre> : <p role="status">加载教学代码…</p>}
+          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${step.execution.boundary} * 1.75rem)` }}><ArrowRight aria-hidden="true" /></span></pre> : <p role="status">加载教学代码…</p>}
         </div>
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}
     </CardContent>

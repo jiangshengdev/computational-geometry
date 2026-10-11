@@ -21,7 +21,9 @@
 .execution-code-scroll { position: relative; min-height: 0; overflow: auto; max-height: 18rem; border-radius: 4px; }
 .execution-code { position: relative; width: max-content; min-width: 100%; padding: .75rem 1.5rem; margin: 0; line-height: 1.75rem; font-size: .8125rem; }
 .code-line { display: block; height: 1.75rem; }
-.execution-boundary { position: absolute; left: 0; right: 0; height: 0; border-top: 2px solid var(--accent); color: var(--accent); line-height: 0; pointer-events: none; }
+.execution-boundary { position: absolute; left: 0; right: 0; height: 2px; color: var(--accent); pointer-events: none; }
+.execution-boundary > svg { position: absolute; left: 4px; top: -7px; width: 16px; height: 16px; }
+.execution-boundary::after { content: ''; position: absolute; left: 24px; right: 0; top: 0; height: 2px; background: currentColor; }
 .execution-context { font-size: .8125rem; }
 .execution-context h3, .execution-context h4 { font-weight: 600; margin: .5rem 0; }
 .execution-variable { padding: .4rem; border-left: 3px solid transparent; }
