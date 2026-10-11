@@ -1,8 +1,38 @@
 import { expect, test } from './learning-test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { readResponse } from './trace-navigation'
+import { readResponse, readTrace } from './trace-navigation'
 import { presets } from '../src/presets'
+
+test('右大括号分行后，真实轨迹边界仍对齐下一条语句', async ({ page }) => {
+  const trace = await readTrace(page, 'crossing')
+  const cases = [
+    { module: 'take', boundary: 2, next: null },
+    { module: 'classify', boundary: 6, next: 'let (mut starts, mut ends, mut passes) = (Vec::new(), Vec::new(), Vec::new());' },
+    { module: 'classify', boundary: 11, next: 'ends.push(id);' },
+    { module: 'neighbors', boundary: 4, next: 'let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);' },
+    { module: 'geometry', boundary: 4, next: 'if point > *current {' },
+    { module: 'record', boundary: 13, next: 'result.push(Intersection { segments: [a.min(b), a.max(b)], geometry });' },
+  ]
+  for (const example of cases) {
+    const index = trace.steps.findIndex(step => step.execution.module === example.module && step.execution.boundary === example.boundary)
+    expect(index, `${example.module} ${example.boundary}`).toBeGreaterThanOrEqual(0)
+    await page.goto(`/cases/crossing/learn?step=${index}`)
+    const panel = page.getByRole('region', { name: '核心代码回放' })
+    await expect(panel.locator('.code-line').first()).toBeAttached()
+    const alignment = await panel.evaluate((element, next) => {
+      const lines = Array.from(element.querySelectorAll('.code-line'))
+      const following = next === null ? undefined : lines.find(line => line.textContent?.trim() === next)
+      const last = lines[lines.length - 1].getBoundingClientRect()
+      const expected = next === null ? last.bottom : following?.getBoundingClientRect().top
+      const actual = element.querySelector('.execution-boundary')!.getBoundingClientRect().top
+      return { expected, actual, lines: lines.map(line => line.textContent!.trim()) }
+    }, example.next)
+    expect(alignment.expected).toBeDefined()
+    expect(Math.abs(alignment.actual - alignment.expected!)).toBeLessThanOrEqual(1)
+    expect(alignment.lines.some(line => /}\s*}|;\s*}|}\s*(?:if|else)/.test(line))).toBe(false)
+  }
+})
 
 test('取事件的真实小步同步代码、队列和上下文，并可完整回退', async ({ page }) => {
   await page.goto('/cases/crossing/learn')
@@ -73,9 +103,10 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     expect(await code.evaluate(element => Math.abs(element.scrollWidth - element.clientWidth - element.scrollLeft))).toBeLessThanOrEqual(1)
     expect(await offset()).toBe(before)
     const queue = variables.getByTestId('variable-queue')
+    await queue.getByRole('button').click()
     await queue.scrollIntoViewIfNeeded()
     expect(await offset()).toBe(before)
-    expect(await queue.evaluate(element => {
+    expect(await queue.locator('.execution-variable-value').evaluate(element => {
       element.scrollTop = element.scrollHeight
       return element.scrollTop
     })).toBeGreaterThan(0)

@@ -37,15 +37,18 @@
 .execution-context-tooltip { max-width: min(36rem, calc(100vw - 2rem)); }
 .execution-context-tooltip .execution-context-description code { display: inline-block; max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; vertical-align: baseline; }
 .execution-context h3, .execution-context h4 { font-weight: 600; margin: .5rem 0; }
-.execution-variable { padding: .2rem .4rem; border-left: 3px solid transparent; max-height: calc(8lh + .4rem); overflow: auto; overscroll-behavior: contain; }
+.execution-variable { padding: .2rem .4rem; border-left: 3px solid transparent; }
+.execution-variable-value { max-height: 8lh; overflow: auto; overscroll-behavior: contain; }
 .execution-variable[data-changed="true"] { border-color: var(--accent); background: var(--surface-secondary); }
 .execution-variable dt { display: inline; }
 .execution-variable dd { display: inline; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
-.execution-change { float: right; margin-left: .5rem; color: var(--accent); }
 .execution-symbol { cursor: help; border-radius: 2px; text-decoration: underline dotted; text-underline-offset: 3px; }
-.execution-symbol-tooltip { max-width: min(32rem, calc(100vw - 2rem)); max-height: 20rem; overflow: auto; white-space: normal; overflow-wrap: anywhere; font-size: .8125rem; }
+.execution-symbol-tooltip { max-width: min(48rem, calc(100vw - 2rem)); max-height: 20rem; overflow: auto; white-space: normal; overflow-wrap: anywhere; font-size: .8125rem; }
 .execution-symbol-tooltip p { margin-top: .3rem; }
-.execution-symbol-tooltip code { white-space: pre-wrap; }
+.execution-symbol-tooltip code { padding: .1em .3em; border-radius: .25rem; background: var(--surface-secondary); font-family: var(--font-mono); white-space: pre-wrap; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.execution-symbol-tooltip code[data-multiline="true"] { display: block; margin-top: .3rem; padding: .5rem .75rem; }
+.execution-symbol-tooltip [data-value-phase="current"] > code { background: var(--accent-soft); }
+.execution-symbol-tooltip [data-value-phase="previous"] > code { background: var(--surface-secondary); }
 .dark .execution-code span[style] { color: var(--shiki-dark) !important; }
 .dark .execution-variable-code span[style] { color: var(--shiki-dark) !important; }
 .learning-variables .learning-panel-content { max-height: 24rem; }

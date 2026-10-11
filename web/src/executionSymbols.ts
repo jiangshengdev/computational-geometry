@@ -61,6 +61,10 @@ export function callExpression(name: string, after: string) {
 
 export const shadowedValueNote = '（已遮蔽，遮蔽前的最后值）'
 
+export function hasVariableValue(variable: ExecutionVariable | undefined) {
+  return !!variable && (variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null
+}
+
 export function variableValue(variable: ExecutionVariable | undefined, values: string[]) {
   if (!variable || variable.availability === 'unavailable') return '不可用（当前作用域未提供）'
   if (variable.availability === 'unassigned') return '未赋值'
@@ -104,8 +108,10 @@ export function variableDetails(name: string, step: SweepStep, previous: SweepSt
   return {
     meaning: meanings[name], type: variable?.type ?? '当前作用域未提供类型',
     value: variableValue(variable, values),
+    hasValue: hasVariableValue(variable),
     changed,
     previous: variableValue(old, values),
+    previousHasValue: hasVariableValue(old),
     scope: symbolScope(name, step.execution.module, line),
   }
 }

@@ -3,6 +3,8 @@ import { readTrace } from './trace-navigation'
 import { presets } from '../src/presets'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { formatExecutionValue } from '../src/executionValue'
+import { shadowedValueNote } from '../src/executionSymbols'
 
 test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) => {
   const errors: string[] = []
@@ -17,9 +19,11 @@ test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) 
       const rows = panel.getByRole('region', { name: '当前执行上下文' }).locator('dl').nth(kind === 'parameters' ? 0 : 1)
       for (const variable of trace.steps[stepIndex].execution.context[kind]) {
         const row = rows.getByTestId(`variable-${variable.name}`)
-        await expect(row.locator('dt > code')).toHaveText(`${variable.name}: ${variable.type} =`)
-        if (variable.availability === 'available' && variable.value !== null) {
-          await expect(row.locator('dd')).toHaveText(trace.values[variable.value])
+        const disclosure = row.getByRole('button')
+        if (await disclosure.count() && await disclosure.getAttribute('aria-expanded') === 'false') await disclosure.click()
+        await expect(row.locator('dt code').first()).toHaveText(`${variable.name}: ${variable.type} =`)
+        if ((variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null) {
+          await expect(row.locator('dd')).toHaveText(formatExecutionValue(trace.values[variable.value]) + (variable.availability === 'shadowed' ? shadowedValueNote : ''))
           await expect(row.locator('dd code span[style]').first()).toBeAttached()
         } else {
           await expect(row.locator('dd')).toHaveClass('text-muted')
@@ -103,6 +107,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await code.scrollIntoViewIfNeeded()
     await expect(boundary).toBeInViewport()
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
+    for (const trigger of await variables.locator('.execution-variable').getByRole('button').all()) await trigger.click()
     const context = variables.locator('.execution-context')
     const geometry = page.getByRole('region', { name: '几何视图', exact: true })
     const regions = [geometry, panel, variables]
@@ -117,7 +122,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     expect(await Promise.all(regions.map(region => region.boundingBox()))).toEqual(boxes)
     const layout = () => panel.locator('.code-line').evaluateAll(lines => lines.map(line => ({ top: (line as HTMLElement).offsetTop, height: line.getBoundingClientRect().height })))
     const before = await layout()
-    const symbol = panel.locator('.code-line').nth(7).locator('[data-symbol="id"]')
+    const symbol = panel.locator('[data-symbol="id"][data-line="8"]')
     await symbol.hover()
     await expect(page.getByRole('tooltip', { name: /^变量 id / })).toContainText('当前值')
     expect(await layout()).toEqual(before)

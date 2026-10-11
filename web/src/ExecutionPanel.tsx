@@ -1,20 +1,18 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@heroui/react/card'
-import { ArrowRight, Info } from 'lucide-react'
+import { ArrowRight, Info, SquareMinus, SquarePlus } from 'lucide-react'
 import { Button } from '@heroui/react/button'
 import { Tooltip } from '@heroui/react/tooltip'
+import { Disclosure } from '@heroui/react/disclosure'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
 import { teachingModules } from './executionCode'
 import { ExecutionSymbol } from './ExecutionSymbol'
-import { callExpression, shadowedValueNote, symbolKind, variableChange, variableValue } from './executionSymbols'
+import { RustCode as VariableCode } from './RustCode'
+import { tokenizeRust } from './rustHighlight'
+import { callExpression, hasVariableValue, shadowedValueNote, symbolKind, variableChange, variableValue } from './executionSymbols'
 
 const highlightedModules = new Map<string, Promise<ThemedToken[][]>>()
-function tokenizeRust(code: string) {
-  return import('shiki').then(({ codeToTokens }) => codeToTokens(code, {
-    lang: 'rust', themes: { light: 'github-light', dark: 'github-dark' },
-  })).then(result => result.tokens)
-}
 
 function loadCode(code: string) {
   let highlighted = highlightedModules.get(code)
@@ -32,6 +30,7 @@ export function ExecutionPanel({ step, previous, values }: {
   const module = teachingModules[step.execution.module]
   const source = module?.code
   const tokens = highlight?.source === source ? highlight?.tokens : null
+  const boundaryLine = module && step.execution.boundary !== null ? module.boundaryLines[step.execution.boundary] : 0
   const scroll = useRef<HTMLDivElement>(null)
   useEffect(() => {
     let active = true
@@ -46,7 +45,7 @@ export function ExecutionPanel({ step, previous, values }: {
     if (top < container.scrollTop || top + 12 > container.scrollTop + container.clientHeight) {
       container.scrollTop = Math.max(0, top - container.clientHeight / 2)
     }
-  }, [tokens, step.execution.boundary])
+  }, [tokens, boundaryLine])
   const context = step.execution.context
   return <section aria-label="核心代码回放" className="learning-panel learning-code"><Card className="learning-panel-card">
     <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">
@@ -74,41 +73,52 @@ export function ExecutionPanel({ step, previous, values }: {
                   const kind = text.slice(0, start).includes('//') ? null : symbolKind(part, text.slice(0, start), text.slice(start + part.length))
                   const occurrence = occurrences.get(part) ?? 0
                   if (kind === 'function') occurrences.set(part, occurrence + 1)
-                  return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} line={index + 1} occurrence={occurrence} module={step.execution.module} expression={callExpression(part, text.slice(start + part.length))} step={step} previous={previous} values={values}>{part}</ExecutionSymbol> : part
+                  return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} line={module.traceLines[index]} displayLine={index + 1} occurrence={occurrence} module={step.execution.module} expression={callExpression(part, text.slice(start + part.length))} step={step} previous={previous} values={values}>{part}</ExecutionSymbol> : part
                 })}</span>
               })}{'\n'}</span>
             })}
-          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${step.execution.boundary} * 1.75rem)` }}><ArrowRight aria-hidden="true" /></span></pre> : <p role="status">加载教学代码…</p>}
+          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${boundaryLine} * 1.75rem)` }}><ArrowRight aria-hidden="true" /></span></pre> : <p role="status">加载教学代码…</p>}
         </div>
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}
     </CardContent>
   </Card></section>
 }
 
-function VariableCode({ children: source }: { children: string }) {
-  const [highlight, setHighlight] = useState<{ source: string; tokens: ThemedToken[][] } | null>(null)
-  const [failedSource, setFailedSource] = useState<string | null>(null)
-  useEffect(() => {
-    let active = true
-    void tokenizeRust(source).then(tokens => {
-      if (active) { setHighlight({ source, tokens }); setFailedSource(null) }
-    }, () => { if (active) setFailedSource(source) })
-    return () => { active = false }
-  }, [source])
-  return <><code className="execution-variable-code">{highlight?.source === source ? highlight.tokens.map((line, index) => <span key={index}>{index > 0 && '\n'}{line.map((token, tokenIndex) => <span key={tokenIndex} style={{ color: token.color, ...token.htmlStyle } as CSSProperties}>{token.content}</span>)}</span>) : source}</code>{failedSource === source && <span role="alert" className="text-muted">（代码高亮加载失败）</span>}</>
+function ExecutionDisclosureIndicator({ expanded }: { expanded: boolean }) {
+  return <span className="flex h-lh shrink-0 items-center"><Disclosure.Indicator className="ms-0 transition-none data-[expanded=true]:rotate-0">
+    {expanded ? <SquareMinus aria-hidden="true" /> : <SquarePlus aria-hidden="true" />}
+  </Disclosure.Indicator></span>
 }
 
 export function ExecutionVariablesPanel({ step, previous, shear, values }: {
   step: SweepStep; previous: SweepStep; shear: Rational; values: string[]
 }) {
   const context = step.execution.context
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({})
+  const expansion = (key: string, defaultExpanded: boolean) => ({
+    isExpanded: expanded[`${context.function}:${key}`] ?? defaultExpanded,
+    onExpandedChange: (value: boolean) => setExpanded(current => ({ ...current, [`${context.function}:${key}`]: value })),
+  })
   const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
     const { changed } = variableChange(variable, kind, step, previous)
-    const hasValue = (variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null
+    const hasValue = hasVariableValue(variable)
     const shadowed = variable.availability === 'shadowed' && hasValue
+    const value = variableValue(shadowed ? { ...variable, availability: 'available' } : variable, values)
+    const multiline = hasValue && value.includes('\n')
+    const label = `${variable.name}: ${variable.type} = `
+    const state = expansion(`${kind}:${variable.name}`, false)
+    const compact = value.replace(/\s+/g, ' ')
+    const summary = compact.length > 64 ? `${compact.slice(0, 64)}…` : compact
+    if (multiline) return <Disclosure key={variable.name} {...state} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
+      <dt><Disclosure.Trigger className="flex w-full items-start gap-2 text-left" aria-label={`${variable.name}: ${variable.type}`}>
+        <ExecutionDisclosureIndicator expanded={state.isExpanded} />
+        <span className="min-w-0 flex-1"><VariableCode>{label}</VariableCode>{!state.isExpanded && <VariableCode>{summary}</VariableCode>}</span>
+      </Disclosure.Trigger>{shadowed && !state.isExpanded && <span className="text-muted">{shadowedValueNote}</span>}</dt>
+      <dd><Disclosure.Content><Disclosure.Body className="execution-variable-value"><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</Disclosure.Body></Disclosure.Content></dd>
+    </Disclosure>
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
-      <dt><VariableCode>{`${variable.name}: ${variable.type} = `}</VariableCode>{changed && <span className="execution-change">本步变化</span>}</dt>
-      <dd className={hasValue ? undefined : 'text-muted'}>{hasValue ? <><VariableCode>{variableValue(shadowed ? { ...variable, availability: 'available' } : variable, values)}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</> : variableValue(variable, values)}</dd>
+      <dt><VariableCode>{label}</VariableCode></dt>
+      <dd className={hasValue ? undefined : 'text-muted'}>{hasValue ? <><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</> : value}</dd>
     </div>
   }
   return <section aria-label="核心变量" className="learning-panel learning-variables"><Card className="learning-panel-card">
@@ -124,8 +134,10 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
           </Tooltip.Content>
         </Tooltip>
         </div>
-        <h4>核心参数</h4><dl>{context.parameters.map(variable => renderVariable(variable, 'parameters'))}</dl>
-        <h4>核心局部变量</h4><dl>{context.locals.map(variable => renderVariable(variable, 'locals'))}</dl>
+        {(['parameters', 'locals'] as const).map(kind => <Disclosure key={kind} {...expansion(kind, true)}>
+          <Disclosure.Heading level={4}><Disclosure.Trigger className="flex w-full items-center gap-2 text-left"><ExecutionDisclosureIndicator expanded={expansion(kind, true).isExpanded} />{kind === 'parameters' ? '核心参数' : '核心局部变量'}</Disclosure.Trigger></Disclosure.Heading>
+          <Disclosure.Content><Disclosure.Body><dl>{context[kind].map(variable => renderVariable(variable, kind))}</dl></Disclosure.Body></Disclosure.Content>
+        </Disclosure>)}
       </section>
     </CardContent>
   </Card></section>

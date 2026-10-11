@@ -23,7 +23,8 @@ test('变量高度按八行封顶，短值自然收缩且长值可滚动', async
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   const input = variables.getByTestId('variable-segments').filter({ hasText: 'segments: &[Segment]' })
   await expect(input).toContainText('已遮蔽')
-  const size = await input.evaluate(element => {
+  await input.getByRole('button').click()
+  const size = await input.locator('.execution-variable-value').evaluate(element => {
     const style = getComputedStyle(element)
     const padding = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)
     const line = parseFloat(style.lineHeight)
@@ -188,7 +189,7 @@ test('真实取事件代码 hover 随前进和回退更新且不改变布局', a
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const lines = panel.locator('.code-line')
-  await expect(lines).toHaveCount(2)
+  await expect(lines).toHaveText(['let next = queue.pop_first();\n', 'let Some((point, event)) = next else {\n', '    break;\n', '};\n'])
   const layout = () => lines.evaluateAll(elements => elements.map(element => {
     const rect = element.getBoundingClientRect()
     return { x: rect.x, y: rect.y, width: rect.width, height: rect.height }
