@@ -2,6 +2,87 @@ import { expect, test } from './learning-test'
 import type { SweepTrace } from '../src/geometry'
 import { readResponse, readTrace } from './trace-navigation'
 import { variableValue } from '../src/executionSymbols'
+import { formatExecutionValue } from '../src/executionValue'
+
+test('集合按条目分行且保留坐标、字段和编号数组', () => {
+  expect(formatExecutionValue('[Segment { start: (0, 0), end: (4, 4) }, Segment { start: (0, 4), end: (4, 0) }]'))
+    .toBe('[\n  Segment { start: (0, 0), end: (4, 4) },\n  Segment { start: (0, 4), end: (4, 0) }\n]')
+  expect(formatExecutionValue('{(0, 0): Event { starts: [0, 1] }, (4, 4): Event { starts: [] }}'))
+    .toBe('{\n  (0, 0): Event { starts: [0, 1] },\n  (4, 4): Event { starts: [] }\n}')
+  expect(formatExecutionValue('[S0 × S1: (1/2, 1/3) → (1/2, 5/3)]'))
+    .toBe('[\n  S0 × S1: (1/2, 1/3) → (1/2, 5/3)\n]')
+  for (const source of ['[]', '{}', '[0, 1]', '[[0, 1], [1, 2]]', '[Some(0), None]', 'Some(((0, 0), Event { starts: [0] }))']) {
+    expect(formatExecutionValue(source)).toBe(source)
+  }
+})
+
+test('变量高度按八行封顶，短值自然收缩且长值可滚动', async ({ page }) => {
+  const trace = await readTrace(page, 'mixed-vertical')
+  const index = trace.steps.findIndex(step => step.action === 'take-entry')
+  await page.goto(`/cases/mixed-vertical/learn?step=${index}`)
+  const variables = page.getByRole('region', { name: '核心变量', exact: true })
+  const input = variables.getByTestId('variable-segments').filter({ hasText: 'segments: &[Segment]' })
+  await expect(input).toContainText('已遮蔽')
+  const size = await input.evaluate(element => {
+    const style = getComputedStyle(element)
+    const padding = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)
+    const line = parseFloat(style.lineHeight)
+    const height = element.getBoundingClientRect().height
+    element.scrollTop = element.scrollHeight
+    return { lines: (height - padding) / line, scroll: element.scrollTop,
+      horizontal: element.scrollWidth - element.clientWidth,
+      padding, font: parseFloat(style.fontSize) }
+  })
+  expect(size.lines).toBeCloseTo(8, 1)
+  expect(size.scroll).toBeGreaterThan(0)
+  expect(size.horizontal).toBeLessThanOrEqual(1)
+  expect(size.padding).toBeLessThan(size.font)
+  const active = variables.getByTestId('variable-active')
+  const shortLines = await active.evaluate(element => {
+    const style = getComputedStyle(element)
+    return (element.getBoundingClientRect().height - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom)) / parseFloat(style.lineHeight)
+  })
+  expect(shortLines).toBeCloseTo(1, 1)
+})
+
+test('核心变量说明默认收起，信息按钮支持悬浮和键盘访问', async ({ page }) => {
+  await page.goto('/cases/crossing/learn?step=1')
+  const variables = page.getByRole('region', { name: '核心变量', exact: true })
+  const button = variables.getByRole('button', { name: '核心变量说明' })
+  const tooltip = page.getByRole('tooltip')
+  await expect(button).toBeVisible()
+  await expect(variables.locator('.execution-context-description')).toHaveCount(0)
+  await variables.getByRole('heading', { name: '核心参数' }).hover()
+  await button.hover()
+  await expect(tooltip).toContainText('当前小步的核心上下文')
+  await expect(tooltip).toContainText('已被同名局部变量遮蔽')
+  const layout = await tooltip.evaluate(element => ({
+    width: element.getBoundingClientRect().width,
+    codes: Array.from(element.querySelectorAll('code')).map(code => {
+      const style = getComputedStyle(code)
+      return { height: code.getBoundingClientRect().height,
+        singleLine: parseFloat(style.lineHeight) + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom) }
+    }),
+  }))
+  expect(layout.width).toBeGreaterThan(320)
+  for (const code of layout.codes) expect(code.height).toBeLessThanOrEqual(code.singleLine + 1)
+  await page.keyboard.press('Escape')
+  await expect(tooltip).toBeHidden()
+  await variables.getByRole('heading', { name: '核心参数' }).hover()
+  await button.focus()
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Shift+Tab')
+  await expect(button).toBeFocused()
+  await expect(tooltip).toContainText('同点分组为事件教学摘要')
+  await page.keyboard.press('Escape')
+  await page.setViewportSize({ width: 390, height: 844 })
+  await variables.getByRole('heading', { name: '核心参数' }).hover()
+  await button.hover()
+  await expect(tooltip).toBeVisible()
+  const narrow = await tooltip.boundingBox()
+  expect(narrow!.x).toBeGreaterThanOrEqual(0)
+  expect(narrow!.x + narrow!.width).toBeLessThanOrEqual(390)
+})
 
 test('遮蔽状态对入参与局部变量使用一致文案，其他不可用状态保持独立', () => {
   for (const name of ['segments', 'local']) {
@@ -10,6 +91,26 @@ test('遮蔽状态对入参与局部变量使用一致文案，其他不可用�
   }
   expect(variableValue({ name: 'point', type: 'Point', availability: 'unavailable', value: null }, []))
     .toBe('不可用（当前作用域未提供）')
+})
+
+test('事件映射在面板和悬浮提示中保留相同分行', async ({ page }) => {
+  const trace = await readTrace(page, 'crossing')
+  const index = trace.steps.findIndex(step => step.action === 'take-entry')
+  await page.goto(`/cases/crossing/learn?step=${index}`)
+  const variables = page.getByRole('region', { name: '核心变量', exact: true })
+  const value = variables.getByTestId('variable-queue').locator('dd')
+  await expect(value).toContainText('Event')
+  const text = await value.textContent()
+  expect(text).toBe('{\n  (0, 0): Event { starts: [0] },\n  (0, 4): Event { starts: [1] },\n  (4, 0): Event { starts: [] },\n  (4, 4): Event { starts: [] }\n}')
+  await expect(value).toHaveCSS('white-space', 'pre-wrap')
+  await page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="queue"]').hover()
+  const code = page.getByRole('tooltip', { name: /^变量 queue / }).locator('p').filter({ hasText: /^当前值：/ }).locator('code')
+  await expect(code).toHaveText(text!)
+  expect(await code.textContent()).toBe(text)
+  await expect(code).toHaveCSS('white-space', 'pre-wrap')
+  await variables.getByRole('heading', { name: '核心变量', exact: true }).hover()
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await expect(value).not.toContainText('(0, 0):')
 })
 
 test('被遮蔽的入参保留原坐标最后值，前进回退不混入扫描线段', async ({ page }) => {
@@ -21,19 +122,22 @@ test('被遮蔽的入参保留原坐标最后值，前进回退不混入扫描�
     expect(trace.values[input.value!]).toBe(expected)
   }
   const index = trace.steps.findIndex(step => step.action === 'take-entry')
+  const displayed = formatExecutionValue(expected)
   await page.goto(`/cases/vertical-overlap/learn?step=${index}`)
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   const segments = variables.getByTestId('variable-segments')
   await expect(segments).toHaveCount(2)
   const input = segments.filter({ hasText: 'segments: &[Segment]' }).locator('dd')
   const local = segments.filter({ hasText: 'segments: Vec<SweepSegment>' }).locator('dd')
-  await expect(input).toHaveText(`${expected}（已遮蔽，遮蔽前的最后值）`)
+  await expect(input).toHaveText(`${displayed}（已遮蔽，遮蔽前的最后值）`)
+  expect(await input.textContent()).toContain('\n  Segment')
+  await expect(input).toHaveCSS('white-space', 'pre-wrap')
   await expect(local).toContainText('SweepSegment')
   await expect(local).not.toContainText('已遮蔽')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await expect(input).toHaveText(`${expected}（已遮蔽，遮蔽前的最后值）`)
+  await expect(input).toHaveText(`${displayed}（已遮蔽，遮蔽前的最后值）`)
   await page.getByRole('button', { name: '上一步', exact: true }).click()
-  await expect(input).toHaveText(`${expected}（已遮蔽，遮蔽前的最后值）`)
+  await expect(input).toHaveText(`${displayed}（已遮蔽，遮蔽前的最后值）`)
 })
 
 for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
@@ -56,24 +160,24 @@ for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
     await page.goto(`/cases/${id}/learn?step=${index}`)
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
     const panel = page.getByRole('region', { name: '核心代码回放' })
-    await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(trace.values[result.value!])
+    await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(formatExecutionValue(trace.values[result.value!]))
     await expect(panel.getByRole('img', { name: /执行边界/ })).toBeInViewport()
     await panel.locator('[data-symbol="push"]').hover()
     const tooltip = page.getByRole('tooltip', { name: /^函数 push / })
     await expect(tooltip).toContainText(`实参 value：${value}`)
-    await expect(tooltip).toContainText(`实参 self：${trace.values[previousResult.value!]}`)
+    await expect(tooltip).toContainText(`实参 self：${formatExecutionValue(trace.values[previousResult.value!])}`)
     const argumentsText = tooltip.locator('p').filter({ hasText: /^实参 / })
     await expect(argumentsText).toHaveText([
-      `实参 self：${trace.values[previousResult.value!]}`,
+      `实参 self：${formatExecutionValue(trace.values[previousResult.value!])}`,
       `实参 value：${value}`,
     ])
     await variables.getByRole('heading', { name: '核心变量', exact: true }).hover()
     await expect(tooltip).toBeHidden()
     await page.getByRole('button', { name: '上一步', exact: true }).click()
-    await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(trace.values[previousResult.value!])
+    await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(formatExecutionValue(trace.values[previousResult.value!]))
     await panel.locator('[data-symbol="push"]').hover()
     await expect(tooltip).toContainText('实参 value：未赋值')
-    await expect(tooltip).toContainText(`实参 self：${trace.values[previousResult.value!]}`)
+    await expect(tooltip).toContainText(`实参 self：${formatExecutionValue(trace.values[previousResult.value!])}`)
   })
 }
 
@@ -103,7 +207,7 @@ test('真实取事件代码 hover 随前进和回退更新且不改变布局', a
   await queue.hover()
   const entry = trace.steps.find(step => step.action === 'take-entry')!
   const queueValue = entry.execution.context.locals.find(variable => variable.name === 'queue')!
-  await expect(page.getByRole('tooltip', { name: /^变量 queue / })).toContainText(trace.values[queueValue.value!])
+  await expect(page.getByRole('tooltip', { name: /^变量 queue / })).toContainText(formatExecutionValue(trace.values[queueValue.value!]))
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await next.hover()
   await expect(variableTooltip).toContainText('(0, 0)')

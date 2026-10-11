@@ -1,4 +1,5 @@
 import type { ExecutionVariable, SweepStep } from './geometry'
+import { formatExecutionValue } from './executionValue'
 
 const meanings: Record<string, string> = {
   queue: '按扫描坐标排序的待处理事件队列', next: '本次弹出的队首事件，可为空',
@@ -58,13 +59,15 @@ export function callExpression(name: string, after: string) {
   return name + after
 }
 
+export const shadowedValueNote = '（已遮蔽，遮蔽前的最后值）'
+
 export function variableValue(variable: ExecutionVariable | undefined, values: string[]) {
   if (!variable || variable.availability === 'unavailable') return '不可用（当前作用域未提供）'
   if (variable.availability === 'unassigned') return '未赋值'
   if (variable.availability === 'shadowed') return variable.value === null
     ? '已遮蔽（遮蔽前的最后值未记录）'
-    : `${values[variable.value]}（已遮蔽，遮蔽前的最后值）`
-  return variable.value === null ? '不可用（当前轨迹未提供值）' : values[variable.value]
+    : `${formatExecutionValue(values[variable.value])}${shadowedValueNote}`
+  return variable.value === null ? '不可用（当前轨迹未提供值）' : formatExecutionValue(values[variable.value])
 }
 
 export function symbolScope(name: string, module: string, line: number) {

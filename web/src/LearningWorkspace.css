@@ -31,8 +31,10 @@
 .execution-context { font-size: .8125rem; }
 .execution-context code { font-family: var(--font-mono); }
 .execution-context-description code { padding: .1em .3em; border-radius: .25rem; background: var(--surface-secondary); font-family: var(--font-mono); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.execution-context-tooltip { max-width: min(36rem, calc(100vw - 2rem)); }
+.execution-context-tooltip .execution-context-description code { display: inline-block; max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; vertical-align: baseline; }
 .execution-context h3, .execution-context h4 { font-weight: 600; margin: .5rem 0; }
-.execution-variable { padding: .4rem; border-left: 3px solid transparent; max-height: 6rem; overflow: auto; overscroll-behavior: contain; }
+.execution-variable { padding: .2rem .4rem; border-left: 3px solid transparent; max-height: calc(8lh + .4rem); overflow: auto; overscroll-behavior: contain; }
 .execution-variable[data-changed="true"] { border-color: var(--accent); background: var(--surface-secondary); }
 .execution-variable dt { display: inline; }
 .execution-variable dd { display: inline; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }

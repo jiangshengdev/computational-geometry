@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@heroui/react/card'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Info } from 'lucide-react'
+import { Button } from '@heroui/react/button'
+import { Tooltip } from '@heroui/react/tooltip'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
 import { teachingModules } from './executionCode'
 import { ExecutionSymbol } from './ExecutionSymbol'
-import { callExpression, symbolKind, variableChange, variableValue } from './executionSymbols'
+import { callExpression, shadowedValueNote, symbolKind, variableChange, variableValue } from './executionSymbols'
 
 const highlightedModules = new Map<string, Promise<ThemedToken[][]>>()
 function tokenizeRust(code: string) {
@@ -103,17 +105,25 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
   const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
     const { changed } = variableChange(variable, kind, step, previous)
     const hasValue = (variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null
+    const shadowed = variable.availability === 'shadowed' && hasValue
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
       <dt><VariableCode>{`${variable.name}: ${variable.type} = `}</VariableCode>{changed && <span className="execution-change">本步变化</span>}</dt>
-      <dd className={hasValue ? undefined : 'text-muted'}>{hasValue ? <VariableCode>{variableValue(variable, values)}</VariableCode> : variableValue(variable, values)}</dd>
+      <dd className={hasValue ? undefined : 'text-muted'}>{hasValue ? <><VariableCode>{variableValue(shadowed ? { ...variable, availability: 'available' } : variable, values)}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</> : variableValue(variable, values)}</dd>
     </div>
   }
   return <section aria-label="核心变量" className="learning-panel learning-variables"><Card className="learning-panel-card">
     <CardHeader><CardTitle render={props => <h2 {...props} />}>核心变量</CardTitle></CardHeader>
     <CardContent className="learning-panel-content execution-context">
       <section aria-label="当前执行上下文">
+        <div className="flex items-center gap-1">
         <h3>当前函数：<VariableCode>{context.function}</VariableCode></h3>
+        <Tooltip>
+          <Button isIconOnly variant="ghost" size="sm" aria-label="核心变量说明"><Info size={16} aria-hidden="true" /></Button>
+          <Tooltip.Content placement="bottom" className="execution-context-tooltip">
         <p className="execution-context-description text-sm text-muted">当前小步的核心上下文。<VariableCode>queue</VariableCode>、<VariableCode>next</VariableCode>、<VariableCode>point</VariableCode>、<VariableCode>current</VariableCode> 与扫描线段使用扫描坐标 <VariableCode>{`x′ = x + ${formatRational(shear)} · y`}</VariableCode>；<VariableCode>result</VariableCode> 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。{context.function === 'sweep' && <>参数 <VariableCode>segments</VariableCode> 已被同名局部变量遮蔽。</>}</p>
+          </Tooltip.Content>
+        </Tooltip>
+        </div>
         <h4>核心参数</h4><dl>{context.parameters.map(variable => renderVariable(variable, 'parameters'))}</dl>
         <h4>核心局部变量</h4><dl>{context.locals.map(variable => renderVariable(variable, 'locals'))}</dl>
       </section>
