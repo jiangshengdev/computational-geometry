@@ -179,9 +179,7 @@ function LearningPage({ preset, trace, complete }: { preset: Preset; trace: Swee
   const arrivedEntry = waitingEntry ? trace.steps.findIndex((step, position) => position > waitingEntry.from && step.execution.entry) : -1
   useEffect(() => {
     if (!waitingEntry || preview?.search === search || (arrivedEntry < 0 && !complete)) return
-    setNextEntry(null)
     if (arrivedEntry >= 0) {
-      setCursor(arrivedEntry)
       const updated = new URLSearchParams(search)
       updated.set('step', String(arrivedEntry))
       setSearch(updated, { replace: true })
@@ -197,7 +195,7 @@ function LearningPage({ preset, trace, complete }: { preset: Preset; trace: Swee
     return <RouteError message={`教学步骤超出范围：此案例的有效步骤为 0–${trace.steps.length - 1}。`} preset={preset} showListLink={false} />
   }
   const visibleIndex = preview?.search === search ? preview.index : index < trace.steps.length ? index : cursor
-  const waiting = index >= trace.steps.length || Boolean(waitingEntry)
+  const waiting = index >= trace.steps.length || Boolean(waitingEntry && (!complete || arrivedEntry >= 0))
   const changeStep = (next: number) => {
     setPreview(null)
     setNextEntry(null)
