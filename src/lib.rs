@@ -198,6 +198,7 @@ pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
 /// Teaching snapshots expose original coordinates and lexicographic event order.
 /// Captured only when requested; ordinary callers use the same exact sweep.
 pub(crate) struct SweepStep {
+    pub execution: Execution,
     pub phase: &'static str,
     pub action: &'static str,
     pub subjects: Vec<usize>,
@@ -211,6 +212,54 @@ pub(crate) struct SweepStep {
     pub passes: Vec<usize>,
 }
 
+pub(crate) struct Execution {
+    pub(crate) module: &'static str,
+    pub(crate) boundary: Option<usize>,
+    pub(crate) entry: bool,
+    pub(crate) context: ExecutionContext,
+}
+
+pub(crate) struct ExecutionContext {
+    pub(crate) function: &'static str,
+    pub(crate) parameters: Vec<Variable>,
+    pub(crate) locals: Vec<Variable>,
+}
+
+pub(crate) struct Variable {
+    pub(crate) name: &'static str,
+    pub(crate) r#type: &'static str,
+    pub(crate) availability: &'static str,
+    pub(crate) value: Option<String>,
+}
+
+impl Variable {
+    fn available(name: &'static str, r#type: &'static str, value: String) -> Self {
+        Self {
+            name,
+            r#type,
+            availability: "available",
+            value: Some(value),
+        }
+    }
+
+    fn absent(name: &'static str, r#type: &'static str, availability: &'static str) -> Self {
+        Self {
+            name,
+            r#type,
+            availability,
+            value: None,
+        }
+    }
+}
+
+fn point_value(point: &Point) -> String {
+    format!("({}, {})", point.x, point.y)
+}
+
+fn event_value(event: &Event) -> String {
+    format!("Event {{ starts: {:?} }}", event.starts)
+}
+
 impl SweepStep {
     fn capture(
         action: &'static str,
@@ -222,6 +271,60 @@ impl SweepStep {
         subjects: &[usize],
     ) -> Self {
         Self {
+            execution: Execution {
+                module: action,
+                boundary: None,
+                entry: true,
+                context: ExecutionContext {
+                    function: "sweep",
+                    // The input binding has been shadowed by Vec<SweepSegment>.
+                    parameters: vec![Variable::absent("segments", "&[Segment]", "unavailable")],
+                    locals: vec![
+                        Variable::available(
+                            "queue",
+                            "BTreeMap<Point, Event>",
+                            format!(
+                                "{{{}}}",
+                                queue
+                                    .iter()
+                                    .map(|(point, event)| format!(
+                                        "{}: {}",
+                                        point_value(point),
+                                        event_value(event)
+                                    ))
+                                    .collect::<Vec<_>>()
+                                    .join(", ")
+                            ),
+                        ),
+                        Variable::available("active", "Vec<usize>", format!("{active:?}")),
+                        Variable::available(
+                            "result",
+                            "Vec<Intersection>",
+                            format!(
+                                "[{}]",
+                                results
+                                    .iter()
+                                    .map(|intersection| {
+                                        let geometry = match &intersection.geometry {
+                                            Geometry::Point(point) => point_value(point),
+                                            Geometry::Overlap { start, end } => format!(
+                                                "{} → {}",
+                                                point_value(start),
+                                                point_value(end)
+                                            ),
+                                        };
+                                        format!(
+                                            "S{} × S{}: {geometry}",
+                                            intersection.segments[0], intersection.segments[1]
+                                        )
+                                    })
+                                    .collect::<Vec<_>>()
+                                    .join(", ")
+                            ),
+                        ),
+                    ],
+                },
+            },
             phase: match action {
                 "initial" => "initial",
                 "complete" => "processed",
@@ -238,6 +341,87 @@ impl SweepStep {
             ends: Vec::new(),
             passes: Vec::new(),
         }
+    }
+
+    fn take_context(
+        &mut self,
+        boundary: usize,
+        next: Option<&Option<(Point, Event)>>,
+        bound: Option<(&Point, &Event)>,
+        segments: &[SweepSegment],
+        shear: &Rational,
+    ) {
+        self.execution.module = "take";
+        self.execution.boundary = Some(boundary);
+        self.execution.entry = boundary == 0;
+        let locals = &mut self.execution.context.locals;
+        locals.push(Variable::available(
+            "segments",
+            "Vec<SweepSegment>",
+            format!(
+                "[{}]",
+                segments
+                    .iter()
+                    .map(|segment| format!(
+                        "SweepSegment {{ left: {}, right: {}, slope: {}, intercept: {} }}",
+                        point_value(&segment.left),
+                        point_value(&segment.right),
+                        segment
+                            .slope
+                            .as_ref()
+                            .map_or_else(|| "None".to_owned(), |slope| format!("Some({slope})")),
+                        segment.intercept
+                    ))
+                    .collect::<Vec<_>>()
+                    .join(", ")
+            ),
+        ));
+        locals.push(Variable::available("shear", "Rational", shear.to_string()));
+        locals.push(match next {
+            Some(next) => Variable::available(
+                "next",
+                "Option<(Point, Event)>",
+                next.as_ref().map_or_else(
+                    || "None".to_owned(),
+                    |(point, event)| {
+                        format!("Some(({}, {}))", point_value(point), event_value(event))
+                    },
+                ),
+            ),
+            None => Variable::absent(
+                "next",
+                "Option<(Point, Event)>",
+                if boundary == 0 {
+                    "unassigned"
+                } else {
+                    "unavailable"
+                },
+            ),
+        });
+        match bound {
+            Some((point, event)) => {
+                locals.push(Variable::available("point", "Point", point_value(point)));
+                locals.push(Variable::available("event", "Event", event_value(event)));
+            }
+            None => {
+                let availability = if boundary < 2 {
+                    "unassigned"
+                } else {
+                    "unavailable"
+                };
+                locals.push(Variable::absent("point", "Point", availability));
+                locals.push(Variable::absent("event", "Event", availability));
+            }
+        }
+    }
+
+    fn preserve_geometry(&mut self, previous: &Self) {
+        self.current.clone_from(&previous.current);
+        self.starts.clone_from(&previous.starts);
+        self.ends.clone_from(&previous.ends);
+        self.passes.clone_from(&previous.passes);
+        self.checked.clone_from(&previous.checked);
+        self.subjects.clone_from(&previous.subjects);
     }
 }
 
@@ -289,18 +473,37 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
             &[],
         ));
     }
-    while let Some((point, event)) = queue.pop_first() {
+    loop {
+        if let Some(steps) = &mut steps {
+            let mut step =
+                SweepStep::capture("take-entry", None, &queue, &active, &result, &[], &[]);
+            step.preserve_geometry(steps.last().expect("initial snapshot exists"));
+            step.take_context(0, None, None, &segments, &shear);
+            steps.push(step);
+        }
+        let next = queue.pop_first();
+        if let Some(steps) = &mut steps {
+            let mut step = SweepStep::capture("take-pop", None, &queue, &active, &result, &[], &[]);
+            step.preserve_geometry(steps.last().expect("entry snapshot exists"));
+            step.take_context(1, Some(&next), None, &segments, &shear);
+            steps.push(step);
+        }
+        let Some((point, event)) = next else {
+            if let Some(steps) = &mut steps {
+                let mut step =
+                    SweepStep::capture("take-empty", None, &queue, &active, &result, &[], &[]);
+                step.preserve_geometry(steps.last().expect("pop snapshot exists"));
+                step.take_context(2, Some(&next), None, &segments, &shear);
+                steps.push(step);
+            }
+            break;
+        };
         let first_step = steps.as_ref().map_or(0, |steps| steps.len());
         if let Some(steps) = &mut steps {
-            steps.push(SweepStep::capture(
-                "take",
-                Some(&point),
-                &queue,
-                &active,
-                &result,
-                &[],
-                &[],
-            ));
+            let mut step =
+                SweepStep::capture("take", Some(&point), &queue, &active, &result, &[], &[]);
+            step.take_context(2, None, Some((&point, &event)), &segments, &shear);
+            steps.push(step);
         }
         let mut incident = event.starts;
         // Every active segment spans the current x. Recover the whole equal-y

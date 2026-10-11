@@ -3,7 +3,7 @@ import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
-for (const step of [1, 17, 18]) {
+for (const step of [3, 27, 28]) {
   test(`非活动参与线段保持普通样式：普通交叉步骤 ${step}`, async ({ page }) => {
     await page.goto(`/cases/crossing/learn?step=${step}`)
     const input = page.getByRole('img', { name: '输入 S0', exact: true })
@@ -12,7 +12,7 @@ for (const step of [1, 17, 18]) {
     await expect(input).toHaveAttribute('data-participant', 'true')
     await expect(input.locator('line')).toHaveCSS('stroke', 'rgb(123, 159, 207)')
     await expect(input.locator('line')).toHaveCSS('stroke-width', '2px')
-    if (step === 1) {
+    if (step === 3) {
       await page.getByRole('button', { name: '下一步', exact: true }).click()
       await expect(page.getByTestId('active-order')).toHaveText('S0')
       await expect(input).toHaveAttribute('data-active', 'true')
@@ -45,6 +45,12 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   const events = ['S0 起点 (0, 0)', 'S1 起点 (0, 4)', 'I0 (2, 2)', 'S1 终点 (4, 0)', 'S0 终点 (4, 4)']
   const orders = ['S0', 'S0S1', 'S1S0', 'S0', '空']
   for (let i = 0; i < events.length; i++) {
+    await next.click()
+    await expect(explanation).toContainText('进入取事件模块')
+    await expect(queue).toContainText(events[i])
+    await next.click()
+    await expect(explanation).toContainText('queue.pop_first()')
+    await expect(queue).not.toContainText(events[i])
     await next.click()
     await expect(current).toContainText(events[i])
     await expect(current).toContainText('处理中')
@@ -84,6 +90,10 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
       await expect(page.getByRole('img', { name: '交集 S0 × S1' })).toBeVisible()
     }
   }
+  await next.click()
+  await next.click()
+  await next.click()
+  await expect(explanation).toContainText('next 为 None')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (2, 2)：S0 × S1')
   await expect(next).toBeDisabled()
   await page.getByRole('button', { name: '重新开始', exact: true }).click()
@@ -93,6 +103,8 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   await expect(page.getByRole('img', { name: /交集 S0/ })).toHaveCount(0)
   await expect(next).toBeEnabled()
   for (const snapshot of snapshots) {
+    await next.click()
+    await next.click()
     await next.click()
     do { await next.click() } while (!(await current.innerText()).includes('处理完成'))
     await expect.poll(() => page.getByRole('region', { name: '逐步学习' }).innerText()).toBe(snapshot)
@@ -110,6 +122,8 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
   const orders = ['S0', 'S0S1', 'S1', '空']
   for (let i = 0; i < events.length; i++) {
     await next.click()
+    await next.click()
+    await next.click()
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText(events[i])
     await expect(queue).not.toContainText(events[i])
     do { await next.click() } while (!(await page.getByRole('region', { name: '当前事件' }).innerText()).includes('处理完成'))
@@ -118,6 +132,10 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
     await expect(page.getByRole('img', { name: /交集 S/ })).toHaveCount(0)
     if (i === 1) await expect(page.getByRole('region', { name: '操作解释' })).toContainText('没有需要加入队列的未来交点')
   }
+  await next.click()
+  await next.click()
+  await next.click()
+  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('next 为 None')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('结果为空')
   await expect(next).toBeDisabled()
   await page.getByRole('button', { name: '重新开始', exact: true }).click()

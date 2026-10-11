@@ -32,29 +32,29 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const active = page.getByTestId('active-order')
   const cases = [
-    { step: 1, point: 'S0 起点 (0, 0)', lines: [] },
-    { step: 2, lines: ['S0'] },
-    { step: 5, lines: ['S1'] },
-    { step: 6, lines: ['S0', 'S1'], separator: '×' },
-    { step: 7, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
-    { step: 9, point: 'I0 (2, 2)', lines: [] },
-    { step: 10, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
-    { step: 11, lines: ['S1', 'S0'], separator: '→' },
-    { step: 14, lines: ['S1'] },
+    { step: 3, point: 'S0 起点 (0, 0)', lines: [] },
+    { step: 4, lines: ['S0'] },
+    { step: 9, lines: ['S1'] },
+    { step: 10, lines: ['S0', 'S1'], separator: '×' },
+    { step: 11, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
+    { step: 15, point: 'I0 (2, 2)', lines: [] },
+    { step: 16, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
+    { step: 17, lines: ['S1', 'S0'], separator: '→' },
+    { step: 22, lines: ['S1'] },
   ]
   let index = 0
   for (const scenario of cases) {
     while (index < scenario.step) { await next.click(); index++ }
     if (scenario.point) {
       const token = explanation.getByText(scenario.point, { exact: true })
-      const entry = (index === 7 ? queue : current).getByText(scenario.point, { exact: true })
+      const entry = (index === 11 ? queue : current).getByText(scenario.point, { exact: true })
       await entry.hover()
       await expect(token).toHaveAttribute('data-highlighted', 'true')
       await token.hover()
       await expect(entry).toHaveAttribute('data-highlighted', 'true')
       await expect(diagram.locator('.hover-event')).toHaveCount(1)
       await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
-      if (index === 7) await page.screenshot({ path: join(tmpdir(), `bo-explanation-point-${width}.png`), fullPage: true })
+      if (index === 11) await page.screenshot({ path: join(tmpdir(), `bo-explanation-point-${width}.png`), fullPage: true })
       const coordinates = scenario.point.slice(scenario.point.indexOf('('))
       const label = diagram.locator(`.teaching-labels [data-event-point="${coordinates}"]`)
       await expect(diagram.getByRole('status', { name: '画布对象详情' })).toContainText(scenario.point)
@@ -70,7 +70,7 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
       await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(1)
       await expect(explanation.locator('[data-highlighted="true"]')).toHaveText(name)
       await expect(diagram.locator('.hover-event')).toHaveCount(0)
-      if (index === 7 && name === 'S0') await page.screenshot({ path: join(tmpdir(), `bo-explanation-segment-${width}.png`), fullPage: true })
+      if (index === 11 && name === 'S0') await page.screenshot({ path: join(tmpdir(), `bo-explanation-segment-${width}.png`), fullPage: true })
       // Exiting rows no longer belong to the current active set.
       const entry = active.getByRole('listitem').filter({ hasText: new RegExp(`^${name}$`) })
       if (await entry.count()) {
@@ -135,7 +135,7 @@ test('教学 hover：当前交点与待处理交点均按悬停显示坐标标�
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const current = page.getByRole('region', { name: '当前事件' })
   const diagram = page.getByRole('region', { name: '几何视图' })
-  for (let i = 0; i < 7; i++) await next.click()
+  for (let i = 0; i < 11; i++) await next.click()
   const pending = page.getByRole('img', { name: '已发现 I0 (2, 2)' })
   const dashed = pending.locator('circle')
   const dash = await dashed.evaluate(e => getComputedStyle(e).strokeDasharray)
@@ -151,8 +151,8 @@ test('教学 hover：当前交点与待处理交点均按悬停显示坐标标�
   await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
   await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
   await expect(page.getByTestId('active-order').locator('[data-highlighted="true"]')).toHaveCount(0)
-  await next.click() // Complete the endpoint, then take the intersection without recording it yet.
-  await next.click()
+  // Complete the endpoint, enter take, pop, and bind the intersection before recording it.
+  for (let i = 0; i < 4; i++) await next.click()
   await expect(queue).not.toContainText('I0')
   await expect(diagram.locator('.hover-event')).toHaveCount(0)
   const marker = diagram.locator('.current-point')
@@ -206,10 +206,13 @@ for (const preset of ['crossing', 'disjoint']) {
     await expect(ring).toHaveCount(1)
     await page.keyboard.press('Enter')
     await emptyHover()
+    await next.click()
+    await next.click()
     await previous.focus()
     await current.getByText('S0 起点 (0, 0)', { exact: true }).hover()
     await page.keyboard.press('Enter')
     await emptyHover()
+    await previous.click()
     await slider.focus()
     await queue.getByText('S0 起点 (0, 0)', { exact: true }).hover()
     await page.keyboard.press('End')
@@ -227,7 +230,7 @@ for (const preset of ['crossing', 'disjoint']) {
     await center(page, page.getByRole('img', { name: '输入 S0', exact: true }).locator('line'))
     await expect(ring).toHaveCount(0)
     await expect(page.getByRole('region', { name: /^(当前事件|待处理事件队列)$/ }).locator('[data-highlighted="true"]')).toHaveCount(0)
-    await next.click()
+    for (let i = 0; i < 3; i++) await next.click()
     await page.getByRole('button', { name: '重新开始', exact: true }).focus()
     await current.getByText('S0 起点 (0, 0)', { exact: true }).hover()
     await page.keyboard.press('Enter')
@@ -247,7 +250,7 @@ test('教学 hover：缩放平移后的点、标签与线段命中和可读性',
   await page.goto('/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
-  for (let i = 0; i < 7; i++) await page.getByRole('button', { name: '下一步', exact: true }).click()
+  for (let i = 0; i < 11; i++) await page.getByRole('button', { name: '下一步', exact: true }).click()
   for (const width of [1360, 390]) {
     await page.setViewportSize({ width, height: 1000 })
     await page.getByRole('button', { name: '重置视图' }).click()

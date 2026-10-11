@@ -53,10 +53,12 @@ struct Response {
 struct TraceDto {
     shear: RationalDto,
     steps: Vec<StepDto>,
+    values: Vec<String>,
 }
 
 #[derive(Serialize)]
 struct StepDto {
+    execution: ExecutionDto,
     phase: &'static str,
     action: &'static str,
     subjects: Vec<usize>,
@@ -70,14 +72,80 @@ struct StepDto {
     passes: Vec<usize>,
 }
 
+#[derive(Serialize)]
+struct ExecutionDto {
+    module: &'static str,
+    boundary: Option<usize>,
+    entry: bool,
+    context: ExecutionContextDto,
+}
+
+#[derive(Serialize)]
+struct ExecutionContextDto {
+    function: &'static str,
+    parameters: Vec<VariableDto>,
+    locals: Vec<VariableDto>,
+}
+
+#[derive(Serialize)]
+struct VariableDto {
+    name: &'static str,
+    r#type: &'static str,
+    availability: &'static str,
+    value: Option<usize>,
+}
+
+impl ExecutionDto {
+    fn from_execution(
+        execution: crate::Execution,
+        values: &mut Vec<String>,
+        indices: &mut std::collections::HashMap<String, usize>,
+    ) -> Self {
+        let mut variable = |variable: crate::Variable| VariableDto {
+            name: variable.name,
+            r#type: variable.r#type,
+            availability: variable.availability,
+            value: variable.value.map(|value| {
+                *indices.entry(value).or_insert_with_key(|value| {
+                    let index = values.len();
+                    values.push(value.clone());
+                    index
+                })
+            }),
+        };
+        Self {
+            module: execution.module,
+            boundary: execution.boundary,
+            entry: execution.entry,
+            context: ExecutionContextDto {
+                function: execution.context.function,
+                parameters: execution
+                    .context
+                    .parameters
+                    .into_iter()
+                    .map(&mut variable)
+                    .collect(),
+                locals: execution.context.locals.into_iter().map(variable).collect(),
+            },
+        }
+    }
+}
+
 impl From<SweepTrace> for TraceDto {
     fn from(trace: SweepTrace) -> Self {
+        let mut values = Vec::new();
+        let mut indices = std::collections::HashMap::new();
         Self {
             shear: trace.shear.into(),
             steps: trace
                 .steps
                 .into_iter()
                 .map(|step| StepDto {
+                    execution: ExecutionDto::from_execution(
+                        step.execution,
+                        &mut values,
+                        &mut indices,
+                    ),
                     phase: step.phase,
                     action: step.action,
                     subjects: step.subjects,
@@ -95,6 +163,7 @@ impl From<SweepTrace> for TraceDto {
                     passes: step.passes,
                 })
                 .collect(),
+            values,
         }
     }
 }

@@ -73,7 +73,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.keyboard.press('ArrowLeft')
     await expect(slider).toHaveValue(String(last - 1))
     for (const position of await positions()) expect(position).toEqual(anchors.get(position.id))
-    await page.goto('/cases/crossing/learn?step=9')
+    await page.goto('/cases/crossing/learn?step=15')
     await expect(svg.locator('.teaching-labels text[data-input]:visible')).toHaveCount(2)
     for (const position of await positions()) expect(position).toEqual(anchors.get(position.id))
     if (browserName === 'chromium') await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-labels-stable-${width}.png`) })
@@ -94,6 +94,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     if (browserName === 'chromium') await page.screenshot({ path: join(tmpdir(), `bo-labels-initial-${width}.png`), fullPage: true })
     const center = trace.steps.findIndex(step => step.action === 'take' && step.current?.x.numerator === '0' && step.current.y.numerator === '0')
     expect(center).toBeGreaterThan(0)
+    await page.getByRole('button', { name: '下一个大步', exact: true }).click()
+    await expect(page.locator('.code-line')).toHaveCount(2)
     await page.goto(`/cases/spider-web/learn?step=${center}`)
     await expect(svg.locator('.current-label')).toHaveCount(0)
     await expect(svg.locator('.current-point')).toBeVisible()
@@ -133,7 +135,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
   browserTest(`教学标签：触屏固定详情、拖动隔离和换步清理 ${browserName}`, async ({ browser, baseURL }) => {
     const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 }, hasTouch: true })
     try {
-      await page.goto('/cases/crossing/learn?step=3')
+      await page.goto('/cases/crossing/learn?step=5')
       const line = page.getByRole('img', { name: '输入 S0', exact: true }).locator('line')
       const point = await linePosition(line)
       await page.touchscreen.tap(point.x, point.y)

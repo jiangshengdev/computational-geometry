@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test'
 import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import type { SweepTrace } from '../src/geometry'
 
 const cases = [
   {
@@ -27,8 +28,11 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
   await page.goto('/cases/crossing')
   await expect(page).toHaveURL('/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
+  await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
+  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(response => response.json())
   await selectPreset(page, example.name)
   await page.getByRole('link', { name: '开始逐步学习' }).click()
+  const { trace }: { trace: SweepTrace } = await response
   const current = page.getByRole('region', { name: '当前事件' })
   const group = page.getByRole('region', { name: '同点参与线段' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
@@ -45,7 +49,8 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
       await next.click()
       const event = await current.innerText()
       const text = await explanation.innerText()
-      if (event.includes('(0, 0)')) {
+      const step = trace.steps[Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue())]
+      if (event.includes('(0, 0)') && !['take-entry', 'take-pop', 'take-empty'].includes(step.action)) {
         await expect(queue).not.toContainText('(0, 0)')
         await expect(group).toContainText(`开始：${example.starts}`)
         await expect(group).toContainText(`结束：${example.ends}`)
@@ -98,6 +103,7 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
         }
       }
       // Hover details depend on the pointer, not the deterministic teaching trace.
+      if (step.execution.module === 'take') await expect(page.locator('.execution-code .code-line')).toHaveCount(2)
       const state = JSON.stringify({
         panels: await page.locator('.learning-panel, [aria-label="学习结果"]').allInnerTexts(),
         current: await page.locator('.current-point').evaluateAll(points => points.map(point =>

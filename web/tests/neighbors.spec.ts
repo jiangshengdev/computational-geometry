@@ -28,7 +28,8 @@ test('相邻检测：删除中间线段后发现交点并可重现', async ({ pa
         await expect(page.locator('.teaching-labels text').filter({ hasText: new RegExp(`^${label}$`) })).toBeVisible()
       }
       const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
-      const event = await current.locator('.coordinates:not([aria-hidden="true"])').innerText()
+      await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue()) <= 2 ? 0 : 1)
+      const event = (await current.locator('.coordinates:not([aria-hidden="true"])').allTextContents()).join('')
       if (event === 'S2 起点 (2, 8)' && (await current.innerText()).includes('处理完成')) {
         await expect(active).toHaveText('S0S1S2')
         await expect(queue).not.toContainText('I0')
@@ -97,7 +98,8 @@ for (const width of [1360, 390]) {
     while (await next.isEnabled()) {
       await next.click()
       const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
-      const event = await current.locator('.coordinates:not([aria-hidden="true"])').innerText()
+      await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue()) <= 2 ? 0 : 1)
+      const event = (await current.locator('.coordinates:not([aria-hidden="true"])').allTextContents()).join('')
       if (text.startsWith('检查相邻线段 S0 × S1')) {
         await expect(explanation).toContainText('加入 S1 后')
         await expect(queue).not.toContainText('I0')

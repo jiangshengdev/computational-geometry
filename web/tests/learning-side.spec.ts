@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import type { SweepTrace } from '../src/geometry'
 
 test('普通交叉保留步骤与精确位置，取出向左、记录隐藏、处理中换序向右', async ({ page }) => {
-  await page.goto('/cases/crossing/learn?step=9')
+  await page.goto('/cases/crossing/learn?step=15')
   const side = page.getByRole('img', { name: /事件侧向状态/ })
   const next = page.getByRole('button', { name: '下一步', exact: true })
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('从队首取出')
@@ -20,7 +20,7 @@ test('普通交叉保留步骤与精确位置，取出向左、记录隐藏、�
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText('事件处理中')
   await expect(side).toHaveAccessibleName('事件侧向状态：当前事件右侧（Δ）')
   await expect(scan).toHaveAttribute('x1', x!)
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('max', '18')
+  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveAttribute('max', '31')
   await page.getByRole('button', { name: '重新开始', exact: true }).click()
   await expect(side).toHaveCount(0)
 })
@@ -77,6 +77,10 @@ test('侧向提示随按钮、快捷键、滑块、浏览器导航恢复且切�
   await expect(slider).toHaveValue('0')
   await expect(side).toHaveCount(0)
   await page.keyboard.press('ArrowRight')
+  await expect(side).toHaveCount(0)
+  await page.keyboard.press('ArrowRight')
+  await expect(side).toHaveCount(0)
+  await page.keyboard.press('ArrowRight')
   await expect(side).toContainText('←')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await expect(side).toContainText('→')
@@ -84,7 +88,7 @@ test('侧向提示随按钮、快捷键、滑块、浏览器导航恢复且切�
   await expect(side).toContainText('←')
   await slider.focus()
   await page.keyboard.press('ArrowRight')
-  await expect(slider).toHaveValue('2')
+  await expect(slider).toHaveValue('4')
   await expect(side).toContainText('→')
   await page.reload()
   await expect(side).toContainText('→')
@@ -97,7 +101,7 @@ test('侧向提示随按钮、快捷键、滑块、浏览器导航恢复且切�
 })
 
 test('加入后的检查与发现保持当前事件右侧状态', async ({ page }) => {
-  for (const step of [5, 6, 7]) {
+  for (const step of [9, 10, 11]) {
     await page.goto(`/cases/crossing/learn?step=${step}`)
     await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(step))
     await expect(page.getByRole('img', { name: /事件侧向状态/ })).toContainText('→')
@@ -107,7 +111,7 @@ test('加入后的检查与发现保持当前事件右侧状态', async ({ page 
 
 for (const width of [1360, 390]) test(`Δ 箭头在缩放、平移与边缘保持可读且悬浮于画布顶部 ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 1000 })
-  await page.goto('/cases/crossing/learn?step=11')
+  await page.goto('/cases/crossing/learn?step=17')
   const side = page.getByRole('img', { name: /事件侧向状态/ })
   const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
   const verify = async () => {

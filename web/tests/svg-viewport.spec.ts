@@ -11,7 +11,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           await page.goto(route)
           await expectUnscaledViewport(page)
         }
-        await page.getByRole('button', { name: '下一步', exact: true }).click()
+        for (let step = 0; step < 3; step++) await page.getByRole('button', { name: '下一步', exact: true }).click()
         await expect(page.getByRole('img', { name: /事件侧向状态/ })).toBeVisible()
         await expectUnscaledViewport(page)
         for (const viewport of [{ width: 1361, height: 901 }, { width: 390, height: 844 }, { width: 1920, height: 996 }]) {

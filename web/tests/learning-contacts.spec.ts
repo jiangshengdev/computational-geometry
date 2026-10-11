@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test'
 import { selectPreset } from './cases'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import type { SweepTrace } from '../src/geometry'
 
 test('接触教学：共端点先记录闭集交点再完成退出与加入，可重新开始', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -48,9 +49,12 @@ for (const width of [1360, 390]) test(`并列教学：同横坐标不同位置�
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   await page.goto('/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
+  await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(response => response.json())
   await selectPreset(page, '同扫描坐标不同交点')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
+  const { trace }: { trace: SweepTrace } = await response
   const current = page.getByRole('region', { name: '当前事件' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const group = page.getByRole('region', { name: '同点参与线段' })
@@ -66,6 +70,8 @@ for (const width of [1360, 390]) test(`并列教学：同横坐标不同位置�
     const completed: string[] = []
     while (await next.isEnabled()) {
       await next.click()
+      const step = trace.steps[Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue())]
+      if (['take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
       const event = await current.innerText()
       if (event.includes('(0, -1)')) {
         await expect(group).toContainText('开始：无')

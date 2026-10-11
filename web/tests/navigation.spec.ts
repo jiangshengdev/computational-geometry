@@ -129,11 +129,15 @@ test('教学动作：加入、检查、发现分别展示并可回退', async ({
   const explanation = page.getByRole('region', { name: '操作解释' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   await expect(previous).toBeDisabled()
+  await next.click() // Enter the first take module.
+  await next.click() // Pop before binding the current event.
   await next.click() // Take the first endpoint.
   await next.click() // Insert S0.
   await expect(explanation).toContainText('加入 S0')
   await expect(page.getByTestId('active-order')).toHaveText('S0')
   await next.click() // Complete the event.
+  await next.click() // Enter the second take module.
+  await next.click() // Pop before binding the current event.
   await next.click() // Take the second endpoint.
   await next.click() // Insert S1, before checking its neighbor.
   await expect(explanation).toContainText('加入 S1')
@@ -164,6 +168,9 @@ for (const preset of ['crossing', 'disjoint']) {
       await next.click()
       // Capture the settled state, not rows temporarily retained for exit animation.
       await expect(learning.locator('[data-event-id][aria-hidden="true"], [data-input-id][aria-hidden="true"]')).toHaveCount(0)
+      if (await page.getByRole('region', { name: '取事件教学代码', exact: true }).count()) {
+        await expect(page.locator('.execution-code .code-line')).toHaveCount(2)
+      }
       states.push(await learning.innerText())
     }
     await expect(page.getByRole('region', { name: '学习结果' })).toContainText(preset === 'crossing' ? 'I0 (2, 2)：S0 × S1' : '结果为空')
@@ -226,8 +233,8 @@ for (const preset of ['crossing', 'disjoint']) {
     await page.mouse.move(x, y)
     await page.mouse.down()
     // Keep the pointer held while checking state, rather than testing release.
-    await page.mouse.move(x + track.width * 5 / finalIndex, y)
-    await expect(slider).toHaveValue('5')
+    await page.mouse.move(x + track.width * 9 / finalIndex, y)
+    await expect(slider).toHaveValue('9')
     await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S1')
     await expect(page.getByTestId('active-order').getByRole('listitem')).toHaveText(['S0', 'S1'])
     await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText('I0')
@@ -235,7 +242,7 @@ for (const preset of ['crossing', 'disjoint']) {
     const dragged = await learning.innerText()
     await page.mouse.up()
     await slider.press('Home')
-    for (let i = 0; i < 5; i++) await next.click()
+    for (let i = 0; i < 9; i++) await next.click()
     await expect.poll(() => learning.innerText()).toBe(dragged)
     await next.click()
     await previous.click()

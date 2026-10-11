@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
+import type { SweepTrace } from '../src/geometry'
 
 for (const width of [1360, 390]) for (const [id, pairs, positions, center, centerPairs, upper] of [
   ['mixed-horizontal', 17, 2, '(2, 0)', 14, '(2, 2)'],
@@ -11,9 +12,11 @@ for (const width of [1360, 390]) for (const [id, pairs, positions, center, cente
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
+  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(response => response.json())
   await page.goto(`/cases/${id}`)
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
   await page.getByRole('link', { name: '开始逐步学习' }).click()
+  const { trace }: { trace: SweepTrace } = await response
   await expect(page).toHaveTitle(/逐步学习/)
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const explanation = page.getByRole('region', { name: '操作解释' })
@@ -21,6 +24,8 @@ for (const width of [1360, 390]) for (const [id, pairs, positions, center, cente
   let firstCenterRecord = ''
   while (await next.isEnabled()) {
     await next.click()
+    const step = trace.steps[Number(await page.getByRole('slider', { name: '教学步骤' }).inputValue())]
+    if (['take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
     const current = page.getByRole('region', { name: '当前事件' })
     if (!(await current.innerText()).includes(center)) continue
     await expect(explanation).toContainText('不进入持续活动顺序')

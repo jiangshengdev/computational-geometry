@@ -52,7 +52,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       const errors: string[] = []
       page.on('pageerror', error => errors.push(error.message))
       page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
-      await page.goto('/cases/crossing/learn?step=3')
+      await page.goto('/cases/crossing/learn?step=5')
       const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
       const layer = svg.locator('[data-layer="geometry"]')
       await expectUnscaledViewport(page)

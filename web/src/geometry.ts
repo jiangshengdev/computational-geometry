@@ -4,9 +4,22 @@ export interface Segment { start: Point; end: Point }
 export type Geometry = { type: 'point'; point: Point } | { type: 'overlap'; start: Point; end: Point }
 export interface Intersection { segments: [number, number]; geometry: Geometry }
 export interface Preset { id: string; name: string; description: string; segments: Segment[]; learning?: { goal: string; verification: string; overlap?: boolean } }
+export interface ExecutionVariable {
+  name: string
+  type: string
+  availability: 'available' | 'unassigned' | 'unavailable'
+  value: number | null
+}
+export interface ExecutionState {
+  module: string
+  boundary: number | null
+  entry: boolean
+  context: { function: string; parameters: ExecutionVariable[]; locals: ExecutionVariable[] }
+}
 export interface SweepStep {
   phase: 'initial' | 'processing' | 'processed'
-  action: 'initial' | 'take' | 'insert' | 'remove' | 'record' | 'reorder' | 'check' | 'discover' | 'complete'
+  action: 'initial' | 'take-entry' | 'take-pop' | 'take-empty' | 'take' | 'insert' | 'remove' | 'record' | 'reorder' | 'check' | 'discover' | 'complete'
+  execution: ExecutionState
   subjects: number[]
   current: Point | null
   pending: Point[]
@@ -17,7 +30,7 @@ export interface SweepStep {
   ends: number[]
   passes: number[]
 }
-export interface SweepTrace { shear: Rational; steps: SweepStep[] }
+export interface SweepTrace { shear: Rational; steps: SweepStep[]; values: string[] }
 
 export function rational(value: string): Rational {
   const [numerator, denominator = '1'] = value.split('/')
