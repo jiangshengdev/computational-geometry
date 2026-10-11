@@ -4,6 +4,47 @@ import { presets } from '../src/presets'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
+test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  const trace = await readTrace(page, 'crossing')
+  const index = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8)
+  expect(index).toBeGreaterThan(0)
+  await page.goto(`/cases/crossing/learn?step=${index}`)
+  const panel = page.getByRole('region', { name: '核心变量', exact: true })
+  for (const stepIndex of [index, index + 1, index]) {
+    for (const kind of ['parameters', 'locals'] as const) {
+      const rows = panel.getByRole('region', { name: '当前执行上下文' }).locator('dl').nth(kind === 'parameters' ? 0 : 1)
+      for (const variable of trace.steps[stepIndex].execution.context[kind]) {
+        const row = rows.getByTestId(`variable-${variable.name}`)
+        if (variable.availability === 'available' && variable.value !== null) {
+          await expect(row.locator('dd')).toHaveText(trace.values[variable.value])
+          await expect(row.locator('dd code span[style]').first()).toBeAttached()
+        } else if (variable.availability === 'unavailable') {
+          await expect(row.locator('dd')).toHaveClass('text-muted')
+          await expect(row.locator('dd code')).toHaveCount(0)
+        }
+      }
+    }
+    if (stepIndex === index + 1) await page.getByRole('button', { name: '上一步', exact: true }).click()
+    else if (stepIndex === index) await page.getByRole('button', { name: '下一步', exact: true }).click()
+  }
+  for (const code of await panel.locator('code').all()) await expect(code).toHaveCSS('font-family', /mono/i)
+  const token = panel.locator('dd code span[style]').first()
+  await expect(token).toBeAttached()
+  await page.locator('html').evaluate(element => element.classList.add('dark'))
+  await expect.poll(() => token.evaluate(element => getComputedStyle(element).color)).toBe(await token.evaluate(element => {
+    const probe = document.createElement('span')
+    probe.style.color = (element as HTMLElement).style.getPropertyValue('--shiki-dark')
+    element.append(probe)
+    const color = getComputedStyle(probe).color
+    probe.remove()
+    return color
+  }))
+  await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+  expect(errors).toEqual([])
+})
+
 for (const id of ['crossing', 'endpoint', 'multiway-interior', 'partial-overlap', 'vertical', 'disjoint', 'empty']) {
   test(`完整轨迹的入口、终态与普通计算一致：${id}`, async ({ page }) => {
     const trace = await readTrace(page, id)

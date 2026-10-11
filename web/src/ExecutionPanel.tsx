@@ -8,11 +8,15 @@ import { ExecutionSymbol } from './ExecutionSymbol'
 import { callExpression, symbolKind, variableChange, variableValue } from './executionSymbols'
 
 const highlightedModules = new Map<string, Promise<ThemedToken[][]>>()
-function loadCode(code: string) {
-  let highlighted = highlightedModules.get(code)
-  highlighted ??= import('shiki').then(({ codeToTokens }) => codeToTokens(code, {
+function tokenizeRust(code: string) {
+  return import('shiki').then(({ codeToTokens }) => codeToTokens(code, {
     lang: 'rust', themes: { light: 'github-light', dark: 'github-dark' },
   })).then(result => result.tokens)
+}
+
+function loadCode(code: string) {
+  let highlighted = highlightedModules.get(code)
+  highlighted ??= tokenizeRust(code)
   highlightedModules.set(code, highlighted)
   return highlighted
 }
@@ -79,6 +83,19 @@ export function ExecutionPanel({ step, previous, values }: {
   </Card></section>
 }
 
+function VariableCode({ children: source }: { children: string }) {
+  const [highlight, setHighlight] = useState<{ source: string; tokens: ThemedToken[][] } | null>(null)
+  const [failedSource, setFailedSource] = useState<string | null>(null)
+  useEffect(() => {
+    let active = true
+    void tokenizeRust(source).then(tokens => {
+      if (active) { setHighlight({ source, tokens }); setFailedSource(null) }
+    }, () => { if (active) setFailedSource(source) })
+    return () => { active = false }
+  }, [source])
+  return <><code className="execution-variable-code">{highlight?.source === source ? highlight.tokens.map((line, index) => <span key={index}>{index > 0 && '\n'}{line.map((token, tokenIndex) => <span key={tokenIndex} style={{ color: token.color, ...token.htmlStyle } as CSSProperties}>{token.content}</span>)}</span>) : source}</code>{failedSource === source && <span role="alert" className="text-muted">（代码高亮加载失败）</span>}</>
+}
+
 export function ExecutionVariablesPanel({ step, previous, shear, values }: {
   step: SweepStep; previous: SweepStep; shear: Rational; values: string[]
 }) {
@@ -86,16 +103,16 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
   const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
     const { changed } = variableChange(variable, kind, step, previous)
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
-      <dt><code>{variable.name}</code> <span className="text-muted">{variable.type}</span>{changed && <span className="execution-change">本步变化</span>}</dt>
-      <dd>{variableValue(variable, values)}</dd>
+      <dt><VariableCode>{variable.name}</VariableCode> <VariableCode>{variable.type}</VariableCode>{changed && <span className="execution-change">本步变化</span>}</dt>
+      <dd className={variable.availability === 'unavailable' ? 'text-muted' : undefined}>{variable.availability === 'available' && variable.value !== null ? <VariableCode>{variableValue(variable, values)}</VariableCode> : variableValue(variable, values)}</dd>
     </div>
   }
   return <section aria-label="核心变量" className="learning-panel learning-variables"><Card className="learning-panel-card">
     <CardHeader><CardTitle render={props => <h2 {...props} />}>核心变量</CardTitle></CardHeader>
     <CardContent className="learning-panel-content execution-context">
       <section aria-label="当前执行上下文">
-        <h3>当前函数：<code>{context.function}</code></h3>
-        <p className="text-sm text-muted">当前小步的核心上下文。queue、next、point、current 与扫描线段使用扫描坐标 x′ = x + {formatRational(shear)} · y；result 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。{context.function === 'sweep' && '参数 segments 已被同名局部变量遮蔽。'}</p>
+        <h3>当前函数：<VariableCode>{context.function}</VariableCode></h3>
+        <p className="execution-context-description text-sm text-muted">当前小步的核心上下文。<VariableCode>queue</VariableCode>、<VariableCode>next</VariableCode>、<VariableCode>point</VariableCode>、<VariableCode>current</VariableCode> 与扫描线段使用扫描坐标 <VariableCode>{`x′ = x + ${formatRational(shear)} · y`}</VariableCode>；<VariableCode>result</VariableCode> 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。{context.function === 'sweep' && <>参数 <VariableCode>segments</VariableCode> 已被同名局部变量遮蔽。</>}</p>
         <h4>核心参数</h4><dl>{context.parameters.map(variable => renderVariable(variable, 'parameters'))}</dl>
         <h4>核心局部变量</h4><dl>{context.locals.map(variable => renderVariable(variable, 'locals'))}</dl>
       </section>

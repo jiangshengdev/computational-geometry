@@ -29,11 +29,13 @@
 .execution-boundary > svg { position: absolute; left: 4px; top: -7px; width: 16px; height: 16px; }
 .execution-boundary::after { content: ''; position: absolute; left: 24px; right: 0; top: 0; height: 2px; background: currentColor; }
 .execution-context { font-size: .8125rem; }
+.execution-context code { font-family: var(--font-mono); }
+.execution-context-description code { padding: .1em .3em; border-radius: .25rem; background: var(--surface-secondary); font-family: var(--font-mono); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .execution-context h3, .execution-context h4 { font-weight: 600; margin: .5rem 0; }
 .execution-variable { padding: .4rem; border-left: 3px solid transparent; }
 .execution-variable[data-changed="true"] { border-color: var(--accent); background: var(--surface-secondary); }
 .execution-variable dt { display: flex; flex-wrap: wrap; gap: .5rem; }
-.execution-variable dd { white-space: pre-wrap; overflow-wrap: anywhere; font-family: monospace; margin-top: .25rem; max-height: 6rem; overflow: auto; overscroll-behavior: contain; }
+.execution-variable dd { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: .25rem; max-height: 6rem; overflow: auto; overscroll-behavior: contain; }
 .execution-change { color: var(--accent); }
 .execution-symbol { cursor: help; border-radius: 2px; text-decoration: underline dotted; text-underline-offset: 3px; }
 .execution-symbol:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -41,6 +43,7 @@
 .execution-symbol-tooltip p { margin-top: .3rem; }
 .execution-symbol-tooltip code { white-space: pre-wrap; }
 .dark .execution-code span[style] { color: var(--shiki-dark) !important; }
+.dark .execution-variable-code span[style] { color: var(--shiki-dark) !important; }
 .learning-variables .learning-panel-content { max-height: 24rem; }
 [data-event-transfer-hidden="true"] { opacity: 0 !important; }
 
