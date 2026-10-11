@@ -38,7 +38,7 @@ perf-cases:
 
 # 独立临时端口测量真实教学体验；BO_PERF_MODE=full 测完整生成，cancel 测提早取消。
 perf-learning:
-    node tools/measure-learning.mjs
+    node tools/measure-learning.ts
 
 # 一键启动临时后端并运行无头 E2E，结束后自动清理（包含原生编译，由使用者运行）。
 [positional-arguments]

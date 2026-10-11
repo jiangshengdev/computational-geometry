@@ -1,5 +1,5 @@
 // Root-owned orchestration: each layer builds itself; only this process owns services.
-import { spawn, execFile } from 'node:child_process'
+import { spawn, execFile, type ChildProcessByStdio, type SpawnOptions } from 'node:child_process'
 import { createRequire, registerHooks } from 'node:module'
 import { access, mkdtemp, readFile, writeFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
@@ -8,12 +8,67 @@ import { tmpdir, platform, arch, cpus, totalmem } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { performance } from 'node:perf_hooks'
-import { promisify } from 'node:util'
+import { promisify, stripVTControlCharacters } from 'node:util'
+import type { Readable } from 'node:stream'
+import type { Browser, BrowserContext, BrowserServer } from '@playwright/test'
+import type { Preset } from '../web/src/geometry.ts'
+
+type ServiceProcess = ChildProcessByStdio<null, Readable, Readable> & { launchError?: Error }
+interface LifecycleEvent {
+  status: string
+  sentSteps: number
+  producerElapsedMs: number
+  observedAtMs: number
+  observedAtEpochMs: number
+}
+interface ResourceSample {
+  elapsedMs: number
+  backendRssBytes: number
+  browserRssBytes: number
+  browserJsHeapUsedBytes: number
+}
+type Entry = 'direct' | 'result-link'
+type Temperature = 'cold-context' | 'warm-context'
+interface Sample {
+  case: string
+  segments: number
+  inputBytes: number
+  round: number
+  entry: Entry
+  temperature: Temperature
+  resourceSamples: ResourceSample[]
+  firstStepMs?: number
+  firstStepWithinThreeSeconds?: boolean
+  traceId?: string
+  nextStepMs?: number
+  fullGenerationMs?: number
+  steps?: number
+  traceTransferBytes?: number
+  lifecycle?: LifecycleEvent
+  remoteTarget?: number
+  generatedAtRemoteRequest?: number
+  remoteJumpMs?: number
+  waitCancellationOutcome?: 'generation-completed-before-cancel' | 'cancelled'
+  cancelWaitMs?: number
+  cancelObservedMs?: number | null
+  leaveClickDispatchMs?: number
+  producerStopAfterClickMs?: number | null
+  cancellationOutcome?: 'cancelled' | 'producer-completed-before-cancellation-observed' | 'failed'
+  backendRssObservedMaxBytes?: number
+  browserRssObservedMaxBytes?: number
+  browserJsHeapObservedMaxBytes?: number
+  resourceError?: string
+  error?: string
+}
+
+declare global {
+  var __learningPerfLeaveAt: number | undefined
+}
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const web = join(root, 'web')
 const require = createRequire(new URL('../web/package.json', import.meta.url))
-const { chromium, expect } = require('@playwright/test')
+const { chromium, expect } = require('@playwright/test') as typeof import('@playwright/test')
 const exec = promisify(execFile)
 const watchdogMs = 120_000 // Diagnostic watchdog, never a product acceptance limit.
 const mode = process.env.BO_PERF_MODE ?? 'first'
@@ -36,20 +91,23 @@ const cases = ids.map(id => {
   if (!preset?.learning) throw new Error(`Unknown learning case: ${id}`)
   return preset
 })
-const children = new Set()
-const lifecycle = new Map()
-let browser
-let browserServer
-let backend
-let output
+const children = new Set<ServiceProcess>()
+const lifecycle = new Map<string, LifecycleEvent[]>()
+let browser: Browser | undefined
+let browserServer: BrowserServer | undefined
+let backend: ServiceProcess | undefined
+let output: string | undefined
 const report = {
-  mode, rounds, startedAt: new Date().toISOString(), samples: [],
-  environment: { platform: platform(), arch: arch(), cpu: cpus()[0]?.model, logicalCpus: cpus().length, physicalMemoryBytes: totalmem(), node: process.version },
+  mode, rounds, startedAt: new Date().toISOString(), samples: [] as Sample[],
+  error: undefined as string | undefined,
+  finishedAt: undefined as string | undefined,
+  output: undefined as string | null | undefined,
+  environment: { platform: platform(), arch: arch(), cpu: cpus()[0]?.model, logicalCpus: cpus().length, physicalMemoryBytes: totalmem(), node: process.version } as Record<string, string | number | undefined>,
   methodology: {
     build: 'Rust release offline; frontend production build served by Vite preview',
     browser: 'headless Chromium; fresh context per case/round/entry; warm repeats in the same context',
     cold: 'fresh browser context, not cold operating-system caches or a freshly restarted backend',
-    pinnedPanels: true, reducedMotion: 'reduce', viewport: { width: 1360, height: 900 },
+    pinnedPanels: true, reducedMotion: 'reduce' as const, viewport: { width: 1360, height: 900 },
     firstStep: 'action start to visible slider value 0, enabled next button and visible current-event context',
     full: 'action start to UI no longer generating; final replay step and learning-results region verified',
     memory: '250 ms interval samples; observed maxima of backend RSS, isolated Chromium process-tree summed RSS and page JSHeapUsedSize; RSS may double-count shared pages; not exact peaks',
@@ -59,8 +117,8 @@ const report = {
   },
 }
 
-function launch(command, args, options = {}) {
-  const child = spawn(command, args, { cwd: root, env: process.env, detached: true, stdio: ['ignore', 'pipe', 'pipe'], ...options })
+function launch(command: string, args: string[], options: Pick<SpawnOptions, 'cwd' | 'env'> = {}) {
+  const child: ServiceProcess = spawn(command, args, { cwd: root, env: process.env, detached: true, stdio: ['ignore', 'pipe', 'pipe'], ...options })
   children.add(child)
   child.stdout.on('data', chunk => process.stderr.write(chunk))
   child.stderr.on('data', chunk => process.stderr.write(chunk))
@@ -68,33 +126,33 @@ function launch(command, args, options = {}) {
   return child
 }
 
-async function build(command, args) {
+async function build(command: string, args: string[]) {
   const child = launch(command, args)
-  await new Promise((resolve, reject) => {
+  await new Promise<void>((resolve, reject) => {
     child.once('error', reject)
     child.once('exit', (code, signal) => code === 0 ? resolve() : reject(new Error(`${command} failed: code=${code}, signal=${signal}`)))
   })
   children.delete(child)
 }
 
-function serviceUrl(child, pattern) {
-  return new Promise((resolve, reject) => {
+function serviceUrl(child: ServiceProcess, pattern: RegExp) {
+  return new Promise<string>((resolve, reject) => {
     let text = ''
     const timer = setTimeout(() => finish(new Error('Service startup diagnostic watchdog expired')), watchdogMs)
-    const data = chunk => {
+    const data = (chunk: Buffer) => {
       text += chunk.toString()
-      const match = text.replace(/\u001b\[[0-9;]*m/g, '').match(pattern)
+      const match = stripVTControlCharacters(text).match(pattern)
       if (match) finish(null, match[1])
     }
-    const failed = error => finish(error)
-    const exited = (code, signal) => finish(new Error(`Service exited before ready: ${code}/${signal}`))
-    function finish(error, value) {
+    const failed = (error: Error) => finish(error)
+    const exited = (code: number | null, signal: NodeJS.Signals | null) => finish(new Error(`Service exited before ready: ${code}/${signal}`))
+    function finish(...[error, value]: [Error] | [null, string]) {
       clearTimeout(timer)
       child.stdout.off('data', data)
       child.off('error', failed)
       child.off('exit', exited)
-      if (error) reject(error)
-      else resolve(value)
+      if (error === null) resolve(value)
+      else reject(error)
     }
     child.stdout.on('data', data)
     child.once('error', failed)
@@ -102,7 +160,7 @@ function serviceUrl(child, pattern) {
   })
 }
 
-async function until(read, description) {
+async function until<T>(read: () => T | undefined, description: string): Promise<T> {
   const started = performance.now()
   while (performance.now() - started < watchdogMs) {
     const value = read()
@@ -118,12 +176,12 @@ async function stop() {
   await browserServer?.close().catch(() => {})
   for (const child of children) {
     if (!child.pid) continue
-    try { process.kill(-child.pid, 'SIGTERM') } catch (error) { if (error.code !== 'ESRCH') process.stderr.write(`${error}\n`) }
+    try { process.kill(-child.pid, 'SIGTERM') } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ESRCH') process.stderr.write(`${error}\n`) }
   }
   await new Promise(resolve => setTimeout(resolve, 300))
   for (const child of children) {
     if (!child.pid) continue
-    try { process.kill(-child.pid, 'SIGKILL') } catch (error) { if (error.code !== 'ESRCH') process.stderr.write(`${error}\n`) }
+    try { process.kill(-child.pid, 'SIGKILL') } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ESRCH') process.stderr.write(`${error}\n`) }
   }
   children.clear()
 }
@@ -134,14 +192,17 @@ for (const signal of ['SIGINT', 'SIGTERM']) {
   })
 }
 
-async function measure(context, baseURL, preset, round, entry, temperature) {
+async function measure(context: BrowserContext, baseURL: string, preset: Preset, round: number, entry: Entry, temperature: Temperature) {
+  const backendPid = backend?.pid
+  const browserPid = browserServer?.process().pid
+  if (!backendPid || !browserPid) throw new Error('Measurement services are not running')
   const page = await context.newPage()
   page.setDefaultTimeout(watchdogMs)
   page.setDefaultNavigationTimeout(watchdogMs)
   const cdp = await context.newCDPSession(page)
   await cdp.send('Network.enable')
   await cdp.send('Performance.enable')
-  const network = new Map()
+  const network = new Map<string, { traceId: string; encodedDataLength?: number }>()
   cdp.on('Network.responseReceived', event => {
     const headers = event.response.headers
     const traceId = Object.entries(headers).find(([key]) => key.toLowerCase() === 'x-trace-id')?.[1]
@@ -151,14 +212,14 @@ async function measure(context, baseURL, preset, round, entry, temperature) {
     const item = network.get(event.requestId)
     if (item) item.encodedDataLength = event.encodedDataLength
   })
-  const errors = []
+  const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
-  const sample = { case: preset.id, segments: preset.segments.length, inputBytes: Buffer.byteLength(JSON.stringify({ segments: preset.segments, trace: true })), round, entry, temperature, resourceSamples: [] }
+  const sample: Sample = { case: preset.id, segments: preset.segments.length, inputBytes: Buffer.byteLength(JSON.stringify({ segments: preset.segments, trace: true })), round, entry, temperature, resourceSamples: [] }
   report.samples.push(sample)
   let sampling = false
   let activeSample = Promise.resolve()
-  let timer
-  let started
+  let timer: ReturnType<typeof setInterval> | undefined
+  let started: number
   const takeSample = () => {
     if (sampling) return activeSample
     sampling = true
@@ -171,9 +232,9 @@ async function measure(context, baseURL, preset, round, entry, temperature) {
         const [pid, parent, rssKiB] = line.trim().split(/\s+/).map(Number)
         return { pid, parent, rssKiB }
       })
-      const rssKiB = processes.find(item => item.pid === backend.pid)?.rssKiB
-      if (!Number.isFinite(rssKiB) || rssKiB <= 0) throw new Error('Backend RSS sample unavailable')
-      const browserPids = new Set([browserServer.process().pid])
+      const rssKiB = processes.find(item => item.pid === backendPid)?.rssKiB
+      if (rssKiB === undefined || !Number.isFinite(rssKiB) || rssKiB <= 0) throw new Error('Backend RSS sample unavailable')
+      const browserPids = new Set([browserPid])
       let changed = true
       while (changed) {
         changed = false
@@ -184,7 +245,7 @@ async function measure(context, baseURL, preset, round, entry, temperature) {
       }
       const browserRss = processes.filter(item => browserPids.has(item.pid)).reduce((sum, item) => sum + item.rssKiB * 1024, 0)
       const used = heap.metrics.find(metric => metric.name === 'JSHeapUsedSize')?.value
-      if (!Number.isFinite(used)) throw new Error('Chromium JSHeapUsedSize unavailable')
+      if (used === undefined || !Number.isFinite(used)) throw new Error('Chromium JSHeapUsedSize unavailable')
       sample.resourceSamples.push({ elapsedMs: performance.now() - started, backendRssBytes: rssKiB * 1024, browserRssBytes: browserRss, browserJsHeapUsedBytes: used })
     })().catch(error => { sample.resourceError = String(error) }).finally(() => { sampling = false })
     return activeSample
@@ -212,8 +273,9 @@ async function measure(context, baseURL, preset, round, entry, temperature) {
     sample.firstStepWithinThreeSeconds = sample.firstStepMs <= 3000
     const response = await traceResponse
     expect(response.status()).toBe(200)
-    sample.traceId = response.headers()['x-trace-id']
-    if (!sample.traceId) throw new Error('Missing x-trace-id')
+    const traceId = response.headers()['x-trace-id']
+    if (!traceId) throw new Error('Missing x-trace-id')
+    sample.traceId = traceId
     const nextStarted = performance.now()
     await next.click()
     await expect(slider).toHaveValue('1', { timeout: watchdogMs })
@@ -230,7 +292,7 @@ async function measure(context, baseURL, preset, round, entry, temperature) {
       await expect(page.getByRole('region', { name: '学习结果' })).toBeVisible({ timeout: watchdogMs })
       const transfer = await until(() => [...network.values()].find(item => item.traceId === sample.traceId && item.encodedDataLength !== undefined), 'finished trace transfer')
       sample.traceTransferBytes = transfer.encodedDataLength
-      sample.lifecycle = await until(() => lifecycle.get(sample.traceId)?.find(event => event.status !== 'started'), 'complete producer lifecycle')
+      sample.lifecycle = await until(() => lifecycle.get(traceId)?.find(event => event.status !== 'started'), 'complete producer lifecycle')
       expect(sample.lifecycle.status).toBe('completed')
     } else {
       const destination = mode === 'cancel' ? 1 : preset.segments.length > 20 ? 2000 : 100
@@ -272,11 +334,11 @@ async function measure(context, baseURL, preset, round, entry, temperature) {
       const cancellationStartedEpoch = Date.now()
       const cancellationStarted = performance.now()
       if (!returnedToResults) await page.getByRole('link', { name: '返回结果查看器', exact: true }).click()
-      const ended = await until(() => lifecycle.get(sample.traceId)?.find(event => event.status !== 'started'), 'producer cancellation or prior completion')
+      const ended = await until(() => lifecycle.get(traceId)?.find(event => event.status !== 'started'), 'producer cancellation or prior completion')
       sample.lifecycle = ended
       sample.cancelObservedMs = ended.status === 'cancelled' ? ended.observedAtMs - cancellationStarted : null
       const dispatchedAt = await page.evaluate(() => globalThis.__learningPerfLeaveAt)
-      if (!returnedToResults && Number.isFinite(dispatchedAt)) {
+      if (!returnedToResults && dispatchedAt !== undefined && Number.isFinite(dispatchedAt)) {
         sample.leaveClickDispatchMs = dispatchedAt - cancellationStartedEpoch
         sample.producerStopAfterClickMs = ended.status === 'cancelled' ? ended.observedAtEpochMs - dispatchedAt : null
       }
@@ -321,7 +383,7 @@ try {
   backend.stderr.on('data', chunk => {
     stderr += chunk.toString()
     const lines = stderr.split('\n')
-    stderr = lines.pop()
+    stderr = lines.pop()!
     for (const line of lines) {
       const match = line.match(/trace_lifecycle id=(\d+) status=(\w+) sent_steps=(\d+) elapsed_ms=(\d+)/)
       if (!match) continue
@@ -335,7 +397,7 @@ try {
   const frontend = launch('pnpm', ['exec', 'vite', 'preview', '--host', '127.0.0.1', '--port', '0', '--strictPort'], { cwd: web, env: { ...process.env, BO_API_URL: apiURL, NO_COLOR: '1' } })
   const baseURL = await serviceUrl(frontend, /Local:\s+(http:\/\/127\.0\.0\.1:\d+\/)/)
   for (const preset of cases) for (let round = 1; round <= rounds; round++) {
-    for (const entry of mode === 'first' ? ['direct', 'result-link'] : ['direct']) {
+    for (const entry of mode === 'first' ? ['direct', 'result-link'] as const : ['direct'] as const) {
       const context = await browser.newContext({ viewport: report.methodology.viewport, reducedMotion: 'reduce' })
       await context.addInitScript(() => {
         for (const side of ['left', 'right']) localStorage.setItem(`bo-learning-layout-v1-${side}`, 'true')

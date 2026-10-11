@@ -1,8 +1,10 @@
 {
   "extends": "./web/tsconfig.tests.json",
   "compilerOptions": {
+    "paths": { "@playwright/test": ["./web/node_modules/@playwright/test"] },
+    "allowImportingTsExtensions": true,
     "typeRoots": ["./web/node_modules/@types"],
     "tsBuildInfoFile": "./web/node_modules/.tmp/tsconfig.orchestration.tsbuildinfo"
   },
-  "include": ["playwright.config.ts"]
+  "include": ["playwright.config.ts", "tools/**/*.ts"]
 }
