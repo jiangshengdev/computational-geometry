@@ -1,4 +1,5 @@
 import { useId, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { FocusScope } from 'react-aria/FocusScope'
 import { useLayoutPreference } from './useLayoutPreference'
 import './LearningDock.css'
 
@@ -14,10 +15,10 @@ export function LearningDock({ side, panels }: { side: 'left' | 'right'; panels:
   const label = `${side === 'left' ? '左' : '右'}侧辅助栏`
   const close = () => {
     setOpened(null)
-    trigger.current?.focus({ preventScroll: true })
   }
   useLayoutEffect(() => {
     if (opened !== null) floating.current?.focus({ preventScroll: true })
+    else trigger.current?.focus({ preventScroll: true })
   }, [opened])
 
   return <aside aria-label={label} className={`learning-dock learning-dock-${side}`} data-expanded={expanded}>
@@ -42,7 +43,7 @@ export function LearningDock({ side, panels }: { side: 'left' | 'right'; panels:
     <div id={id} className="learning-dock-panels">
       {panels.map(panel => {
         const isFloating = !expanded && opened === panel.id
-        return <div key={panel.id} id={`${id}-${panel.id}`} hidden={!expanded && !isFloating}
+        return <FocusScope key={panel.id} contain={isFloating}><div id={`${id}-${panel.id}`} hidden={!expanded && !isFloating}
           ref={isFloating ? floating : undefined} className={`learning-dock-panel${isFloating ? ' learning-dock-floating' : ''}`}
           role={isFloating ? 'dialog' : undefined} aria-label={isFloating ? panel.name : undefined}
           tabIndex={isFloating ? -1 : undefined}
@@ -53,7 +54,7 @@ export function LearningDock({ side, panels }: { side: 'left' | 'right'; panels:
           }}>
           {isFloating && <button type="button" className="learning-dock-close" aria-label={`关闭${panel.name}`} onClick={close}>关闭</button>}
           {panel.content}
-        </div>
+        </div></FocusScope>
       })}
     </div>
   </aside>

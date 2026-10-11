@@ -31,8 +31,8 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(response => response.json())
   await selectPreset(page, example.name)
-  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const { trace }: { trace: SweepTrace } = await response
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
   const group = page.getByRole('region', { name: '同点参与线段' })
   const queue = page.getByRole('region', { name: '待处理事件队列' })

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 
 test('帮助：两页集中入口、键盘隔离与焦点返回', async ({ page }) => {
   for (const route of ['/cases/crossing', '/cases/crossing/learn?step=3']) {

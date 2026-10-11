@@ -15,8 +15,8 @@ for (const width of [1360, 390]) for (const [id, pairs, positions, center, cente
   const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok()).then(response => response.json())
   await page.goto(`/cases/${id}`)
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
-  await page.getByRole('link', { name: '开始逐步学习' }).click()
   const { trace }: { trace: SweepTrace } = await response
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
   await expect(page).toHaveTitle(/逐步学习/)
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const explanation = page.getByRole('region', { name: '操作解释' })

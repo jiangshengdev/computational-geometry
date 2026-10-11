@@ -16,7 +16,7 @@ export function LearningSplit({ canvas, debuggerPanel }: { canvas: ReactNode; de
   const available = Math.max(0, width - gutterWidth)
   const minimum = Math.min(minimumPaneWidth, available / 2)
   const clampWidth = (value: number) => Math.max(minimum, Math.min(available - minimum, value))
-  const leftWidth = Math.round(clampWidth(available * ratio))
+  const leftWidth = Math.floor(clampWidth(available * ratio))
   const actualRatio = available > 0 ? leftWidth / available : 0.5
 
   useLayoutEffect(() => {
@@ -43,7 +43,7 @@ export function LearningSplit({ canvas, debuggerPanel }: { canvas: ReactNode; de
   }
 
   return <div ref={container} className="learning-center learning-split" data-dragging={dragging}
-    style={{ '--learning-canvas-width': width > 0 ? `${leftWidth}px` : '1fr' } as CSSProperties}>
+    style={{ '--learning-ratio': ratio, '--learning-gutter': `${gutterWidth}px`, '--learning-min-pane': `${minimumPaneWidth}px` } as CSSProperties}>
     {canvas}
     <div className="learning-split-handle" role="separator" aria-label="画布与调试区宽度"
       aria-orientation="vertical" aria-valuemin={available > 0 ? Math.round(minimum / available * 100) : 50}

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './learning-test'
 import { installCase, longResultsCase } from './scrolling-cases'
 
 for (const width of [1360, 390]) {
