@@ -175,7 +175,7 @@ for (const preset of ['crossing', 'disjoint']) {
         await expect(learning.locator('[data-event-id][aria-hidden="true"], [data-input-id][aria-hidden="true"]')).toHaveCount(0)
         await expect(page.getByText('加载教学代码…', { exact: true })).toHaveCount(0)
         if (await page.getByRole('region', { name: '取事件教学代码', exact: true }).count()) {
-          await expect(page.locator('.execution-code .code-line')).toHaveCount(2)
+          await expect(page.locator('.execution-code .code-line')).toHaveCount(4)
         }
         states.push(await learning.innerText())
       }
