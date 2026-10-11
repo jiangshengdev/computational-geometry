@@ -3,7 +3,7 @@ import { mkdir } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { formatPoint, pairName, type Intersection } from '../src/geometry'
-import { captureIntersections } from './trace-navigation'
+import { captureIntersections, waitForTraceCompletion } from './trace-navigation'
 
 export async function captureDemo(page: Page, target: Locator, id: string, width: number, view: 'card' | 'drawing') {
   const pictures = join(tmpdir(), 'bo-demo-58')
@@ -52,6 +52,7 @@ export async function checkLearningCompletion(page: Page, intersections: Interse
   expect(await learning.finished()).toBeNull()
   const { intersections: learningIntersections, trace } = await capture.result
   expect(learningIntersections).toEqual(intersections)
+  await waitForTraceCompletion(page)
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveValue('0')
   await page.getByRole('button', { name: '下一步', exact: true }).click()

@@ -19,6 +19,7 @@ static NEXT_TRACE_ID: AtomicU64 = AtomicU64::new(1);
 
 struct TraceLifecycle {
     id: u64,
+    verbose: bool,
     started: Instant,
     status: Cell<&'static str>,
     sent_steps: Cell<usize>,
@@ -26,9 +27,13 @@ struct TraceLifecycle {
 
 impl TraceLifecycle {
     fn start(id: u64) -> Self {
-        eprintln!("trace_lifecycle id={id} status=started sent_steps=0 elapsed_ms=0");
+        let verbose = std::env::var("BO_TRACE_LIFECYCLE").is_ok_and(|value| value == "1");
+        if verbose {
+            eprintln!("trace_lifecycle id={id} status=started sent_steps=0 elapsed_ms=0");
+        }
         Self {
             id,
+            verbose,
             started: Instant::now(),
             // Unwinding or an unexpected exit must never report completion.
             status: Cell::new("failed"),
@@ -39,10 +44,18 @@ impl TraceLifecycle {
 
 impl Drop for TraceLifecycle {
     fn drop(&mut self) {
+        let status = if std::thread::panicking() {
+            "failed"
+        } else {
+            self.status.get()
+        };
+        if !self.verbose && status != "failed" {
+            return;
+        }
         eprintln!(
             "trace_lifecycle id={} status={} sent_steps={} elapsed_ms={}",
             self.id,
-            if std::thread::panicking() { "failed" } else { self.status.get() },
+            status,
             self.sent_steps.get(),
             self.started.elapsed().as_millis(),
         );
@@ -111,7 +124,7 @@ struct TraceFrame {
 #[derive(Default)]
 struct TraceEncoder {
     indices: std::collections::HashMap<std::sync::Arc<str>, usize>,
-    point_indices: std::collections::BTreeMap<Point, usize>,
+    point_indices: std::collections::HashMap<crate::PointRepresentation, usize>,
     result_indices: std::collections::HashMap<[usize; 2], usize>,
 }
 
@@ -246,11 +259,14 @@ impl TraceEncoder {
                         .pending
                         .into_iter()
                         .map(|point| {
-                            *self.point_indices.entry(point).or_insert_with_key(|point| {
-                                let index = point_offset + point_values.len();
-                                point_values.push(PointDto::from(point.clone()));
-                                index
-                            })
+                            *self
+                                .point_indices
+                                .entry(crate::PointRepresentation(point))
+                                .or_insert_with_key(|point| {
+                                    let index = point_offset + point_values.len();
+                                    point_values.push(PointDto::from(point.0.clone()));
+                                    index
+                                })
                         })
                         .collect(),
                     active: step.active,

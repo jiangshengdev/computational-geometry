@@ -9,6 +9,7 @@ import { Card } from '@heroui/react/card'
 import { Tooltip } from '@heroui/react/tooltip'
 import { hoverHighlights, type HoverHighlights, type HoverTarget } from './hover'
 import type { EventSide } from './eventSide'
+import { nearestLabelPosition } from './labelPlacement'
 
 interface Props {
   segments: Segment[]; results: Intersection[]; selected: Intersection | null
@@ -157,9 +158,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
       const tops = [...new Set([box.y, gap, height - box.height - gap,
         ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
         .filter(top => top >= gap && top + box.height <= height - gap)
-      const candidates = lefts.flatMap(left => tops.map(top => ({ left, top, distance: Math.hypot(left - box.x, top - box.y) })))
-        .sort((a, b) => a.distance - b.distance)
-      const position = candidates.find(({ left, top }) => !occupied.some(other =>
+      const position = nearestLabelPosition(lefts, tops, box, ({ left, top }) => !occupied.some(other =>
         left < other.x + other.width + gap && left + box.width + gap > other.x &&
         top < other.y + other.height + gap && top + box.height + gap > other.y) && (sweep?.numbering || !lines.some(line => {
           // Clip the segment against the label's padded rectangle, not its bounding box.

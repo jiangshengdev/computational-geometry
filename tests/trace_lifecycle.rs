@@ -20,6 +20,7 @@ impl Server {
     fn start() -> (Self, SocketAddr) {
         let mut child = Command::new(env!("CARGO_BIN_EXE_computational-geometry"))
             .env("BO_PORT", "0")
+            .env("BO_TRACE_LIFECYCLE", "1")
             .stdout(Stdio::piped())
             .stderr(Stdio::piped())
             .spawn()

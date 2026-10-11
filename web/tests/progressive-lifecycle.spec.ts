@@ -1,4 +1,5 @@
 import { expect, test } from './learning-test'
+import { waitForTraceCompletion } from './trace-navigation'
 
 test('离开和切换案例取消旧学习，再次进入仍能完整回放', async ({ page }) => {
   const errors: string[] = []
@@ -13,7 +14,7 @@ test('离开和切换案例取消旧学习，再次进入仍能完整回放', as
   await page.goto('/cases/crossing/learn')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveValue('0')
-  await expect(page.getByRole('region', { name: '回放控制' })).not.toContainText('轨迹生成中')
+  await waitForTraceCompletion(page)
   await slider.press('End')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('相交线段对：1')
   await expect(page.getByRole('img', { name: '输入 S0', exact: true })).toBeVisible()
@@ -21,7 +22,7 @@ test('离开和切换案例取消旧学习，再次进入仍能完整回放', as
   await page.getByRole('link', { name: '返回结果查看器' }).click()
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   await expect(slider).toHaveValue('0')
-  await expect(page.getByRole('region', { name: '回放控制' })).not.toContainText('轨迹生成中')
+  await waitForTraceCompletion(page)
   await slider.press('End')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('相交线段对：1')
   expect(errors).toEqual([])

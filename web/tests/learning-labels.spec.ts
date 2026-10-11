@@ -1,7 +1,7 @@
 import { expect, test, expandedPanels, type Locator, type Page } from './learning-test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
-import { readResponse, readTrace, stepIndex } from './trace-navigation'
+import { readResponse, readTrace, stepIndex, waitForTraceCompletion } from './trace-navigation'
 
 async function linePosition(line: Locator, fraction = 0.25) {
   await line.scrollIntoViewIfNeeded()
@@ -34,6 +34,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
     const slider = page.getByRole('slider', { name: '教学步骤' })
     await expect(slider).toHaveValue('0')
+    await waitForTraceCompletion(page)
     const last = Number(await slider.getAttribute('max'))
     expect(last).toBeGreaterThan(0)
     const positions = () => svg.locator('.teaching-labels text[data-input]:visible').evaluateAll(nodes => nodes.map(node => {
@@ -47,7 +48,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       await slider.focus()
       await page.keyboard.down('ArrowRight')
       await expect(slider).toHaveValue(String(step))
-      await svg.scrollIntoViewIfNeeded()
       const before = await positions()
       for (const position of before) {
         if (anchors.has(position.id)) expect(position, `S${position.id} moved at step ${step}`).toEqual(anchors.get(position.id))
@@ -56,6 +56,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       const positionKey = JSON.stringify(before)
       if (positionKey === hoveredPositions) continue
       hoveredPositions = positionKey
+      await svg.scrollIntoViewIfNeeded()
       for (const position of before) {
         const label = svg.locator(`.teaching-labels text[data-input="${position.id}"]`)
         // WebKit's protocol box omits SVG text x/y; use the rendered DOM box

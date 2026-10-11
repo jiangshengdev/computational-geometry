@@ -1,7 +1,7 @@
 import { expect, test, type Locator, type Page } from './learning-test'
 import { formatPoint, samePoint } from '../src/geometry'
 import { installCase, scrollingCase } from './scrolling-cases'
-import { readResponse } from './trace-navigation'
+import { readResponse, waitForTraceCompletion } from './trace-navigation'
 
 test.beforeEach(async ({ page }) => {
   await installCase(page, scrollingCase)
@@ -135,7 +135,7 @@ test('教学定位：发现事件按精确身份定位，回退移除未来条�
   await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
-  await expect(page.getByRole('region', { name: '回放控制' })).not.toContainText('轨迹生成中')
+  await waitForTraceCompletion(page)
   await slider.focus()
   await slider.press('End')
   await expect(queue.getByRole('listitem')).toHaveCount(0)

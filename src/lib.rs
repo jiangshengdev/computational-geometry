@@ -578,11 +578,7 @@ pub(crate) fn trace_intersections(segments: &[Segment]) -> (Vec<Intersection>, S
     };
     let results = sweep(segments, Some(&mut trace.steps), None, &|| false)
         .expect("collected computation is never cancelled");
-    for step in &mut trace.steps {
-        for point in step.current.iter_mut().chain(step.pending.iter_mut()) {
-            point.x -= &trace.shear * &point.y;
-        }
-    }
+    TraceProjection::new(&trace.shear).restore(&mut trace.steps);
     (results, trace)
 }
 
@@ -594,19 +590,69 @@ pub(crate) fn stream_intersections(
     sweep(segments, Some(&mut Vec::new()), Some(emit), cancelled)
 }
 
+// Compare and hash the stored integers, avoiding rational division on every
+// cache lookup. Equivalent noncanonical representations may occupy two entries.
+struct PointRepresentation(Point);
+
+impl PartialEq for PointRepresentation {
+    fn eq(&self, other: &Self) -> bool {
+        self.0.x.numer() == other.0.x.numer()
+            && self.0.x.denom() == other.0.x.denom()
+            && self.0.y.numer() == other.0.y.numer()
+            && self.0.y.denom() == other.0.y.denom()
+    }
+}
+
+impl Eq for PointRepresentation {}
+
+impl std::hash::Hash for PointRepresentation {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        std::hash::Hash::hash(self.0.x.numer(), state);
+        std::hash::Hash::hash(self.0.x.denom(), state);
+        std::hash::Hash::hash(self.0.y.numer(), state);
+        std::hash::Hash::hash(self.0.y.denom(), state);
+    }
+}
+
+struct TraceProjection<'a> {
+    shear: &'a Rational,
+    points: std::collections::HashMap<PointRepresentation, Point>,
+}
+
+impl<'a> TraceProjection<'a> {
+    fn new(shear: &'a Rational) -> Self {
+        Self {
+            shear,
+            points: std::collections::HashMap::new(),
+        }
+    }
+
+    fn restore(&mut self, steps: &mut [SweepStep]) {
+        for step in steps {
+            for point in step.current.iter_mut().chain(step.pending.iter_mut()) {
+                let original = self
+                    .points
+                    .entry(PointRepresentation(point.clone()))
+                    .or_insert_with(|| {
+                        let mut original = point.clone();
+                        original.x -= self.shear * &original.y;
+                        original
+                    });
+                point.clone_from(original);
+            }
+        }
+    }
+}
+
 fn emit_steps(
     steps: &mut Vec<SweepStep>,
-    shear: &Rational,
+    projection: &mut TraceProjection<'_>,
     emit: &mut dyn FnMut(Vec<SweepStep>) -> bool,
     retained: &mut bool,
 ) -> bool {
     let previous = steps.last().cloned();
     let mut ready: Vec<_> = steps.drain(..).skip(usize::from(*retained)).collect();
-    for step in &mut ready {
-        for point in step.current.iter_mut().chain(step.pending.iter_mut()) {
-            point.x -= shear * &point.y;
-        }
-    }
+    projection.restore(&mut ready);
     if let Some(previous) = previous {
         steps.push(previous);
         *retained = true;
@@ -625,6 +671,7 @@ fn sweep(
     }
     let mut retained = false;
     let shear = choose_shear(segments);
+    let mut projection = TraceProjection::new(&shear);
     let segments: Vec<_> = segments
         .iter()
         .map(|segment| SweepSegment::new(segment, &shear))
@@ -659,7 +706,7 @@ fn sweep(
         ));
     }
     if let (Some(steps), Some(emit)) = (&mut steps, &mut emit)
-        && !emit_steps(steps, &shear, *emit, &mut retained)
+        && !emit_steps(steps, &mut projection, *emit, &mut retained)
     {
         return None;
     }
@@ -2173,15 +2220,106 @@ fn sweep(
             }
         }
         if let (Some(steps), Some(emit)) = (&mut steps, &mut emit)
-            && !emit_steps(steps, &shear, *emit, &mut retained)
+            && !emit_steps(steps, &mut projection, *emit, &mut retained)
         {
             return None;
         }
     }
     if let (Some(steps), Some(emit)) = (&mut steps, &mut emit)
-        && !emit_steps(steps, &shear, *emit, &mut retained)
+        && !emit_steps(steps, &mut projection, *emit, &mut retained)
     {
         return None;
     }
     Some(result)
+}
+
+#[cfg(test)]
+mod trace_projection_tests {
+    use super::*;
+
+    fn rational(numerator: i64, denominator: i64) -> Rational {
+        Rational::new(numerator.into(), denominator.into())
+    }
+
+    #[test]
+    fn representation_keys_preserve_exact_coordinates_for_equivalent_fractions() {
+        let shear = rational(2, 3);
+        let mut projection = TraceProjection::new(&shear);
+        let mut step = SweepStep::capture("initial", None, &BTreeMap::new(), &[], &[], &[], &[]);
+        step.pending = vec![
+            Point {
+                x: rational(7, 5),
+                y: rational(3, 2),
+            },
+            Point {
+                x: Rational::new_raw(14.into(), 10.into()),
+                y: Rational::new_raw(9.into(), 6.into()),
+            },
+            Point {
+                x: rational(8, 5),
+                y: rational(3, 2),
+            },
+        ];
+        projection.restore(std::slice::from_mut(&mut step));
+        assert_eq!(step.pending[0].x, rational(2, 5));
+        assert_eq!(step.pending[1].x, rational(2, 5));
+        assert_eq!(step.pending[2].x, rational(3, 5));
+        assert!(step.pending.iter().all(|point| point.y == rational(3, 2)));
+        assert_eq!(projection.points.len(), 3);
+    }
+
+    #[test]
+    fn emitted_batches_restore_exact_points_without_mutating_retained_sweep_coordinates() {
+        let source = Point {
+            x: rational(7, 5),
+            y: rational(3, 2),
+        };
+        let queue = BTreeMap::from([(source.clone(), Event::default())]);
+        // The same sweep coordinate belongs to different original points for
+        // different requests. These expected coordinates are independent of
+        // the projection implementation and the collected trace path.
+        for (shear, expected_x) in [
+            (rational(2, 3), rational(2, 5)),
+            (rational(-4, 7), rational(79, 35)),
+        ] {
+            let expected = Point {
+                x: expected_x,
+                y: rational(3, 2),
+            };
+            let mut projection = TraceProjection::new(&shear);
+            let mut retained = false;
+            let mut steps = Vec::new();
+            let mut batches = Vec::new();
+            for _ in 0..3 {
+                steps.push(SweepStep::capture(
+                    "initial",
+                    Some(&source),
+                    &queue,
+                    &[],
+                    &[],
+                    &[],
+                    &[],
+                ));
+                assert!(emit_steps(
+                    &mut steps,
+                    &mut projection,
+                    &mut |batch| {
+                        batches.push(batch);
+                        true
+                    },
+                    &mut retained,
+                ));
+                assert_eq!(steps.len(), 1);
+                assert_eq!(steps[0].current.as_ref(), Some(&source));
+                assert_eq!(steps[0].pending, vec![source.clone()]);
+            }
+            assert_eq!(batches.len(), 3);
+            for batch in batches {
+                assert_eq!(batch.len(), 1);
+                assert_eq!(batch[0].current.as_ref(), Some(&expected));
+                assert_eq!(batch[0].pending, vec![expected.clone()]);
+            }
+            assert_eq!(projection.points.len(), 1);
+        }
+    }
 }

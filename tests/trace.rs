@@ -122,6 +122,30 @@ fn assert_trace_tables(response: &Response) {
 }
 
 #[tokio::test]
+async fn trace_point_table_deduplicates_equivalent_input_fraction_representations() {
+    let segments: Vec<_> = [("7", "5", "3", "2"), ("14", "10", "9", "6"), ("8", "5", "3", "2")]
+        .into_iter()
+        .map(|(xn, xd, yn, yd)| {
+            let point = serde_json::json!({
+                "x": {"numerator": xn, "denominator": xd},
+                "y": {"numerator": yn, "denominator": yd},
+            });
+            serde_json::json!({"start": point, "end": point})
+        })
+        .collect();
+    let response = trace_json(&serde_json::to_string(&segments).unwrap()).await;
+    assert_eq!(response.trace.point_values.len(), 2);
+    for (point, numerator) in response.trace.point_values.iter().zip(["7", "8"]) {
+        assert_eq!(point.x.numerator, numerator);
+        assert_eq!(point.x.denominator, "5");
+        assert_eq!(point.y.numerator, "3");
+        assert_eq!(point.y.denominator, "2");
+    }
+    assert_eq!(response.intersections.len(), 1);
+    assert_eq!(response.intersections[0].segments, [0, 1]);
+}
+
+#[tokio::test]
 async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
     let response = trace_json(r#"[{"start":{"x":{"numerator":"0","denominator":"1"},"y":{"numerator":"0","denominator":"1"}},"end":{"x":{"numerator":"2","denominator":"1"},"y":{"numerator":"0","denominator":"1"}}}]"#).await;
     let values = &response.trace.values;

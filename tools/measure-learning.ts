@@ -378,7 +378,7 @@ try {
   await access(dirname(output), constants.W_OK)
   await build('cargo', ['build', '--release', '--offline'])
   await build('pnpm', ['--dir', 'web', 'build'])
-  backend = launch(join(root, 'target/release/computational-geometry'), [], { env: { ...process.env, BO_PORT: '0' } })
+  backend = launch(join(root, 'target/release/computational-geometry'), [], { env: { ...process.env, BO_PORT: '0', BO_TRACE_LIFECYCLE: '1' } })
   let stderr = ''
   backend.stderr.on('data', chunk => {
     stderr += chunk.toString()
