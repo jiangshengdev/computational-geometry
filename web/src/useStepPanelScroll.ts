@@ -1,4 +1,4 @@
-import { useEffectEvent, useLayoutEffect, type RefObject } from 'react'
+import { useCallback, useEffectEvent, useLayoutEffect, useRef, type RefObject } from 'react'
 
 interface PanelTarget {
   panel: RefObject<HTMLDivElement | null>
@@ -32,4 +32,22 @@ export function useStepPanelScroll(step: object, restart: number, targets: Panel
     }
   })
   useLayoutEffect(() => { locate() }, [step, restart])
+}
+
+// Overlay components unmount their content when closed. Keep the reader's
+// position with the learning view, across floating/pinned panel mounts.
+export function usePanelScrollRef() {
+  const panel = useRef<HTMLDivElement | null>(null)
+  const position = useRef({ top: 0, left: 0 })
+  const attach = useCallback((element: HTMLDivElement | null) => {
+    if (!element) return
+    panel.current = element
+    element.scrollTop = position.current.top
+    element.scrollLeft = position.current.left
+    return () => {
+      position.current = { top: element.scrollTop, left: element.scrollLeft }
+      panel.current = null
+    }
+  }, [])
+  return [panel, attach] as const
 }

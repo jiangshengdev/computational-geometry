@@ -17,7 +17,8 @@ import { Separator } from '@heroui/react/separator'
 import { Spinner } from '@heroui/react/spinner'
 import { ToggleButton } from '@heroui/react/toggle-button'
 import { ToggleButtonGroup } from '@heroui/react/toggle-button-group'
-import { buttonVariants } from '@heroui/react/button'
+import { Button, buttonVariants } from '@heroui/react/button'
+import { Input } from '@heroui/react/input'
 import { usePageShortcut } from './usePageShortcut'
 import { AppLink as Link } from './AppLink'
 
@@ -210,15 +211,15 @@ function LearningPage({ preset, trace, complete }: { preset: Preset; trace: Swee
     onStepPreview={next => setPreview({ search, index: next })} onStepChange={changeStep}>
     {waiting && <div role="status" aria-label="步骤等待" className="flex flex-wrap items-center gap-3">
       <span>{waitingEntry ? '正在等待下一个大步' : `正在等待步骤 ${index}`} · 已生成 0–{trace.steps.length - 1}。可继续浏览已生成步骤。</span>
-      <button className={buttonVariants({ variant: 'secondary' })} onClick={() => changeStep(visibleIndex)}>取消跳转等待</button>
+      <Button variant="secondary" onPress={() => changeStep(visibleIndex)}>取消跳转等待</Button>
     </div>}
     <form className="flex flex-wrap items-center gap-2" onSubmit={event => {
       event.preventDefault()
       const target = Number(destination)
       if (destination && Number.isSafeInteger(target) && target >= 0) changeStep(target)
     }}>
-      <label><span className="sr-only">跳转步骤</span><input aria-label="跳转步骤" placeholder="步骤" className="w-20 rounded border p-1" type="number" min="0" step="1" required value={destination} onChange={event => setDestination(event.target.value)} /></label>
-      <button className={buttonVariants({ variant: 'secondary', size: 'sm' })} type="submit">前往步骤</button>
+      <Input aria-label="跳转步骤" placeholder="步骤" className="w-28" type="number" min="0" step="1" required value={destination} onChange={event => setDestination(event.target.value)} />
+      <Button variant="secondary" size="sm" type="submit">前往步骤</Button>
     </form></LearningView>
   </>
 }

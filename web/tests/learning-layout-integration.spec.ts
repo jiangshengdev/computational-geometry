@@ -35,6 +35,10 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     })
     expect(scroll).toBeGreaterThan(0)
     await expect(last).toBeInViewport()
+    await page.keyboard.press('Escape')
+    await expect(page.getByRole('button', { name: '待处理事件队列', exact: true })).toBeFocused()
+    await page.getByRole('button', { name: '待处理事件队列', exact: true }).click()
+    await expect(last).toBeInViewport()
     // Keyboard events in a temporary panel must never advance the trace.
     await page.keyboard.press('ArrowRight')
     await expect(page).toHaveURL(/step=1$/)

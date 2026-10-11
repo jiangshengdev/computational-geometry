@@ -1,26 +1,21 @@
 .learning-dock { min-width: 0; min-height: 0; }
 .learning-dock-controls { display: flex; flex-wrap: wrap; gap: 4px; }
-.learning-dock-button { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 40px; min-height: 40px; padding: 8px; border-radius: var(--radius); background: var(--surface); cursor: pointer; }
-.learning-dock-button:hover, .learning-dock-button[aria-expanded="true"] { background: var(--surface-secondary); }
-.learning-dock-button:focus-visible, .learning-dock-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .learning-dock-panels { display: grid; gap: 12px; min-width: 0; min-height: 0; }
 .learning-dock[data-expanded="true"] { display: flex; flex-direction: column; gap: 12px; }
 .learning-dock[data-expanded="true"] .learning-dock-panels { flex: 1; grid-auto-rows: minmax(0, 1fr); }
 .learning-dock-panel { min-width: 0; min-height: 0; }
-.learning-dock-panel[hidden] { display: none; }
 .learning-dock-panel > .learning-panel { height: 100%; }
-.learning-dock-dismiss { position: fixed; inset: 0; z-index: 20; }
-.learning-dock-floating { position: fixed; z-index: 21; top: max(16px, env(safe-area-inset-top)); bottom: max(16px, env(safe-area-inset-bottom)); width: min(360px, calc(100vw - 32px)); display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: var(--radius-2xl); background: var(--surface); box-shadow: 0 12px 48px #0003; overflow: auto; overscroll-behavior: contain; }
-.learning-dock-left .learning-dock-floating { left: 16px; }
-.learning-dock-right .learning-dock-floating { right: 16px; }
+.learning-dock-overlay { position: absolute; top: max(16px, env(safe-area-inset-top)); bottom: max(16px, env(safe-area-inset-bottom)); width: min(360px, calc(100vw - 32px)); height: auto; padding: 0; }
+.learning-dock-overlay-left { left: 16px; }
+.learning-dock-overlay-right { right: 16px; }
+.learning-dock-floating { height: 100%; gap: 8px; padding: 12px; overflow: auto; overscroll-behavior: contain; }
 .learning-dock-floating > .learning-panel { flex: 1; min-height: 0; }
-.learning-dock-close { align-self: flex-end; flex-shrink: 0; padding: 6px 12px; border-radius: var(--radius); cursor: pointer; }
 @media (min-width: 1100px) {
   .learning-dock { width: 44px; }
   .learning-dock[data-expanded="true"] { width: 220px; }
   .learning-dock-controls { flex-direction: column; align-items: stretch; }
-  .learning-dock-left .learning-dock-floating { left: 64px; }
-  .learning-dock-right .learning-dock-floating { right: 64px; }
+  .learning-dock-overlay-left { left: 64px; }
+  .learning-dock-overlay-right { right: 64px; }
 }
 @media (min-width: 1100px) and (min-height: 720px) {
   .learning-dock-left[data-expanded="true"] .learning-dock-panels { grid-template-rows: round(down, calc((100% - 12px) / 2), 1px) minmax(0, 1fr); }
