@@ -1,6 +1,40 @@
 import { expect, test } from './learning-test'
 import type { SweepTrace } from '../src/geometry'
 import { readResponse, readTrace } from './trace-navigation'
+import { variableValue } from '../src/executionSymbols'
+
+test('遮蔽状态对入参与局部变量使用一致文案，其他不可用状态保持独立', () => {
+  for (const name of ['segments', 'local']) {
+    expect(variableValue({ name, type: 'usize', availability: 'shadowed', value: 0 }, ['7']))
+      .toBe('7（已遮蔽，遮蔽前的最后值）')
+  }
+  expect(variableValue({ name: 'point', type: 'Point', availability: 'unavailable', value: null }, []))
+    .toBe('不可用（当前作用域未提供）')
+})
+
+test('被遮蔽的入参保留原坐标最后值，前进回退不混入扫描线段', async ({ page }) => {
+  const trace = await readTrace(page, 'vertical-overlap')
+  const expected = '[Segment { start: (1/2, -1/3), end: (1/2, 5/3) }, Segment { start: (1/2, 1/3), end: (1/2, 7/3) }]'
+  for (const step of trace.steps.filter(step => step.execution.context.function === 'sweep')) {
+    const input = step.execution.context.parameters.find(variable => variable.name === 'segments')!
+    expect(input.availability).toBe('shadowed')
+    expect(trace.values[input.value!]).toBe(expected)
+  }
+  const index = trace.steps.findIndex(step => step.action === 'take-entry')
+  await page.goto(`/cases/vertical-overlap/learn?step=${index}`)
+  const variables = page.getByRole('region', { name: '核心变量', exact: true })
+  const segments = variables.getByTestId('variable-segments')
+  await expect(segments).toHaveCount(2)
+  const input = segments.filter({ hasText: 'segments: &[Segment]' }).locator('dd')
+  const local = segments.filter({ hasText: 'segments: Vec<SweepSegment>' }).locator('dd')
+  await expect(input).toHaveText(`${expected}（已遮蔽，遮蔽前的最后值）`)
+  await expect(local).toContainText('SweepSegment')
+  await expect(local).not.toContainText('已遮蔽')
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await expect(input).toHaveText(`${expected}（已遮蔽，遮蔽前的最后值）`)
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await expect(input).toHaveText(`${expected}（已遮蔽，遮蔽前的最后值）`)
+})
 
 for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
   test(`交集实参与核心变量使用一致的简写：${id}`, async ({ page }) => {

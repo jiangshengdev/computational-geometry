@@ -217,9 +217,12 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
         assert_eq!(step.execution.context.parameters[0].name, "segments");
         assert_eq!(
             step.execution.context.parameters[0].availability,
-            "unavailable"
+            "shadowed"
         );
-        assert!(step.execution.context.parameters[0].value.is_none());
+        assert_eq!(
+            step.execution.context.parameters[0].text(values),
+            Some("[Segment { start: (0, 0), end: (2, 0) }]")
+        );
         for variable in &step.execution.context.locals {
             assert!(!variable.r#type.is_empty());
             assert_eq!(

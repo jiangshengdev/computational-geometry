@@ -61,6 +61,9 @@ export function callExpression(name: string, after: string) {
 export function variableValue(variable: ExecutionVariable | undefined, values: string[]) {
   if (!variable || variable.availability === 'unavailable') return '不可用（当前作用域未提供）'
   if (variable.availability === 'unassigned') return '未赋值'
+  if (variable.availability === 'shadowed') return variable.value === null
+    ? '已遮蔽（遮蔽前的最后值未记录）'
+    : `${values[variable.value]}（已遮蔽，遮蔽前的最后值）`
   return variable.value === null ? '不可用（当前轨迹未提供值）' : values[variable.value]
 }
 

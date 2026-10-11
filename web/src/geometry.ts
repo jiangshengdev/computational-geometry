@@ -7,7 +7,7 @@ export interface Preset { id: string; name: string; description: string; segment
 export interface ExecutionVariable {
   name: string
   type: string
-  availability: 'available' | 'unassigned' | 'unavailable'
+  availability: 'available' | 'unassigned' | 'unavailable' | 'shadowed'
   value: number | null
 }
 export interface ExecutionState {

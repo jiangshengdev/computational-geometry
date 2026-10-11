@@ -439,6 +439,7 @@ impl SweepStep {
         results: &[Intersection],
         checked: &[[usize; 2]],
         subjects: &[usize],
+        input_value: &Arc<str>,
     ) -> Self {
         Self {
             execution: Execution {
@@ -449,7 +450,12 @@ impl SweepStep {
                 context: ExecutionContext {
                     function: "sweep",
                     // The input binding has been shadowed by Vec<SweepSegment>.
-                    parameters: vec![Variable::absent("segments", "&[Segment]", "unavailable")],
+                    parameters: vec![Variable {
+                        name: "segments",
+                        r#type: "&[Segment]",
+                        availability: "shadowed",
+                        value: Some(Arc::clone(input_value)),
+                    }],
                     locals: vec![
                         Variable::available(
                             "queue",
@@ -681,6 +687,21 @@ fn sweep(
     let mut retained = false;
     let shear = choose_shear(segments);
     let mut projection = TraceProjection::new(&shear);
+    // Capture the binding immediately before it is shadowed, only for teaching.
+    let input_value = steps.as_ref().map(|_| {
+        Arc::<str>::from(format!(
+            "[{}]",
+            segments
+                .iter()
+                .map(|segment| format!(
+                    "Segment {{ start: {}, end: {} }}",
+                    point_value(&segment.start),
+                    point_value(&segment.end)
+                ))
+                .collect::<Vec<_>>()
+                .join(", ")
+        ))
+    });
     let segments: Vec<_> = segments
         .iter()
         .map(|segment| SweepSegment::new(segment, &shear))
@@ -712,6 +733,7 @@ fn sweep(
             &result,
             &[],
             &[],
+            input_value.as_ref().expect("tracing captures input"),
         ));
     }
     if let (Some(steps), Some(emit)) = (&mut steps, &mut emit)
@@ -724,8 +746,16 @@ fn sweep(
             return None;
         }
         if let Some(steps) = &mut steps {
-            let mut step =
-                SweepStep::capture("take-entry", None, &queue, &active, &result, &[], &[]);
+            let mut step = SweepStep::capture(
+                "take-entry",
+                None,
+                &queue,
+                &active,
+                &result,
+                &[],
+                &[],
+                input_value.as_ref().expect("tracing captures input"),
+            );
             step.preserve_geometry(steps.last().expect("initial snapshot exists"));
             step.take_context(
                 0,
@@ -758,7 +788,16 @@ fn sweep(
         }
         let next = queue.pop_first();
         if let Some(steps) = &mut steps {
-            let mut step = SweepStep::capture("take-pop", None, &queue, &active, &result, &[], &[]);
+            let mut step = SweepStep::capture(
+                "take-pop",
+                None,
+                &queue,
+                &active,
+                &result,
+                &[],
+                &[],
+                input_value.as_ref().expect("tracing captures input"),
+            );
             step.preserve_geometry(steps.last().expect("entry snapshot exists"));
             step.take_context(
                 1,
@@ -801,8 +840,16 @@ fn sweep(
         }
         let Some((point, event)) = next else {
             if let Some(steps) = &mut steps {
-                let mut step =
-                    SweepStep::capture("take-empty", None, &queue, &active, &result, &[], &[]);
+                let mut step = SweepStep::capture(
+                    "take-empty",
+                    None,
+                    &queue,
+                    &active,
+                    &result,
+                    &[],
+                    &[],
+                    input_value.as_ref().expect("tracing captures input"),
+                );
                 step.preserve_geometry(steps.last().expect("pop snapshot exists"));
                 step.take_context(
                     2,
@@ -817,8 +864,16 @@ fn sweep(
         };
         let first_step = steps.as_ref().map_or(0, |steps| steps.len());
         if let Some(steps) = &mut steps {
-            let mut step =
-                SweepStep::capture("take", Some(&point), &queue, &active, &result, &[], &[]);
+            let mut step = SweepStep::capture(
+                "take",
+                Some(&point),
+                &queue,
+                &active,
+                &result,
+                &[],
+                &[],
+                input_value.as_ref().expect("tracing captures input"),
+            );
             step.take_context(
                 2,
                 None,
@@ -844,6 +899,7 @@ fn sweep(
                         &result,
                         &[],
                         $subjects,
+                        input_value.as_ref().expect("tracing captures input"),
                     );
                     step.sweep_context(
                         trace_segments.as_ref().expect("tracing captures segments"),
@@ -2001,6 +2057,7 @@ fn sweep(
                             &result,
                             checked,
                             neighbors,
+                            input_value.as_ref().expect("tracing captures input"),
                         );
                         let mut queue_parameter = step.execution.context.locals.remove(0);
                         queue_parameter.r#type = "&mut BTreeMap<Point, Event>";
@@ -2330,7 +2387,16 @@ mod trace_projection_tests {
     fn representation_keys_preserve_exact_coordinates_for_equivalent_fractions() {
         let shear = rational(2, 3);
         let mut projection = TraceProjection::new(&shear);
-        let mut step = SweepStep::capture("initial", None, &BTreeMap::new(), &[], &[], &[], &[]);
+        let mut step = SweepStep::capture(
+            "initial",
+            None,
+            &BTreeMap::new(),
+            &[],
+            &[],
+            &[],
+            &[],
+            &Arc::from("[]"),
+        );
         step.pending = vec![
             Point {
                 x: rational(7, 5),
@@ -2384,6 +2450,7 @@ mod trace_projection_tests {
                     &[],
                     &[],
                     &[],
+                    &Arc::from("[]"),
                 ));
                 assert!(emit_steps(
                     &mut steps,
