@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { Route, Routes, useMatch, useNavigate, useParams, useSearchParams } from 'react-router'
 import { GeometryView } from './GeometryView'
 import { CaseThumbnail } from './CaseThumbnail'
-import { decodeTrace, formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace, type WireSweepTrace } from './geometry'
+import { consumeTrace, formatGeometry, formatPoint, pairName, type Intersection, type Preset, type SweepTrace } from './geometry'
 import { LearningView } from './LearningView'
 import { CaseHelp, HelpButton } from './CaseHelp'
 import { presets } from './presets'
@@ -21,7 +21,7 @@ import { buttonVariants } from '@heroui/react/button'
 import { usePageShortcut } from './usePageShortcut'
 import { AppLink as Link } from './AppLink'
 
-type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace }
+type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace; complete: boolean }
 
 function PageTitle({ page, preset }: { page: string; preset?: Preset }) {
   const title = `${preset ? `${preset.name} · ` : ''}${page} · BO 结果查看器`
@@ -56,10 +56,16 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
           body: JSON.stringify({ segments: preset.segments, trace: learning }), signal: controller.signal,
         })
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
-        const data = await response.json() as { intersections: Intersection[]; trace?: WireSweepTrace }
-        if (!Array.isArray(data.intersections)) throw new Error('结果结构无效')
-        if (learning && !data.trace?.steps.length) throw new Error('教学轨迹无效')
-        if (current) setComputation({ status: 'ready', results: data.intersections, trace: data.trace && decodeTrace(data.trace) })
+        if (learning) {
+          await consumeTrace(response, decoder => {
+            if (current) setComputation({ status: 'ready', results: decoder.complete ? decoder.intersections : decoder.trace.steps.at(-1)!.results,
+              trace: { ...decoder.trace, steps: decoder.trace.steps.slice(), values: decoder.trace.values.slice() }, complete: decoder.complete })
+          })
+        } else {
+          const data = await response.json() as { intersections: Intersection[] }
+          if (!Array.isArray(data.intersections)) throw new Error('结果结构无效')
+          if (current) setComputation({ status: 'ready', results: data.intersections, complete: true })
+        }
       } catch (error) {
         if (current) setComputation({ status: 'error', message: error instanceof Error ? error.message : '未知错误' })
       }
@@ -75,7 +81,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
       : computation.status === 'error'
         ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>计算失败</Alert.Title><Alert.Description>请检查本地服务。{computation.message}</Alert.Description></Alert.Content></Alert>
-        : computation.trace && <LearningPage preset={preset} trace={computation.trace} results={results} />}
+        : computation.trace && <LearningPage preset={preset} trace={computation.trace} complete={computation.complete} />}
   </>
   return <>
     <PageTitle page="计算结果" preset={preset} />
@@ -163,7 +169,7 @@ function CaseList() {
   </section>
 }
 
-function LearningPage({ preset, trace, results }: { preset: Preset; trace: SweepTrace; results: Intersection[] }) {
+function LearningPage({ preset, trace, complete }: { preset: Preset; trace: SweepTrace; complete: boolean }) {
   const [search, setSearch] = useSearchParams()
   const [preview, setPreview] = useState<{ search: URLSearchParams; index: number } | null>(null)
   const values = search.getAll('step')
@@ -172,11 +178,11 @@ function LearningPage({ preset, trace, results }: { preset: Preset; trace: Sweep
     return <RouteError message="教学步骤参数无效：请使用非负整数，且只提供一个 step 参数。" preset={preset} showListLink={false} />
   }
   const index = value === undefined ? 0 : Number(value)
-  if (!Number.isSafeInteger(index) || index >= trace.steps.length) {
+  if (!Number.isSafeInteger(index) || (complete && index >= trace.steps.length)) {
     return <RouteError message={`教学步骤超出范围：此案例的有效步骤为 0–${trace.steps.length - 1}。`} preset={preset} showListLink={false} />
   }
-  return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace} results={results}
-    index={preview?.search === search ? preview.index : index}
+  return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace}
+    complete={complete} index={preview?.search === search ? preview.index : Math.min(index, trace.steps.length - 1)}
     onStepPreview={next => setPreview({ search, index: next })} onStepChange={next => {
     setPreview(null)
     if (next === index) return

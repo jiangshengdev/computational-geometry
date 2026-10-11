@@ -1,7 +1,7 @@
 import { Fragment, useId, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, CircleHelp, Crosshair, ListOrdered, ListTree, Waypoints } from 'lucide-react'
 import { GeometryView } from './GeometryView'
-import { formatGeometry, formatPoint, pairName, samePoint, type Intersection, type Point, type Preset, type SweepTrace } from './geometry'
+import { formatGeometry, formatPoint, pairName, samePoint, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@heroui/react/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@heroui/react/card'
 import { Chip } from '@heroui/react/chip'
@@ -21,8 +21,8 @@ import { LearningDock } from './LearningDock'
 import { LearningSplit } from './LearningSplit'
 
 
-export function LearningView({ preset, trace, results, index, onStepChange, onStepPreview }: {
-  preset: Preset; trace: SweepTrace; results: Intersection[]; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void
+export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview }: {
+  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void
 }) {
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const keyboardScrub = useRef(false)
@@ -68,7 +68,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   const pointInputs = step.starts.filter(id => step.ends.includes(id))
   const recorded = step.action === 'record' ? step.results.at(-1) : undefined
   const recordedOverlap = recorded?.geometry.type === 'overlap' ? recorded : undefined
-  const overlaps = results.filter(result => result.geometry.type === 'overlap')
+  const overlaps = step.results.filter(result => result.geometry.type === 'overlap')
   const visibleOverlaps = step.results.filter(result => result.geometry.type === 'overlap')
   const endingOverlaps = visibleOverlaps.filter(({ geometry }) => geometry.type === 'overlap' && step.current && samePoint(geometry.end, step.current))
   const continuingOverlapInputs = [...new Set(endingOverlaps.flatMap(result => result.segments))].filter(id => !step.ends.includes(id))
@@ -97,9 +97,8 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   // A pop changes the queue, not the displayed sweep position. Keep its side too.
   const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && ((state.execution.module === 'activity' && !state.execution.entry && (state.execution.boundary === 7 || state.active.join(',') !== trace.steps[position - 1]?.active.join(','))) || !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action)))
   const geometryStep = trace.steps[geometryIndex]
-  const complete = index === trace.steps.length - 1
-  const points = results.flatMap(result => result.geometry.type === 'point' ? [result.geometry.point] : [])
-    .filter((p, i, all) => all.findIndex(other => samePoint(p, other)) === i)
+  const complete = generated && index === trace.steps.length - 1
+  const points = trace.pointLabels
   const pointName = (p: Point) => {
     const endpoints = preset.segments.flatMap((s, id) => [
       ...(samePoint(p, s.start) ? [`S${id} 起点`] : []),
@@ -109,9 +108,10 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
       ...(samePoint(p, geometry.start) ? ['重叠起界'] : []),
       ...(samePoint(p, geometry.end) ? ['重叠止界'] : []),
     ] : [])
-    return `${endpoints.length ? endpoints.join(' / ') : `I${points.findIndex(point => samePoint(point, p))}`} ${formatPoint(p)}${boundary.length ? ` · ${[...new Set(boundary)].join(' / ')}` : ''}`
+    const position = points.findIndex(point => samePoint(point, p))
+    return `${endpoints.length ? endpoints.join(' / ') : position >= 0 ? `I${position}` : '待处理交点'} ${formatPoint(p)}${boundary.length ? ` · ${[...new Set(boundary)].join(' / ')}` : ''}`
   }
-  const discovered = step.pending.filter(p => points.some(point => samePoint(point, p)))
+  const discovered = step.pending.filter(p => !preset.segments.some(segment => samePoint(p, segment.start) || samePoint(p, segment.end)))
   const newlyScheduled = discovered.filter(p => !before.pending.some(old => samePoint(old, p)))
   const pendingTarget = step.action === 'discover' ? newlyScheduled[0] : undefined
   const activeTarget = step.subjects.find(id => step.active.includes(id))
@@ -163,7 +163,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
         {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序。先核对同点参与者并逐对记录交集，再按真实动作更新活动顺序。</p>}
         {step.action === 'take-entry' && <p>进入取事件模块，尚未执行第一条核心语句。当前事件与画布保留上一步状态；下一小步将取出队首事件。</p>}
         {step.action === 'take-pop' && <p>已执行 queue.pop_first()，返回值保存在 next 中。尚未匹配和绑定 point、event，所以画布仍保留上一步位置。这是模块中间状态。</p>}
-        {step.action === 'take-empty' && <p>next 为 None，事件队列已空，退出扫描循环。学习完成。</p>}
+        {step.action === 'take-empty' && <p>next 为 None，事件队列已空，退出扫描循环。{generated ? '学习完成。' : '正在确认最终结果。'}</p>}
         {step.action === 'micro' && <p>算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。</p>}
         {pointInputs.length > 0 && <p>零长度点 <span className="coordinates">{inputReferences(pointInputs, '、')}</span> 的两个端点重合，所以同时属于开始和结束，不进入持续活动顺序。它们只在当前精确位置参与配对：位于线段内部或闭端点都算接触；重合点仍保留独立输入身份。没有配对的点事件也会正常完成。</p>}
         {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。本点有非零长度开始者，换序与加入是同一次更新，不会再次交换。'}接下来检查新邻居是否会在未来相交。</p>}
@@ -270,7 +270,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
       <div className="learning-replay-progress" onKeyDownCapture={event => {
         if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) keyboardScrub.current = true
       }} onKeyUpCapture={() => finishKeyboardScrub()} onBlurCapture={() => finishKeyboardScrub()}>
-        <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤（含小步） · <span className="font-mono whitespace-nowrap">{index} / {trace.steps.length - 1}</span> · {complete ? '学习完成' : phase}</span>
+        <span id={`${animationId}-step`} className="text-sm text-muted">拖动浏览教学步骤（含小步） · <span className="font-mono whitespace-nowrap">{generated ? `${index} / ${trace.steps.length - 1}` : `当前 ${index} · 已生成 0–${trace.steps.length - 1}`}</span> · {complete ? '学习完成' : generated ? phase : '轨迹生成中'}</span>
         <Slider aria-label="教学步骤" minValue={0} maxValue={trace.steps.length - 1} step={1} value={index} isDisabled={trace.steps.length === 1}
           onChange={value => changeStep(typeof value === 'number' ? value : value[0], false, true)}
           onChangeEnd={value => {

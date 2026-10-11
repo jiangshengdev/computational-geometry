@@ -31,7 +31,7 @@ export interface SweepStep {
   ends: number[]
   passes: number[]
 }
-export interface SweepTrace { shear: Rational; steps: SweepStep[]; values: string[] }
+export interface SweepTrace { shear: Rational; steps: SweepStep[]; values: string[]; pointLabels: Point[] }
 export interface WireSweepTrace {
   shear: Rational
   steps: (Omit<SweepStep, 'pending' | 'results'> & { pending: number[]; results: number[] })[]
@@ -40,15 +40,85 @@ export interface WireSweepTrace {
   result_values: Intersection[]
 }
 
-export function decodeTrace(trace: WireSweepTrace): SweepTrace {
-  return {
-    shear: trace.shear,
-    values: trace.values,
-    steps: trace.steps.map(step => ({
+export interface TraceFrame extends WireSweepTrace {
+  complete: boolean
+  intersections?: Intersection[]
+}
+
+// Each frame appends dictionary entries before its steps reference them.
+export class TraceDecoder {
+  readonly trace: SweepTrace = { shear: rational('0'), steps: [], values: [], pointLabels: [] }
+  private readonly labeledPoints = new Set<string>()
+  private readonly points: Point[] = []
+  private readonly results: Intersection[] = []
+  complete = false
+  intersections: Intersection[] = []
+
+  append(frame: TraceFrame) {
+    if (this.complete) throw new Error('教学轨迹完成后仍收到步骤')
+    this.trace.shear = frame.shear
+    for (const value of frame.values) this.trace.values.push(value)
+    for (const point of frame.point_values) this.points.push(point)
+    for (const result of frame.result_values) this.results.push(result)
+    for (const step of frame.steps) {
+      const previous = this.trace.steps.at(-1)
+      const decoded = {
       ...step,
-      pending: step.pending.map(index => trace.point_values[index]),
-      results: step.results.map(index => trace.result_values[index]),
-    })),
+      pending: step.pending.map(index => {
+        const point = this.points[index]
+        if (!point) throw new Error('教学事件索引无效')
+        return point
+      }),
+      results: step.results.map(index => {
+        const result = this.results[index]
+        if (!result) throw new Error('教学结果索引无效')
+        return result
+      }),
+      }
+      const known = decoded.results.flatMap(result => result.geometry.type === 'point' ? [result.geometry.point] : [])
+      if (decoded.action === 'discover') known.push(...decoded.pending.filter(point => !previous?.pending.some(old => samePoint(old, point))))
+      for (const point of known) {
+        const key = formatPoint(point)
+        if (!this.labeledPoints.has(key)) {
+          this.labeledPoints.add(key)
+          this.trace.pointLabels.push(point)
+        }
+      }
+      this.trace.steps.push(decoded)
+    }
+    this.complete = frame.complete
+    if (frame.complete) {
+      if (!frame.intersections || !this.trace.steps.length) throw new Error('教学终态无效')
+      this.intersections = frame.intersections
+    }
+  }
+}
+
+export async function consumeTrace(response: Response, onFrame: (decoder: TraceDecoder) => void) {
+  if (!response.body) throw new Error('教学响应没有内容')
+  const reader = response.body.getReader()
+  const text = new TextDecoder()
+  const decoder = new TraceDecoder()
+  let pending = ''
+  try {
+    while (true) {
+      const { value, done } = await reader.read()
+      pending += text.decode(value, { stream: !done })
+      let newline: number
+      while ((newline = pending.indexOf('\n')) >= 0) {
+        const line = pending.slice(0, newline)
+        pending = pending.slice(newline + 1)
+        if (line) decoder.append(JSON.parse(line) as TraceFrame)
+      }
+      if (decoder.trace.steps.length) onFrame(decoder)
+      if (done) break
+      // Let input and painting run between network chunks, even with a warm socket.
+      await new Promise<void>(resolve => setTimeout(resolve, 0))
+    }
+    if (pending.trim() || !decoder.complete) throw new Error('教学轨迹传输中断')
+  } finally {
+    await reader.cancel()
+    reader.releaseLock()
   }
 }
 

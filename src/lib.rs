@@ -165,9 +165,13 @@ fn schedule_neighbors(
     queue: &mut BTreeMap<Point, Event>,
     checked: &mut Vec<[usize; 2]>,
     mut observer: Option<&mut NeighborObserver<'_>>,
+    cancelled: &dyn Fn() -> bool,
 ) -> Option<Point> {
     macro_rules! observe_geometry {
         ($boundary:expr, $neighbors:expr, $pair:expr, $point:expr, $returned:expr) => {
+            if cancelled() {
+                return None;
+            }
             if let Some(observer) = &mut observer {
                 let neighbors: Option<&[usize]> = $neighbors;
                 let pair: Option<(&SweepSegment, &SweepSegment)> = $pair;
@@ -266,11 +270,12 @@ fn schedule_neighbors(
 /// unchecked `new_raw`). See the crate documentation for the currently supported
 /// input domain and cost. Zero-length segments are accepted as points.
 pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
-    sweep(segments, None)
+    sweep(segments, None, None, &|| false).expect("ordinary computation is never cancelled")
 }
 
 /// Teaching snapshots expose original coordinates and lexicographic event order.
 /// Captured only when requested; ordinary callers use the same exact sweep.
+#[derive(Clone)]
 pub(crate) struct SweepStep {
     pub execution: Execution,
     pub phase: &'static str,
@@ -286,6 +291,7 @@ pub(crate) struct SweepStep {
     pub passes: Vec<usize>,
 }
 
+#[derive(Clone)]
 pub(crate) struct Execution {
     pub(crate) module: &'static str,
     pub(crate) boundary: Option<usize>,
@@ -294,6 +300,7 @@ pub(crate) struct Execution {
     pub(crate) calls: Vec<ExecutionCall>,
 }
 
+#[derive(Clone)]
 pub(crate) struct ExecutionCall {
     pub(crate) line: usize,
     pub(crate) function: &'static str,
@@ -320,6 +327,7 @@ impl ExecutionCall {
     }
 }
 
+#[derive(Clone)]
 pub(crate) struct ExecutionContext {
     pub(crate) function: &'static str,
     pub(crate) parameters: Vec<Variable>,
@@ -562,12 +570,14 @@ pub(crate) struct SweepTrace {
     pub steps: Vec<SweepStep>,
 }
 
+#[cfg(test)]
 pub(crate) fn trace_intersections(segments: &[Segment]) -> (Vec<Intersection>, SweepTrace) {
     let mut trace = SweepTrace {
         shear: choose_shear(segments),
         steps: Vec::new(),
     };
-    let results = sweep(segments, Some(&mut trace.steps));
+    let results = sweep(segments, Some(&mut trace.steps), None, &|| false)
+        .expect("collected computation is never cancelled");
     for step in &mut trace.steps {
         for point in step.current.iter_mut().chain(step.pending.iter_mut()) {
             point.x -= &trace.shear * &point.y;
@@ -576,7 +586,44 @@ pub(crate) fn trace_intersections(segments: &[Segment]) -> (Vec<Intersection>, S
     (results, trace)
 }
 
-fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<Intersection> {
+pub(crate) fn stream_intersections(
+    segments: &[Segment],
+    emit: &mut dyn FnMut(Vec<SweepStep>) -> bool,
+    cancelled: &dyn Fn() -> bool,
+) -> Option<Vec<Intersection>> {
+    sweep(segments, Some(&mut Vec::new()), Some(emit), cancelled)
+}
+
+fn emit_steps(
+    steps: &mut Vec<SweepStep>,
+    shear: &Rational,
+    emit: &mut dyn FnMut(Vec<SweepStep>) -> bool,
+    retained: &mut bool,
+) -> bool {
+    let previous = steps.last().cloned();
+    let mut ready: Vec<_> = steps.drain(..).skip(usize::from(*retained)).collect();
+    for step in &mut ready {
+        for point in step.current.iter_mut().chain(step.pending.iter_mut()) {
+            point.x -= shear * &point.y;
+        }
+    }
+    if let Some(previous) = previous {
+        steps.push(previous);
+        *retained = true;
+    }
+    ready.is_empty() || emit(ready)
+}
+
+fn sweep(
+    segments: &[Segment],
+    mut steps: Option<&mut Vec<SweepStep>>,
+    mut emit: Option<&mut dyn FnMut(Vec<SweepStep>) -> bool>,
+    cancelled: &dyn Fn() -> bool,
+) -> Option<Vec<Intersection>> {
+    if cancelled() {
+        return None;
+    }
+    let mut retained = false;
     let shear = choose_shear(segments);
     let segments: Vec<_> = segments
         .iter()
@@ -587,6 +634,9 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
         .map(|_| Arc::<str>::from(sweep_segments_value(&segments)));
     let mut queue: BTreeMap<Point, Event> = BTreeMap::new();
     for (id, segment) in segments.iter().enumerate() {
+        if cancelled() {
+            return None;
+        }
         queue
             .entry(segment.left.clone())
             .or_default()
@@ -608,7 +658,15 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
             &[],
         ));
     }
+    if let (Some(steps), Some(emit)) = (&mut steps, &mut emit)
+        && !emit_steps(steps, &shear, *emit, &mut retained)
+    {
+        return None;
+    }
     loop {
+        if cancelled() {
+            return None;
+        }
         if let Some(steps) = &mut steps {
             let mut step =
                 SweepStep::capture("take-entry", None, &queue, &active, &result, &[], &[]);
@@ -718,6 +776,9 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
         // event-wide membership fields remain a separate teaching summary.
         macro_rules! observe {
             ($module:expr, $boundary:expr, $subjects:expr, $locals:expr) => {
+                if cancelled() {
+                    return None;
+                }
                 if let Some(steps) = &mut steps {
                     let mut step = SweepStep::capture(
                         "micro",
@@ -2070,6 +2131,7 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
                 &mut queue,
                 &mut checked,
                 observer,
+                cancelled,
             );
             neighbors!(
                 5,
@@ -2110,6 +2172,16 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
                 step.passes.clone_from(&passes);
             }
         }
+        if let (Some(steps), Some(emit)) = (&mut steps, &mut emit)
+            && !emit_steps(steps, &shear, *emit, &mut retained)
+        {
+            return None;
+        }
     }
-    result
+    if let (Some(steps), Some(emit)) = (&mut steps, &mut emit)
+        && !emit_steps(steps, &shear, *emit, &mut retained)
+    {
+        return None;
+    }
+    Some(result)
 }

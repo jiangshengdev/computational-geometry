@@ -1,4 +1,4 @@
-use axum::{Json, body::Body, http::Request};
+use axum::{body::Body, http::Request};
 use computational_geometry::http::router;
 use serde::Deserialize;
 use tower::ServiceExt;
@@ -16,12 +16,47 @@ async fn trace_json(segments: &str) -> Response {
         .await
         .unwrap();
     assert_eq!(response.status(), 200);
+    assert_eq!(response.headers()["content-type"], "application/x-ndjson");
     let bytes = axum::body::to_bytes(response.into_body(), usize::MAX)
         .await
         .unwrap();
     // A segment may now also occur inside a distinct call argument value.
     // Value-table uniqueness and reuse are checked by the contract below.
-    let response = Json::<Response>::from_bytes(&bytes).unwrap().0;
+    let mut trace = Trace::default();
+    let mut intersections = None;
+    let mut frames = 0;
+    for line in bytes.split(|byte| *byte == b'\n').filter(|line| !line.is_empty()) {
+        assert!(intersections.is_none(), "completion must be the last frame");
+        let frame: TraceFrame = serde_json::from_slice(line).unwrap();
+        if frames == 0 {
+            assert!(!frame.complete, "the first frame must precede completion");
+            assert_eq!(frame.trace.steps.len(), 1);
+            assert_eq!(frame.trace.steps[0].action, "initial");
+        }
+        trace.values.extend(frame.trace.values);
+        trace.point_values.extend(frame.trace.point_values);
+        trace.result_values.extend(frame.trace.result_values);
+        for step in &frame.trace.steps {
+            assert!(step.pending.iter().all(|index| *index < trace.point_values.len()));
+            assert!(step.results.iter().all(|index| *index < trace.result_values.len()));
+            for variable in step.execution.context.parameters.iter()
+                .chain(&step.execution.context.locals)
+                .chain(step.execution.calls.iter().flat_map(|call| call.arguments.iter().chain(std::iter::once(&call.result))))
+            {
+                assert!(variable.value.is_none_or(|index| index < trace.values.len()),
+                    "a frame must provide every value before its first reference");
+            }
+        }
+        trace.steps.extend(frame.trace.steps);
+        if frame.complete {
+            intersections = Some(frame.intersections.expect("completion carries exact results"));
+        } else {
+            assert!(frame.intersections.is_none(), "unfinished frames must not expose final results");
+        }
+        frames += 1;
+    }
+    assert!(frames >= 2);
+    let response = Response { trace, intersections: intersections.expect("exactly one completion frame is required") };
     assert_trace_tables(&response);
     response
 }
@@ -274,6 +309,13 @@ struct Execution {
     boundary: Option<usize>,
     entry: bool,
     context: Context,
+    calls: Vec<ExecutionCall>,
+}
+
+#[derive(Deserialize)]
+struct ExecutionCall {
+    arguments: Vec<Variable>,
+    result: Variable,
 }
 
 #[derive(Deserialize)]
@@ -303,12 +345,20 @@ struct Response {
     intersections: Vec<Intersection>,
 }
 
-#[derive(Deserialize)]
+#[derive(Default, Deserialize)]
 struct Trace {
     steps: Vec<Step>,
     values: Vec<String>,
     point_values: Vec<Point>,
     result_values: Vec<Intersection>,
+}
+
+#[derive(Deserialize)]
+struct TraceFrame {
+    #[serde(flatten)]
+    trace: Trace,
+    complete: bool,
+    intersections: Option<Vec<Intersection>>,
 }
 
 #[derive(Deserialize)]
@@ -369,23 +419,7 @@ async fn equal_x_trace_events_reorder_only_their_own_participants() {
         .map(|(x1, y1, x2, y2)| format!(r#"{{"start":{},"end":{}}}"#, point(x1, y1), point(x2, y2)))
         .collect::<Vec<_>>()
         .join(",");
-    let response = router()
-        .oneshot(
-            Request::post("/api/intersections")
-                .header("content-type", "application/json")
-                .body(Body::from(format!(
-                    r#"{{"segments":[{segments}],"trace":true}}"#
-                )))
-                .unwrap(),
-        )
-        .await
-        .unwrap();
-    assert_eq!(response.status(), 200);
-    let bytes = axum::body::to_bytes(response.into_body(), usize::MAX)
-        .await
-        .unwrap();
-    let Json(response) = Json::<Response>::from_bytes(&bytes).unwrap();
-    assert_trace_tables(&response);
+    let response = trace_json(&format!("[{segments}]")).await;
     for (x, y, before, after, mut participants, actions) in [
         (
             "0",

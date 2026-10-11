@@ -58,10 +58,29 @@ fn request(address: SocketAddr, body: &str) -> Vec<u8> {
     bytes
 }
 
-fn response_body(bytes: &[u8]) -> &[u8] {
+fn response_body(bytes: &[u8]) -> Vec<u8> {
     let offset = bytes.windows(4).position(|v| v == b"\r\n\r\n").unwrap() + 4;
     let headers = std::str::from_utf8(&bytes[..offset]).unwrap();
     assert!(headers.starts_with("HTTP/1.1 200 OK\r\n"), "{headers}");
+    if headers.lines().any(|line| line.split_once(':').is_some_and(|(key, value)| {
+        key.eq_ignore_ascii_case("transfer-encoding") && value.trim().eq_ignore_ascii_case("chunked")
+    })) {
+        let mut remaining = &bytes[offset..];
+        let mut body = Vec::new();
+        loop {
+            let end = remaining.windows(2).position(|value| value == b"\r\n").unwrap();
+            let size = std::str::from_utf8(&remaining[..end]).unwrap().split(';').next().unwrap();
+            let size = usize::from_str_radix(size, 16).unwrap();
+            remaining = &remaining[end + 2..];
+            if size == 0 {
+                assert_eq!(remaining, b"\r\n", "diagnostic server emits no trailers");
+                return body;
+            }
+            body.extend_from_slice(&remaining[..size]);
+            assert_eq!(&remaining[size..size + 2], b"\r\n");
+            remaining = &remaining[size + 2..];
+        }
+    }
     let length: usize = headers
         .lines()
         .find_map(|line| {
@@ -71,7 +90,34 @@ fn response_body(bytes: &[u8]) -> &[u8] {
         })
         .expect("complete response must have content-length");
     assert_eq!(bytes.len() - offset, length);
-    &bytes[offset..]
+    bytes[offset..].to_vec()
+}
+
+fn collected_response(body: &[u8], traced: bool) -> serde_json::Value {
+    if !traced {
+        return serde_json::from_slice(body).unwrap();
+    }
+    let mut trace = serde_json::json!({"steps": [], "values": [], "point_values": [], "result_values": []});
+    let mut intersections = None;
+    for line in body.split(|byte| *byte == b'\n').filter(|line| !line.is_empty()) {
+        assert!(intersections.is_none(), "completion must be the final frame");
+        let mut frame: serde_json::Value = serde_json::from_slice(line).unwrap();
+        if trace.get("shear").is_some() {
+            assert_eq!(trace["shear"], frame["shear"]);
+        } else {
+            trace["shear"] = frame["shear"].take();
+        }
+        for key in ["steps", "values", "point_values", "result_values"] {
+            trace[key].as_array_mut().unwrap().append(frame[key].as_array_mut().unwrap());
+        }
+        if frame["complete"].as_bool().unwrap() {
+            assert!(frame["intersections"].is_array());
+            intersections = Some(frame["intersections"].take());
+        } else {
+            assert!(frame.get("intersections").is_none());
+        }
+    }
+    serde_json::json!({"trace": trace, "intersections": intersections.expect("complete trace required")})
 }
 
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
@@ -221,11 +267,11 @@ async fn actual_case_timings() {
         let warmups = bodies.each_ref().map(|body| request(address, body));
         let expected_bodies = warmups
             .each_ref()
-            .map(|bytes| response_body(bytes).to_vec());
-        for (actual, verified) in expected_bodies.iter().zip(&verified_bodies) {
+            .map(|bytes| response_body(bytes));
+        for (index, (actual, verified)) in expected_bodies.iter().zip(&verified_bodies).enumerate() {
             assert_eq!(
-                actual.as_slice(),
-                verified.as_ref(),
+                collected_response(actual, index == 1),
+                serde_json::from_slice::<serde_json::Value>(verified).unwrap(),
                 "HTTP must return the verified geometry and complete trace"
             );
         }

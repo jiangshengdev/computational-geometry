@@ -1,10 +1,12 @@
 import { expect, type Page } from '@playwright/test'
 import { presets } from '../src/presets'
-import { decodeTrace, type Intersection, type Segment, type SweepStep, type SweepTrace, type WireSweepTrace } from '../src/geometry'
+import { TraceDecoder, type Intersection, type Segment, type SweepStep, type SweepTrace, type TraceFrame } from '../src/geometry'
 
-export async function readResponse(response: { json(): Promise<unknown> }): Promise<{ intersections: Intersection[]; trace: SweepTrace }> {
-  const data = await response.json() as { intersections: Intersection[]; trace: WireSweepTrace }
-  return { intersections: data.intersections, trace: decodeTrace(data.trace) }
+export async function readResponse(response: { text(): Promise<string> }): Promise<{ intersections: Intersection[]; trace: SweepTrace }> {
+  const decoder = new TraceDecoder()
+  for (const line of (await response.text()).trim().split('\n')) decoder.append(JSON.parse(line) as TraceFrame)
+  expect(decoder.complete).toBe(true)
+  return { intersections: decoder.intersections, trace: decoder.trace }
 }
 
 export async function readResult(response: { json(): Promise<unknown> }): Promise<{ intersections: Intersection[] }> {
@@ -23,7 +25,7 @@ export async function captureResult(page: Page) {
   return captureResponse(page, readResult)
 }
 
-async function captureResponse<T>(page: Page, read: (response: { json(): Promise<unknown> }) => Promise<T>) {
+async function captureResponse<T>(page: Page, read: (response: { json(): Promise<unknown>; text(): Promise<string> }) => Promise<T>) {
   let resolve!: (value: T) => void
   let reject!: (error: unknown) => void
   const result = new Promise<T>((done, fail) => { resolve = done; reject = fail })

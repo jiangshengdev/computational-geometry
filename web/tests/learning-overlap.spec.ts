@@ -21,7 +21,7 @@ test('重叠教学：区间边界、事件状态、完整结果与重启', async
   await page.getByRole('button', { name: '关闭帮助', exact: true }).click()
   for (let run = 0; run < 2; run++) {
     await expect(queue.locator('li')).toHaveText([
-      'S0 起点 (0, 0)', 'S1 起点 (2, 0) · 重叠起界', 'S0 终点 (4, 0) · 重叠止界', 'S1 终点 (6, 0)',
+      'S0 起点 (0, 0)', 'S1 起点 (2, 0)', 'S0 终点 (4, 0)', 'S1 终点 (6, 0)',
     ])
     await expect(interval).toHaveCount(0)
     let recorded = false
@@ -33,6 +33,7 @@ test('重叠教学：区间边界、事件状态、完整结果与重启', async
       if ((await explanation.innerText()).includes('记录重叠区间')) {
         recorded = true
         await expect(current).toContainText('(2, 0)')
+        await expect(current).toContainText('重叠起界')
         await expect(explanation).toContainText('(2, 0) → (4, 0)')
         await expect(explanation).toContainText('S0 × S1')
         await expect(explanation).toContainText('不是只记录当前端点')

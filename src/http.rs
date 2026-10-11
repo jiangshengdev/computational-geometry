@@ -2,8 +2,10 @@
 
 use axum::{
     Json, Router,
+    body::Body,
     extract::{DefaultBodyLimit, rejection::JsonRejection},
     http::StatusCode,
+    response::IntoResponse,
     routing::post,
 };
 use serde::{Deserialize, Serialize};
@@ -14,7 +16,7 @@ mod case_performance;
 
 use crate::{
     Geometry, Intersection, Point, Rational, Segment, SweepTrace, intersections,
-    trace_intersections,
+    stream_intersections,
 };
 
 #[derive(Deserialize)]
@@ -56,6 +58,22 @@ struct TraceDto {
     values: Vec<String>,
     point_values: Vec<PointDto>,
     result_values: Vec<IntersectionDto>,
+}
+
+#[derive(Serialize)]
+struct TraceFrame {
+    #[serde(flatten)]
+    trace: TraceDto,
+    complete: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    intersections: Option<Vec<IntersectionDto>>,
+}
+
+#[derive(Default)]
+struct TraceEncoder {
+    indices: std::collections::HashMap<std::sync::Arc<str>, usize>,
+    point_indices: std::collections::BTreeMap<Point, usize>,
+    result_indices: std::collections::HashMap<[usize; 2], usize>,
 }
 
 #[derive(Serialize)]
@@ -112,6 +130,7 @@ impl ExecutionDto {
         execution: crate::Execution,
         values: &mut Vec<String>,
         indices: &mut std::collections::HashMap<std::sync::Arc<str>, usize>,
+        offset: usize,
     ) -> Self {
         let mut variable = |variable: crate::Variable| VariableDto {
             name: variable.name,
@@ -119,7 +138,7 @@ impl ExecutionDto {
             availability: variable.availability,
             value: variable.value.map(|value| {
                 *indices.entry(value).or_insert_with_key(|value| {
-                    let index = values.len();
+                    let index = offset + values.len();
                     values.push(value.to_string());
                     index
                 })
@@ -156,13 +175,19 @@ impl ExecutionDto {
 
 impl From<SweepTrace> for TraceDto {
     fn from(trace: SweepTrace) -> Self {
+        TraceEncoder::default().encode(trace)
+    }
+}
+
+impl TraceEncoder {
+    fn encode(&mut self, trace: SweepTrace) -> TraceDto {
         let mut values = Vec::new();
-        let mut indices = std::collections::HashMap::new();
+        let value_offset = self.indices.len();
         let mut point_values = Vec::new();
-        let mut point_indices = std::collections::BTreeMap::new();
+        let point_offset = self.point_indices.len();
         let mut result_values = Vec::new();
-        let mut result_indices = std::collections::HashMap::new();
-        Self {
+        let result_offset = self.result_indices.len();
+        TraceDto {
             shear: trace.shear.into(),
             steps: trace
                 .steps
@@ -171,7 +196,8 @@ impl From<SweepTrace> for TraceDto {
                     execution: ExecutionDto::from_execution(
                         step.execution,
                         &mut values,
-                        &mut indices,
+                        &mut self.indices,
+                        value_offset,
                     ),
                     phase: step.phase,
                     action: step.action,
@@ -181,8 +207,8 @@ impl From<SweepTrace> for TraceDto {
                         .pending
                         .into_iter()
                         .map(|point| {
-                            *point_indices.entry(point).or_insert_with_key(|point| {
-                                let index = point_values.len();
+                            *self.point_indices.entry(point).or_insert_with_key(|point| {
+                                let index = point_offset + point_values.len();
                                 point_values.push(PointDto::from(point.clone()));
                                 index
                             })
@@ -193,10 +219,10 @@ impl From<SweepTrace> for TraceDto {
                         .results
                         .into_iter()
                         .map(|intersection| {
-                            *result_indices
+                            *self.result_indices
                                 .entry(intersection.segments)
                                 .or_insert_with(|| {
-                                    let index = result_values.len();
+                                    let index = result_offset + result_values.len();
                                     result_values.push(IntersectionDto::from(intersection));
                                     index
                                 })
@@ -315,23 +341,57 @@ impl From<Intersection> for IntersectionDto {
 
 async fn compute(
     payload: Result<Json<Request>, JsonRejection>,
-) -> Result<Json<Response>, ApiError> {
+) -> Result<axum::response::Response, ApiError> {
     let Json(request) = payload.map_err(|error| bad_request(error.body_text()))?;
     let segments = request
         .segments
         .into_iter()
         .map(SegmentDto::into_segment)
         .collect::<Result<Vec<_>, _>>()?;
+    if request.trace {
+        let (sender, receiver) = tokio::sync::mpsc::channel::<Result<Vec<u8>, std::io::Error>>(1);
+        tokio::task::spawn_blocking(move || {
+            let shear = crate::choose_shear(&segments);
+            let mut encoder = TraceEncoder::default();
+            let send = |frame: TraceFrame| {
+                let bytes = serde_json::to_vec(&frame).map(|mut bytes| {
+                    bytes.push(b'\n');
+                    bytes
+                });
+                match bytes {
+                    Ok(bytes) => sender.blocking_send(Ok(bytes)).is_ok(),
+                    Err(error) => {
+                        let _ = sender.blocking_send(Err(std::io::Error::other(error)));
+                        false
+                    }
+                }
+            };
+            let results = stream_intersections(
+                &segments,
+                &mut |steps| {
+                    send(TraceFrame {
+                        trace: encoder.encode(SweepTrace { shear: shear.clone(), steps }),
+                        complete: false,
+                        intersections: None,
+                    })
+                },
+                &|| sender.is_closed(),
+            );
+            if let Some(results) = results {
+                send(TraceFrame {
+                    trace: encoder.encode(SweepTrace { shear, steps: Vec::new() }),
+                    complete: true,
+                    intersections: Some(results.into_iter().map(IntersectionDto::from).collect()),
+                });
+            }
+        });
+        let body = Body::from_stream(tokio_stream::wrappers::ReceiverStream::new(receiver));
+        return Ok(([(axum::http::header::CONTENT_TYPE, "application/x-ndjson")], body).into_response());
+    }
     let response = tokio::task::spawn_blocking(move || {
-        let (results, trace) = if request.trace {
-            let (results, trace) = trace_intersections(&segments);
-            (results, Some(trace.into()))
-        } else {
-            (intersections(&segments), None)
-        };
         Response {
-            intersections: results.into_iter().map(IntersectionDto::from).collect(),
-            trace,
+            intersections: intersections(&segments).into_iter().map(IntersectionDto::from).collect(),
+            trace: None,
         }
     })
     .await
@@ -343,7 +403,7 @@ async fn compute(
             }),
         )
     })?;
-    Ok(Json(response))
+    Ok(Json(response).into_response())
 }
 
 /// Serve the submitted geometry directly, independently of viewer presets.
