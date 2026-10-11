@@ -11,7 +11,10 @@
 .learning-view[data-zen-mode="true"] .learning-workspace { grid-template-columns: minmax(0, 1fr); }
 .learning-panel { min-width: 0; min-height: 0; overflow-wrap: anywhere; }
 .learning-panel-card { height: 100%; min-height: 0; }
-.learning-panel-content { min-height: 0; overflow: auto; overscroll-behavior: contain; }
+/* Expand the scrollport into the card padding without moving its content.
+   HeroUI's outer ring needs its width plus the theme's ring offset on each side. */
+.learning-panel-content { --learning-focus-space: calc(2px + var(--ring-offset-width)); min-height: 0; overflow: auto; overscroll-behavior: contain; padding: var(--learning-focus-space); margin: calc(-1 * var(--learning-focus-space)); }
+.learning-panel-content :is(button, [tabindex]) { scroll-margin: var(--learning-focus-space); }
 .learning-panel-content > * { flex-shrink: 0; }
 /* Inline monospace metrics must not enlarge the surrounding paragraph's line box. */
 .learning-explanations p .coordinates:not(.learning-hover-item), .learning-view .font-mono { line-height: 1; }
@@ -40,7 +43,6 @@
 .execution-variable dd { display: inline; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
 .execution-change { float: right; margin-left: .5rem; color: var(--accent); }
 .execution-symbol { cursor: help; border-radius: 2px; text-decoration: underline dotted; text-underline-offset: 3px; }
-.execution-symbol:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .execution-symbol-tooltip { max-width: min(32rem, calc(100vw - 2rem)); max-height: 20rem; overflow: auto; white-space: normal; overflow-wrap: anywhere; font-size: .8125rem; }
 .execution-symbol-tooltip p { margin-top: .3rem; }
 .execution-symbol-tooltip code { white-space: pre-wrap; }

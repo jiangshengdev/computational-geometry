@@ -24,7 +24,7 @@ main { max-width: 1380px; padding: 40px; margin-block: 0; margin-left: max(0px, 
 .pair-scroll { max-height: 240px; overflow: auto; overscroll-behavior: contain; }
 .result-details { overflow: auto; overscroll-behavior: contain; }
 /* Inset rings stay visible inside clipping panels and use the component focus token. */
-.result-details:focus-visible, .drawing-surface > svg[data-teaching="true"]:focus-visible, .execution-code-scroll:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.result-details:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .drawing { min-width: 0; container-type: inline-size; }
 /* CSS owns the surface size; the SVG consumes it without sizing its parent. */
 .drawing-surface { position: relative; flex: none; height: max(240px, round(nearest, calc((100cqw - 32px) * 460 / 800), 1px)); min-height: 0; overflow: visible; }

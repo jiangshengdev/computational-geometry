@@ -10,3 +10,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Native teaching surfaces share HeroUI's focus rule, including portaled docks.
+   Component controls keep their own focus-visible and field-specific behavior. */
+:where(.learning-view, .learning-dock-floating) :is(.execution-code-scroll, .execution-symbol, .learning-panel-content, .execution-variable-value, svg[data-teaching="true"]):focus-visible,
+.learning-split-handle:focus-visible::before {
+  @apply status-focused;
+}
