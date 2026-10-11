@@ -44,6 +44,15 @@ for (const learning of [false, true]) {
   test(`${learning ? '学习' : '详情'}页的导航链接普通 Tab 可达`, async ({ page }, testInfo) => {
     await page.goto(`/cases/crossing${learning ? '/learn' : ''}`)
     await tabTo(page, page.getByRole('link', { name: '返回列表', exact: true }))
+    if (learning) {
+      const zen = page.getByRole('switch', { name: '禅模式', exact: true })
+      await tabTo(page, zen)
+      await expect(zen).toHaveAttribute('aria-keyshortcuts', 'z')
+      await page.keyboard.press('Space')
+      await expect(zen).toBeChecked()
+      await page.keyboard.press('z')
+      await expect(zen).not.toBeChecked()
+    }
     await tabTo(page, page.getByRole('button', { name: '说明与帮助', exact: true }))
     await tabTo(page, page.getByRole('button', { name: '案例说明', exact: true }))
     const target = page.getByRole('link', { name: learning ? '返回结果查看器' : '开始逐步学习', exact: true })

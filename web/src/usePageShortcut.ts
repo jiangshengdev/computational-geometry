@@ -5,7 +5,7 @@ export function usePageShortcut(handler: (event: KeyboardEvent) => void) {
     if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
     const target = event.target
     if (target instanceof Element && (
-      target.closest('input, textarea, select, [role="slider"], [role="combobox"], [role="listbox"], [role="dialog"]')
+      target.closest('input:not([role="switch"]), textarea, select, [role="slider"], [role="combobox"], [role="listbox"], [role="dialog"]')
       || (target instanceof HTMLElement && target.isContentEditable)
     )) return
     handler(event)

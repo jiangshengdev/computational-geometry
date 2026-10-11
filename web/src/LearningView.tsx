@@ -21,8 +21,8 @@ import { LearningDock } from './LearningDock'
 import { LearningSplit } from './LearningSplit'
 
 
-export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry, children }: {
-  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void; children: ReactNode
+export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry, children, zenMode }: {
+  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void; children: ReactNode; zenMode: boolean
 }) {
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const keyboardScrub = useRef(false)
@@ -247,14 +247,14 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
             </ol>{!step.active.length && <p>空</p>}</div>
           </CardContent>
         </Card></section>
-  return <section aria-label="逐步学习" className="learning-view">
+  return <section aria-label="逐步学习" className="learning-view" data-zen-mode={zenMode}>
     <div className="learning-workspace">
       <LearningDock side="left" panels={[
         { id: 'participants', name: '同点参与线段', icon: Waypoints, content: participants },
         { id: 'active', name: '活动线段顺序', icon: ListOrdered, content: activeSegments },
       ]} />
       <LearningSplit firstPanel={<LearningSplit axis="y" firstPanel={
-        <GeometryView key={run} segments={preset.segments} results={step.results} selected={null} hoverTarget={hover}
+        <GeometryView key={run} segments={preset.segments} results={step.results} selected={null} hoverTarget={hover} preserveViewKey={zenMode}
           highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights ?? (recordedOverlap ? hoverHighlights({ kind: 'pair', pair: pairName(recordedOverlap) }, step.results) : null)} onHover={setHover}
           sweep={{ step: index, current: step.current, side: eventSide(geometryStep, trace.steps[geometryIndex + 1]), participants: [...step.starts, ...step.ends, ...step.passes], active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
       } secondPanel={<ExecutionPanel step={step} previous={before} values={trace.values} />} />}

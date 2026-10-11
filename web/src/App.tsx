@@ -21,6 +21,9 @@ import { Button, buttonVariants } from '@heroui/react/button'
 import { Input } from '@heroui/react/input'
 import { usePageShortcut } from './usePageShortcut'
 import { AppLink as Link } from './AppLink'
+import { Switch } from '@heroui/react/switch'
+import { Label } from '@heroui/react/label'
+import { useLayoutPreference } from './useLayoutPreference'
 
 type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace; complete: boolean }
 
@@ -30,7 +33,7 @@ function PageTitle({ page, preset }: { page: string; preset?: Preset }) {
   return null
 }
 
-function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean }) {
+function CaseViewer({ preset, learning, zenMode }: { preset: Preset; learning: boolean; zenMode: boolean }) {
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
   const [selected, setSelected] = useState<Intersection | null>(null)
   const [hover, setHover] = useHoverTarget()
@@ -82,7 +85,7 @@ function CaseViewer({ preset, learning }: { preset: Preset; learning: boolean })
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
       : computation.status === 'error'
         ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>计算失败</Alert.Title><Alert.Description>请检查本地服务。{computation.message}</Alert.Description></Alert.Content></Alert>
-        : computation.trace && <LearningPage preset={preset} trace={computation.trace} complete={computation.complete} />}
+        : computation.trace && <LearningPage preset={preset} trace={computation.trace} complete={computation.complete} zenMode={zenMode} />}
   </>
   return <>
     <PageTitle page="计算结果" preset={preset} />
@@ -170,7 +173,7 @@ function CaseList() {
   </section>
 }
 
-function LearningPage({ preset, trace, complete }: { preset: Preset; trace: SweepTrace; complete: boolean }) {
+function LearningPage({ preset, trace, complete, zenMode }: { preset: Preset; trace: SweepTrace; complete: boolean; zenMode: boolean }) {
   const [search, setSearch] = useSearchParams()
   const [preview, setPreview] = useState<{ search: URLSearchParams; index: number } | null>(null)
   const [cursor, setCursor] = useState(0)
@@ -206,7 +209,7 @@ function LearningPage({ preset, trace, complete }: { preset: Preset; trace: Swee
     updated.set('step', String(next))
     setSearch(updated, { replace: true })
   }
-  return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace}
+  return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace} zenMode={zenMode}
     complete={complete} index={visibleIndex} onWaitNextEntry={() => setNextEntry({ search, from: visibleIndex })}
     onStepPreview={next => setPreview({ search, index: next })} onStepChange={changeStep}>
     {waiting && <div role="status" aria-label="步骤等待" className="flex flex-wrap items-center gap-3">
@@ -240,7 +243,14 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
   const { caseId } = useParams()
   const navigate = useNavigate()
   const preset = presets.find(item => item.id === caseId)
+  const [zenMode, setZenMode] = useLayoutPreference('bo-learning-layout-v1-zen', false,
+    (value): value is boolean => typeof value === 'boolean')
   usePageShortcut(event => {
+    if (learning && !unknownPath && preset?.learning && event.key === 'z') {
+      event.preventDefault()
+      if (!event.repeat) setZenMode(!zenMode)
+      return
+    }
     if (learning || unknownPath || !preset?.learning || event.key !== 'ArrowRight') return
     event.preventDefault()
     if (!event.repeat) navigate(`/cases/${preset.id}/learn`)
@@ -253,13 +263,20 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
       <nav aria-label="页面导航"><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/">返回列表</Link></nav>
       <h2 className="text-xl font-semibold">{preset.name}</h2>
       <div className="case-actions flex flex-wrap items-center gap-2">
+        {learning && <Switch size="sm" isSelected={zenMode} onChange={setZenMode}
+          inputRef={input => { input?.setAttribute('aria-keyshortcuts', 'z') }}>
+          <Switch.Content>
+            <Switch.Control><Switch.Thumb /></Switch.Control>
+            <Label>禅模式</Label><Chip color="accent" variant="soft" size="sm" aria-hidden="true">Z</Chip>
+          </Switch.Content>
+        </Switch>}
         <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
         {learning
           ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>返回结果查看器</Link>
           : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">开始逐步学习<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Link>}
       </div>
     </div>
-    <CaseViewer preset={preset} learning={learning} />
+    <CaseViewer preset={preset} learning={learning} zenMode={zenMode} />
   </CaseHelp>
 }
 

@@ -16,10 +16,12 @@ interface Props {
   highlights?: HoverHighlights | null
   hoverTarget?: HoverTarget | null
   onHover?: (target: HoverTarget | null) => void
+  /** Remeasure a deliberate layout-mode change without resetting the current zoom. */
+  preserveViewKey?: boolean
   sweep?: { step: number; current: Point | null; side: EventSide; participants: number[]; active: number[]; pending: Point[]; numbering: 'active' | 'pending' | null; checked: number[]; discovered: { point: Point; label: string }[]; labelPoint: (point: Point) => string }
 }
 
-export function GeometryView({ segments, results, selected, sweep, highlights: suppliedHighlights, hoverTarget, onHover }: Props) {
+export function GeometryView({ segments, results, selected, sweep, highlights: suppliedHighlights, hoverTarget, onHover, preserveViewKey }: Props) {
   const svg = useRef<SVGSVGElement>(null)
   const [{ width, height }, setSize] = useState({ width: 800, height: 460 })
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity)
@@ -87,7 +89,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
     })
     observer.observe(element)
     return () => { select(element).on('.zoom', null); observer.disconnect() }
-  }, [])
+  }, [preserveViewKey])
 
   const ordered = segments.map((s, index) => ({ s, index }))
     .sort((a, b) => Number(selected?.segments.includes(a.index)) - Number(selected?.segments.includes(b.index)))
