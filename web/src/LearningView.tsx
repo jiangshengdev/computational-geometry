@@ -84,7 +84,7 @@ export function LearningView({ preset, trace, results, index, onStepChange, onSt
   const previousEntry = trace.steps.findLastIndex((state, position) => position < index && state.execution.entry)
   const nextEntry = trace.steps.findIndex((state, position) => position > index && state.execution.entry)
   // A pop changes the queue, not the displayed sweep position. Keep its side too.
-  const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action))
+  const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && (state.execution.module === 'activity' || !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action)))
   const geometryStep = trace.steps[geometryIndex]
   const complete = index === trace.steps.length - 1
   const points = results.flatMap(result => result.geometry.type === 'point' ? [result.geometry.point] : [])

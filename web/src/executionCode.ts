@@ -2,6 +2,15 @@ export interface TeachingModule { title: string; code: string }
 
 // Boundaries are recorded at the corresponding operations in the Rust sweep.
 export const teachingModules: Record<string, TeachingModule> = {
+  activity: { title: '活动集合更新', code: [
+    'active.retain(|&id| segments[id].right != point);',
+    'active.retain(|&id| !height_order[id].is_eq());',
+    'incident.retain(|&id| segments[id].right != point);',
+    'incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));',
+    'let position = active.partition_point(|&id| height_order[id].is_lt());',
+    'let inserted = incident.len();',
+    'active.splice(position..position, incident);',
+  ].join('\n') },
   take: { title: '取事件', code: 'let next = queue.pop_first();\nlet Some((point, event)) = next else { break; };' },
   classify: { title: '参与线段分类', code: [
     'let mut incident = event.starts;',

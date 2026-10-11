@@ -8,6 +8,10 @@ export type EventSide = 'left' | 'right' | null
  */
 export function eventSide(step: SweepStep, next?: SweepStep): EventSide {
   if (!step.current || step.action === 'initial' || step.action === 'record') return null
+  if (step.execution.module === 'activity') {
+    const boundary = step.execution.boundary!
+    return boundary < 2 ? 'left' : boundary < 7 ? null : 'right'
+  }
   if (step.action === 'take') return 'left'
   if (step.action === 'remove' && next?.current && samePoint(step.current, next.current)
     && (next.action === 'insert' || next.action === 'reorder')) return null

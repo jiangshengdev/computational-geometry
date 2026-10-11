@@ -112,7 +112,10 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
             }
         }
         if !step.action.starts_with("take")
-            && !matches!(step.execution.module.as_str(), "classify" | "record")
+            && !matches!(
+                step.execution.module.as_str(),
+                "classify" | "record" | "activity"
+            )
         {
             assert_eq!(step.execution.module, step.action);
             assert_eq!(step.execution.boundary, None);

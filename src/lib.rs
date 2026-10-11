@@ -816,35 +816,62 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
             record!(15, Some((i, a, None)), (None, None), None);
         }
         record!(16, None, (None, None), None);
-        if let Some(steps) = &mut steps {
-            let removed: Vec<_> = active
+        macro_rules! activity {
+            ($boundary:expr, $incident:expr, $position:expr, $inserted:expr) => {
+                observe!("activity", $boundary, &[], {
+                    let incident: Option<&Vec<usize>> = $incident;
+                    let position: Option<usize> = $position;
+                    let inserted: Option<usize> = $inserted;
+                    let mut locals = vec![incident.map_or_else(
+                        || Variable::absent("incident", "Vec<usize>", "unavailable"),
+                        |incident| {
+                            Variable::available("incident", "Vec<usize>", format!("{incident:?}"))
+                        },
+                    )];
+                    for (name, value) in [("position", position), ("inserted", inserted)] {
+                        locals.push(value.map_or_else(
+                            || Variable::absent(name, "usize", "unassigned"),
+                            |value| Variable::available(name, "usize", value.to_string()),
+                        ));
+                    }
+                    locals
+                });
+            };
+        }
+        activity!(0, Some(&incident), None, None);
+        let removed = steps.as_ref().map(|_| {
+            active
                 .iter()
                 .copied()
                 .filter(|&id| segments[id].right == point)
-                .collect();
-            if !removed.is_empty() {
-                active.retain(|&id| segments[id].right != point);
-                steps.push(SweepStep::capture(
-                    "remove",
-                    Some(&point),
-                    &queue,
-                    &active,
-                    &result,
-                    &[],
-                    &removed,
-                ));
-            }
+                .collect::<Vec<_>>()
+        });
+        active.retain(|&id| segments[id].right != point);
+        activity!(1, Some(&incident), None, None);
+        if let Some(steps) = &mut steps
+            && let Some(removed) = &removed
+            && !removed.is_empty()
+        {
+            let step = steps.last_mut().expect("removal observation was captured");
+            step.action = "remove";
+            step.subjects.clone_from(removed);
         }
         let previous_order = steps.as_ref().map(|_| active.clone());
         active.retain(|&id| !height_order[id].is_eq());
+        activity!(2, Some(&incident), None, None);
         incident.retain(|&id| segments[id].right != point);
+        activity!(3, Some(&incident), None, None);
         incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));
+        activity!(4, Some(&incident), None, None);
         // Equal-x events at different y remain separate. At the current y,
         // ascending slope is the order immediately after this event; other
         // equal-y blocks keep their pre-event order until their own event.
         let position = active.partition_point(|&id| height_order[id].is_lt());
+        activity!(5, Some(&incident), Some(position), None);
         let inserted = incident.len();
+        activity!(6, Some(&incident), Some(position), Some(inserted));
         active.splice(position..position, incident);
+        activity!(7, None, Some(position), Some(inserted));
         if let Some(steps) = &mut steps {
             let previous_order = previous_order
                 .as_ref()
@@ -854,32 +881,18 @@ fn sweep(segments: &[Segment], mut steps: Option<&mut Vec<SweepStep>>) -> Vec<In
                 .copied()
                 .filter(|&id| segments[id].left == point)
                 .collect();
-            if !added.is_empty() {
-                steps.push(SweepStep::capture(
-                    "insert",
-                    Some(&point),
-                    &queue,
-                    &active,
-                    &result,
-                    &[],
-                    &added,
-                ));
-            }
             let continuing: Vec<_> = active
                 .iter()
                 .copied()
                 .filter(|id| previous_order.contains(id))
                 .collect();
-            if &continuing != previous_order {
-                steps.push(SweepStep::capture(
-                    "reorder",
-                    Some(&point),
-                    &queue,
-                    &active,
-                    &result,
-                    &[],
-                    &active[position..position + inserted],
-                ));
+            let step = steps.last_mut().expect("splice observation was captured");
+            if !added.is_empty() {
+                step.action = "insert";
+                step.subjects = added;
+            } else if &continuing != previous_order {
+                step.action = "reorder";
+                step.subjects = active[position..position + inserted].to_vec();
             }
         }
         let mut checked = Vec::new();
