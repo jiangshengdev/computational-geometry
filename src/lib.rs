@@ -373,6 +373,35 @@ fn optional_point_value(point: &Option<Point>) -> String {
     )
 }
 
+fn geometry_value(geometry: &Geometry) -> String {
+    match geometry {
+        Geometry::Point(point) => point_value(point),
+        Geometry::Overlap { start, end } => {
+            format!("{} → {}", point_value(start), point_value(end))
+        }
+    }
+}
+
+fn intersection_value(intersection: &Intersection) -> String {
+    format!(
+        "S{} × S{}: {}",
+        intersection.segments[0],
+        intersection.segments[1],
+        geometry_value(&intersection.geometry)
+    )
+}
+
+fn intersections_value(intersections: &[Intersection]) -> String {
+    format!(
+        "[{}]",
+        intersections
+            .iter()
+            .map(intersection_value)
+            .collect::<Vec<_>>()
+            .join(", ")
+    )
+}
+
 fn sweep_segment_value(segment: &SweepSegment) -> String {
     format!(
         "SweepSegment {{ left: {}, right: {}, slope: {}, intercept: {} }}",
@@ -442,27 +471,7 @@ impl SweepStep {
                         Variable::available(
                             "result",
                             "Vec<Intersection>",
-                            format!(
-                                "[{}]",
-                                results
-                                    .iter()
-                                    .map(|intersection| {
-                                        let geometry = match &intersection.geometry {
-                                            Geometry::Point(point) => point_value(point),
-                                            Geometry::Overlap { start, end } => format!(
-                                                "{} → {}",
-                                                point_value(start),
-                                                point_value(end)
-                                            ),
-                                        };
-                                        format!(
-                                            "S{} × S{}: {geometry}",
-                                            intersection.segments[0], intersection.segments[1]
-                                        )
-                                    })
-                                    .collect::<Vec<_>>()
-                                    .join(", ")
-                            ),
+                            intersections_value(results),
                         ),
                     ],
                 },
@@ -1257,16 +1266,7 @@ fn sweep(
                                 Variable::available(
                                     "geometry",
                                     "Geometry",
-                                    match geometry {
-                                        Geometry::Point(point) => {
-                                            format!("Point({})", point_value(point))
-                                        }
-                                        Geometry::Overlap { start, end } => format!(
-                                            "Overlap {{ start: {}, end: {} }}",
-                                            point_value(start),
-                                            point_value(end)
-                                        ),
-                                    },
+                                    geometry_value(geometry),
                                 )
                             },
                         ));
@@ -1446,7 +1446,7 @@ fn sweep(
                         Variable::available(
                             "self",
                             "&mut Vec<Intersection>",
-                            format!("{result:?}")
+                            intersections_value(&result)
                         ),
                         Variable::absent("value", "Intersection", "unassigned")
                     ],
@@ -1463,9 +1463,13 @@ fn sweep(
                         Variable::available(
                             "self",
                             "&mut Vec<Intersection>",
-                            format!("{result:?}"),
+                            intersections_value(&result),
                         ),
-                        Variable::available("value", "Intersection", format!("{intersection:?}")),
+                        Variable::available(
+                            "value",
+                            "Intersection",
+                            intersection_value(&intersection),
+                        ),
                     ]
                 });
                 result.push(intersection);
@@ -2231,6 +2235,87 @@ fn sweep(
         return None;
     }
     Some(result)
+}
+
+#[cfg(test)]
+mod execution_value_tests {
+    use super::*;
+
+    #[test]
+    fn trace_values_share_compact_geometry_and_intersection_format() {
+        let point = |x: i64, y: i64| Point {
+            x: Rational::from_integer(x.into()),
+            y: Rational::from_integer(y.into()),
+        };
+        for (coordinates, expected) in [
+            ([(0, 0, 4, 4), (0, 4, 4, 0)], "(2, 2)"),
+            ([(0, 0, 1, 1), (0, 1, 1, 0)], "(1/2, 1/2)"),
+            ([(0, 0, 4, 0), (1, 0, 3, 0)], "(1, 0) → (3, 0)"),
+        ] {
+            let segments = coordinates.map(|(x1, y1, x2, y2)| Segment {
+                start: point(x1, y1),
+                end: point(x2, y2),
+            });
+            let (results, trace) = trace_intersections(&segments);
+            assert_eq!(results.len(), 1);
+            let expected_intersection = format!("S0 × S1: {expected}");
+            let expected_results = format!("[{expected_intersection}]");
+            let mut saw_geometry = false;
+            let mut saw_pending_push = false;
+            let mut saw_completed_push = false;
+            for step in &trace.steps {
+                for variable in &step.execution.context.locals {
+                    if variable.name == "geometry" && variable.availability == "available" {
+                        assert_eq!(variable.value.as_deref(), Some(expected));
+                        saw_geometry = true;
+                    }
+                }
+                for call in &step.execution.calls {
+                    if call.function != "push"
+                        || !call
+                            .arguments
+                            .iter()
+                            .any(|value| value.r#type == "Intersection")
+                    {
+                        continue;
+                    }
+                    let receiver = call
+                        .arguments
+                        .iter()
+                        .find(|value| value.name == "self")
+                        .unwrap();
+                    assert_eq!(receiver.value.as_deref(), Some("[]"));
+                    let argument = call
+                        .arguments
+                        .iter()
+                        .find(|value| value.name == "value")
+                        .unwrap();
+                    let result = step
+                        .execution
+                        .context
+                        .locals
+                        .iter()
+                        .find(|value| value.name == "result")
+                        .unwrap();
+                    if call.result.availability == "available" {
+                        assert_eq!(
+                            argument.value.as_deref(),
+                            Some(expected_intersection.as_str())
+                        );
+                        assert_eq!(result.value.as_deref(), Some(expected_results.as_str()));
+                        saw_completed_push = true;
+                    } else {
+                        assert_eq!(result.value.as_deref(), receiver.value.as_deref());
+                        saw_pending_push = true;
+                    }
+                }
+            }
+            assert!(
+                saw_geometry && saw_pending_push && saw_completed_push,
+                "{expected}"
+            );
+        }
+    }
 }
 
 #[cfg(test)]

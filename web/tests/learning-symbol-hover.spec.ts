@@ -1,6 +1,47 @@
 import { expect, test } from './learning-test'
 import type { SweepTrace } from '../src/geometry'
-import { readResponse } from './trace-navigation'
+import { readResponse, readTrace } from './trace-navigation'
+
+for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
+  test(`交集实参与核心变量使用一致的简写：${id}`, async ({ page }) => {
+    const trace = await readTrace(page, id)
+    const index = trace.steps.findLastIndex(step => step.execution.module === 'record' && step.execution.boundary === 14)
+    expect(index).toBeGreaterThan(0)
+    const step = trace.steps[index]
+    const call = step.execution.calls.find(call => call.function === 'push')!
+    const argument = call.arguments.find(argument => argument.name === 'value')!
+    const receiver = call.arguments.find(argument => argument.name === 'self')!
+    const result = step.execution.context.locals.find(variable => variable.name === 'result')!
+    const previousResult = trace.steps[index - 1].execution.context.locals.find(variable => variable.name === 'result')!
+    const value = trace.values[argument.value!]
+    expect(value).toMatch(/^S\d+ × S\d+: \(/)
+    expect(trace.values[receiver.value!]).toBe(trace.values[previousResult.value!])
+    expect(trace.values[result.value!]).toContain(value)
+    if (id === 'partial-overlap') expect(value).toContain(' → ')
+    if (id === 'multiway-interior') expect(trace.values[receiver.value!]).not.toBe('[]')
+    await page.goto(`/cases/${id}/learn?step=${index}`)
+    const variables = page.getByRole('region', { name: '核心变量', exact: true })
+    const panel = page.getByRole('region', { name: '核心代码回放' })
+    await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(trace.values[result.value!])
+    await expect(panel.getByRole('img', { name: /执行边界/ })).toBeInViewport()
+    await panel.locator('[data-symbol="push"]').hover()
+    const tooltip = page.getByRole('tooltip', { name: /^函数 push / })
+    await expect(tooltip).toContainText(`实参 value：${value}`)
+    await expect(tooltip).toContainText(`实参 self：${trace.values[previousResult.value!]}`)
+    const argumentsText = tooltip.locator('p').filter({ hasText: /^实参 / })
+    await expect(argumentsText).toHaveText([
+      `实参 self：${trace.values[previousResult.value!]}`,
+      `实参 value：${value}`,
+    ])
+    await variables.getByRole('heading', { name: '核心变量', exact: true }).hover()
+    await expect(tooltip).toBeHidden()
+    await page.getByRole('button', { name: '上一步', exact: true }).click()
+    await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(trace.values[previousResult.value!])
+    await panel.locator('[data-symbol="push"]').hover()
+    await expect(tooltip).toContainText('实参 value：未赋值')
+    await expect(tooltip).toContainText(`实参 self：${trace.values[previousResult.value!]}`)
+  })
+}
 
 test('真实取事件代码 hover 随前进和回退更新且不改变布局', async ({ page }) => {
   const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
