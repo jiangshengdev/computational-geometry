@@ -26,6 +26,10 @@
 .execution-code-scroll { position: relative; min-height: 0; overflow: auto; max-height: 18rem; border-radius: 4px; }
 .execution-code { position: relative; width: max-content; min-width: 100%; padding: .75rem 1.5rem; margin: 0; line-height: 1.75rem; font-size: .8125rem; }
 .code-line { display: block; height: 1.75rem; }
+.execution-code[data-wrap="true"] { width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; }
+.execution-code[data-wrap="true"] .code-line { height: auto; min-height: 1.75rem; padding-left: var(--continuation-indent); text-indent: calc(-1 * var(--continuation-indent)); }
+/* Hanging indentation belongs to the source line, not nested symbol triggers. */
+.execution-code[data-wrap="true"] .code-line > span { text-indent: 0; }
 .execution-boundary { position: absolute; left: 0; right: 0; height: 2px; color: var(--accent); pointer-events: none; }
 .execution-boundary > svg { position: absolute; left: 4px; top: -7px; width: 16px; height: 16px; }
 .execution-boundary::after { content: ''; position: absolute; left: 24px; right: 0; top: 0; height: 2px; background: currentColor; }

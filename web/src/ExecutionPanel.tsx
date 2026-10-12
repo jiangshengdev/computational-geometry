@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@heroui/react/card'
 import { ArrowRight, Info, SquareMinus, SquarePlus } from 'lucide-react'
 import { Button } from '@heroui/react/button'
 import { Tooltip } from '@heroui/react/tooltip'
 import { Disclosure } from '@heroui/react/disclosure'
+import { Switch } from '@heroui/react/switch'
+import { Label } from '@heroui/react/label'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionContext, type ExecutionVariable, type ExecutionVariableKind, type Rational, type SweepStep } from './geometry'
 import { executionSource } from './executionCode'
@@ -12,6 +14,7 @@ import { RustCode as VariableCode } from './RustCode'
 import { tokenizeRust } from './rustHighlight'
 import { callExpression, hasVariableValue, shadowedValueNote, symbolKind, variableChange, variableValue } from './executionSymbols'
 import { formatExecutionValue } from './executionValue'
+import { useLayoutPreference } from './useLayoutPreference'
 
 const highlightedModules = new Map<string, Promise<ThemedToken[][]>>()
 
@@ -29,6 +32,8 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
   const previous = steps[Math.max(0, stepIndex - 1)]
   const [highlight, setHighlight] = useState<{ source: string; tokens: ThemedToken[][] } | null>(null)
   const [error, setError] = useState(false)
+  const [wrap, setWrap] = useLayoutPreference('bo-learning-layout-v1-code-wrap', true,
+    (value): value is boolean => typeof value === 'boolean')
   const take = step.execution.module === 'take'
   const { module, caller, closure, boundaryLine } = executionSource(steps, stepIndex)
   const source = module?.code
@@ -39,34 +44,54 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
     if (source) void loadCode(source).then(result => { if (active) { setHighlight({ source, tokens: result }); setError(false) } }, () => { if (active) setError(true) })
     return () => { active = false }
   }, [source])
-  useEffect(() => {
+  useLayoutEffect(() => {
     const container = scroll.current
     const boundary = container?.querySelector<HTMLElement>('.execution-boundary')
     if (!container || !boundary) return
-    const top = boundary.offsetTop
-    if (top < container.scrollTop || top + 12 > container.scrollTop + container.clientHeight) {
-      container.scrollTop = Math.max(0, top - container.clientHeight / 2)
+    const code = boundary.parentElement!
+    const lines = code.querySelectorAll<HTMLElement>('.code-line')
+    const position = () => {
+      const line = lines[boundaryLine]
+      const last = lines[lines.length - 1]
+      if (!last) return
+      const top = line ? line.offsetTop : last.offsetTop + last.offsetHeight
+      boundary.style.top = `${top}px`
+      if (top < container.scrollTop || top + 12 > container.scrollTop + container.clientHeight) {
+        container.scrollTop = Math.max(0, top - container.clientHeight / 2)
+      }
     }
-  }, [tokens, boundaryLine])
+    position()
+    const observer = new ResizeObserver(position)
+    observer.observe(code)
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [tokens, boundaryLine, wrap])
   const context = step.execution.context
   return <section aria-label="核心代码回放" className="learning-panel learning-code"><Card className="learning-panel-card">
     <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">
       <CardTitle render={props => <h2 {...props} />}>核心代码回放</CardTitle>
+      <Switch size="sm" isSelected={wrap} onChange={setWrap}>
+        <Switch.Content>
+          <Switch.Control><Switch.Thumb /></Switch.Control>
+          <Label>自动换行</Label>
+        </Switch.Content>
+      </Switch>
     </CardHeader>
     <CardContent className="learning-panel-content execution-content">
       {module ? <div className="execution-source">
         <p className="text-sm"><code>{context.function}</code> / {module.title}</p>
         <div ref={scroll} className="execution-code-scroll" tabIndex={0} role="region" aria-label={`${module.title}教学代码`}>
-          {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code"><code>
+          {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code" data-wrap={wrap}><code>
             {(() => {
               const occurrences = new Map<string, number>()
               let sourceOffset = 0
               return tokens.map((line, index) => {
               const text = line.map(token => token.content).join('')
+              const continuationIndent = text.match(/^ */)![0].length + 2
               const lineOffset = sourceOffset
               sourceOffset += text.length + 1
               let offset = 0
-              return <span className="code-line" key={index}>{line.map((token, tokenIndex) => {
+              return <span className="code-line" key={index} style={{ '--continuation-indent': `${continuationIndent}ch` } as CSSProperties}>{line.map((token, tokenIndex) => {
                 const tokenStart = offset
                 offset += token.content.length
                 let partOffset = 0
@@ -85,7 +110,7 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
               })}{'\n'}</span>
               })
             })()}
-          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : step.execution.boundary === 3 ? 'break 之前' : step.execution.boundary === 4 ? 'break 之后' : '模块结束' : `${module.title} ${step.execution.boundary}`}`} style={{ top: `calc(.75rem + ${boundaryLine} * 1.75rem)` }}><ArrowRight aria-hidden="true" /></span></pre> : <p role="status">加载教学代码…</p>}
+          </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : step.execution.boundary === 3 ? 'break 之前' : step.execution.boundary === 4 ? 'break 之后' : '模块结束' : `${module.title} ${step.execution.boundary}`}`}><ArrowRight aria-hidden="true" /></span></pre> : <p role="status">加载教学代码…</p>}
         </div>
         <p className="execution-status text-sm text-muted" aria-live="polite">{step.execution.returning ? '返回值已产生 · 尚未恢复调用方' : step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : step.execution.boundary === 2 ? '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}</p>
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}

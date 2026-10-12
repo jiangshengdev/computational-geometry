@@ -70,6 +70,81 @@ test('取事件的真实小步同步代码、队列和上下文，并可完整�
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
+  browserTest(`自动换行保持执行边界并记住跨案例偏好 ${browserName}`, async ({ page }) => {
+    const trace = await readTrace(page, 'crossing')
+    const index = trace.steps.findIndex(step => step.execution.module === 'neighbors' && step.execution.boundary === 4)
+    expect(index).toBeGreaterThanOrEqual(0)
+    await page.setViewportSize({ width: 1100, height: 900 })
+    await page.goto(`/cases/crossing/learn?step=${index}`)
+    const panel = page.getByRole('region', { name: '核心代码回放' })
+    const toggle = panel.getByRole('switch', { name: '自动换行' })
+    const code = panel.locator('.execution-code')
+    await expect(toggle).toBeChecked()
+    await expect(code.locator('.code-line').last()).toBeAttached()
+    const expectWrappedBoundary = async () => {
+      await expect.poll(() => code.evaluate(element => {
+        const lines = Array.from(element.querySelectorAll<HTMLElement>('.code-line'))
+        const next = lines.find(line => line.textContent?.trim().startsWith('let candidate = schedule_neighbors'))!
+        const boundary = element.querySelector('.execution-boundary')!
+        return Math.abs(next.getBoundingClientRect().top - boundary.getBoundingClientRect().top)
+      })).toBeLessThanOrEqual(1)
+      const layout = await code.evaluate(element => ({
+        width: element.parentElement!.clientWidth,
+        scrollWidth: element.parentElement!.scrollWidth,
+        wrapped: Array.from(element.querySelectorAll('.code-line')).some(line =>
+          line.getBoundingClientRect().height > parseFloat(getComputedStyle(element).lineHeight)),
+      }))
+      expect(layout.scrollWidth).toBeLessThanOrEqual(layout.width + 1)
+      expect(layout.wrapped).toBe(true)
+      const indentation = await code.evaluate(element => {
+        const line = Array.from(element.querySelectorAll('.code-line')).find(line =>
+          line.textContent?.trim().startsWith('let candidate = schedule_neighbors'))!
+        const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT)
+        const rows = new Map<number, number>()
+        const top = line.getBoundingClientRect().top
+        const lineHeight = parseFloat(getComputedStyle(line).lineHeight)
+        let characterWidth = 0
+        while (walker.nextNode()) {
+          const node = walker.currentNode
+          for (let index = 0; index < node.textContent!.length; index++) {
+            if (/\s/.test(node.textContent![index])) continue
+            const range = document.createRange()
+            range.setStart(node, index)
+            range.setEnd(node, index + 1)
+            const rect = range.getBoundingClientRect()
+            const row = Math.round((rect.top - top) / lineHeight)
+            if (!rows.has(row)) rows.set(row, rect.left)
+            characterWidth = rect.width
+          }
+        }
+        return { starts: Array.from(rows.values()), characterWidth }
+      })
+      expect(indentation.starts.length).toBeGreaterThan(1)
+      for (const left of indentation.starts.slice(1)) {
+        expect(Math.abs(left - indentation.starts[0] - 2 * indentation.characterWidth), JSON.stringify(indentation)).toBeLessThanOrEqual(1)
+      }
+    }
+    await expectWrappedBoundary()
+    await page.setViewportSize({ width: 390, height: 844 })
+    await expectWrappedBoundary()
+    await page.setViewportSize({ width: 1360, height: 900 })
+    await expectWrappedBoundary()
+    await page.screenshot({ path: join(tmpdir(), `bo-code-wrap-${browserName}.png`) })
+    const source = await code.textContent()
+    await panel.getByText('自动换行', { exact: true }).click()
+    await expect(code).toHaveAttribute('data-wrap', 'false')
+    expect(await code.textContent()).toBe(source)
+    expect(await code.evaluate(element => element.parentElement!.scrollWidth > element.parentElement!.clientWidth)).toBe(true)
+    await page.reload()
+    await expect(toggle).not.toBeChecked()
+    await page.goto('/cases/empty/learn')
+    await expect(toggle).not.toBeChecked()
+    await toggle.focus()
+    await page.keyboard.press('Space')
+    await expect(toggle).toBeChecked()
+    await page.reload()
+    await expect(toggle).toBeChecked()
+  })
   for (const width of [1360, 390]) browserTest(`代码回放：滚动对齐、长上下文和大步入口 ${browserName} ${width}`, async ({ page, request }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -112,6 +187,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       return element.getBoundingClientRect().top - line.getBoundingClientRect().top
     })
     const before = await offset()
+    await panel.getByText('自动换行', { exact: true }).click()
+    await expect(panel.getByRole('switch', { name: '自动换行' })).not.toBeChecked()
     const scroll = await code.evaluate(element => {
       element.scrollLeft = element.scrollWidth
       return element.scrollLeft
