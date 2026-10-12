@@ -9,7 +9,9 @@ export function executionNavigation(steps: readonly SweepStep[], index: number) 
     const next = steps[position].execution
     const resumesCaller = caller !== undefined && next.context.id === caller.id
     if (stepOut < 0 && resumesCaller) stepOut = position
-    if (stepOver < 0 && (resumesCaller || (!execution.returning && next.context.id === execution.context.id))) stepOver = position
+    // Callback resumes are visible to step-into/out and backwards navigation.
+    // Stepping over the enclosing operation waits for that operation to finish.
+    if (stepOver < 0 && (resumesCaller || (!execution.returning && next.context.id === execution.context.id && !next.resuming))) stepOver = position
     if (stepOver >= 0 && (!caller || stepOut >= 0)) break
   }
   return { stepOver, stepOut }

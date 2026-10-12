@@ -35,6 +35,7 @@ export interface ExecutionState {
   context: ExecutionContext
   outer: ExecutionContext[]
   returning: boolean
+  resuming: boolean
 }
 export interface SweepStep {
   phase: 'initial' | 'processing' | 'processed'

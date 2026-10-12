@@ -328,6 +328,7 @@ pub(crate) struct Execution {
     pub(crate) context: ExecutionContext,
     pub(crate) outer: Vec<ExecutionContext>,
     pub(crate) returning: bool,
+    pub(crate) resuming: bool,
     pub(crate) calls: Vec<ExecutionCall>,
     pub(crate) controls: Vec<ExecutionControl>,
     pub(crate) blocks: Vec<ExecutionBlock>,
@@ -449,6 +450,7 @@ impl ClosureTrace {
         current.execution.module = module;
         current.execution.boundary = Some(0);
         current.execution.entry = false;
+        current.execution.resuming = false;
         current.execution.calls.clear();
         current.execution.controls.clear();
         current.execution.blocks.clear();
@@ -492,6 +494,7 @@ impl ClosureTrace {
         steps.push(self.current);
         // Returning from one callback precedes any subsequent library callback.
         self.caller.execution.entry = false;
+        self.caller.execution.resuming = true;
         self.caller.action = "micro";
         steps.push(self.caller);
     }
@@ -666,6 +669,7 @@ impl SweepStep {
             execution: Execution {
                 outer: Vec::new(),
                 returning: false,
+                resuming: false,
                 calls: Vec::new(),
                 controls: Vec::new(),
                 blocks: Vec::new(),

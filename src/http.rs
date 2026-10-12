@@ -152,6 +152,7 @@ struct ExecutionDto {
     context: ExecutionContextDto,
     outer: Vec<ExecutionContextDto>,
     returning: bool,
+    resuming: bool,
     calls: Vec<ExecutionCallDto>,
     controls: Vec<ExecutionControlDto>,
     blocks: Vec<ExecutionBlockDto>,
@@ -235,6 +236,7 @@ impl ExecutionDto {
         };
         Self {
             returning: execution.returning,
+            resuming: execution.resuming,
             module: execution.module,
             boundary: execution.boundary,
             entry: execution.entry,

@@ -185,11 +185,14 @@ test('步过跳过语句内部调用，步出只结束当前调用，上一步�
   const entry = trace.steps.findIndex(step => step.execution.context.function === 'retain closure' && !step.execution.returning)
   const callerId = trace.steps[entry].execution.outer.at(-1)!.id
   const resumed = trace.steps.findIndex((step, index) => index > entry && step.execution.context.id === callerId)
+  const callLine = trace.steps[entry - 1].execution.boundary! + 1
+  const afterStatement = trace.steps.findIndex((step, index) => index > entry && step.execution.context.id === callerId && step.execution.calls.some(call => call.line === callLine && call.function === 'retain' && call.result.availability === 'available'))
+  expect(afterStatement).toBeGreaterThan(resumed)
   await seekStep(page, entry - 1, 'jump')
   await over.click()
-  await expect(slider).toHaveValue(String(resumed))
+  await expect(slider).toHaveValue(String(afterStatement))
   await page.getByRole('button', { name: '上一步', exact: true }).click()
-  await expect(slider).toHaveValue(String(resumed - 1))
+  await expect(slider).toHaveValue(String(afterStatement - 1))
   await seekStep(page, entry, 'jump')
   await out.click()
   await expect(slider).toHaveValue(String(resumed))
@@ -227,6 +230,12 @@ test('步过跳过语句内部调用，步出只结束当前调用，上一步�
       && next.outer.at(-1)!.id === caller.context.id
   })
   expect(repeated).toBeGreaterThan(0)
+  const operation = trace.steps[repeated + 1].execution
+  const completedOperation = trace.steps.findIndex((step, index) => index > repeated && step.execution.context.id === operation.context.id && step.execution.calls.some(call => call.line === operation.boundary! + 1 && call.function === 'retain' && call.result.availability === 'available'))
+  expect(completedOperation).toBeGreaterThan(repeated + 2)
+  await seekStep(page, repeated - 2, 'jump')
+  await over.click()
+  await expect(slider).toHaveValue(String(completedOperation))
   await seekStep(page, repeated, 'jump')
   await out.click()
   await expect(slider).toHaveValue(String(repeated + 1))
