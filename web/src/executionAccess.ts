@@ -127,7 +127,7 @@ export function accessParents(access: Access, step: SweepStep, values: string[],
   const parents = []
   for (let parent = access.parent; parent; parent = parent.parent) {
     const value = resolve(parent, step, values, line)
-    parents.push({ expression: parent.expression, value: value.value === undefined ? value.unavailable! : formatExecutionValue(value.value) })
+    parents.push({ expression: parent.expression, value: value.value === undefined ? value.unavailable! : formatExecutionValue(value.value), hasValue: value.value !== undefined })
   }
   return parents
 }

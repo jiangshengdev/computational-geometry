@@ -8,12 +8,17 @@ import { PreviewTrigger } from 'react-aria-components/PreviewTrigger'
 import { OverlayTriggerStateContext } from 'react-aria-components/Dialog'
 import { setInteractionModality } from 'react-aria/useFocusVisible'
 import type { ExecutionContext, ExecutionVariable, ExecutionVariableKind, SweepStep } from './geometry'
-import { controlDescription, functions, hasVariableValue, panelVariableDetails, scopedVariable, symbolScope, variableDetails, variableValue } from './executionSymbols'
+import { controlDescription, functions, hasVariableValue, panelVariableDetails, scopedVariable, shadowedValueNote, symbolScope, variableDetails, variableValue } from './executionSymbols'
 import { RustCode } from './RustCode'
 import { type Access, accessDetails, accessParents } from './executionAccess'
 
+function PreviewValue({ value, hasValue }: { value: string; hasValue: boolean }) {
+  const shadowed = hasValue && value.endsWith(shadowedValueNote)
+  return <><RustCode muted={!hasValue}>{shadowed ? value.slice(0, -shadowedValueNote.length) : value}</RustCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</>
+}
+
 function SymbolValue({ variable, values }: { variable: ExecutionVariable | undefined; values: string[] }) {
-  return <RustCode muted={!hasVariableValue(variable)}>{variableValue(variable, values)}</RustCode>
+  return <PreviewValue value={variableValue(variable, values)} hasValue={hasVariableValue(variable)} />
 }
 
 interface SymbolProps {
@@ -104,7 +109,7 @@ function ParentValues({ access, step, values, line, depth, maximum, changeDepth 
       <span>parent 深度：{depth}</span>
       <Button isIconOnly size="sm" variant="secondary" aria-label="增加 parent 深度" isDisabled={depth === maximum} onPress={() => changeDepth(1)}><Plus size={16} aria-hidden="true" /></Button>
     </div>
-    {parents.slice(0, depth).map(parent => <p key={parent.expression} data-parent={parent.expression}><RustCode>{parent.expression}</RustCode>：<RustCode>{parent.value}</RustCode></p>)}
+    {parents.slice(0, depth).map(parent => <p key={parent.expression} data-parent={parent.expression}><RustCode>{parent.expression}</RustCode>：<PreviewValue value={parent.value} hasValue={parent.hasValue} /></p>)}
   </>
 }
 
@@ -141,8 +146,8 @@ function SymbolDetails({ name, kind, access, line, occurrence, module, expressio
 function VariableDescription({ detail }: { detail: ReturnType<typeof variableDetails> }) {
   return <>
     <p>{detail.meaning}</p><p>作用域：{detail.scope}</p><p>类型：<RustCode>{detail.type}</RustCode></p>
-    <p data-value-phase="current">当前值：<RustCode muted={!detail.hasValue}>{detail.value}</RustCode></p>
-    <p data-value-phase="previous">{detail.changed ? <>本步变化；之前值：<RustCode muted={!detail.previousHasValue}>{detail.previous}</RustCode></> : '本步无可比较的值变化'}</p>
+    <p data-value-phase="current">当前值：<PreviewValue value={detail.value} hasValue={detail.hasValue} /></p>
+    <p data-value-phase="previous">{detail.changed ? <>本步变化；之前值：<PreviewValue value={detail.previous} hasValue={detail.previousHasValue} /></> : '本步无可比较的值变化'}</p>
   </>
 }
 
