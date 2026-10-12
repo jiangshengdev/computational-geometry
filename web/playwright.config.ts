@@ -6,7 +6,7 @@ export default defineConfig({
   testDir: './tests',
   outputDir: join(tmpdir(), 'computational-geometry-playwright'),
   reporter: 'dot',
-  workers: '67%',
+  workers: '50%',
   use: {
     headless: true,
   },

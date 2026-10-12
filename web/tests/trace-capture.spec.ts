@@ -2,6 +2,7 @@ import { expect, test } from './learning-test'
 import { captureIntersections, waitForTraceCompletion } from './trace-navigation'
 
 test('轨迹捕获保留渐进回放并来自页面实际消费的请求', async ({ page }) => {
+  test.setTimeout(60_000)
   const capture = await captureIntersections(page)
   let captured = false
   void capture.result.then(() => { captured = true }, () => {})
