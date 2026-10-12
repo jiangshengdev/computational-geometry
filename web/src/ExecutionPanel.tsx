@@ -11,6 +11,7 @@ import { ExecutionSymbol } from './ExecutionSymbol'
 import { RustCode as VariableCode } from './RustCode'
 import { tokenizeRust } from './rustHighlight'
 import { callExpression, hasVariableValue, shadowedValueNote, symbolKind, variableChange, variableValue } from './executionSymbols'
+import { formatExecutionValue } from './executionValue'
 
 const highlightedModules = new Map<string, Promise<ThemedToken[][]>>()
 
@@ -110,12 +111,10 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
     const multiline = hasValue && value.includes('\n')
     const label = `${variable.name}: ${variable.type} = `
     const state = expansion(`${kind}:${variable.name}`, false)
-    const compact = value.replace(/\s+/g, ' ')
-    const summary = compact.length > 64 ? `${compact.slice(0, 64)}…` : compact
     if (multiline) return <Disclosure key={variable.name} {...state} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
       <dt><Disclosure.Trigger className="flex w-full items-start gap-2 text-left" aria-label={`${variable.name}: ${variable.type}`}>
         <ExecutionDisclosureIndicator expanded={state.isExpanded} />
-        <span className="min-w-0 flex-1"><VariableCode>{label}</VariableCode>{!state.isExpanded && <VariableCode>{summary}</VariableCode>}</span>
+        <span className="min-w-0 flex-1"><VariableCode>{label}</VariableCode>{!state.isExpanded && <VariableCode>{formatExecutionValue(value, 'summary')}</VariableCode>}</span>
       </Disclosure.Trigger>{shadowed && !state.isExpanded && <span className="text-muted">{shadowedValueNote}</span>}</dt>
       <dd><Disclosure.Content><Disclosure.Body className="execution-variable-value"><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</Disclosure.Body></Disclosure.Content></dd>
     </Disclosure>

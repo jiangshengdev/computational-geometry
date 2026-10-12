@@ -1,9 +1,27 @@
 import { expect, test } from './learning-test'
-import { readTrace } from './trace-navigation'
+import { readTrace, waitForTraceCompletion } from './trace-navigation'
 import { formatExecutionValue } from '../src/executionValue'
 
+test('折叠摘要完整保留第一个元素，仅在有后续元素时省略', () => {
+  const first = 'SweepSegment { left: (123456789/17, 987654321/19), right: (987654321/17, 123456789/19), slope: Some(1), input_ids: [0, 1] }'
+  const cases = [
+    [`[${first}, SweepSegment { left: (0, 0), right: (1, 1) }]`, `[${first}, ...]`],
+    [`[${first}]`, `[${first}]`],
+    ['{(0, 0): Event { starts: [0, 1], ends: [], crossings: [[2, 3]] }, (4, 4): Event { starts: [] }}', '{(0, 0): Event { starts: [0, 1], ends: [], crossings: [[2, 3]] }, ...}'],
+    ['{(0, 0): Event { starts: [0, 1] }}', '{(0, 0): Event { starts: [0, 1] }}'],
+    ['[S0 × S1: (1/2, 1/3) → (1/2, 5/3), S2 × S3: (0, 0)]', '[S0 × S1: (1/2, 1/3) → (1/2, 5/3), ...]'],
+    ['[S0 × S1: (1/2, 1/3) → (1/2, 5/3)]', '[S0 × S1: (1/2, 1/3) → (1/2, 5/3)]'],
+  ]
+  for (const [source, summary] of cases) {
+    expect(formatExecutionValue(formatExecutionValue(source), 'summary')).toBe(summary)
+  }
+  for (const source of ['[]', '{}', '[0, 1, 2]', '[[0, 1], [1, 2]]', '[Some(0), None]', 'Some(((0, 0), Event { starts: [0] }))']) {
+    expect(formatExecutionValue(source, 'summary')).toBe(source)
+  }
+})
+
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
-  for (const width of [1440, 390]) test.extend({ browserName })(`变量两级折叠及页面内状态 ${browserName} ${width}`, async ({ page }) => {
+  for (const width of [1440, 390]) test.extend({ browserName })(`变量两级折叠及页面内状态 ${browserName} ${width}`, async ({ page }, testInfo) => {
     await page.setViewportSize({ width, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
@@ -15,6 +33,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     expect(call).toBeGreaterThan(start)
     await page.goto(`/cases/crossing/learn?step=${start}`)
     await expect(page).toHaveTitle(/逐步学习/)
+    await waitForTraceCompletion(page)
+    await expect(page.locator('.execution-code')).toBeVisible()
     const panel = page.getByRole('region', { name: '核心变量', exact: true })
     const parameters = panel.getByRole('button', { name: '核心参数', exact: true })
     const locals = panel.getByRole('button', { name: '核心局部变量', exact: true })
@@ -26,6 +46,20 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(locals).toHaveAttribute('aria-expanded', 'true')
     await expect(input).toHaveAttribute('aria-expanded', 'false')
     await expect(segments).toHaveAttribute('aria-expanded', 'false')
+    await expect(input.locator('code').last()).toHaveText('[Segment { start: (0, 0), end: (4, 4) }, ...]')
+    await expect(queueTrigger.locator('code').last()).toHaveText('{(0, 0): Event { starts: [0] }, ...}')
+    const segmentSummary = segments.locator('code').last()
+    await expect(segmentSummary).toHaveText('[SweepSegment { left: (0, 0), right: (4, 4), slope: Some(1), intercept: 0 }, ...]')
+    const summaryLayout = await segmentSummary.evaluate(element => {
+      const range = document.createRange()
+      range.selectNodeContents(element)
+      const lines = new Set(Array.from(range.getClientRects(), rect => Math.round(rect.top)))
+      const panel = element.closest('.learning-panel-content')!
+      return { lines: lines.size, overflow: panel.scrollWidth - panel.clientWidth }
+    })
+    expect(summaryLayout.overflow).toBeLessThanOrEqual(1)
+    if (width === 390) expect(summaryLayout.lines).toBeGreaterThan(1)
+    await page.screenshot({ path: testInfo.outputPath('collapsed-variables.png'), fullPage: true })
     // Click the far right of the row, independently of the trigger's width,
     // so a content-sized button cannot accidentally satisfy this contract.
     for (const trigger of [parameters, locals, input, segments]) {

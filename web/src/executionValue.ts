@@ -1,6 +1,6 @@
 // Trace values are Rust-style teaching text, not JSON. Split only at the
 // collection's own commas: coordinates, fields and nested lists stay intact.
-export function formatExecutionValue(source: string): string {
+export function formatExecutionValue(source: string, mode: 'expanded' | 'summary' = 'expanded'): string {
   const opening = source[0]
   if (opening !== '[' && opening !== '{') return source
   const closing = opening === '[' ? ']' : '}'
@@ -25,5 +25,6 @@ export function formatExecutionValue(source: string): string {
   items.push(body.slice(start).trim())
   // Intersections use the compact domain notation "S0 × S1: (x, y)".
   if (opening === '[' && !items.some(item => item.includes('{') || /^S\d+ × S\d+:/.test(item))) return source
+  if (mode === 'summary') return `${opening}${items[0]}${items.length > 1 ? ', ...' : ''}${closing}`
   return `${opening}\n  ${items.join(',\n  ')}\n${closing}`
 }
