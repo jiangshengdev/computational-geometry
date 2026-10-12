@@ -21,7 +21,7 @@ test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) 
         const row = rows.getByTestId(`variable-${variable.name}`)
         const disclosure = row.getByRole('button')
         if (await disclosure.count() && await disclosure.getAttribute('aria-expanded') === 'false') await disclosure.click()
-        await expect(row.locator('dt code').first()).toHaveText(`${variable.name}: ${variable.type} =`)
+        await expect(row.locator('dt')).toContainText(`${variable.name}: ${variable.type} =`)
         if ((variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null) {
           await expect(row.locator('dd')).toHaveText(formatExecutionValue(trace.values[variable.value]) + (variable.availability === 'shadowed' ? shadowedValueNote : ''))
           await expect(row.locator('dd code span[style]').first()).toBeAttached()

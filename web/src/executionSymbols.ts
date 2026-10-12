@@ -101,15 +101,29 @@ export function variableDetails(name: string, step: SweepStep, previous: SweepSt
   // the input parameter hidden by the scan-coordinate local named segments.
   const variable = scopedVariable(name, step, line)
   const kind = context.locals.some(item => item.name === name) ? 'locals' : 'parameters'
+  return describeVariable(name, variable, kind, step, previous, values, symbolScope(name, step.execution.module, line), line)
+}
+
+export function panelVariableDetails(variable: ExecutionVariable, kind: 'locals' | 'parameters', step: SweepStep, previous: SweepStep, values: string[]) {
+  const scope = variable.scope === 'classify.active' ? '活动线段循环'
+    : variable.scope === 'classify.incident' ? '参与线段循环'
+    : variable.scope ?? (kind === 'parameters' ? `${step.execution.context.function} 参数` : `${step.execution.module} 模块`)
+  return describeVariable(variable.name, variable, kind, step, previous, values, scope)
+}
+
+function describeVariable(name: string, variable: ExecutionVariable | undefined, kind: 'locals' | 'parameters', step: SweepStep, previous: SweepStep, values: string[], scope: string, line?: number) {
   const { old, changed } = variableChange(variable, kind, step, previous, line)
   return {
-    meaning: meanings[name], type: variable?.type ?? '当前作用域未提供类型',
+    meaning: name === 'segments' && kind === 'parameters'
+      ? step.execution.context.function === 'sweep' ? '原始输入线段，使用原坐标' : '当前函数接收的扫描坐标线段'
+      : meanings[name],
+    type: variable?.type ?? '当前作用域未提供类型',
     value: variableValue(variable, values),
     hasValue: hasVariableValue(variable),
     changed,
     previous: variableValue(old, values),
     previousHasValue: hasVariableValue(old),
-    scope: symbolScope(name, step.execution.module, line),
+    scope,
   }
 }
 

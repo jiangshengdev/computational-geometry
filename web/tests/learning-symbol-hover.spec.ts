@@ -1,6 +1,6 @@
 import { expect, test } from './learning-test'
 import type { SweepTrace } from '../src/geometry'
-import { readResponse, readTrace } from './trace-navigation'
+import { readResponse, readTrace, waitForTraceCompletion } from './trace-navigation'
 import { variableValue } from '../src/executionSymbols'
 import { formatExecutionValue } from '../src/executionValue'
 
@@ -278,5 +278,150 @@ test('分类同名 id 按词法循环隔离，真实调用按行和函数展示�
   await expect(beforeTooltip).toContainText('返回值：未赋值')
   for (const argument of before!.arguments.filter(argument => argument.availability === 'available')) {
     await expect(beforeTooltip).toContainText(`实参 ${argument.name}：${trace.values[argument.value!]}`)
+  }
+})
+
+test('右侧顶层变量浮层与代码一致，支持键盘、前进回退且不改变布局', async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
+  const trace = await readTrace(page, 'crossing')
+  const index = trace.steps.findIndex(step => step.action === 'take-entry')
+  expect(index).toBeGreaterThanOrEqual(0)
+  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await waitForTraceCompletion(page)
+  await expect(page).toHaveURL(new RegExp(`/cases/crossing/learn\\?step=${index}$`))
+  await expect(page).toHaveTitle(/BO 结果查看器/)
+  await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+  const panel = page.getByRole('region', { name: '核心变量', exact: true })
+  const next = panel.getByRole('button', { name: '变量 next · 局部变量', exact: true })
+  const tooltip = page.getByRole('tooltip', { name: /^变量 next / })
+  const layout = () => panel.getByTestId('variable-next').evaluate(element => {
+    const row = element as HTMLElement
+    return { top: row.offsetTop, left: row.offsetLeft, width: row.offsetWidth, height: row.offsetHeight }
+  })
+  const before = await layout()
+  const codeNext = page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="next"]').first()
+  await codeNext.hover()
+  await expect(tooltip).toContainText('当前值：未赋值')
+  const codeDescription = await tooltip.innerText()
+  await panel.getByRole('heading', { name: '核心变量', exact: true }).hover()
+  await expect(tooltip).toBeHidden()
+  await next.hover()
+  await expect(tooltip).toHaveText(codeDescription, { useInnerText: true })
+  expect(await layout()).toEqual(before)
+  await expect(tooltip).not.toHaveAttribute('data-entering', 'true')
+  await page.screenshot({ path: '/tmp/bo-variable-tooltip-desktop.png' })
+  await page.keyboard.press('Escape')
+  await expect(tooltip).toBeHidden()
+  await panel.getByRole('heading', { name: '核心变量', exact: true }).hover()
+  await next.focus()
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Shift+Tab')
+  await expect(next).toBeFocused()
+  await expect(tooltip).toContainText('本次弹出的队首事件，可为空')
+  await page.keyboard.press('Escape')
+  await expect(tooltip).toBeHidden()
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await next.hover()
+  const variable = trace.steps[index + 1].execution.context.locals.find(variable => variable.name === 'next')!
+  await expect(tooltip).toContainText(`当前值：${variableValue(variable, trace.values)}`)
+  await expect(tooltip).toContainText('本步变化；之前值：未赋值')
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await next.hover()
+  await expect(tooltip).toContainText('当前值：未赋值')
+  expect(await layout()).toEqual(before)
+  expect(errors).toEqual([])
+})
+
+test('右侧同名参数和局部变量浮层隔离，集合保持展开及键盘行为并适配窄屏', async ({ page }) => {
+  const trace = await readTrace(page, 'vertical-overlap')
+  const index = trace.steps.findIndex(step => step.action === 'take-entry')
+  await page.goto(`/cases/vertical-overlap/learn?step=${index}`)
+  await waitForTraceCompletion(page)
+  const panel = page.getByRole('region', { name: '核心变量', exact: true })
+  const input = panel.getByRole('button', { name: 'segments: &[Segment]', exact: true })
+  const local = panel.getByRole('button', { name: 'segments: Vec<SweepSegment>', exact: true })
+  const tooltip = page.getByRole('tooltip', { name: /^变量 segments / })
+  const parameter = trace.steps[index].execution.context.parameters.find(variable => variable.name === 'segments')!
+  const variable = trace.steps[index].execution.context.locals.find(variable => variable.name === 'segments')!
+  await input.hover()
+  await expect(tooltip).toContainText('原始输入线段，使用原坐标')
+  await expect(tooltip).toContainText('作用域：sweep 参数')
+  await expect(tooltip).toContainText(`当前值：${variableValue(parameter, trace.values)}`)
+  await expect(tooltip).not.toContainText('SweepSegment')
+  await expect(input).toHaveAttribute('aria-expanded', 'false')
+  await input.locator('code').first().click()
+  await expect(input).toHaveAttribute('aria-expanded', 'true')
+  await expect(panel.getByTestId('variable-segments').filter({ hasText: 'segments: &[Segment]' }).locator('dd')).toBeVisible()
+  await input.locator('code').first().click()
+  await expect(input).toHaveAttribute('aria-expanded', 'false')
+  await panel.getByRole('heading', { name: '核心变量', exact: true }).hover()
+  await expect(tooltip).toBeHidden()
+  await local.hover()
+  await expect(tooltip).toContainText(`当前值：${variableValue(variable, trace.values)}`)
+  await expect(tooltip).not.toContainText('原始输入线段')
+  await expect(local.locator('button, [tabindex]')).toHaveCount(0)
+  await panel.getByRole('heading', { name: '核心变量', exact: true }).hover()
+  await local.focus()
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Shift+Tab')
+  await expect(local).toBeFocused()
+  await expect(tooltip).toContainText('类型：Vec<SweepSegment>')
+  await local.press('Enter')
+  await expect(local).toHaveAttribute('aria-expanded', 'true')
+  await local.press('Space')
+  await expect(local).toHaveAttribute('aria-expanded', 'false')
+  await page.keyboard.press('Escape')
+  await expect(tooltip).toBeHidden()
+  await page.setViewportSize({ width: 390, height: 844 })
+  await input.hover()
+  await expect(tooltip).toContainText(`当前值：${variableValue(parameter, trace.values)}`)
+  await expect(tooltip).not.toHaveAttribute('data-entering', 'true')
+  const bounds = await tooltip.boundingBox()
+  expect(bounds!.x).toBeGreaterThanOrEqual(0)
+  expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(390)
+  expect(bounds!.y).toBeGreaterThanOrEqual(0)
+  expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(844)
+  await page.screenshot({ path: '/tmp/bo-variable-tooltip-mobile.png' })
+})
+
+test('多行变量浮层对齐变量名，与单行变量间距一致，展开和换行不改变定位', async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 1080 })
+  await page.goto('/cases/crossing/learn?step=2')
+  await waitForTraceCompletion(page)
+  const panel = page.getByRole('region', { name: '核心变量', exact: true })
+  const queue = panel.getByRole('button', { name: 'queue: BTreeMap<Point, Event>', exact: true })
+  const name = queue.locator('code').first()
+  const tooltip = page.getByRole('tooltip', { name: /^变量 queue / })
+  const event = panel.getByRole('button', { name: '变量 event · 局部变量', exact: true })
+  const eventTooltip = page.getByRole('tooltip', { name: /^变量 event / })
+  await event.hover()
+  await expect(eventTooltip).toBeVisible()
+  await expect(eventTooltip).not.toHaveAttribute('data-entering', 'true')
+  await expect(eventTooltip).toHaveAttribute('data-placement', 'bottom')
+  const eventText = (await event.locator('code').boundingBox())!
+  const eventOverlay = (await eventTooltip.boundingBox())!
+  const gap = eventOverlay.y - eventText.y - eventText.height
+  await panel.getByRole('heading', { name: '核心变量', exact: true }).hover()
+  await expect(eventTooltip).toBeHidden()
+  for (const width of [1920, 1280]) {
+    await page.setViewportSize({ width, height: 1080 })
+    for (const expanded of [false, true]) {
+      if (expanded) await queue.locator('code').nth(1).click()
+      await expect(queue).toHaveAttribute('aria-expanded', String(expanded))
+      await name.hover()
+      await expect(tooltip).toContainText('按扫描坐标排序的待处理事件队列')
+      await expect(tooltip).not.toHaveAttribute('data-entering', 'true')
+      await expect(tooltip).toHaveAttribute('data-placement', 'bottom')
+      const target = (await name.boundingBox())!
+      const overlay = (await tooltip.boundingBox())!
+      expect(Math.abs(overlay.x + overlay.width / 2 - target.x - target.width / 2)).toBeLessThanOrEqual(1)
+      expect(Math.abs(overlay.y - target.y - target.height - gap)).toBeLessThanOrEqual(1)
+      if (width === 1920 && !expanded) await page.screenshot({ path: '/tmp/bo-multiline-hover-anchor.png' })
+      await panel.getByRole('heading', { name: '核心变量', exact: true }).hover()
+      await expect(tooltip).toBeHidden()
+    }
+    await queue.locator('code').nth(1).click()
   }
 })

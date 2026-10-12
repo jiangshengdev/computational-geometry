@@ -7,7 +7,7 @@ import { Disclosure } from '@heroui/react/disclosure'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
 import { teachingModules } from './executionCode'
-import { ExecutionSymbol } from './ExecutionSymbol'
+import { ExecutionSymbol, ExecutionVariableSymbol } from './ExecutionSymbol'
 import { RustCode as VariableCode } from './RustCode'
 import { tokenizeRust } from './rustHighlight'
 import { callExpression, hasVariableValue, shadowedValueNote, symbolKind, variableChange, variableValue } from './executionSymbols'
@@ -109,17 +109,16 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
     const shadowed = variable.availability === 'shadowed' && hasValue
     const value = variableValue(shadowed ? { ...variable, availability: 'available' } : variable, values)
     const multiline = hasValue && value.includes('\n')
-    const label = `${variable.name}: ${variable.type} = `
+    const suffix = `: ${variable.type} = `
     const state = expansion(`${kind}:${variable.name}`, false)
     if (multiline) return <Disclosure key={variable.name} {...state} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
-      <dt><Disclosure.Trigger className="flex w-full items-start gap-2 text-left" aria-label={`${variable.name}: ${variable.type}`}>
-        <ExecutionDisclosureIndicator expanded={state.isExpanded} />
-        <span className="min-w-0 flex-1"><VariableCode>{label}</VariableCode>{!state.isExpanded && <VariableCode>{formatExecutionValue(value, 'summary')}</VariableCode>}</span>
-      </Disclosure.Trigger>{shadowed && !state.isExpanded && <span className="text-muted">{shadowedValueNote}</span>}</dt>
+      <dt><ExecutionVariableSymbol variable={variable} kind={kind} step={step} previous={previous} values={values} disclosure indicator={<ExecutionDisclosureIndicator expanded={state.isExpanded} />}>
+        <VariableCode>{suffix}</VariableCode>{!state.isExpanded && <VariableCode>{formatExecutionValue(value, 'summary')}</VariableCode>}
+      </ExecutionVariableSymbol>{shadowed && !state.isExpanded && <span className="text-muted">{shadowedValueNote}</span>}</dt>
       <dd><Disclosure.Content><Disclosure.Body className="execution-variable-value"><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</Disclosure.Body></Disclosure.Content></dd>
     </Disclosure>
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
-      <dt><VariableCode>{label}</VariableCode></dt>
+      <dt><ExecutionVariableSymbol variable={variable} kind={kind} step={step} previous={previous} values={values}><VariableCode>{variable.name}</VariableCode></ExecutionVariableSymbol><VariableCode>{suffix}</VariableCode></dt>
       <dd className={hasValue ? undefined : 'text-muted'}>{hasValue ? <><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</> : value}</dd>
     </div>
   }
