@@ -20,7 +20,7 @@ function teachingModule(title: string, operations: string[], stops: readonly (re
 export const teachingModules: Record<string, TeachingModule> = {
   neighbors: teachingModule('邻居检查', [
     'let mut checked = Vec::new();',
-    'let boundaries = [position.checked_sub(1), (inserted > 0).then(|| position + inserted - 1)];',
+    'let boundaries = [position.checked_sub(1), (inserted > 0).then(|| { position + inserted - 1 })];',
     'for lower in boundaries.into_iter().flatten() {',
     '    let Some(neighbors) = active.get(lower..lower + 2) else {\n        continue;\n    };',
     '    let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);',
@@ -40,8 +40,8 @@ export const teachingModules: Record<string, TeachingModule> = {
     'active.retain(|&id| { segments[id].right != point });',
     'active.retain(|&id| { !height_order[id].is_eq() });',
     'incident.retain(|&id| { segments[id].right != point });',
-    'incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));',
-    'let position = active.partition_point(|&id| height_order[id].is_lt());',
+    'incident.sort_by(|&a, &b| { segments[a].slope.cmp(&segments[b].slope) });',
+    'let position = active.partition_point(|&id| { height_order[id].is_lt() });',
     'let inserted = incident.len();',
     'active.splice(position..position, incident);',
   ], [[1], [2], [3], [4], [5], [6], [7], [8]]),
@@ -53,6 +53,26 @@ export const teachingModules: Record<string, TeachingModule> = {
   'retain-height': teachingModule('retain 高度判断闭包', [
     '|&id| {',
     '    !height_order[id].is_eq()',
+    '}',
+  ], [[2], [3]]),
+  'sort-by': teachingModule('sort_by 比较闭包', [
+    '|&a, &b| {',
+    '    segments[a].slope.cmp(&segments[b].slope)',
+    '}',
+  ], [[2], [3]]),
+  'partition-point': teachingModule('partition_point 判断闭包', [
+    '|&id| {',
+    '    height_order[id].is_lt()',
+    '}',
+  ], [[2], [3]]),
+  then: teachingModule('then 索引计算闭包', [
+    '|| {',
+    '    position + inserted - 1',
+    '}',
+  ], [[2], [3]]),
+  original: teachingModule('original 坐标还原闭包', [
+    '|p| {',
+    '    Point { x: p.x - shear * p.y, y: p.y }',
     '}',
   ], [[2], [3]]),
   take: teachingModule('取事件', [
@@ -79,7 +99,7 @@ export const teachingModules: Record<string, TeachingModule> = {
   record: teachingModule('配对与记录', [
     'for (i, &a) in incident.iter().enumerate() {',
     '    for &b in &incident[i + 1..] {',
-    '        let original = |p| Point { x: p.x - shear * p.y, y: p.y };',
+    '        let original = |p| { Point { x: p.x - shear * p.y, y: p.y } };',
     '        let geometry = if segments[a].slope == segments[b].slope {',
     '            let start = segments[a].left.max(segments[b].left);',
     '            if start != &point {',

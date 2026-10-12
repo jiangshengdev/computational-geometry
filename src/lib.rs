@@ -1580,13 +1580,31 @@ fn sweep(
                 control!(2, "for", "entered");
                 let mut original_calls = steps.as_ref().map(|_| Vec::new());
                 let mut original_line = 12;
-                let mut original = |p: &Point| {
+                let mut original = |p: &Point, steps: &mut Option<&mut Vec<SweepStep>>| {
+                    nop!();
+                    let trace = steps.as_mut().map(|steps| {
+                        ClosureTrace::enter(
+                            steps,
+                            &next_call,
+                            "original",
+                            "original closure",
+                            vec![Variable::available("p", "&Point", point_value(p))],
+                            &["shear"],
+                            "Point",
+                        )
+                    });
                     let transformed = Point {
                         x: &p.x - &shear * &p.y,
                         y: p.y.clone(),
                     };
                     if let Some(calls) = &mut original_calls {
                         calls.push((point_value(p), point_value(&transformed)));
+                    }
+                    if let Some(trace) = trace {
+                        trace.returned(
+                            steps.as_mut().expect("tracing is enabled"),
+                            point_value(&transformed),
+                        );
                     }
                     transformed
                 };
@@ -1673,8 +1691,8 @@ fn sweep(
                         );
                         original_line = 10;
                         Geometry::Overlap {
-                            start: original(start),
-                            end: original(end),
+                            start: original(start, &mut steps),
+                            end: original(end, &mut steps),
                         }
                     } else {
                         record!(10, Some((i, a, Some(b))), (Some(start), Some(end)), None);
@@ -1688,7 +1706,7 @@ fn sweep(
                             "Point"
                         );
                         original_line = 11;
-                        Geometry::Point(original(start))
+                        Geometry::Point(original(start, &mut steps))
                     }
                 } else {
                     record!(11, Some((i, a, Some(b))), (None, None), None);
@@ -1701,7 +1719,7 @@ fn sweep(
                         vec![Variable::available("p", "&Point", point_value(&point))],
                         "Point"
                     );
-                    Geometry::Point(original(&point))
+                    Geometry::Point(original(&point, &mut steps))
                 };
                 record!(13, Some((i, a, Some(b))), (None, None), Some(&geometry));
                 if let Some(steps) = &mut steps {
@@ -2044,7 +2062,21 @@ fn sweep(
             ],
             "()"
         );
-        incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));
+        incident.sort_by(|&a, &b| {
+            nop!();
+            closure_call!(
+                "sort-by",
+                "sort_by closure",
+                vec![
+                    Variable::available("a", "usize", a.to_string()),
+                    Variable::available("b", "usize", b.to_string())
+                ],
+                &["segments"],
+                "Ordering",
+                segments[a].slope.cmp(&segments[b].slope),
+                |value: &std::cmp::Ordering| format!("{value:?}")
+            )
+        });
         activity!(4, Some(&incident), None, None);
         call!(
             4,
@@ -2080,7 +2112,18 @@ fn sweep(
             ],
             "usize"
         );
-        let position = active.partition_point(|&id| height_order[id].is_lt());
+        let position = active.partition_point(|&id| {
+            nop!();
+            closure_call!(
+                "partition-point",
+                "partition_point closure",
+                vec![Variable::available("id", "usize", id.to_string())],
+                &["height_order"],
+                "bool",
+                height_order[id].is_lt(),
+                |value: &bool| value.to_string()
+            )
+        });
         activity!(5, Some(&incident), Some(position), None);
         call!(
             5,
@@ -2260,7 +2303,18 @@ fn sweep(
         neighbors!(1, Some(&checked), None, None, None::<&[usize]>, None);
         let boundaries = [
             position.checked_sub(1),
-            (inserted > 0).then(|| position + inserted - 1),
+            (inserted > 0).then(|| {
+                nop!();
+                closure_call!(
+                    "then",
+                    "then closure",
+                    vec![],
+                    &["position", "inserted"],
+                    "usize",
+                    position + inserted - 1,
+                    |value: &usize| value.to_string()
+                )
+            }),
         ];
         neighbors!(
             2,

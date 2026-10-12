@@ -193,6 +193,71 @@ async fn retain_calls_expose_real_parameters_scopes_and_separate_returns() {
 }
 
 #[tokio::test]
+async fn other_closures_preserve_actual_arguments_returns_and_no_call_paths() {
+    let response = trace_segments(&[(0, 0, 4, 4), (0, 4, 4, 0)]).await;
+    let steps = &response.trace.steps;
+    let values = &response.trace.values;
+    for function in [
+        "sort_by closure",
+        "partition_point closure",
+        "then closure",
+        "original closure",
+    ] {
+        let entries: Vec<_> = steps
+            .iter()
+            .enumerate()
+            .filter(|(_, step)| {
+                step.execution.context.function == function && !step.execution.returning
+            })
+            .collect();
+        assert!(!entries.is_empty(), "fixture reaches {function}");
+        for (index, step) in entries {
+            let returned = &steps[index + 1];
+            assert_eq!(returned.execution.context.id, step.execution.context.id);
+            assert!(returned.execution.returning);
+            assert_ne!(variable(step, "return_value").availability, "available");
+            assert_eq!(variable(returned, "return_value").availability, "available");
+            assert_eq!(
+                steps[index + 2].execution.context.id,
+                step.execution.outer.last().unwrap().id
+            );
+            if function == "sort_by closure" {
+                assert_eq!(
+                    step.execution
+                        .context
+                        .parameters
+                        .iter()
+                        .map(|v| v.name.as_str())
+                        .collect::<Vec<_>>(),
+                    ["a", "b"]
+                );
+                assert!(matches!(
+                    variable(returned, "return_value").text(values),
+                    Some("Less" | "Equal" | "Greater")
+                ));
+            }
+            if function == "original closure" {
+                assert_eq!(
+                    step.execution.context.parameters[0].text(values),
+                    Some("(2, 2)")
+                );
+                assert_eq!(
+                    variable(returned, "return_value").text(values),
+                    Some("(2, 2)")
+                );
+            }
+        }
+    }
+    for (index, step) in steps.iter().enumerate().filter(|(_, step)| {
+        step.execution.module == "neighbors" && step.execution.boundary == Some(1)
+    }) {
+        if variable(step, "inserted").text(values) == Some("0") {
+            assert_ne!(steps[index + 1].execution.context.function, "then closure");
+        }
+    }
+}
+
+#[tokio::test]
 async fn trace_point_table_deduplicates_equivalent_input_fraction_representations() {
     let segments: Vec<_> = [
         ("7", "5", "3", "2"),
@@ -291,7 +356,12 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
         if step.execution.context.function != "sweep" {
             assert!(matches!(
                 step.execution.module.as_str(),
-                "retain-end" | "retain-height"
+                "retain-end"
+                    | "retain-height"
+                    | "then"
+                    | "partition-point"
+                    | "sort-by"
+                    | "original"
             ));
             assert!(!step.execution.entry);
             continue;
