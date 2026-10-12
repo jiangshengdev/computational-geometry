@@ -3,6 +3,7 @@ import { Popover, popoverVariants } from '@heroui/react/popover'
 import { TooltipTrigger as FocusableTrigger } from '@heroui/react/tooltip'
 import { Button } from '@heroui/react/button'
 import { Disclosure } from '@heroui/react/disclosure'
+import { Minus, Plus } from 'lucide-react'
 import { PreviewTrigger } from 'react-aria-components/PreviewTrigger'
 import { OverlayTriggerStateContext } from 'react-aria-components/Dialog'
 import { setInteractionModality } from 'react-aria/useFocusVisible'
@@ -99,9 +100,9 @@ function ParentValues({ access, step, values, line, depth, maximum, changeDepth 
   const parents = accessParents(access, step, values, line)
   return <>
     <div className="flex items-center gap-2 mt-2" aria-label="parent 显示深度">
-      <Button size="sm" variant="secondary" aria-label="减少 parent 深度" isDisabled={depth === 0} onPress={() => changeDepth(-1)}>−</Button>
+      <Button isIconOnly size="sm" variant="secondary" aria-label="减少 parent 深度" isDisabled={depth === 0} onPress={() => changeDepth(-1)}><Minus size={16} aria-hidden="true" /></Button>
       <span>parent 深度：{depth}</span>
-      <Button size="sm" variant="secondary" aria-label="增加 parent 深度" isDisabled={depth === maximum} onPress={() => changeDepth(1)}>+</Button>
+      <Button isIconOnly size="sm" variant="secondary" aria-label="增加 parent 深度" isDisabled={depth === maximum} onPress={() => changeDepth(1)}><Plus size={16} aria-hidden="true" /></Button>
     </div>
     {parents.slice(0, depth).map(parent => <p key={parent.expression} data-parent={parent.expression}><RustCode>{parent.expression}</RustCode>：<RustCode>{parent.value}</RustCode></p>)}
   </>

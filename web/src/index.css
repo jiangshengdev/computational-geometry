@@ -3,6 +3,7 @@
 
 :root {
   --tooltip-delay: 0ms;
+  font-variant-numeric: tabular-nums;
 }
 
 @layer base {
