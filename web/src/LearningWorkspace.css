@@ -69,6 +69,15 @@
   .learning-center {
     --learning-column-width: calc((100% - 32px) / var(--learning-column-total));
     grid-template-columns: round(nearest, calc(var(--learning-column-width) * var(--learning-drawing-weight)), 1px) round(nearest, calc(var(--learning-column-width) * var(--learning-code-weight)), 1px) minmax(0, 1fr);
+    grid-template-areas: "drawing code variables";
+  }
+  .learning-center > .drawing { grid-area: drawing; }
+  .learning-center > .learning-code { grid-area: code; }
+  .learning-center > .learning-variables { grid-area: variables; }
+  .learning-view:not([data-zen-mode="true"]) > .learning-workspace:has(> .learning-dock[data-expanded="true"]) > .learning-center {
+    grid-template-columns: calc(round(nearest, calc(var(--learning-column-width) * (var(--learning-drawing-weight) + var(--learning-code-weight))), 1px) + 16px) minmax(0, 1fr);
+    grid-template-areas: "drawing variables" "code variables";
+    grid-template-rows: minmax(22rem, 1fr) minmax(0, 1fr);
   }
 }
 
