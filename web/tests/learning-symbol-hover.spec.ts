@@ -1,4 +1,4 @@
-import { expect, test } from './learning-test'
+import { closePreview, expect, test } from './learning-test'
 import type { SweepTrace } from '../src/geometry'
 import { readResponse, readTrace, waitForTraceCompletion } from './trace-navigation'
 import { variableValue } from '../src/executionSymbols'
@@ -34,13 +34,11 @@ test('字段 hover 读取真实闭包参数，声明中的三个 p 均可查看�
   await y.hover()
   await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toContainText('类型：Rational')
   await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toContainText('当前值：2')
-  await page.keyboard.press('Escape')
-  await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toBeHidden()
+  await closePreview(page, page.getByRole('dialog', { name: /^访问 p.y / }))
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await panel.locator('[data-symbol="y"]').last().hover()
   await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toContainText('不可用')
-  await page.keyboard.press('Escape')
-  await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toBeHidden()
+  await closePreview(page, page.getByRole('dialog', { name: /^访问 p.y / }))
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await panel.locator('[data-symbol="y"]').last().hover()
   await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toContainText('当前值：2')
@@ -117,13 +115,11 @@ test('parent 深度保留详情，按钮与快捷键等效，切换重置并可�
   await page.keyboard.press('-')
   await expect(preview.locator('[data-parent]')).toHaveCount(0)
   await increase.click()
-  await page.keyboard.press('Escape')
-  await expect(preview).toBeHidden()
+  await closePreview(page, preview)
   await panel.locator('[data-symbol="slope"]').nth(1).hover()
   const other = page.getByRole('dialog', { name: /^访问 segments\[b\].slope / })
   await expect(other.locator('[data-parent]')).toHaveCount(0)
-  await page.keyboard.press('Escape')
-  await expect(other).toBeHidden()
+  await closePreview(page, other)
   await page.keyboard.press('+')
   await slope.hover()
   await expect(preview.locator('[data-parent]')).toHaveCount(0)
@@ -144,8 +140,7 @@ test('p.y 的 parent 跟随真实闭包前进回退，键盘进入浮层并关�
   await expect(preview.locator('[data-parent="p"]')).toHaveText('p：(2, 2)')
   await page.keyboard.press('Tab')
   await expect(preview.getByRole('button', { name: '减少 parent 深度' })).toBeFocused()
-  await page.keyboard.press('Escape')
-  await expect(preview).toBeHidden()
+  await closePreview(page, preview)
   // Replay may scroll the source to its boundary. PreviewTrigger deliberately
   // dismisses on anchor scrolling; reopen to inspect the new execution state.
   for (const [button, target, value] of [
@@ -158,8 +153,7 @@ test('p.y 的 parent 跟随真实闭包前进回退，键盘进入浮层并关�
     await expect(preview).toBeVisible()
     await preview.getByRole('button', { name: '增加 parent 深度' }).click()
     await expect(preview.locator('[data-parent="p"]')).toContainText(value)
-    await page.keyboard.press('Escape')
-    await expect(preview).toBeHidden()
+    await closePreview(page, preview)
   }
 })
 
@@ -184,7 +178,7 @@ test('事件映射在面板和悬浮提示中保留相同值', async ({ page }) 
   await page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="queue"]').hover()
   const code = page.getByRole('dialog', { name: /^变量 queue / }).locator('p').filter({ hasText: /^当前值：/ }).locator('code')
   await expect(code).toHaveText(text!)
-  await variables.getByRole('heading', { name: '核心变量', exact: true }).hover()
+  await closePreview(page, page.getByRole('dialog', { name: /^变量 queue / }))
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await expect(value).not.toContainText('(0, 0):')
 })
@@ -245,8 +239,7 @@ for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
       `实参 self：${formatExecutionValue(trace.values[previousResult.value!])}`,
       `实参 value：${value}`,
     ])
-    await variables.getByRole('heading', { name: '核心变量', exact: true }).hover()
-    await expect(tooltip).toBeHidden()
+    await closePreview(page, tooltip)
     await page.getByRole('button', { name: '上一步', exact: true }).click()
     await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(formatExecutionValue(trace.values[previousResult.value!]))
     await panel.locator('[data-symbol="push"]').hover()
@@ -274,8 +267,7 @@ test('真实取事件代码 hover 随前进和回退更新', async ({ page }) =>
   const entry = trace.steps.find(step => step.action === 'take-entry')!
   const queueValue = entry.execution.context.locals.find(variable => variable.name === 'queue')!
   await expect(page.getByRole('dialog', { name: /^变量 queue / })).toContainText(formatExecutionValue(trace.values[queueValue.value!]))
-  await page.keyboard.press('Escape')
-  await expect(page.getByRole('dialog', { name: /^变量 queue / })).toBeHidden()
+  await closePreview(page, page.getByRole('dialog', { name: /^变量 queue / }))
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await next.hover()
   await expect(variableTooltip).toContainText('(0, 0)')
@@ -283,15 +275,13 @@ test('真实取事件代码 hover 随前进和回退更新', async ({ page }) =>
   await pop.hover()
   await expect(popTooltip).toContainText('Some')
   await expect(popTooltip).not.toContainText('尚未调用')
-  await page.keyboard.press('Escape')
-  await expect(popTooltip).toBeHidden()
+  await closePreview(page, popTooltip)
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await next.hover()
   await expect(variableTooltip).toContainText('未赋值')
   await pop.hover()
   await expect(popTooltip).toContainText('返回值：未赋值')
-  await page.keyboard.press('Escape')
-  await expect(popTooltip).toBeHidden()
+  await closePreview(page, popTooltip)
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
   await expect(panel).toContainText('参与线段分类')
   await expect(panel.locator('[data-symbol="pop_first"]')).toHaveCount(0)
@@ -336,6 +326,7 @@ test('分类同名 id 按词法循环隔离，真实调用按行和函数展示�
       expect(argument.availability).toBe('available')
       await expect(callTooltip).toContainText(`实参 ${argument.name}：${trace.values[argument.value!]}`)
     }
+    await closePreview(page, callTooltip)
   }
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   const before = trace.steps[calculated - 1].execution.calls.find(call => call.line === 3 && call.function === 'y_at')
@@ -374,21 +365,20 @@ test('右侧顶层变量浮层与代码一致，支持键盘和前进回退', as
   await expect(tooltip).toBeHidden()
   await next.hover()
   await expect(tooltip).toHaveText(codeDescription, { useInnerText: true })
-  await page.keyboard.press('Escape')
-  await expect(tooltip).toBeHidden()
+  await closePreview(page, tooltip)
   await panel.getByRole('heading', { name: '核心变量', exact: true }).hover()
   await next.focus()
   await page.keyboard.press('Tab')
   await page.keyboard.press('Shift+Tab')
   await expect(next).toBeFocused()
   await expect(tooltip).toContainText('本次弹出的队首事件，可为空')
-  await page.keyboard.press('Escape')
-  await expect(tooltip).toBeHidden()
+  await closePreview(page, tooltip)
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await next.hover()
   const variable = trace.steps[index + 1].execution.context.locals.find(variable => variable.name === 'next')!
   await expect(tooltip).toContainText(`当前值：${variableValue(variable, trace.values)}`)
   await expect(tooltip).toContainText('本步变化；之前值：未赋值')
+  await closePreview(page, tooltip)
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await next.hover()
   await expect(tooltip).toContainText('当前值：未赋值')

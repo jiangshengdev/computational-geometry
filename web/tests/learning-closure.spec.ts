@@ -1,4 +1,4 @@
-import { expect, test } from './learning-test'
+import { closePreview, expect, test } from './learning-test'
 import { captureIntersections, seekStep, waitForTraceCompletion } from './trace-navigation'
 import type { TraceFrame } from '../src/geometry'
 
@@ -129,22 +129,18 @@ browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${brow
   const tooltip = page.getByRole('dialog')
   await activeBody.locator('[data-symbol="id"]').hover()
   await expect(tooltip).toContainText('不可用（当前作用域未提供）')
-  await page.keyboard.press('Escape')
-  await expect(tooltip).toBeHidden()
+  await closePreview(page, tooltip)
   await incidentBody.locator('[data-symbol="id"]').hover()
   const parameter = trace.steps[incidentEntry].execution.context.parameters.find(variable => variable.name === 'id')!
   await expect(tooltip.locator('[data-value-phase="current"]')).toHaveText(`当前值：${trace.values[parameter.value!]}`)
-  await page.keyboard.press('Escape')
-  await expect(tooltip).toBeHidden()
+  await closePreview(page, tooltip)
   await lines.filter({ hasText: /^incident\.retain/ }).locator('[data-symbol="incident"]').hover()
   await expect(tooltip).toContainText('Vec<usize>')
   await expect(tooltip.locator('[data-value-phase="current"]')).not.toContainText('不可用')
-  await page.keyboard.press('Escape')
-  await expect(tooltip).toBeHidden()
+  await closePreview(page, tooltip)
   await lines.filter({ hasText: /^active\.retain/ }).first().locator('[data-symbol="retain"]').hover()
   await expect(tooltip.getByText(/^调用表达式：/)).toContainText('segments[id].right != point')
-  await page.keyboard.press('Escape')
-  await expect(tooltip).toBeHidden()
+  await closePreview(page, tooltip)
   await code.getByRole('img', { name: /执行边界/ }).scrollIntoViewIfNeeded()
   expect(errors).toEqual([])
 })

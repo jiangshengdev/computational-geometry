@@ -1,4 +1,4 @@
-import { expect, test, type Locator, type Page } from './learning-test'
+import { closePreview, expect, test, type Locator, type Page } from './learning-test'
 import { readTrace, stepIndex, waitForTraceCompletion } from './trace-navigation'
 
 async function openStep(page: Page, preset: string, index: number) {
@@ -9,14 +9,14 @@ async function openStep(page: Page, preset: string, index: number) {
   return panel
 }
 
-async function hoverControl(page: Page, panel: Locator, keyword: string, line: number, expected: string) {
+async function hoverControl(page: Page, panel: Locator, keyword: string, line: number, expected: string | string[]) {
   const target = panel.locator(`[data-symbol="${keyword}"][data-line="${line}"]`)
   await target.hover()
   await expect(target).toHaveAttribute('aria-describedby', /\S+/)
   const tooltipId = await target.getAttribute('aria-describedby')
   const tooltip = page.locator(`[role="dialog"][id="${tooltipId}"]`)
-  await expect(tooltip).toContainText(expected)
-  return tooltip
+  for (const text of [expected].flat()) await expect(tooltip).toContainText(text)
+  await closePreview(page, tooltip)
 }
 
 async function expectNextStatement(panel: Locator, statement: string) {
@@ -62,6 +62,7 @@ test('末次缺失邻居先停continue前，再直接退出for且清除本轮判
   await hoverControl(page, panel, 'continue', 4, '即将执行；结果尚未产生')
   await panel.locator('[data-symbol="get"]').hover()
   await expect(page.getByRole('dialog', { name: /^函数 get / })).toContainText('返回值：None')
+  await closePreview(page, page.getByRole('dialog', { name: /^函数 get / }))
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await hoverControl(page, panel, 'continue', 4, '已执行 continue，跳往下一次迭代')
   await hoverControl(page, panel, 'for', 3, '本次没有下一个元素，循环已结束')
@@ -104,9 +105,9 @@ test('提前return的前后停点保留实际返回位置，未调用函数不�
   await hoverControl(page, panel, 'return', 8, '本次尚未执行')
   await panel.locator('[data-symbol="intersection_candidate"]').hover()
   await expect(page.getByRole('dialog', { name: /^函数 intersection_candidate / })).toContainText('返回值：None')
+  await closePreview(page, page.getByRole('dialog', { name: /^函数 intersection_candidate / }))
   await page.getByRole('button', { name: '下一步', exact: true }).click()
-  const returned = await hoverControl(page, panel, 'return', 4, '已执行 return，函数已返回')
-  await expect(returned).toContainText('返回值：None')
+  await hoverControl(page, panel, 'return', 4, ['已执行 return，函数已返回', '返回值：None'])
   const height = await returns.nth(1).evaluate(line => line.getBoundingClientRect().height)
   expect(await alignment()).toBeCloseTo(height, 0)
   await hoverControl(page, panel, 'return', 8, '本次尚未执行')

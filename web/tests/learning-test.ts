@@ -1,6 +1,11 @@
-import { test as base, type BrowserContext } from '@playwright/test'
+import { expect, test as base, type BrowserContext, type Locator, type Page } from '@playwright/test'
 
 export { expect, type Locator, type Page } from '@playwright/test'
+
+export async function closePreview(page: Page, preview: Locator) {
+  await page.keyboard.press('Escape')
+  await expect(preview).toBeHidden()
+}
 
 // Existing teaching tests exercise content with pinned panels. Fresh-user and
 // persistence behavior is tested separately in learning-docks/learning-columns.
