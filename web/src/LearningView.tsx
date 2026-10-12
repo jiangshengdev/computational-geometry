@@ -1,4 +1,4 @@
-import { Fragment, useId, useRef, useState, type ReactNode } from 'react'
+import { Fragment, useId, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { ArrowLeft, ArrowRight, CircleHelp, Crosshair, ListOrdered, ListTree, Waypoints } from 'lucide-react'
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, samePoint, type Point, type Preset, type SweepTrace } from './geometry'
@@ -19,11 +19,13 @@ import { usePageShortcut } from './usePageShortcut'
 import { ExecutionPanel, ExecutionVariablesPanel } from './ExecutionPanel'
 import { LearningDock } from './LearningDock'
 import { executionNavigation } from './executionNavigation'
+import { learningLayouts, type LearningLayout } from './learningLayout'
 
 
-export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry, children, zenMode }: {
-  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void; children: ReactNode; zenMode: boolean
+export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry, children, zenMode, layout }: {
+  preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void; children: ReactNode; zenMode: boolean; layout: LearningLayout
 }) {
+  const [drawingWeight, codeWeight, variablesWeight] = learningLayouts[layout]
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const keyboardScrub = useRef(false)
   const keyboardStep = useRef<number | null>(null)
@@ -254,7 +256,11 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
         { id: 'participants', name: '同点参与线段', icon: Waypoints, content: participants },
         { id: 'active', name: '活动线段顺序', icon: ListOrdered, content: activeSegments },
       ]} />
-      <div className="learning-center">
+      <div className="learning-center" style={{
+        '--learning-column-total': drawingWeight + codeWeight + variablesWeight,
+        '--learning-drawing-weight': drawingWeight,
+        '--learning-code-weight': codeWeight,
+      } as CSSProperties}>
         <GeometryView key={run} segments={preset.segments} results={step.results} selected={null} hoverTarget={hover} preserveViewKey={zenMode}
           highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights ?? (recordedOverlap ? hoverHighlights({ kind: 'pair', pair: pairName(recordedOverlap) }, step.results) : null)} onHover={setHover}
           sweep={{ step: index, current: step.current, side: eventSide(geometryStep, trace.steps[geometryIndex + 1]), participants: [...step.starts, ...step.ends, ...step.passes], active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
