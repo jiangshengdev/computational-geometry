@@ -1,6 +1,7 @@
-import { useRef, useState, type PointerEvent, type ReactNode, type RefObject } from 'react'
+import { useRef, type PointerEvent, type ReactNode, type RefObject } from 'react'
 import { Tooltip } from '@heroui/react/tooltip'
 import { Disclosure } from '@heroui/react/disclosure'
+import { TooltipTriggerStateContext } from 'react-aria-components/Tooltip'
 import type { ExecutionContext, ExecutionVariable, ExecutionVariableKind, SweepStep } from './geometry'
 import { controlDescription, functions, hasVariableValue, panelVariableDetails, scopedVariable, symbolScope, variableDetails, variableValue } from './executionSymbols'
 import { RustCode } from './RustCode'
@@ -28,20 +29,22 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, discl
   children: ReactNode; content: ReactNode; disclosure?: boolean
   anchor?: RefObject<Element | null>
 }) {
-  const [open, setOpen] = useState(false)
-  const triggerProps = {
-    onPointerMove: (event: PointerEvent<HTMLElement>) => {
-      // The first pointerenter after navigation precedes React Aria's modality
-      // update. Actual movement over the symbol must still open its tooltip.
-      if (event.pointerType !== 'touch') setOpen(true)
-    },
-    onPointerLeave: () => setOpen(false),
-    'data-symbol': name, 'data-line': line, 'data-occurrence': occurrence, 'aria-label': label,
-  }
-  return <Tooltip delay={150} closeDelay={0} isOpen={open} onOpenChange={setOpen}>
-    {disclosure
-      ? <Disclosure.Trigger {...triggerProps} className="flex w-full items-start gap-2 text-left">{children}</Disclosure.Trigger>
-      : <Tooltip.Trigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</Tooltip.Trigger>}
+  return <Tooltip delay={150} closeDelay={0}>
+    <TooltipTriggerStateContext.Consumer>{state => {
+      const triggerProps = {
+        onPointerMove: (event: PointerEvent<HTMLElement>) => {
+          // The first pointerenter after navigation precedes React Aria's modality
+          // update. Use its state API so movement still respects opening delays
+          // and pressing the trigger can cancel a pending tooltip.
+          if (event.pointerType !== 'touch' && event.buttons === 0) state!.open()
+        },
+        onPointerLeave: () => state!.close(true),
+        'data-symbol': name, 'data-line': line, 'data-occurrence': occurrence, 'aria-label': label,
+      }
+      return disclosure
+        ? <Disclosure.Trigger {...triggerProps} className="flex w-full items-start gap-2 text-left">{children}</Disclosure.Trigger>
+        : <Tooltip.Trigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</Tooltip.Trigger>
+    }}</TooltipTriggerStateContext.Consumer>
     <Tooltip.Content className="execution-symbol-tooltip" placement="bottom" triggerRef={anchor}>
       {content}
     </Tooltip.Content>
