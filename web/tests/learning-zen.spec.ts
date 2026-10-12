@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
-import { expectEqualColumns } from './learning-layout'
+import { expectLearningColumns } from './learning-layout'
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
@@ -19,7 +19,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const center = page.locator('.learning-center')
     await expect(toggle).not.toBeChecked()
     await page.getByRole('button', { name: '展开左侧辅助栏' }).click()
-    await expectEqualColumns(page)
+    await expectLearningColumns(page)
     await page.getByRole('button', { name: '放大', exact: true }).click()
     const geometry = page.locator('g[data-layer="geometry"]')
     await expect(geometry).toHaveAttribute('transform', /scale\(1.4\)/)
@@ -32,7 +32,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(geometry).toHaveAttribute('transform', transform)
     await expect.poll(async () => (await center.boundingBox())!.width).toBeGreaterThan(original.width)
     await expect.poll(async () => (await center.boundingBox())!.height).toBeGreaterThan(original.height)
-    await expectEqualColumns(page)
+    await expectLearningColumns(page)
     await page.screenshot({ path: join(tmpdir(), `bo-zen-${browserName}-desktop.png`) })
     await page.keyboard.press('z')
     await expect(toggle).not.toBeChecked()
@@ -40,7 +40,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(right).toHaveAttribute('data-expanded', 'false')
     await expect(controls).toBeVisible()
     await expect.poll(async () => (await center.boundingBox())!).toEqual(original)
-    await expectEqualColumns(page)
+    await expectLearningColumns(page)
     await expect(geometry).toHaveAttribute('transform', transform)
     await page.keyboard.down('z')
     await page.keyboard.down('z')

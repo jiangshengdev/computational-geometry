@@ -1,7 +1,7 @@
 import { expect, test, type Locator } from '@playwright/test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
-import { expectEqualColumns } from './learning-layout'
+import { expectLearningColumns } from './learning-layout'
 
 async function box(locator: Locator) {
   await expect(locator).toBeVisible()
@@ -73,13 +73,13 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.goto('/cases/multiway-endpoints/learn')
     await expect(page.getByRole('button', { name: '收起左侧辅助栏', exact: true })).toBeVisible()
   })
-  browserTest(`画布代码变量等宽三栏与统一回放 ${browserName}`, async ({ page }) => {
+  browserTest(`画布代码变量1:2:2三栏与统一回放 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/cases/crossing/learn?step=1')
     const geometry = page.getByRole('region', { name: '几何视图', exact: true })
     const code = page.getByRole('region', { name: '核心代码回放', exact: true })
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
-    await expectEqualColumns(page)
+    await expectLearningColumns(page)
     const codeBox = await box(code)
     const controls = page.getByRole('region', { name: '回放控制', exact: true })
     expect((await box(controls)).y).toBeGreaterThanOrEqual(codeBox.y + codeBox.height)

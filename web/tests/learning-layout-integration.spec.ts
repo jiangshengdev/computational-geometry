@@ -2,7 +2,7 @@ import { expect, test, type Locator } from '@playwright/test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { readTrace } from './trace-navigation'
-import { expectEqualColumns } from './learning-layout'
+import { expectLearningColumns } from './learning-layout'
 
 async function box(locator: Locator) {
   await expect(locator).toBeVisible()
@@ -83,25 +83,25 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.screenshot({ path: join(tmpdir(), `bo-dock-${browserName}-${width}.png`) })
   })
 
-  browserTest(`侧栏记忆与固定三栏等宽 ${browserName}`, async ({ page }) => {
+  browserTest(`侧栏记忆与固定三栏1:2:2 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/cases/crossing/learn?step=1')
-    await expectEqualColumns(page)
+    await expectLearningColumns(page)
     await expect(page).toHaveURL(/step=1$/)
     for (const side of ['左', '右']) {
       await page.getByRole('button', { name: `展开${side}侧辅助栏`, exact: true }).click()
-      await expectEqualColumns(page)
+      await expectLearningColumns(page)
     }
     await page.reload()
     for (const side of ['左', '右']) await expect(page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true })).toBeVisible()
-    await expectEqualColumns(page)
+    await expectLearningColumns(page)
     await page.getByRole('link', { name: '返回列表', exact: true }).click()
     await page.locator('a[href="/cases/multiway-endpoints/learn"]').click()
     for (const side of ['左', '右']) await expect(page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true })).toBeVisible()
-    await expectEqualColumns(page)
+    await expectLearningColumns(page)
     for (const side of ['左', '右']) {
       await page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true }).click()
-      await expectEqualColumns(page)
+      await expectLearningColumns(page)
       await expect(page.getByRole('button', { name: '下一步', exact: true })).toBeInViewport()
     }
     await page.screenshot({ path: join(tmpdir(), `bo-layout-${browserName}.png`) })

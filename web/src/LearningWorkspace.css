@@ -65,8 +65,8 @@
   .learning-workspace:has(> .learning-dock-left[data-expanded="true"]) { --learning-left-width: var(--learning-sidebar-width); }
   .learning-workspace:has(> .learning-dock-right[data-expanded="true"]) { --learning-right-width: var(--learning-sidebar-width); }
   .learning-center {
-    --learning-column-width: calc((100% - 32px) / 3);
-    grid-template-columns: repeat(2, round(nearest, var(--learning-column-width), 1px)) minmax(0, 1fr);
+    --learning-column-width: calc((100% - 32px) / 5);
+    grid-template-columns: round(nearest, var(--learning-column-width), 1px) round(nearest, calc(var(--learning-column-width) * 2), 1px) minmax(0, 1fr);
   }
 }
 
