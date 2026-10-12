@@ -154,6 +154,13 @@ struct ExecutionDto {
     returning: bool,
     calls: Vec<ExecutionCallDto>,
     controls: Vec<ExecutionControlDto>,
+    blocks: Vec<ExecutionBlockDto>,
+}
+
+#[derive(Serialize)]
+struct ExecutionBlockDto {
+    line: usize,
+    phase: &'static str,
 }
 
 #[derive(Serialize)]
@@ -231,6 +238,14 @@ impl ExecutionDto {
             module: execution.module,
             boundary: execution.boundary,
             entry: execution.entry,
+            blocks: execution
+                .blocks
+                .into_iter()
+                .map(|block| ExecutionBlockDto {
+                    line: block.line,
+                    phase: block.phase,
+                })
+                .collect(),
             controls: execution
                 .controls
                 .into_iter()

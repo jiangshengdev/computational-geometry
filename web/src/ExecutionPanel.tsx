@@ -116,7 +116,10 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
             })()}
           </code><span className="execution-boundary" role="img" aria-label={`执行边界：${take ? step.execution.boundary === 0 ? '取事件之前' : step.execution.boundary === 1 ? '匹配之前' : step.execution.boundary === 3 ? 'break 之前' : step.execution.boundary === 4 ? 'break 之后' : '模块结束' : `${module.title} ${step.execution.boundary}`}`}><ArrowRight aria-hidden="true" /></span></pre> : <p role="status">加载教学代码…</p>}
         </div>
-        <p className="execution-status text-sm text-muted" aria-live="polite">{step.execution.returning ? '返回值已产生 · 尚未恢复调用方' : step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : step.execution.boundary === 2 ? '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}</p>
+        <p className="execution-status text-sm text-muted" aria-live="polite">{step.execution.returning ? '返回值已产生 · 尚未恢复调用方' : step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : step.execution.boundary === 2 ? '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}{step.execution.blocks.map(block => {
+          const keyword = step.execution.controls.find(control => control.line === block.line && ['if', 'else', 'for'].includes(control.keyword))?.keyword
+          return <span key={`${block.line}:${block.phase}`}> · {keyword} 块结束{block.phase === 'before' ? '前' : '后'}</span>
+        })}</p>
       </div> : <p className="text-sm">当前模块仅提供大步观察点，尚未细化为核心代码小步。</p>}
     </CardContent>
   </Card></section>

@@ -53,6 +53,45 @@ test('分类真假分支在块外汇合，if hover保留本次判断且回退恢
   expect(errors).toEqual([])
 })
 
+test('已进入的分支在结束括号前后停步，未进入分支不制造块尾状态', async ({ page }) => {
+  const trace = await readTrace(page, 'crossing')
+  const index = stepIndex(trace, step => step.execution.module === 'geometry' && step.execution.blocks?.some(block => block.line === 5 && block.phase === 'before'))
+  const panel = await openStep(page, 'crossing', index)
+  await expectNextStatement(panel, '}')
+  await expect(page.getByRole('region', { name: '当前执行上下文' }).getByTestId('variable-return_value')).toContainText('未赋值')
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await expectNextStatement(panel, 'return Some(point);')
+  await hoverControl(page, panel, 'return', 8, '即将执行；结果尚未产生')
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await expectNextStatement(panel, '}')
+  for (const step of trace.steps) {
+    for (const block of step.execution.blocks ?? []) {
+      const control = step.execution.controls.find(control => control.line === block.line && ['if', 'else', 'for'].includes(control.keyword))
+      expect(control?.state).toMatch(/^(true|entered)$/)
+    }
+  }
+})
+
+test('条件表达式离开分支后保留局部变量身份，面板与hover均不可用', async ({ page }) => {
+  const trace = await readTrace(page, 'partial-overlap')
+  const before = stepIndex(trace, step => step.execution.module === 'record' && step.execution.blocks?.some(block => block.line === 4 && block.phase === 'before'))
+  const after = stepIndex(trace, (step, index) => index > before && step.execution.module === 'record' && step.execution.blocks?.some(block => block.line === 4 && block.phase === 'after'))
+  const variables = (index: number) => trace.steps[index].execution.context.locals
+  for (const name of ['start', 'end']) {
+    expect(variables(before).find(variable => variable.name === name)).toMatchObject({ availability: 'available', scope: 'record.overlap' })
+    expect(variables(after).find(variable => variable.name === name)).toMatchObject({ availability: 'unavailable', value: null, scope: 'record.overlap' })
+  }
+  expect(variables(before).find(variable => variable.name === 'geometry')?.availability).toBe('unassigned')
+  const panel = await openStep(page, 'partial-overlap', after)
+  for (const name of ['start', 'end']) {
+    await expect(page.getByRole('region', { name: '核心变量', exact: true }).getByTestId(`variable-${name}`)).toContainText('不可用')
+    await panel.locator(`[data-symbol="${name}"]`).first().hover()
+    const dialog = page.getByRole('dialog', { name: new RegExp(`^变量 ${name} `) })
+    await expect(dialog).toContainText('不可用')
+    await closePreview(page, dialog)
+  }
+})
+
 test('末次缺失邻居先停continue前，再直接退出for且清除本轮判断与返回值', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const index = stepIndex(trace, step => step.execution.module === 'neighbors' && step.execution.boundary === 7)

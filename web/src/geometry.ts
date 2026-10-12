@@ -30,6 +30,7 @@ export interface ExecutionState {
   boundary: number | null
   entry: boolean
   controls: ExecutionControl[]
+  blocks: { line: number; phase: 'before' | 'after' }[]
   calls: { line: number; function: string; occurrence: number; arguments: ExecutionVariable[]; result: ExecutionVariable }[]
   context: ExecutionContext
   outer: ExecutionContext[]

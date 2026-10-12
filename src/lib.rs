@@ -330,6 +330,13 @@ pub(crate) struct Execution {
     pub(crate) returning: bool,
     pub(crate) calls: Vec<ExecutionCall>,
     pub(crate) controls: Vec<ExecutionControl>,
+    pub(crate) blocks: Vec<ExecutionBlock>,
+}
+
+#[derive(Clone)]
+pub(crate) struct ExecutionBlock {
+    pub(crate) line: usize,
+    pub(crate) phase: &'static str,
 }
 
 #[derive(Clone)]
@@ -444,6 +451,7 @@ impl ClosureTrace {
         current.execution.entry = false;
         current.execution.calls.clear();
         current.execution.controls.clear();
+        current.execution.blocks.clear();
         current
             .execution
             .outer
@@ -608,6 +616,25 @@ fn event_value(event: &Event) -> String {
 }
 
 impl SweepStep {
+    fn block_before(steps: &mut Vec<Self>, boundary: usize, line: usize) {
+        let mut before = steps.last().expect("block operation was captured").clone();
+        before.execution.boundary = Some(boundary);
+        before.execution.blocks = vec![ExecutionBlock {
+            line,
+            phase: "before",
+        }];
+        steps.insert(steps.len() - 1, before);
+    }
+
+    fn block_after(steps: &mut Vec<Self>, line: usize) {
+        let mut after = steps.last().expect("block successor was captured").clone();
+        after.execution.blocks = vec![ExecutionBlock {
+            line,
+            phase: "after",
+        }];
+        steps.insert(steps.len() - 1, after);
+    }
+
     fn capture(
         action: &'static str,
         current: Option<&Point>,
@@ -624,6 +651,7 @@ impl SweepStep {
                 returning: false,
                 calls: Vec::new(),
                 controls: Vec::new(),
+                blocks: Vec::new(),
                 module: action,
                 boundary: None,
                 entry: false,
@@ -1205,6 +1233,14 @@ fn sweep(
                 }
             };
         }
+        macro_rules! block_end {
+            ($boundary:expr, $line:expr) => {
+                if let Some(steps) = &mut steps {
+                    SweepStep::block_before(steps, $boundary, $line);
+                    SweepStep::block_after(steps, $line);
+                }
+            };
+        }
         observe!(
             "classify",
             0,
@@ -1377,6 +1413,7 @@ fn sweep(
                     ],
                     Variable::available("return_value", "()", "()".to_owned())
                 );
+                block_end!(18, 4);
             } else {
                 classify!(5, Some(id), None);
                 control!(4, "if", "false");
@@ -1390,6 +1427,17 @@ fn sweep(
                     )],
                     Variable::available("return_value", "bool", equal.to_string())
                 );
+            }
+            if let Some(steps) = &mut steps {
+                steps
+                    .last_mut()
+                    .expect("loop body completion exists")
+                    .execution
+                    .blocks
+                    .push(ExecutionBlock {
+                        line: 2,
+                        phase: "before",
+                    });
             }
             classify!(16, None, None);
             reset_controls!(2);
@@ -1433,6 +1481,7 @@ fn sweep(
                         ],
                         Variable::available("return_value", "()", "()".to_owned())
                     );
+                    block_end!(19, 9);
                 } else {
                     classify!(10, Some(id), Some((&starts, &ends, &passes)));
                     control!(9, "if", "false");
@@ -1462,6 +1511,7 @@ fn sweep(
                         ],
                         Variable::available("return_value", "()", "()".to_owned())
                     );
+                    block_end!(20, 11);
                 } else {
                     classify!(12, Some(id), Some((&starts, &ends, &passes)));
                     control!(11, "if", "false");
@@ -1491,9 +1541,21 @@ fn sweep(
                         ],
                         Variable::available("return_value", "()", "()".to_owned())
                     );
+                    block_end!(21, 13);
                 } else {
                     classify!(14, Some(id), Some((&starts, &ends, &passes)));
                     control!(13, "if", "false");
+                }
+                if let Some(steps) = &mut steps {
+                    steps
+                        .last_mut()
+                        .expect("loop body completion exists")
+                        .execution
+                        .blocks
+                        .push(ExecutionBlock {
+                            line: 8,
+                            phase: "before",
+                        });
                 }
                 classify!(17, None, Some((&starts, &ends, &passes)));
                 reset_controls!(8);
@@ -1550,7 +1612,7 @@ fn sweep(
                             ));
                         }
                         let in_pair = indices.is_some_and(|indices| indices.2.is_some());
-                        locals.push(if in_pair && matches!($boundary, 3..=14) {
+                        locals.push(if in_pair && matches!($boundary, 3..=14 | 19..=22) {
                             Variable::available(
                                 "original",
                                 "closure",
@@ -1584,7 +1646,7 @@ fn sweep(
                                 Variable::absent(
                                     "geometry",
                                     "Geometry",
-                                    if matches!($boundary, 0..=12) {
+                                    if matches!($boundary, 0..=12 | 19..=22) {
                                         "unassigned"
                                     } else {
                                         "unavailable"
@@ -1599,6 +1661,14 @@ fn sweep(
                                 )
                             },
                         ));
+                        for variable in &mut locals {
+                            variable.scope = match variable.name {
+                                "i" | "a" => Some("record.incident"),
+                                "b" | "original" | "geometry" => Some("record.pair"),
+                                "start" | "end" => Some("record.overlap"),
+                                _ => variable.scope,
+                            };
+                        }
                         locals
                     }
                 );
@@ -1714,7 +1784,7 @@ fn sweep(
                         ],
                         Variable::available("return_value", "&Point", point_value(end))
                     );
-                    if start < end {
+                    let branch_geometry = if start < end {
                         record!(9, Some((i, a, Some(b))), (Some(start), Some(end)), None);
                         control!(9, "if", "true");
                         control!(11, "else", "skipped");
@@ -1733,10 +1803,23 @@ fn sweep(
                             "Point"
                         );
                         original_line = 10;
-                        Geometry::Overlap {
+                        let value = Geometry::Overlap {
                             start: original(start, &mut steps),
                             end: original(end, &mut steps),
+                        };
+                        record!(19, Some((i, a, Some(b))), (Some(start), Some(end)), None);
+                        if let Some(steps) = &mut steps {
+                            steps
+                                .last_mut()
+                                .expect("branch completion exists")
+                                .execution
+                                .blocks
+                                .push(ExecutionBlock {
+                                    line: 9,
+                                    phase: "before",
+                                });
                         }
+                        value
                     } else {
                         record!(10, Some((i, a, Some(b))), (Some(start), Some(end)), None);
                         control!(9, "if", "false");
@@ -1749,8 +1832,35 @@ fn sweep(
                             "Point"
                         );
                         original_line = 11;
-                        Geometry::Point(original(start, &mut steps))
+                        let value = Geometry::Point(original(start, &mut steps));
+                        record!(20, Some((i, a, Some(b))), (Some(start), Some(end)), None);
+                        if let Some(steps) = &mut steps {
+                            steps
+                                .last_mut()
+                                .expect("branch completion exists")
+                                .execution
+                                .blocks
+                                .push(ExecutionBlock {
+                                    line: 11,
+                                    phase: "before",
+                                });
+                        }
+                        value
+                    };
+                    record!(21, Some((i, a, Some(b))), (Some(start), Some(end)), None);
+                    if let Some(steps) = &mut steps {
+                        steps
+                            .last_mut()
+                            .expect("branch completion exists")
+                            .execution
+                            .blocks
+                            .push(ExecutionBlock {
+                                line: 4,
+                                phase: "before",
+                            });
+                        SweepStep::block_after(steps, if start < end { 9 } else { 11 });
                     }
+                    branch_geometry
                 } else {
                     record!(11, Some((i, a, Some(b))), (None, None), None);
                     control!(4, "if", "false");
@@ -1762,7 +1872,20 @@ fn sweep(
                         vec![Variable::available("p", "&Point", point_value(&point))],
                         "Point"
                     );
-                    Geometry::Point(original(&point, &mut steps))
+                    let value = Geometry::Point(original(&point, &mut steps));
+                    record!(22, Some((i, a, Some(b))), (None, None), None);
+                    if let Some(steps) = &mut steps {
+                        steps
+                            .last_mut()
+                            .expect("branch completion exists")
+                            .execution
+                            .blocks
+                            .push(ExecutionBlock {
+                                line: 12,
+                                phase: "before",
+                            });
+                    }
+                    value
                 };
                 record!(13, Some((i, a, Some(b))), (None, None), Some(&geometry));
                 if let Some(steps) = &mut steps {
@@ -1819,6 +1942,16 @@ fn sweep(
                     ],
                     "()"
                 );
+                if let Some(steps) = &mut steps {
+                    SweepStep::block_after(
+                        steps,
+                        if segments[a].slope == segments[b].slope {
+                            4
+                        } else {
+                            12
+                        },
+                    );
+                }
                 let lower_id = a.min(b);
                 let upper_id = a.max(b);
                 let intersection = Intersection {
@@ -2753,7 +2886,20 @@ fn sweep(
                             }
                         }
                     }
+                    if boundary == 6 {
+                        step.execution.blocks.push(ExecutionBlock {
+                            line: 5,
+                            phase: "before",
+                        });
+                    }
+                    let completed_if = boundary == 7
+                        && step.execution.controls.iter().any(|control| {
+                            control.line == 5 && control.keyword == "if" && control.state == "true"
+                        });
                     steps.push(step);
+                    if completed_if {
+                        SweepStep::block_after(steps, 5);
+                    }
                 }
             };
             let observer: Option<&mut NeighborObserver<'_>> =

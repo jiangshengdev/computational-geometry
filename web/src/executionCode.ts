@@ -62,7 +62,7 @@ export const teachingModules: Record<string, TeachingModule> = {
     '    // 把交点加入待处理队列，已有事件则保留\n    queue.entry(point.clone()).or_default();',
     '}',
     '// 返回本次找到的候选交点\nreturn Some(point);',
-  ], [[1], [2], [3], [4], [5], [6], [8], [8], [9], [1, 1], [4, 1], [1, 2], [4, 2]]),
+  ], [[1], [2], [3], [4], [5], [6], [7], [8], [9], [1, 1], [4, 1], [1, 2], [4, 2]]),
   activity: teachingModule('活动集合更新', [
     { closure: 'retain-end', code: '// 从活动集合中移除在当前点结束的线段\nactive.retain(|&id| {\n    // 判断这条线段是否还会继续向前延伸\n    segments[id].right != point\n});' },
     { closure: 'retain-height', code: '// 暂时移除经过当前点的线段，稍后重新排序插入\nactive.retain(|&id| {\n    // 保留不经过当前点的线段\n    !height_order[id].is_eq()\n});' },
@@ -92,7 +92,7 @@ export const teachingModules: Record<string, TeachingModule> = {
     '    }\n    // 排除两端，判断当前点是否在线段内部\n    if segments[id].left != point && segments[id].right != point {',
     '        // 记入从中间经过当前点的线段\n        passes.push(id);',
     '    }\n}',
-  ], [[1], [2], [3], [4], [5], [6, 1], [7], [8], [9], [10], [11, 1], [12], [13, 1], [14], [15, 1], [16], [2], [8]]),
+  ], [[1], [2], [3], [4], [5], [6, 1], [7], [8], [9], [10], [11, 1], [12], [13, 1], [14], [15, 1], [16], [2], [8], [6], [11], [13], [15]]),
   record: teachingModule('配对与记录', [
     '// 依次选取一条经过当前点的线段\nfor (i, &a) in incident.iter().enumerate() {',
     '    // 只与后面的线段配对，避免重复记录同一对\n    for &b in &incident[i + 1..] {',
@@ -110,7 +110,7 @@ export const teachingModules: Record<string, TeachingModule> = {
     '        // 按编号从小到大保存线段对及其交集\n        result.push(Intersection { segments: [a.min(b), a.max(b)], geometry });',
     '    }',
     '}',
-  ], [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11, 2], [12, 2], [13], [14], [15], [16], [17], [2], [1]]),
+  ], [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11, 2], [12, 2], [13], [14], [15], [16], [17], [2], [1], [11], [11, 3], [12], [12, 3]]),
 }
 
 const closureModules = new Map(Object.values(teachingModules).flatMap(module => module.closures.map(closure => [closure.module, module] as const)))
