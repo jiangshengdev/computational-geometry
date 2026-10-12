@@ -1,26 +1,42 @@
+import type { ExecutionState, SweepStep } from './geometry'
+
+interface InlineClosure {
+  module: string
+  line: number
+  start: number
+  end: number
+  parameterColumn: number
+}
+
 export interface TeachingModule {
   title: string
   code: string
   traceLines: number[]
   boundaryLines: number[]
+  closures: InlineClosure[]
 }
 
-function teachingModule(title: string, operations: string[], stops: readonly (readonly [line: number, offset?: number])[]): TeachingModule {
+function teachingModule(title: string, operations: (string | { code: string; closure: string })[], stops: readonly (readonly [line: number, offset?: number])[]): TeachingModule {
+  const code = operations.map(operation => typeof operation === 'string' ? operation : operation.code)
   // Each entry retains one Rust trace line even when its display spans several lines.
-  const traceLines = operations.flatMap((code, index) => code.split('\n').map(() => index + 1))
+  const traceLines = code.flatMap((code, index) => code.split('\n').map(() => index + 1))
   // A stop names the next logical statement or a specific block boundary.
   // Source formatting changes display offsets, never control-flow identities.
   const starts = [0]
-  for (const code of operations) starts.push(starts[starts.length - 1] + code.split('\n').length)
+  for (const operation of code) starts.push(starts[starts.length - 1] + operation.split('\n').length)
   const boundaryLines = stops.map(([line, offset = 0]) => starts[line - 1] + offset)
-  return { title, code: operations.join('\n'), traceLines, boundaryLines }
+  const closures = operations.flatMap((operation, index) => typeof operation === 'string' ? [] : [{
+    module: operation.closure, line: index + 1, start: starts[index], end: starts[index + 1] - 1,
+    parameterColumn: operation.code.indexOf('|'),
+  }])
+  return { title, code: code.join('\n'), traceLines, boundaryLines, closures }
 }
 
 // Array positions are trace identities; formatting within an entry must not renumber them.
 export const teachingModules: Record<string, TeachingModule> = {
   neighbors: teachingModule('邻居检查', [
     'let mut checked = Vec::new();',
-    'let boundaries = [position.checked_sub(1), (inserted > 0).then(|| { position + inserted - 1 })];',
+    { closure: 'then', code: 'let boundaries = [position.checked_sub(1), (inserted > 0).then(|| {\n    position + inserted - 1\n})];' },
     'for lower in boundaries.into_iter().flatten() {',
     '    let Some(neighbors) = active.get(lower..lower + 2) else {\n        continue;\n    };',
     '    let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);',
@@ -37,44 +53,14 @@ export const teachingModules: Record<string, TeachingModule> = {
     'return Some(point);',
   ], [[1], [2], [3], [4], [5], [6], [8], [8], [9], [1, 1], [4, 1], [1, 2], [4, 2]]),
   activity: teachingModule('活动集合更新', [
-    'active.retain(|&id| { segments[id].right != point });',
-    'active.retain(|&id| { !height_order[id].is_eq() });',
-    'incident.retain(|&id| { segments[id].right != point });',
-    'incident.sort_by(|&a, &b| { segments[a].slope.cmp(&segments[b].slope) });',
-    'let position = active.partition_point(|&id| { height_order[id].is_lt() });',
+    { closure: 'retain-end', code: 'active.retain(|&id| {\n    segments[id].right != point\n});' },
+    { closure: 'retain-height', code: 'active.retain(|&id| {\n    !height_order[id].is_eq()\n});' },
+    { closure: 'retain-end', code: 'incident.retain(|&id| {\n    segments[id].right != point\n});' },
+    { closure: 'sort-by', code: 'incident.sort_by(|&a, &b| {\n    segments[a].slope.cmp(&segments[b].slope)\n});' },
+    { closure: 'partition-point', code: 'let position = active.partition_point(|&id| {\n    height_order[id].is_lt()\n});' },
     'let inserted = incident.len();',
     'active.splice(position..position, incident);',
   ], [[1], [2], [3], [4], [5], [6], [7], [8]]),
-  'retain-end': teachingModule('retain 端点判断闭包', [
-    '|&id| {',
-    '    segments[id].right != point',
-    '}',
-  ], [[2], [3]]),
-  'retain-height': teachingModule('retain 高度判断闭包', [
-    '|&id| {',
-    '    !height_order[id].is_eq()',
-    '}',
-  ], [[2], [3]]),
-  'sort-by': teachingModule('sort_by 比较闭包', [
-    '|&a, &b| {',
-    '    segments[a].slope.cmp(&segments[b].slope)',
-    '}',
-  ], [[2], [3]]),
-  'partition-point': teachingModule('partition_point 判断闭包', [
-    '|&id| {',
-    '    height_order[id].is_lt()',
-    '}',
-  ], [[2], [3]]),
-  then: teachingModule('then 索引计算闭包', [
-    '|| {',
-    '    position + inserted - 1',
-    '}',
-  ], [[2], [3]]),
-  original: teachingModule('original 坐标还原闭包', [
-    '|p| {',
-    '    Point { x: p.x - shear * p.y, y: p.y }',
-    '}',
-  ], [[2], [3]]),
   take: teachingModule('取事件', [
     'let next = queue.pop_first();',
     'let Some((point, event)) = next else {\n    break;\n};',
@@ -99,7 +85,7 @@ export const teachingModules: Record<string, TeachingModule> = {
   record: teachingModule('配对与记录', [
     'for (i, &a) in incident.iter().enumerate() {',
     '    for &b in &incident[i + 1..] {',
-    '        let original = |p| {\n            Point { x: p.x - shear * p.y, y: p.y }\n        };',
+    { closure: 'original', code: '        let original = |p| {\n            Point { x: p.x - shear * p.y, y: p.y }\n        };' },
     '        let geometry = if segments[a].slope == segments[b].slope {',
     '            let start = segments[a].left.max(segments[b].left);',
     '            if start != &point {',
@@ -114,4 +100,33 @@ export const teachingModules: Record<string, TeachingModule> = {
     '    }',
     '}',
   ], [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11, 2], [12, 2], [13], [14], [15], [16], [17], [2], [1]]),
+}
+
+const closureModules = new Map(Object.values(teachingModules).flatMap(module => module.closures.map(closure => [closure.module, module] as const)))
+
+// Navigation compares stops within a call, independently of where its code is displayed.
+export function executionBoundary(execution: ExecutionState) {
+  if (execution.boundary === null) return undefined
+  return closureModules.has(execution.module) ? execution.boundary : teachingModules[execution.module]?.boundaryLines[execution.boundary]
+}
+
+export function executionSource(steps: readonly SweepStep[], index: number) {
+  const step = steps[index]
+  const closureModule = closureModules.get(step.execution.module)
+  if (!closureModule) return {
+    module: teachingModules[step.execution.module], caller: step, closure: undefined,
+    boundaryLine: executionBoundary(step.execution) ?? 0,
+  }
+  const callerId = step.execution.outer.at(-1)!.id
+  let callerIndex = index - 1
+  while (callerIndex >= 0 && steps[callerIndex].execution.context.id !== callerId) callerIndex--
+  const caller = steps[callerIndex]
+  const callLine = closureModule.traceLines[executionBoundary(caller.execution)!]
+  const locations = closureModule.closures.filter(closure => closure.module === step.execution.module)
+  // retain-end occurs at two different statements; original is declared once
+  // and called from several later expressions. Match the actual call site only
+  // when a closure has more than one displayed definition.
+  const closure = locations.length === 1 ? locations[0] : locations.find(location => location.line === callLine)!
+  return { module: closureModule, caller, closure,
+    boundaryLine: step.execution.returning ? closure.end : closure.start + 1 }
 }

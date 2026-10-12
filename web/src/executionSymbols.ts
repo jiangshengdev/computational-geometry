@@ -49,8 +49,8 @@ export const functions: Record<string, { signature: string; purpose: string; par
 }
 
 export function callExpression(name: string, after: string) {
-  const open = after.indexOf('(')
-  if (open < 0) return name
+  const open = after.search(/\S/)
+  if (open < 0 || after[open] !== '(') return name
   let depth = 0
   for (let index = open; index < after.length; index++) {
     if (after[index] === '(') depth++

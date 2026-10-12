@@ -6,7 +6,7 @@ import { Tooltip } from '@heroui/react/tooltip'
 import { Disclosure } from '@heroui/react/disclosure'
 import type { ThemedToken } from 'shiki'
 import { formatRational, type ExecutionContext, type ExecutionVariable, type ExecutionVariableKind, type Rational, type SweepStep } from './geometry'
-import { teachingModules } from './executionCode'
+import { executionSource } from './executionCode'
 import { ExecutionSymbol, ExecutionVariableSymbol } from './ExecutionSymbol'
 import { RustCode as VariableCode } from './RustCode'
 import { tokenizeRust } from './rustHighlight'
@@ -22,16 +22,17 @@ function loadCode(code: string) {
   return highlighted
 }
 
-export function ExecutionPanel({ step, previous, values }: {
-  step: SweepStep; previous: SweepStep; values: string[]
+export function ExecutionPanel({ steps, index: stepIndex, values }: {
+  steps: readonly SweepStep[]; index: number; values: string[]
 }) {
+  const step = steps[stepIndex]
+  const previous = steps[Math.max(0, stepIndex - 1)]
   const [highlight, setHighlight] = useState<{ source: string; tokens: ThemedToken[][] } | null>(null)
   const [error, setError] = useState(false)
   const take = step.execution.module === 'take'
-  const module = teachingModules[step.execution.module]
+  const { module, caller, closure, boundaryLine } = executionSource(steps, stepIndex)
   const source = module?.code
   const tokens = highlight?.source === source ? highlight?.tokens : null
-  const boundaryLine = module && step.execution.boundary !== null ? module.boundaryLines[step.execution.boundary] : 0
   const scroll = useRef<HTMLDivElement>(null)
   useEffect(() => {
     let active = true
@@ -62,8 +63,11 @@ export function ExecutionPanel({ step, previous, values }: {
           {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code"><code>
             {(() => {
               const occurrences = new Map<string, number>()
+              let sourceOffset = 0
               return tokens.map((line, index) => {
               const text = line.map(token => token.content).join('')
+              const lineOffset = sourceOffset
+              sourceOffset += text.length + 1
               let offset = 0
               return <span className="code-line" key={index}>{line.map((token, tokenIndex) => {
                 const tokenStart = offset
@@ -73,10 +77,13 @@ export function ExecutionPanel({ step, previous, values }: {
                   const start = tokenStart + partOffset
                   partOffset += part.length
                   const kind = text.slice(0, start).includes('//') ? null : symbolKind(part, text.slice(0, start), text.slice(start + part.length))
-                  const key = `${module.traceLines[index]}:${part}`
+                  const inClosure = closure && index >= closure.start && index <= closure.end && (index !== closure.start || start >= closure.parameterColumn)
+                  const symbolStep = inClosure ? step : caller
+                  const line = inClosure ? index - closure.start + 1 : module.traceLines[index]
+                  const key = `${symbolStep.execution.module}:${line}:${part}`
                   const occurrence = occurrences.get(key) ?? 0
                   if (kind === 'function' || kind === 'control') occurrences.set(key, occurrence + 1)
-                  return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} line={module.traceLines[index]} displayLine={index + 1} occurrence={occurrence} module={step.execution.module} expression={callExpression(part, text.slice(start + part.length))} step={step} previous={previous} values={values}>{part}</ExecutionSymbol> : part
+                  return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} line={line} displayLine={index + 1} occurrence={occurrence} module={symbolStep.execution.module} expression={callExpression(part, module.code.slice(lineOffset + start + part.length))} step={symbolStep} previous={previous} values={values}>{part}</ExecutionSymbol> : part
                 })}</span>
               })}{'\n'}</span>
               })

@@ -12,6 +12,10 @@ test('si 进入真实 retain 调用，显示作用域、独立返回值并逐步
   const entry = trace.steps.findIndex(step => step.execution.context.function === 'retain closure' && !step.execution.returning)
   expect(entry).toBeGreaterThan(0)
   await seekStep(page, entry - 1, 'jump')
+  const code = page.getByRole('region', { name: '核心代码回放', exact: true })
+  const source = code.locator('.execution-code > code')
+  await expect(source).toContainText('active.splice')
+  const callerSource = await source.textContent()
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   const current = page.getByRole('region', { name: '当前执行上下文', exact: true })
   const outer = page.getByRole('region', { name: '外层执行上下文 sweep', exact: true })
@@ -20,7 +24,8 @@ test('si 进入真实 retain 调用，显示作用域、独立返回值并逐步
   await expect(current.getByTestId('variable-return_value')).toContainText('未赋值')
   await expect(current).toContainText('捕获变量')
   await expect(outer).toBeVisible()
-  const code = page.getByRole('region', { name: '核心代码回放', exact: true })
+  await expect(source).toHaveText(callerSource!)
+  expect(callerSource).toContain('active.retain(|&id| {\n    segments[id].right != point\n});')
   await expect(code).toContainText('segments[id].right != point')
   await expect(code).not.toContainText('nop!')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
@@ -56,6 +61,92 @@ test('其余闭包沿用真实参数、返回停点和外层作用域', async ({
     await expect(current.getByTestId('variable-return_value')).toContainText('未赋值')
   }
 })
+
+for (const { browserName, width } of [
+  { browserName: 'chromium', width: 1360 },
+  { browserName: 'firefox', width: 1360 },
+  { browserName: 'webkit', width: 1360 },
+  { browserName: 'webkit', width: 390 },
+] as const) {
+const browserTest = test.extend({ browserName, viewport: { width, height: 900 } })
+browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${browserName} ${width}`, async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
+  const capture = await captureIntersections(page)
+  await page.goto('/cases/crossing/learn')
+  const { trace } = await capture.result
+  await waitForTraceCompletion(page)
+  const code = page.getByRole('region', { name: '核心代码回放', exact: true })
+  const source = code.locator('.execution-code > code')
+  const examples = [
+    { module: 'retain-end', callerBoundary: 0, opening: 'active.retain(|&id| {', body: 'segments[id].right != point' },
+    { module: 'retain-height', callerBoundary: 1, opening: 'active.retain(|&id| {', body: '!height_order[id].is_eq()' },
+    { module: 'retain-end', callerBoundary: 2, opening: 'incident.retain(|&id| {', body: 'segments[id].right != point' },
+    { module: 'sort-by', callerBoundary: 3, opening: 'incident.sort_by(|&a, &b| {', body: 'segments[a].slope.cmp(&segments[b].slope)' },
+    { module: 'partition-point', callerBoundary: 4, opening: 'let position = active.partition_point(|&id| {', body: 'height_order[id].is_lt()' },
+    { module: 'then', callerBoundary: 1, opening: 'let boundaries = [position.checked_sub(1), (inserted > 0).then(|| {', body: 'position + inserted - 1' },
+    { module: 'original', opening: 'let original = |p| {', body: 'Point { x: p.x - shear * p.y, y: p.y }' },
+  ]
+  for (const example of examples) {
+    const entry = trace.steps.findIndex((step, index) => step.execution.module === example.module && !step.execution.returning &&
+      (example.callerBoundary === undefined || trace.steps[index - 1].execution.boundary === example.callerBoundary))
+    expect(entry, example.module).toBeGreaterThan(0)
+    await seekStep(page, entry - 1, 'jump')
+    await expect(source).toContainText(example.body)
+    const callerSource = await source.textContent()
+    expect(callerSource).toMatch(new RegExp(example.opening.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\n\\s+' + example.body.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\n'))
+    await page.getByRole('button', { name: '下一步', exact: true }).click()
+    await expect(source).toHaveText(callerSource!)
+    for (const returning of [false, true]) {
+      const alignment = await code.evaluate((element, { opening, body, returning }) => {
+        const lines = Array.from(element.querySelectorAll('.code-line'))
+        const start = lines.findIndex((line, index) => line.textContent?.trim() === opening && lines[index + 1]?.textContent?.trim() === body)
+        const expected = lines[start + (returning ? 2 : 1)].getBoundingClientRect().top
+        const actual = element.querySelector('.execution-boundary')!.getBoundingClientRect().top
+        return { start, expected, actual }
+      }, { ...example, returning })
+      expect(alignment.start).toBeGreaterThanOrEqual(0)
+      expect(Math.abs(alignment.actual - alignment.expected)).toBeLessThanOrEqual(1)
+      await page.getByRole('button', { name: '下一步', exact: true }).click()
+      await expect(source).toHaveText(callerSource!)
+    }
+    await page.getByRole('button', { name: '上一步', exact: true }).click()
+    await expect(code).toContainText('返回值已产生')
+    await expect(source).toHaveText(callerSource!)
+  }
+  // Both retain-end call sites share a trace module. Only the current site's
+  // parameter may expose its value, including when landing directly by URL.
+  const incidentEntry = trace.steps.findIndex((step, index) => step.execution.module === 'retain-end' && !step.execution.returning && trace.steps[index - 1].execution.boundary === 2)
+  await page.goto(`/cases/crossing/learn?step=${incidentEntry}`)
+  await waitForTraceCompletion(page)
+  const lines = code.locator('.code-line')
+  const activeBody = lines.filter({ hasText: /^\s*segments\[id\]\.right != point\s*$/ }).first()
+  const incidentBody = lines.filter({ hasText: /^\s*segments\[id\]\.right != point\s*$/ }).last()
+  const tooltip = page.getByRole('tooltip')
+  await activeBody.locator('[data-symbol="id"]').hover()
+  await expect(tooltip).toContainText('不可用（当前作用域未提供）')
+  await page.keyboard.press('Escape')
+  await expect(tooltip).toBeHidden()
+  await incidentBody.locator('[data-symbol="id"]').hover()
+  const parameter = trace.steps[incidentEntry].execution.context.parameters.find(variable => variable.name === 'id')!
+  await expect(tooltip.locator('[data-value-phase="current"]')).toHaveText(`当前值：${trace.values[parameter.value!]}`)
+  await page.keyboard.press('Escape')
+  await expect(tooltip).toBeHidden()
+  await lines.filter({ hasText: /^incident\.retain/ }).locator('[data-symbol="incident"]').hover()
+  await expect(tooltip).toContainText('Vec<usize>')
+  await expect(tooltip.locator('[data-value-phase="current"]')).not.toContainText('不可用')
+  await page.keyboard.press('Escape')
+  await expect(tooltip).toBeHidden()
+  await lines.filter({ hasText: /^active\.retain/ }).first().locator('[data-symbol="retain"]').hover()
+  await expect(tooltip.getByText(/^调用表达式：/)).toContainText('segments[id].right != point')
+  await page.keyboard.press('Escape')
+  await expect(tooltip).toBeHidden()
+  await code.getByRole('img', { name: /执行边界/ }).scrollIntoViewIfNeeded()
+  await page.screenshot({ path: join(tmpdir(), `closure-inline-${browserName}-${width}.png`), fullPage: true })
+  expect(errors).toEqual([])
+})
+}
 
 test('用户函数调用保留暂停的外层作用域，返回后再赋值给调用方', async ({ page }) => {
   const capture = await captureIntersections(page)

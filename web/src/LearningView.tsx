@@ -259,7 +259,7 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
         <GeometryView key={run} segments={preset.segments} results={step.results} selected={null} hoverTarget={hover} preserveViewKey={zenMode}
           highlights={numbering === 'active' ? hoverHighlights({ kind: 'geometry', inputs: step.active, pairs: [] }, []) : highlights ?? (recordedOverlap ? hoverHighlights({ kind: 'pair', pair: pairName(recordedOverlap) }, step.results) : null)} onHover={setHover}
           sweep={{ step: index, current: step.current, side: eventSide(geometryStep, trace.steps[geometryIndex + 1]), participants: [...step.starts, ...step.ends, ...step.passes], active: step.active, pending: step.pending, numbering, checked: checkedInputs, discovered: discovered.map(p => ({ point: p, label: pointName(p) })), labelPoint: pointName }} />
-      } secondPanel={<ExecutionPanel step={step} previous={before} values={trace.values} />} />}
+      } secondPanel={<ExecutionPanel steps={trace.steps} index={index} values={trace.values} />} />}
         secondPanel={<ExecutionVariablesPanel step={step} previous={before} shear={trace.shear} values={trace.values} />} />
       <LearningDock side="right" panels={[
         { id: 'current', name: '当前事件', icon: Crosshair, content: currentEvent },
