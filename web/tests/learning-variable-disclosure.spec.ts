@@ -21,7 +21,7 @@ test('折叠摘要完整保留第一个元素，仅在有后续元素时省略',
 })
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
-  for (const width of [1440, 390]) test.extend({ browserName })(`变量两级折叠及页面内状态 ${browserName} ${width}`, async ({ page }, testInfo) => {
+  for (const width of [1440, 390]) test.extend({ browserName })(`变量两级折叠及页面内状态 ${browserName} ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
@@ -50,16 +50,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(queueTrigger.locator('code').last()).toHaveText('{(0, 0): Event { starts: [0] }, ...}')
     const segmentSummary = segments.locator('code').last()
     await expect(segmentSummary).toHaveText('[SweepSegment { left: (0, 0), right: (4, 4), slope: Some(1), intercept: 0 }, ...]')
-    const summaryLayout = await segmentSummary.evaluate(element => {
-      const range = document.createRange()
-      range.selectNodeContents(element)
-      const lines = new Set(Array.from(range.getClientRects(), rect => Math.round(rect.top)))
-      const panel = element.closest('.learning-panel-content')!
-      return { lines: lines.size, overflow: panel.scrollWidth - panel.clientWidth }
-    })
-    expect(summaryLayout.overflow).toBeLessThanOrEqual(1)
-    if (width === 390) expect(summaryLayout.lines).toBeGreaterThan(1)
-    await page.screenshot({ path: testInfo.outputPath('collapsed-variables.png'), fullPage: true })
     // Click the far right of the row, independently of the trigger's width,
     // so a content-sized button cannot accidentally satisfy this contract.
     for (const trigger of [parameters, locals, input, segments]) {

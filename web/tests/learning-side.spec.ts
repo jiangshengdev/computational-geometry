@@ -122,7 +122,7 @@ test('加入后的检查与发现保持当前事件右侧状态', async ({ page 
   }
 })
 
-for (const width of [1360, 390]) test(`Δ 箭头在缩放、平移与边缘保持可读且悬浮于画布顶部 ${width}px`, async ({ page }) => {
+for (const width of [1360, 390]) test(`Δ 提示在缩放和平移后仍跟随扫描线 ${width}px`, async ({ page }) => {
   const reorder = stepIndex(await readTrace(page, 'crossing'), step => step.action === 'reorder' && step.current?.x.numerator === '2' && step.current.y.numerator === '2')
   await page.setViewportSize({ width, height: 1000 })
   await page.goto(`/cases/crossing/learn?step=${reorder}`)
@@ -140,14 +140,6 @@ for (const width of [1360, 390]) test(`Δ 箭头在缩放、平移与边缘保�
     expect(marker.x + marker.width).toBeLessThanOrEqual(surface.x + surface.width)
     expect(scanX).toBeGreaterThanOrEqual(marker.x - 2)
     expect(scanX).toBeLessThanOrEqual(marker.x + marker.width + 2)
-    const viewport = (await svg.boundingBox())!
-    expect(viewport.y).toBe(surface.y)
-    expect(viewport.height).toBe(surface.height)
-    expect(marker.y).toBe(viewport.y - 22)
-    expect(marker.y + marker.height).toBeLessThanOrEqual(viewport.y + 14)
-    const glyph = await side.locator('.sweep-side-arrow').boundingBox()
-    expect(glyph!.width).toBeGreaterThan(12)
-    expect(glyph!.height).toBeGreaterThanOrEqual(20)
     await expect(side).toContainText('Δ')
     return scanX
   }

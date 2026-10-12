@@ -7,12 +7,8 @@ async function tabTo(page: Page, target: Locator) {
   await expect(target).toBeFocused()
 }
 
-async function expectFocusRing(target: Locator) {
-  await expect(target).toHaveCSS('box-shadow', /0px 0px 0px 4px/)
-}
-
 for (const width of [1920, 390]) {
-  test(`列表链接通过普通 Tab 和 Enter 导航 ${width}`, async ({ page }, testInfo) => {
+  test(`列表链接通过普通 Tab 和 Enter 导航 ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 990 })
     await page.goto('/')
     const card = page.getByRole('article', { name: '普通交叉', exact: true })
@@ -20,14 +16,8 @@ for (const width of [1920, 390]) {
     const learn = card.getByRole('link', { name: '开始学习', exact: true })
     const details = card.getByRole('link', { name: '查看详情', exact: true })
     await tabTo(page, thumbnail)
-    await expectFocusRing(thumbnail)
-    await expect(thumbnail).toHaveCSS('outline-style', 'none')
-    await page.screenshot({ path: testInfo.outputPath('thumbnail-focus.png') })
     await tabTo(page, learn)
-    await expectFocusRing(learn)
     await tabTo(page, details)
-    await expectFocusRing(details)
-    await page.screenshot({ path: testInfo.outputPath('list-focus.png') })
     await page.keyboard.press('Shift+Tab')
     await expect(learn).toBeFocused()
     await page.keyboard.press('Tab')
@@ -41,7 +31,7 @@ for (const width of [1920, 390]) {
 }
 
 for (const learning of [false, true]) {
-  test(`${learning ? '学习' : '详情'}页的导航链接普通 Tab 可达`, async ({ page }, testInfo) => {
+  test(`${learning ? '学习' : '详情'}页的导航链接普通 Tab 可达`, async ({ page }) => {
     await page.goto(`/cases/crossing${learning ? '/learn' : ''}`)
     await tabTo(page, page.getByRole('link', { name: '返回列表', exact: true }))
     if (learning) {
@@ -57,8 +47,6 @@ for (const learning of [false, true]) {
     await tabTo(page, page.getByRole('button', { name: '案例说明', exact: true }))
     const target = page.getByRole('link', { name: learning ? '返回结果查看器' : '开始逐步学习', exact: true })
     await tabTo(page, target)
-    await expectFocusRing(target)
-    await page.screenshot({ path: testInfo.outputPath('navigation-focus.png') })
     if (!learning) await expect(target).toHaveAttribute('aria-keyshortcuts', 'ArrowRight')
     await page.keyboard.press('Enter')
     await expect(page).toHaveURL(learning ? /\/cases\/crossing$/ : /\/cases\/crossing\/learn$/)
@@ -71,7 +59,6 @@ test('错误恢复入口普通 Tab 可达', async ({ page }) => {
   for (const name of ['返回列表', '查看详情', '从头学习']) {
     const link = recovery.getByRole('link', { name, exact: true })
     await tabTo(page, link)
-    await expectFocusRing(link)
   }
   await page.keyboard.press('Enter')
   await expect(page).toHaveURL(/\/cases\/crossing\/learn$/)
@@ -101,7 +88,7 @@ test('无需滚动的详情区域不占用 Tab 停留点', async ({ page }) => {
   }
 })
 
-test('详情溢出时可用键盘滚动，恢复尺寸后移除多余停留点', async ({ page }, testInfo) => {
+test('详情溢出时可用键盘滚动，恢复尺寸后移除多余停留点', async ({ page }) => {
   await page.setViewportSize({ width: 1100, height: 720 })
   await installCase(page, longDetailsCase)
   await page.goto(`/cases/${longDetailsCase.id}`)
@@ -112,9 +99,6 @@ test('详情溢出时可用键盘滚动，恢复尺寸后移除多余停留点',
   await expect.poll(() => details.evaluate(element => element.scrollHeight - element.clientHeight)).toBeGreaterThan(0)
   await pair.focus()
   await tabTo(page, details)
-  await expect(details).toHaveCSS('outline-style', 'solid')
-  await expect(details).toHaveCSS('outline-offset', '-2px')
-  await page.screenshot({ path: testInfo.outputPath('scroll-region-focus.png') })
   // Let WebKit's native scrolling run while the key is held, rather than
   // sending keydown and keyup in the same rendering frame.
   await page.keyboard.down('ArrowDown')

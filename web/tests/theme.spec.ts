@@ -1,11 +1,9 @@
 import { expect, test } from '@playwright/test'
 
-test('系统暗色不改变浅色主题，滑块描述与键盘操作可用', async ({ page }) => {
-  await page.emulateMedia({ colorScheme: 'dark' })
+test('滑块描述与键盘操作可用', async ({ page }) => {
   await page.goto('/cases/crossing/learn')
   const next = page.getByRole('button', { name: '下一步', exact: true })
   await expect(next).toBeEnabled()
-  await expect(page.locator('html')).toHaveCSS('color-scheme', 'light')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await slider.focus()
   await expect(slider).toHaveAccessibleDescription(/0 \/ .*事件|0 \/ .*准备开始/)

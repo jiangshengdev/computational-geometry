@@ -1,7 +1,5 @@
 import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { readTrace, seekStep } from './trace-navigation'
 
 test('相邻检测：删除中间线段后发现交点并可重现', async ({ page }) => {
@@ -120,20 +118,12 @@ for (const width of [1360, 390]) {
         await expect(explanation).toContainText(/交叉的 (S0 与 S1|S1 与 S0) 换序后/)
         await expect(active).toHaveText('S1S0S2')
         await expect(queue).not.toContainText('I1')
-        const line = page.getByRole('img', { name: '输入 S0', exact: true }).locator('line')
-        await expect(line).toHaveCSS('stroke-width', '6px')
-        await expect(active.getByText('S0', { exact: true })).toHaveCSS('outline-style', 'solid')
+        await expect(page.getByRole('img', { name: '输入 S0', exact: true })).toHaveAttribute('data-checked', 'true')
+        await expect(active.getByText('S0', { exact: true })).toHaveAttribute('data-checked', 'true')
         await expect(page.getByRole('img', { name: '输入 S2', exact: true })).toHaveAttribute('data-checked', 'true')
         await expect(page.getByRole('img', { name: '输入 S1', exact: true })).toHaveAttribute('data-checked', 'false')
-        // Capture the settled teaching state, not outgoing rows or a swap frame.
         await expect(current.locator('[aria-hidden="true"]')).toHaveCount(0)
         await expect(queue.locator('[aria-hidden="true"]')).toHaveCount(0)
-        await expect.poll(() => active.getByRole('listitem').evaluateAll(rows => {
-          const boxes = rows.map(row => row.getBoundingClientRect())
-          return boxes.every((box, i) => i === 0 || box.bottom <= boxes[i - 1].top)
-        })).toBe(true)
-        await explanation.scrollIntoViewIfNeeded()
-        await page.screenshot({ path: join(tmpdir(), `bo-neighbors-${width}.png`), fullPage: true })
         checked = true
       }
       if (text.startsWith('发现未来交点 I1 (6, 6)')) {

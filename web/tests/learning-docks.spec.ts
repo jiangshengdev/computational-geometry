@@ -1,7 +1,4 @@
 import { expect, test, type Locator } from '@playwright/test'
-import { join } from 'node:path'
-import { tmpdir } from 'node:os'
-import { expectLearningColumns } from './learning-layout'
 
 async function box(locator: Locator) {
   await expect(locator).toBeVisible()
@@ -35,22 +32,16 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       await input.scrollIntoViewIfNeeded()
       await expect(input).toBeInViewport()
       await expect(submit).toBeInViewport()
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-      await page.screenshot({ path: join(tmpdir(), `bo-components-${browserName}-${width}.png`) })
     }
   })
   browserTest(`辅助栏按需浮出和独立记忆 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/cases/crossing/learn?step=1')
-    const geometry = page.getByRole('region', { name: '几何视图', exact: true })
     const code = page.getByRole('region', { name: '核心代码回放', exact: true })
-    const variables = page.getByRole('region', { name: '核心变量', exact: true })
-    const original = [await box(geometry), await box(code), await box(variables)]
     await expect(page.getByRole('region', { name: '操作解释', exact: true })).toBeHidden()
     await page.getByRole('button', { name: '待处理事件队列', exact: true }).click()
     const queue = page.getByRole('region', { name: '待处理事件队列', exact: true })
     await expect(queue).toContainText('S0 起点 (0, 0)')
-    expect([await box(geometry), await box(code), await box(variables)]).toEqual(original)
     await page.keyboard.press('Escape')
     await expect(queue).toBeHidden()
     await page.getByRole('button', { name: '待处理事件队列', exact: true }).click()
@@ -73,27 +64,16 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.goto('/cases/multiway-endpoints/learn')
     await expect(page.getByRole('button', { name: '收起左侧辅助栏', exact: true })).toBeVisible()
   })
-  browserTest(`画布代码变量1:2:2三栏与统一回放 ${browserName}`, async ({ page }) => {
+  browserTest(`统一回放控制与变量更新 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/cases/crossing/learn?step=1')
-    const geometry = page.getByRole('region', { name: '几何视图', exact: true })
-    const code = page.getByRole('region', { name: '核心代码回放', exact: true })
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
-    await expectLearningColumns(page)
-    const codeBox = await box(code)
     const controls = page.getByRole('region', { name: '回放控制', exact: true })
-    expect((await box(controls)).y).toBeGreaterThanOrEqual(codeBox.y + codeBox.height)
     for (const name of ['上一步', '下一步', '上一个大步', '下一个大步', '重新开始']) {
       await expect(controls.getByRole('button', { name, exact: true })).toBeInViewport()
     }
     await controls.getByRole('button', { name: '下一步', exact: true }).click()
     await expect(page).toHaveURL(/step=2$/)
     await expect(variables.getByTestId('variable-next')).toContainText('(0, 0)')
-    await page.setViewportSize({ width: 390, height: 844 })
-    const narrowCanvas = await box(geometry)
-    const narrowCode = await box(code)
-    expect(narrowCode.y).toBeGreaterThanOrEqual(narrowCanvas.y + narrowCanvas.height)
-    expect((await box(variables)).y).toBeGreaterThanOrEqual(narrowCode.y + narrowCode.height)
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   })
 }

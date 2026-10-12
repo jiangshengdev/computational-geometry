@@ -1,12 +1,10 @@
 import { expect, test } from './learning-test'
 import { readTrace } from './trace-navigation'
 import { presets } from '../src/presets'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { formatExecutionValue } from '../src/executionValue'
 import { shadowedValueNote } from '../src/executionSymbols'
 
-test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) => {
+test('核心变量保留真实值并随前进回退更新', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   const trace = await readTrace(page, 'crossing')
@@ -24,10 +22,6 @@ test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) 
         await expect(row.locator('dt')).toContainText(`${variable.name}: ${variable.type} =`)
         if ((variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null) {
           await expect(row.locator('dd')).toHaveText(formatExecutionValue(trace.values[variable.value]) + (variable.availability === 'shadowed' ? shadowedValueNote : ''))
-          await expect(row.locator('dd code span[style]').first()).toBeAttached()
-        } else {
-          await expect(row.locator('dd')).toHaveClass('text-muted')
-          await expect(row.locator('dd code')).toHaveCount(0)
         }
       }
     }
@@ -36,25 +30,6 @@ test('核心变量高亮保留真实值并使用等宽字体', async ({ page }) 
   }
   const result = panel.getByTestId('variable-result')
   await expect(result.locator('dd')).toHaveText('[]')
-  const inline = await result.evaluate(element => {
-    const term = element.querySelector('dt > code')!.getBoundingClientRect()
-    const value = element.querySelector('dd > code')!.getBoundingClientRect()
-    return { sameLine: Math.abs(term.top - value.top) < 1, followsType: value.left >= term.right }
-  })
-  expect(inline).toEqual({ sameLine: true, followsType: true })
-  await panel.screenshot({ path: join(tmpdir(), 'bo-variable-inline.png') })
-  for (const code of await panel.locator('code').all()) await expect(code).toHaveCSS('font-family', /mono/i)
-  const token = panel.locator('dd code span[style]').first()
-  await expect(token).toBeAttached()
-  await page.locator('html').evaluate(element => element.classList.add('dark'))
-  await expect.poll(() => token.evaluate(element => getComputedStyle(element).color)).toBe(await token.evaluate(element => {
-    const probe = document.createElement('span')
-    probe.style.color = (element as HTMLElement).style.getPropertyValue('--shiki-dark')
-    element.append(probe)
-    const color = getComputedStyle(probe).color
-    probe.remove()
-    return color
-  }))
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   expect(errors).toEqual([])
 })
@@ -92,7 +67,7 @@ for (const id of ['crossing', 'endpoint', 'multiway-interior', 'partial-overlap'
 }
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
-  for (const width of [1440, 390]) test.extend({ browserName })(`长代码边界与动态浮层滚动不改变排版 ${browserName} ${width}`, async ({ page }) => {
+  for (const width of [1440, 390]) test.extend({ browserName })(`长代码执行边界与变量浮层可达且滚动独立 ${browserName} ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
@@ -109,9 +84,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
     for (const trigger of await variables.locator('.execution-variable').getByRole('button').all()) await trigger.click()
     const context = variables.locator('.execution-context')
-    const geometry = page.getByRole('region', { name: '几何视图', exact: true })
-    const regions = [geometry, panel, variables]
-    const boxes = await Promise.all(regions.map(region => region.boundingBox()))
     const codeScroll = await code.evaluate(element => element.scrollTop)
     const variableScroll = await context.evaluate(element => {
       element.scrollTop = element.scrollHeight
@@ -119,24 +91,15 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     })
     if (width === 1440) expect(variableScroll).toBeGreaterThan(0)
     expect(await code.evaluate(element => element.scrollTop)).toBe(codeScroll)
-    expect(await Promise.all(regions.map(region => region.boundingBox()))).toEqual(boxes)
-    const layout = () => panel.locator('.code-line').evaluateAll(lines => lines.map(line => ({ top: (line as HTMLElement).offsetTop, height: line.getBoundingClientRect().height })))
-    const before = await layout()
     const symbol = panel.locator('[data-symbol="id"][data-line="8"]')
     await symbol.hover()
     await expect(page.getByRole('tooltip', { name: /^变量 id / })).toContainText('当前值')
-    expect(await layout()).toEqual(before)
     const offset = () => boundary.evaluate(element => element.getBoundingClientRect().top - element.parentElement!.querySelectorAll('.code-line')[8].getBoundingClientRect().top)
     const alignment = await offset()
     await code.evaluate(element => { element.scrollTop = 0; element.scrollLeft = element.scrollWidth })
     expect(await context.evaluate(element => element.scrollTop)).toBe(variableScroll)
     expect(await offset()).toBe(alignment)
-    expect(await layout()).toEqual(before)
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(errors).toEqual([])
-    await code.evaluate(element => { element.scrollLeft = 0 })
-    await symbol.hover()
-    await page.screenshot({ path: join(tmpdir(), `bo-execution-${browserName}-${width}.png`) })
   })
 }

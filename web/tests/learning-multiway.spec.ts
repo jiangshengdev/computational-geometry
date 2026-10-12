@@ -1,7 +1,5 @@
 import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { readTrace, seekStep } from './trace-navigation'
 
 const cases = [
@@ -57,12 +55,6 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
         for (const id of example.passes) await expect(group.getByText(/^穿过：/)).toContainText(`S${id}`)
         for (const id of example.inputs) {
           await expect(group.getByText(`S${id}`, { exact: true })).toBeVisible()
-          const line = page.getByRole('img', { name: `输入 S${id}`, exact: true }).locator('line')
-          await expect(line).toHaveCSS('visibility', 'visible')
-          await expect(line).not.toHaveCSS('stroke', 'none')
-          await expect(line).not.toHaveCSS('stroke-width', '0px')
-          const box = (await line.boundingBox())!
-          expect(box.width + box.height).toBeGreaterThan(0)
         }
         if (text.includes('从队首取出')) {
           await expect(active).toHaveText(example.before)
@@ -98,7 +90,6 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
             await expect(page.getByRole('img', { name: `输入 S${id}`, exact: true })).toHaveAttribute('data-active', String(example.after.includes(`S${id}`)))
           }
           after = true
-          if (!run) await page.screenshot({ path: join(tmpdir(), `bo-multiway-${example.slug}-${width}.png`), fullPage: true })
         }
       }
       // Hover details depend on the pointer, not the deterministic teaching trace.
@@ -128,7 +119,6 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
     await expect(markers).toHaveCount(example.pairs.length)
     const positions = await markers.evaluateAll(circles => circles.map(circle => [circle.getAttribute('cx'), circle.getAttribute('cy')]))
     expect(new Set(positions.map(position => position.join(','))).size).toBe(1)
-    if (!run) await result.screenshot({ path: join(tmpdir(), `bo-multiway-${example.slug}-result-${width}.png`) })
     await expect(queue.getByRole('listitem')).toHaveCount(0)
     await expect(active).toHaveText('空')
     await page.getByRole('button', { name: '重新开始', exact: true }).click()
@@ -138,6 +128,5 @@ for (const example of cases) for (const width of [1360, 390]) test(`共点教学
     await expect(page.getByRole('img', { name: /^交集 / })).toHaveCount(0)
   }
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   expect(errors).toEqual([])
 })

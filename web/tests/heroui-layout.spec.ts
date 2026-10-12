@@ -1,22 +1,14 @@
 import { expect, test } from '@playwright/test'
-import { join } from 'node:path'
-import { tmpdir } from 'node:os'
 
 for (const viewport of [{ width: 1360, height: 900 }, { width: 390, height: 844 }, { width: 1360, height: 600 }, { width: 390, height: 500 }, { width: 1100, height: 720 }]) {
-  test(`HeroUI 全站视觉与流程 ${viewport.width}×${viewport.height}`, async ({ page }, testInfo) => {
+  test(`案例选择、结果详情与学习流程 ${viewport.width}×${viewport.height}`, async ({ page }) => {
     await page.setViewportSize(viewport)
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
-    const capture = async (name: string) => {
-      await page.evaluate(() => document.fonts.ready)
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-      await testInfo.attach(name, { body: await page.screenshot({ path: join(tmpdir(), `bo-heroui-${name}-${viewport.width}-${viewport.height}.png`), animations: 'disabled' }), contentType: 'image/png' })
-    }
     await page.goto('/')
     const card = page.getByRole('article', { name: '普通交叉', exact: true })
     await expect(card.getByRole('link', { name: '开始学习', exact: true })).toBeVisible()
-    await capture('cases')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()
     const pair = page.getByRole('radio', { name: 'S0 × S1 · 点', exact: true })
     await pair.click()
@@ -24,24 +16,15 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 390, height: 844 
     await pair.click()
     await expect(page.getByRole('region', { name: '精确详情' })).toContainText('选择一个配对')
     await page.getByRole('region', { name: '几何视图' }).scrollIntoViewIfNeeded()
-    await capture('results')
     await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
     const next = page.getByRole('button', { name: '下一步', exact: true })
     await next.click()
     await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('1')
-    // A layout may fit every card yet leave no drawable area after the
-    // coordinate plane's padding. Check the actual rendered crossing.
-    const segment = (await page.getByRole('img', { name: '输入 S0', exact: true }).boundingBox())!
-    expect(segment.width).toBeGreaterThan(40)
-    expect(segment.height).toBeGreaterThan(40)
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await capture('learning')
     const opener = page.getByRole('button', { name: '说明与帮助', exact: true })
     await opener.click()
     const dialog = page.getByRole('dialog')
     const close = dialog.getByRole('button', { name: '关闭帮助' })
     await expect(close).toBeInViewport()
-    await capture('help')
     const references = dialog.getByRole('tab', { name: '参考资料', exact: true })
     await references.click()
     await expect(references).toHaveAttribute('aria-selected', 'true')

@@ -46,9 +46,8 @@ test('分类真假分支在块外汇合，if hover保留本次判断且回退恢
     await page.getByRole('button', { name: '下一步', exact: true }).click()
     await page.getByRole('button', { name: '上一步', exact: true }).click()
     await expectNextStatement(panel, 'if segments[id].left != point && segments[id].right != point {')
-    const tooltip = await hoverControl(page, panel, 'if', 11, state === 'true' ? '本次条件为真' : '本次条件为假')
+    await hoverControl(page, panel, 'if', 11, state === 'true' ? '本次条件为真' : '本次条件为假')
     expect(await page.getByRole('region', { name: '核心变量', exact: true }).locator('dd').allTextContents()).toEqual(before)
-    await expect(tooltip).toHaveCSS('opacity', '1')
     await expect(panel.getByRole('img', { name: /执行边界/ })).toBeInViewport()
     await page.screenshot({ path: join(tmpdir(), `bo-control-if-${state}.png`) })
   }

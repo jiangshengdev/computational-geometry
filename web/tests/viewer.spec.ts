@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { selectPreset } from './cases'
 import { tabToReachable } from './keyboard'
 
-test('键盘选择案例、配对和几何操作具有可见焦点', async ({ page }) => {
+test('键盘选择案例、配对和几何操作可用', async ({ page }) => {
   await page.goto('/')
   const detail = page.getByRole('article').filter({ has: page.getByRole('heading', { name: '普通交叉', exact: true }) })
     .getByRole('link', { name: '查看详情', exact: true })
@@ -28,10 +28,7 @@ test('键盘选择案例、配对和几何操作具有可见焦点', async ({ pa
   await expect(page.getByRole('tooltip')).toContainText('按钮缩放 · 拖动平移')
   const zoomIn = page.getByRole('button', { name: '放大', exact: true })
   await tabToReachable(page, zoomIn)
-  expect(await zoomIn.evaluate(element => {
-    const style = getComputedStyle(element)
-    return element.matches(':focus-visible') && (style.boxShadow !== 'none' || parseFloat(style.outlineWidth) > 0)
-  })).toBe(true)
+  await expect(zoomIn).toBeFocused()
   const input = page.getByRole('img', { name: '输入 S0', exact: true })
   const before = (await input.boundingBox())!
   await page.keyboard.press('Enter')

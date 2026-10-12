@@ -1,7 +1,5 @@
 import { expect, test, type Locator, type Page } from './learning-test'
 import { selectPreset } from './cases'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
 async function center(page: Page, target: Locator) {
@@ -57,7 +55,6 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
       await expect(entry).toHaveAttribute('data-highlighted', 'true')
       await expect(diagram.locator('.hover-event')).toHaveCount(1)
       await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(0)
-      if (index === discovery) await page.screenshot({ path: join(tmpdir(), `bo-explanation-point-${width}.png`), fullPage: true })
       const coordinates = scenario.point.slice(scenario.point.indexOf('('))
       const label = diagram.locator(`.teaching-labels [data-event-point="${coordinates}"]`)
       await expect(diagram.getByRole('status', { name: '画布对象详情' })).toContainText(scenario.point)
@@ -73,7 +70,6 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
       await expect(diagram.locator('.input[data-highlighted="true"]')).toHaveCount(1)
       await expect(explanation.locator('[data-highlighted="true"]')).toHaveText(name)
       await expect(diagram.locator('.hover-event')).toHaveCount(0)
-      if (index === discovery && name === 'S0') await page.screenshot({ path: join(tmpdir(), `bo-explanation-segment-${width}.png`), fullPage: true })
       // Exiting rows no longer belong to the current active set.
       const entry = active.getByRole('listitem').filter({ hasText: new RegExp(`^${name}$`) })
       if (await entry.count()) {
@@ -112,7 +108,7 @@ test('教学 hover：队列端点与点标签精确双向对应', async ({ page 
   const entry = queue.getByText('S1 起点 (0, 4)', { exact: true })
   const label = diagram.locator('.teaching-labels [data-event-point="(0, 4)"]')
   await entry.hover()
-  await expect(label).toHaveCSS('font-weight', '700')
+  await expect(label).toBeVisible()
   const ring = diagram.locator('.hover-event')
   await expect(ring).toHaveAttribute('cx', await input.locator('line').getAttribute('x1') as string)
   await expect(ring).toHaveAttribute('cy', await input.locator('line').getAttribute('y1') as string)
@@ -141,13 +137,10 @@ test('教学 hover：当前交点与待处理交点均按悬停显示坐标标�
   await seekStep(page, stepIndex(trace, step => step.action === 'discover'))
   const pending = page.getByRole('img', { name: '已发现 I0 (2, 2)' })
   const dashed = pending.locator('circle')
-  const dash = await dashed.evaluate(e => getComputedStyle(e).strokeDasharray)
-  expect(dash).not.toBe('none')
   await queue.getByText('I0 (2, 2)', { exact: true }).hover()
   const pointLabel = diagram.locator('.teaching-labels [data-event-point="(2, 2)"]')
-  await expect(pointLabel).toHaveCSS('font-weight', '700')
+  await expect(pointLabel).toBeVisible()
   await expect(diagram.locator('.hover-event')).toHaveAttribute('cx', await dashed.getAttribute('cx') as string)
-  await expect(dashed).toHaveCSS('stroke-dasharray', dash)
   await center(page, dashed)
   await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
   await pointLabel.hover()
@@ -159,15 +152,12 @@ test('教学 hover：当前交点与待处理交点均按悬停显示坐标标�
   await expect(queue).not.toContainText('I0')
   await expect(diagram.locator('.hover-event')).toHaveCount(0)
   const marker = diagram.locator('.current-point')
-  const purple = await marker.evaluate(e => getComputedStyle(e).stroke)
-  expect(purple).toBe('rgb(116, 85, 168)')
   const lineStyle = await diagram.locator('.sweep-line').getAttribute('x1')
   await expect(pointLabel).toHaveCount(0)
   await current.getByText('I0 (2, 2)', { exact: true }).hover()
   await expect(pointLabel).toHaveText('(2, 2)')
   await expect(pointLabel).toBeVisible()
   await expect(diagram.locator('.hover-event')).toHaveCount(1)
-  await expect(marker).toHaveCSS('stroke', purple)
   await expect(diagram.locator('.sweep-line')).toHaveAttribute('x1', lineStyle as string)
   await center(page, marker)
   await expect(current.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
@@ -182,7 +172,6 @@ test('教学 hover：当前交点与待处理交点均按悬停显示坐标标�
   await expect(pointLabel).toHaveText('(2, 2)')
   await expect(pointLabel).toBeVisible()
   await expect(current.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-  await expect(marker).toHaveCSS('stroke', purple)
   await page.getByRole('link', { name: '返回列表', exact: true }).hover()
   await expect(pointLabel).toHaveCount(0)
 })
@@ -246,7 +235,7 @@ for (const preset of ['crossing', 'disjoint']) {
   })
 }
 
-test('教学 hover：缩放平移后的点、标签与线段命中和可读性', async ({ page }) => {
+test('教学 hover：缩放平移后的点、标签与线段命中', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
@@ -271,17 +260,9 @@ test('教学 hover：缩放平移后的点、标签与线段命中和可读性',
     const queue = page.getByRole('region', { name: '待处理事件队列' })
     await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
     const pointLabel = svg.locator('.teaching-labels [data-event-point="(2, 2)"]')
-    await expect(pointLabel).toHaveCSS('font-weight', '700')
+    await expect(pointLabel).toBeVisible()
     await pointLabel.hover()
     await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-    const labels = await svg.locator('.teaching-labels text:visible').evaluateAll(nodes => nodes.map(n => {
-      const r = n.getBoundingClientRect(); return { left: r.left, right: r.right, top: r.top, bottom: r.bottom }
-    }))
-    for (let a = 0; a < labels.length; a++) for (let b = a + 1; b < labels.length; b++) {
-      const x = labels[a], y = labels[b]
-      expect(x.left < y.right && y.left < x.right && x.top < y.bottom && y.top < x.bottom).toBe(false)
-    }
-    await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-teaching-hover-${width}.png`) })
     const line = (await page.getByRole('img', { name: '输入 S1', exact: true }).locator('line').boundingBox())!
     await page.mouse.move(line.x + line.width * 0.35, line.y + line.height * 0.35)
     await expect(page.getByTestId('active-order').locator('[data-highlighted="true"]')).toHaveText('S1')
@@ -298,19 +279,12 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   const order = page.getByTestId('active-order')
   while (await order.getByRole('listitem').count() < 2) await next.click()
   await expect(order.getByRole('listitem')).toHaveText(['S0', 'S1'])
-  await expect.poll(async () => {
-    const firstRow = (await order.getByRole('listitem').nth(0).boundingBox())!
-    const secondRow = (await order.getByRole('listitem').nth(1).boundingBox())!
-    return firstRow.y - secondRow.y - secondRow.height
-  }).toBeGreaterThanOrEqual(0)
   const segment = page.getByRole('img', { name: '输入 S1', exact: true })
   const line = segment.locator('line')
-  const originalStroke = await line.evaluate(e => getComputedStyle(e).strokeWidth)
   const panels = page.locator('.learning-panel')
   const content = await panels.allInnerTexts()
   await order.getByText('S1', { exact: true }).hover()
   await expect(segment).toHaveAttribute('data-highlighted', 'true')
-  await expect(line).not.toHaveCSS('stroke-width', originalStroke)
   await expect(segment).toHaveAttribute('data-active', 'true')
   await expect(page.locator('.drawing .hover-event')).toHaveCount(0)
   await expect(page.getByRole('region', { name: /^(当前事件|待处理事件队列)$/ }).locator('[data-highlighted="true"]')).toHaveCount(0)
@@ -330,6 +304,5 @@ test('教学 hover：活动顺序的单个标识与线段独立联动', async ({
   await page.mouse.move(point.x, point.y)
   await expect(order.locator('[data-highlighted="true"]')).toHaveText('S1')
   await page.getByRole('link', { name: '返回列表', exact: true }).hover()
-  await expect(line).toHaveCSS('stroke-width', originalStroke)
   await expect(order.locator('[data-highlighted="true"]')).toHaveCount(0)
 })

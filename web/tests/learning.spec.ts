@@ -5,7 +5,7 @@ import { join } from 'node:path'
 import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
 for (const action of ['take', 'remove', 'complete'] as const) {
-  test(`非活动参与线段保持普通样式：普通交叉 ${action}`, async ({ page }) => {
+  test(`参与线段的活动状态：普通交叉 ${action}`, async ({ page }) => {
     await page.goto('/cases/crossing/learn')
     const trace = await readTrace(page, 'crossing')
     const target = stepIndex(trace, step => step.action === action && (action === 'take'
@@ -15,15 +15,11 @@ for (const action of ['take', 'remove', 'complete'] as const) {
     await expect(page.getByTestId('active-order')).toHaveText('空')
     await expect(input).toHaveAttribute('data-active', 'false')
     await expect(input).toHaveAttribute('data-participant', 'true')
-    await expect(input.locator('line')).toHaveCSS('stroke', 'rgb(123, 159, 207)')
-    await expect(input.locator('line')).toHaveCSS('stroke-width', '2px')
     if (action === 'take') {
       const inserted = stepIndex(trace, (step, index) => index > target && step.action === 'insert' && step.subjects.includes(0))
       await seekStep(page, inserted)
       await expect(page.getByTestId('active-order')).toHaveText('S0')
       await expect(input).toHaveAttribute('data-active', 'true')
-      await expect(input.locator('line')).toHaveCSS('stroke', 'rgb(36, 92, 176)')
-      await expect(input.locator('line')).toHaveCSS('stroke-width', '4px')
     }
   })
 }

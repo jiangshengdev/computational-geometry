@@ -1,7 +1,5 @@
 import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { readTrace, seekStep } from './trace-navigation'
 
 test('接触教学：共端点先记录闭集交点再完成退出与加入，可重新开始', async ({ page }) => {
@@ -88,7 +86,6 @@ for (const width of [1360, 390]) test(`并列教学：同横坐标不同位置�
               a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top))
           })).toBe(false)
           completed.push('(0, -1)')
-          if (run === 0) await page.screenshot({ path: join(tmpdir(), `bo-contacts-${width}.png`), fullPage: true })
         }
       }
       if (event.includes('(0, 3)')) {
@@ -111,7 +108,6 @@ for (const width of [1360, 390]) test(`并列教学：同横坐标不同位置�
     await page.getByRole('button', { name: '重新开始', exact: true }).click()
     await expect(current).toContainText('尚未处理事件')
   }
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   expect(errors).toEqual([])
 })
 

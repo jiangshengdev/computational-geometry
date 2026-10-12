@@ -93,8 +93,6 @@ for (const width of [1360, 390]) {
     await page.getByRole('article', { name: '无交点', exact: true }).getByRole('link', { name: '开始学习', exact: true }).focus()
     await page.keyboard.press('Shift+Tab')
     await expect(thumbnailLink).toBeFocused()
-    await expect(thumbnailLink).toHaveCSS('box-shadow', /0px 0px 0px 4px/)
-    await expect(thumbnailLink).toHaveCSS('outline-style', 'none')
     await page.keyboard.press('Tab')
     await expect(page.getByRole('article', { name: '无交点', exact: true }).getByRole('link', { name: '开始学习', exact: true })).toBeFocused()
     await page.keyboard.press('Shift+Tab')

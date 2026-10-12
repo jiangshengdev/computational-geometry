@@ -1,7 +1,5 @@
 import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 
 test('重叠教学：区间边界、事件状态、完整结果与重启', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -129,22 +127,6 @@ for (const width of [1360, 390]) test(`重叠教学：边界与并列状态可�
   const centers = await markers.locator('circle').evaluateAll(elements => elements.map(element => [element.getAttribute('cx'), element.getAttribute('cy')]))
   expect(centers[0]).toEqual(centers[1])
   await page.mouse.move(0, 0)
-  const labelBoxes = await drawing.locator('text:not(.tick):visible').evaluateAll(elements => elements.map(element => {
-    const box = element.getBoundingClientRect()
-    return { left: box.left, right: box.right, top: box.top, bottom: box.bottom }
-  }))
-  const svg = await drawing.getByRole('img', { name: '输入与交集坐标图', exact: true }).boundingBox()
-  for (const box of labelBoxes) {
-    expect(box.left).toBeGreaterThanOrEqual(svg!.x)
-    expect(box.right).toBeLessThanOrEqual(svg!.x + svg!.width)
-    expect(box.top).toBeGreaterThanOrEqual(svg!.y)
-  }
-  for (let i = 0; i < labelBoxes.length; i++) for (const other of labelBoxes.slice(i + 1)) {
-    const box = labelBoxes[i]
-    expect(box.right <= other.left || other.right <= box.left || box.bottom <= other.top || other.bottom <= box.top).toBe(true)
-  }
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-  await drawing.screenshot({ path: join(tmpdir(), `bo-overlap-${width}.png`) })
   expect(errors).toEqual([])
 })

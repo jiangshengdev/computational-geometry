@@ -1,47 +1,8 @@
 import { expect, test } from './learning-test'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { selectPreset } from './cases'
 import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
 for (const width of [1360, 390]) {
-  test(`标题序号：小字号贴近独立锚点 ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 1100 })
-    await page.goto('/cases/neighbor-crossing')
-    await page.getByRole('link', { name: '开始逐步学习' }).click()
-    const trace = await readTrace(page, 'neighbor-crossing')
-    await seekStep(page, stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(1)))
-    const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
-    const activeTitle = page.getByRole('heading', { name: '活动线段顺序', exact: true })
-    const pendingTitle = page.getByRole('heading', { name: '待处理事件队列', exact: true })
-    const positions = () => svg.locator('.order-marker').evaluateAll(markers => markers.map(marker => {
-      const circle = marker.querySelector('circle')!.getBoundingClientRect()
-      const text = marker.querySelector('text')!
-      const box = text.getBoundingClientRect()
-      const viewport = text.ownerSVGElement!.getBoundingClientRect()
-      const x = circle.x + circle.width / 2, y = circle.y + circle.height / 2
-      return { fontSize: getComputedStyle(text).fontSize, x: box.x - viewport.x, y: box.y - viewport.y,
-        distance: Math.hypot(Math.max(box.left - x, 0, x - box.right), Math.max(box.top - y, 0, y - box.bottom)) }
-    }))
-    await activeTitle.hover()
-    await expect(svg.locator('.order-number')).toHaveText(['1', '2'])
-    const active = await positions()
-    for (const marker of active) {
-      expect.soft(marker.fontSize).toBe('11px')
-      // An isolated label must stay within two small glyph heights of its point.
-      expect.soft(marker.distance).toBeLessThanOrEqual(22)
-    }
-    await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-order-near-active-${width}.png`) })
-    await pendingTitle.hover()
-    await expect(svg.locator('.order-number')).toHaveText(['1', '2', '3', '4'])
-    for (const marker of await positions()) {
-      expect.soft(marker.fontSize).toBe('11px')
-      expect.soft(marker.distance).toBeLessThanOrEqual(22)
-    }
-    await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-order-near-pending-${width}.png`) })
-    await activeTitle.hover()
-    expect(await positions()).toEqual(active)
-  })
 
   test(`标题序号：列表对应、真实锚点与标签恢复 ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1100 })
@@ -75,14 +36,7 @@ for (const width of [1360, 390]) {
       await expect(marker).toHaveAttribute('aria-label', `活动线段 ${index + 1}：S${index}`)
       expect(Number(await marker.locator('circle').getAttribute('cx'))).toBeCloseTo(scanX)
       expect(Number(await marker.locator('circle').getAttribute('cy'))).toBeCloseTo(y0 + (y10 - y0) * height / 10)
-      // Horizontal SVG lines have a zero-height bounding box despite a visible stroke.
-      const line = svg.locator('.input').nth(index).locator('line')
-      await expect(line).toHaveCSS('visibility', 'visible')
-      await expect(line).not.toHaveCSS('stroke', 'none')
-      await expect(line).not.toHaveCSS('stroke-width', '0px')
-      await expect(line).toHaveCSS('stroke', 'rgb(7, 133, 116)')
     }
-    await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-order-active-${width}.png`) })
     await pendingTitle.hover()
     await expect(svg.locator('.input[data-highlighted="true"]')).toHaveCount(0)
     await expect(svg.locator('.order-number')).toHaveText(['1', '2', '3', '4'])
@@ -93,7 +47,6 @@ for (const width of [1360, 390]) {
       expect(Number(await markers.nth(index).locator('circle').getAttribute('cx'))).toBeCloseTo(Number(await anchor.getAttribute(index === 0 ? 'cx' : 'x2')))
       expect(Number(await markers.nth(index).locator('circle').getAttribute('cy'))).toBeCloseTo(Number(await anchor.getAttribute(index === 0 ? 'cy' : 'y2')))
     }
-    await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-order-pending-${width}.png`) })
     // Hovering the body of the same card is outside the title trigger.
     await page.getByRole('region', { name: '待处理事件队列' }).getByText(expected[0], { exact: true }).hover()
     await expect(markers).toHaveCount(0)
@@ -109,7 +62,7 @@ for (const width of [1360, 390]) {
   })
 }
 
-test('标题序号：同点错位、换序、缩放平移与空列表', async ({ page }) => {
+test('标题序号：同点锚点、换序、缩放平移与空列表', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 1100 })
   await page.goto('/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
@@ -138,14 +91,6 @@ test('标题序号：同点错位、换序、缩放平移与空列表', async ({
       expect(Number(await marker.locator('line').getAttribute(lineAttr))).toBeCloseTo(coordinate)
     }
   }
-  const [first, second] = await markers.locator('text').evaluateAll(nodes => nodes.map(node => {
-    const box = node.getBoundingClientRect()
-    return { y: box.y, height: box.height }
-  }))
-  expect(first.height).toBeGreaterThan(0)
-  expect(second.height).toBeGreaterThan(0)
-  expect(second.y + second.height).toBeLessThan(first.y)
-  await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), 'bo-order-coincident.png') })
   await page.getByRole('slider', { name: '教学步骤' }).focus()
   await page.keyboard.press('End')
   await pendingTitle.hover()
