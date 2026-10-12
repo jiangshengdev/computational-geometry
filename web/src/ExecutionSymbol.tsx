@@ -43,7 +43,7 @@ export function ExecutionSymbol({ name, kind, access, line, displayLine, occurre
     }
   }
   const label = kind === 'variable' ? '变量' : kind === 'access' ? '访问' : kind === 'control' ? '控制流' : '函数'
-  return <SymbolTooltip name={name} line={line} occurrence={occurrence} onKeyDown={onKeyDown} onClose={() => setDepth(0)} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line) : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`} content={<>
+  return <SymbolTooltip placement="bottom" name={name} line={line} occurrence={occurrence} onKeyDown={onKeyDown} onClose={() => setDepth(0)} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line) : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`} content={<>
     <SymbolDetails name={name} kind={kind} access={access} line={line} occurrence={occurrence} module={module} expression={expression} step={step} previous={previous} values={values} label={label} />
     {access && <ParentValues access={access} step={step} values={values} line={line} depth={depth} maximum={maximum} changeDepth={changeDepth} />}
   </>}>
@@ -51,9 +51,10 @@ export function ExecutionSymbol({ name, kind, access, line, displayLine, occurre
   </SymbolTooltip>
 }
 
-function SymbolTooltip({ name, line, occurrence, label, children, content, disclosure = false, onKeyDown, onClose }: {
+function SymbolTooltip({ name, line, occurrence, label, children, content, placement, disclosure = false, onKeyDown, onClose }: {
   name: string; line?: number; occurrence?: number; label: string
   children: ReactNode; content: ReactNode; disclosure?: boolean
+  placement: 'bottom' | 'left top'
   onKeyDown?: (event: KeyboardEvent) => void; onClose?: () => void
 }) {
   const pointerModality = (event: PointerEvent<HTMLElement>) => {
@@ -73,7 +74,7 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, discl
       // HeroUI's focusable trigger also works while a panel is inert behind a
       // modal; Pressable's mount-time focus assertion rejects that valid state.
       : <FocusableTrigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</FocusableTrigger>}
-    <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement="left top" aria-label={disclosure ? `变量 ${name} · ${label}` : label}>
+    <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement={placement} aria-label={disclosure ? `变量 ${name} · ${label}` : label}>
       <ActivePreviewShortcuts onKeyDown={onKeyDown} />
       {content}
     </Popover.Content>
@@ -159,7 +160,7 @@ interface VariableSymbolProps {
 
 export function ExecutionVariableSymbol({ children, disclosure, indicator, ...props }: VariableSymbolProps) {
   const { variable, kind } = props
-  return <SymbolTooltip name={variable.name} label={disclosure ? `${variable.name}: ${variable.type}` : `变量 ${variable.name} · ${kind === 'parameters' ? '参数' : kind === 'captures' ? '捕获变量' : '局部变量'}`} disclosure={disclosure} content={<PanelVariableDescription {...props} />}>
+  return <SymbolTooltip placement="left top" name={variable.name} label={disclosure ? `${variable.name}: ${variable.type}` : `变量 ${variable.name} · ${kind === 'parameters' ? '参数' : kind === 'captures' ? '捕获变量' : '局部变量'}`} disclosure={disclosure} content={<PanelVariableDescription {...props} />}>
     {disclosure ? <>
       {indicator}
       <span className="min-w-0 flex-1"><span className="execution-symbol inline-block"><RustCode>{variable.name}</RustCode></span>{children}</span>
