@@ -39,7 +39,7 @@ test('取事件的真实小步同步代码、队列和上下文，并可完整�
   const code = page.getByRole('region', { name: '核心代码回放' })
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
-  await expect(code).toContainText('教学代码')
+  await expect(code.getByRole('region', { name: '取事件教学代码' })).toBeVisible()
   await expect(code).toContainText('第一条核心语句之前')
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const current = page.getByRole('region', { name: '当前事件', exact: true })
@@ -87,9 +87,26 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(page).toHaveURL(new RegExp(`step=${entry}$`))
     const panel = page.getByRole('region', { name: '核心代码回放' })
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
+    const expectStatusAtBottom = async () => {
+      const gaps = await panel.locator('[aria-live="polite"]').evaluate(element => {
+        const text = document.createRange()
+        text.selectNodeContents(element)
+        const statusBottom = element.getBoundingClientRect().bottom
+        return {
+          aboveText: text.getBoundingClientRect().top - element.getBoundingClientRect().top,
+          text: statusBottom - text.getBoundingClientRect().bottom,
+          panel: element.parentElement!.getBoundingClientRect().bottom - statusBottom,
+          lineHeight: parseFloat(getComputedStyle(element).lineHeight),
+        }
+      })
+      expect(Math.abs(gaps.aboveText)).toBeLessThan(gaps.lineHeight / 2)
+      expect(Math.abs(gaps.text)).toBeLessThan(gaps.lineHeight / 2)
+      expect(Math.abs(gaps.panel)).toBeLessThanOrEqual(1)
+    }
     const code = panel.getByRole('region', { name: '取事件教学代码' })
     const boundary = panel.getByRole('img', { name: '执行边界：取事件之前' })
     await expect(boundary).toBeVisible()
+    await expectStatusAtBottom()
     const offset = () => boundary.evaluate(element => {
       const line = element.parentElement!.querySelector('.code-line')!
       return element.getBoundingClientRect().top - line.getBoundingClientRect().top
@@ -134,6 +151,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       return element.scrollTop
     })).toBeGreaterThan(0)
     expect(await panel.boundingBox()).toEqual(panelBox)
+    await expectStatusAtBottom()
     await page.getByRole('button', { name: '上一个大步', exact: true }).click()
     await expect(panel).toContainText('第一条核心语句之前')
     await expect(page).toHaveTitle('蜘蛛网 · 逐步学习 · BO 结果查看器')

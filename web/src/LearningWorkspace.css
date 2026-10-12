@@ -22,8 +22,7 @@
 /* A step changes descendants, not the page's reading position. */
 .learning-code, .learning-variables { overflow-anchor: none; }
 .execution-source { display: flex; flex-direction: column; gap: 8px; min-height: 0; flex: 1; }
-.execution-summary { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; flex-shrink: 0; }
-.execution-summary > [aria-live] { margin-left: auto; text-align: right; min-height: 3lh; }
+.execution-status { margin-top: auto; flex-shrink: 0; }
 .execution-code-scroll { position: relative; min-height: 0; overflow: auto; max-height: 18rem; border-radius: 4px; }
 .execution-code { position: relative; width: max-content; min-width: 100%; padding: .75rem 1.5rem; margin: 0; line-height: 1.75rem; font-size: .8125rem; }
 .code-line { display: block; height: 1.75rem; }
