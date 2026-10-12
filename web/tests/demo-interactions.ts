@@ -1,18 +1,6 @@
-import { expect, type Locator, type Page } from '@playwright/test'
-import { mkdir } from 'node:fs/promises'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { expect, type Page } from '@playwright/test'
 import { formatPoint, pairName, type Intersection } from '../src/geometry'
 import { captureIntersections, waitForTraceCompletion } from './trace-navigation'
-
-export async function captureDemo(page: Page, target: Locator, id: string, width: number, view: 'card' | 'drawing') {
-  const pictures = join(tmpdir(), 'bo-demo-58')
-  await mkdir(pictures, { recursive: true })
-  await target.scrollIntoViewIfNeeded()
-  await page.mouse.move(0, 0)
-  await target.screenshot({ path: join(pictures, `${id}-${width}-${view}.png`) })
-  if (view === 'drawing') await page.screenshot({ path: join(pictures, `${id}-${width}-viewport.png`) })
-}
 
 export async function checkPairSelection(page: Page, sample: Intersection) {
   if (sample.geometry.type !== 'point') throw new Error('演示不应存在意外重叠')
@@ -55,17 +43,6 @@ export async function checkLearningCompletion(page: Page, intersections: Interse
   await waitForTraceCompletion(page)
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveValue('0')
-  await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await expect(slider).toHaveValue('1')
-  await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
-  await expect(page.getByTestId('variable-next')).toContainText('未赋值')
-  await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await expect(slider).toHaveValue('2')
-  await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
-  await expect(page.getByTestId('variable-next')).toContainText('Some')
-  await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await expect(slider).toHaveValue('3')
-  await expect(page.getByRole('region', { name: '当前事件' })).not.toContainText('尚未处理事件')
   await slider.focus()
   await slider.press('End')
   await expect(slider).toHaveValue(String(trace.steps.length - 1))

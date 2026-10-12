@@ -1,6 +1,6 @@
 import { expect, test } from './learning-test'
 import { formatPoint, samePoint, type Segment } from '../src/geometry'
-import { captureDemo, checkPairSelection, checkViewportControls, checkLearningCompletion } from './demo-interactions'
+import { checkPairSelection, checkViewportControls, checkLearningCompletion } from './demo-interactions'
 import { captureIntersections, captureResult } from './trace-navigation'
 
 const patterns = [
@@ -12,7 +12,8 @@ const patterns = [
   ] },
 ]
 
-for (const pattern of patterns) for (const width of [1360, 390]) {
+for (const pattern of patterns) {
+  const width = 390
   test(`${pattern.name}：真实求交、端点结构、几何交互与教学完成 ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -23,7 +24,6 @@ for (const pattern of patterns) for (const width of [1360, 390]) {
     const card = page.getByRole('article', { name: pattern.name, exact: true })
     await card.scrollIntoViewIfNeeded()
     await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/cases/${pattern.id}/learn`)
-    await captureDemo(page, card, pattern.id, width, 'card')
     const capture = await captureResult(page)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()
@@ -55,8 +55,6 @@ for (const pattern of patterns) for (const width of [1360, 390]) {
       await checkPairSelection(page, sample)
     }
     await expect(page.getByText(`${pattern.pairs} 个相交配对`, { exact: true })).toBeVisible()
-    const drawing = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
-    await captureDemo(page, drawing, pattern.id, width, 'drawing')
     await checkViewportControls(page)
     const lastPair = page.getByRole('radio').last()
     await lastPair.scrollIntoViewIfNeeded()

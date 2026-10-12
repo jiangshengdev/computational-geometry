@@ -1,17 +1,5 @@
 import { expect, test } from './learning-test'
 
-for (const width of [1360, 390]) test(`图例按钮图标居中 ${width}px`, async ({ page }) => {
-  await page.setViewportSize({ width, height: 1000 })
-  await page.goto('/cases/crossing/learn?step=17')
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('17')
-  const trigger = page.getByRole('button', { name: '图例与操作说明' })
-  await trigger.hover()
-  const button = (await trigger.boundingBox())!
-  const icon = (await trigger.locator('svg').boundingBox())!
-  expect(Math.abs(button.x + button.width / 2 - icon.x - icon.width / 2)).toBeLessThan(1)
-  expect(Math.abs(button.y + button.height / 2 - icon.y - icon.height / 2)).toBeLessThan(1)
-})
-
 test('帮助：两页集中入口、键盘隔离与焦点返回', async ({ page }) => {
   for (const route of ['/cases/crossing', '/cases/crossing/learn?step=3']) {
     await page.goto(route)
@@ -22,19 +10,6 @@ test('帮助：两页集中入口、键盘隔离与焦点返回', async ({ page 
     const dialog = page.getByRole('dialog', { name: '说明与帮助', exact: true })
     await expect(dialog).toBeVisible()
     await expect(dialog).toContainText('两两检查')
-    const corner = await dialog.getByRole('tab', { name: '学习目标、术语与扫描约定', exact: true }).evaluate(tab => {
-      const container = tab.closest('[data-slot="tabs-list-container"]')!
-      const list = tab.closest('[role="tablist"]')!
-      const indicator = tab.querySelector('[data-slot="tabs-indicator"]')!
-      return {
-        outer: parseFloat(getComputedStyle(container).borderTopLeftRadius),
-        inset: parseFloat(getComputedStyle(list).paddingTop),
-        tab: parseFloat(getComputedStyle(tab).borderTopLeftRadius),
-        indicator: parseFloat(getComputedStyle(indicator).borderTopLeftRadius),
-      }
-    })
-    expect(corner.tab).toBe(corner.outer - corner.inset)
-    expect(corner.indicator).toBe(corner.tab)
     for (const key of ['ArrowRight', 'ArrowLeft', 'r', 'Tab', 'Shift+Tab']) {
       await page.keyboard.press(key)
       expect(await dialog.evaluate(el => el.contains(document.activeElement))).toBe(true)

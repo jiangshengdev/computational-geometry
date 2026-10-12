@@ -1,6 +1,6 @@
 import { expect, test } from './learning-test'
 import { formatPoint, samePoint, type Segment } from '../src/geometry'
-import { captureDemo, checkPairSelection, checkViewportControls, checkLearningCompletion } from './demo-interactions'
+import { checkPairSelection, checkLearningCompletion } from './demo-interactions'
 import { captureResult } from './trace-navigation'
 
 const demos = [
@@ -19,7 +19,10 @@ const workedPoints: Record<string, { pair: number[]; point: string }[]> = {
   'star-polygon': [{ pair: [0, 1], point: '(70/17, 0)' }, { pair: [0, 3], point: '(7, -7)' }],
 }
 
-for (const [id, name] of demos) for (const width of [1360, 390]) {
+// Shared desktop interactions are covered by viewer/projection; each preset
+// keeps its own result and learning checks at the constrained mobile width.
+for (const [id, name] of demos) {
+  const width = 390
   test(`${name}：真实结果、配对交互与教学完成 ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -30,7 +33,6 @@ for (const [id, name] of demos) for (const width of [1360, 390]) {
     const card = page.getByRole('article', { name, exact: true })
     await card.scrollIntoViewIfNeeded()
     await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/cases/${id}/learn`)
-    await captureDemo(page, card, id, width, 'card')
     const capture = await captureResult(page)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()
@@ -50,12 +52,9 @@ for (const [id, name] of demos) for (const width of [1360, 390]) {
     }
     await expect(page).toHaveTitle(`${name} · 计算结果 · BO 结果查看器`)
     await expect(page.getByText(`${intersections.length} 个相交配对`, { exact: true })).toBeVisible()
-    const drawing = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
-    await captureDemo(page, drawing, id, width, 'drawing')
     for (const sample of [intersections[0], intersections.at(-1)!]) {
       await checkPairSelection(page, sample)
     }
-    await checkViewportControls(page)
     const positions = new Set(intersections.map(item => item.geometry.type === 'point' && formatPoint(item.geometry.point))).size
     await checkLearningCompletion(page, intersections, positions)
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)

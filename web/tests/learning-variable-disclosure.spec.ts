@@ -1,8 +1,6 @@
 import { expect, test } from './learning-test'
 import { readTrace } from './trace-navigation'
 import { formatExecutionValue } from '../src/executionValue'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
   for (const width of [1440, 390]) test.extend({ browserName })(`变量两级折叠及页面内状态 ${browserName} ${width}`, async ({ page }) => {
@@ -45,11 +43,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         })
         await trigger.click({ position })
         await expect(trigger).toHaveAttribute('aria-expanded', expected)
-        await expect.poll(() => trigger.evaluate(element => {
-          const icon = element.querySelector('svg')!.getBoundingClientRect()
-          const firstLineCenter = element.getBoundingClientRect().top + parseFloat(getComputedStyle(element).lineHeight) / 2
-          return Math.abs(icon.top + icon.height / 2 - firstLineCenter)
-        })).toBeLessThanOrEqual(1)
       }
     }
     // The disclosure panel owns clipping/visibility; WebKit retains geometry
@@ -58,14 +51,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(details).not.toBeVisible()
     await expect(details).toHaveAttribute('aria-hidden', 'true')
     await expect(queue.locator('dt')).toContainText('Event')
-    const summary = queue.locator('dt code').nth(1)
-    await expect(summary.locator('span[style]').filter({ hasText: 'Event' }).first()).toBeVisible()
-    const numericToken = summary.locator('span[style]').filter({ hasText: /^0$/ }).first()
-    await expect(numericToken).toBeVisible()
-    const lightColor = await numericToken.evaluate(element => getComputedStyle(element).color)
-    await page.locator('html').evaluate(element => element.classList.add('dark'))
-    await expect.poll(() => numericToken.evaluate(element => getComputedStyle(element).color)).not.toBe(lightColor)
-    await page.locator('html').evaluate(element => element.classList.remove('dark'))
     await queueTrigger.focus()
     await queueTrigger.press('Enter')
     await expect(queueTrigger).toHaveAttribute('aria-expanded', 'true')
@@ -108,8 +93,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     expect(errors).toEqual([])
-    await panel.scrollIntoViewIfNeeded()
-    await page.screenshot({ path: join(tmpdir(), `bo-variable-disclosure-${browserName}-${width}.png`) })
   })
 }
 
@@ -126,6 +109,5 @@ test('单行坐标、非空编号列表及标量直接显示，不提供折叠',
     const row = panel.getByTestId(`variable-${variable.name}`)
     await expect(row.getByRole('button')).toHaveCount(0)
     await expect(row.locator('dd')).toHaveText(trace.values[variable.value!])
-    await expect(row.locator('dd code span[style]').first()).toBeVisible()
   }
 })

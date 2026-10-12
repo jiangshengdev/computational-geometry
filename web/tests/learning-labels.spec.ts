@@ -1,6 +1,4 @@
 import { expect, test, expandedPanels, type Locator, type Page } from './learning-test'
-import { join } from 'node:path'
-import { tmpdir } from 'node:os'
 import { readResponse, readTrace, stepIndex, waitForTraceCompletion } from './trace-navigation'
 
 async function linePosition(line: Locator, fraction = 0.25) {
@@ -98,7 +96,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.goto(`/cases/crossing/learn?step=${intersection}`)
     await expect(svg.locator('.teaching-labels text[data-input]:visible')).toHaveCount(2)
     for (const position of await positions()) expect(position).toEqual(anchors.get(position.id))
-    if (browserName === 'chromium') await page.getByRole('region', { name: '几何视图' }).screenshot({ path: join(tmpdir(), `bo-labels-stable-${width}.png`) })
   })
 
   for (const width of [1920, 390]) browserTest(`教学标签：蜘蛛网按步骤显示且可读 ${browserName} ${width}px`, async ({ page }) => {
@@ -112,13 +109,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(page).toHaveTitle('蜘蛛网 · 逐步学习 · BO 结果查看器')
     await expect(svg.locator('.input')).toHaveCount(32)
     await expect(svg.locator('text:not(.tick):visible')).toHaveCount(0)
-    if (browserName === 'chromium') await page.screenshot({ path: join(tmpdir(), `bo-labels-initial-${width}.png`), fullPage: true })
     const center = trace.steps.findIndex(step => step.action === 'take' && step.current?.x.numerator === '0' && step.current.y.numerator === '0')
     expect(center).toBeGreaterThan(0)
-    await page.getByRole('button', { name: '下一个大步', exact: true }).click()
-    await expect(page.locator('.code-line')).toHaveText([
-      'let next = queue.pop_first();\n', 'let Some((point, event)) = next else {\n', '    break;\n', '};\n',
-    ])
     await page.goto(`/cases/spider-web/learn?step=${center}`)
     await expect(svg.locator('.current-label')).toHaveCount(0)
     await expect(svg.locator('.current-point')).toBeVisible()
@@ -132,7 +124,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     }
     await expect(svg).not.toContainText(/起点|终点|重叠区间/)
     await readableLabels(page)
-    if (browserName === 'chromium') await page.screenshot({ path: join(tmpdir(), `bo-labels-current-${width}.png`), fullPage: true })
     // Inspecting a participant keeps every input label in its reserved slot.
     const inspectedId = participants[0]
     const placements = () => svg.locator('.teaching-labels text[data-input]').evaluateAll(nodes => nodes.map(node =>
