@@ -115,7 +115,7 @@ export const teachingModules: Record<string, TeachingModule> = {
 
 const closureModules = new Map(Object.values(teachingModules).flatMap(module => module.closures.map(closure => [closure.module, module] as const)))
 
-// Navigation compares stops within a call, independently of where its code is displayed.
+// Map the trace boundary to its location in the displayed teaching source.
 export function executionBoundary(execution: ExecutionState) {
   if (execution.boundary === null) return undefined
   return closureModules.has(execution.module) ? execution.boundary : teachingModules[execution.module]?.boundaryLines[execution.boundary]

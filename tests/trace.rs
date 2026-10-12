@@ -206,14 +206,15 @@ async fn retain_calls_expose_real_parameters_scopes_and_separate_returns() {
         assert_eq!(caller.execution.context.id, step.execution.outer[0].id);
         let call_boundary = steps[index - 1].execution.boundary.unwrap();
         sites.insert(call_boundary);
-        if caller.execution.boundary == Some(call_boundary) {
-            let next = &steps[index + 3];
+        assert_eq!(caller.execution.boundary, Some(call_boundary));
+        let next = &steps[index + 3];
+        if next.execution.context.id != caller.execution.context.id {
             assert_eq!(next.execution.module, step.execution.module);
             assert!(!next.execution.returning);
             assert_ne!(next.execution.context.id, step.execution.context.id);
         } else {
-            assert_eq!(caller.execution.boundary, Some(call_boundary + 1));
-            assert!(caller.execution.calls.iter().any(|call| {
+            assert_eq!(next.execution.boundary, Some(call_boundary + 1));
+            assert!(next.execution.calls.iter().any(|call| {
                 call.function == "retain" && call.result.availability == "available"
             }));
         }
@@ -262,11 +263,15 @@ async fn other_closures_preserve_actual_arguments_returns_and_no_call_paths() {
             );
             let call_site = &steps[index - 1].execution;
             let resumed = &steps[index + 2].execution;
-            if resumed.module == call_site.module && resumed.boundary == call_site.boundary {
-                let next = &steps[index + 3].execution;
+            assert_eq!(resumed.module, call_site.module);
+            assert_eq!(resumed.boundary, call_site.boundary);
+            let next = &steps[index + 3].execution;
+            if next.context.id != resumed.context.id {
                 assert_eq!(next.module, step.execution.module);
                 assert!(!next.returning);
                 assert_ne!(next.context.id, step.execution.context.id);
+            } else {
+                assert_ne!(next.boundary, resumed.boundary);
             }
             if function == "sort_by closure" {
                 assert_eq!(
@@ -331,7 +336,20 @@ async fn overlap_conversions_resume_between_callbacks_then_complete_the_expressi
         steps[index + 3].execution.context.id,
         steps[index].execution.context.id
     );
-    let completed = &steps[index + 6];
+    let resumed = &steps[index + 6];
+    assert_eq!(
+        resumed.execution.context.id,
+        steps[index].execution.context.id
+    );
+    assert_eq!(resumed.execution.boundary, Some(9));
+    assert_eq!(variable(resumed, "geometry").availability, "unassigned");
+    let completed = steps[index + 7..]
+        .iter()
+        .find(|step| {
+            step.execution.context.id == resumed.execution.context.id
+                && variable(step, "geometry").availability == "available"
+        })
+        .unwrap();
     assert_eq!(completed.execution.module, "record");
     assert_eq!(completed.execution.boundary, Some(13));
     assert_eq!(control(completed, 4, "if"), Some("true"));

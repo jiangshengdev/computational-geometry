@@ -304,7 +304,7 @@ pub fn intersections(segments: &[Segment]) -> Vec<Intersection> {
 
 /// Teaching snapshots expose original coordinates and lexicographic event order.
 /// Captured only when requested; ordinary callers use the same exact sweep.
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Eq)]
 pub(crate) struct SweepStep {
     pub execution: Execution,
     pub phase: &'static str,
@@ -320,7 +320,7 @@ pub(crate) struct SweepStep {
     pub passes: Vec<usize>,
 }
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Eq)]
 pub(crate) struct Execution {
     pub(crate) module: &'static str,
     pub(crate) boundary: Option<usize>,
@@ -333,13 +333,13 @@ pub(crate) struct Execution {
     pub(crate) blocks: Vec<ExecutionBlock>,
 }
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Eq)]
 pub(crate) struct ExecutionBlock {
     pub(crate) line: usize,
     pub(crate) phase: &'static str,
 }
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Eq)]
 pub(crate) struct ExecutionControl {
     pub(crate) line: usize,
     pub(crate) keyword: &'static str,
@@ -387,7 +387,7 @@ impl ExecutionControl {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Eq)]
 pub(crate) struct ExecutionCall {
     pub(crate) line: usize,
     pub(crate) function: &'static str,
@@ -414,7 +414,7 @@ impl ExecutionCall {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Eq)]
 pub(crate) struct ExecutionContext {
     pub(crate) id: usize,
     pub(crate) function: &'static str,
@@ -495,28 +495,9 @@ impl ClosureTrace {
         self.caller.action = "micro";
         steps.push(self.caller);
     }
-
-    fn finish(steps: &mut Vec<SweepStep>) {
-        if let [.., call_site, entered, returned, caller] = steps.as_slice()
-            && entered.execution.context.id == returned.execution.context.id
-            && returned.execution.returning
-            && call_site.execution.module == caller.execution.module
-            && call_site.execution.boundary == caller.execution.boundary
-            && call_site.execution.context.id == caller.execution.context.id
-            && returned
-                .execution
-                .outer
-                .last()
-                .is_some_and(|outer| outer.id == caller.execution.context.id)
-        {
-            // The library operation has finished. Its next observation replaces
-            // the resume stop, while the callback's return value stays visible.
-            steps.pop();
-        }
-    }
 }
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Eq)]
 pub(crate) struct Variable {
     pub(crate) scope: Option<&'static str>,
     pub(crate) name: &'static str,
@@ -616,6 +597,42 @@ fn event_value(event: &Event) -> String {
 }
 
 impl SweepStep {
+    fn coalesce_block_successors(steps: &mut Vec<Self>, start: usize) {
+        // A block-after observation and its immediate successor describe one
+        // execution boundary. Compare every observable field (including call
+        // identity, scope, availability and canvas), not merely the code line.
+        // Finalize the event before publishing any of its frames: consumers
+        // never have to revise an index they have already received.
+        let observations = steps.split_off(start);
+        for mut next in observations {
+            if steps.len() > start {
+                let previous = steps.last_mut().expect("preceding observation exists");
+                if previous
+                    .execution
+                    .blocks
+                    .iter()
+                    .any(|block| block.phase == "after")
+                {
+                    let mut meanings = std::mem::take(&mut previous.execution.blocks);
+                    let next_meanings = std::mem::take(&mut next.execution.blocks);
+                    let same = *previous == next;
+                    if same {
+                        for meaning in next_meanings {
+                            if !meanings.contains(&meaning) {
+                                meanings.push(meaning);
+                            }
+                        }
+                        previous.execution.blocks = meanings;
+                        continue;
+                    }
+                    previous.execution.blocks = meanings;
+                    next.execution.blocks = next_meanings;
+                }
+            }
+            steps.push(next);
+        }
+    }
+
     fn block_before(steps: &mut Vec<Self>, boundary: usize, line: usize) {
         let mut before = steps.last().expect("block operation was captured").clone();
         before.execution.boundary = Some(boundary);
@@ -1162,9 +1179,6 @@ fn sweep(
                         format!("{height_order:?}"),
                     ));
                     step.execution.context.locals.extend($locals);
-                    // Preserve the caller's controls before replacing its
-                    // callback-resume stop with this completed operation.
-                    ClosureTrace::finish(steps);
                     steps.push(step);
                 }
             };
@@ -2966,6 +2980,7 @@ fn sweep(
                 step.ends.clone_from(&ends);
                 step.passes.clone_from(&passes);
             }
+            SweepStep::coalesce_block_successors(steps, first_step);
         }
         if let (Some(steps), Some(emit)) = (&mut steps, &mut emit)
             && !emit_steps(steps, &mut projection, *emit, &mut retained)
@@ -3099,6 +3114,7 @@ mod execution_value_tests {
                     .collect::<Vec<_>>()
             };
             assert_eq!(controls(actual), controls(expected));
+            assert!(actual.execution.blocks == expected.execution.blocks);
             let locals = |step: &SweepStep| {
                 step.execution
                     .context
