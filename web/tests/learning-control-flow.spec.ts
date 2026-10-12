@@ -44,9 +44,9 @@ test('分类真假分支在块外汇合，if hover保留本次判断且回退恢
     await page.getByRole('button', { name: '下一步', exact: true }).click()
     await page.getByRole('button', { name: '上一步', exact: true }).click()
     await expectNextStatement(panel, 'if segments[id].left != point && segments[id].right != point {')
+    await expect(panel.getByRole('img', { name: /执行边界/ })).toBeInViewport()
     await hoverControl(page, panel, 'if', 11, state === 'true' ? '本次条件为真' : '本次条件为假')
     expect(await page.getByRole('region', { name: '核心变量', exact: true }).locator('dd').allTextContents()).toEqual(before)
-    await expect(panel.getByRole('img', { name: /执行边界/ })).toBeInViewport()
   }
   await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
@@ -118,6 +118,7 @@ test('提前return的前后停点保留实际返回位置，未调用函数不�
   await openStep(page, 'disjoint', entry)
   await panel.locator('[data-symbol="intersection_candidate"]').hover()
   await expect(page.getByRole('dialog', { name: /^函数 intersection_candidate / })).not.toContainText('返回值：None')
+  await closePreview(page, page.getByRole('dialog', { name: /^函数 intersection_candidate / }))
 })
 
 test('record的两层else各自解释实际路径，continue跳转后循环局部变量失效', async ({ page }) => {
