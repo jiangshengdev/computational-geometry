@@ -53,3 +53,28 @@ test('其余闭包沿用真实参数、返回停点和外层作用域', async ({
     await expect(current.getByTestId('variable-return_value')).toContainText('未赋值')
   }
 })
+
+test('用户函数调用保留暂停的外层作用域，返回后再赋值给调用方', async ({ page }) => {
+  const capture = await captureIntersections(page)
+  await page.goto('/cases/crossing/learn')
+  const { trace } = await capture.result
+  await waitForTraceCompletion(page)
+  const entry = trace.steps.findIndex(step => step.execution.context.function === 'schedule_neighbors' && step.execution.entry)
+  expect(entry).toBeGreaterThan(0)
+  await seekStep(page, entry - 1, 'jump')
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  const current = page.getByRole('region', { name: '当前执行上下文', exact: true })
+  const outer = page.getByRole('region', { name: '外层执行上下文 sweep', exact: true })
+  await expect(current).toContainText('schedule_neighbors')
+  await expect(outer.getByTestId('variable-candidate')).toContainText('未赋值')
+  const returned = trace.steps.findIndex((step, index) => index >= entry && step.execution.context.id === trace.steps[entry].execution.context.id && step.execution.returning)
+  await seekStep(page, returned, 'jump')
+  await expect(current.getByTestId('variable-return_value')).toContainText('Some')
+  await expect(outer.getByTestId('variable-candidate')).toContainText('未赋值')
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await expect(current.getByTestId('variable-candidate')).toContainText('Some')
+  await expect(outer).toHaveCount(0)
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await expect(current).toContainText('schedule_neighbors')
+  await expect(outer.getByTestId('variable-candidate')).toContainText('未赋值')
+})

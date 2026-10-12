@@ -2445,6 +2445,18 @@ fn sweep(
             );
             let pending_count = queue.len();
             let tracing = steps.is_some();
+            let caller = steps.as_ref().map(|steps| {
+                steps
+                    .last()
+                    .expect("caller stop exists")
+                    .execution
+                    .context
+                    .clone()
+            });
+            let call_id = next_call.get();
+            if tracing {
+                next_call.set(call_id + 1);
+            }
             let mut observer = |boundary,
                                 queue: &BTreeMap<Point, Event>,
                                 checked: &[[usize; 2]],
@@ -2473,9 +2485,12 @@ fn sweep(
                     step.execution.module = "geometry";
                     step.execution.boundary = Some(boundary);
                     step.execution.entry = boundary == 0;
+                    step.execution.outer =
+                        vec![caller.as_ref().expect("tracing captures caller").clone()];
+                    step.execution.returning = matches!(boundary, 8 | 11 | 12);
                     step.execution.controls = controls;
                     step.execution.context = ExecutionContext {
-                        id: 0,
+                        id: call_id,
                         captures: Vec::new(),
                         function: "schedule_neighbors",
                         parameters: vec![

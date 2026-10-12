@@ -258,6 +258,70 @@ async fn other_closures_preserve_actual_arguments_returns_and_no_call_paths() {
 }
 
 #[tokio::test]
+async fn displayed_function_calls_preserve_outer_scope_until_normal_or_early_return() {
+    let mut outcomes = std::collections::HashSet::new();
+    for segments in [
+        vec![(0, 0, 4, 4), (0, 4, 4, 0)],
+        vec![(0, 0, 4, 0), (0, 1, 4, 1)],
+    ] {
+        let response = trace_segments(&segments).await;
+        let steps = &response.trace.steps;
+        let mut ids = std::collections::HashSet::new();
+        for (index, step) in steps
+            .iter()
+            .enumerate()
+            .filter(|(_, step)| step.execution.module == "geometry" && step.execution.entry)
+        {
+            assert_ne!(step.execution.context.id, 0);
+            assert!(ids.insert(step.execution.context.id));
+            assert_eq!(step.execution.outer.len(), 1);
+            assert_eq!(
+                step.execution.outer[0].id,
+                steps[index - 1].execution.context.id
+            );
+            let candidate = step.execution.outer[0]
+                .locals
+                .iter()
+                .find(|v| v.name == "candidate")
+                .unwrap();
+            assert_eq!(candidate.availability, "unassigned");
+            let return_index = (index..steps.len())
+                .find(|&i| {
+                    steps[i].execution.context.id == step.execution.context.id
+                        && steps[i].execution.returning
+                })
+                .unwrap();
+            for frame in &steps[index..return_index] {
+                assert_eq!(frame.execution.context.id, step.execution.context.id);
+                assert_ne!(variable(frame, "return_value").availability, "available");
+                assert_eq!(
+                    frame.execution.outer[0]
+                        .locals
+                        .iter()
+                        .find(|v| v.name == "candidate")
+                        .unwrap()
+                        .availability,
+                    "unassigned"
+                );
+            }
+            let returned = &steps[return_index];
+            let value = variable(returned, "return_value")
+                .text(&response.trace.values)
+                .unwrap();
+            outcomes.insert(value.to_string());
+            assert_eq!(steps[return_index + 1].execution.context.id, 0);
+            assert_eq!(
+                variable(&steps[return_index + 1], "candidate").text(&response.trace.values),
+                Some(value)
+            );
+        }
+        assert!(!ids.is_empty());
+    }
+    assert!(outcomes.contains("None"));
+    assert!(outcomes.contains("Some((2, 2))"));
+}
+
+#[tokio::test]
 async fn trace_point_table_deduplicates_equivalent_input_fraction_representations() {
     let segments: Vec<_> = [
         ("7", "5", "3", "2"),
