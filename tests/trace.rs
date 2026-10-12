@@ -204,7 +204,19 @@ async fn retain_calls_expose_real_parameters_scopes_and_separate_returns() {
         outcomes.insert(variable(returned, "return_value").text(values).unwrap());
         let caller = &steps[index + 2];
         assert_eq!(caller.execution.context.id, step.execution.outer[0].id);
-        sites.insert(caller.execution.boundary.unwrap());
+        let call_boundary = steps[index - 1].execution.boundary.unwrap();
+        sites.insert(call_boundary);
+        if caller.execution.boundary == Some(call_boundary) {
+            let next = &steps[index + 3];
+            assert_eq!(next.execution.module, step.execution.module);
+            assert!(!next.execution.returning);
+            assert_ne!(next.execution.context.id, step.execution.context.id);
+        } else {
+            assert_eq!(caller.execution.boundary, Some(call_boundary + 1));
+            assert!(caller.execution.calls.iter().any(|call| {
+                call.function == "retain" && call.result.availability == "available"
+            }));
+        }
     }
     assert!(calls.len() > 3, "real repeated calls must be recorded");
     assert_eq!(outcomes, std::collections::HashSet::from(["true", "false"]));
@@ -248,6 +260,14 @@ async fn other_closures_preserve_actual_arguments_returns_and_no_call_paths() {
                 steps[index + 2].execution.context.id,
                 step.execution.outer.last().unwrap().id
             );
+            let call_site = &steps[index - 1].execution;
+            let resumed = &steps[index + 2].execution;
+            if resumed.module == call_site.module && resumed.boundary == call_site.boundary {
+                let next = &steps[index + 3].execution;
+                assert_eq!(next.module, step.execution.module);
+                assert!(!next.returning);
+                assert_ne!(next.context.id, step.execution.context.id);
+            }
             if function == "sort_by closure" {
                 assert_eq!(
                     step.execution
@@ -282,6 +302,50 @@ async fn other_closures_preserve_actual_arguments_returns_and_no_call_paths() {
             assert_ne!(steps[index + 1].execution.context.function, "then closure");
         }
     }
+}
+
+#[tokio::test]
+async fn overlap_conversions_resume_between_callbacks_then_complete_the_expression() {
+    let response = trace_segments(&[(0, 0, 4, 0), (1, 0, 3, 0)]).await;
+    let steps = &response.trace.steps;
+    let values = &response.trace.values;
+    let index = steps
+        .iter()
+        .position(|step| step.execution.module == "record" && step.execution.boundary == Some(9))
+        .unwrap();
+    for (offset, point) in [(1, "(1, 0)"), (4, "(3, 0)")] {
+        let entered = &steps[index + offset];
+        let returned = &steps[index + offset + 1];
+        assert_eq!(entered.execution.context.function, "original closure");
+        assert!(!entered.execution.returning);
+        assert_eq!(
+            entered.execution.context.parameters[0].text(values),
+            Some(point)
+        );
+        assert_eq!(returned.execution.context.id, entered.execution.context.id);
+        assert!(returned.execution.returning);
+        assert_eq!(variable(returned, "return_value").text(values), Some(point));
+    }
+    assert_eq!(steps[index + 3].execution.boundary, Some(9));
+    assert_eq!(
+        steps[index + 3].execution.context.id,
+        steps[index].execution.context.id
+    );
+    let completed = &steps[index + 6];
+    assert_eq!(completed.execution.module, "record");
+    assert_eq!(completed.execution.boundary, Some(13));
+    assert_eq!(control(completed, 4, "if"), Some("true"));
+    assert_eq!(control(completed, 9, "if"), Some("true"));
+    assert_eq!(variable(completed, "geometry").availability, "available");
+    assert_eq!(
+        completed
+            .execution
+            .calls
+            .iter()
+            .filter(|call| call.function == "original" && call.result.availability == "available")
+            .count(),
+        2
+    );
 }
 
 #[tokio::test]
@@ -639,6 +703,22 @@ async fn loop_reentry_clears_previous_iteration_controls_and_bindings() {
     let mut saw_inner_reentry = false;
     let mut saw_outer_reentry = false;
     for (index, step) in response.trace.steps.iter().enumerate() {
+        for exhausted in step
+            .execution
+            .controls
+            .iter()
+            .filter(|control| control.keyword == "for" && control.state == "exhausted")
+        {
+            if let Some(previous) = index.checked_sub(1).map(|i| &response.trace.steps[i]) {
+                if previous.execution.module == step.execution.module {
+                    assert_ne!(
+                        control(previous, exhausted.line, "for"),
+                        Some("pending"),
+                        "the final iteration must leave the loop without a redundant head stop"
+                    );
+                }
+            }
+        }
         if step.execution.module == "classify"
             && control(step, 2, "for") == Some("exhausted")
             && step.active.is_empty()
@@ -699,7 +779,8 @@ async fn continue_has_a_pending_stop_then_jump_without_recording_a_duplicate_res
         assert_ne!(variable(step, "geometry").availability, "available");
         let next = &steps[index + 1];
         assert_eq!(control(next, 7, "continue"), Some("jumping"));
-        assert_eq!(control(next, 2, "for"), Some("pending"));
+        assert_eq!(control(next, 2, "for"), Some("exhausted"));
+        assert_eq!(next.execution.boundary, Some(15));
         assert_eq!(next.results, step.results);
         assert!(
             next.execution
@@ -731,7 +812,8 @@ async fn missing_neighbors_complete_get_before_continue_and_empty_queue_complete
         assert_eq!(control(step, 4, "else"), Some("entered"));
         assert_ne!(variable(step, "neighbors").availability, "available");
         assert_eq!(control(&steps[index + 1], 4, "continue"), Some("jumping"));
-        assert_eq!(control(&steps[index + 1], 3, "for"), Some("pending"));
+        assert_eq!(control(&steps[index + 1], 3, "for"), Some("exhausted"));
+        assert_eq!(steps[index + 1].execution.boundary, Some(6));
     }
     assert!(skipped_neighbors > 0);
     let empty = trace_json("[]").await;

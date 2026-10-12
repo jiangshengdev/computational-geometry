@@ -53,7 +53,7 @@ test('分类真假分支在块外汇合，if hover保留本次判断且回退恢
   expect(errors).toEqual([])
 })
 
-test('缺失邻居先停continue前，再回到for且清除本轮判断与返回值', async ({ page }) => {
+test('末次缺失邻居先停continue前，再直接退出for且清除本轮判断与返回值', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const index = stepIndex(trace, step => step.execution.module === 'neighbors' && step.execution.boundary === 7)
   const panel = await openStep(page, 'crossing', index)
@@ -63,16 +63,15 @@ test('缺失邻居先停continue前，再回到for且清除本轮判断与返回
   await panel.locator('[data-symbol="get"]').hover()
   await expect(page.getByRole('dialog', { name: /^函数 get / })).toContainText('返回值：None')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await expectNextStatement(panel, 'for lower in boundaries.into_iter().flatten() {')
   await hoverControl(page, panel, 'continue', 4, '已执行 continue，跳往下一次迭代')
-  await hoverControl(page, panel, 'for', 3, '本轮尚未判断')
+  await hoverControl(page, panel, 'for', 3, '本次没有下一个元素，循环已结束')
   await hoverControl(page, panel, 'else', 4, '本次尚未执行')
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await hoverControl(page, panel, 'else', 4, '本次进入 else 分支')
   await expectNextStatement(panel, 'continue;')
 })
 
-test('空循环与末次迭代完成均显示结束，回边不泄露下轮条件', async ({ page }) => {
+test('空循环与末次迭代完成均显示结束，回退直接恢复末轮状态', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const empty = stepIndex(trace, step => step.execution.module === 'classify' && step.execution.boundary === 6 && step.active.length === 0)
   const panel = await openStep(page, 'crossing', empty)
@@ -83,9 +82,10 @@ test('空循环与末次迭代完成均显示结束，回边不泄露下轮条�
   await openStep(page, 'crossing', last)
   await hoverControl(page, panel, 'for', 8, '本次没有下一个元素，循环已结束')
   await page.getByRole('button', { name: '上一步', exact: true }).click()
-  await expectNextStatement(panel, 'for &id in &incident {')
-  await hoverControl(page, panel, 'for', 8, '本轮尚未判断')
-  for (const line of [9, 11, 13]) await hoverControl(page, panel, 'if', line, '本次尚未执行')
+  await hoverControl(page, panel, 'for', 8, '本次已取得迭代元素，进入循环体')
+  await hoverControl(page, panel, 'if', 9, '本次条件为真')
+  for (const line of [11, 13]) await hoverControl(page, panel, 'if', line, '本次条件为假')
+  await expect(page.getByRole('region', { name: '核心变量', exact: true }).getByTestId('variable-id')).toContainText('usize = 0')
 })
 
 test('提前return的前后停点保留实际返回位置，未调用函数不显示上次结果', async ({ page }) => {
@@ -137,8 +137,7 @@ test('record的两层else各自解释实际路径，continue跳转后循环局�
   await expectNextStatement(panel, 'continue;')
   await hoverControl(page, panel, 'continue', 7, '即将执行；结果尚未产生')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await expectNextStatement(panel, 'for &b in &incident[i + 1..] {')
-  await hoverControl(page, panel, 'for', 2, '本轮尚未判断')
+  await hoverControl(page, panel, 'for', 2, '本次没有下一个元素，循环已结束')
   await hoverControl(page, panel, 'if', 4, '本次尚未执行')
   for (const name of ['b', 'start', 'end', 'geometry']) {
     await expect(page.getByRole('region', { name: '核心变量', exact: true }).getByTestId(`variable-${name}`)).toContainText('不可用')

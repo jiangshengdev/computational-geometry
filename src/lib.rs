@@ -347,6 +347,22 @@ impl Execution {
 }
 
 impl ExecutionControl {
+    fn exhaust_loop(steps: &mut Vec<SweepStep>, line: usize) {
+        let completed = steps.last_mut().expect("loop exit was captured");
+        completed.execution.control(line, "for", "exhausted");
+        if let [.., previous, completed] = steps.as_slice()
+            && previous.execution.module == completed.execution.module
+            && previous.execution.context.id == completed.execution.context.id
+            && previous.execution.controls.iter().any(|control| {
+                control.line == line && control.keyword == "for" && control.state == "pending"
+            })
+        {
+            // The exit already carries the cleared bindings and control state.
+            // Keep head stops only when another iteration actually follows.
+            steps.remove(steps.len() - 2);
+        }
+    }
+
     fn set(controls: &mut Vec<Self>, line: usize, keyword: &'static str, state: &'static str) {
         if let Some(control) = controls
             .iter_mut()
@@ -470,6 +486,25 @@ impl ClosureTrace {
         self.caller.execution.entry = false;
         self.caller.action = "micro";
         steps.push(self.caller);
+    }
+
+    fn finish(steps: &mut Vec<SweepStep>) {
+        if let [.., call_site, entered, returned, caller] = steps.as_slice()
+            && entered.execution.context.id == returned.execution.context.id
+            && returned.execution.returning
+            && call_site.execution.module == caller.execution.module
+            && call_site.execution.boundary == caller.execution.boundary
+            && call_site.execution.context.id == caller.execution.context.id
+            && returned
+                .execution
+                .outer
+                .last()
+                .is_some_and(|outer| outer.id == caller.execution.context.id)
+        {
+            // The library operation has finished. Its next observation replaces
+            // the resume stop, while the callback's return value stays visible.
+            steps.pop();
+        }
     }
 }
 
@@ -1099,6 +1134,9 @@ fn sweep(
                         format!("{height_order:?}"),
                     ));
                     step.execution.context.locals.extend($locals);
+                    // Preserve the caller's controls before replacing its
+                    // callback-resume stop with this completed operation.
+                    ClosureTrace::finish(steps);
                     steps.push(step);
                 }
             };
@@ -1122,6 +1160,11 @@ fn sweep(
             };
         }
         macro_rules! control {
+            ($line:expr, "for", "exhausted") => {
+                if let Some(steps) = &mut steps {
+                    ExecutionControl::exhaust_loop(steps, $line);
+                }
+            };
             ($line:expr, $keyword:expr, $state:expr) => {
                 if let Some(steps) = &mut steps {
                     steps
