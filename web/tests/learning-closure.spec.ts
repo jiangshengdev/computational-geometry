@@ -2,6 +2,10 @@ import { expect, test } from './learning-test'
 import { captureIntersections, seekStep, waitForTraceCompletion } from './trace-navigation'
 import type { TraceFrame } from '../src/geometry'
 
+function executableSource(source: string) {
+  return source.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('//')).join('\n')
+}
+
 test('si 进入真实 retain 调用，显示作用域、独立返回值并逐步回退', async ({ page }) => {
   const capture = await captureIntersections(page)
   await page.goto('/cases/crossing/learn')
@@ -23,7 +27,7 @@ test('si 进入真实 retain 调用，显示作用域、独立返回值并逐步
   await expect(current).toContainText('捕获变量')
   await expect(outer).toBeVisible()
   await expect(source).toHaveText(callerSource!)
-  expect(callerSource).toContain('active.retain(|&id| {\n    segments[id].right != point\n});')
+  expect(executableSource(callerSource!)).toContain('active.retain(|&id| {\nsegments[id].right != point\n});')
   await expect(code).toContainText('segments[id].right != point')
   await expect(code).not.toContainText('nop!')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
@@ -91,12 +95,15 @@ browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${brow
     await seekStep(page, entry - 1, 'jump')
     await expect(source).toContainText(example.body)
     const callerSource = await source.textContent()
-    expect(callerSource).toMatch(new RegExp(example.opening.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\n\\s+' + example.body.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\n'))
+    expect(executableSource(callerSource!)).toContain(`${example.opening}\n${example.body}\n`)
     await page.getByRole('button', { name: '下一步', exact: true }).click()
     await expect(source).toHaveText(callerSource!)
     for (const returning of [false, true]) {
       const alignment = await code.evaluate((element, { opening, body, returning }) => {
-        const lines = Array.from(element.querySelectorAll('.code-line'))
+        const lines = Array.from(element.querySelectorAll('.code-line')).filter(line => {
+          const text = line.textContent?.trim()
+          return text && !text.startsWith('//')
+        })
         const start = lines.findIndex((line, index) => line.textContent?.trim() === opening && lines[index + 1]?.textContent?.trim() === body)
         const expected = lines[start + (returning ? 2 : 1)].getBoundingClientRect().top
         const actual = element.querySelector('.execution-boundary')!.getBoundingClientRect().top

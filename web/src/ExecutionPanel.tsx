@@ -106,7 +106,7 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
                   })
                   const inClosure = closure && index >= closure.start && index <= closure.end && (index !== closure.start || start >= closure.parameterColumn)
                   const symbolStep = inClosure ? step : caller
-                  const line = inClosure ? index - closure.start + 1 : module.traceLines[index]
+                  const line = inClosure ? closure.lines.indexOf(index) + 1 : module.traceLines[index]
                   const key = `${symbolStep.execution.module}:${line}:${part}`
                   const occurrence = occurrences.get(key) ?? 0
                   if (kind === 'function' || kind === 'control') occurrences.set(key, occurrence + 1)
