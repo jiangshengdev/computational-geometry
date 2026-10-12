@@ -68,7 +68,7 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, discl
       // HeroUI's focusable trigger also works while a panel is inert behind a
       // modal; Pressable's mount-time focus assertion rejects that valid state.
       : <FocusableTrigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</FocusableTrigger>}
-    <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement={disclosure ? 'left top' : 'bottom'} aria-label={disclosure ? `变量 ${name} · ${label}` : label}>
+    <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement="left top" aria-label={disclosure ? `变量 ${name} · ${label}` : label}>
       <ActivePreviewShortcuts onKeyDown={onKeyDown} />
       {content}
     </Popover.Content>
