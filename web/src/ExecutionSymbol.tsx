@@ -1,4 +1,4 @@
-import { useRef, type PointerEvent, type ReactNode, type RefObject } from 'react'
+import { type PointerEvent, type ReactNode } from 'react'
 import { Tooltip } from '@heroui/react/tooltip'
 import { Disclosure } from '@heroui/react/disclosure'
 import { TooltipTriggerStateContext } from 'react-aria-components/Tooltip'
@@ -24,10 +24,9 @@ export function ExecutionSymbol({ name, kind, line, displayLine, occurrence, mod
   </SymbolTooltip>
 }
 
-function SymbolTooltip({ name, line, occurrence, label, children, content, disclosure = false, anchor }: {
+function SymbolTooltip({ name, line, occurrence, label, children, content, disclosure = false }: {
   name: string; line?: number; occurrence?: number; label: string
   children: ReactNode; content: ReactNode; disclosure?: boolean
-  anchor?: RefObject<Element | null>
 }) {
   return <Tooltip delay={150} closeDelay={0}>
     <TooltipTriggerStateContext.Consumer>{state => {
@@ -45,7 +44,7 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, discl
         ? <Disclosure.Trigger {...triggerProps} className="flex w-full items-start gap-2 text-left">{children}</Disclosure.Trigger>
         : <Tooltip.Trigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</Tooltip.Trigger>
     }}</TooltipTriggerStateContext.Consumer>
-    <Tooltip.Content className="execution-symbol-tooltip" placement="bottom" triggerRef={anchor}>
+    <Tooltip.Content className="execution-symbol-tooltip" placement="bottom">
       {content}
     </Tooltip.Content>
   </Tooltip>
@@ -97,11 +96,10 @@ interface VariableSymbolProps {
 
 export function ExecutionVariableSymbol({ children, disclosure, indicator, ...props }: VariableSymbolProps) {
   const { variable, kind } = props
-  const anchor = useRef<HTMLSpanElement>(null)
-  return <SymbolTooltip name={variable.name} label={disclosure ? `${variable.name}: ${variable.type}` : `变量 ${variable.name} · ${kind === 'parameters' ? '参数' : kind === 'captures' ? '捕获变量' : '局部变量'}`} disclosure={disclosure} anchor={disclosure ? anchor : undefined} content={<PanelVariableDescription {...props} />}>
+  return <SymbolTooltip name={variable.name} label={disclosure ? `${variable.name}: ${variable.type}` : `变量 ${variable.name} · ${kind === 'parameters' ? '参数' : kind === 'captures' ? '捕获变量' : '局部变量'}`} disclosure={disclosure} content={<PanelVariableDescription {...props} />}>
     {disclosure ? <>
       {indicator}
-      <span className="min-w-0 flex-1"><span ref={anchor} className="execution-symbol inline-block"><RustCode>{variable.name}</RustCode></span>{children}</span>
+      <span className="min-w-0 flex-1"><span className="execution-symbol inline-block"><RustCode>{variable.name}</RustCode></span>{children}</span>
     </> : children}
   </SymbolTooltip>
 }
