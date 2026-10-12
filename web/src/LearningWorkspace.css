@@ -31,13 +31,14 @@
 .execution-boundary { position: absolute; left: 0; right: 0; height: 2px; color: var(--accent); pointer-events: none; }
 .execution-boundary > svg { position: absolute; left: 4px; top: -7px; width: 16px; height: 16px; }
 .execution-boundary::after { content: ''; position: absolute; left: 24px; right: 0; top: 0; height: 2px; background: currentColor; }
-.execution-context { font-size: .8125rem; }
-.execution-context code { font-family: var(--font-mono); }
+.execution-context { font-size: .8125rem; line-height: 1.25rem; }
+/* Mixed text/monospace baselines must not enlarge the context's line box. */
+.execution-context code { font-family: var(--font-mono); line-height: 1; }
 .execution-context-description code { padding: .1em .3em; border-radius: .25rem; background: var(--surface-secondary); font-family: var(--font-mono); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .execution-context-tooltip { max-width: min(36rem, calc(100vw - 2rem)); }
 .execution-context-tooltip .execution-context-description code { display: inline-block; max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; vertical-align: baseline; }
 .execution-context h3, .execution-context h4 { font-weight: 600; margin: .5rem 0; }
-.execution-variable { padding: .2rem .4rem; border-left: 3px solid transparent; }
+.execution-variable { padding: .25rem .5rem; border-left: 3px solid transparent; }
 .execution-variable-value { max-height: 8lh; overflow: auto; overscroll-behavior: contain; }
 .execution-variable[data-changed="true"] { border-color: var(--accent); background: var(--surface-secondary); }
 .execution-variable dt { display: inline; }
