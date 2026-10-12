@@ -126,14 +126,18 @@ export function stepIndex(trace: SweepTrace, predicate: (step: SweepStep, index:
 
 export async function seekStep(page: Page, target: number, mode: 'step' | 'jump' = 'step') {
   const slider = page.getByRole('slider', { name: '教学步骤' })
-  await slider.focus()
   // Domain-state replay checks each selected observation; keyboard and
   // animation tests retain the default traversal through every small step.
   if (mode === 'jump') {
-    await slider.fill(String(target))
+    const destination = page.getByRole('spinbutton', { name: '跳转步骤' })
+    await destination.fill(String(target))
+    await destination.press('Enter')
     await expect(slider).toHaveValue(String(target))
+    await expect.poll(() => new URL(page.url()).searchParams.get('step') ?? '0').toBe(String(target))
+    await slider.focus()
     return
   }
+  await slider.focus()
   const current = Number(await slider.inputValue())
   for (let remaining = Math.abs(target - current); remaining > 0; remaining--) {
     await slider.press(target > current ? 'ArrowRight' : 'ArrowLeft')

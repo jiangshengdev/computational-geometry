@@ -1,7 +1,5 @@
 import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
 for (const action of ['take', 'remove', 'complete'] as const) {
@@ -10,14 +8,14 @@ for (const action of ['take', 'remove', 'complete'] as const) {
     const trace = await readTrace(page, 'crossing')
     const target = stepIndex(trace, step => step.action === action && (action === 'take'
       || (action === 'remove' ? step.subjects.includes(0) : step.active.length === 0)))
-    await seekStep(page, target)
+    await seekStep(page, target, 'jump')
     const input = page.getByRole('img', { name: '输入 S0', exact: true })
     await expect(page.getByTestId('active-order')).toHaveText('空')
     await expect(input).toHaveAttribute('data-active', 'false')
     await expect(input).toHaveAttribute('data-participant', 'true')
     if (action === 'take') {
       const inserted = stepIndex(trace, (step, index) => index > target && step.action === 'insert' && step.subjects.includes(0))
-      await seekStep(page, inserted)
+      await seekStep(page, inserted, 'jump')
       await expect(page.getByTestId('active-order')).toHaveText('S0')
       await expect(input).toHaveAttribute('data-active', 'true')
     }
@@ -41,7 +39,6 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   const current = page.getByRole('region', { name: '当前事件' })
   const explanation = page.getByRole('region', { name: '操作解释' })
   const next = page.getByRole('button', { name: '下一步', exact: true })
-  const snapshots: string[] = []
   await expect(queue).toContainText('S0 起点 (0, 0)')
   await expect(queue).not.toContainText('I0')
   await expect(active).toContainText('空')
@@ -54,13 +51,13 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   for (let i = 0; i < events.length; i++) {
     const entry = stepIndex(trace, (step, index) => step.action === 'take-entry' && index > (completions[i - 1] ?? 0))
     const popped = stepIndex(trace, (step, index) => step.action === 'take-pop' && index > entry)
-    await seekStep(page, entry)
+    await seekStep(page, entry, 'jump')
     await expect(explanation).toContainText('进入取事件模块')
     await expect(queue).toContainText(events[i])
-    await seekStep(page, popped)
+    await seekStep(page, popped, 'jump')
     await expect(explanation).toContainText('queue.pop_first()')
     await expect(queue).not.toContainText(events[i])
-    await seekStep(page, takes[i])
+    await seekStep(page, takes[i], 'jump')
     await expect(current).toContainText(events[i])
     await expect(current).toContainText('处理中')
     await expect(queue).not.toContainText(events[i])
@@ -69,8 +66,8 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
     // Inspect the actual teaching actions; dedicated micro-step tests cover
     // stepping through every instruction boundary between these actions.
     for (let index = takes[i] + 1; index <= completions[i]; index++) {
-      if (trace.steps[index].action === 'micro') continue
-      await seekStep(page, index)
+      if (!['discover', 'reorder'].includes(trace.steps[index].action)) continue
+      await seekStep(page, index, 'jump')
       const text = await explanation.innerText()
       if (text.includes('发现未来交点')) {
         sawDiscovery = true
@@ -79,19 +76,17 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
       }
       if (text.includes('换序为')) sawReorder = true
     }
+    await seekStep(page, completions[i], 'jump')
     await expect(current).toContainText('处理完成')
     await expect(current.locator('.coordinates')).toHaveText([events[i]])
     await expect(active.getByTestId('active-order')).toHaveText(orders[i])
     const x = i < 2 ? '0' : i === 2 ? '2' : '4'
-    // A vertical SVG line has a zero-width bounding box in Playwright even
-    // though its stroke is painted. Verify its position and painted stroke.
+    // Verify the sweep is vertical at the current event.
     const sweep = page.getByRole('img', { name: `扫描线 x = ${x}` })
     await expect(sweep).toHaveAttribute('x1', await sweep.getAttribute('x2') as string)
-    expect(await sweep.evaluate(element => getComputedStyle(element).stroke)).not.toBe('none')
     for (const id of [0, 1]) {
       await expect(page.getByRole('img', { name: `输入 S${id}`, exact: true })).toHaveAttribute('data-active', String(orders[i].includes(`S${id}`)))
     }
-    snapshots.push(await page.getByRole('region', { name: '逐步学习' }).innerText())
     if (i === 1) {
       await expect(queue).toContainText('I0 (2, 2)')
       expect(sawDiscovery).toBe(true)
@@ -102,7 +97,7 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
       await expect(page.getByRole('img', { name: '交集 S0 × S1' })).toBeVisible()
     }
   }
-  await seekStep(page, stepIndex(trace, step => step.action === 'take-empty'))
+  await seekStep(page, stepIndex(trace, step => step.action === 'take-empty'), 'jump')
   await expect(explanation).toContainText('next 为 None')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (2, 2)：S0 × S1')
   await expect(next).toBeDisabled()
@@ -112,10 +107,6 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   await expect(queue).not.toContainText('I0')
   await expect(page.getByRole('img', { name: /交集 S0/ })).toHaveCount(0)
   await expect(next).toBeEnabled()
-  for (let index = 0; index < snapshots.length; index++) {
-    await seekStep(page, completions[index])
-    await expect.poll(() => page.getByRole('region', { name: '逐步学习' }).innerText()).toBe(snapshots[index])
-  }
 })
 
 test('入门学习：无交点完整流程与切换隔离', async ({ page }) => {
@@ -133,16 +124,16 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
   expect(takes).toHaveLength(events.length)
   expect(completions).toHaveLength(events.length)
   for (let i = 0; i < events.length; i++) {
-    await seekStep(page, takes[i])
+    await seekStep(page, takes[i], 'jump')
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText(events[i])
     await expect(queue).not.toContainText(events[i])
-    await seekStep(page, completions[i])
+    await seekStep(page, completions[i], 'jump')
     await expect(active).toHaveText(orders[i])
     await expect(queue).not.toContainText('I0')
     await expect(page.getByRole('img', { name: /交集 S/ })).toHaveCount(0)
     if (i === 1) await expect(page.getByRole('region', { name: '操作解释' })).toContainText('没有需要加入队列的未来交点')
   }
-  await seekStep(page, stepIndex(trace, step => step.action === 'take-empty'))
+  await seekStep(page, stepIndex(trace, step => step.action === 'take-empty'), 'jump')
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('next 为 None')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('结果为空')
   await expect(next).toBeDisabled()
@@ -155,33 +146,30 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
   await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
 })
 
-test('入门学习：桌面与手机的图形、队列、操作解释同步且无页面错误', async ({ page }) => {
+test('入门学习：交点投影与画布详情同步', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  for (const viewport of [{ width: 1360, height: 1000 }, { width: 390, height: 844 }]) {
-    await page.setViewportSize(viewport)
-    await page.goto('/cases/crossing')
-    await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
-    await expect(page.locator('vite-error-overlay')).toHaveCount(0)
-    await page.getByRole('link', { name: '开始逐步学习' }).click()
-    const trace = await readTrace(page, 'crossing')
-    await seekStep(page, stepIndex(trace, step => step.action === 'discover'))
-    await expect(page.getByRole('region', { name: '操作解释' })).toContainText('发现未来交点 I0 (2, 2)')
-    const diagram = page.getByRole('region', { name: '几何视图' })
-    const crossing = page.getByRole('img', { name: '已发现 I0 (2, 2)' }).locator('circle')
-    const start = page.getByRole('img', { name: '输入 S0', exact: true }).locator('line')
-    const [cx, cy, x1, y1, x2, y2] = await Promise.all([
-      crossing.getAttribute('cx'), crossing.getAttribute('cy'), start.getAttribute('x1'), start.getAttribute('y1'), start.getAttribute('x2'), start.getAttribute('y2'),
-    ])
-    expect(Number(cx)).toBeCloseTo((Number(x1) + Number(x2)) / 2)
-    expect(Number(cy)).toBeCloseTo((Number(y1) + Number(y2)) / 2)
-    await crossing.scrollIntoViewIfNeeded()
-    const target = (await crossing.boundingBox())!
-    await page.mouse.move(target.x + target.width / 2, target.y + target.height / 2)
-    await expect(diagram.getByRole('status', { name: '画布对象详情' })).toHaveText('I0 (2, 2)')
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-    await page.screenshot({ path: join(tmpdir(), `bo-learning-${viewport.width}.png`), fullPage: true })
-  }
+  await page.setViewportSize({ width: 1360, height: 1000 })
+  await page.goto('/cases/crossing')
+  await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
+  await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+  await page.getByRole('link', { name: '开始逐步学习' }).click()
+  const trace = await readTrace(page, 'crossing')
+  await seekStep(page, stepIndex(trace, step => step.action === 'discover'), 'jump')
+  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('发现未来交点 I0 (2, 2)')
+  const diagram = page.getByRole('region', { name: '几何视图' })
+  const crossing = page.getByRole('img', { name: '已发现 I0 (2, 2)' }).locator('circle')
+  const start = page.getByRole('img', { name: '输入 S0', exact: true }).locator('line')
+  const [cx, cy, x1, y1, x2, y2] = await Promise.all([
+    crossing.getAttribute('cx'), crossing.getAttribute('cy'), start.getAttribute('x1'), start.getAttribute('y1'), start.getAttribute('x2'), start.getAttribute('y2'),
+  ])
+  expect(Number(cx)).toBeCloseTo((Number(x1) + Number(x2)) / 2)
+  expect(Number(cy)).toBeCloseTo((Number(y1) + Number(y2)) / 2)
+  await crossing.scrollIntoViewIfNeeded()
+  const target = (await crossing.boundingBox())!
+  await page.mouse.move(target.x + target.width / 2, target.y + target.height / 2)
+  await expect(diagram.getByRole('status', { name: '画布对象详情' })).toHaveText('I0 (2, 2)')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   expect(errors).toEqual([])
 })

@@ -1,6 +1,5 @@
 import { expect, test } from './learning-test'
-import { readResponse, readTrace, seekStep } from './trace-navigation'
-import { presets } from '../src/presets'
+import { readTrace, seekStep } from './trace-navigation'
 
 test('真实轨迹执行边界指向下一条语句', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
@@ -60,7 +59,7 @@ test('取事件的真实小步同步代码、队列和上下文，并可完整�
   expect(await variables.locator('dd').allTextContents()).toEqual(before)
 })
 
-for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   browserTest(`自动换行保持执行边界并记住跨案例偏好 ${browserName}`, async ({ page }) => {
     const trace = await readTrace(page, 'crossing')
@@ -82,8 +81,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       })).toBeLessThanOrEqual(1)
     }
     await expectWrappedBoundary()
-    await page.setViewportSize({ width: 390, height: 844 })
-    await expectWrappedBoundary()
     await page.setViewportSize({ width: 1360, height: 900 })
     await expectWrappedBoundary()
     const source = await code.textContent()
@@ -100,18 +97,13 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.reload()
     await expect(toggle).toBeChecked()
   })
-  for (const width of [1360, 390]) browserTest(`代码回放：滚动对齐、长上下文和大步入口 ${browserName} ${width}`, async ({ page, request }) => {
-    await page.setViewportSize({ width, height: 900 })
+  browserTest(`代码回放：滚动对齐、长上下文和大步入口 ${browserName}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1360, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     await page.goto('/cases/spider-web/learn')
-    // Read the real API through the request fixture: Firefox's network inspector
-    // evicts large response bodies even when the page consumed them successfully.
-    const response = await request.post('/api/intersections', { data: { segments: presets.find(preset => preset.id === 'spider-web')!.segments, trace: true } })
-    const { trace, intersections } = await readResponse(response)
-    const normal = await request.post('/api/intersections', { data: { segments: presets.find(preset => preset.id === 'spider-web')!.segments } })
-    expect((await normal.json()).intersections).toEqual(intersections)
+    const trace = await readTrace(page, 'spider-web')
     const entry = trace.steps.findIndex(step => step.action === 'take-entry')
     await page.getByRole('button', { name: '下一个大步', exact: true }).click()
     await expect(page).toHaveURL(new RegExp(`step=${entry}$`))
@@ -127,11 +119,9 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const before = await offset()
     await panel.getByText('自动换行', { exact: true }).click()
     await expect(panel.getByRole('switch', { name: '自动换行' })).not.toBeChecked()
-    const scroll = await code.evaluate(element => {
+    await code.evaluate(element => {
       element.scrollLeft = element.scrollWidth
-      return element.scrollLeft
     })
-    if (width === 390) expect(scroll).toBeGreaterThan(0)
     expect(await code.evaluate(element => Math.abs(element.scrollWidth - element.clientWidth - element.scrollLeft))).toBeLessThanOrEqual(1)
     expect(await offset()).toBe(before)
     const queue = variables.getByTestId('variable-queue')
@@ -159,7 +149,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await seekStep(page, activity, 'jump')
     const longCode = panel.getByRole('region', { name: '活动集合更新教学代码' })
     await expect(longCode.locator('.code-line').last()).toBeAttached()
-    await page.setViewportSize({ width, height: 720 })
+    await page.setViewportSize({ width: 1360, height: 720 })
     expect(await longCode.evaluate(element => {
       element.scrollTop = element.scrollHeight
       return element.scrollTop

@@ -1,7 +1,5 @@
 import { expect, test, type Locator, type Page } from './learning-test'
 import { readTrace, stepIndex, waitForTraceCompletion } from './trace-navigation'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 
 async function openStep(page: Page, preset: string, index: number) {
   await page.goto(`/cases/${preset}/learn?step=${index}`)
@@ -49,7 +47,6 @@ test('分类真假分支在块外汇合，if hover保留本次判断且回退恢
     await hoverControl(page, panel, 'if', 11, state === 'true' ? '本次条件为真' : '本次条件为假')
     expect(await page.getByRole('region', { name: '核心变量', exact: true }).locator('dd').allTextContents()).toEqual(before)
     await expect(panel.getByRole('img', { name: /执行边界/ })).toBeInViewport()
-    await page.screenshot({ path: join(tmpdir(), `bo-control-if-${state}.png`) })
   }
   await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)

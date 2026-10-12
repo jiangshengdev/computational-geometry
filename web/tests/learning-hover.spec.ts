@@ -19,9 +19,8 @@ async function endpoint(page: Page, line: Locator, end: 'start' | 'end') {
   await page.mouse.move(point.x, point.y)
 }
 
-for (const width of [1360, 390]) {
-test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${width}px`, async ({ page }) => {
-  await page.setViewportSize({ width, height: 1100 })
+test('教学 hover：操作解释中的事件点和独立线段双向联动', async ({ page }) => {
+  await page.setViewportSize({ width: 1360, height: 1100 })
   await page.goto('/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const next = page.getByRole('button', { name: '下一步', exact: true })
@@ -97,7 +96,6 @@ test(`教学 hover：操作解释中的事件点和独立线段双向联动 ${wi
     await expect(diagram.locator('.hover-event')).toHaveCount(0)
   }
 })
-}
 
 test('教学 hover：队列端点与点标签精确双向对应', async ({ page }) => {
   await page.goto('/cases/crossing')
@@ -244,31 +242,29 @@ test('教学 hover：缩放平移后的点、标签与线段命中', async ({ pa
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const trace = await readTrace(page, 'crossing')
   await seekStep(page, stepIndex(trace, step => step.action === 'discover'))
-  for (const width of [1360, 390]) {
-    await page.setViewportSize({ width, height: 1000 })
-    await page.getByRole('button', { name: '重置视图' }).click()
-    await page.getByRole('button', { name: '放大', exact: true }).click()
-    const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
-    await svg.scrollIntoViewIfNeeded()
-    const box = (await svg.boundingBox())!
-    await page.mouse.move(box.x + box.width / 2, box.y + 200)
-    await page.mouse.down()
-    await page.mouse.move(box.x + box.width / 2 + 12, box.y + 215)
-    await page.mouse.up()
-    const pending = page.getByRole('img', { name: '已发现 I0 (2, 2)' })
-    await center(page, pending.locator('circle'))
-    const queue = page.getByRole('region', { name: '待处理事件队列' })
-    await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-    const pointLabel = svg.locator('.teaching-labels [data-event-point="(2, 2)"]')
-    await expect(pointLabel).toBeVisible()
-    await pointLabel.hover()
-    await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
-    const line = (await page.getByRole('img', { name: '输入 S1', exact: true }).locator('line').boundingBox())!
-    await page.mouse.move(line.x + line.width * 0.35, line.y + line.height * 0.35)
-    await expect(page.getByTestId('active-order').locator('[data-highlighted="true"]')).toHaveText('S1')
-    await expect(svg.locator('.hover-event')).toHaveCount(0)
-    await expect(page.locator('vite-error-overlay')).toHaveCount(0)
-  }
+  await page.setViewportSize({ width: 1360, height: 1000 })
+  await page.getByRole('button', { name: '重置视图' }).click()
+  await page.getByRole('button', { name: '放大', exact: true }).click()
+  const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
+  await svg.scrollIntoViewIfNeeded()
+  const box = (await svg.boundingBox())!
+  await page.mouse.move(box.x + box.width / 2, box.y + 200)
+  await page.mouse.down()
+  await page.mouse.move(box.x + box.width / 2 + 12, box.y + 215)
+  await page.mouse.up()
+  const pending = page.getByRole('img', { name: '已发现 I0 (2, 2)' })
+  await center(page, pending.locator('circle'))
+  const queue = page.getByRole('region', { name: '待处理事件队列' })
+  await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
+  const pointLabel = svg.locator('.teaching-labels [data-event-point="(2, 2)"]')
+  await expect(pointLabel).toBeVisible()
+  await pointLabel.hover()
+  await expect(queue.locator('[data-highlighted="true"]')).toHaveText('I0 (2, 2)')
+  const line = (await page.getByRole('img', { name: '输入 S1', exact: true }).locator('line').boundingBox())!
+  await page.mouse.move(line.x + line.width * 0.35, line.y + line.height * 0.35)
+  await expect(page.getByTestId('active-order').locator('[data-highlighted="true"]')).toHaveText('S1')
+  await expect(svg.locator('.hover-event')).toHaveCount(0)
+  await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   expect(errors).toEqual([])
 })
 

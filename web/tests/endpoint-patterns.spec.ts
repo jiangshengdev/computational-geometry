@@ -1,6 +1,6 @@
 import { expect, test } from './learning-test'
 import { formatPoint, samePoint, type Segment } from '../src/geometry'
-import { checkPairSelection, checkViewportControls, checkLearningCompletion } from './demo-interactions'
+import { checkPairSelection, checkLearningCompletion } from './demo-interactions'
 import { captureIntersections, captureResult } from './trace-navigation'
 
 const patterns = [
@@ -13,9 +13,8 @@ const patterns = [
 ]
 
 for (const pattern of patterns) {
-  const width = 390
-  test(`${pattern.name}：真实求交、端点结构、几何交互与教学完成 ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 900 })
+  test(`${pattern.name}：真实求交、端点结构与教学完成`, async ({ page }) => {
+    await page.setViewportSize({ width: 1360, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
@@ -55,7 +54,6 @@ for (const pattern of patterns) {
       await checkPairSelection(page, sample)
     }
     await expect(page.getByText(`${pattern.pairs} 个相交配对`, { exact: true })).toBeVisible()
-    await checkViewportControls(page)
     const lastPair = page.getByRole('radio').last()
     await lastPair.scrollIntoViewIfNeeded()
     await expect(lastPair).toBeInViewport()

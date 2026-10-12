@@ -1,4 +1,6 @@
 import { expect, test } from './learning-test'
+import { readTrace, seekStep, waitForTraceCompletion } from './trace-navigation'
+import { formatPoint } from '../src/geometry'
 
 for (const [id, pairs, positions, pointIds, exactPoint] of [
   ['point-inputs', 4, 2, [1, 2, 3, 4], '(2, 0)'],
@@ -9,23 +11,25 @@ for (const [id, pairs, positions, pointIds, exactPoint] of [
   await page.goto(`/cases/${id}`)
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
   await page.getByRole('link', { name: '开始逐步学习' }).click()
-  const next = page.getByRole('button', { name: '下一步', exact: true })
+  const trace = await readTrace(page, id)
+  await waitForTraceCompletion(page)
   const active = page.getByTestId('active-order')
   const group = page.getByRole('region', { name: '同点参与线段' })
   const explanation = page.getByRole('region', { name: '操作解释' })
   let pointEvents = 0, reorders = 0
-  while (await next.isEnabled()) {
-    await next.click()
+  for (const [index, step] of trace.steps.entries()) {
+    if (!index || ['micro', 'take-entry', 'take-pop', 'take-empty'].includes(step.action)) continue
+    await seekStep(page, index, 'jump')
     for (const id of pointIds) await expect(active.locator(`[data-input-id="${id}"]`)).toHaveCount(0)
     if (id === 'pure-points') await expect(active).toHaveText('空')
-    const text = await explanation.innerText()
-    if (id === 'point-multiway' && text.includes('换序为')) {
+    if (id === 'point-multiway' && step.action === 'reorder') {
       reorders++
       await expect(explanation).not.toContainText('换序已随加入一起展示')
       await expect(active).toHaveText('S0S2S1')
     }
-    if (text.includes('从队首取出') && (await page.getByRole('region', { name: '当前事件' }).innerText()).includes(exactPoint)) {
+    if (step.action === 'take' && step.current && formatPoint(step.current) === exactPoint) {
       pointEvents++
+      await expect(page.getByRole('region', { name: '当前事件' }).locator('[data-event-id]:not([aria-hidden="true"])')).toHaveAttribute('data-event-id', exactPoint)
       await expect(explanation).toContainText('零长度')
       await expect(explanation).toContainText('不进入持续活动顺序')
       const zero = pointIds[0]
@@ -38,6 +42,7 @@ for (const [id, pairs, positions, pointIds, exactPoint] of [
   }
   expect(pointEvents).toBe(1)
   if (id === 'point-multiway') expect(reorders).toBe(1)
+  await seekStep(page, trace.steps.length - 1, 'jump')
   const result = page.getByRole('region', { name: '学习结果' })
   await expect(result).toContainText(`独立交点位置：${positions}；相交线段对：${pairs}`)
   await expect(result).toContainText(exactPoint)

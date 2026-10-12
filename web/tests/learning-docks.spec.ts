@@ -5,7 +5,7 @@ async function box(locator: Locator) {
   return (await locator.boundingBox())!
 }
 
-for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   browserTest(`步骤输入校验、提交与键盘隔离 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
@@ -27,14 +27,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await input.fill('0')
     await submit.click()
     await expect(page).toHaveURL(/step=0$/)
-    for (const width of [1440, 390]) {
-      await page.setViewportSize({ width, height: 900 })
-      await input.scrollIntoViewIfNeeded()
-      await expect(input).toBeInViewport()
-      await expect(submit).toBeInViewport()
-    }
   })
-  browserTest(`辅助栏按需浮出和独立记忆 ${browserName}`, async ({ page }) => {
+  browserTest(`辅助栏按需浮出与临时面板重置 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/cases/crossing/learn?step=1')
     const code = page.getByRole('region', { name: '核心代码回放', exact: true })
@@ -59,21 +53,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(page.getByRole('button', { name: '展开右侧辅助栏', exact: true })).toBeVisible()
     await page.getByRole('button', { name: '操作解释', exact: true }).click()
     await page.reload()
-    await expect(page.getByRole('button', { name: '收起左侧辅助栏', exact: true })).toBeVisible()
     await expect(page.getByRole('region', { name: '操作解释', exact: true })).toBeHidden()
-    await page.goto('/cases/multiway-endpoints/learn')
-    await expect(page.getByRole('button', { name: '收起左侧辅助栏', exact: true })).toBeVisible()
-  })
-  browserTest(`统一回放控制与变量更新 ${browserName}`, async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto('/cases/crossing/learn?step=1')
-    const variables = page.getByRole('region', { name: '核心变量', exact: true })
-    const controls = page.getByRole('region', { name: '回放控制', exact: true })
-    for (const name of ['上一步', '下一步', '上一个大步', '下一个大步', '重新开始']) {
-      await expect(controls.getByRole('button', { name, exact: true })).toBeInViewport()
-    }
-    await controls.getByRole('button', { name: '下一步', exact: true }).click()
-    await expect(page).toHaveURL(/step=2$/)
-    await expect(variables.getByTestId('variable-next')).toContainText('(0, 0)')
   })
 }

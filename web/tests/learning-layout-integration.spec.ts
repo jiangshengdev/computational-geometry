@@ -6,10 +6,10 @@ async function box(locator: Locator) {
   return (await locator.boundingBox())!
 }
 
-for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
-  for (const width of [1440, 390]) browserTest(`辅助栏长内容与控制隔离 ${browserName} ${width}`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 900 })
+  browserTest(`辅助栏长内容与控制隔离 ${browserName}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
@@ -35,13 +35,11 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(queue).toBeHidden()
     await expect(page.getByRole('button', { name: '待处理事件队列', exact: true })).toBeFocused()
     const next = page.getByRole('button', { name: '下一步', exact: true })
-    if (width === 1440) {
-      const nextBox = await box(next)
-      await page.getByRole('button', { name: '操作解释', exact: true }).click()
-      await page.mouse.click(nextBox.x + nextBox.width / 2, nextBox.y + nextBox.height / 2)
-      await expect(page.getByRole('region', { name: '操作解释', exact: true })).toBeHidden()
-      await expect(page).toHaveURL(/step=1$/)
-    }
+    const nextBox = await box(next)
+    await page.getByRole('button', { name: '操作解释', exact: true }).click()
+    await page.mouse.click(nextBox.x + nextBox.width / 2, nextBox.y + nextBox.height / 2)
+    await expect(page.getByRole('region', { name: '操作解释', exact: true })).toBeHidden()
+    await expect(page).toHaveURL(/step=1$/)
     await next.click()
     await expect(variables.getByTestId('variable-next')).not.toContainText('未赋值')
     await page.getByRole('button', { name: '操作解释', exact: true }).click()

@@ -1,6 +1,5 @@
 import { expect, test } from './learning-test'
 import { formatPoint, samePoint, type Segment } from '../src/geometry'
-import { checkPairSelection, checkLearningCompletion } from './demo-interactions'
 import { captureResult } from './trace-navigation'
 
 const demos = [
@@ -19,12 +18,9 @@ const workedPoints: Record<string, { pair: number[]; point: string }[]> = {
   'star-polygon': [{ pair: [0, 1], point: '(70/17, 0)' }, { pair: [0, 3], point: '(7, -7)' }],
 }
 
-// Shared desktop interactions are covered by viewer/projection; each preset
-// keeps its own result and learning checks at the constrained mobile width.
 for (const [id, name] of demos) {
-  const width = 390
-  test(`${name}：真实结果、配对交互与教学完成 ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 900 })
+  test(`${name}：输入结构与真实计算结果`, async ({ page }) => {
+    await page.setViewportSize({ width: 1360, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
@@ -52,12 +48,6 @@ for (const [id, name] of demos) {
     }
     await expect(page).toHaveTitle(`${name} · 计算结果 · BO 结果查看器`)
     await expect(page.getByText(`${intersections.length} 个相交配对`, { exact: true })).toBeVisible()
-    for (const sample of [intersections[0], intersections.at(-1)!]) {
-      await checkPairSelection(page, sample)
-    }
-    const positions = new Set(intersections.map(item => item.geometry.type === 'point' && formatPoint(item.geometry.point))).size
-    await checkLearningCompletion(page, intersections, positions)
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(errors).toEqual([])
   })

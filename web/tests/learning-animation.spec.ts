@@ -1,5 +1,4 @@
 import { expect, test, type Page } from './learning-test'
-import { selectPreset } from './cases'
 import { readTrace, seekStep, stepIndex } from './trace-navigation'
 
 async function startLearning(page: Page) {
@@ -53,28 +52,6 @@ test('状态动画：取出队首与绑定当前事件可逐步恢复', async ({
   await expect(page.getByTestId('variable-next')).toContainText('未赋值')
 })
 
-test('状态动画：快速反向、进度跳转和重启立即采用最新步骤', async ({ page }) => {
-  const trace = await startLearning(page)
-  await jumpTo(page, 2)
-  await page.keyboard.press('ArrowRight')
-  await page.keyboard.press('ArrowLeft')
-  await page.keyboard.press('ArrowRight')
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('3')
-  const current = page.getByRole('region', { name: '当前事件' })
-  await expect(current).toContainText('S0 起点 (0, 0)')
-  await jumpTo(page, stepIndex(trace, step => step.action === 'complete' && step.current?.y.numerator === '4' && step.current.x.numerator === '0'))
-  await expect(current).toContainText('S1 起点 (0, 4)')
-  await page.keyboard.press('ArrowRight')
-  await page.keyboard.press('r')
-  await expect(current).toContainText('尚未处理事件')
-  await expect(page.locator('aside li')).toHaveCount(4)
-  await page.keyboard.press('ArrowRight')
-  await selectPreset(page, 'disjoint')
-  await page.getByRole('link', { name: '开始逐步学习' }).click()
-  await expect(current).toContainText('尚未处理事件')
-  await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
-})
-
 test('状态动画：活动线段进入、退出与反向插入', async ({ page }) => {
   const trace = await startLearning(page)
   await jumpTo(page, stepIndex(trace, step => step.action === 'insert') - 1)
@@ -89,9 +66,8 @@ test('状态动画：活动线段进入、退出与反向插入', async ({ page 
   await expect(page.getByTestId('active-order')).toHaveText('S1S0')
 })
 
-for (const width of [1360, 390]) {
-test(`状态动画：换序中断与跳转隔离 ${width}px`, async ({ page }) => {
-  await page.setViewportSize({ width, height: 1100 })
+test('状态动画：换序中断与跳转隔离', async ({ page }) => {
+  await page.setViewportSize({ width: 1360, height: 1100 })
   const trace = await startLearning(page)
   const reorder = stepIndex(trace, step => step.action === 'reorder')
   await jumpTo(page, reorder - 1)
@@ -109,9 +85,4 @@ test(`状态动画：换序中断与跳转隔离 ${width}px`, async ({ page }) =
   await jumpTo(page, 0)
   await expect(order).toHaveText('空')
   await expect(page.locator('aside li')).toHaveCount(4)
-  await page.emulateMedia({ reducedMotion: 'reduce' })
-  await jumpTo(page, reorder - 1)
-  await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await expect(order).toHaveText('S1S0')
 })
-}

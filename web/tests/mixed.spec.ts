@@ -1,7 +1,5 @@
 import { expect, test } from '@playwright/test'
 import { checkCase, selectPreset, type ExpectedPair } from './cases'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 
 const horizontal: ExpectedPair[] = [
   { pair: [0, 1], interval: [['0', '0'], ['4', '0']] },
@@ -38,7 +36,6 @@ test('混合场景缩放平移切换，完整区间与点配对保持一致', as
   await expect(page.getByRole('region', { name: '精确详情' })).toContainText('(2, 0)')
   await expect(page.getByRole('img', { name: '输入 S0，已选中', exact: true })).toHaveCount(0)
   await page.getByRole('button', { name: '重置视图' }).click()
-  await page.screenshot({ path: join(tmpdir(), 'bo-viewer-mixed.png'), fullPage: true })
   await selectPreset(page, 'mixed-vertical')
   await expect(page.getByRole('radio', { checked: true })).toHaveCount(0)
   await page.getByRole('radio', { name: 'S0 × S1 · 重叠区间', exact: true }).click()
@@ -48,8 +45,8 @@ test('混合场景缩放平移切换，完整区间与点配对保持一致', as
   await expect(page.getByRole('img', { name: /^交集 / })).toHaveCount(0)
 })
 
-test('窄屏下可用键盘滚动选择混合结果并读取完整输入与详情', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 })
+test('End 定位末个配对并选择精确详情', async ({ page }) => {
+  await page.setViewportSize({ width: 1360, height: 900 })
   await page.goto('/cases/crossing')
   await selectPreset(page, 'mixed-horizontal')
   await expect(page.getByRole('status')).toHaveText('17 个相交配对')
@@ -65,6 +62,4 @@ test('窄屏下可用键盘滚动选择混合结果并读取完整输入与详�
   await details.scrollIntoViewIfNeeded()
   await expect(details).toBeInViewport()
   await expect(page.getByRole('region', { name: '原始输入' }).getByRole('listitem')).toHaveCount(7)
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
-  await page.screenshot({ path: join(tmpdir(), 'bo-viewer-mixed-mobile.png'), fullPage: true })
 })

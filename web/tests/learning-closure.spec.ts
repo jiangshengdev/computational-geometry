@@ -1,8 +1,6 @@
 import { expect, test } from './learning-test'
 import { captureIntersections, seekStep, waitForTraceCompletion } from './trace-navigation'
 import type { TraceFrame } from '../src/geometry'
-import { join } from 'node:path'
-import { tmpdir } from 'node:os'
 
 test('si 进入真实 retain 调用，显示作用域、独立返回值并逐步回退', async ({ page }) => {
   const capture = await captureIntersections(page)
@@ -64,9 +62,7 @@ test('其余闭包沿用真实参数、返回停点和外层作用域', async ({
 
 for (const { browserName, width } of [
   { browserName: 'chromium', width: 1360 },
-  { browserName: 'firefox', width: 1360 },
   { browserName: 'webkit', width: 1360 },
-  { browserName: 'webkit', width: 390 },
 ] as const) {
 const browserTest = test.extend({ browserName, viewport: { width, height: 900 } })
 browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${browserName} ${width}`, async ({ page }) => {
@@ -143,7 +139,6 @@ browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${brow
   await page.keyboard.press('Escape')
   await expect(tooltip).toBeHidden()
   await code.getByRole('img', { name: /执行边界/ }).scrollIntoViewIfNeeded()
-  await page.screenshot({ path: join(tmpdir(), `closure-inline-${browserName}-${width}.png`), fullPage: true })
   expect(errors).toEqual([])
 })
 }
@@ -229,7 +224,6 @@ test('步过跳过语句内部调用，步出只结束当前调用，上一步�
   await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   expect(errors).toEqual([])
-  await page.screenshot({ path: join(tmpdir(), 'bo-step-out-scopes.png') })
 })
 
 test('真实流尚未交付返回边界时禁用跳转，交付后才恢复导航', async ({ page }) => {

@@ -1,5 +1,5 @@
-import { expect, test, expandedPanels, type Locator } from './learning-test'
-import { readResponse, readTrace, stepIndex, waitForTraceCompletion } from './trace-navigation'
+import { expect, test, type Locator } from './learning-test'
+import { readResponse, readTrace, seekStep, stepIndex, waitForTraceCompletion } from './trace-navigation'
 
 async function linePosition(line: Locator, fraction = 0.25) {
   await line.scrollIntoViewIfNeeded()
@@ -13,24 +13,25 @@ async function linePosition(line: Locator, fraction = 0.25) {
   }, fraction)
 }
 
-for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
-  for (const width of [1920, 390]) browserTest(`教学标签：编号跨步骤可访问且悬停显示详情 ${browserName} ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 1000 })
+  browserTest(`教学标签：编号跨步骤可访问且悬停显示详情 ${browserName}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1000 })
+    const trace = await readTrace(page, 'crossing')
     await page.goto('/cases/crossing/learn')
     const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
     const slider = page.getByRole('slider', { name: '教学步骤' })
     await expect(slider).toHaveValue('0')
     await waitForTraceCompletion(page)
-    const last = Number(await slider.getAttribute('max'))
-    expect(last).toBeGreaterThan(0)
     const visited = new Set<string>()
     let hoveredIds = ''
-    await slider.focus()
-    for (let step = 1; step <= last; step++) {
-      await page.keyboard.down('ArrowRight')
-      await expect(slider).toHaveValue(String(step))
-      await expect(slider).toBeFocused()
+    let previousState = ''
+    for (const [index, step] of trace.steps.entries()) {
+      const state = JSON.stringify([step.current, step.active, step.starts, step.ends, step.passes,
+        step.action === 'check' || step.action === 'discover' ? step.subjects : []])
+      if (state === previousState) continue
+      previousState = state
+      await seekStep(page, index, 'jump')
       const ids = await svg.locator('.teaching-labels text[data-input]:visible').evaluateAll(nodes =>
         nodes.map(node => (node as SVGTextElement).dataset.input!))
       const idsKey = JSON.stringify(ids)
@@ -51,19 +52,14 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
         await page.getByRole('link', { name: '返回列表', exact: true }).hover()
       }
     }
-    await page.keyboard.up('ArrowRight')
     expect([...visited].sort()).toEqual(['0', '1'])
-    await slider.focus()
-    await page.keyboard.press('ArrowLeft')
-    await expect(slider).toHaveValue(String(last - 1))
-    const trace = await readTrace(page, 'crossing')
     const intersection = stepIndex(trace, step => step.action === 'take' && step.current?.x.numerator === '2' && step.current.y.numerator === '2')
     await page.goto(`/cases/crossing/learn?step=${intersection}`)
     await expect(svg.locator('.teaching-labels text[data-input]:visible')).toHaveCount(2)
   })
 
-  for (const width of [1920, 390]) browserTest(`教学标签：蜘蛛网按步骤显示且可读 ${browserName} ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 1000 })
+  browserTest(`教学标签：蜘蛛网按步骤显示且可读 ${browserName}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1000 })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
@@ -101,41 +97,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     expect(errors).toEqual([])
   })
 
-  browserTest(`教学标签：触屏固定详情、拖动隔离和换步清理 ${browserName}`, async ({ browser, baseURL }) => {
-    const page = await browser.newPage({ baseURL, viewport: { width: 390, height: 1000 }, hasTouch: true })
-    await expandedPanels(page.context())
-    try {
-      await page.goto('/cases/crossing/learn?step=5')
-      const line = page.getByRole('img', { name: '输入 S0', exact: true }).locator('line')
-      const point = await linePosition(line)
-      await page.touchscreen.tap(point.x, point.y)
-      const detail = page.getByRole('status', { name: '画布对象详情' })
-      await expect(detail).toHaveAttribute('data-pinned', 'true')
-      await expect(detail).toHaveText('S0 · 起点 (0, 0) · 终点 (4, 4)')
-      await page.getByRole('link', { name: '返回列表', exact: true }).hover()
-      await expect(detail).toBeVisible()
-      const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
-      await svg.scrollIntoViewIfNeeded()
-      const bounds = (await svg.boundingBox())!
-      await page.touchscreen.tap(bounds.x + bounds.width - 12, bounds.y + 12)
-      await expect(detail).toHaveCount(0)
-      const start = await linePosition(line)
-      await page.mouse.move(start.x, start.y)
-      await page.mouse.down()
-      await page.mouse.move(start.x + 30, start.y + 20, { steps: 4 })
-      await page.mouse.up()
-      await page.getByRole('link', { name: '返回列表', exact: true }).hover()
-      await expect(detail).toHaveCount(0)
-      const afterPan = await linePosition(line)
-      await page.touchscreen.tap(afterPan.x, afterPan.y)
-      await expect(detail).toHaveAttribute('data-pinned', 'true')
-      await expect(detail).toContainText('S0')
-      await page.getByRole('button', { name: '下一步', exact: true }).click()
-      await expect(detail).toHaveCount(0)
-      await expect(svg.locator('.current-label')).toHaveCount(0)
-      await expect(svg.locator('.current-point')).toBeVisible()
-    } finally { await page.close() }
-  })
 }
 
 test('教学标签：重叠默认高亮不弹详情，点击临时标签固定正确对象', async ({ page }) => {

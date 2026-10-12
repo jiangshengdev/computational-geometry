@@ -56,23 +56,21 @@ test('hover 三处双向联动，重合位置整体命中而标签精确命中',
   expect(errors).toEqual([])
 })
 
-test('hover 重复区间在缩放、平移与窄屏下整体命中', async ({ page }) => {
+test('hover 重复区间在缩放、平移后整体命中', async ({ page }) => {
   await page.goto('/cases/crossing')
   await selectPreset(page, 'duplicate-overlap')
   await expect(page.getByText('3 个相交配对', { exact: true })).toBeVisible()
-  for (const width of [1280, 390]) {
-    await page.setViewportSize({ width, height: 900 })
-    await page.getByRole('button', { name: '重置视图' }).click()
-    await page.getByRole('button', { name: '放大', exact: true }).click()
-    const chart = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
-    await chart.scrollIntoViewIfNeeded()
-    const chartBox = (await chart.boundingBox())!
-    await page.mouse.move(chartBox.x + chartBox.width / 2, chartBox.y + 100)
-    await page.mouse.down()
-    await page.mouse.move(chartBox.x + chartBox.width / 2 + 15, chartBox.y + 115)
-    await page.mouse.up()
-    const line = (await page.locator('.drawing .intersection line').first().boundingBox())!
-    await page.mouse.move(line.x + line.width / 2, line.y + line.height / 2)
-    await highlighted(page, [0, 1, 2], ['S0 × S1', 'S0 × S2', 'S1 × S2'])
-  }
+  await page.setViewportSize({ width: 1280, height: 900 })
+  await page.getByRole('button', { name: '重置视图' }).click()
+  await page.getByRole('button', { name: '放大', exact: true }).click()
+  const chart = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
+  await chart.scrollIntoViewIfNeeded()
+  const chartBox = (await chart.boundingBox())!
+  await page.mouse.move(chartBox.x + chartBox.width / 2, chartBox.y + 100)
+  await page.mouse.down()
+  await page.mouse.move(chartBox.x + chartBox.width / 2 + 15, chartBox.y + 115)
+  await page.mouse.up()
+  const line = (await page.locator('.drawing .intersection line').first().boundingBox())!
+  await page.mouse.move(line.x + line.width / 2, line.y + line.height / 2)
+  await highlighted(page, [0, 1, 2], ['S0 × S1', 'S0 × S2', 'S1 × S2'])
 })

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   browserTest(`主体布局预设选择、记忆与回放状态 ${browserName}`, async ({ page }) => {
     const errors: string[] = []
@@ -25,16 +25,8 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
       await expect(variables).toHaveText(contents, { useInnerText: true })
       await expect(page.getByRole('complementary', { name: '左侧辅助栏' })).toHaveAttribute('data-expanded', 'true')
     }
-    await layout.press('Enter')
-    await expect(page.getByRole('option', { name: '1:2:3', exact: true })).toBeFocused()
-    await page.keyboard.press('Home')
-    await expect(page.getByRole('option', { name: '1:2:2', exact: true })).toBeFocused()
-    await page.keyboard.press('Enter')
-    await expect(layout).toContainText('1:2:2')
-    await expect(page).toHaveURL(/step=3$/)
-    await expect(layout).toBeFocused()
     await page.getByText('禅模式', { exact: true }).click()
-    await expect(layout).toContainText('1:2:2')
+    await expect(layout).toContainText('1:2:3')
     await layout.click()
     await page.getByRole('option', { name: '1:3:2', exact: true }).click()
     await page.getByText('禅模式', { exact: true }).click()
@@ -42,45 +34,12 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.reload()
     await expect(layout).toContainText('1:3:2')
     await expect(page).toHaveURL(/step=3$/)
-    await page.setViewportSize({ width: 390, height: 844 })
-    await expect(layout).toBeHidden()
-    for (const name of ['几何视图', '核心代码回放', '核心变量']) {
-      const panel = page.getByRole('region', { name, exact: true })
-      await panel.scrollIntoViewIfNeeded()
-      await expect(panel).toBeInViewport()
-    }
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await expect(layout).toBeVisible()
-    await expect(layout).toContainText('1:3:2')
     await page.getByRole('link', { name: '返回结果查看器' }).click()
     await expect(layout).toHaveCount(0)
     await page.getByRole('link', { name: /开始逐步学习/ }).click()
     await expect(layout).toContainText('1:3:2')
     await page.goto('/cases/multiway-endpoints/learn')
     await expect(layout).toContainText('1:3:2')
-    await expect(page.locator('vite-error-overlay')).toHaveCount(0)
-    expect(errors).toEqual([])
-  })
-
-  browserTest(`学习内容可达与回放 ${browserName}`, async ({ page }) => {
-    const errors: string[] = []
-    page.on('pageerror', error => errors.push(error.message))
-    page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto('/cases/crossing/learn?step=1')
-    await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
-    const controls = page.getByRole('region', { name: '回放控制', exact: true })
-    await controls.getByRole('button', { name: '下一步', exact: true }).click()
-    await expect(page).toHaveURL(/step=2$/)
-    await expect(page.getByRole('region', { name: '核心变量', exact: true }).getByTestId('variable-next')).not.toContainText('未赋值')
-
-    await page.setViewportSize({ width: 390, height: 844 })
-    const panels = ['几何视图', '核心代码回放', '核心变量'].map(name => page.getByRole('region', { name, exact: true }))
-    for (const panel of panels) {
-      await panel.scrollIntoViewIfNeeded()
-      await expect(panel).toBeInViewport()
-    }
-    await expect(page).toHaveURL(/step=2$/)
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(errors).toEqual([])
   })

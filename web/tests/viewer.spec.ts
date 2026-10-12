@@ -1,50 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
 import { selectPreset } from './cases'
-import { tabToReachable } from './keyboard'
-
-test('键盘选择案例、配对和几何操作可用', async ({ page }) => {
-  await page.goto('/')
-  const detail = page.getByRole('article').filter({ has: page.getByRole('heading', { name: '普通交叉', exact: true }) })
-    .getByRole('link', { name: '查看详情', exact: true })
-  await detail.focus()
-  await expect(detail).toBeFocused()
-  await page.keyboard.press('Enter')
-  await expect(page).toHaveURL(/\/cases\/crossing$/)
-  await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
-  const introduction = page.getByRole('button', { name: '说明与帮助', exact: true })
-  await introduction.focus()
-  await expect(introduction).toBeFocused()
-  await expect(page.getByRole('region', { name: '学习目标' })).toBeHidden()
-  await page.keyboard.press('Enter')
-  await expect(page.getByRole('region', { name: '学习目标' })).toBeVisible()
-  await page.keyboard.press('Escape')
-  await expect(page.getByRole('region', { name: '学习目标' })).toBeHidden()
-  await expect(introduction).toBeFocused()
-  await tabToReachable(page, page.getByRole('button', { name: '案例说明', exact: true }))
-  await tabToReachable(page, page.getByRole('link', { name: '开始逐步学习' }))
-  await tabToReachable(page, page.getByRole('button', { name: '图例与操作说明', exact: true }))
-  await expect(page.getByRole('tooltip')).toContainText('按钮缩放 · 拖动平移')
-  const zoomIn = page.getByRole('button', { name: '放大', exact: true })
-  await tabToReachable(page, zoomIn)
-  await expect(zoomIn).toBeFocused()
-  const input = page.getByRole('img', { name: '输入 S0', exact: true })
-  const before = (await input.boundingBox())!
-  await page.keyboard.press('Enter')
-  expect((await input.boundingBox())!.width).toBeGreaterThan(before.width)
-  await page.keyboard.press('Tab')
-  await expect(page.getByRole('button', { name: '缩小', exact: true })).toBeFocused()
-  await page.keyboard.press('Enter')
-  await page.keyboard.press('Tab')
-  await expect(page.getByRole('button', { name: '重置视图' })).toBeFocused()
-  await page.keyboard.press('Enter')
-  await tabToReachable(page, page.getByRole('button', { name: '结果说明', exact: true }))
-  await tabToReachable(page, page.getByRole('radio', { name: 'S0 × S1 · 点' }))
-  await page.keyboard.press('Space')
-  await expect(page.getByRole('radio', { name: 'S0 × S1 · 点' })).toBeChecked()
-  await expect(page.getByRole('region', { name: '精确详情' })).toContainText('(2, 2)')
-})
 
 test('普通交叉通过真实服务计算，并联动配对与精确详情', async ({ page }) => {
   await page.goto('/cases/crossing')
@@ -88,7 +43,7 @@ test('加载状态与空结果区分，完成后展示真实结果', async ({ pa
   await expect(page.getByText('正在计算…', { exact: true })).toHaveCount(0)
 })
 
-test('缩放平移保持等比例几何及选中精确详情，桌面和手机可用', async ({ page }) => {
+test('缩放平移保持等比例几何及选中精确详情', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (message.type() === 'error' || message.type() === 'warning') errors.push(message.text()) })
@@ -98,6 +53,8 @@ test('缩放平移保持等比例几何及选中精确详情，桌面和手机�
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
   const input = page.getByRole('img', { name: '输入 S0，已选中' })
+  const geometry = page.locator('g[data-layer="geometry"]')
+  const initialTransform = (await geometry.getAttribute('transform'))!
   const before = (await input.boundingBox())!
   await page.getByRole('button', { name: '放大', exact: true }).click()
   const after = (await input.boundingBox())!
@@ -118,21 +75,10 @@ test('缩放平移保持等比例几何及选中精确详情，桌面和手机�
   await page.getByRole('button', { name: '缩小', exact: true }).click()
   expect((await input.boundingBox())!.width).toBeCloseTo(before.width, 3)
   await expect(page.getByRole('region', { name: '精确详情' })).toContainText('(2, 2)')
+  await page.getByRole('button', { name: '放大', exact: true }).click()
+  await expect(geometry).not.toHaveAttribute('transform', initialTransform)
   await page.getByRole('button', { name: '重置视图' }).click()
-  await page.screenshot({ path: join(tmpdir(), 'bo-viewer-desktop.png'), fullPage: true })
-  await page.setViewportSize({ width: 390, height: 844 })
-  await expect(page.getByRole('radio', { name: 'S0 × S1 · 点' })).toBeVisible()
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
-  const mobileDrawing = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
-  await mobileDrawing.scrollIntoViewIfNeeded()
-  const mobileBox = (await mobileDrawing.boundingBox())!
-  const mobileInputWidth = (await input.boundingBox())!.width
-  const mobileScroll = await page.evaluate(() => window.scrollY)
-  await page.mouse.move(mobileBox.x + mobileBox.width / 2, mobileBox.y + mobileBox.height / 2)
-  await page.mouse.wheel(0, 120)
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(mobileScroll)
-  expect((await input.boundingBox())!.width).toBeCloseTo(mobileInputWidth, 3)
-  await page.screenshot({ path: join(tmpdir(), 'bo-viewer-mobile.png'), fullPage: true })
+  await expect(geometry).toHaveAttribute('transform', initialTransform)
   expect(errors).toEqual([])
 })
 

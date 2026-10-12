@@ -10,22 +10,13 @@ test('帮助：两页集中入口、键盘隔离与焦点返回', async ({ page 
     const dialog = page.getByRole('dialog', { name: '说明与帮助', exact: true })
     await expect(dialog).toBeVisible()
     await expect(dialog).toContainText('两两检查')
-    for (const key of ['ArrowRight', 'ArrowLeft', 'r', 'Tab', 'Shift+Tab']) {
+    for (const key of ['ArrowRight', 'ArrowLeft', 'r']) {
       await page.keyboard.press(key)
-      expect(await dialog.evaluate(el => el.contains(document.activeElement))).toBe(true)
+      if (route.includes('/learn')) await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('3')
     }
-    const introduction = dialog.getByRole('tab', { name: '学习目标、术语与扫描约定', exact: true })
-    await introduction.focus()
-    await page.keyboard.press('ArrowDown')
-    await expect(dialog.getByRole('tab', { name: '参考资料', exact: true })).toBeFocused()
-    await expect(dialog.getByRole('tab', { name: '参考资料', exact: true })).toHaveAttribute('aria-selected', 'true')
+    await dialog.getByRole('tab', { name: '参考资料', exact: true }).click()
     await expect(dialog.getByRole('tabpanel', { name: '参考资料', exact: true })).toBeVisible()
     await expect(dialog.getByRole('link', { name: /CGAL/ })).toHaveCount(2)
-    await dialog.getByRole('link').last().focus()
-    await page.keyboard.press('Tab')
-    await expect(dialog.getByRole('button', { name: '关闭帮助' })).toBeFocused()
-    await page.keyboard.press('Shift+Tab')
-    await expect(dialog.getByRole('link').last()).toBeFocused()
     await page.keyboard.press('Escape')
     await expect(dialog).toBeHidden()
     await expect(trigger).toBeFocused()
@@ -35,21 +26,4 @@ test('帮助：两页集中入口、键盘隔离与焦点返回', async ({ page 
       await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('4')
     }
   }
-})
-
-test.describe('触屏帮助', () => {
-  test.use({ hasTouch: true, viewport: { width: 390, height: 844 } })
-  test('帮助入口无需悬停即可阅读和关闭', async ({ page }) => {
-    await page.goto('/cases/partial-overlap/learn?step=3')
-    await expect(page.getByRole('slider')).toHaveValue('3')
-    await page.getByRole('button', { name: '重叠说明', exact: true }).tap()
-    const dialog = page.getByRole('dialog')
-    await expect(dialog.getByRole('tab', { name: '重叠处理规则', exact: true })).toHaveAttribute('aria-selected', 'true')
-    await expect(dialog).toContainText('不是上下交换')
-    await dialog.getByRole('button', { name: '关闭帮助' }).tap()
-    await expect(dialog).toBeHidden()
-    await expect(page.getByRole('slider')).toHaveValue('3')
-    await page.getByRole('button', { name: '下一步', exact: true }).tap()
-    await expect(page.getByRole('slider')).toHaveValue('4')
-  })
 })

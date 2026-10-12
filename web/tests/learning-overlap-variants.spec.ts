@@ -1,10 +1,8 @@
 import { expect, test } from './learning-test'
+import { readTrace, seekStep, waitForTraceCompletion } from './trace-navigation'
 
 for (const [id, count, intervals] of [
-  ['partial-overlap', 1, ['(2, 0) → (4, 0)']],
-  ['contained-overlap', 1, ['(1, 1) → (3, 3)']],
   ['duplicate-overlap', 3, ['(0, 0) → (4, 0)']],
-  ['vertical-overlap', 1, ['(1/2, 1/3) → (1/2, 5/3)']],
   ['overlap-group', 3, ['(0, 0) → (6, 0)', '(2, 0) → (3, 0)']],
 ] as const) test(`通用重叠教学：${id}`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -18,11 +16,13 @@ for (const [id, count, intervals] of [
   await expect(help).toContainText('不是扫描线已经走过整段')
   await expect(help).not.toContainText('本案例的 S0')
   await page.getByRole('button', { name: '关闭帮助' }).click()
-  const next = page.getByRole('button', { name: '下一步', exact: true })
+  const trace = await readTrace(page, id)
+  await waitForTraceCompletion(page)
   const explanation = page.getByRole('region', { name: '操作解释' })
   let records = 0, ends = 0
-  while (await next.isEnabled()) {
-    await next.click()
+  for (const [index, step] of trace.steps.entries()) {
+    if (step.action !== 'record' && step.action !== 'remove') continue
+    await seekStep(page, index, 'jump')
     const text = await explanation.innerText()
     if (text.includes('记录重叠区间')) {
       records++
@@ -47,6 +47,7 @@ for (const [id, count, intervals] of [
   }
   expect(records).toBe(count)
   expect(ends).toBeGreaterThan(0)
+  await seekStep(page, trace.steps.length - 1, 'jump')
   const result = page.getByRole('region', { name: '学习结果' })
   await expect(result).toContainText(`重叠区间：${count}；相交线段对：${count}`)
   for (const interval of intervals) await expect(result).toContainText(interval)

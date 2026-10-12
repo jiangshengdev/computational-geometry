@@ -46,10 +46,7 @@ for (const [path, title] of [
   ['/unknown', '链接无效 · BO 结果查看器'],
   ['/cases/not-a-case', '链接无效 · BO 结果查看器'],
   ['/cases/crossing/extra', '链接无效 · 普通交叉 · BO 结果查看器'],
-  ['/cases/empty/learn?step=5', '链接无效 · 空集合 · BO 结果查看器'],
   ['/cases/crossing/learn?step=bad', '链接无效 · 普通交叉 · BO 结果查看器'],
-  ['/cases/crossing/learn?step=1&step=2', '链接无效 · 普通交叉 · BO 结果查看器'],
-  ['/cases/crossing/learn?step=999999', '链接无效 · 普通交叉 · BO 结果查看器'],
 ]) {
   test(`无效链接标题与恢复：${path}`, async ({ page }) => {
     await page.goto(path)

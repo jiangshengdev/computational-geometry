@@ -12,24 +12,6 @@ export async function checkPairSelection(page: Page, sample: Intersection) {
   await radio.click()
 }
 
-export async function checkViewportControls(page: Page) {
-  const drawing = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
-  const geometry = drawing.locator('[data-layer="geometry"]')
-  const initial = await geometry.getAttribute('transform')
-  await page.getByRole('button', { name: '放大', exact: true }).click()
-  await expect(geometry).not.toHaveAttribute('transform', initial!)
-  const zoomed = await geometry.getAttribute('transform')
-  await drawing.scrollIntoViewIfNeeded()
-  const box = (await drawing.boundingBox())!
-  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
-  await page.mouse.down()
-  await page.mouse.move(box.x + box.width / 2 + 30, box.y + box.height / 2 + 20, { steps: 5 })
-  await page.mouse.up()
-  await expect(geometry).not.toHaveAttribute('transform', zoomed!)
-  await page.getByRole('button', { name: '重置视图', exact: true }).click()
-  await expect(geometry).toHaveAttribute('transform', initial!)
-}
-
 export async function checkLearningCompletion(page: Page, intersections: Intersection[], positions: number) {
   const capture = await captureIntersections(page)
   const learningResponse = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')

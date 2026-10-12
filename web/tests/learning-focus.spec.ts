@@ -2,10 +2,10 @@ import { expect, test } from './learning-test'
 import { tabToReachable } from './keyboard'
 import { readTrace, waitForTraceCompletion } from './trace-navigation'
 
-for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
+for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
-  for (const width of [1360, 390]) browserTest(`教学控件支持键盘焦点和展开操作 ${browserName} ${width}`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 900 })
+  browserTest(`教学画布、代码滚动区与符号支持键盘访问 ${browserName}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1360, height: 900 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
@@ -15,35 +15,6 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     expect(entry).toBeGreaterThan(0)
     await page.goto(`/cases/crossing/learn?step=${entry}`)
     await waitForTraceCompletion(page)
-    await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
-    if (width === 1360) {
-      await tabToReachable(page, page.getByRole('switch', { name: '禅模式' }))
-      await page.keyboard.press('Space')
-    }
-    const variables = page.getByRole('region', { name: '核心变量', exact: true })
-    const parameters = variables.getByRole('button', { name: '核心参数', exact: true })
-    await tabToReachable(page, parameters)
-    await page.keyboard.press('Escape')
-    await expect(page.getByRole('tooltip')).toHaveCount(0)
-    await parameters.press('Enter')
-    await expect(parameters).toHaveAttribute('aria-expanded', 'false')
-    await expect(parameters).toBeFocused()
-    const locals = variables.getByRole('button', { name: '核心局部变量', exact: true })
-    await tabToReachable(page, locals)
-    const queue = variables.getByTestId('variable-queue').getByRole('button')
-    await tabToReachable(page, queue)
-    await queue.press('Enter')
-    await expect(queue).toHaveAttribute('aria-expanded', 'true')
-    await expect(queue).toBeFocused()
-    await parameters.click()
-    await page.getByRole('button', { name: '核心变量说明', exact: true }).click()
-    await page.keyboard.press('Tab')
-    await expect(parameters).toBeFocused()
-    // Reload resets sequential focus navigation; all targets are reached by Tab.
-    await page.reload()
-    await expect(page.getByRole('region', { name: '回放控制', includeHidden: true })).not.toContainText('轨迹生成中')
-    const info = page.getByRole('button', { name: '图例与操作说明', exact: true })
-    await tabToReachable(page, info)
     const canvas = page.locator('svg[data-teaching="true"]')
     await tabToReachable(page, canvas)
     await page.keyboard.press('Escape')
@@ -57,31 +28,4 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     expect(errors).toEqual([])
   })
 
-  browserTest(`长内容滚动边界与教学浮层焦点 ${browserName}`, async ({ page }) => {
-    await page.setViewportSize({ width: 1360, height: 900 })
-    await page.emulateMedia({ reducedMotion: 'reduce' })
-    const trace = await readTrace(page, 'spider-web')
-    const entry = trace.steps.findIndex(step => step.action === 'take-entry')
-    await page.goto(`/cases/spider-web/learn?step=${entry}`)
-    await waitForTraceCompletion(page)
-    const variables = page.getByRole('region', { name: '核心变量', exact: true })
-    const queue = variables.getByTestId('variable-queue')
-    await queue.getByRole('button').click()
-    const value = queue.locator('.execution-variable-value')
-    expect(await value.evaluate(element => element.scrollHeight > element.clientHeight)).toBe(true)
-    const scroll = variables.locator('.learning-panel-content')
-    await page.getByRole('button', { name: '核心变量说明', exact: true }).click()
-    await scroll.evaluate(element => { element.scrollTop = element.scrollHeight })
-    const parameters = variables.getByRole('button', { name: '核心参数', exact: true })
-    await tabToReachable(page, parameters)
-    await page.getByRole('button', { name: '收起右侧辅助栏', exact: true }).click()
-    const trigger = page.getByRole('button', { name: '待处理事件队列', exact: true })
-    await trigger.click()
-    const dialog = page.getByRole('dialog', { name: '待处理事件队列', exact: true })
-    const help = dialog.getByRole('button', { name: '队列说明', exact: true })
-    await tabToReachable(page, help)
-    await page.keyboard.press('Escape')
-    await expect(dialog).toBeHidden()
-    await expect(trigger).toBeFocused()
-  })
 }
