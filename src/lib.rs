@@ -326,6 +326,8 @@ pub(crate) struct Execution {
     pub(crate) boundary: Option<usize>,
     pub(crate) entry: bool,
     pub(crate) context: ExecutionContext,
+    pub(crate) outer: Vec<ExecutionContext>,
+    pub(crate) returning: bool,
     pub(crate) calls: Vec<ExecutionCall>,
     pub(crate) controls: Vec<ExecutionControl>,
 }
@@ -391,9 +393,84 @@ impl ExecutionCall {
 
 #[derive(Clone)]
 pub(crate) struct ExecutionContext {
+    pub(crate) id: usize,
     pub(crate) function: &'static str,
     pub(crate) parameters: Vec<Variable>,
     pub(crate) locals: Vec<Variable>,
+    pub(crate) captures: Vec<Variable>,
+}
+
+// Keeps closure blocks intact under stable rustfmt without runtime work.
+macro_rules! nop {
+    () => {};
+}
+
+struct ClosureTrace {
+    caller: SweepStep,
+    current: SweepStep,
+}
+
+impl ClosureTrace {
+    fn enter(
+        steps: &mut Vec<SweepStep>,
+        next_call: &std::cell::Cell<usize>,
+        module: &'static str,
+        function: &'static str,
+        parameters: Vec<Variable>,
+        captures: &[&str],
+        result_type: &'static str,
+    ) -> Self {
+        let caller = steps.last().expect("call has a caller stop").clone();
+        let mut current = caller.clone();
+        current.action = "micro";
+        current.execution.module = module;
+        current.execution.boundary = Some(0);
+        current.execution.entry = false;
+        current.execution.calls.clear();
+        current.execution.controls.clear();
+        current
+            .execution
+            .outer
+            .push(caller.execution.context.clone());
+        let id = next_call.get();
+        next_call.set(id + 1);
+        current.execution.context = ExecutionContext {
+            id,
+            function,
+            parameters,
+            locals: vec![Variable::absent("return_value", result_type, "unassigned")],
+            captures: captures
+                .iter()
+                .map(|name| {
+                    caller
+                        .execution
+                        .context
+                        .locals
+                        .iter()
+                        .chain(&caller.execution.context.parameters)
+                        .chain(&caller.execution.context.captures)
+                        .find(|variable| variable.name == *name)
+                        .expect("captured binding exists at the call site")
+                        .clone()
+                })
+                .collect(),
+        };
+        steps.push(current.clone());
+        Self { caller, current }
+    }
+
+    fn returned(mut self, steps: &mut Vec<SweepStep>, value: String) {
+        self.current.execution.boundary = Some(1);
+        self.current.execution.returning = true;
+        let result_type = self.current.execution.context.locals[0].r#type;
+        self.current.execution.context.locals[0] =
+            Variable::available("return_value", result_type, value);
+        steps.push(self.current);
+        // Returning from one callback precedes any subsequent library callback.
+        self.caller.execution.entry = false;
+        self.caller.action = "micro";
+        steps.push(self.caller);
+    }
 }
 
 #[derive(Clone)]
@@ -508,12 +585,16 @@ impl SweepStep {
     ) -> Self {
         Self {
             execution: Execution {
+                outer: Vec::new(),
+                returning: false,
                 calls: Vec::new(),
                 controls: Vec::new(),
                 module: action,
                 boundary: None,
                 entry: false,
                 context: ExecutionContext {
+                    id: 0,
+                    captures: Vec::new(),
                     function: "sweep",
                     // The input binding has been shadowed by Vec<SweepSegment>.
                     parameters: vec![Variable {
@@ -752,6 +833,7 @@ fn sweep(
         return None;
     }
     let mut retained = false;
+    let next_call = std::cell::Cell::new(1);
     let shear = choose_shear(segments);
     let mut projection = TraceProjection::new(&shear);
     // Capture the binding immediately before it is shadowed, only for teaching.
@@ -1756,6 +1838,29 @@ fn sweep(
                 });
             };
         }
+        macro_rules! closure_call {
+            ($module:expr, $function:expr, $parameters:expr, $captures:expr, $type:expr, $body:expr, $format:expr) => {{
+                let trace = steps.as_mut().map(|steps| {
+                    ClosureTrace::enter(
+                        steps,
+                        &next_call,
+                        $module,
+                        $function,
+                        $parameters,
+                        $captures,
+                        $type,
+                    )
+                });
+                let value = $body;
+                if let Some(trace) = trace {
+                    trace.returned(
+                        steps.as_mut().expect("tracing is enabled"),
+                        ($format)(&value),
+                    );
+                }
+                value
+            }};
+        }
         activity!(0, Some(&incident), None, None);
         let removed = steps.as_ref().map(|_| {
             active
@@ -1783,7 +1888,18 @@ fn sweep(
             ],
             "()"
         );
-        active.retain(|&id| segments[id].right != point);
+        active.retain(|&id| {
+            nop!();
+            closure_call!(
+                "retain-end",
+                "retain closure",
+                vec![Variable::available("id", "usize", id.to_string())],
+                &["segments", "point"],
+                "bool",
+                segments[id].right != point,
+                |value: &bool| value.to_string()
+            )
+        });
         activity!(1, Some(&incident), None, None);
         call!(
             1,
@@ -1830,7 +1946,18 @@ fn sweep(
             ],
             "()"
         );
-        active.retain(|&id| !height_order[id].is_eq());
+        active.retain(|&id| {
+            nop!();
+            closure_call!(
+                "retain-height",
+                "retain closure",
+                vec![Variable::available("id", "usize", id.to_string())],
+                &["height_order"],
+                "bool",
+                !height_order[id].is_eq(),
+                |value: &bool| value.to_string()
+            )
+        });
         activity!(2, Some(&incident), None, None);
         call!(
             2,
@@ -1868,7 +1995,18 @@ fn sweep(
             ],
             "()"
         );
-        incident.retain(|&id| segments[id].right != point);
+        incident.retain(|&id| {
+            nop!();
+            closure_call!(
+                "retain-end",
+                "retain closure",
+                vec![Variable::available("id", "usize", id.to_string())],
+                &["segments", "point"],
+                "bool",
+                segments[id].right != point,
+                |value: &bool| value.to_string()
+            )
+        });
         activity!(3, Some(&incident), None, None);
         call!(
             3,
@@ -2283,6 +2421,8 @@ fn sweep(
                     step.execution.entry = boundary == 0;
                     step.execution.controls = controls;
                     step.execution.context = ExecutionContext {
+                        id: 0,
+                        captures: Vec::new(),
                         function: "schedule_neighbors",
                         parameters: vec![
                             Variable::available("active", "&[usize]", format!("{active:?}")),

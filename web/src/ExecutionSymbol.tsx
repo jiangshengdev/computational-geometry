@@ -1,7 +1,7 @@
 import { useRef, useState, type PointerEvent, type ReactNode, type RefObject } from 'react'
 import { Tooltip } from '@heroui/react/tooltip'
 import { Disclosure } from '@heroui/react/disclosure'
-import type { ExecutionVariable, SweepStep } from './geometry'
+import type { ExecutionContext, ExecutionVariable, ExecutionVariableKind, SweepStep } from './geometry'
 import { controlDescription, functions, hasVariableValue, panelVariableDetails, scopedVariable, symbolScope, variableDetails, variableValue } from './executionSymbols'
 import { RustCode } from './RustCode'
 
@@ -87,7 +87,7 @@ function VariableDescription({ detail }: { detail: ReturnType<typeof variableDet
 }
 
 interface VariableSymbolProps {
-  variable: ExecutionVariable; kind: 'parameters' | 'locals'
+  variable: ExecutionVariable; kind: ExecutionVariableKind; context?: ExecutionContext
   step: SweepStep; previous: SweepStep; values: string[]
   children: ReactNode; disclosure?: boolean; indicator?: ReactNode
 }
@@ -95,7 +95,7 @@ interface VariableSymbolProps {
 export function ExecutionVariableSymbol({ children, disclosure, indicator, ...props }: VariableSymbolProps) {
   const { variable, kind } = props
   const anchor = useRef<HTMLSpanElement>(null)
-  return <SymbolTooltip name={variable.name} label={disclosure ? `${variable.name}: ${variable.type}` : `变量 ${variable.name} · ${kind === 'parameters' ? '参数' : '局部变量'}`} disclosure={disclosure} anchor={disclosure ? anchor : undefined} content={<PanelVariableDescription {...props} />}>
+  return <SymbolTooltip name={variable.name} label={disclosure ? `${variable.name}: ${variable.type}` : `变量 ${variable.name} · ${kind === 'parameters' ? '参数' : kind === 'captures' ? '捕获变量' : '局部变量'}`} disclosure={disclosure} anchor={disclosure ? anchor : undefined} content={<PanelVariableDescription {...props} />}>
     {disclosure ? <>
       {indicator}
       <span className="min-w-0 flex-1"><span ref={anchor} className="execution-symbol inline-block"><RustCode>{variable.name}</RustCode></span>{children}</span>
@@ -103,7 +103,7 @@ export function ExecutionVariableSymbol({ children, disclosure, indicator, ...pr
   </SymbolTooltip>
 }
 
-function PanelVariableDescription({ variable, kind, step, previous, values }: Omit<VariableSymbolProps, 'children' | 'disclosure'>) {
-  const detail = panelVariableDetails(variable, kind, step, previous, values)
+function PanelVariableDescription({ variable, kind, step, previous, values, context }: Omit<VariableSymbolProps, 'children' | 'disclosure'>) {
+  const detail = panelVariableDetails(variable, kind, step, previous, values, context)
   return <div><strong>变量 <RustCode>{variable.name}</RustCode></strong><VariableDescription detail={detail} /></div>
 }

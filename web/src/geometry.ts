@@ -17,13 +17,23 @@ export interface ExecutionControl {
   occurrence: number
   state: 'pending' | 'true' | 'false' | 'entered' | 'exhausted' | 'skipped' | 'jumping' | 'returned' | 'completed'
 }
+export interface ExecutionContext {
+  id: number
+  function: string
+  parameters: ExecutionVariable[]
+  captures: ExecutionVariable[]
+  locals: ExecutionVariable[]
+}
+export type ExecutionVariableKind = 'parameters' | 'captures' | 'locals'
 export interface ExecutionState {
   module: string
   boundary: number | null
   entry: boolean
   controls: ExecutionControl[]
   calls: { line: number; function: string; occurrence: number; arguments: ExecutionVariable[]; result: ExecutionVariable }[]
-  context: { function: string; parameters: ExecutionVariable[]; locals: ExecutionVariable[] }
+  context: ExecutionContext
+  outer: ExecutionContext[]
+  returning: boolean
 }
 export interface SweepStep {
   phase: 'initial' | 'processing' | 'processed'

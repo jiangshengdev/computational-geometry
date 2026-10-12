@@ -150,6 +150,8 @@ struct ExecutionDto {
     boundary: Option<usize>,
     entry: bool,
     context: ExecutionContextDto,
+    outer: Vec<ExecutionContextDto>,
+    returning: bool,
     calls: Vec<ExecutionCallDto>,
     controls: Vec<ExecutionControlDto>,
 }
@@ -173,9 +175,26 @@ struct ExecutionCallDto {
 
 #[derive(Serialize)]
 struct ExecutionContextDto {
+    id: usize,
     function: &'static str,
     parameters: Vec<VariableDto>,
     locals: Vec<VariableDto>,
+    captures: Vec<VariableDto>,
+}
+
+impl ExecutionContextDto {
+    fn from_context(
+        context: crate::ExecutionContext,
+        variable: &mut impl FnMut(crate::Variable) -> VariableDto,
+    ) -> Self {
+        Self {
+            id: context.id,
+            function: context.function,
+            parameters: context.parameters.into_iter().map(&mut *variable).collect(),
+            locals: context.locals.into_iter().map(&mut *variable).collect(),
+            captures: context.captures.into_iter().map(variable).collect(),
+        }
+    }
 }
 
 #[derive(Serialize)]
@@ -208,6 +227,7 @@ impl ExecutionDto {
             }),
         };
         Self {
+            returning: execution.returning,
             module: execution.module,
             boundary: execution.boundary,
             entry: execution.entry,
@@ -232,16 +252,12 @@ impl ExecutionDto {
                     result: variable(call.result),
                 })
                 .collect(),
-            context: ExecutionContextDto {
-                function: execution.context.function,
-                parameters: execution
-                    .context
-                    .parameters
-                    .into_iter()
-                    .map(&mut variable)
-                    .collect(),
-                locals: execution.context.locals.into_iter().map(variable).collect(),
-            },
+            context: ExecutionContextDto::from_context(execution.context, &mut variable),
+            outer: execution
+                .outer
+                .into_iter()
+                .map(|context| ExecutionContextDto::from_context(context, &mut variable))
+                .collect(),
         }
     }
 }

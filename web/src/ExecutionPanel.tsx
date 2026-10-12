@@ -5,7 +5,7 @@ import { Button } from '@heroui/react/button'
 import { Tooltip } from '@heroui/react/tooltip'
 import { Disclosure } from '@heroui/react/disclosure'
 import type { ThemedToken } from 'shiki'
-import { formatRational, type ExecutionVariable, type Rational, type SweepStep } from './geometry'
+import { formatRational, type ExecutionContext, type ExecutionVariable, type ExecutionVariableKind, type Rational, type SweepStep } from './geometry'
 import { teachingModules } from './executionCode'
 import { ExecutionSymbol, ExecutionVariableSymbol } from './ExecutionSymbol'
 import { RustCode as VariableCode } from './RustCode'
@@ -56,7 +56,7 @@ export function ExecutionPanel({ step, previous, values }: {
       {module ? <div className="execution-source">
         <div className="execution-summary">
         <p className="text-sm">教学代码 · Rust 风格精简片段 · <code>{context.function}</code> / {module.title}</p>
-        <p className="text-sm" aria-live="polite">{step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : step.execution.boundary === 2 ? '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}</p>
+        <p className="text-sm" aria-live="polite">{step.execution.returning ? '返回值已产生 · 尚未恢复调用方' : step.execution.boundary === 0 ? '第一条核心语句之前 · 中间状态' : take ? step.execution.boundary === 1 ? '已取出队首；尚未匹配并绑定当前事件 · 中间状态' : step.action === 'take-empty' ? '队列为空，退出循环' : step.execution.boundary === 2 ? '已绑定 point 与 event；取事件模块完成' : '按实际控制流回放 · 中间状态' : context.locals.some(variable => variable.name === 'return_value' && variable.availability === 'available') ? '当前函数已返回' : '按实际控制流回放 · 中间状态'}</p>
         </div>
         <div ref={scroll} className="execution-code-scroll" tabIndex={0} role="region" aria-label={`${module.title}教学代码`}>
           {error ? <p role="alert">教学代码高亮加载失败，请刷新重试。</p> : tokens ? <pre className="execution-code"><code>
@@ -99,47 +99,47 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
 }) {
   const context = step.execution.context
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
-  const expansion = (key: string, defaultExpanded: boolean) => ({
-    isExpanded: expanded[`${context.function}:${key}`] ?? defaultExpanded,
-    onExpandedChange: (value: boolean) => setExpanded(current => ({ ...current, [`${context.function}:${key}`]: value })),
+  const expansion = (frame: ExecutionContext, key: string, defaultExpanded: boolean) => ({
+    isExpanded: expanded[`${frame.id}:${key}`] ?? defaultExpanded,
+    onExpandedChange: (value: boolean) => setExpanded(current => ({ ...current, [`${frame.id}:${key}`]: value })),
   })
-  const renderVariable = (variable: ExecutionVariable, kind: 'parameters' | 'locals') => {
-    const { changed } = variableChange(variable, kind, step, previous)
+  const renderVariable = (variable: ExecutionVariable, kind: ExecutionVariableKind, frame: ExecutionContext) => {
+    const { changed } = variableChange(variable, kind, step, previous, undefined, frame)
     const hasValue = hasVariableValue(variable)
     const shadowed = variable.availability === 'shadowed' && hasValue
     const value = variableValue(shadowed ? { ...variable, availability: 'available' } : variable, values)
     const multiline = hasValue && value.includes('\n')
     const suffix = `: ${variable.type} = `
-    const state = expansion(`${kind}:${variable.name}`, false)
+    const state = expansion(frame, `${kind}:${variable.scope}:${variable.name}`, false)
     if (multiline) return <Disclosure key={variable.name} {...state} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
-      <dt><ExecutionVariableSymbol variable={variable} kind={kind} step={step} previous={previous} values={values} disclosure indicator={<ExecutionDisclosureIndicator expanded={state.isExpanded} />}>
+      <dt><ExecutionVariableSymbol variable={variable} kind={kind} context={frame} step={step} previous={previous} values={values} disclosure indicator={<ExecutionDisclosureIndicator expanded={state.isExpanded} />}>
         <VariableCode>{suffix}</VariableCode>{!state.isExpanded && <VariableCode>{formatExecutionValue(value, 'summary')}</VariableCode>}
       </ExecutionVariableSymbol>{shadowed && !state.isExpanded && <span className="text-muted">{shadowedValueNote}</span>}</dt>
       <dd><Disclosure.Content><Disclosure.Body className="execution-variable-value"><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</Disclosure.Body></Disclosure.Content></dd>
     </Disclosure>
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
-      <dt><ExecutionVariableSymbol variable={variable} kind={kind} step={step} previous={previous} values={values}><VariableCode>{variable.name}</VariableCode></ExecutionVariableSymbol><VariableCode>{suffix}</VariableCode></dt>
+      <dt><ExecutionVariableSymbol variable={variable} kind={kind} context={frame} step={step} previous={previous} values={values}><VariableCode>{variable.name}</VariableCode></ExecutionVariableSymbol><VariableCode>{suffix}</VariableCode></dt>
       <dd className={hasValue ? undefined : 'text-muted'}>{hasValue ? <><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</> : value}</dd>
     </div>
   }
   return <section aria-label="核心变量" className="learning-panel learning-variables"><Card className="learning-panel-card">
     <CardHeader><CardTitle render={props => <h2 {...props} />}>核心变量</CardTitle></CardHeader>
     <CardContent className="learning-panel-content execution-context">
-      <section aria-label="当前执行上下文">
+      {[context, ...step.execution.outer.toReversed()].map(frame => <section key={frame.id} aria-label={frame === context ? '当前执行上下文' : `外层执行上下文 ${frame.function}`} data-context-id={frame.id}>
         <div className="flex items-center gap-1">
-        <h3>当前函数：<VariableCode>{context.function}</VariableCode></h3>
+        <h3>{frame === context ? '当前函数' : '外层函数'}：<VariableCode>{frame.function}</VariableCode></h3>
         <Tooltip>
           <Button isIconOnly variant="ghost" size="sm" aria-label="核心变量说明"><Info size={16} aria-hidden="true" /></Button>
           <Tooltip.Content placement="bottom" className="execution-context-tooltip">
-        <p className="execution-context-description text-sm text-muted">当前小步的核心上下文。<VariableCode>queue</VariableCode>、<VariableCode>next</VariableCode>、<VariableCode>point</VariableCode>、<VariableCode>current</VariableCode> 与扫描线段使用扫描坐标 <VariableCode>{`x′ = x + ${formatRational(shear)} · y`}</VariableCode>；<VariableCode>result</VariableCode> 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。{context.function === 'sweep' && <>参数 <VariableCode>segments</VariableCode> 已被同名局部变量遮蔽。</>}</p>
+        <p className="execution-context-description text-sm text-muted">当前小步的核心上下文。<VariableCode>queue</VariableCode>、<VariableCode>next</VariableCode>、<VariableCode>point</VariableCode>、<VariableCode>current</VariableCode> 与扫描线段使用扫描坐标 <VariableCode>{`x′ = x + ${formatRational(shear)} · y`}</VariableCode>；<VariableCode>result</VariableCode> 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。{frame.function === 'sweep' && <>参数 <VariableCode>segments</VariableCode> 已被同名局部变量遮蔽。</>}</p>
           </Tooltip.Content>
         </Tooltip>
         </div>
-        {(['parameters', 'locals'] as const).map(kind => <Disclosure key={kind} {...expansion(kind, true)}>
-          <Disclosure.Heading level={4}><Disclosure.Trigger className="flex w-full items-center gap-2 text-left"><ExecutionDisclosureIndicator expanded={expansion(kind, true).isExpanded} />{kind === 'parameters' ? '核心参数' : '核心局部变量'}</Disclosure.Trigger></Disclosure.Heading>
-          <Disclosure.Content><Disclosure.Body><dl>{context[kind].map(variable => renderVariable(variable, kind))}</dl></Disclosure.Body></Disclosure.Content>
+        {(['parameters', 'captures', 'locals'] as const).filter(kind => kind !== 'captures' || frame.captures.length > 0).map(kind => <Disclosure key={kind} {...expansion(frame, kind, true)}>
+          <Disclosure.Heading level={4}><Disclosure.Trigger className="flex w-full items-center gap-2 text-left"><ExecutionDisclosureIndicator expanded={expansion(frame, kind, true).isExpanded} />{kind === 'parameters' ? '核心参数' : kind === 'captures' ? '捕获变量' : '核心局部变量'}</Disclosure.Trigger></Disclosure.Heading>
+          <Disclosure.Content><Disclosure.Body><dl>{frame[kind].map(variable => renderVariable(variable, kind, frame))}</dl></Disclosure.Body></Disclosure.Content>
         </Disclosure>)}
-      </section>
+      </section>)}
     </CardContent>
   </Card></section>
 }

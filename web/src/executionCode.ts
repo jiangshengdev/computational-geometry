@@ -37,14 +37,24 @@ export const teachingModules: Record<string, TeachingModule> = {
     'return Some(point);',
   ], [[1], [2], [3], [4], [5], [6], [8], [8], [9], [1, 1], [4, 1], [1, 2], [4, 2]]),
   activity: teachingModule('活动集合更新', [
-    'active.retain(|&id| segments[id].right != point);',
-    'active.retain(|&id| !height_order[id].is_eq());',
-    'incident.retain(|&id| segments[id].right != point);',
+    'active.retain(|&id| { segments[id].right != point });',
+    'active.retain(|&id| { !height_order[id].is_eq() });',
+    'incident.retain(|&id| { segments[id].right != point });',
     'incident.sort_by(|&a, &b| segments[a].slope.cmp(&segments[b].slope));',
     'let position = active.partition_point(|&id| height_order[id].is_lt());',
     'let inserted = incident.len();',
     'active.splice(position..position, incident);',
   ], [[1], [2], [3], [4], [5], [6], [7], [8]]),
+  'retain-end': teachingModule('retain 端点判断闭包', [
+    '|&id| {',
+    '    segments[id].right != point',
+    '}',
+  ], [[2], [3]]),
+  'retain-height': teachingModule('retain 高度判断闭包', [
+    '|&id| {',
+    '    !height_order[id].is_eq()',
+    '}',
+  ], [[2], [3]]),
   take: teachingModule('取事件', [
     'let next = queue.pop_first();',
     'let Some((point, event)) = next else {\n    break;\n};',

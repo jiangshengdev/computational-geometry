@@ -153,6 +153,46 @@ fn assert_trace_tables(response: &Response) {
 }
 
 #[tokio::test]
+async fn retain_calls_expose_real_parameters_scopes_and_separate_returns() {
+    let response = trace_segments(&[(0, 0, 4, 4), (0, 4, 4, 0)]).await;
+    let steps = &response.trace.steps;
+    let values = &response.trace.values;
+    let mut calls = std::collections::HashSet::new();
+    let mut outcomes = std::collections::HashSet::new();
+    let mut sites = std::collections::HashSet::new();
+    for (index, step) in steps.iter().enumerate().filter(|(_, step)| {
+        step.execution.context.function == "retain closure" && !step.execution.returning
+    }) {
+        assert!(calls.insert(step.execution.context.id));
+        let id = &step.execution.context.parameters[0];
+        assert_eq!(id.name, "id");
+        assert!(matches!(id.text(values), Some("0" | "1")));
+        assert_eq!(step.execution.outer.len(), 1);
+        assert_eq!(step.execution.outer[0].function, "sweep");
+        assert!(!step.execution.context.captures.is_empty());
+        assert_ne!(variable(step, "return_value").availability, "available");
+        let returned = &steps[index + 1];
+        assert_eq!(returned.execution.context.id, step.execution.context.id);
+        assert!(returned.execution.returning);
+        outcomes.insert(variable(returned, "return_value").text(values).unwrap());
+        let caller = &steps[index + 2];
+        assert_eq!(caller.execution.context.id, step.execution.outer[0].id);
+        sites.insert(caller.execution.boundary.unwrap());
+    }
+    assert!(calls.len() > 3, "real repeated calls must be recorded");
+    assert_eq!(outcomes, std::collections::HashSet::from(["true", "false"]));
+    assert_eq!(sites, std::collections::HashSet::from([0, 1, 2]));
+    let empty = trace_segments(&[]).await;
+    assert!(
+        !empty
+            .trace
+            .steps
+            .iter()
+            .any(|step| step.execution.context.function == "retain closure")
+    );
+}
+
+#[tokio::test]
 async fn trace_point_table_deduplicates_equivalent_input_fraction_representations() {
     let segments: Vec<_> = [
         ("7", "5", "3", "2"),
@@ -248,7 +288,14 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
             assert_eq!(step.ends, previous.ends);
             assert_eq!(step.passes, previous.passes);
         }
-        assert_eq!(step.execution.context.function, "sweep");
+        if step.execution.context.function != "sweep" {
+            assert!(matches!(
+                step.execution.module.as_str(),
+                "retain-end" | "retain-height"
+            ));
+            assert!(!step.execution.entry);
+            continue;
+        }
         assert_eq!(step.execution.context.parameters[0].name, "segments");
         assert_eq!(
             step.execution.context.parameters[0].availability,
@@ -278,7 +325,10 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
                 "take" | "classify" | "record" | "activity" | "neighbors" | "geometry"
             ));
             assert!(step.execution.boundary.is_some());
-            assert_eq!(step.execution.entry, step.execution.boundary == Some(0));
+            assert_eq!(
+                step.execution.entry,
+                step.execution.boundary == Some(0) && !steps[index - 1].execution.returning
+            );
         }
     }
     let final_step = steps.last().unwrap();
@@ -618,6 +668,8 @@ struct Execution {
     boundary: Option<usize>,
     entry: bool,
     context: Context,
+    outer: Vec<Context>,
+    returning: bool,
     calls: Vec<ExecutionCall>,
     controls: Vec<Control>,
 }
@@ -640,9 +692,11 @@ struct ExecutionCall {
 
 #[derive(Deserialize)]
 struct Context {
+    id: usize,
     function: String,
     parameters: Vec<Variable>,
     locals: Vec<Variable>,
+    captures: Vec<Variable>,
 }
 
 #[derive(Deserialize)]

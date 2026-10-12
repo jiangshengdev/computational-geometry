@@ -1,4 +1,4 @@
-import type { ExecutionControl, ExecutionVariable, SweepStep } from './geometry'
+import type { ExecutionContext, ExecutionControl, ExecutionVariable, ExecutionVariableKind, SweepStep } from './geometry'
 import { formatExecutionValue } from './executionValue'
 
 const meanings: Record<string, string> = {
@@ -78,12 +78,13 @@ export function symbolScope(name: string, module: string, line: number) {
   if (module === 'classify' && name === 'id') return line <= 6 ? '活动线段循环' : '参与线段循环'
   if (module === 'activity' && ['id', 'a', 'b'].includes(name)) return `第 ${line} 行闭包`
   if (module === 'record' && name === 'p') return 'original 闭包'
+  if (module.startsWith('retain-')) return 'retain 闭包'
   return `${module} 模块`
 }
 
 export function scopedVariable(name: string, step: SweepStep, line: number) {
   const { module, context } = step.execution
-  const variable = context.locals.find(item => item.name === name) ?? context.parameters.find(item => item.name === name)
+  const variable = context.locals.find(item => item.name === name) ?? context.parameters.find(item => item.name === name) ?? context.captures.find(item => item.name === name)
   let visible = true
   if (module === 'classify' && name === 'id') visible = variable?.scope === (line <= 6 ? 'classify.active' : 'classify.incident')
   // Callback parameters are distinct bindings. The sweep's a/b/id and a
@@ -100,22 +101,23 @@ export function variableDetails(name: string, step: SweepStep, previous: SweepSt
   // Locals deliberately win even while unassigned or unavailable: never expose
   // the input parameter hidden by the scan-coordinate local named segments.
   const variable = scopedVariable(name, step, line)
-  const kind = context.locals.some(item => item.name === name) ? 'locals' : 'parameters'
+  const kind = context.locals.some(item => item.name === name) ? 'locals' : context.parameters.some(item => item.name === name) ? 'parameters' : 'captures'
   return describeVariable(name, variable, kind, step, previous, values, symbolScope(name, step.execution.module, line), line)
 }
 
-export function panelVariableDetails(variable: ExecutionVariable, kind: 'locals' | 'parameters', step: SweepStep, previous: SweepStep, values: string[]) {
+export function panelVariableDetails(variable: ExecutionVariable, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, values: string[], context = step.execution.context) {
   const scope = variable.scope === 'classify.active' ? '活动线段循环'
     : variable.scope === 'classify.incident' ? '参与线段循环'
-    : variable.scope ?? (kind === 'parameters' ? `${step.execution.context.function} 参数` : `${step.execution.module} 模块`)
-  return describeVariable(variable.name, variable, kind, step, previous, values, scope)
+    : variable.scope ?? `${context.function} ${kind === 'parameters' ? '参数' : kind === 'captures' ? '捕获变量' : '局部变量'}`
+  return describeVariable(variable.name, variable, kind, step, previous, values, scope, undefined, context)
 }
 
-function describeVariable(name: string, variable: ExecutionVariable | undefined, kind: 'locals' | 'parameters', step: SweepStep, previous: SweepStep, values: string[], scope: string, line?: number) {
-  const { old, changed } = variableChange(variable, kind, step, previous, line)
+function describeVariable(name: string, variable: ExecutionVariable | undefined, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, values: string[], scope: string, line?: number, context = step.execution.context) {
+  const { old, changed } = variableChange(variable, kind, step, previous, line, context)
   return {
     meaning: name === 'segments' && kind === 'parameters'
-      ? step.execution.context.function === 'sweep' ? '原始输入线段，使用原坐标' : '当前函数接收的扫描坐标线段'
+      ? context.function === 'sweep' ? '原始输入线段，使用原坐标' : '当前函数接收的扫描坐标线段'
+      : name === 'segments' && kind === 'captures' ? '当前闭包捕获的扫描坐标线段'
       : meanings[name],
     type: variable?.type ?? '当前作用域未提供类型',
     value: variableValue(variable, values),
@@ -127,11 +129,10 @@ function describeVariable(name: string, variable: ExecutionVariable | undefined,
   }
 }
 
-export function variableChange(variable: ExecutionVariable | undefined, kind: 'locals' | 'parameters', step: SweepStep, previous: SweepStep, line?: number) {
-  const context = step.execution.context, prior = previous.execution.context
-  const binding = prior.function === context.function && previous.execution.module === step.execution.module
-    ? prior[kind].find(item => item.name === variable?.name && item.scope === variable?.scope) : undefined
-  const old = binding && line !== undefined ? scopedVariable(binding.name, previous, line) : binding
+export function variableChange(variable: ExecutionVariable | undefined, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, line?: number, context: ExecutionContext = step.execution.context) {
+  const prior = [previous.execution.context, ...previous.execution.outer].find(frame => frame.id === context.id)
+  const binding = prior?.[kind].find(item => item.name === variable?.name && item.scope === variable?.scope)
+  const old = binding && line !== undefined && prior === previous.execution.context && previous.execution.module === step.execution.module ? scopedVariable(binding.name, previous, line) : binding
   return { old, changed: !!old && !!variable && (old.value !== variable.value || old.availability !== variable.availability) }
 }
 
