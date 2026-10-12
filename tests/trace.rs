@@ -51,11 +51,15 @@ async fn trace_json(segments: &str) -> Response {
                     .all(|index| *index < trace.result_values.len())
             );
             for variable in
-                step.execution
-                    .context
-                    .parameters
-                    .iter()
-                    .chain(&step.execution.context.locals)
+                std::iter::once(&step.execution.context)
+                    .chain(&step.execution.outer)
+                    .flat_map(|context| {
+                        context
+                            .parameters
+                            .iter()
+                            .chain(&context.locals)
+                            .chain(&context.captures)
+                    })
                     .chain(step.execution.calls.iter().flat_map(|call| {
                         call.arguments.iter().chain(std::iter::once(&call.result))
                     }))
@@ -89,6 +93,29 @@ async fn trace_json(segments: &str) -> Response {
         intersections: intersections.expect("exactly one completion frame is required"),
     };
     assert_trace_tables(&response);
+    let ordinary = router()
+        .oneshot(
+            Request::post("/api/intersections")
+                .header("content-type", "application/json")
+                .body(Body::from(format!(
+                    r#"{{"segments":{segments},"trace":false}}"#
+                )))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(ordinary.status(), 200);
+    #[derive(Deserialize)]
+    struct OrdinaryResponse {
+        intersections: Vec<Intersection>,
+    }
+    let ordinary: OrdinaryResponse = serde_json::from_slice(
+        &axum::body::to_bytes(ordinary.into_body(), usize::MAX)
+            .await
+            .unwrap(),
+    )
+    .unwrap();
+    assert_eq!(response.intersections, ordinary.intersections);
     response
 }
 

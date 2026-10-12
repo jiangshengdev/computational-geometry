@@ -19,6 +19,7 @@ import { usePageShortcut } from './usePageShortcut'
 import { ExecutionPanel, ExecutionVariablesPanel } from './ExecutionPanel'
 import { LearningDock } from './LearningDock'
 import { LearningSplit } from './LearningSplit'
+import { executionNavigation } from './executionNavigation'
 
 
 export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry, children, zenMode }: {
@@ -94,6 +95,7 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
   const checkedWithoutDiscovery = eventSteps.some(state => state.action === 'check') && !eventSteps.some(state => state.action === 'discover')
   const previousEntry = trace.steps.findLastIndex((state, position) => position < index && state.execution.entry)
   const nextEntry = trace.steps.findIndex((state, position) => position > index && state.execution.entry)
+  const { stepOver, stepOut } = executionNavigation(trace.steps, index)
   // A pop changes the queue, not the displayed sweep position. Keep its side too.
   const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && ((state.execution.module === 'activity' && !state.execution.entry && (state.execution.boundary === 7 || state.active.join(',') !== trace.steps[position - 1]?.active.join(','))) || !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action)))
   const geometryStep = trace.steps[geometryIndex]
@@ -270,6 +272,8 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
             <Button variant="secondary" size="sm" onPress={() => changeStep(previousEntry)} isDisabled={previousEntry < 0}>上一个大步</Button>
             <Button variant="secondary" size="sm" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Chip color="accent" variant="soft" size="sm" aria-hidden="true"><ArrowLeft size={14} /></Chip></Button>
             <Button variant="primary" size="sm" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Button>
+            <Button variant="secondary" size="sm" onPress={() => changeStep(stepOver)} isDisabled={stepOver < 0}>步过</Button>
+            <Button variant="secondary" size="sm" onPress={() => changeStep(stepOut)} isDisabled={stepOut < 0}>步出</Button>
             <Button variant="secondary" size="sm" onPress={() => nextEntry < 0 ? onWaitNextEntry() : changeStep(nextEntry)} isDisabled={generated && nextEntry < 0}>下一个大步</Button>
             <Button variant="tertiary" size="sm" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Chip color="accent" variant="soft" size="sm" aria-hidden="true">R</Chip></Button>
       </div>

@@ -1,5 +1,8 @@
 import { expect, test } from './learning-test'
 import { captureIntersections, seekStep, waitForTraceCompletion } from './trace-navigation'
+import type { TraceFrame } from '../src/geometry'
+import { join } from 'node:path'
+import { tmpdir } from 'node:os'
 
 test('si 进入真实 retain 调用，显示作用域、独立返回值并逐步回退', async ({ page }) => {
   const capture = await captureIntersections(page)
@@ -77,4 +80,119 @@ test('用户函数调用保留暂停的外层作用域，返回后再赋值给�
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await expect(current).toContainText('schedule_neighbors')
   await expect(outer.getByTestId('variable-candidate')).toContainText('未赋值')
+})
+
+test('步过跳过语句内部调用，步出只结束当前调用，上一步仍逐停点回退', async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  const capture = await captureIntersections(page)
+  await page.goto('/cases/crossing/learn')
+  const { trace } = await capture.result
+  await waitForTraceCompletion(page)
+  const slider = page.getByRole('slider', { name: '教学步骤' })
+  const over = page.getByRole('button', { name: '步过', exact: true })
+  const out = page.getByRole('button', { name: '步出', exact: true })
+  await expect(out).toBeDisabled()
+  const entry = trace.steps.findIndex(step => step.execution.context.function === 'retain closure' && !step.execution.returning)
+  const caller = trace.steps[entry - 1]
+  const afterStatement = trace.steps.findIndex((step, index) => index > entry && step.execution.context.id === 0 && step.execution.module === 'activity' && step.execution.boundary === caller.execution.boundary! + 1)
+  await seekStep(page, entry - 1, 'jump')
+  await over.click()
+  await expect(slider).toHaveValue(String(afterStatement))
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await expect(slider).toHaveValue(String(afterStatement - 1))
+  await seekStep(page, entry, 'jump')
+  await out.click()
+  await expect(slider).toHaveValue(String(entry + 2))
+  await expect(out).toBeDisabled()
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await expect(slider).toHaveValue(String(entry + 1))
+  await expect(page.getByRole('region', { name: '当前执行上下文' }).getByTestId('variable-return_value')).toContainText('true')
+  for (const name of ['retain closure', 'sort_by closure', 'partition_point closure', 'then closure', 'original closure', 'schedule_neighbors']) {
+    const start = trace.steps.findIndex(step => step.execution.context.function === name && !step.execution.returning)
+    expect(start, name).toBeGreaterThan(0)
+    const end = trace.steps.findIndex((step, index) => index > start && step.execution.context.id === trace.steps[start].execution.outer.at(-1)!.id)
+    await seekStep(page, start, 'jump')
+    await out.click()
+    await expect(slider).toHaveValue(String(end))
+    await page.getByRole('button', { name: '上一步', exact: true }).click()
+    await expect(slider).toHaveValue(String(end - 1))
+    await expect(page.getByRole('region', { name: '核心代码回放' })).toContainText('返回值已产生')
+  }
+  const returnStatement = trace.steps.findIndex(step => step.execution.module === 'geometry' && step.execution.boundary === 6)
+  expect(returnStatement).toBeGreaterThan(0)
+  const callerAfterReturn = trace.steps.findIndex((step, index) => index > returnStatement && step.execution.context.id === 0)
+  await seekStep(page, returnStatement, 'jump')
+  await over.click()
+  await expect(slider).toHaveValue(String(callerAfterReturn))
+  const repeated = trace.steps.findIndex((step, index) => step.execution.context.function === 'retain closure' && !step.execution.returning
+    && trace.steps[index + 3]?.execution.context.function === 'retain closure'
+    && trace.steps[index + 3].execution.context.id !== step.execution.context.id)
+  expect(repeated).toBeGreaterThan(0)
+  await seekStep(page, repeated, 'jump')
+  await out.click()
+  await expect(slider).toHaveValue(String(repeated + 2))
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await expect(slider).toHaveValue(String(repeated + 3))
+  await expect(page.getByRole('region', { name: '当前执行上下文' })).toContainText('retain closure')
+  await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
+  await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+  expect(errors).toEqual([])
+  await page.screenshot({ path: join(tmpdir(), 'bo-step-out-scopes.png') })
+})
+
+test('真实流尚未交付返回边界时禁用跳转，交付后才恢复导航', async ({ page }) => {
+  await page.addInitScript(() => {
+    const original = window.fetch
+    window.fetch = async (input, init) => {
+      const response = await original(input, init)
+      if (!String(input).includes('/api/intersections') || !response.headers.get('content-type')?.includes('ndjson')) return response
+      let pending = ''
+      let paused = false
+      const encoder = new TextEncoder()
+      const stream = response.body!.pipeThrough(new TextDecoderStream()).pipeThrough(new TransformStream<string, Uint8Array>({
+        async transform(chunk, controller) {
+          pending += chunk
+          let end: number
+          while ((end = pending.indexOf('\n')) >= 0) {
+            const line = pending.slice(0, end)
+            pending = pending.slice(end + 1)
+            if (!line) continue
+            const frame = JSON.parse(line) as TraceFrame
+            const entry = paused ? -1 : frame.steps.findIndex(step => step.execution.context.function === 'retain closure' && !step.execution.returning)
+            if (entry < 0) controller.enqueue(encoder.encode(line + '\n'))
+            else {
+              paused = true
+              // Keep every real dictionary value and stop intact; delay only
+              // delivery, splitting this API frame at a real callback entry.
+              controller.enqueue(encoder.encode(JSON.stringify({ ...frame, complete: false, intersections: undefined, steps: frame.steps.slice(0, entry + 1) }) + '\n'))
+              await new Promise<void>(resolve => {
+                Object.assign(window, { releaseClosureTrace: resolve })
+              })
+              controller.enqueue(encoder.encode(JSON.stringify({ ...frame, values: [], point_values: [], result_values: [], steps: frame.steps.slice(entry + 1) }) + '\n'))
+            }
+          }
+        },
+      }))
+      return new Response(stream, { status: response.status, headers: response.headers })
+    }
+  })
+  await page.goto('/cases/crossing/learn')
+  const slider = page.getByRole('slider', { name: '教学步骤' })
+  await expect.poll(() => page.evaluate(() => 'releaseClosureTrace' in window)).toBe(true)
+  await expect.poll(async () => Number(await slider.getAttribute('max'))).toBeGreaterThan(1)
+  const last = Number(await slider.getAttribute('max'))
+  await seekStep(page, last, 'jump')
+  await expect(page.getByRole('region', { name: '当前执行上下文' })).toContainText('retain closure')
+  await expect(page.getByRole('button', { name: '步过', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: '步出', exact: true })).toBeDisabled()
+  await expect(page.getByRole('region', { name: '回放控制' })).toContainText('轨迹生成中')
+  await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
+  await page.evaluate(() => (window as typeof window & { releaseClosureTrace(): void }).releaseClosureTrace())
+  await waitForTraceCompletion(page)
+  await expect(slider).toHaveValue(String(last))
+  await page.getByRole('button', { name: '步过', exact: true }).click()
+  await expect(slider).toHaveValue(String(last + 2))
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await expect(slider).toHaveValue(String(last + 1))
 })
