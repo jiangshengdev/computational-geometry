@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, CircleHelp, Crosshair, ListOrdered, ListTree, Wa
 import { GeometryView } from './GeometryView'
 import { formatGeometry, formatPoint, pairName, samePoint, type Point, type Preset, type SweepTrace } from './geometry'
 import { Button } from '@heroui/react/button'
+import { ButtonGroup } from '@heroui/react/button-group'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@heroui/react/card'
 import { Chip } from '@heroui/react/chip'
 import { Slider } from '@heroui/react/slider'
@@ -21,6 +22,15 @@ import { LearningDock } from './LearningDock'
 import { executionNavigation } from './executionNavigation'
 import { learningLayouts, type LearningLayout } from './learningLayout'
 
+type ReplayAction = {
+  name: string
+  key: string
+  shift?: boolean
+  hint: ReactNode
+  variant?: 'primary' | 'tertiary'
+  isDisabled: boolean
+  onPress: () => void
+}
 
 export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry, children, zenMode, layout }: {
   preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void; children: ReactNode; zenMode: boolean; layout: LearningLayout
@@ -150,14 +160,30 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
     else onStepChange(next)
   }
   const restart = () => { changeStep(0); setRun(r => r + 1) }
+  const replayGroups: { name: string; actions: ReplayAction[] }[] = [
+    { name: '单步', actions: [
+      { name: '上一步', key: 'ArrowLeft', hint: <ArrowLeft size={14} aria-hidden="true" />, isDisabled: index === 0, onPress: () => changeStep(current => current - 1, true) },
+      { name: '下一步', key: 'ArrowRight', hint: <ArrowRight size={14} aria-hidden="true" />, variant: 'primary', isDisabled: complete, onPress: () => changeStep(current => current + 1, true) },
+    ] },
+    { name: '函数级操作', actions: [
+      { name: '步过', key: 'n', hint: 'N', isDisabled: stepOver < 0, onPress: () => changeStep(stepOver) },
+      { name: '步出', key: 'u', hint: 'U', isDisabled: stepOut < 0, onPress: () => changeStep(stepOut) },
+    ] },
+    { name: '大步', actions: [
+      { name: '上一个大步', key: 'ArrowLeft', shift: true, hint: <>⇧<ArrowLeft size={14} aria-hidden="true" /></>, isDisabled: previousEntry < 0, onPress: () => changeStep(previousEntry) },
+      { name: '下一个大步', key: 'ArrowRight', shift: true, hint: <>⇧<ArrowRight size={14} aria-hidden="true" /></>, isDisabled: generated && nextEntry < 0, onPress: () => nextEntry < 0 ? onWaitNextEntry() : changeStep(nextEntry) },
+    ] },
+    { name: '重启', actions: [
+      { name: '重新开始', key: 'r', hint: 'R', variant: 'tertiary', isDisabled: false, onPress: restart },
+    ] },
+  ]
+  const replayActions = replayGroups.flatMap(group => group.actions)
   usePageShortcut((event: KeyboardEvent) => {
-    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key.toLowerCase() !== 'r') return
+    const action = replayActions.find(action => action.key.toLowerCase() === event.key.toLowerCase() && !!action.shift === event.shiftKey)
+    if (!action) return
     event.preventDefault()
-    if (event.repeat) return
-    if (event.key === 'ArrowLeft') changeStep(current => current - 1, true)
-    else if (event.key === 'ArrowRight') changeStep(current => current + 1, true)
-    else restart()
-  })
+    if (!event.repeat && !action.isDisabled) action.onPress()
+  }, replayActions.filter(action => action.shift).map(action => action.key))
   const subjects = inputReferences(step.subjects, ' × ')
   const phase = step.phase === 'initial' ? complete ? '学习完成' : '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
   const explanations = <section aria-label="操作解释" aria-live="polite" className="learning-panel learning-explanations"><Card className="learning-panel-card">
@@ -275,13 +301,13 @@ export function LearningView({ preset, trace, complete: generated, index, onStep
     </div>
     <section aria-label="回放控制" className="learning-replay-controls">
       <div className="flex flex-wrap items-center gap-2">
-            <Button variant="secondary" size="sm" onPress={() => changeStep(previousEntry)} isDisabled={previousEntry < 0}>上一个大步</Button>
-            <Button variant="secondary" size="sm" onPress={() => changeStep(current => current - 1, true)} isDisabled={index === 0} render={props => <button {...props} aria-keyshortcuts="ArrowLeft" />}>上一步<Chip color="accent" variant="soft" size="sm" aria-hidden="true"><ArrowLeft size={14} /></Chip></Button>
-            <Button variant="primary" size="sm" onPress={() => changeStep(current => current + 1, true)} isDisabled={complete} render={props => <button {...props} aria-keyshortcuts="ArrowRight" />}>下一步<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Button>
-            <Button variant="secondary" size="sm" onPress={() => changeStep(stepOver)} isDisabled={stepOver < 0}>步过</Button>
-            <Button variant="secondary" size="sm" onPress={() => changeStep(stepOut)} isDisabled={stepOut < 0}>步出</Button>
-            <Button variant="secondary" size="sm" onPress={() => nextEntry < 0 ? onWaitNextEntry() : changeStep(nextEntry)} isDisabled={generated && nextEntry < 0}>下一个大步</Button>
-            <Button variant="tertiary" size="sm" onPress={restart} render={props => <button {...props} aria-keyshortcuts="r" />}>重新开始<Chip color="accent" variant="soft" size="sm" aria-hidden="true">R</Chip></Button>
+        {replayGroups.map(group => {
+          const buttons = group.actions.map((action, position) => <Button key={action.name} variant={action.variant ?? 'secondary'} size="sm" onPress={action.onPress} isDisabled={action.isDisabled} render={props => <button {...props} aria-keyshortcuts={`${action.shift ? 'Shift+' : ''}${action.key}`} />}>
+            {position > 0 && <ButtonGroup.Separator />}
+            {action.name}<Chip color="accent" variant="soft" size="sm" className={action.variant === 'primary' ? 'bg-white/20 text-white' : undefined} aria-hidden="true">{action.hint}</Chip>
+          </Button>)
+          return group.actions.length > 1 ? <ButtonGroup key={group.name} aria-label={group.name}>{buttons}</ButtonGroup> : <Fragment key={group.name}>{buttons}</Fragment>
+        })}
       </div>
       <div className="learning-replay-progress" onKeyDownCapture={event => {
         if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) keyboardScrub.current = true

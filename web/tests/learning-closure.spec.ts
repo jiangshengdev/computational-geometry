@@ -273,6 +273,11 @@ test('真实流尚未交付返回边界时禁用跳转，交付后才恢复导�
   await expect(page.getByRole('button', { name: '步出', exact: true })).toBeDisabled()
   await expect(page.getByRole('region', { name: '回放控制' })).toContainText('轨迹生成中')
   await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
+  await page.getByRole('button', { name: '重新开始', exact: true }).focus()
+  for (const key of ['n', 'u']) {
+    await page.keyboard.press(key)
+    await expect(slider).toHaveValue(String(last))
+  }
   await page.evaluate(() => (window as typeof window & { releaseClosureTrace(): void }).releaseClosureTrace())
   await waitForTraceCompletion(page)
   await expect(slider).toHaveValue(String(last))

@@ -1,6 +1,6 @@
 import { expect, test } from './learning-test'
 import { selectPreset } from './cases'
-import { readTrace, seekStep, stepIndex, waitForTraceCompletion } from './trace-navigation'
+import { captureIntersections, readTrace, seekStep, stepIndex, waitForTraceCompletion } from './trace-navigation'
 
 for (const preset of ['crossing', 'disjoint']) {
   test(`教学快捷键：${preset} 单步、长按、首尾边界和重启`, async ({ page }) => {
@@ -68,6 +68,57 @@ for (const preset of ['crossing', 'disjoint']) {
   })
 }
 
+test('教学快捷键：大步、步过和步出与按钮等效，长按与禁用边界保持一致', async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
+  const capture = await captureIntersections(page)
+  await page.goto('/cases/crossing/learn')
+  const { trace } = await capture.result
+  await waitForTraceCompletion(page)
+  const start = stepIndex(trace, step => step.execution.context.function === 'retain closure' && !step.execution.returning)
+  const slider = page.getByRole('slider', { name: '教学步骤' })
+  const restart = page.getByRole('button', { name: '重新开始', exact: true })
+  for (const action of [
+    { name: '步过', key: 'n', group: '函数级操作' },
+    { name: '步出', key: 'u', group: '函数级操作' },
+    { name: '上一个大步', key: 'Shift+ArrowLeft', group: '大步' },
+    { name: '下一个大步', key: 'Shift+ArrowRight', group: '大步' },
+  ]) {
+    const button = page.getByRole('group', { name: action.group, exact: true }).getByRole('button', { name: action.name, exact: true })
+    await expect(button).toHaveAttribute('aria-keyshortcuts', action.key)
+    await seekStep(page, start, 'jump')
+    await button.click()
+    const destination = await slider.inputValue()
+    expect(destination).not.toBe(String(start))
+    await seekStep(page, start, 'jump')
+    await restart.focus()
+    if (action.key.startsWith('Shift+')) await page.keyboard.down('Shift')
+    const key = action.key.replace('Shift+', '')
+    await page.keyboard.down(key)
+    await expect(slider).toHaveValue(destination)
+    await page.keyboard.down(key)
+    await expect(slider).toHaveValue(destination)
+    await page.keyboard.up(key)
+    if (action.key.startsWith('Shift+')) await page.keyboard.up('Shift')
+  }
+  await restart.click()
+  for (const key of ['u', 'Shift+ArrowLeft']) {
+    await page.keyboard.press(key)
+    await expect(slider).toHaveValue('0')
+  }
+  const last = trace.steps.length - 1
+  await seekStep(page, last, 'jump')
+  await restart.focus()
+  for (const key of ['n', 'u', 'Shift+ArrowRight']) {
+    await page.keyboard.press(key)
+    await expect(slider).toHaveValue(String(last))
+  }
+  await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
+  await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+  expect(errors).toEqual([])
+})
+
 test('教学快捷键：控件优先、组合键和模式隔离', async ({ page }) => {
   await page.goto('/cases/crossing')
   await selectPreset(page, 'crossing')
@@ -76,23 +127,44 @@ test('教学快捷键：控件优先、组合键和模式隔离', async ({ page 
   await slider.focus()
   await page.keyboard.press('ArrowRight')
   await expect(slider).toHaveValue('1')
-  await page.keyboard.press('r')
-  await expect(slider).toHaveValue('1')
+  for (const key of ['r', 'n', 'u']) {
+    await page.keyboard.press(key)
+    await expect(slider).toHaveValue('1')
+  }
   await page.keyboard.press('End')
   await expect(page.getByRole('button', { name: '下一步', exact: true })).toBeDisabled()
   await page.keyboard.press('Home')
   await expect(slider).toHaveValue('0')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
-  for (const modifier of ['Control', 'Meta', 'Alt', 'Shift']) {
-    await page.keyboard.press(`${modifier}+ArrowRight`)
+  for (const modifier of ['Control', 'Meta', 'Alt']) {
+    for (const key of ['ArrowRight', 'Shift+ArrowRight', 'n', 'u']) {
+      await page.keyboard.press(`${modifier}+${key}`)
+      await expect(slider).toHaveValue('1')
+    }
+  }
+  for (const key of ['n', 'u', 'r']) {
+    await page.keyboard.press(`Shift+${key}`)
     await expect(slider).toHaveValue('1')
   }
+  const destination = page.getByRole('spinbutton', { name: '跳转步骤' })
+  await destination.focus()
+  for (const key of ['n', 'u', 'Shift+ArrowLeft', 'Shift+ArrowRight']) {
+    await page.keyboard.press(key)
+    await expect(slider).toHaveValue('1')
+  }
+  await page.getByRole('button', { name: '说明与帮助', exact: true }).click()
+  await expect(page.getByRole('dialog')).toBeVisible()
+  for (const key of ['n', 'u', 'Shift+ArrowLeft', 'Shift+ArrowRight']) {
+    await page.keyboard.press(key)
+    await expect(slider).toHaveValue('1')
+  }
+  await page.getByRole('button', { name: '关闭帮助', exact: true }).click()
   await slider.focus()
   await page.keyboard.press('r')
   await expect(slider).toHaveValue('1')
   await page.getByRole('link', { name: '返回结果查看器' }).click()
   await expect(page.getByRole('region', { name: '原始输入' })).toBeVisible()
-  for (const key of ['ArrowLeft', 'r']) {
+  for (const key of ['ArrowLeft', 'r', 'n', 'u']) {
     const consumed = await page.evaluate(key => {
       const event = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true })
       document.body.dispatchEvent(event)
