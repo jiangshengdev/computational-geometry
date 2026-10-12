@@ -3,6 +3,60 @@ import type { SweepTrace } from '../src/geometry'
 import { readResponse, readTrace, waitForTraceCompletion } from './trace-navigation'
 import { variableValue } from '../src/executionSymbols'
 import { formatExecutionValue } from '../src/executionValue'
+import { codeSymbols } from '../src/executionAccess'
+
+test('访问识别区分字段名、字段值和路径，嵌套索引保留所属关系', () => {
+  const symbols = codeSymbols('Point { x: p.x - shear * p.y, y: p.y }; Geometry::Point(p); // p.y')
+  expect(symbols.filter(symbol => symbol.name === 'p')).toHaveLength(4)
+  expect(symbols.filter(symbol => symbol.kind === 'access').map(symbol => symbol.access?.expression)).toEqual(['p.x', 'p.y', 'p.y'])
+  const slope = codeSymbols('segments[neighbors[0]].slope').find(symbol => symbol.name === 'slope')!
+  expect(slope.access?.parent?.expression).toBe('segments[neighbors[0]]')
+  expect(slope.access?.parent?.parent?.expression).toBe('segments')
+})
+
+test('字段 hover 读取真实闭包参数，声明中的三个 p 均可查看且不泄露调用值', async ({ page }) => {
+  const trace = await readTrace(page, 'crossing')
+  const index = trace.steps.findIndex(step => step.execution.module === 'original' && !step.execution.returning)
+  expect(index).toBeGreaterThan(0)
+  await page.goto(`/cases/crossing/learn?step=${index}`)
+  const panel = page.getByRole('region', { name: '核心代码回放' })
+  const references = panel.locator('[data-symbol="p"][data-line="2"]')
+  await expect(references).toHaveCount(3)
+  const parameter = trace.steps[index].execution.context.parameters.find(variable => variable.name === 'p')!
+  for (const reference of await references.all()) {
+    await reference.hover()
+    await expect(page.getByRole('tooltip', { name: /^变量 p / })).toContainText(`当前值：${trace.values[parameter.value!]}`)
+    await panel.getByRole('heading').hover()
+    await expect(page.getByRole('tooltip', { name: /^变量 p / })).toHaveCount(0)
+  }
+  const y = panel.locator('[data-symbol="y"]').last()
+  await y.hover()
+  await expect(page.getByRole('tooltip', { name: /^访问 p.y / })).toContainText('类型：Rational')
+  await expect(page.getByRole('tooltip', { name: /^访问 p.y / })).toContainText('当前值：2')
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await panel.locator('[data-symbol="y"]').last().hover()
+  await expect(page.getByRole('tooltip', { name: /^访问 p.y / })).toContainText('不可用')
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await panel.locator('[data-symbol="y"]').last().hover()
+  await expect(page.getByRole('tooltip', { name: /^访问 p.y / })).toContainText('当前值：2')
+})
+
+test('字段与索引 hover 使用当前线段编号并随跳转变化', async ({ page }) => {
+  const trace = await readTrace(page, 'crossing')
+  const index = trace.steps.findIndex(step => step.execution.module === 'record' && step.execution.boundary === 3 && step.execution.context.locals.some(variable => variable.name === 'b' && variable.availability === 'available'))
+  await page.goto(`/cases/crossing/learn?step=${index}`)
+  const panel = page.getByRole('region', { name: '核心代码回放' })
+  await panel.locator('[data-symbol="slope"]').first().hover()
+  await expect(page.getByRole('tooltip', { name: /^访问 segments\[a\].slope / })).toContainText('当前值：Some(1)')
+  await panel.locator('[data-symbol="slope"]').nth(1).hover()
+  await expect(page.getByRole('tooltip', { name: /^访问 segments\[b\].slope / })).toContainText('当前值：Some(-1)')
+  await panel.locator('[data-symbol="segments[a]"]').first().hover()
+  await expect(page.getByRole('tooltip', { name: /^访问 segments\[a\] / })).toContainText('SweepSegment { left: (0, 0), right: (4, 4), slope: Some(1), intercept: 0 }')
+  const unavailable = trace.steps.findIndex(step => step.execution.module === 'record' && step.execution.boundary === 0)
+  await page.goto(`/cases/crossing/learn?step=${unavailable}`)
+  await panel.locator('[data-symbol="slope"]').first().hover()
+  await expect(page.getByRole('tooltip', { name: /^访问 segments\[a\].slope / })).toContainText('不可用（索引未赋值或不可用）')
+})
 
 test('长变量值可滚动访问', async ({ page }) => {
   const trace = await readTrace(page, 'mixed-vertical')

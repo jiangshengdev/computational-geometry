@@ -5,21 +5,23 @@ import { TooltipTriggerStateContext } from 'react-aria-components/Tooltip'
 import type { ExecutionContext, ExecutionVariable, ExecutionVariableKind, SweepStep } from './geometry'
 import { controlDescription, functions, hasVariableValue, panelVariableDetails, scopedVariable, symbolScope, variableDetails, variableValue } from './executionSymbols'
 import { RustCode } from './RustCode'
+import { type Access, accessDetails } from './executionAccess'
 
 function SymbolValue({ variable, values }: { variable: ExecutionVariable | undefined; values: string[] }) {
   return <RustCode muted={!hasVariableValue(variable)}>{variableValue(variable, values)}</RustCode>
 }
 
 interface SymbolProps {
-  name: string; kind: 'function' | 'variable' | 'control'; children: ReactNode
+  name: string; kind: 'function' | 'variable' | 'control' | 'access'; children: ReactNode
+  access?: Access
   line: number; displayLine: number; occurrence: number; module: string
   expression: string
   step: SweepStep; previous: SweepStep; values: string[]
 }
 
-export function ExecutionSymbol({ name, kind, line, displayLine, occurrence, module, expression, children, step, previous, values }: SymbolProps) {
-  const label = kind === 'variable' ? '变量' : kind === 'control' ? '控制流' : '函数'
-  return <SymbolTooltip name={name} line={line} occurrence={occurrence} label={`${label} ${name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line) : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`} content={<SymbolDetails name={name} kind={kind} line={line} occurrence={occurrence} module={module} expression={expression} step={step} previous={previous} values={values} label={label} />}>
+export function ExecutionSymbol({ name, kind, access, line, displayLine, occurrence, module, expression, children, step, previous, values }: SymbolProps) {
+  const label = kind === 'variable' ? '变量' : kind === 'access' ? '访问' : kind === 'control' ? '控制流' : '函数'
+  return <SymbolTooltip name={name} line={line} occurrence={occurrence} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line) : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`} content={<SymbolDetails name={name} kind={kind} access={access} line={line} occurrence={occurrence} module={module} expression={expression} step={step} previous={previous} values={values} label={label} />}>
     {children}
   </SymbolTooltip>
 }
@@ -52,8 +54,8 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, discl
 
 // Tooltip.Content owns mounting and exit animation. Resolve values only while
 // its body is mounted, while keeping the trigger's accessible scope available.
-function SymbolDetails({ name, kind, line, occurrence, module, expression, step, previous, values, label }: Omit<SymbolProps, 'children' | 'displayLine'> & { label: string }) {
-  const detail = variableDetails(name, step, previous, values, line)
+function SymbolDetails({ name, kind, access, line, occurrence, module, expression, step, previous, values, label }: Omit<SymbolProps, 'children' | 'displayLine'> & { label: string }) {
+  const detail = access ? accessDetails(access, step, previous, values, line) : variableDetails(name, step, previous, values, line)
   const fn = functions[name]
   const context = step.execution.context
   const call = module === step.execution.module ? step.execution.calls.find(call => call.line === line && call.function === name && call.occurrence === occurrence) : undefined
@@ -62,11 +64,11 @@ function SymbolDetails({ name, kind, line, occurrence, module, expression, step,
   const references = [...new Set(expression.match(/[A-Za-z_][A-Za-z_0-9]*/g))]
     .map(reference => scopedVariable(reference, step, line))
     .filter(variable => variable !== undefined)
-  return <div><strong>{label} <RustCode>{name}</RustCode></strong>
+  return <div><strong>{label} <RustCode>{access?.expression ?? name}</RustCode></strong>
         {kind === 'control' ? <>
           <p>{controlDescription(name, control)}</p>
           {name === 'return' && control?.state === 'returned' && <p>返回值：<SymbolValue variable={returnValue} values={values} /></p>}
-        </> : kind === 'variable' ? <VariableDescription detail={detail} /> : <>
+        </> : kind === 'variable' || kind === 'access' ? <VariableDescription detail={detail} /> : <>
           <p><RustCode>{fn.signature}</RustCode></p><p>{fn.purpose}</p><p>参数：{fn.parameters}</p>
           <p>调用表达式：<RustCode>{expression}</RustCode></p>
           {call ? <>

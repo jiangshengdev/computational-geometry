@@ -141,7 +141,7 @@ export function variableChange(variable: ExecutionVariable | undefined, kind: Ex
 export function symbolKind(name: string, before: string, after: string) {
   if (['if', 'else', 'for', 'continue', 'return', 'break'].includes(name)) return 'control'
   if (functions[name] && (/^\s*\(/.test(after) || name === 'original')) return 'function'
-  if (meanings[name] && !/[.:]\s*$/.test(before) && !/^\s*:/.test(after)) return 'variable'
+  if (meanings[name] && !/(?:\.|::)\s*$/.test(before) && !/^\s*:/.test(after)) return 'variable'
   return null
 }
 

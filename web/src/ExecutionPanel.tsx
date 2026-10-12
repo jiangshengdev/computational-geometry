@@ -12,7 +12,8 @@ import { executionSource } from './executionCode'
 import { ExecutionSymbol, ExecutionVariableSymbol } from './ExecutionSymbol'
 import { RustCode as VariableCode } from './RustCode'
 import { tokenizeRust } from './rustHighlight'
-import { callExpression, hasVariableValue, shadowedValueNote, symbolKind, variableChange, variableValue } from './executionSymbols'
+import { callExpression, hasVariableValue, shadowedValueNote, variableChange, variableValue } from './executionSymbols'
+import { codeSymbols } from './executionAccess'
 import { formatExecutionValue } from './executionValue'
 import { useLayoutPreference } from './useLayoutPreference'
 
@@ -90,23 +91,26 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
               const continuationIndent = text.match(/^ */)![0].length + 2
               const lineOffset = sourceOffset
               sourceOffset += text.length + 1
-              let offset = 0
-              return <span className="code-line" key={index} style={{ '--continuation-indent': `${continuationIndent}ch` } as CSSProperties}>{line.map((token, tokenIndex) => {
-                const tokenStart = offset
-                offset += token.content.length
-                let partOffset = 0
-                return <span key={tokenIndex} style={{ color: token.color, ...token.htmlStyle } as CSSProperties}>{token.content.split(/([A-Za-z_][A-Za-z_0-9]*)/).map((part, partIndex) => {
-                  const start = tokenStart + partOffset
-                  partOffset += part.length
-                  const kind = text.slice(0, start).includes('//') ? null : symbolKind(part, text.slice(0, start), text.slice(start + part.length))
+              const symbols = codeSymbols(text)
+              const cuts = [...new Set([0, text.length, ...symbols.flatMap(symbol => [symbol.start, symbol.end])])].sort((a, b) => a - b)
+              return <span className="code-line" key={index} style={{ '--continuation-indent': `${continuationIndent}ch` } as CSSProperties}>{cuts.slice(0, -1).map((start, partIndex) => {
+                  const end = cuts[partIndex + 1]
+                  const symbol = symbols.find(symbol => symbol.start === start)
+                  const part = text.slice(start, end)
+                  const kind = symbol?.kind
+                  let tokenOffset = 0
+                  const highlighted = tokens[index].map((token, tokenIndex) => {
+                    const from = Math.max(start, tokenOffset), to = Math.min(end, tokenOffset + token.content.length)
+                    tokenOffset += token.content.length
+                    return from < to ? <span key={tokenIndex} style={{ color: token.color, ...token.htmlStyle } as CSSProperties}>{text.slice(from, to)}</span> : null
+                  })
                   const inClosure = closure && index >= closure.start && index <= closure.end && (index !== closure.start || start >= closure.parameterColumn)
                   const symbolStep = inClosure ? step : caller
                   const line = inClosure ? index - closure.start + 1 : module.traceLines[index]
                   const key = `${symbolStep.execution.module}:${line}:${part}`
                   const occurrence = occurrences.get(key) ?? 0
                   if (kind === 'function' || kind === 'control') occurrences.set(key, occurrence + 1)
-                  return kind ? <ExecutionSymbol key={partIndex} name={part} kind={kind} line={line} displayLine={index + 1} occurrence={occurrence} module={symbolStep.execution.module} expression={callExpression(part, module.code.slice(lineOffset + start + part.length))} step={symbolStep} previous={previous} values={values}>{part}</ExecutionSymbol> : part
-                })}</span>
+                  return kind ? <ExecutionSymbol key={partIndex} name={symbol!.name} kind={kind} access={symbol?.access} line={line} displayLine={index + 1} occurrence={occurrence} module={symbolStep.execution.module} expression={callExpression(part, module.code.slice(lineOffset + start + part.length))} step={symbolStep} previous={previous} values={values}>{highlighted}</ExecutionSymbol> : <span key={partIndex}>{highlighted}</span>
               })}{'\n'}</span>
               })
             })()}
