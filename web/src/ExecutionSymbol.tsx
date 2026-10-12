@@ -1,38 +1,48 @@
 import { useState, type ReactNode } from 'react'
 import { Tooltip } from '@heroui/react/tooltip'
 import type { ExecutionVariable, SweepStep } from './geometry'
-import { controlDescription, functions, hasVariableValue, scopedVariable, variableDetails, variableValue } from './executionSymbols'
+import { controlDescription, functions, hasVariableValue, scopedVariable, symbolScope, variableDetails, variableValue } from './executionSymbols'
 import { RustCode } from './RustCode'
 
 function SymbolValue({ variable, values }: { variable: ExecutionVariable | undefined; values: string[] }) {
   return <RustCode muted={!hasVariableValue(variable)}>{variableValue(variable, values)}</RustCode>
 }
 
-export function ExecutionSymbol({ name, kind, line, displayLine, occurrence, module, expression, children, step, previous, values }: {
+interface SymbolProps {
   name: string; kind: 'function' | 'variable' | 'control'; children: ReactNode
   line: number; displayLine: number; occurrence: number; module: string
   expression: string
   step: SweepStep; previous: SweepStep; values: string[]
-}) {
+}
+
+export function ExecutionSymbol({ name, kind, line, displayLine, occurrence, module, expression, children, step, previous, values }: SymbolProps) {
   const [open, setOpen] = useState(false)
+  const label = kind === 'variable' ? '变量' : kind === 'control' ? '控制流' : '函数'
+  return <Tooltip delay={150} closeDelay={0} isOpen={open} onOpenChange={setOpen}>
+    <Tooltip.Trigger<'span'> render={props => <span {...props} tabIndex={0} />} onPointerMove={event => {
+      // The first pointerenter after navigation precedes React Aria's modality
+      // update. Actual movement over the symbol must still open its tooltip.
+      if (event.pointerType !== 'touch') setOpen(true)
+    }} onPointerLeave={() => setOpen(false)} className="execution-symbol" data-symbol={name} data-line={line} data-occurrence={occurrence} aria-label={`${label} ${name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line) : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`}>{children}</Tooltip.Trigger>
+    <Tooltip.Content className="execution-symbol-tooltip" placement="bottom">
+      <SymbolDetails name={name} kind={kind} line={line} occurrence={occurrence} module={module} expression={expression} step={step} previous={previous} values={values} label={label} />
+    </Tooltip.Content>
+  </Tooltip>
+}
+
+// Tooltip.Content owns mounting and exit animation. Resolve values only while
+// its body is mounted, while keeping the trigger's accessible scope available.
+function SymbolDetails({ name, kind, line, occurrence, module, expression, step, previous, values, label }: Omit<SymbolProps, 'children' | 'displayLine'> & { label: string }) {
   const detail = variableDetails(name, step, previous, values, line)
   const fn = functions[name]
   const context = step.execution.context
   const call = module === step.execution.module ? step.execution.calls.find(call => call.line === line && call.function === name && call.occurrence === occurrence) : undefined
   const control = module === step.execution.module ? step.execution.controls.find(control => control.line === line && control.keyword === name && control.occurrence === occurrence) : undefined
   const returnValue = context.locals.find(variable => variable.name === 'return_value')
-  const label = kind === 'variable' ? '变量' : kind === 'control' ? '控制流' : '函数'
   const references = [...new Set(expression.match(/[A-Za-z_][A-Za-z_0-9]*/g))]
     .map(reference => scopedVariable(reference, step, line))
     .filter(variable => variable !== undefined)
-  return <Tooltip delay={150} closeDelay={0} isOpen={open} onOpenChange={setOpen}>
-    <Tooltip.Trigger<'span'> render={props => <span {...props} tabIndex={0} />} onPointerMove={event => {
-      // The first pointerenter after navigation precedes React Aria's modality
-      // update. Actual movement over the symbol must still open its tooltip.
-      if (event.pointerType !== 'touch') setOpen(true)
-    }} onPointerLeave={() => setOpen(false)} className="execution-symbol" data-symbol={name} data-line={line} data-occurrence={occurrence} aria-label={`${label} ${name} · ${kind === 'variable' ? detail.scope : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`}>{children}</Tooltip.Trigger>
-    <Tooltip.Content className="execution-symbol-tooltip" placement="bottom">
-      <div><strong>{label} <RustCode>{name}</RustCode></strong>
+  return <div><strong>{label} <RustCode>{name}</RustCode></strong>
         {kind === 'control' ? <>
           <p>{controlDescription(name, control)}</p>
           {name === 'return' && control?.state === 'returned' && <p>返回值：<SymbolValue variable={returnValue} values={values} /></p>}
@@ -52,6 +62,4 @@ export function ExecutionSymbol({ name, kind, line, displayLine, occurrence, mod
           </>}
         </>}
       </div>
-    </Tooltip.Content>
-  </Tooltip>
 }
