@@ -35,7 +35,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(page).toHaveTitle(/逐步学习/)
     await waitForTraceCompletion(page)
     await expect(page.locator('.execution-code')).toBeVisible()
-    const panel = page.getByRole('region', { name: '核心变量', exact: true })
+    const panel = page.getByRole('region', { name: '当前执行上下文', exact: true })
     const parameters = panel.getByRole('button', { name: '核心参数', exact: true })
     const locals = panel.getByRole('button', { name: '核心局部变量', exact: true })
     const input = panel.getByRole('button', { name: 'segments: &[Segment]', exact: true })

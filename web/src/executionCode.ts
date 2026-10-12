@@ -99,7 +99,7 @@ export const teachingModules: Record<string, TeachingModule> = {
   record: teachingModule('配对与记录', [
     'for (i, &a) in incident.iter().enumerate() {',
     '    for &b in &incident[i + 1..] {',
-    '        let original = |p| { Point { x: p.x - shear * p.y, y: p.y } };',
+    '        let original = |p| {\n            Point { x: p.x - shear * p.y, y: p.y }\n        };',
     '        let geometry = if segments[a].slope == segments[b].slope {',
     '            let start = segments[a].left.max(segments[b].left);',
     '            if start != &point {',

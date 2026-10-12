@@ -108,7 +108,9 @@ export function variableDetails(name: string, step: SweepStep, previous: SweepSt
 export function panelVariableDetails(variable: ExecutionVariable, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, values: string[], context = step.execution.context) {
   const scope = variable.scope === 'classify.active' ? '活动线段循环'
     : variable.scope === 'classify.incident' ? '参与线段循环'
-    : variable.scope ?? `${context.function} ${kind === 'parameters' ? '参数' : kind === 'captures' ? '捕获变量' : '局部变量'}`
+    : variable.scope ?? (kind === 'parameters' ? `${context.function} 参数`
+      : kind === 'captures' ? `${context.function} 捕获变量`
+      : context.id === step.execution.context.id ? `${step.execution.module} 模块` : `${context.function} 局部变量`)
   return describeVariable(variable.name, variable, kind, step, previous, values, scope, undefined, context)
 }
 
