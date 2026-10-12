@@ -1,7 +1,7 @@
 import { expect, test } from './learning-test'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { readResponse, readTrace } from './trace-navigation'
+import { readResponse, readTrace, seekStep } from './trace-navigation'
 import { presets } from '../src/presets'
 
 test('右大括号分行后，真实轨迹边界仍对齐下一条语句', async ({ page }) => {
@@ -121,8 +121,15 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(panel).toContainText('参与线段分类')
     const classification = panel.getByRole('region', { name: '参与线段分类教学代码' })
     await expect(classification.locator('.code-line').last()).toBeAttached()
+    // The full-height column fits classification; activity supplies real long code.
+    const activity = trace.steps.findIndex(step => step.execution.module === 'activity' && step.execution.entry)
+    expect(activity).toBeGreaterThan(following)
+    await seekStep(page, activity, 'jump')
+    const longCode = panel.getByRole('region', { name: '活动集合更新教学代码' })
+    await expect(longCode.locator('.code-line').last()).toBeAttached()
+    await page.setViewportSize({ width, height: 720 })
     const panelBox = await panel.boundingBox()
-    expect(await classification.evaluate(element => {
+    expect(await longCode.evaluate(element => {
       element.scrollTop = element.scrollHeight
       return element.scrollTop
     })).toBeGreaterThan(0)

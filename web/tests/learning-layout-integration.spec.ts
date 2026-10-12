@@ -2,6 +2,7 @@ import { expect, test, type Locator } from '@playwright/test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { readTrace } from './trace-navigation'
+import { expectEqualColumns } from './learning-layout'
 
 async function box(locator: Locator) {
   await expect(locator).toBeVisible()
@@ -82,40 +83,27 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await page.screenshot({ path: join(tmpdir(), `bo-dock-${browserName}-${width}.png`) })
   })
 
-  browserTest(`侧栏与比例组合记忆及最小宽度 ${browserName}`, async ({ page }) => {
+  browserTest(`侧栏记忆与固定三栏等宽 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/cases/crossing/learn?step=1')
-    const canvas = page.getByRole('region', { name: '几何视图', exact: true })
-    const debug = page.getByRole('region', { name: '核心变量', exact: true })
-    const splitter = page.getByRole('separator', { name: '画布与代码区和变量区宽度' })
-    await splitter.focus()
-    await splitter.press('ArrowRight')
-    await splitter.press('ArrowRight')
+    await expectEqualColumns(page)
     await expect(page).toHaveURL(/step=1$/)
-    const ratio = async () => { const a = await box(canvas), b = await box(debug); return a.width / (a.width + b.width) }
-    const preferred = await ratio()
-    expect(preferred).toBeGreaterThan(0.52)
-    for (const side of ['左', '右']) await page.getByRole('button', { name: `展开${side}侧辅助栏`, exact: true }).click()
-    await expect.poll(async () => Math.abs(await ratio() - preferred)).toBeLessThan(0.003)
+    for (const side of ['左', '右']) {
+      await page.getByRole('button', { name: `展开${side}侧辅助栏`, exact: true }).click()
+      await expectEqualColumns(page)
+    }
     await page.reload()
     for (const side of ['左', '右']) await expect(page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true })).toBeVisible()
-    await expect.poll(async () => Math.abs(await ratio() - preferred)).toBeLessThan(0.003)
+    await expectEqualColumns(page)
     await page.getByRole('link', { name: '返回列表', exact: true }).click()
     await page.locator('a[href="/cases/multiway-endpoints/learn"]').click()
     for (const side of ['左', '右']) await expect(page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true })).toBeVisible()
-    await expect.poll(async () => Math.abs(await ratio() - preferred)).toBeLessThan(0.003)
-    for (const edge of [0, 1440]) {
-      const handle = await box(splitter)
-      await page.mouse.move(handle.x + handle.width / 2, handle.y + 80)
-      await page.mouse.down()
-      await page.mouse.move(edge, handle.y + 80, { steps: 8 })
-      await page.mouse.up()
-      expect((await box(canvas)).width).toBeGreaterThanOrEqual(280)
-      expect((await box(debug)).width).toBeGreaterThanOrEqual(280)
+    await expectEqualColumns(page)
+    for (const side of ['左', '右']) {
+      await page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true }).click()
+      await expectEqualColumns(page)
       await expect(page.getByRole('button', { name: '下一步', exact: true })).toBeInViewport()
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     }
-    await splitter.dblclick()
     await page.screenshot({ path: join(tmpdir(), `bo-layout-${browserName}.png`) })
   })
 }

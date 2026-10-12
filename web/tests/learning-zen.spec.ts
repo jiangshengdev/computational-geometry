@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
+import { expectEqualColumns } from './learning-layout'
 
 for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
@@ -18,13 +19,12 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     const center = page.locator('.learning-center')
     await expect(toggle).not.toBeChecked()
     await page.getByRole('button', { name: '展开左侧辅助栏' }).click()
-    await page.getByRole('separator', { name: '画布与代码区和变量区宽度', exact: true }).press('ArrowRight')
+    await expectEqualColumns(page)
     await page.getByRole('button', { name: '放大', exact: true }).click()
     const geometry = page.locator('g[data-layer="geometry"]')
     await expect(geometry).toHaveAttribute('transform', /scale\(1.4\)/)
     const transform = (await geometry.getAttribute('transform'))!
     const original = (await center.boundingBox())!
-    const ratio = await page.getByRole('separator', { name: '画布与代码区和变量区宽度', exact: true }).getAttribute('aria-valuenow')
     await page.getByText('禅模式', { exact: true }).click()
     await expect(toggle).toBeChecked()
     for (const region of [left, right, controls]) await expect(region).toBeHidden()
@@ -32,6 +32,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(geometry).toHaveAttribute('transform', transform)
     await expect.poll(async () => (await center.boundingBox())!.width).toBeGreaterThan(original.width)
     await expect.poll(async () => (await center.boundingBox())!.height).toBeGreaterThan(original.height)
+    await expectEqualColumns(page)
     await page.screenshot({ path: join(tmpdir(), `bo-zen-${browserName}-desktop.png`) })
     await page.keyboard.press('z')
     await expect(toggle).not.toBeChecked()
@@ -39,7 +40,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
     await expect(right).toHaveAttribute('data-expanded', 'false')
     await expect(controls).toBeVisible()
     await expect.poll(async () => (await center.boundingBox())!).toEqual(original)
-    await expect(page.getByRole('separator', { name: '画布与代码区和变量区宽度', exact: true })).toHaveAttribute('aria-valuenow', ratio!)
+    await expectEqualColumns(page)
     await expect(geometry).toHaveAttribute('transform', transform)
     await page.keyboard.down('z')
     await page.keyboard.down('z')

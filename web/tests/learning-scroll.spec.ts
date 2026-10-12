@@ -62,6 +62,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     await page.goto(`/cases/${scrollingCase.id}/learn?step=${prior}`)
     const slider = page.getByRole('slider', { name: '教学步骤' })
     await expect(slider).toHaveValue(String(prior))
+    await waitForTraceCompletion(page)
     const active = page.getByRole('region', { name: '活动线段顺序' })
     const row = active.getByRole('listitem').filter({ hasText: new RegExp(`^S${trace.steps[target].subjects[0]}$`) })
     await hideRowInOverflowingPanel(row, false)
@@ -101,6 +102,7 @@ test('教学定位：点击滑块轨道跨多步跳转后定位目标而非来�
   await page.goto(`/cases/${scrollingCase.id}/learn?step=${prior}`)
   await expect(slider).toHaveValue(String(prior))
   await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
+  await waitForTraceCompletion(page)
   const row = page.getByRole('region', { name: '活动线段顺序' }).getByRole('listitem').filter({ hasText: new RegExp(`^S${subject}$`) })
   await hideRowInOverflowingPanel(row, false)
   const scrollBefore = await page.evaluate(() => window.scrollY)
@@ -125,6 +127,7 @@ test('教学定位：发现事件按精确身份定位，回退移除未来条�
   expect(discovery).toBeGreaterThan(0)
   const point = trace.steps[discovery].pending.find(point => !trace.steps[discovery - 1].pending.some(old => samePoint(point, old)))!
   await page.goto(`/cases/${scrollingCase.id}/learn?step=${discovery}`)
+  await waitForTraceCompletion(page)
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const row = queue.getByRole('listitem').filter({ hasText: formatPoint(point) })
   await expect(row).toHaveCount(1)

@@ -6,7 +6,7 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   test.describe(`外层像素 ${browserName}`, () => {
     for (const width of [1100, 1361, 1920]) {
-      browserTest(`结果三栏与学习左右工作区均保持整数布局 ${width}px`, async ({ browser, baseURL }) => {
+      browserTest(`结果三栏与学习等宽三栏均保持整数布局 ${width}px`, async ({ browser, baseURL }) => {
         const page = await browser.newPage({ baseURL, viewport: { width, height: 901 }, deviceScaleFactor: 2 })
         await expandedPanels(page.context())
         try {
@@ -35,9 +35,9 @@ for (const browserName of ['chromium', 'firefox', 'webkit'] as const) {
           const variables = (await page.getByRole('region', { name: '核心变量', exact: true }).boundingBox())!
           expect(learning[0].width).toBe(learning[2].width)
           expect(Math.abs(learning[1].width - code.width)).toBeLessThanOrEqual(1)
-          expect(code.x).toBe(learning[1].x)
+          expect(code.x).toBeGreaterThan(learning[1].x + learning[1].width)
           expect(Math.abs(learning[1].width - variables.width)).toBeLessThanOrEqual(1)
-          expect(variables.x).toBeGreaterThan(learning[1].x + learning[1].width)
+          expect(variables.x).toBeGreaterThan(code.x + code.width)
           const available = results.reduce((sum, box) => sum + box.width, 0)
           const side = Math.floor(available * 0.2)
           expect(results.map(box => box.width)).toEqual([side, available - 2 * side, side])
