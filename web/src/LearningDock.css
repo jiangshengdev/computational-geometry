@@ -3,9 +3,12 @@
 .learning-dock-panels { display: grid; gap: 12px; min-width: 0; min-height: 0; }
 .learning-dock[data-expanded="true"] { display: flex; flex-direction: column; gap: 12px; }
 .learning-dock-right[data-expanded="true"] > .learning-dock-controls { align-self: flex-end; }
-.learning-dock[data-expanded="true"] .learning-dock-panels { flex: 1; grid-auto-rows: minmax(0, 1fr); }
-.learning-dock-panel { min-width: 0; min-height: 0; }
-.learning-dock-panel > .learning-panel { height: 100%; }
+.learning-dock[data-expanded="true"] .learning-dock-panels { flex: 1; grid-auto-rows: minmax(min-content, 1fr); overflow: auto; }
+.learning-dock-panel { min-width: 0; min-height: min-content; }
+.learning-dock-panel > .learning-panel { height: 100%; min-height: min-content; }
+/* Keep one normal entry and its focus space reachable below a wrapped header. */
+.learning-dock-panel .learning-panel-card { display: grid; grid-template-rows: auto minmax(calc(var(--spacing) * 8), 1fr); min-height: min-content; }
+.learning-dock-panel .learning-panel-content { contain: size; }
 .learning-dock-overlay { position: absolute; top: max(16px, env(safe-area-inset-top)); bottom: max(16px, env(safe-area-inset-bottom)); width: min(360px, calc(100vw - 32px)); height: auto; padding: 0; }
 .learning-dock-overlay-left { left: 16px; }
 .learning-dock-overlay-right { right: 16px; }
@@ -17,6 +20,6 @@
   .learning-dock-overlay-right { right: 64px; }
 }
 @media (min-width: 1100px) and (min-height: 720px) {
-  .learning-dock-left[data-expanded="true"] .learning-dock-panels { grid-template-rows: round(down, calc((100% - 12px) / 2), 1px) minmax(0, 1fr); }
-  .learning-dock-right[data-expanded="true"] .learning-dock-panels { grid-template-rows: repeat(2, round(down, calc((100% - 24px) / 3), 1px)) minmax(0, 1fr); }
+  .learning-dock-left[data-expanded="true"] .learning-dock-panels { grid-template-rows: minmax(min-content, round(down, calc((100% - 12px) / 2), 1px)) minmax(min-content, 1fr); }
+  .learning-dock-right[data-expanded="true"] .learning-dock-panels { grid-template-rows: repeat(2, minmax(min-content, round(down, calc((100% - 24px) / 3), 1px))) minmax(min-content, 1fr); }
 }

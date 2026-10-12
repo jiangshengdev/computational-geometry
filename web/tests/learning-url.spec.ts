@@ -229,10 +229,7 @@ test('教学步骤 URL：真实轨迹加载期间不误判有效步骤越界', a
 })
 
 test('教学步骤 URL：请求失败保持计算错误而不误报越界', async ({ page }) => {
-  await page.route('**/api/intersections', async route => {
-    const response = await route.fetch()
-    await route.fulfill({ response, status: 500 })
-  })
+  await page.route('**/api/intersections', route => route.fulfill({ status: 500, json: { error: 'failed' } }))
   await page.goto('/cases/crossing/learn?step=999999')
   await expect(page.getByRole('alert')).toContainText('计算失败')
   await expect(page.getByRole('alert')).toContainText('HTTP 500')
