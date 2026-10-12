@@ -18,7 +18,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const canvas = page.locator('svg[data-teaching="true"]')
     await tabToReachable(page, canvas)
     await page.keyboard.press('Escape')
-    await expect(page.getByRole('tooltip')).toHaveCount(0)
+    await expect(page.getByRole('dialog')).toHaveCount(0)
     const code = page.locator('.execution-code-scroll')
     await tabToReachable(page, code)
     const symbol = code.locator('.execution-symbol').first()

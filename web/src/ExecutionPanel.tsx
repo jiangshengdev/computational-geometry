@@ -110,7 +110,7 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
                   const key = `${symbolStep.execution.module}:${line}:${part}`
                   const occurrence = occurrences.get(key) ?? 0
                   if (kind === 'function' || kind === 'control') occurrences.set(key, occurrence + 1)
-                  return kind ? <ExecutionSymbol key={partIndex} name={symbol!.name} kind={kind} access={symbol?.access} line={line} displayLine={index + 1} occurrence={occurrence} module={symbolStep.execution.module} expression={callExpression(part, module.code.slice(lineOffset + start + part.length))} step={symbolStep} previous={previous} values={values}>{highlighted}</ExecutionSymbol> : <span key={partIndex}>{highlighted}</span>
+                  return kind ? <ExecutionSymbol key={`${module.title}:${index}:${start}:${symbol!.name}`} name={symbol!.name} kind={kind} access={symbol?.access} line={line} displayLine={index + 1} occurrence={occurrence} module={symbolStep.execution.module} expression={callExpression(part, module.code.slice(lineOffset + start + part.length))} step={symbolStep} previous={previous} values={values}>{highlighted}</ExecutionSymbol> : <span key={partIndex}>{highlighted}</span>
               })}{'\n'}</span>
               })
             })()}

@@ -79,7 +79,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     expect(await code.evaluate(element => element.scrollTop)).toBe(codeScroll)
     const symbol = panel.locator('[data-symbol="id"][data-line="8"]')
     await symbol.hover()
-    await expect(page.getByRole('tooltip', { name: /^变量 id / })).toContainText('当前值')
+    await expect(page.getByRole('dialog', { name: /^变量 id / })).toContainText('当前值')
     const offset = () => boundary.evaluate(element => element.getBoundingClientRect().top - element.parentElement!.querySelectorAll('.code-line')[8].getBoundingClientRect().top)
     const alignment = await offset()
     await code.evaluate(element => { element.scrollTop = 0; element.scrollLeft = element.scrollWidth })

@@ -119,7 +119,7 @@ browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${brow
   const lines = code.locator('.code-line')
   const activeBody = lines.filter({ hasText: /^\s*segments\[id\]\.right != point\s*$/ }).first()
   const incidentBody = lines.filter({ hasText: /^\s*segments\[id\]\.right != point\s*$/ }).last()
-  const tooltip = page.getByRole('tooltip')
+  const tooltip = page.getByRole('dialog')
   await activeBody.locator('[data-symbol="id"]').hover()
   await expect(tooltip).toContainText('不可用（当前作用域未提供）')
   await page.keyboard.press('Escape')

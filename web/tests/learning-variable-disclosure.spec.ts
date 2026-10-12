@@ -109,7 +109,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await expect(locals).toHaveAttribute('aria-expanded', 'true')
     await expect(queueTrigger).toHaveAttribute('aria-expanded', 'false')
     await queueTrigger.locator('code').first().hover()
-    await expect(page.getByRole('tooltip', { name: /^变量 queue / })).toBeVisible()
+    await expect(page.getByRole('dialog', { name: /^变量 queue / })).toBeVisible()
     await queueTrigger.click()
     await expect(queueTrigger).toHaveAttribute('aria-expanded', 'true')
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)

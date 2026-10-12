@@ -14,7 +14,7 @@ async function hoverControl(page: Page, panel: Locator, keyword: string, line: n
   await target.hover()
   await expect(target).toHaveAttribute('aria-describedby', /\S+/)
   const tooltipId = await target.getAttribute('aria-describedby')
-  const tooltip = page.locator(`[role="tooltip"][id="${tooltipId}"]`)
+  const tooltip = page.locator(`[role="dialog"][id="${tooltipId}"]`)
   await expect(tooltip).toContainText(expected)
   return tooltip
 }
@@ -61,7 +61,7 @@ test('缺失邻居先停continue前，再回到for且清除本轮判断与返回
   await hoverControl(page, panel, 'else', 4, '本次进入 else 分支')
   await hoverControl(page, panel, 'continue', 4, '即将执行；结果尚未产生')
   await panel.locator('[data-symbol="get"]').hover()
-  await expect(page.getByRole('tooltip', { name: /^函数 get / })).toContainText('返回值：None')
+  await expect(page.getByRole('dialog', { name: /^函数 get / })).toContainText('返回值：None')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await expectNextStatement(panel, 'for lower in boundaries.into_iter().flatten() {')
   await hoverControl(page, panel, 'continue', 4, '已执行 continue，跳往下一次迭代')
@@ -103,7 +103,7 @@ test('提前return的前后停点保留实际返回位置，未调用函数不�
   await hoverControl(page, panel, 'return', 4, '即将执行；结果尚未产生')
   await hoverControl(page, panel, 'return', 8, '本次尚未执行')
   await panel.locator('[data-symbol="intersection_candidate"]').hover()
-  await expect(page.getByRole('tooltip', { name: /^函数 intersection_candidate / })).toContainText('返回值：None')
+  await expect(page.getByRole('dialog', { name: /^函数 intersection_candidate / })).toContainText('返回值：None')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   const returned = await hoverControl(page, panel, 'return', 4, '已执行 return，函数已返回')
   await expect(returned).toContainText('返回值：None')
@@ -116,7 +116,7 @@ test('提前return的前后停点保留实际返回位置，未调用函数不�
   const entry = trace.steps.findLastIndex((step, position) => position < index && step.execution.module === 'geometry' && step.execution.entry)
   await openStep(page, 'disjoint', entry)
   await panel.locator('[data-symbol="intersection_candidate"]').hover()
-  await expect(page.getByRole('tooltip', { name: /^函数 intersection_candidate / })).not.toContainText('返回值：None')
+  await expect(page.getByRole('dialog', { name: /^函数 intersection_candidate / })).not.toContainText('返回值：None')
 })
 
 test('record的两层else各自解释实际路径，continue跳转后循环局部变量失效', async ({ page }) => {

@@ -1,11 +1,15 @@
-import { type PointerEvent, type ReactNode } from 'react'
-import { Tooltip } from '@heroui/react/tooltip'
+import { type PointerEvent, type ReactNode, useContext, useEffect, useState } from 'react'
+import { Popover, popoverVariants } from '@heroui/react/popover'
+import { TooltipTrigger as FocusableTrigger } from '@heroui/react/tooltip'
+import { Button } from '@heroui/react/button'
 import { Disclosure } from '@heroui/react/disclosure'
-import { TooltipTriggerStateContext } from 'react-aria-components/Tooltip'
+import { PreviewTrigger } from 'react-aria-components/PreviewTrigger'
+import { OverlayTriggerStateContext } from 'react-aria-components/Dialog'
+import { setInteractionModality } from 'react-aria/useFocusVisible'
 import type { ExecutionContext, ExecutionVariable, ExecutionVariableKind, SweepStep } from './geometry'
 import { controlDescription, functions, hasVariableValue, panelVariableDetails, scopedVariable, symbolScope, variableDetails, variableValue } from './executionSymbols'
 import { RustCode } from './RustCode'
-import { type Access, accessDetails } from './executionAccess'
+import { type Access, accessDetails, accessParents } from './executionAccess'
 
 function SymbolValue({ variable, values }: { variable: ExecutionVariable | undefined; values: string[] }) {
   return <RustCode muted={!hasVariableValue(variable)}>{variableValue(variable, values)}</RustCode>
@@ -20,39 +24,89 @@ interface SymbolProps {
 }
 
 export function ExecutionSymbol({ name, kind, access, line, displayLine, occurrence, module, expression, children, step, previous, values }: SymbolProps) {
+  const [depth, setDepth] = useState(0)
+  let maximum = 0
+  for (let parent = access?.parent; parent; parent = parent.parent) maximum++
+  const changeDepth = (delta: number) => setDepth(depth => Math.max(0, Math.min(maximum, depth + delta)))
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (!maximum || event.altKey || event.ctrlKey || event.metaKey) return
+    if (['+', '-', '−'].includes(event.key)) {
+      event.preventDefault()
+      event.stopPropagation()
+      changeDepth(event.key === '+' ? 1 : -1)
+    }
+  }
   const label = kind === 'variable' ? '变量' : kind === 'access' ? '访问' : kind === 'control' ? '控制流' : '函数'
-  return <SymbolTooltip name={name} line={line} occurrence={occurrence} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line) : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`} content={<SymbolDetails name={name} kind={kind} access={access} line={line} occurrence={occurrence} module={module} expression={expression} step={step} previous={previous} values={values} label={label} />}>
+  return <SymbolTooltip name={name} line={line} occurrence={occurrence} onKeyDown={onKeyDown} onClose={() => setDepth(0)} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line) : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`} content={<>
+    <SymbolDetails name={name} kind={kind} access={access} line={line} occurrence={occurrence} module={module} expression={expression} step={step} previous={previous} values={values} label={label} />
+    {access && <ParentValues access={access} step={step} values={values} line={line} depth={depth} maximum={maximum} changeDepth={changeDepth} />}
+  </>}>
     {children}
   </SymbolTooltip>
 }
 
-function SymbolTooltip({ name, line, occurrence, label, children, content, disclosure = false }: {
+function SymbolTooltip({ name, line, occurrence, label, children, content, disclosure = false, onKeyDown, onClose }: {
   name: string; line?: number; occurrence?: number; label: string
   children: ReactNode; content: ReactNode; disclosure?: boolean
+  onKeyDown?: (event: KeyboardEvent) => void; onClose?: () => void
 }) {
-  return <Tooltip delay={150} closeDelay={0}>
-    <TooltipTriggerStateContext.Consumer>{state => {
-      const triggerProps = {
-        onPointerMove: (event: PointerEvent<HTMLElement>) => {
-          // The first pointerenter after navigation precedes React Aria's modality
-          // update. Use its state API so movement still respects opening delays
-          // and pressing the trigger can cancel a pending tooltip.
-          if (event.pointerType !== 'touch' && event.buttons === 0) state!.open()
-        },
-        onPointerLeave: () => state!.close(true),
-        'data-symbol': name, 'data-line': line, 'data-occurrence': occurrence, 'aria-label': label,
-      }
-      return disclosure
-        ? <Disclosure.Trigger {...triggerProps} className="flex w-full items-start gap-2 text-left">{children}</Disclosure.Trigger>
-        : <Tooltip.Trigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</Tooltip.Trigger>
-    }}</TooltipTriggerStateContext.Consumer>
-    <Tooltip.Content className="execution-symbol-tooltip" placement="bottom">
+  const pointerModality = (event: PointerEvent<HTMLElement>) => {
+    if (event.pointerType !== 'touch') setInteractionModality('pointer')
+  }
+  const triggerProps = { 'data-symbol': name, 'data-line': line, 'data-occurrence': occurrence, 'aria-label': label,
+    // React may synthesize the next enter from the previous target's out event.
+    // Set actual pointer modality before either path reaches PreviewTrigger.
+    onPointerOverCapture: pointerModality, onPointerOutCapture: pointerModality,
+  }
+  // PreviewTrigger owns hover/focus/close state. A Popover.Root would add a
+  // competing DialogTrigger; use HeroUI's public styles with its Content.
+  return <PreviewTrigger delay={150} closeDelay={0} onOpenChange={open => { if (!open) onClose?.() }}>
+    {disclosure
+      ? <Disclosure.Trigger {...triggerProps} className="flex w-full items-start gap-2 text-left">{children}</Disclosure.Trigger>
+      // HeroUI's focusable trigger also works while a panel is inert behind a
+      // modal; Pressable's mount-time focus assertion rejects that valid state.
+      : <FocusableTrigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</FocusableTrigger>}
+    <Popover.Content className={popoverVariants().base({ className: 'execution-symbol-tooltip' })} placement={disclosure ? 'left top' : 'bottom'} aria-label={disclosure ? `变量 ${name} · ${label}` : label}>
+      <ActivePreviewShortcuts onKeyDown={onKeyDown} />
       {content}
-    </Tooltip.Content>
-  </Tooltip>
+    </Popover.Content>
+  </PreviewTrigger>
 }
 
-// Tooltip.Content owns mounting and exit animation. Resolve values only while
+function ActivePreviewShortcuts({ onKeyDown }: { onKeyDown?: (event: KeyboardEvent) => void }) {
+  const state = useContext(OverlayTriggerStateContext)!
+  useEffect(() => {
+    if (!state.isOpen) return
+    // Hover does not move focus. Bridge keys only during this preview's active
+    // lifetime; the library still owns dismissal, focus and overlay state.
+    const handle = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || event.isComposing) return
+      if (event.key === 'Escape') { state.close(); return }
+      if (event.target instanceof HTMLElement && (event.target.isContentEditable || event.target.closest('input, textarea, select'))) return
+      onKeyDown?.(event)
+    }
+    window.addEventListener('keydown', handle)
+    return () => window.removeEventListener('keydown', handle)
+  }, [state, onKeyDown])
+  return null
+}
+
+function ParentValues({ access, step, values, line, depth, maximum, changeDepth }: {
+  access: Access; step: SweepStep; values: string[]; line: number
+  depth: number; maximum: number; changeDepth: (delta: number) => void
+}) {
+  const parents = accessParents(access, step, values, line)
+  return <>
+    <div className="flex items-center gap-2 mt-2" aria-label="parent 显示深度">
+      <Button size="sm" variant="secondary" aria-label="减少 parent 深度" isDisabled={depth === 0} onPress={() => changeDepth(-1)}>−</Button>
+      <span>parent 深度：{depth}</span>
+      <Button size="sm" variant="secondary" aria-label="增加 parent 深度" isDisabled={depth === maximum} onPress={() => changeDepth(1)}>+</Button>
+    </div>
+    {parents.slice(0, depth).map(parent => <p key={parent.expression} data-parent={parent.expression}><RustCode>{parent.expression}</RustCode>：<RustCode>{parent.value}</RustCode></p>)}
+  </>
+}
+
+// Popover.Content owns mounting and exit animation. Resolve values only while
 // its body is mounted, while keeping the trigger's accessible scope available.
 function SymbolDetails({ name, kind, access, line, occurrence, module, expression, step, previous, values, label }: Omit<SymbolProps, 'children' | 'displayLine'> & { label: string }) {
   const detail = access ? accessDetails(access, step, previous, values, line) : variableDetails(name, step, previous, values, line)
