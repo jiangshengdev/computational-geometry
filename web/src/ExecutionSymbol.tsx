@@ -60,13 +60,14 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, discl
   }
   // PreviewTrigger owns hover/focus/close state. A Popover.Root would add a
   // competing DialogTrigger; use HeroUI's public styles with its Content.
+  // Include the dialog padding without mounting Dialog, which moves focus on open.
   return <PreviewTrigger delay={150} closeDelay={0} onOpenChange={open => { if (!open) onClose?.() }}>
     {disclosure
       ? <Disclosure.Trigger {...triggerProps} className="flex w-full items-start gap-2 text-left">{children}</Disclosure.Trigger>
       // HeroUI's focusable trigger also works while a panel is inert behind a
       // modal; Pressable's mount-time focus assertion rejects that valid state.
       : <FocusableTrigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</FocusableTrigger>}
-    <Popover.Content className={popoverVariants().base({ className: 'execution-symbol-tooltip' })} placement={disclosure ? 'left top' : 'bottom'} aria-label={disclosure ? `变量 ${name} · ${label}` : label}>
+    <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement={disclosure ? 'left top' : 'bottom'} aria-label={disclosure ? `变量 ${name} · ${label}` : label}>
       <ActivePreviewShortcuts onKeyDown={onKeyDown} />
       {content}
     </Popover.Content>

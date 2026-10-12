@@ -26,7 +26,8 @@ test('字段 hover 读取真实闭包参数，声明中的三个 p 均可查看�
   for (const reference of await references.all()) {
     await reference.hover()
     await expect(page.getByRole('dialog', { name: /^变量 p / })).toContainText(`当前值：${trace.values[parameter.value!]}`)
-    await panel.getByRole('heading').hover()
+    // The preview can overlap the code heading; leave through the page navigation.
+    await page.getByRole('link', { name: '返回列表', exact: true }).hover()
     await expect(page.getByRole('dialog', { name: /^变量 p / })).toHaveCount(0)
   }
   const y = panel.locator('[data-symbol="y"]').last()
