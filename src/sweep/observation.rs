@@ -163,4 +163,27 @@ macro_rules! block_end {
         $recording.block_end($boundary, $line);
     };
 }
-pub(super) use {block_end, call, control, observe, pending_call, reset_controls};
+macro_rules! closure_call {
+    ($recording:expr, $module:expr, $function:expr, $parameters:expr, $captures:expr, $type:expr, $body:expr, $format:expr) => {{
+        let trace = $recording.steps.as_mut().map(|steps| {
+            ClosureTrace::enter(
+                steps,
+                $recording.next_call,
+                $module,
+                $function,
+                $parameters,
+                $captures,
+                $type,
+            )
+        });
+        let value = $body;
+        if let Some(trace) = trace {
+            trace.returned(
+                $recording.steps.as_mut().expect("tracing is enabled"),
+                ($format)(&value),
+            );
+        }
+        value
+    }};
+}
+pub(super) use {block_end, call, closure_call, control, observe, pending_call, reset_controls};
