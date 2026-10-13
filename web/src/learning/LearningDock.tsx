@@ -4,19 +4,24 @@ import { Button } from '@heroui/react/button'
 import { Modal } from '@heroui/react/modal'
 import { useLayoutPreference } from '../app/useLayoutPreference'
 import './LearningDock.css'
+import { useLingui } from '@lingui/react/macro'
 
 interface DockPanel { id: string; name: string; icon: LucideIcon; content: ReactNode }
 
 export function LearningDock({ side, panels }: { side: 'left' | 'right'; panels: DockPanel[] }) {
+  const { t } = useLingui()
   const [expanded, setExpanded] = useLayoutPreference(`bo-learning-layout-v1-${side}`, false,
     (value): value is boolean => typeof value === 'boolean')
   const [opened, setOpened] = useState<string | null>(null)
   const id = useId()
-  const label = `${side === 'left' ? '左' : '右'}侧辅助栏`
+  const label = side === 'left' ? t`Left sidebar` : t`Right sidebar`
+  const toggleLabel = side === 'left'
+    ? expanded ? t`Collapse left sidebar` : t`Expand left sidebar`
+    : expanded ? t`Collapse right sidebar` : t`Expand right sidebar`
 
   return <aside aria-label={label} className={`learning-dock learning-dock-${side}`} data-expanded={expanded}>
     <div className="learning-dock-controls">
-      <Button type="button" variant="tertiary" isIconOnly={!expanded} aria-label={`${expanded ? '收起' : '展开'}${label}`}
+      <Button type="button" variant="tertiary" isIconOnly={!expanded} aria-label={toggleLabel}
         aria-expanded={expanded} aria-controls={id}
         onPress={() => { setOpened(null); setExpanded(!expanded) }}>
         {expanded === (side === 'left') ? <ChevronsLeft size={20} aria-hidden="true" /> : <ChevronsRight size={20} aria-hidden="true" />}
@@ -30,7 +35,7 @@ export function LearningDock({ side, panels }: { side: 'left' | 'right'; panels:
         <Modal.Backdrop variant="transparent">
           <Modal.Container placement="top" scroll="inside" className={`learning-dock-overlay learning-dock-overlay-${side}`}>
             <Modal.Dialog aria-label={panel.name} className="learning-dock-floating">
-              <Button slot="close" variant="secondary" size="sm" className="self-end shrink-0" aria-label={`关闭${panel.name}`}>关闭</Button>
+              <Button slot="close" variant="secondary" size="sm" className="self-end shrink-0" aria-label={t`Close ${panel.name}`}>{t`Close`}</Button>
               {panel.content}
             </Modal.Dialog>
           </Modal.Container>

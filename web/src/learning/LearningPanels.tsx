@@ -7,6 +7,8 @@ import { LearningRow } from './LearningMotion'
 import { type LearningState } from './learningState'
 import { type LearningReplay } from './useLearningReplay'
 import type { I18n } from '@lingui/core'
+import { msg } from '@lingui/core/macro'
+import { Trans, Plural } from '@lingui/react/macro'
 
 export function learningPanels(state: LearningState, replay: LearningReplay, translate: I18n['_']) {
   const {
@@ -24,49 +26,49 @@ export function learningPanels(state: LearningState, replay: LearningReplay, tra
     <span className="learning-hover-item" data-input-id={id} {...inputProps(id)}>S{id}</span>
   </Fragment>)
   const subjects = inputReferences(step.subjects, ' × ')
-  const explanations = <section aria-label="操作解释" aria-live="polite" className="learning-panel learning-explanations"><Card className="learning-panel-card">
-      <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><div><CardTitle render={props => <h2 {...props} />}>这一步为什么这样做？</CardTitle><CardDescription>结合画布与各项状态，理解当前教学动作。</CardDescription></div><div className="flex flex-wrap gap-2">
-        <HelpButton topic="neighbors">相邻性说明</HelpButton>
-        {trace.shear.numerator !== '0' && <HelpButton topic="vertical">竖直线说明</HelpButton>}
-        {preset.learning?.overlap && <HelpButton topic="overlap">重叠说明</HelpButton>}
+  const explanations = <section aria-label={translate(msg`Action explanation`)} aria-live="polite" className="learning-panel learning-explanations"><Card className="learning-panel-card">
+      <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><div><CardTitle render={props => <h2 {...props} />}><Trans>Why take this action?</Trans></CardTitle><CardDescription><Trans>Use the drawing and state panels to understand the current teaching action.</Trans></CardDescription></div><div className="flex flex-wrap gap-2">
+        <HelpButton topic="neighbors"><Trans>About neighbors</Trans></HelpButton>
+        {trace.shear.numerator !== '0' && <HelpButton topic="vertical"><Trans>About vertical segments</Trans></HelpButton>}
+        {preset.learning?.overlap && <HelpButton topic="overlap"><Trans>About overlaps</Trans></HelpButton>}
       </div></CardHeader>
       <CardContent ref={attachExplanationPanel} className="learning-panel-content flex flex-col gap-2">
-        {step.action === 'initial' && (!preset.segments.length ? <p>没有输入，因此没有端点和事件。队列与活动顺序为空，可以逐小步观察取事件返回 None 并退出循环。</p> : <p>先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步进入取事件模块。</p>)}
-        {step.action === 'take' && <p>从队首取出 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序。先核对同点参与者并逐对记录交集，再按真实动作更新活动顺序。</p>}
-        {step.action === 'take-entry' && <p>进入取事件模块，尚未执行第一条核心语句。当前事件与画布保留上一步状态；下一小步将取出队首事件。</p>}
-        {step.action === 'take-pop' && <p>已执行 queue.pop_first()，返回值保存在 next 中。尚未匹配和绑定 point、event，所以画布仍保留上一步位置。这是模块中间状态。</p>}
-        {step.action === 'take-empty' && <p>next 为 None，事件队列已空，退出扫描循环。{generated ? '学习完成。' : '正在确认最终结果。'}</p>}
-        {step.action === 'micro' && <p>算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。</p>}
-        {pointInputs.length > 0 && <p>零长度点 <span className="coordinates">{inputReferences(pointInputs, '、')}</span> 的两个端点重合，所以同时属于开始和结束，不进入持续活动顺序。它们只在当前精确位置参与配对：位于线段内部或闭端点都算接触；重合点仍保留独立输入身份。没有配对的点事件也会正常完成。</p>}
-        {step.action === 'insert' && <p>加入 <span className="coordinates">{subjects}</span>：扫描线到达其起点，此后它参与活动顺序。{step.passes.length > 1 && '本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。本点有非零长度开始者，换序与加入是同一次更新，不会再次交换。'}接下来检查新邻居是否会在未来相交。</p>}
-        {step.action === 'remove' && <p>退出 <span className="coordinates">{subjects}</span>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。{endingOverlaps.length > 0 && <>此处是重叠止界：{continuingOverlapInputs.length ? <>{inputReferences(continuingOverlapInputs, '、')} 继续，当前结束者退出。</> : '这些配对的成员均在此结束。'}交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。</>}</p>}
-        {step.action === 'record' && (recordedOverlap ? <p>记录重叠区间 <span className="coordinates">{formatGeometry(recordedOverlap.geometry)}</span>：参与线段 <span className="coordinates">{inputReferences(recordedOverlap.segments, ' × ')}</span> 从当前较晚起点开始重合，到较早终点为止。取两个闭区间的公共范围，包含两端及其间全部点，不是只记录当前端点。这是根据已知端点确定完整交集，并非扫描线已走完整段。橙色线段和两个端点标出完整交集；活动顺序尚未更新，同点配对全部记录后再处理成员变化。</p> : <p>记录 <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>：参与线段 <span className="coordinates">{subjects}</span> {step.subjects.every(id => step.passes.includes(id)) ? '在这里交叉。' : '在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。'}交集已记入结果，活动顺序尚未更新。{new Set([...step.starts, ...step.ends, ...step.passes]).size > 2 && '这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。'}</p>)}
-        {visibleOverlaps.length > 0 && <p>重叠成员在公共范围内几何并列，列表保留各自输入身份，不表示彼此上下交换。内部的其他事件不切碎已记录的完整区间。</p>}
-        {step.action === 'reorder' && <p>换序为 <span className="coordinates">{inputReferences(step.active, ' → ')}</span>：本事件非竖直参与者按紧邻事件右侧从下到上的顺序排列，竖直参与者移到本点穿过者上方，继续向更高处处理，再检查新邻居。同 x 的其他事件点保留各自处理进度。</p>}
-        {step.action === 'check' && <p>检查相邻线段 <span className="coordinates">{subjects}</span>：
-          {neighborChange?.action === 'insert' && <>加入 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。</>}
-          {neighborChange?.action === 'remove' && <>退出 {neighborChange.subjects.map(id => `S${id}`).join('、')} 后，原来隔在中间的线段消失，两侧线段成为新邻居。</>}
-          {neighborChange?.action === 'reorder' && <>交叉的 {neighborChange.subjects.map(id => `S${id}`).join(' 与 ')} 换序后，这一对处在换序区间的外侧边界，成为新邻居。</>}
-          其他未改变的邻接关系无需重查。图中加粗线段与状态列表边框标出当前配对；此步选定检查配对，尚未改变队列。端点事件可能已经在队列中，接触点无需重复入队。</p>}
-        {step.action === 'discover' && <p>发现未来交点 <span className="coordinates">{newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}>
-          {position > 0 && <span>、</span>}
+        {step.action === 'initial' && (!preset.segments.length ? <p><Trans>There are no inputs, so there are no endpoints or events. The queue and active order are empty. Step through the microsteps to see event retrieval return None and exit the loop.</Trans></p> : <p><Trans>Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module.</Trans></p>)}
+        {step.action === 'take' && <p><Trans>Take <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span> from the front of the queue and stop the sweep line here. The current event has left the pending queue; no insertion, removal, or reordering has happened yet. First check the participants at this point and record each pair's intersection, then update the active order following the real actions.</Trans></p>}
+        {step.action === 'take-entry' && <p><Trans>Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event.</Trans></p>}
+        {step.action === 'take-pop' && <p><Trans>queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state.</Trans></p>}
+        {step.action === 'take-empty' && <p>{generated ? <Trans>next is None: the event queue is empty and the sweep loop exits. Learning is complete.</Trans> : <Trans>next is None: the event queue is empty and the sweep loop exits. Confirming the final results.</Trans>}</p>}
+        {step.action === 'micro' && <p><Trans>Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event.</Trans></p>}
+        {pointInputs.length > 0 && <p><Trans>The zero-length inputs <span className="coordinates">{inputReferences(pointInputs, ', ')}</span> have coincident endpoints, so they belong to both the start and end groups without entering the persistent active order. They participate in pairs only at this exact position: contact in a segment's interior or at a closed endpoint both counts. Coincident points retain separate input identities. Point events without a matching pair also complete normally.</Trans></p>}
+        {step.action === 'insert' && <p><Trans>Insert <span className="coordinates">{subjects}</span>: the sweep line has reached the start, and these inputs now participate in the active order.</Trans>{' '}{step.passes.length > 1 && <><Trans>This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs.</Trans>{' '}</>}<Trans>Next, check whether the new neighbors intersect in the future.</Trans></p>}
+        {step.action === 'remove' && <p><Trans>Remove <span className="coordinates">{subjects}</span>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal.</Trans>{endingOverlaps.length > 0 && <>{' '}{continuingOverlapInputs.length ? <Trans>This is an overlap end boundary: {inputReferences(continuingOverlapInputs, ', ')} continue while the ending inputs leave.</Trans> : <Trans>This is an overlap end boundary: all members of these pairs end here.</Trans>}{' '}<Trans>The intersection includes this boundary. Keep the complete recorded interval without recording its end again as an isolated intersection point.</Trans></>}</p>}
+        {step.action === 'record' && (recordedOverlap ? <p><Trans>Record the overlap interval <span className="coordinates">{formatGeometry(recordedOverlap.geometry)}</span>: the participating segments <span className="coordinates">{inputReferences(recordedOverlap.segments, ' × ')}</span> overlap from the current, later start to the earlier end. Take the shared range of the two closed intervals, including both endpoints and every point between them, rather than only the current endpoint. The complete intersection follows from the known endpoints; the sweep line has not traversed the whole interval. The orange segment and its two endpoints mark the full intersection. The active order has not changed; membership changes follow after all pairs at this point are recorded.</Trans></p> : <p>{step.subjects.every(id => step.passes.includes(id)) ? <Trans>Record <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>: the participating segments <span className="coordinates">{subjects}</span> cross here.</Trans> : <Trans>Record <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span>: the participating segments <span className="coordinates">{subjects}</span> touch here. Closed segments include their endpoints, so this intersection counts regardless of the approach direction.</Trans>}{' '}<Trans>The intersection has been recorded in the results; the active order has not changed yet.</Trans>{new Set([...step.starts, ...step.ends, ...step.passes]).size > 2 && <>{' '}<Trans>These pairwise records describe intersecting pairs at the same geometric point, not multiple intersection points. See the point groups for all participants; the event is not complete yet.</Trans></>}</p>)}
+        {visibleOverlaps.length > 0 && <p><Trans>Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval.</Trans></p>}
+        {step.action === 'reorder' && <p><Trans>Reorder to <span className="coordinates">{inputReferences(step.active, ' → ')}</span>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress.</Trans></p>}
+        {step.action === 'check' && <p><Trans>Check neighboring segments <span className="coordinates">{subjects}</span>.</Trans>{' '}
+          {neighborChange?.action === 'insert' && <Trans>After inserting {neighborChange.subjects.map(id => `S${id}`).join(', ')}, this pair lies at the boundary of the inserted segments and becomes a new pair of neighbors to check.</Trans>}
+          {neighborChange?.action === 'remove' && <Trans>After removing {neighborChange.subjects.map(id => `S${id}`).join(', ')}, the intervening segments are gone and the segments on either side become new neighbors.</Trans>}
+          {neighborChange?.action === 'reorder' && <Trans>After the crossing segments {neighborChange.subjects.map(id => `S${id}`).join(' × ')} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors.</Trans>}
+          {' '}<Trans>Unchanged neighbor relationships need no recheck. Bold segments in the drawing and borders in the state list mark the current pair. This step selects the pair to check without changing the queue. Endpoint events may already be queued, so contact points need not be queued again.</Trans></p>}
+        {step.action === 'discover' && <p><Trans>Discover future intersections <span className="coordinates">{newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}>
+          {position > 0 && <span>, </span>}
           <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span>
-        </Fragment>)}</span>：检查 <span className="coordinates">{subjects}</span> 的精确交集后加入队列，等扫描线到达再记录结果。</p>}
-        {step.action === 'complete' && <p>事件处理完成：活动顺序和待处理队列保持一致。{complete ? '全部事件已处理，无需再推进。' : checkedWithoutDiscovery ? '没有需要加入队列的未来交点。' : '本事件的教学动作已完成，下一步处理队首事件。'}</p>}
-    {complete && <section aria-label="学习结果"><Card variant="transparent">
-      <CardHeader><CardTitle render={props => <h2 {...props} />}>学习完成</CardTitle></CardHeader>
-      <CardContent className="flex flex-col gap-2"><p>事件队列与活动顺序均为空，全部输入已处理完毕；零长度点无需加入或退出活动顺序。</p>
-        {overlaps.length ? <p>点类型结果位置：{points.length}；重叠区间：{visibleOverlaps.length}；相交线段对：{step.results.length}。点类型配对结果不等于整体交集中的孤立点，它们也可能位于已记录的重叠区间上。区间包含无穷多个公共点，各配对保持独立，不计算几何并集。</p> : <p>独立交点位置：{points.length}；相交线段对：{step.results.length}。同一位置可由多个线段对共享。</p>}
+        </Fragment>)}</span>: after checking the exact intersection of <span className="coordinates">{subjects}</span>, add them to the queue and wait until the sweep line arrives to record the results.</Trans></p>}
+        {step.action === 'complete' && <p><Trans>The event is complete: the active order and pending queue are consistent.</Trans>{' '}{complete ? <Trans>All events have been processed; no further steps are needed.</Trans> : checkedWithoutDiscovery ? <Trans>There are no future intersections to add to the queue.</Trans> : <Trans>The teaching actions for this event are complete. Next, process the first queued event.</Trans>}</p>}
+    {complete && <section aria-label={translate(msg`Learning results`)}><Card variant="transparent">
+      <CardHeader><CardTitle render={props => <h2 {...props} />}><Trans>Learning complete</Trans></CardTitle></CardHeader>
+      <CardContent className="flex flex-col gap-2"><p><Trans>The event queue and active order are empty. All inputs have been processed; zero-length points need no insertion into or removal from the active order.</Trans></p>
+        {overlaps.length ? <p><Trans><Plural value={points.length} one="# point-result position" other="# point-result positions" />; <Plural value={visibleOverlaps.length} one="# overlap interval" other="# overlap intervals" />; <Plural value={step.results.length} one="# intersecting segment pair" other="# intersecting segment pairs" />. Point-type pair results are not necessarily isolated points in the overall intersection: they may lie on recorded overlap intervals. An interval contains infinitely many shared points. Each pair remains separate; no geometric union is computed.</Trans></p> : <p><Trans><Plural value={points.length} one="# distinct intersection position" other="# distinct intersection positions" />; <Plural value={step.results.length} one="# intersecting segment pair" other="# intersecting segment pairs" />. Multiple segment pairs may share the same position.</Trans></p>}
         {points.map(point => <p className="coordinates" key={formatPoint(point)}>{pointName(point)}：{step.results.filter(result => result.geometry.type === 'point' && samePoint(result.geometry.point, point)).map(pairName).join('、')}</p>)}
-        {visibleOverlaps.map(result => <p className="coordinates" key={pairName(result)}>{formatGeometry(result.geometry)}：{pairName(result)}（包含两端及其间全部点）</p>)}
-        {!step.results.length && <p>结果为空：没有相交的独立输入配对。具体几何依据见下方数学核对。</p>}
-        <p className="coordinates">独立数学核对：{preset.learning && translate(preset.learning.verification)}</p>
+        {visibleOverlaps.map(result => <p className="coordinates" key={pairName(result)}><Trans>{formatGeometry(result.geometry)}: {pairName(result)} (including both endpoints and every point between them)</Trans></p>)}
+        {!step.results.length && <p><Trans>The results are empty: no separate input pair intersects. See the mathematical check below for the geometric reasoning.</Trans></p>}
+        <p className="coordinates"><Trans>Independent mathematical check: {preset.learning && translate(preset.learning.verification)}</Trans></p>
       </CardContent>
     </Card></section>}
       </CardContent>
     </Card></section>
-  const currentEvent = <section aria-label="当前事件" className="learning-panel learning-current"><Card className="learning-panel-card">
-          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><div><CardTitle render={props => <h2 {...props} />}>当前事件</CardTitle><CardDescription>{phase}</CardDescription></div><HelpButton topic="ties">事件说明</HelpButton></CardHeader>
+  const currentEvent = <section aria-label={translate(msg`Current event`)} className="learning-panel learning-current"><Card className="learning-panel-card">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><div><CardTitle render={props => <h2 {...props} />}><Trans>Current event</Trans></CardTitle><CardDescription>{phase}</CardDescription></div><HelpButton topic="ties"><Trans>About events</Trans></HelpButton></CardHeader>
           <CardContent ref={attachCurrentPanel} className="learning-panel-content relative flex flex-col gap-1">
             <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:current:${navigation.reset}:${reducedMotion}`}>
             <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
@@ -74,21 +76,21 @@ export function learningPanels(state: LearningState, replay: LearningReplay, tra
                 existed={sources.includes(`event:${formatPoint(step.current)}`)} data-event-id={formatPoint(step.current)} {...eventProps(step.current)}>{pointName(step.current)}</LearningRow>}
             </AnimatePresence>
             </LayoutGroup>
-            {!step.current && <p>{complete ? '没有事件' : '尚未处理事件'}</p>}
+            {!step.current && <p>{complete ? <Trans>No events</Trans> : <Trans>No event processed yet</Trans>}</p>}
           </CardContent>
         </Card></section>
-  const participants = <section aria-label="同点参与线段" className="learning-panel learning-participants"><Card className="learning-panel-card">
-          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />}>同点参与线段</CardTitle><HelpButton topic="ties">同点说明</HelpButton></CardHeader>
+  const participants = <section aria-label={translate(msg`Segments at this point`)} className="learning-panel learning-participants"><Card className="learning-panel-card">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />}><Trans>Segments at this point</Trans></CardTitle><HelpButton topic="ties"><Trans>About shared points</Trans></HelpButton></CardHeader>
           <CardContent ref={attachParticipantsPanel} className="learning-panel-content flex flex-col gap-1">
             {step.current ? <>
-              <p>开始：{step.starts.length ? inputReferences(step.starts, '、') : '无'}</p>
-              <p>结束：{step.ends.length ? inputReferences(step.ends, '、') : '无'}</p>
-              <p>穿过：{step.passes.length ? inputReferences(step.passes, '、') : '无'}</p>
-            </> : <p>取出事件后显示同点参与者。</p>}
+              <p><Trans>Starting: {step.starts.length ? inputReferences(step.starts, ', ') : translate(msg`None`)}</Trans></p>
+              <p><Trans>Ending: {step.ends.length ? inputReferences(step.ends, ', ') : translate(msg`None`)}</Trans></p>
+              <p><Trans>Passing: {step.passes.length ? inputReferences(step.passes, ', ') : translate(msg`None`)}</Trans></p>
+            </> : <p><Trans>Participants at this point appear after taking an event.</Trans></p>}
           </CardContent>
         </Card></section>
-  const pendingEvents = <section aria-label="待处理事件队列" className="learning-panel learning-pending"><Card className="learning-panel-card">
-          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('pending')}>待处理事件队列</CardTitle><HelpButton topic="events">队列说明</HelpButton></CardHeader>
+  const pendingEvents = <section aria-label={translate(msg`Pending event queue`)} className="learning-panel learning-pending"><Card className="learning-panel-card">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('pending')}><Trans>Pending event queue</Trans></CardTitle><HelpButton topic="events"><Trans>About the queue</Trans></HelpButton></CardHeader>
           <CardContent ref={attachPendingPanel} className="learning-panel-content">
             <ol className="relative flex list-inside list-decimal flex-col gap-1">
               <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:pending:${navigation.reset}:${reducedMotion}`}>
@@ -98,12 +100,12 @@ export function learningPanels(state: LearningState, replay: LearningReplay, tra
               </AnimatePresence>
               </LayoutGroup>
             </ol>
-            {!step.pending.length && <p>空</p>}
+            {!step.pending.length && <p><Trans>Empty</Trans></p>}
           </CardContent>
         </Card></section>
-  const activeSegments = <section aria-label="活动线段顺序" className="learning-panel learning-active"><Card className="learning-panel-card">
-          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('active')}>活动线段顺序</CardTitle><HelpButton topic="active">顺序说明</HelpButton></CardHeader>
-          <CardContent ref={attachActivePanel} className="learning-panel-content flex flex-col gap-1"><p className="text-sm text-muted">{step.action === 'take' || step.action === 'record' ? '保留该事件处理前顺序' : step.phase === 'processed' ? '当前已处理事件之后的顺序' : '当前教学动作后的顺序，事件尚未处理完成'}</p>
+  const activeSegments = <section aria-label={translate(msg`Active segment order`)} className="learning-panel learning-active"><Card className="learning-panel-card">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-2"><CardTitle render={props => <h2 {...props} />} {...titleProps('active')}><Trans>Active segment order</Trans></CardTitle><HelpButton topic="active"><Trans>About the order</Trans></HelpButton></CardHeader>
+          <CardContent ref={attachActivePanel} className="learning-panel-content flex flex-col gap-1"><p className="text-sm text-muted">{step.action === 'take' || step.action === 'record' ? <Trans>Keeping the order from before this event</Trans> : step.phase === 'processed' ? <Trans>Order after the processed event</Trans> : <Trans>Order after the current teaching action; the event is still in progress</Trans>}</p>
             <div data-testid="active-order"><ol className="relative flex list-inside list-decimal flex-col-reverse gap-1">
               <LayoutGroup key={`${navigation.reset}:${reducedMotion}`} id={`${animationId}:active:${navigation.reset}:${reducedMotion}`}>
               <AnimatePresence initial={false} mode="popLayout" custom={destinations}>
@@ -111,7 +113,7 @@ export function learningPanels(state: LearningState, replay: LearningReplay, tra
                   existed={sources.includes(`segment:${id}`)} data-input-id={id} data-checked={checkedInputs.includes(id)} {...inputProps(id)}>S{id}</LearningRow>)}
               </AnimatePresence>
               </LayoutGroup>
-            </ol>{!step.active.length && <p>空</p>}</div>
+            </ol>{!step.active.length && <p><Trans>Empty</Trans></p>}</div>
           </CardContent>
         </Card></section>
   return { explanations, currentEvent, participants, pendingEvents, activeSegments }

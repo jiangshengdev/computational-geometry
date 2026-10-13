@@ -67,7 +67,7 @@ function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; lea
   if (learning) return <>
     {computation.status !== 'ready' && <PageTitle page={t`Step-by-step learning`} preset={preset} />}
     {computation.status === 'loading'
-      ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
+      ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Loading the execution trace…`}</div>
       : computation.status === 'error'
         ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${errorMessage}`}</Alert.Description></Alert.Content></Alert>
         : computation.trace && <LearningPage preset={preset} trace={computation.trace} complete={computation.complete} zenMode={zenMode} layout={layout} />}
@@ -180,11 +180,11 @@ function LearningPage({ preset, trace, complete, zenMode, layout }: { preset: Pr
   const values = search.getAll('step')
   const value = values[0]
   if (values.length > 1 || (value !== undefined && !/^[0-9]+$/.test(value))) {
-    return <RouteError message="教学步骤参数无效：请使用非负整数，且只提供一个 step 参数。" preset={preset} showListLink={false} />
+    return <RouteError message={t`Invalid learning step: use a nonnegative integer and provide only one step parameter.`} preset={preset} showListLink={false} />
   }
   const index = value === undefined ? 0 : Number(value)
   if (!Number.isSafeInteger(index) || (complete && index >= trace.steps.length)) {
-    return <RouteError message={`教学步骤超出范围：此案例的有效步骤为 0–${trace.steps.length - 1}。`} preset={preset} showListLink={false} />
+    return <RouteError message={t`Learning step out of range: valid steps for this case are 0–${trace.steps.length - 1}.`} preset={preset} showListLink={false} />
   }
   const visibleIndex = preview?.search === search ? preview.index : index < trace.steps.length ? index : cursor
   const waiting = index >= trace.steps.length || Boolean(waitingEntry && (!complete || arrivedEntry >= 0))
@@ -200,17 +200,17 @@ function LearningPage({ preset, trace, complete, zenMode, layout }: { preset: Pr
   return <><PageTitle page={t`Step-by-step learning`} preset={preset} /><LearningView preset={preset} trace={trace} zenMode={zenMode} layout={layout}
     complete={complete} index={visibleIndex} onWaitNextEntry={() => setNextEntry({ search, from: visibleIndex })}
     onStepPreview={next => setPreview({ search, index: next })} onStepChange={changeStep}>
-    {waiting && <div role="status" aria-label="步骤等待" className="flex flex-wrap items-center gap-3">
-      <span>{waitingEntry ? '正在等待下一个大步' : `正在等待步骤 ${index}`} · 已生成 0–{trace.steps.length - 1}。可继续浏览已生成步骤。</span>
-      <Button variant="secondary" onPress={() => changeStep(visibleIndex)}>取消跳转等待</Button>
+    {waiting && <div role="status" aria-label={t`Waiting for a step`} className="flex flex-wrap items-center gap-3">
+      <span>{waitingEntry ? t`Waiting for the next major step. Steps 0–${trace.steps.length - 1} are available to explore.` : t`Waiting for step ${index}. Steps 0–${trace.steps.length - 1} are available to explore.`}</span>
+      <Button variant="secondary" onPress={() => changeStep(visibleIndex)}>{t`Cancel waiting`}</Button>
     </div>}
     <form className="flex flex-wrap items-center gap-2" onSubmit={event => {
       event.preventDefault()
       const target = Number(destination)
       if (destination && Number.isSafeInteger(target) && target >= 0) changeStep(target)
     }}>
-      <Input aria-label="跳转步骤" placeholder="步骤" className="w-28" type="number" min="0" step="1" required value={destination} onChange={event => setDestination(event.target.value)} />
-      <Button variant="secondary" size="sm" type="submit">前往步骤</Button>
+      <Input aria-label={t`Jump to step`} placeholder={t`Step`} className="w-28" type="number" min="0" step="1" required value={destination} onChange={event => setDestination(event.target.value)} />
+      <Button variant="secondary" size="sm" type="submit">{t`Go to step`}</Button>
     </form></LearningView>
   </>
 }
@@ -248,15 +248,17 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
     event.preventDefault()
     if (!event.repeat) navigate(`/cases/${preset.id}/learn`)
   })
-  if (!preset) return <RouteError message={t`Unknown case: ${caseId}`} />
-  if (unknownPath) return <RouteError message={t`Unknown page path.`} preset={preset} />
-  if (learning && !preset.learning) return <RouteError message={t`This case does not support learning.`} preset={preset} />
+  if (!preset || unknownPath || (learning && !preset.learning)) return <>
+    <div className="flex justify-end"><LanguageSelect /></div>
+    <RouteError message={!preset ? t`Unknown case: ${caseId}` : unknownPath ? t`Unknown page path.` : t`This case does not support learning.`} preset={preset} />
+  </>
   return <CaseHelp key={`${preset.id}:${learning}`} preset={preset}>
     <div className="case-toolbar">
       <nav aria-label={t`Page navigation`}><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/">{t`Back to cases`}</Link></nav>
       <h2 className="text-xl font-semibold">{translate(preset.name)}</h2>
       <div className="case-actions flex flex-wrap items-center gap-2">
-        {learning && <Select className="learning-layout-select w-24" aria-label="主体布局比例（图形、代码、变量）" value={layout}
+        <LanguageSelect />
+        {learning && <Select className="learning-layout-select w-24" aria-label={t`Main layout ratio (geometry, code, variables)`} value={layout}
           onChange={value => { if (isLearningLayout(value)) setLayout(value) }}>
           <Select.Trigger><Select.Value /><Select.Indicator /></Select.Trigger>
           <Select.Popover><ListBox>
@@ -269,7 +271,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
           inputRef={input => { input?.setAttribute('aria-keyshortcuts', 'z') }}>
           <Switch.Content>
             <Switch.Control><Switch.Thumb /></Switch.Control>
-            <Label>禅模式</Label><Chip color="accent" variant="soft" size="sm" aria-hidden="true">Z</Chip>
+            <Label>{t`Zen mode`}</Label><Chip color="accent" variant="soft" size="sm" aria-hidden="true">Z</Chip>
           </Switch.Content>
         </Switch>}
         <HelpButton /><HelpButton topic="case">{t`About this case`}</HelpButton>
@@ -286,7 +288,7 @@ export default function App() {
   const { t } = useLingui()
   const caseRoute = useMatch('/cases/:caseId/*')
   return <main className={caseRoute ? 'case-shell' : undefined}>
-    <div className="flex justify-end"><LanguageSelect /></div>
+    {!caseRoute && <div className="flex justify-end"><LanguageSelect /></div>}
     {!caseRoute && <p className="mb-6 text-muted">{t`Choose a case to inspect exact intersection points and complete overlap intervals.`}</p>}
     <Routes>
       <Route path="/" element={<CaseList />} />

@@ -2,8 +2,10 @@ import { formatPoint, samePoint, type Point } from '../geometry/geometry'
 import { type Preset } from '../cases/preset'
 import { type SweepTrace } from './trace'
 import { eventSide } from './eventSide'
+import { msg } from '@lingui/core/macro'
+import type { I18n } from '@lingui/core'
 
-export function learningState(preset: Preset, trace: SweepTrace, index: number, generated: boolean) {
+export function learningState(preset: Preset, trace: SweepTrace, index: number, generated: boolean, translate: I18n['_']) {
   const step = trace.steps[index]
   const pointInputs = step.starts.filter(id => step.ends.includes(id))
   const recorded = step.action === 'record' ? step.results.at(-1) : undefined
@@ -33,22 +35,22 @@ export function learningState(preset: Preset, trace: SweepTrace, index: number, 
   const points = trace.pointLabels
   const pointName = (p: Point) => {
     const endpoints = preset.segments.flatMap((s, id) => [
-      ...(samePoint(p, s.start) ? [`S${id} 起点`] : []),
-      ...(samePoint(p, s.end) ? [`S${id} 终点`] : []),
+      ...(samePoint(p, s.start) ? [translate(msg`S${id} start`)] : []),
+      ...(samePoint(p, s.end) ? [translate(msg`S${id} end`)] : []),
     ])
     const boundary = overlaps.flatMap(({ geometry }) => geometry.type === 'overlap' ? [
-      ...(samePoint(p, geometry.start) ? ['重叠起界'] : []),
-      ...(samePoint(p, geometry.end) ? ['重叠止界'] : []),
+      ...(samePoint(p, geometry.start) ? [translate(msg`Overlap start boundary`)] : []),
+      ...(samePoint(p, geometry.end) ? [translate(msg`Overlap end boundary`)] : []),
     ] : [])
     const position = points.findIndex(point => samePoint(point, p))
-    return `${endpoints.length ? endpoints.join(' / ') : position >= 0 ? `I${position}` : '待处理交点'} ${formatPoint(p)}${boundary.length ? ` · ${[...new Set(boundary)].join(' / ')}` : ''}`
+    return `${endpoints.length ? endpoints.join(' / ') : position >= 0 ? `I${position}` : translate(msg`Pending intersection`)} ${formatPoint(p)}${boundary.length ? ` · ${[...new Set(boundary)].join(' / ')}` : ''}`
   }
   const discovered = step.pending.filter(p => !preset.segments.some(segment => samePoint(p, segment.start) || samePoint(p, segment.end)))
   const newlyScheduled = discovered.filter(p => !before.pending.some(old => samePoint(old, p)))
   const pendingTarget = step.action === 'discover' ? newlyScheduled[0] : undefined
   const activeTarget = step.subjects.find(id => step.active.includes(id))
   const participantTarget = step.subjects.find(id => [...step.starts, ...step.ends, ...step.passes].includes(id))
-  const phase = step.phase === 'initial' ? complete ? '学习完成' : '准备开始' : step.phase === 'processing' ? '事件处理中' : '事件处理完成'
+  const phase = step.phase === 'initial' ? complete ? translate(msg`Learning complete`) : translate(msg`Ready to start`) : step.phase === 'processing' ? translate(msg`Processing event`) : translate(msg`Event complete`)
   const sweep = {
     step: index,
     current: step.current,

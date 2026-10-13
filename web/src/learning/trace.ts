@@ -1,4 +1,5 @@
 import { formatPoint, rational, samePoint, type Intersection, type Point, type Rational } from '../geometry/geometry'
+import { ComputationError } from '../app/ComputationError'
 
 export interface ExecutionVariable {
   name: string
@@ -71,7 +72,7 @@ export class TraceDecoder {
   intersections: Intersection[] = []
 
   append(frame: TraceFrame) {
-    if (this.complete) throw new Error('教学轨迹完成后仍收到步骤')
+    if (this.complete) throw new ComputationError(/*i18n*/ { id: 'Received a step after the execution trace completed', message: 'Received a step after the execution trace completed' })
     this.trace.shear = frame.shear
     for (const value of frame.values) this.trace.values.push(value)
     for (const point of frame.point_values) this.points.push(point)
@@ -82,12 +83,12 @@ export class TraceDecoder {
       ...step,
       pending: step.pending.map(index => {
         const point = this.points[index]
-        if (!point) throw new Error('教学事件索引无效')
+        if (!point) throw new ComputationError(/*i18n*/ { id: 'Invalid execution event index', message: 'Invalid execution event index' })
         return point
       }),
       results: step.results.map(index => {
         const result = this.results[index]
-        if (!result) throw new Error('教学结果索引无效')
+        if (!result) throw new ComputationError(/*i18n*/ { id: 'Invalid execution result index', message: 'Invalid execution result index' })
         return result
       }),
       }
@@ -104,14 +105,14 @@ export class TraceDecoder {
     }
     this.complete = frame.complete
     if (frame.complete) {
-      if (!frame.intersections || !this.trace.steps.length) throw new Error('教学终态无效')
+      if (!frame.intersections || !this.trace.steps.length) throw new ComputationError(/*i18n*/ { id: 'Invalid execution trace final state', message: 'Invalid execution trace final state' })
       this.intersections = frame.intersections
     }
   }
 }
 
 export async function consumeTrace(response: Response, onFrame: (decoder: TraceDecoder) => void) {
-  if (!response.body) throw new Error('教学响应没有内容')
+  if (!response.body) throw new ComputationError(/*i18n*/ { id: 'The execution trace response has no body', message: 'The execution trace response has no body' })
   const reader = response.body.getReader()
   const text = new TextDecoder()
   const decoder = new TraceDecoder()
@@ -131,7 +132,7 @@ export async function consumeTrace(response: Response, onFrame: (decoder: TraceD
       // Let input and painting run between network chunks, even with a warm socket.
       await new Promise<void>(resolve => setTimeout(resolve, 0))
     }
-    if (pending.trim() || !decoder.complete) throw new Error('教学轨迹传输中断')
+    if (pending.trim() || !decoder.complete) throw new ComputationError(/*i18n*/ { id: 'Execution trace transfer interrupted', message: 'Execution trace transfer interrupted' })
   } finally {
     await reader.cancel()
     reader.releaseLock()

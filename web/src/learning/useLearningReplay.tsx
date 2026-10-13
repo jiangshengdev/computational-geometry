@@ -8,6 +8,7 @@ import { usePanelScrollRef, useStepPanelScroll } from './useStepPanelScroll'
 import { useEventTransfer } from './useEventTransfer'
 import { executionNavigation } from './executionNavigation'
 import { type LearningState } from './learningState'
+import { useLingui } from '@lingui/react/macro'
 
 type ReplayAction = {
   name: string
@@ -24,6 +25,7 @@ export function useLearningReplay(state: LearningState, { onStepChange, onStepPr
   onStepPreview: (index: number) => void
   onWaitNextEntry: () => void
 }) {
+  const { t } = useLingui()
   const { trace, index, generated, step, complete, pendingTarget, activeTarget, participantTarget } = state
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
   const keyboardScrub = useRef(false)
@@ -103,21 +105,21 @@ export function useLearningReplay(state: LearningState, { onStepChange, onStepPr
     else onStepChange(next)
   }
   const restart = () => { changeStep(0); setRun(r => r + 1) }
-  const replayGroups: { name: string; actions: ReplayAction[] }[] = [
-    { name: '单步', actions: [
-      { name: '上一步', key: 'ArrowLeft', hint: <ArrowLeft size={14} aria-hidden="true" />, isDisabled: index === 0, onPress: () => changeStep(current => current - 1, true) },
-      { name: '下一步', key: 'ArrowRight', hint: <ArrowRight size={14} aria-hidden="true" />, variant: 'primary', isDisabled: complete, onPress: () => changeStep(current => current + 1, true) },
+  const replayGroups: { id: string; name: string; actions: ReplayAction[] }[] = [
+    { id: 'single', name: t`Single steps`, actions: [
+      { name: t`Previous step`, key: 'ArrowLeft', hint: <ArrowLeft size={14} aria-hidden="true" />, isDisabled: index === 0, onPress: () => changeStep(current => current - 1, true) },
+      { name: t`Next step`, key: 'ArrowRight', hint: <ArrowRight size={14} aria-hidden="true" />, variant: 'primary', isDisabled: complete, onPress: () => changeStep(current => current + 1, true) },
     ] },
-    { name: '函数级操作', actions: [
-      { name: '步过', key: 'n', hint: 'N', isDisabled: stepOver < 0, onPress: () => changeStep(stepOver) },
-      { name: '步出', key: 'u', hint: 'U', isDisabled: stepOut < 0, onPress: () => changeStep(stepOut) },
+    { id: 'function', name: t`Function navigation`, actions: [
+      { name: t`Step over`, key: 'n', hint: 'N', isDisabled: stepOver < 0, onPress: () => changeStep(stepOver) },
+      { name: t`Step out`, key: 'u', hint: 'U', isDisabled: stepOut < 0, onPress: () => changeStep(stepOut) },
     ] },
-    { name: '大步', actions: [
-      { name: '上一个大步', key: 'ArrowLeft', shift: true, hint: <>⇧<ArrowLeft size={14} aria-hidden="true" /></>, isDisabled: previousEntry < 0, onPress: () => changeStep(previousEntry) },
-      { name: '下一个大步', key: 'ArrowRight', shift: true, hint: <>⇧<ArrowRight size={14} aria-hidden="true" /></>, isDisabled: generated && nextEntry < 0, onPress: () => nextEntry < 0 ? onWaitNextEntry() : changeStep(nextEntry) },
+    { id: 'major', name: t`Major steps`, actions: [
+      { name: t`Previous major step`, key: 'ArrowLeft', shift: true, hint: <>⇧<ArrowLeft size={14} aria-hidden="true" /></>, isDisabled: previousEntry < 0, onPress: () => changeStep(previousEntry) },
+      { name: t`Next major step`, key: 'ArrowRight', shift: true, hint: <>⇧<ArrowRight size={14} aria-hidden="true" /></>, isDisabled: generated && nextEntry < 0, onPress: () => nextEntry < 0 ? onWaitNextEntry() : changeStep(nextEntry) },
     ] },
-    { name: '重启', actions: [
-      { name: '重新开始', key: 'r', hint: 'R', variant: 'tertiary', isDisabled: false, onPress: restart },
+    { id: 'restart', name: t`Restart controls`, actions: [
+      { name: t`Restart`, key: 'r', hint: 'R', variant: 'tertiary', isDisabled: false, onPress: restart },
     ] },
   ]
   const replayActions = replayGroups.flatMap(group => group.actions)
