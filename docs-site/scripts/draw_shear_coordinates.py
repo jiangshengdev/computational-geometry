@@ -5,6 +5,7 @@ From the repository root (requires the maintainer-provisioned uv environment):
 """
 
 from pathlib import Path
+from io import StringIO
 
 import matplotlib
 
@@ -32,6 +33,13 @@ def plot_style(colors):
         "svg.fonttype": "path", "svg.hashsalt": "shear-coordinates",
         "text.color": colors["text"], "axes.titlecolor": colors["text"],
     }
+
+
+def save_svg(fig, output, colors):
+    """Normalize Matplotlib's path whitespace as part of asset generation."""
+    buffer = StringIO()
+    fig.savefig(buffer, format="svg", facecolor=colors["background"], metadata={"Date": None})
+    output.write_text("\n".join(line.rstrip() for line in buffer.getvalue().splitlines()) + "\n", encoding="utf-8")
 
 
 def draw(theme, colors):
@@ -88,7 +96,7 @@ def draw(theme, colors):
         fig.text(.265, .085, r"$P=2(1,0)+2(0,1)$", ha="center", fontsize=23)
         fig.text(.752, .085, r"$P=3(1,0)+2(-\frac{1}{2},1)$", ha="center", fontsize=23)
         output = OUTPUT / f"shear-coordinates-{theme}.svg"
-        fig.savefig(output, facecolor=colors["background"], metadata={"Date": None})
+        save_svg(fig, output, colors)
         plt.close(fig)
         print(output)
 
@@ -127,7 +135,7 @@ def draw_order_reversal(theme, colors):
         fig.text(.265, .085, r"$x_A=0<1=x_B$", ha="center", fontsize=24)
         fig.text(.752, .085, r"$x'_B=1<2=x'_A$", ha="center", fontsize=24)
         output = OUTPUT / f"shear-order-reversal-{theme}.svg"
-        fig.savefig(output, facecolor=colors["background"], metadata={"Date": None})
+        save_svg(fig, output, colors)
         plt.close(fig)
         print(output)
 
