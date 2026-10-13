@@ -1,6 +1,6 @@
 import { closePreview, expect, test } from '../support/learning-test'
 import { captureIntersections, seekStep, waitForTraceCompletion } from '../support/trace-navigation'
-import type { TraceFrame } from '../../src/geometry/geometry'
+import type { TraceFrame } from '../../src/learning/trace'
 
 function executableSource(source: string) {
   return source.split('\n').map(line => line.trim()).filter(line => line && !line.startsWith('//')).join('\n')

@@ -11,7 +11,7 @@ import { performance } from 'node:perf_hooks'
 import { promisify, stripVTControlCharacters } from 'node:util'
 import type { Readable } from 'node:stream'
 import type { Browser, BrowserContext, BrowserServer } from '@playwright/test'
-import type { Preset } from '../web/src/geometry/geometry.ts'
+import type { Preset } from '../web/src/cases/preset.ts'
 
 type ServiceProcess = ChildProcessByStdio<null, Readable, Readable> & { launchError?: Error }
 interface LifecycleEvent {

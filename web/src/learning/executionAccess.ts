@@ -1,4 +1,4 @@
-import type { SweepStep } from '../geometry/geometry'
+import type { SweepStep } from './trace'
 import { scopedVariable, symbolKind, variableDetails } from './executionSymbols'
 import { formatExecutionValue, splitExecutionItems } from './executionValue'
 

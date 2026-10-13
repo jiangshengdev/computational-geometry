@@ -1,4 +1,5 @@
-import { segment, type Preset, type Segment } from '../geometry/geometry'
+import { segment, type Segment } from '../geometry/geometry'
+import { type Preset } from './preset'
 
 function bridgeTruss(): Segment[] {
   const beams: Segment[] = []

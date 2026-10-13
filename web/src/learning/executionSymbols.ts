@@ -1,4 +1,4 @@
-import type { ExecutionContext, ExecutionControl, ExecutionVariable, ExecutionVariableKind, SweepStep } from '../geometry/geometry'
+import type { ExecutionContext, ExecutionControl, ExecutionVariable, ExecutionVariableKind, SweepStep } from './trace'
 import { formatExecutionValue } from './executionValue'
 
 const meanings: Record<string, string> = {

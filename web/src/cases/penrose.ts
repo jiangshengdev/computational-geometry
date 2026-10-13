@@ -1,4 +1,5 @@
-import { point, type Preset, type Segment } from '../geometry/geometry'
+import { point, type Segment } from '../geometry/geometry'
+import { type Preset } from './preset'
 
 type Vertex = readonly [number, number]
 interface Triangle { wide: boolean; a: Vertex; b: Vertex; c: Vertex }

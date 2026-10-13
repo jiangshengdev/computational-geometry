@@ -1,4 +1,4 @@
-import type { SweepStep } from '../geometry/geometry'
+import type { SweepStep } from './trace'
 
 export function executionNavigation(steps: readonly SweepStep[], index: number) {
   const execution = steps[index].execution

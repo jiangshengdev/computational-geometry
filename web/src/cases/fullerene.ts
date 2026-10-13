@@ -1,4 +1,5 @@
-import { point, type Preset, type Segment } from '../geometry/geometry'
+import { point, type Segment } from '../geometry/geometry'
+import { type Preset } from './preset'
 
 function fullerene(): Segment[] {
   // Icosahedron: cyclic permutations of (0, ±1, ±φ), with φ ≈ 1618/1000.

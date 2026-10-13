@@ -1,4 +1,4 @@
-import type { ExecutionState, SweepStep } from '../geometry/geometry'
+import type { ExecutionState, SweepStep } from './trace'
 
 interface InlineClosure {
   module: string

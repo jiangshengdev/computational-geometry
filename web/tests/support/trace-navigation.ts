@@ -1,6 +1,7 @@
 import { expect, type Page } from '@playwright/test'
 import { presets } from '../../src/cases/presets'
-import { TraceDecoder, type Intersection, type Segment, type SweepStep, type SweepTrace, type TraceFrame } from '../../src/geometry/geometry'
+import { type Intersection, type Segment } from '../../src/geometry/geometry'
+import { TraceDecoder, type SweepStep, type SweepTrace, type TraceFrame } from '../../src/learning/trace'
 
 export async function readResponse(response: { text(): Promise<string> }): Promise<{ intersections: Intersection[]; trace: SweepTrace }> {
   const decoder = new TraceDecoder()

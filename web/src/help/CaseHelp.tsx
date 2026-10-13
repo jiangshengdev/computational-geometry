@@ -6,7 +6,8 @@ import { Modal } from '@heroui/react/modal'
 import { Tabs } from '@heroui/react/tabs'
 import { LearningIntroduction, LearningReferences, SamePointRules, VerticalRules, OverlapRules, NeighborRules, EventQueueRules, ActiveOrderRules } from './HelpContent'
 import { HelpContext, type HelpTopic } from './help-context'
-import { samePoint, type Preset } from '../geometry/geometry'
+import { samePoint } from '../geometry/geometry'
+import { type Preset } from '../cases/preset'
 
 const topics = [
   { id: 'introduction', title: '学习目标、术语与扫描约定', content: <LearningIntroduction /> },

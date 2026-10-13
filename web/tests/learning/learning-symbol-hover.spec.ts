@@ -1,5 +1,5 @@
 import { closePreview, expect, test } from '../support/learning-test'
-import type { SweepTrace } from '../../src/geometry/geometry'
+import type { SweepTrace } from '../../src/learning/trace'
 import { readResponse, readTrace, waitForTraceCompletion } from '../support/trace-navigation'
 import { variableValue } from '../../src/learning/executionSymbols'
 import { formatExecutionValue } from '../../src/learning/executionValue'

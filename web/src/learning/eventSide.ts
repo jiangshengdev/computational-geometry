@@ -1,4 +1,5 @@
-import { samePoint, type SweepStep } from '../geometry/geometry'
+import { samePoint } from '../geometry/geometry'
+import { type SweepStep } from './trace'
 
 export type EventSide = 'left' | 'right' | null
 

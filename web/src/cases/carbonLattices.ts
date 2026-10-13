@@ -1,4 +1,5 @@
-import { point, type Point, type Preset, type Segment } from '../geometry/geometry'
+import { point, type Point, type Segment } from '../geometry/geometry'
+import { type Preset } from './preset'
 
 type Vertex = readonly [number, number, number]
 type Bond = readonly [number, number]
