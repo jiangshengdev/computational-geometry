@@ -6,7 +6,7 @@ import rehypeKatex from 'rehype-katex';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: '精确计算几何文档',
+  title: '计算几何文档',
   tagline: '理解精确线段求交背后的数学',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -36,13 +36,14 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           remarkPlugins: [remarkMath],
           rehypePlugins: [[rehypeKatex, {strict: 'error', throwOnError: true}]],
         },
         blog: false,
         theme: {
-          customCss: require.resolve('katex/dist/katex.min.css'),
+          customCss: [require.resolve('katex/dist/katex.min.css'), './src/css/custom.css'],
         },
       } satisfies Preset.Options,
     ],
@@ -53,13 +54,18 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: '精确计算几何文档',
+      title: '计算几何',
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'documents',
           position: 'left',
-          label: '数学证明',
+          label: '文档',
+        },
+        {
+          href: 'https://github.com/jiangshengdev/computational-geometry',
+          label: 'GitHub',
+          position: 'right',
         },
       ],
     },
@@ -70,8 +76,25 @@ const config: Config = {
           title: '文档',
           items: [
             {
+              label: '首页',
+              to: '/',
+            },
+            {
               label: '剪切系数的选择与证明',
               to: '/docs/shear-coefficient/',
+            },
+          ],
+        },
+        {
+          title: '项目',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/jiangshengdev/computational-geometry',
+            },
+            {
+              label: 'Docusaurus',
+              href: 'https://docusaurus.io',
             },
           ],
         },
