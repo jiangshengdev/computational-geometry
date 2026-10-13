@@ -18,6 +18,18 @@ msgstr ""
 msgid " (shadowed; last value before shadowing)"
 msgstr " (shadowed; last value before shadowing)"
 
+#. Connect crossing segment names in prose. Preserve surrounding whitespace.
+#. js-lingui-explicit-id
+#: src/learning/LearningPanels.tsx:25
+msgid "learning.segmentConjunction"
+msgstr " and "
+
+#. Separator between teaching list items. Preserve surrounding whitespace.
+#. js-lingui-explicit-id
+#: src/learning/LearningPanels.tsx:24
+msgid "learning.listSeparator"
+msgstr ", "
+
 #. js-lingui-explicit-id
 #: src/learning/RustCode.tsx:19
 msgid "(Code highlighting failed to load)"
@@ -25,7 +37,7 @@ msgstr "(Code highlighting failed to load)"
 
 #. placeholder {0}: points.length
 #. placeholder {1}: step.results.length
-#: src/learning/LearningPanels.tsx:61
+#: src/learning/LearningPanels.tsx:63
 msgid "{0, plural, one {# distinct intersection position} other {# distinct intersection positions}}; {1, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Multiple segment pairs may share the same position."
 msgstr "{0, plural, one {# distinct intersection position} other {# distinct intersection positions}}; {1, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Multiple segment pairs may share the same position."
 
@@ -37,13 +49,13 @@ msgstr "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
 #. placeholder {0}: points.length
 #. placeholder {1}: visibleOverlaps.length
 #. placeholder {2}: step.results.length
-#: src/learning/LearningPanels.tsx:61
+#: src/learning/LearningPanels.tsx:63
 msgid "{0, plural, one {# point-result position} other {# point-result positions}}; {1, plural, one {# overlap interval} other {# overlap intervals}}; {2, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Point-type pair results are not necessarily isolated points in the overall intersection: they may lie on recorded overlap intervals. An interval contains infinitely many shared points. Each pair remains separate; no geometric union is computed."
 msgstr "{0, plural, one {# point-result position} other {# point-result positions}}; {1, plural, one {# overlap interval} other {# overlap intervals}}; {2, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Point-type pair results are not necessarily isolated points in the overall intersection: they may lie on recorded overlap intervals. An interval contains infinitely many shared points. Each pair remains separate; no geometric union is computed."
 
 #. placeholder {0}: formatGeometry(result.geometry)
 #. placeholder {1}: pairName(result)
-#: src/learning/LearningPanels.tsx:63
+#: src/learning/LearningPanels.tsx:65
 msgid "{0}: {1} (including both endpoints and every point between them)"
 msgstr "{0}: {1} (including both endpoints and every point between them)"
 
@@ -147,7 +159,7 @@ msgstr "About and help"
 msgid "About core variables"
 msgstr "About core variables"
 
-#: src/learning/LearningPanels.tsx:71
+#: src/learning/LearningPanels.tsx:73
 msgid "About events"
 msgstr "About events"
 
@@ -155,11 +167,11 @@ msgstr "About events"
 msgid "About inputs"
 msgstr "About inputs"
 
-#: src/learning/LearningPanels.tsx:31
+#: src/learning/LearningPanels.tsx:33
 msgid "About neighbors"
 msgstr "About neighbors"
 
-#: src/learning/LearningPanels.tsx:33
+#: src/learning/LearningPanels.tsx:35
 msgid "About overlaps"
 msgstr "About overlaps"
 
@@ -167,15 +179,15 @@ msgstr "About overlaps"
 msgid "About results"
 msgstr "About results"
 
-#: src/learning/LearningPanels.tsx:83
+#: src/learning/LearningPanels.tsx:85
 msgid "About shared points"
 msgstr "About shared points"
 
-#: src/learning/LearningPanels.tsx:107
+#: src/learning/LearningPanels.tsx:109
 msgid "About the order"
 msgstr "About the order"
 
-#: src/learning/LearningPanels.tsx:93
+#: src/learning/LearningPanels.tsx:95
 msgid "About the queue"
 msgstr "About the queue"
 
@@ -193,7 +205,7 @@ msgstr "About to check the next iteration; no decision yet"
 msgid "About to execute; no result yet"
 msgstr "About to execute; no result yet"
 
-#: src/learning/LearningPanels.tsx:32
+#: src/learning/LearningPanels.tsx:34
 msgid "About vertical segments"
 msgstr "About vertical segments"
 
@@ -202,7 +214,7 @@ msgstr "About vertical segments"
 msgid "Access"
 msgstr "Access"
 
-#: src/learning/LearningPanels.tsx:29
+#: src/learning/LearningPanels.tsx:31
 #: src/learning/LearningView.tsx:46
 msgid "Action explanation"
 msgstr "Action explanation"
@@ -226,8 +238,8 @@ msgid "Active segment loop"
 msgstr "Active segment loop"
 
 #: src/help/CaseHelp.tsx:49
-#: src/learning/LearningPanels.tsx:106
-#: src/learning/LearningPanels.tsx:107
+#: src/learning/LearningPanels.tsx:108
+#: src/learning/LearningPanels.tsx:109
 #: src/learning/LearningView.tsx:31
 msgid "Active segment order"
 msgstr "Active segment order"
@@ -276,18 +288,18 @@ msgstr "Adjacency argument"
 msgid "After break"
 msgstr "After break"
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(', ')
-#: src/learning/LearningPanels.tsx:49
+#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(listSeparator)
+#: src/learning/LearningPanels.tsx:51
 msgid "After inserting {0}, this pair lies at the boundary of the inserted segments and becomes a new pair of neighbors to check."
 msgstr "After inserting {0}, this pair lies at the boundary of the inserted segments and becomes a new pair of neighbors to check."
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(', ')
-#: src/learning/LearningPanels.tsx:50
+#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(listSeparator)
+#: src/learning/LearningPanels.tsx:52
 msgid "After removing {0}, the intervening segments are gone and the segments on either side become new neighbors."
 msgstr "After removing {0}, the intervening segments are gone and the segments on either side become new neighbors."
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(' × ')
-#: src/learning/LearningPanels.tsx:51
+#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(conjunction)
+#: src/learning/LearningPanels.tsx:53
 msgid "After the crossing segments {0} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors."
 msgstr "After the crossing segments {0} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors."
 
@@ -296,11 +308,11 @@ msgstr "After the crossing segments {0} reorder, this pair lies at the outer bou
 msgid "After the end of the {keyword} block"
 msgstr "After the end of the {keyword} block"
 
-#: src/learning/LearningPanels.tsx:41
+#: src/learning/LearningPanels.tsx:43
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 
-#: src/learning/LearningPanels.tsx:57
+#: src/learning/LearningPanels.tsx:59
 msgid "All events have been processed; no further steps are needed."
 msgstr "All events have been processed; no further steps are needed."
 
@@ -523,7 +535,7 @@ msgstr "Check each neighboring position that exists"
 msgid "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
 msgstr "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
 
-#: src/learning/LearningPanels.tsx:48
+#: src/learning/LearningPanels.tsx:50
 msgid "Check neighboring segments <0>{subjects}</0>."
 msgstr "Check neighboring segments <0>{subjects}</0>."
 
@@ -783,8 +795,8 @@ msgstr "Create an empty sequence."
 msgid "Current {index} · Generated 0–{lastStep}"
 msgstr "Current {index} · Generated 0–{lastStep}"
 
-#: src/learning/LearningPanels.tsx:70
-#: src/learning/LearningPanels.tsx:71
+#: src/learning/LearningPanels.tsx:72
+#: src/learning/LearningPanels.tsx:73
 #: src/learning/LearningView.tsx:44
 msgid "Current event"
 msgstr "Current event"
@@ -872,8 +884,8 @@ msgstr "Diamonds: zero-length inputs"
 msgid "Different intersections at the same sweep coordinate"
 msgstr "Different intersections at the same sweep coordinate"
 
-#. placeholder {0}: newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}> {position > 0 && <span>, </span>} <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span> </Fragment>)
-#: src/learning/LearningPanels.tsx:53
+#. placeholder {0}: newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}> {position > 0 && <span>{listSeparator}</span>} <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span> </Fragment>)
+#: src/learning/LearningPanels.tsx:55
 msgid "Discover future intersections <0>{0}</0>: after checking the exact intersection of <1>{subjects}</1>, add them to the queue and wait until the sweep line arrives to record the results."
 msgstr "Discover future intersections <0>{0}</0>: after checking the exact intersection of <1>{subjects}</1>, add them to the queue and wait until the sweep line arrives to record the results."
 
@@ -961,8 +973,8 @@ msgstr "Eight radial spokes connect two octagonal rings; every web junction cons
 msgid "Element of {expression} selected by the current index"
 msgstr "Element of {expression} selected by the current index"
 
-#: src/learning/LearningPanels.tsx:103
-#: src/learning/LearningPanels.tsx:116
+#: src/learning/LearningPanels.tsx:105
+#: src/learning/LearningPanels.tsx:118
 msgid "Empty"
 msgstr "Empty"
 
@@ -996,8 +1008,8 @@ msgstr "End of the original segment"
 msgid "End this check if there is no candidate"
 msgstr "End this check if there is no candidate"
 
-#. placeholder {0}: step.ends.length ? inputReferences(step.ends, ', ') : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:87
+#. placeholder {0}: step.ends.length ? inputReferences(step.ends) : translate(msg`None`)
+#: src/learning/LearningPanels.tsx:89
 msgid "Ending: {0}"
 msgstr "Ending: {0}"
 
@@ -1016,7 +1028,7 @@ msgstr "Endpoints and crossing at one point"
 msgid "Enter the else branch"
 msgstr "Enter the else branch"
 
-#: src/learning/LearningPanels.tsx:38
+#: src/learning/LearningPanels.tsx:40
 msgid "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
 msgstr "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
 
@@ -1313,7 +1325,7 @@ msgid "Increase parent depth"
 msgstr "Increase parent depth"
 
 #. placeholder {0}: preset.learning && translate(preset.learning.verification)
-#: src/learning/LearningPanels.tsx:65
+#: src/learning/LearningPanels.tsx:67
 msgid "Independent mathematical check: {0}"
 msgstr "Independent mathematical check: {0}"
 
@@ -1349,7 +1361,7 @@ msgstr "Input S{index}"
 msgid "Input S{index}, selected"
 msgstr "Input S{index}, selected"
 
-#: src/learning/LearningPanels.tsx:43
+#: src/learning/LearningPanels.tsx:45
 msgid "Insert <0>{subjects}</0>: the sweep line has reached the start, and these inputs now participate in the active order."
 msgstr "Insert <0>{subjects}</0>: the sweep line has reached the start, and these inputs now participate in the active order."
 
@@ -1456,7 +1468,7 @@ msgstr "Keep incident segments that must remain in the active set"
 msgid "Keep segments that do not pass through the current point"
 msgstr "Keep segments that do not pass through the current point"
 
-#: src/learning/LearningPanels.tsx:108
+#: src/learning/LearningPanels.tsx:110
 msgid "Keeping the order from before this event"
 msgstr "Keeping the order from before this event"
 
@@ -1469,7 +1481,7 @@ msgstr "KIT · Line Segment Intersection: closed segments and grouping events at
 msgid "Learn from the start"
 msgstr "Learn from the start"
 
-#: src/learning/LearningPanels.tsx:59
+#: src/learning/LearningPanels.tsx:61
 #: src/learning/LearningReplayControls.tsx:28
 #: src/learning/learningState.ts:53
 msgid "Learning complete"
@@ -1494,7 +1506,7 @@ msgstr "Learning goals, terms, and sweep conventions"
 msgid "help.LearningReferences.label"
 msgstr "Learning references"
 
-#: src/learning/LearningPanels.tsx:58
+#: src/learning/LearningPanels.tsx:60
 msgid "Learning results"
 msgstr "Learning results"
 
@@ -1588,11 +1600,11 @@ msgstr "Neighbors after crossing"
 msgid "Neighbors after removal"
 msgstr "Neighbors after removal"
 
-#: src/learning/LearningPanels.tsx:40
+#: src/learning/LearningPanels.tsx:42
 msgid "next is None: the event queue is empty and the sweep loop exits. Confirming the final results."
 msgstr "next is None: the event queue is empty and the sweep loop exits. Confirming the final results."
 
-#: src/learning/LearningPanels.tsx:40
+#: src/learning/LearningPanels.tsx:42
 msgid "next is None: the event queue is empty and the sweep loop exits. Learning is complete."
 msgstr "next is None: the event queue is empty and the sweep loop exits. Learning is complete."
 
@@ -1604,7 +1616,7 @@ msgstr "Next major step"
 msgid "Next step"
 msgstr "Next step"
 
-#: src/learning/LearningPanels.tsx:43
+#: src/learning/LearningPanels.tsx:45
 msgid "Next, check whether the new neighbors intersect in the future."
 msgstr "Next, check whether the new neighbors intersect in the future."
 
@@ -1618,11 +1630,11 @@ msgstr "No arguments."
 msgid "No comparable value change in this step"
 msgstr "No comparable value change in this step"
 
-#: src/learning/LearningPanels.tsx:79
+#: src/learning/LearningPanels.tsx:81
 msgid "No event processed yet"
 msgstr "No event processed yet"
 
-#: src/learning/LearningPanels.tsx:79
+#: src/learning/LearningPanels.tsx:81
 msgid "No events"
 msgstr "No events"
 
@@ -1649,9 +1661,9 @@ msgstr "No intersection"
 msgid "No next element; the loop has ended"
 msgstr "No next element; the loop has ended"
 
-#: src/learning/LearningPanels.tsx:86
-#: src/learning/LearningPanels.tsx:87
 #: src/learning/LearningPanels.tsx:88
+#: src/learning/LearningPanels.tsx:89
+#: src/learning/LearningPanels.tsx:90
 msgid "None"
 msgstr "None"
 
@@ -1754,11 +1766,11 @@ msgstr "Only S0 exists, so no pair of distinct inputs can be formed; its two end
 msgid "Orange: intersections"
 msgstr "Orange: intersections"
 
-#: src/learning/LearningPanels.tsx:108
+#: src/learning/LearningPanels.tsx:110
 msgid "Order after the current teaching action; the event is still in progress"
 msgstr "Order after the current teaching action; the event is still in progress"
 
-#: src/learning/LearningPanels.tsx:108
+#: src/learning/LearningPanels.tsx:110
 msgid "Order after the processed event"
 msgstr "Order after the processed event"
 
@@ -1849,7 +1861,7 @@ msgstr "Overlap, crossing, and coincident points"
 msgid "help.ActiveOrderRules.2"
 msgstr "Overlapping members are tied at the same height. List positions identify them individually, not a difference in vertical position. Their ranks in the drawing also point to the same geometric location."
 
-#: src/learning/LearningPanels.tsx:46
+#: src/learning/LearningPanels.tsx:48
 msgid "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 msgstr "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 
@@ -1907,12 +1919,12 @@ msgstr "Parent display depth"
 msgid "Partial overlap"
 msgstr "Partial overlap"
 
-#: src/learning/LearningPanels.tsx:89
+#: src/learning/LearningPanels.tsx:91
 msgid "Participants at this point appear after taking an event."
 msgstr "Participants at this point appear after taking an event."
 
-#. placeholder {0}: step.passes.length ? inputReferences(step.passes, ', ') : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:88
+#. placeholder {0}: step.passes.length ? inputReferences(step.passes) : translate(msg`None`)
+#: src/learning/LearningPanels.tsx:90
 msgid "Passing: {0}"
 msgstr "Passing: {0}"
 
@@ -1923,8 +1935,8 @@ msgstr "Passing: {0}"
 msgid "geometry.pendingEvent"
 msgstr "Pending event {0}: {1}"
 
-#: src/learning/LearningPanels.tsx:92
-#: src/learning/LearningPanels.tsx:93
+#: src/learning/LearningPanels.tsx:94
+#: src/learning/LearningPanels.tsx:95
 #: src/learning/LearningView.tsx:45
 msgid "Pending event queue"
 msgstr "Pending event queue"
@@ -1943,7 +1955,7 @@ msgstr "Pending intersection"
 msgid "Penrose tiling"
 msgstr "Penrose tiling"
 
-#: src/learning/LearningPanels.tsx:36
+#: src/learning/LearningPanels.tsx:38
 msgid "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 msgstr "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 
@@ -2057,7 +2069,7 @@ msgstr "Queue empty; exit the loop"
 msgid "Queue head removed; current event not matched or bound yet · intermediate state"
 msgstr "Queue head removed; current event not matched or bound yet · intermediate state"
 
-#: src/learning/LearningPanels.tsx:39
+#: src/learning/LearningPanels.tsx:41
 msgid "queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state."
 msgstr "queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state."
 
@@ -2085,12 +2097,12 @@ msgid "Received a step after the execution trace completed"
 msgstr "Received a step after the execution trace completed"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "Record <0>{0}</0>: the participating segments <1>{subjects}</1> cross here."
 msgstr "Record <0>{0}</0>: the participating segments <1>{subjects}</1> cross here."
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "Record <0>{0}</0>: the participating segments <1>{subjects}</1> touch here. Closed segments include their endpoints, so this intersection counts regardless of the approach direction."
 msgstr "Record <0>{0}</0>: the participating segments <1>{subjects}</1> touch here. Closed segments include their endpoints, so this intersection counts regardless of the approach direction."
 
@@ -2111,7 +2123,7 @@ msgstr "Record only at the overlap start; skip this pair here"
 
 #. placeholder {0}: formatGeometry(recordedOverlap.geometry)
 #. placeholder {1}: inputReferences(recordedOverlap.segments, ' × ')
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "Record the overlap interval <0>{0}</0>: the participating segments <1>{1}</1> overlap from the current, later start to the earlier end. Take the shared range of the two closed intervals, including both endpoints and every point between them, rather than only the current endpoint. The complete intersection follows from the known endpoints; the sweep line has not traversed the whole interval. The orange segment and its two endpoints mark the full intersection. The active order has not changed; membership changes follow after all pairs at this point are recorded."
 msgstr "Record the overlap interval <0>{0}</0>: the participating segments <1>{1}</1> overlap from the current, later start to the earlier end. Take the shared range of the two closed intervals, including both endpoints and every point between them, rather than only the current endpoint. The complete intersection follows from the known endpoints; the sweep line has not traversed the whole interval. The orange segment and its two endpoints mark the full intersection. The active order has not changed; membership changes follow after all pairs at this point are recorded."
 
@@ -2148,7 +2160,7 @@ msgstr "Referenced variable "
 msgid "References"
 msgstr "References"
 
-#: src/learning/LearningPanels.tsx:44
+#: src/learning/LearningPanels.tsx:46
 msgid "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
 msgstr "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
 
@@ -2163,7 +2175,7 @@ msgid "Remove segments that end at the current point from the active set"
 msgstr "Remove segments that end at the current point from the active set"
 
 #. placeholder {0}: inputReferences(step.active, ' → ')
-#: src/learning/LearningPanels.tsx:47
+#: src/learning/LearningPanels.tsx:49
 msgid "Reorder to <0>{0}</0>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress."
 msgstr "Reorder to <0>{0}</0>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress."
 
@@ -2433,8 +2445,8 @@ msgstr "Segment index visited by the current loop"
 msgid "Segment information carried by the current event"
 msgstr "Segment information carried by the current event"
 
-#: src/learning/LearningPanels.tsx:82
-#: src/learning/LearningPanels.tsx:83
+#: src/learning/LearningPanels.tsx:84
+#: src/learning/LearningPanels.tsx:85
 #: src/learning/LearningView.tsx:30
 msgid "Segments at this point"
 msgstr "Segments at this point"
@@ -2674,8 +2686,8 @@ msgstr "Start of the original segment"
 msgid "Start step-by-step learning"
 msgstr "Start step-by-step learning"
 
-#. placeholder {0}: step.starts.length ? inputReferences(step.starts, ', ') : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:86
+#. placeholder {0}: step.starts.length ? inputReferences(step.starts) : translate(msg`None`)
+#: src/learning/LearningPanels.tsx:88
 msgid "Starting: {0}"
 msgstr "Starting: {0}"
 
@@ -2747,7 +2759,7 @@ msgid "Sweep-coordinate segments received by the current function"
 msgstr "Sweep-coordinate segments received by the current function"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:37
+#: src/learning/LearningPanels.tsx:39
 msgid "Take <0>{0}</0> from the front of the queue and stop the sweep line here. The current event has left the pending queue; no insertion, removal, or reordering has happened yet. First check the participants at this point and record each pair's intersection, then update the active order following the real actions."
 msgstr "Take <0>{0}</0> from the front of the queue and stop the sweep line here. The current event has left the pending queue; no insertion, removal, or reordering has happened yet. First check the participants at this point and record each pair's intersection, then update the active order following the real actions."
 
@@ -2810,7 +2822,7 @@ msgstr "The condition is true; enter this branch"
 msgid "help.VerticalRules.3"
 msgstr "The current event, queue, and results in the drawing all use original coordinates. The sweep line may stay at the same x while the current event moves upward in y. Completing a lower intersection does not clear higher pending events."
 
-#: src/learning/LearningPanels.tsx:57
+#: src/learning/LearningPanels.tsx:59
 msgid "The event is complete: the active order and pending queue are consistent."
 msgstr "The event is complete: the active order and pending queue are consistent."
 
@@ -2819,7 +2831,7 @@ msgstr "The event is complete: the active order and pending queue are consistent
 msgid "The event just removed from the queue, possibly absent"
 msgstr "The event just removed from the queue, possibly absent"
 
-#: src/learning/LearningPanels.tsx:60
+#: src/learning/LearningPanels.tsx:62
 msgid "The event queue and active order are empty. All inputs have been processed; zero-length points need no insertion into or removal from the active order."
 msgstr "The event queue and active order are empty. All inputs have been processed; zero-length points need no insertion into or removal from the active order."
 
@@ -2847,11 +2859,11 @@ msgstr "The four tetrahedral centers of one conventional unit cell and all their
 msgid "The input set is empty"
 msgstr "The input set is empty"
 
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "The intersection has been recorded in the results; the active order has not changed yet."
 msgstr "The intersection has been recorded in the results; the active order has not changed yet."
 
-#: src/learning/LearningPanels.tsx:44
+#: src/learning/LearningPanels.tsx:46
 msgid "The intersection includes this boundary. Keep the complete recorded interval without recording its end again as an isolated intersection point."
 msgstr "The intersection includes this boundary. Keep the complete recorded interval without recording its end again as an isolated intersection point."
 
@@ -2865,7 +2877,7 @@ msgstr "The most direct approach checks every pair: <0>n</0> segments require <1
 msgid "The segments parameter is shadowed."
 msgstr "The parameter <0>segments</0> is shadowed by a local variable with the same name."
 
-#: src/learning/LearningPanels.tsx:64
+#: src/learning/LearningPanels.tsx:66
 msgid "The results are empty: no separate input pair intersects. See the mathematical check below for the geometric reasoning."
 msgstr "The results are empty: no separate input pair intersects. See the mathematical check below for the geometric reasoning."
 
@@ -2889,24 +2901,24 @@ msgstr "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 
 msgid "help.SamePointRules.1"
 msgstr "The sweep direction determines which segments start, end, or pass through the interior. These three groups belong to one exact geometric point and do not change during intermediate actions. Closed segments include endpoints: record the intersections of all participants first, then remove ending segments, insert starting segments, and order those that remain active."
 
-#: src/learning/LearningPanels.tsx:57
+#: src/learning/LearningPanels.tsx:59
 msgid "The teaching actions for this event are complete. Next, process the first queued event."
 msgstr "The teaching actions for this event are complete. Next, process the first queued event."
 
-#. placeholder {0}: inputReferences(pointInputs, ', ')
-#: src/learning/LearningPanels.tsx:42
+#. placeholder {0}: inputReferences(pointInputs)
+#: src/learning/LearningPanels.tsx:44
 msgid "The zero-length inputs <0>{0}</0> have coincident endpoints, so they belong to both the start and end groups without entering the persistent active order. They participate in pairs only at this exact position: contact in a segment's interior or at a closed endpoint both counts. Coincident points retain separate input identities. Point events without a matching pair also complete normally."
 msgstr "The zero-length inputs <0>{0}</0> have coincident endpoints, so they belong to both the start and end groups without entering the persistent active order. They participate in pairs only at this exact position: contact in a segment's interior or at a closed endpoint both counts. Coincident points retain separate input identities. Point events without a matching pair also complete normally."
 
-#: src/learning/LearningPanels.tsx:57
+#: src/learning/LearningPanels.tsx:59
 msgid "There are no future intersections to add to the queue."
 msgstr "There are no future intersections to add to the queue."
 
-#: src/learning/LearningPanels.tsx:36
+#: src/learning/LearningPanels.tsx:38
 msgid "There are no inputs, so there are no endpoints or events. The queue and active order are empty. Step through the microsteps to see event retrieval return None and exit the loop."
 msgstr "There are no inputs, so there are no endpoints or events. The queue and active order are empty. Step through the microsteps to see event retrieval return None and exit the loop."
 
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "These pairwise records describe intersecting pairs at the same geometric point, not multiple intersection points. See the point groups for all participants; the event is not complete yet."
 msgstr "These pairwise records describe intersecting pairs at the same geometric point, not multiple intersection points. See the point groups for all participants; the event is not complete yet."
 
@@ -2923,12 +2935,12 @@ msgstr "This case currently provides result viewing. Open a teaching case from t
 msgid "This case does not support learning."
 msgstr "This case does not support learning."
 
-#. placeholder {0}: inputReferences(continuingOverlapInputs, ', ')
-#: src/learning/LearningPanels.tsx:44
+#. placeholder {0}: inputReferences(continuingOverlapInputs)
+#: src/learning/LearningPanels.tsx:46
 msgid "This is an overlap end boundary: {0} continue while the ending inputs leave."
 msgstr "This is an overlap end boundary: {0} continue while the ending inputs leave."
 
-#: src/learning/LearningPanels.tsx:44
+#: src/learning/LearningPanels.tsx:46
 msgid "This is an overlap end boundary: all members of these pairs end here."
 msgstr "This is an overlap end boundary: all members of these pairs end here."
 
@@ -2947,7 +2959,7 @@ msgstr "This module currently provides coarse observation points, without detail
 msgid "This statement was not executed"
 msgstr "This statement was not executed"
 
-#: src/learning/LearningPanels.tsx:43
+#: src/learning/LearningPanels.tsx:45
 msgid "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
 msgstr "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
 
@@ -3094,7 +3106,7 @@ msgstr "Unavailable (not provided by the current scope)"
 msgid "Unavailable at this step."
 msgstr "Unavailable at this step."
 
-#: src/learning/LearningPanels.tsx:52
+#: src/learning/LearningPanels.tsx:54
 msgid "Unchanged neighbor relationships need no recheck. Bold segments in the drawing and borders in the state list mark the current pair. This step selects the pair to check without changing the queue. Endpoint events may already be queued, so contact points need not be queued again."
 msgstr "Unchanged neighbor relationships need no recheck. Bold segments in the drawing and borders in the state list mark the current pair. This step selects the pair to check without changing the queue. Endpoint events may already be queued, so contact points need not be queued again."
 
@@ -3156,7 +3168,7 @@ msgstr "Use buttons to zoom · Drag to pan"
 msgid "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
 msgstr "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
 
-#: src/learning/LearningPanels.tsx:30
+#: src/learning/LearningPanels.tsx:32
 msgid "Use the drawing and state panels to understand the current teaching action."
 msgstr "Use the drawing and state panels to understand the current teaching action."
 
@@ -3273,7 +3285,7 @@ msgstr "Why do neighbor checks find every intersection?"
 msgid "help.NeighborRules.label"
 msgstr "Why intersections are not missed"
 
-#: src/learning/LearningPanels.tsx:30
+#: src/learning/LearningPanels.tsx:32
 msgid "Why take this action?"
 msgstr "Why take this action?"
 

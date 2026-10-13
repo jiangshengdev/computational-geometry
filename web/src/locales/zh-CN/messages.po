@@ -18,6 +18,18 @@ msgstr ""
 msgid " (shadowed; last value before shadowing)"
 msgstr "（已遮蔽，遮蔽前的最后值）"
 
+#. Connect crossing segment names in prose. Preserve surrounding whitespace.
+#. js-lingui-explicit-id
+#: src/learning/LearningPanels.tsx:25
+msgid "learning.segmentConjunction"
+msgstr " 与 "
+
+#. Separator between teaching list items. Preserve surrounding whitespace.
+#. js-lingui-explicit-id
+#: src/learning/LearningPanels.tsx:24
+msgid "learning.listSeparator"
+msgstr "、"
+
 #. js-lingui-explicit-id
 #: src/learning/RustCode.tsx:19
 msgid "(Code highlighting failed to load)"
@@ -25,7 +37,7 @@ msgstr "（代码高亮加载失败）"
 
 #. placeholder {0}: points.length
 #. placeholder {1}: step.results.length
-#: src/learning/LearningPanels.tsx:61
+#: src/learning/LearningPanels.tsx:63
 msgid "{0, plural, one {# distinct intersection position} other {# distinct intersection positions}}; {1, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Multiple segment pairs may share the same position."
 msgstr "独立交点位置：{0}；相交线段对：{1}。同一位置可由多个线段对共享。"
 
@@ -37,13 +49,13 @@ msgstr "{0} 个相交配对"
 #. placeholder {0}: points.length
 #. placeholder {1}: visibleOverlaps.length
 #. placeholder {2}: step.results.length
-#: src/learning/LearningPanels.tsx:61
+#: src/learning/LearningPanels.tsx:63
 msgid "{0, plural, one {# point-result position} other {# point-result positions}}; {1, plural, one {# overlap interval} other {# overlap intervals}}; {2, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Point-type pair results are not necessarily isolated points in the overall intersection: they may lie on recorded overlap intervals. An interval contains infinitely many shared points. Each pair remains separate; no geometric union is computed."
 msgstr "点类型结果位置：{0}；重叠区间：{1}；相交线段对：{2}。点类型配对结果不等于整体交集中的孤立点，它们也可能位于已记录的重叠区间上。区间包含无穷多个公共点，各配对保持独立，不计算几何并集。"
 
 #. placeholder {0}: formatGeometry(result.geometry)
 #. placeholder {1}: pairName(result)
-#: src/learning/LearningPanels.tsx:63
+#: src/learning/LearningPanels.tsx:65
 msgid "{0}: {1} (including both endpoints and every point between them)"
 msgstr "{0}：{1}（包含两端及其间全部点）"
 
@@ -147,7 +159,7 @@ msgstr "说明与帮助"
 msgid "About core variables"
 msgstr "核心变量说明"
 
-#: src/learning/LearningPanels.tsx:71
+#: src/learning/LearningPanels.tsx:73
 msgid "About events"
 msgstr "事件说明"
 
@@ -155,11 +167,11 @@ msgstr "事件说明"
 msgid "About inputs"
 msgstr "输入说明"
 
-#: src/learning/LearningPanels.tsx:31
+#: src/learning/LearningPanels.tsx:33
 msgid "About neighbors"
 msgstr "相邻性说明"
 
-#: src/learning/LearningPanels.tsx:33
+#: src/learning/LearningPanels.tsx:35
 msgid "About overlaps"
 msgstr "重叠说明"
 
@@ -167,15 +179,15 @@ msgstr "重叠说明"
 msgid "About results"
 msgstr "结果说明"
 
-#: src/learning/LearningPanels.tsx:83
+#: src/learning/LearningPanels.tsx:85
 msgid "About shared points"
 msgstr "同点说明"
 
-#: src/learning/LearningPanels.tsx:107
+#: src/learning/LearningPanels.tsx:109
 msgid "About the order"
 msgstr "顺序说明"
 
-#: src/learning/LearningPanels.tsx:93
+#: src/learning/LearningPanels.tsx:95
 msgid "About the queue"
 msgstr "队列说明"
 
@@ -193,7 +205,7 @@ msgstr "即将检查下一次迭代；本轮尚未判断"
 msgid "About to execute; no result yet"
 msgstr "即将执行；结果尚未产生"
 
-#: src/learning/LearningPanels.tsx:32
+#: src/learning/LearningPanels.tsx:34
 msgid "About vertical segments"
 msgstr "竖直线说明"
 
@@ -202,7 +214,7 @@ msgstr "竖直线说明"
 msgid "Access"
 msgstr "访问"
 
-#: src/learning/LearningPanels.tsx:29
+#: src/learning/LearningPanels.tsx:31
 #: src/learning/LearningView.tsx:46
 msgid "Action explanation"
 msgstr "操作解释"
@@ -226,8 +238,8 @@ msgid "Active segment loop"
 msgstr "活动线段循环"
 
 #: src/help/CaseHelp.tsx:49
-#: src/learning/LearningPanels.tsx:106
-#: src/learning/LearningPanels.tsx:107
+#: src/learning/LearningPanels.tsx:108
+#: src/learning/LearningPanels.tsx:109
 #: src/learning/LearningView.tsx:31
 msgid "Active segment order"
 msgstr "活动线段顺序"
@@ -276,18 +288,18 @@ msgstr "相邻性论证"
 msgid "After break"
 msgstr "break 之后"
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(', ')
-#: src/learning/LearningPanels.tsx:49
+#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(listSeparator)
+#: src/learning/LearningPanels.tsx:51
 msgid "After inserting {0}, this pair lies at the boundary of the inserted segments and becomes a new pair of neighbors to check."
 msgstr "加入 {0} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。"
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(', ')
-#: src/learning/LearningPanels.tsx:50
+#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(listSeparator)
+#: src/learning/LearningPanels.tsx:52
 msgid "After removing {0}, the intervening segments are gone and the segments on either side become new neighbors."
 msgstr "退出 {0} 后，原来隔在中间的线段消失，两侧线段成为新邻居。"
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(' × ')
-#: src/learning/LearningPanels.tsx:51
+#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(conjunction)
+#: src/learning/LearningPanels.tsx:53
 msgid "After the crossing segments {0} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors."
 msgstr "交叉的 {0} 换序后，这一对处在换序区间的外侧边界，成为新邻居。"
 
@@ -296,11 +308,11 @@ msgstr "交叉的 {0} 换序后，这一对处在换序区间的外侧边界，�
 msgid "After the end of the {keyword} block"
 msgstr "{keyword} 块结束后"
 
-#: src/learning/LearningPanels.tsx:41
+#: src/learning/LearningPanels.tsx:43
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。"
 
-#: src/learning/LearningPanels.tsx:57
+#: src/learning/LearningPanels.tsx:59
 msgid "All events have been processed; no further steps are needed."
 msgstr "全部事件已处理，无需再推进。"
 
@@ -523,7 +535,7 @@ msgstr "依次检查存在的相邻位置"
 msgid "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
 msgstr "在 x = 1/2 的完整重叠上，同时检查内部交叉、端点接触和重合点。"
 
-#: src/learning/LearningPanels.tsx:48
+#: src/learning/LearningPanels.tsx:50
 msgid "Check neighboring segments <0>{subjects}</0>."
 msgstr "检查相邻线段 <0>{subjects}</0>："
 
@@ -783,8 +795,8 @@ msgstr "创建空序列。"
 msgid "Current {index} · Generated 0–{lastStep}"
 msgstr "当前 {index} · 已生成 0–{lastStep}"
 
-#: src/learning/LearningPanels.tsx:70
-#: src/learning/LearningPanels.tsx:71
+#: src/learning/LearningPanels.tsx:72
+#: src/learning/LearningPanels.tsx:73
 #: src/learning/LearningView.tsx:44
 msgid "Current event"
 msgstr "当前事件"
@@ -872,8 +884,8 @@ msgstr "菱形：零长度输入"
 msgid "Different intersections at the same sweep coordinate"
 msgstr "同扫描坐标不同交点"
 
-#. placeholder {0}: newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}> {position > 0 && <span>, </span>} <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span> </Fragment>)
-#: src/learning/LearningPanels.tsx:53
+#. placeholder {0}: newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}> {position > 0 && <span>{listSeparator}</span>} <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span> </Fragment>)
+#: src/learning/LearningPanels.tsx:55
 msgid "Discover future intersections <0>{0}</0>: after checking the exact intersection of <1>{subjects}</1>, add them to the queue and wait until the sweep line arrives to record the results."
 msgstr "发现未来交点 <0>{0}</0>：检查 <1>{subjects}</1> 的精确交集后加入队列，等扫描线到达再记录结果。"
 
@@ -961,8 +973,8 @@ msgstr "八条放射骨架连接两层八边形网环，每个网格连接处都
 msgid "Element of {expression} selected by the current index"
 msgstr "{expression} 中由当前索引选中的元素"
 
-#: src/learning/LearningPanels.tsx:103
-#: src/learning/LearningPanels.tsx:116
+#: src/learning/LearningPanels.tsx:105
+#: src/learning/LearningPanels.tsx:118
 msgid "Empty"
 msgstr "空"
 
@@ -996,8 +1008,8 @@ msgstr "原始线段的终点"
 msgid "End this check if there is no candidate"
 msgstr "没有候选交点，结束这次检查"
 
-#. placeholder {0}: step.ends.length ? inputReferences(step.ends, ', ') : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:87
+#. placeholder {0}: step.ends.length ? inputReferences(step.ends) : translate(msg`None`)
+#: src/learning/LearningPanels.tsx:89
 msgid "Ending: {0}"
 msgstr "结束：{0}"
 
@@ -1016,7 +1028,7 @@ msgstr "端点与交叉同点"
 msgid "Enter the else branch"
 msgstr "本次进入 else 分支"
 
-#: src/learning/LearningPanels.tsx:38
+#: src/learning/LearningPanels.tsx:40
 msgid "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
 msgstr "进入取事件模块，尚未执行第一条核心语句。当前事件与画布保留上一步状态；下一小步将取出队首事件。"
 
@@ -1313,7 +1325,7 @@ msgid "Increase parent depth"
 msgstr "增加 parent 深度"
 
 #. placeholder {0}: preset.learning && translate(preset.learning.verification)
-#: src/learning/LearningPanels.tsx:65
+#: src/learning/LearningPanels.tsx:67
 msgid "Independent mathematical check: {0}"
 msgstr "独立数学核对：{0}"
 
@@ -1349,7 +1361,7 @@ msgstr "输入 S{index}"
 msgid "Input S{index}, selected"
 msgstr "输入 S{index}，已选中"
 
-#: src/learning/LearningPanels.tsx:43
+#: src/learning/LearningPanels.tsx:45
 msgid "Insert <0>{subjects}</0>: the sweep line has reached the start, and these inputs now participate in the active order."
 msgstr "加入 <0>{subjects}</0>：扫描线到达其起点，此后它参与活动顺序。"
 
@@ -1456,7 +1468,7 @@ msgstr "从参与线段中选出还需要留在活动集合里的线段"
 msgid "Keep segments that do not pass through the current point"
 msgstr "保留不经过当前点的线段"
 
-#: src/learning/LearningPanels.tsx:108
+#: src/learning/LearningPanels.tsx:110
 msgid "Keeping the order from before this event"
 msgstr "保留该事件处理前顺序"
 
@@ -1469,7 +1481,7 @@ msgstr "KIT · Line Segment Intersection：闭线段与同点事件归组"
 msgid "Learn from the start"
 msgstr "从头学习"
 
-#: src/learning/LearningPanels.tsx:59
+#: src/learning/LearningPanels.tsx:61
 #: src/learning/LearningReplayControls.tsx:28
 #: src/learning/learningState.ts:53
 msgid "Learning complete"
@@ -1494,7 +1506,7 @@ msgstr "学习目标、术语与扫描约定"
 msgid "help.LearningReferences.label"
 msgstr "学习参考"
 
-#: src/learning/LearningPanels.tsx:58
+#: src/learning/LearningPanels.tsx:60
 msgid "Learning results"
 msgstr "学习结果"
 
@@ -1588,11 +1600,11 @@ msgstr "交叉后成为邻居"
 msgid "Neighbors after removal"
 msgstr "退出后成为邻居"
 
-#: src/learning/LearningPanels.tsx:40
+#: src/learning/LearningPanels.tsx:42
 msgid "next is None: the event queue is empty and the sweep loop exits. Confirming the final results."
 msgstr "next 为 None，事件队列已空，退出扫描循环。正在确认最终结果。"
 
-#: src/learning/LearningPanels.tsx:40
+#: src/learning/LearningPanels.tsx:42
 msgid "next is None: the event queue is empty and the sweep loop exits. Learning is complete."
 msgstr "next 为 None，事件队列已空，退出扫描循环。学习完成。"
 
@@ -1604,7 +1616,7 @@ msgstr "下一个大步"
 msgid "Next step"
 msgstr "下一步"
 
-#: src/learning/LearningPanels.tsx:43
+#: src/learning/LearningPanels.tsx:45
 msgid "Next, check whether the new neighbors intersect in the future."
 msgstr "接下来检查新邻居是否会在未来相交。"
 
@@ -1618,11 +1630,11 @@ msgstr "无参数。"
 msgid "No comparable value change in this step"
 msgstr "本步无可比较的值变化"
 
-#: src/learning/LearningPanels.tsx:79
+#: src/learning/LearningPanels.tsx:81
 msgid "No event processed yet"
 msgstr "尚未处理事件"
 
-#: src/learning/LearningPanels.tsx:79
+#: src/learning/LearningPanels.tsx:81
 msgid "No events"
 msgstr "没有事件"
 
@@ -1649,9 +1661,9 @@ msgstr "无交点"
 msgid "No next element; the loop has ended"
 msgstr "本次没有下一个元素，循环已结束"
 
-#: src/learning/LearningPanels.tsx:86
-#: src/learning/LearningPanels.tsx:87
 #: src/learning/LearningPanels.tsx:88
+#: src/learning/LearningPanels.tsx:89
+#: src/learning/LearningPanels.tsx:90
 msgid "None"
 msgstr "无"
 
@@ -1754,11 +1766,11 @@ msgstr "只有 S0，无法组成两个独立输入的配对；两个端点事件
 msgid "Orange: intersections"
 msgstr "橙色：交集"
 
-#: src/learning/LearningPanels.tsx:108
+#: src/learning/LearningPanels.tsx:110
 msgid "Order after the current teaching action; the event is still in progress"
 msgstr "当前教学动作后的顺序，事件尚未处理完成"
 
-#: src/learning/LearningPanels.tsx:108
+#: src/learning/LearningPanels.tsx:110
 msgid "Order after the processed event"
 msgstr "当前已处理事件之后的顺序"
 
@@ -1849,7 +1861,7 @@ msgstr "重叠、交叉与重合点"
 msgid "help.ActiveOrderRules.2"
 msgstr "重叠成员在同一高度并列；列表位置只用于逐个辨认，不表示它们之间存在上下差别。图中序号也指向同一几何位置。"
 
-#: src/learning/LearningPanels.tsx:46
+#: src/learning/LearningPanels.tsx:48
 msgid "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 msgstr "重叠成员在公共范围内几何并列，列表保留各自输入身份，不表示彼此上下交换。内部的其他事件不切碎已记录的完整区间。"
 
@@ -1907,12 +1919,12 @@ msgstr "parent 显示深度"
 msgid "Partial overlap"
 msgstr "部分重叠"
 
-#: src/learning/LearningPanels.tsx:89
+#: src/learning/LearningPanels.tsx:91
 msgid "Participants at this point appear after taking an event."
 msgstr "取出事件后显示同点参与者。"
 
-#. placeholder {0}: step.passes.length ? inputReferences(step.passes, ', ') : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:88
+#. placeholder {0}: step.passes.length ? inputReferences(step.passes) : translate(msg`None`)
+#: src/learning/LearningPanels.tsx:90
 msgid "Passing: {0}"
 msgstr "穿过：{0}"
 
@@ -1923,8 +1935,8 @@ msgstr "穿过：{0}"
 msgid "geometry.pendingEvent"
 msgstr "待处理事件 {0}：{1}"
 
-#: src/learning/LearningPanels.tsx:92
-#: src/learning/LearningPanels.tsx:93
+#: src/learning/LearningPanels.tsx:94
+#: src/learning/LearningPanels.tsx:95
 #: src/learning/LearningView.tsx:45
 msgid "Pending event queue"
 msgstr "待处理事件队列"
@@ -1943,7 +1955,7 @@ msgstr "待处理交点"
 msgid "Penrose tiling"
 msgstr "彭罗斯拼贴"
 
-#: src/learning/LearningPanels.tsx:36
+#: src/learning/LearningPanels.tsx:38
 msgid "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 msgstr "先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步进入取事件模块。"
 
@@ -2057,7 +2069,7 @@ msgstr "队列为空，退出循环"
 msgid "Queue head removed; current event not matched or bound yet · intermediate state"
 msgstr "已取出队首；尚未匹配并绑定当前事件 · 中间状态"
 
-#: src/learning/LearningPanels.tsx:39
+#: src/learning/LearningPanels.tsx:41
 msgid "queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state."
 msgstr "已执行 queue.pop_first()，返回值保存在 next 中。尚未匹配和绑定 point、event，所以画布仍保留上一步位置。这是模块中间状态。"
 
@@ -2085,12 +2097,12 @@ msgid "Received a step after the execution trace completed"
 msgstr "教学轨迹完成后仍收到步骤"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "Record <0>{0}</0>: the participating segments <1>{subjects}</1> cross here."
 msgstr "记录 <0>{0}</0>：参与线段 <1>{subjects}</1> 在这里交叉。"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "Record <0>{0}</0>: the participating segments <1>{subjects}</1> touch here. Closed segments include their endpoints, so this intersection counts regardless of the approach direction."
 msgstr "记录 <0>{0}</0>：参与线段 <1>{subjects}</1> 在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。"
 
@@ -2111,7 +2123,7 @@ msgstr "只在重叠起点记录一次，跳过当前线段对"
 
 #. placeholder {0}: formatGeometry(recordedOverlap.geometry)
 #. placeholder {1}: inputReferences(recordedOverlap.segments, ' × ')
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "Record the overlap interval <0>{0}</0>: the participating segments <1>{1}</1> overlap from the current, later start to the earlier end. Take the shared range of the two closed intervals, including both endpoints and every point between them, rather than only the current endpoint. The complete intersection follows from the known endpoints; the sweep line has not traversed the whole interval. The orange segment and its two endpoints mark the full intersection. The active order has not changed; membership changes follow after all pairs at this point are recorded."
 msgstr "记录重叠区间 <0>{0}</0>：参与线段 <1>{1}</1> 从当前较晚起点开始重合，到较早终点为止。取两个闭区间的公共范围，包含两端及其间全部点，不是只记录当前端点。这是根据已知端点确定完整交集，并非扫描线已走完整段。橙色线段和两个端点标出完整交集；活动顺序尚未更新，同点配对全部记录后再处理成员变化。"
 
@@ -2148,7 +2160,7 @@ msgstr "引用变量 "
 msgid "References"
 msgstr "参考资料"
 
-#: src/learning/LearningPanels.tsx:44
+#: src/learning/LearningPanels.tsx:46
 msgid "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
 msgstr "退出 <0>{subjects}</0>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。"
 
@@ -2163,7 +2175,7 @@ msgid "Remove segments that end at the current point from the active set"
 msgstr "从活动集合中移除在当前点结束的线段"
 
 #. placeholder {0}: inputReferences(step.active, ' → ')
-#: src/learning/LearningPanels.tsx:47
+#: src/learning/LearningPanels.tsx:49
 msgid "Reorder to <0>{0}</0>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress."
 msgstr "换序为 <0>{0}</0>：本事件非竖直参与者按紧邻事件右侧从下到上的顺序排列，竖直参与者移到本点穿过者上方，继续向更高处处理，再检查新邻居。同 x 的其他事件点保留各自处理进度。"
 
@@ -2433,8 +2445,8 @@ msgstr "当前循环访问的线段编号"
 msgid "Segment information carried by the current event"
 msgstr "本次事件携带的线段信息"
 
-#: src/learning/LearningPanels.tsx:82
-#: src/learning/LearningPanels.tsx:83
+#: src/learning/LearningPanels.tsx:84
+#: src/learning/LearningPanels.tsx:85
 #: src/learning/LearningView.tsx:30
 msgid "Segments at this point"
 msgstr "同点参与线段"
@@ -2674,8 +2686,8 @@ msgstr "原始线段的起点"
 msgid "Start step-by-step learning"
 msgstr "开始逐步学习"
 
-#. placeholder {0}: step.starts.length ? inputReferences(step.starts, ', ') : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:86
+#. placeholder {0}: step.starts.length ? inputReferences(step.starts) : translate(msg`None`)
+#: src/learning/LearningPanels.tsx:88
 msgid "Starting: {0}"
 msgstr "开始：{0}"
 
@@ -2747,7 +2759,7 @@ msgid "Sweep-coordinate segments received by the current function"
 msgstr "当前函数接收的扫描坐标线段"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:37
+#: src/learning/LearningPanels.tsx:39
 msgid "Take <0>{0}</0> from the front of the queue and stop the sweep line here. The current event has left the pending queue; no insertion, removal, or reordering has happened yet. First check the participants at this point and record each pair's intersection, then update the active order following the real actions."
 msgstr "从队首取出 <0>{0}</0>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序。先核对同点参与者并逐对记录交集，再按真实动作更新活动顺序。"
 
@@ -2810,7 +2822,7 @@ msgstr "本次条件为真，进入分支"
 msgid "help.VerticalRules.3"
 msgstr "图中的当前事件、队列和结果均使用原坐标；扫描线可停在同一 x，而当前事件沿 y 上移。完成较低交点不会清空更高的待处理事件。"
 
-#: src/learning/LearningPanels.tsx:57
+#: src/learning/LearningPanels.tsx:59
 msgid "The event is complete: the active order and pending queue are consistent."
 msgstr "事件处理完成：活动顺序和待处理队列保持一致。"
 
@@ -2819,7 +2831,7 @@ msgstr "事件处理完成：活动顺序和待处理队列保持一致。"
 msgid "The event just removed from the queue, possibly absent"
 msgstr "本次弹出的队首事件，可为空"
 
-#: src/learning/LearningPanels.tsx:60
+#: src/learning/LearningPanels.tsx:62
 msgid "The event queue and active order are empty. All inputs have been processed; zero-length points need no insertion into or removal from the active order."
 msgstr "事件队列与活动顺序均为空，全部输入已处理完毕；零长度点无需加入或退出活动顺序。"
 
@@ -2847,11 +2859,11 @@ msgstr "一个常规晶胞的四个四面体中心及其全部近邻，共 14 �
 msgid "The input set is empty"
 msgstr "输入集合为空"
 
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "The intersection has been recorded in the results; the active order has not changed yet."
 msgstr "交集已记入结果，活动顺序尚未更新。"
 
-#: src/learning/LearningPanels.tsx:44
+#: src/learning/LearningPanels.tsx:46
 msgid "The intersection includes this boundary. Keep the complete recorded interval without recording its end again as an isolated intersection point."
 msgstr "交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。"
 
@@ -2865,7 +2877,7 @@ msgstr "最直接的方法是两两检查：<0>n</0> 条线段要检查 <1>n(n�
 msgid "The segments parameter is shadowed."
 msgstr "参数 <0>segments</0> 已被同名局部变量遮蔽。"
 
-#: src/learning/LearningPanels.tsx:64
+#: src/learning/LearningPanels.tsx:66
 msgid "The results are empty: no separate input pair intersects. See the mathematical check below for the geometric reasoning."
 msgstr "结果为空：没有相交的独立输入配对。具体几何依据见下方数学核对。"
 
@@ -2889,24 +2901,24 @@ msgstr "片层有 24 个原子、30 条键和 7 个六边形面；12 个内侧�
 msgid "help.SamePointRules.1"
 msgstr "按扫描方向区分开始、结束与内部穿过；这三组属于同一个精确几何点，不随中间动作改变。闭线段包含端点：先记录所有参与者的交集，再移除结束者、加入开始者，并排好继续活动者的顺序。"
 
-#: src/learning/LearningPanels.tsx:57
+#: src/learning/LearningPanels.tsx:59
 msgid "The teaching actions for this event are complete. Next, process the first queued event."
 msgstr "本事件的教学动作已完成，下一步处理队首事件。"
 
-#. placeholder {0}: inputReferences(pointInputs, ', ')
-#: src/learning/LearningPanels.tsx:42
+#. placeholder {0}: inputReferences(pointInputs)
+#: src/learning/LearningPanels.tsx:44
 msgid "The zero-length inputs <0>{0}</0> have coincident endpoints, so they belong to both the start and end groups without entering the persistent active order. They participate in pairs only at this exact position: contact in a segment's interior or at a closed endpoint both counts. Coincident points retain separate input identities. Point events without a matching pair also complete normally."
 msgstr "零长度点 <0>{0}</0> 的两个端点重合，所以同时属于开始和结束，不进入持续活动顺序。它们只在当前精确位置参与配对：位于线段内部或闭端点都算接触；重合点仍保留独立输入身份。没有配对的点事件也会正常完成。"
 
-#: src/learning/LearningPanels.tsx:57
+#: src/learning/LearningPanels.tsx:59
 msgid "There are no future intersections to add to the queue."
 msgstr "没有需要加入队列的未来交点。"
 
-#: src/learning/LearningPanels.tsx:36
+#: src/learning/LearningPanels.tsx:38
 msgid "There are no inputs, so there are no endpoints or events. The queue and active order are empty. Step through the microsteps to see event retrieval return None and exit the loop."
 msgstr "没有输入，因此没有端点和事件。队列与活动顺序为空，可以逐小步观察取事件返回 None 并退出循环。"
 
-#: src/learning/LearningPanels.tsx:45
+#: src/learning/LearningPanels.tsx:47
 msgid "These pairwise records describe intersecting pairs at the same geometric point, not multiple intersection points. See the point groups for all participants; the event is not complete yet."
 msgstr "这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。"
 
@@ -2923,12 +2935,12 @@ msgstr "此案例目前提供结果查看；支持教学的案例可从案例列
 msgid "This case does not support learning."
 msgstr "此案例不支持教学。"
 
-#. placeholder {0}: inputReferences(continuingOverlapInputs, ', ')
-#: src/learning/LearningPanels.tsx:44
+#. placeholder {0}: inputReferences(continuingOverlapInputs)
+#: src/learning/LearningPanels.tsx:46
 msgid "This is an overlap end boundary: {0} continue while the ending inputs leave."
 msgstr "此处是重叠止界：{0} 继续，当前结束者退出。"
 
-#: src/learning/LearningPanels.tsx:44
+#: src/learning/LearningPanels.tsx:46
 msgid "This is an overlap end boundary: all members of these pairs end here."
 msgstr "此处是重叠止界：这些配对的成员均在此结束。"
 
@@ -2947,7 +2959,7 @@ msgstr "当前模块仅提供大步观察点，尚未细化为核心代码小步
 msgid "This statement was not executed"
 msgstr "本次未执行此语句"
 
-#: src/learning/LearningPanels.tsx:43
+#: src/learning/LearningPanels.tsx:45
 msgid "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
 msgstr "本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。本点有非零长度开始者，换序与加入是同一次更新，不会再次交换。"
 
@@ -3094,7 +3106,7 @@ msgstr "不可用（当前作用域未提供）"
 msgid "Unavailable at this step."
 msgstr "当前步骤不可用。"
 
-#: src/learning/LearningPanels.tsx:52
+#: src/learning/LearningPanels.tsx:54
 msgid "Unchanged neighbor relationships need no recheck. Bold segments in the drawing and borders in the state list mark the current pair. This step selects the pair to check without changing the queue. Endpoint events may already be queued, so contact points need not be queued again."
 msgstr "其他未改变的邻接关系无需重查。图中加粗线段与状态列表边框标出当前配对；此步选定检查配对，尚未改变队列。端点事件可能已经在队列中，接触点无需重复入队。"
 
@@ -3156,7 +3168,7 @@ msgstr "按钮缩放 · 拖动平移"
 msgid "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
 msgstr "用精确分数解释内部交叉与端点接触归入同一事件，区分位置与配对。"
 
-#: src/learning/LearningPanels.tsx:30
+#: src/learning/LearningPanels.tsx:32
 msgid "Use the drawing and state panels to understand the current teaching action."
 msgstr "结合画布与各项状态，理解当前教学动作。"
 
@@ -3273,7 +3285,7 @@ msgstr "为什么只检查邻居不会漏掉交点？"
 msgid "help.NeighborRules.label"
 msgstr "为什么不会漏掉交点"
 
-#: src/learning/LearningPanels.tsx:30
+#: src/learning/LearningPanels.tsx:32
 msgid "Why take this action?"
 msgstr "这一步为什么这样做？"
 
