@@ -1,43 +1,21 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
-
-import styles from './index.module.css';
-
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
+      title="首页"
+      description="精确线段求交的数学证明与阅读资料，从剪切系数的选择开始。">
+      <main className="container margin-vert--lg">
+        <Heading as="h1">{siteConfig.title}</Heading>
+        <p>{siteConfig.tagline}</p>
+        <Heading as="h2">从这里开始</Heading>
+        <p>剪切变换怎样保持精确交集，又怎样用一个足够小的系数保持扫描事件的顺序？</p>
+        <Link to="/docs/shear-coefficient/">阅读剪切系数的选择与证明</Link>
       </main>
     </Layout>
   );
