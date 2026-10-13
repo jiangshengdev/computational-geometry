@@ -150,7 +150,7 @@ pub(super) fn record(
                 let trace = steps.as_mut().map(|steps| {
                     ClosureTrace::enter(
                         steps,
-                        &next_call,
+                        next_call,
                         "original",
                         "original closure",
                         vec![Variable::available("p", "&Point", point_value(p))],
