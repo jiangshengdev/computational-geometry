@@ -42,7 +42,7 @@ msgid "{0, plural, one {# distinct intersection position} other {# distinct inte
 msgstr "独立交点位置：{0}；相交线段对：{1}。同一位置可由多个线段对共享。"
 
 #. placeholder {0}: results.length
-#: src/app/App.tsx:87
+#: src/app/App.tsx:92
 msgid "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
 msgstr "{0} 个相交配对"
 
@@ -85,7 +85,7 @@ msgid "{name}: input segment preview"
 msgstr "{name}：输入线段预览"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:91
+#: src/learning/ExecutionPanel.tsx:99
 msgid "{title} teaching code"
 msgstr "{title}教学代码"
 
@@ -155,7 +155,7 @@ msgid "About and help"
 msgstr "说明与帮助"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:177
+#: src/learning/ExecutionPanel.tsx:185
 msgid "About core variables"
 msgstr "核心变量说明"
 
@@ -163,7 +163,7 @@ msgstr "核心变量说明"
 msgid "About events"
 msgstr "事件说明"
 
-#: src/app/App.tsx:123
+#: src/app/App.tsx:128
 msgid "About inputs"
 msgstr "输入说明"
 
@@ -175,7 +175,7 @@ msgstr "相邻性说明"
 msgid "About overlaps"
 msgstr "重叠说明"
 
-#: src/app/App.tsx:81
+#: src/app/App.tsx:86
 msgid "About results"
 msgstr "结果说明"
 
@@ -191,7 +191,7 @@ msgstr "顺序说明"
 msgid "About the queue"
 msgstr "队列说明"
 
-#: src/app/App.tsx:277
+#: src/app/App.tsx:283
 msgid "About this case"
 msgstr "案例说明"
 
@@ -284,7 +284,7 @@ msgid "Adjacency argument"
 msgstr "相邻性论证"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "After break"
 msgstr "break 之后"
 
@@ -304,7 +304,7 @@ msgid "After the crossing segments {0} reorder, this pair lies at the outer boun
 msgstr "交叉的 {0} 换序后，这一对处在换序区间的外侧边界，成为新邻居。"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:128
+#: src/learning/ExecutionPanel.tsx:136
 msgid "After the end of the {keyword} block"
 msgstr "{keyword} 块结束后"
 
@@ -342,7 +342,7 @@ msgid "Append an element to the target sequence."
 msgstr "向当前目标序列追加一个元素。"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:145
+#: src/learning/ExecutionSymbol.tsx:151
 msgid "Argument "
 msgstr "实参 "
 
@@ -376,37 +376,37 @@ msgstr "教学伪代码中的原子几何计算；对应 Rust 实际精确计算
 msgid "Attach zero-based indices to iterator elements."
 msgstr "为迭代元素附加从零开始的索引。"
 
-#: src/app/App.tsx:225
-#: src/app/App.tsx:257
+#: src/app/App.tsx:230
+#: src/app/App.tsx:262
 msgid "Back to cases"
 msgstr "返回列表"
 
-#: src/app/App.tsx:279
+#: src/app/App.tsx:285
 msgid "Back to results viewer"
 msgstr "返回结果查看器"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Before break"
 msgstr "break 之前"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Before matching"
 msgstr "匹配之前"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Before taking the event"
 msgstr "取事件之前"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:128
+#: src/learning/ExecutionPanel.tsx:136
 msgid "Before the end of the {keyword} block"
 msgstr "{keyword} 块结束前"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Before the first core statement · intermediate state"
 msgstr "第一条核心语句之前 · 中间状态"
 
@@ -414,7 +414,7 @@ msgstr "第一条核心语句之前 · 中间状态"
 msgid "Blue: inputs"
 msgstr "蓝色：输入"
 
-#: src/app/App.tsx:40
+#: src/app/App.tsx:45
 msgid "BO Results Viewer"
 msgstr "BO 结果查看器"
 
@@ -459,11 +459,11 @@ msgid "Bridge truss"
 msgstr "桥梁桁架"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:143
+#: src/learning/ExecutionSymbol.tsx:149
 msgid "Call expression: "
 msgstr "调用表达式："
 
-#: src/app/App.tsx:205
+#: src/app/App.tsx:210
 msgid "Cancel waiting"
 msgstr "取消跳转等待"
 
@@ -476,12 +476,12 @@ msgid "Canvas view controls"
 msgstr "画布视图控制"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:173
+#: src/learning/ExecutionSymbol.tsx:179
 msgid "Captured variable"
 msgstr "捕获变量"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:184
+#: src/learning/ExecutionPanel.tsx:192
 msgid "Captured variables"
 msgstr "捕获变量"
 
@@ -495,8 +495,8 @@ msgstr "碳纳米管"
 msgid "Case introduction and goals"
 msgstr "案例介绍与目标"
 
-#: src/app/App.tsx:141
-#: src/app/App.tsx:142
+#: src/app/App.tsx:146
+#: src/app/App.tsx:147
 msgid "Cases"
 msgstr "案例列表"
 
@@ -511,7 +511,7 @@ msgid "help.LearningReferences.6"
 msgstr "CGAL 6.1.1 · 2D Intersections：交集可以是点或线段"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:160
+#: src/learning/ExecutionSymbol.tsx:166
 msgid "Changed in this step; previous value: "
 msgstr "本步变化；之前值："
 
@@ -589,7 +589,7 @@ msgstr "判断这条线段是否还会继续向前延伸"
 msgid "Check whether this segment passes through the current point"
 msgstr "判断这条线段是否经过当前点"
 
-#: src/app/App.tsx:292
+#: src/app/App.tsx:298
 msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
 msgstr "选择案例，检查精确交点与完整重叠区间。"
 
@@ -700,12 +700,12 @@ msgid "compare: the current ordering rule."
 msgstr "compare：当前排序规则。"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:149
+#: src/learning/ExecutionSymbol.tsx:155
 msgid "Compound argument evaluation and return value at this call site: "
 msgstr "复合实参的求值及该调用点的返回值："
 
-#: src/app/App.tsx:72
-#: src/app/App.tsx:86
+#: src/app/App.tsx:77
+#: src/app/App.tsx:91
 msgid "Computation failed"
 msgstr "计算失败"
 
@@ -719,7 +719,7 @@ msgstr "精确计算线段在指定横坐标的高度。"
 msgid "Compute the intersection candidate and schedule a future event"
 msgstr "计算这对线段的交点，并安排后续事件"
 
-#: src/app/App.tsx:84
+#: src/app/App.tsx:89
 msgid "Computing…"
 msgstr "正在计算…"
 
@@ -759,30 +759,30 @@ msgid "Coordinate restoration closure parameter, valid only during that invocati
 msgstr "坐标还原闭包的参数，仅在该闭包调用期间有效"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:78
-#: src/learning/ExecutionPanel.tsx:80
+#: src/learning/ExecutionPanel.tsx:86
+#: src/learning/ExecutionPanel.tsx:88
 msgid "Core code replay"
 msgstr "核心代码回放"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatRational(shear)
-#: src/learning/ExecutionPanel.tsx:179
+#: src/learning/ExecutionPanel.tsx:187
 msgid "Core context at this step."
 msgstr "当前小步的核心上下文。<0>queue</0>、<1>next</1>、<2>point</2>、<3>current</3> 与扫描线段使用扫描坐标 <4>{0}</4>；<5>result</5> 与画布使用原坐标。同点分组为事件教学摘要，不代表局部变量。"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:184
+#: src/learning/ExecutionPanel.tsx:192
 msgid "Core local variables"
 msgstr "核心局部变量"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:184
+#: src/learning/ExecutionPanel.tsx:192
 msgid "Core parameters"
 msgstr "核心参数"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:170
-#: src/learning/ExecutionPanel.tsx:171
+#: src/learning/ExecutionPanel.tsx:178
+#: src/learning/ExecutionPanel.tsx:179
 msgid "Core variables"
 msgstr "核心变量"
 
@@ -812,17 +812,17 @@ msgid "Current event horizontal guide"
 msgstr "当前事件水平辅助线"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:173
+#: src/learning/ExecutionPanel.tsx:181
 msgid "Current execution context"
 msgstr "当前执行上下文"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:175
+#: src/learning/ExecutionPanel.tsx:183
 msgid "Current function"
 msgstr "当前函数"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Current function returned"
 msgstr "当前函数已返回"
 
@@ -832,7 +832,7 @@ msgid "Current outer pairing index"
 msgstr "当前外层配对索引"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:159
+#: src/learning/ExecutionSymbol.tsx:165
 msgid "Current value: "
 msgstr "当前值："
 
@@ -846,7 +846,7 @@ msgid "help.LearningReferences.1"
 msgstr "Dave Mount · CMSC 754 Lecture 4：事件、活动顺序与相邻检测"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:116
+#: src/learning/ExecutionSymbol.tsx:122
 msgid "Decrease parent depth"
 msgstr "减少 parent 深度"
 
@@ -893,7 +893,7 @@ msgstr "发现未来交点 <0>{0}</0>：检查 <1>{subjects}</1> 的精确交集
 msgid "Discovered {label}"
 msgstr "已发现 {label}"
 
-#: src/app/App.tsx:123
+#: src/app/App.tsx:128
 msgid "Distinct identities and exact endpoints"
 msgstr "独立编号与精确端点"
 
@@ -930,6 +930,10 @@ msgstr "区分从接触点开始的 S1 与从该点内部穿过的 S0。"
 #: src/cases/presets.ts:17
 msgid "Distinguish the starting vertical segment from the horizontal segment passing through; record closed-segment contact before updating the active order."
 msgstr "区分竖直开始者与水平穿过者，先记录闭线段接触，再更新活动顺序。"
+
+#: src/app/App.tsx:39
+msgid "Documentation"
+msgstr "文档"
 
 #: src/learning/LearningReplayControls.tsx:28
 msgid "Drag to browse teaching steps (including microsteps)"
@@ -989,7 +993,7 @@ msgid "End in the interior"
 msgstr "终点落在内部"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "End of module"
 msgstr "模块结束"
 
@@ -1066,8 +1070,8 @@ msgstr "事件侧向状态：当前事件左侧（Δ）"
 msgid "Event side: right of the current event (Δ)"
 msgstr "事件侧向状态：当前事件右侧（Δ）"
 
-#: src/app/App.tsx:113
-#: src/app/App.tsx:114
+#: src/app/App.tsx:118
+#: src/app/App.tsx:119
 msgid "Exact details"
 msgstr "精确详情"
 
@@ -1097,7 +1101,7 @@ msgid "Exclude segments that end at the current point"
 msgstr "排除在当前点结束的线段"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Execution boundary: {boundary}"
 msgstr "执行边界：{boundary}"
 
@@ -1231,7 +1235,7 @@ msgstr "取得指定键对应的映射条目。"
 msgid "Get the specified range, returning None when out of bounds."
 msgstr "取得指定范围；越界时返回 None。"
 
-#: src/app/App.tsx:213
+#: src/app/App.tsx:218
 msgid "Go to step"
 msgstr "前往步骤"
 
@@ -1320,7 +1324,7 @@ msgid "Incident segment loop"
 msgstr "参与线段循环"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:118
+#: src/learning/ExecutionSymbol.tsx:124
 msgid "Increase parent depth"
 msgstr "增加 parent 深度"
 
@@ -1380,7 +1384,7 @@ msgstr "插入会产生新线段两侧的邻居；删除会让原来分隔的两
 msgid "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
 msgstr "内部点、端点、外部点和重合点均保留独立输入身份。"
 
-#: src/app/App.tsx:81
+#: src/app/App.tsx:86
 msgid "Intersecting pairs"
 msgstr "相交配对"
 
@@ -1430,17 +1434,17 @@ msgstr "教学结果索引无效"
 msgid "Invalid execution trace final state"
 msgstr "教学终态无效"
 
-#: src/app/App.tsx:183
+#: src/app/App.tsx:188
 msgid "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 msgstr "教学步骤参数无效：请使用非负整数，且只提供一个 step 参数。"
 
-#: src/app/App.tsx:222
-#: src/app/App.tsx:223
+#: src/app/App.tsx:227
+#: src/app/App.tsx:228
 msgid "Invalid link"
 msgstr "链接无效"
 
 #. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:222
+#: src/app/App.tsx:227
 msgid "Invalid link · {0}"
 msgstr "链接无效 · {0}"
 
@@ -1449,7 +1453,7 @@ msgstr "链接无效 · {0}"
 msgid "Invalid result structure"
 msgstr "结果结构无效"
 
-#: src/app/App.tsx:212
+#: src/app/App.tsx:217
 msgid "Jump to step"
 msgstr "跳转步骤"
 
@@ -1477,7 +1481,7 @@ msgstr "保留该事件处理前顺序"
 msgid "help.LearningReferences.3"
 msgstr "KIT · Line Segment Intersection：闭线段与同点事件归组"
 
-#: src/app/App.tsx:227
+#: src/app/App.tsx:232
 msgid "Learn from the start"
 msgstr "从头学习"
 
@@ -1511,7 +1515,7 @@ msgid "Learning results"
 msgstr "学习结果"
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:187
+#: src/app/App.tsx:192
 msgid "Learning step out of range: valid steps for this case are 0–{0}."
 msgstr "教学步骤超出范围：此案例的有效步骤为 0–{0}。"
 
@@ -1539,16 +1543,16 @@ msgid "Line {line}, keyword {occurrence}"
 msgstr "第 {line} 行关键字 {occurrence}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Loading teaching code…"
 msgstr "加载教学代码…"
 
-#: src/app/App.tsx:70
+#: src/app/App.tsx:75
 msgid "Loading the execution trace…"
 msgstr "正在加载教学轨迹…"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:173
+#: src/learning/ExecutionSymbol.tsx:179
 msgid "Local variable"
 msgstr "局部变量"
 
@@ -1567,7 +1571,7 @@ msgstr "长区间与短成员"
 msgid "Look up both segments by their indices"
 msgstr "根据编号取出两条线段"
 
-#: src/app/App.tsx:261
+#: src/app/App.tsx:267
 msgid "Main layout ratio (geometry, code, variables)"
 msgstr "主体布局比例（图形、代码、变量）"
 
@@ -1626,7 +1630,7 @@ msgid "No arguments."
 msgstr "无参数。"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:160
+#: src/learning/ExecutionSymbol.tsx:166
 msgid "No comparable value change in this step"
 msgstr "本步无可比较的值变化"
 
@@ -1647,7 +1651,7 @@ msgstr "无输入线段"
 msgid "No input segments; a valid computation returns an empty result."
 msgstr "没有输入线段，合法计算返回空结果。"
 
-#: src/app/App.tsx:89
+#: src/app/App.tsx:94
 msgid "No intersecting pairs"
 msgstr "没有相交配对"
 
@@ -1797,8 +1801,8 @@ msgstr "原始输入说明"
 msgid "Original input segments in original coordinates"
 msgstr "原始输入线段，使用原坐标"
 
-#: src/app/App.tsx:122
-#: src/app/App.tsx:123
+#: src/app/App.tsx:127
+#: src/app/App.tsx:128
 #: src/help/CaseHelp.tsx:26
 msgid "Original inputs"
 msgstr "原始输入"
@@ -1809,12 +1813,12 @@ msgid "Outer boundaries of the insertion range that need checking"
 msgstr "需检查的插入区间外侧边界"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:173
+#: src/learning/ExecutionPanel.tsx:181
 msgid "Outer execution context {functionName}"
 msgstr "外层执行上下文 {functionName}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:175
+#: src/learning/ExecutionPanel.tsx:183
 msgid "Outer function"
 msgstr "外层函数"
 
@@ -1834,7 +1838,7 @@ msgstr "在 x = 1/2 处重叠，完整区间端点为 y = 1/3 与 5/3。"
 msgid "Overlap end boundary"
 msgstr "重叠止界"
 
-#: src/app/App.tsx:107
+#: src/app/App.tsx:112
 msgid "Overlap interval"
 msgstr "重叠区间"
 
@@ -1870,7 +1874,7 @@ msgstr "重叠成员在公共范围内几何并列，列表保留各自输入身
 msgid "p: the sweep-coordinate point for this call."
 msgstr "p：本次调用的扫描坐标点。"
 
-#: src/app/App.tsx:257
+#: src/app/App.tsx:262
 msgid "Page navigation"
 msgstr "页面导航"
 
@@ -1895,22 +1899,22 @@ msgid "Parabolic string art"
 msgstr "抛物线弦画"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:173
+#: src/learning/ExecutionSymbol.tsx:179
 msgid "Parameter"
 msgstr "参数"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:142
+#: src/learning/ExecutionSymbol.tsx:148
 msgid "Parameters: "
 msgstr "参数："
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:117
+#: src/learning/ExecutionSymbol.tsx:123
 msgid "Parent depth: {depth}"
 msgstr "parent 深度：{depth}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:115
+#: src/learning/ExecutionSymbol.tsx:121
 msgid "Parent display depth"
 msgstr "parent 显示深度"
 
@@ -1959,17 +1963,17 @@ msgstr "彭罗斯拼贴"
 msgid "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 msgstr "先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步进入取事件模块。"
 
-#: src/app/App.tsx:72
-#: src/app/App.tsx:86
+#: src/app/App.tsx:77
+#: src/app/App.tsx:91
 msgid "Please check the local service. {errorMessage}"
 msgstr "请检查本地服务。{errorMessage}"
 
-#: src/app/App.tsx:107
+#: src/app/App.tsx:112
 msgid "Point"
 msgstr "点"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "point and event bound; event-taking module complete"
 msgstr "已绑定 point 与 event；取事件模块完成"
 
@@ -2060,12 +2064,12 @@ msgid "Purple: sweep line and current event"
 msgstr "紫色：扫描线与当前事件"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Queue empty; exit the loop"
 msgstr "队列为空，退出循环"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Queue head removed; current event not matched or bound yet · intermediate state"
 msgstr "已取出队首；尚未匹配并绑定当前事件 · 中间状态"
 
@@ -2147,12 +2151,12 @@ msgstr "记入在此开始的线段"
 msgid "Record the segment pair being checked"
 msgstr "记下本次检查的线段对"
 
-#: src/app/App.tsx:224
+#: src/app/App.tsx:229
 msgid "Recovery navigation"
 msgstr "恢复导航"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:148
+#: src/learning/ExecutionSymbol.tsx:154
 msgid "Referenced variable "
 msgstr "引用变量 "
 
@@ -2189,8 +2193,8 @@ msgid "Replay controls"
 msgstr "回放控制"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Replaying actual control flow · intermediate state"
 msgstr "按实际控制流回放 · 中间状态"
 
@@ -2221,8 +2225,8 @@ msgstr "还原接触点坐标，生成交点结果"
 msgid "Restore the current point to produce a point result"
 msgstr "还原当前点坐标，生成交点结果"
 
-#: src/app/App.tsx:76
-#: src/app/App.tsx:79
+#: src/app/App.tsx:81
+#: src/app/App.tsx:84
 msgid "Results"
 msgstr "计算结果"
 
@@ -2262,13 +2266,13 @@ msgid "Return value already produced by the current call"
 msgstr "当前调用已经产生的返回值"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Return value produced · caller not resumed yet"
 msgstr "返回值已产生 · 尚未恢复调用方"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:140
 #: src/learning/ExecutionSymbol.tsx:146
+#: src/learning/ExecutionSymbol.tsx:152
 msgid "Return value: "
 msgstr "返回值："
 
@@ -2421,7 +2425,7 @@ msgid "Same-point and tie rules"
 msgstr "同点与并列规则"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:158
+#: src/learning/ExecutionSymbol.tsx:164
 msgid "Scope: "
 msgstr "作用域："
 
@@ -2471,7 +2475,7 @@ msgstr "变换到扫描坐标的线段；遮蔽同名原始输入参数"
 msgid "Segments whose interiors pass through the current point"
 msgstr "内部经过当前点的线段"
 
-#: src/app/App.tsx:81
+#: src/app/App.tsx:86
 msgid "Select a pair to inspect its exact intersection."
 msgstr "选择配对，查看精确交集。"
 
@@ -2479,11 +2483,11 @@ msgstr "选择配对，查看精确交集。"
 msgid "Select a pair to inspect its intersection and both inputs. An intersection can be a point or a complete overlap interval. Exact details retain rational coordinates; pixel approximations are used only for drawing."
 msgstr "选择一个配对，检查交集和两个输入。交集可以是点或完整重叠区间；精确详情保留有理数坐标，像素近似只用于绘图。"
 
-#: src/app/App.tsx:117
+#: src/app/App.tsx:122
 msgid "Select a pair to inspect the intersection and both inputs."
 msgstr "选择一个配对，检查交集和两个输入。"
 
-#: src/app/App.tsx:101
+#: src/app/App.tsx:106
 msgid "Select an intersecting pair"
 msgstr "相交配对选择"
 
@@ -2668,7 +2672,7 @@ msgstr "先收集在当前点开始的线段"
 msgid "Start in the interior"
 msgstr "起点落在内部"
 
-#: src/app/App.tsx:154
+#: src/app/App.tsx:159
 msgid "Start learning"
 msgstr "开始学习"
 
@@ -2682,7 +2686,7 @@ msgstr "重叠候选区间的起点"
 msgid "Start of the original segment"
 msgstr "原始线段的起点"
 
-#: src/app/App.tsx:280
+#: src/app/App.tsx:286
 msgid "Start step-by-step learning"
 msgstr "开始逐步学习"
 
@@ -2691,7 +2695,7 @@ msgstr "开始逐步学习"
 msgid "Starting: {0}"
 msgstr "开始：{0}"
 
-#: src/app/App.tsx:212
+#: src/app/App.tsx:217
 msgid "Step"
 msgstr "步骤"
 
@@ -2703,8 +2707,8 @@ msgstr "步出"
 msgid "Step over"
 msgstr "步过"
 
-#: src/app/App.tsx:68
-#: src/app/App.tsx:200
+#: src/app/App.tsx:73
+#: src/app/App.tsx:205
 #: src/learning/LearningView.tsx:27
 msgid "Step-by-step learning"
 msgstr "逐步学习"
@@ -2774,7 +2778,7 @@ msgid "Take the next pending event"
 msgstr "取出下一个待处理的事件"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:92
+#: src/learning/ExecutionPanel.tsx:100
 msgid "Teaching code highlighting failed to load. Refresh to try again."
 msgstr "教学代码高亮加载失败，请刷新重试。"
 
@@ -2855,7 +2859,7 @@ msgstr "教学响应没有内容"
 msgid "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 msgstr "一个常规晶胞的四个四面体中心及其全部近邻，共 14 个原子、16 条键；外围连接在有限簇边界截断。"
 
-#: src/app/App.tsx:125
+#: src/app/App.tsx:130
 msgid "The input set is empty"
 msgstr "输入集合为空"
 
@@ -2873,7 +2877,7 @@ msgid "help.LearningIntroduction.2"
 msgstr "最直接的方法是两两检查：<0>n</0> 条线段要检查 <1>n(n−1)/2</1> 对。扫描线是一条从左向右移动的竖线；只在端点或已发现的交点停下，这些停靠位置叫事件。"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:179
+#: src/learning/ExecutionPanel.tsx:187
 msgid "The segments parameter is shadowed."
 msgstr "参数 <0>segments</0> 已被同名局部变量遮蔽。"
 
@@ -2931,7 +2935,7 @@ msgstr "本次跳过此分支"
 msgid "This case currently provides result viewing. Open a teaching case from the case list for step-by-step learning."
 msgstr "此案例目前提供结果查看；支持教学的案例可从案例列表进入逐步学习。"
 
-#: src/app/App.tsx:253
+#: src/app/App.tsx:258
 msgid "This case does not support learning."
 msgstr "此案例不支持教学。"
 
@@ -2950,7 +2954,7 @@ msgid "help.LearningIntroduction.6"
 msgstr "本学习流程覆盖现有范例中的普通交叉、空集合与无交集、相邻检测、同扫描坐标不同位置、端点接触、多线共点、零长度点、竖直线、共线重叠及混合事件。竖直线在固定 x 上按 y 从下向上处理；共线重叠用完整闭区间表达。这些预设教学案例不是任意退化输入的生产级实现保证。"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:130
+#: src/learning/ExecutionPanel.tsx:138
 msgid "This module currently provides coarse observation points, without detailed core-code steps."
 msgstr "当前模块仅提供大步观察点，尚未细化为核心代码小步。"
 
@@ -3056,7 +3060,7 @@ msgid "Type not provided by the current trace"
 msgstr "当前轨迹未提供类型"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:158
+#: src/learning/ExecutionSymbol.tsx:164
 msgid "Type: "
 msgstr "类型："
 
@@ -3102,7 +3106,7 @@ msgid "Unavailable (not provided by the current scope)"
 msgstr "不可用（当前作用域未提供）"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:149
+#: src/learning/ExecutionSymbol.tsx:155
 msgid "Unavailable at this step."
 msgstr "当前步骤不可用。"
 
@@ -3140,7 +3144,7 @@ msgstr "撤销横坐标的剪切变换，纵坐标保持不变"
 msgid "Undo the shear to restore original coordinates."
 msgstr "撤销剪切，恢复原坐标。"
 
-#: src/app/App.tsx:253
+#: src/app/App.tsx:258
 msgid "Unknown case: {caseId}"
 msgstr "未知案例：{caseId}"
 
@@ -3149,8 +3153,8 @@ msgstr "未知案例：{caseId}"
 msgid "Unknown error"
 msgstr "未知错误"
 
-#: src/app/App.tsx:253
-#: src/app/App.tsx:298
+#: src/app/App.tsx:258
+#: src/app/App.tsx:304
 msgid "Unknown page path."
 msgstr "未知页面路径。"
 
@@ -3188,17 +3192,17 @@ msgid "Variable"
 msgstr "变量"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:184
+#: src/learning/ExecutionSymbol.tsx:190
 msgid "Variable "
 msgstr "变量 "
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:173
+#: src/learning/ExecutionSymbol.tsx:179
 msgid "Variable {name} · {kind}"
 msgstr "变量 {name} · {kind}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:83
+#: src/learning/ExecutionSymbol.tsx:84
 msgid "Variable {name} · {label}"
 msgstr "变量 {name} · {label}"
 
@@ -3242,12 +3246,12 @@ msgid "help.VerticalRules.0"
 msgstr "竖直线：固定横坐标，逐个处理高度"
 
 #. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:145
+#: src/app/App.tsx:150
 msgid "View {0} details"
 msgstr "查看{0}详情"
 
-#: src/app/App.tsx:155
-#: src/app/App.tsx:226
+#: src/app/App.tsx:160
+#: src/app/App.tsx:231
 msgid "View details"
 msgstr "查看详情"
 
@@ -3256,17 +3260,17 @@ msgstr "查看详情"
 msgid "Visit sequence elements in order."
 msgstr "依次访问序列元素。"
 
-#: src/app/App.tsx:203
+#: src/app/App.tsx:208
 msgid "Waiting for a step"
 msgstr "步骤等待"
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:204
+#: src/app/App.tsx:209
 msgid "Waiting for step {index}. Steps 0–{0} are available to explore."
 msgstr "正在等待步骤 {index} · 已生成 0–{0}。可继续浏览已生成步骤。"
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:204
+#: src/app/App.tsx:209
 msgid "Waiting for the next major step. Steps 0–{0} are available to explore."
 msgstr "正在等待下一个大步 · 已生成 0–{0}。可继续浏览已生成步骤。"
 
@@ -3295,7 +3299,7 @@ msgid "With no inputs, there are no endpoint events and no input pairs that coul
 msgstr "没有输入，因而没有端点事件，也没有可相交的输入配对。"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:84
+#: src/learning/ExecutionPanel.tsx:92
 msgid "Wrap lines"
 msgstr "自动换行"
 
@@ -3309,7 +3313,7 @@ msgstr "y = 0、x = 0、y = x 仅在原点相交，S3 恰是 (0, 0)。四个独�
 msgid "y = 0, x = 0, and y = x intersect pairwise at (0, 0), inside all three segments. Three distinct inputs produce 3 × 2 / 2 = 3 pairs at one geometric position."
 msgstr "y = 0、x = 0 与 y = x 两两相交于 (0, 0)，均在线段内部。三个独立输入产生 3 × 2 / 2 = 3 对，只有一个几何位置。"
 
-#: src/app/App.tsx:274
+#: src/app/App.tsx:280
 msgid "Zen mode"
 msgstr "禅模式"
 

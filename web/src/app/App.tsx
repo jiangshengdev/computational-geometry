@@ -34,6 +34,11 @@ import { useLingui, Plural } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
 import { LanguageSelect } from './LanguageProvider'
 
+function DocumentationLink() {
+  const { t } = useLingui()
+  return <Link to="https://cgd.jiangshengdev.com">{t`Documentation`}</Link>
+}
+
 function PageTitle({ page, preset }: { page: string; preset?: Preset }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
@@ -249,7 +254,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
     if (!event.repeat) navigate(`/cases/${preset.id}/learn`)
   })
   if (!preset || unknownPath || (learning && !preset.learning)) return <>
-    <div className="flex justify-end"><LanguageSelect /></div>
+    <div className="flex items-center justify-end gap-3"><DocumentationLink /><LanguageSelect /></div>
     <RouteError message={!preset ? t`Unknown case: ${caseId}` : unknownPath ? t`Unknown page path.` : t`This case does not support learning.`} preset={preset} />
   </>
   return <CaseHelp key={`${preset.id}:${learning}`} preset={preset}>
@@ -257,6 +262,7 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
       <nav aria-label={t`Page navigation`}><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/">{t`Back to cases`}</Link></nav>
       <h2 className="text-xl font-semibold">{translate(preset.name)}</h2>
       <div className="case-actions flex flex-wrap items-center gap-2">
+        <DocumentationLink />
         <LanguageSelect />
         {learning && <Select className="learning-layout-select w-24" aria-label={t`Main layout ratio (geometry, code, variables)`} value={layout}
           onChange={value => { if (isLearningLayout(value)) setLayout(value) }}>
@@ -288,7 +294,7 @@ export default function App() {
   const { t } = useLingui()
   const caseRoute = useMatch('/cases/:caseId/*')
   return <main className={caseRoute ? 'case-shell' : undefined}>
-    {!caseRoute && <div className="flex justify-end"><LanguageSelect /></div>}
+    {!caseRoute && <div className="flex items-center justify-end gap-3"><DocumentationLink /><LanguageSelect /></div>}
     {!caseRoute && <p className="mb-6 text-muted">{t`Choose a case to inspect exact intersection points and complete overlap intervals.`}</p>}
     <Routes>
       <Route path="/" element={<CaseList />} />

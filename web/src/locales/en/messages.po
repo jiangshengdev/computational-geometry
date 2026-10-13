@@ -42,7 +42,7 @@ msgid "{0, plural, one {# distinct intersection position} other {# distinct inte
 msgstr "{0, plural, one {# distinct intersection position} other {# distinct intersection positions}}; {1, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Multiple segment pairs may share the same position."
 
 #. placeholder {0}: results.length
-#: src/app/App.tsx:87
+#: src/app/App.tsx:92
 msgid "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
 msgstr "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
 
@@ -85,7 +85,7 @@ msgid "{name}: input segment preview"
 msgstr "{name}: input segment preview"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:91
+#: src/learning/ExecutionPanel.tsx:99
 msgid "{title} teaching code"
 msgstr "{title} teaching code"
 
@@ -155,7 +155,7 @@ msgid "About and help"
 msgstr "About and help"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:177
+#: src/learning/ExecutionPanel.tsx:185
 msgid "About core variables"
 msgstr "About core variables"
 
@@ -163,7 +163,7 @@ msgstr "About core variables"
 msgid "About events"
 msgstr "About events"
 
-#: src/app/App.tsx:123
+#: src/app/App.tsx:128
 msgid "About inputs"
 msgstr "About inputs"
 
@@ -175,7 +175,7 @@ msgstr "About neighbors"
 msgid "About overlaps"
 msgstr "About overlaps"
 
-#: src/app/App.tsx:81
+#: src/app/App.tsx:86
 msgid "About results"
 msgstr "About results"
 
@@ -191,7 +191,7 @@ msgstr "About the order"
 msgid "About the queue"
 msgstr "About the queue"
 
-#: src/app/App.tsx:277
+#: src/app/App.tsx:283
 msgid "About this case"
 msgstr "About this case"
 
@@ -284,7 +284,7 @@ msgid "Adjacency argument"
 msgstr "Adjacency argument"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "After break"
 msgstr "After break"
 
@@ -304,7 +304,7 @@ msgid "After the crossing segments {0} reorder, this pair lies at the outer boun
 msgstr "After the crossing segments {0} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:128
+#: src/learning/ExecutionPanel.tsx:136
 msgid "After the end of the {keyword} block"
 msgstr "After the end of the {keyword} block"
 
@@ -342,7 +342,7 @@ msgid "Append an element to the target sequence."
 msgstr "Append an element to the target sequence."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:145
+#: src/learning/ExecutionSymbol.tsx:151
 msgid "Argument "
 msgstr "Argument "
 
@@ -376,37 +376,37 @@ msgstr "Atomic geometry operation in the teaching code, corresponding to the act
 msgid "Attach zero-based indices to iterator elements."
 msgstr "Attach zero-based indices to iterator elements."
 
-#: src/app/App.tsx:225
-#: src/app/App.tsx:257
+#: src/app/App.tsx:230
+#: src/app/App.tsx:262
 msgid "Back to cases"
 msgstr "Back to cases"
 
-#: src/app/App.tsx:279
+#: src/app/App.tsx:285
 msgid "Back to results viewer"
 msgstr "Back to results viewer"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Before break"
 msgstr "Before break"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Before matching"
 msgstr "Before matching"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Before taking the event"
 msgstr "Before taking the event"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:128
+#: src/learning/ExecutionPanel.tsx:136
 msgid "Before the end of the {keyword} block"
 msgstr "Before the end of the {keyword} block"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Before the first core statement · intermediate state"
 msgstr "Before the first core statement · intermediate state"
 
@@ -414,7 +414,7 @@ msgstr "Before the first core statement · intermediate state"
 msgid "Blue: inputs"
 msgstr "Blue: inputs"
 
-#: src/app/App.tsx:40
+#: src/app/App.tsx:45
 msgid "BO Results Viewer"
 msgstr "BO Results Viewer"
 
@@ -459,11 +459,11 @@ msgid "Bridge truss"
 msgstr "Bridge truss"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:143
+#: src/learning/ExecutionSymbol.tsx:149
 msgid "Call expression: "
 msgstr "Call expression: "
 
-#: src/app/App.tsx:205
+#: src/app/App.tsx:210
 msgid "Cancel waiting"
 msgstr "Cancel waiting"
 
@@ -476,12 +476,12 @@ msgid "Canvas view controls"
 msgstr "Canvas view controls"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:173
+#: src/learning/ExecutionSymbol.tsx:179
 msgid "Captured variable"
 msgstr "Captured variable"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:184
+#: src/learning/ExecutionPanel.tsx:192
 msgid "Captured variables"
 msgstr "Captured variables"
 
@@ -495,8 +495,8 @@ msgstr "Carbon nanotube"
 msgid "Case introduction and goals"
 msgstr "Case introduction and goals"
 
-#: src/app/App.tsx:141
-#: src/app/App.tsx:142
+#: src/app/App.tsx:146
+#: src/app/App.tsx:147
 msgid "Cases"
 msgstr "Cases"
 
@@ -511,7 +511,7 @@ msgid "help.LearningReferences.6"
 msgstr "CGAL 6.1.1 · 2D Intersections: an intersection can be a point or a segment"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:160
+#: src/learning/ExecutionSymbol.tsx:166
 msgid "Changed in this step; previous value: "
 msgstr "Changed in this step; previous value: "
 
@@ -589,7 +589,7 @@ msgstr "Check whether this segment extends beyond the current point"
 msgid "Check whether this segment passes through the current point"
 msgstr "Check whether this segment passes through the current point"
 
-#: src/app/App.tsx:292
+#: src/app/App.tsx:298
 msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
 msgstr "Choose a case to inspect exact intersection points and complete overlap intervals."
 
@@ -700,12 +700,12 @@ msgid "compare: the current ordering rule."
 msgstr "compare: the current ordering rule."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:149
+#: src/learning/ExecutionSymbol.tsx:155
 msgid "Compound argument evaluation and return value at this call site: "
 msgstr "Compound argument evaluation and return value at this call site: "
 
-#: src/app/App.tsx:72
-#: src/app/App.tsx:86
+#: src/app/App.tsx:77
+#: src/app/App.tsx:91
 msgid "Computation failed"
 msgstr "Computation failed"
 
@@ -719,7 +719,7 @@ msgstr "Compute the exact segment height at the given x coordinate."
 msgid "Compute the intersection candidate and schedule a future event"
 msgstr "Compute the intersection candidate and schedule a future event"
 
-#: src/app/App.tsx:84
+#: src/app/App.tsx:89
 msgid "Computing…"
 msgstr "Computing…"
 
@@ -759,30 +759,30 @@ msgid "Coordinate restoration closure parameter, valid only during that invocati
 msgstr "Coordinate restoration closure parameter, valid only during that invocation"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:78
-#: src/learning/ExecutionPanel.tsx:80
+#: src/learning/ExecutionPanel.tsx:86
+#: src/learning/ExecutionPanel.tsx:88
 msgid "Core code replay"
 msgstr "Core code replay"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatRational(shear)
-#: src/learning/ExecutionPanel.tsx:179
+#: src/learning/ExecutionPanel.tsx:187
 msgid "Core context at this step."
 msgstr "Core context at this step. <0>queue</0>, <1>next</1>, <2>point</2>, <3>current</3>, and sweep segments use sweep coordinates <4>x′ = x + {0} · y</4>; <5>result</5> and the canvas use original coordinates. The same-point grouping is an event teaching summary, not a local variable."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:184
+#: src/learning/ExecutionPanel.tsx:192
 msgid "Core local variables"
 msgstr "Core local variables"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:184
+#: src/learning/ExecutionPanel.tsx:192
 msgid "Core parameters"
 msgstr "Core parameters"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:170
-#: src/learning/ExecutionPanel.tsx:171
+#: src/learning/ExecutionPanel.tsx:178
+#: src/learning/ExecutionPanel.tsx:179
 msgid "Core variables"
 msgstr "Core variables"
 
@@ -812,17 +812,17 @@ msgid "Current event horizontal guide"
 msgstr "Current event horizontal guide"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:173
+#: src/learning/ExecutionPanel.tsx:181
 msgid "Current execution context"
 msgstr "Current execution context"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:175
+#: src/learning/ExecutionPanel.tsx:183
 msgid "Current function"
 msgstr "Current function"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Current function returned"
 msgstr "Current function returned"
 
@@ -832,7 +832,7 @@ msgid "Current outer pairing index"
 msgstr "Current outer pairing index"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:159
+#: src/learning/ExecutionSymbol.tsx:165
 msgid "Current value: "
 msgstr "Current value: "
 
@@ -846,7 +846,7 @@ msgid "help.LearningReferences.1"
 msgstr "Dave Mount · CMSC 754 Lecture 4: events, active order, and neighbor checks"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:116
+#: src/learning/ExecutionSymbol.tsx:122
 msgid "Decrease parent depth"
 msgstr "Decrease parent depth"
 
@@ -893,7 +893,7 @@ msgstr "Discover future intersections <0>{0}</0>: after checking the exact inter
 msgid "Discovered {label}"
 msgstr "Discovered {label}"
 
-#: src/app/App.tsx:123
+#: src/app/App.tsx:128
 msgid "Distinct identities and exact endpoints"
 msgstr "Distinct identities and exact endpoints"
 
@@ -930,6 +930,10 @@ msgstr "Distinguish S1, which starts at the contact point, from S0, whose interi
 #: src/cases/presets.ts:17
 msgid "Distinguish the starting vertical segment from the horizontal segment passing through; record closed-segment contact before updating the active order."
 msgstr "Distinguish the starting vertical segment from the horizontal segment passing through; record closed-segment contact before updating the active order."
+
+#: src/app/App.tsx:39
+msgid "Documentation"
+msgstr "Documentation"
 
 #: src/learning/LearningReplayControls.tsx:28
 msgid "Drag to browse teaching steps (including microsteps)"
@@ -989,7 +993,7 @@ msgid "End in the interior"
 msgstr "End in the interior"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "End of module"
 msgstr "End of module"
 
@@ -1066,8 +1070,8 @@ msgstr "Event side: left of the current event (Δ)"
 msgid "Event side: right of the current event (Δ)"
 msgstr "Event side: right of the current event (Δ)"
 
-#: src/app/App.tsx:113
-#: src/app/App.tsx:114
+#: src/app/App.tsx:118
+#: src/app/App.tsx:119
 msgid "Exact details"
 msgstr "Exact details"
 
@@ -1097,7 +1101,7 @@ msgid "Exclude segments that end at the current point"
 msgstr "Exclude segments that end at the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Execution boundary: {boundary}"
 msgstr "Execution boundary: {boundary}"
 
@@ -1231,7 +1235,7 @@ msgstr "Get the map entry for the specified key."
 msgid "Get the specified range, returning None when out of bounds."
 msgstr "Get the specified range, returning None when out of bounds."
 
-#: src/app/App.tsx:213
+#: src/app/App.tsx:218
 msgid "Go to step"
 msgstr "Go to step"
 
@@ -1320,7 +1324,7 @@ msgid "Incident segment loop"
 msgstr "Incident segment loop"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:118
+#: src/learning/ExecutionSymbol.tsx:124
 msgid "Increase parent depth"
 msgstr "Increase parent depth"
 
@@ -1380,7 +1384,7 @@ msgstr "Insertion creates neighbors on both sides of the new segment; deletion m
 msgid "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
 msgstr "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
 
-#: src/app/App.tsx:81
+#: src/app/App.tsx:86
 msgid "Intersecting pairs"
 msgstr "Intersecting pairs"
 
@@ -1430,17 +1434,17 @@ msgstr "Invalid execution result index"
 msgid "Invalid execution trace final state"
 msgstr "Invalid execution trace final state"
 
-#: src/app/App.tsx:183
+#: src/app/App.tsx:188
 msgid "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 msgstr "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 
-#: src/app/App.tsx:222
-#: src/app/App.tsx:223
+#: src/app/App.tsx:227
+#: src/app/App.tsx:228
 msgid "Invalid link"
 msgstr "Invalid link"
 
 #. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:222
+#: src/app/App.tsx:227
 msgid "Invalid link · {0}"
 msgstr "Invalid link · {0}"
 
@@ -1449,7 +1453,7 @@ msgstr "Invalid link · {0}"
 msgid "Invalid result structure"
 msgstr "Invalid result structure"
 
-#: src/app/App.tsx:212
+#: src/app/App.tsx:217
 msgid "Jump to step"
 msgstr "Jump to step"
 
@@ -1477,7 +1481,7 @@ msgstr "Keeping the order from before this event"
 msgid "help.LearningReferences.3"
 msgstr "KIT · Line Segment Intersection: closed segments and grouping events at the same point"
 
-#: src/app/App.tsx:227
+#: src/app/App.tsx:232
 msgid "Learn from the start"
 msgstr "Learn from the start"
 
@@ -1511,7 +1515,7 @@ msgid "Learning results"
 msgstr "Learning results"
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:187
+#: src/app/App.tsx:192
 msgid "Learning step out of range: valid steps for this case are 0–{0}."
 msgstr "Learning step out of range: valid steps for this case are 0–{0}."
 
@@ -1539,16 +1543,16 @@ msgid "Line {line}, keyword {occurrence}"
 msgstr "Line {line}, keyword {occurrence}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:124
+#: src/learning/ExecutionPanel.tsx:132
 msgid "Loading teaching code…"
 msgstr "Loading teaching code…"
 
-#: src/app/App.tsx:70
+#: src/app/App.tsx:75
 msgid "Loading the execution trace…"
 msgstr "Loading the execution trace…"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:173
+#: src/learning/ExecutionSymbol.tsx:179
 msgid "Local variable"
 msgstr "Local variable"
 
@@ -1567,7 +1571,7 @@ msgstr "Long interval and a short member"
 msgid "Look up both segments by their indices"
 msgstr "Look up both segments by their indices"
 
-#: src/app/App.tsx:261
+#: src/app/App.tsx:267
 msgid "Main layout ratio (geometry, code, variables)"
 msgstr "Main layout ratio (geometry, code, variables)"
 
@@ -1626,7 +1630,7 @@ msgid "No arguments."
 msgstr "No arguments."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:160
+#: src/learning/ExecutionSymbol.tsx:166
 msgid "No comparable value change in this step"
 msgstr "No comparable value change in this step"
 
@@ -1647,7 +1651,7 @@ msgstr "No input segments"
 msgid "No input segments; a valid computation returns an empty result."
 msgstr "No input segments; a valid computation returns an empty result."
 
-#: src/app/App.tsx:89
+#: src/app/App.tsx:94
 msgid "No intersecting pairs"
 msgstr "No intersecting pairs"
 
@@ -1797,8 +1801,8 @@ msgstr "Original input explanation"
 msgid "Original input segments in original coordinates"
 msgstr "Original input segments in original coordinates"
 
-#: src/app/App.tsx:122
-#: src/app/App.tsx:123
+#: src/app/App.tsx:127
+#: src/app/App.tsx:128
 #: src/help/CaseHelp.tsx:26
 msgid "Original inputs"
 msgstr "Original inputs"
@@ -1809,12 +1813,12 @@ msgid "Outer boundaries of the insertion range that need checking"
 msgstr "Outer boundaries of the insertion range that need checking"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:173
+#: src/learning/ExecutionPanel.tsx:181
 msgid "Outer execution context {functionName}"
 msgstr "Outer execution context {functionName}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:175
+#: src/learning/ExecutionPanel.tsx:183
 msgid "Outer function"
 msgstr "Outer function"
 
@@ -1834,7 +1838,7 @@ msgstr "Overlap at x = 1/2 has complete interval endpoints y = 1/3 and 5/3."
 msgid "Overlap end boundary"
 msgstr "Overlap end boundary"
 
-#: src/app/App.tsx:107
+#: src/app/App.tsx:112
 msgid "Overlap interval"
 msgstr "Overlap interval"
 
@@ -1870,7 +1874,7 @@ msgstr "Overlapping members coincide throughout their shared range. The list pre
 msgid "p: the sweep-coordinate point for this call."
 msgstr "p: the sweep-coordinate point for this call."
 
-#: src/app/App.tsx:257
+#: src/app/App.tsx:262
 msgid "Page navigation"
 msgstr "Page navigation"
 
@@ -1895,22 +1899,22 @@ msgid "Parabolic string art"
 msgstr "Parabolic string art"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:173
+#: src/learning/ExecutionSymbol.tsx:179
 msgid "Parameter"
 msgstr "Parameter"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:142
+#: src/learning/ExecutionSymbol.tsx:148
 msgid "Parameters: "
 msgstr "Parameters: "
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:117
+#: src/learning/ExecutionSymbol.tsx:123
 msgid "Parent depth: {depth}"
 msgstr "Parent depth: {depth}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:115
+#: src/learning/ExecutionSymbol.tsx:121
 msgid "Parent display depth"
 msgstr "Parent display depth"
 
@@ -1959,17 +1963,17 @@ msgstr "Penrose tiling"
 msgid "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 msgstr "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 
-#: src/app/App.tsx:72
-#: src/app/App.tsx:86
+#: src/app/App.tsx:77
+#: src/app/App.tsx:91
 msgid "Please check the local service. {errorMessage}"
 msgstr "Please check the local service. {errorMessage}"
 
-#: src/app/App.tsx:107
+#: src/app/App.tsx:112
 msgid "Point"
 msgstr "Point"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "point and event bound; event-taking module complete"
 msgstr "point and event bound; event-taking module complete"
 
@@ -2060,12 +2064,12 @@ msgid "Purple: sweep line and current event"
 msgstr "Purple: sweep line and current event"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Queue empty; exit the loop"
 msgstr "Queue empty; exit the loop"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Queue head removed; current event not matched or bound yet · intermediate state"
 msgstr "Queue head removed; current event not matched or bound yet · intermediate state"
 
@@ -2147,12 +2151,12 @@ msgstr "Record the segment as starting here"
 msgid "Record the segment pair being checked"
 msgstr "Record the segment pair being checked"
 
-#: src/app/App.tsx:224
+#: src/app/App.tsx:229
 msgid "Recovery navigation"
 msgstr "Recovery navigation"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:148
+#: src/learning/ExecutionSymbol.tsx:154
 msgid "Referenced variable "
 msgstr "Referenced variable "
 
@@ -2189,8 +2193,8 @@ msgid "Replay controls"
 msgstr "Replay controls"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Replaying actual control flow · intermediate state"
 msgstr "Replaying actual control flow · intermediate state"
 
@@ -2221,8 +2225,8 @@ msgstr "Restore the contact point to produce a point result"
 msgid "Restore the current point to produce a point result"
 msgstr "Restore the current point to produce a point result"
 
-#: src/app/App.tsx:76
-#: src/app/App.tsx:79
+#: src/app/App.tsx:81
+#: src/app/App.tsx:84
 msgid "Results"
 msgstr "Results"
 
@@ -2262,13 +2266,13 @@ msgid "Return value already produced by the current call"
 msgstr "Return value already produced by the current call"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:126
+#: src/learning/ExecutionPanel.tsx:134
 msgid "Return value produced · caller not resumed yet"
 msgstr "Return value produced · caller not resumed yet"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:140
 #: src/learning/ExecutionSymbol.tsx:146
+#: src/learning/ExecutionSymbol.tsx:152
 msgid "Return value: "
 msgstr "Return value: "
 
@@ -2421,7 +2425,7 @@ msgid "Same-point and tie rules"
 msgstr "Same-point and tie rules"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:158
+#: src/learning/ExecutionSymbol.tsx:164
 msgid "Scope: "
 msgstr "Scope: "
 
@@ -2471,7 +2475,7 @@ msgstr "Segments transformed into sweep coordinates; shadows the original input 
 msgid "Segments whose interiors pass through the current point"
 msgstr "Segments whose interiors pass through the current point"
 
-#: src/app/App.tsx:81
+#: src/app/App.tsx:86
 msgid "Select a pair to inspect its exact intersection."
 msgstr "Select a pair to inspect its exact intersection."
 
@@ -2479,11 +2483,11 @@ msgstr "Select a pair to inspect its exact intersection."
 msgid "Select a pair to inspect its intersection and both inputs. An intersection can be a point or a complete overlap interval. Exact details retain rational coordinates; pixel approximations are used only for drawing."
 msgstr "Select a pair to inspect its intersection and both inputs. An intersection can be a point or a complete overlap interval. Exact details retain rational coordinates; pixel approximations are used only for drawing."
 
-#: src/app/App.tsx:117
+#: src/app/App.tsx:122
 msgid "Select a pair to inspect the intersection and both inputs."
 msgstr "Select a pair to inspect the intersection and both inputs."
 
-#: src/app/App.tsx:101
+#: src/app/App.tsx:106
 msgid "Select an intersecting pair"
 msgstr "Select an intersecting pair"
 
@@ -2668,7 +2672,7 @@ msgstr "Start by collecting segments that begin at the current point"
 msgid "Start in the interior"
 msgstr "Start in the interior"
 
-#: src/app/App.tsx:154
+#: src/app/App.tsx:159
 msgid "Start learning"
 msgstr "Start learning"
 
@@ -2682,7 +2686,7 @@ msgstr "Start of the candidate overlap interval"
 msgid "Start of the original segment"
 msgstr "Start of the original segment"
 
-#: src/app/App.tsx:280
+#: src/app/App.tsx:286
 msgid "Start step-by-step learning"
 msgstr "Start step-by-step learning"
 
@@ -2691,7 +2695,7 @@ msgstr "Start step-by-step learning"
 msgid "Starting: {0}"
 msgstr "Starting: {0}"
 
-#: src/app/App.tsx:212
+#: src/app/App.tsx:217
 msgid "Step"
 msgstr "Step"
 
@@ -2703,8 +2707,8 @@ msgstr "Step out"
 msgid "Step over"
 msgstr "Step over"
 
-#: src/app/App.tsx:68
-#: src/app/App.tsx:200
+#: src/app/App.tsx:73
+#: src/app/App.tsx:205
 #: src/learning/LearningView.tsx:27
 msgid "Step-by-step learning"
 msgstr "Step-by-step learning"
@@ -2774,7 +2778,7 @@ msgid "Take the next pending event"
 msgstr "Take the next pending event"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:92
+#: src/learning/ExecutionPanel.tsx:100
 msgid "Teaching code highlighting failed to load. Refresh to try again."
 msgstr "Teaching code highlighting failed to load. Refresh to try again."
 
@@ -2855,7 +2859,7 @@ msgstr "The execution trace response has no body"
 msgid "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 msgstr "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 
-#: src/app/App.tsx:125
+#: src/app/App.tsx:130
 msgid "The input set is empty"
 msgstr "The input set is empty"
 
@@ -2873,7 +2877,7 @@ msgid "help.LearningIntroduction.2"
 msgstr "The most direct approach checks every pair: <0>n</0> segments require <1>n(n−1)/2</1> pair checks. A sweep line is a vertical line moving from left to right. It stops only at endpoints or discovered intersections; these stopping positions are called events."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:179
+#: src/learning/ExecutionPanel.tsx:187
 msgid "The segments parameter is shadowed."
 msgstr "The parameter <0>segments</0> is shadowed by a local variable with the same name."
 
@@ -2931,7 +2935,7 @@ msgstr "This branch is skipped"
 msgid "This case currently provides result viewing. Open a teaching case from the case list for step-by-step learning."
 msgstr "This case currently provides result viewing. Open a teaching case from the case list for step-by-step learning."
 
-#: src/app/App.tsx:253
+#: src/app/App.tsx:258
 msgid "This case does not support learning."
 msgstr "This case does not support learning."
 
@@ -2950,7 +2954,7 @@ msgid "help.LearningIntroduction.6"
 msgstr "This learning flow covers ordinary crossings, empty sets and disjoint inputs, neighbor checks, distinct positions at the same sweep coordinate, endpoint contacts, multiple segments meeting at one point, zero-length points, vertical segments, collinear overlaps, and mixed events in the existing examples. Vertical segments are processed upward in y at a fixed x; collinear overlaps are represented by complete closed intervals. These preset teaching cases are not a production implementation guarantee for arbitrary degenerate inputs."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:130
+#: src/learning/ExecutionPanel.tsx:138
 msgid "This module currently provides coarse observation points, without detailed core-code steps."
 msgstr "This module currently provides coarse observation points, without detailed core-code steps."
 
@@ -3056,7 +3060,7 @@ msgid "Type not provided by the current trace"
 msgstr "Type not provided by the current trace"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:158
+#: src/learning/ExecutionSymbol.tsx:164
 msgid "Type: "
 msgstr "Type: "
 
@@ -3102,7 +3106,7 @@ msgid "Unavailable (not provided by the current scope)"
 msgstr "Unavailable (not provided by the current scope)"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:149
+#: src/learning/ExecutionSymbol.tsx:155
 msgid "Unavailable at this step."
 msgstr "Unavailable at this step."
 
@@ -3140,7 +3144,7 @@ msgstr "Undo the shear of the x coordinate, leaving the y coordinate unchanged"
 msgid "Undo the shear to restore original coordinates."
 msgstr "Undo the shear to restore original coordinates."
 
-#: src/app/App.tsx:253
+#: src/app/App.tsx:258
 msgid "Unknown case: {caseId}"
 msgstr "Unknown case: {caseId}"
 
@@ -3149,8 +3153,8 @@ msgstr "Unknown case: {caseId}"
 msgid "Unknown error"
 msgstr "Unknown error"
 
-#: src/app/App.tsx:253
-#: src/app/App.tsx:298
+#: src/app/App.tsx:258
+#: src/app/App.tsx:304
 msgid "Unknown page path."
 msgstr "Unknown page path."
 
@@ -3188,17 +3192,17 @@ msgid "Variable"
 msgstr "Variable"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:184
+#: src/learning/ExecutionSymbol.tsx:190
 msgid "Variable "
 msgstr "Variable "
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:173
+#: src/learning/ExecutionSymbol.tsx:179
 msgid "Variable {name} · {kind}"
 msgstr "Variable {name} · {kind}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:83
+#: src/learning/ExecutionSymbol.tsx:84
 msgid "Variable {name} · {label}"
 msgstr "Variable {name} · {label}"
 
@@ -3242,12 +3246,12 @@ msgid "help.VerticalRules.0"
 msgstr "Vertical segments: one x coordinate, one height at a time"
 
 #. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:145
+#: src/app/App.tsx:150
 msgid "View {0} details"
 msgstr "View {0} details"
 
-#: src/app/App.tsx:155
-#: src/app/App.tsx:226
+#: src/app/App.tsx:160
+#: src/app/App.tsx:231
 msgid "View details"
 msgstr "View details"
 
@@ -3256,17 +3260,17 @@ msgstr "View details"
 msgid "Visit sequence elements in order."
 msgstr "Visit sequence elements in order."
 
-#: src/app/App.tsx:203
+#: src/app/App.tsx:208
 msgid "Waiting for a step"
 msgstr "Waiting for a step"
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:204
+#: src/app/App.tsx:209
 msgid "Waiting for step {index}. Steps 0–{0} are available to explore."
 msgstr "Waiting for step {index}. Steps 0–{0} are available to explore."
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:204
+#: src/app/App.tsx:209
 msgid "Waiting for the next major step. Steps 0–{0} are available to explore."
 msgstr "Waiting for the next major step. Steps 0–{0} are available to explore."
 
@@ -3295,7 +3299,7 @@ msgid "With no inputs, there are no endpoint events and no input pairs that coul
 msgstr "With no inputs, there are no endpoint events and no input pairs that could intersect."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:84
+#: src/learning/ExecutionPanel.tsx:92
 msgid "Wrap lines"
 msgstr "Wrap lines"
 
@@ -3309,7 +3313,7 @@ msgstr "y = 0, x = 0, and y = x intersect only at the origin, and S3 is exactly 
 msgid "y = 0, x = 0, and y = x intersect pairwise at (0, 0), inside all three segments. Three distinct inputs produce 3 × 2 / 2 = 3 pairs at one geometric position."
 msgstr "y = 0, x = 0, and y = x intersect pairwise at (0, 0), inside all three segments. Three distinct inputs produce 3 × 2 / 2 = 3 pairs at one geometric position."
 
-#: src/app/App.tsx:274
+#: src/app/App.tsx:280
 msgid "Zen mode"
 msgstr "Zen mode"
 
