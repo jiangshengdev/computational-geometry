@@ -13,10 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/cases/CaseThumbnail.tsx:8
-msgid "{name}: input segment preview"
-msgstr "{name}: input segment preview"
-
 #. js-lingui-explicit-id
 #: src/cases/artPatterns.ts:68
 msgid "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
@@ -57,10 +53,6 @@ msgstr "A third, shorter segment neither splits nor shortens the complete overla
 msgid "A vertical segment crosses reversed duplicate segments; a diagonal endpoint shares the interior crossing, while coincident and boundary points retain their own pairs."
 msgstr "A vertical segment crosses reversed duplicate segments; a diagonal endpoint shares the interior crossing, while coincident and boundary points retain their own pairs."
 
-#: src/app/App.tsx:273
-msgid "About this case"
-msgstr "About this case"
-
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:31
 msgid "All three inputs cover y = 0, x ∈ [0, 4]; input direction does not change the closed set. S0 × S1, S0 × S2, and S1 × S2 all intersect over (0, 0) → (4, 0): 3 interval pairs and no point pairs."
@@ -90,19 +82,6 @@ msgstr "At the origin, S0 and S1 cross in their interiors, S2 ends, and S3 start
 #: src/cases/presets.ts:32
 msgid "At x = 1/2, the intersection of y ranges [−1/3, 5/3] and [1/3, 7/3] is [1/3, 5/3]. The only pair intersects over (1/2, 1/3) → (1/2, 5/3); S0 ends at the upper boundary while S1 continues to 7/3."
 msgstr "At x = 1/2, the intersection of y ranges [−1/3, 5/3] and [1/3, 7/3] is [1/3, 5/3]. The only pair intersects over (1/2, 1/3) → (1/2, 5/3); S0 ends at the upper boundary while S1 continues to 7/3."
-
-#: src/app/App.tsx:223
-#: src/app/App.tsx:254
-msgid "Back to cases"
-msgstr "Back to cases"
-
-#: src/app/App.tsx:275
-msgid "Back to results viewer"
-msgstr "Back to results viewer"
-
-#: src/app/App.tsx:40
-msgid "BO Results Viewer"
-msgstr "BO Results Viewer"
 
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:30
@@ -134,19 +113,10 @@ msgstr "Bridge truss"
 msgid "Carbon nanotube"
 msgstr "Carbon nanotube"
 
-#: src/app/App.tsx:139
-#: src/app/App.tsx:140
-msgid "Cases"
-msgstr "Cases"
-
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:37
 msgid "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
 msgstr "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
-
-#: src/app/App.tsx:288
-msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
-msgstr "Choose a case to inspect exact intersection points and complete overlap intervals."
 
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:16
@@ -363,20 +333,6 @@ msgstr "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, cros
 msgid "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
 msgstr "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
 
-#: src/app/App.tsx:220
-#: src/app/App.tsx:221
-msgid "Invalid link"
-msgstr "Invalid link"
-
-#. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:220
-msgid "Invalid link · {0}"
-msgstr "Invalid link · {0}"
-
-#: src/app/App.tsx:225
-msgid "Learn from the start"
-msgstr "Learn from the start"
-
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:35
 msgid "Long interval and a short member"
@@ -396,10 +352,6 @@ msgstr "Neighbors after crossing"
 #: src/cases/presets.ts:12
 msgid "Neighbors after removal"
 msgstr "Neighbors after removal"
-
-#: src/cases/CaseThumbnail.tsx:10
-msgid "No input segments"
-msgstr "No input segments"
 
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:14
@@ -506,10 +458,6 @@ msgstr "Overlap at x = 1/2 has complete interval endpoints y = 1/3 and 5/3."
 msgid "Overlap, crossing, and coincident points"
 msgstr "Overlap, crossing, and coincident points"
 
-#: src/app/App.tsx:254
-msgid "Page navigation"
-msgstr "Page navigation"
-
 #. js-lingui-explicit-id
 #: src/cases/artPatterns.ts:94
 msgid "Parabolic string art"
@@ -559,14 +507,6 @@ msgstr "Process S0 upward along x = 0, observing two interior crossings and cont
 #: src/cases/presets.ts:35
 msgid "Record complete intervals pair by pair in a group; observe that events of an interior short member do not change the long pair."
 msgstr "Record complete intervals pair by pair in a group; observe that events of an interior short member do not change the long pair."
-
-#: src/app/App.tsx:222
-msgid "Recovery navigation"
-msgstr "Recovery navigation"
-
-#: src/app/App.tsx:74
-msgid "Results"
-msgstr "Results"
 
 #. js-lingui-explicit-id
 #: src/cases/artPatterns.ts:90
@@ -718,19 +658,6 @@ msgstr "Star polygon"
 msgid "Start in the interior"
 msgstr "Start in the interior"
 
-#: src/app/App.tsx:152
-msgid "Start learning"
-msgstr "Start learning"
-
-#: src/app/App.tsx:276
-msgid "Start step-by-step learning"
-msgstr "Start step-by-step learning"
-
-#: src/app/App.tsx:66
-#: src/app/App.tsx:198
-msgid "Step-by-step learning"
-msgstr "Step-by-step learning"
-
 #. js-lingui-explicit-id
 #: src/cases/penrose.ts:83
 msgid "Subdivision uses φ = (1 + √5)/2. Matching Robinson triangles are paired along their bases and their internal diagonals removed; unpaired boundary halves are discarded, leaving 10 thin and 10 thick rhombi. The 50 unique edges connect 31 vertices: 5 have degree 2, 20 have degree 3, and 6 have degree 5, giving 5 × 1 + 20 × 3 + 6 × 10 = 125 endpoint pairs at 31 intersection positions; the origin joins 5 edges, giving exactly 10 pairs. Joins have no interior crossings or overlaps. Approximated shared vertices are uniformly rotated exactly by (x, y) → ((3x − 4y)/5, (4x + 3y)/5), preserving lengths, angles, and joins. The service computes the submitted rational coordinates exactly, without treating approximated rhombi as exact irrational geometry."
@@ -765,10 +692,6 @@ msgstr "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t +
 #: src/cases/carbonLattices.ts:100
 msgid "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
 msgstr "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
-
-#: src/app/App.tsx:251
-msgid "This case does not support learning."
-msgstr "This case does not support learning."
 
 #. js-lingui-explicit-id
 #: src/cases/artPatterns.ts:77
@@ -845,15 +768,6 @@ msgstr "Understand why collinearity does not imply intersection; observe two clo
 msgid "Understand why the sweep finishes immediately with no inputs and no events."
 msgstr "Understand why the sweep finishes immediately with no inputs and no events."
 
-#: src/app/App.tsx:249
-msgid "Unknown case: {caseId}"
-msgstr "Unknown case: {caseId}"
-
-#: src/app/App.tsx:250
-#: src/app/App.tsx:294
-msgid "Unknown page path."
-msgstr "Unknown page path."
-
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:25
 msgid "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
@@ -873,16 +787,6 @@ msgstr "Vertical fractional overlap"
 #: src/cases/presets.ts:37
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "Vertical overlap with mixed contacts at multiple heights"
-
-#. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:143
-msgid "View {0} details"
-msgstr "View {0} details"
-
-#: src/app/App.tsx:153
-#: src/app/App.tsx:224
-msgid "View details"
-msgstr "View details"
 
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:14
@@ -908,3 +812,344 @@ msgstr "Zero-length point at a multiway crossing"
 #: src/cases/presets.ts:26
 msgid "Zero-length points and a segment"
 msgstr "Zero-length points and a segment"
+
+#. placeholder {0}: results.length
+#: src/app/App.tsx:87
+msgid "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
+msgstr "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
+
+#: src/cases/CaseThumbnail.tsx:8
+msgid "{name}: input segment preview"
+msgstr "{name}: input segment preview"
+
+#: src/app/App.tsx:123
+msgid "About inputs"
+msgstr "About inputs"
+
+#: src/app/App.tsx:81
+msgid "About results"
+msgstr "About results"
+
+#: src/app/App.tsx:275
+msgid "About this case"
+msgstr "About this case"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: index + 1
+#: src/geometry/GeometryView.tsx:65
+msgid "geometry.activeSegment"
+msgstr "Active segment {0}: S{id}"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: index + 1
+#: src/geometry/GeometryView.tsx:62
+msgid "geometry.activeAtHeight"
+msgstr "Active segment {0}: S{id} (current processing height)"
+
+#: src/app/App.tsx:225
+#: src/app/App.tsx:256
+msgid "Back to cases"
+msgstr "Back to cases"
+
+#: src/app/App.tsx:277
+msgid "Back to results viewer"
+msgstr "Back to results viewer"
+
+#: src/geometry/GeometryView.tsx:81
+msgid "Blue: inputs"
+msgstr "Blue: inputs"
+
+#: src/app/App.tsx:40
+msgid "BO Results Viewer"
+msgstr "BO Results Viewer"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Bold: active segments"
+msgstr "Bold: active segments"
+
+#: src/geometry/GeometryView.tsx:169
+msgid "Canvas object details"
+msgstr "Canvas object details"
+
+#: src/geometry/GeometryView.tsx:87
+msgid "Canvas view controls"
+msgstr "Canvas view controls"
+
+#: src/app/App.tsx:141
+#: src/app/App.tsx:142
+msgid "Cases"
+msgstr "Cases"
+
+#: src/app/App.tsx:290
+msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
+msgstr "Choose a case to inspect exact intersection points and complete overlap intervals."
+
+#: src/app/App.tsx:72
+#: src/app/App.tsx:86
+msgid "Computation failed"
+msgstr "Computation failed"
+
+#: src/app/App.tsx:84
+msgid "Computing…"
+msgstr "Computing…"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: sweep.labelPoint(sweep.current)
+#: src/geometry/GeometryView.tsx:132
+msgid "geometry.currentEvent"
+msgstr "Current event {0}"
+
+#: src/geometry/GeometryView.tsx:113
+msgid "Current event horizontal guide"
+msgstr "Current event horizontal guide"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Dashed circles: pending intersections"
+msgstr "Dashed circles: pending intersections"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Diamonds: zero-length inputs"
+msgstr "Diamonds: zero-length inputs"
+
+#: src/geometry/GeometryView.tsx:129
+msgid "Discovered {label}"
+msgstr "Discovered {label}"
+
+#: src/app/App.tsx:123
+msgid "Distinct identities and exact endpoints"
+msgstr "Distinct identities and exact endpoints"
+
+#: src/geometry/GeometryView.tsx:101
+msgid "Event height: above the current event (Δ)"
+msgstr "Event height: above the current event (Δ)"
+
+#: src/geometry/GeometryView.tsx:101
+msgid "Event height: below the current event (Δ)"
+msgstr "Event height: below the current event (Δ)"
+
+#: src/geometry/GeometryView.tsx:95
+msgid "Event side: left of the current event (Δ)"
+msgstr "Event side: left of the current event (Δ)"
+
+#: src/geometry/GeometryView.tsx:95
+msgid "Event side: right of the current event (Δ)"
+msgstr "Event side: right of the current event (Δ)"
+
+#: src/app/App.tsx:113
+#: src/app/App.tsx:114
+msgid "Exact details"
+msgstr "Exact details"
+
+#: src/geometry/GeometryView.tsx:76
+msgid "Geometry view"
+msgstr "Geometry view"
+
+#: src/geometry/GeometryView.tsx:105
+msgid "Input and intersection plot"
+msgstr "Input and intersection plot"
+
+#: src/geometry/GeometryView.tsx:119
+msgid "Input S{index}"
+msgstr "Input S{index}"
+
+#: src/geometry/GeometryView.tsx:119
+msgid "Input S{index}, selected"
+msgstr "Input S{index}, selected"
+
+#: src/app/App.tsx:81
+msgid "Intersecting pairs"
+msgstr "Intersecting pairs"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: pairName(result)
+#: src/geometry/GeometryView.tsx:139
+msgid "geometry.intersection"
+msgstr "Intersection {0}"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: pairName(result)
+#: src/geometry/GeometryView.tsx:139
+msgid "geometry.selectedIntersection"
+msgstr "Intersection {0}, selected"
+
+#: src/app/App.tsx:222
+#: src/app/App.tsx:223
+msgid "Invalid link"
+msgstr "Invalid link"
+
+#. placeholder {0}: translate(preset.name)
+#: src/app/App.tsx:222
+msgid "Invalid link · {0}"
+msgstr "Invalid link · {0}"
+
+#. js-lingui-explicit-id
+#: src/app/useComputation.ts:30
+msgid "Invalid result structure"
+msgstr "Invalid result structure"
+
+#: src/app/App.tsx:227
+msgid "Learn from the start"
+msgstr "Learn from the start"
+
+#: src/geometry/GeometryView.tsx:79
+msgid "Legend and controls"
+msgstr "Legend and controls"
+
+#: src/cases/CaseThumbnail.tsx:10
+msgid "No input segments"
+msgstr "No input segments"
+
+#: src/app/App.tsx:89
+msgid "No intersecting pairs"
+msgstr "No intersecting pairs"
+
+#: src/geometry/GeometryView.tsx:81
+msgid "Orange: intersections"
+msgstr "Orange: intersections"
+
+#: src/geometry/GeometryView.tsx:77
+msgid "Original coordinate plane · Equal scale"
+msgstr "Original coordinate plane · Equal scale"
+
+#: src/app/App.tsx:122
+#: src/app/App.tsx:123
+msgid "Original inputs"
+msgstr "Original inputs"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: pairName(inspectedPair)
+#. placeholder {1}: formatGeometry(inspectedPair.geometry)
+#: src/geometry/GeometryView.tsx:45
+msgid "geometry.overlapDetail"
+msgstr "Overlap {0} · {1}"
+
+#: src/app/App.tsx:107
+msgid "Overlap interval"
+msgstr "Overlap interval"
+
+#: src/app/App.tsx:256
+msgid "Page navigation"
+msgstr "Page navigation"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: index + 1
+#. placeholder {1}: sweep.labelPoint(point)
+#: src/geometry/GeometryView.tsx:54
+msgid "geometry.pendingEvent"
+msgstr "Pending event {0}: {1}"
+
+#: src/app/App.tsx:72
+#: src/app/App.tsx:86
+msgid "Please check the local service. {errorMessage}"
+msgstr "Please check the local service. {errorMessage}"
+
+#: src/app/App.tsx:107
+msgid "Point"
+msgstr "Point"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Purple: sweep line and current event"
+msgstr "Purple: sweep line and current event"
+
+#: src/app/App.tsx:224
+msgid "Recovery navigation"
+msgstr "Recovery navigation"
+
+#: src/geometry/GeometryView.tsx:90
+msgid "Reset view"
+msgstr "Reset view"
+
+#: src/app/App.tsx:76
+#: src/app/App.tsx:79
+msgid "Results"
+msgstr "Results"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatPoint(segments[inspectedInput].start)
+#. placeholder {1}: formatPoint(segments[inspectedInput].end)
+#: src/geometry/GeometryView.tsx:44
+msgid "geometry.inputDetail"
+msgstr "S{inspectedInput} · Start {0} · End {1}"
+
+#: src/app/App.tsx:81
+msgid "Select a pair to inspect its exact intersection."
+msgstr "Select a pair to inspect its exact intersection."
+
+#: src/app/App.tsx:117
+msgid "Select a pair to inspect the intersection and both inputs."
+msgstr "Select a pair to inspect the intersection and both inputs."
+
+#: src/app/App.tsx:101
+msgid "Select an intersecting pair"
+msgstr "Select an intersecting pair"
+
+#: src/app/App.tsx:154
+msgid "Start learning"
+msgstr "Start learning"
+
+#: src/app/App.tsx:278
+msgid "Start step-by-step learning"
+msgstr "Start step-by-step learning"
+
+#: src/app/App.tsx:68
+#: src/app/App.tsx:200
+msgid "Step-by-step learning"
+msgstr "Step-by-step learning"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Sweep direction: left to right"
+msgstr "Sweep direction: left to right"
+
+#: src/geometry/GeometryView.tsx:127
+msgid "Sweep line not started"
+msgstr "Sweep line not started"
+
+#. js-lingui-explicit-id
+#. placeholder {0}: formatRational(sweep.current.x)
+#: src/geometry/GeometryView.tsx:127
+msgid "geometry.sweepLine"
+msgstr "Sweep line x = {0}"
+
+#: src/app/App.tsx:125
+msgid "The input set is empty"
+msgstr "The input set is empty"
+
+#: src/app/App.tsx:253
+msgid "This case does not support learning."
+msgstr "This case does not support learning."
+
+#: src/app/App.tsx:251
+msgid "Unknown case: {caseId}"
+msgstr "Unknown case: {caseId}"
+
+#. js-lingui-explicit-id
+#: src/app/useComputation.ts:34
+msgid "Unknown error"
+msgstr "Unknown error"
+
+#: src/app/App.tsx:252
+#: src/app/App.tsx:296
+msgid "Unknown page path."
+msgstr "Unknown page path."
+
+#: src/geometry/GeometryView.tsx:83
+msgid "Use buttons to zoom · Drag to pan"
+msgstr "Use buttons to zoom · Drag to pan"
+
+#. placeholder {0}: translate(preset.name)
+#: src/app/App.tsx:145
+msgid "View {0} details"
+msgstr "View {0} details"
+
+#: src/app/App.tsx:155
+#: src/app/App.tsx:226
+msgid "View details"
+msgstr "View details"
+
+#: src/geometry/GeometryView.tsx:88
+msgid "Zoom in"
+msgstr "Zoom in"
+
+#: src/geometry/GeometryView.tsx:89
+msgid "Zoom out"
+msgstr "Zoom out"

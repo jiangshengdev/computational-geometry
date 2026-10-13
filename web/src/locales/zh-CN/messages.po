@@ -13,10 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/cases/CaseThumbnail.tsx:8
-msgid "{name}: input segment preview"
-msgstr "{name}：输入线段预览"
-
 #. js-lingui-explicit-id
 #: src/cases/artPatterns.ts:68
 msgid "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
@@ -57,10 +53,6 @@ msgstr "第三条短线段不会切碎或缩短前两个输入的完整重叠。
 msgid "A vertical segment crosses reversed duplicate segments; a diagonal endpoint shares the interior crossing, while coincident and boundary points retain their own pairs."
 msgstr "反向重复线段被竖线穿过；斜线端点与内部交叉同点，重合点及边界点仍保留各自配对。"
 
-#: src/app/App.tsx:273
-msgid "About this case"
-msgstr "案例说明"
-
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:31
 msgid "All three inputs cover y = 0, x ∈ [0, 4]; input direction does not change the closed set. S0 × S1, S0 × S2, and S1 × S2 all intersect over (0, 0) → (4, 0): 3 interval pairs and no point pairs."
@@ -90,19 +82,6 @@ msgstr "原点同时发生 S0、S1 内部交叉、S2 结束和 S3 开始。"
 #: src/cases/presets.ts:32
 msgid "At x = 1/2, the intersection of y ranges [−1/3, 5/3] and [1/3, 7/3] is [1/3, 5/3]. The only pair intersects over (1/2, 1/3) → (1/2, 5/3); S0 ends at the upper boundary while S1 continues to 7/3."
 msgstr "x = 1/2 上，y 范围 [−1/3, 5/3] 与 [1/3, 7/3] 的交集是 [1/3, 5/3]。唯一配对为 (1/2, 1/3) → (1/2, 5/3)，S0 在止界结束，S1 继续至 7/3。"
-
-#: src/app/App.tsx:223
-#: src/app/App.tsx:254
-msgid "Back to cases"
-msgstr "返回列表"
-
-#: src/app/App.tsx:275
-msgid "Back to results viewer"
-msgstr "返回结果查看器"
-
-#: src/app/App.tsx:40
-msgid "BO Results Viewer"
-msgstr "BO 结果查看器"
 
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:30
@@ -134,19 +113,10 @@ msgstr "桥梁桁架"
 msgid "Carbon nanotube"
 msgstr "碳纳米管"
 
-#: src/app/App.tsx:139
-#: src/app/App.tsx:140
-msgid "Cases"
-msgstr "案例列表"
-
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:37
 msgid "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
 msgstr "在 x = 1/2 的完整重叠上，同时检查内部交叉、端点接触和重合点。"
-
-#: src/app/App.tsx:288
-msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
-msgstr "选择案例，检查精确交点与完整重叠区间。"
 
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:16
@@ -363,20 +333,6 @@ msgstr "首跨 S2 满足 y = x，S3 满足 y = 4 − x，内部交于 (2, 2)；�
 msgid "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
 msgstr "内部点、端点、外部点和重合点均保留独立输入身份。"
 
-#: src/app/App.tsx:220
-#: src/app/App.tsx:221
-msgid "Invalid link"
-msgstr "链接无效"
-
-#. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:220
-msgid "Invalid link · {0}"
-msgstr "链接无效 · {0}"
-
-#: src/app/App.tsx:225
-msgid "Learn from the start"
-msgstr "从头学习"
-
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:35
 msgid "Long interval and a short member"
@@ -396,10 +352,6 @@ msgstr "交叉后成为邻居"
 #: src/cases/presets.ts:12
 msgid "Neighbors after removal"
 msgstr "退出后成为邻居"
-
-#: src/cases/CaseThumbnail.tsx:10
-msgid "No input segments"
-msgstr "无输入线段"
 
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:14
@@ -506,10 +458,6 @@ msgstr "在 x = 1/2 处重叠，完整区间端点为 y = 1/3 与 5/3。"
 msgid "Overlap, crossing, and coincident points"
 msgstr "重叠、交叉与重合点"
 
-#: src/app/App.tsx:254
-msgid "Page navigation"
-msgstr "页面导航"
-
 #. js-lingui-explicit-id
 #: src/cases/artPatterns.ts:94
 msgid "Parabolic string art"
@@ -559,14 +507,6 @@ msgstr "沿 x = 0 从下向上处理 S0，依次观察两处内部交叉和顶�
 #: src/cases/presets.ts:35
 msgid "Record complete intervals pair by pair in a group; observe that events of an interior short member do not change the long pair."
 msgstr "逐对记录多成员的完整区间，观察内部短成员的事件不改变长配对。"
-
-#: src/app/App.tsx:222
-msgid "Recovery navigation"
-msgstr "恢复导航"
-
-#: src/app/App.tsx:74
-msgid "Results"
-msgstr "计算结果"
 
 #. js-lingui-explicit-id
 #: src/cases/artPatterns.ts:90
@@ -718,19 +658,6 @@ msgstr "星形多边形"
 msgid "Start in the interior"
 msgstr "起点落在内部"
 
-#: src/app/App.tsx:152
-msgid "Start learning"
-msgstr "开始学习"
-
-#: src/app/App.tsx:276
-msgid "Start step-by-step learning"
-msgstr "开始逐步学习"
-
-#: src/app/App.tsx:66
-#: src/app/App.tsx:198
-msgid "Step-by-step learning"
-msgstr "逐步学习"
-
 #. js-lingui-explicit-id
 #: src/cases/penrose.ts:83
 msgid "Subdivision uses φ = (1 + √5)/2. Matching Robinson triangles are paired along their bases and their internal diagonals removed; unpaired boundary halves are discarded, leaving 10 thin and 10 thick rhombi. The 50 unique edges connect 31 vertices: 5 have degree 2, 20 have degree 3, and 6 have degree 5, giving 5 × 1 + 20 × 3 + 6 × 10 = 125 endpoint pairs at 31 intersection positions; the origin joins 5 edges, giving exactly 10 pairs. Joins have no interior crossings or overlaps. Approximated shared vertices are uniformly rotated exactly by (x, y) → ((3x − 4y)/5, (4x + 3y)/5), preserving lengths, angles, and joins. The service computes the submitted rational coordinates exactly, without treating approximated rhombi as exact irrational geometry."
@@ -765,10 +692,6 @@ msgstr "参数 t 的线段端点为 (3(t − 6), −6t) 与 (3(t + 6), 6t)。参
 #: src/cases/carbonLattices.ts:100
 msgid "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
 msgstr "片层有 24 个原子、30 条键和 7 个六边形面；12 个内侧三邻接点各产生 3 对，12 个二邻接边缘点各产生 1 对，共 48 对、24 处。没有内部穿越或重叠。纵向使用 433/500 近似 √3/2，求交对这些有理输入精确计算。"
-
-#: src/app/App.tsx:251
-msgid "This case does not support learning."
-msgstr "此案例不支持教学。"
 
 #. js-lingui-explicit-id
 #: src/cases/artPatterns.ts:77
@@ -845,15 +768,6 @@ msgstr "理解共线并不意味着相交，观察存在间隙的两个闭区间
 msgid "Understand why the sweep finishes immediately with no inputs and no events."
 msgstr "理解没有输入、没有事件时直接完成扫描。"
 
-#: src/app/App.tsx:249
-msgid "Unknown case: {caseId}"
-msgstr "未知案例：{caseId}"
-
-#: src/app/App.tsx:250
-#: src/app/App.tsx:294
-msgid "Unknown page path."
-msgstr "未知页面路径。"
-
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:25
 msgid "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
@@ -873,16 +787,6 @@ msgstr "竖直分数重叠"
 #: src/cases/presets.ts:37
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "竖直重叠与多高度混合"
-
-#. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:143
-msgid "View {0} details"
-msgstr "查看{0}详情"
-
-#: src/app/App.tsx:153
-#: src/app/App.tsx:224
-msgid "View details"
-msgstr "查看详情"
 
 #. js-lingui-explicit-id
 #: src/cases/presets.ts:14
@@ -908,3 +812,329 @@ msgstr "零长度点与多线共点"
 #: src/cases/presets.ts:26
 msgid "Zero-length points and a segment"
 msgstr "零长度点与线段"
+
+#: src/app/App.tsx:87
+msgid "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
+msgstr "{0} 个相交配对"
+
+#: src/cases/CaseThumbnail.tsx:8
+msgid "{name}: input segment preview"
+msgstr "{name}：输入线段预览"
+
+#: src/app/App.tsx:123
+msgid "About inputs"
+msgstr "输入说明"
+
+#: src/app/App.tsx:81
+msgid "About results"
+msgstr "结果说明"
+
+#: src/app/App.tsx:275
+msgid "About this case"
+msgstr "案例说明"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:65
+msgid "geometry.activeSegment"
+msgstr "活动线段 {0}：S{id}"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:62
+msgid "geometry.activeAtHeight"
+msgstr "活动线段 {0}：S{id}（当前处理高度）"
+
+#: src/app/App.tsx:225
+#: src/app/App.tsx:256
+msgid "Back to cases"
+msgstr "返回列表"
+
+#: src/app/App.tsx:277
+msgid "Back to results viewer"
+msgstr "返回结果查看器"
+
+#: src/geometry/GeometryView.tsx:81
+msgid "Blue: inputs"
+msgstr "蓝色：输入"
+
+#: src/app/App.tsx:40
+msgid "BO Results Viewer"
+msgstr "BO 结果查看器"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Bold: active segments"
+msgstr "加粗：活动线段"
+
+#: src/geometry/GeometryView.tsx:169
+msgid "Canvas object details"
+msgstr "画布对象详情"
+
+#: src/geometry/GeometryView.tsx:87
+msgid "Canvas view controls"
+msgstr "画布视图控制"
+
+#: src/app/App.tsx:141
+#: src/app/App.tsx:142
+msgid "Cases"
+msgstr "案例列表"
+
+#: src/app/App.tsx:290
+msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
+msgstr "选择案例，检查精确交点与完整重叠区间。"
+
+#: src/app/App.tsx:72
+#: src/app/App.tsx:86
+msgid "Computation failed"
+msgstr "计算失败"
+
+#: src/app/App.tsx:84
+msgid "Computing…"
+msgstr "正在计算…"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:132
+msgid "geometry.currentEvent"
+msgstr "当前事件 {0}"
+
+#: src/geometry/GeometryView.tsx:113
+msgid "Current event horizontal guide"
+msgstr "当前事件水平辅助线"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Dashed circles: pending intersections"
+msgstr "虚线圆：待处理交点"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Diamonds: zero-length inputs"
+msgstr "菱形：零长度输入"
+
+#: src/geometry/GeometryView.tsx:129
+msgid "Discovered {label}"
+msgstr "已发现 {label}"
+
+#: src/app/App.tsx:123
+msgid "Distinct identities and exact endpoints"
+msgstr "独立编号与精确端点"
+
+#: src/geometry/GeometryView.tsx:101
+msgid "Event height: above the current event (Δ)"
+msgstr "事件高度状态：当前事件上侧（Δ）"
+
+#: src/geometry/GeometryView.tsx:101
+msgid "Event height: below the current event (Δ)"
+msgstr "事件高度状态：当前事件下侧（Δ）"
+
+#: src/geometry/GeometryView.tsx:95
+msgid "Event side: left of the current event (Δ)"
+msgstr "事件侧向状态：当前事件左侧（Δ）"
+
+#: src/geometry/GeometryView.tsx:95
+msgid "Event side: right of the current event (Δ)"
+msgstr "事件侧向状态：当前事件右侧（Δ）"
+
+#: src/app/App.tsx:113
+#: src/app/App.tsx:114
+msgid "Exact details"
+msgstr "精确详情"
+
+#: src/geometry/GeometryView.tsx:76
+msgid "Geometry view"
+msgstr "几何视图"
+
+#: src/geometry/GeometryView.tsx:105
+msgid "Input and intersection plot"
+msgstr "输入与交集坐标图"
+
+#: src/geometry/GeometryView.tsx:119
+msgid "Input S{index}"
+msgstr "输入 S{index}"
+
+#: src/geometry/GeometryView.tsx:119
+msgid "Input S{index}, selected"
+msgstr "输入 S{index}，已选中"
+
+#: src/app/App.tsx:81
+msgid "Intersecting pairs"
+msgstr "相交配对"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:139
+msgid "geometry.intersection"
+msgstr "交集 {0}"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:139
+msgid "geometry.selectedIntersection"
+msgstr "交集 {0}，已选中"
+
+#: src/app/App.tsx:222
+#: src/app/App.tsx:223
+msgid "Invalid link"
+msgstr "链接无效"
+
+#: src/app/App.tsx:222
+msgid "Invalid link · {0}"
+msgstr "链接无效 · {0}"
+
+#. js-lingui-explicit-id
+#: src/app/useComputation.ts:30
+msgid "Invalid result structure"
+msgstr "结果结构无效"
+
+#: src/app/App.tsx:227
+msgid "Learn from the start"
+msgstr "从头学习"
+
+#: src/geometry/GeometryView.tsx:79
+msgid "Legend and controls"
+msgstr "图例与操作说明"
+
+#: src/cases/CaseThumbnail.tsx:10
+msgid "No input segments"
+msgstr "无输入线段"
+
+#: src/app/App.tsx:89
+msgid "No intersecting pairs"
+msgstr "没有相交配对"
+
+#: src/geometry/GeometryView.tsx:81
+msgid "Orange: intersections"
+msgstr "橙色：交集"
+
+#: src/geometry/GeometryView.tsx:77
+msgid "Original coordinate plane · Equal scale"
+msgstr "原始坐标平面 · 等比例"
+
+#: src/app/App.tsx:122
+#: src/app/App.tsx:123
+msgid "Original inputs"
+msgstr "原始输入"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:45
+msgid "geometry.overlapDetail"
+msgstr "重叠区间 {0} · {1}"
+
+#: src/app/App.tsx:107
+msgid "Overlap interval"
+msgstr "重叠区间"
+
+#: src/app/App.tsx:256
+msgid "Page navigation"
+msgstr "页面导航"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:54
+msgid "geometry.pendingEvent"
+msgstr "待处理事件 {0}：{1}"
+
+#: src/app/App.tsx:72
+#: src/app/App.tsx:86
+msgid "Please check the local service. {errorMessage}"
+msgstr "请检查本地服务。{errorMessage}"
+
+#: src/app/App.tsx:107
+msgid "Point"
+msgstr "点"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Purple: sweep line and current event"
+msgstr "紫色：扫描线与当前事件"
+
+#: src/app/App.tsx:224
+msgid "Recovery navigation"
+msgstr "恢复导航"
+
+#: src/geometry/GeometryView.tsx:90
+msgid "Reset view"
+msgstr "重置视图"
+
+#: src/app/App.tsx:76
+#: src/app/App.tsx:79
+msgid "Results"
+msgstr "计算结果"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:44
+msgid "geometry.inputDetail"
+msgstr "S{inspectedInput} · 起点 {0} · 终点 {1}"
+
+#: src/app/App.tsx:81
+msgid "Select a pair to inspect its exact intersection."
+msgstr "选择配对，查看精确交集。"
+
+#: src/app/App.tsx:117
+msgid "Select a pair to inspect the intersection and both inputs."
+msgstr "选择一个配对，检查交集和两个输入。"
+
+#: src/app/App.tsx:101
+msgid "Select an intersecting pair"
+msgstr "相交配对选择"
+
+#: src/app/App.tsx:154
+msgid "Start learning"
+msgstr "开始学习"
+
+#: src/app/App.tsx:278
+msgid "Start step-by-step learning"
+msgstr "开始逐步学习"
+
+#: src/app/App.tsx:68
+#: src/app/App.tsx:200
+msgid "Step-by-step learning"
+msgstr "逐步学习"
+
+#: src/geometry/GeometryView.tsx:82
+msgid "Sweep direction: left to right"
+msgstr "扫描方向：从左向右"
+
+#: src/geometry/GeometryView.tsx:127
+msgid "Sweep line not started"
+msgstr "扫描线 尚未开始"
+
+#. js-lingui-explicit-id
+#: src/geometry/GeometryView.tsx:127
+msgid "geometry.sweepLine"
+msgstr "扫描线 x = {0}"
+
+#: src/app/App.tsx:125
+msgid "The input set is empty"
+msgstr "输入集合为空"
+
+#: src/app/App.tsx:253
+msgid "This case does not support learning."
+msgstr "此案例不支持教学。"
+
+#: src/app/App.tsx:251
+msgid "Unknown case: {caseId}"
+msgstr "未知案例：{caseId}"
+
+#. js-lingui-explicit-id
+#: src/app/useComputation.ts:34
+msgid "Unknown error"
+msgstr "未知错误"
+
+#: src/app/App.tsx:252
+#: src/app/App.tsx:296
+msgid "Unknown page path."
+msgstr "未知页面路径。"
+
+#: src/geometry/GeometryView.tsx:83
+msgid "Use buttons to zoom · Drag to pan"
+msgstr "按钮缩放 · 拖动平移"
+
+#: src/app/App.tsx:145
+msgid "View {0} details"
+msgstr "查看{0}详情"
+
+#: src/app/App.tsx:155
+#: src/app/App.tsx:226
+msgid "View details"
+msgstr "查看详情"
+
+#: src/geometry/GeometryView.tsx:88
+msgid "Zoom in"
+msgstr "放大"
+
+#: src/geometry/GeometryView.tsx:89
+msgid "Zoom out"
+msgstr "缩小"

@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import type { Preset } from '../cases/preset'
 import type { Intersection } from '../geometry/geometry'
 import { consumeTrace, type SweepTrace } from '../learning/trace'
+import type { MessageDescriptor } from '@lingui/core'
+import { ComputationError } from './ComputationError'
 
-type Computation = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace; complete: boolean }
+type Computation = { status: 'loading' } | { status: 'error'; message: string | MessageDescriptor } | { status: 'ready'; results: Intersection[]; trace?: SweepTrace; complete: boolean }
 
 // The keyed case/mode page owns this hook's lifetime; navigation stays outside it.
 export function useComputation(preset: Preset, learning: boolean): Computation {
@@ -25,11 +27,11 @@ export function useComputation(preset: Preset, learning: boolean): Computation {
           })
         } else {
           const data = await response.json() as { intersections: Intersection[] }
-          if (!Array.isArray(data.intersections)) throw new Error('结果结构无效')
+          if (!Array.isArray(data.intersections)) throw new ComputationError(/*i18n*/ { id: 'Invalid result structure', message: 'Invalid result structure' })
           if (current) setComputation({ status: 'ready', results: data.intersections, complete: true })
         }
       } catch (error) {
-        if (current) setComputation({ status: 'error', message: error instanceof Error ? error.message : '未知错误' })
+        if (current) setComputation({ status: 'error', message: error instanceof ComputationError ? error.descriptor : error instanceof Error ? error.message : /*i18n*/ { id: 'Unknown error', message: 'Unknown error' } })
       }
     }
     void compute()

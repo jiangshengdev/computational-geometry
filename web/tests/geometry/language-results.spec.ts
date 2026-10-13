@@ -1,0 +1,33 @@
+import { expect, test } from '@playwright/test'
+
+test('结果语言切换保持精确选择与视图，英语数量采用复数', async ({ page }) => {
+  await page.goto('/cases/crossing')
+  await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
+  await page.getByRole('button', { name: '放大', exact: true }).click()
+  const transform = await page.locator('g[data-layer="geometry"]').getAttribute('transform')
+  await page.getByRole('button', { name: 'Language / 语言' }).click()
+  await page.getByRole('option', { name: 'English', exact: true }).click()
+  await expect(page.getByRole('status')).toHaveText('1 intersecting pair')
+  await expect(page.getByRole('radio', { checked: true })).toHaveText('S0 × S1 · Point')
+  await expect(page.getByRole('region', { name: 'Exact details' })).toContainText('(2, 2)')
+  await expect(page.locator('g[data-layer="geometry"]')).toHaveAttribute('transform', transform!)
+  await page.goto('/cases/multiway')
+  await expect(page.getByRole('status')).toHaveText('3 intersecting pairs')
+  await page.goto('/cases/empty')
+  await expect(page.getByRole('status')).toHaveText('0 intersecting pairs')
+  await expect(page.getByText('No intersecting pairs', { exact: true })).toBeVisible()
+})
+
+test('已发生的应用错误随语言切换，保留 HTTP 诊断', async ({ page }) => {
+  await page.route('**/api/intersections', route => route.fulfill({ json: { invalid: true } }))
+  await page.goto('/cases/crossing')
+  await expect(page.getByRole('alert')).toContainText('结果结构无效')
+  await page.getByRole('button', { name: 'Language / 语言' }).click()
+  await page.getByRole('option', { name: 'English', exact: true }).click()
+  await expect(page.getByRole('alert')).toContainText('Invalid result structure')
+  await page.unroute('**/api/intersections')
+  await page.route('**/api/intersections', route => route.fulfill({ status: 500, json: {} }))
+  await page.reload()
+  await expect(page.getByRole('alert')).toContainText('Computation failed')
+  await expect(page.getByRole('alert')).toContainText('HTTP 500')
+})

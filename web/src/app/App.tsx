@@ -30,7 +30,7 @@ import { useLayoutPreference } from './useLayoutPreference'
 import { Select } from '@heroui/react/select'
 import { ListBox } from '@heroui/react/list-box'
 import { isLearningLayout, learningLayouts, type LearningLayout } from '../learning/learningLayout'
-import { useLingui } from '@lingui/react/macro'
+import { useLingui, Plural } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
 import { LanguageSelect } from './LanguageProvider'
 
@@ -44,6 +44,7 @@ function PageTitle({ page, preset }: { page: string; preset?: Preset }) {
 
 function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; learning: boolean; zenMode: boolean; layout: LearningLayout }) {
   const { t } = useLingui()
+  const { _: translate } = useMessages()
   const computation = useComputation(preset, learning)
   const [selected, setSelected] = useState<Intersection | null>(null)
   const [hover, setHover] = useHoverTarget()
@@ -62,29 +63,30 @@ function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; lea
   }, [selected, learning])
   const results = computation.status === 'ready' ? computation.results : []
   const highlights = hover ? hoverHighlights(hover, results) : null
+  const errorMessage = computation.status === 'error' ? typeof computation.message === 'string' ? computation.message : translate(computation.message) : ''
   if (learning) return <>
     {computation.status !== 'ready' && <PageTitle page={t`Step-by-step learning`} preset={preset} />}
     {computation.status === 'loading'
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
       : computation.status === 'error'
-        ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>计算失败</Alert.Title><Alert.Description>请检查本地服务。{computation.message}</Alert.Description></Alert.Content></Alert>
+        ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${errorMessage}`}</Alert.Description></Alert.Content></Alert>
         : computation.trace && <LearningPage preset={preset} trace={computation.trace} complete={computation.complete} zenMode={zenMode} layout={layout} />}
   </>
   return <>
     <PageTitle page={t`Results`} preset={preset} />
     <div className="workspace result-workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
-      <aside className="workspace-panel result-panel" aria-label="计算结果">
+      <aside className="workspace-panel result-panel" aria-label={t`Results`}>
         <Card>
-          <Card.Header className="flex flex-row flex-wrap items-start justify-between gap-2"><div><Card.Title render={props => <h2 {...props} />}>相交配对</Card.Title><Card.Description>选择配对，查看精确交集。</Card.Description></div><HelpButton topic="results">结果说明</HelpButton></Card.Header>
+          <Card.Header className="flex flex-row flex-wrap items-start justify-between gap-2"><div><Card.Title render={props => <h2 {...props} />}>{t`Intersecting pairs`}</Card.Title><Card.Description>{t`Select a pair to inspect its exact intersection.`}</Card.Description></div><HelpButton topic="results">{t`About results`}</HelpButton></Card.Header>
           <Card.Content className="result-content flex flex-col gap-4">
             {computation.status === 'loading'
-              ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在计算…</div>
+              ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>
               : computation.status === 'error'
-                ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>计算失败</Alert.Title><Alert.Description>请检查本地服务。{computation.message}</Alert.Description></Alert.Content></Alert>
-                : <><div role="status" className="flex"><Chip>{results.length} 个相交配对</Chip></div>
+                ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${errorMessage}`}</Alert.Description></Alert.Content></Alert>
+                : <><div role="status" className="flex"><Chip><Plural value={results.length} one="# intersecting pair" other="# intersecting pairs" /></Chip></div>
                   {results.length === 0
-                    ? <p className="py-6 text-center text-muted">没有相交配对</p>
+                    ? <p className="py-6 text-center text-muted">{t`No intersecting pairs`}</p>
                     : <ScrollShadow className="pair-scroll" onKeyDownCapture={event => {
                       if (event.key !== 'Home' && event.key !== 'End') return
                       if (!(event.target instanceof Element)) return
@@ -96,31 +98,31 @@ function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; lea
                       const target = event.key === 'Home' ? options[0] : options[options.length - 1]
                       target.focus()
                     }}>
-                      <ToggleButtonGroup selectionMode="single" orientation="vertical" isDetached className="w-full gap-1 p-1" aria-label="相交配对选择"
+                      <ToggleButtonGroup selectionMode="single" orientation="vertical" isDetached className="w-full gap-1 p-1" aria-label={t`Select an intersecting pair`}
                         selectedKeys={selected ? [pairName(selected)] : []}
                         onSelectionChange={keys => setSelected(results.find(result => keys.has(pairName(result))) ?? null)}>
                         {results.map(result => <ToggleButton key={pairName(result)} id={pairName(result)} className="pair-item w-full justify-start"
                           data-highlighted={highlights ? highlights.pairs.includes(pairName(result)) : result === selected}
                           onHoverStart={() => setHover({ kind: 'pair', pair: pairName(result) })} onHoverEnd={() => setHover(null)}>
-                          <span className="coordinates">{pairName(result)}</span> · {result.geometry.type === 'point' ? '点' : '重叠区间'}
+                          <span className="coordinates">{pairName(result)}</span> · {result.geometry.type === 'point' ? t`Point` : t`Overlap interval`}
                         </ToggleButton>)}
                       </ToggleButtonGroup>
                     </ScrollShadow>}
                 </>}
             <Separator />
-            <section ref={detailsRef} aria-label="精确详情" className="result-details flex min-w-0 flex-col gap-3" tabIndex={detailsScrollable ? 0 : -1}>
-              <Card.Title render={props => <h2 {...props} />}>精确详情</Card.Title>
+            <section ref={detailsRef} aria-label={t`Exact details`} className="result-details flex min-w-0 flex-col gap-3" tabIndex={detailsScrollable ? 0 : -1}>
+              <Card.Title render={props => <h2 {...props} />}>{t`Exact details`}</Card.Title>
               {selected ? <><h3 className="coordinates">{pairName(selected)}</h3><p className="coordinates">{formatGeometry(selected.geometry)}</p>
                 {selected.segments.map(i => <p key={i} className="coordinates">S{i}：{formatPoint(preset.segments[i].start)} → {formatPoint(preset.segments[i].end)}</p>)}
-              </> : <p className="py-6 text-center text-sm text-muted">选择一个配对，检查交集和两个输入。</p>}
+              </> : <p className="py-6 text-center text-sm text-muted">{t`Select a pair to inspect the intersection and both inputs.`}</p>}
             </section>
           </Card.Content>
         </Card>
       </aside>
-    <section className="workspace-panel input-panel" aria-label="原始输入"><Card>
-      <Card.Header className="flex flex-row flex-wrap items-start justify-between gap-2"><div><Card.Title render={props => <h2 {...props} />} className="flex items-center gap-2">原始输入 <Chip>{preset.segments.length}</Chip></Card.Title><Card.Description>独立编号与精确端点</Card.Description></div><HelpButton topic="inputs">输入说明</HelpButton></Card.Header>
+    <section className="workspace-panel input-panel" aria-label={t`Original inputs`}><Card>
+      <Card.Header className="flex flex-row flex-wrap items-start justify-between gap-2"><div><Card.Title render={props => <h2 {...props} />} className="flex items-center gap-2">{t`Original inputs`} <Chip>{preset.segments.length}</Chip></Card.Title><Card.Description>{t`Distinct identities and exact endpoints`}</Card.Description></div><HelpButton topic="inputs">{t`About inputs`}</HelpButton></Card.Header>
       <Card.Content>{preset.segments.length === 0
-        ? <p className="py-6 text-center text-muted">输入集合为空</p>
+        ? <p className="py-6 text-center text-muted">{t`The input set is empty`}</p>
         : <ul className="flex flex-col gap-1">{preset.segments.map((s, i) =>
           <li key={i} className="input-item flex min-w-0 flex-wrap gap-3 text-sm"
             data-highlighted={highlights ? highlights.inputs.includes(i) : selected?.segments.includes(i) ?? false}
