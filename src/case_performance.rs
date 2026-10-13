@@ -5,6 +5,7 @@
 //! validation and result destruction; HTTP includes a fresh TCP connection and
 //! complete response receipt, but not client JSON parsing or rendering.
 use crate::{Point, Segment, brute_force_intersections, http, intersections, trace_intersections};
+use super::protocol::{Request, Response, IntersectionDto};
 use axum::{
     Json,
     body::{Body, to_bytes},
@@ -230,7 +231,7 @@ async fn actual_case_timings() {
                 .header("content-type", "application/json")
                 .body(Body::from(body.clone()))
                 .unwrap();
-            let Json(parsed) = Json::<super::Request>::from_request(request, &())
+            let Json(parsed) = Json::<Request>::from_request(request, &())
                 .await
                 .unwrap();
             assert_eq!(parsed.trace, index == 1);
@@ -254,10 +255,10 @@ async fn actual_case_timings() {
                 (intersections(&segments), None)
             };
             assert_eq!(canonical(results.clone()), expected);
-            let response = Json(super::Response {
+            let response = Json(Response {
                 intersections: results
                     .into_iter()
-                    .map(super::IntersectionDto::from)
+                    .map(IntersectionDto::from)
                     .collect(),
                 trace: expected_trace,
             })
