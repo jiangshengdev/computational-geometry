@@ -1,83 +1,92 @@
 import { Link } from '@heroui/react/link'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 export function LearningIntroduction() {
-  return <section aria-label="学习目标" className="flex flex-col gap-3">
-    <h2 className="text-xl font-semibold">从零理解 Bentley–Ottmann 扫描线</h2>
-    <p>目标：能说清何时加入线段、何时发现交点、为什么换序，以及何时退出。线段求交就是找出输入线段共有的点或区间。</p>
-    <p>最直接的方法是两两检查：<span className="coordinates">n</span> 条线段要检查 <span className="coordinates">n(n−1)/2</span> 对。扫描线是一条从左向右移动的竖线；只在端点或已发现的交点停下，这些停靠位置叫事件。</p>
-    <p>事件队列按先 <span className="coordinates">x</span>、后 <span className="coordinates">y</span> 从小到大保存待处理事件；活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。</p>
-    <p>在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。</p>
-    <p className="text-muted">统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 <span className="coordinates">x</span> 的不同事件按 <span className="coordinates">y</span> 依次处理；当前事件处理完成后只更新该位置的顺序，同 <span className="coordinates">x</span> 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。</p>
-    <p className="text-muted">本学习流程覆盖现有范例中的普通交叉、空集合与无交集、相邻检测、同扫描坐标不同位置、端点接触、多线共点、零长度点、竖直线、共线重叠及混合事件。竖直线在固定 x 上按 y 从下向上处理；共线重叠用完整闭区间表达。这些预设教学案例不是任意退化输入的生产级实现保证。</p>
+  const { t } = useLingui()
+  return <section aria-label={t({ id: 'help.LearningIntroduction.label', message: 'Learning goals' })} className="flex flex-col gap-3">
+    <h2 className="text-xl font-semibold"><Trans id="help.LearningIntroduction.0">Understanding the Bentley–Ottmann sweep from scratch</Trans></h2>
+    <p><Trans id="help.LearningIntroduction.1">Goal: explain when segments enter, when intersections are discovered, why the order changes, and when segments leave. Segment intersection finds the points or intervals shared by input segments.</Trans></p>
+    <p><Trans id="help.LearningIntroduction.2">The most direct approach checks every pair: <span className="coordinates">n</span> segments require <span className="coordinates">n(n−1)/2</span> pair checks. A sweep line is a vertical line moving from left to right. It stops only at endpoints or discovered intersections; these stopping positions are called events.</Trans></p>
+    <p><Trans id="help.LearningIntroduction.3">The event queue stores pending events in increasing <span className="coordinates">x</span>, then <span className="coordinates">y</span> order. Active segments have entered but have not yet left, and are ordered from bottom to top. Neighbors are consecutive segments in this order.</Trans></p>
+    <p><Trans id="help.LearningIntroduction.4">At an ordinary crossing, two segments exchange their vertical order and must be neighbors just before they cross. Checking new neighbors after insertion, removal, or reordering discovers future intersections without rechecking every pair at every step.</Trans></p>
+    <p className="text-muted"><Trans id="help.LearningIntroduction.5">Conventions: exact rational numbers determine intersections and ordering; pixel approximations are used only for drawing. Distinct events with the same <span className="coordinates">x</span> are processed in <span className="coordinates">y</span> order. Completing an event updates the order only at that position; other positions with the same <span className="coordinates">x</span> retain their own processing progress. At a crossing, segments are ordered as they appear immediately to the right of the event.</Trans></p>
+    <p className="text-muted"><Trans id="help.LearningIntroduction.6">This learning flow covers ordinary crossings, empty sets and disjoint inputs, neighbor checks, distinct positions at the same sweep coordinate, endpoint contacts, multiple segments meeting at one point, zero-length points, vertical segments, collinear overlaps, and mixed events in the existing examples. Vertical segments are processed upward in y at a fixed x; collinear overlaps are represented by complete closed intervals. These preset teaching cases are not a production implementation guarantee for arbitrary degenerate inputs.</Trans></p>
     </section>
 }
 
 export function LearningReferences() {
-  return <section aria-label="学习参考" className="flex flex-col gap-2 text-sm">
-    <h2 className="font-semibold">继续阅读</h2>
-    <Link href="https://www.cs.umd.edu/class/fall2023/cmsc754/Lects/lect04-intersection.pdf">Dave Mount · CMSC 754 Lecture 4：事件、活动顺序与相邻检测</Link>
-    <p className="text-muted">核对依据：讲义的 Plane Sweep、Adjacent-segment rule 与事件处理章节（图 4 的相邻性论证、图 5 的插入、删除与交叉）。讲义先假设一般位置；这里另外明示同 <span className="coordinates">x</span> 端点的处理顺序。其平衡树复杂度结论不等于本演示实现的性能保证。</p>
-    <Link href="https://i11www.iti.kit.edu/_media/teaching/winter2015/compgeom/algogeom-ws15-vl02.pdf">KIT · Line Segment Intersection：闭线段与同点事件归组</Link>
-    <p className="text-muted">核对依据：讲义标号 4 定义闭线段，标号 6 按两个坐标确定事件先后，标号 8 的 handleEvent 将开始、结束、内部穿过的线段归组，先报告交点及全部参与者，再移除与重新插入以更新顺序（PDF 第 39–42 页）。讲义从上向下扫描，本页将方向换为从左向右、同 x 时从下向上；对应的是相同的精确字典序规则，不用数值微移。</p>
-    <p className="text-muted">竖直案例沿用上述闭线段、字典序和同点归组规则。图中的竖直状态标记是本页的处理前沿表示，并非扫描线与线段的唯一交点。内部采用可逆精确剪切 (x + s·y, y)，s 的有理数界限由输入坐标推导，保证所有端点及线段交点的原始字典序不变；显示时还原原坐标。这是本实现的保序推导，不将讲义当作该剪切界限的证明，也不用浮点 epsilon 判断几何关系。</p>
-    <Link href="https://github.com/CGAL/cgal/blob/v6.1.1/Kernel_23/doc/Kernel_23/CGAL/intersections.h">CGAL 6.1.1 · 2D Intersections：交集可以是点或线段</Link>
-    <Link href="https://github.com/CGAL/cgal/blob/v6.1.1/Surface_sweep_2/doc/Surface_sweep_2/Surface_sweep_2.txt">CGAL 6.1.1 · 2D Intersection of Curves：重叠与退化处理</Link>
-    <p className="text-muted">核对依据：CGAL 官方文档源的二维交集表将 Segment_2 与 Segment_2 的非空交集列为 Point_2 或 Segment_2；扫描线文档明确将重叠曲线列入退化情况，并依赖经过认证的几何计算。本页用闭区间公共范围解释预设重叠案例，在较晚起点记录完整区间；这不是 CGAL 的算法复刻，也不把 CGAL 的鲁棒性或复杂度保证移用于本演示。</p>
+  const { t } = useLingui()
+  return <section aria-label={t({ id: 'help.LearningReferences.label', message: 'Learning references' })} className="flex flex-col gap-2 text-sm">
+    <h2 className="font-semibold"><Trans id="help.LearningReferences.0">Further reading</Trans></h2>
+    <Link href="https://www.cs.umd.edu/class/fall2023/cmsc754/Lects/lect04-intersection.pdf"><Trans id="help.LearningReferences.1">Dave Mount · CMSC 754 Lecture 4: events, active order, and neighbor checks</Trans></Link>
+    <p className="text-muted"><Trans id="help.LearningReferences.2">Source: the lecture's Plane Sweep, Adjacent-segment rule, and event-handling sections (the adjacency argument in Figure 4 and insertion, deletion, and crossing in Figure 5). The lecture initially assumes general position; here we also specify the processing order for endpoints with the same <span className="coordinates">x</span>. Its balanced-tree complexity results are not performance guarantees for this demonstration.</Trans></p>
+    <Link href="https://i11www.iti.kit.edu/_media/teaching/winter2015/compgeom/algogeom-ws15-vl02.pdf"><Trans id="help.LearningReferences.3">KIT · Line Segment Intersection: closed segments and grouping events at the same point</Trans></Link>
+    <p className="text-muted"><Trans id="help.LearningReferences.4">Source: lecture item 4 defines closed segments, item 6 orders events by both coordinates, and handleEvent in item 8 groups starting, ending, and interior-crossing segments. It reports the intersection and all participants before removing and reinserting segments to update the order (PDF pages 39–42). The lecture sweeps downward; this page sweeps left to right, then upward at the same x. Both use the same exact lexicographic rule, without numerical perturbation.</Trans></p>
+    <p className="text-muted"><Trans id="help.LearningReferences.5">Vertical cases follow the same closed-segment, lexicographic, and same-point grouping rules. The vertical status marker represents this page's processing frontier, not a unique intersection between the sweep line and the segment. Internally, a reversible exact shear (x + s·y, y) is used. Rational bounds on s are derived from the input coordinates to preserve the original lexicographic order of all endpoints and segment intersections; the display restores the original coordinates. This order-preserving derivation belongs to this implementation: the lecture is not cited as proof of the shear bound, and floating-point epsilon is not used to decide geometric relations.</Trans></p>
+    <Link href="https://github.com/CGAL/cgal/blob/v6.1.1/Kernel_23/doc/Kernel_23/CGAL/intersections.h"><Trans id="help.LearningReferences.6">CGAL 6.1.1 · 2D Intersections: an intersection can be a point or a segment</Trans></Link>
+    <Link href="https://github.com/CGAL/cgal/blob/v6.1.1/Surface_sweep_2/doc/Surface_sweep_2/Surface_sweep_2.txt"><Trans id="help.LearningReferences.7">CGAL 6.1.1 · 2D Intersection of Curves: overlaps and degeneracies</Trans></Link>
+    <p className="text-muted"><Trans id="help.LearningReferences.8">Source: the 2D intersection table in CGAL's official documentation source lists a nonempty intersection of Segment_2 with Segment_2 as Point_2 or Segment_2. The sweep documentation explicitly includes overlapping curves among degeneracies and relies on certified geometric computation. This page explains preset overlap cases through the common range of closed intervals, recording the complete interval at the later start. It does not reproduce CGAL's algorithm or transfer CGAL's robustness or complexity guarantees to this demonstration.</Trans></p>
   </section>
 }
 
 export function SamePointRules() {
-  return <section aria-label="同点与并列规则" className="flex flex-col gap-2 text-sm">
-      <h2 className="font-semibold">同一横坐标，不一定是同一个点</h2>
-      <p>按扫描方向区分开始、结束与内部穿过；这三组属于同一个精确几何点，不随中间动作改变。闭线段包含端点：先记录所有参与者的交集，再移除结束者、加入开始者，并排好继续活动者的顺序。</p>
-      <p>零长度输入的起点和终点重合，因此同时属于开始和结束，不进入持续活动顺序，也没有对应的加入或退出动作。它与同点的线段或其他点逐对记录；坐标重合不合并输入身份。纯点集合的活动顺序始终为空，但仍有真实事件和配对结果。</p>
-      <p>先比较 x，再比较 y；只有两个坐标都精确相等才归为同一个事件点。同一扫描坐标不等于所有线段共点。队列里的每个点单独处理，同点的全部参与者一起归组。</p>
-      <p>事件处理中展示的是更新过程，不能当作完成状态。事件处理完成后，当前点的非竖直继续活动线段按紧邻右侧的上下顺序排列；竖直线则继续走向更高的待处理位置。同 x 的较低位置已处理，较高位置仍保留处理前顺序。因此此时的列表不是整条扫描线统一右移后的顺序。</p>
+  const { t } = useLingui()
+  return <section aria-label={t({ id: 'help.SamePointRules.label', message: 'Same-point and tie rules' })} className="flex flex-col gap-2 text-sm">
+      <h2 className="font-semibold"><Trans id="help.SamePointRules.0">The same x coordinate does not imply the same point</Trans></h2>
+      <p><Trans id="help.SamePointRules.1">The sweep direction determines which segments start, end, or pass through the interior. These three groups belong to one exact geometric point and do not change during intermediate actions. Closed segments include endpoints: record the intersections of all participants first, then remove ending segments, insert starting segments, and order those that remain active.</Trans></p>
+      <p><Trans id="help.SamePointRules.2">A zero-length input has coincident start and end points, so it belongs to both groups. It never enters the continuing active order and has no corresponding insertion or removal action. Its intersections with segments or other points at the same location are recorded pair by pair; coincident coordinates do not merge input identities. The active order of a point-only set is always empty, but real events and pair results still exist.</Trans></p>
+      <p><Trans id="help.SamePointRules.3">Compare x first, then y. Only exact equality of both coordinates groups inputs into one event point. Sharing a sweep coordinate does not mean that all segments meet at one point. Each point in the queue is processed separately, with all participants at that point grouped together.</Trans></p>
+      <p><Trans id="help.SamePointRules.4">During event processing, the display shows an update in progress, not a completed state. Once the event is complete, continuing nonvertical segments at the current point are ordered as they appear immediately to its right; vertical segments continue toward higher pending positions. Lower positions at the same x have been processed, while higher positions retain their pre-event order. The list therefore does not represent a uniform rightward shift of the entire sweep line.</Trans></p>
     </section>
 }
 
 export function VerticalRules() {
-  return <section aria-label="竖直线处理规则" className="flex flex-col gap-2 text-sm">
-      <h2 className="font-semibold">竖直线：固定横坐标，逐个处理高度</h2>
-      <p>竖直线与扫描线重合为一段，不能用一个普通直线交点代表整段。仍按先 x、后 y 的约定：到下端时加入，在不同高度依次处理交叉和接触，到上端先记录闭线段接触再退出。</p>
-      <p>活动列表中的竖直线代表尚未完成的向上处理前沿；图中它的序号标在当前处理高度，而非唯一的扫描线交点。遇到横穿线段时，处理中先保留之前的顺序并记录交集，完成后竖直线排在该穿过者之上，继续检查更高处的新邻居。上端退出后才算整条竖直线处理完毕。</p>
-      <p>图中的当前事件、队列和结果均使用原坐标；扫描线可停在同一 x，而当前事件沿 y 上移。完成较低交点不会清空更高的待处理事件。</p>
+  const { t } = useLingui()
+  return <section aria-label={t({ id: 'help.VerticalRules.label', message: 'Vertical segment rules' })} className="flex flex-col gap-2 text-sm">
+      <h2 className="font-semibold"><Trans id="help.VerticalRules.0">Vertical segments: one x coordinate, one height at a time</Trans></h2>
+      <p><Trans id="help.VerticalRules.1">A vertical segment overlaps the sweep line along an interval, so a single ordinary line intersection cannot represent it. The x-then-y convention still applies: insert it at its lower endpoint, process crossings and contacts at successive heights, then record closed-segment contacts at its upper endpoint before removing it.</Trans></p>
+      <p><Trans id="help.VerticalRules.2">A vertical segment in the active list represents an unfinished upward processing frontier. Its rank in the drawing is placed at the current processing height, not at a unique intersection with the sweep line. When it meets a crossing segment, processing first retains the previous order and records the intersection. Once complete, the vertical segment is placed above that crossing segment and checks new neighbors higher up. The whole vertical segment is complete only after removal at its upper endpoint.</Trans></p>
+      <p><Trans id="help.VerticalRules.3">The current event, queue, and results in the drawing all use original coordinates. The sweep line may stay at the same x while the current event moves upward in y. Completing a lower intersection does not clear higher pending events.</Trans></p>
     </section>
 }
 
 export function OverlapRules() {
-  return <section aria-label="重叠处理规则" className="flex flex-col gap-2 text-sm">
-      <h2 className="font-semibold">共线重叠：交集是一段线</h2>
-      <p>共线线段的公共范围若具有非零长度，两端之间就有无穷多个公共点；普通 BO 的孤立点事件前提在这里不成立，不是上下交换就能处理重叠。若仅共享一个闭端点，交集仍是点。</p>
-      <p>沿先 x、后 y 的扫描方向确定各自起终点，取较晚起点和较早终点，在重叠起界一次记录完整闭区间。这不是扫描线已经走过整段，而是根据已知端点精确确定完整交集。水平、斜向和竖直线都使用同一规则；竖直线按原坐标的高度比较，分数保持精确。</p>
-      <p>重叠两端本来就是端点事件，无需为区间内部每个点创建事件；内部仍可能出现其他成员的端点或交叉。到止界时，实际结束的成员退出，未结束的成员继续，也可能同时结束。已记录的完整区间不缩短，不再为同一配对追加边界点；第三条短成员不会切碎其他配对的完整区间。</p>
-      <p>包含、完全重复和反向重复均保留独立输入编号，每个配对分别取交集。重叠成员几何并列，列表位置用于辨认身份，不表示上下交换；多个配对的区间不合并为几何并集。这是预设教学案例，不是任意重叠输入的生产级实现保证。</p>
+  const { t } = useLingui()
+  return <section aria-label={t({ id: 'help.OverlapRules.label', message: 'Overlap rules' })} className="flex flex-col gap-2 text-sm">
+      <h2 className="font-semibold"><Trans id="help.OverlapRules.0">Collinear overlap: the intersection is a segment</Trans></h2>
+      <p><Trans id="help.OverlapRules.1">If the common range of collinear segments has nonzero length, infinitely many points between its endpoints are shared. The isolated-point event assumption of ordinary BO does not apply here; swapping vertical order cannot handle overlap. If only one closed endpoint is shared, the intersection is still a point.</Trans></p>
+      <p><Trans id="help.OverlapRules.2">Determine each segment's start and end in x-then-y sweep order, take the later start and earlier end, and record the complete closed interval once at the overlap's start boundary. This does not mean the sweep line has traversed the interval: the known endpoints determine the full intersection exactly. Horizontal, slanted, and vertical segments use the same rule; vertical segments compare heights in original coordinates, and fractions remain exact.</Trans></p>
+      <p><Trans id="help.OverlapRules.3">Both overlap boundaries are already endpoint events, so there is no need to create an event for every interior point. Other members' endpoints or crossings may still occur inside. At the end boundary, members that actually end leave and others continue; both may also end together. The recorded interval is never shortened, and no boundary points are appended for the same pair. A third, shorter member does not split other pairs' complete intervals.</Trans></p>
+      <p><Trans id="help.OverlapRules.4">Contained, identical, and reversed duplicate inputs all retain distinct input IDs, and each pair is intersected separately. Overlapping members are geometrically tied; list positions identify them rather than indicate a vertical swap. Intervals from different pairs are not merged into a geometric union. These are preset teaching cases, not a production implementation guarantee for arbitrary overlapping inputs.</Trans></p>
     </section>
 }
 
 export function NeighborRules() {
-  return <section aria-label="为什么不会漏掉交点" className="flex flex-col gap-3">
-      <h2 className="font-semibold">为什么只检查邻居不会漏掉交点？</h2>
-        <p>在一般位置下，考虑即将发生的下一处交叉：只有两条线段在内部相交，没有第三条线段同时经过该点，也没有端点与交叉重合。</p>
-        <p>越靠近交点，两条线段之间的间隙越小。如果第三条线段一直夹在中间，它就必须也经过这个交点，与没有三线共点的前提矛盾。因此交叉前足够近的位置，两条相交线段必是邻居。</p>
-        <p>再往前看最近一次事件：两个事件之间没有端点或交叉，活动线段的成员和上下顺序不变。所以这对线段在上次事件处理后就已经相邻；在产生这一邻接关系时检查并安排交点，就能让扫描线及时停下。</p>
-        <p>插入会产生新线段两侧的邻居；删除会让原来分隔的两侧相邻；交叉换序会改变外侧邻居。只检查这些发生变化的边界，不必机械枚举所有线段对。</p>
-        <p className="text-muted">适用边界：共端点、端点落在内部、多线共点、竖直线、同一扫描坐标事件与共线重叠需要额外规则。本页普通案例和相邻性论证不能代替这些退化情况的完整处理证明。</p>
+  const { t } = useLingui()
+  return <section aria-label={t({ id: 'help.NeighborRules.label', message: 'Why intersections are not missed' })} className="flex flex-col gap-3">
+      <h2 className="font-semibold"><Trans id="help.NeighborRules.0">Why do neighbor checks find every intersection?</Trans></h2>
+        <p><Trans id="help.NeighborRules.1">In general position, consider the next crossing: exactly two segments intersect in their interiors, no third segment passes through that point, and no endpoint coincides with the crossing.</Trans></p>
+        <p><Trans id="help.NeighborRules.2">The closer we get to the intersection, the smaller the gap between the two segments. If a third segment stayed between them, it would also have to pass through the intersection, contradicting the assumption that no three segments meet. Thus, sufficiently close before the crossing, the intersecting segments must be neighbors.</Trans></p>
+        <p><Trans id="help.NeighborRules.3">Now look back to the most recent event. Between events there are no endpoints or crossings, so active membership and vertical order remain unchanged. This pair was therefore already adjacent after the previous event. Checking and scheduling the intersection when that adjacency forms ensures the sweep line stops in time.</Trans></p>
+        <p><Trans id="help.NeighborRules.4">Insertion creates neighbors on both sides of the new segment; deletion makes the previously separated sides adjacent; crossing reorders the outer neighbors. Only these changed boundaries need checking, without enumerating every segment pair.</Trans></p>
+        <p className="text-muted"><Trans id="help.NeighborRules.5">Scope: shared endpoints, endpoints in segment interiors, multiple segments meeting at one point, vertical segments, events at the same sweep coordinate, and collinear overlaps require additional rules. The ordinary examples and adjacency argument here do not replace a complete proof of handling these degeneracies.</Trans></p>
     </section>
 }
 
 export function EventQueueRules() {
-  return <section aria-label="事件队列说明" className="flex flex-col gap-3">
-    <h2 className="font-semibold">事件队列</h2>
-    <p>先 <span className="coordinates">x</span>，后 <span className="coordinates">y</span>；队首先处理。</p>
-    <p>事件队列按先 x、后 y 从小到大保存待处理事件；当前事件从队首取出后单独显示。</p>
+  const { t } = useLingui()
+  return <section aria-label={t({ id: 'help.EventQueueRules.label', message: 'Event queue explanation' })} className="flex flex-col gap-3">
+    <h2 className="font-semibold"><Trans id="help.EventQueueRules.0">Event queue</Trans></h2>
+    <p><Trans id="help.EventQueueRules.1">First <span className="coordinates">x</span>, then <span className="coordinates">y</span>; the front of the queue is processed first.</Trans></p>
+    <p><Trans id="help.EventQueueRules.2">The event queue stores pending events in increasing x, then y order. The current event is displayed separately after being removed from the front.</Trans></p>
   </section>
 }
 
 export function ActiveOrderRules({ overlap }: { overlap: boolean }) {
-  return <section aria-label="活动线段顺序" className="flex flex-col gap-3">
-    <h2 className="font-semibold">活动线段顺序</h2>
-    <p>活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。序号从下到上递增。</p>
-    {overlap && <p>重叠成员在同一高度并列；列表位置只用于逐个辨认，不表示它们之间存在上下差别。图中序号也指向同一几何位置。</p>}
+  const { t } = useLingui()
+  return <section aria-label={t({ id: 'help.ActiveOrderRules.label', message: 'Active segment order' })} className="flex flex-col gap-3">
+    <h2 className="font-semibold"><Trans id="help.ActiveOrderRules.0">Active segment order</Trans></h2>
+    <p><Trans id="help.ActiveOrderRules.1">Active segments have entered but have not yet left, and are ordered from bottom to top. Neighbors are consecutive segments in this order. Ranks increase from bottom to top.</Trans></p>
+    {overlap && <p><Trans id="help.ActiveOrderRules.2">Overlapping members are tied at the same height. List positions identify them individually, not a difference in vertical position. Their ranks in the drawing also point to the same geometric location.</Trans></p>}
   </section>
 }

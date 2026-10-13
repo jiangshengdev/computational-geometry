@@ -9,40 +9,48 @@ import { HelpContext, type HelpTopic } from './help-context'
 import { samePoint } from '../geometry/geometry'
 import { type Preset } from '../cases/preset'
 import { useLingui } from '@lingui/react'
+import { LanguageSelect } from '../app/LanguageProvider'
+import { Trans, useLingui as useTranslations } from '@lingui/react/macro'
 
-const topics = [
-  { id: 'introduction', title: '学习目标、术语与扫描约定', content: <LearningIntroduction /> },
-  { id: 'references', title: '参考资料', content: <LearningReferences /> },
-  { id: 'results', title: '配对与精确详情', content: <section aria-label="配对与精确详情" className="flex flex-col gap-3">
-    <h2 className="font-semibold">相交配对与精确交集</h2>
-    <p>每个输入保留独立身份。配对数不是独立几何交点数；图形仅作人工辅助校验。</p>
-    <p>选择一个配对，检查交集和两个输入。交集可以是点或完整重叠区间；精确详情保留有理数坐标，像素近似只用于绘图。</p>
-    <p>混合结果中的点类型配对可能位于其他配对的重叠区间上，不等于整体交集中的孤立点。点结果位置数、区间配对数与全部相交配对数分别统计，不合并区间或计算几何并集。</p>
+function useHelpTopics() {
+  const { t } = useTranslations()
+  return [
+  { id: 'introduction', title: t`Learning goals, terms, and sweep conventions`, content: <LearningIntroduction /> },
+  { id: 'references', title: t`References`, content: <LearningReferences /> },
+  { id: 'results', title: t`Pairs and exact details`, content: <section aria-label={t`Pairs and exact details`} className="flex flex-col gap-3">
+    <h2 className="font-semibold"><Trans>Intersecting pairs and exact intersections</Trans></h2>
+    <p><Trans>Each input retains its own identity. The pair count is not the number of distinct geometric intersection points; the drawing is only a visual aid for manual verification.</Trans></p>
+    <p><Trans>Select a pair to inspect its intersection and both inputs. An intersection can be a point or a complete overlap interval. Exact details retain rational coordinates; pixel approximations are used only for drawing.</Trans></p>
+    <p><Trans>In mixed results, point-type pairs may lie on other pairs’ overlap intervals, so they are not necessarily isolated points of the overall intersection. Distinct point-result positions, interval pairs, and all intersecting pairs are counted separately, without merging intervals or computing a geometric union.</Trans></p>
   </section> },
-  { id: 'inputs', title: '原始输入', content: <section aria-label="原始输入说明" className="flex flex-col gap-3">
-    <h2 className="font-semibold">独立输入与端点</h2>
-    <p>每条输入保留自己的编号和两个端点。即使几何重合，也保留各自的输入身份。将指针移到输入列表或画布中的对应对象，可查看高亮联动。</p>
+  { id: 'inputs', title: t`Original inputs`, content: <section aria-label={t`Original input explanation`} className="flex flex-col gap-3">
+    <h2 className="font-semibold"><Trans>Distinct inputs and endpoints</Trans></h2>
+    <p><Trans>Each input retains its own ID and two endpoints. Even geometrically coincident inputs keep their separate identities. Hover over an input in the list or its corresponding canvas object to see linked highlighting.</Trans></p>
   </section> },
-  { id: 'events', title: '事件队列', content: <EventQueueRules /> },
-  { id: 'ties', title: '同点与并列规则', content: <SamePointRules /> },
-  { id: 'neighbors', title: '相邻性论证', content: <NeighborRules /> },
+  { id: 'events', title: t`Event queue`, content: <EventQueueRules /> },
+  { id: 'ties', title: t`Same-point and tie rules`, content: <SamePointRules /> },
+  { id: 'neighbors', title: t`Adjacency argument`, content: <NeighborRules /> },
 ] as const
+}
 
 export function CaseHelp({ children, preset }: { children: ReactNode; preset: Preset }) {
   const { _: translate } = useLingui()
+  const { t } = useTranslations()
+  const topics = useHelpTopics()
   const [open, setOpen] = useState(false)
   const [topic, setTopic] = useState<HelpTopic>('introduction')
   const descriptionId = useId()
-  const availableTopics: { id: HelpTopic; title: string; content: ReactNode }[] = [...topics, { id: 'case', title: '案例介绍与目标', content: <section aria-label="案例介绍与目标" className="flex flex-col gap-3">
+  const goal = preset.learning ? translate(preset.learning.goal) : ''
+  const availableTopics: { id: HelpTopic; title: string; content: ReactNode }[] = [...topics, { id: 'case', title: t`Case introduction and goals`, content: <section aria-label={t`Case introduction and goals`} className="flex flex-col gap-3">
     <h2 className="font-semibold">{translate(preset.name)}</h2>
     <p className="coordinates">{translate(preset.description)}</p>
-    {preset.learning && <p>学习目标：{translate(preset.learning.goal)}</p>}
-    {!preset.learning && <p>此案例目前提供结果查看；支持教学的案例可从案例列表进入逐步学习。</p>}
-  </section> }, { id: 'active', title: '活动线段顺序', content: <ActiveOrderRules overlap={Boolean(preset.learning?.overlap)} /> }]
+    {preset.learning && <p><Trans id="help.case.goal">Learning goal: {goal}</Trans></p>}
+    {!preset.learning && <p><Trans>This case currently provides result viewing. Open a teaching case from the case list for step-by-step learning.</Trans></p>}
+  </section> }, { id: 'active', title: t`Active segment order`, content: <ActiveOrderRules overlap={Boolean(preset.learning?.overlap)} /> }]
   if (preset.segments.some(segment => samePoint({ x: segment.start.x, y: segment.end.y }, segment.end) && !samePoint(segment.start, segment.end))) {
-    availableTopics.push({ id: 'vertical', title: '竖直线处理规则', content: <VerticalRules /> })
+    availableTopics.push({ id: 'vertical', title: t`Vertical segment rules`, content: <VerticalRules /> })
   }
-  if (preset.learning?.overlap) availableTopics.push({ id: 'overlap', title: '重叠处理规则', content: <OverlapRules /> })
+  if (preset.learning?.overlap) availableTopics.push({ id: 'overlap', title: t`Overlap rules`, content: <OverlapRules /> })
   const selectedTopic = availableTopics.find(item => item.id === topic) ?? availableTopics[0]
   return <HelpContext value={(next, element) => {
     // Record the actual opener in Modal's focus scope, including touch activation.
@@ -54,16 +62,17 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
     <Modal.Backdrop isOpen={open} onOpenChange={setOpen}>
       <Modal.Container size="lg" scroll="inside">
       <Modal.Dialog aria-describedby={descriptionId} className="max-w-4xl">
-        <Modal.CloseTrigger aria-label="关闭帮助"><X size={16} aria-hidden="true" /></Modal.CloseTrigger>
+        <Modal.CloseTrigger aria-label={t`Close help`}><X size={16} aria-hidden="true" /></Modal.CloseTrigger>
         <Modal.Header>
-          <Modal.Heading>说明与帮助</Modal.Heading>
-          <Description id={descriptionId}>按主题阅读，关闭后继续当前操作。</Description>
+          <Modal.Heading><Trans>About and help</Trans></Modal.Heading>
+          <LanguageSelect />
+          <Description id={descriptionId}><Trans>Read by topic, then close to continue your current task.</Trans></Description>
         </Modal.Header>
         <Modal.Body className="min-h-0 overscroll-contain">
           <Tabs orientation="vertical" align="start" selectedKey={selectedTopic.id} onSelectionChange={key => setTopic(key as HelpTopic)}
             className="grid gap-6 sm:grid-cols-[12rem_minmax(0,1fr)]">
             <Tabs.ListContainer className="min-w-0 self-start [--help-tab-radius:calc(var(--radius)*2.5-var(--spacing))]">
-              <Tabs.List aria-label="帮助主题" className="w-full">
+              <Tabs.List aria-label={t`Help topics`} className="w-full">
                 {availableTopics.map(item => <Tabs.Tab key={item.id} id={item.id} className="h-auto min-h-8 rounded-(--help-tab-radius) whitespace-normal py-2">
                   {item.title}<Tabs.Indicator className="rounded-[inherit]" />
                 </Tabs.Tab>)}
@@ -80,7 +89,7 @@ export function CaseHelp({ children, preset }: { children: ReactNode; preset: Pr
   </HelpContext>
 }
 
-export function HelpButton({ topic = 'introduction', children = '说明与帮助' }: { topic?: HelpTopic; children?: ReactNode }) {
+export function HelpButton({ topic = 'introduction', children = <Trans>About and help</Trans> }: { topic?: HelpTopic; children?: ReactNode }) {
   const showHelp = useContext(HelpContext)
   const trigger = useRef<HTMLButtonElement | null>(null)
   return <Button ref={trigger} variant="tertiary" size="sm" aria-haspopup="dialog"

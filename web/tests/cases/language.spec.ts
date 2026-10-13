@@ -31,7 +31,7 @@ test('键盘切换语言更新案例并记住选择，保留真实结果选择�
   await expect(page.getByRole('heading', { name: 'Ordinary crossing', exact: true })).toBeVisible()
   expect(requests).toBe(0)
   await page.getByRole('button', { name: 'About this case', exact: true }).click()
-  await expect(page.getByRole('dialog', { name: '说明与帮助', exact: true })).toContainText('Observe insertion, intersection discovery, reordering, and removal.')
+  await expect(page.getByRole('dialog', { name: 'About and help', exact: true })).toContainText('Observe insertion, intersection discovery, reordering, and removal.')
   await page.keyboard.press('Escape')
   await page.reload()
   await expect(page.locator('html')).toHaveAttribute('lang', 'en')
