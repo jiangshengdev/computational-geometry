@@ -31,7 +31,12 @@ pnpm --dir docs-site serve --host 127.0.0.1
 
 ## 生成坐标系图解
 
-`scripts/draw_shear_coordinates.py` 使用 Matplotlib 的 MathText 渲染数学标注，生成 `static/img/shear-coordinates-light.svg` 和 `static/img/shear-coordinates-dark.svg`。文档通过 Docusaurus 的 `ThemedImage` 随站点主题选择图片。
+`scripts/draw_shear_coordinates.py` 使用 Matplotlib 的 MathText 渲染数学标注，生成两组图解，每组都包含明暗主题：
+
+- 坐标系变换：`static/img/shear-coordinates-light.svg`、`static/img/shear-coordinates-dark.svg`。
+- 事件顺序颠倒：`static/img/shear-order-reversal-light.svg`、`static/img/shear-order-reversal-dark.svg`。
+
+文档通过 Docusaurus 的 `ThemedImage` 随站点主题选择图片。
 
 该脚本使用 Python，因为 Matplotlib 提供的是 Python 绘图 API。从仓库根目录执行：
 

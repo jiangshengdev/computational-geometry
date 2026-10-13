@@ -25,13 +25,18 @@ PALETTES = {
 }
 
 
-def draw(theme, colors):
-    """Keep points fixed while changing the basis; only colors vary by theme."""
-    with plt.rc_context({
+def plot_style(colors):
+    """Share mathematical typography and theme colors across both diagrams."""
+    return {
         "mathtext.fontset": "cm", "font.family": "serif", "font.size": 19,
         "svg.fonttype": "path", "svg.hashsalt": "shear-coordinates",
         "text.color": colors["text"], "axes.titlecolor": colors["text"],
-    }):
+    }
+
+
+def draw(theme, colors):
+    """Keep points fixed while changing the basis; only colors vary by theme."""
+    with plt.rc_context(plot_style(colors)):
         fig, axes = plt.subplots(1, 2, figsize=(12, 7.2), facecolor=colors["background"])
         fig.subplots_adjust(left=.035, right=.98, bottom=.17, top=.77, wspace=.16)
         fig.suptitle(r"$x'=x+\frac{1}{2}y,\qquad y'=y$", fontsize=30, y=.96)
@@ -88,7 +93,47 @@ def draw(theme, colors):
         print(output)
 
 
+def draw_order_reversal(theme, colors):
+    """Show the active shear of A=(0,200), B=(1,0) with s=1/100."""
+    with plt.rc_context(plot_style(colors)):
+        fig, axes = plt.subplots(1, 2, figsize=(12, 5.8), facecolor=colors["background"])
+        fig.subplots_adjust(left=.06, right=.97, bottom=.19, top=.76, wspace=.25)
+        fig.suptitle(r"$x'=x+\frac{1}{100}y,\qquad y'=y$", fontsize=30, y=.96)
+        for ax, transformed in zip(axes, [False, True]):
+            ax.set_xlim(-.55, 3)
+            ax.set_ylim(-35, 265)
+            ax.axis("off")
+            color = colors["new_axis"] if transformed else colors["axis"]
+            for end in [(2.7, 0), (0, 245)]:
+                ax.annotate("", xy=end, xytext=(0, 0), arrowprops={
+                    "arrowstyle": "->", "color": color, "lw": 1.8, "mutation_scale": 16,
+                })
+            ax.text(2.82, 0, r"$x'$" if transformed else r"$x$", color=color, va="center", fontsize=24)
+            ax.text(-.1, 255, r"$y'$" if transformed else r"$y$", color=color, ha="center", fontsize=24)
+            for n in (0, 1, 2):
+                ax.plot([n, n], [-4, 4], color=color, lw=1.2)
+                ax.text(n, -24, f"${n}$", ha="center")
+            ax.text(-.13, 200, r"$200$", ha="right", va="center")
+            a_x = 2 if transformed else 0
+            ax.plot([a_x, a_x], [200, 0], color=colors["positive"], lw=1.6, ls=(0, (4, 4)))
+            ax.scatter([a_x], [200], s=55, color=colors["positive"], zorder=5)
+            ax.text(a_x-.12 if transformed else .12, 215,
+                    r"$A'\;(2,200)$" if transformed else r"$A\;(0,200)$",
+                    color=colors["positive"], fontsize=23, ha="right" if transformed else "left")
+            ax.scatter([1], [0], s=55, color=colors["negative"], zorder=5)
+            ax.text(1, 20, r"$B'\;(1,0)$" if transformed else r"$B\;(1,0)$",
+                    color=colors["negative"], fontsize=23, ha="center")
+            ax.set_title(r"$(x',y')$" if transformed else r"$(x,y)$", fontsize=24, pad=18)
+        fig.text(.265, .085, r"$x_A=0<1=x_B$", ha="center", fontsize=24)
+        fig.text(.752, .085, r"$x'_B=1<2=x'_A$", ha="center", fontsize=24)
+        output = OUTPUT / f"shear-order-reversal-{theme}.svg"
+        fig.savefig(output, facecolor=colors["background"], metadata={"Date": None})
+        plt.close(fig)
+        print(output)
+
+
 if __name__ == "__main__":
     OUTPUT.mkdir(parents=True, exist_ok=True)
     for theme, colors in PALETTES.items():
         draw(theme, colors)
+        draw_order_reversal(theme, colors)
