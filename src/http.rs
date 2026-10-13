@@ -464,7 +464,6 @@ async fn compute(
         tokio::task::spawn_blocking(move || {
             let lifecycle = TraceLifecycle::start(trace_id);
             let serialization_failed = Cell::new(false);
-            let shear = crate::choose_shear(&segments);
             let mut encoder = TraceEncoder::default();
             let send = |frame: TraceFrame| {
                 let step_count = frame.trace.steps.len();
@@ -495,12 +494,9 @@ async fn compute(
             };
             let results = stream_intersections(
                 &segments,
-                &mut |steps| {
+                &mut |trace| {
                     send(TraceFrame {
-                        trace: encoder.encode(SweepTrace {
-                            shear: shear.clone(),
-                            steps,
-                        }),
+                        trace: encoder.encode(trace),
                         complete: false,
                         intersections: None,
                     })
@@ -510,11 +506,17 @@ async fn compute(
             if let Some(results) = results {
                 if send(TraceFrame {
                     trace: encoder.encode(SweepTrace {
-                        shear,
+                        shear: results.shear,
                         steps: Vec::new(),
                     }),
                     complete: true,
-                    intersections: Some(results.into_iter().map(IntersectionDto::from).collect()),
+                    intersections: Some(
+                        results
+                            .intersections
+                            .into_iter()
+                            .map(IntersectionDto::from)
+                            .collect(),
+                    ),
                 }) {
                     lifecycle.status.set("completed");
                 }
