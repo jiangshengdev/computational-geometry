@@ -1,5 +1,8 @@
 //! Exact HTTP values and request-scoped trace dictionaries.
-use crate::{Geometry, Intersection, Point, Rational, Segment, SweepOutcome, SweepTrace};
+use crate::geometry::PointRepresentation;
+use crate::sweep::SweepOutcome;
+use crate::teaching::{Execution, ExecutionContext, SweepTrace, Variable};
+use crate::{Geometry, Intersection, Point, Rational, Segment};
 use axum::{Json, http::StatusCode};
 use serde::{Deserialize, Serialize};
 
@@ -62,7 +65,7 @@ impl TraceFrame {
 #[derive(Default)]
 pub(super) struct TraceEncoder {
     indices: std::collections::HashMap<std::sync::Arc<str>, usize>,
-    point_indices: std::collections::HashMap<crate::PointRepresentation, usize>,
+    point_indices: std::collections::HashMap<PointRepresentation, usize>,
     result_indices: std::collections::HashMap<[usize; 2], usize>,
 }
 
@@ -130,8 +133,8 @@ struct ExecutionContextDto {
 
 impl ExecutionContextDto {
     fn from_context(
-        context: crate::ExecutionContext,
-        variable: &mut impl FnMut(crate::Variable) -> VariableDto,
+        context: ExecutionContext,
+        variable: &mut impl FnMut(Variable) -> VariableDto,
     ) -> Self {
         Self {
             id: context.id,
@@ -154,12 +157,12 @@ struct VariableDto {
 
 impl ExecutionDto {
     fn from_execution(
-        execution: crate::Execution,
+        execution: Execution,
         values: &mut Vec<String>,
         indices: &mut std::collections::HashMap<std::sync::Arc<str>, usize>,
         offset: usize,
     ) -> Self {
-        let mut variable = |variable: crate::Variable| VariableDto {
+        let mut variable = |variable: Variable| VariableDto {
             scope: variable.scope,
             name: variable.name,
             r#type: variable.r#type,
@@ -278,7 +281,7 @@ impl TraceEncoder {
                         .map(|point| {
                             *self
                                 .point_indices
-                                .entry(crate::PointRepresentation(point))
+                                .entry(PointRepresentation(point))
                                 .or_insert_with_key(|point| {
                                     let index = point_offset + point_values.len();
                                     point_values.push(PointDto::from(point.0.clone()));

@@ -1,5 +1,5 @@
 use super::*;
-use crate::Event;
+use crate::sweep::Event;
 use std::{collections::BTreeMap, sync::Arc};
 
 fn rational(numerator: i64, denominator: i64) -> Rational {

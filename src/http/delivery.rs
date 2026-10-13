@@ -1,6 +1,7 @@
 //! Owns background production, bounded delivery, cancellation and terminal logging.
 use super::protocol::{TraceEncoder, TraceFrame};
-use crate::{Segment, stream_intersections};
+use crate::Segment;
+use crate::sweep::stream_intersections;
 use axum::{body::Body, response::IntoResponse};
 use std::{
     cell::Cell,

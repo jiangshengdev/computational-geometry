@@ -4,7 +4,8 @@
 //! BO_PERF_ROUNDS defaults to 31 (odd, at least 3). Test profile timings exclude
 //! validation and result destruction; HTTP includes a fresh TCP connection and
 //! complete response receipt, but not client JSON parsing or rendering.
-use crate::{Point, Segment, brute_force_intersections, http, intersections, trace_intersections};
+use crate::{Point, Segment, brute_force_intersections, http, intersections};
+use crate::sweep::trace_intersections;
 use super::protocol::{Request, Response, IntersectionDto};
 use axum::{
     Json,

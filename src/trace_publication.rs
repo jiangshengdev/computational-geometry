@@ -1,5 +1,7 @@
 //! Publishes finalized observations without mutating delivered steps.
-use crate::{Point, PointRepresentation, Rational, SweepStep, SweepTrace};
+use crate::geometry::PointRepresentation;
+use crate::teaching::{SweepStep, SweepTrace};
+use crate::{Point, Rational};
 
 pub(super) struct TracePublication<'a> {
     steps: Vec<SweepStep>,
