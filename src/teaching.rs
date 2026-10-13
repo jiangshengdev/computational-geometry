@@ -442,21 +442,6 @@ impl SweepStep {
         }
     }
 
-    pub(crate) fn take_context(
-        &mut self,
-        boundary: usize,
-        next: Option<&Option<(Point, Event)>>,
-        bound: Option<(&Point, &Event)>,
-        segments_value: &Arc<str>,
-        shear: &Rational,
-    ) {
-        self.execution.module = "take";
-        self.execution.boundary = Some(boundary);
-        self.execution.entry = boundary == 0;
-        self.sweep_context(segments_value, shear);
-        self.take_bindings(boundary, next, bound);
-    }
-
     pub(crate) fn sweep_context(&mut self, segments_value: &Arc<str>, shear: &Rational) {
         let locals = &mut self.execution.context.locals;
         locals.push(Variable::available(
@@ -465,51 +450,6 @@ impl SweepStep {
             Arc::clone(segments_value),
         ));
         locals.push(Variable::available("shear", "Rational", shear.to_string()));
-    }
-
-    pub(crate) fn take_bindings(
-        &mut self,
-        boundary: usize,
-        next: Option<&Option<(Point, Event)>>,
-        bound: Option<(&Point, &Event)>,
-    ) {
-        let locals = &mut self.execution.context.locals;
-        locals.push(match next {
-            Some(next) => Variable::available(
-                "next",
-                "Option<(Point, Event)>",
-                next.as_ref().map_or_else(
-                    || "None".to_owned(),
-                    |(point, event)| {
-                        format!("Some(({}, {}))", point_value(point), event_value(event))
-                    },
-                ),
-            ),
-            None => Variable::absent(
-                "next",
-                "Option<(Point, Event)>",
-                if boundary == 0 {
-                    "unassigned"
-                } else {
-                    "unavailable"
-                },
-            ),
-        });
-        match bound {
-            Some((point, event)) => {
-                locals.push(Variable::available("point", "Point", point_value(point)));
-                locals.push(Variable::available("event", "Event", event_value(event)));
-            }
-            None => {
-                let availability = if boundary < 2 {
-                    "unassigned"
-                } else {
-                    "unavailable"
-                };
-                locals.push(Variable::absent("point", "Point", availability));
-                locals.push(Variable::absent("event", "Event", availability));
-            }
-        }
     }
 
     pub(crate) fn preserve_geometry(&mut self, previous: &Self) {

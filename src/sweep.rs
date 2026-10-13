@@ -1,7 +1,15 @@
 //! Exact sweep state and its execution path.
 use crate::teaching::*;
 use crate::trace_publication;
+
+mod classify;
+mod observation;
+mod record;
+mod take;
 use crate::{Geometry, Intersection, Point, Rational, Segment};
+use observation::{
+    ObservationState, Recorder, block_end, call, control, observe, pending_call, reset_controls,
+};
 use std::collections::BTreeMap;
 use std::sync::Arc;
 
@@ -280,6 +288,7 @@ pub(crate) fn stream_intersections(
 macro_rules! nop {
     () => {};
 }
+pub(super) use nop;
 
 fn sweep(
     segments: &[Segment],
@@ -341,14 +350,11 @@ fn sweep(
         result,
     };
     let SweepState {
-        segments,
-        shear,
         queue,
         active,
-        height_order,
         result,
+        ..
     } = &mut state;
-    let shear = &*shear;
 
     if let Some(steps) = &mut steps {
         steps.push(SweepStep::capture(
@@ -371,1084 +377,81 @@ fn sweep(
         if cancelled() {
             return None;
         }
-        let mut steps = publication
-            .as_mut()
-            .map(trace_publication::TracePublication::steps);
-        if let Some(steps) = &mut steps {
-            let mut step = SweepStep::capture(
-                "take-entry",
-                None,
-                queue,
-                active,
-                result,
-                &[],
-                &[],
-                input_value.as_ref().expect("tracing captures input"),
-            );
-            step.preserve_geometry(steps.last().expect("initial snapshot exists"));
-            step.take_context(
-                0,
-                None,
-                None,
-                trace_segments.as_ref().expect("tracing captures segments"),
-                shear,
-            );
-            let queue_argument = step
-                .execution
-                .context
-                .locals
-                .iter()
-                .find(|variable| variable.name == "queue")
-                .and_then(|variable| variable.value.as_ref())
-                .expect("queue is available")
-                .clone();
-            step.execution.calls.push(ExecutionCall::pending(
-                1,
-                "pop_first",
-                0,
-                vec![Variable::available(
-                    "self",
-                    "&mut BTreeMap<Point, Event>",
-                    queue_argument,
-                )],
-                "Option<(Point, Event)>",
-            ));
-            steps.push(step);
-        }
-        let next = queue.pop_first();
-        if let Some(steps) = &mut steps {
-            let mut step = SweepStep::capture(
-                "take-pop",
-                None,
-                queue,
-                active,
-                result,
-                &[],
-                &[],
-                input_value.as_ref().expect("tracing captures input"),
-            );
-            step.preserve_geometry(steps.last().expect("entry snapshot exists"));
-            step.take_context(
-                1,
-                Some(&next),
-                None,
-                trace_segments.as_ref().expect("tracing captures segments"),
-                shear,
-            );
-            step.execution.calls.push(ExecutionCall {
-                line: 1,
-                function: "pop_first",
-                occurrence: 0,
-                arguments: vec![Variable::available(
-                    "self",
-                    "&mut BTreeMap<Point, Event>",
-                    steps
-                        .last()
-                        .expect("take entry exists")
-                        .execution
-                        .context
-                        .locals
-                        .iter()
-                        .find(|variable| variable.name == "queue")
-                        .and_then(|variable| variable.value.as_ref())
-                        .expect("queue is available")
-                        .clone(),
-                )],
-                result: Variable::available(
-                    "return_value",
-                    "Option<(Point, Event)>",
-                    next.as_ref().map_or_else(
-                        || "None".to_owned(),
-                        |(point, event)| {
-                            format!("Some(({}, {}))", point_value(point), event_value(event))
-                        },
-                    ),
-                ),
-            });
-            steps.push(step);
-        }
-        let Some((point, event)) = next else {
-            if let Some(steps) = &mut steps {
-                let mut step = SweepStep::capture(
-                    "take-empty",
-                    None,
-                    queue,
-                    active,
-                    result,
-                    &[],
-                    &[],
-                    input_value.as_ref().expect("tracing captures input"),
-                );
-                step.preserve_geometry(steps.last().expect("pop snapshot exists"));
-                step.take_context(
-                    3,
-                    Some(&next),
-                    None,
-                    trace_segments.as_ref().expect("tracing captures segments"),
-                    shear,
-                );
-                step.execution.control(2, "else", "entered");
-                step.execution.control(2, "break", "pending");
-                step.execution.calls.clone_from(
-                    &steps
-                        .last()
-                        .expect("pop observation exists")
-                        .execution
-                        .calls,
-                );
-                step.action = "micro";
-                steps.push(step.clone());
-                step.execution.boundary = Some(4);
-                step.execution.control(2, "break", "completed");
-                step.action = "take-empty";
-                steps.push(step);
-            }
+        let mut recording = Recorder {
+            steps: publication
+                .as_mut()
+                .map(trace_publication::TracePublication::steps),
+            input_value: &input_value,
+            trace_segments: &trace_segments,
+            next_call: &next_call,
+            cancelled,
+        };
+        let Some(take::TakenEvent {
+            point,
+            event,
+            first_step,
+        }) = take::take(&mut state, &mut recording)
+        else {
             break;
         };
-        let first_step = steps.as_ref().map_or(0, |steps| steps.len());
-        if let Some(steps) = &mut steps {
-            let mut step = SweepStep::capture(
-                "take",
-                Some(&point),
-                queue,
-                active,
-                result,
-                &[],
-                &[],
-                input_value.as_ref().expect("tracing captures input"),
-            );
-            step.take_context(
-                2,
-                None,
-                Some((&point, &event)),
-                trace_segments.as_ref().expect("tracing captures segments"),
-                shear,
-            );
-            step.execution.control(2, "else", "skipped");
-            step.execution.control(2, "break", "skipped");
-            step.execution.calls.clone_from(
-                &steps
-                    .last()
-                    .expect("pop observation exists")
-                    .execution
-                    .calls,
-            );
-            steps.push(step);
-        }
-        // These observations execute beside the operations they describe. The
-        // event-wide membership fields remain a separate teaching summary.
-        macro_rules! observe {
-            ($module:expr, $boundary:expr, $subjects:expr, $locals:expr) => {
-                if cancelled() {
-                    return None;
-                }
-                if let Some(steps) = &mut steps {
-                    let mut step = SweepStep::capture(
-                        "micro",
-                        Some(&point),
+        let classified = classify::classify(&mut state, &point, event, &mut recording)?;
+        record::record(&mut state, &point, &classified, &mut recording)?;
+        let classify::ClassifiedEvent {
+            mut incident,
+            participants,
+        } = classified;
+        let SweepState {
+            segments,
+            shear,
+            queue,
+            active,
+            height_order,
+            result,
+        } = &mut state;
+        let shear = &*shear;
+        macro_rules! activity {
+            ($boundary:expr, $incident:expr, $position:expr, $inserted:expr) => {
+                observe!(
+                    recording,
+                    ObservationState {
                         queue,
                         active,
                         result,
-                        &[],
-                        $subjects,
-                        input_value.as_ref().expect("tracing captures input"),
-                    );
-                    step.sweep_context(
-                        trace_segments.as_ref().expect("tracing captures segments"),
-                        shear,
-                    );
-                    step.execution.module = $module;
-                    step.execution.boundary = Some($boundary);
-                    step.execution.entry = $boundary == 0;
-                    if let Some(previous) = steps.last()
-                        && previous.execution.module == $module
-                        && $boundary != 0
+                        height_order,
+                        shear
+                    },
+                    &point,
+                    "activity",
+                    $boundary,
+                    &[],
                     {
-                        step.execution
-                            .controls
-                            .clone_from(&previous.execution.controls);
-                    }
-                    step.execution.context.locals.push(Variable::available(
-                        "point",
-                        "Point",
-                        point_value(&point),
-                    ));
-                    step.execution.context.locals.push(Variable::available(
-                        "height_order",
-                        "Vec<Ordering>",
-                        format!("{height_order:?}"),
-                    ));
-                    step.execution.context.locals.extend($locals);
-                    steps.push(step);
-                }
-            };
-        }
-        macro_rules! call {
-            ($line:expr, $function:expr, $arguments:expr, $result:expr) => {
-                if let Some(steps) = &mut steps {
-                    steps
-                        .last_mut()
-                        .expect("operation observation exists")
-                        .execution
-                        .calls
-                        .push(ExecutionCall {
-                            line: $line,
-                            function: $function,
-                            occurrence: 0,
-                            arguments: $arguments,
-                            result: $result,
-                        });
-                }
-            };
-        }
-        macro_rules! control {
-            ($line:expr, "for", "exhausted") => {
-                if let Some(steps) = &mut steps {
-                    ExecutionControl::exhaust_loop(steps, $line);
-                }
-            };
-            ($line:expr, $keyword:expr, $state:expr) => {
-                if let Some(steps) = &mut steps {
-                    steps
-                        .last_mut()
-                        .expect("control observation exists")
-                        .execution
-                        .control($line, $keyword, $state);
-                }
-            };
-        }
-        macro_rules! reset_controls {
-            ($line:expr) => {
-                if let Some(steps) = &mut steps {
-                    steps
-                        .last_mut()
-                        .expect("loop observation exists")
-                        .execution
-                        .controls
-                        .retain(|control| control.line < $line);
-                }
-            };
-        }
-        macro_rules! pending_call {
-            ($line:expr, $function:expr, $occurrence:expr, $arguments:expr, $result_type:expr) => {
-                if let Some(steps) = &mut steps {
-                    steps
-                        .last_mut()
-                        .expect("operation observation exists")
-                        .execution
-                        .calls
-                        .push(ExecutionCall::pending(
-                            $line,
-                            $function,
-                            $occurrence,
-                            $arguments,
-                            $result_type,
-                        ));
-                }
-            };
-        }
-        macro_rules! block_end {
-            ($boundary:expr, $line:expr) => {
-                if let Some(steps) = &mut steps {
-                    SweepStep::block_before(steps, $boundary, $line);
-                    SweepStep::block_after(steps, $line);
-                }
-            };
-        }
-        observe!(
-            "classify",
-            0,
-            &[],
-            vec![
-                Variable::available("event", "Event", event_value(&event)),
-                Variable::absent("incident", "Vec<usize>", "unassigned"),
-                Variable::absent("id", "usize", "unassigned"),
-                Variable::absent("starts", "Vec<usize>", "unassigned"),
-                Variable::absent("ends", "Vec<usize>", "unassigned"),
-                Variable::absent("passes", "Vec<usize>", "unassigned"),
-            ]
-        );
-        let mut incident = event.starts;
-        macro_rules! classify {
-            ($boundary:expr, $id:expr, $members:expr) => {
-                observe!("classify", $boundary, &[], {
-                    let id: Option<usize> = $id;
-                    let members: Option<(&Vec<usize>, &Vec<usize>, &Vec<usize>)> = $members;
-                    let mut locals = vec![
-                        Variable::absent("event", "Event", "unavailable"),
-                        Variable::available("incident", "Vec<usize>", format!("{incident:?}")),
-                        id.map_or_else(
-                            || {
-                                Variable::absent(
-                                    "id",
-                                    "usize",
-                                    if $boundary == 1 {
-                                        "unassigned"
-                                    } else {
-                                        "unavailable"
-                                    },
+                        let incident: Option<&Vec<usize>> = $incident;
+                        let position: Option<usize> = $position;
+                        let inserted: Option<usize> = $inserted;
+                        let mut locals = vec![incident.map_or_else(
+                            || Variable::absent("incident", "Vec<usize>", "unavailable"),
+                            |incident| {
+                                Variable::available(
+                                    "incident",
+                                    "Vec<usize>",
+                                    format!("{incident:?}"),
                                 )
                             },
-                            |id| Variable::available("id", "usize", id.to_string()),
-                        ),
-                    ];
-                    for (name, value) in [
-                        ("starts", members.map(|members| members.0)),
-                        ("ends", members.map(|members| members.1)),
-                        ("passes", members.map(|members| members.2)),
-                    ] {
-                        locals.push(value.map_or_else(
-                            || Variable::absent(name, "Vec<usize>", "unassigned"),
-                            |value| Variable::available(name, "Vec<usize>", format!("{value:?}")),
-                        ));
-                    }
-                    if let Some(id) = locals.iter_mut().find(|variable| variable.name == "id") {
-                        id.scope = Some(if members.is_some() {
-                            "classify.incident"
-                        } else {
-                            "classify.active"
-                        });
-                    }
-                    locals
-                });
-            };
-        }
-        classify!(1, None, None);
-        // Every active segment spans the current x. Recover the whole equal-y
-        // block, including unscheduled participants in a multiway crossing.
-        // Refresh every active entry for this event before consulting it. Only
-        // its ordering against the event height is needed by the later removal
-        // and insertion searches; newly starting segments are not read here.
-        for &id in active.iter() {
-            classify!(2, Some(id), None);
-            reset_controls!(2);
-            control!(2, "for", "entered");
-            pending_call!(
-                3,
-                "y_at",
-                0,
-                vec![
-                    Variable::available(
-                        "self",
-                        "&SweepSegment",
-                        sweep_segment_value(&segments[id])
-                    ),
-                    Variable::available("x", "&Rational", point.x.to_string())
-                ],
-                "Rational"
-            );
-            pending_call!(
-                3,
-                "cmp",
-                0,
-                vec![
-                    Variable::absent("self", "&Rational", "unassigned"),
-                    Variable::available("other", "&Rational", point.y.to_string())
-                ],
-                "Ordering"
-            );
-            let height = segments[id].y_at(&point.x);
-            height_order[id] = height.cmp(&point.y);
-            classify!(3, Some(id), None);
-            call!(
-                3,
-                "y_at",
-                vec![
-                    Variable::available(
-                        "self",
-                        "&SweepSegment",
-                        sweep_segment_value(&segments[id])
-                    ),
-                    Variable::available("x", "&Rational", point.x.to_string())
-                ],
-                Variable::available("return_value", "Rational", height.to_string())
-            );
-            call!(
-                3,
-                "cmp",
-                vec![
-                    Variable::available("self", "&Rational", height.to_string()),
-                    Variable::available("other", "&Rational", point.y.to_string())
-                ],
-                Variable::available(
-                    "return_value",
-                    "Ordering",
-                    format!("{:?}", height_order[id])
-                )
-            );
-            pending_call!(
-                4,
-                "is_eq",
-                0,
-                vec![Variable::available(
-                    "self",
-                    "Ordering",
-                    format!("{:?}", height_order[id])
-                )],
-                "bool"
-            );
-            let equal = height_order[id].is_eq();
-            if equal {
-                classify!(4, Some(id), None);
-                control!(4, "if", "true");
-                call!(
-                    4,
-                    "is_eq",
-                    vec![Variable::available(
-                        "self",
-                        "Ordering",
-                        format!("{:?}", height_order[id])
-                    )],
-                    Variable::available("return_value", "bool", equal.to_string())
-                );
-                pending_call!(
-                    5,
-                    "push",
-                    0,
-                    vec![
-                        Variable::available("self", "&mut Vec<usize>", format!("{incident:?}")),
-                        Variable::available("value", "usize", id.to_string())
-                    ],
-                    "()"
-                );
-                let before = steps.as_ref().map(|_| format!("{incident:?}"));
-                incident.push(id);
-                classify!(5, Some(id), None);
-                call!(
-                    5,
-                    "push",
-                    vec![
-                        Variable::available(
-                            "self",
-                            "&mut Vec<usize>",
-                            before.expect("trace captures arguments")
-                        ),
-                        Variable::available("value", "usize", id.to_string())
-                    ],
-                    Variable::available("return_value", "()", "()".to_owned())
-                );
-                block_end!(18, 4);
-            } else {
-                classify!(5, Some(id), None);
-                control!(4, "if", "false");
-                call!(
-                    4,
-                    "is_eq",
-                    vec![Variable::available(
-                        "self",
-                        "Ordering",
-                        format!("{:?}", height_order[id])
-                    )],
-                    Variable::available("return_value", "bool", equal.to_string())
-                );
-            }
-            if let Some(steps) = &mut steps {
-                steps
-                    .last_mut()
-                    .expect("loop body completion exists")
-                    .execution
-                    .blocks
-                    .push(ExecutionBlock {
-                        line: 2,
-                        phase: "before",
-                    });
-            }
-            classify!(16, None, None);
-            reset_controls!(2);
-            control!(2, "for", "pending");
-        }
-        classify!(6, None, None);
-        control!(2, "for", "exhausted");
-        // Capture membership once from the same exact incident block used by
-        // the sweep, before removals or insertions change the active state.
-        let participants = if steps.is_some() {
-            let mut starts = Vec::new();
-            let mut ends = Vec::new();
-            let mut passes = Vec::new();
-            classify!(7, None, Some((&starts, &ends, &passes)));
-            for &id in &incident {
-                classify!(8, Some(id), Some((&starts, &ends, &passes)));
-                reset_controls!(8);
-                control!(8, "for", "entered");
-                if segments[id].left == point {
-                    classify!(9, Some(id), Some((&starts, &ends, &passes)));
-                    control!(9, "if", "true");
-                    pending_call!(
-                        10,
-                        "push",
-                        0,
-                        vec![
-                            Variable::available("self", "&mut Vec<usize>", format!("{starts:?}")),
-                            Variable::available("value", "usize", id.to_string())
-                        ],
-                        "()"
-                    );
-                    let before = format!("{starts:?}");
-                    starts.push(id);
-                    classify!(10, Some(id), Some((&starts, &ends, &passes)));
-                    call!(
-                        10,
-                        "push",
-                        vec![
-                            Variable::available("self", "&mut Vec<usize>", before),
-                            Variable::available("value", "usize", id.to_string())
-                        ],
-                        Variable::available("return_value", "()", "()".to_owned())
-                    );
-                    block_end!(19, 9);
-                } else {
-                    classify!(10, Some(id), Some((&starts, &ends, &passes)));
-                    control!(9, "if", "false");
-                }
-                if segments[id].right == point {
-                    classify!(11, Some(id), Some((&starts, &ends, &passes)));
-                    control!(11, "if", "true");
-                    pending_call!(
-                        12,
-                        "push",
-                        0,
-                        vec![
-                            Variable::available("self", "&mut Vec<usize>", format!("{ends:?}")),
-                            Variable::available("value", "usize", id.to_string())
-                        ],
-                        "()"
-                    );
-                    let before = format!("{ends:?}");
-                    ends.push(id);
-                    classify!(12, Some(id), Some((&starts, &ends, &passes)));
-                    call!(
-                        12,
-                        "push",
-                        vec![
-                            Variable::available("self", "&mut Vec<usize>", before),
-                            Variable::available("value", "usize", id.to_string())
-                        ],
-                        Variable::available("return_value", "()", "()".to_owned())
-                    );
-                    block_end!(20, 11);
-                } else {
-                    classify!(12, Some(id), Some((&starts, &ends, &passes)));
-                    control!(11, "if", "false");
-                }
-                if segments[id].left != point && segments[id].right != point {
-                    classify!(13, Some(id), Some((&starts, &ends, &passes)));
-                    control!(13, "if", "true");
-                    pending_call!(
-                        14,
-                        "push",
-                        0,
-                        vec![
-                            Variable::available("self", "&mut Vec<usize>", format!("{passes:?}")),
-                            Variable::available("value", "usize", id.to_string())
-                        ],
-                        "()"
-                    );
-                    let before = format!("{passes:?}");
-                    passes.push(id);
-                    classify!(14, Some(id), Some((&starts, &ends, &passes)));
-                    call!(
-                        14,
-                        "push",
-                        vec![
-                            Variable::available("self", "&mut Vec<usize>", before),
-                            Variable::available("value", "usize", id.to_string())
-                        ],
-                        Variable::available("return_value", "()", "()".to_owned())
-                    );
-                    block_end!(21, 13);
-                } else {
-                    classify!(14, Some(id), Some((&starts, &ends, &passes)));
-                    control!(13, "if", "false");
-                }
-                if let Some(steps) = &mut steps {
-                    steps
-                        .last_mut()
-                        .expect("loop body completion exists")
-                        .execution
-                        .blocks
-                        .push(ExecutionBlock {
-                            line: 8,
-                            phase: "before",
-                        });
-                }
-                classify!(17, None, Some((&starts, &ends, &passes)));
-                reset_controls!(8);
-                control!(8, "for", "pending");
-            }
-            classify!(15, None, Some((&starts, &ends, &passes)));
-            control!(8, "for", "exhausted");
-            Some((starts, ends, passes))
-        } else {
-            None
-        };
-        macro_rules! record {
-            ($boundary:expr, $indices:expr, $interval:expr, $geometry:expr) => {
-                observe!(
-                    "record",
-                    $boundary,
-                    &{
-                        let indices: Option<(usize, usize, Option<usize>)> = $indices;
-                        indices
-                            .and_then(|(_, a, b)| b.map(|b| vec![a, b]))
-                            .unwrap_or_default()
-                    },
-                    {
-                        let indices: Option<(usize, usize, Option<usize>)> = $indices;
-                        let (start, end): (Option<&Point>, Option<&Point>) = $interval;
-                        let geometry: Option<&Geometry> = $geometry;
-                        let mut locals = vec![
-                            Variable::absent("event", "Event", "unavailable"),
-                            Variable::available("incident", "Vec<usize>", format!("{incident:?}")),
-                            Variable::available(
-                                "participants",
-                                "Option<(Vec<usize>, Vec<usize>, Vec<usize>)>",
-                                format!("{participants:?}"),
-                            ),
-                        ];
-                        for (name, value) in [
-                            ("i", indices.map(|indices| indices.0)),
-                            ("a", indices.map(|indices| indices.1)),
-                            ("b", indices.and_then(|indices| indices.2)),
-                        ] {
+                        )];
+                        for (name, value) in [("position", position), ("inserted", inserted)] {
                             locals.push(value.map_or_else(
-                                || {
-                                    Variable::absent(
-                                        name,
-                                        "usize",
-                                        if $boundary == 0 || ($boundary == 1 && name == "b") {
-                                            "unassigned"
-                                        } else {
-                                            "unavailable"
-                                        },
-                                    )
-                                },
+                                || Variable::absent(name, "usize", "unassigned"),
                                 |value| Variable::available(name, "usize", value.to_string()),
                             ));
-                        }
-                        let in_pair = indices.is_some_and(|indices| indices.2.is_some());
-                        locals.push(if in_pair && matches!($boundary, 3..=14 | 19..=22) {
-                            Variable::available(
-                                "original",
-                                "closure",
-                                "|p| Point { x: p.x - shear * p.y, y: p.y }".to_owned(),
-                            )
-                        } else {
-                            Variable::absent(
-                                "original",
-                                "closure",
-                                if in_pair { "unassigned" } else { "unavailable" },
-                            )
-                        });
-                        for (name, value) in [("start", start), ("end", end)] {
-                            locals.push(value.map_or_else(
-                                || {
-                                    Variable::absent(
-                                        name,
-                                        "&Point",
-                                        if in_pair && matches!($boundary, 2..=10) {
-                                            "unassigned"
-                                        } else {
-                                            "unavailable"
-                                        },
-                                    )
-                                },
-                                |value| Variable::available(name, "&Point", point_value(value)),
-                            ));
-                        }
-                        locals.push(geometry.map_or_else(
-                            || {
-                                Variable::absent(
-                                    "geometry",
-                                    "Geometry",
-                                    if matches!($boundary, 0..=12 | 19..=22) {
-                                        "unassigned"
-                                    } else {
-                                        "unavailable"
-                                    },
-                                )
-                            },
-                            |geometry| {
-                                Variable::available(
-                                    "geometry",
-                                    "Geometry",
-                                    geometry_value(geometry),
-                                )
-                            },
-                        ));
-                        for variable in &mut locals {
-                            variable.scope = match variable.name {
-                                "i" | "a" => Some("record.incident"),
-                                "b" | "original" | "geometry" => Some("record.pair"),
-                                "start" | "end" => Some("record.overlap"),
-                                _ => variable.scope,
-                            };
                         }
                         locals
                     }
                 );
-                if $boundary == 14
-                    && let Some(steps) = &mut steps
-                {
-                    steps
-                        .last_mut()
-                        .expect("record observation was captured")
-                        .action = "record";
-                }
-            };
-        }
-        record!(0, None, (None, None), None);
-        for (i, &a) in incident.iter().enumerate() {
-            record!(1, Some((i, a, None)), (None, None), None);
-            reset_controls!(1);
-            control!(1, "for", "entered");
-            for &b in &incident[i + 1..] {
-                record!(2, Some((i, a, Some(b))), (None, None), None);
-                reset_controls!(2);
-                control!(2, "for", "entered");
-                let mut original_calls = steps.as_ref().map(|_| Vec::new());
-                let mut original_line = 12;
-                let mut original = |p: &Point, steps: &mut Option<&mut Vec<SweepStep>>| {
-                    nop!();
-                    let trace = steps.as_mut().map(|steps| {
-                        ClosureTrace::enter(
-                            steps,
-                            &next_call,
-                            "original",
-                            "original closure",
-                            vec![Variable::available("p", "&Point", point_value(p))],
-                            &["shear"],
-                            "Point",
-                        )
-                    });
-                    let transformed = Point {
-                        x: &p.x - shear * &p.y,
-                        y: p.y.clone(),
-                    };
-                    if let Some(calls) = &mut original_calls {
-                        calls.push((point_value(p), point_value(&transformed)));
-                    }
-                    if let Some(trace) = trace {
-                        trace.returned(
-                            steps.as_mut().expect("tracing is enabled"),
-                            point_value(&transformed),
-                        );
-                    }
-                    transformed
-                };
-                record!(3, Some((i, a, Some(b))), (None, None), None);
-                let geometry = if segments[a].slope == segments[b].slope {
-                    record!(4, Some((i, a, Some(b))), (None, None), None);
-                    control!(4, "if", "true");
-                    control!(12, "else", "skipped");
-                    pending_call!(
-                        5,
-                        "max",
-                        0,
-                        vec![
-                            Variable::available("self", "&Point", point_value(&segments[a].left)),
-                            Variable::available("other", "&Point", point_value(&segments[b].left))
-                        ],
-                        "&Point"
-                    );
-                    // Incident segments with equal slopes lie on the same line.
-                    // Emit exactly at the later start, using both original ends
-                    // rather than the next event (which may involve a third input).
-                    let start = (&segments[a].left).max(&segments[b].left);
-                    record!(5, Some((i, a, Some(b))), (Some(start), None), None);
-                    call!(
-                        5,
-                        "max",
-                        vec![
-                            Variable::available("self", "&Point", point_value(&segments[a].left)),
-                            Variable::available("other", "&Point", point_value(&segments[b].left))
-                        ],
-                        Variable::available("return_value", "&Point", point_value(start))
-                    );
-                    if start != &point {
-                        record!(6, Some((i, a, Some(b))), (Some(start), None), None);
-                        control!(6, "if", "true");
-                        control!(7, "continue", "pending");
-                        record!(17, Some((i, a, None)), (None, None), None);
-                        reset_controls!(2);
-                        control!(2, "for", "pending");
-                        control!(7, "continue", "jumping");
-                        continue;
-                    }
-                    record!(7, Some((i, a, Some(b))), (Some(start), None), None);
-                    control!(6, "if", "false");
-                    control!(7, "continue", "skipped");
-                    pending_call!(
-                        8,
-                        "min",
-                        0,
-                        vec![
-                            Variable::available("self", "&Point", point_value(&segments[a].right)),
-                            Variable::available("other", "&Point", point_value(&segments[b].right))
-                        ],
-                        "&Point"
-                    );
-                    let end = (&segments[a].right).min(&segments[b].right);
-                    record!(8, Some((i, a, Some(b))), (Some(start), Some(end)), None);
-                    call!(
-                        8,
-                        "min",
-                        vec![
-                            Variable::available("self", "&Point", point_value(&segments[a].right)),
-                            Variable::available("other", "&Point", point_value(&segments[b].right))
-                        ],
-                        Variable::available("return_value", "&Point", point_value(end))
-                    );
-                    let branch_geometry = if start < end {
-                        record!(9, Some((i, a, Some(b))), (Some(start), Some(end)), None);
-                        control!(9, "if", "true");
-                        control!(11, "else", "skipped");
-                        pending_call!(
-                            10,
-                            "original",
-                            0,
-                            vec![Variable::available("p", "&Point", point_value(start))],
-                            "Point"
-                        );
-                        pending_call!(
-                            10,
-                            "original",
-                            1,
-                            vec![Variable::available("p", "&Point", point_value(end))],
-                            "Point"
-                        );
-                        original_line = 10;
-                        let value = Geometry::Overlap {
-                            start: original(start, &mut steps),
-                            end: original(end, &mut steps),
-                        };
-                        record!(19, Some((i, a, Some(b))), (Some(start), Some(end)), None);
-                        if let Some(steps) = &mut steps {
-                            steps
-                                .last_mut()
-                                .expect("branch completion exists")
-                                .execution
-                                .blocks
-                                .push(ExecutionBlock {
-                                    line: 9,
-                                    phase: "before",
-                                });
-                        }
-                        value
-                    } else {
-                        record!(10, Some((i, a, Some(b))), (Some(start), Some(end)), None);
-                        control!(9, "if", "false");
-                        control!(11, "else", "entered");
-                        pending_call!(
-                            11,
-                            "original",
-                            0,
-                            vec![Variable::available("p", "&Point", point_value(start))],
-                            "Point"
-                        );
-                        original_line = 11;
-                        let value = Geometry::Point(original(start, &mut steps));
-                        record!(20, Some((i, a, Some(b))), (Some(start), Some(end)), None);
-                        if let Some(steps) = &mut steps {
-                            steps
-                                .last_mut()
-                                .expect("branch completion exists")
-                                .execution
-                                .blocks
-                                .push(ExecutionBlock {
-                                    line: 11,
-                                    phase: "before",
-                                });
-                        }
-                        value
-                    };
-                    record!(21, Some((i, a, Some(b))), (Some(start), Some(end)), None);
-                    if let Some(steps) = &mut steps {
-                        steps
-                            .last_mut()
-                            .expect("branch completion exists")
-                            .execution
-                            .blocks
-                            .push(ExecutionBlock {
-                                line: 4,
-                                phase: "before",
-                            });
-                        SweepStep::block_after(steps, if start < end { 9 } else { 11 });
-                    }
-                    branch_geometry
-                } else {
-                    record!(11, Some((i, a, Some(b))), (None, None), None);
-                    control!(4, "if", "false");
-                    control!(12, "else", "entered");
-                    pending_call!(
-                        12,
-                        "original",
-                        0,
-                        vec![Variable::available("p", "&Point", point_value(&point))],
-                        "Point"
-                    );
-                    let value = Geometry::Point(original(&point, &mut steps));
-                    record!(22, Some((i, a, Some(b))), (None, None), None);
-                    if let Some(steps) = &mut steps {
-                        steps
-                            .last_mut()
-                            .expect("branch completion exists")
-                            .execution
-                            .blocks
-                            .push(ExecutionBlock {
-                                line: 12,
-                                phase: "before",
-                            });
-                    }
-                    value
-                };
-                record!(13, Some((i, a, Some(b))), (None, None), Some(&geometry));
-                if let Some(steps) = &mut steps {
-                    steps
-                        .last_mut()
-                        .expect("geometry observation exists")
-                        .execution
-                        .calls
-                        .extend(
-                            original_calls
-                                .expect("tracing records original calls")
-                                .into_iter()
-                                .enumerate()
-                                .map(|(occurrence, (argument, returned))| ExecutionCall {
-                                    line: original_line,
-                                    function: "original",
-                                    occurrence,
-                                    arguments: vec![Variable::available("p", "&Point", argument)],
-                                    result: Variable::available("return_value", "Point", returned),
-                                }),
-                        );
-                }
-                pending_call!(
-                    14,
-                    "min",
-                    0,
-                    vec![
-                        Variable::available("self", "usize", a.to_string()),
-                        Variable::available("other", "usize", b.to_string())
-                    ],
-                    "usize"
-                );
-                pending_call!(
-                    14,
-                    "max",
-                    0,
-                    vec![
-                        Variable::available("self", "usize", a.to_string()),
-                        Variable::available("other", "usize", b.to_string())
-                    ],
-                    "usize"
-                );
-                pending_call!(
-                    14,
-                    "push",
-                    0,
-                    vec![
-                        Variable::available(
-                            "self",
-                            "&mut Vec<Intersection>",
-                            intersections_value(result)
-                        ),
-                        Variable::absent("value", "Intersection", "unassigned")
-                    ],
-                    "()"
-                );
-                if let Some(steps) = &mut steps {
-                    SweepStep::block_after(
-                        steps,
-                        if segments[a].slope == segments[b].slope {
-                            4
-                        } else {
-                            12
-                        },
-                    );
-                }
-                let lower_id = a.min(b);
-                let upper_id = a.max(b);
-                let intersection = Intersection {
-                    segments: [lower_id, upper_id],
-                    geometry,
-                };
-                let push_arguments = steps.as_ref().map(|_| {
-                    vec![
-                        Variable::available(
-                            "self",
-                            "&mut Vec<Intersection>",
-                            intersections_value(result),
-                        ),
-                        Variable::available(
-                            "value",
-                            "Intersection",
-                            intersection_value(&intersection),
-                        ),
-                    ]
-                });
-                result.push(intersection);
-                record!(14, Some((i, a, Some(b))), (None, None), None);
-                call!(
-                    14,
-                    "min",
-                    vec![
-                        Variable::available("self", "usize", a.to_string()),
-                        Variable::available("other", "usize", b.to_string())
-                    ],
-                    Variable::available("return_value", "usize", lower_id.to_string())
-                );
-                call!(
-                    14,
-                    "max",
-                    vec![
-                        Variable::available("self", "usize", a.to_string()),
-                        Variable::available("other", "usize", b.to_string())
-                    ],
-                    Variable::available("return_value", "usize", upper_id.to_string())
-                );
-                call!(
-                    14,
-                    "push",
-                    push_arguments.expect("trace captures arguments"),
-                    Variable::available("return_value", "()", "()".to_owned())
-                );
-                record!(17, Some((i, a, None)), (None, None), None);
-                reset_controls!(2);
-                control!(2, "for", "pending");
-            }
-            record!(15, Some((i, a, None)), (None, None), None);
-            control!(2, "for", "exhausted");
-            record!(18, None, (None, None), None);
-            reset_controls!(1);
-            control!(1, "for", "pending");
-        }
-        record!(16, None, (None, None), None);
-        control!(1, "for", "exhausted");
-        macro_rules! activity {
-            ($boundary:expr, $incident:expr, $position:expr, $inserted:expr) => {
-                observe!("activity", $boundary, &[], {
-                    let incident: Option<&Vec<usize>> = $incident;
-                    let position: Option<usize> = $position;
-                    let inserted: Option<usize> = $inserted;
-                    let mut locals = vec![incident.map_or_else(
-                        || Variable::absent("incident", "Vec<usize>", "unavailable"),
-                        |incident| {
-                            Variable::available("incident", "Vec<usize>", format!("{incident:?}"))
-                        },
-                    )];
-                    for (name, value) in [("position", position), ("inserted", inserted)] {
-                        locals.push(value.map_or_else(
-                            || Variable::absent(name, "usize", "unassigned"),
-                            |value| Variable::available(name, "usize", value.to_string()),
-                        ));
-                    }
-                    locals
-                });
             };
         }
         macro_rules! closure_call {
             ($module:expr, $function:expr, $parameters:expr, $captures:expr, $type:expr, $body:expr, $format:expr) => {{
-                let trace = steps.as_mut().map(|steps| {
+                let trace = recording.steps.as_mut().map(|steps| {
                     ClosureTrace::enter(
                         steps,
                         &next_call,
@@ -1462,7 +465,7 @@ fn sweep(
                 let value = $body;
                 if let Some(trace) = trace {
                     trace.returned(
-                        steps.as_mut().expect("tracing is enabled"),
+                        recording.steps.as_mut().expect("tracing is enabled"),
                         ($format)(&value),
                     );
                 }
@@ -1470,15 +473,16 @@ fn sweep(
             }};
         }
         activity!(0, Some(&incident), None, None);
-        let removed = steps.as_ref().map(|_| {
+        let removed = recording.steps.as_ref().map(|_| {
             active
                 .iter()
                 .copied()
                 .filter(|&id| segments[id].right == point)
                 .collect::<Vec<_>>()
         });
-        let before = steps.as_ref().map(|_| format!("{active:?}"));
+        let before = recording.steps.as_ref().map(|_| format!("{active:?}"));
         pending_call!(
+            recording,
             1,
             "retain",
             0,
@@ -1510,6 +514,7 @@ fn sweep(
         });
         activity!(1, Some(&incident), None, None);
         call!(
+            recording,
             1,
             "retain",
             vec![
@@ -1526,7 +531,7 @@ fn sweep(
             ],
             Variable::available("return_value", "()", "()".to_owned())
         );
-        if let Some(steps) = &mut steps
+        if let Some(steps) = &mut recording.steps
             && let Some(removed) = &removed
             && !removed.is_empty()
         {
@@ -1534,9 +539,10 @@ fn sweep(
             step.action = "remove";
             step.subjects.clone_from(removed);
         }
-        let previous_order = steps.as_ref().map(|_| active.clone());
-        let before = steps.as_ref().map(|_| format!("{active:?}"));
+        let previous_order = recording.steps.as_ref().map(|_| active.clone());
+        let before = recording.steps.as_ref().map(|_| format!("{active:?}"));
         pending_call!(
+            recording,
             2,
             "retain",
             0,
@@ -1568,6 +574,7 @@ fn sweep(
         });
         activity!(2, Some(&incident), None, None);
         call!(
+            recording,
             2,
             "retain",
             vec![
@@ -1584,8 +591,9 @@ fn sweep(
             ],
             Variable::available("return_value", "()", "()".to_owned())
         );
-        let before = steps.as_ref().map(|_| format!("{incident:?}"));
+        let before = recording.steps.as_ref().map(|_| format!("{incident:?}"));
         pending_call!(
+            recording,
             3,
             "retain",
             0,
@@ -1617,6 +625,7 @@ fn sweep(
         });
         activity!(3, Some(&incident), None, None);
         call!(
+            recording,
             3,
             "retain",
             vec![
@@ -1633,8 +642,9 @@ fn sweep(
             ],
             Variable::available("return_value", "()", "()".to_owned())
         );
-        let before = steps.as_ref().map(|_| format!("{incident:?}"));
+        let before = recording.steps.as_ref().map(|_| format!("{incident:?}"));
         pending_call!(
+            recording,
             4,
             "sort_by",
             0,
@@ -1669,6 +679,7 @@ fn sweep(
         });
         activity!(4, Some(&incident), None, None);
         call!(
+            recording,
             4,
             "sort_by",
             vec![
@@ -1689,6 +700,7 @@ fn sweep(
         // ascending slope is the order immediately after this event; other
         // equal-y blocks keep their pre-event order until their own event.
         pending_call!(
+            recording,
             5,
             "partition_point",
             0,
@@ -1716,6 +728,7 @@ fn sweep(
         });
         activity!(5, Some(&incident), Some(position), None);
         call!(
+            recording,
             5,
             "partition_point",
             vec![
@@ -1729,6 +742,7 @@ fn sweep(
             Variable::available("return_value", "usize", position.to_string())
         );
         pending_call!(
+            recording,
             6,
             "len",
             0,
@@ -1742,6 +756,7 @@ fn sweep(
         let inserted = incident.len();
         activity!(6, Some(&incident), Some(position), Some(inserted));
         call!(
+            recording,
             6,
             "len",
             vec![Variable::available(
@@ -1751,7 +766,7 @@ fn sweep(
             )],
             Variable::available("return_value", "usize", inserted.to_string())
         );
-        let splice_arguments = steps.as_ref().map(|_| {
+        let splice_arguments = recording.steps.as_ref().map(|_| {
             vec![
                 Variable::available("self", "&mut Vec<usize>", format!("{active:?}")),
                 Variable::available("range", "Range<usize>", format!("{position}..{position}")),
@@ -1759,6 +774,7 @@ fn sweep(
             ]
         });
         pending_call!(
+            recording,
             7,
             "splice",
             0,
@@ -1771,12 +787,13 @@ fn sweep(
         active.splice(position..position, incident);
         activity!(7, None, Some(position), Some(inserted));
         call!(
+            recording,
             7,
             "splice",
             splice_arguments.expect("trace captures arguments"),
             Variable::absent("return_value", "Splice<IntoIter<usize>>", "unavailable")
         );
-        if let Some(steps) = &mut steps {
+        if let Some(steps) = &mut recording.steps {
             let previous_order = previous_order
                 .as_ref()
                 .expect("tracing captures the previous order");
@@ -1801,91 +818,111 @@ fn sweep(
         }
         macro_rules! neighbors {
             ($boundary:expr, $checked:expr, $boundaries:expr, $lower:expr, $neighbors:expr, $candidate:expr) => {
-                observe!("neighbors", $boundary, $neighbors.unwrap_or(&[]), {
-                    let checked: Option<&[[usize; 2]]> = $checked;
-                    let boundaries: Option<&[Option<usize>; 2]> = $boundaries;
-                    let lower: Option<usize> = $lower;
-                    let neighbors: Option<&[usize]> = $neighbors;
-                    let candidate: Option<&Option<Point>> = $candidate;
-                    vec![
-                        Variable::available("position", "usize", position.to_string()),
-                        Variable::available("inserted", "usize", inserted.to_string()),
-                        checked.map_or_else(
-                            || Variable::absent("checked", "Vec<[usize; 2]>", "unassigned"),
-                            |checked| {
-                                Variable::available(
-                                    "checked",
-                                    "Vec<[usize; 2]>",
-                                    format!("{checked:?}"),
-                                )
-                            },
-                        ),
-                        boundaries.map_or_else(
-                            || Variable::absent("boundaries", "[Option<usize>; 2]", "unassigned"),
-                            |boundaries| {
-                                Variable::available(
-                                    "boundaries",
-                                    "[Option<usize>; 2]",
-                                    format!("{boundaries:?}"),
-                                )
-                            },
-                        ),
-                        lower.map_or_else(
-                            || {
-                                Variable::absent(
-                                    "lower",
-                                    "usize",
-                                    if $boundary < 3 {
-                                        "unassigned"
-                                    } else {
-                                        "unavailable"
-                                    },
-                                )
-                            },
-                            |lower| Variable::available("lower", "usize", lower.to_string()),
-                        ),
-                        neighbors.map_or_else(
-                            || {
-                                Variable::absent(
-                                    "neighbors",
-                                    "&[usize]",
-                                    if $boundary <= 3 {
-                                        "unassigned"
-                                    } else {
-                                        "unavailable"
-                                    },
-                                )
-                            },
-                            |neighbors| {
-                                Variable::available(
-                                    "neighbors",
-                                    "&[usize]",
-                                    format!("{neighbors:?}"),
-                                )
-                            },
-                        ),
-                        candidate.map_or_else(
-                            || {
-                                Variable::absent(
-                                    "candidate",
-                                    "Option<Point>",
-                                    if $boundary <= 4 {
-                                        "unassigned"
-                                    } else {
-                                        "unavailable"
-                                    },
-                                )
-                            },
-                            |candidate| {
-                                Variable::available(
-                                    "candidate",
-                                    "Option<Point>",
-                                    optional_point_value(candidate),
-                                )
-                            },
-                        ),
-                    ]
-                });
+                observe!(
+                    recording,
+                    ObservationState {
+                        queue,
+                        active,
+                        result,
+                        height_order,
+                        shear
+                    },
+                    &point,
+                    "neighbors",
+                    $boundary,
+                    $neighbors.unwrap_or(&[]),
+                    {
+                        let checked: Option<&[[usize; 2]]> = $checked;
+                        let boundaries: Option<&[Option<usize>; 2]> = $boundaries;
+                        let lower: Option<usize> = $lower;
+                        let neighbors: Option<&[usize]> = $neighbors;
+                        let candidate: Option<&Option<Point>> = $candidate;
+                        vec![
+                            Variable::available("position", "usize", position.to_string()),
+                            Variable::available("inserted", "usize", inserted.to_string()),
+                            checked.map_or_else(
+                                || Variable::absent("checked", "Vec<[usize; 2]>", "unassigned"),
+                                |checked| {
+                                    Variable::available(
+                                        "checked",
+                                        "Vec<[usize; 2]>",
+                                        format!("{checked:?}"),
+                                    )
+                                },
+                            ),
+                            boundaries.map_or_else(
+                                || {
+                                    Variable::absent(
+                                        "boundaries",
+                                        "[Option<usize>; 2]",
+                                        "unassigned",
+                                    )
+                                },
+                                |boundaries| {
+                                    Variable::available(
+                                        "boundaries",
+                                        "[Option<usize>; 2]",
+                                        format!("{boundaries:?}"),
+                                    )
+                                },
+                            ),
+                            lower.map_or_else(
+                                || {
+                                    Variable::absent(
+                                        "lower",
+                                        "usize",
+                                        if $boundary < 3 {
+                                            "unassigned"
+                                        } else {
+                                            "unavailable"
+                                        },
+                                    )
+                                },
+                                |lower| Variable::available("lower", "usize", lower.to_string()),
+                            ),
+                            neighbors.map_or_else(
+                                || {
+                                    Variable::absent(
+                                        "neighbors",
+                                        "&[usize]",
+                                        if $boundary <= 3 {
+                                            "unassigned"
+                                        } else {
+                                            "unavailable"
+                                        },
+                                    )
+                                },
+                                |neighbors| {
+                                    Variable::available(
+                                        "neighbors",
+                                        "&[usize]",
+                                        format!("{neighbors:?}"),
+                                    )
+                                },
+                            ),
+                            candidate.map_or_else(
+                                || {
+                                    Variable::absent(
+                                        "candidate",
+                                        "Option<Point>",
+                                        if $boundary <= 4 {
+                                            "unassigned"
+                                        } else {
+                                            "unavailable"
+                                        },
+                                    )
+                                },
+                                |candidate| {
+                                    Variable::available(
+                                        "candidate",
+                                        "Option<Point>",
+                                        optional_point_value(candidate),
+                                    )
+                                },
+                            ),
+                        ]
+                    }
+                );
             };
         }
         neighbors!(0, None, None, None, None::<&[usize]>, None);
@@ -1923,9 +960,10 @@ fn sweep(
                 None::<&[usize]>,
                 None
             );
-            reset_controls!(3);
-            control!(3, "for", "entered");
+            reset_controls!(recording, 3);
+            control!(recording, 3, "for", "entered");
             pending_call!(
+                recording,
                 4,
                 "get",
                 0,
@@ -1944,9 +982,10 @@ fn sweep(
                     None::<&[usize]>,
                     None
                 );
-                control!(4, "else", "entered");
-                control!(4, "continue", "pending");
+                control!(recording, 4, "else", "entered");
+                control!(recording, 4, "continue", "pending");
                 call!(
+                    recording,
                     4,
                     "get",
                     vec![
@@ -1967,9 +1006,9 @@ fn sweep(
                     None::<&[usize]>,
                     None
                 );
-                reset_controls!(3);
-                control!(3, "for", "pending");
-                control!(4, "continue", "jumping");
+                reset_controls!(recording, 3);
+                control!(recording, 3, "for", "pending");
+                control!(recording, 4, "continue", "jumping");
                 continue;
             };
             neighbors!(
@@ -1980,9 +1019,10 @@ fn sweep(
                 Some(neighbors),
                 None
             );
-            control!(4, "else", "skipped");
-            control!(4, "continue", "skipped");
+            control!(recording, 4, "else", "skipped");
+            control!(recording, 4, "continue", "skipped");
             call!(
+                recording,
                 4,
                 "get",
                 vec![
@@ -1995,7 +1035,7 @@ fn sweep(
                     format!("Some({neighbors:?})")
                 )
             );
-            let schedule_arguments = steps.as_ref().map(|steps| {
+            let schedule_arguments = recording.steps.as_ref().map(|steps| {
                 let locals = &steps
                     .last()
                     .expect("caller observation exists")
@@ -2024,6 +1064,7 @@ fn sweep(
                 .collect::<Vec<_>>()
             });
             pending_call!(
+                recording,
                 5,
                 "schedule_neighbors",
                 0,
@@ -2034,8 +1075,8 @@ fn sweep(
                 "Option<Point>"
             );
             let pending_count = queue.len();
-            let tracing = steps.is_some();
-            let caller = steps.as_ref().map(|steps| {
+            let tracing = recording.steps.is_some();
+            let caller = recording.steps.as_ref().map(|steps| {
                 steps
                     .last()
                     .expect("caller stop exists")
@@ -2052,7 +1093,7 @@ fn sweep(
                                 checked: &[[usize; 2]],
                                 locals,
                                 controls| {
-                if let Some(steps) = &mut steps {
+                if let Some(steps) = &mut recording.steps {
                     let action = if boundary == 2 {
                         "check"
                     } else if boundary == 6 && queue.len() > pending_count {
@@ -2336,10 +1377,11 @@ fn sweep(
                 Some(neighbors),
                 Some(&candidate)
             );
-            control!(3, "for", "entered");
-            control!(4, "else", "skipped");
-            control!(4, "continue", "skipped");
+            control!(recording, 3, "for", "entered");
+            control!(recording, 4, "else", "skipped");
+            control!(recording, 4, "continue", "skipped");
             call!(
+                recording,
                 5,
                 "schedule_neighbors",
                 schedule_arguments.expect("trace captures arguments"),
@@ -2357,8 +1399,8 @@ fn sweep(
                 None::<&[usize]>,
                 None
             );
-            reset_controls!(3);
-            control!(3, "for", "pending");
+            reset_controls!(recording, 3);
+            control!(recording, 3, "for", "pending");
         }
         neighbors!(
             6,
@@ -2368,7 +1410,7 @@ fn sweep(
             None::<&[usize]>,
             None
         );
-        control!(3, "for", "exhausted");
+        control!(recording, 3, "for", "exhausted");
         if let Some(publication) = &mut publication
             && !publication.finish_event(
                 first_step,
