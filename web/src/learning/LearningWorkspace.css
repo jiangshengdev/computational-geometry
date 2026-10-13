@@ -24,7 +24,8 @@
 .learning-code, .learning-variables { overflow-anchor: none; }
 .execution-source { display: flex; flex-direction: column; gap: 8px; min-height: 0; flex: 1; }
 .execution-status { margin-top: auto; flex-shrink: 0; }
-.execution-code-scroll { position: relative; min-height: 0; overflow: auto; max-height: 18rem; border-radius: 4px; }
+/* Keep a code line reachable when translated controls wrap above the scrollport. */
+.execution-code-scroll { position: relative; min-height: 1.75rem; overflow: auto; max-height: 18rem; border-radius: 4px; }
 .execution-code { position: relative; width: max-content; min-width: 100%; padding: .75rem 1.5rem; margin: 0; line-height: 1.75rem; font-size: .8125rem; }
 .code-line { display: block; height: 1.75rem; }
 .execution-code[data-wrap="true"] { width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; }

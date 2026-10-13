@@ -1,5 +1,16 @@
 import { expect, test } from '@playwright/test'
 
+test('无效案例链接仍可切换语言并恢复导航', async ({ page }) => {
+  await page.goto('/cases/unknown-case')
+  await expect(page.getByRole('alert')).toContainText('unknown-case')
+  await page.getByRole('button', { name: 'Language / 语言' }).click()
+  await page.getByRole('option', { name: 'English', exact: true }).click()
+  await expect(page.getByRole('alert')).toContainText('Unknown case: unknown-case')
+  await expect(page).toHaveURL(/\/cases\/unknown-case$/)
+  await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
+  await expect(page.getByRole('region', { name: 'Cases', exact: true })).toBeVisible()
+})
+
 for (const [languages, expected] of [
   [['zh-CN'], 'zh-CN'], [['en-US'], 'en'], [['zh-TW', 'zh-CN'], 'en'],
   [['fr-FR'], 'en'], [['fr-FR', 'zh-SG'], 'zh-CN'], [['en-GB', 'zh-CN'], 'en'],
