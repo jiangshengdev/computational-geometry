@@ -1,3 +1,4 @@
+import { useLingui } from '@lingui/react'
 import { type PointerEvent, type ReactNode, useContext, useEffect, useState } from 'react'
 import { Popover, popoverVariants } from '@heroui/react/popover'
 import { TooltipTrigger as FocusableTrigger } from '@heroui/react/tooltip'
@@ -13,12 +14,15 @@ import { RustCode } from './RustCode'
 import { type Access, accessDetails, accessParents } from './executionAccess'
 
 function PreviewValue({ value, hasValue }: { value: string; hasValue: boolean }) {
-  const shadowed = hasValue && value.endsWith(shadowedValueNote)
-  return <><RustCode muted={!hasValue}>{shadowed ? value.slice(0, -shadowedValueNote.length) : value}</RustCode>{shadowed && <span className="text-muted">{shadowedValueNote}</span>}</>
+  const { _ } = useLingui()
+  const note = _(shadowedValueNote)
+  const shadowed = hasValue && value.endsWith(note)
+  return <><RustCode muted={!hasValue}>{shadowed ? value.slice(0, -note.length) : value}</RustCode>{shadowed && <span className="text-muted">{note}</span>}</>
 }
 
 function SymbolValue({ variable, values }: { variable: ExecutionVariable | undefined; values: string[] }) {
-  return <PreviewValue value={variableValue(variable, values)} hasValue={hasVariableValue(variable)} />
+  const { _ } = useLingui()
+  return <PreviewValue value={variableValue(variable, values, _)} hasValue={hasVariableValue(variable)} />
 }
 
 interface SymbolProps {
@@ -30,6 +34,7 @@ interface SymbolProps {
 }
 
 export function ExecutionSymbol({ name, kind, access, line, displayLine, occurrence, module, expression, children, step, previous, values }: SymbolProps) {
+  const { _ } = useLingui()
   const [depth, setDepth] = useState(0)
   let maximum = 0
   for (let parent = access?.parent; parent; parent = parent.parent) maximum++
@@ -42,8 +47,8 @@ export function ExecutionSymbol({ name, kind, access, line, displayLine, occurre
       changeDepth(event.key === '+' ? 1 : -1)
     }
   }
-  const label = kind === 'variable' ? '变量' : kind === 'access' ? '访问' : kind === 'control' ? '控制流' : '函数'
-  return <SymbolTooltip placement="bottom" name={name} line={line} occurrence={occurrence} onKeyDown={onKeyDown} onClose={() => setDepth(0)} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line) : `第 ${displayLine} 行${kind === 'control' ? '关键字' : '调用'} ${occurrence + 1}`}`} content={<>
+  const label = kind === 'variable' ? _(/*i18n*/ { id: "Variable", message: "Variable" }) : kind === 'access' ? _(/*i18n*/ { id: "Access", message: "Access" }) : kind === 'control' ? _(/*i18n*/ { id: "Control flow", message: "Control flow" }) : _(/*i18n*/ { id: "Function", message: "Function" })
+  return <SymbolTooltip placement="bottom" name={name} line={line} occurrence={occurrence} onKeyDown={onKeyDown} onClose={() => setDepth(0)} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line, _) : kind === 'control' ? _(/*i18n*/ { id: "Line {line}, keyword {occurrence}", message: "Line {line}, keyword {occurrence}" , values: { line: String(displayLine), occurrence: String(occurrence + 1) }}) : _(/*i18n*/ { id: "Line {line}, call {occurrence}", message: "Line {line}, call {occurrence}" , values: { line: String(displayLine), occurrence: String(occurrence + 1) }})}`} content={<>
     <SymbolDetails name={name} kind={kind} access={access} line={line} occurrence={occurrence} module={module} expression={expression} step={step} previous={previous} values={values} label={label} />
     {access && <ParentValues access={access} step={step} values={values} line={line} depth={depth} maximum={maximum} changeDepth={changeDepth} />}
   </>}>
@@ -57,6 +62,7 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, place
   placement: 'bottom' | 'left top'
   onKeyDown?: (event: KeyboardEvent) => void; onClose?: () => void
 }) {
+  const { _ } = useLingui()
   const pointerModality = (event: PointerEvent<HTMLElement>) => {
     if (event.pointerType !== 'touch') setInteractionModality('pointer')
   }
@@ -74,7 +80,7 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, place
       // HeroUI's focusable trigger also works while a panel is inert behind a
       // modal; Pressable's mount-time focus assertion rejects that valid state.
       : <FocusableTrigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</FocusableTrigger>}
-    <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement={placement} aria-label={disclosure ? `变量 ${name} · ${label}` : label}>
+    <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement={placement} aria-label={disclosure ? _(/*i18n*/ { id: "Variable {name} · {label}", message: "Variable {name} · {label}" , values: { name, label }}) : label}>
       <ActivePreviewShortcuts onKeyDown={onKeyDown} />
       {content}
     </Popover.Content>
@@ -103,12 +109,13 @@ function ParentValues({ access, step, values, line, depth, maximum, changeDepth 
   access: Access; step: SweepStep; values: string[]; line: number
   depth: number; maximum: number; changeDepth: (delta: number) => void
 }) {
-  const parents = accessParents(access, step, values, line)
+  const { _ } = useLingui()
+  const parents = accessParents(access, step, values, line, _)
   return <>
-    <div className="flex items-center gap-2 mt-2" aria-label="parent 显示深度">
-      <Button isIconOnly size="sm" variant="secondary" aria-label="减少 parent 深度" isDisabled={depth === 0} onPress={() => changeDepth(-1)}><Minus size={16} aria-hidden="true" /></Button>
-      <span>parent 深度：{depth}</span>
-      <Button isIconOnly size="sm" variant="secondary" aria-label="增加 parent 深度" isDisabled={depth === maximum} onPress={() => changeDepth(1)}><Plus size={16} aria-hidden="true" /></Button>
+    <div className="flex items-center gap-2 mt-2" aria-label={_(/*i18n*/ { id: "Parent display depth", message: "Parent display depth" })}>
+      <Button isIconOnly size="sm" variant="secondary" aria-label={_(/*i18n*/ { id: "Decrease parent depth", message: "Decrease parent depth" })} isDisabled={depth === 0} onPress={() => changeDepth(-1)}><Minus size={16} aria-hidden="true" /></Button>
+      <span>{_(/*i18n*/ { id: "Parent depth: {depth}", message: "Parent depth: {depth}" , values: { depth: String(depth) }})}</span>
+      <Button isIconOnly size="sm" variant="secondary" aria-label={_(/*i18n*/ { id: "Increase parent depth", message: "Increase parent depth" })} isDisabled={depth === maximum} onPress={() => changeDepth(1)}><Plus size={16} aria-hidden="true" /></Button>
     </div>
     {parents.slice(0, depth).map(parent => <p key={parent.expression} data-parent={parent.expression}><RustCode>{parent.expression}</RustCode>：<PreviewValue value={parent.value} hasValue={parent.hasValue} /></p>)}
   </>
@@ -117,38 +124,40 @@ function ParentValues({ access, step, values, line, depth, maximum, changeDepth 
 // Popover.Content owns mounting and exit animation. Resolve values only while
 // its body is mounted, while keeping the trigger's accessible scope available.
 function SymbolDetails({ name, kind, access, line, occurrence, module, expression, step, previous, values, label }: Omit<SymbolProps, 'children' | 'displayLine'> & { label: string }) {
-  const detail = access ? accessDetails(access, step, previous, values, line) : variableDetails(name, step, previous, values, line)
+  const { _ } = useLingui()
+  const detail = access ? accessDetails(access, step, previous, values, line, _) : variableDetails(name, step, previous, values, line, _)
   const fn = functions[name]
   const context = step.execution.context
   const call = module === step.execution.module ? step.execution.calls.find(call => call.line === line && call.function === name && call.occurrence === occurrence) : undefined
   const control = module === step.execution.module ? step.execution.controls.find(control => control.line === line && control.keyword === name && control.occurrence === occurrence) : undefined
   const returnValue = context.locals.find(variable => variable.name === 'return_value')
   const references = [...new Set(expression.match(/[A-Za-z_][A-Za-z_0-9]*/g))]
-    .map(reference => scopedVariable(reference, step, line))
+    .map(reference => scopedVariable(reference, step, line, _))
     .filter(variable => variable !== undefined)
   return <div><strong>{label} <RustCode>{access?.expression ?? name}</RustCode></strong>
         {kind === 'control' ? <>
-          <p>{controlDescription(name, control)}</p>
-          {name === 'return' && control?.state === 'returned' && <p>返回值：<SymbolValue variable={returnValue} values={values} /></p>}
+          <p>{controlDescription(name, control, _)}</p>
+          {name === 'return' && control?.state === 'returned' && <p>{_(/*i18n*/ { id: "Return value: ", message: "Return value: " })}<SymbolValue variable={returnValue} values={values} /></p>}
         </> : kind === 'variable' || kind === 'access' ? <VariableDescription detail={detail} /> : <>
-          <p><RustCode>{fn.signature}</RustCode></p><p>{fn.purpose}</p><p>参数：{fn.parameters}</p>
-          <p>调用表达式：<RustCode>{expression}</RustCode></p>
+          <p><RustCode>{fn.signature}</RustCode></p><p>{_(fn.purpose)}</p><p>{_(/*i18n*/ { id: "Parameters: ", message: "Parameters: " })}{_(fn.parameters)}</p>
+          <p>{_(/*i18n*/ { id: "Call expression: ", message: "Call expression: " })}<RustCode>{expression}</RustCode></p>
           {call ? <>
-            {call.arguments.map(parameter => <p key={parameter.name}>实参 <RustCode>{parameter.name}</RustCode>：<SymbolValue variable={parameter} values={values} /></p>)}
-            <p>返回值：<SymbolValue variable={call.result} values={values} /></p>
+            {call.arguments.map(parameter => <p key={parameter.name}>{_(/*i18n*/ { id: "Argument ", message: "Argument " })}<RustCode>{parameter.name}</RustCode>：<SymbolValue variable={parameter} values={values} /></p>)}
+            <p>{_(/*i18n*/ { id: "Return value: ", message: "Return value: " })}<SymbolValue variable={call.result} values={values} /></p>
           </> : <>
-            {references.map(variable => <p key={variable.name}>引用变量 <RustCode>{variable.name}</RustCode>：<SymbolValue variable={variable} values={values} /></p>)}
-            <p>复合实参的求值及该调用点的返回值：<span className="text-muted">当前步骤不可用。</span></p>
+            {references.map(variable => <p key={variable.name}>{_(/*i18n*/ { id: "Referenced variable ", message: "Referenced variable " })}<RustCode>{variable.name}</RustCode>：<SymbolValue variable={variable} values={values} /></p>)}
+            <p>{_(/*i18n*/ { id: "Compound argument evaluation and return value at this call site: ", message: "Compound argument evaluation and return value at this call site: " })}<span className="text-muted">{_(/*i18n*/ { id: "Unavailable at this step.", message: "Unavailable at this step." })}</span></p>
           </>}
         </>}
       </div>
 }
 
 function VariableDescription({ detail }: { detail: ReturnType<typeof variableDetails> }) {
+  const { _ } = useLingui()
   return <>
-    <p>{detail.meaning}</p><p>作用域：{detail.scope}</p><p>类型：<RustCode>{detail.type}</RustCode></p>
-    <p data-value-phase="current">当前值：<PreviewValue value={detail.value} hasValue={detail.hasValue} /></p>
-    <p data-value-phase="previous">{detail.changed ? <>本步变化；之前值：<PreviewValue value={detail.previous} hasValue={detail.previousHasValue} /></> : '本步无可比较的值变化'}</p>
+    <p>{detail.meaning}</p><p>{_(/*i18n*/ { id: "Scope: ", message: "Scope: " })}{detail.scope}</p><p>{_(/*i18n*/ { id: "Type: ", message: "Type: " })}<RustCode>{detail.type}</RustCode></p>
+    <p data-value-phase="current">{_(/*i18n*/ { id: "Current value: ", message: "Current value: " })}<PreviewValue value={detail.value} hasValue={detail.hasValue} /></p>
+    <p data-value-phase="previous">{detail.changed ? <>{_(/*i18n*/ { id: "Changed in this step; previous value: ", message: "Changed in this step; previous value: " })}<PreviewValue value={detail.previous} hasValue={detail.previousHasValue} /></> : _(/*i18n*/ { id: "No comparable value change in this step", message: "No comparable value change in this step" })}</p>
   </>
 }
 
@@ -159,8 +168,9 @@ interface VariableSymbolProps {
 }
 
 export function ExecutionVariableSymbol({ children, disclosure, indicator, ...props }: VariableSymbolProps) {
+  const { _ } = useLingui()
   const { variable, kind } = props
-  return <SymbolTooltip placement="left top" name={variable.name} label={disclosure ? `${variable.name}: ${variable.type}` : `变量 ${variable.name} · ${kind === 'parameters' ? '参数' : kind === 'captures' ? '捕获变量' : '局部变量'}`} disclosure={disclosure} content={<PanelVariableDescription {...props} />}>
+  return <SymbolTooltip placement="left top" name={variable.name} label={disclosure ? `${variable.name}: ${variable.type}` : _(/*i18n*/ { id: "Variable {name} · {kind}", message: "Variable {name} · {kind}" , values: { name: variable.name, kind: kind === 'parameters' ? _(/*i18n*/ { id: "Parameter", message: "Parameter" }) : kind === 'captures' ? _(/*i18n*/ { id: "Captured variable", message: "Captured variable" }) : _(/*i18n*/ { id: "Local variable", message: "Local variable" }) }})} disclosure={disclosure} content={<PanelVariableDescription {...props} />}>
     {disclosure ? <>
       {indicator}
       <span className="min-w-0 flex-1"><span className="execution-symbol inline-block"><RustCode>{variable.name}</RustCode></span>{children}</span>
@@ -169,6 +179,7 @@ export function ExecutionVariableSymbol({ children, disclosure, indicator, ...pr
 }
 
 function PanelVariableDescription({ variable, kind, step, previous, values, context }: Omit<VariableSymbolProps, 'children' | 'disclosure'>) {
-  const detail = panelVariableDetails(variable, kind, step, previous, values, context)
-  return <div><strong>变量 <RustCode>{variable.name}</RustCode></strong><VariableDescription detail={detail} /></div>
+  const { _ } = useLingui()
+  const detail = panelVariableDetails(variable, kind, step, previous, values, context, _)
+  return <div><strong>{_(/*i18n*/ { id: "Variable ", message: "Variable " })}<RustCode>{variable.name}</RustCode></strong><VariableDescription detail={detail} /></div>
 }

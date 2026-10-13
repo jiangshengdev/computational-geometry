@@ -1,3 +1,4 @@
+import type { I18n, MessageDescriptor } from '@lingui/core'
 import type { SweepStep } from './trace'
 import { scopedVariable, symbolKind, variableDetails } from './executionSymbols'
 import { formatExecutionValue, splitExecutionItems } from './executionValue'
@@ -70,63 +71,63 @@ function items(source: string) {
   return splitExecutionItems(source) ?? []
 }
 
-const fields: Record<string, Record<string, { type: string; meaning: string }>> = {
-  Point: { x: { type: 'Rational', meaning: '点的横坐标' }, y: { type: 'Rational', meaning: '点的纵坐标' } },
+const fields: Record<string, Record<string, { type: string; meaning: MessageDescriptor }>> = {
+  Point: { x: { type: 'Rational', meaning: /*i18n*/ { id: "Point x coordinate", message: "Point x coordinate" } }, y: { type: 'Rational', meaning: /*i18n*/ { id: "Point y coordinate", message: "Point y coordinate" } } },
   SweepSegment: {
-    left: { type: 'Point', meaning: '扫描线段的左端点' }, right: { type: 'Point', meaning: '扫描线段的右端点' },
-    slope: { type: 'Option<Rational>', meaning: '扫描线段的精确斜率' }, intercept: { type: 'Rational', meaning: '扫描线段的精确截距' },
+    left: { type: 'Point', meaning: /*i18n*/ { id: "Left endpoint of the sweep segment", message: "Left endpoint of the sweep segment" } }, right: { type: 'Point', meaning: /*i18n*/ { id: "Right endpoint of the sweep segment", message: "Right endpoint of the sweep segment" } },
+    slope: { type: 'Option<Rational>', meaning: /*i18n*/ { id: "Exact slope of the sweep segment", message: "Exact slope of the sweep segment" } }, intercept: { type: 'Rational', meaning: /*i18n*/ { id: "Exact intercept of the sweep segment", message: "Exact intercept of the sweep segment" } },
   },
-  Segment: { start: { type: 'Point', meaning: '原始线段的起点' }, end: { type: 'Point', meaning: '原始线段的终点' } },
-  Event: { starts: { type: 'Vec<usize>', meaning: '在此事件点开始的线段编号' } },
+  Segment: { start: { type: 'Point', meaning: /*i18n*/ { id: "Start of the original segment", message: "Start of the original segment" } }, end: { type: 'Point', meaning: /*i18n*/ { id: "End of the original segment", message: "End of the original segment" } } },
+  Event: { starts: { type: 'Vec<usize>', meaning: /*i18n*/ { id: "Indices of segments starting at this event point", message: "Indices of segments starting at this event point" } } },
 }
 
 function bareType(type: string) { return type.replace(/^&(?:mut\s+)?/, '') }
-function elementType(type: string) { return bareType(type).match(/^(?:Vec<(.+)>|\[(.+)\])$/)?.slice(1).find(Boolean) ?? '当前轨迹未提供类型' }
+function elementType(type: string, _: I18n['_']) { return bareType(type).match(/^(?:Vec<(.+)>|\[(.+)\])$/)?.slice(1).find(Boolean) ?? _(/*i18n*/ { id: "Type not provided by the current trace", message: "Type not provided by the current trace" }) }
 
-function resolve(access: Access, step: SweepStep, values: string[], line: number): Value {
+function resolve(access: Access, step: SweepStep, values: string[], line: number, _: I18n['_']): Value {
   if (!access.parent) {
-    const variable = scopedVariable(access.root, step, line)
-    return { type: variable?.type ?? '当前作用域未提供类型',
+    const variable = scopedVariable(access.root, step, line, _)
+    return { type: variable?.type ?? _(/*i18n*/ { id: "Type not provided by the current scope", message: "Type not provided by the current scope" }),
       value: variable?.availability === 'available' && variable.value !== null ? values[variable.value] : undefined,
-      unavailable: variable?.availability === 'unassigned' ? '未赋值' : '不可用（当前作用域或轨迹未提供）' }
+      unavailable: variable?.availability === 'unassigned' ? _(/*i18n*/ { id: "Unassigned", message: "Unassigned" }) : _(/*i18n*/ { id: "Unavailable (not provided by the current scope or trace)", message: "Unavailable (not provided by the current scope or trace)" }) }
   }
-  const parent = resolve(access.parent, step, values, line)
-  const type = access.field ? fields[bareType(parent.type)]?.[access.field]?.type ?? '当前轨迹未提供类型' : elementType(parent.type)
+  const parent = resolve(access.parent, step, values, line, _)
+  const type = access.field ? fields[bareType(parent.type)]?.[access.field]?.type ?? _(/*i18n*/ { id: "Type not provided by the current trace", message: "Type not provided by the current trace" }) : elementType(parent.type, _)
   if (parent.value === undefined) return { type, unavailable: parent.unavailable }
   if (access.field) {
     const source = parent.value
     const value = bareType(parent.type) === 'Point'
       ? items(source.slice(1, -1))[['x', 'y'].indexOf(access.field)]
       : items(source.slice(source.indexOf('{') + 1, source.lastIndexOf('}'))).find(item => item.startsWith(`${access.field}:`))?.slice(access.field.length + 1).trim()
-    return { type, value, unavailable: '不可用（当前轨迹未记录字段）' }
+    return { type, value, unavailable: _(/*i18n*/ { id: "Unavailable (field not recorded in the current trace)", message: "Unavailable (field not recorded in the current trace)" }) }
   }
-  const index = typeof access.index === 'number' ? { value: String(access.index) } : access.index && resolve(access.index, step, values, line)
-  if (!index?.value || !/^\d+$/.test(index.value)) return { type, unavailable: '不可用（索引未赋值或不可用）' }
+  const index = typeof access.index === 'number' ? { value: String(access.index) } : access.index && resolve(access.index, step, values, line, _)
+  if (!index?.value || !/^\d+$/.test(index.value)) return { type, unavailable: _(/*i18n*/ { id: "Unavailable (index unassigned or unavailable)", message: "Unavailable (index unassigned or unavailable)" }) }
   const value = parent.value.startsWith('[') ? items(parent.value.slice(1, -1))[Number(index.value)] : undefined
-  return { type, value, unavailable: '不可用（索引越界或对象未记录）' }
+  return { type, value, unavailable: _(/*i18n*/ { id: "Unavailable (index out of bounds or object not recorded)", message: "Unavailable (index out of bounds or object not recorded)" }) }
 }
 
-export function accessDetails(access: Access, step: SweepStep, previous: SweepStep, values: string[], line: number) {
-  const current = resolve(access, step, values, line)
+export function accessDetails(access: Access, step: SweepStep, previous: SweepStep, values: string[], line: number, _: I18n['_']) {
+  const current = resolve(access, step, values, line, _)
   // A different call or module cannot provide this access's previous binding.
   const prior = step.execution.context.id === previous.execution.context.id && step.execution.module === previous.execution.module
-    ? resolve(access, previous, values, line) : undefined
-  const parentType = access.parent && resolve(access.parent, step, values, line).type
-  const base = variableDetails(access.root, step, previous, values, line)
+    ? resolve(access, previous, values, line, _) : undefined
+  const parentType = access.parent && resolve(access.parent, step, values, line, _).type
+  const base = variableDetails(access.root, step, previous, values, line, _)
   return { ...base, type: current.type,
-    meaning: access.field ? fields[bareType(parentType ?? '')]?.[access.field]?.meaning ?? `${access.parent?.expression} 的字段 ${access.field}` : `${access.parent?.expression} 中由当前索引选中的元素`,
+    meaning: access.field ? fields[bareType(parentType ?? '')]?.[access.field]?.meaning ? _(fields[bareType(parentType ?? '')][access.field].meaning) : _(/*i18n*/ { id: "Field {field} of {expression}", message: "Field {field} of {expression}" , values: { field: access.field, expression: access.parent?.expression }}) : _(/*i18n*/ { id: "Element of {expression} selected by the current index", message: "Element of {expression} selected by the current index" , values: { expression: access.parent?.expression }}),
     value: current.value === undefined ? current.unavailable! : formatExecutionValue(current.value),
     hasValue: current.value !== undefined,
     changed: !!prior && (prior.value !== current.value || prior.unavailable !== current.unavailable),
-    previous: prior?.value === undefined ? prior?.unavailable ?? '不可用（当前调用无可比较的值）' : formatExecutionValue(prior.value),
+    previous: prior?.value === undefined ? prior?.unavailable ?? _(/*i18n*/ { id: "Unavailable (no comparable value in the current call)", message: "Unavailable (no comparable value in the current call)" }) : formatExecutionValue(prior.value),
     previousHasValue: prior?.value !== undefined,
   }
 }
 
-export function accessParents(access: Access, step: SweepStep, values: string[], line: number) {
+export function accessParents(access: Access, step: SweepStep, values: string[], line: number, _: I18n['_']) {
   const parents = []
   for (let parent = access.parent; parent; parent = parent.parent) {
-    const value = resolve(parent, step, values, line)
+    const value = resolve(parent, step, values, line, _)
     parents.push({ expression: parent.expression, value: value.value === undefined ? value.unavailable! : formatExecutionValue(value.value), hasValue: value.value !== undefined })
   }
   return parents

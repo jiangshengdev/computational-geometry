@@ -1,4 +1,17 @@
 import type { ExecutionState, SweepStep } from './trace'
+import type { I18n, MessageDescriptor } from '@lingui/core'
+
+const comments = new Map<string, MessageDescriptor>()
+
+function comment(message: MessageDescriptor) {
+  comments.set(message.message!, message)
+  return message.message!
+}
+
+export function translatedTeachingCode(module: TeachingModule, translate: I18n['_']) {
+  // A translated comment occupies the same display line as its source comment.
+  return module.code.replace(/(?<=\/\/ )[^\n]+/g, text => translate(comments.get(text)!).replace(/[\r\n]+/g, ' '))
+}
 
 interface InlineClosure {
   module: string
@@ -10,14 +23,14 @@ interface InlineClosure {
 }
 
 export interface TeachingModule {
-  title: string
+  title: MessageDescriptor
   code: string
   traceLines: number[]
   boundaryLines: number[]
   closures: InlineClosure[]
 }
 
-function teachingModule(title: string, operations: (string | { code: string; closure: string })[], stops: readonly (readonly [line: number, offset?: number])[]): TeachingModule {
+function teachingModule(title: MessageDescriptor, operations: (string | { code: string; closure: string })[], stops: readonly (readonly [line: number, offset?: number])[]): TeachingModule {
   const code: string[] = []
   const traceLines: number[] = []
   // Explanations add display lines without changing statement or closure identities.
@@ -45,69 +58,160 @@ function teachingModule(title: string, operations: (string | { code: string; clo
 
 // Array positions are trace identities; formatting within an entry must not renumber them.
 export const teachingModules: Record<string, TeachingModule> = {
-  neighbors: teachingModule('邻居检查', [
-    '// 准备记录本轮检查过的线段对\nlet mut checked = Vec::new();',
-    { closure: 'then', code: '// 找出插入位置两侧需要检查的相邻位置\nlet boundaries = [position.checked_sub(1), (inserted > 0).then(|| {\n    // 有新线段插入时，找到最后一条新线段的位置\n    position + inserted - 1\n})];' },
-    '// 依次检查存在的相邻位置\nfor lower in boundaries.into_iter().flatten() {',
-    '    // 尝试取出这个位置上的两条相邻线段\n    let Some(neighbors) = active.get(lower..lower + 2) else {\n        // 不足两条线段，跳过这次检查\n        continue;\n    };',
-    '    // 计算这对线段的交点，并安排后续事件\n    let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);',
+  neighbors: teachingModule(/*i18n*/ { id: "Neighbor checks", message: "Neighbor checks" }, [
+    `// ${comment(/*i18n*/ { id: "Prepare to record the segment pairs checked in this event", message: "Prepare to record the segment pairs checked in this event" })}
+let mut checked = Vec::new();`,
+    { closure: 'then', code: `// ${comment(/*i18n*/ { id: "Find the neighboring positions to check on either side of the insertion", message: "Find the neighboring positions to check on either side of the insertion" })}
+let boundaries = [position.checked_sub(1), (inserted > 0).then(|| {
+    // ${comment(/*i18n*/ { id: "When segments are inserted, find the position of the last new segment", message: "When segments are inserted, find the position of the last new segment" })}
+    position + inserted - 1
+})];` },
+    `// ${comment(/*i18n*/ { id: "Check each neighboring position that exists", message: "Check each neighboring position that exists" })}
+for lower in boundaries.into_iter().flatten() {`,
+    `    // ${comment(/*i18n*/ { id: "Try to get the two neighboring segments at this position", message: "Try to get the two neighboring segments at this position" })}
+    let Some(neighbors) = active.get(lower..lower + 2) else {
+        // ${comment(/*i18n*/ { id: "Skip this check if fewer than two segments remain", message: "Skip this check if fewer than two segments remain" })}
+        continue;
+    };`,
+    `    // ${comment(/*i18n*/ { id: "Compute the intersection candidate and schedule a future event", message: "Compute the intersection candidate and schedule a future event" })}
+    let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);`,
     '}',
   ], [[1], [2], [3], [4], [5], [6], [7], [4, 1], [3]]),
-  geometry: teachingModule('几何调用与入队', [
-    '// 尝试取出要检查的两条相邻线段\nlet Some(neighbors) = active.get(lower..lower + 2) else {\n    // 不足两条线段，返回无候选交点\n    return None;\n};',
-    '// 记下本次检查的线段对\nchecked.push([neighbors[0], neighbors[1]]);',
-    '// 根据编号取出两条线段\nlet (a, b) = (&segments[neighbors[0]], &segments[neighbors[1]]);',
-    '// 尝试计算这两条线段的候选交点\nlet Some(point) = intersection_candidate(a, b) else {\n    // 没有候选交点，结束这次检查\n    return None;\n};',
-    '// 判断交点是否排在当前事件之后\nif point > *current {',
-    '    // 把交点加入待处理队列，已有事件则保留\n    queue.entry(point.clone()).or_default();',
+  geometry: teachingModule(/*i18n*/ { id: "Geometry calls and queue insertion", message: "Geometry calls and queue insertion" }, [
+    `// ${comment(/*i18n*/ { id: "Try to get the two neighboring segments to check", message: "Try to get the two neighboring segments to check" })}
+let Some(neighbors) = active.get(lower..lower + 2) else {
+    // ${comment(/*i18n*/ { id: "Return no candidate if fewer than two segments remain", message: "Return no candidate if fewer than two segments remain" })}
+    return None;
+};`,
+    `// ${comment(/*i18n*/ { id: "Record the segment pair being checked", message: "Record the segment pair being checked" })}
+checked.push([neighbors[0], neighbors[1]]);`,
+    `// ${comment(/*i18n*/ { id: "Look up both segments by their indices", message: "Look up both segments by their indices" })}
+let (a, b) = (&segments[neighbors[0]], &segments[neighbors[1]]);`,
+    `// ${comment(/*i18n*/ { id: "Try to compute an intersection candidate for these segments", message: "Try to compute an intersection candidate for these segments" })}
+let Some(point) = intersection_candidate(a, b) else {
+    // ${comment(/*i18n*/ { id: "End this check if there is no candidate", message: "End this check if there is no candidate" })}
+    return None;
+};`,
+    `// ${comment(/*i18n*/ { id: "Check whether the intersection follows the current event", message: "Check whether the intersection follows the current event" })}
+if point > *current {`,
+    `    // ${comment(/*i18n*/ { id: "Add the intersection to the queue, preserving any existing event", message: "Add the intersection to the queue, preserving any existing event" })}
+    queue.entry(point.clone()).or_default();`,
     '}',
-    '// 返回本次找到的候选交点\nreturn Some(point);',
+    `// ${comment(/*i18n*/ { id: "Return the intersection candidate found by this check", message: "Return the intersection candidate found by this check" })}
+return Some(point);`,
   ], [[1], [2], [3], [4], [5], [6], [7], [8], [9], [1, 1], [4, 1], [1, 2], [4, 2]]),
-  activity: teachingModule('活动集合更新', [
-    { closure: 'retain-end', code: '// 从活动集合中移除在当前点结束的线段\nactive.retain(|&id| {\n    // 判断这条线段是否还会继续向前延伸\n    segments[id].right != point\n});' },
-    { closure: 'retain-height', code: '// 暂时移除经过当前点的线段，稍后重新排序插入\nactive.retain(|&id| {\n    // 保留不经过当前点的线段\n    !height_order[id].is_eq()\n});' },
-    { closure: 'retain-end', code: '// 从参与线段中选出还需要留在活动集合里的线段\nincident.retain(|&id| {\n    // 排除在当前点结束的线段\n    segments[id].right != point\n});' },
-    { closure: 'sort-by', code: '// 按越过当前点后的上下顺序排列这些线段\nincident.sort_by(|&a, &b| {\n    // 比较斜率，斜率较小的排在下方\n    segments[a].slope.cmp(&segments[b].slope)\n});' },
-    { closure: 'partition-point', code: '// 在活动集合中找到这组线段的插入位置\nlet position = active.partition_point(|&id| {\n    // 判断已有线段是否位于当前点下方\n    height_order[id].is_lt()\n});' },
-    '// 记下本次要插入的线段数量\nlet inserted = incident.len();',
-    '// 把排好序的线段插回活动集合\nactive.splice(position..position, incident);',
+  activity: teachingModule(/*i18n*/ { id: "Update the active set", message: "Update the active set" }, [
+    { closure: 'retain-end', code: `// ${comment(/*i18n*/ { id: "Remove segments that end at the current point from the active set", message: "Remove segments that end at the current point from the active set" })}
+active.retain(|&id| {
+    // ${comment(/*i18n*/ { id: "Check whether this segment extends beyond the current point", message: "Check whether this segment extends beyond the current point" })}
+    segments[id].right != point
+});` },
+    { closure: 'retain-height', code: `// ${comment(/*i18n*/ { id: "Temporarily remove segments through the current point before reinserting them in order", message: "Temporarily remove segments through the current point before reinserting them in order" })}
+active.retain(|&id| {
+    // ${comment(/*i18n*/ { id: "Keep segments that do not pass through the current point", message: "Keep segments that do not pass through the current point" })}
+    !height_order[id].is_eq()
+});` },
+    { closure: 'retain-end', code: `// ${comment(/*i18n*/ { id: "Keep incident segments that must remain in the active set", message: "Keep incident segments that must remain in the active set" })}
+incident.retain(|&id| {
+    // ${comment(/*i18n*/ { id: "Exclude segments that end at the current point", message: "Exclude segments that end at the current point" })}
+    segments[id].right != point
+});` },
+    { closure: 'sort-by', code: `// ${comment(/*i18n*/ { id: "Sort these segments by their vertical order just beyond the current point", message: "Sort these segments by their vertical order just beyond the current point" })}
+incident.sort_by(|&a, &b| {
+    // ${comment(/*i18n*/ { id: "Compare slopes, placing smaller slopes below larger ones", message: "Compare slopes, placing smaller slopes below larger ones" })}
+    segments[a].slope.cmp(&segments[b].slope)
+});` },
+    { closure: 'partition-point', code: `// ${comment(/*i18n*/ { id: "Find where to insert this group into the active set", message: "Find where to insert this group into the active set" })}
+let position = active.partition_point(|&id| {
+    // ${comment(/*i18n*/ { id: "Check whether an active segment lies below the current point", message: "Check whether an active segment lies below the current point" })}
+    height_order[id].is_lt()
+});` },
+    `// ${comment(/*i18n*/ { id: "Record how many segments will be inserted", message: "Record how many segments will be inserted" })}
+let inserted = incident.len();`,
+    `// ${comment(/*i18n*/ { id: "Insert the sorted segments back into the active set", message: "Insert the sorted segments back into the active set" })}
+active.splice(position..position, incident);`,
   ], [[1], [2], [3], [4], [5], [6], [7], [8]]),
-  take: teachingModule('取事件', [
-    '// 取出下一个待处理的事件\nlet next = queue.pop_first();',
-    '// 取出事件的位置和内容；没有事件时进入结束分支\nlet Some((point, event)) = next else {\n    // 没有待处理的事件，结束循环\n    break;\n};',
+  take: teachingModule(/*i18n*/ { id: "Take an event", message: "Take an event" }, [
+    `// ${comment(/*i18n*/ { id: "Take the next pending event", message: "Take the next pending event" })}
+let next = queue.pop_first();`,
+    `// ${comment(/*i18n*/ { id: "Extract the event position and contents, or enter the exit branch if no event remains", message: "Extract the event position and contents, or enter the exit branch if no event remains" })}
+let Some((point, event)) = next else {
+    // ${comment(/*i18n*/ { id: "Exit the loop when no pending event remains", message: "Exit the loop when no pending event remains" })}
+    break;
+};`,
   ], [[1], [2], [3], [2, 1], [2, 2]]),
-  classify: teachingModule('参与线段分类', [
-    '// 先收集在当前点开始的线段\nlet mut incident = event.starts;',
-    '// 逐条检查当前活动线段\nfor &id in &active {',
-    '    // 比较线段在扫描线上的高度与当前点的高度\n    height_order[id] = segments[id].y_at(&point.x).cmp(&point.y);',
-    '    // 判断这条线段是否经过当前点\n    if height_order[id].is_eq() {',
-    '        // 把它加入本次参与处理的线段中\n        incident.push(id);',
+  classify: teachingModule(/*i18n*/ { id: "Classify incident segments", message: "Classify incident segments" }, [
+    `// ${comment(/*i18n*/ { id: "Start by collecting segments that begin at the current point", message: "Start by collecting segments that begin at the current point" })}
+let mut incident = event.starts;`,
+    `// ${comment(/*i18n*/ { id: "Check each currently active segment", message: "Check each currently active segment" })}
+for &id in &active {`,
+    `    // ${comment(/*i18n*/ { id: "Compare the segment height at the sweep line with the current point height", message: "Compare the segment height at the sweep line with the current point height" })}
+    height_order[id] = segments[id].y_at(&point.x).cmp(&point.y);`,
+    `    // ${comment(/*i18n*/ { id: "Check whether this segment passes through the current point", message: "Check whether this segment passes through the current point" })}
+    if height_order[id].is_eq() {`,
+    `        // ${comment(/*i18n*/ { id: "Add it to the incident segments for this event", message: "Add it to the incident segments for this event" })}
+        incident.push(id);`,
     '    }\n}',
-    '// 准备分别记录在此开始、结束和从中间经过的线段\nlet (mut starts, mut ends, mut passes) = (Vec::new(), Vec::new(), Vec::new());',
-    '// 逐条判断参与线段与当前点的关系\nfor &id in &incident {',
-    '    // 判断当前点是不是这条线段的起点\n    if segments[id].left == point {',
-    '        // 记入在此开始的线段\n        starts.push(id);',
-    '    }\n    // 判断当前点是不是这条线段的终点\n    if segments[id].right == point {',
-    '        // 记入在此结束的线段\n        ends.push(id);',
-    '    }\n    // 排除两端，判断当前点是否在线段内部\n    if segments[id].left != point && segments[id].right != point {',
-    '        // 记入从中间经过当前点的线段\n        passes.push(id);',
+    `// ${comment(/*i18n*/ { id: "Prepare separate lists for starting, ending, and passing segments", message: "Prepare separate lists for starting, ending, and passing segments" })}
+let (mut starts, mut ends, mut passes) = (Vec::new(), Vec::new(), Vec::new());`,
+    `// ${comment(/*i18n*/ { id: "Classify each incident segment relative to the current point", message: "Classify each incident segment relative to the current point" })}
+for &id in &incident {`,
+    `    // ${comment(/*i18n*/ { id: "Check whether the current point is the segment start", message: "Check whether the current point is the segment start" })}
+    if segments[id].left == point {`,
+    `        // ${comment(/*i18n*/ { id: "Record the segment as starting here", message: "Record the segment as starting here" })}
+        starts.push(id);`,
+    `    }
+    // ${comment(/*i18n*/ { id: "Check whether the current point is the segment end", message: "Check whether the current point is the segment end" })}
+    if segments[id].right == point {`,
+    `        // ${comment(/*i18n*/ { id: "Record the segment as ending here", message: "Record the segment as ending here" })}
+        ends.push(id);`,
+    `    }
+    // ${comment(/*i18n*/ { id: "Exclude both endpoints to check whether the point lies in the segment interior", message: "Exclude both endpoints to check whether the point lies in the segment interior" })}
+    if segments[id].left != point && segments[id].right != point {`,
+    `        // ${comment(/*i18n*/ { id: "Record the segment as passing through this point", message: "Record the segment as passing through this point" })}
+        passes.push(id);`,
     '    }\n}',
   ], [[1], [2], [3], [4], [5], [6, 1], [7], [8], [9], [10], [11, 1], [12], [13, 1], [14], [15, 1], [16], [2], [8], [6], [11], [13], [15]]),
-  record: teachingModule('配对与记录', [
-    '// 依次选取一条经过当前点的线段\nfor (i, &a) in incident.iter().enumerate() {',
-    '    // 只与后面的线段配对，避免重复记录同一对\n    for &b in &incident[i + 1..] {',
-    { closure: 'original', code: '        // 准备把扫描坐标还原为输入时的坐标\n        let original = |p| {\n            // 撤销横坐标的剪切变换，纵坐标保持不变\n            Point { x: p.x - shear * p.y, y: p.y }\n        };' },
-    '        // 比较两条线段的斜率，判断是否需要处理重叠\n        let geometry = if segments[a].slope == segments[b].slope {',
-    '            // 取两个起点中较后的一个，作为重叠起点\n            let start = segments[a].left.max(segments[b].left);',
-    '            // 判断当前事件是否不是这段重叠的起点\n            if start != &point {',
-    '                // 只在重叠起点记录一次，跳过当前线段对\n                continue;\n            }',
-    '            // 取两个终点中较前的一个，作为重叠终点\n            let end = segments[a].right.min(segments[b].right);',
-    '            // 判断交集是否有长度，是一段线段\n            if start < end {',
-    '                // 还原两端坐标，生成重叠线段的结果\n                Geometry::Overlap { start: original(start), end: original(end) }',
-    '            }\n            // 没有长度时，按单个交点处理\n            else {\n                // 还原接触点坐标，生成交点结果\n                Geometry::Point(original(start))\n            }',
-    '        }\n        // 斜率不同时，交集就是当前事件点\n        else {\n            // 还原当前点坐标，生成交点结果\n            Geometry::Point(original(&point))\n        };',
+  record: teachingModule(/*i18n*/ { id: "Pair and record", message: "Pair and record" }, [
+    `// ${comment(/*i18n*/ { id: "Select each segment passing through the current point", message: "Select each segment passing through the current point" })}
+for (i, &a) in incident.iter().enumerate() {`,
+    `    // ${comment(/*i18n*/ { id: "Pair only with later segments to avoid recording the same pair twice", message: "Pair only with later segments to avoid recording the same pair twice" })}
+    for &b in &incident[i + 1..] {`,
+    { closure: 'original', code: `        // ${comment(/*i18n*/ { id: "Prepare to convert sweep coordinates back to input coordinates", message: "Prepare to convert sweep coordinates back to input coordinates" })}
+        let original = |p| {
+            // ${comment(/*i18n*/ { id: "Undo the shear of the x coordinate, leaving the y coordinate unchanged", message: "Undo the shear of the x coordinate, leaving the y coordinate unchanged" })}
+            Point { x: p.x - shear * p.y, y: p.y }
+        };` },
+    `        // ${comment(/*i18n*/ { id: "Compare slopes to determine whether overlap handling is needed", message: "Compare slopes to determine whether overlap handling is needed" })}
+        let geometry = if segments[a].slope == segments[b].slope {`,
+    `            // ${comment(/*i18n*/ { id: "Use the later start point as the overlap start", message: "Use the later start point as the overlap start" })}
+            let start = segments[a].left.max(segments[b].left);`,
+    `            // ${comment(/*i18n*/ { id: "Check whether this event differs from the overlap start", message: "Check whether this event differs from the overlap start" })}
+            if start != &point {`,
+    `                // ${comment(/*i18n*/ { id: "Record only at the overlap start; skip this pair here", message: "Record only at the overlap start; skip this pair here" })}
+                continue;
+            }`,
+    `            // ${comment(/*i18n*/ { id: "Use the earlier end point as the overlap end", message: "Use the earlier end point as the overlap end" })}
+            let end = segments[a].right.min(segments[b].right);`,
+    `            // ${comment(/*i18n*/ { id: "Check whether the intersection has nonzero length", message: "Check whether the intersection has nonzero length" })}
+            if start < end {`,
+    `                // ${comment(/*i18n*/ { id: "Restore both endpoints to produce an overlap result", message: "Restore both endpoints to produce an overlap result" })}
+                Geometry::Overlap { start: original(start), end: original(end) }`,
+    `            }
+            // ${comment(/*i18n*/ { id: "Treat a zero-length intersection as a single point", message: "Treat a zero-length intersection as a single point" })}
+            else {
+                // ${comment(/*i18n*/ { id: "Restore the contact point to produce a point result", message: "Restore the contact point to produce a point result" })}
+                Geometry::Point(original(start))
+            }`,
+    `        }
+        // ${comment(/*i18n*/ { id: "For different slopes, the intersection is the current event point", message: "For different slopes, the intersection is the current event point" })}
+        else {
+            // ${comment(/*i18n*/ { id: "Restore the current point to produce a point result", message: "Restore the current point to produce a point result" })}
+            Geometry::Point(original(&point))
+        };`,
     '',
-    '        // 按编号从小到大保存线段对及其交集\n        result.push(Intersection { segments: [a.min(b), a.max(b)], geometry });',
+    `        // ${comment(/*i18n*/ { id: "Store the pair in ascending index order together with its intersection", message: "Store the pair in ascending index order together with its intersection" })}
+        result.push(Intersection { segments: [a.min(b), a.max(b)], geometry });`,
     '    }',
     '}',
   ], [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11, 2], [12, 2], [13], [14], [15], [16], [17], [2], [1], [11], [11, 3], [12], [12, 3]]),

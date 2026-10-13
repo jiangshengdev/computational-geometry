@@ -1,7 +1,6 @@
 import { expect, test } from '../support/learning-test'
 import { readTrace } from '../support/trace-navigation'
 import { formatExecutionValue } from '../../src/learning/executionValue'
-import { shadowedValueNote } from '../../src/learning/executionSymbols'
 
 test('核心变量保留真实值并随前进回退更新', async ({ page }) => {
   const errors: string[] = []
@@ -20,7 +19,7 @@ test('核心变量保留真实值并随前进回退更新', async ({ page }) => 
         if (await disclosure.count() && await disclosure.getAttribute('aria-expanded') === 'false') await disclosure.click()
         await expect(row.locator('dt')).toContainText(`${variable.name}: ${variable.type} =`)
         if ((variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null) {
-          await expect(row.locator('dd')).toHaveText(formatExecutionValue(trace.values[variable.value]) + (variable.availability === 'shadowed' ? shadowedValueNote : ''))
+          await expect(row.locator('dd')).toHaveText(formatExecutionValue(trace.values[variable.value]) + (variable.availability === 'shadowed' ? '（已遮蔽，遮蔽前的最后值）' : ''))
         }
       }
     }

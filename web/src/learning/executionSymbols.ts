@@ -1,88 +1,92 @@
+import type { I18n, MessageDescriptor } from '@lingui/core'
 import type { ExecutionContext, ExecutionControl, ExecutionVariable, ExecutionVariableKind, SweepStep } from './trace'
 import { formatExecutionValue } from './executionValue'
 
-const meanings: Record<string, string> = {
-  queue: '按扫描坐标排序的待处理事件队列', next: '本次弹出的队首事件，可为空',
-  point: '本次事件的扫描坐标', event: '本次事件携带的线段信息',
-  segments: '变换到扫描坐标的线段；遮蔽同名原始输入参数', active: '当前活动线段的编号序列',
-  incident: '经过当前事件点的线段编号', height_order: '按线段编号保存的精确高度比较缓存；分类循环逐项刷新，尚未访问的项保留先前值，不能视为全部已按当前事件更新',
-  id: '当前循环访问的线段编号', starts: '在当前点开始的线段', ends: '在当前点结束的线段',
-  passes: '内部经过当前点的线段', i: '当前外层配对索引', a: '当前配对的第一条线段（扫描循环中使用编号）',
-  b: '当前配对的第二条线段（扫描循环中使用编号）', shear: '扫描坐标的剪切系数',
-  p: '坐标还原闭包的参数，仅在该闭包调用期间有效', start: '重叠候选区间的起点',
-  end: '重叠候选区间的终点', geometry: '当前线段对的原坐标交集', result: '截至当前小步已记录的交集',
-  position: '新活动线段插入到活动序列的位置', inserted: '本次需要插入的线段数量',
-  boundaries: '需检查的插入区间外侧边界', lower: '邻居对中第一条线段的活动序列索引',
-  neighbors: '本次检查的相邻线段编号', current: '正在处理的事件扫描坐标',
-  checked: '本事件已经检查的邻居对', candidate: '已完成的邻居调用返回的交点候选',
-  return_value: '当前调用已经产生的返回值',
+const meanings: Record<string, MessageDescriptor> = {
+  queue: /*i18n*/ { id: "Pending events ordered by sweep coordinates", message: "Pending events ordered by sweep coordinates" }, next: /*i18n*/ { id: "The event just removed from the queue, possibly absent", message: "The event just removed from the queue, possibly absent" },
+  point: /*i18n*/ { id: "Sweep coordinates of the current event", message: "Sweep coordinates of the current event" }, event: /*i18n*/ { id: "Segment information carried by the current event", message: "Segment information carried by the current event" },
+  segments: /*i18n*/ { id: "Segments transformed into sweep coordinates; shadows the original input parameter with the same name", message: "Segments transformed into sweep coordinates; shadows the original input parameter with the same name" }, active: /*i18n*/ { id: "Indices of the currently active segments", message: "Indices of the currently active segments" },
+  incident: /*i18n*/ { id: "Indices of segments incident to the current event point", message: "Indices of segments incident to the current event point" }, height_order: /*i18n*/ { id: "Exact height comparisons cached by segment index. The classification loop updates entries individually; unvisited entries retain earlier values and are not yet updated for this event", message: "Exact height comparisons cached by segment index. The classification loop updates entries individually; unvisited entries retain earlier values and are not yet updated for this event" },
+  id: /*i18n*/ { id: "Segment index visited by the current loop", message: "Segment index visited by the current loop" }, starts: /*i18n*/ { id: "Segments starting at the current point", message: "Segments starting at the current point" }, ends: /*i18n*/ { id: "Segments ending at the current point", message: "Segments ending at the current point" },
+  passes: /*i18n*/ { id: "Segments whose interiors pass through the current point", message: "Segments whose interiors pass through the current point" }, i: /*i18n*/ { id: "Current outer pairing index", message: "Current outer pairing index" }, a: /*i18n*/ { id: "First segment in the current pair (an index in the sweep loop)", message: "First segment in the current pair (an index in the sweep loop)" },
+  b: /*i18n*/ { id: "Second segment in the current pair (an index in the sweep loop)", message: "Second segment in the current pair (an index in the sweep loop)" }, shear: /*i18n*/ { id: "Shear coefficient for sweep coordinates", message: "Shear coefficient for sweep coordinates" },
+  p: /*i18n*/ { id: "Coordinate restoration closure parameter, valid only during that invocation", message: "Coordinate restoration closure parameter, valid only during that invocation" }, start: /*i18n*/ { id: "Start of the candidate overlap interval", message: "Start of the candidate overlap interval" },
+  end: /*i18n*/ { id: "End of the candidate overlap interval", message: "End of the candidate overlap interval" }, geometry: /*i18n*/ { id: "Intersection of the current pair in original coordinates", message: "Intersection of the current pair in original coordinates" }, result: /*i18n*/ { id: "Intersections recorded up to the current step", message: "Intersections recorded up to the current step" },
+  position: /*i18n*/ { id: "Position where new active segments enter the active sequence", message: "Position where new active segments enter the active sequence" }, inserted: /*i18n*/ { id: "Number of segments to insert in this event", message: "Number of segments to insert in this event" },
+  boundaries: /*i18n*/ { id: "Outer boundaries of the insertion range that need checking", message: "Outer boundaries of the insertion range that need checking" }, lower: /*i18n*/ { id: "Active-sequence index of the first segment in the neighboring pair", message: "Active-sequence index of the first segment in the neighboring pair" },
+  neighbors: /*i18n*/ { id: "Indices of the neighboring segments being checked", message: "Indices of the neighboring segments being checked" }, current: /*i18n*/ { id: "Sweep coordinates of the event being processed", message: "Sweep coordinates of the event being processed" },
+  checked: /*i18n*/ { id: "Neighboring pairs already checked for this event", message: "Neighboring pairs already checked for this event" }, candidate: /*i18n*/ { id: "Intersection candidate returned by the completed neighbor call", message: "Intersection candidate returned by the completed neighbor call" },
+  return_value: /*i18n*/ { id: "Return value already produced by the current call", message: "Return value already produced by the current call" },
 }
 
-export const functions: Record<string, { signature: string; purpose: string; parameters: string }> = {
-  schedule_neighbors: { signature: 'schedule_neighbors(active, lower, segments, current, queue, checked) -> Option<Point>', purpose: '检查实际邻居，将未来交点加入事件队列并返回几何候选。', parameters: 'active：活动顺序；lower：邻居索引；segments：扫描线段；current：当前事件；queue：事件队列；checked：已检查对。' },
-  intersection_candidate: { signature: 'intersection_candidate(a, b) -> Option<Point>', purpose: '教学伪代码中的原子几何计算；对应 Rust 实际精确计算，不展开公式。', parameters: 'a、b：本次参与几何计算的扫描线段。' },
-  pop_first: { signature: 'pop_first(&mut self) -> Option<(Point, Event)>', purpose: '移除并返回队列中最早的事件。', parameters: 'self：当前 queue；无显式参数。' },
-  y_at: { signature: 'y_at(&self, x: &Rational) -> Rational', purpose: '精确计算线段在指定横坐标的高度。', parameters: 'self：当前线段；x：事件横坐标。' },
-  cmp: { signature: 'cmp(&self, other: &Self) -> Ordering', purpose: '按当前表达式比较两个值。', parameters: 'self、other：调用点的两个操作数，可为高度或斜率。' },
-  is_eq: { signature: 'is_eq(self) -> bool', purpose: '判断比较结果是否相等。', parameters: 'self：当前高度比较结果；无显式参数。' },
-  is_lt: { signature: 'is_lt(self) -> bool', purpose: '判断比较结果是否为小于。', parameters: 'self：调用点的比较结果；无显式参数。' },
-  push: { signature: 'push(&mut self, value: T) -> ()', purpose: '向当前目标序列追加一个元素。', parameters: 'self：调用点左侧的序列；value：括号内的元素。' },
-  new: { signature: 'Vec::new() -> Vec<T>', purpose: '创建空序列。', parameters: '无参数。' },
-  iter: { signature: 'iter(&self) -> Iter<T>', purpose: '依次访问序列元素。', parameters: 'self：调用点的序列；无显式参数。' },
-  enumerate: { signature: 'enumerate(self) -> Enumerate<Self>', purpose: '为迭代元素附加从零开始的索引。', parameters: 'self：调用点的迭代器；无显式参数。' },
-  original: { signature: 'original(p: &Point) -> Point', purpose: '撤销剪切，恢复原坐标。', parameters: 'p：本次调用的扫描坐标点。' },
-  min: { signature: 'min(self, other: Self) -> Self', purpose: '返回两个值中的较小者。', parameters: 'self、other：此调用点的两个操作数。' },
-  max: { signature: 'max(self, other: Self) -> Self', purpose: '返回两个值中的较大者。', parameters: 'self、other：此调用点的两个操作数。' },
-  retain: { signature: 'retain(&mut self, predicate) -> ()', purpose: '保留满足条件的元素。', parameters: 'predicate：保留条件；self：调用点左侧的序列。' },
-  sort_by: { signature: 'sort_by(&mut self, compare) -> ()', purpose: '按比较函数排序。', parameters: 'compare：当前排序规则。' },
-  partition_point: { signature: 'partition_point(&self, predicate) -> usize', purpose: '定位有序分区的边界。', parameters: 'predicate：当前分区条件。' },
-  len: { signature: 'len(&self) -> usize', purpose: '读取序列长度。', parameters: 'self：调用点的序列；无显式参数。' },
-  splice: { signature: 'splice(&mut self, range, replace_with) -> Splice', purpose: '替换指定范围中的元素。', parameters: 'range：替换范围；replace_with：新元素。' },
-  checked_sub: { signature: 'checked_sub(self, rhs: usize) -> Option<usize>', purpose: '执行检查下溢的索引减法。', parameters: 'self：调用点的索引；rhs：减数。' },
-  then: { signature: 'then(self, f) -> Option<T>', purpose: '条件为真时执行闭包并返回其结果，否则返回 None。', parameters: 'self：条件；f：生成值的闭包。' },
-  into_iter: { signature: 'into_iter(self) -> IntoIter<T>', purpose: '将当前集合转为消耗元素的迭代器。', parameters: 'self：调用点的集合。' },
-  flatten: { signature: 'flatten(self) -> Flatten<Self>', purpose: '展开嵌套迭代值；Option 中的 None 不产生元素。', parameters: 'self：调用点的迭代器。' },
-  get: { signature: 'get(&self, range) -> Option<&[T]>', purpose: '取得指定范围；越界时返回 None。', parameters: 'self：调用点的序列；range：索引范围。' },
-  entry: { signature: 'entry(&mut self, key) -> Entry<K, V>', purpose: '取得指定键对应的映射条目。', parameters: 'self：调用点的映射；key：键。' },
-  clone: { signature: 'clone(&self) -> Self', purpose: '复制当前值。', parameters: 'self：调用点的值。' },
-  or_default: { signature: 'or_default(self) -> &mut V', purpose: '取得条目值；键不存在时插入默认值。', parameters: 'self：调用点的映射条目。' },
+export const functions: Record<string, { signature: string; purpose: MessageDescriptor; parameters: MessageDescriptor }> = {
+  schedule_neighbors: { signature: 'schedule_neighbors(active, lower, segments, current, queue, checked) -> Option<Point>', purpose: /*i18n*/ { id: "Check actual neighbors, enqueue future intersections, and return a geometry candidate.", message: "Check actual neighbors, enqueue future intersections, and return a geometry candidate." }, parameters: /*i18n*/ { id: "active: active order; lower: neighbor index; segments: sweep segments; current: current event; queue: event queue; checked: checked pairs.", message: "active: active order; lower: neighbor index; segments: sweep segments; current: current event; queue: event queue; checked: checked pairs." } },
+  intersection_candidate: { signature: 'intersection_candidate(a, b) -> Option<Point>', purpose: /*i18n*/ { id: "Atomic geometry operation in the teaching code, corresponding to the actual exact Rust computation without expanding its formulas.", message: "Atomic geometry operation in the teaching code, corresponding to the actual exact Rust computation without expanding its formulas." }, parameters: /*i18n*/ { id: "a, b: sweep segments used in this geometry computation.", message: "a, b: sweep segments used in this geometry computation." } },
+  pop_first: { signature: 'pop_first(&mut self) -> Option<(Point, Event)>', purpose: /*i18n*/ { id: "Remove and return the earliest event in the queue.", message: "Remove and return the earliest event in the queue." }, parameters: /*i18n*/ { id: "self: the current queue; no explicit arguments.", message: "self: the current queue; no explicit arguments." } },
+  y_at: { signature: 'y_at(&self, x: &Rational) -> Rational', purpose: /*i18n*/ { id: "Compute the exact segment height at the given x coordinate.", message: "Compute the exact segment height at the given x coordinate." }, parameters: /*i18n*/ { id: "self: the current segment; x: event x coordinate.", message: "self: the current segment; x: event x coordinate." } },
+  cmp: { signature: 'cmp(&self, other: &Self) -> Ordering', purpose: /*i18n*/ { id: "Compare two values in the current expression.", message: "Compare two values in the current expression." }, parameters: /*i18n*/ { id: "self, other: the operands at this call site, such as heights or slopes.", message: "self, other: the operands at this call site, such as heights or slopes." } },
+  is_eq: { signature: 'is_eq(self) -> bool', purpose: /*i18n*/ { id: "Check whether the comparison result is equal.", message: "Check whether the comparison result is equal." }, parameters: /*i18n*/ { id: "self: the current height comparison result; no explicit arguments.", message: "self: the current height comparison result; no explicit arguments." } },
+  is_lt: { signature: 'is_lt(self) -> bool', purpose: /*i18n*/ { id: "Check whether the comparison result is less than.", message: "Check whether the comparison result is less than." }, parameters: /*i18n*/ { id: "self: the comparison result at this call site; no explicit arguments.", message: "self: the comparison result at this call site; no explicit arguments." } },
+  push: { signature: 'push(&mut self, value: T) -> ()', purpose: /*i18n*/ { id: "Append an element to the target sequence.", message: "Append an element to the target sequence." }, parameters: /*i18n*/ { id: "self: the sequence to the left of the call; value: the element in parentheses.", message: "self: the sequence to the left of the call; value: the element in parentheses." } },
+  new: { signature: 'Vec::new() -> Vec<T>', purpose: /*i18n*/ { id: "Create an empty sequence.", message: "Create an empty sequence." }, parameters: /*i18n*/ { id: "No arguments.", message: "No arguments." } },
+  iter: { signature: 'iter(&self) -> Iter<T>', purpose: /*i18n*/ { id: "Visit sequence elements in order.", message: "Visit sequence elements in order." }, parameters: /*i18n*/ { id: "self: the sequence at this call site; no explicit arguments.", message: "self: the sequence at this call site; no explicit arguments." } },
+  enumerate: { signature: 'enumerate(self) -> Enumerate<Self>', purpose: /*i18n*/ { id: "Attach zero-based indices to iterator elements.", message: "Attach zero-based indices to iterator elements." }, parameters: /*i18n*/ { id: "self: the iterator at this call site; no explicit arguments.", message: "self: the iterator at this call site; no explicit arguments." } },
+  original: { signature: 'original(p: &Point) -> Point', purpose: /*i18n*/ { id: "Undo the shear to restore original coordinates.", message: "Undo the shear to restore original coordinates." }, parameters: /*i18n*/ { id: "p: the sweep-coordinate point for this call.", message: "p: the sweep-coordinate point for this call." } },
+  min: { signature: 'min(self, other: Self) -> Self', purpose: /*i18n*/ { id: "Return the smaller of two values.", message: "Return the smaller of two values." }, parameters: /*i18n*/ { id: "self, other: the two operands at this call site.", message: "self, other: the two operands at this call site." } },
+  max: { signature: 'max(self, other: Self) -> Self', purpose: /*i18n*/ { id: "Return the larger of two values.", message: "Return the larger of two values." }, parameters: /*i18n*/ { id: "self, other: the two operands at this call site.", message: "self, other: the two operands at this call site." } },
+  retain: { signature: 'retain(&mut self, predicate) -> ()', purpose: /*i18n*/ { id: "Keep elements that satisfy the predicate.", message: "Keep elements that satisfy the predicate." }, parameters: /*i18n*/ { id: "predicate: the retention condition; self: the sequence to the left of the call.", message: "predicate: the retention condition; self: the sequence to the left of the call." } },
+  sort_by: { signature: 'sort_by(&mut self, compare) -> ()', purpose: /*i18n*/ { id: "Sort using the comparison function.", message: "Sort using the comparison function." }, parameters: /*i18n*/ { id: "compare: the current ordering rule.", message: "compare: the current ordering rule." } },
+  partition_point: { signature: 'partition_point(&self, predicate) -> usize', purpose: /*i18n*/ { id: "Locate the boundary of an ordered partition.", message: "Locate the boundary of an ordered partition." }, parameters: /*i18n*/ { id: "predicate: the current partition condition.", message: "predicate: the current partition condition." } },
+  len: { signature: 'len(&self) -> usize', purpose: /*i18n*/ { id: "Read the sequence length.", message: "Read the sequence length." }, parameters: /*i18n*/ { id: "self: the sequence at this call site; no explicit arguments.", message: "self: the sequence at this call site; no explicit arguments." } },
+  splice: { signature: 'splice(&mut self, range, replace_with) -> Splice', purpose: /*i18n*/ { id: "Replace elements in the specified range.", message: "Replace elements in the specified range." }, parameters: /*i18n*/ { id: "range: the range to replace; replace_with: the new elements.", message: "range: the range to replace; replace_with: the new elements." } },
+  checked_sub: { signature: 'checked_sub(self, rhs: usize) -> Option<usize>', purpose: /*i18n*/ { id: "Subtract an index with an underflow check.", message: "Subtract an index with an underflow check." }, parameters: /*i18n*/ { id: "self: the index at this call site; rhs: the amount to subtract.", message: "self: the index at this call site; rhs: the amount to subtract." } },
+  then: { signature: 'then(self, f) -> Option<T>', purpose: /*i18n*/ { id: "Run the closure and return its result when the condition is true; otherwise return None.", message: "Run the closure and return its result when the condition is true; otherwise return None." }, parameters: /*i18n*/ { id: "self: the condition; f: the closure producing the value.", message: "self: the condition; f: the closure producing the value." } },
+  into_iter: { signature: 'into_iter(self) -> IntoIter<T>', purpose: /*i18n*/ { id: "Convert the collection into an iterator that consumes its elements.", message: "Convert the collection into an iterator that consumes its elements." }, parameters: /*i18n*/ { id: "self: the collection at this call site.", message: "self: the collection at this call site." } },
+  flatten: { signature: 'flatten(self) -> Flatten<Self>', purpose: /*i18n*/ { id: "Flatten nested iterator values; None in an Option produces no element.", message: "Flatten nested iterator values; None in an Option produces no element." }, parameters: /*i18n*/ { id: "self: the iterator at this call site.", message: "self: the iterator at this call site." } },
+  get: { signature: 'get(&self, range) -> Option<&[T]>', purpose: /*i18n*/ { id: "Get the specified range, returning None when out of bounds.", message: "Get the specified range, returning None when out of bounds." }, parameters: /*i18n*/ { id: "self: the sequence at this call site; range: the index range.", message: "self: the sequence at this call site; range: the index range." } },
+  entry: { signature: 'entry(&mut self, key) -> Entry<K, V>', purpose: /*i18n*/ { id: "Get the map entry for the specified key.", message: "Get the map entry for the specified key." }, parameters: /*i18n*/ { id: "self: the map at this call site; key: the entry key.", message: "self: the map at this call site; key: the entry key." } },
+  clone: { signature: 'clone(&self) -> Self', purpose: /*i18n*/ { id: "Clone the current value.", message: "Clone the current value." }, parameters: /*i18n*/ { id: "self: the value at this call site.", message: "self: the value at this call site." } },
+  or_default: { signature: 'or_default(self) -> &mut V', purpose: /*i18n*/ { id: "Get the entry value, inserting a default when the key is absent.", message: "Get the entry value, inserting a default when the key is absent." }, parameters: /*i18n*/ { id: "self: the map entry at this call site.", message: "self: the map entry at this call site." } },
 }
 
 export function callExpression(name: string, after: string) {
-  const open = after.search(/\S/)
-  if (open < 0 || after[open] !== '(') return name
+  // Teaching source uses line comments. Exclude their prose from both the
+  // parenthesis scan and the expression consumed by reference inspection.
+  const source = after.replace(/\/\/[^\r\n]*/g, '')
+  const open = source.search(/\S/)
+  if (open < 0 || source[open] !== '(') return name
   let depth = 0
-  for (let index = open; index < after.length; index++) {
-    if (after[index] === '(') depth++
-    if (after[index] === ')' && --depth === 0) return name + after.slice(0, index + 1)
+  for (let index = open; index < source.length; index++) {
+    if (source[index] === '(') depth++
+    if (source[index] === ')' && --depth === 0) return name + source.slice(0, index + 1)
   }
-  return name + after
+  return name + source
 }
 
-export const shadowedValueNote = '（已遮蔽，遮蔽前的最后值）'
+export const shadowedValueNote = /*i18n*/ { id: " (shadowed; last value before shadowing)", message: " (shadowed; last value before shadowing)" }
 
 export function hasVariableValue(variable: ExecutionVariable | undefined) {
   return !!variable && (variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null
 }
 
-export function variableValue(variable: ExecutionVariable | undefined, values: string[]) {
-  if (!variable || variable.availability === 'unavailable') return '不可用（当前作用域未提供）'
-  if (variable.availability === 'unassigned') return '未赋值'
+export function variableValue(variable: ExecutionVariable | undefined, values: string[], _: I18n['_']) {
+  if (!variable || variable.availability === 'unavailable') return _(/*i18n*/ { id: "Unavailable (not provided by the current scope)", message: "Unavailable (not provided by the current scope)" })
+  if (variable.availability === 'unassigned') return _(/*i18n*/ { id: "Unassigned", message: "Unassigned" })
   if (variable.availability === 'shadowed') return variable.value === null
-    ? '已遮蔽（遮蔽前的最后值未记录）'
-    : `${formatExecutionValue(values[variable.value])}${shadowedValueNote}`
-  return variable.value === null ? '不可用（当前轨迹未提供值）' : formatExecutionValue(values[variable.value])
+    ? _(/*i18n*/ { id: "Shadowed (last value before shadowing was not recorded)", message: "Shadowed (last value before shadowing was not recorded)" })
+    : `${formatExecutionValue(values[variable.value])}${_(shadowedValueNote)}`
+  return variable.value === null ? _(/*i18n*/ { id: "Unavailable (no value provided by the current trace)", message: "Unavailable (no value provided by the current trace)" }) : formatExecutionValue(values[variable.value])
 }
 
-export function symbolScope(name: string, module: string, line: number) {
-  if (module === 'classify' && name === 'id') return line <= 6 ? '活动线段循环' : '参与线段循环'
-  if (module === 'activity' && ['id', 'a', 'b'].includes(name)) return `第 ${line} 行闭包`
-  if (module === 'record' && name === 'p') return 'original 闭包'
-  if (module.startsWith('retain-')) return 'retain 闭包'
-  return `${module} 模块`
+export function symbolScope(name: string, module: string, line: number, _: I18n['_']) {
+  if (module === 'classify' && name === 'id') return line <= 6 ? _(/*i18n*/ { id: "Active segment loop", message: "Active segment loop" }) : _(/*i18n*/ { id: "Incident segment loop", message: "Incident segment loop" })
+  if (module === 'activity' && ['id', 'a', 'b'].includes(name)) return _(/*i18n*/ { id: "Closure on line {line}", message: "Closure on line {line}" , values: { line: String(line) }})
+  if (module === 'record' && name === 'p') return _(/*i18n*/ { id: "original closure", message: "original closure" })
+  if (module.startsWith('retain-')) return _(/*i18n*/ { id: "retain closure", message: "retain closure" })
+  return _(/*i18n*/ { id: "{module} module", message: "{module} module" , values: { module: module }})
 }
 
-export function scopedVariable(name: string, step: SweepStep, line: number) {
+export function scopedVariable(name: string, step: SweepStep, line: number, _: I18n['_']) {
   const { module, context } = step.execution
   const variable = context.locals.find(item => item.name === name) ?? context.parameters.find(item => item.name === name) ?? context.captures.find(item => item.name === name)
   let visible = true
@@ -93,48 +97,48 @@ export function scopedVariable(name: string, step: SweepStep, line: number) {
   if (module === 'record') {
     if (name === 'p') visible = false
   }
-  return visible ? variable : { name, type: variable?.type ?? '当前词法作用域变量', availability: 'unavailable' as const, value: null, scope: null }
+  return visible ? variable : { name, type: variable?.type ?? _(/*i18n*/ { id: "Variable in the current lexical scope", message: "Variable in the current lexical scope" }), availability: 'unavailable' as const, value: null, scope: null }
 }
 
-export function variableDetails(name: string, step: SweepStep, previous: SweepStep, values: string[], line: number) {
+export function variableDetails(name: string, step: SweepStep, previous: SweepStep, values: string[], line: number, _: I18n['_']) {
   const context = step.execution.context
   // Locals deliberately win even while unassigned or unavailable: never expose
   // the input parameter hidden by the scan-coordinate local named segments.
-  const variable = scopedVariable(name, step, line)
+  const variable = scopedVariable(name, step, line, _)
   const kind = context.locals.some(item => item.name === name) ? 'locals' : context.parameters.some(item => item.name === name) ? 'parameters' : 'captures'
-  return describeVariable(name, variable, kind, step, previous, values, symbolScope(name, step.execution.module, line), line)
+  return describeVariable(name, variable, kind, step, previous, values, symbolScope(name, step.execution.module, line, _), line, context, _)
 }
 
-export function panelVariableDetails(variable: ExecutionVariable, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, values: string[], context = step.execution.context) {
-  const scope = variable.scope === 'classify.active' ? '活动线段循环'
-    : variable.scope === 'classify.incident' ? '参与线段循环'
-    : variable.scope ?? (kind === 'parameters' ? `${context.function} 参数`
-      : kind === 'captures' ? `${context.function} 捕获变量`
-      : context.id === step.execution.context.id ? `${step.execution.module} 模块` : `${context.function} 局部变量`)
-  return describeVariable(variable.name, variable, kind, step, previous, values, scope, undefined, context)
+export function panelVariableDetails(variable: ExecutionVariable, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, values: string[], context = step.execution.context, _: I18n['_']) {
+  const scope = variable.scope === 'classify.active' ? _(/*i18n*/ { id: "Active segment loop", message: "Active segment loop" })
+    : variable.scope === 'classify.incident' ? _(/*i18n*/ { id: "Incident segment loop", message: "Incident segment loop" })
+    : variable.scope ?? (kind === 'parameters' ? _(/*i18n*/ { id: "{functionName} parameters", message: "{functionName} parameters" , values: { functionName: context.function }})
+      : kind === 'captures' ? _(/*i18n*/ { id: "{functionName} captures", message: "{functionName} captures" , values: { functionName: context.function }})
+      : context.id === step.execution.context.id ? _(/*i18n*/ { id: "{module} module", message: "{module} module" , values: { module: step.execution.module }}) : _(/*i18n*/ { id: "{functionName} locals", message: "{functionName} locals" , values: { functionName: context.function }}))
+  return describeVariable(variable.name, variable, kind, step, previous, values, scope, undefined, context, _)
 }
 
-function describeVariable(name: string, variable: ExecutionVariable | undefined, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, values: string[], scope: string, line?: number, context = step.execution.context) {
-  const { old, changed } = variableChange(variable, kind, step, previous, line, context)
+function describeVariable(name: string, variable: ExecutionVariable | undefined, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, values: string[], scope: string, line: number | undefined, context: ExecutionContext, _: I18n['_']) {
+  const { old, changed } = variableChange(variable, kind, step, previous, line, context, _)
   return {
     meaning: name === 'segments' && kind === 'parameters'
-      ? context.function === 'sweep' ? '原始输入线段，使用原坐标' : '当前函数接收的扫描坐标线段'
-      : name === 'segments' && kind === 'captures' ? '当前闭包捕获的扫描坐标线段'
-      : meanings[name],
-    type: variable?.type ?? '当前作用域未提供类型',
-    value: variableValue(variable, values),
+      ? context.function === 'sweep' ? _(/*i18n*/ { id: "Original input segments in original coordinates", message: "Original input segments in original coordinates" }) : _(/*i18n*/ { id: "Sweep-coordinate segments received by the current function", message: "Sweep-coordinate segments received by the current function" })
+      : name === 'segments' && kind === 'captures' ? _(/*i18n*/ { id: "Sweep-coordinate segments captured by the current closure", message: "Sweep-coordinate segments captured by the current closure" })
+      : meanings[name] ? _(meanings[name]) : undefined,
+    type: variable?.type ?? _(/*i18n*/ { id: "Type not provided by the current scope", message: "Type not provided by the current scope" }),
+    value: variableValue(variable, values, _),
     hasValue: hasVariableValue(variable),
     changed,
-    previous: variableValue(old, values),
+    previous: variableValue(old, values, _),
     previousHasValue: hasVariableValue(old),
     scope,
   }
 }
 
-export function variableChange(variable: ExecutionVariable | undefined, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, line?: number, context: ExecutionContext = step.execution.context) {
+export function variableChange(variable: ExecutionVariable | undefined, kind: ExecutionVariableKind, step: SweepStep, previous: SweepStep, line: number | undefined, context: ExecutionContext, _: I18n['_']) {
   const prior = [previous.execution.context, ...previous.execution.outer].find(frame => frame.id === context.id)
   const binding = prior?.[kind].find(item => item.name === variable?.name && item.scope === variable?.scope)
-  const old = binding && line !== undefined && prior === previous.execution.context && previous.execution.module === step.execution.module ? scopedVariable(binding.name, previous, line) : binding
+  const old = binding && line !== undefined && prior === previous.execution.context && previous.execution.module === step.execution.module ? scopedVariable(binding.name, previous, line, _) : binding
   return { old, changed: !!old && !!variable && (old.value !== variable.value || old.availability !== variable.availability) }
 }
 
@@ -145,17 +149,17 @@ export function symbolKind(name: string, before: string, after: string) {
   return null
 }
 
-export function controlDescription(keyword: string, control: ExecutionControl | undefined) {
-  if (!control) return '本次尚未执行'
+export function controlDescription(keyword: string, control: ExecutionControl | undefined, _: I18n['_']) {
+  if (!control) return _(/*i18n*/ { id: "Not executed in this step", message: "Not executed in this step" })
   switch (control.state) {
-    case 'pending': return keyword === 'for' ? '即将检查下一次迭代；本轮尚未判断' : '即将执行；结果尚未产生'
-    case 'true': return '本次条件为真，进入分支'
-    case 'false': return '本次条件为假，跳过分支'
-    case 'entered': return keyword === 'for' ? '本次已取得迭代元素，进入循环体' : '本次进入 else 分支'
-    case 'exhausted': return '本次没有下一个元素，循环已结束'
-    case 'skipped': return keyword === 'else' || keyword === 'if' ? '本次跳过此分支' : '本次未执行此语句'
-    case 'jumping': return keyword === 'continue' ? '已执行 continue，跳往下一次迭代' : '已执行 break，退出循环'
-    case 'returned': return '已执行 return，函数已返回'
-    case 'completed': return keyword === 'break' ? '已执行 break，退出循环' : '本次执行已完成'
+    case 'pending': return keyword === 'for' ? _(/*i18n*/ { id: "About to check the next iteration; no decision yet", message: "About to check the next iteration; no decision yet" }) : _(/*i18n*/ { id: "About to execute; no result yet", message: "About to execute; no result yet" })
+    case 'true': return _(/*i18n*/ { id: "The condition is true; enter this branch", message: "The condition is true; enter this branch" })
+    case 'false': return _(/*i18n*/ { id: "The condition is false; skip this branch", message: "The condition is false; skip this branch" })
+    case 'entered': return keyword === 'for' ? _(/*i18n*/ { id: "An iteration element is available; enter the loop body", message: "An iteration element is available; enter the loop body" }) : _(/*i18n*/ { id: "Enter the else branch", message: "Enter the else branch" })
+    case 'exhausted': return _(/*i18n*/ { id: "No next element; the loop has ended", message: "No next element; the loop has ended" })
+    case 'skipped': return keyword === 'else' || keyword === 'if' ? _(/*i18n*/ { id: "This branch is skipped", message: "This branch is skipped" }) : _(/*i18n*/ { id: "This statement was not executed", message: "This statement was not executed" })
+    case 'jumping': return keyword === 'continue' ? _(/*i18n*/ { id: "continue executed; move to the next iteration", message: "continue executed; move to the next iteration" }) : _(/*i18n*/ { id: "break executed; exit the loop", message: "break executed; exit the loop" })
+    case 'returned': return _(/*i18n*/ { id: "return executed; the function has returned", message: "return executed; the function has returned" })
+    case 'completed': return keyword === 'break' ? _(/*i18n*/ { id: "break executed; exit the loop", message: "break executed; exit the loop" }) : _(/*i18n*/ { id: "Execution completed in this step", message: "Execution completed in this step" })
   }
 }

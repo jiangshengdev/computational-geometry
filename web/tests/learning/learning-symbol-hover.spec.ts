@@ -4,6 +4,8 @@ import { readResponse, readTrace, waitForTraceCompletion } from '../support/trac
 import { variableValue } from '../../src/learning/executionSymbols'
 import { formatExecutionValue } from '../../src/learning/executionValue'
 import { codeSymbols } from '../../src/learning/executionAccess'
+import { chinese } from '../support/language'
+const translate = chinese._.bind(chinese)
 
 test('访问识别区分字段名、字段值和路径，嵌套索引保留所属关系', () => {
   const symbols = codeSymbols('Point { x: p.x - shear * p.y, y: p.y }; Geometry::Point(p); // p.y')
@@ -159,10 +161,10 @@ test('p.y 的 parent 跟随真实闭包前进回退，键盘进入浮层并关�
 
 test('遮蔽状态对入参与局部变量使用一致文案，其他不可用状态保持独立', () => {
   for (const name of ['segments', 'local']) {
-    expect(variableValue({ name, type: 'usize', availability: 'shadowed', value: 0, scope: null }, ['7']))
+    expect(variableValue({ name, type: 'usize', availability: 'shadowed', value: 0, scope: null }, ['7'], translate))
       .toBe('7（已遮蔽，遮蔽前的最后值）')
   }
-  expect(variableValue({ name: 'point', type: 'Point', availability: 'unavailable', value: null, scope: null }, []))
+  expect(variableValue({ name: 'point', type: 'Point', availability: 'unavailable', value: null, scope: null }, [], translate))
     .toBe('不可用（当前作用域未提供）')
 })
 
@@ -376,7 +378,7 @@ test('右侧顶层变量浮层与代码一致，支持键盘和前进回退', as
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await next.hover()
   const variable = trace.steps[index + 1].execution.context.locals.find(variable => variable.name === 'next')!
-  await expect(tooltip).toContainText(`当前值：${variableValue(variable, trace.values)}`)
+  await expect(tooltip).toContainText(`当前值：${variableValue(variable, trace.values, translate)}`)
   await expect(tooltip).toContainText('本步变化；之前值：未赋值')
   await closePreview(page, tooltip)
   await page.getByRole('button', { name: '上一步', exact: true }).click()
@@ -399,7 +401,7 @@ test('右侧同名参数和局部变量浮层隔离，变量名点击可折叠�
   await input.hover()
   await expect(tooltip).toContainText('原始输入线段，使用原坐标')
   await expect(tooltip).toContainText('作用域：sweep 参数')
-  await expect(tooltip).toContainText(`当前值：${variableValue(parameter, trace.values)}`)
+  await expect(tooltip).toContainText(`当前值：${variableValue(parameter, trace.values, translate)}`)
   await expect(tooltip).not.toContainText('SweepSegment')
   await expect(input).toHaveAttribute('aria-expanded', 'false')
   await input.locator('code').first().click()
@@ -410,6 +412,6 @@ test('右侧同名参数和局部变量浮层隔离，变量名点击可折叠�
   await panel.getByRole('heading', { name: '核心变量', exact: true }).hover()
   await expect(tooltip).toBeHidden()
   await local.hover()
-  await expect(tooltip).toContainText(`当前值：${variableValue(variable, trace.values)}`)
+  await expect(tooltip).toContainText(`当前值：${variableValue(variable, trace.values, translate)}`)
   await expect(tooltip).not.toContainText('原始输入线段')
 })
