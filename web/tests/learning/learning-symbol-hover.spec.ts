@@ -159,6 +159,26 @@ test('p.y 的 parent 跟随真实闭包前进回退，键盘进入浮层并关�
   }
 })
 
+test('纯键盘进入 parent 浮层保留深度和焦点', async ({ page }) => {
+  const trace = await readTrace(page, 'crossing')
+  const index = trace.steps.findIndex(step => step.execution.module === 'original' && !step.execution.returning)
+  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await waitForTraceCompletion(page)
+  const y = page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="y"]').last()
+  await y.focus()
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Shift+Tab')
+  await expect(y).toBeFocused()
+  const preview = page.getByRole('dialog', { name: /^访问 p.y / })
+  await expect(preview).toBeVisible()
+  await page.keyboard.press('+')
+  await expect(preview.locator('[data-parent="p"]')).toHaveText('p：(2, 2)')
+  await page.keyboard.press('Tab')
+  await expect(preview.getByRole('button', { name: '减少 parent 深度' })).toBeFocused()
+  await expect(preview.locator('[data-parent="p"]')).toHaveText('p：(2, 2)')
+  await closePreview(page, preview)
+})
+
 test('遮蔽状态对入参与局部变量使用一致文案，其他不可用状态保持独立', () => {
   for (const name of ['segments', 'local']) {
     expect(variableValue({ name, type: 'usize', availability: 'shadowed', value: 0, scope: null }, ['7'], translate))

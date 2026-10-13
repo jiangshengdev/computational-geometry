@@ -64,9 +64,6 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
       if (!last) return
       const top = line ? line.offsetTop : last.offsetTop + last.offsetHeight
       boundary.style.top = `${top}px`
-      if (top < container.scrollTop || top + 12 > container.scrollTop + container.clientHeight) {
-        container.scrollTop = Math.max(0, top - container.clientHeight / 2)
-      }
     }
     position()
     const observer = new ResizeObserver(position)
@@ -74,6 +71,17 @@ export function ExecutionPanel({ steps, index: stepIndex, values }: {
     observer.observe(container)
     return () => observer.disconnect()
   }, [tokens, boundaryLine, wrap])
+  // Follow navigation, not highlighting or resize notifications: those must
+  // not move a symbol away from the pointer while its preview is opening.
+  useLayoutEffect(() => {
+    const container = scroll.current
+    const boundary = container?.querySelector<HTMLElement>('.execution-boundary')
+    if (!container || !boundary) return
+    const top = boundary.offsetTop
+    if (top < container.scrollTop || top + 12 > container.scrollTop + container.clientHeight) {
+      container.scrollTop = Math.max(0, top - container.clientHeight / 2)
+    }
+  }, [stepIndex, source, boundaryLine, wrap])
   const context = step.execution.context
   return <section aria-label={_(/*i18n*/ { id: "Core code replay", message: "Core code replay" })} className="learning-panel learning-code"><Card className="learning-panel-card">
     <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-2">

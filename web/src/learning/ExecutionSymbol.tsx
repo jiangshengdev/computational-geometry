@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react'
-import { type PointerEvent, type ReactNode, useContext, useEffect, useState } from 'react'
+import { type PointerEvent, type ReactNode, useContext, useEffect, useEffectEvent, useState } from 'react'
 import { Popover, popoverVariants } from '@heroui/react/popover'
 import { TooltipTrigger as FocusableTrigger } from '@heroui/react/tooltip'
 import { Button } from '@heroui/react/button'
@@ -74,21 +74,27 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, place
   // PreviewTrigger owns hover/focus/close state. A Popover.Root would add a
   // competing DialogTrigger; use HeroUI's public styles with its Content.
   // Include the dialog padding without mounting Dialog, which moves focus on open.
-  return <PreviewTrigger delay={150} closeDelay={0} onOpenChange={open => { if (!open) onClose?.() }}>
+  return <PreviewTrigger delay={150} closeDelay={0}>
     {disclosure
       ? <Disclosure.Trigger {...triggerProps} className="flex w-full items-start gap-2 text-left">{children}</Disclosure.Trigger>
       // HeroUI's focusable trigger also works while a panel is inert behind a
       // modal; Pressable's mount-time focus assertion rejects that valid state.
       : <FocusableTrigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</FocusableTrigger>}
+    <PreviewLifecycle onKeyDown={onKeyDown} onClose={onClose} />
     <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement={placement} aria-label={disclosure ? _(/*i18n*/ { id: "Variable {name} · {label}", message: "Variable {name} · {label}" , values: { name, label }}) : label}>
-      <ActivePreviewShortcuts onKeyDown={onKeyDown} />
       {content}
     </Popover.Content>
   </PreviewTrigger>
 }
 
-function ActivePreviewShortcuts({ onKeyDown }: { onKeyDown?: (event: KeyboardEvent) => void }) {
+function PreviewLifecycle({ onKeyDown, onClose }: {
+  onKeyDown?: (event: KeyboardEvent) => void; onClose?: () => void
+}) {
   const state = useContext(OverlayTriggerStateContext)!
+  const closed = useEffectEvent(() => onClose?.())
+  // A trigger-to-popover focus transfer can request close and reopen in one
+  // event. Reset only after a committed close, including instant unmounts.
+  useEffect(() => { if (!state.isOpen) closed() }, [state.isOpen])
   useEffect(() => {
     if (!state.isOpen) return
     // Hover does not move focus. Bridge keys only during this preview's active
