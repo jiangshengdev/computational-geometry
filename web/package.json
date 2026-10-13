@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "test:e2e": "playwright test",
-    "perf:export": "node tests/export-performance-fixtures.ts"
+    "perf:export": "node tests/cases/export-performance-fixtures.ts"
   },
   "dependencies": {
     "@heroui/react": "3.2.6",

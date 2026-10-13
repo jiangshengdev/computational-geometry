@@ -1,0 +1,28 @@
+import { expect, test } from '../support/learning-test'
+import { readResponse } from '../support/trace-navigation'
+
+test('真实分类入口不泄露结果，配对记录可回退', async ({ page }) => {
+  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
+  await page.goto('/cases/crossing/learn')
+  const { trace } = await readResponse(await response)
+  const entry = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.entry)
+  expect(entry).toBeGreaterThan(0)
+  await page.goto(`/cases/crossing/learn?step=${entry}`)
+  const panel = page.getByRole('region', { name: '核心代码回放' })
+  const variables = page.getByRole('region', { name: '核心变量', exact: true })
+  await expect(panel).toContainText('第一条核心语句之前')
+  await expect(variables.getByTestId('variable-incident')).toContainText('未赋值')
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await expect(variables.getByTestId('variable-incident')).toContainText('[0]')
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await expect(variables.getByTestId('variable-incident')).toContainText('未赋值')
+  const recorded = trace.steps.findIndex(step => step.action === 'record')
+  expect(recorded).toBeGreaterThan(entry)
+  await page.goto(`/cases/crossing/learn?step=${recorded - 1}`)
+  await expect(variables.getByTestId('variable-geometry').locator('dd')).toHaveText('(2, 2)')
+  const before = await variables.locator('dd').allTextContents()
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await expect(variables.getByTestId('variable-result')).toContainText('S0 × S1')
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  expect(await variables.locator('dd').allTextContents()).toEqual(before)
+})

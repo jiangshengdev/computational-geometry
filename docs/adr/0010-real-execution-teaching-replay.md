@@ -11,4 +11,4 @@ date: 2026-10-11
 
 动态值只来自当前执行时刻和对应作用域，不能提前显示未来返回值，或借用其他调用及迭代的值。2026-10-11 后续确认：被遮蔽变量保留遮蔽前最后值并标注“已遮蔽”，不与其他原因的不可用混淆；控制流解释位于对应关键字的 hover。后续调用范围和停步规则见 [ADR 0012](0012-call-aware-replay-navigation.md)、[ADR 0013](0013-semantic-execution-boundaries.md)。
 
-依据：2026-10-11 小步回放讨论及 [CNB #84](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/84)，同日关于遮蔽值和控制流 hover 的完整共识确认。当前轨迹见 [src/lib.rs](../../src/lib.rs)，展示见 [web/src/ExecutionPanel.tsx](../../web/src/ExecutionPanel.tsx)、[web/src/executionCode.ts](../../web/src/executionCode.ts)。
+依据：2026-10-11 小步回放讨论及 [CNB #84](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/84)，同日关于遮蔽值和控制流 hover 的完整共识确认。当前轨迹见 [src/lib.rs](../../src/lib.rs)，展示见 [web/src/learning/ExecutionPanel.tsx](../../web/src/learning/ExecutionPanel.tsx)、[web/src/learning/executionCode.ts](../../web/src/learning/executionCode.ts)。

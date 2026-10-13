@@ -11,4 +11,4 @@ date: 2026-10-11
 
 相较预先准备全部轨迹，此选择降低不必要工作并缩短首次可用时间，代价是总数暂时未知、远跳等待及取消状态管理。历史目标为进入学习后首个真实步骤在 3 秒内可操作，远跳允许更久但须可取消；该目标不是本次重建的性能测量结论。传输编码和批次大小是实施选择，不追认为当时已由用户决定。
 
-依据：2026-10-11 性能讨论逐项选择保留完整语义、按需渐进和取消，见 [CNB #95](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/95)。当前链路见 [src/http.rs](../../src/http.rs)、[web/src/geometry.ts](../../web/src/geometry.ts)、[web/src/App.tsx](../../web/src/App.tsx)。
+依据：2026-10-11 性能讨论逐项选择保留完整语义、按需渐进和取消，见 [CNB #95](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/95)。当前链路见 [src/http.rs](../../src/http.rs)、[web/src/geometry/geometry.ts](../../web/src/geometry/geometry.ts)、[web/src/app/App.tsx](../../web/src/app/App.tsx)。
