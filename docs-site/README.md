@@ -29,6 +29,18 @@ pnpm --dir docs-site serve --host 127.0.0.1
 
 正文放在 `docs/` 的 Markdown 或 MDX 文件中，侧栏由 `sidebars.ts` 维护。二级、三级标题生成文章目录；公式使用 `$...$` 或 `$$...$$`。首版仅有 `docs/shear-coefficient.mdx`，没有博客、搜索或语言切换。仓库内部 ADR、代理规则与任务记录不在本站内容目录中。
 
+## 生成坐标系图解
+
+`scripts/draw_shear_coordinates.py` 使用 Matplotlib 的 MathText 渲染数学标注，生成 `static/img/shear-coordinates-light.svg` 和 `static/img/shear-coordinates-dark.svg`。文档通过 Docusaurus 的 `ThemedImage` 随站点主题选择图片。
+
+该脚本使用 Python，因为 Matplotlib 提供的是 Python 绘图 API。从仓库根目录执行：
+
+```bash
+uv run --offline --with matplotlib==3.11.2 python docs-site/scripts/draw_shear_coordinates.py
+```
+
+需要维护者预先准备 uv 和对应的 Matplotlib 环境；命令以离线模式复用缓存。图片已纳入版本管理，正常构建文档站无需运行 Python。修改图片时应修改脚本并重新生成，不手工编辑 SVG。两种主题共用几何与排版逻辑，只替换配色；公式导出为路径，不依赖浏览器安装数学字体。
+
 ## 独立 Vercel 项目
 
 创建文档站自己的 Vercel 项目时，将 **Root Directory 设置为 `docs-site`**。该目录的 `vercel.json` 指定：
