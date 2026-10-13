@@ -8,6 +8,7 @@ import { LearningIntroduction, LearningReferences, SamePointRules, VerticalRules
 import { HelpContext, type HelpTopic } from './help-context'
 import { samePoint } from '../geometry/geometry'
 import { type Preset } from '../cases/preset'
+import { useLingui } from '@lingui/react'
 
 const topics = [
   { id: 'introduction', title: '学习目标、术语与扫描约定', content: <LearningIntroduction /> },
@@ -28,13 +29,14 @@ const topics = [
 ] as const
 
 export function CaseHelp({ children, preset }: { children: ReactNode; preset: Preset }) {
+  const { _: translate } = useLingui()
   const [open, setOpen] = useState(false)
   const [topic, setTopic] = useState<HelpTopic>('introduction')
   const descriptionId = useId()
   const availableTopics: { id: HelpTopic; title: string; content: ReactNode }[] = [...topics, { id: 'case', title: '案例介绍与目标', content: <section aria-label="案例介绍与目标" className="flex flex-col gap-3">
-    <h2 className="font-semibold">{preset.name}</h2>
-    <p className="coordinates">{preset.description}</p>
-    {preset.learning && <p>学习目标：{preset.learning.goal}</p>}
+    <h2 className="font-semibold">{translate(preset.name)}</h2>
+    <p className="coordinates">{translate(preset.description)}</p>
+    {preset.learning && <p>学习目标：{translate(preset.learning.goal)}</p>}
     {!preset.learning && <p>此案例目前提供结果查看；支持教学的案例可从案例列表进入逐步学习。</p>}
   </section> }, { id: 'active', title: '活动线段顺序', content: <ActiveOrderRules overlap={Boolean(preset.learning?.overlap)} /> }]
   if (preset.segments.some(segment => samePoint({ x: segment.start.x, y: segment.end.y }, segment.end) && !samePoint(segment.start, segment.end))) {

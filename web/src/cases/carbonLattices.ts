@@ -92,30 +92,30 @@ function nanotube(): Segment[] {
 
 export const carbonLatticePresets: Preset[] = [
   {
-    id: 'graphene', name: '石墨烯',
-    description: '七个六边形组成有限蜂窝片层，共享化学键仅保留一次；边缘原子的配位因截断而减少。',
+    id: 'graphene', name: /*i18n*/ { id: "Graphene", message: "Graphene" },
+    description: /*i18n*/ { id: "Seven hexagons form a finite honeycomb sheet, with each shared chemical bond retained once; boundary truncation reduces the coordination of edge atoms.", message: "Seven hexagons form a finite honeycomb sheet, with each shared chemical bond retained once; boundary truncation reduces the coordination of edge atoms." },
     segments: graphene(),
     learning: {
-      goal: '辨认蜂窝网络的三邻接内点，观察真实原子连接处的端点归组。',
-      verification: '片层有 24 个原子、30 条键和 7 个六边形面；12 个内侧三邻接点各产生 3 对，12 个二邻接边缘点各产生 1 对，共 48 对、24 处。没有内部穿越或重叠。纵向使用 433/500 近似 √3/2，求交对这些有理输入精确计算。',
+      goal: /*i18n*/ { id: "Identify interior sites with three neighbors in the honeycomb network and observe endpoint grouping at actual atomic connections.", message: "Identify interior sites with three neighbors in the honeycomb network and observe endpoint grouping at actual atomic connections." },
+      verification: /*i18n*/ { id: "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs.", message: "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs." },
     },
   },
   {
-    id: 'diamond-lattice', name: '金刚石晶格',
-    description: '一个常规晶胞的四个四面体中心及其全部近邻，共 14 个原子、16 条键；外围连接在有限簇边界截断。',
+    id: 'diamond-lattice', name: /*i18n*/ { id: "Diamond lattice", message: "Diamond lattice" },
+    description: /*i18n*/ { id: "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary.", message: "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary." },
     segments: diamond(),
     learning: {
-      goal: '比较四面体中心的四邻接接触与不同深度化学键在二维投影中的穿越。',
-      verification: '四个中心各有 4 条等长空间键，其方向两两点积为 −1、长度平方为 3，符合四面体夹角。六个共享近邻度数为 2，四个边界原子度数为 1。投影为 (x + 3z/10, y + 7z/10)；中心 (1,1,1) 投影至 (13/10,17/10)，四条键产生 6 对。S6 与 S13 内部交于 (281/100,489/100)；二维穿越不代表新增化学键，投影使用精确有理数。',
+      goal: /*i18n*/ { id: "Compare contact among four neighbors at tetrahedral centers with crossings of chemical bonds at different depths in a two-dimensional projection.", message: "Compare contact among four neighbors at tetrahedral centers with crossings of chemical bonds at different depths in a two-dimensional projection." },
+      verification: /*i18n*/ { id: "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers.", message: "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers." },
     },
   },
   {
-    id: 'carbon-nanotube', name: '碳纳米管',
-    description: '蜂窝片层沿周向闭合为 (6,0) 锯齿型管，四排二子格共 48 个原子、60 条键；两端开口，无端帽。',
+    id: 'carbon-nanotube', name: /*i18n*/ { id: "Carbon nanotube", message: "Carbon nanotube" },
+    description: /*i18n*/ { id: "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps.", message: "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps." },
     segments: nanotube(),
     learning: {
-      goal: '观察周向接缝仍然连续的三邻接网络，区分原子共端点与管前后侧的投影穿越。',
-      verification: '36 个内部原子各连 3 条键，两个开口的 12 个末端原子各保留 1 条键，度数和为 36×3 + 12 = 120，即 60 条唯一键。周向索引按模 6 连接，不重复接缝；只截断轴向边界。圆筒坐标及固定斜投影四舍五入至 1/10000，再旋转并统一缩放 3/4，按实际有理输入精确求交。例如 S1 与 S19 内部交于 (1640458343/2867030000,-4910230279/11468120000)，投影穿越不是原子连接。',
+      goal: /*i18n*/ { id: "Observe the three-neighbor network remaining continuous across the circumferential seam; distinguish shared atomic endpoints from projected crossings between the front and back of the tube.", message: "Observe the three-neighbor network remaining continuous across the circumferential seam; distinguish shared atomic endpoints from projected crossings between the front and back of the tube." },
+      verification: /*i18n*/ { id: "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection.", message: "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection." },
     },
   },
 ]

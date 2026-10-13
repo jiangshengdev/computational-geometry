@@ -44,11 +44,11 @@ function fullerene(): Segment[] {
 
 export const fullerenePreset: Preset = {
   id: 'fullerene',
-  name: '富勒烯 C₆₀',
-  description: '完整截角二十面体球笼的透视投影，保留全部 60 个原子与 90 条连接。黄金比例以 1618/1000 近似；图中内部穿越不代表化学键连接。',
+  name: /*i18n*/ { id: "Fullerene C₆₀", message: "Fullerene C₆₀" },
+  description: /*i18n*/ { id: "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections.", message: "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections." },
   segments: fullerene(),
   learning: {
-    goal: '区分三条化学键相接的原子端点与前后层投影形成的内部交叉，观察球笼不同位置的事件。',
-    verification: '二十面体的 30 条边各产生两个截角顶点，共 60 个原子；12 个原顶点变成五边形、20 个三角面变成六边形。每个原子连接三个邻居，所以共有 60 × 3 / 2 = 90 条边、60 × 3 = 180 个端点配对，另有投影穿越配对。前后层全部保留；黄金比例的有理近似仅影响几何形状，实际提交的有理坐标及其交点仍被精确计算。',
+    goal: /*i18n*/ { id: "Distinguish atomic endpoints where three chemical bonds meet from interior crossings caused by projecting front and back layers; observe events at different positions on the cage.", message: "Distinguish atomic endpoints where three chemical bonds meet from interior crossings caused by projecting front and back layers; observe events at different positions on the cage." },
+    verification: /*i18n*/ { id: "Each of the 30 icosahedron edges yields two truncation vertices, giving 60 atoms; the 12 original vertices become pentagons and the 20 triangular faces become hexagons. Each atom connects to three neighbors, giving 60 × 3 / 2 = 90 edges and 60 × 3 = 180 endpoint pairs, plus projected crossing pairs. Both front and back layers are retained; the rational approximation of the golden ratio affects only the shape, while the submitted rational coordinates and their intersections are still computed exactly.", message: "Each of the 30 icosahedron edges yields two truncation vertices, giving 60 atoms; the 12 original vertices become pentagons and the 20 triangular faces become hexagons. Each atom connects to three neighbors, giving 60 × 3 / 2 = 90 edges and 60 × 3 = 180 endpoint pairs, plus projected crossing pairs. Both front and back layers are retained; the rational approximation of the golden ratio affects only the shape, while the submitted rational coordinates and their intersections are still computed exactly." },
   },
 }

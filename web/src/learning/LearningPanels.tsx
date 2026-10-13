@@ -6,8 +6,9 @@ import { HelpButton } from '../help/CaseHelp'
 import { LearningRow } from './LearningMotion'
 import { type LearningState } from './learningState'
 import { type LearningReplay } from './useLearningReplay'
+import type { I18n } from '@lingui/core'
 
-export function learningPanels(state: LearningState, replay: LearningReplay) {
+export function learningPanels(state: LearningState, replay: LearningReplay, translate: I18n['_']) {
   const {
     preset, trace, generated, step, complete, phase, pointInputs, recordedOverlap,
     overlaps, visibleOverlaps, endingOverlaps, continuingOverlapInputs, checkedInputs,
@@ -59,7 +60,7 @@ export function learningPanels(state: LearningState, replay: LearningReplay) {
         {points.map(point => <p className="coordinates" key={formatPoint(point)}>{pointName(point)}：{step.results.filter(result => result.geometry.type === 'point' && samePoint(result.geometry.point, point)).map(pairName).join('、')}</p>)}
         {visibleOverlaps.map(result => <p className="coordinates" key={pairName(result)}>{formatGeometry(result.geometry)}：{pairName(result)}（包含两端及其间全部点）</p>)}
         {!step.results.length && <p>结果为空：没有相交的独立输入配对。具体几何依据见下方数学核对。</p>}
-        <p className="coordinates">独立数学核对：{preset.learning?.verification}</p>
+        <p className="coordinates">独立数学核对：{preset.learning && translate(preset.learning.verification)}</p>
       </CardContent>
     </Card></section>}
       </CardContent>

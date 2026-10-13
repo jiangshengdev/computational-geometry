@@ -11,16 +11,18 @@ import { learningState } from './learningState'
 import { useLearningReplay } from './useLearningReplay'
 import { learningPanels } from './LearningPanels'
 import { LearningReplayControls } from './LearningReplayControls'
+import { useLingui } from '@lingui/react'
 
 export function LearningView({ preset, trace, complete: generated, index, onStepChange, onStepPreview, onWaitNextEntry, children, zenMode, layout }: {
   preset: Preset; trace: SweepTrace; complete: boolean; index: number; onStepChange: (index: number) => void; onStepPreview: (index: number) => void; onWaitNextEntry: () => void; children: ReactNode; zenMode: boolean; layout: LearningLayout
 }) {
+  const { _: translate } = useLingui()
   const [drawingWeight, codeWeight, variablesWeight] = learningLayouts[layout]
   const state = learningState(preset, trace, index, generated)
   const replay = useLearningReplay(state, { onStepChange, onStepPreview, onWaitNextEntry })
   const { step, before } = state
   const { run, hover, setHover, geometryHighlights, sweep } = replay
-  const { participants, activeSegments, currentEvent, pendingEvents, explanations } = learningPanels(state, replay)
+  const { participants, activeSegments, currentEvent, pendingEvents, explanations } = learningPanels(state, replay, translate)
   return <section aria-label="逐步学习" className="learning-view" data-zen-mode={zenMode}>
     <div className="learning-workspace">
       <LearningDock side="left" panels={[

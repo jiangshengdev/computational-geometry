@@ -1,0 +1,910 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-10-13 11:45+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/cases/CaseThumbnail.tsx:8
+msgid "{name}: input segment preview"
+msgstr "{name}: input segment preview"
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:68
+msgid "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
+msgstr "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:114
+msgid "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps."
+msgstr "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps."
+
+#. js-lingui-explicit-id
+#: src/cases/penrose.ts:79
+msgid "A Penrose P3 sun seed undergoes two golden-ratio subdivisions of Robinson triangles, forming a finite patch of 20 complete rhombi. Ideal irrational coordinates are first uniformly approximated to one millionth and then rotated exactly to a fixed view; shared edges are entered only once."
+msgstr "A Penrose P3 sun seed undergoes two golden-ratio subdivisions of Robinson triangles, forming a finite patch of 20 complete rhombi. Ideal irrational coordinates are first uniformly approximated to one millionth and then rotated exactly to a fixed view; shared edges are entered only once."
+
+#. js-lingui-explicit-id
+#: src/cases/fullerene.ts:48
+msgid "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
+msgstr "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:30
+msgid "A shorter diagonal segment is entirely contained in another segment."
+msgstr "A shorter diagonal segment is entirely contained in another segment."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:25
+msgid "A third segment starts at (1/2, 1/2), intersecting both diagonals at once."
+msgstr "A third segment starts at (1/2, 1/2), intersecting both diagonals at once."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:35
+msgid "A third, shorter segment neither splits nor shortens the complete overlap of the first two inputs."
+msgstr "A third, shorter segment neither splits nor shortens the complete overlap of the first two inputs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:36
+msgid "A vertical segment crosses reversed duplicate segments; a diagonal endpoint shares the interior crossing, while coincident and boundary points retain their own pairs."
+msgstr "A vertical segment crosses reversed duplicate segments; a diagonal endpoint shares the interior crossing, while coincident and boundary points retain their own pairs."
+
+#: src/app/App.tsx:273
+msgid "About this case"
+msgstr "About this case"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:31
+msgid "All three inputs cover y = 0, x ∈ [0, 4]; input direction does not change the closed set. S0 × S1, S0 × S2, and S1 × S2 all intersect over (0, 0) → (4, 0): 3 interval pairs and no point pairs."
+msgstr "All three inputs cover y = 0, x ∈ [0, 4]; input direction does not change the closed set. S0 × S1, S0 × S2, and S1 × S2 all intersect over (0, 0) → (4, 0): 3 interval pairs and no point pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:35
+msgid "All three lie on y = 0. S0 × S1 intersects over (0, 0) → (6, 0); both S0 × S2 and S1 × S2 intersect over (2, 0) → (3, 0). There are 3 pairs, and the endpoints of S2 do not split the first complete interval."
+msgstr "All three lie on y = 0. S0 × S1 intersects over (0, 0) → (6, 0); both S0 × S2 and S1 × S2 intersect over (2, 0) → (3, 0). There are 3 pairs, and the endpoints of S2 do not split the first complete interval."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:17
+msgid "An endpoint of a vertical segment lies inside a horizontal segment."
+msgstr "An endpoint of a vertical segment lies inside a horizontal segment."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:22
+msgid "At one event position, observe all six pairs being recorded, the ending segment leaving, the starting segment entering, and the segments passing through reordering."
+msgstr "At one event position, observe all six pairs being recorded, the ending segment leaving, the starting segment entering, and the segments passing through reordering."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:22
+msgid "At the origin, S0 and S1 cross in their interiors, S2 ends, and S3 starts."
+msgstr "At the origin, S0 and S1 cross in their interiors, S2 ends, and S3 starts."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:32
+msgid "At x = 1/2, the intersection of y ranges [−1/3, 5/3] and [1/3, 7/3] is [1/3, 5/3]. The only pair intersects over (1/2, 1/3) → (1/2, 5/3); S0 ends at the upper boundary while S1 continues to 7/3."
+msgstr "At x = 1/2, the intersection of y ranges [−1/3, 5/3] and [1/3, 7/3] is [1/3, 5/3]. The only pair intersects over (1/2, 1/3) → (1/2, 5/3); S0 ends at the upper boundary while S1 continues to 7/3."
+
+#: src/app/App.tsx:223
+#: src/app/App.tsx:254
+msgid "Back to cases"
+msgstr "Back to cases"
+
+#: src/app/App.tsx:275
+msgid "Back to results viewer"
+msgstr "Back to results viewer"
+
+#: src/app/App.tsx:40
+msgid "BO Results Viewer"
+msgstr "BO Results Viewer"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:30
+msgid "Both satisfy y = x, and the common range of x intervals [0, 4] and [1, 3] is [1, 3]. The only pair intersects over (1, 1) → (3, 3); S0 continues after the shorter member S1 ends."
+msgstr "Both satisfy y = x, and the common range of x intervals [0, 4] and [1, 3] is [1, 3]. The only pair intersects over (1, 1) → (3, 3); S0 continues after the shorter member S1 ends."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:29
+msgid "Both segments lie on y = 0. S0 has x ∈ [0, 4] and S1 has x ∈ [2, 6]; their common range is [max(0, 2), min(4, 6)] = [2, 4], so the intersection is the closed interval (2, 0) → (4, 0), including both endpoints and every point between them."
+msgstr "Both segments lie on y = 0. S0 has x ∈ [0, 4] and S1 has x ∈ [2, 6]; their common range is [max(0, 2), min(4, 6)] = [2, 4], so the intersection is the closed interval (2, 0) → (4, 0), including both endpoints and every point between them."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:33
+msgid "Both segments satisfy y = x, and their x ranges [0, 2] and [2, 4] share only 2. Their only intersection is the included endpoint (2, 2), with no nonzero-length overlap."
+msgstr "Both segments satisfy y = x, and their x ranges [0, 2] and [2, 4] share only 2. Their only intersection is the included endpoint (2, 2), with no nonzero-length overlap."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:34
+msgid "Both segments satisfy y = x, but their x ranges [0, 1] and [2, 4] are separated by a gap, so their common range is empty."
+msgstr "Both segments satisfy y = x, but their x ranges [0, 1] and [2, 4] are separated by a gap, so their common range is empty."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:67
+msgid "Bridge truss"
+msgstr "Bridge truss"
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:113
+msgid "Carbon nanotube"
+msgstr "Carbon nanotube"
+
+#: src/app/App.tsx:139
+#: src/app/App.tsx:140
+msgid "Cases"
+msgstr "Cases"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:37
+msgid "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
+msgstr "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
+
+#: src/app/App.tsx:288
+msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
+msgstr "Choose a case to inspect exact intersection points and complete overlap intervals."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:16
+msgid "Closed segments touch at a shared endpoint."
+msgstr "Closed segments touch at a shared endpoint."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:34
+msgid "Collinear and disjoint"
+msgstr "Collinear and disjoint"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:33
+msgid "Collinear point contact"
+msgstr "Collinear point contact"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:34
+msgid "Collinear segments separated by a gap have no intersection."
+msgstr "Collinear segments separated by a gap have no intersection."
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:108
+msgid "Compare contact among four neighbors at tetrahedral centers with crossings of chemical bonds at different depths in a two-dimensional projection."
+msgstr "Compare contact among four neighbors at tetrahedral centers with crossings of chemical bonds at different depths in a two-dimensional projection."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:71
+msgid "Compare endpoint connections at bridge joints with interior crossings of the braces in each span; observe event grouping at different positions."
+msgstr "Compare endpoint connections at bridge joints with interior crossings of the braces in each span; observe event grouping at different positions."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:104
+msgid "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
+msgstr "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:33
+msgid "Diagonal collinear segments touch at just one endpoint."
+msgstr "Diagonal collinear segments touch at just one endpoint."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:30
+msgid "Diagonal containment"
+msgstr "Diagonal containment"
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:85
+msgid "Diagonal weave"
+msgstr "Diagonal weave"
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:104
+msgid "Diamond lattice"
+msgstr "Diamond lattice"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:24
+msgid "Different intersections at the same sweep coordinate"
+msgstr "Different intersections at the same sweep coordinate"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:29
+msgid "Distinguish a nonzero-length overlap interval from an isolated intersection point; observe events at both boundaries and the participating segments entering and leaving."
+msgstr "Distinguish a nonzero-length overlap interval from an isolated intersection point; observe events at both boundaries and the participating segments entering and leaving."
+
+#. js-lingui-explicit-id
+#: src/cases/fullerene.ts:51
+msgid "Distinguish atomic endpoints where three chemical bonds meet from interior crossings caused by projecting front and back layers; observe events at different positions on the cage."
+msgstr "Distinguish atomic endpoints where three chemical bonds meet from interior crossings caused by projecting front and back layers; observe events at different positions on the cage."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:107
+msgid "Distinguish endpoint connections at star tips from interior crossings, and understand how the vertex-skipping rule generates regular intersection patterns."
+msgstr "Distinguish endpoint connections at star tips from interior crossings, and understand how the vertex-skipping rule generates regular intersection patterns."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:36
+msgid "Distinguish overlap, interior crossing, starting segments, and coincident points at one event while preserving complete pairwise intersections."
+msgstr "Distinguish overlap, interior crossing, starting segments, and coincident points at one event while preserving complete pairwise intersections."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:18
+msgid "Distinguish S1, which starts at the contact point, from S0, whose interior passes through it."
+msgstr "Distinguish S1, which starts at the contact point, from S0, whose interior passes through it."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:17
+msgid "Distinguish the starting vertical segment from the horizontal segment passing through; record closed-segment contact before updating the active order."
+msgstr "Distinguish the starting vertical segment from the horizontal segment passing through; record closed-segment contact before updating the active order."
+
+#. js-lingui-explicit-id
+#: src/cases/fullerene.ts:52
+msgid "Each of the 30 icosahedron edges yields two truncation vertices, giving 60 atoms; the 12 original vertices become pentagons and the 20 triangular faces become hexagons. Each atom connects to three neighbors, giving 60 × 3 / 2 = 90 edges and 60 × 3 = 180 endpoint pairs, plus projected crossing pairs. Both front and back layers are retained; the rational approximation of the golden ratio affects only the shape, while the submitted rational coordinates and their intersections are still computed exactly."
+msgstr "Each of the 30 icosahedron edges yields two truncation vertices, giving 60 atoms; the 12 original vertices become pentagons and the 20 triangular faces become hexagons. Each atom connects to three neighbors, giving 60 × 3 / 2 = 90 edges and 60 × 3 = 180 endpoint pairs, plus projected crossing pairs. Both front and back layers are retained; the rational approximation of the golden ratio affects only the shape, while the submitted rational coordinates and their intersections are still computed exactly."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:38
+msgid "Each of the 8 inner junctions joins 4 edges, each of the 8 outer junctions joins 3 edges, and the center joins 8 edges. There are 8 + 8 + 1 = 17 distinct intersection positions and 8 × 6 + 8 × 3 + 28 = 100 pairs. For example, four edges at (12, 0) produce 6 pairs, and three edges at (24, 0) produce 3 pairs. There are no crossings between rings and no overlapping edges."
+msgstr "Each of the 8 inner junctions joins 4 edges, each of the 8 outer junctions joins 3 edges, and the center joins 8 edges. There are 8 + 8 + 1 = 17 distinct intersection positions and 8 × 6 + 8 × 3 + 28 = 100 pairs. For example, four edges at (12, 0) produce 6 pairs, and three edges at (24, 0) produce 3 pairs. There are no crossings between rings and no overlapping edges."
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:109
+msgid "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
+msgstr "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:38
+msgid "Eight radial spokes connect two octagonal rings; every web junction consists of segment endpoints."
+msgstr "Eight radial spokes connect two octagonal rings; every web junction consists of segment endpoints."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:14
+msgid "Empty set"
+msgstr "Empty set"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:19
+msgid "End in the interior"
+msgstr "End in the interior"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:17
+msgid "Endpoint in the interior"
+msgstr "Endpoint in the interior"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:22
+msgid "Endpoints and crossing at one point"
+msgstr "Endpoints and crossing at one point"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:21
+msgid "Find all three segments passing through the point, observe the whole group reorder, and distinguish one intersection point from three intersecting pairs."
+msgstr "Find all three segments passing through the point, observe the whole group reorder, and distinguish one intersection point from three intersecting pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:95
+msgid "Finite segments on lines y = (t/3)x − t² for integer t ∈ [−6, 6] form a parabolic envelope."
+msgstr "Finite segments on lines y = (t/3)x − t² for integer t ∈ [−6, 6] form a parabolic envelope."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:38
+msgid "Follow endpoint connections around the rings and compare pair counts at ordinary web junctions and the central meeting point."
+msgstr "Follow endpoint connections around the rings and compare pair counts at ordinary web junctions and the central meeting point."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:25
+msgid "Fractional endpoint and interior crossing"
+msgstr "Fractional endpoint and interior crossing"
+
+#. js-lingui-explicit-id
+#: src/cases/fullerene.ts:47
+msgid "Fullerene C₆₀"
+msgstr "Fullerene C₆₀"
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:95
+msgid "Graphene"
+msgstr "Graphene"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:28
+msgid "Group a zero-length point with three segments passing through it, and distinguish one position from six intersecting pairs."
+msgstr "Group a zero-length point with three segments passing through it, and distinguish one position from six intersecting pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:16
+msgid "Group segments starting and ending at the same point, record the contact, then update the active set."
+msgstr "Group segments starting and ending at the same point, record the contact, then update the active set."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:20
+msgid "Group the horizontal, vertical, and diagonal segments passing through the same point and observe pairwise recording at one position."
+msgstr "Group the horizontal, vertical, and diagonal segments passing through the same point and observe pairwise recording at one position."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:39
+msgid "Hexagonal snowflake"
+msgstr "Hexagonal snowflake"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:31
+msgid "Identical and reversed duplicates"
+msgstr "Identical and reversed duplicates"
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:99
+msgid "Identify interior sites with three neighbors in the honeycomb network and observe endpoint grouping at actual atomic connections."
+msgstr "Identify interior sites with three neighbors in the honeycomb network and observe endpoint grouping at actual atomic connections."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:26
+msgid "Identify interior, endpoint, exterior, and coincident points; point inputs participate in events but never enter the persistent active order."
+msgstr "Identify interior, endpoint, exterior, and coincident points; point inputs participate in events but never enter the persistent active order."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:89
+msgid "Identify intersecting pairs among families of parallel lines and observe interior crossings at different heights in the diamond pattern."
+msgstr "Identify intersecting pairs among families of parallel lines and observe interior crossings at different heights in the diamond pattern."
+
+#. js-lingui-explicit-id
+#: src/cases/penrose.ts:82
+msgid "Identify the local fivefold order generated by aperiodic tiling rules and observe endpoint grouping at joins between thick and thin rhombi; a finite patch alone cannot prove aperiodicity of an infinite tiling."
+msgstr "Identify the local fivefold order generated by aperiodic tiling rules and observe endpoint grouping at joins between thick and thin rhombi; a finite patch alone cannot prove aperiodicity of an infinite tiling."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:72
+msgid "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, crossing internally at (2, 2); the other three spans cross at (6, 2), (10, 2), and (14, 2). S0 and S4 connect at the shared endpoint (4, 0). There are 10 structural joints and 4 interior span crossings; each shared member is generated only once."
+msgstr "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, crossing internally at (2, 2); the other three spans cross at (6, 2), (10, 2), and (14, 2). S0 and S4 connect at the shared endpoint (4, 0). There are 10 structural joints and 4 interior span crossings; each shared member is generated only once."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:26
+msgid "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
+msgstr "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
+
+#: src/app/App.tsx:220
+#: src/app/App.tsx:221
+msgid "Invalid link"
+msgstr "Invalid link"
+
+#. placeholder {0}: translate(preset.name)
+#: src/app/App.tsx:220
+msgid "Invalid link · {0}"
+msgstr "Invalid link · {0}"
+
+#: src/app/App.tsx:225
+msgid "Learn from the start"
+msgstr "Learn from the start"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:35
+msgid "Long interval and a short member"
+msgstr "Long interval and a short member"
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:76
+msgid "Meander window lattice"
+msgstr "Meander window lattice"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:13
+msgid "Neighbors after crossing"
+msgstr "Neighbors after crossing"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:12
+msgid "Neighbors after removal"
+msgstr "Neighbors after removal"
+
+#: src/cases/CaseThumbnail.tsx:10
+msgid "No input segments"
+msgstr "No input segments"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:14
+msgid "No input segments; a valid computation returns an empty result."
+msgstr "No input segments; a valid computation returns an empty result."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:11
+msgid "No intersection"
+msgstr "No intersection"
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:108
+msgid "Number vertices clockwise from 0 to 7 and connect i to (i + 3) mod 8; starting at 0, visit 3, 6, 1, 4, 7, 2, and 5 before closing. S0 satisfies y = 10 − 17x/7 and S1 satisfies y = 17x/7 − 10, with interior intersection (70/17, 0). S0 and S3 connect at endpoint (7, −7). The eight vertices form an integer-coordinate octagon, not a claimed exact regular octagon."
+msgstr "Number vertices clockwise from 0 to 7 and connect i to (i + 3) mod 8; starting at 0, visit 3, 6, 1, 4, 7, 2, and 5 before closing. S0 satisfies y = 10 − 17x/7 and S1 satisfies y = 17x/7 − 10, with interior intersection (70/17, 0). S0 and S3 connect at endpoint (7, −7). The eight vertices form an integer-coordinate octagon, not a claimed exact regular octagon."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:19
+msgid "Observe endpoint contact approached from the other side and understand why the segment passing through remains active after the ending segment leaves."
+msgstr "Observe endpoint contact approached from the other side and understand why the segment passing through remains active after the ending segment leaves."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:39
+msgid "Observe endpoint grouping in sixfold symmetric branches and distinguish intersecting pairs at the center from those at forks."
+msgstr "Observe endpoint grouping in sixfold symmetric branches and distinguish intersecting pairs at the center from those at forks."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:27
+msgid "Observe how point events still record intersections of coincident inputs while the active order stays empty."
+msgstr "Observe how point events still record intersections of coincident inputs while the active order stays empty."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:98
+msgid "Observe how real straight segments collectively outline a curve; trace exact intersections between neighboring and distant strings."
+msgstr "Observe how real straight segments collectively outline a curve; trace exact intersections between neighboring and distant strings."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:12
+msgid "Observe how removing the middle segment makes the previously nonadjacent S0 and S2 neighbors and reveals their intersection."
+msgstr "Observe how removing the middle segment makes the previously nonadjacent S0 and S2 neighbors and reveals their intersection."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:11
+msgid "Observe how the sweep finishes when there are no future intersections."
+msgstr "Observe how the sweep finishes when there are no future intersections."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:10
+msgid "Observe insertion, intersection discovery, reordering, and removal."
+msgstr "Observe insertion, intersection discovery, reordering, and removal."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:13
+msgid "Observe neighbor checks on insertion and how reordering at a crossing creates new outer neighbors."
+msgstr "Observe neighbor checks on insertion and how reordering at a crossing creates new outer neighbors."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:15
+msgid "Observe the only segment entering and leaving; distinguish processing events from recording intersections."
+msgstr "Observe the only segment entering and leaving; distinguish processing events from recording intersections."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:30
+msgid "Observe the shorter member entering and leaving; understand the complete intersection under containment and why the longer member remains active."
+msgstr "Observe the shorter member entering and leaving; understand the complete intersection under containment and why the longer member remains active."
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:117
+msgid "Observe the three-neighbor network remaining continuous across the circumferential seam; distinguish shared atomic endpoints from projected crossings between the front and back of the tube."
+msgstr "Observe the three-neighbor network remaining continuous across the circumferential seam; distinguish shared atomic endpoints from projected crossings between the front and back of the tube."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:20
+msgid "One geometric point corresponds to three distinct pairs."
+msgstr "One geometric point corresponds to three distinct pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:15
+msgid "One segment alone cannot form an input pair."
+msgstr "One segment alone cannot form an input pair."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:23
+msgid "One vertical segment crosses at different heights and touches another segment at its top."
+msgstr "One vertical segment crosses at different heights and touches another segment at its top."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:15
+msgid "Only S0 exists, so no pair of distinct inputs can be formed; its two endpoint events produce no intersection."
+msgstr "Only S0 exists, so no pair of distinct inputs can be formed; its two endpoint events produce no intersection."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:10
+msgid "Ordinary crossing"
+msgstr "Ordinary crossing"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:32
+msgid "Overlap at x = 1/2 has complete interval endpoints y = 1/3 and 5/3."
+msgstr "Overlap at x = 1/2 has complete interval endpoints y = 1/3 and 5/3."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:36
+msgid "Overlap, crossing, and coincident points"
+msgstr "Overlap, crossing, and coincident points"
+
+#: src/app/App.tsx:254
+msgid "Page navigation"
+msgstr "Page navigation"
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:94
+msgid "Parabolic string art"
+msgstr "Parabolic string art"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:29
+msgid "Partial overlap"
+msgstr "Partial overlap"
+
+#. js-lingui-explicit-id
+#: src/cases/penrose.ts:78
+msgid "Penrose tiling"
+msgstr "Penrose tiling"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:27
+msgid "Points only"
+msgstr "Points only"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:31
+msgid "Preserve distinct identities for duplicate and reversed inputs; observe three pairs and all members ending together."
+msgstr "Preserve distinct identities for duplicate and reversed inputs; observe three pairs and all members ending together."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:24
+msgid "Process (0, -1) before (0, 3); the same sweep coordinate does not mean the same geometric point."
+msgstr "Process (0, -1) before (0, 3); the same sweep coordinate does not mean the same geometric point."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:37
+msgid "Process different heights of a vertical overlap one by one in the original coordinates, distinguishing point pairs from the complete interval."
+msgstr "Process different heights of a vertical overlap one by one in the original coordinates, distinguishing point pairs from the complete interval."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:32
+msgid "Process fractional boundaries at different heights along a fixed x, distinguishing the complete interval from the current processing frontier."
+msgstr "Process fractional boundaries at different heights along a fixed x, distinguishing the complete interval from the current processing frontier."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:23
+msgid "Process S0 upward along x = 0, observing two interior crossings and contact at the top until the entire vertical segment leaves."
+msgstr "Process S0 upward along x = 0, observing two interior crossings and contact at the top until the entire vertical segment leaves."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:35
+msgid "Record complete intervals pair by pair in a group; observe that events of an interior short member do not change the long pair."
+msgstr "Record complete intervals pair by pair in a group; observe that events of an interior short member do not change the long pair."
+
+#: src/app/App.tsx:222
+msgid "Recovery navigation"
+msgstr "Recovery navigation"
+
+#: src/app/App.tsx:74
+msgid "Results"
+msgstr "Results"
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:90
+msgid "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
+msgstr "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:36
+msgid "S0 × S1 intersects over (0, 0) → (4, 0). At the center (2, 0), S0, S1, S2, S3, S5, and S6 produce 6 × 5 / 2 − 1 = 14 point pairs (excluding the already recorded interval pair); (0, 0) adds S0 × S4 and S1 × S4. There are 17 pairs: 16 point pairs at 2 positions and 1 complete interval; the central event does not split that interval."
+msgstr "S0 × S1 intersects over (0, 0) → (4, 0). At the center (2, 0), S0, S1, S2, S3, S5, and S6 produce 6 × 5 / 2 − 1 = 14 point pairs (excluding the already recorded interval pair); (0, 0) adds S0 × S4 and S1 × S4. There are 17 pairs: 16 point pairs at 2 positions and 1 complete interval; the central event does not split that interval."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:37
+msgid "S0 × S1 intersects over (1/2, 0) → (1/2, 4). At the middle (1/2, 2), S0, S1, S2, S3, and S6 produce 5 × 4 / 2 − 1 = 9 point pairs; at the bottom, S4 forms one pair each with S0 and S1, and at the top, S5 forms one pair each with S0 and S1. There are 14 pairs: 13 point pairs at 3 positions and 1 complete interval, with no geometric union merging."
+msgstr "S0 × S1 intersects over (1/2, 0) → (1/2, 4). At the middle (1/2, 2), S0, S1, S2, S3, and S6 produce 5 × 4 / 2 − 1 = 9 point pairs; at the bottom, S4 forms one pair each with S0 and S1, and at the top, S5 forms one pair each with S0 and S1. There are 14 pairs: 13 point pairs at 3 positions and 1 complete interval, with no geometric union merging."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:27
+msgid "S0 and S1 coincide exactly at (1/3, 2/3), producing the only pair S0 × S1. S2 has different coordinates (2/3, 1/3), so there are no other intersections; all three points start and end simultaneously."
+msgstr "S0 and S1 coincide exactly at (1/3, 2/3), producing the only pair S0 × S1. S2 has different coordinates (2/3, 1/3), so there are no other intersections; all three points start and end simultaneously."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:24
+msgid "S0 and S1 satisfy y = x − 1 and y = −x − 1, intersecting at (0, -1); S2 and S3 satisfy y = x + 3 and y = −x + 3, intersecting at (0, 3). The lower group has y ∈ [−2, 0] and the upper group has y ∈ [2, 4], so the groups do not intersect."
+msgstr "S0 and S1 satisfy y = x − 1 and y = −x − 1, intersecting at (0, -1); S2 and S3 satisfy y = x + 3 and y = −x + 3, intersecting at (0, 3). The lower group has y ∈ [−2, 0] and the upper group has y ∈ [2, 4], so the groups do not intersect."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:13
+msgid "S0 first crosses S1, then becomes adjacent to the previously nonadjacent S2 and discovers the next intersection."
+msgstr "S0 first crosses S1, then becomes adjacent to the previously nonadjacent S2 and discovers the next intersection."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:23
+msgid "S0 has x = 0, y ∈ [−2, 3]; S1, S2, and S3 lie at y = −1, 1, and 3 respectively, and each x range includes 0. The intersections are exactly (0, -1), (0, 1), and (0, 3), belonging to S0 × S1, S0 × S2, and S0 × S3 respectively; the last is contact between the end of S0 and the start of S3. The three horizontal segments have different heights and do not intersect one another."
+msgstr "S0 has x = 0, y ∈ [−2, 3]; S1, S2, and S3 lie at y = −1, 1, and 3 respectively, and each x range includes 0. The intersections are exactly (0, -1), (0, 1), and (0, 3), belonging to S0 × S1, S0 × S2, and S0 × S3 respectively; the last is contact between the end of S0 and the start of S3. The three horizontal segments have different heights and do not intersect one another."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:11
+msgid "S0 has y = 0 and S1 has y = 2, so they cannot share a point."
+msgstr "S0 has y = 0 and S1 has y = 2, so they cannot share a point."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:16
+msgid "S0 has y = 0, x ∈ [0, 2]; S1 has y = x − 2, x ∈ [2, 3]. Their only common point is the endpoint (2, 0), which both include."
+msgstr "S0 has y = 0, x ∈ [0, 2]; S1 has y = x − 2, x ∈ [2, 3]. Their only common point is the endpoint (2, 0), which both include."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:17
+msgid "S0 has y = 0, x ∈ [0, 4]; S1 has x = 2, y ∈ [0, 2]. Their only common point, (2, 0), is the start of S1 and lies inside S0."
+msgstr "S0 has y = 0, x ∈ [0, 4]; S1 has x = 2, y ∈ [0, 2]. Their only common point, (2, 0), is the start of S1 and lies inside S0."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:19
+msgid "S0 has y = 0, x ∈ [0, 4]; S1 has y = 2 − x, x ∈ [0, 2]. Their only intersection, (2, 0), is the end of S1 but lies inside S0."
+msgstr "S0 has y = 0, x ∈ [0, 4]; S1 has y = 2 − x, x ∈ [0, 2]. Their only intersection, (2, 0), is the end of S1 but lies inside S0."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:18
+msgid "S0 has y = 0, x ∈ [0, 4]; S1 has y = x − 2, x ∈ [2, 4]. Their only intersection, (2, 0), is the start of S1 but lies inside S0."
+msgstr "S0 has y = 0, x ∈ [0, 4]; S1 has y = x − 2, x ∈ [2, 4]. Their only intersection, (2, 0), is the start of S1 but lies inside S0."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:21
+msgid "S0 has y = x, S1 has y = −x, and S2 has y = 0. Every pair has the unique solution (0, 0), and x = 0 lies in each interval (−2, 2). The bottom-to-top order is S0, S2, S1 on the left and S1, S2, S0 on the right; one geometric point corresponds to 3 × 2 / 2 = 3 pairs."
+msgstr "S0 has y = x, S1 has y = −x, and S2 has y = 0. Every pair has the unique solution (0, 0), and x = 0 lies in each interval (−2, 2). The bottom-to-top order is S0, S2, S1 on the left and S1, S2, S0 on the right; one geometric point corresponds to 3 × 2 / 2 = 3 pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:26
+msgid "S0 lies on y = 0, x ∈ [0, 4]. S2 is at its endpoint (0, 0), producing S0 × S2; S1 and S4 coincide at the interior point (2, 0), forming 3 pairs together with S0. S3 is at (5, 1) and intersects no other input; there are 4 pairs at 2 positions."
+msgstr "S0 lies on y = 0, x ∈ [0, 4]. S2 is at its endpoint (0, 0), producing S0 × S2; S1 and S4 coincide at the interior point (2, 0), forming 3 pairs together with S0. S3 is at (5, 1) and intersects no other input; there are 4 pairs at 2 positions."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:10
+msgid "S0 satisfies y = x and S1 satisfies y = 4 − x. Solving gives x = y = 2, inside both segments."
+msgstr "S0 satisfies y = x and S1 satisfies y = 4 − x. Solving gives x = y = 2, inside both segments."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:22
+msgid "S0, S1, S2, and S3 satisfy y = x, y = −x, y = 2x, and y = x/2 respectively. Their slopes differ and their only common point is (0, 0). The origin is inside S0 and S1, the end of S2, and the start of S3; all closed segments include it, giving exactly 4 × 3 / 2 = 6 pairs. The order is S2, S0, S1 on the left and S1, S3, S0 on the right."
+msgstr "S0, S1, S2, and S3 satisfy y = x, y = −x, y = 2x, and y = x/2 respectively. Their slopes differ and their only common point is (0, 0). The origin is inside S0 and S1, the end of S2, and the start of S3; all closed segments include it, giving exactly 4 × 3 / 2 = 6 pairs. The order is S2, S0, S1 on the left and S1, S3, S0 on the right."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:12
+msgid "S0, with y = x, and S2, with y = 10 − x, intersect at (5, 5). S1 has y = 5, but its x range is only [1, 3], excluding x = 5, so there are no other intersecting pairs."
+msgstr "S0, with y = x, and S2, with y = 10 − x, intersect at (5, 5). S1 has y = 5, but its x range is only [1, 3], excluding x = 5, so there are no other intersecting pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:13
+msgid "S0, with y = x, intersects S1, with y = 3, at (3, 3), and S2, with y = 6, at (6, 6). Both points are inside the respective segments. S1 and S2 are parallel and do not intersect."
+msgstr "S0, with y = x, intersects S1, with y = 3, at (3, 3), and S2, with y = 6, at (6, 6). Both points are inside the respective segments. S1 and S2 are parallel and do not intersect."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:19
+msgid "S1 approaches from the upper left and ends at (2, 0) inside S0."
+msgstr "S1 approaches from the upper left and ends at (2, 0) inside S0."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:12
+msgid "S1 initially separates S0 and S2; this new neighboring pair can only be checked after S1 leaves."
+msgstr "S1 initially separates S0 and S2; this new neighboring pair can only be checked after S1 leaves."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:18
+msgid "S1 starts at (2, 0) inside S0 and heads up and right."
+msgstr "S1 starts at (2, 0) inside S0 and heads up and right."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:81
+msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
+msgstr "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:96
+msgid "Seven hexagons form a finite honeycomb sheet, with each shared chemical bond retained once; boundary truncation reduces the coordination of edge atoms."
+msgstr "Seven hexagons form a finite honeycomb sheet, with each shared chemical bond retained once; boundary truncation reduces the coordination of edge atoms."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:16
+msgid "Shared endpoint"
+msgstr "Shared endpoint"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:15
+msgid "Single input"
+msgstr "Single input"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:39
+msgid "Six main branches each have two levels of symmetric forks, with gaps between branches. The shape approximates √3/2 by 433/500; intersections are still computed exactly for the submitted rational coordinates."
+msgstr "Six main branches each have two levels of symmetric forks, with gaps between branches. The shape approximates √3/2 by 433/500; intersections are still computed exactly for the submitted rational coordinates."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:25
+msgid "Solving y = x and y = 1 − x gives (1/2, 1/2), exactly the start of horizontal S2. Every pair among the three intersects at this exact point: 3 pairs and no overlap interval."
+msgstr "Solving y = x and y = 1 − x gives (1/2, 1/2), exactly the start of horizontal S2. Every pair among the three intersects at this exact point: 3 pairs and no overlap interval."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:38
+msgid "Spider web"
+msgstr "Spider web"
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:103
+msgid "Star polygon"
+msgstr "Star polygon"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:18
+msgid "Start in the interior"
+msgstr "Start in the interior"
+
+#: src/app/App.tsx:152
+msgid "Start learning"
+msgstr "Start learning"
+
+#: src/app/App.tsx:276
+msgid "Start step-by-step learning"
+msgstr "Start step-by-step learning"
+
+#: src/app/App.tsx:66
+#: src/app/App.tsx:198
+msgid "Step-by-step learning"
+msgstr "Step-by-step learning"
+
+#. js-lingui-explicit-id
+#: src/cases/penrose.ts:83
+msgid "Subdivision uses φ = (1 + √5)/2. Matching Robinson triangles are paired along their bases and their internal diagonals removed; unpaired boundary halves are discarded, leaving 10 thin and 10 thick rhombi. The 50 unique edges connect 31 vertices: 5 have degree 2, 20 have degree 3, and 6 have degree 5, giving 5 × 1 + 20 × 3 + 6 × 10 = 125 endpoint pairs at 31 intersection positions; the origin joins 5 edges, giving exactly 10 pairs. Joins have no interior crossings or overlaps. Approximated shared vertices are uniformly rotated exactly by (x, y) → ((3x − 4y)/5, (4x + 3y)/5), preserving lengths, angles, and joins. The service computes the submitted rational coordinates exactly, without treating approximated rhombi as exact irrational geometry."
+msgstr "Subdivision uses φ = (1 + √5)/2. Matching Robinson triangles are paired along their bases and their internal diagonals removed; unpaired boundary halves are discarded, leaving 10 thin and 10 thick rhombi. The 50 unique edges connect 31 vertices: 5 have degree 2, 20 have degree 3, and 6 have degree 5, giving 5 × 1 + 20 × 3 + 6 × 10 = 125 endpoint pairs at 31 intersection positions; the origin joins 5 edges, giving exactly 10 pairs. Joins have no interior crossings or overlaps. Approximated shared vertices are uniformly rotated exactly by (x, y) → ((3x − 4y)/5, (4x + 3y)/5), preserving lengths, angles, and joins. The service computes the submitted rational coordinates exactly, without treating approximated rhombi as exact irrational geometry."
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:118
+msgid "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection."
+msgstr "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:39
+msgid "The center joins 6 main branches, producing 15 pairs; each main branch has two forks where four edges meet, producing 6 pairs per fork. There are 1 + 6 × 2 = 13 intersection positions and 15 + 12 × 6 = 87 pairs. For example, (3, 0) and (6, 0) each have 6 pairs; tips join only one edge and produce no pairs. There are no crossings or overlaps between forks. The ideal coordinates with sixfold symmetry use a fixed rational approximation."
+msgstr "The center joins 6 main branches, producing 15 pairs; each main branch has two forks where four edges meet, producing 6 pairs per fork. There are 1 + 6 × 2 = 13 intersection positions and 15 + 12 × 6 = 87 pairs. For example, (3, 0) and (6, 0) each have 6 pairs; tips join only one edge and produce no pairs. There are no crossings or overlaps between forks. The ideal coordinates with sixfold symmetry use a fixed rational approximation."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:29
+msgid "The complete intersection of the horizontal segments is [2, 4]."
+msgstr "The complete intersection of the horizontal segments is [2, 4]."
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:105
+msgid "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
+msgstr "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:99
+msgid "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t + 6), 6t). Strings with parameters t and u intersect at (3(t + u), tu), within both segments; for example, S5 × S7 intersects at (0, −1) and S6 × S7 at (3, 0). The continuous line family is tangent to y = x²/36 at (6t, t²), so the finite arrangement outlines its envelope; 13 strings produce 78 distinct intersection positions."
+msgstr "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t + 6), 6t). Strings with parameters t and u intersect at (3(t + u), tu), within both segments; for example, S5 × S7 intersects at (0, −1) and S6 × S7 at (3, 0). The continuous line family is tangent to y = x²/36 at (6t, t²), so the finite arrangement outlines its envelope; 13 strings produce 78 distinct intersection positions."
+
+#. js-lingui-explicit-id
+#: src/cases/carbonLattices.ts:100
+msgid "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
+msgstr "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
+
+#: src/app/App.tsx:251
+msgid "This case does not support learning."
+msgstr "This case does not support learning."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:77
+msgid "Three angular meander patterns inside a window frame connect to a lower crossbar, with generous gaps between turns."
+msgstr "Three angular meander patterns inside a window frame connect to a lower crossbar, with generous gaps between turns."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:31
+msgid "Three geometrically identical inputs include one reversed input; all three interval pairs are individually inspectable."
+msgstr "Three geometrically identical inputs include one reversed input; all three interval pairs are individually inspectable."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:21
+msgid "Three interiors at one point"
+msgstr "Three interiors at one point"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:21
+msgid "Three nonvertical segments cross at the origin in their interiors; one intersection point corresponds to three pairs."
+msgstr "Three nonvertical segments cross at the origin in their interiors; one intersection point corresponds to three pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:28
+msgid "Three segments and one point meet at the origin, with six individually inspectable pairs."
+msgstr "Three segments and one point meet at the origin, with six individually inspectable pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:20
+msgid "Three segments at one point"
+msgstr "Three segments at one point"
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:80
+msgid "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
+msgstr "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:27
+msgid "Two coincident fractional points and one separate point."
+msgstr "Two coincident fractional points and one separate point."
+
+#. js-lingui-explicit-id
+#: src/cases/artPatterns.ts:86
+msgid "Two continuous families of diagonals in opposite directions weave a diamond pattern, retaining real segments at every crossing."
+msgstr "Two continuous families of diagonals in opposite directions weave a diamond pattern, retaining real segments at every crossing."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:10
+msgid "Two diagonals intersect at (2, 2)."
+msgstr "Two diagonals intersect at (2, 2)."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:24
+msgid "Two independent crossings share the same x coordinate."
+msgstr "Two independent crossings share the same x coordinate."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:11
+msgid "Two parallel segments have no intersecting pair."
+msgstr "Two parallel segments have no intersecting pair."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:33
+msgid "Understand why closed collinear segments sharing only one endpoint intersect at a point, rather than over a nonzero-length interval."
+msgstr "Understand why closed collinear segments sharing only one endpoint intersect at a point, rather than over a nonzero-length interval."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:34
+msgid "Understand why collinearity does not imply intersection; observe two closed intervals separated by a gap."
+msgstr "Understand why collinearity does not imply intersection; observe two closed intervals separated by a gap."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:14
+msgid "Understand why the sweep finishes immediately with no inputs and no events."
+msgstr "Understand why the sweep finishes immediately with no inputs and no events."
+
+#: src/app/App.tsx:249
+msgid "Unknown case: {caseId}"
+msgstr "Unknown case: {caseId}"
+
+#: src/app/App.tsx:250
+#: src/app/App.tsx:294
+msgid "Unknown page path."
+msgstr "Unknown page path."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:25
+msgid "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
+msgstr "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:23
+msgid "Vertical contacts at multiple heights"
+msgstr "Vertical contacts at multiple heights"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:32
+msgid "Vertical fractional overlap"
+msgstr "Vertical fractional overlap"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:37
+msgid "Vertical overlap with mixed contacts at multiple heights"
+msgstr "Vertical overlap with mixed contacts at multiple heights"
+
+#. placeholder {0}: translate(preset.name)
+#: src/app/App.tsx:143
+msgid "View {0} details"
+msgstr "View {0} details"
+
+#: src/app/App.tsx:153
+#: src/app/App.tsx:224
+msgid "View details"
+msgstr "View details"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:14
+msgid "With no inputs, there are no endpoint events and no input pairs that could intersect."
+msgstr "With no inputs, there are no endpoint events and no input pairs that could intersect."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:28
+msgid "y = 0, x = 0, and y = x intersect only at the origin, and S3 is exactly (0, 0). Four distinct inputs form 4 × 3 / 2 = 6 pairs, all intersecting at (0, 0); S3 occupies no persistent active position."
+msgstr "y = 0, x = 0, and y = x intersect only at the origin, and S3 is exactly (0, 0). Four distinct inputs form 4 × 3 / 2 = 6 pairs, all intersecting at (0, 0); S3 occupies no persistent active position."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:20
+msgid "y = 0, x = 0, and y = x intersect pairwise at (0, 0), inside all three segments. Three distinct inputs produce 3 × 2 / 2 = 3 pairs at one geometric position."
+msgstr "y = 0, x = 0, and y = x intersect pairwise at (0, 0), inside all three segments. Three distinct inputs produce 3 × 2 / 2 = 3 pairs at one geometric position."
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:28
+msgid "Zero-length point at a multiway crossing"
+msgstr "Zero-length point at a multiway crossing"
+
+#. js-lingui-explicit-id
+#: src/cases/presets.ts:26
+msgid "Zero-length points and a segment"
+msgstr "Zero-length points and a segment"

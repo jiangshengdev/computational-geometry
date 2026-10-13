@@ -1,10 +1,11 @@
 import { expect, type Page } from '@playwright/test'
 import { presets } from '../../src/cases/presets'
+import { chinese } from './language'
 
 export async function selectPreset(page: Page, id: string) {
-  const preset = presets.find(preset => preset.id === id || preset.name === id)!
+  const preset = presets.find(preset => preset.id === id || chinese._(preset.name) === id)!
   if (new URL(page.url()).pathname !== '/') await page.getByRole('link', { name: '返回列表', exact: true }).click()
-  await page.getByRole('article').filter({ has: page.getByRole('heading', { name: preset.name, exact: true }) })
+  await page.getByRole('article').filter({ has: page.getByRole('heading', { name: chinese._(preset.name), exact: true }) })
     .getByRole('link', { name: '查看详情', exact: true }).click()
 }
 

@@ -64,48 +64,48 @@ function starPolygon(): Segment[] {
 
 export const artPresets: Preset[] = [
   {
-    id: 'bridge-truss', name: '桥梁桁架',
-    description: '四跨桥梁以连续三角支撑连接上下弦杆，竖杆与斜撑的连接清晰可辨。',
+    id: 'bridge-truss', name: /*i18n*/ { id: "Bridge truss", message: "Bridge truss" },
+    description: /*i18n*/ { id: "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces.", message: "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces." },
     segments: bridgeTruss(),
     learning: {
-      goal: '比较桥梁节点的端点连接与每跨斜撑的内部交叉，观察不同位置的事件归组。',
-      verification: '首跨 S2 满足 y = x，S3 满足 y = 4 − x，内部交于 (2, 2)；其余三跨交叉位于 (6, 2)、(10, 2)、(14, 2)。S0、S4 在共同端点 (4, 0) 连接。共 10 个结构节点和 4 个跨内交点；每根共享杆仅生成一次。',
+      goal: /*i18n*/ { id: "Compare endpoint connections at bridge joints with interior crossings of the braces in each span; observe event grouping at different positions.", message: "Compare endpoint connections at bridge joints with interior crossings of the braces in each span; observe event grouping at different positions." },
+      verification: /*i18n*/ { id: "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, crossing internally at (2, 2); the other three spans cross at (6, 2), (10, 2), and (14, 2). S0 and S4 connect at the shared endpoint (4, 0). There are 10 structural joints and 4 interior span crossings; each shared member is generated only once.", message: "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, crossing internally at (2, 2); the other three spans cross at (6, 2), (10, 2), and (14, 2). S0 and S4 connect at the shared endpoint (4, 0). There are 10 structural joints and 4 interior span crossings; each shared member is generated only once." },
     },
   },
   {
-    id: 'meander-window', name: '回纹窗棂',
-    description: '窗框内三组方折回纹连接下方横梁，回转之间保留宽阔留白。',
+    id: 'meander-window', name: /*i18n*/ { id: "Meander window lattice", message: "Meander window lattice" },
+    description: /*i18n*/ { id: "Three angular meander patterns inside a window frame connect to a lower crossbar, with generous gaps between turns.", message: "Three angular meander patterns inside a window frame connect to a lower crossbar, with generous gaps between turns." },
     segments: meanderWindow(),
     learning: {
-      goal: '沿方折回纹追踪端点连接，并区分回纹起点落在横梁内部的接触。',
-      verification: 'S5 从 (0, 0) 到 (0, 8)，S6 从 (0, 8) 到 (8, 8)，公共端点为 (0, 8)。S4 的 y = 0、x ∈ [−2, 34]，与 S5 在 (0, 0) 接触。三组回纹各有 7 处转角和 1 处横梁接触，另有窗框 4 角及横梁与窗框的 2 处接触，共 30 个不同位置；没有内部穿越或重叠。',
+      goal: /*i18n*/ { id: "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar.", message: "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar." },
+      verification: /*i18n*/ { id: "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps.", message: "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps." },
     },
   },
   {
-    id: 'diagonal-weave', name: '斜向编织',
-    description: '两组方向相反的连续斜线交织成菱形纹理，所有交叉均保留真实线段。',
+    id: 'diagonal-weave', name: /*i18n*/ { id: "Diagonal weave", message: "Diagonal weave" },
+    description: /*i18n*/ { id: "Two continuous families of diagonals in opposite directions weave a diamond pattern, retaining real segments at every crossing.", message: "Two continuous families of diagonals in opposite directions weave a diamond pattern, retaining real segments at every crossing." },
     segments: diagonalWeave(),
     learning: {
-      goal: '从平行线族中辨认相交配对，观察菱形纹理中分布在不同高度的内部交叉。',
-      verification: '上升线满足 y = x + c，下降线满足 y = d − x，因此交点为 ((d − c)/2, (d + c)/2)，还须检查坐标是否在 [0, 12] 内。例如 S2 × S7 为 (6, 6)，S1 × S7 为 (8, 4)；S0 × S6 在端点 (8, 0) 接触。同方向线互相平行，没有重叠。',
+      goal: /*i18n*/ { id: "Identify intersecting pairs among families of parallel lines and observe interior crossings at different heights in the diamond pattern.", message: "Identify intersecting pairs among families of parallel lines and observe interior crossings at different heights in the diamond pattern." },
+      verification: /*i18n*/ { id: "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap.", message: "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap." },
     },
   },
   {
-    id: 'parabolic-strings', name: '抛物线弦画',
-    description: '取整数 t ∈ [−6, 6]，排列直线 y = (t/3)x − t² 的有限线段，形成抛物线包络。',
+    id: 'parabolic-strings', name: /*i18n*/ { id: "Parabolic string art", message: "Parabolic string art" },
+    description: /*i18n*/ { id: "Finite segments on lines y = (t/3)x − t² for integer t ∈ [−6, 6] form a parabolic envelope.", message: "Finite segments on lines y = (t/3)x − t² for integer t ∈ [−6, 6] form a parabolic envelope." },
     segments: parabolicStrings(),
     learning: {
-      goal: '观察真实直线段如何共同勾勒曲线，追踪相邻弦与远隔弦的精确交点。',
-      verification: '参数 t 的线段端点为 (3(t − 6), −6t) 与 (3(t + 6), 6t)。参数 t、u 的两弦交于 (3(t + u), tu)，在线段范围内；例如 S5 × S7 为 (0, −1)，S6 × S7 为 (3, 0)。连续直线族与 y = x²/36 在 (6t, t²) 相切，因此有限弦排列勾勒其包络；13 条弦产生 78 个不同交点位置。',
+      goal: /*i18n*/ { id: "Observe how real straight segments collectively outline a curve; trace exact intersections between neighboring and distant strings.", message: "Observe how real straight segments collectively outline a curve; trace exact intersections between neighboring and distant strings." },
+      verification: /*i18n*/ { id: "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t + 6), 6t). Strings with parameters t and u intersect at (3(t + u), tu), within both segments; for example, S5 × S7 intersects at (0, −1) and S6 × S7 at (3, 0). The continuous line family is tangent to y = x²/36 at (6t, t²), so the finite arrangement outlines its envelope; 13 strings produce 78 distinct intersection positions.", message: "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t + 6), 6t). Strings with parameters t and u intersect at (3(t + u), tu), within both segments; for example, S5 × S7 intersects at (0, −1) and S6 × S7 at (3, 0). The continuous line family is tangent to y = x²/36 at (6t, t²), so the finite arrangement outlines its envelope; 13 strings produce 78 distinct intersection positions." },
     },
   },
   {
-    id: 'star-polygon', name: '星形多边形',
-    description: '八个环形顶点每次前进 3 个位置连线，形成闭合八角星；顶点使用固定整数坐标。',
+    id: 'star-polygon', name: /*i18n*/ { id: "Star polygon", message: "Star polygon" },
+    description: /*i18n*/ { id: "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates.", message: "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates." },
     segments: starPolygon(),
     learning: {
-      goal: '区分星尖端点连接与星形内部穿越，理解跳点规则如何生成有规律的交点。',
-      verification: '按顺时针编号 0 至 7，连接 i 与 (i + 3) mod 8；从 0 出发依次经过 3、6、1、4、7、2、5 后闭合。S0 满足 y = 10 − 17x/7，S1 满足 y = 17x/7 − 10，内部交点为 (70/17, 0)。S0 与 S3 在 (7, −7) 端点连接。八个顶点为整数八边形，不宣称是精确正八边形。',
+      goal: /*i18n*/ { id: "Distinguish endpoint connections at star tips from interior crossings, and understand how the vertex-skipping rule generates regular intersection patterns.", message: "Distinguish endpoint connections at star tips from interior crossings, and understand how the vertex-skipping rule generates regular intersection patterns." },
+      verification: /*i18n*/ { id: "Number vertices clockwise from 0 to 7 and connect i to (i + 3) mod 8; starting at 0, visit 3, 6, 1, 4, 7, 2, and 5 before closing. S0 satisfies y = 10 − 17x/7 and S1 satisfies y = 17x/7 − 10, with interior intersection (70/17, 0). S0 and S3 connect at endpoint (7, −7). The eight vertices form an integer-coordinate octagon, not a claimed exact regular octagon.", message: "Number vertices clockwise from 0 to 7 and connect i to (i + 3) mod 8; starting at 0, visit 3, 6, 1, 4, 7, 2, and 5 before closing. S0 satisfies y = 10 − 17x/7 and S1 satisfies y = 17x/7 − 10, with interior intersection (70/17, 0). S0 and S3 connect at endpoint (7, −7). The eight vertices form an integer-coordinate octagon, not a claimed exact regular octagon." },
     },
   },
 ]

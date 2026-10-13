@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { presets } from '../../src/cases/presets'
+import { chinese } from '../support/language'
 
 test('预览快捷键：右方向键进入教程，长按不跳过初始步骤', async ({ page }) => {
   const errors: string[] = []
@@ -61,11 +62,12 @@ test('三页路由：列表能力和直接学习', async ({ page }) => {
   await expect(page.getByRole('region', { name: '原始输入' })).toHaveCount(0)
   await expect(page.getByRole('region', { name: '逐步学习' })).toHaveCount(0)
   for (const preset of presets) {
-    const card = page.getByRole('article', { name: preset.name, exact: true })
-    await expect(card).toContainText(preset.description)
-    const thumbnail = card.getByRole('img', { name: `${preset.name}：输入线段预览`, exact: true })
+    const name = chinese._(preset.name)
+    const card = page.getByRole('article', { name, exact: true })
+    await expect(card).toContainText(chinese._(preset.description))
+    const thumbnail = card.getByRole('img', { name: `${name}：输入线段预览`, exact: true })
     await expect(thumbnail).toBeVisible()
-    await expect(card.getByRole('link', { name: `查看${preset.name}详情`, exact: true })).toHaveAttribute('href', `/cases/${preset.id}`)
+    await expect(card.getByRole('link', { name: `查看${name}详情`, exact: true })).toHaveAttribute('href', `/cases/${preset.id}`)
     await expect(thumbnail.locator('.input')).toHaveCount(preset.segments.length)
     await expect(thumbnail.locator('.intersection')).toHaveCount(0)
     expect(await thumbnail.evaluate(svg => Array.from(svg.querySelectorAll('line, path')).every(shape => {

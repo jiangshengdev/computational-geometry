@@ -30,14 +30,20 @@ import { useLayoutPreference } from './useLayoutPreference'
 import { Select } from '@heroui/react/select'
 import { ListBox } from '@heroui/react/list-box'
 import { isLearningLayout, learningLayouts, type LearningLayout } from '../learning/learningLayout'
+import { useLingui } from '@lingui/react/macro'
+import { useLingui as useMessages } from '@lingui/react'
+import { LanguageSelect } from './LanguageProvider'
 
 function PageTitle({ page, preset }: { page: string; preset?: Preset }) {
-  const title = `${preset ? `${preset.name} · ` : ''}${page} · BO 结果查看器`
+  const { t } = useLingui()
+  const { _: translate } = useMessages()
+  const title = `${preset ? `${translate(preset.name)} · ` : ''}${page} · ${t`BO Results Viewer`}`
   useEffect(() => { document.title = title }, [title])
   return null
 }
 
 function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; learning: boolean; zenMode: boolean; layout: LearningLayout }) {
+  const { t } = useLingui()
   const computation = useComputation(preset, learning)
   const [selected, setSelected] = useState<Intersection | null>(null)
   const [hover, setHover] = useHoverTarget()
@@ -57,7 +63,7 @@ function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; lea
   const results = computation.status === 'ready' ? computation.results : []
   const highlights = hover ? hoverHighlights(hover, results) : null
   if (learning) return <>
-    {computation.status !== 'ready' && <PageTitle page="逐步学习" preset={preset} />}
+    {computation.status !== 'ready' && <PageTitle page={t`Step-by-step learning`} preset={preset} />}
     {computation.status === 'loading'
       ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />正在加载教学轨迹…</div>
       : computation.status === 'error'
@@ -65,7 +71,7 @@ function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; lea
         : computation.trace && <LearningPage preset={preset} trace={computation.trace} complete={computation.complete} zenMode={zenMode} layout={layout} />}
   </>
   return <>
-    <PageTitle page="计算结果" preset={preset} />
+    <PageTitle page={t`Results`} preset={preset} />
     <div className="workspace result-workspace">
       <GeometryView segments={preset.segments} results={results} selected={selected} highlights={highlights} onHover={setHover} />
       <aside className="workspace-panel result-panel" aria-label="计算结果">
@@ -128,21 +134,23 @@ function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; lea
 }
 
 function CaseList() {
-  return <section aria-label="案例列表" className="case-list grid gap-4">
-    <PageTitle page="案例列表" />
+  const { t } = useLingui()
+  const { _: translate } = useMessages()
+  return <section aria-label={t`Cases`} className="case-list grid gap-4">
+    <PageTitle page={t`Cases`} />
     {presets.map(preset => <article key={preset.id} aria-labelledby={`case-${preset.id}`}>
       <Card className="case-card h-full items-stretch">
-        <Link className="case-thumbnail-link" to={`/cases/${preset.id}`} aria-label={`查看${preset.name}详情`}>
-          <CaseThumbnail name={preset.name} segments={preset.segments} />
+        <Link className="case-thumbnail-link" to={`/cases/${preset.id}`} aria-label={t`View ${translate(preset.name)} details`}>
+          <CaseThumbnail name={translate(preset.name)} segments={preset.segments} />
         </Link>
         <div className="flex min-w-0 flex-1 flex-col gap-3">
           <Card.Header className="gap-1">
-            <Card.Title render={props => <h2 {...props} />} id={`case-${preset.id}`}>{preset.name}</Card.Title>
-            <Card.Description>{preset.description}</Card.Description>
+            <Card.Title render={props => <h2 {...props} />} id={`case-${preset.id}`}>{translate(preset.name)}</Card.Title>
+            <Card.Description>{translate(preset.description)}</Card.Description>
           </Card.Header>
           <Card.Footer className="mt-auto flex flex-wrap justify-end gap-3">
-            {preset.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>开始学习</Link>}
-            <Link className={buttonVariants({ variant: 'secondary' })} to={`/cases/${preset.id}`}>查看详情</Link>
+            {preset.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>{t`Start learning`}</Link>}
+            <Link className={buttonVariants({ variant: 'secondary' })} to={`/cases/${preset.id}`}>{t`View details`}</Link>
           </Card.Footer>
         </div>
       </Card>
@@ -151,6 +159,7 @@ function CaseList() {
 }
 
 function LearningPage({ preset, trace, complete, zenMode, layout }: { preset: Preset; trace: SweepTrace; complete: boolean; zenMode: boolean; layout: LearningLayout }) {
+  const { t } = useLingui()
   const [search, setSearch] = useSearchParams()
   const [preview, setPreview] = useState<{ search: URLSearchParams; index: number } | null>(null)
   const [cursor, setCursor] = useState(0)
@@ -186,7 +195,7 @@ function LearningPage({ preset, trace, complete, zenMode, layout }: { preset: Pr
     updated.set('step', String(next))
     setSearch(updated, { replace: true })
   }
-  return <><PageTitle page="逐步学习" preset={preset} /><LearningView preset={preset} trace={trace} zenMode={zenMode} layout={layout}
+  return <><PageTitle page={t`Step-by-step learning`} preset={preset} /><LearningView preset={preset} trace={trace} zenMode={zenMode} layout={layout}
     complete={complete} index={visibleIndex} onWaitNextEntry={() => setNextEntry({ search, from: visibleIndex })}
     onStepPreview={next => setPreview({ search, index: next })} onStepChange={changeStep}>
     {waiting && <div role="status" aria-label="步骤等待" className="flex flex-wrap items-center gap-3">
@@ -205,18 +214,22 @@ function LearningPage({ preset, trace, complete, zenMode, layout }: { preset: Pr
 }
 
 function RouteError({ message, preset, showListLink = true }: { message: string; preset?: Preset; showListLink?: boolean }) {
+  const { t } = useLingui()
+  const { _: translate } = useMessages()
   return <section className="flex flex-col gap-4">
-    <PageTitle page={preset ? `链接无效 · ${preset.name}` : '链接无效'} />
-    <Alert status="danger" role="alert"><Alert.Content><Alert.Title>链接无效</Alert.Title><Alert.Description>{message}</Alert.Description></Alert.Content></Alert>
-    <nav aria-label="恢复导航" className="flex flex-wrap gap-3">
-      {showListLink && <Link className={buttonVariants({ variant: 'outline' })} to="/">返回列表</Link>}
-      {preset && <Link className={buttonVariants({ variant: 'outline' })} to={`/cases/${preset.id}`}>查看详情</Link>}
-      {preset?.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>从头学习</Link>}
+    <PageTitle page={preset ? t`Invalid link · ${translate(preset.name)}` : t`Invalid link`} />
+    <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Invalid link`}</Alert.Title><Alert.Description>{message}</Alert.Description></Alert.Content></Alert>
+    <nav aria-label={t`Recovery navigation`} className="flex flex-wrap gap-3">
+      {showListLink && <Link className={buttonVariants({ variant: 'outline' })} to="/">{t`Back to cases`}</Link>}
+      {preset && <Link className={buttonVariants({ variant: 'outline' })} to={`/cases/${preset.id}`}>{t`View details`}</Link>}
+      {preset?.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>{t`Learn from the start`}</Link>}
     </nav>
   </section>
 }
 
 function CasePage({ learning = false, unknownPath = false }: { learning?: boolean; unknownPath?: boolean }) {
+  const { t } = useLingui()
+  const { _: translate } = useMessages()
   const { caseId } = useParams()
   const navigate = useNavigate()
   const preset = presets.find(item => item.id === caseId)
@@ -233,13 +246,13 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
     event.preventDefault()
     if (!event.repeat) navigate(`/cases/${preset.id}/learn`)
   })
-  if (!preset) return <RouteError message={`未知案例：${caseId}`} />
-  if (unknownPath) return <RouteError message="未知页面路径。" preset={preset} />
-  if (learning && !preset.learning) return <RouteError message="此案例不支持教学。" preset={preset} />
+  if (!preset) return <RouteError message={t`Unknown case: ${caseId}`} />
+  if (unknownPath) return <RouteError message={t`Unknown page path.`} preset={preset} />
+  if (learning && !preset.learning) return <RouteError message={t`This case does not support learning.`} preset={preset} />
   return <CaseHelp key={`${preset.id}:${learning}`} preset={preset}>
     <div className="case-toolbar">
-      <nav aria-label="页面导航"><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/">返回列表</Link></nav>
-      <h2 className="text-xl font-semibold">{preset.name}</h2>
+      <nav aria-label={t`Page navigation`}><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/">{t`Back to cases`}</Link></nav>
+      <h2 className="text-xl font-semibold">{translate(preset.name)}</h2>
       <div className="case-actions flex flex-wrap items-center gap-2">
         {learning && <Select className="learning-layout-select w-24" aria-label="主体布局比例（图形、代码、变量）" value={layout}
           onChange={value => { if (isLearningLayout(value)) setLayout(value) }}>
@@ -257,10 +270,10 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
             <Label>禅模式</Label><Chip color="accent" variant="soft" size="sm" aria-hidden="true">Z</Chip>
           </Switch.Content>
         </Switch>}
-        <HelpButton /><HelpButton topic="case">案例说明</HelpButton>
+        <HelpButton /><HelpButton topic="case">{t`About this case`}</HelpButton>
         {learning
-          ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>返回结果查看器</Link>
-          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">开始逐步学习<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Link>}
+          ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>{t`Back to results viewer`}</Link>
+          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">{t`Start step-by-step learning`}<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Link>}
       </div>
     </div>
     <CaseViewer preset={preset} learning={learning} zenMode={zenMode} layout={layout} />
@@ -268,15 +281,17 @@ function CasePage({ learning = false, unknownPath = false }: { learning?: boolea
 }
 
 export default function App() {
+  const { t } = useLingui()
   const caseRoute = useMatch('/cases/:caseId/*')
   return <main className={caseRoute ? 'case-shell' : undefined}>
-    {!caseRoute && <p className="mb-6 text-muted">选择案例，检查精确交点与完整重叠区间。</p>}
+    <div className="flex justify-end"><LanguageSelect /></div>
+    {!caseRoute && <p className="mb-6 text-muted">{t`Choose a case to inspect exact intersection points and complete overlap intervals.`}</p>}
     <Routes>
       <Route path="/" element={<CaseList />} />
       <Route path="/cases/:caseId" element={<CasePage />} />
       <Route path="/cases/:caseId/learn" element={<CasePage learning />} />
       <Route path="/cases/:caseId/*" element={<CasePage unknownPath />} />
-      <Route path="*" element={<RouteError message="未知页面路径。" />} />
+      <Route path="*" element={<RouteError message={t`Unknown page path.`} />} />
     </Routes>
   </main>
 }
