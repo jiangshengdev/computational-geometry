@@ -2,7 +2,11 @@
 use super::super::teaching::*;
 use super::{Event, Point, Rational};
 use crate::Intersection;
-use std::{cell::Cell, collections::BTreeMap, sync::Arc};
+use std::{
+    cell::{Cell, RefCell},
+    collections::BTreeMap,
+    sync::Arc,
+};
 
 pub(super) struct Recorder<'batch, 'run> {
     pub(super) steps: Option<&'batch mut Vec<SweepStep>>,
@@ -10,6 +14,7 @@ pub(super) struct Recorder<'batch, 'run> {
     pub(super) trace_segments: &'run Option<Arc<str>>,
     pub(super) next_call: &'run Cell<usize>,
     pub(super) cancelled: &'run dyn Fn() -> bool,
+    pub(super) capture: &'run RefCell<TraceCapture>,
 }
 
 /// A temporary read of the one sweep state, never a second owner.
@@ -44,6 +49,7 @@ impl Recorder<'_, '_> {
                 &[],
                 &subjects,
                 self.input_value.as_ref().expect("tracing captures input"),
+                self.capture,
             );
             step.sweep_context(
                 self.trace_segments

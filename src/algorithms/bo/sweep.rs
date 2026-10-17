@@ -12,6 +12,7 @@ use crate::{Geometry, Intersection, Point, Rational, Segment};
 use observation::{
     ObservationState, Recorder, block_end, call, control, observe, pending_call, reset_controls,
 };
+use std::cell::RefCell;
 use std::collections::BTreeMap;
 use std::sync::Arc;
 
@@ -221,6 +222,7 @@ fn sweep(
         ..
     } = &mut state;
 
+    let capture = RefCell::new(TraceCapture::default());
     if let Some(steps) = &mut steps {
         steps.push(SweepStep::capture(
             "initial",
@@ -231,6 +233,7 @@ fn sweep(
             &[],
             &[],
             input_value.as_ref().expect("tracing captures input"),
+            &capture,
         ));
     }
     if let Some(publication) = &mut publication
@@ -250,6 +253,7 @@ fn sweep(
             trace_segments: &trace_segments,
             next_call: &next_call,
             cancelled,
+            capture: &capture,
         };
         let Some(take::TakenEvent {
             point,

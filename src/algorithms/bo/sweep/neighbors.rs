@@ -23,6 +23,7 @@ pub(super) fn check(
     let input_value = recording.input_value;
     let trace_segments = recording.trace_segments;
     let cancelled = recording.cancelled;
+    let capture = recording.capture;
     macro_rules! neighbors {
         ($boundary:expr, $checked:expr, $boundaries:expr, $lower:expr, $neighbors:expr, $candidate:expr) => {
             observe!(
@@ -297,6 +298,7 @@ pub(super) fn check(
             lower,
             input_value,
             trace_segments,
+            capture,
         });
         let mut observer =
             |boundary, queue: &BTreeMap<Point, Event>, checked: &[[usize; 2]], locals, controls| {
@@ -377,6 +379,7 @@ struct NeighborCall<'a> {
     lower: usize,
     input_value: &'a Option<Arc<str>>,
     trace_segments: &'a Option<Arc<str>>,
+    capture: &'a RefCell<TraceCapture>,
 }
 
 impl NeighborCall<'_> {
@@ -400,6 +403,7 @@ impl NeighborCall<'_> {
             lower,
             input_value,
             trace_segments,
+            capture,
         } = *self;
         let action = if boundary == 2 {
             "check"
@@ -417,6 +421,7 @@ impl NeighborCall<'_> {
             checked,
             neighbors,
             input_value.as_ref().expect("tracing captures input"),
+            capture,
         );
         let mut queue_parameter = step.execution.context.locals.remove(0);
         queue_parameter.r#type = "&mut BTreeMap<Point, Event>";

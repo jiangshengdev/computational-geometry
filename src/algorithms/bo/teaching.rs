@@ -1,6 +1,7 @@
 //! Teaching snapshots and reusable execution record construction.
 use super::sweep::{Event, SweepSegment};
 use crate::{Geometry, Intersection, Point, Rational};
+use std::cell::RefCell;
 use std::collections::BTreeMap;
 use std::sync::Arc;
 
@@ -15,11 +16,34 @@ pub(crate) struct SweepStep {
     pub current: Option<Point>,
     pub pending: Vec<Point>,
     pub active: Vec<usize>,
-    pub results: Vec<Intersection>,
+    pub results: Arc<[Intersection]>,
     pub checked: Vec<[usize; 2]>,
     pub starts: Vec<usize>,
     pub ends: Vec<usize>,
     pub passes: Vec<usize>,
+}
+
+/// Request-local snapshots; unchanged complete result contents share storage and text.
+#[derive(Default)]
+pub(crate) struct TraceCapture {
+    results: Option<(Arc<[Intersection]>, Arc<str>)>,
+}
+
+impl TraceCapture {
+    fn results(&mut self, results: &[Intersection]) -> &(Arc<[Intersection]>, Arc<str>) {
+        if self
+            .results
+            .as_ref()
+            .is_none_or(|(snapshot, _)| snapshot.as_ref() != results)
+        {
+            self.results = Some((Arc::from(results), Arc::from(intersections_value(results))));
+        }
+        self.results.as_ref().expect("result snapshot exists")
+    }
+
+    pub(crate) fn result_value(&mut self, results: &[Intersection]) -> Arc<str> {
+        Arc::clone(&self.results(results).1)
+    }
 }
 
 #[derive(Clone, PartialEq, Eq)]
@@ -374,7 +398,13 @@ impl SweepStep {
         checked: &[[usize; 2]],
         subjects: &[usize],
         input_value: &Arc<str>,
+        capture: &RefCell<TraceCapture>,
     ) -> Self {
+        let (results, result_value) = {
+            let mut capture = capture.borrow_mut();
+            let (results, text) = capture.results(results);
+            (Arc::clone(results), Arc::clone(text))
+        };
         Self {
             execution: Execution {
                 outer: Vec::new(),
@@ -416,11 +446,7 @@ impl SweepStep {
                             ),
                         ),
                         Variable::available("active", "Vec<usize>", format!("{active:?}")),
-                        Variable::available(
-                            "result",
-                            "Vec<Intersection>",
-                            intersections_value(results),
-                        ),
+                        Variable::available("result", "Vec<Intersection>", result_value),
                     ],
                 },
             },
@@ -434,7 +460,7 @@ impl SweepStep {
             current: current.cloned(),
             pending: queue.keys().cloned().collect(),
             active: active.to_vec(),
-            results: results.to_vec(),
+            results,
             checked: checked.to_vec(),
             starts: Vec::new(),
             ends: Vec::new(),

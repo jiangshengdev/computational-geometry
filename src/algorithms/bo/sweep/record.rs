@@ -19,6 +19,7 @@ pub(super) fn record(
     let incident = &classified.incident;
     let participants = &classified.participants;
     let next_call = recording.next_call;
+    let capture = recording.capture;
     macro_rules! record {
         ($boundary:expr, $indices:expr, $interval:expr, $geometry:expr) => {
             observe!(recording, ObservationState { queue, active, result, height_order, shear }, point,
@@ -399,7 +400,7 @@ pub(super) fn record(
                     Variable::available(
                         "self",
                         "&mut Vec<Intersection>",
-                        intersections_value(result)
+                        capture.borrow_mut().result_value(result)
                     ),
                     Variable::absent("value", "Intersection", "unassigned")
                 ],
@@ -426,7 +427,7 @@ pub(super) fn record(
                     Variable::available(
                         "self",
                         "&mut Vec<Intersection>",
-                        intersections_value(result),
+                        capture.borrow_mut().result_value(result),
                     ),
                     Variable::available("value", "Intersection", intersection_value(&intersection)),
                 ]

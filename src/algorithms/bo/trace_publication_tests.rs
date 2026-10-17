@@ -1,6 +1,7 @@
 use super::super::sweep::Event;
+use super::super::teaching::TraceCapture;
 use super::*;
-use std::{collections::BTreeMap, sync::Arc};
+use std::{cell::RefCell, collections::BTreeMap, sync::Arc};
 
 fn rational(numerator: i64, denominator: i64) -> Rational {
     Rational::new(numerator.into(), denominator.into())
@@ -19,6 +20,7 @@ fn representation_keys_preserve_exact_coordinates_for_equivalent_fractions() {
         &[],
         &[],
         &Arc::from("[]"),
+        &RefCell::new(TraceCapture::default()),
     );
     step.pending = vec![
         Point {
@@ -76,6 +78,7 @@ fn emitted_batches_restore_exact_points_without_mutating_retained_sweep_coordina
                 &[],
                 &[],
                 &Arc::from("[]"),
+                &RefCell::new(TraceCapture::default()),
             ));
             assert!(publication.publish());
             assert_eq!(publication.steps.len(), 1);

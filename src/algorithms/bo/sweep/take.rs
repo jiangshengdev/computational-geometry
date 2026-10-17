@@ -28,6 +28,7 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
             &[],
             &[],
             input_value.as_ref().expect("tracing captures input"),
+            recording.capture,
         );
         step.preserve_geometry(steps.last().expect("initial snapshot exists"));
         step.take_context(
@@ -70,6 +71,7 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
             &[],
             &[],
             input_value.as_ref().expect("tracing captures input"),
+            recording.capture,
         );
         step.preserve_geometry(steps.last().expect("entry snapshot exists"));
         step.take_context(
@@ -122,6 +124,7 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
                 &[],
                 &[],
                 input_value.as_ref().expect("tracing captures input"),
+                recording.capture,
             );
             step.preserve_geometry(steps.last().expect("pop snapshot exists"));
             step.take_context(
@@ -160,6 +163,7 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
             &[],
             &[],
             input_value.as_ref().expect("tracing captures input"),
+            recording.capture,
         );
         step.take_context(
             2,

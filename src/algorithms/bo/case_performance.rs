@@ -250,11 +250,11 @@ async fn actual_case_timings() {
         let (result, trace) = trace_intersections(&segments);
         assert_eq!(canonical(result), expected);
         assert_eq!(
-            canonical(trace.steps.last().unwrap().results.clone()),
+            canonical(trace.steps.last().unwrap().results.to_vec()),
             expected
         );
         println!(
-            "{id} n={} results={} steps={} copied_results={} pending_points={} distinct_current_points={} max_active={} copied_active={}; distinct_current_points counts unique non-null original-coordinate trace current positions",
+            "{id} n={} results={} steps={} result_memberships={} pending_points={} distinct_current_points={} max_active={} active_memberships={}; distinct_current_points counts unique non-null original-coordinate trace current positions",
             segments.len(),
             expected.len(),
             trace.steps.len(),

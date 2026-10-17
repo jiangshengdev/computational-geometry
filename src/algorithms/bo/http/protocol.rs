@@ -292,14 +292,14 @@ impl TraceEncoder {
                     active: step.active,
                     results: step
                         .results
-                        .into_iter()
+                        .iter()
                         .map(|intersection| {
                             *self
                                 .result_indices
                                 .entry(intersection.segments)
                                 .or_insert_with(|| {
                                     let index = result_offset + result_values.len();
-                                    result_values.push(IntersectionDto::from(intersection));
+                                    result_values.push(IntersectionDto::from(intersection.clone()));
                                     index
                                 })
                         })
