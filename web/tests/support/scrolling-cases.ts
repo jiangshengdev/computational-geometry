@@ -29,7 +29,7 @@ export const longDetailsCase: Preset = {
 
 export async function installCase(page: Page, preset: Preset) {
   // Extend only the catalog input. The UI still calls the real HTTP/BO API.
-  await page.route('**/src/cases/presets.ts', async route => {
+  await page.route('**/src/algorithms/bo/cases/presets.ts', async route => {
     const response = await route.fetch()
     await route.fulfill({ response, body: `${await response.text()}\npresets.push(${JSON.stringify(preset)});\n` })
   })
