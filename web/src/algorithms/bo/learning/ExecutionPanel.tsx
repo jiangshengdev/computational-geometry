@@ -168,7 +168,7 @@ export function ExecutionVariablesPanel({ step, previous, shear, values }: {
       <dt><ExecutionVariableSymbol variable={variable} kind={kind} context={frame} step={step} previous={previous} values={values} disclosure indicator={<ExecutionDisclosureIndicator expanded={state.isExpanded} />}>
         <VariableCode>{suffix}</VariableCode>{!state.isExpanded && <VariableCode>{formatExecutionValue(value, 'summary')}</VariableCode>}
       </ExecutionVariableSymbol>{shadowed && !state.isExpanded && <span className="text-muted">{_(shadowedValueNote)}</span>}</dt>
-      <dd><Disclosure.Content><Disclosure.Body className="execution-variable-value"><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{_(shadowedValueNote)}</span>}</Disclosure.Body></Disclosure.Content></dd>
+      <dd><Disclosure.Content>{state.isExpanded && <Disclosure.Body className="execution-variable-value"><VariableCode>{value}</VariableCode>{shadowed && <span className="text-muted">{_(shadowedValueNote)}</span>}</Disclosure.Body>}</Disclosure.Content></dd>
     </Disclosure>
     return <div key={variable.name} className="execution-variable" data-changed={changed} data-testid={`variable-${variable.name}`}>
       <dt><ExecutionVariableSymbol variable={variable} kind={kind} context={frame} step={step} previous={previous} values={values}><VariableCode>{variable.name}</VariableCode></ExecutionVariableSymbol><VariableCode>{suffix}</VariableCode></dt>
