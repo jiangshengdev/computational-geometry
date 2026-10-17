@@ -15,9 +15,12 @@ test('核心变量保留真实值并随前进回退更新', async ({ page }) => 
       const rows = panel.getByRole('region', { name: '当前执行上下文' }).locator('dl').nth(kind === 'parameters' ? 0 : 1)
       for (const variable of trace.steps[stepIndex].execution.context[kind]) {
         const row = rows.getByTestId(`variable-${variable.name}`)
-        const disclosure = row.getByRole('button')
-        if (await disclosure.count() && await disclosure.getAttribute('aria-expanded') === 'false') await disclosure.click()
         await expect(row.locator('dt')).toContainText(`${variable.name}: ${variable.type} =`)
+        const disclosure = row.getByRole('button', { name: `${variable.name}: ${variable.type}`, exact: true })
+        if (await disclosure.count() && await disclosure.getAttribute('aria-expanded') === 'false') {
+          await disclosure.click()
+          await expect(disclosure).toHaveAttribute('aria-expanded', 'true')
+        }
         if ((variable.availability === 'available' || variable.availability === 'shadowed') && variable.value !== null) {
           await expect(row.locator('dd')).toHaveText(formatExecutionValue(trace.values[variable.value]) + (variable.availability === 'shadowed' ? '（已遮蔽，遮蔽前的最后值）' : ''))
         }
