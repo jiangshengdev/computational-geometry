@@ -9,6 +9,7 @@ import { AppLink } from './AppLink'
 import { DocumentTitle } from './DocumentTitle'
 import { Alert } from '@heroui/react/alert'
 import './App.css'
+import { PageHeading } from './PageHeading'
 
 export default function App() {
   const { t } = useLingui()
@@ -19,7 +20,7 @@ export default function App() {
       <AppLink to="/">{t`Algorithm home`}</AppLink>
       <div className="flex items-center gap-3"><DocumentationLink /><LanguageSelect /></div>
     </div>}
-    {boList && <><h1 className="mb-3 text-2xl font-semibold">Bentley–Ottmann</h1><p className="mb-6 text-muted">{t`Choose a case to inspect exact intersection points and complete overlap intervals.`}</p></>}
+    {boList && <PageHeading title="Bentley–Ottmann" description={t`Choose a case to inspect exact intersection points and complete overlap intervals.`} />}
     <Routes>
       <Route path="/" element={<AlgorithmHome />} />
       <Route path="/bo" element={<CaseList />} />
