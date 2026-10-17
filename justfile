@@ -40,6 +40,10 @@ perf-cases profile="test":
 perf-learning:
     node tools/measure-learning.ts
 
+# 捕获或逐步比较完整 HTTP 教学语义；基线采用 gzip JSONL，拒绝覆盖。
+trace-baseline mode baseline:
+    node tools/compare-traces.ts {{mode}} {{quote(baseline)}}
+
 # 一键启动临时后端并运行无头 E2E，结束后自动清理（包含原生编译，由使用者运行）。
 [positional-arguments]
 test-e2e *args:
