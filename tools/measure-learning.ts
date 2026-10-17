@@ -12,6 +12,7 @@ import { promisify, stripVTControlCharacters } from 'node:util'
 import type { Readable } from 'node:stream'
 import type { Browser, BrowserContext, BrowserServer } from '@playwright/test'
 import type { Preset } from '../web/src/algorithms/bo/cases/preset.ts'
+import { formatGeometry, pairName, type Intersection } from '../web/src/geometry/geometry.ts'
 
 type ServiceProcess = ChildProcessByStdio<null, Readable, Readable> & { launchError?: Error }
 interface LifecycleEvent {
@@ -59,6 +60,8 @@ interface Sample {
   browserJsHeapObservedMaxBytes?: number
   resourceError?: string
   error?: string
+  inputSha256?: string
+  cpuProfile?: string
 }
 
 declare global {
@@ -73,6 +76,8 @@ const exec = promisify(execFile)
 const watchdogMs = 120_000 // Diagnostic watchdog, never a product acceptance limit.
 const mode = process.env.BO_PERF_MODE ?? 'first'
 const rounds = Number(process.env.BO_PERF_ROUNDS ?? 3)
+const cpuProfile = process.env.BO_PERF_CPU === '1'
+const fixtureDirectory = process.env.BO_PERF_FIXTURES
 if (!['first', 'full', 'cancel'].includes(mode)) throw new Error('BO_PERF_MODE must be first, full or cancel')
 if (!Number.isSafeInteger(rounds) || rounds < 1) throw new Error('BO_PERF_ROUNDS must be a positive integer')
 registerHooks({
@@ -84,10 +89,13 @@ registerHooks({
   },
 })
 const { presets } = await import('../web/src/algorithms/bo/cases/presets.ts')
+const catalog: Preset[] = fixtureDirectory
+  ? JSON.parse(await readFile(join(fixtureDirectory, 'catalog.json'), 'utf8')) as Preset[]
+  : presets
 const ids = (process.env.BO_PERF_CASES ?? 'carbon-nanotube,fullerene,penrose').split(',').map(id => id.trim()).filter(Boolean)
 if (!ids.length) throw new Error('BO_PERF_CASES must not be empty')
 const cases = ids.map(id => {
-  const preset = presets.find(item => item.id === id)
+  const preset = catalog.find(item => item.id === id)
   if (!preset?.learning) throw new Error(`Unknown learning case: ${id}`)
   return preset
 })
@@ -98,20 +106,22 @@ let browserServer: BrowserServer | undefined
 let backend: ServiceProcess | undefined
 let output: string | undefined
 const report = {
-  mode, rounds, startedAt: new Date().toISOString(), samples: [] as Sample[],
+  mode, rounds, cpuProfile, startedAt: new Date().toISOString(), samples: [] as Sample[],
   error: undefined as string | undefined,
   finishedAt: undefined as string | undefined,
   output: undefined as string | null | undefined,
   environment: { platform: platform(), arch: arch(), cpu: cpus()[0]?.model, logicalCpus: cpus().length, physicalMemoryBytes: totalmem(), node: process.version } as Record<string, string | number | undefined>,
   methodology: {
     build: 'Rust release offline; frontend production build served by Vite preview',
-    browser: 'headless Chromium; fresh context per case/round/entry; warm repeats in the same context',
+    browser: 'headless Chromium zh-CN; fresh context per case/round/entry; warm repeats in the same context',
     cold: 'fresh browser context, not cold operating-system caches or a freshly restarted backend',
     pinnedPanels: true, reducedMotion: 'reduce' as const, viewport: { width: 1360, height: 900 },
     firstStep: 'action start to visible slider value 0, enabled next button and visible current-event context',
-    full: 'action start to UI no longer generating; final replay step and learning-results region verified',
+    full: 'action start to first automation observation of UI no longer generating, polled concurrently with next-step interaction; final replay step and learning-results region verified',
+    interaction: 'Playwright click start through observed slider update; includes automation/actionability/polling overhead, not isolated browser handler time',
     memory: '250 ms interval samples; observed maxima of backend RSS, isolated Chromium process-tree summed RSS and page JSHeapUsedSize; RSS may double-count shared pages; not exact peaks',
     bytes: 'CDP Network.loadingFinished encodedDataLength for the trace response; includes protocol overhead; unavailable for cancelled streams',
+    verification: 'one untimed ordinary HTTP request before navigation; growth results checked against closed-form oracle; final displayed pairs and producer/decoded step counts checked after timing; full wire trace independently checked by perf-cases',
     cancellation: 'action start to receipt of matching backend trace_lifecycle cancelled log; includes observer and IPC scheduling',
     watchdogMs,
   },
@@ -202,6 +212,10 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
   const cdp = await context.newCDPSession(page)
   await cdp.send('Network.enable')
   await cdp.send('Performance.enable')
+  if (cpuProfile) {
+    await cdp.send('Profiler.enable')
+    await cdp.send('Profiler.start')
+  }
   const network = new Map<string, { traceId: string; encodedDataLength?: number }>()
   cdp.on('Network.responseReceived', event => {
     const headers = event.response.headers
@@ -220,6 +234,14 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
   let activeSample = Promise.resolve()
   let timer: ReturnType<typeof setInterval> | undefined
   let started: number
+  const ordinary = await context.request.post(`${baseURL}api/bo/intersections`, { data: { segments: preset.segments, trace: false } })
+  expect(ordinary.status()).toBe(200)
+  const expected = (await ordinary.json() as { intersections: Intersection[] }).intersections
+  const canonical = (values: Intersection[]) => [...values].sort((a, b) => a.segments[0] - b.segments[0] || a.segments[1] - b.segments[1])
+  if (fixtureDirectory) {
+    const oracle = JSON.parse(await readFile(join(fixtureDirectory, `${preset.id}.expected.json`), 'utf8')) as Intersection[]
+    expect(canonical(expected)).toEqual(canonical(oracle))
+  }
   const takeSample = () => {
     if (sampling) return activeSample
     sampling = true
@@ -276,13 +298,17 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
     const traceId = response.headers()['x-trace-id']
     if (!traceId) throw new Error('Missing x-trace-id')
     sample.traceId = traceId
+    const completed = mode === 'full'
+      ? expect(page.getByRole('region', { name: '回放控制' })).not.toContainText('轨迹生成中', { timeout: watchdogMs })
+        .then(() => { sample.fullGenerationMs = performance.now() - started })
+      : undefined
+    void completed?.catch(() => {})
     const nextStarted = performance.now()
     await next.click()
     await expect(slider).toHaveValue('1', { timeout: watchdogMs })
     sample.nextStepMs = performance.now() - nextStarted
     if (mode === 'full') {
-      await expect(page.getByRole('region', { name: '回放控制' })).not.toContainText('轨迹生成中', { timeout: watchdogMs })
-      sample.fullGenerationMs = performance.now() - started
+      await completed
       const maximum = await slider.getAttribute('max') ?? await slider.getAttribute('aria-valuemax')
       sample.steps = Number(maximum) + 1
       if (!Number.isSafeInteger(sample.steps) || sample.steps < 2) throw new Error('Invalid complete step count')
@@ -294,6 +320,7 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
       sample.traceTransferBytes = transfer.encodedDataLength
       sample.lifecycle = await until(() => lifecycle.get(traceId)?.find(event => event.status !== 'started'), 'complete producer lifecycle')
       expect(sample.lifecycle.status).toBe('completed')
+      expect(sample.lifecycle.sentSteps).toBe(sample.steps)
     } else {
       const destination = mode === 'cancel' ? 1 : preset.segments.length > 20 ? 2000 : 100
       if (mode === 'first') {
@@ -351,12 +378,33 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
     sample.browserRssObservedMaxBytes = Math.max(...sample.resourceSamples.map(item => item.browserRssBytes))
     sample.browserJsHeapObservedMaxBytes = Math.max(...sample.resourceSamples.map(item => item.browserJsHeapUsedBytes))
     expect(errors).toEqual([])
+    // All exact checks are outside the measured waiting/interaction intervals.
+    clearInterval(timer)
+    await activeSample
+    expect(response.request().postDataJSON()).toEqual({ segments: preset.segments, trace: true })
+    sample.inputSha256 = createHash('sha256').update(JSON.stringify(preset.segments)).digest('hex')
+    if (mode === 'full') {
+      const rows = (await page.getByRole('region', { name: '学习结果' }).locator('p.coordinates').allTextContents())
+        .filter(text => /^(?:I\d+ |S\d+ |\()/.test(text))
+      expect(rows.join(' ').match(/S\d+ × S\d+/g) ?? []).toHaveLength(expected.length)
+      for (const result of expected) {
+        expect(rows.some(text => {
+          const pairs: string[] = text.match(/S\d+ × S\d+/g) ?? []
+          return text.includes(formatGeometry(result.geometry)) && pairs.includes(pairName(result))
+        })).toBe(true)
+      }
+    }
   } catch (error) {
     sample.error = String(error)
     throw error
   } finally {
     clearInterval(timer)
     await activeSample
+    if (cpuProfile && output) {
+      const { profile } = await cdp.send('Profiler.stop')
+      sample.cpuProfile = join(dirname(output), `${preset.id}-${round}-${entry}-${temperature}.cpuprofile`)
+      await writeFile(sample.cpuProfile, JSON.stringify(profile))
+    }
     await page.close()
   }
 }
@@ -377,7 +425,11 @@ try {
   output = process.env.BO_PERF_OUTPUT ?? join(await mkdtemp(join(tmpdir(), 'bo-learning-perf-')), 'report.json')
   await access(dirname(output), constants.W_OK)
   await build('cargo', ['build', '--release', '--offline'])
-  await build('pnpm', ['--dir', 'web', 'build'])
+  if (fixtureDirectory) {
+    process.env.BO_PERF_CATALOG = join(fixtureDirectory, 'catalog.json')
+    process.env.BO_PERF_BUILD = join(await mkdtemp(join(tmpdir(), 'bo-perf-build-')), 'dist')
+  }
+  await build('pnpm', ['--dir', 'web', 'build', ...(fixtureDirectory ? ['--config', 'vite.performance.config.ts'] : [])])
   backend = launch(join(root, 'target/release/computational-geometry'), [], { env: { ...process.env, BO_PORT: '0', BO_TRACE_LIFECYCLE: '1' } })
   let stderr = ''
   backend.stderr.on('data', chunk => {
@@ -394,11 +446,11 @@ try {
     }
   })
   const apiURL = await serviceUrl(backend, /BO API listening on (http:\/\/127\.0\.0\.1:\d+)/)
-  const frontend = launch('pnpm', ['exec', 'vite', 'preview', '--host', '127.0.0.1', '--port', '0', '--strictPort'], { cwd: web, env: { ...process.env, BO_API_URL: apiURL, NO_COLOR: '1' } })
+  const frontend = launch('pnpm', ['exec', 'vite', 'preview', '--host', '127.0.0.1', '--port', '0', '--strictPort', ...(fixtureDirectory ? ['--config', 'vite.performance.config.ts'] : [])], { cwd: web, env: { ...process.env, BO_API_URL: apiURL, NO_COLOR: '1' } })
   const baseURL = await serviceUrl(frontend, /Local:\s+(http:\/\/127\.0\.0\.1:\d+\/)/)
   for (const preset of cases) for (let round = 1; round <= rounds; round++) {
     for (const entry of mode === 'first' ? ['direct', 'result-link'] as const : ['direct'] as const) {
-      const context = await browser.newContext({ viewport: report.methodology.viewport, reducedMotion: 'reduce' })
+      const context = await browser.newContext({ viewport: report.methodology.viewport, reducedMotion: 'reduce', locale: 'zh-CN' })
       await context.addInitScript(() => {
         for (const side of ['left', 'right']) localStorage.setItem(`bo-learning-layout-v1-${side}`, 'true')
       })

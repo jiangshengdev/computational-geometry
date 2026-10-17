@@ -1,9 +1,13 @@
 //! Diagnostic baseline, not a speed assertion. Neutral fixtures are exported
 //! separately by the frontend. This test owns only Rust and its HTTP service.
 //! `just perf-cases` measures; `just perf-export` separately refreshes fixtures.
-//! BO_PERF_ROUNDS defaults to 31 (odd, at least 3). Test profile timings exclude
+//! BO_PERF_ROUNDS defaults to 31 (odd, at least 3). Timings exclude
 //! validation and result destruction; HTTP includes a fresh TCP connection and
 //! complete response receipt, but not client JSON parsing or rendering.
+//! BO_PERF_FIXTURES accepts an absolute fixture directory; BO_PERF_CASES selects
+//! comma-separated IDs. Additional cases require an IntersectionDto[] oracle in
+//! <id>.expected.json. BO_PERF_PROFILE_MODE=sweep|trace runs only that algorithm
+//! after validation for BO_PERF_SECONDS (default 10), including result destruction.
 use super::super::sweep::trace_intersections;
 use super::protocol::{IntersectionDto, Request, Response};
 use crate::{Point, Segment, brute_force_intersections, http, intersections};
@@ -14,6 +18,7 @@ use axum::{
     response::IntoResponse,
 };
 use std::{
+    collections::BTreeSet,
     fs,
     hint::black_box,
     io::{Read, Write},
@@ -23,12 +28,16 @@ use std::{
 };
 
 fn fixture(name: &str) -> String {
-    fs::read_to_string(
-        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("tests/fixtures/performance")
-            .join(name),
-    )
-    .unwrap()
+    let directory = std::env::var_os("BO_PERF_FIXTURES").map_or_else(
+        || PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("tests/fixtures/performance"),
+        |value| {
+            let path = PathBuf::from(value);
+            assert!(path.is_absolute(), "BO_PERF_FIXTURES must be absolute");
+            path
+        },
+    );
+    let path = directory.join(name);
+    fs::read_to_string(&path).unwrap_or_else(|error| panic!("{}: {error}", path.display()))
 }
 
 fn report(id: &str, mode: &str, mut times: Vec<f64>) {
@@ -145,6 +154,16 @@ fn collected_response(body: &[u8], traced: bool) -> serde_json::Value {
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
 #[ignore = "explicit diagnostic performance measurement"]
 async fn actual_case_timings() {
+    let profile_mode = std::env::var("BO_PERF_PROFILE_MODE").ok();
+    assert!(
+        matches!(profile_mode.as_deref(), None | Some("sweep" | "trace")),
+        "BO_PERF_PROFILE_MODE must be sweep or trace"
+    );
+    let profile_seconds: u64 = std::env::var("BO_PERF_SECONDS")
+        .unwrap_or("10".into())
+        .parse()
+        .unwrap();
+    assert!(profile_seconds > 0);
     let rounds: usize = std::env::var("BO_PERF_ROUNDS")
         .unwrap_or("31".into())
         .parse()
@@ -157,15 +176,33 @@ async fn actual_case_timings() {
     let address = listener.local_addr().unwrap();
     let server = tokio::spawn(async move { axum::serve(listener, http::router()).await.unwrap() });
     println!(
-        "test profile debug_assertions={} rounds={rounds}; one warmup per mode; HTTP includes new TCP connection and full body receipt, excludes JSON parsing",
+        "debug_assertions={} rounds={rounds}; one warmup per mode; HTTP includes new TCP connection and full body receipt, excludes JSON parsing",
         cfg!(debug_assertions)
     );
-    for (id, count) in [
+    let baseline_cases = [
         ("spider-web", 100),
         ("hexagonal-snowflake", 87),
         ("vertical-overlap", 1),
         ("mixed-vertical", 14),
-    ] {
+    ];
+    let selected = std::env::var("BO_PERF_CASES").unwrap_or_else(|_| {
+        baseline_cases
+            .iter()
+            .map(|(id, _)| *id)
+            .collect::<Vec<_>>()
+            .join(",")
+    });
+    let cases: Vec<_> = selected.split(',').map(str::trim).collect();
+    assert!(
+        cases.iter().all(|id| {
+            !id.is_empty()
+                && id
+                    .bytes()
+                    .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'_'))
+        }),
+        "BO_PERF_CASES must contain comma-separated fixture IDs"
+    );
+    for id in cases {
         let segments: Vec<Segment> = fixture(&format!("{id}.tsv"))
             .lines()
             .map(|line| {
@@ -187,7 +224,23 @@ async fn actual_case_timings() {
             })
             .collect();
         let expected = brute_force_intersections(&segments);
-        assert_eq!(expected.len(), count);
+        if let Some((_, count)) = baseline_cases.iter().find(|(case, _)| *case == id) {
+            assert_eq!(expected.len(), *count);
+        } else {
+            let mut oracle: Vec<serde_json::Value> =
+                serde_json::from_str(&fixture(&format!("{id}.expected.json"))).unwrap();
+            oracle.sort_by_key(|value| {
+                serde_json::from_value::<[usize; 2]>(value["segments"].clone()).unwrap()
+            });
+            let mut actual = expected.clone();
+            actual.sort_by_key(|value| value.segments);
+            let actual: Vec<_> = actual.into_iter().map(IntersectionDto::from).collect();
+            assert_eq!(
+                serde_json::to_value(actual).unwrap(),
+                serde_json::to_value(oracle).unwrap(),
+                "growth oracle must match the independent brute-force result"
+            );
+        }
         let canonical = |mut values: Vec<crate::Intersection>| {
             values.sort_by_key(|v| v.segments);
             values
@@ -201,13 +254,53 @@ async fn actual_case_timings() {
             expected
         );
         println!(
-            "{id} n={} results={} steps={} copied_results={} pending_points={}",
+            "{id} n={} results={} steps={} copied_results={} pending_points={} distinct_current_points={} max_active={} copied_active={}; distinct_current_points counts unique non-null original-coordinate trace current positions",
             segments.len(),
             expected.len(),
             trace.steps.len(),
             trace.steps.iter().map(|s| s.results.len()).sum::<usize>(),
-            trace.steps.iter().map(|s| s.pending.len()).sum::<usize>()
+            trace.steps.iter().map(|s| s.pending.len()).sum::<usize>(),
+            trace
+                .steps
+                .iter()
+                .filter_map(|s| s.current.as_ref())
+                .collect::<BTreeSet<_>>()
+                .len(),
+            trace
+                .steps
+                .iter()
+                .map(|s| s.active.len())
+                .max()
+                .unwrap_or(0),
+            trace.steps.iter().map(|s| s.active.len()).sum::<usize>()
         );
+        if let Some(mode) = profile_mode.as_deref() {
+            drop(trace);
+            println!(
+                "{id} profile_ready mode={mode} pid={} seconds={profile_seconds}; validation excluded, result destruction included",
+                std::process::id()
+            );
+            std::io::stdout().flush().unwrap();
+            let start = Instant::now();
+            let mut iterations = 0;
+            while start.elapsed() < Duration::from_secs(profile_seconds) {
+                match mode {
+                    "sweep" => {
+                        black_box(intersections(black_box(&segments)));
+                    }
+                    "trace" => {
+                        black_box(trace_intersections(black_box(&segments)));
+                    }
+                    _ => unreachable!("profile mode was validated"),
+                }
+                iterations += 1;
+            }
+            println!(
+                "{id} profile_complete mode={mode} iterations={iterations} elapsed_seconds={:.3}",
+                start.elapsed().as_secs_f64()
+            );
+            continue;
+        }
         let mut pure = Vec::new();
         let mut traced = Vec::new();
         for round in 0..rounds {
