@@ -6,7 +6,9 @@
 //! complete response receipt, but not client JSON parsing or rendering.
 //! BO_PERF_FIXTURES accepts an absolute fixture directory; BO_PERF_CASES selects
 //! comma-separated IDs. Additional cases require an IntersectionDto[] oracle in
-//! <id>.expected.json. BO_PERF_PROFILE_MODE=sweep|trace runs only that algorithm
+//! <id>.expected.json by default. BO_PERF_ORACLE=brute-force uses only the independent
+//! exact brute-force reference for presets without a closed-form fixture oracle.
+//! BO_PERF_PROFILE_MODE=sweep|trace runs only that algorithm
 //! after validation for BO_PERF_SECONDS (default 10), including result destruction.
 use super::super::sweep::trace_intersections;
 use super::protocol::{IntersectionDto, Request, Response};
@@ -154,6 +156,9 @@ fn collected_response(body: &[u8], traced: bool) -> serde_json::Value {
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
 #[ignore = "explicit diagnostic performance measurement"]
 async fn actual_case_timings() {
+    let oracle = std::env::var("BO_PERF_ORACLE").unwrap_or("fixture".into());
+    assert!(matches!(oracle.as_str(), "fixture" | "brute-force"));
+    println!("correctness_reference={oracle}; exact brute-force comparison always enabled");
     let profile_mode = std::env::var("BO_PERF_PROFILE_MODE").ok();
     assert!(
         matches!(profile_mode.as_deref(), None | Some("sweep" | "trace")),
@@ -226,7 +231,7 @@ async fn actual_case_timings() {
         let expected = brute_force_intersections(&segments);
         if let Some((_, count)) = baseline_cases.iter().find(|(case, _)| *case == id) {
             assert_eq!(expected.len(), *count);
-        } else {
+        } else if oracle == "fixture" {
             let mut oracle: Vec<serde_json::Value> =
                 serde_json::from_str(&fixture(&format!("{id}.expected.json"))).unwrap();
             oracle.sort_by_key(|value| {
@@ -335,6 +340,7 @@ async fn actual_case_timings() {
         }
         report(id, "sweep", pure);
         report(id, "sweep_trace", traced);
+        drop(trace);
         let bodies = [
             fixture(&format!("{id}-false.json")),
             fixture(&format!("{id}-true.json")),
@@ -376,6 +382,7 @@ async fn actual_case_timings() {
         }
         let warmups = bodies.each_ref().map(|body| request(address, body));
         let expected_bodies = warmups.each_ref().map(|bytes| response_body(bytes));
+        drop(warmups);
         for (index, (actual, verified)) in expected_bodies.iter().zip(&verified_bodies).enumerate()
         {
             assert_eq!(
@@ -384,6 +391,7 @@ async fn actual_case_timings() {
                 "HTTP must return the verified geometry and complete trace"
             );
         }
+        drop(verified_bodies);
         for (mode, body) in expected_bodies.iter().enumerate() {
             println!(
                 "{id} http_trace={} response_bytes={}",

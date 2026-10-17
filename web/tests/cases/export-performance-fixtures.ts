@@ -61,7 +61,9 @@ if (family !== undefined) {
     expected.set(id, intersections)
   }
 } else {
-  for (const id of ['spider-web', 'hexagonal-snowflake', 'vertical-overlap', 'mixed-vertical']) {
+  const ids = (process.env.BO_PERF_CASES ?? 'spider-web,hexagonal-snowflake,vertical-overlap,mixed-vertical').split(',').map(id => id.trim())
+  if (ids.some(id => !id) || new Set(ids).size !== ids.length) throw new Error('BO_PERF_CASES must contain unique preset IDs')
+  for (const id of ids) {
     const preset = presets.find(preset => preset.id === id)
     if (!preset) throw new Error(`Unknown performance preset: ${id}`)
     catalog.push(preset)
