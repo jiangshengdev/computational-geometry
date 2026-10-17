@@ -11,7 +11,7 @@ import { performance } from 'node:perf_hooks'
 import { promisify, stripVTControlCharacters } from 'node:util'
 import type { Readable } from 'node:stream'
 import type { Browser, BrowserContext, BrowserServer } from '@playwright/test'
-import type { Preset } from '../web/src/cases/preset.ts'
+import type { Preset } from '../web/src/algorithms/bo/cases/preset.ts'
 
 type ServiceProcess = ChildProcessByStdio<null, Readable, Readable> & { launchError?: Error }
 interface LifecycleEvent {
@@ -83,7 +83,7 @@ registerHooks({
     return nextResolve(specifier, context)
   },
 })
-const { presets } = await import('../web/src/cases/presets.ts')
+const { presets } = await import('../web/src/algorithms/bo/cases/presets.ts')
 const ids = (process.env.BO_PERF_CASES ?? 'carbon-nanotube,fullerene,penrose').split(',').map(id => id.trim()).filter(Boolean)
 if (!ids.length) throw new Error('BO_PERF_CASES must not be empty')
 const cases = ids.map(id => {

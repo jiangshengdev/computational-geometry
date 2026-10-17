@@ -1,6 +1,6 @@
 import { expect, test } from '../support/learning-test'
 import { readTrace } from '../support/trace-navigation'
-import { formatExecutionValue } from '../../src/learning/executionValue'
+import { formatExecutionValue } from '../../src/algorithms/bo/learning/executionValue'
 
 test('核心变量保留真实值并随前进回退更新', async ({ page }) => {
   const errors: string[] = []

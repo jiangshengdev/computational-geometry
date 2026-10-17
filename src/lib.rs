@@ -32,11 +32,8 @@
 mod geometry;
 pub use geometry::{Geometry, Intersection, Point, Rational, Segment};
 
-mod sweep;
-pub use sweep::intersections;
-
-mod teaching;
-mod trace_publication;
+mod algorithms;
+pub use algorithms::bo::intersections;
 
 pub mod http;
 

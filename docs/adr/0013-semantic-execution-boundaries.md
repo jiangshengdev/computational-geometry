@@ -11,4 +11,4 @@ date: 2026-10-12
 
 相较按行号去重或一律跳过结束括号，这要求轨迹表达更完整的执行状态，但避免丢失作用域变化和返回值观察。全部导航入口及流式回放共享同一可观察序列；“画面相同”按语义状态核验，不引入截图、像素或样式断言。
 
-依据：2026-10-12 对重合停点的讨论先后明确括号前后、同边界合并，以及必须同时满足画面和变量状态相同，形成 [CNB #109](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/109)。当前真实观察点见 [src/sweep/](../../src/sweep/)，完整状态比较见 [src/teaching.rs](../../src/teaching.rs) 的 `SweepStep`；[src/trace_publication.rs](../../src/trace_publication.rs) 负责事件参与者补齐后合并、交付坐标恢复与发布，保留尾状态仍使用扫描坐标。交付记录见 [#110](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/110)、[#111](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/111)。
+依据：2026-10-12 对重合停点的讨论先后明确括号前后、同边界合并，以及必须同时满足画面和变量状态相同，形成 [CNB #109](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/109)。当前真实观察点见 [src/sweep/](../../src/sweep/)，完整状态比较见 [src/algorithms/bo/teaching.rs](../../src/algorithms/bo/teaching.rs) 的 `SweepStep`；[src/algorithms/bo/trace_publication.rs](../../src/algorithms/bo/trace_publication.rs) 负责事件参与者补齐后合并、交付坐标恢复与发布，保留尾状态仍使用扫描坐标。交付记录见 [#110](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/110)、[#111](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/111)。

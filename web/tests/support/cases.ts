@@ -1,5 +1,5 @@
 import { expect, type Page } from '@playwright/test'
-import { presets } from '../../src/cases/presets'
+import { presets } from '../../src/algorithms/bo/cases/presets'
 import { chinese } from './language'
 
 export async function selectPreset(page: Page, id: string) {

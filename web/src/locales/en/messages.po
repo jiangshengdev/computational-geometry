@@ -14,3323 +14,3323 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:66
+#: src/algorithms/bo/learning/executionSymbols.ts:66
 msgid " (shadowed; last value before shadowing)"
 msgstr " (shadowed; last value before shadowing)"
 
 #. Connect crossing segment names in prose. Preserve surrounding whitespace.
 #. js-lingui-explicit-id
-#: src/learning/LearningPanels.tsx:25
+#: src/algorithms/bo/learning/LearningPanels.tsx:25
 msgid "learning.segmentConjunction"
 msgstr " and "
 
 #. Separator between teaching list items. Preserve surrounding whitespace.
 #. js-lingui-explicit-id
-#: src/learning/LearningPanels.tsx:24
+#: src/algorithms/bo/learning/LearningPanels.tsx:24
 msgid "learning.listSeparator"
 msgstr ", "
 
 #. js-lingui-explicit-id
-#: src/learning/RustCode.tsx:19
+#: src/algorithms/bo/learning/RustCode.tsx:19
 msgid "(Code highlighting failed to load)"
 msgstr "(Code highlighting failed to load)"
 
 #. placeholder {0}: points.length
 #. placeholder {1}: step.results.length
-#: src/learning/LearningPanels.tsx:63
+#: src/algorithms/bo/learning/LearningPanels.tsx:63
 msgid "{0, plural, one {# distinct intersection position} other {# distinct intersection positions}}; {1, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Multiple segment pairs may share the same position."
 msgstr "{0, plural, one {# distinct intersection position} other {# distinct intersection positions}}; {1, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Multiple segment pairs may share the same position."
 
 #. placeholder {0}: results.length
-#: src/app/App.tsx:92
+#: src/algorithms/bo/BoPages.tsx:88
 msgid "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
 msgstr "{0, plural, one {# intersecting pair} other {# intersecting pairs}}"
 
 #. placeholder {0}: points.length
 #. placeholder {1}: visibleOverlaps.length
 #. placeholder {2}: step.results.length
-#: src/learning/LearningPanels.tsx:63
+#: src/algorithms/bo/learning/LearningPanels.tsx:63
 msgid "{0, plural, one {# point-result position} other {# point-result positions}}; {1, plural, one {# overlap interval} other {# overlap intervals}}; {2, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Point-type pair results are not necessarily isolated points in the overall intersection: they may lie on recorded overlap intervals. An interval contains infinitely many shared points. Each pair remains separate; no geometric union is computed."
 msgstr "{0, plural, one {# point-result position} other {# point-result positions}}; {1, plural, one {# overlap interval} other {# overlap intervals}}; {2, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Point-type pair results are not necessarily isolated points in the overall intersection: they may lie on recorded overlap intervals. An interval contains infinitely many shared points. Each pair remains separate; no geometric union is computed."
 
 #. placeholder {0}: formatGeometry(result.geometry)
 #. placeholder {1}: pairName(result)
-#: src/learning/LearningPanels.tsx:65
+#: src/algorithms/bo/learning/LearningPanels.tsx:65
 msgid "{0}: {1} (including both endpoints and every point between them)"
 msgstr "{0}: {1} (including both endpoints and every point between them)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:116
+#: src/algorithms/bo/learning/executionSymbols.ts:116
 msgid "{functionName} captures"
 msgstr "{functionName} captures"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:117
+#: src/algorithms/bo/learning/executionSymbols.ts:117
 msgid "{functionName} locals"
 msgstr "{functionName} locals"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:115
+#: src/algorithms/bo/learning/executionSymbols.ts:115
 msgid "{functionName} parameters"
 msgstr "{functionName} parameters"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:86
-#: src/learning/executionSymbols.ts:117
+#: src/algorithms/bo/learning/executionSymbols.ts:86
+#: src/algorithms/bo/learning/executionSymbols.ts:117
 msgid "{module} module"
 msgstr "{module} module"
 
-#: src/cases/CaseThumbnail.tsx:8
+#: src/algorithms/bo/cases/CaseThumbnail.tsx:8
 msgid "{name}: input segment preview"
 msgstr "{name}: input segment preview"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:99
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:99
 msgid "{title} teaching code"
 msgstr "{title} teaching code"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:68
+#: src/algorithms/bo/cases/artPatterns.ts:68
 msgid "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
 msgstr "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:114
+#: src/algorithms/bo/cases/carbonLattices.ts:114
 msgid "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps."
 msgstr "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps."
 
 #. js-lingui-explicit-id
-#: src/cases/penrose.ts:79
+#: src/algorithms/bo/cases/penrose.ts:79
 msgid "A Penrose P3 sun seed undergoes two golden-ratio subdivisions of Robinson triangles, forming a finite patch of 20 complete rhombi. Ideal irrational coordinates are first uniformly approximated to one millionth and then rotated exactly to a fixed view; shared edges are entered only once."
 msgstr "A Penrose P3 sun seed undergoes two golden-ratio subdivisions of Robinson triangles, forming a finite patch of 20 complete rhombi. Ideal irrational coordinates are first uniformly approximated to one millionth and then rotated exactly to a fixed view; shared edges are entered only once."
 
 #. js-lingui-explicit-id
-#: src/cases/fullerene.ts:48
+#: src/algorithms/bo/cases/fullerene.ts:48
 msgid "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
 msgstr "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:30
+#: src/algorithms/bo/cases/presets.ts:30
 msgid "A shorter diagonal segment is entirely contained in another segment."
 msgstr "A shorter diagonal segment is entirely contained in another segment."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:25
+#: src/algorithms/bo/cases/presets.ts:25
 msgid "A third segment starts at (1/2, 1/2), intersecting both diagonals at once."
 msgstr "A third segment starts at (1/2, 1/2), intersecting both diagonals at once."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:35
+#: src/algorithms/bo/cases/presets.ts:35
 msgid "A third, shorter segment neither splits nor shortens the complete overlap of the first two inputs."
 msgstr "A third, shorter segment neither splits nor shortens the complete overlap of the first two inputs."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:36
+#: src/algorithms/bo/cases/presets.ts:36
 msgid "A vertical segment crosses reversed duplicate segments; a diagonal endpoint shares the interior crossing, while coincident and boundary points retain their own pairs."
 msgstr "A vertical segment crosses reversed duplicate segments; a diagonal endpoint shares the interior crossing, while coincident and boundary points retain their own pairs."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:48
+#: src/algorithms/bo/help/HelpContent.tsx:48
 msgid "help.VerticalRules.2"
 msgstr "A vertical segment in the active list represents an unfinished upward processing frontier. Its rank in the drawing is placed at the current processing height, not at a unique intersection with the sweep line. When it meets a crossing segment, processing first retains the previous order and records the intersection. Once complete, the vertical segment is placed above that crossing segment and checks new neighbors higher up. The whole vertical segment is complete only after removal at its upper endpoint."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:47
+#: src/algorithms/bo/help/HelpContent.tsx:47
 msgid "help.VerticalRules.1"
 msgstr "A vertical segment overlaps the sweep line along an interval, so a single ordinary line intersection cannot represent it. The x-then-y convention still applies: insert it at its lower endpoint, process crossings and contacts at successive heights, then record closed-segment contacts at its upper endpoint before removing it."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:37
+#: src/algorithms/bo/help/HelpContent.tsx:37
 msgid "help.SamePointRules.2"
 msgstr "A zero-length input has coincident start and end points, so it belongs to both groups. It never enters the continuing active order and has no corresponding insertion or removal action. Its intersections with segments or other points at the same location are recorded pair by pair; coincident coordinates do not merge input identities. The active order of a point-only set is always empty, but real events and pair results still exist."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:24
+#: src/algorithms/bo/learning/executionSymbols.ts:24
 msgid "a, b: sweep segments used in this geometry computation."
 msgstr "a, b: sweep segments used in this geometry computation."
 
-#: src/help/CaseHelp.tsx:67
-#: src/help/CaseHelp.tsx:92
+#: src/algorithms/bo/help/CaseHelp.tsx:67
+#: src/algorithms/bo/help/CaseHelp.tsx:92
 msgid "About and help"
 msgstr "About and help"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:185
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:185
 msgid "About core variables"
 msgstr "About core variables"
 
-#: src/learning/LearningPanels.tsx:73
+#: src/algorithms/bo/learning/LearningPanels.tsx:73
 msgid "About events"
 msgstr "About events"
 
-#: src/app/App.tsx:128
+#: src/algorithms/bo/BoPages.tsx:124
 msgid "About inputs"
 msgstr "About inputs"
 
-#: src/learning/LearningPanels.tsx:33
+#: src/algorithms/bo/learning/LearningPanels.tsx:33
 msgid "About neighbors"
 msgstr "About neighbors"
 
-#: src/learning/LearningPanels.tsx:35
+#: src/algorithms/bo/learning/LearningPanels.tsx:35
 msgid "About overlaps"
 msgstr "About overlaps"
 
-#: src/app/App.tsx:86
+#: src/algorithms/bo/BoPages.tsx:82
 msgid "About results"
 msgstr "About results"
 
-#: src/learning/LearningPanels.tsx:85
+#: src/algorithms/bo/learning/LearningPanels.tsx:85
 msgid "About shared points"
 msgstr "About shared points"
 
-#: src/learning/LearningPanels.tsx:109
+#: src/algorithms/bo/learning/LearningPanels.tsx:109
 msgid "About the order"
 msgstr "About the order"
 
-#: src/learning/LearningPanels.tsx:95
+#: src/algorithms/bo/learning/LearningPanels.tsx:95
 msgid "About the queue"
 msgstr "About the queue"
 
-#: src/app/App.tsx:283
+#: src/algorithms/bo/BoPages.tsx:279
 msgid "About this case"
 msgstr "About this case"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:155
+#: src/algorithms/bo/learning/executionSymbols.ts:155
 msgid "About to check the next iteration; no decision yet"
 msgstr "About to check the next iteration; no decision yet"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:155
+#: src/algorithms/bo/learning/executionSymbols.ts:155
 msgid "About to execute; no result yet"
 msgstr "About to execute; no result yet"
 
-#: src/learning/LearningPanels.tsx:34
+#: src/algorithms/bo/learning/LearningPanels.tsx:34
 msgid "About vertical segments"
 msgstr "About vertical segments"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:50
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:50
 msgid "Access"
 msgstr "Access"
 
-#: src/learning/LearningPanels.tsx:31
-#: src/learning/LearningView.tsx:46
+#: src/algorithms/bo/learning/LearningPanels.tsx:31
+#: src/algorithms/bo/learning/LearningView.tsx:46
 msgid "Action explanation"
 msgstr "Action explanation"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: index + 1
-#: src/geometry/GeometryView.tsx:65
+#: src/algorithms/bo/geometry/GeometryView.tsx:65
 msgid "geometry.activeSegment"
 msgstr "Active segment {0}: S{id}"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: index + 1
-#: src/geometry/GeometryView.tsx:62
+#: src/algorithms/bo/geometry/GeometryView.tsx:62
 msgid "geometry.activeAtHeight"
 msgstr "Active segment {0}: S{id} (current processing height)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:82
-#: src/learning/executionSymbols.ts:113
+#: src/algorithms/bo/learning/executionSymbols.ts:82
+#: src/algorithms/bo/learning/executionSymbols.ts:113
 msgid "Active segment loop"
 msgstr "Active segment loop"
 
-#: src/help/CaseHelp.tsx:49
-#: src/learning/LearningPanels.tsx:108
-#: src/learning/LearningPanels.tsx:109
-#: src/learning/LearningView.tsx:31
+#: src/algorithms/bo/help/CaseHelp.tsx:49
+#: src/algorithms/bo/learning/LearningPanels.tsx:108
+#: src/algorithms/bo/learning/LearningPanels.tsx:109
+#: src/algorithms/bo/learning/LearningView.tsx:31
 msgid "Active segment order"
 msgstr "Active segment order"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:87
+#: src/algorithms/bo/help/HelpContent.tsx:87
 msgid "help.ActiveOrderRules.label"
 msgstr "Active segment order"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:88
+#: src/algorithms/bo/help/HelpContent.tsx:88
 msgid "help.ActiveOrderRules.0"
 msgstr "Active segment order"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:89
+#: src/algorithms/bo/help/HelpContent.tsx:89
 msgid "help.ActiveOrderRules.1"
 msgstr "Active segments have entered but have not yet left, and are ordered from bottom to top. Neighbors are consecutive segments in this order. Ranks increase from bottom to top."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:16
+#: src/algorithms/bo/learning/executionSymbols.ts:16
 msgid "Active-sequence index of the first segment in the neighboring pair"
 msgstr "Active-sequence index of the first segment in the neighboring pair"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:23
+#: src/algorithms/bo/learning/executionSymbols.ts:23
 msgid "active: active order; lower: neighbor index; segments: sweep segments; current: current event; queue: event queue; checked: checked pairs."
 msgstr "active: active order; lower: neighbor index; segments: sweep segments; current: current event; queue: event queue; checked: checked pairs."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:152
+#: src/algorithms/bo/learning/executionCode.ts:152
 msgid "Add it to the incident segments for this event"
 msgstr "Add it to the incident segments for this event"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:97
+#: src/algorithms/bo/learning/executionCode.ts:97
 msgid "Add the intersection to the queue, preserving any existing event"
 msgstr "Add the intersection to the queue, preserving any existing event"
 
-#: src/help/CaseHelp.tsx:32
+#: src/algorithms/bo/help/CaseHelp.tsx:32
 msgid "Adjacency argument"
 msgstr "Adjacency argument"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:132
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:132
 msgid "After break"
 msgstr "After break"
 
 #. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(listSeparator)
-#: src/learning/LearningPanels.tsx:51
+#: src/algorithms/bo/learning/LearningPanels.tsx:51
 msgid "After inserting {0}, this pair lies at the boundary of the inserted segments and becomes a new pair of neighbors to check."
 msgstr "After inserting {0}, this pair lies at the boundary of the inserted segments and becomes a new pair of neighbors to check."
 
 #. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(listSeparator)
-#: src/learning/LearningPanels.tsx:52
+#: src/algorithms/bo/learning/LearningPanels.tsx:52
 msgid "After removing {0}, the intervening segments are gone and the segments on either side become new neighbors."
 msgstr "After removing {0}, the intervening segments are gone and the segments on either side become new neighbors."
 
 #. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(conjunction)
-#: src/learning/LearningPanels.tsx:53
+#: src/algorithms/bo/learning/LearningPanels.tsx:53
 msgid "After the crossing segments {0} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors."
 msgstr "After the crossing segments {0} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:136
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:136
 msgid "After the end of the {keyword} block"
 msgstr "After the end of the {keyword} block"
 
-#: src/learning/LearningPanels.tsx:43
+#: src/algorithms/bo/learning/LearningPanels.tsx:43
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 
-#: src/learning/LearningPanels.tsx:59
+#: src/algorithms/bo/learning/LearningPanels.tsx:59
 msgid "All events have been processed; no further steps are needed."
 msgstr "All events have been processed; no further steps are needed."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:31
+#: src/algorithms/bo/cases/presets.ts:31
 msgid "All three inputs cover y = 0, x ∈ [0, 4]; input direction does not change the closed set. S0 × S1, S0 × S2, and S1 × S2 all intersect over (0, 0) → (4, 0): 3 interval pairs and no point pairs."
 msgstr "All three inputs cover y = 0, x ∈ [0, 4]; input direction does not change the closed set. S0 × S1, S0 × S2, and S1 × S2 all intersect over (0, 0) → (4, 0): 3 interval pairs and no point pairs."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:35
+#: src/algorithms/bo/cases/presets.ts:35
 msgid "All three lie on y = 0. S0 × S1 intersects over (0, 0) → (6, 0); both S0 × S2 and S1 × S2 intersect over (2, 0) → (3, 0). There are 3 pairs, and the endpoints of S2 do not split the first complete interval."
 msgstr "All three lie on y = 0. S0 × S1 intersects over (0, 0) → (6, 0); both S0 × S2 and S1 × S2 intersect over (2, 0) → (3, 0). There are 3 pairs, and the endpoints of S2 do not split the first complete interval."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:17
+#: src/algorithms/bo/cases/presets.ts:17
 msgid "An endpoint of a vertical segment lies inside a horizontal segment."
 msgstr "An endpoint of a vertical segment lies inside a horizontal segment."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:158
+#: src/algorithms/bo/learning/executionSymbols.ts:158
 msgid "An iteration element is available; enter the loop body"
 msgstr "An iteration element is available; enter the loop body"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:30
+#: src/algorithms/bo/learning/executionSymbols.ts:30
 msgid "Append an element to the target sequence."
 msgstr "Append an element to the target sequence."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:151
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:151
 msgid "Argument "
 msgstr "Argument "
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:11
+#: src/algorithms/bo/help/HelpContent.tsx:11
 msgid "help.LearningIntroduction.4"
 msgstr "At an ordinary crossing, two segments exchange their vertical order and must be neighbors just before they cross. Checking new neighbors after insertion, removal, or reordering discovers future intersections without rechecking every pair at every step."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:22
+#: src/algorithms/bo/cases/presets.ts:22
 msgid "At one event position, observe all six pairs being recorded, the ending segment leaving, the starting segment entering, and the segments passing through reordering."
 msgstr "At one event position, observe all six pairs being recorded, the ending segment leaving, the starting segment entering, and the segments passing through reordering."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:22
+#: src/algorithms/bo/cases/presets.ts:22
 msgid "At the origin, S0 and S1 cross in their interiors, S2 ends, and S3 starts."
 msgstr "At the origin, S0 and S1 cross in their interiors, S2 ends, and S3 starts."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:32
+#: src/algorithms/bo/cases/presets.ts:32
 msgid "At x = 1/2, the intersection of y ranges [−1/3, 5/3] and [1/3, 7/3] is [1/3, 5/3]. The only pair intersects over (1/2, 1/3) → (1/2, 5/3); S0 ends at the upper boundary while S1 continues to 7/3."
 msgstr "At x = 1/2, the intersection of y ranges [−1/3, 5/3] and [1/3, 7/3] is [1/3, 5/3]. The only pair intersects over (1/2, 1/3) → (1/2, 5/3); S0 ends at the upper boundary while S1 continues to 7/3."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:24
+#: src/algorithms/bo/learning/executionSymbols.ts:24
 msgid "Atomic geometry operation in the teaching code, corresponding to the actual exact Rust computation without expanding its formulas."
 msgstr "Atomic geometry operation in the teaching code, corresponding to the actual exact Rust computation without expanding its formulas."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:33
+#: src/algorithms/bo/learning/executionSymbols.ts:33
 msgid "Attach zero-based indices to iterator elements."
 msgstr "Attach zero-based indices to iterator elements."
 
-#: src/app/App.tsx:230
-#: src/app/App.tsx:262
+#: src/algorithms/bo/BoPages.tsx:226
+#: src/algorithms/bo/BoPages.tsx:258
 msgid "Back to cases"
 msgstr "Back to cases"
 
-#: src/app/App.tsx:285
+#: src/algorithms/bo/BoPages.tsx:281
 msgid "Back to results viewer"
 msgstr "Back to results viewer"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:132
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:132
 msgid "Before break"
 msgstr "Before break"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:132
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:132
 msgid "Before matching"
 msgstr "Before matching"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:132
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:132
 msgid "Before taking the event"
 msgstr "Before taking the event"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:136
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:136
 msgid "Before the end of the {keyword} block"
 msgstr "Before the end of the {keyword} block"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:134
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:134
 msgid "Before the first core statement · intermediate state"
 msgstr "Before the first core statement · intermediate state"
 
-#: src/geometry/GeometryView.tsx:81
+#: src/algorithms/bo/geometry/GeometryView.tsx:81
 msgid "Blue: inputs"
 msgstr "Blue: inputs"
 
-#: src/app/App.tsx:45
+#: src/algorithms/bo/BoPages.tsx:42
 msgid "BO Results Viewer"
 msgstr "BO Results Viewer"
 
-#: src/geometry/GeometryView.tsx:82
+#: src/algorithms/bo/geometry/GeometryView.tsx:82
 msgid "Bold: active segments"
 msgstr "Bold: active segments"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:59
+#: src/algorithms/bo/help/HelpContent.tsx:59
 msgid "help.OverlapRules.3"
 msgstr "Both overlap boundaries are already endpoint events, so there is no need to create an event for every interior point. Other members' endpoints or crossings may still occur inside. At the end boundary, members that actually end leave and others continue; both may also end together. The recorded interval is never shortened, and no boundary points are appended for the same pair. A third, shorter member does not split other pairs' complete intervals."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:30
+#: src/algorithms/bo/cases/presets.ts:30
 msgid "Both satisfy y = x, and the common range of x intervals [0, 4] and [1, 3] is [1, 3]. The only pair intersects over (1, 1) → (3, 3); S0 continues after the shorter member S1 ends."
 msgstr "Both satisfy y = x, and the common range of x intervals [0, 4] and [1, 3] is [1, 3]. The only pair intersects over (1, 1) → (3, 3); S0 continues after the shorter member S1 ends."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:29
+#: src/algorithms/bo/cases/presets.ts:29
 msgid "Both segments lie on y = 0. S0 has x ∈ [0, 4] and S1 has x ∈ [2, 6]; their common range is [max(0, 2), min(4, 6)] = [2, 4], so the intersection is the closed interval (2, 0) → (4, 0), including both endpoints and every point between them."
 msgstr "Both segments lie on y = 0. S0 has x ∈ [0, 4] and S1 has x ∈ [2, 6]; their common range is [max(0, 2), min(4, 6)] = [2, 4], so the intersection is the closed interval (2, 0) → (4, 0), including both endpoints and every point between them."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:33
+#: src/algorithms/bo/cases/presets.ts:33
 msgid "Both segments satisfy y = x, and their x ranges [0, 2] and [2, 4] share only 2. Their only intersection is the included endpoint (2, 2), with no nonzero-length overlap."
 msgstr "Both segments satisfy y = x, and their x ranges [0, 2] and [2, 4] share only 2. Their only intersection is the included endpoint (2, 2), with no nonzero-length overlap."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:34
+#: src/algorithms/bo/cases/presets.ts:34
 msgid "Both segments satisfy y = x, but their x ranges [0, 1] and [2, 4] are separated by a gap, so their common range is empty."
 msgstr "Both segments satisfy y = x, but their x ranges [0, 1] and [2, 4] are separated by a gap, so their common range is empty."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:161
-#: src/learning/executionSymbols.ts:163
+#: src/algorithms/bo/learning/executionSymbols.ts:161
+#: src/algorithms/bo/learning/executionSymbols.ts:163
 msgid "break executed; exit the loop"
 msgstr "break executed; exit the loop"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:67
+#: src/algorithms/bo/cases/artPatterns.ts:67
 msgid "Bridge truss"
 msgstr "Bridge truss"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:149
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:149
 msgid "Call expression: "
 msgstr "Call expression: "
 
-#: src/app/App.tsx:210
+#: src/algorithms/bo/BoPages.tsx:206
 msgid "Cancel waiting"
 msgstr "Cancel waiting"
 
-#: src/geometry/GeometryView.tsx:169
+#: src/algorithms/bo/geometry/GeometryView.tsx:169
 msgid "Canvas object details"
 msgstr "Canvas object details"
 
-#: src/geometry/GeometryView.tsx:87
+#: src/algorithms/bo/geometry/GeometryView.tsx:87
 msgid "Canvas view controls"
 msgstr "Canvas view controls"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:179
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:179
 msgid "Captured variable"
 msgstr "Captured variable"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:192
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:192
 msgid "Captured variables"
 msgstr "Captured variables"
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:113
+#: src/algorithms/bo/cases/carbonLattices.ts:113
 msgid "Carbon nanotube"
 msgstr "Carbon nanotube"
 
-#: src/help/CaseHelp.tsx:44
-#: src/help/CaseHelp.tsx:44
+#: src/algorithms/bo/help/CaseHelp.tsx:44
+#: src/algorithms/bo/help/CaseHelp.tsx:44
 msgid "Case introduction and goals"
 msgstr "Case introduction and goals"
 
-#: src/app/App.tsx:146
-#: src/app/App.tsx:147
+#: src/algorithms/bo/BoPages.tsx:142
+#: src/algorithms/bo/BoPages.tsx:143
 msgid "Cases"
 msgstr "Cases"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:27
+#: src/algorithms/bo/help/HelpContent.tsx:27
 msgid "help.LearningReferences.7"
 msgstr "CGAL 6.1.1 · 2D Intersection of Curves: overlaps and degeneracies"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:26
+#: src/algorithms/bo/help/HelpContent.tsx:26
 msgid "help.LearningReferences.6"
 msgstr "CGAL 6.1.1 · 2D Intersections: an intersection can be a point or a segment"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:166
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:166
 msgid "Changed in this step; previous value: "
 msgstr "Changed in this step; previous value: "
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:23
+#: src/algorithms/bo/learning/executionSymbols.ts:23
 msgid "Check actual neighbors, enqueue future intersections, and return a geometry candidate."
 msgstr "Check actual neighbors, enqueue future intersections, and return a geometry candidate."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:146
+#: src/algorithms/bo/learning/executionCode.ts:146
 msgid "Check each currently active segment"
 msgstr "Check each currently active segment"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:69
+#: src/algorithms/bo/learning/executionCode.ts:69
 msgid "Check each neighboring position that exists"
 msgstr "Check each neighboring position that exists"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:37
+#: src/algorithms/bo/cases/presets.ts:37
 msgid "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
 msgstr "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
 
-#: src/learning/LearningPanels.tsx:50
+#: src/algorithms/bo/learning/LearningPanels.tsx:50
 msgid "Check neighboring segments <0>{subjects}</0>."
 msgstr "Check neighboring segments <0>{subjects}</0>."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:126
+#: src/algorithms/bo/learning/executionCode.ts:126
 msgid "Check whether an active segment lies below the current point"
 msgstr "Check whether an active segment lies below the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:28
+#: src/algorithms/bo/learning/executionSymbols.ts:28
 msgid "Check whether the comparison result is equal."
 msgstr "Check whether the comparison result is equal."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:29
+#: src/algorithms/bo/learning/executionSymbols.ts:29
 msgid "Check whether the comparison result is less than."
 msgstr "Check whether the comparison result is less than."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:164
+#: src/algorithms/bo/learning/executionCode.ts:164
 msgid "Check whether the current point is the segment end"
 msgstr "Check whether the current point is the segment end"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:159
+#: src/algorithms/bo/learning/executionCode.ts:159
 msgid "Check whether the current point is the segment start"
 msgstr "Check whether the current point is the segment start"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:95
+#: src/algorithms/bo/learning/executionCode.ts:95
 msgid "Check whether the intersection follows the current event"
 msgstr "Check whether the intersection follows the current event"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:196
+#: src/algorithms/bo/learning/executionCode.ts:196
 msgid "Check whether the intersection has nonzero length"
 msgstr "Check whether the intersection has nonzero length"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:189
+#: src/algorithms/bo/learning/executionCode.ts:189
 msgid "Check whether this event differs from the overlap start"
 msgstr "Check whether this event differs from the overlap start"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:106
+#: src/algorithms/bo/learning/executionCode.ts:106
 msgid "Check whether this segment extends beyond the current point"
 msgstr "Check whether this segment extends beyond the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:150
+#: src/algorithms/bo/learning/executionCode.ts:150
 msgid "Check whether this segment passes through the current point"
 msgstr "Check whether this segment passes through the current point"
 
-#: src/app/App.tsx:298
+#: src/app/App.tsx:13
 msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
 msgstr "Choose a case to inspect exact intersection points and complete overlap intervals."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:157
+#: src/algorithms/bo/learning/executionCode.ts:157
 msgid "Classify each incident segment relative to the current point"
 msgstr "Classify each incident segment relative to the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:143
+#: src/algorithms/bo/learning/executionCode.ts:143
 msgid "Classify incident segments"
 msgstr "Classify incident segments"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:48
+#: src/algorithms/bo/learning/executionSymbols.ts:48
 msgid "Clone the current value."
 msgstr "Clone the current value."
 
-#: src/learning/LearningDock.tsx:38
+#: src/algorithms/bo/learning/LearningDock.tsx:38
 msgid "Close"
 msgstr "Close"
 
 #. placeholder {0}: panel.name
-#: src/learning/LearningDock.tsx:38
+#: src/algorithms/bo/learning/LearningDock.tsx:38
 msgid "Close {0}"
 msgstr "Close {0}"
 
-#: src/help/CaseHelp.tsx:65
+#: src/algorithms/bo/help/CaseHelp.tsx:65
 msgid "Close help"
 msgstr "Close help"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:16
+#: src/algorithms/bo/cases/presets.ts:16
 msgid "Closed segments touch at a shared endpoint."
 msgstr "Closed segments touch at a shared endpoint."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:83
+#: src/algorithms/bo/learning/executionSymbols.ts:83
 msgid "Closure on line {line}"
 msgstr "Closure on line {line}"
 
-#: src/learning/LearningDock.tsx:19
+#: src/algorithms/bo/learning/LearningDock.tsx:19
 msgid "Collapse left sidebar"
 msgstr "Collapse left sidebar"
 
-#: src/learning/LearningDock.tsx:20
+#: src/algorithms/bo/learning/LearningDock.tsx:20
 msgid "Collapse right sidebar"
 msgstr "Collapse right sidebar"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:34
+#: src/algorithms/bo/cases/presets.ts:34
 msgid "Collinear and disjoint"
 msgstr "Collinear and disjoint"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:56
+#: src/algorithms/bo/help/HelpContent.tsx:56
 msgid "help.OverlapRules.0"
 msgstr "Collinear overlap: the intersection is a segment"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:33
+#: src/algorithms/bo/cases/presets.ts:33
 msgid "Collinear point contact"
 msgstr "Collinear point contact"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:34
+#: src/algorithms/bo/cases/presets.ts:34
 msgid "Collinear segments separated by a gap have no intersection."
 msgstr "Collinear segments separated by a gap have no intersection."
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:108
+#: src/algorithms/bo/cases/carbonLattices.ts:108
 msgid "Compare contact among four neighbors at tetrahedral centers with crossings of chemical bonds at different depths in a two-dimensional projection."
 msgstr "Compare contact among four neighbors at tetrahedral centers with crossings of chemical bonds at different depths in a two-dimensional projection."
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:71
+#: src/algorithms/bo/cases/artPatterns.ts:71
 msgid "Compare endpoint connections at bridge joints with interior crossings of the braces in each span; observe event grouping at different positions."
 msgstr "Compare endpoint connections at bridge joints with interior crossings of the braces in each span; observe event grouping at different positions."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:185
+#: src/algorithms/bo/learning/executionCode.ts:185
 msgid "Compare slopes to determine whether overlap handling is needed"
 msgstr "Compare slopes to determine whether overlap handling is needed"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:121
+#: src/algorithms/bo/learning/executionCode.ts:121
 msgid "Compare slopes, placing smaller slopes below larger ones"
 msgstr "Compare slopes, placing smaller slopes below larger ones"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:148
+#: src/algorithms/bo/learning/executionCode.ts:148
 msgid "Compare the segment height at the sweep line with the current point height"
 msgstr "Compare the segment height at the sweep line with the current point height"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:27
+#: src/algorithms/bo/learning/executionSymbols.ts:27
 msgid "Compare two values in the current expression."
 msgstr "Compare two values in the current expression."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:38
+#: src/algorithms/bo/help/HelpContent.tsx:38
 msgid "help.SamePointRules.3"
 msgstr "Compare x first, then y. Only exact equality of both coordinates groups inputs into one event point. Sharing a sweep coordinate does not mean that all segments meet at one point. Each point in the queue is processed separately, with all participants at that point grouped together."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:38
+#: src/algorithms/bo/learning/executionSymbols.ts:38
 msgid "compare: the current ordering rule."
 msgstr "compare: the current ordering rule."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:155
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:155
 msgid "Compound argument evaluation and return value at this call site: "
 msgstr "Compound argument evaluation and return value at this call site: "
 
-#: src/app/App.tsx:77
-#: src/app/App.tsx:91
+#: src/algorithms/bo/BoPages.tsx:73
+#: src/algorithms/bo/BoPages.tsx:87
 msgid "Computation failed"
 msgstr "Computation failed"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:26
+#: src/algorithms/bo/learning/executionSymbols.ts:26
 msgid "Compute the exact segment height at the given x coordinate."
 msgstr "Compute the exact segment height at the given x coordinate."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:76
+#: src/algorithms/bo/learning/executionCode.ts:76
 msgid "Compute the intersection candidate and schedule a future event"
 msgstr "Compute the intersection candidate and schedule a future event"
 
-#: src/app/App.tsx:89
+#: src/algorithms/bo/BoPages.tsx:85
 msgid "Computing…"
 msgstr "Computing…"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:104
+#: src/algorithms/bo/cases/artPatterns.ts:104
 msgid "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
 msgstr "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:60
+#: src/algorithms/bo/help/HelpContent.tsx:60
 msgid "help.OverlapRules.4"
 msgstr "Contained, identical, and reversed duplicate inputs all retain distinct input IDs, and each pair is intersected separately. Overlapping members are geometrically tied; list positions identify them rather than indicate a vertical swap. Intervals from different pairs are not merged into a geometric union. These are preset teaching cases, not a production implementation guarantee for arbitrary overlapping inputs."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:161
+#: src/algorithms/bo/learning/executionSymbols.ts:161
 msgid "continue executed; move to the next iteration"
 msgstr "continue executed; move to the next iteration"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:50
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:50
 msgid "Control flow"
 msgstr "Control flow"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:12
+#: src/algorithms/bo/help/HelpContent.tsx:12
 msgid "help.LearningIntroduction.5"
 msgstr "Conventions: exact rational numbers determine intersections and ordering; pixel approximations are used only for drawing. Distinct events with the same <0>x</0> are processed in <1>y</1> order. Completing an event updates the order only at that position; other positions with the same <2>x</2> retain their own processing progress. At a crossing, segments are ordered as they appear immediately to the right of the event."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:44
+#: src/algorithms/bo/learning/executionSymbols.ts:44
 msgid "Convert the collection into an iterator that consumes its elements."
 msgstr "Convert the collection into an iterator that consumes its elements."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:13
+#: src/algorithms/bo/learning/executionSymbols.ts:13
 msgid "Coordinate restoration closure parameter, valid only during that invocation"
 msgstr "Coordinate restoration closure parameter, valid only during that invocation"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:86
-#: src/learning/ExecutionPanel.tsx:88
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:86
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:88
 msgid "Core code replay"
 msgstr "Core code replay"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatRational(shear)
-#: src/learning/ExecutionPanel.tsx:187
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:187
 msgid "Core context at this step."
 msgstr "Core context at this step. <0>queue</0>, <1>next</1>, <2>point</2>, <3>current</3>, and sweep segments use sweep coordinates <4>x′ = x + {0} · y</4>; <5>result</5> and the canvas use original coordinates. The same-point grouping is an event teaching summary, not a local variable."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:192
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:192
 msgid "Core local variables"
 msgstr "Core local variables"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:192
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:192
 msgid "Core parameters"
 msgstr "Core parameters"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:178
-#: src/learning/ExecutionPanel.tsx:179
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:178
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:179
 msgid "Core variables"
 msgstr "Core variables"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:31
+#: src/algorithms/bo/learning/executionSymbols.ts:31
 msgid "Create an empty sequence."
 msgstr "Create an empty sequence."
 
-#: src/learning/LearningReplayControls.tsx:28
+#: src/algorithms/bo/learning/LearningReplayControls.tsx:28
 msgid "Current {index} · Generated 0–{lastStep}"
 msgstr "Current {index} · Generated 0–{lastStep}"
 
-#: src/learning/LearningPanels.tsx:72
-#: src/learning/LearningPanels.tsx:73
-#: src/learning/LearningView.tsx:44
+#: src/algorithms/bo/learning/LearningPanels.tsx:72
+#: src/algorithms/bo/learning/LearningPanels.tsx:73
+#: src/algorithms/bo/learning/LearningView.tsx:44
 msgid "Current event"
 msgstr "Current event"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: sweep.labelPoint(sweep.current)
-#: src/geometry/GeometryView.tsx:132
+#: src/algorithms/bo/geometry/GeometryView.tsx:132
 msgid "geometry.currentEvent"
 msgstr "Current event {0}"
 
-#: src/geometry/GeometryView.tsx:113
+#: src/algorithms/bo/geometry/GeometryView.tsx:113
 msgid "Current event horizontal guide"
 msgstr "Current event horizontal guide"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:181
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:181
 msgid "Current execution context"
 msgstr "Current execution context"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:183
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:183
 msgid "Current function"
 msgstr "Current function"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:134
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:134
 msgid "Current function returned"
 msgstr "Current function returned"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:11
+#: src/algorithms/bo/learning/executionSymbols.ts:11
 msgid "Current outer pairing index"
 msgstr "Current outer pairing index"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:165
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:165
 msgid "Current value: "
 msgstr "Current value: "
 
-#: src/geometry/GeometryView.tsx:82
+#: src/algorithms/bo/geometry/GeometryView.tsx:82
 msgid "Dashed circles: pending intersections"
 msgstr "Dashed circles: pending intersections"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:21
+#: src/algorithms/bo/help/HelpContent.tsx:21
 msgid "help.LearningReferences.1"
 msgstr "Dave Mount · CMSC 754 Lecture 4: events, active order, and neighbor checks"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:122
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:122
 msgid "Decrease parent depth"
 msgstr "Decrease parent depth"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:58
+#: src/algorithms/bo/help/HelpContent.tsx:58
 msgid "help.OverlapRules.2"
 msgstr "Determine each segment's start and end in x-then-y sweep order, take the later start and earlier end, and record the complete closed interval once at the overlap's start boundary. This does not mean the sweep line has traversed the interval: the known endpoints determine the full intersection exactly. Horizontal, slanted, and vertical segments use the same rule; vertical segments compare heights in original coordinates, and fractions remain exact."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:33
+#: src/algorithms/bo/cases/presets.ts:33
 msgid "Diagonal collinear segments touch at just one endpoint."
 msgstr "Diagonal collinear segments touch at just one endpoint."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:30
+#: src/algorithms/bo/cases/presets.ts:30
 msgid "Diagonal containment"
 msgstr "Diagonal containment"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:85
+#: src/algorithms/bo/cases/artPatterns.ts:85
 msgid "Diagonal weave"
 msgstr "Diagonal weave"
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:104
+#: src/algorithms/bo/cases/carbonLattices.ts:104
 msgid "Diamond lattice"
 msgstr "Diamond lattice"
 
-#: src/geometry/GeometryView.tsx:82
+#: src/algorithms/bo/geometry/GeometryView.tsx:82
 msgid "Diamonds: zero-length inputs"
 msgstr "Diamonds: zero-length inputs"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:24
+#: src/algorithms/bo/cases/presets.ts:24
 msgid "Different intersections at the same sweep coordinate"
 msgstr "Different intersections at the same sweep coordinate"
 
 #. placeholder {0}: newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}> {position > 0 && <span>{listSeparator}</span>} <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span> </Fragment>)
-#: src/learning/LearningPanels.tsx:55
+#: src/algorithms/bo/learning/LearningPanels.tsx:55
 msgid "Discover future intersections <0>{0}</0>: after checking the exact intersection of <1>{subjects}</1>, add them to the queue and wait until the sweep line arrives to record the results."
 msgstr "Discover future intersections <0>{0}</0>: after checking the exact intersection of <1>{subjects}</1>, add them to the queue and wait until the sweep line arrives to record the results."
 
-#: src/geometry/GeometryView.tsx:129
+#: src/algorithms/bo/geometry/GeometryView.tsx:129
 msgid "Discovered {label}"
 msgstr "Discovered {label}"
 
-#: src/app/App.tsx:128
+#: src/algorithms/bo/BoPages.tsx:124
 msgid "Distinct identities and exact endpoints"
 msgstr "Distinct identities and exact endpoints"
 
-#: src/help/CaseHelp.tsx:27
+#: src/algorithms/bo/help/CaseHelp.tsx:27
 msgid "Distinct inputs and endpoints"
 msgstr "Distinct inputs and endpoints"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:29
+#: src/algorithms/bo/cases/presets.ts:29
 msgid "Distinguish a nonzero-length overlap interval from an isolated intersection point; observe events at both boundaries and the participating segments entering and leaving."
 msgstr "Distinguish a nonzero-length overlap interval from an isolated intersection point; observe events at both boundaries and the participating segments entering and leaving."
 
 #. js-lingui-explicit-id
-#: src/cases/fullerene.ts:51
+#: src/algorithms/bo/cases/fullerene.ts:51
 msgid "Distinguish atomic endpoints where three chemical bonds meet from interior crossings caused by projecting front and back layers; observe events at different positions on the cage."
 msgstr "Distinguish atomic endpoints where three chemical bonds meet from interior crossings caused by projecting front and back layers; observe events at different positions on the cage."
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:107
+#: src/algorithms/bo/cases/artPatterns.ts:107
 msgid "Distinguish endpoint connections at star tips from interior crossings, and understand how the vertex-skipping rule generates regular intersection patterns."
 msgstr "Distinguish endpoint connections at star tips from interior crossings, and understand how the vertex-skipping rule generates regular intersection patterns."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:36
+#: src/algorithms/bo/cases/presets.ts:36
 msgid "Distinguish overlap, interior crossing, starting segments, and coincident points at one event while preserving complete pairwise intersections."
 msgstr "Distinguish overlap, interior crossing, starting segments, and coincident points at one event while preserving complete pairwise intersections."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:18
+#: src/algorithms/bo/cases/presets.ts:18
 msgid "Distinguish S1, which starts at the contact point, from S0, whose interior passes through it."
 msgstr "Distinguish S1, which starts at the contact point, from S0, whose interior passes through it."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:17
+#: src/algorithms/bo/cases/presets.ts:17
 msgid "Distinguish the starting vertical segment from the horizontal segment passing through; record closed-segment contact before updating the active order."
 msgstr "Distinguish the starting vertical segment from the horizontal segment passing through; record closed-segment contact before updating the active order."
 
-#: src/app/App.tsx:39
+#: src/app/DocumentationLink.tsx:6
 msgid "Documentation"
 msgstr "Documentation"
 
-#: src/learning/LearningReplayControls.tsx:28
+#: src/algorithms/bo/learning/LearningReplayControls.tsx:28
 msgid "Drag to browse teaching steps (including microsteps)"
 msgstr "Drag to browse teaching steps (including microsteps)"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:39
+#: src/algorithms/bo/help/HelpContent.tsx:39
 msgid "help.SamePointRules.4"
 msgstr "During event processing, the display shows an update in progress, not a completed state. Once the event is complete, continuing nonvertical segments at the current point are ordered as they appear immediately to its right; vertical segments continue toward higher pending positions. Lower positions at the same x have been processed, while higher positions retain their pre-event order. The list therefore does not represent a uniform rightward shift of the entire sweep line."
 
-#: src/help/CaseHelp.tsx:28
+#: src/algorithms/bo/help/CaseHelp.tsx:28
 msgid "Each input retains its own ID and two endpoints. Even geometrically coincident inputs keep their separate identities. Hover over an input in the list or its corresponding canvas object to see linked highlighting."
 msgstr "Each input retains its own ID and two endpoints. Even geometrically coincident inputs keep their separate identities. Hover over an input in the list or its corresponding canvas object to see linked highlighting."
 
-#: src/help/CaseHelp.tsx:22
+#: src/algorithms/bo/help/CaseHelp.tsx:22
 msgid "Each input retains its own identity. The pair count is not the number of distinct geometric intersection points; the drawing is only a visual aid for manual verification."
 msgstr "Each input retains its own identity. The pair count is not the number of distinct geometric intersection points; the drawing is only a visual aid for manual verification."
 
 #. js-lingui-explicit-id
-#: src/cases/fullerene.ts:52
+#: src/algorithms/bo/cases/fullerene.ts:52
 msgid "Each of the 30 icosahedron edges yields two truncation vertices, giving 60 atoms; the 12 original vertices become pentagons and the 20 triangular faces become hexagons. Each atom connects to three neighbors, giving 60 × 3 / 2 = 90 edges and 60 × 3 = 180 endpoint pairs, plus projected crossing pairs. Both front and back layers are retained; the rational approximation of the golden ratio affects only the shape, while the submitted rational coordinates and their intersections are still computed exactly."
 msgstr "Each of the 30 icosahedron edges yields two truncation vertices, giving 60 atoms; the 12 original vertices become pentagons and the 20 triangular faces become hexagons. Each atom connects to three neighbors, giving 60 × 3 / 2 = 90 edges and 60 × 3 = 180 endpoint pairs, plus projected crossing pairs. Both front and back layers are retained; the rational approximation of the golden ratio affects only the shape, while the submitted rational coordinates and their intersections are still computed exactly."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:38
+#: src/algorithms/bo/cases/presets.ts:38
 msgid "Each of the 8 inner junctions joins 4 edges, each of the 8 outer junctions joins 3 edges, and the center joins 8 edges. There are 8 + 8 + 1 = 17 distinct intersection positions and 8 × 6 + 8 × 3 + 28 = 100 pairs. For example, four edges at (12, 0) produce 6 pairs, and three edges at (24, 0) produce 3 pairs. There are no crossings between rings and no overlapping edges."
 msgstr "Each of the 8 inner junctions joins 4 edges, each of the 8 outer junctions joins 3 edges, and the center joins 8 edges. There are 8 + 8 + 1 = 17 distinct intersection positions and 8 × 6 + 8 × 3 + 28 = 100 pairs. For example, four edges at (12, 0) produce 6 pairs, and three edges at (24, 0) produce 3 pairs. There are no crossings between rings and no overlapping edges."
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:109
+#: src/algorithms/bo/cases/carbonLattices.ts:109
 msgid "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 msgstr "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:38
+#: src/algorithms/bo/cases/presets.ts:38
 msgid "Eight radial spokes connect two octagonal rings; every web junction consists of segment endpoints."
 msgstr "Eight radial spokes connect two octagonal rings; every web junction consists of segment endpoints."
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:118
+#: src/algorithms/bo/learning/executionAccess.ts:118
 msgid "Element of {expression} selected by the current index"
 msgstr "Element of {expression} selected by the current index"
 
-#: src/learning/LearningPanels.tsx:105
-#: src/learning/LearningPanels.tsx:118
+#: src/algorithms/bo/learning/LearningPanels.tsx:105
+#: src/algorithms/bo/learning/LearningPanels.tsx:118
 msgid "Empty"
 msgstr "Empty"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:14
+#: src/algorithms/bo/cases/presets.ts:14
 msgid "Empty set"
 msgstr "Empty set"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:19
+#: src/algorithms/bo/cases/presets.ts:19
 msgid "End in the interior"
 msgstr "End in the interior"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:132
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:132
 msgid "End of module"
 msgstr "End of module"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:14
+#: src/algorithms/bo/learning/executionSymbols.ts:14
 msgid "End of the candidate overlap interval"
 msgstr "End of the candidate overlap interval"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:80
+#: src/algorithms/bo/learning/executionAccess.ts:80
 msgid "End of the original segment"
 msgstr "End of the original segment"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:92
+#: src/algorithms/bo/learning/executionCode.ts:92
 msgid "End this check if there is no candidate"
 msgstr "End this check if there is no candidate"
 
 #. placeholder {0}: step.ends.length ? inputReferences(step.ends) : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:89
+#: src/algorithms/bo/learning/LearningPanels.tsx:89
 msgid "Ending: {0}"
 msgstr "Ending: {0}"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:17
+#: src/algorithms/bo/cases/presets.ts:17
 msgid "Endpoint in the interior"
 msgstr "Endpoint in the interior"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:22
+#: src/algorithms/bo/cases/presets.ts:22
 msgid "Endpoints and crossing at one point"
 msgstr "Endpoints and crossing at one point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:158
+#: src/algorithms/bo/learning/executionSymbols.ts:158
 msgid "Enter the else branch"
 msgstr "Enter the else branch"
 
-#: src/learning/LearningPanels.tsx:40
+#: src/algorithms/bo/learning/LearningPanels.tsx:40
 msgid "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
 msgstr "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
 
-#: src/learning/learningState.ts:53
+#: src/algorithms/bo/learning/learningState.ts:53
 msgid "Event complete"
 msgstr "Event complete"
 
-#: src/geometry/GeometryView.tsx:101
+#: src/algorithms/bo/geometry/GeometryView.tsx:101
 msgid "Event height: above the current event (Δ)"
 msgstr "Event height: above the current event (Δ)"
 
-#: src/geometry/GeometryView.tsx:101
+#: src/algorithms/bo/geometry/GeometryView.tsx:101
 msgid "Event height: below the current event (Δ)"
 msgstr "Event height: below the current event (Δ)"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:79
+#: src/algorithms/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
 msgstr "Event queue"
 
-#: src/help/CaseHelp.tsx:30
+#: src/algorithms/bo/help/CaseHelp.tsx:30
 msgid "Event queue"
 msgstr "Event queue"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:78
+#: src/algorithms/bo/help/HelpContent.tsx:78
 msgid "help.EventQueueRules.label"
 msgstr "Event queue explanation"
 
-#: src/geometry/GeometryView.tsx:95
+#: src/algorithms/bo/geometry/GeometryView.tsx:95
 msgid "Event side: left of the current event (Δ)"
 msgstr "Event side: left of the current event (Δ)"
 
-#: src/geometry/GeometryView.tsx:95
+#: src/algorithms/bo/geometry/GeometryView.tsx:95
 msgid "Event side: right of the current event (Δ)"
 msgstr "Event side: right of the current event (Δ)"
 
-#: src/app/App.tsx:118
-#: src/app/App.tsx:119
+#: src/algorithms/bo/BoPages.tsx:114
+#: src/algorithms/bo/BoPages.tsx:115
 msgid "Exact details"
 msgstr "Exact details"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:9
+#: src/algorithms/bo/learning/executionSymbols.ts:9
 msgid "Exact height comparisons cached by segment index. The classification loop updates entries individually; unvisited entries retain earlier values and are not yet updated for this event"
 msgstr "Exact height comparisons cached by segment index. The classification loop updates entries individually; unvisited entries retain earlier values and are not yet updated for this event"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:78
+#: src/algorithms/bo/learning/executionAccess.ts:78
 msgid "Exact intercept of the sweep segment"
 msgstr "Exact intercept of the sweep segment"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:78
+#: src/algorithms/bo/learning/executionAccess.ts:78
 msgid "Exact slope of the sweep segment"
 msgstr "Exact slope of the sweep segment"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:169
+#: src/algorithms/bo/learning/executionCode.ts:169
 msgid "Exclude both endpoints to check whether the point lies in the segment interior"
 msgstr "Exclude both endpoints to check whether the point lies in the segment interior"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:116
+#: src/algorithms/bo/learning/executionCode.ts:116
 msgid "Exclude segments that end at the current point"
 msgstr "Exclude segments that end at the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:132
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:132
 msgid "Execution boundary: {boundary}"
 msgstr "Execution boundary: {boundary}"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:163
+#: src/algorithms/bo/learning/executionSymbols.ts:163
 msgid "Execution completed in this step"
 msgstr "Execution completed in this step"
 
 #. js-lingui-explicit-id
-#: src/learning/trace.ts:135
+#: src/algorithms/bo/learning/trace.ts:135
 msgid "Execution trace transfer interrupted"
 msgstr "Execution trace transfer interrupted"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:139
+#: src/algorithms/bo/learning/executionCode.ts:139
 msgid "Exit the loop when no pending event remains"
 msgstr "Exit the loop when no pending event remains"
 
-#: src/learning/LearningDock.tsx:19
+#: src/algorithms/bo/learning/LearningDock.tsx:19
 msgid "Expand left sidebar"
 msgstr "Expand left sidebar"
 
-#: src/learning/LearningDock.tsx:20
+#: src/algorithms/bo/learning/LearningDock.tsx:20
 msgid "Expand right sidebar"
 msgstr "Expand right sidebar"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:137
+#: src/algorithms/bo/learning/executionCode.ts:137
 msgid "Extract the event position and contents, or enter the exit branch if no event remains"
 msgstr "Extract the event position and contents, or enter the exit branch if no event remains"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:118
+#: src/algorithms/bo/learning/executionAccess.ts:118
 msgid "Field {field} of {expression}"
 msgstr "Field {field} of {expression}"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:21
+#: src/algorithms/bo/cases/presets.ts:21
 msgid "Find all three segments passing through the point, observe the whole group reorder, and distinguish one intersection point from three intersecting pairs."
 msgstr "Find all three segments passing through the point, observe the whole group reorder, and distinguish one intersection point from three intersecting pairs."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:64
+#: src/algorithms/bo/learning/executionCode.ts:64
 msgid "Find the neighboring positions to check on either side of the insertion"
 msgstr "Find the neighboring positions to check on either side of the insertion"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:124
+#: src/algorithms/bo/learning/executionCode.ts:124
 msgid "Find where to insert this group into the active set"
 msgstr "Find where to insert this group into the active set"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:95
+#: src/algorithms/bo/cases/artPatterns.ts:95
 msgid "Finite segments on lines y = (t/3)x − t² for integer t ∈ [−6, 6] form a parabolic envelope."
 msgstr "Finite segments on lines y = (t/3)x − t² for integer t ∈ [−6, 6] form a parabolic envelope."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:80
+#: src/algorithms/bo/help/HelpContent.tsx:80
 msgid "help.EventQueueRules.1"
 msgstr "First <0>x</0>, then <1>y</1>; the front of the queue is processed first."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:11
+#: src/algorithms/bo/learning/executionSymbols.ts:11
 msgid "First segment in the current pair (an index in the sweep loop)"
 msgstr "First segment in the current pair (an index in the sweep loop)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:45
+#: src/algorithms/bo/learning/executionSymbols.ts:45
 msgid "Flatten nested iterator values; None in an Option produces no element."
 msgstr "Flatten nested iterator values; None in an Option produces no element."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:38
+#: src/algorithms/bo/cases/presets.ts:38
 msgid "Follow endpoint connections around the rings and compare pair counts at ordinary web junctions and the central meeting point."
 msgstr "Follow endpoint connections around the rings and compare pair counts at ordinary web junctions and the central meeting point."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:207
+#: src/algorithms/bo/learning/executionCode.ts:207
 msgid "For different slopes, the intersection is the current event point"
 msgstr "For different slopes, the intersection is the current event point"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:25
+#: src/algorithms/bo/cases/presets.ts:25
 msgid "Fractional endpoint and interior crossing"
 msgstr "Fractional endpoint and interior crossing"
 
 #. js-lingui-explicit-id
-#: src/cases/fullerene.ts:47
+#: src/algorithms/bo/cases/fullerene.ts:47
 msgid "Fullerene C₆₀"
 msgstr "Fullerene C₆₀"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:50
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:50
 msgid "Function"
 msgstr "Function"
 
-#: src/learning/useLearningReplay.tsx:113
+#: src/algorithms/bo/learning/useLearningReplay.tsx:113
 msgid "Function navigation"
 msgstr "Function navigation"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:20
+#: src/algorithms/bo/help/HelpContent.tsx:20
 msgid "help.LearningReferences.0"
 msgstr "Further reading"
 
-#: src/learning/LearningReplayControls.tsx:28
+#: src/algorithms/bo/learning/LearningReplayControls.tsx:28
 msgid "Generating trace"
 msgstr "Generating trace"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:80
+#: src/algorithms/bo/learning/executionCode.ts:80
 msgid "Geometry calls and queue insertion"
 msgstr "Geometry calls and queue insertion"
 
-#: src/geometry/GeometryView.tsx:76
+#: src/algorithms/bo/geometry/GeometryView.tsx:76
 msgid "Geometry view"
 msgstr "Geometry view"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:49
+#: src/algorithms/bo/learning/executionSymbols.ts:49
 msgid "Get the entry value, inserting a default when the key is absent."
 msgstr "Get the entry value, inserting a default when the key is absent."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:47
+#: src/algorithms/bo/learning/executionSymbols.ts:47
 msgid "Get the map entry for the specified key."
 msgstr "Get the map entry for the specified key."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:46
+#: src/algorithms/bo/learning/executionSymbols.ts:46
 msgid "Get the specified range, returning None when out of bounds."
 msgstr "Get the specified range, returning None when out of bounds."
 
-#: src/app/App.tsx:218
+#: src/algorithms/bo/BoPages.tsx:214
 msgid "Go to step"
 msgstr "Go to step"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:8
+#: src/algorithms/bo/help/HelpContent.tsx:8
 msgid "help.LearningIntroduction.1"
 msgstr "Goal: explain when segments enter, when intersections are discovered, why the order changes, and when segments leave. Segment intersection finds the points or intervals shared by input segments."
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:95
+#: src/algorithms/bo/cases/carbonLattices.ts:95
 msgid "Graphene"
 msgstr "Graphene"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:28
+#: src/algorithms/bo/cases/presets.ts:28
 msgid "Group a zero-length point with three segments passing through it, and distinguish one position from six intersecting pairs."
 msgstr "Group a zero-length point with three segments passing through it, and distinguish one position from six intersecting pairs."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:16
+#: src/algorithms/bo/cases/presets.ts:16
 msgid "Group segments starting and ending at the same point, record the contact, then update the active set."
 msgstr "Group segments starting and ending at the same point, record the contact, then update the active set."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:20
+#: src/algorithms/bo/cases/presets.ts:20
 msgid "Group the horizontal, vertical, and diagonal segments passing through the same point and observe pairwise recording at one position."
 msgstr "Group the horizontal, vertical, and diagonal segments passing through the same point and observe pairwise recording at one position."
 
-#: src/help/CaseHelp.tsx:75
+#: src/algorithms/bo/help/CaseHelp.tsx:75
 msgid "Help topics"
 msgstr "Help topics"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:39
+#: src/algorithms/bo/cases/presets.ts:39
 msgid "Hexagonal snowflake"
 msgstr "Hexagonal snowflake"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:31
+#: src/algorithms/bo/cases/presets.ts:31
 msgid "Identical and reversed duplicates"
 msgstr "Identical and reversed duplicates"
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:99
+#: src/algorithms/bo/cases/carbonLattices.ts:99
 msgid "Identify interior sites with three neighbors in the honeycomb network and observe endpoint grouping at actual atomic connections."
 msgstr "Identify interior sites with three neighbors in the honeycomb network and observe endpoint grouping at actual atomic connections."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:26
+#: src/algorithms/bo/cases/presets.ts:26
 msgid "Identify interior, endpoint, exterior, and coincident points; point inputs participate in events but never enter the persistent active order."
 msgstr "Identify interior, endpoint, exterior, and coincident points; point inputs participate in events but never enter the persistent active order."
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:89
+#: src/algorithms/bo/cases/artPatterns.ts:89
 msgid "Identify intersecting pairs among families of parallel lines and observe interior crossings at different heights in the diamond pattern."
 msgstr "Identify intersecting pairs among families of parallel lines and observe interior crossings at different heights in the diamond pattern."
 
 #. js-lingui-explicit-id
-#: src/cases/penrose.ts:82
+#: src/algorithms/bo/cases/penrose.ts:82
 msgid "Identify the local fivefold order generated by aperiodic tiling rules and observe endpoint grouping at joins between thick and thin rhombi; a finite patch alone cannot prove aperiodicity of an infinite tiling."
 msgstr "Identify the local fivefold order generated by aperiodic tiling rules and observe endpoint grouping at joins between thick and thin rhombi; a finite patch alone cannot prove aperiodicity of an infinite tiling."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:57
+#: src/algorithms/bo/help/HelpContent.tsx:57
 msgid "help.OverlapRules.1"
 msgstr "If the common range of collinear segments has nonzero length, infinitely many points between its endpoints are shared. The isolated-point event assumption of ordinary BO does not apply here; swapping vertical order cannot handle overlap. If only one closed endpoint is shared, the intersection is still a point."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:68
+#: src/algorithms/bo/help/HelpContent.tsx:68
 msgid "help.NeighborRules.1"
 msgstr "In general position, consider the next crossing: exactly two segments intersect in their interiors, no third segment passes through that point, and no endpoint coincides with the crossing."
 
-#: src/help/CaseHelp.tsx:24
+#: src/algorithms/bo/help/CaseHelp.tsx:24
 msgid "In mixed results, point-type pairs may lie on other pairs’ overlap intervals, so they are not necessarily isolated points of the overall intersection. Distinct point-result positions, interval pairs, and all intersecting pairs are counted separately, without merging intervals or computing a geometric union."
 msgstr "In mixed results, point-type pairs may lie on other pairs’ overlap intervals, so they are not necessarily isolated points of the overall intersection. Distinct point-result positions, interval pairs, and all intersecting pairs are counted separately, without merging intervals or computing a geometric union."
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:72
+#: src/algorithms/bo/cases/artPatterns.ts:72
 msgid "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, crossing internally at (2, 2); the other three spans cross at (6, 2), (10, 2), and (14, 2). S0 and S4 connect at the shared endpoint (4, 0). There are 10 structural joints and 4 interior span crossings; each shared member is generated only once."
 msgstr "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, crossing internally at (2, 2); the other three spans cross at (6, 2), (10, 2), and (14, 2). S0 and S4 connect at the shared endpoint (4, 0). There are 10 structural joints and 4 interior span crossings; each shared member is generated only once."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:82
-#: src/learning/executionSymbols.ts:114
+#: src/algorithms/bo/learning/executionSymbols.ts:82
+#: src/algorithms/bo/learning/executionSymbols.ts:114
 msgid "Incident segment loop"
 msgstr "Incident segment loop"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:124
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:124
 msgid "Increase parent depth"
 msgstr "Increase parent depth"
 
 #. placeholder {0}: preset.learning && translate(preset.learning.verification)
-#: src/learning/LearningPanels.tsx:67
+#: src/algorithms/bo/learning/LearningPanels.tsx:67
 msgid "Independent mathematical check: {0}"
 msgstr "Independent mathematical check: {0}"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:9
+#: src/algorithms/bo/learning/executionSymbols.ts:9
 msgid "Indices of segments incident to the current event point"
 msgstr "Indices of segments incident to the current event point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:81
+#: src/algorithms/bo/learning/executionAccess.ts:81
 msgid "Indices of segments starting at this event point"
 msgstr "Indices of segments starting at this event point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:8
+#: src/algorithms/bo/learning/executionSymbols.ts:8
 msgid "Indices of the currently active segments"
 msgstr "Indices of the currently active segments"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:17
+#: src/algorithms/bo/learning/executionSymbols.ts:17
 msgid "Indices of the neighboring segments being checked"
 msgstr "Indices of the neighboring segments being checked"
 
-#: src/geometry/GeometryView.tsx:105
+#: src/algorithms/bo/geometry/GeometryView.tsx:105
 msgid "Input and intersection plot"
 msgstr "Input and intersection plot"
 
-#: src/geometry/GeometryView.tsx:119
+#: src/algorithms/bo/geometry/GeometryView.tsx:119
 msgid "Input S{index}"
 msgstr "Input S{index}"
 
-#: src/geometry/GeometryView.tsx:119
+#: src/algorithms/bo/geometry/GeometryView.tsx:119
 msgid "Input S{index}, selected"
 msgstr "Input S{index}, selected"
 
-#: src/learning/LearningPanels.tsx:45
+#: src/algorithms/bo/learning/LearningPanels.tsx:45
 msgid "Insert <0>{subjects}</0>: the sweep line has reached the start, and these inputs now participate in the active order."
 msgstr "Insert <0>{subjects}</0>: the sweep line has reached the start, and these inputs now participate in the active order."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:131
+#: src/algorithms/bo/learning/executionCode.ts:131
 msgid "Insert the sorted segments back into the active set"
 msgstr "Insert the sorted segments back into the active set"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:71
+#: src/algorithms/bo/help/HelpContent.tsx:71
 msgid "help.NeighborRules.4"
 msgstr "Insertion creates neighbors on both sides of the new segment; deletion makes the previously separated sides adjacent; crossing reorders the outer neighbors. Only these changed boundaries need checking, without enumerating every segment pair."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:26
+#: src/algorithms/bo/cases/presets.ts:26
 msgid "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
 msgstr "Interior, endpoint, exterior, and coincident points all retain their distinct input identities."
 
-#: src/app/App.tsx:86
+#: src/algorithms/bo/BoPages.tsx:82
 msgid "Intersecting pairs"
 msgstr "Intersecting pairs"
 
-#: src/help/CaseHelp.tsx:21
+#: src/algorithms/bo/help/CaseHelp.tsx:21
 msgid "Intersecting pairs and exact intersections"
 msgstr "Intersecting pairs and exact intersections"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: pairName(result)
-#: src/geometry/GeometryView.tsx:139
+#: src/algorithms/bo/geometry/GeometryView.tsx:139
 msgid "geometry.intersection"
 msgstr "Intersection {0}"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: pairName(result)
-#: src/geometry/GeometryView.tsx:139
+#: src/algorithms/bo/geometry/GeometryView.tsx:139
 msgid "geometry.selectedIntersection"
 msgstr "Intersection {0}, selected"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:18
+#: src/algorithms/bo/learning/executionSymbols.ts:18
 msgid "Intersection candidate returned by the completed neighbor call"
 msgstr "Intersection candidate returned by the completed neighbor call"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:14
+#: src/algorithms/bo/learning/executionSymbols.ts:14
 msgid "Intersection of the current pair in original coordinates"
 msgstr "Intersection of the current pair in original coordinates"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:14
+#: src/algorithms/bo/learning/executionSymbols.ts:14
 msgid "Intersections recorded up to the current step"
 msgstr "Intersections recorded up to the current step"
 
 #. js-lingui-explicit-id
-#: src/learning/trace.ts:86
+#: src/algorithms/bo/learning/trace.ts:86
 msgid "Invalid execution event index"
 msgstr "Invalid execution event index"
 
 #. js-lingui-explicit-id
-#: src/learning/trace.ts:91
+#: src/algorithms/bo/learning/trace.ts:91
 msgid "Invalid execution result index"
 msgstr "Invalid execution result index"
 
 #. js-lingui-explicit-id
-#: src/learning/trace.ts:108
+#: src/algorithms/bo/learning/trace.ts:108
 msgid "Invalid execution trace final state"
 msgstr "Invalid execution trace final state"
 
-#: src/app/App.tsx:188
+#: src/algorithms/bo/BoPages.tsx:184
 msgid "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 msgstr "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 
-#: src/app/App.tsx:227
-#: src/app/App.tsx:228
+#: src/algorithms/bo/BoPages.tsx:223
+#: src/algorithms/bo/BoPages.tsx:224
 msgid "Invalid link"
 msgstr "Invalid link"
 
 #. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:227
+#: src/algorithms/bo/BoPages.tsx:223
 msgid "Invalid link · {0}"
 msgstr "Invalid link · {0}"
 
 #. js-lingui-explicit-id
-#: src/app/useComputation.ts:30
+#: src/algorithms/bo/useComputation.ts:30
 msgid "Invalid result structure"
 msgstr "Invalid result structure"
 
-#: src/app/App.tsx:217
+#: src/algorithms/bo/BoPages.tsx:213
 msgid "Jump to step"
 msgstr "Jump to step"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:37
+#: src/algorithms/bo/learning/executionSymbols.ts:37
 msgid "Keep elements that satisfy the predicate."
 msgstr "Keep elements that satisfy the predicate."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:114
+#: src/algorithms/bo/learning/executionCode.ts:114
 msgid "Keep incident segments that must remain in the active set"
 msgstr "Keep incident segments that must remain in the active set"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:111
+#: src/algorithms/bo/learning/executionCode.ts:111
 msgid "Keep segments that do not pass through the current point"
 msgstr "Keep segments that do not pass through the current point"
 
-#: src/learning/LearningPanels.tsx:110
+#: src/algorithms/bo/learning/LearningPanels.tsx:110
 msgid "Keeping the order from before this event"
 msgstr "Keeping the order from before this event"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:23
+#: src/algorithms/bo/help/HelpContent.tsx:23
 msgid "help.LearningReferences.3"
 msgstr "KIT · Line Segment Intersection: closed segments and grouping events at the same point"
 
-#: src/app/App.tsx:232
+#: src/algorithms/bo/BoPages.tsx:228
 msgid "Learn from the start"
 msgstr "Learn from the start"
 
-#: src/learning/LearningPanels.tsx:61
-#: src/learning/LearningReplayControls.tsx:28
-#: src/learning/learningState.ts:53
+#: src/algorithms/bo/learning/LearningPanels.tsx:61
+#: src/algorithms/bo/learning/LearningReplayControls.tsx:28
+#: src/algorithms/bo/learning/learningState.ts:53
 msgid "Learning complete"
 msgstr "Learning complete"
 
 #. js-lingui-explicit-id
-#: src/help/CaseHelp.tsx:47
+#: src/algorithms/bo/help/CaseHelp.tsx:47
 msgid "help.case.goal"
 msgstr "Learning goal: {goal}"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:6
+#: src/algorithms/bo/help/HelpContent.tsx:6
 msgid "help.LearningIntroduction.label"
 msgstr "Learning goals"
 
-#: src/help/CaseHelp.tsx:18
+#: src/algorithms/bo/help/CaseHelp.tsx:18
 msgid "Learning goals, terms, and sweep conventions"
 msgstr "Learning goals, terms, and sweep conventions"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:19
+#: src/algorithms/bo/help/HelpContent.tsx:19
 msgid "help.LearningReferences.label"
 msgstr "Learning references"
 
-#: src/learning/LearningPanels.tsx:60
+#: src/algorithms/bo/learning/LearningPanels.tsx:60
 msgid "Learning results"
 msgstr "Learning results"
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:192
+#: src/algorithms/bo/BoPages.tsx:188
 msgid "Learning step out of range: valid steps for this case are 0–{0}."
 msgstr "Learning step out of range: valid steps for this case are 0–{0}."
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:77
+#: src/algorithms/bo/learning/executionAccess.ts:77
 msgid "Left endpoint of the sweep segment"
 msgstr "Left endpoint of the sweep segment"
 
-#: src/learning/LearningDock.tsx:17
+#: src/algorithms/bo/learning/LearningDock.tsx:17
 msgid "Left sidebar"
 msgstr "Left sidebar"
 
-#: src/geometry/GeometryView.tsx:79
+#: src/algorithms/bo/geometry/GeometryView.tsx:79
 msgid "Legend and controls"
 msgstr "Legend and controls"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:51
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:51
 msgid "Line {line}, call {occurrence}"
 msgstr "Line {line}, call {occurrence}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:51
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:51
 msgid "Line {line}, keyword {occurrence}"
 msgstr "Line {line}, keyword {occurrence}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:132
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:132
 msgid "Loading teaching code…"
 msgstr "Loading teaching code…"
 
-#: src/app/App.tsx:75
+#: src/algorithms/bo/BoPages.tsx:71
 msgid "Loading the execution trace…"
 msgstr "Loading the execution trace…"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:179
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:179
 msgid "Local variable"
 msgstr "Local variable"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:39
+#: src/algorithms/bo/learning/executionSymbols.ts:39
 msgid "Locate the boundary of an ordered partition."
 msgstr "Locate the boundary of an ordered partition."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:35
+#: src/algorithms/bo/cases/presets.ts:35
 msgid "Long interval and a short member"
 msgstr "Long interval and a short member"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:88
+#: src/algorithms/bo/learning/executionCode.ts:88
 msgid "Look up both segments by their indices"
 msgstr "Look up both segments by their indices"
 
-#: src/app/App.tsx:267
+#: src/algorithms/bo/BoPages.tsx:263
 msgid "Main layout ratio (geometry, code, variables)"
 msgstr "Main layout ratio (geometry, code, variables)"
 
-#: src/learning/useLearningReplay.tsx:117
+#: src/algorithms/bo/learning/useLearningReplay.tsx:117
 msgid "Major steps"
 msgstr "Major steps"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:76
+#: src/algorithms/bo/cases/artPatterns.ts:76
 msgid "Meander window lattice"
 msgstr "Meander window lattice"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:61
+#: src/algorithms/bo/learning/executionCode.ts:61
 msgid "Neighbor checks"
 msgstr "Neighbor checks"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:18
+#: src/algorithms/bo/learning/executionSymbols.ts:18
 msgid "Neighboring pairs already checked for this event"
 msgstr "Neighboring pairs already checked for this event"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:13
+#: src/algorithms/bo/cases/presets.ts:13
 msgid "Neighbors after crossing"
 msgstr "Neighbors after crossing"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:12
+#: src/algorithms/bo/cases/presets.ts:12
 msgid "Neighbors after removal"
 msgstr "Neighbors after removal"
 
-#: src/learning/LearningPanels.tsx:42
+#: src/algorithms/bo/learning/LearningPanels.tsx:42
 msgid "next is None: the event queue is empty and the sweep loop exits. Confirming the final results."
 msgstr "next is None: the event queue is empty and the sweep loop exits. Confirming the final results."
 
-#: src/learning/LearningPanels.tsx:42
+#: src/algorithms/bo/learning/LearningPanels.tsx:42
 msgid "next is None: the event queue is empty and the sweep loop exits. Learning is complete."
 msgstr "next is None: the event queue is empty and the sweep loop exits. Learning is complete."
 
-#: src/learning/useLearningReplay.tsx:119
+#: src/algorithms/bo/learning/useLearningReplay.tsx:119
 msgid "Next major step"
 msgstr "Next major step"
 
-#: src/learning/useLearningReplay.tsx:111
+#: src/algorithms/bo/learning/useLearningReplay.tsx:111
 msgid "Next step"
 msgstr "Next step"
 
-#: src/learning/LearningPanels.tsx:45
+#: src/algorithms/bo/learning/LearningPanels.tsx:45
 msgid "Next, check whether the new neighbors intersect in the future."
 msgstr "Next, check whether the new neighbors intersect in the future."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:31
+#: src/algorithms/bo/learning/executionSymbols.ts:31
 msgid "No arguments."
 msgstr "No arguments."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:166
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:166
 msgid "No comparable value change in this step"
 msgstr "No comparable value change in this step"
 
-#: src/learning/LearningPanels.tsx:81
+#: src/algorithms/bo/learning/LearningPanels.tsx:81
 msgid "No event processed yet"
 msgstr "No event processed yet"
 
-#: src/learning/LearningPanels.tsx:81
+#: src/algorithms/bo/learning/LearningPanels.tsx:81
 msgid "No events"
 msgstr "No events"
 
-#: src/cases/CaseThumbnail.tsx:10
+#: src/algorithms/bo/cases/CaseThumbnail.tsx:10
 msgid "No input segments"
 msgstr "No input segments"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:14
+#: src/algorithms/bo/cases/presets.ts:14
 msgid "No input segments; a valid computation returns an empty result."
 msgstr "No input segments; a valid computation returns an empty result."
 
-#: src/app/App.tsx:94
+#: src/algorithms/bo/BoPages.tsx:90
 msgid "No intersecting pairs"
 msgstr "No intersecting pairs"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:11
+#: src/algorithms/bo/cases/presets.ts:11
 msgid "No intersection"
 msgstr "No intersection"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:159
+#: src/algorithms/bo/learning/executionSymbols.ts:159
 msgid "No next element; the loop has ended"
 msgstr "No next element; the loop has ended"
 
-#: src/learning/LearningPanels.tsx:88
-#: src/learning/LearningPanels.tsx:89
-#: src/learning/LearningPanels.tsx:90
+#: src/algorithms/bo/learning/LearningPanels.tsx:88
+#: src/algorithms/bo/learning/LearningPanels.tsx:89
+#: src/algorithms/bo/learning/LearningPanels.tsx:90
 msgid "None"
 msgstr "None"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:153
+#: src/algorithms/bo/learning/executionSymbols.ts:153
 msgid "Not executed in this step"
 msgstr "Not executed in this step"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:70
+#: src/algorithms/bo/help/HelpContent.tsx:70
 msgid "help.NeighborRules.3"
 msgstr "Now look back to the most recent event. Between events there are no endpoints or crossings, so active membership and vertical order remain unchanged. This pair was therefore already adjacent after the previous event. Checking and scheduling the intersection when that adjacency forms ensures the sweep line stops in time."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:15
+#: src/algorithms/bo/learning/executionSymbols.ts:15
 msgid "Number of segments to insert in this event"
 msgstr "Number of segments to insert in this event"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:108
+#: src/algorithms/bo/cases/artPatterns.ts:108
 msgid "Number vertices clockwise from 0 to 7 and connect i to (i + 3) mod 8; starting at 0, visit 3, 6, 1, 4, 7, 2, and 5 before closing. S0 satisfies y = 10 − 17x/7 and S1 satisfies y = 17x/7 − 10, with interior intersection (70/17, 0). S0 and S3 connect at endpoint (7, −7). The eight vertices form an integer-coordinate octagon, not a claimed exact regular octagon."
 msgstr "Number vertices clockwise from 0 to 7 and connect i to (i + 3) mod 8; starting at 0, visit 3, 6, 1, 4, 7, 2, and 5 before closing. S0 satisfies y = 10 − 17x/7 and S1 satisfies y = 17x/7 − 10, with interior intersection (70/17, 0). S0 and S3 connect at endpoint (7, −7). The eight vertices form an integer-coordinate octagon, not a claimed exact regular octagon."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:19
+#: src/algorithms/bo/cases/presets.ts:19
 msgid "Observe endpoint contact approached from the other side and understand why the segment passing through remains active after the ending segment leaves."
 msgstr "Observe endpoint contact approached from the other side and understand why the segment passing through remains active after the ending segment leaves."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:39
+#: src/algorithms/bo/cases/presets.ts:39
 msgid "Observe endpoint grouping in sixfold symmetric branches and distinguish intersecting pairs at the center from those at forks."
 msgstr "Observe endpoint grouping in sixfold symmetric branches and distinguish intersecting pairs at the center from those at forks."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:27
+#: src/algorithms/bo/cases/presets.ts:27
 msgid "Observe how point events still record intersections of coincident inputs while the active order stays empty."
 msgstr "Observe how point events still record intersections of coincident inputs while the active order stays empty."
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:98
+#: src/algorithms/bo/cases/artPatterns.ts:98
 msgid "Observe how real straight segments collectively outline a curve; trace exact intersections between neighboring and distant strings."
 msgstr "Observe how real straight segments collectively outline a curve; trace exact intersections between neighboring and distant strings."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:12
+#: src/algorithms/bo/cases/presets.ts:12
 msgid "Observe how removing the middle segment makes the previously nonadjacent S0 and S2 neighbors and reveals their intersection."
 msgstr "Observe how removing the middle segment makes the previously nonadjacent S0 and S2 neighbors and reveals their intersection."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:11
+#: src/algorithms/bo/cases/presets.ts:11
 msgid "Observe how the sweep finishes when there are no future intersections."
 msgstr "Observe how the sweep finishes when there are no future intersections."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:10
+#: src/algorithms/bo/cases/presets.ts:10
 msgid "Observe insertion, intersection discovery, reordering, and removal."
 msgstr "Observe insertion, intersection discovery, reordering, and removal."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:13
+#: src/algorithms/bo/cases/presets.ts:13
 msgid "Observe neighbor checks on insertion and how reordering at a crossing creates new outer neighbors."
 msgstr "Observe neighbor checks on insertion and how reordering at a crossing creates new outer neighbors."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:15
+#: src/algorithms/bo/cases/presets.ts:15
 msgid "Observe the only segment entering and leaving; distinguish processing events from recording intersections."
 msgstr "Observe the only segment entering and leaving; distinguish processing events from recording intersections."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:30
+#: src/algorithms/bo/cases/presets.ts:30
 msgid "Observe the shorter member entering and leaving; understand the complete intersection under containment and why the longer member remains active."
 msgstr "Observe the shorter member entering and leaving; understand the complete intersection under containment and why the longer member remains active."
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:117
+#: src/algorithms/bo/cases/carbonLattices.ts:117
 msgid "Observe the three-neighbor network remaining continuous across the circumferential seam; distinguish shared atomic endpoints from projected crossings between the front and back of the tube."
 msgstr "Observe the three-neighbor network remaining continuous across the circumferential seam; distinguish shared atomic endpoints from projected crossings between the front and back of the tube."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:20
+#: src/algorithms/bo/cases/presets.ts:20
 msgid "One geometric point corresponds to three distinct pairs."
 msgstr "One geometric point corresponds to three distinct pairs."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:15
+#: src/algorithms/bo/cases/presets.ts:15
 msgid "One segment alone cannot form an input pair."
 msgstr "One segment alone cannot form an input pair."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:23
+#: src/algorithms/bo/cases/presets.ts:23
 msgid "One vertical segment crosses at different heights and touches another segment at its top."
 msgstr "One vertical segment crosses at different heights and touches another segment at its top."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:15
+#: src/algorithms/bo/cases/presets.ts:15
 msgid "Only S0 exists, so no pair of distinct inputs can be formed; its two endpoint events produce no intersection."
 msgstr "Only S0 exists, so no pair of distinct inputs can be formed; its two endpoint events produce no intersection."
 
-#: src/geometry/GeometryView.tsx:81
+#: src/algorithms/bo/geometry/GeometryView.tsx:81
 msgid "Orange: intersections"
 msgstr "Orange: intersections"
 
-#: src/learning/LearningPanels.tsx:110
+#: src/algorithms/bo/learning/LearningPanels.tsx:110
 msgid "Order after the current teaching action; the event is still in progress"
 msgstr "Order after the current teaching action; the event is still in progress"
 
-#: src/learning/LearningPanels.tsx:110
+#: src/algorithms/bo/learning/LearningPanels.tsx:110
 msgid "Order after the processed event"
 msgstr "Order after the processed event"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:10
+#: src/algorithms/bo/cases/presets.ts:10
 msgid "Ordinary crossing"
 msgstr "Ordinary crossing"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:84
+#: src/algorithms/bo/learning/executionSymbols.ts:84
 msgid "original closure"
 msgstr "original closure"
 
-#: src/geometry/GeometryView.tsx:77
+#: src/algorithms/bo/geometry/GeometryView.tsx:77
 msgid "Original coordinate plane · Equal scale"
 msgstr "Original coordinate plane · Equal scale"
 
-#: src/help/CaseHelp.tsx:26
+#: src/algorithms/bo/help/CaseHelp.tsx:26
 msgid "Original input explanation"
 msgstr "Original input explanation"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:125
+#: src/algorithms/bo/learning/executionSymbols.ts:125
 msgid "Original input segments in original coordinates"
 msgstr "Original input segments in original coordinates"
 
-#: src/app/App.tsx:127
-#: src/app/App.tsx:128
-#: src/help/CaseHelp.tsx:26
+#: src/algorithms/bo/BoPages.tsx:123
+#: src/algorithms/bo/BoPages.tsx:124
+#: src/algorithms/bo/help/CaseHelp.tsx:26
 msgid "Original inputs"
 msgstr "Original inputs"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:16
+#: src/algorithms/bo/learning/executionSymbols.ts:16
 msgid "Outer boundaries of the insertion range that need checking"
 msgstr "Outer boundaries of the insertion range that need checking"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:181
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:181
 msgid "Outer execution context {functionName}"
 msgstr "Outer execution context {functionName}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:183
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:183
 msgid "Outer function"
 msgstr "Outer function"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: pairName(inspectedPair)
 #. placeholder {1}: formatGeometry(inspectedPair.geometry)
-#: src/geometry/GeometryView.tsx:45
+#: src/algorithms/bo/geometry/GeometryView.tsx:45
 msgid "geometry.overlapDetail"
 msgstr "Overlap {0} · {1}"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:32
+#: src/algorithms/bo/cases/presets.ts:32
 msgid "Overlap at x = 1/2 has complete interval endpoints y = 1/3 and 5/3."
 msgstr "Overlap at x = 1/2 has complete interval endpoints y = 1/3 and 5/3."
 
-#: src/learning/learningState.ts:43
+#: src/algorithms/bo/learning/learningState.ts:43
 msgid "Overlap end boundary"
 msgstr "Overlap end boundary"
 
-#: src/app/App.tsx:112
+#: src/algorithms/bo/BoPages.tsx:108
 msgid "Overlap interval"
 msgstr "Overlap interval"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:55
+#: src/algorithms/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
 msgstr "Overlap rules"
 
-#: src/help/CaseHelp.tsx:53
+#: src/algorithms/bo/help/CaseHelp.tsx:53
 msgid "Overlap rules"
 msgstr "Overlap rules"
 
-#: src/learning/learningState.ts:42
+#: src/algorithms/bo/learning/learningState.ts:42
 msgid "Overlap start boundary"
 msgstr "Overlap start boundary"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:36
+#: src/algorithms/bo/cases/presets.ts:36
 msgid "Overlap, crossing, and coincident points"
 msgstr "Overlap, crossing, and coincident points"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:90
+#: src/algorithms/bo/help/HelpContent.tsx:90
 msgid "help.ActiveOrderRules.2"
 msgstr "Overlapping members are tied at the same height. List positions identify them individually, not a difference in vertical position. Their ranks in the drawing also point to the same geometric location."
 
-#: src/learning/LearningPanels.tsx:48
+#: src/algorithms/bo/learning/LearningPanels.tsx:48
 msgid "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 msgstr "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:34
+#: src/algorithms/bo/learning/executionSymbols.ts:34
 msgid "p: the sweep-coordinate point for this call."
 msgstr "p: the sweep-coordinate point for this call."
 
-#: src/app/App.tsx:262
+#: src/algorithms/bo/BoPages.tsx:258
 msgid "Page navigation"
 msgstr "Page navigation"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:175
+#: src/algorithms/bo/learning/executionCode.ts:175
 msgid "Pair and record"
 msgstr "Pair and record"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:178
+#: src/algorithms/bo/learning/executionCode.ts:178
 msgid "Pair only with later segments to avoid recording the same pair twice"
 msgstr "Pair only with later segments to avoid recording the same pair twice"
 
-#: src/help/CaseHelp.tsx:20
-#: src/help/CaseHelp.tsx:20
+#: src/algorithms/bo/help/CaseHelp.tsx:20
+#: src/algorithms/bo/help/CaseHelp.tsx:20
 msgid "Pairs and exact details"
 msgstr "Pairs and exact details"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:94
+#: src/algorithms/bo/cases/artPatterns.ts:94
 msgid "Parabolic string art"
 msgstr "Parabolic string art"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:179
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:179
 msgid "Parameter"
 msgstr "Parameter"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:148
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:148
 msgid "Parameters: "
 msgstr "Parameters: "
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:123
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:123
 msgid "Parent depth: {depth}"
 msgstr "Parent depth: {depth}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:121
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:121
 msgid "Parent display depth"
 msgstr "Parent display depth"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:29
+#: src/algorithms/bo/cases/presets.ts:29
 msgid "Partial overlap"
 msgstr "Partial overlap"
 
-#: src/learning/LearningPanels.tsx:91
+#: src/algorithms/bo/learning/LearningPanels.tsx:91
 msgid "Participants at this point appear after taking an event."
 msgstr "Participants at this point appear after taking an event."
 
 #. placeholder {0}: step.passes.length ? inputReferences(step.passes) : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:90
+#: src/algorithms/bo/learning/LearningPanels.tsx:90
 msgid "Passing: {0}"
 msgstr "Passing: {0}"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: index + 1
 #. placeholder {1}: sweep.labelPoint(point)
-#: src/geometry/GeometryView.tsx:54
+#: src/algorithms/bo/geometry/GeometryView.tsx:54
 msgid "geometry.pendingEvent"
 msgstr "Pending event {0}: {1}"
 
-#: src/learning/LearningPanels.tsx:94
-#: src/learning/LearningPanels.tsx:95
-#: src/learning/LearningView.tsx:45
+#: src/algorithms/bo/learning/LearningPanels.tsx:94
+#: src/algorithms/bo/learning/LearningPanels.tsx:95
+#: src/algorithms/bo/learning/LearningView.tsx:45
 msgid "Pending event queue"
 msgstr "Pending event queue"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:6
+#: src/algorithms/bo/learning/executionSymbols.ts:6
 msgid "Pending events ordered by sweep coordinates"
 msgstr "Pending events ordered by sweep coordinates"
 
-#: src/learning/learningState.ts:46
+#: src/algorithms/bo/learning/learningState.ts:46
 msgid "Pending intersection"
 msgstr "Pending intersection"
 
 #. js-lingui-explicit-id
-#: src/cases/penrose.ts:78
+#: src/algorithms/bo/cases/penrose.ts:78
 msgid "Penrose tiling"
 msgstr "Penrose tiling"
 
-#: src/learning/LearningPanels.tsx:38
+#: src/algorithms/bo/learning/LearningPanels.tsx:38
 msgid "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 msgstr "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 
-#: src/app/App.tsx:77
-#: src/app/App.tsx:91
+#: src/algorithms/bo/BoPages.tsx:73
+#: src/algorithms/bo/BoPages.tsx:87
 msgid "Please check the local service. {errorMessage}"
 msgstr "Please check the local service. {errorMessage}"
 
-#: src/app/App.tsx:112
+#: src/algorithms/bo/BoPages.tsx:108
 msgid "Point"
 msgstr "Point"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:134
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:134
 msgid "point and event bound; event-taking module complete"
 msgstr "point and event bound; event-taking module complete"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:75
+#: src/algorithms/bo/learning/executionAccess.ts:75
 msgid "Point x coordinate"
 msgstr "Point x coordinate"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:75
+#: src/algorithms/bo/learning/executionAccess.ts:75
 msgid "Point y coordinate"
 msgstr "Point y coordinate"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:27
+#: src/algorithms/bo/cases/presets.ts:27
 msgid "Points only"
 msgstr "Points only"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:15
+#: src/algorithms/bo/learning/executionSymbols.ts:15
 msgid "Position where new active segments enter the active sequence"
 msgstr "Position where new active segments enter the active sequence"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:39
+#: src/algorithms/bo/learning/executionSymbols.ts:39
 msgid "predicate: the current partition condition."
 msgstr "predicate: the current partition condition."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:37
+#: src/algorithms/bo/learning/executionSymbols.ts:37
 msgid "predicate: the retention condition; self: the sequence to the left of the call."
 msgstr "predicate: the retention condition; self: the sequence to the left of the call."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:155
+#: src/algorithms/bo/learning/executionCode.ts:155
 msgid "Prepare separate lists for starting, ending, and passing segments"
 msgstr "Prepare separate lists for starting, ending, and passing segments"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:180
+#: src/algorithms/bo/learning/executionCode.ts:180
 msgid "Prepare to convert sweep coordinates back to input coordinates"
 msgstr "Prepare to convert sweep coordinates back to input coordinates"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:62
+#: src/algorithms/bo/learning/executionCode.ts:62
 msgid "Prepare to record the segment pairs checked in this event"
 msgstr "Prepare to record the segment pairs checked in this event"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:31
+#: src/algorithms/bo/cases/presets.ts:31
 msgid "Preserve distinct identities for duplicate and reversed inputs; observe three pairs and all members ending together."
 msgstr "Preserve distinct identities for duplicate and reversed inputs; observe three pairs and all members ending together."
 
-#: src/learning/useLearningReplay.tsx:118
+#: src/algorithms/bo/learning/useLearningReplay.tsx:118
 msgid "Previous major step"
 msgstr "Previous major step"
 
-#: src/learning/useLearningReplay.tsx:110
+#: src/algorithms/bo/learning/useLearningReplay.tsx:110
 msgid "Previous step"
 msgstr "Previous step"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:24
+#: src/algorithms/bo/cases/presets.ts:24
 msgid "Process (0, -1) before (0, 3); the same sweep coordinate does not mean the same geometric point."
 msgstr "Process (0, -1) before (0, 3); the same sweep coordinate does not mean the same geometric point."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:37
+#: src/algorithms/bo/cases/presets.ts:37
 msgid "Process different heights of a vertical overlap one by one in the original coordinates, distinguishing point pairs from the complete interval."
 msgstr "Process different heights of a vertical overlap one by one in the original coordinates, distinguishing point pairs from the complete interval."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:32
+#: src/algorithms/bo/cases/presets.ts:32
 msgid "Process fractional boundaries at different heights along a fixed x, distinguishing the complete interval from the current processing frontier."
 msgstr "Process fractional boundaries at different heights along a fixed x, distinguishing the complete interval from the current processing frontier."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:23
+#: src/algorithms/bo/cases/presets.ts:23
 msgid "Process S0 upward along x = 0, observing two interior crossings and contact at the top until the entire vertical segment leaves."
 msgstr "Process S0 upward along x = 0, observing two interior crossings and contact at the top until the entire vertical segment leaves."
 
-#: src/learning/learningState.ts:53
+#: src/algorithms/bo/learning/learningState.ts:53
 msgid "Processing event"
 msgstr "Processing event"
 
-#: src/geometry/GeometryView.tsx:82
+#: src/algorithms/bo/geometry/GeometryView.tsx:82
 msgid "Purple: sweep line and current event"
 msgstr "Purple: sweep line and current event"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:134
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:134
 msgid "Queue empty; exit the loop"
 msgstr "Queue empty; exit the loop"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:134
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:134
 msgid "Queue head removed; current event not matched or bound yet · intermediate state"
 msgstr "Queue head removed; current event not matched or bound yet · intermediate state"
 
-#: src/learning/LearningPanels.tsx:41
+#: src/algorithms/bo/learning/LearningPanels.tsx:41
 msgid "queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state."
 msgstr "queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:41
+#: src/algorithms/bo/learning/executionSymbols.ts:41
 msgid "range: the range to replace; replace_with: the new elements."
 msgstr "range: the range to replace; replace_with: the new elements."
 
-#: src/help/CaseHelp.tsx:69
+#: src/algorithms/bo/help/CaseHelp.tsx:69
 msgid "Read by topic, then close to continue your current task."
 msgstr "Read by topic, then close to continue your current task."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:40
+#: src/algorithms/bo/learning/executionSymbols.ts:40
 msgid "Read the sequence length."
 msgstr "Read the sequence length."
 
-#: src/learning/learningState.ts:53
+#: src/algorithms/bo/learning/learningState.ts:53
 msgid "Ready to start"
 msgstr "Ready to start"
 
 #. js-lingui-explicit-id
-#: src/learning/trace.ts:75
+#: src/algorithms/bo/learning/trace.ts:75
 msgid "Received a step after the execution trace completed"
 msgstr "Received a step after the execution trace completed"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:47
+#: src/algorithms/bo/learning/LearningPanels.tsx:47
 msgid "Record <0>{0}</0>: the participating segments <1>{subjects}</1> cross here."
 msgstr "Record <0>{0}</0>: the participating segments <1>{subjects}</1> cross here."
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:47
+#: src/algorithms/bo/learning/LearningPanels.tsx:47
 msgid "Record <0>{0}</0>: the participating segments <1>{subjects}</1> touch here. Closed segments include their endpoints, so this intersection counts regardless of the approach direction."
 msgstr "Record <0>{0}</0>: the participating segments <1>{subjects}</1> touch here. Closed segments include their endpoints, so this intersection counts regardless of the approach direction."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:35
+#: src/algorithms/bo/cases/presets.ts:35
 msgid "Record complete intervals pair by pair in a group; observe that events of an interior short member do not change the long pair."
 msgstr "Record complete intervals pair by pair in a group; observe that events of an interior short member do not change the long pair."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:129
+#: src/algorithms/bo/learning/executionCode.ts:129
 msgid "Record how many segments will be inserted"
 msgstr "Record how many segments will be inserted"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:191
+#: src/algorithms/bo/learning/executionCode.ts:191
 msgid "Record only at the overlap start; skip this pair here"
 msgstr "Record only at the overlap start; skip this pair here"
 
 #. placeholder {0}: formatGeometry(recordedOverlap.geometry)
 #. placeholder {1}: inputReferences(recordedOverlap.segments, ' × ')
-#: src/learning/LearningPanels.tsx:47
+#: src/algorithms/bo/learning/LearningPanels.tsx:47
 msgid "Record the overlap interval <0>{0}</0>: the participating segments <1>{1}</1> overlap from the current, later start to the earlier end. Take the shared range of the two closed intervals, including both endpoints and every point between them, rather than only the current endpoint. The complete intersection follows from the known endpoints; the sweep line has not traversed the whole interval. The orange segment and its two endpoints mark the full intersection. The active order has not changed; membership changes follow after all pairs at this point are recorded."
 msgstr "Record the overlap interval <0>{0}</0>: the participating segments <1>{1}</1> overlap from the current, later start to the earlier end. Take the shared range of the two closed intervals, including both endpoints and every point between them, rather than only the current endpoint. The complete intersection follows from the known endpoints; the sweep line has not traversed the whole interval. The orange segment and its two endpoints mark the full intersection. The active order has not changed; membership changes follow after all pairs at this point are recorded."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:166
+#: src/algorithms/bo/learning/executionCode.ts:166
 msgid "Record the segment as ending here"
 msgstr "Record the segment as ending here"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:171
+#: src/algorithms/bo/learning/executionCode.ts:171
 msgid "Record the segment as passing through this point"
 msgstr "Record the segment as passing through this point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:161
+#: src/algorithms/bo/learning/executionCode.ts:161
 msgid "Record the segment as starting here"
 msgstr "Record the segment as starting here"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:86
+#: src/algorithms/bo/learning/executionCode.ts:86
 msgid "Record the segment pair being checked"
 msgstr "Record the segment pair being checked"
 
-#: src/app/App.tsx:229
+#: src/algorithms/bo/BoPages.tsx:225
 msgid "Recovery navigation"
 msgstr "Recovery navigation"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:154
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:154
 msgid "Referenced variable "
 msgstr "Referenced variable "
 
-#: src/help/CaseHelp.tsx:19
+#: src/algorithms/bo/help/CaseHelp.tsx:19
 msgid "References"
 msgstr "References"
 
-#: src/learning/LearningPanels.tsx:46
+#: src/algorithms/bo/learning/LearningPanels.tsx:46
 msgid "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
 msgstr "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:25
+#: src/algorithms/bo/learning/executionSymbols.ts:25
 msgid "Remove and return the earliest event in the queue."
 msgstr "Remove and return the earliest event in the queue."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:104
+#: src/algorithms/bo/learning/executionCode.ts:104
 msgid "Remove segments that end at the current point from the active set"
 msgstr "Remove segments that end at the current point from the active set"
 
 #. placeholder {0}: inputReferences(step.active, ' → ')
-#: src/learning/LearningPanels.tsx:49
+#: src/algorithms/bo/learning/LearningPanels.tsx:49
 msgid "Reorder to <0>{0}</0>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress."
 msgstr "Reorder to <0>{0}</0>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:41
+#: src/algorithms/bo/learning/executionSymbols.ts:41
 msgid "Replace elements in the specified range."
 msgstr "Replace elements in the specified range."
 
-#: src/learning/LearningReplayControls.tsx:17
+#: src/algorithms/bo/learning/LearningReplayControls.tsx:17
 msgid "Replay controls"
 msgstr "Replay controls"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:134
-#: src/learning/ExecutionPanel.tsx:134
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:134
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:134
 msgid "Replaying actual control flow · intermediate state"
 msgstr "Replaying actual control flow · intermediate state"
 
-#: src/geometry/GeometryView.tsx:90
+#: src/algorithms/bo/geometry/GeometryView.tsx:90
 msgid "Reset view"
 msgstr "Reset view"
 
-#: src/learning/useLearningReplay.tsx:122
+#: src/algorithms/bo/learning/useLearningReplay.tsx:122
 msgid "Restart"
 msgstr "Restart"
 
-#: src/learning/useLearningReplay.tsx:121
+#: src/algorithms/bo/learning/useLearningReplay.tsx:121
 msgid "Restart controls"
 msgstr "Restart controls"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:198
+#: src/algorithms/bo/learning/executionCode.ts:198
 msgid "Restore both endpoints to produce an overlap result"
 msgstr "Restore both endpoints to produce an overlap result"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:203
+#: src/algorithms/bo/learning/executionCode.ts:203
 msgid "Restore the contact point to produce a point result"
 msgstr "Restore the contact point to produce a point result"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:209
+#: src/algorithms/bo/learning/executionCode.ts:209
 msgid "Restore the current point to produce a point result"
 msgstr "Restore the current point to produce a point result"
 
-#: src/app/App.tsx:81
-#: src/app/App.tsx:84
+#: src/algorithms/bo/BoPages.tsx:77
+#: src/algorithms/bo/BoPages.tsx:80
 msgid "Results"
 msgstr "Results"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:85
+#: src/algorithms/bo/learning/executionSymbols.ts:85
 msgid "retain closure"
 msgstr "retain closure"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:162
+#: src/algorithms/bo/learning/executionSymbols.ts:162
 msgid "return executed; the function has returned"
 msgstr "return executed; the function has returned"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:83
+#: src/algorithms/bo/learning/executionCode.ts:83
 msgid "Return no candidate if fewer than two segments remain"
 msgstr "Return no candidate if fewer than two segments remain"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:100
+#: src/algorithms/bo/learning/executionCode.ts:100
 msgid "Return the intersection candidate found by this check"
 msgstr "Return the intersection candidate found by this check"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:36
+#: src/algorithms/bo/learning/executionSymbols.ts:36
 msgid "Return the larger of two values."
 msgstr "Return the larger of two values."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:35
+#: src/algorithms/bo/learning/executionSymbols.ts:35
 msgid "Return the smaller of two values."
 msgstr "Return the smaller of two values."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:19
+#: src/algorithms/bo/learning/executionSymbols.ts:19
 msgid "Return value already produced by the current call"
 msgstr "Return value already produced by the current call"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:134
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:134
 msgid "Return value produced · caller not resumed yet"
 msgstr "Return value produced · caller not resumed yet"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:146
-#: src/learning/ExecutionSymbol.tsx:152
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:146
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:152
 msgid "Return value: "
 msgstr "Return value: "
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:77
+#: src/algorithms/bo/learning/executionAccess.ts:77
 msgid "Right endpoint of the sweep segment"
 msgstr "Right endpoint of the sweep segment"
 
-#: src/learning/LearningDock.tsx:17
+#: src/algorithms/bo/learning/LearningDock.tsx:17
 msgid "Right sidebar"
 msgstr "Right sidebar"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:90
+#: src/algorithms/bo/cases/artPatterns.ts:90
 msgid "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 msgstr "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:43
+#: src/algorithms/bo/learning/executionSymbols.ts:43
 msgid "Run the closure and return its result when the condition is true; otherwise return None."
 msgstr "Run the closure and return its result when the condition is true; otherwise return None."
 
-#: src/learning/learningState.ts:39
+#: src/algorithms/bo/learning/learningState.ts:39
 msgid "S{id} end"
 msgstr "S{id} end"
 
-#: src/learning/learningState.ts:38
+#: src/algorithms/bo/learning/learningState.ts:38
 msgid "S{id} start"
 msgstr "S{id} start"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatPoint(segments[inspectedInput].start)
 #. placeholder {1}: formatPoint(segments[inspectedInput].end)
-#: src/geometry/GeometryView.tsx:44
+#: src/algorithms/bo/geometry/GeometryView.tsx:44
 msgid "geometry.inputDetail"
 msgstr "S{inspectedInput} · Start {0} · End {1}"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:36
+#: src/algorithms/bo/cases/presets.ts:36
 msgid "S0 × S1 intersects over (0, 0) → (4, 0). At the center (2, 0), S0, S1, S2, S3, S5, and S6 produce 6 × 5 / 2 − 1 = 14 point pairs (excluding the already recorded interval pair); (0, 0) adds S0 × S4 and S1 × S4. There are 17 pairs: 16 point pairs at 2 positions and 1 complete interval; the central event does not split that interval."
 msgstr "S0 × S1 intersects over (0, 0) → (4, 0). At the center (2, 0), S0, S1, S2, S3, S5, and S6 produce 6 × 5 / 2 − 1 = 14 point pairs (excluding the already recorded interval pair); (0, 0) adds S0 × S4 and S1 × S4. There are 17 pairs: 16 point pairs at 2 positions and 1 complete interval; the central event does not split that interval."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:37
+#: src/algorithms/bo/cases/presets.ts:37
 msgid "S0 × S1 intersects over (1/2, 0) → (1/2, 4). At the middle (1/2, 2), S0, S1, S2, S3, and S6 produce 5 × 4 / 2 − 1 = 9 point pairs; at the bottom, S4 forms one pair each with S0 and S1, and at the top, S5 forms one pair each with S0 and S1. There are 14 pairs: 13 point pairs at 3 positions and 1 complete interval, with no geometric union merging."
 msgstr "S0 × S1 intersects over (1/2, 0) → (1/2, 4). At the middle (1/2, 2), S0, S1, S2, S3, and S6 produce 5 × 4 / 2 − 1 = 9 point pairs; at the bottom, S4 forms one pair each with S0 and S1, and at the top, S5 forms one pair each with S0 and S1. There are 14 pairs: 13 point pairs at 3 positions and 1 complete interval, with no geometric union merging."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:27
+#: src/algorithms/bo/cases/presets.ts:27
 msgid "S0 and S1 coincide exactly at (1/3, 2/3), producing the only pair S0 × S1. S2 has different coordinates (2/3, 1/3), so there are no other intersections; all three points start and end simultaneously."
 msgstr "S0 and S1 coincide exactly at (1/3, 2/3), producing the only pair S0 × S1. S2 has different coordinates (2/3, 1/3), so there are no other intersections; all three points start and end simultaneously."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:24
+#: src/algorithms/bo/cases/presets.ts:24
 msgid "S0 and S1 satisfy y = x − 1 and y = −x − 1, intersecting at (0, -1); S2 and S3 satisfy y = x + 3 and y = −x + 3, intersecting at (0, 3). The lower group has y ∈ [−2, 0] and the upper group has y ∈ [2, 4], so the groups do not intersect."
 msgstr "S0 and S1 satisfy y = x − 1 and y = −x − 1, intersecting at (0, -1); S2 and S3 satisfy y = x + 3 and y = −x + 3, intersecting at (0, 3). The lower group has y ∈ [−2, 0] and the upper group has y ∈ [2, 4], so the groups do not intersect."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:13
+#: src/algorithms/bo/cases/presets.ts:13
 msgid "S0 first crosses S1, then becomes adjacent to the previously nonadjacent S2 and discovers the next intersection."
 msgstr "S0 first crosses S1, then becomes adjacent to the previously nonadjacent S2 and discovers the next intersection."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:23
+#: src/algorithms/bo/cases/presets.ts:23
 msgid "S0 has x = 0, y ∈ [−2, 3]; S1, S2, and S3 lie at y = −1, 1, and 3 respectively, and each x range includes 0. The intersections are exactly (0, -1), (0, 1), and (0, 3), belonging to S0 × S1, S0 × S2, and S0 × S3 respectively; the last is contact between the end of S0 and the start of S3. The three horizontal segments have different heights and do not intersect one another."
 msgstr "S0 has x = 0, y ∈ [−2, 3]; S1, S2, and S3 lie at y = −1, 1, and 3 respectively, and each x range includes 0. The intersections are exactly (0, -1), (0, 1), and (0, 3), belonging to S0 × S1, S0 × S2, and S0 × S3 respectively; the last is contact between the end of S0 and the start of S3. The three horizontal segments have different heights and do not intersect one another."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:11
+#: src/algorithms/bo/cases/presets.ts:11
 msgid "S0 has y = 0 and S1 has y = 2, so they cannot share a point."
 msgstr "S0 has y = 0 and S1 has y = 2, so they cannot share a point."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:16
+#: src/algorithms/bo/cases/presets.ts:16
 msgid "S0 has y = 0, x ∈ [0, 2]; S1 has y = x − 2, x ∈ [2, 3]. Their only common point is the endpoint (2, 0), which both include."
 msgstr "S0 has y = 0, x ∈ [0, 2]; S1 has y = x − 2, x ∈ [2, 3]. Their only common point is the endpoint (2, 0), which both include."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:17
+#: src/algorithms/bo/cases/presets.ts:17
 msgid "S0 has y = 0, x ∈ [0, 4]; S1 has x = 2, y ∈ [0, 2]. Their only common point, (2, 0), is the start of S1 and lies inside S0."
 msgstr "S0 has y = 0, x ∈ [0, 4]; S1 has x = 2, y ∈ [0, 2]. Their only common point, (2, 0), is the start of S1 and lies inside S0."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:19
+#: src/algorithms/bo/cases/presets.ts:19
 msgid "S0 has y = 0, x ∈ [0, 4]; S1 has y = 2 − x, x ∈ [0, 2]. Their only intersection, (2, 0), is the end of S1 but lies inside S0."
 msgstr "S0 has y = 0, x ∈ [0, 4]; S1 has y = 2 − x, x ∈ [0, 2]. Their only intersection, (2, 0), is the end of S1 but lies inside S0."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:18
+#: src/algorithms/bo/cases/presets.ts:18
 msgid "S0 has y = 0, x ∈ [0, 4]; S1 has y = x − 2, x ∈ [2, 4]. Their only intersection, (2, 0), is the start of S1 but lies inside S0."
 msgstr "S0 has y = 0, x ∈ [0, 4]; S1 has y = x − 2, x ∈ [2, 4]. Their only intersection, (2, 0), is the start of S1 but lies inside S0."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:21
+#: src/algorithms/bo/cases/presets.ts:21
 msgid "S0 has y = x, S1 has y = −x, and S2 has y = 0. Every pair has the unique solution (0, 0), and x = 0 lies in each interval (−2, 2). The bottom-to-top order is S0, S2, S1 on the left and S1, S2, S0 on the right; one geometric point corresponds to 3 × 2 / 2 = 3 pairs."
 msgstr "S0 has y = x, S1 has y = −x, and S2 has y = 0. Every pair has the unique solution (0, 0), and x = 0 lies in each interval (−2, 2). The bottom-to-top order is S0, S2, S1 on the left and S1, S2, S0 on the right; one geometric point corresponds to 3 × 2 / 2 = 3 pairs."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:26
+#: src/algorithms/bo/cases/presets.ts:26
 msgid "S0 lies on y = 0, x ∈ [0, 4]. S2 is at its endpoint (0, 0), producing S0 × S2; S1 and S4 coincide at the interior point (2, 0), forming 3 pairs together with S0. S3 is at (5, 1) and intersects no other input; there are 4 pairs at 2 positions."
 msgstr "S0 lies on y = 0, x ∈ [0, 4]. S2 is at its endpoint (0, 0), producing S0 × S2; S1 and S4 coincide at the interior point (2, 0), forming 3 pairs together with S0. S3 is at (5, 1) and intersects no other input; there are 4 pairs at 2 positions."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:10
+#: src/algorithms/bo/cases/presets.ts:10
 msgid "S0 satisfies y = x and S1 satisfies y = 4 − x. Solving gives x = y = 2, inside both segments."
 msgstr "S0 satisfies y = x and S1 satisfies y = 4 − x. Solving gives x = y = 2, inside both segments."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:22
+#: src/algorithms/bo/cases/presets.ts:22
 msgid "S0, S1, S2, and S3 satisfy y = x, y = −x, y = 2x, and y = x/2 respectively. Their slopes differ and their only common point is (0, 0). The origin is inside S0 and S1, the end of S2, and the start of S3; all closed segments include it, giving exactly 4 × 3 / 2 = 6 pairs. The order is S2, S0, S1 on the left and S1, S3, S0 on the right."
 msgstr "S0, S1, S2, and S3 satisfy y = x, y = −x, y = 2x, and y = x/2 respectively. Their slopes differ and their only common point is (0, 0). The origin is inside S0 and S1, the end of S2, and the start of S3; all closed segments include it, giving exactly 4 × 3 / 2 = 6 pairs. The order is S2, S0, S1 on the left and S1, S3, S0 on the right."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:12
+#: src/algorithms/bo/cases/presets.ts:12
 msgid "S0, with y = x, and S2, with y = 10 − x, intersect at (5, 5). S1 has y = 5, but its x range is only [1, 3], excluding x = 5, so there are no other intersecting pairs."
 msgstr "S0, with y = x, and S2, with y = 10 − x, intersect at (5, 5). S1 has y = 5, but its x range is only [1, 3], excluding x = 5, so there are no other intersecting pairs."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:13
+#: src/algorithms/bo/cases/presets.ts:13
 msgid "S0, with y = x, intersects S1, with y = 3, at (3, 3), and S2, with y = 6, at (6, 6). Both points are inside the respective segments. S1 and S2 are parallel and do not intersect."
 msgstr "S0, with y = x, intersects S1, with y = 3, at (3, 3), and S2, with y = 6, at (6, 6). Both points are inside the respective segments. S1 and S2 are parallel and do not intersect."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:19
+#: src/algorithms/bo/cases/presets.ts:19
 msgid "S1 approaches from the upper left and ends at (2, 0) inside S0."
 msgstr "S1 approaches from the upper left and ends at (2, 0) inside S0."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:12
+#: src/algorithms/bo/cases/presets.ts:12
 msgid "S1 initially separates S0 and S2; this new neighboring pair can only be checked after S1 leaves."
 msgstr "S1 initially separates S0 and S2; this new neighboring pair can only be checked after S1 leaves."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:18
+#: src/algorithms/bo/cases/presets.ts:18
 msgid "S1 starts at (2, 0) inside S0 and heads up and right."
 msgstr "S1 starts at (2, 0) inside S0 and heads up and right."
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:81
+#: src/algorithms/bo/cases/artPatterns.ts:81
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:34
+#: src/algorithms/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
 msgstr "Same-point and tie rules"
 
-#: src/help/CaseHelp.tsx:31
+#: src/algorithms/bo/help/CaseHelp.tsx:31
 msgid "Same-point and tie rules"
 msgstr "Same-point and tie rules"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:164
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:164
 msgid "Scope: "
 msgstr "Scope: "
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:72
+#: src/algorithms/bo/help/HelpContent.tsx:72
 msgid "help.NeighborRules.5"
 msgstr "Scope: shared endpoints, endpoints in segment interiors, multiple segments meeting at one point, vertical segments, events at the same sweep coordinate, and collinear overlaps require additional rules. The ordinary examples and adjacency argument here do not replace a complete proof of handling these degeneracies."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:12
+#: src/algorithms/bo/learning/executionSymbols.ts:12
 msgid "Second segment in the current pair (an index in the sweep loop)"
 msgstr "Second segment in the current pair (an index in the sweep loop)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:10
+#: src/algorithms/bo/learning/executionSymbols.ts:10
 msgid "Segment index visited by the current loop"
 msgstr "Segment index visited by the current loop"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:7
+#: src/algorithms/bo/learning/executionSymbols.ts:7
 msgid "Segment information carried by the current event"
 msgstr "Segment information carried by the current event"
 
-#: src/learning/LearningPanels.tsx:84
-#: src/learning/LearningPanels.tsx:85
-#: src/learning/LearningView.tsx:30
+#: src/algorithms/bo/learning/LearningPanels.tsx:84
+#: src/algorithms/bo/learning/LearningPanels.tsx:85
+#: src/algorithms/bo/learning/LearningView.tsx:30
 msgid "Segments at this point"
 msgstr "Segments at this point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:10
+#: src/algorithms/bo/learning/executionSymbols.ts:10
 msgid "Segments ending at the current point"
 msgstr "Segments ending at the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:10
+#: src/algorithms/bo/learning/executionSymbols.ts:10
 msgid "Segments starting at the current point"
 msgstr "Segments starting at the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:8
+#: src/algorithms/bo/learning/executionSymbols.ts:8
 msgid "Segments transformed into sweep coordinates; shadows the original input parameter with the same name"
 msgstr "Segments transformed into sweep coordinates; shadows the original input parameter with the same name"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:11
+#: src/algorithms/bo/learning/executionSymbols.ts:11
 msgid "Segments whose interiors pass through the current point"
 msgstr "Segments whose interiors pass through the current point"
 
-#: src/app/App.tsx:86
+#: src/algorithms/bo/BoPages.tsx:82
 msgid "Select a pair to inspect its exact intersection."
 msgstr "Select a pair to inspect its exact intersection."
 
-#: src/help/CaseHelp.tsx:23
+#: src/algorithms/bo/help/CaseHelp.tsx:23
 msgid "Select a pair to inspect its intersection and both inputs. An intersection can be a point or a complete overlap interval. Exact details retain rational coordinates; pixel approximations are used only for drawing."
 msgstr "Select a pair to inspect its intersection and both inputs. An intersection can be a point or a complete overlap interval. Exact details retain rational coordinates; pixel approximations are used only for drawing."
 
-#: src/app/App.tsx:122
+#: src/algorithms/bo/BoPages.tsx:118
 msgid "Select a pair to inspect the intersection and both inputs."
 msgstr "Select a pair to inspect the intersection and both inputs."
 
-#: src/app/App.tsx:106
+#: src/algorithms/bo/BoPages.tsx:102
 msgid "Select an intersecting pair"
 msgstr "Select an intersecting pair"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:176
+#: src/algorithms/bo/learning/executionCode.ts:176
 msgid "Select each segment passing through the current point"
 msgstr "Select each segment passing through the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:27
+#: src/algorithms/bo/learning/executionSymbols.ts:27
 msgid "self, other: the operands at this call site, such as heights or slopes."
 msgstr "self, other: the operands at this call site, such as heights or slopes."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:35
-#: src/learning/executionSymbols.ts:36
+#: src/algorithms/bo/learning/executionSymbols.ts:35
+#: src/algorithms/bo/learning/executionSymbols.ts:36
 msgid "self, other: the two operands at this call site."
 msgstr "self, other: the two operands at this call site."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:44
+#: src/algorithms/bo/learning/executionSymbols.ts:44
 msgid "self: the collection at this call site."
 msgstr "self: the collection at this call site."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:29
+#: src/algorithms/bo/learning/executionSymbols.ts:29
 msgid "self: the comparison result at this call site; no explicit arguments."
 msgstr "self: the comparison result at this call site; no explicit arguments."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:43
+#: src/algorithms/bo/learning/executionSymbols.ts:43
 msgid "self: the condition; f: the closure producing the value."
 msgstr "self: the condition; f: the closure producing the value."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:28
+#: src/algorithms/bo/learning/executionSymbols.ts:28
 msgid "self: the current height comparison result; no explicit arguments."
 msgstr "self: the current height comparison result; no explicit arguments."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:25
+#: src/algorithms/bo/learning/executionSymbols.ts:25
 msgid "self: the current queue; no explicit arguments."
 msgstr "self: the current queue; no explicit arguments."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:26
+#: src/algorithms/bo/learning/executionSymbols.ts:26
 msgid "self: the current segment; x: event x coordinate."
 msgstr "self: the current segment; x: event x coordinate."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:42
+#: src/algorithms/bo/learning/executionSymbols.ts:42
 msgid "self: the index at this call site; rhs: the amount to subtract."
 msgstr "self: the index at this call site; rhs: the amount to subtract."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:33
+#: src/algorithms/bo/learning/executionSymbols.ts:33
 msgid "self: the iterator at this call site; no explicit arguments."
 msgstr "self: the iterator at this call site; no explicit arguments."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:45
+#: src/algorithms/bo/learning/executionSymbols.ts:45
 msgid "self: the iterator at this call site."
 msgstr "self: the iterator at this call site."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:47
+#: src/algorithms/bo/learning/executionSymbols.ts:47
 msgid "self: the map at this call site; key: the entry key."
 msgstr "self: the map at this call site; key: the entry key."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:49
+#: src/algorithms/bo/learning/executionSymbols.ts:49
 msgid "self: the map entry at this call site."
 msgstr "self: the map entry at this call site."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:32
-#: src/learning/executionSymbols.ts:40
+#: src/algorithms/bo/learning/executionSymbols.ts:32
+#: src/algorithms/bo/learning/executionSymbols.ts:40
 msgid "self: the sequence at this call site; no explicit arguments."
 msgstr "self: the sequence at this call site; no explicit arguments."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:46
+#: src/algorithms/bo/learning/executionSymbols.ts:46
 msgid "self: the sequence at this call site; range: the index range."
 msgstr "self: the sequence at this call site; range: the index range."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:30
+#: src/algorithms/bo/learning/executionSymbols.ts:30
 msgid "self: the sequence to the left of the call; value: the element in parentheses."
 msgstr "self: the sequence to the left of the call; value: the element in parentheses."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:48
+#: src/algorithms/bo/learning/executionSymbols.ts:48
 msgid "self: the value at this call site."
 msgstr "self: the value at this call site."
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:96
+#: src/algorithms/bo/cases/carbonLattices.ts:96
 msgid "Seven hexagons form a finite honeycomb sheet, with each shared chemical bond retained once; boundary truncation reduces the coordination of edge atoms."
 msgstr "Seven hexagons form a finite honeycomb sheet, with each shared chemical bond retained once; boundary truncation reduces the coordination of edge atoms."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:76
+#: src/algorithms/bo/learning/executionSymbols.ts:76
 msgid "Shadowed (last value before shadowing was not recorded)"
 msgstr "Shadowed (last value before shadowing was not recorded)"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:16
+#: src/algorithms/bo/cases/presets.ts:16
 msgid "Shared endpoint"
 msgstr "Shared endpoint"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:12
+#: src/algorithms/bo/learning/executionSymbols.ts:12
 msgid "Shear coefficient for sweep coordinates"
 msgstr "Shear coefficient for sweep coordinates"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:15
+#: src/algorithms/bo/cases/presets.ts:15
 msgid "Single input"
 msgstr "Single input"
 
-#: src/learning/useLearningReplay.tsx:109
+#: src/algorithms/bo/learning/useLearningReplay.tsx:109
 msgid "Single steps"
 msgstr "Single steps"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:39
+#: src/algorithms/bo/cases/presets.ts:39
 msgid "Six main branches each have two levels of symmetric forks, with gaps between branches. The shape approximates √3/2 by 433/500; intersections are still computed exactly for the submitted rational coordinates."
 msgstr "Six main branches each have two levels of symmetric forks, with gaps between branches. The shape approximates √3/2 by 433/500; intersections are still computed exactly for the submitted rational coordinates."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:73
+#: src/algorithms/bo/learning/executionCode.ts:73
 msgid "Skip this check if fewer than two segments remain"
 msgstr "Skip this check if fewer than two segments remain"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:25
+#: src/algorithms/bo/cases/presets.ts:25
 msgid "Solving y = x and y = 1 − x gives (1/2, 1/2), exactly the start of horizontal S2. Every pair among the three intersects at this exact point: 3 pairs and no overlap interval."
 msgstr "Solving y = x and y = 1 − x gives (1/2, 1/2), exactly the start of horizontal S2. Every pair among the three intersects at this exact point: 3 pairs and no overlap interval."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:119
+#: src/algorithms/bo/learning/executionCode.ts:119
 msgid "Sort these segments by their vertical order just beyond the current point"
 msgstr "Sort these segments by their vertical order just beyond the current point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:38
+#: src/algorithms/bo/learning/executionSymbols.ts:38
 msgid "Sort using the comparison function."
 msgstr "Sort using the comparison function."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:24
+#: src/algorithms/bo/help/HelpContent.tsx:24
 msgid "help.LearningReferences.4"
 msgstr "Source: lecture item 4 defines closed segments, item 6 orders events by both coordinates, and handleEvent in item 8 groups starting, ending, and interior-crossing segments. It reports the intersection and all participants before removing and reinserting segments to update the order (PDF pages 39–42). The lecture sweeps downward; this page sweeps left to right, then upward at the same x. Both use the same exact lexicographic rule, without numerical perturbation."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:28
+#: src/algorithms/bo/help/HelpContent.tsx:28
 msgid "help.LearningReferences.8"
 msgstr "Source: the 2D intersection table in CGAL's official documentation source lists a nonempty intersection of Segment_2 with Segment_2 as Point_2 or Segment_2. The sweep documentation explicitly includes overlapping curves among degeneracies and relies on certified geometric computation. This page explains preset overlap cases through the common range of closed intervals, recording the complete interval at the later start. It does not reproduce CGAL's algorithm or transfer CGAL's robustness or complexity guarantees to this demonstration."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:22
+#: src/algorithms/bo/help/HelpContent.tsx:22
 msgid "help.LearningReferences.2"
 msgstr "Source: the lecture's Plane Sweep, Adjacent-segment rule, and event-handling sections (the adjacency argument in Figure 4 and insertion, deletion, and crossing in Figure 5). The lecture initially assumes general position; here we also specify the processing order for endpoints with the same <0>x</0>. Its balanced-tree complexity results are not performance guarantees for this demonstration."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:38
+#: src/algorithms/bo/cases/presets.ts:38
 msgid "Spider web"
 msgstr "Spider web"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:103
+#: src/algorithms/bo/cases/artPatterns.ts:103
 msgid "Star polygon"
 msgstr "Star polygon"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:144
+#: src/algorithms/bo/learning/executionCode.ts:144
 msgid "Start by collecting segments that begin at the current point"
 msgstr "Start by collecting segments that begin at the current point"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:18
+#: src/algorithms/bo/cases/presets.ts:18
 msgid "Start in the interior"
 msgstr "Start in the interior"
 
-#: src/app/App.tsx:159
+#: src/algorithms/bo/BoPages.tsx:155
 msgid "Start learning"
 msgstr "Start learning"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:13
+#: src/algorithms/bo/learning/executionSymbols.ts:13
 msgid "Start of the candidate overlap interval"
 msgstr "Start of the candidate overlap interval"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:80
+#: src/algorithms/bo/learning/executionAccess.ts:80
 msgid "Start of the original segment"
 msgstr "Start of the original segment"
 
-#: src/app/App.tsx:286
+#: src/algorithms/bo/BoPages.tsx:282
 msgid "Start step-by-step learning"
 msgstr "Start step-by-step learning"
 
 #. placeholder {0}: step.starts.length ? inputReferences(step.starts) : translate(msg`None`)
-#: src/learning/LearningPanels.tsx:88
+#: src/algorithms/bo/learning/LearningPanels.tsx:88
 msgid "Starting: {0}"
 msgstr "Starting: {0}"
 
-#: src/app/App.tsx:217
+#: src/algorithms/bo/BoPages.tsx:213
 msgid "Step"
 msgstr "Step"
 
-#: src/learning/useLearningReplay.tsx:115
+#: src/algorithms/bo/learning/useLearningReplay.tsx:115
 msgid "Step out"
 msgstr "Step out"
 
-#: src/learning/useLearningReplay.tsx:114
+#: src/algorithms/bo/learning/useLearningReplay.tsx:114
 msgid "Step over"
 msgstr "Step over"
 
-#: src/app/App.tsx:73
-#: src/app/App.tsx:205
-#: src/learning/LearningView.tsx:27
+#: src/algorithms/bo/BoPages.tsx:69
+#: src/algorithms/bo/BoPages.tsx:201
+#: src/algorithms/bo/learning/LearningView.tsx:27
 msgid "Step-by-step learning"
 msgstr "Step-by-step learning"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:213
+#: src/algorithms/bo/learning/executionCode.ts:213
 msgid "Store the pair in ascending index order together with its intersection"
 msgstr "Store the pair in ascending index order together with its intersection"
 
 #. js-lingui-explicit-id
-#: src/cases/penrose.ts:83
+#: src/algorithms/bo/cases/penrose.ts:83
 msgid "Subdivision uses φ = (1 + √5)/2. Matching Robinson triangles are paired along their bases and their internal diagonals removed; unpaired boundary halves are discarded, leaving 10 thin and 10 thick rhombi. The 50 unique edges connect 31 vertices: 5 have degree 2, 20 have degree 3, and 6 have degree 5, giving 5 × 1 + 20 × 3 + 6 × 10 = 125 endpoint pairs at 31 intersection positions; the origin joins 5 edges, giving exactly 10 pairs. Joins have no interior crossings or overlaps. Approximated shared vertices are uniformly rotated exactly by (x, y) → ((3x − 4y)/5, (4x + 3y)/5), preserving lengths, angles, and joins. The service computes the submitted rational coordinates exactly, without treating approximated rhombi as exact irrational geometry."
 msgstr "Subdivision uses φ = (1 + √5)/2. Matching Robinson triangles are paired along their bases and their internal diagonals removed; unpaired boundary halves are discarded, leaving 10 thin and 10 thick rhombi. The 50 unique edges connect 31 vertices: 5 have degree 2, 20 have degree 3, and 6 have degree 5, giving 5 × 1 + 20 × 3 + 6 × 10 = 125 endpoint pairs at 31 intersection positions; the origin joins 5 edges, giving exactly 10 pairs. Joins have no interior crossings or overlaps. Approximated shared vertices are uniformly rotated exactly by (x, y) → ((3x − 4y)/5, (4x + 3y)/5), preserving lengths, angles, and joins. The service computes the submitted rational coordinates exactly, without treating approximated rhombi as exact irrational geometry."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:42
+#: src/algorithms/bo/learning/executionSymbols.ts:42
 msgid "Subtract an index with an underflow check."
 msgstr "Subtract an index with an underflow check."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:7
+#: src/algorithms/bo/learning/executionSymbols.ts:7
 msgid "Sweep coordinates of the current event"
 msgstr "Sweep coordinates of the current event"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:17
+#: src/algorithms/bo/learning/executionSymbols.ts:17
 msgid "Sweep coordinates of the event being processed"
 msgstr "Sweep coordinates of the event being processed"
 
-#: src/geometry/GeometryView.tsx:82
+#: src/algorithms/bo/geometry/GeometryView.tsx:82
 msgid "Sweep direction: left to right"
 msgstr "Sweep direction: left to right"
 
-#: src/geometry/GeometryView.tsx:127
+#: src/algorithms/bo/geometry/GeometryView.tsx:127
 msgid "Sweep line not started"
 msgstr "Sweep line not started"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatRational(sweep.current.x)
-#: src/geometry/GeometryView.tsx:127
+#: src/algorithms/bo/geometry/GeometryView.tsx:127
 msgid "geometry.sweepLine"
 msgstr "Sweep line x = {0}"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:126
+#: src/algorithms/bo/learning/executionSymbols.ts:126
 msgid "Sweep-coordinate segments captured by the current closure"
 msgstr "Sweep-coordinate segments captured by the current closure"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:125
+#: src/algorithms/bo/learning/executionSymbols.ts:125
 msgid "Sweep-coordinate segments received by the current function"
 msgstr "Sweep-coordinate segments received by the current function"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/learning/LearningPanels.tsx:39
+#: src/algorithms/bo/learning/LearningPanels.tsx:39
 msgid "Take <0>{0}</0> from the front of the queue and stop the sweep line here. The current event has left the pending queue; no insertion, removal, or reordering has happened yet. First check the participants at this point and record each pair's intersection, then update the active order following the real actions."
 msgstr "Take <0>{0}</0> from the front of the queue and stop the sweep line here. The current event has left the pending queue; no insertion, removal, or reordering has happened yet. First check the participants at this point and record each pair's intersection, then update the active order following the real actions."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:134
+#: src/algorithms/bo/learning/executionCode.ts:134
 msgid "Take an event"
 msgstr "Take an event"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:135
+#: src/algorithms/bo/learning/executionCode.ts:135
 msgid "Take the next pending event"
 msgstr "Take the next pending event"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:100
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:100
 msgid "Teaching code highlighting failed to load. Refresh to try again."
 msgstr "Teaching code highlighting failed to load. Refresh to try again."
 
-#: src/learning/LearningReplayControls.tsx:29
+#: src/algorithms/bo/learning/LearningReplayControls.tsx:29
 msgid "Teaching step"
 msgstr "Teaching step"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:109
+#: src/algorithms/bo/learning/executionCode.ts:109
 msgid "Temporarily remove segments through the current point before reinserting them in order"
 msgstr "Temporarily remove segments through the current point before reinserting them in order"
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:118
+#: src/algorithms/bo/cases/carbonLattices.ts:118
 msgid "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection."
 msgstr "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:39
+#: src/algorithms/bo/cases/presets.ts:39
 msgid "The center joins 6 main branches, producing 15 pairs; each main branch has two forks where four edges meet, producing 6 pairs per fork. There are 1 + 6 × 2 = 13 intersection positions and 15 + 12 × 6 = 87 pairs. For example, (3, 0) and (6, 0) each have 6 pairs; tips join only one edge and produce no pairs. There are no crossings or overlaps between forks. The ideal coordinates with sixfold symmetry use a fixed rational approximation."
 msgstr "The center joins 6 main branches, producing 15 pairs; each main branch has two forks where four edges meet, producing 6 pairs per fork. There are 1 + 6 × 2 = 13 intersection positions and 15 + 12 × 6 = 87 pairs. For example, (3, 0) and (6, 0) each have 6 pairs; tips join only one edge and produce no pairs. There are no crossings or overlaps between forks. The ideal coordinates with sixfold symmetry use a fixed rational approximation."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:69
+#: src/algorithms/bo/help/HelpContent.tsx:69
 msgid "help.NeighborRules.2"
 msgstr "The closer we get to the intersection, the smaller the gap between the two segments. If a third segment stayed between them, it would also have to pass through the intersection, contradicting the assumption that no three segments meet. Thus, sufficiently close before the crossing, the intersecting segments must be neighbors."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:29
+#: src/algorithms/bo/cases/presets.ts:29
 msgid "The complete intersection of the horizontal segments is [2, 4]."
 msgstr "The complete intersection of the horizontal segments is [2, 4]."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:157
+#: src/algorithms/bo/learning/executionSymbols.ts:157
 msgid "The condition is false; skip this branch"
 msgstr "The condition is false; skip this branch"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:156
+#: src/algorithms/bo/learning/executionSymbols.ts:156
 msgid "The condition is true; enter this branch"
 msgstr "The condition is true; enter this branch"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:49
+#: src/algorithms/bo/help/HelpContent.tsx:49
 msgid "help.VerticalRules.3"
 msgstr "The current event, queue, and results in the drawing all use original coordinates. The sweep line may stay at the same x while the current event moves upward in y. Completing a lower intersection does not clear higher pending events."
 
-#: src/learning/LearningPanels.tsx:59
+#: src/algorithms/bo/learning/LearningPanels.tsx:59
 msgid "The event is complete: the active order and pending queue are consistent."
 msgstr "The event is complete: the active order and pending queue are consistent."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:6
+#: src/algorithms/bo/learning/executionSymbols.ts:6
 msgid "The event just removed from the queue, possibly absent"
 msgstr "The event just removed from the queue, possibly absent"
 
-#: src/learning/LearningPanels.tsx:62
+#: src/algorithms/bo/learning/LearningPanels.tsx:62
 msgid "The event queue and active order are empty. All inputs have been processed; zero-length points need no insertion into or removal from the active order."
 msgstr "The event queue and active order are empty. All inputs have been processed; zero-length points need no insertion into or removal from the active order."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:10
+#: src/algorithms/bo/help/HelpContent.tsx:10
 msgid "help.LearningIntroduction.3"
 msgstr "The event queue stores pending events in increasing <0>x</0>, then <1>y</1> order. Active segments have entered but have not yet left, and are ordered from bottom to top. Neighbors are consecutive segments in this order."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:81
+#: src/algorithms/bo/help/HelpContent.tsx:81
 msgid "help.EventQueueRules.2"
 msgstr "The event queue stores pending events in increasing x, then y order. The current event is displayed separately after being removed from the front."
 
 #. js-lingui-explicit-id
-#: src/learning/trace.ts:115
+#: src/algorithms/bo/learning/trace.ts:115
 msgid "The execution trace response has no body"
 msgstr "The execution trace response has no body"
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:105
+#: src/algorithms/bo/cases/carbonLattices.ts:105
 msgid "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 msgstr "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 
-#: src/app/App.tsx:130
+#: src/algorithms/bo/BoPages.tsx:126
 msgid "The input set is empty"
 msgstr "The input set is empty"
 
-#: src/learning/LearningPanels.tsx:47
+#: src/algorithms/bo/learning/LearningPanels.tsx:47
 msgid "The intersection has been recorded in the results; the active order has not changed yet."
 msgstr "The intersection has been recorded in the results; the active order has not changed yet."
 
-#: src/learning/LearningPanels.tsx:46
+#: src/algorithms/bo/learning/LearningPanels.tsx:46
 msgid "The intersection includes this boundary. Keep the complete recorded interval without recording its end again as an isolated intersection point."
 msgstr "The intersection includes this boundary. Keep the complete recorded interval without recording its end again as an isolated intersection point."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:9
+#: src/algorithms/bo/help/HelpContent.tsx:9
 msgid "help.LearningIntroduction.2"
 msgstr "The most direct approach checks every pair: <0>n</0> segments require <1>n(n−1)/2</1> pair checks. A sweep line is a vertical line moving from left to right. It stops only at endpoints or discovered intersections; these stopping positions are called events."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:187
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:187
 msgid "The segments parameter is shadowed."
 msgstr "The parameter <0>segments</0> is shadowed by a local variable with the same name."
 
-#: src/learning/LearningPanels.tsx:66
+#: src/algorithms/bo/learning/LearningPanels.tsx:66
 msgid "The results are empty: no separate input pair intersects. See the mathematical check below for the geometric reasoning."
 msgstr "The results are empty: no separate input pair intersects. See the mathematical check below for the geometric reasoning."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:35
+#: src/algorithms/bo/help/HelpContent.tsx:35
 msgid "help.SamePointRules.0"
 msgstr "The same x coordinate does not imply the same point"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:99
+#: src/algorithms/bo/cases/artPatterns.ts:99
 msgid "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t + 6), 6t). Strings with parameters t and u intersect at (3(t + u), tu), within both segments; for example, S5 × S7 intersects at (0, −1) and S6 × S7 at (3, 0). The continuous line family is tangent to y = x²/36 at (6t, t²), so the finite arrangement outlines its envelope; 13 strings produce 78 distinct intersection positions."
 msgstr "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t + 6), 6t). Strings with parameters t and u intersect at (3(t + u), tu), within both segments; for example, S5 × S7 intersects at (0, −1) and S6 × S7 at (3, 0). The continuous line family is tangent to y = x²/36 at (6t, t²), so the finite arrangement outlines its envelope; 13 strings produce 78 distinct intersection positions."
 
 #. js-lingui-explicit-id
-#: src/cases/carbonLattices.ts:100
+#: src/algorithms/bo/cases/carbonLattices.ts:100
 msgid "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
 msgstr "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:36
+#: src/algorithms/bo/help/HelpContent.tsx:36
 msgid "help.SamePointRules.1"
 msgstr "The sweep direction determines which segments start, end, or pass through the interior. These three groups belong to one exact geometric point and do not change during intermediate actions. Closed segments include endpoints: record the intersections of all participants first, then remove ending segments, insert starting segments, and order those that remain active."
 
-#: src/learning/LearningPanels.tsx:59
+#: src/algorithms/bo/learning/LearningPanels.tsx:59
 msgid "The teaching actions for this event are complete. Next, process the first queued event."
 msgstr "The teaching actions for this event are complete. Next, process the first queued event."
 
 #. placeholder {0}: inputReferences(pointInputs)
-#: src/learning/LearningPanels.tsx:44
+#: src/algorithms/bo/learning/LearningPanels.tsx:44
 msgid "The zero-length inputs <0>{0}</0> have coincident endpoints, so they belong to both the start and end groups without entering the persistent active order. They participate in pairs only at this exact position: contact in a segment's interior or at a closed endpoint both counts. Coincident points retain separate input identities. Point events without a matching pair also complete normally."
 msgstr "The zero-length inputs <0>{0}</0> have coincident endpoints, so they belong to both the start and end groups without entering the persistent active order. They participate in pairs only at this exact position: contact in a segment's interior or at a closed endpoint both counts. Coincident points retain separate input identities. Point events without a matching pair also complete normally."
 
-#: src/learning/LearningPanels.tsx:59
+#: src/algorithms/bo/learning/LearningPanels.tsx:59
 msgid "There are no future intersections to add to the queue."
 msgstr "There are no future intersections to add to the queue."
 
-#: src/learning/LearningPanels.tsx:38
+#: src/algorithms/bo/learning/LearningPanels.tsx:38
 msgid "There are no inputs, so there are no endpoints or events. The queue and active order are empty. Step through the microsteps to see event retrieval return None and exit the loop."
 msgstr "There are no inputs, so there are no endpoints or events. The queue and active order are empty. Step through the microsteps to see event retrieval return None and exit the loop."
 
-#: src/learning/LearningPanels.tsx:47
+#: src/algorithms/bo/learning/LearningPanels.tsx:47
 msgid "These pairwise records describe intersecting pairs at the same geometric point, not multiple intersection points. See the point groups for all participants; the event is not complete yet."
 msgstr "These pairwise records describe intersecting pairs at the same geometric point, not multiple intersection points. See the point groups for all participants; the event is not complete yet."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:160
+#: src/algorithms/bo/learning/executionSymbols.ts:160
 msgid "This branch is skipped"
 msgstr "This branch is skipped"
 
-#: src/help/CaseHelp.tsx:48
+#: src/algorithms/bo/help/CaseHelp.tsx:48
 msgid "This case currently provides result viewing. Open a teaching case from the case list for step-by-step learning."
 msgstr "This case currently provides result viewing. Open a teaching case from the case list for step-by-step learning."
 
-#: src/app/App.tsx:258
+#: src/algorithms/bo/BoPages.tsx:254
 msgid "This case does not support learning."
 msgstr "This case does not support learning."
 
 #. placeholder {0}: inputReferences(continuingOverlapInputs)
-#: src/learning/LearningPanels.tsx:46
+#: src/algorithms/bo/learning/LearningPanels.tsx:46
 msgid "This is an overlap end boundary: {0} continue while the ending inputs leave."
 msgstr "This is an overlap end boundary: {0} continue while the ending inputs leave."
 
-#: src/learning/LearningPanels.tsx:46
+#: src/algorithms/bo/learning/LearningPanels.tsx:46
 msgid "This is an overlap end boundary: all members of these pairs end here."
 msgstr "This is an overlap end boundary: all members of these pairs end here."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:13
+#: src/algorithms/bo/help/HelpContent.tsx:13
 msgid "help.LearningIntroduction.6"
 msgstr "This learning flow covers ordinary crossings, empty sets and disjoint inputs, neighbor checks, distinct positions at the same sweep coordinate, endpoint contacts, multiple segments meeting at one point, zero-length points, vertical segments, collinear overlaps, and mixed events in the existing examples. Vertical segments are processed upward in y at a fixed x; collinear overlaps are represented by complete closed intervals. These preset teaching cases are not a production implementation guarantee for arbitrary degenerate inputs."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:138
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:138
 msgid "This module currently provides coarse observation points, without detailed core-code steps."
 msgstr "This module currently provides coarse observation points, without detailed core-code steps."
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:160
+#: src/algorithms/bo/learning/executionSymbols.ts:160
 msgid "This statement was not executed"
 msgstr "This statement was not executed"
 
-#: src/learning/LearningPanels.tsx:45
+#: src/algorithms/bo/learning/LearningPanels.tsx:45
 msgid "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
 msgstr "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:77
+#: src/algorithms/bo/cases/artPatterns.ts:77
 msgid "Three angular meander patterns inside a window frame connect to a lower crossbar, with generous gaps between turns."
 msgstr "Three angular meander patterns inside a window frame connect to a lower crossbar, with generous gaps between turns."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:31
+#: src/algorithms/bo/cases/presets.ts:31
 msgid "Three geometrically identical inputs include one reversed input; all three interval pairs are individually inspectable."
 msgstr "Three geometrically identical inputs include one reversed input; all three interval pairs are individually inspectable."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:21
+#: src/algorithms/bo/cases/presets.ts:21
 msgid "Three interiors at one point"
 msgstr "Three interiors at one point"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:21
+#: src/algorithms/bo/cases/presets.ts:21
 msgid "Three nonvertical segments cross at the origin in their interiors; one intersection point corresponds to three pairs."
 msgstr "Three nonvertical segments cross at the origin in their interiors; one intersection point corresponds to three pairs."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:28
+#: src/algorithms/bo/cases/presets.ts:28
 msgid "Three segments and one point meet at the origin, with six individually inspectable pairs."
 msgstr "Three segments and one point meet at the origin, with six individually inspectable pairs."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:20
+#: src/algorithms/bo/cases/presets.ts:20
 msgid "Three segments at one point"
 msgstr "Three segments at one point"
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:80
+#: src/algorithms/bo/cases/artPatterns.ts:80
 msgid "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
 msgstr "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:201
+#: src/algorithms/bo/learning/executionCode.ts:201
 msgid "Treat a zero-length intersection as a single point"
 msgstr "Treat a zero-length intersection as a single point"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:90
+#: src/algorithms/bo/learning/executionCode.ts:90
 msgid "Try to compute an intersection candidate for these segments"
 msgstr "Try to compute an intersection candidate for these segments"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:71
+#: src/algorithms/bo/learning/executionCode.ts:71
 msgid "Try to get the two neighboring segments at this position"
 msgstr "Try to get the two neighboring segments at this position"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:81
+#: src/algorithms/bo/learning/executionCode.ts:81
 msgid "Try to get the two neighboring segments to check"
 msgstr "Try to get the two neighboring segments to check"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:27
+#: src/algorithms/bo/cases/presets.ts:27
 msgid "Two coincident fractional points and one separate point."
 msgstr "Two coincident fractional points and one separate point."
 
 #. js-lingui-explicit-id
-#: src/cases/artPatterns.ts:86
+#: src/algorithms/bo/cases/artPatterns.ts:86
 msgid "Two continuous families of diagonals in opposite directions weave a diamond pattern, retaining real segments at every crossing."
 msgstr "Two continuous families of diagonals in opposite directions weave a diamond pattern, retaining real segments at every crossing."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:10
+#: src/algorithms/bo/cases/presets.ts:10
 msgid "Two diagonals intersect at (2, 2)."
 msgstr "Two diagonals intersect at (2, 2)."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:24
+#: src/algorithms/bo/cases/presets.ts:24
 msgid "Two independent crossings share the same x coordinate."
 msgstr "Two independent crossings share the same x coordinate."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:11
+#: src/algorithms/bo/cases/presets.ts:11
 msgid "Two parallel segments have no intersecting pair."
 msgstr "Two parallel segments have no intersecting pair."
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:90
-#: src/learning/executionSymbols.ts:128
+#: src/algorithms/bo/learning/executionAccess.ts:90
+#: src/algorithms/bo/learning/executionSymbols.ts:128
 msgid "Type not provided by the current scope"
 msgstr "Type not provided by the current scope"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:85
-#: src/learning/executionAccess.ts:95
+#: src/algorithms/bo/learning/executionAccess.ts:85
+#: src/algorithms/bo/learning/executionAccess.ts:95
 msgid "Type not provided by the current trace"
 msgstr "Type not provided by the current trace"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:164
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:164
 msgid "Type: "
 msgstr "Type: "
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:92
-#: src/learning/executionSymbols.ts:74
+#: src/algorithms/bo/learning/executionAccess.ts:92
+#: src/algorithms/bo/learning/executionSymbols.ts:74
 msgid "Unassigned"
 msgstr "Unassigned"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:102
+#: src/algorithms/bo/learning/executionAccess.ts:102
 msgid "Unavailable (field not recorded in the current trace)"
 msgstr "Unavailable (field not recorded in the current trace)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:107
+#: src/algorithms/bo/learning/executionAccess.ts:107
 msgid "Unavailable (index out of bounds or object not recorded)"
 msgstr "Unavailable (index out of bounds or object not recorded)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:105
+#: src/algorithms/bo/learning/executionAccess.ts:105
 msgid "Unavailable (index unassigned or unavailable)"
 msgstr "Unavailable (index unassigned or unavailable)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:122
+#: src/algorithms/bo/learning/executionAccess.ts:122
 msgid "Unavailable (no comparable value in the current call)"
 msgstr "Unavailable (no comparable value in the current call)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:78
+#: src/algorithms/bo/learning/executionSymbols.ts:78
 msgid "Unavailable (no value provided by the current trace)"
 msgstr "Unavailable (no value provided by the current trace)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionAccess.ts:92
+#: src/algorithms/bo/learning/executionAccess.ts:92
 msgid "Unavailable (not provided by the current scope or trace)"
 msgstr "Unavailable (not provided by the current scope or trace)"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:73
+#: src/algorithms/bo/learning/executionSymbols.ts:73
 msgid "Unavailable (not provided by the current scope)"
 msgstr "Unavailable (not provided by the current scope)"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:155
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:155
 msgid "Unavailable at this step."
 msgstr "Unavailable at this step."
 
-#: src/learning/LearningPanels.tsx:54
+#: src/algorithms/bo/learning/LearningPanels.tsx:54
 msgid "Unchanged neighbor relationships need no recheck. Bold segments in the drawing and borders in the state list mark the current pair. This step selects the pair to check without changing the queue. Endpoint events may already be queued, so contact points need not be queued again."
 msgstr "Unchanged neighbor relationships need no recheck. Bold segments in the drawing and borders in the state list mark the current pair. This step selects the pair to check without changing the queue. Endpoint events may already be queued, so contact points need not be queued again."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:33
+#: src/algorithms/bo/cases/presets.ts:33
 msgid "Understand why closed collinear segments sharing only one endpoint intersect at a point, rather than over a nonzero-length interval."
 msgstr "Understand why closed collinear segments sharing only one endpoint intersect at a point, rather than over a nonzero-length interval."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:34
+#: src/algorithms/bo/cases/presets.ts:34
 msgid "Understand why collinearity does not imply intersection; observe two closed intervals separated by a gap."
 msgstr "Understand why collinearity does not imply intersection; observe two closed intervals separated by a gap."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:14
+#: src/algorithms/bo/cases/presets.ts:14
 msgid "Understand why the sweep finishes immediately with no inputs and no events."
 msgstr "Understand why the sweep finishes immediately with no inputs and no events."
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:7
+#: src/algorithms/bo/help/HelpContent.tsx:7
 msgid "help.LearningIntroduction.0"
 msgstr "Understanding the Bentley–Ottmann sweep from scratch"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:182
+#: src/algorithms/bo/learning/executionCode.ts:182
 msgid "Undo the shear of the x coordinate, leaving the y coordinate unchanged"
 msgstr "Undo the shear of the x coordinate, leaving the y coordinate unchanged"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:34
+#: src/algorithms/bo/learning/executionSymbols.ts:34
 msgid "Undo the shear to restore original coordinates."
 msgstr "Undo the shear to restore original coordinates."
 
-#: src/app/App.tsx:258
+#: src/algorithms/bo/BoPages.tsx:254
 msgid "Unknown case: {caseId}"
 msgstr "Unknown case: {caseId}"
 
 #. js-lingui-explicit-id
-#: src/app/useComputation.ts:34
+#: src/algorithms/bo/useComputation.ts:34
 msgid "Unknown error"
 msgstr "Unknown error"
 
-#: src/app/App.tsx:258
-#: src/app/App.tsx:304
+#: src/algorithms/bo/BoPages.tsx:254
+#: src/app/App.tsx:19
 msgid "Unknown page path."
 msgstr "Unknown page path."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:103
+#: src/algorithms/bo/learning/executionCode.ts:103
 msgid "Update the active set"
 msgstr "Update the active set"
 
-#: src/geometry/GeometryView.tsx:83
+#: src/algorithms/bo/geometry/GeometryView.tsx:83
 msgid "Use buttons to zoom · Drag to pan"
 msgstr "Use buttons to zoom · Drag to pan"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:25
+#: src/algorithms/bo/cases/presets.ts:25
 msgid "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
 msgstr "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
 
-#: src/learning/LearningPanels.tsx:32
+#: src/algorithms/bo/learning/LearningPanels.tsx:32
 msgid "Use the drawing and state panels to understand the current teaching action."
 msgstr "Use the drawing and state panels to understand the current teaching action."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:194
+#: src/algorithms/bo/learning/executionCode.ts:194
 msgid "Use the earlier end point as the overlap end"
 msgstr "Use the earlier end point as the overlap end"
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:187
+#: src/algorithms/bo/learning/executionCode.ts:187
 msgid "Use the later start point as the overlap start"
 msgstr "Use the later start point as the overlap start"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:50
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:50
 msgid "Variable"
 msgstr "Variable"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:190
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:190
 msgid "Variable "
 msgstr "Variable "
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:179
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:179
 msgid "Variable {name} · {kind}"
 msgstr "Variable {name} · {kind}"
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionSymbol.tsx:84
+#: src/algorithms/bo/learning/ExecutionSymbol.tsx:84
 msgid "Variable {name} · {label}"
 msgstr "Variable {name} · {label}"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:100
+#: src/algorithms/bo/learning/executionSymbols.ts:100
 msgid "Variable in the current lexical scope"
 msgstr "Variable in the current lexical scope"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:25
+#: src/algorithms/bo/help/HelpContent.tsx:25
 msgid "help.LearningReferences.5"
 msgstr "Vertical cases follow the same closed-segment, lexicographic, and same-point grouping rules. The vertical status marker represents this page's processing frontier, not a unique intersection between the sweep line and the segment. Internally, a reversible exact shear (x + s·y, y) is used. Rational bounds on s are derived from the input coordinates to preserve the original lexicographic order of all endpoints and segment intersections; the display restores the original coordinates. This order-preserving derivation belongs to this implementation: the lecture is not cited as proof of the shear bound, and floating-point epsilon is not used to decide geometric relations."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:23
+#: src/algorithms/bo/cases/presets.ts:23
 msgid "Vertical contacts at multiple heights"
 msgstr "Vertical contacts at multiple heights"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:32
+#: src/algorithms/bo/cases/presets.ts:32
 msgid "Vertical fractional overlap"
 msgstr "Vertical fractional overlap"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:37
+#: src/algorithms/bo/cases/presets.ts:37
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "Vertical overlap with mixed contacts at multiple heights"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:45
+#: src/algorithms/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
 msgstr "Vertical segment rules"
 
-#: src/help/CaseHelp.tsx:51
+#: src/algorithms/bo/help/CaseHelp.tsx:51
 msgid "Vertical segment rules"
 msgstr "Vertical segment rules"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:46
+#: src/algorithms/bo/help/HelpContent.tsx:46
 msgid "help.VerticalRules.0"
 msgstr "Vertical segments: one x coordinate, one height at a time"
 
 #. placeholder {0}: translate(preset.name)
-#: src/app/App.tsx:150
+#: src/algorithms/bo/BoPages.tsx:146
 msgid "View {0} details"
 msgstr "View {0} details"
 
-#: src/app/App.tsx:160
-#: src/app/App.tsx:231
+#: src/algorithms/bo/BoPages.tsx:156
+#: src/algorithms/bo/BoPages.tsx:227
 msgid "View details"
 msgstr "View details"
 
 #. js-lingui-explicit-id
-#: src/learning/executionSymbols.ts:32
+#: src/algorithms/bo/learning/executionSymbols.ts:32
 msgid "Visit sequence elements in order."
 msgstr "Visit sequence elements in order."
 
-#: src/app/App.tsx:208
+#: src/algorithms/bo/BoPages.tsx:204
 msgid "Waiting for a step"
 msgstr "Waiting for a step"
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:209
+#: src/algorithms/bo/BoPages.tsx:205
 msgid "Waiting for step {index}. Steps 0–{0} are available to explore."
 msgstr "Waiting for step {index}. Steps 0–{0} are available to explore."
 
 #. placeholder {0}: trace.steps.length - 1
-#: src/app/App.tsx:209
+#: src/algorithms/bo/BoPages.tsx:205
 msgid "Waiting for the next major step. Steps 0–{0} are available to explore."
 msgstr "Waiting for the next major step. Steps 0–{0} are available to explore."
 
 #. js-lingui-explicit-id
-#: src/learning/executionCode.ts:66
+#: src/algorithms/bo/learning/executionCode.ts:66
 msgid "When segments are inserted, find the position of the last new segment"
 msgstr "When segments are inserted, find the position of the last new segment"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:67
+#: src/algorithms/bo/help/HelpContent.tsx:67
 msgid "help.NeighborRules.0"
 msgstr "Why do neighbor checks find every intersection?"
 
 #. js-lingui-explicit-id
-#: src/help/HelpContent.tsx:66
+#: src/algorithms/bo/help/HelpContent.tsx:66
 msgid "help.NeighborRules.label"
 msgstr "Why intersections are not missed"
 
-#: src/learning/LearningPanels.tsx:32
+#: src/algorithms/bo/learning/LearningPanels.tsx:32
 msgid "Why take this action?"
 msgstr "Why take this action?"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:14
+#: src/algorithms/bo/cases/presets.ts:14
 msgid "With no inputs, there are no endpoint events and no input pairs that could intersect."
 msgstr "With no inputs, there are no endpoint events and no input pairs that could intersect."
 
 #. js-lingui-explicit-id
-#: src/learning/ExecutionPanel.tsx:92
+#: src/algorithms/bo/learning/ExecutionPanel.tsx:92
 msgid "Wrap lines"
 msgstr "Wrap lines"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:28
+#: src/algorithms/bo/cases/presets.ts:28
 msgid "y = 0, x = 0, and y = x intersect only at the origin, and S3 is exactly (0, 0). Four distinct inputs form 4 × 3 / 2 = 6 pairs, all intersecting at (0, 0); S3 occupies no persistent active position."
 msgstr "y = 0, x = 0, and y = x intersect only at the origin, and S3 is exactly (0, 0). Four distinct inputs form 4 × 3 / 2 = 6 pairs, all intersecting at (0, 0); S3 occupies no persistent active position."
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:20
+#: src/algorithms/bo/cases/presets.ts:20
 msgid "y = 0, x = 0, and y = x intersect pairwise at (0, 0), inside all three segments. Three distinct inputs produce 3 × 2 / 2 = 3 pairs at one geometric position."
 msgstr "y = 0, x = 0, and y = x intersect pairwise at (0, 0), inside all three segments. Three distinct inputs produce 3 × 2 / 2 = 3 pairs at one geometric position."
 
-#: src/app/App.tsx:280
+#: src/algorithms/bo/BoPages.tsx:276
 msgid "Zen mode"
 msgstr "Zen mode"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:28
+#: src/algorithms/bo/cases/presets.ts:28
 msgid "Zero-length point at a multiway crossing"
 msgstr "Zero-length point at a multiway crossing"
 
 #. js-lingui-explicit-id
-#: src/cases/presets.ts:26
+#: src/algorithms/bo/cases/presets.ts:26
 msgid "Zero-length points and a segment"
 msgstr "Zero-length points and a segment"
 
-#: src/geometry/GeometryView.tsx:88
+#: src/algorithms/bo/geometry/GeometryView.tsx:88
 msgid "Zoom in"
 msgstr "Zoom in"
 
-#: src/geometry/GeometryView.tsx:89
+#: src/algorithms/bo/geometry/GeometryView.tsx:89
 msgid "Zoom out"
 msgstr "Zoom out"

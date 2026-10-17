@@ -12,7 +12,7 @@ registerHooks({
     return nextResolve(specifier, context)
   },
 })
-const { presets } = await import('../../src/cases/presets')
+const { presets } = await import('../../src/algorithms/bo/cases/presets')
 const directory = new URL('../../../tests/fixtures/performance/', import.meta.url)
 mkdirSync(directory, { recursive: true })
 for (const id of ['spider-web', 'hexagonal-snowflake', 'vertical-overlap', 'mixed-vertical']) {

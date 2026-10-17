@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test'
 import { segment } from '../../src/geometry/geometry'
-import { type Preset } from '../../src/cases/preset'
+import { type Preset } from '../../src/algorithms/bo/cases/preset'
 
 // Only the bottom three segments intersect; the remaining rows lengthen the
 // queue and active list without adding crossing events.

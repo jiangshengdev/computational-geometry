@@ -1,6 +1,6 @@
 import { expect, test } from '../support/learning-test'
 import { readTrace, waitForTraceCompletion } from '../support/trace-navigation'
-import { formatExecutionValue } from '../../src/learning/executionValue'
+import { formatExecutionValue } from '../../src/algorithms/bo/learning/executionValue'
 
 test('折叠摘要完整保留第一个元素，仅在有后续元素时省略', () => {
   const first = 'SweepSegment { left: (123456789/17, 987654321/19), right: (987654321/17, 123456789/19), slope: Some(1), input_ids: [0, 1] }'

@@ -1,9 +1,9 @@
 import { closePreview, expect, test } from '../support/learning-test'
-import type { SweepTrace } from '../../src/learning/trace'
+import type { SweepTrace } from '../../src/algorithms/bo/learning/trace'
 import { readResponse, readTrace, waitForTraceCompletion } from '../support/trace-navigation'
-import { variableValue } from '../../src/learning/executionSymbols'
-import { formatExecutionValue } from '../../src/learning/executionValue'
-import { codeSymbols } from '../../src/learning/executionAccess'
+import { variableValue } from '../../src/algorithms/bo/learning/executionSymbols'
+import { formatExecutionValue } from '../../src/algorithms/bo/learning/executionValue'
+import { codeSymbols } from '../../src/algorithms/bo/learning/executionAccess'
 import { chinese } from '../support/language'
 const translate = chinese._.bind(chinese)
 

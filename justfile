@@ -34,7 +34,7 @@ perf-export:
 
 # 只运行 Rust 案例性能诊断；读取已导出夹具，不调用前端工具。
 perf-cases:
-    cargo test --offline --lib http::case_performance::actual_case_timings -- --exact --ignored --nocapture --test-threads=1
+    cargo test --offline --lib algorithms::bo::http::case_performance::actual_case_timings -- --exact --ignored --nocapture --test-threads=1
 
 # 独立临时端口测量真实教学体验；BO_PERF_MODE=full 测完整生成，cancel 测提早取消。
 perf-learning:
