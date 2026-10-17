@@ -277,11 +277,11 @@ impl TraceEncoder {
                     current: step.current.map(PointDto::from),
                     pending: step
                         .pending
-                        .into_iter()
+                        .iter()
                         .map(|point| {
                             *self
                                 .point_indices
-                                .entry(PointRepresentation(point))
+                                .entry(PointRepresentation(point.clone()))
                                 .or_insert_with_key(|point| {
                                     let index = point_offset + point_values.len();
                                     point_values.push(PointDto::from(point.0.clone()));
@@ -289,7 +289,7 @@ impl TraceEncoder {
                                 })
                         })
                         .collect(),
-                    active: step.active,
+                    active: step.active.to_vec(),
                     results: step
                         .results
                         .iter()

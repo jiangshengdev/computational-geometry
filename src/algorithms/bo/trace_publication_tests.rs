@@ -35,7 +35,8 @@ fn representation_keys_preserve_exact_coordinates_for_equivalent_fractions() {
             x: rational(8, 5),
             y: rational(3, 2),
         },
-    ];
+    ]
+    .into();
     projection.restore(std::slice::from_mut(&mut step));
     assert_eq!(step.pending[0].x, rational(2, 5));
     assert_eq!(step.pending[1].x, rational(2, 5));
@@ -68,6 +69,7 @@ fn emitted_batches_restore_exact_points_without_mutating_retained_sweep_coordina
             true
         };
         let mut publication = TracePublication::new(&shear, &mut emit);
+        let capture = RefCell::new(TraceCapture::default());
         for _ in 0..3 {
             publication.steps().push(SweepStep::capture(
                 "initial",
@@ -78,12 +80,12 @@ fn emitted_batches_restore_exact_points_without_mutating_retained_sweep_coordina
                 &[],
                 &[],
                 &Arc::from("[]"),
-                &RefCell::new(TraceCapture::default()),
+                &capture,
             ));
             assert!(publication.publish());
             assert_eq!(publication.steps.len(), 1);
             assert_eq!(publication.steps[0].current.as_ref(), Some(&source));
-            assert_eq!(publication.steps[0].pending, vec![source.clone()]);
+            assert_eq!(publication.steps[0].pending.as_ref(), &[source.clone()]);
         }
         assert!(publication.publish(), "retained tail must not be resent");
         assert_eq!(publication.projection.points.len(), 1);
@@ -93,7 +95,7 @@ fn emitted_batches_restore_exact_points_without_mutating_retained_sweep_coordina
             let batch = batch.steps;
             assert_eq!(batch.len(), 1);
             assert_eq!(batch[0].current.as_ref(), Some(&expected));
-            assert_eq!(batch[0].pending, vec![expected.clone()]);
+            assert_eq!(batch[0].pending.as_ref(), &[expected.clone()]);
         }
     }
 }

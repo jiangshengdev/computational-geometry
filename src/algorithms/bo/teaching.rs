@@ -14,8 +14,8 @@ pub(crate) struct SweepStep {
     pub action: &'static str,
     pub subjects: Vec<usize>,
     pub current: Option<Point>,
-    pub pending: Vec<Point>,
-    pub active: Vec<usize>,
+    pub pending: Arc<[Point]>,
+    pub active: Arc<[usize]>,
     pub results: Arc<[Intersection]>,
     pub checked: Vec<[usize; 2]>,
     pub starts: Vec<usize>,
@@ -23,13 +23,70 @@ pub(crate) struct SweepStep {
     pub passes: Vec<usize>,
 }
 
-/// Request-local snapshots; unchanged complete result contents share storage and text.
+/// Request-local snapshots; unchanged complete contents share storage and text.
 #[derive(Default)]
 pub(crate) struct TraceCapture {
     results: Option<(Arc<[Intersection]>, Arc<str>)>,
+    queue: Option<QueueSnapshot>,
+    active: Option<(Arc<[usize]>, Arc<str>)>,
+}
+
+struct QueueSnapshot {
+    pending: Arc<[Point]>,
+    starts: Vec<Vec<usize>>,
+    text: Arc<str>,
 }
 
 impl TraceCapture {
+    fn queue(&mut self, queue: &BTreeMap<Point, Event>) -> &QueueSnapshot {
+        // Exact stored integers also preserve the displayed rational representation.
+        // Equal queue lengths do not imply equal event starts or point contents.
+        if self.queue.as_ref().is_none_or(|snapshot| {
+            snapshot.pending.len() != queue.len()
+                || snapshot
+                    .pending
+                    .iter()
+                    .zip(&snapshot.starts)
+                    .zip(queue)
+                    .any(|((old, starts), (point, event))| {
+                        old.x.numer() != point.x.numer()
+                            || old.x.denom() != point.x.denom()
+                            || old.y.numer() != point.y.numer()
+                            || old.y.denom() != point.y.denom()
+                            || starts != &event.starts
+                    })
+        }) {
+            self.queue = Some(QueueSnapshot {
+                pending: queue.keys().cloned().collect(),
+                starts: queue.values().map(|event| event.starts.clone()).collect(),
+                text: Arc::from(format!(
+                    "{{{}}}",
+                    queue
+                        .iter()
+                        .map(|(point, event)| format!(
+                            "{}: {}",
+                            point_value(point),
+                            event_value(event)
+                        ))
+                        .collect::<Vec<_>>()
+                        .join(", ")
+                )),
+            });
+        }
+        self.queue.as_ref().expect("queue snapshot exists")
+    }
+
+    fn active(&mut self, active: &[usize]) -> &(Arc<[usize]>, Arc<str>) {
+        if self
+            .active
+            .as_ref()
+            .is_none_or(|(snapshot, _)| snapshot.as_ref() != active)
+        {
+            self.active = Some((Arc::from(active), Arc::from(format!("{active:?}"))));
+        }
+        self.active.as_ref().expect("active snapshot exists")
+    }
+
     fn results(&mut self, results: &[Intersection]) -> &(Arc<[Intersection]>, Arc<str>) {
         if self
             .results
@@ -405,6 +462,14 @@ impl SweepStep {
             let (results, text) = capture.results(results);
             (Arc::clone(results), Arc::clone(text))
         };
+        let (pending, queue_value, active, active_value) = {
+            let mut capture = capture.borrow_mut();
+            let queue = capture.queue(queue);
+            let pending = Arc::clone(&queue.pending);
+            let queue_value = Arc::clone(&queue.text);
+            let (active, text) = capture.active(active);
+            (pending, queue_value, Arc::clone(active), Arc::clone(text))
+        };
         Self {
             execution: Execution {
                 outer: Vec::new(),
@@ -429,23 +494,8 @@ impl SweepStep {
                         value: Some(Arc::clone(input_value)),
                     }],
                     locals: vec![
-                        Variable::available(
-                            "queue",
-                            "BTreeMap<Point, Event>",
-                            format!(
-                                "{{{}}}",
-                                queue
-                                    .iter()
-                                    .map(|(point, event)| format!(
-                                        "{}: {}",
-                                        point_value(point),
-                                        event_value(event)
-                                    ))
-                                    .collect::<Vec<_>>()
-                                    .join(", ")
-                            ),
-                        ),
-                        Variable::available("active", "Vec<usize>", format!("{active:?}")),
+                        Variable::available("queue", "BTreeMap<Point, Event>", queue_value),
+                        Variable::available("active", "Vec<usize>", active_value),
                         Variable::available("result", "Vec<Intersection>", result_value),
                     ],
                 },
@@ -458,8 +508,8 @@ impl SweepStep {
             action,
             subjects: subjects.to_vec(),
             current: current.cloned(),
-            pending: queue.keys().cloned().collect(),
-            active: active.to_vec(),
+            pending,
+            active,
             results,
             checked: checked.to_vec(),
             starts: Vec::new(),

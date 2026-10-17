@@ -2,6 +2,7 @@
 use super::teaching::{SweepStep, SweepTrace};
 use crate::geometry::PointRepresentation;
 use crate::{Point, Rational};
+use std::sync::Arc;
 
 pub(super) struct TracePublication<'a> {
     steps: Vec<SweepStep>,
@@ -71,6 +72,13 @@ impl<'a> TracePublication<'a> {
 struct TraceProjection {
     shear: Rational,
     points: std::collections::HashMap<PointRepresentation, Point>,
+    pending: Option<PendingProjection>,
+}
+
+struct PendingProjection {
+    // Keep the source alive: its identity must remain valid across publication batches.
+    source: Arc<[Point]>,
+    restored: Arc<[Point]>,
 }
 
 impl TraceProjection {
@@ -78,23 +86,49 @@ impl TraceProjection {
         Self {
             shear: shear.clone(),
             points: std::collections::HashMap::new(),
+            pending: None,
         }
     }
 
     fn restore(&mut self, steps: &mut [SweepStep]) {
         for step in steps {
-            for point in step.current.iter_mut().chain(step.pending.iter_mut()) {
-                let original = self
-                    .points
-                    .entry(PointRepresentation(point.clone()))
-                    .or_insert_with(|| {
-                        let mut original = point.clone();
-                        original.x -= &self.shear * &original.y;
-                        original
-                    });
-                point.clone_from(original);
+            if let Some(point) = &mut step.current {
+                *point = self.restore_point(point);
             }
+            if self
+                .pending
+                .as_ref()
+                .is_none_or(|pending| !Arc::ptr_eq(&pending.source, &step.pending))
+            {
+                let restored = step
+                    .pending
+                    .iter()
+                    .map(|point| self.restore_point(point))
+                    .collect();
+                self.pending = Some(PendingProjection {
+                    source: Arc::clone(&step.pending),
+                    restored,
+                });
+            }
+            step.pending = Arc::clone(
+                &self
+                    .pending
+                    .as_ref()
+                    .expect("pending projection exists")
+                    .restored,
+            );
         }
+    }
+
+    fn restore_point(&mut self, point: &Point) -> Point {
+        self.points
+            .entry(PointRepresentation(point.clone()))
+            .or_insert_with(|| {
+                let mut original = point.clone();
+                original.x -= &self.shear * &original.y;
+                original
+            })
+            .clone()
     }
 }
 
