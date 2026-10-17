@@ -5,7 +5,7 @@ test('结果帮助：默认数据完整，按需说明保持选择与画布', as
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   await page.setViewportSize({ width: 1360, height: 900 })
-  const response = page.waitForResponse('/api/intersections')
+  const response = page.waitForResponse('/api/bo/intersections')
   await page.goto('/cases/crossing')
   expect((await response).ok()).toBe(true)
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()

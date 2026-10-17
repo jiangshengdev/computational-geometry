@@ -15,7 +15,7 @@ export function useComputation(preset: Preset, learning: boolean): Computation {
     const controller = new AbortController()
     async function compute() {
       try {
-        const response = await fetch('/api/intersections', {
+        const response = await fetch('/api/bo/intersections', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ segments: preset.segments, trace: learning }), signal: controller.signal,
         })

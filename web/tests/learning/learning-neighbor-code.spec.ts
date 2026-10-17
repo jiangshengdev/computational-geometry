@@ -2,7 +2,7 @@ import { expect, test } from '../support/learning-test'
 import { readResponse } from '../support/trace-navigation'
 
 test('真实几何调用返回后才显示结果，返回调用方和回退同步', async ({ page }) => {
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
+  const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections'))
   await page.goto('/cases/crossing/learn')
   const { trace } = await readResponse(await response)
   const call = trace.steps.findIndex(step => step.execution.context.function === 'schedule_neighbors')

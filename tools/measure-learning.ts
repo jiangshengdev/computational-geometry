@@ -255,7 +255,7 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
       await page.goto(`${baseURL}cases/${preset.id}`)
       await expect(page.getByRole('radio').first()).toBeVisible({ timeout: watchdogMs })
     }
-    const traceResponse = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().postDataJSON()?.trace === true)
+    const traceResponse = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().postDataJSON()?.trace === true)
     // The awaited action can fail first; retain that primary diagnostic without
     // a later unhandled rejection from the pending response observer.
     void traceResponse.catch(() => {})

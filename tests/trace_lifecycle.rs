@@ -86,7 +86,7 @@ fn request(address: SocketAddr, body: &str) -> (BufReader<TcpStream>, String) {
     let mut stream = TcpStream::connect_timeout(&address, TEST_TIMEOUT).unwrap();
     stream.set_read_timeout(Some(TEST_TIMEOUT)).unwrap();
     stream.set_write_timeout(Some(TEST_TIMEOUT)).unwrap();
-    write!(stream, "POST /api/intersections HTTP/1.1\r\nHost: {address}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len()).unwrap();
+    write!(stream, "POST /api/bo/intersections HTTP/1.1\r\nHost: {address}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len()).unwrap();
     let mut reader = BufReader::new(stream);
     let mut status = String::new();
     reader.read_line(&mut status).unwrap();

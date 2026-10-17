@@ -29,7 +29,7 @@ test('基础空结果及切换清空旧选择', async ({ page }) => {
 test('加载状态与空结果区分，完成后展示真实结果', async ({ page }) => {
   let release!: () => void
   const gate = new Promise<void>(resolve => { release = resolve })
-  await page.route('**/api/intersections', async route => {
+  await page.route('**/api/bo/intersections', async route => {
     await gate
     await route.continue()
   })
@@ -92,7 +92,7 @@ for (const late of ['success', 'failure']) {
     let release!: () => void
     const gate = new Promise<void>(resolve => { release = resolve })
     const pending: Promise<void>[] = []
-    await page.route('**/api/intersections', async route => {
+    await page.route('**/api/bo/intersections', async route => {
       if (route.request().postDataJSON().segments.length === 2) {
         const operation = (async () => {
           await gate
@@ -117,12 +117,12 @@ for (const late of ['success', 'failure']) {
 }
 
 test('服务不可用和计算错误不能显示成空结果', async ({ page }) => {
-  await page.route('**/api/intersections', route => route.abort('connectionrefused'))
+  await page.route('**/api/bo/intersections', route => route.abort('connectionrefused'))
   await page.goto('/cases/crossing')
   await expect(page.getByRole('alert')).toContainText('计算失败')
   await expect(page.getByText('没有相交配对', { exact: true })).toHaveCount(0)
-  await page.unroute('**/api/intersections')
-  await page.route('**/api/intersections', route => route.fulfill({ status: 500, json: { error: 'failed' } }))
+  await page.unroute('**/api/bo/intersections')
+  await page.route('**/api/bo/intersections', route => route.fulfill({ status: 500, json: { error: 'failed' } }))
   await selectPreset(page, 'empty')
   await expect(page.getByRole('alert')).toContainText('HTTP 500')
   await expect(page.getByText('没有相交配对', { exact: true })).toHaveCount(0)

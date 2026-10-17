@@ -55,7 +55,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
 
     let release!: () => void
     const gate = new Promise<void>(resolve => { release = resolve })
-    await page.route('**/api/intersections', async route => {
+    await page.route('**/api/bo/intersections', async route => {
       await gate
       await route.continue()
     })

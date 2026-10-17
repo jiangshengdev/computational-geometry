@@ -54,7 +54,7 @@ fn request(address: SocketAddr, body: &str) -> Vec<u8> {
     stream
         .set_write_timeout(Some(Duration::from_secs(30)))
         .unwrap();
-    write!(stream, "POST /api/intersections HTTP/1.1\r\nHost: {address}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len()).unwrap();
+    write!(stream, "POST /api/bo/intersections HTTP/1.1\r\nHost: {address}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len()).unwrap();
     let mut bytes = Vec::new();
     stream.read_to_end(&mut bytes).unwrap();
     bytes

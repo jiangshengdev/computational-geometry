@@ -31,13 +31,15 @@ pnpm dev --host 127.0.0.1
 - Framework Preset 选择 **Other**；安装、构建命令和输出目录使用根目录 `vercel.json`。
 - Node.js 选择 **24.x**。云端安装步骤使用固定的 pnpm `11.8.0` 和现有 lockfile。
 
-Vercel 构建 `api/axum.rs` 为 Rust Function，并将 `web/dist` 发布为静态资源。`/api` 和 `/api/*` 优先交给 Rust，未知 API 保持 HTTP 404；其余路径优先匹配静态文件，再回退到 `index.html`，支持直接打开或刷新案例和教学页面。浏览器继续使用同源 `/api/intersections`，无需设置 `BO_API_URL`。
+Vercel 构建 `api/axum.rs` 为 Rust Function，并将 `web/dist` 发布为静态资源。`/api` 和 `/api/*` 优先交给 Rust，未知 API 保持 HTTP 404；其余路径优先匹配静态文件，再回退到 `index.html`，支持直接打开或刷新案例和教学页面。浏览器继续使用同源 `/api/bo/intersections`，无需设置 `BO_API_URL`。
 
-GitHub 接入后的首次 Preview 部署需检查：案例页直接访问和刷新正常、JS/CSS 能加载、`POST /api/intersections` 返回 JSON、非法输入返回 400、未知 API 返回 404。Rust Runtime 目前为 Beta；本地检查不替代 Vercel 云端构建和路由验收。
+GitHub 接入后的首次 Preview 部署需检查：案例页直接访问和刷新正常、JS/CSS 能加载、`POST /api/bo/intersections` 返回 JSON、非法输入返回 400、未知 API 返回 404。Rust Runtime 目前为 Beta；本地检查不替代 Vercel 云端构建和路由验收。
 
 ## HTTP 契约
 
-`POST /api/intersections`，`Content-Type: application/json`：
+`POST /api/bo/intersections`，`Content-Type: application/json`：
+
+这是唯一 BO 计算入口；旧 `POST /api/intersections` 返回 404，不提供重定向或兼容转发。
 
 ```json
 {

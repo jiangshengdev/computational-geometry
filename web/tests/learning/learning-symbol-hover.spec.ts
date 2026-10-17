@@ -271,7 +271,7 @@ for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
 }
 
 test('真实取事件代码 hover 随前进和回退更新', async ({ page }) => {
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
+  const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections'))
   await page.goto('/cases/crossing/learn')
   const { trace }: { trace: SweepTrace } = await readResponse(await response)
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
@@ -312,7 +312,7 @@ test('真实取事件代码 hover 随前进和回退更新', async ({ page }) =>
 })
 
 test('分类同名 id 按词法循环隔离，真实调用按行和函数展示返回值', async ({ page }) => {
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
+  const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections'))
   await page.goto('/cases/crossing/learn')
   const { trace }: { trace: SweepTrace } = await readResponse(await response)
   const secondLoop = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8 && step.execution.context.locals.some(variable => variable.name === 'id' && variable.availability === 'available'))

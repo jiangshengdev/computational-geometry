@@ -20,7 +20,7 @@ const display = ([x, y]: [string, string]) => `(${x}, ${y})`
 /** Expected values are worked examples in each spec, not runtime answers. */
 export async function checkCase(page: Page, id: string, expected: ExpectedPair[]) {
   await page.goto('/')
-  const response = page.waitForResponse(r => r.url().endsWith('/api/intersections') && r.request().method() === 'POST')
+  const response = page.waitForResponse(r => r.url().endsWith('/api/bo/intersections') && r.request().method() === 'POST')
   await selectPreset(page, id)
   // The response and the rendered selection share this one real calculation.
   const result = await response

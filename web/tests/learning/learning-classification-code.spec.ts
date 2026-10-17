@@ -2,7 +2,7 @@ import { expect, test } from '../support/learning-test'
 import { readResponse } from '../support/trace-navigation'
 
 test('真实分类入口不泄露结果，配对记录可回退', async ({ page }) => {
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections'))
+  const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections'))
   await page.goto('/cases/crossing/learn')
   const { trace } = await readResponse(await response)
   const entry = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.entry)

@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 async function readTrace(page: Page, id: string) {
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
+  const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
   await page.goto(`/cases/${id}/learn`)
   const result = await response
   expect(result.status()).toBe(200)

@@ -30,7 +30,7 @@ for (const [id, name] of demos) {
     await card.scrollIntoViewIfNeeded()
     await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/cases/${id}/learn`)
     const capture = await captureResult(page)
-    const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
+    const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()
     const response = await responsePromise
     expect(response.status()).toBe(200)

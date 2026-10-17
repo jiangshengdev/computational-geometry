@@ -4,9 +4,20 @@ import { readResponse } from '../support/trace-navigation'
 const r = (numerator: string, denominator = '1') => ({ numerator, denominator })
 const p = (x: ReturnType<typeof r>, y = r('0')) => ({ x, y })
 
+test('HTTP 旧计算地址停用，普通结果和轨迹请求均不重定向', async ({ request }) => {
+  for (const trace of [false, true]) {
+    const response = await request.post('/api/intersections', {
+      data: { segments: [], trace }, maxRedirects: 0,
+    })
+    expect(response.status()).toBe(404)
+    expect(response.headers()['location']).toBeUndefined()
+    expect(response.headers()['content-type'] ?? '').not.toContain('text/html')
+  }
+})
+
 test('HTTP 接受目录外集合，保留超安全整数分数及配对身份', async ({ request }) => {
   const point = p(r('9007199254740993', '9007199254740997'), r('-2', '3'))
-  const response = await request.post('/api/intersections', { data: {
+  const response = await request.post('/api/bo/intersections', { data: {
     segments: [{ start: point, end: point }, { start: point, end: point }],
   } })
   expect(response.status()).toBe(200)
@@ -14,7 +25,7 @@ test('HTTP 接受目录外集合，保留超安全整数分数及配对身份', 
 })
 
 test('HTTP 返回完整重叠区间，规范化保持数学值', async ({ request }) => {
-  const response = await request.post('/api/intersections', { data: { segments: [
+  const response = await request.post('/api/bo/intersections', { data: { segments: [
     { start: p(r('0')), end: p(r('6', '2')) },
     { start: p(r('-2', '-2')), end: p(r('4')) },
   ] } })
@@ -27,20 +38,20 @@ test('HTTP 返回完整重叠区间，规范化保持数学值', async ({ reques
 })
 
 test('HTTP 合法空集成功，非法结构、整数及零分母明确失败', async ({ request }) => {
-  const empty = await request.post('/api/intersections', { data: { segments: [] } })
+  const empty = await request.post('/api/bo/intersections', { data: { segments: [] } })
   expect(empty.status()).toBe(200)
   expect(await empty.json()).toEqual({ intersections: [] })
   for (const data of [{}, { segments: null }, ...[r('1', '0'), r('1', '-00'), r('1.5'), r('1e3'), r(' 1'), { numerator: 1, denominator: '1' }].map(x => ({ segments: [{ start: { x, y: r('0') }, end: p(r('0')) }] }))]) {
-    const response = await request.post('/api/intersections', { data })
+    const response = await request.post('/api/bo/intersections', { data })
     expect(response.status()).toBe(400)
     expect((await response.json()).error).toEqual(expect.any(String))
   }
-  const malformed = await request.post('/api/intersections', { data: '{', headers: { 'Content-Type': 'application/json' } })
+  const malformed = await request.post('/api/bo/intersections', { data: '{', headers: { 'Content-Type': 'application/json' } })
   expect(malformed.status()).toBe(400)
 })
 
 test('HTTP 竖直轨迹还原分数坐标并保持先横坐标后高度的事件顺序', async ({ request }) => {
-  const response = await request.post('/api/intersections', { data: { trace: true, segments: [
+  const response = await request.post('/api/bo/intersections', { data: { trace: true, segments: [
     { start: p(r('0'), r('2')), end: p(r('0'), r('-2')) },
     { start: p(r('-1')), end: p(r('1')) },
     { start: p(r('-1', '1000'), r('1')), end: p(r('-1', '1000'), r('1')) },

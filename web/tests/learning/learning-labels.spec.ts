@@ -100,7 +100,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
 }
 
 test('教学标签：重叠默认高亮不弹详情，点击临时标签固定正确对象', async ({ page }) => {
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok())
+  const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.ok())
   await page.goto('/cases/partial-overlap/learn')
   const { trace } = await readResponse(await response)
   const record = trace.steps.findIndex(step => step.action === 'record' && step.results.at(-1)?.geometry.type === 'overlap')

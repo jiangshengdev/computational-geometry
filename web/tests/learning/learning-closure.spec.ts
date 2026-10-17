@@ -253,7 +253,7 @@ test('真实流尚未交付返回边界时禁用跳转，交付后才恢复导�
     const original = window.fetch
     window.fetch = async (input, init) => {
       const response = await original(input, init)
-      if (!String(input).includes('/api/intersections') || !response.headers.get('content-type')?.includes('ndjson')) return response
+      if (!String(input).includes('/api/bo/intersections') || !response.headers.get('content-type')?.includes('ndjson')) return response
       let pending = ''
       let paused = false
       const encoder = new TextEncoder()

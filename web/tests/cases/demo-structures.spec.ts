@@ -7,7 +7,7 @@ import { captureResult } from '../support/trace-navigation'
 async function submittedGraph(page: Page, id: string) {
   await page.goto('/')
   const capture = await captureResult(page)
-  const pending = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
+  const pending = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
   await selectPreset(page, id)
   const response = await pending
   expect(response.status()).toBe(200)

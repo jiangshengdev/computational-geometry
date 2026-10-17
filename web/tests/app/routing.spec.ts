@@ -54,7 +54,7 @@ test('三页路由：列表能力和直接学习', async ({ page }) => {
   const requests: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  page.on('request', request => { if (request.url().endsWith('/api/intersections')) requests.push(request.url()) })
+  page.on('request', request => { if (request.url().endsWith('/api/bo/intersections')) requests.push(request.url()) })
   await page.setViewportSize({ width: 1360, height: 900 })
   await page.goto('/')
   await expect(page).toHaveTitle('案例列表 · BO 结果查看器')

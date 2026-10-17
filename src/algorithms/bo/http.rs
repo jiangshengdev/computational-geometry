@@ -51,6 +51,6 @@ async fn compute(
 /// Serve the submitted geometry directly, independently of viewer presets.
 pub fn router() -> Router {
     Router::new()
-        .route("/api/intersections", post(compute))
+        .route("/api/bo/intersections", post(compute))
         .layer(DefaultBodyLimit::disable())
 }

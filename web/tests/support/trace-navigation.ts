@@ -63,7 +63,7 @@ function responseCapture(page: Page) {
         const original = window.fetch
         window.fetch = async (input, init) => {
           const url = new URL(input instanceof Request ? input.url : String(input), location.href)
-          if (url.pathname !== '/api/intersections' || (init?.method ?? (input instanceof Request ? input.method : 'GET')).toUpperCase() !== 'POST') {
+          if (url.pathname !== '/api/bo/intersections' || (init?.method ?? (input instanceof Request ? input.method : 'GET')).toUpperCase() !== 'POST') {
             return original(input, init)
           }
           const captureToken = browser.__captureApiResponse({ kind: 'start' })
@@ -108,7 +108,7 @@ export async function waitForTraceCompletion(page: Page) {
 }
 
 export async function readIntersections(page: Page, input: { segments: Segment[]; trace: boolean }): Promise<{ intersections: Intersection[]; trace: SweepTrace }> {
-  const response = await page.request.post('/api/intersections', { data: input })
+  const response = await page.request.post('/api/bo/intersections', { data: input })
   expect(response.status()).toBe(200)
   return readResponse(response)
 }

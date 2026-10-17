@@ -19,14 +19,14 @@ test('结果语言切换保持精确选择与视图，英语数量采用复数',
 })
 
 test('已发生的应用错误随语言切换，保留 HTTP 诊断', async ({ page }) => {
-  await page.route('**/api/intersections', route => route.fulfill({ json: { invalid: true } }))
+  await page.route('**/api/bo/intersections', route => route.fulfill({ json: { invalid: true } }))
   await page.goto('/cases/crossing')
   await expect(page.getByRole('alert')).toContainText('结果结构无效')
   await page.getByRole('button', { name: 'Language / 语言' }).click()
   await page.getByRole('option', { name: 'English', exact: true }).click()
   await expect(page.getByRole('alert')).toContainText('Invalid result structure')
-  await page.unroute('**/api/intersections')
-  await page.route('**/api/intersections', route => route.fulfill({ status: 500, json: {} }))
+  await page.unroute('**/api/bo/intersections')
+  await page.route('**/api/bo/intersections', route => route.fulfill({ status: 500, json: {} }))
   await page.reload()
   await expect(page.getByRole('alert')).toContainText('Computation failed')
   await expect(page.getByRole('alert')).toContainText('HTTP 500')

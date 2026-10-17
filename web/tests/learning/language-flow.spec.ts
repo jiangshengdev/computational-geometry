@@ -17,7 +17,7 @@ test('同一步教学切换语言保持代码语句、执行边界和变量展�
   const value = await variable.locator('dd').innerText()
   const url = page.url()
   let requests = 0
-  page.on('request', request => { if (request.url().endsWith('/api/intersections')) requests++ })
+  page.on('request', request => { if (request.url().endsWith('/api/bo/intersections')) requests++ })
   await page.getByRole('button', { name: 'Language / 语言' }).click()
   await page.getByRole('option', { name: 'English', exact: true }).click()
   const englishCode = page.getByRole('region', { name: 'Core code replay', exact: true })

@@ -13,7 +13,7 @@ for (const [id, pairs, positions, center, centerPairs, upper] of [
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   await page.goto(`/cases/${id}`)
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
-  const response = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.ok() && response.request().postDataJSON().trace === true).then(readResponse)
+  const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.ok() && response.request().postDataJSON().trace === true).then(readResponse)
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const { trace } = await response
   await waitForTraceCompletion(page)

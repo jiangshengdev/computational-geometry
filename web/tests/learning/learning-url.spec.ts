@@ -214,7 +214,7 @@ test('教学步骤 URL：真实轨迹加载期间不误判有效步骤越界', a
   const insert = stepIndex(await readTrace(page, 'crossing'), step => step.action === 'insert' && step.subjects.includes(0))
   let release!: () => void
   const gate = new Promise<void>(resolve => { release = resolve })
-  await page.route('**/api/intersections', async route => {
+  await page.route('**/api/bo/intersections', async route => {
     await gate
     await route.continue()
   })
@@ -229,7 +229,7 @@ test('教学步骤 URL：真实轨迹加载期间不误判有效步骤越界', a
 })
 
 test('教学步骤 URL：请求失败保持计算错误而不误报越界', async ({ page }) => {
-  await page.route('**/api/intersections', route => route.fulfill({ status: 500, json: { error: 'failed' } }))
+  await page.route('**/api/bo/intersections', route => route.fulfill({ status: 500, json: { error: 'failed' } }))
   await page.goto('/cases/crossing/learn?step=999999')
   await expect(page.getByRole('alert')).toContainText('计算失败')
   await expect(page.getByRole('alert')).toContainText('HTTP 500')
@@ -247,7 +247,7 @@ for (const late of ['success', 'failure']) for (const destination of ['valid', '
     let release!: () => void
     const gate = new Promise<void>(resolve => { release = resolve })
     const pending: Promise<void>[] = []
-    await page.route('**/api/intersections', async route => {
+    await page.route('**/api/bo/intersections', async route => {
       if (route.request().postDataJSON().segments.length !== 3) return route.continue()
       const operation = (async () => {
         const response = await route.fetch()

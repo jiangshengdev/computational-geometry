@@ -29,7 +29,7 @@ test('键盘切换语言更新案例并记住选择，保留真实结果选择�
   await page.goto('/cases/crossing')
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
   let requests = 0
-  page.on('request', request => { if (request.url().endsWith('/api/intersections')) requests++ })
+  page.on('request', request => { if (request.url().endsWith('/api/bo/intersections')) requests++ })
   const language = page.getByRole('button', { name: 'Language / 语言' })
   await language.focus()
   await page.keyboard.press('Enter')

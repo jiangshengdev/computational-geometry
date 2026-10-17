@@ -14,7 +14,7 @@ export async function checkPairSelection(page: Page, sample: Intersection) {
 
 export async function checkLearningCompletion(page: Page, intersections: Intersection[], positions: number) {
   const capture = await captureIntersections(page)
-  const learningResponse = page.waitForResponse(response => response.url().endsWith('/api/intersections') && response.request().method() === 'POST')
+  const learningResponse = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
   await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
   const learning = await learningResponse
   expect(learning.status()).toBe(200)

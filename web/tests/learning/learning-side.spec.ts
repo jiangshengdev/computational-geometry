@@ -46,7 +46,7 @@ for (const example of [
   { id: 'partial-overlap', x: '4', y: '0', before: 'S1S0', after: 'S1', update: 'remove' },
 ]) test(`事件侧向状态：${example.id} (${example.x}, ${example.y})`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  const response = page.waitForResponse(r => r.url().endsWith('/api/intersections'))
+  const response = page.waitForResponse(r => r.url().endsWith('/api/bo/intersections'))
   await page.goto(`/cases/${example.id}/learn`)
   const { trace } = await readResponse(await response)
   const event = trace.steps.map((step, index) => ({ ...step, index })).filter(step =>
