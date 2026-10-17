@@ -35,11 +35,21 @@ const requests = await Promise.all(ids.map(async id => {
   return { id, body, inputSha256: sha256(JSON.stringify(request)), segments: request.segments.length }
 }))
 const git = async (...args: string[]) => (await exec('git', args, { cwd: root })).stdout
+const sourcePaths = (await git('ls-files', '--cached', '--others', '--exclude-standard', '-z', '--', 'src', 'web/src', 'Cargo.toml', 'Cargo.lock', 'build.rs', '.cargo')).split('\0').filter(Boolean).sort()
+const sourceFiles = await Promise.all(sourcePaths.map(async path => {
+  const content = await readFile(join(root, path)).catch((error: NodeJS.ErrnoException) => {
+    if (error.code === 'ENOENT') return null
+    throw error
+  })
+  return { path, sha256: content === null ? null : createHash('sha256').update(content).digest('hex') }
+}))
 const provenance = {
   revision: (await git('rev-parse', 'HEAD')).trim(),
   status: await git('status', '--porcelain'),
   sourceDiffSha256: sha256(await git('diff', 'HEAD', '--', 'src', 'web/src', 'Cargo.toml', 'Cargo.lock')),
-  toolSha256: sha256(await readFile(fileURLToPath(import.meta.url), 'utf8')),
+  sourceFiles,
+  sourceFilesSha256: sha256(JSON.stringify(sourceFiles)),
+  toolSha256: sha256(await readFile(fileURLToPath(import.meta.url), 'utf8') + await readFile(new URL('./compare-traces-support.ts', import.meta.url), 'utf8')),
   node: process.version,
 }
 let child: ChildProcess | undefined
@@ -145,7 +155,7 @@ try {
   if (previous && !(await previous.next()).done) throw new Error('Baseline contains extra records')
   if (reading) await reading
   if (gzip) { gzip.end(); await writing }
-  process.stdout.write(`${JSON.stringify({ mode, records, provenance })}\n`)
+  process.stdout.write(`${JSON.stringify({ mode, records, provenance: { ...provenance, sourceFiles: undefined } })}\n`)
 } finally {
   await stop()
   lines?.close()
