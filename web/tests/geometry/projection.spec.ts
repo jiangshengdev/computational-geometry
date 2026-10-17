@@ -38,7 +38,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       const errors: string[] = []
       page.on('pageerror', error => errors.push(error.message))
       page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
-      await page.goto('/cases/crossing/learn?step=5')
+      await page.goto('/bo/cases/crossing/learn?step=5')
       await waitForTraceCompletion(page)
       const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
       const layer = svg.locator('[data-layer="geometry"]')
@@ -113,7 +113,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
           }
         }
       })
-      await page.goto('/cases/same-x/learn?step=22')
+      await page.goto('/bo/cases/same-x/learn?step=22')
       await waitForTraceCompletion(page)
       const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
       await expect(svg.locator('.input > line')).toHaveCount(4)

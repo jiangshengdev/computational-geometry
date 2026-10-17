@@ -5,7 +5,7 @@ import { tabToReachable } from '../support/keyboard'
 test('详情溢出时可用键盘滚动，恢复尺寸后移除多余停留点', async ({ page }) => {
   await page.setViewportSize({ width: 1100, height: 720 })
   await installCase(page, longDetailsCase)
-  await page.goto(`/cases/${longDetailsCase.id}`)
+  await page.goto(`/bo/cases/${longDetailsCase.id}`)
   const pair = page.getByRole('radio').last()
   await pair.click()
   const details = page.getByRole('region', { name: '精确详情' })

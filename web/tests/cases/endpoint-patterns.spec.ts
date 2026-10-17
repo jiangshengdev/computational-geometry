@@ -19,10 +19,10 @@ for (const pattern of patterns) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-    await page.goto('/')
+    await page.goto('/bo')
     const card = page.getByRole('article', { name: pattern.name, exact: true })
     await card.scrollIntoViewIfNeeded()
-    await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/cases/${pattern.id}/learn`)
+    await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/bo/cases/${pattern.id}/learn`)
     const capture = await captureResult(page)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()
@@ -69,7 +69,7 @@ for (const pattern of patterns) {
 for (const pattern of patterns) {
   test(`${pattern.name}：从列表进入学习，连接点逐对记录`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
-    await page.goto('/')
+    await page.goto('/bo')
     const capture = await captureIntersections(page)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
     await page.getByRole('article', { name: pattern.name, exact: true }).getByRole('link', { name: '开始学习', exact: true }).click()
@@ -81,7 +81,7 @@ for (const pattern of patterns) {
     const index = trace.steps.findIndex(step => step.action === 'record' && step.current && formatPoint(step.current) === junction.point)
     expect(index).toBeGreaterThan(0)
     const stepResponse = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
-    await page.goto(`/cases/${pattern.id}/learn?step=${index}`)
+    await page.goto(`/bo/cases/${pattern.id}/learn?step=${index}`)
     expect(await (await stepResponse).finished()).toBeNull()
     const slider = page.getByRole('slider', { name: '教学步骤' })
     await expect(slider).toHaveValue(String(index))

@@ -7,7 +7,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
     await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto('/cases/crossing/learn?step=3')
+    await page.goto('/bo/cases/crossing/learn?step=3')
     await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
     const toggle = page.getByRole('switch', { name: '禅模式', exact: true })
     const controls = page.getByRole('region', { name: '回放控制' })
@@ -47,7 +47,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
   })
 
   browserTest(`禅模式记忆与快捷键避让 ${browserName}`, async ({ page }) => {
-    await page.goto('/cases/crossing/learn?step=3')
+    await page.goto('/bo/cases/crossing/learn?step=3')
     const toggle = page.getByRole('switch', { name: '禅模式', exact: true })
     await page.getByRole('spinbutton', { name: '跳转步骤' }).press('z')
     await expect(toggle).not.toBeChecked()
@@ -72,7 +72,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await page.keyboard.press('z')
     await page.getByRole('link', { name: /开始逐步学习/ }).click()
     await expect(toggle).toBeChecked()
-    await page.goto('/cases/multiway-endpoints/learn')
+    await page.goto('/bo/cases/multiway-endpoints/learn')
     await expect(toggle).toBeChecked()
     await page.getByText('禅模式', { exact: true }).click()
     await page.reload()

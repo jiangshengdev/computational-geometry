@@ -4,14 +4,14 @@ import { waitForTraceCompletion } from '../support/trace-navigation'
 test('离开和切换案例取消旧学习，再次进入仍能完整回放', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
-  await page.goto('/cases/carbon-nanotube/learn')
+  await page.goto('/bo/cases/carbon-nanotube/learn')
   await expect(page.getByRole('slider', { name: '教学步骤' })).toBeVisible()
   await expect(page.getByRole('region', { name: '回放控制' })).toContainText('轨迹生成中')
   await page.getByRole('link', { name: '返回结果查看器' }).click()
   await expect(page.getByRole('region', { name: '回放控制' })).toHaveCount(0)
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveValue('0')
   await waitForTraceCompletion(page)

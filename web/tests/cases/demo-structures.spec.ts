@@ -5,7 +5,7 @@ import { captureResult } from '../support/trace-navigation'
 
 // Inspect the submitted wire data, not generator-owned vertices or assertions.
 async function submittedGraph(page: Page, id: string) {
-  await page.goto('/')
+  await page.goto('/bo')
   const capture = await captureResult(page)
   const pending = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
   await selectPreset(page, id)

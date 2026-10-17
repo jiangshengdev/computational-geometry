@@ -8,7 +8,7 @@ for (const [id, point, starts, passes, pairs] of [
   ['collinear-contact', '(2, 2)', 'S1', '无', 1],
 ] as const) test(`新增接触的真实同点事件：${id}`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto(`/cases/${id}/learn`)
+  await page.goto(`/bo/cases/${id}/learn`)
   const trace = await readTrace(page, id)
   await waitForTraceCompletion(page)
   let records = 0

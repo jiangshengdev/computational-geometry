@@ -47,7 +47,7 @@ test('混合场景缩放平移切换，完整区间与点配对保持一致', as
 
 test('End 定位末个配对并选择精确详情', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 900 })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, 'mixed-horizontal')
   await expect(page.getByRole('status')).toHaveText('17 个相交配对')
   const pairs = page.getByRole('radio')

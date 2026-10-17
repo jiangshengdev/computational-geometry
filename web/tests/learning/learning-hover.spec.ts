@@ -21,7 +21,7 @@ async function endpoint(page: Page, line: Locator, end: 'start' | 'end') {
 
 test('教学 hover：操作解释中的事件点和独立线段双向联动', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 1100 })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const explanation = page.getByRole('region', { name: '操作解释' })
@@ -98,7 +98,7 @@ test('教学 hover：操作解释中的事件点和独立线段双向联动', as
 })
 
 test('教学 hover：队列端点与点标签精确双向对应', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const diagram = page.getByRole('region', { name: '几何视图' })
@@ -126,7 +126,7 @@ test('教学 hover：队列端点与点标签精确双向对应', async ({ page 
 })
 
 test('教学 hover：当前交点与待处理交点均按悬停显示坐标标签', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const trace = await readTrace(page, 'crossing')
   const queue = page.getByRole('region', { name: '待处理事件队列' })
@@ -176,7 +176,7 @@ test('教学 hover：当前交点与待处理交点均按悬停显示坐标标�
 
 for (const preset of ['crossing', 'disjoint']) {
   test(`教学 hover：${preset} 导航清理与可见对象隔离`, async ({ page }) => {
-    await page.goto('/cases/crossing')
+    await page.goto('/bo/cases/crossing')
     await selectPreset(page, preset)
     await page.getByRole('link', { name: '开始逐步学习' }).click()
     const slider = page.getByRole('slider', { name: '教学步骤' })
@@ -237,7 +237,7 @@ test('教学 hover：缩放平移后的点、标签与线段命中', async ({ pa
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const trace = await readTrace(page, 'crossing')
@@ -269,7 +269,7 @@ test('教学 hover：缩放平移后的点、标签与线段命中', async ({ pa
 })
 
 test('教学 hover：活动顺序的单个标识与线段独立联动', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const order = page.getByTestId('active-order')

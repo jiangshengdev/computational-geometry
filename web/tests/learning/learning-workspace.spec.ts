@@ -5,7 +5,7 @@ import { waitForTraceCompletion } from '../support/trace-navigation'
 for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 1080 }]) {
   test(`学习工作区：${viewport.width} 核心内容与回放控件可达`, async ({ page }) => {
     await page.setViewportSize(viewport)
-    await page.goto('/cases/multiway-endpoints/learn')
+    await page.goto('/bo/cases/multiway-endpoints/learn')
     const regions = ['当前事件', '同点参与线段', '几何视图', '待处理事件队列', '活动线段顺序', '操作解释']
     for (const name of regions) {
       const region = page.getByRole('region', { name, exact: true })
@@ -24,7 +24,7 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 108
 test('学习工作区：真实溢出队列内部滚动不带动页面', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 720 })
   await installCase(page, scrollingCase)
-  await page.goto(`/cases/${scrollingCase.id}/learn`)
+  await page.goto(`/bo/cases/${scrollingCase.id}/learn`)
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   await expect(queue.getByRole('listitem')).toHaveCount(30)
   const scrollBefore = await page.evaluate(() => window.scrollY)
@@ -46,7 +46,7 @@ test('学习工作区：真实溢出队列内部滚动不带动页面', async ({
 
 test('学习工作区：1360×600 自然滚动仍可阅读和完成', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 600 })
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await waitForTraceCompletion(page)
   await slider.focus()

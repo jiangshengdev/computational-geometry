@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import { selectPreset } from '../support/cases'
 
 test('普通交叉通过真实服务计算，并联动配对与精确详情', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page.getByRole('heading', { name: '普通交叉', exact: true })).toBeVisible()
   await selectPreset(page, 'crossing')
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
@@ -14,7 +14,7 @@ test('普通交叉通过真实服务计算，并联动配对与精确详情', as
 })
 
 test('基础空结果及切换清空旧选择', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
   for (const id of ['disjoint', 'empty', 'single']) {
     await selectPreset(page, id)
@@ -33,7 +33,7 @@ test('加载状态与空结果区分，完成后展示真实结果', async ({ pa
     await gate
     await route.continue()
   })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page.getByRole('status')).toHaveText('正在计算…')
   await expect(page.getByText('没有相交配对', { exact: true })).toHaveCount(0)
   await expect(page.getByRole('alert')).toHaveCount(0)
@@ -48,7 +48,7 @@ test('缩放平移保持等比例几何及选中精确详情', async ({ page }) 
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (message.type() === 'error' || message.type() === 'warning') errors.push(message.text()) })
   await page.setViewportSize({ width: 1360, height: 900 })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
@@ -104,7 +104,7 @@ for (const late of ['success', 'failure']) {
         await operation
       } else await route.continue()
     })
-    await page.goto('/cases/crossing')
+    await page.goto('/bo/cases/crossing')
     await expect.poll(() => pending.length).toBeGreaterThan(0)
     await selectPreset(page, 'empty')
     await expect(page.getByText('没有相交配对', { exact: true })).toBeVisible()
@@ -118,7 +118,7 @@ for (const late of ['success', 'failure']) {
 
 test('服务不可用和计算错误不能显示成空结果', async ({ page }) => {
   await page.route('**/api/bo/intersections', route => route.abort('connectionrefused'))
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page.getByRole('alert')).toContainText('计算失败')
   await expect(page.getByText('没有相交配对', { exact: true })).toHaveCount(0)
   await page.unroute('**/api/bo/intersections')

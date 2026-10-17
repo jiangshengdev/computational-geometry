@@ -2,7 +2,7 @@ import { expect, test } from '../support/learning-test'
 
 test('蜘蛛网 hover：同一对象内连续移动不重复排布标签', async ({ page }) => {
   await page.setViewportSize({ width: 1920, height: 1000 })
-  await page.goto('/cases/spider-web/learn')
+  await page.goto('/bo/cases/spider-web/learn')
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))

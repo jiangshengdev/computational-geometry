@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
 
 async function readTrace(page: Page, id: string) {
   const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
-  await page.goto(`/cases/${id}/learn`)
+  await page.goto(`/bo/cases/${id}/learn`)
   const result = await response
   expect(result.status()).toBe(200)
   expect(result.request().postDataJSON()).toEqual({ segments: scrollingCase.segments, trace: true })
@@ -59,7 +59,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     const target = trace.steps.findIndex(step => step.action === 'record' && step.active.length === scrollingCase.segments.length && step.subjects[0] === step.active[0])
     expect(target).toBeGreaterThan(0)
     const prior = mode === '回退' ? target + 1 : target - 1
-    await page.goto(`/cases/${scrollingCase.id}/learn?step=${prior}`)
+    await page.goto(`/bo/cases/${scrollingCase.id}/learn?step=${prior}`)
     const slider = page.getByRole('slider', { name: '教学步骤' })
     await expect(slider).toHaveValue(String(prior))
     await waitForTraceCompletion(page)
@@ -97,7 +97,7 @@ test('教学定位：点击滑块轨道跨多步跳转后定位目标而非来�
   expect(target - prior).toBeGreaterThan(1)
   const slider = page.getByRole('slider', { name: '教学步骤' })
   const thumb = page.getByTestId('teaching-step-thumb')
-  await page.goto(`/cases/${scrollingCase.id}/learn?step=${prior}`)
+  await page.goto(`/bo/cases/${scrollingCase.id}/learn?step=${prior}`)
   await expect(slider).toHaveValue(String(prior))
   await expect(slider).toHaveAttribute('max', String(trace.steps.length - 1))
   await waitForTraceCompletion(page)
@@ -124,7 +124,7 @@ test('教学定位：发现事件按精确身份定位，回退移除未来条�
   const discovery = trace.steps.findIndex(step => step.action === 'discover')
   expect(discovery).toBeGreaterThan(0)
   const point = trace.steps[discovery].pending.find(point => !trace.steps[discovery - 1].pending.some(old => samePoint(point, old)))!
-  await page.goto(`/cases/${scrollingCase.id}/learn?step=${discovery}`)
+  await page.goto(`/bo/cases/${scrollingCase.id}/learn?step=${discovery}`)
   await waitForTraceCompletion(page)
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const row = queue.getByRole('listitem').filter({ hasText: formatPoint(point) })

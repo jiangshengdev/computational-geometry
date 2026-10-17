@@ -4,7 +4,7 @@ import { readTrace, seekStep, stepIndex } from '../support/trace-navigation'
 
 for (const action of ['take', 'remove', 'complete'] as const) {
   test(`参与线段的活动状态：普通交叉 ${action}`, async ({ page }) => {
-    await page.goto('/cases/crossing/learn')
+    await page.goto('/bo/cases/crossing/learn')
     const trace = await readTrace(page, 'crossing')
     const target = stepIndex(trace, step => step.action === action && (action === 'take'
       || (action === 'remove' ? step.subjects.includes(0) : step.active.length === 0)))
@@ -23,7 +23,7 @@ for (const action of ['take', 'remove', 'complete'] as const) {
 }
 
 test('入门学习：交叉的发现、换序、退出和重新开始', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, 'crossing')
   await expect(page.getByText(/两两检查/).first()).toBeHidden()
   await page.getByRole('button', { name: '说明与帮助', exact: true }).click()
@@ -110,7 +110,7 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
 })
 
 test('入门学习：无交点完整流程与切换隔离', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, 'disjoint')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const trace = await readTrace(page, 'disjoint')
@@ -151,7 +151,7 @@ test('入门学习：交点投影与画布详情同步', async ({ page }) => {
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   await page.setViewportSize({ width: 1360, height: 1000 })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   await page.getByRole('link', { name: '开始逐步学习' }).click()

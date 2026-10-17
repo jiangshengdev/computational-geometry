@@ -6,7 +6,7 @@ test('结果工作区配对选择与取消', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/cases/mixed-horizontal')
+  await page.goto('/bo/cases/mixed-horizontal')
   await expect(page.getByRole('radio').first()).toBeVisible()
   await expect(page).toHaveTitle('重叠、交叉与重合点 · 计算结果 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
@@ -26,7 +26,7 @@ test('结果工作区配对选择与取消', async ({ page }) => {
 test('结果工作区长内容末项可达并可查看详情', async ({ page }) => {
   await page.setViewportSize({ width: 1100, height: 720 })
   await installCase(page, longResultsCase)
-  await page.goto(`/cases/${longResultsCase.id}`)
+  await page.goto(`/bo/cases/${longResultsCase.id}`)
   await expect(page.getByRole('radio')).toHaveCount(16)
   const details = page.getByRole('region', { name: '精确详情' })
   for (const last of [page.getByRole('region', { name: '原始输入', exact: true }).getByRole('listitem').last(), page.getByRole('radio').last()]) {

@@ -2,7 +2,7 @@ import { expect, test, type Page } from '../support/learning-test'
 import { readTrace, seekStep, stepIndex } from '../support/trace-navigation'
 
 async function startLearning(page: Page) {
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
   return readTrace(page, 'crossing')
 }

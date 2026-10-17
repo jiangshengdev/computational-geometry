@@ -23,8 +23,8 @@ for (const example of cases) test(`共点教学：${example.name}`, async ({ pag
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/cases/crossing')
-  await expect(page).toHaveURL('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
+  await expect(page).toHaveURL('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   const trace = await readTrace(page, example.slug === 'interior' ? 'multiway-interior' : 'multiway-endpoints')

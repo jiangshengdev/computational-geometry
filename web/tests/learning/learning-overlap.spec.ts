@@ -4,7 +4,7 @@ import { readTrace, seekStep, stepIndex, waitForTraceCompletion } from '../suppo
 
 test('重叠教学：区间边界、事件状态、完整结果与重启', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, 'partial-overlap')
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
   await page.getByRole('link', { name: '开始逐步学习' }).click()
@@ -88,9 +88,9 @@ test('重叠教学：边界与并列状态可读', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
-  await expect(page).toHaveURL('/cases/crossing')
+  await expect(page).toHaveURL('/bo/cases/crossing')
   await selectPreset(page, 'partial-overlap')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })

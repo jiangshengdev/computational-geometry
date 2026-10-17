@@ -19,7 +19,7 @@ async function pointCenter(page: Page, pair: string) {
 test('hover 三处双向联动，重合位置整体命中而标签精确命中', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await page.getByRole('link', { name: '返回列表', exact: true }).hover()
   await page.getByRole('button', { name: '图例与操作说明' }).hover()
   await expect(page.getByRole('tooltip')).toContainText('菱形：零长度输入')
@@ -57,7 +57,7 @@ test('hover 三处双向联动，重合位置整体命中而标签精确命中',
 })
 
 test('hover 重复区间在缩放、平移后整体命中', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, 'duplicate-overlap')
   await expect(page.getByText('3 个相交配对', { exact: true })).toBeVisible()
   await page.setViewportSize({ width: 1280, height: 900 })

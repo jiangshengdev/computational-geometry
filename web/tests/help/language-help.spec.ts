@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 
 test('帮助内切换语言保留当前主题，键盘关闭后返回原控件', async ({ page }) => {
-  await page.goto('/cases/vertical-overlap')
+  await page.goto('/bo/cases/vertical-overlap')
   const trigger = page.getByRole('button', { name: '说明与帮助', exact: true })
   await trigger.click()
   const dialog = page.getByRole('dialog', { name: '说明与帮助', exact: true })

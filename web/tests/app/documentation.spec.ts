@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-for (const path of ['/', '/cases/crossing', '/cases/crossing/learn']) {
+for (const path of ['/', '/bo', '/convex-hull', '/bo/cases/crossing', '/bo/cases/crossing/learn']) {
   test(`文档入口：${path} 支持语言切换和键盘导航`, async ({ page }) => {
     await page.route('https://cgd.jiangshengdev.com/**', route => route.fulfill({
       contentType: 'text/html; charset=utf-8',

@@ -7,7 +7,7 @@ test('标题序号：列表对应、真实锚点与标签恢复', async ({ page 
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await selectPreset(page, 'neighbor-crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
@@ -61,7 +61,7 @@ test('标题序号：列表对应、真实锚点与标签恢复', async ({ page 
 
 test('标题序号：同点锚点、换序、缩放平移与空列表', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 1100 })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const activeTitle = page.getByRole('heading', { name: '活动线段顺序', exact: true })
   const pendingTitle = page.getByRole('heading', { name: '待处理事件队列', exact: true })

@@ -14,7 +14,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-    await page.goto('/cases/spider-web/learn?step=1')
+    await page.goto('/bo/cases/spider-web/learn?step=1')
     const trace = await readTrace(page, 'spider-web')
     await expect(page).toHaveTitle('蜘蛛网 · 逐步学习 · BO 结果查看器')
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
@@ -66,7 +66,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
 
   browserTest(`侧栏状态跨刷新与案例切换记忆 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto('/cases/crossing/learn?step=1')
+    await page.goto('/bo/cases/crossing/learn?step=1')
     await expect(page).toHaveURL(/step=1$/)
     for (const side of ['左', '右']) {
       await page.getByRole('button', { name: `展开${side}侧辅助栏`, exact: true }).click()
@@ -74,7 +74,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await page.reload()
     for (const side of ['左', '右']) await expect(page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true })).toBeVisible()
     await page.getByRole('link', { name: '返回列表', exact: true }).click()
-    await page.locator('a[href="/cases/multiway-endpoints/learn"]').click()
+    await page.locator('a[href="/bo/cases/multiway-endpoints/learn"]').click()
     for (const side of ['左', '右']) await expect(page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true })).toBeVisible()
     for (const side of ['左', '右']) {
       await page.getByRole('button', { name: `收起${side}侧辅助栏`, exact: true }).click()

@@ -6,7 +6,7 @@ test('教学帮助：动态内容默认展示与阅读状态保持', async ({ pa
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
   await page.setViewportSize({ width: 1360, height: 1000 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/cases/crossing/learn?step=3')
+  await page.goto('/bo/cases/crossing/learn?step=3')
   await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('3')
   const info = page.getByRole('button', { name: '图例与操作说明' })

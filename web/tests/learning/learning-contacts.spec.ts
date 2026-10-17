@@ -5,7 +5,7 @@ import { readTrace, seekStep, waitForTraceCompletion } from '../support/trace-na
 test('接触教学：共端点先记录闭集交点再完成退出与加入，可重新开始', async ({ page }) => {
   const trace = await readTrace(page, 'endpoint')
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, '共端点')
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeEnabled()
   await page.getByRole('link', { name: '开始逐步学习' }).click()
@@ -46,7 +46,7 @@ test('并列教学：同横坐标不同位置分别换序', async ({ page }) => 
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
@@ -106,7 +106,7 @@ for (const [name, starts, ends, initial, final] of [
 ]) test(`接触教学：${name}与穿过者归组`, async ({ page }) => {
   const trace = await readTrace(page, name === '起点落在内部' ? 'start-interior' : 'end-interior')
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, name)
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })

@@ -1,6 +1,10 @@
-# BO 结果查看器
+# 计算几何
 
-前端保存预设线段，通过本地 Axum 服务调用现有精确 BO 库。页面支持配对选择、精确坐标详情、等比例缩放和平移。交点标记与完整重叠区间都来自本次 HTTP 计算；不提供扫描过程、输入编辑或暴力对照。
+首页 `/` 提供算法选择。BO 案例列表位于 `/bo`，结果页位于 `/bo/cases/:caseId`，教学页位于 `/bo/cases/:caseId/learn`。前端保存预设线段，通过 Axum 服务调用精确 BO 库，提供配对选择、精确坐标详情、等比例缩放、平移和真实 Rust 执行轨迹的教学回放。
+
+教学链接可携带步骤，例如 `/bo/cases/crossing/learn?step=2`；刷新和分享可恢复位置，步骤更新替换当前浏览器历史项。目标步骤尚未生成时等待真实轨迹，非法或越界步骤显示明确错误。旧 `/cases/:caseId` 和 `/cases/:caseId/learn` 不再提供 BO 功能，也不重定向。
+
+`/convex-hull` 是明确标注“尚未实现”的凸包占位页，不提供计算或计算 API。前后端的 BO 专属实现分别位于 `web/src/algorithms/bo/` 和 `src/algorithms/bo/`；凸包预留目录分别为 `web/src/algorithms/convex-hull/` 和 `src/algorithms/convex_hull/`。应用入口负责路由组合，基础几何与通用应用组件继续共享。
 
 ## 本地使用
 

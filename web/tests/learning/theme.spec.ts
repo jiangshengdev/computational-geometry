@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 
 test('滑块可访问描述反映当前教学步骤', async ({ page }) => {
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const next = page.getByRole('button', { name: '下一步', exact: true })
   await expect(next).toBeEnabled()
   const slider = page.getByRole('slider', { name: '教学步骤' })

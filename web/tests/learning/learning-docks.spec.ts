@@ -9,7 +9,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   browserTest(`步骤输入校验、提交与键盘隔离 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto('/cases/crossing/learn?step=0')
+    await page.goto('/bo/cases/crossing/learn?step=0')
     const input = page.getByRole('spinbutton', { name: '跳转步骤' })
     const submit = page.getByRole('button', { name: '前往步骤', exact: true })
     for (const value of ['', '-1', '1.5']) {
@@ -30,7 +30,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
   })
   browserTest(`辅助栏按需浮出与临时面板重置 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
-    await page.goto('/cases/crossing/learn?step=1')
+    await page.goto('/bo/cases/crossing/learn?step=1')
     const code = page.getByRole('region', { name: '核心代码回放', exact: true })
     await expect(page.getByRole('region', { name: '操作解释', exact: true })).toBeHidden()
     await page.getByRole('button', { name: '待处理事件队列', exact: true }).click()

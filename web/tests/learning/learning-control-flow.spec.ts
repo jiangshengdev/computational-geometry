@@ -2,7 +2,7 @@ import { closePreview, expect, test, type Locator, type Page } from '../support/
 import { readTrace, stepIndex, waitForTraceCompletion } from '../support/trace-navigation'
 
 async function openStep(page: Page, preset: string, index: number) {
-  await page.goto(`/cases/${preset}/learn?step=${index}`)
+  await page.goto(`/bo/cases/${preset}/learn?step=${index}`)
   await waitForTraceCompletion(page)
   const panel = page.getByRole('region', { name: '核心代码回放' })
   await expect(panel.locator('.code-line').first()).toBeAttached()

@@ -3,11 +3,11 @@ import { readResponse } from '../support/trace-navigation'
 
 test('真实分类入口不泄露结果，配对记录可回退', async ({ page }) => {
   const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections'))
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace } = await readResponse(await response)
   const entry = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.entry)
   expect(entry).toBeGreaterThan(0)
-  await page.goto(`/cases/crossing/learn?step=${entry}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${entry}`)
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   await expect(panel).toContainText('第一条核心语句之前')
@@ -18,7 +18,7 @@ test('真实分类入口不泄露结果，配对记录可回退', async ({ page 
   await expect(variables.getByTestId('variable-incident')).toContainText('未赋值')
   const recorded = trace.steps.findIndex(step => step.action === 'record')
   expect(recorded).toBeGreaterThan(entry)
-  await page.goto(`/cases/crossing/learn?step=${recorded - 1}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${recorded - 1}`)
   await expect(variables.getByTestId('variable-geometry').locator('dd')).toHaveText('(2, 2)')
   const before = await variables.locator('dd').allTextContents()
   await page.getByRole('button', { name: '下一步', exact: true }).click()

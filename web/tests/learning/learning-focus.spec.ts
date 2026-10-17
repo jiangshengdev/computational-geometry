@@ -13,7 +13,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const trace = await readTrace(page, 'crossing')
     const entry = trace.steps.findIndex(step => step.action === 'take-entry')
     expect(entry).toBeGreaterThan(0)
-    await page.goto(`/cases/crossing/learn?step=${entry}`)
+    await page.goto(`/bo/cases/crossing/learn?step=${entry}`)
     await waitForTraceCompletion(page)
     const canvas = page.locator('svg[data-teaching="true"]')
     await tabToReachable(page, canvas)

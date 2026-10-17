@@ -8,7 +8,7 @@ for (const [id, pairs, positions, pointIds, exactPoint] of [
   ['point-multiway', 6, 1, [3], '(0, 0)'],
 ] as const) test(`零长度教学：${id}`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto(`/cases/${id}`)
+  await page.goto(`/bo/cases/${id}`)
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const trace = await readTrace(page, id)

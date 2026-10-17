@@ -8,7 +8,7 @@ function executableSource(source: string) {
 
 test('si 进入真实 retain 调用，显示作用域、独立返回值并逐步回退', async ({ page }) => {
   const capture = await captureIntersections(page)
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace } = await capture.result
   await waitForTraceCompletion(page)
   const entry = trace.steps.findIndex(step => step.execution.context.function === 'retain closure' && !step.execution.returning)
@@ -42,7 +42,7 @@ test('si 进入真实 retain 调用，显示作用域、独立返回值并逐步
 
 test('其余闭包沿用真实参数、返回停点和外层作用域', async ({ page }) => {
   const capture = await captureIntersections(page)
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace } = await capture.result
   await waitForTraceCompletion(page)
   const current = page.getByRole('region', { name: '当前执行上下文', exact: true })
@@ -74,7 +74,7 @@ browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${brow
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
   const capture = await captureIntersections(page)
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace } = await capture.result
   await waitForTraceCompletion(page)
   const code = page.getByRole('region', { name: '核心代码回放', exact: true })
@@ -121,7 +121,7 @@ browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${brow
   // Both retain-end call sites share a trace module. Only the current site's
   // parameter may expose its value, including when landing directly by URL.
   const incidentEntry = trace.steps.findIndex((step, index) => step.execution.module === 'retain-end' && !step.execution.returning && trace.steps[index - 1].execution.boundary === 2)
-  await page.goto(`/cases/crossing/learn?step=${incidentEntry}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${incidentEntry}`)
   await waitForTraceCompletion(page)
   const lines = code.locator('.code-line')
   const activeBody = lines.filter({ hasText: /^\s*segments\[id\]\.right != point\s*$/ }).first()
@@ -148,7 +148,7 @@ browserTest(`闭包停点原地展开并区分相邻闭包与外层变量 ${brow
 
 test('用户函数调用保留暂停的外层作用域，返回后再赋值给调用方', async ({ page }) => {
   const capture = await captureIntersections(page)
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace } = await capture.result
   await waitForTraceCompletion(page)
   const entry = trace.steps.findIndex(step => step.execution.context.function === 'schedule_neighbors' && step.execution.entry)
@@ -175,7 +175,7 @@ test('步过跳过语句内部调用，步出只结束当前调用，上一步�
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   const capture = await captureIntersections(page)
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace } = await capture.result
   await waitForTraceCompletion(page)
   const slider = page.getByRole('slider', { name: '教学步骤' })
@@ -284,7 +284,7 @@ test('真实流尚未交付返回边界时禁用跳转，交付后才恢复导�
       return new Response(stream, { status: response.status, headers: response.headers })
     }
   })
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect.poll(() => page.evaluate(() => 'releaseClosureTrace' in window)).toBe(true)
   await expect.poll(async () => Number(await slider.getAttribute('max'))).toBeGreaterThan(1)

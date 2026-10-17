@@ -7,8 +7,8 @@ for (const preset of ['crossing', 'disjoint']) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
-    await page.goto('/cases/crossing')
-    await expect(page).toHaveURL('/cases/crossing')
+    await page.goto('/bo/cases/crossing')
+    await expect(page).toHaveURL('/bo/cases/crossing')
     await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
     await selectPreset(page, preset)
     await page.getByRole('link', { name: '开始逐步学习' }).click()
@@ -73,7 +73,7 @@ test('教学快捷键：大步、步过和步出与按钮等效，长按与禁�
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
   const capture = await captureIntersections(page)
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace } = await capture.result
   await waitForTraceCompletion(page)
   const start = stepIndex(trace, step => step.execution.context.function === 'retain closure' && !step.execution.returning)
@@ -120,7 +120,7 @@ test('教学快捷键：大步、步过和步出与按钮等效，长按与禁�
 })
 
 test('教学快捷键：控件优先、组合键和模式隔离', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, 'crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const slider = page.getByRole('slider', { name: '教学步骤' })
@@ -189,7 +189,7 @@ test('教学动作：加入、检查、发现分别展示并可回退', async ({
   const secondInsert = stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
   const check = stepIndex(trace, (step, index) => index > secondInsert && step.action === 'check' && step.subjects.includes(0) && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
   const discover = stepIndex(trace, (step, index) => index > check && step.action === 'discover' && step.subjects.includes(0) && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, 'crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const previous = page.getByRole('button', { name: '上一步', exact: true })
@@ -219,7 +219,7 @@ for (const preset of ['crossing', 'disjoint']) {
   test(`步骤滑动条：${preset} 自由跳转、拖动实时同步`, async ({ page }) => {
     const trace = await readTrace(page, preset)
     const inserted = stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(1))
-    await page.goto('/cases/crossing')
+    await page.goto('/bo/cases/crossing')
     await selectPreset(page, preset)
     await page.getByRole('link', { name: '开始逐步学习' }).click()
     const slider = page.getByRole('slider', { name: '教学步骤' })

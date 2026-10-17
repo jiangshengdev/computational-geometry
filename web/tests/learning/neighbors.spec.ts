@@ -4,7 +4,7 @@ import { readTrace, seekStep } from '../support/trace-navigation'
 
 test('相邻检测：删除中间线段后发现交点', async ({ page }) => {
   const trace = await readTrace(page, 'neighbor-removal')
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, '退出后成为邻居')
   await expect(page.getByText(/学习目标：观察中间线段退出/)).toBeHidden()
   await page.getByRole('button', { name: '案例说明', exact: true }).click()
@@ -62,7 +62,7 @@ test('相邻检测：插入和交叉后发现新邻居', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await selectPreset(page, 'neighbor-crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()

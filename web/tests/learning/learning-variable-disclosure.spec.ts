@@ -31,7 +31,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const start = trace.steps.findIndex(step => step.action === 'take-entry')
     const call = trace.steps.findIndex(step => step.execution.context.function === 'schedule_neighbors')
     expect(call).toBeGreaterThan(start)
-    await page.goto(`/cases/crossing/learn?step=${start}`)
+    await page.goto(`/bo/cases/crossing/learn?step=${start}`)
     await expect(page).toHaveTitle(/逐步学习/)
     await waitForTraceCompletion(page)
     await expect(page.locator('.execution-code')).toBeVisible()
@@ -122,7 +122,7 @@ test('单行坐标、非空编号列表及标量直接显示，不提供折叠',
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.execution.context.locals.some(variable => variable.name === 'active' && variable.value !== null && trace.values[variable.value] === '[0]'))
   expect(index).toBeGreaterThan(0)
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const panel = page.getByRole('region', { name: '核心变量', exact: true })
   const context = trace.steps[index].execution.context
   const singleLine = context.locals.filter(variable => variable.availability === 'available' && variable.value !== null && !formatExecutionValue(trace.values[variable.value]).includes('\n'))

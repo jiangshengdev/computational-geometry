@@ -6,7 +6,7 @@ for (const [id, count, intervals] of [
   ['overlap-group', 3, ['(0, 0) → (6, 0)', '(2, 0) → (3, 0)']],
 ] as const) test(`通用重叠教学：${id}`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto(`/cases/${id}`)
+  await page.goto(`/bo/cases/${id}`)
   await expect(page.getByRole('link', { name: '开始逐步学习' })).toBeVisible()
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   await page.getByRole('button', { name: '重叠说明', exact: true }).click()

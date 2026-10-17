@@ -252,7 +252,7 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
   }
   try {
     if (entry === 'result-link') {
-      await page.goto(`${baseURL}cases/${preset.id}`)
+      await page.goto(`${baseURL}bo/cases/${preset.id}`)
       await expect(page.getByRole('radio').first()).toBeVisible({ timeout: watchdogMs })
     }
     const traceResponse = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().postDataJSON()?.trace === true)
@@ -261,7 +261,7 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
     void traceResponse.catch(() => {})
     started = performance.now()
     timer = setInterval(takeSample, 250)
-    if (entry === 'direct') await page.goto(`${baseURL}cases/${preset.id}/learn`, { waitUntil: 'commit' })
+    if (entry === 'direct') await page.goto(`${baseURL}bo/cases/${preset.id}/learn`, { waitUntil: 'commit' })
     else await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
     const slider = page.getByRole('slider', { name: '教学步骤' })
     const next = page.getByRole('button', { name: '下一步', exact: true })
@@ -317,7 +317,7 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
         const waitCancelStarted = performance.now()
         await cancel.or(recovery).click()
         await expect(page.getByRole('status', { name: '步骤等待' })).toHaveCount(0, { timeout: watchdogMs })
-        returnedToResults = new URL(page.url()).pathname === `/cases/${preset.id}`
+        returnedToResults = new URL(page.url()).pathname === `/bo/cases/${preset.id}`
         if (returnedToResults) sample.waitCancellationOutcome = 'generation-completed-before-cancel'
         else {
           await expect(slider).toHaveValue(String(destination), { timeout: watchdogMs })
@@ -328,7 +328,7 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
       await page.evaluate(id => {
         document.addEventListener('click', event => {
           const link = event.target instanceof Element ? event.target.closest('a') : null
-          if (link && new URL(link.href).pathname === `/cases/${id}`) globalThis.__learningPerfLeaveAt = Date.now()
+          if (link && new URL(link.href).pathname === `/bo/cases/${id}`) globalThis.__learningPerfLeaveAt = Date.now()
         }, { capture: true, once: true })
       }, preset.id)
       const cancellationStartedEpoch = Date.now()

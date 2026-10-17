@@ -8,7 +8,7 @@ test('核心变量保留真实值并随前进回退更新', async ({ page }) => 
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8)
   expect(index).toBeGreaterThan(0)
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const panel = page.getByRole('region', { name: '核心变量', exact: true })
   for (const stepIndex of [index, index + 1, index]) {
     for (const kind of ['parameters', 'locals'] as const) {
@@ -38,7 +38,7 @@ test('各代码模块入口可前进并恢复上下文', async ({ page }) => {
   for (const [index, step] of trace.steps.entries()) {
     if (!step.execution.entry || modules.has(step.execution.module)) continue
     modules.add(step.execution.module)
-    await page.goto(`/cases/crossing/learn?step=${index}`)
+    await page.goto(`/bo/cases/crossing/learn?step=${index}`)
     const panel = page.getByRole('region', { name: '核心代码回放' })
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
     await expect(panel).toContainText('第一条核心语句之前')
@@ -60,7 +60,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const trace = await readTrace(page, 'multiway-interior')
     const index = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8)
     expect(index).toBeGreaterThan(0)
-    await page.goto(`/cases/multiway-interior/learn?step=${index}`)
+    await page.goto(`/bo/cases/multiway-interior/learn?step=${index}`)
     const panel = page.getByRole('region', { name: '核心代码回放' })
     const code = panel.getByRole('region', { name: '参与线段分类教学代码' })
     const boundary = panel.getByRole('img', { name: /执行边界/ })

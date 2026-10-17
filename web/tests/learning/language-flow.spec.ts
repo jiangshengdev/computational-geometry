@@ -5,7 +5,7 @@ test('同一步教学切换语言保持代码语句、执行边界和变量展�
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8)
   expect(index).toBeGreaterThan(0)
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const code = page.getByRole('region', { name: '核心代码回放', exact: true })
   await expect(code.locator('.code-line').first()).toBeAttached()
   const statements = await code.locator('.code-line').allTextContents()
@@ -32,7 +32,7 @@ test('同一步教学切换语言保持代码语句、执行边界和变量展�
   expect(requests).toBe(0)
   const neighbors = trace.steps.findIndex(step => step.execution.module === 'neighbors' && step.execution.entry)
   expect(neighbors).toBeGreaterThan(0)
-  await page.goto(`/cases/crossing/learn?step=${neighbors}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${neighbors}`)
   await page.getByRole('button', { name: /^Function then ·/ }).hover()
   const call = page.getByRole('dialog', { name: /^Function then ·/ })
   await expect(call).toContainText(/Referenced variable\s+position/)
@@ -49,7 +49,7 @@ test('同一步教学切换语言保持代码语句、执行边界和变量展�
 })
 
 test('轨迹生成期间切换语言仍等待原目标，可以取消等待', async ({ page }) => {
-  await page.goto('/cases/carbon-nanotube/learn?step=999999')
+  await page.goto('/bo/cases/carbon-nanotube/learn?step=999999')
   await expect(page.getByRole('status', { name: '步骤等待', exact: true })).toBeVisible()
   await page.getByRole('button', { name: 'Language / 语言' }).click()
   await page.getByRole('option', { name: 'English', exact: true }).click()

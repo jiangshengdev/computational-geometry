@@ -5,7 +5,7 @@ import { readTrace, seekStep, stepIndex, waitForTraceCompletion } from '../suppo
 test('竖直教学：多高度交叉、顶端接触及重启保持原坐标顺序', async ({ page }) => {
   const trace = await readTrace(page, 'vertical')
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await selectPreset(page, '竖直线多高度接触')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const current = page.getByRole('region', { name: '当前事件' })
@@ -56,7 +56,7 @@ test('竖直教学：状态标记表示处理高度', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await selectPreset(page, '竖直线多高度接触')
   await page.getByRole('link', { name: '开始逐步学习' }).click()

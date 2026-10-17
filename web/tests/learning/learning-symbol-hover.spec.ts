@@ -20,7 +20,7 @@ test('字段 hover 读取真实闭包参数，声明中的三个 p 均可查看�
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.execution.module === 'original' && !step.execution.returning)
   expect(index).toBeGreaterThan(0)
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const references = panel.locator('[data-symbol="p"][data-line="2"]')
   await expect(references).toHaveCount(3)
@@ -49,7 +49,7 @@ test('字段 hover 读取真实闭包参数，声明中的三个 p 均可查看�
 test('字段与索引 hover 使用当前线段编号并随跳转变化', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.execution.module === 'record' && step.execution.boundary === 3 && step.execution.context.locals.some(variable => variable.name === 'b' && variable.availability === 'available'))
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const panel = page.getByRole('region', { name: '核心代码回放' })
   await panel.locator('[data-symbol="slope"]').first().hover()
   await expect(page.getByRole('dialog', { name: /^访问 segments\[a\].slope / })).toContainText('当前值：Some(1)')
@@ -58,7 +58,7 @@ test('字段与索引 hover 使用当前线段编号并随跳转变化', async (
   await panel.locator('[data-symbol="segments[a]"]').first().hover()
   await expect(page.getByRole('dialog', { name: /^访问 segments\[a\] / })).toContainText('SweepSegment { left: (0, 0), right: (4, 4), slope: Some(1), intercept: 0 }')
   const unavailable = trace.steps.findIndex(step => step.execution.module === 'record' && step.execution.boundary === 0)
-  await page.goto(`/cases/crossing/learn?step=${unavailable}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${unavailable}`)
   await panel.locator('[data-symbol="slope"]').first().hover()
   await expect(page.getByRole('dialog', { name: /^访问 segments\[a\].slope / })).toContainText('不可用（索引未赋值或不可用）')
 })
@@ -66,7 +66,7 @@ test('字段与索引 hover 使用当前线段编号并随跳转变化', async (
 test('长变量值可滚动访问', async ({ page }) => {
   const trace = await readTrace(page, 'mixed-vertical')
   const index = trace.steps.findIndex(step => step.action === 'take-entry')
-  await page.goto(`/cases/mixed-vertical/learn?step=${index}`)
+  await page.goto(`/bo/cases/mixed-vertical/learn?step=${index}`)
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   const input = variables.getByTestId('variable-segments').filter({ hasText: 'segments: &[Segment]' })
   await expect(input).toContainText('已遮蔽')
@@ -82,7 +82,7 @@ test('parent 深度保留详情，按钮与快捷键等效，切换重置并可�
   const trace = await readTrace(page, 'mixed-vertical')
   const index = trace.steps.findIndex(step => step.execution.module === 'record' && step.execution.boundary === 3 && step.execution.context.locals.some(variable => variable.name === 'b' && variable.availability === 'available'))
   expect(index).toBeGreaterThan(0)
-  await page.goto(`/cases/mixed-vertical/learn?step=${index}`)
+  await page.goto(`/bo/cases/mixed-vertical/learn?step=${index}`)
   await waitForTraceCompletion(page)
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const slope = panel.locator('[data-symbol="slope"]').first()
@@ -130,7 +130,7 @@ test('parent 深度保留详情，按钮与快捷键等效，切换重置并可�
 test('p.y 的 parent 跟随真实闭包前进回退，键盘进入浮层并关闭', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.execution.module === 'original' && !step.execution.returning)
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   await waitForTraceCompletion(page)
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const y = panel.locator('[data-symbol="y"]').last()
@@ -162,7 +162,7 @@ test('p.y 的 parent 跟随真实闭包前进回退，键盘进入浮层并关�
 test('纯键盘进入 parent 浮层保留深度和焦点', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.execution.module === 'original' && !step.execution.returning)
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   await waitForTraceCompletion(page)
   const y = page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="y"]').last()
   await y.focus()
@@ -191,7 +191,7 @@ test('遮蔽状态对入参与局部变量使用一致文案，其他不可用�
 test('事件映射在面板和悬浮提示中保留相同值', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.action === 'take-entry')
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   const value = variables.getByTestId('variable-queue').locator('dd')
   await expect(value).toContainText('Event')
@@ -215,7 +215,7 @@ test('被遮蔽的入参保留原坐标最后值，前进回退不混入扫描�
   }
   const index = trace.steps.findIndex(step => step.action === 'take-entry')
   const displayed = formatExecutionValue(expected)
-  await page.goto(`/cases/vertical-overlap/learn?step=${index}`)
+  await page.goto(`/bo/cases/vertical-overlap/learn?step=${index}`)
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   const segments = variables.getByTestId('variable-segments')
   await expect(segments).toHaveCount(2)
@@ -247,7 +247,7 @@ for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
     expect(trace.values[result.value!]).toContain(value)
     if (id === 'partial-overlap') expect(value).toContain(' → ')
     if (id === 'multiway-interior') expect(trace.values[receiver.value!]).not.toBe('[]')
-    await page.goto(`/cases/${id}/learn?step=${index}`)
+    await page.goto(`/bo/cases/${id}/learn?step=${index}`)
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
     const panel = page.getByRole('region', { name: '核心代码回放' })
     await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(formatExecutionValue(trace.values[result.value!]))
@@ -272,7 +272,7 @@ for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
 
 test('真实取事件代码 hover 随前进和回退更新', async ({ page }) => {
   const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections'))
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace }: { trace: SweepTrace } = await readResponse(await response)
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
   const panel = page.getByRole('region', { name: '核心代码回放' })
@@ -313,11 +313,11 @@ test('真实取事件代码 hover 随前进和回退更新', async ({ page }) =>
 
 test('分类同名 id 按词法循环隔离，真实调用按行和函数展示返回值', async ({ page }) => {
   const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections'))
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const { trace }: { trace: SweepTrace } = await readResponse(await response)
   const secondLoop = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8 && step.execution.context.locals.some(variable => variable.name === 'id' && variable.availability === 'available'))
   expect(secondLoop).toBeGreaterThan(0)
-  await page.goto(`/cases/crossing/learn?step=${secondLoop}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${secondLoop}`)
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const firstTooltip = page.getByRole('dialog', { name: /^变量 id · 活动线段循环/ })
   const secondTooltip = page.getByRole('dialog', { name: /^变量 id · 参与线段循环/ })
@@ -338,7 +338,7 @@ test('分类同名 id 按词法循环隔离，真实调用按行和函数展示�
 
   const calculated = trace.steps.findIndex(step => step.execution.module === 'classify' && ['y_at', 'cmp'].every(name => step.execution.calls.some(call => call.line === 3 && call.function === name && call.result.availability === 'available')))
   expect(calculated).toBeGreaterThan(0)
-  await page.goto(`/cases/crossing/learn?step=${calculated}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${calculated}`)
   for (const name of ['y_at', 'cmp']) {
     const call = trace.steps[calculated].execution.calls.find(call => call.line === 3 && call.function === name)!
     await panel.locator(`[data-symbol="${name}"][data-line="3"]`).hover()
@@ -371,9 +371,9 @@ test('右侧顶层变量浮层与代码一致，支持键盘和前进回退', as
   const trace = await readTrace(page, 'crossing')
   const index = trace.steps.findIndex(step => step.action === 'take-entry')
   expect(index).toBeGreaterThanOrEqual(0)
-  await page.goto(`/cases/crossing/learn?step=${index}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   await waitForTraceCompletion(page)
-  await expect(page).toHaveURL(new RegExp(`/cases/crossing/learn\\?step=${index}$`))
+  await expect(page).toHaveURL(new RegExp(`/bo/cases/crossing/learn\\?step=${index}$`))
   await expect(page).toHaveTitle(/BO 结果查看器/)
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   const panel = page.getByRole('region', { name: '核心变量', exact: true })
@@ -410,7 +410,7 @@ test('右侧顶层变量浮层与代码一致，支持键盘和前进回退', as
 test('右侧同名参数和局部变量浮层隔离，变量名点击可折叠集合', async ({ page }) => {
   const trace = await readTrace(page, 'vertical-overlap')
   const index = trace.steps.findIndex(step => step.action === 'take-entry')
-  await page.goto(`/cases/vertical-overlap/learn?step=${index}`)
+  await page.goto(`/bo/cases/vertical-overlap/learn?step=${index}`)
   await waitForTraceCompletion(page)
   const panel = page.getByRole('region', { name: '核心变量', exact: true })
   const input = panel.getByRole('button', { name: 'segments: &[Segment]', exact: true })

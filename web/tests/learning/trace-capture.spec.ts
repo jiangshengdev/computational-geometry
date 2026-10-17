@@ -7,7 +7,7 @@ test('轨迹捕获保留渐进回放并来自页面实际消费的请求', async
   let captured = false
   void capture.result.then(() => { captured = true }, () => {})
   const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.ok())
-  await page.goto('/cases/fullerene/learn')
+  await page.goto('/bo/cases/fullerene/learn')
   const learning = await response
   const controls = page.getByRole('region', { name: '回放控制' })
   await expect(controls).toContainText('轨迹生成中')

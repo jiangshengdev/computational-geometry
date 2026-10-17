@@ -308,6 +308,10 @@ msgstr "交叉的 {0} 换序后，这一对处在换序区间的外侧边界，�
 msgid "After the end of the {keyword} block"
 msgstr "{keyword} 块结束后"
 
+#: src/app/App.tsx:19
+msgid "Algorithm home"
+msgstr "算法首页"
+
 #: src/algorithms/bo/learning/LearningPanels.tsx:43
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。"
@@ -589,9 +593,15 @@ msgstr "判断这条线段是否还会继续向前延伸"
 msgid "Check whether this segment passes through the current point"
 msgstr "判断这条线段是否经过当前点"
 
-#: src/app/App.tsx:13
+#: src/app/App.tsx:22
 msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
 msgstr "选择案例，检查精确交点与完整重叠区间。"
+
+#: src/app/AlgorithmHome.tsx:8
+#: src/app/AlgorithmHome.tsx:9
+#: src/app/AlgorithmHome.tsx:11
+msgid "Choose an algorithm"
+msgstr "算法选择"
 
 #. js-lingui-explicit-id
 #: src/algorithms/bo/learning/executionCode.ts:157
@@ -709,6 +719,13 @@ msgstr "复合实参的求值及该调用点的返回值："
 msgid "Computation failed"
 msgstr "计算失败"
 
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:8
+#: src/app/AlgorithmHome.tsx:9
+#: src/app/AlgorithmHome.tsx:10
+#: src/app/App.tsx:32
+msgid "Computational Geometry"
+msgstr "计算几何"
+
 #. js-lingui-explicit-id
 #: src/algorithms/bo/learning/executionSymbols.ts:26
 msgid "Compute the exact segment height at the given x coordinate."
@@ -752,6 +769,12 @@ msgstr "统一约定：精确有理数决定交点与排序，像素近似只用
 #: src/algorithms/bo/learning/executionSymbols.ts:44
 msgid "Convert the collection into an iterator that consumes its elements."
 msgstr "将当前集合转为消耗元素的迭代器。"
+
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:8
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:9
+#: src/app/AlgorithmHome.tsx:17
+msgid "Convex hull"
+msgstr "凸包"
 
 #. js-lingui-explicit-id
 #: src/algorithms/bo/learning/executionSymbols.ts:13
@@ -1048,13 +1071,13 @@ msgstr "事件高度状态：当前事件上侧（Δ）"
 msgid "Event height: below the current event (Δ)"
 msgstr "事件高度状态：当前事件下侧（Δ）"
 
+#: src/algorithms/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
+msgstr "事件队列"
+
 #. js-lingui-explicit-id
 #: src/algorithms/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
-msgstr "事件队列"
-
-#: src/algorithms/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
 msgstr "事件队列"
 
 #. js-lingui-explicit-id
@@ -1084,6 +1107,10 @@ msgstr "按线段编号保存的精确高度比较缓存；分类循环逐项刷
 #: src/algorithms/bo/learning/executionAccess.ts:78
 msgid "Exact intercept of the sweep segment"
 msgstr "扫描线段的精确截距"
+
+#: src/app/AlgorithmHome.tsx:14
+msgid "Exact segment intersections and step-by-step learning."
+msgstr "精确线段求交与逐步教学。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/bo/learning/executionAccess.ts:78
@@ -1440,6 +1467,8 @@ msgstr "教学步骤参数无效：请使用非负整数，且只提供一个 st
 
 #: src/algorithms/bo/BoPages.tsx:223
 #: src/algorithms/bo/BoPages.tsx:224
+#: src/app/App.tsx:32
+#: src/app/App.tsx:33
 msgid "Invalid link"
 msgstr "链接无效"
 
@@ -1676,6 +1705,11 @@ msgstr "无"
 msgid "Not executed in this step"
 msgstr "本次尚未执行"
 
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:10
+#: src/app/AlgorithmHome.tsx:18
+msgid "Not implemented yet"
+msgstr "尚未实现"
+
 #. js-lingui-explicit-id
 #: src/algorithms/bo/help/HelpContent.tsx:70
 msgid "help.NeighborRules.3"
@@ -1842,13 +1876,13 @@ msgstr "重叠止界"
 msgid "Overlap interval"
 msgstr "重叠区间"
 
+#: src/algorithms/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
+msgstr "重叠处理规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
-msgstr "重叠处理规则"
-
-#: src/algorithms/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
 msgstr "重叠处理规则"
 
 #: src/algorithms/bo/learning/learningState.ts:42
@@ -2415,13 +2449,13 @@ msgstr "S1 从 S0 内部的 (2, 0) 向右上方出发。"
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 从 (0, 0) 到 (0, 8)，S6 从 (0, 8) 到 (8, 8)，公共端点为 (0, 8)。S4 的 y = 0、x ∈ [−2, 34]，与 S5 在 (0, 0) 接触。三组回纹各有 7 处转角和 1 处横梁接触，另有窗框 4 角及横梁与窗框的 2 处接触，共 30 个不同位置；没有内部穿越或重叠。"
 
+#: src/algorithms/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
+msgstr "同点与并列规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
-msgstr "同点与并列规则"
-
-#: src/algorithms/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
 msgstr "同点与并列规则"
 
 #. js-lingui-explicit-id
@@ -3154,7 +3188,8 @@ msgid "Unknown error"
 msgstr "未知错误"
 
 #: src/algorithms/bo/BoPages.tsx:254
-#: src/app/App.tsx:19
+#: src/app/App.tsx:29
+#: src/app/App.tsx:33
 msgid "Unknown page path."
 msgstr "未知页面路径。"
 
@@ -3231,13 +3266,13 @@ msgstr "竖直分数重叠"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "竖直重叠与多高度混合"
 
+#: src/algorithms/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
+msgstr "竖直线处理规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
-msgstr "竖直线处理规则"
-
-#: src/algorithms/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
 msgstr "竖直线处理规则"
 
 #. js-lingui-explicit-id

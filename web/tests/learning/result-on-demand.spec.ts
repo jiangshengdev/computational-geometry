@@ -5,7 +5,7 @@ test('普通结果独立计算，进入学习后才请求轨迹', async ({ page 
   page.on('request', request => {
     if (request.url().endsWith('/api/bo/intersections')) requests.push(request.postDataJSON())
   })
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   expect(requests.length).toBeGreaterThan(0)
   expect(requests.every(request => !request.trace)).toBe(true)

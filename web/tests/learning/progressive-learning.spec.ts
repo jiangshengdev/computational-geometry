@@ -3,7 +3,7 @@ import { expect, test } from '../support/learning-test'
 test('真实大案例在轨迹完成前显示可浏览步骤', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
-  await page.goto('/cases/carbon-nanotube/learn')
+  await page.goto('/bo/cases/carbon-nanotube/learn')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toBeVisible()
   await expect(page.getByRole('region', { name: '回放控制' })).toContainText('已生成')

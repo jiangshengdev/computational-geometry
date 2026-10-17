@@ -1,7 +1,7 @@
 import { expect, test } from '../support/learning-test'
 
 test('尚未生成的步骤链接允许取消，并保留已生成步骤操作', async ({ page }) => {
-  await page.goto('/cases/carbon-nanotube/learn?step=9999999')
+  await page.goto('/bo/cases/carbon-nanotube/learn?step=9999999')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(page.getByRole('status', { name: '步骤等待' })).toContainText('9999999')
   await expect(slider).toHaveValue('0')
@@ -17,7 +17,7 @@ test('尚未生成的步骤链接允许取消，并保留已生成步骤操作',
 })
 
 test('远处步骤生成后准确定位，返回与刷新保持一致', async ({ page }) => {
-  await page.goto('/cases/carbon-nanotube/learn?step=2000')
+  await page.goto('/bo/cases/carbon-nanotube/learn?step=2000')
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(page.getByRole('status', { name: '步骤等待' })).toBeVisible()
   // A remote target may take time to generate. Check navigation convergence

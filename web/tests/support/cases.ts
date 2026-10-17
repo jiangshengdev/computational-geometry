@@ -4,7 +4,7 @@ import { chinese } from './language'
 
 export async function selectPreset(page: Page, id: string) {
   const preset = presets.find(preset => preset.id === id || chinese._(preset.name) === id)!
-  if (new URL(page.url()).pathname !== '/') await page.getByRole('link', { name: '返回列表', exact: true }).click()
+  if (new URL(page.url()).pathname !== '/bo') await page.getByRole('link', { name: '返回列表', exact: true }).click()
   await page.getByRole('article').filter({ has: page.getByRole('heading', { name: chinese._(preset.name), exact: true }) })
     .getByRole('link', { name: '查看详情', exact: true }).click()
 }
@@ -19,7 +19,7 @@ const display = ([x, y]: [string, string]) => `(${x}, ${y})`
 
 /** Expected values are worked examples in each spec, not runtime answers. */
 export async function checkCase(page: Page, id: string, expected: ExpectedPair[]) {
-  await page.goto('/')
+  await page.goto('/bo')
   const response = page.waitForResponse(r => r.url().endsWith('/api/bo/intersections') && r.request().method() === 'POST')
   await selectPreset(page, id)
   // The response and the rendered selection share this one real calculation.

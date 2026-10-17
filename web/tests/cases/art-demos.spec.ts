@@ -25,10 +25,10 @@ for (const [id, name] of demos) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-    await page.goto('/')
+    await page.goto('/bo')
     const card = page.getByRole('article', { name, exact: true })
     await card.scrollIntoViewIfNeeded()
-    await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/cases/${id}/learn`)
+    await expect(card.getByRole('link', { name: '开始学习', exact: true })).toHaveAttribute('href', `/bo/cases/${id}/learn`)
     const capture = await captureResult(page)
     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections') && response.request().method() === 'POST')
     await card.getByRole('link', { name: '查看详情', exact: true }).click()

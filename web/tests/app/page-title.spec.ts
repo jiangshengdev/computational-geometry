@@ -4,18 +4,18 @@ test('标签页标题随导航更新，教学步骤不改变标题', async ({ pa
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   page.on('console', message => { if (['error', 'warning'].includes(message.type())) errors.push(message.text()) })
-  await page.goto('/')
+  await page.goto('/bo')
   await expect(page).toHaveTitle('案例列表 · BO 结果查看器')
   const crossing = page.getByRole('article', { name: '普通交叉', exact: true })
   await expect(crossing).toBeVisible()
   await crossing.getByRole('link', { name: '查看详情', exact: true }).click()
-  await expect(page).toHaveURL(/\/cases\/crossing$/)
+  await expect(page).toHaveURL(/\/bo\/cases\/crossing$/)
   await expect(page.getByRole('region', { name: '原始输入' })).toBeVisible()
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.getByText('1 个相交配对', { exact: true })).toBeVisible()
   await page.getByRole('link', { name: '开始逐步学习', exact: true }).click()
   await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
-  await expect(page).toHaveURL(/\/cases\/crossing\/learn(?:\?step=0)?$/)
+  await expect(page).toHaveURL(/\/bo\/cases\/crossing\/learn(?:\?step=0)?$/)
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveValue('0')
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
@@ -43,10 +43,10 @@ test('标签页标题随导航更新，教学步骤不改变标题', async ({ pa
 })
 
 for (const [path, title] of [
-  ['/unknown', '链接无效 · BO 结果查看器'],
-  ['/cases/not-a-case', '链接无效 · BO 结果查看器'],
-  ['/cases/crossing/extra', '链接无效 · 普通交叉 · BO 结果查看器'],
-  ['/cases/crossing/learn?step=bad', '链接无效 · 普通交叉 · BO 结果查看器'],
+  ['/unknown', '链接无效 · 计算几何'],
+  ['/bo/cases/not-a-case', '链接无效 · BO 结果查看器'],
+  ['/bo/cases/crossing/extra', '链接无效 · 普通交叉 · BO 结果查看器'],
+  ['/bo/cases/crossing/learn?step=bad', '链接无效 · 普通交叉 · BO 结果查看器'],
 ]) {
   test(`无效链接标题与恢复：${path}`, async ({ page }) => {
     await page.goto(path)
@@ -60,6 +60,9 @@ for (const [path, title] of [
       await restart.click()
       await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
       await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
+    } else if (path === '/unknown') {
+      await page.getByRole('link', { name: '算法首页', exact: true }).click()
+      await expect(page).toHaveTitle('算法选择 · 计算几何')
     } else {
       await page.getByRole('link', { name: '返回列表', exact: true }).click()
       await expect(page).toHaveTitle('案例列表 · BO 结果查看器')
@@ -68,7 +71,7 @@ for (const [path, title] of [
 }
 
 test('切换案例后标题使用新案例名称', async ({ page }) => {
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await page.getByRole('link', { name: '返回列表', exact: true }).click()
   await page.getByRole('link', { name: '查看重叠、交叉与重合点详情', exact: true }).click()

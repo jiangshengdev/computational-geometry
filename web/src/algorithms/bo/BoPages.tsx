@@ -143,7 +143,7 @@ export function CaseList() {
     <PageTitle page={t`Cases`} />
     {presets.map(preset => <article key={preset.id} aria-labelledby={`case-${preset.id}`}>
       <Card className="case-card h-full items-stretch">
-        <Link className="case-thumbnail-link" to={`/cases/${preset.id}`} aria-label={t`View ${translate(preset.name)} details`}>
+        <Link className="case-thumbnail-link" to={`/bo/cases/${preset.id}`} aria-label={t`View ${translate(preset.name)} details`}>
           <CaseThumbnail name={translate(preset.name)} segments={preset.segments} />
         </Link>
         <div className="flex min-w-0 flex-1 flex-col gap-3">
@@ -152,8 +152,8 @@ export function CaseList() {
             <Card.Description>{translate(preset.description)}</Card.Description>
           </Card.Header>
           <Card.Footer className="mt-auto flex flex-wrap justify-end gap-3">
-            {preset.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>{t`Start learning`}</Link>}
-            <Link className={buttonVariants({ variant: 'secondary' })} to={`/cases/${preset.id}`}>{t`View details`}</Link>
+            {preset.learning && <Link className={buttonVariants()} to={`/bo/cases/${preset.id}/learn`}>{t`Start learning`}</Link>}
+            <Link className={buttonVariants({ variant: 'secondary' })} to={`/bo/cases/${preset.id}`}>{t`View details`}</Link>
           </Card.Footer>
         </div>
       </Card>
@@ -223,9 +223,9 @@ export function RouteError({ message, preset, showListLink = true }: { message: 
     <PageTitle page={preset ? t`Invalid link · ${translate(preset.name)}` : t`Invalid link`} />
     <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Invalid link`}</Alert.Title><Alert.Description>{message}</Alert.Description></Alert.Content></Alert>
     <nav aria-label={t`Recovery navigation`} className="flex flex-wrap gap-3">
-      {showListLink && <Link className={buttonVariants({ variant: 'outline' })} to="/">{t`Back to cases`}</Link>}
-      {preset && <Link className={buttonVariants({ variant: 'outline' })} to={`/cases/${preset.id}`}>{t`View details`}</Link>}
-      {preset?.learning && <Link className={buttonVariants()} to={`/cases/${preset.id}/learn`}>{t`Learn from the start`}</Link>}
+      {showListLink && <Link className={buttonVariants({ variant: 'outline' })} to="/bo">{t`Back to cases`}</Link>}
+      {preset && <Link className={buttonVariants({ variant: 'outline' })} to={`/bo/cases/${preset.id}`}>{t`View details`}</Link>}
+      {preset?.learning && <Link className={buttonVariants()} to={`/bo/cases/${preset.id}/learn`}>{t`Learn from the start`}</Link>}
     </nav>
   </section>
 }
@@ -247,7 +247,7 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
     }
     if (learning || unknownPath || !preset?.learning || event.key !== 'ArrowRight') return
     event.preventDefault()
-    if (!event.repeat) navigate(`/cases/${preset.id}/learn`)
+    if (!event.repeat) navigate(`/bo/cases/${preset.id}/learn`)
   })
   if (!preset || unknownPath || (learning && !preset.learning)) return <>
     <div className="flex items-center justify-end gap-3"><DocumentationLink /><LanguageSelect /></div>
@@ -255,7 +255,7 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
   </>
   return <CaseHelp key={`${preset.id}:${learning}`} preset={preset}>
     <div className="case-toolbar">
-      <nav aria-label={t`Page navigation`}><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/">{t`Back to cases`}</Link></nav>
+      <nav aria-label={t`Page navigation`}><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/bo">{t`Back to cases`}</Link></nav>
       <h2 className="text-xl font-semibold">{translate(preset.name)}</h2>
       <div className="case-actions flex flex-wrap items-center gap-2">
         <DocumentationLink />
@@ -278,8 +278,8 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
         </Switch>}
         <HelpButton /><HelpButton topic="case">{t`About this case`}</HelpButton>
         {learning
-          ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/cases/${preset.id}`}>{t`Back to results viewer`}</Link>
-          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">{t`Start step-by-step learning`}<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Link>}
+          ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/bo/cases/${preset.id}`}>{t`Back to results viewer`}</Link>
+          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/bo/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">{t`Start step-by-step learning`}<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Link>}
       </div>
     </div>
     <CaseViewer preset={preset} learning={learning} zenMode={zenMode} layout={layout} />

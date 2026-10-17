@@ -6,7 +6,7 @@ test('普通交叉保留步骤与精确位置，取出向左、记录隐藏、�
   const take = stepIndex(trace, step => step.action === 'take' && step.current?.x.numerator === '2' && step.current.y.numerator === '2')
   const record = stepIndex(trace, (step, index) => index > take && step.action === 'record' && step.current?.x.numerator === '2' && step.current.y.numerator === '2')
   const reorder = stepIndex(trace, (step, index) => index > record && step.action === 'reorder' && step.current?.x.numerator === '2' && step.current.y.numerator === '2')
-  await page.goto(`/cases/crossing/learn?step=${take}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${take}`)
   const side = page.getByRole('img', { name: /事件侧向状态/ })
   const next = page.getByRole('button', { name: '下一步', exact: true })
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('从队首取出')
@@ -47,7 +47,7 @@ for (const example of [
 ]) test(`事件侧向状态：${example.id} (${example.x}, ${example.y})`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   const response = page.waitForResponse(r => r.url().endsWith('/api/bo/intersections'))
-  await page.goto(`/cases/${example.id}/learn`)
+  await page.goto(`/bo/cases/${example.id}/learn`)
   const { trace } = await readResponse(await response)
   const event = trace.steps.map((step, index) => ({ ...step, index })).filter(step =>
     step.current?.x.numerator === example.x && step.current?.y.numerator === example.y)
@@ -63,7 +63,7 @@ for (const example of [
     const steps = event.filter(step => step.action === check.action)
     if (check.action !== 'record') expect(steps.length).toBeGreaterThan(0)
     for (const step of steps) {
-      await page.goto(`/cases/${example.id}/learn?step=${step.index}`)
+      await page.goto(`/bo/cases/${example.id}/learn?step=${step.index}`)
       await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(step.index))
       if (check.side) await expect(side).toHaveAccessibleName(`事件侧向状态：当前事件${check.side}侧（Δ）`)
       else await expect(side).toHaveCount(0)
@@ -79,7 +79,7 @@ test('侧向提示随按钮、快捷键、滑块、浏览器导航恢复且切�
   const trace = await readTrace(page, 'crossing')
   const take = stepIndex(trace, step => step.action === 'take')
   const insert = stepIndex(trace, step => step.action === 'insert' && step.subjects.includes(0))
-  await page.goto('/cases/crossing')
+  await page.goto('/bo/cases/crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const side = page.getByRole('img', { name: /事件侧向状态/ })
   const slider = page.getByRole('slider', { name: '教学步骤' })
@@ -102,10 +102,10 @@ test('侧向提示随按钮、快捷键、滑块、浏览器导航恢复且切�
   await page.reload()
   await expect(side).toHaveAccessibleName('事件侧向状态：当前事件右侧（Δ）')
   await page.goBack()
-  await expect(page).toHaveURL(/\/cases\/crossing$/)
+  await expect(page).toHaveURL(/\/bo\/cases\/crossing$/)
   await page.goForward()
   await expect(side).toHaveAccessibleName('事件侧向状态：当前事件右侧（Δ）')
-  await page.goto('/cases/disjoint/learn')
+  await page.goto('/bo/cases/disjoint/learn')
   await expect(side).toHaveCount(0)
 })
 
@@ -115,7 +115,7 @@ test('加入后的检查与发现保持当前事件右侧状态', async ({ page 
   const check = stepIndex(trace, (step, index) => index > insert && step.action === 'check' && step.subjects.includes(0) && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
   const discover = stepIndex(trace, (step, index) => index > check && step.action === 'discover' && step.subjects.includes(0) && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
   for (const step of [insert, check, discover]) {
-    await page.goto(`/cases/crossing/learn?step=${step}`)
+    await page.goto(`/bo/cases/crossing/learn?step=${step}`)
     await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(step))
     await expect(page.getByRole('img', { name: /事件侧向状态/ })).toHaveAccessibleName('事件侧向状态：当前事件右侧（Δ）')
     await expect(page.getByTestId('active-order')).toHaveText('S0S1')
@@ -125,7 +125,7 @@ test('加入后的检查与发现保持当前事件右侧状态', async ({ page 
 test('Δ 提示在缩放和平移后仍跟随扫描线', async ({ page }) => {
   const reorder = stepIndex(await readTrace(page, 'crossing'), step => step.action === 'reorder' && step.current?.x.numerator === '2' && step.current.y.numerator === '2')
   await page.setViewportSize({ width: 1360, height: 1000 })
-  await page.goto(`/cases/crossing/learn?step=${reorder}`)
+  await page.goto(`/bo/cases/crossing/learn?step=${reorder}`)
   const side = page.getByRole('img', { name: /事件侧向状态/ })
   const svg = page.getByRole('img', { name: '输入与交集坐标图', exact: true })
   const verify = async () => {

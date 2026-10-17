@@ -14,7 +14,7 @@ test('真实轨迹执行边界指向下一条语句', async ({ page }) => {
   for (const example of cases) {
     const index = trace.steps.findIndex(step => step.execution.module === example.module && step.execution.boundary === example.boundary)
     expect(index, `${example.module} ${example.boundary}`).toBeGreaterThanOrEqual(0)
-    await page.goto(`/cases/crossing/learn?step=${index}`)
+    await page.goto(`/bo/cases/crossing/learn?step=${index}`)
     const panel = page.getByRole('region', { name: '核心代码回放' })
     await expect(panel.locator('.code-line').first()).toBeAttached()
     const alignment = await panel.evaluate((element, next) => {
@@ -31,7 +31,7 @@ test('真实轨迹执行边界指向下一条语句', async ({ page }) => {
 })
 
 test('取事件的真实小步同步代码、队列和上下文，并可完整回退', async ({ page }) => {
-  await page.goto('/cases/crossing/learn')
+  await page.goto('/bo/cases/crossing/learn')
   const code = page.getByRole('region', { name: '核心代码回放' })
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
@@ -66,7 +66,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const index = trace.steps.findIndex(step => step.execution.module === 'neighbors' && step.execution.boundary === 4)
     expect(index).toBeGreaterThanOrEqual(0)
     await page.setViewportSize({ width: 1100, height: 900 })
-    await page.goto(`/cases/crossing/learn?step=${index}`)
+    await page.goto(`/bo/cases/crossing/learn?step=${index}`)
     const panel = page.getByRole('region', { name: '核心代码回放' })
     const toggle = panel.getByRole('switch', { name: '自动换行' })
     const code = panel.locator('.execution-code')
@@ -89,7 +89,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     expect(await code.textContent()).toBe(source)
     await page.reload()
     await expect(toggle).not.toBeChecked()
-    await page.goto('/cases/empty/learn')
+    await page.goto('/bo/cases/empty/learn')
     await expect(toggle).not.toBeChecked()
     await toggle.focus()
     await page.keyboard.press('Space')
@@ -102,7 +102,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
-    await page.goto('/cases/spider-web/learn')
+    await page.goto('/bo/cases/spider-web/learn')
     const trace = await readTrace(page, 'spider-web')
     const entry = trace.steps.findIndex(step => step.action === 'take-entry')
     await page.getByRole('button', { name: '下一个大步', exact: true }).click()
@@ -163,7 +163,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
 }
 
 test('空队列真实返回 None，回退恢复未赋值而不出现未来事件', async ({ page }) => {
-  await page.goto('/cases/empty/learn')
+  await page.goto('/bo/cases/empty/learn')
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const variables = page.getByRole('region', { name: '核心变量', exact: true })

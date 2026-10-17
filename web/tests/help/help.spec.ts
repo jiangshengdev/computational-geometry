@@ -1,7 +1,7 @@
 import { expect, test } from '../support/learning-test'
 
 test('帮助：两页集中入口、键盘隔离与焦点返回', async ({ page }) => {
-  for (const route of ['/cases/crossing', '/cases/crossing/learn?step=3']) {
+  for (const route of ['/bo/cases/crossing', '/bo/cases/crossing/learn?step=3']) {
     await page.goto(route)
     await expect(page.getByRole('region', { name: '几何视图' })).toBeVisible()
     const trigger = page.getByRole('button', { name: '说明与帮助', exact: true })
