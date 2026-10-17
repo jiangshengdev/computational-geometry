@@ -18,6 +18,7 @@ export function useGeometryLabels(
   { segments, points, eventPoints, numberedPoints, teaching, numbering }: LabelScene,
 ) {
   const labelLayout = useRef<{ key: string; labels: SVGTextElement[] } | null>(null)
+  const inputLayout = useRef<{ key: string; positions: { left: number; top: number }[] } | null>(null)
   useLayoutEffect(() => {
     if (!projection) return
     const element = svg.current!
@@ -28,13 +29,18 @@ export function useGeometryLabels(
     const ticks = Array.from(element.querySelectorAll<SVGTextElement>('.tick'))
     // Depend on layout content, not on freshly allocated sweep/highlight objects.
     // Teaching labels stay in screen pixels; geometry and order markers retain their transform.
-    const key = JSON.stringify([width, height, numbering, teachingLabels ? transform.toString() : null, segments, eventPoints,
-      [...labels, ...ticks].map(label => {
-        const style = getComputedStyle(label)
-        return [label.textContent, label.getAttribute('x'), label.getAttribute('y'), label.dataset.priority,
-          style.textAnchor, style.fontFamily, style.fontSize, style.fontStyle, style.letterSpacing]
-      })])
+    const content = [...labels, ...ticks].map(label => {
+      const style = getComputedStyle(label)
+      return [label.dataset.input, label.textContent, label.getAttribute('x'), label.getAttribute('y'), label.dataset.priority,
+        style.textAnchor, style.fontFamily, style.fontSize, style.fontStyle, style.letterSpacing]
+    })
+    const key = JSON.stringify([width, height, numbering, teachingLabels ? transform.toString() : null, segments, eventPoints, content])
     if (labelLayout.current?.key === key && labels.every((label, i) => label === labelLayout.current!.labels[i])) return
+    // Input IDs precede event obstacles and have the same slots at every stop.
+    // Retain only this layout, not a growing cache of visited teaching states.
+    const inputKey = teachingLabels ? JSON.stringify([width, height, transform.toString(), segments, points,
+      content.filter((_, index) => index >= labels.length || labels[index].dataset.input !== undefined)]) : null
+    const inputPositions: { left: number; top: number }[] = []
     // Reserve both normal and bold bounds before placing labels. Hover can then
     // change weight without moving its own hit target or redoing collision searches.
     for (const label of labels) { label.removeAttribute('transform'); label.removeAttribute('visibility') }
@@ -75,39 +81,44 @@ export function useGeometryLabels(
         eventsReserved = true
       }
       const box = boxes[index]
-      // Short workspaces need space below and beside labels too: moving every
-      // collision upward can put an otherwise readable label under the toolbar.
-      const lefts = [...new Set([box.x, gap, width - box.width - gap,
-        ...occupied.flatMap(other => [other.x - box.width - gap, other.x + other.width + gap])])]
-        .filter(left => left >= gap && left + box.width <= width - gap && (!numbering || left === box.x))
-      const tops = [...new Set([box.y, gap, height - box.height - gap,
-        ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
-        .filter(top => top >= gap && top + box.height <= height - gap)
-      const position = nearestLabelPosition(lefts, tops, box, ({ left, top }) => !occupied.some(other =>
-        left < other.x + other.width + gap && left + box.width + gap > other.x &&
-        top < other.y + other.height + gap && top + box.height + gap > other.y) && (numbering || !lines.some(line => {
-          // Clip the segment against the label's padded rectangle, not its bounding box.
-          let start = 0, end = 1
-          for (const [origin, delta, low, high] of [
-            [line.x1, line.x2 - line.x1, left - gap, left + box.width + gap],
-            [line.y1, line.y2 - line.y1, top - gap, top + box.height + gap],
-          ]) {
-            if (delta === 0) {
-              if (origin < low || origin > high) return false
-            } else {
-              const a = (low - origin) / delta, b = (high - origin) / delta
-              start = Math.max(start, Math.min(a, b))
-              end = Math.min(end, Math.max(a, b))
+      let position = inputKey !== null && inputLayout.current?.key === inputKey && label.dataset.input !== undefined
+        ? inputLayout.current.positions[index] : undefined
+      if (!position) {
+        // Short workspaces need space below and beside labels too: moving every
+        // collision upward can put an otherwise readable label under the toolbar.
+        const lefts = [...new Set([box.x, gap, width - box.width - gap,
+          ...occupied.flatMap(other => [other.x - box.width - gap, other.x + other.width + gap])])]
+          .filter(left => left >= gap && left + box.width <= width - gap && (!numbering || left === box.x))
+        const tops = [...new Set([box.y, gap, height - box.height - gap,
+          ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
+          .filter(top => top >= gap && top + box.height <= height - gap)
+        position = nearestLabelPosition(lefts, tops, box, ({ left, top }) => !occupied.some(other =>
+          left < other.x + other.width + gap && left + box.width + gap > other.x &&
+          top < other.y + other.height + gap && top + box.height + gap > other.y) && (numbering || !lines.some(line => {
+            // Clip the segment against the label's padded rectangle, not its bounding box.
+            let start = 0, end = 1
+            for (const [origin, delta, low, high] of [
+              [line.x1, line.x2 - line.x1, left - gap, left + box.width + gap],
+              [line.y1, line.y2 - line.y1, top - gap, top + box.height + gap],
+            ]) {
+              if (delta === 0) {
+                if (origin < low || origin > high) return false
+              } else {
+                const a = (low - origin) / delta, b = (high - origin) / delta
+                start = Math.max(start, Math.min(a, b))
+                end = Math.min(end, Math.max(a, b))
+              }
             }
-          }
-          return start <= end
-        })))
+            return start <= end
+          })))
+      }
       if (!position && teachingLabels && label.dataset.input === undefined) {
         label.setAttribute('visibility', 'hidden')
         label.parentElement?.querySelector(':scope > .label-leader')?.setAttribute('visibility', 'hidden')
         return
       }
       const { left, top } = position ?? { left: box.x, top: box.y }
+      if (teachingLabels && label.dataset.input !== undefined) inputPositions.push({ left, top })
       label.setAttribute('transform', `translate(${left - box.x}, ${top - box.y})`)
       const leader = label.parentElement?.querySelector(':scope > .order-leader, :scope > .label-leader')
       if (leader) {
@@ -117,6 +128,7 @@ export function useGeometryLabels(
       }
       occupied.push({ x: left, y: top, width: box.width, height: box.height })
     })
+    if (inputKey !== null) inputLayout.current = { key: inputKey, positions: inputPositions }
     labelLayout.current = { key, labels }
   })
 }
