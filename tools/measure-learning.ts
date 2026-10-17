@@ -77,8 +77,10 @@ const watchdogMs = 120_000 // Diagnostic watchdog, never a product acceptance li
 const mode = process.env.BO_PERF_MODE ?? 'first'
 const rounds = Number(process.env.BO_PERF_ROUNDS ?? 3)
 const cpuProfile = process.env.BO_PERF_CPU === '1'
+const networkBytes = Number(process.env.BO_PERF_NETWORK_BYTES ?? -1)
+if (networkBytes !== -1 && (!Number.isSafeInteger(networkBytes) || networkBytes <= 0)) throw new Error('BO_PERF_NETWORK_BYTES must be a positive integer')
 const fixtureDirectory = process.env.BO_PERF_FIXTURES
-if (!['first', 'full', 'cancel'].includes(mode)) throw new Error('BO_PERF_MODE must be first, full or cancel')
+if (!['first', 'full', 'cancel', 'operations'].includes(mode)) throw new Error('BO_PERF_MODE must be first, full, cancel or operations')
 if (!Number.isSafeInteger(rounds) || rounds < 1) throw new Error('BO_PERF_ROUNDS must be a positive integer')
 registerHooks({
   resolve(specifier, context, nextResolve) {
@@ -106,7 +108,8 @@ let browserServer: BrowserServer | undefined
 let backend: ServiceProcess | undefined
 let output: string | undefined
 const report = {
-  mode, rounds, cpuProfile, startedAt: new Date().toISOString(), samples: [] as Sample[],
+  mode, rounds, cpuProfile, networkBytes, startedAt: new Date().toISOString(), samples: [] as Sample[],
+  operations: [] as { case: string; round: number; segments: number; inputSha256: string; result: unknown }[],
   error: undefined as string | undefined,
   finishedAt: undefined as string | undefined,
   output: undefined as string | null | undefined,
@@ -124,6 +127,7 @@ const report = {
     verification: 'one untimed ordinary HTTP request before navigation; growth results checked against closed-form oracle; final displayed pairs and producer/decoded step counts checked after timing; full wire trace independently checked by perf-cases',
     cancellation: 'action start to receipt of matching backend trace_lifecycle cancelled log; includes observer and IPC scheduling',
     watchdogMs,
+    operations: 'Trusted browser input capture timestamp to requestAnimationFrame observing a changed step; one atomic DOM snapshot of code, variables and SVG checked against the page own captured real trace after timing. Early samples classified by actual generating flag, not requested phase. Frame intervals and coalesced inputs recorded. Includes probe overhead, excludes Playwright polling; rAF is a pre-paint opportunity, not physical display latency. No resource sampling in operations mode.',
   },
 }
 
@@ -209,6 +213,26 @@ async function measure(context: BrowserContext, baseURL: string, preset: Preset,
   const page = await context.newPage()
   page.setDefaultTimeout(watchdogMs)
   page.setDefaultNavigationTimeout(watchdogMs)
+  if (mode === 'operations') {
+    const { measureOperations } = await import('../web/tests/support/measure-operations.ts')
+    const session = await context.newCDPSession(page)
+    if (networkBytes > 0) await session.send('Network.emulateNetworkConditions', {
+      offline: false, latency: 0, downloadThroughput: networkBytes, uploadThroughput: -1,
+    })
+    if (cpuProfile) { await session.send('Profiler.enable'); await session.send('Profiler.start') }
+    try {
+      const result = await measureOperations(page, baseURL, preset.id)
+      report.operations.push({ case: preset.id, round, segments: preset.segments.length,
+        inputSha256: createHash('sha256').update(JSON.stringify(preset.segments)).digest('hex'), result })
+    } finally {
+      if (cpuProfile && output) {
+        const { profile } = await session.send('Profiler.stop')
+        await writeFile(join(dirname(output), `${preset.id}-${round}-operations.cpuprofile`), JSON.stringify(profile))
+      }
+      await page.close()
+    }
+    return
+  }
   const cdp = await context.newCDPSession(page)
   await cdp.send('Network.enable')
   await cdp.send('Performance.enable')
@@ -417,6 +441,7 @@ try {
   const diff = (await exec('git', ['diff', 'HEAD', '--', 'src', 'web/src', 'Cargo.toml', 'Cargo.lock', 'web/package.json', 'web/pnpm-lock.yaml'], { cwd: root })).stdout
   report.environment.sourceDiffSha256 = createHash('sha256').update(diff).digest('hex')
   report.environment.measurementSha256 = createHash('sha256').update(await readFile(fileURLToPath(import.meta.url))).digest('hex')
+  report.environment.operationMeasurementSha256 = createHash('sha256').update(await readFile(join(web, 'tests/support/measure-operations.ts'))).digest('hex')
   await exec('ps', ['-o', 'rss=', '-p', String(process.pid)])
   await access(chromium.executablePath(), constants.X_OK)
   browserServer = await chromium.launchServer({ headless: true })
@@ -424,6 +449,7 @@ try {
   report.environment.chromium = browser.version()
   output = process.env.BO_PERF_OUTPUT ?? join(await mkdtemp(join(tmpdir(), 'bo-learning-perf-')), 'report.json')
   await access(dirname(output), constants.W_OK)
+  await writeFile(join(dirname(output), 'source.diff'), diff)
   await build('cargo', ['build', '--release', '--offline'])
   if (fixtureDirectory) {
     process.env.BO_PERF_CATALOG = join(fixtureDirectory, 'catalog.json')
