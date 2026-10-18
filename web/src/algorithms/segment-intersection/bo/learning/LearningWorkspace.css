@@ -78,13 +78,14 @@
   .learning-view:not([data-zen-mode="true"]) > .learning-workspace:has(> .learning-dock[data-expanded="true"]) > .learning-center {
     grid-template-columns: calc(round(nearest, calc(var(--learning-column-width) * (var(--learning-drawing-weight) + var(--learning-code-weight))), 1px) + 16px) minmax(0, 1fr);
     grid-template-areas: "drawing variables" "code variables";
-    grid-template-rows: minmax(22rem, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(var(--learning-drawing-min-height, 22rem), 1fr) minmax(0, 1fr);
   }
 }
 
 @media (min-width: 1100px) and (min-height: 720px) {
   .learning-workspace { flex: 1; min-height: 0; grid-template-rows: minmax(0, 1fr); }
-  .learning-center { grid-template-rows: minmax(0, 1fr); }
+  /* In a viewport-bound workspace, let both stacked panels share the available height. */
+  .learning-center { --learning-drawing-min-height: 0px; grid-template-rows: minmax(0, 1fr); }
   .learning-center > .drawing { min-height: 0; }
   .learning-code .execution-source { flex-shrink: 1; }
   .execution-code-scroll { max-height: none; }
