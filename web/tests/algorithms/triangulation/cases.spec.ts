@@ -3,7 +3,7 @@ import { formatPoint, type Point } from '../../../src/geometry/geometry'
 
 test.use({ locale: 'en-US', viewport: { width: 1360, height: 900 } })
 
-for (const [id, name] of [['triangle', 'Triangle'], ['convex', 'Convex polygon'], ['concave', 'Concave polygon'], ['multiple-notches', 'Multiple notches'], ['collinear', 'Collinear boundary vertices'], ['exact-fractions', 'Exact fractional vertices']]) {
+for (const [id, name] of [['triangle', 'Equilateral triangle'], ['convex', 'Regular hexagon'], ['concave', 'Concave polygon'], ['multiple-notches', 'Multiple notches'], ['collinear', 'Collinear boundary vertices'], ['exact-fractions', 'Exact fractional vertices'], ['spiral', 'Spiral'], ['concave-star', 'Multi-arm concave star'], ['winding-channel', 'Winding channel'], ['irregular-outline', 'Irregular outline']]) {
   test(`real triangulation: ${id}`, async ({ page }) => {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
@@ -59,7 +59,7 @@ test('loading, failure and leaving a pending case do not show a successful resul
   await expect(page.getByRole('alert')).toContainText('Computation failed')
   await expect(page.getByRole('region', { name: 'Triangles', exact: true }).getByRole('listitem')).toHaveCount(0)
   await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
-  await page.getByRole('article', { name: 'Convex polygon', exact: true }).getByRole('button').click()
+  await page.getByRole('article', { name: 'Regular hexagon', exact: true }).getByRole('button').click()
   await expect(page.locator('[data-triangle]')).toHaveCount(4)
   await expect(page.getByRole('alert')).toHaveCount(0)
 })

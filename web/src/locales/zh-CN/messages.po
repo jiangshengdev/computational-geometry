@@ -90,16 +90,16 @@ msgid "{title} teaching code"
 msgstr "{title}教学代码"
 
 #: src/algorithms/triangulation/cases.ts:18
-msgid "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
-msgstr "梳齿形边界包含多个凹口、水平边和同高顶点。"
+#~ msgid "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
+#~ msgstr "梳齿形边界包含多个凹口、水平边和同高顶点。"
 
 #: src/algorithms/convex-polygon-intersection/cases.ts:25
 msgid "A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions."
 msgstr "沿抛物线取点构成的凸边界位于矩形内。等值分数标识相同位置。"
 
 #: src/algorithms/triangulation/cases.ts:16
-msgid "A convex hexagon with horizontal edges and equal-height vertices."
-msgstr "包含水平边与同高顶点的凸六边形。"
+#~ msgid "A convex hexagon with horizontal edges and equal-height vertices."
+#~ msgstr "包含水平边与同高顶点的凸六边形。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:53
@@ -111,6 +111,10 @@ msgstr "四跨桥梁以连续三角支撑连接上下弦杆，竖杆与斜撑的
 msgid "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps."
 msgstr "蜂窝片层沿周向闭合为 (6,0) 锯齿型管，四排二子格共 48 个原子、60 条键；两端开口，无端帽。"
 
+#: src/algorithms/triangulation/cases.ts:25
+msgid "A narrow region winds inward; observe how the triangles stay inside each turn."
+msgstr "狭长区域向内盘绕，观察三角形如何保持在每一处转弯的边界内。"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/penrose.ts:80
 msgid "A Penrose P3 sun seed undergoes two golden-ratio subdivisions of Robinson triangles, forming a finite patch of 20 complete rhombi. Ideal irrational coordinates are first uniformly approximated to one millionth and then rotated exactly to a fixed view; shared edges are entered only once."
@@ -120,6 +124,10 @@ msgstr "彭罗斯 P3 太阳种子经两次 Robinson 三角形黄金分割细分�
 #: src/algorithms/segment-intersection/cases/fullerene.ts:49
 msgid "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
 msgstr "完整截角二十面体球笼的透视投影，保留全部 60 个原子与 90 条连接。黄金比例以 1618/1000 近似；图中内部穿越不代表化学键连接。"
+
+#: src/algorithms/triangulation/cases.ts:16
+msgid "A regular hexagon uses rational coordinates rounded to six decimal places, preserving horizontal edges and equal-height vertices."
+msgstr "正六边形采用保留六位小数的有理数近似坐标，保留水平边与同高顶点。"
 
 #: src/algorithms/convex-polygon-intersection/cases.ts:23
 msgid "A shared boundary segment is a nonempty intersection."
@@ -338,6 +346,10 @@ msgstr "{keyword} 块结束后"
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。"
 
+#: src/algorithms/triangulation/cases.ts:42
+msgid "Aligned turns, uniform channel width and even spacing give the winding boundary a regular rhythm."
+msgstr "转折位置对齐，通道等宽、间隔一致，让曲折边界形成规律的节奏。"
+
 #: src/algorithms/convex-hull/cases.ts:52
 msgid "All collinear"
 msgstr "全部共线"
@@ -360,6 +372,10 @@ msgstr "三者都在 y = 0 上。S0 × S1 的交集为 (0, 0) → (6, 0)；S0 ×
 #: src/algorithms/segment-intersection/cases/presets.ts:17
 msgid "An endpoint of a vertical segment lies inside a horizontal segment."
 msgstr "竖直线段的端点落在水平线段内部。"
+
+#: src/algorithms/triangulation/cases.ts:15
+msgid "An equilateral triangle uses rational coordinates rounded to six decimal places; triangulation is exact for those input values."
+msgstr "等边三角形采用保留六位小数的有理数近似坐标，剖分对这些输入值进行精确计算。"
 
 #: src/algorithms/triangulation/cases.ts:17
 msgid "An inward corner keeps the triangulation inside an L-shaped boundary."
@@ -883,8 +899,8 @@ msgid "Convex hull plot"
 msgstr "凸包图形"
 
 #: src/algorithms/triangulation/cases.ts:16
-msgid "Convex polygon"
-msgstr "凸多边形"
+#~ msgid "Convex polygon"
+#~ msgstr "凸多边形"
 
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:25
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
@@ -1128,6 +1144,10 @@ msgstr "内层的 8 个网结各连 4 条边，外层的 8 个网结各连 3 条
 msgid "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 msgstr "四个中心各有 4 条等长空间键，其方向两两点积为 −1、长度平方为 3，符合四面体夹角。六个共享近邻度数为 2，四个边界原子度数为 1。投影为 (x + 3z/10, y + 7z/10)；中心 (1,1,1) 投影至 (13/10,17/10)，四条键产生 6 对。S6 与 S13 内部交于 (281/100,489/100)；二维穿越不代表新增化学键，投影使用精确有理数。"
 
+#: src/algorithms/triangulation/cases.ts:34
+msgid "Eight arms alternate with deep notches in a boundary with mirror symmetry and quarter-turn rotational symmetry."
+msgstr "八个尖角与深凹口交替，轮廓具有镜像对称和四分之一周旋转对称。"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:38
 msgid "Eight radial spokes connect two octagonal rings; every web junction consists of segment endpoints."
@@ -1208,6 +1228,10 @@ msgstr "本次进入 else 分支"
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:41
 msgid "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
 msgstr "进入取事件模块，尚未执行第一条核心语句。当前事件与画布保留上一步状态；下一小步将取出队首事件。"
+
+#: src/algorithms/triangulation/cases.ts:15
+msgid "Equilateral triangle"
+msgstr "等边三角形"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:53
 msgid "Event complete"
@@ -1375,6 +1399,10 @@ msgstr "沿网环观察端点连接，比较普通网结和中心共点的配对
 #: src/algorithms/segment-intersection/bo/learning/executionCode.ts:207
 msgid "For different slopes, the intersection is the current event point"
 msgstr "斜率不同时，交集就是当前事件点"
+
+#: src/algorithms/triangulation/cases.ts:18
+msgid "Four evenly spaced notches balance repetition with open space, retaining horizontal edges and equal-height vertices."
+msgstr "四个等距凹口兼顾重复与留白，保留水平边和同高顶点。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:25
@@ -1707,6 +1735,10 @@ msgstr "结果结构无效"
 msgid "Irregular convex polygons"
 msgstr "不规则凸多边形"
 
+#: src/algorithms/triangulation/cases.ts:50
+msgid "Irregular outline"
+msgstr "不规则轮廓"
+
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:212
 msgid "Jump to step"
 msgstr "跳转步骤"
@@ -1846,6 +1878,10 @@ msgstr "回纹窗棂"
 #: src/app/AlgorithmHome.tsx:51
 msgid "Monotone decomposition"
 msgstr "单调分解"
+
+#: src/algorithms/triangulation/cases.ts:34
+msgid "Multi-arm concave star"
+msgstr "多臂凹星形"
 
 #: src/algorithms/triangulation/cases.ts:18
 msgid "Multiple notches"
@@ -2497,6 +2533,10 @@ msgstr "引用变量 "
 msgid "References"
 msgstr "参考资料"
 
+#: src/algorithms/triangulation/cases.ts:16
+msgid "Regular hexagon"
+msgstr "正六边形"
+
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
 msgid "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
 msgstr "退出 <0>{subjects}</0>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。"
@@ -3023,6 +3063,10 @@ msgstr "蜘蛛网"
 msgid "Spider web"
 msgstr "蜘蛛网"
 
+#: src/algorithms/triangulation/cases.ts:25
+msgid "Spiral"
+msgstr "螺旋形"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:88
 msgid "Star polygon"
@@ -3093,6 +3137,10 @@ msgstr "细分使用 φ = (1 + √5)/2，将同类 Robinson 三角形沿底边�
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:42
 msgid "Subtract an index with an underflow check."
 msgstr "执行检查下溢的索引减法。"
+
+#: src/algorithms/triangulation/cases.ts:42
+#~ msgid "Successive bends and changing widths reveal how triangles connect through narrow passages."
+#~ msgstr "连续转弯与宽窄变化，展示三角形如何连接狭窄通道。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:7
@@ -3287,8 +3335,8 @@ msgid "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 i
 msgstr "片层有 24 个原子、30 条键和 7 个六边形面；12 个内侧三邻接点各产生 3 对，12 个二邻接边缘点各产生 1 对，共 48 对、24 处。没有内部穿越或重叠。纵向使用 433/500 近似 √3/2，求交对这些有理输入精确计算。"
 
 #: src/algorithms/triangulation/cases.ts:15
-msgid "The smallest valid boundary produces one triangle."
-msgstr "最小合法边界生成一个三角形。"
+#~ msgid "The smallest valid boundary produces one triangle."
+#~ msgstr "最小合法边界生成一个三角形。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:36
@@ -3398,8 +3446,8 @@ msgid "Treat a zero-length intersection as a single point"
 msgstr "没有长度时，按单个交点处理"
 
 #: src/algorithms/triangulation/cases.ts:15
-msgid "Triangle"
-msgstr "三角形"
+#~ msgid "Triangle"
+#~ msgstr "三角形"
 
 #: src/algorithms/convex-hull/cases.ts:16
 msgid "Triangle and interior point"
@@ -3585,6 +3633,14 @@ msgstr "撤销横坐标的剪切变换，纵坐标保持不变"
 msgid "Undo the shear to restore original coordinates."
 msgstr "撤销剪切，恢复原坐标。"
 
+#: src/algorithms/triangulation/cases.ts:34
+#~ msgid "Unequal arms alternate with deep notches; compare the triangulation of the center and each branch."
+#~ msgstr "长短不一的尖角与深凹口交替，比较中心区域与各分支的剖分。"
+
+#: src/algorithms/triangulation/cases.ts:50
+msgid "Uneven protrusions and indentations face different directions, without a repeating boundary pattern."
+msgstr "大小不一、朝向各异的凹凸起伏，形成没有重复规律的边界。"
+
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:252
 msgid "Unknown case: {caseId}"
 msgstr "未知案例：{caseId}"
@@ -3743,6 +3799,10 @@ msgstr "为什么不会漏掉交点"
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:33
 msgid "Why take this action?"
 msgstr "这一步为什么这样做？"
+
+#: src/algorithms/triangulation/cases.ts:42
+msgid "Winding channel"
+msgstr "曲折通道"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:14

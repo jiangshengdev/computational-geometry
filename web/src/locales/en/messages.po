@@ -90,16 +90,16 @@ msgid "{title} teaching code"
 msgstr "{title} teaching code"
 
 #: src/algorithms/triangulation/cases.ts:18
-msgid "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
-msgstr "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
+#~ msgid "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
+#~ msgstr "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
 
 #: src/algorithms/convex-polygon-intersection/cases.ts:25
 msgid "A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions."
 msgstr "A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions."
 
 #: src/algorithms/triangulation/cases.ts:16
-msgid "A convex hexagon with horizontal edges and equal-height vertices."
-msgstr "A convex hexagon with horizontal edges and equal-height vertices."
+#~ msgid "A convex hexagon with horizontal edges and equal-height vertices."
+#~ msgstr "A convex hexagon with horizontal edges and equal-height vertices."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:53
@@ -111,6 +111,10 @@ msgstr "A four-span bridge connects upper and lower chords with continuous trian
 msgid "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps."
 msgstr "A honeycomb sheet closes circumferentially into a (6,0) zigzag tube; four rows of two sublattices contain 48 atoms and 60 bonds, with two open ends and no caps."
 
+#: src/algorithms/triangulation/cases.ts:25
+msgid "A narrow region winds inward; observe how the triangles stay inside each turn."
+msgstr "A narrow region winds inward; observe how the triangles stay inside each turn."
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/penrose.ts:80
 msgid "A Penrose P3 sun seed undergoes two golden-ratio subdivisions of Robinson triangles, forming a finite patch of 20 complete rhombi. Ideal irrational coordinates are first uniformly approximated to one millionth and then rotated exactly to a fixed view; shared edges are entered only once."
@@ -120,6 +124,10 @@ msgstr "A Penrose P3 sun seed undergoes two golden-ratio subdivisions of Robinso
 #: src/algorithms/segment-intersection/cases/fullerene.ts:49
 msgid "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
 msgstr "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
+
+#: src/algorithms/triangulation/cases.ts:16
+msgid "A regular hexagon uses rational coordinates rounded to six decimal places, preserving horizontal edges and equal-height vertices."
+msgstr "A regular hexagon uses rational coordinates rounded to six decimal places, preserving horizontal edges and equal-height vertices."
 
 #: src/algorithms/convex-polygon-intersection/cases.ts:23
 msgid "A shared boundary segment is a nonempty intersection."
@@ -338,6 +346,10 @@ msgstr "After the end of the {keyword} block"
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 
+#: src/algorithms/triangulation/cases.ts:42
+msgid "Aligned turns, uniform channel width and even spacing give the winding boundary a regular rhythm."
+msgstr "Aligned turns, uniform channel width and even spacing give the winding boundary a regular rhythm."
+
 #: src/algorithms/convex-hull/cases.ts:52
 msgid "All collinear"
 msgstr "All collinear"
@@ -360,6 +372,10 @@ msgstr "All three lie on y = 0. S0 × S1 intersects over (0, 0) → (6, 0); both
 #: src/algorithms/segment-intersection/cases/presets.ts:17
 msgid "An endpoint of a vertical segment lies inside a horizontal segment."
 msgstr "An endpoint of a vertical segment lies inside a horizontal segment."
+
+#: src/algorithms/triangulation/cases.ts:15
+msgid "An equilateral triangle uses rational coordinates rounded to six decimal places; triangulation is exact for those input values."
+msgstr "An equilateral triangle uses rational coordinates rounded to six decimal places; triangulation is exact for those input values."
 
 #: src/algorithms/triangulation/cases.ts:17
 msgid "An inward corner keeps the triangulation inside an L-shaped boundary."
@@ -883,8 +899,8 @@ msgid "Convex hull plot"
 msgstr "Convex hull plot"
 
 #: src/algorithms/triangulation/cases.ts:16
-msgid "Convex polygon"
-msgstr "Convex polygon"
+#~ msgid "Convex polygon"
+#~ msgstr "Convex polygon"
 
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:25
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
@@ -1128,6 +1144,10 @@ msgstr "Each of the 8 inner junctions joins 4 edges, each of the 8 outer junctio
 msgid "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 msgstr "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 
+#: src/algorithms/triangulation/cases.ts:34
+msgid "Eight arms alternate with deep notches in a boundary with mirror symmetry and quarter-turn rotational symmetry."
+msgstr "Eight arms alternate with deep notches in a boundary with mirror symmetry and quarter-turn rotational symmetry."
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:38
 msgid "Eight radial spokes connect two octagonal rings; every web junction consists of segment endpoints."
@@ -1208,6 +1228,10 @@ msgstr "Enter the else branch"
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:41
 msgid "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
 msgstr "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
+
+#: src/algorithms/triangulation/cases.ts:15
+msgid "Equilateral triangle"
+msgstr "Equilateral triangle"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:53
 msgid "Event complete"
@@ -1375,6 +1399,10 @@ msgstr "Follow endpoint connections around the rings and compare pair counts at 
 #: src/algorithms/segment-intersection/bo/learning/executionCode.ts:207
 msgid "For different slopes, the intersection is the current event point"
 msgstr "For different slopes, the intersection is the current event point"
+
+#: src/algorithms/triangulation/cases.ts:18
+msgid "Four evenly spaced notches balance repetition with open space, retaining horizontal edges and equal-height vertices."
+msgstr "Four evenly spaced notches balance repetition with open space, retaining horizontal edges and equal-height vertices."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:25
@@ -1707,6 +1735,10 @@ msgstr "Invalid result structure"
 msgid "Irregular convex polygons"
 msgstr "Irregular convex polygons"
 
+#: src/algorithms/triangulation/cases.ts:50
+msgid "Irregular outline"
+msgstr "Irregular outline"
+
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:212
 msgid "Jump to step"
 msgstr "Jump to step"
@@ -1846,6 +1878,10 @@ msgstr "Meander window lattice"
 #: src/app/AlgorithmHome.tsx:51
 msgid "Monotone decomposition"
 msgstr "Monotone decomposition"
+
+#: src/algorithms/triangulation/cases.ts:34
+msgid "Multi-arm concave star"
+msgstr "Multi-arm concave star"
 
 #: src/algorithms/triangulation/cases.ts:18
 msgid "Multiple notches"
@@ -2497,6 +2533,10 @@ msgstr "Referenced variable "
 msgid "References"
 msgstr "References"
 
+#: src/algorithms/triangulation/cases.ts:16
+msgid "Regular hexagon"
+msgstr "Regular hexagon"
+
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
 msgid "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
 msgstr "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
@@ -3023,6 +3063,10 @@ msgstr "Spider web"
 msgid "Spider web"
 msgstr "Spider web"
 
+#: src/algorithms/triangulation/cases.ts:25
+msgid "Spiral"
+msgstr "Spiral"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:88
 msgid "Star polygon"
@@ -3093,6 +3137,10 @@ msgstr "Subdivision uses φ = (1 + √5)/2. Matching Robinson triangles are pair
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:42
 msgid "Subtract an index with an underflow check."
 msgstr "Subtract an index with an underflow check."
+
+#: src/algorithms/triangulation/cases.ts:42
+#~ msgid "Successive bends and changing widths reveal how triangles connect through narrow passages."
+#~ msgstr "Successive bends and changing widths reveal how triangles connect through narrow passages."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:7
@@ -3287,8 +3335,8 @@ msgid "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 i
 msgstr "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
 
 #: src/algorithms/triangulation/cases.ts:15
-msgid "The smallest valid boundary produces one triangle."
-msgstr "The smallest valid boundary produces one triangle."
+#~ msgid "The smallest valid boundary produces one triangle."
+#~ msgstr "The smallest valid boundary produces one triangle."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:36
@@ -3398,8 +3446,8 @@ msgid "Treat a zero-length intersection as a single point"
 msgstr "Treat a zero-length intersection as a single point"
 
 #: src/algorithms/triangulation/cases.ts:15
-msgid "Triangle"
-msgstr "Triangle"
+#~ msgid "Triangle"
+#~ msgstr "Triangle"
 
 #: src/algorithms/convex-hull/cases.ts:16
 msgid "Triangle and interior point"
@@ -3585,6 +3633,14 @@ msgstr "Undo the shear of the x coordinate, leaving the y coordinate unchanged"
 msgid "Undo the shear to restore original coordinates."
 msgstr "Undo the shear to restore original coordinates."
 
+#: src/algorithms/triangulation/cases.ts:34
+#~ msgid "Unequal arms alternate with deep notches; compare the triangulation of the center and each branch."
+#~ msgstr "Unequal arms alternate with deep notches; compare the triangulation of the center and each branch."
+
+#: src/algorithms/triangulation/cases.ts:50
+msgid "Uneven protrusions and indentations face different directions, without a repeating boundary pattern."
+msgstr "Uneven protrusions and indentations face different directions, without a repeating boundary pattern."
+
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:252
 msgid "Unknown case: {caseId}"
 msgstr "Unknown case: {caseId}"
@@ -3743,6 +3799,10 @@ msgstr "Why intersections are not missed"
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:33
 msgid "Why take this action?"
 msgstr "Why take this action?"
+
+#: src/algorithms/triangulation/cases.ts:42
+msgid "Winding channel"
+msgstr "Winding channel"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:14
