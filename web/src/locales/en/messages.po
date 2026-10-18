@@ -235,13 +235,13 @@ msgstr "Action explanation"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: index + 1
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:69
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:68
 msgid "geometry.activeSegment"
 msgstr "Active segment {0}: S{id}"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: index + 1
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:66
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:65
 msgid "geometry.activeAtHeight"
 msgstr "Active segment {0}: S{id} (current processing height)"
 
@@ -405,8 +405,8 @@ msgstr "Attach zero-based indices to iterator elements."
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:50
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:88
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:53
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:84
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:54
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:92
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:225
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:256
 msgid "Back to cases"
@@ -441,7 +441,7 @@ msgstr "Before the end of the {keyword} block"
 msgid "Before the first core statement · intermediate state"
 msgstr "Before the first core statement · intermediate state"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:85
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:82
 msgid "Blue: inputs"
 msgstr "Blue: inputs"
 
@@ -449,7 +449,7 @@ msgstr "Blue: inputs"
 msgid "BO Results Viewer"
 msgstr "BO Results Viewer"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:86
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:83
 msgid "Bold: active segments"
 msgstr "Bold: active segments"
 
@@ -506,7 +506,7 @@ msgstr "Call expression: "
 msgid "Cancel waiting"
 msgstr "Cancel waiting"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:169
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:164
 msgid "Canvas object details"
 msgstr "Canvas object details"
 
@@ -769,7 +769,7 @@ msgid "Compound argument evaluation and return value at this call site: "
 msgstr "Compound argument evaluation and return value at this call site: "
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:71
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:58
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:59
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:72
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:86
 msgid "Computation failed"
@@ -777,8 +777,8 @@ msgstr "Computation failed"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:26
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:48
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:52
 #: src/app/AlgorithmHome.tsx:45
 #: src/app/App.tsx:35
 #: src/app/AppNavigation.tsx:9
@@ -797,7 +797,7 @@ msgid "Compute the intersection candidate and schedule a future event"
 msgstr "Compute the intersection candidate and schedule a future event"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:70
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:57
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:58
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:84
 msgid "Computing…"
 msgstr "Computing…"
@@ -852,15 +852,15 @@ msgstr "Convex hull cases"
 msgid "Convex hull plot"
 msgstr "Convex hull plot"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:82
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:28
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:52
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:90
 #: src/app/AlgorithmHome.tsx:50
 msgid "Convex polygon intersection"
 msgstr "Convex polygon intersection"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:25
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
 msgid "Convex polygon intersection cases"
 msgstr "Convex polygon intersection cases"
 
@@ -868,7 +868,7 @@ msgstr "Convex polygon intersection cases"
 msgid "Convex polygon intersection plot"
 msgstr "Convex polygon intersection plot"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
 msgid "Convex polygon intersection result"
 msgstr "Convex polygon intersection result"
 
@@ -922,11 +922,11 @@ msgstr "Current event"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: sweep.labelPoint(sweep.current)
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:132
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:127
 msgid "geometry.currentEvent"
 msgstr "Current event {0}"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:113
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:108
 msgid "Current event horizontal guide"
 msgstr "Current event horizontal guide"
 
@@ -955,7 +955,7 @@ msgstr "Current outer pairing index"
 msgid "Current value: "
 msgstr "Current value: "
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:86
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:83
 msgid "Dashed circles: pending intersections"
 msgstr "Dashed circles: pending intersections"
 
@@ -994,7 +994,7 @@ msgstr "Diagonal weave"
 msgid "Diamond lattice"
 msgstr "Diamond lattice"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:86
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:83
 msgid "Diamonds: zero-length inputs"
 msgstr "Diamonds: zero-length inputs"
 
@@ -1008,7 +1008,7 @@ msgstr "Different intersections at the same sweep coordinate"
 msgid "Discover future intersections <0>{0}</0>: after checking the exact intersection of <1>{subjects}</1>, add them to the queue and wait until the sweep line arrives to record the results."
 msgstr "Discover future intersections <0>{0}</0>: after checking the exact intersection of <1>{subjects}</1>, add them to the queue and wait until the sweep line arrives to record the results."
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:129
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:124
 msgid "Discovered {label}"
 msgstr "Discovered {label}"
 
@@ -1109,7 +1109,7 @@ msgstr "Element of {expression} selected by the current index"
 msgid "Empty"
 msgstr "Empty"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
 msgid "Empty intersection"
 msgstr "Empty intersection"
 
@@ -1179,11 +1179,11 @@ msgstr "Enter the event retrieval module before its first core statement execute
 msgid "Event complete"
 msgstr "Event complete"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:101
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:96
 msgid "Event height: above the current event (Δ)"
 msgstr "Event height: above the current event (Δ)"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:101
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:96
 msgid "Event height: below the current event (Δ)"
 msgstr "Event height: below the current event (Δ)"
 
@@ -1201,11 +1201,11 @@ msgstr "Event queue"
 msgid "help.EventQueueRules.label"
 msgstr "Event queue explanation"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:95
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:90
 msgid "Event side: left of the current event (Δ)"
 msgstr "Event side: left of the current event (Δ)"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:95
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:90
 msgid "Event side: right of the current event (Δ)"
 msgstr "Event side: right of the current event (Δ)"
 
@@ -1375,7 +1375,7 @@ msgstr "Generating trace"
 msgid "Geometry calls and queue insertion"
 msgstr "Geometry calls and queue insertion"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:80
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:79
 msgid "Geometry view"
 msgstr "Geometry view"
 
@@ -1524,7 +1524,7 @@ msgstr "Indices of the currently active segments"
 msgid "Indices of the neighboring segments being checked"
 msgstr "Indices of the neighboring segments being checked"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:105
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:100
 msgid "Input and intersection plot"
 msgstr "Input and intersection plot"
 
@@ -1544,11 +1544,11 @@ msgstr "Input points"
 msgid "Input polygon preview"
 msgstr "Input polygon preview"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:119
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:114
 msgid "Input S{index}"
 msgstr "Input S{index}"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:119
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:114
 msgid "Input S{index}, selected"
 msgstr "Input S{index}, selected"
 
@@ -1579,19 +1579,19 @@ msgstr "Intersecting pairs"
 msgid "Intersecting pairs and exact intersections"
 msgstr "Intersecting pairs and exact intersections"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:68
 msgid "Intersection · filled region or contact"
 msgstr "Intersection · filled region or contact"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: pairName(result)
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:139
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:134
 msgid "geometry.intersection"
 msgstr "Intersection {0}"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: pairName(result)
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:139
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:134
 msgid "geometry.selectedIntersection"
 msgstr "Intersection {0}, selected"
 
@@ -1600,7 +1600,7 @@ msgstr "Intersection {0}, selected"
 msgid "Intersection candidate returned by the completed neighbor call"
 msgstr "Intersection candidate returned by the completed neighbor call"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:72
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:80
 msgid "Intersection coordinates"
 msgstr "Intersection coordinates"
 
@@ -1635,8 +1635,8 @@ msgstr "Invalid learning step: use a nonnegative integer and provide only one st
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:86
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:87
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:82
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:83
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:90
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:91
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:222
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:223
 #: src/app/App.tsx:35
@@ -1729,7 +1729,7 @@ msgstr "Left endpoint of the sweep segment"
 msgid "Left sidebar"
 msgstr "Left sidebar"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:83
+#: src/geometry/GeometryInfo.tsx:10
 msgid "Legend and controls"
 msgstr "Legend and controls"
 
@@ -1987,7 +1987,7 @@ msgstr "Only S0 exists, so no pair of distinct inputs can be formed; its two end
 msgid "Only the two extreme endpoints remain; intermediate collinear points do not become hull vertices."
 msgstr "Only the two extreme endpoints remain; intermediate collinear points do not become hull vertices."
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:85
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:82
 msgid "Orange: intersections"
 msgstr "Orange: intersections"
 
@@ -2010,8 +2010,8 @@ msgid "original closure"
 msgstr "original closure"
 
 #: src/algorithms/convex-hull/ConvexHullView.tsx:13
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:62
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:81
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:64
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:80
 msgid "Original coordinate plane · Equal scale"
 msgstr "Original coordinate plane · Equal scale"
 
@@ -2048,7 +2048,7 @@ msgstr "Outer function"
 #. js-lingui-explicit-id
 #. placeholder {0}: pairName(inspectedPair)
 #. placeholder {1}: formatGeometry(inspectedPair.geometry)
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:49
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:48
 msgid "geometry.overlapDetail"
 msgstr "Overlap {0} · {1}"
 
@@ -2162,7 +2162,7 @@ msgstr "Passing: {0}"
 #. js-lingui-explicit-id
 #. placeholder {0}: index + 1
 #. placeholder {1}: sweep.labelPoint(point)
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:58
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:57
 msgid "geometry.pendingEvent"
 msgstr "Pending event {0}: {1}"
 
@@ -2192,7 +2192,7 @@ msgstr "Place all endpoints in the event queue, keeping one event per point. End
 
 #. placeholder {0}: computation.message
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:71
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:58
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:59
 msgid "Please check the local service. {0}"
 msgstr "Please check the local service. {0}"
 
@@ -2219,7 +2219,7 @@ msgstr "Point contact"
 msgid "Point count"
 msgstr "Point count"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
 msgid "Point intersection"
 msgstr "Point intersection"
 
@@ -2242,11 +2242,11 @@ msgstr "Points only"
 msgid "Polygon A"
 msgstr "Polygon A"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:66
 msgid "Polygon A · solid boundary"
 msgstr "Polygon A · solid boundary"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:69
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:77
 msgid "Polygon A vertices"
 msgstr "Polygon A vertices"
 
@@ -2254,11 +2254,11 @@ msgstr "Polygon A vertices"
 msgid "Polygon B"
 msgstr "Polygon B"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:67
 msgid "Polygon B · dashed boundary"
 msgstr "Polygon B · dashed boundary"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:70
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:78
 msgid "Polygon B vertices"
 msgstr "Polygon B vertices"
 
@@ -2329,7 +2329,7 @@ msgstr "Process S0 upward along x = 0, observing two interior crossings and cont
 msgid "Processing event"
 msgstr "Processing event"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:86
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:83
 msgid "Purple: sweep line and current event"
 msgstr "Purple: sweep line and current event"
 
@@ -2580,7 +2580,7 @@ msgstr "S{id} start"
 #. js-lingui-explicit-id
 #. placeholder {0}: formatPoint(segments[inspectedInput].start)
 #. placeholder {1}: formatPoint(segments[inspectedInput].end)
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:48
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:47
 msgid "geometry.inputDetail"
 msgstr "S{inspectedInput} · Start {0} · End {1}"
 
@@ -2728,7 +2728,7 @@ msgstr "Segment information carried by the current event"
 msgid "Segment intersection"
 msgstr "Segment intersection"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
 msgid "Segment intersection result"
 msgstr "Segment intersection result"
 
@@ -3041,17 +3041,17 @@ msgstr "Sweep coordinates of the current event"
 msgid "Sweep coordinates of the event being processed"
 msgstr "Sweep coordinates of the event being processed"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:86
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:83
 msgid "Sweep direction: left to right"
 msgstr "Sweep direction: left to right"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:127
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:122
 msgid "Sweep line not started"
 msgstr "Sweep line not started"
 
 #. js-lingui-explicit-id
 #. placeholder {0}: formatRational(sweep.current.x)
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:127
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:122
 msgid "geometry.sweepLine"
 msgstr "Sweep line x = {0}"
 
@@ -3492,7 +3492,7 @@ msgid "Unknown case: {caseId}"
 msgstr "Unknown case: {caseId}"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:87
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:83
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:91
 msgid "Unknown case."
 msgstr "Unknown case."
 
@@ -3512,7 +3512,8 @@ msgstr "Unknown page path."
 msgid "Update the active set"
 msgstr "Update the active set"
 
-#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:87
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:69
+#: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:84
 msgid "Use buttons to zoom · Drag to pan"
 msgstr "Use buttons to zoom · Drag to pan"
 
@@ -3596,13 +3597,13 @@ msgstr "Vertical segments: one x coordinate, one height at a time"
 
 #. placeholder {0}: translate(preset.name)
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:29
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:30
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:31
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:145
 msgid "View {0} details"
 msgstr "View {0} details"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:31
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:33
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:34
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:155
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:226
 msgid "View details"

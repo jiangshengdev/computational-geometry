@@ -17,6 +17,7 @@ import './polygon.css'
 import { usePointInteraction } from '../../geometry/usePointInteraction'
 import { useGeometryViewport } from '../../geometry/useGeometryViewport'
 import { GeometryViewControls } from '../../geometry/GeometryViewControls'
+import { GeometryInfo } from '../../geometry/GeometryInfo'
 
 export function PolygonPage() {
   const { t } = useLingui()
@@ -59,9 +60,16 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
         : <p role="status">{kindLabels[computation.result.kind]}</p>}
     <div className="workspace result-workspace polygon-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <div className="drawing"><Card>
-        <Card.Header className="drawing-toolbar"><Card.Title render={props => <h2 {...props} />}>{t`Original coordinate plane · Equal scale`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
+        <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1">
+          <Card.Title render={props => <h2 {...props} />}>{t`Original coordinate plane · Equal scale`}</Card.Title>
+          <GeometryInfo>
+            <span className="text-accent">{t`Polygon A · solid boundary`}</span>
+            <span className="text-warning">{t`Polygon B · dashed boundary`}</span>
+            <span className="text-success">{t`Intersection · filled region or contact`}</span>
+            <span>{t`Use buttons to zoom · Drag to pan`}</span>
+          </GeometryInfo>
+        </div><GeometryViewControls {...viewport} /></Card.Header>
         <Card.Content className="flex min-h-0 flex-1 flex-col">
-          <p className="polygon-legend"><span>{t`Polygon A · solid boundary`}</span><span>{t`Polygon B · dashed boundary`}</span><span>{t`Intersection · filled region or contact`}</span></p>
           <div className="drawing-surface flex flex-col"><PolygonPlot first={preset.first} second={preset.second} result={result} viewport={viewport} interaction={interaction} /></div>
         </Card.Content>
       </Card></div>
