@@ -23,7 +23,7 @@ export function PlotPoints({ points, projection, preview = false, interaction, s
       onKeyDown={event => {
         if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); interaction?.select({ point: p, source: 'plot' }) }
       }}>
-      <circle cx={projection.px(p)} cy={projection.py(p)} r={(preview ? 2.5 : 4) / scale} fill="currentColor" />
+      <circle cx={projection.px(p)} cy={projection.py(p)} r={(preview ? 1.5 : 4) / scale} fill="currentColor" />
       {interaction && <circle cx={projection.px(p)} cy={projection.py(p)} r={10 / scale} fill="transparent" stroke={highlighted ? 'var(--accent)' : 'none'} strokeWidth={3 / scale} />}
     </g>
   })

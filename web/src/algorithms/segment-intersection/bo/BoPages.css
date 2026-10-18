@@ -4,6 +4,7 @@
 .case-card { overflow-wrap: anywhere; }
 .case-thumbnail-link { width: round(down, calc(100% - 0px), 4px); max-width: 240px; align-self: center; flex-shrink: 0; border-radius: var(--radius-2xl); }
 .case-thumbnail { display: block; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius-2xl); background: var(--surface-secondary); }
+:is(.case-list, .algorithm-list) .case-thumbnail :is(line, polyline, polygon, path) { stroke-width: 1.5px; }
 .case-card [data-slot="card-footer"] > a { flex-grow: 1; }
 @media (min-width: 640px) {
   .case-card { flex-direction: row; }
