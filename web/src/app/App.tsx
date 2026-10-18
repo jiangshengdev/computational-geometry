@@ -14,9 +14,10 @@ import { PageHeading } from './PageHeading'
 export default function App() {
   const { t } = useLingui()
   const caseRoute = useMatch('/bo/cases/:caseId/*')
+  const hullCaseRoute = useMatch('/convex-hull/cases/:caseId')
   const boList = useMatch('/bo')
-  return <main className={caseRoute ? 'case-shell' : undefined}>
-    {!caseRoute && <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+  return <main className={caseRoute || hullCaseRoute ? 'case-shell' : undefined}>
+    {!caseRoute && !hullCaseRoute && <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
       <AppLink to="/">{t`Algorithm home`}</AppLink>
       <div className="flex items-center gap-3"><DocumentationLink /><LanguageSelect /></div>
     </div>}

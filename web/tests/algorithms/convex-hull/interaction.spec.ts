@@ -40,12 +40,14 @@ test('lists and canvas share hover, selection and duplicate positions', async ({
   await origin.focus()
   await page.keyboard.press('Enter')
   await expect(origin).toHaveAttribute('aria-pressed', 'true')
-  await expect(page.getByRole('status')).toHaveText('Input points: 6; hull vertices: 4')
+  await expect(page.getByRole('region', { name: 'Input points', exact: true }).getByLabel('Point count')).toHaveText('6')
+  await expect(page.getByRole('region', { name: 'Hull vertices', exact: true }).getByLabel('Point count')).toHaveText('4')
   await expect(inputs).toHaveCount(6)
 
   await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
   await page.getByRole('article', { name: 'Triangle and interior point', exact: true }).getByRole('button', { name: 'View details', exact: true }).click()
-  await expect(page.getByRole('status')).toHaveText('Input points: 4; hull vertices: 3')
+  await expect(page.getByRole('region', { name: 'Input points', exact: true }).getByLabel('Point count')).toHaveText('4')
+  await expect(page.getByRole('region', { name: 'Hull vertices', exact: true }).getByLabel('Point count')).toHaveText('3')
   await expect(page.getByRole('button', { name: 'Point (0, 0)', exact: true })).toHaveAttribute('aria-pressed', 'false')
 })
 

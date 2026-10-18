@@ -4,7 +4,7 @@ import { DocumentTitle } from '../../app/DocumentTitle'
 import { useLingui as useMessages } from '@lingui/react'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
-import { Button } from '@heroui/react/button'
+import { Button, buttonVariants } from '@heroui/react/button'
 import { Alert } from '@heroui/react/alert'
 import { Spinner } from '@heroui/react/spinner'
 import { AppLink } from '../../app/AppLink'
@@ -14,18 +14,22 @@ import { hullCases, type HullCase } from './cases'
 import { ConvexHullPlot } from './ConvexHullPlot'
 import { ConvexHullCoordinates } from './ConvexHullCoordinates'
 import { useHullInteraction } from './useHullInteraction'
+import { DocumentationLink } from '../../app/DocumentationLink'
+import { LanguageSelect } from '../../app/LanguageProvider'
+import { Modal } from '@heroui/react/modal'
+import { X } from 'lucide-react'
 
 export function ConvexHullPage() {
   const { t } = useLingui()
   const { _: translate } = useMessages()
   const navigate = useNavigate()
-  return <section aria-label={t`Convex hull cases`} className="flex flex-col gap-4">
+  return <section aria-label={t`Convex hull cases`}>
     <DocumentTitle title={`${t`Convex hull`} · ${t`Computational Geometry`}`} />
     <PageHeading title={t`Convex hull`} description={t`Choose a fixed point set to inspect its exact convex hull.`} />
     <div className="case-list grid gap-4">{hullCases.map(preset => <article key={preset.id} aria-labelledby={`hull-${preset.id}`}><Card className="case-card h-full items-stretch">
       <AppLink className="case-thumbnail-link" to={`/convex-hull/cases/${preset.id}`} aria-label={t`View ${translate(preset.name)} details`}><ConvexHullPlot points={preset.points} preview /></AppLink>
       <div className="flex min-w-0 flex-1 flex-col gap-3"><Card.Header className="gap-1"><Card.Title id={`hull-${preset.id}`} render={props => <h2 {...props} />}>{translate(preset.name)}</Card.Title><Card.Description>{translate(preset.description)}</Card.Description></Card.Header>
-        <Card.Footer className="mt-auto justify-end"><Button onPress={() => navigate(`/convex-hull/cases/${preset.id}`)}>{t`View details`}</Button></Card.Footer></div>
+        <Card.Footer className="mt-auto justify-end"><Button variant="secondary" onPress={() => navigate(`/convex-hull/cases/${preset.id}`)}>{t`View details`}</Button></Card.Footer></div>
     </Card></article>)}</div>
   </section>
 }
@@ -56,21 +60,38 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
     void compute()
     return () => controller.abort()
   }, [preset])
-  return <section className="flex flex-col gap-4" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
+  return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex hull`} · ${t`Computational Geometry`}`} />
-    <AppLink to="/convex-hull">{t`Back to cases`}</AppLink>
-    <PageHeading title={translate(preset.name)} description={translate(preset.description)} />
-    {computation.status === 'loading' ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>
-      : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
-        : <p role="status">{t`Input points: ${preset.points.length}; hull vertices: ${computation.vertices.length}`}</p>}
-    <div className="grid grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] items-start gap-4">
-      <Card><Card.Content><ConvexHullPlot points={preset.points} vertices={computation.status === 'ready' ? computation.vertices : []} interaction={interaction} /></Card.Content></Card>
-      <div className="flex min-w-0 flex-col gap-4">
-        <ConvexHullCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
-        {computation.status === 'ready' && <ConvexHullCoordinates title={t`Hull vertices`} points={computation.vertices} prefix="V" interaction={interaction} />}
+    <div className="case-toolbar">
+      <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/convex-hull">{t`Back to cases`}</AppLink>
+      <h1 className="text-xl font-semibold">{translate(preset.name)}</h1>
+      <div className="case-actions flex items-center gap-3"><AppLink to="/">{t`Algorithm home`}</AppLink><DocumentationLink /><LanguageSelect />
+        <Modal>
+          <Button variant="tertiary" size="sm">{t`About this case`}</Button>
+          <Modal.Backdrop>
+            <Modal.Container scroll="inside">
+              <Modal.Dialog>
+                <Modal.CloseTrigger aria-label={t`Close help`}><X size={16} aria-hidden="true" /></Modal.CloseTrigger>
+                <Modal.Header><Modal.Heading>{t`About this case`}</Modal.Heading></Modal.Header>
+                <Modal.Body className="flex flex-col gap-3">
+                  <h2 className="font-semibold">{translate(preset.name)}</h2>
+                  <p>{translate(preset.description)}</p>
+                </Modal.Body>
+              </Modal.Dialog>
+            </Modal.Container>
+          </Modal.Backdrop>
+        </Modal>
       </div>
     </div>
-  </section>
+    {computation.status === 'loading' ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>
+      : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
+        : null}
+    <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
+      <div className="drawing"><Card><Card.Content className="flex min-h-0 flex-1 flex-col"><div className="drawing-surface flex flex-col"><ConvexHullPlot points={preset.points} vertices={computation.status === 'ready' ? computation.vertices : []} interaction={interaction} /></div></Card.Content></Card></div>
+        <ConvexHullCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
+        {computation.status === 'ready' && <ConvexHullCoordinates title={t`Hull vertices`} points={computation.vertices} prefix="V" interaction={interaction} />}
+    </div>
+  </>
 }
 
 export function ConvexHullCasePage() {
@@ -79,7 +100,8 @@ export function ConvexHullCasePage() {
   const preset = hullCases.find(candidate => candidate.id === caseId)
   return preset ? <HullCaseViewer key={preset.id} preset={preset} /> : <>
     <DocumentTitle title={`${t`Invalid link`} · ${t`Convex hull`}`} />
+    <div className="case-toolbar"><AppLink to="/">{t`Algorithm home`}</AppLink><div className="case-actions flex items-center gap-3"><DocumentationLink /><LanguageSelect /></div></div>
     <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Invalid link`}</Alert.Title><Alert.Description>{t`Unknown case.`}</Alert.Description></Alert.Content></Alert>
-    <AppLink to="/convex-hull">{t`Back to cases`}</AppLink>
+    <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm', className: 'self-start' })} to="/convex-hull">{t`Back to cases`}</AppLink>
   </>
 }

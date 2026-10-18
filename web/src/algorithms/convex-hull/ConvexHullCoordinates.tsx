@@ -17,10 +17,10 @@ export function ConvexHullCoordinates({ title, points, prefix, interaction }: { 
     panel: scrollport,
     selector: interaction.active?.source === 'plot' ? '[data-highlighted="true"]' : undefined,
   }])
-  return <section aria-label={title} className="min-w-0"><Card className="h-full">
+  return <section aria-label={title} className={`workspace-panel ${prefix === 'P' ? 'input-panel' : 'result-panel'}`}><Card>
     <Card.Header><Card.Title render={props => <h2 {...props} />} className="flex items-center gap-2">{title} <Chip aria-label={t`Point count`}>{points.length}</Chip></Card.Title></Card.Header>
-    <Card.Content>{points.length === 0 ? <p>{t`No points`}</p> : <ScrollShadow ref={scrollport} className="max-h-80 overflow-auto" tabIndex={0} aria-label={title}>
-      <ol className="flex flex-col gap-2">{points.map((p, index) => {
+    <Card.Content className="flex flex-col !overflow-hidden">{points.length === 0 ? <p>{t`No points`}</p> : <ScrollShadow ref={scrollport} className="pair-scroll" tabIndex={0} aria-label={title}>
+      <ol className="flex flex-col gap-1 p-1">{points.map((p, index) => {
         const highlighted = Boolean(interaction.active && samePoint(p, interaction.active.point))
         const selected = Boolean(interaction.selected && samePoint(p, interaction.selected.point))
         return <li key={index} data-highlighted={highlighted} data-selected={selected}>
