@@ -2,24 +2,21 @@ import { Card } from '@heroui/react/card'
 import { Chip } from '@heroui/react/chip'
 import { ScrollShadow } from '@heroui/react/scroll-shadow'
 import { useLingui } from '@lingui/react/macro'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { ToggleButton } from '@heroui/react/toggle-button'
 import { formatPoint, samePoint, type Point } from '../../geometry/geometry'
 import type { HullInteraction } from './useHullInteraction'
+import { useStepPanelScroll } from '../segment-intersection/bo/learning/useStepPanelScroll'
+
+const idleTarget = {}
 
 export function ConvexHullCoordinates({ title, points, prefix, interaction }: { title: string; points: Point[]; prefix: 'P' | 'V'; interaction: HullInteraction }) {
   const { t } = useLingui()
   const scrollport = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (interaction.active?.source !== 'plot') return
-    const container = scrollport.current
-    const row = container?.querySelector<HTMLElement>('[data-highlighted="true"]')
-    if (!container || !row) return
-    const bounds = container.getBoundingClientRect()
-    const target = row.getBoundingClientRect()
-    if (target.top < bounds.top) container.scrollTop += target.top - bounds.top
-    else if (target.bottom > bounds.bottom) container.scrollTop += target.bottom - bounds.bottom
-  }, [interaction.active])
+  useStepPanelScroll(interaction.active ?? idleTarget, 0, [{
+    panel: scrollport,
+    selector: interaction.active?.source === 'plot' ? '[data-highlighted="true"]' : undefined,
+  }])
   return <section aria-label={title} className="min-w-0"><Card className="h-full">
     <Card.Header><Card.Title render={props => <h2 {...props} />} className="flex items-center gap-2">{title} <Chip aria-label={t`Point count`}>{points.length}</Chip></Card.Title></Card.Header>
     <Card.Content>{points.length === 0 ? <p>{t`No points`}</p> : <ScrollShadow ref={scrollport} className="max-h-80 overflow-auto" tabIndex={0} aria-label={title}>

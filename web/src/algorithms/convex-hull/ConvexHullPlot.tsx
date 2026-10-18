@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react/macro'
-import { formatPoint, samePoint, type Point } from '../../geometry/geometry'
+import { formatPoint, samePoint, uniquePoints, type Point } from '../../geometry/geometry'
 import { projectPoints } from '../../geometry/projection'
 import type { HullInteraction } from './useHullInteraction'
 
@@ -14,7 +14,7 @@ export function ConvexHullPlot({ points, vertices = [], preview = false, interac
   const height = preview ? 120 : 480
   const projection = projectPoints(points, width, height, preview ? 16 : 36)
   const path = projection ? vertices.map(p => `${projection.px(p)},${projection.py(p)}`).join(' ') : ''
-  const positions = points.filter((p, index) => !points.slice(0, index).some(previous => samePoint(p, previous)))
+  const positions = uniquePoints(points)
   return <svg className={preview ? 'case-thumbnail' : 'w-full'} viewBox={`0 0 ${width} ${height}`} role={preview ? 'img' : 'group'} aria-label={preview ? t`Input point preview` : t`Convex hull plot`}>
     {projection && <>
       {vertices.length >= 3

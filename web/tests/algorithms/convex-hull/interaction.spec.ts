@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { formatPoint, type Point } from '../../../src/geometry/geometry'
 
 test.use({ locale: 'en-US' })
 
@@ -63,4 +64,20 @@ test('fractional vertices locate exact coordinates in both directions', async ({
   await expect(vertices.nth(1)).toHaveText('V1 (3/2, 0)')
   await page.keyboard.press('Escape')
   await expect(fraction).toHaveAttribute('aria-pressed', 'false')
+})
+
+test('canvas locates a point inside the long input list without scrolling the page', async ({ page }) => {
+  await page.setViewportSize({ width: 1360, height: 900 })
+  const pending = page.waitForResponse(response => response.url().endsWith('/api/convex-hull') && response.ok())
+  await page.goto('/convex-hull/cases/hexagonal-snowflake')
+  const response = await pending
+  const points = response.request().postDataJSON().points as Point[]
+  const inputs = page.getByRole('region', { name: 'Input points', exact: true })
+  const row = inputs.getByRole('listitem').last()
+  await expect(row).not.toBeInViewport()
+  const before = await page.evaluate(() => window.scrollY)
+  await page.getByRole('button', { name: `Point ${formatPoint(points.at(-1)!)}`, exact: true }).hover()
+  await expect(row).toHaveAttribute('data-highlighted', 'true')
+  await expect(row).toBeInViewport()
+  expect(await page.evaluate(() => window.scrollY)).toBe(before)
 })

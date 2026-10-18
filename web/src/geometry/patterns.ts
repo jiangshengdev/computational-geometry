@@ -1,15 +1,9 @@
-import { point, samePoint, type Point } from './geometry'
+import { point, uniquePoints, type Point } from './geometry'
 
 interface PatternEdge { start: Point; end: Point }
 
 export function patternPoints(edges: PatternEdge[]): Point[] {
-  const points: Point[] = []
-  for (const edge of edges) {
-    for (const vertex of [edge.start, edge.end]) {
-      if (!points.some(existing => samePoint(existing, vertex))) points.push(vertex)
-    }
-  }
-  return points
+  return uniquePoints(edges.flatMap(edge => [edge.start, edge.end]))
 }
 
 export function bridgeTruss(): PatternEdge[] {

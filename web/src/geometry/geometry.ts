@@ -28,3 +28,11 @@ export function samePoint(a: Point, b: Point): boolean {
     return BigInt(av.numerator) * BigInt(bv.denominator) === BigInt(bv.numerator) * BigInt(av.denominator)
   })
 }
+
+export function uniquePoints(points: Point[]): Point[] {
+  const unique: Point[] = []
+  for (const point of points) {
+    if (!unique.some(existing => samePoint(existing, point))) unique.push(point)
+  }
+  return unique
+}
