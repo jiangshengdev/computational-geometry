@@ -2,7 +2,7 @@ import { useRef, useState, type SVGProps, type PointerEvent as ReactPointerEvent
 import { formatPoint, samePoint, type Point } from '../../../../geometry/geometry'
 import { pairName, type Intersection, type Segment } from '../../geometry'
 import { hoverHighlights, type HoverHighlights, type HoverTarget } from './hover'
-import type { GeometryViewport } from './useGeometryViewport'
+import type { GeometryViewport } from '../../../../geometry/useGeometryViewport'
 
 interface InteractionScene {
   segments: Segment[]
@@ -36,7 +36,7 @@ export function useGeometryInteraction(
     if (label) return { kind: 'input', index: Number(label.dataset.input) }
     const matrix = svg.current!.getScreenCTM()!
     const screen = (point: Point) => new DOMPoint(...transform.apply([projection.px(point), projection.py(point)])).matrixTransform(matrix)
-    const scale = transform.k * Math.hypot(matrix.a, matrix.b)
+    const scale = Math.hypot(matrix.a, matrix.b)
     const pointInput = segments.find(segment => {
       if (!samePoint(segment.start, segment.end)) return false
       const center = screen(segment.start)

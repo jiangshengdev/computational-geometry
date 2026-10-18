@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from 'react'
 import type { Point } from '../../../../geometry/geometry'
 import type { Segment } from '../../geometry'
 import { nearestLabelPosition } from '../../../../geometry/labelPlacement'
-import type { GeometryViewport } from './useGeometryViewport'
+import type { GeometryViewport } from '../../../../geometry/useGeometryViewport'
 
 interface LabelScene {
   segments: Segment[]
@@ -29,13 +29,13 @@ export function useGeometryLabels(
         Number(b.dataset.priority ?? 0) - Number(a.dataset.priority ?? 0))
     const ticks = Array.from(element.querySelectorAll<SVGTextElement>('.tick'))
     // Depend on layout content, not on freshly allocated sweep/highlight objects.
-    // Teaching labels stay in screen pixels; geometry and order markers retain their transform.
+    // Labels inside the geometry layer compensate its scale; teaching labels are already in screen pixels.
     const content = [...labels, ...ticks].map(label => {
       const style = getComputedStyle(label)
       return [label.dataset.input, label.textContent, label.getAttribute('x'), label.getAttribute('y'), label.dataset.priority,
         style.textAnchor, style.fontFamily, style.fontSize, style.fontStyle, style.letterSpacing]
     })
-    const key = JSON.stringify([width, height, numbering, teachingLabels ? transform.toString() : null, segments, eventPoints, content])
+    const key = JSON.stringify([width, height, numbering, transform.toString(), segments, eventPoints, content])
     if (labelLayout.current?.key === key && labels.every((label, i) => label === labelLayout.current!.labels[i])) return
     // Input IDs precede event obstacles and have the same slots at every stop.
     // Retain only this layout, not a growing cache of visited teaching states.
@@ -63,36 +63,45 @@ export function useGeometryLabels(
       const { x, y, width, height } = tick.getBBox()
       return teachingLabels ? { x: transform.applyX(x), y: transform.applyY(y), width: width * transform.k, height: height * transform.k } : { x, y, width, height }
     })
-    const gap = numbering ? 3 : 6 // Includes the white outline and space between adjacent labels.
+    const unit = teachingLabels ? 1 : 1 / transform.k
+    const minX = teachingLabels ? 0 : transform.invertX(0)
+    const maxX = teachingLabels ? width : transform.invertX(width)
+    const minY = teachingLabels ? 0 : transform.invertY(0)
+    const maxY = teachingLabels ? height : transform.invertY(height)
+    const gap = (numbering ? 3 : 6) * unit // Includes the white outline and space between adjacent labels.
     const px = (point: Point) => teachingLabels ? transform.applyX(projection.px(point)) : projection.px(point)
     const py = (point: Point) => teachingLabels ? transform.applyY(projection.py(point)) : projection.py(point)
     const lines = segments.map(segment => ({ x1: px(segment.start), y1: py(segment.start), x2: px(segment.end), y2: py(segment.end) }))
     if (numbering) {
       // Numbering belongs to its anchor: reserve the dots, not unrelated event halos.
-      for (const point of numberedPoints) occupied.push({ x: point.x - 3, y: point.y - 3, width: 6, height: 6 })
+      for (const point of numberedPoints) occupied.push({ x: point.x - 3 * unit, y: point.y - 3 * unit, width: 6 * unit, height: 6 * unit })
     } else {
-      for (const point of points) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
+      for (const point of points) occupied.push({ x: px(point) - 10 * unit, y: py(point) - 10 * unit, width: 20 * unit, height: 20 * unit })
     }
     let eventsReserved = false
     labels.forEach((label, index) => {
       // Reserve every input's slot in input order, even while its label is not
       // relevant to this step. Events and hover details cannot displace IDs.
       if (!numbering && !eventsReserved && (!teachingLabels || label.dataset.input === undefined)) {
-        for (const point of eventPoints) occupied.push({ x: px(point) - 10, y: py(point) - 10, width: 20, height: 20 })
+        for (const point of eventPoints) occupied.push({ x: px(point) - 10 * unit, y: py(point) - 10 * unit, width: 20 * unit, height: 20 * unit })
         eventsReserved = true
       }
       const box = boxes[index]
+      if (!teachingLabels && (box.x + box.width < minX || box.x > maxX || box.y + box.height < minY || box.y > maxY)) {
+        label.setAttribute('visibility', 'hidden')
+        return
+      }
       let position = inputKey !== null && inputLayout.current?.key === inputKey && label.dataset.input !== undefined
         ? inputLayout.current.positions[index] : undefined
       if (!position) {
         // Short workspaces need space below and beside labels too: moving every
         // collision upward can put an otherwise readable label under the toolbar.
-        const lefts = [...new Set([box.x, gap, width - box.width - gap,
+        const lefts = [...new Set([box.x, minX + gap, maxX - box.width - gap,
           ...occupied.flatMap(other => [other.x - box.width - gap, other.x + other.width + gap])])]
-          .filter(left => left >= gap && left + box.width <= width - gap && (!numbering || left === box.x))
-        const tops = [...new Set([box.y, gap, height - box.height - gap,
+          .filter(left => left >= minX + gap && left + box.width <= maxX - gap && (!numbering || left === box.x))
+        const tops = [...new Set([box.y, minY + gap, maxY - box.height - gap,
           ...occupied.flatMap(other => [other.y - box.height - gap, other.y + other.height + gap])])]
-          .filter(top => top >= gap && top + box.height <= height - gap)
+          .filter(top => top >= minY + gap && top + box.height <= maxY - gap)
         position = nearestLabelPosition(lefts, tops, box, ({ left, top }) => !occupied.some(other =>
           left < other.x + other.width + gap && left + box.width + gap > other.x &&
           top < other.y + other.height + gap && top + box.height + gap > other.y) && (numbering || !lines.some(line => {
@@ -123,7 +132,7 @@ export function useGeometryLabels(
       label.setAttribute('transform', `translate(${left - box.x}, ${top - box.y})`)
       const leader = label.parentElement?.querySelector(':scope > .order-leader, :scope > .label-leader')
       if (leader) {
-        leader.setAttribute('x2', String(left - 4))
+        leader.setAttribute('x2', String(left - 4 * unit))
         leader.setAttribute('y2', String(top + box.height / 2))
         if (leader.classList.contains('label-leader')) leader.setAttribute('visibility', Math.hypot(left - box.x, top - box.y) > 24 ? 'visible' : 'hidden')
       }

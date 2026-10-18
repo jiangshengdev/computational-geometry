@@ -52,7 +52,7 @@ test('缩放平移保持等比例几何及选中精确详情', async ({ page }) 
   await expect(page).toHaveTitle('普通交叉 · 计算结果 · BO 结果查看器')
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   await page.getByRole('radio', { name: 'S0 × S1 · 点' }).click()
-  const input = page.getByRole('img', { name: '输入 S0，已选中' })
+  const input = page.getByRole('img', { name: '输入 S0，已选中' }).locator('line')
   const geometry = page.locator('g[data-layer="geometry"]')
   const initialTransform = (await geometry.getAttribute('transform'))!
   const before = (await input.boundingBox())!

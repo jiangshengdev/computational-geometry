@@ -1,0 +1,2 @@
+/* Geometry moves with the viewport; strokes remain measured in screen pixels. */
+.geometry-viewport :is(line, circle, path, polygon, polyline, text) { vector-effect: non-scaling-stroke; }

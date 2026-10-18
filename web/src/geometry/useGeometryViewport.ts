@@ -1,14 +1,15 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
-import { projectPoints } from '../../../../geometry/projection'
-import type { Point } from '../../../../geometry/geometry'
+import { projectPoints } from './projection'
+import type { Point } from './geometry'
+import './viewport.css'
 
 /** Owns the SVG viewport, D3 listeners, resize lifecycle and view controls. */
-export function useGeometryViewport(points: Point[], preserveViewKey?: boolean) {
+export function useGeometryViewport(points: Point[], { preserveViewKey, padding = 64 }: { preserveViewKey?: boolean; padding?: number } = {}) {
   const svg = useRef<SVGSVGElement>(null)
   const [{ width, height }, setSize] = useState({ width: 800, height: 460 })
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity)
-  const behavior = useRef(zoom<SVGSVGElement, unknown>().scaleExtent([0.25, 40]))
+  const behavior = useRef(zoom<SVGSVGElement, unknown>().scaleExtent([0.25, 40]).clickDistance(4))
   useLayoutEffect(() => {
     const element = svg.current!
     const validSize = ({ width, height }: DOMRect) =>
@@ -32,7 +33,7 @@ export function useGeometryViewport(points: Point[], preserveViewKey?: boolean) 
 
   return {
     svg, width, height, transform,
-    projection: projectPoints(points, width, height, 64),
+    projection: projectPoints(points, width, height, padding),
     zoomIn: () => select(svg.current!).call(behavior.current.scaleBy, 1.4),
     zoomOut: () => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4),
     reset: () => select(svg.current!).call(behavior.current.transform, zoomIdentity),

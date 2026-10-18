@@ -35,12 +35,12 @@
 .drawing svg text { paint-order: stroke fill; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
 .drawing svg[data-numbering] text:not(.tick):not(.order-number) { visibility: hidden; }
 .order-marker { pointer-events: none; fill: var(--foreground); }
-.order-number { font-size: 11px; font-weight: 700; }
+.order-number { font-size: calc(11px / var(--geometry-scale, 1)); font-weight: 700; }
 .order-leader { stroke: var(--foreground); stroke-width: 1; }
 .drawing .grid { stroke: #edf1f6; stroke-width: 1; }
-.tick { fill: #8a97a9; font-size: 11px; }
+.tick { fill: #8a97a9; font-size: calc(11px / var(--geometry-scale, 1)); }
 .input { stroke: #7b9fcf; stroke-width: 2; fill: #fff; }
-.input text { fill: #41618d; font-size: 12px; }
+.input text { fill: #41618d; font-size: calc(12px / var(--geometry-scale, 1)); }
 .input.selected { stroke: #245cb0; stroke-width: 4; }
 .input.selected text { fill: #163f7d; }
 .input[data-selected="true"] text { font-weight: 700; }
@@ -64,8 +64,8 @@ span.learning-hover-item { display: inline-block; }
 .event-height-guide { stroke: #7455a8; stroke-width: 1; stroke-opacity: .45; stroke-dasharray: 4 4; pointer-events: none; }
 .scheduled-point { fill: none; stroke: #de8e41; stroke-width: 2; stroke-dasharray: 3 3; }
 .current-point { fill: none; stroke: #7455a8; stroke-width: 3; }
-.sweep-overlay text { fill: #735020; font-size: 12px; }
-.intersection .result-label { fill: #735020; font-size: 12px; }
+.sweep-overlay text { fill: #735020; font-size: calc(12px / var(--geometry-scale, 1)); }
+.intersection .result-label { fill: #735020; font-size: calc(12px / var(--geometry-scale, 1)); }
 .learning-hover-item[data-checked="true"] { outline: 2px solid oklch(0.205 0 0); border-radius: 4px; }
 .drawing [data-teaching="true"] .input[data-checked="true"] > line { stroke: oklch(0.205 0 0); stroke-width: 6; }
 .learning-hover-item[data-highlighted="true"] { background: #d3f3ed; color: #075b50; outline: 2px solid #078574; border-radius: 4px; }

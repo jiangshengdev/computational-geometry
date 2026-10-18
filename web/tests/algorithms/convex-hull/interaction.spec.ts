@@ -68,6 +68,51 @@ test('fractional vertices locate exact coordinates in both directions', async ({
   await expect(fraction).toHaveAttribute('aria-pressed', 'false')
 })
 
+test('zoom, pan and reset preserve geometry and point selection', async ({ page }) => {
+  await page.setViewportSize({ width: 1360, height: 900 })
+  await page.goto('/convex-hull/cases/duplicate-coordinates')
+  const vertices = page.getByRole('region', { name: 'Hull vertices', exact: true }).getByRole('listitem')
+  await expect(vertices).toHaveCount(4)
+  const plot = page.getByRole('group', { name: 'Convex hull plot', exact: true })
+  const layer = plot.locator('[data-layer="geometry"]')
+  const origin = plot.getByRole('button', { name: 'Point (0, 0)', exact: true })
+  const interior = plot.getByRole('button', { name: 'Point (2, 2)', exact: true })
+  const initial = (await layer.getAttribute('transform'))!
+  const before = await plot.locator('polygon').boundingBox()
+  await origin.click()
+  await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
+  await expect(layer).not.toHaveAttribute('transform', initial)
+  const zoomed = (await layer.getAttribute('transform'))!
+  const after = (await plot.locator('polygon').boundingBox())!
+  expect(after.width).toBeGreaterThan(before!.width)
+  expect(after.width / before!.width).toBeCloseTo(after.height / before!.height, 5)
+  await expect(origin).toHaveAttribute('aria-pressed', 'true')
+  await expect(vertices.first()).toHaveAttribute('data-selected', 'true')
+  await interior.click()
+  await expect(interior).toHaveAttribute('aria-pressed', 'true')
+  const center = (await interior.boundingBox())!
+  await page.mouse.move(center.x + center.width / 2, center.y + center.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(center.x + center.width / 2 + 35, center.y + center.height / 2 + 20, { steps: 5 })
+  await page.mouse.up()
+  await expect(layer).not.toHaveAttribute('transform', zoomed)
+  const panned = (await plot.locator('polygon').boundingBox())!
+  expect(panned.x - after.x).toBeCloseTo(35, 0)
+  expect(panned.y - after.y).toBeCloseTo(20, 0)
+  await expect(origin).toHaveAttribute('aria-pressed', 'false')
+  await expect(interior).toHaveAttribute('aria-pressed', 'true')
+  await interior.click()
+  await expect(interior).toHaveAttribute('aria-pressed', 'false')
+  await interior.click()
+  await expect(interior).toHaveAttribute('aria-pressed', 'true')
+  await page.getByRole('button', { name: 'Zoom out', exact: true }).click()
+  expect((await plot.locator('polygon').boundingBox())!.width).toBeCloseTo(before!.width, 5)
+  await page.getByRole('button', { name: 'Reset view', exact: true }).click()
+  await expect(layer).toHaveAttribute('transform', initial)
+  await expect(interior).toHaveAttribute('aria-pressed', 'true')
+  await expect(vertices).toHaveText(['V0 (0, 0)', 'V1 (4, 0)', 'V2 (4, 4)', 'V3 (0, 4)'])
+})
+
 test('canvas locates a point inside the long input list without scrolling the page', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 900 })
   const pending = page.waitForResponse(response => response.url().endsWith('/api/convex-hull') && response.ok())

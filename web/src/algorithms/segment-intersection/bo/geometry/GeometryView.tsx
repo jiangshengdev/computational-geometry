@@ -1,13 +1,14 @@
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Info, Minus, Plus } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Info } from 'lucide-react'
 import { formatPoint, formatRational, samePoint, type Point } from '../../../../geometry/geometry'
 import { formatGeometry, pairName, isVertical, type Intersection, type Segment } from '../../geometry'
-import { Button, buttonVariants } from '@heroui/react/button'
-import { ButtonGroup } from '@heroui/react/button-group'
+import { buttonVariants } from '@heroui/react/button'
 import { Card } from '@heroui/react/card'
 import { Tooltip } from '@heroui/react/tooltip'
 import type { HoverHighlights, HoverTarget } from './hover'
 import type { EventSide } from '../learning/eventSide'
-import { useGeometryViewport } from './useGeometryViewport'
+import { useGeometryViewport } from '../../../../geometry/useGeometryViewport'
+import { GeometryViewControls } from '../../../../geometry/GeometryViewControls'
+import type { CSSProperties } from 'react'
 import { useGeometryLabels } from './useGeometryLabels'
 import { useGeometryInteraction } from './useGeometryInteraction'
 import { Trans, useLingui } from '@lingui/react/macro'
@@ -28,8 +29,10 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
   const eventPoints = sweep ? [...points, ...sweep.discovered.map(d => d.point),
     ...results.flatMap(r => r.geometry.type === 'point' ? [r.geometry.point] : []),
     ...(sweep.current ? [sweep.current] : [])] : []
-  const viewport = useGeometryViewport(points, preserveViewKey)
+  const viewport = useGeometryViewport(points, { preserveViewKey })
   const { svg, width, height, transform, projection } = viewport
+  const k = transform.k
+  const scaledStyle = { '--geometry-scale': k } as CSSProperties
   const { pinned, inspecting, highlights, handlers } = useGeometryInteraction(viewport, {
     segments, results, eventPoints, teaching: !!sweep, step: sweep?.step,
     highlights: suppliedHighlights, hoverTarget, onHover,
@@ -85,11 +88,7 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
           </div>
         </Tooltip.Content>
       </Tooltip>
-    </div><ButtonGroup variant="tertiary" size="sm" aria-label={t`Canvas view controls`}>
-      <Button isIconOnly onPress={viewport.zoomIn} aria-label={t`Zoom in`}><Plus size={16} aria-hidden="true" /></Button>
-      <Button isIconOnly onPress={viewport.zoomOut} aria-label={t`Zoom out`}><ButtonGroup.Separator /><Minus size={16} aria-hidden="true" /></Button>
-      <Button onPress={viewport.reset}><ButtonGroup.Separator /><Trans>Reset view</Trans></Button>
-    </ButtonGroup></Card.Header>
+    </div><GeometryViewControls {...viewport} /></Card.Header>
     <Card.Content className="drawing-surface p-0">
     {sweep && <div className="sweep-side-strip">
       {sweep.side && sideX !== null && sideX >= 0 && sideX <= width &&
@@ -103,53 +102,53 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
       style={{ bottom: height - Math.max(18, Math.min(height - 18, sideY)) }}>
       <span>Δ</span>{sweep.side === 'left' ? <ArrowDown className="sweep-side-arrow" aria-hidden="true" /> : <ArrowUp className="sweep-side-arrow" aria-hidden="true" />}
     </span>}
-    <svg ref={svg} viewBox={`0 0 ${width} ${height}`} aria-label={t`Input and intersection plot`} role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
+    <svg ref={svg} className="geometry-viewport" viewBox={`0 0 ${width} ${height}`} aria-label={t`Input and intersection plot`} role="img" data-teaching={!!sweep} data-numbering={sweep?.numbering ?? undefined}
       tabIndex={sweep ? 0 : undefined}
       {...handlers}>
       {projection && <>
-      <g data-layer="grid" transform={transform.toString()}>
+      <g data-layer="grid" transform={transform.toString()} style={scaledStyle}>
         {projection.x.ticks(Math.max(1, Math.floor((projection.x(projection.maxX) - projection.x(projection.minX)) / 90))).map(t => <g key={`x${t}`}><line className="grid" x1={projection.x(t)} x2={projection.x(t)} y1={20} y2={height - 35} /><text className="tick" x={projection.x(t)} y={height - 15}>{t}</text></g>)}
         {projection.y.ticks(Math.max(1, Math.min(6, Math.floor(Math.abs(projection.y.range()[1] - projection.y.range()[0]) / 40)))).map(t => <g key={`y${t}`}><line className="grid" x1={20} x2={width - 20} y1={projection.y(t)} y2={projection.y(t)} /><text className="tick" x={12} y={projection.y(t) - 5}>{t}</text></g>)}
       </g>
       {heightSideVisible && <line className="event-height-guide" aria-label={t`Current event horizontal guide`} role="img"
         x1={sideX} x2={Math.max(sideX, width - 36)} y1={sideY} y2={sideY} />}
-      <g data-layer="geometry" transform={transform.toString()}>
+      <g data-layer="geometry" transform={transform.toString()} style={scaledStyle}>
         {ordered.map(({ s, index }) => {
           const active = selected?.segments.includes(index) ?? false
           const highlighted = highlights ? highlights.inputs.includes(index) : active
           return <g key={index} role="img" aria-label={active ? t`Input S${index}, selected` : t`Input S${index}`} className={`input ${highlighted ? 'selected' : ''}`} data-selected={active} data-highlighted={highlighted} data-active={sweep?.active.includes(index)} data-participant={sweep?.participants.includes(index)} data-checked={sweep?.checked.includes(index)}>
             {samePoint(s.start, s.end)
-              ? <path d={`M${projection.px(s.start)},${projection.py(s.start) - 11} l11,11 l-11,11 l-11,-11 Z`} />
+              ? <path d={`M${projection.px(s.start)},${projection.py(s.start) - 11 / k} l${11 / k},${11 / k} l${-11 / k},${11 / k} l${-11 / k},${-11 / k} Z`} />
               : <line x1={projection.px(s.start)} y1={projection.py(s.start)} x2={projection.px(s.end)} y2={projection.py(s.end)} />}
-            {!sweep && <text data-input={index} x={projection.px(s.start) + 9} y={projection.py(s.start) - 10}>S{index}</text>}
+            {!sweep && <text data-input={index} x={projection.px(s.start) + 9 / k} y={projection.py(s.start) - 10 / k}>S{index}</text>}
           </g>
         })}
         {sweep && <g className="sweep-overlay">
           <line role="img" aria-label={sweep.current ? t({ id: 'geometry.sweepLine', message: `Sweep line x = ${formatRational(sweep.current.x)}` }) : t`Sweep line not started`}
             className="sweep-line" x1={sweep.current ? projection.px(sweep.current) : projection.x(projection.minX) - 20} x2={sweep.current ? projection.px(sweep.current) : projection.x(projection.minX) - 20} y1={20} y2={height - 35} />
           {sweep.discovered.map(({ point, label }) => <g role="img" aria-label={t`Discovered ${label}`} key={formatPoint(point)}>
-            <circle className="scheduled-point" cx={projection.px(point)} cy={projection.py(point)} r={8} />
+            <circle className="scheduled-point" cx={projection.px(point)} cy={projection.py(point)} r={8 / k} />
           </g>)}
           {sweep.current && <g role="img" aria-label={t({ id: 'geometry.currentEvent', message: `Current event ${sweep.labelPoint(sweep.current)}` })}>
-            <circle className="current-point" cx={projection.px(sweep.current)} cy={projection.py(sweep.current)} r={10} />
+            <circle className="current-point" cx={projection.px(sweep.current)} cy={projection.py(sweep.current)} r={10 / k} />
           </g>}
         </g>}
         {resultOrder.map(result => {
           const g = result.geometry, active = result === selected
           const highlighted = highlights ? highlights.pairs.includes(pairName(result)) : active
           return <g key={pairName(result)} role="img" aria-label={active ? t({ id: 'geometry.selectedIntersection', message: `Intersection ${pairName(result)}, selected` }) : t({ id: 'geometry.intersection', message: `Intersection ${pairName(result)}` })} className={`intersection ${highlighted ? 'selected' : ''}`} data-highlighted={highlighted}>
-            {g.type === 'point' ? <circle cx={projection.px(g.point)} cy={projection.py(g.point)} r={highlighted ? 7 : 5} /> : <>
+            {g.type === 'point' ? <circle cx={projection.px(g.point)} cy={projection.py(g.point)} r={(highlighted ? 7 : 5) / k} /> : <>
               <line x1={projection.px(g.start)} y1={projection.py(g.start)} x2={projection.px(g.end)} y2={projection.py(g.end)} />
-              <circle cx={projection.px(g.start)} cy={projection.py(g.start)} r={5} /><circle cx={projection.px(g.end)} cy={projection.py(g.end)} r={5} />
+              <circle cx={projection.px(g.start)} cy={projection.py(g.start)} r={5 / k} /><circle cx={projection.px(g.end)} cy={projection.py(g.end)} r={5 / k} />
             </>}
           </g>
         })}
         {sweep && highlights?.points.filter(p => eventPoints.some(visible => samePoint(p, visible))).map(p =>
-          <circle key={formatPoint(p)} className="hover-event" cx={projection.px(p)} cy={projection.py(p)} r={15} />)}
+          <circle key={formatPoint(p)} className="hover-event" cx={projection.px(p)} cy={projection.py(p)} r={15 / k} />)}
         {numberedPoints.map(point => <g key={point.label} className="order-marker" role="img" aria-label={point.name}>
-          <line className="order-leader" x1={point.x} y1={point.y} x2={point.x + 8} y2={point.y - 12} />
-          <circle cx={point.x} cy={point.y} r={3} />
-          <text className="order-number" x={point.x + 12} y={point.y - 12}>{point.label}</text>
+          <line className="order-leader" x1={point.x} y1={point.y} x2={point.x + 8 / k} y2={point.y - 12 / k} />
+          <circle cx={point.x} cy={point.y} r={3 / k} />
+          <text className="order-number" x={point.x + 12 / k} y={point.y - 12 / k}>{point.label}</text>
         </g>)}
       </g>
       {sweep && <g className="teaching-labels">

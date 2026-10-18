@@ -12,6 +12,7 @@ import { PageHeading } from '../../app/PageHeading'
 import type { Point } from '../../geometry/geometry'
 import { hullCases, type HullCase } from './cases'
 import { ConvexHullPlot } from './ConvexHullPlot'
+import { ConvexHullView } from './ConvexHullView'
 import { ConvexHullCoordinates } from './ConvexHullCoordinates'
 import { useHullInteraction } from './useHullInteraction'
 import { Modal } from '@heroui/react/modal'
@@ -85,7 +86,7 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
       : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
         : null}
     <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
-      <div className="drawing"><Card><Card.Content className="flex min-h-0 flex-1 flex-col"><div className="drawing-surface flex flex-col"><ConvexHullPlot points={preset.points} vertices={computation.status === 'ready' ? computation.vertices : []} interaction={interaction} /></div></Card.Content></Card></div>
+      <ConvexHullView points={preset.points} vertices={computation.status === 'ready' ? computation.vertices : []} interaction={interaction} />
         <ConvexHullCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
         {computation.status === 'ready' && <ConvexHullCoordinates title={t`Hull vertices`} points={computation.vertices} prefix="V" interaction={interaction} />}
     </div>
