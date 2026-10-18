@@ -1,9 +1,8 @@
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Info } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from 'lucide-react'
 import { formatPoint, formatRational, samePoint, type Point } from '../../../../geometry/geometry'
 import { formatGeometry, pairName, isVertical, type Intersection, type Segment } from '../../geometry'
-import { buttonVariants } from '@heroui/react/button'
 import { Card } from '@heroui/react/card'
-import { Tooltip } from '@heroui/react/tooltip'
+import { GeometryInfo } from '../../../../geometry/GeometryInfo'
 import type { HoverHighlights, HoverTarget } from './hover'
 import type { EventSide } from '../learning/eventSide'
 import { useGeometryViewport } from '../../../../geometry/useGeometryViewport'
@@ -79,15 +78,11 @@ export function GeometryView({ segments, results, selected, sweep, highlights: s
 
   return <section className="drawing" aria-label={t`Geometry view`}><Card>
     <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1"><Card.Title render={props => <h2 {...props} />}><Trans>Original coordinate plane · Equal scale</Trans></Card.Title>
-      <Tooltip>
-        <Tooltip.Trigger<'button'> render={props => <button {...props} type="button" />} className={buttonVariants({ isIconOnly: true, variant: 'ghost', size: 'sm', className: 'inline-flex' })} aria-label={t`Legend and controls`}><Info size={16} aria-hidden="true" /></Tooltip.Trigger>
-        <Tooltip.Content placement="bottom" className="max-w-xs">
-          <div className="flex flex-col gap-1 text-sm"><span><Trans>Blue: inputs</Trans></span><span><Trans>Orange: intersections</Trans></span>
+      <GeometryInfo>
+          <span><Trans>Blue: inputs</Trans></span><span><Trans>Orange: intersections</Trans></span>
             {sweep ? <><span><Trans>Bold: active segments</Trans></span><span><Trans>Dashed circles: pending intersections</Trans></span><span><Trans>Purple: sweep line and current event</Trans></span><span><Trans>Sweep direction: left to right</Trans></span></> : <span><Trans>Diamonds: zero-length inputs</Trans></span>}
             <span><Trans>Use buttons to zoom · Drag to pan</Trans></span>
-          </div>
-        </Tooltip.Content>
-      </Tooltip>
+      </GeometryInfo>
     </div><GeometryViewControls {...viewport} /></Card.Header>
     <Card.Content className="drawing-surface p-0">
     {sweep && <div className="sweep-side-strip">
