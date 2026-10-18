@@ -1,3 +1,5 @@
+:root:has(.learning-view[data-zen-mode="true"]) { --app-navigation-height: 0px; }
+:root:has(.learning-view[data-zen-mode="true"]) .app-header { display: none; }
 main { max-width: 1380px; padding: 40px; margin-block: 0; margin-left: max(0px, round(down, calc((100% - 1380px) / 2), 1px)); margin-right: auto; }
 @media (max-width: 850px) {
   main { padding: 24px 16px; }
