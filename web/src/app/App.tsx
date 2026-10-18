@@ -4,7 +4,7 @@ import { CaseList, CasePage, RouteError } from '../algorithms/segment-intersecti
 import { DocumentationLink } from './DocumentationLink'
 import { LanguageSelect } from './LanguageProvider'
 import { AlgorithmHome } from './AlgorithmHome'
-import { ConvexHullPage } from '../algorithms/convex-hull/ConvexHullPage'
+import { ConvexHullCasePage, ConvexHullPage } from '../algorithms/convex-hull/ConvexHullPage'
 import { AppLink } from './AppLink'
 import { DocumentTitle } from './DocumentTitle'
 import { Alert } from '@heroui/react/alert'
@@ -29,6 +29,7 @@ export default function App() {
       <Route path="/bo/cases/:caseId/*" element={<CasePage unknownPath />} />
       <Route path="/bo/*" element={<RouteError message={t`Unknown page path.`} />} />
       <Route path="/convex-hull" element={<ConvexHullPage />} />
+      <Route path="/convex-hull/cases/:caseId" element={<ConvexHullCasePage />} />
       <Route path="*" element={<>
         <DocumentTitle title={`${t`Invalid link`} · ${t`Computational Geometry`}`} />
         <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Invalid link`}</Alert.Title><Alert.Description>{t`Unknown page path.`}</Alert.Description></Alert.Content></Alert>

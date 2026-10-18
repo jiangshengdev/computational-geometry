@@ -4,7 +4,7 @@
 
 教学链接可携带步骤，例如 `/bo/cases/crossing/learn?step=2`；刷新和分享可恢复位置，步骤更新替换当前浏览器历史项。目标步骤尚未生成时等待真实轨迹，非法或越界步骤显示明确错误。旧 `/cases/:caseId` 和 `/cases/:caseId/learn` 不再提供 BO 功能，也不重定向。
 
-`/convex-hull` 是明确标注“尚未实现”的凸包占位页，不提供计算或计算 API。算法按“几何问题 → 具体算法”组织：前后端的 BO 专属实现分别位于 `web/src/algorithms/segment-intersection/bo/` 和 `src/algorithms/segment_intersection/bo/`；线段相交的公共类型与案例位于问题目录。凸包占位页位于 `web/src/algorithms/convex-hull/`，后端 Andrew 单调链实现位于 `src/algorithms/convex_hull/andrew/`。前端算法相关测试镜像归入 `web/tests/algorithms/segment-intersection/`，BO 教学与计算页面测试位于其 `bo/` 子目录。应用入口负责路由组合，基础几何与通用应用组件继续共享。
+`/convex-hull` 提供固定点集案例列表，详情页位于 `/convex-hull/cases/:caseId`，直接访问或刷新会自动调用 Rust Andrew 算法，展示输入点、凸包和精确坐标。点集只读，不提供编辑、导入或教学回放。算法按“几何问题 → 具体算法”组织：前后端的 BO 专属实现分别位于 `web/src/algorithms/segment-intersection/bo/` 和 `src/algorithms/segment_intersection/bo/`；线段相交的公共类型与案例位于问题目录。凸包页面位于 `web/src/algorithms/convex-hull/`，后端 Andrew 单调链实现位于 `src/algorithms/convex_hull/andrew/`。前端算法测试镜像实现目录。应用入口负责路由组合，基础几何与通用应用组件继续共享。
 
 ## 本地使用
 
@@ -61,6 +61,16 @@ GitHub 接入后的首次 Preview 部署需检查：案例页直接访问和刷�
 成功返回 `{"intersections": [...]}`。每个成员的 `segments: [i, j]` 是原始输入顺序的零基索引；`geometry` 为 `{"type":"point","point":...}` 或 `{"type":"overlap","start":...,"end":...}`，坐标采用上述字符串有理数。区间端点方向与结果顺序不属于数学契约。空集合、单条输入及无交点返回成功空数组。
 
 非法结构、整数或零分母返回 HTTP 400 和 `{"error":"..."}`；计算任务失败返回 HTTP 500。页面将请求失败与成功空结果分别显示，切换案例会取消旧请求并丢弃其迟到结果。
+
+### 凸包 HTTP 契约
+
+`POST /api/convex-hull`，`Content-Type: application/json`，接受完整点集，不接受案例 ID：
+
+```json
+{"points":[{"x":{"numerator":"3","denominator":"2"},"y":{"numerator":"0","denominator":"1"}}]}
+```
+
+成功返回 `{"vertices":[...]}`，顶点使用同样的精确坐标结构。接口共享上述整数校验和错误格式；`points` 必须提供且为数组，非法结构、非法整数和零分母返回 HTTP 400。返回坐标规范化，合并重复位置，排除内部点和边上共线中间点。非退化结果从字典序最小点开始逆时针排列，末尾不重复起点。空集返回 `{"vertices":[]}`，单点返回该点，两点及全部共线返回有序的两个极端端点。页面保留重复输入的独立列表项，输入条目数与返回顶点数分别计数，绘图近似不影响精确列表。
 
 ## 验证
 

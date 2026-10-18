@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-test('算法首页可进入 BO 与凸包占位，凸包不发起计算', async ({ page }) => {
+test('算法首页可进入 BO 与凸包案例列表，列表不发起计算', async ({ page }) => {
   const errors: string[] = []
   const requests: string[] = []
   page.on('pageerror', error => errors.push(error.message))
@@ -27,14 +27,14 @@ test('算法首页可进入 BO 与凸包占位，凸包不发起计算', async (
   await page.keyboard.press('Enter')
   await expect(page).toHaveURL('/convex-hull')
   await expect(page.getByRole('heading', { name: '凸包', exact: true })).toBeVisible()
-  await expect(page.getByText('尚未实现', { exact: true })).toBeVisible()
+  await expect(page.getByRole('article', { name: '三角形与内部点', exact: true })).toBeVisible()
   await page.reload()
   await expect(page).toHaveTitle('凸包 · 计算几何')
-  await expect(page.getByText('尚未实现', { exact: true })).toBeVisible()
+  await expect(page.getByRole('article', { name: '重复坐标', exact: true })).toBeVisible()
   expect(requests).toEqual([])
   await page.getByRole('button', { name: 'Language / 语言' }).click()
   await page.getByRole('option', { name: 'English', exact: true }).click()
-  await expect(page.getByText('Not implemented yet', { exact: true })).toBeVisible()
+  await expect(page.getByRole('article', { name: 'Triangle and interior point', exact: true })).toBeVisible()
   await expect(page.locator('vite-error-overlay')).toHaveCount(0)
   expect(errors).toEqual([])
 })

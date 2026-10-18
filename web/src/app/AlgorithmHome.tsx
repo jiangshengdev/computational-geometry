@@ -46,7 +46,7 @@ export function AlgorithmHome() {
     <PageHeading title={t`Computational Geometry`} description={t`Choose an algorithm`} />
     <div className="algorithm-list grid gap-4">
       <AlgorithmEntry kind="bo" title="Bentley–Ottmann" description={t`Exact segment intersections and step-by-step learning.`} to="/bo" />
-      <AlgorithmEntry kind="convex-hull" title={t`Convex hull`} description={t`Not implemented yet`} to="/convex-hull" />
+      <AlgorithmEntry kind="convex-hull" title={t`Convex hull`} description={t`Fixed point sets and exact convex hull results.`} to="/convex-hull" />
     </div>
   </section>
 }

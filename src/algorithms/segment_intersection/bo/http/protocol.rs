@@ -2,8 +2,9 @@
 use super::super::sweep::SweepOutcome;
 use super::super::teaching::{Execution, ExecutionContext, SweepTrace, Variable};
 use crate::geometry::PointRepresentation;
-use crate::{Geometry, Intersection, Point, Rational, Segment};
-use axum::{Json, http::StatusCode};
+pub(super) use crate::http::protocol::{ApiError, ErrorBody, bad_request};
+use crate::http::protocol::{PointDto, RationalDto};
+use crate::{Geometry, Intersection, Segment};
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize)]
@@ -17,18 +18,6 @@ pub(super) struct Request {
 pub(super) struct SegmentDto {
     start: PointDto,
     end: PointDto,
-}
-
-#[derive(Deserialize, Serialize)]
-struct PointDto {
-    x: RationalDto,
-    y: RationalDto,
-}
-
-#[derive(Deserialize, Serialize)]
-struct RationalDto {
-    numerator: String,
-    denominator: String,
 }
 
 #[derive(Serialize)]
@@ -330,71 +319,12 @@ enum GeometryDto {
     Overlap { start: PointDto, end: PointDto },
 }
 
-#[derive(Serialize)]
-pub(super) struct ErrorBody {
-    pub(super) error: String,
-}
-
-pub(super) type ApiError = (StatusCode, Json<ErrorBody>);
-
-pub(super) fn bad_request(message: impl Into<String>) -> ApiError {
-    (
-        StatusCode::BAD_REQUEST,
-        Json(ErrorBody {
-            error: message.into(),
-        }),
-    )
-}
-
-fn is_decimal_integer(value: &str) -> bool {
-    let digits = value.strip_prefix(['-', '+']).unwrap_or(value);
-    !digits.is_empty() && digits.bytes().all(|byte| byte.is_ascii_digit())
-}
-
-impl RationalDto {
-    fn into_rational(self) -> Result<Rational, ApiError> {
-        if !is_decimal_integer(&self.numerator) || !is_decimal_integer(&self.denominator) {
-            return Err(bad_request("坐标的分子和分母必须是十进制整数字符串"));
-        }
-        format!("{}/{}", self.numerator, self.denominator)
-            .parse()
-            .map_err(|_| bad_request("坐标分母不得为零"))
-    }
-}
-
-impl PointDto {
-    fn into_point(self) -> Result<Point, ApiError> {
-        Ok(Point {
-            x: self.x.into_rational()?,
-            y: self.y.into_rational()?,
-        })
-    }
-}
-
 impl SegmentDto {
     pub(super) fn into_segment(self) -> Result<Segment, ApiError> {
         Ok(Segment {
             start: self.start.into_point()?,
             end: self.end.into_point()?,
         })
-    }
-}
-
-impl From<Rational> for RationalDto {
-    fn from(value: Rational) -> Self {
-        Self {
-            numerator: value.numer().to_string(),
-            denominator: value.denom().to_string(),
-        }
-    }
-}
-
-impl From<Point> for PointDto {
-    fn from(point: Point) -> Self {
-        Self {
-            x: point.x.into(),
-            y: point.y.into(),
-        }
     }
 }
 
