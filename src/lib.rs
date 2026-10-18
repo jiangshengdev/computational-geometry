@@ -1,4 +1,7 @@
-//! Exact planar geometry: convex hulls and closed-segment intersections.
+//! Exact planar geometry: polygon triangulation, convex hulls and intersections.
+//!
+//! [triangulate] validates a simple polygon boundary and returns triangles as
+//! original vertex indices, using monotone partition and stack triangulation.
 //!
 //! [convex_hull] computes an Andrew monotone-chain hull using the shared
 //! [Point] and [Rational] types. See its documentation for ordering, collinear

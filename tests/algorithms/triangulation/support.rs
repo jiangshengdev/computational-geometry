@@ -16,6 +16,21 @@ pub fn polygon(coordinates: &[(i64, i64)]) -> Vec<Point> {
     coordinates.iter().map(|&(x, y)| point(x, y)).collect()
 }
 
+pub fn assert_boundary_representations(boundary: &[Point]) {
+    for shift in 0..boundary.len() {
+        for reverse in [false, true] {
+            let mut input = boundary.to_vec();
+            input.rotate_left(shift);
+            if reverse {
+                input.reverse();
+            }
+            assert_triangulation(&input);
+            input.push(input[0].clone());
+            assert_triangulation(&input);
+        }
+    }
+}
+
 fn cross(a: &Point, b: &Point, c: &Point) -> Rational {
     (&b.x - &a.x) * (&c.y - &a.y) - (&b.y - &a.y) * (&c.x - &a.x)
 }

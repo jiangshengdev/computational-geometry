@@ -1,4 +1,13 @@
 //! Exact simple-polygon triangulation by monotone partition and stack sweeps.
+//!
+//! A determinant-one rational shear resolves equal event heights without
+//! changing orientation, area, incidence, or collinearity. Consecutive straight
+//! boundary vertices remain in the sweep and in the triangulation stack.
+//! Validation uses a decision sweep rather than enumerating intersections;
+//! both sweeps use deterministic AVL trees. The rotation system visits each
+//! half-edge once after angular sorting, and each monotone face uses a linear
+//! two-chain merge and stack. Total cost is O(n log n) exact operations and O(n)
+//! storage; arbitrary-precision arithmetic and copying costs depend on bit size.
 
 mod monotone;
 mod status;
@@ -17,7 +26,6 @@ pub enum TriangulationError {
     RepeatedVertex,
     ZeroArea,
     SelfIntersection,
-    UnsupportedDegeneracy,
 }
 
 impl fmt::Display for TriangulationError {
@@ -27,9 +35,6 @@ impl fmt::Display for TriangulationError {
             Self::RepeatedVertex => "polygon vertices must be distinct",
             Self::ZeroArea => "polygon area must be nonzero",
             Self::SelfIntersection => "polygon boundary must be simple",
-            Self::UnsupportedDegeneracy => {
-                "equal-height or consecutive collinear vertices are not supported"
-            }
         })
     }
 }
@@ -40,9 +45,15 @@ impl std::error::Error for TriangulationError {}
 /// indices into the original slice. Either winding and any starting vertex are
 /// accepted; one optional terminal copy of the first vertex is ignored.
 ///
-/// This general-position implementation rejects equal-height vertices and
-/// consecutive collinear vertices. Other repeated vertices, self-intersections,
-/// boundary contacts and zero area are errors. No input coordinate is changed.
+/// Horizontal edges, equal-height vertices, and consecutive collinear vertices
+/// are supported. Every retained input vertex participates in the n - 2 strictly
+/// positive-area triangles; their interiors are disjoint and their union is the
+/// polygon. The optional closing vertex uses the first vertex's index.
+///
+/// Fewer than three vertices, other repeated vertices, self-intersections,
+/// nonadjacent boundary contacts, backtracking/overlapping edges, and zero area
+/// are errors. If several defects coexist, error precedence is unspecified.
+/// No input coordinate is changed, and no additional vertex is introduced.
 ///
 /// Validation, monotone partition, and triangulation use O(n log n) exact
 /// comparisons/arithmetic operations and O(n) storage, including invalid-input
@@ -59,13 +70,13 @@ pub fn triangulate(input: &[Point]) -> Result<Vec<[usize; 3]>, TriangulationErro
     Ok(result)
 }
 
-struct Boundary<'a> {
-    points: Vec<&'a Point>,
+struct Boundary {
+    points: Vec<Point>,
     original: Vec<usize>,
     events: Vec<usize>,
 }
 
-impl Boundary<'_> {
+impl Boundary {
     fn next(&self, vertex: usize) -> usize {
         (vertex + 1) % self.points.len()
     }
@@ -78,12 +89,12 @@ impl Boundary<'_> {
     }
 
     fn turn(&self, a: usize, b: usize, c: usize) -> Rational {
-        orientation(self.points[a], self.points[b], self.points[c])
+        orientation(&self.points[a], &self.points[b], &self.points[c])
     }
 
     fn edge_x(&self, edge: usize, y: &Rational) -> Rational {
-        let a = self.points[edge];
-        let b = self.points[self.next(edge)];
+        let a = &self.points[edge];
+        let b = &self.points[self.next(edge)];
         &a.x + (y - &a.y) * (&b.x - &a.x) / (&b.y - &a.y)
     }
 
@@ -95,8 +106,8 @@ impl Boundary<'_> {
             .cmp(&self.edge_x(b, y))
             .then_with(|| {
                 let slope = |edge| {
-                    let a = self.points[edge];
-                    let b = self.points[self.next(edge)];
+                    let a = &self.points[edge];
+                    let b = &self.points[self.next(edge)];
                     (&b.x - &a.x) / (&b.y - &a.y)
                 };
                 let order = slope(a).cmp(&slope(b));

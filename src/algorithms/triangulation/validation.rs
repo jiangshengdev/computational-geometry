@@ -3,7 +3,7 @@ use std::collections::BTreeSet;
 use super::status::Status;
 use super::{Boundary, EventSide, Point, TriangulationError, zero};
 
-pub(super) fn normalize(input: &[Point]) -> Result<Boundary<'_>, TriangulationError> {
+pub(super) fn normalize(input: &[Point]) -> Result<Boundary, TriangulationError> {
     let count = if input.len() > 1 && input.first() == input.last() {
         input.len() - 1
     } else {
@@ -13,23 +13,19 @@ pub(super) fn normalize(input: &[Point]) -> Result<Boundary<'_>, TriangulationEr
         return Err(TriangulationError::TooFewVertices);
     }
     let mut distinct = BTreeSet::new();
-    let mut heights = BTreeSet::new();
     for point in &input[..count] {
         if !distinct.insert(point) {
             return Err(TriangulationError::RepeatedVertex);
         }
-        if !heights.insert(&point.y) {
-            return Err(TriangulationError::UnsupportedDegeneracy);
-        }
     }
     let mut boundary = Boundary {
-        points: input[..count].iter().collect(),
+        points: input[..count].to_vec(),
         original: (0..count).collect(),
         events: (0..count).collect(),
     };
     let area = (0..count).fold(zero(), |area, i| {
-        let a = boundary.points[i];
-        let b = boundary.points[boundary.next(i)];
+        let a = &boundary.points[i];
+        let b = &boundary.points[boundary.next(i)];
         area + &a.x * &b.y - &a.y * &b.x
     });
     if area == zero() {
@@ -41,19 +37,65 @@ pub(super) fn normalize(input: &[Point]) -> Result<Boundary<'_>, TriangulationEr
     }
     for i in 0..count {
         if boundary.turn(boundary.prev(i), i, boundary.next(i)) == zero() {
-            return Err(TriangulationError::UnsupportedDegeneracy);
+            let prev = &boundary.points[boundary.prev(i)];
+            let point = &boundary.points[i];
+            let next = &boundary.points[boundary.next(i)];
+            if &point.x < (&prev.x).min(&next.x)
+                || &point.x > (&prev.x).max(&next.x)
+                || &point.y < (&prev.y).min(&next.y)
+                || &point.y > (&prev.y).max(&next.y)
+            {
+                return Err(TriangulationError::SelfIntersection);
+            }
         }
     }
+    separate_heights(&mut boundary.points);
     boundary
         .events
         .sort_unstable_by(|&a, &b| boundary.points[b].y.cmp(&boundary.points[a].y));
     Ok(boundary)
 }
 
+/// Choose an exact shear y' = y + epsilon*x. If d is the minimum positive
+/// height gap and w the x range, epsilon = d/(2*(w+1)) makes every change of a
+/// height difference smaller than d/2. Unequal original heights keep their
+/// order; equal heights are separated by distinct x coordinates. The matrix
+/// has determinant one, so no geometric predicate or area changes.
+fn separate_heights(points: &mut [Point]) {
+    let heights: BTreeSet<_> = points.iter().map(|point| point.y.clone()).collect();
+    if heights.len() == points.len() {
+        return;
+    }
+    let mut gaps = heights
+        .iter()
+        .zip(heights.iter().skip(1))
+        .map(|(a, b)| b - a);
+    let gap = gaps
+        .next()
+        .map(|first| gaps.fold(first, std::cmp::min))
+        .expect("nonzero area requires distinct heights");
+    let min_x = points
+        .iter()
+        .map(|point| &point.x)
+        .min()
+        .expect("nonempty boundary");
+    let max_x = points
+        .iter()
+        .map(|point| &point.x)
+        .max()
+        .expect("nonempty boundary");
+    let one = super::Rational::from_integer(1.into());
+    let two = super::Rational::from_integer(2.into());
+    let epsilon = gap / (two * (max_x - min_x + one));
+    for point in points {
+        point.y += &epsilon * &point.x;
+    }
+}
+
 /// Shamos-Hoey decision sweep: check complete intersections only for newly
 /// neighboring edges. Stop on the first forbidden intersection, so undetected
 /// crossings never invalidate the active ordering before an event is reached.
-pub(super) fn check_simple(boundary: &Boundary<'_>) -> Result<(), TriangulationError> {
+pub(super) fn check_simple(boundary: &Boundary) -> Result<(), TriangulationError> {
     let mut status = Status::default();
     for &vertex in &boundary.events {
         let y = &boundary.points[vertex].y;
@@ -90,14 +132,14 @@ pub(super) fn check_simple(boundary: &Boundary<'_>) -> Result<(), TriangulationE
 }
 
 fn check_pair(
-    boundary: &Boundary<'_>,
+    boundary: &Boundary,
     a: Option<usize>,
     b: Option<usize>,
 ) -> Result<(), TriangulationError> {
     let (Some(a), Some(b)) = (a, b) else {
         return Ok(());
     };
-    // Consecutive collinearity was rejected before this sweep, hence adjacent
+    // Collinear backtracking was rejected before this sweep, hence adjacent
     // edges have exactly their permitted shared endpoint in common.
     if a == b || boundary.next(a) == b || boundary.next(b) == a {
         return Ok(());
@@ -118,7 +160,7 @@ fn check_pair(
         |a: &super::Rational, b: &super::Rational, c: &super::Rational, d: &super::Rational| {
             a.min(b) <= c.max(d) && c.min(d) <= a.max(b)
         };
-    let [p, q, r, s] = [a, a1, b, b1].map(|i| boundary.points[i]);
+    let [p, q, r, s] = [a, a1, b, b1].map(|i| &boundary.points[i]);
     if overlaps(&p.x, &q.x, &r.x, &s.x) && overlaps(&p.y, &q.y, &r.y, &s.y) {
         Err(TriangulationError::SelfIntersection)
     } else {

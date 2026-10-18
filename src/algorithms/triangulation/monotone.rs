@@ -12,10 +12,12 @@ enum Kind {
     Regular,
 }
 
-fn kind(boundary: &Boundary<'_>, vertex: usize) -> Kind {
+fn kind(boundary: &Boundary, vertex: usize) -> Kind {
     let prev = boundary.prev(vertex);
     let next = boundary.next(vertex);
     let convex = boundary.turn(prev, vertex, next) > zero();
+    // A retained straight vertex is between its neighbors. Distinct sweep
+    // heights therefore classify it as Regular, never as a split or merge.
     match (
         boundary.above(vertex, prev),
         boundary.above(vertex, next),
@@ -32,7 +34,7 @@ fn kind(boundary: &Boundary<'_>, vertex: usize) -> Kind {
 /// Maintain the left boundary edge of each active interior interval, with its
 /// lowest processed helper vertex. Every split is joined to its left helper;
 /// every merge helper is joined before its interval is replaced or removed.
-pub(super) fn partition(boundary: &Boundary<'_>) -> Vec<[usize; 2]> {
+pub(super) fn partition(boundary: &Boundary) -> Vec<[usize; 2]> {
     let kinds: Vec<_> = (0..boundary.points.len())
         .map(|i| kind(boundary, i))
         .collect();
@@ -97,7 +99,7 @@ pub(super) fn partition(boundary: &Boundary<'_>) -> Vec<[usize; 2]> {
 /// A rotation system builds every bounded face without repeatedly searching
 /// the polygon. Half-edges are stored in twin pairs; the predecessor of the
 /// incoming twin in CCW angular order keeps the traversed face on the left.
-pub(super) fn faces(boundary: &Boundary<'_>, diagonals: &[[usize; 2]]) -> Vec<Vec<usize>> {
+pub(super) fn faces(boundary: &Boundary, diagonals: &[[usize; 2]]) -> Vec<Vec<usize>> {
     let n = boundary.points.len();
     let mut edges = Vec::with_capacity(2 * (n + diagonals.len()));
     let mut outgoing = vec![Vec::new(); n];
@@ -142,10 +144,10 @@ pub(super) fn faces(boundary: &Boundary<'_>, diagonals: &[[usize; 2]]) -> Vec<Ve
     faces
 }
 
-fn angle_order(boundary: &Boundary<'_>, origin: usize, a: usize, b: usize) -> Ordering {
+fn angle_order(boundary: &Boundary, origin: usize, a: usize, b: usize) -> Ordering {
     let upper = |vertex: usize| {
-        let p = boundary.points[vertex];
-        let o = boundary.points[origin];
+        let p = &boundary.points[vertex];
+        let o = &boundary.points[origin];
         p.y > o.y || (p.y == o.y && p.x > o.x)
     };
     upper(b)
@@ -154,11 +156,7 @@ fn angle_order(boundary: &Boundary<'_>, origin: usize, a: usize, b: usize) -> Or
         .then(a.cmp(&b))
 }
 
-pub(super) fn triangulate_face(
-    boundary: &Boundary<'_>,
-    face: &[usize],
-    output: &mut Vec<[usize; 3]>,
-) {
+pub(super) fn triangulate_face(boundary: &Boundary, face: &[usize], output: &mut Vec<[usize; 3]>) {
     let n = face.len();
     let top = (0..n)
         .max_by(|&a, &b| boundary.points[face[a]].y.cmp(&boundary.points[face[b]].y))
@@ -198,6 +196,9 @@ pub(super) fn triangulate_face(
             let mut last = stack.pop().expect("chain predecessor");
             while let Some(&(other, _)) = stack.last() {
                 let turn = boundary.turn(vertex, last.0, other);
+                // Strict visibility retains collinear stack vertices. A later
+                // noncollinear vertex connects them individually, preserving
+                // all original boundary indices without zero-area triangles.
                 let visible = if left_chain {
                     turn < zero()
                 } else {
