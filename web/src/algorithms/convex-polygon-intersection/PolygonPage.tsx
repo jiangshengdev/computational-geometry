@@ -1,7 +1,6 @@
 import { Card } from '@heroui/react/card'
 import { Button, buttonVariants } from '@heroui/react/button'
 import { Alert } from '@heroui/react/alert'
-import { Spinner } from '@heroui/react/spinner'
 import { useLingui } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
 import { useJsonComputation } from '../../geometry/useJsonComputation'
@@ -48,7 +47,6 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
   const interaction = usePointInteraction()
   const viewport = useGeometryViewport([...preset.first, ...preset.second], { padding: 36 })
   const result = computation.status === 'ready' ? computation.result : undefined
-  const kindLabels = { point: t`Point intersection`, segment: t`Segment intersection result` }
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex polygon intersection`} · ${t`Computational Geometry`}`} />
     <div className="case-toolbar">
@@ -58,9 +56,6 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
         <CaseDescription name={translate(preset.name)} description={translate(preset.description)} />
       </div>
     </div>
-    {computation.status === 'loading' ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>
-      : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
-        : computation.result.kind === 'polygon' || computation.result.kind === 'empty' ? null : <p role="status">{kindLabels[computation.result.kind]}</p>}
     <div className="workspace result-workspace polygon-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <div className="drawing"><Card>
         <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1">
