@@ -89,9 +89,17 @@ msgstr "{name}：输入线段预览"
 msgid "{title} teaching code"
 msgstr "{title}教学代码"
 
+#: src/algorithms/triangulation/cases.ts:18
+msgid "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
+msgstr "梳齿形边界包含多个凹口、水平边和同高顶点。"
+
 #: src/algorithms/convex-polygon-intersection/cases.ts:25
 msgid "A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions."
 msgstr "沿抛物线取点构成的凸边界位于矩形内。等值分数标识相同位置。"
+
+#: src/algorithms/triangulation/cases.ts:16
+msgid "A convex hexagon with horizontal edges and equal-height vertices."
+msgstr "包含水平边与同高顶点的凸六边形。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:53
@@ -353,6 +361,10 @@ msgstr "三者都在 y = 0 上。S0 × S1 的交集为 (0, 0) → (6, 0)；S0 ×
 msgid "An endpoint of a vertical segment lies inside a horizontal segment."
 msgstr "竖直线段的端点落在水平线段内部。"
 
+#: src/algorithms/triangulation/cases.ts:17
+msgid "An inward corner keeps the triangulation inside an L-shaped boundary."
+msgstr "观察三角剖分如何保持在 L 形凹多边形边界内。"
+
 #: src/algorithms/convex-polygon-intersection/cases.ts:17
 msgid "An irregular pentagon and hexagon intersect in a nine-sided region with six new crossings and three original vertices."
 msgstr "不规则五边形与六边形相交，形成包含 6 个新交点和 3 个原顶点的九边形区域。"
@@ -362,7 +374,7 @@ msgstr "不规则五边形与六边形相交，形成包含 6 个新交点和 3 
 msgid "An iteration element is available; enter the loop body"
 msgstr "本次已取得迭代元素，进入循环体"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:26
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:23
 #: src/app/AlgorithmHome.tsx:49
 msgid "Andrew monotone chain algorithm"
 msgstr "Andrew 单调链算法"
@@ -407,12 +419,12 @@ msgstr "教学伪代码中的原子几何计算；对应 Rust 实际精确计算
 msgid "Attach zero-based indices to iterator elements."
 msgstr "为迭代元素附加从零开始的索引。"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:49
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:73
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:53
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:90
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:60
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:73
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:225
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:256
+#: src/algorithms/triangulation/TriangulationPage.tsx:73
+#: src/geometry/CaseToolbar.tsx:9
 msgid "Back to cases"
 msgstr "返回列表"
 
@@ -712,6 +724,10 @@ msgstr "收起右侧辅助栏"
 msgid "Collinear and disjoint"
 msgstr "共线分离"
 
+#: src/algorithms/triangulation/cases.ts:22
+msgid "Collinear boundary vertices"
+msgstr "连续共线边界顶点"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:56
 msgid "help.OverlapRules.0"
@@ -772,18 +788,21 @@ msgstr "compare：当前排序规则。"
 msgid "Compound argument evaluation and return value at this call site: "
 msgstr "复合实参的求值及该调用点的返回值："
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:56
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:46
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:72
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:86
+#: src/algorithms/triangulation/TriangulationPage.tsx:56
 msgid "Computation failed"
 msgstr "计算失败"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:25
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:47
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:22
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:39
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:25
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:40
+#: src/algorithms/triangulation/TriangulationPage.tsx:25
+#: src/algorithms/triangulation/TriangulationPage.tsx:39
 #: src/app/AlgorithmHome.tsx:45
-#: src/app/App.tsx:35
+#: src/app/App.tsx:39
 #: src/app/AppNavigation.tsx:9
 #: src/app/AppNavigation.tsx:10
 msgid "Computational Geometry"
@@ -799,15 +818,24 @@ msgstr "精确计算线段在指定横坐标的高度。"
 msgid "Compute the intersection candidate and schedule a future event"
 msgstr "计算这对线段的交点，并安排后续事件"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:55
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:45
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:84
+#: src/algorithms/triangulation/TriangulationPage.tsx:55
 msgid "Computing…"
 msgstr "正在计算…"
+
+#: src/algorithms/triangulation/cases.ts:17
+msgid "Concave polygon"
+msgstr "凹多边形"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:89
 msgid "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
 msgstr "八个环形顶点每次前进 3 个位置连线，形成闭合八角星；顶点使用固定整数坐标。"
+
+#: src/algorithms/triangulation/cases.ts:22
+msgid "Consecutive collinear vertices retain their original input indices."
+msgstr "连续共线顶点保留各自的原始输入索引。"
 
 #: src/algorithms/convex-polygon-intersection/cases.ts:20
 msgid "Contained polygon"
@@ -838,15 +866,15 @@ msgstr "统一约定：精确有理数决定交点与排序，像素近似只用
 msgid "Convert the collection into an iterator that consumes its elements."
 msgstr "将当前集合转为消耗元素的迭代器。"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:25
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:26
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:47
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:71
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:22
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:23
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:39
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:58
 #: src/app/AlgorithmHome.tsx:49
 msgid "Convex hull"
 msgstr "凸包"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:24
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:23
 msgid "Convex hull cases"
 msgstr "凸包案例"
 
@@ -854,10 +882,14 @@ msgstr "凸包案例"
 msgid "Convex hull plot"
 msgstr "凸包图形"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:28
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:88
+#: src/algorithms/triangulation/cases.ts:16
+msgid "Convex polygon"
+msgstr "凸多边形"
+
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:25
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:40
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:71
 #: src/app/AlgorithmHome.tsx:50
 msgid "Convex polygon intersection"
 msgstr "凸多边形交集"
@@ -1189,13 +1221,13 @@ msgstr "事件高度状态：当前事件上侧（Δ）"
 msgid "Event height: below the current event (Δ)"
 msgstr "事件高度状态：当前事件下侧（Δ）"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
-msgstr "事件队列"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
+msgstr "事件队列"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
 msgstr "事件队列"
 
 #. js-lingui-explicit-id
@@ -1215,6 +1247,10 @@ msgstr "事件侧向状态：当前事件右侧（Δ）"
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:114
 msgid "Exact details"
 msgstr "精确详情"
+
+#: src/algorithms/triangulation/cases.ts:23
+msgid "Exact fractional vertices"
+msgstr "精确分数顶点"
 
 #: src/algorithms/convex-hull/cases.ts:28
 msgid "Exact fractions"
@@ -1345,6 +1381,10 @@ msgstr "斜率不同时，交集就是当前事件点"
 msgid "Fractional endpoint and interior crossing"
 msgstr "分数端点与内部交叉"
 
+#: src/algorithms/triangulation/cases.ts:23
+msgid "Fractional input coordinates travel losslessly to the Rust algorithm."
+msgstr "分数输入坐标无损传递给 Rust 算法。"
+
 #: src/algorithms/convex-polygon-intersection/cases.ts:24
 msgid "Fractional intersection"
 msgstr "分数交点"
@@ -1438,7 +1478,7 @@ msgstr "六角雪花"
 msgid "Hexagonal snowflake"
 msgstr "六角雪花"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:61
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:44
 msgid "Hull vertices"
 msgstr "凸包顶点"
 
@@ -1534,7 +1574,7 @@ msgstr "输入与交集坐标图"
 msgid "Input point preview"
 msgstr "输入点预览"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:60
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:43
 msgid "Input points"
 msgstr "输入点"
 
@@ -1543,6 +1583,7 @@ msgstr "输入点"
 #~ msgstr "输入点数：{0}；凸包顶点数：{1}"
 
 #: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:22
+#: src/algorithms/triangulation/TriangulationPlot.tsx:19
 msgid "Input polygon preview"
 msgstr "输入多边形预览"
 
@@ -1553,6 +1594,10 @@ msgstr "输入 S{index}"
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:114
 msgid "Input S{index}, selected"
 msgstr "输入 S{index}，已选中"
+
+#: src/algorithms/triangulation/TriangulationPage.tsx:51
+msgid "Input vertices"
+msgstr "输入顶点"
 
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:46
 msgid "Insert <0>{subjects}</0>: the sweep line has reached the start, and these inputs now participate in the active order."
@@ -1581,7 +1626,7 @@ msgstr "相交配对"
 msgid "Intersecting pairs and exact intersections"
 msgstr "相交配对与精确交集"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:66
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:49
 msgid "Intersection · filled region or contact"
 msgstr "交集 · 填充区域或接触部分"
 
@@ -1602,7 +1647,7 @@ msgstr "交集 {0}，已选中"
 msgid "Intersection candidate returned by the completed neighbor call"
 msgstr "已完成的邻居调用返回的交点候选"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:78
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:61
 msgid "Intersection coordinates"
 msgstr "交集坐标"
 
@@ -1635,14 +1680,16 @@ msgstr "教学终态无效"
 msgid "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 msgstr "教学步骤参数无效：请使用非负整数，且只提供一个 step 参数。"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:71
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:72
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:88
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:89
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:58
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:59
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:71
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:72
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:222
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:223
-#: src/app/App.tsx:35
-#: src/app/App.tsx:36
+#: src/algorithms/triangulation/TriangulationPage.tsx:71
+#: src/algorithms/triangulation/TriangulationPage.tsx:72
+#: src/app/App.tsx:39
+#: src/app/App.tsx:40
 msgid "Invalid link"
 msgstr "链接无效"
 
@@ -1795,6 +1842,15 @@ msgstr "多顶点边界"
 msgid "Meander window lattice"
 msgstr "回纹窗棂"
 
+#: src/algorithms/triangulation/TriangulationPage.tsx:26
+#: src/app/AlgorithmHome.tsx:51
+msgid "Monotone decomposition"
+msgstr "单调分解"
+
+#: src/algorithms/triangulation/cases.ts:18
+msgid "Multiple notches"
+msgstr "多个凹口"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionCode.ts:61
 msgid "Neighbor checks"
@@ -1884,7 +1940,7 @@ msgstr "无交点"
 msgid "No next element; the loop has ended"
 msgstr "本次没有下一个元素，循环已结束"
 
-#: src/geometry/PointCoordinates.tsx:28
+#: src/geometry/PointCoordinates.tsx:29
 msgid "No points"
 msgstr "无点"
 
@@ -2016,8 +2072,9 @@ msgid "original closure"
 msgstr "original 闭包"
 
 #: src/algorithms/convex-hull/ConvexHullView.tsx:13
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:62
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:45
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:80
+#: src/algorithms/triangulation/TriangulationPage.tsx:44
 msgid "Original coordinate plane · Equal scale"
 msgstr "原始坐标平面 · 等比例"
 
@@ -2071,13 +2128,13 @@ msgstr "重叠止界"
 msgid "Overlap interval"
 msgstr "重叠区间"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
-msgstr "重叠处理规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
+msgstr "重叠处理规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
 msgstr "重叠处理规则"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -2197,7 +2254,8 @@ msgid "Place all endpoints in the event queue, keeping one event per point. Endp
 msgstr "先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步进入取事件模块。"
 
 #. placeholder {0}: computation.message
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:56
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:46
+#: src/algorithms/triangulation/TriangulationPage.tsx:56
 msgid "Please check the local service. {0}"
 msgstr "请检查本地服务。{0}"
 
@@ -2220,7 +2278,7 @@ msgstr "已绑定 point 与 event；取事件模块完成"
 msgid "Point contact"
 msgstr "点接触"
 
-#: src/geometry/PointCoordinates.tsx:27
+#: src/geometry/PointCoordinates.tsx:28
 msgid "Point count"
 msgstr "点数"
 
@@ -2247,11 +2305,11 @@ msgstr "纯点集合"
 msgid "Polygon A"
 msgstr "多边形 A"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:47
 msgid "Polygon A · solid boundary"
 msgstr "多边形 A · 实线边界"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:75
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:58
 msgid "Polygon A vertices"
 msgstr "多边形 A 顶点"
 
@@ -2259,11 +2317,11 @@ msgstr "多边形 A 顶点"
 msgid "Polygon B"
 msgstr "多边形 B"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:65
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:48
 msgid "Polygon B · dashed boundary"
 msgstr "多边形 B · 虚线边界"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:76
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:59
 msgid "Polygon B vertices"
 msgstr "多边形 B 顶点"
 
@@ -2694,13 +2752,13 @@ msgstr "S1 从 S0 内部的 (2, 0) 向右上方出发。"
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 从 (0, 0) 到 (0, 8)，S6 从 (0, 8) 到 (8, 8)，公共端点为 (0, 8)。S4 的 y = 0、x ∈ [−2, 34]，与 S5 在 (0, 0) 接触。三组回纹各有 7 处转角和 1 处横梁接触，另有窗框 4 角及横梁与窗框的 2 处接触，共 30 个不同位置；没有内部穿越或重叠。"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
-msgstr "同点与并列规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
+msgstr "同点与并列规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
 msgstr "同点与并列规则"
 
 #. js-lingui-explicit-id
@@ -2729,7 +2787,7 @@ msgid "Segment information carried by the current event"
 msgstr "本次事件携带的线段信息"
 
 #: src/app/AlgorithmHome.tsx:48
-#: src/app/App.tsx:22
+#: src/app/App.tsx:24
 msgid "Segment intersection"
 msgstr "线段求交"
 
@@ -3228,6 +3286,10 @@ msgstr "参数 t 的线段端点为 (3(t − 6), −6t) 与 (3(t + 6), 6t)。参
 msgid "The sheet has 24 atoms, 30 bonds, and 7 hexagonal faces; each of the 12 inner sites with three neighbors produces 3 pairs, and each of the 12 edge sites with two neighbors produces 1 pair, totaling 48 pairs at 24 positions. There are no interior crossings or overlaps. The vertical direction approximates √3/2 by 433/500, and intersections are computed exactly for these rational inputs."
 msgstr "片层有 24 个原子、30 条键和 7 个六边形面；12 个内侧三邻接点各产生 3 对，12 个二邻接边缘点各产生 1 对，共 48 对、24 处。没有内部穿越或重叠。纵向使用 433/500 近似 √3/2，求交对这些有理输入精确计算。"
 
+#: src/algorithms/triangulation/cases.ts:15
+msgid "The smallest valid boundary produces one triangle."
+msgstr "最小合法边界生成一个三角形。"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:36
 msgid "help.SamePointRules.1"
@@ -3335,9 +3397,35 @@ msgstr "沿方折回纹追踪端点连接，并区分回纹起点落在横梁内
 msgid "Treat a zero-length intersection as a single point"
 msgstr "没有长度时，按单个交点处理"
 
+#: src/algorithms/triangulation/cases.ts:15
+msgid "Triangle"
+msgstr "三角形"
+
 #: src/algorithms/convex-hull/cases.ts:16
 msgid "Triangle and interior point"
 msgstr "三角形与内部点"
+
+#: src/algorithms/triangulation/TriangulationPage.tsx:52
+#: src/algorithms/triangulation/TriangulationPage.tsx:53
+#: src/algorithms/triangulation/TriangulationPage.tsx:57
+msgid "Triangles"
+msgstr "三角形列表"
+
+#: src/algorithms/triangulation/TriangulationPage.tsx:25
+#: src/algorithms/triangulation/TriangulationPage.tsx:26
+#: src/algorithms/triangulation/TriangulationPage.tsx:39
+#: src/algorithms/triangulation/TriangulationPage.tsx:71
+#: src/app/AlgorithmHome.tsx:51
+msgid "Triangulation"
+msgstr "三角剖分"
+
+#: src/algorithms/triangulation/TriangulationPage.tsx:26
+msgid "Triangulation cases"
+msgstr "三角剖分案例"
+
+#: src/algorithms/triangulation/TriangulationPlot.tsx:19
+msgid "Triangulation plot"
+msgstr "三角剖分画布"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionCode.ts:90
@@ -3496,8 +3584,9 @@ msgstr "撤销剪切，恢复原坐标。"
 msgid "Unknown case: {caseId}"
 msgstr "未知案例：{caseId}"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:72
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:89
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:59
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:72
+#: src/algorithms/triangulation/TriangulationPage.tsx:72
 msgid "Unknown case."
 msgstr "未知案例。"
 
@@ -3507,8 +3596,8 @@ msgid "Unknown error"
 msgstr "未知错误"
 
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:252
-#: src/app/App.tsx:29
-#: src/app/App.tsx:36
+#: src/app/App.tsx:31
+#: src/app/App.tsx:40
 msgid "Unknown page path."
 msgstr "未知页面路径。"
 
@@ -3517,7 +3606,7 @@ msgstr "未知页面路径。"
 msgid "Update the active set"
 msgstr "活动集合更新"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:67
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:84
 msgid "Use buttons to zoom · Drag to pan"
 msgstr "按钮缩放 · 拖动平移"
@@ -3586,13 +3675,13 @@ msgstr "竖直分数重叠"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "竖直重叠与多高度混合"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
-msgstr "竖直线处理规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
+msgstr "竖直线处理规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
 msgstr "竖直线处理规则"
 
 #. js-lingui-explicit-id
@@ -3601,16 +3690,14 @@ msgid "help.VerticalRules.0"
 msgstr "竖直线：固定横坐标，逐个处理高度"
 
 #. placeholder {0}: translate(preset.name)
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:28
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:31
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:145
+#: src/geometry/CaseCatalog.tsx:35
 msgid "View {0} details"
 msgstr "查看{0}详情"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:30
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:34
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:155
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:226
+#: src/geometry/CaseCatalog.tsx:38
 msgid "View details"
 msgstr "查看详情"
 

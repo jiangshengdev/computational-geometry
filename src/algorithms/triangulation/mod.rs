@@ -9,6 +9,7 @@
 //! two-chain merge and stack. Total cost is O(n log n) exact operations and O(n)
 //! storage; arbitrary-precision arithmetic and copying costs depend on bit size.
 
+pub(crate) mod http;
 mod monotone;
 mod status;
 mod validation;

@@ -1,13 +1,12 @@
 import { Card } from '@heroui/react/card'
-import { Button, buttonVariants } from '@heroui/react/button'
+import { buttonVariants } from '@heroui/react/button'
 import { Alert } from '@heroui/react/alert'
 import { useLingui } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
 import { useJsonComputation } from '../../geometry/useJsonComputation'
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import { AppLink } from '../../app/AppLink'
 import { DocumentTitle } from '../../app/DocumentTitle'
-import { PageHeading } from '../../app/PageHeading'
 import { PointCoordinates } from '../../geometry/PointCoordinates'
 import { polygonCases, type PolygonCase } from './cases'
 import { PolygonPlot } from './PolygonPlot'
@@ -17,25 +16,15 @@ import { usePointInteraction } from '../../geometry/usePointInteraction'
 import { useGeometryViewport } from '../../geometry/useGeometryViewport'
 import { GeometryViewControls } from '../../geometry/GeometryViewControls'
 import { GeometryInfo } from '../../geometry/GeometryInfo'
-import { CaseDescription } from '../../geometry/CaseDescription'
+import { CaseCatalog } from '../../geometry/CaseCatalog'
+import { CaseToolbar } from '../../geometry/CaseToolbar'
 
 export function PolygonPage() {
   const { t } = useLingui()
-  const { _: translate } = useMessages()
-  const navigate = useNavigate()
-  return <section aria-label={t`Convex polygon intersection cases`}>
+  return <>
     <DocumentTitle title={`${t`Convex polygon intersection`} · ${t`Computational Geometry`}`} />
-    <PageHeading title={t`Convex polygon intersection`} subtitle="Edge Chasing" />
-    <div className="case-list grid gap-4">{polygonCases.map(preset => <article key={preset.id} aria-labelledby={`polygon-${preset.id}`}>
-      <Card className="case-card h-full items-stretch">
-        <AppLink className="case-thumbnail-link" to={`/convex-polygon-intersection/cases/${preset.id}`} aria-label={t`View ${translate(preset.name)} details`}><PolygonPlot first={preset.first} second={preset.second} preview /></AppLink>
-        <div className="flex min-w-0 flex-1 flex-col gap-3">
-          <Card.Header className="gap-1"><Card.Title id={`polygon-${preset.id}`} render={props => <h2 {...props} />}>{translate(preset.name)}</Card.Title><Card.Description>{translate(preset.description)}</Card.Description></Card.Header>
-          <Card.Footer className="mt-auto justify-end"><Button variant="secondary" onPress={() => navigate(`/convex-polygon-intersection/cases/${preset.id}`)}>{t`View details`}</Button></Card.Footer>
-        </div>
-      </Card>
-    </article>)}</div>
-  </section>
+    <CaseCatalog label={t`Convex polygon intersection cases`} title={t`Convex polygon intersection`} subtitle="Edge Chasing" basePath="/convex-polygon-intersection" cases={polygonCases} idPrefix="polygon" renderPreview={preset => <PolygonPlot first={preset.first} second={preset.second} preview />} />
+  </>
 }
 
 const decodeIntersection = (data: unknown) => data as PolygonIntersection
@@ -49,13 +38,7 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
   const result = computation.status === 'ready' ? computation.result : undefined
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex polygon intersection`} · ${t`Computational Geometry`}`} />
-    <div className="case-toolbar">
-      <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/convex-polygon-intersection">{t`Back to cases`}</AppLink>
-      <h1 className="text-xl font-semibold">{translate(preset.name)}</h1>
-      <div className="case-actions flex items-center gap-3">
-        <CaseDescription name={translate(preset.name)} description={translate(preset.description)} />
-      </div>
-    </div>
+    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-polygon-intersection" />
     <div className="workspace result-workspace polygon-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <div className="drawing"><Card>
         <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1">

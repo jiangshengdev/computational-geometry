@@ -9,16 +9,18 @@ import { Alert } from '@heroui/react/alert'
 import './App.css'
 import { PageHeading } from './PageHeading'
 import { PolygonPage, PolygonCasePage } from '../algorithms/convex-polygon-intersection/PolygonPage'
+import { TriangulationPage, TriangulationCasePage } from '../algorithms/triangulation/TriangulationPage'
 
 export default function App() {
   const { t } = useLingui()
   const caseRoute = useMatch('/bo/cases/:caseId/*')
   const hullCaseRoute = useMatch('/convex-hull/cases/:caseId')
   const polygonCaseRoute = useMatch('/convex-polygon-intersection/cases/:caseId')
+  const triangulationCaseRoute = useMatch('/triangulation/cases/:caseId')
   const boList = useMatch('/bo')
   return <>
     <AppNavigation />
-    <main className={caseRoute || hullCaseRoute || polygonCaseRoute ? 'case-shell' : undefined}>
+    <main className={caseRoute || hullCaseRoute || polygonCaseRoute || triangulationCaseRoute ? 'case-shell' : undefined}>
       {boList && <PageHeading title={t`Segment intersection`} subtitle="Bentley–Ottmann" />}
       <Routes>
         <Route path="/" element={<AlgorithmHome />} />
@@ -31,6 +33,8 @@ export default function App() {
         <Route path="/convex-hull/cases/:caseId" element={<ConvexHullCasePage />} />
         <Route path="/convex-polygon-intersection" element={<PolygonPage />} />
         <Route path="/convex-polygon-intersection/cases/:caseId" element={<PolygonCasePage />} />
+        <Route path="/triangulation" element={<TriangulationPage />} />
+        <Route path="/triangulation/cases/:caseId" element={<TriangulationCasePage />} />
         <Route path="*" element={<>
           <DocumentTitle title={`${t`Invalid link`} · ${t`Computational Geometry`}`} />
           <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Invalid link`}</Alert.Title><Alert.Description>{t`Unknown page path.`}</Alert.Description></Alert.Content></Alert>

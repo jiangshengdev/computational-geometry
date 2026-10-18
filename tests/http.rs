@@ -8,6 +8,9 @@ use tower::ServiceExt;
 #[path = "http/convex_polygon_intersection_tests.rs"]
 mod convex_polygon_intersection;
 
+#[path = "http/triangulation_tests.rs"]
+mod triangulation;
+
 fn point(x: &str, y: &str) -> Value {
     json!({"x": {"numerator": x, "denominator": "1"}, "y": {"numerator": y, "denominator": "1"}})
 }
@@ -99,6 +102,7 @@ async fn algorithms_share_exact_coordinate_validation() {
         let invalid = json!({"x": {"numerator": numerator, "denominator": denominator}, "y": {"numerator": "0", "denominator": "1"}});
         for (path, request) in [
             ("/api/convex-hull", json!({"points": [invalid]})),
+            ("/api/triangulation", json!({"vertices": [invalid]})),
             (
                 "/api/bo/intersections",
                 json!({"segments": [{"start": invalid, "end": point("1", "1")}]}),

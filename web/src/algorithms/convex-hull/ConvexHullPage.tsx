@@ -1,35 +1,27 @@
-import { Card } from '@heroui/react/card'
 import { useLingui } from '@lingui/react/macro'
 import { DocumentTitle } from '../../app/DocumentTitle'
 import { useLingui as useMessages } from '@lingui/react'
 import { useJsonComputation } from '../../geometry/useJsonComputation'
-import { useNavigate, useParams } from 'react-router'
-import { Button, buttonVariants } from '@heroui/react/button'
+import { useParams } from 'react-router'
+import { buttonVariants } from '@heroui/react/button'
 import { Alert } from '@heroui/react/alert'
 import { Spinner } from '@heroui/react/spinner'
 import { AppLink } from '../../app/AppLink'
-import { PageHeading } from '../../app/PageHeading'
 import type { Point } from '../../geometry/geometry'
 import { hullCases, type HullCase } from './cases'
 import { ConvexHullPlot } from './ConvexHullPlot'
 import { ConvexHullView } from './ConvexHullView'
 import { PointCoordinates } from '../../geometry/PointCoordinates'
 import { usePointInteraction } from '../../geometry/usePointInteraction'
-import { CaseDescription } from '../../geometry/CaseDescription'
+import { CaseCatalog } from '../../geometry/CaseCatalog'
+import { CaseToolbar } from '../../geometry/CaseToolbar'
 
 export function ConvexHullPage() {
   const { t } = useLingui()
-  const { _: translate } = useMessages()
-  const navigate = useNavigate()
-  return <section aria-label={t`Convex hull cases`}>
+  return <>
     <DocumentTitle title={`${t`Convex hull`} · ${t`Computational Geometry`}`} />
-    <PageHeading title={t`Convex hull`} subtitle={t`Andrew monotone chain algorithm`} />
-    <div className="case-list grid gap-4">{hullCases.map(preset => <article key={preset.id} aria-labelledby={`hull-${preset.id}`}><Card className="case-card h-full items-stretch">
-      <AppLink className="case-thumbnail-link" to={`/convex-hull/cases/${preset.id}`} aria-label={t`View ${translate(preset.name)} details`}><ConvexHullPlot points={preset.points} preview /></AppLink>
-      <div className="flex min-w-0 flex-1 flex-col gap-3"><Card.Header className="gap-1"><Card.Title id={`hull-${preset.id}`} render={props => <h2 {...props} />}>{translate(preset.name)}</Card.Title><Card.Description>{translate(preset.description)}</Card.Description></Card.Header>
-        <Card.Footer className="mt-auto justify-end"><Button variant="secondary" onPress={() => navigate(`/convex-hull/cases/${preset.id}`)}>{t`View details`}</Button></Card.Footer></div>
-    </Card></article>)}</div>
-  </section>
+    <CaseCatalog label={t`Convex hull cases`} title={t`Convex hull`} subtitle={t`Andrew monotone chain algorithm`} basePath="/convex-hull" cases={hullCases} idPrefix="hull" renderPreview={preset => <ConvexHullPlot points={preset.points} preview />} />
+  </>
 }
 
 function decodeHull(data: unknown): Point[] {
@@ -45,13 +37,7 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
   const interaction = usePointInteraction()
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex hull`} · ${t`Computational Geometry`}`} />
-    <div className="case-toolbar">
-      <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/convex-hull">{t`Back to cases`}</AppLink>
-      <h1 className="text-xl font-semibold">{translate(preset.name)}</h1>
-      <div className="case-actions flex items-center gap-3">
-        <CaseDescription name={translate(preset.name)} description={translate(preset.description)} />
-      </div>
-    </div>
+    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull" />
     <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <ConvexHullView points={preset.points} vertices={computation.status === 'ready' ? computation.result : []} interaction={interaction} />
         <PointCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
