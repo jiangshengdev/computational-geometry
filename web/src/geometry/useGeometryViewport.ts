@@ -33,7 +33,8 @@ export function useGeometryViewport(points: Point[], { preserveViewKey, padding 
 
   return {
     svg, width, height, transform,
-    projection: projectPoints(points, width, height, padding),
+    // Keep at least half of the shorter dimension available for geometry.
+    projection: projectPoints(points, width, height, Math.min(padding, width / 4, height / 4)),
     zoomIn: () => select(svg.current!).call(behavior.current.scaleBy, 1.4),
     zoomOut: () => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4),
     reset: () => select(svg.current!).call(behavior.current.transform, zoomIdentity),

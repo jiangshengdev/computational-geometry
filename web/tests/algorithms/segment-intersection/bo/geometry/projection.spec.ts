@@ -32,7 +32,7 @@ test('unusable drawing dimensions have no projection', () => {
 
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
-  browserTest(`real zero-size layout preserves view and insufficient space hides geometry ${browserName}`, async ({ browser, baseURL }) => {
+  browserTest(`real zero-size layout preserves view and small viewports retain usable geometry ${browserName}`, async ({ browser, baseURL }) => {
     const page = await browser.newPage({ baseURL, viewport: { width: 1360, height: 1000 } })
     try {
       const errors: string[] = []
@@ -74,8 +74,10 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       }
       await svg.evaluate(element => (element as SVGSVGElement).style.setProperty('width', '100px'))
       await expect.poll(() => svg.evaluate(element => element.getBoundingClientRect().width)).toBe(100)
-      await expect(svg.locator('[data-layer="geometry"]')).toHaveCount(0)
-      await expect(page.getByRole('button', { name: '放大', exact: true })).toBeVisible()
+      await expect(svg.locator('.input > line')).toHaveCount(2)
+      await expect(layer).toHaveAttribute('transform', initialTransform)
+      await page.getByRole('button', { name: '放大', exact: true }).click()
+      await expect(layer).not.toHaveAttribute('transform', initialTransform)
       await svg.evaluate(element => element.removeAttribute('style'))
       await expect(svg.locator('.input > line')).toHaveCount(2)
       await expect(svg).toHaveAttribute('viewBox', initialViewBox)
