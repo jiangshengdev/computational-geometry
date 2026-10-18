@@ -26,7 +26,7 @@ export function ConvexHullPlot({ points, vertices = [], preview = false, interac
         : vertices.length === 2
           ? <polyline data-hull="segment" points={path} fill="none" stroke="var(--accent)" strokeWidth="2" />
           : vertices.length === 1
-            ? <circle data-hull="point" cx={projection.px(vertices[0])} cy={projection.py(vertices[0])} r={7 / k} fill="none" stroke="var(--accent)" strokeWidth="2" />
+            ? <circle data-hull="point" cx={projection.px(vertices[0])} cy={projection.py(vertices[0])} r={7 / k} fill="none" stroke="var(--accent)" strokeWidth={2 / k} />
             : null}
       {positions.map((p, index) => {
         const highlighted = Boolean(interaction?.active && samePoint(p, interaction.active.point))
@@ -41,7 +41,7 @@ export function ConvexHullPlot({ points, vertices = [], preview = false, interac
             if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); interaction?.select({ point: p, source: 'plot' }) }
           }}>
           <circle cx={projection.px(p)} cy={projection.py(p)} r={(preview ? 2.5 : 4) / k} fill="currentColor" />
-          {interaction && <circle cx={projection.px(p)} cy={projection.py(p)} r={10 / k} fill="transparent" stroke={highlighted ? 'var(--accent)' : 'none'} strokeWidth="3" />}
+          {interaction && <circle cx={projection.px(p)} cy={projection.py(p)} r={10 / k} fill="transparent" stroke={highlighted ? 'var(--accent)' : 'none'} strokeWidth={3 / k} />}
         </g>
       })}
     </g>}

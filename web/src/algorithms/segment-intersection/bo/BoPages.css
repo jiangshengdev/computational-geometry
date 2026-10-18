@@ -44,9 +44,9 @@
 .input.selected { stroke: #245cb0; stroke-width: 4; }
 .input.selected text { fill: #163f7d; }
 .input[data-selected="true"] text { font-weight: 700; }
-.intersection { stroke: #de8e41; fill: #fff; stroke-width: 3; }
+.intersection { stroke: #de8e41; fill: #fff; stroke-width: calc(3px / var(--geometry-scale, 1)); }
 .intersection line { stroke-width: 6; stroke-opacity: .6; }
-.intersection.selected { stroke: #c54f13; fill: #ffe1cb; stroke-width: 4; }
+.intersection.selected { stroke: #c54f13; fill: #ffe1cb; stroke-width: calc(4px / var(--geometry-scale, 1)); }
 .intersection.selected line { stroke-width: 8; stroke-opacity: .85; }
 .coordinates, .drawing svg text { font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
 .input-item, .learning-hover-item { cursor: default; }
@@ -62,8 +62,8 @@ span.learning-hover-item { display: inline-block; }
 .sweep-side-arrow { width: 20px; height: 20px; flex-shrink: 0; }
 .sweep-height-side { top: auto; right: 0; width: 36px; flex-direction: row; justify-content: center; transform: translateY(50%); }
 .event-height-guide { stroke: #7455a8; stroke-width: 1; stroke-opacity: .45; stroke-dasharray: 4 4; pointer-events: none; }
-.scheduled-point { fill: none; stroke: #de8e41; stroke-width: 2; stroke-dasharray: 3 3; }
-.current-point { fill: none; stroke: #7455a8; stroke-width: 3; }
+.scheduled-point { fill: none; stroke: #de8e41; stroke-width: calc(2px / var(--geometry-scale, 1)); stroke-dasharray: calc(3px / var(--geometry-scale, 1)) calc(3px / var(--geometry-scale, 1)); }
+.current-point { fill: none; stroke: #7455a8; stroke-width: calc(3px / var(--geometry-scale, 1)); }
 .sweep-overlay text { fill: #735020; font-size: calc(12px / var(--geometry-scale, 1)); }
 .intersection .result-label { fill: #735020; font-size: calc(12px / var(--geometry-scale, 1)); }
 .learning-hover-item[data-checked="true"] { outline: 2px solid oklch(0.205 0 0); border-radius: 4px; }
@@ -71,7 +71,7 @@ span.learning-hover-item { display: inline-block; }
 .learning-hover-item[data-highlighted="true"] { background: #d3f3ed; color: #075b50; outline: 2px solid #078574; border-radius: 4px; }
 .input-item[data-highlighted="true"], .pair-item[data-highlighted="true"], .learning-hover-item[data-highlighted="true"], .learning-hover-item[data-checked="true"] { outline-offset: -2px; }
 .drawing text[data-event-point][data-highlighted="true"] { fill: #075b50; font-weight: 700; }
-.hover-event { fill: none; stroke: #078574; stroke-width: 3; pointer-events: none; }
+.hover-event { fill: none; stroke: #078574; stroke-width: calc(3px / var(--geometry-scale, 1)); pointer-events: none; }
 .drawing .teaching-labels text { fill: #41618d; font-size: 12px; }
 .drawing .teaching-labels text[data-related="false"] { visibility: hidden; }
 .label-leader { stroke: #7455a8; stroke-width: 1; stroke-dasharray: 2 3; pointer-events: none; }

@@ -1,2 +1,4 @@
-/* Geometry moves with the viewport; strokes remain measured in screen pixels. */
-.geometry-viewport :is(line, circle, path, polygon, polyline, text) { vector-effect: non-scaling-stroke; }
+/* Geometry moves with the viewport; strokes remain measured in screen pixels.
+   Circles compensate their stroke widths explicitly: Safari can leave stale
+   stroke pixels after hover when circles use non-scaling-stroke. */
+.geometry-viewport :is(line, path, polygon, polyline, text) { vector-effect: non-scaling-stroke; }
