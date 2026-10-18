@@ -89,7 +89,7 @@ msgstr "{name}: input segment preview"
 msgid "{title} teaching code"
 msgstr "{title} teaching code"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:24
+#: src/algorithms/convex-polygon-intersection/cases.ts:25
 msgid "A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions."
 msgstr "A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions."
 
@@ -113,7 +113,7 @@ msgstr "A Penrose P3 sun seed undergoes two golden-ratio subdivisions of Robinso
 msgid "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
 msgstr "A perspective projection of the complete truncated-icosahedral cage retains all 60 atoms and 90 connections. The golden ratio is approximated by 1618/1000; interior crossings in the image are not chemical bond connections."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:22
+#: src/algorithms/convex-polygon-intersection/cases.ts:23
 msgid "A shared boundary segment is a nonempty intersection."
 msgstr "A shared boundary segment is a nonempty intersection."
 
@@ -203,9 +203,9 @@ msgstr "About the order"
 msgid "About the queue"
 msgstr "About the queue"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:54
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:59
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:275
+#: src/geometry/CaseDescription.tsx:9
+#: src/geometry/CaseDescription.tsx:14
 msgid "About this case"
 msgstr "About this case"
 
@@ -353,12 +353,16 @@ msgstr "All three lie on y = 0. S0 × S1 intersects over (0, 0) → (6, 0); both
 msgid "An endpoint of a vertical segment lies inside a horizontal segment."
 msgstr "An endpoint of a vertical segment lies inside a horizontal segment."
 
+#: src/algorithms/convex-polygon-intersection/cases.ts:17
+msgid "An irregular pentagon and hexagon intersect in a nine-sided region with six new crossings and three original vertices."
+msgstr "An irregular pentagon and hexagon intersect in a nine-sided region with six new crossings and three original vertices."
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:158
 msgid "An iteration element is available; enter the loop body"
 msgstr "An iteration element is available; enter the loop body"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:27
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:26
 #: src/app/AlgorithmHome.tsx:49
 msgid "Andrew monotone chain algorithm"
 msgstr "Andrew monotone chain algorithm"
@@ -403,10 +407,10 @@ msgstr "Atomic geometry operation in the teaching code, corresponding to the act
 msgid "Attach zero-based indices to iterator elements."
 msgstr "Attach zero-based indices to iterator elements."
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:50
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:88
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:54
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:92
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:49
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:73
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:55
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:95
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:225
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:256
 msgid "Back to cases"
@@ -676,8 +680,8 @@ msgstr "Close"
 msgid "Close {0}"
 msgstr "Close {0}"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:58
 #: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:65
+#: src/geometry/CaseDescription.tsx:13
 msgid "Close help"
 msgstr "Close help"
 
@@ -691,7 +695,7 @@ msgstr "Closed segments touch at a shared endpoint."
 msgid "Closure on line {line}"
 msgstr "Closure on line {line}"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:20
+#: src/algorithms/convex-polygon-intersection/cases.ts:21
 msgid "Coincident polygons"
 msgstr "Coincident polygons"
 
@@ -768,17 +772,17 @@ msgstr "compare: the current ordering rule."
 msgid "Compound argument evaluation and return value at this call site: "
 msgstr "Compound argument evaluation and return value at this call site: "
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:71
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:59
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:56
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:62
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:72
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:86
 msgid "Computation failed"
 msgstr "Computation failed"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:26
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:48
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:52
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:25
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:47
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:28
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:53
 #: src/app/AlgorithmHome.tsx:45
 #: src/app/App.tsx:35
 #: src/app/AppNavigation.tsx:9
@@ -796,8 +800,8 @@ msgstr "Compute the exact segment height at the given x coordinate."
 msgid "Compute the intersection candidate and schedule a future event"
 msgstr "Compute the intersection candidate and schedule a future event"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:70
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:58
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:55
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:61
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:84
 msgid "Computing…"
 msgstr "Computing…"
@@ -807,7 +811,7 @@ msgstr "Computing…"
 msgid "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
 msgstr "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:19
+#: src/algorithms/convex-polygon-intersection/cases.ts:20
 msgid "Contained polygon"
 msgstr "Contained polygon"
 
@@ -836,15 +840,15 @@ msgstr "Conventions: exact rational numbers determine intersections and ordering
 msgid "Convert the collection into an iterator that consumes its elements."
 msgstr "Convert the collection into an iterator that consumes its elements."
 
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:25
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:26
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:27
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:48
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:86
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:47
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:71
 #: src/app/AlgorithmHome.tsx:49
 msgid "Convex hull"
 msgstr "Convex hull"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:25
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:24
 msgid "Convex hull cases"
 msgstr "Convex hull cases"
 
@@ -852,15 +856,15 @@ msgstr "Convex hull cases"
 msgid "Convex hull plot"
 msgstr "Convex hull plot"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:28
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:52
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:90
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:29
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:53
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:93
 #: src/app/AlgorithmHome.tsx:50
 msgid "Convex polygon intersection"
 msgstr "Convex polygon intersection"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
 msgid "Convex polygon intersection cases"
 msgstr "Convex polygon intersection cases"
 
@@ -869,8 +873,8 @@ msgid "Convex polygon intersection plot"
 msgstr "Convex polygon intersection plot"
 
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
-msgid "Convex polygon intersection result"
-msgstr "Convex polygon intersection result"
+#~ msgid "Convex polygon intersection result"
+#~ msgstr "Convex polygon intersection result"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:13
@@ -1012,7 +1016,7 @@ msgstr "Discover future intersections <0>{0}</0>: after checking the exact inter
 msgid "Discovered {label}"
 msgstr "Discovered {label}"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:18
+#: src/algorithms/convex-polygon-intersection/cases.ts:19
 msgid "Disjoint polygons"
 msgstr "Disjoint polygons"
 
@@ -1109,7 +1113,7 @@ msgstr "Element of {expression} selected by the current index"
 msgid "Empty"
 msgstr "Empty"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
 msgid "Empty intersection"
 msgstr "Empty intersection"
 
@@ -1343,7 +1347,7 @@ msgstr "For different slopes, the intersection is the current event point"
 msgid "Fractional endpoint and interior crossing"
 msgstr "Fractional endpoint and interior crossing"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:23
+#: src/algorithms/convex-polygon-intersection/cases.ts:24
 msgid "Fractional intersection"
 msgstr "Fractional intersection"
 
@@ -1436,7 +1440,7 @@ msgstr "Hexagonal snowflake"
 msgid "Hexagonal snowflake"
 msgstr "Hexagonal snowflake"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:76
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:61
 msgid "Hull vertices"
 msgstr "Hull vertices"
 
@@ -1445,7 +1449,7 @@ msgstr "Hull vertices"
 msgid "Identical and reversed duplicates"
 msgstr "Identical and reversed duplicates"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:20
+#: src/algorithms/convex-polygon-intersection/cases.ts:21
 msgid "Identical boundaries retain their complete common region."
 msgstr "Identical boundaries retain their complete common region."
 
@@ -1532,7 +1536,7 @@ msgstr "Input and intersection plot"
 msgid "Input point preview"
 msgstr "Input point preview"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:75
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:60
 msgid "Input points"
 msgstr "Input points"
 
@@ -1579,7 +1583,7 @@ msgstr "Intersecting pairs"
 msgid "Intersecting pairs and exact intersections"
 msgstr "Intersecting pairs and exact intersections"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:68
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:71
 msgid "Intersection · filled region or contact"
 msgstr "Intersection · filled region or contact"
 
@@ -1600,7 +1604,7 @@ msgstr "Intersection {0}, selected"
 msgid "Intersection candidate returned by the completed neighbor call"
 msgstr "Intersection candidate returned by the completed neighbor call"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:80
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:83
 msgid "Intersection coordinates"
 msgstr "Intersection coordinates"
 
@@ -1633,10 +1637,10 @@ msgstr "Invalid execution trace final state"
 msgid "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 msgstr "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:86
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:87
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:90
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:91
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:71
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:72
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:93
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:94
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:222
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:223
 #: src/app/App.tsx:35
@@ -1653,6 +1657,10 @@ msgstr "Invalid link · {0}"
 #: src/algorithms/segment-intersection/bo/useComputation.ts:30
 msgid "Invalid result structure"
 msgstr "Invalid result structure"
+
+#: src/algorithms/convex-polygon-intersection/cases.ts:17
+msgid "Irregular convex polygons"
+msgstr "Irregular convex polygons"
 
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:212
 msgid "Jump to step"
@@ -1780,7 +1788,7 @@ msgstr "Main layout ratio (geometry, code, variables)"
 msgid "Major steps"
 msgstr "Major steps"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:24
+#: src/algorithms/convex-polygon-intersection/cases.ts:25
 msgid "Many boundary vertices"
 msgstr "Many boundary vertices"
 
@@ -2010,7 +2018,7 @@ msgid "original closure"
 msgstr "original closure"
 
 #: src/algorithms/convex-hull/ConvexHullView.tsx:13
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:67
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:80
 msgid "Original coordinate plane · Equal scale"
 msgstr "Original coordinate plane · Equal scale"
@@ -2092,7 +2100,7 @@ msgstr "Overlapping members are tied at the same height. List positions identify
 msgid "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 msgstr "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:17
+#: src/algorithms/convex-polygon-intersection/cases.ts:18
 msgid "Overlapping polygons"
 msgstr "Overlapping polygons"
 
@@ -2191,8 +2199,8 @@ msgid "Place all endpoints in the event queue, keeping one event per point. Endp
 msgstr "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 
 #. placeholder {0}: computation.message
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:71
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:59
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:56
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:62
 msgid "Please check the local service. {0}"
 msgstr "Please check the local service. {0}"
 
@@ -2211,7 +2219,7 @@ msgstr "Point"
 msgid "point and event bound; event-taking module complete"
 msgstr "point and event bound; event-taking module complete"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:21
+#: src/algorithms/convex-polygon-intersection/cases.ts:22
 msgid "Point contact"
 msgstr "Point contact"
 
@@ -2219,7 +2227,7 @@ msgstr "Point contact"
 msgid "Point count"
 msgstr "Point count"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
 msgid "Point intersection"
 msgstr "Point intersection"
 
@@ -2242,11 +2250,11 @@ msgstr "Points only"
 msgid "Polygon A"
 msgstr "Polygon A"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:66
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:69
 msgid "Polygon A · solid boundary"
 msgstr "Polygon A · solid boundary"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:77
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:80
 msgid "Polygon A vertices"
 msgstr "Polygon A vertices"
 
@@ -2254,11 +2262,11 @@ msgstr "Polygon A vertices"
 msgid "Polygon B"
 msgstr "Polygon B"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:67
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:70
 msgid "Polygon B · dashed boundary"
 msgstr "Polygon B · dashed boundary"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:78
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:81
 msgid "Polygon B vertices"
 msgstr "Polygon B vertices"
 
@@ -2728,7 +2736,7 @@ msgstr "Segment information carried by the current event"
 msgid "Segment intersection"
 msgstr "Segment intersection"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
 msgid "Segment intersection result"
 msgstr "Segment intersection result"
 
@@ -2866,7 +2874,7 @@ msgstr "self: the sequence to the left of the call; value: the element in parent
 msgid "self: the value at this call site."
 msgstr "self: the value at this call site."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:18
+#: src/algorithms/convex-polygon-intersection/cases.ts:19
 msgid "Separated boundaries have an empty intersection."
 msgstr "Separated boundaries have an empty intersection."
 
@@ -2880,7 +2888,7 @@ msgstr "Seven hexagons form a finite honeycomb sheet, with each shared chemical 
 msgid "Shadowed (last value before shadowing was not recorded)"
 msgstr "Shadowed (last value before shadowing was not recorded)"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:22
+#: src/algorithms/convex-polygon-intersection/cases.ts:23
 msgid "Shared edge"
 msgstr "Shared edge"
 
@@ -2917,7 +2925,7 @@ msgstr "Six main branches each have two levels of symmetric forks, with gaps bet
 msgid "Skip this check if fewer than two segments remain"
 msgstr "Skip this check if fewer than two segments remain"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:23
+#: src/algorithms/convex-polygon-intersection/cases.ts:24
 msgid "Sloping edges produce exact fractional intersection coordinates."
 msgstr "Sloping edges produce exact fractional intersection coordinates."
 
@@ -3099,7 +3107,7 @@ msgstr "Temporarily remove segments through the current point before reinserting
 msgid "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection."
 msgstr "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:21
+#: src/algorithms/convex-polygon-intersection/cases.ts:22
 msgid "The boundaries meet at a single vertex."
 msgstr "The boundaries meet at a single vertex."
 
@@ -3170,7 +3178,7 @@ msgstr "The four corners form the hull, excluding collinear joints along its edg
 msgid "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 msgstr "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:19
+#: src/algorithms/convex-polygon-intersection/cases.ts:20
 msgid "The inner polygon is the entire intersection."
 msgstr "The inner polygon is the entire intersection."
 
@@ -3382,7 +3390,7 @@ msgstr "Two parallel segments have no intersecting pair."
 msgid "Two points"
 msgstr "Two points"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:17
+#: src/algorithms/convex-polygon-intersection/cases.ts:18
 msgid "Two rectangles share a rectangular region."
 msgstr "Two rectangles share a rectangular region."
 
@@ -3491,8 +3499,8 @@ msgstr "Undo the shear to restore original coordinates."
 msgid "Unknown case: {caseId}"
 msgstr "Unknown case: {caseId}"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:87
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:91
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:72
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:94
 msgid "Unknown case."
 msgstr "Unknown case."
 
@@ -3512,7 +3520,7 @@ msgstr "Unknown page path."
 msgid "Update the active set"
 msgstr "Update the active set"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:69
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:72
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:84
 msgid "Use buttons to zoom · Drag to pan"
 msgstr "Use buttons to zoom · Drag to pan"
@@ -3596,14 +3604,14 @@ msgid "help.VerticalRules.0"
 msgstr "Vertical segments: one x coordinate, one height at a time"
 
 #. placeholder {0}: translate(preset.name)
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:29
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:31
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:28
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:32
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:145
 msgid "View {0} details"
 msgstr "View {0} details"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:31
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:34
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:30
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:35
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:155
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:226
 msgid "View details"

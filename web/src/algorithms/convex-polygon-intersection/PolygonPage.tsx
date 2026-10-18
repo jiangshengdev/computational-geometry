@@ -18,6 +18,7 @@ import { usePointInteraction } from '../../geometry/usePointInteraction'
 import { useGeometryViewport } from '../../geometry/useGeometryViewport'
 import { GeometryViewControls } from '../../geometry/GeometryViewControls'
 import { GeometryInfo } from '../../geometry/GeometryInfo'
+import { CaseDescription } from '../../geometry/CaseDescription'
 
 export function PolygonPage() {
   const { t } = useLingui()
@@ -47,17 +48,19 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
   const interaction = usePointInteraction()
   const viewport = useGeometryViewport([...preset.first, ...preset.second], { padding: 36 })
   const result = computation.status === 'ready' ? computation.result : undefined
-  const kindLabels = { empty: t`Empty intersection`, point: t`Point intersection`, segment: t`Segment intersection result`, polygon: t`Convex polygon intersection result` }
+  const kindLabels = { empty: t`Empty intersection`, point: t`Point intersection`, segment: t`Segment intersection result` }
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex polygon intersection`} · ${t`Computational Geometry`}`} />
     <div className="case-toolbar">
       <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/convex-polygon-intersection">{t`Back to cases`}</AppLink>
       <h1 className="text-xl font-semibold">{translate(preset.name)}</h1>
-      <p>{translate(preset.description)}</p>
+      <div className="case-actions flex items-center gap-3">
+        <CaseDescription name={translate(preset.name)} description={translate(preset.description)} />
+      </div>
     </div>
     {computation.status === 'loading' ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>
       : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
-        : <p role="status">{kindLabels[computation.result.kind]}</p>}
+        : computation.result.kind === 'polygon' ? null : <p role="status">{kindLabels[computation.result.kind]}</p>}
     <div className="workspace result-workspace polygon-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <div className="drawing"><Card>
         <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1">

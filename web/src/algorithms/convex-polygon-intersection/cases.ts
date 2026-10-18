@@ -14,6 +14,7 @@ const boundary = (...coordinates: [string, string][]) => coordinates.map(([x, y]
 const square = boundary(['0', '0'], ['4', '0'], ['4', '4'], ['0', '4'])
 
 export const polygonCases: PolygonCase[] = [
+  { id: 'irregular-overlap', name: msg`Irregular convex polygons`, description: msg`An irregular pentagon and hexagon intersect in a nine-sided region with six new crossings and three original vertices.`, first: boundary(['-4', '-1'], ['-1', '-4'], ['4', '-2'], ['3', '3'], ['-2', '5']), second: boundary(['-5', '1'], ['-2', '-2'], ['2', '-3'], ['5', '1'], ['2', '6'], ['-2', '4']) },
   { id: 'overlap', name: msg`Overlapping polygons`, description: msg`Two rectangles share a rectangular region.`, first: square, second: boundary(['2', '1'], ['6', '1'], ['6', '3'], ['2', '3']) },
   { id: 'disjoint', name: msg`Disjoint polygons`, description: msg`Separated boundaries have an empty intersection.`, first: square, second: boundary(['6', '0'], ['8', '0'], ['8', '2'], ['6', '2']) },
   { id: 'contained', name: msg`Contained polygon`, description: msg`The inner polygon is the entire intersection.`, first: square, second: boundary(['1', '1'], ['3', '1'], ['2', '3']) },

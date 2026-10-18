@@ -15,8 +15,7 @@ import { ConvexHullPlot } from './ConvexHullPlot'
 import { ConvexHullView } from './ConvexHullView'
 import { PointCoordinates } from '../../geometry/PointCoordinates'
 import { usePointInteraction } from '../../geometry/usePointInteraction'
-import { Modal } from '@heroui/react/modal'
-import { X } from 'lucide-react'
+import { CaseDescription } from '../../geometry/CaseDescription'
 
 export function ConvexHullPage() {
   const { t } = useLingui()
@@ -50,21 +49,7 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
       <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/convex-hull">{t`Back to cases`}</AppLink>
       <h1 className="text-xl font-semibold">{translate(preset.name)}</h1>
       <div className="case-actions flex items-center gap-3">
-        <Modal>
-          <Button variant="tertiary" size="sm">{t`About this case`}</Button>
-          <Modal.Backdrop>
-            <Modal.Container scroll="inside">
-              <Modal.Dialog>
-                <Modal.CloseTrigger aria-label={t`Close help`}><X size={16} aria-hidden="true" /></Modal.CloseTrigger>
-                <Modal.Header><Modal.Heading>{t`About this case`}</Modal.Heading></Modal.Header>
-                <Modal.Body className="flex flex-col gap-3">
-                  <h2 className="font-semibold">{translate(preset.name)}</h2>
-                  <p>{translate(preset.description)}</p>
-                </Modal.Body>
-              </Modal.Dialog>
-            </Modal.Container>
-          </Modal.Backdrop>
-        </Modal>
+        <CaseDescription name={translate(preset.name)} description={translate(preset.description)} />
       </div>
     </div>
     {computation.status === 'loading' ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>

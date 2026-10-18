@@ -4,6 +4,7 @@ import { formatPoint, type Point } from '../../../src/geometry/geometry'
 test.use({ locale: 'en-US' })
 
 const cases = [
+  { id: 'irregular-overlap', name: 'Irregular convex polygons', kind: 'polygon', coordinates: ['(-15/4, -1/4)', '(-2, -2)', '(22/13, -38/13)', '(31/14, -19/7)', '(71/19, -13/19)', '(3, 3)', '(-8/9, 41/9)', '(-2, 4)', '(-5/2, 7/2)'] },
   { id: 'overlap', name: 'Overlapping polygons', kind: 'polygon', coordinates: ['(2, 1)', '(4, 1)', '(4, 3)', '(2, 3)'] },
   { id: 'disjoint', name: 'Disjoint polygons', kind: 'empty', coordinates: [] },
   { id: 'contained', name: 'Contained polygon', kind: 'polygon', coordinates: ['(1, 1)', '(3, 1)', '(2, 3)'] },
@@ -32,6 +33,22 @@ for (const preset of cases) {
     }
     await expect(page).toHaveURL(`/convex-polygon-intersection/cases/${preset.id}`)
     await expect(page).toHaveTitle(`${preset.name} · Convex polygon intersection · Computational Geometry`)
+    if (preset.id === 'irregular-overlap') {
+      const description = 'An irregular pentagon and hexagon intersect in a nine-sided region with six new crossings and three original vertices.'
+      await expect(page.getByText(description, { exact: true })).not.toBeVisible()
+      const about = page.getByRole('button', { name: 'About this case', exact: true })
+      await about.click()
+      const dialog = page.getByRole('dialog', { name: 'About this case', exact: true })
+      await expect(dialog).toContainText(preset.name)
+      await expect(dialog).toContainText(description)
+      await page.keyboard.press('Escape')
+      await expect(dialog).not.toBeVisible()
+      await expect(about).toBeFocused()
+      await about.click()
+      await dialog.getByRole('button', { name: 'Close help', exact: true }).click()
+      await expect(dialog).not.toBeVisible()
+      await expect(about).toBeFocused()
+    }
     const result = page.getByRole('region', { name: 'Intersection coordinates', exact: true })
     if (preset.kind === 'empty') {
       await expect(page.getByRole('status')).toHaveText('Empty intersection')
@@ -43,9 +60,10 @@ for (const preset of cases) {
     } else {
       await expect(result.getByRole('listitem')).toHaveText(preset.coordinates.map((p, index) => `R${index} ${p}`))
       await expect(page.locator(`[data-result="${preset.kind}"]`)).toHaveCount(1)
+      if (preset.kind === 'polygon') await expect(page.getByRole('status')).toHaveCount(0)
     }
     await page.reload()
-    await expect(page.getByRole('status')).not.toContainText('Computing')
+    await expect(result).toBeVisible()
     await expect(result.getByRole('listitem')).toHaveCount(preset.coordinates.length)
     await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
     await expect(page).toHaveURL('/convex-polygon-intersection')

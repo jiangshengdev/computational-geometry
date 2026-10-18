@@ -52,7 +52,7 @@ for (const [id, point, row] of [['exact-fractions', '(3/2, 3/2)', 1], ['point-co
 for (const id of ['exact-fractions', 'disjoint']) {
   test(`viewport operations preserve exact coordinates and interaction: ${id}`, async ({ page }) => {
     await page.goto(`/convex-polygon-intersection/cases/${id}`)
-    await expect(page.getByRole('status')).not.toContainText('Computing')
+    await expect(page.getByRole('region', { name: 'Intersection coordinates', exact: true })).toBeVisible()
     const plot = page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true })
     const layer = plot.locator('[data-layer="geometry"]')
     const coordinates = await page.getByRole('listitem').allTextContents()
