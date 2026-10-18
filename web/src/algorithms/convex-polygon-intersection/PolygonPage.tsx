@@ -14,6 +14,9 @@ import { polygonCases, type PolygonCase } from './cases'
 import { PolygonPlot } from './PolygonPlot'
 import { resultPoints, type PolygonIntersection } from './result'
 import './polygon.css'
+import { usePointInteraction } from '../../geometry/usePointInteraction'
+import { useGeometryViewport } from '../../geometry/useGeometryViewport'
+import { GeometryViewControls } from '../../geometry/GeometryViewControls'
 
 export function PolygonPage() {
   const { t } = useLingui()
@@ -40,6 +43,8 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
   const [computation, setComputation] = useState<Computation>({ status: 'loading' })
+  const interaction = usePointInteraction()
+  const viewport = useGeometryViewport([...preset.first, ...preset.second], { padding: 36 })
   useEffect(() => {
     const controller = new AbortController()
     async function compute() {
@@ -70,19 +75,19 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
     {computation.status === 'loading' ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>
       : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
         : <p role="status">{kindLabels[computation.result.kind]}</p>}
-    <div className="workspace result-workspace polygon-workspace">
+    <div className="workspace result-workspace polygon-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <div className="drawing"><Card>
-        <Card.Header className="drawing-toolbar"><Card.Title render={props => <h2 {...props} />}>{t`Original coordinate plane · Equal scale`}</Card.Title></Card.Header>
+        <Card.Header className="drawing-toolbar"><Card.Title render={props => <h2 {...props} />}>{t`Original coordinate plane · Equal scale`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
         <Card.Content className="flex min-h-0 flex-1 flex-col">
           <p className="polygon-legend"><span>{t`Polygon A · solid boundary`}</span><span>{t`Polygon B · dashed boundary`}</span><span>{t`Intersection · filled region or contact`}</span></p>
-          <div className="drawing-surface flex flex-col"><PolygonPlot first={preset.first} second={preset.second} result={result} /></div>
+          <div className="drawing-surface flex flex-col"><PolygonPlot first={preset.first} second={preset.second} result={result} viewport={viewport} interaction={interaction} /></div>
         </Card.Content>
       </Card></div>
       <div className="input-panel polygon-inputs">
-        <PointCoordinates title={t`Polygon A vertices`} points={preset.first} prefix="A" panel="input" />
-        <PointCoordinates title={t`Polygon B vertices`} points={preset.second} prefix="B" panel="input" />
+        <PointCoordinates title={t`Polygon A vertices`} points={preset.first} prefix="A" panel="input" interaction={interaction} />
+        <PointCoordinates title={t`Polygon B vertices`} points={preset.second} prefix="B" panel="input" interaction={interaction} />
       </div>
-      {result && result.kind !== 'empty' && <PointCoordinates title={t`Intersection coordinates`} points={resultPoints(result)} prefix="R" panel="result" />}
+      {result && result.kind !== 'empty' && <PointCoordinates title={t`Intersection coordinates`} points={resultPoints(result)} prefix="R" panel="result" interaction={interaction} />}
     </div>
   </>
 }

@@ -21,4 +21,5 @@ export const polygonCases: PolygonCase[] = [
   { id: 'point-contact', name: msg`Point contact`, description: msg`The boundaries meet at a single vertex.`, first: square, second: boundary(['4', '4'], ['6', '4'], ['6', '6'], ['4', '6']) },
   { id: 'shared-edge', name: msg`Shared edge`, description: msg`A shared boundary segment is a nonempty intersection.`, first: square, second: boundary(['4', '1'], ['6', '1'], ['6', '3'], ['4', '3']) },
   { id: 'exact-fractions', name: msg`Fractional intersection`, description: msg`Sloping edges produce exact fractional intersection coordinates.`, first: boundary(['0', '0'], ['3', '0'], ['0', '3']), second: boundary(['0', '1'], ['3', '2'], ['0', '2']) },
+  { id: 'many-vertices', name: msg`Many boundary vertices`, description: msg`A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions.`, first: Array.from({ length: 41 }, (_, index) => { const x = index - 20; return point(`${x}/5`, `${x * x}/100`) }), second: boundary(['-5', '-1'], ['5', '-1'], ['5', '5'], ['-5', '5']) },
 ]
