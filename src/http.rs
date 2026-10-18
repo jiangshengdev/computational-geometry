@@ -4,5 +4,5 @@ use axum::Router;
 
 /// Assemble the algorithm HTTP routes.
 pub fn router() -> Router {
-    Router::new().merge(crate::algorithms::bo::http::router())
+    Router::new().merge(crate::algorithms::segment_intersection::bo::http::router())
 }

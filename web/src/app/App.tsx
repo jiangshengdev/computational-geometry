@@ -1,6 +1,6 @@
 import { Route, Routes, useMatch } from 'react-router'
 import { useLingui } from '@lingui/react/macro'
-import { CaseList, CasePage, RouteError } from '../algorithms/bo/BoPages'
+import { CaseList, CasePage, RouteError } from '../algorithms/segment-intersection/bo/BoPages'
 import { DocumentationLink } from './DocumentationLink'
 import { LanguageSelect } from './LanguageProvider'
 import { AlgorithmHome } from './AlgorithmHome'

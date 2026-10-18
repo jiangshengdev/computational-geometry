@@ -10,15 +10,27 @@ path = "api/axum.rs"
 
 [[test]]
 name = "convex_hull"
-path = "tests/algorithms/convex_hull/convex_hull.rs"
+path = "tests/algorithms/convex_hull/andrew/convex_hull.rs"
 
 [[test]]
 name = "sweep"
-path = "tests/algorithms/bo/sweep.rs"
+path = "tests/algorithms/segment_intersection/bo/sweep.rs"
 
 [[test]]
 name = "performance"
-path = "tests/algorithms/bo/performance.rs"
+path = "tests/algorithms/segment_intersection/performance.rs"
+
+[[test]]
+name = "validation"
+path = "tests/algorithms/segment_intersection/validation.rs"
+
+[[test]]
+name = "trace"
+path = "tests/algorithms/segment_intersection/bo/trace.rs"
+
+[[test]]
+name = "trace_lifecycle"
+path = "tests/algorithms/segment_intersection/bo/trace_lifecycle.rs"
 
 [dependencies]
 axum = "0.8.9"

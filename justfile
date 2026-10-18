@@ -34,15 +34,15 @@ perf-export:
 
 # 只运行 Rust 案例性能诊断；读取已导出夹具，不调用前端工具。
 perf-cases profile="test":
-    cargo test --offline --profile {{profile}} --lib algorithms::bo::http::case_performance::actual_case_timings -- --exact --ignored --nocapture --test-threads=1
+    cargo test --offline --profile {{profile}} --lib algorithms::segment_intersection::bo::http::case_performance::actual_case_timings -- --exact --ignored --nocapture --test-threads=1
 
 # 独立临时端口测量真实教学体验；BO_PERF_MODE=full 测完整生成，cancel 测提早取消。
 perf-learning:
-    node tools/measure-learning.ts
+    node tools/algorithms/segment_intersection/bo/measure-learning.ts
 
 # 捕获或逐步比较完整 HTTP 教学语义；基线采用 gzip JSONL，拒绝覆盖。
 trace-baseline mode baseline:
-    node tools/compare-traces.ts {{mode}} {{quote(baseline)}}
+    node tools/algorithms/segment_intersection/bo/compare-traces.ts {{mode}} {{quote(baseline)}}
 
 # 一键启动临时后端并运行无头 E2E，结束后自动清理（包含原生编译，由使用者运行）。
 [positional-arguments]

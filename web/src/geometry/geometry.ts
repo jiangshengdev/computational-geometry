@@ -1,8 +1,5 @@
 export interface Rational { numerator: string; denominator: string }
 export interface Point { x: Rational; y: Rational }
-export interface Segment { start: Point; end: Point }
-export type Geometry = { type: 'point'; point: Point } | { type: 'overlap'; start: Point; end: Point }
-export interface Intersection { segments: [number, number]; geometry: Geometry }
 export function rational(value: string): Rational {
   const [numerator, denominator = '1'] = value.split('/')
   return { numerator, denominator }
@@ -12,16 +9,9 @@ export function point(x: string, y: string): Point {
   return { x: rational(x), y: rational(y) }
 }
 
-export function segment(x1: string, y1: string, x2: string, y2: string): Segment {
-  return { start: point(x1, y1), end: point(x2, y2) }
-}
-
 export const formatRational = (value: Rational) => value.denominator === '1'
   ? value.numerator : `${value.numerator}/${value.denominator}`
 export const formatPoint = (p: Point) => `(${formatRational(p.x)}, ${formatRational(p.y)})`
-export const pairName = (result: Intersection) => result.segments.map(i => `S${i}`).join(' × ')
-export const formatGeometry = (g: Geometry) => g.type === 'point'
-  ? formatPoint(g.point) : `${formatPoint(g.start)} → ${formatPoint(g.end)}`
 
 // Only the drawing uses approximate coordinates. HTTP and details keep strings.
 export function approximate(value: Rational): number {
@@ -37,9 +27,4 @@ export function samePoint(a: Point, b: Point): boolean {
     const av = a[axis as keyof Point], bv = b[axis as keyof Point]
     return BigInt(av.numerator) * BigInt(bv.denominator) === BigInt(bv.numerator) * BigInt(av.denominator)
   })
-}
-
-export function isVertical(segment: Segment): boolean {
-  return !samePoint(segment.start, segment.end) &&
-    samePoint({ x: segment.start.x, y: segment.end.y }, segment.end)
 }

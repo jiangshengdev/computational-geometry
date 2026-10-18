@@ -15,7 +15,7 @@ export default mergeConfig(base, defineConfig({
     name: 'performance-case-inputs',
     enforce: 'pre',
     transform(code, id) {
-      if (!id.endsWith('/src/algorithms/bo/cases/presets.ts')) return
+      if (!id.endsWith('/src/algorithms/segment-intersection/cases/presets.ts')) return
       return `${code}\npresets.push(...${JSON.stringify(cases)});\n`
     },
   }],

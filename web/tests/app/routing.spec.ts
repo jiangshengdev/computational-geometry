@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { presets } from '../../src/algorithms/bo/cases/presets'
+import { presets } from '../../src/algorithms/segment-intersection/cases/presets'
 import { chinese } from '../support/language'
 
 test('预览快捷键：右方向键进入教程，长按不跳过初始步骤', async ({ page }) => {

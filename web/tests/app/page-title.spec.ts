@@ -1,4 +1,4 @@
-import { expect, test } from '../support/learning-test'
+import { expect, test } from '../algorithms/segment-intersection/bo/support/learning-test'
 
 test('标签页标题随导航更新，教学步骤不改变标题', async ({ page }) => {
   const errors: string[] = []

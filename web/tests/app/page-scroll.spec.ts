@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '../support/learning-test'
+import { expect, test, type Page } from '../algorithms/segment-intersection/bo/support/learning-test'
 
 async function scrollTo(page: Page, y: number) {
   await page.evaluate(y => window.scrollTo({ top: y, behavior: 'instant' }), y)

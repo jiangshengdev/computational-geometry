@@ -36,16 +36,16 @@
 //! depends on operand bit lengths; this is not an O((n + k) log n) claim.
 
 mod geometry;
-pub use geometry::{Geometry, Intersection, Point, Rational, Segment};
+pub use geometry::{Point, Rational};
 
 mod algorithms;
-pub use algorithms::bo::intersections;
 pub use algorithms::convex_hull;
+pub use algorithms::segment_intersection::{Geometry, Intersection, Segment, intersections};
 
 pub mod http;
 
-mod brute_force;
-pub use brute_force::brute_force_intersections;
+pub use algorithms::segment_intersection::brute_force_intersections;
 
-mod validation;
-pub use validation::{DuplicatePair, GeometryMismatch, ValidationReport, validate_intersections};
+pub use algorithms::segment_intersection::{
+    DuplicatePair, GeometryMismatch, ValidationReport, validate_intersections,
+};
