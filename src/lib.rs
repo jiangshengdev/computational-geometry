@@ -1,4 +1,10 @@
-//! Exact Bentley–Ottmann intersections of closed segments.
+//! Exact planar geometry: convex hulls and closed-segment intersections.
+//!
+//! [convex_hull] computes an Andrew monotone-chain hull using the shared
+//! [Point] and [Rational] types. See its documentation for ordering, collinear
+//! point handling, degenerate inputs, and operation-count guarantees.
+//!
+//! # Bentley–Ottmann intersections
 //!
 //! Endpoint contacts, multiway crossings, vertical segments and distinct events
 //! at the same sweep coordinate are supported, including positive-length
@@ -34,6 +40,7 @@ pub use geometry::{Geometry, Intersection, Point, Rational, Segment};
 
 mod algorithms;
 pub use algorithms::bo::intersections;
+pub use algorithms::convex_hull;
 
 pub mod http;
 

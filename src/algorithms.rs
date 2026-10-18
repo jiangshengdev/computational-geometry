@@ -2,3 +2,4 @@
 
 pub(crate) mod bo;
 mod convex_hull;
+pub use convex_hull::convex_hull;
