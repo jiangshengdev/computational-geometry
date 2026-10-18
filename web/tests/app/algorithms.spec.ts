@@ -8,7 +8,7 @@ test('算法首页可进入 BO 与凸包案例列表，列表不发起计算', a
   page.on('request', request => { if (new URL(request.url()).pathname.startsWith('/api/')) requests.push(request.url()) })
   await page.goto('/')
   await expect(page).toHaveTitle('问题选择 · 计算几何')
-  for (const [name, algorithm, destination] of [['线段求交', 'Bentley–Ottmann', '/bo'], ['凸包', 'Andrew 单调链算法', '/convex-hull']]) {
+  for (const [name, algorithm, destination] of [['线段求交', 'Bentley–Ottmann', '/bo'], ['凸包', 'Andrew 单调链算法', '/convex-hull'], ['凸多边形交集', 'Edge Chasing', '/convex-polygon-intersection']]) {
     const card = page.getByRole('article', { name, exact: true })
     await expect(card.getByText(algorithm, { exact: true })).toBeVisible()
     await card.getByRole('heading', { name, exact: true }).click()

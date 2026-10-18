@@ -7,6 +7,7 @@
 //! shared edges constrain the entire intersection to their supporting line.
 //! See CNB #165 for the source audit and the complete contract.
 
+pub(crate) mod http;
 mod polygon;
 pub use polygon::{ConvexPolygon, ConvexPolygonError};
 

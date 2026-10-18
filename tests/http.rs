@@ -5,6 +5,9 @@ use axum::{
 use serde_json::{Value, json};
 use tower::ServiceExt;
 
+#[path = "http/convex_polygon_intersection_tests.rs"]
+mod convex_polygon_intersection;
+
 fn point(x: &str, y: &str) -> Value {
     json!({"x": {"numerator": x, "denominator": "1"}, "y": {"numerator": y, "denominator": "1"}})
 }

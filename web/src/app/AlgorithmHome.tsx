@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router'
 import { PageHeading } from './PageHeading'
 
 function AlgorithmEntry({ kind, title, algorithm, to }: {
-  kind: 'bo' | 'convex-hull'
+  kind: 'bo' | 'convex-hull' | 'convex-polygon-intersection'
   title: string
   algorithm: string
   to: string
@@ -20,7 +20,7 @@ function AlgorithmEntry({ kind, title, algorithm, to }: {
         <svg className="case-thumbnail" viewBox="0 0 160 120" aria-hidden="true">
           {kind === 'bo'
             ? <g className="input"><line x1="48" y1="28" x2="112" y2="92" /><line x1="48" y1="92" x2="112" y2="28" /></g>
-            : <g className="input">
+            : kind === 'convex-polygon-intersection' ? <g className="input"><polygon points="28,30 98,30 98,90 28,90" fill="none" /><polygon points="62,50 132,50 132,106 62,106" fill="none" strokeDasharray="5 3" /></g> : <g className="input">
               <path d="M32 76 L48 28 L104 24 L132 68 L96 96 Z" fill="none" />
               {[[32, 76], [48, 28], [104, 24], [132, 68], [96, 96], [64, 60], [92, 52], [84, 76]].map(([cx, cy]) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="2.5" />)}
             </g>}
@@ -47,6 +47,7 @@ export function AlgorithmHome() {
     <div className="algorithm-list grid gap-4">
       <AlgorithmEntry kind="bo" title={t`Segment intersection`} algorithm="Bentley–Ottmann" to="/bo" />
       <AlgorithmEntry kind="convex-hull" title={t`Convex hull`} algorithm={t`Andrew monotone chain algorithm`} to="/convex-hull" />
+      <AlgorithmEntry kind="convex-polygon-intersection" title={t`Convex polygon intersection`} algorithm="Edge Chasing" to="/convex-polygon-intersection" />
     </div>
   </section>
 }

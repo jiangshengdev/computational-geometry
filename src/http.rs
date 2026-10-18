@@ -9,4 +9,5 @@ pub fn router() -> Router {
     Router::new()
         .merge(crate::algorithms::segment_intersection::bo::http::router())
         .merge(crate::algorithms::convex_hull::http::router())
+        .merge(crate::algorithms::convex_polygon_intersection::http::router())
 }

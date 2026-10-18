@@ -1,0 +1,6 @@
+.polygon-inputs { display: grid; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; min-height: 0; min-width: 0; }
+.polygon-inputs > .workspace-panel { grid-column: auto; grid-row: auto; }
+.polygon-legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: .75rem; }
+.polygon-legend > :nth-child(1) { color: var(--accent); }
+.polygon-legend > :nth-child(2) { color: var(--warning); }
+.polygon-legend > :nth-child(3) { color: var(--success); }
