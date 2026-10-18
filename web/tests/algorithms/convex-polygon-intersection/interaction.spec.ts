@@ -84,7 +84,10 @@ for (const id of ['exact-fractions', 'disjoint']) {
     await expect(page.getByRole('listitem')).toHaveText(coordinates)
     if (id === 'disjoint') {
       await expect(page.getByRole('status')).toHaveText('Empty intersection')
-      await expect(page.getByRole('region', { name: 'Intersection coordinates', exact: true })).toHaveCount(0)
+      const result = page.getByRole('region', { name: 'Intersection coordinates', exact: true })
+      await expect(result).toBeVisible()
+      await expect(result.getByLabel('Point count')).toHaveText('0')
+      await expect(result.getByRole('button')).toHaveCount(0)
     }
   })
 }

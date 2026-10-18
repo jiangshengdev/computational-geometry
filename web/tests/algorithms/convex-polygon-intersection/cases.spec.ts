@@ -35,7 +35,10 @@ for (const preset of cases) {
     const result = page.getByRole('region', { name: 'Intersection coordinates', exact: true })
     if (preset.kind === 'empty') {
       await expect(page.getByRole('status')).toHaveText('Empty intersection')
-      await expect(result).toHaveCount(0)
+      await expect(result).toBeVisible()
+      await expect(result.getByLabel('Point count')).toHaveText('0')
+      await expect(result).toContainText('No points')
+      await expect(result.getByRole('listitem')).toHaveCount(0)
       await expect(page.locator('[data-result]')).toHaveCount(0)
     } else {
       await expect(result.getByRole('listitem')).toHaveText(preset.coordinates.map((p, index) => `R${index} ${p}`))

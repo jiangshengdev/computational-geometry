@@ -77,7 +77,7 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
         <PointCoordinates title={t`Polygon A vertices`} points={preset.first} prefix="A" panel="input" interaction={interaction} />
         <PointCoordinates title={t`Polygon B vertices`} points={preset.second} prefix="B" panel="input" interaction={interaction} />
       </div>
-      {result && result.kind !== 'empty' && <PointCoordinates title={t`Intersection coordinates`} points={resultPoints(result)} prefix="R" panel="result" interaction={interaction} />}
+      {result && <PointCoordinates title={t`Intersection coordinates`} points={resultPoints(result)} prefix="R" panel="result" interaction={interaction} />}
     </div>
   </>
 }
