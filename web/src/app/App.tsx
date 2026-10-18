@@ -21,7 +21,7 @@ export default function App() {
       <AppLink to="/">{t`Algorithm home`}</AppLink>
       <div className="flex items-center gap-3"><DocumentationLink /><LanguageSelect /></div>
     </div>}
-    {boList && <PageHeading title="Bentley–Ottmann" description={t`Choose a case to inspect exact intersection points and complete overlap intervals.`} />}
+    {boList && <PageHeading title={t`Segment intersection`} subtitle="Bentley–Ottmann" />}
     <Routes>
       <Route path="/" element={<AlgorithmHome />} />
       <Route path="/bo" element={<CaseList />} />

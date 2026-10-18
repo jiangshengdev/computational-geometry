@@ -169,7 +169,7 @@ for (const invalid of [
     await expect(page.getByRole('region', { name: '逐步学习' })).toHaveCount(0)
     if (invalid.path === '/missing') {
       await page.getByRole('link', { name: '算法首页', exact: true }).click()
-      await expect(page).toHaveTitle('算法选择 · 计算几何')
+      await expect(page).toHaveTitle('问题选择 · 计算几何')
       return
     }
     const recovery = page.getByRole('navigation', { name: '恢复导航' })

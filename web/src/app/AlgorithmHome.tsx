@@ -6,10 +6,10 @@ import { Button } from '@heroui/react/button'
 import { useNavigate } from 'react-router'
 import { PageHeading } from './PageHeading'
 
-function AlgorithmEntry({ kind, title, description, to }: {
+function AlgorithmEntry({ kind, title, algorithm, to }: {
   kind: 'bo' | 'convex-hull'
   title: string
-  description: string
+  algorithm: string
   to: string
 }) {
   const { t } = useLingui()
@@ -29,7 +29,7 @@ function AlgorithmEntry({ kind, title, description, to }: {
       <div className="flex min-w-0 flex-1 flex-col gap-3">
         <Card.Header className="gap-1">
           <Card.Title render={props => <h2 {...props} />} id={`algorithm-${kind}`}>{title}</Card.Title>
-          <Card.Description>{description}</Card.Description>
+          <Card.Description>{algorithm}</Card.Description>
         </Card.Header>
         <Card.Footer className="mt-auto flex flex-wrap justify-end gap-3">
           <Button onPress={() => navigate(to)}>{t`Enter`}</Button>
@@ -41,12 +41,12 @@ function AlgorithmEntry({ kind, title, description, to }: {
 
 export function AlgorithmHome() {
   const { t } = useLingui()
-  return <section aria-label={t`Choose an algorithm`}>
-    <DocumentTitle title={`${t`Choose an algorithm`} · ${t`Computational Geometry`}`} />
-    <PageHeading title={t`Computational Geometry`} description={t`Choose an algorithm`} />
+  return <section aria-label={t`Choose a problem`}>
+    <DocumentTitle title={`${t`Choose a problem`} · ${t`Computational Geometry`}`} />
+    <PageHeading title={t`Choose a problem`} description={t`Choose a geometry problem to explore its algorithm and cases.`} />
     <div className="algorithm-list grid gap-4">
-      <AlgorithmEntry kind="bo" title="Bentley–Ottmann" description={t`Exact segment intersections and step-by-step learning.`} to="/bo" />
-      <AlgorithmEntry kind="convex-hull" title={t`Convex hull`} description={t`Fixed point sets and exact convex hull results.`} to="/convex-hull" />
+      <AlgorithmEntry kind="bo" title={t`Segment intersection`} algorithm="Bentley–Ottmann" to="/bo" />
+      <AlgorithmEntry kind="convex-hull" title={t`Convex hull`} algorithm={t`Andrew monotone chain algorithm`} to="/convex-hull" />
     </div>
   </section>
 }

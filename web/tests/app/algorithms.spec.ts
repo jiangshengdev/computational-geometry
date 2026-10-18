@@ -7,18 +7,21 @@ test('算法首页可进入 BO 与凸包案例列表，列表不发起计算', a
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
   page.on('request', request => { if (new URL(request.url()).pathname.startsWith('/api/')) requests.push(request.url()) })
   await page.goto('/')
-  await expect(page).toHaveTitle('算法选择 · 计算几何')
-  for (const [name, destination] of [['Bentley–Ottmann', '/bo'], ['凸包', '/convex-hull']]) {
+  await expect(page).toHaveTitle('问题选择 · 计算几何')
+  for (const [name, algorithm, destination] of [['线段求交', 'Bentley–Ottmann', '/bo'], ['凸包', 'Andrew 单调链算法', '/convex-hull']]) {
     const card = page.getByRole('article', { name, exact: true })
+    await expect(card.getByText(algorithm, { exact: true })).toBeVisible()
     await card.getByRole('heading', { name, exact: true }).click()
     await expect(page).toHaveURL('/')
     const preview = card.getByRole('link', { name, exact: true })
     await preview.focus()
     await page.keyboard.press('Enter')
     await expect(page).toHaveURL(destination)
+    await expect(page.getByRole('heading', { level: 1, name, exact: true })).toBeVisible()
+    await expect(page.getByText(algorithm, { exact: true })).toBeVisible()
     await page.getByRole('link', { name: '算法首页', exact: true }).click()
   }
-  await page.getByRole('article', { name: 'Bentley–Ottmann', exact: true }).getByRole('button', { name: '进入', exact: true }).click()
+  await page.getByRole('article', { name: '线段求交', exact: true }).getByRole('button', { name: '进入', exact: true }).click()
   await expect(page).toHaveURL('/bo')
   await expect(page.getByRole('region', { name: '案例列表', exact: true })).toBeVisible()
   await page.getByRole('link', { name: '算法首页', exact: true }).click()
@@ -51,6 +54,6 @@ for (const path of ['/cases/crossing', '/cases/crossing/learn?step=2']) {
     expect(computations).toEqual([])
     await page.getByRole('link', { name: '算法首页', exact: true }).click()
     await expect(page).toHaveURL('/')
-    await expect(page).toHaveTitle('算法选择 · 计算几何')
+    await expect(page).toHaveTitle('问题选择 · 计算几何')
   })
 }

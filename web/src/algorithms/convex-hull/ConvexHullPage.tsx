@@ -25,7 +25,7 @@ export function ConvexHullPage() {
   const navigate = useNavigate()
   return <section aria-label={t`Convex hull cases`}>
     <DocumentTitle title={`${t`Convex hull`} · ${t`Computational Geometry`}`} />
-    <PageHeading title={t`Convex hull`} description={t`Choose a fixed point set to inspect its exact convex hull.`} />
+    <PageHeading title={t`Convex hull`} subtitle={t`Andrew monotone chain algorithm`} />
     <div className="case-list grid gap-4">{hullCases.map(preset => <article key={preset.id} aria-labelledby={`hull-${preset.id}`}><Card className="case-card h-full items-stretch">
       <AppLink className="case-thumbnail-link" to={`/convex-hull/cases/${preset.id}`} aria-label={t`View ${translate(preset.name)} details`}><ConvexHullPlot points={preset.points} preview /></AppLink>
       <div className="flex min-w-0 flex-1 flex-col gap-3"><Card.Header className="gap-1"><Card.Title id={`hull-${preset.id}`} render={props => <h2 {...props} />}>{translate(preset.name)}</Card.Title><Card.Description>{translate(preset.description)}</Card.Description></Card.Header>

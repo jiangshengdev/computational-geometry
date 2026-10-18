@@ -195,6 +195,8 @@ msgstr "About the order"
 msgid "About the queue"
 msgstr "About the queue"
 
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:70
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:75
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:280
 msgid "About this case"
 msgstr "About this case"
@@ -312,7 +314,9 @@ msgstr "After the crossing segments {0} reorder, this pair lies at the outer bou
 msgid "After the end of the {keyword} block"
 msgstr "After the end of the {keyword} block"
 
-#: src/app/App.tsx:20
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:68
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:103
+#: src/app/App.tsx:21
 msgid "Algorithm home"
 msgstr "Algorithm home"
 
@@ -347,6 +351,11 @@ msgstr "An endpoint of a vertical segment lies inside a horizontal segment."
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:158
 msgid "An iteration element is available; enter the loop body"
 msgstr "An iteration element is available; enter the loop body"
+
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:28
+#: src/app/AlgorithmHome.tsx:49
+msgid "Andrew monotone chain algorithm"
+msgstr "Andrew monotone chain algorithm"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:30
@@ -388,8 +397,8 @@ msgstr "Atomic geometry operation in the teaching code, corresponding to the act
 msgid "Attach zero-based indices to iterator elements."
 msgstr "Attach zero-based indices to iterator elements."
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:59
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:81
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:66
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:105
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:227
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:259
 msgid "Back to cases"
@@ -471,12 +480,12 @@ msgstr "Branch tips determine the hull of this forked point set. The shape uses 
 msgid "break executed; exit the loop"
 msgstr "break executed; exit the loop"
 
-#: src/algorithms/convex-hull/cases.ts:40
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:52
 msgid "Bridge truss"
 msgstr "Bridge truss"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:52
+#: src/algorithms/convex-hull/cases.ts:40
 msgid "Bridge truss"
 msgstr "Bridge truss"
 
@@ -612,18 +621,28 @@ msgid "Check whether this segment passes through the current point"
 msgstr "Check whether this segment passes through the current point"
 
 #: src/app/App.tsx:23
-msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
-msgstr "Choose a case to inspect exact intersection points and complete overlap intervals."
+#~ msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
+#~ msgstr "Choose a case to inspect exact intersection points and complete overlap intervals."
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:23
-msgid "Choose a fixed point set to inspect its exact convex hull."
-msgstr "Choose a fixed point set to inspect its exact convex hull."
+#~ msgid "Choose a fixed point set to inspect its exact convex hull."
+#~ msgstr "Choose a fixed point set to inspect its exact convex hull."
+
+#: src/app/AlgorithmHome.tsx:46
+msgid "Choose a geometry problem to explore its algorithm and cases."
+msgstr "Choose a geometry problem to explore its algorithm and cases."
 
 #: src/app/AlgorithmHome.tsx:44
 #: src/app/AlgorithmHome.tsx:45
 #: src/app/AlgorithmHome.tsx:46
-msgid "Choose an algorithm"
-msgstr "Choose an algorithm"
+msgid "Choose a problem"
+msgstr "Choose a problem"
+
+#: src/app/AlgorithmHome.tsx:44
+#: src/app/AlgorithmHome.tsx:45
+#: src/app/AlgorithmHome.tsx:46
+#~ msgid "Choose an algorithm"
+#~ msgstr "Choose an algorithm"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionCode.ts:157
@@ -649,6 +668,7 @@ msgstr "Close"
 msgid "Close {0}"
 msgstr "Close {0}"
 
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:74
 #: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:65
 msgid "Close help"
 msgstr "Close help"
@@ -736,17 +756,16 @@ msgstr "compare: the current ordering rule."
 msgid "Compound argument evaluation and return value at this call site: "
 msgstr "Compound argument evaluation and return value at this call site: "
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:62
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:87
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:74
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:88
 msgid "Computation failed"
 msgstr "Computation failed"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:22
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:58
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:27
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:64
 #: src/app/AlgorithmHome.tsx:45
-#: src/app/AlgorithmHome.tsx:46
-#: src/app/App.tsx:34
+#: src/app/App.tsx:35
 msgid "Computational Geometry"
 msgstr "Computational Geometry"
 
@@ -760,7 +779,7 @@ msgstr "Compute the exact segment height at the given x coordinate."
 msgid "Compute the intersection candidate and schedule a future event"
 msgstr "Compute the intersection candidate and schedule a future event"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:61
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:86
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:86
 msgid "Computing…"
 msgstr "Computing…"
@@ -795,19 +814,19 @@ msgstr "Conventions: exact rational numbers determine intersections and ordering
 msgid "Convert the collection into an iterator that consumes its elements."
 msgstr "Convert the collection into an iterator that consumes its elements."
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:22
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:23
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:58
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:79
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:27
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:28
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:64
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:102
 #: src/app/AlgorithmHome.tsx:49
 msgid "Convex hull"
 msgstr "Convex hull"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:21
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:26
 msgid "Convex hull cases"
 msgstr "Convex hull cases"
 
-#: src/algorithms/convex-hull/ConvexHullPlot.tsx:15
+#: src/algorithms/convex-hull/ConvexHullPlot.tsx:18
 msgid "Convex hull plot"
 msgstr "Convex hull plot"
 
@@ -1044,12 +1063,12 @@ msgstr "Element of {expression} selected by the current index"
 msgid "Empty"
 msgstr "Empty"
 
-#: src/algorithms/convex-hull/cases.ts:58
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/cases/presets.ts:14
 msgid "Empty set"
 msgstr "Empty set"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/presets.ts:14
+#: src/algorithms/convex-hull/cases.ts:58
 msgid "Empty set"
 msgstr "Empty set"
 
@@ -1164,8 +1183,8 @@ msgid "Exact rational coordinates remain fractions in the ordered hull result."
 msgstr "Exact rational coordinates remain fractions in the ordered hull result."
 
 #: src/app/AlgorithmHome.tsx:48
-msgid "Exact segment intersections and step-by-step learning."
-msgstr "Exact segment intersections and step-by-step learning."
+#~ msgid "Exact segment intersections and step-by-step learning."
+#~ msgstr "Exact segment intersections and step-by-step learning."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:78
@@ -1251,8 +1270,8 @@ msgid "First segment in the current pair (an index in the sweep loop)"
 msgstr "First segment in the current pair (an index in the sweep loop)"
 
 #: src/app/AlgorithmHome.tsx:49
-msgid "Fixed point sets and exact convex hull results."
-msgstr "Fixed point sets and exact convex hull results."
+#~ msgid "Fixed point sets and exact convex hull results."
+#~ msgstr "Fixed point sets and exact convex hull results."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:45
@@ -1354,16 +1373,16 @@ msgstr "Group the horizontal, vertical, and diagonal segments passing through th
 msgid "Help topics"
 msgstr "Help topics"
 
-#: src/algorithms/convex-hull/cases.ts:46
-msgid "Hexagonal snowflake"
-msgstr "Hexagonal snowflake"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:39
 msgid "Hexagonal snowflake"
 msgstr "Hexagonal snowflake"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:68
+#: src/algorithms/convex-hull/cases.ts:46
+msgid "Hexagonal snowflake"
+msgstr "Hexagonal snowflake"
+
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:92
 msgid "Hull vertices"
 msgstr "Hull vertices"
 
@@ -1451,19 +1470,17 @@ msgstr "Indices of the neighboring segments being checked"
 msgid "Input and intersection plot"
 msgstr "Input and intersection plot"
 
-#: src/algorithms/convex-hull/ConvexHullPlot.tsx:15
+#: src/algorithms/convex-hull/ConvexHullPlot.tsx:18
 msgid "Input point preview"
 msgstr "Input point preview"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:67
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:91
 msgid "Input points"
 msgstr "Input points"
 
-#. placeholder {0}: preset.points.length
-#. placeholder {1}: computation.vertices.length
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:63
-msgid "Input points: {0}; hull vertices: {1}"
-msgstr "Input points: {0}; hull vertices: {1}"
+#~ msgid "Input points: {0}; hull vertices: {1}"
+#~ msgstr "Input points: {0}; hull vertices: {1}"
 
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:120
 msgid "Input S{index}"
@@ -1546,12 +1563,12 @@ msgstr "Invalid execution trace final state"
 msgid "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 msgstr "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:79
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:80
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:102
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:104
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:224
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:225
-#: src/app/App.tsx:34
 #: src/app/App.tsx:35
+#: src/app/App.tsx:36
 msgid "Invalid link"
 msgstr "Invalid link"
 
@@ -1754,7 +1771,7 @@ msgstr "No event processed yet"
 msgid "No events"
 msgstr "No events"
 
-#: src/algorithms/convex-hull/ConvexHullPlot.tsx:26
+#: src/algorithms/convex-hull/ConvexHullPlot.tsx:44
 msgid "No input points"
 msgstr "No input points"
 
@@ -1785,7 +1802,7 @@ msgstr "No intersection"
 msgid "No next element; the loop has ended"
 msgstr "No next element; the loop has ended"
 
-#: src/algorithms/convex-hull/ConvexHullCoordinates.tsx:11
+#: src/algorithms/convex-hull/ConvexHullCoordinates.tsx:22
 msgid "No points"
 msgstr "No points"
 
@@ -2092,7 +2109,7 @@ msgid "Place all endpoints in the event queue, keeping one event per point. Endp
 msgstr "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
 
 #. placeholder {0}: computation.message
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:62
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:87
 msgid "Please check the local service. {0}"
 msgstr "Please check the local service. {0}"
 
@@ -2101,6 +2118,7 @@ msgstr "Please check the local service. {0}"
 msgid "Please check the local service. {errorMessage}"
 msgstr "Please check the local service. {errorMessage}"
 
+#: src/algorithms/convex-hull/ConvexHullPlot.tsx:31
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:109
 msgid "Point"
 msgstr "Point"
@@ -2110,7 +2128,7 @@ msgstr "Point"
 msgid "point and event bound; event-taking module complete"
 msgstr "point and event bound; event-taking module complete"
 
-#: src/algorithms/convex-hull/ConvexHullCoordinates.tsx:10
+#: src/algorithms/convex-hull/ConvexHullCoordinates.tsx:21
 msgid "Point count"
 msgstr "Point count"
 
@@ -2590,6 +2608,11 @@ msgstr "Segment index visited by the current loop"
 msgid "Segment information carried by the current event"
 msgstr "Segment information carried by the current event"
 
+#: src/app/AlgorithmHome.tsx:48
+#: src/app/App.tsx:24
+msgid "Segment intersection"
+msgstr "Segment intersection"
+
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:85
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:86
 #: src/algorithms/segment-intersection/bo/learning/LearningView.tsx:30
@@ -2797,12 +2820,12 @@ msgstr "Source: the 2D intersection table in CGAL's official documentation sourc
 msgid "help.LearningReferences.2"
 msgstr "Source: the lecture's Plane Sweep, Adjacent-segment rule, and event-handling sections (the adjacency argument in Figure 4 and insertion, deletion, and crossing in Figure 5). The lecture initially assumes general position; here we also specify the processing order for endpoints with the same <0>x</0>. Its balanced-tree complexity results are not performance guarantees for this demonstration."
 
-#: src/algorithms/convex-hull/cases.ts:34
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/cases/presets.ts:38
 msgid "Spider web"
 msgstr "Spider web"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/presets.ts:38
+#: src/algorithms/convex-hull/cases.ts:34
 msgid "Spider web"
 msgstr "Spider web"
 
@@ -3321,7 +3344,7 @@ msgstr "Undo the shear to restore original coordinates."
 msgid "Unknown case: {caseId}"
 msgstr "Unknown case: {caseId}"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:80
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:104
 msgid "Unknown case."
 msgstr "Unknown case."
 
@@ -3331,8 +3354,8 @@ msgid "Unknown error"
 msgstr "Unknown error"
 
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:255
-#: src/app/App.tsx:30
-#: src/app/App.tsx:35
+#: src/app/App.tsx:31
+#: src/app/App.tsx:36
 msgid "Unknown page path."
 msgstr "Unknown page path."
 
@@ -3424,12 +3447,12 @@ msgid "help.VerticalRules.0"
 msgstr "Vertical segments: one x coordinate, one height at a time"
 
 #. placeholder {0}: translate(preset.name)
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:25
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:30
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:147
 msgid "View {0} details"
 msgstr "View {0} details"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:27
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:32
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:157
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:228
 msgid "View details"

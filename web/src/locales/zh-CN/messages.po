@@ -195,6 +195,8 @@ msgstr "顺序说明"
 msgid "About the queue"
 msgstr "队列说明"
 
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:70
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:75
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:280
 msgid "About this case"
 msgstr "案例说明"
@@ -312,7 +314,9 @@ msgstr "交叉的 {0} 换序后，这一对处在换序区间的外侧边界，�
 msgid "After the end of the {keyword} block"
 msgstr "{keyword} 块结束后"
 
-#: src/app/App.tsx:20
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:68
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:103
+#: src/app/App.tsx:21
 msgid "Algorithm home"
 msgstr "算法首页"
 
@@ -347,6 +351,11 @@ msgstr "竖直线段的端点落在水平线段内部。"
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:158
 msgid "An iteration element is available; enter the loop body"
 msgstr "本次已取得迭代元素，进入循环体"
+
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:28
+#: src/app/AlgorithmHome.tsx:49
+msgid "Andrew monotone chain algorithm"
+msgstr "Andrew 单调链算法"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:30
@@ -388,8 +397,8 @@ msgstr "教学伪代码中的原子几何计算；对应 Rust 实际精确计算
 msgid "Attach zero-based indices to iterator elements."
 msgstr "为迭代元素附加从零开始的索引。"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:59
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:81
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:66
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:105
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:227
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:259
 msgid "Back to cases"
@@ -471,12 +480,12 @@ msgstr "分叉点集的外围枝尖决定凸包。图案使用固定有理数近
 msgid "break executed; exit the loop"
 msgstr "已执行 break，退出循环"
 
-#: src/algorithms/convex-hull/cases.ts:40
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:52
 msgid "Bridge truss"
 msgstr "桥梁桁架"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:52
+#: src/algorithms/convex-hull/cases.ts:40
 msgid "Bridge truss"
 msgstr "桥梁桁架"
 
@@ -612,18 +621,28 @@ msgid "Check whether this segment passes through the current point"
 msgstr "判断这条线段是否经过当前点"
 
 #: src/app/App.tsx:23
-msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
-msgstr "选择案例，检查精确交点与完整重叠区间。"
+#~ msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
+#~ msgstr "选择案例，检查精确交点与完整重叠区间。"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:23
-msgid "Choose a fixed point set to inspect its exact convex hull."
-msgstr "选择固定点集，查看精确凸包。"
+#~ msgid "Choose a fixed point set to inspect its exact convex hull."
+#~ msgstr "选择固定点集，查看精确凸包。"
+
+#: src/app/AlgorithmHome.tsx:46
+msgid "Choose a geometry problem to explore its algorithm and cases."
+msgstr "选择几何问题，探索对应算法与案例。"
 
 #: src/app/AlgorithmHome.tsx:44
 #: src/app/AlgorithmHome.tsx:45
 #: src/app/AlgorithmHome.tsx:46
-msgid "Choose an algorithm"
-msgstr "算法选择"
+msgid "Choose a problem"
+msgstr "问题选择"
+
+#: src/app/AlgorithmHome.tsx:44
+#: src/app/AlgorithmHome.tsx:45
+#: src/app/AlgorithmHome.tsx:46
+#~ msgid "Choose an algorithm"
+#~ msgstr "算法选择"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionCode.ts:157
@@ -649,6 +668,7 @@ msgstr "关闭"
 msgid "Close {0}"
 msgstr "关闭{0}"
 
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:74
 #: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:65
 msgid "Close help"
 msgstr "关闭帮助"
@@ -736,17 +756,16 @@ msgstr "compare：当前排序规则。"
 msgid "Compound argument evaluation and return value at this call site: "
 msgstr "复合实参的求值及该调用点的返回值："
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:62
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:87
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:74
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:88
 msgid "Computation failed"
 msgstr "计算失败"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:22
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:58
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:27
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:64
 #: src/app/AlgorithmHome.tsx:45
-#: src/app/AlgorithmHome.tsx:46
-#: src/app/App.tsx:34
+#: src/app/App.tsx:35
 msgid "Computational Geometry"
 msgstr "计算几何"
 
@@ -760,7 +779,7 @@ msgstr "精确计算线段在指定横坐标的高度。"
 msgid "Compute the intersection candidate and schedule a future event"
 msgstr "计算这对线段的交点，并安排后续事件"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:61
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:86
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:86
 msgid "Computing…"
 msgstr "正在计算…"
@@ -795,19 +814,19 @@ msgstr "统一约定：精确有理数决定交点与排序，像素近似只用
 msgid "Convert the collection into an iterator that consumes its elements."
 msgstr "将当前集合转为消耗元素的迭代器。"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:22
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:23
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:58
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:79
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:27
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:28
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:64
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:102
 #: src/app/AlgorithmHome.tsx:49
 msgid "Convex hull"
 msgstr "凸包"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:21
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:26
 msgid "Convex hull cases"
 msgstr "凸包案例"
 
-#: src/algorithms/convex-hull/ConvexHullPlot.tsx:15
+#: src/algorithms/convex-hull/ConvexHullPlot.tsx:18
 msgid "Convex hull plot"
 msgstr "凸包图形"
 
@@ -1044,14 +1063,14 @@ msgstr "{expression} 中由当前索引选中的元素"
 msgid "Empty"
 msgstr "空"
 
-#: src/algorithms/convex-hull/cases.ts:58
-msgid "Empty set"
-msgstr "空集"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:14
 msgid "Empty set"
 msgstr "空集合"
+
+#: src/algorithms/convex-hull/cases.ts:58
+msgid "Empty set"
+msgstr "空集"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:19
@@ -1164,8 +1183,8 @@ msgid "Exact rational coordinates remain fractions in the ordered hull result."
 msgstr "精确有理数坐标在有序凸包结果中仍以分数显示。"
 
 #: src/app/AlgorithmHome.tsx:48
-msgid "Exact segment intersections and step-by-step learning."
-msgstr "精确线段求交与逐步教学。"
+#~ msgid "Exact segment intersections and step-by-step learning."
+#~ msgstr "精确线段求交与逐步教学。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:78
@@ -1251,8 +1270,8 @@ msgid "First segment in the current pair (an index in the sweep loop)"
 msgstr "当前配对的第一条线段（扫描循环中使用编号）"
 
 #: src/app/AlgorithmHome.tsx:49
-msgid "Fixed point sets and exact convex hull results."
-msgstr "固定点集与精确凸包结果。"
+#~ msgid "Fixed point sets and exact convex hull results."
+#~ msgstr "固定点集与精确凸包结果。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:45
@@ -1354,16 +1373,16 @@ msgstr "将水平、竖直与斜线的同点穿过者归组，观察一处位置
 msgid "Help topics"
 msgstr "帮助主题"
 
-#: src/algorithms/convex-hull/cases.ts:46
-msgid "Hexagonal snowflake"
-msgstr "六角雪花"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:39
 msgid "Hexagonal snowflake"
 msgstr "六角雪花"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:68
+#: src/algorithms/convex-hull/cases.ts:46
+msgid "Hexagonal snowflake"
+msgstr "六角雪花"
+
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:92
 msgid "Hull vertices"
 msgstr "凸包顶点"
 
@@ -1451,19 +1470,17 @@ msgstr "本次检查的相邻线段编号"
 msgid "Input and intersection plot"
 msgstr "输入与交集坐标图"
 
-#: src/algorithms/convex-hull/ConvexHullPlot.tsx:15
+#: src/algorithms/convex-hull/ConvexHullPlot.tsx:18
 msgid "Input point preview"
 msgstr "输入点预览"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:67
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:91
 msgid "Input points"
 msgstr "输入点"
 
-#. placeholder {0}: preset.points.length
-#. placeholder {1}: computation.vertices.length
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:63
-msgid "Input points: {0}; hull vertices: {1}"
-msgstr "输入点数：{0}；凸包顶点数：{1}"
+#~ msgid "Input points: {0}; hull vertices: {1}"
+#~ msgstr "输入点数：{0}；凸包顶点数：{1}"
 
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:120
 msgid "Input S{index}"
@@ -1546,12 +1563,12 @@ msgstr "教学终态无效"
 msgid "Invalid learning step: use a nonnegative integer and provide only one step parameter."
 msgstr "教学步骤参数无效：请使用非负整数，且只提供一个 step 参数。"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:79
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:80
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:102
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:104
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:224
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:225
-#: src/app/App.tsx:34
 #: src/app/App.tsx:35
+#: src/app/App.tsx:36
 msgid "Invalid link"
 msgstr "链接无效"
 
@@ -1754,7 +1771,7 @@ msgstr "尚未处理事件"
 msgid "No events"
 msgstr "没有事件"
 
-#: src/algorithms/convex-hull/ConvexHullPlot.tsx:26
+#: src/algorithms/convex-hull/ConvexHullPlot.tsx:44
 msgid "No input points"
 msgstr "无输入点"
 
@@ -1785,7 +1802,7 @@ msgstr "无交点"
 msgid "No next element; the loop has ended"
 msgstr "本次没有下一个元素，循环已结束"
 
-#: src/algorithms/convex-hull/ConvexHullCoordinates.tsx:11
+#: src/algorithms/convex-hull/ConvexHullCoordinates.tsx:22
 msgid "No points"
 msgstr "无点"
 
@@ -2092,7 +2109,7 @@ msgid "Place all endpoints in the event queue, keeping one event per point. Endp
 msgstr "先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步进入取事件模块。"
 
 #. placeholder {0}: computation.message
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:62
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:87
 msgid "Please check the local service. {0}"
 msgstr "请检查本地服务。{0}"
 
@@ -2101,6 +2118,7 @@ msgstr "请检查本地服务。{0}"
 msgid "Please check the local service. {errorMessage}"
 msgstr "请检查本地服务。{errorMessage}"
 
+#: src/algorithms/convex-hull/ConvexHullPlot.tsx:31
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:109
 msgid "Point"
 msgstr "点"
@@ -2110,7 +2128,7 @@ msgstr "点"
 msgid "point and event bound; event-taking module complete"
 msgstr "已绑定 point 与 event；取事件模块完成"
 
-#: src/algorithms/convex-hull/ConvexHullCoordinates.tsx:10
+#: src/algorithms/convex-hull/ConvexHullCoordinates.tsx:21
 msgid "Point count"
 msgstr "点数"
 
@@ -2590,6 +2608,11 @@ msgstr "当前循环访问的线段编号"
 msgid "Segment information carried by the current event"
 msgstr "本次事件携带的线段信息"
 
+#: src/app/AlgorithmHome.tsx:48
+#: src/app/App.tsx:24
+msgid "Segment intersection"
+msgstr "线段求交"
+
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:85
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:86
 #: src/algorithms/segment-intersection/bo/learning/LearningView.tsx:30
@@ -2797,12 +2820,12 @@ msgstr "核对依据：CGAL 官方文档源的二维交集表将 Segment_2 与 S
 msgid "help.LearningReferences.2"
 msgstr "核对依据：讲义的 Plane Sweep、Adjacent-segment rule 与事件处理章节（图 4 的相邻性论证、图 5 的插入、删除与交叉）。讲义先假设一般位置；这里另外明示同 <0>x</0> 端点的处理顺序。其平衡树复杂度结论不等于本演示实现的性能保证。"
 
-#: src/algorithms/convex-hull/cases.ts:34
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/cases/presets.ts:38
 msgid "Spider web"
 msgstr "蜘蛛网"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/presets.ts:38
+#: src/algorithms/convex-hull/cases.ts:34
 msgid "Spider web"
 msgstr "蜘蛛网"
 
@@ -3321,7 +3344,7 @@ msgstr "撤销剪切，恢复原坐标。"
 msgid "Unknown case: {caseId}"
 msgstr "未知案例：{caseId}"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:80
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:104
 msgid "Unknown case."
 msgstr "未知案例。"
 
@@ -3331,8 +3354,8 @@ msgid "Unknown error"
 msgstr "未知错误"
 
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:255
-#: src/app/App.tsx:30
-#: src/app/App.tsx:35
+#: src/app/App.tsx:31
+#: src/app/App.tsx:36
 msgid "Unknown page path."
 msgstr "未知页面路径。"
 
@@ -3424,12 +3447,12 @@ msgid "help.VerticalRules.0"
 msgstr "竖直线：固定横坐标，逐个处理高度"
 
 #. placeholder {0}: translate(preset.name)
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:25
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:30
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:147
 msgid "View {0} details"
 msgstr "查看{0}详情"
 
-#: src/algorithms/convex-hull/ConvexHullPage.tsx:27
+#: src/algorithms/convex-hull/ConvexHullPage.tsx:32
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:157
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:228
 msgid "View details"
