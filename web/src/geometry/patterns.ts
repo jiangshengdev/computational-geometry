@@ -1,7 +1,34 @@
-import { point } from '../../../geometry/geometry'
-import { type Segment } from '../geometry'
+import { point, samePoint, type Point } from './geometry'
 
-export function spiderWeb(): Segment[] {
+interface PatternEdge { start: Point; end: Point }
+
+export function patternPoints(edges: PatternEdge[]): Point[] {
+  const points: Point[] = []
+  for (const edge of edges) {
+    for (const vertex of [edge.start, edge.end]) {
+      if (!points.some(existing => samePoint(existing, vertex))) points.push(vertex)
+    }
+  }
+  return points
+}
+
+export function bridgeTruss(): PatternEdge[] {
+  const beams: PatternEdge[] = []
+  for (let x = 0; x < 16; x += 4) {
+    beams.push(
+      { start: point(`${x}`, '0'), end: point(`${x + 4}`, '0') },
+      { start: point(`${x}`, '4'), end: point(`${x + 4}`, '4') },
+      { start: point(`${x}`, '0'), end: point(`${x + 4}`, '4') },
+      { start: point(`${x}`, '4'), end: point(`${x + 4}`, '0') },
+    )
+  }
+  for (let x = 0; x <= 16; x += 4) {
+    beams.push({ start: point(`${x}`, '0'), end: point(`${x}`, '4') })
+  }
+  return beams
+}
+
+export function spiderWeb(): PatternEdge[] {
   const directions = [[12, 0], [8, 8], [0, 12], [-8, 8], [-12, 0], [-8, -8], [0, -12], [8, -8]]
   const center = point('0', '0')
   const rings = [1, 2].map(radius => directions.map(([x, y]) => point(String(x * radius), String(y * radius))))
@@ -12,7 +39,7 @@ export function spiderWeb(): Segment[] {
   ]))
 }
 
-export function hexagonalSnowflake(): Segment[] {
+export function hexagonalSnowflake(): PatternEdge[] {
   const directions = [[1, 0], [0, 1], [-1, 1], [-1, 0], [0, -1], [1, -1]]
   // Triangular lattice: (u + v/2, v*sqrt(3)/2), with sqrt(3)/2 ≈ 433/500.
   // Integer lattice vertices preserve shared endpoints before rational projection.

@@ -1,21 +1,6 @@
 import { segment, type Segment } from '../geometry'
 import { type Preset } from './preset'
-
-function bridgeTruss(): Segment[] {
-  const beams: Segment[] = []
-  for (let x = 0; x < 16; x += 4) {
-    beams.push(
-      segment(`${x}`, '0', `${x + 4}`, '0'),
-      segment(`${x}`, '4', `${x + 4}`, '4'),
-      segment(`${x}`, '0', `${x + 4}`, '4'),
-      segment(`${x}`, '4', `${x + 4}`, '0'),
-    )
-  }
-  for (let x = 0; x <= 16; x += 4) {
-    beams.push(segment(`${x}`, '0', `${x}`, '4'))
-  }
-  return beams
-}
+import { bridgeTruss } from '../../../geometry/patterns'
 
 function meanderWindow(): Segment[] {
   const bars: Segment[] = [

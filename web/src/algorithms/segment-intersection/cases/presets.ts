@@ -1,6 +1,6 @@
 import { segment } from '../geometry'
 import { type Preset } from './preset'
-import { spiderWeb, hexagonalSnowflake } from './endpointPatterns'
+import { spiderWeb, hexagonalSnowflake } from '../../../geometry/patterns'
 import { artPresets } from './artPatterns'
 import { carbonLatticePresets } from './carbonLattices'
 import { fullerenePreset } from './fullerene'

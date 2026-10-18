@@ -90,7 +90,7 @@ msgid "{title} teaching code"
 msgstr "{title} teaching code"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:68
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:53
 msgid "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
 msgstr "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
 
@@ -113,6 +113,10 @@ msgstr "A perspective projection of the complete truncated-icosahedral cage reta
 #: src/algorithms/segment-intersection/cases/presets.ts:30
 msgid "A shorter diagonal segment is entirely contained in another segment."
 msgstr "A shorter diagonal segment is entirely contained in another segment."
+
+#: src/algorithms/convex-hull/cases.ts:65
+msgid "A single input is its own hull, displayed as a point."
+msgstr "A single input is its own hull, displayed as a point."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:25
@@ -316,6 +320,10 @@ msgstr "Algorithm home"
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 
+#: src/algorithms/convex-hull/cases.ts:52
+msgid "All collinear"
+msgstr "All collinear"
+
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:60
 msgid "All events have been processed; no further steps are needed."
 msgstr "All events have been processed; no further steps are needed."
@@ -453,14 +461,22 @@ msgstr "Both segments satisfy y = x, and their x ranges [0, 2] and [2, 4] share 
 msgid "Both segments satisfy y = x, but their x ranges [0, 1] and [2, 4] are separated by a gap, so their common range is empty."
 msgstr "Both segments satisfy y = x, but their x ranges [0, 1] and [2, 4] are separated by a gap, so their common range is empty."
 
+#: src/algorithms/convex-hull/cases.ts:47
+msgid "Branch tips determine the hull of this forked point set. The shape uses the fixed rational approximation √3/2 ≈ 433/500; hull computation is exact for the submitted coordinates."
+msgstr "Branch tips determine the hull of this forked point set. The shape uses the fixed rational approximation √3/2 ≈ 433/500; hull computation is exact for the submitted coordinates."
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:161
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:163
 msgid "break executed; exit the loop"
 msgstr "break executed; exit the loop"
 
+#: src/algorithms/convex-hull/cases.ts:40
+msgid "Bridge truss"
+msgstr "Bridge truss"
+
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:67
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:52
 msgid "Bridge truss"
 msgstr "Bridge truss"
 
@@ -681,7 +697,7 @@ msgid "Compare contact among four neighbors at tetrahedral centers with crossing
 msgstr "Compare contact among four neighbors at tetrahedral centers with crossings of chemical bonds at different depths in a two-dimensional projection."
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:71
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:56
 msgid "Compare endpoint connections at bridge joints with interior crossings of the braces in each span; observe event grouping at different positions."
 msgstr "Compare endpoint connections at bridge joints with interior crossings of the braces in each span; observe event grouping at different positions."
 
@@ -750,7 +766,7 @@ msgid "Computing…"
 msgstr "Computing…"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:104
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:89
 msgid "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
 msgstr "Connect eight vertices around a ring by advancing 3 positions at each step to form a closed eight-pointed star; vertices use fixed integer coordinates."
 
@@ -908,7 +924,7 @@ msgid "Diagonal containment"
 msgstr "Diagonal containment"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:85
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:70
 msgid "Diagonal weave"
 msgstr "Diagonal weave"
 
@@ -954,7 +970,7 @@ msgid "Distinguish atomic endpoints where three chemical bonds meet from interio
 msgstr "Distinguish atomic endpoints where three chemical bonds meet from interior crossings caused by projecting front and back layers; observe events at different positions on the cage."
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:107
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:92
 msgid "Distinguish endpoint connections at star tips from interior crossings, and understand how the vertex-skipping rule generates regular intersection patterns."
 msgstr "Distinguish endpoint connections at star tips from interior crossings, and understand how the vertex-skipping rule generates regular intersection patterns."
 
@@ -981,7 +997,7 @@ msgstr "Documentation"
 msgid "Drag to browse teaching steps (including microsteps)"
 msgstr "Drag to browse teaching steps (including microsteps)"
 
-#: src/algorithms/convex-hull/cases.ts:21
+#: src/algorithms/convex-hull/cases.ts:22
 msgid "Duplicate coordinates"
 msgstr "Duplicate coordinates"
 
@@ -1027,6 +1043,10 @@ msgstr "Element of {expression} selected by the current index"
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:119
 msgid "Empty"
 msgstr "Empty"
+
+#: src/algorithms/convex-hull/cases.ts:58
+msgid "Empty set"
+msgstr "Empty set"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:14
@@ -1098,13 +1118,13 @@ msgstr "Event height: above the current event (Δ)"
 msgid "Event height: below the current event (Δ)"
 msgstr "Event height: below the current event (Δ)"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
-msgstr "Event queue"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
+msgstr "Event queue"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
 msgstr "Event queue"
 
 #. js-lingui-explicit-id
@@ -1125,7 +1145,7 @@ msgstr "Event side: right of the current event (Δ)"
 msgid "Exact details"
 msgstr "Exact details"
 
-#: src/algorithms/convex-hull/cases.ts:27
+#: src/algorithms/convex-hull/cases.ts:28
 msgid "Exact fractions"
 msgstr "Exact fractions"
 
@@ -1139,7 +1159,7 @@ msgstr "Exact height comparisons cached by segment index. The classification loo
 msgid "Exact intercept of the sweep segment"
 msgstr "Exact intercept of the sweep segment"
 
-#: src/algorithms/convex-hull/cases.ts:28
+#: src/algorithms/convex-hull/cases.ts:29
 msgid "Exact rational coordinates remain fractions in the ordered hull result."
 msgstr "Exact rational coordinates remain fractions in the ordered hull result."
 
@@ -1216,7 +1236,7 @@ msgid "Find where to insert this group into the active set"
 msgstr "Find where to insert this group into the active set"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:95
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:80
 msgid "Finite segments on lines y = (t/3)x − t² for integer t ∈ [−6, 6] form a parabolic envelope."
 msgstr "Finite segments on lines y = (t/3)x − t² for integer t ∈ [−6, 6] form a parabolic envelope."
 
@@ -1334,6 +1354,10 @@ msgstr "Group the horizontal, vertical, and diagonal segments passing through th
 msgid "Help topics"
 msgstr "Help topics"
 
+#: src/algorithms/convex-hull/cases.ts:46
+msgid "Hexagonal snowflake"
+msgstr "Hexagonal snowflake"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:39
 msgid "Hexagonal snowflake"
@@ -1359,7 +1383,7 @@ msgid "Identify interior, endpoint, exterior, and coincident points; point input
 msgstr "Identify interior, endpoint, exterior, and coincident points; point inputs participate in events but never enter the persistent active order."
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:89
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:74
 msgid "Identify intersecting pairs among families of parallel lines and observe interior crossings at different heights in the diamond pattern."
 msgstr "Identify intersecting pairs among families of parallel lines and observe interior crossings at different heights in the diamond pattern."
 
@@ -1383,7 +1407,7 @@ msgid "In mixed results, point-type pairs may lie on other pairs’ overlap inte
 msgstr "In mixed results, point-type pairs may lie on other pairs’ overlap intervals, so they are not necessarily isolated points of the overall intersection. Distinct point-result positions, interval pairs, and all intersecting pairs are counted separately, without merging intervals or computing a geometric union."
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:72
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:57
 msgid "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, crossing internally at (2, 2); the other three spans cross at (6, 2), (10, 2), and (14, 2). S0 and S4 connect at the shared endpoint (4, 0). There are 10 structural joints and 4 interior span crossings; each shared member is generated only once."
 msgstr "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, crossing internally at (2, 2); the other three spans cross at (6, 2), (10, 2), and (14, 2). S0 and S4 connect at the shared endpoint (4, 0). There are 10 structural joints and 4 interior span crossings; each shared member is generated only once."
 
@@ -1668,7 +1692,7 @@ msgid "Major steps"
 msgstr "Major steps"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:76
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:61
 msgid "Meander window lattice"
 msgstr "Meander window lattice"
 
@@ -1734,6 +1758,10 @@ msgstr "No events"
 msgid "No input points"
 msgstr "No input points"
 
+#: src/algorithms/convex-hull/cases.ts:59
+msgid "No input points: the computation succeeds with an empty hull."
+msgstr "No input points: the computation succeeds with an empty hull."
+
 #: src/algorithms/segment-intersection/cases/CaseThumbnail.tsx:11
 msgid "No input segments"
 msgstr "No input segments"
@@ -1783,7 +1811,7 @@ msgid "Number of segments to insert in this event"
 msgstr "Number of segments to insert in this event"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:108
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:93
 msgid "Number vertices clockwise from 0 to 7 and connect i to (i + 3) mod 8; starting at 0, visit 3, 6, 1, 4, 7, 2, and 5 before closing. S0 satisfies y = 10 − 17x/7 and S1 satisfies y = 17x/7 − 10, with interior intersection (70/17, 0). S0 and S3 connect at endpoint (7, −7). The eight vertices form an integer-coordinate octagon, not a claimed exact regular octagon."
 msgstr "Number vertices clockwise from 0 to 7 and connect i to (i + 3) mod 8; starting at 0, visit 3, 6, 1, 4, 7, 2, and 5 before closing. S0 satisfies y = 10 − 17x/7 and S1 satisfies y = 17x/7 − 10, with interior intersection (70/17, 0). S0 and S3 connect at endpoint (7, −7). The eight vertices form an integer-coordinate octagon, not a claimed exact regular octagon."
 
@@ -1803,7 +1831,7 @@ msgid "Observe how point events still record intersections of coincident inputs 
 msgstr "Observe how point events still record intersections of coincident inputs while the active order stays empty."
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:98
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:83
 msgid "Observe how real straight segments collectively outline a curve; trace exact intersections between neighboring and distant strings."
 msgstr "Observe how real straight segments collectively outline a curve; trace exact intersections between neighboring and distant strings."
 
@@ -1861,6 +1889,10 @@ msgstr "One vertical segment crosses at different heights and touches another se
 #: src/algorithms/segment-intersection/cases/presets.ts:15
 msgid "Only S0 exists, so no pair of distinct inputs can be formed; its two endpoint events produce no intersection."
 msgstr "Only S0 exists, so no pair of distinct inputs can be formed; its two endpoint events produce no intersection."
+
+#: src/algorithms/convex-hull/cases.ts:53
+msgid "Only the two extreme endpoints remain; intermediate collinear points do not become hull vertices."
+msgstr "Only the two extreme endpoints remain; intermediate collinear points do not become hull vertices."
 
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:82
 msgid "Orange: intersections"
@@ -1938,13 +1970,13 @@ msgstr "Overlap end boundary"
 msgid "Overlap interval"
 msgstr "Overlap interval"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
-msgstr "Overlap rules"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
+msgstr "Overlap rules"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
 msgstr "Overlap rules"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -1990,7 +2022,7 @@ msgid "Pairs and exact details"
 msgstr "Pairs and exact details"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:94
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:79
 msgid "Parabolic string art"
 msgstr "Parabolic string art"
 
@@ -2288,7 +2320,7 @@ msgstr "Remove segments that end at the current point from the active set"
 msgid "Reorder to <0>{0}</0>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress."
 msgstr "Reorder to <0>{0}</0>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress."
 
-#: src/algorithms/convex-hull/cases.ts:22
+#: src/algorithms/convex-hull/cases.ts:23
 msgid "Repeated inputs keep their identities without adding hull vertices."
 msgstr "Repeated inputs keep their identities without adding hull vertices."
 
@@ -2395,7 +2427,7 @@ msgid "Right sidebar"
 msgstr "Right sidebar"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:90
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:75
 msgid "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 msgstr "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 
@@ -2520,17 +2552,17 @@ msgid "S1 starts at (2, 0) inside S0 and heads up and right."
 msgstr "S1 starts at (2, 0) inside S0 and heads up and right."
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:81
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:66
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
-msgstr "Same-point and tie rules"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
+msgstr "Same-point and tie rules"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
 msgstr "Same-point and tie rules"
 
 #. js-lingui-explicit-id
@@ -2717,6 +2749,10 @@ msgstr "Shear coefficient for sweep coordinates"
 msgid "Single input"
 msgstr "Single input"
 
+#: src/algorithms/convex-hull/cases.ts:64
+msgid "Single point"
+msgstr "Single point"
+
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:110
 msgid "Single steps"
 msgstr "Single steps"
@@ -2761,13 +2797,17 @@ msgstr "Source: the 2D intersection table in CGAL's official documentation sourc
 msgid "help.LearningReferences.2"
 msgstr "Source: the lecture's Plane Sweep, Adjacent-segment rule, and event-handling sections (the adjacency argument in Figure 4 and insertion, deletion, and crossing in Figure 5). The lecture initially assumes general position; here we also specify the processing order for endpoints with the same <0>x</0>. Its balanced-tree complexity results are not performance guarantees for this demonstration."
 
+#: src/algorithms/convex-hull/cases.ts:34
+msgid "Spider web"
+msgstr "Spider web"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:38
 msgid "Spider web"
 msgstr "Spider web"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:103
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:88
 msgid "Star polygon"
 msgstr "Star polygon"
 
@@ -2963,6 +3003,10 @@ msgstr "The event queue stores pending events in increasing x, then y order. The
 msgid "The execution trace response has no body"
 msgstr "The execution trace response has no body"
 
+#: src/algorithms/convex-hull/cases.ts:41
+msgid "The four corners form the hull, excluding collinear joints along its edges. Brace crossings are not input points."
+msgstr "The four corners form the hull, excluding collinear joints along its edges. Brace crossings are not input points."
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/carbonLattices.ts:106
 msgid "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
@@ -2972,7 +3016,7 @@ msgstr "The four tetrahedral centers of one conventional unit cell and all their
 msgid "The input set is empty"
 msgstr "The input set is empty"
 
-#: src/algorithms/convex-hull/cases.ts:16
+#: src/algorithms/convex-hull/cases.ts:17
 msgid "The interior point is excluded from the three-vertex hull."
 msgstr "The interior point is excluded from the three-vertex hull."
 
@@ -2989,6 +3033,10 @@ msgstr "The intersection includes this boundary. Keep the complete recorded inte
 msgid "help.LearningIntroduction.2"
 msgstr "The most direct approach checks every pair: <0>n</0> segments require <1>n(n−1)/2</1> pair checks. A sweep line is a vertical line moving from left to right. It stops only at endpoints or discovered intersections; these stopping positions are called events."
 
+#: src/algorithms/convex-hull/cases.ts:35
+msgid "The outer ring determines the hull; the inner ring and center lie inside. Only web junctions are input points."
+msgstr "The outer ring determines the hull; the inner ring and center lie inside. Only web junctions are input points."
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:187
 msgid "The segments parameter is shadowed."
@@ -3004,7 +3052,7 @@ msgid "help.SamePointRules.0"
 msgstr "The same x coordinate does not imply the same point"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:99
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:84
 msgid "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t + 6), 6t). Strings with parameters t and u intersect at (3(t + u), tu), within both segments; for example, S5 × S7 intersects at (0, −1) and S6 × S7 at (3, 0). The continuous line family is tangent to y = x²/36 at (6t, t²), so the finite arrangement outlines its envelope; 13 strings produce 78 distinct intersection positions."
 msgstr "The segment for parameter t has endpoints (3(t − 6), −6t) and (3(t + 6), 6t). Strings with parameters t and u intersect at (3(t + u), tu), within both segments; for example, S5 × S7 intersects at (0, −1) and S6 × S7 at (3, 0). The continuous line family is tangent to y = x²/36 at (6t, t²), so the finite arrangement outlines its envelope; 13 strings produce 78 distinct intersection positions."
 
@@ -3081,7 +3129,7 @@ msgid "This step orders the starting and passing inputs together immediately to 
 msgstr "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:77
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:62
 msgid "Three angular meander patterns inside a window frame connect to a lower crossbar, with generous gaps between turns."
 msgstr "Three angular meander patterns inside a window frame connect to a lower crossbar, with generous gaps between turns."
 
@@ -3111,7 +3159,7 @@ msgid "Three segments at one point"
 msgstr "Three segments at one point"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:80
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:65
 msgid "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
 msgstr "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
 
@@ -3120,7 +3168,7 @@ msgstr "Trace endpoint connections along the angular meanders and distinguish co
 msgid "Treat a zero-length intersection as a single point"
 msgstr "Treat a zero-length intersection as a single point"
 
-#: src/algorithms/convex-hull/cases.ts:15
+#: src/algorithms/convex-hull/cases.ts:16
 msgid "Triangle and interior point"
 msgstr "Triangle and interior point"
 
@@ -3145,7 +3193,7 @@ msgid "Two coincident fractional points and one separate point."
 msgstr "Two coincident fractional points and one separate point."
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/cases/artPatterns.ts:86
+#: src/algorithms/segment-intersection/cases/artPatterns.ts:71
 msgid "Two continuous families of diagonals in opposite directions weave a diamond pattern, retaining real segments at every crossing."
 msgstr "Two continuous families of diagonals in opposite directions weave a diamond pattern, retaining real segments at every crossing."
 
@@ -3153,6 +3201,10 @@ msgstr "Two continuous families of diagonals in opposite directions weave a diam
 #: src/algorithms/segment-intersection/cases/presets.ts:10
 msgid "Two diagonals intersect at (2, 2)."
 msgstr "Two diagonals intersect at (2, 2)."
+
+#: src/algorithms/convex-hull/cases.ts:71
+msgid "Two distinct points form a segment, ordered from the lexicographically smaller endpoint."
+msgstr "Two distinct points form a segment, ordered from the lexicographically smaller endpoint."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:24
@@ -3163,6 +3215,10 @@ msgstr "Two independent crossings share the same x coordinate."
 #: src/algorithms/segment-intersection/cases/presets.ts:11
 msgid "Two parallel segments have no intersecting pair."
 msgstr "Two parallel segments have no intersecting pair."
+
+#: src/algorithms/convex-hull/cases.ts:70
+msgid "Two points"
+msgstr "Two points"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:90
@@ -3353,13 +3409,13 @@ msgstr "Vertical fractional overlap"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "Vertical overlap with mixed contacts at multiple heights"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
-msgstr "Vertical segment rules"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
+msgstr "Vertical segment rules"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
 msgstr "Vertical segment rules"
 
 #. js-lingui-explicit-id
