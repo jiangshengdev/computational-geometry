@@ -44,6 +44,7 @@ pub use algorithms::convex_polygon_intersection::{
     ConvexPolygon, ConvexPolygonError, ConvexPolygonIntersection, convex_polygon_intersection,
 };
 pub use algorithms::segment_intersection::{Geometry, Intersection, Segment, intersections};
+pub use algorithms::triangulation::{TriangulationError, triangulate};
 
 pub mod http;
 

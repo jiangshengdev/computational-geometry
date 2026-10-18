@@ -9,6 +9,10 @@ name = "axum"
 path = "api/axum.rs"
 
 [[test]]
+name = "triangulation"
+path = "tests/algorithms/triangulation/triangulation.rs"
+
+[[test]]
 name = "convex_polygon_intersection"
 path = "tests/algorithms/convex_polygon_intersection/intersection.rs"
 
