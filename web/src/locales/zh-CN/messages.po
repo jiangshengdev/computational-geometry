@@ -791,7 +791,7 @@ msgstr "复合实参的求值及该调用点的返回值："
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:46
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:72
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:86
-#: src/algorithms/triangulation/TriangulationPage.tsx:56
+#: src/algorithms/triangulation/TriangulationPage.tsx:58
 msgid "Computation failed"
 msgstr "计算失败"
 
@@ -799,8 +799,8 @@ msgstr "计算失败"
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:39
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:25
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:40
-#: src/algorithms/triangulation/TriangulationPage.tsx:25
-#: src/algorithms/triangulation/TriangulationPage.tsx:39
+#: src/algorithms/triangulation/TriangulationPage.tsx:26
+#: src/algorithms/triangulation/TriangulationPage.tsx:41
 #: src/app/AlgorithmHome.tsx:45
 #: src/app/App.tsx:39
 #: src/app/AppNavigation.tsx:9
@@ -820,7 +820,7 @@ msgstr "计算这对线段的交点，并安排后续事件"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:45
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:84
-#: src/algorithms/triangulation/TriangulationPage.tsx:55
+#: src/algorithms/triangulation/TriangulationPage.tsx:57
 msgid "Computing…"
 msgstr "正在计算…"
 
@@ -1221,13 +1221,13 @@ msgstr "事件高度状态：当前事件上侧（Δ）"
 msgid "Event height: below the current event (Δ)"
 msgstr "事件高度状态：当前事件下侧（Δ）"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
+msgstr "事件队列"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
-msgstr "事件队列"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
 msgstr "事件队列"
 
 #. js-lingui-explicit-id
@@ -1583,7 +1583,7 @@ msgstr "输入点"
 #~ msgstr "输入点数：{0}；凸包顶点数：{1}"
 
 #: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:22
-#: src/algorithms/triangulation/TriangulationPlot.tsx:19
+#: src/algorithms/triangulation/TriangulationPlot.tsx:21
 msgid "Input polygon preview"
 msgstr "输入多边形预览"
 
@@ -1595,7 +1595,7 @@ msgstr "输入 S{index}"
 msgid "Input S{index}, selected"
 msgstr "输入 S{index}，已选中"
 
-#: src/algorithms/triangulation/TriangulationPage.tsx:51
+#: src/algorithms/triangulation/TriangulationPage.tsx:53
 msgid "Input vertices"
 msgstr "输入顶点"
 
@@ -1842,7 +1842,7 @@ msgstr "多顶点边界"
 msgid "Meander window lattice"
 msgstr "回纹窗棂"
 
-#: src/algorithms/triangulation/TriangulationPage.tsx:26
+#: src/algorithms/triangulation/TriangulationPage.tsx:27
 #: src/app/AlgorithmHome.tsx:51
 msgid "Monotone decomposition"
 msgstr "单调分解"
@@ -2074,7 +2074,7 @@ msgstr "original 闭包"
 #: src/algorithms/convex-hull/ConvexHullView.tsx:13
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:45
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:80
-#: src/algorithms/triangulation/TriangulationPage.tsx:44
+#: src/algorithms/triangulation/TriangulationPage.tsx:46
 msgid "Original coordinate plane · Equal scale"
 msgstr "原始坐标平面 · 等比例"
 
@@ -2128,13 +2128,13 @@ msgstr "重叠止界"
 msgid "Overlap interval"
 msgstr "重叠区间"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
+msgstr "重叠处理规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
-msgstr "重叠处理规则"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
 msgstr "重叠处理规则"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -2255,7 +2255,7 @@ msgstr "先把所有端点放入事件队列，同一点只保留一个事件。
 
 #. placeholder {0}: computation.message
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:46
-#: src/algorithms/triangulation/TriangulationPage.tsx:56
+#: src/algorithms/triangulation/TriangulationPage.tsx:58
 msgid "Please check the local service. {0}"
 msgstr "请检查本地服务。{0}"
 
@@ -2752,13 +2752,13 @@ msgstr "S1 从 S0 内部的 (2, 0) 向右上方出发。"
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 从 (0, 0) 到 (0, 8)，S6 从 (0, 8) 到 (8, 8)，公共端点为 (0, 8)。S4 的 y = 0、x ∈ [−2, 34]，与 S5 在 (0, 0) 接触。三组回纹各有 7 处转角和 1 处横梁接触，另有窗框 4 角及横梁与窗框的 2 处接触，共 30 个不同位置；没有内部穿越或重叠。"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
+msgstr "同点与并列规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
-msgstr "同点与并列规则"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
 msgstr "同点与并列规则"
 
 #. js-lingui-explicit-id
@@ -3405,25 +3405,30 @@ msgstr "三角形"
 msgid "Triangle and interior point"
 msgstr "三角形与内部点"
 
-#: src/algorithms/triangulation/TriangulationPage.tsx:52
-#: src/algorithms/triangulation/TriangulationPage.tsx:53
-#: src/algorithms/triangulation/TriangulationPage.tsx:57
+#: src/algorithms/triangulation/TriangleList.tsx:25
+#: src/algorithms/triangulation/TriangulationPlot.tsx:31
+msgid "Triangle T{index}: {labels}"
+msgstr "三角形 T{index}：{labels}"
+
+#: src/algorithms/triangulation/TriangleList.tsx:18
+#: src/algorithms/triangulation/TriangulationPage.tsx:54
+#: src/algorithms/triangulation/TriangulationPage.tsx:55
 msgid "Triangles"
 msgstr "三角形列表"
 
-#: src/algorithms/triangulation/TriangulationPage.tsx:25
 #: src/algorithms/triangulation/TriangulationPage.tsx:26
-#: src/algorithms/triangulation/TriangulationPage.tsx:39
+#: src/algorithms/triangulation/TriangulationPage.tsx:27
+#: src/algorithms/triangulation/TriangulationPage.tsx:41
 #: src/algorithms/triangulation/TriangulationPage.tsx:71
 #: src/app/AlgorithmHome.tsx:51
 msgid "Triangulation"
 msgstr "三角剖分"
 
-#: src/algorithms/triangulation/TriangulationPage.tsx:26
+#: src/algorithms/triangulation/TriangulationPage.tsx:27
 msgid "Triangulation cases"
 msgstr "三角剖分案例"
 
-#: src/algorithms/triangulation/TriangulationPlot.tsx:19
+#: src/algorithms/triangulation/TriangulationPlot.tsx:21
 msgid "Triangulation plot"
 msgstr "三角剖分画布"
 
@@ -3675,13 +3680,13 @@ msgstr "竖直分数重叠"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "竖直重叠与多高度混合"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
+msgstr "竖直线处理规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
-msgstr "竖直线处理规则"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
 msgstr "竖直线处理规则"
 
 #. js-lingui-explicit-id
