@@ -52,13 +52,14 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
         <CaseDescription name={translate(preset.name)} description={translate(preset.description)} />
       </div>
     </div>
-    {computation.status === 'loading' ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>
-      : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
-        : null}
     <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <ConvexHullView points={preset.points} vertices={computation.status === 'ready' ? computation.result : []} interaction={interaction} />
         <PointCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
-        {computation.status === 'ready' && <PointCoordinates title={t`Hull vertices`} points={computation.result} prefix="V" interaction={interaction} />}
+        <PointCoordinates title={t`Hull vertices`} points={computation.status === 'ready' ? computation.result : undefined} prefix="V" interaction={interaction}>
+          {computation.status === 'loading' ? <div role="status" className="flex items-center gap-2"><Spinner aria-hidden="true" />{t`Computing…`}</div>
+            : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
+              : null}
+        </PointCoordinates>
     </div>
   </>
 }
