@@ -14,8 +14,6 @@ import { hullCases, type HullCase } from './cases'
 import { ConvexHullPlot } from './ConvexHullPlot'
 import { ConvexHullCoordinates } from './ConvexHullCoordinates'
 import { useHullInteraction } from './useHullInteraction'
-import { DocumentationLink } from '../../app/DocumentationLink'
-import { LanguageSelect } from '../../app/LanguageProvider'
 import { Modal } from '@heroui/react/modal'
 import { X } from 'lucide-react'
 
@@ -65,7 +63,7 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
     <div className="case-toolbar">
       <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/convex-hull">{t`Back to cases`}</AppLink>
       <h1 className="text-xl font-semibold">{translate(preset.name)}</h1>
-      <div className="case-actions flex items-center gap-3"><AppLink to="/">{t`Algorithm home`}</AppLink><DocumentationLink /><LanguageSelect />
+      <div className="case-actions flex items-center gap-3">
         <Modal>
           <Button variant="tertiary" size="sm">{t`About this case`}</Button>
           <Modal.Backdrop>
@@ -100,7 +98,6 @@ export function ConvexHullCasePage() {
   const preset = hullCases.find(candidate => candidate.id === caseId)
   return preset ? <HullCaseViewer key={preset.id} preset={preset} /> : <>
     <DocumentTitle title={`${t`Invalid link`} · ${t`Convex hull`}`} />
-    <div className="case-toolbar"><AppLink to="/">{t`Algorithm home`}</AppLink><div className="case-actions flex items-center gap-3"><DocumentationLink /><LanguageSelect /></div></div>
     <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Invalid link`}</Alert.Title><Alert.Description>{t`Unknown case.`}</Alert.Description></Alert.Content></Alert>
     <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm', className: 'self-start' })} to="/convex-hull">{t`Back to cases`}</AppLink>
   </>

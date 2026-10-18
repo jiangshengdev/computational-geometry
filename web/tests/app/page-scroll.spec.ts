@@ -19,6 +19,8 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await link.scrollIntoViewIfNeeded()
     const saved = await page.evaluate(() => window.scrollY)
     expect(saved).toBeGreaterThan(0)
+    await expect(page.getByRole('link', { name: '计算几何', exact: true })).toBeInViewport()
+    await expect(page.getByRole('link', { name: '文档', exact: true })).toBeInViewport()
     await link.click()
     await expect(page).toHaveURL(/\/bo\/cases\/collinear-disjoint$/)
     await expect(page).toHaveTitle('共线分离 · 计算结果 · BO 结果查看器')

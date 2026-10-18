@@ -89,7 +89,7 @@ span.learning-hover-item { display: inline-block; }
   .input-panel { grid-column: 1; grid-row: 1; }
 }
 @media (min-width: 1100px) and (min-height: 720px) {
-  .case-shell { height: 100dvh; }
+  .case-shell { height: calc(100dvh - var(--app-navigation-height)); }
   .case-shell > :not(.workspace):not(.learning-view) { flex-shrink: 0; }
   .workspace { flex: 1; align-items: stretch; }
   .result-workspace { grid-template-rows: minmax(0, 1fr); }

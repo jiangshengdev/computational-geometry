@@ -61,7 +61,7 @@ for (const [path, title] of [
       await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('0')
       await expect(page).toHaveTitle('普通交叉 · 逐步学习 · BO 结果查看器')
     } else if (path === '/unknown') {
-      await page.getByRole('link', { name: '算法首页', exact: true }).click()
+      await page.getByRole('link', { name: '计算几何', exact: true }).click()
       await expect(page).toHaveTitle('问题选择 · 计算几何')
     } else {
       await page.getByRole('link', { name: '返回列表', exact: true }).click()

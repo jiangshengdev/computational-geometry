@@ -33,8 +33,6 @@ import { ListBox } from '@heroui/react/list-box'
 import { isLearningLayout, learningLayouts, type LearningLayout } from './learning/learningLayout'
 import { useLingui, Plural } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
-import { LanguageSelect } from '../../../app/LanguageProvider'
-import { DocumentationLink } from '../../../app/DocumentationLink'
 import { DocumentTitle } from '../../../app/DocumentTitle'
 
 function PageTitle({ page, preset }: { page: string; preset?: Preset }) {
@@ -251,7 +249,6 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
     if (!event.repeat) navigate(`/bo/cases/${preset.id}/learn`)
   })
   if (!preset || unknownPath || (learning && !preset.learning)) return <>
-    <div className="flex items-center justify-end gap-3"><DocumentationLink /><LanguageSelect /></div>
     <RouteError message={!preset ? t`Unknown case: ${caseId}` : unknownPath ? t`Unknown page path.` : t`This case does not support learning.`} preset={preset} />
   </>
   return <CaseHelp key={`${preset.id}:${learning}`} preset={preset}>
@@ -259,8 +256,6 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
       <nav aria-label={t`Page navigation`}><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/bo">{t`Back to cases`}</Link></nav>
       <h2 className="text-xl font-semibold">{translate(preset.name)}</h2>
       <div className="case-actions flex flex-wrap items-center gap-2">
-        <DocumentationLink />
-        <LanguageSelect />
         {learning && <Select className="learning-layout-select w-24" aria-label={t`Main layout ratio (geometry, code, variables)`} value={layout}
           onChange={value => { if (isLearningLayout(value)) setLayout(value) }}>
           <Select.Trigger><Select.Value /><Select.Indicator /></Select.Trigger>

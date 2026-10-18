@@ -168,7 +168,7 @@ for (const invalid of [
     expect(new URL(page.url()).pathname + new URL(page.url()).search).toBe(invalid.path)
     await expect(page.getByRole('region', { name: '逐步学习' })).toHaveCount(0)
     if (invalid.path === '/missing') {
-      await page.getByRole('link', { name: '算法首页', exact: true }).click()
+      await page.getByRole('link', { name: '计算几何', exact: true }).click()
       await expect(page).toHaveTitle('问题选择 · 计算几何')
       return
     }
