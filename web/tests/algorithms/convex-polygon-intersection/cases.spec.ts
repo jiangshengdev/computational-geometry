@@ -51,8 +51,8 @@ for (const preset of cases) {
     }
     const result = page.getByRole('region', { name: 'Intersection coordinates', exact: true })
     if (preset.kind === 'empty') {
-      await expect(page.getByRole('status')).toHaveText('Empty intersection')
       await expect(result).toBeVisible()
+      await expect(page.getByRole('status')).toHaveCount(0)
       await expect(result.getByLabel('Point count')).toHaveText('0')
       await expect(result).toContainText('No points')
       await expect(result.getByRole('listitem')).toHaveCount(0)
@@ -85,10 +85,10 @@ test('loading and failure remain distinct from an empty result', async ({ page }
   await expect(page.getByRole('region', { name: 'Intersection coordinates', exact: true })).toHaveCount(0)
   release()
   await expect(page.getByRole('alert')).toContainText('Computation failed')
-  await expect(page.getByText('Empty intersection', { exact: true })).toHaveCount(0)
+  await expect(page.getByRole('region', { name: 'Intersection coordinates', exact: true })).toHaveCount(0)
   await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
   await page.getByRole('article', { name: 'Disjoint polygons', exact: true }).getByRole('button').click()
-  await expect(page.getByRole('status')).toHaveText('Empty intersection')
+  await expect(page.getByRole('region', { name: 'Intersection coordinates', exact: true }).getByLabel('Point count')).toHaveText('0')
   await expect(page.getByRole('alert')).toHaveCount(0)
 })
 

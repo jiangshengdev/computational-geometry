@@ -83,7 +83,7 @@ for (const id of ['exact-fractions', 'disjoint']) {
     await expect(origin).toHaveAttribute('aria-pressed', 'false')
     await expect(page.getByRole('listitem')).toHaveText(coordinates)
     if (id === 'disjoint') {
-      await expect(page.getByRole('status')).toHaveText('Empty intersection')
+      await expect(page.getByRole('status')).toHaveCount(0)
       const result = page.getByRole('region', { name: 'Intersection coordinates', exact: true })
       await expect(result).toBeVisible()
       await expect(result.getByLabel('Point count')).toHaveText('0')
