@@ -13,6 +13,7 @@ import type { Point } from '../../geometry/geometry'
 import { hullCases, type HullCase } from './cases'
 import { ConvexHullPlot } from './ConvexHullPlot'
 import { ConvexHullCoordinates } from './ConvexHullCoordinates'
+import { useHullInteraction } from './useHullInteraction'
 
 export function ConvexHullPage() {
   const { t } = useLingui()
@@ -35,6 +36,7 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
   const [computation, setComputation] = useState<HullComputation>({ status: 'loading' })
+  const interaction = useHullInteraction()
   useEffect(() => {
     const controller = new AbortController()
     async function compute() {
@@ -54,7 +56,7 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
     void compute()
     return () => controller.abort()
   }, [preset])
-  return <section className="flex flex-col gap-4">
+  return <section className="flex flex-col gap-4" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex hull`} · ${t`Computational Geometry`}`} />
     <AppLink to="/convex-hull">{t`Back to cases`}</AppLink>
     <PageHeading title={translate(preset.name)} description={translate(preset.description)} />
@@ -62,10 +64,10 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
       : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
         : <p role="status">{t`Input points: ${preset.points.length}; hull vertices: ${computation.vertices.length}`}</p>}
     <div className="grid grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)] items-start gap-4">
-      <Card><Card.Content><ConvexHullPlot points={preset.points} vertices={computation.status === 'ready' ? computation.vertices : []} /></Card.Content></Card>
+      <Card><Card.Content><ConvexHullPlot points={preset.points} vertices={computation.status === 'ready' ? computation.vertices : []} interaction={interaction} /></Card.Content></Card>
       <div className="flex min-w-0 flex-col gap-4">
-        <ConvexHullCoordinates title={t`Input points`} points={preset.points} prefix="P" />
-        {computation.status === 'ready' && <ConvexHullCoordinates title={t`Hull vertices`} points={computation.vertices} prefix="V" />}
+        <ConvexHullCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
+        {computation.status === 'ready' && <ConvexHullCoordinates title={t`Hull vertices`} points={computation.vertices} prefix="V" interaction={interaction} />}
       </div>
     </div>
   </section>

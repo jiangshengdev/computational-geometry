@@ -36,7 +36,7 @@ for (const preset of [
       await expect(inputs.getByRole('listitem').nth(0)).toHaveText('P0 (0, 0)')
       await expect(inputs.getByRole('listitem').nth(4)).toHaveText('P4 (0, 0)')
     } else await expect(inputs).toContainText('(1/3, 1/3)')
-    await expect(page.getByRole('img', { name: 'Convex hull plot', exact: true }).locator('polygon')).toHaveCount(1)
+    await expect(page.getByRole('group', { name: 'Convex hull plot', exact: true }).locator('polygon')).toHaveCount(1)
   })
 }
 
