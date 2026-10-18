@@ -2,7 +2,7 @@ import { Card } from '@heroui/react/card'
 import { useLingui } from '@lingui/react/macro'
 import { DocumentTitle } from '../../app/DocumentTitle'
 import { useLingui as useMessages } from '@lingui/react'
-import { useEffect, useState } from 'react'
+import { useJsonComputation } from '../../geometry/useJsonComputation'
 import { useNavigate, useParams } from 'react-router'
 import { Button, buttonVariants } from '@heroui/react/button'
 import { Alert } from '@heroui/react/alert'
@@ -33,32 +33,17 @@ export function ConvexHullPage() {
   </section>
 }
 
-type HullComputation = { status: 'loading' } | { status: 'ready'; vertices: Point[] } | { status: 'error'; message: string }
+function decodeHull(data: unknown): Point[] {
+  const { vertices } = data as { vertices: Point[] }
+  if (!Array.isArray(vertices)) throw new Error('Invalid result structure')
+  return vertices
+}
 
 function HullCaseViewer({ preset }: { preset: HullCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
-  const [computation, setComputation] = useState<HullComputation>({ status: 'loading' })
+  const computation = useJsonComputation('/api/convex-hull', JSON.stringify({ points: preset.points }), decodeHull)
   const interaction = usePointInteraction()
-  useEffect(() => {
-    const controller = new AbortController()
-    async function compute() {
-      try {
-        const response = await fetch('/api/convex-hull', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ points: preset.points }), signal: controller.signal,
-        })
-        if (!response.ok) throw new Error(`HTTP ${response.status}`)
-        const data = await response.json() as { vertices: Point[] }
-        if (!Array.isArray(data.vertices)) throw new Error('Invalid result structure')
-        if (!controller.signal.aborted) setComputation({ status: 'ready', vertices: data.vertices })
-      } catch (error) {
-        if (!controller.signal.aborted) setComputation({ status: 'error', message: error instanceof Error ? error.message : String(error) })
-      }
-    }
-    void compute()
-    return () => controller.abort()
-  }, [preset])
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex hull`} · ${t`Computational Geometry`}`} />
     <div className="case-toolbar">
@@ -86,9 +71,9 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
       : computation.status === 'error' ? <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Computation failed`}</Alert.Title><Alert.Description>{t`Please check the local service. ${computation.message}`}</Alert.Description></Alert.Content></Alert>
         : null}
     <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
-      <ConvexHullView points={preset.points} vertices={computation.status === 'ready' ? computation.vertices : []} interaction={interaction} />
+      <ConvexHullView points={preset.points} vertices={computation.status === 'ready' ? computation.result : []} interaction={interaction} />
         <PointCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
-        {computation.status === 'ready' && <PointCoordinates title={t`Hull vertices`} points={computation.vertices} prefix="V" interaction={interaction} />}
+        {computation.status === 'ready' && <PointCoordinates title={t`Hull vertices`} points={computation.result} prefix="V" interaction={interaction} />}
     </div>
   </>
 }

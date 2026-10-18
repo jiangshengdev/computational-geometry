@@ -4,7 +4,7 @@ import { Alert } from '@heroui/react/alert'
 import { Spinner } from '@heroui/react/spinner'
 import { useLingui } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
-import { useEffect, useState } from 'react'
+import { useJsonComputation } from '../../geometry/useJsonComputation'
 import { useNavigate, useParams } from 'react-router'
 import { AppLink } from '../../app/AppLink'
 import { DocumentTitle } from '../../app/DocumentTitle'
@@ -37,32 +37,14 @@ export function PolygonPage() {
   </section>
 }
 
-type Computation = { status: 'loading' } | { status: 'ready'; result: PolygonIntersection } | { status: 'error'; message: string }
+const decodeIntersection = (data: unknown) => data as PolygonIntersection
 
 function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
-  const [computation, setComputation] = useState<Computation>({ status: 'loading' })
+  const computation = useJsonComputation('/api/convex-polygon-intersection', JSON.stringify({ first: preset.first, second: preset.second }), decodeIntersection)
   const interaction = usePointInteraction()
   const viewport = useGeometryViewport([...preset.first, ...preset.second], { padding: 36 })
-  useEffect(() => {
-    const controller = new AbortController()
-    async function compute() {
-      try {
-        const response = await fetch('/api/convex-polygon-intersection', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ first: preset.first, second: preset.second }), signal: controller.signal,
-        })
-        if (!response.ok) throw new Error(`HTTP ${response.status}`)
-        const result = await response.json() as PolygonIntersection
-        if (!controller.signal.aborted) setComputation({ status: 'ready', result })
-      } catch (error) {
-        if (!controller.signal.aborted) setComputation({ status: 'error', message: error instanceof Error ? error.message : String(error) })
-      }
-    }
-    void compute()
-    return () => controller.abort()
-  }, [preset])
   const result = computation.status === 'ready' ? computation.result : undefined
   const kindLabels = { empty: t`Empty intersection`, point: t`Point intersection`, segment: t`Segment intersection result`, polygon: t`Convex polygon intersection result` }
   return <>
