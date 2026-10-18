@@ -190,7 +190,6 @@ test('教学动作：加入、检查、发现分别展示并可回退', async ({
   const check = stepIndex(trace, (step, index) => index > secondInsert && step.action === 'check' && step.subjects.includes(0) && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
   const discover = stepIndex(trace, (step, index) => index > check && step.action === 'discover' && step.subjects.includes(0) && step.subjects.includes(1) && step.current?.x.numerator === '0' && step.current.y.numerator === '4')
   await page.goto('/bo/cases/crossing')
-  await selectPreset(page, 'crossing')
   await page.getByRole('link', { name: '开始逐步学习' }).click()
   const previous = page.getByRole('button', { name: '上一步', exact: true })
   const explanation = page.getByRole('region', { name: '操作解释' })
