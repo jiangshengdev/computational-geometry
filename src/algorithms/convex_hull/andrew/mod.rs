@@ -1,5 +1,6 @@
 //! Exact Andrew monotone-chain convex hulls.
 
+use crate::geometry::orientation;
 use crate::{Point, Rational};
 
 /// Return the convex hull vertices of an exact planar point set.
@@ -43,7 +44,7 @@ fn chain<'a>(points: impl Iterator<Item = &'a Point>) -> Vec<&'a Point> {
         while hull.len() >= 2 {
             let a = hull[hull.len() - 2];
             let b = hull[hull.len() - 1];
-            let turn = (&b.x - &a.x) * (&point.y - &a.y) - (&b.y - &a.y) * (&point.x - &a.x);
+            let turn = orientation(a, b, point);
             if turn > zero {
                 break;
             }

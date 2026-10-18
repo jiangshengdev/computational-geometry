@@ -8,6 +8,11 @@ pub struct Point {
     pub y: Rational,
 }
 
+/// Signed doubled area of the triangle a, b, c, evaluated exactly.
+pub(crate) fn orientation(a: &Point, b: &Point, c: &Point) -> Rational {
+    (&b.x - &a.x) * (&c.y - &a.y) - (&b.y - &a.y) * (&c.x - &a.x)
+}
+
 // Compare and hash the stored integers, avoiding rational division on every
 // cache lookup. Equivalent noncanonical representations may occupy two entries.
 pub(crate) struct PointRepresentation(pub(crate) Point);
