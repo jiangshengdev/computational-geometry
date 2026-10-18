@@ -4,9 +4,9 @@ import type { Point } from '../../geometry/geometry'
 import { GeometryViewControls } from '../../geometry/GeometryViewControls'
 import { useGeometryViewport } from '../../geometry/useGeometryViewport'
 import { ConvexHullPlot } from './ConvexHullPlot'
-import type { HullInteraction } from './useHullInteraction'
+import type { PointInteraction } from '../../geometry/usePointInteraction'
 
-export function ConvexHullView({ points, vertices, interaction }: { points: Point[]; vertices: Point[]; interaction: HullInteraction }) {
+export function ConvexHullView({ points, vertices, interaction }: { points: Point[]; vertices: Point[]; interaction: PointInteraction }) {
   const viewport = useGeometryViewport(points, { padding: 36 })
   return <div className="drawing"><Card>
     <Card.Header className="drawing-toolbar">

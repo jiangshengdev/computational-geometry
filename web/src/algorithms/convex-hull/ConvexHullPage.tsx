@@ -13,8 +13,8 @@ import type { Point } from '../../geometry/geometry'
 import { hullCases, type HullCase } from './cases'
 import { ConvexHullPlot } from './ConvexHullPlot'
 import { ConvexHullView } from './ConvexHullView'
-import { ConvexHullCoordinates } from './ConvexHullCoordinates'
-import { useHullInteraction } from './useHullInteraction'
+import { PointCoordinates } from '../../geometry/PointCoordinates'
+import { usePointInteraction } from '../../geometry/usePointInteraction'
 import { Modal } from '@heroui/react/modal'
 import { X } from 'lucide-react'
 
@@ -39,7 +39,7 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
   const [computation, setComputation] = useState<HullComputation>({ status: 'loading' })
-  const interaction = useHullInteraction()
+  const interaction = usePointInteraction()
   useEffect(() => {
     const controller = new AbortController()
     async function compute() {
@@ -87,8 +87,8 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
         : null}
     <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <ConvexHullView points={preset.points} vertices={computation.status === 'ready' ? computation.vertices : []} interaction={interaction} />
-        <ConvexHullCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
-        {computation.status === 'ready' && <ConvexHullCoordinates title={t`Hull vertices`} points={computation.vertices} prefix="V" interaction={interaction} />}
+        <PointCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
+        {computation.status === 'ready' && <PointCoordinates title={t`Hull vertices`} points={computation.vertices} prefix="V" interaction={interaction} />}
     </div>
   </>
 }
