@@ -2238,7 +2238,7 @@ msgstr "Point y coordinate"
 msgid "Points only"
 msgstr "Points only"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:25
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:26
 msgid "Polygon A"
 msgstr "Polygon A"
 
@@ -2250,7 +2250,7 @@ msgstr "Polygon A · solid boundary"
 msgid "Polygon A vertices"
 msgstr "Polygon A vertices"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:26
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:27
 msgid "Polygon B"
 msgstr "Polygon B"
 
@@ -3383,8 +3383,12 @@ msgid "Two points"
 msgstr "Two points"
 
 #: src/algorithms/convex-polygon-intersection/cases.ts:17
-msgid "Two squares share a rectangular region."
-msgstr "Two squares share a rectangular region."
+msgid "Two rectangles share a rectangular region."
+msgstr "Two rectangles share a rectangular region."
+
+#: src/algorithms/convex-polygon-intersection/cases.ts:17
+#~ msgid "Two squares share a rectangular region."
+#~ msgstr "Two squares share a rectangular region."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:90

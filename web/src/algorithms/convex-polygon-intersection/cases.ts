@@ -14,7 +14,7 @@ const boundary = (...coordinates: [string, string][]) => coordinates.map(([x, y]
 const square = boundary(['0', '0'], ['4', '0'], ['4', '4'], ['0', '4'])
 
 export const polygonCases: PolygonCase[] = [
-  { id: 'overlap', name: msg`Overlapping polygons`, description: msg`Two squares share a rectangular region.`, first: square, second: boundary(['2', '1'], ['6', '1'], ['6', '3'], ['2', '3']) },
+  { id: 'overlap', name: msg`Overlapping polygons`, description: msg`Two rectangles share a rectangular region.`, first: square, second: boundary(['2', '1'], ['6', '1'], ['6', '3'], ['2', '3']) },
   { id: 'disjoint', name: msg`Disjoint polygons`, description: msg`Separated boundaries have an empty intersection.`, first: square, second: boundary(['6', '0'], ['8', '0'], ['8', '2'], ['6', '2']) },
   { id: 'contained', name: msg`Contained polygon`, description: msg`The inner polygon is the entire intersection.`, first: square, second: boundary(['1', '1'], ['3', '1'], ['2', '3']) },
   { id: 'coincident', name: msg`Coincident polygons`, description: msg`Identical boundaries retain their complete common region.`, first: square, second: square },

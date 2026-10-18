@@ -25,6 +25,8 @@ test('coincident positions link both inputs and result, with hover, keyboard tog
   await expect(origin).toHaveAttribute('aria-pressed', 'true')
   await page.keyboard.press('Escape')
   for (const list of lists) await expect(list.getByRole('listitem').first()).toHaveAttribute('data-selected', 'false')
+  await origin.click()
+  await expect(origin).toHaveAttribute('aria-pressed', 'true')
   await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
   await page.getByRole('article', { name: 'Overlapping polygons', exact: true }).getByRole('button').click()
   await expect(page.getByRole('button', { name: 'Point (0, 0)', exact: true })).toHaveAttribute('aria-pressed', 'false')
