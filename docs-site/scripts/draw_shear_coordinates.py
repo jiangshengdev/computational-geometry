@@ -123,7 +123,7 @@ def draw_order_reversal(theme, colors):
                 ax.text(n, -24, f"${n}$", ha="center")
             ax.text(-.13, 200, r"$200$", ha="right", va="center")
             a_x = 2 if transformed else 0
-            ax.plot([a_x, a_x], [200, 0], color=colors["positive"], lw=1.6, ls=(0, (4, 4)))
+            ax.plot([a_x, a_x], [200, 0], color=colors["positive"], lw=1.6, ls=(0, (4, 4)), zorder=4)
             ax.scatter([a_x], [200], s=55, color=colors["positive"], zorder=5)
             ax.text(a_x-.12 if transformed else .12, 215,
                     r"$A'\;(2,200)$" if transformed else r"$A\;(0,200)$",
