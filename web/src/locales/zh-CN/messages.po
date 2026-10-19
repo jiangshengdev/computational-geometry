@@ -346,7 +346,7 @@ msgstr "{keyword} 块结束后"
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。"
 
-#: src/algorithms/triangulation/cases.ts:42
+#: src/algorithms/triangulation/cases.ts:44
 msgid "Aligned turns, uniform channel width and even spacing give the winding boundary a regular rhythm."
 msgstr "转折位置对齐，通道等宽、间隔一致，让曲折边界形成规律的节奏。"
 
@@ -1144,7 +1144,7 @@ msgstr "内层的 8 个网结各连 4 条边，外层的 8 个网结各连 3 条
 msgid "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 msgstr "四个中心各有 4 条等长空间键，其方向两两点积为 −1、长度平方为 3，符合四面体夹角。六个共享近邻度数为 2，四个边界原子度数为 1。投影为 (x + 3z/10, y + 7z/10)；中心 (1,1,1) 投影至 (13/10,17/10)，四条键产生 6 对。S6 与 S13 内部交于 (281/100,489/100)；二维穿越不代表新增化学键，投影使用精确有理数。"
 
-#: src/algorithms/triangulation/cases.ts:34
+#: src/algorithms/triangulation/cases.ts:36
 msgid "Eight arms alternate with deep notches in a boundary with mirror symmetry and quarter-turn rotational symmetry."
 msgstr "八个尖角与深凹口交替，轮廓具有镜像对称和四分之一周旋转对称。"
 
@@ -1611,7 +1611,7 @@ msgstr "输入点"
 #~ msgstr "输入点数：{0}；凸包顶点数：{1}"
 
 #: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:22
-#: src/algorithms/triangulation/TriangulationPlot.tsx:21
+#: src/algorithms/triangulation/TriangulationPlot.tsx:22
 msgid "Input polygon preview"
 msgstr "输入多边形预览"
 
@@ -1735,7 +1735,7 @@ msgstr "结果结构无效"
 msgid "Irregular convex polygons"
 msgstr "不规则凸多边形"
 
-#: src/algorithms/triangulation/cases.ts:50
+#: src/algorithms/triangulation/cases.ts:52
 msgid "Irregular outline"
 msgstr "不规则轮廓"
 
@@ -1879,7 +1879,7 @@ msgstr "回纹窗棂"
 msgid "Monotone decomposition"
 msgstr "单调分解"
 
-#: src/algorithms/triangulation/cases.ts:34
+#: src/algorithms/triangulation/cases.ts:36
 msgid "Multi-arm concave star"
 msgstr "多臂凹星形"
 
@@ -3454,7 +3454,7 @@ msgid "Triangle and interior point"
 msgstr "三角形与内部点"
 
 #: src/algorithms/triangulation/TriangleList.tsx:25
-#: src/algorithms/triangulation/TriangulationPlot.tsx:31
+#: src/algorithms/triangulation/TriangulationPlot.tsx:32
 msgid "Triangle T{index}: {labels}"
 msgstr "三角形 T{index}：{labels}"
 
@@ -3476,7 +3476,7 @@ msgstr "三角剖分"
 msgid "Triangulation cases"
 msgstr "三角剖分案例"
 
-#: src/algorithms/triangulation/TriangulationPlot.tsx:21
+#: src/algorithms/triangulation/TriangulationPlot.tsx:22
 msgid "Triangulation plot"
 msgstr "三角剖分画布"
 
@@ -3637,7 +3637,7 @@ msgstr "撤销剪切，恢复原坐标。"
 #~ msgid "Unequal arms alternate with deep notches; compare the triangulation of the center and each branch."
 #~ msgstr "长短不一的尖角与深凹口交替，比较中心区域与各分支的剖分。"
 
-#: src/algorithms/triangulation/cases.ts:50
+#: src/algorithms/triangulation/cases.ts:52
 msgid "Uneven protrusions and indentations face different directions, without a repeating boundary pattern."
 msgstr "大小不一、朝向各异的凹凸起伏，形成没有重复规律的边界。"
 
@@ -3800,7 +3800,7 @@ msgstr "为什么不会漏掉交点"
 msgid "Why take this action?"
 msgstr "这一步为什么这样做？"
 
-#: src/algorithms/triangulation/cases.ts:42
+#: src/algorithms/triangulation/cases.ts:44
 msgid "Winding channel"
 msgstr "曲折通道"
 
