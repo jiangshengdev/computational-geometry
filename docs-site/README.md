@@ -48,10 +48,11 @@ docs/
 
 ## 生成坐标系图解
 
-`scripts/draw_shear_coordinates.py` 使用 Matplotlib 的 MathText 渲染数学标注，生成两组图解，每组都包含明暗主题：
+`scripts/draw_shear_coordinates.py` 使用 Matplotlib 的 MathText 渲染数学标注，生成以下图解，每张都包含明暗主题：
 
 - 坐标系变换：`static/img/shear-coordinates-light.svg`、`static/img/shear-coordinates-dark.svg`。
 - 事件顺序颠倒：`static/img/shear-order-reversal-light.svg`、`static/img/shear-order-reversal-dark.svg`。
+- 新纵轴的五步图解：`static/img/shear-axis-step-{1..5}-{light,dark}.svg`，依次展示选点、新横坐标、原纵坐标、原横坐标及最终位置。图中仅保留几何辅助线、符号和简短公式，中文讲解放在正文的对应步骤中。
 
 文档通过 Docusaurus 的 `ThemedImage` 随站点主题选择图片。
 

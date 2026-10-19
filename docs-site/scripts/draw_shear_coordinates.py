@@ -140,8 +140,73 @@ def draw_order_reversal(theme, colors):
         print(output)
 
 
+def draw_axis_steps(theme, colors):
+    """Reveal one fixed point in the new and original coordinates, step by step."""
+    captions = [
+        r"$y'=2$",
+        r"$(x',y')=(0,2)$",
+        r"$y=y'=2$",
+        r"$0=x+\frac{1}{2}\times2\quad\Rightarrow\quad x=-1$",
+        r"$(x,y)=(-1,2)$",
+    ]
+    with plt.rc_context(plot_style(colors)):
+        for step, caption in enumerate(captions, start=1):
+            fig, ax = plt.subplots(figsize=(7, 4.8), facecolor=colors["background"])
+            fig.subplots_adjust(left=.08, right=.92, bottom=.22, top=.93)
+            ax.set(xlim=(-2, 1.3), ylim=(-.6, 3), aspect="equal")
+            ax.axis("off")
+            new = colors["new_axis"]
+            old = colors["axis"]
+            point = colors["positive"]
+            for end in [(1, 0), (-1.35, 2.7)]:
+                ax.annotate("", xy=end, xytext=(0, 0), arrowprops={
+                    "arrowstyle": "->", "color": new, "lw": 1.8,
+                })
+            ax.plot([-1.65, 0], [0, 0], color=new, lw=1.8)
+            ax.text(1.06, 0, r"$x'$" if step < 3 else r"$x,\ x'$", color=new, va="center", fontsize=22)
+            ax.text(-1.4, 2.8, r"$y'$", color=new, ha="center", fontsize=22)
+            ax.text(.08, -.24, r"$O$", fontsize=18)
+            for n in (1, 2):
+                ax.plot([-.5*n-.05, -.5*n+.05], [n, n], color=new, lw=1.2)
+                ax.text(-.5*n-.16, n, f"${n}$", color=new, ha="right", va="center")
+            ax.scatter([-1], [2], s=75, color=point, zorder=6)
+            if step == 1:
+                ax.scatter([-1], [2], s=260, facecolors="none", edgecolors=point, lw=1.5, zorder=5)
+            if step == 2:
+                # Follow the new vertical axis to the origin, where x' is zero.
+                ax.annotate("", xy=(0, 0), xytext=(-1, 2), arrowprops={
+                    "arrowstyle": "->", "color": point, "linestyle": "--", "lw": 1.5,
+                })
+                ax.scatter([0], [0], s=75, facecolors="none", edgecolors=point, zorder=6)
+                ax.text(-.1, -.4, r"$x'=0$", color=point, ha="right", fontsize=20)
+            if step >= 3:
+                ax.annotate("", xy=(0, 2.7), xytext=(0, 0), arrowprops={
+                    "arrowstyle": "->", "color": old, "lw": 1.8,
+                })
+                ax.text(.08, 2.8, r"$y$", color=old, fontsize=22)
+                ax.plot([-1, 0], [2, 2], color=point, ls="--", lw=1.5)
+                ax.plot([-.05, .05], [2, 2], color=old, lw=1.2)
+                ax.text(.12, 2, r"$2$", color=point, va="center")
+            if step >= 4:
+                ax.plot([-1, -1], [0, 2], color=point, ls="--", lw=1.5)
+                ax.text(-1, -.27, r"$-1$", color=point, ha="center")
+            if step == 5:
+                for start, end in [((0, 0), (-1, 0)), ((-1, 0), (-1, 2))]:
+                    ax.annotate("", xy=end, xytext=start, arrowprops={
+                        "arrowstyle": "->", "color": colors["negative"], "lw": 2.6,
+                    })
+                ax.text(-.5, -.32, r"$1$", color=colors["negative"], ha="center")
+                ax.text(-1.15, .9, r"$2$", color=colors["negative"], ha="right")
+            fig.text(.5, .075, caption, ha="center", fontsize=22, color=point)
+            output = OUTPUT / f"shear-axis-step-{step}-{theme}.svg"
+            save_svg(fig, output, colors)
+            plt.close(fig)
+            print(output)
+
+
 if __name__ == "__main__":
     OUTPUT.mkdir(parents=True, exist_ok=True)
     for theme, colors in PALETTES.items():
         draw(theme, colors)
         draw_order_reversal(theme, colors)
+        draw_axis_steps(theme, colors)
