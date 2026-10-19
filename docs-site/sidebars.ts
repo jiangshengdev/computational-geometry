@@ -23,6 +23,7 @@ const sidebars: SidebarsConfig = {
         description: '理解扫描线求交中的坐标变换与精确计算。',
       },
       items: [
+        'segment-intersection/line-equation',
         {
           type: 'category',
           label: '剪切系数的选择与证明',
