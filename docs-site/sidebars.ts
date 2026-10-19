@@ -4,8 +4,24 @@ const sidebars: SidebarsConfig = {
   documents: [
     {
       type: 'category',
-      label: '文档',
-      link: {type: 'doc', id: 'index'},
+      label: '凸包',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        slug: '/chapters/convex-hull',
+        description: '理解凸包算法中的方向判断与数学原理。',
+      },
+      items: ['determinant-orientation'],
+    },
+    {
+      type: 'category',
+      label: '线段求交',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        slug: '/chapters/segment-intersection',
+        description: '理解扫描线求交中的坐标变换与精确计算。',
+      },
       items: ['shear-coefficient'],
     },
   ],

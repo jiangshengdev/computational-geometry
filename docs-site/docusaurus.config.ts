@@ -7,7 +7,7 @@ import rehypeKatex from 'rehype-katex';
 
 const config: Config = {
   title: '计算几何文档',
-  tagline: '理解精确线段求交背后的数学',
+  tagline: '理解计算几何算法背后的数学',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -57,10 +57,16 @@ const config: Config = {
       title: '计算几何',
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'documents',
+          to: '/chapters/convex-hull/',
+          activeBaseRegex: '^/(chapters/convex-hull|docs/determinant-orientation)(/|$)',
           position: 'left',
-          label: '文档',
+          label: '凸包',
+        },
+        {
+          to: '/chapters/segment-intersection/',
+          activeBaseRegex: '^/(chapters/segment-intersection|docs/shear-coefficient)(/|$)',
+          position: 'left',
+          label: '线段求交',
         },
         {
           href: 'https://github.com/jiangshengdev/computational-geometry',
@@ -73,15 +79,19 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: '文档',
+          title: '章节',
           items: [
             {
               label: '首页',
               to: '/',
             },
             {
-              label: '剪切系数的选择与证明',
-              to: '/docs/shear-coefficient/',
+              label: '凸包',
+              to: '/chapters/convex-hull/',
+            },
+            {
+              label: '线段求交',
+              to: '/chapters/segment-intersection/',
             },
           ],
         },
