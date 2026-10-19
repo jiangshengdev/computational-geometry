@@ -52,6 +52,7 @@ docs/
 
 - 坐标系变换：`static/img/shear-coordinates-light.svg`、`static/img/shear-coordinates-dark.svg`。
 - 事件顺序颠倒：`static/img/shear-order-reversal-light.svg`、`static/img/shear-order-reversal-dark.svg`。
+- 新旧横轴重合：`static/img/shear-horizontal-axis-{light,dark}.svg`，展示横轴上的点在两套坐标中的读数相同。
 - 新纵轴的五步图解：`static/img/shear-axis-step-{1..5}-{light,dark}.svg`，依次展示选点、新横坐标、原纵坐标、原横坐标及最终位置。图中仅保留几何辅助线、符号和简短公式，中文讲解放在正文的对应步骤中。
 
 文档通过 Docusaurus 的 `ThemedImage` 随站点主题选择图片。

@@ -204,9 +204,43 @@ def draw_axis_steps(theme, colors):
             print(output)
 
 
+def draw_horizontal_axis(theme, colors):
+    """Overlay the two horizontal axes and mark their shared coordinates."""
+    with plt.rc_context(plot_style(colors)):
+        fig, ax = plt.subplots(figsize=(8, 4.5), facecolor=colors["background"])
+        fig.subplots_adjust(left=.06, right=.94, bottom=.23, top=.94)
+        ax.set(xlim=(-1.8, 3.5), ylim=(-.6, 2.1), aspect="equal")
+        ax.axis("off")
+        old = colors["axis"]
+        new = colors["new_axis"]
+        for tip, color in [((0, 1.7), old), ((-.85, 1.7), new)]:
+            ax.annotate("", xy=tip, xytext=(0, 0), arrowprops={
+                "arrowstyle": "->", "color": color, "lw": 1.5,
+            })
+        ax.text(.1, 1.8, r"$y$", color=old, fontsize=22)
+        ax.text(-.95, 1.8, r"$y'$", color=new, fontsize=22)
+        ax.annotate("", xy=(3.1, 0), xytext=(-1.6, 0), arrowprops={
+            "arrowstyle": "->", "color": old, "lw": 3,
+        })
+        ax.plot([-1.6, 3.02], [0, 0], color=new, lw=1.8, ls=(0, (5, 4)), zorder=3)
+        ax.text(3.18, .1, r"$x$", color=old, fontsize=22)
+        ax.text(3.18, -.25, r"$x'$", color=new, fontsize=22)
+        ax.text(.07, -.27, r"$O$", fontsize=18)
+        for n in (-1, 1, 2):
+            ax.scatter([n], [0], s=65, color=colors["positive"], zorder=5)
+            ax.text(n, -.3, f"${n}$", ha="center", fontsize=19)
+        ax.text(2, .35, r"$(2,0)$", color=colors["positive"], ha="center", fontsize=23)
+        fig.text(.5, .07, r"$y'=0\quad\Rightarrow\quad y=0,\quad x=x'$", ha="center", fontsize=23)
+        output = OUTPUT / f"shear-horizontal-axis-{theme}.svg"
+        save_svg(fig, output, colors)
+        plt.close(fig)
+        print(output)
+
+
 if __name__ == "__main__":
     OUTPUT.mkdir(parents=True, exist_ok=True)
     for theme, colors in PALETTES.items():
         draw(theme, colors)
         draw_order_reversal(theme, colors)
         draw_axis_steps(theme, colors)
+        draw_horizontal_axis(theme, colors)
