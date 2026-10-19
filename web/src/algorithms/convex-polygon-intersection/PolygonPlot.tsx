@@ -23,10 +23,10 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
     onPointerDown={() => interaction?.hover(null)}>
     {projection && <g data-layer="geometry" transform={viewport?.transform.toString()}>
       {/* Nested stroke widths keep both input identities visible on coincident boundaries. */}
-      <polygon data-input="first" aria-label={t`Polygon A`} points={path(first)} fill="var(--accent)" fillOpacity="0.08" stroke="var(--accent)" strokeWidth={preview ? 3 : 6} />
-      <polygon data-input="second" aria-label={t`Polygon B`} points={path(second)} fill="var(--warning)" fillOpacity="0.08" stroke="var(--warning)" strokeDasharray="6 3" strokeWidth={preview ? 2 : 4} />
-      {result?.kind === 'polygon' && <polygon data-result="polygon" points={path(vertices)} fill="var(--success)" fillOpacity="0.25" stroke="var(--success)" strokeWidth={2} />}
-      {result?.kind === 'segment' && <polyline data-result="segment" points={path(vertices)} fill="none" stroke="var(--success)" strokeWidth={2} />}
+      <polygon data-input="first" aria-label={t`Polygon A`} points={path(first)} fill="var(--accent)" fillOpacity="0.08" stroke="var(--accent)" strokeWidth={(preview ? 3 : 6) / scale} />
+      <polygon data-input="second" aria-label={t`Polygon B`} points={path(second)} fill="var(--warning)" fillOpacity="0.08" stroke="var(--warning)" strokeDasharray={`${6 / scale} ${3 / scale}`} strokeWidth={(preview ? 2 : 4) / scale} />
+      {result?.kind === 'polygon' && <polygon data-result="polygon" points={path(vertices)} fill="var(--success)" fillOpacity="0.25" stroke="var(--success)" strokeWidth={2 / scale} />}
+      {result?.kind === 'segment' && <polyline data-result="segment" points={path(vertices)} fill="none" stroke="var(--success)" strokeWidth={2 / scale} />}
       {result?.kind === 'point' && <circle data-result="point" cx={projection.px(result.point)} cy={projection.py(result.point)} r={7 / scale} fill="var(--success)" />}
       <PlotPoints points={points} projection={projection} preview={preview} scale={scale} interaction={interaction} />
     </g>}

@@ -14,6 +14,7 @@ export function TriangulationPlot({ vertices, triangles = [], preview = false, v
 }) {
   const { t } = useLingui()
   const width = viewport?.width ?? 160, height = viewport?.height ?? 120
+  const scale = viewport?.transform.k ?? 1
   const projection = viewport?.projection ?? projectPoints(vertices, width, height, 16)
   const path = (points: Point[]) => points.map(point => `${projection!.px(point)},${projection!.py(point)}`).join(' ')
   return <svg ref={viewport?.svg} className={preview ? 'case-thumbnail' : 'geometry-viewport w-full'}
@@ -21,7 +22,7 @@ export function TriangulationPlot({ vertices, triangles = [], preview = false, v
     aria-label={preview ? t`Input polygon preview` : t`Triangulation plot`}
     onPointerDown={() => { interaction?.hover(null); triangleInteraction?.hover(null) }}>
     {projection && <g data-layer="geometry" transform={viewport?.transform.toString()}>
-      <polygon data-input="boundary" points={path(vertices)} fill="var(--accent)" fillOpacity="0.08" stroke="var(--accent)" strokeWidth={2} />
+      <polygon data-input="boundary" points={path(vertices)} fill="var(--accent)" fillOpacity="0.08" stroke="var(--accent)" strokeWidth={2 / scale} />
       {triangles.map((triangle, index) => {
         const highlighted = triangleInteraction?.active?.index === index
         const selected = triangleInteraction?.selected?.index === index
@@ -33,9 +34,9 @@ export function TriangulationPlot({ vertices, triangles = [], preview = false, v
           onFocus={() => triangleInteraction?.hover({ index, source: 'plot' })} onBlur={() => triangleInteraction?.hover(null)}
           onClick={() => triangleInteraction?.select({ index, source: 'plot' })}
           onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); triangleInteraction?.select({ index, source: 'plot' }) } }}
-          points={path(triangle.map(vertex => vertices[vertex]))} fill={highlighted ? 'var(--accent)' : 'var(--success)'} fillOpacity={highlighted || selected ? '0.4' : '0.15'} stroke={selected ? 'var(--accent)' : 'var(--success)'} strokeWidth={2} />
+          points={path(triangle.map(vertex => vertices[vertex]))} fill={highlighted ? 'var(--accent)' : 'var(--success)'} fillOpacity={highlighted || selected ? '0.4' : '0.15'} stroke={selected ? 'var(--accent)' : 'var(--success)'} strokeWidth={2 / scale} />
       })}
-      <PlotPoints points={vertices} projection={projection} preview={preview} scale={viewport?.transform.k ?? 1} interaction={interaction} />
+      <PlotPoints points={vertices} projection={projection} preview={preview} scale={scale} interaction={interaction} />
     </g>}
   </svg>
 }

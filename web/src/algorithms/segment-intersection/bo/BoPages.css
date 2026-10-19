@@ -33,22 +33,23 @@
 .drawing-surface > svg[data-teaching="true"] { border-radius: 4px; }
 /* Layout owns the viewport; viewBox measurements must not feed back into its size. */
 .drawing-surface > svg { flex: 1; height: 0; min-height: 0; overflow: hidden; }
-.drawing svg text { paint-order: stroke fill; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
+/* Compensate strokes explicitly: non-scaling-stroke can leave stale Safari pixels after hover. */
+.drawing svg text { paint-order: stroke fill; stroke: #fff; stroke-width: calc(3px / var(--geometry-scale, 1)); stroke-linejoin: round; }
 .drawing svg[data-numbering] text:not(.tick):not(.order-number) { visibility: hidden; }
 .order-marker { pointer-events: none; fill: var(--foreground); }
 .order-number { font-size: calc(11px / var(--geometry-scale, 1)); font-weight: 700; }
-.order-leader { stroke: var(--foreground); stroke-width: 1; }
-.drawing .grid { stroke: #edf1f6; stroke-width: 1; }
+.order-leader { stroke: var(--foreground); stroke-width: calc(1px / var(--geometry-scale, 1)); }
+.drawing .grid { stroke: #edf1f6; stroke-width: calc(1px / var(--geometry-scale, 1)); }
 .tick { fill: #8a97a9; font-size: calc(11px / var(--geometry-scale, 1)); }
-.input { stroke: #7b9fcf; stroke-width: 2; fill: #fff; }
+.input { stroke: #7b9fcf; stroke-width: calc(2px / var(--geometry-scale, 1)); fill: #fff; }
 .input text { fill: #41618d; font-size: calc(12px / var(--geometry-scale, 1)); }
-.input.selected { stroke: #245cb0; stroke-width: 4; }
+.input.selected { stroke: #245cb0; stroke-width: calc(4px / var(--geometry-scale, 1)); }
 .input.selected text { fill: #163f7d; }
 .input[data-selected="true"] text { font-weight: 700; }
 .intersection { stroke: #de8e41; fill: #fff; stroke-width: calc(3px / var(--geometry-scale, 1)); }
-.intersection line { stroke-width: 6; stroke-opacity: .6; }
+.intersection line { stroke-width: calc(6px / var(--geometry-scale, 1)); stroke-opacity: .6; }
 .intersection.selected { stroke: #c54f13; fill: #ffe1cb; stroke-width: calc(4px / var(--geometry-scale, 1)); }
-.intersection.selected line { stroke-width: 8; stroke-opacity: .85; }
+.intersection.selected line { stroke-width: calc(8px / var(--geometry-scale, 1)); stroke-opacity: .85; }
 .coordinates, .drawing svg text { font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
 .input-item, .learning-hover-item { cursor: default; }
 .input-item, .pair-item, .learning-hover-item { padding: var(--spacing) calc(var(--spacing) * 2); line-height: calc(var(--spacing) * 6); }
@@ -56,8 +57,8 @@
 span.learning-hover-item { display: inline-block; }
 .input-item[data-highlighted="true"], .pair-item[data-highlighted="true"] { background: #e5efff; color: #163f7d; outline: 2px solid #7b9fcf; border-radius: 4px; }
 .pair-item[data-highlighted="false"] { background: transparent; }
-.input[data-active="true"] { stroke-width: 4; stroke: #245cb0; }
-.sweep-line { stroke: #7455a8; stroke-width: 2; stroke-dasharray: 6 4; pointer-events: none; }
+.input[data-active="true"] { stroke-width: calc(4px / var(--geometry-scale, 1)); stroke: #245cb0; }
+.sweep-line { stroke: #7455a8; stroke-width: calc(2px / var(--geometry-scale, 1)); stroke-dasharray: calc(6px / var(--geometry-scale, 1)) calc(4px / var(--geometry-scale, 1)); pointer-events: none; }
 .sweep-side-strip { position: absolute; top: -24px; left: 0; right: 0; height: 40px; z-index: 1; pointer-events: none; }
 .sweep-side { position: absolute; top: 2px; width: 48px; height: 36px; display: flex; flex-direction: column; align-items: center; color: #7455a8; font: 600 14px/16px ui-monospace, monospace; pointer-events: none; }
 .sweep-side-arrow { width: 20px; height: 20px; flex-shrink: 0; }
@@ -68,7 +69,7 @@ span.learning-hover-item { display: inline-block; }
 .sweep-overlay text { fill: #735020; font-size: calc(12px / var(--geometry-scale, 1)); }
 .intersection .result-label { fill: #735020; font-size: calc(12px / var(--geometry-scale, 1)); }
 .learning-hover-item[data-checked="true"] { outline: 2px solid oklch(0.205 0 0); border-radius: 4px; }
-.drawing [data-teaching="true"] .input[data-checked="true"] > line { stroke: oklch(0.205 0 0); stroke-width: 6; }
+.drawing [data-teaching="true"] .input[data-checked="true"] > line { stroke: oklch(0.205 0 0); stroke-width: calc(6px / var(--geometry-scale, 1)); }
 .learning-hover-item[data-highlighted="true"] { background: #d3f3ed; color: #075b50; outline: 2px solid #078574; border-radius: 4px; }
 .input-item[data-highlighted="true"], .pair-item[data-highlighted="true"], .learning-hover-item[data-highlighted="true"], .learning-hover-item[data-checked="true"] { outline-offset: -2px; }
 .drawing text[data-event-point][data-highlighted="true"] { fill: #075b50; font-weight: 700; }
@@ -80,7 +81,7 @@ span.learning-hover-item { display: inline-block; }
 .drawing .teaching-labels text[data-highlighted="true"] { fill: #075b50; font-weight: 700; }
 .canvas-detail { position: absolute; top: 48px; left: 8px; max-width: min(360px, calc(100% - 16px)); max-height: 40%; overflow: auto; padding: 8px 12px; border: 1px solid #7b9fcf; border-radius: 8px; background: var(--background); color: var(--foreground); font: 12px/1.5 ui-monospace, monospace; overflow-wrap: anywhere; pointer-events: none; }
 .canvas-detail[data-pinned="true"] { pointer-events: auto; }
-.drawing [data-teaching="true"] .input[data-highlighted="true"] > line { stroke: #078574; stroke-width: 7; }
+.drawing [data-teaching="true"] .input[data-highlighted="true"] > line { stroke: #078574; stroke-width: calc(7px / var(--geometry-scale, 1)); }
 .drawing [data-teaching="true"] .input.selected text:not([data-highlighted="true"]) { fill: #41618d; }
 @media (min-width: 1100px) {
   /* Equal integer side columns; the center absorbs the rounding remainder. */

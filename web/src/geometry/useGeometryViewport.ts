@@ -2,7 +2,6 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { select, zoom, zoomIdentity, type ZoomTransform } from 'd3'
 import { projectPoints } from './projection'
 import type { Point } from './geometry'
-import './viewport.css'
 
 /** Owns the SVG viewport, D3 listeners, resize lifecycle and view controls. */
 export function useGeometryViewport(points: Point[], { preserveViewKey, padding = 64 }: { preserveViewKey?: boolean; padding?: number } = {}) {

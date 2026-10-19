@@ -22,9 +22,9 @@ export function ConvexHullPlot({ points, vertices = [], preview = false, interac
     onPointerDown={() => interaction?.hover(null)}>
     {projection && <g data-layer="geometry" transform={viewport?.transform.toString()}>
       {vertices.length >= 3
-        ? <polygon data-hull="polygon" points={path} fill="var(--accent)" fillOpacity="0.12" stroke="var(--accent)" strokeWidth="2" />
+        ? <polygon data-hull="polygon" points={path} fill="var(--accent)" fillOpacity="0.12" stroke="var(--accent)" strokeWidth={2 / k} />
         : vertices.length === 2
-          ? <polyline data-hull="segment" points={path} fill="none" stroke="var(--accent)" strokeWidth="2" />
+          ? <polyline data-hull="segment" points={path} fill="none" stroke="var(--accent)" strokeWidth={2 / k} />
           : vertices.length === 1
             ? <circle data-hull="point" cx={projection.px(vertices[0])} cy={projection.py(vertices[0])} r={7 / k} fill="none" stroke="var(--accent)" strokeWidth={2 / k} />
             : null}
