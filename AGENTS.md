@@ -12,3 +12,17 @@
 - 涉及前后端职责、工具链、构建、测试、运行生命周期或跨层编排时，读取 [前后端职责隔离规则](docs/agents/layer-boundaries.md)；功能开发、重构、调试、诊断、测试、性能分析及临时脚本均适用。
 - 修改 HTTP 请求或响应、NDJSON 轨迹、Rust 公共 API 或回放 URL 时，读取 [接口与协议一致性规则](docs/agents/protocols.md)。
 - 启动开发、测试、诊断或性能测量服务前，读取 [代理端口隔离规则](docs/agents/runtime.md)。
+
+## Agent skills
+
+### Issue tracker
+
+任务、规格和正式执行记录使用 CNB Issues。详见 `docs/agents/issue-tracker.md`。
+
+### Triage labels
+
+使用五个默认 triage 角色及同名 CNB 标签。详见 `docs/agents/triage-labels.md`。
+
+### Domain docs
+
+采用 single-context：根目录 `GLOSSARY.md` 与 `docs/adr/`。详见 `docs/agents/domain.md`。
