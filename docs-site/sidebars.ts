@@ -11,7 +11,7 @@ const sidebars: SidebarsConfig = {
         slug: '/chapters/convex-hull',
         description: '理解凸包算法中的方向判断与数学原理。',
       },
-      items: ['determinant-orientation'],
+      items: ['convex-hull/determinant-orientation'],
     },
     {
       type: 'category',
@@ -26,13 +26,13 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: '剪切系数的选择与证明',
-          link: {type: 'doc', id: 'shear-coefficient'},
+          link: {type: 'doc', id: 'segment-intersection/shear/shear-coefficient'},
           items: [
-            'shear-intuition',
-            'shear-denominator',
-            'shear-order',
-            'shear-special-cases',
-            'shear-intersection',
+            'segment-intersection/shear/shear-intuition',
+            'segment-intersection/shear/shear-denominator',
+            'segment-intersection/shear/shear-order',
+            'segment-intersection/shear/shear-special-cases',
+            'segment-intersection/shear/shear-intersection',
           ],
         },
       ],
