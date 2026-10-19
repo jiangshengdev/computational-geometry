@@ -27,7 +27,7 @@ pnpm --dir docs-site serve --host 127.0.0.1
 
 ## 内容维护
 
-正文放在 `docs/` 的 Markdown 或 MDX 文件中，侧栏由 `sidebars.ts` 维护。二级、三级标题生成文章目录；公式使用 `$...$` 或 `$$...$$`。首版仅有 `docs/shear-coefficient.mdx`，没有博客、搜索或语言切换。仓库内部 ADR、代理规则与任务记录不在本站内容目录中。
+正文放在 `docs/` 的 Markdown 或 MDX 文件中，侧栏由 `sidebars.ts` 维护。二级、三级标题生成文章目录；公式使用 `$...$` 或 `$$...$$`。剪切专题由 `docs/shear-coefficient.mdx` 提供阅读入口，五篇正文按侧栏顺序组织，使用 Docusaurus 的目录卡片与前后篇导航；原入口地址保持不变。本站没有博客、搜索或语言切换。仓库内部 ADR、代理规则与任务记录不在本站内容目录中。
 
 ## 生成坐标系图解
 
