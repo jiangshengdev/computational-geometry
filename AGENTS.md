@@ -2,9 +2,6 @@
 
 按当前任务涉及的范围，在相关操作前读取并遵循以下规则；同时涉及多个范围时须一并遵循。
 
-- 创建或更新任务、规格及正式执行记录前，读取 [CNB 任务记录规则](docs/agents/issue-tracker.md)。
-- 设置或调整任务分类标签前，读取 [Triage 标签规则](docs/agents/triage-labels.md)。
-- 探索代码前，读取 [领域文档规则](docs/agents/domain.md)。
 - 启动或恢复 `grill-me` / `grilling` 时，读取 [澄清流程完成门禁](docs/agents/grilling.md)。
 - 编写或修改代码、脚本前，读取 [编码、模块组织与复用规则](docs/agents/coding.md)。
 - 涉及前端的工作，读取 [前端规则](web/AGENTS.md)，包括位于根目录的前端测试配置与跨层编排。
@@ -17,12 +14,12 @@
 
 ### Issue tracker
 
-任务、规格和正式执行记录使用 CNB Issues。详见 `docs/agents/issue-tracker.md`。
+任务、规格和正式执行记录使用 CNB Issues；创建或更新前，读取 [CNB 任务记录规则](docs/agents/issue-tracker.md)。
 
 ### Triage labels
 
-使用五个默认 triage 角色及同名 CNB 标签。详见 `docs/agents/triage-labels.md`。
+使用五个默认 triage 角色及同名 CNB 标签；设置或调整前，读取 [Triage 标签规则](docs/agents/triage-labels.md)。
 
 ### Domain docs
 
-采用 single-context：根目录 `GLOSSARY.md` 与 `docs/adr/`。详见 `docs/agents/domain.md`。
+采用 single-context：根目录 `GLOSSARY.md` 与 `docs/adr/`；探索代码前，读取 [领域文档规则](docs/agents/domain.md)。
