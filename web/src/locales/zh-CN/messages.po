@@ -555,7 +555,7 @@ msgstr "取消跳转等待"
 msgid "Candidate chain"
 msgstr "候选链"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:30
+#: src/algorithms/convex-hull/HullRotationControls.tsx:43
 msgid "Canvas angle"
 msgstr "画布角度"
 
@@ -563,7 +563,7 @@ msgstr "画布角度"
 msgid "Canvas object details"
 msgstr "画布对象详情"
 
-#: src/geometry/GeometryViewControls.tsx:9
+#: src/geometry/GeometryViewControls.tsx:17
 msgid "Canvas view controls"
 msgstr "画布视图控制"
 
@@ -591,6 +591,10 @@ msgstr "案例介绍与目标"
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:140
 msgid "Cases"
 msgstr "案例列表"
+
+#: src/geometry/GeometryViewControls.tsx:13
+msgid "Center canvas"
+msgstr "画布居中"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:27
@@ -1155,7 +1159,7 @@ msgstr "区分竖直开始者与水平穿过者，先记录闭线段接触，再
 msgid "Documentation"
 msgstr "文档"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:36
+#: src/algorithms/convex-hull/HullRotationControls.tsx:49
 msgid "Drag left or right to rotate; hold Shift for fine adjustment"
 msgstr "左右拖动旋转；按住 Shift 微调"
 
@@ -1296,13 +1300,13 @@ msgstr "事件高度状态：当前事件上侧（Δ）"
 msgid "Event height: below the current event (Δ)"
 msgstr "事件高度状态：当前事件下侧（Δ）"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
-msgstr "事件队列"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
+msgstr "事件队列"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
 msgstr "事件队列"
 
 #. js-lingui-explicit-id
@@ -1416,6 +1420,10 @@ msgstr "找出插入位置两侧需要检查的相邻位置"
 #: src/algorithms/segment-intersection/bo/learning/executionCode.ts:124
 msgid "Find where to insert this group into the active set"
 msgstr "在活动集合中找到这组线段的插入位置"
+
+#: src/algorithms/convex-hull/HullRotationControls.tsx:57
+msgid "Fine adjustment · hold to rotate"
+msgstr "微调 · 长按旋转"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:80
@@ -2281,13 +2289,13 @@ msgstr "重叠止界"
 msgid "Overlap interval"
 msgstr "重叠区间"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
-msgstr "重叠处理规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
+msgstr "重叠处理规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
 msgstr "重叠处理规则"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -2439,7 +2447,7 @@ msgstr "点数"
 #~ msgid "Point intersection"
 #~ msgstr "点交集"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:48
+#: src/algorithms/convex-hull/HullRotationControls.tsx:22
 msgid "Point main arrow up"
 msgstr "一键朝上"
 
@@ -2735,11 +2743,11 @@ msgstr "按实际控制流回放 · 中间状态"
 msgid "Requested step is unavailable"
 msgstr "请求的步骤不可用"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:42
+#: src/algorithms/convex-hull/HullRotationControls.tsx:21
 msgid "Reset orientation"
 msgstr "重置方向"
 
-#: src/geometry/GeometryViewControls.tsx:12
+#: src/geometry/GeometryViewControls.tsx:14
 msgid "Reset view"
 msgstr "重置视图"
 
@@ -2840,7 +2848,8 @@ msgstr "右转：弹出栈顶，然后再次判断。"
 msgid "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 msgstr "上升线满足 y = x + c，下降线满足 y = d − x，因此交点为 ((d − c)/2, (d + c)/2)，还须检查坐标是否在 [0, 12] 内。例如 S2 × S7 为 (6, 6)，S1 × S7 为 (8, 4)；S0 × S6 在端点 (8, 0) 接触。同方向线互相平行，没有重叠。"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:39
+#: src/algorithms/convex-hull/HullRotationControls.tsx:28
+#: src/algorithms/convex-hull/HullRotationControls.tsx:53
 msgid "Rotate"
 msgstr "拖动旋转"
 
@@ -2969,13 +2978,13 @@ msgstr "S1 从 S0 内部的 (2, 0) 向右上方出发。"
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 从 (0, 0) 到 (0, 8)，S6 从 (0, 8) 到 (8, 8)，公共端点为 (0, 8)。S4 的 y = 0、x ∈ [−2, 34]，与 S5 在 (0, 0) 接触。三组回纹各有 7 处转角和 1 处横梁接触，另有窗框 4 角及横梁与窗框的 2 处接触，共 30 个不同位置；没有内部穿越或重叠。"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
-msgstr "同点与并列规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
+msgstr "同点与并列规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
 msgstr "同点与并列规则"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:134
@@ -3601,9 +3610,9 @@ msgstr "当前模块仅提供大步观察点，尚未细化为核心代码小步
 msgid "This statement was not executed"
 msgstr "本次未执行此语句"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:52
-#: src/algorithms/convex-hull/HullRotationControls.tsx:53
-#: src/algorithms/convex-hull/HullRotationControls.tsx:56
+#: src/algorithms/convex-hull/HullRotationControls.tsx:65
+#: src/algorithms/convex-hull/HullRotationControls.tsx:66
+#: src/algorithms/convex-hull/HullRotationControls.tsx:69
 msgid "This step has no main arrow to align"
 msgstr "当前步骤没有可对齐的主箭头"
 
@@ -3963,13 +3972,13 @@ msgstr "竖直分数重叠"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "竖直重叠与多高度混合"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
-msgstr "竖直线处理规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
+msgstr "竖直线处理规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
 msgstr "竖直线处理规则"
 
 #. js-lingui-explicit-id
@@ -4069,10 +4078,10 @@ msgstr "零长度点与多线共点"
 msgid "Zero-length points and a segment"
 msgstr "零长度点与线段"
 
-#: src/geometry/GeometryViewControls.tsx:10
+#: src/geometry/GeometryViewControls.tsx:11
 msgid "Zoom in"
 msgstr "放大"
 
-#: src/geometry/GeometryViewControls.tsx:11
+#: src/geometry/GeometryViewControls.tsx:12
 msgid "Zoom out"
 msgstr "缩小"

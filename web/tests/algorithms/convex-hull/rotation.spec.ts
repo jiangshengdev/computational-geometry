@@ -12,6 +12,41 @@ async function center(point: Locator) {
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName, locale: 'en-US', viewport: { width: 1440, height: 900 } })
 
+  browserTest(`center canvas preserves rotation, scale and replay position: ${browserName}`, async ({ page }) => {
+    await page.goto('/convex-hull/cases/triangle-interior/learn')
+    const plot = page.getByRole('group', { name: 'Convex hull plot', exact: true })
+    const points = plot.locator('[data-point-id]')
+    await expect(points).toHaveCount(4)
+    await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
+    const angle = page.getByRole('textbox', { name: 'Canvas angle' })
+    await angle.fill('123')
+    await angle.press('Tab')
+    const bounds = (await plot.boundingBox())!
+    await page.mouse.move(bounds.x + 30, bounds.y + 30)
+    await page.mouse.down()
+    await page.mouse.move(bounds.x + 130, bounds.y + 90, { steps: 8 })
+    await page.mouse.up()
+    const before = await Promise.all((await points.all()).map(center))
+    const url = page.url()
+    await page.getByRole('button', { name: 'Center canvas', exact: true }).click()
+    const after = await Promise.all((await points.all()).map(center))
+    expect((Math.min(...after.map(p => p.x)) + Math.max(...after.map(p => p.x))) / 2).toBeCloseTo(bounds.x + bounds.width / 2, 3)
+    expect((Math.min(...after.map(p => p.y)) + Math.max(...after.map(p => p.y))) / 2).toBeCloseTo(bounds.y + bounds.height / 2, 3)
+    expect(after[0]).not.toEqual(before[0])
+    for (let i = 1; i < after.length; i++) {
+      expect(after[i].x - after[0].x).toBeCloseTo(before[i].x - before[0].x, 3)
+      expect(after[i].y - after[0].y).toBeCloseTo(before[i].y - before[0].y, 3)
+    }
+    await expect(angle).toHaveValue('123')
+    await expect(page).toHaveURL(url)
+    await page.getByRole('button', { name: 'Center canvas', exact: true }).click()
+    expect(await Promise.all((await points.all()).map(center))).toEqual(after)
+    await page.screenshot({ path: `/tmp/cg-hull-center-${browserName}.png` })
+    await page.goto('/convex-hull/cases/empty/learn')
+    await page.getByRole('button', { name: 'Center canvas', exact: true }).click()
+    await expect(page.getByText('No input points', { exact: true })).toBeVisible()
+  })
+
   browserTest(`horizontal rotation continues outside the control with fine adjustment and separate reset: ${browserName}`, async ({ page }) => {
     await page.goto('/convex-hull/cases/triangle-interior/learn')
     const plot = page.getByRole('group', { name: 'Convex hull plot', exact: true })
@@ -55,12 +90,17 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await compass.press('ArrowRight')
     await expect(angle).toHaveValue('95.9')
     await expect(page).toHaveURL(url)
-    const projectedCenter = () => plot.locator('[data-layer="geometry"]').evaluate(element => {
+    const fixedCenter = await plot.locator('[data-layer="geometry"]').evaluate(element => {
       const svg = (element as SVGGraphicsElement).ownerSVGElement!
-      const p = new DOMPoint(svg.viewBox.baseVal.width / 2, svg.viewBox.baseVal.height / 2)
-        .matrixTransform((element as SVGGraphicsElement).getScreenCTM()!)
+      const box = svg.getBoundingClientRect()
+      const p = new DOMPoint(box.x + box.width / 2, box.y + box.height / 2)
+        .matrixTransform((element as SVGGraphicsElement).getScreenCTM()!.inverse())
       return { x: p.x, y: p.y }
     })
+    const projectedCenter = () => plot.locator('[data-layer="geometry"]').evaluate((element, fixedCenter) => {
+      const p = new DOMPoint(fixedCenter.x, fixedCenter.y).matrixTransform((element as SVGGraphicsElement).getScreenCTM()!)
+      return { x: p.x, y: p.y }
+    }, fixedCenter)
     const originBeforeReset = await projectedCenter()
     const lengthBeforeReset = Math.hypot((await center(point)).x - (await center(plot.locator('[data-point-id="1"]'))).x,
       (await center(point)).y - (await center(plot.locator('[data-point-id="1"]'))).y)
@@ -109,7 +149,11 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       const length = Math.hypot(beforeA.x - pivot.x, beforeA.y - pivot.y)
       const action = await page.getByRole('region', { name: 'Current action' }).innerText()
       const url = page.url()
-      await align.click()
+      if (index === targets[0]) await align.click()
+      else {
+        await align.focus()
+        await page.keyboard.press('t')
+      }
       const afterA = await center(point(a)), afterB = await center(point(b))
       expect(afterB.x).toBeCloseTo(pivot.x, 3)
       expect(afterB.y).toBeCloseTo(pivot.y, 3)
@@ -138,6 +182,26 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       const rotated = await center(point(b))
       expect(rotated.x).toBeCloseTo(pivot.x, 3)
       expect(rotated.y).toBeCloseTo(pivot.y, 3)
+      for (const key of ['q', '0', 'e']) {
+        await page.keyboard.press(key)
+        const fixed = await center(point(b))
+        expect(fixed.x).toBeCloseTo(pivot.x, 3)
+        expect(fixed.y).toBeCloseTo(pivot.y, 3)
+        if (key === '0') await expect(angle).toHaveValue('0')
+      }
+      await page.getByRole('button', { name: 'Reset orientation', exact: true }).click()
+      await expect(angle).toHaveValue('0')
+      const resetPivot = await center(point(b))
+      expect(resetPivot.x).toBeCloseTo(pivot.x, 3)
+      expect(resetPivot.y).toBeCloseTo(pivot.y, 3)
+      expect(Math.hypot((await center(point(a))).x - resetPivot.x, (await center(point(a))).y - resetPivot.y)).toBeCloseTo(length, 3)
+      await angle.fill('123')
+      await angle.press('Tab')
+      // Rotation may legitimately move points outside the clipped viewport.
+      // Bring the rotated geometry into view before testing pointer selection.
+      await page.keyboard.press('-')
+      await page.keyboard.press('-')
+      await page.keyboard.press('c')
       await point(b).locator('circle').first().click()
       await expect(point(b)).toHaveAttribute('aria-pressed', 'true')
     }

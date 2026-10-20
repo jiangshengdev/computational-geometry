@@ -105,8 +105,8 @@ function PreviewLifecycle({ onKeyDown, onClose }: {
       if (event.target instanceof HTMLElement && (event.target.isContentEditable || event.target.closest('input, textarea, select'))) return
       onKeyDown?.(event)
     }
-    window.addEventListener('keydown', handle)
-    return () => window.removeEventListener('keydown', handle)
+    window.addEventListener('keydown', handle, true)
+    return () => window.removeEventListener('keydown', handle, true)
   }, [state, onKeyDown])
   return null
 }

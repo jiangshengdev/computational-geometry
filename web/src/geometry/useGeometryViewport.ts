@@ -54,12 +54,29 @@ export function useGeometryViewport(points: Point[], { preserveViewKey, padding 
     updateAngle(next)
   }
 
+  // Keep one projection for drawing and for centering the rotated input bounds.
+  const projection = projectPoints(points, width, height, Math.min(padding, width / 4, height / 4))
+  const center = () => {
+    if (!projection || !points.length) return
+    const radians = currentAngle.current * Math.PI / 180
+    const cos = Math.cos(radians), sin = Math.sin(radians)
+    const cx = width / 2, cy = height / 2
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity
+    for (const point of points) {
+      const dx = projection.px(point) - cx, dy = projection.py(point) - cy
+      const x = cx + dx * cos - dy * sin, y = cy + dx * sin + dy * cos
+      minX = Math.min(minX, x); maxX = Math.max(maxX, x)
+      minY = Math.min(minY, y); maxY = Math.max(maxY, y)
+    }
+    select(svg.current!).call(behavior.current.translateTo, (minX + maxX) / 2, (minY + maxY) / 2)
+  }
+
   return {
-    svg, width, height, transform, angle, rotate,
+    svg, width, height, transform, angle, rotate, center,
+    rotateBy: (degrees: number, anchor?: { x: number; y: number }) => rotate(currentAngle.current + degrees, anchor),
     geometryTransform: `${transform.toString()} rotate(${angle} ${width / 2} ${height / 2})`,
-    resetOrientation: () => updateAngle(0),
     // Keep at least half of the shorter dimension available for geometry.
-    projection: projectPoints(points, width, height, Math.min(padding, width / 4, height / 4)),
+    projection,
     zoomIn: () => select(svg.current!).call(behavior.current.scaleBy, 1.4),
     zoomOut: () => select(svg.current!).call(behavior.current.scaleBy, 1 / 1.4),
     reset: () => {

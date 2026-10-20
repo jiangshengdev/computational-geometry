@@ -555,7 +555,7 @@ msgstr "Cancel waiting"
 msgid "Candidate chain"
 msgstr "Candidate chain"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:30
+#: src/algorithms/convex-hull/HullRotationControls.tsx:43
 msgid "Canvas angle"
 msgstr "Canvas angle"
 
@@ -563,7 +563,7 @@ msgstr "Canvas angle"
 msgid "Canvas object details"
 msgstr "Canvas object details"
 
-#: src/geometry/GeometryViewControls.tsx:9
+#: src/geometry/GeometryViewControls.tsx:17
 msgid "Canvas view controls"
 msgstr "Canvas view controls"
 
@@ -591,6 +591,10 @@ msgstr "Case introduction and goals"
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:140
 msgid "Cases"
 msgstr "Cases"
+
+#: src/geometry/GeometryViewControls.tsx:13
+msgid "Center canvas"
+msgstr "Center canvas"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:27
@@ -1155,7 +1159,7 @@ msgstr "Distinguish the starting vertical segment from the horizontal segment pa
 msgid "Documentation"
 msgstr "Documentation"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:36
+#: src/algorithms/convex-hull/HullRotationControls.tsx:49
 msgid "Drag left or right to rotate; hold Shift for fine adjustment"
 msgstr "Drag left or right to rotate; hold Shift for fine adjustment"
 
@@ -1296,13 +1300,13 @@ msgstr "Event height: above the current event (Δ)"
 msgid "Event height: below the current event (Δ)"
 msgstr "Event height: below the current event (Δ)"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
-msgstr "Event queue"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
+msgstr "Event queue"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
 msgstr "Event queue"
 
 #. js-lingui-explicit-id
@@ -1416,6 +1420,10 @@ msgstr "Find the neighboring positions to check on either side of the insertion"
 #: src/algorithms/segment-intersection/bo/learning/executionCode.ts:124
 msgid "Find where to insert this group into the active set"
 msgstr "Find where to insert this group into the active set"
+
+#: src/algorithms/convex-hull/HullRotationControls.tsx:57
+msgid "Fine adjustment · hold to rotate"
+msgstr "Fine adjustment · hold to rotate"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:80
@@ -2281,13 +2289,13 @@ msgstr "Overlap end boundary"
 msgid "Overlap interval"
 msgstr "Overlap interval"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
-msgstr "Overlap rules"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
+msgstr "Overlap rules"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
 msgstr "Overlap rules"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -2439,7 +2447,7 @@ msgstr "Point count"
 #~ msgid "Point intersection"
 #~ msgstr "Point intersection"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:48
+#: src/algorithms/convex-hull/HullRotationControls.tsx:22
 msgid "Point main arrow up"
 msgstr "Point main arrow up"
 
@@ -2735,11 +2743,11 @@ msgstr "Replaying actual control flow · intermediate state"
 msgid "Requested step is unavailable"
 msgstr "Requested step is unavailable"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:42
+#: src/algorithms/convex-hull/HullRotationControls.tsx:21
 msgid "Reset orientation"
 msgstr "Reset orientation"
 
-#: src/geometry/GeometryViewControls.tsx:12
+#: src/geometry/GeometryViewControls.tsx:14
 msgid "Reset view"
 msgstr "Reset view"
 
@@ -2840,7 +2848,8 @@ msgstr "Right turn: pop the stack top, then check again."
 msgid "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 msgstr "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:39
+#: src/algorithms/convex-hull/HullRotationControls.tsx:28
+#: src/algorithms/convex-hull/HullRotationControls.tsx:53
 msgid "Rotate"
 msgstr "Rotate"
 
@@ -2969,13 +2978,13 @@ msgstr "S1 starts at (2, 0) inside S0 and heads up and right."
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
-msgstr "Same-point and tie rules"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
+msgstr "Same-point and tie rules"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
 msgstr "Same-point and tie rules"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:134
@@ -3601,9 +3610,9 @@ msgstr "This module currently provides coarse observation points, without detail
 msgid "This statement was not executed"
 msgstr "This statement was not executed"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:52
-#: src/algorithms/convex-hull/HullRotationControls.tsx:53
-#: src/algorithms/convex-hull/HullRotationControls.tsx:56
+#: src/algorithms/convex-hull/HullRotationControls.tsx:65
+#: src/algorithms/convex-hull/HullRotationControls.tsx:66
+#: src/algorithms/convex-hull/HullRotationControls.tsx:69
 msgid "This step has no main arrow to align"
 msgstr "This step has no main arrow to align"
 
@@ -3963,13 +3972,13 @@ msgstr "Vertical fractional overlap"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "Vertical overlap with mixed contacts at multiple heights"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
-msgstr "Vertical segment rules"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
+msgstr "Vertical segment rules"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
 msgstr "Vertical segment rules"
 
 #. js-lingui-explicit-id
@@ -4069,10 +4078,10 @@ msgstr "Zero-length point at a multiway crossing"
 msgid "Zero-length points and a segment"
 msgstr "Zero-length points and a segment"
 
-#: src/geometry/GeometryViewControls.tsx:10
+#: src/geometry/GeometryViewControls.tsx:11
 msgid "Zoom in"
 msgstr "Zoom in"
 
-#: src/geometry/GeometryViewControls.tsx:11
+#: src/geometry/GeometryViewControls.tsx:12
 msgid "Zoom out"
 msgstr "Zoom out"

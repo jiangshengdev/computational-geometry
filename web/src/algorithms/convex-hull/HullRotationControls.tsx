@@ -7,6 +7,8 @@ import { Tooltip } from '@heroui/react/tooltip'
 import { ArrowUp, Compass, Info, RotateCcw } from 'lucide-react'
 import { useId, useRef } from 'react'
 import { useMove } from 'react-aria/useMove'
+import { ShortcutActionButton, ShortcutHint, type ShortcutAction } from '../../app/ShortcutAction'
+import { useShortcutActions } from '../../app/useShortcutActions'
 
 export function HullRotationControls({ viewport, mainArrow }: {
   viewport: GeometryViewport
@@ -16,6 +18,17 @@ export function HullRotationControls({ viewport, mainArrow }: {
   const reasonId = useId()
   const degrees = useRef(0)
   const rotate = (value: number) => viewport.rotate(value, mainArrow?.to)
+  const reset: ShortcutAction = { name: t`Reset orientation`, key: '0', hint: '0', variant: 'tertiary', isDisabled: false, onPress: () => rotate(0) }
+  const align: ShortcutAction = { name: t`Point main arrow up`, key: 't', hint: 'T', variant: 'tertiary', isDisabled: !mainArrow,
+    onPress: () => {
+      if (mainArrow) rotate(-90 - Math.atan2(mainArrow.to.y - mainArrow.from.y, mainArrow.to.x - mainArrow.from.x) * 180 / Math.PI)
+    } }
+  useShortcutActions([
+    ...['q', 'e'].flatMap(key => [false, true].map(shift => ({
+      name: t`Rotate`, key, shift, hint: key, repeat: true, isDisabled: false,
+      onPress: () => viewport.rotateBy((key === 'q' ? -1 : 1) * (shift ? 1 : 5), mainArrow?.to),
+    }))), reset, align,
+  ])
   const { moveProps } = useMove({
     onMoveStart: () => { degrees.current = viewport.angle },
     onMove: event => {
@@ -34,18 +47,18 @@ export function HullRotationControls({ viewport, mainArrow }: {
     <Button onPointerDown={moveProps.onPointerDown}
       size="sm" variant="tertiary" className="cursor-ew-resize"
       aria-label={t`Drag left or right to rotate; hold Shift for fine adjustment`}
+      render={props => <button {...props} aria-keyshortcuts="Q E Shift+Q Shift+E" />}
       style={{ touchAction: 'none' }}>
       <Compass size={24} aria-hidden="true" style={{ transform: `rotate(${viewport.angle - 45}deg)` }} />
       {t`Rotate`}
+      <ShortcutHint>Q / E</ShortcutHint>
     </Button>
     </span>
-    <Button isIconOnly size="sm" variant="tertiary" aria-label={t`Reset orientation`} onPress={viewport.resetOrientation}>
+    <span className="text-small text-muted"><ShortcutHint>Shift</ShortcutHint> {t`Fine adjustment · hold to rotate`}</span>
+    <ShortcutActionButton action={reset} hideName>
       <RotateCcw size={16} aria-hidden="true" />
-    </Button>
-    <Button size="sm" variant="tertiary" isDisabled={!mainArrow} aria-describedby={!mainArrow ? reasonId : undefined}
-      onPress={() => {
-        if (mainArrow) rotate(-90 - Math.atan2(mainArrow.to.y - mainArrow.from.y, mainArrow.to.x - mainArrow.from.x) * 180 / Math.PI)
-      }}><ArrowUp size={16} aria-hidden="true" />{t`Point main arrow up`}</Button>
+    </ShortcutActionButton>
+    <ShortcutActionButton action={align} descriptionId={!mainArrow ? reasonId : undefined}><ArrowUp size={16} aria-hidden="true" /></ShortcutActionButton>
     <Tooltip isDisabled={!!mainArrow}>
     <Tooltip.Trigger<'button'> render={props => <button {...props} type="button" />}
       className={buttonVariants({ isIconOnly: true, variant: 'ghost', size: 'sm', className: mainArrow ? 'invisible' : 'inline-flex' })}

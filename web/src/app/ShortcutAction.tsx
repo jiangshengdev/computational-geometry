@@ -3,20 +3,30 @@ import { Button } from '@heroui/react/button'
 import { Chip } from '@heroui/react/chip'
 import { ButtonGroup } from '@heroui/react/button-group'
 
-export type ShortcutAction = {
-  name: string
+export type ShortcutBinding = {
   key: string
+  code?: string
   shift?: boolean
+}
+
+export type ShortcutAction = ShortcutBinding & {
+  name: string
+  alternatives?: readonly ShortcutBinding[]
+  repeat?: boolean
   hint: ReactNode
   variant?: 'primary' | 'tertiary'
   isDisabled: boolean
   onPress: () => void
 }
 
-export function ShortcutActionButton({ action, children }: { action: ShortcutAction; children?: ReactNode }) {
-  return <Button variant={action.variant ?? 'secondary'} size="sm" onPress={action.onPress} isDisabled={action.isDisabled} render={props => <button {...props} aria-keyshortcuts={`${action.shift ? 'Shift+' : ''}${action.key}`} />}>
+export function ShortcutHint({ children, primary = false }: { children: ReactNode; primary?: boolean }) {
+  return <Chip color="accent" variant="soft" size="sm" className={primary ? 'bg-white/20 text-white' : undefined} aria-hidden="true">{children}</Chip>
+}
+
+export function ShortcutActionButton({ action, children, hideName = false, descriptionId }: { action: ShortcutAction; children?: ReactNode; hideName?: boolean; descriptionId?: string }) {
+  return <Button variant={action.variant ?? 'secondary'} size="sm" onPress={action.onPress} isDisabled={action.isDisabled} aria-label={action.name} aria-describedby={descriptionId} render={props => <button {...props} aria-keyshortcuts={[action, ...action.alternatives ?? []].map(binding => `${binding.shift ? 'Shift+' : ''}${binding.key === '+' ? 'plus' : binding.key}`).join(' ')} />}>
     {children}
-    {action.name}<Chip color="accent" variant="soft" size="sm" className={action.variant === 'primary' ? 'bg-white/20 text-white' : undefined} aria-hidden="true">{action.hint}</Chip>
+    {!hideName && action.name}<ShortcutHint primary={action.variant === 'primary'}>{action.hint}</ShortcutHint>
   </Button>
 }
 
