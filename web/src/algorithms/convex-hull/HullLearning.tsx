@@ -1,7 +1,8 @@
 import { useLingui } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
 import { useReplayPosition, useReplaySlider } from '../../app/useReplayPosition'
-import { useId, useRef, type CSSProperties } from 'react'
+import { useId, useRef, useState, type CSSProperties } from 'react'
+import { createPortal } from 'react-dom'
 import { Button, buttonVariants } from '@heroui/react/button'
 import { Slider } from '@heroui/react/slider'
 import { Alert } from '@heroui/react/alert'
@@ -40,6 +41,7 @@ const isHullLayout = (value: unknown): value is HullLayout => typeof value === '
 
 export function HullLearning({ preset }: { preset: HullCase }) {
   const { t } = useLingui()
+  const [rotationToolbar, setRotationToolbar] = useState<HTMLDivElement | null>(null)
   const { _: translate } = useMessages()
   const [layout, setLayout] = useLayoutPreference<HullLayout>('hull-learning-layout-v1-columns', '1:3:1', isHullLayout)
   const [zenMode, setZenMode] = useLayoutPreference('hull-learning-layout-v1-zen', false,
@@ -83,6 +85,7 @@ export function HullLearning({ preset }: { preset: HullCase }) {
     <DocumentTitle title={`${translate(preset.name)} · ${t`Learn step by step`}`} />
     <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull"
       trailingAction={<AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/convex-hull/cases/${preset.id}`}>{t`Back to results viewer`}</AppLink>}>
+      <div ref={setRotationToolbar} />
       <LearningDisplayControls ratios={Object.keys(hullLayouts)} layout={layout}
         label={t`Main layout ratio (ordered points, geometry, stacks)`}
         onLayoutChange={value => { if (isHullLayout(value)) setLayout(value) }}
@@ -93,7 +96,7 @@ export function HullLearning({ preset }: { preset: HullCase }) {
         <div className="workspace hull-learning-workspace" style={{ '--hull-geometry-width': `${hullLayouts[layout]}fr` } as CSSProperties}
           onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
           <HullPointList title={t`Ordered points`} panel="order" points={trace.points} step={step} interaction={interaction} />
-          <HullLearningPlot points={trace.points} step={step} interaction={interaction} />
+          <HullLearningPlot points={trace.points} step={step} interaction={interaction} rotationToolbar={rotationToolbar} />
           <div className="workspace-panel hull-learning-stacks">
             <HullPointList title={t`Lower hull stack`} panel="lower" points={trace.points} step={step} interaction={interaction} stack complete={step.lower_complete} />
             <HullPointList title={t`Upper hull stack`} panel="upper" points={trace.points} step={step} interaction={interaction} stack complete={step.upper_complete} />
@@ -172,7 +175,7 @@ function HullPointList({ title, panel, points, step, interaction, stack = false,
   </Card></section>
 }
 
-function HullLearningPlot({ points, step, interaction }: { points: Point[]; step: HullStep; interaction: Interaction }) {
+function HullLearningPlot({ points, step, interaction, rotationToolbar }: { points: Point[]; step: HullStep; interaction: Interaction; rotationToolbar: HTMLDivElement | null }) {
   const { t } = useLingui()
   const orderArrowId = useId()
   const viewport = useGeometryViewport(points, { padding: 36 })
@@ -186,7 +189,7 @@ function HullLearningPlot({ points, step, interaction }: { points: Point[]; step
     ? incoming : null
   return <div className="drawing"><Card>
     <Card.Header className="drawing-toolbar"><Card.Title>{t`Convex hull plot`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
-    <HullRotationControls viewport={viewport} mainArrow={mainArrow} />
+    {rotationToolbar && createPortal(<HullRotationControls viewport={viewport} mainArrow={mainArrow} />, rotationToolbar)}
     <Card.Content className="flex min-h-0 flex-1 flex-col"><div className="drawing-surface flex flex-col">
       <svg ref={svg} className="geometry-viewport w-full" viewBox={`0 0 ${width} ${height}`} role="group" aria-label={t`Convex hull plot`} style={{ '--geometry-scale': k } as CSSProperties}>
         <defs>

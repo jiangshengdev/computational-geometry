@@ -12,7 +12,7 @@ async function center(point: Locator) {
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName, locale: 'en-US', viewport: { width: 1440, height: 900 } })
 
-  browserTest(`compass drag crosses zero and click restores only orientation: ${browserName}`, async ({ page }) => {
+  browserTest(`horizontal rotation continues outside the control with fine adjustment and separate reset: ${browserName}`, async ({ page }) => {
     await page.goto('/convex-hull/cases/triangle-interior/learn')
     const plot = page.getByRole('group', { name: 'Convex hull plot', exact: true })
     const point = plot.locator('[data-point-id="0"]')
@@ -29,15 +29,31 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await angle.fill('350')
     await angle.press('Tab')
     const url = page.url()
-    const compass = page.getByRole('button', { name: 'Compass: drag to rotate, click to reset orientation', exact: true })
+    const compass = page.getByRole('button', { name: 'Drag left or right to rotate; hold Shift for fine adjustment', exact: true })
     const box = (await compass.boundingBox())!
     const cx = box.x + box.width / 2, cy = box.y + box.height / 2
-    await page.mouse.move(cx, cy - 10)
+    await page.mouse.move(cx, cy)
     await page.mouse.down()
-    await page.mouse.move(cx + 10, cy, { steps: 8 })
+    await page.mouse.move(cx + 200, cy + 100, { steps: 8 })
+    await expect(angle).toHaveValue('90')
+    await page.mouse.move(cx + 300, cy + 100, { steps: 8 })
+    await expect(angle).toHaveValue('140')
+    await page.keyboard.down('Shift')
+    await page.mouse.move(cx + 400, cy + 100, { steps: 8 })
+    await expect(angle).toHaveValue('145')
+    await page.keyboard.up('Shift')
+    await page.mouse.move(cx + 300, cy + 100, { steps: 8 })
+    await expect(angle).toHaveValue('95')
     await page.mouse.up()
-    // WebKit rounds delivered pointer coordinates to pixels on this small compass.
-    expect(Math.abs(Number(await angle.inputValue()) - 80)).toBeLessThan(5)
+    await page.mouse.move(cx, cy)
+    await expect(angle).toHaveValue('95')
+    await compass.click()
+    await expect(angle).toHaveValue('95')
+    await compass.focus()
+    await compass.press('Shift+ArrowLeft')
+    await expect(angle).toHaveValue('94.9')
+    await compass.press('ArrowRight')
+    await expect(angle).toHaveValue('95.9')
     await expect(page).toHaveURL(url)
     const projectedCenter = () => plot.locator('[data-layer="geometry"]').evaluate(element => {
       const svg = (element as SVGGraphicsElement).ownerSVGElement!
@@ -48,7 +64,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const originBeforeReset = await projectedCenter()
     const lengthBeforeReset = Math.hypot((await center(point)).x - (await center(plot.locator('[data-point-id="1"]'))).x,
       (await center(point)).y - (await center(plot.locator('[data-point-id="1"]'))).y)
-    await compass.click()
+    await page.getByRole('button', { name: 'Reset orientation', exact: true }).click()
     await expect(angle).toHaveValue('0')
     const originAfterReset = await projectedCenter()
     expect(originAfterReset.x).toBeCloseTo(originBeforeReset.x, 4)
@@ -72,7 +88,10 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const angle = page.getByRole('textbox', { name: 'Canvas angle' })
     const align = page.getByRole('button', { name: 'Point main arrow up', exact: true })
     await expect(align).toBeDisabled()
-    await expect(page.getByText('This step has no main arrow to align', { exact: true })).toBeVisible()
+    await expect(align).toHaveAccessibleDescription('This step has no main arrow to align')
+    await page.getByRole('button', { name: 'This step has no main arrow to align', exact: true }).focus()
+    await expect(page.getByRole('tooltip')).toContainText('This step has no main arrow to align')
+    await page.mouse.move(0, 0)
     const plot = page.getByRole('group', { name: 'Convex hull plot', exact: true })
     const point = (id: number) => plot.locator(`[data-point-id="${id}"]`)
     const slider = page.getByRole('slider', { name: 'Teaching step' })

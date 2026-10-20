@@ -410,7 +410,7 @@ msgstr "Argument "
 msgid "help.LearningIntroduction.4"
 msgstr "At an ordinary crossing, two segments exchange their vertical order and must be neighbors just before they cross. Checking new neighbors after insertion, removal, or reordering discovers future intersections without rechecking every pair at every step."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:138
+#: src/algorithms/convex-hull/HullLearning.tsx:141
 msgid "At most one distinct point: return directly without scanning or joining chains."
 msgstr "At most one distinct point: return directly without scanning or joining chains."
 
@@ -452,7 +452,7 @@ msgstr "Back to cases"
 #~ msgid "Back to result"
 #~ msgstr "Back to result"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:85
+#: src/algorithms/convex-hull/HullLearning.tsx:87
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:254
 msgid "Back to results viewer"
 msgstr "Back to results viewer"
@@ -543,7 +543,7 @@ msgstr "Bridge truss"
 msgid "Call expression: "
 msgstr "Call expression: "
 
-#: src/algorithms/convex-hull/HullLearning.tsx:110
+#: src/algorithms/convex-hull/HullLearning.tsx:113
 msgid "Cancel loading"
 msgstr "Cancel loading"
 
@@ -551,11 +551,11 @@ msgstr "Cancel loading"
 msgid "Cancel waiting"
 msgstr "Cancel waiting"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:161
+#: src/algorithms/convex-hull/HullLearning.tsx:164
 msgid "Candidate chain"
 msgstr "Candidate chain"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:20
+#: src/algorithms/convex-hull/HullRotationControls.tsx:30
 msgid "Canvas angle"
 msgstr "Canvas angle"
 
@@ -602,7 +602,7 @@ msgstr "CGAL 6.1.1 · 2D Intersection of Curves: overlaps and degeneracies"
 msgid "help.LearningReferences.6"
 msgstr "CGAL 6.1.1 · 2D Intersections: an intersection can be a point or a segment"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:161
+#: src/algorithms/convex-hull/HullLearning.tsx:164
 msgid "Chain complete"
 msgstr "Chain complete"
 
@@ -788,7 +788,7 @@ msgstr "Collinear point contact"
 msgid "Collinear segments separated by a gap have no intersection."
 msgstr "Collinear segments separated by a gap have no intersection."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:132
+#: src/algorithms/convex-hull/HullLearning.tsx:135
 msgid "Collinear: pop the middle point, then check again."
 msgstr "Collinear: pop the middle point, then check again."
 
@@ -833,8 +833,8 @@ msgid "compare: the current ordering rule."
 msgstr "compare: the current ordering rule."
 
 #: src/algorithms/convex-hull/HullRotationControls.tsx:23
-msgid "Compass: drag to rotate, click to reset orientation"
-msgstr "Compass: drag to rotate, click to reset orientation"
+#~ msgid "Compass: drag to rotate, click to reset orientation"
+#~ msgstr "Compass: drag to rotate, click to reset orientation"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionSymbol.tsx:155
@@ -932,8 +932,8 @@ msgid "Convex hull cases"
 msgstr "Convex hull cases"
 
 #: src/algorithms/convex-hull/ConvexHullPlot.tsx:21
-#: src/algorithms/convex-hull/HullLearning.tsx:188
 #: src/algorithms/convex-hull/HullLearning.tsx:191
+#: src/algorithms/convex-hull/HullLearning.tsx:194
 msgid "Convex hull plot"
 msgstr "Convex hull plot"
 
@@ -1003,7 +1003,7 @@ msgstr "Create an empty sequence."
 msgid "Current {index} · Generated 0–{lastStep}"
 msgstr "Current {index} · Generated 0–{lastStep}"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:104
+#: src/algorithms/convex-hull/HullLearning.tsx:107
 msgid "Current action"
 msgstr "Current action"
 
@@ -1155,6 +1155,10 @@ msgstr "Distinguish the starting vertical segment from the horizontal segment pa
 msgid "Documentation"
 msgstr "Documentation"
 
+#: src/algorithms/convex-hull/HullRotationControls.tsx:36
+msgid "Drag left or right to rotate; hold Shift for fine adjustment"
+msgstr "Drag left or right to rotate; hold Shift for fine adjustment"
+
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:21
 msgid "Drag to browse teaching steps (including microsteps)"
 msgstr "Drag to browse teaching steps (including microsteps)"
@@ -1292,13 +1296,13 @@ msgstr "Event height: above the current event (Δ)"
 msgid "Event height: below the current event (Δ)"
 msgstr "Event height: below the current event (Δ)"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
+msgstr "Event queue"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
-msgstr "Event queue"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
 msgstr "Event queue"
 
 #. js-lingui-explicit-id
@@ -1487,7 +1491,7 @@ msgstr "Further reading"
 msgid "Generating trace"
 msgstr "Generating trace"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:113
+#: src/algorithms/convex-hull/HullLearning.tsx:116
 msgid "Generating trace · total unknown"
 msgstr "Generating trace · total unknown"
 
@@ -1558,7 +1562,7 @@ msgid "Hexagonal snowflake"
 msgstr "Hexagonal snowflake"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:47
-#: src/algorithms/convex-hull/HullLearning.tsx:100
+#: src/algorithms/convex-hull/HullLearning.tsx:103
 msgid "Hull vertices"
 msgstr "Hull vertices"
 
@@ -1783,7 +1787,7 @@ msgstr "Invalid link · {0}"
 msgid "Invalid result structure"
 msgstr "Invalid result structure"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:92
+#: src/algorithms/convex-hull/HullLearning.tsx:95
 msgid "Invalid teaching step"
 msgstr "Invalid teaching step"
 
@@ -1795,11 +1799,11 @@ msgstr "Irregular convex polygons"
 msgid "Irregular outline"
 msgstr "Irregular outline"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:68
+#: src/algorithms/convex-hull/HullLearning.tsx:70
 msgid "Join result"
 msgstr "Join result"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:138
+#: src/algorithms/convex-hull/HullLearning.tsx:141
 msgid "Join the two chains into the final ordered hull."
 msgstr "Join the two chains into the final ordered hull."
 
@@ -1835,12 +1839,12 @@ msgstr "KIT · Line Segment Intersection: closed segments and grouping events at
 msgid "Learn from the start"
 msgstr "Learn from the start"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:83
-#: src/algorithms/convex-hull/HullLearning.tsx:91
+#: src/algorithms/convex-hull/HullLearning.tsx:85
+#: src/algorithms/convex-hull/HullLearning.tsx:94
 msgid "Learn step by step"
 msgstr "Learn step by step"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:113
+#: src/algorithms/convex-hull/HullLearning.tsx:116
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:62
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:21
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:53
@@ -1888,7 +1892,7 @@ msgstr "Left sidebar"
 msgid "Left turn · keep"
 msgstr "Left turn · keep"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:132
+#: src/algorithms/convex-hull/HullLearning.tsx:135
 msgid "Left turn: keep the stack top, then push the current point."
 msgstr "Left turn: keep the stack top, then push the current point."
 
@@ -1906,7 +1910,7 @@ msgstr "Line {line}, call {occurrence}"
 msgid "Line {line}, keyword {occurrence}"
 msgstr "Line {line}, keyword {occurrence}"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:113
+#: src/algorithms/convex-hull/HullLearning.tsx:116
 msgid "Loading cancelled · recorded steps remain available"
 msgstr "Loading cancelled · recorded steps remain available"
 
@@ -1939,15 +1943,15 @@ msgstr "Long interval and a short member"
 msgid "Look up both segments by their indices"
 msgstr "Look up both segments by their indices"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:135
+#: src/algorithms/convex-hull/HullLearning.tsx:138
 msgid "Lower chain scan complete."
 msgstr "Lower chain scan complete."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:67
+#: src/algorithms/convex-hull/HullLearning.tsx:69
 msgid "Lower hull"
 msgstr "Lower hull"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:98
+#: src/algorithms/convex-hull/HullLearning.tsx:101
 msgid "Lower hull stack"
 msgstr "Lower hull stack"
 
@@ -1955,7 +1959,7 @@ msgstr "Lower hull stack"
 msgid "Main layout ratio (geometry, code, variables)"
 msgstr "Main layout ratio (geometry, code, variables)"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:87
+#: src/algorithms/convex-hull/HullLearning.tsx:90
 msgid "Main layout ratio (ordered points, geometry, stacks)"
 msgstr "Main layout ratio (ordered points, geometry, stacks)"
 
@@ -1972,7 +1976,7 @@ msgstr "Many boundary vertices"
 msgid "Meander window lattice"
 msgstr "Meander window lattice"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:130
+#: src/algorithms/convex-hull/HullLearning.tsx:133
 msgid "Merge equal coordinates, retaining the first input identity. Duplicate positions do not add hull vertices."
 msgstr "Merge equal coordinates, retaining the first input identity. Duplicate positions do not add hull vertices."
 
@@ -2021,7 +2025,7 @@ msgstr "next is None: the event queue is empty and the sweep loop exits. Learnin
 msgid "Next major step"
 msgstr "Next major step"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:73
+#: src/algorithms/convex-hull/HullLearning.tsx:75
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:96
 msgid "Next step"
 msgstr "Next step"
@@ -2049,7 +2053,7 @@ msgid "No events"
 msgstr "No events"
 
 #: src/algorithms/convex-hull/ConvexHullPlot.tsx:33
-#: src/algorithms/convex-hull/HullLearning.tsx:228
+#: src/algorithms/convex-hull/HullLearning.tsx:231
 msgid "No input points"
 msgstr "No input points"
 
@@ -2080,7 +2084,7 @@ msgstr "No intersection"
 msgid "No next element; the loop has ended"
 msgstr "No next element; the loop has ended"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:162
+#: src/algorithms/convex-hull/HullLearning.tsx:165
 #: src/geometry/PointCoordinates.tsx:29
 msgid "No points"
 msgstr "No points"
@@ -2202,7 +2206,7 @@ msgstr "Order after the current teaching action; the event is still in progress"
 msgid "Order after the processed event"
 msgstr "Order after the processed event"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:95
+#: src/algorithms/convex-hull/HullLearning.tsx:98
 msgid "Ordered points"
 msgstr "Ordered points"
 
@@ -2223,7 +2227,7 @@ msgstr "original closure"
 msgid "Original coordinate plane · Equal scale"
 msgstr "Original coordinate plane · Equal scale"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:128
+#: src/algorithms/convex-hull/HullLearning.tsx:131
 msgid "Original input · each P label keeps its input identity."
 msgstr "Original input · each P label keeps its input identity."
 
@@ -2277,13 +2281,13 @@ msgstr "Overlap end boundary"
 msgid "Overlap interval"
 msgstr "Overlap interval"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
+msgstr "Overlap rules"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
-msgstr "Overlap rules"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
 msgstr "Overlap rules"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -2435,7 +2439,7 @@ msgstr "Point count"
 #~ msgid "Point intersection"
 #~ msgstr "Point intersection"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:54
+#: src/algorithms/convex-hull/HullRotationControls.tsx:48
 msgid "Point main arrow up"
 msgstr "Point main arrow up"
 
@@ -2478,11 +2482,11 @@ msgstr "Polygon B · dashed boundary"
 msgid "Polygon B vertices"
 msgstr "Polygon B vertices"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:133
+#: src/algorithms/convex-hull/HullLearning.tsx:136
 msgid "Popped from this chain only. It may still belong to the other chain and the final hull."
 msgstr "Popped from this chain only. It may still belong to the other chain and the final hull."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:131
+#: src/algorithms/convex-hull/HullLearning.tsx:134
 msgid "Position in ordered points"
 msgstr "Position in ordered points"
 
@@ -2516,7 +2520,7 @@ msgstr "Prepare to convert sweep coordinates back to input coordinates"
 msgid "Prepare to record the segment pairs checked in this event"
 msgstr "Prepare to record the segment pairs checked in this event"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:67
+#: src/algorithms/convex-hull/HullLearning.tsx:69
 msgid "Preprocessing"
 msgstr "Preprocessing"
 
@@ -2529,7 +2533,7 @@ msgstr "Preserve distinct identities for duplicate and reversed inputs; observe 
 msgid "Previous major step"
 msgstr "Previous major step"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:72
+#: src/algorithms/convex-hull/HullLearning.tsx:74
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:95
 msgid "Previous step"
 msgstr "Previous step"
@@ -2562,7 +2566,7 @@ msgstr "Processing event"
 msgid "Purple: sweep line and current event"
 msgstr "Purple: sweep line and current event"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:134
+#: src/algorithms/convex-hull/HullLearning.tsx:137
 msgid "Pushed onto the current chain. These are candidates and may be popped later."
 msgstr "Pushed onto the current chain. These are candidates and may be popped later."
 
@@ -2689,11 +2693,11 @@ msgstr "Remove and return the earliest event in the queue."
 msgid "Remove segments that end at the current point from the active set"
 msgstr "Remove segments that end at the current point from the active set"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:136
+#: src/algorithms/convex-hull/HullLearning.tsx:139
 msgid "Remove the last lower-chain endpoint to avoid duplication. This endpoint remains in the final hull via the upper chain."
 msgstr "Remove the last lower-chain endpoint to avoid duplication. This endpoint remains in the final hull via the upper chain."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:137
+#: src/algorithms/convex-hull/HullLearning.tsx:140
 msgid "Remove the last upper-chain endpoint to avoid duplication. This endpoint remains in the final hull via the lower chain."
 msgstr "Remove the last upper-chain endpoint to avoid duplication. This endpoint remains in the final hull via the lower chain."
 
@@ -2715,8 +2719,8 @@ msgstr "Replace elements in the specified range."
 #~ msgid "Replay"
 #~ msgstr "Replay"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:103
-#: src/algorithms/convex-hull/HullLearning.tsx:109
+#: src/algorithms/convex-hull/HullLearning.tsx:106
+#: src/algorithms/convex-hull/HullLearning.tsx:112
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:16
 msgid "Replay controls"
 msgstr "Replay controls"
@@ -2727,15 +2731,19 @@ msgstr "Replay controls"
 msgid "Replaying actual control flow · intermediate state"
 msgstr "Replaying actual control flow · intermediate state"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:92
+#: src/algorithms/convex-hull/HullLearning.tsx:95
 msgid "Requested step is unavailable"
 msgstr "Requested step is unavailable"
+
+#: src/algorithms/convex-hull/HullRotationControls.tsx:42
+msgid "Reset orientation"
+msgstr "Reset orientation"
 
 #: src/geometry/GeometryViewControls.tsx:12
 msgid "Reset view"
 msgstr "Reset view"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:74
+#: src/algorithms/convex-hull/HullLearning.tsx:76
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:107
 msgid "Restart"
 msgstr "Restart"
@@ -2823,7 +2831,7 @@ msgstr "Right sidebar"
 msgid "Right turn · pending pop"
 msgstr "Right turn · pending pop"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:132
+#: src/algorithms/convex-hull/HullLearning.tsx:135
 msgid "Right turn: pop the stack top, then check again."
 msgstr "Right turn: pop the stack top, then check again."
 
@@ -2831,6 +2839,10 @@ msgstr "Right turn: pop the stack top, then check again."
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:75
 msgid "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 msgstr "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
+
+#: src/algorithms/convex-hull/HullRotationControls.tsx:39
+msgid "Rotate"
+msgstr "Rotate"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:43
@@ -2957,20 +2969,20 @@ msgstr "S1 starts at (2, 0) inside S0 and heads up and right."
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
+msgstr "Same-point and tie rules"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
 msgstr "Same-point and tie rules"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
-msgstr "Same-point and tie rules"
-
-#: src/algorithms/convex-hull/HullLearning.tsx:131
+#: src/algorithms/convex-hull/HullLearning.tsx:134
 msgid "Scan backwards"
 msgstr "Scan backwards"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:131
+#: src/algorithms/convex-hull/HullLearning.tsx:134
 msgid "Scan forwards"
 msgstr "Scan forwards"
 
@@ -3050,7 +3062,7 @@ msgstr "Select a pair to inspect the intersection and both inputs."
 msgid "Select an intersecting pair"
 msgstr "Select an intersecting pair"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:131
+#: src/algorithms/convex-hull/HullLearning.tsx:134
 msgid "Select current point"
 msgstr "Select current point"
 
@@ -3183,7 +3195,7 @@ msgstr "Single input"
 msgid "Single point"
 msgstr "Single point"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:107
+#: src/algorithms/convex-hull/HullLearning.tsx:110
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:94
 msgid "Single steps"
 msgstr "Single steps"
@@ -3207,7 +3219,7 @@ msgstr "Sloping edges produce exact fractional intersection coordinates."
 msgid "Solving y = x and y = 1 − x gives (1/2, 1/2), exactly the start of horizontal S2. Every pair among the three intersects at this exact point: 3 pairs and no overlap interval."
 msgstr "Solving y = x and y = 1 − x gives (1/2, 1/2), exactly the start of horizontal S2. Every pair among the three intersects at this exact point: 3 pairs and no overlap interval."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:129
+#: src/algorithms/convex-hull/HullLearning.tsx:132
 msgid "Sort by x, then y. Equal coordinates retain their input labels."
 msgstr "Sort by x, then y. Equal coordinates retain their input labels."
 
@@ -3249,7 +3261,7 @@ msgstr "Spider web"
 msgid "Spiral"
 msgstr "Spiral"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:169
+#: src/algorithms/convex-hull/HullLearning.tsx:172
 msgid "Stack top"
 msgstr "Stack top"
 
@@ -3383,7 +3395,7 @@ msgstr "Take the next pending event"
 msgid "Teaching code highlighting failed to load. Refresh to try again."
 msgstr "Teaching code highlighting failed to load. Refresh to try again."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:115
+#: src/algorithms/convex-hull/HullLearning.tsx:118
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:22
 msgid "Teaching step"
 msgstr "Teaching step"
@@ -3589,6 +3601,8 @@ msgstr "This module currently provides coarse observation points, without detail
 msgid "This statement was not executed"
 msgstr "This statement was not executed"
 
+#: src/algorithms/convex-hull/HullRotationControls.tsx:52
+#: src/algorithms/convex-hull/HullRotationControls.tsx:53
 #: src/algorithms/convex-hull/HullRotationControls.tsx:56
 msgid "This step has no main arrow to align"
 msgstr "This step has no main arrow to align"
@@ -3632,12 +3646,12 @@ msgstr "Three segments at one point"
 msgid "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
 msgstr "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:113
-#: src/algorithms/convex-hull/HullLearning.tsx:114
+#: src/algorithms/convex-hull/HullLearning.tsx:116
+#: src/algorithms/convex-hull/HullLearning.tsx:117
 msgid "Trace failed"
 msgstr "Trace failed"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:113
+#: src/algorithms/convex-hull/HullLearning.tsx:116
 msgid "Trace generated"
 msgstr "Trace generated"
 
@@ -3868,15 +3882,15 @@ msgstr "Unknown page path."
 msgid "Update the active set"
 msgstr "Update the active set"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:135
+#: src/algorithms/convex-hull/HullLearning.tsx:138
 msgid "Upper chain scan complete."
 msgstr "Upper chain scan complete."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:68
+#: src/algorithms/convex-hull/HullLearning.tsx:70
 msgid "Upper hull"
 msgstr "Upper hull"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:99
+#: src/algorithms/convex-hull/HullLearning.tsx:102
 msgid "Upper hull stack"
 msgstr "Upper hull stack"
 
@@ -3949,13 +3963,13 @@ msgstr "Vertical fractional overlap"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "Vertical overlap with mixed contacts at multiple heights"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
+msgstr "Vertical segment rules"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
-msgstr "Vertical segment rules"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
 msgstr "Vertical segment rules"
 
 #. js-lingui-explicit-id
@@ -3994,7 +4008,7 @@ msgstr "Waiting for step {index}. Steps 0–{0} are available to explore."
 msgid "Waiting for the next major step. Steps 0–{0} are available to explore."
 msgstr "Waiting for the next major step. Steps 0–{0} are available to explore."
 
-#: src/algorithms/convex-hull/HullLearning.tsx:92
+#: src/algorithms/convex-hull/HullLearning.tsx:95
 msgid "Waiting for the requested step"
 msgstr "Waiting for the requested step"
 
