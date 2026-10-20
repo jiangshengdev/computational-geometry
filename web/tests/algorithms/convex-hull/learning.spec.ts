@@ -7,6 +7,38 @@ test.use({ locale: 'en-US' })
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName, viewport: { width: 1440, height: 900 } })
 
+  browserTest(`panel title highlights its points and restores selection without scrolling: ${browserName}`, async ({ page }) => {
+    await page.goto('/convex-hull/cases/hexagonal-snowflake/learn?step=165')
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    const plot = page.getByRole('group', { name: 'Convex hull plot', exact: true })
+    const ordered = page.getByRole('region', { name: 'Ordered points', exact: true })
+    const selected = ordered.locator('[data-point-id="4"] button')
+    await selected.click()
+    const highlightedIds = () => plot.locator('[data-highlighted="true"]').evaluateAll(elements => elements.map(element => element.getAttribute('data-point-id')).sort())
+    for (const title of ['Ordered points', 'Lower hull stack', 'Upper hull stack']) {
+      const panel = page.getByRole('region', { name: title, exact: true })
+      const ids = await panel.locator('li[data-point-id]').evaluateAll(elements => elements.map(element => element.getAttribute('data-point-id')).sort())
+      const content = panel.locator('[data-slot="card-content"]')
+      const scrollTop = await content.evaluate(element => element.scrollTop)
+      await panel.getByRole('heading').hover()
+      await expect.poll(highlightedIds).toEqual(ids)
+      await expect(panel.locator('li[data-highlighted="true"]')).toHaveCount(ids.length)
+      expect(await content.evaluate(element => element.scrollTop)).toBe(scrollTop)
+      await page.getByRole('region', { name: 'Current action' }).hover()
+      await expect.poll(highlightedIds).toEqual(['4'])
+      await expect(selected).toHaveAttribute('aria-pressed', 'true')
+    }
+    await page.getByRole('slider', { name: 'Teaching step' }).press('End')
+    const result = page.getByRole('region', { name: 'Hull vertices', exact: true })
+    const resultIds = await result.locator('li[data-point-id]').evaluateAll(elements => elements.map(element => element.getAttribute('data-point-id')).sort())
+    await result.getByRole('heading').focus()
+    await expect.poll(highlightedIds).toEqual(resultIds)
+    await page.getByRole('button', { name: 'Restart', exact: true }).click()
+    await ordered.getByRole('heading').hover()
+    await expect(plot.locator('[data-highlighted="true"]')).toHaveCount(43)
+    await expect(page.getByRole('region', { name: 'Lower hull stack', exact: true }).getByRole('listitem')).toHaveCount(0)
+  })
+
   browserTest(`snowflake list hover preserves continuous manual scrolling: ${browserName}`, async ({ page }, testInfo) => {
     await page.goto('/convex-hull/cases/hexagonal-snowflake/learn?step=154')
     await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()

@@ -22,8 +22,12 @@ import { usePageShortcut } from '../../app/usePageShortcut'
 import { LearningDisplayControls } from '../../geometry/LearningDisplayControls'
 import './HullLearning.css'
 
-type Target = { id: number; source: 'plot' | 'list' }
+type PointPanel = 'order' | 'lower' | 'upper' | 'result'
+type Target = { id: number; source: 'plot' | 'list' } | { panel: PointPanel; source: 'panel' }
 type Interaction = ReturnType<typeof useLinkedInteraction<Target>>
+function highlightsPoint(target: Target | null, step: HullStep, id: number) {
+  return target?.source === 'panel' ? (step[target.panel]?.includes(id) ?? false) : target?.id === id
+}
 const hullLayouts = { '1:3:1': 3, '1:2:1': 2, '1:1:1': 1 } as const
 type HullLayout = keyof typeof hullLayouts
 const isHullLayout = (value: unknown): value is HullLayout => typeof value === 'string' && Object.hasOwn(hullLayouts, value)
@@ -45,7 +49,9 @@ export function HullLearning({ preset }: { preset: HullCase }) {
   const urlIndex = /^\d+$/.test(raw) && Number.isSafeInteger(Number(raw)) ? Number(raw) : -1
   const index = previewIndex ?? urlIndex
   const step = trace.steps[index]
-  const interaction = useLinkedInteraction<Target>((a, b) => a.id === b.id)
+  const interaction = useLinkedInteraction<Target>((a, b) => a.source === 'panel'
+    ? b.source === 'panel' && a.panel === b.panel
+    : b.source !== 'panel' && a.id === b.id)
   const go = (destination: number) => { interaction.clear(); commitStep(destination, urlIndex) }
   const { progressProps, sliderProps } = useReplaySlider(destination => {
     interaction.clear()
@@ -69,12 +75,12 @@ export function HullLearning({ preset }: { preset: HullCase }) {
       {!step ? <p role="status" className="flex-1">{index < 0 || trace.status === 'complete' ? t`Invalid teaching step` : trace.status === 'loading' ? t`Waiting for the requested step` : t`Requested step is unavailable`}</p> :
         <div className="workspace hull-learning-workspace" style={{ '--hull-geometry-width': `${hullLayouts[layout]}fr` } as CSSProperties}
           onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
-          <HullPointList title={t`Ordered points`} ids={step.order} points={trace.points} step={step} interaction={interaction} />
+          <HullPointList title={t`Ordered points`} panel="order" points={trace.points} step={step} interaction={interaction} />
           <HullLearningPlot points={trace.points} step={step} interaction={interaction} />
           <div className="workspace-panel hull-learning-stacks">
-            <HullPointList title={t`Lower hull stack`} ids={step.lower} points={trace.points} step={step} interaction={interaction} stack complete={step.lower_complete} />
-            <HullPointList title={t`Upper hull stack`} ids={step.upper} points={trace.points} step={step} interaction={interaction} stack complete={step.upper_complete} />
-            {step.result !== null && <HullPointList title={t`Hull vertices`} ids={step.result} points={trace.points} step={step} interaction={interaction} />}
+            <HullPointList title={t`Lower hull stack`} panel="lower" points={trace.points} step={step} interaction={interaction} stack complete={step.lower_complete} />
+            <HullPointList title={t`Upper hull stack`} panel="upper" points={trace.points} step={step} interaction={interaction} stack complete={step.upper_complete} />
+            {step.result !== null && <HullPointList title={t`Hull vertices`} panel="result" points={trace.points} step={step} interaction={interaction} />}
           </div>
         </div>}
       <section aria-label={t`Replay controls`} className="hull-replay-controls">
@@ -120,10 +126,11 @@ function HullExplanation({ step }: { step: HullStep }) {
   }
 }
 
-function HullPointList({ title, ids, points, step, interaction, stack = false, complete = false }: {
-  title: string; ids: number[]; points: Point[]; step: HullStep; interaction: Interaction; stack?: boolean; complete?: boolean
+function HullPointList({ title, panel, points, step, interaction, stack = false, complete = false }: {
+  title: string; panel: PointPanel; points: Point[]; step: HullStep; interaction: Interaction; stack?: boolean; complete?: boolean
 }) {
   const { t } = useLingui()
+  const ids = step[panel] ?? []
   const scrollport = useRef<HTMLDivElement>(null)
   useStepPanelScroll(step, 0, [{
     panel: scrollport,
@@ -134,16 +141,19 @@ function HullPointList({ title, ids, points, step, interaction, stack = false, c
     selector: interaction.active?.source === 'plot' ? `[data-point-id="${interaction.active.id}"]` : undefined,
   }])
   return <section aria-label={title} className="workspace-panel"><Card>
-    <Card.Header><Card.Title>{title}</Card.Title></Card.Header>
+    <Card.Header><Card.Title tabIndex={0}
+      onPointerEnter={() => interaction.hover({ source: 'panel', panel })} onPointerLeave={() => interaction.hover(null)}
+      onFocus={() => interaction.hover({ source: 'panel', panel })} onBlur={() => interaction.hover(null)}>{title}</Card.Title></Card.Header>
     <Card.Content ref={scrollport}>
       {stack && <p>{complete ? t`Chain complete` : t`Candidate chain`}</p>}
-      {!ids.length ? <p>{t`No points`}</p> : <ol className="flex flex-col gap-1">{ids.map((id, position) => <li key={id} data-point-id={id} data-highlighted={interaction.active?.id === id} data-current={step.current === id} data-top={stack && position === ids.length - 1}>
-        <ToggleButton className="coordinates w-full justify-start" isSelected={interaction.selected?.id === id} variant={interaction.active?.id === id ? 'default' : 'ghost'}
+      {!ids.length ? <p>{t`No points`}</p> : <ol className="flex flex-col gap-1">{ids.map((id, position) => <li key={id} data-point-id={id} data-highlighted={highlightsPoint(interaction.active, step, id)} data-current={step.current === id} data-top={stack && position === ids.length - 1}>
+        <ToggleButton className="coordinates w-full justify-start" isSelected={highlightsPoint(interaction.selected, step, id)} variant={highlightsPoint(interaction.active, step, id) ? 'default' : 'ghost'}
+          aria-current={step.current === id ? 'step' : undefined}
           onChange={() => interaction.select({ id, source: 'list' })} onHoverStart={() => interaction.hover({ id, source: 'list' })} onHoverEnd={() => interaction.hover(null)}
           onFocus={() => interaction.hover({ id, source: 'list' })} onBlur={() => interaction.hover(null)}>
           P{id} {formatPoint(points[id])}
         </ToggleButton>
-        {step.current === id && <span>{t`Current point`}</span>}{stack && position === ids.length - 1 && <span> · {t`Stack top`}</span>}
+        {stack && position === ids.length - 1 && <span> · {t`Stack top`}</span>}
       </li>)}</ol>}
     </Card.Content>
   </Card></section>
@@ -166,17 +176,17 @@ function HullLearningPlot({ points, step, interaction }: { points: Point[]; step
             : step.result.length === 2 ? <polyline data-hull="segment" points={path(step.result)} fill="none" stroke="var(--accent)" strokeWidth={3 / k} />
               : step.result.length === 1 ? <circle data-hull="point" cx={projection.px(points[step.result[0]])} cy={projection.py(points[step.result[0]])} r={7 / k} fill="none" stroke="var(--accent)" strokeWidth={3 / k} /> : null)}
           {points.map((point, id) => {
-            const active = interaction.active?.id === id
+            const active = highlightsPoint(interaction.active, step, id)
             const current = step.current === id
             const removed = step.removed === id
             const label = `P${id} ${formatPoint(point)}`
-            return <g key={id} role="button" tabIndex={0} aria-label={label} aria-pressed={interaction.selected?.id === id}
+            return <g key={id} role="button" tabIndex={0} aria-label={label} aria-pressed={highlightsPoint(interaction.selected, step, id)}
               data-point-id={id} data-highlighted={active} data-current={current} data-removed={removed} data-subject={step.subjects.includes(id)}
               onPointerEnter={event => { if (!event.buttons) interaction.hover({ id, source: 'plot' }) }} onPointerLeave={() => interaction.hover(null)}
               onFocus={() => interaction.hover({ id, source: 'plot' })} onBlur={() => interaction.hover(null)} onClick={() => interaction.select({ id, source: 'plot' })}
               onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); interaction.select({ id, source: 'plot' }) } }}>
-              <circle cx={projection.px(point)} cy={projection.py(point)} r={5 / k} fill={current ? 'var(--accent)' : removed ? 'var(--danger)' : 'currentColor'} />
-              <circle cx={projection.px(point)} cy={projection.py(point)} r={10 / k} fill="transparent" stroke={active || current || removed || step.subjects.includes(id) ? 'var(--warning)' : 'none'} strokeWidth={2 / k} />
+              <circle cx={projection.px(point)} cy={projection.py(point)} r={5 / k} fill={active ? 'var(--success)' : current ? 'var(--accent)' : removed ? 'var(--danger)' : 'currentColor'} />
+              <circle cx={projection.px(point)} cy={projection.py(point)} r={10 / k} fill="transparent" stroke={active ? 'var(--success)' : current ? 'var(--accent)' : removed ? 'var(--danger)' : step.subjects.includes(id) ? 'var(--warning)' : 'none'} strokeWidth={2 / k} />
               {(active || current || removed || step.subjects.includes(id)) && <text x={projection.px(point)} y={projection.py(point) - 12 / k} textAnchor="middle" fontSize={12 / k} fill="currentColor">P{id}</text>}
             </g>
           })}
