@@ -410,7 +410,7 @@ msgstr "实参 "
 msgid "help.LearningIntroduction.4"
 msgstr "在普通交叉中，两条线要交换上下位置，交叉前必先相邻。因此在加入、退出或换序后检查新邻居，就能提前发现未来交点，无须每步重查所有配对。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:119
+#: src/algorithms/convex-hull/HullLearning.tsx:137
 msgid "At most one distinct point: return directly without scanning or joining chains."
 msgstr "至多一个不同的点：直接返回，不构造上下链或拼接。"
 
@@ -452,7 +452,7 @@ msgstr "返回列表"
 #~ msgid "Back to result"
 #~ msgstr "返回结果"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:62
+#: src/algorithms/convex-hull/HullLearning.tsx:84
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:254
 msgid "Back to results viewer"
 msgstr "返回结果查看器"
@@ -543,7 +543,7 @@ msgstr "桥梁桁架"
 msgid "Call expression: "
 msgstr "调用表达式："
 
-#: src/algorithms/convex-hull/HullLearning.tsx:91
+#: src/algorithms/convex-hull/HullLearning.tsx:109
 msgid "Cancel loading"
 msgstr "取消加载"
 
@@ -551,7 +551,7 @@ msgstr "取消加载"
 msgid "Cancel waiting"
 msgstr "取消跳转等待"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:135
+#: src/algorithms/convex-hull/HullLearning.tsx:160
 msgid "Candidate chain"
 msgstr "候选链"
 
@@ -598,7 +598,7 @@ msgstr "CGAL 6.1.1 · 2D Intersection of Curves：重叠与退化处理"
 msgid "help.LearningReferences.6"
 msgstr "CGAL 6.1.1 · 2D Intersections：交集可以是点或线段"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:135
+#: src/algorithms/convex-hull/HullLearning.tsx:160
 msgid "Chain complete"
 msgstr "链已完成"
 
@@ -756,6 +756,10 @@ msgstr "收起左侧辅助栏"
 msgid "Collapse right sidebar"
 msgstr "收起右侧辅助栏"
 
+#: src/algorithms/convex-hull/HullDirection.tsx:26
+msgid "Collinear · pending middle-point pop"
+msgstr "共线 · 待弹出中间点"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:34
 msgid "Collinear and disjoint"
@@ -780,7 +784,7 @@ msgstr "共线点接触"
 msgid "Collinear segments separated by a gap have no intersection."
 msgstr "共线但存在间隙，不返回交集。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:113
+#: src/algorithms/convex-hull/HullLearning.tsx:131
 msgid "Collinear: pop the middle point, then check again."
 msgstr "共线：弹出中间点，然后再次判断。"
 
@@ -920,8 +924,8 @@ msgid "Convex hull cases"
 msgstr "凸包案例"
 
 #: src/algorithms/convex-hull/ConvexHullPlot.tsx:21
-#: src/algorithms/convex-hull/HullLearning.tsx:155
-#: src/algorithms/convex-hull/HullLearning.tsx:157
+#: src/algorithms/convex-hull/HullLearning.tsx:183
+#: src/algorithms/convex-hull/HullLearning.tsx:185
 msgid "Convex hull plot"
 msgstr "凸包图形"
 
@@ -987,11 +991,11 @@ msgstr "核心变量"
 msgid "Create an empty sequence."
 msgstr "创建空序列。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:28
+#: src/app/ReplayPositionLabel.tsx:5
 msgid "Current {index} · Generated 0–{lastStep}"
 msgstr "当前 {index} · 已生成 0–{lastStep}"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:81
+#: src/algorithms/convex-hull/HullLearning.tsx:103
 msgid "Current action"
 msgstr "本步动作"
 
@@ -1032,8 +1036,8 @@ msgid "Current outer pairing index"
 msgstr "当前外层配对索引"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:142
-msgid "Current point"
-msgstr "当前点"
+#~ msgid "Current point"
+#~ msgstr "当前点"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionSymbol.tsx:165
@@ -1143,7 +1147,7 @@ msgstr "区分竖直开始者与水平穿过者，先记录闭线段接触，再
 msgid "Documentation"
 msgstr "文档"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:28
+#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:21
 msgid "Drag to browse teaching steps (including microsteps)"
 msgstr "拖动浏览教学步骤（含小步）"
 
@@ -1462,7 +1466,7 @@ msgstr "富勒烯 C₆₀"
 msgid "Function"
 msgstr "函数"
 
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:107
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:98
 msgid "Function navigation"
 msgstr "函数级操作"
 
@@ -1471,11 +1475,11 @@ msgstr "函数级操作"
 msgid "help.LearningReferences.0"
 msgstr "继续阅读"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:28
+#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:21
 msgid "Generating trace"
 msgstr "轨迹生成中"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:94
+#: src/algorithms/convex-hull/HullLearning.tsx:112
 msgid "Generating trace · total unknown"
 msgstr "正在生成轨迹 · 总步数未知"
 
@@ -1546,7 +1550,7 @@ msgid "Hexagonal snowflake"
 msgstr "六角雪花"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:47
-#: src/algorithms/convex-hull/HullLearning.tsx:77
+#: src/algorithms/convex-hull/HullLearning.tsx:99
 msgid "Hull vertices"
 msgstr "凸包顶点"
 
@@ -1771,7 +1775,7 @@ msgstr "链接无效 · {0}"
 msgid "Invalid result structure"
 msgstr "结果结构无效"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:69
+#: src/algorithms/convex-hull/HullLearning.tsx:91
 msgid "Invalid teaching step"
 msgstr "无效的教学步骤"
 
@@ -1783,11 +1787,11 @@ msgstr "不规则凸多边形"
 msgid "Irregular outline"
 msgstr "不规则轮廓"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:56
+#: src/algorithms/convex-hull/HullLearning.tsx:67
 msgid "Join result"
 msgstr "拼接结果"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:119
+#: src/algorithms/convex-hull/HullLearning.tsx:137
 msgid "Join the two chains into the final ordered hull."
 msgstr "拼接两条链，得到最终有序凸包。"
 
@@ -1823,14 +1827,14 @@ msgstr "KIT · Line Segment Intersection：闭线段与同点事件归组"
 msgid "Learn from the start"
 msgstr "从头学习"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:60
-#: src/algorithms/convex-hull/HullLearning.tsx:68
+#: src/algorithms/convex-hull/HullLearning.tsx:82
+#: src/algorithms/convex-hull/HullLearning.tsx:90
 msgid "Learn step by step"
 msgstr "逐步学习"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:94
+#: src/algorithms/convex-hull/HullLearning.tsx:112
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:62
-#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:28
+#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:21
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:53
 msgid "Learning complete"
 msgstr "学习完成"
@@ -1872,7 +1876,11 @@ msgstr "扫描线段的左端点"
 msgid "Left sidebar"
 msgstr "左侧辅助栏"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:113
+#: src/algorithms/convex-hull/HullDirection.tsx:26
+msgid "Left turn · keep"
+msgstr "左转 · 保留"
+
+#: src/algorithms/convex-hull/HullLearning.tsx:131
 msgid "Left turn: keep the stack top, then push the current point."
 msgstr "左转：保留栈顶，随后将当前点入栈。"
 
@@ -1890,7 +1898,7 @@ msgstr "第 {line} 行调用 {occurrence}"
 msgid "Line {line}, keyword {occurrence}"
 msgstr "第 {line} 行关键字 {occurrence}"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:94
+#: src/algorithms/convex-hull/HullLearning.tsx:112
 msgid "Loading cancelled · recorded steps remain available"
 msgstr "已取消加载 · 仍可浏览已记录步骤"
 
@@ -1923,15 +1931,15 @@ msgstr "长区间与短成员"
 msgid "Look up both segments by their indices"
 msgstr "根据编号取出两条线段"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:116
+#: src/algorithms/convex-hull/HullLearning.tsx:134
 msgid "Lower chain scan complete."
 msgstr "下凸包扫描完成。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:55
+#: src/algorithms/convex-hull/HullLearning.tsx:66
 msgid "Lower hull"
 msgstr "下凸包"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:75
+#: src/algorithms/convex-hull/HullLearning.tsx:97
 msgid "Lower hull stack"
 msgstr "下凸包栈"
 
@@ -1939,11 +1947,11 @@ msgstr "下凸包栈"
 msgid "Main layout ratio (geometry, code, variables)"
 msgstr "主体布局比例（图形、代码、变量）"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:64
+#: src/algorithms/convex-hull/HullLearning.tsx:86
 msgid "Main layout ratio (ordered points, geometry, stacks)"
 msgstr "主体布局比例（有序点列、图形、栈）"
 
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:111
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:102
 msgid "Major steps"
 msgstr "大步"
 
@@ -1956,7 +1964,7 @@ msgstr "多顶点边界"
 msgid "Meander window lattice"
 msgstr "回纹窗棂"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:111
+#: src/algorithms/convex-hull/HullLearning.tsx:129
 msgid "Merge equal coordinates, retaining the first input identity. Duplicate positions do not add hull vertices."
 msgstr "合并相同坐标，保留最先输入的点身份。重复位置不增加凸包顶点。"
 
@@ -2001,12 +2009,12 @@ msgstr "next 为 None，事件队列已空，退出扫描循环。正在确认�
 msgid "next is None: the event queue is empty and the sweep loop exits. Learning is complete."
 msgstr "next 为 None，事件队列已空，退出扫描循环。学习完成。"
 
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:113
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:104
 msgid "Next major step"
 msgstr "下一个大步"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:85
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:105
+#: src/algorithms/convex-hull/HullLearning.tsx:72
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:96
 msgid "Next step"
 msgstr "下一步"
 
@@ -2033,7 +2041,7 @@ msgid "No events"
 msgstr "没有事件"
 
 #: src/algorithms/convex-hull/ConvexHullPlot.tsx:33
-#: src/algorithms/convex-hull/HullLearning.tsx:180
+#: src/algorithms/convex-hull/HullLearning.tsx:222
 msgid "No input points"
 msgstr "无输入点"
 
@@ -2064,7 +2072,7 @@ msgstr "无交点"
 msgid "No next element; the loop has ended"
 msgstr "本次没有下一个元素，循环已结束"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:136
+#: src/algorithms/convex-hull/HullLearning.tsx:161
 #: src/geometry/PointCoordinates.tsx:29
 msgid "No points"
 msgstr "无点"
@@ -2186,7 +2194,7 @@ msgstr "当前教学动作后的顺序，事件尚未处理完成"
 msgid "Order after the processed event"
 msgstr "当前已处理事件之后的顺序"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:72
+#: src/algorithms/convex-hull/HullLearning.tsx:94
 msgid "Ordered points"
 msgstr "有序点列"
 
@@ -2207,7 +2215,7 @@ msgstr "original 闭包"
 msgid "Original coordinate plane · Equal scale"
 msgstr "原始坐标平面 · 等比例"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:109
+#: src/algorithms/convex-hull/HullLearning.tsx:127
 msgid "Original input · each P label keeps its input identity."
 msgstr "原始输入 · 每个 P 标签保留其输入身份。"
 
@@ -2458,11 +2466,11 @@ msgstr "多边形 B · 虚线边界"
 msgid "Polygon B vertices"
 msgstr "多边形 B 顶点"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:114
+#: src/algorithms/convex-hull/HullLearning.tsx:132
 msgid "Popped from this chain only. It may still belong to the other chain and the final hull."
 msgstr "仅从当前链弹出。该点仍可能属于另一条链及最终凸包。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:112
+#: src/algorithms/convex-hull/HullLearning.tsx:130
 msgid "Position in ordered points"
 msgstr "点列位置"
 
@@ -2496,7 +2504,7 @@ msgstr "准备把扫描坐标还原为输入时的坐标"
 msgid "Prepare to record the segment pairs checked in this event"
 msgstr "准备记录本轮检查过的线段对"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:55
+#: src/algorithms/convex-hull/HullLearning.tsx:66
 msgid "Preprocessing"
 msgstr "预处理"
 
@@ -2505,12 +2513,12 @@ msgstr "预处理"
 msgid "Preserve distinct identities for duplicate and reversed inputs; observe three pairs and all members ending together."
 msgstr "保留重复与反向输入的独立身份，观察三个配对以及全部成员同时结束。"
 
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:112
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:103
 msgid "Previous major step"
 msgstr "上一个大步"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:84
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:104
+#: src/algorithms/convex-hull/HullLearning.tsx:71
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:95
 msgid "Previous step"
 msgstr "上一步"
 
@@ -2542,7 +2550,7 @@ msgstr "事件处理中"
 msgid "Purple: sweep line and current event"
 msgstr "紫色：扫描线与当前事件"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:115
+#: src/algorithms/convex-hull/HullLearning.tsx:133
 msgid "Pushed onto the current chain. These are candidates and may be popped later."
 msgstr "入栈到当前链。链中的点是候选点，后续仍可能被弹出。"
 
@@ -2635,8 +2643,8 @@ msgid "Record the segment pair being checked"
 msgstr "记下本次检查的线段对"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:94
-msgid "Recorded steps"
-msgstr "已记录步数"
+#~ msgid "Recorded steps"
+#~ msgstr "已记录步数"
 
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:217
 msgid "Recovery navigation"
@@ -2669,11 +2677,11 @@ msgstr "移除并返回队列中最早的事件。"
 msgid "Remove segments that end at the current point from the active set"
 msgstr "从活动集合中移除在当前点结束的线段"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:117
+#: src/algorithms/convex-hull/HullLearning.tsx:135
 msgid "Remove the last lower-chain endpoint to avoid duplication. This endpoint remains in the final hull via the upper chain."
 msgstr "移除下链末尾端点以消除重复。该端点仍通过上链保留在最终凸包中。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:118
+#: src/algorithms/convex-hull/HullLearning.tsx:136
 msgid "Remove the last upper-chain endpoint to avoid duplication. This endpoint remains in the final hull via the lower chain."
 msgstr "移除上链末尾端点以消除重复。该端点仍通过下链保留在最终凸包中。"
 
@@ -2695,8 +2703,9 @@ msgstr "替换指定范围中的元素。"
 #~ msgid "Replay"
 #~ msgstr "重播"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:80
-#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:17
+#: src/algorithms/convex-hull/HullLearning.tsx:102
+#: src/algorithms/convex-hull/HullLearning.tsx:108
+#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:16
 msgid "Replay controls"
 msgstr "回放控制"
 
@@ -2706,7 +2715,7 @@ msgstr "回放控制"
 msgid "Replaying actual control flow · intermediate state"
 msgstr "按实际控制流回放 · 中间状态"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:69
+#: src/algorithms/convex-hull/HullLearning.tsx:91
 msgid "Requested step is unavailable"
 msgstr "请求的步骤不可用"
 
@@ -2714,12 +2723,12 @@ msgstr "请求的步骤不可用"
 msgid "Reset view"
 msgstr "重置视图"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:86
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:116
+#: src/algorithms/convex-hull/HullLearning.tsx:73
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:107
 msgid "Restart"
 msgstr "重新开始"
 
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:115
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:106
 msgid "Restart controls"
 msgstr "重启"
 
@@ -2798,7 +2807,11 @@ msgstr "扫描线段的右端点"
 msgid "Right sidebar"
 msgstr "右侧辅助栏"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:113
+#: src/algorithms/convex-hull/HullDirection.tsx:26
+msgid "Right turn · pending pop"
+msgstr "右转 · 待弹出"
+
+#: src/algorithms/convex-hull/HullLearning.tsx:131
 msgid "Right turn: pop the stack top, then check again."
 msgstr "右转：弹出栈顶，然后再次判断。"
 
@@ -2941,11 +2954,11 @@ msgstr "同点与并列规则"
 msgid "help.SamePointRules.label"
 msgstr "同点与并列规则"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:112
+#: src/algorithms/convex-hull/HullLearning.tsx:130
 msgid "Scan backwards"
 msgstr "反向扫描"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:112
+#: src/algorithms/convex-hull/HullLearning.tsx:130
 msgid "Scan forwards"
 msgstr "正向扫描"
 
@@ -3025,7 +3038,7 @@ msgstr "选择一个配对，检查交集和两个输入。"
 msgid "Select an intersecting pair"
 msgstr "相交配对选择"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:112
+#: src/algorithms/convex-hull/HullLearning.tsx:130
 msgid "Select current point"
 msgstr "选取当前点"
 
@@ -3158,7 +3171,8 @@ msgstr "单条输入"
 msgid "Single point"
 msgstr "单点"
 
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:103
+#: src/algorithms/convex-hull/HullLearning.tsx:106
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:94
 msgid "Single steps"
 msgstr "单步"
 
@@ -3181,7 +3195,7 @@ msgstr "斜边产生精确的分数交点坐标。"
 msgid "Solving y = x and y = 1 − x gives (1/2, 1/2), exactly the start of horizontal S2. Every pair among the three intersects at this exact point: 3 pairs and no overlap interval."
 msgstr "y = x 与 y = 1 − x 联立得 (1/2, 1/2)，恰是水平 S2 的起点。三者两两交集均为这个精确点，共 3 对，无重叠区间。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:110
+#: src/algorithms/convex-hull/HullLearning.tsx:128
 msgid "Sort by x, then y. Equal coordinates retain their input labels."
 msgstr "先按 x、再按 y 排序。相同坐标保留各自输入标签。"
 
@@ -3223,7 +3237,7 @@ msgstr "蜘蛛网"
 msgid "Spiral"
 msgstr "螺旋形"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:142
+#: src/algorithms/convex-hull/HullLearning.tsx:168
 msgid "Stack top"
 msgstr "栈顶"
 
@@ -3270,11 +3284,11 @@ msgstr "开始：{0}"
 msgid "Step"
 msgstr "步骤"
 
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:109
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:100
 msgid "Step out"
 msgstr "步出"
 
-#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:108
+#: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:99
 msgid "Step over"
 msgstr "步过"
 
@@ -3357,8 +3371,8 @@ msgstr "取出下一个待处理的事件"
 msgid "Teaching code highlighting failed to load. Refresh to try again."
 msgstr "教学代码高亮加载失败，请刷新重试。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:96
-#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:29
+#: src/algorithms/convex-hull/HullLearning.tsx:114
+#: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:22
 msgid "Teaching step"
 msgstr "教学步骤"
 
@@ -3602,12 +3616,12 @@ msgstr "三线共点"
 msgid "Trace endpoint connections along the angular meanders and distinguish contacts where a meander starts inside the crossbar."
 msgstr "沿方折回纹追踪端点连接，并区分回纹起点落在横梁内部的接触。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:94
-#: src/algorithms/convex-hull/HullLearning.tsx:95
+#: src/algorithms/convex-hull/HullLearning.tsx:112
+#: src/algorithms/convex-hull/HullLearning.tsx:113
 msgid "Trace failed"
 msgstr "轨迹加载失败"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:94
+#: src/algorithms/convex-hull/HullLearning.tsx:112
 msgid "Trace generated"
 msgstr "轨迹已生成"
 
@@ -3838,15 +3852,15 @@ msgstr "未知页面路径。"
 msgid "Update the active set"
 msgstr "活动集合更新"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:116
+#: src/algorithms/convex-hull/HullLearning.tsx:134
 msgid "Upper chain scan complete."
 msgstr "上凸包扫描完成。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:56
+#: src/algorithms/convex-hull/HullLearning.tsx:67
 msgid "Upper hull"
 msgstr "上凸包"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:76
+#: src/algorithms/convex-hull/HullLearning.tsx:98
 msgid "Upper hull stack"
 msgstr "上凸包栈"
 
@@ -3964,7 +3978,7 @@ msgstr "正在等待步骤 {index} · 已生成 0–{0}。可继续浏览已生�
 msgid "Waiting for the next major step. Steps 0–{0} are available to explore."
 msgstr "正在等待下一个大步 · 已生成 0–{0}。可继续浏览已生成步骤。"
 
-#: src/algorithms/convex-hull/HullLearning.tsx:69
+#: src/algorithms/convex-hull/HullLearning.tsx:91
 msgid "Waiting for the requested step"
 msgstr "正在等待请求的步骤"
 

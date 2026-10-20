@@ -16,6 +16,7 @@ import { useGeometryViewport } from '../../geometry/useGeometryViewport'
 import { GeometryViewControls } from '../../geometry/GeometryViewControls'
 import type { HullCase } from './cases'
 import { useHullTrace, type HullStep, type HullPhase } from './trace'
+import { DirectedLine, HullTurnIndicator } from './HullDirection'
 import { useStepPanelScroll } from '../segment-intersection/bo/learning/useStepPanelScroll'
 import { useLayoutPreference } from '../../app/useLayoutPreference'
 import { usePageShortcut } from '../../app/usePageShortcut'
@@ -152,7 +153,7 @@ function HullPointList({ title, panel, points, step, interaction, stack = false,
     selector: interaction.active?.source === 'plot' ? `[data-point-id="${interaction.active.id}"]` : undefined,
   }])
   return <section aria-label={title} className="workspace-panel"><Card>
-    <Card.Header><Card.Title tabIndex={0}
+    <Card.Header><Card.Title className="hull-point-panel-title" tabIndex={0}
       onPointerEnter={() => interaction.hover({ source: 'panel', panel })} onPointerLeave={() => interaction.hover(null)}
       onFocus={() => interaction.hover({ source: 'panel', panel })} onBlur={() => interaction.hover(null)}>{title}</Card.Title></Card.Header>
     <Card.Content ref={scrollport}>
@@ -176,6 +177,7 @@ function HullLearningPlot({ points, step, interaction }: { points: Point[]; step
   const viewport = useGeometryViewport(points, { padding: 36 })
   const { svg, projection, transform, width, height } = viewport
   const k = transform.k
+  const position = (id: number) => ({ x: projection!.px(points[id]), y: projection!.py(points[id]) })
   const path = (ids: number[]) => ids.map(id => `${projection!.px(points[id])},${projection!.py(points[id])}`).join(' ')
   return <div className="drawing"><Card>
     <Card.Header className="drawing-toolbar"><Card.Title>{t`Convex hull plot`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
@@ -190,21 +192,14 @@ function HullLearningPlot({ points, step, interaction }: { points: Point[]; step
           {(step.action === 'sort' || step.action === 'deduplicate') && <g data-layer="sorted-order" pointerEvents="none" aria-hidden="true">
             {step.order.slice(1).map((id, index) => {
               const previous = step.order[index]
-              const x = projection.px(points[previous])
-              const y = projection.py(points[previous])
-              const dx = projection.px(points[id]) - x
-              const dy = projection.py(points[id]) - y
-              const length = Math.hypot(dx, dy)
-              if (length === 0) return null
-              const inset = Math.min(8 / k, length / 4)
-              return <line key={id} data-order-from={previous} data-order-to={id}
-                x1={x + dx * inset / length} y1={y + dy * inset / length}
-                x2={x + dx * (length - inset) / length} y2={y + dy * (length - inset) / length}
+              return <DirectedLine key={id} data-order-from={previous} data-order-to={id}
+                from={position(previous)} to={position(id)} scale={k}
                 stroke="var(--accent)" strokeWidth={1.5 / k} markerEnd={`url(#${orderArrowId})`} />
             })}
           </g>}
           {[{ name: 'lower', ids: step.lower }, { name: 'upper', ids: step.upper }].map(chain => <polyline key={chain.name} data-chain={chain.name} points={path(chain.ids)} fill="none" stroke={chain.name === 'lower' ? 'var(--accent)' : 'var(--success)'} strokeWidth={2 / k} />)}
-          {step.action === 'turn' && <polyline data-turn={step.turn} points={path(step.subjects)} fill="none" stroke="var(--warning)" strokeWidth={4 / k} strokeDasharray={`${5 / k} ${3 / k}`} />}
+          {step.action === 'turn' && step.turn && step.subjects.length === 3 && <HullTurnIndicator turn={step.turn} scale={k}
+            positions={[position(step.subjects[0]), position(step.subjects[1]), position(step.subjects[2])]} />}
           {step.result && (step.result.length > 2 ? <polygon data-hull="polygon" points={path(step.result)} fill="var(--accent)" fillOpacity="0.12" stroke="var(--accent)" strokeWidth={3 / k} />
             : step.result.length === 2 ? <polyline data-hull="segment" points={path(step.result)} fill="none" stroke="var(--accent)" strokeWidth={3 / k} />
               : step.result.length === 1 ? <circle data-hull="point" cx={projection.px(points[step.result[0]])} cy={projection.py(points[step.result[0]])} r={7 / k} fill="none" stroke="var(--accent)" strokeWidth={3 / k} /> : null)}
