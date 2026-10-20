@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight } from 'lucide-react'
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import { useReplayPosition } from '../../../app/useReplayPosition'
 import { GeometryView } from './geometry/GeometryView'
 import { CaseThumbnail } from '../cases/CaseThumbnail'
@@ -26,11 +25,9 @@ import { Button, buttonVariants } from '@heroui/react/button'
 import { Input } from '@heroui/react/input'
 import { usePageShortcut } from '../../../app/usePageShortcut'
 import { AppLink as Link } from '../../../app/AppLink'
-import { Switch } from '@heroui/react/switch'
-import { Label } from '@heroui/react/label'
+import { LearningDisplayControls } from '../../../geometry/LearningDisplayControls'
+import { StartLearningLink } from '../../../geometry/StartLearningLink'
 import { useLayoutPreference } from '../../../app/useLayoutPreference'
-import { Select } from '@heroui/react/select'
-import { ListBox } from '@heroui/react/list-box'
 import { isLearningLayout, learningLayouts, type LearningLayout } from './learning/learningLayout'
 import { useLingui, Plural } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
@@ -229,7 +226,6 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
   const { t } = useLingui()
   const { _: translate } = useMessages()
   const { caseId } = useParams()
-  const navigate = useNavigate()
   const preset = presets.find(item => item.id === caseId)
   const [zenMode, setZenMode] = useLayoutPreference('bo-learning-layout-v1-zen', false,
     (value): value is boolean => typeof value === 'boolean')
@@ -240,9 +236,6 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
       if (!event.repeat) setZenMode(!zenMode)
       return
     }
-    if (learning || unknownPath || !preset?.learning || event.key !== 'ArrowRight') return
-    event.preventDefault()
-    if (!event.repeat) navigate(`/bo/cases/${preset.id}/learn`)
   })
   if (!preset || unknownPath || (learning && !preset.learning)) return <>
     <RouteError message={!preset ? t`Unknown case: ${caseId}` : unknownPath ? t`Unknown page path.` : t`This case does not support learning.`} preset={preset} />
@@ -252,26 +245,14 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
       <nav aria-label={t`Page navigation`}><Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to="/bo">{t`Back to cases`}</Link></nav>
       <h2 className="text-xl font-semibold">{translate(preset.name)}</h2>
       <div className="case-actions flex flex-wrap items-center gap-2">
-        {learning && <Select className="learning-layout-select w-24" aria-label={t`Main layout ratio (geometry, code, variables)`} value={layout}
-          onChange={value => { if (isLearningLayout(value)) setLayout(value) }}>
-          <Select.Trigger><Select.Value /><Select.Indicator /></Select.Trigger>
-          <Select.Popover><ListBox>
-            {Object.keys(learningLayouts).map(ratio => <ListBox.Item key={ratio} id={ratio} textValue={ratio}>
-              {ratio}<ListBox.ItemIndicator />
-            </ListBox.Item>)}
-          </ListBox></Select.Popover>
-        </Select>}
-        {learning && <Switch size="sm" isSelected={zenMode} onChange={setZenMode}
-          inputRef={input => { input?.setAttribute('aria-keyshortcuts', 'z') }}>
-          <Switch.Content>
-            <Switch.Control><Switch.Thumb /></Switch.Control>
-            <Label>{t`Zen mode`}</Label><Chip color="accent" variant="soft" size="sm" aria-hidden="true">Z</Chip>
-          </Switch.Content>
-        </Switch>}
+        {learning && <LearningDisplayControls ratios={Object.keys(learningLayouts)} layout={layout}
+          label={t`Main layout ratio (geometry, code, variables)`}
+          onLayoutChange={value => { if (isLearningLayout(value)) setLayout(value) }}
+          zenMode={zenMode} onZenModeChange={setZenMode} />}
         <HelpButton /><HelpButton topic="case">{t`About this case`}</HelpButton>
         {learning
           ? <Link className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/bo/cases/${preset.id}`}>{t`Back to results viewer`}</Link>
-          : preset.learning && <Link className={buttonVariants({ variant: 'primary', size: 'sm', className: 'gap-2' })} to={`/bo/cases/${preset.id}/learn`} aria-keyshortcuts="ArrowRight">{t`Start step-by-step learning`}<Chip color="accent" variant="soft" size="sm" className="bg-white/20 text-white" aria-hidden="true"><ArrowRight size={14} /></Chip></Link>}
+          : preset.learning && <StartLearningLink to={`/bo/cases/${preset.id}/learn`} />}
       </div>
     </div>
     <CaseViewer preset={preset} learning={learning} zenMode={zenMode} layout={layout} />

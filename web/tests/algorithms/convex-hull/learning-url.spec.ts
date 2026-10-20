@@ -8,7 +8,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     await page.goto('/convex-hull/cases/triangle-interior')
-    await page.getByRole('link', { name: 'Learn step by step', exact: true }).click()
+    await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
     await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
     const slider = page.getByRole('slider', { name: 'Teaching step' })
     const group = page.getByRole('group', { name: 'Teaching step', exact: true })
@@ -73,7 +73,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
     await page.goto('/convex-hull/cases/triangle-interior')
-    await page.getByRole('link', { name: 'Learn step by step', exact: true }).click()
+    await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
     await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
     await page.getByRole('button', { name: 'Next step', exact: true }).click()
     const slider = page.getByRole('slider', { name: 'Teaching step' })
@@ -89,7 +89,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await expect(page).toHaveURL(/step=1$/)
     await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
     await page.getByRole('article', { name: 'Single point', exact: true }).getByRole('button', { name: 'View details', exact: true }).click()
-    await page.getByRole('link', { name: 'Learn step by step', exact: true }).click()
+    await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
     await expect(slider).toHaveValue('0')
     await expect(page.getByRole('region', { name: 'Current action' })).toHaveAttribute('data-action', 'input')
     expect(errors).toEqual([])

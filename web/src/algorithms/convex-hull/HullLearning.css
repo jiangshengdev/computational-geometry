@@ -1,0 +1,10 @@
+.hull-learning-stacks { display: flex; flex-direction: column; gap: 8px; overflow: auto; overscroll-behavior: contain; }
+.hull-learning-stacks > .workspace-panel { flex-shrink: 0; }
+.hull-replay-controls { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; padding: 12px 16px; border-radius: var(--radius-2xl); background: var(--surface); }
+.hull-replay-navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+@media (min-width: 1100px) {
+  .hull-learning-workspace { grid-template-columns: minmax(0, 1fr) minmax(0, var(--hull-geometry-width)) minmax(0, 1fr); }
+}
+@media (min-width: 1100px) and (min-height: 720px) {
+  .hull-learning-workspace { grid-template-rows: minmax(0, 1fr); }
+}

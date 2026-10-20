@@ -16,12 +16,13 @@ import { usePointInteraction } from '../../geometry/usePointInteraction'
 import { CaseCatalog } from '../../geometry/CaseCatalog'
 import { CaseToolbar } from '../../geometry/CaseToolbar'
 import { HullLearning } from './HullLearning'
+import { StartLearningLink } from '../../geometry/StartLearningLink'
 
 export function ConvexHullPage() {
   const { t } = useLingui()
   return <>
     <DocumentTitle title={`${t`Convex hull`} · ${t`Computational Geometry`}`} />
-    <CaseCatalog label={t`Convex hull cases`} title={t`Convex hull`} subtitle={t`Andrew monotone chain algorithm`} basePath="/convex-hull" cases={hullCases} idPrefix="hull" renderPreview={preset => <ConvexHullPlot points={preset.points} preview />} />
+    <CaseCatalog label={t`Convex hull cases`} title={t`Convex hull`} subtitle={t`Andrew monotone chain algorithm`} basePath="/convex-hull" cases={hullCases} idPrefix="hull" renderPreview={preset => <ConvexHullPlot points={preset.points} preview />} learningHref={preset => `/convex-hull/cases/${preset.id}/learn`} />
   </>
 }
 
@@ -38,8 +39,8 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
   const interaction = usePointInteraction()
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex hull`} · ${t`Computational Geometry`}`} />
-    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull" />
-    <AppLink className={buttonVariants({ variant: 'secondary', size: 'sm', className: 'self-start' })} to={`/convex-hull/cases/${preset.id}/learn`}>{t`Learn step by step`}</AppLink>
+    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull"
+      trailingAction={<StartLearningLink to={`/convex-hull/cases/${preset.id}/learn`} />} />
     <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <ConvexHullView points={preset.points} vertices={computation.status === 'ready' ? computation.result : []} interaction={interaction} />
         <PointCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />

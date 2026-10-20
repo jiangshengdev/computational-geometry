@@ -2,6 +2,21 @@ import { expect, test } from '@playwright/test'
 
 test.use({ locale: 'en-US' })
 
+test('case cards enter learning directly without computing result pages', async ({ page }) => {
+  const results: string[] = []
+  page.on('request', request => { if (request.url().endsWith('/api/convex-hull')) results.push(request.url()) })
+  await page.goto('/convex-hull')
+  const cards = page.getByRole('article')
+  for (const card of await cards.all()) {
+    const details = await card.locator('a.case-thumbnail-link').getAttribute('href')
+    await expect(card.getByRole('link', { name: 'Start learning', exact: true })).toHaveAttribute('href', `${details}/learn`)
+  }
+  await page.getByRole('article', { name: 'Triangle and interior point', exact: true }).getByRole('link', { name: 'Start learning', exact: true }).click()
+  await expect(page).toHaveURL('/convex-hull/cases/triangle-interior/learn')
+  await expect(page.getByRole('region', { name: 'Current action' })).toHaveAttribute('data-action', 'input')
+  expect(results).toEqual([])
+})
+
 test('fixed case navigation computes exact ordered vertices and refreshes', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))

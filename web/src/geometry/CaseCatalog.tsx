@@ -1,4 +1,4 @@
-import { Button } from '@heroui/react/button'
+import { Button, buttonVariants } from '@heroui/react/button'
 import { Card } from '@heroui/react/card'
 import type { MessageDescriptor } from '@lingui/core'
 import { useLingui as useMessages } from '@lingui/react'
@@ -21,10 +21,11 @@ type CaseCatalogProps<T extends CatalogCase> = {
   basePath: string
   cases: readonly T[]
   renderPreview: (preset: T) => ReactNode
+  learningHref?: (preset: T) => string
   idPrefix?: string
 }
 
-export function CaseCatalog<T extends CatalogCase>({ label, title, subtitle, basePath, cases, renderPreview, idPrefix = 'case' }: CaseCatalogProps<T>) {
+export function CaseCatalog<T extends CatalogCase>({ label, title, subtitle, basePath, cases, renderPreview, learningHref, idPrefix = 'case' }: CaseCatalogProps<T>) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
   const navigate = useNavigate()
@@ -35,7 +36,10 @@ export function CaseCatalog<T extends CatalogCase>({ label, title, subtitle, bas
         <AppLink className="case-thumbnail-link" to={`${basePath}/cases/${preset.id}`} aria-label={t`View ${translate(preset.name)} details`}>{renderPreview(preset)}</AppLink>
         <div className="flex min-w-0 flex-1 flex-col gap-3">
           <Card.Header className="gap-1"><Card.Title id={`${idPrefix}-${preset.id}`} render={props => <h2 {...props} />}>{translate(preset.name)}</Card.Title><Card.Description>{translate(preset.description)}</Card.Description></Card.Header>
-          <Card.Footer className="mt-auto justify-end"><Button variant="secondary" onPress={() => navigate(`${basePath}/cases/${preset.id}`)}>{t`View details`}</Button></Card.Footer>
+          <Card.Footer className="mt-auto flex flex-wrap justify-end gap-3">
+            {learningHref && <AppLink className={buttonVariants()} to={learningHref(preset)}>{t`Start learning`}</AppLink>}
+            <Button variant="secondary" onPress={() => navigate(`${basePath}/cases/${preset.id}`)}>{t`View details`}</Button>
+          </Card.Footer>
         </div>
       </Card>
     </article>)}</div>

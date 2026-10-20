@@ -17,13 +17,28 @@ import { GeometryViewControls } from '../../geometry/GeometryViewControls'
 import type { HullCase } from './cases'
 import { useHullTrace, type HullStep, type HullPhase } from './trace'
 import { useStepPanelScroll } from '../segment-intersection/bo/learning/useStepPanelScroll'
+import { useLayoutPreference } from '../../app/useLayoutPreference'
+import { usePageShortcut } from '../../app/usePageShortcut'
+import { LearningDisplayControls } from '../../geometry/LearningDisplayControls'
+import './HullLearning.css'
 
 type Target = { id: number; source: 'plot' | 'list' }
 type Interaction = ReturnType<typeof useLinkedInteraction<Target>>
+const hullLayouts = { '1:3:1': 3, '1:2:1': 2, '1:1:1': 1 } as const
+type HullLayout = keyof typeof hullLayouts
+const isHullLayout = (value: unknown): value is HullLayout => typeof value === 'string' && Object.hasOwn(hullLayouts, value)
 
 export function HullLearning({ preset }: { preset: HullCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
+  const [layout, setLayout] = useLayoutPreference<HullLayout>('hull-learning-layout-v1-columns', '1:3:1', isHullLayout)
+  const [zenMode, setZenMode] = useLayoutPreference('hull-learning-layout-v1-zen', false,
+    (value): value is boolean => typeof value === 'boolean')
+  usePageShortcut(event => {
+    if (event.key !== 'z') return
+    event.preventDefault()
+    if (!event.repeat) setZenMode(!zenMode)
+  })
   const trace = useHullTrace(preset)
   const { search: params, previewIndex, previewStep, commitStep } = useReplayPosition()
   const raw = params.get('step') ?? '0'
@@ -43,37 +58,48 @@ export function HullLearning({ preset }: { preset: HullCase }) {
   const last = trace.steps.length - 1
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Learn step by step`}`} />
-    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull" />
-    <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm', className: 'self-start' })} to={`/convex-hull/cases/${preset.id}`}>{t`Back to result`}</AppLink>
-    <section aria-label={t`Replay controls`} className="flex flex-col gap-2">
-      <div className="flex flex-wrap items-center gap-2">
-        <Button size="sm" variant="secondary" isDisabled={index <= 0 || last < 0} onPress={() => go(Math.min(index - 1, last))}>{t`Previous step`}</Button>
-        <Button size="sm" variant="secondary" isDisabled={!step || index >= last} onPress={() => go(index + 1)}>{t`Next step`}</Button>
-        <Button size="sm" variant="secondary" isDisabled={last < 0} onPress={() => go(0)}>{t`Replay`}</Button>
-        {phases.map(phase => {
-          const start = trace.steps.findIndex(candidate => candidate.phase === phase.id)
-          return start < 0 ? null : <Button key={phase.id} size="sm" variant="tertiary" onPress={() => go(start)}>{phase.label}</Button>
-        })}
-        {trace.status === 'loading' && <Button size="sm" variant="tertiary" onPress={trace.cancel}>{t`Cancel loading`}</Button>}
-      </div>
-      <p role="status">{trace.status === 'loading' ? t`Generating trace · total unknown` : trace.status === 'complete' ? t`Trace generated` : trace.status === 'cancelled' ? t`Loading cancelled · recorded steps remain available` : t`Trace failed`}{' · '}{t`Recorded steps`}: {trace.steps.length}{step && ` · ${index}`}{trace.status === 'complete' && step?.action === 'complete' ? ` · ${t`Learning complete`}` : ''}</p>
-      {trace.status === 'error' && <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Trace failed`}</Alert.Title><Alert.Description>{trace.message}</Alert.Description></Alert.Content></Alert>}
-      {last >= 0 && <div {...progressProps}><Slider aria-label={t`Teaching step`} minValue={0} maxValue={Math.max(1, last)} step={1} value={step ? index : 0} isDisabled={last === 0} {...sliderProps}>
-        <Slider.Track><Slider.Fill /><Slider.Thumb /></Slider.Track>
-      </Slider></div>}
-    </section>
-    {!step ? <p role="status">{index < 0 || trace.status === 'complete' ? t`Invalid teaching step` : trace.status === 'loading' ? t`Waiting for the requested step` : t`Requested step is unavailable`}</p> : <>
-      <section aria-label={t`Current action`} data-action={step.action} data-phase={step.phase} className="rounded-lg bg-surface p-3"><HullExplanation step={step} /></section>
-      <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
-        <HullLearningPlot points={trace.points} step={step} interaction={interaction} />
-        <HullPointList title={t`Ordered points`} ids={step.order} points={trace.points} step={step} interaction={interaction} />
-        <div className="workspace-panel result-panel flex min-h-0 flex-col gap-2 overflow-auto">
-          <HullPointList title={t`Lower hull stack`} ids={step.lower} points={trace.points} step={step} interaction={interaction} stack complete={step.lower_complete} />
-          <HullPointList title={t`Upper hull stack`} ids={step.upper} points={trace.points} step={step} interaction={interaction} stack complete={step.upper_complete} />
-          {step.result !== null && <HullPointList title={t`Hull vertices`} ids={step.result} points={trace.points} step={step} interaction={interaction} />}
+    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull"
+      trailingAction={<AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/convex-hull/cases/${preset.id}`}>{t`Back to results viewer`}</AppLink>}>
+      <LearningDisplayControls ratios={Object.keys(hullLayouts)} layout={layout}
+        label={t`Main layout ratio (ordered points, geometry, stacks)`}
+        onLayoutChange={value => { if (isHullLayout(value)) setLayout(value) }}
+        zenMode={zenMode} onZenModeChange={setZenMode} />
+    </CaseToolbar>
+    <section className="learning-view hull-learning-view" data-zen-mode={zenMode} aria-label={t`Learn step by step`}>
+      {!step ? <p role="status" className="flex-1">{index < 0 || trace.status === 'complete' ? t`Invalid teaching step` : trace.status === 'loading' ? t`Waiting for the requested step` : t`Requested step is unavailable`}</p> :
+        <div className="workspace hull-learning-workspace" style={{ '--hull-geometry-width': `${hullLayouts[layout]}fr` } as CSSProperties}
+          onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
+          <HullPointList title={t`Ordered points`} ids={step.order} points={trace.points} step={step} interaction={interaction} />
+          <HullLearningPlot points={trace.points} step={step} interaction={interaction} />
+          <div className="workspace-panel hull-learning-stacks">
+            <HullPointList title={t`Lower hull stack`} ids={step.lower} points={trace.points} step={step} interaction={interaction} stack complete={step.lower_complete} />
+            <HullPointList title={t`Upper hull stack`} ids={step.upper} points={trace.points} step={step} interaction={interaction} stack complete={step.upper_complete} />
+            {step.result !== null && <HullPointList title={t`Hull vertices`} ids={step.result} points={trace.points} step={step} interaction={interaction} />}
+          </div>
+        </div>}
+      <section aria-label={t`Replay controls`} className="hull-replay-controls">
+        {step && <section aria-label={t`Current action`} data-action={step.action} data-phase={step.phase}><HullExplanation step={step} /></section>}
+        <div className="hull-replay-navigation">
+          <div className="flex flex-wrap items-center gap-2">
+            <Button size="sm" variant="secondary" isDisabled={index <= 0 || last < 0} onPress={() => go(Math.min(index - 1, last))}>{t`Previous step`}</Button>
+            <Button size="sm" variant="secondary" isDisabled={!step || index >= last} onPress={() => go(index + 1)}>{t`Next step`}</Button>
+            <Button size="sm" variant="secondary" isDisabled={last < 0} onPress={() => go(0)}>{t`Restart`}</Button>
+            {phases.map(phase => {
+              const start = trace.steps.findIndex(candidate => candidate.phase === phase.id)
+              return start < 0 ? null : <Button key={phase.id} size="sm" variant="tertiary" onPress={() => go(start)}>{phase.label}</Button>
+            })}
+            {trace.status === 'loading' && <Button size="sm" variant="tertiary" onPress={trace.cancel}>{t`Cancel loading`}</Button>}
+          </div>
+          <div className="learning-replay-progress">
+            <p role="status" className="text-sm text-muted">{trace.status === 'loading' ? t`Generating trace · total unknown` : trace.status === 'complete' ? t`Trace generated` : trace.status === 'cancelled' ? t`Loading cancelled · recorded steps remain available` : t`Trace failed`}{' · '}{t`Recorded steps`}: {trace.steps.length}{step && ` · ${index}`}{trace.status === 'complete' && step?.action === 'complete' ? ` · ${t`Learning complete`}` : ''}</p>
+            {trace.status === 'error' && <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Trace failed`}</Alert.Title><Alert.Description>{trace.message}</Alert.Description></Alert.Content></Alert>}
+            {last >= 0 && <div {...progressProps}><Slider aria-label={t`Teaching step`} minValue={0} maxValue={Math.max(1, last)} step={1} value={step ? index : 0} isDisabled={last === 0} {...sliderProps}>
+              <Slider.Track><Slider.Fill /><Slider.Thumb /></Slider.Track>
+            </Slider></div>}
+          </div>
         </div>
-      </div>
-    </>}
+      </section>
+    </section>
   </>
 }
 
