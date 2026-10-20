@@ -7,4 +7,5 @@
 - 新增或修改可缩放 SVG 绘图时，读取 [Safari 描边残留规避规则](../docs/agents/web/svg-stroke-safari.md)。
 - 实现或修改前端组件、控件、图标及相关交互，或新增带 URL 状态同步的页面时，读取 [组件与库复用规则](../docs/agents/web/components.md)，包括连续交互的预览与提交边界。
 - 涉及滚动列表、hover 高亮、画布与列表联动或教学步骤自动定位时，读取 [滚动与联动定位规则](../docs/agents/web/scrolling.md)。
+- 新增、迁移或修改卡片布局、卡片组及其滚动容器时，读取 [卡片边缘与滚动容器规则](../docs/agents/web/card-overflow.md)。
 - 判断前端支持范围、选择验证范围，或添加、修改、执行前端测试前，读取 [前端测试与滚动验证规则](../docs/agents/web/testing.md)。

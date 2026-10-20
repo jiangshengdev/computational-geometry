@@ -133,7 +133,7 @@ function HullPointList({ title, ids, points, step, interaction, stack = false, c
     panel: scrollport,
     selector: interaction.active?.source === 'plot' ? `[data-point-id="${interaction.active.id}"]` : undefined,
   }])
-  return <section aria-label={title} className="workspace-panel min-h-0 overflow-auto"><Card>
+  return <section aria-label={title} className="workspace-panel"><Card>
     <Card.Header><Card.Title>{title}</Card.Title></Card.Header>
     <Card.Content ref={scrollport}>
       {stack && <p>{complete ? t`Chain complete` : t`Candidate chain`}</p>}

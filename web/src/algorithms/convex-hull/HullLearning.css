@@ -1,4 +1,5 @@
-.hull-learning-stacks { display: flex; flex-direction: column; gap: 8px; overflow: auto; overscroll-behavior: contain; }
+/* Extend the scrollport into the gap so card shadows fit without moving the cards. */
+.hull-learning-stacks { display: flex; flex-direction: column; gap: 8px; margin: -8px; padding: 8px; overflow: auto; overscroll-behavior: contain; }
 .hull-learning-stacks > .workspace-panel { flex-shrink: 0; }
 .hull-replay-controls { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; padding: 12px 16px; border-radius: var(--radius-2xl); background: var(--surface); }
 .hull-replay-navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
