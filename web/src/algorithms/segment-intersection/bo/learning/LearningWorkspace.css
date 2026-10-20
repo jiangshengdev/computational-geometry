@@ -7,7 +7,8 @@
 .learning-replay-progress { display: flex; flex-direction: column; gap: 8px; flex: 1 1 12rem; min-width: 0; }
 /* Keep the mounted workspace and its layout preferences intact while focusing. */
 .learning-view[data-zen-mode="true"] .learning-dock,
-.learning-view[data-zen-mode="true"] .learning-replay-controls { display: none; }
+.learning-view[data-zen-mode="true"] .learning-replay-controls,
+.learning-view[data-zen-mode="true"] .hull-replay-controls { display: none; }
 .learning-view[data-zen-mode="true"] .learning-workspace { grid-template-columns: minmax(0, 1fr); }
 .learning-panel { min-width: 0; min-height: 0; overflow-wrap: anywhere; }
 .learning-panel-card { height: 100%; min-height: 0; }

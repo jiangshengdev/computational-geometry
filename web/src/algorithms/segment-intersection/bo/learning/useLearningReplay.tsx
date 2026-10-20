@@ -1,26 +1,17 @@
-import { useId, useState, type ReactNode } from 'react'
+import { useId, useState } from 'react'
 import { useReplaySlider } from '../../../../app/useReplayPosition'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { formatPoint, samePoint, type Point } from '../../../../geometry/geometry'
 import { pairName } from '../../geometry'
 import { hoverHighlights, useHoverTarget } from '../geometry/hover'
-import { usePageShortcut } from '../../../../app/usePageShortcut'
+import type { ShortcutAction } from '../../../../app/ShortcutAction'
+import { useShortcutActions } from '../../../../app/useShortcutActions'
 import { useLearningReducedMotion } from './useLearningReducedMotion'
 import { usePanelScrollRef, useStepPanelScroll } from './useStepPanelScroll'
 import { useEventTransfer } from './useEventTransfer'
 import { executionNavigation } from './executionNavigation'
 import { type LearningState } from './learningState'
 import { useLingui } from '@lingui/react/macro'
-
-type ReplayAction = {
-  name: string
-  key: string
-  shift?: boolean
-  hint: ReactNode
-  variant?: 'primary' | 'tertiary'
-  isDisabled: boolean
-  onPress: () => void
-}
 
 export function useLearningReplay(state: LearningState, { onStepChange, onStepPreview, onWaitNextEntry }: {
   onStepChange: (index: number) => void
@@ -99,7 +90,7 @@ export function useLearningReplay(state: LearningState, { onStepChange, onStepPr
     else onStepChange(next)
   }
   const restart = () => { changeStep(0); setRun(r => r + 1) }
-  const replayGroups: { id: string; name: string; actions: ReplayAction[] }[] = [
+  const replayGroups: { id: string; name: string; actions: ShortcutAction[] }[] = [
     { id: 'single', name: t`Single steps`, actions: [
       { name: t`Previous step`, key: 'ArrowLeft', hint: <ArrowLeft size={14} aria-hidden="true" />, isDisabled: index === 0, onPress: () => changeStep(current => current - 1, true) },
       { name: t`Next step`, key: 'ArrowRight', hint: <ArrowRight size={14} aria-hidden="true" />, variant: 'primary', isDisabled: complete, onPress: () => changeStep(current => current + 1, true) },
@@ -116,13 +107,7 @@ export function useLearningReplay(state: LearningState, { onStepChange, onStepPr
       { name: t`Restart`, key: 'r', hint: 'R', variant: 'tertiary', isDisabled: false, onPress: restart },
     ] },
   ]
-  const replayActions = replayGroups.flatMap(group => group.actions)
-  usePageShortcut((event: KeyboardEvent) => {
-    const action = replayActions.find(action => action.key.toLowerCase() === event.key.toLowerCase() && !!action.shift === event.shiftKey)
-    if (!action) return
-    event.preventDefault()
-    if (!event.repeat && !action.isDisabled) action.onPress()
-  }, replayActions.filter(action => action.shift).map(action => action.key))
+  useShortcutActions(replayGroups.flatMap(group => group.actions))
   const { progressProps, sliderProps } = useReplaySlider(next => changeStep(next, false, true), onStepChange)
   return {
     navigation, reducedMotion, animationId,

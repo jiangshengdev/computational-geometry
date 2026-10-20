@@ -20,6 +20,10 @@ import { useStepPanelScroll } from '../segment-intersection/bo/learning/useStepP
 import { useLayoutPreference } from '../../app/useLayoutPreference'
 import { usePageShortcut } from '../../app/usePageShortcut'
 import { LearningDisplayControls } from '../../geometry/LearningDisplayControls'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ShortcutActionButton, ShortcutActionGroup, type ShortcutAction } from '../../app/ShortcutAction'
+import { useShortcutActions } from '../../app/useShortcutActions'
+import { ReplayPositionLabel } from '../../app/ReplayPositionLabel'
 import './HullLearning.css'
 
 type PointPanel = 'order' | 'lower' | 'upper' | 'result'
@@ -62,6 +66,17 @@ export function HullLearning({ preset }: { preset: HullCase }) {
     { id: 'upper', label: t`Upper hull` }, { id: 'join', label: t`Join result` },
   ]
   const last = trace.steps.length - 1
+  const actions: ShortcutAction[] = [
+    { name: t`Previous step`, key: 'ArrowLeft', hint: <ArrowLeft size={14} aria-hidden="true" />, isDisabled: index <= 0 || last < 0, onPress: () => go(Math.min(index - 1, last)) },
+    { name: t`Next step`, key: 'ArrowRight', hint: <ArrowRight size={14} aria-hidden="true" />, isDisabled: !step || index >= last, onPress: () => go(index + 1) },
+    { name: t`Restart`, key: 'r', hint: 'R', isDisabled: last < 0, onPress: () => go(0) },
+    ...phases.flatMap((phase, position): ShortcutAction[] => {
+      const start = trace.steps.findIndex(candidate => candidate.phase === phase.id)
+      const key = String(position + 1)
+      return start < 0 ? [] : [{ name: phase.label, key, hint: key, variant: 'tertiary', isDisabled: false, onPress: () => go(start) }]
+    }),
+  ]
+  useShortcutActions(actions)
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Learn step by step`}`} />
     <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull"
@@ -87,17 +102,13 @@ export function HullLearning({ preset }: { preset: HullCase }) {
         {step && <section aria-label={t`Current action`} data-action={step.action} data-phase={step.phase}><HullExplanation step={step} /></section>}
         <div className="hull-replay-navigation">
           <div className="flex flex-wrap items-center gap-2">
-            <Button size="sm" variant="secondary" isDisabled={index <= 0 || last < 0} onPress={() => go(Math.min(index - 1, last))}>{t`Previous step`}</Button>
-            <Button size="sm" variant="secondary" isDisabled={!step || index >= last} onPress={() => go(index + 1)}>{t`Next step`}</Button>
-            <Button size="sm" variant="secondary" isDisabled={last < 0} onPress={() => go(0)}>{t`Restart`}</Button>
-            {phases.map(phase => {
-              const start = trace.steps.findIndex(candidate => candidate.phase === phase.id)
-              return start < 0 ? null : <Button key={phase.id} size="sm" variant="tertiary" onPress={() => go(start)}>{phase.label}</Button>
-            })}
+            <ShortcutActionGroup actions={actions.slice(0, 2)} label={t`Single steps`} />
+            <ShortcutActionButton action={actions[2]} />
+            <ShortcutActionGroup actions={actions.slice(3)} label={t`Replay controls`} />
             {trace.status === 'loading' && <Button size="sm" variant="tertiary" onPress={trace.cancel}>{t`Cancel loading`}</Button>}
           </div>
           <div className="learning-replay-progress">
-            <p role="status" className="text-sm text-muted">{trace.status === 'loading' ? t`Generating trace · total unknown` : trace.status === 'complete' ? t`Trace generated` : trace.status === 'cancelled' ? t`Loading cancelled · recorded steps remain available` : t`Trace failed`}{' · '}{t`Recorded steps`}: {trace.steps.length}{step && ` · ${index}`}{trace.status === 'complete' && step?.action === 'complete' ? ` · ${t`Learning complete`}` : ''}</p>
+            <p role="status" className="text-sm text-muted">{trace.status === 'loading' ? t`Generating trace · total unknown` : trace.status === 'complete' ? t`Trace generated` : trace.status === 'cancelled' ? t`Loading cancelled · recorded steps remain available` : t`Trace failed`}{step && <> · <ReplayPositionLabel index={index} last={last} generated={trace.status === 'complete'} /></>}{trace.status === 'complete' && step?.action === 'complete' ? ` · ${t`Learning complete`}` : ''}</p>
             {trace.status === 'error' && <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Trace failed`}</Alert.Title><Alert.Description>{trace.message}</Alert.Description></Alert.Content></Alert>}
             {last >= 0 && <div {...progressProps}><Slider aria-label={t`Teaching step`} minValue={0} maxValue={Math.max(1, last)} step={1} value={step ? index : 0} isDisabled={last === 0} {...sliderProps}>
               <Slider.Track><Slider.Fill /><Slider.Thumb /></Slider.Track>
