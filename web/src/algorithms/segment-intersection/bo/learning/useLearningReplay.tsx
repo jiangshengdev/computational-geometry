@@ -1,4 +1,5 @@
-import { useId, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
+import { useId, useState, type ReactNode } from 'react'
+import { useReplaySlider } from '../../../../app/useReplayPosition'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { formatPoint, samePoint, type Point } from '../../../../geometry/geometry'
 import { pairName } from '../../geometry'
@@ -29,14 +30,6 @@ export function useLearningReplay(state: LearningState, { onStepChange, onStepPr
   const { t } = useLingui()
   const { trace, index, generated, step, complete, pendingTarget, activeTarget, participantTarget } = state
   const [navigation, setNavigation] = useState({ from: index, reset: 0 })
-  const keyboardScrub = useRef(false)
-  const keyboardStep = useRef<number | null>(null)
-  const finishKeyboardScrub = () => {
-    keyboardScrub.current = false
-    const next = keyboardStep.current
-    keyboardStep.current = null
-    if (next !== null) onStepChange(next)
-  }
   const reducedMotion = useLearningReducedMotion()
   const animationId = useId()
   const [run, setRun] = useState(0)
@@ -130,23 +123,7 @@ export function useLearningReplay(state: LearningState, { onStepChange, onStepPr
     event.preventDefault()
     if (!event.repeat && !action.isDisabled) action.onPress()
   }, replayActions.filter(action => action.shift).map(action => action.key))
-  const progressProps = {
-    onKeyDownCapture: (event: ReactKeyboardEvent<HTMLDivElement>) => {
-      if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) keyboardScrub.current = true
-    },
-    onKeyUpCapture: () => finishKeyboardScrub(),
-    onBlurCapture: () => finishKeyboardScrub(),
-  }
-  const sliderProps = {
-    onChange: (value: number | number[]) => changeStep(typeof value === 'number' ? value : value[0], false, true),
-    onChangeEnd: (value: number | number[]) => {
-      const next = typeof value === 'number' ? value : value[0]
-      // React Aria emits change-end for every keydown, including repeat.
-      // Match pointer dragging: preview while held, commit on release.
-      if (keyboardScrub.current) keyboardStep.current = next
-      else onStepChange(next)
-    },
-  }
+  const { progressProps, sliderProps } = useReplaySlider(next => changeStep(next, false, true), onStepChange)
   return {
     navigation, reducedMotion, animationId,
     run, hover, setHover, geometryHighlights, sweep, titleProps, eventProps, inputProps,

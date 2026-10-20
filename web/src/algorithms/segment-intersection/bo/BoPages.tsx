@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { useNavigate, useParams, useSearchParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
+import { useReplayPosition } from '../../../app/useReplayPosition'
 import { GeometryView } from './geometry/GeometryView'
 import { CaseThumbnail } from '../cases/CaseThumbnail'
 import { formatPoint } from '../../../geometry/geometry'
@@ -162,21 +163,20 @@ export function CaseList() {
 
 function LearningPage({ preset, trace, complete, zenMode, layout }: { preset: Preset; trace: SweepTrace; complete: boolean; zenMode: boolean; layout: LearningLayout }) {
   const { t } = useLingui()
-  const [search, setSearch] = useSearchParams()
-  const [preview, setPreview] = useState<{ search: URLSearchParams; index: number } | null>(null)
+  const { search, setSearch, previewIndex, previewStep, commitStep } = useReplayPosition()
   const [cursor, setCursor] = useState(0)
   const [destination, setDestination] = useState('')
   const [nextEntry, setNextEntry] = useState<{ search: URLSearchParams; from: number } | null>(null)
   const waitingEntry = nextEntry?.search === search ? nextEntry : null
   const arrivedEntry = waitingEntry ? trace.steps.findIndex((step, position) => position > waitingEntry.from && step.execution.entry) : -1
   useEffect(() => {
-    if (!waitingEntry || preview?.search === search || (arrivedEntry < 0 && !complete)) return
+    if (!waitingEntry || previewIndex !== undefined || (arrivedEntry < 0 && !complete)) return
     if (arrivedEntry >= 0) {
       const updated = new URLSearchParams(search)
       updated.set('step', String(arrivedEntry))
       setSearch(updated, { replace: true })
     }
-  }, [arrivedEntry, complete, preview, search, setSearch, waitingEntry])
+  }, [arrivedEntry, complete, previewIndex, search, setSearch, waitingEntry])
   const values = search.getAll('step')
   const value = values[0]
   if (values.length > 1 || (value !== undefined && !/^[0-9]+$/.test(value))) {
@@ -186,20 +186,16 @@ function LearningPage({ preset, trace, complete, zenMode, layout }: { preset: Pr
   if (!Number.isSafeInteger(index) || (complete && index >= trace.steps.length)) {
     return <RouteError message={t`Learning step out of range: valid steps for this case are 0–${trace.steps.length - 1}.`} preset={preset} showListLink={false} />
   }
-  const visibleIndex = preview?.search === search ? preview.index : index < trace.steps.length ? index : cursor
+  const visibleIndex = previewIndex ?? (index < trace.steps.length ? index : cursor)
   const waiting = index >= trace.steps.length || Boolean(waitingEntry && (!complete || arrivedEntry >= 0))
   const changeStep = (next: number) => {
-    setPreview(null)
     setNextEntry(null)
     setCursor(visibleIndex)
-    if (next === index) return
-    const updated = new URLSearchParams(search)
-    updated.set('step', String(next))
-    setSearch(updated, { replace: true })
+    commitStep(next, index)
   }
   return <><PageTitle page={t`Step-by-step learning`} preset={preset} /><LearningView preset={preset} trace={trace} zenMode={zenMode} layout={layout}
     complete={complete} index={visibleIndex} onWaitNextEntry={() => setNextEntry({ search, from: visibleIndex })}
-    onStepPreview={next => setPreview({ search, index: next })} onStepChange={changeStep}>
+    onStepPreview={previewStep} onStepChange={changeStep}>
     {waiting && <div role="status" aria-label={t`Waiting for a step`} className="flex flex-wrap items-center gap-3">
       <span>{waitingEntry ? t`Waiting for the next major step. Steps 0–${trace.steps.length - 1} are available to explore.` : t`Waiting for step ${index}. Steps 0–${trace.steps.length - 1} are available to explore.`}</span>
       <Button variant="secondary" onPress={() => changeStep(visibleIndex)}>{t`Cancel waiting`}</Button>

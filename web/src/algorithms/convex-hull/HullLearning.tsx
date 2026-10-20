@@ -1,6 +1,6 @@
 import { useLingui } from '@lingui/react/macro'
 import { useLingui as useMessages } from '@lingui/react'
-import { useSearchParams } from 'react-router'
+import { useReplayPosition, useReplaySlider } from '../../app/useReplayPosition'
 import { useRef, type CSSProperties } from 'react'
 import { Button, buttonVariants } from '@heroui/react/button'
 import { Slider } from '@heroui/react/slider'
@@ -25,12 +25,17 @@ export function HullLearning({ preset }: { preset: HullCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
   const trace = useHullTrace(preset)
-  const [params, setParams] = useSearchParams()
+  const { search: params, previewIndex, previewStep, commitStep } = useReplayPosition()
   const raw = params.get('step') ?? '0'
-  const index = /^\d+$/.test(raw) && Number.isSafeInteger(Number(raw)) ? Number(raw) : -1
+  const urlIndex = /^\d+$/.test(raw) && Number.isSafeInteger(Number(raw)) ? Number(raw) : -1
+  const index = previewIndex ?? urlIndex
   const step = trace.steps[index]
   const interaction = useLinkedInteraction<Target>((a, b) => a.id === b.id)
-  const go = (destination: number) => { interaction.clear(); setParams({ step: String(destination) }, { replace: true }) }
+  const go = (destination: number) => { interaction.clear(); commitStep(destination, urlIndex) }
+  const { progressProps, sliderProps } = useReplaySlider(destination => {
+    interaction.clear()
+    previewStep(destination)
+  }, go)
   const phases: { id: HullPhase; label: string }[] = [
     { id: 'preprocess', label: t`Preprocessing` }, { id: 'lower', label: t`Lower hull` },
     { id: 'upper', label: t`Upper hull` }, { id: 'join', label: t`Join result` },
@@ -53,9 +58,9 @@ export function HullLearning({ preset }: { preset: HullCase }) {
       </div>
       <p role="status">{trace.status === 'loading' ? t`Generating trace · total unknown` : trace.status === 'complete' ? t`Trace generated` : trace.status === 'cancelled' ? t`Loading cancelled · recorded steps remain available` : t`Trace failed`}{' · '}{t`Recorded steps`}: {trace.steps.length}{step && ` · ${index}`}{trace.status === 'complete' && step?.action === 'complete' ? ` · ${t`Learning complete`}` : ''}</p>
       {trace.status === 'error' && <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Trace failed`}</Alert.Title><Alert.Description>{trace.message}</Alert.Description></Alert.Content></Alert>}
-      {last >= 0 && <Slider aria-label={t`Teaching step`} minValue={0} maxValue={Math.max(1, last)} step={1} value={step ? index : 0} isDisabled={last === 0} onChange={value => go(typeof value === 'number' ? value : value[0])}>
+      {last >= 0 && <div {...progressProps}><Slider aria-label={t`Teaching step`} minValue={0} maxValue={Math.max(1, last)} step={1} value={step ? index : 0} isDisabled={last === 0} {...sliderProps}>
         <Slider.Track><Slider.Fill /><Slider.Thumb /></Slider.Track>
-      </Slider>}
+      </Slider></div>}
     </section>
     {!step ? <p role="status">{index < 0 || trace.status === 'complete' ? t`Invalid teaching step` : trace.status === 'loading' ? t`Waiting for the requested step` : t`Requested step is unavailable`}</p> : <>
       <section aria-label={t`Current action`} data-action={step.action} data-phase={step.phase} className="rounded-lg bg-surface p-3"><HullExplanation step={step} /></section>
