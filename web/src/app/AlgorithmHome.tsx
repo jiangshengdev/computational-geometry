@@ -45,8 +45,8 @@ export function AlgorithmHome() {
     <DocumentTitle title={`${t`Choose a problem`} · ${t`Computational Geometry`}`} />
     <PageHeading title={t`Choose a problem`} description={t`Choose a geometry problem to explore its algorithm and cases.`} />
     <div className="algorithm-list grid gap-4">
-      <AlgorithmEntry kind="bo" title={t`Segment intersection`} algorithm="Bentley–Ottmann" to="/bo" />
       <AlgorithmEntry kind="convex-hull" title={t`Convex hull`} algorithm={t`Andrew monotone chain algorithm`} to="/convex-hull" />
+      <AlgorithmEntry kind="bo" title={t`Segment intersection`} algorithm="Bentley–Ottmann" to="/bo" />
       <AlgorithmEntry kind="convex-polygon-intersection" title={t`Convex polygon intersection`} algorithm="Edge Chasing" to="/convex-polygon-intersection" />
       <AlgorithmEntry kind="triangulation" title={t`Triangulation`} algorithm={t`Monotone decomposition`} to="/triangulation" />
     </div>
