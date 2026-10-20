@@ -4,6 +4,56 @@ import type { HullStep } from '../../../src/algorithms/convex-hull/trace'
 
 test.use({ locale: 'en-US' })
 
+for (const browserName of ['chromium', 'webkit'] as const) {
+  const browserTest = test.extend({ browserName, viewport: { width: 1440, height: 900 } })
+
+  browserTest(`snowflake list hover preserves continuous manual scrolling: ${browserName}`, async ({ page }, testInfo) => {
+    await page.goto('/convex-hull/cases/hexagonal-snowflake/learn?step=154')
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    const ordered = page.getByRole('region', { name: 'Ordered points', exact: true })
+    await expect(ordered.getByRole('listitem')).toHaveCount(43)
+    const panel = ordered.locator('ol').locator('..')
+    const bounds = await panel.boundingBox()
+    if (!bounds) throw new Error('Ordered points scroll panel is missing')
+    await page.mouse.move(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2)
+    const readPosition = () => panel.evaluate(element => ({
+      top: element.scrollTop,
+      maximum: element.scrollHeight - element.clientHeight,
+      hovered: element.querySelector('[data-highlighted="true"]')?.getAttribute('data-point-id'),
+      current: element.querySelector('[data-current="true"]')?.getAttribute('data-point-id'),
+    }))
+    const initial = await readPosition()
+    expect(initial.top).toBeGreaterThan(400)
+    const positions = [initial]
+    for (let attempt = 0; attempt < 3; attempt++) {
+      await page.mouse.wheel(0, -400)
+      // Observe the settled position after wheel delivery and hover-driven layout effects.
+      await page.waitForTimeout(300)
+      positions.push(await readPosition())
+    }
+    await testInfo.attach('manual-scroll-positions', {
+      body: JSON.stringify(positions, null, 2), contentType: 'application/json',
+    })
+    await expect(page.getByRole('slider', { name: 'Teaching step' })).toHaveValue('154')
+    expect(positions.at(-1)!.top, JSON.stringify(positions)).toBeLessThan(initial.top - 400)
+    await ordered.getByRole('heading').hover()
+    expect((await readPosition()).top).toBe(positions.at(-1)!.top)
+
+    // Canvas interaction and replay still reveal their targets after manual browsing.
+    const current = ordered.locator('[data-current="true"]')
+    await expect(current).not.toBeInViewport()
+    const plot = page.getByRole('group', { name: 'Convex hull plot', exact: true })
+    await plot.locator(`[data-point-id="${initial.current}"]`).hover()
+    await expect(current).toBeInViewport()
+    await ordered.getByRole('heading').hover()
+    await panel.evaluate(element => { element.scrollTop = 0 })
+    await expect(current).not.toBeInViewport()
+    await page.getByRole('button', { name: 'Next step', exact: true }).click()
+    await expect(page.getByRole('slider', { name: 'Teaching step' })).toHaveValue('155')
+    await expect(ordered.locator('[data-current="true"]')).toBeInViewport()
+  })
+}
+
 test('learning is on demand and preprocessing can be reversed', async ({ page }) => {
   const traces: string[] = []
   page.on('request', request => { if (request.url().endsWith('/api/convex-hull/trace')) traces.push(request.url()) })

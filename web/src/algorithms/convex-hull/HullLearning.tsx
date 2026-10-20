@@ -125,9 +125,13 @@ function HullPointList({ title, ids, points, step, interaction, stack = false, c
 }) {
   const { t } = useLingui()
   const scrollport = useRef<HTMLDivElement>(null)
+  useStepPanelScroll(step, 0, [{
+    panel: scrollport,
+    selector: step.current !== null ? `[data-point-id="${step.current}"]` : undefined,
+  }])
   useStepPanelScroll(interaction.active ?? step, 0, [{
     panel: scrollport,
-    selector: interaction.active?.source === 'plot' ? `[data-point-id="${interaction.active.id}"]` : step.current !== null ? `[data-point-id="${step.current}"]` : undefined,
+    selector: interaction.active?.source === 'plot' ? `[data-point-id="${interaction.active.id}"]` : undefined,
   }])
   return <section aria-label={title} className="workspace-panel min-h-0 overflow-auto"><Card>
     <Card.Header><Card.Title>{title}</Card.Title></Card.Header>
