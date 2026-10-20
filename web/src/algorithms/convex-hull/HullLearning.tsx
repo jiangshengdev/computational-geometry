@@ -26,6 +26,7 @@ import { ShortcutActionButton, ShortcutActionGroup, type ShortcutAction } from '
 import { useShortcutActions } from '../../app/useShortcutActions'
 import { ReplayPositionLabel } from '../../app/ReplayPositionLabel'
 import './HullLearning.css'
+import { HullRotationControls } from './HullRotationControls'
 
 type PointPanel = 'order' | 'lower' | 'upper' | 'result'
 type Target = { id: number; source: 'plot' | 'list' } | { panel: PointPanel; source: 'panel' }
@@ -179,8 +180,13 @@ function HullLearningPlot({ points, step, interaction }: { points: Point[]; step
   const k = transform.k
   const position = (id: number) => ({ x: projection!.px(points[id]), y: projection!.py(points[id]) })
   const path = (ids: number[]) => ids.map(id => `${projection!.px(points[id])},${projection!.py(points[id])}`).join(' ')
+  const incoming = projection && step.action === 'turn' && step.subjects.length === 3
+    ? { from: position(step.subjects[0]), to: position(step.subjects[1]) } : null
+  const mainArrow = incoming && Math.hypot(incoming.to.x - incoming.from.x, incoming.to.y - incoming.from.y) > 0
+    ? incoming : null
   return <div className="drawing"><Card>
     <Card.Header className="drawing-toolbar"><Card.Title>{t`Convex hull plot`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
+    <HullRotationControls viewport={viewport} mainArrow={mainArrow} />
     <Card.Content className="flex min-h-0 flex-1 flex-col"><div className="drawing-surface flex flex-col">
       <svg ref={svg} className="geometry-viewport w-full" viewBox={`0 0 ${width} ${height}`} role="group" aria-label={t`Convex hull plot`} style={{ '--geometry-scale': k } as CSSProperties}>
         <defs>
@@ -188,7 +194,7 @@ function HullLearningPlot({ points, step, interaction }: { points: Point[]; step
             <path d="M 0 0 L 8 4 L 0 8 Z" fill="var(--accent)" />
           </marker>
         </defs>
-        {projection && <g data-layer="geometry" transform={transform.toString()}>
+        {projection && <g data-layer="geometry" transform={viewport.geometryTransform}>
           {(step.action === 'sort' || step.action === 'deduplicate') && <g data-layer="sorted-order" pointerEvents="none" aria-hidden="true">
             {step.order.slice(1).map((id, index) => {
               const previous = step.order[index]
@@ -198,7 +204,7 @@ function HullLearningPlot({ points, step, interaction }: { points: Point[]; step
             })}
           </g>}
           {[{ name: 'lower', ids: step.lower }, { name: 'upper', ids: step.upper }].map(chain => <polyline key={chain.name} data-chain={chain.name} points={path(chain.ids)} fill="none" stroke={chain.name === 'lower' ? 'var(--accent)' : 'var(--success)'} strokeWidth={2 / k} />)}
-          {step.action === 'turn' && step.turn && step.subjects.length === 3 && <HullTurnIndicator turn={step.turn} scale={k}
+          {step.action === 'turn' && step.turn && step.subjects.length === 3 && <HullTurnIndicator turn={step.turn} scale={k} angle={viewport.angle}
             positions={[position(step.subjects[0]), position(step.subjects[1]), position(step.subjects[2])]} />}
           {step.result && (step.result.length > 2 ? <polygon data-hull="polygon" points={path(step.result)} fill="var(--accent)" fillOpacity="0.12" stroke="var(--accent)" strokeWidth={3 / k} />
             : step.result.length === 2 ? <polyline data-hull="segment" points={path(step.result)} fill="none" stroke="var(--accent)" strokeWidth={3 / k} />
@@ -215,7 +221,7 @@ function HullLearningPlot({ points, step, interaction }: { points: Point[]; step
               onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); interaction.select({ id, source: 'plot' }) } }}>
               <circle cx={projection.px(point)} cy={projection.py(point)} r={5 / k} fill={active ? 'var(--success)' : current ? 'var(--accent)' : removed ? 'var(--danger)' : 'currentColor'} />
               <circle cx={projection.px(point)} cy={projection.py(point)} r={10 / k} fill="transparent" stroke={active ? 'var(--success)' : current ? 'var(--accent)' : removed ? 'var(--danger)' : step.subjects.includes(id) ? 'var(--warning)' : 'none'} strokeWidth={2 / k} />
-              {(active || current || removed || step.subjects.includes(id)) && <text x={projection.px(point)} y={projection.py(point) - 12 / k} textAnchor="middle" fontSize={12 / k} fill="currentColor">P{id}</text>}
+              {(active || current || removed || step.subjects.includes(id)) && <text transform={`rotate(${-viewport.angle} ${projection.px(point)} ${projection.py(point)})`} x={projection.px(point)} y={projection.py(point) - 12 / k} textAnchor="middle" fontSize={12 / k} fill="currentColor">P{id}</text>}
             </g>
           })}
         </g>}

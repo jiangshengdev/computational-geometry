@@ -17,8 +17,8 @@ export function DirectedLine({ from, to, scale, ...props }: Omit<SVGProps<SVGLin
     x2={to.x - dx * inset / length} y2={to.y - dy * inset / length} />
 }
 
-export function HullTurnIndicator({ positions: [a, b, c], turn, scale }: {
-  positions: [Position, Position, Position]; turn: NonNullable<HullStep['turn']>; scale: number
+export function HullTurnIndicator({ positions: [a, b, c], turn, scale, angle }: {
+  positions: [Position, Position, Position]; turn: NonNullable<HullStep['turn']>; scale: number; angle: number
 }) {
   const { t } = useLingui()
   const markerId = useId()
@@ -42,7 +42,7 @@ export function HullTurnIndicator({ positions: [a, b, c], turn, scale }: {
       <path data-turn-arc={turn} d={`M ${start.x} ${start.y} A ${radius} ${radius} 0 0 ${turn === 'left' ? 0 : 1} ${end.x} ${end.y}`}
         fill="none" stroke={color} strokeWidth={2 / scale} markerEnd={`url(#${markerId})`} />
     </>}
-    <text x={b.x + 40 / scale} y={b.y + 22 / scale} fontSize={13 / scale} fontWeight="600"
+    <text transform={`rotate(${-angle} ${b.x} ${b.y})`} x={b.x + 40 / scale} y={b.y + 22 / scale} fontSize={13 / scale} fontWeight="600"
       fill={color} stroke="var(--surface)" strokeWidth={4 / scale} strokeLinejoin="round" paintOrder="stroke">{label}</text>
   </g>
 }
