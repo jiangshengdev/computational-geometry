@@ -1,0 +1,153 @@
+import { useLingui } from '@lingui/react/macro'
+import { useLingui as useMessages } from '@lingui/react'
+import { useSearchParams } from 'react-router'
+import { useRef, type CSSProperties } from 'react'
+import { Button, buttonVariants } from '@heroui/react/button'
+import { Slider } from '@heroui/react/slider'
+import { Alert } from '@heroui/react/alert'
+import { Card } from '@heroui/react/card'
+import { ToggleButton } from '@heroui/react/toggle-button'
+import { DocumentTitle } from '../../app/DocumentTitle'
+import { AppLink } from '../../app/AppLink'
+import { CaseToolbar } from '../../geometry/CaseToolbar'
+import { useLinkedInteraction } from '../../geometry/useLinkedInteraction'
+import { formatPoint, type Point } from '../../geometry/geometry'
+import { useGeometryViewport } from '../../geometry/useGeometryViewport'
+import { GeometryViewControls } from '../../geometry/GeometryViewControls'
+import type { HullCase } from './cases'
+import { useHullTrace, type HullStep, type HullPhase } from './trace'
+import { useStepPanelScroll } from '../segment-intersection/bo/learning/useStepPanelScroll'
+
+type Target = { id: number; source: 'plot' | 'list' }
+type Interaction = ReturnType<typeof useLinkedInteraction<Target>>
+
+export function HullLearning({ preset }: { preset: HullCase }) {
+  const { t } = useLingui()
+  const { _: translate } = useMessages()
+  const trace = useHullTrace(preset)
+  const [params, setParams] = useSearchParams()
+  const raw = params.get('step') ?? '0'
+  const index = /^\d+$/.test(raw) && Number.isSafeInteger(Number(raw)) ? Number(raw) : -1
+  const step = trace.steps[index]
+  const interaction = useLinkedInteraction<Target>((a, b) => a.id === b.id)
+  const go = (destination: number) => { interaction.clear(); setParams({ step: String(destination) }, { replace: true }) }
+  const phases: { id: HullPhase; label: string }[] = [
+    { id: 'preprocess', label: t`Preprocessing` }, { id: 'lower', label: t`Lower hull` },
+    { id: 'upper', label: t`Upper hull` }, { id: 'join', label: t`Join result` },
+  ]
+  const last = trace.steps.length - 1
+  return <>
+    <DocumentTitle title={`${translate(preset.name)} · ${t`Learn step by step`}`} />
+    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull" />
+    <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm', className: 'self-start' })} to={`/convex-hull/cases/${preset.id}`}>{t`Back to result`}</AppLink>
+    <section aria-label={t`Replay controls`} className="flex flex-col gap-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <Button size="sm" variant="secondary" isDisabled={index <= 0 || last < 0} onPress={() => go(Math.min(index - 1, last))}>{t`Previous step`}</Button>
+        <Button size="sm" variant="secondary" isDisabled={!step || index >= last} onPress={() => go(index + 1)}>{t`Next step`}</Button>
+        <Button size="sm" variant="secondary" isDisabled={last < 0} onPress={() => go(0)}>{t`Replay`}</Button>
+        {phases.map(phase => {
+          const start = trace.steps.findIndex(candidate => candidate.phase === phase.id)
+          return start < 0 ? null : <Button key={phase.id} size="sm" variant="tertiary" onPress={() => go(start)}>{phase.label}</Button>
+        })}
+        {trace.status === 'loading' && <Button size="sm" variant="tertiary" onPress={trace.cancel}>{t`Cancel loading`}</Button>}
+      </div>
+      <p role="status">{trace.status === 'loading' ? t`Generating trace · total unknown` : trace.status === 'complete' ? t`Trace generated` : trace.status === 'cancelled' ? t`Loading cancelled · recorded steps remain available` : t`Trace failed`}{' · '}{t`Recorded steps`}: {trace.steps.length}{step && ` · ${index}`}{trace.status === 'complete' && step?.action === 'complete' ? ` · ${t`Learning complete`}` : ''}</p>
+      {trace.status === 'error' && <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Trace failed`}</Alert.Title><Alert.Description>{trace.message}</Alert.Description></Alert.Content></Alert>}
+      {last >= 0 && <Slider aria-label={t`Teaching step`} minValue={0} maxValue={Math.max(1, last)} step={1} value={step ? index : 0} isDisabled={last === 0} onChange={value => go(typeof value === 'number' ? value : value[0])}>
+        <Slider.Track><Slider.Fill /><Slider.Thumb /></Slider.Track>
+      </Slider>}
+    </section>
+    {!step ? <p role="status">{index < 0 || trace.status === 'complete' ? t`Invalid teaching step` : trace.status === 'loading' ? t`Waiting for the requested step` : t`Requested step is unavailable`}</p> : <>
+      <section aria-label={t`Current action`} data-action={step.action} data-phase={step.phase} className="rounded-lg bg-surface p-3"><HullExplanation step={step} /></section>
+      <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
+        <HullLearningPlot points={trace.points} step={step} interaction={interaction} />
+        <HullPointList title={t`Ordered points`} ids={step.order} points={trace.points} step={step} interaction={interaction} />
+        <div className="workspace-panel result-panel flex min-h-0 flex-col gap-2 overflow-auto">
+          <HullPointList title={t`Lower hull stack`} ids={step.lower} points={trace.points} step={step} interaction={interaction} stack complete={step.lower_complete} />
+          <HullPointList title={t`Upper hull stack`} ids={step.upper} points={trace.points} step={step} interaction={interaction} stack complete={step.upper_complete} />
+          {step.result !== null && <HullPointList title={t`Hull vertices`} ids={step.result} points={trace.points} step={step} interaction={interaction} />}
+        </div>
+      </div>
+    </>}
+  </>
+}
+
+function HullExplanation({ step }: { step: HullStep }) {
+  const { t } = useLingui()
+  switch (step.action) {
+    case 'input': return <p>{t`Original input · each P label keeps its input identity.`}</p>
+    case 'sort': return <p>{t`Sort by x, then y. Equal coordinates retain their input labels.`}</p>
+    case 'deduplicate': return <p>{t`Merge equal coordinates, retaining the first input identity. Duplicate positions do not add hull vertices.`}</p>
+    case 'select': return <p>{t`Select current point`} P{step.current} · {t`Position in ordered points`}: {step.position} · {step.phase === 'lower' ? t`Scan forwards` : t`Scan backwards`}</p>
+    case 'turn': return <p>{step.subjects.map(id => `P${id}`).join(' → ')} · {step.turn === 'left' ? t`Left turn: keep the stack top, then push the current point.` : step.turn === 'right' ? t`Right turn: pop the stack top, then check again.` : t`Collinear: pop the middle point, then check again.`}</p>
+    case 'pop': return <p>P{step.removed} · {t`Popped from this chain only. It may still belong to the other chain and the final hull.`}</p>
+    case 'push': return <p>P{step.current} · {t`Pushed onto the current chain. These are candidates and may be popped later.`}</p>
+    case 'chain_complete': return <p>{step.phase === 'lower' ? t`Lower chain scan complete.` : t`Upper chain scan complete.`}</p>
+    case 'trim_lower': return <p>P{step.removed} · {t`Remove the last lower-chain endpoint to avoid duplication. This endpoint remains in the final hull via the upper chain.`}</p>
+    case 'trim_upper': return <p>P{step.removed} · {t`Remove the last upper-chain endpoint to avoid duplication. This endpoint remains in the final hull via the lower chain.`}</p>
+    case 'complete': return <p>{step.phase === 'preprocess' ? t`At most one distinct point: return directly without scanning or joining chains.` : t`Join the two chains into the final ordered hull.`}</p>
+  }
+}
+
+function HullPointList({ title, ids, points, step, interaction, stack = false, complete = false }: {
+  title: string; ids: number[]; points: Point[]; step: HullStep; interaction: Interaction; stack?: boolean; complete?: boolean
+}) {
+  const { t } = useLingui()
+  const scrollport = useRef<HTMLDivElement>(null)
+  useStepPanelScroll(interaction.active ?? step, 0, [{
+    panel: scrollport,
+    selector: interaction.active?.source === 'plot' ? `[data-point-id="${interaction.active.id}"]` : step.current !== null ? `[data-point-id="${step.current}"]` : undefined,
+  }])
+  return <section aria-label={title} className="workspace-panel min-h-0 overflow-auto"><Card>
+    <Card.Header><Card.Title>{title}</Card.Title></Card.Header>
+    <Card.Content ref={scrollport}>
+      {stack && <p>{complete ? t`Chain complete` : t`Candidate chain`}</p>}
+      {!ids.length ? <p>{t`No points`}</p> : <ol className="flex flex-col gap-1">{ids.map((id, position) => <li key={id} data-point-id={id} data-highlighted={interaction.active?.id === id} data-current={step.current === id} data-top={stack && position === ids.length - 1}>
+        <ToggleButton className="coordinates w-full justify-start" isSelected={interaction.selected?.id === id} variant={interaction.active?.id === id ? 'default' : 'ghost'}
+          onChange={() => interaction.select({ id, source: 'list' })} onHoverStart={() => interaction.hover({ id, source: 'list' })} onHoverEnd={() => interaction.hover(null)}
+          onFocus={() => interaction.hover({ id, source: 'list' })} onBlur={() => interaction.hover(null)}>
+          P{id} {formatPoint(points[id])}
+        </ToggleButton>
+        {step.current === id && <span>{t`Current point`}</span>}{stack && position === ids.length - 1 && <span> · {t`Stack top`}</span>}
+      </li>)}</ol>}
+    </Card.Content>
+  </Card></section>
+}
+
+function HullLearningPlot({ points, step, interaction }: { points: Point[]; step: HullStep; interaction: Interaction }) {
+  const { t } = useLingui()
+  const viewport = useGeometryViewport(points, { padding: 36 })
+  const { svg, projection, transform, width, height } = viewport
+  const k = transform.k
+  const path = (ids: number[]) => ids.map(id => `${projection!.px(points[id])},${projection!.py(points[id])}`).join(' ')
+  return <div className="drawing"><Card>
+    <Card.Header className="drawing-toolbar"><Card.Title>{t`Convex hull plot`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
+    <Card.Content className="flex min-h-0 flex-1 flex-col"><div className="drawing-surface flex flex-col">
+      <svg ref={svg} className="geometry-viewport w-full" viewBox={`0 0 ${width} ${height}`} role="group" aria-label={t`Convex hull plot`} style={{ '--geometry-scale': k } as CSSProperties}>
+        {projection && <g data-layer="geometry" transform={transform.toString()}>
+          {[{ name: 'lower', ids: step.lower }, { name: 'upper', ids: step.upper }].map(chain => <polyline key={chain.name} data-chain={chain.name} points={path(chain.ids)} fill="none" stroke={chain.name === 'lower' ? 'var(--accent)' : 'var(--success)'} strokeWidth={2 / k} />)}
+          {step.action === 'turn' && <polyline data-turn={step.turn} points={path(step.subjects)} fill="none" stroke="var(--warning)" strokeWidth={4 / k} strokeDasharray={`${5 / k} ${3 / k}`} />}
+          {step.result && (step.result.length > 2 ? <polygon data-hull="polygon" points={path(step.result)} fill="var(--accent)" fillOpacity="0.12" stroke="var(--accent)" strokeWidth={3 / k} />
+            : step.result.length === 2 ? <polyline data-hull="segment" points={path(step.result)} fill="none" stroke="var(--accent)" strokeWidth={3 / k} />
+              : step.result.length === 1 ? <circle data-hull="point" cx={projection.px(points[step.result[0]])} cy={projection.py(points[step.result[0]])} r={7 / k} fill="none" stroke="var(--accent)" strokeWidth={3 / k} /> : null)}
+          {points.map((point, id) => {
+            const active = interaction.active?.id === id
+            const current = step.current === id
+            const removed = step.removed === id
+            const label = `P${id} ${formatPoint(point)}`
+            return <g key={id} role="button" tabIndex={0} aria-label={label} aria-pressed={interaction.selected?.id === id}
+              data-point-id={id} data-highlighted={active} data-current={current} data-removed={removed} data-subject={step.subjects.includes(id)}
+              onPointerEnter={event => { if (!event.buttons) interaction.hover({ id, source: 'plot' }) }} onPointerLeave={() => interaction.hover(null)}
+              onFocus={() => interaction.hover({ id, source: 'plot' })} onBlur={() => interaction.hover(null)} onClick={() => interaction.select({ id, source: 'plot' })}
+              onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); interaction.select({ id, source: 'plot' }) } }}>
+              <circle cx={projection.px(point)} cy={projection.py(point)} r={5 / k} fill={current ? 'var(--accent)' : removed ? 'var(--danger)' : 'currentColor'} />
+              <circle cx={projection.px(point)} cy={projection.py(point)} r={10 / k} fill="transparent" stroke={active || current || removed || step.subjects.includes(id) ? 'var(--warning)' : 'none'} strokeWidth={2 / k} />
+              {(active || current || removed || step.subjects.includes(id)) && <text x={projection.px(point)} y={projection.py(point) - 12 / k} textAnchor="middle" fontSize={12 / k} fill="currentColor">P{id}</text>}
+            </g>
+          })}
+        </g>}
+        {!points.length && <text x={width / 2} y={height / 2} textAnchor="middle" fill="currentColor">{t`No input points`}</text>}
+      </svg>
+    </div></Card.Content>
+  </Card></div>
+}

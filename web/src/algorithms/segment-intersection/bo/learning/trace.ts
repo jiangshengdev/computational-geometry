@@ -1,3 +1,4 @@
+import { readNdjson } from '../../../../geometry/readNdjson'
 import { formatPoint, rational, samePoint, type Point, type Rational } from '../../../../geometry/geometry'
 import { type Intersection } from '../../geometry'
 import { ComputationError } from '../ComputationError'
@@ -113,29 +114,16 @@ export class TraceDecoder {
 }
 
 export async function consumeTrace(response: Response, onFrame: (decoder: TraceDecoder) => void) {
-  if (!response.body) throw new ComputationError(/*i18n*/ { id: 'The execution trace response has no body', message: 'The execution trace response has no body' })
-  const reader = response.body.getReader()
-  const text = new TextDecoder()
   const decoder = new TraceDecoder()
-  let pending = ''
   try {
-    while (true) {
-      const { value, done } = await reader.read()
-      pending += text.decode(value, { stream: !done })
-      let newline: number
-      while ((newline = pending.indexOf('\n')) >= 0) {
-        const line = pending.slice(0, newline)
-        pending = pending.slice(newline + 1)
-        if (line) decoder.append(JSON.parse(line) as TraceFrame)
-      }
+    for await (const frames of readNdjson(response)) {
+      for (const frame of frames) decoder.append(frame as TraceFrame)
       if (decoder.trace.steps.length) onFrame(decoder)
-      if (done) break
-      // Let input and painting run between network chunks, even with a warm socket.
-      await new Promise<void>(resolve => setTimeout(resolve, 0))
     }
-    if (pending.trim() || !decoder.complete) throw new ComputationError(/*i18n*/ { id: 'Execution trace transfer interrupted', message: 'Execution trace transfer interrupted' })
-  } finally {
-    await reader.cancel()
-    reader.releaseLock()
+    if (!decoder.complete) throw new Error('Execution trace transfer interrupted')
+  } catch (error) {
+    if (error instanceof Error && error.message === 'Execution trace transfer interrupted') throw new ComputationError(/*i18n*/ { id: 'Execution trace transfer interrupted', message: 'Execution trace transfer interrupted' })
+    if (error instanceof Error && error.message === 'The execution trace response has no body') throw new ComputationError(/*i18n*/ { id: 'The execution trace response has no body', message: 'The execution trace response has no body' })
+    throw error
   }
 }

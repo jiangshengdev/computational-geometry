@@ -15,6 +15,7 @@ import { PointCoordinates } from '../../geometry/PointCoordinates'
 import { usePointInteraction } from '../../geometry/usePointInteraction'
 import { CaseCatalog } from '../../geometry/CaseCatalog'
 import { CaseToolbar } from '../../geometry/CaseToolbar'
+import { HullLearning } from './HullLearning'
 
 export function ConvexHullPage() {
   const { t } = useLingui()
@@ -38,6 +39,7 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex hull`} · ${t`Computational Geometry`}`} />
     <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-hull" />
+    <AppLink className={buttonVariants({ variant: 'secondary', size: 'sm', className: 'self-start' })} to={`/convex-hull/cases/${preset.id}/learn`}>{t`Learn step by step`}</AppLink>
     <div className="workspace result-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <ConvexHullView points={preset.points} vertices={computation.status === 'ready' ? computation.result : []} interaction={interaction} />
         <PointCoordinates title={t`Input points`} points={preset.points} prefix="P" interaction={interaction} />
@@ -50,11 +52,11 @@ function HullCaseViewer({ preset }: { preset: HullCase }) {
   </>
 }
 
-export function ConvexHullCasePage() {
+export function ConvexHullCasePage({ learning = false }: { learning?: boolean }) {
   const { caseId } = useParams()
   const { t } = useLingui()
   const preset = hullCases.find(candidate => candidate.id === caseId)
-  return preset ? <HullCaseViewer key={preset.id} preset={preset} /> : <>
+  return preset ? learning ? <HullLearning key={preset.id} preset={preset} /> : <HullCaseViewer key={preset.id} preset={preset} /> : <>
     <DocumentTitle title={`${t`Invalid link`} · ${t`Convex hull`}`} />
     <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Invalid link`}</Alert.Title><Alert.Description>{t`Unknown case.`}</Alert.Description></Alert.Content></Alert>
     <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm', className: 'self-start' })} to="/convex-hull">{t`Back to cases`}</AppLink>

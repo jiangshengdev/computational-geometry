@@ -11,6 +11,9 @@ mod convex_polygon_intersection;
 #[path = "http/triangulation_tests.rs"]
 mod triangulation;
 
+#[path = "http/convex_hull_trace_tests.rs"]
+mod convex_hull_trace;
+
 fn point(x: &str, y: &str) -> Value {
     json!({"x": {"numerator": x, "denominator": "1"}, "y": {"numerator": y, "denominator": "1"}})
 }

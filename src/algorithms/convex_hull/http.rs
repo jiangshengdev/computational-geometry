@@ -49,5 +49,25 @@ async fn compute(
 pub(crate) fn router() -> Router {
     Router::new()
         .route("/api/convex-hull", post(compute))
+        .route("/api/convex-hull/trace", post(trace))
         .layer(DefaultBodyLimit::disable())
+}
+
+async fn trace(
+    payload: Result<Json<Request>, JsonRejection>,
+) -> Result<axum::response::Response, ApiError> {
+    let Json(request) = payload.map_err(|error| bad_request(error.body_text()))?;
+    let points = request
+        .points
+        .into_iter()
+        .map(PointDto::into_point)
+        .collect::<Result<Vec<_>, _>>()?;
+    Ok(crate::http::trace_delivery::response(move |delivery| {
+        delivery.send(serde_json::json!({"type": "start", "points": points.iter().cloned().map(PointDto::from).collect::<Vec<_>>()}), 0).then_some(())?;
+        let vertices = super::andrew::execute(&points, &mut |step| {
+            !delivery.is_cancelled()
+                && delivery.send(serde_json::json!({"type": "step", "step": step}), 1)
+        })?;
+        delivery.send(serde_json::json!({"type": "complete", "vertices": vertices.into_iter().map(PointDto::from).collect::<Vec<_>>()}), 0).then_some(())
+    }))
 }

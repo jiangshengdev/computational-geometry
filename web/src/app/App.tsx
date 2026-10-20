@@ -14,7 +14,7 @@ import { TriangulationPage, TriangulationCasePage } from '../algorithms/triangul
 export default function App() {
   const { t } = useLingui()
   const caseRoute = useMatch('/bo/cases/:caseId/*')
-  const hullCaseRoute = useMatch('/convex-hull/cases/:caseId')
+  const hullCaseRoute = useMatch('/convex-hull/cases/:caseId/*')
   const polygonCaseRoute = useMatch('/convex-polygon-intersection/cases/:caseId')
   const triangulationCaseRoute = useMatch('/triangulation/cases/:caseId')
   const boList = useMatch('/bo')
@@ -31,6 +31,7 @@ export default function App() {
         <Route path="/bo/*" element={<RouteError message={t`Unknown page path.`} />} />
         <Route path="/convex-hull" element={<ConvexHullPage />} />
         <Route path="/convex-hull/cases/:caseId" element={<ConvexHullCasePage />} />
+        <Route path="/convex-hull/cases/:caseId/learn" element={<ConvexHullCasePage learning />} />
         <Route path="/convex-polygon-intersection" element={<PolygonPage />} />
         <Route path="/convex-polygon-intersection/cases/:caseId" element={<PolygonCasePage />} />
         <Route path="/triangulation" element={<TriangulationPage />} />

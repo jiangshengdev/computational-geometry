@@ -42,7 +42,7 @@ path = "tests/algorithms/segment_intersection/bo/trace.rs"
 
 [[test]]
 name = "trace_lifecycle"
-path = "tests/algorithms/segment_intersection/bo/trace_lifecycle.rs"
+path = "tests/http/trace_lifecycle.rs"
 
 [dependencies]
 axum = "0.8.9"

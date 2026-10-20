@@ -96,11 +96,11 @@ fn field<'a>(line: &'a str, key: &str) -> Option<&'a str> {
         .find_map(|(name, value)| (name == key).then_some(value))
 }
 
-fn request(address: SocketAddr, body: &str) -> (BufReader<TcpStream>, String) {
+fn request(address: SocketAddr, path: &str, body: &str) -> (BufReader<TcpStream>, String) {
     let mut stream = TcpStream::connect_timeout(&address, TEST_TIMEOUT).unwrap();
     stream.set_read_timeout(Some(TEST_TIMEOUT)).unwrap();
     stream.set_write_timeout(Some(TEST_TIMEOUT)).unwrap();
-    write!(stream, "POST /api/bo/intersections HTTP/1.1\r\nHost: {address}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len()).unwrap();
+    write!(stream, "POST {path} HTTP/1.1\r\nHost: {address}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len()).unwrap();
     let mut reader = BufReader::new(stream);
     let mut status = String::new();
     reader.read_line(&mut status).unwrap();
@@ -146,8 +146,9 @@ fn disconnect_stops_trace_producer_and_next_request_completes() {
     let (server, address) = Server::start();
     let (mut response, cancelled_id) = request(
         address,
+        "/api/bo/intersections",
         include_str!(
-            "../../../fixtures/algorithms/segment_intersection/performance/spider-web-true.json"
+            "../fixtures/algorithms/segment_intersection/performance/spider-web-true.json"
         ),
     );
     let mut received = Vec::new();
@@ -173,7 +174,11 @@ fn disconnect_stops_trace_producer_and_next_request_completes() {
             >= 1
     );
 
-    let (mut response, completed_id) = request(address, r#"{"segments":[],"trace":true}"#);
+    let (mut response, completed_id) = request(
+        address,
+        "/api/bo/intersections",
+        r#"{"segments":[],"trace":true}"#,
+    );
     assert_ne!(cancelled_id, completed_id);
     let mut body = Vec::new();
     while let Some(bytes) = chunk(&mut response) {
@@ -205,5 +210,53 @@ fn disconnect_stops_trace_producer_and_next_request_completes() {
         field(&completed, "status"),
         Some("completed"),
         "{completed}"
+    );
+}
+
+#[test]
+fn disconnect_stops_hull_generation_before_completion() {
+    let (server, address) = Server::start();
+    let points: Vec<_> = (0..2000)
+        .map(|i| {
+            serde_json::json!({
+                "x": {"numerator": i.to_string(), "denominator":"1"},
+                "y": {"numerator": (i * i).to_string(), "denominator":"1"}
+            })
+        })
+        .collect();
+    let (mut response, id) = request(
+        address,
+        "/api/convex-hull/trace",
+        &serde_json::json!({"points":points}).to_string(),
+    );
+    let mut initial = Vec::new();
+    while !initial.contains(&b'\n') {
+        initial.extend(chunk(&mut response).expect("stream must start before completion"));
+    }
+    let frame: serde_json::Value =
+        serde_json::from_slice(initial.split(|b| *b == b'\n').next().unwrap()).unwrap();
+    assert_eq!(frame["type"], "start");
+    response.get_ref().shutdown(Shutdown::Both).unwrap();
+    drop(response);
+    let stopped = server.terminal_log(&id);
+    assert_eq!(field(&stopped, "status"), Some("cancelled"), "{stopped}");
+
+    let (mut response, id) = request(address, "/api/convex-hull/trace", r#"{"points":[]}"#);
+    let mut body = Vec::new();
+    while let Some(bytes) = chunk(&mut response) {
+        body.extend(bytes);
+    }
+    let frames: Vec<serde_json::Value> = body
+        .split(|b| *b == b'\n')
+        .filter(|line| !line.is_empty())
+        .map(|line| serde_json::from_slice(line).unwrap())
+        .collect();
+    assert_eq!(
+        frames.last().unwrap(),
+        &serde_json::json!({"type":"complete", "vertices":[]})
+    );
+    assert_eq!(
+        field(&server.terminal_log(&id), "status"),
+        Some("completed")
     );
 }

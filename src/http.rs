@@ -3,6 +3,7 @@
 use axum::Router;
 
 pub(crate) mod protocol;
+pub(crate) mod trace_delivery;
 
 /// Assemble the algorithm HTTP routes.
 pub fn router() -> Router {
