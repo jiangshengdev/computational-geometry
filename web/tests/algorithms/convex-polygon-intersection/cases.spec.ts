@@ -114,7 +114,7 @@ test('leaving a pending request keeps the next case result', async ({ page }) =>
   await expect(page.getByRole('alert')).toHaveCount(0)
 })
 
-for (const [path, message] of [['/convex-polygon-intersection/cases/missing', 'Unknown case.'], ['/convex-polygon-intersection/cases/overlap/learn', 'Unknown page path.']]) {
+for (const [path, message] of [['/convex-polygon-intersection/cases/missing', 'Unknown case.'], ['/convex-polygon-intersection/cases/overlap/unknown', 'Unknown page path.']]) {
   test(`invalid link: ${path}`, async ({ page }) => {
     await page.goto(path)
     await expect(page.getByRole('alert')).toContainText(message)

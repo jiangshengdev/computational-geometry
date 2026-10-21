@@ -26,8 +26,8 @@ export function useGeometryViewport(points: Point[], { preserveViewKey, padding 
       const size = element.getBoundingClientRect()
       if (!validSize(size) || (size.width === previous?.width && size.height === previous?.height)) return
       previous = size
+      // Layout changes (including translated content) resize the projection, not the user's view.
       setSize({ width: size.width, height: size.height })
-      select(element).call(behavior.current.transform, zoomIdentity)
     })
     observer.observe(element)
     return () => { select(element).on('.zoom', null); observer.disconnect() }

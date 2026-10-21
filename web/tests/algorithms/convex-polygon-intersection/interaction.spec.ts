@@ -4,11 +4,12 @@ test.use({ locale: 'en-US', viewport: { width: 1360, height: 900 } })
 
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
-  browserTest(`explanation points and directed edges highlight the canvas: ${browserName}`, async ({ page }) => {
+  browserTest(`explanation side relations and directed edges link to the canvas: ${browserName}`, async ({ page }) => {
     await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn?step=15')
     const action = page.getByRole('region', { name: 'Current action', exact: true })
     const plot = page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true })
     const highlighted = plot.locator('[role="button"][data-highlighted="true"]')
+    const guide = plot.locator('..').locator('[data-side-guide]')
     await expect(action).toHaveAttribute('data-action', 'relation')
     for (const prefix of ['A', 'B']) {
       const edge = action.getByRole('button', { name: `${prefix}1 → ${prefix}2`, exact: true })
@@ -16,20 +17,23 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       await expect(highlighted).toHaveCount(2)
       await expect(plot.locator(`[data-highlighted-edge="${prefix}"]`)).toBeVisible()
       for (const id of [1, 2]) await expect(plot.locator('[data-layer="labels"] g:not([aria-hidden]) text').filter({ hasText: new RegExp(`^${prefix}${id}( ·|$)`) })).toHaveCount(1)
-      const point = action.getByRole('button', { name: `${prefix}2`, exact: true })
-      await point.hover()
-      await expect(highlighted).toHaveCount(1)
+      const side = action.getByRole('button', { name: prefix === 'A' ? 'A2: left side of B' : 'B2: right side of A', exact: true })
+      await side.hover()
+      await expect(guide).toHaveAttribute('data-side-guide', prefix === 'A' ? '0' : '1')
+      await expect(highlighted).toHaveCount(0)
       await expect(plot.locator('[data-highlighted-edge]')).toHaveCount(0)
       await edge.focus()
       await expect(highlighted).toHaveCount(2)
-      await point.focus()
-      await expect(highlighted).toHaveCount(1)
+      await side.focus()
+      await expect(guide).toHaveAttribute('data-side-guide', prefix === 'A' ? '0' : '1')
+      await expect(highlighted).toHaveCount(0)
       await expect(page).toHaveURL(/step=15$/)
     }
     await page.getByRole('link', { name: 'Back to cases', exact: true }).focus()
     await page.getByRole('heading', { name: 'Irregular convex polygons', exact: true }).hover()
     await expect(highlighted).toHaveCount(0)
     await expect(plot.locator('[data-highlighted-edge]')).toHaveCount(0)
+    await expect(guide).toHaveCount(0)
   })
   browserTest(`polygon panel titles highlight their point groups and restore selection: ${browserName}`, async ({ page }) => {
     await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn')
@@ -163,7 +167,8 @@ for (const id of ['exact-fractions', 'disjoint']) {
     await expect(layer).not.toHaveAttribute('transform', zoomed)
     await expect(origin).toHaveAttribute('aria-pressed', 'true')
     await page.getByRole('button', { name: 'Zoom out', exact: true }).click()
-    expect((await shape.boundingBox())!.width).toBeCloseTo(before.width, 5)
+    // Browser SVG bounds can round by a few ten-thousandths of a CSS pixel.
+    expect(Math.abs((await shape.boundingBox())!.width - before.width)).toBeLessThan(0.001)
     await page.getByRole('button', { name: 'Reset view', exact: true }).click()
     await expect(layer).toHaveAttribute('transform', initial)
     await origin.click()

@@ -75,12 +75,16 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       await svg.evaluate(element => (element as SVGSVGElement).style.setProperty('width', '100px'))
       await expect.poll(() => svg.evaluate(element => element.getBoundingClientRect().width)).toBe(100)
       await expect(svg.locator('.input > line')).toHaveCount(2)
-      await expect(layer).toHaveAttribute('transform', initialTransform)
+      await expect(layer).toHaveAttribute('transform', transform!)
       await page.getByRole('button', { name: '放大', exact: true }).click()
-      await expect(layer).not.toHaveAttribute('transform', initialTransform)
+      await expect(layer).not.toHaveAttribute('transform', transform!)
+      const resizedTransform = (await layer.getAttribute('transform'))!
       await svg.evaluate(element => element.removeAttribute('style'))
       await expect(svg.locator('.input > line')).toHaveCount(2)
       await expect(svg).toHaveAttribute('viewBox', initialViewBox)
+      await expect(layer).toHaveAttribute('transform', resizedTransform)
+      await page.getByRole('button', { name: '重置视图', exact: true }).press('Enter')
+      await expect(layer).toHaveAttribute('transform', initialTransform)
       expect(errors).toEqual([])
     } finally {
       await page.close()
