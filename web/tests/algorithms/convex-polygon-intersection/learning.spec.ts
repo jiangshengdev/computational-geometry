@@ -7,7 +7,10 @@ test.use({ locale: 'en-US', viewport: { width: 1440, height: 1000 } })
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   browserTest(`replay shortcuts navigate and respect focus and absent phases: ${browserName}`, async ({ page }) => {
-    await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn')
+    await page.goto('/convex-polygon-intersection')
+    await page.screenshot({ path: `/tmp/polygon-catalog-${browserName}.png` })
+    await page.getByRole('article', { name: 'Irregular convex polygons', exact: true }).getByRole('link', { name: 'Start learning', exact: true }).click()
+    await expect(page).toHaveURL('/convex-polygon-intersection/cases/irregular-overlap/learn')
     await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
     const slider = page.getByRole('slider', { name: 'Teaching step' })
     const action = page.getByRole('region', { name: 'Current action' })

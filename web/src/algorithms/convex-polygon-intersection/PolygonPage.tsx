@@ -24,7 +24,8 @@ export function PolygonPage() {
   const { t } = useLingui()
   return <>
     <DocumentTitle title={`${t`Convex polygon intersection`} · ${t`Computational Geometry`}`} />
-    <CaseCatalog label={t`Convex polygon intersection cases`} title={t`Convex polygon intersection`} subtitle="Edge Chasing" basePath="/convex-polygon-intersection" cases={polygonCases} idPrefix="polygon" renderPreview={preset => <PolygonPlot first={preset.first} second={preset.second} preview />} />
+    <CaseCatalog label={t`Convex polygon intersection cases`} title={t`Convex polygon intersection`} subtitle="Edge Chasing" basePath="/convex-polygon-intersection" cases={polygonCases} idPrefix="polygon" renderPreview={preset => <PolygonPlot first={preset.first} second={preset.second} preview />}
+      learningHref={preset => `/convex-polygon-intersection/cases/${preset.id}/learn`} />
   </>
 }
 

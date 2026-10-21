@@ -23,7 +23,7 @@ for (const preset of cases) {
     const card = page.getByRole('article', { name: preset.name, exact: true })
     await expect(card.getByRole('img')).toBeVisible()
     const pending = page.waitForResponse(response => response.url().endsWith('/api/convex-polygon-intersection') && response.ok())
-    if (preset.kind === 'polygon') await card.getByRole('link').click()
+    if (preset.kind === 'polygon') await card.getByRole('link', { name: `View ${preset.name} details`, exact: true }).click()
     else await card.getByRole('button', { name: 'View details' }).click()
     const response = await pending
     expect((await response.json()).kind).toBe(preset.kind)
