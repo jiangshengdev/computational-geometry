@@ -121,7 +121,7 @@ msgstr "A as reference: turn right toward B"
 #~ msgid "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
 #~ msgstr "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:25
+#: src/algorithms/convex-polygon-intersection/cases.ts:26
 msgid "A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions."
 msgstr "A convex boundary sampled along a parabola lies inside a rectangle. Equivalent fractions identify the same positions."
 
@@ -173,7 +173,7 @@ msgstr "A perspective projection of the complete truncated-icosahedral cage reta
 msgid "A regular hexagon uses rational coordinates rounded to six decimal places, preserving horizontal edges and equal-height vertices."
 msgstr "A regular hexagon uses rational coordinates rounded to six decimal places, preserving horizontal edges and equal-height vertices."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:23
+#: src/algorithms/convex-polygon-intersection/cases.ts:24
 msgid "A shared boundary segment is a nonempty intersection."
 msgstr "A shared boundary segment is a nonempty intersection."
 
@@ -361,6 +361,10 @@ msgstr "Adjacency argument"
 msgid "Advance boundary"
 msgstr "Advance boundary"
 
+#: src/algorithms/convex-polygon-intersection/cases.ts:17
+msgid "Advance the red-labeled polygon"
+msgstr "Advance the red-labeled polygon"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:132
 msgid "After break"
@@ -437,7 +441,7 @@ msgstr "An initial edge may be anywhere on the boundary. Counting from the first
 msgid "An inward corner keeps the triangulation inside an L-shaped boundary."
 msgstr "An inward corner keeps the triangulation inside an L-shaped boundary."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:17
+#: src/algorithms/convex-polygon-intersection/cases.ts:18
 msgid "An irregular pentagon and hexagon intersect in a nine-sided region with six new crossings and three original vertices."
 msgstr "An irregular pentagon and hexagon intersect in a nine-sided region with six new crossings and three original vertices."
 
@@ -838,7 +842,7 @@ msgstr "Closed segments touch at a shared endpoint."
 msgid "Closure on line {line}"
 msgstr "Closure on line {line}"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:21
+#: src/algorithms/convex-polygon-intersection/cases.ts:22
 msgid "Coincident polygons"
 msgstr "Coincident polygons"
 
@@ -1004,7 +1008,7 @@ msgstr "Consecutive collinear vertices retain their original input indices."
 msgid "Contact tells us whether these edges share a point or interval. Their directions and endpoint sides guide which edge advances next; no contact here does not mean the polygons are disjoint."
 msgstr "Contact tells us whether these edges share a point or interval. Their directions and endpoint sides guide which edge advances next; no contact here does not mean the polygons are disjoint."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:20
+#: src/algorithms/convex-polygon-intersection/cases.ts:21
 msgid "Contained polygon"
 msgstr "Contained polygon"
 
@@ -1237,7 +1241,7 @@ msgstr "Discover future intersections <0>{0}</0>: after checking the exact inter
 msgid "Discovered {label}"
 msgstr "Discovered {label}"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:19
+#: src/algorithms/convex-polygon-intersection/cases.ts:20
 msgid "Disjoint polygons"
 msgstr "Disjoint polygons"
 
@@ -1646,7 +1650,7 @@ msgstr "Fractional endpoint and interior crossing"
 msgid "Fractional input coordinates travel losslessly to the Rust algorithm."
 msgstr "Fractional input coordinates travel losslessly to the Rust algorithm."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:24
+#: src/algorithms/convex-polygon-intersection/cases.ts:25
 msgid "Fractional intersection"
 msgstr "Fractional intersection"
 
@@ -1754,7 +1758,7 @@ msgstr "Hull vertices"
 msgid "Identical and reversed duplicates"
 msgstr "Identical and reversed duplicates"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:21
+#: src/algorithms/convex-polygon-intersection/cases.ts:22
 msgid "Identical boundaries retain their complete common region."
 msgstr "Identical boundaries retain their complete common region."
 
@@ -1979,7 +1983,7 @@ msgstr "Invalid result structure"
 msgid "Invalid teaching step"
 msgstr "Invalid teaching step"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:17
+#: src/algorithms/convex-polygon-intersection/cases.ts:18
 msgid "Irregular convex polygons"
 msgstr "Irregular convex polygons"
 
@@ -2163,7 +2167,7 @@ msgstr "Main layout ratio (ordered points, geometry, stacks)"
 msgid "Major steps"
 msgstr "Major steps"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:25
+#: src/algorithms/convex-polygon-intersection/cases.ts:26
 msgid "Many boundary vertices"
 msgstr "Many boundary vertices"
 
@@ -2538,7 +2542,7 @@ msgstr "Overlapping members are tied at the same height. List positions identify
 msgid "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 msgstr "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:18
+#: src/algorithms/convex-polygon-intersection/cases.ts:19
 msgid "Overlapping polygons"
 msgstr "Overlapping polygons"
 
@@ -2662,7 +2666,7 @@ msgstr "Point"
 msgid "point and event bound; event-taking module complete"
 msgstr "point and event bound; event-taking module complete"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:22
+#: src/algorithms/convex-polygon-intersection/cases.ts:23
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:74
 msgid "Point contact"
 msgstr "Point contact"
@@ -3416,7 +3420,7 @@ msgstr "self: the sequence to the left of the call; value: the element in parent
 msgid "self: the value at this call site."
 msgstr "self: the value at this call site."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:19
+#: src/algorithms/convex-polygon-intersection/cases.ts:20
 msgid "Separated boundaries have an empty intersection."
 msgstr "Separated boundaries have an empty intersection."
 
@@ -3430,7 +3434,7 @@ msgstr "Seven hexagons form a finite honeycomb sheet, with each shared chemical 
 msgid "Shadowed (last value before shadowing was not recorded)"
 msgstr "Shadowed (last value before shadowing was not recorded)"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:23
+#: src/algorithms/convex-polygon-intersection/cases.ts:24
 msgid "Shared edge"
 msgstr "Shared edge"
 
@@ -3473,7 +3477,7 @@ msgstr "Six main branches each have two levels of symmetric forks, with gaps bet
 msgid "Skip this check if fewer than two segments remain"
 msgstr "Skip this check if fewer than two segments remain"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:24
+#: src/algorithms/convex-polygon-intersection/cases.ts:25
 msgid "Sloping edges produce exact fractional intersection coordinates."
 msgstr "Sloping edges produce exact fractional intersection coordinates."
 
@@ -3678,7 +3682,7 @@ msgstr "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at 
 msgid "The advancing boundary is inside the other polygon. Collect its current endpoint."
 msgstr "The advancing boundary is inside the other polygon. Collect its current endpoint."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:22
+#: src/algorithms/convex-polygon-intersection/cases.ts:23
 msgid "The boundaries meet at a single vertex."
 msgstr "The boundaries meet at a single vertex."
 
@@ -3761,7 +3765,7 @@ msgstr "The four corners form the hull, excluding collinear joints along its edg
 msgid "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 msgstr "The four tetrahedral centers of one conventional unit cell and all their nearest neighbors form 14 atoms and 16 bonds; outer connections are truncated at the finite cluster boundary."
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:20
+#: src/algorithms/convex-polygon-intersection/cases.ts:21
 msgid "The inner polygon is the entire intersection."
 msgstr "The inner polygon is the entire intersection."
 
@@ -4046,13 +4050,17 @@ msgstr "Two parallel segments have no intersecting pair."
 msgid "Two points"
 msgstr "Two points"
 
-#: src/algorithms/convex-polygon-intersection/cases.ts:18
+#: src/algorithms/convex-polygon-intersection/cases.ts:19
 msgid "Two rectangles share a rectangular region."
 msgstr "Two rectangles share a rectangular region."
 
 #: src/algorithms/convex-polygon-intersection/cases.ts:17
 #~ msgid "Two squares share a rectangular region."
 #~ msgstr "Two squares share a rectangular region."
+
+#: src/algorithms/convex-polygon-intersection/cases.ts:17
+msgid "Two triangles overlap in a triangle. First observe a right turn with A0 to the right of B: advance A. Later observe a left turn with B1 to the right of A: advance B. In both steps, the red-highlighted endpoint belongs to the polygon that advances."
+msgstr "Two triangles overlap in a triangle. First observe a right turn with A0 to the right of B: advance A. Later observe a left turn with B1 to the right of A: advance B. In both steps, the red-highlighted endpoint belongs to the polygon that advances."
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:90

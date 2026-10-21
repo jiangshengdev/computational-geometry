@@ -4,6 +4,7 @@ import { formatPoint, type Point } from '../../../src/geometry/geometry'
 test.use({ locale: 'en-US' })
 
 const cases = [
+  { id: 'right-side-advances', name: 'Advance the red-labeled polygon', kind: 'polygon', coordinates: ['(2, 0)', '(3, 0)', '(3, 2)'] },
   { id: 'irregular-overlap', name: 'Irregular convex polygons', kind: 'polygon', coordinates: ['(-15/4, -1/4)', '(-2, -2)', '(22/13, -38/13)', '(31/14, -19/7)', '(71/19, -13/19)', '(3, 3)', '(-8/9, 41/9)', '(-2, 4)', '(-5/2, 7/2)'] },
   { id: 'overlap', name: 'Overlapping polygons', kind: 'polygon', coordinates: ['(2, 1)', '(4, 1)', '(4, 3)', '(2, 3)'] },
   { id: 'disjoint', name: 'Disjoint polygons', kind: 'empty', coordinates: [] },

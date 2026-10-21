@@ -6,6 +6,35 @@ test.use({ locale: 'en-US', viewport: { width: 1440, height: 1000 } })
 
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
+  browserTest(`right-side example advances both polygons from real decisions: ${browserName}`, async ({ page }) => {
+    const response = page.waitForResponse(response => response.url().endsWith('/convex-polygon-intersection/trace'))
+    await page.goto('/convex-polygon-intersection/cases/right-side-advances/learn')
+    const frames = (await (await response).text()).trim().split('\n').map(line => JSON.parse(line))
+    const steps: PolygonStep[] = frames.filter(frame => frame.type === 'step').map(frame => frame.step)
+    expect(steps.at(-1)?.result?.kind).toBe('polygon')
+    for (const [turn, side, boundary, label] of [
+      ['right', 'first_side', 'first', 'A0: right side of B'],
+      ['left', 'second_side', 'second', 'B1: right side of A'],
+    ] as const) {
+      const index = steps.findIndex(step => step.action === 'relation' && step.relation?.cross === turn && step.relation[side] === 'right')
+      expect(index).toBeGreaterThanOrEqual(0)
+      const advance = steps.findIndex((step, position) => position > index && step.action === 'advance')
+      expect(advance).toBeGreaterThan(index)
+      expect(steps[advance].boundary).toBe(boundary)
+      await page.goto(`/convex-polygon-intersection/cases/right-side-advances/learn?step=${index}`)
+      await expect(page.getByRole('img', { name: `A as reference: turn ${turn} toward B`, exact: true })).toBeVisible()
+      const plot = page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true }).locator('..')
+      await expect(plot.getByRole('button', { name: label, exact: true })).toBeVisible()
+      await page.screenshot({ path: `/tmp/polygon-red-${boundary}-${browserName}.png` })
+      for (let position = index; position < advance; position++) await page.getByRole('button', { name: 'Next step', exact: true }).click()
+      await expect(page.getByRole('region', { name: 'Current action' })).toHaveAttribute('data-action', 'advance')
+      const edge = steps[advance].edges![boundary === 'first' ? 0 : 1]
+      await expect(plot.locator(`[data-edge="${boundary === 'first' ? 'A' : 'B'}"]`)).toHaveAttribute('data-from', String(edge[0]))
+      await expect(plot.locator(`[data-edge="${boundary === 'first' ? 'A' : 'B'}"]`)).toHaveAttribute('data-to', String(edge[1]))
+    }
+    await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+  })
+
   browserTest(`side guides link canvas and explanation and clear on navigation: ${browserName}`, async ({ page }) => {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
