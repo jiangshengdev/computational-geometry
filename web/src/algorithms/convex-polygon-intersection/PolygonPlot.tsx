@@ -68,6 +68,10 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
       {result?.kind === 'segment' && <polyline data-result="segment" points={path(vertices)} fill="none" stroke="var(--success)" strokeWidth={1 / scale} />}
       {result?.kind === 'point' && <circle data-result="point" cx={projection.px(result.point)} cy={projection.py(result.point)} r={7 / scale} fill="var(--success)" />}
       <PlotPoints points={points} projection={projection} preview={preview} radius={preview ? 1.125 : 3} highlightRadius={8} highlightStrokeWidth={2} scale={scale} interaction={interaction} />
+      {active?.source === 'panel' && active.edge && <DirectedLine data-highlighted-edge={active.panel}
+        from={{ x: projection.px(active.edge[0]), y: projection.py(active.edge[0]) }}
+        to={{ x: projection.px(active.edge[1]), y: projection.py(active.edge[1]) }}
+        scale={scale} stroke="var(--accent)" strokeWidth={5 / scale} pointerEvents="none" />}
       {activeBoundaries.map(({ boundary, prefix, edge, ids }) => <g key={prefix} data-active-boundary={prefix} pointerEvents="none">
           {edge && <DirectedLine data-edge={prefix} data-from={edge[0]} data-to={edge[1]} from={{ x: projection.px(boundary[edge[0]]), y: projection.py(boundary[edge[0]]) }} to={{ x: projection.px(boundary[edge[1]]), y: projection.py(boundary[edge[1]]) }} scale={scale} stroke="var(--success)" strokeWidth={1.5 / scale} markerEnd={`url(#${arrowId})`} />}
           {ids.map(id => <g key={id} data-current-vertex={`${prefix}${id}`}>

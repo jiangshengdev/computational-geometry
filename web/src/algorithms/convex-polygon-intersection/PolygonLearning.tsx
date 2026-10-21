@@ -76,7 +76,7 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
           </PointCoordinates>
           {step.result && <PointCoordinates highlightTitle title={t`Final intersection`} points={resultPoints(step.result)} prefix="R" interaction={interaction} />}
           <section className="workspace-panel" aria-label={t`Current action`} data-action={step.action} data-phase={step.phase}>
-            <Card><Card.Content><PolygonExplanation step={step} /></Card.Content></Card>
+            <Card><Card.Content><PolygonExplanation step={step} first={first} second={second} interaction={interaction} /></Card.Content></Card>
           </section>
         </div>
       </div> : <p role="status" className="flex-1">{index < 0 || trace.status === 'complete' ? t`Invalid teaching step` : trace.status === 'loading' ? t`Waiting for the requested step` : t`Requested step is unavailable`}</p>}

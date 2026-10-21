@@ -1,7 +1,7 @@
 import { useLinkedInteraction } from './useLinkedInteraction'
 import { samePoint, type Point } from './geometry'
 
-type PointTarget = { point: Point; source: 'plot' | 'list' } | { points: Point[]; source: 'panel'; panel: string }
+type PointTarget = { point: Point; source: 'plot' | 'list' } | { points: Point[]; source: 'panel'; panel: string; edge?: [Point, Point] }
 
 export function includesPoint(target: PointTarget | null | undefined, point: Point) {
   return target?.source === 'panel' ? target.points.some(candidate => samePoint(candidate, point))
