@@ -22,6 +22,24 @@ const chapters = JSON.parse(
   issue: number;
   rows: { id: string; start: number; end: number; narration: string }[];
 }[];
+const speech: Record<string, string> = JSON.parse(
+  readFileSync(join(root, "src/speech-text.json"), "utf8"),
+);
+const rows = chapters.slice(1).flatMap((chapter) => chapter.rows);
+if (Object.keys(speech).length !== rows.length)
+  throw new Error("Speech text must match tutorial row IDs exactly");
+for (const row of rows) {
+  const text = speech[row.id];
+  if (
+    typeof text !== "string" ||
+    Boolean(text.trim()) !== Boolean(row.narration)
+  )
+    throw new Error(`Missing or invalid speech text: ${row.id}`);
+}
+if (process.argv.includes("--dry-run")) {
+  process.stdout.write(JSON.stringify({ voice, speech }, null, 2) + "\n");
+  process.exit(0);
+}
 const output = join(root, "public/narration");
 const temporary = mkdtempSync(join(tmpdir(), "line-equation-"));
 const questions = new Set(["190-4", "192-4"]);
@@ -41,23 +59,9 @@ const measure = (path: string) =>
       { encoding: "utf8" },
     ).trim(),
   );
-// Spell mathematical notation for the existing Mandarin voice, without changing meaning.
-const spoken = (text: string) =>
-  text
-    .replace(
-      /([XY])([₁₂])/g,
-      (_, letter, index) => `${letter}下标${index === "₁" ? "一" : "二"}`,
-    )
-    .replace(/([=（(])−/g, "$1负")
-    .replace(/≠/g, "不等于")
-    .replace(/=/g, "等于")
-    .replace(/[−-]/g, "减")
-    .replace(/\+/g, "加")
-    .replace(/×/g, "乘")
-    .replace(/([abcXY]),/g, "$1，");
 const report: Record<
   string,
-  { duration: number; tempo: number; silenceAfter: number; frames: number }
+  { duration: number; silenceAfter: number; frames: number }
 > = {};
 mkdirSync(output, { recursive: true });
 try {
@@ -67,40 +71,19 @@ try {
       if (!row.narration) {
         report[row.id] = {
           duration: 0,
-          tempo: 1,
           silenceAfter: 4,
           frames: 120,
         };
         continue;
       }
-      const source = join(temporary, `${row.id}.raw.mp3`);
-      await synthesize(spoken(row.narration), source);
+      const destination = join(temporary, `${row.id}.mp3`);
+      await synthesize(speech[row.id], destination);
       // Questions end exactly four seconds before the answer; other rows retain a short breath.
       const silenceAfter = questions.has(row.id)
         ? 4
         : row.id === "196-1"
           ? 0
           : 0.4;
-      const window = row.end - row.start;
-      const target = window - 0.2 - silenceAfter;
-      const tempo = Math.max(0.65, measure(source) / target);
-      if (!Number.isFinite(tempo) || tempo > 2)
-        throw Error(`Unsafe speech tempo ${row.id}: ${tempo}`);
-      const destination = join(temporary, `${row.id}.mp3`);
-      execFileSync("ffmpeg", [
-        "-v",
-        "error",
-        "-y",
-        "-i",
-        source,
-        "-af",
-        `atempo=${tempo}`,
-        "-codec:a",
-        "libmp3lame",
-        "-b:a",
-        "128k",
-        destination,
-      ]);
       const duration = measure(destination);
       execFileSync("ffmpeg", [
         "-v",
@@ -112,20 +95,15 @@ try {
         "null",
         "-",
       ]);
-      if (
-        !Number.isFinite(duration) ||
-        duration <= 0 ||
-        duration > target + 0.15
-      )
-        throw Error(`Audio exceeds window ${row.id}`);
+      if (!Number.isFinite(duration) || duration <= 0)
+        throw Error(`Invalid audio duration ${row.id}`);
       report[row.id] = {
         duration,
-        tempo,
         silenceAfter,
         frames: Math.ceil((0.2 + duration + silenceAfter) * 30),
       };
       process.stdout.write(
-        `${row.id}: ${duration.toFixed(2)}s, tempo ${tempo.toFixed(2)}\n`,
+        `${row.id}: ${duration.toFixed(2)}s, original Azure audio\n`,
       );
     }
   for (const chapter of chapters.slice(1))

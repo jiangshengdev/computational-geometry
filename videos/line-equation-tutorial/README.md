@@ -27,6 +27,7 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 ## 内容维护
 
 - `src/narration.json`：从 #189–#196 已确认 Resolution 提取的逐镜旁白、原始时间窗与画面要求，作为制作素材使用。权威规格和任务状态仍在 CNB。
+- `src/speech-text.json`：后续 52 段的独立口语稿，按镜头 ID 对应字幕；坐标明确读横纵坐标，乘法、负数、下标用口语写出，字母列举明确分隔。修改字幕后需人工同步核对口语稿。生成脚本只读取此稿，不用字幕原文兜底。
 - `src/scenes.ts`：按镜头 ID 对应逐步公式、说明与图形；提示时间相对于原分镜窗口，播放时按该镜头实测时长映射。
 - `src/Diagram.tsx`：固定数学示意图；不属于算法执行轨迹。
 - `src/timeline.ts`：根据实测音频生成的 `src/audio-timing.json` 排列各镜头、片段和全片。第 2、4 段问题结束后保留 4 秒；第 8 段使用独立的 4 秒静默镜头。
@@ -38,7 +39,11 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts
 ```
 
-脚本将数学符号转换为可读发音，通过 FFmpeg 调整语速，再测量编码后的音频。后续 52 段全部生成并通过解码、时长检查后，替换素材及时间数据。镜头随真实音频校准；过短的旁白缩短窗口，避免极慢语速。生成后的时间线、音频和实际画面需一起检查，不能只改 JSON 中的时长。首段四个已验证的 Azure 素材保持不变。
+生成前可给上述命令添加 `--dry-run`，核对实际将发送的音色和完整口语稿；此模式不请求 Azure，也不写入音频或时长数据。
+
+绝对禁止调速，包括合成请求中的语速参数、音频后处理和播放器倍速。脚本直接发送独立口语稿，原样保存 Azure 返回的 MP3；FFmpeg 只检查解码，ffprobe 只测量时长。后续 52 段全部通过检查后，替换素材及时间数据。镜头时长由原始音频时长加段首、段尾停顿决定，不让语音迁就旧时间窗。生成后的时间线、音频和实际画面需一起检查。解码和时长通过不代表读法正确；坐标、字母、公式仍需试听核验。
+
+现有素材仍是此前调速后的版本，尚未按新口语稿重新生成；现有 `audio-timing.json` 的 `tempo` 是历史记录，不代表原速。首段四个素材也曾调速，后续脚本不会改动它们，需要另行恢复原始音频并校准首段分镜。
 
 ## 验收边界
 
