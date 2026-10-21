@@ -4,6 +4,9 @@ import { Button, buttonVariants } from '@heroui/react/button'
 import { Slider } from '@heroui/react/slider'
 import { Card } from '@heroui/react/card'
 import { Alert } from '@heroui/react/alert'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ShortcutActionButton, ShortcutActionGroup, type ShortcutAction } from '../../app/ShortcutAction'
+import { useShortcutActions } from '../../app/useShortcutActions'
 import { useReplayPosition, useReplaySlider } from '../../app/useReplayPosition'
 import { ReplayPositionLabel } from '../../app/ReplayPositionLabel'
 import { AppLink } from '../../app/AppLink'
@@ -37,6 +40,17 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
   const phases: { id: PolygonPhase; label: string }[] = [
     { id: 'containment', label: t`Containment checks` }, { id: 'chasing', label: t`Edge Chasing` }, { id: 'normalize', label: t`Normalize candidates` },
   ]
+  const actions: ShortcutAction[] = [
+    { name: t`Previous step`, key: 'ArrowLeft', hint: <ArrowLeft size={14} aria-hidden="true" />, isDisabled: index <= 0 || last < 0, onPress: () => go(Math.min(index - 1, last)) },
+    { name: t`Next step`, key: 'ArrowRight', hint: <ArrowRight size={14} aria-hidden="true" />, isDisabled: !step || index >= last, onPress: () => go(index + 1) },
+    { name: t`Restart`, key: 'r', hint: 'R', isDisabled: last < 0, onPress: () => go(0) },
+    ...phases.flatMap((phase, position): ShortcutAction[] => {
+      const destination = trace.steps.findIndex(candidate => candidate.phase === phase.id)
+      const key = String(position + 1)
+      return destination < 0 ? [] : [{ name: phase.label, key, hint: key, variant: 'tertiary', isDisabled: false, onPress: () => go(destination) }]
+    }),
+  ]
+  useShortcutActions(actions)
   const first = trace.input?.first ?? preset.first, second = trace.input?.second ?? preset.second
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Learn step by step`}`} />
@@ -56,26 +70,26 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
             <p className="text-sm text-muted">{t`Candidates are not yet the final polygon.`}</p>
           </PointCoordinates>
           {step.result && <PointCoordinates title={t`Final intersection`} points={resultPoints(step.result)} prefix="R" interaction={interaction} />}
+          <section className="workspace-panel" aria-label={t`Current action`} data-action={step.action} data-phase={step.phase}>
+            <Card><Card.Content><PolygonExplanation step={step} /></Card.Content></Card>
+          </section>
         </div>
       </div> : <p role="status" className="flex-1">{index < 0 || trace.status === 'complete' ? t`Invalid teaching step` : trace.status === 'loading' ? t`Waiting for the requested step` : t`Requested step is unavailable`}</p>}
       <section aria-label={t`Replay controls`} className="polygon-replay-controls">
-        {step && <section aria-label={t`Current action`} data-action={step.action} data-phase={step.phase}><PolygonExplanation step={step} /></section>}
         <div className="flex flex-wrap items-center gap-2">
-          <Button size="sm" isDisabled={index <= 0 || last < 0} onPress={() => go(Math.min(index - 1, last))}>{t`Previous step`}</Button>
-          <Button size="sm" isDisabled={!step || index >= last} onPress={() => go(index + 1)}>{t`Next step`}</Button>
-          <Button size="sm" variant="tertiary" isDisabled={last < 0} onPress={() => go(0)}>{t`Restart`}</Button>
-          {phases.map(phase => {
-            const destination = trace.steps.findIndex(candidate => candidate.phase === phase.id)
-            return destination < 0 ? null : <Button key={phase.id} size="sm" variant="tertiary" onPress={() => go(destination)}>{phase.label}</Button>
-          })}
+          <ShortcutActionGroup actions={actions.slice(0, 2)} label={t`Single steps`} />
+          <ShortcutActionButton action={actions[2]} />
+          <ShortcutActionGroup actions={actions.slice(3)} label={t`Replay controls`} />
           {trace.status === 'loading' && <Button size="sm" variant="tertiary" onPress={trace.cancel}>{t`Cancel loading`}</Button>}
         </div>
-        <p role="status">{trace.status === 'loading' ? t`Generating trace · total unknown` : trace.status === 'complete' ? t`Trace generated` : trace.status === 'cancelled' ? t`Loading cancelled · recorded steps remain available` : t`Trace failed`}
-          {step && <> · <ReplayPositionLabel index={index} last={last} generated={trace.status === 'complete'} /></>}</p>
-        {trace.status === 'error' && <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Trace failed`}</Alert.Title><Alert.Description>{trace.message}</Alert.Description></Alert.Content></Alert>}
-        {last >= 0 && <div {...progressProps}><Slider aria-label={t`Teaching step`} minValue={0} maxValue={Math.max(1, last)} step={1} value={step ? index : 0} isDisabled={last === 0} {...sliderProps}>
-          <Slider.Track><Slider.Fill /><Slider.Thumb /></Slider.Track>
-        </Slider></div>}
+        <div className="learning-replay-progress">
+          <p role="status">{trace.status === 'loading' ? t`Generating trace · total unknown` : trace.status === 'complete' ? t`Trace generated` : trace.status === 'cancelled' ? t`Loading cancelled · recorded steps remain available` : t`Trace failed`}
+            {step && <> · <ReplayPositionLabel index={index} last={last} generated={trace.status === 'complete'} /></>}</p>
+          {trace.status === 'error' && <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Trace failed`}</Alert.Title><Alert.Description>{trace.message}</Alert.Description></Alert.Content></Alert>}
+          {last >= 0 && <div {...progressProps}><Slider aria-label={t`Teaching step`} minValue={0} maxValue={Math.max(1, last)} step={1} value={step ? index : 0} isDisabled={last === 0} {...sliderProps}>
+            <Slider.Track><Slider.Fill /><Slider.Thumb /></Slider.Track>
+          </Slider></div>}
+        </div>
       </section>
     </section>
   </>

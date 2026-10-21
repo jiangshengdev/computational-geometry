@@ -6,6 +6,70 @@ test.use({ locale: 'en-US', viewport: { width: 1440, height: 1000 } })
 
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
+  browserTest(`replay shortcuts navigate and respect focus and absent phases: ${browserName}`, async ({ page }) => {
+    await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn')
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    const slider = page.getByRole('slider', { name: 'Teaching step' })
+    const action = page.getByRole('region', { name: 'Current action' })
+    const button = (name: string) => page.getByRole('button', { name, exact: true })
+    await expect(button('Previous step')).toHaveAttribute('aria-keyshortcuts', 'ArrowLeft')
+    await expect(button('Next step')).toHaveAttribute('aria-keyshortcuts', 'ArrowRight')
+    await expect(button('Restart')).toHaveAttribute('aria-keyshortcuts', 'r')
+    await page.keyboard.press('ArrowLeft')
+    await expect(slider).toHaveValue('0')
+    for (const [key, destination] of [['ArrowRight', '1'], ['ArrowLeft', '0']]) {
+      await page.keyboard.down(key)
+      await expect(slider).toHaveValue(destination)
+      await page.keyboard.down(key)
+      await expect(slider).toHaveValue(destination)
+      await page.keyboard.up(key)
+    }
+    for (const [name, key, phase] of [
+      ['Containment checks', '1', 'containment'], ['Edge Chasing', '2', 'chasing'], ['Normalize candidates', '3', 'normalize'],
+    ]) {
+      await expect(button(name)).toHaveAttribute('aria-keyshortcuts', key)
+      await button(name).click()
+      const destination = await slider.inputValue()
+      await button('Next step').click()
+      await page.keyboard.press(key)
+      await expect(slider).toHaveValue(destination)
+      await expect(action).toHaveAttribute('data-phase', phase)
+      await expect(page).toHaveURL(new RegExp(`step=${destination}$`))
+    }
+    await slider.press('End')
+    const last = await slider.inputValue()
+    await button('Previous step').focus()
+    await expect(button('Next step')).toBeDisabled()
+    await page.keyboard.press('ArrowRight')
+    await expect(slider).toHaveValue(last)
+    await page.keyboard.down('r')
+    await expect(slider).toHaveValue('0')
+    await page.keyboard.press('ArrowRight')
+    await page.keyboard.down('r')
+    await expect(slider).toHaveValue('1')
+    await page.keyboard.up('r')
+    await slider.focus()
+    for (const key of ['r', '1', '2', '3']) {
+      await page.keyboard.press(key)
+      await expect(slider).toHaveValue('1')
+    }
+    await button('About this case').click()
+    await expect(page.getByRole('dialog')).toBeVisible()
+    for (const key of ['r', '1', '2', '3', 'ArrowLeft', 'ArrowRight']) {
+      await page.keyboard.press(key)
+      await expect(slider).toHaveValue('1')
+    }
+    await page.goto('/convex-polygon-intersection/cases/contained/learn?step=1')
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    for (const name of ['Edge Chasing', 'Normalize candidates']) await expect(button(name)).toHaveCount(0)
+    for (const key of ['2', '3']) {
+      await page.keyboard.press(key)
+      await expect(slider).toHaveValue('1')
+    }
+    await page.keyboard.press('1')
+    await expect(slider).toHaveValue('0')
+  })
+
   browserTest(`real actions restore candidates, edges and final result: ${browserName}`, async ({ page }) => {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
