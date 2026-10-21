@@ -1,32 +1,35 @@
 import { NumberField } from '@heroui/react/number-field'
 import { Label } from '@heroui/react/label'
 import { useLingui } from '@lingui/react/macro'
-import type { GeometryViewport } from '../../geometry/useGeometryViewport'
+import type { GeometryViewport } from './useGeometryViewport'
 import { Button, buttonVariants } from '@heroui/react/button'
 import { Tooltip } from '@heroui/react/tooltip'
 import { ArrowUp, Compass, Info, RotateCcw } from 'lucide-react'
 import { useId, useRef } from 'react'
 import { useMove } from 'react-aria/useMove'
-import { ShortcutActionButton, ShortcutHint, type ShortcutAction } from '../../app/ShortcutAction'
-import { useShortcutActions } from '../../app/useShortcutActions'
+import { ShortcutActionButton, ShortcutHint, type ShortcutAction } from '../app/ShortcutAction'
+import { useShortcutActions } from '../app/useShortcutActions'
 
-export function HullRotationControls({ viewport, mainArrow }: {
+export function GeometryRotationControls({ viewport, mainArrow, anchor, alignLabel, disabledReason }: {
   viewport: GeometryViewport
   mainArrow: { from: { x: number; y: number }; to: { x: number; y: number } } | null
+  anchor?: { x: number; y: number }
+  alignLabel: string
+  disabledReason: string
 }) {
   const { t } = useLingui()
   const reasonId = useId()
   const degrees = useRef(0)
-  const rotate = (value: number) => viewport.rotate(value, mainArrow?.to)
+  const rotate = (value: number) => viewport.rotate(value, anchor)
   const reset: ShortcutAction = { name: t`Reset orientation`, key: '0', hint: '0', variant: 'tertiary', isDisabled: false, onPress: () => rotate(0) }
-  const align: ShortcutAction = { name: t`Point main arrow up`, key: 't', hint: 'T', variant: 'tertiary', isDisabled: !mainArrow,
+  const align: ShortcutAction = { name: alignLabel, key: 't', hint: 'T', variant: 'tertiary', isDisabled: !mainArrow,
     onPress: () => {
       if (mainArrow) rotate(-90 - Math.atan2(mainArrow.to.y - mainArrow.from.y, mainArrow.to.x - mainArrow.from.x) * 180 / Math.PI)
     } }
   useShortcutActions([
     ...['q', 'e'].flatMap(key => [false, true].map(shift => ({
       name: t`Rotate`, key, shift, hint: key, repeat: true, isDisabled: false,
-      onPress: () => viewport.rotateBy((key === 'q' ? -1 : 1) * (shift ? 1 : 5), mainArrow?.to),
+      onPress: () => viewport.rotateBy((key === 'q' ? -1 : 1) * (shift ? 1 : 5), anchor),
     }))), reset, align,
   ])
   const { moveProps } = useMove({
@@ -62,11 +65,11 @@ export function HullRotationControls({ viewport, mainArrow }: {
     <Tooltip isDisabled={!!mainArrow}>
     <Tooltip.Trigger<'button'> render={props => <button {...props} type="button" />}
       className={buttonVariants({ isIconOnly: true, variant: 'ghost', size: 'sm', className: mainArrow ? 'invisible' : 'inline-flex' })}
-      aria-label={t`This step has no main arrow to align`}><Info size={16} aria-hidden="true" /></Tooltip.Trigger>
-    <Tooltip.Content placement="bottom">{t`This step has no main arrow to align`}</Tooltip.Content>
+      aria-label={disabledReason}><Info size={16} aria-hidden="true" /></Tooltip.Trigger>
+    <Tooltip.Content placement="bottom">{disabledReason}</Tooltip.Content>
     </Tooltip>
     <span id={reasonId} className="sr-only">
-      {t`This step has no main arrow to align`}
+      {disabledReason}
     </span>
   </div>
 }

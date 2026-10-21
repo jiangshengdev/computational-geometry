@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, useLayoutEffect, useRef } from 'react'
 import { useLingui } from '@lingui/react/macro'
 import { DirectionArc } from '../../geometry/DirectionArc'
 import { directionColor, type Position } from '../../geometry/direction'
@@ -6,6 +6,7 @@ import type { Point, Rational } from '../../geometry/geometry'
 import { DirectedLine } from '../convex-hull/HullDirection'
 import { boundaryColor } from './usePolygonSideInteraction'
 import type { Side } from './trace'
+import { nearestLabelPosition } from '../../geometry/labelPlacement'
 
 type Edge<T> = [T, T]
 
@@ -15,6 +16,7 @@ export function PolygonDirection({ edges, position, turn, width, height }: {
 }) {
   const { t } = useLingui()
   const id = useId()
+  const labelRef = useRef<SVGTextElement>(null)
   const positions = edges.map(([start, end]) => [position(start), position(end)] as const)
   const [a, b] = positions.map(([start, end]) => ({ x: end.x - start.x, y: end.y - start.y }))
   const determinant = a.x * b.y - a.y * b.x
@@ -39,8 +41,34 @@ export function PolygonDirection({ edges, position, turn, width, height }: {
     : turn === 'right' ? t`A as reference: turn right toward B`
       : sameDirection ? t`A as reference: B points in the same direction` : t`A as reference: B points in the opposite direction`
   const color = directionColor(turn)
-  const textX = inView ? Math.max(12, Math.min(width - 280, origin.x + 45)) : 24
-  const textY = inView ? Math.max(24, Math.min(height - 20, origin.y - 45)) : height - 205
+  const textX = inView ? origin.x + 45 : 24
+  const textY = inView ? origin.y - 45 : height - 205
+  useLayoutEffect(() => {
+    const text = labelRef.current!
+    const svg = text.ownerSVGElement!
+    text.removeAttribute('transform')
+    const box = text.getBBox()
+    const bounds = svg.getBoundingClientRect()
+    const gap = 6
+    const occupied = Array.from(svg.parentElement!.querySelectorAll(
+      '[data-layer="labels"] text, [data-side-label], [data-edge-direction] g text',
+    )).map(element => element.getBoundingClientRect()).filter(rect => rect.width > 0 && rect.height > 0)
+      .map(rect => ({ x: rect.x - bounds.x, y: rect.y - bounds.y, width: rect.width, height: rect.height }))
+    occupied.push({ x: origin.x - 32, y: origin.y - 32, width: 64, height: 64 })
+    const left = Math.max(gap, Math.min(width - box.width - gap, box.x))
+    const top = Math.max(gap, Math.min(height - box.height - gap, box.y))
+    const lefts = [left, origin.x - box.width - 45, ...occupied.flatMap(rect => [rect.x - box.width - gap, rect.x + rect.width + gap])]
+    const tops = [top, origin.y + 45, ...occupied.flatMap(rect => [rect.y - box.height - gap, rect.y + rect.height + gap])]
+    const placement = nearestLabelPosition(lefts, tops, { x: left, y: top }, candidate =>
+      candidate.left >= gap && candidate.left + box.width <= width - gap
+      && candidate.top >= gap && candidate.top + box.height <= height - gap
+      // Keep the annotation local to its turn, even when avoiding endpoint labels.
+      && Math.hypot(Math.max(candidate.left - origin.x, origin.x - candidate.left - box.width, 0),
+        Math.max(candidate.top - origin.y, origin.y - candidate.top - box.height, 0)) <= 120
+      && !occupied.some(rect => candidate.left < rect.x + rect.width + gap && candidate.left + box.width + gap > rect.x
+        && candidate.top < rect.y + rect.height + gap && candidate.top + box.height + gap > rect.y))
+    text.setAttribute('transform', `translate(${(placement?.left ?? left) - box.x} ${(placement?.top ?? top) - box.y})`)
+  })
   return <svg className="polygon-angle-overlay" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={label}
     data-edge-direction={turn} data-direction-placement={inView ? 'intersection' : 'inset'}>
     <defs>{[boundaryColor(0), boundaryColor(1), color].map((fill, index) => <marker key={index} id={`${id}-${index}`}
@@ -59,6 +87,6 @@ export function PolygonDirection({ edges, position, turn, width, height }: {
       </g>
     })}
     <DirectionArc positions={[shift(directions[0], -90), origin, shift(directions[1], 90)]} turn={turn} scale={1} markerId={`${id}-2`} />
-    <text x={textX} y={textY} fontSize="13" fontWeight="600" fill={color} stroke="var(--surface)" strokeWidth="4" paintOrder="stroke">{label}</text>
+    <text ref={labelRef} x={textX} y={textY} fontSize="13" fontWeight="600" fill={color} stroke="var(--surface)" strokeWidth="4" paintOrder="stroke">{label}</text>
   </svg>
 }

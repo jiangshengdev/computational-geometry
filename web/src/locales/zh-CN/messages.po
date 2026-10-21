@@ -525,7 +525,7 @@ msgstr "返回列表"
 #~ msgstr "返回结果"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:82
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:63
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:67
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:246
 msgid "Back to results viewer"
 msgstr "返回结果查看器"
@@ -625,7 +625,7 @@ msgid "Call expression: "
 msgstr "调用表达式："
 
 #: src/algorithms/convex-hull/HullLearning.tsx:108
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:90
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:95
 msgid "Cancel loading"
 msgstr "取消加载"
 
@@ -637,11 +637,11 @@ msgstr "取消跳转等待"
 msgid "Candidate chain"
 msgstr "候选链"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:77
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:82
 msgid "Candidates are not yet the final polygon."
 msgstr "候选点尚未整理成最终交集。"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:43
+#: src/geometry/GeometryRotationControls.tsx:46
 msgid "Canvas angle"
 msgstr "画布角度"
 
@@ -862,7 +862,7 @@ msgstr "收集公共边段的两个端点。"
 msgid "Collect the intersection of the current edges."
 msgstr "收集当前两条边的交点。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:76
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:81
 msgid "Collected candidates"
 msgstr "已收集候选点"
 
@@ -1021,7 +1021,7 @@ msgstr "包含、完全重复和反向重复均保留独立输入编号，每个
 #~ msgid "Containment check"
 #~ msgstr "包含检查"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:50
 msgid "Containment checks"
 msgstr "包含检查阶段"
 
@@ -1059,7 +1059,7 @@ msgstr "凸包案例"
 
 #: src/algorithms/convex-hull/ConvexHullPlot.tsx:21
 #: src/algorithms/convex-hull/HullLearning.tsx:185
-#: src/algorithms/convex-hull/HullLearning.tsx:188
+#: src/algorithms/convex-hull/HullLearning.tsx:189
 msgid "Convex hull plot"
 msgstr "凸包图形"
 
@@ -1079,8 +1079,8 @@ msgstr "凸多边形交集"
 msgid "Convex polygon intersection cases"
 msgstr "凸多边形交集案例"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:109
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:121
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:67
 msgid "Convex polygon intersection plot"
 msgstr "凸多边形交集图形"
 
@@ -1131,7 +1131,7 @@ msgid "Current {index} · Generated 0–{lastStep}"
 msgstr "当前 {index} · 已生成 0–{lastStep}"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:102
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:80
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:85
 msgid "Current action"
 msgstr "本步动作"
 
@@ -1287,7 +1287,7 @@ msgstr "区分竖直开始者与水平穿过者，先记录闭线段接触，再
 msgid "Documentation"
 msgstr "文档"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:49
+#: src/geometry/GeometryRotationControls.tsx:52
 msgid "Drag left or right to rotate; hold Shift for fine adjustment"
 msgstr "左右拖动旋转；按住 Shift 微调"
 
@@ -1331,7 +1331,7 @@ msgstr "内层的 8 个网结各连 4 条边，外层的 8 个网结各连 3 条
 msgid "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 msgstr "四个中心各有 4 条等长空间键，其方向两两点积为 −1、长度平方为 3，符合四面体夹角。六个共享近邻度数为 2，四个边界原子度数为 1。投影为 (x + 3z/10, y + 7z/10)；中心 (1,1,1) 投影至 (13/10,17/10)，四条键产生 6 对。S6 与 S13 内部交于 (281/100,489/100)；二维穿越不代表新增化学键，投影使用精确有理数。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:50
 msgid "Edge Chasing"
 msgstr "Edge Chasing 追边"
 
@@ -1437,13 +1437,13 @@ msgstr "事件高度状态：当前事件上侧（Δ）"
 msgid "Event height: below the current event (Δ)"
 msgstr "事件高度状态：当前事件下侧（Δ）"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
+msgstr "事件队列"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
-msgstr "事件队列"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
 msgstr "事件队列"
 
 #. js-lingui-explicit-id
@@ -1552,7 +1552,7 @@ msgid "Field {field} of {expression}"
 msgstr "{expression} 的字段 {field}"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:88
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:79
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:84
 msgid "Final intersection"
 msgstr "最终交集"
 
@@ -1571,7 +1571,7 @@ msgstr "找出插入位置两侧需要检查的相邻位置"
 msgid "Find where to insert this group into the active set"
 msgstr "在活动集合中找到这组线段的插入位置"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:57
+#: src/geometry/GeometryRotationControls.tsx:60
 msgid "Fine adjustment · hold to rotate"
 msgstr "微调 · 长按旋转"
 
@@ -1678,7 +1678,7 @@ msgid "Generating trace"
 msgstr "轨迹生成中"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:93
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:98
 msgid "Generating trace · total unknown"
 msgstr "正在生成轨迹 · 总步数未知"
 
@@ -1853,7 +1853,7 @@ msgstr "输入点"
 #~ msgid "Input points: {0}; hull vertices: {1}"
 #~ msgstr "输入点数：{0}；凸包顶点数：{1}"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:67
 #: src/algorithms/triangulation/TriangulationPlot.tsx:22
 msgid "Input polygon preview"
 msgstr "输入多边形预览"
@@ -1979,7 +1979,7 @@ msgid "Invalid result structure"
 msgstr "结果结构无效"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:90
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:84
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:89
 msgid "Invalid teaching step"
 msgstr "无效的教学步骤"
 
@@ -2033,8 +2033,8 @@ msgstr "从头学习"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:80
 #: src/algorithms/convex-hull/HullLearning.tsx:89
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:61
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:66
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:65
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:71
 msgid "Learn step by step"
 msgstr "逐步学习"
 
@@ -2110,7 +2110,7 @@ msgid "Line {line}, keyword {occurrence}"
 msgstr "第 {line} 行关键字 {occurrence}"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:93
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:98
 msgid "Loading cancelled · recorded steps remain available"
 msgstr "已取消加载 · 仍可浏览已记录步骤"
 
@@ -2226,7 +2226,7 @@ msgid "Next major step"
 msgstr "下一个大步"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:70
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:54
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:96
 msgid "Next step"
 msgstr "下一步"
@@ -2258,7 +2258,7 @@ msgid "No events"
 msgstr "没有事件"
 
 #: src/algorithms/convex-hull/ConvexHullPlot.tsx:33
-#: src/algorithms/convex-hull/HullLearning.tsx:225
+#: src/algorithms/convex-hull/HullLearning.tsx:226
 msgid "No input points"
 msgstr "无输入点"
 
@@ -2300,7 +2300,7 @@ msgstr "无点"
 msgid "None"
 msgstr "无"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:50
 msgid "Normalize candidates"
 msgstr "整理候选点"
 
@@ -2515,13 +2515,13 @@ msgstr "重叠止界"
 msgid "Overlap interval"
 msgstr "重叠区间"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
+msgstr "重叠处理规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
-msgstr "重叠处理规则"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
 msgstr "重叠处理规则"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -2661,6 +2661,10 @@ msgstr "请检查本地服务。{errorMessage}"
 msgid "Point"
 msgstr "点"
 
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:123
+msgid "Point A edge up"
+msgstr "A 边朝上"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:134
 msgid "point and event bound; event-taking module complete"
@@ -2680,7 +2684,7 @@ msgstr "点数"
 #~ msgid "Point intersection"
 #~ msgstr "点交集"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:22
+#: src/algorithms/convex-hull/HullLearning.tsx:187
 msgid "Point main arrow up"
 msgstr "一键朝上"
 
@@ -2699,7 +2703,7 @@ msgstr "点的纵坐标"
 msgid "Points only"
 msgstr "纯点集合"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:69
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:72
 msgid "Polygon A"
 msgstr "多边形 A"
 
@@ -2707,12 +2711,12 @@ msgstr "多边形 A"
 msgid "Polygon A · solid boundary"
 msgstr "多边形 A · 实线边界"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:69
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:74
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:62
 msgid "Polygon A vertices"
 msgstr "多边形 A 顶点"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:70
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:73
 msgid "Polygon B"
 msgstr "多边形 B"
 
@@ -2720,7 +2724,7 @@ msgstr "多边形 B"
 msgid "Polygon B · dashed boundary"
 msgstr "多边形 B · 虚线边界"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:71
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:76
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:63
 msgid "Polygon B vertices"
 msgstr "多边形 B 顶点"
@@ -2781,7 +2785,7 @@ msgid "Previous major step"
 msgstr "上一个大步"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:69
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:53
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:95
 msgid "Previous step"
 msgstr "上一步"
@@ -2969,8 +2973,8 @@ msgstr "替换指定范围中的元素。"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:101
 #: src/algorithms/convex-hull/HullLearning.tsx:107
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:85
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:89
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:90
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:94
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:16
 msgid "Replay controls"
 msgstr "回放控制"
@@ -2982,11 +2986,11 @@ msgid "Replaying actual control flow · intermediate state"
 msgstr "按实际控制流回放 · 中间状态"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:90
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:84
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:89
 msgid "Requested step is unavailable"
 msgstr "请求的步骤不可用"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:21
+#: src/geometry/GeometryRotationControls.tsx:24
 msgid "Reset orientation"
 msgstr "重置方向"
 
@@ -2995,7 +2999,7 @@ msgid "Reset view"
 msgstr "重置视图"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:71
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:51
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:55
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:107
 msgid "Restart"
 msgstr "重新开始"
@@ -3097,8 +3101,8 @@ msgstr "右转：弹出栈顶，然后再次判断。"
 msgid "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 msgstr "上升线满足 y = x + c，下降线满足 y = d − x，因此交点为 ((d − c)/2, (d + c)/2)，还须检查坐标是否在 [0, 12] 内。例如 S2 × S7 为 (6, 6)，S1 × S7 为 (8, 4)；S0 × S6 在端点 (8, 0) 接触。同方向线互相平行，没有重叠。"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:28
-#: src/algorithms/convex-hull/HullRotationControls.tsx:53
+#: src/geometry/GeometryRotationControls.tsx:31
+#: src/geometry/GeometryRotationControls.tsx:56
 msgid "Rotate"
 msgstr "拖动旋转"
 
@@ -3227,13 +3231,13 @@ msgstr "S1 从 S0 内部的 (2, 0) 向右上方出发。"
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 从 (0, 0) 到 (0, 8)，S6 从 (0, 8) 到 (8, 8)，公共端点为 (0, 8)。S4 的 y = 0、x ∈ [−2, 34]，与 S5 在 (0, 0) 接触。三组回纹各有 7 处转角和 1 处横梁接触，另有窗框 4 角及横梁与窗框的 2 处接触，共 30 个不同位置；没有内部穿越或重叠。"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
+msgstr "同点与并列规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
-msgstr "同点与并列规则"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
 msgstr "同点与并列规则"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:129
@@ -3462,7 +3466,7 @@ msgid "Single point"
 msgstr "单点"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:105
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:87
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:92
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:94
 msgid "Single steps"
 msgstr "单步"
@@ -3663,7 +3667,7 @@ msgid "Teaching code highlighting failed to load. Refresh to try again."
 msgstr "教学代码高亮加载失败，请刷新重试。"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:113
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:96
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:101
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:22
 msgid "Teaching step"
 msgstr "教学步骤"
@@ -3901,11 +3905,13 @@ msgstr "这个点同时位于两个多边形的边界上，因此属于交集。
 msgid "This statement was not executed"
 msgstr "本次未执行此语句"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:65
-#: src/algorithms/convex-hull/HullRotationControls.tsx:66
-#: src/algorithms/convex-hull/HullRotationControls.tsx:69
+#: src/algorithms/convex-hull/HullLearning.tsx:187
 msgid "This step has no main arrow to align"
 msgstr "当前步骤没有可对齐的主箭头"
+
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:123
+msgid "This step has no valid A edge to align"
+msgstr "当前步骤没有可朝上对齐的有效 A 边"
 
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:46
 msgid "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
@@ -3952,13 +3958,13 @@ msgstr "沿方折回纹追踪端点连接，并区分回纹起点落在横梁内
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
 #: src/algorithms/convex-hull/HullLearning.tsx:112
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:93
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:95
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:98
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:100
 msgid "Trace failed"
 msgstr "轨迹加载失败"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:93
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:98
 msgid "Trace generated"
 msgstr "轨迹已生成"
 
@@ -4274,13 +4280,13 @@ msgstr "竖直分数重叠"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "竖直重叠与多高度混合"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
+msgstr "竖直线处理规则"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
-msgstr "竖直线处理规则"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
 msgstr "竖直线处理规则"
 
 #. js-lingui-explicit-id
@@ -4320,7 +4326,7 @@ msgid "Waiting for the next major step. Steps 0–{0} are available to explore."
 msgstr "正在等待下一个大步 · 已生成 0–{0}。可继续浏览已生成步骤。"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:90
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:84
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:89
 msgid "Waiting for the requested step"
 msgstr "正在等待请求的步骤"
 

@@ -75,6 +75,12 @@ export function useGeometryViewport(points: Point[], { preserveViewKey, padding 
     svg, width, height, transform, angle, rotate, center,
     rotateBy: (degrees: number, anchor?: { x: number; y: number }) => rotate(currentAngle.current + degrees, anchor),
     geometryTransform: `${transform.toString()} rotate(${angle} ${width / 2} ${height / 2})`,
+    // Match geometryTransform for HTML labels and screen-coordinate SVG overlays.
+    screenPosition: (point: Point) => {
+      const matrix = new DOMMatrix().translate(transform.x, transform.y).scale(transform.k)
+        .translate(width / 2, height / 2).rotate(angle).translate(-width / 2, -height / 2)
+      return new DOMPoint(projection!.px(point), projection!.py(point)).matrixTransform(matrix)
+    },
     // Keep at least half of the shorter dimension available for geometry.
     projection,
     zoomIn: () => select(svg.current!).call(behavior.current.scaleBy, 1.4),

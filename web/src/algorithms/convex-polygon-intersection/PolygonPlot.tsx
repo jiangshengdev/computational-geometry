@@ -25,6 +25,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
   const width = viewport?.width ?? 160, height = viewport?.height ?? 120
   const projection = viewport ? viewport.projection : projectPoints(points, width, height, 16)
   const scale = viewport?.transform.k ?? 1
+  const screenPosition = (point: Point) => viewport ? viewport.screenPosition(point) : { x: projection!.px(point), y: projection!.py(point) }
   const path = (boundary: Point[]) => boundary.map(p => `${projection!.px(p)},${projection!.py(p)}`).join(' ')
   const activeBoundaries = step ? [first, second].map((boundary, side) => {
     const prefix = side === 0 ? 'A' : 'B'
@@ -36,6 +37,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
     id: `${prefix}${id}`,
     x: projection.px(boundary[id]),
     y: projection.py(boundary[id]) - (side === 0 ? 12 : 26) / scale,
+    anchorY: projection.py(boundary[id]),
     text: `${prefix}${id}`,
   }))) : []
   const active = interaction?.active
@@ -55,6 +57,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
         if (ids.length) labels.push({
           id: ids.join(' '), text: ids.join(' · '),
           x: projection.px(activePoint), y: projection.py(activePoint) - (12 + row * 14) / scale,
+          anchorY: projection.py(activePoint),
         })
       }
     })
@@ -64,7 +67,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
     aria-label={preview ? t`Input polygon preview` : t`Convex polygon intersection plot`}
     onPointerDown={() => interaction?.hover(null)}>
     <defs>{[0, 1].map(side => <marker key={side} id={`${arrowId}-${side}`} viewBox="0 0 8 8" refX="8" refY="4" markerWidth={9 / scale} markerHeight={9 / scale} markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 8 4 L 0 8 Z" fill={boundaryColor(side)} /></marker>)}</defs>
-    {projection && <g data-layer="geometry" transform={viewport?.transform.toString()}>
+    {projection && <g data-layer="geometry" transform={viewport?.geometryTransform}>
       {/* Nested stroke widths keep both input identities visible on coincident boundaries. */}
       <polygon data-input="first" aria-label={t`Polygon A`} points={path(first)} fill="var(--accent)" fillOpacity="0.08" stroke="var(--accent)" strokeWidth={1.5 / scale} />
       <polygon data-input="second" aria-label={t`Polygon B`} points={path(second)} fill="var(--warning)" fillOpacity="0.08" stroke="var(--warning)" strokeDasharray={`${6 / scale} ${3 / scale}`} strokeWidth={1 / scale} />
@@ -87,6 +90,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
         {/* Paint every outline before any fill so adjacent glyphs cannot erase text. */}
         {(['outline', 'fill'] as const).map(layer => <g key={layer} aria-hidden={layer === 'outline' ? true : undefined}>
           {labels.map(label => <text key={label.id} x={label.x} y={label.y} textAnchor="middle" fontSize={12 / scale}
+            transform={`rotate(${-(viewport?.angle ?? 0)} ${label.x} ${label.anchorY})`}
             style={{ fill: layer === 'outline' ? 'none' : 'currentColor', stroke: layer === 'outline' ? '#fff' : 'none', strokeWidth: 3 / scale }}>
             {label.text}
           </text>)}
@@ -96,14 +100,13 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
   </svg>
     {projection && hasSideRelation(step) && <PolygonDirection
       edges={[[first[step.edges[0][0]], first[step.edges[0][1]]], [second[step.edges[1][0]], second[step.edges[1][1]]]]}
-      position={point => ({ x: projection.px(point) * scale + (viewport?.transform.x ?? 0), y: projection.py(point) * scale + (viewport?.transform.y ?? 0) })}
+      position={screenPosition}
       turn={step.relation.cross} width={width} height={height} />}
     {projection && hasSideRelation(step) && sideInteraction && <div className="absolute inset-0 overflow-hidden pointer-events-none">{[0, 1].map(boundary => {
       const inputs = [first, second]
       const point = inputs[boundary][step.edges[boundary][1]]
       const labelOffset = boundary === 1 && samePoint(point, inputs[0][step.edges[0][1]]) ? 44 : 8
-      const x = projection.px(point) * scale + (viewport?.transform.x ?? 0)
-      const y = projection.py(point) * scale + (viewport?.transform.y ?? 0)
+      const { x, y } = screenPosition(point)
       // Same-direction parallel supporting lines have opposite, nonzero endpoint sides.
       const sameDirectionParallel = step.relation.cross === 'collinear'
         && step.relation.first_side !== 'collinear' && step.relation.second_side !== 'collinear'
@@ -117,7 +120,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
     })}</div>}
     {projection && hasSideRelation(step) && sideInteraction?.active != null && <svg
       className="polygon-angle-overlay" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
-      <g transform={viewport?.transform.toString()}>
+      <g transform={viewport?.geometryTransform}>
         {(() => {
           const boundary = sideInteraction.active
           const inputs = [first, second]

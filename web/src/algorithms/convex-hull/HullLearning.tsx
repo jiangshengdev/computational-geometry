@@ -27,7 +27,7 @@ import { ShortcutActionButton, ShortcutActionGroup, type ShortcutAction } from '
 import { useShortcutActions } from '../../app/useShortcutActions'
 import { ReplayPositionLabel } from '../../app/ReplayPositionLabel'
 import './HullLearning.css'
-import { HullRotationControls } from './HullRotationControls'
+import { GeometryRotationControls } from '../../geometry/GeometryRotationControls'
 import { PointPanelTitle } from '../../geometry/PointPanelTitle'
 
 type PointPanel = 'order' | 'lower' | 'upper' | 'result'
@@ -183,7 +183,8 @@ function HullLearningPlot({ points, step, interaction, rotationToolbar }: { poin
     ? incoming : null
   return <div className="drawing"><Card>
     <Card.Header className="drawing-toolbar"><Card.Title>{t`Convex hull plot`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
-    {rotationToolbar && createPortal(<HullRotationControls viewport={viewport} mainArrow={mainArrow} />, rotationToolbar)}
+    {rotationToolbar && createPortal(<GeometryRotationControls viewport={viewport} mainArrow={mainArrow} anchor={mainArrow?.to}
+      alignLabel={t`Point main arrow up`} disabledReason={t`This step has no main arrow to align`} />, rotationToolbar)}
     <Card.Content className="flex min-h-0 flex-1 flex-col"><div className="drawing-surface flex flex-col">
       <svg ref={svg} className="geometry-viewport w-full" viewBox={`0 0 ${width} ${height}`} role="group" aria-label={t`Convex hull plot`} style={{ '--geometry-scale': k } as CSSProperties}>
         <defs>

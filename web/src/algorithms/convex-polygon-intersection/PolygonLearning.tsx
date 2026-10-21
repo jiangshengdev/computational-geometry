@@ -26,10 +26,14 @@ import { PolygonExplanation } from './PolygonExplanation'
 import { resultPoints } from './result'
 import './polygon.css'
 import { usePolygonSideInteraction, type PolygonSideInteraction } from './usePolygonSideInteraction'
+import { useState } from 'react'
+import { createPortal } from 'react-dom'
+import { GeometryRotationControls } from '../../geometry/GeometryRotationControls'
 
 export function PolygonLearning({ preset }: { preset: PolygonCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
+  const [rotationToolbar, setRotationToolbar] = useState<HTMLDivElement | null>(null)
   const [zenMode, setZenMode] = useZenMode('polygon-learning-layout-v1-zen')
   const trace = usePolygonTrace(preset)
   const { search, previewIndex, previewStep, commitStep } = useReplayPosition()
@@ -61,6 +65,7 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
     <DocumentTitle title={`${translate(preset.name)} · ${t`Learn step by step`}`} />
     <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-polygon-intersection"
       trailingAction={<AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/convex-polygon-intersection/cases/${preset.id}`}>{t`Back to results viewer`}</AppLink>}>
+      <div ref={setRotationToolbar} />
       <ZenModeControl zenMode={zenMode} onZenModeChange={setZenMode} />
     </CaseToolbar>
     <section className="learning-view polygon-learning" data-zen-mode={zenMode} aria-label={t`Learn step by step`}>
@@ -71,7 +76,7 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
           <PointCoordinates highlightTitle title={t`Polygon B vertices`} points={second} prefix="B" panel="input" interaction={interaction} stepKey={step}
             currentIds={step.edges?.[1] ?? (step.boundary === 'second' && step.vertex !== null ? [step.vertex] : [])} />
         </div>
-        <PolygonLearningCanvas first={first} second={second} step={step} interaction={interaction} sideInteraction={sideInteraction} />
+        <PolygonLearningCanvas first={first} second={second} step={step} interaction={interaction} sideInteraction={sideInteraction} rotationToolbar={rotationToolbar} />
         <div className="workspace-panel polygon-learning-results">
           <PointCoordinates highlightTitle title={t`Collected candidates`} points={step.candidates} prefix="C" interaction={interaction} stepKey={step} currentIds={step.added}>
             <p className="text-sm text-muted">{t`Candidates are not yet the final polygon.`}</p>
@@ -102,11 +107,20 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
   </>
 }
 
-function PolygonLearningCanvas({ first, second, step, interaction, sideInteraction }: { first: Point[]; second: Point[]; step: PolygonStep; interaction: PointInteraction; sideInteraction: PolygonSideInteraction }) {
+function PolygonLearningCanvas({ first, second, step, interaction, sideInteraction, rotationToolbar }: { first: Point[]; second: Point[]; step: PolygonStep; interaction: PointInteraction; sideInteraction: PolygonSideInteraction; rotationToolbar: HTMLDivElement | null }) {
   const { t } = useLingui()
   const viewport = useGeometryViewport([...first, ...second], { padding: 36 })
+  const projection = viewport.projection
+  const edge = step.edges?.[0]
+  const incoming = projection && edge ? {
+    from: { x: projection.px(first[edge[0]]), y: projection.py(first[edge[0]]) },
+    to: { x: projection.px(first[edge[1]]), y: projection.py(first[edge[1]]) },
+  } : null
+  const mainArrow = incoming && Math.hypot(incoming.to.x - incoming.from.x, incoming.to.y - incoming.from.y) > 0 ? incoming : null
   return <div className="drawing"><Card>
     <Card.Header className="drawing-toolbar"><Card.Title>{t`Convex polygon intersection plot`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
+    {rotationToolbar && createPortal(<GeometryRotationControls viewport={viewport} mainArrow={mainArrow}
+      alignLabel={t`Point A edge up`} disabledReason={t`This step has no valid A edge to align`} />, rotationToolbar)}
     <Card.Content className="flex min-h-0 flex-1 flex-col"><div className="drawing-surface flex flex-col">
       <PolygonPlot first={first} second={second} step={step} result={step.result ?? undefined} viewport={viewport} interaction={interaction} sideInteraction={sideInteraction} />
     </div></Card.Content>

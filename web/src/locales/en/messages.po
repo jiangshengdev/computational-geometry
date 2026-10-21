@@ -525,7 +525,7 @@ msgstr "Back to cases"
 #~ msgstr "Back to result"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:82
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:63
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:67
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:246
 msgid "Back to results viewer"
 msgstr "Back to results viewer"
@@ -625,7 +625,7 @@ msgid "Call expression: "
 msgstr "Call expression: "
 
 #: src/algorithms/convex-hull/HullLearning.tsx:108
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:90
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:95
 msgid "Cancel loading"
 msgstr "Cancel loading"
 
@@ -637,11 +637,11 @@ msgstr "Cancel waiting"
 msgid "Candidate chain"
 msgstr "Candidate chain"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:77
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:82
 msgid "Candidates are not yet the final polygon."
 msgstr "Candidates are not yet the final polygon."
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:43
+#: src/geometry/GeometryRotationControls.tsx:46
 msgid "Canvas angle"
 msgstr "Canvas angle"
 
@@ -862,7 +862,7 @@ msgstr "Collect both ends of the shared edge interval."
 msgid "Collect the intersection of the current edges."
 msgstr "Collect the intersection of the current edges."
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:76
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:81
 msgid "Collected candidates"
 msgstr "Collected candidates"
 
@@ -1021,7 +1021,7 @@ msgstr "Contained, identical, and reversed duplicate inputs all retain distinct 
 #~ msgid "Containment check"
 #~ msgstr "Containment check"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:50
 msgid "Containment checks"
 msgstr "Containment checks"
 
@@ -1059,7 +1059,7 @@ msgstr "Convex hull cases"
 
 #: src/algorithms/convex-hull/ConvexHullPlot.tsx:21
 #: src/algorithms/convex-hull/HullLearning.tsx:185
-#: src/algorithms/convex-hull/HullLearning.tsx:188
+#: src/algorithms/convex-hull/HullLearning.tsx:189
 msgid "Convex hull plot"
 msgstr "Convex hull plot"
 
@@ -1079,8 +1079,8 @@ msgstr "Convex polygon intersection"
 msgid "Convex polygon intersection cases"
 msgstr "Convex polygon intersection cases"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:109
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:121
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:67
 msgid "Convex polygon intersection plot"
 msgstr "Convex polygon intersection plot"
 
@@ -1131,7 +1131,7 @@ msgid "Current {index} · Generated 0–{lastStep}"
 msgstr "Current {index} · Generated 0–{lastStep}"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:102
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:80
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:85
 msgid "Current action"
 msgstr "Current action"
 
@@ -1287,7 +1287,7 @@ msgstr "Distinguish the starting vertical segment from the horizontal segment pa
 msgid "Documentation"
 msgstr "Documentation"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:49
+#: src/geometry/GeometryRotationControls.tsx:52
 msgid "Drag left or right to rotate; hold Shift for fine adjustment"
 msgstr "Drag left or right to rotate; hold Shift for fine adjustment"
 
@@ -1331,7 +1331,7 @@ msgstr "Each of the 8 inner junctions joins 4 edges, each of the 8 outer junctio
 msgid "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 msgstr "Each of the four centers has 4 spatial bonds of equal length, with pairwise direction dot products of −1 and squared lengths of 3, matching the tetrahedral angle. Six shared nearest neighbors have degree 2, and four boundary atoms have degree 1. The projection is (x + 3z/10, y + 7z/10); center (1,1,1) projects to (13/10,17/10), where four bonds produce 6 pairs. S6 and S13 cross internally at (281/100,489/100); a two-dimensional crossing is not an additional chemical bond, and the projection uses exact rational numbers."
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:50
 msgid "Edge Chasing"
 msgstr "Edge Chasing"
 
@@ -1437,13 +1437,13 @@ msgstr "Event height: above the current event (Δ)"
 msgid "Event height: below the current event (Δ)"
 msgstr "Event height: below the current event (Δ)"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
+msgstr "Event queue"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
-msgstr "Event queue"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
 msgstr "Event queue"
 
 #. js-lingui-explicit-id
@@ -1552,7 +1552,7 @@ msgid "Field {field} of {expression}"
 msgstr "Field {field} of {expression}"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:88
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:79
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:84
 msgid "Final intersection"
 msgstr "Final intersection"
 
@@ -1571,7 +1571,7 @@ msgstr "Find the neighboring positions to check on either side of the insertion"
 msgid "Find where to insert this group into the active set"
 msgstr "Find where to insert this group into the active set"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:57
+#: src/geometry/GeometryRotationControls.tsx:60
 msgid "Fine adjustment · hold to rotate"
 msgstr "Fine adjustment · hold to rotate"
 
@@ -1678,7 +1678,7 @@ msgid "Generating trace"
 msgstr "Generating trace"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:93
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:98
 msgid "Generating trace · total unknown"
 msgstr "Generating trace · total unknown"
 
@@ -1853,7 +1853,7 @@ msgstr "Input points"
 #~ msgid "Input points: {0}; hull vertices: {1}"
 #~ msgstr "Input points: {0}; hull vertices: {1}"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:67
 #: src/algorithms/triangulation/TriangulationPlot.tsx:22
 msgid "Input polygon preview"
 msgstr "Input polygon preview"
@@ -1979,7 +1979,7 @@ msgid "Invalid result structure"
 msgstr "Invalid result structure"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:90
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:84
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:89
 msgid "Invalid teaching step"
 msgstr "Invalid teaching step"
 
@@ -2033,8 +2033,8 @@ msgstr "Learn from the start"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:80
 #: src/algorithms/convex-hull/HullLearning.tsx:89
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:61
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:66
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:65
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:71
 msgid "Learn step by step"
 msgstr "Learn step by step"
 
@@ -2110,7 +2110,7 @@ msgid "Line {line}, keyword {occurrence}"
 msgstr "Line {line}, keyword {occurrence}"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:93
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:98
 msgid "Loading cancelled · recorded steps remain available"
 msgstr "Loading cancelled · recorded steps remain available"
 
@@ -2226,7 +2226,7 @@ msgid "Next major step"
 msgstr "Next major step"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:70
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:54
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:96
 msgid "Next step"
 msgstr "Next step"
@@ -2258,7 +2258,7 @@ msgid "No events"
 msgstr "No events"
 
 #: src/algorithms/convex-hull/ConvexHullPlot.tsx:33
-#: src/algorithms/convex-hull/HullLearning.tsx:225
+#: src/algorithms/convex-hull/HullLearning.tsx:226
 msgid "No input points"
 msgstr "No input points"
 
@@ -2300,7 +2300,7 @@ msgstr "No points"
 msgid "None"
 msgstr "None"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:50
 msgid "Normalize candidates"
 msgstr "Normalize candidates"
 
@@ -2515,13 +2515,13 @@ msgstr "Overlap end boundary"
 msgid "Overlap interval"
 msgstr "Overlap interval"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
+msgstr "Overlap rules"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
-msgstr "Overlap rules"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
 msgstr "Overlap rules"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -2661,6 +2661,10 @@ msgstr "Please check the local service. {errorMessage}"
 msgid "Point"
 msgstr "Point"
 
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:123
+msgid "Point A edge up"
+msgstr "Point A edge up"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:134
 msgid "point and event bound; event-taking module complete"
@@ -2680,7 +2684,7 @@ msgstr "Point count"
 #~ msgid "Point intersection"
 #~ msgstr "Point intersection"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:22
+#: src/algorithms/convex-hull/HullLearning.tsx:187
 msgid "Point main arrow up"
 msgstr "Point main arrow up"
 
@@ -2699,7 +2703,7 @@ msgstr "Point y coordinate"
 msgid "Points only"
 msgstr "Points only"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:69
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:72
 msgid "Polygon A"
 msgstr "Polygon A"
 
@@ -2707,12 +2711,12 @@ msgstr "Polygon A"
 msgid "Polygon A · solid boundary"
 msgstr "Polygon A · solid boundary"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:69
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:74
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:62
 msgid "Polygon A vertices"
 msgstr "Polygon A vertices"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:70
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:73
 msgid "Polygon B"
 msgstr "Polygon B"
 
@@ -2720,7 +2724,7 @@ msgstr "Polygon B"
 msgid "Polygon B · dashed boundary"
 msgstr "Polygon B · dashed boundary"
 
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:71
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:76
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:63
 msgid "Polygon B vertices"
 msgstr "Polygon B vertices"
@@ -2781,7 +2785,7 @@ msgid "Previous major step"
 msgstr "Previous major step"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:69
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:53
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:95
 msgid "Previous step"
 msgstr "Previous step"
@@ -2969,8 +2973,8 @@ msgstr "Replace elements in the specified range."
 
 #: src/algorithms/convex-hull/HullLearning.tsx:101
 #: src/algorithms/convex-hull/HullLearning.tsx:107
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:85
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:89
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:90
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:94
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:16
 msgid "Replay controls"
 msgstr "Replay controls"
@@ -2982,11 +2986,11 @@ msgid "Replaying actual control flow · intermediate state"
 msgstr "Replaying actual control flow · intermediate state"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:90
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:84
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:89
 msgid "Requested step is unavailable"
 msgstr "Requested step is unavailable"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:21
+#: src/geometry/GeometryRotationControls.tsx:24
 msgid "Reset orientation"
 msgstr "Reset orientation"
 
@@ -2995,7 +2999,7 @@ msgid "Reset view"
 msgstr "Reset view"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:71
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:51
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:55
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:107
 msgid "Restart"
 msgstr "Restart"
@@ -3097,8 +3101,8 @@ msgstr "Right turn: pop the stack top, then check again."
 msgid "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 msgstr "Rising lines satisfy y = x + c and falling lines satisfy y = d − x, so their intersection is ((d − c)/2, (d + c)/2); the coordinates must also lie in [0, 12]. For example, S2 × S7 intersects at (6, 6) and S1 × S7 at (8, 4); S0 × S6 touches at endpoint (8, 0). Lines in the same direction are parallel, with no overlap."
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:28
-#: src/algorithms/convex-hull/HullRotationControls.tsx:53
+#: src/geometry/GeometryRotationControls.tsx:31
+#: src/geometry/GeometryRotationControls.tsx:56
 msgid "Rotate"
 msgstr "Rotate"
 
@@ -3227,13 +3231,13 @@ msgstr "S1 starts at (2, 0) inside S0 and heads up and right."
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
+msgstr "Same-point and tie rules"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
-msgstr "Same-point and tie rules"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
 msgstr "Same-point and tie rules"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:129
@@ -3462,7 +3466,7 @@ msgid "Single point"
 msgstr "Single point"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:105
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:87
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:92
 #: src/algorithms/segment-intersection/bo/learning/useLearningReplay.tsx:94
 msgid "Single steps"
 msgstr "Single steps"
@@ -3663,7 +3667,7 @@ msgid "Teaching code highlighting failed to load. Refresh to try again."
 msgstr "Teaching code highlighting failed to load. Refresh to try again."
 
 #: src/algorithms/convex-hull/HullLearning.tsx:113
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:96
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:101
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:22
 msgid "Teaching step"
 msgstr "Teaching step"
@@ -3901,11 +3905,13 @@ msgstr "This point belongs to both polygon boundaries, so it belongs to the inte
 msgid "This statement was not executed"
 msgstr "This statement was not executed"
 
-#: src/algorithms/convex-hull/HullRotationControls.tsx:65
-#: src/algorithms/convex-hull/HullRotationControls.tsx:66
-#: src/algorithms/convex-hull/HullRotationControls.tsx:69
+#: src/algorithms/convex-hull/HullLearning.tsx:187
 msgid "This step has no main arrow to align"
 msgstr "This step has no main arrow to align"
+
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:123
+msgid "This step has no valid A edge to align"
+msgstr "This step has no valid A edge to align"
 
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:46
 msgid "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
@@ -3952,13 +3958,13 @@ msgstr "Trace endpoint connections along the angular meanders and distinguish co
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
 #: src/algorithms/convex-hull/HullLearning.tsx:112
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:93
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:95
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:98
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:100
 msgid "Trace failed"
 msgstr "Trace failed"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:93
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:98
 msgid "Trace generated"
 msgstr "Trace generated"
 
@@ -4274,13 +4280,13 @@ msgstr "Vertical fractional overlap"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "Vertical overlap with mixed contacts at multiple heights"
 
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
+msgstr "Vertical segment rules"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
-msgstr "Vertical segment rules"
-
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
 msgstr "Vertical segment rules"
 
 #. js-lingui-explicit-id
@@ -4320,7 +4326,7 @@ msgid "Waiting for the next major step. Steps 0–{0} are available to explore."
 msgstr "Waiting for the next major step. Steps 0–{0} are available to explore."
 
 #: src/algorithms/convex-hull/HullLearning.tsx:90
-#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:84
+#: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:89
 msgid "Waiting for the requested step"
 msgstr "Waiting for the requested step"
 
