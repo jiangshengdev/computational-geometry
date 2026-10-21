@@ -10,10 +10,7 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import {
-  synthesize,
-  voice,
-} from "../../line-equation-demo/scripts/azure-speech.ts";
+import { synthesize, voice } from "./azure-speech.ts";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const chapters = JSON.parse(
@@ -25,7 +22,7 @@ const chapters = JSON.parse(
 const speech: Record<string, string> = JSON.parse(
   readFileSync(join(root, "src/speech-text.json"), "utf8"),
 );
-const rows = chapters.slice(1).flatMap((chapter) => chapter.rows);
+const rows = chapters.flatMap((chapter) => chapter.rows);
 if (Object.keys(speech).length !== rows.length)
   throw new Error("Speech text must match tutorial row IDs exactly");
 for (const row of rows) {
@@ -66,7 +63,7 @@ const report: Record<
 mkdirSync(output, { recursive: true });
 try {
   process.stdout.write(`Azure voice: ${voice}\n`);
-  for (const chapter of chapters.slice(1))
+  for (const chapter of chapters)
     for (const row of chapter.rows) {
       if (!row.narration) {
         report[row.id] = {
@@ -106,7 +103,7 @@ try {
         `${row.id}: ${duration.toFixed(2)}s, original Azure audio\n`,
       );
     }
-  for (const chapter of chapters.slice(1))
+  for (const chapter of chapters)
     for (const row of chapter.rows)
       if (row.narration)
         copyFileSync(

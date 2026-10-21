@@ -7,7 +7,7 @@ import {
   useCurrentFrame,
   interpolate,
 } from "remotion";
-import { Lesson as Intro } from "../../line-equation-demo/src/Composition";
+import { Intro } from "./Intro";
 import { chapters, offsets, totalFrames, fps } from "./timeline";
 import { Diagram } from "./Diagram";
 import { titles, visuals } from "./scenes";

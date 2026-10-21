@@ -2,11 +2,10 @@ import narration from "./narration.json";
 import timingData from "./audio-timing.json";
 const timing: Record<string, { frames: number; duration: number }> = timingData;
 export const fps = 30;
-export const chapters = narration.map((chapter, index) => {
+export const chapters = narration.map((chapter) => {
   let from = 0;
   const rows = chapter.rows.map((row) => {
-    const durationInFrames =
-      index === 0 ? (row.end - row.start) * fps : timing[row.id].frames;
+    const durationInFrames = timing[row.id].frames;
     const result = { ...row, from, durationInFrames };
     from += durationInFrames;
     return result;
