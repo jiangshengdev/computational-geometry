@@ -260,3 +260,63 @@ fn disconnect_stops_hull_generation_before_completion() {
         Some("completed")
     );
 }
+
+#[test]
+fn disconnect_stops_polygon_observation_and_following_trace_completes() {
+    let (server, address) = Server::start();
+    let point = |x: i64, y: i64| {
+        serde_json::json!({
+            "x":{"numerator":x.to_string(),"denominator":"1"},
+            "y":{"numerator":y.to_string(),"denominator":"1"}
+        })
+    };
+    let first: Vec<_> = (-150..=150).map(|x| point(x, x * x)).collect();
+    let second = vec![
+        point(-200, -1),
+        point(200, -1),
+        point(200, 30000),
+        point(-200, 30000),
+    ];
+    let (mut response, id) = request(
+        address,
+        "/api/convex-polygon-intersection/trace",
+        &serde_json::json!({"first":first,"second":second}).to_string(),
+    );
+    let mut initial = Vec::new();
+    while !initial.contains(&b'\n') {
+        initial.extend(chunk(&mut response).expect("start must arrive before completion"));
+    }
+    let frame: serde_json::Value =
+        serde_json::from_slice(initial.split(|b| *b == b'\n').next().unwrap()).unwrap();
+    assert_eq!(frame["type"], "start");
+    response.get_ref().shutdown(Shutdown::Both).unwrap();
+    drop(response);
+    let stopped = server.terminal_log(&id);
+    assert_eq!(field(&stopped, "status"), Some("cancelled"), "{stopped}");
+    assert!(
+        field(&stopped, "sent_steps")
+            .unwrap()
+            .parse::<usize>()
+            .unwrap()
+            < first.len() + 1
+    );
+    let (mut response, id) = request(
+        address,
+        "/api/convex-polygon-intersection/trace",
+        &serde_json::json!({"first":second,"second":second}).to_string(),
+    );
+    let mut body = Vec::new();
+    while let Some(bytes) = chunk(&mut response) {
+        body.extend(bytes);
+    }
+    let frames: Vec<serde_json::Value> = body
+        .split(|b| *b == b'\n')
+        .filter(|s| !s.is_empty())
+        .map(|line| serde_json::from_slice(line).unwrap())
+        .collect();
+    assert_eq!(frames.last().unwrap()["type"], "complete");
+    assert_eq!(
+        field(&server.terminal_log(&id), "status"),
+        Some("completed")
+    );
+}

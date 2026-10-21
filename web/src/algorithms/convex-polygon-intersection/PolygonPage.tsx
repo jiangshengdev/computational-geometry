@@ -18,6 +18,7 @@ import { GeometryViewControls } from '../../geometry/GeometryViewControls'
 import { GeometryInfo } from '../../geometry/GeometryInfo'
 import { CaseCatalog } from '../../geometry/CaseCatalog'
 import { CaseToolbar } from '../../geometry/CaseToolbar'
+import { PolygonLearning } from './PolygonLearning'
 
 export function PolygonPage() {
   const { t } = useLingui()
@@ -38,7 +39,8 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
   const result = computation.status === 'ready' ? computation.result : undefined
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex polygon intersection`} · ${t`Computational Geometry`}`} />
-    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-polygon-intersection" />
+    <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-polygon-intersection"
+      trailingAction={<AppLink className={buttonVariants({ variant: 'primary', size: 'sm' })} to={`/convex-polygon-intersection/cases/${preset.id}/learn`}>{t`Start step-by-step learning`}</AppLink>} />
     <div className="workspace result-workspace polygon-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <div className="drawing"><Card>
         <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1">
@@ -63,11 +65,11 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
   </>
 }
 
-export function PolygonCasePage() {
+export function PolygonCasePage({ learning = false }: { learning?: boolean }) {
   const { caseId } = useParams()
   const { t } = useLingui()
   const preset = polygonCases.find(candidate => candidate.id === caseId)
-  return preset ? <PolygonCaseViewer key={preset.id} preset={preset} /> : <>
+  return preset ? learning ? <PolygonLearning key={preset.id} preset={preset} /> : <PolygonCaseViewer key={preset.id} preset={preset} /> : <>
     <DocumentTitle title={`${t`Invalid link`} · ${t`Convex polygon intersection`}`} />
     <Alert status="danger" role="alert"><Alert.Content><Alert.Title>{t`Invalid link`}</Alert.Title><Alert.Description>{t`Unknown case.`}</Alert.Description></Alert.Content></Alert>
     <AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm', className: 'self-start' })} to="/convex-polygon-intersection">{t`Back to cases`}</AppLink>

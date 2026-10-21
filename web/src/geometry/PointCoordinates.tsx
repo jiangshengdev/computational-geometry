@@ -10,16 +10,19 @@ import { useStepPanelScroll } from '../algorithms/segment-intersection/bo/learni
 
 const idleTarget = {}
 
-export function PointCoordinates({ title, points, prefix, interaction, children, panel = prefix === 'P' ? 'input' : 'result' }: {
+export function PointCoordinates({ title, points, prefix, interaction, children, currentIds = [], stepKey, panel = prefix === 'P' ? 'input' : 'result' }: {
   title: string
   points?: Point[]
   children?: ReactNode
   prefix: string
   interaction?: PointInteraction
   panel?: 'input' | 'result'
+  currentIds?: number[]
+  stepKey?: object
 }) {
   const { t } = useLingui()
   const scrollport = useRef<HTMLDivElement>(null)
+  useStepPanelScroll(stepKey ?? idleTarget, 0, [{ panel: scrollport, selector: currentIds.length ? `[data-point-id="${currentIds.at(-1)}"]` : undefined }])
   useStepPanelScroll(interaction?.active ?? idleTarget, 0, [{
     panel: scrollport,
     selector: interaction?.active?.source === 'plot' ? '[data-highlighted="true"]' : undefined,
@@ -30,9 +33,9 @@ export function PointCoordinates({ title, points, prefix, interaction, children,
       <ol className="flex flex-col gap-1 p-1">{points.map((p, index) => {
         const highlighted = Boolean(interaction?.active && samePoint(p, interaction.active.point))
         const selected = Boolean(interaction?.selected && samePoint(p, interaction.selected.point))
-        return <li key={index} data-highlighted={highlighted} data-selected={selected}>
+        return <li key={index} data-point-id={index} data-current={currentIds.includes(index)} data-highlighted={highlighted} data-selected={selected}>
           {interaction ? <ToggleButton className="coordinates w-full justify-start" isSelected={selected}
-            variant={highlighted ? 'default' : 'ghost'}
+            variant={highlighted || currentIds.includes(index) ? 'default' : 'ghost'} aria-current={currentIds.includes(index) ? 'step' : undefined}
             onChange={() => interaction.select({ point: p, source: 'list' })}
             onHoverStart={() => interaction.hover({ point: p, source: 'list' })} onHoverEnd={() => interaction.hover(null)}
             onFocus={() => interaction.hover({ point: p, source: 'list' })} onBlur={() => interaction.hover(null)}>

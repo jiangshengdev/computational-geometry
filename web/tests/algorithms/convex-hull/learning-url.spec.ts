@@ -1,13 +1,17 @@
 import { expect, test } from '@playwright/test'
 
+for (const scenario of [
+  { base: '/convex-hull', initial: 'triangle-interior', nextName: 'Single point', action: 'input' },
+  { base: '/convex-polygon-intersection', initial: 'irregular-overlap', nextName: 'Coincident polygons', action: 'containment' },
+]) {
 for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName, locale: 'en-US' })
 
-  browserTest(`hull slider commits drag and held keys only on release: ${browserName}`, async ({ page }) => {
+  browserTest(`${scenario.base} slider commits drag and held keys only on release: ${browserName}`, async ({ page }) => {
     test.setTimeout(60000)
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
-    await page.goto('/convex-hull/cases/triangle-interior')
+    await page.goto(`${scenario.base}/cases/${scenario.initial}`)
     await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
     await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
     const slider = page.getByRole('slider', { name: 'Teaching step' })
@@ -43,7 +47,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await page.reload()
     await expect(slider).toHaveValue(String(last))
     await page.goBack()
-    await expect(page).toHaveURL(/\/convex-hull\/cases\/triangle-interior$/)
+    await expect(page).toHaveURL(new RegExp(`${scenario.base}/cases/${scenario.initial}$`))
     await page.goForward()
     await expect(slider).toHaveValue(String(last))
 
@@ -69,10 +73,10 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     expect(errors).toEqual([])
   })
 
-  browserTest(`hull navigation discards unfinished preview: ${browserName}`, async ({ page }) => {
+  browserTest(`${scenario.base} navigation discards unfinished preview: ${browserName}`, async ({ page }) => {
     const errors: string[] = []
     page.on('pageerror', error => errors.push(error.message))
-    await page.goto('/convex-hull/cases/triangle-interior')
+    await page.goto(`${scenario.base}/cases/${scenario.initial}`)
     await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
     await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
     await page.getByRole('button', { name: 'Next step', exact: true }).click()
@@ -83,15 +87,17 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await expect(page).toHaveURL(/step=1$/)
     await page.goBack()
     await page.keyboard.up('ArrowRight')
-    await expect(page).toHaveURL(/\/convex-hull\/cases\/triangle-interior$/)
+    await expect(page).toHaveURL(new RegExp(`${scenario.base}/cases/${scenario.initial}$`))
     await page.goForward()
     await expect(slider).toHaveValue('1')
     await expect(page).toHaveURL(/step=1$/)
     await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
-    await page.getByRole('article', { name: 'Single point', exact: true }).getByRole('button', { name: 'View details', exact: true }).click()
+    await page.getByRole('article', { name: scenario.nextName, exact: true }).getByRole('button', { name: 'View details', exact: true }).click()
     await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
     await expect(slider).toHaveValue('0')
-    await expect(page.getByRole('region', { name: 'Current action' })).toHaveAttribute('data-action', 'input')
+    await expect(page.getByRole('region', { name: 'Current action' })).toHaveAttribute('data-action', scenario.action)
     expect(errors).toEqual([])
   })
+}
+
 }

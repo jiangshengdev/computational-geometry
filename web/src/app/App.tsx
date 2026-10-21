@@ -15,7 +15,7 @@ export default function App() {
   const { t } = useLingui()
   const caseRoute = useMatch('/bo/cases/:caseId/*')
   const hullCaseRoute = useMatch('/convex-hull/cases/:caseId/*')
-  const polygonCaseRoute = useMatch('/convex-polygon-intersection/cases/:caseId')
+  const polygonCaseRoute = useMatch('/convex-polygon-intersection/cases/:caseId/*')
   const triangulationCaseRoute = useMatch('/triangulation/cases/:caseId')
   const boList = useMatch('/bo')
   return <>
@@ -34,6 +34,7 @@ export default function App() {
         <Route path="/convex-hull/cases/:caseId/learn" element={<ConvexHullCasePage learning />} />
         <Route path="/convex-polygon-intersection" element={<PolygonPage />} />
         <Route path="/convex-polygon-intersection/cases/:caseId" element={<PolygonCasePage />} />
+        <Route path="/convex-polygon-intersection/cases/:caseId/learn" element={<PolygonCasePage learning />} />
         <Route path="/triangulation" element={<TriangulationPage />} />
         <Route path="/triangulation/cases/:caseId" element={<TriangulationCasePage />} />
         <Route path="*" element={<>

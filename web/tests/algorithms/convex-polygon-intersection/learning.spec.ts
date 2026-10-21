@@ -1,0 +1,149 @@
+import { expect, test } from '@playwright/test'
+import { formatPoint } from '../../../src/geometry/geometry'
+import type { PolygonStep } from '../../../src/algorithms/convex-polygon-intersection/trace'
+
+test.use({ locale: 'en-US', viewport: { width: 1440, height: 1000 } })
+
+for (const browserName of ['chromium', 'webkit'] as const) {
+  const browserTest = test.extend({ browserName })
+  browserTest(`real actions restore candidates, edges and final result: ${browserName}`, async ({ page }) => {
+    const errors: string[] = []
+    page.on('pageerror', error => errors.push(error.message))
+    let requests = 0
+    page.on('request', request => { if (request.url().endsWith('/convex-polygon-intersection/trace')) requests++ })
+    await page.goto('/convex-polygon-intersection/cases/irregular-overlap')
+    await expect(page.getByRole('region', { name: 'Intersection coordinates', exact: true })).toBeVisible()
+    expect(requests).toBe(0)
+    const responsePromise = page.waitForResponse(response => response.url().endsWith('/convex-polygon-intersection/trace'))
+    await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
+    const frames = (await (await responsePromise).text()).trim().split('\n').map(line => JSON.parse(line))
+    const steps: PolygonStep[] = frames.filter(f => f.type === 'step').map(f => f.step)
+    const action = page.getByRole('region', { name: 'Current action' })
+    const candidates = page.getByRole('region', { name: 'Collected candidates', exact: true })
+    const final = page.getByRole('region', { name: 'Final intersection', exact: true })
+    const plot = page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true })
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    await expect(final).toHaveCount(0)
+    await page.getByRole('button', { name: 'Edge Chasing', exact: true }).click()
+    let index = steps.findIndex(s => s.phase === 'chasing')
+    const end = steps.findIndex(s => s.action === 'inside') + 2
+    const assertState = async () => {
+      const step = steps[index]
+      await expect(action).toHaveAttribute('data-action', step.action)
+      await expect(candidates.getByRole('listitem')).toHaveText(step.candidates.map((p, i) => `C${i} ${formatPoint(p)}`))
+      await expect(plot.locator('[data-candidate-id]')).toHaveCount(step.candidates.length)
+      for (const [side, prefix] of ['A', 'B'].entries()) {
+        if (step.edges) {
+          await expect(plot.locator(`[data-edge="${prefix}"]`)).toHaveAttribute('data-from', String(step.edges[side][0]))
+          await expect(plot.locator(`[data-edge="${prefix}"]`)).toHaveAttribute('data-to', String(step.edges[side][1]))
+        }
+      }
+      await expect(final).toHaveCount(0)
+    }
+    await assertState()
+    for (; index < end;) { await page.getByRole('button', { name: 'Next step', exact: true }).click(); index++; await assertState() }
+    await page.screenshot({ path: `/tmp/polygon-learning-${browserName}.png` })
+    await page.getByRole('button', { name: 'Previous step', exact: true }).click(); index--; await assertState()
+    await page.getByRole('button', { name: 'Normalize candidates', exact: true }).click()
+    await expect(action).toHaveAttribute('data-action', 'normalize')
+    await expect(final).toHaveCount(0)
+    await page.getByRole('button', { name: 'Next step', exact: true }).click()
+    await expect(action).toContainText('Polygon with area')
+    await expect(final.getByRole('listitem')).toHaveCount(9)
+    await page.getByRole('button', { name: 'Restart', exact: true }).click()
+    await expect(candidates.getByRole('listitem')).toHaveCount(0)
+    await expect(final).toHaveCount(0)
+    await expect(plot.locator('[data-result]')).toHaveCount(0)
+    await expect(page.locator('vite-error-overlay')).toHaveCount(0)
+    expect(errors).toEqual([])
+  })
+
+  browserTest(`step positioning and plot linking preserve manual wheel browsing: ${browserName}`, async ({ page }) => {
+    await page.goto('/convex-polygon-intersection/cases/many-vertices/learn?step=35')
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    const panel = page.getByRole('region', { name: 'Polygon A vertices', exact: true })
+    const scroll = panel.locator('ol').locator('..')
+    const current = panel.locator('[data-current="true"]')
+    await expect(current).toBeInViewport()
+    const initial = await scroll.evaluate(el => el.scrollTop)
+    const box = (await scroll.boundingBox())!
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+    for (let i = 0; i < 3; i++) { await page.mouse.wheel(0, -350); await page.waitForTimeout(250) }
+    const top = await scroll.evaluate(el => el.scrollTop)
+    expect(top).toBeLessThan(initial - 300)
+    await panel.getByRole('heading').hover()
+    expect(await scroll.evaluate(el => el.scrollTop)).toBe(top)
+    await expect(page.getByRole('slider', { name: 'Teaching step' })).toHaveValue('35')
+    await expect(current).not.toBeInViewport()
+    await page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true }).getByRole('button', { name: 'Point (3, 9/4)', exact: true }).focus()
+    await expect(current).toBeInViewport()
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+    await page.mouse.wheel(0, -1500)
+    await expect(current).not.toBeInViewport()
+    await page.getByRole('button', { name: 'Next step', exact: true }).click()
+    await expect(panel.locator('[data-current="true"]')).toBeInViewport()
+  })
+}
+
+for (const [id, kind] of [['contained', 'Polygon with area'], ['coincident', 'Polygon with area'], ['shared-edge', 'Segment'], ['point-contact', 'Point'], ['disjoint', 'Empty set']]) {
+  test(`actual early paths and result: ${id}`, async ({ page }) => {
+    await page.goto(`/convex-polygon-intersection/cases/${id}/learn`)
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    if (id === 'contained' || id === 'coincident') {
+      await expect(page.getByRole('button', { name: 'Edge Chasing', exact: true })).toHaveCount(0)
+      await expect(page.getByRole('button', { name: 'Normalize candidates', exact: true })).toHaveCount(0)
+    }
+    await page.getByRole('slider', { name: 'Teaching step' }).press('End')
+    await expect(page.getByRole('region', { name: 'Current action' })).toContainText(kind)
+    await expect(page.getByRole('region', { name: 'Final intersection', exact: true })).toBeVisible()
+  })
+}
+
+test('real progressive cancellation retains recorded actions and isolates the next case', async ({ page }) => {
+  test.setTimeout(60000)
+  await page.goto('/convex-polygon-intersection/cases/irregular-overlap')
+  await expect(page.getByRole('region', { name: 'Intersection coordinates', exact: true })).toBeVisible()
+  const network = await page.context().newCDPSession(page)
+  await network.send('Network.enable')
+  await network.send('Network.emulateNetworkConditions', { offline: false, latency: 0, downloadThroughput: 4096, uploadThroughput: -1 })
+  await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
+  const slider = page.getByRole('slider', { name: 'Teaching step' })
+  await expect(slider).toBeEnabled()
+  await expect(page.getByText('Generating trace · total unknown', { exact: false })).toBeVisible()
+  const cancelled = page.waitForEvent('requestfailed', r => r.url().endsWith('/convex-polygon-intersection/trace'))
+  await page.getByRole('button', { name: 'Cancel loading', exact: true }).click()
+  await cancelled
+  await expect(page.getByText('Loading cancelled', { exact: false })).toBeVisible()
+  await slider.press('End')
+  await page.getByRole('button', { name: 'Previous step', exact: true }).click()
+  await expect(page.getByRole('region', { name: 'Current action' })).toBeVisible()
+  await expect(page.getByText('Trace generated', { exact: false })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Restart', exact: true }).click()
+  await expect(page.getByRole('region', { name: 'Current action' })).toHaveAttribute('data-action', 'containment')
+  await page.getByRole('link', { name: 'Back to cases', exact: true }).click()
+  await network.send('Network.emulateNetworkConditions', { offline: false, latency: 0, downloadThroughput: -1, uploadThroughput: -1 })
+  await page.getByRole('article', { name: 'Coincident polygons', exact: true }).getByRole('button', { name: 'View details', exact: true }).click()
+  await page.getByRole('link', { name: 'Start step-by-step learning', exact: true }).click()
+  await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+  await expect(slider).toHaveValue('0')
+  await expect(page.getByRole('region', { name: 'Collected candidates', exact: true }).getByRole('listitem')).toHaveCount(0)
+  await network.detach()
+})
+
+test('interrupted real trace and HTTP failure never report success', async ({ page }) => {
+  await page.route('**/api/convex-polygon-intersection/trace', async route => {
+    const response = await route.fetch()
+    const lines = (await response.text()).trim().split('\n')
+    await route.fulfill({ response, body: lines.slice(0, 3).join('\n') + '\n' })
+  })
+  await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn')
+  await expect(page.getByRole('alert')).toContainText('Trace failed')
+  await expect(page.getByRole('region', { name: 'Current action' })).toBeVisible()
+  await expect(page.getByText('Trace generated', { exact: false })).toHaveCount(0)
+  await expect(page.getByRole('region', { name: 'Final intersection', exact: true })).toHaveCount(0)
+  await page.unrouteAll()
+  await page.route('**/api/convex-polygon-intersection/trace', route => route.fulfill({ status: 500, body: 'failed' }))
+  await page.reload()
+  await expect(page.getByRole('alert')).toContainText('HTTP 500')
+  await expect(page.getByRole('region', { name: 'Current action' })).toHaveCount(0)
+})

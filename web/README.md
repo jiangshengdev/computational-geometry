@@ -95,6 +95,22 @@ GitHub 接入后的首次 Preview 部署需检查：案例页直接访问和刷�
 BO 与凸包共用 NDJSON 交付、断连取消和生命周期日志；`x-trace-id` 标识请求，既有 `BO_TRACE_LIFECYCLE=1` 开关记录两种轨迹的终止原因。
 页面离开、切换案例或取消加载时中止请求，服务端观察点停止剩余生成。已记录状态可继续浏览。
 
+### 凸多边形求交教学轨迹
+
+结果页按需进入 `/convex-polygon-intersection/cases/:caseId/learn?step=0`，调用
+`POST /api/convex-polygon-intersection/trace`，请求为 `{first: Point[], second: Point[]}`。
+坐标沿用精确有理数结构，边界校验和普通求交一致。NDJSON 帧依次为：
+
+- `start`：携带原始顺序的 `first`、`second`，以及规范化边界对应原始零基编号的 `first_order`、`second_order`。
+- `step`：`step.phase` 为 `containment|chasing|normalize`，`action` 为 `containment|relation|collect|inside|advance|terminate|normalize|complete`，只记录真实执行动作。
+- `complete`：`result` 与末步及普通计算一致，类型为 `empty|point|segment|polygon`。完整流结束后才标识交付完成。
+
+每个快照包含 `boundary`（`first|second|null`）、原始编号 `vertex`、包含结论 `contained`、当前有向边 `edges`（A、B 各一对原始编号）、`relation`、`inside`（`unknown|p|q`）、精确 `candidates`、本步新增候选编号 `added`、机器身份 `reason` 和最终 `result`。不适用的字段为 null；结果生成前 `result` 始终为 null。
+`relation` 表达刚检查的边方向 `cross`、两终点相对另一边的位置 `first_side/second_side`（`left|right|collinear`）及 `contact`（`none|point|overlap`）。推进帧的 `edges` 已更新，`relation` 仍指刚检查的旧边，页面只用推进原因解释该决定，不将旧关系标在新边上。
+`inside` 表示追踪哪条位于另一多边形内部的边界段，不表示整个多边形被包含。包含短路和反向共线接触提前返回不会补造追边或整理阶段；候选点保持原始收集次序，不能直接当作最终多边形。
+
+普通计算与教学使用同一 Rust 执行路径，并复用有界轨迹交付及断连取消。页面复用凸包的流加载生命周期及回放 URL 控件：拖动、长按只预览，结束后提交；导航使旧预览失效。取消保留已接收步骤，中断或错误不得冒充完成。`x-trace-id` 与 `BO_TRACE_LIFECYCLE=1` 同样适用于本接口。
+
 ## 验证
 
 在仓库根目录一键运行全部检查：
