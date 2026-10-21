@@ -4,23 +4,16 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { scenes } from "../src/storyboard.ts";
+import { synthesize } from "./azure-speech.ts";
 
-// Uses existing macOS voice and FFmpeg; never downloads voices or executables.
+// Uses Azure Speech and existing FFmpeg; never downloads executables.
 const output = fileURLToPath(new URL("../public/narration/", import.meta.url));
 const temporary = mkdtempSync(join(tmpdir(), "line-equation-narration-"));
 mkdirSync(output, { recursive: true });
 try {
   for (const scene of scenes) {
-    const source = join(temporary, `${scene.id}.aiff`);
-    execFileSync("say", [
-      "-v",
-      "Tingting (中文（中国大陆）)",
-      "-r",
-      "240",
-      "-o",
-      source,
-      scene.narration,
-    ]);
+    const source = join(temporary, `${scene.id}.mp3`);
+    await synthesize(scene.narration, source);
     const duration = Number(
       execFileSync(
         "ffprobe",

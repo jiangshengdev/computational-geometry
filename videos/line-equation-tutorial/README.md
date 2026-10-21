@@ -32,13 +32,13 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 - `src/timeline.ts`：根据实测音频生成的 `src/audio-timing.json` 排列各镜头、片段和全片。第 2、4 段问题结束后保留 4 秒；第 8 段使用独立的 4 秒静默镜头。
 - 首段直接复用相邻 `line-equation-demo` 工程的 `Lesson`，须一起保留，不能只复制本目录源码。
 
-已包含配音素材，再次渲染不需要语音服务。重新生成配音要求本机已有 `say` 的 `Tingting (中文（中国大陆）)`、FFmpeg 和 ffprobe：
+已包含配音素材，再次渲染不需要语音服务。重新生成配音使用 Azure 音色 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`，要求环境变量 `AZURE_SPEECH_KEY`、`AZURE_SPEECH_ENDPOINT` 和本机已有 FFmpeg、ffprobe。可选的 `AZURE_SPEECH_VOICE` 必须与上述音色一致；失败时停止，不回退到系统语音：
 
 ```sh
 pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts
 ```
 
-脚本将数学符号转换为可读发音，通过 FFmpeg 调整语速，再测量编码后的音频。镜头随真实音频校准；过短的旁白缩短窗口，避免极慢语速。生成后的时间线、音频和实际画面需一起检查，不能只改 JSON 中的时长。首段四个已验证素材由原 demo 复制，保留原来源。
+脚本将数学符号转换为可读发音，通过 FFmpeg 调整语速，再测量编码后的音频。后续 52 段全部生成并通过解码、时长检查后，替换素材及时间数据。镜头随真实音频校准；过短的旁白缩短窗口，避免极慢语速。生成后的时间线、音频和实际画面需一起检查，不能只改 JSON 中的时长。首段四个已验证的 Azure 素材保持不变。
 
 ## 验收边界
 

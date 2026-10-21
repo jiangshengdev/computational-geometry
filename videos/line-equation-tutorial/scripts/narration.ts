@@ -10,6 +10,10 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  synthesize,
+  voice,
+} from "../../line-equation-demo/scripts/azure-speech.ts";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const chapters = JSON.parse(
@@ -57,17 +61,7 @@ const report: Record<
 > = {};
 mkdirSync(output, { recursive: true });
 try {
-  for (const name of [
-    "01-intersection",
-    "02-equations",
-    "03-endpoints",
-    "04-line",
-  ]) {
-    copyFileSync(
-      join(root, "../line-equation-demo/public/narration", `${name}.mp3`),
-      join(output, `${name}.mp3`),
-    );
-  }
+  process.stdout.write(`Azure voice: ${voice}\n`);
   for (const chapter of chapters.slice(1))
     for (const row of chapter.rows) {
       if (!row.narration) {
@@ -79,16 +73,8 @@ try {
         };
         continue;
       }
-      const source = join(temporary, `${row.id}.aiff`);
-      execFileSync("say", [
-        "-v",
-        "Tingting (中文（中国大陆）)",
-        "-r",
-        "240",
-        "-o",
-        source,
-        spoken(row.narration),
-      ]);
+      const source = join(temporary, `${row.id}.raw.mp3`);
+      await synthesize(spoken(row.narration), source);
       // Questions end exactly four seconds before the answer; other rows retain a short breath.
       const silenceAfter = questions.has(row.id)
         ? 4
@@ -100,7 +86,7 @@ try {
       const tempo = Math.max(0.65, measure(source) / target);
       if (!Number.isFinite(tempo) || tempo > 2)
         throw Error(`Unsafe speech tempo ${row.id}: ${tempo}`);
-      const destination = join(output, `${row.id}.mp3`);
+      const destination = join(temporary, `${row.id}.mp3`);
       execFileSync("ffmpeg", [
         "-v",
         "error",
@@ -116,7 +102,21 @@ try {
         destination,
       ]);
       const duration = measure(destination);
-      if (duration > target + 0.15)
+      execFileSync("ffmpeg", [
+        "-v",
+        "error",
+        "-xerror",
+        "-i",
+        destination,
+        "-f",
+        "null",
+        "-",
+      ]);
+      if (
+        !Number.isFinite(duration) ||
+        duration <= 0 ||
+        duration > target + 0.15
+      )
         throw Error(`Audio exceeds window ${row.id}`);
       report[row.id] = {
         duration,
@@ -128,6 +128,13 @@ try {
         `${row.id}: ${duration.toFixed(2)}s, tempo ${tempo.toFixed(2)}\n`,
       );
     }
+  for (const chapter of chapters.slice(1))
+    for (const row of chapter.rows)
+      if (row.narration)
+        copyFileSync(
+          join(temporary, `${row.id}.mp3`),
+          join(output, `${row.id}.mp3`),
+        );
   writeFileSync(
     join(root, "src/audio-timing.json"),
     JSON.stringify(report, null, 2) + "\n",
