@@ -82,7 +82,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
           </g>)}
         </g>)}
       {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={4 / scale} className={includesPoint(active, point) ? 'fill-success' : 'fill-purple-500'} pointerEvents="none" />)}
-      {sideInteraction?.active == null && labels.length > 0 && <g data-layer="labels" pointerEvents="none">
+      {labels.length > 0 && <g data-layer="labels" pointerEvents="none">
         {/* Paint every outline before any fill so adjacent glyphs cannot erase text. */}
         {(['outline', 'fill'] as const).map(layer => <g key={layer} aria-hidden={layer === 'outline' ? true : undefined}>
           {labels.map(label => <text key={label.id} x={label.x} y={label.y} textAnchor="middle" fontSize={12 / scale}
