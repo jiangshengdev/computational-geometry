@@ -101,6 +101,22 @@ msgstr "{point}: right side of {reference}"
 msgid "{title} teaching code"
 msgstr "{title} teaching code"
 
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:40
+msgid "A as reference: B points in the opposite direction"
+msgstr "A as reference: B points in the opposite direction"
+
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:40
+msgid "A as reference: B points in the same direction"
+msgstr "A as reference: B points in the same direction"
+
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:38
+msgid "A as reference: turn left toward B"
+msgstr "A as reference: turn left toward B"
+
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:39
+msgid "A as reference: turn right toward B"
+msgstr "A as reference: turn right toward B"
+
 #: src/algorithms/triangulation/cases.ts:18
 #~ msgid "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
 #~ msgstr "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
@@ -1060,7 +1076,7 @@ msgid "Convex polygon intersection cases"
 msgstr "Convex polygon intersection cases"
 
 #: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:109
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:63
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:64
 msgid "Convex polygon intersection plot"
 msgstr "Convex polygon intersection plot"
 
@@ -1833,7 +1849,7 @@ msgstr "Input points"
 #~ msgid "Input points: {0}; hull vertices: {1}"
 #~ msgstr "Input points: {0}; hull vertices: {1}"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:63
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:64
 #: src/algorithms/triangulation/TriangulationPlot.tsx:22
 msgid "Input polygon preview"
 msgstr "Input polygon preview"
@@ -2679,7 +2695,7 @@ msgstr "Point y coordinate"
 msgid "Points only"
 msgstr "Points only"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:68
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:69
 msgid "Polygon A"
 msgstr "Polygon A"
 
@@ -2692,7 +2708,7 @@ msgstr "Polygon A · solid boundary"
 msgid "Polygon A vertices"
 msgstr "Polygon A vertices"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:69
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:70
 msgid "Polygon B"
 msgstr "Polygon B"
 

@@ -101,6 +101,22 @@ msgstr "{point}：{reference} 边右侧"
 msgid "{title} teaching code"
 msgstr "{title}教学代码"
 
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:40
+msgid "A as reference: B points in the opposite direction"
+msgstr "以 A 为基准：B 反向"
+
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:40
+msgid "A as reference: B points in the same direction"
+msgstr "以 A 为基准：B 同向"
+
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:38
+msgid "A as reference: turn left toward B"
+msgstr "以 A 为基准：向 B 左转"
+
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:39
+msgid "A as reference: turn right toward B"
+msgstr "以 A 为基准：向 B 右转"
+
 #: src/algorithms/triangulation/cases.ts:18
 #~ msgid "A comb-shaped boundary has many inward corners, horizontal edges and equal-height vertices."
 #~ msgstr "梳齿形边界包含多个凹口、水平边和同高顶点。"
@@ -1060,7 +1076,7 @@ msgid "Convex polygon intersection cases"
 msgstr "凸多边形交集案例"
 
 #: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:109
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:63
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:64
 msgid "Convex polygon intersection plot"
 msgstr "凸多边形交集图形"
 
@@ -1833,7 +1849,7 @@ msgstr "输入点"
 #~ msgid "Input points: {0}; hull vertices: {1}"
 #~ msgstr "输入点数：{0}；凸包顶点数：{1}"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:63
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:64
 #: src/algorithms/triangulation/TriangulationPlot.tsx:22
 msgid "Input polygon preview"
 msgstr "输入多边形预览"
@@ -2679,7 +2695,7 @@ msgstr "点的纵坐标"
 msgid "Points only"
 msgstr "纯点集合"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:68
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:69
 msgid "Polygon A"
 msgstr "多边形 A"
 
@@ -2692,7 +2708,7 @@ msgstr "多边形 A · 实线边界"
 msgid "Polygon A vertices"
 msgstr "多边形 A 顶点"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:69
+#: src/algorithms/convex-polygon-intersection/PolygonPlot.tsx:70
 msgid "Polygon B"
 msgstr "多边形 B"
 

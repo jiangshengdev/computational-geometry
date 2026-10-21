@@ -21,6 +21,10 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const panelA = panel.getByRole('button', { name: 'A0: left side of B', exact: true })
     const panelB = panel.getByRole('button', { name: 'B0: right side of A', exact: true })
     const guide = plot.locator('..').locator('[data-side-guide]')
+    const direction = page.getByRole('img', { name: 'A as reference: turn right toward B', exact: true })
+    await expect(direction).toBeVisible()
+    await expect(direction).toHaveAttribute('data-direction-placement', 'intersection')
+    await expect(direction.locator('[data-turn-arc]')).toHaveAttribute('data-turn-arc', 'right')
     await expect(guide).toHaveCount(0)
     await expect(canvasB).toBeVisible()
     await expect(vertexLabels).toBeVisible()
@@ -28,6 +32,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await expect(canvasA).toBeVisible()
     await expect(canvasB).toBeHidden()
     await expect(vertexLabels).toBeVisible()
+    await expect(direction).toBeVisible()
     await expect(guide).toHaveAttribute('data-side-guide', '0')
     await expect(guide.locator('[data-turn-arc]')).toHaveAttribute('data-turn-arc', 'left')
     await panel.getByText('Point contact', { exact: true }).hover()
@@ -91,6 +96,40 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await page.screenshot({ path: `/tmp/polygon-side-guide-zh-${browserName}.png` })
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(errors).toEqual([])
+  })
+
+  browserTest(`edge direction follows real relations and stays available outside the viewport: ${browserName}`, async ({ page }) => {
+    for (const [caseId, turn, description] of [
+      ['irregular-overlap', 'left', 'turn left toward B'],
+      ['overlap', 'collinear', 'B points in the same direction'],
+      ['shared-edge', 'collinear', 'B points in the opposite direction'],
+    ] as const) {
+      const response = page.waitForResponse(response => response.url().endsWith('/convex-polygon-intersection/trace'))
+      await page.goto(`/convex-polygon-intersection/cases/${caseId}/learn`)
+      const frames = (await (await response).text()).trim().split('\n').map(line => JSON.parse(line))
+      const steps: PolygonStep[] = frames.filter(frame => frame.type === 'step').map(frame => frame.step)
+      const index = steps.findIndex(step => step.action === 'relation' && step.relation?.cross === turn
+        && (caseId !== 'shared-edge' || step.relation.contact === 'overlap'))
+      expect(index).toBeGreaterThanOrEqual(0)
+      await page.goto(`/convex-polygon-intersection/cases/${caseId}/learn?step=${index}`)
+      const direction = page.getByRole('img', { name: `A as reference: ${description}`, exact: true })
+      await expect(direction).toBeVisible()
+      if (turn === 'collinear') {
+        await expect(direction).toHaveAttribute('data-direction-placement', 'inset')
+        await expect(direction.locator('[data-turn-arc]')).toHaveCount(0)
+      } else {
+        await expect(direction.locator('[data-turn-arc]')).toHaveAttribute('data-turn-arc', 'left')
+        const plot = page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true })
+        const box = (await plot.boundingBox())!
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+        await page.mouse.down()
+        await page.mouse.move(box.x + box.width * 3, box.y + box.height * 3, { steps: 8 })
+        await page.mouse.up()
+        await expect(direction).toHaveAttribute('data-direction-placement', 'inset')
+        await expect(direction).toBeVisible()
+      }
+      await page.screenshot({ path: `/tmp/polygon-direction-${caseId}-${browserName}.png` })
+    }
   })
 
   browserTest(`replay shortcuts navigate and respect focus and absent phases: ${browserName}`, async ({ page }) => {

@@ -10,6 +10,7 @@ import type { PolygonStep } from './trace'
 import { DirectedLine } from '../convex-hull/HullDirection'
 import { PolygonSideGuide, PolygonSideLabel } from './PolygonSide'
 import { boundaryColor, hasSideRelation, type PolygonSideInteraction } from './usePolygonSideInteraction'
+import { PolygonDirection } from './PolygonDirection'
 
 export function PolygonPlot({ first, second, result, preview = false, viewport, interaction, step, sideInteraction }: {
   first: Point[]; second: Point[]; result?: PolygonIntersection; preview?: boolean
@@ -93,6 +94,10 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
       </g>}
     </g>}
   </svg>
+    {projection && hasSideRelation(step) && <PolygonDirection
+      edges={[[first[step.edges[0][0]], first[step.edges[0][1]]], [second[step.edges[1][0]], second[step.edges[1][1]]]]}
+      position={point => ({ x: projection.px(point) * scale + (viewport?.transform.x ?? 0), y: projection.py(point) * scale + (viewport?.transform.y ?? 0) })}
+      turn={step.relation.cross} width={width} height={height} />}
     {projection && hasSideRelation(step) && sideInteraction && <div className="absolute inset-0 overflow-hidden pointer-events-none">{[0, 1].map(boundary => {
       const inputs = [first, second]
       const point = inputs[boundary][step.edges[boundary][1]]
