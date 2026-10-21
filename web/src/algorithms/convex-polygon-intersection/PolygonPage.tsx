@@ -19,6 +19,7 @@ import { GeometryInfo } from '../../geometry/GeometryInfo'
 import { CaseCatalog } from '../../geometry/CaseCatalog'
 import { CaseToolbar } from '../../geometry/CaseToolbar'
 import { PolygonLearning } from './PolygonLearning'
+import { StartLearningLink } from '../../geometry/StartLearningLink'
 
 export function PolygonPage() {
   const { t } = useLingui()
@@ -41,7 +42,7 @@ function PolygonCaseViewer({ preset }: { preset: PolygonCase }) {
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Convex polygon intersection`} · ${t`Computational Geometry`}`} />
     <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-polygon-intersection"
-      trailingAction={<AppLink className={buttonVariants({ variant: 'primary', size: 'sm' })} to={`/convex-polygon-intersection/cases/${preset.id}/learn`}>{t`Start step-by-step learning`}</AppLink>} />
+      trailingAction={<StartLearningLink to={`/convex-polygon-intersection/cases/${preset.id}/learn`} />} />
     <div className="workspace result-workspace polygon-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
       <div className="drawing"><Card>
         <Card.Header className="drawing-toolbar"><div className="flex items-center gap-1">

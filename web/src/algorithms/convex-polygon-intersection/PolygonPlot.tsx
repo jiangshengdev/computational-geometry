@@ -2,7 +2,7 @@ import { useLingui } from '@lingui/react/macro'
 import { samePoint, uniquePoints, type Point } from '../../geometry/geometry'
 import { projectPoints } from '../../geometry/projection'
 import { PlotPoints } from '../../geometry/PlotPoints'
-import type { PointInteraction } from '../../geometry/usePointInteraction'
+import { includesPoint, type PointInteraction } from '../../geometry/usePointInteraction'
 import type { GeometryViewport } from '../../geometry/useGeometryViewport'
 import { resultPoints, type PolygonIntersection } from './result'
 import { useId } from 'react'
@@ -70,7 +70,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
       {result?.kind === 'polygon' && <polygon data-result="polygon" points={path(vertices)} fill="var(--success)" fillOpacity="0.25" stroke="var(--success)" strokeWidth={1 / scale} />}
       {result?.kind === 'segment' && <polyline data-result="segment" points={path(vertices)} fill="none" stroke="var(--success)" strokeWidth={1 / scale} />}
       {result?.kind === 'point' && <circle data-result="point" cx={projection.px(result.point)} cy={projection.py(result.point)} r={7 / scale} fill="var(--success)" />}
-      <PlotPoints points={points} projection={projection} preview={preview} radius={preview ? 1.125 : 3} highlightRadius={8} highlightStrokeWidth={2} scale={scale} interaction={interaction} />
+      <PlotPoints points={points} projection={projection} preview={preview} radius={preview ? 1.125 : 3} highlightRadius={8} highlightStrokeWidth={2} highlightColor="var(--success)" scale={scale} interaction={interaction} />
       {active?.source === 'panel' && active.edge && <DirectedLine data-highlighted-edge={active.panel}
         from={{ x: projection.px(active.edge[0]), y: projection.py(active.edge[0]) }}
         to={{ x: projection.px(active.edge[1]), y: projection.py(active.edge[1]) }}
@@ -81,7 +81,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
             <circle cx={projection.px(boundary[id])} cy={projection.py(boundary[id])} r={6 / scale} fill="none" stroke={boundaryColor(side)} strokeWidth={2 / scale} />
           </g>)}
         </g>)}
-      {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={4 / scale} fill="none" stroke="var(--warning)" strokeWidth={2 / scale} pointerEvents="none" />)}
+      {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={4 / scale} className={includesPoint(active, point) ? 'fill-success' : 'fill-purple-500'} pointerEvents="none" />)}
       {labels.length > 0 && <g data-layer="labels" pointerEvents="none">
         {/* Paint every outline before any fill so adjacent glyphs cannot erase text. */}
         {(['outline', 'fill'] as const).map(layer => <g key={layer} aria-hidden={layer === 'outline' ? true : undefined}>
