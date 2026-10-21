@@ -104,10 +104,15 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
       const labelOffset = boundary === 1 && samePoint(point, inputs[0][step.edges[0][1]]) ? 44 : 8
       const x = projection.px(point) * scale + (viewport?.transform.x ?? 0)
       const y = projection.py(point) * scale + (viewport?.transform.y ?? 0)
+      // Same-direction parallel supporting lines have opposite, nonzero endpoint sides.
+      const sameDirectionParallel = step.relation.cross === 'collinear'
+        && step.relation.first_side !== 'collinear' && step.relation.second_side !== 'collinear'
+        && step.relation.first_side !== step.relation.second_side
       // HTML overlay avoids WebKit's stale foreignObject compositing after viewport resizing.
       return <div key={boundary} hidden={sideInteraction.active != null && sideInteraction.active !== boundary} className="absolute pointer-events-auto" style={{ left: x + 12, top: y + labelOffset, width: 'max-content' }}>
           <PolygonSideLabel step={step} boundary={boundary} interaction={sideInteraction}
-            decisionRelevant={step.relation.cross === (boundary === 0 ? 'right' : 'left')} />
+            decisionRelevant={step.relation.cross === (boundary === 0 ? 'right' : 'left')
+              || (boundary === 1 && sameDirectionParallel)} />
       </div>
     })}</div>}
     {projection && hasSideRelation(step) && sideInteraction?.active != null && <svg
