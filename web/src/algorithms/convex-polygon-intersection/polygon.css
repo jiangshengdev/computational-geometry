@@ -11,3 +11,4 @@
 .polygon-point-panel-title:is(:hover, :focus-visible) { background: var(--success-soft); color: var(--success-soft-foreground); }
 .polygon-point-panel-title:is(:hover, :focus-visible) .chip { --chip-bg: var(--success-soft); --chip-fg: var(--success-soft-foreground); }
 .polygon-point-panel-title:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.polygon-side-label[data-active="true"] { outline: 1px solid currentColor; outline-offset: 1px; }

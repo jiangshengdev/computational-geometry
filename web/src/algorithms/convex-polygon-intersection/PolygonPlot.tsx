@@ -8,11 +8,14 @@ import { resultPoints, type PolygonIntersection } from './result'
 import { useId } from 'react'
 import type { PolygonStep } from './trace'
 import { DirectedLine } from '../convex-hull/HullDirection'
+import { PolygonSideGuide, PolygonSideLabel } from './PolygonSide'
+import { boundaryColor, hasSideRelation, type PolygonSideInteraction } from './usePolygonSideInteraction'
 
-export function PolygonPlot({ first, second, result, preview = false, viewport, interaction, step }: {
+export function PolygonPlot({ first, second, result, preview = false, viewport, interaction, step, sideInteraction }: {
   first: Point[]; second: Point[]; result?: PolygonIntersection; preview?: boolean
   viewport?: GeometryViewport; interaction?: PointInteraction
   step?: PolygonStep
+  sideInteraction?: PolygonSideInteraction
 }) {
   const { t } = useLingui()
   const arrowId = useId()
@@ -28,11 +31,11 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
     const ids = edge ?? (step.vertex !== null && step.boundary === (side === 0 ? 'first' : 'second') ? [step.vertex] : [])
     return { boundary, side, prefix, edge, ids }
   }) : []
-  const labels = step && projection ? activeBoundaries.flatMap(({ boundary, side, prefix, edge, ids }) => ids.map(id => ({
+  const labels = step && projection ? activeBoundaries.flatMap(({ boundary, side, prefix, ids }) => ids.map(id => ({
     id: `${prefix}${id}`,
     x: projection.px(boundary[id]),
     y: projection.py(boundary[id]) - (side === 0 ? 12 : 26) / scale,
-    text: `${prefix}${id}${edge && id === edge[1] && step.relation && step.action !== 'advance' && step.action !== 'terminate' && step.action !== 'complete' ? ` · ${side === 0 ? 'B' : 'A'} ${((side === 0 ? step.relation.first_side : step.relation.second_side) === 'left') ? t`left side` : (side === 0 ? step.relation.first_side : step.relation.second_side) === 'right' ? t`right side` : t`on the supporting line`}` : ''}`,
+    text: `${prefix}${id}`,
   }))) : []
   const active = interaction?.active
   const activePoints = active?.source === 'panel' ? uniquePoints(active.points) : active ? [active.point] : []
@@ -55,11 +58,11 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
       }
     })
   }
-  return <svg ref={viewport?.svg} className={preview ? 'case-thumbnail' : 'geometry-viewport w-full'}
+  return <><svg ref={viewport?.svg} className={preview ? 'case-thumbnail' : 'geometry-viewport w-full'}
     viewBox={`0 0 ${width} ${height}`} role={preview ? 'img' : 'group'}
     aria-label={preview ? t`Input polygon preview` : t`Convex polygon intersection plot`}
     onPointerDown={() => interaction?.hover(null)}>
-    <defs><marker id={arrowId} viewBox="0 0 8 8" refX="8" refY="4" markerWidth={9 / scale} markerHeight={9 / scale} markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 8 4 L 0 8 Z" fill="var(--success)" /></marker></defs>
+    <defs>{[0, 1].map(side => <marker key={side} id={`${arrowId}-${side}`} viewBox="0 0 8 8" refX="8" refY="4" markerWidth={9 / scale} markerHeight={9 / scale} markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 8 4 L 0 8 Z" fill={boundaryColor(side)} /></marker>)}</defs>
     {projection && <g data-layer="geometry" transform={viewport?.transform.toString()}>
       {/* Nested stroke widths keep both input identities visible on coincident boundaries. */}
       <polygon data-input="first" aria-label={t`Polygon A`} points={path(first)} fill="var(--accent)" fillOpacity="0.08" stroke="var(--accent)" strokeWidth={1.5 / scale} />
@@ -71,14 +74,25 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
       {active?.source === 'panel' && active.edge && <DirectedLine data-highlighted-edge={active.panel}
         from={{ x: projection.px(active.edge[0]), y: projection.py(active.edge[0]) }}
         to={{ x: projection.px(active.edge[1]), y: projection.py(active.edge[1]) }}
-        scale={scale} stroke="var(--accent)" strokeWidth={5 / scale} pointerEvents="none" />}
-      {activeBoundaries.map(({ boundary, prefix, edge, ids }) => <g key={prefix} data-active-boundary={prefix} pointerEvents="none">
-          {edge && <DirectedLine data-edge={prefix} data-from={edge[0]} data-to={edge[1]} from={{ x: projection.px(boundary[edge[0]]), y: projection.py(boundary[edge[0]]) }} to={{ x: projection.px(boundary[edge[1]]), y: projection.py(boundary[edge[1]]) }} scale={scale} stroke="var(--success)" strokeWidth={1.5 / scale} markerEnd={`url(#${arrowId})`} />}
+        scale={scale} stroke={boundaryColor(active.panel === 'B' ? 1 : 0)} strokeWidth={5 / scale} pointerEvents="none" />}
+      {activeBoundaries.map(({ boundary, side, prefix, edge, ids }) => <g key={prefix} data-active-boundary={prefix} pointerEvents="none">
+          {edge && <DirectedLine data-edge={prefix} data-from={edge[0]} data-to={edge[1]} from={{ x: projection.px(boundary[edge[0]]), y: projection.py(boundary[edge[0]]) }} to={{ x: projection.px(boundary[edge[1]]), y: projection.py(boundary[edge[1]]) }} scale={scale} stroke={boundaryColor(side)} strokeWidth={2.5 / scale} markerEnd={`url(#${arrowId}-${side})`} />}
           {ids.map(id => <g key={id} data-current-vertex={`${prefix}${id}`}>
-            <circle cx={projection.px(boundary[id])} cy={projection.py(boundary[id])} r={6 / scale} fill="none" stroke="var(--success)" strokeWidth={2 / scale} />
+            <circle cx={projection.px(boundary[id])} cy={projection.py(boundary[id])} r={6 / scale} fill="none" stroke={boundaryColor(side)} strokeWidth={2 / scale} />
           </g>)}
         </g>)}
       {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={4 / scale} fill="none" stroke="var(--warning)" strokeWidth={2 / scale} pointerEvents="none" />)}
+      {hasSideRelation(step) && sideInteraction && [0, 1].map(boundary => {
+        const inputs = [first, second]
+        const point = inputs[boundary][step.edges[boundary][1]]
+        const other = 1 - boundary
+        const edge = step.edges[other].map(id => inputs[other][id])
+        const position = (point: Point) => ({ x: projection.px(point), y: projection.py(point) })
+        return <g key={boundary}>
+          {sideInteraction.active === boundary && <PolygonSideGuide positions={[position(edge[0]), position(edge[1]), position(point)]}
+            boundary={boundary} side={boundary === 0 ? step.relation.first_side : step.relation.second_side} scale={scale} />}
+        </g>
+      })}
       {labels.length > 0 && <g data-layer="labels" pointerEvents="none">
         {/* Paint every outline before any fill so adjacent glyphs cannot erase text. */}
         {(['outline', 'fill'] as const).map(layer => <g key={layer} aria-hidden={layer === 'outline' ? true : undefined}>
@@ -90,4 +104,16 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
       </g>}
     </g>}
   </svg>
+    {projection && hasSideRelation(step) && sideInteraction && <div className="absolute inset-0 overflow-hidden pointer-events-none">{[0, 1].map(boundary => {
+      const inputs = [first, second]
+      const point = inputs[boundary][step.edges[boundary][1]]
+      const labelOffset = boundary === 1 && samePoint(point, inputs[0][step.edges[0][1]]) ? 44 : 8
+      const x = projection.px(point) * scale + (viewport?.transform.x ?? 0)
+      const y = projection.py(point) * scale + (viewport?.transform.y ?? 0)
+      // HTML overlay avoids WebKit's stale foreignObject compositing after viewport resizing.
+      return <div key={boundary} className="absolute pointer-events-auto" style={{ left: x + 12, top: y + labelOffset, width: 'max-content' }}>
+          <PolygonSideLabel step={step} boundary={boundary} interaction={sideInteraction} />
+      </div>
+    })}</div>}
+  </>
 }

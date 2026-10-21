@@ -1,11 +1,13 @@
 import { useLingui } from '@lingui/react/macro'
-import type { PolygonStep, Side } from './trace'
+import type { PolygonStep } from './trace'
 import { Button } from '@heroui/react/button'
 import type { Point } from '../../geometry/geometry'
 import type { PointInteraction } from '../../geometry/usePointInteraction'
+import { PolygonSideLabel } from './PolygonSide'
+import { boundaryColor, hasSideRelation, type PolygonSideInteraction } from './usePolygonSideInteraction'
 
-export function PolygonExplanation({ step, first, second, interaction }: {
-  step: PolygonStep; first: Point[]; second: Point[]; interaction: PointInteraction
+export function PolygonExplanation({ step, first, second, interaction, sideInteraction }: {
+  step: PolygonStep; first: Point[]; second: Point[]; interaction: PointInteraction; sideInteraction: PolygonSideInteraction
 }) {
   const { t } = useLingui()
   const boundary = step.boundary === 'first' ? 'A' : 'B'
@@ -13,12 +15,11 @@ export function PolygonExplanation({ step, first, second, interaction }: {
     const points = ids.map(id => (prefix === 'A' ? first : second)[id])
     const target = ids.length === 1 ? { source: 'list' as const, point: points[0] }
       : { source: 'panel' as const, panel: prefix, points, edge: [points[0], points[1]] as [Point, Point] }
-    return <Button size="sm" variant="tertiary" className="polygon-explanation-reference"
+    return <Button size="sm" variant="tertiary" className="polygon-explanation-reference" style={{ color: boundaryColor(prefix === 'A' ? 0 : 1) }}
       onHoverStart={() => interaction.hover(target)} onHoverEnd={() => interaction.hover(null)}
       onFocus={() => interaction.hover(target)} onBlur={() => interaction.hover(null)}
       onPress={() => interaction.select(target)}>{ids.map(id => `${prefix}${id}`).join(' → ')}</Button>
   }
-  const side = (value: Side) => value === 'left' ? t`left side` : value === 'right' ? t`right side` : t`on the supporting line`
   const reasons: Record<NonNullable<PolygonStep['reason']>, string> = {
     contained: t`Every checked vertex is inside or on the other boundary. Return this polygon directly.`,
     intersection: t`Collect the intersection of the current edges.`,
@@ -42,8 +43,9 @@ export function PolygonExplanation({ step, first, second, interaction }: {
     {step.action === 'containment' ? <p>{t`Containment check`} · {step.vertex !== null && reference(boundary, [step.vertex])}: {step.contained ? t`Inside or on the other polygon` : t`Outside the other polygon; stop this containment check`}</p>
       : step.action === 'relation' && step.relation && step.edges ? <>
         <p>{t`Compare directed edges`} · {reference('A', step.edges[0])} · {reference('B', step.edges[1])}</p>
-        <p>{reference('A', [step.edges[0][1]])}: {side(step.relation.first_side)} B · {reference('B', [step.edges[1][1]])}: {side(step.relation.second_side)} A · {step.relation.contact === 'none' ? t`No edge contact` : step.relation.contact === 'point' ? t`Point contact` : t`Shared interval`}</p>
+        <p>{step.relation.contact === 'none' ? t`No edge contact` : step.relation.contact === 'point' ? t`Point contact` : t`Shared interval`}</p>
       </> : <p>{step.action === 'advance' && <>{t`Advance boundary`} {boundary} · </>}{step.reason && reasons[step.reason]}</p>}
+    {hasSideRelation(step) && <div className="flex flex-wrap gap-1">{[0, 1].map(boundary => <PolygonSideLabel key={boundary} step={step} boundary={boundary} interaction={sideInteraction} />)}</div>}
     {step.phase === 'chasing' && <p>{t`Current inside relation`}: {step.inside === 'unknown' ? t`Not established` : step.inside === 'p' ? t`Following A inside B` : t`Following B inside A`}</p>}
     {step.result && <p>{t`Final intersection`}: {step.result.kind === 'empty' ? t`Empty set` : step.result.kind === 'point' ? t`Point` : step.result.kind === 'segment' ? t`Segment` : t`Polygon with area`}</p>}
   </div>

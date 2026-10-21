@@ -25,6 +25,7 @@ import { PolygonPlot } from './PolygonPlot'
 import { PolygonExplanation } from './PolygonExplanation'
 import { resultPoints } from './result'
 import './polygon.css'
+import { usePolygonSideInteraction, type PolygonSideInteraction } from './usePolygonSideInteraction'
 
 export function PolygonLearning({ preset }: { preset: PolygonCase }) {
   const { t } = useLingui()
@@ -36,6 +37,7 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
   const urlIndex = /^\d+$/.test(raw) && Number.isSafeInteger(Number(raw)) ? Number(raw) : -1
   const index = previewIndex ?? urlIndex
   const step = trace.steps[index]
+  const sideInteraction = usePolygonSideInteraction(step)
   const last = trace.steps.length - 1
   const interaction = usePointInteraction()
   const go = (destination: number) => { interaction.clear(); commitStep(destination, urlIndex) }
@@ -62,21 +64,21 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
       <ZenModeControl zenMode={zenMode} onZenModeChange={setZenMode} />
     </CaseToolbar>
     <section className="learning-view polygon-learning" data-zen-mode={zenMode} aria-label={t`Learn step by step`}>
-      {step ? <div className="workspace polygon-learning-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
+      {step ? <div className="workspace polygon-learning-workspace" onKeyDown={event => { if (event.key === 'Escape') { interaction.clear(); sideInteraction.clear() } }}>
         <div className="input-panel polygon-inputs">
           <PointCoordinates highlightTitle title={t`Polygon A vertices`} points={first} prefix="A" panel="input" interaction={interaction} stepKey={step}
             currentIds={step.edges?.[0] ?? (step.boundary === 'first' && step.vertex !== null ? [step.vertex] : [])} />
           <PointCoordinates highlightTitle title={t`Polygon B vertices`} points={second} prefix="B" panel="input" interaction={interaction} stepKey={step}
             currentIds={step.edges?.[1] ?? (step.boundary === 'second' && step.vertex !== null ? [step.vertex] : [])} />
         </div>
-        <PolygonLearningCanvas first={first} second={second} step={step} interaction={interaction} />
+        <PolygonLearningCanvas first={first} second={second} step={step} interaction={interaction} sideInteraction={sideInteraction} />
         <div className="workspace-panel polygon-learning-results">
           <PointCoordinates highlightTitle title={t`Collected candidates`} points={step.candidates} prefix="C" interaction={interaction} stepKey={step} currentIds={step.added}>
             <p className="text-sm text-muted">{t`Candidates are not yet the final polygon.`}</p>
           </PointCoordinates>
           {step.result && <PointCoordinates highlightTitle title={t`Final intersection`} points={resultPoints(step.result)} prefix="R" interaction={interaction} />}
           <section className="workspace-panel" aria-label={t`Current action`} data-action={step.action} data-phase={step.phase}>
-            <Card><Card.Content><PolygonExplanation step={step} first={first} second={second} interaction={interaction} /></Card.Content></Card>
+            <Card><Card.Content><PolygonExplanation step={step} first={first} second={second} interaction={interaction} sideInteraction={sideInteraction} /></Card.Content></Card>
           </section>
         </div>
       </div> : <p role="status" className="flex-1">{index < 0 || trace.status === 'complete' ? t`Invalid teaching step` : trace.status === 'loading' ? t`Waiting for the requested step` : t`Requested step is unavailable`}</p>}
@@ -100,13 +102,13 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
   </>
 }
 
-function PolygonLearningCanvas({ first, second, step, interaction }: { first: Point[]; second: Point[]; step: PolygonStep; interaction: PointInteraction }) {
+function PolygonLearningCanvas({ first, second, step, interaction, sideInteraction }: { first: Point[]; second: Point[]; step: PolygonStep; interaction: PointInteraction; sideInteraction: PolygonSideInteraction }) {
   const { t } = useLingui()
   const viewport = useGeometryViewport([...first, ...second], { padding: 36 })
   return <div className="drawing"><Card>
     <Card.Header className="drawing-toolbar"><Card.Title>{t`Convex polygon intersection plot`}</Card.Title><GeometryViewControls {...viewport} /></Card.Header>
     <Card.Content className="flex min-h-0 flex-1 flex-col"><div className="drawing-surface flex flex-col">
-      <PolygonPlot first={first} second={second} step={step} result={step.result ?? undefined} viewport={viewport} interaction={interaction} />
+      <PolygonPlot first={first} second={second} step={step} result={step.result ?? undefined} viewport={viewport} interaction={interaction} sideInteraction={sideInteraction} />
     </div></Card.Content>
   </Card></div>
 }
