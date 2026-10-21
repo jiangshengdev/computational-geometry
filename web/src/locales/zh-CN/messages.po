@@ -113,14 +113,22 @@ msgstr "沿抛物线取点构成的凸边界位于矩形内。等值分数标识
 #~ msgid "A convex hexagon with horizontal edges and equal-height vertices."
 #~ msgstr "包含水平边与同高顶点的凸六边形。"
 
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:44
+msgid "A convex polygon contains the segments between its points. Since all vertices are contained, the entire checked polygon is contained and is exactly the intersection."
+msgstr "凸多边形内任意两点之间的线段也在其中。因此，所有顶点都被包含，就能确定整个多边形被包含；被包含的多边形就是两者的交集。"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:53
 msgid "A four-span bridge connects upper and lower chords with continuous triangular supports, clearly showing connections between vertical members and diagonal braces."
 msgstr "四跨桥梁以连续三角支撑连接上下弦杆，竖杆与斜撑的连接清晰可辨。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:38
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:39
 msgid "A has completed two circuits. Stop chasing."
 msgstr "A 已走过两圈，结束追边。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:58
+msgid "A has reached the traversal limit of two circuits. This bounds repeated visits even if B advances more slowly; now organize the collected candidates."
+msgstr "A 已达到走过两圈的遍历上限。即使 B 推进得较慢，也不能让 A 不断重复绕行；接下来整理已收集的候选点。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/carbonLattices.ts:115
@@ -333,7 +341,7 @@ msgstr "把交点加入待处理队列，已有事件则保留"
 msgid "Adjacency argument"
 msgstr "相邻性论证"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:47
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:78
 msgid "Advance boundary"
 msgstr "推进边界"
 
@@ -361,6 +369,10 @@ msgstr "交叉的 {0} 换序后，这一对处在换序区间的外侧边界，�
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:136
 msgid "After the end of the {keyword} block"
 msgstr "{keyword} 块结束后"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:49
+msgid "After this crossing, the inside relation identifies which boundary contributes vertices to the intersection. Update it before collecting more vertices."
+msgstr "经过这个交点后，内部关系决定后续应收集哪一条边界上的顶点，因此要先更新这一关系，再继续收集。"
 
 #: src/app/App.tsx:20
 #~ msgid "Algorithm home"
@@ -400,6 +412,10 @@ msgstr "竖直线段的端点落在水平线段内部。"
 #: src/algorithms/triangulation/cases.ts:15
 msgid "An equilateral triangle uses rational coordinates rounded to six decimal places; triangulation is exact for those input values."
 msgstr "等边三角形采用保留六位小数的有理数近似坐标，剖分对这些输入值进行精确计算。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:48
+msgid "An initial edge may be anywhere on the boundary. Counting from the first crossing lets the traversal cover the intersection boundary; the inside relation tells us which polygon's vertices to keep."
+msgstr "起始边不一定在交集边界上。从首次相交处重新计数，才能从这里追踪交集边界；内部关系则用于决定接下来保留哪一个多边形的顶点。"
 
 #: src/algorithms/triangulation/cases.ts:17
 msgid "An inward corner keeps the triangulation inside an L-shaped boundary."
@@ -463,16 +479,20 @@ msgstr "教学伪代码中的原子几何计算；对应 Rust 实际精确计算
 msgid "Attach zero-based indices to iterator elements."
 msgstr "为迭代元素附加从零开始的索引。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:39
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:40
 msgid "B has completed two circuits. Stop chasing."
 msgstr "B 已走过两圈，结束追边。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:59
+msgid "B has reached the traversal limit of two circuits. This bounds repeated visits even if A advances more slowly; now organize the collected candidates."
+msgstr "B 已达到走过两圈的遍历上限。即使 A 推进得较慢，也不能让 B 不断重复绕行；接下来整理已收集的候选点。"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:33
 #~ msgid "B is inside A"
 #~ msgstr "B 位于 A 内部"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:63
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:76
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:77
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:218
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:237
 #: src/algorithms/triangulation/TriangulationPage.tsx:73
@@ -527,7 +547,11 @@ msgstr "BO 结果查看器"
 msgid "Bold: active segments"
 msgstr "加粗：活动线段"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:37
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:57
+msgid "Both boundaries have been traversed since counting began. Stop revisiting edges and organize the collected candidates into the final intersection."
+msgstr "从开始计数的位置算起，两条边界都已遍历一圈。停止重复检查边，接下来将已收集的候选点整理为最终交集。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:38
 msgid "Both boundaries have completed a circuit. Stop chasing."
 msgstr "两条边界都已走过一圈，结束追边。"
 
@@ -686,6 +710,10 @@ msgstr "检查相邻线段 <0>{subjects}</0>："
 msgid "Check whether an active segment lies below the current point"
 msgstr "判断已有线段是否位于当前点下方"
 
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:64
+msgid "Check whether polygon {boundary} lies entirely inside or on polygon {otherBoundary}."
+msgstr "检查多边形 {boundary} 是否完全位于多边形 {otherBoundary} 内部或边界上。"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:28
 msgid "Check whether the comparison result is equal."
@@ -806,11 +834,11 @@ msgstr "收起左侧辅助栏"
 msgid "Collapse right sidebar"
 msgstr "收起右侧辅助栏"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:26
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:27
 msgid "Collect both ends of the shared edge interval."
 msgstr "收集公共边段的两个端点。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:25
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:26
 msgid "Collect the intersection of the current edges."
 msgstr "收集当前两条边的交点。"
 
@@ -830,6 +858,10 @@ msgstr "共线分离"
 #: src/algorithms/triangulation/cases.ts:22
 msgid "Collinear boundary vertices"
 msgstr "连续共线边界顶点"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:50
+msgid "Collinear edges have no left or right turn to choose from. Use the known inside relation to keep the inside boundary in place while advancing the other; if it is unknown, advance A."
+msgstr "两条边共线时，没有左转或右转可供判断。因此保留已知位于内部的边界，推进另一条；如果内部关系尚未确定，则推进 A。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:56
@@ -855,7 +887,7 @@ msgstr "共线：弹出中间点，然后再次判断。"
 msgid "Compare contact among four neighbors at tetrahedral centers with crossings of chemical bonds at different depths in a two-dimensional projection."
 msgstr "比较四面体中心的四邻接接触与不同深度化学键在二维投影中的穿越。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:45
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:71
 msgid "Compare directed edges"
 msgstr "比较有向边"
 
@@ -912,8 +944,8 @@ msgstr "计算失败"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:24
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:41
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:42
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:43
 #: src/algorithms/triangulation/TriangulationPage.tsx:26
 #: src/algorithms/triangulation/TriangulationPage.tsx:41
 #: src/app/AlgorithmHome.tsx:45
@@ -952,6 +984,10 @@ msgstr "八个环形顶点每次前进 3 个位置连线，形成闭合八角星
 msgid "Consecutive collinear vertices retain their original input indices."
 msgstr "连续共线顶点保留各自的原始输入索引。"
 
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:75
+msgid "Contact tells us whether these edges share a point or interval. Their directions and endpoint sides guide which edge advances next; no contact here does not mean the polygons are disjoint."
+msgstr "检查接触情况，是为了找出两条边的公共点或重合线段。边的方向及端点所在侧用于决定下一步推进哪条边；当前两条边没有接触，不代表两个多边形没有交集。"
+
 #: src/algorithms/convex-polygon-intersection/cases.ts:20
 msgid "Contained polygon"
 msgstr "包含关系"
@@ -962,8 +998,8 @@ msgid "help.OverlapRules.4"
 msgstr "包含、完全重复和反向重复均保留独立输入编号，每个配对分别取交集。重叠成员几何并列，列表位置用于辨认身份，不表示上下交换；多个配对的区间不合并为几何并集。这是预设教学案例，不是任意重叠输入的生产级实现保证。"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:43
-msgid "Containment check"
-msgstr "包含检查"
+#~ msgid "Containment check"
+#~ msgstr "包含检查"
 
 #: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:46
 msgid "Containment checks"
@@ -1011,15 +1047,15 @@ msgstr "凸包图形"
 #~ msgid "Convex polygon"
 #~ msgstr "凸多边形"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:26
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:42
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:74
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:28
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:43
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:75
 #: src/app/AlgorithmHome.tsx:50
 msgid "Convex polygon intersection"
 msgstr "凸多边形交集"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:27
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:28
 msgid "Convex polygon intersection cases"
 msgstr "凸多边形交集案例"
 
@@ -1110,7 +1146,7 @@ msgstr "当前函数"
 msgid "Current function returned"
 msgstr "当前函数已返回"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:87
 msgid "Current inside relation"
 msgstr "当前内外关系"
 
@@ -1248,6 +1284,10 @@ msgstr "重复坐标"
 msgid "help.SamePointRules.4"
 msgstr "事件处理中展示的是更新过程，不能当作完成状态。事件处理完成后，当前点的非竖直继续活动线段按紧邻右侧的上下顺序排列；竖直线则继续走向更高的待处理位置。同 x 的较低位置已处理，较高位置仍保留处理前顺序。因此此时的列表不是整条扫描线统一右移后的顺序。"
 
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:56
+msgid "Each convex polygon stays in the left half-plane of each directed boundary edge. These parallel edges separate those half-planes, leaving no common point."
+msgstr "凸多边形位于每条逆时针有向边的左侧半平面内。这两条平行边使两个多边形分处互不相交的半平面，因此不存在公共点。"
+
 #: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:28
 msgid "Each input retains its own ID and two endpoints. Even geometrically coincident inputs keep their separate identities. Hover over an input in the list or its corresponding canvas object to see linked highlighting."
 msgstr "每条输入保留自己的编号和两个端点。即使几何重合，也保留各自的输入身份。将指针移到输入列表或画布中的对应对象，可查看高亮联动。"
@@ -1304,7 +1344,7 @@ msgid "Empty set"
 msgstr "空集合"
 
 #: src/algorithms/convex-hull/cases.ts:58
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:88
 msgid "Empty set"
 msgstr "空集"
 
@@ -1377,13 +1417,13 @@ msgstr "事件高度状态：当前事件上侧（Δ）"
 msgid "Event height: below the current event (Δ)"
 msgstr "事件高度状态：当前事件下侧（Δ）"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
-msgstr "事件队列"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
+msgstr "事件队列"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
 msgstr "事件队列"
 
 #. js-lingui-explicit-id
@@ -1399,9 +1439,13 @@ msgstr "事件侧向状态：当前事件左侧（Δ）"
 msgid "Event side: right of the current event (Δ)"
 msgstr "事件侧向状态：当前事件右侧（Δ）"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:24
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:25
 msgid "Every checked vertex is inside or on the other boundary. Return this polygon directly."
 msgstr "所有被检查顶点都在另一多边形内部或边界上，直接返回该多边形。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:46
+msgid "Every point of the shared interval belongs to both polygons. Its two endpoints represent the interval; there is no need to collect every point along it."
+msgstr "重合线段上的每一点都属于两个多边形。记录两个端点就能表示整段公共部分，无需逐点收集。"
 
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:111
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:112
@@ -1487,7 +1531,7 @@ msgstr "取出事件的位置和内容；没有事件时进入结束分支"
 msgid "Field {field} of {expression}"
 msgstr "{expression} 的字段 {field}"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:88
 #: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:79
 msgid "Final intersection"
 msgstr "最终交集"
@@ -1521,7 +1565,7 @@ msgstr "取整数 t ∈ [−6, 6]，排列直线 y = (t/3)x − t² 的有限线
 msgid "help.EventQueueRules.1"
 msgstr "先 <0>x</0>，后 <1>y</1>；队首先处理。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:28
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:29
 msgid "First crossing: begin counting boundary circuits here and update which boundary is inside."
 msgstr "首次交叉：从此处重新计数边界圈数，并更新哪条边界位于内部。"
 
@@ -1544,11 +1588,11 @@ msgstr "展开嵌套迭代值；Option 中的 None 不产生元素。"
 msgid "Follow endpoint connections around the rings and compare pair counts at ordinary web junctions and the central meeting point."
 msgstr "沿网环观察端点连接，比较普通网结和中心共点的配对数量。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:87
 msgid "Following A inside B"
 msgstr "当前沿 A 位于 B 内部的边界段前进"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:87
 msgid "Following B inside A"
 msgstr "当前沿 B 位于 A 内部的边界段前进"
 
@@ -1557,19 +1601,19 @@ msgstr "当前沿 B 位于 A 内部的边界段前进"
 msgid "For different slopes, the intersection is the current event point"
 msgstr "斜率不同时，交集就是当前事件点"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:32
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:33
 msgid "For the checked edges, B turns left from A (or is parallel), and B's endpoint is not left of A. Advance B."
 msgstr "对刚检查的边，B 相对 A 向左转（或平行），且 B 的终点不在 A 左侧，推进 B。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:31
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:32
 msgid "For the checked edges, B turns left from A (or is parallel), and B's endpoint lies left of A. Advance A."
 msgstr "对刚检查的边，B 相对 A 向左转（或平行），且 B 的终点在 A 左侧，推进 A。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:33
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:34
 msgid "For the checked edges, B turns right from A and A's endpoint is not left of B. Advance A."
 msgstr "对刚检查的边，B 相对 A 向右转，且 A 的终点不在 B 左侧，推进 A。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:34
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:35
 msgid "For the checked edges, B turns right from A and A's endpoint lies left of B. Advance B."
 msgstr "对刚检查的边，B 相对 A 向右转，且 A 的终点在 B 左侧，推进 B。"
 
@@ -1820,7 +1864,7 @@ msgstr "把排好序的线段插回活动集合"
 msgid "help.NeighborRules.4"
 msgstr "插入会产生新线段两侧的邻居；删除会让原来分隔的两侧相邻；交叉换序会改变外侧邻居。只检查这些发生变化的边界，不必机械枚举所有线段对。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:43
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:65
 msgid "Inside or on the other polygon"
 msgstr "位于另一多边形内部或边界上"
 
@@ -1837,7 +1881,7 @@ msgstr "相交配对"
 msgid "Intersecting pairs and exact intersections"
 msgstr "相交配对与精确交集"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:52
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:53
 msgid "Intersection · filled region or contact"
 msgstr "交集 · 填充区域或接触部分"
 
@@ -1858,7 +1902,7 @@ msgstr "交集 {0}，已选中"
 msgid "Intersection candidate returned by the completed neighbor call"
 msgstr "已完成的邻居调用返回的交点候选"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:64
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:65
 msgid "Intersection coordinates"
 msgstr "交集坐标"
 
@@ -1893,8 +1937,8 @@ msgstr "教学步骤参数无效：请使用非负整数，且只提供一个 st
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:61
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:62
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:74
 #: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:75
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:76
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:215
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:216
 #: src/algorithms/triangulation/TriangulationPage.tsx:71
@@ -2181,7 +2225,7 @@ msgstr "无参数。"
 msgid "No comparable value change in this step"
 msgstr "本步无可比较的值变化"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:74
 msgid "No edge contact"
 msgstr "两边不相交"
 
@@ -2240,11 +2284,11 @@ msgstr "无"
 msgid "Normalize candidates"
 msgstr "整理候选点"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:40
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:41
 msgid "Normalize the collected candidates: remove duplicates and interior points, and order the final intersection."
 msgstr "整理已收集候选点：去除重复点和内部点，将最终交集按规范顺序排列。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:49
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:87
 msgid "Not established"
 msgstr "尚未确定"
 
@@ -2333,6 +2377,10 @@ msgstr "观察周向接缝仍然连续的三邻接网络，区分原子共端点
 msgid "One geometric point corresponds to three distinct pairs."
 msgstr "同一个几何点对应三个独立配对。"
 
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:68
+msgid "One outside vertex is enough to rule out complete containment in this direction. Checking the remaining vertices cannot change that conclusion, so this check stops. The polygons may still intersect."
+msgstr "只要有一个顶点在外部，就能否定这一方向的完全包含关系。继续检查其余顶点也不会改变这个结论，因此停止本次包含检查；两个多边形仍可能有交集。"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:15
 msgid "One segment alone cannot form an input pair."
@@ -2352,7 +2400,7 @@ msgstr "只有 S0，无法组成两个独立输入的配对；两个端点事件
 msgid "Only the two extreme endpoints remain; intermediate collinear points do not become hull vertices."
 msgstr "仅保留两个极端端点；中间的共线点不成为凸包顶点。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:35
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:36
 msgid "Oppositely directed collinear edges touch. Their common point or segment is the complete intersection. Stop chasing."
 msgstr "反向共线边发生接触，公共点或线段就是完整交集，结束追边。"
 
@@ -2383,7 +2431,7 @@ msgid "original closure"
 msgstr "original 闭包"
 
 #: src/algorithms/convex-hull/ConvexHullView.tsx:13
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:48
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:49
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:80
 #: src/algorithms/triangulation/TriangulationPage.tsx:46
 msgid "Original coordinate plane · Equal scale"
@@ -2423,7 +2471,7 @@ msgstr "外层执行上下文 {functionName}"
 msgid "Outer function"
 msgstr "外层函数"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:43
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:65
 msgid "Outside the other polygon; stop this containment check"
 msgstr "位于另一多边形外部，停止本次包含检查"
 
@@ -2447,13 +2495,13 @@ msgstr "重叠止界"
 msgid "Overlap interval"
 msgstr "重叠区间"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
-msgstr "重叠处理规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
+msgstr "重叠处理规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
 msgstr "重叠处理规则"
 
 #: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
@@ -2507,7 +2555,7 @@ msgstr "配对与精确详情"
 msgid "Parabolic string art"
 msgstr "抛物线弦画"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:36
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:37
 msgid "Parallel edges place both endpoints outside the opposite half-plane. The polygons are disjoint. Stop chasing."
 msgstr "平行边的终点均在对方外侧半平面，多边形相离，结束追边。"
 
@@ -2587,9 +2635,9 @@ msgstr "请检查本地服务。{0}"
 msgid "Please check the local service. {errorMessage}"
 msgstr "请检查本地服务。{errorMessage}"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:88
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:105
-#: src/geometry/PlotPoints.tsx:21
+#: src/geometry/PlotPoints.tsx:22
 msgid "Point"
 msgstr "点"
 
@@ -2599,7 +2647,7 @@ msgid "point and event bound; event-taking module complete"
 msgstr "已绑定 point 与 event；取事件模块完成"
 
 #: src/algorithms/convex-polygon-intersection/cases.ts:22
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:74
 msgid "Point contact"
 msgstr "点接触"
 
@@ -2635,12 +2683,12 @@ msgstr "纯点集合"
 msgid "Polygon A"
 msgstr "多边形 A"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
 msgid "Polygon A · solid boundary"
 msgstr "多边形 A · 实线边界"
 
 #: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:69
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:61
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:62
 msgid "Polygon A vertices"
 msgstr "多边形 A 顶点"
 
@@ -2648,16 +2696,16 @@ msgstr "多边形 A 顶点"
 msgid "Polygon B"
 msgstr "多边形 B"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:51
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:52
 msgid "Polygon B · dashed boundary"
 msgstr "多边形 B · 虚线边界"
 
 #: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:71
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:62
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:63
 msgid "Polygon B vertices"
 msgstr "多边形 B 顶点"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:88
 msgid "Polygon with area"
 msgstr "有面积的多边形"
 
@@ -3159,13 +3207,13 @@ msgstr "S1 从 S0 内部的 (2, 0) 向右上方出发。"
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 从 (0, 0) 到 (0, 8)，S6 从 (0, 8) 到 (8, 8)，公共端点为 (0, 8)。S4 的 y = 0、x ∈ [−2, 34]，与 S5 在 (0, 0) 接触。三组回纹各有 7 处转角和 1 处横梁接触，另有窗框 4 角及横梁与窗框的 2 处接触，共 30 个不同位置；没有内部穿越或重叠。"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
-msgstr "同点与并列规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
+msgstr "同点与并列规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
 msgstr "同点与并列规则"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:129
@@ -3191,7 +3239,7 @@ msgstr "适用边界：共端点、端点落在内部、多线共点、竖直线
 msgid "Second segment in the current pair (an index in the sweep loop)"
 msgstr "当前配对的第二条线段（扫描循环中使用编号）"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:50
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:88
 msgid "Segment"
 msgstr "线段"
 
@@ -3375,7 +3423,7 @@ msgstr "共边"
 msgid "Shared endpoint"
 msgstr "共端点"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:46
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:74
 msgid "Shared interval"
 msgstr "公共区间"
 
@@ -3494,7 +3542,6 @@ msgstr "重叠候选区间的起点"
 msgid "Start of the original segment"
 msgstr "原始线段的起点"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:44
 #: src/geometry/StartLearningLink.tsx:19
 msgid "Start step-by-step learning"
 msgstr "开始逐步学习"
@@ -3611,7 +3658,7 @@ msgstr "暂时移除经过当前点的线段，稍后重新排序插入"
 msgid "The 36 interior atoms each have 3 bonds, while the 12 terminal atoms at the two openings each retain 1 bond; the degree sum is 36×3 + 12 = 120, giving 60 unique bonds. Circumferential indices connect modulo 6 without duplicating the seam; only axial boundaries are truncated. Cylinder coordinates and the fixed oblique projection are rounded to 1/10000, then rotated and uniformly scaled by 3/4; intersections are computed exactly for the actual rational inputs. For example, S1 and S19 cross internally at (1640458343/2867030000,-4910230279/11468120000); a projected crossing is not an atomic connection."
 msgstr "36 个内部原子各连 3 条键，两个开口的 12 个末端原子各保留 1 条键，度数和为 36×3 + 12 = 120，即 60 条唯一键。周向索引按模 6 连接，不重复接缝；只截断轴向边界。圆筒坐标及固定斜投影四舍五入至 1/10000，再旋转并统一缩放 3/4，按实际有理输入精确求交。例如 S1 与 S19 内部交于 (1640458343/2867030000,-4910230279/11468120000)，投影穿越不是原子连接。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:27
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:28
 msgid "The advancing boundary is inside the other polygon. Collect its current endpoint."
 msgstr "即将推进的边界位于另一多边形内部，收集其当前终点。"
 
@@ -3624,7 +3671,7 @@ msgstr "两个边界仅在一个顶点相接。"
 msgid "The center joins 6 main branches, producing 15 pairs; each main branch has two forks where four edges meet, producing 6 pairs per fork. There are 1 + 6 × 2 = 13 intersection positions and 15 + 12 × 6 = 87 pairs. For example, (3, 0) and (6, 0) each have 6 pairs; tips join only one edge and produce no pairs. There are no crossings or overlaps between forks. The ideal coordinates with sixfold symmetry use a fixed rational approximation."
 msgstr "中心连接 6 条主枝，产生 15 对；每条主枝有两个四边相接的分叉点，每点产生 6 对。共有 1 + 6 × 2 = 13 个交点位置、15 + 12 × 6 = 87 对。例如 (3, 0) 和 (6, 0) 各有 6 对；枝梢仅连一条边，不产生配对。分叉之间没有穿越或重叠。六重对称的理想坐标使用确定的有理近似。"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:30
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:31
 msgid "The checked edges are collinear. Advance A unless A is marked inside B; otherwise advance B."
 msgstr "刚检查的边共线。若 A 位于 B 内部则推进 B，否则推进 A。"
 
@@ -3648,7 +3695,7 @@ msgstr "本次条件为假，跳过分支"
 msgid "The condition is true; enter this branch"
 msgstr "本次条件为真，进入分支"
 
-#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:29
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:30
 msgid "The crossing changes which boundary is inside the other polygon."
 msgstr "本次交叉改变了哪条边界位于另一多边形内部。"
 
@@ -3656,6 +3703,10 @@ msgstr "本次交叉改变了哪条边界位于另一多边形内部。"
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:49
 msgid "help.VerticalRules.3"
 msgstr "图中的当前事件、队列和结果均使用原坐标；扫描线可停在同一 x，而当前事件沿 y 上移。完成较低交点不会清空更高的待处理事件。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:79
+msgid "The decision below uses the previous pair of edges. The canvas now shows the edges after advancing."
+msgstr "下面的推进依据来自上一对边。画布现在显示的是推进后的边。"
 
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:60
 msgid "The event is complete: the active order and pending queue are consistent."
@@ -3714,6 +3765,10 @@ msgstr "交集已记入结果，活动顺序尚未更新。"
 msgid "The intersection includes this boundary. Keep the complete recorded interval without recording its end again as an isolated intersection point."
 msgstr "交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。"
 
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:60
+msgid "The intersection of convex polygons is convex. Taking the convex hull of the candidates keeps its extreme points and removes duplicates, interior points, and unnecessary points along straight edges."
+msgstr "两个凸多边形的交集仍是凸集。因此对候选点求凸包，就能保留交集的最外侧顶点，去除重复点、内部点以及直边上不必要的中间点。"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:9
 msgid "help.LearningIntroduction.2"
@@ -3727,6 +3782,10 @@ msgstr "外圈决定凸包，内圈与中心位于内部。仅网的连接节点
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:187
 msgid "The segments parameter is shadowed."
 msgstr "参数 <0>segments</0> 已被同名局部变量遮蔽。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:55
+msgid "The polygons lie to the left of their counterclockwise boundaries. Opposite directions put their interiors on opposite sides of this line, so only the common point or segment can belong to both."
+msgstr "多边形内部位于逆时针边界的左侧。两条共线边方向相反，意味着两个多边形的内部分处直线两侧，因此公共部分只能是这一个点或这一段线段。"
 
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:67
 msgid "The results are empty: no separate input pair intersects. See the mathematical check below for the geometric reasoning."
@@ -3790,6 +3849,10 @@ msgstr "此案例目前提供结果查看；支持教学的案例可从案例列
 msgid "This case does not support learning."
 msgstr "此案例不支持教学。"
 
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:47
+msgid "This endpoint lies on one polygon and inside the other, so it belongs to their intersection even without a new edge crossing. Keep it before advancing."
+msgstr "这个端点在一个多边形的边界上，同时位于另一个多边形内，因此即使没有新的边交点，它也属于交集。推进前需要先保留它。"
+
 #. placeholder {0}: inputReferences(continuingOverlapInputs)
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
 msgid "This is an overlap end boundary: {0} continue while the ending inputs leave."
@@ -3809,6 +3872,10 @@ msgstr "本学习流程覆盖现有范例中的普通交叉、空集合与无交
 msgid "This module currently provides coarse observation points, without detailed core-code steps."
 msgstr "当前模块仅提供大步观察点，尚未细化为核心代码小步。"
 
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:45
+msgid "This point belongs to both polygon boundaries, so it belongs to the intersection. Keep it as a candidate for the final boundary."
+msgstr "这个点同时位于两个多边形的边界上，因此属于交集。先将它保留为候选点，供最后整理交集边界时使用。"
+
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:160
 msgid "This statement was not executed"
@@ -3823,6 +3890,10 @@ msgstr "当前步骤没有可对齐的主箭头"
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:46
 msgid "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
 msgstr "本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。本点有非零长度开始者，换序与加入是同一次更新，不会再次交换。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:67
+msgid "This vertex meets the containment condition. Every vertex must meet it before we can conclude that the whole polygon is contained; this vertex alone is not enough."
+msgstr "这个顶点满足包含条件。但必须所有顶点都满足，才能判定整个多边形被包含；仅凭这一个顶点还不能得出结论。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:62
@@ -4077,7 +4148,7 @@ msgid "Unknown case: {caseId}"
 msgstr "未知案例：{caseId}"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:62
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:75
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:76
 #: src/algorithms/triangulation/TriangulationPage.tsx:72
 msgid "Unknown case."
 msgstr "未知案例。"
@@ -4110,7 +4181,7 @@ msgstr "上凸包"
 msgid "Upper hull stack"
 msgstr "上凸包栈"
 
-#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:53
+#: src/algorithms/convex-polygon-intersection/PolygonPage.tsx:54
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:84
 msgid "Use buttons to zoom · Drag to pan"
 msgstr "按钮缩放 · 拖动平移"
@@ -4179,13 +4250,13 @@ msgstr "竖直分数重叠"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "竖直重叠与多高度混合"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
-msgstr "竖直线处理规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
+msgstr "竖直线处理规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
 msgstr "竖直线处理规则"
 
 #. js-lingui-explicit-id
@@ -4256,6 +4327,22 @@ msgstr "曲折通道"
 #: src/algorithms/segment-intersection/cases/presets.ts:14
 msgid "With no inputs, there are no endpoint events and no input pairs that could intersect."
 msgstr "没有输入，因而没有端点事件，也没有可相交的输入配对。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:53
+msgid "With this direction order and A's endpoint not to the left of B, advance A to compare its next edge with B's current edge. This follows the convex boundaries without checking every pair of edges."
+msgstr "结合当前方向关系，A 的端点不在 B 边左侧，因此推进 A，用 A 的下一条边继续与 B 的当前边比较。这样沿凸多边形边界追踪，无需逐一比较所有边的组合。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:54
+msgid "With this direction order and A's endpoint to the left of B, advance B to compare its next edge with A's current edge. This follows the convex boundaries without checking every pair of edges."
+msgstr "结合当前方向关系，A 的端点在 B 边左侧，因此推进 B，用 B 的下一条边继续与 A 的当前边比较。这样沿凸多边形边界追踪，无需逐一比较所有边的组合。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:52
+msgid "With this direction order and B's endpoint not to the left of A, advance B to compare its next edge with A's current edge. This follows the convex boundaries without checking every pair of edges."
+msgstr "结合当前方向关系，B 的端点不在 A 边左侧，因此推进 B，用 B 的下一条边继续与 A 的当前边比较。这样沿凸多边形边界追踪，无需逐一比较所有边的组合。"
+
+#: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:51
+msgid "With this direction order and B's endpoint to the left of A, advance A to compare its next edge with B's current edge. This follows the convex boundaries without checking every pair of edges."
+msgstr "结合当前方向关系，B 的端点在 A 边左侧，因此推进 A，用 A 的下一条边继续与 B 的当前边比较。这样沿凸多边形边界追踪，无需逐一比较所有边的组合。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:92
