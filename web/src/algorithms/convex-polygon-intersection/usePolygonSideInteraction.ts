@@ -18,6 +18,13 @@ export function usePolygonSideInteraction(step: PolygonStep | undefined) {
     setPreviousStep(step)
     interaction.clear()
   }
-  return interaction
+  return {
+    ...interaction,
+    select: (boundary: number) => {
+      // An explicit toggle must also dismiss the current hover/focus preview.
+      interaction.hover(null)
+      interaction.select(boundary)
+    },
+  }
 }
 export type PolygonSideInteraction = ReturnType<typeof usePolygonSideInteraction>

@@ -82,17 +82,6 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
           </g>)}
         </g>)}
       {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={4 / scale} fill="none" stroke="var(--warning)" strokeWidth={2 / scale} pointerEvents="none" />)}
-      {hasSideRelation(step) && sideInteraction && [0, 1].map(boundary => {
-        const inputs = [first, second]
-        const point = inputs[boundary][step.edges[boundary][1]]
-        const other = 1 - boundary
-        const edge = step.edges[other].map(id => inputs[other][id])
-        const position = (point: Point) => ({ x: projection.px(point), y: projection.py(point) })
-        return <g key={boundary}>
-          {sideInteraction.active === boundary && <PolygonSideGuide positions={[position(edge[0]), position(edge[1]), position(point)]}
-            boundary={boundary} side={boundary === 0 ? step.relation.first_side : step.relation.second_side} scale={scale} />}
-        </g>
-      })}
       {labels.length > 0 && <g data-layer="labels" pointerEvents="none">
         {/* Paint every outline before any fill so adjacent glyphs cannot erase text. */}
         {(['outline', 'fill'] as const).map(layer => <g key={layer} aria-hidden={layer === 'outline' ? true : undefined}>
@@ -115,5 +104,20 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
           <PolygonSideLabel step={step} boundary={boundary} interaction={sideInteraction} />
       </div>
     })}</div>}
+    {projection && hasSideRelation(step) && sideInteraction?.active != null && <svg
+      className="polygon-angle-overlay" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
+      <g transform={viewport?.transform.toString()}>
+        {(() => {
+          const boundary = sideInteraction.active
+          const inputs = [first, second]
+          const point = inputs[boundary][step.edges[boundary][1]]
+          const other = 1 - boundary
+          const edge = step.edges[other].map(id => inputs[other][id])
+          const position = (point: Point) => ({ x: projection.px(point), y: projection.py(point) })
+          return <PolygonSideGuide positions={[position(edge[0]), position(edge[1]), position(point)]}
+            boundary={boundary} side={boundary === 0 ? step.relation.first_side : step.relation.second_side} scale={scale} />
+        })()}
+      </g>
+    </svg>}
   </>
 }

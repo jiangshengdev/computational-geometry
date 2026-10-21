@@ -11,4 +11,7 @@
 .polygon-point-panel-title:is(:hover, :focus-visible) { background: var(--success-soft); color: var(--success-soft-foreground); }
 .polygon-point-panel-title:is(:hover, :focus-visible) .chip { --chip-bg: var(--success-soft); --chip-fg: var(--success-soft-foreground); }
 .polygon-point-panel-title:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.polygon-side-label[data-active="true"] { outline: 1px solid currentColor; outline-offset: 1px; }
+/* Keep the full highlight inside the button at the card scrollport boundary. */
+.polygon-side-label[data-active="true"] { outline: 1px solid currentColor; outline-offset: -1px; }
+.drawing-surface .polygon-side-label { height: 24px; padding-inline: 8px; font-size: 12px; }
+.drawing-surface > .polygon-angle-overlay { position: absolute; inset: 0; height: 100%; z-index: 1; pointer-events: none; }

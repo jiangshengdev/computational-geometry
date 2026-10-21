@@ -8,7 +8,7 @@ export function useLinkedInteraction<T>(sameTarget: (a: T, b: T) => boolean) {
     active: hovered ?? selected,
     selected,
     hover: (target: T | null) => setHovered(target),
-    select: (target: T) => setSelected(previous => previous && sameTarget(previous, target) ? null : target),
+    select: (target: T) => setSelected(previous => previous !== null && sameTarget(previous, target) ? null : target),
     clear: () => { setHovered(null); setSelected(null) },
   }
 }
