@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, type CSSProperties } from 'react'
 import { useLingui } from '@lingui/react/macro'
 import { Button } from '@heroui/react/button'
 import { DirectionArc } from '../../geometry/DirectionArc'
@@ -8,8 +8,8 @@ import type { PolygonStep, Side } from './trace'
 import { hasSideRelation, type PolygonSideInteraction } from './usePolygonSideInteraction'
 
 /** The key identifies the checked point's polygon; the reference edge is the other polygon. */
-export function PolygonSideLabel({ step, boundary, interaction }: {
-  step: PolygonStep; boundary: number; interaction: PolygonSideInteraction
+export function PolygonSideLabel({ step, boundary, interaction, decisionRelevant = false }: {
+  step: PolygonStep; boundary: number; interaction: PolygonSideInteraction; decisionRelevant?: boolean
 }) {
   const { t } = useLingui()
   if (!hasSideRelation(step)) return null
@@ -19,7 +19,8 @@ export function PolygonSideLabel({ step, boundary, interaction }: {
   const text = side === 'left' ? t`${point}: left side of ${reference}`
     : side === 'right' ? t`${point}: right side of ${reference}` : t`${point}: on the supporting line of ${reference}`
   return <Button size="sm" variant="tertiary" className="polygon-side-label" data-side-label={boundary} data-active={interaction.active === boundary}
-    style={{ color: directionColor(side) }} aria-pressed={interaction.selected === boundary}
+    data-decision-relevant={decisionRelevant}
+    style={{ '--polygon-side-color': directionColor(side) } as CSSProperties} aria-pressed={interaction.selected === boundary}
     onHoverStart={() => interaction.hover(boundary)} onHoverEnd={() => interaction.hover(null)}
     onFocus={() => interaction.hover(boundary)} onBlur={() => interaction.hover(null)}
     onPress={() => interaction.select(boundary)}>{text}</Button>

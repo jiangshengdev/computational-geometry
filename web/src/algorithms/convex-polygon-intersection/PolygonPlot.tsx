@@ -106,7 +106,8 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
       const y = projection.py(point) * scale + (viewport?.transform.y ?? 0)
       // HTML overlay avoids WebKit's stale foreignObject compositing after viewport resizing.
       return <div key={boundary} hidden={sideInteraction.active != null && sideInteraction.active !== boundary} className="absolute pointer-events-auto" style={{ left: x + 12, top: y + labelOffset, width: 'max-content' }}>
-          <PolygonSideLabel step={step} boundary={boundary} interaction={sideInteraction} />
+          <PolygonSideLabel step={step} boundary={boundary} interaction={sideInteraction}
+            decisionRelevant={step.relation.cross === (boundary === 0 ? 'right' : 'left')} />
       </div>
     })}</div>}
     {projection && hasSideRelation(step) && sideInteraction?.active != null && <svg
