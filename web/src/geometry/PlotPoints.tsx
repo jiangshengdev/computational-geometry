@@ -1,7 +1,7 @@
 import { useLingui } from '@lingui/react/macro'
-import { formatPoint, samePoint, uniquePoints, type Point } from './geometry'
+import { formatPoint, uniquePoints, type Point } from './geometry'
 import type { projectPoints } from './projection'
-import type { PointInteraction } from './usePointInteraction'
+import { includesPoint, type PointInteraction } from './usePointInteraction'
 
 export function PlotPoints({ points, projection, preview = false, interaction, scale = 1, radius = preview ? 1.5 : 4, highlightRadius = 10, highlightStrokeWidth = 3 }: {
   points: Point[]
@@ -15,8 +15,8 @@ export function PlotPoints({ points, projection, preview = false, interaction, s
 }) {
   const { t } = useLingui()
   return uniquePoints(points).map((p, index) => {
-    const highlighted = Boolean(interaction?.active && samePoint(p, interaction.active.point))
-    const selected = Boolean(interaction?.selected && samePoint(p, interaction.selected.point))
+    const highlighted = includesPoint(interaction?.active, p)
+    const selected = includesPoint(interaction?.selected, p)
     return <g key={index} role={interaction ? 'button' : undefined} tabIndex={interaction ? 0 : undefined}
       aria-label={interaction ? `${t`Point`} ${formatPoint(p)}` : undefined} aria-pressed={interaction ? selected : undefined}
       data-highlighted={highlighted} data-selected={selected}

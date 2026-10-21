@@ -1,5 +1,5 @@
 import { useLingui } from '@lingui/react/macro'
-import type { Point } from '../../geometry/geometry'
+import { samePoint, uniquePoints, type Point } from '../../geometry/geometry'
 import { projectPoints } from '../../geometry/projection'
 import { PlotPoints } from '../../geometry/PlotPoints'
 import type { PointInteraction } from '../../geometry/usePointInteraction'
@@ -34,6 +34,27 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
     y: projection.py(boundary[id]) - (side === 0 ? 12 : 26) / scale,
     text: `${prefix}${id}${edge && id === edge[1] && step.relation && step.action !== 'advance' && step.action !== 'terminate' && step.action !== 'complete' ? ` · ${side === 0 ? 'B' : 'A'} ${((side === 0 ? step.relation.first_side : step.relation.second_side) === 'left') ? t`left side` : (side === 0 ? step.relation.first_side : step.relation.second_side) === 'right' ? t`right side` : t`on the supporting line`}` : ''}`,
   }))) : []
+  const active = interaction?.active
+  const activePoints = active?.source === 'panel' ? uniquePoints(active.points) : active ? [active.point] : []
+  if (active && projection) {
+    const groups = [
+      { prefix: 'A', points: first }, { prefix: 'B', points: second },
+      { prefix: 'C', points: step?.candidates ?? [] }, { prefix: 'R', points: vertices },
+    ]
+    groups.forEach((group, row) => {
+      if (active.source === 'panel' && active.panel !== group.prefix) return
+      for (const activePoint of activePoints) {
+        const ids = group.points.flatMap((point, index) => {
+          const id = `${group.prefix}${index}`
+          return samePoint(point, activePoint) && !labels.some(label => label.id === id) ? [id] : []
+        })
+        if (ids.length) labels.push({
+          id: ids.join(' '), text: ids.join(' · '),
+          x: projection.px(activePoint), y: projection.py(activePoint) - (12 + row * 14) / scale,
+        })
+      }
+    })
+  }
   return <svg ref={viewport?.svg} className={preview ? 'case-thumbnail' : 'geometry-viewport w-full'}
     viewBox={`0 0 ${width} ${height}`} role={preview ? 'img' : 'group'}
     aria-label={preview ? t`Input polygon preview` : t`Convex polygon intersection plot`}
@@ -54,7 +75,7 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
           </g>)}
         </g>)}
       {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={4 / scale} fill="none" stroke="var(--warning)" strokeWidth={2 / scale} pointerEvents="none" />)}
-      {step && <g data-layer="labels" pointerEvents="none">
+      {labels.length > 0 && <g data-layer="labels" pointerEvents="none">
         {/* Paint every outline before any fill so adjacent glyphs cannot erase text. */}
         {(['outline', 'fill'] as const).map(layer => <g key={layer} aria-hidden={layer === 'outline' ? true : undefined}>
           {labels.map(label => <text key={label.id} x={label.x} y={label.y} textAnchor="middle" fontSize={12 / scale}

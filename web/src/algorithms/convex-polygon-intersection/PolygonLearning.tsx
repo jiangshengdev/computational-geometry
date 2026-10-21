@@ -64,17 +64,17 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
     <section className="learning-view polygon-learning" data-zen-mode={zenMode} aria-label={t`Learn step by step`}>
       {step ? <div className="workspace polygon-learning-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
         <div className="input-panel polygon-inputs">
-          <PointCoordinates title={t`Polygon A vertices`} points={first} prefix="A" panel="input" interaction={interaction} stepKey={step}
+          <PointCoordinates highlightTitle title={t`Polygon A vertices`} points={first} prefix="A" panel="input" interaction={interaction} stepKey={step}
             currentIds={step.edges?.[0] ?? (step.boundary === 'first' && step.vertex !== null ? [step.vertex] : [])} />
-          <PointCoordinates title={t`Polygon B vertices`} points={second} prefix="B" panel="input" interaction={interaction} stepKey={step}
+          <PointCoordinates highlightTitle title={t`Polygon B vertices`} points={second} prefix="B" panel="input" interaction={interaction} stepKey={step}
             currentIds={step.edges?.[1] ?? (step.boundary === 'second' && step.vertex !== null ? [step.vertex] : [])} />
         </div>
         <PolygonLearningCanvas first={first} second={second} step={step} interaction={interaction} />
         <div className="workspace-panel polygon-learning-results">
-          <PointCoordinates title={t`Collected candidates`} points={step.candidates} prefix="C" interaction={interaction} stepKey={step} currentIds={step.added}>
+          <PointCoordinates highlightTitle title={t`Collected candidates`} points={step.candidates} prefix="C" interaction={interaction} stepKey={step} currentIds={step.added}>
             <p className="text-sm text-muted">{t`Candidates are not yet the final polygon.`}</p>
           </PointCoordinates>
-          {step.result && <PointCoordinates title={t`Final intersection`} points={resultPoints(step.result)} prefix="R" interaction={interaction} />}
+          {step.result && <PointCoordinates highlightTitle title={t`Final intersection`} points={resultPoints(step.result)} prefix="R" interaction={interaction} />}
           <section className="workspace-panel" aria-label={t`Current action`} data-action={step.action} data-phase={step.phase}>
             <Card><Card.Content><PolygonExplanation step={step} /></Card.Content></Card>
           </section>

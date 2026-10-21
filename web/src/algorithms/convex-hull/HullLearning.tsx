@@ -28,6 +28,7 @@ import { useShortcutActions } from '../../app/useShortcutActions'
 import { ReplayPositionLabel } from '../../app/ReplayPositionLabel'
 import './HullLearning.css'
 import { HullRotationControls } from './HullRotationControls'
+import { PointPanelTitle } from '../../geometry/PointPanelTitle'
 
 type PointPanel = 'order' | 'lower' | 'upper' | 'result'
 type Target = { id: number; source: 'plot' | 'list' } | { panel: PointPanel; source: 'panel' }
@@ -151,9 +152,8 @@ function HullPointList({ title, panel, points, step, interaction, stack = false,
     selector: interaction.active?.source === 'plot' ? `[data-point-id="${interaction.active.id}"]` : undefined,
   }])
   return <section aria-label={title} className="workspace-panel"><Card>
-    <Card.Header><Card.Title className="hull-point-panel-title" tabIndex={0}
-      onPointerEnter={() => interaction.hover({ source: 'panel', panel })} onPointerLeave={() => interaction.hover(null)}
-      onFocus={() => interaction.hover({ source: 'panel', panel })} onBlur={() => interaction.hover(null)}>{title}</Card.Title></Card.Header>
+    <Card.Header><PointPanelTitle className="hull-point-panel-title"
+      onHighlight={active => interaction.hover(active ? { source: 'panel', panel } : null)}>{title}</PointPanelTitle></Card.Header>
     <Card.Content ref={scrollport}>
       {stack && <p>{complete ? t`Chain complete` : t`Candidate chain`}</p>}
       {!ids.length ? <p>{t`No points`}</p> : <ol className="flex flex-col gap-1">{ids.map((id, position) => <li key={id} data-point-id={id} data-highlighted={highlightsPoint(interaction.active, step, id)} data-current={step.current === id} data-top={stack && position === ids.length - 1}>

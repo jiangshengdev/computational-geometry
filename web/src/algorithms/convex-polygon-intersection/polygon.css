@@ -7,3 +7,7 @@
   .polygon-learning-workspace { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
 }
 .polygon-learning[data-zen-mode="true"] .polygon-replay-controls { display: none; }
+.polygon-point-panel-title { cursor: pointer; width: fit-content; padding: 4px 8px; border-radius: var(--radius-md); }
+.polygon-point-panel-title:is(:hover, :focus-visible) { background: var(--success-soft); color: var(--success-soft-foreground); }
+.polygon-point-panel-title:is(:hover, :focus-visible) .chip { --chip-bg: var(--success-soft); --chip-fg: var(--success-soft-foreground); }
+.polygon-point-panel-title:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }

@@ -2,6 +2,66 @@ import { expect, test } from '@playwright/test'
 
 test.use({ locale: 'en-US', viewport: { width: 1360, height: 900 } })
 
+for (const browserName of ['chromium', 'webkit'] as const) {
+  const browserTest = test.extend({ browserName })
+  browserTest(`polygon panel titles highlight their point groups and restore selection: ${browserName}`, async ({ page }) => {
+    await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn')
+    const plot = page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true })
+    const highlighted = plot.locator('[role="button"][data-highlighted="true"]')
+    const heading = page.getByRole('heading', { name: 'Irregular convex polygons', exact: true })
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    await page.getByRole('region', { name: 'Collected candidates', exact: true }).getByRole('heading').hover()
+    await expect(highlighted).toHaveCount(0)
+    const slider = page.getByRole('slider', { name: 'Teaching step' })
+    await slider.press('End')
+    const last = await slider.inputValue()
+    const selected = plot.getByRole('button', { name: 'Point (-4, -1)', exact: true })
+    await selected.click()
+    for (const name of ['Polygon A vertices', 'Polygon B vertices', 'Collected candidates', 'Final intersection']) {
+      const panel = page.getByRole('region', { name, exact: true })
+      const ids = (await panel.getByRole('button').allTextContents()).map(text => text.split(' ')[0])
+      const labels = plot.locator('[data-layer="labels"] g:not([aria-hidden]) text')
+      const expected = (await panel.getByRole('button').allTextContents()).map(text => `Point ${text.slice(text.indexOf('('))}`).sort()
+      await panel.getByRole('heading').hover()
+      await expect.poll(() => highlighted.evaluateAll(nodes => nodes.map(node => node.getAttribute('aria-label')).sort())).toEqual(expected)
+      for (const id of ids) await expect(labels.filter({ hasText: new RegExp(`^${id}( ·|$)`) })).toHaveCount(1)
+      await expect(slider).toHaveValue(last)
+      await heading.hover()
+      await expect(highlighted).toHaveCount(1)
+      await expect(selected).toHaveAttribute('data-highlighted', 'true')
+      await panel.getByRole('heading').focus()
+      await expect(highlighted).toHaveCount(expected.length)
+      for (const id of ids) await expect(labels.filter({ hasText: new RegExp(`^${id}( ·|$)`) })).toHaveCount(1)
+      await slider.focus()
+      await expect(highlighted).toHaveCount(1)
+    }
+  })
+  browserTest(`hovered list points show canvas labels without changing replay: ${browserName}`, async ({ page }) => {
+    await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn')
+    const labels = page.locator('[data-layer="labels"] g:not([aria-hidden]) text')
+    const slider = page.getByRole('slider', { name: 'Teaching step' })
+    await expect(slider).toBeEnabled()
+    for (const [name, prefix] of [['Polygon A vertices', 'A'], ['Polygon B vertices', 'B']]) {
+      const row = page.getByRole('region', { name, exact: true }).getByRole('button').nth(2)
+      await row.hover()
+      await expect(labels.filter({ hasText: new RegExp(`^${prefix}2$`) })).toHaveCount(1)
+      await expect(slider).toHaveValue('0')
+      await page.getByRole('heading', { name: 'Irregular convex polygons', exact: true }).hover()
+      await expect(labels.filter({ hasText: new RegExp(`^${prefix}2$`) })).toHaveCount(0)
+    }
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
+    await slider.press('End')
+    const last = await slider.inputValue()
+    for (const [name, prefix] of [['Collected candidates', 'C'], ['Final intersection', 'R']]) {
+      await page.getByRole('region', { name, exact: true }).getByRole('button').first().hover()
+      await expect(labels.filter({ hasText: new RegExp(`^${prefix}0$`) })).toHaveCount(1)
+      await expect(slider).toHaveValue(last)
+    }
+    await page.getByRole('heading', { name: 'Irregular convex polygons', exact: true }).hover()
+    await expect(labels.filter({ hasText: /^C0$|^R0$/ })).toHaveCount(0)
+  })
+}
+
 test('coincident positions link both inputs and result, with hover, keyboard toggling and clearing', async ({ page }) => {
   await page.goto('/convex-polygon-intersection/cases/coincident')
   const lists = ['Polygon A vertices', 'Polygon B vertices', 'Intersection coordinates'].map(name => page.getByRole('region', { name, exact: true }))
