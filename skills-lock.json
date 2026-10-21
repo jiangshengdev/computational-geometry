@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "azure-speech": {
+      "source": "microsoftdocs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/azure-speech/SKILL.md",
+      "computedHash": "4f4734a25a7fcc10672dc47612914788bc6f4c5c3d56787caa6259c261d957b6"
+    }
+  }
+}
