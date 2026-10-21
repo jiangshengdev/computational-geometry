@@ -28,6 +28,12 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
     const ids = edge ?? (step.vertex !== null && step.boundary === (side === 0 ? 'first' : 'second') ? [step.vertex] : [])
     return { boundary, side, prefix, edge, ids }
   }) : []
+  const labels = step && projection ? activeBoundaries.flatMap(({ boundary, side, prefix, edge, ids }) => ids.map(id => ({
+    id: `${prefix}${id}`,
+    x: projection.px(boundary[id]),
+    y: projection.py(boundary[id]) - (side === 0 ? 12 : 26) / scale,
+    text: `${prefix}${id}${edge && id === edge[1] && step.relation && step.action !== 'advance' && step.action !== 'terminate' && step.action !== 'complete' ? ` · ${side === 0 ? 'B' : 'A'} ${((side === 0 ? step.relation.first_side : step.relation.second_side) === 'left') ? t`left side` : (side === 0 ? step.relation.first_side : step.relation.second_side) === 'right' ? t`right side` : t`on the supporting line`}` : ''}`,
+  }))) : []
   return <svg ref={viewport?.svg} className={preview ? 'case-thumbnail' : 'geometry-viewport w-full'}
     viewBox={`0 0 ${width} ${height}`} role={preview ? 'img' : 'group'}
     aria-label={preview ? t`Input polygon preview` : t`Convex polygon intersection plot`}
@@ -49,9 +55,13 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
         </g>)}
       {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={(step.added.includes(id) ? 7 : 4) / scale} fill="none" stroke="var(--warning)" strokeWidth={1 / scale} pointerEvents="none" />)}
       {step && <g data-layer="labels" pointerEvents="none">
-        {activeBoundaries.flatMap(({ boundary, side, prefix, edge, ids }) => ids.map(id =>
-          <text key={`${prefix}${id}`} x={projection.px(boundary[id])} y={projection.py(boundary[id]) - (side === 0 ? 12 : 26) / scale} textAnchor="middle" fontSize={12 / scale} fill="currentColor">{prefix}{id}{edge && id === edge[1] && step.relation && step.action !== 'advance' && step.action !== 'terminate' && step.action !== 'complete' ? ` · ${side === 0 ? 'B' : 'A'} ${((side === 0 ? step.relation.first_side : step.relation.second_side) === 'left') ? t`left side` : (side === 0 ? step.relation.first_side : step.relation.second_side) === 'right' ? t`right side` : t`on the supporting line`}` : ''}</text>
-        ))}
+        {/* Paint every outline before any fill so adjacent glyphs cannot erase text. */}
+        {(['outline', 'fill'] as const).map(layer => <g key={layer} aria-hidden={layer === 'outline' ? true : undefined}>
+          {labels.map(label => <text key={label.id} x={label.x} y={label.y} textAnchor="middle" fontSize={12 / scale}
+            style={{ fill: layer === 'outline' ? 'none' : 'currentColor', stroke: layer === 'outline' ? '#fff' : 'none', strokeWidth: 3 / scale }}>
+            {label.text}
+          </text>)}
+        </g>)}
       </g>}
     </g>}
   </svg>
