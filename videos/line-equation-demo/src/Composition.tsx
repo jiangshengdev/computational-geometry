@@ -197,7 +197,7 @@ const CoordinateDiagram = () => {
   );
 };
 
-const Lesson = () => {
+export const Lesson = () => {
   const frame = useCurrentFrame();
   const scene =
     scenes.find(

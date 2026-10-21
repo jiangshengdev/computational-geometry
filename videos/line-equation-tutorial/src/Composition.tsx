@@ -1,25 +1,213 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
-
-type Props = {};
-
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
+import {
+  AbsoluteFill,
+  Composition,
+  Html5Audio,
+  Sequence,
+  staticFile,
+  useCurrentFrame,
+  interpolate,
+} from "remotion";
+import { Lesson as Intro } from "../../line-equation-demo/src/Composition";
+import { chapters, offsets, totalFrames, fps } from "./timeline";
+import { Diagram } from "./Diagram";
+import { titles, visuals } from "./scenes";
+type Row = (typeof chapters)[number]["rows"][number];
+const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
+  const frame = useCurrentFrame(),
+    seconds = (frame / row.durationInFrames) * (row.end - row.start);
+  const cues = visuals[row.id];
+  const cue = [...cues].reverse().find((item) => item.at <= seconds) ?? cues[0];
+  const graphic = cue.diagram !== "none";
   return (
-    <Composition
-      id="MyComp"
-      component={MyComponent}
-      durationInFrames={60}
-      fps={30}
-      width={1280}
-      height={720}
-      calculateMetadata={calculateMetadata}
-    />
+    <AbsoluteFill
+      style={{
+        backgroundColor: "#f6f8fb",
+        color: "#172c45",
+        fontFamily: '"PingFang SC", sans-serif',
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          left: 100,
+          top: 62,
+          fontSize: 28,
+          color: "#65758a",
+        }}
+      >
+        由两个端点写出直线方程 · {String(chapter + 1).padStart(2, "0")} / 08
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 100,
+          top: 125,
+          fontSize: 48,
+          fontWeight: 600,
+        }}
+      >
+        {titles[chapter]}
+      </div>
+      {graphic ? (
+        <div style={{ position: "absolute", left: 65, top: 165 }}>
+          <Diagram kind={cue.diagram ?? "line"} />
+        </div>
+      ) : null}
+      <div
+        style={{
+          position: "absolute",
+          left: graphic ? 955 : 130,
+          right: 100,
+          top: graphic ? 320 : 280,
+          textAlign: graphic ? "left" : "center",
+        }}
+      >
+        <div
+          key={cue.at}
+          style={{
+            opacity: interpolate(
+              frame - (cue.at / (row.end - row.start)) * row.durationInFrames,
+              [0, 7],
+              [0.25, 1],
+              {
+                extrapolateLeft: "clamp",
+                extrapolateRight: "clamp",
+              },
+            ),
+          }}
+        >
+          {cue.lines.map((line, i) => (
+            <div
+              key={i}
+              style={{
+                fontSize: line.length > 24 ? 42 : line.length > 18 ? 48 : 58,
+                lineHeight: 1.65,
+                color: i === cue.lines.length - 1 ? "#2563eb" : "#172c45",
+                fontWeight: 500,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {row.id === "193-7"
+                ? line
+                    .split(/(\(Y₂ − Y₁\)|\(X₂ − X₁\))/g)
+                    .map((part, index) => (
+                      <span
+                        key={index}
+                        style={{
+                          color:
+                            part === "(Y₂ − Y₁)"
+                              ? "#2563eb"
+                              : part === "(X₂ − X₁)"
+                                ? "#b35b16"
+                                : undefined,
+                        }}
+                      >
+                        {part}
+                      </span>
+                    ))
+                : line}
+            </div>
+          ))}
+        </div>
+        {cue.note ? (
+          <div
+            style={{
+              fontSize: 30,
+              lineHeight: 1.6,
+              color: "#65758a",
+              marginTop: 32,
+            }}
+          >
+            {cue.note}
+          </div>
+        ) : null}
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 120,
+          right: 120,
+          bottom: 55,
+          borderTop: "2px solid #dce4ec",
+          paddingTop: 24,
+          fontSize: 30,
+          lineHeight: 1.6,
+          textAlign: "center",
+        }}
+      >
+        {row.narration}
+      </div>
+      {row.narration ? (
+        <Sequence from={6} layout="none">
+          <Html5Audio src={staticFile(`narration/${row.id}.mp3`)} />
+        </Sequence>
+      ) : null}
+    </AbsoluteFill>
   );
 };
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+const Chapter = ({ chapter }: { chapter: number }) =>
+  chapter === 0 ? (
+    <Intro />
+  ) : (
+    <>
+      {chapters[chapter].rows.map((row) => (
+        <Sequence
+          key={row.id}
+          from={row.from}
+          durationInFrames={row.durationInFrames}
+          name={row.id}
+        >
+          <Shot row={row} chapter={chapter} />
+        </Sequence>
+      ))}
+    </>
+  );
+export const Tutorial = ({
+  first = 0,
+  last = 7,
+}: {
+  first?: number;
+  last?: number;
+}) => (
+  <>
+    {chapters.map((item, chapter) =>
+      chapter < first || chapter > last ? null : (
+        <Sequence
+          key={chapter}
+          from={offsets[chapter] - offsets[first]}
+          durationInFrames={item.durationInFrames}
+          name={titles[chapter]}
+        >
+          <Chapter chapter={chapter} />
+        </Sequence>
+      ),
+    )}
+  </>
+);
+export const MyComposition = () => (
+  <>
+    <Composition
+      id="LineEquationTutorial"
+      component={Tutorial}
+      durationInFrames={totalFrames}
+      fps={fps}
+      width={1920}
+      height={1080}
+    />
+    {[0, 2, 4, 6].map((first) => (
+      <Composition
+        key={first}
+        id={`Parts${first + 1}And${first + 2}`}
+        component={Tutorial}
+        defaultProps={{ first, last: first + 1 }}
+        durationInFrames={
+          chapters[first].durationInFrames +
+          chapters[first + 1].durationInFrames
+        }
+        fps={fps}
+        width={1920}
+        height={1080}
+      />
+    ))}
+  </>
+);
