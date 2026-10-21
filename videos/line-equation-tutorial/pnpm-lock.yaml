@@ -24,6 +24,9 @@ importers:
       '@remotion/eslint-config-flat':
         specifier: 4.0.537
         version: 4.0.537(eslint@10.12.0)(typescript@5.9.3)
+      '@types/node':
+        specifier: ^26.6.5
+        version: 26.6.5
       '@types/react':
         specifier: 19.2.7
         version: 19.2.7

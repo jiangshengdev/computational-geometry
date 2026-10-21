@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "4.0.537",
+    "@types/node": "^26.6.5",
     "@types/react": "19.2.7",
     "@types/web": "0.0.166",
     "eslint": "10.12.0",
