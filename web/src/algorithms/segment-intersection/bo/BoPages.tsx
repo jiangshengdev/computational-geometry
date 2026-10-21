@@ -23,7 +23,7 @@ import { ToggleButton } from '@heroui/react/toggle-button'
 import { ToggleButtonGroup } from '@heroui/react/toggle-button-group'
 import { Button, buttonVariants } from '@heroui/react/button'
 import { Input } from '@heroui/react/input'
-import { usePageShortcut } from '../../../app/usePageShortcut'
+import { useZenMode } from '../../../app/useZenMode'
 import { AppLink as Link } from '../../../app/AppLink'
 import { LearningDisplayControls } from '../../../geometry/LearningDisplayControls'
 import { StartLearningLink } from '../../../geometry/StartLearningLink'
@@ -227,16 +227,8 @@ export function CasePage({ learning = false, unknownPath = false }: { learning?:
   const { _: translate } = useMessages()
   const { caseId } = useParams()
   const preset = presets.find(item => item.id === caseId)
-  const [zenMode, setZenMode] = useLayoutPreference('bo-learning-layout-v1-zen', false,
-    (value): value is boolean => typeof value === 'boolean')
+  const [zenMode, setZenMode] = useZenMode('bo-learning-layout-v1-zen', learning && !unknownPath && !!preset?.learning)
   const [layout, setLayout] = useLayoutPreference<LearningLayout>('bo-learning-layout-v1-columns', '2:3:3', isLearningLayout)
-  usePageShortcut(event => {
-    if (learning && !unknownPath && preset?.learning && event.key === 'z') {
-      event.preventDefault()
-      if (!event.repeat) setZenMode(!zenMode)
-      return
-    }
-  })
   if (!preset || unknownPath || (learning && !preset.learning)) return <>
     <RouteError message={!preset ? t`Unknown case: ${caseId}` : unknownPath ? t`Unknown page path.` : t`This case does not support learning.`} preset={preset} />
   </>

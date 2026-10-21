@@ -9,7 +9,6 @@ export function LearningDisplayControls({ ratios, layout, onLayoutChange, label,
   ratios: readonly string[]; layout: string; onLayoutChange: (value: string) => void
   label: string; zenMode: boolean; onZenModeChange: (value: boolean) => void
 }) {
-  const { t } = useLingui()
   return <>
     <Select className="learning-layout-select w-24" aria-label={label} value={layout}
       onChange={value => { if (typeof value === 'string' && ratios.includes(value)) onLayoutChange(value) }}>
@@ -20,12 +19,19 @@ export function LearningDisplayControls({ ratios, layout, onLayoutChange, label,
         </ListBox.Item>)}
       </ListBox></Select.Popover>
     </Select>
-    <Switch size="sm" isSelected={zenMode} onChange={onZenModeChange}
+    <ZenModeControl zenMode={zenMode} onZenModeChange={onZenModeChange} />
+  </>
+}
+
+export function ZenModeControl({ zenMode, onZenModeChange }: {
+  zenMode: boolean; onZenModeChange: (value: boolean) => void
+}) {
+  const { t } = useLingui()
+  return <Switch size="sm" isSelected={zenMode} onChange={onZenModeChange}
       inputRef={input => { input?.setAttribute('aria-keyshortcuts', 'z') }}>
       <Switch.Content>
         <Switch.Control><Switch.Thumb /></Switch.Control>
         <Label>{t`Zen mode`}</Label><Chip color="accent" variant="soft" size="sm" aria-hidden="true">Z</Chip>
       </Switch.Content>
     </Switch>
-  </>
 }

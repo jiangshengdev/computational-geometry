@@ -20,7 +20,7 @@ import { useHullTrace, type HullStep, type HullPhase } from './trace'
 import { DirectedLine, HullTurnIndicator } from './HullDirection'
 import { useStepPanelScroll } from '../segment-intersection/bo/learning/useStepPanelScroll'
 import { useLayoutPreference } from '../../app/useLayoutPreference'
-import { usePageShortcut } from '../../app/usePageShortcut'
+import { useZenMode } from '../../app/useZenMode'
 import { LearningDisplayControls } from '../../geometry/LearningDisplayControls'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { ShortcutActionButton, ShortcutActionGroup, type ShortcutAction } from '../../app/ShortcutAction'
@@ -44,13 +44,7 @@ export function HullLearning({ preset }: { preset: HullCase }) {
   const [rotationToolbar, setRotationToolbar] = useState<HTMLDivElement | null>(null)
   const { _: translate } = useMessages()
   const [layout, setLayout] = useLayoutPreference<HullLayout>('hull-learning-layout-v1-columns', '1:3:1', isHullLayout)
-  const [zenMode, setZenMode] = useLayoutPreference('hull-learning-layout-v1-zen', false,
-    (value): value is boolean => typeof value === 'boolean')
-  usePageShortcut(event => {
-    if (event.key !== 'z') return
-    event.preventDefault()
-    if (!event.repeat) setZenMode(!zenMode)
-  })
+  const [zenMode, setZenMode] = useZenMode('hull-learning-layout-v1-zen')
   const trace = useHullTrace(preset)
   const { search: params, previewIndex, previewStep, commitStep } = useReplayPosition()
   const raw = params.get('step') ?? '0'

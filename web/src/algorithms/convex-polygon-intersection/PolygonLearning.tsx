@@ -9,6 +9,8 @@ import { ShortcutActionButton, ShortcutActionGroup, type ShortcutAction } from '
 import { useShortcutActions } from '../../app/useShortcutActions'
 import { useReplayPosition, useReplaySlider } from '../../app/useReplayPosition'
 import { ReplayPositionLabel } from '../../app/ReplayPositionLabel'
+import { useZenMode } from '../../app/useZenMode'
+import { ZenModeControl } from '../../geometry/LearningDisplayControls'
 import { AppLink } from '../../app/AppLink'
 import { DocumentTitle } from '../../app/DocumentTitle'
 import { CaseToolbar } from '../../geometry/CaseToolbar'
@@ -27,6 +29,7 @@ import './polygon.css'
 export function PolygonLearning({ preset }: { preset: PolygonCase }) {
   const { t } = useLingui()
   const { _: translate } = useMessages()
+  const [zenMode, setZenMode] = useZenMode('polygon-learning-layout-v1-zen')
   const trace = usePolygonTrace(preset)
   const { search, previewIndex, previewStep, commitStep } = useReplayPosition()
   const raw = search.get('step') ?? '0'
@@ -55,8 +58,10 @@ export function PolygonLearning({ preset }: { preset: PolygonCase }) {
   return <>
     <DocumentTitle title={`${translate(preset.name)} · ${t`Learn step by step`}`} />
     <CaseToolbar name={translate(preset.name)} description={translate(preset.description)} backTo="/convex-polygon-intersection"
-      trailingAction={<AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/convex-polygon-intersection/cases/${preset.id}`}>{t`Back to results viewer`}</AppLink>} />
-    <section className="learning-view polygon-learning" aria-label={t`Learn step by step`}>
+      trailingAction={<AppLink className={buttonVariants({ variant: 'tertiary', size: 'sm' })} to={`/convex-polygon-intersection/cases/${preset.id}`}>{t`Back to results viewer`}</AppLink>}>
+      <ZenModeControl zenMode={zenMode} onZenModeChange={setZenMode} />
+    </CaseToolbar>
+    <section className="learning-view polygon-learning" data-zen-mode={zenMode} aria-label={t`Learn step by step`}>
       {step ? <div className="workspace polygon-learning-workspace" onKeyDown={event => { if (event.key === 'Escape') interaction.clear() }}>
         <div className="input-panel polygon-inputs">
           <PointCoordinates title={t`Polygon A vertices`} points={first} prefix="A" panel="input" interaction={interaction} stepKey={step}

@@ -41,19 +41,19 @@ export function PolygonPlot({ first, second, result, preview = false, viewport, 
     <defs><marker id={arrowId} viewBox="0 0 8 8" refX="8" refY="4" markerWidth={9 / scale} markerHeight={9 / scale} markerUnits="userSpaceOnUse" orient="auto"><path d="M 0 0 L 8 4 L 0 8 Z" fill="var(--success)" /></marker></defs>
     {projection && <g data-layer="geometry" transform={viewport?.transform.toString()}>
       {/* Nested stroke widths keep both input identities visible on coincident boundaries. */}
-      <polygon data-input="first" aria-label={t`Polygon A`} points={path(first)} fill="var(--accent)" fillOpacity="0.08" stroke="var(--accent)" strokeWidth={3 / scale} />
-      <polygon data-input="second" aria-label={t`Polygon B`} points={path(second)} fill="var(--warning)" fillOpacity="0.08" stroke="var(--warning)" strokeDasharray={`${6 / scale} ${3 / scale}`} strokeWidth={2 / scale} />
+      <polygon data-input="first" aria-label={t`Polygon A`} points={path(first)} fill="var(--accent)" fillOpacity="0.08" stroke="var(--accent)" strokeWidth={1.5 / scale} />
+      <polygon data-input="second" aria-label={t`Polygon B`} points={path(second)} fill="var(--warning)" fillOpacity="0.08" stroke="var(--warning)" strokeDasharray={`${6 / scale} ${3 / scale}`} strokeWidth={1 / scale} />
       {result?.kind === 'polygon' && <polygon data-result="polygon" points={path(vertices)} fill="var(--success)" fillOpacity="0.25" stroke="var(--success)" strokeWidth={1 / scale} />}
       {result?.kind === 'segment' && <polyline data-result="segment" points={path(vertices)} fill="none" stroke="var(--success)" strokeWidth={1 / scale} />}
       {result?.kind === 'point' && <circle data-result="point" cx={projection.px(result.point)} cy={projection.py(result.point)} r={7 / scale} fill="var(--success)" />}
-      <PlotPoints points={points} projection={projection} preview={preview} scale={scale} interaction={interaction} />
+      <PlotPoints points={points} projection={projection} preview={preview} radius={preview ? 1.125 : 3} highlightRadius={8} highlightStrokeWidth={2} scale={scale} interaction={interaction} />
       {activeBoundaries.map(({ boundary, prefix, edge, ids }) => <g key={prefix} data-active-boundary={prefix} pointerEvents="none">
           {edge && <DirectedLine data-edge={prefix} data-from={edge[0]} data-to={edge[1]} from={{ x: projection.px(boundary[edge[0]]), y: projection.py(boundary[edge[0]]) }} to={{ x: projection.px(boundary[edge[1]]), y: projection.py(boundary[edge[1]]) }} scale={scale} stroke="var(--success)" strokeWidth={1.5 / scale} markerEnd={`url(#${arrowId})`} />}
           {ids.map(id => <g key={id} data-current-vertex={`${prefix}${id}`}>
-            <circle cx={projection.px(boundary[id])} cy={projection.py(boundary[id])} r={8 / scale} fill="none" stroke="var(--success)" strokeWidth={1 / scale} />
+            <circle cx={projection.px(boundary[id])} cy={projection.py(boundary[id])} r={6 / scale} fill="none" stroke="var(--success)" strokeWidth={2 / scale} />
           </g>)}
         </g>)}
-      {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={(step.added.includes(id) ? 7 : 4) / scale} fill="none" stroke="var(--warning)" strokeWidth={1 / scale} pointerEvents="none" />)}
+      {step?.candidates.map((point, id) => <circle key={id} data-candidate-id={id} cx={projection.px(point)} cy={projection.py(point)} r={4 / scale} fill="none" stroke="var(--warning)" strokeWidth={2 / scale} pointerEvents="none" />)}
       {step && <g data-layer="labels" pointerEvents="none">
         {/* Paint every outline before any fill so adjacent glyphs cannot erase text. */}
         {(['outline', 'fill'] as const).map(layer => <g key={layer} aria-hidden={layer === 'outline' ? true : undefined}>

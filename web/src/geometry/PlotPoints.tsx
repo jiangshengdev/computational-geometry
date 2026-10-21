@@ -3,12 +3,15 @@ import { formatPoint, samePoint, uniquePoints, type Point } from './geometry'
 import type { projectPoints } from './projection'
 import type { PointInteraction } from './usePointInteraction'
 
-export function PlotPoints({ points, projection, preview = false, interaction, scale = 1 }: {
+export function PlotPoints({ points, projection, preview = false, interaction, scale = 1, radius = preview ? 1.5 : 4, highlightRadius = 10, highlightStrokeWidth = 3 }: {
   points: Point[]
   projection: NonNullable<ReturnType<typeof projectPoints>>
   preview?: boolean
   interaction?: PointInteraction
   scale?: number
+  radius?: number
+  highlightRadius?: number
+  highlightStrokeWidth?: number
 }) {
   const { t } = useLingui()
   return uniquePoints(points).map((p, index) => {
@@ -23,8 +26,11 @@ export function PlotPoints({ points, projection, preview = false, interaction, s
       onKeyDown={event => {
         if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); interaction?.select({ point: p, source: 'plot' }) }
       }}>
-      <circle cx={projection.px(p)} cy={projection.py(p)} r={(preview ? 1.5 : 4) / scale} fill="currentColor" />
-      {interaction && <circle cx={projection.px(p)} cy={projection.py(p)} r={10 / scale} fill="transparent" stroke={highlighted ? 'var(--accent)' : 'none'} strokeWidth={3 / scale} />}
+      <circle cx={projection.px(p)} cy={projection.py(p)} r={radius / scale} fill="currentColor" />
+      {interaction && <>
+        <circle cx={projection.px(p)} cy={projection.py(p)} r={10 / scale} fill="transparent" />
+        {highlighted && <circle cx={projection.px(p)} cy={projection.py(p)} r={highlightRadius / scale} fill="none" stroke="var(--accent)" strokeWidth={highlightStrokeWidth / scale} pointerEvents="none" />}
+      </>}
     </g>
   })
 }
