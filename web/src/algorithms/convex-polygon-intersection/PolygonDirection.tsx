@@ -47,7 +47,6 @@ export function PolygonDirection({ edges, position, turn, width, height }: {
       viewBox="0 0 8 8" refX="8" refY="4" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto">
       <path d="M 0 0 L 8 4 L 0 8 Z" fill={fill} />
     </marker>)}</defs>
-    {!inView && <rect x="12" y={height - 225} width={Math.min(500, width - 24)} height="210" rx="12" fill="var(--surface)" fillOpacity="0.94" />}
     {directions.map((direction, index) => {
       const start = turn === 'collinear'
         ? { x: origin.x - directions[0].y * index * 22, y: origin.y + directions[0].x * index * 22 } : origin
