@@ -5,9 +5,10 @@
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
-    "node": "^20.19.0 || ^22.13.0 || >=24"
+    "node": "^22.18.0 || >=24"
   },
   "private": true,
+  "type": "module",
   "dependencies": {
     "@remotion/cli": "4.0.537",
     "katex": "^0.19.0",
@@ -30,7 +31,11 @@
     "video:dev": "remotion studio --no-open",
     "video:build": "remotion bundle",
     "video:upgrade": "remotion upgrade",
-    "video:lint": "eslint src && tsc"
+    "video:lint": "eslint src scripts && tsc",
+    "video:narration": "node scripts/narration.ts",
+    "video:check-layout": "node scripts/check-layout.ts",
+    "video:check-content": "node scripts/check-content.ts",
+    "video:export": "node scripts/render.ts"
   },
   "allowScripts": {
     "esbuild": false

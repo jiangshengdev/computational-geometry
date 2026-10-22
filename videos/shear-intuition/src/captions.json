@@ -1,0 +1,434 @@
+{
+  "204-01": [
+    {
+      "text": "想象一条扫描线，从左向右移动。",
+      "startMs": 0,
+      "endMs": 2904,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-02": [
+    {
+      "text": "遇到竖直线段时，线段上的点有相同的横坐标。",
+      "startMs": 0,
+      "endMs": 4008,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-03": [
+    {
+      "text": "能不能把它稍微推斜？这一集，先理解剪切怎样改变坐标。",
+      "startMs": 0,
+      "endMs": 4848,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-04": [
+    {
+      "text": "固定坐标轴。取系数二分之一，点 P 的横、纵坐标都是 2。",
+      "startMs": 0,
+      "endMs": 5616,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-05": [
+    {
+      "text": "先把纵坐标乘以系数：二分之一乘 2，得到 1。",
+      "startMs": 0,
+      "endMs": 4248,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-06": [
+    {
+      "text": "把 1 加到原横坐标 2 上，新横坐标就是 3。",
+      "startMs": 0,
+      "endMs": 3696,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-07": [
+    {
+      "text": "纵坐标仍为 2。向右移动 1，得到新点 P′。",
+      "startMs": 0,
+      "endMs": 4056,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-08": [
+    {
+      "text": "一般地，新横坐标等于原横坐标，加上系数乘原纵坐标。",
+      "startMs": 0,
+      "endMs": 5352,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-09": [
+    {
+      "text": "新纵坐标等于原纵坐标，所以点只沿水平方向移动。",
+      "startMs": 0,
+      "endMs": 4152,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-10": [
+    {
+      "text": "s 叫剪切系数。sy 表示 s 乘 y，这次取二分之一只为图解。",
+      "startMs": 0,
+      "endMs": 4896,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-11": [
+    {
+      "text": "字母右上方的撇号，只是区分新旧的记号，不是新的运算。",
+      "startMs": 0,
+      "endMs": 4848,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-12": [
+    {
+      "text": "点 Q 的横、纵坐标都是负 1。它往哪边走？新横坐标是多少？",
+      "startMs": 0,
+      "endMs": 5328,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-13": [
+    {
+      "text": "把负 1 代入公式，先算二分之一乘负 1。",
+      "startMs": 0,
+      "endMs": 3096,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-14": [
+    {
+      "text": "乘积是负二分之一，所以要从负 1 再减去二分之一。",
+      "startMs": 0,
+      "endMs": 4416,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-15": [
+    {
+      "text": "负 1 写成负二分之二，相减得到负二分之三。",
+      "startMs": 0,
+      "endMs": 3864,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "204-16": [
+    {
+      "text": "纵坐标仍为负 1。点向左移动二分之一，得到 Q′。",
+      "startMs": 0,
+      "endMs": 4512,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "205-01": [
+    {
+      "text": "现在换一种操作。回到原来的 P，固定它的位置，不再移动点。",
+      "startMs": 0,
+      "endMs": 4464,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "205-02": [
+    {
+      "text": "保留水平横轴，改用向左倾斜的纵轴。点 P 与原点都不动。",
+      "startMs": 0,
+      "endMs": 5208,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "205-03": [
+    {
+      "text": "过 P 画平行于新纵轴的线，找到它与横轴的交点。",
+      "startMs": 0,
+      "endMs": 4104,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "205-04": [
+    {
+      "text": "交点在刻度 3，所以新横坐标是 3，不能一律作垂线。",
+      "startMs": 0,
+      "endMs": 4344,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "205-05": [
+    {
+      "text": "再沿新横轴的平行方向，读出新纵坐标 2。",
+      "startMs": 0,
+      "endMs": 3408,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "205-06": [
+    {
+      "text": "同一个 P，原坐标是 (2,2)，新坐标是 (3,2)。点没有移动。",
+      "startMs": 0,
+      "endMs": 7416,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "205-07": [
+    {
+      "text": "坐标下方的标记，说明用哪套轴读数。斜轴刻度不等于沿轴长度。",
+      "startMs": 0,
+      "endMs": 5808,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-01": [
+    {
+      "text": "新旧纵坐标相等，所以把等式反过来写，原纵坐标等于新纵坐标。",
+      "startMs": 0,
+      "endMs": 5544,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-02": [
+    {
+      "text": "再看横坐标公式。现在已知新坐标，要反过来求原坐标。",
+      "startMs": 0,
+      "endMs": 4800,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-03": [
+    {
+      "text": "因为 y 等于 y′，把右边的 y 换成 y′。",
+      "startMs": 0,
+      "endMs": 3456,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-04": [
+    {
+      "text": "要单独留下 x，就在等式两边同时减去 s 乘 y′。",
+      "startMs": 0,
+      "endMs": 4296,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-05": [
+    {
+      "text": "右边加上和减去的是同一个数，它们抵消，只剩下 x。",
+      "startMs": 0,
+      "endMs": 4344,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-06": [
+    {
+      "text": "交换等式左右两边，就得到逆变换；纵坐标的等式也一起保留。",
+      "startMs": 0,
+      "endMs": 5160,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-07": [
+    {
+      "text": "新横轴上的点，新纵坐标为零。因此原纵坐标也为零。",
+      "startMs": 0,
+      "endMs": 4848,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-08": [
+    {
+      "text": "把新纵坐标零代入，原横坐标等于新横坐标，减去 s 乘零。",
+      "startMs": 0,
+      "endMs": 5256,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-09": [
+    {
+      "text": "任何数乘零都是零，所以原横坐标等于新横坐标。",
+      "startMs": 0,
+      "endMs": 4560,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-10": [
+    {
+      "text": "这对任意横坐标都成立。新横轴的位置、方向和刻度，全都不变。",
+      "startMs": 0,
+      "endMs": 5352,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-11": [
+    {
+      "text": "再选新纵轴刻度 2 的点。沿斜轴到原点，新横坐标是零。",
+      "startMs": 0,
+      "endMs": 5016,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-12": [
+    {
+      "text": "新纵坐标是 2，所以原纵坐标也为 2。水平辅助线标出了这个高度。",
+      "startMs": 0,
+      "endMs": 5400,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-13": [
+    {
+      "text": "把新横坐标零、新纵坐标 2 和系数二分之一，代入逆变换。",
+      "startMs": 0,
+      "endMs": 5016,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-14": [
+    {
+      "text": "先乘得到 1，再从零减去 1，原横坐标就是负 1。",
+      "startMs": 0,
+      "endMs": 4656,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-15": [
+    {
+      "text": "从原点向左走 1，再向上走 2，正好到达这个固定点。",
+      "startMs": 0,
+      "endMs": 4560,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-16": [
+    {
+      "text": "更一般地，新纵轴上的点满足新横坐标为零，所以 x 等于负 s 乘 y′。",
+      "startMs": 0,
+      "endMs": 6408,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-17": [
+    {
+      "text": "当系数和新纵坐标都为正数时，原横坐标为负，点在原纵轴左侧。",
+      "startMs": 0,
+      "endMs": 5952,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-18": [
+    {
+      "text": "因此新纵轴朝左上方倾斜，横轴却没有变。这不是整体旋转。",
+      "startMs": 0,
+      "endMs": 5400,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "206-19": [
+    {
+      "text": "刻度 2 代表新纵坐标。它不代表从原点沿斜轴量出的长度为 2。",
+      "startMs": 0,
+      "endMs": 5808,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "207-01": [
+    {
+      "text": "P 相对原点一直不动。原坐标 (2,2)，新坐标 (3,2)。这是哪种操作？",
+      "startMs": 0,
+      "endMs": 8280,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "207-02": [
+    {
+      "text": "先对照点移动：坐标轴不变，从 P 向右移动 1，画出新点 P′。",
+      "startMs": 0,
+      "endMs": 5808,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "207-03": [
+    {
+      "text": "再对照换坐标系：P 留在原位，沿新轴方向读出 (3,2)。",
+      "startMs": 0,
+      "endMs": 6744,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "207-04": [
+    {
+      "text": "题目说 P 始终不动，所以改变的是读取坐标的方式。",
+      "startMs": 0,
+      "endMs": 3960,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "207-05": [
+    {
+      "text": "同一公式，两种操作。先问固定的是坐标轴，还是几何点。",
+      "startMs": 0,
+      "endMs": 4512,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "207-06": [
+    {
+      "text": "最后留下一个问题：剪切系数能随便选吗？我们下一集继续。",
+      "startMs": 0,
+      "endMs": 4656,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}
