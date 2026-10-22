@@ -91,8 +91,8 @@ export const visuals: Record<string, Cue[]> = {
   ],
   "191-4": [
     cue(0, ["a + 3b = c", "3a + 7b = c"], "line"),
-    cue(4, ["(3a + 7b) − (a + 3b)", "= c − c"], "line"),
-    cue(11, ["(3a + 7b) − (a + 3b)", "= 0"], "line"),
+    cue(4, ["(3a + 7b) − (a + 3b) = c − c"], "line"),
+    cue(11, ["(3a + 7b) − (a + 3b) = 0"], "line"),
   ],
   "191-5": [
     cue(0, ["3a + 7b − a − 3b = 0"], "line", "括号里的两项都变号"),
@@ -174,11 +174,11 @@ export const visuals: Record<string, Cue[]> = {
   ],
   "193-7": [
     cue(0, ["(aX₂ + bY₂) − (aX₁ + bY₁)"], "none", "比较两点代入值"),
-    cue(5, ["aX₂ + bY₂ − aX₁ − bY₁"], "none", "展开"),
-    cue(10, ["a(X₂ − X₁) + b(Y₂ − Y₁)"], "none", "合并"),
+    cue(5, ["= aX₂ + bY₂ − aX₁ − bY₁"], "none", "展开"),
+    cue(10, ["= a(X₂ − X₁) + b(Y₂ − Y₁)"], "none", "合并"),
     cue(
       16,
-      ["(Y₂ − Y₁)(X₂ − X₁)", "− (X₂ − X₁)(Y₂ − Y₁)"],
+      ["= (Y₂ − Y₁)(X₂ − X₁) − (X₂ − X₁)(Y₂ − Y₁)"],
       "none",
       "相同乘积相减",
     ),
@@ -292,7 +292,7 @@ export const visuals: Record<string, Cue[]> = {
   ],
   "196-3": [
     cue(0, ["4 − (−4)"], "axis-answer"),
-    cue(6, ["4 + 4"], "axis-answer"),
+    cue(6, ["= 4 + 4"], "axis-answer"),
     cue(10, ["= 8"], "axis-answer"),
   ],
   "196-4": [

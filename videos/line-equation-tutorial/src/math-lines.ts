@@ -6,10 +6,15 @@ const fontSize = (line: string) =>
 export const mathLineGroups = (
   lines: string[],
   highlightDifferences = false,
+  activeLines = [lines.length - 1],
+  visibleCount = lines.length,
 ) => {
   const groups: { start: number; lines: string[]; formulas: string[] }[] = [];
   lines.forEach((line, index) => {
-    const parts = mathTextParts(line, highlightDifferences);
+    const parts = mathTextParts(
+      line,
+      highlightDifferences && activeLines.includes(index),
+    );
     const formula = parts.length === 1 ? parts[0].latex : undefined;
     const previous = groups[groups.length - 1];
     if (formula !== undefined && previous?.formulas.length) {
@@ -40,14 +45,16 @@ export const mathLineGroups = (
     const columns = Math.max(...rows.map((row) => row.length));
     const body = rows
       .map((row, index) => {
-        const color =
-          group.start + index === lines.length - 1 ? "#2563eb" : "#172c45";
-        return Array.from(
-          { length: columns },
-          (_, column) => `{\\color{${color}}${row[column] ?? ""}}`,
+        const color = activeLines.includes(group.start + index)
+          ? "#2563eb"
+          : "#65758a";
+        return Array.from({ length: columns }, (_, column) =>
+          group.start + index >= visibleCount
+            ? `\\phantom{${row[column] ?? ""}}`
+            : `{\\color{${color}}${row[column] ?? ""}}`,
         ).join(" & ");
       })
-      .join(String.raw` \\[0.25em] `);
+      .join(String.raw` \\[0.1em] `);
     return {
       ...group,
       fontSize: Math.min(...group.lines.map(fontSize)),

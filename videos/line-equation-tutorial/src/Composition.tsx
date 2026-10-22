@@ -7,19 +7,29 @@ import {
   Sequence,
   staticFile,
   useCurrentFrame,
-  interpolate,
 } from "remotion";
 import { Intro } from "./Intro";
 import { chapters, offsets, totalFrames, fps } from "./timeline";
 import { Diagram } from "./Diagram";
-import { titles, visuals } from "./scenes";
+import { titles } from "./scenes";
+import { derivationAt } from "./derivations";
 type Row = (typeof chapters)[number]["rows"][number];
 const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
   const frame = useCurrentFrame(),
     seconds = (frame / row.durationInFrames) * (row.end - row.start);
-  const cues = visuals[row.id];
-  const cue = [...cues].reverse().find((item) => item.at <= seconds) ?? cues[0];
-  const graphic = cue.diagram !== "none";
+  const { page, step } = derivationAt(row.id, seconds);
+  const { cue } = step;
+  const { graphic } = page;
+  const columns =
+    page.columnBreak === undefined
+      ? [{ start: 0, lines: page.lines }]
+      : [
+          { start: 0, lines: page.lines.slice(0, page.columnBreak) },
+          {
+            start: page.columnBreak,
+            lines: page.lines.slice(page.columnBreak),
+          },
+        ];
   return (
     <AbsoluteFill
       style={{
@@ -51,52 +61,81 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
       >
         <MathText>{titles[chapter]}</MathText>
       </div>
-      {graphic ? (
-        <div style={{ position: "absolute", left: 65, top: 165 }}>
+      {page.context.length ? (
+        <div
+          style={{
+            position: "absolute",
+            left: 100,
+            right: 100,
+            top: 210,
+            display: "flex",
+            gap: 48,
+            alignItems: "center",
+            fontSize: 30,
+            color: "#526579",
+            borderBottom: "2px solid #dce4ec",
+            paddingBottom: 18,
+          }}
+        >
+          {page.context.map((line) => (
+            <div key={line}>
+              <MathText>{line}</MathText>
+            </div>
+          ))}
+        </div>
+      ) : null}
+      {graphic && cue.diagram !== "none" ? (
+        <div
+          style={{
+            position: "absolute",
+            left: 65,
+            top: 285,
+            scale: "0.74",
+            transformOrigin: "top left",
+          }}
+        >
           <Diagram kind={cue.diagram ?? "line"} scale={cue.coordinateScale} />
         </div>
       ) : null}
       <div
         style={{
           position: "absolute",
-          left: graphic ? 955 : 130,
+          left: graphic ? 790 : 180,
           right: 100,
-          top: graphic ? 320 : 280,
-          textAlign: graphic ? "left" : "center",
+          top: 305,
+          textAlign: "left",
+          display: "grid",
+          gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
+          gap: 40,
         }}
       >
+        {columns.map(({ start, lines }) => (
+          <div key={start}>
+            <MathLines
+              lines={lines}
+              visibleCount={Math.max(0, step.visibleCount - start)}
+              activeLines={step.activeLines.map((index) => index - start)}
+              fontSize={columns.length > 1 || page.lines.length > 6 ? 30 : 42}
+              highlightDifferences={row.id === "193-7"}
+            />
+          </div>
+        ))}
+      </div>
+      {cue.note ? (
         <div
-          key={cue.at}
           style={{
-            opacity: interpolate(
-              frame - (cue.at / (row.end - row.start)) * row.durationInFrames,
-              [0, 7],
-              [0.25, 1],
-              {
-                extrapolateLeft: "clamp",
-                extrapolateRight: "clamp",
-              },
-            ),
+            position: "absolute",
+            left: graphic ? 790 : 180,
+            right: 100,
+            top: 815,
+            fontSize: 26,
+            lineHeight: 1.6,
+            color: "#65758a",
           }}
         >
-          <MathLines
-            lines={cue.lines}
-            highlightDifferences={row.id === "193-7"}
-          />
+          <MathText>{cue.note}</MathText>
         </div>
-        {cue.note ? (
-          <div
-            style={{
-              fontSize: 30,
-              lineHeight: 1.6,
-              color: "#65758a",
-              marginTop: 32,
-            }}
-          >
-            <MathText>{cue.note}</MathText>
-          </div>
-        ) : null}
-      </div>
+      ) : null}
       <div
         style={{
           position: "absolute",
