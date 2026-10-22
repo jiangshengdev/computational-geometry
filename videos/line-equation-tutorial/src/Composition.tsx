@@ -1,3 +1,4 @@
+import { MathText } from "./MathText";
 import {
   AbsoluteFill,
   Composition,
@@ -35,7 +36,8 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
           color: "#65758a",
         }}
       >
-        由两个端点写出直线方程 · {String(chapter + 1).padStart(2, "0")} / 08
+        由两个端点写出直线方程 ·{" "}
+        <MathText>{`${String(chapter + 1).padStart(2, "0")} / 08`}</MathText>
       </div>
       <div
         style={{
@@ -46,7 +48,7 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
           fontWeight: 600,
         }}
       >
-        {titles[chapter]}
+        <MathText>{titles[chapter]}</MathText>
       </div>
       {graphic ? (
         <div style={{ position: "absolute", left: 65, top: 165 }}>
@@ -80,32 +82,16 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
             <div
               key={i}
               style={{
-                fontSize: line.length > 24 ? 42 : line.length > 18 ? 48 : 58,
+                fontSize: line.length > 24 ? 36 : line.length > 18 ? 40 : 48,
                 lineHeight: 1.65,
                 color: i === cue.lines.length - 1 ? "#2563eb" : "#172c45",
                 fontWeight: 500,
                 whiteSpace: "nowrap",
               }}
             >
-              {row.id === "193-7"
-                ? line
-                    .split(/(\(Y₂ − Y₁\)|\(X₂ − X₁\))/g)
-                    .map((part, index) => (
-                      <span
-                        key={index}
-                        style={{
-                          color:
-                            part === "(Y₂ − Y₁)"
-                              ? "#2563eb"
-                              : part === "(X₂ − X₁)"
-                                ? "#b35b16"
-                                : undefined,
-                        }}
-                      >
-                        {part}
-                      </span>
-                    ))
-                : line}
+              <MathText highlightDifferences={row.id === "193-7"}>
+                {line}
+              </MathText>
             </div>
           ))}
         </div>
@@ -118,7 +104,7 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
               marginTop: 32,
             }}
           >
-            {cue.note}
+            <MathText>{cue.note}</MathText>
           </div>
         ) : null}
       </div>
@@ -130,12 +116,12 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
           bottom: 55,
           borderTop: "2px solid #dce4ec",
           paddingTop: 24,
-          fontSize: 30,
+          fontSize: 28,
           lineHeight: 1.6,
           textAlign: "center",
         }}
       >
-        {row.narration}
+        <MathText>{row.narration}</MathText>
       </div>
       {row.narration ? (
         <Sequence from={6} layout="none">

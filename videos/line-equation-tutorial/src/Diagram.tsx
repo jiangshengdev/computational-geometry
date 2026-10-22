@@ -1,3 +1,4 @@
+import { SvgMathText } from "./MathText";
 import type { Diagram as Kind } from "./scenes";
 import { useCurrentFrame, interpolate } from "remotion";
 const blue = "#2563eb",
@@ -17,9 +18,15 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
         : 1;
     return (
       <svg width="850" height="730" viewBox="0 0 850 730">
-        <text x="425" y="200" textAnchor="middle" fontSize="38" fill="#65758a">
+        <SvgMathText
+          x="425"
+          y="200"
+          textAnchor="middle"
+          fontSize="38"
+          fill="#65758a"
+        >
           {general ? "每个坐标都在这个范围内" : "独立数轴练习"}
-        </text>
+        </SvgMathText>
         <line
           x1="90"
           y1="380"
@@ -38,7 +45,7 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
               stroke="#738399"
               strokeWidth="4"
             />
-            <text
+            <SvgMathText
               x={425 + n * 290}
               y="440"
               textAnchor="middle"
@@ -46,7 +53,7 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
               fill="#172c45"
             >
               {n === 0 ? "0" : general ? (n < 0 ? "−M" : "M") : n * 4}
-            </text>
+            </SvgMathText>
           </g>
         ))}
         {answer ? (
@@ -73,12 +80,12 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
             />
             {coordinates ? (
               <g fontSize="38" textAnchor="middle">
-                <text x="260" y="355" fill={blue}>
+                <SvgMathText textAnchor="middle" x="260" y="355" fill={blue}>
                   {kind === "axis-y" ? "Y₁" : "X₂"}
-                </text>
-                <text x="600" y="355" fill={orange}>
+                </SvgMathText>
+                <SvgMathText textAnchor="middle" x="600" y="355" fill={orange}>
                   {kind === "axis-y" ? "Y₂" : "X₁"}
-                </text>
+                </SvgMathText>
                 <path
                   d="M260 460 V480 H600 V460"
                   fill="none"
@@ -87,13 +94,19 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
                 />
               </g>
             ) : null}
-            <text x="425" y="540" textAnchor="middle" fontSize="34" fill={blue}>
+            <SvgMathText
+              x="425"
+              y="540"
+              textAnchor="middle"
+              fontSize="34"
+              fill={blue}
+            >
               {general
                 ? "距离不超过 2M"
                 : kind === "axis-reverse"
                   ? "反向相减，距离不变"
                   : "两端相距最远"}
-            </text>
+            </SvgMathText>
           </>
         ) : null}
       </svg>
@@ -108,9 +121,9 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
   const point = (p: number[], label: string, color = blue) => (
     <g key={label}>
       <circle cx={x(p[0])} cy={y(p[1])} r="8" fill={color} />
-      <text x={x(p[0]) + 18} y={y(p[1]) - 18} fontSize="30" fill={color}>
+      <SvgMathText x={x(p[0]) + 18} y={y(p[1]) - 18} fontSize="30" fill={color}>
         {label}
-      </text>
+      </SvgMathText>
     </g>
   );
   return (
@@ -118,17 +131,17 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
       {[0, 1, 2, 3, 4, 5, 6].map((v) => (
         <g key={`x${v}`}>
           <line x1={x(v)} x2={x(v)} y1={y(9)} y2={y(0)} stroke="#dce4ec" />
-          <text x={x(v)} y={y(0) + 28} fontSize="22" fill="#738399">
+          <SvgMathText x={x(v)} y={y(0) + 28} fontSize="22" fill="#738399">
             {v}
-          </text>
+          </SvgMathText>
         </g>
       ))}
       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((v) => (
         <g key={`y${v}`}>
           <line x1={x(0)} x2={x(6)} y1={y(v)} y2={y(v)} stroke="#dce4ec" />
-          <text x={x(0) - 30} y={y(v) + 8} fontSize="22" fill="#738399">
+          <SvgMathText x={x(0) - 30} y={y(v) + 8} fontSize="22" fill="#738399">
             {v}
-          </text>
+          </SvgMathText>
         </g>
       ))}
       <path
@@ -137,12 +150,12 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
         strokeWidth="3"
         fill="none"
       />
-      <text x={x(6.4)} y={y(0) - 10} fontSize="26" fill="#738399">
+      <SvgMathText x={x(6.4)} y={y(0) - 10} fontSize="26" fill="#738399">
         X
-      </text>
-      <text x={x(0) + 15} y={y(9.6)} fontSize="26" fill="#738399">
+      </SvgMathText>
+      <SvgMathText x={x(0) + 15} y={y(9.6)} fontSize="26" fill="#738399">
         Y
-      </text>
+      </SvgMathText>
       {vertical ? (
         <line
           x1={x(2)}
@@ -211,12 +224,12 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
             strokeWidth="4"
             strokeDasharray="8 9"
           />
-          <text x={x(1.4)} y={y(3) + 42} fontSize="30" fill={orange}>
+          <SvgMathText x={x(1.4)} y={y(3) + 42} fontSize="30" fill={orange}>
             3−1=2
-          </text>
-          <text x={x(3) + 24} y={y(5)} fontSize="30" fill={orange}>
+          </SvgMathText>
+          <SvgMathText x={x(3) + 24} y={y(5)} fontSize="30" fill={orange}>
             7−3=4
-          </text>
+          </SvgMathText>
         </>
       ) : null}
       {kind !== "faint" && kind !== "intersection"

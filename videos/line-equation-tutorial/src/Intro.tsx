@@ -1,3 +1,4 @@
+import { MathText, SvgMathText } from "./MathText";
 import {
   AbsoluteFill,
   Html5Audio,
@@ -95,7 +96,7 @@ const CoordinateDiagram = ({ frame }: { frame: number }) => {
         markerEnd="url(#axis-arrow)"
       />
       {[1, 2, 3, 4, 5, 6].map((x) => (
-        <text
+        <SvgMathText
           key={x}
           x={px(x)}
           y={py(0) + 35}
@@ -104,10 +105,10 @@ const CoordinateDiagram = ({ frame }: { frame: number }) => {
           fill="#65758a"
         >
           {x}
-        </text>
+        </SvgMathText>
       ))}
       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((y) => (
-        <text
+        <SvgMathText
           key={y}
           x={px(0) - 25}
           y={py(y) + 9}
@@ -116,18 +117,18 @@ const CoordinateDiagram = ({ frame }: { frame: number }) => {
           fill="#65758a"
         >
           {y}
-        </text>
+        </SvgMathText>
       ))}
       <g fontSize="30" fill="#65758a">
-        <text x={px(0) - 32} y={py(0) + 35}>
+        <SvgMathText fontSize={30} fill="#65758a" x={px(0) - 32} y={py(0) + 35}>
           0
-        </text>
-        <text x={px(6.4)} y={py(0) + 10}>
+        </SvgMathText>
+        <SvgMathText fontSize={30} fill="#65758a" x={px(6.4)} y={py(0) + 10}>
           X
-        </text>
-        <text x={px(0) - 12} y={py(9.6)}>
+        </SvgMathText>
+        <SvgMathText fontSize={30} fill="#65758a" x={px(0) - 12} y={py(9.6)}>
           Y
-        </text>
+        </SvgMathText>
       </g>
       <g opacity={interpolate(frame, [0, 24], [0, 1], clamp)}>
         <line
@@ -162,12 +163,12 @@ const CoordinateDiagram = ({ frame }: { frame: number }) => {
       <g opacity={labelsOpacity} fill={blue}>
         <circle cx={px(1)} cy={py(3)} r="8" />
         <circle cx={px(3)} cy={py(7)} r="8" />
-        <text x={px(1) + 25} y={py(3) + 30} fontSize="34">
+        <SvgMathText fill={blue} x={px(1) + 25} y={py(3) + 30} fontSize="34">
           A = (1, 3)
-        </text>
-        <text x={px(3) + 25} y={py(7) - 12} fontSize="34">
+        </SvgMathText>
+        <SvgMathText fill={blue} x={px(3) + 25} y={py(7) - 12} fontSize="34">
           B = (3, 7)
-        </text>
+        </SvgMathText>
       </g>
       {extension > 0 && (
         <g
@@ -220,7 +221,7 @@ export const Intro = () => {
           letterSpacing: 3,
         }}
       >
-        由两个端点写出直线方程 · 01
+        由两个端点写出直线方程 · <MathText>01</MathText>
       </div>
       <CoordinateDiagram
         frame={
@@ -250,7 +251,7 @@ export const Intro = () => {
             whiteSpace: "pre-line",
           }}
         >
-          {scene.title}
+          <MathText>{scene.title}</MathText>
         </div>
         <div
           style={{
@@ -260,7 +261,7 @@ export const Intro = () => {
             lineHeight: 1.6,
           }}
         >
-          {scene.note}
+          <MathText>{scene.note}</MathText>
         </div>
       </div>
       <div
@@ -277,7 +278,7 @@ export const Intro = () => {
           textAlign: "center",
         }}
       >
-        {scene.narration}
+        <MathText>{scene.narration}</MathText>
       </div>
       {scenes.map((item) => (
         <Sequence
