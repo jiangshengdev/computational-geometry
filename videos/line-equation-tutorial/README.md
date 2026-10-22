@@ -30,6 +30,7 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 - `src/speech-text.json`：全部 56 段的独立口语稿及 `196-2` 的空白静默项，按镜头 ID 对应字幕；坐标明确读横纵坐标，乘法、负数、下标用口语写出，字母列举明确分隔。修改字幕后需人工同步核对口语稿。生成脚本只读取此稿，不用字幕原文兜底。
 - `src/scenes.ts`：按镜头 ID 对应逐步公式、说明与图形；提示时间相对于原分镜窗口，播放时按该镜头实测时长映射。
 - `src/Diagram.tsx`：固定数学示意图；不属于算法执行轨迹。
+- `src/coordinates.ts`：开场与正文共用的坐标映射，默认两轴单位长度相等；保持绘图区尺寸并扩展显示范围。正文可在对应 `Cue.coordinateScale` 中显式设置 `{ mode: "independent", reason: "具体教学原因" }`，开场通过 `CoordinateDiagram` 的 `scale` 参数指定；画面会显示“不等比例示意”。当前所有镜头均使用默认等比例，不自动判断例外。
 - `src/timeline.ts`：根据实测音频生成的 `src/audio-timing.json` 排列各镜头、片段和全片。第 2、4 段问题结束后保留 4 秒；第 8 段使用独立的 4 秒静默镜头。
 - `src/Intro.tsx`、`src/intro-storyboard.ts`：本工程独立维护的开场画面与展示文案。字幕和时间线与其他章节共用同一份数据；开场动画随镜头时长映射，音频不调速。
 - `scripts/azure-speech.ts`：本工程内的 Azure 请求函数。源码、配音和生成工具均不依赖相邻工程。

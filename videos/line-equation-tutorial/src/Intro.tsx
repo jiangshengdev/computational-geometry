@@ -9,16 +9,39 @@ import {
 } from "remotion";
 import { scenes } from "./intro-storyboard";
 import { fps } from "./timeline";
+import {
+  createCoordinates,
+  coordinateTicks,
+  type CoordinateScale,
+} from "./coordinates";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const blue = "#2563eb";
 const orange = "#d66a24";
 // Fixed teaching illustration, not an algorithm trace. AB: y=2x+1.
 // The other segment joins (0,7) to (4,2); intersection: (24/13,61/13).
-const px = (x: number) => 210 + x * 110;
-const py = (y: number) => 790 - y * 72;
-
-const CoordinateDiagram = ({ frame }: { frame: number }) => {
+const CoordinateDiagram = ({
+  frame,
+  scale,
+}: {
+  frame: number;
+  scale?: CoordinateScale;
+}) => {
+  const {
+    x: px,
+    y: py,
+    xMax,
+    yMax,
+    notice,
+  } = createCoordinates({
+    left: 210,
+    bottom: 790,
+    width: 660,
+    height: 648,
+    xMax: 6,
+    yMax: 9,
+    scale,
+  });
   const secondOpacity = interpolate(frame, [540, 570], [1, 0], clamp);
   const labelsOpacity = interpolate(frame, [555, 585], [0, 1], clamp);
   const extension = interpolate(frame, [870, 930], [0, 1], clamp);
@@ -65,22 +88,22 @@ const CoordinateDiagram = ({ frame }: { frame: number }) => {
           <path d="M 0 0 L 10 5 L 0 10 z" fill={blue} />
         </marker>
       </defs>
-      {[0, 1, 2, 3, 4, 5, 6].map((x) => (
+      {coordinateTicks(xMax).map((x) => (
         <line
           key={`x${x}`}
           x1={px(x)}
           x2={px(x)}
-          y1={py(9)}
+          y1={py(yMax)}
           y2={py(0)}
           stroke="#dce4ec"
           strokeWidth="2"
         />
       ))}
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((y) => (
+      {coordinateTicks(yMax).map((y) => (
         <line
           key={`y${y}`}
           x1={px(0)}
-          x2={px(6)}
+          x2={px(xMax)}
           y1={py(y)}
           y2={py(y)}
           stroke="#dce4ec"
@@ -88,48 +111,73 @@ const CoordinateDiagram = ({ frame }: { frame: number }) => {
         />
       ))}
       <path
-        d={`M ${px(0)} ${py(9.3)} V ${py(0)} H ${px(6.3)}`}
+        d={`M ${px(0)} ${py(yMax) - 21.6} V ${py(0)} H ${px(xMax) + 33}`}
         fill="none"
         stroke="#738399"
         strokeWidth="3"
         markerStart="url(#axis-arrow)"
         markerEnd="url(#axis-arrow)"
       />
-      {[1, 2, 3, 4, 5, 6].map((x) => (
-        <SvgMathText
-          key={x}
-          x={px(x)}
-          y={py(0) + 35}
-          textAnchor="middle"
-          fontSize="25"
-          fill="#65758a"
-        >
-          {x}
-        </SvgMathText>
-      ))}
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((y) => (
-        <SvgMathText
-          key={y}
-          x={px(0) - 25}
-          y={py(y) + 9}
-          textAnchor="end"
-          fontSize="25"
-          fill="#65758a"
-        >
-          {y}
-        </SvgMathText>
-      ))}
+      {coordinateTicks(xMax)
+        .filter((x) => x !== 0)
+        .map((x) => (
+          <SvgMathText
+            key={x}
+            x={px(x)}
+            y={py(0) + 35}
+            textAnchor="middle"
+            fontSize="25"
+            fill="#65758a"
+          >
+            {x}
+          </SvgMathText>
+        ))}
+      {coordinateTicks(yMax)
+        .filter((y) => y !== 0)
+        .map((y) => (
+          <SvgMathText
+            key={y}
+            x={px(0) - 25}
+            y={py(y) + 9}
+            textAnchor="end"
+            fontSize="25"
+            fill="#65758a"
+          >
+            {y}
+          </SvgMathText>
+        ))}
       <g fontSize="30" fill="#65758a">
         <SvgMathText fontSize={30} fill="#65758a" x={px(0) - 32} y={py(0) + 35}>
           0
         </SvgMathText>
-        <SvgMathText fontSize={30} fill="#65758a" x={px(6.4)} y={py(0) + 10}>
+        <SvgMathText
+          fontSize={30}
+          fill="#65758a"
+          x={px(xMax) + 44}
+          y={py(0) + 10}
+        >
           X
         </SvgMathText>
-        <SvgMathText fontSize={30} fill="#65758a" x={px(0) - 12} y={py(9.6)}>
+        <SvgMathText
+          fontSize={30}
+          fill="#65758a"
+          x={px(0) - 12}
+          y={py(yMax) - 43.2}
+        >
           Y
         </SvgMathText>
       </g>
+      {notice ? (
+        <SvgMathText
+          x={px(xMax)}
+          y={py(yMax) - 20}
+          textAnchor="end"
+          fontSize="24"
+          fill="#65758a"
+        >
+          {notice}
+        </SvgMathText>
+      ) : null}
       <g opacity={interpolate(frame, [0, 24], [0, 1], clamp)}>
         <line
           x1={px(1)}

@@ -53,7 +53,7 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
       </div>
       {graphic ? (
         <div style={{ position: "absolute", left: 65, top: 165 }}>
-          <Diagram kind={cue.diagram ?? "line"} />
+          <Diagram kind={cue.diagram ?? "line"} scale={cue.coordinateScale} />
         </div>
       ) : null}
       <div

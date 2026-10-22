@@ -1,4 +1,5 @@
 // Visual cues follow the Resolution rows in #190–#196. Times are local to each row.
+import type { CoordinateScale } from "./coordinates";
 export type Diagram =
   | "line"
   | "faint"
@@ -23,6 +24,7 @@ export type Cue = {
   lines: string[];
   diagram?: Diagram;
   note?: string;
+  coordinateScale?: CoordinateScale;
 };
 export const titles = [
   "为什么先找直线方程？",

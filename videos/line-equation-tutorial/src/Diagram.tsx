@@ -1,12 +1,30 @@
 import { SvgMathText } from "./MathText";
 import type { Diagram as Kind } from "./scenes";
 import { useCurrentFrame, interpolate } from "remotion";
+import {
+  createCoordinates,
+  coordinateTicks,
+  type CoordinateScale,
+} from "./coordinates";
 const blue = "#2563eb",
   orange = "#c66a24";
-const x = (v: number) => 120 + v * 110,
-  y = (v: number) => 700 - v * 65;
-export const Diagram = ({ kind }: { kind: Kind }) => {
+export const Diagram = ({
+  kind,
+  scale,
+}: {
+  kind: Kind;
+  scale?: CoordinateScale;
+}) => {
   const frame = useCurrentFrame();
+  const { x, y, xMax, yMax, notice } = createCoordinates({
+    left: 120,
+    bottom: 700,
+    width: 660,
+    height: 585,
+    xMax: 6,
+    yMax: 9,
+    scale,
+  });
   if (kind === "none") return null;
   if (kind.startsWith("axis")) {
     const general = ["axis-general", "axis-x", "axis-y"].includes(kind),
@@ -147,34 +165,52 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
   );
   return (
     <svg width="850" height="730" viewBox="0 0 850 730">
-      {[0, 1, 2, 3, 4, 5, 6].map((v) => (
+      {coordinateTicks(xMax).map((v) => (
         <g key={`x${v}`}>
-          <line x1={x(v)} x2={x(v)} y1={y(9)} y2={y(0)} stroke="#dce4ec" />
+          <line x1={x(v)} x2={x(v)} y1={y(yMax)} y2={y(0)} stroke="#dce4ec" />
           <SvgMathText x={x(v)} y={y(0) + 28} fontSize="22" fill="#738399">
             {v}
           </SvgMathText>
         </g>
       ))}
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((v) => (
-        <g key={`y${v}`}>
-          <line x1={x(0)} x2={x(6)} y1={y(v)} y2={y(v)} stroke="#dce4ec" />
-          <SvgMathText x={x(0) - 30} y={y(v) + 8} fontSize="22" fill="#738399">
-            {v}
-          </SvgMathText>
-        </g>
-      ))}
+      {coordinateTicks(yMax)
+        .filter((v) => v !== 0)
+        .map((v) => (
+          <g key={`y${v}`}>
+            <line x1={x(0)} x2={x(xMax)} y1={y(v)} y2={y(v)} stroke="#dce4ec" />
+            <SvgMathText
+              x={x(0) - 30}
+              y={y(v) + 8}
+              fontSize="22"
+              fill="#738399"
+            >
+              {v}
+            </SvgMathText>
+          </g>
+        ))}
       <path
-        d={`M ${x(0)} ${y(9.6)} V ${y(0)} H ${x(6.4)}`}
+        d={`M ${x(0)} ${y(yMax) - 39} V ${y(0)} H ${x(xMax) + 44}`}
         stroke="#738399"
         strokeWidth="3"
         fill="none"
       />
-      <SvgMathText x={x(6.4)} y={y(0) - 10} fontSize="26" fill="#738399">
+      <SvgMathText x={x(xMax) + 44} y={y(0) - 10} fontSize="26" fill="#738399">
         X
       </SvgMathText>
-      <SvgMathText x={x(0) + 15} y={y(9.6)} fontSize="26" fill="#738399">
+      <SvgMathText x={x(0) + 15} y={y(yMax) - 39} fontSize="26" fill="#738399">
         Y
       </SvgMathText>
+      {notice ? (
+        <SvgMathText
+          x={x(xMax)}
+          y={y(yMax) - 20}
+          textAnchor="end"
+          fontSize="24"
+          fill="#65758a"
+        >
+          {notice}
+        </SvgMathText>
+      ) : null}
       {vertical ? (
         <line
           x1={x(2)}
@@ -187,7 +223,7 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
       ) : horizontal ? (
         <line
           x1={x(0)}
-          x2={x(6)}
+          x2={x(xMax)}
           y1={y(3)}
           y2={y(3)}
           stroke={blue}
@@ -195,7 +231,7 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
         />
       ) : coincident ? (
         <g stroke={blue} strokeWidth="4">
-          <line x1={x(0)} x2={x(6)} y1={y(3)} y2={y(3)} />
+          <line x1={x(0)} x2={x(xMax)} y1={y(3)} y2={y(3)} />
           <line x1={x(1)} x2={x(1)} y1={y(0.3)} y2={y(9)} />
           <line x1={x(0)} x2={x(4)} y1={y(1)} y2={y(9)} />
         </g>
