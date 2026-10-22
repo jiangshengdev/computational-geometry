@@ -1,4 +1,13 @@
 import { writeFileSync } from "node:fs";
+import * as sdk from "microsoft-cognitiveservices-speech-sdk";
+
+export type WordBoundary = {
+  text: string;
+  startMs: number;
+  durationMs: number;
+  textOffset: number;
+  wordLength: number;
+};
 
 export const voice = "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural";
 
@@ -65,20 +74,54 @@ export async function synthesize(input: unknown, destination: string) {
     /^([a-z0-9]+)\.api\.cognitive\.microsoft\.com$/,
   );
   if (region) url.hostname = `${region[1]}.tts.speech.microsoft.com`;
-  url.pathname = "/cognitiveservices/v1";
   url.search = "";
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Ocp-Apim-Subscription-Key": key,
-      "Content-Type": "application/ssml+xml",
-      "X-Microsoft-OutputFormat": "audio-48khz-192kbitrate-mono-mp3",
-    },
-    body: ssml,
-    redirect: "error",
-    signal: AbortSignal.timeout(55000),
-  });
-  if (!response.ok)
-    throw new Error(`Azure synthesis failed: HTTP ${response.status}`);
-  writeFileSync(destination, Buffer.from(await response.arrayBuffer()));
+  url.protocol = "wss:";
+  url.pathname = "/cognitiveservices/websocket/v1";
+  const config = sdk.SpeechConfig.fromEndpoint(url, key);
+  config.speechSynthesisVoiceName = voice;
+  config.speechSynthesisOutputFormat =
+    sdk.SpeechSynthesisOutputFormat.Audio48Khz192KBitRateMonoMp3;
+  config.setProperty(
+    sdk.PropertyId.SpeechServiceResponse_RequestWordBoundary,
+    "true",
+  );
+  const synthesizer = new sdk.SpeechSynthesizer(config, null);
+  const boundaries: WordBoundary[] = [];
+  synthesizer.wordBoundary = (_, event) => {
+    // Azure offsets refer to the submitted SSML, including pronunciation tags.
+    const prefix = ssml
+      .slice(0, event.textOffset)
+      .replace(/<[^>]*>/g, "")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&amp;/g, "&");
+    boundaries.push({
+      text: event.text,
+      startMs: event.audioOffset / 10000,
+      durationMs: event.duration / 10000,
+      textOffset: prefix.length,
+      wordLength: event.wordLength,
+    });
+  };
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  try {
+    const result = await new Promise<sdk.SpeechSynthesisResult>(
+      (resolve, reject) => {
+        timeout = setTimeout(
+          () => reject(new Error("Azure synthesis timed out")),
+          55000,
+        );
+        synthesizer.speakSsmlAsync(ssml, resolve, reject);
+      },
+    );
+    if (result.reason !== sdk.ResultReason.SynthesizingAudioCompleted)
+      throw new Error(`Azure synthesis failed: ${result.errorDetails}`);
+    if (!boundaries.length)
+      throw new Error("Azure returned no word boundaries");
+    writeFileSync(destination, Buffer.from(result.audioData));
+    return boundaries;
+  } finally {
+    clearTimeout(timeout);
+    synthesizer.close();
+  }
 }

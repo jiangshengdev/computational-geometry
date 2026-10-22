@@ -13,6 +13,7 @@ import { chapters, offsets, totalFrames, fps } from "./timeline";
 import { Diagram } from "./Diagram";
 import { titles } from "./scenes";
 import { derivationAt } from "./derivations";
+import { Subtitles } from "./Subtitles";
 type Row = (typeof chapters)[number]["rows"][number];
 const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
   const frame = useCurrentFrame(),
@@ -136,21 +137,6 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
           <MathText>{cue.note}</MathText>
         </div>
       ) : null}
-      <div
-        style={{
-          position: "absolute",
-          left: 120,
-          right: 120,
-          bottom: 55,
-          borderTop: "2px solid #dce4ec",
-          paddingTop: 24,
-          fontSize: 28,
-          lineHeight: 1.6,
-          textAlign: "center",
-        }}
-      >
-        <MathText>{row.narration}</MathText>
-      </div>
       {row.narration ? (
         <Sequence from={6} layout="none">
           <Html5Audio src={staticFile(`narration/${row.id}.mp3`)} />
@@ -159,23 +145,26 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
     </AbsoluteFill>
   );
 };
-const Chapter = ({ chapter }: { chapter: number }) =>
-  chapter === 0 ? (
-    <Intro />
-  ) : (
-    <>
-      {chapters[chapter].rows.map((row) => (
-        <Sequence
-          key={row.id}
-          from={row.from}
-          durationInFrames={row.durationInFrames}
-          name={row.id}
-        >
-          <Shot row={row} chapter={chapter} />
-        </Sequence>
-      ))}
-    </>
-  );
+const Chapter = ({ chapter }: { chapter: number }) => (
+  <>
+    {chapter === 0 ? (
+      <Intro />
+    ) : (
+      <>
+        {chapters[chapter].rows.map((row) => (
+          <Sequence
+            key={row.id}
+            from={row.from}
+            durationInFrames={row.durationInFrames}
+            name={row.id}
+          >
+            <Shot row={row} chapter={chapter} />
+          </Sequence>
+        ))}
+      </>
+    )}
+  </>
+);
 export const Tutorial = ({
   first = 0,
   last = 7,
@@ -196,6 +185,7 @@ export const Tutorial = ({
         </Sequence>
       ),
     )}
+    <Subtitles first={first} last={last} />
   </>
 );
 export const MyComposition = () => (

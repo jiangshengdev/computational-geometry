@@ -324,22 +324,6 @@ export const Intro = () => {
           <MathText>{scene.note}</MathText>
         </div>
       </div>
-      <div
-        style={{
-          position: "absolute",
-          left: 160,
-          right: 160,
-          bottom: 62,
-          minHeight: 112,
-          borderTop: "2px solid #dce4ec",
-          paddingTop: 24,
-          fontSize: 34,
-          lineHeight: 1.65,
-          textAlign: "center",
-        }}
-      >
-        <MathText>{scene.narration}</MathText>
-      </div>
       {scenes.map((item) => (
         <Sequence
           key={item.id}
