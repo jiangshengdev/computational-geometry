@@ -13,21 +13,42 @@ import { Diagram } from "./Diagram";
 import { titles } from "./scenes";
 import { derivationAt } from "./derivations";
 import { Subtitles } from "./Subtitles";
+import type { ReactNode } from "react";
 type Row = (typeof chapters)[number]["rows"][number];
 const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
   const frame = useCurrentFrame(),
     seconds = (frame / row.durationInFrames) * (row.end - row.start);
   const { page, step } = derivationAt(row.id, seconds);
+  return (
+    <DerivationPage page={page} step={step} chapter={chapter}>
+      {row.narration ? (
+        <Sequence from={6} layout="none">
+          <Html5Audio src={staticFile(`narration/${row.id}.mp3`)} />
+        </Sequence>
+      ) : null}
+    </DerivationPage>
+  );
+};
+
+export const DerivationPage = ({
+  page,
+  step,
+  chapter,
+  children,
+}: ReturnType<typeof derivationAt> & {
+  chapter: number;
+  children?: ReactNode;
+}) => {
   const { cue } = step;
   const { graphic } = page;
   const columns =
     page.columnBreak === undefined
-      ? [{ start: 0, lines: page.lines }]
+      ? [{ start: 0, end: page.lines.length }]
       : [
-          { start: 0, lines: page.lines.slice(0, page.columnBreak) },
+          { start: 0, end: page.columnBreak },
           {
             start: page.columnBreak,
-            lines: page.lines.slice(page.columnBreak),
+            end: page.lines.length,
           },
         ];
   return (
@@ -42,23 +63,22 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
       }
       columnCount={columns.length}
       note={cue.note}
-      content={columns.map(({ start, lines }) => (
+      content={columns.map(({ start, end }) => (
         <div key={start}>
           <MathLines
-            lines={lines}
-            visibleCount={Math.max(0, step.visibleCount - start)}
-            activeLines={step.activeLines.map((index: number) => index - start)}
+            lines={page.lines}
+            groups={page.groups}
+            start={start}
+            end={end}
+            visibleCount={step.visibleCount}
+            activeLines={step.activeLines}
             fontSize={page.fontSize ?? 42}
-            highlightDifferences={row.id === "193-7"}
+            highlightDifferences={step.row === "193-7"}
           />
         </div>
       ))}
     >
-      {row.narration ? (
-        <Sequence from={6} layout="none">
-          <Html5Audio src={staticFile(`narration/${row.id}.mp3`)} />
-        </Sequence>
-      ) : null}
+      {children}
     </ChapterLayout>
   );
 };

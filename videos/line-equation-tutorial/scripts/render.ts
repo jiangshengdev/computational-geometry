@@ -1,4 +1,4 @@
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { createServer } from "node:net";
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -24,6 +24,18 @@ const [
 ] = process.argv.slice(2);
 if (!["render", "still", "compositions"].includes(command))
   throw Error("Unsupported rendering command");
+// A failed page blocks export; the audit itself continues through all pages.
+if (command === "render" || command === "still") {
+  const check = spawnSync(
+    process.execPath,
+    [fileURLToPath(new URL("./check-layout.ts", import.meta.url))],
+    {
+      stdio: "inherit",
+    },
+  );
+  if (check.error) throw check.error;
+  if (check.status !== 0) process.exit(check.status ?? 1);
+}
 const args = [
   "--config.verify-deps-before-run=false",
   "exec",

@@ -29,6 +29,7 @@
   "scripts": {
     "video:dev": "remotion studio",
     "video:build": "remotion bundle",
+    "video:check-layout": "node scripts/check-layout.ts",
     "video:upgrade": "remotion upgrade",
     "video:lint": "eslint src && tsc"
   },

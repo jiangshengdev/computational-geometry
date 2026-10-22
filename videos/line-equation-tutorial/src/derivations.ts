@@ -1,4 +1,36 @@
 import { visuals } from "./scenes.ts";
+import { left, equals, type TeachingGroup } from "./math-lines.ts";
+
+// Counts refer to retained lines, across narration cues. A new group adds
+// teaching-space; equality alignment is reserved for a continuous derivation.
+const teachingGroups: Record<string, TeachingGroup[]> = {
+  "190-1": [left(1), left(1), equals(2), left(1), equals(2), left(3)],
+  "190-4": [left(2), left(2), left(1)],
+  "190-6": [equals(3), equals(2), left(2)],
+  "191-1": [left(2), equals(2), equals(2), equals(5)],
+  "191-6": [left(2), left(2), left(3), left(2)],
+  "192-1": [left(2), left(1), equals(2), left(1), left(2), left(1), equals(3)],
+  "192-7": [left(2), left(1)],
+  "193-1": [left(2), equals(3)],
+  "193-2": [left(2), equals(3)],
+  "193-3": [left(2), left(2), left(2), left(2), left(2)],
+  "193-4": [equals(2), left(1), equals(3), left(2)],
+  "193-7": [equals(5), left(1)],
+  "193-8": [left(3), equals(3), left(2)],
+  "193-9": [left(3)],
+  "194-1": [left(2), left(3), equals(3)],
+  "194-3": [left(1), equals(3)],
+  "194-4": [left(2), left(3), equals(2)],
+  "194-6": [left(1), left(4), left(1)],
+  "194-7": [left(1), left(3)],
+  "195-1": [left(2), equals(2), equals(2), equals(2), left(2)],
+  "195-4": [left(4)],
+  "195-5": [left(1), left(3)],
+  "196-1": [left(2), equals(3), left(2)],
+  "196-5": [left(2), left(1), left(2), left(1), left(2)],
+  "196-7": [left(2), left(2)],
+  "196-8": [left(3), left(1)],
+};
 
 // Page boundaries follow complete mathematical arguments, not narration rows.
 // Context contains only facts already established before the page begins.
@@ -126,6 +158,7 @@ export const derivations = pages.map((page) => {
   );
   return {
     ...page,
+    groups: teachingGroups[page.rows[0]],
     lines,
     steps,
     graphic: steps.some(({ cue }) => cue.diagram !== "none"),

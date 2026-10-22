@@ -70,3 +70,28 @@ test("new proof pages keep their prerequisites without revealing later steps", (
   assert.deepEqual(visible("193-7", 0), ["(aX₂ + bY₂) − (aX₁ + bY₁)"]);
   assert.ok(visible("193-7", 23).includes("= 0"));
 });
+
+test("authored teaching groups preserve every retained line across columns", async () => {
+  const { mathLineGroups } = await import("./math-lines.ts");
+  for (const page of derivations) {
+    assert.ok(page.groups, page.rows[0]);
+    const split = page.columnBreak ?? page.lines.length;
+    const groups = [
+      ...mathLineGroups(page.lines, page.groups, false, 0, split),
+      ...mathLineGroups(page.lines, page.groups, false, split),
+    ];
+    assert.deepEqual(
+      groups.flatMap((group) => group.rows.map((row) => row.index)),
+      page.lines.map((_, index) => index),
+      page.rows[0],
+    );
+  }
+});
+
+test("incomplete group coverage fails instead of omitting a teaching step", async () => {
+  const { mathLineGroups, left } = await import("./math-lines.ts");
+  assert.throws(
+    () => mathLineGroups(["(2, 6)", "6 ≠ 5"], [left(1)]),
+    /every line/,
+  );
+});
