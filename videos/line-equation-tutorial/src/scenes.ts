@@ -32,7 +32,7 @@ export const titles = [
   "c 怎么算，公式怎么推广？",
   "水平线、竖直线怎么办？",
   "为什么系数一定是整数？",
-  "为什么 a、b 不超过 2M？",
+  "为什么 a、b 的绝对值不超过 2M？",
 ];
 const cue = (
   at: number,
@@ -149,7 +149,12 @@ export const visuals: Record<string, Cue[]> = {
     cue(3, ["1 → X₁", "A = (X₁, 3)"], "line"),
     cue(6, ["3 → Y₁", "A = (X₁, Y₁)"], "line"),
     cue(9, ["3 → X₂", "B = (X₂, 7)"], "line"),
-    cue(12, ["7 → Y₂", "B = (X₂, Y₂)"], "line", "下标 1、2 是编号，不是乘法"),
+    cue(
+      12,
+      ["7 → Y₂", "B = (X₂, Y₂)"],
+      "line",
+      "1、2 是两个点的编号，不是乘法",
+    ),
   ],
   "193-4": [
     cue(0, ["a = 7 − 3 = 4"], "delta"),
@@ -326,7 +331,7 @@ export const visuals: Record<string, Cue[]> = {
       0,
       ["a = Y₂ − Y₁", "b = X₁ − X₂", "c = aX₁ + bY₁"],
       "none",
-      "不同整数端点 → 整数系数；|a|、|b| ≤ 2M",
+      "两点不同，坐标为整数 → 整数系数；|a|、|b| ≤ 2M",
     ),
     cue(9, ["下一篇：交点坐标的分母"], "intersection", "联立两条直线的方程"),
   ],
