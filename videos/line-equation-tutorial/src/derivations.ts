@@ -1,5 +1,6 @@
 import { visuals } from "./scenes.ts";
 import { left, equals, type TeachingGroup } from "./math-lines.ts";
+import { teachingObject, type TeachingObject } from "./teaching-emphasis.ts";
 
 // Counts refer to retained lines, across narration cues. A new group adds
 // teaching-space; equality alignment is reserved for a continuous derivation.
@@ -137,14 +138,16 @@ const pages: {
 // playback history, effects, or mutable accumulation can reveal future steps.
 export const derivations = pages.map((page) => {
   const lines: string[] = [];
+  const objects: TeachingObject[] = [];
   let previousLines = new Map<string, number>();
   const steps = page.rows.flatMap((row) =>
     visuals[row].map((cue) => {
-      const activeLines = cue.lines.map((line) => {
+      const activeLines = cue.lines.map((line, cueIndex) => {
         let index = previousLines.get(line);
         if (index === undefined) {
           index = lines.length;
           lines.push(line);
+          objects.push(teachingObject(row, cue.at, line, cueIndex));
         }
         return index;
       });
@@ -160,6 +163,7 @@ export const derivations = pages.map((page) => {
     ...page,
     groups: teachingGroups[page.rows[0]],
     lines,
+    objects,
     steps,
     graphic: steps.some(({ cue }) => cue.diagram !== "none"),
   };

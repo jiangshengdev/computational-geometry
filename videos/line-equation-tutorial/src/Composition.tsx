@@ -14,13 +14,21 @@ import { titles } from "./scenes";
 import { derivationAt } from "./derivations";
 import { Subtitles } from "./Subtitles";
 import type { ReactNode } from "react";
+import { emphasisProgress } from "./teaching-emphasis";
 type Row = (typeof chapters)[number]["rows"][number];
 const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
   const frame = useCurrentFrame(),
     seconds = (frame / row.durationInFrames) * (row.end - row.start);
   const { page, step } = derivationAt(row.id, seconds);
   return (
-    <DerivationPage page={page} step={step} chapter={chapter}>
+    <DerivationPage
+      page={page}
+      step={step}
+      chapter={chapter}
+      emphasis={emphasisProgress(
+        frame - (step.cue.at / (row.end - row.start)) * row.durationInFrames,
+      )}
+    >
       {row.narration ? (
         <Sequence from={6} layout="none">
           <Html5Audio src={staticFile(`narration/${row.id}.mp3`)} />
@@ -35,9 +43,11 @@ export const DerivationPage = ({
   step,
   chapter,
   children,
+  emphasis = 1,
 }: ReturnType<typeof derivationAt> & {
   chapter: number;
   children?: ReactNode;
+  emphasis?: number;
 }) => {
   const { cue } = step;
   const { graphic } = page;
@@ -58,7 +68,12 @@ export const DerivationPage = ({
       graphic={graphic}
       diagram={
         graphic && cue.diagram !== "none" ? (
-          <Diagram kind={cue.diagram ?? "line"} scale={cue.coordinateScale} />
+          <Diagram
+            kind={cue.diagram ?? "line"}
+            scale={cue.coordinateScale}
+            activeObjects={step.activeLines.map((index) => page.objects[index])}
+            emphasis={emphasis}
+          />
         ) : undefined
       }
       columnCount={columns.length}
@@ -67,6 +82,8 @@ export const DerivationPage = ({
         <div key={start}>
           <MathLines
             lines={page.lines}
+            objects={page.objects}
+            emphasis={emphasis}
             groups={page.groups}
             start={start}
             end={end}

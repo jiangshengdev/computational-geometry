@@ -1,3 +1,4 @@
+import { objectColors } from "./teaching-emphasis.ts";
 // The tutorial's notation alphabet. Chinese prose and punctuation stay as text.
 // This is deliberately not a general Markdown or LaTeX parser.
 const notation = /[A-Za-z0-9₀-₉+−=×≠≤≥→↓↑|()[\]., /-]+/g;
@@ -28,11 +29,11 @@ export const mathTextParts = (text: string, highlightDifferences = false) => {
       latex = latex
         .replace(
           /\(Y_\{2\} - Y_\{1\}\)/g,
-          String.raw`{\color{#2563eb}(Y_{2}-Y_{1})}`,
+          String.raw`{\color{${objectColors.dy}}(Y_{2}-Y_{1})}`,
         )
         .replace(
           /\(X_\{2\} - X_\{1\}\)/g,
-          String.raw`{\color{#b35b16}(X_{2}-X_{1})}`,
+          String.raw`{\color{${objectColors.dx}}(X_{2}-X_{1})}`,
         );
     }
     parts.push({ text: source, latex });

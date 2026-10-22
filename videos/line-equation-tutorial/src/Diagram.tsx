@@ -7,18 +7,38 @@ import {
   diagramViewport,
   tutorialCoordinates,
 } from "./CoordinateGrid";
-const blue = "#2563eb",
-  orange = "#c66a24";
+import { objectColors, type TeachingObject } from "./teaching-emphasis";
+const blue = objectColors.line,
+  orange = objectColors.b;
 export const Diagram = ({
   kind,
   scale,
+  activeObjects = [],
+  emphasis = 1,
 }: {
   kind: Kind;
   scale?: CoordinateScale;
+  activeObjects?: TeachingObject[];
+  emphasis?: number;
 }) => {
   const frame = useCurrentFrame();
   const coordinates = tutorialCoordinates(scale);
   const { x, y, xMax } = coordinates;
+  const focused = (object: TeachingObject) => activeObjects.includes(object);
+  const width = (object: TeachingObject, normal = 5) =>
+    normal + (focused(object) ? emphasis * 2 : 0);
+  const ring = (cx: number, cy: number, object: TeachingObject) =>
+    focused(object) ? (
+      <circle
+        cx={cx}
+        cy={cy}
+        r={12 + 5 * emphasis}
+        fill="none"
+        stroke={objectColors[object]}
+        strokeWidth={2.5}
+        opacity={0.4 + 0.4 * emphasis}
+      />
+    ) : null;
   if (kind === "none") return null;
   if (kind.startsWith("axis")) {
     const general = ["axis-general", "axis-x", "axis-y"].includes(kind),
@@ -75,20 +95,35 @@ export const Diagram = ({
               x2="510"
               y1="310"
               y2="310"
-              stroke={blue}
-              strokeWidth="7"
+              stroke={
+                objectColors[
+                  kind === "axis-y"
+                    ? "dy"
+                    : kind === "axis-x"
+                      ? "dx"
+                      : "distance"
+                ]
+              }
+              strokeWidth={width(
+                kind === "axis-y"
+                  ? "dy"
+                  : kind === "axis-x"
+                    ? "dx"
+                    : "distance",
+                7,
+              )}
             />
             <circle
               cx={coordinates ? 204 : 315 - 195 * spread}
               cy="380"
               r="12"
-              fill={blue}
+              fill={objectColors[kind === "axis-x" ? "b" : "a"]}
             />
             <circle
               cx={coordinates ? 432 : 315 + 195 * spread}
               cy="380"
               r="12"
-              fill={orange}
+              fill={objectColors[kind === "axis-x" ? "a" : "b"]}
             />
             {coordinates ? (
               <g fontSize="38" textAnchor="middle">
@@ -97,7 +132,7 @@ export const Diagram = ({
                   textAnchor="middle"
                   x="204"
                   y="355"
-                  fill={blue}
+                  fill={objectColors[kind === "axis-x" ? "b" : "a"]}
                 >
                   {kind === "axis-y" ? "Y₁" : "X₂"}
                 </SvgMathText>
@@ -106,15 +141,15 @@ export const Diagram = ({
                   textAnchor="middle"
                   x="432"
                   y="355"
-                  fill={orange}
+                  fill={objectColors[kind === "axis-x" ? "a" : "b"]}
                 >
                   {kind === "axis-y" ? "Y₂" : "X₁"}
                 </SvgMathText>
                 <path
                   d="M204 460 V480 H432 V460"
                   fill="none"
-                  stroke={orange}
-                  strokeWidth="4"
+                  stroke={objectColors[kind === "axis-y" ? "dy" : "dx"]}
+                  strokeWidth={width(kind === "axis-y" ? "dy" : "dx", 4)}
                 />
               </g>
             ) : null}
@@ -124,7 +159,15 @@ export const Diagram = ({
               y="540"
               textAnchor="middle"
               fontSize="34"
-              fill={blue}
+              fill={
+                objectColors[
+                  kind === "axis-y"
+                    ? "dy"
+                    : kind === "axis-x"
+                      ? "dx"
+                      : "distance"
+                ]
+              }
             >
               {general
                 ? "距离不超过 2M"
@@ -143,15 +186,20 @@ export const Diagram = ({
   const a = vertical ? [2, 1] : [1, 3],
     b = vertical ? [2, 4] : horizontal ? [4, 3] : [3, 7];
   const full = !["points-a", "points-ab", "points-more"].includes(kind);
-  const point = (p: number[], label: string, color = blue) => (
+  const point = (
+    p: number[],
+    label: string,
+    object: TeachingObject = "line",
+  ) => (
     <g key={label}>
-      <circle cx={x(p[0])} cy={y(p[1])} r="8" fill={color} />
+      {ring(x(p[0]), y(p[1]), object)}
+      <circle cx={x(p[0])} cy={y(p[1])} r="8" fill={objectColors[object]} />
       <SvgMathText
         outlined
         x={x(p[0]) + 18}
         y={y(p[1]) - 18}
         fontSize="30"
-        fill={color}
+        fill={objectColors[object]}
       >
         {label}
       </SvgMathText>
@@ -167,7 +215,7 @@ export const Diagram = ({
           y1={y(0.3)}
           y2={y(9)}
           stroke={blue}
-          strokeWidth="5"
+          strokeWidth={width("line")}
         />
       ) : horizontal ? (
         <line
@@ -176,10 +224,10 @@ export const Diagram = ({
           y1={y(3)}
           y2={y(3)}
           stroke={blue}
-          strokeWidth="5"
+          strokeWidth={width("line")}
         />
       ) : coincident ? (
-        <g stroke={blue} strokeWidth="4">
+        <g stroke={blue} strokeWidth={width("line", 4)}>
           <line x1={x(0)} x2={x(xMax)} y1={y(3)} y2={y(3)} />
           <line x1={x(1)} x2={x(1)} y1={y(0.3)} y2={y(9)} />
           <line x1={x(0)} x2={x(4)} y1={y(1)} y2={y(9)} />
@@ -190,7 +238,7 @@ export const Diagram = ({
             <path
               d={`M ${x(0)} ${y(1)} L ${x(1)} ${y(3)} M ${x(3)} ${y(7)} L ${x(4)} ${y(9)}`}
               stroke={blue}
-              strokeWidth="5"
+              strokeWidth={width("line")}
               strokeDasharray="12 10"
             />
           ) : null}
@@ -201,7 +249,7 @@ export const Diagram = ({
               x2={x(3)}
               y2={y(7)}
               stroke={blue}
-              strokeWidth="6"
+              strokeWidth={width("line", 6)}
             />
           ) : null}
         </g>
@@ -222,10 +270,17 @@ export const Diagram = ({
       {kind === "delta" ? (
         <>
           <path
-            d={`M ${x(1)} ${y(3)} H ${x(3)} V ${y(7)}`}
+            d={`M ${x(1)} ${y(3)} H ${x(3)}`}
             fill="none"
-            stroke={orange}
-            strokeWidth="4"
+            stroke={objectColors.dx}
+            strokeWidth={width("dx", 4)}
+            strokeDasharray="8 9"
+          />
+          <path
+            d={`M ${x(3)} ${y(3)} V ${y(7)}`}
+            fill="none"
+            stroke={objectColors.dy}
+            strokeWidth={width("dy", 4)}
             strokeDasharray="8 9"
           />
           <SvgMathText
@@ -233,7 +288,7 @@ export const Diagram = ({
             x={x(1.4)}
             y={y(3) + 42}
             fontSize="30"
-            fill={orange}
+            fill={objectColors.dx}
           >
             3−1=2
           </SvgMathText>
@@ -242,19 +297,20 @@ export const Diagram = ({
             x={x(3) + 24}
             y={y(5)}
             fontSize="30"
-            fill={orange}
+            fill={objectColors.dy}
           >
             7−3=4
           </SvgMathText>
         </>
       ) : null}
       {kind !== "faint" && kind !== "intersection"
-        ? point(a, vertical ? "(2, 1)" : "A = (1, 3)")
+        ? point(a, vertical ? "(2, 1)" : "A = (1, 3)", "a")
         : null}
       {!["faint", "points-a", "intersection", "coincident"].includes(kind)
         ? point(
             b,
             vertical ? "(2, 4)" : horizontal ? "B = (4, 3)" : "B = (3, 7)",
+            "b",
           )
         : null}
       {kind === "points-more"
@@ -267,7 +323,7 @@ export const Diagram = ({
       {kind === "check" ? (
         <>
           {point([2, 5], "(2, 5)")}
-          {point([2, 6], "(2, 6)", orange)}
+          {point([2, 6], "(2, 6)", "check")}
         </>
       ) : null}
     </svg>

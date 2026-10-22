@@ -1,6 +1,7 @@
 import { renderToString } from "katex";
 import { useMemo, type CSSProperties } from "react";
 import "katex/dist/katex.min.css";
+import { colorObjectNotation } from "./teaching-emphasis";
 
 /** Pass LaTeX source without $ delimiters, preferably using String.raw. */
 export const Latex = ({
@@ -14,7 +15,7 @@ export const Latex = ({
 }) => {
   const html = useMemo(
     () =>
-      renderToString(children, {
+      renderToString(colorObjectNotation(children), {
         displayMode,
         throwOnError: true,
         strict: "error",

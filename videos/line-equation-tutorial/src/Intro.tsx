@@ -16,10 +16,11 @@ import {
 } from "./CoordinateGrid";
 import { ChapterLayout } from "./ChapterLayout";
 import { MathLines } from "./MathLines";
+import { objectColors, emphasisProgress } from "./teaching-emphasis";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const blue = "#2563eb";
-const orange = "#d66a24";
+const blue = objectColors.line;
+const orange = objectColors.b;
 // Fixed teaching illustration, not an algorithm trace. AB: y=2x+1.
 // The other segment joins (0,7) to (4,2); intersection: (24/13,61/13).
 const CoordinateDiagram = ({
@@ -83,12 +84,7 @@ const CoordinateDiagram = ({
           opacity={secondOpacity}
         />
         <g opacity={secondOpacity}>
-          <circle
-            cx={px(24 / 13)}
-            cy={py(61 / 13)}
-            r={18 + 3 * Math.sin(frame / 18)}
-            fill="#fde7ab"
-          />
+          <circle cx={px(24 / 13)} cy={py(61 / 13)} r={18} fill="#fde7ab" />
           <circle cx={px(24 / 13)} cy={py(61 / 13)} r="7" fill="#172c45" />
         </g>
       </g>
@@ -115,12 +111,12 @@ const CoordinateDiagram = ({
           />
         </g>
       )}
-      <g opacity={labelsOpacity} fill={blue}>
-        <circle cx={px(1)} cy={py(3)} r="8" />
-        <circle cx={px(3)} cy={py(7)} r="8" />
+      <g opacity={labelsOpacity}>
+        <circle cx={px(1)} cy={py(3)} r="8" fill={objectColors.a} />
+        <circle cx={px(3)} cy={py(7)} r="8" fill={objectColors.b} />
         <SvgMathText
           outlined
-          fill={blue}
+          fill={objectColors.a}
           x={px(1) + 18}
           y={py(3) - 18}
           fontSize="30"
@@ -129,7 +125,7 @@ const CoordinateDiagram = ({
         </SvgMathText>
         <SvgMathText
           outlined
-          fill={blue}
+          fill={objectColors.b}
           x={px(3) + 18}
           y={py(7) - 18}
           fontSize="30"
@@ -168,7 +164,11 @@ export const Intro = () => {
             opacity: interpolate(frame - scene.from, [0, 15], [0, 1], clamp),
           }}
         >
-          <MathLines lines={[scene.title.replace(/\n/g, "")]} fontSize={42} />
+          <MathLines
+            lines={[scene.title.replace(/\n/g, "")]}
+            fontSize={42}
+            emphasis={emphasisProgress(frame - scene.from)}
+          />
         </div>
       }
     >

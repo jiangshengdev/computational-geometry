@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Latex } from "./Latex";
 import { MathText } from "./MathText";
 import { mathLineGroups, mathSpacing, type TeachingGroup } from "./math-lines";
+import { objectColors, type TeachingObject } from "./teaching-emphasis";
 
 export const MathLines = ({
   lines,
@@ -12,6 +13,8 @@ export const MathLines = ({
   fontSize = 42,
   start = 0,
   end = lines.length,
+  objects = [],
+  emphasis = 1,
 }: {
   lines: string[];
   groups?: TeachingGroup[];
@@ -21,6 +24,8 @@ export const MathLines = ({
   fontSize?: number;
   start?: number;
   end?: number;
+  objects?: TeachingObject[];
+  emphasis?: number;
 }) => {
   const layout = useMemo(
     () =>
@@ -56,7 +61,7 @@ export const MathLines = ({
               style={{
                 display: "table-row",
                 height: group.rowHeight,
-                color: activeLines.includes(row.index) ? "#2563eb" : "#65758a",
+                color: objectColors[objects[row.index] ?? "line"],
                 visibility: row.index >= visibleCount ? "hidden" : "visible",
               }}
             >
@@ -83,7 +88,21 @@ export const MathLines = ({
                         (group.rowHeight - mathSpacing.row) / 2,
                     }}
                   />
-                  <span data-math-cell-content style={{ lineHeight: 0 }}>
+                  <span
+                    data-math-cell-content
+                    style={{
+                      lineHeight: 0,
+                      position: "relative",
+                      backgroundColor: activeLines.includes(row.index)
+                        ? `${objectColors[objects[row.index] ?? "line"]}${Math.round(
+                            12 + 12 * emphasis,
+                          )
+                            .toString(16)
+                            .padStart(2, "0")}`
+                        : undefined,
+                      borderRadius: 4,
+                    }}
+                  >
                     {cell.latex !== undefined ? (
                       <Latex>{cell.latex}</Latex>
                     ) : (
@@ -96,6 +115,21 @@ export const MathLines = ({
                         {cell.text}
                       </MathText>
                     )}
+                    {activeLines.includes(row.index) ? (
+                      <span
+                        aria-hidden
+                        style={{
+                          position: "absolute",
+                          left: 0,
+                          bottom: -7,
+                          width: `${emphasis * 100}%`,
+                          height: 3,
+                          backgroundColor: "currentColor",
+                          borderRadius: 2,
+                          pointerEvents: "none",
+                        }}
+                      />
+                    ) : null}
                   </span>
                 </div>
               ))}
