@@ -133,21 +133,21 @@
     {
       "text": "s 叫剪切系数。",
       "startMs": 70,
-      "endMs": 1510,
+      "endMs": 1550,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "sy 表示 s 乘 y，",
-      "startMs": 1590,
-      "endMs": 2429,
+      "startMs": 1910,
+      "endMs": 3750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这次取二分之一只为图解。",
-      "startMs": 2429,
-      "endMs": 4270,
+      "startMs": 3829,
+      "endMs": 5390,
       "timestampMs": null,
       "confidence": null
     }
@@ -470,14 +470,14 @@
     {
       "text": "因为 y 等于 y′，",
       "startMs": 70,
-      "endMs": 1590,
+      "endMs": 1630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把右边的 y 换成 y′。",
-      "startMs": 1590,
-      "endMs": 3429,
+      "startMs": 1630,
+      "endMs": 3270,
       "timestampMs": null,
       "confidence": null
     }
@@ -786,14 +786,14 @@
     {
       "text": "更一般地，新纵轴上的点满足新横坐标为零，",
       "startMs": 70,
-      "endMs": 3949,
+      "endMs": 4030,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以 x 等于负 s 乘 y′。",
       "startMs": 4150,
-      "endMs": 6390,
+      "endMs": 6310,
       "timestampMs": null,
       "confidence": null
     }

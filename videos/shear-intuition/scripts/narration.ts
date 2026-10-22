@@ -56,9 +56,23 @@ if (process.argv.includes("--dry-run")) {
   const requested = process.argv
     .find((arg) => arg.startsWith("--issue="))
     ?.split("=")[1];
-  const selected = requested
-    ? shots.filter((shot) => shot.id.startsWith(`${requested}-`))
-    : shots;
+  const requestedShots = process.argv
+    .find((arg) => arg.startsWith("--shots="))
+    ?.slice("--shots=".length)
+    .split(",");
+  if (requestedShots && process.argv.some((arg) => arg.startsWith("--issue=")))
+    throw Error("Use either --issue or --shots, not both");
+  if (
+    requestedShots &&
+    (new Set(requestedShots).size !== requestedShots.length ||
+      requestedShots.some((id) => !ids.has(id)))
+  )
+    throw Error("--shots requires unique, known shot IDs");
+  const selected = requestedShots
+    ? shots.filter((shot) => requestedShots.includes(shot.id))
+    : requested
+      ? shots.filter((shot) => shot.id.startsWith(`${requested}-`))
+      : shots;
   if (!selected.length) throw Error("No matching shots");
   const timingPath = join(root, "src/audio-timing.json");
   const timing = JSON.parse(readFileSync(timingPath, "utf8")) as Record<
