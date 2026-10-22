@@ -71,11 +71,11 @@ test("all generated captions preserve original narration and use corresponding s
   }
 });
 
-test("spoken commas inside a formula do not split the displayed expression", () => {
+test("spoken sentence breaks inside a formula do not split the displayed expression", () => {
   const display = "方程就写成 aX+bY=c。";
   const phrases = captionPhrases(
     display,
-    "方程就写成 a 乘 x，加 b 乘 y，等于 c。",
+    "方程就写成 a 乘 x。加 b 乘 y。等于 c。",
   );
   assert.equal(phrases.length, 1);
   assert.equal(phrases[0].text, display);

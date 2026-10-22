@@ -23,6 +23,10 @@ export function buildSpeechDocument(input: unknown, context = "speech") {
     .map((part: unknown, index: number) => {
       const location = `${context}[${index}]`;
       if (typeof part === "string") {
+        if (/[,，]/.test(part))
+          throw new Error(
+            `${location}: speech must use periods instead of commas`,
+          );
         text += part;
         return escapeXml(part);
       }

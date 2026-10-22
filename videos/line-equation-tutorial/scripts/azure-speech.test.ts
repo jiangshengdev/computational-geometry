@@ -6,14 +6,23 @@ test("pronunciation applies only to its segment and preserves spoken text", () =
   const result = buildSpeechDocument([
     "两个端点",
     { text: "重合", pinyin: "chong2 he2" },
-    "，重要。",
+    "。重要。",
   ]);
-  assert.equal(result.text, "两个端点重合，重要。");
+  assert.equal(result.text, "两个端点重合。重要。");
   assert.ok(
     result.ssml.includes(
-      '<phoneme alphabet="sapi" ph="chong 2 he 2">重合</phoneme>，重要。',
+      '<phoneme alphabet="sapi" ph="chong 2 he 2">重合</phoneme>。重要。',
     ),
   );
+});
+
+test("speech input rejects both comma forms before synthesis", () => {
+  for (const comma of ["，", ","]) {
+    assert.throws(
+      () => buildSpeechDocument(["前文。", `后文${comma}结论。`], "189-1"),
+      /189-1\[1\].*comma/,
+    );
+  }
 });
 
 test("plain text cannot introduce SSML, and silence remains empty", () => {

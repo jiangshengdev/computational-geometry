@@ -1,17 +1,20 @@
 import type { WordBoundary } from "./azure-speech.ts";
 
-// Spoken formulas contain commas absent from the displayed mathematical notation.
+// Spoken formulas contain sentence breaks absent from the displayed notation.
 const spokenExpressions = [
-  "横坐标为二、纵坐标为六的点，在这条直线上吗？",
-  "a 乘 x，加 b 乘 y，等于 c。",
-  "a 乘一，加 b 乘三，等于 c。",
+  "横坐标为二、纵坐标为六的点。在这条直线上吗？",
+  "a 乘 x。加 b 乘 y。等于 c。",
+  "a 乘一。加 b 乘三。等于 c。",
 ];
 
 function clauses(text: string, spoken = false) {
   let masked = text;
   if (spoken)
     for (const expression of spokenExpressions)
-      masked = masked.replace(expression, expression.replace(/，/g, "\u0000"));
+      masked = masked.replace(
+        expression,
+        expression.slice(0, -1).replace(/。/g, "\u0000") + expression.slice(-1),
+      );
   let offset = 0;
   return (masked.match(/[^，。！？；：]+[，。！？；：]?/g) ?? []).map(
     (part) => {

@@ -6,9 +6,12 @@ import {
   readFileSync,
   rmSync,
   writeFileSync,
+  existsSync,
+  realpathSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, basename, dirname } from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import {
   buildSpeechDocument,
@@ -62,7 +65,15 @@ if (process.argv.includes("--captions-only")) {
   process.exit(0);
 }
 const output = join(root, "public/narration");
-const temporary = mkdtempSync(join(tmpdir(), "line-equation-"));
+const resume = process.argv
+  .find((arg) => arg.startsWith("--resume="))
+  ?.slice(9);
+const temporary = resume ?? mkdtempSync(join(tmpdir(), "line-equation-"));
+if (
+  dirname(realpathSync(temporary)) !== realpathSync(tmpdir()) ||
+  !basename(temporary).startsWith("line-equation-")
+)
+  throw Error("Resume requires a line-equation temporary directory");
 const questions = new Set(["190-4", "192-4"]);
 const measure = (path: string) =>
   Number(
@@ -87,8 +98,10 @@ const report: Record<
 const wordTimings: Record<string, Awaited<ReturnType<typeof synthesize>>> = {};
 const captions: Record<string, ReturnType<typeof createCaptions>> = {};
 mkdirSync(output, { recursive: true });
+let published = false;
 try {
   process.stdout.write(`Azure voice: ${voice}\n`);
+  process.stdout.write(`Staging: ${temporary}\n`);
   for (const chapter of chapters)
     for (const row of chapter.rows) {
       if (!row.narration) {
@@ -102,7 +115,22 @@ try {
         continue;
       }
       const destination = join(temporary, `${row.id}.mp3`);
-      const words = await synthesize(speech[row.id], destination);
+      const metadata = join(temporary, `${row.id}.json`);
+      const cached =
+        existsSync(metadata) && existsSync(destination)
+          ? (JSON.parse(readFileSync(metadata, "utf8")) as {
+              ssml: string;
+              audioSha256: string;
+              words: WordBoundary[];
+            })
+          : null;
+      const reusable =
+        cached?.ssml === documents[row.id].ssml &&
+        cached.audioSha256 ===
+          createHash("sha256").update(readFileSync(destination)).digest("hex");
+      const words = reusable
+        ? cached.words
+        : await synthesize(speech[row.id], destination);
       wordTimings[row.id] = words;
       captions[row.id] = createCaptions(
         row.narration,
@@ -128,13 +156,31 @@ try {
       ]);
       if (!Number.isFinite(duration) || duration <= 0)
         throw Error(`Invalid audio duration ${row.id}`);
+      if (
+        words.some((word) => word.startMs + word.durationMs > duration * 1000)
+      )
+        throw Error(`Word timing exceeds audio duration: ${row.id}`);
+      writeFileSync(
+        metadata,
+        JSON.stringify(
+          {
+            ssml: documents[row.id].ssml,
+            audioSha256: createHash("sha256")
+              .update(readFileSync(destination))
+              .digest("hex"),
+            words,
+          },
+          null,
+          2,
+        ) + "\n",
+      );
       report[row.id] = {
         duration,
         silenceAfter,
         frames: Math.ceil((0.2 + duration + silenceAfter) * 30),
       };
       process.stdout.write(
-        `${row.id}: ${duration.toFixed(2)}s, original Azure audio\n`,
+        `${row.id}: ${duration.toFixed(2)}s, ${reusable ? "reused verified" : "original Azure"} audio\n`,
       );
     }
   for (const chapter of chapters)
@@ -156,6 +202,11 @@ try {
     join(root, "src/captions.json"),
     JSON.stringify(captions, null, 2) + "\n",
   );
+  published = true;
 } finally {
-  rmSync(temporary, { recursive: true });
+  if (published) rmSync(temporary, { recursive: true });
+  else
+    console.error(
+      `Synthesis stopped; staged audio retained. Resume with --resume=${temporary}`,
+    );
 }
