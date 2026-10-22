@@ -1,15 +1,22 @@
-import timingData from "./audio-timing.json";
-import { shots } from "./storyboard";
+import timingData from "./audio-timing.json" with { type: "json" };
+import captionData from "./captions.json" with { type: "json" };
+import { shots } from "./storyboard.ts";
+import {
+  captionAt,
+  phraseTime,
+  type AudioTiming,
+  type Caption,
+} from "./speech-timing.ts";
 
 export const fps = 60;
 export const audioLeadFrames = 12;
-type Timing = { duration: number; speech: string; voice: string };
-const timing = timingData as Record<string, Timing>;
+const timing = timingData as Record<string, AudioTiming>;
+const captions = captionData as Record<string, Caption[]>;
 export function timelineFor(issue?: string) {
   let from = 0;
   return shots
     .filter((shot) => !issue || shot.id.startsWith(`${issue}-`))
-    .map((shot) => {
+    .map((shot, index, selected) => {
       const audio = timing[shot.id];
       if (!audio || !Number.isFinite(audio.duration) || audio.duration <= 0)
         throw Error(
@@ -20,8 +27,79 @@ export function timelineFor(issue?: string) {
         audioLeadFrames +
         speechFrames +
         Math.round((shot.pauseAfter ?? 0.4) * fps);
-      const row = { ...shot, from, durationInFrames, speechFrames };
+      const previous = selected[index - 1];
+      const samePage = previous?.page === shot.page;
+      const previousCues = samePage ? captions[previous.id] : [];
+      const revealMs = shot.reveal
+        ? phraseTime(audio, shot.reveal, "start")
+        : audio.words[0].startMs;
+      const motion = shot.motion
+        ? {
+            start: phraseTime(audio, shot.motion.start, "start"),
+            end: phraseTime(audio, shot.motion.end, "end"),
+          }
+        : null;
+      const comparison =
+        shot.id === "207-05"
+          ? [
+              {
+                start: phraseTime(audio, "左边固定坐标轴", "start"),
+                end: phraseTime(audio, "画出新点", "end"),
+              },
+              {
+                start: phraseTime(audio, "右边固定 P", "start"),
+                end: phraseTime(audio, "更换读数所用的轴", "end"),
+              },
+            ]
+          : null;
+      const row = {
+        ...shot,
+        from,
+        durationInFrames,
+        speechFrames,
+        revealMs,
+        motionTiming: motion,
+        comparisonTiming: comparison,
+        walkTiming:
+          shot.id === "206-15"
+            ? ["向左走一", "再向上走二"].map((phrase) => ({
+                start: phraseTime(audio, phrase, "start"),
+                end: phraseTime(audio, phrase, "end"),
+              }))
+            : null,
+        previousStep: samePage ? previous.step : 0,
+        previousCaption: previousCues?.[previousCues.length - 1]?.text ?? "",
+      };
       from += durationInFrames;
       return row;
     });
+}
+export type TimelineRow = ReturnType<typeof timelineFor>[number];
+const progressAt = (ms: number, interval: { start: number; end: number }) =>
+  Math.max(
+    0,
+    Math.min(1, (ms - interval.start) / (interval.end - interval.start)),
+  );
+export function visualAt(row: TimelineRow, frame: number) {
+  const ms = ((frame - audioLeadFrames) * 1000) / fps;
+  return {
+    caption: captionAt(captions[row.id], ms, row.previousCaption),
+    progress: row.motionTiming ? progressAt(ms, row.motionTiming) : 1,
+    visibleStep: ms >= row.revealMs ? row.step : row.previousStep,
+    thinking: Boolean(
+      row.pauseAfter && frame >= audioLeadFrames + row.speechFrames,
+    ),
+    walk: row.walkTiming
+      ? (row.walkTiming.map((interval) => progressAt(ms, interval)) as [
+          number,
+          number,
+        ])
+      : ([1, 1] as [number, number]),
+    comparison: row.comparisonTiming
+      ? (row.comparisonTiming.map((interval) => progressAt(ms, interval)) as [
+          number,
+          number,
+        ])
+      : ([1, 1] as [number, number]),
+  };
 }

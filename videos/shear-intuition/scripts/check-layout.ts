@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 // Inspect DOM in an isolated headless Studio. No video/still export, installs,
-// shared development server, screenshots, or font/spacing snapshot assertions.
+// shared development server or font/spacing snapshot assertions.
 const cwd = fileURLToPath(new URL("../", import.meta.url));
 const session = `layout-check-${process.pid}`;
 const pnpmArgs = ["--config.verify-deps-before-run=false", "exec"];
@@ -89,11 +89,17 @@ try {
   const output = await cli(
     "run-code",
     `async (page) => {
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    await page.setViewportSize({width: 2400, height: 1600});
+    if (!page.url().endsWith('/LayoutCheck')) throw new Error('Wrong check page');
     await page.waitForFunction(() => {
       const result = document.querySelector('[data-layout-report]');
       return result && result.textContent !== 'pending';
     }, null, {timeout: 45000});
-    return page.locator('[data-layout-report]').evaluate(node => JSON.parse(node.textContent));
+    const report = await page.locator('[data-layout-report]').evaluate(node => JSON.parse(node.textContent));
+    if (errors.length) throw new Error(errors.join('; '));
+    return report;
   }`,
   );
   const report = JSON.parse(output) as {
@@ -101,7 +107,9 @@ try {
     results: { page: string; errors: string[] }[];
   };
   if (!report.results?.length) throw new Error("No pages were checked");
-  for (const result of report.results) {
+  for (const result of report.results.filter(
+    (result) => result.errors.length,
+  )) {
     console.log(
       `${result.errors.length ? "FAIL" : "PASS"} ${result.page}${result.errors.length ? `: ${result.errors.join("; ")}` : ""}`,
     );
@@ -112,12 +120,21 @@ try {
   if (!report.ok) process.exitCode = 1;
   if (process.argv.includes("--screenshots")) {
     const directory = mkdtempSync(join(tmpdir(), "shear-layout-"));
-    const pages = ["204-07-1", "205-05-1", "206-06-1", "206-15-1", "207-01-1"];
+    const pages = [
+      "204-08",
+      "205-01b",
+      "205-05",
+      "206-06",
+      "206-11",
+      "206-15",
+      "207-01",
+      "207-05a",
+    ];
     await cli(
       "run-code",
       `async (page) => {
       for (const id of ${JSON.stringify(pages)}) {
-        await page.locator('[data-layout-page="' + id + '"]').screenshot({path: ${JSON.stringify(directory)} + '/' + id + '.png'});
+        await page.locator('[data-layout-page^="' + id + '-"]').last().screenshot({path: ${JSON.stringify(directory)} + '/' + id + '.png'});
       }
     }`,
     );

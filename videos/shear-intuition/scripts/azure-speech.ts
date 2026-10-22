@@ -1,4 +1,5 @@
 import { writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 
 export type WordBoundary = {
@@ -51,9 +52,11 @@ export function buildSpeechDocument(input: unknown, context = "speech") {
       return `<phoneme alphabet="sapi" ph="${phones}">${escapeXml(segment.text)}</phoneme>`;
     })
     .join("");
+  const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="${voice}">${body}</voice></speak>`;
   return {
     text,
-    ssml: `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="${voice}">${body}</voice></speak>`,
+    ssml,
+    fingerprint: createHash("sha256").update(ssml).digest("hex"),
   };
 }
 
