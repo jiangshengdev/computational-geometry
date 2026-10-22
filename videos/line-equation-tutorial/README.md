@@ -11,7 +11,7 @@ pnpm --config.verify-deps-before-run=false run video:lint
 pnpm --config.verify-deps-before-run=false exec node scripts/render.ts
 ```
 
-默认导出 4K、60 fps，不抽帧。使用 H.265 软件编码、CRF 18、`yuv420p` 和无损 PNG 中间帧，音频为 AAC 192 kbps，保持原始语速。CRF 18 优先减少文字、公式和细线的压缩损失；`yuv420p` 兼顾 HEVC 播放兼容性。当前 Remotion 的 `setX264Preset` 不支持 H.265，因此保留编码器默认预设。
+默认导出 4K、60 fps，不抽帧。使用 H.265 硬件编码、`yuv420p` 和无损 PNG 中间帧，音频为 AAC 192 kbps，保持原始语速。硬件加速设为 `required`，不可用时直接报错，不回退到软件编码；macOS 使用 VideoToolbox。视频码率保持 Remotion 默认值 `null`，不指定 CRF 或目标视频码率，由 FFmpeg／硬件编码器默认行为决定；实际画质、文件大小和速度仍需成片验证。`yuv420p` 兼顾 HEVC 播放兼容性。当前 Remotion 的 `setX264Preset` 不支持 H.265，因此保留编码器默认预设。
 
 默认并发数为 4，以控制 4K 页面及 PNG 缓冲的内存占用；未进行性能基准测试，不代表最快配置。以下命令直接使用配置默认值：
 
