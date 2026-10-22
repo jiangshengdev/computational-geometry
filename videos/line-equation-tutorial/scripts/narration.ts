@@ -10,7 +10,7 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { synthesize, voice } from "./azure-speech.ts";
+import { buildSpeechDocument, synthesize, voice } from "./azure-speech.ts";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const chapters = JSON.parse(
@@ -19,22 +19,23 @@ const chapters = JSON.parse(
   issue: number;
   rows: { id: string; start: number; end: number; narration: string }[];
 }[];
-const speech: Record<string, string> = JSON.parse(
+const speech: Record<string, unknown> = JSON.parse(
   readFileSync(join(root, "src/speech-text.json"), "utf8"),
 );
 const rows = chapters.flatMap((chapter) => chapter.rows);
 if (Object.keys(speech).length !== rows.length)
   throw new Error("Speech text must match tutorial row IDs exactly");
+const documents: Record<string, ReturnType<typeof buildSpeechDocument>> = {};
 for (const row of rows) {
-  const text = speech[row.id];
-  if (
-    typeof text !== "string" ||
-    Boolean(text.trim()) !== Boolean(row.narration)
-  )
+  const document = buildSpeechDocument(speech[row.id], row.id);
+  if (Boolean(document.text.trim()) !== Boolean(row.narration))
     throw new Error(`Missing or invalid speech text: ${row.id}`);
+  documents[row.id] = document;
 }
 if (process.argv.includes("--dry-run")) {
-  process.stdout.write(JSON.stringify({ voice, speech }, null, 2) + "\n");
+  process.stdout.write(
+    JSON.stringify({ voice, speech, documents }, null, 2) + "\n",
+  );
   process.exit(0);
 }
 const output = join(root, "public/narration");

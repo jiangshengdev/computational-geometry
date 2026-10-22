@@ -41,11 +41,39 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts
 ```
 
-生成前可给上述命令添加 `--dry-run`，核对实际将发送的音色和完整口语稿；此模式不请求 Azure，也不写入音频或时长数据。
+生成前可给上述命令添加 `--dry-run`，核对实际将发送的音色、完整口语稿和 `documents` 中的 SSML；此模式执行全部文案校验，不请求 Azure，也不写入音频或时长数据。
+
+### 逐处指定读音
+
+`src/speech-text.json` 中每个镜头的值可以是普通字符串，或由字符串与读音对象组成的非空数组。例如：
+
+```json
+{
+  "example": [
+    "两个端点",
+    { "text": "重合", "pinyin": "chong2 he2" },
+    "，求两数之",
+    { "text": "差", "pinyin": "cha1" },
+    "。"
+  ]
+}
+```
+
+示例中的 `example` 仅示意格式，实际须使用已有镜头 ID。读音仅作用于该片段，不做全局词语替换。字幕不受标注影响；拼接所有字符串和对象的 `text` 必须保留完整口语稿。静默镜头仍使用空字符串。
+
+供大语言模型编写时遵循：对象只能包含 `text` 和 `pinyin`；`text` 为连续汉字，不含标点；每字对应一个小写拼音音节，单个空格分隔，音节后接声调数字 `1`–`5`（轻声为 `5`，ü 写作 `v`）。不要输入 SSML、语速字段或带声调符号的拼音。标点和字母留在普通字符串中。格式、字段或字数错误会在请求前报告镜头 ID 与从零开始的片段索引；具体音节及语境读法仍须审核，格式校验不能证明读音正确。
+
+脚本将 `chong2 he2` 转换为 `<phoneme alphabet="sapi" ph="chong 2 he 2">重合</phoneme>`，普通文本始终 XML 转义。格式依据 [Azure 中文音素文档](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-ssml-phonetic-sets#zh-cn)。保持当前音色；Azure 拒绝请求时直接停止，不丢弃标注或改换音色。
+
+针对标注转换、作用范围和非法输入的测试：
+
+```sh
+pnpm --config.verify-deps-before-run=false exec node --test scripts/azure-speech.test.ts
+```
 
 绝对禁止调速，包括合成请求中的语速参数、音频后处理和播放器倍速。脚本直接发送独立口语稿，原样保存 Azure 返回的 MP3；FFmpeg 只检查解码，ffprobe 只测量时长。全部 56 段通过检查后，替换素材及时间数据，文件统一以镜头 ID 命名，包括开场的 `189-1.mp3` 至 `189-4.mp3`。镜头时长由原始音频时长加段首、段尾停顿决定，不让语音迁就旧时间窗。生成后的时间线、音频和实际画面需一起检查。解码和时长通过不代表读法正确；坐标、字母、公式仍需试听核验。
 
-现有全部 56 段素材仍是此前调速后的版本，尚未按新口语稿重新生成；现有 `audio-timing.json` 中保留的 `tempo` 是历史记录，不代表原速。本次迁入开场资源只统一文件名并测量已有音频，不改变音频内容；重新生成时全部章节都会使用原速音频更新时长。
+全部 56 段素材已按包含逐处读音标注的口语稿重新生成，保留 Azure 原始音频及语速；`audio-timing.json` 已按实测时长更新，不再保留历史 `tempo` 字段。当前 Flash 音色已接受中文 `sapi` 标注，全部音频通过解码和时长检查；实际发音、自然度及音画同步仍待试听与成片验收。
 
 ## 验收边界
 
