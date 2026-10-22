@@ -79,9 +79,9 @@ export const ChapterLayout = ({
       <div
         style={{
           position: "absolute",
-          left: 65,
+          left: 70,
           top: 285,
-          scale: "0.74",
+          scale: columnCount > 1 ? "0.7" : "0.8",
           transformOrigin: "top left",
         }}
       >
@@ -91,12 +91,13 @@ export const ChapterLayout = ({
     <div
       style={{
         position: "absolute",
-        left: graphic ? 790 : 180,
+        left: graphic ? (columnCount > 1 ? 700 : 790) : 100,
         right: 100,
         top: 305,
         textAlign: "left",
         display: "grid",
         gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+        justifyItems: !graphic && columnCount === 1 ? "center" : "stretch",
         gap: 40,
       }}
     >
@@ -106,10 +107,10 @@ export const ChapterLayout = ({
       <div
         style={{
           position: "absolute",
-          left: graphic ? 790 : 180,
+          left: graphic ? (columnCount > 1 ? 700 : 790) : 100,
           right: 100,
-          top: 815,
-          fontSize: 26,
+          top: 840,
+          fontSize: 30,
           lineHeight: 1.6,
           color: "#65758a",
         }}

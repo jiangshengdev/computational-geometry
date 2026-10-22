@@ -38,6 +38,7 @@ const pages: { rows: string[]; context: string[]; columnBreak?: number }[] = [
   {
     rows: ["193-8"],
     context: ["a = Y₂ − Y₁", "b = X₁ − X₂", "两端点代入值都等于 c"],
+    columnBreak: 6,
   },
   {
     rows: ["193-9"],
