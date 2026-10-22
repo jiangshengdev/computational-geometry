@@ -1,6 +1,6 @@
 import { useCurrentFrame } from "remotion";
 import captionData from "./captions.json";
-import { chapters, offsets, fps } from "./timeline";
+import { chapters, offsets, fps, audioLeadInFrames } from "./timeline";
 import { captionAt, type Caption } from "./caption-timeline";
 import { MathText } from "./MathText";
 
@@ -9,8 +9,8 @@ const chapterCaptions = chapters.map((chapter) =>
   chapter.rows.flatMap((row) =>
     byRow[row.id].map((caption) => ({
       ...caption,
-      startMs: caption.startMs + ((row.from + 6) * 1000) / fps,
-      endMs: caption.endMs + ((row.from + 6) * 1000) / fps,
+      startMs: caption.startMs + ((row.from + audioLeadInFrames) * 1000) / fps,
+      endMs: caption.endMs + ((row.from + audioLeadInFrames) * 1000) / fps,
     })),
   ),
 );

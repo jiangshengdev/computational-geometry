@@ -7,7 +7,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 import { scenes } from "./intro-storyboard";
-import { fps } from "./timeline";
+import { sourceFps, frameScale, audioLeadInFrames } from "./timeline";
 import type { CoordinateScale } from "./coordinates";
 import {
   CoordinateGrid,
@@ -150,10 +150,10 @@ export const Intro = () => {
       diagram={
         <CoordinateDiagram
           frame={
-            scene.start * fps +
+            scene.start * sourceFps +
             ((frame - scene.from) / scene.durationInFrames) *
               (scene.end - scene.start) *
-              fps
+              sourceFps
           }
         />
       }
@@ -161,13 +161,18 @@ export const Intro = () => {
       content={
         <div
           style={{
-            opacity: interpolate(frame - scene.from, [0, 15], [0, 1], clamp),
+            opacity: interpolate(
+              (frame - scene.from) / frameScale,
+              [0, 15],
+              [0, 1],
+              clamp,
+            ),
           }}
         >
           <MathLines
             lines={[scene.title.replace(/\n/g, "")]}
             fontSize={42}
-            emphasis={emphasisProgress(frame - scene.from)}
+            emphasis={emphasisProgress((frame - scene.from) / frameScale)}
           />
         </div>
       }
@@ -175,8 +180,8 @@ export const Intro = () => {
       {scenes.map((item) => (
         <Sequence
           key={item.id}
-          from={item.from + 6}
-          durationInFrames={item.durationInFrames - 6}
+          from={item.from + audioLeadInFrames}
+          durationInFrames={item.durationInFrames - audioLeadInFrames}
           name={item.kicker}
           layout="none"
         >

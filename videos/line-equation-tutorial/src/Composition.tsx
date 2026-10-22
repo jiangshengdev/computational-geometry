@@ -8,7 +8,14 @@ import {
   useCurrentFrame,
 } from "remotion";
 import { Intro } from "./Intro";
-import { chapters, offsets, totalFrames, fps } from "./timeline";
+import {
+  chapters,
+  offsets,
+  totalFrames,
+  fps,
+  frameScale,
+  audioLeadInFrames,
+} from "./timeline";
 import { Diagram } from "./Diagram";
 import { titles } from "./scenes";
 import { derivationAt } from "./derivations";
@@ -26,11 +33,12 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
       step={step}
       chapter={chapter}
       emphasis={emphasisProgress(
-        frame - (step.cue.at / (row.end - row.start)) * row.durationInFrames,
+        (frame - (step.cue.at / (row.end - row.start)) * row.durationInFrames) /
+          frameScale,
       )}
     >
       {row.narration ? (
-        <Sequence from={6} layout="none">
+        <Sequence from={audioLeadInFrames} layout="none">
           <Html5Audio src={staticFile(`narration/${row.id}.mp3`)} />
         </Sequence>
       ) : null}

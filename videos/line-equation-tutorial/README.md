@@ -1,6 +1,6 @@
 # 由两个端点写出直线方程
 
-依据 [CNB #197](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/197) 和 #198–#202 制作的八段中文教程。工程时间轴为 1920×1080、30 fps；可按下方命令采样输出 15 fps，保持原始播放时长和音频速度。完整 composition 为 `LineEquationTutorial`；四组独立检查入口为 `Parts1And2`、`Parts3And4`、`Parts5And6`、`Parts7And8`。
+依据 [CNB #197](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/197) 和 #198–#202 制作的八段中文教程。默认输出为 3840×2160、60 fps：保留 1920×1080 逻辑排版，通过 Remotion 的 2 倍渲染比例直接栅格化为 4K。原始 30 fps 时间数据换算为 60 fps，保持原始播放时长、动画时序和音频速度。完整 composition 为 `LineEquationTutorial`；四组独立检查入口为 `Parts1And2`、`Parts3And4`、`Parts5And6`、`Parts7And8`。
 
 ## 使用
 
@@ -11,10 +11,12 @@ pnpm --config.verify-deps-before-run=false run video:lint
 pnpm --config.verify-deps-before-run=false exec node scripts/render.ts
 ```
 
-本次交付采用 15 fps；去掉抽帧参数即可按工程原始 30 fps 渲染。并发数可按本机资源调整：
+默认导出 4K、60 fps，不抽帧。使用 H.265 软件编码、CRF 18、`yuv420p` 和无损 PNG 中间帧，音频为 AAC 192 kbps，保持原始语速。CRF 18 优先减少文字、公式和细线的压缩损失；`yuv420p` 兼顾 HEVC 播放兼容性。当前 Remotion 的 `setX264Preset` 不支持 H.265，因此保留编码器默认预设。
+
+默认并发数为 4，以控制 4K 页面及 PNG 缓冲的内存占用；未进行性能基准测试，不代表最快配置。以下命令直接使用配置默认值：
 
 ```sh
-pnpm --config.verify-deps-before-run=false exec node scripts/render.ts render LineEquationTutorial out/line-equation-tutorial.mp4 --every-nth-frame=2 --concurrency=12
+pnpm --config.verify-deps-before-run=false exec node scripts/render.ts render LineEquationTutorial out/line-equation-tutorial.mp4
 ```
 
 完整输出为 `out/line-equation-tutorial.mp4`。输出目录被 Git 忽略，不强制暂存。渲染脚本使用已有 Chrome、无头模式和系统分配的临时端口。Chrome 不在 macOS 默认应用位置时，用 `CHROME_EXECUTABLE` 指定现有可执行文件。

@@ -1,6 +1,7 @@
 import { SvgMathText } from "./MathText";
 import type { Diagram as Kind } from "./scenes";
 import { useCurrentFrame, interpolate } from "remotion";
+import { frameScale } from "./timeline";
 import type { CoordinateScale } from "./coordinates";
 import {
   CoordinateGrid,
@@ -21,7 +22,7 @@ export const Diagram = ({
   activeObjects?: TeachingObject[];
   emphasis?: number;
 }) => {
-  const frame = useCurrentFrame();
+  const frame = useCurrentFrame() / frameScale;
   const coordinates = tutorialCoordinates(scale);
   const { x, y, xMax } = coordinates;
   const focused = (object: TeachingObject) => activeObjects.includes(object);
