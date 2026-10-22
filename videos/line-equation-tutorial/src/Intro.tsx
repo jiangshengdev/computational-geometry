@@ -7,7 +7,12 @@ import {
   useCurrentFrame,
 } from "remotion";
 import { scenes } from "./intro-storyboard";
-import { sourceFps, frameScale, audioLeadInFrames } from "./timeline";
+import {
+  sourceFps,
+  frameScale,
+  audioLeadInFrames,
+  storyboardSeconds,
+} from "./timeline";
 import type { CoordinateScale } from "./coordinates";
 import {
   CoordinateGrid,
@@ -151,9 +156,7 @@ export const Intro = () => {
         <CoordinateDiagram
           frame={
             scene.start * sourceFps +
-            ((frame - scene.from) / scene.durationInFrames) *
-              (scene.end - scene.start) *
-              sourceFps
+            storyboardSeconds(scene, frame - scene.from) * sourceFps
           }
         />
       }

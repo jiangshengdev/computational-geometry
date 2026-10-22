@@ -1,6 +1,8 @@
 # 由两个端点写出直线方程
 
-依据 [CNB #197](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/197) 和 #198–#202 制作的八段中文教程。采用 [视频工程规则](../AGENTS.md) 中的默认制作配置、口语稿与音频规则、布局检查及验收要求。本工程将原始 30 fps 时间数据换算为默认输出帧率，保持原始播放时长和动画时序。完整 composition 为 `LineEquationTutorial`；四组独立检查入口为 `Parts1And2`、`Parts3And4`、`Parts5And6`、`Parts7And8`。
+依据 [CNB #197](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/197) 和 #198–#202 制作的八段中文教程。采用 [视频工程规则](../AGENTS.md) 中的默认制作配置、口语稿与音频规则、布局检查及验收要求。本工程将原始 30 fps 时间数据换算为默认输出帧率，保留原始动画时序和配音速度，另行延长页末阅读停留。完整 composition 为 `LineEquationTutorial`；四组独立检查入口为 `Parts1And2`、`Parts3And4`、`Parts5And6`、`Parts7And8`。
+
+当前共 30 页（含开场 4 页）。每页最后一段配音结束后，普通页保留 3 秒，15 个推导密集页保留 5 秒；密集页在 `src/derivations.ts` 显式标记。停留期间保留完整公式与最后一句字幕，不拉长原动画，也不改变页内步骤间隔或原有 4 秒思考窗口。当前时间线为 43043 帧，60 fps 下约 **11 分 57.38 秒**；页末时间向上取整到整帧。
 
 ## 使用
 

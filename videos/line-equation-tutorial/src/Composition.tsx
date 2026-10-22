@@ -15,6 +15,7 @@ import {
   fps,
   frameScale,
   audioLeadInFrames,
+  storyboardSeconds,
 } from "./timeline";
 import { Diagram } from "./Diagram";
 import { titles } from "./scenes";
@@ -25,7 +26,7 @@ import { emphasisProgress } from "./teaching-emphasis";
 type Row = (typeof chapters)[number]["rows"][number];
 const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
   const frame = useCurrentFrame(),
-    seconds = (frame / row.durationInFrames) * (row.end - row.start);
+    seconds = storyboardSeconds(row, frame);
   const { page, step } = derivationAt(row.id, seconds);
   return (
     <DerivationPage
@@ -33,7 +34,9 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
       step={step}
       chapter={chapter}
       emphasis={emphasisProgress(
-        (frame - (step.cue.at / (row.end - row.start)) * row.durationInFrames) /
+        (frame -
+          (step.cue.at / (row.end - row.start)) *
+            row.animationDurationInFrames) /
           frameScale,
       )}
     >

@@ -1,6 +1,6 @@
 import timingData from "./audio-timing.json" with { type: "json" };
 import captionData from "./captions.json" with { type: "json" };
-import { shots } from "./storyboard.ts";
+import { pages, shots } from "./storyboard.ts";
 import {
   captionAt,
   phraseTime,
@@ -23,10 +23,13 @@ export function timelineFor(issue?: string) {
           `Generate and verify audio for ${shot.id} before previewing`,
         );
       const speechFrames = Math.ceil(audio.duration * fps);
+      const endsPage = selected[index + 1]?.page !== shot.page;
+      const pauseSeconds = Math.max(
+        shot.pauseAfter ?? 0.4,
+        endsPage ? (pages[shot.page].holdAfterSeconds ?? 3) : 0,
+      );
       const durationInFrames =
-        audioLeadFrames +
-        speechFrames +
-        Math.round((shot.pauseAfter ?? 0.4) * fps);
+        audioLeadFrames + speechFrames + Math.round(pauseSeconds * fps);
       const previous = selected[index - 1];
       const samePage = previous?.page === shot.page;
       const previousCues = samePage ? captions[previous.id] : [];

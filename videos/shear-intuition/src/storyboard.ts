@@ -29,6 +29,7 @@ export type Page = {
   note: string;
   groups: TeachingGroup[];
   noteFromStep?: number;
+  holdAfterSeconds?: 5;
 };
 
 export const pages: Record<string, Page> = {
@@ -111,6 +112,7 @@ export const pages: Record<string, Page> = {
     note: "本集只建立坐标直觉，系数大小留到下一集",
   },
   inverse: {
+    holdAfterSeconds: 5,
     groups: [left(2), equals(3), left(1)], // 原始关系；代入与抵消；逆变换结论
     title: "从新坐标，求回原坐标",
     mode: "模式二 · 同一个点，两套坐标读数",
@@ -139,6 +141,7 @@ export const pages: Record<string, Page> = {
     note: "灰色原横轴与紫色虚线新横轴重合",
   },
   vertical: {
+    holdAfterSeconds: 5,
     groups: [left(2), equals(3), left(1)], // 条件；连续推导；原坐标结论
     title: "新纵轴刻度 2，究竟在哪里？",
     mode: "模式二 · 跟踪同一个固定点",
@@ -231,6 +234,7 @@ export const pages: Record<string, Page> = {
     note: "问题讲完后，留 4 秒独立思考",
   },
   negative: {
+    holdAfterSeconds: 5,
     groups: [equals(3), left(1)], // 连续计算；新点结论
     title: "负高度：加上一个负数，就向左移动",
     mode: "模式一 · 坐标轴固定，点移动",
