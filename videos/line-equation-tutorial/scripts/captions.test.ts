@@ -32,17 +32,23 @@ test("caption switches at measured onset, holds through pauses, resets per chapt
 });
 
 test("all generated captions preserve original narration and use corresponding speech boundaries", () => {
-  const read = (name: string) =>
+  const read = (name: string): unknown =>
     JSON.parse(
       readFileSync(new URL(`../src/${name}.json`, import.meta.url), "utf8"),
     );
   const narration = read("narration") as {
     rows: { id: string; narration: string }[];
   }[];
-  const speech = read("speech-text");
+  const speech = read("speech-text") as Record<string, unknown>;
   const words = read("word-timing") as Record<string, WordBoundary[]>;
-  const captions = read("captions");
-  const timing = read("audio-timing");
+  const captions = read("captions") as Record<
+    string,
+    ReturnType<typeof createCaptions>
+  >;
+  const timing = read("audio-timing") as Record<
+    string,
+    { duration: number; silenceAfter: number; frames: number }
+  >;
   for (const row of narration.flatMap((chapter) => chapter.rows)) {
     const text = buildSpeechDocument(speech[row.id]).text;
     for (const word of words[row.id]) {

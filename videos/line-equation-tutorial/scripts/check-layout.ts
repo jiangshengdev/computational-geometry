@@ -15,10 +15,10 @@ const command = (args: string[], timeout = 60000) =>
     });
     let output = "";
     let error = "";
-    child.stdout.on("data", (data) => {
+    child.stdout.on("data", (data: Buffer) => {
       output += data;
     });
-    child.stderr.on("data", (data) => {
+    child.stderr.on("data", (data: Buffer) => {
       error += data;
     });
     const timer = setTimeout(() => {
@@ -57,10 +57,10 @@ const studio = spawn(
   },
 );
 let studioLog = "";
-studio.stdout.on("data", (data) => {
+studio.stdout.on("data", (data: Buffer) => {
   studioLog += data;
 });
-studio.stderr.on("data", (data) => {
+studio.stderr.on("data", (data: Buffer) => {
   studioLog += data;
 });
 let studioError: Error | undefined;

@@ -10,7 +10,12 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildSpeechDocument, synthesize, voice } from "./azure-speech.ts";
+import {
+  buildSpeechDocument,
+  synthesize,
+  voice,
+  type WordBoundary,
+} from "./azure-speech.ts";
 import { captionPhrases, createCaptions } from "./captions.ts";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
@@ -41,7 +46,7 @@ if (process.argv.includes("--dry-run")) {
   process.exit(0);
 }
 if (process.argv.includes("--captions-only")) {
-  const words = JSON.parse(
+  const words: Record<string, WordBoundary[]> = JSON.parse(
     readFileSync(join(root, "src/word-timing.json"), "utf8"),
   );
   const captions = Object.fromEntries(
