@@ -26,10 +26,10 @@
     "typescript": "5.9.3"
   },
   "scripts": {
-    "dev": "remotion studio",
-    "build": "remotion bundle",
-    "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "video:dev": "remotion studio",
+    "video:build": "remotion bundle",
+    "video:upgrade": "remotion upgrade",
+    "video:lint": "eslint src && tsc"
   },
   "allowScripts": {
     "esbuild": false

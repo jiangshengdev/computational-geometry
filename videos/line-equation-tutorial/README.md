@@ -7,7 +7,7 @@
 在本目录执行以下命令。需要已有的项目依赖、Node.js 22.18+、pnpm 和 Chrome；不自动安装任何工具。pnpm 参数关闭运行前自动安装依赖的行为。
 
 ```sh
-pnpm --config.verify-deps-before-run=false run lint
+pnpm --config.verify-deps-before-run=false run video:lint
 pnpm --config.verify-deps-before-run=false exec node scripts/render.ts
 ```
 
