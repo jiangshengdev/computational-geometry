@@ -33,19 +33,7 @@ export const ChapterLayout = ({
       style={{
         position: "absolute",
         left: 100,
-        top: 62,
-        fontSize: 28,
-        color: "#65758a",
-      }}
-    >
-      由两个端点写出直线方程 ·{" "}
-      <MathText>{`${String(chapter + 1).padStart(2, "0")} / 08`}</MathText>
-    </div>
-    <div
-      style={{
-        position: "absolute",
-        left: 100,
-        top: 125,
+        top: 40,
         fontSize: 48,
         fontWeight: 600,
       }}
@@ -58,7 +46,7 @@ export const ChapterLayout = ({
           position: "absolute",
           left: 100,
           right: 100,
-          top: 210,
+          top: 125,
           display: "flex",
           gap: 48,
           alignItems: "center",
@@ -79,9 +67,9 @@ export const ChapterLayout = ({
       <div
         style={{
           position: "absolute",
-          left: 70,
-          top: 285,
-          scale: columnCount > 1 ? "0.7" : "0.8",
+          left: 10,
+          top: 210,
+          scale: "0.95",
           transformOrigin: "top left",
         }}
       >
@@ -91,9 +79,9 @@ export const ChapterLayout = ({
     <div
       style={{
         position: "absolute",
-        left: graphic ? (columnCount > 1 ? 700 : 790) : 100,
+        left: graphic ? 850 : 100,
         right: 100,
-        top: 305,
+        top: 220,
         textAlign: "left",
         display: "grid",
         gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
@@ -107,9 +95,9 @@ export const ChapterLayout = ({
       <div
         style={{
           position: "absolute",
-          left: graphic ? (columnCount > 1 ? 700 : 790) : 100,
+          left: graphic ? 850 : 100,
           right: 100,
-          top: 840,
+          top: 900,
           fontSize: 30,
           lineHeight: 1.6,
           color: "#65758a",

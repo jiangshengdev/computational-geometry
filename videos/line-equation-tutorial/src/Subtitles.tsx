@@ -33,8 +33,9 @@ export const Subtitles = ({ first, last }: { first: number; last: number }) => {
         position: "absolute",
         left: 120,
         right: 120,
-        top: 910,
         bottom: 30,
+        height: 68,
+        boxSizing: "content-box",
         borderTop: "2px solid #dce4ec",
         paddingTop: 20,
         fontFamily: '"PingFang SC", sans-serif',
@@ -42,7 +43,7 @@ export const Subtitles = ({ first, last }: { first: number; last: number }) => {
         fontSize: 40,
         lineHeight: 1.4,
         textAlign: "center",
-        textWrap: "pretty",
+        whiteSpace: "nowrap",
       }}
     >
       <MathText>
