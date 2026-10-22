@@ -14,6 +14,7 @@ import { join, basename, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { shots } from "../src/storyboard.ts";
 import { buildSpeechDocument, synthesize, voice } from "./azure-speech.ts";
+import { alignAudio, verifyAlignment } from "./azure-alignment.ts";
 import {
   createCaptions,
   phraseTime,
@@ -134,9 +135,29 @@ if (process.argv.includes("--dry-run")) {
         speech: documents[shot.id].text,
         voice,
         fingerprint: documents[shot.id].fingerprint,
+        ...(cached?.fingerprint === documents[shot.id].fingerprint &&
+        cached.alignment
+          ? { alignment: cached.alignment }
+          : {}),
       };
       writeFileSync(metadata, JSON.stringify(timing[shot.id], null, 2) + "\n");
+      verifyAlignment(timing[shot.id], path);
+      if (
+        words.some(
+          (word) => word.durationMs === 0 && /[\p{L}\p{N}]/u.test(word.text),
+        )
+      ) {
+        console.log(
+          `${shot.id}: aligning existing audio; zero-duration spoken words`,
+        );
+        timing[shot.id] = await alignAudio(timing[shot.id], path);
+        writeFileSync(
+          metadata,
+          JSON.stringify(timing[shot.id], null, 2) + "\n",
+        );
+      }
       createCaptions(shot.caption, timing[shot.id]);
+      if (shot.reveal) phraseTime(timing[shot.id], shot.reveal, "start");
       if (shot.motion) {
         const start = phraseTime(timing[shot.id], shot.motion.start, "start");
         const end = phraseTime(timing[shot.id], shot.motion.end, "end");
@@ -145,6 +166,8 @@ if (process.argv.includes("--dry-run")) {
       console.log(`${shot.id}: ${duration.toFixed(3)}s; original Azure audio`);
     }
     // Publish only after every requested shot passes decoding and duration checks.
+    // captions.ts rebuilds all cues, so validate untouched shots before any copy.
+    for (const shot of shots) createCaptions(shot.caption, timing[shot.id]);
     mkdirSync(join(root, "public/narration"), { recursive: true });
     for (const shot of selected)
       copyFileSync(

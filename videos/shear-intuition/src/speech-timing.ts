@@ -11,6 +11,12 @@ export type AudioTiming = {
   speech: string;
   voice: string;
   fingerprint: string;
+  alignment?: {
+    method: "azure-pronunciation-assessment";
+    audioSha256: string;
+    synthesisWords: WordBoundary[];
+    response: unknown;
+  };
 };
 export type Caption = {
   text: string;
@@ -22,6 +28,12 @@ export type Caption = {
 
 export function validateWords(audio: AudioTiming) {
   if (!audio.words.length) throw Error("Missing word boundaries");
+  const spoken = (text: string) => text.replace(/[\p{P}\p{Z}\s]/gu, "");
+  if (
+    spoken(audio.words.map((word) => word.text).join("")) !==
+    spoken(audio.speech)
+  )
+    throw Error("Word boundaries do not cover the complete speech");
   let previousSpoken: WordBoundary | undefined;
   for (const [i, word] of audio.words.entries()) {
     const previous = audio.words[i - 1];
@@ -32,6 +44,7 @@ export function validateWords(audio: AudioTiming) {
       !Number.isFinite(word.durationMs) ||
       word.startMs < 0 ||
       word.durationMs < 0 ||
+      (spoken(word.text).length > 0 && word.durationMs === 0) ||
       word.startMs + word.durationMs > audio.duration * 1000 + 1 ||
       (previous &&
         (word.textOffset < previous.textOffset + previous.wordLength ||
@@ -98,6 +111,7 @@ export function phraseTime(
   phrase: string,
   edge: "start" | "end",
 ) {
+  validateWords(audio);
   const offset = audio.speech.indexOf(phrase);
   if (offset < 0 || audio.speech.indexOf(phrase, offset + 1) !== -1)
     throw Error(`Missing or ambiguous speech anchor: ${phrase}`);

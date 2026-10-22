@@ -6,7 +6,7 @@
 
 已实现 56 个镜头、16 个完整教学页面和对应的 Azure 原速配音。整集入口为 `ShearIntuition`；`Shear204`、`Shear205`、`Shear206`、`Shear207` 为独立片段入口，`LayoutCheck` 复用生产页面检查内容容纳与标签重叠。
 
-实测音频驱动时间线为 19967 帧，60 fps 下约 **5 分 32.78 秒**。`204-12` 和 `207-01` 的问题音频结束后各有 240 帧思考窗口，答案在后续镜头出现。音频时长向上取整到整帧，每段前有 12 帧引入；不改变原始音频或播放速度。
+实测音频驱动时间线为 20495 帧，60 fps 下约 **5 分 41.58 秒**。`204-12` 和 `207-01` 的问题音频结束后各有 240 帧思考窗口，答案在后续镜头出现。音频时长向上取整到整帧，每段前有 12 帧引入；不改变原始音频或播放速度。
 
 教学顺序：扫描线与竖直线段动机 → 正纵坐标点移动 → 负高度思考题 → 固定点的直角／斜坐标读数对照 → 完整逆变换 → 从 (2,0) 推广到新横轴不变 → 新纵轴刻度逐步推导 → 第二次思考与两种操作同屏对照 → 下一集引子。示意不是算法执行轨迹。
 
@@ -22,7 +22,7 @@ pnpm install
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:lint
-pnpm --config.verify-deps-before-run=false exec node --test scripts/speech-timing.test.ts
+pnpm --config.verify-deps-before-run=false exec node --test scripts/speech-timing.test.ts scripts/azure-alignment.test.ts
 pnpm --config.verify-deps-before-run=false run video:narration --dry-run
 pnpm --config.verify-deps-before-run=false run video:check-content --decode
 pnpm --config.verify-deps-before-run=false run video:check-layout
@@ -37,6 +37,8 @@ pnpm --config.verify-deps-before-run=false run video:narration --issue=204
 也可用 `--shots=204-10,206-03,206-04,206-16` 仅生成指定镜头；镜头 ID 必须存在且不能重复，不可与 `--issue` 同用。上述四段的口播将字母 `y` 写作 `why`，字幕和公式仍保留 `y`；其他字母和既有中文拼音标注不变。
 
 不传 `--issue` 或 `--shots` 会生成全部配音。生成器完整校验镜头 ID、读音对象及讲解锚点，在本次目标音频全部解码、时长与字词边界校验成功后发布素材。合成输入的 SHA-256 指纹包含完整 SSML（包括音色和局部读音），仅修改拼音也会使旧音频失效。服务失败或校验失败即停止，保留临时诊断数据；可使用输出的临时目录配合 `--resume=<临时目录>` 复用指纹一致的暂存音频，仍须重新校验。
+
+如果合成服务返回零时长的朗读词，生成器保留原 MP3，并调用 Azure 发音评估，以口语稿为参考取得该音频的逐词对齐时间。仅补充缺失时间及解决边界冲突所需的相邻词；不同分词方式保留服务返回的完整词，不拆分或均摊时长。采用的对齐词必须无错误标记，全文须完整匹配且无遗漏／插入，时间须有效且不重叠；不涉及的词保留已有合成时间，不因发音评分而改动。失败就停止，不插值或估算词时长，也不重新合成来替代已确认音频。对齐数据绑定音频 SHA-256，`audio-timing.json` 的 `alignment` 保留原始合成边界及服务响应，`words` 为字幕和动画共用的有效边界。内容检查同时核对哈希和响应；标点可为零时长，朗读词不可。自动对齐属于模型测量，不能替代实际同步试听验收。
 
 `video:build` 只打包工程，不渲染视频；产物 `build` 已忽略。用户预览时可自行执行：
 
@@ -80,6 +82,7 @@ pnpm --config.verify-deps-before-run=false run video:export
 | `src/speech-timing.ts`                                | 字词校验、短句字幕和讲解锚点定位                |
 | `src/timeline.ts`、`src/Composition.tsx`              | 原速音频、字幕、动画和停顿的编排                |
 | `scripts/narration.ts`、`scripts/azure-speech.ts`     | 本工程自包含的 Azure 合成与素材发布             |
+| `scripts/azure-alignment.ts`                          | 原音频逐词对齐、来源与音频哈希校验              |
 | `scripts/check-content.ts`、`scripts/check-layout.ts` | 内容与音频检查、完整生产页无头检查              |
 | `scripts/render.ts`                                   | 带检查门禁的用户导出入口                        |
 

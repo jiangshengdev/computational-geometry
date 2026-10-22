@@ -64,6 +64,17 @@ test("reject stale words, missing anchors, and unmatched subtitle clauses", () =
   );
   assert.throws(() => phraseTime(audio, "向右", "start"));
 });
+test("spoken zero-duration words and missing spoken text cannot pass validation", () => {
+  for (const words of [
+    audio.words.map((word) =>
+      word.text === "向左" ? { ...word, durationMs: 0 } : word,
+    ),
+    audio.words.filter((word) => word.text !== "向左"),
+  ]) {
+    assert.throws(() => createCaptions("平行。向左。", { ...audio, words }));
+    assert.throws(() => phraseTime({ ...audio, words }, "平行", "end"));
+  }
+});
 test("zero-duration punctuation may follow the next word in audio time", () => {
   const words = audio.words.map((w) =>
     w.text === "。" && w.textOffset === 2 ? { ...w, startMs: 1315 } : w,

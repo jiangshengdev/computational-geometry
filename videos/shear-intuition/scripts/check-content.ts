@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { shots, pages } from "../src/storyboard.ts";
 import { buildSpeechDocument, voice } from "./azure-speech.ts";
+import { verifyAlignment } from "./azure-alignment.ts";
 import { createCaptions, type AudioTiming } from "../src/speech-timing.ts";
 import {
   timelineFor,
@@ -50,6 +51,7 @@ for (const shot of shots) {
     throw Error(`Invalid teaching step: ${shot.id}`);
   const doc = buildSpeechDocument(speech[shot.id], shot.id);
   const audio = timing[shot.id];
+  verifyAlignment(audio, `${root}public/narration/${shot.id}.mp3`);
   if (
     doc.text !== audio.speech ||
     doc.fingerprint !== audio.fingerprint ||
