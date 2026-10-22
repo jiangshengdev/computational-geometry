@@ -1,7 +1,6 @@
-import { MathText } from "./MathText";
+import { ChapterLayout } from "./ChapterLayout";
 import { MathLines } from "./MathLines";
 import {
-  AbsoluteFill,
   Composition,
   Html5Audio,
   Sequence,
@@ -32,117 +31,35 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
           },
         ];
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor: "#f6f8fb",
-        color: "#172c45",
-        fontFamily: '"PingFang SC", sans-serif',
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          left: 100,
-          top: 62,
-          fontSize: 28,
-          color: "#65758a",
-        }}
-      >
-        由两个端点写出直线方程 ·{" "}
-        <MathText>{`${String(chapter + 1).padStart(2, "0")} / 08`}</MathText>
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          left: 100,
-          top: 125,
-          fontSize: 48,
-          fontWeight: 600,
-        }}
-      >
-        <MathText>{titles[chapter]}</MathText>
-      </div>
-      {page.context.length ? (
-        <div
-          style={{
-            position: "absolute",
-            left: 100,
-            right: 100,
-            top: 210,
-            display: "flex",
-            gap: 48,
-            alignItems: "center",
-            fontSize: 30,
-            color: "#526579",
-            borderBottom: "2px solid #dce4ec",
-            paddingBottom: 18,
-          }}
-        >
-          {page.context.map((line) => (
-            <div key={line}>
-              <MathText>{line}</MathText>
-            </div>
-          ))}
-        </div>
-      ) : null}
-      {graphic && cue.diagram !== "none" ? (
-        <div
-          style={{
-            position: "absolute",
-            left: 65,
-            top: 285,
-            scale: "0.74",
-            transformOrigin: "top left",
-          }}
-        >
+    <ChapterLayout
+      chapter={chapter}
+      context={page.context}
+      graphic={graphic}
+      diagram={
+        graphic && cue.diagram !== "none" ? (
           <Diagram kind={cue.diagram ?? "line"} scale={cue.coordinateScale} />
+        ) : undefined
+      }
+      columnCount={columns.length}
+      note={cue.note}
+      content={columns.map(({ start, lines }) => (
+        <div key={start}>
+          <MathLines
+            lines={lines}
+            visibleCount={Math.max(0, step.visibleCount - start)}
+            activeLines={step.activeLines.map((index) => index - start)}
+            fontSize={columns.length > 1 || page.lines.length > 6 ? 30 : 42}
+            highlightDifferences={row.id === "193-7"}
+          />
         </div>
-      ) : null}
-      <div
-        style={{
-          position: "absolute",
-          left: graphic ? 790 : 180,
-          right: 100,
-          top: 305,
-          textAlign: "left",
-          display: "grid",
-          gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
-          gap: 40,
-        }}
-      >
-        {columns.map(({ start, lines }) => (
-          <div key={start}>
-            <MathLines
-              lines={lines}
-              visibleCount={Math.max(0, step.visibleCount - start)}
-              activeLines={step.activeLines.map((index) => index - start)}
-              fontSize={columns.length > 1 || page.lines.length > 6 ? 30 : 42}
-              highlightDifferences={row.id === "193-7"}
-            />
-          </div>
-        ))}
-      </div>
-      {cue.note ? (
-        <div
-          style={{
-            position: "absolute",
-            left: graphic ? 790 : 180,
-            right: 100,
-            top: 815,
-            fontSize: 26,
-            lineHeight: 1.6,
-            color: "#65758a",
-          }}
-        >
-          <MathText>{cue.note}</MathText>
-        </div>
-      ) : null}
+      ))}
+    >
       {row.narration ? (
         <Sequence from={6} layout="none">
           <Html5Audio src={staticFile(`narration/${row.id}.mp3`)} />
         </Sequence>
       ) : null}
-    </AbsoluteFill>
+    </ChapterLayout>
   );
 };
 const Chapter = ({ chapter }: { chapter: number }) => (

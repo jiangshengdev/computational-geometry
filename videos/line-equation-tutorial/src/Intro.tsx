@@ -1,6 +1,5 @@
-import { MathText, SvgMathText } from "./MathText";
+import { SvgMathText } from "./MathText";
 import {
-  AbsoluteFill,
   Html5Audio,
   interpolate,
   Sequence,
@@ -9,11 +8,10 @@ import {
 } from "remotion";
 import { scenes } from "./intro-storyboard";
 import { fps } from "./timeline";
-import {
-  createCoordinates,
-  coordinateTicks,
-  type CoordinateScale,
-} from "./coordinates";
+import type { CoordinateScale } from "./coordinates";
+import { CoordinateGrid, tutorialCoordinates } from "./CoordinateGrid";
+import { ChapterLayout } from "./ChapterLayout";
+import { MathLines } from "./MathLines";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const blue = "#2563eb";
@@ -27,21 +25,8 @@ const CoordinateDiagram = ({
   frame: number;
   scale?: CoordinateScale;
 }) => {
-  const {
-    x: px,
-    y: py,
-    xMax,
-    yMax,
-    notice,
-  } = createCoordinates({
-    left: 210,
-    bottom: 790,
-    width: 660,
-    height: 648,
-    xMax: 6,
-    yMax: 9,
-    scale,
-  });
+  const coordinates = tutorialCoordinates(scale);
+  const { x: px, y: py } = coordinates;
   const secondOpacity = interpolate(frame, [540, 570], [1, 0], clamp);
   const labelsOpacity = interpolate(frame, [555, 585], [0, 1], clamp);
   const extension = interpolate(frame, [870, 930], [0, 1], clamp);
@@ -58,24 +43,8 @@ const CoordinateDiagram = ({
     clamp,
   );
   return (
-    <svg
-      width="1040"
-      height="850"
-      viewBox="0 0 1040 850"
-      style={{ position: "absolute", left: 0, top: 40 }}
-    >
+    <svg width="850" height="730" viewBox="0 0 850 730">
       <defs>
-        <marker
-          id="axis-arrow"
-          viewBox="0 0 10 10"
-          refX="9"
-          refY="5"
-          markerWidth="8"
-          markerHeight="8"
-          orient="auto-start-reverse"
-        >
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#738399" />
-        </marker>
         <marker
           id="line-arrow"
           viewBox="0 0 10 10"
@@ -88,96 +57,7 @@ const CoordinateDiagram = ({
           <path d="M 0 0 L 10 5 L 0 10 z" fill={blue} />
         </marker>
       </defs>
-      {coordinateTicks(xMax).map((x) => (
-        <line
-          key={`x${x}`}
-          x1={px(x)}
-          x2={px(x)}
-          y1={py(yMax)}
-          y2={py(0)}
-          stroke="#dce4ec"
-          strokeWidth="2"
-        />
-      ))}
-      {coordinateTicks(yMax).map((y) => (
-        <line
-          key={`y${y}`}
-          x1={px(0)}
-          x2={px(xMax)}
-          y1={py(y)}
-          y2={py(y)}
-          stroke="#dce4ec"
-          strokeWidth="2"
-        />
-      ))}
-      <path
-        d={`M ${px(0)} ${py(yMax) - 21.6} V ${py(0)} H ${px(xMax) + 33}`}
-        fill="none"
-        stroke="#738399"
-        strokeWidth="3"
-        markerStart="url(#axis-arrow)"
-        markerEnd="url(#axis-arrow)"
-      />
-      {coordinateTicks(xMax)
-        .filter((x) => x !== 0)
-        .map((x) => (
-          <SvgMathText
-            key={x}
-            x={px(x)}
-            y={py(0) + 35}
-            textAnchor="middle"
-            fontSize="25"
-            fill="#65758a"
-          >
-            {x}
-          </SvgMathText>
-        ))}
-      {coordinateTicks(yMax)
-        .filter((y) => y !== 0)
-        .map((y) => (
-          <SvgMathText
-            key={y}
-            x={px(0) - 25}
-            y={py(y) + 9}
-            textAnchor="end"
-            fontSize="25"
-            fill="#65758a"
-          >
-            {y}
-          </SvgMathText>
-        ))}
-      <g fontSize="30" fill="#65758a">
-        <SvgMathText fontSize={30} fill="#65758a" x={px(0) - 32} y={py(0) + 35}>
-          0
-        </SvgMathText>
-        <SvgMathText
-          fontSize={30}
-          fill="#65758a"
-          x={px(xMax) + 44}
-          y={py(0) + 10}
-        >
-          X
-        </SvgMathText>
-        <SvgMathText
-          fontSize={30}
-          fill="#65758a"
-          x={px(0) - 12}
-          y={py(yMax) - 43.2}
-        >
-          Y
-        </SvgMathText>
-      </g>
-      {notice ? (
-        <SvgMathText
-          x={px(xMax)}
-          y={py(yMax) - 20}
-          textAnchor="end"
-          fontSize="24"
-          fill="#65758a"
-        >
-          {notice}
-        </SvgMathText>
-      ) : null}
+      <CoordinateGrid coordinates={coordinates} />
       <g opacity={interpolate(frame, [0, 24], [0, 1], clamp)}>
         <line
           x1={px(1)}
@@ -237,18 +117,18 @@ const CoordinateDiagram = ({
         <SvgMathText
           outlined
           fill={blue}
-          x={px(1) + 25}
-          y={py(3) + 30}
-          fontSize="34"
+          x={px(1) + 18}
+          y={py(3) - 18}
+          fontSize="30"
         >
           A = (1, 3)
         </SvgMathText>
         <SvgMathText
           outlined
           fill={blue}
-          x={px(3) + 25}
-          y={py(7) - 12}
-          fontSize="34"
+          x={px(3) + 18}
+          y={py(7) - 18}
+          fontSize="30"
         >
           B = (3, 7)
         </SvgMathText>
@@ -264,66 +144,30 @@ export const Intro = () => {
       (item) => frame >= item.from && frame < item.from + item.durationInFrames,
     ) ?? scenes[scenes.length - 1];
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor: "#f6f8fb",
-        color: "#172c45",
-        fontFamily: '"PingFang SC", "Microsoft YaHei", sans-serif',
-      }}
+    <ChapterLayout
+      chapter={0}
+      context={[scene.kicker]}
+      diagram={
+        <CoordinateDiagram
+          frame={
+            scene.start * fps +
+            ((frame - scene.from) / scene.durationInFrames) *
+              (scene.end - scene.start) *
+              fps
+          }
+        />
+      }
+      note={scene.note}
+      content={
+        <div
+          style={{
+            opacity: interpolate(frame - scene.from, [0, 15], [0, 1], clamp),
+          }}
+        >
+          <MathLines lines={[scene.title.replace(/\n/g, "")]} fontSize={42} />
+        </div>
+      }
     >
-      <div
-        style={{
-          position: "absolute",
-          left: 120,
-          top: 65,
-          fontSize: 28,
-          color: "#65758a",
-          letterSpacing: 3,
-        }}
-      >
-        由两个端点写出直线方程 · <MathText>01</MathText>
-      </div>
-      <CoordinateDiagram
-        frame={
-          scene.start * fps +
-          ((frame - scene.from) / scene.durationInFrames) *
-            (scene.end - scene.start) *
-            fps
-        }
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 1050,
-          top: 285,
-          width: 750,
-          opacity: interpolate(frame - scene.from, [0, 15], [0, 1], clamp),
-        }}
-      >
-        <div style={{ fontSize: 28, color: blue, marginBottom: 28 }}>
-          {scene.kicker}
-        </div>
-        <div
-          style={{
-            fontSize: 68,
-            fontWeight: 600,
-            lineHeight: 1.45,
-            whiteSpace: "pre-line",
-          }}
-        >
-          <MathText>{scene.title}</MathText>
-        </div>
-        <div
-          style={{
-            fontSize: 34,
-            color: "#65758a",
-            marginTop: 35,
-            lineHeight: 1.6,
-          }}
-        >
-          <MathText>{scene.note}</MathText>
-        </div>
-      </div>
       {scenes.map((item) => (
         <Sequence
           key={item.id}
@@ -335,6 +179,6 @@ export const Intro = () => {
           <Html5Audio src={staticFile(`narration/${item.id}.mp3`)} />
         </Sequence>
       ))}
-    </AbsoluteFill>
+    </ChapterLayout>
   );
 };

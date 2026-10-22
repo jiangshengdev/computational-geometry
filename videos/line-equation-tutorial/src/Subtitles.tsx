@@ -26,22 +26,21 @@ export const Subtitles = ({ first, last }: { first: number; last: number }) => {
   );
   if (chapter < 0) return null;
   const frame = absoluteFrame - offsets[chapter];
-  const intro = chapter === 0;
   return (
     <div
       data-subtitle
       style={{
         position: "absolute",
-        left: intro ? 160 : 120,
-        right: intro ? 160 : 120,
-        bottom: intro ? 62 : 55,
-        minHeight: intro ? 112 : 90,
+        left: 120,
+        right: 120,
+        bottom: 55,
+        minHeight: 90,
         borderTop: "2px solid #dce4ec",
         paddingTop: 24,
         fontFamily: '"PingFang SC", sans-serif',
         color: "#172c45",
-        fontSize: intro ? 34 : 28,
-        lineHeight: intro ? 1.65 : 1.6,
+        fontSize: 28,
+        lineHeight: 1.6,
         textAlign: "center",
         textWrap: "pretty",
       }}
