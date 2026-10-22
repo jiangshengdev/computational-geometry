@@ -117,7 +117,15 @@ export const TeachingPage = ({
         </>
       ) : (
         <>
-          <div style={{ position: "absolute", left: 35, top: 190 }}>
+          <div
+            style={{
+              position: "absolute",
+              left: 0,
+              top: 190,
+              transform: "scale(1.1)",
+              transformOrigin: "top left",
+            }}
+          >
             <Diagram
               kind={page.diagram}
               step={
@@ -172,9 +180,9 @@ export const TeachingPage = ({
         data-teaching-note
         style={{
           position: "absolute",
-          left: 100,
+          left: sideBySide ? 100 : 920,
+          right: 100,
           top: 895,
-          width: 1720,
           fontSize: 28,
           color: "#526579",
           visibility:

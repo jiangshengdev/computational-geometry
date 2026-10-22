@@ -1,4 +1,4 @@
-import { useMemo, type CSSProperties } from "react";
+import { Fragment, useMemo, type CSSProperties } from "react";
 import { renderToString } from "katex";
 import "katex/dist/katex.min.css";
 
@@ -22,14 +22,18 @@ export const MathText = ({ children }: { children: string | number }) => {
     <>
       {parts.map((part, i) =>
         /[A-Za-z0-9]/.test(part) ? (
-          <Latex key={i}>
-            {part
-              .trim()
-              .replace(/′/g, "'")
-              .replace(/−/g, "-")
-              .replace(/×/g, "\\times ")
-              .replace(/(-?\d+)\/(\d+)/g, "\\frac{$1}{$2}")}
-          </Latex>
+          <Fragment key={i}>
+            {part.slice(0, part.length - part.trimStart().length)}
+            <Latex>
+              {part
+                .trim()
+                .replace(/′/g, "'")
+                .replace(/−/g, "-")
+                .replace(/×/g, "\\times ")
+                .replace(/(-?\d+)\/(\d+)/g, "\\frac{$1}{$2}")}
+            </Latex>
+            {part.slice(part.trimEnd().length)}
+          </Fragment>
         ) : (
           part
         ),
@@ -65,6 +69,8 @@ export const SvgMathText = ({
           fontSize,
           color: fill,
           lineHeight: 1.2,
+          WebkitTextStroke: "5px #f6f8fb",
+          paintOrder: "stroke fill",
           transform: `translate(${align === "right" ? "-100%" : align === "center" ? "-50%" : "0"}, -80%)`,
         } as CSSProperties
       }

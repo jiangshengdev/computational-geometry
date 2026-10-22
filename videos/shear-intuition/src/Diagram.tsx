@@ -158,33 +158,6 @@ export const Diagram = ({
       <SvgMathText x={x(0)} y={y(3.65)} align="center">
         y
       </SvgMathText>
-      {[-2, -1, 1, 2, 3, 4].map((n) => (
-        <SvgMathText
-          key={`x${n}`}
-          x={x(n)}
-          y={y(0) + 37}
-          fontSize={24}
-          fill={gray}
-          align="center"
-        >
-          {n}
-        </SvgMathText>
-      ))}
-      {[-2, -1, 1, 2, 3].map((n) => (
-        <SvgMathText
-          key={`y${n}`}
-          x={x(0) - 18}
-          y={y(n) + 9}
-          fontSize={24}
-          fill={gray}
-          align="right"
-        >
-          {n}
-        </SvgMathText>
-      ))}
-      <SvgMathText x={x(0) - 18} y={y(0) + 37} fontSize={24} align="right">
-        O
-      </SvgMathText>
       {kind === "scan" ? (
         <>
           <Line a={[1, -1]} b={[1, 2.5]} color={blue} />
@@ -342,6 +315,34 @@ export const Diagram = ({
           ) : null}
         </>
       )}
+      {/* Paint tick labels after the geometry so lines cannot cover their halo. */}
+      {[-2, -1, 1, 2, 3, 4].map((n) => (
+        <SvgMathText
+          key={`x${n}`}
+          x={x(n)}
+          y={y(0) + 37}
+          fontSize={24}
+          fill={gray}
+          align="center"
+        >
+          {n}
+        </SvgMathText>
+      ))}
+      {[-2, -1, 1, 2, 3].map((n) => (
+        <SvgMathText
+          key={`y${n}`}
+          x={x(0) - 18}
+          y={y(n) + 9}
+          fontSize={24}
+          fill={gray}
+          align="right"
+        >
+          {n}
+        </SvgMathText>
+      ))}
+      <SvgMathText x={x(0) - 18} y={y(0) + 37} fontSize={24} align="right">
+        O
+      </SvgMathText>
     </svg>
   );
 };
