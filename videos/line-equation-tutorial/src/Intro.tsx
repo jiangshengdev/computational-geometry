@@ -9,7 +9,11 @@ import {
 import { scenes } from "./intro-storyboard";
 import { fps } from "./timeline";
 import type { CoordinateScale } from "./coordinates";
-import { CoordinateGrid, tutorialCoordinates } from "./CoordinateGrid";
+import {
+  CoordinateGrid,
+  diagramViewport,
+  tutorialCoordinates,
+} from "./CoordinateGrid";
 import { ChapterLayout } from "./ChapterLayout";
 import { MathLines } from "./MathLines";
 
@@ -43,7 +47,7 @@ const CoordinateDiagram = ({
     clamp,
   );
   return (
-    <svg width="850" height="730" viewBox="0 0 850 730">
+    <svg {...diagramViewport}>
       <defs>
         <marker
           id="line-arrow"

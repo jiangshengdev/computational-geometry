@@ -2,8 +2,18 @@ import { visuals } from "./scenes.ts";
 
 // Page boundaries follow complete mathematical arguments, not narration rows.
 // Context contains only facts already established before the page begins.
-const pages: { rows: string[]; context: string[]; columnBreak?: number }[] = [
-  { rows: ["190-1", "190-2", "190-3"], context: [], columnBreak: 4 },
+// Use the smaller whole-page size only after measuring the complete page.
+const pages: {
+  rows: string[];
+  context: string[];
+  columnBreak?: number;
+  fontSize?: 36;
+}[] = [
+  {
+    rows: ["190-1", "190-2", "190-3"],
+    context: [],
+    columnBreak: 4,
+  },
   { rows: ["190-4", "190-5"], context: ["Y = 2X + 1"] },
   {
     rows: ["190-6", "190-7", "190-8"],
@@ -14,6 +24,7 @@ const pages: { rows: string[]; context: string[]; columnBreak?: number }[] = [
     rows: ["191-1", "191-2", "191-3", "191-4", "191-5"],
     context: ["A = (1, 3)", "B = (3, 7)"],
     columnBreak: 6,
+    fontSize: 36,
   },
   {
     rows: ["191-6", "191-7", "191-8"],
@@ -48,6 +59,7 @@ const pages: { rows: string[]; context: string[]; columnBreak?: number }[] = [
     rows: ["194-1", "194-2"],
     context: ["a = Y₂ − Y₁", "b = X₁ − X₂", "c = aX₁ + bY₁"],
     columnBreak: 4,
+    fontSize: 36,
   },
   {
     rows: ["194-3"],

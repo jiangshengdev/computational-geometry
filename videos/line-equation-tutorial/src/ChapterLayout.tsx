@@ -2,6 +2,11 @@ import type { ReactNode } from "react";
 import { AbsoluteFill } from "remotion";
 import { MathText } from "./MathText";
 import { titles } from "./scenes";
+import { diagramViewport } from "./CoordinateGrid";
+
+const diagramLeft = 10;
+const diagramScale = 0.95;
+const contentLeft = diagramLeft + diagramViewport.width * diagramScale + 30;
 
 export const ChapterLayout = ({
   chapter,
@@ -67,9 +72,9 @@ export const ChapterLayout = ({
       <div
         style={{
           position: "absolute",
-          left: 10,
+          left: diagramLeft,
           top: 210,
-          scale: "0.95",
+          scale: String(diagramScale),
           transformOrigin: "top left",
         }}
       >
@@ -77,13 +82,16 @@ export const ChapterLayout = ({
       </div>
     ) : null}
     <div
+      data-main-content
       style={{
         position: "absolute",
-        left: graphic ? 850 : 100,
+        left: graphic ? contentLeft : 100,
         right: 100,
         top: 220,
+        bottom: 200,
         textAlign: "left",
         display: "grid",
+        alignContent: "start",
         gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
         justifyItems: !graphic && columnCount === 1 ? "center" : "stretch",
         gap: 40,
@@ -95,7 +103,7 @@ export const ChapterLayout = ({
       <div
         style={{
           position: "absolute",
-          left: graphic ? 850 : 100,
+          left: graphic ? contentLeft : 100,
           right: 100,
           top: 900,
           fontSize: 30,

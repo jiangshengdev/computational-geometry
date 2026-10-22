@@ -48,13 +48,7 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
             lines={lines}
             visibleCount={Math.max(0, step.visibleCount - start)}
             activeLines={step.activeLines.map((index: number) => index - start)}
-            fontSize={
-              graphic && columns.length > 1
-                ? 30
-                : Math.max(...columns.map((column) => column.lines.length)) > 8
-                  ? 36
-                  : 42
-            }
+            fontSize={page.fontSize ?? 42}
             highlightDifferences={row.id === "193-7"}
           />
         </div>

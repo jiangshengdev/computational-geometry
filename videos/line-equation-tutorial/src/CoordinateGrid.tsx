@@ -5,11 +5,17 @@ import {
   type CoordinateScale,
 } from "./coordinates";
 
+export const diagramViewport = {
+  width: 590,
+  height: 730,
+  viewBox: "0 0 590 730",
+};
+
 export const tutorialCoordinates = (scale?: CoordinateScale) =>
   createCoordinates({
     left: 120,
     bottom: 700,
-    width: 660,
+    width: 390,
     height: 585,
     xMax: 6,
     yMax: 9,
@@ -22,18 +28,21 @@ export const CoordinateGrid = ({
   coordinates: ReturnType<typeof tutorialCoordinates>;
 }) => {
   const { x, y, xMax, yMax, notice } = coordinates;
+  const ticks = coordinateTicks(Math.max(xMax, yMax));
   return (
     <>
-      {coordinateTicks(xMax).map((v) => (
-        <g key={`x${v}`}>
-          <line x1={x(v)} x2={x(v)} y1={y(yMax)} y2={y(0)} stroke="#dce4ec" />
-          <SvgMathText x={x(v)} y={y(0) + 28} fontSize="22" fill="#738399">
-            {v}
-          </SvgMathText>
-        </g>
-      ))}
-      {coordinateTicks(yMax)
-        .filter((v) => v !== 0)
+      {ticks
+        .filter((v) => v <= xMax)
+        .map((v) => (
+          <g key={`x${v}`}>
+            <line x1={x(v)} x2={x(v)} y1={y(yMax)} y2={y(0)} stroke="#dce4ec" />
+            <SvgMathText x={x(v)} y={y(0) + 28} fontSize="22" fill="#738399">
+              {v}
+            </SvgMathText>
+          </g>
+        ))}
+      {ticks
+        .filter((v) => v !== 0 && v <= yMax)
         .map((v) => (
           <g key={`y${v}`}>
             <line x1={x(0)} x2={x(xMax)} y1={y(v)} y2={y(v)} stroke="#dce4ec" />

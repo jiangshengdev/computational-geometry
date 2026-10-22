@@ -2,7 +2,11 @@ import { SvgMathText } from "./MathText";
 import type { Diagram as Kind } from "./scenes";
 import { useCurrentFrame, interpolate } from "remotion";
 import type { CoordinateScale } from "./coordinates";
-import { CoordinateGrid, tutorialCoordinates } from "./CoordinateGrid";
+import {
+  CoordinateGrid,
+  diagramViewport,
+  tutorialCoordinates,
+} from "./CoordinateGrid";
 const blue = "#2563eb",
   orange = "#c66a24";
 export const Diagram = ({
@@ -25,9 +29,9 @@ export const Diagram = ({
         ? interpolate(frame, [0, 40], [0.3, 1], { extrapolateRight: "clamp" })
         : 1;
     return (
-      <svg width="850" height="730" viewBox="0 0 850 730">
+      <svg {...diagramViewport}>
         <SvgMathText
-          x="425"
+          x="315"
           y="200"
           textAnchor="middle"
           fontSize="38"
@@ -36,9 +40,9 @@ export const Diagram = ({
           {general ? "每个坐标都在这个范围内" : "独立数轴练习"}
         </SvgMathText>
         <line
-          x1="90"
+          x1="120"
           y1="380"
-          x2="770"
+          x2="510"
           y2="380"
           stroke="#738399"
           strokeWidth="4"
@@ -46,15 +50,15 @@ export const Diagram = ({
         {[-1, 0, 1].map((n) => (
           <g key={n}>
             <line
-              x1={425 + n * 290}
-              x2={425 + n * 290}
+              x1={315 + n * 195}
+              x2={315 + n * 195}
               y1="367"
               y2="393"
               stroke="#738399"
               strokeWidth="4"
             />
             <SvgMathText
-              x={425 + n * 290}
+              x={315 + n * 195}
               y="440"
               textAnchor="middle"
               fontSize="42"
@@ -67,21 +71,21 @@ export const Diagram = ({
         {answer ? (
           <>
             <line
-              x1="135"
-              x2="715"
+              x1="120"
+              x2="510"
               y1="310"
               y2="310"
               stroke={blue}
               strokeWidth="7"
             />
             <circle
-              cx={coordinates ? 260 : 425 - 290 * spread}
+              cx={coordinates ? 204 : 315 - 195 * spread}
               cy="380"
               r="12"
               fill={blue}
             />
             <circle
-              cx={coordinates ? 600 : 425 + 290 * spread}
+              cx={coordinates ? 432 : 315 + 195 * spread}
               cy="380"
               r="12"
               fill={orange}
@@ -91,7 +95,7 @@ export const Diagram = ({
                 <SvgMathText
                   outlined
                   textAnchor="middle"
-                  x="260"
+                  x="204"
                   y="355"
                   fill={blue}
                 >
@@ -100,14 +104,14 @@ export const Diagram = ({
                 <SvgMathText
                   outlined
                   textAnchor="middle"
-                  x="600"
+                  x="432"
                   y="355"
                   fill={orange}
                 >
                   {kind === "axis-y" ? "Y₂" : "X₁"}
                 </SvgMathText>
                 <path
-                  d="M260 460 V480 H600 V460"
+                  d="M204 460 V480 H432 V460"
                   fill="none"
                   stroke={orange}
                   strokeWidth="4"
@@ -116,7 +120,7 @@ export const Diagram = ({
             ) : null}
             <SvgMathText
               outlined
-              x="425"
+              x="315"
               y="540"
               textAnchor="middle"
               fontSize="34"
@@ -154,7 +158,7 @@ export const Diagram = ({
     </g>
   );
   return (
-    <svg width="850" height="730" viewBox="0 0 850 730">
+    <svg {...diagramViewport}>
       <CoordinateGrid coordinates={coordinates} />
       {vertical ? (
         <line
