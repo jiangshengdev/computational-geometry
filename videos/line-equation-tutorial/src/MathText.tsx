@@ -34,6 +34,7 @@ export const SvgMathText = ({
   fontSize = 38,
   fill = "#172c45",
   textAnchor = "start",
+  outlined = false,
 }: {
   children: string | number;
   x: number | string;
@@ -41,6 +42,7 @@ export const SvgMathText = ({
   fontSize?: number | string;
   fill?: string;
   textAnchor?: "start" | "middle" | "end";
+  outlined?: boolean;
 }) => (
   <foreignObject x={x} y={y} width={1} height={1} overflow="visible">
     <div
@@ -50,6 +52,8 @@ export const SvgMathText = ({
         fontSize: Number(fontSize),
         lineHeight: 1.2,
         color: fill,
+        WebkitTextStroke: outlined ? "5px #f6f8fb" : undefined,
+        paintOrder: outlined ? "stroke fill" : undefined,
         transform: `translate(${textAnchor === "middle" ? "-50%" : textAnchor === "end" ? "-100%" : "0"}, -80%)`,
       }}
     >

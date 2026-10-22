@@ -80,10 +80,22 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
             />
             {coordinates ? (
               <g fontSize="38" textAnchor="middle">
-                <SvgMathText textAnchor="middle" x="260" y="355" fill={blue}>
+                <SvgMathText
+                  outlined
+                  textAnchor="middle"
+                  x="260"
+                  y="355"
+                  fill={blue}
+                >
                   {kind === "axis-y" ? "Y₁" : "X₂"}
                 </SvgMathText>
-                <SvgMathText textAnchor="middle" x="600" y="355" fill={orange}>
+                <SvgMathText
+                  outlined
+                  textAnchor="middle"
+                  x="600"
+                  y="355"
+                  fill={orange}
+                >
                   {kind === "axis-y" ? "Y₂" : "X₁"}
                 </SvgMathText>
                 <path
@@ -95,6 +107,7 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
               </g>
             ) : null}
             <SvgMathText
+              outlined
               x="425"
               y="540"
               textAnchor="middle"
@@ -121,7 +134,13 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
   const point = (p: number[], label: string, color = blue) => (
     <g key={label}>
       <circle cx={x(p[0])} cy={y(p[1])} r="8" fill={color} />
-      <SvgMathText x={x(p[0]) + 18} y={y(p[1]) - 18} fontSize="30" fill={color}>
+      <SvgMathText
+        outlined
+        x={x(p[0]) + 18}
+        y={y(p[1]) - 18}
+        fontSize="30"
+        fill={color}
+      >
         {label}
       </SvgMathText>
     </g>
@@ -224,10 +243,22 @@ export const Diagram = ({ kind }: { kind: Kind }) => {
             strokeWidth="4"
             strokeDasharray="8 9"
           />
-          <SvgMathText x={x(1.4)} y={y(3) + 42} fontSize="30" fill={orange}>
+          <SvgMathText
+            outlined
+            x={x(1.4)}
+            y={y(3) + 42}
+            fontSize="30"
+            fill={orange}
+          >
             3−1=2
           </SvgMathText>
-          <SvgMathText x={x(3) + 24} y={y(5)} fontSize="30" fill={orange}>
+          <SvgMathText
+            outlined
+            x={x(3) + 24}
+            y={y(5)}
+            fontSize="30"
+            fill={orange}
+          >
             7−3=4
           </SvgMathText>
         </>

@@ -160,16 +160,6 @@ const CoordinateDiagram = ({ frame }: { frame: number }) => {
           <circle cx={px(24 / 13)} cy={py(61 / 13)} r="7" fill="#172c45" />
         </g>
       </g>
-      <g opacity={labelsOpacity} fill={blue}>
-        <circle cx={px(1)} cy={py(3)} r="8" />
-        <circle cx={px(3)} cy={py(7)} r="8" />
-        <SvgMathText fill={blue} x={px(1) + 25} y={py(3) + 30} fontSize="34">
-          A = (1, 3)
-        </SvgMathText>
-        <SvgMathText fill={blue} x={px(3) + 25} y={py(7) - 12} fontSize="34">
-          B = (3, 7)
-        </SvgMathText>
-      </g>
       {extension > 0 && (
         <g
           stroke={blue}
@@ -193,6 +183,28 @@ const CoordinateDiagram = ({ frame }: { frame: number }) => {
           />
         </g>
       )}
+      <g opacity={labelsOpacity} fill={blue}>
+        <circle cx={px(1)} cy={py(3)} r="8" />
+        <circle cx={px(3)} cy={py(7)} r="8" />
+        <SvgMathText
+          outlined
+          fill={blue}
+          x={px(1) + 25}
+          y={py(3) + 30}
+          fontSize="34"
+        >
+          A = (1, 3)
+        </SvgMathText>
+        <SvgMathText
+          outlined
+          fill={blue}
+          x={px(3) + 25}
+          y={py(7) - 12}
+          fontSize="34"
+        >
+          B = (3, 7)
+        </SvgMathText>
+      </g>
     </svg>
   );
 };
