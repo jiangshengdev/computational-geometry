@@ -1,4 +1,5 @@
 import { MathText } from "./MathText";
+import { MathLines } from "./MathLines";
 import {
   AbsoluteFill,
   Composition,
@@ -78,22 +79,10 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
             ),
           }}
         >
-          {cue.lines.map((line, i) => (
-            <div
-              key={i}
-              style={{
-                fontSize: line.length > 24 ? 36 : line.length > 18 ? 40 : 48,
-                lineHeight: 1.65,
-                color: i === cue.lines.length - 1 ? "#2563eb" : "#172c45",
-                fontWeight: 500,
-                whiteSpace: "nowrap",
-              }}
-            >
-              <MathText highlightDifferences={row.id === "193-7"}>
-                {line}
-              </MathText>
-            </div>
-          ))}
+          <MathLines
+            lines={cue.lines}
+            highlightDifferences={row.id === "193-7"}
+          />
         </div>
         {cue.note ? (
           <div
