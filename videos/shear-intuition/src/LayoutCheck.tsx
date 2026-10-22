@@ -68,6 +68,19 @@ export const LayoutCheck = () => {
           inner.top >= outer.top - 1 &&
           inner.bottom <= outer.bottom + 1;
         const content = page.querySelector<HTMLElement>("[data-main-content]");
+        for (const group of content?.querySelectorAll<HTMLElement>(
+          "[data-teaching-group]",
+        ) ?? []) {
+          if (
+            !contains(
+              content!.getBoundingClientRect(),
+              group.getBoundingClientRect(),
+            )
+          )
+            errors.push(
+              `Teaching group ${group.dataset.teachingGroup}: exceeds content bounds`,
+            );
+        }
         const lines = Array.from(
           content?.querySelectorAll<HTMLElement>("[data-line-ink]") ?? [],
         );

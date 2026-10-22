@@ -1,3 +1,5 @@
+import { equals, left, type TeachingGroup } from "./math-lines.ts";
+
 export type Shot = {
   id: string;
   page: string;
@@ -25,12 +27,13 @@ export type Page = {
     | "vertical-axis";
   lines: { math?: string; text?: string }[];
   note: string;
-  rowHeight?: number;
+  groups: TeachingGroup[];
   noteFromStep?: number;
 };
 
 export const pages: Record<string, Page> = {
   readOriginal: {
+    groups: [left(2), left(2)], // 横坐标读法；纵坐标读法
     title: "先回想：直角坐标怎样读数？",
     mode: "模式二 · 点 P 相对原点保持不动",
     diagram: "read-original",
@@ -43,6 +46,7 @@ export const pages: Record<string, Page> = {
     note: "看辅助线与哪条轴平行，再看它落在哪条轴上",
   },
   horizontalExample: {
+    groups: [left(1), equals(2), left(1)], // 条件；计算；坐标结论
     title: "先看新横轴刻度 2 对应的点",
     mode: "模式二 · 用具体数值核对同一个位置",
     diagram: "horizontal-axis",
@@ -56,6 +60,7 @@ export const pages: Record<string, Page> = {
     noteFromStep: 4,
   },
   question2: {
+    groups: [left(2), left(1)], // 已知读数；问题
     title: "暂停思考：位置变了，还是读数方法变了？",
     mode: "已知条件 · 点 P 相对原点始终不动",
     diagram: "coordinates",
@@ -67,6 +72,7 @@ export const pages: Record<string, Page> = {
     note: "请结合画面条件判断；问题讲完后思考 4 秒",
   },
   compareMove: {
+    groups: [left(2), left(2)], // 新旧点；操作解释
     title: "对照一：坐标轴不动，画出新点",
     mode: "模式一 · 固定原来的直角坐标轴",
     diagram: "positive",
@@ -79,6 +85,7 @@ export const pages: Record<string, Page> = {
     note: "P 和 P′ 是不同的位置",
   },
   compareRead: {
+    groups: [left(2), left(2)], // 两套读数；判断结论
     title: "对照二：点不动，更换读数所用的轴",
     mode: "模式二 · 固定原来的 P",
     diagram: "coordinates",
@@ -91,6 +98,7 @@ export const pages: Record<string, Page> = {
     note: "不要把同一位置的新读数，当成移动后的新位置",
   },
   ending: {
+    groups: [left(1), left(2), left(1)], // 共同公式；两种操作；下一集问题
     title: "同一个公式，两种不同操作",
     mode: "同一公式：x′=x+sy，y′=y · 先明确固定的对象",
     diagram: "comparison",
@@ -103,10 +111,10 @@ export const pages: Record<string, Page> = {
     note: "本集只建立坐标直觉，系数大小留到下一集",
   },
   inverse: {
+    groups: [left(2), equals(3), left(1)], // 原始关系；代入与抵消；逆变换结论
     title: "从新坐标，求回原坐标",
     mode: "模式二 · 同一个点，两套坐标读数",
     diagram: "coordinates",
-    rowHeight: 88,
     lines: [
       { math: "y'=y\\quad\\Longrightarrow\\quad y=y'" },
       { math: "x'=x+sy" },
@@ -118,6 +126,7 @@ export const pages: Record<string, Page> = {
     note: "代入 → 两边减去同一个数 → 抵消 → 交换等式左右两边",
   },
   horizontal: {
+    groups: [left(1), equals(2), left(1)], // 横轴条件；计算；结论
     title: "新横轴的位置和刻度，为什么都不变？",
     mode: "模式二 · 新横轴上的点满足 y′ = 0",
     diagram: "horizontal-axis",
@@ -130,10 +139,10 @@ export const pages: Record<string, Page> = {
     note: "灰色原横轴与紫色虚线新横轴重合",
   },
   vertical: {
+    groups: [left(2), equals(3), left(1)], // 条件；连续推导；原坐标结论
     title: "新纵轴刻度 2，究竟在哪里？",
     mode: "模式二 · 跟踪同一个固定点",
     diagram: "vertical-axis",
-    rowHeight: 82,
     lines: [
       { math: "s=\\frac12,\\quad y'=2" },
       { math: "x'=0,\\quad (x',y')=(0,2)" },
@@ -146,6 +155,7 @@ export const pages: Record<string, Page> = {
     noteFromStep: 6,
   },
   oblique: {
+    groups: [left(2), left(2)], // 条件与符号判断；几何解释
     title: "向左倾斜的纵轴，不是旋转出来的直角坐标系",
     mode: "模式二 · 位置固定，坐标读数改变",
     diagram: "vertical-axis",
@@ -158,6 +168,7 @@ export const pages: Record<string, Page> = {
     note: "两条轴不再垂直；不是把整套直角坐标系旋转",
   },
   coordinates: {
+    groups: [left(1), left(2), left(1)], // 原读数；新横坐标读法；完整新读数
     title: "换一种操作：点不动，换坐标系",
     mode: "模式二 · 固定点 P，只改变读数方法",
     diagram: "coordinates",
@@ -170,6 +181,7 @@ export const pages: Record<string, Page> = {
     note: "下标说明使用哪套坐标系；点 P 相对原点的位置不变",
   },
   opening: {
+    groups: [left(2), left(1)], // 扫描情境；引入问题
     title: "剪切如何改变坐标",
     mode: "开场示意 · 只看几何动机",
     diagram: "scan",
@@ -181,6 +193,7 @@ export const pages: Record<string, Page> = {
     note: "固定示意，不是算法执行轨迹",
   },
   positive: {
+    groups: [left(1), equals(2), left(1)], // 条件；位移和横坐标计算；新点结论
     title: "先固定坐标轴，让点水平移动",
     mode: "模式一 · 坐标轴固定，点移动",
     diagram: "positive",
@@ -193,6 +206,7 @@ export const pages: Record<string, Page> = {
     note: "这里的系数只用于图解，不是算法最终选用的小系数",
   },
   formula: {
+    groups: [left(2), left(2)], // 变换公式；乘法与撇号解释
     title: "把刚才的计算写成一般公式",
     mode: "模式一 · 坐标轴固定，点移动",
     diagram: "formula",
@@ -205,6 +219,7 @@ export const pages: Record<string, Page> = {
     note: "先算纵坐标乘系数，再加到原横坐标上",
   },
   question1: {
+    groups: [left(1), left(2)], // 条件；思考问题
     title: "暂停思考：负高度的点往哪边走？",
     mode: "模式一 · 坐标轴仍然固定",
     diagram: "negative-question",
@@ -216,6 +231,7 @@ export const pages: Record<string, Page> = {
     note: "问题讲完后，留 4 秒独立思考",
   },
   negative: {
+    groups: [equals(3), left(1)], // 连续计算；新点结论
     title: "负高度：加上一个负数，就向左移动",
     mode: "模式一 · 坐标轴固定，点移动",
     diagram: "negative",

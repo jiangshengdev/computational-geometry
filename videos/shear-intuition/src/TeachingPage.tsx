@@ -1,10 +1,9 @@
 import { Diagram } from "./Diagram";
+import { MathLines } from "./MathLines";
 import { Latex, MathText, TeachingColors } from "./MathText";
 import { pages, type Shot } from "./storyboard";
 import { Subtitles } from "./Subtitles";
 import {
-  lineMarks,
-  lineNumberRoles,
   noteNumberRoles,
   titleNumberRoles,
   objectColors,
@@ -31,7 +30,6 @@ export const TeachingPage = ({
   const page = pages[shot.page];
   const sideBySide = page.diagram === "comparison";
   const role = pageRoles[shot.page];
-  const theme = objectColors[role];
   return (
     <TeachingColors value={sideBySide ? undefined : role}>
       <div
@@ -161,64 +159,12 @@ export const TeachingPage = ({
               style={{
                 position: "absolute",
                 left: 920,
-                top: 235,
+                top: 220,
                 width: 900,
-                height: 570,
+                bottom: 200,
               }}
             >
-              {page.lines.map((line, index) => (
-                <div
-                  key={index}
-                  data-content-line
-                  data-revealed={index < visibleStep}
-                  style={{
-                    minHeight: page.rowHeight ?? 116,
-                    display: "flex",
-                    alignItems: "center",
-                    visibility: index < visibleStep ? "visible" : "hidden",
-                    color: line.math ? theme : "#172c45",
-                    fontSize: line.math ? 42 : 36,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  <span
-                    data-line-ink
-                    style={{
-                      position: "relative",
-                      backgroundColor:
-                        index === visibleStep - 1 ? `${theme}18` : undefined,
-                      borderRadius: 4,
-                    }}
-                  >
-                    {line.math ? (
-                      <Latex marks={lineMarks[shot.page]?.[index]}>
-                        {line.math}
-                      </Latex>
-                    ) : (
-                      <MathText
-                        numberRoles={lineNumberRoles[shot.page]?.[index]}
-                      >
-                        {line.text ?? ""}
-                      </MathText>
-                    )}
-                    {index === visibleStep - 1 ? (
-                      <span
-                        aria-hidden
-                        style={{
-                          position: "absolute",
-                          left: 0,
-                          right: 0,
-                          bottom: -7,
-                          height: 3,
-                          backgroundColor: theme,
-                          borderRadius: 2,
-                          pointerEvents: "none",
-                        }}
-                      />
-                    ) : null}
-                  </span>
-                </div>
-              ))}
+              <MathLines pageId={shot.page} visibleStep={visibleStep} />
             </div>
           </>
         )}
@@ -229,7 +175,7 @@ export const TeachingPage = ({
             position: "absolute",
             left: sideBySide ? 100 : 920,
             right: 100,
-            top: 895,
+            top: 900,
             fontSize: 28,
             color: "#526579",
             visibility:
