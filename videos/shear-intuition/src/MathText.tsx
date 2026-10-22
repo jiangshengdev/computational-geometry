@@ -1,30 +1,73 @@
-import { Fragment, useMemo, type CSSProperties } from "react";
+import {
+  createContext,
+  Fragment,
+  useContext,
+  useMemo,
+  type CSSProperties,
+} from "react";
 import { renderToString } from "katex";
 import "katex/dist/katex.min.css";
+import {
+  colorMath,
+  type MathMark,
+  type TeachingRole,
+} from "./teaching-emphasis";
 
-export const Latex = ({ children }: { children: string }) => {
+export const TeachingColors = createContext<TeachingRole | undefined>(
+  undefined,
+);
+
+export const Latex = ({
+  children,
+  marks,
+  numberRoles,
+  colorize = true,
+}: {
+  children: string;
+  marks?: MathMark[];
+  numberRoles?: (TeachingRole | undefined)[];
+  colorize?: boolean;
+}) => {
+  const operation = useContext(TeachingColors);
   const html = useMemo(
     () =>
-      renderToString(children, {
-        throwOnError: true,
-        strict: "error",
-        trust: false,
-      }),
-    [children],
+      renderToString(
+        colorize
+          ? colorMath(children, operation, marks, numberRoles)
+          : children,
+        {
+          throwOnError: true,
+          strict: "error",
+          trust: false,
+        },
+      ),
+    [children, operation, marks, numberRoles, colorize],
   );
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
 // The notation used by this episode; Chinese prose stays in the Chinese font.
-export const MathText = ({ children }: { children: string | number }) => {
+export const MathText = ({
+  children,
+  numberRoles = [],
+  colorize = true,
+}: {
+  children: string | number;
+  numberRoles?: (TeachingRole | undefined)[];
+  colorize?: boolean;
+}) => {
   const parts = String(children).split(/([A-Za-z0-9′'−+×=<>()[\],./\s-]+)/g);
+  let number = 0;
   return (
     <>
-      {parts.map((part, i) =>
-        /[A-Za-z0-9]/.test(part) ? (
+      {parts.map((part, i) => {
+        const count = [...part.matchAll(/\d+(?:\.\d+)?/g)].length;
+        const roles = numberRoles.slice(number, number + count);
+        number += count;
+        return /[A-Za-z0-9]/.test(part) ? (
           <Fragment key={i}>
             {part.slice(0, part.length - part.trimStart().length)}
-            <Latex>
+            <Latex numberRoles={roles} colorize={colorize}>
               {part
                 .trim()
                 .replace(/′/g, "'")
@@ -36,8 +79,8 @@ export const MathText = ({ children }: { children: string | number }) => {
           </Fragment>
         ) : (
           part
-        ),
-      )}
+        );
+      })}
     </>
   );
 };
@@ -50,6 +93,7 @@ export const SvgMathText = ({
   fill = "#172c45",
   align = "left",
   label = true,
+  colorize = false,
 }: {
   x: number;
   y: number;
@@ -58,6 +102,7 @@ export const SvgMathText = ({
   fill?: string;
   align?: "left" | "right" | "center";
   label?: boolean;
+  colorize?: boolean;
 }) => (
   <foreignObject x={x} y={y} width={1} height={1} overflow="visible">
     <div
@@ -75,7 +120,7 @@ export const SvgMathText = ({
         } as CSSProperties
       }
     >
-      <MathText>{children}</MathText>
+      <MathText colorize={colorize}>{children}</MathText>
     </div>
   </foreignObject>
 );

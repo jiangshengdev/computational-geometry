@@ -1,26 +1,43 @@
 import { MathText } from "./MathText";
+import { shots, type Shot } from "./storyboard";
+import { captionNumberRoles, captionNumbers } from "./teaching-emphasis";
 
-export const Subtitles = ({ text }: { text: string }) => (
-  <div
-    data-page-block
-    data-subtitle
-    style={{
-      position: "absolute",
-      left: 120,
-      right: 120,
-      bottom: 30,
-      height: 68,
-      boxSizing: "content-box",
-      borderTop: "2px solid #dce4ec",
-      paddingTop: 20,
-      fontSize: 40,
-      lineHeight: 1.4,
-      textAlign: "center",
-      whiteSpace: "nowrap",
-    }}
-  >
-    <span data-caption-ink>
-      <MathText>{text}</MathText>
-    </span>
-  </div>
-);
+export const Subtitles = ({ text, shot }: { text: string; shot: Shot }) => {
+  // During a silent lead-in the page may retain a cue from the preceding shot.
+  const source = shot.caption.includes(text)
+    ? shot
+    : shots
+        .slice(
+          0,
+          shots.findIndex((s) => s.id === shot.id),
+        )
+        .reverse()
+        .find((s) => s.page === shot.page && s.caption.includes(text));
+  const roles = source
+    ? captionNumbers(source.caption, text, captionNumberRoles[source.id] ?? [])
+    : [];
+  return (
+    <div
+      data-page-block
+      data-subtitle
+      style={{
+        position: "absolute",
+        left: 120,
+        right: 120,
+        bottom: 30,
+        height: 68,
+        boxSizing: "content-box",
+        borderTop: "2px solid #dce4ec",
+        paddingTop: 20,
+        fontSize: 40,
+        lineHeight: 1.4,
+        textAlign: "center",
+        whiteSpace: "nowrap",
+      }}
+    >
+      <span data-caption-ink>
+        <MathText numberRoles={roles}>{text}</MathText>
+      </span>
+    </div>
+  );
+};

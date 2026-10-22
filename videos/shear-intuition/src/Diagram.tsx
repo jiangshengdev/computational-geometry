@@ -1,10 +1,11 @@
 import { SvgMathText } from "./MathText";
 import type { Page } from "./storyboard";
+import { objectColors } from "./teaching-emphasis";
 
-const blue = "#176ba0",
-  orange = "#c56821",
+const blue = objectColors.original,
+  orange = objectColors.movement,
   gray = "#76899b",
-  purple = "#8056aa";
+  purple = objectColors.coordinates;
 const x = (v: number) => 330 + v * 100;
 const y = (v: number) => 440 - v * 100;
 type Position = [number, number];
@@ -78,7 +79,7 @@ const Point = ({
 const NewAxes = ({ horizontalOnly = false }: { horizontalOnly?: boolean }) => (
   <>
     <Line a={[-2.4, 0]} b={[4.3, 0]} color={purple} dashed arrow />
-    <SvgMathText x={x(4.35)} y={y(0) + 10} fill={purple}>
+    <SvgMathText x={x(4.35)} y={y(0) + 10} fill={purple} colorize>
       x, x′
     </SvgMathText>
     {!horizontalOnly ? (
