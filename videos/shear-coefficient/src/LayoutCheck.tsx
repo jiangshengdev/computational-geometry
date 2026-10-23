@@ -96,7 +96,8 @@ export const LayoutCheck = () => {
           sample.frame >= audioLeadFrames + sample.row.speechFrames
         ) {
           if (
-            page.querySelector('[data-thinking="true"]') === null ||
+            !note?.textContent ||
+            getComputedStyle(note).visibility !== "visible" ||
             !page.querySelector("[data-caption-ink]")?.textContent
           )
             errors.push("Thinking prompt or question caption missing");

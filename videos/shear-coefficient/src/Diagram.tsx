@@ -23,7 +23,7 @@ export const Diagram = ({
         x="415"
         y="42"
         textAnchor="middle"
-        fontSize="28"
+        fontSize="19"
         fill="#526579"
         data-scale-note
       >
@@ -48,7 +48,7 @@ export const Diagram = ({
         <g key={value}>
           <line
             x1={x(0)}
-            x2="755"
+            x2="635"
             y1={y(value)}
             y2={y(value)}
             stroke="#dce4ec"
@@ -60,18 +60,18 @@ export const Diagram = ({
         </g>
       ))}
       <path
-        d="M170 80 V560 H770"
+        d="M170 80 V560 H650"
         fill="none"
         stroke="#526579"
         strokeWidth="3"
       />
       <path
-        d="M163 92 L170 80 L177 92 M758 553 L770 560 L758 567"
+        d="M163 92 L170 80 L177 92 M638 553 L650 560 L638 567"
         fill="none"
         stroke="#526579"
         strokeWidth="3"
       />
-      <SvgMathText x={788} y={570}>
+      <SvgMathText x={668} y={570}>
         x
       </SvgMathText>
       <SvgMathText x={175} y={80}>
