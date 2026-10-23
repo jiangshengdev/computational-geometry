@@ -41,7 +41,7 @@ export const TeachingPage = ({
             fontWeight: 600,
           }}
         >
-          <MathText>{page.title}</MathText>
+          <MathText colorize={false}>{page.title}</MathText>
         </div>
         <div
           data-page-block
@@ -56,7 +56,7 @@ export const TeachingPage = ({
             paddingBottom: 18,
           }}
         >
-          <MathText>{page.mode}</MathText>
+          <MathText colorize={false}>{page.mode}</MathText>
         </div>
         <div
           style={{
@@ -95,7 +95,7 @@ export const TeachingPage = ({
               visibleStep >= (page.noteFromStep ?? 0) ? "visible" : "hidden",
           }}
         >
-          <MathText>{page.note}</MathText>
+          <MathText colorize={false}>{page.note}</MathText>
         </div>
         <Subtitles text={caption} shot={shot} />
       </div>

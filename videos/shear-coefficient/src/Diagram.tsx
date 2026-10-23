@@ -1,10 +1,11 @@
 import { SvgMathText } from "./MathText";
 import { objectColors } from "./teaching-emphasis";
 
-// Explicit unequal scales: 240 px per horizontal unit, 2 px per vertical unit.
+// Square grid cells: 1 horizontal unit and 100 vertical units share 200 px.
 // Fixed throughout the episode; these are mathematical schematic coordinates.
-const x = (value: number) => 170 + 240 * value;
-const y = (value: number) => 560 - 2 * value;
+const gridSpacing = 200;
+const x = (value: number) => 170 + gridSpacing * value;
+const y = (value: number) => 560 - gridSpacing * (value / 100);
 
 export const Diagram = ({
   moving = false,

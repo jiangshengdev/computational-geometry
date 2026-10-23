@@ -191,7 +191,7 @@ export const shots: Shot[] = [
     id: "210-15",
     page: "calculateA",
     step: 2,
-    caption: "代入 A 的数据。新横坐标等于零。加上一百分之一乘 200。",
+    caption: "代入 A 的数据。新横坐标等于零加上一百分之一乘 200。",
   },
   {
     id: "210-16",
