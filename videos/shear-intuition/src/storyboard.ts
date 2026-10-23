@@ -315,7 +315,7 @@ export const shots: Shot[] = [
   },
   {
     id: "204-10",
-    reveal: "S、乘：Y",
+    reveal: "S、乘、Y",
     page: "formula",
     step: 3,
     caption: "s 叫剪切系数。sy 表示 s 乘 y，这次取二分之一只为图解。",
@@ -396,7 +396,7 @@ export const shots: Shot[] = [
     page: "coordinates",
     step: 2,
     caption: "过 P 画平行于新纵轴的线，找到它与横轴的交点。",
-    motion: { start: "过、pea", end: "交点" },
+    motion: { start: "过、P", end: "交点" },
   },
   {
     id: "205-04",
@@ -456,7 +456,7 @@ export const shots: Shot[] = [
   },
   {
     id: "206-05",
-    reveal: "只剩下：X",
+    reveal: "只剩下、X",
     page: "inverse",
     step: 5,
     caption: "右边加上和减去的是同一个数，它们抵消，只剩下 x。",
