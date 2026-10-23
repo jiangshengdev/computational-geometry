@@ -15,43 +15,6 @@ export const voice = "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural";
 const escapeXml = (text: string) =>
   text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-// English letter names; use en-US consistently (including Z = /ziː/).
-const letterIpa: Record<string, string> = {
-  A: "eɪ",
-  B: "biː",
-  C: "siː",
-  D: "diː",
-  E: "iː",
-  F: "ɛf",
-  G: "dʒiː",
-  H: "eɪtʃ",
-  I: "aɪ",
-  J: "dʒeɪ",
-  K: "keɪ",
-  L: "ɛl",
-  M: "ɛm",
-  N: "ɛn",
-  O: "oʊ",
-  P: "piː",
-  Q: "kjuː",
-  R: "ɑɹ",
-  S: "ɛs",
-  T: "tiː",
-  U: "juː",
-  V: "viː",
-  W: "ˈdʌbəljuː",
-  X: "ɛks",
-  Y: "waɪ",
-  Z: "ziː",
-};
-
-const spokenTextXml = (text: string) =>
-  escapeXml(text).replace(/[A-Za-z]+/g, (token) =>
-    token.length === 1 && letterIpa[token]
-      ? `<lang xml:lang="en-US"><phoneme alphabet="ipa" ph="${letterIpa[token]}">${token}</phoneme></lang>`
-      : token,
-  );
-
 export function buildSpeechDocument(input: unknown, context = "speech") {
   const parts = typeof input === "string" ? [input] : input;
   if (!Array.isArray(parts) || parts.length === 0)
@@ -62,7 +25,7 @@ export function buildSpeechDocument(input: unknown, context = "speech") {
       const location = `${context}[${index}]`;
       if (typeof part === "string") {
         text += part;
-        return spokenTextXml(part);
+        return escapeXml(part);
       }
       if (typeof part !== "object" || part === null || Array.isArray(part))
         throw new Error(`${location}: expected text or { text, pinyin }`);

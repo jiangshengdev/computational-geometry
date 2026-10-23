@@ -43,12 +43,9 @@ for (const row of rows) {
   captionPhrases(row.narration, document.text);
 }
 if (process.argv.includes("--dry-run")) {
-  await new Promise<void>((resolve, reject) => {
-    process.stdout.write(
-      JSON.stringify({ voice, speech, documents }, null, 2) + "\n",
-      (error) => (error ? reject(error) : resolve()),
-    );
-  });
+  process.stdout.write(
+    JSON.stringify({ voice, speech, documents }, null, 2) + "\n",
+  );
   process.exit(0);
 }
 if (process.argv.includes("--captions-only")) {

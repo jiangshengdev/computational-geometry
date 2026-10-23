@@ -34,7 +34,7 @@
 | 标签描边与遮挡 | `SvgMathText`、`Diagram.tsx`、`LayoutCheck.tsx` | 保留描边；按高度 200 的场景重新安排标签位置 |
 | 对象配色、当前步骤强调 | `teaching-emphasis.ts`、`MathLines.tsx` | 蓝色对应 A、紫色对应 B、棕色对应系数；数值显式标注归属 |
 | 分组、等号对齐与行距 | `math-lines.ts`、`MathLines.tsx` | 保留显式分组、72/96 行槽及未来步骤空间；替换为本例计算 |
-| 易错读音、字母与独立口语稿 | `speech-text.json`、`azure-speech.ts` | 独立字母使用大写、顿号及英文 IPA，Y 使用 /waɪ/；保留中文局部拼音标注及无逗号校验；新标注尚待重新生成正式音频及完整句试听 |
+| 易错读音、字母与独立口语稿 | `speech-text.json`、`azure-speech.ts` | 使用 why 消歧 y；局部拼音标注撇号与颠倒；增加无逗号校验 |
 | 实测音画同步与页末停留 | `timeline.ts`、`narration.ts`、`azure-alignment.ts` | 按本集音频生成；运动中点另与“正上方”实测边界对齐 |
 | 内容与生产布局检查 | `check-content.ts`、`LayoutCheck.tsx`、`check-layout.ts` | 覆盖本集全部页及字幕、揭示、运动和静默边界；不保留第一集题目断言 |
 | 输出配置与导出门禁 | `remotion.config.ts`、`scripts/render.ts` | 继承 4K/60fps、H.265 required、PNG、AAC 192k、并发4；用户导出入口改为整集 |
