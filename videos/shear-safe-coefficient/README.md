@@ -6,7 +6,7 @@
 
 ## 配置与依赖
 
-复用已完成工程 `videos/shear-coefficient` 的 Remotion 与 TypeScript 配置，参考配置提交为 `43e47fa`。输出采用公共[默认制作配置](../AGENTS.md#默认制作配置)。
+复用已完成工程 `videos/shear-coefficient` 的 Remotion 与 TypeScript 配置，参考配置提交为 `43e47fa`。输出采用公共[默认制作配置](../../docs/agents/videos/configuration.md#默认制作配置)。
 
 - Remotion 4.0.538；Node.js ^22.18.0 或 >=24。
 - 依赖与参考工程一致，包括 KaTeX、Azure Speech SDK 及 Node/KaTeX 类型声明。
@@ -14,10 +14,10 @@
 
 ## 命令
 
-安装、预览、检查和打包见公共[基础命令](../AGENTS.md#基础命令)。
+安装、预览、检查和打包见公共[基础命令](../../docs/agents/videos/operations.md#基础命令)。
 
 配音、内容检查、布局检查与带验收门禁的导出入口需在后续教学内容制作时接入，当前未配置这些尚不存在的脚本。配置继承不代表整集制作或成片验收完成。
 
 ## 发布素材
 
-路径见公共[空白工程的发布素材](../AGENTS.md#空白工程的发布素材)。
+路径见公共[空白工程的发布素材](../../docs/agents/videos/operations.md#空白工程的发布素材)。

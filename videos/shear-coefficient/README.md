@@ -43,7 +43,7 @@
 
 ## 使用
 
-Node.js 要求 ^22.18.0 或 >=24。安装、Studio 预览、lint 和打包见公共[基础命令](../AGENTS.md#基础命令)，配音依赖和默认音色见[配音环境与续跑](../AGENTS.md#配音环境与续跑)，dry-run、内容与布局检查见[内容与布局检查](../AGENTS.md#内容与布局检查)。
+Node.js 要求 ^22.18.0 或 >=24。安装、Studio 预览、lint 和打包见公共[基础命令](../../docs/agents/videos/operations.md#基础命令)，配音依赖和默认音色见[配音环境与续跑](../../docs/agents/videos/operations.md#配音环境与续跑)，dry-run、内容与布局检查见[内容与布局检查](../../docs/agents/videos/operations.md#内容与布局检查)。
 
 在 Studio 选择 `ShearCoefficient` 预览整集，或选择 `Shear210`—`Shear213` 分段试听。只重生成某段时使用现有 `--shots=<镜头ID>` 参数，避免改动已确认素材。本工程的生成及时间线回归入口：
 
@@ -54,4 +54,4 @@ pnpm --config.verify-deps-before-run=false exec node --test src/timeline.test.ts
 
 生产组件会拒绝缺少实测音频的预览，不使用估计时长兜底。
 
-导出命令及前置检查见公共[用户导出](../AGENTS.md#用户导出)，输出为 `out/shear-coefficient.mp4`。
+导出命令及前置检查见公共[用户导出](../../docs/agents/videos/operations.md#用户导出)，输出为 `out/shear-coefficient.mp4`。

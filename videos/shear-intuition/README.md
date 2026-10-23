@@ -12,15 +12,15 @@
 
 ## 环境与命令
 
-本次检查使用 Node.js 24.17.0、pnpm 11.8.0，以及已安装的 FFmpeg、ffprobe、Chrome 和 Playwright CLI 0.1.22。工具入口直接执行 TypeScript，要求 Node.js 22.18+（22.x）或 24+，具体范围见 `package.json`；不支持 Node.js 20。锁文件为 `pnpm-lock.yaml`。安装、Studio 预览、lint 和打包见公共[基础命令](../AGENTS.md#基础命令)；`build` 产物已忽略。
+本次检查使用 Node.js 24.17.0、pnpm 11.8.0，以及已安装的 FFmpeg、ffprobe、Chrome 和 Playwright CLI 0.1.22。工具入口直接执行 TypeScript，要求 Node.js 22.18+（22.x）或 24+，具体范围见 `package.json`；不支持 Node.js 20。锁文件为 `pnpm-lock.yaml`。安装、Studio 预览、lint 和打包见公共[基础命令](../../docs/agents/videos/operations.md#基础命令)；`build` 产物已忽略。
 
-配音 dry-run、内容与布局检查见公共[内容与布局检查](../AGENTS.md#内容与布局检查)。本工程的必要回归入口为：
+配音 dry-run、内容与布局检查见公共[内容与布局检查](../../docs/agents/videos/operations.md#内容与布局检查)。本工程的必要回归入口为：
 
 ```sh
 pnpm --config.verify-deps-before-run=false exec node --test scripts/speech-timing.test.ts scripts/azure-alignment.test.ts
 ```
 
-配音环境和失败续跑见公共[配音环境与续跑](../AGENTS.md#配音环境与续跑)。本工程采用默认音色，按需生成某个片段：
+配音环境和失败续跑见公共[配音环境与续跑](../../docs/agents/videos/operations.md#配音环境与续跑)。本工程采用默认音色，按需生成某个片段：
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:narration --issue=204
@@ -43,7 +43,7 @@ pnpm --config.verify-deps-before-run=false run video:narration --issue=204
 
 ## 用户导出
 
-采用公共[默认制作配置](../AGENTS.md#默认制作配置)，命令及前置检查见[用户导出](../AGENTS.md#用户导出)。输出为 `out/shear-intuition.mp4`，`out` 已忽略。默认使用系统 Google Chrome，也可通过 `CHROME_EXECUTABLE` 指向已有浏览器。本次未验证硬件编码器实际导出结果，助手没有执行导出。
+采用公共[默认制作配置](../../docs/agents/videos/configuration.md#默认制作配置)，命令及前置检查见[用户导出](../../docs/agents/videos/operations.md#用户导出)。输出为 `out/shear-intuition.mp4`，`out` 已忽略。默认使用系统 Google Chrome，也可通过 `CHROME_EXECUTABLE` 指向已有浏览器。本次未验证硬件编码器实际导出结果，助手没有执行导出。
 
 ## 文件映射
 
