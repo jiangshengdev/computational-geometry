@@ -152,7 +152,7 @@ export const shots: Shot[] = [
     page: "formula",
     step: 3,
     caption: "s 是正的剪切系数。sy 表示 s 乘 y。",
-    reveal: "s 是正的",
+    reveal: "S 是正的",
   },
   {
     id: "210-09",

@@ -3,8 +3,8 @@ import type { WordBoundary } from "./azure-speech.ts";
 // Spoken formulas contain sentence breaks absent from the displayed notation.
 const spokenExpressions = [
   "横坐标为二、纵坐标为六的点。在这条直线上吗？",
-  "a 乘 x。加 b 乘 y。等于 c。",
-  "a 乘一。加 b 乘三。等于 c。",
+  "A 乘 X。加 B 乘 Y。等于 C。",
+  "A 乘一。加 B 乘三。等于 C。",
 ];
 
 function clauses(text: string, spoken = false) {
