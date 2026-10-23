@@ -1,60 +1,59 @@
 # 剪切系数为什么不能随便选
 
-第二集规格为 [CNB #209](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/209)，制作任务为 #210–#214。依赖声明与配置参考第一集，遵循 [视频工程规则](../AGENTS.md)。当前仍是空白脚手架，尚未实现教学内容、配音和检查工具。
+规格：[CNB #209](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/209)。当前只实现 [#210 代表样例](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/210)，遵循 [视频工程规则](../AGENTS.md)。#211–#214 尚未实施，必须先取得用户对本样例的明确确认。
 
-需要用户安装依赖后使用。Node.js 要求为 `^22.18.0 || >=24`；包管理器为 pnpm。Remotion 保留本工程的 `4.0.538`，新增 KaTeX、Azure Speech SDK 及相应类型依赖。
+## 当前交付
 
-逻辑画面为 1920×1080、60 fps，通过 2 倍比例输出 4K；编码配置与第一集一致。当前空白 composition 仍为 2 秒，不代表成片时长。配音、内容检查、布局检查及带检查门禁的导出脚本尚未移植，因此暂不提供这些命令。助手不得渲染或导出视频。
+`Shear210` 共 6 页、25 段原速 Azure 配音，60 fps、9582 帧，实测时间线总长 159.7 秒。包含独立开场、公式解释、点名下标、A/B 分式计算及 A 水平越过 B 的动画。普通页完整停留 3 秒，两张计算页 5 秒。字幕和独立口语稿分开维护；素材、字词边界、合成指纹及短句字幕均在本工程中。
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+实际试听、数学读法、自然度、用户导出成片、可见桌面验收和样例确认均待完成。工程检查不能替代这些验收。助手不得渲染或导出视频。
 
-Welcome to your Remotion project!
+已通过：lint／类型检查、完整口语稿 dry-run、25 个音频解码与实测时长核对、素材／字幕／指纹一致性、所有页末静默状态及 181 个生产页面时间状态的无头检查。逐页查看了 6 张生产画面浏览器截图。新增的运动中点同步测试经历失败后修复通过。规范与规格两路代码审查发现的文档、数字配色问题已修正并复核关闭。CNB 状态未修改。
 
-## Commands
+## 参考继承对照
 
-**Install Dependencies**
+参考第一集 `videos/shear-intuition`，实际本地版本 `5f854b255a32afa38a4a9c7123fe486f5e3d6dea`。已读取该版本对应实际组件、配置、生成脚本和 README；第一集未修改。第二集使用既有脚手架的 Remotion 4.0.538（参考为 4.0.537），不增加依赖。
 
-```console
-pnpm install
-```
+| 能力 | 参考与本工程对应实现 | 本集差异 |
+| --- | --- | --- |
+| 浅底版式、空间与字号 | `TeachingPage.tsx` | 保留 1920×1080 逻辑画面、左右图文列；只保留固定轴视图 |
+| 统一数学混排与间距 | `MathText.tsx`、`MathLines.tsx` | 原实现移植；点名改为 A/B |
+| 短句字幕、静默保留 | `Subtitles.tsx`、`speech-timing.ts`、`captions.ts` | 按本集独立字幕和口语稿生成；页内静默保留最后一句 |
+| 标签描边与遮挡 | `SvgMathText`、`Diagram.tsx`、`LayoutCheck.tsx` | 保留描边；按高度 200 的场景重新安排标签位置 |
+| 对象配色、当前步骤强调 | `teaching-emphasis.ts`、`MathLines.tsx` | 蓝色对应 A、紫色对应 B、棕色对应系数；数值显式标注归属 |
+| 分组、等号对齐与行距 | `math-lines.ts`、`MathLines.tsx` | 保留显式分组、72/96 行槽及未来步骤空间；替换为本例计算 |
+| 易错读音、字母与独立口语稿 | `speech-text.json`、`azure-speech.ts` | 使用 why 消歧 y；局部拼音标注撇号与颠倒；增加无逗号校验 |
+| 实测音画同步与页末停留 | `timeline.ts`、`narration.ts`、`azure-alignment.ts` | 按本集音频生成；运动中点另与“正上方”实测边界对齐 |
+| 内容与生产布局检查 | `check-content.ts`、`LayoutCheck.tsx`、`check-layout.ts` | 覆盖本集全部页及字幕、揭示、运动和静默边界；不保留第一集题目断言 |
+| 输出配置与导出门禁 | `remotion.config.ts`、`scripts/render.ts` | 继承 4K/60fps、H.265 required、PNG、AAC 192k、并发4；只导出样例 |
 
-**Start Preview**
+按已确认规格，本集二维图显式不等比例：横向每单位 240 逻辑像素、纵向每单位 2 像素，始终显示“不等比例示意”，开场解释画面长度不可跨轴比较。其余视频的等比例默认规则不变。图示为固定数学示意，不是算法执行轨迹。
 
-```console
+## 使用
+
+在本工程目录运行。只使用用户已安装的 Node.js（^22.18.0 或 >=24）、pnpm、依赖、Chrome、playwright-cli、ffmpeg 和 ffprobe。以下入口关闭运行前自动安装依赖。
+
+```sh
 pnpm --config.verify-deps-before-run=false run video:dev
 ```
 
-**Check source**
+在 Studio 选择 `Shear210` 预览。需要重新生成配音时，先检查完整口语稿，再使用已配置的 Azure 环境；音色固定为 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`，失败不回退。
 
-```console
+```sh
+pnpm --config.verify-deps-before-run=false run video:narration --dry-run
+pnpm --config.verify-deps-before-run=false run video:narration
 pnpm --config.verify-deps-before-run=false run video:lint
+pnpm --config.verify-deps-before-run=false run video:check-content --decode
+pnpm --config.verify-deps-before-run=false exec node --test src/timeline.test.ts
+pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-**Upgrade Remotion**
+布局入口启动独立临时端口和无头 Chrome，结束时关闭自己的进程；`--screenshots` 仅保存浏览器页面截图，不渲染视频。生产组件会拒绝缺少实测音频的预览，不使用估计时长兜底。
 
-```console
-pnpm --config.verify-deps-before-run=false run video:upgrade
+仅供用户自行导出（助手不得执行）：
+
+```sh
+pnpm --config.verify-deps-before-run=false run video:export
 ```
 
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+先执行音频与内容检查及同一生产布局检查，通过后才输出 `out/shear-coefficient-sample.mp4`。4K 输出使用 1920×1080 的 2 倍栅格化；硬件编码不可用时直接失败。导出入口不代表已完成成片验收。
