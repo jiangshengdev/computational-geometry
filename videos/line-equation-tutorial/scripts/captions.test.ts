@@ -75,10 +75,18 @@ test("spoken sentence breaks inside a formula do not split the displayed express
   const display = "方程就写成 aX+bY=c。";
   const phrases = captionPhrases(
     display,
-    "方程就写成、A、乘、X。加、B、乘、Y。等于、C。",
+    "方程就写成、A、乘：X。加、B、乘：Y。等于：C。",
   );
   assert.equal(phrases.length, 1);
   assert.equal(phrases[0].text, display);
+  assert.deepEqual(captionPhrases("点 B。继续。", "点：B。继续。"), [
+    { text: "点 B。", speechStart: 0, speechEnd: 4 },
+    { text: "继续。", speechStart: 4, speechEnd: 7 },
+  ]);
+  assert.deepEqual(captionPhrases("减 C。继续。", "减：see。继续。"), [
+    { text: "减 C。", speechStart: 0, speechEnd: 6 },
+    { text: "继续。", speechStart: 6, speechEnd: 9 },
+  ]);
   assert.throws(() => captionPhrases("一句。", "一句，另句。"), /mismatch/);
   assert.throws(
     () => createCaptions("一句。", "一句。", []),

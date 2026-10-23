@@ -3,18 +3,25 @@ import type { WordBoundary } from "./azure-speech.ts";
 // Spoken formulas contain sentence breaks absent from the displayed notation.
 const spokenExpressions = [
   "横坐标为二、纵坐标为六的点。在这条直线上吗？",
-  "A、乘、X。加、B、乘、Y。等于、C。",
-  "A、乘一。加、B、乘三。等于、C。",
+  "A、乘：X。加、B、乘：Y。等于：C。",
+  "A、乘一。加、B、乘三。等于：C。",
 ];
 
 function clauses(text: string, spoken = false) {
   let masked = text;
-  if (spoken)
+  if (spoken) {
     for (const expression of spokenExpressions)
       masked = masked.replace(
         expression,
-        expression.slice(0, -1).replace(/。/g, "\u0000") + expression.slice(-1),
+        expression.slice(0, -1).replace(/[。：]/g, "\u0000") +
+          expression.slice(-1),
       );
+    // Sentence-final letters and their homophones share the displayed clause.
+    masked = masked.replace(
+      /：(?=(?:[A-Z]|bee|see|gee|eye|jay|owe|pea|cue|are|tea|you|ex|why)。)/g,
+      "\u0000",
+    );
+  }
   let offset = 0;
   return (masked.match(/[^，。！？；：]+[，。！？；：]?/g) ?? []).map(
     (part) => {
