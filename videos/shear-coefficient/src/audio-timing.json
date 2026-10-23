@@ -558,7 +558,7 @@
     "fingerprint": "69b58c4a16cbffd7aee906f23b68803b83cca84408ade1cb8af42dce60f198a1"
   },
   "210-06": {
-    "duration": 7.464,
+    "duration": 8.568,
     "words": [
       {
         "text": "剪切",
@@ -570,352 +570,464 @@
       {
         "text": "公式",
         "startMs": 550,
-        "durationMs": 400,
+        "durationMs": 360,
         "textOffset": 2,
         "wordLength": 2
       },
       {
-        "text": "写成",
-        "startMs": 950,
-        "durationMs": 480,
+        "text": "写",
+        "startMs": 910,
+        "durationMs": 160,
         "textOffset": 4,
-        "wordLength": 2
+        "wordLength": 1
       },
       {
-        "text": "X",
-        "startMs": 1430,
-        "durationMs": 280,
+        "text": "成",
+        "startMs": 1070,
+        "durationMs": 480,
+        "textOffset": 5,
+        "wordLength": 1
+      },
+      {
+        "text": "、",
+        "startMs": 1550,
+        "durationMs": 0,
+        "textOffset": 6,
+        "wordLength": 1
+      },
+      {
+        "text": "x",
+        "startMs": 1590,
+        "durationMs": 520,
         "textOffset": 7,
         "wordLength": 1
       },
       {
+        "text": "、",
+        "startMs": 2110,
+        "durationMs": 0,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
         "text": "撇",
-        "startMs": 1710,
+        "startMs": 2150,
         "durationMs": 319,
         "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "等于",
-        "startMs": 2029,
-        "durationMs": 360,
+        "startMs": 2469,
+        "durationMs": 480,
         "textOffset": 10,
         "wordLength": 2
       },
       {
-        "text": "X",
-        "startMs": 2389,
-        "durationMs": 281,
+        "text": "、",
+        "startMs": 2949,
+        "durationMs": 0,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "x",
+        "startMs": 2949,
+        "durationMs": 561,
         "textOffset": 13,
         "wordLength": 1
       },
       {
+        "text": "、",
+        "startMs": 3510,
+        "durationMs": 0,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
         "text": "加",
-        "startMs": 2670,
-        "durationMs": 239,
+        "startMs": 3510,
+        "durationMs": 319,
         "textOffset": 15,
         "wordLength": 1
       },
       {
-        "text": "S",
-        "startMs": 2909,
-        "durationMs": 201,
+        "text": "、",
+        "startMs": 3829,
+        "durationMs": 0,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "s",
+        "startMs": 3829,
+        "durationMs": 281,
         "textOffset": 17,
         "wordLength": 1
       },
       {
+        "text": "、",
+        "startMs": 4110,
+        "durationMs": 0,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
         "text": "乘",
-        "startMs": 3110,
-        "durationMs": 239,
+        "startMs": 4110,
+        "durationMs": 440,
         "textOffset": 19,
         "wordLength": 1
       },
       {
+        "text": "、",
+        "startMs": 4550,
+        "durationMs": 0,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
         "text": "why",
-        "startMs": 3349,
-        "durationMs": 401,
+        "startMs": 4590,
+        "durationMs": 440,
         "textOffset": 21,
         "wordLength": 3
       },
       {
         "text": "。",
-        "startMs": 3750,
+        "startMs": 5030,
         "durationMs": 0,
         "textOffset": 24,
         "wordLength": 1
       },
       {
         "text": "撇号",
-        "startMs": 3829,
-        "durationMs": 561,
+        "startMs": 5110,
+        "durationMs": 480,
         "textOffset": 25,
         "wordLength": 2
       },
       {
         "text": "表示",
-        "startMs": 4390,
+        "startMs": 5590,
         "durationMs": 360,
         "textOffset": 27,
         "wordLength": 2
       },
       {
         "text": "新",
-        "startMs": 4750,
+        "startMs": 5950,
         "durationMs": 160,
         "textOffset": 29,
         "wordLength": 1
       },
       {
         "text": "坐标",
-        "startMs": 4910,
+        "startMs": 6110,
         "durationMs": 560,
         "textOffset": 30,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 5470,
+        "startMs": 6670,
         "durationMs": 0,
         "textOffset": 32,
         "wordLength": 1
       },
       {
         "text": "没有撇号的",
-        "startMs": 5492,
-        "durationMs": 960,
+        "startMs": 6687,
+        "durationMs": 880,
         "textOffset": 33,
         "wordLength": 5
       },
       {
         "text": "是",
-        "startMs": 6452,
-        "durationMs": 160,
+        "startMs": 7567,
+        "durationMs": 120,
         "textOffset": 38,
         "wordLength": 1
       },
       {
         "text": "原",
-        "startMs": 6612,
+        "startMs": 7687,
         "durationMs": 200,
         "textOffset": 39,
         "wordLength": 1
       },
       {
         "text": "坐标",
-        "startMs": 6812,
+        "startMs": 7887,
         "durationMs": 560,
         "textOffset": 40,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 7372,
+        "startMs": 8447,
         "durationMs": 0,
         "textOffset": 42,
         "wordLength": 1
       }
     ],
-    "speech": "剪切公式写成 X 撇等于 X 加 S 乘 why。撇号表示新坐标。没有撇号的是原坐标。",
+    "speech": "剪切公式写成、x、撇等于、x、加、s、乘、why。撇号表示新坐标。没有撇号的是原坐标。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "46c2c9cef878a95d201085cea36710ea5b1ce21d5c085cc9b41141249b5b54c6"
+    "fingerprint": "b9eef1dfd9ed3386d583c524f267011a888c114fee50e47b151dc8ae60abc911"
   },
   "210-07": {
-    "duration": 4.344,
+    "duration": 4.152,
     "words": [
       {
         "text": "why",
         "startMs": 70,
-        "durationMs": 280,
+        "durationMs": 400,
         "textOffset": 0,
         "wordLength": 3
       },
       {
+        "text": "、",
+        "startMs": 470,
+        "durationMs": 0,
+        "textOffset": 3,
+        "wordLength": 1
+      },
+      {
         "text": "撇",
-        "startMs": 350,
-        "durationMs": 280,
+        "startMs": 470,
+        "durationMs": 240,
         "textOffset": 4,
         "wordLength": 1
       },
       {
         "text": "等于",
-        "startMs": 630,
-        "durationMs": 280,
+        "startMs": 710,
+        "durationMs": 480,
         "textOffset": 5,
         "wordLength": 2
       },
       {
+        "text": "、",
+        "startMs": 1190,
+        "durationMs": 0,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
         "text": "why",
-        "startMs": 910,
-        "durationMs": 360,
+        "startMs": 1190,
+        "durationMs": 400,
         "textOffset": 8,
         "wordLength": 3
       },
       {
         "text": "。",
-        "startMs": 1270,
+        "startMs": 1590,
         "durationMs": 0,
         "textOffset": 11,
         "wordLength": 1
       },
       {
         "text": "新",
-        "startMs": 1430,
-        "durationMs": 400,
+        "startMs": 1590,
+        "durationMs": 160,
         "textOffset": 12,
         "wordLength": 1
       },
       {
         "text": "旧",
-        "startMs": 1830,
+        "startMs": 1750,
         "durationMs": 120,
         "textOffset": 13,
         "wordLength": 1
       },
       {
         "text": "纵",
-        "startMs": 1950,
-        "durationMs": 200,
+        "startMs": 1870,
+        "durationMs": 159,
         "textOffset": 14,
         "wordLength": 1
       },
       {
         "text": "坐标",
-        "startMs": 2150,
-        "durationMs": 319,
+        "startMs": 2029,
+        "durationMs": 280,
         "textOffset": 15,
         "wordLength": 2
       },
       {
         "text": "相等",
-        "startMs": 2469,
-        "durationMs": 480,
+        "startMs": 2309,
+        "durationMs": 441,
         "textOffset": 17,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 2949,
+        "startMs": 2750,
         "durationMs": 0,
         "textOffset": 19,
         "wordLength": 1
       },
       {
         "text": "所以",
-        "startMs": 3190,
-        "durationMs": 360,
+        "startMs": 2949,
+        "durationMs": 480,
         "textOffset": 20,
         "wordLength": 2
       },
       {
         "text": "高度",
-        "startMs": 3550,
-        "durationMs": 319,
+        "startMs": 3429,
+        "durationMs": 321,
         "textOffset": 22,
         "wordLength": 2
       },
       {
         "text": "不变",
-        "startMs": 3869,
-        "durationMs": 441,
+        "startMs": 3750,
+        "durationMs": 360,
         "textOffset": 24,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 4310,
+        "startMs": 4110,
         "durationMs": 0,
         "textOffset": 26,
         "wordLength": 1
       }
     ],
-    "speech": "why 撇等于 why。新旧纵坐标相等。所以高度不变。",
+    "speech": "why、撇等于、why。新旧纵坐标相等。所以高度不变。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "72526f0e6988ff886d91b2d8c21c5ff7c780ece36b9f3259e22edef6d3426ae0"
+    "fingerprint": "1e29ec8950a4151d45ac9e6a2e57e8d6bfbf99b914a64b4f16bc2cabb6af652e"
   },
   "210-08": {
-    "duration": 4.056,
+    "duration": 4.464,
     "words": [
       {
-        "text": "S",
+        "text": "s",
         "startMs": 70,
-        "durationMs": 320,
+        "durationMs": 560,
         "textOffset": 0,
         "wordLength": 1
       },
       {
+        "text": "、",
+        "startMs": 630,
+        "durationMs": 0,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
         "text": "是",
-        "startMs": 390,
-        "durationMs": 200,
+        "startMs": 630,
+        "durationMs": 240,
         "textOffset": 2,
         "wordLength": 1
       },
       {
         "text": "正的剪切系数",
-        "startMs": 590,
-        "durationMs": 1280,
+        "startMs": 870,
+        "durationMs": 1320,
         "textOffset": 3,
         "wordLength": 6
       },
       {
         "text": "。",
-        "startMs": 1870,
+        "startMs": 2190,
         "durationMs": 0,
         "textOffset": 9,
         "wordLength": 1
       },
       {
-        "text": "S",
+        "text": "s",
         "startMs": 2230,
-        "durationMs": 360,
+        "durationMs": 480,
         "textOffset": 10,
         "wordLength": 1
       },
       {
+        "text": "、",
+        "startMs": 2710,
+        "durationMs": 0,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
         "text": "why",
-        "startMs": 2590,
-        "durationMs": 239,
+        "startMs": 2710,
+        "durationMs": 279,
         "textOffset": 12,
         "wordLength": 3
       },
       {
+        "text": "、",
+        "startMs": 2989,
+        "durationMs": 0,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
         "text": "表示",
-        "startMs": 2829,
-        "durationMs": 361,
+        "startMs": 2989,
+        "durationMs": 440,
         "textOffset": 16,
         "wordLength": 2
       },
       {
-        "text": "S",
-        "startMs": 3190,
-        "durationMs": 239,
+        "text": "、",
+        "startMs": 3429,
+        "durationMs": 0,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "s",
+        "startMs": 3429,
+        "durationMs": 241,
         "textOffset": 19,
         "wordLength": 1
       },
       {
+        "text": "、",
+        "startMs": 3670,
+        "durationMs": 0,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
         "text": "乘",
-        "startMs": 3429,
-        "durationMs": 241,
+        "startMs": 3670,
+        "durationMs": 319,
         "textOffset": 21,
         "wordLength": 1
       },
       {
+        "text": "、",
+        "startMs": 3989,
+        "durationMs": 0,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
         "text": "why",
-        "startMs": 3670,
-        "durationMs": 319,
+        "startMs": 3989,
+        "durationMs": 401,
         "textOffset": 23,
         "wordLength": 3
       },
       {
         "text": "。",
-        "startMs": 3989,
+        "startMs": 4390,
         "durationMs": 0,
         "textOffset": 26,
         "wordLength": 1
       }
     ],
-    "speech": "S 是正的剪切系数。S why 表示 S 乘 why。",
+    "speech": "s、是正的剪切系数。s、why、表示、s、乘、why。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "d5b1a088c8c423d9ef45bd1d1d009c6959865ba7f125d35ce541a4c3d143d972"
+    "fingerprint": "88f9a9d5807b5171dce473b8f54c21b32f3d8887da090a6a787ef99183576e52"
   },
   "210-09": {
     "duration": 5.928,

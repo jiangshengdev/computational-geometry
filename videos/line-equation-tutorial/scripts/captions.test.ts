@@ -75,7 +75,7 @@ test("spoken sentence breaks inside a formula do not split the displayed express
   const display = "方程就写成 aX+bY=c。";
   const phrases = captionPhrases(
     display,
-    "方程就写成、a、乘、X。加、b、乘、Y。等于、c。",
+    "方程就写成、A、乘、X。加、B、乘、Y。等于、C。",
   );
   assert.equal(phrases.length, 1);
   assert.equal(phrases[0].text, display);
