@@ -45,6 +45,8 @@ pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts
 
 生成前可给上述命令添加 `--dry-run`，按上级规则核对音色、口语稿及 `documents` 中的 SSML。
 
+口播中的独立字母统一使用大写与顿号分隔，合成层逐处生成 `en-US` 的 IPA 标注，例如 `S` 为 `/ɛs/`、`Y` 为 `/waɪ/`；英文单词及中文拼音标注保持原样。当前 IPA 实现尚待重新生成正式音频及完整句试听，原有音频不代表已采用新标注。
+
 ### 逐处指定读音
 
 `src/speech-text.json` 中每个镜头的值可以是普通字符串，或由字符串与读音对象组成的非空数组。例如：
