@@ -10,14 +10,16 @@ export const TeachingPage = ({
   progress,
   caption,
   visibleStep,
+  thinking = false,
 }: {
   shot: Shot;
   progress: number;
   caption: string;
   visibleStep: number;
+  thinking?: boolean;
 }) => {
   const page = pages[shot.page];
-  const moving = shot.page === "crossing" && shot.step >= 2;
+  const moving = Boolean(page.diagram && shot.step >= page.diagram.fromStep);
   return (
     <TeachingColors value={pageRoles[shot.page]}>
       <div
@@ -67,7 +69,11 @@ export const TeachingPage = ({
             transformOrigin: "top left",
           }}
         >
-          <Diagram moving={moving} progress={moving ? progress : 0} />
+          <Diagram
+            moving={moving}
+            progress={moving ? progress : 0}
+            targetX={page.diagram?.targetX}
+          />
         </div>
         <div
           data-main-content
@@ -98,6 +104,20 @@ export const TeachingPage = ({
           <MathText colorize={false}>{page.note}</MathText>
         </div>
         <Subtitles text={caption} />
+        {thinking ? (
+          <div
+            data-thinking="true"
+            style={{
+              position: "absolute",
+              left: 100,
+              top: 900,
+              fontSize: 28,
+              color: "#526579",
+            }}
+          >
+            思考时间 · 保留问题，暂不揭晓
+          </div>
+        ) : null}
       </div>
     </TeachingColors>
   );

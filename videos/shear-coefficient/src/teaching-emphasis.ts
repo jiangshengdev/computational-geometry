@@ -14,6 +14,20 @@ export const pageRoles: Record<string, TeachingRole> = {
   calculateA: "original",
   calculateB: "coordinates",
   crossing: "original",
+  questionHalf: "movement",
+  halfCalculate: "movement",
+  halfResult: "original",
+  unknowns: "movement",
+  divide: "movement",
+  decimal: "movement",
+  question004: "movement",
+  answer004: "original",
+  question005: "movement",
+  answer005: "original",
+  question006: "movement",
+  answer006: "original",
+  gap: "movement",
+  ending: "movement",
 };
 const a = (text: string): MathMark => ({ text, role: "original" });
 const b = (text: string): MathMark => ({ text, role: "coordinates" });
@@ -40,6 +54,28 @@ export const lineMarks: Record<string, MathMark[][]> = {
     [a("0"), b("1")],
     [a("(2,200)"), b("(1,0)")],
     [a("2"), b("1")],
+  ],
+  halfCalculate: [
+    [coefficient("s=0.005=\\frac{1}{200}")],
+    [a("0"), coefficient("\\frac{1}{200}"), a("200")],
+    [a("0+1=1")],
+    [b("1"), coefficient("\\frac{1}{200}"), b("0"), b("1")],
+  ],
+  halfResult: [[a("(1,200)"), b("(1,0)")], [], [a("200"), b("0")]],
+  unknowns: [[], [a("0"), a("200"), a("200")], [b("1"), b("0"), b("1")]],
+  answer004: [
+    [a("0"), coefficient("0.004"), a("200"), a("0.8")],
+    [b("1"), coefficient("0.004"), b("0"), b("1")],
+    [a("0.8"), b("1")],
+  ],
+  answer005: [
+    [a("0"), coefficient("0.005"), a("200"), a("1")],
+    [b("1"), coefficient("0.005"), b("0"), b("1")],
+  ],
+  answer006: [
+    [a("0"), coefficient("0.006"), a("200"), a("1.2")],
+    [b("1"), coefficient("0.006"), b("0"), b("1")],
+    [a("1.2"), b("1")],
   ],
 };
 export const lineNumberRoles: Record<string, Record<number, TeachingRole[]>> = {

@@ -10,11 +10,13 @@ const y = (value: number) => 560 - gridSpacing * (value / 100);
 export const Diagram = ({
   moving = false,
   progress = 0,
+  targetX = 2,
 }: {
   moving?: boolean;
   progress?: number;
+  targetX?: number;
 }) => {
-  const a = moving ? 2 * progress : 0;
+  const a = moving ? targetX * progress : 0;
   return (
     <svg width="830" height="640" viewBox="0 0 830 640" data-coordinate-diagram>
       <text
@@ -101,7 +103,7 @@ export const Diagram = ({
         fill={objectColors.original}
       >
         {moving && progress === 1
-          ? "A′=(2,200)"
+          ? `A′=(${targetX},200)`
           : progress === 0
             ? "A=(0,200)"
             : "A"}

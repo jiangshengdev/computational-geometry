@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Sequence } from "remotion";
 import { ShotScene } from "./Composition";
-import { timelineFor, audioLeadFrames, fps } from "./timeline";
+import { timelineFor, audioLeadFrames, fps, visualAt } from "./timeline";
 import captionData from "./captions.json";
 import type { Caption } from "./speech-timing";
+import { pages } from "./storyboard";
 const captions = captionData as Record<string, Caption[]>;
 const cases = timelineFor().flatMap((row) => {
   const end = row.durationInFrames - 1;
@@ -50,8 +51,9 @@ export const LayoutCheck = () => {
         const sample = cases.find((c) => c.id === page.dataset.layoutPage)!;
         const note = page.querySelector<HTMLElement>("[data-teaching-note]")!;
         if (
-          sample.row.page.startsWith("calculate") &&
-          sample.row.step < 4 &&
+          pages[sample.row.page].noteFromStep !== undefined &&
+          visualAt(sample.row, sample.frame).visibleStep <
+            pages[sample.row.page].noteFromStep! &&
           getComputedStyle(note).visibility !== "hidden"
         )
           errors.push("Calculation conclusion revealed early");
@@ -69,6 +71,26 @@ export const LayoutCheck = () => {
           b.getAttribute("data-x") !== "1"
         )
           errors.push("Point height or stationary B changed");
+        if (
+          sample.row.page.startsWith("question") &&
+          a.getAttribute("data-x") !== "0"
+        )
+          errors.push("Answer position leaked during prediction");
+        const expectedFinalX: Record<string, number> = {
+          "210-25": 2,
+          "211-08": 1,
+          "213-05": 0.8,
+          "213-10": 1,
+          "213-15": 1.2,
+        };
+        if (
+          sample.frame === sample.row.durationInFrames - 1 &&
+          expectedFinalX[sample.row.id] !== undefined &&
+          Number(a.getAttribute("data-x")) !== expectedFinalX[sample.row.id]
+        )
+          errors.push(
+            "Rendered point does not match the calculated coordinate",
+          );
         if (
           sample.row.pauseAfter &&
           sample.frame >= audioLeadFrames + sample.row.speechFrames

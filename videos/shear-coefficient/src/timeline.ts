@@ -67,18 +67,21 @@ const progressAt = (ms: number, interval: { start: number; end: number }) =>
   );
 export function visualAt(row: TimelineRow, frame: number) {
   const ms = ((frame - audioLeadFrames) * 1000) / fps;
+  // The midpoint anchor means A is directly above B (x=1), not half
+  // the movement distance. In the 0.006 exercise the destination is 1.2.
+  const midpointProgress = 1 / (pages[row.page].diagram?.targetX ?? 2);
   return {
     caption: captionAt(captions[row.id], ms, row.previousCaption),
     progress:
       row.motionTiming?.midpoint !== undefined
         ? ms <= row.motionTiming.midpoint
-          ? 0.5 *
+          ? midpointProgress *
             progressAt(ms, {
               start: row.motionTiming.start,
               end: row.motionTiming.midpoint,
             })
-          : 0.5 +
-            0.5 *
+          : midpointProgress +
+            (1 - midpointProgress) *
               progressAt(ms, {
                 start: row.motionTiming.midpoint,
                 end: row.motionTiming.end,

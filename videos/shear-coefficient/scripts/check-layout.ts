@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { shots } from "../src/storyboard.ts";
 
 // Inspect DOM in an isolated headless Studio. No video/still export, installs,
 // shared development server or font/spacing snapshot assertions.
@@ -120,7 +121,9 @@ try {
   if (!report.ok) process.exitCode = 1;
   if (process.argv.includes("--screenshots")) {
     const directory = mkdtempSync(join(tmpdir(), "shear-layout-"));
-    const pages = ["210-05", "210-09", "210-13", "210-17", "210-21", "210-25"];
+    const pages = shots
+      .filter((shot, index) => shots[index + 1]?.page !== shot.page)
+      .map((shot) => shot.id);
     await cli(
       "run-code",
       `async (page) => {

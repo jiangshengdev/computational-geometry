@@ -1,4 +1,439 @@
 {
+  "211-01": [
+    { "text": "把", "pinyin": "ba3" },
+    "零点零",
+    { "text": "一", "pinyin": "yi1" },
+    "减半。",
+    { "text": "得到", "pinyin": "de2 dao4" },
+    "零点零零五。这样就能保持左右顺序",
+    { "text": "吗", "pinyin": "ma5" },
+    "？先想四秒。"
+  ],
+  "211-02": [
+    "现在核对。零点零零五就是二百分之",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "211-03": [
+    "A ",
+    { "text": "的新横", "pinyin": "de5 xin1 heng2" },
+    "坐标。等于零加",
+    { "text": "上", "pinyin": "shang4" },
+    "二百分之",
+    { "text": "一乘", "pinyin": "yi1 cheng2" },
+    "二百。"
+  ],
+  "211-04": [
+    "二百除以二百等于",
+    { "text": "一", "pinyin": "yi1" },
+    "。再加",
+    { "text": "上", "pinyin": "shang4" },
+    "零。结果就是",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "211-05": [
+    "B ",
+    { "text": "的高度", "pinyin": "de5 gao1 du4" },
+    "是零。新",
+    { "text": "横", "pinyin": "heng2" },
+    "坐标是",
+    { "text": "一", "pinyin": "yi1" },
+    "加",
+    { "text": "上", "pinyin": "shang4" },
+    "二百分之",
+    { "text": "一乘", "pinyin": "yi1 cheng2" },
+    "零。结果仍是",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "211-06": [
+    "让 A 水平向右移动。停在 B ",
+    { "text": "的正上方", "pinyin": "de5 zheng4 shang4 fang1" },
+    "。A ",
+    { "text": "的", "pinyin": "de5" },
+    "新坐标是",
+    { "text": "一和", "pinyin": "yi1 he2" },
+    "二百。B ",
+    { "text": "的", "pinyin": "de5" },
+    "新坐标是",
+    { "text": "一和", "pinyin": "yi1 he2" },
+    "零。"
+  ],
+  "211-07": [
+    "两",
+    { "text": "个横", "pinyin": "ge5 heng2" },
+    "坐标都是",
+    { "text": "一", "pinyin": "yi1" },
+    "。",
+    { "text": "纵", "pinyin": "zong4" },
+    "坐标却是二百",
+    { "text": "和", "pinyin": "he2" },
+    "零。",
+    { "text": "高度不同", "pinyin": "gao1 du4 bu4 tong2" },
+    "。"
+  ],
+  "211-08": [
+    "所以两点",
+    { "text": "没有重合", "pinyin": "mei2 you3 chong2 he2" },
+    "。A 也",
+    { "text": "不再", "pinyin": "bu2 zai4" },
+    "严格位于 B ",
+    { "text": "的左侧", "pinyin": "de5 zuo3 ce4" },
+    "。减半仍然",
+    { "text": "不够", "pinyin": "bu2 gou4" },
+    "。"
+  ],
+  "212-01": [
+    "那 s 到底要多小？现在",
+    { "text": "把", "pinyin": "ba3" },
+    " s ",
+    { "text": "当作", "pinyin": "dang4 zuo4" },
+    "待求",
+    { "text": "的正系数", "pinyin": "de5 zheng4 xi4 shu4" },
+    "。也就是 s ",
+    { "text": "大", "pinyin": "da4" },
+    "于零。"
+  ],
+  "212-02": [
+    "A ",
+    { "text": "的原横", "pinyin": "de5 yuan2 heng2" },
+    "坐标是零。新",
+    { "text": "横", "pinyin": "heng2" },
+    "坐标等于零加 s ",
+    { "text": "乘", "pinyin": "cheng2" },
+    "二百。也就是二百",
+    { "text": "乘", "pinyin": "cheng2" },
+    " s。写在",
+    { "text": "一起", "pinyin": "yi4 qi3" },
+    "表示二百",
+    { "text": "乘", "pinyin": "cheng2" },
+    " s。"
+  ],
+  "212-03": [
+    "B ",
+    { "text": "的新横", "pinyin": "de5 xin1 heng2" },
+    "坐标。等于",
+    { "text": "一", "pinyin": "yi1" },
+    "加 s ",
+    { "text": "乘", "pinyin": "cheng2" },
+    "零。所以始终等于",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "212-04": [
+    "要让 A 仍在 B ",
+    { "text": "左侧", "pinyin": "zuo3 ce4" },
+    "。A ",
+    { "text": "的新横", "pinyin": "de5 xin1 heng2" },
+    "坐标必须严格小于 B ",
+    { "text": "的新横", "pinyin": "de5 xin1 heng2" },
+    "坐标。"
+  ],
+  "212-05": [
+    "分别代入刚才",
+    { "text": "的两个", "pinyin": "de5 liang3 ge5" },
+    "结果",
+    "。就",
+    { "text": "得到", "pinyin": "de2 dao4" },
+    "二百",
+    { "text": "乘", "pinyin": "cheng2" },
+    " s 小于",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "212-06": [
+    "接下来解这",
+    { "text": "个不等式", "pinyin": "ge5 bu4 deng3 shi4" },
+    "。目标是让左边只剩下 s。"
+  ],
+  "212-07": [
+    "两边同时除以二百。因为二百是",
+    { "text": "正数", "pinyin": "zheng4 shu4" },
+    "。所以",
+    { "text": "不等号", "pinyin": "bu4 deng3 hao4" },
+    "方向",
+    { "text": "不变", "pinyin": "bu2 bian4" },
+    "。"
+  ],
+  "212-08": [
+    "左边可以先算二百除以二百。",
+    { "text": "约", "pinyin": "yue1" },
+    "去共同因",
+    { "text": "数", "pinyin": "shu4" },
+    "二百。就剩下",
+    { "text": "一乘", "pinyin": "yi1 cheng2" },
+    " s。结果就是 s。"
+  ],
+  "212-09": [
+    "右边是二百分之",
+    { "text": "一", "pinyin": "yi1" },
+    "。因此 s 必须严格小于二百分之",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "212-10": [
+    "二百分之",
+    { "text": "一", "pinyin": "yi1" },
+    "是多少？分子分母同",
+    { "text": "乘", "pinyin": "cheng2" },
+    "五。",
+    { "text": "得到一千", "pinyin": "de2 dao4 yi4 qian1" },
+    "分之五。写成小",
+    { "text": "数", "pinyin": "shu4" },
+    "就是零点零零五。"
+  ],
+  "212-11": [
+    "别忘记 s 原本就是",
+    { "text": "正数", "pinyin": "zheng4 shu4" },
+    "。所以 s ",
+    { "text": "大", "pinyin": "da4" },
+    "于零。同时小于零点零零五。"
+  ],
+  "212-12": [
+    { "text": "合在一起", "pinyin": "he2 zai4 yi4 qi3" },
+    "。",
+    { "text": "系数", "pinyin": "xi4 shu4" },
+    " s 要",
+    { "text": "大", "pinyin": "da4" },
+    "于零。并且小于零点零零五。"
+  ],
+  "212-13": [
+    { "text": "不能把", "pinyin": "bu4 neng2 ba3" },
+    "等号也放进去。因为取零点零零五时。两",
+    { "text": "个横", "pinyin": "ge5 heng2" },
+    "坐标相同。",
+    { "text": "不满足", "pinyin": "bu4 man3 zu2" },
+    { "text": "严格小于", "pinyin": "yan2 ge2 xiao3 yu2" },
+    "。"
+  ],
+  "213-01": [
+    { "text": "还是", "pinyin": "hai2 shi4" },
+    "原来",
+    { "text": "的两个", "pinyin": "de5 liang3 ge5" },
+    "点。第",
+    { "text": "一", "pinyin": "yi1" },
+    "项取 s 等于零点零零四。保持左右顺序。",
+    { "text": "横", "pinyin": "heng2" },
+    "坐标相同。",
+    { "text": "还是", "pinyin": "hai2 shi4" },
+    "顺序",
+    { "text": "颠倒", "pinyin": "dian1 dao3" },
+    "？先想四秒。"
+  ],
+  "213-02": [
+    "先算 A。零加零点零零四",
+    { "text": "乘", "pinyin": "cheng2" },
+    "二百。",
+    { "text": "得到", "pinyin": "de2 dao4" },
+    "零点八。"
+  ],
+  "213-03": [
+    "再算 B。",
+    { "text": "一", "pinyin": "yi1" },
+    "加零点零零四",
+    { "text": "乘", "pinyin": "cheng2" },
+    "零。仍然等于",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "213-04": [
+    "让 A 向右移动。停在",
+    { "text": "横", "pinyin": "heng2" },
+    "坐标零点八。零点八小于",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "213-05": [
+    "A 仍在 B ",
+    { "text": "左侧", "pinyin": "zuo3 ce4" },
+    "。所以严格保持",
+    { "text": "了", "pinyin": "le5" },
+    "原来",
+    { "text": "的", "pinyin": "de5" },
+    "左右顺序。"
+  ],
+  "213-06": [
+    "第二项取 s 等于零点零零五。这次能严格保持左右顺序",
+    { "text": "吗", "pinyin": "ma5" },
+    "？请独立判断。"
+  ],
+  "213-07": [
+    "A ",
+    { "text": "的新横", "pinyin": "de5 xin1 heng2" },
+    "坐标。是零加零点零零五",
+    { "text": "乘", "pinyin": "cheng2" },
+    "二百。等于",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "213-08": [
+    "B ",
+    { "text": "的新横", "pinyin": "de5 xin1 heng2" },
+    "坐标。是",
+    { "text": "一", "pinyin": "yi1" },
+    "加零点零零五",
+    { "text": "乘", "pinyin": "cheng2" },
+    "零。也等于",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "213-09": [
+    "A 向右移动。停在 B ",
+    { "text": "的正上方", "pinyin": "de5 zheng4 shang4 fang1" },
+    "。两",
+    { "text": "个横", "pinyin": "ge5 heng2" },
+    "坐标",
+    { "text": "相等", "pinyin": "xiang1 deng3" },
+    "。"
+  ],
+  "213-10": [
+    { "text": "高度", "pinyin": "gao1 du4" },
+    "仍是二百",
+    { "text": "和", "pinyin": "he2" },
+    "零。所以",
+    { "text": "没有重合", "pinyin": "mei2 you3 chong2 he2" },
+    "。",
+    { "text": "相等不满足", "pinyin": "xiang1 deng3 bu4 man3 zu2" },
+    "严格小于。"
+  ],
+  "213-11": [
+    "第三项取 s 等于零点零零六。A 会留在",
+    { "text": "左侧", "pinyin": "zuo3 ce4" },
+    "。追",
+    { "text": "上", "pinyin": "shang4" },
+    " B。",
+    { "text": "还是", "pinyin": "hai2 shi4" },
+    "越",
+    { "text": "过", "pinyin": "guo4" },
+    " B？先想四秒。"
+  ],
+  "213-12": [
+    "A ",
+    { "text": "的新横", "pinyin": "de5 xin1 heng2" },
+    "坐标。是零加零点零零六",
+    { "text": "乘", "pinyin": "cheng2" },
+    "二百。等于",
+    { "text": "一", "pinyin": "yi1" },
+    "点二。"
+  ],
+  "213-13": [
+    "B ",
+    { "text": "的新横", "pinyin": "de5 xin1 heng2" },
+    "坐标。是",
+    { "text": "一", "pinyin": "yi1" },
+    "加零点零零六",
+    { "text": "乘", "pinyin": "cheng2" },
+    "零。仍然等于",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "213-14": [
+    "A 向右移动。越",
+    { "text": "过", "pinyin": "guo4" },
+    " B ",
+    { "text": "的正上方", "pinyin": "de5 zheng4 shang4 fang1" },
+    "。停在",
+    { "text": "横", "pinyin": "heng2" },
+    "坐标",
+    { "text": "一", "pinyin": "yi1" },
+    "点二。",
+    { "text": "一", "pinyin": "yi1" },
+    "点二",
+    { "text": "大于一", "pinyin": "da4 yu2 yi1" },
+    "。"
+  ],
+  "213-15": [
+    "现在 A 在 B ",
+    { "text": "右侧", "pinyin": "you4 ce4" },
+    "。所以左右顺序",
+    { "text": "颠倒", "pinyin": "dian1 dao3" },
+    "。"
+  ],
+  "213-16": [
+    "回头",
+    { "text": "看", "pinyin": "kan4" },
+    "原来",
+    { "text": "的间隔", "pinyin": "de5 jian1 ge2" },
+    "。",
+    { "text": "横", "pinyin": "heng2" },
+    "向间距是",
+    { "text": "一", "pinyin": "yi1" },
+    "减零。等于",
+    { "text": "一", "pinyin": "yi1" },
+    "。"
+  ],
+  "213-17": [
+    { "text": "高度差", "pinyin": "gao1 du4 cha1" },
+    "是二百减零。等于二百。"
+  ],
+  "213-18": [
+    "A 向右移动 s ",
+    { "text": "乘", "pinyin": "cheng2" },
+    "二百。B 向右移动 s ",
+    { "text": "乘", "pinyin": "cheng2" },
+    "零。因此 A 比 B 多移动二百",
+    { "text": "乘", "pinyin": "cheng2" },
+    " s。"
+  ],
+  "213-19": [
+    { "text": "只有", "pinyin": "zhi3 you3" },
+    "额外移动小于原有间隔。也就是二百",
+    { "text": "乘", "pinyin": "cheng2" },
+    " s 小于",
+    { "text": "一", "pinyin": "yi1" },
+    "。A 才能留在 B ",
+    { "text": "左侧", "pinyin": "zuo3 ce4" },
+    "。"
+  ],
+  "213-20": [
+    "本例",
+    { "text": "的", "pinyin": "de5" },
+    "条件。",
+    { "text": "系数", "pinyin": "xi4 shu4" },
+    " s 必须",
+    { "text": "大", "pinyin": "da4" },
+    "于零。并且小于二百分之",
+    { "text": "一", "pinyin": "yi1" },
+    "。也就是零点零零五。"
+  ],
+  "213-21": [
+    "但我们只证明",
+    { "text": "了", "pinyin": "le5" },
+    "这",
+    { "text": "一对", "pinyin": "yi2 dui4" },
+    "点。"
+  ],
+  "213-22": [
+    "别",
+    { "text": "的", "pinyin": "de5" },
+    "点。间隔",
+    { "text": "和高度差", "pinyin": "he2 gao1 du4 cha1" },
+    "可能",
+    { "text": "不同", "pinyin": "bu4 tong2" },
+    "。",
+    { "text": "不能把", "pinyin": "bu4 neng2 ba3" },
+    "二百分之",
+    { "text": "一当作", "pinyin": "yi1 dang4 zuo4" },
+    "算法",
+    { "text": "的", "pinyin": "de5" },
+    "通用",
+    { "text": "系数", "pinyin": "xi4 shu4" },
+    "。"
+  ],
+  "213-23": [
+    "下",
+    { "text": "一步的问题", "pinyin": "yi2 bu4 de5 wen4 ti2" },
+    "是。怎样",
+    { "text": "为", "pinyin": "wei4" },
+    "所有事件统",
+    { "text": "一", "pinyin": "yi1" },
+    "选择",
+    { "text": "系数", "pinyin": "xi4 shu4" },
+    "？这",
+    { "text": "一集", "pinyin": "yi4 ji2" },
+    "先记住。额外移动必须小于原有间隔。"
+  ],
   "210-01": [
     "零点零",
     { "text": "一还不够", "pinyin": "yi1 hai2 bu2 gou4" },

@@ -1,4 +1,5 @@
 import { equals, left, type TeachingGroup } from "./math-lines.ts";
+import { continuationPages, continuationShots } from "./continuation.ts";
 
 export type Shot = {
   id: string;
@@ -17,6 +18,7 @@ export type Page = {
   note: string;
   noteFromStep?: number;
   holdAfterSeconds?: number;
+  diagram?: { targetX: number; fromStep: number };
 };
 
 export const pages: Record<string, Page> = {
@@ -85,6 +87,7 @@ export const pages: Record<string, Page> = {
     noteFromStep: 4,
   },
   crossing: {
+    diagram: { targetX: 2, fromStep: 2 },
     title: "A 向右越过 B，左右顺序颠倒",
     mode: "坐标轴固定 · 两点高度保持不变",
     lines: [
@@ -97,6 +100,7 @@ export const pages: Record<string, Page> = {
     note: "小数看起来很小，不代表能保持左右顺序",
     noteFromStep: 4,
   },
+  ...continuationPages,
 };
 
 export const shots: Shot[] = [
@@ -259,4 +263,5 @@ export const shots: Shot[] = [
     step: 4,
     caption: "所以 0.01 虽然看起来很小。仍然不能保持这两个点的左右顺序。",
   },
+  ...continuationShots,
 ];

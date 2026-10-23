@@ -566,5 +566,1038 @@
       "timestampMs": null,
       "confidence": null
     }
+  ],
+  "211-01": [
+    {
+      "text": "把 0.01 减半。",
+      "startMs": 70,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 0.005。",
+      "startMs": 1470,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这样就能保持左右顺序吗？",
+      "startMs": 3190,
+      "endMs": 5030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先想 4 秒。",
+      "startMs": 5066,
+      "endMs": 6106,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "211-02": [
+    {
+      "text": "现在核对。",
+      "startMs": 70,
+      "endMs": 1070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "0.005 就是二百分之一。",
+      "startMs": 1110,
+      "endMs": 3290,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "211-03": [
+    {
+      "text": "A 的新横坐标。",
+      "startMs": 70,
+      "endMs": 1350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于零加上二百分之一乘 200。",
+      "startMs": 1390,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "211-04": [
+    {
+      "text": "200 除以 200 等于 1。",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加上零。",
+      "startMs": 1910,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果就是 1。",
+      "startMs": 2869,
+      "endMs": 3930,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "211-05": [
+    {
+      "text": "B 的高度是零。",
+      "startMs": 70,
+      "endMs": 1310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新横坐标是 1 加上二百分之一乘零。",
+      "startMs": 1350,
+      "endMs": 4490,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果仍是 1。",
+      "startMs": 4520,
+      "endMs": 5640,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "211-06": [
+    {
+      "text": "让 A 水平向右移动。",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "停在 B 的正上方。",
+      "startMs": 1910,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 的新坐标是 (1,200)。",
+      "startMs": 3630,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 的新坐标是 (1,0)。",
+      "startMs": 5492,
+      "endMs": 7292,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "211-07": [
+    {
+      "text": "两个横坐标都是 1。",
+      "startMs": 70,
+      "endMs": 1430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标却是 200 和零。",
+      "startMs": 1630,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "高度不同。",
+      "startMs": 3550,
+      "endMs": 4390,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "211-08": [
+    {
+      "text": "所以两点没有重合。",
+      "startMs": 70,
+      "endMs": 1630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 也不再严格位于 B 的左侧。",
+      "startMs": 1670,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减半仍然不够。",
+      "startMs": 3786,
+      "endMs": 4946,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-01": [
+    {
+      "text": "那 s 到底要多小？",
+      "startMs": 70,
+      "endMs": 1550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在把 s 当作待求的正系数。",
+      "startMs": 1590,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 s 大于零。",
+      "startMs": 3869,
+      "endMs": 5110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-02": [
+    {
+      "text": "A 的原横坐标是零。",
+      "startMs": 110,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新横坐标等于零加 s 乘 200。",
+      "startMs": 2029,
+      "endMs": 4830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 200s。",
+      "startMs": 4810,
+      "endMs": 6090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "表示 200 乘 s。",
+      "startMs": 6130,
+      "endMs": 8169,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-03": [
+    {
+      "text": "B 的新横坐标。",
+      "startMs": 70,
+      "endMs": 1270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于 1 加 s 乘零。",
+      "startMs": 1270,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以始终等于 1。",
+      "startMs": 2989,
+      "endMs": 4320,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-04": [
+    {
+      "text": "要让 A 仍在 B 左侧。",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 的新横坐标必须严格小于 B 的新横坐标。",
+      "startMs": 2230,
+      "endMs": 5790,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-05": [
+    {
+      "text": "分别代入刚才的两个结果。",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就得到 200s 小于 1。",
+      "startMs": 2070,
+      "endMs": 4440,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-06": [
+    {
+      "text": "接下来解这个不等式。",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "目标是让左边只剩下 s。",
+      "startMs": 1910,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-07": [
+    {
+      "text": "两边同时除以 200。",
+      "startMs": 70,
+      "endMs": 1590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为 200 是正数。",
+      "startMs": 1950,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不等号方向不变。",
+      "startMs": 3510,
+      "endMs": 5350,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-08": [
+    {
+      "text": "左边可以先算 200 除以 200。",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "约去共同因数 200。",
+      "startMs": 2349,
+      "endMs": 4070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就剩下 1 乘 s。",
+      "startMs": 4042,
+      "endMs": 5082,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果就是 s。",
+      "startMs": 5082,
+      "endMs": 5922,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-09": [
+    {
+      "text": "右边是二百分之一。",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此 s 必须严格小于二百分之一。",
+      "startMs": 1750,
+      "endMs": 4580,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-10": [
+    {
+      "text": "二百分之一是多少？",
+      "startMs": 70,
+      "endMs": 1590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子分母同乘 5。",
+      "startMs": 1710,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到一千分之五。",
+      "startMs": 3620,
+      "endMs": 5020,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "写成小数就是 0.005。",
+      "startMs": 5050,
+      "endMs": 7290,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-11": [
+    {
+      "text": "别忘记 s 原本就是正数。",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以 s 大于零。",
+      "startMs": 2230,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同时小于 0.005。",
+      "startMs": 3710,
+      "endMs": 5640,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-12": [
+    {
+      "text": "合在一起。",
+      "startMs": 70,
+      "endMs": 1110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "系数 s 要大于零。",
+      "startMs": 1150,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并且小于 0.005。",
+      "startMs": 2989,
+      "endMs": 4870,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "212-13": [
+    {
+      "text": "不能把等号也放进去。",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为取 0.005 时。",
+      "startMs": 1910,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个横坐标相同。",
+      "startMs": 4230,
+      "endMs": 5710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不满足严格小于。",
+      "startMs": 5748,
+      "endMs": 7148,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-01": [
+    {
+      "text": "还是原来的两个点。",
+      "startMs": 70,
+      "endMs": 1430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一项取 s 等于 0.004。",
+      "startMs": 1590,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保持左右顺序。",
+      "startMs": 4298,
+      "endMs": 5578,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标相同。",
+      "startMs": 5618,
+      "endMs": 6858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还是顺序颠倒？",
+      "startMs": 6938,
+      "endMs": 8057,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先想 4 秒。",
+      "startMs": 8258,
+      "endMs": 9338,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-02": [
+    {
+      "text": "先算 A。",
+      "startMs": 70,
+      "endMs": 870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "零加 0.004 乘 200。",
+      "startMs": 870,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 0.8。",
+      "startMs": 3070,
+      "endMs": 4080,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-03": [
+    {
+      "text": "再算 B。",
+      "startMs": 70,
+      "endMs": 670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "1 加 0.004 乘零。",
+      "startMs": 670,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然等于 1。",
+      "startMs": 2550,
+      "endMs": 3570,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-04": [
+    {
+      "text": "让 A 向右移动。",
+      "startMs": 70,
+      "endMs": 1350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "停在横坐标 0.8。",
+      "startMs": 1750,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "0.8 小于 1。",
+      "startMs": 3550,
+      "endMs": 4990,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-05": [
+    {
+      "text": "A 仍在 B 左侧。",
+      "startMs": 70,
+      "endMs": 1390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以严格保持了原来的左右顺序。",
+      "startMs": 1430,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-06": [
+    {
+      "text": "第二项取 s 等于 0.005。",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这次能严格保持左右顺序吗？",
+      "startMs": 2949,
+      "endMs": 5230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "请独立判断。",
+      "startMs": 5236,
+      "endMs": 6316,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-07": [
+    {
+      "text": "A 的新横坐标。",
+      "startMs": 110,
+      "endMs": 1390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是零加 0.005 乘 200。",
+      "startMs": 1390,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于 1。",
+      "startMs": 3829,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-08": [
+    {
+      "text": "B 的新横坐标。",
+      "startMs": 70,
+      "endMs": 1350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是 1 加 0.005 乘零。",
+      "startMs": 1350,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也等于 1。",
+      "startMs": 3550,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-09": [
+    {
+      "text": "A 向右移动。",
+      "startMs": 70,
+      "endMs": 1230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "停在 B 的正上方。",
+      "startMs": 1590,
+      "endMs": 3110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个横坐标相等。",
+      "startMs": 3510,
+      "endMs": 4950,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-10": [
+    {
+      "text": "高度仍是 200 和零。",
+      "startMs": 70,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以没有重合。",
+      "startMs": 1510,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "相等不满足严格小于。",
+      "startMs": 2909,
+      "endMs": 4770,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-11": [
+    {
+      "text": "第三项取 s 等于 0.006。",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 会留在左侧。",
+      "startMs": 2789,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "追上 B。",
+      "startMs": 4150,
+      "endMs": 4830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还是越过 B？",
+      "startMs": 4895,
+      "endMs": 5855,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先想 4 秒。",
+      "startMs": 5895,
+      "endMs": 6854,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-12": [
+    {
+      "text": "A 的新横坐标。",
+      "startMs": 70,
+      "endMs": 1390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是零加 0.006 乘 200。",
+      "startMs": 1430,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于 1.2。",
+      "startMs": 3909,
+      "endMs": 4910,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-13": [
+    {
+      "text": "B 的新横坐标。",
+      "startMs": 70,
+      "endMs": 1350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是 1 加 0.006 乘零。",
+      "startMs": 1350,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然等于 1。",
+      "startMs": 3630,
+      "endMs": 4730,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-14": [
+    {
+      "text": "A 向右移动。",
+      "startMs": 70,
+      "endMs": 1230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "越过 B 的正上方。",
+      "startMs": 1270,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "停在横坐标 1.2。",
+      "startMs": 2710,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "1.2 大于 1。",
+      "startMs": 4298,
+      "endMs": 5710,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-15": [
+    {
+      "text": "现在 A 在 B 右侧。",
+      "startMs": 70,
+      "endMs": 1590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以左右顺序颠倒。",
+      "startMs": 1630,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-16": [
+    {
+      "text": "回头看原来的间隔。",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横向间距是 1 减零。",
+      "startMs": 1750,
+      "endMs": 3630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于 1。",
+      "startMs": 3710,
+      "endMs": 4440,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-17": [
+    {
+      "text": "高度差是 200 减零。",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于 200。",
+      "startMs": 1790,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-18": [
+    {
+      "text": "A 向右移动 s 乘 200。",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 向右移动 s 乘零。",
+      "startMs": 2070,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此 A 比 B 多移动 200s。",
+      "startMs": 3750,
+      "endMs": 6670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-19": [
+    {
+      "text": "只有额外移动小于原有间隔。",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 200s 小于 1。",
+      "startMs": 2349,
+      "endMs": 4530,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 才能留在 B 左侧。",
+      "startMs": 4540,
+      "endMs": 6240,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-20": [
+    {
+      "text": "本例的条件。",
+      "startMs": 70,
+      "endMs": 1230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "系数 s 必须大于零。",
+      "startMs": 1270,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并且小于二百分之一。",
+      "startMs": 3190,
+      "endMs": 5020,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 0.005。",
+      "startMs": 5050,
+      "endMs": 6690,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-21": [
+    {
+      "text": "但我们只证明了这一对点。",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-22": [
+    {
+      "text": "别的点。",
+      "startMs": 70,
+      "endMs": 790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "间隔和高度差可能不同。",
+      "startMs": 1070,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能把二百分之一当作算法的通用系数。",
+      "startMs": 3190,
+      "endMs": 6150,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "213-23": [
+    {
+      "text": "下一步的问题是。",
+      "startMs": 70,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "怎样为所有事件统一选择系数？",
+      "startMs": 1590,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这一集先记住。",
+      "startMs": 3957,
+      "endMs": 5317,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "额外移动必须小于原有间隔。",
+      "startMs": 5317,
+      "endMs": 7560,
+      "timestampMs": null,
+      "confidence": null
+    }
   ]
 }
