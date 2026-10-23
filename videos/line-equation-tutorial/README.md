@@ -2,7 +2,7 @@
 
 依据 [CNB #197](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/197) 和 #198–#202 制作的八段中文教程。采用 [视频工程规则](../AGENTS.md) 中的默认制作配置、口语稿与音频规则、布局检查及验收要求。本工程将原始 30 fps 时间数据换算为默认输出帧率，保留原始动画时序和配音速度，另行延长页末阅读停留。完整 composition 为 `LineEquationTutorial`；四组独立检查入口为 `Parts1And2`、`Parts3And4`、`Parts5And6`、`Parts7And8`。
 
-当前共 30 页（含开场 4 页）。每页最后一段配音结束后，普通页保留 3 秒，15 个推导密集页保留 5 秒；密集页在 `src/derivations.ts` 显式标记。停留期间保留完整公式与最后一句字幕，不拉长原动画，也不改变页内步骤间隔或原有 4 秒思考窗口。当前时间线为 44026 帧，60 fps 下约 **12 分 13.77 秒**；页末时间向上取整到整帧。
+当前共 30 页（含开场 4 页）。页末停留采用公共规则，15 个推导密集页在 `src/derivations.ts` 显式标记；思考窗口为 4 秒。当前时间线为 44026 帧，60 fps 下约 **12 分 13.77 秒**；页末时间向上取整到整帧。
 
 ## 使用
 
@@ -37,7 +37,7 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 - `src/Intro.tsx`、`src/intro-storyboard.ts`：本工程独立维护的开场画面与展示文案。字幕和时间线与其他章节共用同一份数据。
 - `scripts/azure-speech.ts`：本工程内的 Azure 请求函数。
 
-已包含配音素材。重新生成配音使用上级规则中的默认 Azure 音色，要求环境变量 `AZURE_SPEECH_KEY`、`AZURE_SPEECH_ENDPOINT` 和本机已有 FFmpeg、ffprobe。可选的 `AZURE_SPEECH_VOICE` 必须与本工程选定音色一致：
+已包含配音素材。重新生成配音的环境要求和续跑流程见 [公共规则](../AGENTS.md#配音生成与续跑)：
 
 ```sh
 pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts
@@ -45,25 +45,7 @@ pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts
 
 生成前可给上述命令添加 `--dry-run`，按上级规则核对音色、口语稿及 `documents` 中的 SSML。
 
-口播中的独立字母统一使用大写与顿号分隔，合成层逐处生成 `en-US` 的 IPA 标注，例如 `S` 为 `/ɛs/`、`Y` 为 `/waɪ/`；英文单词及中文拼音标注保持原样。当前 IPA 实现尚待重新生成正式音频及完整句试听，原有音频不代表已采用新标注。
-
-### 逐处指定读音
-
-`src/speech-text.json` 中每个镜头的值可以是普通字符串，或由字符串与读音对象组成的非空数组。例如：
-
-```json
-{
-  "example": [
-    "两个端点",
-    { "text": "重合", "pinyin": "chong2 he2" },
-    "。求两数之",
-    { "text": "差", "pinyin": "cha1" },
-    "。"
-  ]
-}
-```
-
-示例中的 `example` 仅示意格式，实际须使用已有镜头 ID；静默镜头使用空字符串。读音对象的字段、拼音格式、作用范围及 Azure 转换遵循上级“口语稿与读音”规则。口播输入含中文或英文逗号时，本工程会在请求前报告错误镜头 ID 与从零开始的片段索引；字幕仍可使用逗号。口播公式内部用于断句的句号不会强制拆开对应的完整公式字幕。
+口语稿格式及读音示例统一见 [公共规则](../AGENTS.md#口语稿与读音)。本工程输入错误会定位到镜头 ID 与从零开始的片段索引；口播公式内部的句号不会强制拆开对应的完整公式字幕。
 
 针对标注转换、作用范围和非法输入的测试：
 
@@ -71,9 +53,7 @@ pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts
 pnpm --config.verify-deps-before-run=false exec node --test scripts/azure-speech.test.ts
 ```
 
-本工程保存 Azure 返回的 MP3；全部 56 段通过检查后替换素材及时间数据，开场文件为 `189-1.mp3` 至 `189-4.mp3`。
-
-生成失败时保留暂存目录，日志会给出 `--resume=<临时目录>` 参数。续跑只复用 SSML（含音色和读音标注）及音频 SHA-256 均匹配的已完成片段，仍重新检查解码、时长和字幕对应；全部成功后才发布并清理暂存目录。
+本工程配音共 56 段，开场文件为 `189-1.mp3` 至 `189-4.mp3`。
 
 全部 56 段素材已按禁用逗号、包含逐处读音标注的口语稿重新生成，保留 Azure 原始音频及语速；`audio-timing.json`、`word-timing.json` 与 `captions.json` 已同步更新并通过对应检查，不再保留历史 `tempo` 字段。当前 Flash 音色已接受中文 `sapi` 标注，全部音频通过解码和时长检查；实际发音、自然度及音画同步仍待试听与成片验收。
 
