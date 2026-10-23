@@ -777,29 +777,29 @@
   "212-02": [
     {
       "text": "A 的原横坐标是零。",
-      "startMs": 110,
-      "endMs": 1670,
+      "startMs": 70,
+      "endMs": 1750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "新横坐标等于零加 s 乘 200。",
-      "startMs": 2029,
-      "endMs": 4870,
+      "startMs": 1750,
+      "endMs": 4630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是 200s。",
-      "startMs": 4895,
-      "endMs": 6295,
+      "startMs": 4639,
+      "endMs": 6319,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "表示 200 乘 s。",
-      "startMs": 6415,
-      "endMs": 8495,
+      "startMs": 6359,
+      "endMs": 8719,
       "timestampMs": null,
       "confidence": null
     }
@@ -902,28 +902,28 @@
     {
       "text": "左边可以先算 200 除以 200。",
       "startMs": 70,
-      "endMs": 2309,
+      "endMs": 2550,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "约去共同因数 200。",
-      "startMs": 2429,
-      "endMs": 4030,
+      "startMs": 2550,
+      "endMs": 4270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就剩下 1 乘 s。",
-      "startMs": 4042,
-      "endMs": 5122,
+      "startMs": 4298,
+      "endMs": 5658,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "结果就是 s。",
-      "startMs": 5122,
-      "endMs": 5802,
+      "startMs": 5658,
+      "endMs": 7057,
       "timestampMs": null,
       "confidence": null
     }
