@@ -1,54 +1,35 @@
-# Remotion video
+# 从事件间距到安全系数
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+剪切系数为什么有五次方？一步步推导那个带 256 的公式｜剪切变换⑤
 
-Welcome to your Remotion project!
+制作与验收遵循 [视频工程规则](../AGENTS.md)。当前工程是两秒空白 composition，尚未制作教学页面、字幕或配音。
 
-## Commands
+## 配置与依赖
 
-**Install Dependencies**
+复用已完成工程 `videos/shear-coefficient` 的 Remotion 与 TypeScript 配置，参考配置提交为 `43e47fa`。各工程保留独立配置与依赖，不运行时引用相邻工程。
 
-```console
-npm i --loglevel=error
+- Remotion 4.0.538；Node.js ^22.18.0 或 >=24；使用 pnpm。
+- 1920×1080 逻辑画面、60 fps，配置 2 倍输出比例，对应 3840×2160。
+- H.265 硬件编码 required、yuv420p、PNG 中间帧、AAC 192k、并发数 4；不设置 CRF 或目标视频码率。
+- 依赖与参考工程一致，包括 KaTeX、Azure Speech SDK 及 Node/KaTeX 类型声明。
+- 保留已批准的 `allowBuilds.esbuild: true`。
+
+## 命令
+
+在本工程目录运行：
+
+```sh
+pnpm install
+pnpm --config.verify-deps-before-run=false run video:dev
+pnpm --config.verify-deps-before-run=false run video:lint
+pnpm --config.verify-deps-before-run=false run video:build
 ```
 
-**Start Preview**
+`video:dev` 不自动打开浏览器；`video:build` 仅打包，不渲染视频。助手不得渲染或导出视频。
 
-```console
-npm run dev
-```
+配音、内容检查、布局检查与带验收门禁的导出入口需在后续教学内容制作时接入，当前未配置这些尚不存在的脚本。配置继承不代表整集制作或成片验收完成。
 
-**Render video**
+## 发布素材
 
-```console
-npx remotion render
-```
-
-**Upgrade Remotion**
-
-```console
-npx remotion upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+- 标题、简介与标签：`assets/bilibili-copy.md`。
+- 两种比例封面及提示词：`assets/covers/`。

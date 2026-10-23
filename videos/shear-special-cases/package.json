@@ -1,21 +1,26 @@
 {
   "name": "shear-special-cases",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "特殊情况与原坐标：中文教学视频",
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
-    "node": "^20.19.0 || ^22.13.0 || >=24"
+    "node": "^22.18.0 || >=24"
   },
   "private": true,
+  "type": "module",
   "dependencies": {
     "@remotion/cli": "4.0.538",
+    "katex": "^0.19.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.52.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.538"
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "4.0.538",
+    "@types/katex": "^0.16.8",
+    "@types/node": "^26.6.5",
     "@types/react": "19.2.7",
     "@types/web": "0.0.166",
     "eslint": "10.12.0",
@@ -23,10 +28,10 @@
     "typescript": "5.9.3"
   },
   "scripts": {
-    "dev": "remotion studio",
-    "build": "remotion bundle",
-    "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "video:dev": "remotion studio --no-open",
+    "video:build": "remotion bundle",
+    "video:upgrade": "remotion upgrade",
+    "video:lint": "eslint src && tsc"
   },
   "allowScripts": {
     "esbuild": false
