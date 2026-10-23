@@ -24,6 +24,12 @@ const cases = timelineFor().flatMap((row) => {
     if (!interval) continue;
     frames.add(Math.ceil((interval.start * fps) / 1000) + audioLeadFrames);
     frames.add(Math.ceil((interval.end * fps) / 1000) + audioLeadFrames);
+    for (
+      let frame = Math.ceil((interval.start * fps) / 1000) + audioLeadFrames;
+      frame <= Math.ceil((interval.end * fps) / 1000) + audioLeadFrames;
+      frame += 12
+    )
+      frames.add(frame);
   }
   return [...frames]
     .sort((a, b) => a - b)
@@ -56,8 +62,15 @@ export const LayoutCheck = () => {
         const unit = Number(diagram.dataset.unitX);
         if (unit !== Number(diagram.dataset.unitY))
           errors.push("Unequal coordinate units");
-        if (sample.row.page !== "camera" && unit !== 65)
+        if (sample.row.page !== "camera" && unit !== 250)
           errors.push("Camera changed during geometric scaling");
+        if (sample.row.page === "camera") {
+          const progress = sample.row.motion
+            ? visualAt(sample.row, sample.frame).progress
+            : 1;
+          if (unit !== 250 / (1 + 3 * progress))
+            errors.push("Camera did not expand the visible range fourfold");
+        }
         const factor = Number(diagram.dataset.factor);
         const points = [
           ...page.querySelectorAll<SVGCircleElement>("[data-point]"),
@@ -74,8 +87,52 @@ export const LayoutCheck = () => {
             errors.push("Point does not follow uniform scaling");
           const cx = point.cx.baseVal.value,
             cy = point.cy.baseVal.value;
-          if (cx < 55 || cx > 770 || cy < 70 || cy > 590)
-            errors.push("Point clipped");
+          if (
+            Math.abs(cx - (415 + unit * expected[i][0])) > 0.001 ||
+            Math.abs(cy - (380 - unit * expected[i][1])) > 0.001
+          )
+            errors.push("Point projection differs from coordinate units");
+          const outside = Math.abs(cx - 415) > 285 || Math.abs(cy - 380) > 285;
+          const arrow = page.querySelector(
+            `[data-offscreen="${point.dataset.point}"]`,
+          );
+          if (
+            outside !== (point.dataset.outside === "true") ||
+            outside !== Boolean(arrow)
+          )
+            errors.push("Offscreen point must have a direction indicator");
+          if (
+            outside &&
+            (!point.closest("[data-clipped-geometry]") ||
+              getComputedStyle(point).visibility !== "hidden")
+          )
+            errors.push("Offscreen point leaks out of the viewport");
+          if (!outside && getComputedStyle(point).visibility !== "visible")
+            errors.push("Visible endpoint is hidden");
+          if (
+            ((sample.row.page !== "scaling" && sample.row.page !== "camera") ||
+              (sample.row.page === "camera" && !sample.row.motion)) &&
+            outside
+          )
+            errors.push("Endpoint missing from initial or final view");
+        });
+        const originals = [
+          ...page.querySelectorAll<SVGCircleElement>("[data-original-point]"),
+        ];
+        if (originals.length !== (factor > 1 ? 2 : 0))
+          errors.push("Original comparison endpoints missing");
+        originals.forEach((point, i) => {
+          const coordinates = [
+            [1 / 2, -2 / 3],
+            [-1 / 3, 1 / 6],
+          ][i];
+          if (
+            Math.abs(point.cx.baseVal.value - (415 + unit * coordinates[0])) >
+              0.001 ||
+            Math.abs(point.cy.baseVal.value - (380 - unit * coordinates[1])) >
+              0.001
+          )
+            errors.push("Original point moved during geometric scaling");
         });
         if (sample.row.page === "camera" && factor !== 6)
           errors.push("Camera changed mathematical coordinates");
@@ -148,13 +205,16 @@ export const LayoutCheck = () => {
         )
           errors.push("Subtitle overflow");
         const labels = [
-          ...page.querySelectorAll<HTMLElement>("[data-diagram-label]"),
+          ...page.querySelectorAll<HTMLElement>(
+            "[data-diagram-label], [data-scale-note]",
+          ),
         ];
         const boxes = labels.map((label) => label.getBoundingClientRect());
         boxes.forEach((box, i) => {
           if (!contains(labels[i].closest("svg")!.getBoundingClientRect(), box))
             errors.push(`Diagram label overflow: ${labels[i].textContent}`);
           for (const point of points) {
+            if (point.dataset.outside === "true") continue;
             const dot = point.getBoundingClientRect();
             if (
               Math.min(box.right, dot.right) > Math.max(box.left, dot.left) &&
