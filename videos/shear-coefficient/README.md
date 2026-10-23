@@ -4,7 +4,7 @@
 
 ## 当前交付
 
-`ShearCoefficient` 为完整第二集，共 20 页、69 段原速 Azure 配音，60 fps、28413 帧，总长 473.55 秒（7 分 53.55 秒）。包含独立开场、反例、减半预测、严格保序推导、三值练习和收束。减半预测及三项练习各保留 4 秒独立思考窗口；页末停留和字幕样式采用公共规则。
+`ShearCoefficient` 为完整第二集，共 20 页、69 段原速 Azure 配音，60 fps、28413 帧，总长 473.55 秒（7 分 53.55 秒）。包含独立开场、反例、减半预测、严格保序推导、三值练习和收束。减半预测及三项练习各保留 4 秒独立思考窗口；普通页完整停留至少 3 秒，密集推导页至少 5 秒。字幕统一使用默认中性色，包括字母、数字、点名和公式。
 
 保留已确认样例的 25 段口语稿及音频，新增 44 段独立口语稿、正式音频和实测字词时间。口语稿明确朗读乘法，并保留“一”“不”、多音字和轻声的局部拼音标注。合成中发现的字词遗漏、插入或不可靠对齐由现有检查阻止发布；相应短句与标注修正后重新生成，通过原有检查后才更新正式素材。未修改检查门槛、音色或音频速率；自动对齐结果不代表实际整句读音或自然度已通过试听。
 
@@ -34,10 +34,10 @@
 | 标签描边与遮挡 | `SvgMathText`、`Diagram.tsx`、`LayoutCheck.tsx` | 保留描边；按高度 200 的场景重新安排标签位置 |
 | 对象配色、当前步骤强调 | `teaching-emphasis.ts`、`MathLines.tsx` | 蓝色对应 A、紫色对应 B、棕色对应系数；数值显式标注归属 |
 | 分组、等号对齐与行距 | `math-lines.ts`、`MathLines.tsx` | 保留显式分组、72/96 行槽及未来步骤空间；替换为本例计算 |
-| 易错读音、字母与独立口语稿 | `speech-text.json`、`azure-speech.ts` | 读音规则见公共文件；本集新标注尚待重新生成正式音频及完整句试听 |
+| 易错读音、字母与独立口语稿 | `speech-text.json`、`azure-speech.ts` | 独立字母使用大写、顿号及英文 IPA，Y 使用 /waɪ/；保留中文局部拼音标注及无逗号校验；新标注尚待重新生成正式音频及完整句试听 |
 | 实测音画同步与页末停留 | `timeline.ts`、`narration.ts`、`azure-alignment.ts` | 按本集音频生成；运动中点另与“正上方”实测边界对齐 |
 | 内容与生产布局检查 | `check-content.ts`、`LayoutCheck.tsx`、`check-layout.ts` | 覆盖本集全部页及字幕、揭示、运动和静默边界；不保留第一集题目断言 |
-| 输出配置与导出门禁 | `remotion.config.ts`、`scripts/render.ts` | 采用公共默认配置；用户导出入口改为整集 |
+| 输出配置与导出门禁 | `remotion.config.ts`、`scripts/render.ts` | 继承 4K/60fps、H.265 required、PNG、AAC 192k、并发4；用户导出入口改为整集 |
 
 本集二维图显式不等比例：横向每单位 200 逻辑像素、纵向每单位 2 像素；横向 1 单位与纵向 100 单位均为 200 逻辑像素，形成正方形网格。始终显示“不等比例示意”，开场解释画面长度不可跨轴比较。其余视频的等比例默认规则不变。图示为固定数学示意，不是算法执行轨迹。
 
@@ -49,7 +49,7 @@
 pnpm --config.verify-deps-before-run=false run video:dev
 ```
 
-在 Studio 选择 `ShearCoefficient` 预览整集，或选择 `Shear210`—`Shear213` 分段试听。配音环境、音色及生成要求见 [公共规则](../AGENTS.md#配音生成与续跑)。只重生成某段时使用现有 `--shots=<镜头ID>` 参数，避免改动已确认素材。
+在 Studio 选择 `ShearCoefficient` 预览整集，或选择 `Shear210`—`Shear213` 分段试听。需要重新生成配音时，先检查完整口语稿，再使用已配置的 Azure 环境；音色固定为 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`，失败不回退。只重生成某段时使用现有 `--shots=<镜头ID>` 参数，避免改动已确认素材。
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:narration --dry-run
@@ -60,7 +60,7 @@ pnpm --config.verify-deps-before-run=false exec node --test src/timeline.test.ts
 pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-布局入口按公共规则运行；`--screenshots` 仅保存浏览器页面截图，不渲染视频。生产组件会拒绝缺少实测音频的预览，不使用估计时长兜底。
+布局入口启动独立临时端口和无头 Chrome，结束时关闭自己的进程；`--screenshots` 仅保存浏览器页面截图，不渲染视频。生产组件会拒绝缺少实测音频的预览，不使用估计时长兜底。
 
 仅供用户自行导出（助手不得执行）：
 
@@ -68,4 +68,4 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 pnpm --config.verify-deps-before-run=false run video:export
 ```
 
-先执行音频与内容检查及同一生产布局检查，通过后才输出 `out/shear-coefficient.mp4`。输出配置见公共规则。导出入口不代表已完成成片验收。
+先执行音频与内容检查及同一生产布局检查，通过后才输出 `out/shear-coefficient.mp4`。4K 输出使用 1920×1080 的 2 倍栅格化；硬件编码不可用时直接失败。导出入口不代表已完成成片验收。
