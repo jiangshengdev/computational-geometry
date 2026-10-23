@@ -315,7 +315,7 @@ export const shots: Shot[] = [
   },
   {
     id: "204-10",
-    reveal: "s、乘、y",
+    reveal: "S、乘、Y",
     page: "formula",
     step: 3,
     caption: "s 叫剪切系数。sy 表示 s 乘 y，这次取二分之一只为图解。",
@@ -442,7 +442,7 @@ export const shots: Shot[] = [
   },
   {
     id: "206-03",
-    reveal: "换成、y、撇",
+    reveal: "换成、Y、撇",
     page: "inverse",
     step: 3,
     caption: "因为 y 等于 y′，把右边的 y 换成 y′。",
@@ -456,7 +456,7 @@ export const shots: Shot[] = [
   },
   {
     id: "206-05",
-    reveal: "只剩下、x",
+    reveal: "只剩下、X",
     page: "inverse",
     step: 5,
     caption: "右边加上和减去的是同一个数，它们抵消，只剩下 x。",
@@ -574,7 +574,7 @@ export const shots: Shot[] = [
   },
   {
     id: "206-16",
-    reveal: "所以、x、等于",
+    reveal: "所以、X、等于",
     page: "oblique",
     step: 1,
     caption: "更一般地，新纵轴上的点满足新横坐标为零，所以 x 等于负 s 乘 y′。",

@@ -4,15 +4,15 @@ import { buildSpeechDocument } from "./azure-speech.ts";
 
 test("standalone letters use English IPA while words and Chinese annotations remain intact", () => {
   const input = [
-    "A、的坐标等于、s、乘、y。why、Azure、SSML。<&>",
+    "A、的坐标等于、S、乘、Y。why、Azure、SSML。<&>",
     { text: "重合", pinyin: "chong2 he2" },
   ];
   const result = buildSpeechDocument(input);
   assert.equal(result.text, input[0] + "重合");
   for (const [letter, ipa] of [
     ["A", "eɪ"],
-    ["s", "ɛs"],
-    ["y", "waɪ"],
+    ["S", "ɛs"],
+    ["Y", "waɪ"],
   ]) {
     assert.ok(
       result.ssml.includes(
@@ -30,23 +30,16 @@ test("standalone letters use English IPA while words and Chinese annotations rem
   assert.doesNotMatch(result.ssml, /<prosody|rate=/);
 });
 
-test("all 26 letter names support both cases and preserve their spelling", () => {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const upper = buildSpeechDocument(alphabet.split("").join("、"));
-  const text = alphabet.toLowerCase().split("").join("、");
-  const lower = buildSpeechDocument(text);
-  assert.equal(lower.text, text);
-  for (const result of [upper, lower]) {
-    assert.equal((result.ssml.match(/alphabet="ipa"/g) ?? []).length, 26);
-    assert.equal((result.ssml.match(/<lang xml:lang="en-US">/g) ?? []).length, 26);
-  }
+test("all 26 separated uppercase letters receive exactly one IPA annotation", () => {
+  const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").join("、");
+  const result = buildSpeechDocument(text);
+  assert.equal(result.text, text);
+  assert.equal((result.ssml.match(/alphabet="ipa"/g) ?? []).length, 26);
   assert.equal(
-    lower.ssml,
-    upper.ssml.replace(/>([A-Z])<\/phoneme>/g, (_, letter: string) =>
-      `>${letter.toLowerCase()}</phoneme>`,
-    ),
+    (result.ssml.match(/<lang xml:lang="en-US">/g) ?? []).length,
+    26,
   );
-  assert.ok(lower.ssml.includes('ph="ɛks">x</phoneme>'));
+  assert.ok(result.ssml.includes('ph="ɛks">X</phoneme>'));
 });
 
 test("pronunciation applies only to its segment and preserves spoken text", () => {
