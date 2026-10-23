@@ -68,12 +68,17 @@ const clauses = (text: string) =>
     offset: m.index,
   }));
 
-export function createCaptions(display: string, audio: AudioTiming): Caption[] {
-  validateWords(audio);
+export function validateCaptionClauses(display: string, speech: string) {
   const visible = clauses(display),
-    audible = clauses(audio.speech);
+    audible = clauses(speech);
   if (visible.length !== audible.length)
     throw Error(`Caption / speech clause mismatch: ${display}`);
+  return { visible, audible };
+}
+
+export function createCaptions(display: string, audio: AudioTiming): Caption[] {
+  validateWords(audio);
+  const { visible, audible } = validateCaptionClauses(display, audio.speech);
   const result: Caption[] = [];
   for (let i = 0; i < visible.length; i++) {
     let text = visible[i].text;

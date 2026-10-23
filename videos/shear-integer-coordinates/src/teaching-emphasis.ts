@@ -14,6 +14,17 @@ export const pageRoles: Record<string, TeachingRole> = {
   answerQ: "coordinates",
   scaling: "movement",
   camera: "movement",
+  absolute: "movement",
+  questionM: "movement",
+  answerM: "movement",
+  range: "movement",
+  indices: "movement",
+  coefficients: "movement",
+  calculateA: "original",
+  calculateB: "coordinates",
+  distance: "movement",
+  bounds: "movement",
+  conclusion: "movement",
 };
 export const lineMarks: Record<string, MathMark[][]> = {
   opening: [

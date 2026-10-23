@@ -58,91 +58,125 @@ export const LayoutCheck = () => {
           errors.push("Calculation conclusion revealed early");
         const diagram = page.querySelector<SVGElement>(
           "[data-coordinate-diagram]",
-        )!;
-        const unit = Number(diagram.dataset.unitX);
-        if (unit !== Number(diagram.dataset.unitY))
-          errors.push("Unequal coordinate units");
-        if (sample.row.page !== "camera" && unit !== 250)
-          errors.push("Camera changed during geometric scaling");
-        if (sample.row.page === "camera") {
-          const progress = sample.row.motion
-            ? visualAt(sample.row, sample.frame).progress
-            : 1;
-          if (unit !== 250 / (1 + 3 * progress))
-            errors.push("Camera did not expand the visible range fourfold");
-        }
-        const factor = Number(diagram.dataset.factor);
+        );
         const points = [
           ...page.querySelectorAll<SVGCircleElement>("[data-point]"),
         ];
-        const expected = [
-          [factor / 2, (-2 * factor) / 3],
-          [-factor / 3, factor / 6],
-        ];
-        points.forEach((point, i) => {
+        const kind = pages[sample.row.page].diagram;
+        if (!diagram && !page.querySelector("[data-number-line]"))
+          errors.push("Teaching diagram missing");
+        if (diagram) {
+          const unit = Number(diagram.dataset.unitX);
+          if (unit !== Number(diagram.dataset.unitY))
+            errors.push("Unequal coordinate units");
+          const integerView = kind === "integer" || kind === "range";
+          if (sample.row.page !== "camera" && !integerView && unit !== 250)
+            errors.push("Camera changed during geometric scaling");
           if (
-            Number(point.dataset.x) !== expected[i][0] ||
-            Number(point.dataset.y) !== expected[i][1]
+            integerView &&
+            (unit !== 62.5 || Number(diagram.dataset.factor) !== 6)
           )
-            errors.push("Point does not follow uniform scaling");
-          const cx = point.cx.baseVal.value,
-            cy = point.cy.baseVal.value;
+            errors.push(
+              "Integer endpoint view changed coordinates or projection",
+            );
+          if (sample.row.page === "camera") {
+            const progress = sample.row.motion
+              ? visualAt(sample.row, sample.frame).progress
+              : 1;
+            if (unit !== 250 / (1 + 3 * progress))
+              errors.push("Camera did not expand the visible range fourfold");
+          }
+          const factor = Number(diagram.dataset.factor);
+          const expected = [
+            [factor / 2, (-2 * factor) / 3],
+            [-factor / 3, factor / 6],
+          ];
+          points.forEach((point, i) => {
+            if (
+              Number(point.dataset.x) !== expected[i][0] ||
+              Number(point.dataset.y) !== expected[i][1]
+            )
+              errors.push("Point does not follow uniform scaling");
+            const cx = point.cx.baseVal.value,
+              cy = point.cy.baseVal.value;
+            if (
+              Math.abs(cx - (415 + unit * expected[i][0])) > 0.001 ||
+              Math.abs(cy - (380 - unit * expected[i][1])) > 0.001
+            )
+              errors.push("Point projection differs from coordinate units");
+            const outside =
+              Math.abs(cx - 415) > 285 || Math.abs(cy - 380) > 285;
+            const arrow = page.querySelector(
+              `[data-offscreen="${point.dataset.point}"]`,
+            );
+            if (
+              outside !== (point.dataset.outside === "true") ||
+              outside !== Boolean(arrow)
+            )
+              errors.push("Offscreen point must have a direction indicator");
+            if (
+              outside &&
+              (!point.closest("[data-clipped-geometry]") ||
+                getComputedStyle(point).visibility !== "hidden")
+            )
+              errors.push("Offscreen point leaks out of the viewport");
+            if (!outside && getComputedStyle(point).visibility !== "visible")
+              errors.push("Visible endpoint is hidden");
+            if (
+              ((sample.row.page !== "scaling" &&
+                sample.row.page !== "camera") ||
+                (sample.row.page === "camera" && !sample.row.motion)) &&
+              outside
+            )
+              errors.push("Endpoint missing from initial or final view");
+          });
+          const originals = [
+            ...page.querySelectorAll<SVGCircleElement>("[data-original-point]"),
+          ];
+          if (originals.length !== (factor > 1 ? 2 : 0))
+            errors.push("Original comparison endpoints missing");
+          originals.forEach((point, i) => {
+            const coordinates = [
+              [1 / 2, -2 / 3],
+              [-1 / 3, 1 / 6],
+            ][i];
+            if (
+              Math.abs(point.cx.baseVal.value - (415 + unit * coordinates[0])) >
+                0.001 ||
+              Math.abs(point.cy.baseVal.value - (380 - unit * coordinates[1])) >
+                0.001
+            )
+              errors.push("Original point moved during geometric scaling");
+          });
+          if (sample.row.page === "camera" && factor !== 6)
+            errors.push("Camera changed mathematical coordinates");
+          if (sample.row.id === "216-25" && factor !== 6)
+            errors.push("Scaling did not reach the sixfold endpoint");
           if (
-            Math.abs(cx - (415 + unit * expected[i][0])) > 0.001 ||
-            Math.abs(cy - (380 - unit * expected[i][1])) > 0.001
+            sample.row.page === "questionQ" &&
+            (factor !== 1 || page.textContent?.includes("Q′=(-2,1)"))
           )
-            errors.push("Point projection differs from coordinate units");
-          const outside = Math.abs(cx - 415) > 285 || Math.abs(cy - 380) > 285;
-          const arrow = page.querySelector(
-            `[data-offscreen="${point.dataset.point}"]`,
-          );
+            errors.push("Answer leaked during exercise");
           if (
-            outside !== (point.dataset.outside === "true") ||
-            outside !== Boolean(arrow)
+            sample.row.page === "questionM" &&
+            page.textContent?.includes("M=4")
           )
-            errors.push("Offscreen point must have a direction indicator");
+            errors.push("Range answer leaked during exercise");
           if (
-            outside &&
-            (!point.closest("[data-clipped-geometry]") ||
-              getComputedStyle(point).visibility !== "hidden")
-          )
-            errors.push("Offscreen point leaks out of the viewport");
-          if (!outside && getComputedStyle(point).visibility !== "visible")
-            errors.push("Visible endpoint is hidden");
-          if (
-            ((sample.row.page !== "scaling" && sample.row.page !== "camera") ||
-              (sample.row.page === "camera" && !sample.row.motion)) &&
-            outside
-          )
-            errors.push("Endpoint missing from initial or final view");
-        });
-        const originals = [
-          ...page.querySelectorAll<SVGCircleElement>("[data-original-point]"),
-        ];
-        if (originals.length !== (factor > 1 ? 2 : 0))
-          errors.push("Original comparison endpoints missing");
-        originals.forEach((point, i) => {
-          const coordinates = [
-            [1 / 2, -2 / 3],
-            [-1 / 3, 1 / 6],
-          ][i];
-          if (
-            Math.abs(point.cx.baseVal.value - (415 + unit * coordinates[0])) >
-              0.001 ||
-            Math.abs(point.cy.baseVal.value - (380 - unit * coordinates[1])) >
-              0.001
-          )
-            errors.push("Original point moved during geometric scaling");
-        });
-        if (sample.row.page === "camera" && factor !== 6)
-          errors.push("Camera changed mathematical coordinates");
-        if (sample.row.id === "216-25" && factor !== 6)
-          errors.push("Scaling did not reach the sixfold endpoint");
-        if (
-          sample.row.page === "questionQ" &&
-          (factor !== 1 || page.textContent?.includes("Q′=(-2,1)"))
-        )
-          errors.push("Answer leaked during exercise");
+            kind === "range" &&
+            visualAt(sample.row, sample.frame).visibleStep >= 3
+          ) {
+            const box = page.querySelector<SVGRectElement>("[data-range-box]");
+            if (
+              !box ||
+              box.width.baseVal.value !== 8 * unit ||
+              box.height.baseVal.value !== 8 * unit
+            )
+              errors.push(
+                "Coordinate range box does not span minus four to four",
+              );
+          }
+        }
         if (
           sample.row.pauseAfter &&
           sample.frame >= audioLeadFrames + sample.row.speechFrames

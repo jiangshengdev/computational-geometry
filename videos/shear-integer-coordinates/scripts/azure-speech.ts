@@ -15,6 +15,20 @@ export const voice = "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural";
 const escapeXml = (text: string) =>
   text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+// Explicit letter segments disambiguate new narration without changing the
+// SSML fingerprints of previously approved plain-text narration.
+const letterIpa: Record<string, string> = {
+  A: "eɪ",
+  B: "biː",
+  C: "siː",
+  M: "ɛm",
+  P: "piː",
+  Q: "kjuː",
+  X: "ɛks",
+  Y: "waɪ",
+  Z: "ziː",
+};
+
 export function buildSpeechDocument(input: unknown, context = "speech") {
   const parts = typeof input === "string" ? [input] : input;
   if (!Array.isArray(parts) || parts.length === 0)
@@ -30,6 +44,17 @@ export function buildSpeechDocument(input: unknown, context = "speech") {
       if (typeof part !== "object" || part === null || Array.isArray(part))
         throw new Error(`${location}: expected text or { text, pinyin }`);
       const segment = part as Record<string, unknown>;
+      if (
+        Object.keys(segment).length === 1 &&
+        typeof segment.letter === "string"
+      ) {
+        const ipa = /^[A-Z]$/.test(segment.letter)
+          ? letterIpa[segment.letter]
+          : undefined;
+        if (!ipa) throw new Error(`${location}: unsupported spoken letter`);
+        text += segment.letter;
+        return `<lang xml:lang="en-US"><phoneme alphabet="ipa" ph="${ipa}">${segment.letter}</phoneme></lang>`;
+      }
       if (
         Object.keys(segment).length !== 2 ||
         typeof segment.text !== "string" ||

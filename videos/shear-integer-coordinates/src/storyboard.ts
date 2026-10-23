@@ -1,4 +1,8 @@
 import { equals, left, type TeachingGroup } from "./math-lines.ts";
+import {
+  coefficientPages,
+  coefficientShots,
+} from "./coefficient-storyboard.ts";
 
 export type Shot = {
   id: string;
@@ -17,10 +21,11 @@ export type Page = {
   note: string;
   noteFromStep?: number;
   holdAfterSeconds?: number;
-  diagram?: "scale" | "camera";
+  diagram?: "scale" | "camera" | "integer" | "absolute" | "range" | "distance";
 };
 
 export const pages: Record<string, Page> = {
+  ...coefficientPages,
   opening: {
     title: "分数坐标，能不能先变成整数？",
     mode: "剪切变换③ · 从一条线段出发",
@@ -127,6 +132,65 @@ export const pages: Record<string, Page> = {
     groups: [left(2), left(2)],
     note: "本次只保证输入端点为整数，不保证交点为整数",
     noteFromStep: 4,
+  },
+  absolute: {
+    title: "绝对值：到零的距离",
+    mode: "负号表示方向，距离不取负数",
+    diagram: "absolute",
+    lines: [
+      { text: "竖线 | | 表示绝对值" },
+      { math: "|-4|=4" },
+      { math: "|3|=3" },
+      { math: "|0|=0" },
+      { text: "比较坐标范围，要看离零有多远" },
+    ],
+    groups: [left(1), equals(3), left(1)],
+    note: "−4 小于 3，但 −4 到零的距离更大",
+    noteFromStep: 5,
+  },
+  questionM: {
+    title: "暂停试一试：坐标范围多大？",
+    mode: "第二次练习 · 取 1 与全部端点坐标绝对值的最大值",
+    diagram: "integer",
+    lines: [
+      { math: "P'=(3,-4)" },
+      { math: "Q'=(-2,1)" },
+      { text: "先取四个坐标的绝对值" },
+      { text: "再和 1 一起比较，最大的数是多少？" },
+    ],
+    groups: [left(2), left(2)],
+    note: "可以暂停视频，先自己算一算",
+  },
+  answerM: {
+    title: "揭晓：全部坐标一起比较",
+    mode: "用 M 表示这个最大值 · max 表示取最大值",
+    diagram: "integer",
+    lines: [
+      { math: "|3|=3,\\quad|-4|=4" },
+      { math: "|-2|=2,\\quad|1|=1" },
+      { math: "M=\\max(1,3,4,2,1)" },
+      { math: "M=4" },
+      { text: "有更多端点时，也必须全部纳入" },
+    ],
+    groups: [left(2), equals(2), left(1)],
+    holdAfterSeconds: 5,
+    note: "不能只看一个点，也不能只看正坐标",
+    noteFromStep: 5,
+  },
+  range: {
+    title: "为什么加入 1？范围怎样读？",
+    mode: "M 至少是 1，横纵坐标都在同一个范围内",
+    diagram: "range",
+    lines: [
+      { math: "M\\ge1" },
+      { text: "即使所有坐标都是 0，也取 M=1" },
+      { math: "-M\\le X\\le M" },
+      { math: "-M\\le Y\\le M" },
+      { math: "M=4:\\quad -4\\le X,Y\\le4" },
+    ],
+    groups: [left(2), left(2), left(1)],
+    holdAfterSeconds: 5,
+    note: "这里的 X、Y 指全部放大后的输入端点坐标",
   },
 };
 
@@ -305,4 +369,102 @@ export const shots: Shot[] = [
     caption:
       "本次只保证输入端点为整数，不保证交点也是整数。接下来，我们再找出整数坐标的范围。",
   },
+  {
+    id: "217-01",
+    page: "absolute",
+    step: 1,
+    caption: "先认识绝对值：它表示一个数在数轴上到零的距离，用两条竖线表示。",
+  },
+  {
+    id: "217-02",
+    page: "absolute",
+    step: 2,
+    caption: "负 4 在零的左边，到零的距离是 4，所以负 4 的绝对值是 4。",
+  },
+  {
+    id: "217-03",
+    page: "absolute",
+    step: 4,
+    caption:
+      "3 到零的距离是 3，绝对值就是 3。零到自己的距离是零，绝对值也是零。",
+  },
+  {
+    id: "217-04",
+    page: "absolute",
+    step: 5,
+    caption:
+      "负 4 虽然小于 3，却离零更远。比较坐标范围时，要比较绝对值，不能只看正坐标。",
+  },
+  {
+    id: "217-05",
+    page: "questionM",
+    step: 4,
+    caption:
+      "现在看两个整数端点。取四个坐标的绝对值，再和 1 一起比较。最大的数是多少？可以暂停视频，先自己算一算。",
+    pauseAfter: 4,
+  },
+  {
+    id: "217-06",
+    page: "answerM",
+    step: 1,
+    caption: "先看 P′：3 的绝对值是 3，负 4 的绝对值是 4。",
+  },
+  {
+    id: "217-07",
+    page: "answerM",
+    step: 2,
+    caption: "再看 Q′：负 2 的绝对值是 2，1 的绝对值是 1。",
+  },
+  {
+    id: "217-08",
+    page: "answerM",
+    step: 3,
+    caption:
+      "用字母 M 表示 1 与全部坐标绝对值的最大值。式子里的 max 就是取最大值。",
+  },
+  {
+    id: "217-09",
+    page: "answerM",
+    step: 4,
+    caption: "在 1、3、4、2、1 中，最大的是 4，所以 M=4。",
+  },
+  {
+    id: "217-10",
+    page: "answerM",
+    step: 5,
+    caption:
+      "如果有更多输入端点，也要把它们放大后的全部坐标纳入，不能只看一个点。",
+  },
+  {
+    id: "217-11",
+    page: "range",
+    step: 1,
+    caption: "为什么还要把 1 加入比较？这样，无论坐标是什么，M 至少是 1。",
+  },
+  {
+    id: "217-12",
+    page: "range",
+    step: 2,
+    caption: "即使所有坐标都是零，最大值也会取到 1，保证 M 不会是零。",
+  },
+  {
+    id: "217-13",
+    page: "range",
+    step: 3,
+    caption: "每个横坐标的绝对值不超过 M。换句话说，横坐标在负 M 和正 M 之间。",
+  },
+  {
+    id: "217-14",
+    page: "range",
+    step: 4,
+    caption: "纵坐标也在负 M 和正 M 之间，两个方向用的是同一个范围。",
+  },
+  {
+    id: "217-15",
+    page: "range",
+    step: 5,
+    caption:
+      "本例 M=4，全部整数端点都在这个方框内或边界上。接下来，用这个范围估计直线系数。",
+  },
+  ...coefficientShots,
 ];

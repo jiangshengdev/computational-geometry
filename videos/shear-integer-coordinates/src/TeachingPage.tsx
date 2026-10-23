@@ -1,4 +1,5 @@
 import { Diagram } from "./Diagram";
+import { NumberLine } from "./NumberLine";
 import { MathLines } from "./MathLines";
 import { MathText, TeachingColors } from "./MathText";
 import { pages, type Shot } from "./storyboard";
@@ -66,7 +67,15 @@ export const TeachingPage = ({
             transformOrigin: "top left",
           }}
         >
-          <Diagram shot={shot} progress={progress} />
+          {page.diagram === "absolute" || page.diagram === "distance" ? (
+            <NumberLine mode={page.diagram} visibleStep={visibleStep} />
+          ) : (
+            <Diagram
+              shot={shot}
+              progress={progress}
+              visibleStep={visibleStep}
+            />
+          )}
         </div>
         <div
           data-main-content

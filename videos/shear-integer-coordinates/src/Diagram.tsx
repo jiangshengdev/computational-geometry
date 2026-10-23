@@ -1,17 +1,28 @@
 import { useId } from "react";
 import { SvgMathText } from "./MathText";
 import { objectColors } from "./teaching-emphasis";
-import type { Shot } from "./storyboard";
+import { pages, type Shot } from "./storyboard";
 
 // Geometry changes points; the later camera changes their common projection.
 export function diagramState(shot: Shot, progress: number) {
+  const integerView = ["integer", "range"].includes(
+    pages[shot.page].diagram ?? "",
+  );
   const factor =
-    shot.page === "camera" || (shot.page === "scaling" && shot.step >= 4)
+    integerView ||
+    shot.page === "camera" ||
+    (shot.page === "scaling" && shot.step >= 4)
       ? 6
       : shot.page === "scaling" && shot.motion
         ? 1 + 5 * progress
         : 1;
-  const camera = shot.page === "camera" ? (shot.motion ? progress : 1) : 0;
+  const camera = integerView
+    ? 1
+    : shot.page === "camera"
+      ? shot.motion
+        ? progress
+        : 1
+      : 0;
   return {
     factor,
     unit: 250 / (1 + 3 * camera),
@@ -22,9 +33,11 @@ export function diagramState(shot: Shot, progress: number) {
 export const Diagram = ({
   shot,
   progress,
+  visibleStep,
 }: {
   shot: Shot;
   progress: number;
+  visibleStep: number;
 }) => {
   const clipId = useId();
   const { factor, unit, ox, oy } = diagramState(shot, progress);
@@ -87,11 +100,13 @@ export const Diagram = ({
         fill="#526579"
         data-scale-note
       >
-        {shot.page === "camera"
-          ? "拉远视野 · 淡色保留原始图形"
-          : factor > 1
-            ? "单位长度固定 · 淡色保留原始图形"
-            : "两轴等比例 · 每单位长度固定"}
+        {shot.id.startsWith("217-") || shot.id.startsWith("218-")
+          ? "放大后的整数端点 · 两轴等比例"
+          : shot.page === "camera"
+            ? "拉远视野 · 淡色保留原始图形"
+            : factor > 1
+              ? "单位长度固定 · 淡色保留原始图形"
+              : "两轴等比例 · 每单位长度固定"}
       </text>
       <rect
         x="115"
@@ -167,6 +182,19 @@ export const Diagram = ({
         {factor === 1 ? "y" : "Y"}
       </SvgMathText>
       <g clipPath={`url(#${clipId})`} data-clipped-geometry>
+        {pages[shot.page].diagram === "range" && visibleStep >= 3 ? (
+          <rect
+            data-range-box
+            x={x(-4)}
+            y={y(4)}
+            width={8 * unit}
+            height={8 * unit}
+            fill="#b4530910"
+            stroke="#b45309"
+            strokeWidth="3"
+            strokeDasharray="8 6"
+          />
+        ) : null}
         {factor > 1 ? (
           <g data-original-geometry opacity={0.4}>
             <line

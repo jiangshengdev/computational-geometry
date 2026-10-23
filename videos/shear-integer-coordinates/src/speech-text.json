@@ -1,4 +1,994 @@
 {
+  "218-01": [
+    "为了写公式。把 P ",
+    {
+      "text": "撇",
+      "pinyin": "pie3"
+    },
+    "的",
+    {
+      "text": "横纵坐标",
+      "pinyin": "heng2 zong4 zuo4 biao1"
+    },
+    "记作 X 下标",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    " 和 Y 下标",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。它们分别是三和负四。"
+  ],
+  "218-02": [
+    "把 Q ",
+    {
+      "text": "撇",
+      "pinyin": "pie3"
+    },
+    {
+      "text": "的横纵坐标",
+      "pinyin": "de5 heng2 zong4 zuo4 biao1"
+    },
+    "记作 X 下标二 和 Y 下标二。它们分别是负二和",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。"
+  ],
+  "218-03": [
+    "X 表示",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "。Y 表示",
+    {
+      "text": "纵坐标",
+      "pinyin": "zong4 zuo4 biao1"
+    },
+    "。右下角",
+    {
+      "text": "的一",
+      "pinyin": "de5 yi1"
+    },
+    "和二叫下标。用来区分两个端点。",
+    {
+      "text": "不是",
+      "pinyin": "bu2 shi4"
+    },
+    "乘法。也",
+    {
+      "text": "不是",
+      "pinyin": "bu2 shi4"
+    },
+    "平方。"
+  ],
+  "218-04": [
+    "直线方程可以写成 A 乘 X 加 B 乘 Y 等于 C。连写",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    " A 和 X 表示 A 乘 X。连写",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    " B 和 Y 表示 B 乘 Y。A 和 B 是",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "。C 是右侧",
+    {
+      "text": "常数",
+      "pinyin": "chang2 shu4"
+    },
+    "。"
+  ],
+  "218-05": [
+    "给定两个",
+    {
+      "text": "不同",
+      "pinyin": "bu4 tong2"
+    },
+    "端点。可以这样取",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "。A 等于第二个",
+    {
+      "text": "纵坐标",
+      "pinyin": "zong4 zuo4 biao1"
+    },
+    "减第",
+    {
+      "text": "一个纵坐标",
+      "pinyin": "yi1 ge4 zong4 zuo4 biao1"
+    },
+    "。"
+  ],
+  "218-06": [
+    "B 等于第",
+    {
+      "text": "一个横坐标",
+      "pinyin": "yi1 ge4 heng2 zuo4 biao1"
+    },
+    "减第二个",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "。注意这里",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "减法次序。"
+  ],
+  "218-07": [
+    "再把第",
+    {
+      "text": "一个",
+      "pinyin": "yi1 ge4"
+    },
+    "端点代入。取 C 等于 A 乘 X 下标",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    " 加 B 乘 Y 下标",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。就确定了右侧",
+    {
+      "text": "常数",
+      "pinyin": "chang2 shu4"
+    },
+    "。本集",
+    {
+      "text": "不重",
+      "pinyin": "bu4 chong2"
+    },
+    "讲方程证明。只研究这样取出",
+    {
+      "text": "的系数",
+      "pinyin": "de5 xi4 shu4"
+    },
+    "范围。"
+  ],
+  "218-08": [
+    "先算 A。取第二个",
+    {
+      "text": "纵坐标",
+      "pinyin": "zong4 zuo4 biao1"
+    },
+    "减第",
+    {
+      "text": "一个纵坐标",
+      "pinyin": "yi1 ge4 zong4 zuo4 biao1"
+    },
+    "。"
+  ],
+  "218-09": [
+    "代入",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "和负四。得到",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "减负四。"
+  ],
+  "218-10": [
+    "减去负四。相当于加四。所以变成",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "加四。"
+  ],
+  "218-11": [
+    "算出 A 等于五。这是",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    " X 前面",
+    {
+      "text": "的系数",
+      "pinyin": "de5 xi4 shu4"
+    },
+    "。却来自两个",
+    {
+      "text": "纵坐标的差",
+      "pinyin": "zong4 zuo4 biao1 de5 cha1"
+    },
+    "。"
+  ],
+  "218-12": [
+    "再算 B。取第",
+    {
+      "text": "一个横坐标",
+      "pinyin": "yi1 ge4 heng2 zuo4 biao1"
+    },
+    "减第二个",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "。"
+  ],
+  "218-13": ["代入三和负二。得到三减负二。"],
+  "218-14": ["减去负二相当于加二。变成三加二。"],
+  "218-15": [
+    "所以 B 等于五。它来自两个",
+    {
+      "text": "横坐标的差",
+      "pinyin": "heng2 zuo4 biao1 de5 cha1"
+    },
+    "。",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "相减仍是",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "。因此 A 和 B 都是",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "。"
+  ],
+  "218-16": [
+    "现在",
+    {
+      "text": "不只看",
+      "pinyin": "bu4 zhi3 kan4"
+    },
+    "本例。只要两个坐标都在负 M 到 M 之间。它们最多能",
+    {
+      "text": "相差",
+      "pinyin": "xiang1 cha1"
+    },
+    "多少？"
+  ],
+  "218-17": [
+    "最远",
+    {
+      "text": "的是",
+      "pinyin": "de5 shi4"
+    },
+    "区间两端。从负 ",
+    {
+      "letter": "M"
+    },
+    " 到 ",
+    {
+      "letter": "M"
+    },
+    " ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "距离。是 ",
+    {
+      "letter": "M"
+    },
+    " 减负 ",
+    {
+      "letter": "M"
+    },
+    "。等于 ",
+    {
+      "letter": "M"
+    },
+    " 加 ",
+    {
+      "letter": "M"
+    },
+    "。也就是二乘 ",
+    {
+      "letter": "M"
+    },
+    "。"
+  ],
+  "218-18": [
+    "区间里任意两个",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "之间",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "距离。都",
+    {
+      "text": "不会",
+      "pinyin": "bu2 hui4"
+    },
+    "超过整个区间",
+    {
+      "text": "的长度",
+      "pinyin": "de5 chang2 du4"
+    },
+    "二乘 ",
+    {
+      "letter": "M"
+    },
+    "。"
+  ],
+  "218-19": [
+    "交换减法次序。只会让",
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "变成相反",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。零仍然是零。"
+  ],
+  "218-20": [
+    "取绝对值后。两种次序表示同",
+    {
+      "text": "一个",
+      "pinyin": "yi2 ge4"
+    },
+    "距离。所以都",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "二乘 ",
+    {
+      "letter": "M"
+    },
+    "。"
+  ],
+  "218-21": [
+    {
+      "letter": "A"
+    },
+    " 是两个",
+    {
+      "text": "纵坐标的差",
+      "pinyin": "zong4 zuo4 biao1 de5 cha1"
+    },
+    "。所以 ",
+    {
+      "letter": "A"
+    },
+    " ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "绝对值",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "二乘 ",
+    {
+      "letter": "M"
+    },
+    "。"
+  ],
+  "218-22": [
+    {
+      "letter": "B"
+    },
+    " 是两个",
+    {
+      "text": "横坐标的差",
+      "pinyin": "heng2 zuo4 biao1 de5 cha1"
+    },
+    "。因此 ",
+    {
+      "letter": "B"
+    },
+    " ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "绝对值也",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "二乘 ",
+    {
+      "letter": "M"
+    },
+    "。"
+  ],
+  "218-23": [
+    "回到本例。",
+    {
+      "letter": "M"
+    },
+    " 等于四。所以二乘 ",
+    {
+      "letter": "M"
+    },
+    " 等于八。"
+  ],
+  "218-24": [
+    {
+      "letter": "A"
+    },
+    " 和 ",
+    {
+      "letter": "B"
+    },
+    " ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "绝对值都是五。确实",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "八。五是实际值。八是上界。上界",
+    {
+      "text": "不一定",
+      "pinyin": "bu4 yi2 ding4"
+    },
+    "达到。"
+  ],
+  "218-25": [
+    "回顾",
+    {
+      "text": "一下",
+      "pinyin": "yi2 xia4"
+    },
+    "。选择同",
+    {
+      "text": "一个",
+      "pinyin": "yi2 ge4"
+    },
+    "正",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "公共分母。把全部输入端点",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "两个坐标统",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "缩放为",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "。"
+  ],
+  "218-26": [
+    "再取",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "与全部端点坐标绝对值",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "最大值。这就是 ",
+    {
+      "letter": "M"
+    },
+    { "text": "的", "pinyin": "de5" },
+    "定义。"
+  ],
+  "218-27": [
+    "按刚才",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "公式。",
+    {
+      "letter": "A"
+    },
+    " 和 ",
+    {
+      "letter": "B"
+    },
+    " 是",
+    {
+      "text": "整数之差",
+      "pinyin": "zheng3 shu4 zhi1 cha1"
+    },
+    "。",
+    {
+      "letter": "C"
+    },
+    " 是",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "乘积",
+    {
+      "text": "的和",
+      "pinyin": "de5 he2"
+    },
+    "。所以这三个",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "都是",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "。符号 ",
+    {
+      "letter": "Z"
+    },
+    " 表示",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "集合。"
+  ],
+  "218-28": [
+    "这里按端点",
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "取出",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    " ",
+    {
+      "letter": "A"
+    },
+    " 和 ",
+    {
+      "letter": "B"
+    },
+    "。绝对值都",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "二乘 ",
+    {
+      "letter": "M"
+    },
+    "。如果把方程整体乘",
+    {
+      "text": "一个",
+      "pinyin": "yi2 ge4"
+    },
+    "大",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。新",
+    {
+      "text": "系数不一定",
+      "pinyin": "xi4 shu4 bu4 yi2 ding4"
+    },
+    "满足这个上界。"
+  ],
+  "218-29": [
+    "我们没有得到 ",
+    {
+      "letter": "C"
+    },
+    " ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "绝对值也",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "二乘 ",
+    {
+      "letter": "M"
+    },
+    "。",
+    {
+      "text": "更不能",
+      "pinyin": "geng4 bu4 neng2"
+    },
+    "保证交点都是",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "。交点仍可能是",
+    {
+      "text": "分数",
+      "pinyin": "fen1 shu4"
+    },
+    "。下",
+    {
+      "text": "一集",
+      "pinyin": "yi4 ji2"
+    },
+    "再研究它们",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "分母。"
+  ],
+  "217-01": [
+    {
+      "text": "先认识绝对值",
+      "pinyin": "xian1 ren4 shi5 jue2 dui4 zhi2"
+    },
+    "。",
+    {
+      "text": "它表示一个数在数轴上到零的距离",
+      "pinyin": "ta1 biao3 shi4 yi2 ge4 shu4 zai4 shu4 zhou2 shang4 dao4 ling2 de5 ju4 li2"
+    },
+    "。",
+    {
+      "text": "用两条竖线表示",
+      "pinyin": "yong4 liang3 tiao2 shu4 xian4 biao3 shi4"
+    },
+    "。"
+  ],
+  "217-02": [
+    {
+      "text": "负四在零的左边",
+      "pinyin": "fu4 si4 zai4 ling2 de5 zuo3 bian1"
+    },
+    "。",
+    {
+      "text": "到零的距离是四",
+      "pinyin": "dao4 ling2 de5 ju4 li2 shi4 si4"
+    },
+    "。",
+    {
+      "text": "所以负四的绝对值是四",
+      "pinyin": "suo3 yi3 fu4 si4 de5 jue2 dui4 zhi2 shi4 si4"
+    },
+    "。"
+  ],
+  "217-03": [
+    {
+      "text": "三到零的距离是三",
+      "pinyin": "san1 dao4 ling2 de5 ju4 li2 shi4 san1"
+    },
+    "。",
+    {
+      "text": "绝对值就是三",
+      "pinyin": "jue2 dui4 zhi2 jiu4 shi4 san1"
+    },
+    "。",
+    {
+      "text": "零到自己的距离是零",
+      "pinyin": "ling2 dao4 zi4 ji3 de5 ju4 li2 shi4 ling2"
+    },
+    "。",
+    {
+      "text": "绝对值也是零",
+      "pinyin": "jue2 dui4 zhi2 ye3 shi4 ling2"
+    },
+    "。"
+  ],
+  "217-04": [
+    {
+      "text": "负四虽然小于三",
+      "pinyin": "fu4 si4 sui1 ran2 xiao3 yu2 san1"
+    },
+    "。",
+    {
+      "text": "却离零更远",
+      "pinyin": "que4 li2 ling2 geng4 yuan3"
+    },
+    "。",
+    {
+      "text": "比较坐标范围时",
+      "pinyin": "bi3 jiao4 zuo4 biao1 fan4 wei2 shi2"
+    },
+    "。",
+    {
+      "text": "要比较绝对值",
+      "pinyin": "yao4 bi3 jiao4 jue2 dui4 zhi2"
+    },
+    "。",
+    {
+      "text": "不能只看正坐标",
+      "pinyin": "bu4 neng2 zhi3 kan4 zheng4 zuo4 biao1"
+    },
+    "。"
+  ],
+  "217-05": [
+    {
+      "text": "现在看两个整数端点",
+      "pinyin": "xian4 zai4 kan4 liang3 ge4 zheng3 shu4 duan1 dian3"
+    },
+    "。",
+    {
+      "text": "取四个坐标的绝对值",
+      "pinyin": "qu3 si4 ge4 zuo4 biao1 de5 jue2 dui4 zhi2"
+    },
+    "。",
+    {
+      "text": "再和一一起比较",
+      "pinyin": "zai4 he2 yi1 yi4 qi3 bi3 jiao4"
+    },
+    "。",
+    {
+      "text": "最大的数是多少",
+      "pinyin": "zui4 da4 de5 shu4 shi4 duo1 shao3"
+    },
+    "？",
+    {
+      "text": "可以暂停视频",
+      "pinyin": "ke3 yi3 zan4 ting2 shi4 pin2"
+    },
+    "。",
+    {
+      "text": "先自己算一算",
+      "pinyin": "xian1 zi4 ji3 suan4 yi5 suan4"
+    },
+    "。"
+  ],
+  "217-06": [
+    {
+      "text": "先看",
+      "pinyin": "xian1 kan4"
+    },
+    " P ",
+    {
+      "text": "撇",
+      "pinyin": "pie3"
+    },
+    "。",
+    {
+      "text": "三的绝对值是三",
+      "pinyin": "san1 de5 jue2 dui4 zhi2 shi4 san1"
+    },
+    "。",
+    {
+      "text": "负四的绝对值是四",
+      "pinyin": "fu4 si4 de5 jue2 dui4 zhi2 shi4 si4"
+    },
+    "。"
+  ],
+  "217-07": [
+    {
+      "text": "再看",
+      "pinyin": "zai4 kan4"
+    },
+    " Q ",
+    {
+      "text": "撇",
+      "pinyin": "pie3"
+    },
+    "。",
+    {
+      "text": "负二的绝对值是二",
+      "pinyin": "fu4 er4 de5 jue2 dui4 zhi2 shi4 er4"
+    },
+    "。",
+    {
+      "text": "一的绝对值是一",
+      "pinyin": "yi1 de5 jue2 dui4 zhi2 shi4 yi1"
+    },
+    "。"
+  ],
+  "217-08": [
+    "用字母 M 表示",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "与全部坐标绝对值",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "最大值。",
+    {
+      "text": "式子",
+      "pinyin": "shi4 zi5"
+    },
+    "里",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "英文就是取最大值。"
+  ],
+  "217-09": [
+    "在",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    " 三 四 二 ",
+    {
+      "text": "一中",
+      "pinyin": "yi1 zhong1"
+    },
+    "。",
+    {
+      "text": "最大的是四",
+      "pinyin": "zui4 da4 de5 shi4 si4"
+    },
+    "。所以 M 等于四。"
+  ],
+  "217-10": [
+    {
+      "text": "如果有更多输入端点",
+      "pinyin": "ru2 guo3 you3 geng4 duo1 shu1 ru4 duan1 dian3"
+    },
+    "。",
+    {
+      "text": "也要把它们放大后的全部坐标纳入",
+      "pinyin": "ye3 yao4 ba3 ta1 men5 fang4 da4 hou4 de5 quan2 bu4 zuo4 biao1 na4 ru4"
+    },
+    "。",
+    {
+      "text": "不能只看一个点",
+      "pinyin": "bu4 neng2 zhi3 kan4 yi2 ge4 dian3"
+    },
+    "。"
+  ],
+  "217-11": [
+    {
+      "text": "为什么还要把一加入比较",
+      "pinyin": "wei4 shen2 me5 hai2 yao4 ba3 yi1 jia1 ru4 bi3 jiao4"
+    },
+    "？",
+    {
+      "text": "这样",
+      "pinyin": "zhe4 yang4"
+    },
+    "。",
+    {
+      "text": "无论坐标是什么",
+      "pinyin": "wu2 lun4 zuo4 biao1 shi4 shen2 me5"
+    },
+    "。M ",
+    "至少是",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。"
+  ],
+  "217-12": [
+    {
+      "text": "即使所有坐标都是零",
+      "pinyin": "ji2 shi3 suo3 you3 zuo4 biao1 dou1 shi4 ling2"
+    },
+    "。",
+    {
+      "text": "最大值也会取到一",
+      "pinyin": "zui4 da4 zhi2 ye3 hui4 qu3 dao4 yi1"
+    },
+    "。保证 M ",
+    {
+      "text": "不会是零",
+      "pinyin": "bu2 hui4 shi4 ling2"
+    },
+    "。"
+  ],
+  "217-13": [
+    "每个",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "绝对值",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    " ",
+    {
+      "letter": "M"
+    },
+    "。换句话说。",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "在负 ",
+    {
+      "letter": "M"
+    },
+    " 和正 ",
+    {
+      "letter": "M"
+    },
+    " 之间。"
+  ],
+  "217-14": [
+    {
+      "text": "纵坐标",
+      "pinyin": "zong4 zuo4 biao1"
+    },
+    "也在负 ",
+    {
+      "letter": "M"
+    },
+    " 和正 ",
+    {
+      "letter": "M"
+    },
+    " 之间。两个方向用",
+    {
+      "text": "的是",
+      "pinyin": "de5 shi4"
+    },
+    "同",
+    {
+      "text": "一个",
+      "pinyin": "yi2 ge4"
+    },
+    "范围。"
+  ],
+  "217-15": [
+    "本例 M 等于四。",
+    {
+      "text": "全部整数端点都在这个方框内或边界上",
+      "pinyin": "quan2 bu4 zheng3 shu4 duan1 dian3 dou1 zai4 zhe4 ge4 fang1 kuang4 nei4 huo4 bian1 jie4 shang4"
+    },
+    "。",
+    {
+      "text": "接下来",
+      "pinyin": "jie1 xia4 lai2"
+    },
+    "。",
+    {
+      "text": "用这个范围估计直线系数",
+      "pinyin": "yong4 zhe4 ge4 fan4 wei2 gu1 ji4 zhi2 xian4 xi4 shu4"
+    },
+    "。"
+  ],
   "216-01": [
     "能",
     {

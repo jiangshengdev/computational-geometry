@@ -17,6 +17,7 @@ import { buildSpeechDocument, synthesize, voice } from "./azure-speech.ts";
 import { alignAudio, verifyAlignment } from "./azure-alignment.ts";
 import {
   createCaptions,
+  validateCaptionClauses,
   phraseTime,
   type AudioTiming,
 } from "../src/speech-timing.ts";
@@ -36,6 +37,7 @@ const documents = Object.fromEntries(
   shots.map((shot) => {
     const doc = buildSpeechDocument(speech[shot.id], shot.id);
     if (!doc.text.trim()) throw Error(`Empty speech: ${shot.id}`);
+    validateCaptionClauses(shot.caption, doc.text);
     for (const anchor of [
       ...Object.values(shot.motion ?? {}),
       ...(shot.reveal ? [shot.reveal] : []),

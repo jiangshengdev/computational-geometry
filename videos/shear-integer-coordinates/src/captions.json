@@ -502,5 +502,884 @@
       "timestampMs": null,
       "confidence": null
     }
+  ],
+  "217-01": [
+    {
+      "text": "先认识绝对值：它表示一个数在数轴上到零的距离，",
+      "startMs": 70,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用两条竖线表示。",
+      "startMs": 4140,
+      "endMs": 5710,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-02": [
+    {
+      "text": "负 4 在零的左边，",
+      "startMs": 70,
+      "endMs": 1510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到零的距离是 4，所以负 4 的绝对值是 4。",
+      "startMs": 1590,
+      "endMs": 4950,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-03": [
+    {
+      "text": "3 到零的距离是 3，",
+      "startMs": 70,
+      "endMs": 1390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "绝对值就是 3。",
+      "startMs": 1670,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "零到自己的距离是零，",
+      "startMs": 2869,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "绝对值也是零。",
+      "startMs": 4383,
+      "endMs": 5623,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-04": [
+    {
+      "text": "负 4 虽然小于 3，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "却离零更远。",
+      "startMs": 1910,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "比较坐标范围时，要比较绝对值，",
+      "startMs": 3150,
+      "endMs": 5839,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能只看正坐标。",
+      "startMs": 5879,
+      "endMs": 7079,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-05": [
+    {
+      "text": "现在看两个整数端点。",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取四个坐标的绝对值，",
+      "startMs": 1910,
+      "endMs": 3710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再和 1 一起比较。",
+      "startMs": 3710,
+      "endMs": 5070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最大的数是多少？",
+      "startMs": 5066,
+      "endMs": 6146,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "可以暂停视频，先自己算一算。",
+      "startMs": 6306,
+      "endMs": 8345,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-06": [
+    {
+      "text": "先看 P′：3 的绝对值是 3，",
+      "startMs": 70,
+      "endMs": 2640,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "负 4 的绝对值是 4。",
+      "startMs": 2662,
+      "endMs": 4222,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-07": [
+    {
+      "text": "再看 Q′：负 2 的绝对值是 2，",
+      "startMs": 100,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "1 的绝对值是 1。",
+      "startMs": 2760,
+      "endMs": 4340,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-08": [
+    {
+      "text": "用字母 M 表示 1 与全部坐标绝对值的最大值。",
+      "startMs": 70,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "式子里的 max 就是取最大值。",
+      "startMs": 3949,
+      "endMs": 6310,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-09": [
+    {
+      "text": "在 1、3、4、2、1 中，",
+      "startMs": 70,
+      "endMs": 1630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最大的是 4，所以 M=4。",
+      "startMs": 1630,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-10": [
+    {
+      "text": "如果有更多输入端点，",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也要把它们放大后的全部坐标纳入，",
+      "startMs": 1750,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能只看一个点。",
+      "startMs": 4213,
+      "endMs": 5453,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-11": [
+    {
+      "text": "为什么还要把 1 加入比较？",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这样，无论坐标是什么，",
+      "startMs": 2230,
+      "endMs": 4130,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "M 至少是 1。",
+      "startMs": 4160,
+      "endMs": 5400,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-12": [
+    {
+      "text": "即使所有坐标都是零，",
+      "startMs": 70,
+      "endMs": 1630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最大值也会取到 1，",
+      "startMs": 1790,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保证 M 不会是零。",
+      "startMs": 3510,
+      "endMs": 4750,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-13": [
+    {
+      "text": "每个横坐标的绝对值不超过 M。",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "换句话说，横坐标在负 M 和正 M 之间。",
+      "startMs": 2710,
+      "endMs": 6430,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-14": [
+    {
+      "text": "纵坐标也在负 M 和正 M 之间，",
+      "startMs": 70,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个方向用的是同一个范围。",
+      "startMs": 3429,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "217-15": [
+    {
+      "text": "本例 M=4，全部整数端点都在这个方框内或边界上。",
+      "startMs": 70,
+      "endMs": 4910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来，用这个范围估计直线系数。",
+      "startMs": 4895,
+      "endMs": 7975,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-01": [
+    {
+      "text": "为了写公式，把 P′ 的横纵坐标记作 X₁、Y₁，",
+      "startMs": 70,
+      "endMs": 5550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们分别是 3 和负 4。",
+      "startMs": 5580,
+      "endMs": 7340,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-02": [
+    {
+      "text": "把 Q′ 的横纵坐标记作 X₂、Y₂，",
+      "startMs": 70,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们分别是负 2 和 1。",
+      "startMs": 4550,
+      "endMs": 6430,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-03": [
+    {
+      "text": "X 表示横坐标，Y 表示纵坐标。",
+      "startMs": 150,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右下角的 1、2 叫下标，",
+      "startMs": 3389,
+      "endMs": 5350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用来区分两个端点，不是乘法，",
+      "startMs": 5322,
+      "endMs": 8201,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不是平方。",
+      "startMs": 8201,
+      "endMs": 9201,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-04": [
+    {
+      "text": "直线方程可以写成 aX+bY=c。",
+      "startMs": 70,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "aX 表示 a 乘 X，",
+      "startMs": 4470,
+      "endMs": 7110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "bY 表示 b 乘 Y。",
+      "startMs": 7199,
+      "endMs": 9558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "a、b 是系数，c 是右侧常数。",
+      "startMs": 9719,
+      "endMs": 12559,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-05": [
+    {
+      "text": "给定两个不同端点，可以这样取系数：",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "a 等于第二个纵坐标减第一个纵坐标。",
+      "startMs": 3150,
+      "endMs": 5950,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-06": [
+    {
+      "text": "b 等于第一个横坐标减第二个横坐标，",
+      "startMs": 70,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "注意这里的减法次序。",
+      "startMs": 3429,
+      "endMs": 5190,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-07": [
+    {
+      "text": "再把第一个端点代入，",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取 c=aX₁+bY₁，",
+      "startMs": 1750,
+      "endMs": 5830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就确定了右侧常数。",
+      "startMs": 5860,
+      "endMs": 7570,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本集不重讲方程证明，",
+      "startMs": 7908,
+      "endMs": 9828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只研究这样取出的系数范围。",
+      "startMs": 9868,
+      "endMs": 12028,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-08": [
+    {
+      "text": "先算 a，取第二个纵坐标减第一个纵坐标。",
+      "startMs": 70,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-09": [
+    {
+      "text": "代入 1 和负 4，",
+      "startMs": 70,
+      "endMs": 1310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 1 减负 4。",
+      "startMs": 1310,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-10": [
+    {
+      "text": "减去负 4，相当于加 4，",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以变成 1 加 4。",
+      "startMs": 2349,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-11": [
+    {
+      "text": "算出 a=5。",
+      "startMs": 110,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是横坐标 X 前面的系数，",
+      "startMs": 1510,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "却来自两个纵坐标的差。",
+      "startMs": 4190,
+      "endMs": 5910,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-12": [
+    {
+      "text": "再算 b，取第一个横坐标减第二个横坐标。",
+      "startMs": 70,
+      "endMs": 3389,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-13": [
+    {
+      "text": "代入 3 和负 2，",
+      "startMs": 70,
+      "endMs": 1390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 3 减负 2。",
+      "startMs": 1430,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-14": [
+    {
+      "text": "减去负 2 相当于加 2，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "变成 3 加 2。",
+      "startMs": 2029,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-15": [
+    {
+      "text": "所以 b=5，它来自两个横坐标的差。",
+      "startMs": 70,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "整数相减仍是整数，因此 a、b 都是整数。",
+      "startMs": 3510,
+      "endMs": 7002,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-16": [
+    {
+      "text": "现在不只看本例。",
+      "startMs": 70,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只要两个坐标都在负 M 到 M 之间，",
+      "startMs": 1550,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们最多能相差多少？",
+      "startMs": 3957,
+      "endMs": 5517,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-17": [
+    {
+      "text": "最远的是区间两端。",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "从负 M 到 M 的距离，",
+      "startMs": 1750,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是 M 减负 M，等于 M 加 M，",
+      "startMs": 4230,
+      "endMs": 7154,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 2 乘 M。",
+      "startMs": 7154,
+      "endMs": 8193,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-18": [
+    {
+      "text": "区间里任意两个数之间的距离，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都不会超过整个区间的长度 2M。",
+      "startMs": 2590,
+      "endMs": 5790,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-19": [
+    {
+      "text": "交换减法次序，只会让差变成相反数，",
+      "startMs": 70,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "零仍然是零。",
+      "startMs": 3590,
+      "endMs": 4670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-20": [
+    {
+      "text": "取绝对值后，两种次序表示同一个距离，",
+      "startMs": 70,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以都不超过 2M。",
+      "startMs": 3510,
+      "endMs": 5110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-21": [
+    {
+      "text": "a 是两个纵坐标的差，",
+      "startMs": 110,
+      "endMs": 1510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以 a 的绝对值不超过 2M。",
+      "startMs": 1910,
+      "endMs": 4830,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-22": [
+    {
+      "text": "b 是两个横坐标的差，",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此 b 的绝对值也不超过 2M。",
+      "startMs": 1830,
+      "endMs": 5030,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-23": [
+    {
+      "text": "回到本例，M=4，所以 2M=8。",
+      "startMs": 70,
+      "endMs": 3790,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-24": [
+    {
+      "text": "a、b 的绝对值都是 5，",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "确实不超过 8。",
+      "startMs": 2590,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "5 是实际值，8 是上界，",
+      "startMs": 3829,
+      "endMs": 5935,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "上界不一定达到。",
+      "startMs": 5935,
+      "endMs": 7335,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-25": [
+    {
+      "text": "回顾一下：选择同一个正整数公共分母，",
+      "startMs": 70,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把全部输入端点的两个坐标统一缩放为整数。",
+      "startMs": 3869,
+      "endMs": 7630,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-26": [
+    {
+      "text": "再取 1 与全部端点坐标绝对值的最大值，",
+      "startMs": 70,
+      "endMs": 3190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就是 M 的定义。",
+      "startMs": 3230,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-27": [
+    {
+      "text": "按刚才的公式，a、b 是整数之差，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "c 是整数乘积的和，",
+      "startMs": 3670,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这三个系数都是整数。",
+      "startMs": 5322,
+      "endMs": 7442,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "符号 Z 表示整数集合。",
+      "startMs": 7802,
+      "endMs": 9962,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-28": [
+    {
+      "text": "这里按端点差取出的 a、b，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "绝对值都不超过 2M。",
+      "startMs": 2510,
+      "endMs": 4470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果把方程整体乘一个大数，",
+      "startMs": 4469,
+      "endMs": 6708,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新系数不一定满足这个上界。",
+      "startMs": 6708,
+      "endMs": 9109,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "218-29": [
+    {
+      "text": "我们没有得到 c 的绝对值也不超过 2M，",
+      "startMs": 70,
+      "endMs": 3590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "更不能保证交点都是整数。",
+      "startMs": 3829,
+      "endMs": 5910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交点仍可能是分数，下一集再研究它们的分母。",
+      "startMs": 5919,
+      "endMs": 9960,
+      "timestampMs": null,
+      "confidence": null
+    }
   ]
 }
