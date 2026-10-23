@@ -97,7 +97,7 @@ export const TeachingPage = ({
         >
           <MathText colorize={false}>{page.note}</MathText>
         </div>
-        <Subtitles text={caption} shot={shot} />
+        <Subtitles text={caption} />
       </div>
     </TeachingColors>
   );

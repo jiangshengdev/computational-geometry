@@ -45,26 +45,6 @@ export const lineMarks: Record<string, MathMark[][]> = {
 export const lineNumberRoles: Record<string, Record<number, TeachingRole[]>> = {
   crossing: { 3: ["movement"] },
 };
-const A: TeachingRole = "original";
-const B: TeachingRole = "coordinates";
-const S: TeachingRole = "movement";
-export const captionNumberRoles: Record<string, TeachingRole[]> = {
-  "210-01": [S, A, A],
-  "210-02": [B, B],
-  "210-04": [A, B],
-  "210-10": [A],
-  "210-11": [B],
-  "210-14": [S],
-  "210-15": [A],
-  "210-16": [A, S, A, A],
-  "210-17": [A, A],
-  "210-19": [B, B],
-  "210-20": [B],
-  "210-21": [B, B],
-  "210-23": [A, A],
-  "210-24": [A, B],
-  "210-25": [S],
-};
 
 export const paintMath = (text: string, role: TeachingRole) =>
   `{\\color{${objectColors[role]}}${text}}`;
@@ -116,18 +96,4 @@ export const colorMath = (
     end = range.to;
   }
   return result + symbols(source.slice(end));
-};
-
-export const captionNumbers = (
-  full: string,
-  cue: string,
-  roles: TeachingRole[],
-) => {
-  const start = full.indexOf(cue);
-  if (start < 0) throw new Error(`Caption is not part of its source: ${cue}`);
-  const offset = [...full.slice(0, start).matchAll(/\d+(?:\.\d+)?/g)].length;
-  return roles.slice(
-    offset,
-    offset + [...cue.matchAll(/\d+(?:\.\d+)?/g)].length,
-  );
 };
