@@ -140,13 +140,13 @@
     {
       "text": "sy 表示 s 乘 y，",
       "startMs": 1630,
-      "endMs": 3510,
+      "endMs": 3469,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这次取二分之一只为图解。",
-      "startMs": 3670,
+      "startMs": 3590,
       "endMs": 5830,
       "timestampMs": null,
       "confidence": null
@@ -486,7 +486,7 @@
     {
       "text": "要单独留下 x，就在等式两边同时减去 s 乘 y′。",
       "startMs": 70,
-      "endMs": 4680,
+      "endMs": 4770,
       "timestampMs": null,
       "confidence": null
     }
@@ -495,14 +495,14 @@
     {
       "text": "右边加上和减去的是同一个数，",
       "startMs": 70,
-      "endMs": 2349,
+      "endMs": 2270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它们抵消，只剩下 x。",
-      "startMs": 2349,
-      "endMs": 4430,
+      "startMs": 2429,
+      "endMs": 4590,
       "timestampMs": null,
       "confidence": null
     }
@@ -566,14 +566,14 @@
     {
       "text": "原横坐标等于 2 减去 s 乘零。",
       "startMs": 190,
-      "endMs": 2710,
+      "endMs": 2750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "乘零得到零，所以原横坐标仍是 2。",
-      "startMs": 2750,
-      "endMs": 5910,
+      "startMs": 2869,
+      "endMs": 5990,
       "timestampMs": null,
       "confidence": null
     }
@@ -621,14 +621,14 @@
     {
       "text": "把新纵坐标零代入，原横坐标等于新横坐标，",
       "startMs": 70,
-      "endMs": 4270,
+      "endMs": 4110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "减去 s 乘零。",
-      "startMs": 4310,
-      "endMs": 5670,
+      "startMs": 4190,
+      "endMs": 5590,
       "timestampMs": null,
       "confidence": null
     }
@@ -786,14 +786,14 @@
     {
       "text": "更一般地，新纵轴上的点满足新横坐标为零，",
       "startMs": 70,
-      "endMs": 3949,
+      "endMs": 3989,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以 x 等于负 s 乘 y′。",
-      "startMs": 4190,
-      "endMs": 6570,
+      "startMs": 4150,
+      "endMs": 6670,
       "timestampMs": null,
       "confidence": null
     }

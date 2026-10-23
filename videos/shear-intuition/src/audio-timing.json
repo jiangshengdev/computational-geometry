@@ -1501,7 +1501,7 @@
     "duration": 5.856,
     "words": [
       {
-        "text": "s",
+        "text": "S",
         "startMs": 70,
         "durationMs": 320,
         "textOffset": 0,
@@ -1510,21 +1510,21 @@
       {
         "text": "叫",
         "startMs": 390,
-        "durationMs": 160,
+        "durationMs": 200,
         "textOffset": 2,
         "wordLength": 1
       },
       {
         "text": "剪切",
-        "startMs": 550,
+        "startMs": 590,
         "durationMs": 400,
         "textOffset": 3,
         "wordLength": 2
       },
       {
         "text": "系数",
-        "startMs": 950,
-        "durationMs": 640,
+        "startMs": 990,
+        "durationMs": 600,
         "textOffset": 5,
         "wordLength": 2
       },
@@ -1536,7 +1536,7 @@
         "wordLength": 1
       },
       {
-        "text": "s",
+        "text": "S",
         "startMs": 1630,
         "durationMs": 360,
         "textOffset": 8,
@@ -1545,69 +1545,69 @@
       {
         "text": "why",
         "startMs": 1990,
-        "durationMs": 240,
+        "durationMs": 280,
         "textOffset": 10,
         "wordLength": 3
       },
       {
         "text": "表示",
-        "startMs": 2230,
+        "startMs": 2270,
         "durationMs": 360,
         "textOffset": 14,
         "wordLength": 2
       },
       {
-        "text": "s",
-        "startMs": 2590,
-        "durationMs": 319,
+        "text": "S",
+        "startMs": 2630,
+        "durationMs": 239,
         "textOffset": 17,
         "wordLength": 1
       },
       {
         "text": "乘",
-        "startMs": 2909,
-        "durationMs": 281,
+        "startMs": 2869,
+        "durationMs": 241,
         "textOffset": 19,
         "wordLength": 1
       },
       {
         "text": "why",
-        "startMs": 3190,
-        "durationMs": 320,
+        "startMs": 3110,
+        "durationMs": 359,
         "textOffset": 21,
         "wordLength": 3
       },
       {
         "text": "。",
-        "startMs": 3510,
+        "startMs": 3469,
         "durationMs": 0,
         "textOffset": 24,
         "wordLength": 1
       },
       {
         "text": "这次",
-        "startMs": 3670,
-        "durationMs": 480,
+        "startMs": 3590,
+        "durationMs": 440,
         "textOffset": 25,
         "wordLength": 2
       },
       {
         "text": "取",
-        "startMs": 4150,
+        "startMs": 4030,
         "durationMs": 200,
         "textOffset": 27,
         "wordLength": 1
       },
       {
         "text": "二分之一",
-        "startMs": 4350,
-        "durationMs": 640,
+        "startMs": 4230,
+        "durationMs": 720,
         "textOffset": 28,
         "wordLength": 4
       },
       {
         "text": "只为",
-        "startMs": 4990,
+        "startMs": 4950,
         "durationMs": 280,
         "textOffset": 32,
         "wordLength": 2
@@ -1616,26 +1616,26 @@
         "text": "图解",
         "textOffset": 34,
         "wordLength": 2,
-        "startMs": 5300,
-        "durationMs": 530
+        "startMs": 5290,
+        "durationMs": 540
       },
       {
         "text": "。",
-        "startMs": 5270,
+        "startMs": 5230,
         "durationMs": 0,
         "textOffset": 36,
         "wordLength": 1
       }
     ],
-    "speech": "s 叫剪切系数。s why 表示 s 乘 why。这次取二分之一只为图解。",
+    "speech": "S 叫剪切系数。S why 表示 S 乘 why。这次取二分之一只为图解。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "c6fa2514ed67b5f9934c14a2b87522ecd86917979e5df34bea345410e11ef731",
+    "fingerprint": "811b71c8b24d54d6722a38f4199ca496b4782eeefb356c05d86f71b37b9e1285",
     "alignment": {
       "method": "azure-pronunciation-assessment",
-      "audioSha256": "338d1c636a7f98617f3e33f0a3d51e9f2d671b62b38706cc27397d66bd287572",
+      "audioSha256": "1dea86a743e6a4ca0f07ee1a935005b077e0c74a91cbb8cd5ac82045755177c5",
       "synthesisWords": [
         {
-          "text": "s",
+          "text": "S",
           "startMs": 70,
           "durationMs": 320,
           "textOffset": 0,
@@ -1644,21 +1644,21 @@
         {
           "text": "叫",
           "startMs": 390,
-          "durationMs": 160,
+          "durationMs": 200,
           "textOffset": 2,
           "wordLength": 1
         },
         {
           "text": "剪切",
-          "startMs": 550,
+          "startMs": 590,
           "durationMs": 400,
           "textOffset": 3,
           "wordLength": 2
         },
         {
           "text": "系数",
-          "startMs": 950,
-          "durationMs": 640,
+          "startMs": 990,
+          "durationMs": 600,
           "textOffset": 5,
           "wordLength": 2
         },
@@ -1670,7 +1670,7 @@
           "wordLength": 1
         },
         {
-          "text": "s",
+          "text": "S",
           "startMs": 1630,
           "durationMs": 360,
           "textOffset": 8,
@@ -1679,114 +1679,114 @@
         {
           "text": "why",
           "startMs": 1990,
-          "durationMs": 240,
+          "durationMs": 280,
           "textOffset": 10,
           "wordLength": 3
         },
         {
           "text": "表示",
-          "startMs": 2230,
+          "startMs": 2270,
           "durationMs": 360,
           "textOffset": 14,
           "wordLength": 2
         },
         {
-          "text": "s",
-          "startMs": 2590,
-          "durationMs": 319,
+          "text": "S",
+          "startMs": 2630,
+          "durationMs": 239,
           "textOffset": 17,
           "wordLength": 1
         },
         {
           "text": "乘",
-          "startMs": 2909,
-          "durationMs": 281,
+          "startMs": 2869,
+          "durationMs": 241,
           "textOffset": 19,
           "wordLength": 1
         },
         {
           "text": "why",
-          "startMs": 3190,
-          "durationMs": 320,
+          "startMs": 3110,
+          "durationMs": 359,
           "textOffset": 21,
           "wordLength": 3
         },
         {
           "text": "。",
-          "startMs": 3510,
+          "startMs": 3469,
           "durationMs": 0,
           "textOffset": 24,
           "wordLength": 1
         },
         {
           "text": "这次",
-          "startMs": 3670,
-          "durationMs": 480,
+          "startMs": 3590,
+          "durationMs": 440,
           "textOffset": 25,
           "wordLength": 2
         },
         {
           "text": "取",
-          "startMs": 4150,
+          "startMs": 4030,
           "durationMs": 200,
           "textOffset": 27,
           "wordLength": 1
         },
         {
           "text": "二分之一",
-          "startMs": 4350,
-          "durationMs": 640,
+          "startMs": 4230,
+          "durationMs": 720,
           "textOffset": 28,
           "wordLength": 4
         },
         {
           "text": "只为",
-          "startMs": 4990,
+          "startMs": 4950,
           "durationMs": 280,
           "textOffset": 32,
           "wordLength": 2
         },
         {
           "text": "图解",
-          "startMs": 5270,
+          "startMs": 5230,
           "durationMs": 0,
           "textOffset": 34,
           "wordLength": 2
         },
         {
           "text": "。",
-          "startMs": 5270,
+          "startMs": 5230,
           "durationMs": 0,
           "textOffset": 36,
           "wordLength": 1
         }
       ],
       "response": {
-        "Id": "f7328a0f7f8648baac149cd8ffb2dcfa",
+        "Id": "2f2031da52154ad7a972d847a20b6cf0",
         "RecognitionStatus": "Success",
-        "Offset": 900000,
-        "Duration": 57400000,
+        "Offset": 700000,
+        "Duration": 57600000,
         "Channel": 0,
         "DisplayText": "S叫剪切系数S why表示S乘why这次取1/2只为图解。",
-        "SNR": 34.429626,
+        "SNR": 35.69059,
         "NBest": [
           {
-            "Confidence": 0.98107797,
-            "Lexical": "s 叫 剪切 系数 s why 表示 s 乘 why 这次 取 二分之一 只 为 图解",
-            "ITN": "s 叫 剪切 系数 s why 表示 s 乘 why 这次 取 1/2 只 为 图解",
+            "Confidence": 0.98210526,
+            "Lexical": "S 叫 剪切 系数 S why 表示 S 乘 why 这次 取 二分之一 只 为 图解",
+            "ITN": "S 叫 剪切 系数 S why 表示 S 乘 why 这次 取 1/2 只 为 图解",
             "MaskedITN": "s叫剪切系数s why表示s乘why这次取1/2只为图解",
             "Display": "S叫剪切系数S why表示S乘why这次取1/2只为图解。",
             "PronunciationAssessment": {
-              "AccuracyScore": 98,
+              "AccuracyScore": 97,
               "FluencyScore": 99,
               "CompletenessScore": 100,
-              "PronScore": 98.6
+              "PronScore": 98
             },
             "Words": [
               {
-                "Word": "s",
-                "Offset": 900000,
-                "Duration": 3300000,
+                "Word": "S",
+                "Offset": 700000,
+                "Duration": 3600000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -1794,16 +1794,16 @@
               },
               {
                 "Word": "叫",
-                "Offset": 4300000,
-                "Duration": 1700000,
+                "Offset": 4400000,
+                "Duration": 1800000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 97,
+                  "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "剪切",
-                "Offset": 6100000,
+                "Offset": 6300000,
                 "Duration": 3900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -1812,17 +1812,17 @@
               },
               {
                 "Word": "系数",
-                "Offset": 10100000,
-                "Duration": 6400000,
+                "Offset": 10300000,
+                "Duration": 6100000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 97,
+                  "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "s",
-                "Offset": 16800000,
-                "Duration": 3000000,
+                "Word": "S",
+                "Offset": 16700000,
+                "Duration": 3100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -1831,7 +1831,7 @@
               {
                 "Word": "why",
                 "Offset": 19900000,
-                "Duration": 2700000,
+                "Duration": 3100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -1839,17 +1839,17 @@
               },
               {
                 "Word": "表示",
-                "Offset": 22700000,
-                "Duration": 3300000,
+                "Offset": 23100000,
+                "Duration": 3500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 91,
+                  "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "s",
-                "Offset": 26100000,
-                "Duration": 3300000,
+                "Word": "S",
+                "Offset": 26700000,
+                "Duration": 2500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -1857,17 +1857,17 @@
               },
               {
                 "Word": "乘",
-                "Offset": 29500000,
-                "Duration": 2500000,
+                "Offset": 29300000,
+                "Duration": 1900000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 94,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "why",
-                "Offset": 32100000,
-                "Duration": 4700000,
+                "Offset": 31300000,
+                "Duration": 4400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -1875,16 +1875,16 @@
               },
               {
                 "Word": "这次",
-                "Offset": 37100000,
-                "Duration": 4700000,
+                "Offset": 36000000,
+                "Duration": 4800000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 85,
+                  "AccuracyScore": 66,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "取",
-                "Offset": 41900000,
+                "Offset": 40900000,
                 "Duration": 2000000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -1893,8 +1893,8 @@
               },
               {
                 "Word": "二分之一",
-                "Offset": 44000000,
-                "Duration": 6200000,
+                "Offset": 43000000,
+                "Duration": 6800000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -1902,8 +1902,8 @@
               },
               {
                 "Word": "只",
-                "Offset": 50300000,
-                "Duration": 1200000,
+                "Offset": 49900000,
+                "Duration": 1400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -1911,8 +1911,8 @@
               },
               {
                 "Word": "为",
-                "Offset": 51600000,
-                "Duration": 1300000,
+                "Offset": 51400000,
+                "Duration": 1400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -1920,8 +1920,8 @@
               },
               {
                 "Word": "图解",
-                "Offset": 53000000,
-                "Duration": 5300000,
+                "Offset": 52900000,
+                "Duration": 5400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5595,7 +5595,7 @@
     }
   },
   "206-04": {
-    "duration": 4.704,
+    "duration": 4.8,
     "words": [
       {
         "text": "要",
@@ -5607,27 +5607,27 @@
       {
         "text": "单独",
         "startMs": 310,
-        "durationMs": 320,
+        "durationMs": 360,
         "textOffset": 1,
         "wordLength": 2
       },
       {
         "text": "留下",
-        "startMs": 630,
-        "durationMs": 440,
+        "startMs": 670,
+        "durationMs": 360,
         "textOffset": 3,
         "wordLength": 2
       },
       {
-        "text": "x",
-        "startMs": 1070,
-        "durationMs": 400,
+        "text": "X",
+        "startMs": 1030,
+        "durationMs": 520,
         "textOffset": 6,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 1470,
+        "startMs": 1550,
         "durationMs": 0,
         "textOffset": 7,
         "wordLength": 1
@@ -5635,62 +5635,62 @@
       {
         "text": "就",
         "startMs": 1590,
-        "durationMs": 280,
+        "durationMs": 320,
         "textOffset": 8,
         "wordLength": 1
       },
       {
         "text": "在",
-        "startMs": 1870,
-        "durationMs": 120,
+        "startMs": 1910,
+        "durationMs": 160,
         "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "等式",
-        "startMs": 1990,
-        "durationMs": 280,
+        "startMs": 2070,
+        "durationMs": 319,
         "textOffset": 10,
         "wordLength": 2
       },
       {
         "text": "两边",
-        "startMs": 2270,
+        "startMs": 2389,
         "durationMs": 480,
         "textOffset": 12,
         "wordLength": 2
       },
       {
         "text": "同时",
-        "startMs": 2750,
-        "durationMs": 360,
+        "startMs": 2869,
+        "durationMs": 361,
         "textOffset": 14,
         "wordLength": 2
       },
       {
         "text": "减去",
-        "startMs": 3110,
+        "startMs": 3230,
         "durationMs": 520,
         "textOffset": 16,
         "wordLength": 2
       },
       {
-        "text": "s",
-        "startMs": 3630,
+        "text": "S",
+        "startMs": 3750,
         "durationMs": 239,
         "textOffset": 19,
         "wordLength": 1
       },
       {
         "text": "乘",
-        "startMs": 3869,
-        "durationMs": 241,
+        "startMs": 3989,
+        "durationMs": 201,
         "textOffset": 21,
         "wordLength": 1
       },
       {
         "text": "why",
-        "startMs": 4110,
+        "startMs": 4190,
         "durationMs": 200,
         "textOffset": 23,
         "wordLength": 3
@@ -5699,23 +5699,23 @@
         "text": "撇",
         "textOffset": 27,
         "wordLength": 1,
-        "startMs": 4380,
-        "durationMs": 300
+        "startMs": 4460,
+        "durationMs": 310
       },
       {
         "text": "。",
-        "startMs": 4310,
+        "startMs": 4390,
         "durationMs": 0,
         "textOffset": 28,
         "wordLength": 1
       }
     ],
-    "speech": "要单独留下 x。就在等式两边同时减去 s 乘 why 撇。",
+    "speech": "要单独留下 X。就在等式两边同时减去 S 乘 why 撇。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "52103eda1556bbd18bf54ca47ccc6487df1fcf47dbdf282a4596a5b32ae848ff",
+    "fingerprint": "4dc919d8232cf8bf9a16e94b498b657f3d40ac3869c4a8fc826a8f9f347ae17d",
     "alignment": {
       "method": "azure-pronunciation-assessment",
-      "audioSha256": "022430db9b08943946fcc65c1d4dfc30085c781737ed189c6cbef218ea1d3f57",
+      "audioSha256": "fa0dc80fc42dd6e5807011e2b4b10533d9ca90ac66d283f3702ac29a41818ed4",
       "synthesisWords": [
         {
           "text": "要",
@@ -5727,27 +5727,27 @@
         {
           "text": "单独",
           "startMs": 310,
-          "durationMs": 320,
+          "durationMs": 360,
           "textOffset": 1,
           "wordLength": 2
         },
         {
           "text": "留下",
-          "startMs": 630,
-          "durationMs": 440,
+          "startMs": 670,
+          "durationMs": 360,
           "textOffset": 3,
           "wordLength": 2
         },
         {
-          "text": "x",
-          "startMs": 1070,
-          "durationMs": 400,
+          "text": "X",
+          "startMs": 1030,
+          "durationMs": 520,
           "textOffset": 6,
           "wordLength": 1
         },
         {
           "text": "。",
-          "startMs": 1470,
+          "startMs": 1550,
           "durationMs": 0,
           "textOffset": 7,
           "wordLength": 1
@@ -5755,101 +5755,101 @@
         {
           "text": "就",
           "startMs": 1590,
-          "durationMs": 280,
+          "durationMs": 320,
           "textOffset": 8,
           "wordLength": 1
         },
         {
           "text": "在",
-          "startMs": 1870,
-          "durationMs": 120,
+          "startMs": 1910,
+          "durationMs": 160,
           "textOffset": 9,
           "wordLength": 1
         },
         {
           "text": "等式",
-          "startMs": 1990,
-          "durationMs": 280,
+          "startMs": 2070,
+          "durationMs": 319,
           "textOffset": 10,
           "wordLength": 2
         },
         {
           "text": "两边",
-          "startMs": 2270,
+          "startMs": 2389,
           "durationMs": 480,
           "textOffset": 12,
           "wordLength": 2
         },
         {
           "text": "同时",
-          "startMs": 2750,
-          "durationMs": 360,
+          "startMs": 2869,
+          "durationMs": 361,
           "textOffset": 14,
           "wordLength": 2
         },
         {
           "text": "减去",
-          "startMs": 3110,
+          "startMs": 3230,
           "durationMs": 520,
           "textOffset": 16,
           "wordLength": 2
         },
         {
-          "text": "s",
-          "startMs": 3630,
+          "text": "S",
+          "startMs": 3750,
           "durationMs": 239,
           "textOffset": 19,
           "wordLength": 1
         },
         {
           "text": "乘",
-          "startMs": 3869,
-          "durationMs": 241,
+          "startMs": 3989,
+          "durationMs": 201,
           "textOffset": 21,
           "wordLength": 1
         },
         {
           "text": "why",
-          "startMs": 4110,
+          "startMs": 4190,
           "durationMs": 200,
           "textOffset": 23,
           "wordLength": 3
         },
         {
           "text": "撇",
-          "startMs": 4310,
+          "startMs": 4390,
           "durationMs": 0,
           "textOffset": 27,
           "wordLength": 1
         },
         {
           "text": "。",
-          "startMs": 4310,
+          "startMs": 4390,
           "durationMs": 0,
           "textOffset": 28,
           "wordLength": 1
         }
       ],
       "response": {
-        "Id": "53823503cae04e7dad0ec0c1a250497b",
+        "Id": "6b1e4499e238465283bd98b74fc9b84a",
         "RecognitionStatus": "Success",
         "Offset": 800000,
-        "Duration": 46000000,
+        "Duration": 46900000,
         "Channel": 0,
         "DisplayText": "要单独留下X就在等式两边同时减去S乘why撇。",
-        "SNR": 26.146202,
+        "SNR": 29.638826,
         "NBest": [
           {
-            "Confidence": 0.9765446,
-            "Lexical": "要 单独 留下 x 就 在 等式 两边 同时 减去 s 乘 why 撇",
-            "ITN": "要 单独 留下 x 就 在 等式 两边 同时 减去 s 乘 why 撇",
+            "Confidence": 0.9795456,
+            "Lexical": "要 单独 留下 X 就 在 等式 两边 同时 减去 S 乘 why 撇",
+            "ITN": "要 单独 留下 X 就 在 等式 两边 同时 减去 S 乘 why 撇",
             "MaskedITN": "要单独留下x就在等式两边同时减去s乘why撇",
             "Display": "要单独留下X就在等式两边同时减去S乘why撇。",
             "PronunciationAssessment": {
-              "AccuracyScore": 95,
-              "FluencyScore": 99,
+              "AccuracyScore": 97,
+              "FluencyScore": 100,
               "CompletenessScore": 100,
-              "PronScore": 96.8
+              "PronScore": 98.2
             },
             "Words": [
               {
@@ -5857,7 +5857,7 @@
                 "Offset": 800000,
                 "Duration": 2500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 76,
+                  "AccuracyScore": 79,
                   "ErrorType": "None"
                 }
               },
@@ -5873,25 +5873,25 @@
               {
                 "Word": "留下",
                 "Offset": 7000000,
-                "Duration": 3900000,
+                "Duration": 3200000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 94,
+                  "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "x",
-                "Offset": 11000000,
-                "Duration": 4500000,
+                "Word": "X",
+                "Offset": 10300000,
+                "Duration": 5700000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 94,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "就",
-                "Offset": 15900000,
-                "Duration": 3000000,
+                "Offset": 16300000,
+                "Duration": 3200000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5899,17 +5899,17 @@
               },
               {
                 "Word": "在",
-                "Offset": 19000000,
+                "Offset": 19600000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 100,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "等式",
-                "Offset": 20400000,
-                "Duration": 2900000,
+                "Offset": 21000000,
+                "Duration": 3300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5917,8 +5917,8 @@
               },
               {
                 "Word": "两边",
-                "Offset": 23400000,
-                "Duration": 4300000,
+                "Offset": 24400000,
+                "Duration": 4700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5926,26 +5926,26 @@
               },
               {
                 "Word": "同时",
-                "Offset": 27800000,
-                "Duration": 3700000,
+                "Offset": 29200000,
+                "Duration": 3500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 79,
+                  "AccuracyScore": 85,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "减去",
-                "Offset": 31600000,
-                "Duration": 5100000,
+                "Offset": 32800000,
+                "Duration": 4900000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 94,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "s",
-                "Offset": 36800000,
-                "Duration": 2300000,
+                "Word": "S",
+                "Offset": 37800000,
+                "Duration": 2500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5953,17 +5953,17 @@
               },
               {
                 "Word": "乘",
-                "Offset": 39200000,
-                "Duration": 2200000,
+                "Offset": 40400000,
+                "Duration": 1900000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 94,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "why",
-                "Offset": 41500000,
-                "Duration": 2200000,
+                "Offset": 42400000,
+                "Duration": 2100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5971,8 +5971,8 @@
               },
               {
                 "Word": "撇",
-                "Offset": 43800000,
-                "Duration": 3000000,
+                "Offset": 44600000,
+                "Duration": 3100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5985,7 +5985,7 @@
     }
   },
   "206-05": {
-    "duration": 4.512,
+    "duration": 4.656,
     "words": [
       {
         "text": "右边",
@@ -5997,119 +5997,119 @@
       {
         "text": "加上",
         "startMs": 470,
-        "durationMs": 320,
+        "durationMs": 280,
         "textOffset": 2,
         "wordLength": 2
       },
       {
         "text": "和",
-        "startMs": 790,
+        "startMs": 750,
         "durationMs": 160,
         "textOffset": 4,
         "wordLength": 1
       },
       {
         "text": "减去",
-        "startMs": 950,
+        "startMs": 910,
         "durationMs": 320,
         "textOffset": 5,
         "wordLength": 2
       },
       {
         "text": "的",
-        "startMs": 1270,
+        "startMs": 1230,
         "durationMs": 120,
         "textOffset": 7,
         "wordLength": 1
       },
       {
         "text": "是",
-        "startMs": 1390,
+        "startMs": 1350,
         "durationMs": 120,
         "textOffset": 8,
         "wordLength": 1
       },
       {
         "text": "同",
-        "startMs": 1510,
-        "durationMs": 200,
+        "startMs": 1470,
+        "durationMs": 160,
         "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "一个",
-        "startMs": 1710,
+        "startMs": 1630,
         "durationMs": 240,
         "textOffset": 10,
         "wordLength": 2
       },
       {
         "text": "数",
-        "startMs": 1950,
-        "durationMs": 399,
+        "startMs": 1870,
+        "durationMs": 400,
         "textOffset": 12,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 2349,
+        "startMs": 2270,
         "durationMs": 0,
         "textOffset": 13,
         "wordLength": 1
       },
       {
         "text": "它们",
-        "startMs": 2349,
-        "durationMs": 361,
+        "startMs": 2429,
+        "durationMs": 360,
         "textOffset": 14,
         "wordLength": 2
       },
       {
         "text": "抵消",
-        "startMs": 2710,
-        "durationMs": 599,
+        "startMs": 2789,
+        "durationMs": 640,
         "textOffset": 16,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 3309,
+        "startMs": 3429,
         "durationMs": 0,
         "textOffset": 18,
         "wordLength": 1
       },
       {
         "text": "只",
-        "startMs": 3309,
-        "durationMs": 281,
+        "startMs": 3510,
+        "durationMs": 240,
         "textOffset": 19,
         "wordLength": 1
       },
       {
         "text": "剩下",
-        "startMs": 3590,
-        "durationMs": 399,
+        "startMs": 3750,
+        "durationMs": 480,
         "textOffset": 20,
         "wordLength": 2
       },
       {
-        "text": "x",
-        "startMs": 3989,
-        "durationMs": 441,
+        "text": "X",
+        "startMs": 4230,
+        "durationMs": 360,
         "textOffset": 23,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 4430,
+        "startMs": 4590,
         "durationMs": 0,
         "textOffset": 24,
         "wordLength": 1
       }
     ],
-    "speech": "右边加上和减去的是同一个数。它们抵消。只剩下 x。",
+    "speech": "右边加上和减去的是同一个数。它们抵消。只剩下 X。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "0966965d8c7f9d15f964214658b96a8306232d4ab68b9f8ffa417f03cacfec28"
+    "fingerprint": "a9737e36174a698befeea988cc2294791902c05e4f63851f61d2cd35e9ec7cf6"
   },
   "206-06": {
     "duration": 5.304,
@@ -6443,7 +6443,7 @@
     "fingerprint": "cd3771826e68adeb2b324b889c98e85a9f791c049d47dbfb3aba274817a5dd3d"
   },
   "206-08": {
-    "duration": 5.712,
+    "duration": 5.664,
     "words": [
       {
         "text": "把",
@@ -6462,126 +6462,126 @@
       {
         "text": "坐标",
         "startMs": 710,
-        "durationMs": 440,
+        "durationMs": 360,
         "textOffset": 3,
         "wordLength": 2
       },
       {
         "text": "零代",
-        "startMs": 1150,
+        "startMs": 1070,
         "durationMs": 400,
         "textOffset": 5,
         "wordLength": 2
       },
       {
         "text": "入",
-        "startMs": 1550,
-        "durationMs": 440,
+        "startMs": 1470,
+        "durationMs": 400,
         "textOffset": 7,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 1990,
+        "startMs": 1870,
         "durationMs": 0,
         "textOffset": 8,
         "wordLength": 1
       },
       {
         "text": "原",
-        "startMs": 2029,
+        "startMs": 1910,
         "durationMs": 320,
         "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "横",
-        "startMs": 2349,
-        "durationMs": 201,
+        "startMs": 2230,
+        "durationMs": 159,
         "textOffset": 10,
         "wordLength": 1
       },
       {
         "text": "坐标",
-        "startMs": 2550,
+        "startMs": 2389,
         "durationMs": 480,
         "textOffset": 11,
         "wordLength": 2
       },
       {
         "text": "等于",
-        "startMs": 3030,
-        "durationMs": 279,
+        "startMs": 2869,
+        "durationMs": 281,
         "textOffset": 13,
         "wordLength": 2
       },
       {
         "text": "新",
-        "startMs": 3309,
-        "durationMs": 201,
+        "startMs": 3150,
+        "durationMs": 239,
         "textOffset": 15,
         "wordLength": 1
       },
       {
         "text": "横",
-        "startMs": 3510,
-        "durationMs": 200,
+        "startMs": 3389,
+        "durationMs": 201,
         "textOffset": 16,
         "wordLength": 1
       },
       {
         "text": "坐标",
-        "startMs": 3710,
-        "durationMs": 560,
+        "startMs": 3590,
+        "durationMs": 520,
         "textOffset": 17,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 4270,
+        "startMs": 4110,
         "durationMs": 0,
         "textOffset": 19,
         "wordLength": 1
       },
       {
         "text": "减去",
-        "startMs": 4310,
+        "startMs": 4190,
         "durationMs": 480,
         "textOffset": 20,
         "wordLength": 2
       },
       {
-        "text": "s",
-        "startMs": 4790,
-        "durationMs": 240,
+        "text": "S",
+        "startMs": 4670,
+        "durationMs": 280,
         "textOffset": 23,
         "wordLength": 1
       },
       {
         "text": "乘",
-        "startMs": 5030,
+        "startMs": 4950,
         "durationMs": 280,
         "textOffset": 25,
         "wordLength": 1
       },
       {
         "text": "零",
-        "startMs": 5310,
+        "startMs": 5230,
         "durationMs": 360,
         "textOffset": 26,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 5670,
+        "startMs": 5590,
         "durationMs": 0,
         "textOffset": 27,
         "wordLength": 1
       }
     ],
-    "speech": "把新纵坐标零代入。原横坐标等于新横坐标。减去 s 乘零。",
+    "speech": "把新纵坐标零代入。原横坐标等于新横坐标。减去 S 乘零。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "85668e5e7bdd5407b77237782f7c082e7b0f3b09e8984a0f9e3272db8252a1cd"
+    "fingerprint": "8789d41cfcd805f0a2fd5b259da9e0678ba05bf74dac9e9efed94abe69efeafa"
   },
   "206-09": {
     "duration": 4.344,
@@ -7855,7 +7855,7 @@
     "fingerprint": "1e982e53772b92896fa877734056ba5a76fb8c2dc03daf98b9fa64316485920d"
   },
   "206-16": {
-    "duration": 6.6,
+    "duration": 6.696,
     "words": [
       {
         "text": "更",
@@ -7867,63 +7867,63 @@
       {
         "text": "一般",
         "startMs": 270,
-        "durationMs": 400,
+        "durationMs": 360,
         "textOffset": 1,
         "wordLength": 2
       },
       {
         "text": "地",
-        "startMs": 670,
-        "durationMs": 320,
+        "startMs": 630,
+        "durationMs": 280,
         "textOffset": 3,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 990,
+        "startMs": 910,
         "durationMs": 0,
         "textOffset": 4,
         "wordLength": 1
       },
       {
         "text": "新",
-        "startMs": 1030,
-        "durationMs": 440,
+        "startMs": 950,
+        "durationMs": 400,
         "textOffset": 5,
         "wordLength": 1
       },
       {
         "text": "纵轴",
-        "startMs": 1470,
+        "startMs": 1350,
         "durationMs": 360,
         "textOffset": 6,
         "wordLength": 2
       },
       {
         "text": "上",
-        "startMs": 1830,
+        "startMs": 1710,
         "durationMs": 120,
         "textOffset": 8,
         "wordLength": 1
       },
       {
         "text": "的",
-        "startMs": 1950,
+        "startMs": 1830,
         "durationMs": 120,
         "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "点",
-        "startMs": 2070,
-        "durationMs": 279,
+        "startMs": 1950,
+        "durationMs": 320,
         "textOffset": 10,
         "wordLength": 1
       },
       {
         "text": "满足",
-        "startMs": 2349,
-        "durationMs": 361,
+        "startMs": 2270,
+        "durationMs": 440,
         "textOffset": 11,
         "wordLength": 2
       },
@@ -7937,83 +7937,83 @@
       {
         "text": "横",
         "startMs": 2909,
-        "durationMs": 161,
+        "durationMs": 201,
         "textOffset": 14,
         "wordLength": 1
       },
       {
         "text": "坐标",
-        "startMs": 3070,
-        "durationMs": 359,
+        "startMs": 3110,
+        "durationMs": 319,
         "textOffset": 15,
         "wordLength": 2
       },
       {
         "text": "为",
         "startMs": 3429,
-        "durationMs": 161,
+        "durationMs": 201,
         "textOffset": 17,
         "wordLength": 1
       },
       {
         "text": "零",
-        "startMs": 3590,
+        "startMs": 3630,
         "durationMs": 359,
         "textOffset": 18,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 3949,
+        "startMs": 3989,
         "durationMs": 0,
         "textOffset": 19,
         "wordLength": 1
       },
       {
         "text": "所以",
-        "startMs": 4190,
-        "durationMs": 440,
+        "startMs": 4150,
+        "durationMs": 520,
         "textOffset": 20,
         "wordLength": 2
       },
       {
-        "text": "x",
-        "startMs": 4630,
-        "durationMs": 360,
+        "text": "X",
+        "startMs": 4670,
+        "durationMs": 320,
         "textOffset": 23,
         "wordLength": 1
       },
       {
         "text": "等于",
         "startMs": 4990,
-        "durationMs": 280,
+        "durationMs": 400,
         "textOffset": 25,
         "wordLength": 2
       },
       {
         "text": "负",
-        "startMs": 5270,
-        "durationMs": 200,
+        "startMs": 5390,
+        "durationMs": 160,
         "textOffset": 27,
         "wordLength": 1
       },
       {
-        "text": "s",
-        "startMs": 5470,
+        "text": "S",
+        "startMs": 5550,
         "durationMs": 280,
         "textOffset": 29,
         "wordLength": 1
       },
       {
         "text": "乘",
-        "startMs": 5750,
-        "durationMs": 240,
+        "startMs": 5830,
+        "durationMs": 280,
         "textOffset": 31,
         "wordLength": 1
       },
       {
         "text": "why",
-        "startMs": 5990,
+        "startMs": 6110,
         "durationMs": 200,
         "textOffset": 33,
         "wordLength": 3
@@ -8022,23 +8022,23 @@
         "text": "撇",
         "textOffset": 37,
         "wordLength": 1,
-        "startMs": 6260,
-        "durationMs": 310
+        "startMs": 6350,
+        "durationMs": 320
       },
       {
         "text": "。",
-        "startMs": 6190,
+        "startMs": 6310,
         "durationMs": 0,
         "textOffset": 38,
         "wordLength": 1
       }
     ],
-    "speech": "更一般地。新纵轴上的点满足新横坐标为零。所以 x 等于负 s 乘 why 撇。",
+    "speech": "更一般地。新纵轴上的点满足新横坐标为零。所以 X 等于负 S 乘 why 撇。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "456ea2024644600b89f7e658a9368948939da67d05b9dd712ac3620e188fe5f9",
+    "fingerprint": "dd36a354bd21078a55e1232f8ad1b786362ed6506555553cb75992bc5d52e128",
     "alignment": {
       "method": "azure-pronunciation-assessment",
-      "audioSha256": "725ce48978c42d8e39c34456668b32e14edab0bfb6b1adb3fd30bfab7cb1e4f9",
+      "audioSha256": "7fad94a73974da5db34a0e4906780fa22b57400cb088ed3d790a04349e25cd54",
       "synthesisWords": [
         {
           "text": "更",
@@ -8050,63 +8050,63 @@
         {
           "text": "一般",
           "startMs": 270,
-          "durationMs": 400,
+          "durationMs": 360,
           "textOffset": 1,
           "wordLength": 2
         },
         {
           "text": "地",
-          "startMs": 670,
-          "durationMs": 320,
+          "startMs": 630,
+          "durationMs": 280,
           "textOffset": 3,
           "wordLength": 1
         },
         {
           "text": "。",
-          "startMs": 990,
+          "startMs": 910,
           "durationMs": 0,
           "textOffset": 4,
           "wordLength": 1
         },
         {
           "text": "新",
-          "startMs": 1030,
-          "durationMs": 440,
+          "startMs": 950,
+          "durationMs": 400,
           "textOffset": 5,
           "wordLength": 1
         },
         {
           "text": "纵轴",
-          "startMs": 1470,
+          "startMs": 1350,
           "durationMs": 360,
           "textOffset": 6,
           "wordLength": 2
         },
         {
           "text": "上",
-          "startMs": 1830,
+          "startMs": 1710,
           "durationMs": 120,
           "textOffset": 8,
           "wordLength": 1
         },
         {
           "text": "的",
-          "startMs": 1950,
+          "startMs": 1830,
           "durationMs": 120,
           "textOffset": 9,
           "wordLength": 1
         },
         {
           "text": "点",
-          "startMs": 2070,
-          "durationMs": 279,
+          "startMs": 1950,
+          "durationMs": 320,
           "textOffset": 10,
           "wordLength": 1
         },
         {
           "text": "满足",
-          "startMs": 2349,
-          "durationMs": 361,
+          "startMs": 2270,
+          "durationMs": 440,
           "textOffset": 11,
           "wordLength": 2
         },
@@ -8120,128 +8120,128 @@
         {
           "text": "横",
           "startMs": 2909,
-          "durationMs": 161,
+          "durationMs": 201,
           "textOffset": 14,
           "wordLength": 1
         },
         {
           "text": "坐标",
-          "startMs": 3070,
-          "durationMs": 359,
+          "startMs": 3110,
+          "durationMs": 319,
           "textOffset": 15,
           "wordLength": 2
         },
         {
           "text": "为",
           "startMs": 3429,
-          "durationMs": 161,
+          "durationMs": 201,
           "textOffset": 17,
           "wordLength": 1
         },
         {
           "text": "零",
-          "startMs": 3590,
+          "startMs": 3630,
           "durationMs": 359,
           "textOffset": 18,
           "wordLength": 1
         },
         {
           "text": "。",
-          "startMs": 3949,
+          "startMs": 3989,
           "durationMs": 0,
           "textOffset": 19,
           "wordLength": 1
         },
         {
           "text": "所以",
-          "startMs": 4190,
-          "durationMs": 440,
+          "startMs": 4150,
+          "durationMs": 520,
           "textOffset": 20,
           "wordLength": 2
         },
         {
-          "text": "x",
-          "startMs": 4630,
-          "durationMs": 360,
+          "text": "X",
+          "startMs": 4670,
+          "durationMs": 320,
           "textOffset": 23,
           "wordLength": 1
         },
         {
           "text": "等于",
           "startMs": 4990,
-          "durationMs": 280,
+          "durationMs": 400,
           "textOffset": 25,
           "wordLength": 2
         },
         {
           "text": "负",
-          "startMs": 5270,
-          "durationMs": 200,
+          "startMs": 5390,
+          "durationMs": 160,
           "textOffset": 27,
           "wordLength": 1
         },
         {
-          "text": "s",
-          "startMs": 5470,
+          "text": "S",
+          "startMs": 5550,
           "durationMs": 280,
           "textOffset": 29,
           "wordLength": 1
         },
         {
           "text": "乘",
-          "startMs": 5750,
-          "durationMs": 240,
+          "startMs": 5830,
+          "durationMs": 280,
           "textOffset": 31,
           "wordLength": 1
         },
         {
           "text": "why",
-          "startMs": 5990,
+          "startMs": 6110,
           "durationMs": 200,
           "textOffset": 33,
           "wordLength": 3
         },
         {
           "text": "撇",
-          "startMs": 6190,
+          "startMs": 6310,
           "durationMs": 0,
           "textOffset": 37,
           "wordLength": 1
         },
         {
           "text": "。",
-          "startMs": 6190,
+          "startMs": 6310,
           "durationMs": 0,
           "textOffset": 38,
           "wordLength": 1
         }
       ],
       "response": {
-        "Id": "cb1b23e662144738b88b2848ef7e5892",
+        "Id": "c5150fa96e424ef1943b37ff2cecf0c9",
         "RecognitionStatus": "Success",
-        "Offset": 600000,
-        "Duration": 65100000,
+        "Offset": 700000,
+        "Duration": 66000000,
         "Channel": 0,
         "DisplayText": "更一般地，新纵轴上的点满足新横坐标为零，所以X等于负S乘why撇。",
-        "SNR": 38.49695,
+        "SNR": 30.24102,
         "NBest": [
           {
-            "Confidence": 0.97429425,
-            "Lexical": "更 一般 地 新 纵轴 上 的 点 满足 新 横坐标 为 零 所以 x 等于 负 s 乘 why 撇",
-            "ITN": "更 一般 地 新 纵轴 上 的 点 满足 新 横坐标 为 零 所以 x 等于 负 s 乘 why 撇",
+            "Confidence": 0.9736023,
+            "Lexical": "更 一般 地 新 纵轴 上 的 点 满足 新 横坐标 为 零 所以 X 等于 负 S 乘 why 撇",
+            "ITN": "更 一般 地 新 纵轴 上 的 点 满足 新 横坐标 为 零 所以 X 等于 负 S 乘 why 撇",
             "MaskedITN": "更一般地新纵轴上的点满足新横坐标为零所以x等于负s乘why撇",
             "Display": "更一般地，新纵轴上的点满足新横坐标为零，所以X等于负S乘why撇。",
             "PronunciationAssessment": {
-              "AccuracyScore": 94,
+              "AccuracyScore": 93,
               "FluencyScore": 98,
               "CompletenessScore": 95,
-              "PronScore": 95
+              "PronScore": 94.4
             },
             "Words": [
               {
                 "Word": "更",
-                "Offset": 600000,
-                "Duration": 2700000,
+                "Offset": 700000,
+                "Duration": 2300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -8249,8 +8249,8 @@
               },
               {
                 "Word": "一般",
-                "Offset": 3400000,
-                "Duration": 3600000,
+                "Offset": 3100000,
+                "Duration": 3400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -8258,8 +8258,8 @@
               },
               {
                 "Word": "地",
-                "Offset": 7100000,
-                "Duration": 3200000,
+                "Offset": 6600000,
+                "Duration": 3000000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -8267,8 +8267,8 @@
               },
               {
                 "Word": "新",
-                "Offset": 10600000,
-                "Duration": 4300000,
+                "Offset": 9900000,
+                "Duration": 4100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -8276,8 +8276,8 @@
               },
               {
                 "Word": "纵轴",
-                "Offset": 15000000,
-                "Duration": 3500000,
+                "Offset": 14100000,
+                "Duration": 3300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -8285,17 +8285,17 @@
               },
               {
                 "Word": "上",
-                "Offset": 18600000,
+                "Offset": 17500000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 79,
+                  "AccuracyScore": 76,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "的",
-                "Offset": 20000000,
-                "Duration": 1100000,
+                "Offset": 18900000,
+                "Duration": 900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -8303,35 +8303,35 @@
               },
               {
                 "Word": "点",
-                "Offset": 21200000,
-                "Duration": 2700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "满足",
-                "Offset": 24000000,
-                "Duration": 3700000,
+                "Offset": 19900000,
+                "Duration": 3200000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "新",
-                "Offset": 27800000,
-                "Duration": 1700000,
+                "Word": "满足",
+                "Offset": 23400000,
+                "Duration": 4200000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               },
               {
+                "Word": "新",
+                "Offset": 27700000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
                 "Word": "横坐标",
-                "Offset": 29600000,
-                "Duration": 4900000,
+                "Offset": 29500000,
+                "Duration": 5100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -8339,16 +8339,16 @@
               },
               {
                 "Word": "为",
-                "Offset": 34600000,
-                "Duration": 1600000,
+                "Offset": 34700000,
+                "Duration": 1700000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 88,
+                  "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "零",
-                "Offset": 36300000,
+                "Offset": 36500000,
                 "Duration": 3900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -8357,17 +8357,17 @@
               },
               {
                 "Word": "所以",
-                "Offset": 41400000,
-                "Duration": 5300000,
+                "Offset": 41100000,
+                "Duration": 5900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "x",
-                "Offset": 46800000,
-                "Duration": 3200000,
+                "Word": "X",
+                "Offset": 47100000,
+                "Duration": 3300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -8375,35 +8375,35 @@
               },
               {
                 "Word": "等于",
-                "Offset": 50100000,
-                "Duration": 3200000,
+                "Offset": 50500000,
+                "Duration": 3900000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 82,
+                  "AccuracyScore": 85,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "负",
-                "Offset": 53400000,
-                "Duration": 1700000,
+                "Offset": 54500000,
+                "Duration": 1500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 57,
+                  "AccuracyScore": 50,
                   "ErrorType": "Mispronunciation"
                 }
               },
               {
-                "Word": "s",
-                "Offset": 55200000,
-                "Duration": 2500000,
+                "Word": "S",
+                "Offset": 56100000,
+                "Duration": 2700000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 97,
+                  "AccuracyScore": 88,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "乘",
-                "Offset": 57800000,
-                "Duration": 2500000,
+                "Offset": 58900000,
+                "Duration": 2300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 91,
                   "ErrorType": "None"
@@ -8411,7 +8411,7 @@
               },
               {
                 "Word": "why",
-                "Offset": 60400000,
+                "Offset": 61300000,
                 "Duration": 2100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -8420,8 +8420,8 @@
               },
               {
                 "Word": "撇",
-                "Offset": 62600000,
-                "Duration": 3100000,
+                "Offset": 63500000,
+                "Duration": 3200000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -11745,7 +11745,7 @@
     "fingerprint": "6e8f564238d5c42ce8c60c226d0acd23a55e3c21d8d41cd09b0f23568d95a8b0"
   },
   "206-06c": {
-    "duration": 5.952,
+    "duration": 6.048,
     "words": [
       {
         "text": "原",
@@ -11764,154 +11764,154 @@
       {
         "text": "坐标",
         "startMs": 510,
-        "durationMs": 400,
+        "durationMs": 480,
         "textOffset": 2,
         "wordLength": 2
       },
       {
         "text": "等于",
-        "startMs": 910,
-        "durationMs": 320,
+        "startMs": 990,
+        "durationMs": 280,
         "textOffset": 4,
         "wordLength": 2
       },
       {
         "text": "二",
-        "startMs": 1230,
+        "startMs": 1270,
         "durationMs": 240,
         "textOffset": 6,
         "wordLength": 1
       },
       {
         "text": "减去",
-        "startMs": 1470,
-        "durationMs": 400,
+        "startMs": 1510,
+        "durationMs": 360,
         "textOffset": 7,
         "wordLength": 2
       },
       {
-        "text": "s",
+        "text": "S",
         "startMs": 1870,
-        "durationMs": 200,
+        "durationMs": 280,
         "textOffset": 10,
         "wordLength": 1
       },
       {
         "text": "乘",
-        "startMs": 2070,
-        "durationMs": 279,
+        "startMs": 2150,
+        "durationMs": 239,
         "textOffset": 12,
         "wordLength": 1
       },
       {
         "text": "零",
-        "startMs": 2349,
+        "startMs": 2389,
         "durationMs": 361,
         "textOffset": 13,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 2710,
+        "startMs": 2750,
         "durationMs": 0,
         "textOffset": 14,
         "wordLength": 1
       },
       {
         "text": "乘",
-        "startMs": 2750,
-        "durationMs": 320,
+        "startMs": 2869,
+        "durationMs": 281,
         "textOffset": 15,
         "wordLength": 1
       },
       {
         "text": "零",
-        "startMs": 3070,
-        "durationMs": 160,
+        "startMs": 3150,
+        "durationMs": 199,
         "textOffset": 16,
         "wordLength": 1
       },
       {
         "text": "得到",
-        "startMs": 3230,
-        "durationMs": 320,
+        "startMs": 3349,
+        "durationMs": 281,
         "textOffset": 17,
         "wordLength": 2
       },
       {
         "text": "零",
-        "startMs": 3550,
-        "durationMs": 399,
+        "startMs": 3630,
+        "durationMs": 400,
         "textOffset": 19,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 3949,
+        "startMs": 4030,
         "durationMs": 0,
         "textOffset": 20,
         "wordLength": 1
       },
       {
         "text": "所以",
-        "startMs": 4070,
-        "durationMs": 440,
+        "startMs": 4150,
+        "durationMs": 400,
         "textOffset": 21,
         "wordLength": 2
       },
       {
         "text": "原",
-        "startMs": 4510,
+        "startMs": 4550,
         "durationMs": 160,
         "textOffset": 23,
         "wordLength": 1
       },
       {
         "text": "横",
-        "startMs": 4670,
+        "startMs": 4710,
         "durationMs": 200,
         "textOffset": 24,
         "wordLength": 1
       },
       {
         "text": "坐标",
-        "startMs": 4870,
-        "durationMs": 400,
+        "startMs": 4910,
+        "durationMs": 440,
         "textOffset": 25,
         "wordLength": 2
       },
       {
         "text": "仍",
-        "startMs": 5270,
+        "startMs": 5350,
         "durationMs": 200,
         "textOffset": 27,
         "wordLength": 1
       },
       {
         "text": "是",
-        "startMs": 5470,
-        "durationMs": 160,
+        "startMs": 5550,
+        "durationMs": 200,
         "textOffset": 28,
         "wordLength": 1
       },
       {
         "text": "二",
-        "startMs": 5630,
-        "durationMs": 280,
+        "startMs": 5750,
+        "durationMs": 240,
         "textOffset": 29,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 5910,
+        "startMs": 5990,
         "durationMs": 0,
         "textOffset": 30,
         "wordLength": 1
       }
     ],
-    "speech": "原横坐标等于二减去 s 乘零。乘零得到零。所以原横坐标仍是二。",
+    "speech": "原横坐标等于二减去 S 乘零。乘零得到零。所以原横坐标仍是二。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "cb050aa90b50e7a9973b4aede6dc4f87f7707afaeb72ef23fcf80aacc9bcc686"
+    "fingerprint": "a3a62078ee2cd6eb3537f0450274f5ebc1ed7a63b0b69bede462180333f1c986"
   },
   "206-06d": {
     "duration": 5.904,

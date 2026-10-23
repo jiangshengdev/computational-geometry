@@ -115,29 +115,29 @@
     },
     {
       "text": "这里，X 表示横坐标，",
-      "startMs": 3630,
-      "endMs": 5630,
+      "startMs": 3590,
+      "endMs": 5750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "Y 表示纵坐标。",
-      "startMs": 5578,
-      "endMs": 6938,
+      "startMs": 5748,
+      "endMs": 7188,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是说，把横坐标乘二，",
-      "startMs": 7418,
-      "endMs": 9778,
+      "startMs": 7268,
+      "endMs": 9587,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "再加一，就得到纵坐标。",
-      "startMs": 9818,
-      "endMs": 12058,
+      "startMs": 9587,
+      "endMs": 11722,
       "timestampMs": null,
       "confidence": null
     }
@@ -245,28 +245,28 @@
     {
       "text": "等式两边同时减去 2X，",
       "startMs": 70,
-      "endMs": 2309,
+      "endMs": 2349,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "再同时乘以负一，就得到 2X−Y=−1。",
-      "startMs": 2389,
-      "endMs": 5830,
+      "startMs": 2429,
+      "endMs": 5750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "变形前后，满足等式的点没有变，",
       "startMs": 6346,
-      "endMs": 9306,
+      "endMs": 9546,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以表示的还是同一条直线。",
-      "startMs": 9466,
-      "endMs": 11426,
+      "startMs": 9665,
+      "endMs": 11546,
       "timestampMs": null,
       "confidence": null
     }
@@ -275,35 +275,35 @@
     {
       "text": "把这三个固定的数分别记作 a、b 和 c，",
       "startMs": 70,
-      "endMs": 3270,
+      "endMs": 3190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "方程就写成 aX+bY=c。",
-      "startMs": 3270,
-      "endMs": 7127,
+      "startMs": 3190,
+      "endMs": 6956,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "在这个例子里，a 是二，",
-      "startMs": 7199,
-      "endMs": 9199,
+      "startMs": 7028,
+      "endMs": 9068,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "b 和 c 都是负一。",
-      "startMs": 9199,
-      "endMs": 10759,
+      "startMs": 9108,
+      "endMs": 10548,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这三个数是固定的，X 和 Y 则随着点的位置变化。",
-      "startMs": 10879,
-      "endMs": 14844,
+      "startMs": 10588,
+      "endMs": 14543,
       "timestampMs": null,
       "confidence": null
     }
@@ -328,42 +328,42 @@
     {
       "text": "现在，我们只知道两个端点，",
       "startMs": 70,
-      "endMs": 2469,
+      "endMs": 2270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "要找出一组系数 a、b 和 c，",
-      "startMs": 2469,
-      "endMs": 4670,
+      "startMs": 2309,
+      "endMs": 4590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "让方程表示经过这两个点的直线。",
-      "startMs": 4980,
-      "endMs": 7620,
+      "startMs": 4895,
+      "endMs": 7455,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "既然两个点都在直线上，",
-      "startMs": 7899,
-      "endMs": 9820,
+      "startMs": 7694,
+      "endMs": 9535,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把它们的坐标分别代进去，",
-      "startMs": 9930,
-      "endMs": 11610,
+      "startMs": 9588,
+      "endMs": 11508,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "等式就都应该成立。",
-      "startMs": 11810,
-      "endMs": 13329,
+      "startMs": 11588,
+      "endMs": 13068,
       "timestampMs": null,
       "confidence": null
     }
@@ -372,21 +372,21 @@
     {
       "text": "先代入点 A：横坐标是一，",
       "startMs": 70,
-      "endMs": 2110,
+      "endMs": 2150,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标是三，得到 a×1+b×3=c。",
-      "startMs": 2190,
-      "endMs": 5847,
+      "startMs": 2309,
+      "endMs": 6188,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "化简后，就是 a+3b=c。",
-      "startMs": 5919,
-      "endMs": 8278,
+      "startMs": 6260,
+      "endMs": 8700,
       "timestampMs": null,
       "confidence": null
     }
@@ -395,7 +395,7 @@
     {
       "text": "再代入点 B，得到 3a+7b=c。",
       "startMs": 70,
-      "endMs": 3070,
+      "endMs": 3110,
       "timestampMs": null,
       "confidence": null
     },
@@ -409,7 +409,7 @@
     {
       "text": "所以两式中的 a、b 和 c 分别是同样的数。",
       "startMs": 5919,
-      "endMs": 8919,
+      "endMs": 9119,
       "timestampMs": null,
       "confidence": null
     }
@@ -418,27 +418,27 @@
     {
       "text": "两个式子的右边都是 c。",
       "startMs": 70,
-      "endMs": 1790,
+      "endMs": 1910,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "用第二式减去第一式，",
-      "startMs": 1790,
-      "endMs": 3550,
+      "startMs": 1910,
+      "endMs": 3750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是左边减左边，右边减右边。",
-      "startMs": 3531,
-      "endMs": 6370,
+      "startMs": 3786,
+      "endMs": 6505,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "右边的 c−c，就等于零。",
-      "startMs": 6571,
+      "startMs": 6665,
       "endMs": 8972,
       "timestampMs": null,
       "confidence": null
@@ -454,36 +454,36 @@
     },
     {
       "text": "再合并同类项：三个 a 减一个 a，",
-      "startMs": 3389,
-      "endMs": 6190,
+      "startMs": 3670,
+      "endMs": 6110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "剩两个 a；",
-      "startMs": 6175,
-      "endMs": 7015,
+      "startMs": 6431,
+      "endMs": 7271,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "七个 b 减三个 b，",
-      "startMs": 7015,
-      "endMs": 8335,
+      "startMs": 7271,
+      "endMs": 8511,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "剩四个 b。",
-      "startMs": 8335,
-      "endMs": 9215,
+      "startMs": 8511,
+      "endMs": 9350,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "于是得到 2a+4b=0。",
-      "startMs": 9335,
-      "endMs": 11615,
+      "startMs": 9511,
+      "endMs": 11831,
       "timestampMs": null,
       "confidence": null
     }
@@ -492,42 +492,42 @@
     {
       "text": "二和四也能从图上看出来。",
       "startMs": 70,
-      "endMs": 2270,
+      "endMs": 2150,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "横坐标从一变成三，增加了二，",
-      "startMs": 2670,
-      "endMs": 5429,
+      "startMs": 2550,
+      "endMs": 5338,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以 aX 这一项的变化量是 2a。",
-      "startMs": 5549,
-      "endMs": 8629,
+      "startMs": 5458,
+      "endMs": 8538,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标从三变成七，增加了四，",
-      "startMs": 8709,
-      "endMs": 11698,
+      "startMs": 8698,
+      "endMs": 11572,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以 bY 这一项的变化量是 4b。",
-      "startMs": 11778,
-      "endMs": 14617,
+      "startMs": 11692,
+      "endMs": 14531,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "图上的虚线只是帮助我们比较坐标。",
-      "startMs": 14708,
-      "endMs": 17188,
+      "startMs": 14623,
+      "endMs": 17103,
       "timestampMs": null,
       "confidence": null
     }
@@ -536,35 +536,35 @@
     {
       "text": "这里说的变化量，可以是正数，",
       "startMs": 70,
-      "endMs": 2429,
+      "endMs": 2389,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也可以是负数。",
-      "startMs": 2550,
-      "endMs": 3670,
+      "startMs": 2389,
+      "endMs": 3469,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两项合起来，变化量就是 2a+4b。",
-      "startMs": 3781,
-      "endMs": 6980,
+      "startMs": 3485,
+      "endMs": 6605,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两个端点代入后的结果都等于 c，",
-      "startMs": 7261,
-      "endMs": 9821,
+      "startMs": 6804,
+      "endMs": 8965,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以前后的差必须是零。",
-      "startMs": 9844,
-      "endMs": 11644,
+      "startMs": 9418,
+      "endMs": 11218,
       "timestampMs": null,
       "confidence": null
     }
@@ -573,14 +573,14 @@
     {
       "text": "也就是说，选出的 a 和 b 必须满足这个等式。",
       "startMs": 70,
-      "endMs": 3750,
+      "endMs": 3469,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "那怎样选，才能让这两项恰好抵消呢？",
-      "startMs": 4070,
-      "endMs": 6655,
+      "startMs": 3630,
+      "endMs": 5943,
       "timestampMs": null,
       "confidence": null
     }
@@ -589,20 +589,20 @@
     {
       "text": "我们要选出 a 和 b，",
       "startMs": 70,
-      "endMs": 1710,
+      "endMs": 1750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "让这两项相加等于零。",
       "startMs": 1910,
-      "endMs": 3590,
+      "endMs": 3750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "可以让这两项的绝对值相同，",
-      "startMs": 3989,
+      "startMs": 3909,
       "endMs": 6070,
       "timestampMs": null,
       "confidence": null
@@ -610,7 +610,7 @@
     {
       "text": "符号相反。",
       "startMs": 6090,
-      "endMs": 7130,
+      "endMs": 7090,
       "timestampMs": null,
       "confidence": null
     }
@@ -649,7 +649,7 @@
     {
       "text": "先让 a 等于四。",
       "startMs": 70,
-      "endMs": 1390,
+      "endMs": 1470,
       "timestampMs": null,
       "confidence": null
     },
@@ -663,7 +663,7 @@
     {
       "text": "等于八。",
       "startMs": 3309,
-      "endMs": 3670,
+      "endMs": 3590,
       "timestampMs": null,
       "confidence": null
     }
@@ -672,7 +672,7 @@
     {
       "text": "要让两项抵消，b 应该是多少？",
       "startMs": 70,
-      "endMs": 2710,
+      "endMs": 2510,
       "timestampMs": null,
       "confidence": null
     }
@@ -681,21 +681,21 @@
     {
       "text": "第一项是八，第二项就需要是负八。",
       "startMs": 70,
-      "endMs": 2949,
+      "endMs": 3110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因为四乘负二等于负八，",
-      "startMs": 3230,
-      "endMs": 5070,
+      "startMs": 3190,
+      "endMs": 4630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以可以取 b=−2。",
-      "startMs": 5066,
-      "endMs": 6786,
+      "startMs": 5151,
+      "endMs": 6951,
       "timestampMs": null,
       "confidence": null
     }
@@ -734,28 +734,28 @@
     {
       "text": "这不是唯一答案。",
       "startMs": 70,
-      "endMs": 1350,
+      "endMs": 1390,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "我们选这一组：a 取纵坐标的变化，",
       "startMs": 1590,
-      "endMs": 4230,
+      "endMs": 4430,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "b 取横坐标变化的相反数，",
-      "startMs": 4213,
-      "endMs": 6452,
+      "startMs": 4383,
+      "endMs": 6622,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两项就能抵消。",
-      "startMs": 6492,
-      "endMs": 7773,
+      "startMs": 6702,
+      "endMs": 8023,
       "timestampMs": null,
       "confidence": null
     }
@@ -764,14 +764,14 @@
     {
       "text": "现在，方程变成了 4X−2Y=c。",
       "startMs": 70,
-      "endMs": 3909,
+      "endMs": 3590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "右边的 c，又该怎样确定呢？",
-      "startMs": 3989,
-      "endMs": 5900,
+      "startMs": 3630,
+      "endMs": 5709,
       "timestampMs": null,
       "confidence": null
     }
@@ -780,35 +780,35 @@
     {
       "text": "现在只剩下 c 不知道。",
       "startMs": 70,
-      "endMs": 1670,
+      "endMs": 1590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因为点 A 在直线上，",
-      "startMs": 1910,
-      "endMs": 3750,
+      "startMs": 1790,
+      "endMs": 3510,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把它的坐标代入，左边就应该等于 c。",
-      "startMs": 3869,
-      "endMs": 6420,
+      "startMs": 3550,
+      "endMs": 6125,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "四乘一，减二乘三，得到负二。",
-      "startMs": 6420,
-      "endMs": 9100,
+      "startMs": 6125,
+      "endMs": 8885,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以 c=−2。",
-      "startMs": 9247,
-      "endMs": 10647,
+      "startMs": 8991,
+      "endMs": 10431,
       "timestampMs": null,
       "confidence": null
     }
@@ -833,49 +833,49 @@
     {
       "text": "换成其他两个点，怎么算呢？",
       "startMs": 70,
-      "endMs": 2389,
+      "endMs": 2190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把第一个点的横坐标记作 X₁，",
-      "startMs": 2590,
-      "endMs": 5190,
+      "startMs": 2389,
+      "endMs": 4470,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标记作 Y₁；",
-      "startMs": 5236,
-      "endMs": 6876,
+      "startMs": 4810,
+      "endMs": 6410,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "第二个点的横坐标记作 X₂，",
-      "startMs": 6916,
-      "endMs": 9155,
+      "startMs": 6810,
+      "endMs": 9010,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标记作 Y₂。",
-      "startMs": 9236,
-      "endMs": 10716,
+      "startMs": 9210,
+      "endMs": 10650,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这里的一和二只是两个点的编号，",
-      "startMs": 10783,
-      "endMs": 13022,
+      "startMs": 10698,
+      "endMs": 13057,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不是乘一、乘二。",
-      "startMs": 13062,
-      "endMs": 14182,
+      "startMs": 13178,
+      "endMs": 14378,
       "timestampMs": null,
       "confidence": null
     }
@@ -884,21 +884,21 @@
     {
       "text": "先求纵坐标的变化：第二个点的纵坐标，",
       "startMs": 70,
-      "endMs": 3270,
+      "endMs": 3150,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "减第一个点的纵坐标。",
-      "startMs": 3270,
-      "endMs": 4870,
+      "startMs": 3190,
+      "endMs": 4710,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "我们把这个差作为 a。",
-      "startMs": 4895,
-      "endMs": 6535,
+      "startMs": 4725,
+      "endMs": 6365,
       "timestampMs": null,
       "confidence": null
     }
@@ -907,35 +907,35 @@
     {
       "text": "横坐标的变化量是 X₂−X₁。",
       "startMs": 70,
-      "endMs": 3230,
+      "endMs": 3070,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把这个差取相反数，就得到 b。",
-      "startMs": 3349,
-      "endMs": 6116,
+      "startMs": 3429,
+      "endMs": 6031,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "括号前面有负号，去掉括号时，",
-      "startMs": 6196,
-      "endMs": 9356,
+      "startMs": 6071,
+      "endMs": 9231,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两项都要变号。",
-      "startMs": 9356,
-      "endMs": 10676,
+      "startMs": 9231,
+      "endMs": 10551,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以，b 也可以写成 X₁−X₂。",
-      "startMs": 10698,
-      "endMs": 13818,
+      "startMs": 10612,
+      "endMs": 13732,
       "timestampMs": null,
       "confidence": null
     }
@@ -944,27 +944,27 @@
     {
       "text": "最后，把第一个点的横坐标乘 a，",
       "startMs": 70,
-      "endMs": 2909,
+      "endMs": 2869,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标乘 b，再把这两个结果加起来，",
       "startMs": 2949,
-      "endMs": 6070,
+      "endMs": 6110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就是 c。",
       "startMs": 6090,
-      "endMs": 6690,
+      "endMs": 6650,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这样，第一个点代入方程，",
-      "startMs": 6690,
+      "startMs": 6650,
       "endMs": 8770,
       "timestampMs": null,
       "confidence": null
@@ -972,7 +972,7 @@
     {
       "text": "等式就一定成立。",
       "startMs": 8770,
-      "endMs": 10130,
+      "endMs": 10009,
       "timestampMs": null,
       "confidence": null
     }
@@ -981,77 +981,77 @@
     {
       "text": "那第二个点呢？",
       "startMs": 70,
-      "endMs": 1230,
+      "endMs": 1270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把两个点的坐标分别代入方程左边，",
-      "startMs": 1310,
-      "endMs": 4310,
+      "startMs": 1350,
+      "endMs": 4390,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "再用第二个结果减去第一个结果。",
-      "startMs": 4298,
-      "endMs": 6738,
+      "startMs": 4383,
+      "endMs": 6983,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "展开括号，合并同类项，",
-      "startMs": 6858,
-      "endMs": 9058,
+      "startMs": 7023,
+      "endMs": 9183,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就得到 a 乘横坐标的变化量，",
-      "startMs": 9162,
-      "endMs": 11682,
+      "startMs": 9247,
+      "endMs": 11407,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "加 b 乘纵坐标的变化量。",
-      "startMs": 12122,
-      "endMs": 14122,
+      "startMs": 11566,
+      "endMs": 13527,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把刚才算出的 a 和 b 代进去，",
-      "startMs": 14196,
-      "endMs": 16435,
+      "startMs": 13684,
+      "endMs": 15963,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "正好是两个相同的乘积相减，",
-      "startMs": 16475,
-      "endMs": 18676,
+      "startMs": 16043,
+      "endMs": 18244,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "结果为零。",
-      "startMs": 18804,
-      "endMs": 19644,
+      "startMs": 18292,
+      "endMs": 19292,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以，两个点代入左边，",
-      "startMs": 19724,
-      "endMs": 21804,
+      "startMs": 19292,
+      "endMs": 21492,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到的都是 c，等式都成立。",
-      "startMs": 21964,
-      "endMs": 24071,
+      "startMs": 21531,
+      "endMs": 23810,
       "timestampMs": null,
       "confidence": null
     }
@@ -1060,70 +1060,70 @@
     {
       "text": "两个端点不同，横坐标和纵坐标就至少有一个不同。",
       "startMs": 70,
-      "endMs": 4350,
+      "endMs": 3989,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以，两个坐标差不会同时为零，",
-      "startMs": 4383,
-      "endMs": 7302,
+      "startMs": 4042,
+      "endMs": 6961,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "a 和 b 也就不会同时为零。",
-      "startMs": 7543,
-      "endMs": 9583,
+      "startMs": 7082,
+      "endMs": 9002,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "只要 b≠0，我们就能移项，",
-      "startMs": 9588,
-      "endMs": 11788,
+      "startMs": 8991,
+      "endMs": 11310,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "再除以 b，把方程整理成图上的形式。",
-      "startMs": 11827,
-      "endMs": 15028,
+      "startMs": 11350,
+      "endMs": 14511,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它表示一条直线，a=0 时就是水平线。",
-      "startMs": 15135,
-      "endMs": 19014,
+      "startMs": 14623,
+      "endMs": 18462,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这条直线经过两个端点，",
-      "startMs": 19054,
-      "endMs": 21175,
+      "startMs": 18863,
+      "endMs": 21023,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "正是我们要找的。",
-      "startMs": 21279,
-      "endMs": 22479,
+      "startMs": 21108,
+      "endMs": 22388,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "至于 b=0 的情况，",
-      "startMs": 22479,
-      "endMs": 24078,
+      "startMs": 22508,
+      "endMs": 24228,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "我们接着看。",
-      "startMs": 24078,
-      "endMs": 24879,
+      "startMs": 24228,
+      "endMs": 25068,
       "timestampMs": null,
       "confidence": null
     }
@@ -1155,35 +1155,35 @@
     {
       "text": "先看这两个点。",
       "startMs": 70,
-      "endMs": 1070,
+      "endMs": 1190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它们的横坐标都是二，",
       "startMs": 1270,
-      "endMs": 2670,
+      "endMs": 2789,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "经过它们的是一条竖直线。",
-      "startMs": 2949,
-      "endMs": 5110,
+      "startMs": 3190,
+      "endMs": 5150,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "线上每个点的横坐标都是二，",
-      "startMs": 5066,
-      "endMs": 7266,
+      "startMs": 5151,
+      "endMs": 7311,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以方程应该是 X=2。",
-      "startMs": 7746,
-      "endMs": 9906,
+      "startMs": 7791,
+      "endMs": 10031,
       "timestampMs": null,
       "confidence": null
     }
@@ -1192,28 +1192,28 @@
     {
       "text": "用刚才的公式算一算：",
       "startMs": 70,
-      "endMs": 1710,
+      "endMs": 1830,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "a=3，b=0，c=6。",
-      "startMs": 1710,
-      "endMs": 4630,
+      "startMs": 1910,
+      "endMs": 4830,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "方程就是 3X=6。",
-      "startMs": 4639,
-      "endMs": 6598,
+      "startMs": 4810,
+      "endMs": 6769,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两边除以三，正好得到 X=2。",
-      "startMs": 6719,
-      "endMs": 9439,
+      "startMs": 6890,
+      "endMs": 9650,
       "timestampMs": null,
       "confidence": null
     }
@@ -1222,56 +1222,56 @@
     {
       "text": "对任何一条竖直线来说，",
       "startMs": 70,
-      "endMs": 1910,
+      "endMs": 1950,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两个端点的横坐标都相同，",
-      "startMs": 2429,
-      "endMs": 3869,
+      "startMs": 2190,
+      "endMs": 4230,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以 b=0。",
-      "startMs": 4383,
-      "endMs": 5703,
+      "startMs": 4298,
+      "endMs": 5778,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两个端点又是不同的点，",
-      "startMs": 6063,
-      "endMs": 7983,
+      "startMs": 6138,
+      "endMs": 8057,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标就一定不同，所以 a≠0。",
-      "startMs": 8142,
-      "endMs": 11159,
+      "startMs": 8137,
+      "endMs": 11114,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这时，方程变成 aX=aX₁。",
-      "startMs": 11199,
-      "endMs": 14679,
+      "startMs": 11194,
+      "endMs": 14554,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因为 a≠0，两边可以同时除以 a，",
-      "startMs": 15050,
-      "endMs": 18250,
+      "startMs": 14879,
+      "endMs": 17999,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到 X=X₁。",
-      "startMs": 18289,
-      "endMs": 19570,
+      "startMs": 18079,
+      "endMs": 19359,
       "timestampMs": null,
       "confidence": null
     }
@@ -1280,28 +1280,28 @@
     {
       "text": "再看水平线。",
       "startMs": 70,
-      "endMs": 1110,
+      "endMs": 1190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这两个点的纵坐标都是三，",
-      "startMs": 1350,
-      "endMs": 3389,
+      "startMs": 1590,
+      "endMs": 3630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "线上每个点的纵坐标也都是三，",
-      "startMs": 3590,
-      "endMs": 5990,
+      "startMs": 3909,
+      "endMs": 6310,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以方程应该是 Y=3。",
-      "startMs": 6004,
-      "endMs": 8204,
+      "startMs": 6346,
+      "endMs": 8546,
       "timestampMs": null,
       "confidence": null
     }
@@ -1310,7 +1310,7 @@
     {
       "text": "代入公式，算出 a=0，",
       "startMs": 70,
-      "endMs": 2429,
+      "endMs": 2510,
       "timestampMs": null,
       "confidence": null
     },
@@ -1324,21 +1324,21 @@
     {
       "text": "方程就是 −3Y=−9。",
       "startMs": 4725,
-      "endMs": 6964,
+      "endMs": 6885,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两边除以负三，得到 Y=3。",
-      "startMs": 7044,
-      "endMs": 9605,
+      "startMs": 7004,
+      "endMs": 9565,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "看来，水平线也适用。",
-      "startMs": 9674,
-      "endMs": 11354,
+      "startMs": 9588,
+      "endMs": 11268,
       "timestampMs": null,
       "confidence": null
     }
@@ -1421,28 +1421,28 @@
     {
       "text": "如果两个端点的坐标都是整数，",
       "startMs": 70,
-      "endMs": 2349,
+      "endMs": 2309,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "用刚才的方法算出的 a、b 和 c，",
-      "startMs": 2349,
-      "endMs": 4950,
+      "startMs": 2309,
+      "endMs": 5030,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也一定是整数。",
       "startMs": 5322,
-      "endMs": 6562,
+      "endMs": 6642,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这是为什么呢？",
-      "startMs": 6562,
-      "endMs": 7522,
+      "startMs": 6842,
+      "endMs": 7601,
       "timestampMs": null,
       "confidence": null
     }
@@ -1451,28 +1451,28 @@
     {
       "text": "先看 a 和 b。",
       "startMs": 70,
-      "endMs": 1150,
+      "endMs": 1110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它们都是两个整数相减得到的。",
-      "startMs": 1390,
-      "endMs": 3789,
+      "startMs": 1270,
+      "endMs": 3590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "整数减整数，结果还是整数，",
       "startMs": 3829,
-      "endMs": 6311,
+      "endMs": 6396,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "算出负数也一样。",
-      "startMs": 6391,
-      "endMs": 7591,
+      "startMs": 6476,
+      "endMs": 7756,
       "timestampMs": null,
       "confidence": null
     }
@@ -1481,35 +1481,35 @@
     {
       "text": "再看 c。",
       "startMs": 70,
-      "endMs": 1030,
+      "endMs": 870,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "先做两次整数乘法，再把结果相加，",
-      "startMs": 1030,
-      "endMs": 4150,
+      "startMs": 950,
+      "endMs": 4030,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到的仍是整数。",
-      "startMs": 4270,
-      "endMs": 5830,
+      "startMs": 4150,
+      "endMs": 5510,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这套取法只用加、减、乘，",
-      "startMs": 5834,
-      "endMs": 8394,
+      "startMs": 5492,
+      "endMs": 7811,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "没有除法。",
-      "startMs": 8394,
-      "endMs": 8794,
+      "startMs": 7851,
+      "endMs": 8731,
       "timestampMs": null,
       "confidence": null
     }
@@ -1562,21 +1562,21 @@
     {
       "text": "接下来，我们就用刚才根据端点坐标算出的这一组系数。",
       "startMs": 70,
-      "endMs": 4470,
+      "endMs": 4710,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "如果端点坐标的绝对值都不超过某个数，",
-      "startMs": 4469,
-      "endMs": 7469,
+      "startMs": 4725,
+      "endMs": 7524,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "a 和 b 的绝对值最大能有多大呢？",
-      "startMs": 7589,
-      "endMs": 9669,
+      "startMs": 7644,
+      "endMs": 9685,
       "timestampMs": null,
       "confidence": null
     }
@@ -1726,36 +1726,36 @@
   "196-6": [
     {
       "text": "a 是两个纵坐标的差，",
-      "startMs": 110,
-      "endMs": 1550,
+      "startMs": 70,
+      "endMs": 1590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以它的绝对值不超过 2M。",
       "startMs": 1910,
-      "endMs": 4670,
+      "endMs": 4470,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "b 是两个横坐标的差，",
-      "startMs": 4639,
-      "endMs": 6319,
+      "startMs": 4469,
+      "endMs": 6069,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "绝对值同样不超过 2M。",
-      "startMs": 6479,
-      "endMs": 8879,
+      "startMs": 6389,
+      "endMs": 8829,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "减法顺序不同，不影响这个上界。",
-      "startMs": 8991,
-      "endMs": 11471,
+      "startMs": 8906,
+      "endMs": 11705,
       "timestampMs": null,
       "confidence": null
     }
@@ -1764,35 +1764,35 @@
     {
       "text": "注意，刚才的上界只适用于我们按这套公式算出的系数。",
       "startMs": 70,
-      "endMs": 4350,
+      "endMs": 4150,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "如果把方程两边都乘上一个很大的数，",
-      "startMs": 4383,
-      "endMs": 7182,
+      "startMs": 4127,
+      "endMs": 6886,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "放大后的系数就不一定满足这个上界了。",
-      "startMs": 7222,
-      "endMs": 10023,
+      "startMs": 6926,
+      "endMs": 9647,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "另外，我们只讨论了 a 和 b，",
-      "startMs": 10356,
-      "endMs": 12516,
+      "startMs": 9759,
+      "endMs": 11919,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "并没有说 c 的绝对值也不超过 2M。",
-      "startMs": 12516,
-      "endMs": 15436,
+      "startMs": 11919,
+      "endMs": 14399,
       "timestampMs": null,
       "confidence": null
     }
@@ -1801,63 +1801,63 @@
     {
       "text": "到这里，给定两个不同的点，",
       "startMs": 70,
-      "endMs": 2389,
+      "endMs": 2429,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "只要它们的坐标都是整数，",
-      "startMs": 2429,
-      "endMs": 4310,
+      "startMs": 2630,
+      "endMs": 4550,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "我们就能写出一个系数都是整数的直线方程。",
-      "startMs": 4298,
-      "endMs": 7778,
+      "startMs": 4554,
+      "endMs": 8034,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "如果所有端点坐标的绝对值都不超过 M，",
-      "startMs": 7938,
-      "endMs": 10978,
+      "startMs": 8074,
+      "endMs": 11194,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "按这套公式算出的 a 和 b，",
-      "startMs": 11210,
-      "endMs": 13090,
+      "startMs": 11295,
+      "endMs": 13335,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "绝对值就都不超过 2M。",
-      "startMs": 13090,
-      "endMs": 15410,
+      "startMs": 13335,
+      "endMs": 15655,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "下一节，我们就用这些结论，",
-      "startMs": 15476,
-      "endMs": 17755,
+      "startMs": 15732,
+      "endMs": 17852,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "联立两条直线的方程，",
-      "startMs": 17875,
-      "endMs": 19436,
+      "startMs": 18011,
+      "endMs": 19772,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "研究交点坐标的分母。",
-      "startMs": 19487,
-      "endMs": 21407,
+      "startMs": 19828,
+      "endMs": 21308,
       "timestampMs": null,
       "confidence": null
     }

@@ -111,21 +111,21 @@
     {
       "text": "剪切公式写成 x′=x+sy。",
       "startMs": 70,
-      "endMs": 3510,
+      "endMs": 3750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "撇号表示新坐标。",
-      "startMs": 3510,
-      "endMs": 5070,
+      "startMs": 3829,
+      "endMs": 5470,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "没有撇号的是原坐标。",
-      "startMs": 5066,
-      "endMs": 6866,
+      "startMs": 5492,
+      "endMs": 7372,
       "timestampMs": null,
       "confidence": null
     }
@@ -157,14 +157,14 @@
     {
       "text": "s 是正的剪切系数。",
       "startMs": 70,
-      "endMs": 1910,
+      "endMs": 1870,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "sy 表示 s 乘 y。",
-      "startMs": 2270,
-      "endMs": 4030,
+      "startMs": 2230,
+      "endMs": 3989,
       "timestampMs": null,
       "confidence": null
     }
@@ -255,7 +255,7 @@
   "210-12": [
     {
       "text": "x′ 的下标 A。",
-      "startMs": 150,
+      "startMs": 110,
       "endMs": 1390,
       "timestampMs": null,
       "confidence": null
@@ -263,14 +263,14 @@
     {
       "text": "表示 A 的新横坐标。",
       "startMs": 1390,
-      "endMs": 3070,
+      "endMs": 2989,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "用 A 的原横坐标。",
       "startMs": 3510,
-      "endMs": 4990,
+      "endMs": 4950,
       "timestampMs": null,
       "confidence": null
     },
@@ -308,8 +308,8 @@
     },
     {
       "text": "也就是一百分之一。",
-      "startMs": 2270,
-      "endMs": 3720,
+      "startMs": 2230,
+      "endMs": 3790,
       "timestampMs": null,
       "confidence": null
     }
@@ -754,22 +754,22 @@
   "212-01": [
     {
       "text": "那 s 到底要多小？",
-      "startMs": 70,
-      "endMs": 1550,
+      "startMs": 110,
+      "endMs": 1590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "现在把 s 当作待求的正系数。",
-      "startMs": 1590,
+      "startMs": 1670,
       "endMs": 3869,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是 s 大于零。",
-      "startMs": 3869,
-      "endMs": 5110,
+      "startMs": 3909,
+      "endMs": 5070,
       "timestampMs": null,
       "confidence": null
     }
@@ -778,28 +778,28 @@
     {
       "text": "A 的原横坐标是零。",
       "startMs": 110,
-      "endMs": 1710,
+      "endMs": 1670,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "新横坐标等于零加 s 乘 200。",
       "startMs": 2029,
-      "endMs": 4830,
+      "endMs": 4870,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是 200s。",
-      "startMs": 4810,
-      "endMs": 6090,
+      "startMs": 4895,
+      "endMs": 6295,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "表示 200 乘 s。",
-      "startMs": 6130,
-      "endMs": 8169,
+      "startMs": 6415,
+      "endMs": 8495,
       "timestampMs": null,
       "confidence": null
     }
@@ -808,21 +808,21 @@
     {
       "text": "B 的新横坐标。",
       "startMs": 70,
-      "endMs": 1270,
+      "endMs": 1310,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "等于 1 加 s 乘零。",
-      "startMs": 1270,
-      "endMs": 2909,
+      "startMs": 1310,
+      "endMs": 2949,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以始终等于 1。",
       "startMs": 2989,
-      "endMs": 4320,
+      "endMs": 4390,
       "timestampMs": null,
       "confidence": null
     }
@@ -847,14 +847,14 @@
     {
       "text": "分别代入刚才的两个结果。",
       "startMs": 70,
-      "endMs": 2029,
+      "endMs": 2070,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就得到 200s 小于 1。",
-      "startMs": 2070,
-      "endMs": 4440,
+      "startMs": 2150,
+      "endMs": 4220,
       "timestampMs": null,
       "confidence": null
     }
@@ -870,7 +870,7 @@
     {
       "text": "目标是让左边只剩下 s。",
       "startMs": 1910,
-      "endMs": 4190,
+      "endMs": 4030,
       "timestampMs": null,
       "confidence": null
     }
@@ -902,28 +902,28 @@
     {
       "text": "左边可以先算 200 除以 200。",
       "startMs": 70,
-      "endMs": 2349,
+      "endMs": 2309,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "约去共同因数 200。",
-      "startMs": 2349,
-      "endMs": 4070,
+      "startMs": 2429,
+      "endMs": 4030,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就剩下 1 乘 s。",
       "startMs": 4042,
-      "endMs": 5082,
+      "endMs": 5122,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "结果就是 s。",
-      "startMs": 5082,
-      "endMs": 5922,
+      "startMs": 5122,
+      "endMs": 5802,
       "timestampMs": null,
       "confidence": null
     }
@@ -932,14 +932,14 @@
     {
       "text": "右边是二百分之一。",
       "startMs": 70,
-      "endMs": 1670,
+      "endMs": 1630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此 s 必须严格小于二百分之一。",
-      "startMs": 1750,
-      "endMs": 4580,
+      "startMs": 1710,
+      "endMs": 4530,
       "timestampMs": null,
       "confidence": null
     }
@@ -978,7 +978,7 @@
     {
       "text": "别忘记 s 原本就是正数。",
       "startMs": 70,
-      "endMs": 2110,
+      "endMs": 2150,
       "timestampMs": null,
       "confidence": null
     },
@@ -1007,15 +1007,15 @@
     },
     {
       "text": "系数 s 要大于零。",
-      "startMs": 1150,
+      "startMs": 1110,
       "endMs": 2909,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "并且小于 0.005。",
-      "startMs": 2989,
-      "endMs": 4870,
+      "startMs": 2949,
+      "endMs": 4730,
       "timestampMs": null,
       "confidence": null
     }
@@ -1054,42 +1054,42 @@
     {
       "text": "还是原来的两个点。",
       "startMs": 70,
-      "endMs": 1430,
+      "endMs": 1510,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "第一项取 s 等于 0.004。",
-      "startMs": 1590,
-      "endMs": 4270,
+      "startMs": 1670,
+      "endMs": 4430,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "保持左右顺序。",
-      "startMs": 4298,
-      "endMs": 5578,
+      "startMs": 4383,
+      "endMs": 5663,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "横坐标相同。",
-      "startMs": 5618,
-      "endMs": 6858,
+      "startMs": 5663,
+      "endMs": 6943,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "还是顺序颠倒？",
-      "startMs": 6938,
-      "endMs": 8057,
+      "startMs": 7023,
+      "endMs": 8222,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "先想 4 秒。",
-      "startMs": 8258,
-      "endMs": 9338,
+      "startMs": 8463,
+      "endMs": 9463,
       "timestampMs": null,
       "confidence": null
     }
@@ -1183,21 +1183,21 @@
     {
       "text": "第二项取 s 等于 0.005。",
       "startMs": 70,
-      "endMs": 2750,
+      "endMs": 2670,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这次能严格保持左右顺序吗？",
-      "startMs": 2949,
-      "endMs": 5230,
+      "startMs": 2869,
+      "endMs": 4990,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "请独立判断。",
-      "startMs": 5236,
-      "endMs": 6316,
+      "startMs": 5020,
+      "endMs": 6050,
       "timestampMs": null,
       "confidence": null
     }
@@ -1298,35 +1298,35 @@
     {
       "text": "第三项取 s 等于 0.006。",
       "startMs": 70,
-      "endMs": 2630,
+      "endMs": 2670,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "A 会留在左侧。",
       "startMs": 2789,
-      "endMs": 4110,
+      "endMs": 4150,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "追上 B。",
-      "startMs": 4150,
-      "endMs": 4830,
+      "startMs": 4230,
+      "endMs": 4910,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "还是越过 B？",
-      "startMs": 4895,
-      "endMs": 5855,
+      "startMs": 4980,
+      "endMs": 5940,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "先想 4 秒。",
-      "startMs": 5895,
-      "endMs": 6854,
+      "startMs": 6180,
+      "endMs": 7020,
       "timestampMs": null,
       "confidence": null
     }
@@ -1466,21 +1466,21 @@
     {
       "text": "A 向右移动 s 乘 200。",
       "startMs": 70,
-      "endMs": 1990,
+      "endMs": 1910,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "B 向右移动 s 乘零。",
-      "startMs": 2070,
+      "startMs": 1950,
       "endMs": 3750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此 A 比 B 多移动 200s。",
-      "startMs": 3750,
-      "endMs": 6670,
+      "startMs": 3829,
+      "endMs": 6430,
       "timestampMs": null,
       "confidence": null
     }
@@ -1489,21 +1489,21 @@
     {
       "text": "只有额外移动小于原有间隔。",
       "startMs": 70,
-      "endMs": 2309,
+      "endMs": 2389,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是 200s 小于 1。",
-      "startMs": 2349,
-      "endMs": 4530,
+      "startMs": 2429,
+      "endMs": 4590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "A 才能留在 B 左侧。",
-      "startMs": 4540,
-      "endMs": 6240,
+      "startMs": 4679,
+      "endMs": 6319,
       "timestampMs": null,
       "confidence": null
     }
@@ -1512,27 +1512,27 @@
     {
       "text": "本例的条件。",
       "startMs": 70,
-      "endMs": 1230,
+      "endMs": 1190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "系数 s 必须大于零。",
       "startMs": 1270,
-      "endMs": 3150,
+      "endMs": 3110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "并且小于二百分之一。",
       "startMs": 3190,
-      "endMs": 5020,
+      "endMs": 4960,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是 0.005。",
-      "startMs": 5050,
+      "startMs": 4990,
       "endMs": 6690,
       "timestampMs": null,
       "confidence": null
