@@ -1,6 +1,6 @@
 # 剪切如何改变坐标
 
-第一集规格为 [CNB #203](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/203)，制作任务为 #204–#208。参考直线方程教程的制作方式，遵循 [视频工程规则](../AGENTS.md)，工程保持自包含。
+第一集规格为 [CNB #203](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/203)，制作任务为 #204–#208。参考直线方程教程的制作方式，遵循 [视频工程规则](../AGENTS.md)。
 
 ## 当前状态
 
@@ -12,23 +12,15 @@
 
 ## 环境与命令
 
-本次检查使用 Node.js 24.17.0、pnpm 11.8.0，以及已安装的 FFmpeg、ffprobe、Chrome 和 Playwright CLI。工具入口直接执行 TypeScript，要求 Node.js 22.18+（22.x）或 24+，具体范围见 `package.json`；不支持 Node.js 20。依赖由用户安装，锁文件统一使用 `pnpm-lock.yaml`：
+本次检查使用 Node.js 24.17.0、pnpm 11.8.0，以及已安装的 FFmpeg、ffprobe、Chrome 和 Playwright CLI 0.1.22。工具入口直接执行 TypeScript，要求 Node.js 22.18+（22.x）或 24+，具体范围见 `package.json`；不支持 Node.js 20。锁文件为 `pnpm-lock.yaml`。安装、Studio 预览、lint 和打包见公共[基础命令](../AGENTS.md#基础命令)；`build` 产物已忽略。
+
+配音 dry-run、内容与布局检查见公共[内容与布局检查](../AGENTS.md#内容与布局检查)。本工程的必要回归入口为：
 
 ```sh
-pnpm install
-```
-
-以下命令均在本工程目录执行，并关闭运行前自动安装依赖：
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:lint
 pnpm --config.verify-deps-before-run=false exec node --test scripts/speech-timing.test.ts scripts/azure-alignment.test.ts
-pnpm --config.verify-deps-before-run=false run video:narration --dry-run
-pnpm --config.verify-deps-before-run=false run video:check-content --decode
-pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-现有配音可直接使用，无需再次请求 Azure。只有重新生成配音时需要 `AZURE_SPEECH_KEY` 和 `AZURE_SPEECH_ENDPOINT` 环境变量；不要把凭据写入源码或任务记录。音色固定为 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`，服务失败停止，不改换音色。先 dry-run 核对口语稿，再按需生成某个片段：
+配音环境和失败续跑见公共[配音环境与续跑](../AGENTS.md#配音环境与续跑)。本工程采用默认音色，按需生成某个片段：
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:narration --issue=204
@@ -36,19 +28,11 @@ pnpm --config.verify-deps-before-run=false run video:narration --issue=204
 
 也可用 `--shots=204-10,206-03,206-04,206-16` 仅生成指定镜头；镜头 ID 必须存在且不能重复，不可与 `--issue` 同用。上述四段的口播将字母 `y` 写作 `why`，字幕和公式仍保留 `y`；其他字母和既有中文拼音标注不变。
 
-不传 `--issue` 或 `--shots` 会生成全部配音。生成器完整校验镜头 ID、读音对象及讲解锚点，在本次目标音频全部解码、时长与字词边界校验成功后发布素材。合成输入的 SHA-256 指纹包含完整 SSML（包括音色和局部读音），仅修改拼音也会使旧音频失效。服务失败或校验失败即停止，保留临时诊断数据；可使用输出的临时目录配合 `--resume=<临时目录>` 复用指纹一致的暂存音频，仍须重新校验。
+不传 `--issue` 或 `--shots` 会生成全部配音。生成器完整校验镜头 ID、读音对象及讲解锚点，在本次目标音频全部解码、时长与字词边界校验成功后发布素材；续跑仍执行这些检查。
 
 如果合成服务返回零时长的朗读词，生成器保留原 MP3，并调用 Azure 发音评估，以口语稿为参考取得该音频的逐词对齐时间。仅补充缺失时间及解决边界冲突所需的相邻词；不同分词方式保留服务返回的完整词，不拆分或均摊时长。采用的对齐词必须无错误标记，全文须完整匹配且无遗漏／插入，时间须有效且不重叠；不涉及的词保留已有合成时间，不因发音评分而改动。失败就停止，不插值或估算词时长，也不重新合成来替代已确认音频。对齐数据绑定音频 SHA-256，`audio-timing.json` 的 `alignment` 保留原始合成边界及服务响应，`words` 为字幕和动画共用的有效边界。内容检查同时核对哈希和响应；标点可为零时长，朗读词不可。自动对齐属于模型测量，不能替代实际同步试听验收。
 
-`video:build` 只打包工程，不渲染视频；产物 `build` 已忽略。用户预览时可自行执行：
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:dev
-```
-
-预览命令不自动打开浏览器。助手启动服务仍须遵循项目端口隔离规则；可见窗口需要单独授权。
-
-布局检查使用系统分配的临时端口、独立无头 Chrome 会话，结束后关闭本次会话和服务。需要已有 `playwright-cli`（本次为 0.1.22）及 Google Chrome；缺少时由用户安装，脚本不会安装组件。可选 `video:check-layout --screenshots` 将关键生产页面的浏览器截图写入系统临时目录，供人工检查；它不调用 Remotion 视频或静帧导出。
+本工程布局检查的 `--screenshots` 将关键生产页面截图写入系统临时目录，供人工检查。
 
 ## 字幕、读音与教学时序
 
@@ -59,15 +43,7 @@ pnpm --config.verify-deps-before-run=false run video:dev
 
 ## 用户导出
 
-制作配置遵循 [视频工程规则](../AGENTS.md)：1920×1080 逻辑排版、2 倍输出 3840×2160、60 fps；H.265 硬件编码 `required`、`yuv420p`、PNG 中间帧、AAC 192 kbps、并发 4，视频码率保持默认不指定。本次未验证硬件编码器实际导出结果。
-
-以下命令仅由用户执行；助手没有执行：
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:export
-```
-
-入口先检查音频与文案一致性、解码、时长和同一套生产页面布局；任一检查失败就停止。通过后导出 `out/shear-intuition.mp4`。默认使用系统 Google Chrome，也可通过 `CHROME_EXECUTABLE` 指向已有浏览器。硬件编码不可用会直接失败，不回退软件编码。`out` 已忽略，不纳入提交。
+采用公共[默认制作配置](../AGENTS.md#默认制作配置)，命令及前置检查见[用户导出](../AGENTS.md#用户导出)。输出为 `out/shear-intuition.mp4`，`out` 已忽略。默认使用系统 Google Chrome，也可通过 `CHROME_EXECUTABLE` 指向已有浏览器。本次未验证硬件编码器实际导出结果，助手没有执行导出。
 
 ## 文件映射
 

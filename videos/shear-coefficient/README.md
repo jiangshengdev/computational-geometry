@@ -37,35 +37,21 @@
 | 易错读音、字母与独立口语稿 | `speech-text.json`、`azure-speech.ts` | 使用 why 消歧 y；局部拼音标注撇号与颠倒；增加无逗号校验 |
 | 实测音画同步与页末停留 | `timeline.ts`、`narration.ts`、`azure-alignment.ts` | 按本集音频生成；运动中点另与“正上方”实测边界对齐 |
 | 内容与生产布局检查 | `check-content.ts`、`LayoutCheck.tsx`、`check-layout.ts` | 覆盖本集全部页及字幕、揭示、运动和静默边界；不保留第一集题目断言 |
-| 输出配置与导出门禁 | `remotion.config.ts`、`scripts/render.ts` | 继承 4K/60fps、H.265 required、PNG、AAC 192k、并发4；用户导出入口改为整集 |
+| 输出配置与导出门禁 | `remotion.config.ts`、`scripts/render.ts` | 采用公共默认制作配置；用户导出入口改为整集 |
 
 本集二维图显式不等比例：横向每单位 200 逻辑像素、纵向每单位 2 像素；横向 1 单位与纵向 100 单位均为 200 逻辑像素，形成正方形网格。始终显示“不等比例示意”，开场解释画面长度不可跨轴比较。其余视频的等比例默认规则不变。图示为固定数学示意，不是算法执行轨迹。
 
 ## 使用
 
-在本工程目录运行。只使用用户已安装的 Node.js（^22.18.0 或 >=24）、pnpm、依赖、Chrome、playwright-cli、ffmpeg 和 ffprobe。以下入口关闭运行前自动安装依赖。
+Node.js 要求 ^22.18.0 或 >=24。安装、Studio 预览、lint 和打包见公共[基础命令](../AGENTS.md#基础命令)，配音依赖和默认音色见[配音环境与续跑](../AGENTS.md#配音环境与续跑)，dry-run、内容与布局检查见[内容与布局检查](../AGENTS.md#内容与布局检查)。
+
+在 Studio 选择 `ShearCoefficient` 预览整集，或选择 `Shear210`—`Shear213` 分段试听。只重生成某段时使用现有 `--shots=<镜头ID>` 参数，避免改动已确认素材。本工程的生成及时间线回归入口：
 
 ```sh
-pnpm --config.verify-deps-before-run=false run video:dev
-```
-
-在 Studio 选择 `ShearCoefficient` 预览整集，或选择 `Shear210`—`Shear213` 分段试听。需要重新生成配音时，先检查完整口语稿，再使用已配置的 Azure 环境；音色固定为 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`，失败不回退。只重生成某段时使用现有 `--shots=<镜头ID>` 参数，避免改动已确认素材。
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:narration --dry-run
 pnpm --config.verify-deps-before-run=false run video:narration
-pnpm --config.verify-deps-before-run=false run video:lint
-pnpm --config.verify-deps-before-run=false run video:check-content --decode
 pnpm --config.verify-deps-before-run=false exec node --test src/timeline.test.ts
-pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-布局入口启动独立临时端口和无头 Chrome，结束时关闭自己的进程；`--screenshots` 仅保存浏览器页面截图，不渲染视频。生产组件会拒绝缺少实测音频的预览，不使用估计时长兜底。
+生产组件会拒绝缺少实测音频的预览，不使用估计时长兜底。
 
-仅供用户自行导出（助手不得执行）：
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:export
-```
-
-先执行音频与内容检查及同一生产布局检查，通过后才输出 `out/shear-coefficient.mp4`。4K 输出使用 1920×1080 的 2 倍栅格化；硬件编码不可用时直接失败。导出入口不代表已完成成片验收。
+导出命令及前置检查见公共[用户导出](../AGENTS.md#用户导出)，输出为 `out/shear-coefficient.mp4`。

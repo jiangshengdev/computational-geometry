@@ -6,30 +6,18 @@
 
 ## 配置与依赖
 
-复用已完成工程 `videos/shear-coefficient` 的 Remotion 与 TypeScript 配置，参考配置提交为 `43e47fa`。各工程保留独立配置与依赖，不运行时引用相邻工程。
+复用已完成工程 `videos/shear-coefficient` 的 Remotion 与 TypeScript 配置，参考配置提交为 `43e47fa`。输出采用公共[默认制作配置](../AGENTS.md#默认制作配置)。
 
-- Remotion 4.0.538；Node.js ^22.18.0 或 >=24；使用 pnpm。
-- 1920×1080 逻辑画面、60 fps，配置 2 倍输出比例，对应 3840×2160。
-- H.265 硬件编码 required、yuv420p、PNG 中间帧、AAC 192k、并发数 4；不设置 CRF 或目标视频码率。
+- Remotion 4.0.538；Node.js ^22.18.0 或 >=24。
 - 依赖与参考工程一致，包括 KaTeX、Azure Speech SDK 及 Node/KaTeX 类型声明。
 - 保留已批准的 `allowBuilds.esbuild: true`。
 
 ## 命令
 
-在本工程目录运行：
-
-```sh
-pnpm install
-pnpm --config.verify-deps-before-run=false run video:dev
-pnpm --config.verify-deps-before-run=false run video:lint
-pnpm --config.verify-deps-before-run=false run video:build
-```
-
-`video:dev` 不自动打开浏览器；`video:build` 仅打包，不渲染视频。助手不得渲染或导出视频。
+安装、预览、检查和打包见公共[基础命令](../AGENTS.md#基础命令)。
 
 配音、内容检查、布局检查与带验收门禁的导出入口需在后续教学内容制作时接入，当前未配置这些尚不存在的脚本。配置继承不代表整集制作或成片验收完成。
 
 ## 发布素材
 
-- 标题、简介与标签：`assets/bilibili-copy.md`。
-- 两种比例封面及提示词：`assets/covers/`。
+路径见公共[空白工程的发布素材](../AGENTS.md#空白工程的发布素材)。

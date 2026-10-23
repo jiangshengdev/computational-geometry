@@ -6,7 +6,7 @@
 
 ## 使用
 
-在本目录执行以下命令。需要已有的项目依赖、Node.js 22.18+、pnpm 和 Chrome。下列视频导出命令供用户自行执行，助手受上级视频工程规则中的渲染禁令约束。
+在本目录执行以下命令，Node.js 要求 22.18+；依赖使用遵循公共[工程与运行环境](../AGENTS.md#工程与运行环境)。下列视频导出命令仅供用户自行执行。
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:lint
@@ -37,13 +37,13 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 - `src/Intro.tsx`、`src/intro-storyboard.ts`：本工程独立维护的开场画面与展示文案。字幕和时间线与其他章节共用同一份数据。
 - `scripts/azure-speech.ts`：本工程内的 Azure 请求函数。
 
-已包含配音素材。重新生成配音使用上级规则中的默认 Azure 音色，要求环境变量 `AZURE_SPEECH_KEY`、`AZURE_SPEECH_ENDPOINT` 和本机已有 FFmpeg、ffprobe。可选的 `AZURE_SPEECH_VOICE` 必须与本工程选定音色一致：
+配音依赖、默认音色与失败续跑见公共[配音环境与续跑](../AGENTS.md#配音环境与续跑)。本工程可选的 `AZURE_SPEECH_VOICE` 必须与选定音色一致；生成入口为：
 
 ```sh
 pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts
 ```
 
-生成前可给上述命令添加 `--dry-run`，按上级规则核对音色、口语稿及 `documents` 中的 SSML。
+本工程 `--dry-run` 输出的 SSML 位于 `documents` 中。
 
 ### 逐处指定读音
 
@@ -71,7 +71,7 @@ pnpm --config.verify-deps-before-run=false exec node --test scripts/azure-speech
 
 本工程保存 Azure 返回的 MP3；全部 56 段通过检查后替换素材及时间数据，开场文件为 `189-1.mp3` 至 `189-4.mp3`。
 
-生成失败时保留暂存目录，日志会给出 `--resume=<临时目录>` 参数。续跑只复用 SSML（含音色和读音标注）及音频 SHA-256 均匹配的已完成片段，仍重新检查解码、时长和字幕对应；全部成功后才发布并清理暂存目录。
+续跑仍重新检查解码、时长和字幕对应；全部成功后清理暂存目录。
 
 全部 56 段素材已按禁用逗号、包含逐处读音标注的口语稿重新生成，保留 Azure 原始音频及语速；`audio-timing.json`、`word-timing.json` 与 `captions.json` 已同步更新并通过对应检查，不再保留历史 `tempo` 字段。当前 Flash 音色已接受中文 `sapi` 标注，全部音频通过解码和时长检查；实际发音、自然度及音画同步仍待试听与成片验收。
 
