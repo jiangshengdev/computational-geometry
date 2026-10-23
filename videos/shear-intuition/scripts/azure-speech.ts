@@ -47,8 +47,8 @@ const letterIpa: Record<string, string> = {
 
 const spokenTextXml = (text: string) =>
   escapeXml(text).replace(/[A-Za-z]+/g, (token) =>
-    token.length === 1 && letterIpa[token]
-      ? `<lang xml:lang="en-US"><phoneme alphabet="ipa" ph="${letterIpa[token]}">${token}</phoneme></lang>`
+    token.length === 1 && letterIpa[token.toUpperCase()]
+      ? `<lang xml:lang="en-US"><phoneme alphabet="ipa" ph="${letterIpa[token.toUpperCase()]}">${token}</phoneme></lang>`
       : token,
   );
 
