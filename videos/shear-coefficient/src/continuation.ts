@@ -220,7 +220,7 @@ export const continuationShots: Shot[] = [
     step: 1,
     caption:
       "让 A 水平向右移动。停在 B 的正上方。A 的新坐标是 (1,200)。B 的新坐标是 (1,0)。",
-    reveal: "A 的新坐标",
+    reveal: "A、的新坐标",
     motion: { start: "水平向右移动", end: "正上方" },
   },
   {
