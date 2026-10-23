@@ -111,21 +111,21 @@
     {
       "text": "剪切公式写成 x′=x+sy。",
       "startMs": 70,
-      "endMs": 5030,
+      "endMs": 3750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "撇号表示新坐标。",
-      "startMs": 5110,
-      "endMs": 6670,
+      "startMs": 3829,
+      "endMs": 5470,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "没有撇号的是原坐标。",
-      "startMs": 6687,
-      "endMs": 8447,
+      "startMs": 5492,
+      "endMs": 7372,
       "timestampMs": null,
       "confidence": null
     }
@@ -134,21 +134,21 @@
     {
       "text": "y′=y。",
       "startMs": 70,
-      "endMs": 1590,
+      "endMs": 1270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "新旧纵坐标相等。",
-      "startMs": 1590,
-      "endMs": 2750,
+      "startMs": 1430,
+      "endMs": 2949,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以高度不变。",
-      "startMs": 2949,
-      "endMs": 4110,
+      "startMs": 3190,
+      "endMs": 4310,
       "timestampMs": null,
       "confidence": null
     }
@@ -157,14 +157,14 @@
     {
       "text": "s 是正的剪切系数。",
       "startMs": 70,
-      "endMs": 2190,
+      "endMs": 1870,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "sy 表示 s 乘 y。",
       "startMs": 2230,
-      "endMs": 4390,
+      "endMs": 3989,
       "timestampMs": null,
       "confidence": null
     }
