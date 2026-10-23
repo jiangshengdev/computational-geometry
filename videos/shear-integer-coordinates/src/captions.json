@@ -1,0 +1,506 @@
+{
+  "216-01": [
+    {
+      "text": "能不能先把分数坐标变成整数，",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "让后面的计算更方便？",
+      "startMs": 2550,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-02": [
+    {
+      "text": "看线段的端点 P：横坐标是二分之一，",
+      "startMs": 70,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标是负三分之二。",
+      "startMs": 3590,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-03": [
+    {
+      "text": "另一个端点 Q，横坐标是负三分之一，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标是六分之一。",
+      "startMs": 3429,
+      "endMs": 5090,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-04": [
+    {
+      "text": "能写成整数之比的数叫有理数，",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分母不能是零。",
+      "startMs": 2550,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "整数也属于有理数。",
+      "startMs": 3786,
+      "endMs": 5466,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-05": [
+    {
+      "text": "把全部输入端点一起考虑。",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本例的四个坐标，分母分别是 2、3、3、6。",
+      "startMs": 2309,
+      "endMs": 5830,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-06": [
+    {
+      "text": "选一个正整数公共分母，",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用字母 D 表示。",
+      "startMs": 2029,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里选 D=6。",
+      "startMs": 3670,
+      "endMs": 5150,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-07": [
+    {
+      "text": "6 除以 2 得 3，",
+      "startMs": 70,
+      "endMs": 1270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "除以 3 得 2，除以 6 得 1。",
+      "startMs": 1310,
+      "endMs": 3389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它能被这些分母整除。",
+      "startMs": 3510,
+      "endMs": 5350,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-08": [
+    {
+      "text": "12 也可以，所以公共分母不必最小。",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但选定后，全部点都要使用同一个 D。",
+      "startMs": 3190,
+      "endMs": 6162,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-09": [
+    {
+      "text": "小写 x 是原横坐标，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大写 X 是放大后的横坐标。",
+      "startMs": 2270,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "X 等于 D 乘 x。",
+      "startMs": 4594,
+      "endMs": 6114,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-10": [
+    {
+      "text": "小写 y 是原纵坐标，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大写 Y 是放大后的纵坐标。",
+      "startMs": 1910,
+      "endMs": 4030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Y 等于 D 乘 y。",
+      "startMs": 4030,
+      "endMs": 5430,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-11": [
+    {
+      "text": "本例 D=6，是正数。",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能给不同点或不同方向另选倍数，",
+      "startMs": 2550,
+      "endMs": 5550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "必须让全部端点坐标都变成整数。",
+      "startMs": 5578,
+      "endMs": 8417,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-12": [
+    {
+      "text": "先算 P 的横坐标：",
+      "startMs": 70,
+      "endMs": 1510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "6 乘二分之一。",
+      "startMs": 1550,
+      "endMs": 2830,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-13": [
+    {
+      "text": "把 6 写到分子上，",
+      "startMs": 70,
+      "endMs": 1510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到二分之六，等于 3。",
+      "startMs": 1590,
+      "endMs": 3630,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-14": [
+    {
+      "text": "再算纵坐标：6 乘负三分之二。",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "正数乘负数，结果是负数。",
+      "startMs": 2869,
+      "endMs": 5350,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-15": [
+    {
+      "text": "保留负号，6 乘 2 再除以 3，",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果是负 4。",
+      "startMs": 2550,
+      "endMs": 3710,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-16": [
+    {
+      "text": "于是 P′ 的坐标是 (3,-4)。",
+      "startMs": 70,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "撇号表示放大后的对应点，",
+      "startMs": 2590,
+      "endMs": 4710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是乘法。",
+      "startMs": 4725,
+      "endMs": 5525,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-17": [
+    {
+      "text": "现在请你计算 Q 放大后的两个坐标，",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然都乘 6。",
+      "startMs": 2949,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "可以暂停视频，先自己算一算。",
+      "startMs": 4127,
+      "endMs": 6406,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-18": [
+    {
+      "text": "看横坐标：6 乘负三分之一。",
+      "startMs": 70,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-19": [
+    {
+      "text": "保留负号，得到负三分之六，",
+      "startMs": 70,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于负 2。",
+      "startMs": 2909,
+      "endMs": 3710,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-20": [
+    {
+      "text": "再看纵坐标：6 乘六分之一。",
+      "startMs": 70,
+      "endMs": 2730,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-21": [
+    {
+      "text": "得到六分之六，等于 1。",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-22": [
+    {
+      "text": "所以 Q′ 的坐标是 (-2,1)，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个坐标也都成为整数。",
+      "startMs": 2750,
+      "endMs": 4710,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-23": [
+    {
+      "text": "现在看真正的放大。",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保持坐标轴单位长度固定，",
+      "startMs": 2110,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以原点为中心。",
+      "startMs": 4463,
+      "endMs": 5783,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-24": [
+    {
+      "text": "两个方向同时放大，点沿着从原点出发的方向移动，",
+      "startMs": 70,
+      "endMs": 4590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "直到放大六倍。",
+      "startMs": 4639,
+      "endMs": 5879,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到刚才算出的整数端点。",
+      "startMs": 5919,
+      "endMs": 8119,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-25": [
+    {
+      "text": "线段形状不变，所有长度都变成原来的 6 倍。",
+      "startMs": 70,
+      "endMs": 3389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每个原来的点，都有一个对应点。",
+      "startMs": 3630,
+      "endMs": 6005,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-26": [
+    {
+      "text": "放大完成后，再调整视野。",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点与网格一起变化，端点坐标保持不变。",
+      "startMs": 2550,
+      "endMs": 5807,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-27": [
+    {
+      "text": "几何缩放改变坐标，视野调整只改变画面呈现。",
+      "startMs": 70,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两者要分清。",
+      "startMs": 4127,
+      "endMs": 5207,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "216-28": [
+    {
+      "text": "本次只保证输入端点为整数，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不保证交点也是整数。",
+      "startMs": 2710,
+      "endMs": 4590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来，我们再找出整数坐标的范围。",
+      "startMs": 4639,
+      "endMs": 7679,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

@@ -31,7 +31,10 @@
     "video:dev": "remotion studio --no-open",
     "video:build": "remotion bundle",
     "video:upgrade": "remotion upgrade",
-    "video:lint": "eslint src && tsc"
+    "video:lint": "eslint src scripts && tsc",
+    "video:narration": "node scripts/narration.ts",
+    "video:check-content": "node scripts/check-content.ts",
+    "video:check-layout": "node scripts/check-layout.ts"
   },
   "allowScripts": {
     "esbuild": false
