@@ -16,6 +16,8 @@ export type AudioTiming = {
     audioSha256: string;
     synthesisWords: WordBoundary[];
     response: unknown;
+    // Whole-sentence listening approval for these words in audioSha256 only.
+    reviewedPronunciation?: { text: string; textOffset: number }[];
   };
 };
 export type Caption = {

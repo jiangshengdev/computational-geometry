@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import timing from "./audio-timing.json" with { type: "json" };
+import timingData from "./audio-timing.json" with { type: "json" };
 import { phraseTime } from "./speech-timing.ts";
 import { audioLeadFrames, fps, timelineFor, visualAt } from "./timeline.ts";
 import { pages } from "./storyboard.ts";
 import type { AudioTiming } from "./speech-timing.ts";
+
+const timing = timingData as Record<string, AudioTiming>;
 
 test("A reaches B's horizontal coordinate when narration says directly above B", () => {
   const row = timelineFor().find((shot) => shot.id === "210-23")!;
@@ -15,7 +17,7 @@ test("A reaches B's horizontal coordinate when narration says directly above B",
 
 test("the 0.006 exercise crosses x=1 at the spoken crossing, before reaching x=1.2", () => {
   const row = timelineFor().find((shot) => shot.id === "213-14")!;
-  const audio = (timing as Record<string, AudioTiming>)[row.id];
+  const audio = timing[row.id];
   const frame =
     audioLeadFrames + (phraseTime(audio, "正上方", "end") * fps) / 1000;
   assert.ok(Math.abs(visualAt(row, frame).progress * 1.2 - 1) < 1e-10);

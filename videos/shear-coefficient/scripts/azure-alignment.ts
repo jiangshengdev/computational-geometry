@@ -83,9 +83,15 @@ export function assessmentWords(
     for (const word of measured) select(word);
     if (selected.size !== size) continue;
     for (const word of measured) {
+      const errorType =
+        recognized[words.indexOf(word)].PronunciationAssessment.ErrorType;
+      const reviewed = audio.alignment?.reviewedPronunciation?.some(
+        (entry) =>
+          entry.text === word.text && entry.textOffset === word.textOffset,
+      );
       if (
-        recognized[words.indexOf(word)].PronunciationAssessment.ErrorType !==
-        "None"
+        errorType !== "None" &&
+        !(errorType === "Mispronunciation" && reviewed)
       )
         throw Error(`Alignment requires review for timing: ${word.text}`);
     }

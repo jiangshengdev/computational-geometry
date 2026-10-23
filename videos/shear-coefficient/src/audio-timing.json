@@ -26197,7 +26197,7 @@
     }
   },
   "213-23": {
-    "duration": 7.584,
+    "duration": 7.128,
     "words": [
       {
         "text": "下",
@@ -26216,160 +26216,160 @@
       {
         "text": "是",
         "startMs": 910,
-        "durationMs": 560,
+        "durationMs": 360,
         "textOffset": 6,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 1470,
+        "startMs": 1270,
         "durationMs": 0,
         "textOffset": 7,
         "wordLength": 1
       },
       {
         "text": "怎样",
-        "startMs": 1590,
-        "durationMs": 439,
+        "startMs": 1310,
+        "durationMs": 560,
         "textOffset": 8,
         "wordLength": 2
       },
       {
         "text": "为",
-        "startMs": 2029,
-        "durationMs": 201,
+        "startMs": 1870,
+        "durationMs": 200,
         "textOffset": 10,
         "wordLength": 1
       },
       {
         "text": "所有",
-        "startMs": 2230,
-        "durationMs": 280,
+        "startMs": 2070,
+        "durationMs": 319,
         "textOffset": 11,
         "wordLength": 2
       },
       {
         "text": "事件",
-        "startMs": 2510,
-        "durationMs": 319,
+        "startMs": 2389,
+        "durationMs": 281,
         "textOffset": 13,
         "wordLength": 2
       },
       {
         "text": "统",
-        "startMs": 2829,
-        "durationMs": 201,
+        "startMs": 2670,
+        "durationMs": 199,
         "textOffset": 15,
         "wordLength": 1
       },
       {
         "text": "一",
-        "startMs": 3030,
+        "startMs": 2869,
         "durationMs": 120,
         "textOffset": 16,
         "wordLength": 1
       },
       {
         "text": "选择",
-        "startMs": 3150,
-        "durationMs": 239,
+        "startMs": 2989,
+        "durationMs": 241,
         "textOffset": 17,
         "wordLength": 2
       },
       {
         "text": "系数",
-        "startMs": 3389,
-        "durationMs": 560,
         "textOffset": 19,
-        "wordLength": 2
+        "wordLength": 2,
+        "startMs": 3270,
+        "durationMs": 470
       },
       {
         "text": "？",
-        "startMs": 3949,
+        "startMs": 3230,
         "durationMs": 0,
         "textOffset": 21,
         "wordLength": 1
       },
       {
         "text": "这",
-        "startMs": 3957,
-        "durationMs": 200,
         "textOffset": 22,
-        "wordLength": 1
+        "wordLength": 1,
+        "startMs": 3790,
+        "durationMs": 190
       },
       {
-        "text": "一集",
-        "startMs": 4157,
-        "durationMs": 280,
+        "text": "一",
         "textOffset": 23,
-        "wordLength": 2
+        "wordLength": 1,
+        "startMs": 3990,
+        "durationMs": 170
       },
       {
-        "text": "先",
-        "startMs": 4437,
-        "durationMs": 200,
-        "textOffset": 25,
-        "wordLength": 1
+        "text": "集先",
+        "textOffset": 24,
+        "wordLength": 2,
+        "startMs": 4170,
+        "durationMs": 350
       },
       {
         "text": "记住",
-        "startMs": 4637,
-        "durationMs": 680,
         "textOffset": 26,
-        "wordLength": 2
+        "wordLength": 2,
+        "startMs": 4530,
+        "durationMs": 470
       },
       {
         "text": "。",
-        "startMs": 5317,
+        "startMs": 4901,
         "durationMs": 0,
         "textOffset": 28,
         "wordLength": 1
       },
       {
         "text": "额外",
-        "startMs": 5317,
-        "durationMs": 360,
         "textOffset": 29,
-        "wordLength": 2
+        "wordLength": 2,
+        "startMs": 5030,
+        "durationMs": 370
       },
       {
         "text": "移动",
-        "startMs": 5677,
-        "durationMs": 440,
         "textOffset": 31,
-        "wordLength": 2
+        "wordLength": 2,
+        "startMs": 5410,
+        "durationMs": 310
       },
       {
         "text": "必须",
-        "startMs": 6117,
-        "durationMs": 239,
         "textOffset": 33,
-        "wordLength": 2
+        "wordLength": 2,
+        "startMs": 5730,
+        "durationMs": 270
       },
       {
         "text": "小于",
-        "startMs": 6356,
-        "durationMs": 320,
         "textOffset": 35,
-        "wordLength": 2
+        "wordLength": 2,
+        "startMs": 6010,
+        "durationMs": 330
       },
       {
         "text": "原有",
-        "startMs": 6676,
-        "durationMs": 281,
         "textOffset": 37,
-        "wordLength": 2
+        "wordLength": 2,
+        "startMs": 6350,
+        "durationMs": 270
       },
       {
         "text": "间隔",
         "textOffset": 39,
         "wordLength": 2,
-        "startMs": 7070,
-        "durationMs": 490
+        "startMs": 6630,
+        "durationMs": 470
       },
       {
         "text": "。",
-        "startMs": 6957,
+        "startMs": 6500,
         "durationMs": 0,
         "textOffset": 41,
         "wordLength": 1
@@ -26380,7 +26380,7 @@
     "fingerprint": "7303b5792f532defc2fd3d4c240ba852b702d5dbc31262afc23a30eb970254c6",
     "alignment": {
       "method": "azure-pronunciation-assessment",
-      "audioSha256": "6c1836d85d29be336ecefa6ab35274fa97453e08319991836a75a4b5844611c7",
+      "audioSha256": "0645dd47468eec39519bcc7dd312925c1eff1a9c1538f452cdda3b57ec36960a",
       "synthesisWords": [
         {
           "text": "下",
@@ -26399,185 +26399,185 @@
         {
           "text": "是",
           "startMs": 910,
-          "durationMs": 560,
+          "durationMs": 360,
           "textOffset": 6,
           "wordLength": 1
         },
         {
           "text": "。",
-          "startMs": 1470,
+          "startMs": 1270,
           "durationMs": 0,
           "textOffset": 7,
           "wordLength": 1
         },
         {
           "text": "怎样",
-          "startMs": 1590,
-          "durationMs": 439,
+          "startMs": 1310,
+          "durationMs": 560,
           "textOffset": 8,
           "wordLength": 2
         },
         {
           "text": "为",
-          "startMs": 2029,
-          "durationMs": 201,
+          "startMs": 1870,
+          "durationMs": 200,
           "textOffset": 10,
           "wordLength": 1
         },
         {
           "text": "所有",
-          "startMs": 2230,
-          "durationMs": 280,
+          "startMs": 2070,
+          "durationMs": 319,
           "textOffset": 11,
           "wordLength": 2
         },
         {
           "text": "事件",
-          "startMs": 2510,
-          "durationMs": 319,
+          "startMs": 2389,
+          "durationMs": 281,
           "textOffset": 13,
           "wordLength": 2
         },
         {
           "text": "统",
-          "startMs": 2829,
-          "durationMs": 201,
+          "startMs": 2670,
+          "durationMs": 199,
           "textOffset": 15,
           "wordLength": 1
         },
         {
           "text": "一",
-          "startMs": 3030,
+          "startMs": 2869,
           "durationMs": 120,
           "textOffset": 16,
           "wordLength": 1
         },
         {
           "text": "选择",
-          "startMs": 3150,
-          "durationMs": 239,
+          "startMs": 2989,
+          "durationMs": 241,
           "textOffset": 17,
           "wordLength": 2
         },
         {
           "text": "系数",
-          "startMs": 3389,
-          "durationMs": 560,
+          "startMs": 3230,
+          "durationMs": 0,
           "textOffset": 19,
           "wordLength": 2
         },
         {
           "text": "？",
-          "startMs": 3949,
+          "startMs": 3230,
           "durationMs": 0,
           "textOffset": 21,
           "wordLength": 1
         },
         {
           "text": "这",
-          "startMs": 3957,
-          "durationMs": 200,
+          "startMs": 3701,
+          "durationMs": 160,
           "textOffset": 22,
           "wordLength": 1
         },
         {
           "text": "一集",
-          "startMs": 4157,
-          "durationMs": 280,
+          "startMs": 3861,
+          "durationMs": 360,
           "textOffset": 23,
           "wordLength": 2
         },
         {
           "text": "先",
-          "startMs": 4437,
-          "durationMs": 200,
+          "startMs": 4221,
+          "durationMs": 160,
           "textOffset": 25,
           "wordLength": 1
         },
         {
           "text": "记住",
-          "startMs": 4637,
-          "durationMs": 680,
+          "startMs": 4381,
+          "durationMs": 520,
           "textOffset": 26,
           "wordLength": 2
         },
         {
           "text": "。",
-          "startMs": 5317,
+          "startMs": 4901,
           "durationMs": 0,
           "textOffset": 28,
           "wordLength": 1
         },
         {
           "text": "额外",
-          "startMs": 5317,
+          "startMs": 4901,
           "durationMs": 360,
           "textOffset": 29,
           "wordLength": 2
         },
         {
           "text": "移动",
-          "startMs": 5677,
-          "durationMs": 440,
+          "startMs": 5261,
+          "durationMs": 360,
           "textOffset": 31,
           "wordLength": 2
         },
         {
           "text": "必须",
-          "startMs": 6117,
-          "durationMs": 239,
+          "startMs": 5621,
+          "durationMs": 240,
           "textOffset": 33,
           "wordLength": 2
         },
         {
           "text": "小于",
-          "startMs": 6356,
-          "durationMs": 320,
+          "startMs": 5861,
+          "durationMs": 360,
           "textOffset": 35,
           "wordLength": 2
         },
         {
           "text": "原有",
-          "startMs": 6676,
-          "durationMs": 281,
+          "startMs": 6221,
+          "durationMs": 279,
           "textOffset": 37,
           "wordLength": 2
         },
         {
           "text": "间隔",
-          "startMs": 6957,
+          "startMs": 6500,
           "durationMs": 0,
           "textOffset": 39,
           "wordLength": 2
         },
         {
           "text": "。",
-          "startMs": 6957,
+          "startMs": 6500,
           "durationMs": 0,
           "textOffset": 41,
           "wordLength": 1
         }
       ],
       "response": {
-        "Id": "97895e7fb1a947a58623b4672c995335",
+        "Id": "a89df2f19d374f458d0d386cac7c4dc4",
         "RecognitionStatus": "Success",
         "Offset": 500000,
-        "Duration": 75100000,
+        "Duration": 70500000,
         "Channel": 0,
         "DisplayText": "下一步的问题是怎样为所有事件统一选择系数？这一集先记住，额外移动必须小于原有间隔。",
-        "SNR": 24.754633,
+        "SNR": 24.266428,
         "NBest": [
           {
-            "Confidence": 0.97887564,
+            "Confidence": 0.97721964,
             "Lexical": "下一步 的 问题 是 怎样 为 所有 事件 统一 选择 系数 这 一 集先 记住 额外 移动 必须 小于 原有 间隔",
             "ITN": "下一步 的 问题 是 怎样 为 所有 事件 统一 选择 系数 这 一 集先 记住 额外 移动 必须 小于 原有 间隔",
             "MaskedITN": "下一步的问题是怎样为所有事件统一选择系数这一集先记住额外移动必须小于原有间隔",
             "Display": "下一步的问题是怎样为所有事件统一选择系数？这一集先记住，额外移动必须小于原有间隔。",
             "PronunciationAssessment": {
-              "AccuracyScore": 97,
+              "AccuracyScore": 95,
               "FluencyScore": 99,
-              "CompletenessScore": 100,
-              "PronScore": 98
+              "CompletenessScore": 95,
+              "PronScore": 95.8
             },
             "Words": [
               {
@@ -26601,7 +26601,7 @@
               {
                 "Word": "问题",
                 "Offset": 6700000,
-                "Duration": 2900000,
+                "Duration": 2700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26609,17 +26609,17 @@
               },
               {
                 "Word": "是",
-                "Offset": 9700000,
-                "Duration": 4900000,
+                "Offset": 9500000,
+                "Duration": 3300000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 85,
+                  "AccuracyScore": 88,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "怎样",
-                "Offset": 15200000,
-                "Duration": 5600000,
+                "Offset": 13100000,
+                "Duration": 6100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26627,8 +26627,8 @@
               },
               {
                 "Word": "为",
-                "Offset": 20900000,
-                "Duration": 1700000,
+                "Offset": 19300000,
+                "Duration": 1500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26636,8 +26636,8 @@
               },
               {
                 "Word": "所有",
-                "Offset": 22700000,
-                "Duration": 2900000,
+                "Offset": 20900000,
+                "Duration": 3200000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -26645,16 +26645,16 @@
               },
               {
                 "Word": "事件",
-                "Offset": 25700000,
-                "Duration": 3100000,
+                "Offset": 24200000,
+                "Duration": 3000000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 65,
+                  "AccuracyScore": 82,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "统一",
-                "Offset": 28900000,
+                "Offset": 27300000,
                 "Duration": 2700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -26663,35 +26663,35 @@
               },
               {
                 "Word": "选择",
-                "Offset": 31700000,
-                "Duration": 2900000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "系数",
-                "Offset": 34700000,
-                "Duration": 5300000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 94,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "这",
-                "Offset": 40300000,
-                "Duration": 2100000,
+                "Offset": 30100000,
+                "Duration": 2500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
+                "Word": "系数",
+                "Offset": 32700000,
+                "Duration": 4700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 58,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "这",
+                "Offset": 37900000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
                 "Word": "一",
-                "Offset": 42500000,
-                "Duration": 1600000,
+                "Offset": 39900000,
+                "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26699,8 +26699,8 @@
               },
               {
                 "Word": "集先",
-                "Offset": 44200000,
-                "Duration": 3200000,
+                "Offset": 41700000,
+                "Duration": 3500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26708,8 +26708,8 @@
               },
               {
                 "Word": "记住",
-                "Offset": 47500000,
-                "Duration": 6800000,
+                "Offset": 45300000,
+                "Duration": 4700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26717,8 +26717,8 @@
               },
               {
                 "Word": "额外",
-                "Offset": 54600000,
-                "Duration": 3400000,
+                "Offset": 50300000,
+                "Duration": 3700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26726,8 +26726,8 @@
               },
               {
                 "Word": "移动",
-                "Offset": 58100000,
-                "Duration": 4100000,
+                "Offset": 54100000,
+                "Duration": 3100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26735,7 +26735,7 @@
               },
               {
                 "Word": "必须",
-                "Offset": 62300000,
+                "Offset": 57300000,
                 "Duration": 2700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -26744,8 +26744,8 @@
               },
               {
                 "Word": "小于",
-                "Offset": 65100000,
-                "Duration": 2900000,
+                "Offset": 60100000,
+                "Duration": 3300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26753,8 +26753,8 @@
               },
               {
                 "Word": "原有",
-                "Offset": 68100000,
-                "Duration": 2500000,
+                "Offset": 63500000,
+                "Duration": 2700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26762,8 +26762,8 @@
               },
               {
                 "Word": "间隔",
-                "Offset": 70700000,
-                "Duration": 4900000,
+                "Offset": 66300000,
+                "Duration": 4700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -26772,7 +26772,13 @@
             ]
           }
         ]
-      }
+      },
+      "reviewedPronunciation": [
+        {
+          "text": "系数",
+          "textOffset": 19
+        }
+      ]
     }
   }
 }
