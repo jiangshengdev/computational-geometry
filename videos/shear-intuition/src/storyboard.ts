@@ -315,7 +315,7 @@ export const shots: Shot[] = [
   },
   {
     id: "204-10",
-    reveal: "S、乘 why",
+    reveal: "S 乘 why",
     page: "formula",
     step: 3,
     caption: "s 叫剪切系数。sy 表示 s 乘 y，这次取二分之一只为图解。",
@@ -375,7 +375,7 @@ export const shots: Shot[] = [
     page: "readOriginal",
     step: 2,
     caption: "先读原横坐标。过 P 画平行于原纵轴的竖直线，落在横轴刻度 2。",
-    motion: { start: "过、P", end: "刻度二" },
+    motion: { start: "过 P", end: "刻度二" },
   },
   {
     id: "205-01b",
@@ -383,7 +383,7 @@ export const shots: Shot[] = [
     page: "readOriginal",
     step: 4,
     caption: "再读原纵坐标。过 P 画平行于原横轴的水平线，落在纵轴刻度 2。",
-    motion: { start: "过、P", end: "刻度二" },
+    motion: { start: "过 P", end: "刻度二" },
   },
   {
     id: "205-02",
@@ -396,7 +396,7 @@ export const shots: Shot[] = [
     page: "coordinates",
     step: 2,
     caption: "过 P 画平行于新纵轴的线，找到它与横轴的交点。",
-    motion: { start: "过、P", end: "交点" },
+    motion: { start: "过 P", end: "交点" },
   },
   {
     id: "205-04",
@@ -456,7 +456,7 @@ export const shots: Shot[] = [
   },
   {
     id: "206-05",
-    reveal: "只剩下、X",
+    reveal: "只剩下 X",
     page: "inverse",
     step: 5,
     caption: "右边加上和减去的是同一个数，它们抵消，只剩下 x。",
@@ -574,7 +574,7 @@ export const shots: Shot[] = [
   },
   {
     id: "206-16",
-    reveal: "所以、X、等于",
+    reveal: "所以 X 等于",
     page: "oblique",
     step: 1,
     caption: "更一般地，新纵轴上的点满足新横坐标为零，所以 x 等于负 s 乘 y′。",
