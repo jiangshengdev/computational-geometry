@@ -1,0 +1,652 @@
+{
+  "232-01": [
+    "全部输入端点统一缩放",
+    {
+      "text": "为整数",
+      "pinyin": "wei2 zheng3 shu4"
+    },
+    "坐标。",
+    {
+      "letter": "M"
+    },
+    "是",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "与所有端点坐标绝对值",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "最大值。"
+  ],
+  "232-02": [
+    "所以",
+    {
+      "letter": "M"
+    },
+    "至少",
+    {
+      "text": "为一",
+      "pinyin": "wei2 yi1"
+    },
+    "。沿用前集结论。端点和实际线段交点",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "坐标。约分后",
+    {
+      "text": "的正分母",
+      "pinyin": "de5 zheng4 fen1 mu3"
+    },
+    "都",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "八乘以",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的平方",
+      "pinyin": "de5 ping2 fang1"
+    },
+    "。"
+  ],
+  "232-03": [
+    "剪切后",
+    {
+      "text": "的横坐标",
+      "pinyin": "de5 heng2 zuo4 biao1"
+    },
+    "是",
+    {
+      "letter": "X"
+    },
+    "加上",
+    {
+      "letter": "S"
+    },
+    "乘以",
+    {
+      "letter": "Y"
+    },
+    "。纵坐标仍是",
+    {
+      "letter": "Y"
+    },
+    "。",
+    {
+      "text": "这一段",
+      "pinyin": "zhe4 yi2 duan4"
+    },
+    "先研究。",
+    {
+      "text": "不同横坐标",
+      "pinyin": "bu4 tong2 heng2 zuo4 biao1"
+    },
+    "原来至少隔多远。"
+  ],
+  "232-04": [
+    "先看",
+    {
+      "text": "二分之一",
+      "pinyin": "er4 fen1 zhi1 yi1"
+    },
+    "和",
+    {
+      "text": "三分之二",
+      "pinyin": "san1 fen1 zhi1 er4"
+    },
+    "。",
+    {
+      "text": "通分成六分之三和六分之四",
+      "pinyin": "tong1 fen1 cheng2 liu4 fen1 zhi1 san1 he2 liu4 fen1 zhi1 si4"
+    },
+    "。实际距离是",
+    {
+      "text": "六分之一",
+      "pinyin": "liu4 fen1 zhi1 yi1"
+    },
+    "。"
+  ],
+  "232-05": [
+    "它们",
+    {
+      "text": "的分母",
+      "pinyin": "de5 fen1 mu3"
+    },
+    "都",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "三。",
+    {
+      "text": "分母乘积",
+      "pinyin": "fen1 mu3 cheng2 ji1"
+    },
+    "就",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "九。因此可以保证距离至少",
+    {
+      "text": "为九分之一",
+      "pinyin": "wei2 jiu3 fen1 zhi1 yi1"
+    },
+    "。实际",
+    {
+      "text": "的六分之一",
+      "pinyin": "de5 liu4 fen1 zhi1 yi1"
+    },
+    {
+      "text": "比它更大",
+      "pinyin": "bi3 ta1 geng4 da4"
+    },
+    "。"
+  ],
+  "232-06": [
+    "下界只保证",
+    {
+      "text": "不会更小",
+      "pinyin": "bu2 hui4 geng4 xiao3"
+    },
+    "。",
+    {
+      "text": "不保证",
+      "pinyin": "bu4 bao3 zheng4"
+    },
+    "恰好取到。下面用字母说明。这个保证",
+    {
+      "text": "为什么",
+      "pinyin": "wei4 shen2 me5"
+    },
+    "成立。"
+  ],
+  "232-07": [
+    "把两个",
+    {
+      "text": "不同横坐标",
+      "pinyin": "bu4 tong2 heng2 zuo4 biao1"
+    },
+    "记",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    {
+      "letter": "Q"
+    },
+    "分之",
+    {
+      "letter": "P"
+    },
+    "和",
+    {
+      "letter": "T"
+    },
+    "分之",
+    {
+      "letter": "R"
+    },
+    "。其中",
+    {
+      "letter": "P"
+    },
+    "与",
+    {
+      "letter": "R"
+    },
+    "是",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "。",
+    {
+      "letter": "Q"
+    },
+    "与",
+    {
+      "letter": "T"
+    },
+    "是约分后",
+    {
+      "text": "的正整数分母",
+      "pinyin": "de5 zheng4 zheng3 shu4 fen1 mu3"
+    },
+    "。都",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "八乘以",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的平方",
+      "pinyin": "de5 ping2 fang1"
+    },
+    "。"
+  ],
+  "232-08": [
+    {
+      "text": "第一个分数的分子分母",
+      "pinyin": "di4 yi1 ge4 fen1 shu4 de5 fen1 zi3 fen1 mu3"
+    },
+    "。都乘以另",
+    {
+      "text": "一个分母",
+      "pinyin": "yi2 ge4 fen1 mu3"
+    },
+    "。第二个",
+    {
+      "text": "分数",
+      "pinyin": "fen1 shu4"
+    },
+    "也这样",
+    {
+      "text": "处理",
+      "pinyin": "chu3 li3"
+    },
+    "。通分以后。用第一个新",
+    {
+      "text": "分子",
+      "pinyin": "fen1 zi3"
+    },
+    "减去第二个新",
+    {
+      "text": "分子",
+      "pinyin": "fen1 zi3"
+    },
+    "。共同",
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    "等于两个原",
+    {
+      "text": "分母的乘积",
+      "pinyin": "fen1 mu3 de5 cheng2 ji1"
+    },
+    "。"
+  ],
+  "232-09": [
+    "距离",
+    {
+      "text": "不区分正负",
+      "pinyin": "bu4 qu1 fen1 zheng4 fu4"
+    },
+    "。所以取绝对值。",
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    {
+      "letter": "Q"
+    },
+    "与",
+    {
+      "letter": "T"
+    },
+    {
+      "text": "的乘积为正",
+      "pinyin": "de5 cheng2 ji1 wei2 zheng4"
+    },
+    "。绝对值只需留在整个",
+    {
+      "text": "分子",
+      "pinyin": "fen1 zi3"
+    },
+    "上。"
+  ],
+  "232-10": [
+    {
+      "text": "横坐标不同",
+      "pinyin": "heng2 zuo4 biao1 bu4 tong2"
+    },
+    "。所以",
+    {
+      "letter": "P"
+    },
+    "乘以",
+    {
+      "letter": "T"
+    },
+    "减去",
+    {
+      "letter": "R"
+    },
+    "乘以",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "不是零",
+      "pinyin": "bu2 shi4 ling2"
+    },
+    "。它是非零",
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "。绝对值至少",
+    {
+      "text": "为一",
+      "pinyin": "wei2 yi1"
+    },
+    "。除以",
+    {
+      "text": "同一个正数",
+      "pinyin": "tong2 yi2 ge4 zheng4 shu4"
+    },
+    {
+      "letter": "Q"
+    },
+    "与",
+    {
+      "letter": "T"
+    },
+    {
+      "text": "的乘积",
+      "pinyin": "de5 cheng2 ji1"
+    },
+    "。",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    "距离至少",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    {
+      "letter": "Q"
+    },
+    "与",
+    {
+      "letter": "T"
+    },
+    {
+      "text": "的乘积的倒数",
+      "pinyin": "de5 cheng2 ji1 de5 dao4 shu4"
+    },
+    "。"
+  ],
+  "232-11": [
+    "保留刚才",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "距离下界。先把",
+    {
+      "letter": "Q"
+    },
+    "放大到八乘以",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的平方",
+      "pinyin": "de5 ping2 fang1"
+    },
+    "。再把",
+    {
+      "letter": "T"
+    },
+    "放大到八乘以",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的平方",
+      "pinyin": "de5 ping2 fang1"
+    },
+    "。每次都乘以",
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    "。",
+    {
+      "text": "不等号方向不变",
+      "pinyin": "bu4 deng3 hao4 fang1 xiang4 bu2 bian4"
+    },
+    "。"
+  ],
+  "232-12": [
+    "八乘以八等于六十四。",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的平方",
+      "pinyin": "de5 ping2 fang1"
+    },
+    "乘以",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的平方",
+      "pinyin": "de5 ping2 fang1"
+    },
+    "等于",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的四次方",
+      "pinyin": "de5 si4 ci4 fang1"
+    },
+    "。因此",
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    {
+      "letter": "Q"
+    },
+    "与",
+    {
+      "letter": "T"
+    },
+    {
+      "text": "的乘积不超过",
+      "pinyin": "de5 cheng2 ji1 bu4 chao1 guo4"
+    },
+    "六十四乘以",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的四次方",
+      "pinyin": "de5 si4 ci4 fang1"
+    },
+    "。"
+  ],
+  "232-13": [
+    {
+      "text": "正分母",
+      "pinyin": "zheng4 fen1 mu3"
+    },
+    "越大。",
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "怎样变化？比较",
+    {
+      "text": "二分之一",
+      "pinyin": "er4 fen1 zhi1 yi1"
+    },
+    "和",
+    {
+      "text": "六分之一",
+      "pinyin": "liu4 fen1 zhi1 yi1"
+    },
+    "。安静想四秒。"
+  ],
+  "232-14": [
+    {
+      "text": "二分之一",
+      "pinyin": "er4 fen1 zhi1 yi1"
+    },
+    "大于",
+    {
+      "text": "六分之一",
+      "pinyin": "liu4 fen1 zhi1 yi1"
+    },
+    "。同样",
+    {
+      "text": "的一份",
+      "pinyin": "de5 yi2 fen4"
+    },
+    "。分成六份时每份",
+    {
+      "text": "更小",
+      "pinyin": "geng4 xiao3"
+    },
+    "。",
+    {
+      "text": "分子同为一",
+      "pinyin": "fen1 zi3 tong2 wei2 yi1"
+    },
+    "。",
+    {
+      "text": "正分母",
+      "pinyin": "zheng4 fen1 mu3"
+    },
+    "越大。",
+    {
+      "text": "分数",
+      "pinyin": "fen1 shu4"
+    },
+    "越小。"
+  ],
+  "232-15": [
+    {
+      "letter": "Q"
+    },
+    "与",
+    {
+      "letter": "T"
+    },
+    {
+      "text": "的乘积为正且不超过",
+      "pinyin": "de5 cheng2 ji1 wei2 zheng4 qie3 bu4 chao1 guo4"
+    },
+    "六十四与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的四次方的乘积",
+      "pinyin": "de5 si4 ci4 fang1 de5 cheng2 ji1"
+    },
+    "。取",
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "后方向反过来。因此",
+    {
+      "letter": "Q"
+    },
+    "与",
+    {
+      "letter": "T"
+    },
+    {
+      "text": "的乘积的倒数",
+      "pinyin": "de5 cheng2 ji1 de5 dao4 shu4"
+    },
+    "大于或等于六十四与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的四次方的乘积的倒数",
+      "pinyin": "de5 si4 ci4 fang1 de5 cheng2 ji1 de5 dao4 shu4"
+    },
+    "。"
+  ],
+  "232-16": [
+    "把两段连接起来。距离等于",
+    {
+      "text": "分子",
+      "pinyin": "fen1 zi3"
+    },
+    "绝对值除以",
+    {
+      "text": "正分母",
+      "pinyin": "zheng4 fen1 mu3"
+    },
+    "。",
+    {
+      "text": "分子",
+      "pinyin": "fen1 zi3"
+    },
+    "绝对值至少",
+    {
+      "text": "为一",
+      "pinyin": "wei2 yi1"
+    },
+    "。所以距离至少",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    {
+      "letter": "Q"
+    },
+    "与",
+    {
+      "letter": "T"
+    },
+    {
+      "text": "的乘积的倒数",
+      "pinyin": "de5 cheng2 ji1 de5 dao4 shu4"
+    },
+    "。"
+  ],
+  "232-17": [
+    "再用",
+    {
+      "text": "分母乘积的",
+      "pinyin": "fen1 mu3 cheng2 ji1 de5"
+    },
+    "上界。",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    "距离至少",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "六十四与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的四次方的乘积的倒数",
+      "pinyin": "de5 si4 ci4 fang1 de5 cheng2 ji1 de5 dao4 shu4"
+    },
+    "。这是保证下界。",
+    {
+      "text": "不一定",
+      "pinyin": "bu4 yi2 ding4"
+    },
+    "是真实最小间距。"
+  ]
+}

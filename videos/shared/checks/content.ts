@@ -20,6 +20,7 @@ type Row = Shot & {
   speechFrames: number;
   revealMs: number;
   previousStep: number;
+  stages?: { step: number; ms: number }[];
   motionTiming?: { start: number; end: number } | null;
 };
 type Visual = {
@@ -142,13 +143,28 @@ export function checkContent<R extends Row>({
       throw Error(`Incomplete final state: ${row.id}`);
     if (row.motionTiming && row.motionTiming.end <= row.motionTiming.start)
       throw Error(`Invalid animation anchors: ${row.id}`);
-    const revealFrame =
-      Math.ceil((row.revealMs * fps) / 1000) + audioLeadFrames;
-    if (
-      visualAt(row, revealFrame).visibleStep !== row.step ||
-      visualAt(row, revealFrame - 1).visibleStep !== row.previousStep
-    )
-      throw Error(`Formula reveal not aligned to speech: ${row.id}`);
+    const stages = row.stages ?? [{ step: row.step, ms: row.revealMs }];
+    let previousStep = row.previousStep;
+    let previousFrame = -1;
+    for (const stage of stages) {
+      const revealFrame = Math.ceil((stage.ms * fps) / 1000) + audioLeadFrames;
+      if (
+        !Number.isFinite(stage.ms) ||
+        stage.ms < 0 ||
+        revealFrame <= previousFrame ||
+        revealFrame > audioLeadFrames + row.speechFrames ||
+        stage.step < previousStep ||
+        visualAt(row, revealFrame).visibleStep !== stage.step ||
+        visualAt(row, revealFrame - 1).visibleStep !== previousStep
+      )
+        throw Error(
+          `Formula reveal not aligned to speech: ${row.id}/${stage.step}`,
+        );
+      previousStep = stage.step;
+      previousFrame = revealFrame;
+    }
+    if (previousStep !== row.step)
+      throw Error(`Missing final reveal: ${row.id}`);
     if (row.motionTiming) {
       const startFrame =
         Math.floor((row.motionTiming.start * fps) / 1000) + audioLeadFrames;

@@ -1,0 +1,6435 @@
+{
+  "232-01": {
+    "audioFile": "232-01.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "64611fe51777ad7b70d2eff42b950a9dbf35142092462459437054c2162964bc",
+    "duration": 6.92,
+    "words": [
+      {
+        "text": "全部",
+        "startMs": 70,
+        "durationMs": 440,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "输入",
+        "startMs": 510,
+        "durationMs": 280,
+        "textOffset": 2,
+        "wordLength": 2
+      },
+      {
+        "text": "端点",
+        "startMs": 790,
+        "durationMs": 520,
+        "textOffset": 4,
+        "wordLength": 2
+      },
+      {
+        "text": "统一",
+        "startMs": 1310,
+        "durationMs": 400,
+        "textOffset": 6,
+        "wordLength": 2
+      },
+      {
+        "text": "缩放",
+        "startMs": 1710,
+        "durationMs": 440,
+        "textOffset": 8,
+        "wordLength": 2
+      },
+      {
+        "text": "为整数",
+        "startMs": 2150,
+        "durationMs": 560,
+        "textOffset": 10,
+        "wordLength": 3
+      },
+      {
+        "text": "坐标",
+        "startMs": 2710,
+        "durationMs": 599,
+        "textOffset": 13,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 3309,
+        "durationMs": 0,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "M",
+        "startMs": 3429,
+        "durationMs": 360,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 3789,
+        "durationMs": 281,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "一",
+        "startMs": 4070,
+        "durationMs": 200,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 4270,
+        "durationMs": 240,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "所有",
+        "startMs": 4510,
+        "durationMs": 320,
+        "textOffset": 20,
+        "wordLength": 2
+      },
+      {
+        "text": "端点",
+        "startMs": 4830,
+        "durationMs": 320,
+        "textOffset": 22,
+        "wordLength": 2
+      },
+      {
+        "text": "坐标",
+        "startMs": 5150,
+        "durationMs": 440,
+        "textOffset": 24,
+        "wordLength": 2
+      },
+      {
+        "text": "绝对值",
+        "startMs": 5590,
+        "durationMs": 480,
+        "textOffset": 26,
+        "wordLength": 3
+      },
+      {
+        "text": "的",
+        "startMs": 6070,
+        "durationMs": 120,
+        "textOffset": 29,
+        "wordLength": 1
+      },
+      {
+        "text": "最",
+        "startMs": 6190,
+        "durationMs": 160,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "大值",
+        "startMs": 6350,
+        "durationMs": 560,
+        "textOffset": 31,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 6910,
+        "durationMs": 0,
+        "textOffset": 33,
+        "wordLength": 1
+      }
+    ],
+    "speech": "全部输入端点统一缩放为整数坐标。M是一与所有端点坐标绝对值的最大值。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "b5a4f5127a95fdb2e9342cb5b0c4c17cc8fbad750c3265bdd8757a4c9261c66e"
+  },
+  "232-02": {
+    "audioFile": "232-02.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "4fb485e9190f7d4d3115a39491611e9ee728cfc2b5459970bbfd050476bf9290",
+    "duration": 9.24,
+    "words": [
+      {
+        "text": "所以",
+        "startMs": 70,
+        "durationMs": 480,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 550,
+        "durationMs": 200,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "至少",
+        "startMs": 750,
+        "durationMs": 360,
+        "textOffset": 3,
+        "wordLength": 2
+      },
+      {
+        "text": "为一",
+        "startMs": 1110,
+        "durationMs": 600,
+        "textOffset": 5,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 1710,
+        "durationMs": 0,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "沿用",
+        "startMs": 1710,
+        "durationMs": 440,
+        "textOffset": 8,
+        "wordLength": 2
+      },
+      {
+        "text": "前",
+        "startMs": 2150,
+        "durationMs": 239,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "集结论",
+        "startMs": 2389,
+        "durationMs": 641,
+        "textOffset": 11,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 3030,
+        "durationMs": 0,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "端点",
+        "startMs": 3510,
+        "durationMs": 479,
+        "textOffset": 15,
+        "wordLength": 2
+      },
+      {
+        "text": "和",
+        "startMs": 3989,
+        "durationMs": 161,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "实际",
+        "startMs": 4150,
+        "durationMs": 320,
+        "textOffset": 18,
+        "wordLength": 2
+      },
+      {
+        "text": "线段",
+        "startMs": 4470,
+        "durationMs": 400,
+        "textOffset": 20,
+        "wordLength": 2
+      },
+      {
+        "text": "交点",
+        "startMs": 4870,
+        "durationMs": 320,
+        "textOffset": 22,
+        "wordLength": 2
+      },
+      {
+        "text": "的",
+        "startMs": 5190,
+        "durationMs": 120,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "坐标",
+        "startMs": 5310,
+        "durationMs": 520,
+        "textOffset": 25,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 5830,
+        "durationMs": 0,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "约分",
+        "startMs": 5914,
+        "durationMs": 360,
+        "textOffset": 28,
+        "wordLength": 2
+      },
+      {
+        "text": "后",
+        "startMs": 6274,
+        "durationMs": 120,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "的正分母",
+        "startMs": 6394,
+        "durationMs": 760,
+        "textOffset": 31,
+        "wordLength": 4
+      },
+      {
+        "text": "都",
+        "startMs": 7154,
+        "durationMs": 160,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "不超过",
+        "startMs": 7314,
+        "durationMs": 520,
+        "textOffset": 36,
+        "wordLength": 3
+      },
+      {
+        "text": "八",
+        "startMs": 7834,
+        "durationMs": 160,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以",
+        "startMs": 7994,
+        "durationMs": 320,
+        "textOffset": 40,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 8314,
+        "durationMs": 200,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "的平方",
+        "startMs": 8514,
+        "durationMs": 639,
+        "textOffset": 43,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 9153,
+        "durationMs": 0,
+        "textOffset": 46,
+        "wordLength": 1
+      }
+    ],
+    "speech": "所以M至少为一。沿用前集结论。端点和实际线段交点的坐标。约分后的正分母都不超过八乘以M的平方。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "44604fd4884d1f32d621e3536d7cf9616a43cf3d04d0cc7a4cdba734788590d5"
+  },
+  "232-03": {
+    "audioFile": "232-03.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "240e3c15682a522d6aa387053a8481665529ede2e5ebbba6bbf7deadaa75d552",
+    "duration": 8.49,
+    "words": [
+      {
+        "text": "剪切",
+        "startMs": 70,
+        "durationMs": 480,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "后",
+        "startMs": 550,
+        "durationMs": 160,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "的横坐标",
+        "startMs": 710,
+        "durationMs": 800,
+        "textOffset": 3,
+        "wordLength": 4
+      },
+      {
+        "text": "是",
+        "startMs": 1510,
+        "durationMs": 320,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "X",
+        "startMs": 1830,
+        "durationMs": 280,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "加上",
+        "startMs": 2110,
+        "durationMs": 359,
+        "textOffset": 9,
+        "wordLength": 2
+      },
+      {
+        "text": "S",
+        "startMs": 2469,
+        "durationMs": 281,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以",
+        "startMs": 2750,
+        "durationMs": 360,
+        "textOffset": 12,
+        "wordLength": 2
+      },
+      {
+        "text": "Y",
+        "startMs": 3110,
+        "durationMs": 319,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 3429,
+        "durationMs": 0,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "纵坐标",
+        "startMs": 3510,
+        "durationMs": 720,
+        "textOffset": 16,
+        "wordLength": 3
+      },
+      {
+        "text": "仍",
+        "startMs": 4230,
+        "durationMs": 200,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 4430,
+        "durationMs": 160,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "Y",
+        "startMs": 4590,
+        "durationMs": 280,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 4870,
+        "durationMs": 0,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "这一段",
+        "startMs": 4895,
+        "durationMs": 480,
+        "textOffset": 23,
+        "wordLength": 3
+      },
+      {
+        "text": "先",
+        "startMs": 5375,
+        "durationMs": 200,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "研究",
+        "startMs": 5575,
+        "durationMs": 640,
+        "textOffset": 27,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 6215,
+        "durationMs": 0,
+        "textOffset": 29,
+        "wordLength": 1
+      },
+      {
+        "text": "不同横坐标",
+        "startMs": 6215,
+        "durationMs": 999,
+        "textOffset": 30,
+        "wordLength": 5
+      },
+      {
+        "text": "原来",
+        "startMs": 7214,
+        "durationMs": 281,
+        "textOffset": 35,
+        "wordLength": 2
+      },
+      {
+        "text": "至少",
+        "startMs": 7495,
+        "durationMs": 360,
+        "textOffset": 37,
+        "wordLength": 2
+      },
+      {
+        "text": "隔",
+        "startMs": 7855,
+        "durationMs": 120,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "多",
+        "startMs": 7975,
+        "durationMs": 199,
+        "textOffset": 40,
+        "wordLength": 1
+      },
+      {
+        "text": "远",
+        "startMs": 8174,
+        "durationMs": 201,
+        "textOffset": 41,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 8375,
+        "durationMs": 0,
+        "textOffset": 42,
+        "wordLength": 1
+      }
+    ],
+    "speech": "剪切后的横坐标是X加上S乘以Y。纵坐标仍是Y。这一段先研究。不同横坐标原来至少隔多远。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "b224288c902b428131ab46f602fff263e69545cdbded47669ec8042e7aba495b"
+  },
+  "232-04": {
+    "audioFile": "232-04.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "641a8683b6662d9a437ac231bab242d7ff45544f89a81d88b40fe316426283f8",
+    "duration": 6.14,
+    "words": [
+      {
+        "text": "先",
+        "startMs": 70,
+        "durationMs": 200,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "看",
+        "startMs": 270,
+        "durationMs": 160,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
+        "text": "二分之一",
+        "startMs": 430,
+        "durationMs": 720,
+        "textOffset": 2,
+        "wordLength": 4
+      },
+      {
+        "text": "和",
+        "startMs": 1150,
+        "durationMs": 160,
+        "textOffset": 6,
+        "wordLength": 1
+      },
+      {
+        "text": "三分之二",
+        "startMs": 1310,
+        "durationMs": 719,
+        "textOffset": 7,
+        "wordLength": 4
+      },
+      {
+        "text": "。",
+        "startMs": 2029,
+        "durationMs": 0,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "通",
+        "textOffset": 12,
+        "wordLength": 1,
+        "startMs": 2150,
+        "durationMs": 320
+      },
+      {
+        "text": "分成",
+        "textOffset": 13,
+        "wordLength": 2,
+        "startMs": 2480,
+        "durationMs": 420
+      },
+      {
+        "text": "六分之三",
+        "textOffset": 15,
+        "wordLength": 4,
+        "startMs": 2910,
+        "durationMs": 720
+      },
+      {
+        "text": "和",
+        "textOffset": 19,
+        "wordLength": 1,
+        "startMs": 3640,
+        "durationMs": 130
+      },
+      {
+        "text": "六分之四",
+        "textOffset": 20,
+        "wordLength": 4,
+        "startMs": 3780,
+        "durationMs": 730
+      },
+      {
+        "text": "。",
+        "startMs": 4510,
+        "durationMs": 0,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "实际",
+        "textOffset": 25,
+        "wordLength": 2,
+        "startMs": 4540,
+        "durationMs": 460
+      },
+      {
+        "text": "距离",
+        "textOffset": 27,
+        "wordLength": 2,
+        "startMs": 5010,
+        "durationMs": 340
+      },
+      {
+        "text": "是",
+        "textOffset": 29,
+        "wordLength": 1,
+        "startMs": 5360,
+        "durationMs": 100
+      },
+      {
+        "text": "六分之一",
+        "textOffset": 30,
+        "wordLength": 4,
+        "startMs": 5470,
+        "durationMs": 640
+      },
+      {
+        "text": "。",
+        "startMs": 5349,
+        "durationMs": 0,
+        "textOffset": 34,
+        "wordLength": 1
+      }
+    ],
+    "speech": "先看二分之一和三分之二。通分成六分之三和六分之四。实际距离是六分之一。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "b7195c7e521fb2d8259be24e3b7075983439f045eb4b146cd9821717de72ca32",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "641a8683b6662d9a437ac231bab242d7ff45544f89a81d88b40fe316426283f8",
+      "synthesisWords": [
+        {
+          "text": "先",
+          "startMs": 70,
+          "durationMs": 200,
+          "textOffset": 0,
+          "wordLength": 1
+        },
+        {
+          "text": "看",
+          "startMs": 270,
+          "durationMs": 160,
+          "textOffset": 1,
+          "wordLength": 1
+        },
+        {
+          "text": "二分之一",
+          "startMs": 430,
+          "durationMs": 720,
+          "textOffset": 2,
+          "wordLength": 4
+        },
+        {
+          "text": "和",
+          "startMs": 1150,
+          "durationMs": 160,
+          "textOffset": 6,
+          "wordLength": 1
+        },
+        {
+          "text": "三分之二",
+          "startMs": 1310,
+          "durationMs": 719,
+          "textOffset": 7,
+          "wordLength": 4
+        },
+        {
+          "text": "。",
+          "startMs": 2029,
+          "durationMs": 0,
+          "textOffset": 11,
+          "wordLength": 1
+        },
+        {
+          "text": "通分成六分之三和六分之四",
+          "startMs": 2230,
+          "durationMs": 2280,
+          "textOffset": 12,
+          "wordLength": 12
+        },
+        {
+          "text": "。",
+          "startMs": 4510,
+          "durationMs": 0,
+          "textOffset": 24,
+          "wordLength": 1
+        },
+        {
+          "text": "实际",
+          "startMs": 4469,
+          "durationMs": 400,
+          "textOffset": 25,
+          "wordLength": 2
+        },
+        {
+          "text": "距离",
+          "startMs": 4869,
+          "durationMs": 360,
+          "textOffset": 27,
+          "wordLength": 2
+        },
+        {
+          "text": "是",
+          "startMs": 5229,
+          "durationMs": 120,
+          "textOffset": 29,
+          "wordLength": 1
+        },
+        {
+          "text": "六分之一",
+          "startMs": 5349,
+          "durationMs": 0,
+          "textOffset": 30,
+          "wordLength": 4
+        },
+        {
+          "text": "。",
+          "startMs": 5349,
+          "durationMs": 0,
+          "textOffset": 34,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "74082d6395934b7a8ffaf8c28af4f295",
+        "RecognitionStatus": "Success",
+        "Offset": 500000,
+        "Duration": 60600000,
+        "Channel": 0,
+        "DisplayText": "先看1/2和2/3通分成3/6和4/6，实际距离是1/6。",
+        "SNR": 23.276886,
+        "NBest": [
+          {
+            "Confidence": 0.9852782,
+            "Lexical": "先 看 二分之一 和 三分之二 通 分成 六分之三 和 六分之四 实际 距离 是 六分之一",
+            "ITN": "先 看 1/2 和 2/3 通 分成 3/6 和 4/6 实际 距离 是 1/6",
+            "MaskedITN": "先看1/2和2/3通分成3/6和4/6实际距离是1/6",
+            "Display": "先看1/2和2/3通分成3/6和4/6，实际距离是1/6。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "FluencyScore": 99,
+              "CompletenessScore": 100,
+              "PronScore": 96.2
+            },
+            "Words": [
+              {
+                "Word": "先",
+                "Offset": 500000,
+                "Duration": 2300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "看",
+                "Offset": 2900000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "二分之一",
+                "Offset": 4300000,
+                "Duration": 7100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "和",
+                "Offset": 11500000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "三分之二",
+                "Offset": 13100000,
+                "Duration": 8100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "通",
+                "Offset": 21500000,
+                "Duration": 3200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分成",
+                "Offset": 24800000,
+                "Duration": 4200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "六分之三",
+                "Offset": 29100000,
+                "Duration": 7200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "和",
+                "Offset": 36400000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "六分之四",
+                "Offset": 37800000,
+                "Duration": 7300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "实际",
+                "Offset": 45400000,
+                "Duration": 4600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "距离",
+                "Offset": 50100000,
+                "Duration": 3400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "是",
+                "Offset": 53600000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 82,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "六分之一",
+                "Offset": 54700000,
+                "Duration": 6400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 64,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "232-05": {
+    "audioFile": "232-05.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "7f7b075aa0c4a7bbf535861e1950ff3aeddb115cc369911e0f6ae79edf750441",
+    "duration": 8.34,
+    "words": [
+      {
+        "text": "它们",
+        "startMs": 70,
+        "durationMs": 320,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "的分母",
+        "startMs": 390,
+        "durationMs": 480,
+        "textOffset": 2,
+        "wordLength": 3
+      },
+      {
+        "text": "都",
+        "startMs": 870,
+        "durationMs": 160,
+        "textOffset": 5,
+        "wordLength": 1
+      },
+      {
+        "text": "不超过",
+        "startMs": 1030,
+        "durationMs": 440,
+        "textOffset": 6,
+        "wordLength": 3
+      },
+      {
+        "text": "三",
+        "startMs": 1470,
+        "durationMs": 360,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 1830,
+        "durationMs": 0,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "分母乘积",
+        "startMs": 1950,
+        "durationMs": 879,
+        "textOffset": 11,
+        "wordLength": 4
+      },
+      {
+        "text": "就",
+        "startMs": 2829,
+        "durationMs": 120,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "不超过",
+        "startMs": 2949,
+        "durationMs": 440,
+        "textOffset": 16,
+        "wordLength": 3
+      },
+      {
+        "text": "九",
+        "startMs": 3389,
+        "durationMs": 361,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 3750,
+        "durationMs": 0,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "因此",
+        "startMs": 3786,
+        "durationMs": 480,
+        "textOffset": 21,
+        "wordLength": 2
+      },
+      {
+        "text": "可以",
+        "startMs": 4266,
+        "durationMs": 240,
+        "textOffset": 23,
+        "wordLength": 2
+      },
+      {
+        "text": "保证",
+        "startMs": 4506,
+        "durationMs": 320,
+        "textOffset": 25,
+        "wordLength": 2
+      },
+      {
+        "text": "距离",
+        "startMs": 4826,
+        "durationMs": 360,
+        "textOffset": 27,
+        "wordLength": 2
+      },
+      {
+        "text": "至少",
+        "startMs": 5186,
+        "durationMs": 280,
+        "textOffset": 29,
+        "wordLength": 2
+      },
+      {
+        "text": "为九分之一",
+        "startMs": 5466,
+        "durationMs": 960,
+        "textOffset": 31,
+        "wordLength": 5
+      },
+      {
+        "text": "。",
+        "startMs": 6426,
+        "durationMs": 0,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "实际",
+        "startMs": 6505,
+        "durationMs": 441,
+        "textOffset": 37,
+        "wordLength": 2
+      },
+      {
+        "text": "的六分之一",
+        "startMs": 6946,
+        "durationMs": 679,
+        "textOffset": 39,
+        "wordLength": 5
+      },
+      {
+        "text": "比它更大",
+        "startMs": 7625,
+        "durationMs": 641,
+        "textOffset": 44,
+        "wordLength": 4
+      },
+      {
+        "text": "。",
+        "startMs": 8266,
+        "durationMs": 0,
+        "textOffset": 48,
+        "wordLength": 1
+      }
+    ],
+    "speech": "它们的分母都不超过三。分母乘积就不超过九。因此可以保证距离至少为九分之一。实际的六分之一比它更大。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "7d86feabdc40f7e2bbc4be0a79abeb3ce5290e01010ac985876ad4077f377855"
+  },
+  "232-06": {
+    "audioFile": "232-06.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "6e71eb32255a994d2e3423614123a65006ff54d11a0f9be9bf817f868ab288e5",
+    "duration": 6.59,
+    "words": [
+      {
+        "text": "下界",
+        "startMs": 70,
+        "durationMs": 360,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "只",
+        "startMs": 430,
+        "durationMs": 160,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "保证",
+        "startMs": 590,
+        "durationMs": 360,
+        "textOffset": 3,
+        "wordLength": 2
+      },
+      {
+        "text": "不会更小",
+        "startMs": 950,
+        "durationMs": 800,
+        "textOffset": 5,
+        "wordLength": 4
+      },
+      {
+        "text": "。",
+        "startMs": 1750,
+        "durationMs": 0,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "不保证",
+        "startMs": 1910,
+        "durationMs": 559,
+        "textOffset": 10,
+        "wordLength": 3
+      },
+      {
+        "text": "恰好",
+        "startMs": 2469,
+        "durationMs": 320,
+        "textOffset": 13,
+        "wordLength": 2
+      },
+      {
+        "text": "取到",
+        "startMs": 2789,
+        "durationMs": 520,
+        "textOffset": 15,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 3309,
+        "durationMs": 0,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "下面",
+        "startMs": 3550,
+        "durationMs": 399,
+        "textOffset": 18,
+        "wordLength": 2
+      },
+      {
+        "text": "用",
+        "startMs": 3949,
+        "durationMs": 121,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "字母",
+        "startMs": 4070,
+        "durationMs": 320,
+        "textOffset": 21,
+        "wordLength": 2
+      },
+      {
+        "text": "说明",
+        "startMs": 4390,
+        "durationMs": 480,
+        "textOffset": 23,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 4870,
+        "durationMs": 0,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
+        "text": "这个",
+        "startMs": 4895,
+        "durationMs": 320,
+        "textOffset": 26,
+        "wordLength": 2
+      },
+      {
+        "text": "保证",
+        "startMs": 5215,
+        "durationMs": 480,
+        "textOffset": 28,
+        "wordLength": 2
+      },
+      {
+        "text": "为什么",
+        "startMs": 5695,
+        "durationMs": 400,
+        "textOffset": 30,
+        "wordLength": 3
+      },
+      {
+        "text": "成立",
+        "startMs": 6095,
+        "durationMs": 400,
+        "textOffset": 33,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 6495,
+        "durationMs": 0,
+        "textOffset": 35,
+        "wordLength": 1
+      }
+    ],
+    "speech": "下界只保证不会更小。不保证恰好取到。下面用字母说明。这个保证为什么成立。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "a4999a219b654f7b9ded442e6d07423a98d25ad74dfda4005881fedf20b7496e"
+  },
+  "232-07": {
+    "audioFile": "232-07.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "075594a53a9c84fd9fddbc221a9554c119fd295892ebad1da0971d6e873b9b11",
+    "duration": 10.99,
+    "words": [
+      {
+        "text": "把",
+        "startMs": 70,
+        "durationMs": 160,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "两",
+        "startMs": 230,
+        "durationMs": 200,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
+        "text": "个",
+        "startMs": 430,
+        "durationMs": 120,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "不同横坐标",
+        "startMs": 550,
+        "durationMs": 1000,
+        "textOffset": 3,
+        "wordLength": 5
+      },
+      {
+        "text": "记",
+        "startMs": 1550,
+        "durationMs": 200,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "为",
+        "startMs": 1750,
+        "durationMs": 240,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "Q",
+        "startMs": 1990,
+        "durationMs": 200,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "分",
+        "startMs": 2190,
+        "durationMs": 199,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "之",
+        "startMs": 2389,
+        "durationMs": 161,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "P",
+        "startMs": 2550,
+        "durationMs": 279,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "和",
+        "startMs": 2829,
+        "durationMs": 201,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 3030,
+        "durationMs": 160,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "分",
+        "startMs": 3190,
+        "durationMs": 159,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "之",
+        "startMs": 3349,
+        "durationMs": 120,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "R",
+        "startMs": 3469,
+        "durationMs": 520,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 3989,
+        "durationMs": 0,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "其中",
+        "startMs": 4030,
+        "durationMs": 480,
+        "textOffset": 20,
+        "wordLength": 2
+      },
+      {
+        "text": "P",
+        "startMs": 4510,
+        "durationMs": 240,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 4750,
+        "durationMs": 160,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "R",
+        "startMs": 4910,
+        "durationMs": 200,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 5110,
+        "durationMs": 200,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
+        "text": "整数",
+        "startMs": 5310,
+        "durationMs": 560,
+        "textOffset": 26,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 5870,
+        "durationMs": 0,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "Q",
+        "startMs": 5834,
+        "durationMs": 320,
+        "textOffset": 29,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 6154,
+        "durationMs": 160,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 6314,
+        "durationMs": 240,
+        "textOffset": 31,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 6554,
+        "durationMs": 240,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "约分",
+        "startMs": 6794,
+        "durationMs": 360,
+        "textOffset": 33,
+        "wordLength": 2
+      },
+      {
+        "text": "后",
+        "startMs": 7154,
+        "durationMs": 120,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "的正整数分母",
+        "startMs": 7274,
+        "durationMs": 1279,
+        "textOffset": 36,
+        "wordLength": 6
+      },
+      {
+        "text": "。",
+        "startMs": 8553,
+        "durationMs": 0,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "都",
+        "startMs": 8633,
+        "durationMs": 241,
+        "textOffset": 43,
+        "wordLength": 1
+      },
+      {
+        "text": "不超过",
+        "startMs": 8874,
+        "durationMs": 560,
+        "textOffset": 44,
+        "wordLength": 3
+      },
+      {
+        "text": "八",
+        "startMs": 9434,
+        "durationMs": 199,
+        "textOffset": 47,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以",
+        "startMs": 9633,
+        "durationMs": 361,
+        "textOffset": 48,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 9994,
+        "durationMs": 240,
+        "textOffset": 50,
+        "wordLength": 1
+      },
+      {
+        "text": "的平方",
+        "startMs": 10234,
+        "durationMs": 640,
+        "textOffset": 51,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 10874,
+        "durationMs": 0,
+        "textOffset": 54,
+        "wordLength": 1
+      }
+    ],
+    "speech": "把两个不同横坐标记为Q分之P和T分之R。其中P与R是整数。Q与T是约分后的正整数分母。都不超过八乘以M的平方。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "a71e21b6902f3ac0d7071e22fc01d6d16ead415fed5d76915027cf007c19b8f1"
+  },
+  "232-08": {
+    "audioFile": "232-08.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "285361e537fdba69dc43762972f9880124cacd5e8ba7353945a4d813f5a95829",
+    "duration": 12.61,
+    "words": [
+      {
+        "text": "第一个分数的分子分母",
+        "startMs": 70,
+        "durationMs": 2200,
+        "textOffset": 0,
+        "wordLength": 10
+      },
+      {
+        "text": "。",
+        "startMs": 2270,
+        "durationMs": 0,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "都",
+        "startMs": 2270,
+        "durationMs": 280,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "乘",
+        "startMs": 2550,
+        "durationMs": 200,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "以",
+        "startMs": 2750,
+        "durationMs": 159,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "另",
+        "startMs": 2909,
+        "durationMs": 161,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "一个分母",
+        "startMs": 3070,
+        "durationMs": 719,
+        "textOffset": 15,
+        "wordLength": 4
+      },
+      {
+        "text": "。",
+        "startMs": 3789,
+        "durationMs": 0,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "第二个",
+        "startMs": 4150,
+        "durationMs": 520,
+        "textOffset": 20,
+        "wordLength": 3
+      },
+      {
+        "text": "分数",
+        "startMs": 4670,
+        "durationMs": 440,
+        "textOffset": 23,
+        "wordLength": 2
+      },
+      {
+        "text": "也",
+        "startMs": 5110,
+        "durationMs": 160,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
+        "text": "这样",
+        "startMs": 5270,
+        "durationMs": 240,
+        "textOffset": 26,
+        "wordLength": 2
+      },
+      {
+        "text": "处理",
+        "startMs": 5510,
+        "durationMs": 480,
+        "textOffset": 28,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 5990,
+        "durationMs": 0,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "通分",
+        "startMs": 6004,
+        "durationMs": 400,
+        "textOffset": 31,
+        "wordLength": 2
+      },
+      {
+        "text": "以后",
+        "startMs": 6404,
+        "durationMs": 560,
+        "textOffset": 33,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 6964,
+        "durationMs": 0,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "用",
+        "startMs": 6964,
+        "durationMs": 360,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "第一个",
+        "startMs": 7324,
+        "durationMs": 360,
+        "textOffset": 37,
+        "wordLength": 3
+      },
+      {
+        "text": "新",
+        "startMs": 7684,
+        "durationMs": 200,
+        "textOffset": 40,
+        "wordLength": 1
+      },
+      {
+        "text": "分子",
+        "startMs": 7884,
+        "durationMs": 479,
+        "textOffset": 41,
+        "wordLength": 2
+      },
+      {
+        "text": "减去",
+        "startMs": 8363,
+        "durationMs": 400,
+        "textOffset": 43,
+        "wordLength": 2
+      },
+      {
+        "text": "第二个",
+        "startMs": 8763,
+        "durationMs": 361,
+        "textOffset": 45,
+        "wordLength": 3
+      },
+      {
+        "text": "新",
+        "startMs": 9124,
+        "durationMs": 199,
+        "textOffset": 48,
+        "wordLength": 1
+      },
+      {
+        "text": "分子",
+        "textOffset": 49,
+        "wordLength": 2,
+        "startMs": 9420,
+        "durationMs": 490
+      },
+      {
+        "text": "。",
+        "startMs": 9323,
+        "durationMs": 0,
+        "textOffset": 51,
+        "wordLength": 1
+      },
+      {
+        "text": "共同",
+        "textOffset": 52,
+        "wordLength": 2,
+        "startMs": 9940,
+        "durationMs": 430
+      },
+      {
+        "text": "分母",
+        "textOffset": 54,
+        "wordLength": 2,
+        "startMs": 10380,
+        "durationMs": 530
+      },
+      {
+        "text": "等于",
+        "textOffset": 56,
+        "wordLength": 2,
+        "startMs": 10920,
+        "durationMs": 310
+      },
+      {
+        "text": "两",
+        "textOffset": 58,
+        "wordLength": 1,
+        "startMs": 11240,
+        "durationMs": 170
+      },
+      {
+        "text": "个",
+        "textOffset": 59,
+        "wordLength": 1,
+        "startMs": 11420,
+        "durationMs": 110
+      },
+      {
+        "text": "原",
+        "textOffset": 60,
+        "wordLength": 1,
+        "startMs": 11540,
+        "durationMs": 170
+      },
+      {
+        "text": "分母",
+        "textOffset": 61,
+        "wordLength": 2,
+        "startMs": 11720,
+        "durationMs": 260
+      },
+      {
+        "text": "的",
+        "textOffset": 63,
+        "wordLength": 1,
+        "startMs": 11990,
+        "durationMs": 100
+      },
+      {
+        "text": "乘积",
+        "textOffset": 64,
+        "wordLength": 2,
+        "startMs": 12100,
+        "durationMs": 480
+      },
+      {
+        "text": "。",
+        "startMs": 11604,
+        "durationMs": 0,
+        "textOffset": 66,
+        "wordLength": 1
+      }
+    ],
+    "speech": "第一个分数的分子分母。都乘以另一个分母。第二个分数也这样处理。通分以后。用第一个新分子减去第二个新分子。共同分母等于两个原分母的乘积。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "a15f72e90661cdab07ce3bc6434d00a94e36223ebb5245920b1cacc4f1f4d0a3",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "285361e537fdba69dc43762972f9880124cacd5e8ba7353945a4d813f5a95829",
+      "synthesisWords": [
+        {
+          "text": "第一个分数的分子分母",
+          "startMs": 70,
+          "durationMs": 2200,
+          "textOffset": 0,
+          "wordLength": 10
+        },
+        {
+          "text": "。",
+          "startMs": 2270,
+          "durationMs": 0,
+          "textOffset": 10,
+          "wordLength": 1
+        },
+        {
+          "text": "都",
+          "startMs": 2270,
+          "durationMs": 280,
+          "textOffset": 11,
+          "wordLength": 1
+        },
+        {
+          "text": "乘",
+          "startMs": 2550,
+          "durationMs": 200,
+          "textOffset": 12,
+          "wordLength": 1
+        },
+        {
+          "text": "以",
+          "startMs": 2750,
+          "durationMs": 159,
+          "textOffset": 13,
+          "wordLength": 1
+        },
+        {
+          "text": "另",
+          "startMs": 2909,
+          "durationMs": 161,
+          "textOffset": 14,
+          "wordLength": 1
+        },
+        {
+          "text": "一个分母",
+          "startMs": 3070,
+          "durationMs": 719,
+          "textOffset": 15,
+          "wordLength": 4
+        },
+        {
+          "text": "。",
+          "startMs": 3789,
+          "durationMs": 0,
+          "textOffset": 19,
+          "wordLength": 1
+        },
+        {
+          "text": "第二个",
+          "startMs": 4150,
+          "durationMs": 520,
+          "textOffset": 20,
+          "wordLength": 3
+        },
+        {
+          "text": "分数",
+          "startMs": 4670,
+          "durationMs": 440,
+          "textOffset": 23,
+          "wordLength": 2
+        },
+        {
+          "text": "也",
+          "startMs": 5110,
+          "durationMs": 160,
+          "textOffset": 25,
+          "wordLength": 1
+        },
+        {
+          "text": "这样",
+          "startMs": 5270,
+          "durationMs": 240,
+          "textOffset": 26,
+          "wordLength": 2
+        },
+        {
+          "text": "处理",
+          "startMs": 5510,
+          "durationMs": 480,
+          "textOffset": 28,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 5990,
+          "durationMs": 0,
+          "textOffset": 30,
+          "wordLength": 1
+        },
+        {
+          "text": "通分",
+          "startMs": 6004,
+          "durationMs": 400,
+          "textOffset": 31,
+          "wordLength": 2
+        },
+        {
+          "text": "以后",
+          "startMs": 6404,
+          "durationMs": 560,
+          "textOffset": 33,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 6964,
+          "durationMs": 0,
+          "textOffset": 35,
+          "wordLength": 1
+        },
+        {
+          "text": "用",
+          "startMs": 6964,
+          "durationMs": 360,
+          "textOffset": 36,
+          "wordLength": 1
+        },
+        {
+          "text": "第一个",
+          "startMs": 7324,
+          "durationMs": 360,
+          "textOffset": 37,
+          "wordLength": 3
+        },
+        {
+          "text": "新",
+          "startMs": 7684,
+          "durationMs": 200,
+          "textOffset": 40,
+          "wordLength": 1
+        },
+        {
+          "text": "分子",
+          "startMs": 7884,
+          "durationMs": 479,
+          "textOffset": 41,
+          "wordLength": 2
+        },
+        {
+          "text": "减去",
+          "startMs": 8363,
+          "durationMs": 400,
+          "textOffset": 43,
+          "wordLength": 2
+        },
+        {
+          "text": "第二个",
+          "startMs": 8763,
+          "durationMs": 361,
+          "textOffset": 45,
+          "wordLength": 3
+        },
+        {
+          "text": "新",
+          "startMs": 9124,
+          "durationMs": 199,
+          "textOffset": 48,
+          "wordLength": 1
+        },
+        {
+          "text": "分子",
+          "startMs": 9323,
+          "durationMs": 0,
+          "textOffset": 49,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 9323,
+          "durationMs": 0,
+          "textOffset": 51,
+          "wordLength": 1
+        },
+        {
+          "text": "共同",
+          "startMs": 9844,
+          "durationMs": 400,
+          "textOffset": 52,
+          "wordLength": 2
+        },
+        {
+          "text": "分母",
+          "startMs": 10244,
+          "durationMs": 520,
+          "textOffset": 54,
+          "wordLength": 2
+        },
+        {
+          "text": "等于",
+          "startMs": 10764,
+          "durationMs": 360,
+          "textOffset": 56,
+          "wordLength": 2
+        },
+        {
+          "text": "两",
+          "startMs": 11124,
+          "durationMs": 160,
+          "textOffset": 58,
+          "wordLength": 1
+        },
+        {
+          "text": "个",
+          "startMs": 11284,
+          "durationMs": 120,
+          "textOffset": 59,
+          "wordLength": 1
+        },
+        {
+          "text": "原",
+          "startMs": 11404,
+          "durationMs": 200,
+          "textOffset": 60,
+          "wordLength": 1
+        },
+        {
+          "text": "分母的乘积",
+          "startMs": 11604,
+          "durationMs": 0,
+          "textOffset": 61,
+          "wordLength": 5
+        },
+        {
+          "text": "。",
+          "startMs": 11604,
+          "durationMs": 0,
+          "textOffset": 66,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "8f19bcdaec82411ca0f8bb8d1de1706e",
+        "RecognitionStatus": "Success",
+        "Offset": 600000,
+        "Duration": 125200000,
+        "Channel": 0,
+        "DisplayText": "第一个分数的分子分母都乘以另一个分母，第二个分数也这样处理。通分以后用第一个新分子减去第二个新分子，共同分母等于两个原分母的乘积。",
+        "SNR": 24.331566,
+        "NBest": [
+          {
+            "Confidence": 0.97818416,
+            "Lexical": "第一 个 分数 的 分子 分母 都 乘 以 另 一个 分母 第二 个 分数 也 这样 处理 通分 以后 用 第一 个 新 分子 减去 第二 个 新 分子 共同 分母 等于 两 个 原 分母 的 乘积",
+            "ITN": "第一 个 分数 的 分子 分母 都 乘 以 另 一个 分母 第二 个 分数 也 这样 处理 通分 以后 用 第一 个 新 分子 减去 第二 个 新 分子 共同 分母 等于 两 个 原 分母 的 乘积",
+            "MaskedITN": "第一个分数的分子分母都乘以另一个分母第二个分数也这样处理通分以后用第一个新分子减去第二个新分子共同分母等于两个原分母的乘积",
+            "Display": "第一个分数的分子分母都乘以另一个分母，第二个分数也这样处理。通分以后用第一个新分子减去第二个新分子，共同分母等于两个原分母的乘积。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "FluencyScore": 97,
+              "CompletenessScore": 100,
+              "PronScore": 97.6
+            },
+            "Words": [
+              {
+                "Word": "第一",
+                "Offset": 600000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "个",
+                "Offset": 3800000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分数",
+                "Offset": 5000000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 8400000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分子",
+                "Offset": 9400000,
+                "Duration": 5500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分母",
+                "Offset": 15000000,
+                "Duration": 7500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "都",
+                "Offset": 22800000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘",
+                "Offset": 26000000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 27800000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "另",
+                "Offset": 29400000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "一个",
+                "Offset": 31200000,
+                "Duration": 2200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分母",
+                "Offset": 33500000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "第二",
+                "Offset": 41500000,
+                "Duration": 4200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "个",
+                "Offset": 45800000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分数",
+                "Offset": 46800000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "也",
+                "Offset": 51200000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "这样",
+                "Offset": 52800000,
+                "Duration": 2500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "处理",
+                "Offset": 55400000,
+                "Duration": 4900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 76,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "通分",
+                "Offset": 60600000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以后",
+                "Offset": 65200000,
+                "Duration": 5500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "用",
+                "Offset": 71000000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "第一",
+                "Offset": 74400000,
+                "Duration": 2200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "个",
+                "Offset": 76700000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "新",
+                "Offset": 77800000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分子",
+                "Offset": 79800000,
+                "Duration": 4900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "减去",
+                "Offset": 84800000,
+                "Duration": 3900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "第二",
+                "Offset": 88800000,
+                "Duration": 2500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "个",
+                "Offset": 91400000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "新",
+                "Offset": 92400000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分子",
+                "Offset": 94200000,
+                "Duration": 4900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "共同",
+                "Offset": 99400000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分母",
+                "Offset": 103800000,
+                "Duration": 5300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "等于",
+                "Offset": 109200000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 85,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "两",
+                "Offset": 112400000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "个",
+                "Offset": 114200000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "原",
+                "Offset": 115400000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分母",
+                "Offset": 117200000,
+                "Duration": 2600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 119900000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 121000000,
+                "Duration": 4800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "232-09": {
+    "audioFile": "232-09.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "79bb051599addc99d752ab8a3dad916f2e9188c2a8c799aab980e5c54736f3ad",
+    "duration": 6.99,
+    "words": [
+      {
+        "text": "距离",
+        "startMs": 70,
+        "durationMs": 440,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "不区分正负",
+        "startMs": 510,
+        "durationMs": 1080,
+        "textOffset": 2,
+        "wordLength": 5
+      },
+      {
+        "text": "。",
+        "startMs": 1590,
+        "durationMs": 0,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "所以",
+        "startMs": 1590,
+        "durationMs": 400,
+        "textOffset": 8,
+        "wordLength": 2
+      },
+      {
+        "text": "取绝",
+        "startMs": 1990,
+        "durationMs": 359,
+        "textOffset": 10,
+        "wordLength": 2
+      },
+      {
+        "text": "对值",
+        "startMs": 2349,
+        "durationMs": 520,
+        "textOffset": 12,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 2869,
+        "durationMs": 0,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "分母",
+        "startMs": 2909,
+        "durationMs": 480,
+        "textOffset": 15,
+        "wordLength": 2
+      },
+      {
+        "text": "Q",
+        "startMs": 3389,
+        "durationMs": 241,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 3630,
+        "durationMs": 120,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 3750,
+        "durationMs": 159,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "的乘积为正",
+        "startMs": 3909,
+        "durationMs": 961,
+        "textOffset": 20,
+        "wordLength": 5
+      },
+      {
+        "text": "。",
+        "startMs": 4870,
+        "durationMs": 0,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
+        "text": "绝对值",
+        "startMs": 4895,
+        "durationMs": 560,
+        "textOffset": 26,
+        "wordLength": 3
+      },
+      {
+        "text": "只需",
+        "startMs": 5455,
+        "durationMs": 280,
+        "textOffset": 29,
+        "wordLength": 2
+      },
+      {
+        "text": "留在",
+        "startMs": 5735,
+        "durationMs": 280,
+        "textOffset": 31,
+        "wordLength": 2
+      },
+      {
+        "text": "整个",
+        "startMs": 6015,
+        "durationMs": 360,
+        "textOffset": 33,
+        "wordLength": 2
+      },
+      {
+        "text": "分子",
+        "startMs": 6375,
+        "durationMs": 320,
+        "textOffset": 35,
+        "wordLength": 2
+      },
+      {
+        "text": "上",
+        "startMs": 6695,
+        "durationMs": 240,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 6935,
+        "durationMs": 0,
+        "textOffset": 38,
+        "wordLength": 1
+      }
+    ],
+    "speech": "距离不区分正负。所以取绝对值。分母Q与T的乘积为正。绝对值只需留在整个分子上。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "3f87f31a6e95d7e63ce2926ca1cfef922788a77f0b8cbbea7a00d3c49e3d03b2"
+  },
+  "232-10": {
+    "audioFile": "232-10.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "e0aa1187b30f7a1182c2b8506276a8233be9f88e9f8ad76210479de3b0f8ed8d",
+    "duration": 13.11,
+    "words": [
+      {
+        "text": "横坐标不同",
+        "startMs": 70,
+        "durationMs": 1200,
+        "textOffset": 0,
+        "wordLength": 5
+      },
+      {
+        "text": "。",
+        "startMs": 1270,
+        "durationMs": 0,
+        "textOffset": 5,
+        "wordLength": 1
+      },
+      {
+        "text": "所以",
+        "startMs": 1270,
+        "durationMs": 440,
+        "textOffset": 6,
+        "wordLength": 2
+      },
+      {
+        "text": "P",
+        "startMs": 1710,
+        "durationMs": 200,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以",
+        "startMs": 1910,
+        "durationMs": 320,
+        "textOffset": 9,
+        "wordLength": 2
+      },
+      {
+        "text": "T",
+        "startMs": 2230,
+        "durationMs": 239,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "减去",
+        "startMs": 2469,
+        "durationMs": 360,
+        "textOffset": 12,
+        "wordLength": 2
+      },
+      {
+        "text": "R",
+        "startMs": 2829,
+        "durationMs": 201,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以",
+        "startMs": 3030,
+        "durationMs": 319,
+        "textOffset": 15,
+        "wordLength": 2
+      },
+      {
+        "text": "Q",
+        "startMs": 3349,
+        "durationMs": 241,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "不是",
+        "textOffset": 18,
+        "wordLength": 2,
+        "startMs": 3600,
+        "durationMs": 270
+      },
+      {
+        "text": "零",
+        "textOffset": 20,
+        "wordLength": 1,
+        "startMs": 3880,
+        "durationMs": 360
+      },
+      {
+        "text": "。",
+        "startMs": 4230,
+        "durationMs": 0,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "它",
+        "textOffset": 22,
+        "wordLength": 1,
+        "startMs": 4270,
+        "durationMs": 240
+      },
+      {
+        "text": "是",
+        "textOffset": 23,
+        "wordLength": 1,
+        "startMs": 4520,
+        "durationMs": 130
+      },
+      {
+        "text": "非",
+        "textOffset": 24,
+        "wordLength": 1,
+        "startMs": 4660,
+        "durationMs": 150
+      },
+      {
+        "text": "零",
+        "textOffset": 25,
+        "wordLength": 1,
+        "startMs": 4820,
+        "durationMs": 170
+      },
+      {
+        "text": "整数",
+        "textOffset": 26,
+        "wordLength": 2,
+        "startMs": 5000,
+        "durationMs": 610
+      },
+      {
+        "text": "。",
+        "startMs": 5533,
+        "durationMs": 0,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "绝对值",
+        "textOffset": 29,
+        "wordLength": 3,
+        "startMs": 5640,
+        "durationMs": 610
+      },
+      {
+        "text": "至少",
+        "textOffset": 32,
+        "wordLength": 2,
+        "startMs": 6260,
+        "durationMs": 350
+      },
+      {
+        "text": "为",
+        "textOffset": 34,
+        "wordLength": 1,
+        "startMs": 6620,
+        "durationMs": 210
+      },
+      {
+        "text": "一",
+        "textOffset": 35,
+        "wordLength": 1,
+        "startMs": 6840,
+        "durationMs": 350
+      },
+      {
+        "text": "。",
+        "startMs": 7092,
+        "durationMs": 0,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "除",
+        "textOffset": 37,
+        "wordLength": 1,
+        "startMs": 7220,
+        "durationMs": 290
+      },
+      {
+        "text": "以",
+        "textOffset": 38,
+        "wordLength": 1,
+        "startMs": 7520,
+        "durationMs": 130
+      },
+      {
+        "text": "同",
+        "textOffset": 39,
+        "wordLength": 1,
+        "startMs": 7660,
+        "durationMs": 210
+      },
+      {
+        "text": "一个",
+        "textOffset": 40,
+        "wordLength": 2,
+        "startMs": 7880,
+        "durationMs": 210
+      },
+      {
+        "text": "正数",
+        "textOffset": 42,
+        "wordLength": 2,
+        "startMs": 8100,
+        "durationMs": 450
+      },
+      {
+        "text": "Q",
+        "textOffset": 44,
+        "wordLength": 1,
+        "startMs": 8560,
+        "durationMs": 210
+      },
+      {
+        "text": "与",
+        "textOffset": 45,
+        "wordLength": 1,
+        "startMs": 8780,
+        "durationMs": 120
+      },
+      {
+        "text": "T",
+        "textOffset": 46,
+        "wordLength": 1,
+        "startMs": 8910,
+        "durationMs": 170
+      },
+      {
+        "text": "的",
+        "textOffset": 47,
+        "wordLength": 1,
+        "startMs": 9090,
+        "durationMs": 100
+      },
+      {
+        "text": "乘积",
+        "textOffset": 48,
+        "wordLength": 2,
+        "startMs": 9200,
+        "durationMs": 510
+      },
+      {
+        "text": "。",
+        "startMs": 8973,
+        "durationMs": 0,
+        "textOffset": 50,
+        "wordLength": 1
+      },
+      {
+        "text": "得到",
+        "startMs": 9759,
+        "durationMs": 360,
+        "textOffset": 51,
+        "wordLength": 2
+      },
+      {
+        "text": "距离",
+        "startMs": 10119,
+        "durationMs": 520,
+        "textOffset": 53,
+        "wordLength": 2
+      },
+      {
+        "text": "至少",
+        "startMs": 10639,
+        "durationMs": 400,
+        "textOffset": 55,
+        "wordLength": 2
+      },
+      {
+        "text": "为",
+        "startMs": 11039,
+        "durationMs": 240,
+        "textOffset": 57,
+        "wordLength": 1
+      },
+      {
+        "text": "Q",
+        "startMs": 11279,
+        "durationMs": 240,
+        "textOffset": 58,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 11519,
+        "durationMs": 160,
+        "textOffset": 59,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 11679,
+        "durationMs": 160,
+        "textOffset": 60,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "textOffset": 61,
+        "wordLength": 1,
+        "startMs": 11980,
+        "durationMs": 90
+      },
+      {
+        "text": "乘积",
+        "textOffset": 62,
+        "wordLength": 2,
+        "startMs": 12080,
+        "durationMs": 360
+      },
+      {
+        "text": "的",
+        "textOffset": 64,
+        "wordLength": 1,
+        "startMs": 12450,
+        "durationMs": 90
+      },
+      {
+        "text": "倒数",
+        "textOffset": 65,
+        "wordLength": 2,
+        "startMs": 12550,
+        "durationMs": 530
+      },
+      {
+        "text": "。",
+        "startMs": 11839,
+        "durationMs": 0,
+        "textOffset": 67,
+        "wordLength": 1
+      }
+    ],
+    "speech": "横坐标不同。所以P乘以T减去R乘以Q不是零。它是非零整数。绝对值至少为一。除以同一个正数Q与T的乘积。得到距离至少为Q与T的乘积的倒数。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "d15594920ad5ed1cc5d3c5a57bcbb340a672f3ff47f534d385bc587048da6964",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "e0aa1187b30f7a1182c2b8506276a8233be9f88e9f8ad76210479de3b0f8ed8d",
+      "synthesisWords": [
+        {
+          "text": "横坐标不同",
+          "startMs": 70,
+          "durationMs": 1200,
+          "textOffset": 0,
+          "wordLength": 5
+        },
+        {
+          "text": "。",
+          "startMs": 1270,
+          "durationMs": 0,
+          "textOffset": 5,
+          "wordLength": 1
+        },
+        {
+          "text": "所以",
+          "startMs": 1270,
+          "durationMs": 440,
+          "textOffset": 6,
+          "wordLength": 2
+        },
+        {
+          "text": "P",
+          "startMs": 1710,
+          "durationMs": 200,
+          "textOffset": 8,
+          "wordLength": 1
+        },
+        {
+          "text": "乘以",
+          "startMs": 1910,
+          "durationMs": 320,
+          "textOffset": 9,
+          "wordLength": 2
+        },
+        {
+          "text": "T",
+          "startMs": 2230,
+          "durationMs": 239,
+          "textOffset": 11,
+          "wordLength": 1
+        },
+        {
+          "text": "减去",
+          "startMs": 2469,
+          "durationMs": 360,
+          "textOffset": 12,
+          "wordLength": 2
+        },
+        {
+          "text": "R",
+          "startMs": 2829,
+          "durationMs": 201,
+          "textOffset": 14,
+          "wordLength": 1
+        },
+        {
+          "text": "乘以",
+          "startMs": 3030,
+          "durationMs": 319,
+          "textOffset": 15,
+          "wordLength": 2
+        },
+        {
+          "text": "Q",
+          "startMs": 3349,
+          "durationMs": 241,
+          "textOffset": 17,
+          "wordLength": 1
+        },
+        {
+          "text": "不是零",
+          "startMs": 3590,
+          "durationMs": 640,
+          "textOffset": 18,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 4230,
+          "durationMs": 0,
+          "textOffset": 21,
+          "wordLength": 1
+        },
+        {
+          "text": "它",
+          "startMs": 4213,
+          "durationMs": 200,
+          "textOffset": 22,
+          "wordLength": 1
+        },
+        {
+          "text": "是",
+          "startMs": 4413,
+          "durationMs": 120,
+          "textOffset": 23,
+          "wordLength": 1
+        },
+        {
+          "text": "非",
+          "startMs": 4533,
+          "durationMs": 200,
+          "textOffset": 24,
+          "wordLength": 1
+        },
+        {
+          "text": "零",
+          "startMs": 4733,
+          "durationMs": 160,
+          "textOffset": 25,
+          "wordLength": 1
+        },
+        {
+          "text": "整数",
+          "startMs": 4893,
+          "durationMs": 640,
+          "textOffset": 26,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 5533,
+          "durationMs": 0,
+          "textOffset": 28,
+          "wordLength": 1
+        },
+        {
+          "text": "绝对值",
+          "startMs": 5573,
+          "durationMs": 599,
+          "textOffset": 29,
+          "wordLength": 3
+        },
+        {
+          "text": "至少",
+          "startMs": 6172,
+          "durationMs": 360,
+          "textOffset": 32,
+          "wordLength": 2
+        },
+        {
+          "text": "为一",
+          "startMs": 6532,
+          "durationMs": 560,
+          "textOffset": 34,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 7092,
+          "durationMs": 0,
+          "textOffset": 36,
+          "wordLength": 1
+        },
+        {
+          "text": "除",
+          "startMs": 7132,
+          "durationMs": 281,
+          "textOffset": 37,
+          "wordLength": 1
+        },
+        {
+          "text": "以",
+          "startMs": 7413,
+          "durationMs": 159,
+          "textOffset": 38,
+          "wordLength": 1
+        },
+        {
+          "text": "同一个正数",
+          "startMs": 7572,
+          "durationMs": 881,
+          "textOffset": 39,
+          "wordLength": 5
+        },
+        {
+          "text": "Q",
+          "startMs": 8453,
+          "durationMs": 240,
+          "textOffset": 44,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 8693,
+          "durationMs": 120,
+          "textOffset": 45,
+          "wordLength": 1
+        },
+        {
+          "text": "T",
+          "startMs": 8813,
+          "durationMs": 160,
+          "textOffset": 46,
+          "wordLength": 1
+        },
+        {
+          "text": "的乘积",
+          "startMs": 8973,
+          "durationMs": 0,
+          "textOffset": 47,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 8973,
+          "durationMs": 0,
+          "textOffset": 50,
+          "wordLength": 1
+        },
+        {
+          "text": "得到",
+          "startMs": 9759,
+          "durationMs": 360,
+          "textOffset": 51,
+          "wordLength": 2
+        },
+        {
+          "text": "距离",
+          "startMs": 10119,
+          "durationMs": 520,
+          "textOffset": 53,
+          "wordLength": 2
+        },
+        {
+          "text": "至少",
+          "startMs": 10639,
+          "durationMs": 400,
+          "textOffset": 55,
+          "wordLength": 2
+        },
+        {
+          "text": "为",
+          "startMs": 11039,
+          "durationMs": 240,
+          "textOffset": 57,
+          "wordLength": 1
+        },
+        {
+          "text": "Q",
+          "startMs": 11279,
+          "durationMs": 240,
+          "textOffset": 58,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 11519,
+          "durationMs": 160,
+          "textOffset": 59,
+          "wordLength": 1
+        },
+        {
+          "text": "T",
+          "startMs": 11679,
+          "durationMs": 160,
+          "textOffset": 60,
+          "wordLength": 1
+        },
+        {
+          "text": "的乘积的倒数",
+          "startMs": 11839,
+          "durationMs": 0,
+          "textOffset": 61,
+          "wordLength": 6
+        },
+        {
+          "text": "。",
+          "startMs": 11839,
+          "durationMs": 0,
+          "textOffset": 67,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "52f6560d47214dd8b1c03e1e62fcc9d2",
+        "RecognitionStatus": "Success",
+        "Offset": 600000,
+        "Duration": 130200000,
+        "Channel": 0,
+        "DisplayText": "横坐标不同，所以P乘以T减去R乘以Q不是零，它是非零整数绝对值至少为一除以同一个正数，Q与T的乘积得到距离至少为Q与T的乘积的倒数。",
+        "SNR": 42.9317,
+        "NBest": [
+          {
+            "Confidence": 0.9700112,
+            "Lexical": "横坐标 不同 所以 P 乘 以 T 减去 R 乘 以 Q 不是 零 它 是 非 零 整数 绝对值 至少 为 一 除 以 同 一个 正数 Q 与 T 的 乘积 得到 距离 至少 为 Q 与 T 的 乘积 的 倒数",
+            "ITN": "横坐标 不同 所以 P 乘 以 T 减去 R 乘 以 Q 不是 零 它 是 非 零 整数 绝对值 至少 为 一 除 以 同 一个 正数 Q 与 T 的 乘积 得到 距离 至少 为 Q 与 T 的 乘积 的 倒数",
+            "MaskedITN": "横坐标不同所以p乘以t减去r乘以q不是零它是非零整数绝对值至少为一除以同一个正数q与t的乘积得到距离至少为q与t的乘积的倒数",
+            "Display": "横坐标不同，所以P乘以T减去R乘以Q不是零，它是非零整数绝对值至少为一除以同一个正数，Q与T的乘积得到距离至少为Q与T的乘积的倒数。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 92,
+              "FluencyScore": 98,
+              "CompletenessScore": 98,
+              "PronScore": 94.4
+            },
+            "Words": [
+              {
+                "Word": "横坐标",
+                "Offset": 600000,
+                "Duration": 6700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "不同",
+                "Offset": 7400000,
+                "Duration": 5100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "所以",
+                "Offset": 12800000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "P",
+                "Offset": 17200000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 68,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘",
+                "Offset": 19400000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 21200000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "T",
+                "Offset": 22200000,
+                "Duration": 2500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 65,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "减去",
+                "Offset": 24800000,
+                "Duration": 3600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "R",
+                "Offset": 28500000,
+                "Duration": 2200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 76,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘",
+                "Offset": 30800000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 57,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 32600000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "Q",
+                "Offset": 33800000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "不是",
+                "Offset": 36000000,
+                "Duration": 2700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "零",
+                "Offset": 38800000,
+                "Duration": 3600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "它",
+                "Offset": 42700000,
+                "Duration": 2400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "是",
+                "Offset": 45200000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "非",
+                "Offset": 46600000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "零",
+                "Offset": 48200000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "整数",
+                "Offset": 50000000,
+                "Duration": 6100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "绝对值",
+                "Offset": 56400000,
+                "Duration": 6100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "至少",
+                "Offset": 62600000,
+                "Duration": 3500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 79,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "为",
+                "Offset": 66200000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "一",
+                "Offset": 68400000,
+                "Duration": 3500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 65,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "除",
+                "Offset": 72200000,
+                "Duration": 2900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 75200000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "同",
+                "Offset": 76600000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "一个",
+                "Offset": 78800000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "正数",
+                "Offset": 81000000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 82,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "Q",
+                "Offset": 85600000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 87800000,
+                "Duration": 1200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "T",
+                "Offset": 89100000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 90900000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 92000000,
+                "Duration": 5100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "得到",
+                "Offset": 97200000,
+                "Duration": 5100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "距离",
+                "Offset": 102400000,
+                "Duration": 5100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "至少",
+                "Offset": 107600000,
+                "Duration": 4000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "为",
+                "Offset": 111700000,
+                "Duration": 1800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "Q",
+                "Offset": 113600000,
+                "Duration": 2500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 116200000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "T",
+                "Offset": 118000000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 62,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 119800000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 120800000,
+                "Duration": 3600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 124500000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "倒数",
+                "Offset": 125500000,
+                "Duration": 5300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "232-11": {
+    "audioFile": "232-11.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "1182163ad309f514df5e17189b153324ef9aabf1e67fd968860790f49062c39d",
+    "duration": 10.21,
+    "words": [
+      {
+        "text": "保留",
+        "startMs": 70,
+        "durationMs": 400,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "刚才",
+        "startMs": 470,
+        "durationMs": 320,
+        "textOffset": 2,
+        "wordLength": 2
+      },
+      {
+        "text": "的",
+        "startMs": 790,
+        "durationMs": 120,
+        "textOffset": 4,
+        "wordLength": 1
+      },
+      {
+        "text": "距离",
+        "startMs": 910,
+        "durationMs": 240,
+        "textOffset": 5,
+        "wordLength": 2
+      },
+      {
+        "text": "下界",
+        "startMs": 1150,
+        "durationMs": 600,
+        "textOffset": 7,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 1750,
+        "durationMs": 0,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "先",
+        "startMs": 1750,
+        "durationMs": 320,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "把",
+        "startMs": 2070,
+        "durationMs": 160,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "Q",
+        "startMs": 2230,
+        "durationMs": 280,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "放大",
+        "startMs": 2510,
+        "durationMs": 359,
+        "textOffset": 13,
+        "wordLength": 2
+      },
+      {
+        "text": "到",
+        "startMs": 2869,
+        "durationMs": 161,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "八",
+        "startMs": 3030,
+        "durationMs": 200,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以",
+        "startMs": 3230,
+        "durationMs": 360,
+        "textOffset": 17,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 3590,
+        "durationMs": 199,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "的平方",
+        "startMs": 3789,
+        "durationMs": 641,
+        "textOffset": 20,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 4430,
+        "durationMs": 0,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "再",
+        "startMs": 4383,
+        "durationMs": 200,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "把",
+        "startMs": 4583,
+        "durationMs": 120,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 4703,
+        "durationMs": 320,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "放大",
+        "startMs": 5023,
+        "durationMs": 360,
+        "textOffset": 27,
+        "wordLength": 2
+      },
+      {
+        "text": "到",
+        "startMs": 5383,
+        "durationMs": 240,
+        "textOffset": 29,
+        "wordLength": 1
+      },
+      {
+        "text": "八",
+        "startMs": 5623,
+        "durationMs": 200,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以",
+        "startMs": 5823,
+        "durationMs": 320,
+        "textOffset": 31,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 6143,
+        "durationMs": 199,
+        "textOffset": 33,
+        "wordLength": 1
+      },
+      {
+        "text": "的平方",
+        "startMs": 6342,
+        "durationMs": 760,
+        "textOffset": 34,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 7102,
+        "durationMs": 0,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "每",
+        "startMs": 7182,
+        "durationMs": 321,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "次",
+        "startMs": 7503,
+        "durationMs": 119,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "都",
+        "startMs": 7622,
+        "durationMs": 160,
+        "textOffset": 40,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以",
+        "startMs": 7782,
+        "durationMs": 281,
+        "textOffset": 41,
+        "wordLength": 2
+      },
+      {
+        "text": "正数",
+        "startMs": 8063,
+        "durationMs": 520,
+        "textOffset": 43,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 8583,
+        "durationMs": 0,
+        "textOffset": 45,
+        "wordLength": 1
+      },
+      {
+        "text": "不等号方向不变",
+        "startMs": 8650,
+        "durationMs": 1440,
+        "textOffset": 46,
+        "wordLength": 7
+      },
+      {
+        "text": "。",
+        "startMs": 10090,
+        "durationMs": 0,
+        "textOffset": 53,
+        "wordLength": 1
+      }
+    ],
+    "speech": "保留刚才的距离下界。先把Q放大到八乘以M的平方。再把T放大到八乘以M的平方。每次都乘以正数。不等号方向不变。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "519b539a992f416469e4f53d5ebcf0d67ce8b30eb60e6040b1b5d45db36e3a61"
+  },
+  "232-12": {
+    "audioFile": "232-12.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "209d0c0b4c6d35167cd685f3ee4d13aa7a00d1cdb6cf10f718c34b438f49ebe5",
+    "duration": 9.94,
+    "words": [
+      {
+        "text": "八",
+        "startMs": 70,
+        "durationMs": 200,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "乘以八",
+        "startMs": 270,
+        "durationMs": 560,
+        "textOffset": 1,
+        "wordLength": 3
+      },
+      {
+        "text": "等于",
+        "startMs": 830,
+        "durationMs": 280,
+        "textOffset": 4,
+        "wordLength": 2
+      },
+      {
+        "text": "六十四",
+        "startMs": 1110,
+        "durationMs": 680,
+        "textOffset": 6,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 1790,
+        "durationMs": 0,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "M",
+        "startMs": 1950,
+        "durationMs": 359,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "的平方",
+        "startMs": 2309,
+        "durationMs": 640,
+        "textOffset": 11,
+        "wordLength": 3
+      },
+      {
+        "text": "乘以",
+        "startMs": 2949,
+        "durationMs": 321,
+        "textOffset": 14,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 3270,
+        "durationMs": 240,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "的平方",
+        "startMs": 3510,
+        "durationMs": 640,
+        "textOffset": 17,
+        "wordLength": 3
+      },
+      {
+        "text": "等于",
+        "startMs": 4150,
+        "durationMs": 320,
+        "textOffset": 20,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 4470,
+        "durationMs": 200,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "的四次方",
+        "startMs": 4670,
+        "durationMs": 800,
+        "textOffset": 23,
+        "wordLength": 4
+      },
+      {
+        "text": "。",
+        "startMs": 5470,
+        "durationMs": 0,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "因此",
+        "startMs": 5492,
+        "durationMs": 520,
+        "textOffset": 28,
+        "wordLength": 2
+      },
+      {
+        "text": "正数",
+        "startMs": 6012,
+        "durationMs": 360,
+        "textOffset": 30,
+        "wordLength": 2
+      },
+      {
+        "text": "Q",
+        "startMs": 6372,
+        "durationMs": 240,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 6612,
+        "durationMs": 160,
+        "textOffset": 33,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 6772,
+        "durationMs": 160,
+        "textOffset": 34,
+        "wordLength": 1
+      },
+      {
+        "text": "的乘积不超过",
+        "startMs": 6932,
+        "durationMs": 1200,
+        "textOffset": 35,
+        "wordLength": 6
+      },
+      {
+        "text": "六十四",
+        "startMs": 8132,
+        "durationMs": 480,
+        "textOffset": 41,
+        "wordLength": 3
+      },
+      {
+        "text": "乘以",
+        "startMs": 8612,
+        "durationMs": 320,
+        "textOffset": 44,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 8932,
+        "durationMs": 200,
+        "textOffset": 46,
+        "wordLength": 1
+      },
+      {
+        "text": "的四次方",
+        "startMs": 9132,
+        "durationMs": 760,
+        "textOffset": 47,
+        "wordLength": 4
+      },
+      {
+        "text": "。",
+        "startMs": 9892,
+        "durationMs": 0,
+        "textOffset": 51,
+        "wordLength": 1
+      }
+    ],
+    "speech": "八乘以八等于六十四。M的平方乘以M的平方等于M的四次方。因此正数Q与T的乘积不超过六十四乘以M的四次方。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "4daaa701904a3e9b8a0b9010ccfcd4e8abfdbac13e2c6b7088b27895e244c36e"
+  },
+  "232-13": {
+    "audioFile": "232-13.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "d340530c12f699fac034457960d015321c7a26e6c133893e070db0da82ab734a",
+    "duration": 5.69,
+    "words": [
+      {
+        "text": "正分母",
+        "startMs": 70,
+        "durationMs": 560,
+        "textOffset": 0,
+        "wordLength": 3
+      },
+      {
+        "text": "越",
+        "startMs": 630,
+        "durationMs": 160,
+        "textOffset": 3,
+        "wordLength": 1
+      },
+      {
+        "text": "大",
+        "startMs": 790,
+        "durationMs": 320,
+        "textOffset": 4,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 1110,
+        "durationMs": 0,
+        "textOffset": 5,
+        "wordLength": 1
+      },
+      {
+        "text": "倒数",
+        "startMs": 1350,
+        "durationMs": 360,
+        "textOffset": 6,
+        "wordLength": 2
+      },
+      {
+        "text": "怎样",
+        "startMs": 1710,
+        "durationMs": 280,
+        "textOffset": 8,
+        "wordLength": 2
+      },
+      {
+        "text": "变化",
+        "startMs": 1990,
+        "durationMs": 520,
+        "textOffset": 10,
+        "wordLength": 2
+      },
+      {
+        "text": "？",
+        "startMs": 2510,
+        "durationMs": 0,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "比较",
+        "startMs": 2670,
+        "durationMs": 400,
+        "textOffset": 13,
+        "wordLength": 2
+      },
+      {
+        "text": "二分之一",
+        "startMs": 3070,
+        "durationMs": 560,
+        "textOffset": 15,
+        "wordLength": 4
+      },
+      {
+        "text": "和",
+        "startMs": 3630,
+        "durationMs": 120,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "六分之一",
+        "textOffset": 20,
+        "wordLength": 4,
+        "startMs": 3790,
+        "durationMs": 700
+      },
+      {
+        "text": "。",
+        "startMs": 3750,
+        "durationMs": 0,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "安静",
+        "textOffset": 25,
+        "wordLength": 2,
+        "startMs": 4520,
+        "durationMs": 480
+      },
+      {
+        "text": "想",
+        "textOffset": 27,
+        "wordLength": 1,
+        "startMs": 5010,
+        "durationMs": 190
+      },
+      {
+        "text": "四秒",
+        "textOffset": 28,
+        "wordLength": 2,
+        "startMs": 5210,
+        "durationMs": 450
+      },
+      {
+        "text": "。",
+        "startMs": 5629,
+        "durationMs": 0,
+        "textOffset": 30,
+        "wordLength": 1
+      }
+    ],
+    "speech": "正分母越大。倒数怎样变化？比较二分之一和六分之一。安静想四秒。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "b020840f552d23c31cb9c6c539f20bcec055200b8480c95b0a72ff391f58e483",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "d340530c12f699fac034457960d015321c7a26e6c133893e070db0da82ab734a",
+      "synthesisWords": [
+        {
+          "text": "正分母",
+          "startMs": 70,
+          "durationMs": 560,
+          "textOffset": 0,
+          "wordLength": 3
+        },
+        {
+          "text": "越",
+          "startMs": 630,
+          "durationMs": 160,
+          "textOffset": 3,
+          "wordLength": 1
+        },
+        {
+          "text": "大",
+          "startMs": 790,
+          "durationMs": 320,
+          "textOffset": 4,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 1110,
+          "durationMs": 0,
+          "textOffset": 5,
+          "wordLength": 1
+        },
+        {
+          "text": "倒数",
+          "startMs": 1350,
+          "durationMs": 360,
+          "textOffset": 6,
+          "wordLength": 2
+        },
+        {
+          "text": "怎样",
+          "startMs": 1710,
+          "durationMs": 280,
+          "textOffset": 8,
+          "wordLength": 2
+        },
+        {
+          "text": "变化",
+          "startMs": 1990,
+          "durationMs": 520,
+          "textOffset": 10,
+          "wordLength": 2
+        },
+        {
+          "text": "？",
+          "startMs": 2510,
+          "durationMs": 0,
+          "textOffset": 12,
+          "wordLength": 1
+        },
+        {
+          "text": "比较",
+          "startMs": 2670,
+          "durationMs": 400,
+          "textOffset": 13,
+          "wordLength": 2
+        },
+        {
+          "text": "二分之一",
+          "startMs": 3070,
+          "durationMs": 560,
+          "textOffset": 15,
+          "wordLength": 4
+        },
+        {
+          "text": "和",
+          "startMs": 3630,
+          "durationMs": 120,
+          "textOffset": 19,
+          "wordLength": 1
+        },
+        {
+          "text": "六分之一",
+          "startMs": 3750,
+          "durationMs": 0,
+          "textOffset": 20,
+          "wordLength": 4
+        },
+        {
+          "text": "。",
+          "startMs": 3750,
+          "durationMs": 0,
+          "textOffset": 24,
+          "wordLength": 1
+        },
+        {
+          "text": "安静",
+          "startMs": 4469,
+          "durationMs": 440,
+          "textOffset": 25,
+          "wordLength": 2
+        },
+        {
+          "text": "想",
+          "startMs": 4909,
+          "durationMs": 200,
+          "textOffset": 27,
+          "wordLength": 1
+        },
+        {
+          "text": "四",
+          "startMs": 5109,
+          "durationMs": 200,
+          "textOffset": 28,
+          "wordLength": 1
+        },
+        {
+          "text": "秒",
+          "startMs": 5309,
+          "durationMs": 320,
+          "textOffset": 29,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 5629,
+          "durationMs": 0,
+          "textOffset": 30,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "4fb9d3cadc9d45ba81a4f077f83f3679",
+        "RecognitionStatus": "Success",
+        "Offset": 500000,
+        "Duration": 56100000,
+        "Channel": 0,
+        "DisplayText": "正分母越大倒数怎样变化比较1/2和1/六安静想四秒。",
+        "SNR": 36.055088,
+        "NBest": [
+          {
+            "Confidence": 0.9793186,
+            "Lexical": "正 分母 越 大 倒数 怎样 变化 比较 二分之一 和 六分之一 安静 想 四秒",
+            "ITN": "正 分母 越 大 倒数 怎样 变化 比较 1/2 和 1/6 安静 想 四秒",
+            "MaskedITN": "正分母越大倒数怎样变化比较1/2和1/六安静想四秒",
+            "Display": "正分母越大倒数怎样变化比较1/2和1/六安静想四秒。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 92,
+              "FluencyScore": 97,
+              "CompletenessScore": 100,
+              "PronScore": 94.6
+            },
+            "Words": [
+              {
+                "Word": "正",
+                "Offset": 500000,
+                "Duration": 2700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 85,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分母",
+                "Offset": 3300000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "越",
+                "Offset": 6500000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "大",
+                "Offset": 8100000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "倒数",
+                "Offset": 10300000,
+                "Duration": 7100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 76,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "怎样",
+                "Offset": 17500000,
+                "Duration": 2500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "变化",
+                "Offset": 20100000,
+                "Duration": 5100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "比较",
+                "Offset": 26800000,
+                "Duration": 4000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 70,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "二分之一",
+                "Offset": 30900000,
+                "Duration": 5500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "和",
+                "Offset": 36500000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "六分之一",
+                "Offset": 37900000,
+                "Duration": 7000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 69,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "安静",
+                "Offset": 45200000,
+                "Duration": 4800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "想",
+                "Offset": 50100000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "四秒",
+                "Offset": 52100000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "232-14": {
+    "audioFile": "232-14.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "bf063519707b1bb54ac8304d5f4ad08602c890593dd0492169b9deea945bced7",
+    "duration": 8.74,
+    "words": [
+      {
+        "text": "二分之一",
+        "startMs": 70,
+        "durationMs": 800,
+        "textOffset": 0,
+        "wordLength": 4
+      },
+      {
+        "text": "大于",
+        "startMs": 870,
+        "durationMs": 320,
+        "textOffset": 4,
+        "wordLength": 2
+      },
+      {
+        "text": "六分之一",
+        "startMs": 1190,
+        "durationMs": 839,
+        "textOffset": 6,
+        "wordLength": 4
+      },
+      {
+        "text": "。",
+        "startMs": 2029,
+        "durationMs": 0,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "同样",
+        "startMs": 2230,
+        "durationMs": 360,
+        "textOffset": 11,
+        "wordLength": 2
+      },
+      {
+        "text": "的一份",
+        "startMs": 2590,
+        "durationMs": 640,
+        "textOffset": 13,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 3230,
+        "durationMs": 0,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "分成",
+        "startMs": 3309,
+        "durationMs": 480,
+        "textOffset": 17,
+        "wordLength": 2
+      },
+      {
+        "text": "六",
+        "startMs": 3789,
+        "durationMs": 160,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "份",
+        "startMs": 3949,
+        "durationMs": 201,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "时",
+        "startMs": 4150,
+        "durationMs": 320,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "每",
+        "startMs": 4470,
+        "durationMs": 160,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "份",
+        "startMs": 4630,
+        "durationMs": 120,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "更小",
+        "startMs": 4750,
+        "durationMs": 520,
+        "textOffset": 24,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 5270,
+        "durationMs": 0,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "分子同为一",
+        "startMs": 5236,
+        "durationMs": 1200,
+        "textOffset": 27,
+        "wordLength": 5
+      },
+      {
+        "text": "。",
+        "startMs": 6436,
+        "durationMs": 0,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "正分母",
+        "startMs": 6476,
+        "durationMs": 600,
+        "textOffset": 33,
+        "wordLength": 3
+      },
+      {
+        "text": "越",
+        "startMs": 7076,
+        "durationMs": 200,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "大",
+        "startMs": 7276,
+        "durationMs": 319,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 7595,
+        "durationMs": 0,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "分数",
+        "startMs": 7716,
+        "durationMs": 359,
+        "textOffset": 39,
+        "wordLength": 2
+      },
+      {
+        "text": "越",
+        "startMs": 8075,
+        "durationMs": 201,
+        "textOffset": 41,
+        "wordLength": 1
+      },
+      {
+        "text": "小",
+        "startMs": 8276,
+        "durationMs": 359,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 8635,
+        "durationMs": 0,
+        "textOffset": 43,
+        "wordLength": 1
+      }
+    ],
+    "speech": "二分之一大于六分之一。同样的一份。分成六份时每份更小。分子同为一。正分母越大。分数越小。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "8188286dfb5739b7d2bfeb21f8f022920a86f021e8ff6f4f205089840f69b01b"
+  },
+  "232-15": {
+    "audioFile": "232-15.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "ed98c25686046f0c18da412c78a63fd3bf091b16a87827df2a4a992c8d48c743",
+    "duration": 12.29,
+    "words": [
+      {
+        "text": "Q",
+        "startMs": 110,
+        "durationMs": 200,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 310,
+        "durationMs": 200,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 510,
+        "durationMs": 160,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "的乘积为正且不超过",
+        "startMs": 670,
+        "durationMs": 1759,
+        "textOffset": 3,
+        "wordLength": 9
+      },
+      {
+        "text": "六十四",
+        "startMs": 2429,
+        "durationMs": 520,
+        "textOffset": 12,
+        "wordLength": 3
+      },
+      {
+        "text": "与",
+        "startMs": 2949,
+        "durationMs": 201,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "M",
+        "startMs": 3150,
+        "durationMs": 199,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "textOffset": 17,
+        "wordLength": 1,
+        "startMs": 3400,
+        "durationMs": 100
+      },
+      {
+        "text": "四",
+        "textOffset": 18,
+        "wordLength": 1,
+        "startMs": 3510,
+        "durationMs": 170
+      },
+      {
+        "text": "次",
+        "textOffset": 19,
+        "wordLength": 1,
+        "startMs": 3690,
+        "durationMs": 170
+      },
+      {
+        "text": "方",
+        "textOffset": 20,
+        "wordLength": 1,
+        "startMs": 3870,
+        "durationMs": 140
+      },
+      {
+        "text": "的",
+        "textOffset": 21,
+        "wordLength": 1,
+        "startMs": 4020,
+        "durationMs": 100
+      },
+      {
+        "text": "乘积",
+        "textOffset": 22,
+        "wordLength": 2,
+        "startMs": 4130,
+        "durationMs": 580
+      },
+      {
+        "text": "。",
+        "startMs": 3349,
+        "durationMs": 0,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "取",
+        "startMs": 4725,
+        "durationMs": 240,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
+        "text": "倒数",
+        "startMs": 4965,
+        "durationMs": 320,
+        "textOffset": 26,
+        "wordLength": 2
+      },
+      {
+        "text": "后",
+        "startMs": 5285,
+        "durationMs": 200,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "方向",
+        "startMs": 5485,
+        "durationMs": 320,
+        "textOffset": 29,
+        "wordLength": 2
+      },
+      {
+        "text": "反过来",
+        "startMs": 5805,
+        "durationMs": 680,
+        "textOffset": 31,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 6485,
+        "durationMs": 0,
+        "textOffset": 34,
+        "wordLength": 1
+      },
+      {
+        "text": "因此",
+        "startMs": 6565,
+        "durationMs": 559,
+        "textOffset": 35,
+        "wordLength": 2
+      },
+      {
+        "text": "Q",
+        "startMs": 7124,
+        "durationMs": 201,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 7325,
+        "durationMs": 199,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 7524,
+        "durationMs": 120,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "的乘积的倒数",
+        "startMs": 7644,
+        "durationMs": 1161,
+        "textOffset": 40,
+        "wordLength": 6
+      },
+      {
+        "text": "大于",
+        "startMs": 8805,
+        "durationMs": 440,
+        "textOffset": 46,
+        "wordLength": 2
+      },
+      {
+        "text": "或",
+        "startMs": 9245,
+        "durationMs": 160,
+        "textOffset": 48,
+        "wordLength": 1
+      },
+      {
+        "text": "等于",
+        "startMs": 9405,
+        "durationMs": 320,
+        "textOffset": 49,
+        "wordLength": 2
+      },
+      {
+        "text": "六十四",
+        "startMs": 9725,
+        "durationMs": 440,
+        "textOffset": 51,
+        "wordLength": 3
+      },
+      {
+        "text": "与",
+        "startMs": 10165,
+        "durationMs": 200,
+        "textOffset": 54,
+        "wordLength": 1
+      },
+      {
+        "text": "M",
+        "startMs": 10365,
+        "durationMs": 200,
+        "textOffset": 55,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "textOffset": 56,
+        "wordLength": 1,
+        "startMs": 10650,
+        "durationMs": 90
+      },
+      {
+        "text": "四",
+        "textOffset": 57,
+        "wordLength": 1,
+        "startMs": 10750,
+        "durationMs": 170
+      },
+      {
+        "text": "次",
+        "textOffset": 58,
+        "wordLength": 1,
+        "startMs": 10930,
+        "durationMs": 150
+      },
+      {
+        "text": "方",
+        "textOffset": 59,
+        "wordLength": 1,
+        "startMs": 11090,
+        "durationMs": 150
+      },
+      {
+        "text": "的",
+        "textOffset": 60,
+        "wordLength": 1,
+        "startMs": 11250,
+        "durationMs": 90
+      },
+      {
+        "text": "乘积",
+        "textOffset": 61,
+        "wordLength": 2,
+        "startMs": 11350,
+        "durationMs": 330
+      },
+      {
+        "text": "的",
+        "textOffset": 63,
+        "wordLength": 1,
+        "startMs": 11690,
+        "durationMs": 90
+      },
+      {
+        "text": "倒数",
+        "textOffset": 64,
+        "wordLength": 2,
+        "startMs": 11790,
+        "durationMs": 470
+      },
+      {
+        "text": "。",
+        "startMs": 10565,
+        "durationMs": 0,
+        "textOffset": 66,
+        "wordLength": 1
+      }
+    ],
+    "speech": "Q与T的乘积为正且不超过六十四与M的四次方的乘积。取倒数后方向反过来。因此Q与T的乘积的倒数大于或等于六十四与M的四次方的乘积的倒数。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "3cac198825fa8a24a8d2e3710639999a5c3deac80647804a17951c62c33645b1",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "ed98c25686046f0c18da412c78a63fd3bf091b16a87827df2a4a992c8d48c743",
+      "synthesisWords": [
+        {
+          "text": "Q",
+          "startMs": 110,
+          "durationMs": 200,
+          "textOffset": 0,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 310,
+          "durationMs": 200,
+          "textOffset": 1,
+          "wordLength": 1
+        },
+        {
+          "text": "T",
+          "startMs": 510,
+          "durationMs": 160,
+          "textOffset": 2,
+          "wordLength": 1
+        },
+        {
+          "text": "的乘积为正且不超过",
+          "startMs": 670,
+          "durationMs": 1759,
+          "textOffset": 3,
+          "wordLength": 9
+        },
+        {
+          "text": "六十四",
+          "startMs": 2429,
+          "durationMs": 520,
+          "textOffset": 12,
+          "wordLength": 3
+        },
+        {
+          "text": "与",
+          "startMs": 2949,
+          "durationMs": 201,
+          "textOffset": 15,
+          "wordLength": 1
+        },
+        {
+          "text": "M",
+          "startMs": 3150,
+          "durationMs": 199,
+          "textOffset": 16,
+          "wordLength": 1
+        },
+        {
+          "text": "的四次方的乘积",
+          "startMs": 3349,
+          "durationMs": 0,
+          "textOffset": 17,
+          "wordLength": 7
+        },
+        {
+          "text": "。",
+          "startMs": 3349,
+          "durationMs": 0,
+          "textOffset": 24,
+          "wordLength": 1
+        },
+        {
+          "text": "取",
+          "startMs": 4725,
+          "durationMs": 240,
+          "textOffset": 25,
+          "wordLength": 1
+        },
+        {
+          "text": "倒数",
+          "startMs": 4965,
+          "durationMs": 320,
+          "textOffset": 26,
+          "wordLength": 2
+        },
+        {
+          "text": "后",
+          "startMs": 5285,
+          "durationMs": 200,
+          "textOffset": 28,
+          "wordLength": 1
+        },
+        {
+          "text": "方向",
+          "startMs": 5485,
+          "durationMs": 320,
+          "textOffset": 29,
+          "wordLength": 2
+        },
+        {
+          "text": "反过来",
+          "startMs": 5805,
+          "durationMs": 680,
+          "textOffset": 31,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 6485,
+          "durationMs": 0,
+          "textOffset": 34,
+          "wordLength": 1
+        },
+        {
+          "text": "因此",
+          "startMs": 6565,
+          "durationMs": 559,
+          "textOffset": 35,
+          "wordLength": 2
+        },
+        {
+          "text": "Q",
+          "startMs": 7124,
+          "durationMs": 201,
+          "textOffset": 37,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 7325,
+          "durationMs": 199,
+          "textOffset": 38,
+          "wordLength": 1
+        },
+        {
+          "text": "T",
+          "startMs": 7524,
+          "durationMs": 120,
+          "textOffset": 39,
+          "wordLength": 1
+        },
+        {
+          "text": "的乘积的倒数",
+          "startMs": 7644,
+          "durationMs": 1161,
+          "textOffset": 40,
+          "wordLength": 6
+        },
+        {
+          "text": "大于",
+          "startMs": 8805,
+          "durationMs": 440,
+          "textOffset": 46,
+          "wordLength": 2
+        },
+        {
+          "text": "或",
+          "startMs": 9245,
+          "durationMs": 160,
+          "textOffset": 48,
+          "wordLength": 1
+        },
+        {
+          "text": "等于",
+          "startMs": 9405,
+          "durationMs": 320,
+          "textOffset": 49,
+          "wordLength": 2
+        },
+        {
+          "text": "六十四",
+          "startMs": 9725,
+          "durationMs": 440,
+          "textOffset": 51,
+          "wordLength": 3
+        },
+        {
+          "text": "与",
+          "startMs": 10165,
+          "durationMs": 200,
+          "textOffset": 54,
+          "wordLength": 1
+        },
+        {
+          "text": "M",
+          "startMs": 10365,
+          "durationMs": 200,
+          "textOffset": 55,
+          "wordLength": 1
+        },
+        {
+          "text": "的四次方的乘积的倒数",
+          "startMs": 10565,
+          "durationMs": 0,
+          "textOffset": 56,
+          "wordLength": 10
+        },
+        {
+          "text": "。",
+          "startMs": 10565,
+          "durationMs": 0,
+          "textOffset": 66,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "b2969949dd6b44099c0c498e09516e8d",
+        "RecognitionStatus": "Success",
+        "Offset": 1200000,
+        "Duration": 121400000,
+        "Channel": 0,
+        "DisplayText": "Q与T的乘积为正，且不超过64，与M的4次方的乘积，取倒数后方向反过来，因此Q与T的乘积的倒数大于或等于64与M的4次方的乘积的倒数。",
+        "SNR": 43.96765,
+        "NBest": [
+          {
+            "Confidence": 0.97282434,
+            "Lexical": "Q 与 T 的 乘积 为正 且 不 超过 六十四 与 M 的 四 次 方 的 乘积 取 倒数 后 方向 反过来 因此 Q 与 T 的 乘积 的 倒数 大于 或 等于 六十四 与 M 的 四 次 方 的 乘积 的 倒数",
+            "ITN": "Q 与 T 的 乘积 为正 且 不 超过 64 与 M 的 4次方 的 乘积 取 倒数 后 方向 反过来 因此 Q 与 T 的 乘积 的 倒数 大于 或 等于 64 与 M 的 4次方 的 乘积 的 倒数",
+            "MaskedITN": "q与t的乘积为正且不超过64与m的4次方的乘积取倒数后方向反过来因此q与t的乘积的倒数大于或等于64与m的4次方的乘积的倒数",
+            "Display": "Q与T的乘积为正，且不超过64，与M的4次方的乘积，取倒数后方向反过来，因此Q与T的乘积的倒数大于或等于64与M的4次方的乘积的倒数。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 92,
+              "FluencyScore": 98,
+              "CompletenessScore": 93,
+              "PronScore": 93.4
+            },
+            "Words": [
+              {
+                "Word": "Q",
+                "Offset": 1200000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 24,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 3200000,
+                "Duration": 2000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 79,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "T",
+                "Offset": 5300000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 59,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 6900000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 8000000,
+                "Duration": 3400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "为正",
+                "Offset": 11500000,
+                "Duration": 5400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 59,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "且",
+                "Offset": 17200000,
+                "Duration": 2600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "不",
+                "Offset": 19900000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "超过",
+                "Offset": 21100000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "六十四",
+                "Offset": 24500000,
+                "Duration": 4900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 29500000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "M",
+                "Offset": 31500000,
+                "Duration": 2400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 34000000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "四",
+                "Offset": 35100000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "次",
+                "Offset": 36900000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "方",
+                "Offset": 38700000,
+                "Duration": 1400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 40200000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 41300000,
+                "Duration": 5800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "取",
+                "Offset": 47400000,
+                "Duration": 3200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "倒数",
+                "Offset": 50700000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "后",
+                "Offset": 53900000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "方向",
+                "Offset": 55700000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "反过来",
+                "Offset": 59100000,
+                "Duration": 6600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "因此",
+                "Offset": 66000000,
+                "Duration": 6300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "Q",
+                "Offset": 72400000,
+                "Duration": 2000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 74500000,
+                "Duration": 1200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "T",
+                "Offset": 75800000,
+                "Duration": 1600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 70,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 77500000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 78600000,
+                "Duration": 3400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 82100000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "倒数",
+                "Offset": 83100000,
+                "Duration": 5400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "大于",
+                "Offset": 88800000,
+                "Duration": 4400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "或",
+                "Offset": 93300000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "等于",
+                "Offset": 94900000,
+                "Duration": 2900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 65,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "六十四",
+                "Offset": 97900000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 102500000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "M",
+                "Offset": 104100000,
+                "Duration": 2300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 106500000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "四",
+                "Offset": 107500000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "次",
+                "Offset": 109300000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "方",
+                "Offset": 110900000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 112500000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 113500000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 116900000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "倒数",
+                "Offset": 117900000,
+                "Duration": 4700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "232-16": {
+    "audioFile": "232-16.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "052e5cbbc222cc98ec7699a3f1b7231cf4181abcf1ee23c078ba9db0110e7b8a",
+    "duration": 9.29,
+    "words": [
+      {
+        "text": "把",
+        "startMs": 70,
+        "durationMs": 160,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "两",
+        "startMs": 230,
+        "durationMs": 200,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
+        "text": "段",
+        "startMs": 430,
+        "durationMs": 120,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "连接",
+        "startMs": 550,
+        "durationMs": 360,
+        "textOffset": 3,
+        "wordLength": 2
+      },
+      {
+        "text": "起来",
+        "startMs": 910,
+        "durationMs": 440,
+        "textOffset": 5,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 1350,
+        "durationMs": 0,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "距离",
+        "startMs": 1550,
+        "durationMs": 320,
+        "textOffset": 8,
+        "wordLength": 2
+      },
+      {
+        "text": "等于",
+        "startMs": 1870,
+        "durationMs": 280,
+        "textOffset": 10,
+        "wordLength": 2
+      },
+      {
+        "text": "分子",
+        "startMs": 2150,
+        "durationMs": 480,
+        "textOffset": 12,
+        "wordLength": 2
+      },
+      {
+        "text": "绝对值",
+        "startMs": 2630,
+        "durationMs": 600,
+        "textOffset": 14,
+        "wordLength": 3
+      },
+      {
+        "text": "除以",
+        "startMs": 3230,
+        "durationMs": 280,
+        "textOffset": 17,
+        "wordLength": 2
+      },
+      {
+        "text": "正分母",
+        "startMs": 3510,
+        "durationMs": 680,
+        "textOffset": 19,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 4190,
+        "durationMs": 0,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "分子",
+        "startMs": 4213,
+        "durationMs": 440,
+        "textOffset": 23,
+        "wordLength": 2
+      },
+      {
+        "text": "绝对值",
+        "startMs": 4653,
+        "durationMs": 480,
+        "textOffset": 25,
+        "wordLength": 3
+      },
+      {
+        "text": "至少",
+        "startMs": 5133,
+        "durationMs": 320,
+        "textOffset": 28,
+        "wordLength": 2
+      },
+      {
+        "text": "为一",
+        "startMs": 5453,
+        "durationMs": 680,
+        "textOffset": 30,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 6133,
+        "durationMs": 0,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "所以",
+        "startMs": 6213,
+        "durationMs": 440,
+        "textOffset": 33,
+        "wordLength": 2
+      },
+      {
+        "text": "距离",
+        "startMs": 6653,
+        "durationMs": 399,
+        "textOffset": 35,
+        "wordLength": 2
+      },
+      {
+        "text": "至少",
+        "startMs": 7052,
+        "durationMs": 321,
+        "textOffset": 37,
+        "wordLength": 2
+      },
+      {
+        "text": "为",
+        "startMs": 7373,
+        "durationMs": 159,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "Q",
+        "startMs": 7532,
+        "durationMs": 241,
+        "textOffset": 40,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 7773,
+        "durationMs": 159,
+        "textOffset": 41,
+        "wordLength": 1
+      },
+      {
+        "text": "T",
+        "startMs": 7932,
+        "durationMs": 160,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "textOffset": 43,
+        "wordLength": 1,
+        "startMs": 8210,
+        "durationMs": 90
+      },
+      {
+        "text": "乘积",
+        "textOffset": 44,
+        "wordLength": 2,
+        "startMs": 8310,
+        "durationMs": 320
+      },
+      {
+        "text": "的",
+        "textOffset": 46,
+        "wordLength": 1,
+        "startMs": 8640,
+        "durationMs": 90
+      },
+      {
+        "text": "倒数",
+        "textOffset": 47,
+        "wordLength": 2,
+        "startMs": 8740,
+        "durationMs": 520
+      },
+      {
+        "text": "。",
+        "startMs": 8092,
+        "durationMs": 0,
+        "textOffset": 49,
+        "wordLength": 1
+      }
+    ],
+    "speech": "把两段连接起来。距离等于分子绝对值除以正分母。分子绝对值至少为一。所以距离至少为Q与T的乘积的倒数。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "2fac1eb331ae0b189968cd8ec533b48be95bea5883179cdbd1296cc96a6f4c28",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "052e5cbbc222cc98ec7699a3f1b7231cf4181abcf1ee23c078ba9db0110e7b8a",
+      "synthesisWords": [
+        {
+          "text": "把",
+          "startMs": 70,
+          "durationMs": 160,
+          "textOffset": 0,
+          "wordLength": 1
+        },
+        {
+          "text": "两",
+          "startMs": 230,
+          "durationMs": 200,
+          "textOffset": 1,
+          "wordLength": 1
+        },
+        {
+          "text": "段",
+          "startMs": 430,
+          "durationMs": 120,
+          "textOffset": 2,
+          "wordLength": 1
+        },
+        {
+          "text": "连接",
+          "startMs": 550,
+          "durationMs": 360,
+          "textOffset": 3,
+          "wordLength": 2
+        },
+        {
+          "text": "起来",
+          "startMs": 910,
+          "durationMs": 440,
+          "textOffset": 5,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 1350,
+          "durationMs": 0,
+          "textOffset": 7,
+          "wordLength": 1
+        },
+        {
+          "text": "距离",
+          "startMs": 1550,
+          "durationMs": 320,
+          "textOffset": 8,
+          "wordLength": 2
+        },
+        {
+          "text": "等于",
+          "startMs": 1870,
+          "durationMs": 280,
+          "textOffset": 10,
+          "wordLength": 2
+        },
+        {
+          "text": "分子",
+          "startMs": 2150,
+          "durationMs": 480,
+          "textOffset": 12,
+          "wordLength": 2
+        },
+        {
+          "text": "绝对值",
+          "startMs": 2630,
+          "durationMs": 600,
+          "textOffset": 14,
+          "wordLength": 3
+        },
+        {
+          "text": "除以",
+          "startMs": 3230,
+          "durationMs": 280,
+          "textOffset": 17,
+          "wordLength": 2
+        },
+        {
+          "text": "正分母",
+          "startMs": 3510,
+          "durationMs": 680,
+          "textOffset": 19,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 4190,
+          "durationMs": 0,
+          "textOffset": 22,
+          "wordLength": 1
+        },
+        {
+          "text": "分子",
+          "startMs": 4213,
+          "durationMs": 440,
+          "textOffset": 23,
+          "wordLength": 2
+        },
+        {
+          "text": "绝对值",
+          "startMs": 4653,
+          "durationMs": 480,
+          "textOffset": 25,
+          "wordLength": 3
+        },
+        {
+          "text": "至少",
+          "startMs": 5133,
+          "durationMs": 320,
+          "textOffset": 28,
+          "wordLength": 2
+        },
+        {
+          "text": "为一",
+          "startMs": 5453,
+          "durationMs": 680,
+          "textOffset": 30,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 6133,
+          "durationMs": 0,
+          "textOffset": 32,
+          "wordLength": 1
+        },
+        {
+          "text": "所以",
+          "startMs": 6213,
+          "durationMs": 440,
+          "textOffset": 33,
+          "wordLength": 2
+        },
+        {
+          "text": "距离",
+          "startMs": 6653,
+          "durationMs": 399,
+          "textOffset": 35,
+          "wordLength": 2
+        },
+        {
+          "text": "至少",
+          "startMs": 7052,
+          "durationMs": 321,
+          "textOffset": 37,
+          "wordLength": 2
+        },
+        {
+          "text": "为",
+          "startMs": 7373,
+          "durationMs": 159,
+          "textOffset": 39,
+          "wordLength": 1
+        },
+        {
+          "text": "Q",
+          "startMs": 7532,
+          "durationMs": 241,
+          "textOffset": 40,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 7773,
+          "durationMs": 159,
+          "textOffset": 41,
+          "wordLength": 1
+        },
+        {
+          "text": "T",
+          "startMs": 7932,
+          "durationMs": 160,
+          "textOffset": 42,
+          "wordLength": 1
+        },
+        {
+          "text": "的乘积的倒数",
+          "startMs": 8092,
+          "durationMs": 0,
+          "textOffset": 43,
+          "wordLength": 6
+        },
+        {
+          "text": "。",
+          "startMs": 8092,
+          "durationMs": 0,
+          "textOffset": 49,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "f8013ef4d1be4859ae78a8e59cabdaf7",
+        "RecognitionStatus": "Success",
+        "Offset": 600000,
+        "Duration": 92000000,
+        "Channel": 0,
+        "DisplayText": "把两段连接起来，距离等于分子绝对值除以正分母分子绝对值至少为一，所以距离至少为Q与T的乘积的倒数。",
+        "SNR": 33.60084,
+        "NBest": [
+          {
+            "Confidence": 0.9760842,
+            "Lexical": "把 两 段 连接 起来 距离 等于 分子 绝对值 除 以 正 分母 分子 绝对值 至少 为 一 所以 距离 至少 为 Q 与 T 的 乘积 的 倒数",
+            "ITN": "把 两 段 连接 起来 距离 等于 分子 绝对值 除 以 正 分母 分子 绝对值 至少 为 一 所以 距离 至少 为 Q 与 T 的 乘积 的 倒数",
+            "MaskedITN": "把两段连接起来距离等于分子绝对值除以正分母分子绝对值至少为一所以距离至少为q与t的乘积的倒数",
+            "Display": "把两段连接起来，距离等于分子绝对值除以正分母分子绝对值至少为一，所以距离至少为Q与T的乘积的倒数。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "FluencyScore": 96,
+              "CompletenessScore": 100,
+              "PronScore": 95.6
+            },
+            "Words": [
+              {
+                "Word": "把",
+                "Offset": 600000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "两",
+                "Offset": 2600000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "段",
+                "Offset": 4400000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "连接",
+                "Offset": 6000000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "起来",
+                "Offset": 9400000,
+                "Duration": 4200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "距离",
+                "Offset": 14400000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "等于",
+                "Offset": 19000000,
+                "Duration": 2800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 85,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分子",
+                "Offset": 21900000,
+                "Duration": 4400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "绝对值",
+                "Offset": 26400000,
+                "Duration": 5900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "除",
+                "Offset": 32400000,
+                "Duration": 1600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 34100000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 82,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "正",
+                "Offset": 35200000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分母",
+                "Offset": 37000000,
+                "Duration": 5300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分子",
+                "Offset": 42600000,
+                "Duration": 4700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "绝对值",
+                "Offset": 47400000,
+                "Duration": 4700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "至少",
+                "Offset": 52200000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "为",
+                "Offset": 55600000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "一",
+                "Offset": 57800000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 68,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "所以",
+                "Offset": 62400000,
+                "Duration": 4900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "距离",
+                "Offset": 67400000,
+                "Duration": 3900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "至少",
+                "Offset": 71400000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "为",
+                "Offset": 74800000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "Q",
+                "Offset": 76400000,
+                "Duration": 2300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 78800000,
+                "Duration": 1400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "T",
+                "Offset": 80300000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 60,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 82100000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 83100000,
+                "Duration": 3200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 86400000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "倒数",
+                "Offset": 87400000,
+                "Duration": 5200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "232-17": {
+    "audioFile": "232-17.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "cb8ffc80d1fecf36212b817c85d3b884b7b8be34bae7dc6495e262b2214e4c90",
+    "duration": 9.69,
+    "words": [
+      {
+        "text": "再",
+        "startMs": 70,
+        "durationMs": 240,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "用",
+        "startMs": 310,
+        "durationMs": 160,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
+        "text": "分母乘积的",
+        "startMs": 470,
+        "durationMs": 880,
+        "textOffset": 2,
+        "wordLength": 5
+      },
+      {
+        "text": "上界",
+        "startMs": 1350,
+        "durationMs": 679,
+        "textOffset": 7,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 2029,
+        "durationMs": 0,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "得到",
+        "startMs": 2070,
+        "durationMs": 440,
+        "textOffset": 10,
+        "wordLength": 2
+      },
+      {
+        "text": "距离",
+        "startMs": 2510,
+        "durationMs": 479,
+        "textOffset": 12,
+        "wordLength": 2
+      },
+      {
+        "text": "至少",
+        "startMs": 2989,
+        "durationMs": 360,
+        "textOffset": 14,
+        "wordLength": 2
+      },
+      {
+        "text": "为",
+        "startMs": 3349,
+        "durationMs": 241,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "六十四",
+        "startMs": 3590,
+        "durationMs": 480,
+        "textOffset": 17,
+        "wordLength": 3
+      },
+      {
+        "text": "与",
+        "startMs": 4070,
+        "durationMs": 200,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "M",
+        "startMs": 4270,
+        "durationMs": 240,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "的四次方的乘积的倒数",
+        "startMs": 4510,
+        "durationMs": 1720,
+        "textOffset": 22,
+        "wordLength": 10
+      },
+      {
+        "text": "。",
+        "startMs": 6230,
+        "durationMs": 0,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 6260,
+        "durationMs": 160,
+        "textOffset": 33,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 6420,
+        "durationMs": 120,
+        "textOffset": 34,
+        "wordLength": 1
+      },
+      {
+        "text": "保证",
+        "startMs": 6540,
+        "durationMs": 360,
+        "textOffset": 35,
+        "wordLength": 2
+      },
+      {
+        "text": "下界",
+        "startMs": 6900,
+        "durationMs": 720,
+        "textOffset": 37,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 7620,
+        "durationMs": 0,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "不一定",
+        "startMs": 7780,
+        "durationMs": 360,
+        "textOffset": 40,
+        "wordLength": 3
+      },
+      {
+        "text": "是",
+        "startMs": 8140,
+        "durationMs": 120,
+        "textOffset": 43,
+        "wordLength": 1
+      },
+      {
+        "text": "真实",
+        "startMs": 8260,
+        "durationMs": 440,
+        "textOffset": 44,
+        "wordLength": 2
+      },
+      {
+        "text": "最小",
+        "startMs": 8700,
+        "durationMs": 359,
+        "textOffset": 46,
+        "wordLength": 2
+      },
+      {
+        "text": "间距",
+        "startMs": 9059,
+        "durationMs": 560,
+        "textOffset": 48,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 9619,
+        "durationMs": 0,
+        "textOffset": 50,
+        "wordLength": 1
+      }
+    ],
+    "speech": "再用分母乘积的上界。得到距离至少为六十四与M的四次方的乘积的倒数。这是保证下界。不一定是真实最小间距。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "6568313122000eb419b8934ffbb6936d8266dcb0c2f10d5b63b6a1199624009c"
+  }
+}

@@ -1,0 +1,435 @@
+{
+  "232-01": [
+    {
+      "text": "全部输入端点统一缩放为整数坐标。",
+      "startMs": 70,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "M 是 1 与所有端点坐标绝对值的最大值。",
+      "startMs": 3429,
+      "endMs": 6910,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-02": [
+    {
+      "text": "所以 M 至少为 1。",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "沿用前集结论，端点和实际线段交点的坐标，",
+      "startMs": 1710,
+      "endMs": 5830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "约分后的正分母都不超过 8M²。",
+      "startMs": 5914,
+      "endMs": 9153,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-03": [
+    {
+      "text": "剪切后的横坐标是 X+sY，",
+      "startMs": 70,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标仍是 Y。",
+      "startMs": 3510,
+      "endMs": 4870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这一段先研究，不同横坐标原来至少隔多远。",
+      "startMs": 4895,
+      "endMs": 8375,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-04": [
+    {
+      "text": "先看 1/2 和 2/3。",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "通分成六分之三和六分之四，",
+      "startMs": 2150,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "实际距离是 1/6。",
+      "startMs": 4540,
+      "endMs": 6110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-05": [
+    {
+      "text": "它们的分母都不超过 3，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分母乘积就不超过 9。",
+      "startMs": 1950,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此可以保证距离至少为 1/9，",
+      "startMs": 3786,
+      "endMs": 6426,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "实际的 1/6 比它更大。",
+      "startMs": 6505,
+      "endMs": 8266,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-06": [
+    {
+      "text": "下界只保证不会更小，",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不保证恰好取到。",
+      "startMs": 1910,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面用字母说明，这个保证为什么成立。",
+      "startMs": 3550,
+      "endMs": 6495,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-07": [
+    {
+      "text": "把两个不同横坐标记为 p/q 和 r/t，",
+      "startMs": 70,
+      "endMs": 3989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其中 p 与 r 是整数。",
+      "startMs": 4030,
+      "endMs": 5870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "q 与 t 是约分后的正整数分母，",
+      "startMs": 5834,
+      "endMs": 8553,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都不超过 8M²。",
+      "startMs": 8633,
+      "endMs": 10874,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-08": [
+    {
+      "text": "第一个分数的分子分母，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都乘以另一个分母。",
+      "startMs": 2270,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二个分数也这样处理。",
+      "startMs": 4150,
+      "endMs": 5990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "通分以后，用第一个新分子减去第二个新分子。",
+      "startMs": 6004,
+      "endMs": 9910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "共同分母等于两个原分母的乘积。",
+      "startMs": 9940,
+      "endMs": 12580,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-09": [
+    {
+      "text": "距离不区分正负，所以取绝对值。",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分母 qt 为正，绝对值只需留在整个分子上。",
+      "startMs": 2909,
+      "endMs": 6935,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-10": [
+    {
+      "text": "横坐标不同，所以 pt−rq 不是零。",
+      "startMs": 70,
+      "endMs": 4240,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它是非零整数，绝对值至少为 1。",
+      "startMs": 4270,
+      "endMs": 7190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "除以同一个正数 qt，",
+      "startMs": 7220,
+      "endMs": 9710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到距离至少为 1/(qt)。",
+      "startMs": 9759,
+      "endMs": 13080,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-11": [
+    {
+      "text": "保留刚才的距离下界。",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先把 q 放大到 8M²，",
+      "startMs": 1750,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再把 t 放大到 8M²。",
+      "startMs": 4383,
+      "endMs": 7102,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每次都乘以正数，不等号方向不变。",
+      "startMs": 7182,
+      "endMs": 10090,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-12": [
+    {
+      "text": "8 乘以 8 等于 64，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "M² 乘以 M² 等于 M⁴。",
+      "startMs": 1950,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此正数 qt 不超过 64M⁴。",
+      "startMs": 5492,
+      "endMs": 9892,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-13": [
+    {
+      "text": "正分母越大，倒数怎样变化？",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "比较 1/2 和 1/6，",
+      "startMs": 2670,
+      "endMs": 4490,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "安静想四秒。",
+      "startMs": 4520,
+      "endMs": 5660,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-14": [
+    {
+      "text": "1/2 大于 1/6。",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同样的一份，分成六份时每份更小。",
+      "startMs": 2230,
+      "endMs": 5270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子同为 1，正分母越大，",
+      "startMs": 5236,
+      "endMs": 7595,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分数越小。",
+      "startMs": 7716,
+      "endMs": 8635,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-15": [
+    {
+      "text": "qt 为正且不超过 64M⁴，",
+      "startMs": 110,
+      "endMs": 4710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取倒数后方向反过来。",
+      "startMs": 4725,
+      "endMs": 6485,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此 1/(qt) 大于或等于 1/(64M⁴)。",
+      "startMs": 6565,
+      "endMs": 12260,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-16": [
+    {
+      "text": "把两段连接起来。",
+      "startMs": 70,
+      "endMs": 1350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "距离等于分子绝对值除以正分母，",
+      "startMs": 1550,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子绝对值至少为 1，",
+      "startMs": 4213,
+      "endMs": 6133,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以距离至少为 1/(qt)。",
+      "startMs": 6213,
+      "endMs": 9260,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "232-17": [
+    {
+      "text": "再用分母乘积的上界，",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到距离至少为 1/(64M⁴)。",
+      "startMs": 2070,
+      "endMs": 6230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是保证下界，不一定是真实最小间距。",
+      "startMs": 6260,
+      "endMs": 9619,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}
