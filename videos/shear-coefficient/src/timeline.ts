@@ -6,7 +6,7 @@ import {
   phraseTime,
   type AudioTiming,
   type Caption,
-} from "./speech-timing.ts";
+} from "../../shared/speech/timing.ts";
 
 export const fps = 60;
 export const audioLeadFrames = 12;

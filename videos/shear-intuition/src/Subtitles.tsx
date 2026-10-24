@@ -1,3 +1,4 @@
+import { Subtitles as SubtitleBox } from "../../shared/ui/Subtitles";
 import { MathText } from "./MathText";
 import { shots, type Shot } from "./storyboard";
 import { captionNumberRoles, captionNumbers } from "./teaching-emphasis";
@@ -17,27 +18,10 @@ export const Subtitles = ({ text, shot }: { text: string; shot: Shot }) => {
     ? captionNumbers(source.caption, text, captionNumberRoles[source.id] ?? [])
     : [];
   return (
-    <div
-      data-page-block
-      data-subtitle
-      style={{
-        position: "absolute",
-        left: 120,
-        right: 120,
-        bottom: 30,
-        height: 68,
-        boxSizing: "content-box",
-        borderTop: "2px solid #dce4ec",
-        paddingTop: 20,
-        fontSize: 40,
-        lineHeight: 1.4,
-        textAlign: "center",
-        whiteSpace: "nowrap",
-      }}
-    >
+    <SubtitleBox pageBlock>
       <span data-caption-ink>
         <MathText numberRoles={roles}>{text}</MathText>
       </span>
-    </div>
+    </SubtitleBox>
   );
 };

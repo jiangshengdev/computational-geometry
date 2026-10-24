@@ -31,7 +31,7 @@
     "video:build": "remotion bundle",
     "video:check-layout": "node scripts/check-layout.ts",
     "video:upgrade": "remotion upgrade",
-    "video:lint": "eslint src && tsc"
+    "video:lint": "eslint src && tsc && node ../shared/checks/lint.ts"
   },
   "allowScripts": {
     "esbuild": false

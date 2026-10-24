@@ -1,4 +1,8 @@
-import { equals, left, type TeachingGroup } from "./math-lines.ts";
+import {
+  equals,
+  left,
+  type TeachingGroup,
+} from "../../shared/math/math-lines.ts";
 
 export type Shot = {
   id: string;

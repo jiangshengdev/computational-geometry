@@ -1,4 +1,4 @@
-import { equals, left } from "./math-lines.ts";
+import { equals, left } from "../../shared/math/math-lines.ts";
 import type { Page, Shot } from "./storyboard.ts";
 
 export const continuationPages: Record<string, Page> = {

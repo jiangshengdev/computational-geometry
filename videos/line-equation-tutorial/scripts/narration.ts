@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { decodeAudio, measureAudio } from "../../shared/speech/audio.ts";
 import {
   copyFileSync,
   mkdirSync,
@@ -75,22 +75,6 @@ if (
 )
   throw Error("Resume requires a line-equation temporary directory");
 const questions = new Set(["190-4", "192-4"]);
-const measure = (path: string) =>
-  Number(
-    execFileSync(
-      "ffprobe",
-      [
-        "-v",
-        "error",
-        "-show_entries",
-        "format=duration",
-        "-of",
-        "default=noprint_wrappers=1:nokey=1",
-        path,
-      ],
-      { encoding: "utf8" },
-    ).trim(),
-  );
 const report: Record<
   string,
   { duration: number; silenceAfter: number; frames: number }
@@ -143,17 +127,8 @@ try {
         : row.id === "196-1"
           ? 0
           : 0.4;
-      const duration = measure(destination);
-      execFileSync("ffmpeg", [
-        "-v",
-        "error",
-        "-xerror",
-        "-i",
-        destination,
-        "-f",
-        "null",
-        "-",
-      ]);
+      const duration = measureAudio(destination);
+      decodeAudio(destination);
       if (!Number.isFinite(duration) || duration <= 0)
         throw Error(`Invalid audio duration ${row.id}`);
       if (

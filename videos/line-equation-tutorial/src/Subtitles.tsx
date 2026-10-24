@@ -1,3 +1,4 @@
+import { Subtitles as SubtitleBox } from "../../shared/ui/Subtitles";
 import { useCurrentFrame } from "remotion";
 import captionData from "./captions.json";
 import { chapters, offsets, fps, audioLeadInFrames } from "./timeline";
@@ -27,28 +28,12 @@ export const Subtitles = ({ first, last }: { first: number; last: number }) => {
   if (chapter < 0) return null;
   const frame = absoluteFrame - offsets[chapter];
   return (
-    <div
-      data-subtitle
-      style={{
-        position: "absolute",
-        left: 120,
-        right: 120,
-        bottom: 30,
-        height: 68,
-        boxSizing: "content-box",
-        borderTop: "2px solid #dce4ec",
-        paddingTop: 20,
-        fontFamily: '"PingFang SC", sans-serif',
-        color: "#172c45",
-        fontSize: 40,
-        lineHeight: 1.4,
-        textAlign: "center",
-        whiteSpace: "nowrap",
-      }}
+    <SubtitleBox
+      style={{ fontFamily: '"PingFang SC", sans-serif', color: "#172c45" }}
     >
       <MathText>
         {captionAt(chapterCaptions[chapter], (frame * 1000) / fps)}
       </MathText>
-    </div>
+    </SubtitleBox>
   );
 };

@@ -6,7 +6,7 @@ import {
   captionAt,
   phraseTime,
   type AudioTiming,
-} from "../src/speech-timing.ts";
+} from "../../shared/speech/timing.ts";
 
 const audio: AudioTiming = {
   duration: 3,

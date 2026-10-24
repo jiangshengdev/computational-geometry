@@ -1,3 +1,5 @@
+import { groupCaptionClauses, timedCaption } from "./captions.ts";
+export { captionAt } from "./captions.ts";
 export type WordBoundary = {
   text: string;
   startMs: number;
@@ -68,44 +70,29 @@ const clauses = (text: string) =>
     offset: m.index,
   }));
 
-export function createCaptions(display: string, audio: AudioTiming): Caption[] {
-  validateWords(audio);
+export function validateCaptionClauses(display: string, speech: string) {
   const visible = clauses(display),
-    audible = clauses(audio.speech);
+    audible = clauses(speech);
   if (visible.length !== audible.length)
     throw Error(`Caption / speech clause mismatch: ${display}`);
-  const result: Caption[] = [];
-  for (let i = 0; i < visible.length; i++) {
-    let text = visible[i].text;
-    const from = audible[i].offset;
-    // Match the reference tutorial: keep short opening clauses with the phrase
-    // they introduce, without crossing sentence endings or long caption lines.
-    while (
-      !/[。！？；]$/.test(text) &&
-      text.length < 10 &&
-      i + 1 < visible.length &&
-      text.length + visible[i + 1].text.length <= 32
-    ) {
-      text += visible[++i].text;
-    }
-    const to = audible[i].offset + audible[i].text.length;
-    const words = audio.words.filter(
-      (w) =>
-        w.durationMs > 0 &&
-        w.textOffset < to &&
-        w.textOffset + w.wordLength > from,
-    );
-    if (!words.length) throw Error(`No word timing: ${text}`);
-    const last = words[words.length - 1];
-    result.push({
-      text,
-      startMs: words[0].startMs,
-      endMs: last.startMs + last.durationMs,
-      timestampMs: null,
-      confidence: null,
-    });
-  }
-  return result;
+  return { visible, audible };
+}
+
+export function createCaptions(display: string, audio: AudioTiming): Caption[] {
+  validateWords(audio);
+  const { visible, audible } = validateCaptionClauses(display, audio.speech);
+  return groupCaptionClauses(visible, audible).map(
+    ({ text, speechStart: from, speechEnd: to }) => {
+      const words = audio.words.filter(
+        (w) =>
+          w.durationMs > 0 &&
+          w.textOffset < to &&
+          w.textOffset + w.wordLength > from,
+      );
+      if (!words.length) throw Error(`No word timing: ${text}`);
+      return timedCaption(text, words);
+    },
+  );
 }
 
 export function phraseTime(
@@ -125,18 +112,4 @@ export function phraseTime(
   if (!words.length) throw Error(`Missing timing for anchor: ${phrase}`);
   const word = edge === "start" ? words[0] : words[words.length - 1];
   return word.startMs + (edge === "end" ? word.durationMs : 0);
-}
-
-// Silence holds the last phrase. A different teaching page resets it.
-export function captionAt(
-  captions: Caption[],
-  milliseconds: number,
-  previous = "",
-) {
-  let current = previous;
-  for (const caption of captions) {
-    if (caption.startMs > milliseconds) break;
-    current = caption.text;
-  }
-  return current;
 }

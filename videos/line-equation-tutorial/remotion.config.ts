@@ -1,3 +1,4 @@
+import { resolve } from "node:path";
 /**
  * Note: When using the Node.JS APIs, the config file
  * doesn't apply. Instead, pass options directly to the APIs.
@@ -21,3 +22,15 @@ Config.setAudioCodec("aac");
 Config.setAudioBitrate("192k");
 // Limit simultaneous 4K pages and PNG buffers; this is not a speed benchmark.
 Config.setConcurrency(4);
+
+// Resolve shared browser code against this video's installed dependencies.
+Config.overrideRspackConfig((config) => ({
+  ...config,
+  resolve: {
+    ...config.resolve,
+    modules: [
+      resolve("node_modules"),
+      ...(config.resolve?.modules ?? ["node_modules"]),
+    ],
+  },
+}));

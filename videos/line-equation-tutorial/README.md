@@ -35,7 +35,7 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 - `src/coordinates.ts`：开场与正文共用的坐标映射，遵循[坐标图比例规则](../../docs/agents/videos/layout.md#坐标图比例)。正文可在对应 `Cue.coordinateScale` 中显式设置 `{ mode: "independent", reason: "具体教学原因" }`，开场通过 `CoordinateDiagram` 的 `scale` 参数指定；画面会显示“不等比例示意”。当前所有镜头均使用默认等比例。
 - `src/timeline.ts`：根据实测音频生成的 `src/audio-timing.json` 排列各镜头、片段和全片。第 2、4 段问题结束后保留 4 秒；第 8 段使用独立的 4 秒静默镜头。
 - `src/Intro.tsx`、`src/intro-storyboard.ts`：本工程独立维护的开场画面与展示文案。字幕和时间线与其他章节共用同一份数据。
-- `scripts/azure-speech.ts`：本工程内的 Azure 请求函数。
+- `scripts/azure-speech.ts`：本集 Azure 配置与公共请求函数入口。
 
 配音依赖、默认音色与失败续跑见公共[配音环境与续跑](../../docs/agents/videos/operations.md#配音环境与续跑)。本工程可选的 `AZURE_SPEECH_VOICE` 必须与选定音色一致；生成入口为：
 
@@ -83,10 +83,14 @@ pnpm --config.verify-deps-before-run=false exec node --test scripts/azure-speech
 
 正文的教学分组在 `src/derivations.ts` 显式定义，组的 `count` 必须覆盖该页全部保留行；新增或删除推导步骤后需同步更新。`left` 用于题目、独立判断与结论，`equals` 仅用于连续等式推导。分页、字号、音轨和揭示时间保持原有编排。
 
-`src/math-lines.ts` 统一管理行槽和基线：普通行 72px，组间增加 24px；含分式的完整组统一使用 96px 行槽。
+`src/math-lines.ts` 保留本集公式解析策略，`../shared/math/math-lines.ts` 统一管理行槽和基线：普通行 72px，组间增加 24px；含分式的完整组统一使用 96px 行槽。
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
 检查要求本机已有 Playwright CLI 和 Chrome。命令启动独立 Studio，按[教学排版与布局检查规则](../../docs/agents/videos/layout.md#教学排版与布局检查)检查 `LayoutCheck` 中的 4 个开场画面及 26 个完整正文页；不是外观快照测试，也不渲染或导出视频。失败页记录 `FAIL`；`scripts/render.ts` 的导出入口先执行同一检查，失败即停止导出。
+
+## 仓库内公共基础能力
+
+本工程依赖 [公共视频模块](../shared/README.md)，保留本集内容、素材与制作入口，不依赖其他视频工程；单集目录不要求脱离仓库运行。公共模块的职责、必要行为差异及按影响选择检查的方法见公共说明。`video:lint` 同时检查本集源码和公共源码。

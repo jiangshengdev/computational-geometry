@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import timingData from "./audio-timing.json" with { type: "json" };
-import { phraseTime } from "./speech-timing.ts";
+import { phraseTime } from "../../shared/speech/timing.ts";
 import { audioLeadFrames, fps, timelineFor, visualAt } from "./timeline.ts";
 import { pages } from "./storyboard.ts";
-import type { AudioTiming } from "./speech-timing.ts";
+import type { AudioTiming } from "../../shared/speech/timing.ts";
 
 const timing = timingData as Record<string, AudioTiming>;
 

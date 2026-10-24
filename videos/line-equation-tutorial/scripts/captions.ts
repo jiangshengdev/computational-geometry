@@ -1,3 +1,7 @@
+import {
+  groupCaptionClauses,
+  timedCaption,
+} from "../../shared/speech/captions.ts";
 import type { WordBoundary } from "./azure-speech.ts";
 
 // Spoken formulas contain sentence breaks absent from the displayed notation.
@@ -30,25 +34,7 @@ export function captionPhrases(display: string, spoken: string) {
   const audible = clauses(spoken, true);
   if (visible.length !== audible.length)
     throw new Error("Caption / speech clause mismatch");
-  const phrases: { text: string; speechStart: number; speechEnd: number }[] =
-    [];
-  for (let index = 0; index < visible.length; index++) {
-    let text = visible[index].text;
-    const speechStart = audible[index].offset;
-    while (
-      !/[。！？；]$/.test(text) &&
-      text.length < 10 &&
-      index + 1 < visible.length &&
-      text.length + visible[index + 1].text.length <= 32
-    ) {
-      text += visible[++index].text;
-    }
-    phrases.push({
-      text,
-      speechStart,
-      speechEnd: audible[index].offset + audible[index].text.length,
-    });
-  }
+  const phrases = groupCaptionClauses(visible, audible);
   if (phrases.map((p) => p.text).join("") !== display)
     throw new Error("Caption text was lost");
   return phrases;
@@ -81,14 +67,6 @@ export function createCaptions(
     );
     if (!matching.length)
       throw new Error(`Missing word timing: ${phrase.text}`);
-    const first = matching[0],
-      last = matching[matching.length - 1];
-    return {
-      text: phrase.text,
-      startMs: first.startMs,
-      endMs: last.startMs + last.durationMs,
-      timestampMs: null,
-      confidence: null,
-    };
+    return timedCaption(phrase.text, matching);
   });
 }

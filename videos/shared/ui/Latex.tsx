@@ -1,0 +1,27 @@
+import { useMemo, type CSSProperties } from "react";
+import { renderToString } from "katex";
+import "katex/dist/katex.min.css";
+
+export const Latex = ({
+  children,
+  displayMode = false,
+  style,
+}: {
+  children: string;
+  displayMode?: boolean;
+  style?: CSSProperties;
+}) => {
+  const html = useMemo(
+    () =>
+      renderToString(children, {
+        displayMode,
+        throwOnError: true,
+        strict: "error",
+        trust: false,
+        output: "htmlAndMathml",
+      }),
+    [children, displayMode],
+  );
+  const Tag = displayMode ? "div" : "span";
+  return <Tag style={style} dangerouslySetInnerHTML={{ __html: html }} />;
+};

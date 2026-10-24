@@ -55,14 +55,14 @@ pnpm --config.verify-deps-before-run=false run video:narration --issue=204
 | `src/captions.json`                                   | 生成的短镜头字幕及起止时间                      |
 | `src/Diagram.tsx`、`src/TeachingPage.tsx`             | 等比例几何图、同屏对照与生产排版                |
 | `src/MathText.tsx`、`src/Subtitles.tsx`               | 统一数学混排与字幕样式                          |
-| `src/speech-timing.ts`                                | 字词校验、短句字幕和讲解锚点定位                |
+| `../shared/speech/timing.ts`                          | 字词校验、短句字幕和讲解锚点定位                |
 | `src/timeline.ts`、`src/Composition.tsx`              | 原速音频、字幕、动画和停顿的编排                |
-| `scripts/narration.ts`、`scripts/azure-speech.ts`     | 本工程自包含的 Azure 合成与素材发布             |
+| `scripts/narration.ts`、`scripts/azure-speech.ts`     | 本集 Azure 配置与公共合成、素材发布入口         |
 | `scripts/azure-alignment.ts`                          | 原音频逐词对齐、来源与音频哈希校验              |
 | `scripts/check-content.ts`、`scripts/check-layout.ts` | 内容与音频检查、完整生产页无头检查              |
 | `scripts/render.ts`                                   | 带检查门禁的用户导出入口                        |
 
-本工程按规格保持自包含。Azure SSML 校验和浏览器检查入口沿用参考教程中已有的实现经验，运行时没有相邻工程导入；未修改旧教程。
+初始制作时按当时规格保持自包含；当前公共基础能力已迁入仓库内共享模块，运行时仍无相邻视频工程导入。
 
 ## 检查与验收
 
@@ -77,3 +77,7 @@ pnpm --config.verify-deps-before-run=false run video:narration --issue=204
 - 可见桌面验收。
 
 助手未渲染或导出整片／片段，也未启动可见窗口。本轮未修改 CNB #203–#208，也未执行 Git 提交或远程操作；正式任务状态以 CNB 为准。
+
+## 仓库内公共基础能力
+
+本工程依赖 [公共视频模块](../shared/README.md)，保留本集内容、素材与制作入口，不依赖其他视频工程；单集目录不要求脱离仓库运行。公共模块的职责、必要行为差异及按影响选择检查的方法见公共说明。`video:lint` 同时检查本集源码和公共源码。
