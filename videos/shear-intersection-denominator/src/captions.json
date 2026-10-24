@@ -1,0 +1,371 @@
+{
+  "227-01": [
+    {
+      "text": "上一集，我们把全部输入端点的坐标统一缩放成了整数。",
+      "startMs": 70,
+      "endMs": 4750,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-02": [
+    {
+      "text": "直线写成 aX+bY=c，",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "按照上一集的取法，三个系数都是整数。",
+      "startMs": 3510,
+      "endMs": 6740,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-03": [
+    {
+      "text": "M 控制全部端点的坐标范围，",
+      "startMs": 110,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而且至少为 1。",
+      "startMs": 2550,
+      "endMs": 3829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "系数 a、b 的绝对值，",
+      "startMs": 3829,
+      "endMs": 5710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都不超过 2M。",
+      "startMs": 5748,
+      "endMs": 7188,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-04": [
+    {
+      "text": "先看蓝色直线 X+Y=1，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它经过整数点 (0,1) 和 (1,0)。",
+      "startMs": 2789,
+      "endMs": 5630,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-05": [
+    {
+      "text": "紫色直线满足 X−Y=0，",
+      "startMs": 70,
+      "endMs": 3630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "经过整数点 (0,0) 和 (1,1)。",
+      "startMs": 4030,
+      "endMs": 6860,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "X 表示横坐标，Y 表示纵坐标。",
+      "startMs": 6900,
+      "endMs": 9840,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-06": [
+    {
+      "text": "两条直线的公共点，必须同时满足两个方程。",
+      "startMs": 110,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-07": [
+    {
+      "text": "虽然这些端点坐标都是整数，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交点坐标却未必是整数。",
+      "startMs": 2469,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们一起算一算。",
+      "startMs": 4469,
+      "endMs": 5669,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-08": [
+    {
+      "text": "把两个方程相加，哪一项会抵消？",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先想一想，再求横坐标。",
+      "startMs": 2909,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-09": [
+    {
+      "text": "等式左边相加，右边也相加，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 (X+Y)+(X−Y)=1+0。",
+      "startMs": 2710,
+      "endMs": 7950,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-10": [
+    {
+      "text": "去掉括号，两个横坐标相加，",
+      "startMs": 70,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加上纵坐标，最后减去纵坐标，",
+      "startMs": 2989,
+      "endMs": 6320,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等号右边保持为 1。",
+      "startMs": 6350,
+      "endMs": 8040,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-11": [
+    {
+      "text": "Y 与 −Y 相加等于 0，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两项抵消。",
+      "startMs": 2309,
+      "endMs": 3389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个 X 相加，得到 2X=1。",
+      "startMs": 3429,
+      "endMs": 6510,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-12": [
+    {
+      "text": "2 不是零，所以两边都可以除以 2，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 X=1/2。",
+      "startMs": 2949,
+      "endMs": 4750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标已经是分数了。",
+      "startMs": 4780,
+      "endMs": 6600,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-13": [
+    {
+      "text": "再求纵坐标，使用第二个方程 X−Y=0。",
+      "startMs": 70,
+      "endMs": 4030,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-14": [
+    {
+      "text": "把横坐标 1/2 代进去，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 1/2−Y=0。",
+      "startMs": 2230,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-15": [
+    {
+      "text": "两边同时加上 Y，左边的 −Y 与 Y 抵消，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 1/2=Y。",
+      "startMs": 3510,
+      "endMs": 5070,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-16": [
+    {
+      "text": "所以交点 P 的横坐标和纵坐标，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都是 1/2。",
+      "startMs": 2440,
+      "endMs": 3540,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "有序数对先写横坐标，",
+      "startMs": 3570,
+      "endMs": 5560,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再写纵坐标。",
+      "startMs": 5590,
+      "endMs": 6740,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-17": [
+    {
+      "text": "代回第一个方程，1/2 加 1/2 等于 1，",
+      "startMs": 70,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "成立。",
+      "startMs": 3786,
+      "endMs": 4386,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-18": [
+    {
+      "text": "代回第二个方程，1/2 减 1/2 等于 0，",
+      "startMs": 70,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也成立。",
+      "startMs": 3957,
+      "endMs": 4717,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-19": [
+    {
+      "text": "同一对坐标满足两个方程，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以 P 就是它们的交点。",
+      "startMs": 2469,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "227-20": [
+    {
+      "text": "这里的分母 2，来自消元后的一次除法。",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "换成一般的整数系数，",
+      "startMs": 3429,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "除数会变成什么呢？",
+      "startMs": 5322,
+      "endMs": 6960,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

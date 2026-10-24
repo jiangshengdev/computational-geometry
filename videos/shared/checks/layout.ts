@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { createServer } from "node:net";
-import { mkdtempSync } from "node:fs";
+import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -12,12 +12,14 @@ export async function checkLayout({
   reportAll = false,
   viewport,
   inspectPageErrors = true,
+  browserExecutable,
 }: {
   cwd: string;
   screenshotPages?: string[];
   reportAll?: boolean;
   viewport?: { width: number; height: number };
   inspectPageErrors?: boolean;
+  browserExecutable?: string;
 }) {
   const session = `layout-check-${process.pid}`;
   const pnpmArgs = ["--config.verify-deps-before-run=false", "exec"];
@@ -99,18 +101,40 @@ export async function checkLayout({
       }
       await new Promise((resolve) => setTimeout(resolve, 200));
     }
-    await cli("open", `${url}/LayoutCheck`, "--browser=chrome");
+    if (browserExecutable) {
+      const directory = mkdtempSync(join(tmpdir(), "video-browser-"));
+      const config = join(directory, "cli.config.json");
+      writeFileSync(
+        config,
+        JSON.stringify({
+          browser: {
+            browserName: "chromium",
+            launchOptions: {
+              executablePath: browserExecutable,
+              headless: true,
+            },
+          },
+        }),
+      );
+      await cli("open", `--config=${config}`);
+    } else {
+      await cli("open", `${url}/LayoutCheck`, "--browser=chrome");
+    }
     const output = await cli(
       "run-code",
       `async (page) => {
     const errors = [];
     if (${inspectPageErrors}) page.on('pageerror', error => errors.push(error.message));
+    ${browserExecutable ? `await page.goto(${JSON.stringify(`${url}/LayoutCheck`)}, {waitUntil: 'domcontentloaded'});` : ""}
     ${viewport ? `await page.setViewportSize(${JSON.stringify(viewport)});` : ""}
     if (!page.url().endsWith('/LayoutCheck')) throw new Error('Wrong check page');
-    await page.waitForFunction(() => {
+    try { await page.waitForFunction(() => {
       const result = document.querySelector('[data-layout-report]');
       return result && result.textContent !== 'pending';
-    }, null, {timeout: 45000});
+    }, null, {timeout: 45000}); } catch (error) {
+      const state = await page.evaluate(() => ({progress: document.querySelector('[data-layout-progress]')?.getAttribute('data-layout-progress'), pages: document.querySelectorAll('[data-layout-page]').length, body: document.body.innerText.slice(0, 1600)}));
+      throw new Error(error.message + '; ' + JSON.stringify({state, errors}));
+    }
     const report = await page.locator('[data-layout-report]').evaluate(node => JSON.parse(node.textContent));
     if (errors.length) throw new Error(errors.join('; '));
     return report;

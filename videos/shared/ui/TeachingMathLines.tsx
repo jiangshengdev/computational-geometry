@@ -13,6 +13,7 @@ export function createTeachingMathLines<Role extends string, Mark>({
   pageRoles,
   Latex,
   MathText,
+  defaultMathColor,
 }: {
   pages: Record<
     string,
@@ -28,6 +29,7 @@ export function createTeachingMathLines<Role extends string, Mark>({
     children: string;
     numberRoles?: (Role | undefined)[];
   }>;
+  defaultMathColor?: string;
 }) {
   const MathLines = ({
     pageId,
@@ -66,7 +68,7 @@ export function createTeachingMathLines<Role extends string, Mark>({
           style: { visibility: index < visibleStep ? "visible" : "hidden" },
         })}
         cellStyle={(cell) => ({
-          color: cell.math ? theme : "#172c45",
+          color: cell.math ? (defaultMathColor ?? theme) : "#172c45",
           fontSize: cell.math ? 42 : 36,
         })}
         renderCell={(cell, index) => (

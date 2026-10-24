@@ -1,25 +1,41 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
-
-type Props = {};
-
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
+import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { TeachingPage } from "./TeachingPage";
+import {
+  timelineFor,
+  visualAt,
+  audioLeadFrames,
+  type TimelineRow,
+} from "./timeline";
+export const ShotScene = ({
+  row,
+  audioEnabled = true,
+}: {
+  row: TimelineRow;
+  audioEnabled?: boolean;
+}) => {
+  const frame = useCurrentFrame();
   return (
-    <Composition
-      id="MyComp"
-      component={MyComponent}
-      durationInFrames={120}
-      fps={60}
-      width={1920}
-      height={1080}
-      calculateMetadata={calculateMetadata}
-    />
+    <>
+      <TeachingPage shot={row} {...visualAt(row, frame)} />
+      {audioEnabled ? (
+        <Sequence from={audioLeadFrames}>
+          <Audio src={staticFile(`narration/${row.id}.mp3`)} />
+        </Sequence>
+      ) : null}
+    </>
   );
 };
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+export const ShearVideo = () => (
+  <>
+    {timelineFor().map((row) => (
+      <Sequence
+        key={row.id}
+        from={row.from}
+        durationInFrames={row.durationInFrames}
+        name={row.id}
+      >
+        <ShotScene row={row} />
+      </Sequence>
+    ))}
+  </>
+);

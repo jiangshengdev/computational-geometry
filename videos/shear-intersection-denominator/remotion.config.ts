@@ -6,6 +6,7 @@
  */
 
 import { Config } from "@remotion/cli/config";
+import { resolve } from "node:path";
 
 Config.setRspack(true);
 Config.setOverwriteOutput(true);
@@ -21,3 +22,13 @@ Config.setAudioCodec("aac");
 Config.setAudioBitrate("192k");
 // Limit simultaneous 4K pages and PNG buffers; this is not a speed benchmark.
 Config.setConcurrency(4);
+Config.overrideRspackConfig((config) => ({
+  ...config,
+  resolve: {
+    ...config.resolve,
+    modules: [
+      resolve("node_modules"),
+      ...(config.resolve?.modules ?? ["node_modules"]),
+    ],
+  },
+}));
