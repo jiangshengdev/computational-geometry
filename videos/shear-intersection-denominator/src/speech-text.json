@@ -580,7 +580,7 @@
       "text": "把",
       "pinyin": "ba3"
     },
-    "两条直线写成这两个方程。下标",
+    "两条直线写成这两个方程。",
     {
       "text": "一",
       "pinyin": "yi1"
@@ -713,8 +713,8 @@
       "letter": "A"
     },
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "与",
@@ -723,11 +723,7 @@
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    "二",
     {
       "text": "相乘",
       "pinyin": "xiang1 cheng2"
@@ -740,11 +736,7 @@
     {
       "letter": "A"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    "二",
     {
       "text": "与",
       "pinyin": "yu3"
@@ -753,8 +745,8 @@
       "letter": "B"
     },
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "相乘",
@@ -985,16 +977,16 @@
       "text": "斜率",
       "pinyin": "xie2 lv4"
     },
-    "。因此。两条直线",
+    "。因此。",
     {
-      "text": "的斜率分别",
-      "pinyin": "de5 xie2 lv4 fen1 bie2"
+      "text": "第一条直线的斜率",
+      "pinyin": "di4 yi1 tiao2 zhi2 xian4 de5 xie2 lv4"
     },
-    "是负",
+    "是",
     {
       "letter": "A"
     },
-    "下标",
+    " ",
     {
       "text": "一",
       "pinyin": "yi1"
@@ -1003,20 +995,30 @@
     {
       "letter": "B"
     },
-    "下标",
+    " ",
     {
-      "text": "一和",
-      "pinyin": "yi1 he2"
+      "text": "一的相反数",
+      "pinyin": "yi1 de5 xiang1 fan3 shu4"
     },
-    "负",
+    "。",
+    {
+      "text": "第二条直线的斜率",
+      "pinyin": "di4 er4 tiao2 zhi2 xian4 de5 xie2 lv4"
+    },
+    "是",
     {
       "letter": "A"
     },
-    "下标二除以",
+    " 二除以",
     {
       "letter": "B"
     },
-    "下标二。"
+    " ",
+    {
+      "text": "二的相反数",
+      "pinyin": "er4 de5 xiang1 fan3 shu4"
+    },
+    "。"
   ],
   "228-07": [
     {
@@ -1032,7 +1034,6 @@
     {
       "letter": "A"
     },
-    "下标",
     {
       "text": "一乘",
       "pinyin": "yi1 cheng2"
@@ -1040,11 +1041,11 @@
     {
       "letter": "B"
     },
-    "下标二等于",
+    "二等于",
     {
       "letter": "A"
     },
-    "下标二",
+    "二",
     {
       "text": "乘",
       "pinyin": "cheng2"
@@ -1052,7 +1053,6 @@
     {
       "letter": "B"
     },
-    "下标",
     {
       "text": "一",
       "pinyin": "yi1"
@@ -1063,22 +1063,21 @@
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "的",
       "pinyin": "de5"
@@ -1109,38 +1108,38 @@
       "text": "得到",
       "pinyin": "de2 dao4"
     },
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "除以",
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "等于",
+    "、",
     {
       "letter": "A"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二除以",
+    " ",
+    "二除以",
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二。两边再取",
+    " ",
+    "二。两边再取",
     {
       "text": "相反数",
       "pinyin": "xiang1 fan3 shu4"
@@ -1186,10 +1185,11 @@
   ],
   "228-10": [
     "如果",
+    "、",
     {
       "letter": "B"
     },
-    "下标",
+    " ",
     {
       "text": "一",
       "pinyin": "yi1"
@@ -1198,7 +1198,7 @@
     {
       "letter": "A"
     },
-    "下标",
+    " ",
     {
       "text": "一",
       "pinyin": "yi1"
@@ -1218,23 +1218,26 @@
       "text": "成为",
       "pinyin": "cheng2 wei2"
     },
+    "、",
     {
       "letter": "X"
     },
     "等于",
+    "、",
     {
       "letter": "C"
     },
-    "下标",
+    " ",
     {
       "text": "一",
       "pinyin": "yi1"
     },
     "除以",
+    "、",
     {
       "letter": "A"
     },
-    "下标",
+    " ",
     {
       "text": "一",
       "pinyin": "yi1"
@@ -1271,22 +1274,27 @@
       "pinyin": "hui4 ping2 xing2 huo4 chong2 he2"
     },
     "。因此",
+    "、",
     {
       "letter": "B"
     },
-    "下标二非零。德尔塔等于",
+    " ",
+    "二非零。德尔塔等于",
+    "、",
     {
       "letter": "A"
     },
-    "下标",
+    " ",
     {
       "text": "一乘",
       "pinyin": "yi1 cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
-    "下标二。两个非零",
+    " ",
+    "二。两个非零",
     {
       "text": "数相乘",
       "pinyin": "shu4 xiang1 cheng2"
@@ -1295,35 +1303,45 @@
   ],
   "228-12": [
     "如果",
+    "、",
     {
       "letter": "B"
     },
-    "下标二等于零。则",
+    " ",
+    "二等于零。则",
+    "、",
     {
       "letter": "A"
     },
-    "下标二非零。第二条直线是",
+    " ",
+    "二非零。第二条直线是",
+    "、",
     {
       "letter": "X"
     },
     "等于",
+    "、",
     {
       "letter": "C"
     },
-    "下标二除以",
+    " ",
+    "二除以",
+    "、",
     {
       "letter": "A"
     },
-    "下标二。",
+    " ",
+    "二。",
     {
       "text": "第一条不能",
       "pinyin": "di4 yi1 tiao2 bu4 neng2"
     },
     "也竖直。所以",
+    "、",
     {
       "letter": "B"
     },
-    "下标",
+    " ",
     {
       "text": "一",
       "pinyin": "yi1"
@@ -1332,18 +1350,21 @@
   ],
   "228-13": [
     "此时德尔塔等于负",
+    "、",
     {
       "letter": "A"
     },
-    "下标二",
+    " ",
+    "二",
     {
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
-    "下标",
+    " ",
     {
       "text": "一",
       "pinyin": "yi1"
@@ -1372,9 +1393,8 @@
   ],
   "228-14": [
     "先消去",
-    {
-      "letter": "Y"
-    },
+    "、",
+    "why",
     "。",
     {
       "text": "第一式",
@@ -1385,14 +1405,12 @@
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二。左边",
+    " ",
+    "二。左边",
     {
       "text": "每一项",
       "pinyin": "mei3 yi2 xiang4"
@@ -1416,51 +1434,51 @@
       "pinyin": "di4 yi1 xiang4"
     },
     "是",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一乘",
-      "pinyin": "xia4 biao1 yi1 cheng2"
+      "text": "一乘",
+      "pinyin": "yi1 cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二再",
+    " ",
+    "二再",
     {
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "X"
     },
     "。第二项是",
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一乘",
-      "pinyin": "xia4 biao1 yi1 cheng2"
+      "text": "一乘",
+      "pinyin": "yi1 cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二再",
+    " ",
+    "二再",
     {
       "text": "乘",
       "pinyin": "cheng2"
     },
-    {
-      "letter": "Y"
-    },
+    "、",
+    "why",
     "。两项",
     {
       "text": "的",
@@ -1471,39 +1489,46 @@
       "pinyin": "he2"
     },
     "。等于右边",
+    "、",
     {
       "letter": "C"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二。"
+    " ",
+    "二。"
   ],
   "228-15": [
-    "第二式两边",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
+    "用",
     {
       "letter": "B"
     },
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
+    "去",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    "第二式",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "两边",
     "。",
     {
       "text": "同样",
@@ -1518,26 +1543,22 @@
     {
       "letter": "A"
     },
+    "二",
     {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
     {
       "letter": "B"
     },
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "再",
     {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
     {
       "letter": "X"
@@ -1546,30 +1567,24 @@
     {
       "letter": "B"
     },
+    "二",
     {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
     {
       "letter": "B"
     },
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "再",
     {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
-    {
-      "letter": "Y"
-    },
+    "why",
     "。",
     {
       "text": "它们的和",
@@ -1579,11 +1594,7 @@
     {
       "letter": "C"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    "二",
     {
       "text": "与",
       "pinyin": "yu3"
@@ -1592,21 +1603,19 @@
       "letter": "B"
     },
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "的",
       "pinyin": "de5"
     },
     {
-      "text": "乘积",
-      "pinyin": "cheng2 ji1"
+      "text": "积",
+      "pinyin": "ji1"
     },
     "。两个",
-    {
-      "letter": "Y"
-    },
+    "why",
     "项",
     {
       "text": "的",
@@ -1665,43 +1674,43 @@
       "pinyin": "xiang1 jian3"
     },
     "。先计算",
+    "、",
     {
       "letter": "C"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二。再减去",
+    " ",
+    "二。再减去",
+    "、",
     {
       "letter": "C"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "的",
@@ -1773,46 +1782,46 @@
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一乘",
-      "pinyin": "xia4 biao1 yi1 cheng2"
+      "text": "一乘",
+      "pinyin": "yi1 cheng2"
     },
-    {
-      "letter": "B"
-    },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
-    {
-      "text": "与",
-      "pinyin": "yu3"
-    },
+    "、",
     {
       "letter": "B"
     },
+    " ",
+    "二",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "和",
+      "pinyin": "he2"
     },
-    "标二",
+    "、",
+    {
+      "letter": "B"
+    },
+    " ",
+    "二",
     {
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "相等",
       "pinyin": "xiang1 deng3"
     },
     "。两个",
+    "、",
     {
       "letter": "Y"
     },
@@ -1825,6 +1834,7 @@
       "text": "的",
       "pinyin": "de5"
     },
+    "、",
     {
       "letter": "X"
     },
@@ -1841,6 +1851,7 @@
       "text": "的",
       "pinyin": "de5"
     },
+    "、",
     {
       "letter": "X"
     },
@@ -1851,33 +1862,32 @@
     },
     "是两个",
     {
-      "text": "乘积的",
-      "pinyin": "cheng2 ji1 de5"
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
     },
     {
-      "text": "差",
-      "pinyin": "cha1"
+      "text": "相减的结果",
+      "pinyin": "xiang1 jian3 de5 jie2 guo3"
     },
     "。",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
-      "text": "与",
-      "pinyin": "yu3"
+      "text": "和",
+      "pinyin": "he2"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "的",
       "pinyin": "de5"
@@ -1887,24 +1897,24 @@
       "pinyin": "cheng2 ji1"
     },
     "。减去",
+    "、",
     {
       "letter": "A"
     },
+    " ",
+    "二",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "和",
+      "pinyin": "he2"
     },
-    "标二",
-    {
-      "text": "与",
-      "pinyin": "yu3"
-    },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "的",
@@ -1931,6 +1941,7 @@
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "X"
     },
@@ -1947,22 +1958,21 @@
     {
       "letter": "C"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "的",
       "pinyin": "de5"
@@ -1972,24 +1982,24 @@
       "pinyin": "cheng2 ji1"
     },
     "。减去",
+    "、",
     {
       "letter": "C"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "的",
@@ -2044,6 +2054,7 @@
   ],
   "228-22": [
     "求",
+    "、",
     {
       "letter": "Y"
     },
@@ -2059,69 +2070,69 @@
     },
     "两边",
     {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
+    "、",
     {
       "letter": "A"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二。展开后。左边",
+    " ",
+    "二。展开后。左边",
     {
       "text": "第一项",
       "pinyin": "di4 yi1 xiang4"
     },
     "是",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一乘",
-      "pinyin": "xia4 biao1 yi1 cheng2"
+      "text": "一乘",
+      "pinyin": "yi1 cheng2"
     },
+    "、",
     {
       "letter": "A"
     },
+    " ",
+    "二再",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
-    "标二再",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
+    "、",
     {
       "letter": "X"
     },
     "。第二项是",
+    "、",
     {
       "letter": "A"
     },
+    " ",
+    "二",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
-    "标二",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "再",
     {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
+    "、",
     {
       "letter": "Y"
     },
@@ -2131,39 +2142,41 @@
       "pinyin": "ta1 men5 de5 he2"
     },
     "。等于右边",
+    "、",
     {
       "letter": "A"
     },
+    " ",
+    "二",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
-    "标二",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
+    "、",
     {
       "letter": "C"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "。"
   ],
   "228-23": [
     "第二式两边",
     {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "。展开后。左边",
     {
@@ -2171,48 +2184,50 @@
       "pinyin": "di4 yi1 xiang4"
     },
     "是",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一乘",
-      "pinyin": "xia4 biao1 yi1 cheng2"
+      "text": "一乘",
+      "pinyin": "yi1 cheng2"
     },
+    "、",
     {
       "letter": "A"
     },
+    " ",
+    "二再",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
-    "标二再",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
+    "、",
     {
       "letter": "X"
     },
     "。第二项是",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一乘",
-      "pinyin": "xia4 biao1 yi1 cheng2"
+      "text": "一乘",
+      "pinyin": "yi1 cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
+    " ",
+    "二再",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
-    "标二再",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
+    "、",
     {
       "letter": "Y"
     },
@@ -2222,25 +2237,25 @@
       "pinyin": "ta1 men5 de5 he2"
     },
     "。等于右边",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "C"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "的",
       "pinyin": "de5"
@@ -2250,6 +2265,7 @@
       "pinyin": "cheng2 ji1"
     },
     "。这次。两个",
+    "、",
     {
       "letter": "X"
     },
@@ -2320,25 +2336,25 @@
       "pinyin": "di4 yi1 xiang4"
     },
     "。用",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "C"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "的",
       "pinyin": "de5"
@@ -2348,24 +2364,24 @@
       "pinyin": "cheng2 ji1"
     },
     "。减去",
+    "、",
     {
       "letter": "A"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "C"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "的",
@@ -2429,6 +2445,7 @@
       "pinyin": "xia4"
     },
     "两个含",
+    "、",
     {
       "letter": "Y"
     },
@@ -2442,25 +2459,26 @@
       "pinyin": "qian2 yi2 xiang4"
     },
     "是",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一乘",
-      "pinyin": "xia4 biao1 yi1 cheng2"
+      "text": "一乘",
+      "pinyin": "yi1 cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
+    " ",
+    "二再",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
-    "标二再",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
+    "、",
     {
       "letter": "Y"
     },
@@ -2470,30 +2488,31 @@
       "pinyin": "hou4 yi2 xiang4"
     },
     "是",
+    "、",
     {
       "letter": "A"
     },
+    " ",
+    "二",
     {
-      "text": "下",
-      "pinyin": "xia4"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
-    "标二",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "再",
     {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
     },
+    "、",
     {
       "letter": "Y"
     },
@@ -2520,6 +2539,7 @@
       "text": "的",
       "pinyin": "de5"
     },
+    "、",
     {
       "letter": "Y"
     },
@@ -2533,48 +2553,48 @@
       "text": "把",
       "pinyin": "ba3"
     },
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "相乘",
       "pinyin": "xiang1 cheng2"
     },
     "。再减去",
+    "、",
     {
       "letter": "A"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "的",
@@ -2584,7 +2604,12 @@
       "text": "乘积",
       "pinyin": "cheng2 ji1"
     },
-    "。也就是德尔塔。"
+    "。也就是",
+    {
+      "text": "德尔塔",
+      "pinyin": "de2 er3 ta3"
+    },
+    "。"
   ],
   "228-28": [
     "因此。德尔塔",
@@ -2836,17 +2861,21 @@
   ],
   "229-04": [
     "先估计",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一乘",
-      "pinyin": "xia4 biao1 yi1 cheng2"
+      "text": "一乘",
+      "pinyin": "yi1 cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
-    "下标二。",
+    " ",
+    "二。",
     {
       "text": "乘积的",
       "pinyin": "cheng2 ji1 de5"
@@ -2946,20 +2975,24 @@
       "text": "另一个乘积",
       "pinyin": "ling4 yi2 ge4 cheng2 ji1"
     },
+    "、",
     {
       "letter": "A"
     },
-    "下标二",
+    " ",
+    "二",
     {
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     "也",
     {
@@ -2976,6 +3009,7 @@
       "text": "不超过",
       "pinyin": "bu4 chao1 guo4"
     },
+    "、",
     {
       "letter": "M"
     },
@@ -2997,6 +3031,7 @@
       "text": "乘",
       "pinyin": "cheng2"
     },
+    "、",
     {
       "letter": "M"
     },
@@ -3005,6 +3040,7 @@
       "text": "得到",
       "pinyin": "de2 dao4"
     },
+    "、",
     {
       "letter": "M"
     },
@@ -3115,25 +3151,25 @@
   ],
   "229-10": [
     "回到德尔塔。先用",
+    "、",
     {
       "letter": "A"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "B"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "的",
       "pinyin": "de5"
@@ -3143,24 +3179,24 @@
       "pinyin": "cheng2 ji1"
     },
     "。减去",
+    "、",
     {
       "letter": "A"
     },
-    {
-      "text": "下",
-      "pinyin": "xia4"
-    },
-    "标二",
+    " ",
+    "二",
     {
       "text": "与",
       "pinyin": "yu3"
     },
+    "、",
     {
       "letter": "B"
     },
+    " ",
     {
-      "text": "下标一",
-      "pinyin": "xia4 biao1 yi1"
+      "text": "一",
+      "pinyin": "yi1"
     },
     {
       "text": "的",
@@ -3172,12 +3208,8 @@
     },
     "。再取",
     {
-      "text": "这个",
-      "pinyin": "zhe4 ge5"
-    },
-    {
-      "text": "差的",
-      "pinyin": "cha1 de5"
+      "text": "相减结果的",
+      "pinyin": "xiang1 jian3 jie2 guo3 de5"
     },
     "绝对值。"
   ],
