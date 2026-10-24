@@ -230,6 +230,15 @@ export const LayoutCheck = () => {
           )
             errors.push(`Page overflow: ${block.textContent}`);
         const subtitle = page.querySelector<HTMLElement>("[data-subtitle]")!;
+        const textNodes = document.createTreeWalker(page, NodeFilter.SHOW_TEXT);
+        while (textNodes.nextNode()) {
+          const node = textNodes.currentNode;
+          if (
+            /[₀-₉⁰¹²³⁴⁵⁶⁷⁸⁹≤≥|]/.test(node.textContent ?? "") &&
+            !node.parentElement?.closest(".katex")
+          )
+            errors.push(`Math notation outside LaTeX: ${node.textContent}`);
+        }
         const ink = page.querySelector<HTMLElement>("[data-caption-ink]")!;
         if (
           !contains(

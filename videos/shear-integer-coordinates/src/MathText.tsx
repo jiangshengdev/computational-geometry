@@ -50,11 +50,13 @@ export const MathText = ({
   children: string | number;
   colorize?: boolean;
 }) => {
-  const parts = String(children).split(/([A-Za-z0-9′'−+×=<>()[\],./\s-]+)/g);
+  const parts = String(children).split(
+    /([A-Za-z0-9₀-₉⁰¹²³⁴⁵⁶⁷⁸⁹′'−+×=<>≤≥|_^{}()[\],./\s-]+)/g,
+  );
   return (
     <>
       {parts.map((part, i) => {
-        return /[A-Za-z0-9]/.test(part) ? (
+        return /[A-Za-z0-9₀-₉⁰¹²³⁴⁵⁶⁷⁸⁹≤≥|]/.test(part) ? (
           <Fragment key={i}>
             {part.slice(0, part.length - part.trimStart().length)}
             <Latex colorize={colorize}>
@@ -63,6 +65,18 @@ export const MathText = ({
                 .replace(/′/g, "'")
                 .replace(/−/g, "-")
                 .replace(/×/g, "\\times ")
+                .replace(/≤/g, "\\le ")
+                .replace(/≥/g, "\\ge ")
+                .replace(
+                  /[₀-₉]+/g,
+                  (digits) =>
+                    `_{${Array.from(digits, (digit) => "₀₁₂₃₄₅₆₇₈₉".indexOf(digit)).join("")}}`,
+                )
+                .replace(
+                  /[⁰¹²³⁴⁵⁶⁷⁸⁹]+/g,
+                  (digits) =>
+                    `^{${Array.from(digits, (digit) => "⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(digit)).join("")}}`,
+                )
                 .replace(/(-?\d+)\/(\d+)/g, "\\frac{$1}{$2}")}
             </Latex>
             {part.slice(part.trimEnd().length)}
