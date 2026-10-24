@@ -143,16 +143,30 @@
   ],
   "227-09": [
     {
-      "text": "等式左边相加，右边也相加，",
+      "text": "等式左边相加，右边也相加。",
       "startMs": 70,
       "endMs": 2670,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "得到 (X+Y)+(X−Y)=1+0。",
-      "startMs": 2710,
-      "endMs": 7950,
+      "text": "左边是 X 与 Y 的和，",
+      "startMs": 3190,
+      "endMs": 4990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "加上 X 与 Y 的差；",
+      "startMs": 4980,
+      "endMs": 6540,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边是 1 加 0。",
+      "startMs": 6700,
+      "endMs": 7980,
       "timestampMs": null,
       "confidence": null
     }
@@ -430,23 +444,44 @@
   ],
   "228-03": [
     {
-      "text": "把 a₁b₂−a₂b₁ 记作 Δ，",
+      "text": "先把 a₁ 与 b₂ 相乘，",
       "startMs": 70,
-      "endMs": 5750,
+      "endMs": 3110,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "读作德尔塔，就是两个乘积相减。",
-      "startMs": 5748,
-      "endMs": 8308,
+      "text": "再把 a₂ 与 b₁ 相乘。",
+      "startMs": 3510,
+      "endMs": 6270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用前一个乘积减去后一个，",
+      "startMs": 6260,
+      "endMs": 8020,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把得到的差记作 Δ，",
+      "startMs": 8260,
+      "endMs": 10099,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "读作德尔塔。",
+      "startMs": 10186,
+      "endMs": 11226,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "稍后，它会成为除数。",
-      "startMs": 8627,
-      "endMs": 10588,
+      "startMs": 11386,
+      "endMs": 13186,
       "timestampMs": null,
       "confidence": null
     }
@@ -478,21 +513,49 @@
     {
       "text": "先假设两个 b 都不为零。",
       "startMs": 70,
-      "endMs": 2150,
+      "endMs": 2190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "方程两边减去 aX，",
       "startMs": 2230,
-      "endMs": 4430,
+      "endMs": 4550,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "再除以 b，就得到 Y=−(a/b)X+c/b。",
-      "startMs": 4470,
-      "endMs": 11071,
+      "text": "再除以非零的 b。",
+      "startMs": 4550,
+      "endMs": 5830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先用 −a 除以 b，",
+      "startMs": 5834,
+      "endMs": 7394,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到的商再乘 X；",
+      "startMs": 7434,
+      "endMs": 8633,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "然后加上 c 除以 b 得到的商，",
+      "startMs": 9274,
+      "endMs": 11514,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果就是 Y。",
+      "startMs": 11636,
+      "endMs": 12676,
       "timestampMs": null,
       "confidence": null
     }
@@ -531,23 +594,30 @@
   ],
   "228-08": [
     {
-      "text": "两边同除以非零的 b₁b₂，",
+      "text": "b₁ 与 b₂ 的乘积不为零，",
       "startMs": 70,
-      "endMs": 3710,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边同除以这个乘积，",
+      "startMs": 3829,
+      "endMs": 5670,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到 a₁/b₁=a₂/b₂。",
-      "startMs": 3829,
-      "endMs": 8750,
+      "startMs": 5748,
+      "endMs": 10628,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两边再取相反数，两条直线的斜率就相同了。",
-      "startMs": 8775,
-      "endMs": 12790,
+      "startMs": 10698,
+      "endMs": 14610,
       "timestampMs": null,
       "confidence": null
     }
@@ -678,21 +748,42 @@
     {
       "text": "先消去 Y。",
       "startMs": 70,
-      "endMs": 1030,
+      "endMs": 1070,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "第一式两边乘 b₂，",
-      "startMs": 1190,
-      "endMs": 3070,
+      "startMs": 1390,
+      "endMs": 3510,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "括号内每项都乘，展开得到 a₁b₂X+b₁b₂Y=c₁b₂。",
-      "startMs": 3190,
-      "endMs": 13495,
+      "text": "左边每一项都乘这个倍数。",
+      "startMs": 3710,
+      "endMs": 5710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "展开后，第一项是 a₁、b₂ 与 X 的乘积；",
+      "startMs": 5748,
+      "endMs": 10228,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二项是 b₁、b₂ 与 Y 的乘积。",
+      "startMs": 10468,
+      "endMs": 13668,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两项的和，等于右边 c₁ 与 b₂ 的乘积。",
+      "startMs": 13770,
+      "endMs": 17529,
       "timestampMs": null,
       "confidence": null
     }
@@ -701,21 +792,42 @@
     {
       "text": "第二式两边乘 b₁，",
       "startMs": 70,
-      "endMs": 2230,
+      "endMs": 2070,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "同样逐项展开，得到 a₂b₁X+b₂b₁Y=c₂b₁。",
-      "startMs": 2590,
-      "endMs": 14570,
+      "text": "同样逐项展开。",
+      "startMs": 2110,
+      "endMs": 3469,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两个 Y 项的系数相同了。",
-      "startMs": 14600,
-      "endMs": 16560,
+      "text": "左边第一项是 a₂、b₁ 与 X 的乘积；",
+      "startMs": 3510,
+      "endMs": 7710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二项是 b₂、b₁ 与 Y 的乘积。",
+      "startMs": 7711,
+      "endMs": 11231,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的和，等于右边 c₂ 与 b₁ 的乘积。",
+      "startMs": 11630,
+      "endMs": 15814,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个 Y 项的系数相同。",
+      "startMs": 16255,
+      "endMs": 18015,
       "timestampMs": null,
       "confidence": null
     }
@@ -747,21 +859,21 @@
     {
       "text": "右边也按照相同次序相减，",
       "startMs": 70,
-      "endMs": 2309,
+      "endMs": 2349,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "得到 c₁b₂−c₂b₁。",
+      "text": "先计算 c₁b₂，再减去 c₂ 与 b₁ 的乘积。",
       "startMs": 2429,
-      "endMs": 7390,
+      "endMs": 8601,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "这三行合在一起，是一个完整的等式。",
-      "startMs": 7420,
-      "endMs": 10200,
+      "text": "这三行合起来，表示同一个完整等式。",
+      "startMs": 8962,
+      "endMs": 12202,
       "timestampMs": null,
       "confidence": null
     }
@@ -800,44 +912,86 @@
     {
       "text": "b₁b₂ 与 b₂b₁ 相等，",
       "startMs": 70,
-      "endMs": 4630,
+      "endMs": 4590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两个 Y 项抵消。",
       "startMs": 4639,
-      "endMs": 5999,
+      "endMs": 6079,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "剩下的 X 项提取共同的 X，",
-      "startMs": 6079,
-      "endMs": 8679,
+      "startMs": 6159,
+      "endMs": 8799,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "系数就是 a₁b₂−a₂b₁。",
-      "startMs": 9039,
-      "endMs": 14638,
+      "text": "系数是两个乘积的差：",
+      "startMs": 8799,
+      "endMs": 10639,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "a₁ 与 b₂ 的乘积，",
+      "startMs": 10698,
+      "endMs": 13537,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减去 a₂ 与 b₁ 的乘积。",
+      "startMs": 13537,
+      "endMs": 16680,
       "timestampMs": null,
       "confidence": null
     }
   ],
   "228-20": [
     {
-      "text": "用 Δ 代替这个系数，",
+      "text": "用 Δ 代替这个系数。",
       "startMs": 70,
-      "endMs": 2029,
+      "endMs": 1990,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "就得到 ΔX=c₁b₂−c₂b₁。",
-      "startMs": 2429,
-      "endMs": 9670,
+      "text": "左边是 Δ 与 X 的乘积；",
+      "startMs": 2230,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边是两个乘积的差：",
+      "startMs": 4190,
+      "endMs": 5870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "c₁ 与 b₂ 的乘积，",
+      "startMs": 5919,
+      "endMs": 8758,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减去 c₂ 与 b₁ 的乘积。",
+      "startMs": 9119,
+      "endMs": 12260,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边相等。",
+      "startMs": 12388,
+      "endMs": 13228,
       "timestampMs": null,
       "confidence": null
     }
@@ -846,28 +1000,28 @@
     {
       "text": "已经证明 Δ 非零，",
       "startMs": 70,
-      "endMs": 1910,
+      "endMs": 1710,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两边同除以 Δ，就得到横坐标公式。",
-      "startMs": 1950,
-      "endMs": 5470,
+      "startMs": 1750,
+      "endMs": 5430,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "分子是 c₁b₂−c₂b₁，",
-      "startMs": 5492,
-      "endMs": 10812,
+      "text": "分子是刚才得到的差，",
+      "startMs": 5407,
+      "endMs": 7087,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "分母是 Δ。",
-      "startMs": 11039,
-      "endMs": 12359,
+      "startMs": 7247,
+      "endMs": 9087,
       "timestampMs": null,
       "confidence": null
     }
@@ -876,44 +1030,72 @@
     {
       "text": "求 Y 时，重新使用原方程。",
       "startMs": 70,
-      "endMs": 2510,
+      "endMs": 2550,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "第一式两边乘 a₂，",
-      "startMs": 2710,
-      "endMs": 4630,
+      "text": "第一式两边乘 a₂。",
+      "startMs": 2869,
+      "endMs": 4870,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "展开为 a₁a₂X+a₂b₁Y=a₂c₁。",
-      "startMs": 4639,
-      "endMs": 14239,
+      "text": "展开后，左边第一项是 a₁、a₂ 与 X 的乘积；",
+      "startMs": 4895,
+      "endMs": 10055,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二项是 a₂、b₁ 与 Y 的乘积。",
+      "startMs": 10186,
+      "endMs": 13666,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的和，等于右边 a₂ 与 c₁ 的乘积。",
+      "startMs": 13746,
+      "endMs": 17450,
       "timestampMs": null,
       "confidence": null
     }
   ],
   "228-23": [
     {
-      "text": "第二式两边乘 a₁，",
+      "text": "第二式两边乘 a₁。",
       "startMs": 70,
-      "endMs": 2230,
+      "endMs": 2070,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "展开为 a₁a₂X+a₁b₂Y=a₁c₂。",
+      "text": "展开后，左边第一项是 a₁、a₂ 与 X 的乘积；",
       "startMs": 2270,
-      "endMs": 10510,
+      "endMs": 7190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二项是 a₁、b₂ 与 Y 的乘积。",
+      "startMs": 7199,
+      "endMs": 10998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的和，等于右边 a₁ 与 c₂ 的乘积。",
+      "startMs": 11078,
+      "endMs": 15183,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这次，两个 X 项完全相同。",
-      "startMs": 10527,
-      "endMs": 13250,
+      "startMs": 15223,
+      "endMs": 17983,
       "timestampMs": null,
       "confidence": null
     }
@@ -922,21 +1104,28 @@
     {
       "text": "这次用第二条新等式减第一条，",
       "startMs": 70,
-      "endMs": 2750,
+      "endMs": 2630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "让 Y 的系数仍然是 Δ。",
-      "startMs": 2789,
+      "startMs": 2829,
       "endMs": 4870,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "左边减去的括号，必须完整保留。",
-      "startMs": 4980,
-      "endMs": 7819,
+      "text": "左边要减去的是第一条新等式左边的整个和，",
+      "startMs": 4895,
+      "endMs": 8375,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其中两项都要减去。",
+      "startMs": 8455,
+      "endMs": 10095,
       "timestampMs": null,
       "confidence": null
     }
@@ -945,21 +1134,28 @@
     {
       "text": "右边也用第二项减第一项，",
       "startMs": 70,
-      "endMs": 2230,
+      "endMs": 2190,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "得到 a₁c₂−a₂c₁。",
-      "startMs": 2590,
-      "endMs": 8189,
+      "text": "用 a₁ 与 c₂ 的乘积，",
+      "startMs": 2630,
+      "endMs": 5630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减去 a₂ 与 c₁ 的乘积。",
+      "startMs": 5663,
+      "endMs": 8623,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "减法次序必须在两边保持一致。",
-      "startMs": 8394,
-      "endMs": 11034,
+      "startMs": 8982,
+      "endMs": 11823,
       "timestampMs": null,
       "confidence": null
     }
@@ -989,53 +1185,88 @@
   ],
   "228-27": [
     {
-      "text": "留下 a₁b₂Y−a₂b₁Y，",
+      "text": "剩下两个含 Y 的项。",
       "startMs": 70,
-      "endMs": 5470,
+      "endMs": 1670,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "提取共同的 Y，得到的系数仍是 a₁b₂−a₂b₁，",
-      "startMs": 5532,
-      "endMs": 13372,
+      "text": "前一项是 a₁、b₂ 与 Y 的乘积；",
+      "startMs": 2070,
+      "endMs": 5670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后一项是 a₂、b₁ 与 Y 的乘积。",
+      "startMs": 5748,
+      "endMs": 8948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前一项减去后一项。",
+      "startMs": 9188,
+      "endMs": 10828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "提取共同的 Y，计算系数时先把 a₁ 与 b₂ 相乘，",
+      "startMs": 10868,
+      "endMs": 16508,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再减去 a₂ 与 b₁ 的乘积，",
+      "startMs": 16586,
+      "endMs": 19825,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是 Δ。",
-      "startMs": 13599,
-      "endMs": 14930,
+      "startMs": 19825,
+      "endMs": 20906,
       "timestampMs": null,
       "confidence": null
     }
   ],
   "228-28": [
     {
-      "text": "因此 ΔY=a₁c₂−a₂c₁。",
+      "text": "因此，Δ 与 Y 的乘积，",
       "startMs": 70,
-      "endMs": 8210,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于右边刚才得到的差。",
+      "startMs": 2630,
+      "endMs": 4270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两边同除以非零的 Δ，",
-      "startMs": 8240,
-      "endMs": 10490,
+      "startMs": 4383,
+      "endMs": 6543,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "纵坐标的分子是 a₁c₂−a₂c₁，",
-      "startMs": 10497,
-      "endMs": 16858,
+      "text": "纵坐标的分子是这个差，",
+      "startMs": 6702,
+      "endMs": 8543,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "分母也是 Δ。",
-      "startMs": 17098,
-      "endMs": 18670,
+      "startMs": 8820,
+      "endMs": 10320,
       "timestampMs": null,
       "confidence": null
     }
@@ -1210,23 +1441,30 @@
   ],
   "229-05": [
     {
-      "text": "每个因子的绝对值都不超过 2M，",
+      "text": "每个因子的绝对值都不超过 2M。",
       "startMs": 70,
       "endMs": 3110,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "所以乘积不超过 2M 乘 2M，",
+      "text": "把这个上界与自身相乘，",
       "startMs": 3270,
-      "endMs": 6550,
+      "endMs": 5630,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "也就是 4M²。",
-      "startMs": 6516,
-      "endMs": 8316,
+      "text": "得到 4M²。",
+      "startMs": 5578,
+      "endMs": 7298,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就是两个因子乘积的绝对值的上界。",
+      "startMs": 7298,
+      "endMs": 10138,
       "timestampMs": null,
       "confidence": null
     }
@@ -1332,16 +1570,30 @@
   ],
   "229-10": [
     {
-      "text": "回到 Δ，它的绝对值，",
+      "text": "回到 Δ。",
       "startMs": 70,
-      "endMs": 2750,
+      "endMs": 1190,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "就是 a₁b₂ 减 a₂b₁ 这个差的绝对值。",
-      "startMs": 2789,
-      "endMs": 8629,
+      "text": "先用 a₁ 与 b₂ 的乘积，",
+      "startMs": 1270,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减去 a₂ 与 b₁ 的乘积，",
+      "startMs": 4470,
+      "endMs": 7400,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再取这个差的绝对值。",
+      "startMs": 7430,
+      "endMs": 9050,
       "timestampMs": null,
       "confidence": null
     }

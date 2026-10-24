@@ -156,7 +156,8 @@ export const shots: Shot[] = [
     id: "227-09",
     page: "eliminate",
     step: 1,
-    caption: "等式左边相加，右边也相加，得到 (X+Y)+(X−Y)=1+0。",
+    caption:
+      "等式左边相加，右边也相加。左边是 X 与 Y 的和，加上 X 与 Y 的差；右边是 1 加 0。",
   },
   {
     id: "227-10",
