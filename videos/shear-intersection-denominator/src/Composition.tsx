@@ -25,9 +25,9 @@ export const ShotScene = ({
     </>
   );
 };
-export const ShearVideo = () => (
+export const ShearVideo = ({ issue }: { issue?: string }) => (
   <>
-    {timelineFor().map((row) => (
+    {timelineFor(issue).map((row) => (
       <Sequence
         key={row.id}
         from={row.from}

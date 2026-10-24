@@ -367,5 +367,1429 @@
       "timestampMs": null,
       "confidence": null
     }
+  ],
+  "228-01": [
+    {
+      "text": "一般情况下，把两条直线写成这两个方程。",
+      "startMs": 70,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下标 1、2 只是直线的编号，",
+      "startMs": 3869,
+      "endMs": 6110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是乘法，也不是平方。",
+      "startMs": 6090,
+      "endMs": 8250,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-02": [
+    {
+      "text": "每组 a 乘横坐标，",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "b 乘纵坐标，c 在等号右边。",
+      "startMs": 1790,
+      "endMs": 4790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "X、Y 是同一个交点的坐标。",
+      "startMs": 4910,
+      "endMs": 7350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每条直线的 a、b 不能同时为零，",
+      "startMs": 7370,
+      "endMs": 10050,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "六个系数按前集约定取整数。",
+      "startMs": 10410,
+      "endMs": 13010,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-03": [
+    {
+      "text": "把 a₁b₂−a₂b₁ 记作 Δ，",
+      "startMs": 70,
+      "endMs": 5750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "读作德尔塔，就是两个乘积相减。",
+      "startMs": 5748,
+      "endMs": 8308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "稍后，它会成为除数。",
+      "startMs": 8627,
+      "endMs": 10588,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-04": [
+    {
+      "text": "我们只讨论不平行、也不重合的两条直线。",
+      "startMs": 70,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先分情况证明 Δ 不等于零，",
+      "startMs": 3309,
+      "endMs": 6170,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再进行除法。",
+      "startMs": 6200,
+      "endMs": 7390,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-05": [
+    {
+      "text": "先假设两个 b 都不为零。",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "方程两边减去 aX，",
+      "startMs": 2230,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再除以 b，就得到 Y=−(a/b)X+c/b。",
+      "startMs": 4470,
+      "endMs": 11071,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-06": [
+    {
+      "text": "横坐标增加 1，纵坐标的改变量叫斜率。",
+      "startMs": 70,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此，两条直线的斜率分别是 −a₁/b₁ 和 −a₂/b₂。",
+      "startMs": 3940,
+      "endMs": 11725,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-07": [
+    {
+      "text": "假如 Δ 等于零，两个乘积就相等，",
+      "startMs": 70,
+      "endMs": 3190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 a₁b₂=a₂b₁。",
+      "startMs": 3590,
+      "endMs": 8690,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-08": [
+    {
+      "text": "两边同除以非零的 b₁b₂，",
+      "startMs": 70,
+      "endMs": 3710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 a₁/b₁=a₂/b₂。",
+      "startMs": 3829,
+      "endMs": 8750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边再取相反数，两条直线的斜率就相同了。",
+      "startMs": 8775,
+      "endMs": 12790,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-09": [
+    {
+      "text": "相同斜率下，纵轴截距不同就平行，",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "相同就重合。",
+      "startMs": 3270,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都与选定条件矛盾，所以 Δ 不等于零。",
+      "startMs": 4469,
+      "endMs": 7949,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-10": [
+    {
+      "text": "如果 b₁ 等于零，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "a₁ 就不能为零。",
+      "startMs": 1910,
+      "endMs": 3630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一条直线成为 X=c₁/a₁，",
+      "startMs": 3670,
+      "endMs": 8629,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标固定，因此是一条竖直直线。",
+      "startMs": 8650,
+      "endMs": 11610,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-11": [
+    {
+      "text": "另一条不能也竖直，否则只会平行或重合。",
+      "startMs": 70,
+      "endMs": 3389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此 b₂ 非零，Δ=a₁b₂，",
+      "startMs": 3550,
+      "endMs": 8547,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个非零数相乘仍然非零。",
+      "startMs": 8948,
+      "endMs": 11428,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-12": [
+    {
+      "text": "如果 b₂ 等于零，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "则 a₂ 非零，第二条直线是 X=c₂/a₂。",
+      "startMs": 1910,
+      "endMs": 7470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一条不能也竖直，所以 b₁ 非零。",
+      "startMs": 7455,
+      "endMs": 10895,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-13": [
+    {
+      "text": "此时 Δ=−a₂b₁，",
+      "startMs": 150,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不等于零。",
+      "startMs": 3550,
+      "endMs": 4630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "三个情况都已覆盖，现在可以放心使用这个非零除数。",
+      "startMs": 4639,
+      "endMs": 8438,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-14": [
+    {
+      "text": "先消去 Y。",
+      "startMs": 70,
+      "endMs": 1030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一式两边乘 b₂，",
+      "startMs": 1190,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "括号内每项都乘，展开得到 a₁b₂X+b₁b₂Y=c₁b₂。",
+      "startMs": 3190,
+      "endMs": 13495,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-15": [
+    {
+      "text": "第二式两边乘 b₁，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同样逐项展开，得到 a₂b₁X+b₂b₁Y=c₂b₁。",
+      "startMs": 2590,
+      "endMs": 14570,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个 Y 项的系数相同了。",
+      "startMs": 14600,
+      "endMs": 16560,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-16": [
+    {
+      "text": "用第一条新等式减去第二条。",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左边先保留第一组，再减去整个第二组，",
+      "startMs": 2550,
+      "endMs": 5720,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能只减其中一项。",
+      "startMs": 5750,
+      "endMs": 7200,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-17": [
+    {
+      "text": "右边也按照相同次序相减，",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 c₁b₂−c₂b₁。",
+      "startMs": 2429,
+      "endMs": 7390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这三行合在一起，是一个完整的等式。",
+      "startMs": 7420,
+      "endMs": 10200,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-18": [
+    {
+      "text": "展开减号，第二组的两项都变成减去。",
+      "startMs": 70,
+      "endMs": 3389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把两个 X 项放一起，",
+      "startMs": 3389,
+      "endMs": 5150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个 Y 项放一起，",
+      "startMs": 5180,
+      "endMs": 6660,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边不变。",
+      "startMs": 6800,
+      "endMs": 7650,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-19": [
+    {
+      "text": "b₁b₂ 与 b₂b₁ 相等，",
+      "startMs": 70,
+      "endMs": 4630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个 Y 项抵消。",
+      "startMs": 4639,
+      "endMs": 5999,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剩下的 X 项提取共同的 X，",
+      "startMs": 6079,
+      "endMs": 8679,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "系数就是 a₁b₂−a₂b₁。",
+      "startMs": 9039,
+      "endMs": 14638,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-20": [
+    {
+      "text": "用 Δ 代替这个系数，",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就得到 ΔX=c₁b₂−c₂b₁。",
+      "startMs": 2429,
+      "endMs": 9670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-21": [
+    {
+      "text": "已经证明 Δ 非零，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边同除以 Δ，就得到横坐标公式。",
+      "startMs": 1950,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子是 c₁b₂−c₂b₁，",
+      "startMs": 5492,
+      "endMs": 10812,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分母是 Δ。",
+      "startMs": 11039,
+      "endMs": 12359,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-22": [
+    {
+      "text": "求 Y 时，重新使用原方程。",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一式两边乘 a₂，",
+      "startMs": 2710,
+      "endMs": 4630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "展开为 a₁a₂X+a₂b₁Y=a₂c₁。",
+      "startMs": 4639,
+      "endMs": 14239,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-23": [
+    {
+      "text": "第二式两边乘 a₁，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "展开为 a₁a₂X+a₁b₂Y=a₁c₂。",
+      "startMs": 2270,
+      "endMs": 10510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这次，两个 X 项完全相同。",
+      "startMs": 10527,
+      "endMs": 13250,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-24": [
+    {
+      "text": "这次用第二条新等式减第一条，",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "让 Y 的系数仍然是 Δ。",
+      "startMs": 2789,
+      "endMs": 4870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左边减去的括号，必须完整保留。",
+      "startMs": 4980,
+      "endMs": 7819,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-25": [
+    {
+      "text": "右边也用第二项减第一项，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 a₁c₂−a₂c₁。",
+      "startMs": 2590,
+      "endMs": 8189,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减法次序必须在两边保持一致。",
+      "startMs": 8394,
+      "endMs": 11034,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-26": [
+    {
+      "text": "展开括号前的减号，再按同类项排列。",
+      "startMs": 70,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个完全相同的 X 项相减，",
+      "startMs": 3550,
+      "endMs": 5550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "正好抵消。",
+      "startMs": 5578,
+      "endMs": 6418,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-27": [
+    {
+      "text": "留下 a₁b₂Y−a₂b₁Y，",
+      "startMs": 70,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "提取共同的 Y，得到的系数仍是 a₁b₂−a₂b₁，",
+      "startMs": 5532,
+      "endMs": 13372,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 Δ。",
+      "startMs": 13599,
+      "endMs": 14930,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-28": [
+    {
+      "text": "因此 ΔY=a₁c₂−a₂c₁。",
+      "startMs": 70,
+      "endMs": 8210,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边同除以非零的 Δ，",
+      "startMs": 8240,
+      "endMs": 10490,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标的分子是 a₁c₂−a₂c₁，",
+      "startMs": 10497,
+      "endMs": 16858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分母也是 Δ。",
+      "startMs": 17098,
+      "endMs": 18670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-29": [
+    {
+      "text": "先消 Y 求 X，再消 X 求 Y。",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两次计算都要除以 Δ，",
+      "startMs": 2909,
+      "endMs": 4990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以接下来要估计 Δ 的绝对值。",
+      "startMs": 4980,
+      "endMs": 7379,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-30": [
+    {
+      "text": "还要分清直线和线段。",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公式求的是直线的交点，",
+      "startMs": 2070,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还需判断这个点是否同时位于两条线段内。",
+      "startMs": 3871,
+      "endMs": 7471,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "228-31": [
+    {
+      "text": "只有同时位于两段内，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "才是线段交点。",
+      "startMs": 2070,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "平行、重合的直线不能套用唯一交点公式。",
+      "startMs": 3630,
+      "endMs": 7110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面继续讨论分母。",
+      "startMs": 7114,
+      "endMs": 8834,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-01": [
+    {
+      "text": "承接刚才的交点公式，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Δ 是两个整数乘积的差，",
+      "startMs": 1910,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以仍是整数。",
+      "startMs": 4298,
+      "endMs": 5618,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-02": [
+    {
+      "text": "两条直线有唯一交点时，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Δ 不等于零。",
+      "startMs": 2230,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "非零整数离零最近的值，",
+      "startMs": 3829,
+      "endMs": 5870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是 −1 和 1。",
+      "startMs": 5834,
+      "endMs": 7634,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-03": [
+    {
+      "text": "因此，Δ 的绝对值至少为 1。",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "整数和非零这两个条件，",
+      "startMs": 3429,
+      "endMs": 5630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "缺一不可。",
+      "startMs": 5690,
+      "endMs": 6650,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-04": [
+    {
+      "text": "先估计 a₁b₂。",
+      "startMs": 70,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "乘积的绝对值，等于两个因子的绝对值相乘。",
+      "startMs": 2630,
+      "endMs": 6270,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-05": [
+    {
+      "text": "每个因子的绝对值都不超过 2M，",
+      "startMs": 70,
+      "endMs": 3110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以乘积不超过 2M 乘 2M，",
+      "startMs": 3270,
+      "endMs": 6550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 4M²。",
+      "startMs": 6516,
+      "endMs": 8316,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-06": [
+    {
+      "text": "另一个乘积 a₂b₁ 也一样，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它的绝对值不超过 4M²。",
+      "startMs": 3829,
+      "endMs": 6670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "4 来自 2 乘 2，",
+      "startMs": 6687,
+      "endMs": 8007,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "M² 来自 M 乘 M。",
+      "startMs": 8047,
+      "endMs": 10167,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-07": [
+    {
+      "text": "Δ 是两个乘积相减，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但相减不保证结果的绝对值变小。",
+      "startMs": 2270,
+      "endMs": 5090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "比如，3 减 −4，",
+      "startMs": 5120,
+      "endMs": 6990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于 3 加 4，也就是 7。",
+      "startMs": 7000,
+      "endMs": 9190,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-08": [
+    {
+      "text": "这里，差的绝对值，正好等于两个数的绝对值之和。",
+      "startMs": 70,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减去负数，反而会让结果变大。",
+      "startMs": 4127,
+      "endMs": 6526,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-09": [
+    {
+      "text": "两数异号时，差的绝对值等于绝对值之和；",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同号时，是较大的绝对值减去较小的，",
+      "startMs": 3510,
+      "endMs": 6778,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不会超过它们的和。",
+      "startMs": 6778,
+      "endMs": 8298,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-10": [
+    {
+      "text": "回到 Δ，它的绝对值，",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就是 a₁b₂ 减 a₂b₁ 这个差的绝对值。",
+      "startMs": 2789,
+      "endMs": 8629,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-11": [
+    {
+      "text": "因此，Δ 的绝对值，",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不超过这两个乘积的绝对值之和。",
+      "startMs": 2349,
+      "endMs": 4950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "即使其中有零，这个不等式也成立。",
+      "startMs": 4980,
+      "endMs": 7660,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-12": [
+    {
+      "text": "两个乘积的绝对值，各不超过 4M²，",
+      "startMs": 70,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "加起来就不超过 8M²。",
+      "startMs": 3750,
+      "endMs": 6110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-13": [
+    {
+      "text": "再接上非零整数给出的下界，",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们得到：Δ 的绝对值至少为 1，",
+      "startMs": 2550,
+      "endMs": 5660,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "至多为 8M²。",
+      "startMs": 5690,
+      "endMs": 7560,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-14": [
+    {
+      "text": "看看横坐标和纵坐标的公式。",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的分子，也都是整数相乘再相减，",
+      "startMs": 2230,
+      "endMs": 5350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以都是整数。",
+      "startMs": 5322,
+      "endMs": 6602,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-15": [
+    {
+      "text": "于是，两个坐标都写成了整数除以非零整数。",
+      "startMs": 70,
+      "endMs": 3710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在还要说明，分母转正和约分，",
+      "startMs": 3869,
+      "endMs": 6626,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "会不会破坏刚才的上界。",
+      "startMs": 6666,
+      "endMs": 8626,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-16": [
+    {
+      "text": "我们先把分母转成正数，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再看约分后的正分母。",
+      "startMs": 2510,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-17": [
+    {
+      "text": "例如，6 除以 −8。",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子分母同时乘 −1，",
+      "startMs": 2029,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分数的值不变。",
+      "startMs": 4150,
+      "endMs": 5430,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-18": [
+    {
+      "text": "分子变成 −6，分母变成正的 8，",
+      "startMs": 70,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以可以写成 −6/8。",
+      "startMs": 3230,
+      "endMs": 5270,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-19": [
+    {
+      "text": "Δ 为负时，就这样同时变号；",
+      "startMs": 70,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Δ 为正时，不用变号。",
+      "startMs": 3150,
+      "endMs": 5063,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两种情况，正分母都是 Δ 的绝对值。",
+      "startMs": 5183,
+      "endMs": 8262,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-20": [
+    {
+      "text": "再看约分。",
+      "startMs": 70,
+      "endMs": 1070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "−6/8 的分子分母同除以 2，",
+      "startMs": 1110,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 −3/4，正分母从 8 缩小到 4。",
+      "startMs": 4030,
+      "endMs": 7407,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-21": [
+    {
+      "text": "约分时，分子分母同除以一个大于 1 的正整数公因数，",
+      "startMs": 110,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以正分母只会缩小。",
+      "startMs": 4554,
+      "endMs": 6394,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-22": [
+    {
+      "text": "如果已经不能约分，正分母就保持不变。",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子为零时，直接写成 0/1，",
+      "startMs": 3190,
+      "endMs": 5880,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "正分母为 1。",
+      "startMs": 5890,
+      "endMs": 7510,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-23": [
+    {
+      "text": "因此，约分后的正分母，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不超过 Δ 的绝对值，",
+      "startMs": 2230,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就不超过 8M²。",
+      "startMs": 3871,
+      "endMs": 5871,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-24": [
+    {
+      "text": "这个结论说的是统一缩放后的坐标，",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并且使用上一集约定的整数系数取法。",
+      "startMs": 2989,
+      "endMs": 6190,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-25": [
+    {
+      "text": "输入端点坐标是整数，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "可以写成分母为 1 的分数。",
+      "startMs": 1990,
+      "endMs": 4070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为 M 至少为 1，",
+      "startMs": 4042,
+      "endMs": 5562,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们也满足这个分母上界。",
+      "startMs": 5562,
+      "endMs": 7441,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-26": [
+    {
+      "text": "把直线方程乘一个非零倍数，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "直线虽然不变，系数可能改变。",
+      "startMs": 2750,
+      "endMs": 5550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能直接把原来的系数界，",
+      "startMs": 5578,
+      "endMs": 7378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "套在倍乘后的系数上。",
+      "startMs": 7418,
+      "endMs": 9018,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-27": [
+    {
+      "text": "最后判断：约分后的正分母不超过 8M²，",
+      "startMs": 70,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是否意味着，它一定等于 8M²？",
+      "startMs": 4213,
+      "endMs": 7253,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "留四秒，想一想。",
+      "startMs": 7253,
+      "endMs": 8932,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-28": [
+    {
+      "text": "答案是否定的。",
+      "startMs": 70,
+      "endMs": 1310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "回到开头的例题，端点坐标都在零到一之间，",
+      "startMs": 1670,
+      "endMs": 5510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "可以取 M 等于 1，",
+      "startMs": 5492,
+      "endMs": 6932,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "此时上界为 8。",
+      "startMs": 6932,
+      "endMs": 8211,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-29": [
+    {
+      "text": "但交点的两个坐标都是 1/2，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "实际正分母是 2，比上界 8 小。",
+      "startMs": 2630,
+      "endMs": 5322,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "229-30": [
+    {
+      "text": "所以，8M² 是一个保证的上界，",
+      "startMs": 70,
+      "endMs": 3630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是每个交点的实际分母。",
+      "startMs": 3670,
+      "endMs": 5570,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这段证明也没有说明，",
+      "startMs": 5600,
+      "endMs": 7390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个上界一定能够达到。",
+      "startMs": 7412,
+      "endMs": 8972,
+      "timestampMs": null,
+      "confidence": null
+    }
   ]
 }

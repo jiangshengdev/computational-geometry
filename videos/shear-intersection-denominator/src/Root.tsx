@@ -5,7 +5,7 @@ import { fps, timelineFor } from "./timeline";
 export const RemotionRoot = () => (
   <>
     <Composition
-      id="Shear227"
+      id="ShearIntersectionDenominator"
       component={ShearVideo}
       durationInFrames={timelineFor().reduce(
         (sum, row) => sum + row.durationInFrames,
@@ -15,6 +15,21 @@ export const RemotionRoot = () => (
       width={1920}
       height={1080}
     />
+    {["227", "228", "229"].map((issue) => (
+      <Composition
+        key={issue}
+        id={`Shear${issue}`}
+        component={ShearVideo}
+        defaultProps={{ issue }}
+        durationInFrames={timelineFor(issue).reduce(
+          (sum, row) => sum + row.durationInFrames,
+          0,
+        )}
+        fps={fps}
+        width={1920}
+        height={1080}
+      />
+    ))}
     <Composition
       id="LayoutCheck"
       component={LayoutCheck}

@@ -28,5 +28,8 @@ checkContent({
   audioLeadFrames,
   fps,
   checkPageHolds: true,
-  expectedPauses: [{ id: "227-08", seconds: 4 }],
+  expectedPauses: [
+    { id: "227-08", seconds: 4 },
+    { id: "229-27", seconds: 4 },
+  ],
 });

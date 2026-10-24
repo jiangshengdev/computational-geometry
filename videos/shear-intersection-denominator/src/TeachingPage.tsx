@@ -64,17 +64,47 @@ export function TeachingPage({
       >
         <MathText colorize={false}>{page.mode}</MathText>
       </div>
-      <div
-        style={{
-          position: "absolute",
-          left: 20,
-          top: 180,
-          transform: "scale(1.05)",
-          transformOrigin: "top left",
-        }}
-      >
-        <Diagram page={shot.page} step={visibleStep} />
-      </div>
+      {page.panel ? (
+        <aside
+          data-page-block
+          data-concept-panel
+          style={{
+            position: "absolute",
+            left: 100,
+            top: 220,
+            width: 720,
+            padding: 32,
+            boxSizing: "border-box",
+            borderLeft: "4px solid #dce4ec",
+            lineHeight: 1.7,
+          }}
+        >
+          <div style={{ fontSize: 30, color: "#526579", marginBottom: 28 }}>
+            <MathText colorize={false}>{page.panel.title}</MathText>
+          </div>
+          {page.panel.lines.map((line, index) => (
+            <div
+              key={index}
+              data-panel-line
+              style={{ fontSize: 36, marginBottom: 28 }}
+            >
+              <MathText colorize={false}>{line}</MathText>
+            </div>
+          ))}
+        </aside>
+      ) : (
+        <div
+          style={{
+            position: "absolute",
+            left: 20,
+            top: 180,
+            transform: "scale(1.05)",
+            transformOrigin: "top left",
+          }}
+        >
+          <Diagram page={shot.page} step={visibleStep} />
+        </div>
+      )}
       <div
         data-main-content
         style={{

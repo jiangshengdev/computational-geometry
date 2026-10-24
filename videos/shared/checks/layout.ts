@@ -13,6 +13,8 @@ export async function checkLayout({
   viewport,
   inspectPageErrors = true,
   browserExecutable,
+  searchParams,
+  screenshotDirectory,
 }: {
   cwd: string;
   screenshotPages?: string[];
@@ -20,6 +22,8 @@ export async function checkLayout({
   viewport?: { width: number; height: number };
   inspectPageErrors?: boolean;
   browserExecutable?: string;
+  searchParams?: Record<string, string>;
+  screenshotDirectory?: string;
 }) {
   const session = `layout-check-${process.pid}`;
   const pnpmArgs = ["--config.verify-deps-before-run=false", "exec"];
@@ -66,6 +70,9 @@ export async function checkLayout({
     throw new Error("Cannot allocate audit port");
   await new Promise<void>((resolve) => allocator.close(() => resolve()));
   const url = `http://localhost:${address.port}`;
+  const checkUrl = new URL(`${url}/LayoutCheck`);
+  for (const [key, value] of Object.entries(searchParams ?? {}))
+    checkUrl.searchParams.set(key, value);
   const studio = spawn(
     "pnpm",
     [...pnpmArgs, "remotion", "studio", `--port=${address.port}`, "--no-open"],
@@ -118,16 +125,16 @@ export async function checkLayout({
       );
       await cli("open", `--config=${config}`);
     } else {
-      await cli("open", `${url}/LayoutCheck`, "--browser=chrome");
+      await cli("open", checkUrl.href, "--browser=chrome");
     }
     const output = await cli(
       "run-code",
       `async (page) => {
     const errors = [];
     if (${inspectPageErrors}) page.on('pageerror', error => errors.push(error.message));
-    ${browserExecutable ? `await page.goto(${JSON.stringify(`${url}/LayoutCheck`)}, {waitUntil: 'domcontentloaded'});` : ""}
+    ${browserExecutable ? `await page.goto(${JSON.stringify(checkUrl.href)}, {waitUntil: 'domcontentloaded'});` : ""}
     ${viewport ? `await page.setViewportSize(${JSON.stringify(viewport)});` : ""}
-    if (!page.url().endsWith('/LayoutCheck')) throw new Error('Wrong check page');
+    if (page.url() !== ${JSON.stringify(checkUrl.href)}) throw new Error('Wrong check page');
     try { await page.waitForFunction(() => {
       const result = document.querySelector('[data-layout-report]');
       return result && result.textContent !== 'pending';
@@ -157,7 +164,8 @@ export async function checkLayout({
     );
     if (!report.ok) process.exitCode = 1;
     if (screenshotPages && process.argv.includes("--screenshots")) {
-      const directory = mkdtempSync(join(tmpdir(), "shear-layout-"));
+      const directory =
+        screenshotDirectory ?? mkdtempSync(join(tmpdir(), "shear-layout-"));
       const pages = screenshotPages;
       await cli(
         "run-code",
@@ -169,6 +177,7 @@ export async function checkLayout({
       );
       console.log(`Browser screenshots: ${directory}`);
     }
+    return report.results.length;
   } finally {
     try {
       await cli("close");

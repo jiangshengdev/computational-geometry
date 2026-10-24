@@ -1,29 +1,42 @@
 import { useEffect, useRef, useState } from "react";
 import { Sequence } from "remotion";
-import { checkDiagramLabels, checkPageBounds } from "../../shared/checks/dom";
+import {
+  checkDiagramLabels,
+  checkPageBounds,
+  contains,
+} from "../../shared/checks/dom";
+import { pages } from "./storyboard";
 import { ShotScene } from "./Composition";
 import { timelineFor, audioLeadFrames, fps, visualAt } from "./timeline";
 import captionData from "./captions.json";
 import type { Caption } from "../../shared/speech/timing";
 const captions = captionData as Record<string, Caption[]>;
-const cases = timelineFor().flatMap((row) => {
-  const reveal = audioLeadFrames + Math.ceil((row.revealMs * fps) / 1000);
-  const frames = new Set([
-    0,
-    Math.max(0, reveal - 1),
-    reveal,
-    audioLeadFrames + row.speechFrames,
-    row.durationInFrames - 1,
-  ]);
-  for (const cue of captions[row.id]) {
-    const start = audioLeadFrames + Math.ceil((cue.startMs * fps) / 1000);
-    frames.add(Math.max(0, start - 1));
-    frames.add(start);
-  }
-  return [...frames]
-    .sort((a, b) => a - b)
-    .map((frame) => ({ row, frame, id: `${row.id}-${frame}` }));
-});
+const auditPage =
+  typeof window === "undefined"
+    ? null
+    : new URLSearchParams(window.location.search).get("auditPage");
+if (auditPage && !pages[auditPage])
+  throw Error(`Unknown audit page: ${auditPage}`);
+const cases = timelineFor()
+  .filter((row) => !auditPage || row.page === auditPage)
+  .flatMap((row) => {
+    const reveal = audioLeadFrames + Math.ceil((row.revealMs * fps) / 1000);
+    const frames = new Set([
+      0,
+      Math.max(0, reveal - 1),
+      reveal,
+      audioLeadFrames + row.speechFrames,
+      row.durationInFrames - 1,
+    ]);
+    for (const cue of captions[row.id]) {
+      const start = audioLeadFrames + Math.ceil((cue.startMs * fps) / 1000);
+      frames.add(Math.max(0, start - 1));
+      frames.add(start);
+    }
+    return [...frames]
+      .sort((a, b) => a - b)
+      .map((frame) => ({ row, frame, id: `${row.id}-${frame}` }));
+  });
 export function LayoutCheck() {
   const root = useRef<HTMLDivElement>(null);
   const [batch, setBatch] = useState(0);
@@ -44,9 +57,40 @@ export function LayoutCheck() {
         checkPageBounds(page, errors);
         const diagram = page.querySelector<SVGElement>(
           "[data-coordinate-diagram]",
-        )!;
-        if (Number(diagram.dataset.unitX) !== Number(diagram.dataset.unitY))
+        );
+        if (
+          diagram &&
+          Number(diagram.dataset.unitX) !== Number(diagram.dataset.unitY)
+        )
           errors.push("Unequal coordinate units");
+        const panel = page.querySelector<HTMLElement>("[data-concept-panel]");
+        if (
+          pages[sample.row.page].panel ? !panel || diagram : !diagram || panel
+        )
+          errors.push("Missing or incorrect teaching context");
+        if (panel) {
+          for (const line of panel.querySelectorAll<HTMLElement>(
+            "[data-panel-line]",
+          ))
+            if (
+              !contains(
+                panel.getBoundingClientRect(),
+                line.getBoundingClientRect(),
+              ) ||
+              line.scrollWidth > line.clientWidth
+            )
+              errors.push(`Context panel overflow: ${line.textContent}`);
+          const content = page.querySelector<HTMLElement>(
+            "[data-main-content]",
+          )!;
+          if (
+            panel.getBoundingClientRect().right >
+              content.getBoundingClientRect().left ||
+            panel.getBoundingClientRect().bottom >
+              content.getBoundingClientRect().bottom
+          )
+            errors.push("Context panel overlaps teaching area");
+        }
         const solved =
           sample.row.page === "verify" ||
           (sample.row.page === "ordinate" && state.visibleStep >= 4);
@@ -88,7 +132,9 @@ export function LayoutCheck() {
         const text = document.createTreeWalker(page, NodeFilter.SHOW_TEXT);
         while (text.nextNode())
           if (
-            /[A-Za-z0-9₀-₉≤≥]/.test(text.currentNode.textContent ?? "") &&
+            /[A-Za-zΔ0-9₀-₉⁰¹²³⁴⁵⁶⁷⁸⁹≠≤≥]/.test(
+              text.currentNode.textContent ?? "",
+            ) &&
             !text.currentNode.parentElement?.closest(".katex")
           )
             errors.push(`Math outside LaTeX: ${text.currentNode.textContent}`);

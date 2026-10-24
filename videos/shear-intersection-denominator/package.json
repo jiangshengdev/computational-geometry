@@ -34,6 +34,7 @@
     "video:lint": "eslint src scripts && tsc && node ../shared/checks/lint.ts",
     "video:narration": "node scripts/narration.ts",
     "video:check-content": "node scripts/check-content.ts",
+    "video:export": "node scripts/render.ts",
     "video:check-layout": "node scripts/check-layout.ts"
   },
   "allowScripts": {

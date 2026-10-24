@@ -3,6 +3,8 @@ import {
   left,
   type TeachingGroup,
 } from "../../shared/math/math-lines.ts";
+import { pages228, shots228 } from "./lesson228.ts";
+import { pages229, shots229 } from "./lesson229.ts";
 
 export type Shot = {
   id: string;
@@ -18,6 +20,7 @@ export type Page = {
   groups: TeachingGroup[];
   note: string;
   holdAfterSeconds?: number;
+  panel?: { title: string; lines: string[] };
 };
 export const pages: Record<string, Page> = {
   recap: {
@@ -94,6 +97,8 @@ export const pages: Record<string, Page> = {
     holdAfterSeconds: 5,
     note: "下一步：一般整数系数下，除数会变成什么？",
   },
+  ...pages228,
+  ...pages229,
 };
 export const shots: Shot[] = [
   {
@@ -222,4 +227,6 @@ export const shots: Shot[] = [
     caption:
       "这里的分母 2，来自消元后的一次除法。换成一般的整数系数，除数会变成什么呢？",
   },
+  ...shots228,
+  ...shots229,
 ];
