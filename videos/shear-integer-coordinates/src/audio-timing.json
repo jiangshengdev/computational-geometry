@@ -12686,236 +12686,808 @@
     "fingerprint": "47da278e50ebd6604025e3ed53e01637fede00702c77790ec9e6d052fba6fe4f"
   },
   "218-28": {
-    "duration": 9.216,
+    "duration": 10.416,
     "words": [
       {
         "text": "这里",
         "startMs": 70,
-        "durationMs": 320,
+        "durationMs": 360,
         "textOffset": 0,
         "wordLength": 2
       },
       {
         "text": "按",
-        "startMs": 390,
+        "startMs": 430,
         "durationMs": 120,
         "textOffset": 2,
         "wordLength": 1
       },
       {
         "text": "端点",
-        "startMs": 510,
-        "durationMs": 360,
+        "startMs": 550,
+        "durationMs": 400,
         "textOffset": 3,
         "wordLength": 2
       },
       {
         "text": "差",
-        "startMs": 870,
+        "startMs": 950,
         "durationMs": 160,
         "textOffset": 5,
         "wordLength": 1
       },
       {
         "text": "取出",
-        "startMs": 1030,
-        "durationMs": 360,
+        "startMs": 1110,
+        "durationMs": 320,
         "textOffset": 6,
         "wordLength": 2
       },
       {
         "text": "的",
-        "startMs": 1390,
-        "durationMs": 360,
+        "startMs": 1430,
+        "durationMs": 120,
         "textOffset": 8,
         "wordLength": 1
       },
       {
-        "text": "A",
-        "startMs": 1750,
-        "durationMs": 80,
-        "textOffset": 10,
+        "text": "系数分别",
+        "startMs": 1550,
+        "durationMs": 799,
+        "textOffset": 9,
+        "wordLength": 4
+      },
+      {
+        "text": "是",
+        "startMs": 2349,
+        "durationMs": 361,
+        "textOffset": 13,
         "wordLength": 1
       },
       {
         "text": " ",
-        "startMs": 1830,
+        "startMs": 2710,
         "durationMs": 0,
-        "textOffset": 11,
-        "wordLength": 1
-      },
-      {
-        "text": "和",
-        "startMs": 1910,
-        "durationMs": 320,
-        "textOffset": 12,
-        "wordLength": 1
-      },
-      {
-        "text": "B",
-        "startMs": 2230,
-        "durationMs": 280,
         "textOffset": 14,
         "wordLength": 1
       },
       {
-        "text": "。",
-        "startMs": 2510,
-        "durationMs": 0,
+        "text": "A",
+        "startMs": 2710,
+        "durationMs": 199,
         "textOffset": 15,
         "wordLength": 1
       },
       {
-        "text": "绝对值",
-        "startMs": 2510,
-        "durationMs": 680,
-        "textOffset": 16,
-        "wordLength": 3
+        "text": "和",
+        "startMs": 2909,
+        "durationMs": 201,
+        "textOffset": 17,
+        "wordLength": 1
       },
       {
-        "text": "都",
-        "startMs": 3190,
-        "durationMs": 119,
+        "text": "B",
+        "startMs": 3110,
+        "durationMs": 160,
         "textOffset": 19,
         "wordLength": 1
       },
       {
-        "text": "不超过",
-        "startMs": 3309,
-        "durationMs": 441,
+        "text": "。",
+        "startMs": 3270,
+        "durationMs": 0,
         "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "绝对值",
+        "startMs": 3270,
+        "durationMs": 719,
+        "textOffset": 21,
+        "wordLength": 3
+      },
+      {
+        "text": "都",
+        "startMs": 3989,
+        "durationMs": 161,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "不超过",
+        "startMs": 4150,
+        "durationMs": 400,
+        "textOffset": 25,
         "wordLength": 3
       },
       {
         "text": "二乘",
-        "startMs": 3750,
-        "durationMs": 400,
-        "textOffset": 23,
-        "wordLength": 2
-      },
-      {
-        "text": "M",
-        "startMs": 4150,
-        "durationMs": 320,
-        "textOffset": 26,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 4470,
-        "durationMs": 0,
-        "textOffset": 27,
-        "wordLength": 1
-      },
-      {
-        "text": "如果",
-        "startMs": 4469,
-        "durationMs": 280,
+        "startMs": 4550,
+        "durationMs": 360,
         "textOffset": 28,
         "wordLength": 2
       },
       {
-        "text": "把",
-        "startMs": 4749,
-        "durationMs": 120,
-        "textOffset": 30,
+        "text": "M",
+        "startMs": 4910,
+        "durationMs": 320,
+        "textOffset": 31,
         "wordLength": 1
       },
       {
-        "text": "方程",
-        "startMs": 4869,
-        "durationMs": 440,
-        "textOffset": 31,
-        "wordLength": 2
+        "text": "。",
+        "startMs": 5230,
+        "durationMs": 0,
+        "textOffset": 32,
+        "wordLength": 1
       },
       {
-        "text": "整体",
-        "startMs": 5309,
+        "text": "如果",
+        "startMs": 5407,
         "durationMs": 320,
         "textOffset": 33,
         "wordLength": 2
       },
       {
-        "text": "乘",
-        "startMs": 5629,
-        "durationMs": 160,
+        "text": "把",
+        "startMs": 5727,
+        "durationMs": 280,
         "textOffset": 35,
         "wordLength": 1
       },
       {
-        "text": "一个",
-        "startMs": 5789,
-        "durationMs": 240,
+        "text": "方程",
+        "startMs": 6007,
+        "durationMs": 400,
         "textOffset": 36,
         "wordLength": 2
       },
       {
-        "text": "大",
-        "startMs": 6029,
-        "durationMs": 200,
+        "text": "整体",
+        "startMs": 6407,
+        "durationMs": 360,
         "textOffset": 38,
-        "wordLength": 1
+        "wordLength": 2
       },
       {
-        "text": "数",
-        "startMs": 6229,
-        "durationMs": 479,
-        "textOffset": 39,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 6708,
-        "durationMs": 0,
+        "text": "乘",
+        "startMs": 6767,
+        "durationMs": 160,
         "textOffset": 40,
         "wordLength": 1
       },
       {
-        "text": "新",
-        "startMs": 6708,
-        "durationMs": 441,
+        "text": "一个",
+        "startMs": 6927,
+        "durationMs": 240,
         "textOffset": 41,
+        "wordLength": 2
+      },
+      {
+        "text": "大",
+        "startMs": 7167,
+        "durationMs": 160,
+        "textOffset": 43,
+        "wordLength": 1
+      },
+      {
+        "text": "数",
+        "startMs": 7327,
+        "durationMs": 520,
+        "textOffset": 44,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 7847,
+        "durationMs": 0,
+        "textOffset": 45,
+        "wordLength": 1
+      },
+      {
+        "text": "新",
+        "startMs": 7887,
+        "durationMs": 399,
+        "textOffset": 46,
         "wordLength": 1
       },
       {
         "text": "系数不一定",
-        "startMs": 7149,
-        "durationMs": 880,
-        "textOffset": 42,
+        "startMs": 8286,
+        "durationMs": 920,
+        "textOffset": 47,
         "wordLength": 5
       },
       {
         "text": "满足",
-        "startMs": 8029,
-        "durationMs": 359,
-        "textOffset": 47,
+        "startMs": 9206,
+        "durationMs": 361,
+        "textOffset": 52,
         "wordLength": 2
       },
       {
         "text": "这个",
-        "startMs": 8388,
-        "durationMs": 241,
-        "textOffset": 49,
+        "startMs": 9567,
+        "durationMs": 240,
+        "textOffset": 54,
         "wordLength": 2
       },
       {
         "text": "上界",
-        "startMs": 8629,
+        "startMs": 9807,
         "durationMs": 480,
-        "textOffset": 51,
+        "textOffset": 56,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 9109,
+        "startMs": 10287,
         "durationMs": 0,
-        "textOffset": 53,
+        "textOffset": 58,
         "wordLength": 1
       }
     ],
-    "speech": "这里按端点差取出的 A 和 B。绝对值都不超过二乘 M。如果把方程整体乘一个大数。新系数不一定满足这个上界。",
+    "speech": "这里按端点差取出的系数分别是 A 和 B。绝对值都不超过二乘 M。如果把方程整体乘一个大数。新系数不一定满足这个上界。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "6d8d192ee5727a643bf6cbecbc72fd9c34c7756451080dea55ab794508fe3603"
+    "fingerprint": "e7828d8ce14d40b6778d65212eaca19303d2590459a38208d9b6e279d18b86e2",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "d2e22468a0fe32785a11989e96e858bd8c120a58cb21b5a9f6acc3ce31b60e9e",
+      "synthesisWords": [
+        {
+          "text": "这里",
+          "startMs": 70,
+          "durationMs": 360,
+          "textOffset": 0,
+          "wordLength": 2
+        },
+        {
+          "text": "按",
+          "startMs": 430,
+          "durationMs": 120,
+          "textOffset": 2,
+          "wordLength": 1
+        },
+        {
+          "text": "端点",
+          "startMs": 550,
+          "durationMs": 400,
+          "textOffset": 3,
+          "wordLength": 2
+        },
+        {
+          "text": "差",
+          "startMs": 950,
+          "durationMs": 160,
+          "textOffset": 5,
+          "wordLength": 1
+        },
+        {
+          "text": "取出",
+          "startMs": 1110,
+          "durationMs": 320,
+          "textOffset": 6,
+          "wordLength": 2
+        },
+        {
+          "text": "的",
+          "startMs": 1430,
+          "durationMs": 120,
+          "textOffset": 8,
+          "wordLength": 1
+        },
+        {
+          "text": "系数分别",
+          "startMs": 1550,
+          "durationMs": 799,
+          "textOffset": 9,
+          "wordLength": 4
+        },
+        {
+          "text": "是",
+          "startMs": 2349,
+          "durationMs": 361,
+          "textOffset": 13,
+          "wordLength": 1
+        },
+        {
+          "text": " ",
+          "startMs": 2710,
+          "durationMs": 0,
+          "textOffset": 14,
+          "wordLength": 1
+        },
+        {
+          "text": "A",
+          "startMs": 2710,
+          "durationMs": 199,
+          "textOffset": 15,
+          "wordLength": 1
+        },
+        {
+          "text": "和",
+          "startMs": 2909,
+          "durationMs": 201,
+          "textOffset": 17,
+          "wordLength": 1
+        },
+        {
+          "text": "B",
+          "startMs": 3110,
+          "durationMs": 160,
+          "textOffset": 19,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 3270,
+          "durationMs": 0,
+          "textOffset": 20,
+          "wordLength": 1
+        },
+        {
+          "text": "绝对值",
+          "startMs": 3270,
+          "durationMs": 719,
+          "textOffset": 21,
+          "wordLength": 3
+        },
+        {
+          "text": "都",
+          "startMs": 3989,
+          "durationMs": 161,
+          "textOffset": 24,
+          "wordLength": 1
+        },
+        {
+          "text": "不超过",
+          "startMs": 4150,
+          "durationMs": 400,
+          "textOffset": 25,
+          "wordLength": 3
+        },
+        {
+          "text": "二乘",
+          "startMs": 4550,
+          "durationMs": 360,
+          "textOffset": 28,
+          "wordLength": 2
+        },
+        {
+          "text": "M",
+          "startMs": 4910,
+          "durationMs": 320,
+          "textOffset": 31,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 5230,
+          "durationMs": 0,
+          "textOffset": 32,
+          "wordLength": 1
+        },
+        {
+          "text": "如果",
+          "startMs": 5407,
+          "durationMs": 320,
+          "textOffset": 33,
+          "wordLength": 2
+        },
+        {
+          "text": "把",
+          "startMs": 5727,
+          "durationMs": 280,
+          "textOffset": 35,
+          "wordLength": 1
+        },
+        {
+          "text": "方程",
+          "startMs": 6007,
+          "durationMs": 400,
+          "textOffset": 36,
+          "wordLength": 2
+        },
+        {
+          "text": "整体",
+          "startMs": 6407,
+          "durationMs": 360,
+          "textOffset": 38,
+          "wordLength": 2
+        },
+        {
+          "text": "乘",
+          "startMs": 6767,
+          "durationMs": 160,
+          "textOffset": 40,
+          "wordLength": 1
+        },
+        {
+          "text": "一个",
+          "startMs": 6927,
+          "durationMs": 240,
+          "textOffset": 41,
+          "wordLength": 2
+        },
+        {
+          "text": "大",
+          "startMs": 7167,
+          "durationMs": 160,
+          "textOffset": 43,
+          "wordLength": 1
+        },
+        {
+          "text": "数",
+          "startMs": 7327,
+          "durationMs": 520,
+          "textOffset": 44,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 7847,
+          "durationMs": 0,
+          "textOffset": 45,
+          "wordLength": 1
+        },
+        {
+          "text": "新",
+          "startMs": 7887,
+          "durationMs": 399,
+          "textOffset": 46,
+          "wordLength": 1
+        },
+        {
+          "text": "系数不一定",
+          "startMs": 8286,
+          "durationMs": 920,
+          "textOffset": 47,
+          "wordLength": 5
+        },
+        {
+          "text": "满足",
+          "startMs": 9206,
+          "durationMs": 361,
+          "textOffset": 52,
+          "wordLength": 2
+        },
+        {
+          "text": "这个",
+          "startMs": 9567,
+          "durationMs": 240,
+          "textOffset": 54,
+          "wordLength": 2
+        },
+        {
+          "text": "上界",
+          "startMs": 9807,
+          "durationMs": 480,
+          "textOffset": 56,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 10287,
+          "durationMs": 0,
+          "textOffset": 58,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "f5fa5623b7ef4d359d808c9c54c94c68",
+        "RecognitionStatus": "Success",
+        "Offset": 700000,
+        "Duration": 103200000,
+        "Channel": 0,
+        "DisplayText": "这里按端点差取出的系数分别是A和B，绝对值都不超过二乘M。如果把方程整体乘一个大数，新系数不一定满足这个上界。",
+        "SNR": 32.65199,
+        "NBest": [
+          {
+            "Confidence": 0.9785388,
+            "Lexical": "这里 按 端点 差 取出 的 系数 分别 是 A 和 B 绝对值 都 不 超过 二 乘 M 如果 把 方程 整体 乘 一个 大数 新 系数 不一定 满足 这个 上界",
+            "ITN": "这里 按 端点 差 取出 的 系数 分别 是 A 和 B 绝对值 都 不 超过 二 乘 M 如果 把 方程 整体 乘 一个 大数 新 系数 不一定 满足 这个 上界",
+            "MaskedITN": "这里按端点差取出的系数分别是a和b绝对值都不超过二乘m如果把方程整体乘一个大数新系数不一定满足这个上界",
+            "Display": "这里按端点差取出的系数分别是A和B，绝对值都不超过二乘M。如果把方程整体乘一个大数，新系数不一定满足这个上界。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 91,
+              "FluencyScore": 100,
+              "CompletenessScore": 94,
+              "PronScore": 93.4
+            },
+            "Words": [
+              {
+                "Word": "这里",
+                "Offset": 700000,
+                "Duration": 3500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 70,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "按",
+                "Offset": 4300000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "端点",
+                "Offset": 6100000,
+                "Duration": 3500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "差",
+                "Offset": 9700000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 46,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "取出",
+                "Offset": 11700000,
+                "Duration": 2900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 14700000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "系数",
+                "Offset": 15900000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "分别",
+                "Offset": 20300000,
+                "Duration": 3500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "是",
+                "Offset": 23900000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "A",
+                "Offset": 27100000,
+                "Duration": 2300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "和",
+                "Offset": 29500000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "B",
+                "Offset": 31300000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 59,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "绝对值",
+                "Offset": 33300000,
+                "Duration": 6900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 76,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "都",
+                "Offset": 40300000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "不",
+                "Offset": 41900000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 73,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "超过",
+                "Offset": 42900000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "二",
+                "Offset": 46100000,
+                "Duration": 1600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘",
+                "Offset": 47800000,
+                "Duration": 1600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 69,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "M",
+                "Offset": 49500000,
+                "Duration": 4700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 73,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "如果",
+                "Offset": 54500000,
+                "Duration": 3900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "把",
+                "Offset": 58500000,
+                "Duration": 2700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "方程",
+                "Offset": 61300000,
+                "Duration": 4000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "整体",
+                "Offset": 65400000,
+                "Duration": 3400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘",
+                "Offset": 68900000,
+                "Duration": 1400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "一个",
+                "Offset": 70400000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "大数",
+                "Offset": 72600000,
+                "Duration": 7300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "新",
+                "Offset": 80200000,
+                "Duration": 4000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "系数",
+                "Offset": 84300000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "不一定",
+                "Offset": 88900000,
+                "Duration": 4100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "满足",
+                "Offset": 93100000,
+                "Duration": 3700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "这个",
+                "Offset": 96900000,
+                "Duration": 2300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "上界",
+                "Offset": 99300000,
+                "Duration": 4600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "218-29": {
     "duration": 9.984,

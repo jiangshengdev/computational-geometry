@@ -1333,28 +1333,28 @@
     {
       "text": "这里按端点差取出的 a、b，",
       "startMs": 70,
-      "endMs": 2510,
+      "endMs": 3270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "绝对值都不超过 2M。",
-      "startMs": 2510,
-      "endMs": 4470,
+      "startMs": 3270,
+      "endMs": 5230,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "如果把方程整体乘一个大数，",
-      "startMs": 4469,
-      "endMs": 6708,
+      "startMs": 5407,
+      "endMs": 7847,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "新系数不一定满足这个上界。",
-      "startMs": 6708,
-      "endMs": 9109,
+      "startMs": 7887,
+      "endMs": 10287,
       "timestampMs": null,
       "confidence": null
     }
