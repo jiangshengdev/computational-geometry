@@ -1,4 +1,10 @@
-import { decodeAudio, measureAudio } from "../speech/audio.ts";
+import {
+  decodeAudio,
+  measureAudio,
+  verifyPcmSource,
+  audioSha256,
+} from "../speech/audio.ts";
+import { narrationFile, synthesisFormat } from "../speech/source.ts";
 import { readFileSync, readdirSync } from "node:fs";
 import { createCaptions, type AudioTiming } from "../speech/timing.ts";
 
@@ -72,13 +78,10 @@ export function checkContent<R extends Row>({
     if (!equalIds(Object.keys(data)))
       throw Error(`${name}: shot IDs do not match`);
   }
-  if (
-    !equalIds(
-      readdirSync(`${root}public/narration`)
-        .filter((name) => name.endsWith(".mp3"))
-        .map((name) => name.slice(0, -4)),
-    )
-  )
+  const audioFiles = readdirSync(`${root}public/narration`).filter((name) =>
+    /\.(mp3|wav)$/.test(name),
+  );
+  if (!equalIds([...new Set(audioFiles.map((name) => name.slice(0, -4)))]))
     throw Error("Audio file IDs do not match");
   let frames = 0;
   const pauses: { id: string; seconds: number }[] = [];
@@ -91,7 +94,18 @@ export function checkContent<R extends Row>({
       throw Error(`Invalid teaching step: ${shot.id}`);
     const doc = buildSpeechDocument(speech[shot.id], shot.id);
     const audio = timing[shot.id];
-    verifyAlignment(audio, `${root}public/narration/${shot.id}.mp3`);
+    if (!audioFiles.includes(narrationFile(shot.id, audio)))
+      throw Error(`Missing selected audio: ${shot.id}`);
+    const file = `${root}public/narration/${narrationFile(shot.id, audio)}`;
+    verifyAlignment(audio, file);
+    if (audio.audioFile?.endsWith(".wav")) {
+      verifyPcmSource(file);
+      if (
+        audio.outputFormat !== synthesisFormat ||
+        audio.audioSha256 !== audioSha256(file)
+      )
+        throw Error(`Stale PCM source: ${shot.id}`);
+    }
     if (
       doc.text !== audio.speech ||
       doc.fingerprint !== audio.fingerprint ||
@@ -106,7 +120,6 @@ export function checkContent<R extends Row>({
     )
       throw Error(`Stale captions: ${shot.id}`);
     if (process.argv.includes("--decode")) {
-      const file = `${root}public/narration/${shot.id}.mp3`;
       decodeAudio(file);
       const duration = measureAudio(file);
       if (Math.abs(duration - audio.duration) > 0.001)

@@ -188,9 +188,17 @@ export const Intro = () => {
           name={item.kicker}
           layout="none"
         >
-          <Html5Audio src={staticFile(`narration/${item.id}.mp3`)} />
+          <Html5Audio
+            src={staticFile(
+              `narration/${narrationFile(item.id, audioFiles[item.id])}`,
+            )}
+          />
         </Sequence>
       ))}
     </ChapterLayout>
   );
 };
+import timingData from "./audio-timing.json";
+import { narrationFile } from "../../shared/speech/source";
+const audioFiles: Record<string, { duration: number; audioFile?: string }> =
+  timingData;

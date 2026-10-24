@@ -2,6 +2,7 @@ import { fileURLToPath } from "node:url";
 import { checkLayout } from "../../shared/checks/layout.ts";
 
 await checkLayout({
+  browserExecutable: verifiedBrowser(import.meta.url),
   viewport: { width: 2400, height: 1600 },
   cwd: fileURLToPath(new URL("../", import.meta.url)),
   screenshotPages: [
@@ -15,3 +16,4 @@ await checkLayout({
     "207-05a",
   ],
 });
+import { verifiedBrowser } from "../../shared/tools/browser.ts";

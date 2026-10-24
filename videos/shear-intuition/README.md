@@ -43,7 +43,7 @@ pnpm --config.verify-deps-before-run=false run video:narration --issue=204
 
 ## 用户导出
 
-采用公共[默认制作配置](../../docs/agents/videos/configuration.md#默认制作配置)，命令及前置检查见[用户导出](../../docs/agents/videos/operations.md#用户导出)。输出为 `out/shear-intuition.mp4`，`out` 已忽略。默认使用系统 Google Chrome，也可通过 `CHROME_EXECUTABLE` 指向已有浏览器。本次未验证硬件编码器实际导出结果，助手没有执行导出。
+采用公共[默认制作配置](../../docs/agents/videos/configuration.md#默认制作配置)，命令及前置检查见[用户导出](../../docs/agents/videos/operations.md#用户导出)。入口仅生成并保留 `out/shear-intuition-frames/` 的 PNG；须设置 `REMOTION_BROWSER_EXECUTABLE` 指向匹配版本的 Headless Shell。后续分阶段编码并封装为 MOV＋H.265＋PCM，`out` 已忽略。助手未执行导出。
 
 ## 文件映射
 

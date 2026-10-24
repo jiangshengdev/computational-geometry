@@ -87,7 +87,7 @@ pnpm --config.verify-deps-before-run=false run video:export --dry-run
 pnpm --config.verify-deps-before-run=false run video:export
 ```
 
-第一阶段输出 `out/shear-intersection-denominator-frames/` 的 4K、60 fps PNG 序列，不编码视频、不生成音轨，不覆盖已有目录。先检查编号、数量、尺寸及画面；通过后再按[分阶段导出流程](../../docs/agents/videos/operations.md#用户导出)准备无声 H.265 编码，检查通过后才合入同时间线的原速音频。助手未执行任何渲染或导出；入口 dry-run 不代表实际帧序列或成片验收。
+第一阶段输出 `out/shear-intersection-denominator-frames/` 的 4K、60 fps PNG 序列，不编码视频、不生成音轨，不覆盖已有目录。先检查编号、数量、尺寸及画面；通过后再按[分阶段导出流程](../../docs/agents/videos/operations.md#用户导出)准备无声 H.265 编码，检查通过后才与同时间线的 48 kHz、16 bit、双声道 PCM WAV 复制封装为 MOV，保留 PNG 与 WAV。助手未执行任何渲染或导出；入口 dry-run 不代表实际帧序列或成片验收。
 
 ## 交付状态
 

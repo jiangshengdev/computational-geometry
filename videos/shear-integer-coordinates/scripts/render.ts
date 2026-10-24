@@ -5,5 +5,5 @@ import { exportVideo } from "../../shared/tools/export.ts";
 await exportVideo(
   fileURLToPath(new URL("../", import.meta.url)),
   "ShearIntegerCoordinates",
-  "out/shear-integer-coordinates.mp4",
+  "out/shear-integer-coordinates-frames",
 );

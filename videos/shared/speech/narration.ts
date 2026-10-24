@@ -1,4 +1,10 @@
-import { decodeAudio, measureAudio } from "./audio.ts";
+import {
+  decodeAudio,
+  measureAudio,
+  verifyPcmSource,
+  audioSha256,
+} from "./audio.ts";
+import { synthesisFormat } from "./source.ts";
 import { execFileSync } from "node:child_process";
 import {
   copyFileSync,
@@ -80,7 +86,13 @@ export async function runNarration({
     }),
   );
   if (process.argv.includes("--dry-run")) {
-    console.log(JSON.stringify({ voice, documents }, null, 2));
+    console.log(
+      JSON.stringify(
+        { voice, outputFormat: synthesisFormat, documents },
+        null,
+        2,
+      ),
+    );
   } else {
     const requested = process.argv
       .find((arg) => arg.startsWith("--issue="))
@@ -124,28 +136,34 @@ export async function runNarration({
     let published = false;
     try {
       for (const shot of selected) {
-        const path = join(temporary, `${shot.id}.mp3`);
+        const path = join(temporary, `${shot.id}.wav`);
         const metadata = join(temporary, `${shot.id}.json`);
         const cached =
           existsSync(metadata) && existsSync(path)
             ? (JSON.parse(readFileSync(metadata, "utf8")) as AudioTiming)
             : null;
-        const words =
-          cached?.fingerprint === documents[shot.id].fingerprint
-            ? cached.words
-            : await synthesize(speech[shot.id], path);
+        const reusable =
+          cached?.fingerprint === documents[shot.id].fingerprint &&
+          cached.outputFormat === synthesisFormat &&
+          cached.audioSha256 === audioSha256(path);
+        const words = reusable
+          ? cached.words
+          : await synthesize(speech[shot.id], path);
+        verifyPcmSource(path);
         decodeAudio(path);
         const duration = measureAudio(path);
         if (!Number.isFinite(duration) || duration <= 0)
           throw Error(`Invalid audio: ${shot.id}`);
         timing[shot.id] = {
+          audioFile: `${shot.id}.wav`,
+          outputFormat: synthesisFormat,
+          audioSha256: audioSha256(path),
           duration,
           words,
           speech: documents[shot.id].text,
           voice,
           fingerprint: documents[shot.id].fingerprint,
-          ...(cached?.fingerprint === documents[shot.id].fingerprint &&
-          cached.alignment
+          ...(reusable && cached.alignment
             ? { alignment: cached.alignment }
             : {}),
         };
@@ -185,8 +203,8 @@ export async function runNarration({
       mkdirSync(join(root, "public/narration"), { recursive: true });
       for (const shot of selected)
         copyFileSync(
-          join(temporary, `${shot.id}.mp3`),
-          join(root, "public/narration", `${shot.id}.mp3`),
+          join(temporary, `${shot.id}.wav`),
+          join(root, "public/narration", `${shot.id}.wav`),
         );
       writeFileSync(timingPath, JSON.stringify(timing, null, 2) + "\n");
       execFileSync(process.execPath, [join(root, "scripts/captions.ts")], {

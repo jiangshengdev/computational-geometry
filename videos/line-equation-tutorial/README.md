@@ -16,13 +16,13 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts
 以下命令使用上述默认制作配置：
 
 ```sh
-pnpm --config.verify-deps-before-run=false exec node scripts/render.ts render LineEquationTutorial out/line-equation-tutorial.mp4
+pnpm --config.verify-deps-before-run=false exec node scripts/render.ts render LineEquationTutorial out/line-equation-tutorial-frames
 ```
 
-完整输出为 `out/line-equation-tutorial.mp4`，输出目录被 Git 忽略。Chrome 不在 macOS 默认应用位置时，用 `CHROME_EXECUTABLE` 指定现有可执行文件。
+入口生成并保留 `out/line-equation-tutorial-frames/` 的 PNG，输出目录被 Git 忽略。先用 `REMOTION_BROWSER_EXECUTABLE` 指定与本工程 Remotion 版本匹配的 Headless Shell。后续遵循[分阶段导出](../../docs/agents/videos/operations.md#用户导出)，最终为 MOV＋H.265＋PCM。
 
 ```sh
-pnpm --config.verify-deps-before-run=false exec node scripts/render.ts render Parts1And2 out/parts-1-2.mp4
+pnpm --config.verify-deps-before-run=false exec node scripts/render.ts render Parts1And2 out/parts-1-2-frames
 pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still LineEquationTutorial out/frame.png --frame=1200
 ```
 

@@ -42,7 +42,11 @@ const Shot = ({ row, chapter }: { row: Row; chapter: number }) => {
     >
       {row.narration ? (
         <Sequence from={audioLeadInFrames} layout="none">
-          <Html5Audio src={staticFile(`narration/${row.id}.mp3`)} />
+          <Html5Audio
+            src={staticFile(
+              `narration/${narrationFile(row.id, audioFiles[row.id])}`,
+            )}
+          />
         </Sequence>
       ) : null}
     </DerivationPage>
@@ -180,3 +184,7 @@ export const MyComposition = () => (
     ))}
   </>
 );
+import timingData from "./audio-timing.json";
+import { narrationFile } from "../../shared/speech/source";
+const audioFiles: Record<string, { duration: number; audioFile?: string }> =
+  timingData;

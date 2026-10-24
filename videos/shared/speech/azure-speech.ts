@@ -118,7 +118,7 @@ export function createSpeechTools<Fingerprint extends boolean>(
     const config = sdk.SpeechConfig.fromEndpoint(url, key);
     config.speechSynthesisVoiceName = voice;
     config.speechSynthesisOutputFormat =
-      sdk.SpeechSynthesisOutputFormat.Audio48Khz192KBitRateMonoMp3;
+      sdk.SpeechSynthesisOutputFormat.Riff48Khz16BitMonoPcm;
     config.setProperty(
       sdk.PropertyId.SpeechServiceResponse_RequestWordBoundary,
       "true",

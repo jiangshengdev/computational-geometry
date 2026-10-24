@@ -1,4 +1,10 @@
-import { decodeAudio, measureAudio } from "../../shared/speech/audio.ts";
+import {
+  decodeAudio,
+  measureAudio,
+  verifyPcmSource,
+  audioSha256,
+} from "../../shared/speech/audio.ts";
+import { synthesisFormat } from "../../shared/speech/source.ts";
 import {
   copyFileSync,
   mkdirSync,
@@ -11,7 +17,6 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, basename, dirname } from "node:path";
-import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import {
   buildSpeechDocument,
@@ -44,7 +49,11 @@ for (const row of rows) {
 }
 if (process.argv.includes("--dry-run")) {
   process.stdout.write(
-    JSON.stringify({ voice, speech, documents }, null, 2) + "\n",
+    JSON.stringify(
+      { voice, outputFormat: synthesisFormat, speech, documents },
+      null,
+      2,
+    ) + "\n",
   );
   process.exit(0);
 }
@@ -77,7 +86,7 @@ if (
 const questions = new Set(["190-4", "192-4"]);
 const report: Record<
   string,
-  { duration: number; silenceAfter: number; frames: number }
+  { duration: number; silenceAfter: number; frames: number; audioFile?: string }
 > = {};
 const wordTimings: Record<string, Awaited<ReturnType<typeof synthesize>>> = {};
 const captions: Record<string, ReturnType<typeof createCaptions>> = {};
@@ -98,20 +107,21 @@ try {
         };
         continue;
       }
-      const destination = join(temporary, `${row.id}.mp3`);
+      const destination = join(temporary, `${row.id}.wav`);
       const metadata = join(temporary, `${row.id}.json`);
       const cached =
         existsSync(metadata) && existsSync(destination)
           ? (JSON.parse(readFileSync(metadata, "utf8")) as {
               ssml: string;
+              outputFormat: string;
               audioSha256: string;
               words: WordBoundary[];
             })
           : null;
       const reusable =
         cached?.ssml === documents[row.id].ssml &&
-        cached.audioSha256 ===
-          createHash("sha256").update(readFileSync(destination)).digest("hex");
+        cached.outputFormat === synthesisFormat &&
+        cached.audioSha256 === audioSha256(destination);
       const words = reusable
         ? cached.words
         : await synthesize(speech[row.id], destination);
@@ -128,6 +138,7 @@ try {
           ? 0
           : 0.4;
       const duration = measureAudio(destination);
+      verifyPcmSource(destination);
       decodeAudio(destination);
       if (!Number.isFinite(duration) || duration <= 0)
         throw Error(`Invalid audio duration ${row.id}`);
@@ -140,9 +151,8 @@ try {
         JSON.stringify(
           {
             ssml: documents[row.id].ssml,
-            audioSha256: createHash("sha256")
-              .update(readFileSync(destination))
-              .digest("hex"),
+            outputFormat: synthesisFormat,
+            audioSha256: audioSha256(destination),
             words,
           },
           null,
@@ -150,6 +160,7 @@ try {
         ) + "\n",
       );
       report[row.id] = {
+        audioFile: `${row.id}.wav`,
         duration,
         silenceAfter,
         frames: Math.ceil((0.2 + duration + silenceAfter) * 30),
@@ -162,8 +173,8 @@ try {
     for (const row of chapter.rows)
       if (row.narration)
         copyFileSync(
-          join(temporary, `${row.id}.mp3`),
-          join(output, `${row.id}.mp3`),
+          join(temporary, `${row.id}.wav`),
+          join(output, `${row.id}.wav`),
         );
   writeFileSync(
     join(root, "src/audio-timing.json"),

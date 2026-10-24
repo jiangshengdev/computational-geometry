@@ -71,7 +71,7 @@ pnpm --config.verify-deps-before-run=false run video:check-layout --screenshots
 pnpm --config.verify-deps-before-run=false run video:export
 ```
 
-输出为 `out/shear-integer-coordinates.mp4`。入口先检查已安装的 Chrome，再执行音频／内容检查及同一套生产布局检查，任一失败即停止。随后使用已有默认配置：4K、60 fps、H.265、硬件加速 required、PNG 中间帧、AAC 192 kbps、并发 4、默认视频码率。该入口由用户运行；助手未执行视频渲染或导出。
+入口仅生成并保留 `out/shear-integer-coordinates-frames/` 的 PNG。先通过 `REMOTION_BROWSER_EXECUTABLE` 核验匹配版本的 Headless Shell，再执行音频／内容检查及同一套生产布局检查，任一失败即停止。4K、60 fps、并发 4 保持不变；后续分阶段使用 H.265 硬件编码，并与同时间线 PCM 音轨封装为 MOV。该入口由用户运行；助手未执行视频渲染或导出。
 
 ## 样例检查记录
 

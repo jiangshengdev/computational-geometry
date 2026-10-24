@@ -17,7 +17,7 @@ Config.setCodec("h265");
 Config.setPixelFormat("yuv420p");
 Config.setHardwareAcceleration("required");
 Config.setVideoImageFormat("png");
-Config.setAudioCodec("aac");
-Config.setAudioBitrate("192k");
+Config.setAudioCodec("pcm-16");
+Config.setSampleRate(48000);
 // Limit simultaneous 4K pages and PNG buffers; this is not a speed benchmark.
 Config.setConcurrency(4);

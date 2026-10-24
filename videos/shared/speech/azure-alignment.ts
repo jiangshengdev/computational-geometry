@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+import { audioSha256 as audioHash } from "./audio.ts";
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import type * as SpeechSdk from "microsoft-cognitiveservices-speech-sdk";
@@ -124,9 +124,6 @@ export function createAlignmentTools(
       return repaired;
     }
   }
-
-  const audioHash = (path: string) =>
-    createHash("sha256").update(readFileSync(path)).digest("hex");
 
   function verifyAlignment(audio: AudioTiming, path: string) {
     if (!audio.alignment) return;

@@ -54,7 +54,7 @@ pnpm --config.verify-deps-before-run=false exec node --test src/timeline.test.ts
 
 生产组件会拒绝缺少实测音频的预览，不使用估计时长兜底。
 
-导出命令及前置检查见公共[用户导出](../../docs/agents/videos/operations.md#用户导出)，输出为 `out/shear-coefficient.mp4`。
+导出命令及前置检查见公共[用户导出](../../docs/agents/videos/operations.md#用户导出)。设置 `REMOTION_BROWSER_EXECUTABLE` 为匹配版本的 Headless Shell，入口仅生成并保留 `out/shear-coefficient-frames/` 的 PNG；后续分阶段编码并封装为 MOV＋H.265＋PCM。
 
 ## 仓库内公共基础能力
 

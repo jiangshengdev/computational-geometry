@@ -20,7 +20,11 @@ export const ShotScene = ({
       <TeachingPage shot={row} {...visualAt(row, frame)} />
       {audioEnabled ? (
         <Sequence from={audioLeadFrames}>
-          <Audio src={staticFile(`narration/${row.id}.mp3`)} />
+          <Audio
+            src={staticFile(
+              `narration/${narrationFile(row.id, audioFiles[row.id])}`,
+            )}
+          />
         </Sequence>
       ) : null}
     </>
@@ -40,3 +44,7 @@ export const ShearVideo = ({ issue }: { issue?: string }) => (
     ))}
   </>
 );
+import timingData from "./audio-timing.json";
+import { narrationFile } from "../../shared/speech/source";
+const audioFiles: Record<string, { duration: number; audioFile?: string }> =
+  timingData;

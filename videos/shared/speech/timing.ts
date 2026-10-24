@@ -8,6 +8,9 @@ export type WordBoundary = {
   wordLength: number;
 };
 export type AudioTiming = {
+  audioFile?: string;
+  outputFormat?: string;
+  audioSha256?: string;
   duration: number;
   words: WordBoundary[];
   speech: string;
