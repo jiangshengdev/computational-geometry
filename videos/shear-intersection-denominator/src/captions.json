@@ -269,14 +269,14 @@
     {
       "text": "两边同时加上 Y，左边的 −Y 与 Y 抵消，",
       "startMs": 70,
-      "endMs": 3349,
+      "endMs": 3630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到 1/2=Y。",
-      "startMs": 3510,
-      "endMs": 5070,
+      "startMs": 3829,
+      "endMs": 5630,
       "timestampMs": null,
       "confidence": null
     }
@@ -513,49 +513,49 @@
     {
       "text": "先假设两个 b 都不为零。",
       "startMs": 70,
-      "endMs": 2190,
+      "endMs": 2150,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "方程两边减去 aX，",
       "startMs": 2230,
-      "endMs": 4550,
+      "endMs": 4590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "再除以非零的 b。",
-      "startMs": 4550,
-      "endMs": 5830,
+      "startMs": 4639,
+      "endMs": 5999,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "先用 −a 除以 b，",
-      "startMs": 5834,
-      "endMs": 7394,
+      "startMs": 6039,
+      "endMs": 7518,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "得到的商再乘 X；",
-      "startMs": 7434,
-      "endMs": 8633,
+      "text": "得到的商再乘以 X；",
+      "startMs": 7639,
+      "endMs": 9319,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "然后加上 c 除以 b 得到的商，",
-      "startMs": 9274,
-      "endMs": 11514,
+      "startMs": 9418,
+      "endMs": 11618,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "结果就是 Y。",
-      "startMs": 11636,
-      "endMs": 12676,
+      "startMs": 11618,
+      "endMs": 12618,
       "timestampMs": null,
       "confidence": null
     }

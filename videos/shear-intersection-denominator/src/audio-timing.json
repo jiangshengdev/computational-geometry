@@ -3539,131 +3539,417 @@
     "fingerprint": "848deb6b9091202977a4ad20f56bf2eb5962915e5c4400042cd4d528d9b4b220"
   },
   "227-15": {
-    "duration": 5.16,
+    "duration": 5.712,
     "words": [
       {
         "text": "两边",
         "startMs": 70,
-        "durationMs": 360,
+        "durationMs": 400,
         "textOffset": 0,
         "wordLength": 2
       },
       {
         "text": "同时",
-        "startMs": 430,
-        "durationMs": 400,
+        "startMs": 470,
+        "durationMs": 360,
         "textOffset": 2,
         "wordLength": 2
       },
       {
         "text": "加上",
         "startMs": 830,
-        "durationMs": 320,
+        "durationMs": 360,
         "textOffset": 4,
         "wordLength": 2
       },
       {
-        "text": "Y",
-        "startMs": 1150,
-        "durationMs": 320,
+        "text": "why",
+        "startMs": 1190,
+        "durationMs": 360,
         "textOffset": 6,
-        "wordLength": 1
+        "wordLength": 3
       },
       {
         "text": "。",
-        "startMs": 1470,
+        "startMs": 1550,
         "durationMs": 0,
-        "textOffset": 7,
+        "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "左边",
-        "startMs": 1630,
-        "durationMs": 440,
-        "textOffset": 8,
+        "startMs": 1750,
+        "durationMs": 400,
+        "textOffset": 10,
         "wordLength": 2
       },
       {
         "text": "的",
-        "startMs": 2070,
-        "durationMs": 120,
-        "textOffset": 10,
-        "wordLength": 1
-      },
-      {
-        "text": "负",
-        "startMs": 2190,
-        "durationMs": 159,
-        "textOffset": 11,
-        "wordLength": 1
-      },
-      {
-        "text": "Y",
-        "startMs": 2349,
+        "startMs": 2150,
         "durationMs": 120,
         "textOffset": 12,
         "wordLength": 1
       },
       {
-        "text": "与",
-        "startMs": 2469,
-        "durationMs": 121,
+        "text": "负",
+        "startMs": 2270,
+        "durationMs": 199,
         "textOffset": 13,
         "wordLength": 1
       },
       {
-        "text": "Y",
-        "startMs": 2590,
-        "durationMs": 120,
+        "text": "why",
+        "startMs": 2469,
+        "durationMs": 201,
         "textOffset": 14,
-        "wordLength": 1
+        "wordLength": 3
       },
       {
-        "text": "抵消",
-        "startMs": 2710,
-        "durationMs": 639,
-        "textOffset": 15,
-        "wordLength": 2
-      },
-      {
-        "text": "。",
-        "startMs": 3349,
-        "durationMs": 0,
+        "text": "与",
+        "startMs": 2670,
+        "durationMs": 199,
         "textOffset": 17,
         "wordLength": 1
       },
       {
-        "text": "得到二分之一",
-        "startMs": 3510,
-        "durationMs": 1040,
+        "text": "why",
+        "startMs": 2869,
+        "durationMs": 201,
         "textOffset": 18,
+        "wordLength": 3
+      },
+      {
+        "text": "抵消",
+        "startMs": 3070,
+        "durationMs": 560,
+        "textOffset": 21,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 3630,
+        "durationMs": 0,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "得到二分之一",
+        "startMs": 3829,
+        "durationMs": 1161,
+        "textOffset": 24,
         "wordLength": 6
       },
       {
         "text": "等于",
-        "startMs": 4550,
+        "startMs": 4990,
         "durationMs": 280,
-        "textOffset": 24,
+        "textOffset": 30,
         "wordLength": 2
       },
       {
-        "text": "Y",
-        "startMs": 4830,
-        "durationMs": 240,
-        "textOffset": 26,
-        "wordLength": 1
+        "text": "why",
+        "startMs": 5270,
+        "durationMs": 360,
+        "textOffset": 32,
+        "wordLength": 3
       },
       {
         "text": "。",
-        "startMs": 5070,
+        "startMs": 5630,
         "durationMs": 0,
-        "textOffset": 27,
+        "textOffset": 35,
         "wordLength": 1
       }
     ],
-    "speech": "两边同时加上Y。左边的负Y与Y抵消。得到二分之一等于Y。",
+    "speech": "两边同时加上why。左边的负why与why抵消。得到二分之一等于why。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "0af467df3073f1f43a69e98c8198eac9e71b42985ba7580c1f0bf4c620a4ab32"
+    "fingerprint": "493c6de999cdffb18a9698e9873575f2a7f071c9d92bf1ca2a5a21753fbd3d4b",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "d97a204c0f8069633df382074409cba98e85eafae2f036687c63385f6fb44541",
+      "synthesisWords": [
+        {
+          "text": "两边",
+          "startMs": 70,
+          "durationMs": 400,
+          "textOffset": 0,
+          "wordLength": 2
+        },
+        {
+          "text": "同时",
+          "startMs": 470,
+          "durationMs": 360,
+          "textOffset": 2,
+          "wordLength": 2
+        },
+        {
+          "text": "加上",
+          "startMs": 830,
+          "durationMs": 360,
+          "textOffset": 4,
+          "wordLength": 2
+        },
+        {
+          "text": "why",
+          "startMs": 1190,
+          "durationMs": 360,
+          "textOffset": 6,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 1550,
+          "durationMs": 0,
+          "textOffset": 9,
+          "wordLength": 1
+        },
+        {
+          "text": "左边",
+          "startMs": 1750,
+          "durationMs": 400,
+          "textOffset": 10,
+          "wordLength": 2
+        },
+        {
+          "text": "的",
+          "startMs": 2150,
+          "durationMs": 120,
+          "textOffset": 12,
+          "wordLength": 1
+        },
+        {
+          "text": "负",
+          "startMs": 2270,
+          "durationMs": 199,
+          "textOffset": 13,
+          "wordLength": 1
+        },
+        {
+          "text": "why",
+          "startMs": 2469,
+          "durationMs": 201,
+          "textOffset": 14,
+          "wordLength": 3
+        },
+        {
+          "text": "与",
+          "startMs": 2670,
+          "durationMs": 199,
+          "textOffset": 17,
+          "wordLength": 1
+        },
+        {
+          "text": "why",
+          "startMs": 2869,
+          "durationMs": 201,
+          "textOffset": 18,
+          "wordLength": 3
+        },
+        {
+          "text": "抵消",
+          "startMs": 3070,
+          "durationMs": 560,
+          "textOffset": 21,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 3630,
+          "durationMs": 0,
+          "textOffset": 23,
+          "wordLength": 1
+        },
+        {
+          "text": "得到二分之一",
+          "startMs": 3829,
+          "durationMs": 1161,
+          "textOffset": 24,
+          "wordLength": 6
+        },
+        {
+          "text": "等于",
+          "startMs": 4990,
+          "durationMs": 280,
+          "textOffset": 30,
+          "wordLength": 2
+        },
+        {
+          "text": "why",
+          "startMs": 5270,
+          "durationMs": 360,
+          "textOffset": 32,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 5630,
+          "durationMs": 0,
+          "textOffset": 35,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "c8e22df3ba2c4d35a732b3a26e73a35d",
+        "RecognitionStatus": "Success",
+        "Offset": 700000,
+        "Duration": 56200000,
+        "Channel": 0,
+        "DisplayText": "两边同时加上why左边的负why与why抵消得到1/2等于why。",
+        "SNR": 35.288166,
+        "NBest": [
+          {
+            "Confidence": 0.9820833,
+            "Lexical": "两边 同时 加上 why 左边 的 负 why 与 why 抵消 得到 二分之一 等于 why",
+            "ITN": "两边 同时 加上 why 左边 的 负 why 与 why 抵消 得到 1/2 等于 why",
+            "MaskedITN": "两边同时加上why左边的负why与why抵消得到1/2等于why",
+            "Display": "两边同时加上why左边的负why与why抵消得到1/2等于why。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 95,
+              "FluencyScore": 98,
+              "CompletenessScore": 100,
+              "PronScore": 96.6
+            },
+            "Words": [
+              {
+                "Word": "两边",
+                "Offset": 700000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "同时",
+                "Offset": 5100000,
+                "Duration": 3700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 85,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "加上",
+                "Offset": 8900000,
+                "Duration": 3400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "why",
+                "Offset": 12400000,
+                "Duration": 4900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "左边",
+                "Offset": 17600000,
+                "Duration": 4400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 22100000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "负",
+                "Offset": 23300000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "why",
+                "Offset": 25100000,
+                "Duration": 2300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 73,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 27500000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "why",
+                "Offset": 29100000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "抵消",
+                "Offset": 31300000,
+                "Duration": 5500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "得到",
+                "Offset": 37700000,
+                "Duration": 5900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "二分之一",
+                "Offset": 43700000,
+                "Duration": 6500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "等于",
+                "Offset": 50300000,
+                "Duration": 2700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "why",
+                "Offset": 53100000,
+                "Duration": 3800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "227-16": {
     "duration": 6.768,
@@ -6391,7 +6677,7 @@
     }
   },
   "228-05": {
-    "duration": 12.792,
+    "duration": 12.744,
     "words": [
       {
         "text": "先",
@@ -6403,48 +6689,48 @@
       {
         "text": "假设",
         "startMs": 390,
-        "durationMs": 400,
+        "durationMs": 440,
         "textOffset": 1,
         "wordLength": 2
       },
       {
         "text": "两",
-        "startMs": 790,
+        "startMs": 830,
         "durationMs": 160,
         "textOffset": 3,
         "wordLength": 1
       },
       {
         "text": "个",
-        "startMs": 950,
+        "startMs": 990,
         "durationMs": 120,
         "textOffset": 4,
         "wordLength": 1
       },
       {
         "text": "B",
-        "startMs": 1070,
+        "startMs": 1110,
         "durationMs": 200,
         "textOffset": 5,
         "wordLength": 1
       },
       {
         "text": "都不为",
-        "startMs": 1270,
+        "startMs": 1310,
         "durationMs": 480,
         "textOffset": 6,
         "wordLength": 3
       },
       {
         "text": "零",
-        "startMs": 1750,
-        "durationMs": 440,
+        "startMs": 1790,
+        "durationMs": 360,
         "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 2190,
+        "startMs": 2150,
         "durationMs": 0,
         "textOffset": 10,
         "wordLength": 1
@@ -6452,322 +6738,1148 @@
       {
         "text": "方程",
         "startMs": 2230,
-        "durationMs": 520,
+        "durationMs": 400,
         "textOffset": 11,
         "wordLength": 2
       },
       {
         "text": "两边",
-        "startMs": 2750,
-        "durationMs": 480,
+        "startMs": 2630,
+        "durationMs": 520,
         "textOffset": 13,
         "wordLength": 2
       },
       {
         "text": "减去",
-        "startMs": 3230,
-        "durationMs": 440,
+        "startMs": 3150,
+        "durationMs": 400,
         "textOffset": 15,
         "wordLength": 2
       },
       {
         "text": "A",
-        "startMs": 3670,
-        "durationMs": 159,
+        "startMs": 3550,
+        "durationMs": 200,
         "textOffset": 17,
         "wordLength": 1
       },
       {
-        "text": "乘",
-        "startMs": 3829,
-        "durationMs": 201,
+        "text": "乘以",
+        "startMs": 3750,
+        "durationMs": 360,
         "textOffset": 18,
-        "wordLength": 1
+        "wordLength": 2
       },
       {
         "text": "X",
-        "startMs": 4030,
-        "durationMs": 520,
-        "textOffset": 19,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 4550,
-        "durationMs": 0,
+        "startMs": 4110,
+        "durationMs": 480,
         "textOffset": 20,
         "wordLength": 1
       },
       {
-        "text": "再",
-        "startMs": 4550,
-        "durationMs": 280,
+        "text": "。",
+        "startMs": 4590,
+        "durationMs": 0,
         "textOffset": 21,
         "wordLength": 1
       },
       {
-        "text": "除",
-        "startMs": 4830,
-        "durationMs": 160,
+        "text": "再",
+        "startMs": 4639,
+        "durationMs": 240,
         "textOffset": 22,
         "wordLength": 1
       },
       {
-        "text": "以",
-        "startMs": 4990,
-        "durationMs": 160,
+        "text": "除",
+        "startMs": 4879,
+        "durationMs": 200,
         "textOffset": 23,
         "wordLength": 1
       },
       {
-        "text": "非",
-        "startMs": 5150,
-        "durationMs": 200,
+        "text": "以",
+        "startMs": 5079,
+        "durationMs": 160,
         "textOffset": 24,
         "wordLength": 1
       },
       {
-        "text": "零",
-        "startMs": 5350,
-        "durationMs": 120,
+        "text": "非",
+        "startMs": 5239,
+        "durationMs": 200,
         "textOffset": 25,
         "wordLength": 1
       },
       {
-        "text": "的",
-        "startMs": 5470,
+        "text": "零",
+        "startMs": 5439,
         "durationMs": 120,
         "textOffset": 26,
         "wordLength": 1
       },
       {
-        "text": "B",
-        "startMs": 5590,
-        "durationMs": 240,
+        "text": "的",
+        "startMs": 5559,
+        "durationMs": 120,
         "textOffset": 27,
         "wordLength": 1
       },
       {
-        "text": "。",
-        "startMs": 5830,
-        "durationMs": 0,
+        "text": "B",
+        "startMs": 5679,
+        "durationMs": 320,
         "textOffset": 28,
         "wordLength": 1
       },
       {
-        "text": "先",
-        "startMs": 5834,
-        "durationMs": 320,
+        "text": "。",
+        "startMs": 5999,
+        "durationMs": 0,
         "textOffset": 29,
         "wordLength": 1
       },
       {
-        "text": "用",
-        "startMs": 6154,
-        "durationMs": 160,
+        "text": "先",
+        "startMs": 6039,
+        "durationMs": 320,
         "textOffset": 30,
         "wordLength": 1
       },
       {
-        "text": "负",
-        "startMs": 6314,
+        "text": "用",
+        "startMs": 6359,
         "durationMs": 160,
         "textOffset": 31,
         "wordLength": 1
       },
       {
-        "text": "A",
-        "startMs": 6474,
-        "durationMs": 200,
+        "text": "负",
+        "startMs": 6519,
+        "durationMs": 160,
         "textOffset": 32,
         "wordLength": 1
       },
       {
-        "text": "除",
-        "startMs": 6674,
-        "durationMs": 200,
+        "text": "A",
+        "startMs": 6679,
+        "durationMs": 199,
         "textOffset": 33,
         "wordLength": 1
       },
       {
-        "text": "以",
-        "startMs": 6874,
-        "durationMs": 160,
+        "text": "除",
+        "startMs": 6878,
+        "durationMs": 201,
         "textOffset": 34,
         "wordLength": 1
       },
       {
-        "text": "B",
-        "startMs": 7034,
-        "durationMs": 360,
+        "text": "以",
+        "startMs": 7079,
+        "durationMs": 160,
         "textOffset": 35,
         "wordLength": 1
       },
       {
-        "text": "。",
-        "startMs": 7394,
-        "durationMs": 0,
+        "text": "B",
+        "startMs": 7239,
+        "durationMs": 279,
         "textOffset": 36,
         "wordLength": 1
       },
       {
-        "text": "得到",
-        "startMs": 7434,
-        "durationMs": 359,
+        "text": "。",
+        "startMs": 7518,
+        "durationMs": 0,
         "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "得到",
+        "startMs": 7639,
+        "durationMs": 319,
+        "textOffset": 38,
         "wordLength": 2
       },
       {
         "text": "的",
-        "startMs": 7793,
+        "startMs": 7958,
         "durationMs": 121,
-        "textOffset": 39,
-        "wordLength": 1
-      },
-      {
-        "text": "商",
-        "startMs": 7914,
-        "durationMs": 199,
         "textOffset": 40,
         "wordLength": 1
       },
       {
-        "text": "再",
-        "startMs": 8113,
-        "durationMs": 161,
+        "text": "商",
+        "startMs": 8079,
+        "durationMs": 240,
         "textOffset": 41,
         "wordLength": 1
       },
       {
-        "text": "乘",
-        "startMs": 8274,
-        "durationMs": 200,
+        "text": "再",
+        "startMs": 8319,
+        "durationMs": 159,
         "textOffset": 42,
         "wordLength": 1
       },
       {
-        "text": "X",
-        "startMs": 8474,
-        "durationMs": 159,
+        "text": "乘以",
+        "startMs": 8478,
+        "durationMs": 361,
         "textOffset": 43,
+        "wordLength": 2
+      },
+      {
+        "text": "X",
+        "startMs": 8839,
+        "durationMs": 480,
+        "textOffset": 45,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 8633,
+        "startMs": 9319,
         "durationMs": 0,
-        "textOffset": 44,
+        "textOffset": 46,
         "wordLength": 1
       },
       {
         "text": "然后",
-        "startMs": 9274,
-        "durationMs": 399,
-        "textOffset": 45,
+        "startMs": 9418,
+        "durationMs": 360,
+        "textOffset": 47,
         "wordLength": 2
       },
       {
         "text": "加",
-        "startMs": 9673,
-        "durationMs": 161,
-        "textOffset": 47,
-        "wordLength": 1
-      },
-      {
-        "text": "上",
-        "startMs": 9834,
-        "durationMs": 240,
-        "textOffset": 48,
-        "wordLength": 1
-      },
-      {
-        "text": "C",
-        "startMs": 10074,
-        "durationMs": 200,
+        "startMs": 9778,
+        "durationMs": 160,
         "textOffset": 49,
         "wordLength": 1
       },
       {
-        "text": "除",
-        "startMs": 10274,
-        "durationMs": 160,
+        "text": "上",
+        "startMs": 9938,
+        "durationMs": 200,
         "textOffset": 50,
         "wordLength": 1
       },
       {
-        "text": "以",
-        "startMs": 10434,
-        "durationMs": 160,
+        "text": "C",
+        "startMs": 10138,
+        "durationMs": 200,
         "textOffset": 51,
         "wordLength": 1
       },
       {
-        "text": "B",
-        "startMs": 10594,
-        "durationMs": 200,
+        "text": "除",
+        "startMs": 10338,
+        "durationMs": 160,
         "textOffset": 52,
         "wordLength": 1
       },
       {
-        "text": "得到",
-        "startMs": 10794,
-        "durationMs": 280,
+        "text": "以",
+        "startMs": 10498,
+        "durationMs": 160,
         "textOffset": 53,
+        "wordLength": 1
+      },
+      {
+        "text": "B",
+        "startMs": 10658,
+        "durationMs": 200,
+        "textOffset": 54,
+        "wordLength": 1
+      },
+      {
+        "text": "得到",
+        "startMs": 10858,
+        "durationMs": 280,
+        "textOffset": 55,
         "wordLength": 2
       },
       {
         "text": "的",
-        "startMs": 11074,
+        "startMs": 11138,
         "durationMs": 120,
-        "textOffset": 55,
-        "wordLength": 1
-      },
-      {
-        "text": "商",
-        "startMs": 11194,
-        "durationMs": 320,
-        "textOffset": 56,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 11514,
-        "durationMs": 0,
         "textOffset": 57,
         "wordLength": 1
       },
       {
-        "text": "结果",
-        "startMs": 11636,
-        "durationMs": 400,
-        "textOffset": 58,
-        "wordLength": 2
-      },
-      {
-        "text": "就是",
-        "startMs": 12036,
-        "durationMs": 280,
-        "textOffset": 60,
-        "wordLength": 2
-      },
-      {
-        "text": "Y",
-        "startMs": 12316,
+        "text": "商",
+        "startMs": 11258,
         "durationMs": 360,
-        "textOffset": 62,
+        "textOffset": 58,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 12676,
+        "startMs": 11618,
         "durationMs": 0,
-        "textOffset": 63,
+        "textOffset": 59,
+        "wordLength": 1
+      },
+      {
+        "text": "结果",
+        "startMs": 11618,
+        "durationMs": 440,
+        "textOffset": 60,
+        "wordLength": 2
+      },
+      {
+        "text": "就是",
+        "startMs": 12058,
+        "durationMs": 279,
+        "textOffset": 62,
+        "wordLength": 2
+      },
+      {
+        "text": "Y",
+        "startMs": 12337,
+        "durationMs": 281,
+        "textOffset": 64,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 12618,
+        "durationMs": 0,
+        "textOffset": 65,
         "wordLength": 1
       }
     ],
-    "speech": "先假设两个B都不为零。方程两边减去A乘X。再除以非零的B。先用负A除以B。得到的商再乘X。然后加上C除以B得到的商。结果就是Y。",
+    "speech": "先假设两个B都不为零。方程两边减去A乘以X。再除以非零的B。先用负A除以B。得到的商再乘以X。然后加上C除以B得到的商。结果就是Y。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "f5842278b5c2631e87bffac4411d6bfe46333b620825d0ef588f397ca21921cf"
+    "fingerprint": "9a8487c20af671877530a5695aeb7f32f01ddd6ca25af7b2a79857f256bb8e8d",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "b8522b9bcd3317ef96d3622a3f82317b8823396ff370425dddcaa6debe923011",
+      "synthesisWords": [
+        {
+          "text": "先",
+          "startMs": 70,
+          "durationMs": 320,
+          "textOffset": 0,
+          "wordLength": 1
+        },
+        {
+          "text": "假设",
+          "startMs": 390,
+          "durationMs": 440,
+          "textOffset": 1,
+          "wordLength": 2
+        },
+        {
+          "text": "两",
+          "startMs": 830,
+          "durationMs": 160,
+          "textOffset": 3,
+          "wordLength": 1
+        },
+        {
+          "text": "个",
+          "startMs": 990,
+          "durationMs": 120,
+          "textOffset": 4,
+          "wordLength": 1
+        },
+        {
+          "text": "B",
+          "startMs": 1110,
+          "durationMs": 200,
+          "textOffset": 5,
+          "wordLength": 1
+        },
+        {
+          "text": "都不为",
+          "startMs": 1310,
+          "durationMs": 480,
+          "textOffset": 6,
+          "wordLength": 3
+        },
+        {
+          "text": "零",
+          "startMs": 1790,
+          "durationMs": 360,
+          "textOffset": 9,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 2150,
+          "durationMs": 0,
+          "textOffset": 10,
+          "wordLength": 1
+        },
+        {
+          "text": "方程",
+          "startMs": 2230,
+          "durationMs": 400,
+          "textOffset": 11,
+          "wordLength": 2
+        },
+        {
+          "text": "两边",
+          "startMs": 2630,
+          "durationMs": 520,
+          "textOffset": 13,
+          "wordLength": 2
+        },
+        {
+          "text": "减去",
+          "startMs": 3150,
+          "durationMs": 400,
+          "textOffset": 15,
+          "wordLength": 2
+        },
+        {
+          "text": "A",
+          "startMs": 3550,
+          "durationMs": 200,
+          "textOffset": 17,
+          "wordLength": 1
+        },
+        {
+          "text": "乘以",
+          "startMs": 3750,
+          "durationMs": 360,
+          "textOffset": 18,
+          "wordLength": 2
+        },
+        {
+          "text": "X",
+          "startMs": 4110,
+          "durationMs": 480,
+          "textOffset": 20,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 4590,
+          "durationMs": 0,
+          "textOffset": 21,
+          "wordLength": 1
+        },
+        {
+          "text": "再",
+          "startMs": 4639,
+          "durationMs": 240,
+          "textOffset": 22,
+          "wordLength": 1
+        },
+        {
+          "text": "除",
+          "startMs": 4879,
+          "durationMs": 200,
+          "textOffset": 23,
+          "wordLength": 1
+        },
+        {
+          "text": "以",
+          "startMs": 5079,
+          "durationMs": 160,
+          "textOffset": 24,
+          "wordLength": 1
+        },
+        {
+          "text": "非",
+          "startMs": 5239,
+          "durationMs": 200,
+          "textOffset": 25,
+          "wordLength": 1
+        },
+        {
+          "text": "零",
+          "startMs": 5439,
+          "durationMs": 120,
+          "textOffset": 26,
+          "wordLength": 1
+        },
+        {
+          "text": "的",
+          "startMs": 5559,
+          "durationMs": 120,
+          "textOffset": 27,
+          "wordLength": 1
+        },
+        {
+          "text": "B",
+          "startMs": 5679,
+          "durationMs": 320,
+          "textOffset": 28,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 5999,
+          "durationMs": 0,
+          "textOffset": 29,
+          "wordLength": 1
+        },
+        {
+          "text": "先",
+          "startMs": 6039,
+          "durationMs": 320,
+          "textOffset": 30,
+          "wordLength": 1
+        },
+        {
+          "text": "用",
+          "startMs": 6359,
+          "durationMs": 160,
+          "textOffset": 31,
+          "wordLength": 1
+        },
+        {
+          "text": "负",
+          "startMs": 6519,
+          "durationMs": 160,
+          "textOffset": 32,
+          "wordLength": 1
+        },
+        {
+          "text": "A",
+          "startMs": 6679,
+          "durationMs": 199,
+          "textOffset": 33,
+          "wordLength": 1
+        },
+        {
+          "text": "除",
+          "startMs": 6878,
+          "durationMs": 201,
+          "textOffset": 34,
+          "wordLength": 1
+        },
+        {
+          "text": "以",
+          "startMs": 7079,
+          "durationMs": 160,
+          "textOffset": 35,
+          "wordLength": 1
+        },
+        {
+          "text": "B",
+          "startMs": 7239,
+          "durationMs": 279,
+          "textOffset": 36,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 7518,
+          "durationMs": 0,
+          "textOffset": 37,
+          "wordLength": 1
+        },
+        {
+          "text": "得到",
+          "startMs": 7639,
+          "durationMs": 319,
+          "textOffset": 38,
+          "wordLength": 2
+        },
+        {
+          "text": "的",
+          "startMs": 7958,
+          "durationMs": 121,
+          "textOffset": 40,
+          "wordLength": 1
+        },
+        {
+          "text": "商",
+          "startMs": 8079,
+          "durationMs": 240,
+          "textOffset": 41,
+          "wordLength": 1
+        },
+        {
+          "text": "再",
+          "startMs": 8319,
+          "durationMs": 159,
+          "textOffset": 42,
+          "wordLength": 1
+        },
+        {
+          "text": "乘以",
+          "startMs": 8478,
+          "durationMs": 361,
+          "textOffset": 43,
+          "wordLength": 2
+        },
+        {
+          "text": "X",
+          "startMs": 8839,
+          "durationMs": 480,
+          "textOffset": 45,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 9319,
+          "durationMs": 0,
+          "textOffset": 46,
+          "wordLength": 1
+        },
+        {
+          "text": "然后",
+          "startMs": 9418,
+          "durationMs": 360,
+          "textOffset": 47,
+          "wordLength": 2
+        },
+        {
+          "text": "加",
+          "startMs": 9778,
+          "durationMs": 160,
+          "textOffset": 49,
+          "wordLength": 1
+        },
+        {
+          "text": "上",
+          "startMs": 9938,
+          "durationMs": 200,
+          "textOffset": 50,
+          "wordLength": 1
+        },
+        {
+          "text": "C",
+          "startMs": 10138,
+          "durationMs": 200,
+          "textOffset": 51,
+          "wordLength": 1
+        },
+        {
+          "text": "除",
+          "startMs": 10338,
+          "durationMs": 160,
+          "textOffset": 52,
+          "wordLength": 1
+        },
+        {
+          "text": "以",
+          "startMs": 10498,
+          "durationMs": 160,
+          "textOffset": 53,
+          "wordLength": 1
+        },
+        {
+          "text": "B",
+          "startMs": 10658,
+          "durationMs": 200,
+          "textOffset": 54,
+          "wordLength": 1
+        },
+        {
+          "text": "得到",
+          "startMs": 10858,
+          "durationMs": 280,
+          "textOffset": 55,
+          "wordLength": 2
+        },
+        {
+          "text": "的",
+          "startMs": 11138,
+          "durationMs": 120,
+          "textOffset": 57,
+          "wordLength": 1
+        },
+        {
+          "text": "商",
+          "startMs": 11258,
+          "durationMs": 360,
+          "textOffset": 58,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 11618,
+          "durationMs": 0,
+          "textOffset": 59,
+          "wordLength": 1
+        },
+        {
+          "text": "结果",
+          "startMs": 11618,
+          "durationMs": 440,
+          "textOffset": 60,
+          "wordLength": 2
+        },
+        {
+          "text": "就是",
+          "startMs": 12058,
+          "durationMs": 279,
+          "textOffset": 62,
+          "wordLength": 2
+        },
+        {
+          "text": "Y",
+          "startMs": 12337,
+          "durationMs": 281,
+          "textOffset": 64,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 12618,
+          "durationMs": 0,
+          "textOffset": 65,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "3e2af07b92364a4c84352c7b1998d3ef",
+        "RecognitionStatus": "Success",
+        "Offset": 800000,
+        "Duration": 126400000,
+        "Channel": 0,
+        "DisplayText": "先假设两个B都不为零，方程两边减去A乘以X，再除以非零的B，先用负A除以B得到的商再乘以X，然后加上C除以B，得到的商结果就是Y。",
+        "SNR": 47.773144,
+        "NBest": [
+          {
+            "Confidence": 0.9651048,
+            "Lexical": "先假 设 两 个 B 都 不为 零 方程 两边 减去 A 乘 以 X 再 除 以非 零 的 B 先 用 负 A 除 以 B 得到 的 商 再 乘以 X 然后 加上 C 除 以 B 得到 的 商 结果 就 是 Y",
+            "ITN": "先假 设 两 个 B 都 不为 零 方程 两边 减去 A 乘 以 X 再 除 以非 零 的 B 先 用 负 A 除 以 B 得到 的 商 再 乘以 X 然后 加上 C 除 以 B 得到 的 商 结果 就 是 Y",
+            "MaskedITN": "先假设两个b都不为零方程两边减去a乘以x再除以非零的b先用负a除以b得到的商再乘以x然后加上c除以b得到的商结果就是y",
+            "Display": "先假设两个B都不为零，方程两边减去A乘以X，再除以非零的B，先用负A除以B得到的商再乘以X，然后加上C除以B，得到的商结果就是Y。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 91,
+              "FluencyScore": 96,
+              "CompletenessScore": 89,
+              "PronScore": 90.8
+            },
+            "Words": [
+              {
+                "Word": "先假",
+                "Offset": 800000,
+                "Duration": 5300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "设",
+                "Offset": 6200000,
+                "Duration": 2500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "两",
+                "Offset": 8800000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "个",
+                "Offset": 10400000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "B",
+                "Offset": 11600000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 58,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "都",
+                "Offset": 13600000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "不为",
+                "Offset": 15400000,
+                "Duration": 2700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 60,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "零",
+                "Offset": 18200000,
+                "Duration": 2900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "方程",
+                "Offset": 21200000,
+                "Duration": 5300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "两边",
+                "Offset": 26600000,
+                "Duration": 5100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "减去",
+                "Offset": 31800000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "A",
+                "Offset": 36200000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘",
+                "Offset": 38000000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 40000000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "X",
+                "Offset": 41100000,
+                "Duration": 5600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "再",
+                "Offset": 47000000,
+                "Duration": 2700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "除",
+                "Offset": 49800000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以非",
+                "Offset": 51800000,
+                "Duration": 3400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "零",
+                "Offset": 55300000,
+                "Duration": 1200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 56600000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "B",
+                "Offset": 57700000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 49,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "先",
+                "Offset": 61400000,
+                "Duration": 3000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "用",
+                "Offset": 64500000,
+                "Duration": 1600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "负",
+                "Offset": 66200000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 50,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "A",
+                "Offset": 67800000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "除",
+                "Offset": 69800000,
+                "Duration": 1800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 71700000,
+                "Duration": 1400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "B",
+                "Offset": 73200000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 58,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "得到",
+                "Offset": 76800000,
+                "Duration": 3700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 80600000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "商",
+                "Offset": 81800000,
+                "Duration": 2300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 73,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "再",
+                "Offset": 84200000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘以",
+                "Offset": 85800000,
+                "Duration": 3000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 60,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "X",
+                "Offset": 88900000,
+                "Duration": 5400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 79,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "然后",
+                "Offset": 94600000,
+                "Duration": 3900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "加上",
+                "Offset": 98600000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "C",
+                "Offset": 102000000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "除",
+                "Offset": 104200000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 106000000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 88,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "B",
+                "Offset": 107400000,
+                "Duration": 2000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 59,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "得到",
+                "Offset": 109500000,
+                "Duration": 2600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 112200000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "商",
+                "Offset": 113200000,
+                "Duration": 3700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "结果",
+                "Offset": 117200000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "就",
+                "Offset": 121600000,
+                "Duration": 1200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "是",
+                "Offset": 122900000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "Y",
+                "Offset": 124000000,
+                "Duration": 3200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "228-06": {
     "duration": 11.832,
