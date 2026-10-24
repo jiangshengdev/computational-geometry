@@ -56,7 +56,9 @@ export const MathText = ({
   numberRoles?: (TeachingRole | undefined)[];
   colorize?: boolean;
 }) => {
-  const parts = String(children).split(/([A-Za-z0-9′'−+×=<>()[\],./\s-]+)/g);
+  const parts = String(children).split(
+    /([A-Za-z0-9₀-₉⁰¹²³⁴⁵⁶⁷⁸⁹′'−+×=<>≠≤≥→↓↑|_^{}()[\],./\s-]+)/g,
+  );
   let number = 0;
   return (
     <>
@@ -64,7 +66,7 @@ export const MathText = ({
         const count = [...part.matchAll(/\d+(?:\.\d+)?/g)].length;
         const roles = numberRoles.slice(number, number + count);
         number += count;
-        return /[A-Za-z0-9]/.test(part) ? (
+        return /[A-Za-z0-9₀-₉⁰¹²³⁴⁵⁶⁷⁸⁹−+×=<>≠≤≥→↓↑|_^]/.test(part) ? (
           <Fragment key={i}>
             {part.slice(0, part.length - part.trimStart().length)}
             <Latex numberRoles={roles} colorize={colorize}>
@@ -73,6 +75,22 @@ export const MathText = ({
                 .replace(/′/g, "'")
                 .replace(/−/g, "-")
                 .replace(/×/g, "\\times ")
+                .replace(/≠/g, "\\ne ")
+                .replace(/≤/g, "\\le ")
+                .replace(/≥/g, "\\ge ")
+                .replace(/→/g, "\\to ")
+                .replace(/↓/g, "\\downarrow ")
+                .replace(/↑/g, "\\uparrow ")
+                .replace(
+                  /[₀-₉]+/g,
+                  (digits) =>
+                    `_{${Array.from(digits, (digit) => "₀₁₂₃₄₅₆₇₈₉".indexOf(digit)).join("")}}`,
+                )
+                .replace(
+                  /[⁰¹²³⁴⁵⁶⁷⁸⁹]+/g,
+                  (digits) =>
+                    `^{${Array.from(digits, (digit) => "⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(digit)).join("")}}`,
+                )
                 .replace(/(-?\d+)\/(\d+)/g, "\\frac{$1}{$2}")}
             </Latex>
             {part.slice(part.trimEnd().length)}
