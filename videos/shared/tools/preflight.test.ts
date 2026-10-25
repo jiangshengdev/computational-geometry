@@ -4,77 +4,60 @@ import {
   mkdtempSync,
   mkdirSync,
   readFileSync,
+  readdirSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { requirePreflight, runPreflight } from "./preflight.ts";
+import { runPreflight } from "./preflight.ts";
 
-test("preflight gates export on complete checks and unchanged inputs", () => {
-  const base = mkdtempSync(join(tmpdir(), "video-preflight-test-"));
-  const root = join(base, "episode");
-  const browser = join(base, "browser");
+test("standalone preflight runs complete checks and reports failures without records", () => {
+  const root = mkdtempSync(join(tmpdir(), "video-preflight-test-"));
   const put = (path: string, value: string) =>
     writeFileSync(join(root, path), value);
+  const checker = (name: string) =>
+    `import {appendFileSync} from "node:fs"; appendFileSync("checks.log", ${JSON.stringify(name + "\n")});`;
   try {
-    for (const dir of ["src", "scripts", "public", "out", "node_modules/.pnpm"])
-      mkdirSync(join(root, dir), { recursive: true });
-    mkdirSync(join(base, "shared"));
-    writeFileSync(browser, "browser version 1");
+    mkdirSync(join(root, "scripts"));
     put("package.json", '{"type":"module"}');
-    put("src/scene.ts", "export const scene = 1;");
-    put("public/audio.wav", "audio 1");
-    put("node_modules/.pnpm/lock.yaml", "dependencies: 1");
-    const check =
-      'import {appendFileSync} from "node:fs"; appendFileSync("out/checks.log", "checked\\n");';
-    put("scripts/check-content.ts", check);
-    put("scripts/check-layout.ts", check);
-    assert.throws(() => requirePreflight(root, browser), /No completed/);
-    put("out/export-preflight.json", "invalid json");
-    assert.throws(() => requirePreflight(root, browser), /No completed/);
-    runPreflight(root, browser);
-    requirePreflight(root, browser);
-    put("out/rendered.png", "new output");
-    requirePreflight(root, browser);
-    assert.equal(
-      readFileSync(join(root, "out/checks.log"), "utf8"),
-      "checked\nchecked\n",
-    );
-    for (const [path, value] of [
-      ["src/scene.ts", "export const scene = 2;"],
-      ["public/audio.wav", "audio 2"],
-      ["remotion.config.ts", "export {};"],
-      ["node_modules/.pnpm/lock.yaml", "dependencies: 2"],
-    ]) {
-      put(path, value);
-      assert.throws(
-        () => requirePreflight(root, browser),
-        /inputs have changed/,
-      );
-      runPreflight(root, browser);
-    }
-    writeFileSync(join(base, "shared/check.ts"), "changed shared checker");
-    assert.throws(() => requirePreflight(root, browser), /inputs have changed/);
-    runPreflight(root, browser);
-    writeFileSync(browser, "browser version 2");
-    assert.throws(() => requirePreflight(root, browser), /inputs have changed/);
-    runPreflight(root, browser);
-    // Failure must invalidate even a previous successful record.
-    put("scripts/check-layout.ts", "process.exit(1);");
-    assert.throws(() => runPreflight(root, browser), /failed/);
-    assert.throws(() => requirePreflight(root, browser), /No completed/);
-    // Interrupted checks must never publish a success record.
-    put("scripts/check-layout.ts", 'process.kill(process.pid, "SIGTERM");');
-    assert.throws(() => runPreflight(root, browser), /failed/);
-    assert.throws(() => requirePreflight(root, browser), /No completed/);
     put(
-      "scripts/check-layout.ts",
-      'import {writeFileSync} from "node:fs"; writeFileSync("src/scene.ts", "changed during check");',
+      "scripts/check-content.ts",
+      checker("content") +
+        'if (!process.argv.includes("--decode")) process.exit(2);',
     );
-    assert.throws(() => runPreflight(root, browser), /Inputs changed during/);
-    assert.throws(() => requirePreflight(root, browser), /No completed/);
+    put("scripts/check-layout.ts", checker("layout"));
+    runPreflight(root, "/unused-test-browser");
+    assert.equal(
+      readFileSync(join(root, "checks.log"), "utf8"),
+      "content\nlayout\n",
+    );
+    assert.deepEqual(readdirSync(root).sort(), [
+      "checks.log",
+      "package.json",
+      "scripts",
+    ]);
+    put("scripts/check-content.ts", "process.exit(1);");
+    assert.throws(
+      () => runPreflight(root, "/unused-test-browser"),
+      /check-content.ts failed/,
+    );
+    assert.equal(
+      readFileSync(join(root, "checks.log"), "utf8"),
+      "content\nlayout\n",
+    );
+    put("scripts/check-content.ts", checker("content"));
+    put("scripts/check-layout.ts", 'process.kill(process.pid, "SIGTERM");');
+    assert.throws(
+      () => runPreflight(root, "/unused-test-browser"),
+      /check-layout.ts failed/,
+    );
+    assert.deepEqual(readdirSync(root).sort(), [
+      "checks.log",
+      "package.json",
+      "scripts",
+    ]);
   } finally {
-    rmSync(base, { recursive: true });
+    rmSync(root, { recursive: true });
   }
 });

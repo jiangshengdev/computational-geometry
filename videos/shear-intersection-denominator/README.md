@@ -81,11 +81,11 @@ pnpm --config.verify-deps-before-run=false run video:check-layout --screenshots
 先按[唯一浏览器约束](../../docs/agents/videos/configuration.md#唯一浏览器约束)设置 `REMOTION_BROWSER_EXECUTABLE`，指向已安装的匹配版本 Headless Shell；本工程当前要求 `157.0.8080.0`，脚本会从实际安装的 Remotion 再次读取要求并核验真实路径和版本。入口不下载或回退浏览器。
 
 ```sh
-# 独立预检并保存绑定当前输入的通过记录；导出入口只核对记录
+# 独立预检，仅报告结果；是否需要运行由人类判断，不影响后续命令
 pnpm --config.verify-deps-before-run=false run video:preflight
 # 只展示入口参数，不生成帧或音频
 pnpm --config.verify-deps-before-run=false run video:export --dry-run
-# 仅供用户自行执行：内容与布局门禁通过后，生成 PNG 帧序列
+# 仅供用户自行执行：生成 PNG 帧序列，不自动预检或读取预检记录
 pnpm --config.verify-deps-before-run=false run video:export
 ```
 

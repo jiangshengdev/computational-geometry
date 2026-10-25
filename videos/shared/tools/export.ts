@@ -4,7 +4,6 @@ import { existsSync } from "node:fs";
 import { createServer } from "node:net";
 import { resolve } from "node:path";
 import { verifiedBrowser } from "./browser.ts";
-import { requirePreflight } from "./preflight.ts";
 
 export async function exportVideo(
   root: string,
@@ -52,7 +51,6 @@ export async function exportVideo(
       throw Error(
         "Output already exists; preserve and inspect it before starting another export.",
       );
-    requirePreflight(root, browser);
     const allocator = createServer();
     await new Promise<void>((resolve) =>
       allocator.listen(0, "127.0.0.1", resolve),

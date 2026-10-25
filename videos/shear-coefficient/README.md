@@ -4,7 +4,7 @@
 
 ## 当前交付
 
-导出前先运行 `pnpm --config.verify-deps-before-run=false run video:preflight`，保存与当前输入匹配的完整检查记录。`video:export` 只核对该记录，不重复检查；缺失或失效时停止。详见[公共预检与导出说明](../../docs/agents/videos/operations.md#用户导出)。
+独立预检命令为 `pnpm --config.verify-deps-before-run=false run video:preflight`，仅报告检查结果，是否需要运行由人类判断。`video:export` 不依赖预检的执行或结果，不读取预检记录，也不重复检查。详见[公共预检与导出说明](../../docs/agents/videos/operations.md#用户导出)。
 
 `ShearCoefficient` 为完整第二集，共 20 页、69 段原速 Azure 配音，60 fps、28413 帧，总长 473.55 秒（7 分 53.55 秒）。包含独立开场、反例、减半预测、严格保序推导、三值练习和收束。减半预测及三项练习各保留 4 秒独立思考窗口；普通页完整停留至少 3 秒，密集推导页至少 5 秒。字幕统一使用默认中性色，包括字母、数字、点名和公式。
 

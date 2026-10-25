@@ -71,7 +71,7 @@ pnpm --config.verify-deps-before-run=false run video:check-layout --screenshots
 pnpm --config.verify-deps-before-run=false run video:export
 ```
 
-入口仅生成并保留 `out/shear-integer-coordinates-frames/` 的 PNG。先按[公共预检说明](../../docs/agents/videos/operations.md#用户导出)设置 `REMOTION_BROWSER_EXECUTABLE` 并独立运行 `pnpm --config.verify-deps-before-run=false run video:preflight`。导出核验浏览器及匹配的通过记录，不重复内容和布局检查；记录缺失或失效即停止。4K、60 fps、并发 4 保持不变；后续分阶段使用 H.265 硬件编码，并与同时间线 PCM 音轨封装为 MOV。该入口由用户运行；助手未执行视频渲染或导出。
+入口仅生成并保留 `out/shear-integer-coordinates-frames/` 的 PNG。先按[公共预检说明](../../docs/agents/videos/operations.md#用户导出)设置 `REMOTION_BROWSER_EXECUTABLE`，按需独立运行 `pnpm --config.verify-deps-before-run=false run video:preflight`。是否已经预检由人类判断；导出只核验自身运行条件，不读取预检记录或状态，也不重复内容和布局检查。4K、60 fps、并发 4 保持不变；后续分阶段使用 H.265 硬件编码，并与同时间线 PCM 音轨封装为 MOV。该入口由用户运行；助手未执行视频渲染或导出。
 
 ## 样例检查记录
 
