@@ -6,17 +6,21 @@ import { fps, timelineFor } from "./timeline";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Composition
-        id="Shear232"
-        component={SampleVideo}
-        durationInFrames={timelineFor().reduce(
-          (sum, row) => sum + row.durationInFrames,
-          0,
-        )}
-        fps={fps}
-        width={1920}
-        height={1080}
-      />
+      {[undefined, "232", "233", "234"].map((issue) => (
+        <Composition
+          key={issue ?? "full"}
+          id={issue ? `Shear${issue}` : "ShearSafeCoefficient"}
+          component={SampleVideo}
+          defaultProps={{ issue }}
+          durationInFrames={timelineFor(issue).reduce(
+            (sum, row) => sum + row.durationInFrames,
+            0,
+          )}
+          fps={fps}
+          width={1920}
+          height={1080}
+        />
+      ))}
       <Composition
         id="LayoutCheck"
         component={LayoutCheck}

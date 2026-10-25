@@ -2,6 +2,7 @@ import { createTeachingMathLines } from "../../shared/ui/TeachingMathLines";
 import { Subtitles } from "../../shared/ui/Subtitles";
 import { MathText, Latex, SvgMathText, colorMath } from "./MathText";
 import { pages, type Shot, type Line } from "./storyboard";
+import { ShearDiagram } from "./ShearDiagram";
 
 // Split only at authored teaching-group boundaries. Both columns stay in the
 // main scene, with cumulative steps; this is not a second dependency panel.
@@ -198,6 +199,11 @@ export function TeachingPage({
             <FractionDiagram showDistance={visibleStep >= 1} />
           </div>
         ) : null}
+        {page.shearDiagram ? (
+          <div style={{ width: 740, flexShrink: 0 }}>
+            <ShearDiagram kind={page.shearDiagram} step={visibleStep} />
+          </div>
+        ) : null}
         {mainColumns[shot.page].map((column, index) => (
           <div
             data-main-column
@@ -215,7 +221,10 @@ export function TeachingPage({
               style={{
                 width: "max-content",
                 marginInline:
-                  !page.context.length && !page.diagram && index === 0
+                  !page.context.length &&
+                  !page.diagram &&
+                  !page.shearDiagram &&
+                  index === 0
                     ? "auto"
                     : undefined,
               }}

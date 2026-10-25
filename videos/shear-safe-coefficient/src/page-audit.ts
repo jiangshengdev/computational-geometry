@@ -7,6 +7,34 @@ import {
 // Expectations come from #231/#232, independently of storyboard context data.
 // Inspect rendered KaTeX source and visibility, not only panel/row existence.
 const needed: Record<string, string[]> = {
+  difference: [
+    "M\\ge1",
+    "s>0",
+    "X_P<X_Q",
+    "X_Q-X_P\\ge\\frac1{64M^4}",
+    "|Y_Q-Y_P|\\le2M",
+  ],
+  power: ["M\\ge1", "s>0", "X_Q-X_P\\ge\\frac1{64M^4}", "s|Y_Q-Y_P|\\le2Ms"],
+  coefficient: [
+    "M\\ge1",
+    "s<\\frac1{128M^5}",
+    "|Y_Q-Y_P|\\le2M",
+    "X_Q-X_P\\ge\\frac1{64M^4}",
+  ],
+  budget: ["M\\ge1", "s=\\frac1{256(M+1)^5}<\\frac1{128M^5}"],
+  closure: [
+    "X_P<X_Q",
+    "s>0",
+    "X_Q-X_P\\ge\\frac1{64M^4}",
+    "|Y_Q-Y_P|\\le2M",
+    "2Ms<\\frac1{64M^4}",
+  ],
+  numbers: [
+    "s=\\frac1{256(M+1)^5}",
+    "s|Y_Q-Y_P|\\le2Ms",
+    "X_Q-X_P\\ge\\frac1{64M^4}",
+  ],
+  comparison: ["M=3", "s=\\frac1{262144}", "262144>0", "5184>0"],
   product: [
     "p,r\\in\\mathbb Z",
     "0<q,t\\le8M^2",
@@ -31,6 +59,19 @@ const firstUse: Record<
   string,
   { step: number; formula?: string; text?: string }[]
 > = {
+  height: [
+    { step: 3, formula: "-M\\le Y_P,Y_Q\\le M" },
+    { step: 4, formula: "|Y_Q-Y_P|\\le M-(-M)=2M" },
+    { step: 6, formula: "X_P<X_Q" },
+    { step: 7, formula: "X_Q-X_P\\ge\\frac1{64M^4}" },
+  ],
+  difference: [{ step: 5, formula: "s|Y_Q-Y_P|\\le2Ms" }],
+  power: [{ step: 4, formula: "\\frac1{128M^5}" }],
+  coefficient: [
+    { step: 1, formula: "s=\\frac1{256(M+1)^5}" },
+    { step: 3, formula: "256(M+1)^5>256M^5>128M^5" },
+  ],
+  closure: [{ step: 5, formula: "X'_P<X'_Q" }],
   recap: [
     { step: 4, text: "事件：输入端点与实际线段交点" },
     { step: 5, text: "表示这些坐标约分后的正分母" },
@@ -215,10 +256,21 @@ export function auditPage(
       !question ||
       !visible(question) ||
       !question.textContent?.includes("先想一想") ||
-      !sources.includes("2<6") ||
+      (pageId === "question-reciprocal" && !sources.includes("2<6")) ||
       visibleStep !== 1
     )
       errors.push("Question/example lost or answer revealed during silence");
+  }
+  const diagram = page.querySelector<HTMLElement>("[data-shear-diagram]");
+  if (diagram) {
+    for (const result of diagram.querySelectorAll<HTMLElement>(
+      "[data-shear-result], [data-shear-gap]",
+    )) {
+      if (visible(result) !== visibleStep >= 2)
+        errors.push("Shear result missing or revealed before explanation");
+    }
+    if (thinking && diagram.dataset.kind !== "equality")
+      errors.push("Wrong diagram during equality question");
   }
   checkDiagramLabels(
     [...page.querySelectorAll<HTMLElement>("[data-diagram-label]")],

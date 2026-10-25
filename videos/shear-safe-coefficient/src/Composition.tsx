@@ -33,10 +33,10 @@ export function ShotScene({
     </>
   );
 }
-export function SampleVideo() {
+export function SampleVideo({ issue }: { issue?: string }) {
   return (
     <>
-      {timelineFor().map((row) => (
+      {timelineFor(issue).map((row) => (
         <Sequence
           key={row.id}
           from={row.from}

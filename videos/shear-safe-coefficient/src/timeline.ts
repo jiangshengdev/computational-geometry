@@ -22,6 +22,34 @@ const shared = createShotTimeline({
 // intact, including the result explained later in that same row.
 export const readingLeadMs = 200;
 const rowPhrases: Record<string, [number, string][]> = {
+  "233-order": [
+    [6, "接下来"],
+    [7, "前面证明"],
+  ],
+  "233-03": [
+    [3, "新间隔"],
+    [4, "右边的点"],
+  ],
+  "233-06": [
+    [3, "五减一"],
+    [4, "两点移动"],
+  ],
+  "233-09": [
+    [3, "新间隔"],
+    [4, "缩短量一"],
+  ],
+  "233-17": [
+    [3, "把两个"],
+    [4, "它们分别"],
+  ],
+  "233-25": [
+    [2, "不能。新的"],
+    [3, "两个横坐标"],
+  ],
+  "234-05": [
+    [5, "二百五十六"],
+    [6, "这提供"],
+  ],
   "232-01": [
     [1, "全部输入"],
     [2, "M是"],

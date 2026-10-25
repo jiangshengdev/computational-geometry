@@ -37,7 +37,9 @@
       "pinyin": "de5"
     },
     "坐标。用",
-    { "letter": "Q" },
+    {
+      "letter": "Q"
+    },
     "表示约分后",
     {
       "text": "的正分母",
@@ -176,23 +178,48 @@
       "text": "横坐标不同的两点",
       "pinyin": "heng2 zuo4 biao1 bu4 tong2 de5 liang3 dian3"
     },
-    { "letter": "P" },
+    {
+      "letter": "P"
+    },
     "与",
-    { "letter": "Q" },
+    {
+      "letter": "Q"
+    },
     "。点",
-    { "letter": "P" },
-    { "text": "的横坐标", "pinyin": "de5 heng2 zuo4 biao1" },
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的横坐标",
+      "pinyin": "de5 heng2 zuo4 biao1"
+    },
     "记作",
-    { "letter": "X" },
+    {
+      "letter": "X"
+    },
     "下标",
-    { "letter": "P" },
+    {
+      "letter": "P"
+    },
     "。点",
-    { "letter": "Q" },
-    { "text": "的横坐标", "pinyin": "de5 heng2 zuo4 biao1" },
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的横坐标",
+      "pinyin": "de5 heng2 zuo4 biao1"
+    },
     "。记作带下标",
-    { "letter": "Q" },
-    { "text": "的", "pinyin": "de5" },
-    { "letter": "X" },
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "letter": "X"
+    },
     "。把这两个横坐标分别写成",
     {
       "letter": "Q"
@@ -663,5 +690,2368 @@
       "pinyin": "bu4 yi2 ding4"
     },
     "是真实最小间距。"
+  ],
+  "233-01": [
+    "先用",
+    {
+      "text": "便于",
+      "pinyin": "bian4 yu2"
+    },
+    "观察",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "数值",
+      "pinyin": "shu4 zhi2"
+    },
+    "示意。这",
+    {
+      "text": "不是",
+      "pinyin": "bu2 shi4"
+    },
+    "最终",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "。取点",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "坐标",
+    {
+      "text": "为零",
+      "pinyin": "wei2 ling2"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "零。点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "坐标",
+    {
+      "text": "为四",
+      "pinyin": "wei2 si4"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "二。",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    {
+      "letter": "S"
+    },
+    "等于",
+    {
+      "text": "二分之一",
+      "pinyin": "er4 fen1 zhi1 yi1"
+    },
+    "。"
+  ],
+  "233-02": [
+    "按剪切公式。点",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "仍",
+    {
+      "text": "为零",
+      "pinyin": "wei2 ling2"
+    },
+    "。点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "变成四加上",
+    {
+      "text": "二分之一",
+      "pinyin": "er4 fen1 zhi1 yi1"
+    },
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    "二。",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    "五。"
+  ],
+  "233-03": [
+    "新",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    {
+      "text": "为五",
+      "pinyin": "wei2 wu3"
+    },
+    "。大于原",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "四。右边",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "点",
+    {
+      "text": "更高",
+      "pinyin": "geng4 gao1"
+    },
+    "。向右多移。所以",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "增大。"
+  ],
+  "233-04": [
+    "保持示意",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    {
+      "text": "二分之一",
+      "pinyin": "er4 fen1 zhi1 yi1"
+    },
+    "。把点",
+    {
+      "letter": "P"
+    },
+    "改成零",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "二。点",
+    {
+      "letter": "Q"
+    },
+    "仍是四",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "二。现在两点",
+    {
+      "text": "一样",
+      "pinyin": "yi2 yang4"
+    },
+    "高。"
+  ],
+  "233-05": [
+    "两点都向右移动",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。新",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    {
+      "text": "分别",
+      "pinyin": "fen1 bie2"
+    },
+    "是",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "五。"
+  ],
+  "233-06": [
+    "五减",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "仍等于四。",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "原",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    {
+      "text": "相同",
+      "pinyin": "xiang1 tong2"
+    },
+    "。两点移动",
+    {
+      "text": "一样",
+      "pinyin": "yi2 yang4"
+    },
+    "多。",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    {
+      "text": "不变",
+      "pinyin": "bu2 bian4"
+    },
+    "。"
+  ],
+  "233-07": [
+    "再看点",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "坐标",
+    {
+      "text": "为零",
+      "pinyin": "wei2 ling2"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "二。点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "坐标",
+    {
+      "text": "为四",
+      "pinyin": "wei2 si4"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "零。示意",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "仍是",
+    {
+      "text": "二分之一",
+      "pinyin": "er4 fen1 zhi1 yi1"
+    },
+    "。这次左边",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "点",
+    {
+      "text": "更高",
+      "pinyin": "geng4 gao1"
+    },
+    "。"
+  ],
+  "233-08": [
+    "点",
+    {
+      "letter": "P"
+    },
+    "向右移动",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "不移动",
+      "pinyin": "bu4 yi2 dong4"
+    },
+    "。新",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    {
+      "text": "分别",
+      "pinyin": "fen1 bie2"
+    },
+    {
+      "text": "为一",
+      "pinyin": "wei2 yi1"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "四。"
+  ],
+  "233-09": [
+    "新",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "是四减",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "等于三。仍然",
+    {
+      "text": "为正",
+      "pinyin": "wei2 zheng4"
+    },
+    "。缩短量",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "小于原",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "四。所以",
+    {
+      "text": "不会",
+      "pinyin": "bu2 hui4"
+    },
+    "追上。下面",
+    {
+      "text": "只需",
+      "pinyin": "zhi3 xu1"
+    },
+    "防住",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "缩小",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "情况。"
+  ],
+  "233-10": [
+    "回到",
+    {
+      "text": "一般",
+      "pinyin": "yi4 ban1"
+    },
+    "情形。",
+    {
+      "letter": "M"
+    },
+    "至少",
+    {
+      "text": "为一",
+      "pinyin": "wei2 yi1"
+    },
+    "。按",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "定义。所有输入端点",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "高度都在负",
+    {
+      "letter": "M"
+    },
+    "到",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "之间",
+      "pinyin": "zhi1 jian1"
+    },
+    "。"
+  ],
+  "233-11": [
+    "线段上",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "点。",
+    {
+      "text": "不高于",
+      "pinyin": "bu4 gao1 yu2"
+    },
+    {
+      "text": "较高",
+      "pinyin": "jiao4 gao1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "端点。也",
+    {
+      "text": "不低于",
+      "pinyin": "bu4 di1 yu2"
+    },
+    {
+      "text": "较低",
+      "pinyin": "jiao4 di1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "端点。图中",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "实际交点同样",
+    {
+      "text": "处在",
+      "pinyin": "chu3 zai4"
+    },
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "范围内。"
+  ],
+  "233-12": [
+    {
+      "letter": "Y"
+    },
+    "下标",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    {
+      "letter": "Y"
+    },
+    "下标",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "分别",
+      "pinyin": "fen1 bie2"
+    },
+    "表示点",
+    {
+      "letter": "P"
+    },
+    "与点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "纵坐标。也就是高度。点",
+    {
+      "letter": "P"
+    },
+    "与点",
+    {
+      "letter": "Q"
+    },
+    "是输入端点或实际线段交点。所以",
+    {
+      "text": "它们",
+      "pinyin": "ta1 men5"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "高度都在负",
+    {
+      "letter": "M"
+    },
+    "到",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "之间",
+      "pinyin": "zhi1 jian1"
+    },
+    "。"
+  ],
+  "233-13": [
+    "最高高度是",
+    {
+      "letter": "M"
+    },
+    "。最低高度是负",
+    {
+      "letter": "M"
+    },
+    "。用最高减去最低。减去负",
+    {
+      "letter": "M"
+    },
+    "就是加上",
+    {
+      "letter": "M"
+    },
+    "。因此高度",
+    {
+      "text": "差的",
+      "pinyin": "cha1 de5"
+    },
+    "绝对值最多是二",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    "。"
+  ],
+  "233-14": [
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "界",
+    {
+      "text": "只用",
+      "pinyin": "zhi3 yong4"
+    },
+    "于端点",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "实际线段交点。",
+    {
+      "text": "不能",
+      "pinyin": "bu4 neng2"
+    },
+    "套用于任意",
+    {
+      "text": "延长线",
+      "pinyin": "yan2 chang2 xian4"
+    },
+    "交点。",
+    {
+      "text": "延长线",
+      "pinyin": "yan2 chang2 xian4"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "交点可能在线段外很远",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "地方",
+      "pinyin": "di4 fang5"
+    },
+    "。"
+  ],
+  "233-order": [
+    "接下来设点",
+    {
+      "letter": "P"
+    },
+    "在点",
+    {
+      "letter": "Q"
+    },
+    "左边。也就是点",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "小于点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "。选",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    {
+      "letter": "S"
+    },
+    "大于零。前面证明",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "距离下界。现在就是右边",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "减去左边",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "下界。"
+  ],
+  "233-15": [
+    "设点",
+    {
+      "letter": "P"
+    },
+    "原先在点",
+    {
+      "letter": "Q"
+    },
+    "左边。并选",
+    {
+      "letter": "S"
+    },
+    "大于零。",
+    {
+      "text": "撇号",
+      "pinyin": "pie3 hao4"
+    },
+    "表示剪切后",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "坐标。用点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "新",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "减去点",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "新",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "。",
+    {
+      "text": "分别",
+      "pinyin": "fen1 bie2"
+    },
+    "代入剪切公式。",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    "两个",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    {
+      "text": "相减",
+      "pinyin": "xiang1 jian3"
+    },
+    "。"
+  ],
+  "233-16": [
+    "去掉括号。第二个括号前是减号。因此",
+    {
+      "text": "里面",
+      "pinyin": "li3 mian5"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "两项。都要变成",
+    {
+      "text": "相反数",
+      "pinyin": "xiang1 fan3 shu4"
+    },
+    "。"
+  ],
+  "233-17": [
+    "把两个原",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "放在",
+    {
+      "text": "一起",
+      "pinyin": "yi4 qi3"
+    },
+    "。再从两个高度项中提出",
+    {
+      "letter": "S"
+    },
+    "。前项是点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "减点",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "。后项是",
+    {
+      "letter": "S"
+    },
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    "点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "高度减点",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "高度",
+    {
+      "text": "所得",
+      "pinyin": "suo3 de2"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "。",
+    {
+      "text": "它们",
+      "pinyin": "ta1 men5"
+    },
+    {
+      "text": "分别",
+      "pinyin": "fen1 bie2"
+    },
+    "是原",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "变化量。"
+  ],
+  "233-18": [
+    {
+      "letter": "S"
+    },
+    {
+      "text": "为正",
+      "pinyin": "wei2 zheng4"
+    },
+    "。高度",
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "绝对值",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "二",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    "。变化量",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "绝对值就",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "二",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    {
+      "text": "再乘",
+      "pinyin": "zai4 cheng2"
+    },
+    "以",
+    {
+      "letter": "S"
+    },
+    "。所以最大缩短量",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "二",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    {
+      "text": "再乘",
+      "pinyin": "zai4 cheng2"
+    },
+    "以",
+    {
+      "letter": "S"
+    },
+    "。"
+  ],
+  "233-19": [
+    "原",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "至少为六十四与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "四次方",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "。只要最大缩短量",
+    "严格小于",
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "下界。就能保证新",
+    {
+      "text": "横坐标差为正",
+      "pinyin": "heng2 zuo4 biao1 cha1 wei2 zheng4"
+    },
+    "。"
+  ],
+  "233-20": [
+    {
+      "text": "因为",
+      "pinyin": "yin1 wei4"
+    },
+    {
+      "letter": "M"
+    },
+    "至少",
+    {
+      "text": "为一",
+      "pinyin": "wei2 yi1"
+    },
+    "。所以二与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的乘积",
+      "pinyin": "de5 cheng2 ji1"
+    },
+    "大于零。"
+  ],
+  "233-21": [
+    "两边同除以",
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    "二与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的乘积",
+      "pinyin": "de5 cheng2 ji1"
+    },
+    "。",
+    {
+      "text": "不等号",
+      "pinyin": "bu4 deng3 hao4"
+    },
+    "方向",
+    {
+      "text": "不变",
+      "pinyin": "bu2 bian4"
+    },
+    "。左边",
+    {
+      "text": "只剩",
+      "pinyin": "zhi3 sheng4"
+    },
+    {
+      "letter": "S"
+    },
+    "。右边是",
+    {
+      "text": "间距",
+      "pinyin": "jian1 ju4"
+    },
+    "下界除以二与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的乘积",
+      "pinyin": "de5 cheng2 ji1"
+    },
+    "。"
+  ],
+  "233-22": [
+    "除以二与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    "。就是",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    "它",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "。把两个正",
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    {
+      "text": "相乘",
+      "pinyin": "xiang1 cheng2"
+    },
+    "。",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    {
+      "letter": "S"
+    },
+    "小于",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "二十八与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "。"
+  ],
+  "233-23": [
+    "这里六十四",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    "二等于",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "二十八。",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "四次方",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    "等于",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方。五次方来自",
+    {
+      "text": "间距",
+      "pinyin": "jian1 ju4"
+    },
+    "中",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "四次方。",
+    {
+      "text": "再乘",
+      "pinyin": "zai4 cheng2"
+    },
+    "高度",
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "中",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "一次方",
+      "pinyin": "yi1 ci4 fang1"
+    },
+    "。"
+  ],
+  "233-24": [
+    "如果原",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "是",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。缩短量也等于",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。还能保证严格左右顺序",
+    {
+      "text": "吗",
+      "pinyin": "ma5"
+    },
+    "？保留图式。安静想四秒。"
+  ],
+  "233-25": [
+    {
+      "text": "不能",
+      "pinyin": "bu4 neng2"
+    },
+    "。新",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "可能是",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "减",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "等于零。两个",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    {
+      "text": "相同",
+      "pinyin": "xiang1 tong2"
+    },
+    "。就",
+    {
+      "text": "不能",
+      "pinyin": "bu4 neng2"
+    },
+    "保证严格左右顺序。"
+  ],
+  "233-26": [
+    "所以最大缩短量必须严格小于",
+    {
+      "text": "间距",
+      "pinyin": "jian1 ju4"
+    },
+    "下界。",
+    {
+      "text": "我们",
+      "pinyin": "wo3 men5"
+    },
+    "要求",
+    {
+      "letter": "S"
+    },
+    "严格小于",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "二十八与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "。接下来选",
+    {
+      "text": "一个",
+      "pinyin": "yi2 ge4"
+    },
+    "满足条件",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "。"
+  ],
+  "234-01": [
+    {
+      "text": "我们",
+      "pinyin": "wo3 men5"
+    },
+    "选",
+    {
+      "letter": "S"
+    },
+    "等于二百五十六与",
+    {
+      "letter": "M"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "。也就是先算",
+    {
+      "letter": "M"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方。",
+    {
+      "text": "再乘",
+      "pinyin": "zai4 cheng2"
+    },
+    "以二百五十六。最后取整个",
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "。"
+  ],
+  "234-02": [
+    {
+      "letter": "M"
+    },
+    "至少",
+    {
+      "text": "为一",
+      "pinyin": "wei2 yi1"
+    },
+    "。因此",
+    {
+      "letter": "M"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "大于",
+    {
+      "letter": "M"
+    },
+    "。而且都是",
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    "。五个",
+    {
+      "text": "较大",
+      "pinyin": "jiao4 da4"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    {
+      "text": "相乘",
+      "pinyin": "xiang1 cheng2"
+    },
+    "。",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方也",
+    {
+      "text": "更大",
+      "pinyin": "geng4 da4"
+    },
+    "。"
+  ],
+  "234-03": [
+    "两边",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    "二百五十六。仍然保持大于关系。二百五十六又大于",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "二十八。所以最左边",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    "大于",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "二十八",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方。"
+  ],
+  "234-04": [
+    "这些",
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    "都",
+    {
+      "text": "为正",
+      "pinyin": "wei2 zheng4"
+    },
+    "。取",
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "后",
+    {
+      "text": "不等号",
+      "pinyin": "bu4 deng3 hao4"
+    },
+    "方向反过来。因此所选",
+    {
+      "letter": "S"
+    },
+    {
+      "text": "为正",
+      "pinyin": "wei2 zheng4"
+    },
+    "。而且严格小于",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "二十八与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "。"
+  ],
+  "234-05": [
+    "二百五十六是",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "二十八",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "两倍。再把",
+    {
+      "letter": "M"
+    },
+    "换成",
+    {
+      "letter": "M"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。",
+    {
+      "text": "两处",
+      "pinyin": "liang3 chu4"
+    },
+    "都让",
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    {
+      "text": "更大",
+      "pinyin": "geng4 da4"
+    },
+    "。",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    {
+      "text": "更小",
+      "pinyin": "geng4 xiao3"
+    },
+    "。这提供额外余量。是保守选择。并",
+    {
+      "text": "不是",
+      "pinyin": "bu2 shi4"
+    },
+    {
+      "text": "唯一",
+      "pinyin": "wei2 yi1"
+    },
+    "正确或最大",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "可用",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "。"
+  ],
+  "234-06": [
+    "再把所选",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "代回最大缩短量。",
+    {
+      "text": "因为",
+      "pinyin": "yin1 wei4"
+    },
+    {
+      "letter": "M"
+    },
+    "至少",
+    {
+      "text": "为一",
+      "pinyin": "wei2 yi1"
+    },
+    "。所以二",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    "大于零。"
+  ],
+  "234-07": [
+    "把",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "上界两边",
+    {
+      "text": "同乘",
+      "pinyin": "tong2 cheng2"
+    },
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    "二",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    "。方向",
+    {
+      "text": "不变",
+      "pinyin": "bu2 bian4"
+    },
+    "。",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    "二",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    {
+      "text": "再乘",
+      "pinyin": "zai4 cheng2"
+    },
+    "以",
+    {
+      "letter": "S"
+    },
+    "小于二与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    "除以",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "二十八与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    "。"
+  ],
+  "234-08": [
+    "右边",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "分子",
+      "pinyin": "fen1 zi3"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    "同除以二与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    "。",
+    {
+      "text": "分子",
+      "pinyin": "fen1 zi3"
+    },
+    "变成",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。",
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    "变成六十四",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "四次方。"
+  ],
+  "234-09": [
+    "因此最大缩短量严格小于六十四与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "四次方",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "倒数",
+      "pinyin": "dao4 shu4"
+    },
+    "。正好满足前面提出",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "要求。"
+  ],
+  "234-10": [
+    "最后回到新",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "。它等于原",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "加上变化量。所有条件",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "刚才",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "缩短量界。都保留在左边。"
+  ],
+  "234-11": [
+    "任何",
+    {
+      "text": "实数",
+      "pinyin": "shi2 shu4"
+    },
+    "都",
+    {
+      "text": "不小于",
+      "pinyin": "bu4 xiao3 yu2"
+    },
+    "自身绝对值",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "相反数",
+      "pinyin": "xiang1 fan3 shu4"
+    },
+    "。",
+    {
+      "letter": "S"
+    },
+    "又是",
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    "。因此把变化量换成负",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "letter": "S"
+    },
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    "高度",
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "绝对值。",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    {
+      "text": "一个",
+      "pinyin": "yi2 ge4"
+    },
+    "下界。"
+  ],
+  "234-12": [
+    "原",
+    {
+      "text": "间隔",
+      "pinyin": "jian4 ge2"
+    },
+    "至少",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "六十四与",
+    {
+      "letter": "M"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "四次方",
+    {
+      "text": "的乘积的倒数",
+      "pinyin": "de5 cheng2 ji1 de5 dao4 shu4"
+    },
+    "。扣掉",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "量",
+    {
+      "text": "不超过",
+      "pinyin": "bu4 chao1 guo4"
+    },
+    "前面算出",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "最大缩短量。因此新",
+    {
+      "text": "横坐标差",
+      "pinyin": "heng2 zuo4 biao1 cha1"
+    },
+    "。至少",
+    {
+      "text": "为这个间距",
+      "pinyin": "wei2 zhe4 ge5 jian1 ju4"
+    },
+    "下界减去最大缩短量。"
+  ],
+  "234-13": [
+    "已经证明最大缩短量严格小于",
+    {
+      "text": "间距",
+      "pinyin": "jian1 ju4"
+    },
+    "下界。",
+    {
+      "text": "较大",
+      "pinyin": "jiao4 da4"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "数减去",
+    {
+      "text": "较小",
+      "pinyin": "jiao4 xiao3"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "数。结果严格大于零。"
+  ],
+  "234-14": [
+    "于是点",
+    {
+      "letter": "P"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "新",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "仍小于点",
+    {
+      "letter": "Q"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "新",
+    {
+      "text": "横坐标",
+      "pinyin": "heng2 zuo4 biao1"
+    },
+    "。原来靠左",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "事件仍然靠左。这就闭合",
+    {
+      "text": "了",
+      "pinyin": "le5"
+    },
+    "保序证明。"
+  ],
+  "234-15": [
+    "最后取",
+    {
+      "letter": "M"
+    },
+    "等于三验算。",
+    {
+      "letter": "M"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "等于四。四",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "五次方等于",
+    {
+      "text": "一千",
+      "pinyin": "yi1 qian1"
+    },
+    "零二十四。"
+  ],
+  "234-16": [
+    "二百五十六",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "text": "一千",
+      "pinyin": "yi1 qian1"
+    },
+    "零二十四等于二十六万二千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "四十四。因此",
+    {
+      "letter": "S"
+    },
+    "等于",
+    {
+      "text": "这个正整数的倒数",
+      "pinyin": "zhe4 ge5 zheng4 zheng3 shu4 de5 dao4 shu4"
+    },
+    "。"
+  ],
+  "234-17": [
+    "二",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "letter": "M"
+    },
+    "等于六。所以最大缩短量是二十六万二千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "四十四",
+    {
+      "text": "分之六",
+      "pinyin": "fen1 zhi1 liu4"
+    },
+    "。"
+  ],
+  "234-18": [
+    "三",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "四次方等于",
+    {
+      "text": "八十一",
+      "pinyin": "ba1 shi2 yi1"
+    },
+    "。六十四",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    {
+      "text": "八十一",
+      "pinyin": "ba1 shi2 yi1"
+    },
+    "等于五千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "八十四。因此",
+    {
+      "text": "间距",
+      "pinyin": "jian1 ju4"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "保证下界。是五千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "八十四",
+    {
+      "text": "分之一",
+      "pinyin": "fen1 zhi1 yi1"
+    },
+    "。"
+  ],
+  "234-19": [
+    "比较这两个",
+    {
+      "text": "分数",
+      "pinyin": "fen1 shu4"
+    },
+    "。两边",
+    {
+      "text": "同乘",
+      "pinyin": "tong2 cheng2"
+    },
+    {
+      "text": "正数",
+      "pinyin": "zheng4 shu4"
+    },
+    "二十六万二千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "四十四与五千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "八十四",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "乘积",
+      "pinyin": "cheng2 ji1"
+    },
+    "。",
+    {
+      "text": "不等号",
+      "pinyin": "bu4 deng3 hao4"
+    },
+    "方向",
+    {
+      "text": "不变",
+      "pinyin": "bu2 bian4"
+    },
+    "。",
+    {
+      "text": "只需",
+      "pinyin": "zhi3 xu1"
+    },
+    "比较约去",
+    {
+      "text": "分母",
+      "pinyin": "fen1 mu3"
+    },
+    "后",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    {
+      "text": "整数",
+      "pinyin": "zheng3 shu4"
+    },
+    "。"
+  ],
+  "234-20": [
+    "左边",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    "六",
+    {
+      "text": "乘以",
+      "pinyin": "cheng2 yi3"
+    },
+    "五千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "八十四。等于三万",
+    {
+      "text": "一千",
+      "pinyin": "yi1 qian1"
+    },
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "零四。右边",
+    {
+      "text": "得到",
+      "pinyin": "de2 dao4"
+    },
+    "二十六万二千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "四十四。左边严格",
+    {
+      "text": "更小",
+      "pinyin": "geng4 xiao3"
+    },
+    "。"
+  ],
+  "234-21": [
+    "所以二十六万二千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "四十四",
+    {
+      "text": "分之六",
+      "pinyin": "fen1 zhi1 liu4"
+    },
+    "严格小于五千",
+    {
+      "text": "一百",
+      "pinyin": "yi1 bai3"
+    },
+    "八十四",
+    {
+      "text": "分之一",
+      "pinyin": "fen1 zhi1 yi1"
+    },
+    "。",
+    {
+      "text": "不需要",
+      "pinyin": "bu4 xu1 yao4"
+    },
+    "小数近似。"
+  ],
+  "234-22": [
+    "最大缩短量小于保证下界。因此严格左右顺序保持。注意",
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "下界。",
+    {
+      "text": "不一定",
+      "pinyin": "bu4 yi2 ding4"
+    },
+    "是实际最小",
+    {
+      "text": "间距",
+      "pinyin": "jian1 ju4"
+    },
+    "。五次方来自",
+    {
+      "text": "间距",
+      "pinyin": "jian1 ju4"
+    },
+    "与高度",
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "。二百五十六",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    {
+      "letter": "M"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "提供额外余量。"
   ]
 }

@@ -3,6 +3,7 @@ import {
   left,
   type TeachingGroup,
 } from "../../shared/math/math-lines.ts";
+import { continuationPages, continuationShots } from "./continuation.ts";
 
 export type Line = { text?: string; math?: string };
 export type Page = {
@@ -15,6 +16,7 @@ export type Page = {
   note: string;
   holdAfterSeconds?: number;
   diagram?: boolean;
+  shearDiagram?: "growth" | "same" | "shrink" | "height" | "equality";
 };
 export type Shot = {
   id: string;
@@ -139,6 +141,7 @@ export const pages: Record<string, Page> = {
     holdAfterSeconds: 5,
     note: "下一段再比较：剪切最多会缩短多少？",
   },
+  ...continuationPages,
 };
 
 // Reading copy is authored first; synthesis has its own reviewed document.
@@ -260,4 +263,5 @@ export const shots: Shot[] = [
     caption:
       "再用分母乘积的上界，得到距离至少为 1/(64M⁴)。这是保证下界，不一定是真实最小间距。",
   },
+  ...continuationShots,
 ];

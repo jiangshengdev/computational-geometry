@@ -466,5 +466,1209 @@
       "timestampMs": null,
       "confidence": null
     }
+  ],
+  "233-01": [
+    {
+      "text": "先用便于观察的数值示意，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这不是最终系数。",
+      "startMs": 2429,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取 P=(0,0)，",
+      "startMs": 4150,
+      "endMs": 6430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Q=(4,2)，系数 s=1/2。",
+      "startMs": 6431,
+      "endMs": 10310,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-02": [
+    {
+      "text": "按 X′=X+sY，",
+      "startMs": 70,
+      "endMs": 1350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点 P 的横坐标仍为 0。",
+      "startMs": 1430,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点 Q 的横坐标变成 4 加上 1/2 乘以 2，",
+      "startMs": 3510,
+      "endMs": 7290,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 5。",
+      "startMs": 7300,
+      "endMs": 8210,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-03": [
+    {
+      "text": "新间隔为 5，大于原间隔 4。",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边的点更高，向右多移，",
+      "startMs": 2829,
+      "endMs": 5000,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以间隔增大。",
+      "startMs": 5030,
+      "endMs": 6360,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-04": [
+    {
+      "text": "保持示意系数 1/2，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把 P 改成 (0,2)，",
+      "startMs": 1990,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Q 仍是 (4,2)。",
+      "startMs": 4190,
+      "endMs": 5790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在两点一样高。",
+      "startMs": 5834,
+      "endMs": 7234,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-05": [
+    {
+      "text": "两点都向右移动 1，",
+      "startMs": 70,
+      "endMs": 1510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新的横坐标分别是 1 和 5。",
+      "startMs": 1910,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-06": [
+    {
+      "text": "5 减 1 仍等于 4，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "和原间隔相同。",
+      "startMs": 1830,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两点移动一样多，间隔不变。",
+      "startMs": 3590,
+      "endMs": 5895,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-07": [
+    {
+      "text": "再看 P=(0,2)，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Q=(4,0)，示意系数仍是 1/2。",
+      "startMs": 2270,
+      "endMs": 5898,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这次左边的点更高。",
+      "startMs": 6138,
+      "endMs": 7498,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-08": [
+    {
+      "text": "点 P 向右移动 1，",
+      "startMs": 70,
+      "endMs": 1550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点 Q 不移动。",
+      "startMs": 1670,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新的横坐标分别为 1 和 4。",
+      "startMs": 2909,
+      "endMs": 5070,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-09": [
+    {
+      "text": "新间隔是 4 减 1 等于 3，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然为正。",
+      "startMs": 1910,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "缩短量 1 小于原间隔 4，",
+      "startMs": 3110,
+      "endMs": 5150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不会追上。",
+      "startMs": 5151,
+      "endMs": 6791,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面只需防住间隔缩小的情况。",
+      "startMs": 7110,
+      "endMs": 9831,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-10": [
+    {
+      "text": "回到一般情形，M 至少为 1。",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "按 M 的定义，所有输入端点的高度都在 −M 到 M 之间。",
+      "startMs": 2590,
+      "endMs": 6910,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-11": [
+    {
+      "text": "线段上的点，不高于较高的端点，",
+      "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不低于较低的端点。",
+      "startMs": 2949,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图中的实际交点同样处在这个范围内。",
+      "startMs": 4469,
+      "endMs": 7149,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-12": [
+    {
+      "text": "Y_P 和 Y_Q 分别表示 P、Q 的纵坐标，",
+      "startMs": 70,
+      "endMs": 5030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是高度。",
+      "startMs": 4980,
+      "endMs": 6020,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "P、Q 是输入端点或实际线段交点，",
+      "startMs": 6500,
+      "endMs": 10180,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以它们的高度都在 −M 到 M 之间。",
+      "startMs": 10271,
+      "endMs": 12791,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-13": [
+    {
+      "text": "最高高度是 M，最低高度是 −M。",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用最高减去最低，减去 −M 就是加上 M。",
+      "startMs": 2670,
+      "endMs": 6018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此高度差的绝对值最多是 2M。",
+      "startMs": 6138,
+      "endMs": 9338,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-14": [
+    {
+      "text": "这个界只用于端点和实际线段交点，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能套用于任意延长线交点。",
+      "startMs": 2949,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "延长线的交点可能在线段外很远的地方。",
+      "startMs": 5322,
+      "endMs": 8482,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-order": [
+    {
+      "text": "接下来设 P 在 Q 左边，",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 P 的横坐标小于 Q 的横坐标。",
+      "startMs": 2949,
+      "endMs": 6310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "选系数 s 大于零，",
+      "startMs": 6346,
+      "endMs": 8106,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前面证明的距离下界，",
+      "startMs": 8506,
+      "endMs": 10185,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在就是右边横坐标减去左边横坐标的下界。",
+      "startMs": 10225,
+      "endMs": 13786,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-15": [
+    {
+      "text": "设 P 原先在 Q 左边，",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并选 s 大于零。",
+      "startMs": 2429,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "撇号表示剪切后的坐标，",
+      "startMs": 4150,
+      "endMs": 6150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用 Q 的新横坐标减去 P 的新横坐标。",
+      "startMs": 6175,
+      "endMs": 9574,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分别代入剪切公式，得到两个和相减。",
+      "startMs": 9615,
+      "endMs": 12700,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-16": [
+    {
+      "text": "去掉括号，第二个括号前是减号。",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此里面的两项，都要变成相反数。",
+      "startMs": 3190,
+      "endMs": 5954,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-17": [
+    {
+      "text": "把两个原横坐标放在一起，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再从两个高度项中提出 s。",
+      "startMs": 2309,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前项是 Q 的原横坐标减 P 的原横坐标，",
+      "startMs": 4469,
+      "endMs": 7989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后项是 s 乘以 Q 的高度减 P 的高度所得的差。",
+      "startMs": 7989,
+      "endMs": 12029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们分别是原间隔和间隔的变化量。",
+      "startMs": 12319,
+      "endMs": 15078,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-18": [
+    {
+      "text": "s 为正，高度差的绝对值不超过 2M。",
+      "startMs": 70,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "变化量的绝对值就不超过 2Ms，",
+      "startMs": 3789,
+      "endMs": 8069,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以最大缩短量不超过 2Ms。",
+      "startMs": 8138,
+      "endMs": 11778,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-19": [
+    {
+      "text": "原间隔至少为 1/(64M⁴)，",
+      "startMs": 70,
+      "endMs": 4040,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只要最大缩短量严格小于这个下界，",
+      "startMs": 4042,
+      "endMs": 6761,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就能保证新横坐标差为正。",
+      "startMs": 6841,
+      "endMs": 8842,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-20": [
+    {
+      "text": "因为 M 至少为 1，",
+      "startMs": 70,
+      "endMs": 1590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以 2M 大于零。",
+      "startMs": 1630,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-21": [
+    {
+      "text": "两边同除以正数 2M，",
+      "startMs": 70,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不等号方向不变。",
+      "startMs": 3190,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左边只剩 s，右边是间距下界除以 2M。",
+      "startMs": 4469,
+      "endMs": 8989,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-22": [
+    {
+      "text": "除以 2M，就是乘以它的倒数。",
+      "startMs": 70,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把两个正分母相乘，得到 s 小于 1/(128M⁵)。",
+      "startMs": 4030,
+      "endMs": 9760,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-23": [
+    {
+      "text": "这里 64 乘以 2 等于 128，",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "M⁴ 乘以 M 等于 M⁵。",
+      "startMs": 2869,
+      "endMs": 6110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "五次方来自间距中的四次方，",
+      "startMs": 6090,
+      "endMs": 8250,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再乘高度差中的一次方。",
+      "startMs": 8489,
+      "endMs": 10330,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-24": [
+    {
+      "text": "如果原间隔是 1，缩短量也等于 1，",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还能保证严格左右顺序吗？",
+      "startMs": 2989,
+      "endMs": 4680,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保留图式，安静想四秒。",
+      "startMs": 4710,
+      "endMs": 7060,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-25": [
+    {
+      "text": "不能，新的横坐标差可能是 1 减 1 等于零。",
+      "startMs": 70,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个横坐标相同，就不能保证严格左右顺序。",
+      "startMs": 4030,
+      "endMs": 7460,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "233-26": [
+    {
+      "text": "所以最大缩短量必须严格小于间距下界，",
+      "startMs": 70,
+      "endMs": 3590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们要求 s 严格小于 1/(128M⁵)。",
+      "startMs": 3590,
+      "endMs": 8560,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来选一个满足条件的系数。",
+      "startMs": 8590,
+      "endMs": 11110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-01": [
+    {
+      "text": "我们选 s=1/[256(M+1)⁵]，",
+      "startMs": 70,
+      "endMs": 4900,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是先算 M 加 1 的五次方，",
+      "startMs": 4930,
+      "endMs": 7390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再乘以 256，最后取整个乘积的倒数。",
+      "startMs": 7420,
+      "endMs": 11130,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-02": [
+    {
+      "text": "M 至少为 1，因此 M 加 1 大于 M，",
+      "startMs": 110,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而且都是正数。",
+      "startMs": 3190,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "五个较大的正数相乘，",
+      "startMs": 4383,
+      "endMs": 6023,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到的五次方也更大。",
+      "startMs": 6063,
+      "endMs": 7622,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-03": [
+    {
+      "text": "两边乘以正数 256，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然保持大于关系。",
+      "startMs": 2070,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "256 又大于 128，",
+      "startMs": 3701,
+      "endMs": 6020,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以最左边的分母大于 128M⁵。",
+      "startMs": 6500,
+      "endMs": 10421,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-04": [
+    {
+      "text": "这些分母都为正，取倒数后不等号方向反过来。",
+      "startMs": 70,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此所选 s 为正，",
+      "startMs": 4127,
+      "endMs": 5687,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而且严格小于 1/(128M⁵)。",
+      "startMs": 5967,
+      "endMs": 10287,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-05": [
+    {
+      "text": "256 是 128 的两倍，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再把 M 换成 M 加 1，",
+      "startMs": 2989,
+      "endMs": 4860,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两处都让分母更大，系数更小。",
+      "startMs": 4895,
+      "endMs": 7654,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这提供额外余量，是保守选择，",
+      "startMs": 7734,
+      "endMs": 10362,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并不是唯一正确或最大的可用系数。",
+      "startMs": 10362,
+      "endMs": 12802,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-06": [
+    {
+      "text": "再把所选系数代回最大缩短量，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为 M 至少为 1，",
+      "startMs": 2789,
+      "endMs": 4290,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以 2M 大于零。",
+      "startMs": 4298,
+      "endMs": 6178,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-07": [
+    {
+      "text": "把系数上界两边同乘正数 2M，",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "方向不变。",
+      "startMs": 3070,
+      "endMs": 4030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 2Ms 小于 2M 除以 128M⁵。",
+      "startMs": 4042,
+      "endMs": 10860,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-08": [
+    {
+      "text": "右边的分子和分母同除以 2M，",
+      "startMs": 70,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子变成 1，分母变成 64M⁴。",
+      "startMs": 4150,
+      "endMs": 8260,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-09": [
+    {
+      "text": "因此最大缩短量严格小于 1/(64M⁴)，",
+      "startMs": 70,
+      "endMs": 4990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "正好满足前面提出的要求。",
+      "startMs": 4980,
+      "endMs": 6939,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-10": [
+    {
+      "text": "最后回到新横坐标差，",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它等于原间隔加上变化量。",
+      "startMs": 1950,
+      "endMs": 4470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所有条件和刚才的缩短量界，",
+      "startMs": 4554,
+      "endMs": 6714,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都保留在左边。",
+      "startMs": 6714,
+      "endMs": 7953,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-11": [
+    {
+      "text": "任何实数都不小于自身绝对值的相反数，",
+      "startMs": 70,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "s 又是正数。",
+      "startMs": 3510,
+      "endMs": 4710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此把变化量换成负的 s 乘以高度差的绝对值，",
+      "startMs": 4725,
+      "endMs": 8885,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到一个下界。",
+      "startMs": 8906,
+      "endMs": 9946,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-12": [
+    {
+      "text": "原间隔至少为 1/(64M⁴)，",
+      "startMs": 70,
+      "endMs": 4220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "扣掉的量不超过前面算出的最大缩短量。",
+      "startMs": 4250,
+      "endMs": 7160,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此新横坐标差，至少为这个间距下界减去最大缩短量。",
+      "startMs": 7373,
+      "endMs": 12156,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-13": [
+    {
+      "text": "已经证明最大缩短量严格小于间距下界，",
+      "startMs": 70,
+      "endMs": 3590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "较大的数减去较小的数，",
+      "startMs": 3829,
+      "endMs": 6350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果严格大于零。",
+      "startMs": 6346,
+      "endMs": 7906,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-14": [
+    {
+      "text": "于是 P 的新横坐标仍小于 Q 的新横坐标，",
+      "startMs": 70,
+      "endMs": 3829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "原来靠左的事件仍然靠左。",
+      "startMs": 3909,
+      "endMs": 6090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就闭合了保序证明。",
+      "startMs": 6090,
+      "endMs": 7730,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-15": [
+    {
+      "text": "最后取 M=3 验算，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "M 加 1 等于 4，",
+      "startMs": 1950,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "4 的五次方等于 1024。",
+      "startMs": 3349,
+      "endMs": 5710,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-16": [
+    {
+      "text": "256 乘以 1024 等于 262144，",
+      "startMs": 110,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此 s 等于这个正整数的倒数。",
+      "startMs": 4554,
+      "endMs": 7410,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-17": [
+    {
+      "text": "2M 等于 6，所以最大缩短量是 6/262144。",
+      "startMs": 70,
+      "endMs": 5670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-18": [
+    {
+      "text": "3 的四次方等于 81，",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "64 乘以 81 等于 5184。",
+      "startMs": 1870,
+      "endMs": 4630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此间距的保证下界，",
+      "startMs": 4639,
+      "endMs": 6439,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是 1/5184。",
+      "startMs": 6439,
+      "endMs": 8460,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-19": [
+    {
+      "text": "比较这两个分数，",
+      "startMs": 70,
+      "endMs": 1390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边同乘正数 262144 与 5184 的乘积。",
+      "startMs": 1550,
+      "endMs": 6880,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不等号方向不变，只需比较约去分母后得到的整数。",
+      "startMs": 6910,
+      "endMs": 10777,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-20": [
+    {
+      "text": "左边得到 6 乘以 5184，",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于 31104。",
+      "startMs": 2949,
+      "endMs": 4830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边得到 262144，",
+      "startMs": 4895,
+      "endMs": 7495,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左边严格更小。",
+      "startMs": 7774,
+      "endMs": 9055,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-21": [
+    {
+      "text": "所以 6/262144 严格小于 1/5184，",
+      "startMs": 70,
+      "endMs": 5680,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不需要小数近似。",
+      "startMs": 5710,
+      "endMs": 7110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "234-22": [
+    {
+      "text": "最大缩短量小于保证下界，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此严格左右顺序保持。",
+      "startMs": 2389,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "注意这个下界，不一定是实际最小间距。",
+      "startMs": 4469,
+      "endMs": 7629,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "五次方来自间距与高度差，",
+      "startMs": 7629,
+      "endMs": 9789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "256 和 M 加 1 提供额外余量。",
+      "startMs": 10100,
+      "endMs": 12979,
+      "timestampMs": null,
+      "confidence": null
+    }
   ]
 }
