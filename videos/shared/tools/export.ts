@@ -1,4 +1,4 @@
-// User-only PNG sequence export. The assistant may run --dry-run, never render.
+// User-only timeline export. The assistant may run --dry-run, never render.
 import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { createServer } from "node:net";
@@ -9,6 +9,7 @@ export async function exportVideo(
   root: string,
   composition: string,
   destination: string,
+  mode: "png" | "audio" = "png",
 ) {
   const browser = verifiedBrowser(resolve(root, "package.json"));
   const output = resolve(root, destination);
@@ -20,10 +21,14 @@ export async function exportVideo(
     "src/index.ts",
     composition,
     output,
-    "--sequence",
-    "--image-format=png",
-    "--muted",
-    "--scale=2",
+    ...(mode === "png"
+      ? ["--sequence", "--image-format=png", "--muted", "--scale=2"]
+      : [
+          "--codec=wav",
+          "--audio-codec=pcm-16",
+          "--sample-rate=48000",
+          "--hardware-acceleration=disable",
+        ]),
     "--chrome-mode=headless-shell",
     `--browser-executable=${browser}`,
     "--overwrite=false",
@@ -31,7 +36,11 @@ export async function exportVideo(
   if (process.argv.includes("--dry-run")) {
     console.log(
       JSON.stringify(
-        { stage: "PNG frames only", command: "pnpm", args },
+        {
+          stage: mode === "png" ? "PNG frames only" : "Timeline PCM WAV only",
+          command: "pnpm",
+          args,
+        },
         null,
         2,
       ),
@@ -40,7 +49,7 @@ export async function exportVideo(
     if (process.argv.length > 2) throw Error("Only --dry-run is supported");
     if (existsSync(output))
       throw Error(
-        "Frame output already exists; preserve and inspect it before starting another export.",
+        "Output already exists; preserve and inspect it before starting another export.",
       );
     for (const [script, ...options] of [
       ["check-content.ts", "--decode"],
@@ -70,9 +79,13 @@ export async function exportVideo(
     });
     if (rendered.error) throw rendered.error;
     if (rendered.status !== 0)
-      throw Error("PNG sequence export failed; retain diagnostics and frames");
+      throw Error(
+        "Timeline export failed; retain diagnostics and existing outputs",
+      );
     console.log(
-      "PNG sequence saved. Inspect frame count, numbering, dimensions and content before encoding video or adding audio.",
+      mode === "png"
+        ? "PNG sequence saved. Inspect frame count, numbering, dimensions and content before encoding video or adding audio."
+        : "Timeline WAV saved. Inspect PCM format, stereo channels, duration and timeline identity before muxing.",
     );
   }
 }

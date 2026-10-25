@@ -73,7 +73,7 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 
 以下入口只完成 PNG 阶段，沿用上述分阶段检查与保留流程：
 
-以下命令仅供用户自行执行，适用于 `shear-intuition`、`shear-coefficient`、`shear-integer-coordinates` 和 `shear-intersection-denominator`：
+以下命令仅供用户自行执行，适用于 `shear-intuition`、`shear-coefficient`、`shear-integer-coordinates`、`shear-intersection-denominator` 和 `shear-special-cases`：
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:export
@@ -97,7 +97,7 @@ pnpm --config.verify-deps-before-run=false run video:export
 ffmpeg -n -framerate "${FPS}" -start_number "${START_NUMBER}" -i "${PNG_PATTERN}" -an -c:v hevc_videotoolbox -allow_sw 0 -pix_fmt yuv420p -tag:v hvc1 "${SILENT_VIDEO}"
 ```
 
-**第 3 步：同时间线 PCM WAV。** 下列为 CLI 参数模板；`${EXPORT_PORT}` 必须由已核验的入口在本次调用时自动分配，不能预先抄写一次空闲端口供以后使用。当前共享 PNG 入口不支持 WAV，统一音轨端口入口尚未接入；接入并核验前，不得将本模板展开成声称可用的一键命令。检查输出为 48 kHz、16 bit、双声道，并核对时间线来源。
+**第 3 步：同时间线 PCM WAV。** 第⑥集 `shear-special-cases` 已通过共享导出函数接入 `video:export-audio`，明确选择 WAV、PCM 和关闭视频硬件加速，并在本次调用时动态分配独立端口；详情见该工程 README。其他工程未接入时不得套用。下列仍为底层 CLI 参数模板；`${EXPORT_PORT}` 必须来自当次已核验入口，不能预先抄写一次空闲端口供以后使用。检查输出为 48 kHz、16 bit、双声道，并核对时间线来源。
 
 ```sh
 pnpm --config.verify-deps-before-run=false exec remotion render src/index.ts "${COMPOSITION}" "${TIMELINE_WAV}" --codec=wav --audio-codec=pcm-16 --sample-rate=48000 --hardware-acceleration=disable --chrome-mode=headless-shell --browser-executable="${REMOTION_BROWSER_EXECUTABLE}" --port="${EXPORT_PORT}" --overwrite=false

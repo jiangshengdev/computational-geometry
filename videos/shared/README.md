@@ -1,6 +1,6 @@
 # 视频公共基础模块
 
-`line-equation-tutorial`、`shear-intuition`、`shear-coefficient`、`shear-integer-coordinates`、`shear-intersection-denominator` 共同使用本目录。每集仍独立拥有教学内容、分镜、推导、专用图示、原稿、音频及发布素材，并保留自己的命令入口。其余三个骨架工程在制作时接入。
+`line-equation-tutorial`、`shear-intuition`、`shear-coefficient`、`shear-integer-coordinates`、`shear-intersection-denominator`、`shear-safe-coefficient`、`shear-special-cases` 共同使用本目录。每集仍独立拥有教学内容、分镜、推导、专用图示、原稿、音频及发布素材，并保留自己的命令入口。`shear-preserves-intersections` 骨架工程在制作时接入。
 
 ## 职责与依赖
 
@@ -9,6 +9,12 @@
 - `speech/`：语音文档、Azure 合成与对齐、实测时间检查、字幕短句合并及查询、音频检查和适用的素材制作流程。浏览器只导入纯时间或字幕模块，Azure SDK 由各集 Node 入口传入。
 - `checks/`：内容校验、通用 DOM 边界检查、无头 Studio 检查生命周期和公共源码 lint。各集保留数学正确性、专用图示、教学揭示等检查。
 - `tools/`：既有剪切系列的用户导出流程。只能由用户执行；助手不得执行该入口。
+
+第⑤、⑥集共用 `checks/ShotLayoutCheck.tsx` 和 `checks/shot-layout.ts`，前者枚举生产页面的揭示、字幕、动画和静默状态，后者管理逐镜头检查及失败汇总；各集仍负责生产场景和内容断言。`speech/audit-narration.ts` 共用逐段评估与音频哈希绑定，不把自动标记等同于已确认错读。
+
+配音生成默认串行；第⑥集显式选择三段一批。并发批次等待全部在途请求结束后才报告失败，保留暂存数据，全部目标通过前不发布正式素材。零时长或超出音频结尾的合成词时间可使用现有语音评估服务重新测量，保留原音频和原始服务响应；不会裁剪、推算词时间或放宽发音复核。
+
+用户导出函数默认仍为 PNG；第⑥集显式选择 audio 模式，输出同时间线 PCM WAV。两个模式都执行同一前置检查、分配独立端口并拒绝覆盖；助手仅执行 `--dry-run`。
 
 公共模块不依赖任何具体视频目录。各集的 TypeScript 路径与 Remotion Rspack 配置使公共浏览器代码使用该集已安装的 React、KaTeX 等依赖，不创建第二份运行时，也不统一升级 Remotion。命令仍从具体视频工程目录执行。公共目录不单独安装依赖。
 

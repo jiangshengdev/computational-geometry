@@ -36,6 +36,7 @@ export async function runNarration({
   verifyAlignment,
   requireTimingFile,
   validateClauses,
+  concurrency = 1,
 }: {
   root: string;
   shots: {
@@ -54,7 +55,10 @@ export async function runNarration({
   verifyAlignment: (audio: AudioTiming, path: string) => void;
   requireTimingFile: boolean;
   validateClauses: boolean;
+  concurrency?: number;
 }) {
+  if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 4)
+    throw Error("Narration concurrency must be an integer from 1 to 4");
   const speech = JSON.parse(
     readFileSync(join(root, "src/speech-text.json"), "utf8"),
   ) as Record<string, unknown>;
@@ -135,7 +139,7 @@ export async function runNarration({
       throw Error("Resume requires a shear-speech temporary directory");
     let published = false;
     try {
-      for (const shot of selected) {
+      const produceShot = async (shot: (typeof selected)[number]) => {
         const path = join(temporary, `${shot.id}.wav`);
         const metadata = join(temporary, `${shot.id}.json`);
         const cached =
@@ -174,11 +178,13 @@ export async function runNarration({
         verifyAlignment(timing[shot.id], path);
         if (
           words.some(
-            (word) => word.durationMs === 0 && /[\p{L}\p{N}]/u.test(word.text),
+            (word) =>
+              (word.durationMs === 0 && /[\p{L}\p{N}]/u.test(word.text)) ||
+              word.startMs + word.durationMs > duration * 1000 + 1,
           )
         ) {
           console.log(
-            `${shot.id}: aligning existing audio; zero-duration spoken words`,
+            `${shot.id}: aligning existing audio; invalid measured word boundaries`,
           );
           timing[shot.id] = await alignAudio(timing[shot.id], path);
           writeFileSync(
@@ -196,6 +202,15 @@ export async function runNarration({
         console.log(
           `${shot.id}: ${duration.toFixed(3)}s; original Azure audio`,
         );
+      };
+      // Wait for every in-flight request before failing. Each shot owns its
+      // staging files; no formal asset is published until the whole batch passes.
+      for (let index = 0; index < selected.length; index += concurrency) {
+        const results = await Promise.allSettled(
+          selected.slice(index, index + concurrency).map(produceShot),
+        );
+        const failed = results.find((result) => result.status === "rejected");
+        if (failed?.status === "rejected") throw failed.reason;
       }
       // Publish only after every requested shot passes decoding and duration checks.
       // captions.ts rebuilds all cues, so validate untouched shots before any copy.

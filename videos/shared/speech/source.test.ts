@@ -5,6 +5,7 @@ import {
   mkdirSync,
   writeFileSync,
   readFileSync,
+  existsSync,
   rmSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -30,6 +31,53 @@ function wav() {
   data.writeUInt32LE(9600, 40);
   return data;
 }
+
+test("concurrent synthesis waits for in-flight work and publishes no partial batch", () => {
+  const root = mkdtempSync(join(tmpdir(), "pcm-batch-"));
+  const staging = mkdtempSync(join(tmpdir(), "shear-speech-"));
+  try {
+    mkdirSync(join(root, "src"));
+    writeFileSync(
+      join(root, "src/speech-text.json"),
+      JSON.stringify({ a: "甲。", b: "乙。", c: "丙。" }),
+    );
+    const runner = join(root, "run.mjs");
+    writeFileSync(
+      runner,
+      `
+      import assert from "node:assert/strict";
+      import {writeFileSync} from "node:fs";
+      import {runNarration} from ${JSON.stringify(new URL("./narration.ts", import.meta.url).href)};
+      const started=[],finished=[];
+      await assert.rejects(runNarration({
+        root:${JSON.stringify(root)}, shots:[{id:"a",caption:"甲。"},{id:"b",caption:"乙。"},{id:"c",caption:"丙。"}],
+        buildSpeechDocument:text=>({text,ssml:text,fingerprint:text}),
+        synthesize:async(text,path)=>{
+          started.push(text);
+          if(text==="甲。")throw Error("request failed");
+          await new Promise(resolve=>setTimeout(resolve,20));
+          writeFileSync(path,Buffer.from(${JSON.stringify(wav().toString("base64"))},"base64"));
+          finished.push(text);
+          return [{text:"乙",textOffset:0,wordLength:1,startMs:0,durationMs:100}];
+        },
+        voice:"test",alignAudio:async a=>a,verifyAlignment:()=>{},
+        requireTimingFile:false,validateClauses:true,concurrency:2
+      }),/request failed/);
+      assert.deepEqual(started,["甲。","乙。"]);
+      assert.deepEqual(finished,["乙。"]);
+    `,
+    );
+    execFileSync(process.execPath, [runner, `--resume=${staging}`], {
+      stdio: "pipe",
+    });
+    assert.equal(existsSync(join(root, "src/audio-timing.json")), false);
+    assert.equal(existsSync(join(root, "public/narration")), false);
+    assert.equal(existsSync(join(staging, "b.json")), true);
+  } finally {
+    rmSync(root, { recursive: true });
+    rmSync(staging, { recursive: true });
+  }
+});
 
 test("asset selection uses timing, never a neighboring file", () => {
   assert.equal(narrationFile("x", {}), "x.mp3");

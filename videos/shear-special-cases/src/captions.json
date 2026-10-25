@@ -1,0 +1,1282 @@
+{
+  "237-01": [
+    {
+      "text": "沿用前集的剪切公式，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标加上 s 倍纵坐标。",
+      "startMs": 1910,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标保持不变。",
+      "startMs": 4298,
+      "endMs": 5858,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-02": [
+    {
+      "text": "X、Y 是剪切前的坐标，",
+      "startMs": 110,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "带撇号的是剪切后的坐标。",
+      "startMs": 2550,
+      "endMs": 4750,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-03": [
+    {
+      "text": "前集的正安全系数是，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "二百五十六乘以 M 加一的五次方的倒数。",
+      "startMs": 1950,
+      "endMs": 5190,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-04": [
+    {
+      "text": "M 仍按前集定义，取一与放大后全部端点坐标绝对值的最大值。",
+      "startMs": 70,
+      "endMs": 5580,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个系数保持原横坐标不同事件的左右顺序。",
+      "startMs": 5610,
+      "endMs": 8960,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-05": [
+    {
+      "text": "选取点 P 和点 Q，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "P 的坐标是一、二分之一。",
+      "startMs": 1910,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Q 的坐标是一、二分之五。",
+      "startMs": 4190,
+      "endMs": 5940,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "P 较低，Q 较高。",
+      "startMs": 5970,
+      "endMs": 8079,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-06": [
+    {
+      "text": "为看清变化，这里取演示系数二分之一。",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它不是算法安全系数，",
+      "startMs": 3510,
+      "endMs": 5070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能保证任意事件全局保序。",
+      "startMs": 5066,
+      "endMs": 7345,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-07": [
+    {
+      "text": "同样使用正的演示系数，",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剪切后谁在左？",
+      "startMs": 2070,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是较低的 P，还是较高的 Q？",
+      "startMs": 3510,
+      "endMs": 6986,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "请先想一想。",
+      "startMs": 7066,
+      "endMs": 8146,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-08": [
+    {
+      "text": "先计算 P 的新横坐标，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一加二分之一乘以二分之一。",
+      "startMs": 2230,
+      "endMs": 4380,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于一加四分之一，也就是四分之五。",
+      "startMs": 4383,
+      "endMs": 7410,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-09": [
+    {
+      "text": "再计算 Q 的新横坐标，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一加二分之一乘以二分之五。",
+      "startMs": 2270,
+      "endMs": 4830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于四分之九。",
+      "startMs": 4860,
+      "endMs": 6110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-10": [
+    {
+      "text": "四分之五小于四分之九，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以较低的 P 在左。",
+      "startMs": 2349,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标仍然不变。",
+      "startMs": 4310,
+      "endMs": 5750,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-11": [
+    {
+      "text": "现在看一般情形，P 与 Q 的横坐标相同。",
+      "startMs": 70,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "P 的纵坐标小于 Q 的纵坐标，",
+      "startMs": 3829,
+      "endMs": 6070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "系数 s 为正。",
+      "startMs": 6090,
+      "endMs": 7050,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-12": [
+    {
+      "text": "用 Q 的新横坐标减去 P 的新横坐标，",
+      "startMs": 70,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把两点各自的剪切公式代入。",
+      "startMs": 4190,
+      "endMs": 6590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "注意减去的是整个和。",
+      "startMs": 6602,
+      "endMs": 8402,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-13": [
+    {
+      "text": "去掉括号后，被减去的两项都带负号。",
+      "startMs": 70,
+      "endMs": 3190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再把原横坐标的两项放在一起。",
+      "startMs": 3309,
+      "endMs": 5640,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-14": [
+    {
+      "text": "原横坐标相等，相减为零。",
+      "startMs": 190,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剩下 s 乘以纵坐标之差，",
+      "startMs": 3389,
+      "endMs": 5790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个因子都为正。",
+      "startMs": 5919,
+      "endMs": 7199,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此较低的点在左。",
+      "startMs": 7439,
+      "endMs": 9160,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-15": [
+    {
+      "text": "把刚才的 P 与 Q 连接成线段，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它是非零竖直线段。",
+      "startMs": 2869,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个端点的纵坐标不同。",
+      "startMs": 4383,
+      "endMs": 6303,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "237-16": [
+    {
+      "text": "剪切后两个端点的新横坐标不同，",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段从竖直变成倾斜。",
+      "startMs": 2869,
+      "endMs": 5090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图中仍用二分之一作演示。",
+      "startMs": 5120,
+      "endMs": 7160,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-01": [
+    {
+      "text": "接下来回到算法的正安全系数，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能把演示系数用于这个全局结论。",
+      "startMs": 2590,
+      "endMs": 5190,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-02": [
+    {
+      "text": "若非零线段的两个端点原横坐标不同，",
+      "startMs": 70,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前集的保序结论保证它们剪切后仍然不同。",
+      "startMs": 3389,
+      "endMs": 6910,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-03": [
+    {
+      "text": "若原横坐标相同，非零就保证两个端点的纵坐标不同。",
+      "startMs": 70,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "刚才的正系数推导保证新横坐标不同。",
+      "startMs": 4469,
+      "endMs": 7549,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-04": [
+    {
+      "text": "这两种情况覆盖所有非零线段，",
+      "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此正安全系数既消除竖直线段。",
+      "startMs": 2869,
+      "endMs": 6270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不会把其他非零线段变竖直。",
+      "startMs": 6260,
+      "endMs": 8619,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-05": [
+    {
+      "text": "现在令两个带不同标记的位置完全重合，",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都在坐标一、一处。",
+      "startMs": 3190,
+      "endMs": 4720,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "标记可以来自不同原始输入。",
+      "startMs": 4725,
+      "endMs": 6885,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-06": [
+    {
+      "text": "仍取二分之一演示，两者的新横坐标都等于二分之三。",
+      "startMs": 70,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标仍为一，位置仍重合。",
+      "startMs": 4127,
+      "endMs": 6767,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-07": [
+    {
+      "text": "剪切不能把同一点上的参与线段拆成不同事件位置，",
+      "startMs": 70,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不会把不同原始输入合并成一个输入。",
+      "startMs": 3871,
+      "endMs": 6871,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-08": [
+    {
+      "text": "图中两条水平线平行，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但不在同一条直线上。",
+      "startMs": 2230,
+      "endMs": 3829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们没有交点。",
+      "startMs": 4150,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-09": [
+    {
+      "text": "沿用第四集的直线系数与消元分母，",
+      "startMs": 70,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "平行时这个分母等于零。",
+      "startMs": 2989,
+      "endMs": 5030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能用唯一交点公式，",
+      "startMs": 4980,
+      "endMs": 6540,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为不能除以零。",
+      "startMs": 6620,
+      "endMs": 8020,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-10": [
+    {
+      "text": "共线则表示位于同一条直线上，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但有限线段的交集还要比较范围。",
+      "startMs": 2989,
+      "endMs": 5750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面分三种情况。",
+      "startMs": 5748,
+      "endMs": 7268,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-11": [
+    {
+      "text": "先看纵坐标为一的同一直线，",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条线段的横坐标范围分别是零到一和二到三。",
+      "startMs": 2550,
+      "endMs": 6710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间有空隙，交集为空。",
+      "startMs": 6687,
+      "endMs": 8767,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-12": [
+    {
+      "text": "图中用两种标记保留原始输入身份，",
+      "startMs": 70,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剪切后的交集保持将在第七集完整证明。",
+      "startMs": 3190,
+      "endMs": 6590,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-13": [
+    {
+      "text": "再看范围零到二与二到三，",
+      "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条线段只在横坐标二处接触。",
+      "startMs": 2710,
+      "endMs": 5430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "完整交集是一个点。",
+      "startMs": 5407,
+      "endMs": 6967,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-14": [
+    {
+      "text": "图中用两种标记保留原始输入身份，",
+      "startMs": 70,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剪切后的交集保持将在第七集完整证明。",
+      "startMs": 3110,
+      "endMs": 6550,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-15": [
+    {
+      "text": "最后看范围零到三与一到四，",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公共部分是从一到三的整个区间。",
+      "startMs": 2630,
+      "endMs": 5230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集不只是两个边界点。",
+      "startMs": 5236,
+      "endMs": 7036,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-16": [
+    {
+      "text": "重叠区间的两个边界来自输入端点，",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "已包含在事件位置中。",
+      "startMs": 2949,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不必把区间内无限多个点都当成事件。",
+      "startMs": 4554,
+      "endMs": 7313,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-17": [
+    {
+      "text": "在刚才的重叠例子中，",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加入从一、零到三、二的第三条线段。",
+      "startMs": 2029,
+      "endMs": 5620,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它与水平线段不平行。",
+      "startMs": 5650,
+      "endMs": 7510,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-18": [
+    {
+      "text": "它穿过重叠区间的位置是 R，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "坐标二、一。",
+      "startMs": 3070,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "演示剪切后横坐标变成二分之五，",
+      "startMs": 4390,
+      "endMs": 7040,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标仍是一。",
+      "startMs": 7070,
+      "endMs": 8460,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-19": [
+    {
+      "text": "这个穿越位置是实际线段交点，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍在前面交点估计的覆盖范围内。",
+      "startMs": 2550,
+      "endMs": 5110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同一位置可以对应多个相交输入对。",
+      "startMs": 5066,
+      "endMs": 7785,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-20": [
+    {
+      "text": "现在一条输入的两个端点都在一、一处，",
+      "startMs": 70,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它的长度为零。",
+      "startMs": 3110,
+      "endMs": 4310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "使用二分之一演示剪切，",
+      "startMs": 4298,
+      "endMs": 6058,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它会被拉长吗？",
+      "startMs": 6458,
+      "endMs": 7498,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "请先想一想。",
+      "startMs": 7738,
+      "endMs": 8738,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-21": [
+    {
+      "text": "用 A 和 B 分别标记这条输入的两个端点，",
+      "startMs": 70,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的位置完全相同。",
+      "startMs": 3630,
+      "endMs": 5190,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-22": [
+    {
+      "text": "两个端点经过相同计算，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新横坐标都是二分之三。",
+      "startMs": 2230,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标仍是一，因此剪切后还是一个点。",
+      "startMs": 4383,
+      "endMs": 7182,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-23": [
+    {
+      "text": "经过这个点，可以画出多条方向不同的直线。",
+      "startMs": 70,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此点输入没有唯一支撑直线。",
+      "startMs": 3590,
+      "endMs": 6270,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "238-24": [
+    {
+      "text": "它的位置作为端点被包含，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能把它当成有确定斜率的非零线段。",
+      "startMs": 2230,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不能直接套用两条支撑直线的唯一交点公式。",
+      "startMs": 5322,
+      "endMs": 8561,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-01": [
+    {
+      "text": "当前算法先检查是否存在非零竖直线段，",
+      "startMs": 70,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "存在时才选择前集的正安全系数。",
+      "startMs": 3829,
+      "endMs": 6670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-02": [
+    {
+      "text": "否则取 s 等于零，",
+      "startMs": 70,
+      "endMs": 1630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保持原坐标。",
+      "startMs": 1630,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "零长度点输入本身不会触发正系数分支。",
+      "startMs": 2869,
+      "endMs": 6090,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-03": [
+    {
+      "text": "所以同横坐标的不同位置被分开，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只描述正系数分支。",
+      "startMs": 2989,
+      "endMs": 4870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并不是每次计算都发生的变化。",
+      "startMs": 4895,
+      "endMs": 7055,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-04": [
+    {
+      "text": "用正整数公共分母 D，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把全部输入端点放大到整数坐标。",
+      "startMs": 2070,
+      "endMs": 4910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "小写 x、y 表示原坐标，",
+      "startMs": 4895,
+      "endMs": 7614,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大写 X、Y 表示放大后的坐标。",
+      "startMs": 7694,
+      "endMs": 10335,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-05": [
+    {
+      "text": "选取原坐标二分之一、二分之三，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "放大倍数取二。",
+      "startMs": 3110,
+      "endMs": 4310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍用二分之一演示系数，",
+      "startMs": 4298,
+      "endMs": 6458,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只比较两种操作顺序。",
+      "startMs": 6498,
+      "endMs": 8258,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-06": [
+    {
+      "text": "先在原坐标中剪切，二分之一加二分之一乘以二分之三。",
+      "startMs": 70,
+      "endMs": 4710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到新横坐标四分之五。",
+      "startMs": 4725,
+      "endMs": 6845,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-07": [
+    {
+      "text": "纵坐标不变，仍然是二分之三。",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-08": [
+    {
+      "text": "再把两个坐标都放大二倍，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标是二分之五。",
+      "startMs": 2590,
+      "endMs": 4380,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标是三。",
+      "startMs": 4383,
+      "endMs": 5583,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-09": [
+    {
+      "text": "换一个顺序，先把原来的两个坐标都放大二倍。",
+      "startMs": 70,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到一、三。",
+      "startMs": 3531,
+      "endMs": 4571,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-10": [
+    {
+      "text": "仍用同一个二分之一作系数，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新横坐标是一加二分之一乘以三。",
+      "startMs": 2550,
+      "endMs": 5270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果也是二分之五。",
+      "startMs": 5236,
+      "endMs": 6876,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-11": [
+    {
+      "text": "纵坐标保持为三，两条路径得到完全相同的坐标。",
+      "startMs": 70,
+      "endMs": 4710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "系数没有额外乘二或除以二。",
+      "startMs": 4725,
+      "endMs": 7124,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-12": [
+    {
+      "text": "一般情况下，先剪切再放大后的横坐标。",
+      "startMs": 70,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就是 D 乘以 x 与 s 乘以 y 的和。",
+      "startMs": 3550,
+      "endMs": 6390,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-13": [
+    {
+      "text": "用乘法分配律，D 分别乘括号内的两项。",
+      "startMs": 70,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 D 乘以 x，",
+      "startMs": 3869,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "加上 D、s、y 的乘积。",
+      "startMs": 5322,
+      "endMs": 7610,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-14": [
+    {
+      "text": "交换乘法顺序并分组，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二项写成 s 乘以 D 与 y 的乘积。",
+      "startMs": 2230,
+      "endMs": 5590,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-15": [
+    {
+      "text": "把 D 乘以 x 换成大写 X，",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把 D 乘以 y 换成大写 Y。",
+      "startMs": 2989,
+      "endMs": 5630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这正是先放大再剪切的横坐标。",
+      "startMs": 5663,
+      "endMs": 8263,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "239-16": [
+    {
+      "text": "两条路径的纵坐标也都等于 D 乘以 y，",
+      "startMs": 110,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此原坐标与放大坐标使用同一个 s。",
+      "startMs": 3670,
+      "endMs": 7870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "无须再乘或除一次 D。",
+      "startMs": 7882,
+      "endMs": 10161,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "240-01": [
+    {
+      "text": "总结本集，正安全系数分开同横坐标的不同位置。",
+      "startMs": 70,
+      "endMs": 4310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "完全重合的位置仍然重合，",
+      "startMs": 4340,
+      "endMs": 6470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "输入身份仍然保留。",
+      "startMs": 6510,
+      "endMs": 8010,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "240-02": [
+    {
+      "text": "共线线段可能相离、接触或重叠，",
+      "startMs": 70,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点输入仍是点。",
+      "startMs": 3190,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第三条线段穿越重叠区间产生的实际交点，",
+      "startMs": 4554,
+      "endMs": 8273,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也包含在考虑范围内。",
+      "startMs": 8313,
+      "endMs": 9994,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "240-03": [
+    {
+      "text": "缩放与剪切可以交换顺序，",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两套坐标使用同一个系数。",
+      "startMs": 2550,
+      "endMs": 4830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第七集再完整证明，为什么剪切保持交集。",
+      "startMs": 4860,
+      "endMs": 8410,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

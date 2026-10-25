@@ -12,7 +12,15 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "paths": {
+      "react": ["./node_modules/@types/react"],
+      "react/*": ["./node_modules/@types/react/*"],
+      "katex": ["./node_modules/@types/katex"],
+      "microsoft-cognitiveservices-speech-sdk": [
+        "./node_modules/microsoft-cognitiveservices-speech-sdk"
+      ]
+    }
   },
   "exclude": ["remotion.config.ts"]
 }

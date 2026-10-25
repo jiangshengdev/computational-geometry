@@ -65,7 +65,10 @@ export function createAlignmentTools(
     const original = audio.alignment?.synthesisWords ?? audio.words;
     const selected = new Set(
       original.flatMap((word, index) =>
-        word.durationMs === 0 && /[\p{L}\p{N}]/u.test(word.text) ? [index] : [],
+        (word.durationMs === 0 && /[\p{L}\p{N}]/u.test(word.text)) ||
+        word.startMs + word.durationMs > audio.duration * 1000 + 1
+          ? [index]
+          : [],
       ),
     );
     const overlaps = (a: WordBoundary, b: WordBoundary) =>
