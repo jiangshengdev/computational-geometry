@@ -773,23 +773,23 @@
   ],
   "233-13": [
     {
-      "text": "最高高度是 M，最低高度是 −M。",
-      "startMs": 70,
-      "endMs": 2510,
+      "text": "M 是最高高度，−M 是最低高度。",
+      "startMs": 110,
+      "endMs": 2949,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "用最高减去最低，减去 −M 就是加上 M。",
-      "startMs": 2670,
-      "endMs": 6018,
+      "text": "用最高减去最低，减去 −M 就是加上 M 这一项。",
+      "startMs": 3030,
+      "endMs": 6958,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "因此高度差的绝对值最多是 2M。",
-      "startMs": 6138,
-      "endMs": 9338,
+      "text": "因此高度差的绝对值最多是 M 的两倍。",
+      "startMs": 7159,
+      "endMs": 10639,
       "timestampMs": null,
       "confidence": null
     }
@@ -864,29 +864,29 @@
     },
     {
       "text": "并选 s 大于零。",
-      "startMs": 2429,
+      "startMs": 2349,
       "endMs": 3869,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "撇号表示剪切后的坐标，",
-      "startMs": 4150,
-      "endMs": 6150,
+      "startMs": 4230,
+      "endMs": 6270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "用 Q 的新横坐标减去 P 的新横坐标。",
-      "startMs": 6175,
-      "endMs": 9574,
+      "startMs": 6260,
+      "endMs": 9740,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "分别代入剪切公式，得到两个和相减。",
-      "startMs": 9615,
-      "endMs": 12700,
+      "startMs": 9780,
+      "endMs": 12916,
       "timestampMs": null,
       "confidence": null
     }
@@ -911,35 +911,35 @@
     {
       "text": "把两个原横坐标放在一起，",
       "startMs": 70,
-      "endMs": 2230,
+      "endMs": 2429,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "再从两个高度项中提出 s。",
-      "startMs": 2309,
-      "endMs": 4350,
+      "text": "再从两个高度项中提出 s 这个公因式。",
+      "startMs": 2750,
+      "endMs": 5910,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "前项是 Q 的原横坐标减 P 的原横坐标，",
-      "startMs": 4469,
-      "endMs": 7989,
+      "startMs": 5919,
+      "endMs": 9439,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "后项是 s 乘以 Q 的高度减 P 的高度所得的差。",
-      "startMs": 7989,
-      "endMs": 12029,
+      "startMs": 9479,
+      "endMs": 13639,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它们分别是原间隔和间隔的变化量。",
-      "startMs": 12319,
-      "endMs": 15078,
+      "startMs": 13940,
+      "endMs": 16580,
       "timestampMs": null,
       "confidence": null
     }
