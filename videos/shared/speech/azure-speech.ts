@@ -151,7 +151,7 @@ export function createSpeechTools<Fingerprint extends boolean>(
         (resolve, reject) => {
           timeout = setTimeout(
             () => reject(new Error("Azure synthesis timed out")),
-            55000,
+            120000,
           );
           synthesizer.speakSsmlAsync(ssml, resolve, reject);
         },

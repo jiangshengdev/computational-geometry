@@ -7,6 +7,56 @@ import type * as SDK from "microsoft-cognitiveservices-speech-sdk";
 import { createAlignmentTools } from "./azure-alignment.ts";
 import { audioSha256 } from "./audio.ts";
 import type { AudioTiming } from "./timing.ts";
+test("assessment matches uppercase letters to lowercase source without relaxing omission checks", () => {
+  const audio: AudioTiming = {
+    speech: "x。",
+    duration: 1,
+    voice: "test",
+    fingerprint: "test",
+    words: [
+      {
+        text: "X",
+        textOffset: 0,
+        wordLength: 1,
+        startMs: 100,
+        durationMs: 1000,
+      },
+    ],
+  };
+  const response = {
+    RecognitionStatus: "Success",
+    NBest: [
+      {
+        Words: [
+          {
+            Word: "X",
+            Offset: 1000000,
+            Duration: 2000000,
+            PronunciationAssessment: { ErrorType: "None" },
+          },
+        ],
+      },
+    ],
+  };
+  const { assessmentWords } = createAlignmentTools({} as typeof SDK, {
+    allowReviewedPronunciation: false,
+  });
+  assert.deepEqual(assessmentWords(audio, response), [
+    {
+      text: "X",
+      textOffset: 0,
+      wordLength: 1,
+      startMs: 100,
+      durationMs: 200,
+    },
+  ]);
+  response.NBest[0].Words[0].Word = "Y";
+  assert.throws(() => assessmentWords(audio, response), /text mismatch/);
+  response.NBest[0].Words[0].Word = "X";
+  response.NBest[0].Words[0].PronunciationAssessment.ErrorType = "Omission";
+  assert.throws(() => assessmentWords(audio, response), /requires review/);
+});
+
 test("saved assessment repairs a synthesis word beyond the audio end without changing audio", () => {
   const dir = mkdtempSync(join(tmpdir(), "alignment-test-"));
   try {

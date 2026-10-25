@@ -33,9 +33,15 @@ export type Caption = {
   confidence: null;
 };
 
+// Azure spells Latin letters in uppercase regardless of source casing.
+// Fold only ASCII case for comparison; preserve source offsets and service data.
+export const speechComparisonText = (text: string) =>
+  text.replace(/[a-z]/g, (letter) => letter.toUpperCase());
+
 export function validateWords(audio: AudioTiming) {
   if (!audio.words.length) throw Error("Missing word boundaries");
-  const spoken = (text: string) => text.replace(/[\p{P}\p{Z}\s]/gu, "");
+  const spoken = (text: string) =>
+    speechComparisonText(text).replace(/[\p{P}\p{Z}\s]/gu, "");
   if (
     spoken(audio.words.map((word) => word.text).join("")) !==
     spoken(audio.speech)
@@ -45,8 +51,9 @@ export function validateWords(audio: AudioTiming) {
   for (const [i, word] of audio.words.entries()) {
     const previous = audio.words[i - 1];
     if (
-      audio.speech.slice(word.textOffset, word.textOffset + word.wordLength) !==
-        word.text ||
+      speechComparisonText(
+        audio.speech.slice(word.textOffset, word.textOffset + word.wordLength),
+      ) !== speechComparisonText(word.text) ||
       !Number.isFinite(word.startMs) ||
       !Number.isFinite(word.durationMs) ||
       word.startMs < 0 ||

@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import type * as SpeechSdk from "microsoft-cognitiveservices-speech-sdk";
 import {
+  speechComparisonText,
   validateWords,
   type AudioTiming,
   type WordBoundary,
@@ -45,7 +46,13 @@ export function createAlignmentTools(
         );
       const gap = audio.speech.slice(cursor).match(/^[\p{P}\p{Z}\s]*/u)![0];
       cursor += gap.length;
-      if (!word.Word || !audio.speech.startsWith(word.Word, cursor))
+      if (
+        !word.Word ||
+        !speechComparisonText(audio.speech).startsWith(
+          speechComparisonText(word.Word),
+          cursor,
+        )
+      )
         throw Error(`Alignment text mismatch at ${cursor}: ${word.Word}`);
       const boundary = {
         text: word.Word,

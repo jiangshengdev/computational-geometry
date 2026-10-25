@@ -1,0 +1,1003 @@
+{
+  "242-01": [
+    {
+      "text": "先看线段的两个端点，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 的坐标是一、一。",
+      "startMs": 1910,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 的坐标是五、三，",
+      "startMs": 3510,
+      "endMs": 5230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "坐标总是先横后纵。",
+      "startMs": 5236,
+      "endMs": 6956,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-02": [
+    {
+      "text": "从 A 到 B，横向增加四。",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵向增加二，这是走完全程的两个变化量。",
+      "startMs": 2550,
+      "endMs": 6110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-03": [
+    {
+      "text": "中点记作 M，从 A 走一半。",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横向增加四的一半，纵向增加二的一半。",
+      "startMs": 2230,
+      "endMs": 5510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "加回起点坐标，得到三、二。",
+      "startMs": 5492,
+      "endMs": 7811,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-04": [
+    {
+      "text": "再把四分之一位置记作 Q，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横向增加一。",
+      "startMs": 2270,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵向增加二分之一，所以坐标是二、二分之三。",
+      "startMs": 3510,
+      "endMs": 7436,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为什么两个方向能用同一比例，",
+      "startMs": 7515,
+      "endMs": 9876,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面用相似三角形说明。",
+      "startMs": 10015,
+      "endMs": 12175,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-05": [
+    {
+      "text": "现在用一般符号表示端点，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 的横纵坐标分别记作 a_x 和 a_y。",
+      "startMs": 2670,
+      "endMs": 5910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 的横纵坐标分别记作 b_x 和 b_y，",
+      "startMs": 5919,
+      "endMs": 9238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这些字母代表坐标值。",
+      "startMs": 9359,
+      "endMs": 11319,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-06": [
+    {
+      "text": "写在右下方的 x 和 y 是下标，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用来区分横坐标和纵坐标。",
+      "startMs": 2550,
+      "endMs": 4750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "a_x 是一个坐标符号，",
+      "startMs": 4765,
+      "endMs": 6725,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不表示 a 乘以 x。",
+      "startMs": 6885,
+      "endMs": 8484,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其余三个符号同理。",
+      "startMs": 8524,
+      "endMs": 10210,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-07": [
+    {
+      "text": "先设两个端点不同，在线段上选点 P。",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它的坐标记作 x 和 y，",
+      "startMs": 3829,
+      "endMs": 5630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用 u 表示从 A 到 P 的长度占整条线段的比例。",
+      "startMs": 5663,
+      "endMs": 9422,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 AP 的长度，",
+      "startMs": 9462,
+      "endMs": 11023,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "除以 AB 的长度。",
+      "startMs": 11039,
+      "endMs": 12519,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-08": [
+    {
+      "text": "u 从零到一，零对应起点 A。",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一对应终点 B，介于零和一之间就对应内部点。",
+      "startMs": 2710,
+      "endMs": 6670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-09": [
+    {
+      "text": "先看既不水平也不竖直的线段，",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取内部点 P。",
+      "startMs": 2630,
+      "endMs": 3829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "过 B 和 P 作竖线，",
+      "startMs": 3829,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与过 A 的横线分别交于 H 和 K。",
+      "startMs": 5532,
+      "endMs": 8132,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "H 的横坐标是 b_x，",
+      "startMs": 8132,
+      "endMs": 9852,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "K 的横坐标是 x。",
+      "startMs": 9844,
+      "endMs": 11364,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的纵坐标都是 a_y。",
+      "startMs": 11364,
+      "endMs": 13243,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-10": [
+    {
+      "text": "三角形 AKP 与 AHB 都是直角三角形，",
+      "startMs": 70,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而且共用 A 处的角。",
+      "startMs": 3989,
+      "endMs": 5630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两角分别相等，因此两个三角形相似。",
+      "startMs": 5578,
+      "endMs": 9178,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-11": [
+    {
+      "text": "相似三角形的对应边成比例，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "小三角形与大三角形的水平边之比。",
+      "startMs": 2469,
+      "endMs": 5520,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "竖直边之比，以及斜边之比都相等。",
+      "startMs": 5550,
+      "endMs": 8670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "斜边之比正是 u，所以横向和纵向也都取同一个比例。",
+      "startMs": 8932,
+      "endMs": 13212,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-12": [
+    {
+      "text": "保留刚才的对应边比例，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横向全程变化是 b_x 减 a_x。",
+      "startMs": 1950,
+      "endMs": 5030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "走到 P 时的变化是 x 减 a_x，",
+      "startMs": 4980,
+      "endMs": 7699,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于全程变化乘以 u。",
+      "startMs": 7699,
+      "endMs": 9460,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-13": [
+    {
+      "text": "纵向全程变化是 b_y 减 a_y，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "走到 P 时是 y 减 a_y。",
+      "startMs": 2869,
+      "endMs": 4830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此纵向变化也等于全程变化乘以 u。",
+      "startMs": 4830,
+      "endMs": 8229,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-14": [
+    {
+      "text": "图中向右向上时差为正，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "向左或向下时相应的差为负。",
+      "startMs": 2270,
+      "endMs": 4870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "局部变化与全程变化方向一致，",
+      "startMs": 4975,
+      "endMs": 7455,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以在长度比例前同时带上方向符号。",
+      "startMs": 7575,
+      "endMs": 10495,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然得到这两个等式，",
+      "startMs": 10527,
+      "endMs": 12087,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能把带方向的差直接当成正长度。",
+      "startMs": 12367,
+      "endMs": 15207,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-15": [
+    {
+      "text": "现在推导横坐标，上一页的等式保留在上方。",
+      "startMs": 70,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边都加上 a_x，",
+      "startMs": 3949,
+      "endMs": 5630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到起点横坐标加上横向变化。",
+      "startMs": 5578,
+      "endMs": 8297,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-16": [
+    {
+      "text": "用乘法分配律展开，u 分别乘以括号内的两项。",
+      "startMs": 70,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 a_x 加 u 乘以 b_x，",
+      "startMs": 4127,
+      "endMs": 6406,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再减 u 乘以 a_x。",
+      "startMs": 6607,
+      "endMs": 8167,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-17": [
+    {
+      "text": "把含 a_x 的两项合并，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "提取共同因子 a_x。",
+      "startMs": 1990,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到一减 u 的差乘以 a_x，",
+      "startMs": 3949,
+      "endMs": 6310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加 u 乘以 b_x。",
+      "startMs": 6346,
+      "endMs": 8026,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-18": [
+    {
+      "text": "换页后保留纵向变化等式，",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以及刚刚求出的横坐标公式。",
+      "startMs": 2309,
+      "endMs": 4630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵向等式两边加上 a_y，",
+      "startMs": 4639,
+      "endMs": 6998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到起点纵坐标加上纵向变化。",
+      "startMs": 7119,
+      "endMs": 10079,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-19": [
+    {
+      "text": "同样先展开，得到 a_y 加 u 乘以 b_y。",
+      "startMs": 70,
+      "endMs": 3389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再减 u 乘以 a_y。",
+      "startMs": 3510,
+      "endMs": 4990,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-20": [
+    {
+      "text": "再合并含 a_y 的两项，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到一减 u 的差乘以 a_y。",
+      "startMs": 1990,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加 u 乘以 b_y，",
+      "startMs": 4230,
+      "endMs": 5750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横纵分点公式都推导出来了。",
+      "startMs": 5834,
+      "endMs": 8060,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-21": [
+    {
+      "text": "水平线段的两个纵坐标相等，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以纵向变化为零。",
+      "startMs": 2309,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只在横向按比例移动，",
+      "startMs": 4127,
+      "endMs": 5727,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然满足这两个公式。",
+      "startMs": 5807,
+      "endMs": 7406,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-22": [
+    {
+      "text": "竖直线段的两个横坐标相等，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以横向变化为零。",
+      "startMs": 2550,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只在纵向按比例移动，",
+      "startMs": 4298,
+      "endMs": 6018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公式也成立。",
+      "startMs": 6178,
+      "endMs": 7177,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-23": [
+    {
+      "text": "把 u 等于零代入，",
+      "startMs": 70,
+      "endMs": 1550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 A 的两个坐标。",
+      "startMs": 1590,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把 u 等于一代入，",
+      "startMs": 3030,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 B 的两个坐标。",
+      "startMs": 4469,
+      "endMs": 5909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "端点不需要使用退化的相似三角形。",
+      "startMs": 5989,
+      "endMs": 8829,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-24": [
+    {
+      "text": "每个内部点都有从 A 出发的长度比例，",
+      "startMs": 70,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "反过来每个零到一之间的比例也确定一个位置。",
+      "startMs": 3190,
+      "endMs": 6670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此让 u 取遍零到一，",
+      "startMs": 6687,
+      "endMs": 8646,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "覆盖整条闭线段。",
+      "startMs": 8646,
+      "endMs": 10046,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是只检查中点和四分之一位置。",
+      "startMs": 10287,
+      "endMs": 12687,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-25": [
+    {
+      "text": "接下来介绍剪切，用 s 表示固定的剪切系数。",
+      "startMs": 70,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "坐标右上方的撇号，表示剪切后的新坐标。",
+      "startMs": 4550,
+      "endMs": 8140,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-26": [
+    {
+      "text": "新横坐标等于原横坐标，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "加上 s 乘以原纵坐标。",
+      "startMs": 2309,
+      "endMs": 4670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新纵坐标等于原纵坐标，",
+      "startMs": 4639,
+      "endMs": 6719,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是纵坐标不变。",
+      "startMs": 6799,
+      "endMs": 8239,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-27": [
+    {
+      "text": "下面只使用这个定义做代数变形，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不要求系数足够小。",
+      "startMs": 2989,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "小系数保序是另一个问题，",
+      "startMs": 4469,
+      "endMs": 6269,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里先不使用保序结论。",
+      "startMs": 6469,
+      "endMs": 8268,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-28": [
+    {
+      "text": "上方保留两个分点公式和剪切公式，",
+      "startMs": 70,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把原横坐标替换为横向分点式。",
+      "startMs": 3429,
+      "endMs": 6030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再把原纵坐标替换为纵向分点式，",
+      "startMs": 6004,
+      "endMs": 9044,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "注意 s 乘的是整个纵坐标的和。",
+      "startMs": 9124,
+      "endMs": 11764,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-29": [
+    {
+      "text": "纵坐标不变，直接保留原来的纵向分点公式。",
+      "startMs": 70,
+      "endMs": 3710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横纵坐标中的 u 始终是同一个比例。",
+      "startMs": 3710,
+      "endMs": 6470,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-30": [
+    {
+      "text": "换页仍保留刚才的完整代入式，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "将 s 分别乘以括号内两项。",
+      "startMs": 2869,
+      "endMs": 5390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标展开成四项，没有省略任何乘积。",
+      "startMs": 5407,
+      "endMs": 8910,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-31": [
+    {
+      "text": "交换中间两项的位置，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把含端点 A 坐标的两项放在前面。",
+      "startMs": 2270,
+      "endMs": 5110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把含端点 B 坐标的两项放在后面，",
+      "startMs": 5066,
+      "endMs": 7785,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等式的值不变。",
+      "startMs": 8226,
+      "endMs": 9506,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-32": [
+    {
+      "text": "前两项提取一减 u 这个共同因子，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后两项提取 u。",
+      "startMs": 2909,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个括号内分别是 a_x 加 s 乘以 a_y，",
+      "startMs": 4298,
+      "endMs": 7898,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以及 b_x 加 s 乘以 b_y。",
+      "startMs": 7938,
+      "endMs": 10258,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-33": [
+    {
+      "text": "保留端点定义和剪切公式，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "对 A 做同样的剪切。",
+      "startMs": 2789,
+      "endMs": 4630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新端点记作 A′，横坐标恰好是第一个括号内的表达式。",
+      "startMs": 4630,
+      "endMs": 9440,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标仍为 a_y。",
+      "startMs": 9551,
+      "endMs": 11111,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-34": [
+    {
+      "text": "对 B 剪切得到 B′，",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标恰好是第二个括号内的表达式。",
+      "startMs": 1950,
+      "endMs": 4910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标仍为 b_y。",
+      "startMs": 4895,
+      "endMs": 6535,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "242-35": [
+    {
+      "text": "于是新点的横纵坐标，",
+      "startMs": 110,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍按同一个 u 组合两个新端点。",
+      "startMs": 1670,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后续将用这个结果证明整条线段的对应，",
+      "startMs": 3871,
+      "endMs": 7071,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再分别证明不丢交点与不添交点。",
+      "startMs": 7431,
+      "endMs": 10551,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}
