@@ -60,16 +60,17 @@ pnpm --config.verify-deps-before-run=false run video:audit-narration
 
 ## 用户导出入口
 
-本集采用 3840×2160、60 fps；1920×1080 逻辑布局以两倍直接栅格化。制作配置与[四阶段流程](../../docs/agents/videos/operations.md#四阶段命令模板)一致：保留 PNG → 无声 H.265 硬件编码 → 同时间线 PCM WAV → 复制封装 MOV。
+本集采用 3840×2160、60 fps；1920×1080 逻辑布局以两倍直接栅格化。制作配置与[五阶段流程](../../docs/agents/videos/operations.md#五阶段命令模板)一致：独立预检 → 保留 PNG → 无声 H.265 硬件编码 → 同时间线 PCM WAV → 复制封装 MOV。
 
-`video:export` 只负责 PNG，`video:export-audio` 只负责同一 `ShearSpecialCases` 时间线的 WAV。两者先执行内容及同一生产布局检查，再动态分配独立端口；不覆盖已有输出。浏览器只能是 Remotion 4.0.538 对应的 Headless Shell 157.0.8080.0。
+`video:export` 只负责 PNG，`video:export-audio` 只负责同一 `ShearSpecialCases` 时间线的 WAV。先独立运行 `video:preflight` 完成音频解码、内容及完整生产布局检查，保存与当前输入绑定的记录；两个导出入口只核对记录，不重复预检，再动态分配独立端口，不覆盖已有输出。记录缺失、未完成或输入变化时停止并提示重新预检；旧检查日志不能替代指纹记录。具体覆盖范围见[公共预检说明](../../docs/agents/videos/operations.md#用户导出)。浏览器只能是 Remotion 4.0.538 对应的 Headless Shell 157.0.8080.0。
 
 ```sh
+pnpm --config.verify-deps-before-run=false run video:preflight
 pnpm --config.verify-deps-before-run=false run video:export --dry-run
 pnpm --config.verify-deps-before-run=false run video:export-audio --dry-run
 ```
 
-移除 `--dry-run` 仅供用户按四阶段检查顺序执行。PNG 目录为 `out/shear-special-cases-frames/`；WAV 为 `out/shear-special-cases-audio.wav`。WAV 参数明确指定 `wav`、`pcm-16`、48000 Hz、关闭视频硬件加速；当前 Remotion 混音输出双声道，生成后仍须实际检查。无声 H.265 仍要求硬件编码。后续编码与 MOV 封装按实际 PNG 编号及已核验产物准备，不能将存在入口视为已导出。
+移除 `--dry-run` 仅供用户按五阶段检查顺序执行。PNG 目录为 `out/shear-special-cases-frames/`；WAV 为 `out/shear-special-cases-audio.wav`。WAV 参数明确指定 `wav`、`pcm-16`、48000 Hz、关闭视频硬件加速；当前 Remotion 混音输出双声道，生成后仍须实际检查。无声 H.265 仍要求硬件编码。后续编码与 MOV 封装按实际 PNG 编号及已核验产物准备，不能将存在入口视为已导出。
 
 ## 本轮验证状态
 

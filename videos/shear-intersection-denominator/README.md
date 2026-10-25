@@ -81,13 +81,15 @@ pnpm --config.verify-deps-before-run=false run video:check-layout --screenshots
 先按[唯一浏览器约束](../../docs/agents/videos/configuration.md#唯一浏览器约束)设置 `REMOTION_BROWSER_EXECUTABLE`，指向已安装的匹配版本 Headless Shell；本工程当前要求 `157.0.8080.0`，脚本会从实际安装的 Remotion 再次读取要求并核验真实路径和版本。入口不下载或回退浏览器。
 
 ```sh
+# 独立预检并保存绑定当前输入的通过记录；导出入口只核对记录
+pnpm --config.verify-deps-before-run=false run video:preflight
 # 只展示入口参数，不生成帧或音频
 pnpm --config.verify-deps-before-run=false run video:export --dry-run
 # 仅供用户自行执行：内容与布局门禁通过后，生成 PNG 帧序列
 pnpm --config.verify-deps-before-run=false run video:export
 ```
 
-第一阶段输出 `out/shear-intersection-denominator-frames/` 的 4K、60 fps PNG 序列，不编码视频、不生成音轨，不覆盖已有目录。先检查编号、数量、尺寸及画面；通过后再按[分阶段导出流程](../../docs/agents/videos/operations.md#用户导出)准备无声 H.265 编码，检查通过后才与同时间线的 48 kHz、16 bit、双声道 PCM WAV 复制封装为 MOV，保留 PNG 与 WAV。助手未执行任何渲染或导出；入口 dry-run 不代表实际帧序列或成片验收。
+独立预检后的 PNG 阶段输出 `out/shear-intersection-denominator-frames/` 的 4K、60 fps PNG 序列，不编码视频、不生成音轨，不覆盖已有目录。先检查编号、数量、尺寸及画面；通过后再按[分阶段导出流程](../../docs/agents/videos/operations.md#用户导出)准备无声 H.265 编码，检查通过后才与同时间线的 48 kHz、16 bit、双声道 PCM WAV 复制封装为 MOV，保留 PNG 与 WAV。助手未执行任何渲染或导出；入口 dry-run 不代表实际帧序列或成片验收。
 
 ## 交付状态
 

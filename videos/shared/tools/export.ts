@@ -4,6 +4,7 @@ import { existsSync } from "node:fs";
 import { createServer } from "node:net";
 import { resolve } from "node:path";
 import { verifiedBrowser } from "./browser.ts";
+import { requirePreflight } from "./preflight.ts";
 
 export async function exportVideo(
   root: string,
@@ -51,18 +52,7 @@ export async function exportVideo(
       throw Error(
         "Output already exists; preserve and inspect it before starting another export.",
       );
-    for (const [script, ...options] of [
-      ["check-content.ts", "--decode"],
-      ["check-layout.ts"],
-    ]) {
-      const checked = spawnSync(
-        process.execPath,
-        [`scripts/${script}`, ...options],
-        { cwd: root, stdio: "inherit" },
-      );
-      if (checked.error) throw checked.error;
-      if (checked.status !== 0) throw Error(`${script} failed; export stopped`);
-    }
+    requirePreflight(root, browser);
     const allocator = createServer();
     await new Promise<void>((resolve) =>
       allocator.listen(0, "127.0.0.1", resolve),

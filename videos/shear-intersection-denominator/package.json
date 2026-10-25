@@ -28,6 +28,7 @@
     "typescript": "5.9.3"
   },
   "scripts": {
+    "video:preflight": "node ../shared/tools/preflight-cli.ts",
     "video:dev": "remotion studio --no-open",
     "video:build": "remotion bundle",
     "video:upgrade": "remotion upgrade",

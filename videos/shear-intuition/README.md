@@ -12,6 +12,8 @@
 
 ## 环境与命令
 
+导出前先运行 `pnpm --config.verify-deps-before-run=false run video:preflight`，保存与当前输入匹配的完整检查记录。`video:export` 只核对该记录，不重复检查；缺失或失效时停止。详见[公共预检与导出说明](../../docs/agents/videos/operations.md#用户导出)。
+
 本次检查使用 Node.js 24.17.0、pnpm 11.8.0，以及已安装的 FFmpeg、ffprobe、Chrome 和 Playwright CLI 0.1.22。工具入口直接执行 TypeScript，要求 Node.js 22.18+（22.x）或 24+，具体范围见 `package.json`；不支持 Node.js 20。锁文件为 `pnpm-lock.yaml`。安装、Studio 预览、lint 和打包见公共[基础命令](../../docs/agents/videos/operations.md#基础命令)；`build` 产物已忽略。
 
 配音 dry-run、内容与布局检查见公共[内容与布局检查](../../docs/agents/videos/operations.md#内容与布局检查)。本工程的必要回归入口为：
