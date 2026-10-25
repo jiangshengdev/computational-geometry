@@ -45,5 +45,5 @@
 - 编写、修改或审校字幕与口播稿，合成、修正或检查配音时，读取[配音与字幕制作规则](../docs/agents/videos/narration.md)。
 - 生成或替换音频素材、编排或检查音画同步、静默窗口与页末停留时，读取[音频与页面时间线规则](../docs/agents/videos/timeline.md)。
 - 制作、修改或检查坐标图、教学页面与字幕排版时，读取[图示与排版规则](../docs/agents/videos/layout.md)。
-- 运行工程命令、启动预览或浏览器检查、生成配音、准备用户导出命令或查找发布素材时，读取[工程操作说明](../docs/agents/videos/operations.md)，仅使用其中明确适用于当前工程的入口。
+- 运行工程命令、启动预览或浏览器检查、生成配音、准备用户导出命令或查找发布素材时，读取[工程操作说明](../docs/agents/videos/operations.md)，仅使用其中明确适用于当前工程的入口。提供导出命令必须遵循其中的[模板约束](../docs/agents/videos/operations.md#必须按模板提供命令)及[四阶段命令模板](../docs/agents/videos/operations.md#四阶段命令模板)，禁止临时拼写绕过模板与核验；模板缺失或不适用时先处理缺口。
 - 检查或交付内容与素材、报告配音修正结果、验收成片、发布或关闭任务前，读取[交付与成片验收规则](../docs/agents/videos/delivery.md)。
