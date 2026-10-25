@@ -84,6 +84,14 @@ export function ShearDiagram({
         stroke="#526579"
         strokeWidth={2}
       />
+      <polygon
+        points={`${x(6.5)},${y(0)} ${x(6.5) - 12},${y(0) - 6} ${x(6.5) - 12},${y(0) + 6}`}
+        fill="#526579"
+      />
+      <polygon
+        points={`${x(0)},${y(3.5)} ${x(0) - 6},${y(3.5) + 12} ${x(0) + 6},${y(3.5) + 12}`}
+        fill="#526579"
+      />
       <SvgMathText x={x(6.5)} y={y(0) + 42} align="center">
         X
       </SvgMathText>
