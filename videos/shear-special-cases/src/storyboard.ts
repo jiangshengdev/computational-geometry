@@ -538,7 +538,7 @@ export const shots: Shot[] = [
     page: "difference",
     step: 1,
     caption:
-      "现在看一般情形，P 与 Q 的横坐标相同。P 的纵坐标小于 Q 的纵坐标，系数 s 为正。",
+      "现在看一般情形，P 与 Q 的横坐标相同。点 P 的纵坐标小于点 Q 的纵坐标，剪切系数 s 大于零。",
   },
   {
     id: "237-12",

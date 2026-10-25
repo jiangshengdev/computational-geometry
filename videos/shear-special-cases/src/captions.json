@@ -226,21 +226,21 @@
     {
       "text": "现在看一般情形，P 与 Q 的横坐标相同。",
       "startMs": 70,
-      "endMs": 3469,
+      "endMs": 3949,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "P 的纵坐标小于 Q 的纵坐标，",
-      "startMs": 3829,
-      "endMs": 6070,
+      "text": "点 P 的纵坐标小于点 Q 的纵坐标，",
+      "startMs": 4150,
+      "endMs": 7460,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "系数 s 为正。",
-      "startMs": 6090,
-      "endMs": 7050,
+      "text": "剪切系数 s 大于零。",
+      "startMs": 7490,
+      "endMs": 9360,
       "timestampMs": null,
       "confidence": null
     }

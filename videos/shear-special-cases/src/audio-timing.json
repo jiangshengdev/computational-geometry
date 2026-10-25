@@ -3514,8 +3514,8 @@
   "237-11": {
     "audioFile": "237-11.wav",
     "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "e9d5b001e9ad20ee5f27fa7fbd6a4630a29013680e8770a78b5807012bfca3fa",
-    "duration": 7.09,
+    "audioSha256": "839a5a8ca34fe3af5e234e3a5039d72b4543f5f47ed047a9819d660cfab6f015",
+    "duration": 9.39,
     "words": [
       {
         "text": "现在",
@@ -3527,168 +3527,670 @@
       {
         "text": "看",
         "startMs": 470,
-        "durationMs": 360,
+        "durationMs": 320,
         "textOffset": 2,
         "wordLength": 1
       },
       {
         "text": "一般",
-        "startMs": 830,
-        "durationMs": 360,
+        "startMs": 790,
+        "durationMs": 400,
         "textOffset": 3,
         "wordLength": 2
       },
       {
         "text": "情形",
         "startMs": 1190,
-        "durationMs": 520,
+        "durationMs": 560,
         "textOffset": 5,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 1710,
+        "startMs": 1750,
         "durationMs": 0,
         "textOffset": 7,
         "wordLength": 1
       },
       {
         "text": "P",
-        "startMs": 1710,
-        "durationMs": 200,
+        "startMs": 1910,
+        "durationMs": 280,
         "textOffset": 8,
         "wordLength": 1
       },
       {
         "text": "与",
-        "startMs": 1910,
-        "durationMs": 160,
+        "startMs": 2190,
+        "durationMs": 279,
         "textOffset": 10,
         "wordLength": 1
       },
       {
         "text": "Q",
-        "startMs": 2070,
-        "durationMs": 239,
+        "startMs": 2469,
+        "durationMs": 241,
         "textOffset": 12,
         "wordLength": 1
       },
       {
         "text": "的",
-        "startMs": 2309,
-        "durationMs": 120,
+        "startMs": 2710,
+        "durationMs": 119,
         "textOffset": 14,
         "wordLength": 1
       },
       {
         "text": "横坐标",
-        "startMs": 2429,
+        "startMs": 2829,
         "durationMs": 480,
         "textOffset": 15,
         "wordLength": 3
       },
       {
         "text": "相同",
-        "startMs": 2909,
-        "durationMs": 560,
+        "startMs": 3309,
+        "durationMs": 640,
         "textOffset": 18,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 3469,
+        "startMs": 3949,
         "durationMs": 0,
         "textOffset": 20,
         "wordLength": 1
       },
       {
-        "text": "P",
-        "startMs": 3829,
-        "durationMs": 321,
+        "text": "点",
+        "startMs": 4150,
+        "durationMs": 600,
         "textOffset": 21,
         "wordLength": 1
       },
       {
-        "text": "的",
-        "startMs": 4150,
-        "durationMs": 120,
+        "text": " ",
+        "startMs": 4750,
+        "durationMs": 0,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "P",
+        "startMs": 4790,
+        "durationMs": 280,
         "textOffset": 23,
         "wordLength": 1
       },
       {
+        "text": "的",
+        "startMs": 5070,
+        "durationMs": 120,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
         "text": "纵坐标",
-        "startMs": 4270,
+        "startMs": 5190,
         "durationMs": 600,
-        "textOffset": 24,
+        "textOffset": 26,
         "wordLength": 3
       },
       {
         "text": "小于",
-        "startMs": 4870,
-        "durationMs": 280,
-        "textOffset": 27,
+        "startMs": 5790,
+        "durationMs": 480,
+        "textOffset": 29,
         "wordLength": 2
       },
       {
-        "text": "Q",
-        "startMs": 5150,
-        "durationMs": 200,
-        "textOffset": 30,
+        "text": " ",
+        "startMs": 6270,
+        "durationMs": 0,
+        "textOffset": 31,
         "wordLength": 1
       },
       {
-        "text": "的",
-        "startMs": 5350,
-        "durationMs": 120,
+        "text": "点",
+        "startMs": 6270,
+        "durationMs": 240,
         "textOffset": 32,
         "wordLength": 1
       },
       {
-        "text": "纵坐标",
-        "startMs": 5470,
-        "durationMs": 600,
-        "textOffset": 33,
-        "wordLength": 3
+        "text": "Q",
+        "startMs": 6510,
+        "durationMs": 200,
+        "textOffset": 34,
+        "wordLength": 1
       },
       {
-        "text": "。",
-        "startMs": 6070,
-        "durationMs": 0,
+        "text": "的",
+        "startMs": 6710,
+        "durationMs": 120,
         "textOffset": 36,
         "wordLength": 1
       },
       {
-        "text": "系数",
-        "startMs": 6090,
-        "durationMs": 480,
+        "text": "纵坐标",
         "textOffset": 37,
-        "wordLength": 2
+        "wordLength": 3,
+        "startMs": 6850,
+        "durationMs": 610
       },
       {
-        "text": "S",
-        "startMs": 6570,
-        "durationMs": 120,
+        "text": "。",
+        "startMs": 7430,
+        "durationMs": 0,
         "textOffset": 40,
         "wordLength": 1
       },
       {
-        "text": "为正",
-        "startMs": 6690,
-        "durationMs": 360,
-        "textOffset": 42,
-        "wordLength": 2
+        "text": "剪切",
+        "textOffset": 41,
+        "wordLength": 2,
+        "startMs": 7490,
+        "durationMs": 530
+      },
+      {
+        "text": "系数",
+        "textOffset": 43,
+        "wordLength": 2,
+        "startMs": 8030,
+        "durationMs": 390
+      },
+      {
+        "text": "S",
+        "textOffset": 46,
+        "wordLength": 1,
+        "startMs": 8430,
+        "durationMs": 270
+      },
+      {
+        "text": "大于",
+        "textOffset": 48,
+        "wordLength": 2,
+        "startMs": 8710,
+        "durationMs": 330
+      },
+      {
+        "text": "零",
+        "textOffset": 50,
+        "wordLength": 1,
+        "startMs": 9050,
+        "durationMs": 310
       },
       {
         "text": "。",
-        "startMs": 7050,
+        "startMs": 9250,
         "durationMs": 0,
-        "textOffset": 44,
+        "textOffset": 51,
         "wordLength": 1
       }
     ],
-    "speech": "现在看一般情形。P 与 Q 的横坐标相同。P 的纵坐标小于 Q 的纵坐标。系数 S 为正。",
+    "speech": "现在看一般情形。P 与 Q 的横坐标相同。点 P 的纵坐标小于 点 Q 的纵坐标。剪切系数 S 大于零。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "ea56630e93dc0286c2db3bf7ff19b21359e70ea4b101963a2d14f54c993dd8a3"
+    "fingerprint": "ccb208e8ea68d0a69198f1d04fb56d4654f86d1170226dc64e5e32cf2b97b931",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "839a5a8ca34fe3af5e234e3a5039d72b4543f5f47ed047a9819d660cfab6f015",
+      "synthesisWords": [
+        {
+          "text": "现在",
+          "startMs": 70,
+          "durationMs": 400,
+          "textOffset": 0,
+          "wordLength": 2
+        },
+        {
+          "text": "看",
+          "startMs": 470,
+          "durationMs": 320,
+          "textOffset": 2,
+          "wordLength": 1
+        },
+        {
+          "text": "一般",
+          "startMs": 790,
+          "durationMs": 400,
+          "textOffset": 3,
+          "wordLength": 2
+        },
+        {
+          "text": "情形",
+          "startMs": 1190,
+          "durationMs": 560,
+          "textOffset": 5,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 1750,
+          "durationMs": 0,
+          "textOffset": 7,
+          "wordLength": 1
+        },
+        {
+          "text": "P",
+          "startMs": 1910,
+          "durationMs": 280,
+          "textOffset": 8,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 2190,
+          "durationMs": 279,
+          "textOffset": 10,
+          "wordLength": 1
+        },
+        {
+          "text": "Q",
+          "startMs": 2469,
+          "durationMs": 241,
+          "textOffset": 12,
+          "wordLength": 1
+        },
+        {
+          "text": "的",
+          "startMs": 2710,
+          "durationMs": 119,
+          "textOffset": 14,
+          "wordLength": 1
+        },
+        {
+          "text": "横坐标",
+          "startMs": 2829,
+          "durationMs": 480,
+          "textOffset": 15,
+          "wordLength": 3
+        },
+        {
+          "text": "相同",
+          "startMs": 3309,
+          "durationMs": 640,
+          "textOffset": 18,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 3949,
+          "durationMs": 0,
+          "textOffset": 20,
+          "wordLength": 1
+        },
+        {
+          "text": "点",
+          "startMs": 4150,
+          "durationMs": 600,
+          "textOffset": 21,
+          "wordLength": 1
+        },
+        {
+          "text": " ",
+          "startMs": 4750,
+          "durationMs": 0,
+          "textOffset": 22,
+          "wordLength": 1
+        },
+        {
+          "text": "P",
+          "startMs": 4790,
+          "durationMs": 280,
+          "textOffset": 23,
+          "wordLength": 1
+        },
+        {
+          "text": "的",
+          "startMs": 5070,
+          "durationMs": 120,
+          "textOffset": 25,
+          "wordLength": 1
+        },
+        {
+          "text": "纵坐标",
+          "startMs": 5190,
+          "durationMs": 600,
+          "textOffset": 26,
+          "wordLength": 3
+        },
+        {
+          "text": "小于",
+          "startMs": 5790,
+          "durationMs": 480,
+          "textOffset": 29,
+          "wordLength": 2
+        },
+        {
+          "text": " ",
+          "startMs": 6270,
+          "durationMs": 0,
+          "textOffset": 31,
+          "wordLength": 1
+        },
+        {
+          "text": "点",
+          "startMs": 6270,
+          "durationMs": 240,
+          "textOffset": 32,
+          "wordLength": 1
+        },
+        {
+          "text": "Q",
+          "startMs": 6510,
+          "durationMs": 200,
+          "textOffset": 34,
+          "wordLength": 1
+        },
+        {
+          "text": "的",
+          "startMs": 6710,
+          "durationMs": 120,
+          "textOffset": 36,
+          "wordLength": 1
+        },
+        {
+          "text": "纵坐标",
+          "startMs": 6830,
+          "durationMs": 600,
+          "textOffset": 37,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 7430,
+          "durationMs": 0,
+          "textOffset": 40,
+          "wordLength": 1
+        },
+        {
+          "text": "剪切",
+          "startMs": 7370,
+          "durationMs": 520,
+          "textOffset": 41,
+          "wordLength": 2
+        },
+        {
+          "text": "系数",
+          "startMs": 7890,
+          "durationMs": 400,
+          "textOffset": 43,
+          "wordLength": 2
+        },
+        {
+          "text": "S",
+          "startMs": 8290,
+          "durationMs": 280,
+          "textOffset": 46,
+          "wordLength": 1
+        },
+        {
+          "text": "大于零",
+          "startMs": 8570,
+          "durationMs": 680,
+          "textOffset": 48,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 9250,
+          "durationMs": 0,
+          "textOffset": 51,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "bb6804cfcb6c4839b2d70f3e7e58109e",
+        "RecognitionStatus": "Success",
+        "Offset": 500000,
+        "Duration": 93100000,
+        "Channel": 0,
+        "DisplayText": "现在看一般情形，P与Q的横坐标相同点，P的纵坐标小于点Q的纵坐标，剪切系数S大于零。",
+        "SNR": 34.58968,
+        "NBest": [
+          {
+            "Confidence": 0.9742286,
+            "Lexical": "现在 看 一般 情形 P 与 Q 的 横坐标 相同 点 P 的 纵坐 标小 于 点 Q 的 纵坐标 剪切 系数 S 大于 零",
+            "ITN": "现在 看 一般 情形 P 与 Q 的 横坐标 相同 点 P 的 纵坐 标小 于 点 Q 的 纵坐标 剪切 系数 S 大于 零",
+            "MaskedITN": "现在看一般情形p与q的横坐标相同点p的纵坐标小于点q的纵坐标剪切系数s大于零",
+            "Display": "现在看一般情形，P与Q的横坐标相同点，P的纵坐标小于点Q的纵坐标，剪切系数S大于零。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "FluencyScore": 98,
+              "CompletenessScore": 100,
+              "PronScore": 97.8
+            },
+            "Words": [
+              {
+                "Word": "现在",
+                "Offset": 500000,
+                "Duration": 4300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "看",
+                "Offset": 4900000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "一般",
+                "Offset": 8300000,
+                "Duration": 3900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "情形",
+                "Offset": 12300000,
+                "Duration": 5600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "P",
+                "Offset": 18900000,
+                "Duration": 2800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 85,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 21800000,
+                "Duration": 3200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "Q",
+                "Offset": 25100000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 27100000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "横坐标",
+                "Offset": 28300000,
+                "Duration": 5100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "相同",
+                "Offset": 33500000,
+                "Duration": 5800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "点",
+                "Offset": 39900000,
+                "Duration": 7600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "P",
+                "Offset": 47800000,
+                "Duration": 3200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 82,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 51100000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "纵坐",
+                "Offset": 52300000,
+                "Duration": 2900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "标小",
+                "Offset": 55300000,
+                "Duration": 4900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "于",
+                "Offset": 60300000,
+                "Duration": 2500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "点",
+                "Offset": 62900000,
+                "Duration": 2000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "Q",
+                "Offset": 65000000,
+                "Duration": 2400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 67500000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "纵坐标",
+                "Offset": 68500000,
+                "Duration": 6100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "剪切",
+                "Offset": 74900000,
+                "Duration": 5300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "系数",
+                "Offset": 80300000,
+                "Duration": 3900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "S",
+                "Offset": 84300000,
+                "Duration": 2700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "大于",
+                "Offset": 87100000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "零",
+                "Offset": 90500000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "237-12": {
     "audioFile": "237-12.wav",
