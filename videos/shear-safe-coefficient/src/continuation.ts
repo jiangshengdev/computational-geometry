@@ -339,7 +339,7 @@ export const continuationShots: Shot[] = [
     page: "difference",
     step: 5,
     caption:
-      "s 为正，高度差的绝对值不超过 2M。变化量的绝对值就不超过 2Ms，所以最大缩短量不超过 2Ms。",
+      "这里选取的系数 s 是正数，高度差的绝对值不超过 2M。变化量的绝对值就不超过 2Ms，所以最大缩短量不超过 2Ms。",
   },
   {
     id: "233-19",

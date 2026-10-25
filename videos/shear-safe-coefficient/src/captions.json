@@ -946,23 +946,30 @@
   ],
   "233-18": [
     {
-      "text": "s 为正，高度差的绝对值不超过 2M。",
+      "text": "这里选取的系数 s 是正数，",
       "startMs": 70,
-      "endMs": 3789,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "高度差的绝对值不超过 2M。",
+      "startMs": 2670,
+      "endMs": 5190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "变化量的绝对值就不超过 2Ms，",
-      "startMs": 3789,
-      "endMs": 8069,
+      "startMs": 5322,
+      "endMs": 9722,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以最大缩短量不超过 2Ms。",
-      "startMs": 8138,
-      "endMs": 11778,
+      "startMs": 9722,
+      "endMs": 13361,
       "timestampMs": null,
       "confidence": null
     }
