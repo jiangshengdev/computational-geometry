@@ -319,7 +319,7 @@ export const shots: Shot[] = [
   },
   {
     id: "204-10",
-    reveal: "S 乘 why",
+    reveal: "S 乘",
     page: "formula",
     step: 3,
     caption: "s 叫剪切系数。sy 表示 s 乘 y，这次取二分之一只为图解。",
@@ -446,7 +446,7 @@ export const shots: Shot[] = [
   },
   {
     id: "206-03",
-    reveal: "换成 why 撇",
+    reveal: "换成",
     page: "inverse",
     step: 3,
     caption: "因为 y 等于 y′，把右边的 y 换成 y′。",

@@ -6,15 +6,6 @@ export const { buildSpeechDocument, synthesize } = createSpeechTools(sdk, {
   voice,
   commas: "document",
   fingerprint: true,
-  letterIpa: {
-    A: "eɪ",
-    B: "biː",
-    C: "siː",
-    M: "ɛm",
-    P: "piː",
-    X: "ɛks",
-    Y: "waɪ",
-  },
 });
 export const { alignAudio, verifyAlignment } = createAlignmentTools(sdk, {
   allowReviewedPronunciation: false,

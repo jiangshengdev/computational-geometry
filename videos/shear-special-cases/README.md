@@ -29,7 +29,7 @@
 | 数学混排、分式、中文间距     | `createMathText`、`TeachingMathLines` | 同一公共实现，完整教学行揭示                       |
 | 图示标签与遮挡               | `SvgMathText` 与 DOM 检查             | 本集 `SpecialDiagram`，描边和标签检查复用          |
 | 页面分配、重点与推导分组     | `TeachingPage` 显式分组               | 本集图文页或居中正文；分配律使用等号对齐           |
-| 读音消歧与字母               | Azure 公共文档构造器                  | 独立 `speech-text.json`，局部拼音和单字母 IPA      |
+| 读音消歧与字母               | Azure 公共文档构造器                  | 独立 `speech-text.json`，局部拼音和 `say-as="characters"` 字母拼读 |
 | 实测时间、两处思考与页末     | `createShotTimeline`                  | 原速音频加停顿；两处各四秒，普通页三秒、密集页五秒 |
 | 生产页面状态检查             | 第⑤集 `LayoutCheck`                   | 提取为公共 `ShotLayoutCheck`，两集均调用           |
 | 全段语音评估                 | 第⑤集评估脚本                         | 提取公共 `auditNarration`，绑定音频哈希与口播指纹  |

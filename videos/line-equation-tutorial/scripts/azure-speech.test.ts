@@ -2,6 +2,26 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { buildSpeechDocument } from "./azure-speech.ts";
 
+test("standalone letters spell out without splitting words or XML entities", () => {
+  const result = buildSpeechDocument([
+    "M、Q。x 加 Y。Azure why & < >。",
+    { letter: "S" },
+    { text: "重合", pinyin: "chong2 he2" },
+  ]);
+  assert.equal(result.text, "M、Q。x 加 Y。Azure why & < >。S重合");
+  assert.deepEqual(
+    [
+      ...result.ssml.matchAll(
+        /<say-as interpret-as="characters">([A-Z])<\/say-as>/g,
+      ),
+    ].map((match) => match[1]),
+    ["M", "Q", "X", "Y", "S"],
+  );
+  assert.ok(result.ssml.includes("Azure why &amp; &lt; &gt;"));
+  assert.ok(!result.ssml.includes('alphabet="ipa"'));
+  assert.ok(result.ssml.includes('ph="chong 2 he 2"'));
+});
+
 test("pronunciation applies only to its segment and preserves spoken text", () => {
   const result = buildSpeechDocument([
     "两个端点",

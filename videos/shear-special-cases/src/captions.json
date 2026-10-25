@@ -3,21 +3,21 @@
     {
       "text": "沿用前集的剪切公式，",
       "startMs": 70,
-      "endMs": 1830,
+      "endMs": 2029,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "横坐标加上 s 倍纵坐标。",
-      "startMs": 1910,
-      "endMs": 4270,
+      "startMs": 2070,
+      "endMs": 4430,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标保持不变。",
-      "startMs": 4298,
-      "endMs": 5858,
+      "startMs": 4383,
+      "endMs": 5863,
       "timestampMs": null,
       "confidence": null
     }
@@ -42,13 +42,13 @@
     {
       "text": "前集的正安全系数是，",
       "startMs": 70,
-      "endMs": 1830,
+      "endMs": 1910,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "二百五十六乘以 M 加一的五次方的倒数。",
-      "startMs": 1950,
+      "startMs": 1910,
       "endMs": 5190,
       "timestampMs": null,
       "confidence": null
@@ -58,21 +58,21 @@
     {
       "text": "沿用前集定义，",
       "startMs": 70,
-      "endMs": 1350,
+      "endMs": 1430,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这里用 M 表示一与放大后全部端点坐标绝对值的最大值。",
       "startMs": 1590,
-      "endMs": 6150,
+      "endMs": 6130,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这个系数保持原横坐标不同事件的左右顺序。",
-      "startMs": 6180,
-      "endMs": 9760,
+      "startMs": 6160,
+      "endMs": 9560,
       "timestampMs": null,
       "confidence": null
     }
@@ -81,28 +81,28 @@
     {
       "text": "选取点 P 和点 Q，",
       "startMs": 70,
-      "endMs": 1790,
+      "endMs": 1710,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "P 的坐标是一、二分之一。",
       "startMs": 1910,
-      "endMs": 4190,
+      "endMs": 3949,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "Q 的坐标是一、二分之五。",
-      "startMs": 4190,
-      "endMs": 5940,
+      "startMs": 3949,
+      "endMs": 5540,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "P 较低，Q 较高。",
-      "startMs": 5970,
-      "endMs": 8079,
+      "startMs": 5570,
+      "endMs": 7692,
       "timestampMs": null,
       "confidence": null
     }
@@ -134,28 +134,28 @@
     {
       "text": "同样使用正的演示系数，",
       "startMs": 70,
-      "endMs": 2029,
+      "endMs": 2110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "剪切后谁在左？",
-      "startMs": 2070,
-      "endMs": 3469,
+      "startMs": 2150,
+      "endMs": 3590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "是较低的 P，还是较高的 Q？",
-      "startMs": 3510,
-      "endMs": 6986,
+      "startMs": 3590,
+      "endMs": 6255,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "请先想一想。",
-      "startMs": 7066,
-      "endMs": 8146,
+      "startMs": 6415,
+      "endMs": 7495,
       "timestampMs": null,
       "confidence": null
     }
@@ -164,21 +164,21 @@
     {
       "text": "先计算 P 的新横坐标，",
       "startMs": 70,
-      "endMs": 2230,
+      "endMs": 1910,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "一加二分之一乘以二分之一。",
-      "startMs": 2230,
-      "endMs": 4380,
+      "startMs": 1950,
+      "endMs": 4490,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "等于一加四分之一，也就是四分之五。",
-      "startMs": 4383,
-      "endMs": 7410,
+      "startMs": 4520,
+      "endMs": 7660,
       "timestampMs": null,
       "confidence": null
     }
@@ -187,21 +187,21 @@
     {
       "text": "再计算 Q 的新横坐标，",
       "startMs": 70,
-      "endMs": 2270,
+      "endMs": 1910,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "一加二分之一乘以二分之五。",
-      "startMs": 2270,
-      "endMs": 4830,
+      "startMs": 1910,
+      "endMs": 4490,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "等于四分之九。",
-      "startMs": 4860,
-      "endMs": 6110,
+      "startMs": 4520,
+      "endMs": 5810,
       "timestampMs": null,
       "confidence": null
     }
@@ -210,21 +210,21 @@
     {
       "text": "四分之五小于四分之九，",
       "startMs": 70,
-      "endMs": 2150,
+      "endMs": 1990,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以较低的 P 在左。",
-      "startMs": 2349,
-      "endMs": 4110,
+      "startMs": 2230,
+      "endMs": 3789,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标仍然不变。",
-      "startMs": 4310,
-      "endMs": 5750,
+      "startMs": 3949,
+      "endMs": 5390,
       "timestampMs": null,
       "confidence": null
     }
@@ -233,21 +233,21 @@
     {
       "text": "现在看一般情形，P 与 Q 的横坐标相同。",
       "startMs": 70,
-      "endMs": 3949,
+      "endMs": 3350,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "点 P 的纵坐标小于点 Q 的纵坐标，",
-      "startMs": 4150,
-      "endMs": 7460,
+      "startMs": 3360,
+      "endMs": 6239,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "剪切系数 s 大于零。",
-      "startMs": 7490,
-      "endMs": 9360,
+      "startMs": 6239,
+      "endMs": 8160,
       "timestampMs": null,
       "confidence": null
     }
@@ -256,21 +256,21 @@
     {
       "text": "用 Q 的新横坐标减去 P 的新横坐标，",
       "startMs": 70,
-      "endMs": 4150,
+      "endMs": 3110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把两点各自的剪切公式代入。",
-      "startMs": 4190,
-      "endMs": 6590,
+      "startMs": 3349,
+      "endMs": 5670,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "注意减去的是整个和。",
-      "startMs": 6602,
-      "endMs": 8402,
+      "startMs": 5663,
+      "endMs": 7423,
       "timestampMs": null,
       "confidence": null
     }
@@ -295,28 +295,28 @@
     {
       "text": "原横坐标相等，相减为零。",
       "startMs": 190,
-      "endMs": 3030,
+      "endMs": 2590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "剩下 s 乘以纵坐标之差，",
-      "startMs": 3389,
-      "endMs": 5790,
+      "startMs": 2630,
+      "endMs": 4750,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两个因子都为正。",
-      "startMs": 5919,
-      "endMs": 7199,
+      "startMs": 4895,
+      "endMs": 6055,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此较低的点在左。",
-      "startMs": 7439,
-      "endMs": 9160,
+      "startMs": 6255,
+      "endMs": 8010,
       "timestampMs": null,
       "confidence": null
     }
@@ -325,21 +325,21 @@
     {
       "text": "把刚才的 P 与 Q 连接成线段，",
       "startMs": 70,
-      "endMs": 2670,
+      "endMs": 2550,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它是非零竖直线段。",
-      "startMs": 2869,
-      "endMs": 4430,
+      "startMs": 2750,
+      "endMs": 4470,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两个端点的纵坐标不同。",
-      "startMs": 4383,
-      "endMs": 6303,
+      "startMs": 4469,
+      "endMs": 6389,
       "timestampMs": null,
       "confidence": null
     }
@@ -720,28 +720,28 @@
     {
       "text": "它穿过重叠区间的位置是 R，",
       "startMs": 70,
-      "endMs": 2670,
+      "endMs": 2789,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "坐标二、一。",
-      "startMs": 3070,
-      "endMs": 4190,
+      "startMs": 3110,
+      "endMs": 4270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "演示剪切后横坐标变成二分之五，",
-      "startMs": 4390,
-      "endMs": 7040,
+      "startMs": 4550,
+      "endMs": 7460,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "纵坐标仍是一。",
-      "startMs": 7070,
-      "endMs": 8460,
+      "startMs": 7490,
+      "endMs": 8910,
       "timestampMs": null,
       "confidence": null
     }
@@ -810,14 +810,14 @@
     {
       "text": "用 A 和 B 分别标记这条输入的两个端点，",
       "startMs": 70,
-      "endMs": 3510,
+      "endMs": 3309,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它们的位置完全相同。",
-      "startMs": 3630,
-      "endMs": 5190,
+      "startMs": 3349,
+      "endMs": 5110,
       "timestampMs": null,
       "confidence": null
     }
@@ -904,21 +904,21 @@
     {
       "text": "否则取 s 等于零，",
       "startMs": 70,
-      "endMs": 1630,
+      "endMs": 1510,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "保持原坐标。",
-      "startMs": 1630,
-      "endMs": 2750,
+      "startMs": 1590,
+      "endMs": 2670,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "零长度点输入本身不会触发正系数分支。",
-      "startMs": 2869,
-      "endMs": 6090,
+      "startMs": 2829,
+      "endMs": 6040,
       "timestampMs": null,
       "confidence": null
     }
@@ -956,22 +956,22 @@
     },
     {
       "text": "把全部输入端点放大到整数坐标。",
-      "startMs": 2070,
-      "endMs": 4910,
+      "startMs": 2029,
+      "endMs": 4950,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "小写 x、y 表示原坐标，",
-      "startMs": 4895,
-      "endMs": 7614,
+      "startMs": 4980,
+      "endMs": 7299,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "大写 X、Y 表示放大后的坐标。",
-      "startMs": 7694,
-      "endMs": 10335,
+      "startMs": 7779,
+      "endMs": 10380,
       "timestampMs": null,
       "confidence": null
     }
@@ -1113,14 +1113,14 @@
     {
       "text": "一般情况下，先剪切再放大后的横坐标。",
       "startMs": 70,
-      "endMs": 3510,
+      "endMs": 3590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就是 D 乘以 x 与 s 乘以 y 的和。",
-      "startMs": 3550,
-      "endMs": 6390,
+      "startMs": 3670,
+      "endMs": 6550,
       "timestampMs": null,
       "confidence": null
     }
@@ -1129,21 +1129,21 @@
     {
       "text": "用乘法分配律，D 分别乘括号内的两项。",
       "startMs": 70,
-      "endMs": 3869,
+      "endMs": 3590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到 D 乘以 x，",
-      "startMs": 3869,
-      "endMs": 5310,
+      "startMs": 3616,
+      "endMs": 5160,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "加上 D、s、y 的乘积。",
-      "startMs": 5322,
-      "endMs": 7610,
+      "startMs": 5190,
+      "endMs": 7430,
       "timestampMs": null,
       "confidence": null
     }
@@ -1152,14 +1152,14 @@
     {
       "text": "交换乘法顺序并分组，",
       "startMs": 70,
-      "endMs": 2110,
+      "endMs": 2190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "第二项写成 s 乘以 D 与 y 的乘积。",
-      "startMs": 2230,
-      "endMs": 5590,
+      "startMs": 2590,
+      "endMs": 5640,
       "timestampMs": null,
       "confidence": null
     }
@@ -1168,21 +1168,21 @@
     {
       "text": "把 D 乘以 x 换成大写 X，",
       "startMs": 70,
-      "endMs": 2789,
+      "endMs": 2710,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把 D 乘以 y 换成大写 Y。",
-      "startMs": 2989,
-      "endMs": 5630,
+      "startMs": 2710,
+      "endMs": 5190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这正是先放大再剪切的横坐标。",
-      "startMs": 5663,
-      "endMs": 8263,
+      "startMs": 5236,
+      "endMs": 7836,
       "timestampMs": null,
       "confidence": null
     }
@@ -1190,22 +1190,22 @@
   "239-16": [
     {
       "text": "两条路径的纵坐标也都等于 D 乘以 y，",
-      "startMs": 110,
-      "endMs": 3270,
+      "startMs": 70,
+      "endMs": 3230,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此原坐标与放大坐标使用同一个 s。",
-      "startMs": 3670,
-      "endMs": 7870,
+      "startMs": 3630,
+      "endMs": 7790,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "无须再乘或除一次 D。",
-      "startMs": 7882,
-      "endMs": 10161,
+      "startMs": 7796,
+      "endMs": 10195,
       "timestampMs": null,
       "confidence": null
     }

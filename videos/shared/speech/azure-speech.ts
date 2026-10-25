@@ -6,6 +6,15 @@ import type { WordBoundary } from "./timing.ts";
 const escapeXml = (text: string) =>
   text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+const spellLetter = (letter: string) =>
+  `<lang xml:lang="en-US"><say-as interpret-as="characters">${letter}</say-as></lang>`;
+
+// Match complete alphabetic tokens, so English words are never split into letters.
+const spokenTextXml = (text: string) =>
+  escapeXml(text).replace(/(?<![A-Za-z])[A-Za-z](?![A-Za-z])/g, (letter) =>
+    spellLetter(letter.toUpperCase()),
+  );
+
 type SpeechDocument<Fingerprint extends boolean> = {
   text: string;
   ssml: string;
@@ -17,12 +26,10 @@ export function createSpeechTools<Fingerprint extends boolean>(
     voice,
     commas,
     fingerprint,
-    letterIpa,
   }: {
     voice: string;
     commas: "segment" | "document" | "allow";
     fingerprint: Fingerprint;
-    letterIpa?: Record<string, string>;
   },
 ) {
   function buildSpeechDocument(input: unknown, context = "speech") {
@@ -41,22 +48,19 @@ export function createSpeechTools<Fingerprint extends boolean>(
               `${location}: speech must use periods instead of commas`,
             );
           text += part;
-          return escapeXml(part);
+          return spokenTextXml(part);
         }
         if (typeof part !== "object" || part === null || Array.isArray(part))
           throw new Error(`${location}: expected text or { text, pinyin }`);
         const segment = part as Record<string, unknown>;
         if (
-          letterIpa &&
           Object.keys(segment).length === 1 &&
           typeof segment.letter === "string"
         ) {
-          const ipa = /^[A-Z]$/.test(segment.letter)
-            ? letterIpa[segment.letter]
-            : undefined;
-          if (!ipa) throw new Error(`${location}: unsupported spoken letter`);
+          if (!/^[A-Z]$/.test(segment.letter))
+            throw new Error(`${location}: unsupported spoken letter`);
           text += segment.letter;
-          return `<lang xml:lang="en-US"><phoneme alphabet="ipa" ph="${ipa}">${segment.letter}</phoneme></lang>`;
+          return spellLetter(segment.letter);
         }
         if (
           Object.keys(segment).length !== 2 ||
