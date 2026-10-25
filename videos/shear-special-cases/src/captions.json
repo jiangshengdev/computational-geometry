@@ -56,16 +56,23 @@
   ],
   "237-04": [
     {
-      "text": "M 仍按前集定义，取一与放大后全部端点坐标绝对值的最大值。",
+      "text": "沿用前集定义，",
       "startMs": 70,
-      "endMs": 5580,
+      "endMs": 1350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里用 M 表示一与放大后全部端点坐标绝对值的最大值。",
+      "startMs": 1590,
+      "endMs": 6150,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这个系数保持原横坐标不同事件的左右顺序。",
-      "startMs": 5610,
-      "endMs": 8960,
+      "startMs": 6180,
+      "endMs": 9760,
       "timestampMs": null,
       "confidence": null
     }
