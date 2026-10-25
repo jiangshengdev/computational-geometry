@@ -1262,8 +1262,8 @@
   "232-07": {
     "audioFile": "232-07.wav",
     "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "ce4e38e9cf9758e4989eeedfd334f9e2e4732437fbafdcf9c760ad2913cb3338",
-    "duration": 21.83,
+    "audioSha256": "46a05af2740422c56c2adcf30d2149acfee4388b141a21726aa689529a33bd56",
+    "duration": 22.53,
     "words": [
       {
         "text": "从",
@@ -1275,490 +1275,504 @@
       {
         "text": "输入",
         "startMs": 390,
-        "durationMs": 320,
+        "durationMs": 280,
         "textOffset": 1,
         "wordLength": 2
       },
       {
         "text": "端点",
-        "startMs": 710,
+        "startMs": 670,
         "durationMs": 520,
         "textOffset": 3,
         "wordLength": 2
       },
       {
         "text": "与",
-        "startMs": 1230,
-        "durationMs": 200,
+        "startMs": 1190,
+        "durationMs": 160,
         "textOffset": 5,
         "wordLength": 1
       },
       {
         "text": "实际",
-        "startMs": 1430,
+        "startMs": 1350,
         "durationMs": 360,
         "textOffset": 6,
         "wordLength": 2
       },
       {
         "text": "交点",
-        "startMs": 1790,
+        "startMs": 1710,
         "durationMs": 400,
         "textOffset": 8,
         "wordLength": 2
       },
       {
         "text": "中",
-        "startMs": 2190,
-        "durationMs": 360,
+        "startMs": 2110,
+        "durationMs": 359,
         "textOffset": 10,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 2550,
+        "startMs": 2469,
         "durationMs": 0,
         "textOffset": 11,
         "wordLength": 1
       },
       {
         "text": "选取",
-        "startMs": 2949,
-        "durationMs": 561,
+        "startMs": 2750,
+        "durationMs": 520,
         "textOffset": 12,
         "wordLength": 2
       },
       {
         "text": "横坐标不同的两点",
-        "startMs": 3510,
-        "durationMs": 1400,
+        "startMs": 3270,
+        "durationMs": 1360,
         "textOffset": 14,
         "wordLength": 8
       },
       {
         "text": "P",
-        "startMs": 4910,
+        "startMs": 4630,
         "durationMs": 200,
         "textOffset": 22,
         "wordLength": 1
       },
       {
         "text": "与",
-        "startMs": 5110,
+        "startMs": 4830,
         "durationMs": 120,
         "textOffset": 23,
         "wordLength": 1
       },
       {
         "text": "Q",
-        "startMs": 5230,
-        "durationMs": 400,
+        "startMs": 4950,
+        "durationMs": 360,
         "textOffset": 24,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 5630,
+        "startMs": 5310,
         "durationMs": 0,
         "textOffset": 25,
         "wordLength": 1
       },
       {
         "text": "点",
-        "startMs": 5663,
-        "durationMs": 240,
+        "startMs": 5322,
+        "durationMs": 280,
         "textOffset": 26,
         "wordLength": 1
       },
       {
         "text": "P",
-        "startMs": 5903,
-        "durationMs": 160,
+        "startMs": 5602,
+        "durationMs": 120,
         "textOffset": 27,
         "wordLength": 1
       },
       {
         "text": "的横坐标",
-        "startMs": 6063,
-        "durationMs": 760,
+        "startMs": 5722,
+        "durationMs": 720,
         "textOffset": 28,
         "wordLength": 4
       },
       {
         "text": "记作",
-        "startMs": 6823,
+        "startMs": 6442,
         "durationMs": 400,
         "textOffset": 32,
         "wordLength": 2
       },
       {
         "text": "X",
-        "startMs": 7223,
-        "durationMs": 200,
+        "startMs": 6842,
+        "durationMs": 240,
         "textOffset": 34,
         "wordLength": 1
       },
       {
         "text": "下标",
-        "startMs": 7423,
+        "startMs": 7082,
         "durationMs": 400,
         "textOffset": 35,
         "wordLength": 2
       },
       {
         "text": "P",
-        "startMs": 7823,
+        "startMs": 7482,
         "durationMs": 400,
         "textOffset": 37,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 8223,
+        "startMs": 7882,
         "durationMs": 0,
         "textOffset": 38,
         "wordLength": 1
       },
       {
         "text": "点",
-        "startMs": 8263,
-        "durationMs": 279,
+        "startMs": 7922,
+        "durationMs": 319,
         "textOffset": 39,
         "wordLength": 1
       },
       {
         "text": "Q",
-        "startMs": 8542,
+        "startMs": 8241,
         "durationMs": 161,
         "textOffset": 40,
         "wordLength": 1
       },
       {
         "text": "的横坐标",
-        "startMs": 8703,
-        "durationMs": 719,
+        "startMs": 8402,
+        "durationMs": 880,
         "textOffset": 41,
         "wordLength": 4
       },
       {
-        "text": "记作",
-        "startMs": 9422,
-        "durationMs": 401,
+        "text": "。",
+        "startMs": 9282,
+        "durationMs": 0,
         "textOffset": 45,
-        "wordLength": 2
-      },
-      {
-        "text": "X",
-        "startMs": 9823,
-        "durationMs": 240,
-        "textOffset": 47,
         "wordLength": 1
       },
       {
+        "text": "记作带",
+        "startMs": 9362,
+        "durationMs": 680,
+        "textOffset": 46,
+        "wordLength": 3
+      },
+      {
         "text": "下标",
-        "startMs": 10063,
-        "durationMs": 400,
-        "textOffset": 48,
+        "startMs": 10042,
+        "durationMs": 360,
+        "textOffset": 49,
         "wordLength": 2
       },
       {
         "text": "Q",
-        "startMs": 10463,
-        "durationMs": 240,
-        "textOffset": 50,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 10703,
-        "durationMs": 0,
+        "startMs": 10402,
+        "durationMs": 200,
         "textOffset": 51,
         "wordLength": 1
       },
       {
-        "text": "把",
-        "startMs": 10868,
-        "durationMs": 200,
+        "text": "的",
+        "startMs": 10602,
+        "durationMs": 120,
         "textOffset": 52,
         "wordLength": 1
       },
       {
-        "text": "这",
-        "startMs": 11068,
-        "durationMs": 120,
+        "text": "X",
+        "startMs": 10722,
+        "durationMs": 440,
         "textOffset": 53,
         "wordLength": 1
       },
       {
-        "text": "两",
-        "startMs": 11188,
-        "durationMs": 120,
+        "text": "。",
+        "startMs": 11162,
+        "durationMs": 0,
         "textOffset": 54,
         "wordLength": 1
       },
       {
-        "text": "个",
-        "startMs": 11308,
-        "durationMs": 120,
+        "text": "把",
+        "startMs": 11295,
+        "durationMs": 160,
         "textOffset": 55,
         "wordLength": 1
       },
       {
-        "text": "横坐标",
-        "startMs": 11428,
-        "durationMs": 680,
+        "text": "这",
+        "startMs": 11455,
+        "durationMs": 160,
         "textOffset": 56,
+        "wordLength": 1
+      },
+      {
+        "text": "两",
+        "startMs": 11615,
+        "durationMs": 120,
+        "textOffset": 57,
+        "wordLength": 1
+      },
+      {
+        "text": "个",
+        "startMs": 11735,
+        "durationMs": 120,
+        "textOffset": 58,
+        "wordLength": 1
+      },
+      {
+        "text": "横坐标",
+        "startMs": 11855,
+        "durationMs": 680,
+        "textOffset": 59,
         "wordLength": 3
       },
       {
         "text": "分别",
-        "startMs": 12108,
+        "startMs": 12535,
         "durationMs": 400,
-        "textOffset": 59,
+        "textOffset": 62,
         "wordLength": 2
       },
       {
         "text": "写",
-        "startMs": 12508,
-        "durationMs": 160,
-        "textOffset": 61,
-        "wordLength": 1
-      },
-      {
-        "text": "成",
-        "startMs": 12668,
-        "durationMs": 320,
-        "textOffset": 62,
-        "wordLength": 1
-      },
-      {
-        "text": "Q",
-        "startMs": 12988,
-        "durationMs": 159,
-        "textOffset": 63,
-        "wordLength": 1
-      },
-      {
-        "text": "分",
-        "startMs": 13147,
-        "durationMs": 201,
+        "startMs": 12935,
+        "durationMs": 200,
         "textOffset": 64,
         "wordLength": 1
       },
       {
-        "text": "之",
-        "startMs": 13348,
-        "durationMs": 120,
+        "text": "成",
+        "startMs": 13135,
+        "durationMs": 280,
         "textOffset": 65,
         "wordLength": 1
       },
       {
-        "text": "P",
-        "startMs": 13468,
-        "durationMs": 319,
+        "text": "Q",
+        "startMs": 13415,
+        "durationMs": 199,
         "textOffset": 66,
         "wordLength": 1
       },
       {
-        "text": "和",
-        "startMs": 13787,
-        "durationMs": 201,
+        "text": "分",
+        "startMs": 13614,
+        "durationMs": 161,
         "textOffset": 67,
         "wordLength": 1
       },
       {
-        "text": "T",
-        "startMs": 13988,
-        "durationMs": 159,
+        "text": "之",
+        "startMs": 13775,
+        "durationMs": 160,
         "textOffset": 68,
         "wordLength": 1
       },
       {
-        "text": "分",
-        "startMs": 14147,
-        "durationMs": 201,
+        "text": "P",
+        "startMs": 13935,
+        "durationMs": 320,
         "textOffset": 69,
         "wordLength": 1
       },
       {
-        "text": "之",
-        "startMs": 14348,
-        "durationMs": 120,
+        "text": "和",
+        "startMs": 14255,
+        "durationMs": 279,
         "textOffset": 70,
         "wordLength": 1
       },
       {
-        "text": "R",
-        "startMs": 14468,
-        "durationMs": 400,
+        "text": "T",
+        "startMs": 14534,
+        "durationMs": 160,
         "textOffset": 71,
         "wordLength": 1
       },
       {
-        "text": "。",
-        "startMs": 14868,
-        "durationMs": 0,
+        "text": "分",
+        "startMs": 14694,
+        "durationMs": 161,
         "textOffset": 72,
         "wordLength": 1
       },
       {
-        "text": "其中",
-        "startMs": 14948,
-        "durationMs": 480,
+        "text": "之",
+        "startMs": 14855,
+        "durationMs": 159,
         "textOffset": 73,
-        "wordLength": 2
-      },
-      {
-        "text": "P",
-        "startMs": 15428,
-        "durationMs": 240,
-        "textOffset": 75,
-        "wordLength": 1
-      },
-      {
-        "text": "与",
-        "startMs": 15668,
-        "durationMs": 200,
-        "textOffset": 76,
         "wordLength": 1
       },
       {
         "text": "R",
-        "startMs": 15868,
-        "durationMs": 160,
-        "textOffset": 77,
+        "startMs": 15014,
+        "durationMs": 481,
+        "textOffset": 74,
         "wordLength": 1
       },
       {
-        "text": "是",
-        "startMs": 16028,
-        "durationMs": 200,
+        "text": "。",
+        "startMs": 15495,
+        "durationMs": 0,
+        "textOffset": 75,
+        "wordLength": 1
+      },
+      {
+        "text": "其中",
+        "startMs": 15575,
+        "durationMs": 480,
+        "textOffset": 76,
+        "wordLength": 2
+      },
+      {
+        "text": "P",
+        "startMs": 16055,
+        "durationMs": 240,
         "textOffset": 78,
         "wordLength": 1
       },
       {
-        "text": "整数",
-        "startMs": 16228,
-        "durationMs": 600,
-        "textOffset": 79,
-        "wordLength": 2
-      },
-      {
-        "text": "。",
-        "startMs": 16828,
-        "durationMs": 0,
-        "textOffset": 81,
-        "wordLength": 1
-      },
-      {
-        "text": "Q",
-        "startMs": 16927,
-        "durationMs": 280,
-        "textOffset": 82,
-        "wordLength": 1
-      },
-      {
         "text": "与",
-        "startMs": 17207,
+        "startMs": 16295,
         "durationMs": 200,
-        "textOffset": 83,
+        "textOffset": 79,
         "wordLength": 1
       },
       {
-        "text": "T",
-        "startMs": 17407,
-        "durationMs": 280,
-        "textOffset": 84,
+        "text": "R",
+        "startMs": 16495,
+        "durationMs": 200,
+        "textOffset": 80,
         "wordLength": 1
       },
       {
         "text": "是",
-        "startMs": 17687,
+        "startMs": 16695,
         "durationMs": 160,
+        "textOffset": 81,
+        "wordLength": 1
+      },
+      {
+        "text": "整数",
+        "startMs": 16855,
+        "durationMs": 560,
+        "textOffset": 82,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 17415,
+        "durationMs": 0,
+        "textOffset": 84,
+        "wordLength": 1
+      },
+      {
+        "text": "Q",
+        "startMs": 17524,
+        "durationMs": 360,
         "textOffset": 85,
         "wordLength": 1
       },
       {
-        "text": "约分",
-        "startMs": 17847,
-        "durationMs": 360,
+        "text": "与",
+        "startMs": 17884,
+        "durationMs": 200,
         "textOffset": 86,
-        "wordLength": 2
+        "wordLength": 1
       },
       {
-        "text": "后",
-        "startMs": 18207,
+        "text": "T",
+        "startMs": 18084,
+        "durationMs": 240,
+        "textOffset": 87,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 18324,
         "durationMs": 120,
         "textOffset": 88,
         "wordLength": 1
       },
       {
-        "text": "的正整数分母",
-        "startMs": 18327,
-        "durationMs": 1280,
+        "text": "约分",
+        "startMs": 18444,
+        "durationMs": 400,
         "textOffset": 89,
+        "wordLength": 2
+      },
+      {
+        "text": "后",
+        "startMs": 18844,
+        "durationMs": 120,
+        "textOffset": 91,
+        "wordLength": 1
+      },
+      {
+        "text": "的正整数分母",
+        "startMs": 18964,
+        "durationMs": 1319,
+        "textOffset": 92,
         "wordLength": 6
       },
       {
         "text": "。",
-        "startMs": 19607,
+        "startMs": 20283,
         "durationMs": 0,
-        "textOffset": 95,
+        "textOffset": 98,
         "wordLength": 1
       },
       {
         "text": "都",
-        "startMs": 19607,
-        "durationMs": 239,
-        "textOffset": 96,
+        "startMs": 20323,
+        "durationMs": 201,
+        "textOffset": 99,
         "wordLength": 1
       },
       {
         "text": "不超过",
-        "startMs": 19846,
-        "durationMs": 601,
-        "textOffset": 97,
+        "startMs": 20524,
+        "durationMs": 520,
+        "textOffset": 100,
         "wordLength": 3
       },
       {
         "text": "八",
-        "startMs": 20447,
-        "durationMs": 160,
-        "textOffset": 100,
-        "wordLength": 1
-      },
-      {
-        "text": "乘以",
-        "startMs": 20607,
-        "durationMs": 320,
-        "textOffset": 101,
-        "wordLength": 2
-      },
-      {
-        "text": "M",
-        "startMs": 20927,
-        "durationMs": 240,
+        "startMs": 21044,
+        "durationMs": 199,
         "textOffset": 103,
         "wordLength": 1
       },
       {
-        "text": "的平方",
-        "startMs": 21167,
-        "durationMs": 600,
+        "text": "乘以",
+        "startMs": 21243,
+        "durationMs": 361,
         "textOffset": 104,
+        "wordLength": 2
+      },
+      {
+        "text": "M",
+        "startMs": 21604,
+        "durationMs": 200,
+        "textOffset": 106,
+        "wordLength": 1
+      },
+      {
+        "text": "的平方",
+        "startMs": 21804,
+        "durationMs": 680,
+        "textOffset": 107,
         "wordLength": 3
       },
       {
         "text": "。",
-        "startMs": 21767,
+        "startMs": 22484,
         "durationMs": 0,
-        "textOffset": 107,
+        "textOffset": 110,
         "wordLength": 1
       }
     ],
-    "speech": "从输入端点与实际交点中。选取横坐标不同的两点P与Q。点P的横坐标记作X下标P。点Q的横坐标记作X下标Q。把这两个横坐标分别写成Q分之P和T分之R。其中P与R是整数。Q与T是约分后的正整数分母。都不超过八乘以M的平方。",
+    "speech": "从输入端点与实际交点中。选取横坐标不同的两点P与Q。点P的横坐标记作X下标P。点Q的横坐标。记作带下标Q的X。把这两个横坐标分别写成Q分之P和T分之R。其中P与R是整数。Q与T是约分后的正整数分母。都不超过八乘以M的平方。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "862e7c3007f99579f49f66769629a6ea9dc71e191db7a7740ac4c2eacd464a64"
+    "fingerprint": "5468b74ef399d4e8831cc82fb97ff71cfdf999e1d8aa67a4b124b6afaf905677"
   },
   "232-08": {
     "audioFile": "232-08.wav",
