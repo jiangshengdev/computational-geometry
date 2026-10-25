@@ -3,8 +3,40 @@ import { Subtitles } from "../../shared/ui/Subtitles";
 import { MathText, Latex, SvgMathText, colorMath } from "./MathText";
 import { pages, type Shot, type Line } from "./storyboard";
 
+// Split only at authored teaching-group boundaries. Both columns stay in the
+// main scene, with cumulative steps; this is not a second dependency panel.
+const mainColumns = Object.fromEntries(
+  Object.entries(pages).map(([id, page]) => {
+    const groups = page.mainSplitAfterGroup
+      ? [
+          page.groups.slice(0, page.mainSplitAfterGroup),
+          page.groups.slice(page.mainSplitAfterGroup),
+        ]
+      : [page.groups];
+    let start = 0;
+    return [
+      id,
+      groups.map((columnGroups, index) => {
+        const count = columnGroups.reduce((sum, group) => sum + group.count, 0);
+        const column = {
+          id: `${id}-${index}`,
+          start,
+          lines: page.lines.slice(start, start + count),
+          groups: columnGroups,
+        };
+        start += count;
+        return column;
+      }),
+    ];
+  }),
+);
+const columnPages = Object.fromEntries(
+  Object.values(mainColumns)
+    .flat()
+    .map((column) => [column.id, column]),
+);
 const MathLines = createTeachingMathLines({
-  pages,
+  pages: columnPages,
   MathText,
   Latex,
   colorMath,
@@ -12,11 +44,11 @@ const MathLines = createTeachingMathLines({
   defaultMathColor: "#172c45",
   objectColors: { current: "#b45309" },
   pageRoles: Object.fromEntries(
-    Object.keys(pages).map((id) => [id, "current" as const]),
+    Object.keys(columnPages).map((id) => [id, "current" as const]),
   ),
 });
 
-function FractionDiagram() {
+function FractionDiagram({ showDistance }: { showDistance: boolean }) {
   // One-dimensional axis: labels use the same 900 px/unit map as the points.
   const x = (value: number) => 90 + value * 900;
   return (
@@ -42,20 +74,25 @@ function FractionDiagram() {
           </SvgMathText>
         </g>
       ))}
-      <path
-        d={`M ${x(1 / 2)} 100 V 76 H ${x(2 / 3)} V 100`}
-        fill="none"
-        stroke="#2563a6"
-        strokeWidth={3}
-      />
-      <SvgMathText
-        x={(x(1 / 2) + x(2 / 3)) / 2}
-        y={50}
-        align="center"
-        fill="#2563a6"
+      <g
+        data-fraction-distance
+        style={{ visibility: showDistance ? "visible" : "hidden" }}
       >
-        距离 1/6
-      </SvgMathText>
+        <path
+          d={`M ${x(1 / 2)} 100 V 76 H ${x(2 / 3)} V 100`}
+          fill="none"
+          stroke="#2563a6"
+          strokeWidth={3}
+        />
+        <SvgMathText
+          x={(x(1 / 2) + x(2 / 3)) / 2}
+          y={50}
+          align="center"
+          fill="#2563a6"
+        >
+          距离 1/6
+        </SvgMathText>
+      </g>
     </svg>
   );
 }
@@ -121,37 +158,56 @@ export function TeachingPage({
       >
         <MathText colorize={false}>{page.mode}</MathText>
       </div>
-      <aside
-        data-context
-        data-page-block
-        style={{
-          position: "absolute",
-          left: 100,
-          top: 220,
-          width: 740,
-          height: 650,
-          fontSize: 30,
-        }}
-      >
-        <div style={{ fontSize: 28, color: "#526579", marginBottom: 26 }}>
-          本段所用条件与已有结论
-        </div>
-        {page.diagram ? <FractionDiagram /> : null}
-        {page.context.map((line, i) => (
-          <ContextLine line={line} key={i} />
-        ))}
-      </aside>
+      {page.context.length ? (
+        <aside
+          data-context
+          data-page-block
+          style={{
+            position: "absolute",
+            left: 100,
+            top: 220,
+            width: 740,
+            height: 650,
+            fontSize: 30,
+          }}
+        >
+          <div style={{ fontSize: 28, color: "#526579", marginBottom: 26 }}>
+            前面已讲过，本页继续使用
+          </div>
+          {page.context.map((line, i) => (
+            <ContextLine line={line} key={i} />
+          ))}
+        </aside>
+      ) : null}
       <div
         data-main-content
         style={{
           position: "absolute",
-          left: 920,
+          left: page.context.length ? 920 : 100,
           top: 220,
-          width: 900,
+          right: 100,
           bottom: 200,
+          display: "flex",
+          gap: 80,
         }}
       >
-        <MathLines pageId={shot.page} visibleStep={visibleStep} />
+        {page.diagram ? (
+          <div style={{ width: 740, flexShrink: 0 }}>
+            <FractionDiagram showDistance={visibleStep >= 1} />
+          </div>
+        ) : null}
+        {mainColumns[shot.page].map((column) => (
+          <div
+            data-main-column
+            key={column.id}
+            style={{ flex: 1, minWidth: 0 }}
+          >
+            <MathLines
+              pageId={column.id}
+              visibleStep={visibleStep - column.start}
+            />
+          </div>
+        ))}
       </div>
       <div
         data-teaching-note

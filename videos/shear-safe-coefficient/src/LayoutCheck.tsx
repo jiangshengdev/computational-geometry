@@ -62,6 +62,7 @@ export function LayoutCheck() {
         row.page,
         state.visibleStep,
         state.thinking,
+        state.caption,
       );
       results.current.push({ page: `${row.id}-${frame}`, errors });
       if (index + 1 < cases.length) setIndex(index + 1);

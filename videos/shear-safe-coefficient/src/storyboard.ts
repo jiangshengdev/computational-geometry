@@ -11,6 +11,7 @@ export type Page = {
   context: Line[];
   lines: Line[];
   groups: TeachingGroup[];
+  mainSplitAfterGroup?: number;
   note: string;
   holdAfterSeconds?: number;
   diagram?: boolean;
@@ -35,51 +36,57 @@ export const pages: Record<string, Page> = {
   recap: {
     title: "不同横坐标，至少隔多远？",
     mode: "剪切变换⑤ · 从事件间距开始",
-    context: [
-      { text: "沿用前集结论，不重做证明" },
-      { text: "事件：输入端点与实际线段交点" },
-      { text: "交点必须落在两条线段上" },
-      { text: "q 表示坐标约分后的正分母" },
-    ],
+    context: [],
     lines: [
       { text: "全部输入端点，统一缩放为整数坐标" },
       { text: "M：1 与全部端点坐标绝对值的最大值" },
-      { math: "M\\ge1,\\quad 0<q\\le8M^2" },
+      { math: "M\\ge1" },
+      { text: "事件：输入端点与实际线段交点" },
+      { text: "q 表示这些坐标约分后的正分母" },
+      { math: "0<q\\le8M^2" },
       { math: "X'=X+sY,\\quad Y'=Y" },
     ],
-    groups: [left(2), left(2)],
+    groups: [left(3), left(3), left(1)],
     note: "q 表示约分后的正分母；本段先求剪切前的间距",
   },
   example: {
     title: "实际距离，与保证下界不同",
     mode: "先看具体分数 · 一维数轴",
-    context: [
-      { text: "两个正分母都不超过 3" },
-      { math: "2\\le3,\\quad 3\\le3" },
-    ],
+    context: [],
     diagram: true,
     lines: [
       { math: "\\frac23-\\frac12=\\frac46-\\frac36=\\frac16" },
+      { math: "2\\le3,\\quad 3\\le3" },
+      { math: "2\\times3\\le3\\times3=9" },
       { math: "\\frac16\\ge\\frac1{3\\times3}=\\frac19" },
       { text: "实际距离是 1/6，保证下界是 1/9" },
       { text: "下界不保证恰好取到" },
     ],
-    groups: [left(2), left(2)],
+    groups: [left(1), left(2), left(3)],
     holdAfterSeconds: 5,
     note: "一般证明，也要分清实际距离和保证下界",
   },
   numerator: {
     title: "先通分，再看分子能有多小",
-    mode: "距离不分正负 · 不同横坐标是关键条件",
-    context: fractionConditions,
+    mode: "先选取两个事件，再逐步建立间距下界",
+    context: [],
     lines: [
+      { text: "从输入端点与实际交点中选取 P、Q" },
+      { math: "X_P=\\frac pq\\ne\\frac rt=X_Q" },
+      { math: "p,r\\in\\mathbb Z" },
+      { text: "q、t 是约分后的正整数分母" },
+      { math: "0<q,t\\le8M^2,\\quad q,t\\in\\mathbb Z" },
       { math: "\\frac pq-\\frac rt=\\frac{pt}{qt}-\\frac{rq}{qt}" },
       { math: "=\\frac{pt-rq}{qt}" },
-      { math: "\\left|\\frac pq-\\frac rt\\right|=\\frac{|pt-rq|}{qt}" },
+      {
+        math: "\\left|\\frac pq-\\frac rt\\right|=\\frac{|pt-rq|}{qt},\\quad qt>0",
+      },
+      { math: "pt-rq\\ne0,\\quad pt-rq\\in\\mathbb Z" },
       { math: "|pt-rq|\\ge1" },
       { math: "\\frac{|pt-rq|}{qt}\\ge\\frac1{qt}" },
     ],
-    groups: [equals(2), left(1), left(2)],
+    groups: [left(2), left(3), equals(2), left(1), left(2), left(1)],
+    mainSplitAfterGroup: 2,
     holdAfterSeconds: 5,
     note: "非零整数的绝对值至少为 1；除以同一个正数，方向不变",
   },
@@ -103,13 +110,9 @@ export const pages: Record<string, Page> = {
   "question-reciprocal": {
     title: "正分母越大，倒数怎样变化？",
     mode: "先判断，再连接两段证明",
-    context: [
-      ...fractionConditions.slice(0, 3),
-      { math: "0<qt\\le64M^4" },
-      { math: "2<6" },
-    ],
+    context: [...fractionConditions.slice(0, 3), { math: "0<qt\\le64M^4" }],
     lines: [
-      { text: "比较 1/2 与 1/6，先想一想" },
+      { text: "2<6，比较 1/2 与 1/6，先想一想" },
       { math: "\\frac12>\\frac16" },
       { text: "分子同为 1，正分母越大，分数越小" },
       { math: "\\frac1{qt}\\ge\\frac1{64M^4}" },
@@ -150,14 +153,14 @@ export const shots: Shot[] = [
   {
     id: "232-02",
     page: "recap",
-    step: 3,
+    step: 6,
     caption:
       "所以 M 至少为 1。沿用前集结论，端点和实际线段交点的坐标，约分后的正分母都不超过 8M²。",
   },
   {
     id: "232-03",
     page: "recap",
-    step: 4,
+    step: 7,
     caption:
       "剪切后的横坐标是 X+sY，纵坐标仍是 Y。这一段先研究，不同横坐标原来至少隔多远。",
   },
@@ -170,42 +173,42 @@ export const shots: Shot[] = [
   {
     id: "232-05",
     page: "example",
-    step: 3,
+    step: 5,
     caption:
       "它们的分母都不超过 3，分母乘积就不超过 9。因此可以保证距离至少为 1/9，实际的 1/6 比它更大。",
   },
   {
     id: "232-06",
     page: "example",
-    step: 4,
+    step: 6,
     caption:
       "下界只保证不会更小，不保证恰好取到。下面用字母说明，这个保证为什么成立。",
   },
   {
     id: "232-07",
     page: "numerator",
-    step: 0,
+    step: 5,
     caption:
       "把两个不同横坐标记为 p/q 和 r/t，其中 p 与 r 是整数。q 与 t 是约分后的正整数分母，都不超过 8M²。",
   },
   {
     id: "232-08",
     page: "numerator",
-    step: 2,
+    step: 7,
     caption:
       "第一个分数的分子分母，都乘以另一个分母。第二个分数也这样处理。通分以后，用第一个新分子减去第二个新分子。共同分母等于两个原分母的乘积。",
   },
   {
     id: "232-09",
     page: "numerator",
-    step: 3,
+    step: 8,
     caption:
       "距离不区分正负，所以取绝对值。分母 qt 为正，绝对值只需留在整个分子上。",
   },
   {
     id: "232-10",
     page: "numerator",
-    step: 5,
+    step: 11,
     caption:
       "横坐标不同，所以 pt−rq 不是零。它是非零整数，绝对值至少为 1。除以同一个正数 qt，得到距离至少为 1/(qt)。",
   },
