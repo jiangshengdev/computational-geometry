@@ -13709,8 +13709,8 @@
   "233-21": {
     "audioFile": "233-21.wav",
     "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "8240f0b6ae5de44a3d92af88b871724068ac56fbe3da1cd8f403bff405ffc1de",
-    "duration": 9.14,
+    "audioSha256": "56f55525b41bba3b9db7b46b5c8f118fef752d7c074e6a536992037307088137",
+    "duration": 9.89,
     "words": [
       {
         "text": "两边",
@@ -13729,14 +13729,14 @@
       {
         "text": "以",
         "startMs": 870,
-        "durationMs": 120,
+        "durationMs": 160,
         "textOffset": 4,
         "wordLength": 1
       },
       {
         "text": "正数",
-        "startMs": 990,
-        "durationMs": 400,
+        "startMs": 1030,
+        "durationMs": 360,
         "textOffset": 5,
         "wordLength": 2
       },
@@ -13749,169 +13749,734 @@
       },
       {
         "text": "与",
-        "startMs": 1710,
-        "durationMs": 280,
+        "startMs": 1790,
+        "durationMs": 239,
         "textOffset": 8,
         "wordLength": 1
       },
       {
         "text": "M",
-        "startMs": 1990,
-        "durationMs": 240,
+        "startMs": 2029,
+        "durationMs": 280,
         "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "的乘积",
-        "startMs": 2230,
-        "durationMs": 759,
+        "startMs": 2309,
+        "durationMs": 721,
         "textOffset": 10,
         "wordLength": 3
       },
       {
         "text": "。",
-        "startMs": 2989,
+        "startMs": 3030,
         "durationMs": 0,
         "textOffset": 13,
         "wordLength": 1
       },
       {
         "text": "不等号",
-        "startMs": 3190,
-        "durationMs": 520,
+        "startMs": 3070,
+        "durationMs": 560,
         "textOffset": 14,
         "wordLength": 3
       },
       {
         "text": "方向",
-        "startMs": 3710,
-        "durationMs": 360,
+        "startMs": 3630,
+        "durationMs": 359,
         "textOffset": 17,
         "wordLength": 2
       },
       {
-        "text": "不变",
-        "startMs": 4070,
-        "durationMs": 440,
+        "text": "不",
         "textOffset": 19,
-        "wordLength": 2
+        "wordLength": 1,
+        "startMs": 4020,
+        "durationMs": 130
+      },
+      {
+        "text": "变",
+        "textOffset": 20,
+        "wordLength": 1,
+        "startMs": 4160,
+        "durationMs": 330
       },
       {
         "text": "。",
-        "startMs": 4510,
+        "startMs": 4470,
         "durationMs": 0,
         "textOffset": 21,
         "wordLength": 1
       },
       {
         "text": "左边",
-        "startMs": 4469,
-        "durationMs": 440,
         "textOffset": 22,
-        "wordLength": 2
+        "wordLength": 2,
+        "startMs": 4520,
+        "durationMs": 450
       },
       {
-        "text": "只剩",
-        "startMs": 4909,
-        "durationMs": 320,
+        "text": "只",
         "textOffset": 24,
-        "wordLength": 2
+        "wordLength": 1,
+        "startMs": 4980,
+        "durationMs": 130
+      },
+      {
+        "text": "剩下",
+        "textOffset": 25,
+        "wordLength": 2,
+        "startMs": 5120,
+        "durationMs": 360
       },
       {
         "text": "S",
-        "startMs": 5229,
-        "durationMs": 440,
-        "textOffset": 26,
-        "wordLength": 1
+        "textOffset": 27,
+        "wordLength": 1,
+        "startMs": 5490,
+        "durationMs": 280
+      },
+      {
+        "text": "这",
+        "textOffset": 28,
+        "wordLength": 1,
+        "startMs": 5780,
+        "durationMs": 110
+      },
+      {
+        "text": "一",
+        "textOffset": 29,
+        "wordLength": 1,
+        "startMs": 5900,
+        "durationMs": 170
+      },
+      {
+        "text": "项",
+        "textOffset": 30,
+        "wordLength": 1,
+        "startMs": 6080,
+        "durationMs": 330
       },
       {
         "text": "。",
-        "startMs": 5669,
+        "startMs": 6349,
         "durationMs": 0,
-        "textOffset": 27,
+        "textOffset": 31,
         "wordLength": 1
       },
       {
         "text": "右边",
-        "startMs": 5749,
-        "durationMs": 480,
-        "textOffset": 28,
+        "startMs": 6669,
+        "durationMs": 519,
+        "textOffset": 32,
         "wordLength": 2
       },
       {
         "text": "是",
-        "startMs": 6229,
-        "durationMs": 160,
-        "textOffset": 30,
+        "startMs": 7188,
+        "durationMs": 120,
+        "textOffset": 34,
         "wordLength": 1
       },
       {
         "text": "间距",
-        "startMs": 6389,
-        "durationMs": 359,
-        "textOffset": 31,
+        "startMs": 7308,
+        "durationMs": 361,
+        "textOffset": 35,
         "wordLength": 2
       },
       {
         "text": "下界",
-        "startMs": 6748,
-        "durationMs": 480,
-        "textOffset": 33,
+        "startMs": 7669,
+        "durationMs": 400,
+        "textOffset": 37,
         "wordLength": 2
       },
       {
         "text": "除",
-        "startMs": 7228,
-        "durationMs": 201,
-        "textOffset": 35,
-        "wordLength": 1
-      },
-      {
-        "text": "以",
-        "startMs": 7429,
-        "durationMs": 120,
-        "textOffset": 36,
-        "wordLength": 1
-      },
-      {
-        "text": "二",
-        "startMs": 7549,
-        "durationMs": 360,
-        "textOffset": 37,
-        "wordLength": 1
-      },
-      {
-        "text": "与",
-        "startMs": 7909,
-        "durationMs": 200,
-        "textOffset": 38,
-        "wordLength": 1
-      },
-      {
-        "text": "M",
-        "startMs": 8109,
-        "durationMs": 199,
+        "startMs": 8069,
+        "durationMs": 159,
         "textOffset": 39,
         "wordLength": 1
       },
       {
-        "text": "的乘积",
-        "startMs": 8308,
-        "durationMs": 681,
+        "text": "以",
+        "startMs": 8228,
+        "durationMs": 120,
         "textOffset": 40,
-        "wordLength": 3
+        "wordLength": 1
+      },
+      {
+        "text": "二",
+        "startMs": 8348,
+        "durationMs": 361,
+        "textOffset": 41,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 8709,
+        "durationMs": 240,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "M",
+        "startMs": 8949,
+        "durationMs": 200,
+        "textOffset": 43,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "textOffset": 44,
+        "wordLength": 1,
+        "startMs": 9250,
+        "durationMs": 100
+      },
+      {
+        "text": "乘积",
+        "textOffset": 45,
+        "wordLength": 2,
+        "startMs": 9360,
+        "durationMs": 500
       },
       {
         "text": "。",
-        "startMs": 8989,
+        "startMs": 9149,
         "durationMs": 0,
-        "textOffset": 43,
+        "textOffset": 47,
         "wordLength": 1
       }
     ],
-    "speech": "两边同除以正数二与M的乘积。不等号方向不变。左边只剩S。右边是间距下界除以二与M的乘积。",
+    "speech": "两边同除以正数二与M的乘积。不等号方向不变。左边只剩下S这一项。右边是间距下界除以二与M的乘积。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "b598d1ab3d5d75cc3ab2e9f251fedb8aff7f77c678d3655671a1f26016b8a67e"
+    "fingerprint": "3c44e356877f9ecc5cf2e3fb0a265b8b261a0088d0c245ed102d44049bc7b03f",
+    "alignment": {
+      "method": "azure-pronunciation-assessment",
+      "audioSha256": "56f55525b41bba3b9db7b46b5c8f118fef752d7c074e6a536992037307088137",
+      "synthesisWords": [
+        {
+          "text": "两边",
+          "startMs": 70,
+          "durationMs": 400,
+          "textOffset": 0,
+          "wordLength": 2
+        },
+        {
+          "text": "同除",
+          "startMs": 470,
+          "durationMs": 400,
+          "textOffset": 2,
+          "wordLength": 2
+        },
+        {
+          "text": "以",
+          "startMs": 870,
+          "durationMs": 160,
+          "textOffset": 4,
+          "wordLength": 1
+        },
+        {
+          "text": "正数",
+          "startMs": 1030,
+          "durationMs": 360,
+          "textOffset": 5,
+          "wordLength": 2
+        },
+        {
+          "text": "二",
+          "startMs": 1390,
+          "durationMs": 320,
+          "textOffset": 7,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 1790,
+          "durationMs": 239,
+          "textOffset": 8,
+          "wordLength": 1
+        },
+        {
+          "text": "M",
+          "startMs": 2029,
+          "durationMs": 280,
+          "textOffset": 9,
+          "wordLength": 1
+        },
+        {
+          "text": "的乘积",
+          "startMs": 2309,
+          "durationMs": 721,
+          "textOffset": 10,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 3030,
+          "durationMs": 0,
+          "textOffset": 13,
+          "wordLength": 1
+        },
+        {
+          "text": "不等号",
+          "startMs": 3070,
+          "durationMs": 560,
+          "textOffset": 14,
+          "wordLength": 3
+        },
+        {
+          "text": "方向",
+          "startMs": 3630,
+          "durationMs": 359,
+          "textOffset": 17,
+          "wordLength": 2
+        },
+        {
+          "text": "不变",
+          "startMs": 3989,
+          "durationMs": 481,
+          "textOffset": 19,
+          "wordLength": 2
+        },
+        {
+          "text": "。",
+          "startMs": 4470,
+          "durationMs": 0,
+          "textOffset": 21,
+          "wordLength": 1
+        },
+        {
+          "text": "左边",
+          "startMs": 4469,
+          "durationMs": 440,
+          "textOffset": 22,
+          "wordLength": 2
+        },
+        {
+          "text": "只剩下",
+          "startMs": 4909,
+          "durationMs": 480,
+          "textOffset": 24,
+          "wordLength": 3
+        },
+        {
+          "text": "S",
+          "startMs": 5389,
+          "durationMs": 280,
+          "textOffset": 27,
+          "wordLength": 1
+        },
+        {
+          "text": "这一项",
+          "startMs": 5669,
+          "durationMs": 680,
+          "textOffset": 28,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 6349,
+          "durationMs": 0,
+          "textOffset": 31,
+          "wordLength": 1
+        },
+        {
+          "text": "右边",
+          "startMs": 6669,
+          "durationMs": 519,
+          "textOffset": 32,
+          "wordLength": 2
+        },
+        {
+          "text": "是",
+          "startMs": 7188,
+          "durationMs": 120,
+          "textOffset": 34,
+          "wordLength": 1
+        },
+        {
+          "text": "间距",
+          "startMs": 7308,
+          "durationMs": 361,
+          "textOffset": 35,
+          "wordLength": 2
+        },
+        {
+          "text": "下界",
+          "startMs": 7669,
+          "durationMs": 400,
+          "textOffset": 37,
+          "wordLength": 2
+        },
+        {
+          "text": "除",
+          "startMs": 8069,
+          "durationMs": 159,
+          "textOffset": 39,
+          "wordLength": 1
+        },
+        {
+          "text": "以",
+          "startMs": 8228,
+          "durationMs": 120,
+          "textOffset": 40,
+          "wordLength": 1
+        },
+        {
+          "text": "二",
+          "startMs": 8348,
+          "durationMs": 361,
+          "textOffset": 41,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 8709,
+          "durationMs": 240,
+          "textOffset": 42,
+          "wordLength": 1
+        },
+        {
+          "text": "M",
+          "startMs": 8949,
+          "durationMs": 200,
+          "textOffset": 43,
+          "wordLength": 1
+        },
+        {
+          "text": "的乘积",
+          "startMs": 9149,
+          "durationMs": 0,
+          "textOffset": 44,
+          "wordLength": 3
+        },
+        {
+          "text": "。",
+          "startMs": 9149,
+          "durationMs": 0,
+          "textOffset": 47,
+          "wordLength": 1
+        }
+      ],
+      "response": {
+        "Id": "fa02c3bbf9d7418c9bd91dc34810f539",
+        "RecognitionStatus": "Success",
+        "Offset": 400000,
+        "Duration": 98200000,
+        "Channel": 0,
+        "DisplayText": "两边同除以正数二与M的乘积不等号方向不变，左边只剩下S这一项，右边是间距下界除以二与M的乘积。",
+        "SNR": 49.73103,
+        "NBest": [
+          {
+            "Confidence": 0.9739335,
+            "Lexical": "两边 同 除 以 正数 二 与 M 的 乘积 不等号 方向 不 变 左边 只 剩下 S 这 一 项 右边 是 间距 下界 除 以 二 与 M 的 乘积",
+            "ITN": "两边 同 除 以 正数 二 与 M 的 乘积 不等号 方向 不 变 左边 只 剩下 S 这 一 项 右边 是 间距 下界 除 以 二 与 M 的 乘积",
+            "MaskedITN": "两边同除以正数二与m的乘积不等号方向不变左边只剩下s这一项右边是间距下界除以二与m的乘积",
+            "Display": "两边同除以正数二与M的乘积不等号方向不变，左边只剩下S这一项，右边是间距下界除以二与M的乘积。",
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "FluencyScore": 96,
+              "CompletenessScore": 100,
+              "PronScore": 97
+            },
+            "Words": [
+              {
+                "Word": "两边",
+                "Offset": 400000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "同",
+                "Offset": 5000000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "除",
+                "Offset": 7000000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 9000000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "正数",
+                "Offset": 10400000,
+                "Duration": 3500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "二",
+                "Offset": 14000000,
+                "Duration": 3200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 17500000,
+                "Duration": 2800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "M",
+                "Offset": 20400000,
+                "Duration": 2900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 23400000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 24600000,
+                "Duration": 5900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "不等号",
+                "Offset": 30800000,
+                "Duration": 5500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "方向",
+                "Offset": 36400000,
+                "Duration": 3700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "不",
+                "Offset": 40200000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "变",
+                "Offset": 41600000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "左边",
+                "Offset": 45200000,
+                "Duration": 4500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "只",
+                "Offset": 49800000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "剩下",
+                "Offset": 51200000,
+                "Duration": 3600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "S",
+                "Offset": 54900000,
+                "Duration": 2800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 66,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "这",
+                "Offset": 57800000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "一",
+                "Offset": 59000000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "项",
+                "Offset": 60800000,
+                "Duration": 3300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "右边",
+                "Offset": 67400000,
+                "Duration": 5300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "是",
+                "Offset": 72800000,
+                "Duration": 1300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "间距",
+                "Offset": 74200000,
+                "Duration": 3500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "下界",
+                "Offset": 77800000,
+                "Duration": 3700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "除",
+                "Offset": 81600000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "以",
+                "Offset": 83400000,
+                "Duration": 1100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 82,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "二",
+                "Offset": 84600000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "与",
+                "Offset": 88000000,
+                "Duration": 2100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "M",
+                "Offset": 90200000,
+                "Duration": 2200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 92500000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘积",
+                "Offset": 93600000,
+                "Duration": 5000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
   },
   "233-22": {
     "audioFile": "233-22.wav",

@@ -359,7 +359,7 @@ export const continuationShots: Shot[] = [
     page: "power",
     step: 3,
     caption:
-      "两边同除以正数 2M，不等号方向不变。左边只剩 s，右边是间距下界除以 2M。",
+      "两边同除以正数 2M，不等号方向不变。左边只剩下 s 这一项，右边是间距下界除以 2M。",
   },
   {
     id: "233-22",

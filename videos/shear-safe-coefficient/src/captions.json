@@ -1010,21 +1010,28 @@
     {
       "text": "两边同除以正数 2M，",
       "startMs": 70,
-      "endMs": 2989,
+      "endMs": 3030,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不等号方向不变。",
-      "startMs": 3190,
-      "endMs": 4510,
+      "startMs": 3070,
+      "endMs": 4490,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "左边只剩 s，右边是间距下界除以 2M。",
-      "startMs": 4469,
-      "endMs": 8989,
+      "text": "左边只剩下 s 这一项，",
+      "startMs": 4520,
+      "endMs": 6410,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边是间距下界除以 2M。",
+      "startMs": 6669,
+      "endMs": 9860,
       "timestampMs": null,
       "confidence": null
     }
