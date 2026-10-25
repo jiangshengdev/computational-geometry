@@ -18,8 +18,9 @@ const shared = createShotTimeline({
   audioLeadFrames,
 });
 
-// A sentence may explain multiple rows: reveal each at its measured phrase,
-// retaining earlier rows instead of showing the final transformation early.
+// Show the whole teaching row before its explanation begins. Equations stay
+// intact, including the result explained later in that same row.
+export const readingLeadMs = 200;
 const rowPhrases: Record<string, [number, string][]> = {
   "232-01": [
     [1, "全部输入"],
@@ -28,7 +29,7 @@ const rowPhrases: Record<string, [number, string][]> = {
   "232-02": [
     [3, "所以"],
     [4, "沿用前集结论"],
-    [5, "约分后"],
+    [5, "用Q表示"],
     [6, "都不超过"],
   ],
   "232-04": [[1, "通分"]],
@@ -39,7 +40,8 @@ const rowPhrases: Record<string, [number, string][]> = {
     [5, "实际的"],
   ],
   "232-07": [
-    [2, "把两个"],
+    [1, "从输入"],
+    [2, "点P的横坐标"],
     [3, "其中"],
     [4, "Q与T"],
     [5, "都不超过"],
@@ -78,10 +80,12 @@ const audio = timing as Record<string, AudioTiming>;
 export function timelineFor(issue?: string) {
   const rows = shared.timelineFor(issue).map((row) => ({
     ...row,
-    stages: (rowPhrases[row.id] ?? [[row.step, ""]]).map(([step, phrase]) => ({
-      step,
-      ms: phrase ? phraseTime(audio[row.id], phrase, "start") : row.revealMs,
-    })),
+    stages: (rowPhrases[row.id] ?? [[row.step, ""]]).map(([step, phrase]) => {
+      const speechMs = phrase
+        ? phraseTime(audio[row.id], phrase, "start")
+        : row.revealMs;
+      return { step, speechMs, ms: Math.max(0, speechMs - readingLeadMs) };
+    }),
   }));
   return rows.map((row) => {
     const page = pages[row.page];

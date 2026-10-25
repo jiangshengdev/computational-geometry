@@ -43,7 +43,7 @@ const firstUse: Record<
     { step: 4, formula: "\\frac16\\ge\\frac1{3\\times3}=\\frac19" },
   ],
   numerator: [
-    { step: 2, text: "从输入端点与实际交点中选取" },
+    { step: 1, text: "从输入端点与实际交点中选取" },
     { step: 2, formula: "X_P=\\frac pq\\ne\\frac rt=X_Q" },
     { step: 3, formula: "p,r\\in\\mathbb Z" },
     { step: 4, text: "是约分后的正整数分母" },
@@ -107,7 +107,9 @@ export function auditPage(
       ["分母乘积", 3],
     ],
     numerator: [
-      ["把两个不同横坐标", 2],
+      ["从输入端点与实际交点中", 1],
+      ["点 P 的横坐标", 2],
+      ["把这两个横坐标", 2],
       ["其中 p 与 r", 3],
       ["q 与 t 是", 4],
       ["都不超过", 5],

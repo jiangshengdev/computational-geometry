@@ -36,12 +36,14 @@
       "text": "的",
       "pinyin": "de5"
     },
-    "坐标。约分后",
+    "坐标。用",
+    { "letter": "Q" },
+    "表示约分后",
     {
       "text": "的正分母",
       "pinyin": "de5 zheng4 fen1 mu3"
     },
-    "都",
+    "。都",
     {
       "text": "不超过",
       "pinyin": "bu4 chao1 guo4"
@@ -169,16 +171,29 @@
     "成立。"
   ],
   "232-07": [
-    "把两个",
+    "从输入端点与实际交点中。选取",
     {
-      "text": "不同横坐标",
-      "pinyin": "bu4 tong2 heng2 zuo4 biao1"
+      "text": "横坐标不同的两点",
+      "pinyin": "heng2 zuo4 biao1 bu4 tong2 de5 liang3 dian3"
     },
-    "记",
-    {
-      "text": "为",
-      "pinyin": "wei2"
-    },
+    { "letter": "P" },
+    "与",
+    { "letter": "Q" },
+    "。点",
+    { "letter": "P" },
+    { "text": "的横坐标", "pinyin": "de5 heng2 zuo4 biao1" },
+    "记作",
+    { "letter": "X" },
+    "下标",
+    { "letter": "P" },
+    "。点",
+    { "letter": "Q" },
+    { "text": "的横坐标", "pinyin": "de5 heng2 zuo4 biao1" },
+    "记作",
+    { "letter": "X" },
+    "下标",
+    { "letter": "Q" },
+    "。把这两个横坐标分别写成",
     {
       "letter": "Q"
     },

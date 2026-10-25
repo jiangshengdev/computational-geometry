@@ -25,15 +25,22 @@
     },
     {
       "text": "沿用前集结论，端点和实际线段交点的坐标，",
-      "startMs": 1710,
-      "endMs": 5830,
+      "startMs": 1790,
+      "endMs": 5990,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "约分后的正分母都不超过 8M²。",
-      "startMs": 5914,
-      "endMs": 9153,
+      "text": "用 q 表示约分后的正分母，",
+      "startMs": 6004,
+      "endMs": 8323,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都不超过 8M²。",
+      "startMs": 8323,
+      "endMs": 10444,
       "timestampMs": null,
       "confidence": null
     }
@@ -139,30 +146,58 @@
   ],
   "232-07": [
     {
-      "text": "把两个不同横坐标记为 p/q 和 r/t，",
+      "text": "从输入端点与实际交点中，",
       "startMs": 70,
-      "endMs": 3989,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "选取横坐标不同的两点 P、Q。",
+      "startMs": 2949,
+      "endMs": 5630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点 P 的横坐标记作 X_P，",
+      "startMs": 5663,
+      "endMs": 8223,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点 Q 的横坐标记作 X_Q。",
+      "startMs": 8263,
+      "endMs": 10703,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把这两个横坐标分别写成 p/q 和 r/t，",
+      "startMs": 10868,
+      "endMs": 14868,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "其中 p 与 r 是整数。",
-      "startMs": 4030,
-      "endMs": 5870,
+      "startMs": 14948,
+      "endMs": 16828,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "q 与 t 是约分后的正整数分母，",
-      "startMs": 5834,
-      "endMs": 8553,
+      "startMs": 16927,
+      "endMs": 19607,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "都不超过 8M²。",
-      "startMs": 8633,
-      "endMs": 10874,
+      "startMs": 19607,
+      "endMs": 21767,
       "timestampMs": null,
       "confidence": null
     }
