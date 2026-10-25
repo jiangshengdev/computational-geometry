@@ -113,10 +113,12 @@ export function TeachingPage({
   shot,
   caption,
   visibleStep,
+  mainShiftProgress,
 }: {
   shot: Shot;
   caption: string;
   visibleStep: number;
+  mainShiftProgress: number;
 }) {
   const page = pages[shot.page];
   return (
@@ -196,16 +198,33 @@ export function TeachingPage({
             <FractionDiagram showDistance={visibleStep >= 1} />
           </div>
         ) : null}
-        {mainColumns[shot.page].map((column) => (
+        {mainColumns[shot.page].map((column, index) => (
           <div
             data-main-column
             key={column.id}
-            style={{ flex: 1, minWidth: 0 }}
+            style={{
+              flex: 1,
+              minWidth: 0,
+              translate:
+                page.mainSplitAfterGroup && index === 0
+                  ? `calc(${(1 - mainShiftProgress) * 50}% + ${(1 - mainShiftProgress) * 40}px) 0`
+                  : undefined,
+            }}
           >
-            <MathLines
-              pageId={column.id}
-              visibleStep={visibleStep - column.start}
-            />
+            <div
+              style={{
+                width: "max-content",
+                marginInline:
+                  !page.context.length && !page.diagram && index === 0
+                    ? "auto"
+                    : undefined,
+              }}
+            >
+              <MathLines
+                pageId={column.id}
+                visibleStep={visibleStep - column.start}
+              />
+            </div>
           </div>
         ))}
       </div>

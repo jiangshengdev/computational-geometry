@@ -76,13 +76,36 @@ const rowPhrases: Record<string, [number, string][]> = {
 };
 const audio = timing as Record<string, AudioTiming>;
 export function timelineFor(issue?: string) {
-  return shared.timelineFor(issue).map((row) => ({
+  const rows = shared.timelineFor(issue).map((row) => ({
     ...row,
     stages: (rowPhrases[row.id] ?? [[row.step, ""]]).map(([step, phrase]) => ({
       step,
       ms: phrase ? phraseTime(audio[row.id], phrase, "start") : row.revealMs,
     })),
   }));
+  return rows.map((row) => {
+    const page = pages[row.page];
+    const split = page.mainSplitAfterGroup;
+    if (!split) return { ...row, mainShift: null };
+    const firstColumnSteps = page.groups
+      .slice(0, split)
+      .reduce((sum, group) => sum + group.count, 0);
+    const nextColumn = rows.find(
+      (candidate) =>
+        candidate.page === row.page &&
+        candidate.stages.some((stage) => stage.step > firstColumnSteps),
+    );
+    const stage = nextColumn?.stages.find(
+      (candidate) => candidate.step > firstColumnSteps,
+    );
+    if (!nextColumn || !stage)
+      throw Error(`Missing second-column reveal: ${row.page}`);
+    // Finish moving at the existing reveal. The half-second transition spans
+    // the inter-shot pause; absolute frames keep it continuous across shots.
+    const end =
+      nextColumn.from + audioLeadFrames + Math.ceil((stage.ms * fps) / 1000);
+    return { ...row, mainShift: { start: end - fps / 2, end } };
+  });
 }
 export function visualAt(
   row: ReturnType<typeof timelineFor>[number],
@@ -90,9 +113,20 @@ export function visualAt(
 ) {
   const ms = ((frame - audioLeadFrames) * 1000) / fps;
   const revealed = row.stages.filter((stage) => stage.ms <= ms);
+  const shift = row.mainShift
+    ? Math.max(
+        0,
+        Math.min(
+          1,
+          (row.from + frame - row.mainShift.start) /
+            (row.mainShift.end - row.mainShift.start),
+        ),
+      )
+    : 1;
   return {
     ...shared.visualAt(row, frame),
     visibleStep: revealed[revealed.length - 1]?.step ?? row.previousStep,
+    mainShiftProgress: shift * shift * (3 - 2 * shift),
   };
 }
 export type TimelineRow = ReturnType<typeof timelineFor>[number];

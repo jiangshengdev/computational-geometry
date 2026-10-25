@@ -28,6 +28,19 @@ const cases = rows.flatMap((row) => {
     frames.add(Math.max(0, frame - 1));
     frames.add(frame);
   }
+  if (row.mainShift) {
+    const { start, end } = row.mainShift;
+    for (const absolute of [
+      start - 1,
+      start,
+      Math.floor((start + end) / 2),
+      end,
+      end + 1,
+    ]) {
+      const frame = absolute - row.from;
+      if (frame >= 0 && frame < row.durationInFrames) frames.add(frame);
+    }
+  }
   if (row.pauseAfter) {
     // Inspect every frame's production props, mounting again only when they
     // change. Identical props produce the same static TeachingPage DOM.
