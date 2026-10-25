@@ -5,7 +5,7 @@ const blue = "#2563a6",
   green = "#087f69";
 type Point = readonly [number, number];
 const x = (v: number) => 90 + 100 * v,
-  y = (v: number) => 480 - 100 * v;
+  y = (v: number) => 580 - 100 * v;
 export function SpecialDiagram({
   kind,
   page,
@@ -86,8 +86,8 @@ export function SpecialDiagram({
       data-special-diagram
       data-kind={kind}
       width={740}
-      height={620}
-      viewBox="0 0 740 620"
+      height={650}
+      viewBox="0 0 740 650"
       style={{ overflow: "visible" }}
     >
       <defs>
@@ -105,15 +105,15 @@ export function SpecialDiagram({
       </defs>
       {[0, 1, 2, 3, 4, 5].map((n) => (
         <g key={n}>
-          <line x1={x(n)} x2={x(n)} y1={60} y2={510} stroke="#dce4ec" />
-          <SvgMathText x={x(n)} y={525} align="center">
+          <line x1={x(n)} x2={x(n)} y1={60} y2={610} stroke="#dce4ec" />
+          <SvgMathText x={x(n)} y={625} align="center">
             {String(n)}
           </SvgMathText>
         </g>
       ))}
-      {[1, 2, 3, 4].map((n) => (
+      {[1, 2, 3, 4, 5].map((n) => (
         <g key={n}>
-          <line x1={60} x2={650} y1={y(n)} y2={y(n)} stroke="#dce4ec" />
+          <line x1={60} x2={620} y1={y(n)} y2={y(n)} stroke="#dce4ec" />
           <SvgMathText x={57} y={y(n) + 10} align="center">
             {String(n)}
           </SvgMathText>
@@ -121,7 +121,7 @@ export function SpecialDiagram({
       ))}
       <line
         x1={60}
-        x2={665}
+        x2={625}
         y1={y(0)}
         y2={y(0)}
         stroke="#526579"
@@ -131,13 +131,13 @@ export function SpecialDiagram({
       <line
         x1={x(0)}
         x2={x(0)}
-        y1={510}
+        y1={610}
         y2={45}
         stroke="#526579"
         strokeWidth={2}
         markerEnd={`url(#${arrow})`}
       />
-      <SvgMathText x={690} y={490}>
+      <SvgMathText x={650} y={590}>
         X
       </SvgMathText>
       <SvgMathText x={120} y={45}>
