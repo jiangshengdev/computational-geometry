@@ -7,6 +7,125 @@ import type * as SDK from "microsoft-cognitiveservices-speech-sdk";
 import { createAlignmentTools } from "./azure-alignment.ts";
 import { audioSha256 } from "./audio.ts";
 import type { AudioTiming } from "./timing.ts";
+test("listening approval is word-specific and cannot bypass audio binding or omissions", () => {
+  const dir = mkdtempSync(join(tmpdir(), "reviewed-alignment-test-"));
+  try {
+    const path = join(dir, "source.wav");
+    writeFileSync(path, "approved audio");
+    const { assessmentWords, verifyAlignment } = createAlignmentTools(
+      {} as typeof SDK,
+      { allowReviewedPronunciation: true },
+    );
+    const response = {
+      RecognitionStatus: "Success",
+      NBest: [
+        {
+          Words: [
+            {
+              Word: "D",
+              Offset: 1000000,
+              Duration: 2000000,
+              PronunciationAssessment: { ErrorType: "Mispronunciation" },
+            },
+          ],
+        },
+      ],
+    };
+    const audio: AudioTiming = {
+      speech: "D。",
+      duration: 1,
+      voice: "test",
+      fingerprint: "test",
+      words: [],
+      alignment: {
+        method: "azure-pronunciation-assessment",
+        audioSha256: audioSha256(path),
+        synthesisWords: [],
+        response,
+        reviewedPronunciation: [{ text: "D", textOffset: 0 }],
+      },
+    };
+    audio.words = assessmentWords(audio, response);
+    assert.doesNotThrow(() => verifyAlignment(audio, path));
+    assert.throws(
+      () =>
+        assessmentWords(
+          {
+            ...audio,
+            alignment: {
+              ...audio.alignment!,
+              reviewedPronunciation: [{ text: "D", textOffset: 1 }],
+            },
+          },
+          response,
+        ),
+      /requires review/,
+    );
+    response.NBest[0].Words[0].PronunciationAssessment.ErrorType = "Omission";
+    assert.throws(() => verifyAlignment(audio, path), /requires review/);
+    response.NBest[0].Words[0].PronunciationAssessment.ErrorType =
+      "Mispronunciation";
+    writeFileSync(path, "different audio");
+    assert.throws(() => verifyAlignment(audio, path), /does not belong/);
+  } finally {
+    rmSync(dir, { recursive: true });
+  }
+});
+test("audition without synthesis boundaries uses measured recognition and retains review gates", () => {
+  const audio: AudioTiming = {
+    speech: "S。",
+    duration: 1,
+    voice: "test",
+    fingerprint: "test",
+    words: [],
+  };
+  const response = {
+    RecognitionStatus: "Success",
+    NBest: [
+      {
+        Words: [
+          {
+            Word: "S",
+            Offset: 1000000,
+            Duration: 2000000,
+            PronunciationAssessment: { ErrorType: "None" },
+          },
+        ],
+      },
+    ],
+  };
+  const { assessmentWords } = createAlignmentTools({} as typeof SDK, {
+    allowReviewedPronunciation: false,
+  });
+  const measured = assessmentWords(audio, response);
+  assert.deepEqual(measured, [
+    { text: "S", textOffset: 0, wordLength: 1, startMs: 100, durationMs: 200 },
+  ]);
+  assert.deepEqual(
+    assessmentWords(
+      {
+        ...audio,
+        words: measured,
+        alignment: {
+          method: "azure-pronunciation-assessment",
+          audioSha256: "test",
+          synthesisWords: [],
+          response,
+        },
+      },
+      response,
+    ),
+    measured,
+  );
+  response.NBest[0].Words[0].PronunciationAssessment.ErrorType =
+    "Mispronunciation";
+  assert.throws(
+    () => assessmentWords(audio, response),
+    /requires review for timing/,
+  );
+  response.NBest[0].Words[0].PronunciationAssessment.ErrorType = "Omission";
+  assert.throws(() => assessmentWords(audio, response), /requires review/);
+});
 test("assessment matches uppercase letters to lowercase source without relaxing omission checks", () => {
   const audio: AudioTiming = {
     speech: "x。",

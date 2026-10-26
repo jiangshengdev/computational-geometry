@@ -13,8 +13,8 @@ const shared = createShotTimeline({
   fps,
   audioLeadFrames,
 });
-export function timelineFor() {
-  return shared.timelineFor().map((row) => ({
+export function timelineFor(issue?: string) {
+  return shared.timelineFor(issue).map((row) => ({
     ...row,
     stages: [{ step: row.step, ms: Math.max(0, row.revealMs - 200) }],
   }));

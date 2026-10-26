@@ -22,10 +22,10 @@ function ShotScene({ row }: { row: TimelineRow }) {
     </>
   );
 }
-export function SampleVideo() {
+export function SampleVideo({ issue }: { issue?: string }) {
   return (
     <>
-      {timelineFor().map((row) => (
+      {timelineFor(issue).map((row) => (
         <Sequence
           key={row.id}
           from={row.from}

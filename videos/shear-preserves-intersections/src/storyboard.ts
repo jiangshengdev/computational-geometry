@@ -1,4 +1,11 @@
 import type { TeachingGroup } from "../../shared/math/math-lines.ts";
+import {
+  continuationPages,
+  openingShots,
+  proofShots,
+  specialShots,
+  closingShots,
+} from "./continuation.ts";
 export type Line = { math?: string; text?: string };
 export type Page = {
   title: string;
@@ -7,11 +14,19 @@ export type Page = {
   basis: { from: string; math: string }[];
   diagram?: "numeric" | "similar";
   referenceDiagram?: boolean;
+  proofDiagram?: "cross" | "overlap";
   holdAfterSeconds: number;
 };
-export type Shot = { id: string; page: string; step: number; caption: string };
+export type Shot = {
+  id: string;
+  page: string;
+  step: number;
+  caption: string;
+  motion?: { start: string; end: string };
+};
 const left = (count: number): TeachingGroup[] => [{ count, align: "left" }];
 export const pages: Record<string, Page> = {
+  ...continuationPages,
   numeric: {
     title: "从具体线段上的位置说起",
     diagram: "numeric",
@@ -169,6 +184,7 @@ export const pages: Record<string, Page> = {
   },
 };
 export const shots: Shot[] = [
+  ...openingShots,
   {
     id: "242-01",
     page: "numeric",
@@ -412,4 +428,7 @@ export const shots: Shot[] = [
     caption:
       "于是新点的横纵坐标，仍按同一个 u 组合两个新端点。后续将用这个结果证明整条线段的对应，再分别证明不丢交点与不添交点。",
   },
+  ...proofShots,
+  ...specialShots,
+  ...closingShots,
 ];

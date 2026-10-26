@@ -53,6 +53,18 @@ export function createSpeechTools<Fingerprint extends boolean>(
         if (typeof part !== "object" || part === null || Array.isArray(part))
           throw new Error(`${location}: expected text or { text, pinyin }`);
         const segment = part as Record<string, unknown>;
+        if (Object.keys(segment).length === 1 && "breakMs" in segment) {
+          if (
+            typeof segment.breakMs !== "number" ||
+            !Number.isInteger(segment.breakMs) ||
+            segment.breakMs < 0 ||
+            segment.breakMs > 5000
+          )
+            throw new Error(
+              `${location}: breakMs must be an integer from 0 to 5000`,
+            );
+          return `<break time="${segment.breakMs}ms"/>`;
+        }
         if (
           Object.keys(segment).length === 1 &&
           typeof segment.letter === "string"

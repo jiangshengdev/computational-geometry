@@ -1,25 +1,39 @@
 import { Composition } from "remotion";
 import { SampleVideo } from "./Composition";
-import { LayoutCheck } from "./LayoutCheck";
 import { timelineFor, fps } from "./timeline";
+import type { CalculateMetadataFunction } from "remotion";
+
+const calculateDuration: CalculateMetadataFunction<{ issue?: string }> = ({
+  props,
+}) => ({
+  durationInFrames: timelineFor(props.issue).reduce(
+    (sum, row) => sum + row.durationInFrames,
+    0,
+  ),
+});
+const loadLayoutCheck = async () => {
+  const { LayoutCheck } = await import("./LayoutCheck");
+  return { default: LayoutCheck };
+};
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Composition
-        id="Shear242"
-        component={SampleVideo}
-        durationInFrames={timelineFor().reduce(
-          (sum, row) => sum + row.durationInFrames,
-          0,
-        )}
-        fps={fps}
-        width={1920}
-        height={1080}
-      />
+      {[undefined, "242", "243", "244"].map((issue) => (
+        <Composition
+          key={issue ?? "full"}
+          id={issue ? `Shear${issue}` : "ShearPreservesIntersections"}
+          component={SampleVideo}
+          defaultProps={{ issue }}
+          calculateMetadata={calculateDuration}
+          fps={fps}
+          width={1920}
+          height={1080}
+        />
+      ))}
       <Composition
         id="LayoutCheck"
-        component={LayoutCheck}
+        lazyComponent={loadLayoutCheck}
         durationInFrames={1}
         fps={fps}
         width={1920}

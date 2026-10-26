@@ -3,6 +3,7 @@ import { Subtitles } from "../../shared/ui/Subtitles";
 import { MathText, Latex, colorMath } from "./MathText";
 import { pages, type Shot } from "./storyboard";
 import { SegmentDiagram } from "./SegmentDiagram";
+import { IntersectionDiagram } from "./IntersectionDiagram";
 const MathLines = createTeachingMathLines({
   pages,
   MathText,
@@ -19,13 +20,17 @@ export function TeachingPage({
   shot,
   visibleStep,
   caption,
+  progress = 1,
 }: {
   shot: Shot;
   visibleStep: number;
   caption: string;
+  progress?: number;
 }) {
   const page = pages[shot.page];
-  const hasDiagram = Boolean(page.diagram || page.referenceDiagram);
+  const hasDiagram = Boolean(
+    page.diagram || page.referenceDiagram || page.proofDiagram,
+  );
   return (
     <div
       data-production-page
@@ -50,19 +55,29 @@ export function TeachingPage({
       >
         <MathText>{page.title}</MathText>
       </header>
-      {hasDiagram && (
+      {hasDiagram && (!page.proofDiagram || visibleStep >= 1) && (
         <div
           data-page-block
           style={{ position: "absolute", left: 100, top: 230 }}
         >
-          <SegmentDiagram
-            symbolic={
-              Boolean(page.referenceDiagram) || page.diagram === "similar"
-            }
-            step={
-              page.referenceDiagram || shot.page === "changes" ? 3 : visibleStep
-            }
-          />
+          {page.proofDiagram ? (
+            <IntersectionDiagram
+              mode={page.proofDiagram}
+              step={shot.step}
+              progress={progress}
+            />
+          ) : (
+            <SegmentDiagram
+              symbolic={
+                Boolean(page.referenceDiagram) || page.diagram === "similar"
+              }
+              step={
+                page.referenceDiagram || shot.page === "changes"
+                  ? 3
+                  : visibleStep
+              }
+            />
+          )}
         </div>
       )}
       {page.basis.length > 0 && (

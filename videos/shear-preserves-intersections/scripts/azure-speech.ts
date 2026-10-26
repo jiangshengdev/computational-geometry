@@ -7,6 +7,8 @@ export const { buildSpeechDocument, synthesize } = createSpeechTools(sdk, {
   commas: "document",
   fingerprint: true,
 });
-export const { alignAudio, verifyAlignment } = createAlignmentTools(sdk, {
-  allowReviewedPronunciation: false,
-});
+export const { alignAudio, verifyAlignment, assessmentWords } =
+  createAlignmentTools(sdk, {
+    // Only saved, word-specific listening approvals bound to the WAV hash qualify.
+    allowReviewedPronunciation: true,
+  });

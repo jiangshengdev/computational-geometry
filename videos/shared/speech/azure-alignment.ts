@@ -69,9 +69,13 @@ export function createAlignmentTools(
       if (words[i].startMs < words[i - 1].startMs + words[i - 1].durationMs)
         throw Error("Overlapping alignment words");
     }
-    const original = audio.alignment?.synthesisWords ?? audio.words;
+    const synthesisWords = audio.alignment?.synthesisWords ?? audio.words;
+    // Accepted audition WAVs may have no saved synthesis boundaries. Measure
+    // every word from recognition in that case, with the same review checks.
+    const original = synthesisWords.length ? synthesisWords : words;
     const selected = new Set(
       original.flatMap((word, index) =>
+        synthesisWords.length === 0 ||
         (word.durationMs === 0 && /[\p{L}\p{N}]/u.test(word.text)) ||
         word.startMs + word.durationMs > audio.duration * 1000 + 1
           ? [index]
