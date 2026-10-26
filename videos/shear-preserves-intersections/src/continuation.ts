@@ -413,7 +413,7 @@ export const proofShots: Shot[] = [
     page: "coordinates",
     step: 3,
     caption:
-      "这里的二分之一只是便于观察的演示系数，不是算法已经选好的安全系数。交集对应不要求系数足够小，事件顺序是否保持是另一个问题。",
+      "这里的二分之一只是便于观察的演示系数，不是算法已经选好的安全系数。系数不必很小，也能保持交集对应，事件顺序是否保持是另一个问题。",
   },
 ];
 export const specialShots: Shot[] = [
@@ -429,7 +429,7 @@ export const specialShots: Shot[] = [
     page: "pointInput",
     step: 2,
     caption:
-      "把相等的坐标代入，一减 u 的差与 u 相加等于一。所以不论 u 取零到一之间的哪个值，横纵坐标始终都是 A 的坐标。",
+      "把相等的坐标代入，一减去 u，再加上 u，等于一。所以不论 u 取零到一之间的哪个值，横纵坐标始终都是 A 的坐标。",
   },
   {
     id: "244-03",

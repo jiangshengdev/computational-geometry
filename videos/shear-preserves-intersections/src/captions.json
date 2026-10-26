@@ -1,4 +1,57 @@
 {
+  "245-01": [
+    {
+      "text": "把图形推斜以后，交点的位置可以改变。",
+      "startMs": 70,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们要证明的是，原来的公共部分与新的公共部分怎样对应。",
+      "startMs": 3190,
+      "endMs": 7604,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "245-02": [
+    {
+      "text": "先从具体位置推导分点公式，",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再把它代入剪切公式。",
+      "startMs": 2550,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "证明整条线段的对应以后，",
+      "startMs": 4383,
+      "endMs": 6662,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分别说明为什么不丢交点，",
+      "startMs": 6863,
+      "endMs": 8583,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不添交点。",
+      "startMs": 8650,
+      "endMs": 9730,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
   "242-01": [
     {
       "text": "先看线段的两个端点，",
@@ -1003,6 +1056,1446 @@
       "text": "再分别证明不丢交点与不添交点。",
       "startMs": 7431,
       "endMs": 10551,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-01": [
+    {
+      "text": "回顾上方已经推导的结果，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A′ 和 B′ 是两个新端点。",
+      "startMs": 2309,
+      "endMs": 4590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新点的横纵坐标，仍按同一个 u 组合这两个端点。",
+      "startMs": 4639,
+      "endMs": 8478,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-02": [
+    {
+      "text": "任取原线段上的一点，",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它都有零到一之间的比例 u。",
+      "startMs": 1950,
+      "endMs": 4030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剪切后仍使用这个比例，",
+      "startMs": 4042,
+      "endMs": 5962,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以它一定落在两个新端点之间，",
+      "startMs": 6082,
+      "endMs": 8442,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "包括端点。",
+      "startMs": 8479,
+      "endMs": 9519,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-03": [
+    {
+      "text": "反过来，任取新线段上的一点。",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用它在新线段上的比例 u，",
+      "startMs": 2909,
+      "endMs": 5510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "去原线段取点，代入就得到这个新点。",
+      "startMs": 5492,
+      "endMs": 8652,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此既没有跑到新线段之外，",
+      "startMs": 8692,
+      "endMs": 10972,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也没有漏掉新线段上的点，",
+      "startMs": 11039,
+      "endMs": 12998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不只是几个采样位置。",
+      "startMs": 13278,
+      "endMs": 14838,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-04": [
+    {
+      "text": "接着从剪切公式求原坐标，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为纵坐标不变，所以原纵坐标 y 就等于新纵坐标 y′。",
+      "startMs": 2389,
+      "endMs": 7140,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-05": [
+    {
+      "text": "把原公式中的 y 换成 y′，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新横坐标就等于原横坐标，",
+      "startMs": 2630,
+      "endMs": 4950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "加上 s 乘以新纵坐标。",
+      "startMs": 4980,
+      "endMs": 7060,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-06": [
+    {
+      "text": "等式两边同时减去 s 与 y′ 的乘积，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边只剩下 x。",
+      "startMs": 3389,
+      "endMs": 4950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左边是 x′ 减去这个乘积。",
+      "startMs": 4980,
+      "endMs": 7339,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-07": [
+    {
+      "text": "把原横坐标写在左边，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就得到撤销公式。",
+      "startMs": 1910,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "原横坐标等于新横坐标，",
+      "startMs": 3389,
+      "endMs": 5670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减去 s 乘以新纵坐标，",
+      "startMs": 5663,
+      "endMs": 8022,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "原纵坐标仍等于新纵坐标。",
+      "startMs": 8143,
+      "endMs": 10503,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-08": [
+    {
+      "text": "再代回原来的剪切公式核对，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新增的 s 乘以 y，",
+      "startMs": 2429,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与减去的同一个乘积抵消。",
+      "startMs": 3949,
+      "endMs": 6030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标确实恢复成 x，",
+      "startMs": 6004,
+      "endMs": 7804,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标本来就没有变化。",
+      "startMs": 8044,
+      "endMs": 9484,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-09": [
+    {
+      "text": "系数 s 固定以后，",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "给定一个新位置的横纵坐标。",
+      "startMs": 1670,
+      "endMs": 3829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "撤销公式只能算出一组原坐标，",
+      "startMs": 3786,
+      "endMs": 6505,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以原位置唯一确定。",
+      "startMs": 6625,
+      "endMs": 8386,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-10": [
+    {
+      "text": "如果两个不同的原来的点变成同一个新点，",
+      "startMs": 70,
+      "endMs": 3190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "撤销这个新点却只能得到一个原位置。",
+      "startMs": 3309,
+      "endMs": 6040,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就矛盾了，所以不同点不会被挤在一起。",
+      "startMs": 6070,
+      "endMs": 9460,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-11": [
+    {
+      "text": "现在取两条线段，蓝色的是 AB，",
+      "startMs": 70,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "绿色的是 CD。",
+      "startMs": 2989,
+      "endMs": 4070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的原公共点记作 P，",
+      "startMs": 4230,
+      "endMs": 6220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条线段都使用刚才证明的整条线段对应。",
+      "startMs": 6250,
+      "endMs": 9810,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-12": [
+    {
+      "text": "现在同步剪切两条线段和公共点，",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "P 变成 P′。",
+      "startMs": 3190,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为原来同时属于两条线段，",
+      "startMs": 4870,
+      "endMs": 7110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "变换后就同时落在两条新线段上。",
+      "startMs": 7114,
+      "endMs": 9594,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-13": [
+    {
+      "text": "对每个原公共点都能这样说明，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以已有的公共点不会丢失。",
+      "startMs": 2389,
+      "endMs": 4380,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里只证明了一个方向，",
+      "startMs": 4383,
+      "endMs": 6063,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来还要排除新增公共点。",
+      "startMs": 6223,
+      "endMs": 8623,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-14": [
+    {
+      "text": "任取两条新线段的一个公共点，",
+      "startMs": 110,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 Q′，它的新坐标记作 x′ 和 y′。",
+      "startMs": 2550,
+      "endMs": 6390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这次从新图形出发，不能先假定它已经有共同的原来的点。",
+      "startMs": 6420,
+      "endMs": 10960,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-15": [
+    {
+      "text": "由于整条新线段都有原线段上的来源，",
+      "startMs": 70,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "从第一条新线段反向找。",
+      "startMs": 3309,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "必能在第一条原线段上找到一个点，",
+      "startMs": 5322,
+      "endMs": 7882,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 R，它剪切后就是 Q′。",
+      "startMs": 8081,
+      "endMs": 10122,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-16": [
+    {
+      "text": "同样，从第二条新线段反向找，",
+      "startMs": 60,
+      "endMs": 2970,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "能在第二条原线段上找到一个点，",
+      "startMs": 3030,
+      "endMs": 5480,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 S。",
+      "startMs": 5510,
+      "endMs": 6740,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它剪切后也等于 Q′。",
+      "startMs": 6770,
+      "endMs": 8730,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-17": [
+    {
+      "text": "对同一个 Q′ 使用撤销公式，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "R 和 S 的坐标都只能是 x′ 减 s 与 y′ 的乘积，",
+      "startMs": 2869,
+      "endMs": 7330,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以及 y′。",
+      "startMs": 7370,
+      "endMs": 8440,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以它们是同一个原来的点，",
+      "startMs": 8470,
+      "endMs": 10680,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同时属于两条原线段。",
+      "startMs": 10710,
+      "endMs": 12380,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "原来已经有这个公共点，",
+      "startMs": 12444,
+      "endMs": 14044,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会凭空新增。",
+      "startMs": 14084,
+      "endMs": 15283,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-18": [
+    {
+      "text": "再看重叠的情况，蓝色输入的两端是 A 和 B，",
+      "startMs": 70,
+      "endMs": 3710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "绿色输入的两端是 C 和 D。",
+      "startMs": 3989,
+      "endMs": 6790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "沿直线，从 A 开始，",
+      "startMs": 6510,
+      "endMs": 8430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接着是 C，然后是 B，",
+      "startMs": 8510,
+      "endMs": 10150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最后是 D。",
+      "startMs": 10150,
+      "endMs": 11230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公共部分是从 C 到 B 的完整线段，",
+      "startMs": 11250,
+      "endMs": 13969,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图中用橙色标出。",
+      "startMs": 14089,
+      "endMs": 15720,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-19": [
+    {
+      "text": "取二分之一作为演示系数，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同步剪切两条输入。",
+      "startMs": 2590,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "重叠段上的所有点也一起移动，",
+      "startMs": 4298,
+      "endMs": 6818,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到从 C′ 到 B′ 的整条线段，",
+      "startMs": 7017,
+      "endMs": 9578,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是只保留两个端点。",
+      "startMs": 9588,
+      "endMs": 11348,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-20": [
+    {
+      "text": "现在按撤销公式，把新横坐标减去新纵坐标的一半。",
+      "startMs": 70,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条输入和公共部分同步还原，",
+      "startMs": 4469,
+      "endMs": 6989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就恢复原来的完整重叠段。",
+      "startMs": 6989,
+      "endMs": 9389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "双向证明还保证，这段之外不会凭空多出公共点。",
+      "startMs": 9503,
+      "endMs": 13503,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-21": [
+    {
+      "text": "因此重叠区间整体对应，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能把它拆成若干孤立交点。",
+      "startMs": 2309,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "AB 和 CD 仍然是两条有各自身份的输入，",
+      "startMs": 4423,
+      "endMs": 7622,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "即使位置重合，也不合并输入记录。",
+      "startMs": 7943,
+      "endMs": 10778,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-22": [
+    {
+      "text": "保持交集，并不表示坐标原地不动。",
+      "startMs": 70,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "例如取原公共点 P 的坐标为三、二，",
+      "startMs": 3270,
+      "endMs": 6430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "演示系数仍取二分之一。",
+      "startMs": 6431,
+      "endMs": 8660,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-23": [
+    {
+      "text": "新横坐标等于三，加上二分之一乘以二，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到四。",
+      "startMs": 3389,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标仍为二，所以 P′ 的坐标是四、二，",
+      "startMs": 4127,
+      "endMs": 7767,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公共点的位置已经改变。",
+      "startMs": 7807,
+      "endMs": 9567,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "243-24": [
+    {
+      "text": "这里的二分之一只是便于观察的演示系数，",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是算法已经选好的安全系数。",
+      "startMs": 3270,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "系数不必很小，也能保持交集对应，",
+      "startMs": 5492,
+      "endMs": 7972,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "事件顺序是否保持是另一个问题。",
+      "startMs": 8291,
+      "endMs": 10732,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-01": [
+    {
+      "text": "接着检查特殊情况，先回顾上方的两个分点公式。",
+      "startMs": 70,
+      "endMs": 4070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果两个端点 A 和 B 重合，",
+      "startMs": 4042,
+      "endMs": 6162,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的横坐标相等，纵坐标也相等。",
+      "startMs": 6202,
+      "endMs": 9042,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-02": [
+    {
+      "text": "把相等的坐标代入，一减去 u，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加上 u，等于一。",
+      "startMs": 2710,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不论 u 取零到一之间的哪个值，",
+      "startMs": 4213,
+      "endMs": 6813,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横纵坐标始终都是 A 的坐标。",
+      "startMs": 6813,
+      "endMs": 9293,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-03": [
+    {
+      "text": "这时所有比例都对应同一个点，",
+      "startMs": 70,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "输入的长度为零。",
+      "startMs": 2670,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "通过一个点可以画出许多直线，",
+      "startMs": 4127,
+      "endMs": 6327,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能给这个输入指定唯一的支撑直线。",
+      "startMs": 6327,
+      "endMs": 8967,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-04": [
+    {
+      "text": "对这个点应用剪切公式，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新横坐标是 a_x 加 s 乘以 a_y，",
+      "startMs": 2230,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新纵坐标是 a_y。",
+      "startMs": 5322,
+      "endMs": 6762,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个新端点仍然重合，",
+      "startMs": 7002,
+      "endMs": 8762,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剪切以后仍是一个点。",
+      "startMs": 9081,
+      "endMs": 10722,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-05": [
+    {
+      "text": "上方的撤销公式仍然有效，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以点与线段、点与点之间的公共点，",
+      "startMs": 2349,
+      "endMs": 5350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也能按同样两个方向证明，",
+      "startMs": 5322,
+      "endMs": 7202,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "既不丢失，也不新增。",
+      "startMs": 7442,
+      "endMs": 9161,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-06": [
+    {
+      "text": "下面讨论直线，先要求 A 和 B 不同。",
+      "startMs": 70,
+      "endMs": 3590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把 u 扩展为带方向的比例参数，",
+      "startMs": 3989,
+      "endMs": 6580,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不再把它限制为零到一之间的长度比。",
+      "startMs": 6610,
+      "endMs": 9310,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-07": [
+    {
+      "text": "当 u 小于零时，横向和纵向的全程变化都乘以负数。",
+      "startMs": 70,
+      "endMs": 4510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此从 A 出发，沿着原来的直线反向走。",
+      "startMs": 4469,
+      "endMs": 7909,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-08": [
+    {
+      "text": "当 u 大于一时，两个方向都走过完整变化量。",
+      "startMs": 70,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点越过 B，继续沿直线向前。",
+      "startMs": 3829,
+      "endMs": 6295,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-09": [
+    {
+      "text": "任意实数都可以作为 u，",
+      "startMs": 110,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而直线上任意位置都有相应的带方向比例。",
+      "startMs": 1950,
+      "endMs": 5270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此这两个公式恰好描述整条直线，",
+      "startMs": 5236,
+      "endMs": 8676,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "包括原线段两端的延长部分。",
+      "startMs": 8796,
+      "endMs": 11156,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-10": [
+    {
+      "text": "前面代入剪切、展开并合并的每一步，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "对任意实数 u 都成立。",
+      "startMs": 3510,
+      "endMs": 5270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并没有用到 u 必须介于零和一之间，",
+      "startMs": 5236,
+      "endMs": 8075,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以整理后的公式仍然有效。",
+      "startMs": 8356,
+      "endMs": 10316,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-11": [
+    {
+      "text": "不同端点不会被挤在一起，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此两个新端点仍能确定直线。",
+      "startMs": 2230,
+      "endMs": 5070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "让 u 取遍实数，恰好得到整条新直线，",
+      "startMs": 5066,
+      "endMs": 8706,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以同一直线上的点变换后仍然共线。",
+      "startMs": 8985,
+      "endMs": 11746,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-12": [
+    {
+      "text": "现在取两条不同的平行线，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "假设它们剪切后的新直线有公共点。",
+      "startMs": 2389,
+      "endMs": 5150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里也包括两条新直线重合的可能，",
+      "startMs": 5151,
+      "endMs": 7910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为重合就一定有公共点。",
+      "startMs": 7990,
+      "endMs": 10151,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-13": [
+    {
+      "text": "沿两条新直线分别找原来的来源，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再用撤销公式。",
+      "startMs": 2869,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公共点只能还原到一个原位置，",
+      "startMs": 3957,
+      "endMs": 6276,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个位置就必须同时属于两条原直线。",
+      "startMs": 6557,
+      "endMs": 9637,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-14": [
+    {
+      "text": "可是原来两条不同的平行线没有公共点，",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "出现了矛盾。",
+      "startMs": 2949,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以两条新直线不相交，",
+      "startMs": 3957,
+      "endMs": 5637,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不重合，仍是两条不同的平行线。",
+      "startMs": 5837,
+      "endMs": 8837,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-15": [
+    {
+      "text": "最后区分精确计算与几何结论，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "例如三分之一加六分之一。",
+      "startMs": 2869,
+      "endMs": 5200,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先通分，把三分之一写成六分之二，",
+      "startMs": 5230,
+      "endMs": 8311,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "相加得到六分之三，约分就是二分之一。",
+      "startMs": 8510,
+      "endMs": 11880,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-16": [
+    {
+      "text": "如果先用零点三三三和零点一六七近似，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这两个近似值相加，这次恰巧得到零点五。",
+      "startMs": 3510,
+      "endMs": 6850,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但零点三三三本身并不等于三分之一，",
+      "startMs": 6946,
+      "endMs": 9910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间的精确值已经丢失，",
+      "startMs": 9940,
+      "endMs": 12070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其他运算未必恰巧抵消误差。",
+      "startMs": 12130,
+      "endMs": 14580,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-17": [
+    {
+      "text": "精确有理数运算保留分子和分母，",
+      "startMs": 70,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "直接做分数加法和乘法，",
+      "startMs": 2949,
+      "endMs": 5180,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不先截成有限位小数。",
+      "startMs": 5210,
+      "endMs": 7040,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此有理坐标和有理系数下，",
+      "startMs": 7191,
+      "endMs": 9831,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剪切与撤销都可以保持精确。",
+      "startMs": 9930,
+      "endMs": 12289,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-18": [
+    {
+      "text": "可逆性保证每个位置唯一还原，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "对任意有理系数都成立。",
+      "startMs": 2630,
+      "endMs": 4470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不需要系数足够小，再结合线段的完整对应，",
+      "startMs": 4469,
+      "endMs": 7828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "才得到交集保持。",
+      "startMs": 7949,
+      "endMs": 9309,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-19": [
+    {
+      "text": "精确有理数运算负责避免浮点舍入，",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是计算方式的作用。",
+      "startMs": 3309,
+      "endMs": 5030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能把精确性归功于系数很小。",
+      "startMs": 4980,
+      "endMs": 7379,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "244-20": [
+    {
+      "text": "算法另外选择安全的小系数，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是为了保证事件顺序。",
+      "startMs": 2389,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个条件在前面几集讨论过，",
+      "startMs": 4042,
+      "endMs": 6361,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本集的交集证明没有使用它。",
+      "startMs": 6522,
+      "endMs": 8802,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "245-03": [
+    {
+      "text": "回顾完整证明，先用相似三角形推导分点公式，",
+      "startMs": 70,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再代入剪切。",
+      "startMs": 4213,
+      "endMs": 5413,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "比例取遍需要的范围，",
+      "startMs": 5413,
+      "endMs": 7253,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就覆盖全部点，而不只是少数样本。",
+      "startMs": 7333,
+      "endMs": 10164,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "245-04": [
+    {
+      "text": "原公共点变换后仍是公共点，",
+      "startMs": 70,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新公共点又能唯一还原为原公共点。",
+      "startMs": 2630,
+      "endMs": 5670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个方向合起来，才说明不丢交点，",
+      "startMs": 5663,
+      "endMs": 8783,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不添交点。",
+      "startMs": 8863,
+      "endMs": 9863,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "245-05": [
+    {
+      "text": "交集可以是一个点，也可以是完整的重叠区间。",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们都按变换对应，坐标可以改变，",
+      "startMs": 3360,
+      "endMs": 6480,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "原始输入的身份始终保留。",
+      "startMs": 6480,
+      "endMs": 8480,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "245-06": [
+    {
+      "text": "点输入、共线和平行情况也已说明，",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "可逆性保证唯一还原，",
+      "startMs": 3110,
+      "endMs": 5090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "精确分数运算避免舍入。",
+      "startMs": 5120,
+      "endMs": 7370,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "小系数另外负责保序，",
+      "startMs": 7425,
+      "endMs": 9306,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这三件事各有自己的职责。",
+      "startMs": 9418,
+      "endMs": 11380,
       "timestampMs": null,
       "confidence": null
     }

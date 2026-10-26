@@ -2363,9 +2363,13 @@
       "pinyin": "dao4 yi1"
     },
     "个点。记作 ",
-    { "breakMs": 20 },
+    {
+      "breakMs": 20
+    },
     "S",
-    { "breakMs": 20 },
+    {
+      "breakMs": 20
+    },
     "。它",
     {
       "text": "剪切",
@@ -2474,19 +2478,38 @@
       "pinyin": "de5"
     },
     "情况。蓝色输入",
-    { "text": "的", "pinyin": "de5" },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
     "两端是 A ",
-    { "text": "和", "pinyin": "he2" },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
     " B。绿色输入",
-    { "text": "的", "pinyin": "de5" },
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
     "两端是 C ",
-    { "text": "和", "pinyin": "he2" },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
     " ",
-    { "breakMs": 20 },
+    {
+      "breakMs": 20
+    },
     "D",
-    { "breakMs": 20 },
+    {
+      "breakMs": 20
+    },
     "。沿直线。从 A 开始。",
-    { "text": "接着", "pinyin": "jie1 zhe5" },
+    {
+      "text": "接着",
+      "pinyin": "jie1 zhe5"
+    },
     "是 C。然后是 B。最后是 D。公共",
     {
       "text": "部分",
@@ -2789,16 +2812,16 @@
       "text": "系数",
       "pinyin": "xi4 shu4"
     },
-    "。交集对应",
-    {
-      "text": "不要求",
-      "pinyin": "bu2 yao4 qiu2"
-    },
+    "。",
     {
       "text": "系数",
       "pinyin": "xi4 shu4"
     },
-    "足够小。事件顺序是否保持是另",
+    {
+      "text": "不必",
+      "pinyin": "bu2 bi4"
+    },
+    "很小。也能保持交集对应。事件顺序是否保持是另",
     {
       "text": "一个",
       "pinyin": "yi2 ge5"
@@ -2880,27 +2903,11 @@
     },
     "坐标代入。",
     {
-      "text": "一减",
-      "pinyin": "yi1 jian3"
+      "text": "一",
+      "pinyin": "yi1"
     },
-    " u ",
-    {
-      "text": "的",
-      "pinyin": "de5"
-    },
-    {
-      "text": "差",
-      "pinyin": "cha1"
-    },
-    {
-      "text": "与",
-      "pinyin": "yu3"
-    },
-    " u ",
-    {
-      "text": "相加",
-      "pinyin": "xiang1 jia1"
-    },
+    "减去",
+    " u。再加上 u。",
     {
       "text": "等于一",
       "pinyin": "deng3 yu2 yi1"
@@ -3590,7 +3597,10 @@
       "pinyin": "yi1"
     },
     "六七近似。这两",
-    { "text": "个", "pinyin": "ge5" },
+    {
+      "text": "个",
+      "pinyin": "ge5"
+    },
     "近似值",
     {
       "text": "相加",
