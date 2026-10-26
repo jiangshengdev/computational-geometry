@@ -144,7 +144,7 @@ test('教学定位：发现事件按精确身份定位，回退移除未来条�
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('学习完成')
   await page.getByRole('button', { name: '重新开始', exact: true }).click()
   await expect(slider).toHaveValue('0')
-  await expect(queue.getByRole('listitem')).toHaveCount(scrollingCase.segments.length * 2)
+  await expect(queue.getByRole('listitem')).toHaveCount(0)
   await expect(row).toHaveCount(0)
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText('尚未处理事件')
   await expect(page.getByTestId('active-order')).toHaveText('空')

@@ -29,7 +29,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     page.on('console', message => { if (message.type() === 'error' || message.type() === 'warning') errors.push(message.text()) })
     const trace = await readTrace(page, 'crossing')
     const start = trace.steps.findIndex(step => step.action === 'take-entry')
-    const call = trace.steps.findIndex(step => step.execution.context.function === 'schedule_neighbors')
+    const call = trace.steps.findIndex(step => step.execution.context.function === 'schedule')
     expect(call).toBeGreaterThan(start)
     await page.goto(`/bo/cases/crossing/learn?step=${start}`)
     await expect(page).toHaveTitle(/逐步学习/)
@@ -49,7 +49,8 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await expect(input.locator('code').last()).toHaveText('[Segment { start: (0, 0), end: (4, 4) }, ...]')
     await expect(queueTrigger.locator('code').last()).toHaveText('{(0, 0): Event { starts: [0] }, ...}')
     const segmentSummary = segments.locator('code').last()
-    await expect(segmentSummary).toHaveText('[SweepSegment { left: (0, 0), right: (4, 4), slope: Some(1), intercept: 0 }, ...]')
+    const transformed = trace.steps[start].execution.context.locals.find(v => v.name === 'segments')!
+    await expect(segmentSummary).toHaveText(formatExecutionValue(trace.values[transformed.value!], 'summary'))
     // Click the far right of the row, independently of the trigger's width,
     // so a content-sized button cannot accidentally satisfy this contract.
     for (const trigger of [parameters, locals, input, segments]) {
@@ -95,7 +96,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await locals.click()
     const slider = page.getByRole('slider', { name: '教学步骤' })
     await slider.fill(String(call))
-    await expect(panel.getByRole('heading', { name: /当前函数/ })).toContainText('schedule_neighbors')
+    await expect(panel.getByRole('heading', { name: /当前函数/ })).toContainText('schedule')
     await expect(locals).toHaveAttribute('aria-expanded', 'true')
     await expect(queueTrigger).toHaveAttribute('aria-expanded', 'false')
     await queueTrigger.click()

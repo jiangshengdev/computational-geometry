@@ -23,7 +23,7 @@ test('相邻检测：删除中间线段后发现交点', async ({ page }) => {
   for (const [index, step] of trace.steps.entries()) {
     if (!['complete', 'check', 'discover', 'take-empty'].includes(step.action)) continue
     await seekStep(page, index, 'jump')
-    const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
+    const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻覆盖段|发现未来交点)/ }).allTextContents()).join('\n')
     await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(step.current ? 1 : 0)
     const event = (await current.locator('.coordinates:not([aria-hidden="true"])').allTextContents()).join('')
     if (event === 'S2 起点 (2, 8)' && (await current.innerText()).includes('处理完成')) {
@@ -31,15 +31,16 @@ test('相邻检测：删除中间线段后发现交点', async ({ page }) => {
       await expect(queue).not.toContainText('I0')
       separated = true
     }
-    if (text.startsWith('检查相邻线段 S0 × S2')) {
+    if (!checked && step.action === 'check' && step.subjects.includes(0) && step.subjects.includes(2)) {
       expect(separated).toBe(true)
       await expect(current).toContainText('S1 终点 (3, 5)')
-      await expect(explanation).toContainText('退出 S1 后')
+      expect(step.ends).toContain(1)
+      expect(step.checked).toEqual([])
       await expect(active).toHaveText('S0S2')
       await expect(queue).not.toContainText('I0')
       for (const id of [0, 2]) {
-        await expect(page.getByRole('img', { name: `输入 S${id}`, exact: true })).toHaveAttribute('data-checked', 'true')
-        await expect(active.getByText(`S${id}`, { exact: true })).toHaveAttribute('data-checked', 'true')
+        await expect(page.getByRole('img', { name: `输入 S${id}`, exact: true })).toHaveAttribute('data-checked', 'false')
+        await expect(active.getByText(`S${id}`, { exact: true })).toHaveAttribute('data-checked', 'false')
       }
       await expect(page.getByRole('img', { name: '输入 S1', exact: true })).toHaveAttribute('data-highlighted', 'false')
       checked = true
@@ -86,11 +87,12 @@ test('相邻检测：插入和交叉后发现新邻居', async ({ page }) => {
   for (const [index, step] of trace.steps.entries()) {
     if (!['complete', 'check', 'discover', 'take-empty'].includes(step.action)) continue
     await seekStep(page, index, 'jump')
-    const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
+    const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻覆盖段|发现未来交点)/ }).allTextContents()).join('\n')
     await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(step.current ? 1 : 0)
     const event = (await current.locator('.coordinates:not([aria-hidden="true"])').allTextContents()).join('')
-    if (text.startsWith('检查相邻线段 S0 × S1')) {
-      await expect(explanation).toContainText('加入 S1 后')
+    if (!inserted && step.action === 'check' && step.subjects.includes(0) && step.subjects.includes(1)) {
+      expect(step.starts).toContain(1)
+      expect(step.checked).toEqual([])
       await expect(queue).not.toContainText('I0')
       inserted = true
     }
@@ -100,15 +102,16 @@ test('相邻检测：插入和交叉后发现新邻居', async ({ page }) => {
       await expect(queue).not.toContainText('I1')
       separated = true
     }
-    if (text.startsWith('检查相邻线段 S0 × S2')) {
+    if (!checked && step.action === 'check' && step.subjects.includes(0) && step.subjects.includes(2)) {
       expect(separated).toBe(true)
       await expect(current).toContainText('I0 (3, 3)')
-      await expect(explanation).toContainText(/交叉的 (S0 与 S1|S1 与 S0) 换序后/)
+      expect(step.passes).toEqual(expect.arrayContaining([0, 1]))
+      expect(step.checked).toEqual([])
       await expect(active).toHaveText('S1S0S2')
       await expect(queue).not.toContainText('I1')
-      await expect(page.getByRole('img', { name: '输入 S0', exact: true })).toHaveAttribute('data-checked', 'true')
-      await expect(active.getByText('S0', { exact: true })).toHaveAttribute('data-checked', 'true')
-      await expect(page.getByRole('img', { name: '输入 S2', exact: true })).toHaveAttribute('data-checked', 'true')
+      await expect(page.getByRole('img', { name: '输入 S0', exact: true })).toHaveAttribute('data-checked', 'false')
+      await expect(active.getByText('S0', { exact: true })).toHaveAttribute('data-checked', 'false')
+      await expect(page.getByRole('img', { name: '输入 S2', exact: true })).toHaveAttribute('data-checked', 'false')
       await expect(page.getByRole('img', { name: '输入 S1', exact: true })).toHaveAttribute('data-checked', 'false')
       await expect(current.locator('[aria-hidden="true"]')).toHaveCount(0)
       await expect(queue.locator('[aria-hidden="true"]')).toHaveCount(0)

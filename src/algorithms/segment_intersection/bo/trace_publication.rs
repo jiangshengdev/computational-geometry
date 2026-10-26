@@ -25,30 +25,8 @@ impl<'a> TracePublication<'a> {
         &mut self.steps
     }
 
-    pub(super) fn finish_event(
-        &mut self,
-        first_step: usize,
-        checked: &[[usize; 2]],
-        participants: (Vec<usize>, Vec<usize>, Vec<usize>),
-    ) -> bool {
-        let completed = self
-            .steps
-            .last_mut()
-            .expect("neighbor loop exit was captured");
-        completed.action = "complete";
-        completed.phase = "processed";
-        completed.checked = checked.to_vec();
-        let (starts, ends, passes) = participants;
-        for step in &mut self.steps[first_step..] {
-            step.starts.clone_from(&starts);
-            step.ends.clone_from(&ends);
-            step.passes.clone_from(&passes);
-        }
-        SweepStep::coalesce_block_successors(&mut self.steps, first_step);
-        self.publish()
-    }
-
     pub(super) fn publish(&mut self) -> bool {
+        SweepStep::coalesce_block_successors(&mut self.steps, usize::from(self.retained));
         // Preserve the last observation in sweep coordinates for the next capture.
         let previous = self.steps.last().cloned();
         let mut ready: Vec<_> = self

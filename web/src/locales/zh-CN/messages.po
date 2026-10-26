@@ -14,15 +14,335 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:66
-msgid " (shadowed; last value before shadowing)"
-msgstr "（已遮蔽，遮蔽前的最后值）"
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:152
+#~ msgid "Add it to the incident segments for this event"
+#~ msgstr "把它加入本次参与处理的线段中"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:97
+#~ msgid "Add the intersection to the queue, preserving any existing event"
+#~ msgstr "把交点加入待处理队列，已有事件则保留"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:146
+#~ msgid "Check each currently active segment"
+#~ msgstr "逐条检查当前活动线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:69
+#~ msgid "Check each neighboring position that exists"
+#~ msgstr "依次检查存在的相邻位置"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:126
+#~ msgid "Check whether an active segment lies below the current point"
+#~ msgstr "判断已有线段是否位于当前点下方"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:164
+#~ msgid "Check whether the current point is the segment end"
+#~ msgstr "判断当前点是不是这条线段的终点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:159
+#~ msgid "Check whether the current point is the segment start"
+#~ msgstr "判断当前点是不是这条线段的起点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:95
+#~ msgid "Check whether the intersection follows the current event"
+#~ msgstr "判断交点是否排在当前事件之后"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:196
+#~ msgid "Check whether the intersection has nonzero length"
+#~ msgstr "判断交集是否有长度，是一段线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:189
+#~ msgid "Check whether this event differs from the overlap start"
+#~ msgstr "判断当前事件是否不是这段重叠的起点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:106
+#~ msgid "Check whether this segment extends beyond the current point"
+#~ msgstr "判断这条线段是否还会继续向前延伸"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:150
+#~ msgid "Check whether this segment passes through the current point"
+#~ msgstr "判断这条线段是否经过当前点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:157
+#~ msgid "Classify each incident segment relative to the current point"
+#~ msgstr "逐条判断参与线段与当前点的关系"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:185
+#~ msgid "Compare slopes to determine whether overlap handling is needed"
+#~ msgstr "比较两条线段的斜率，判断是否需要处理重叠"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:121
+#~ msgid "Compare slopes, placing smaller slopes below larger ones"
+#~ msgstr "比较斜率，斜率较小的排在下方"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:148
+#~ msgid "Compare the segment height at the sweep line with the current point height"
+#~ msgstr "比较线段在扫描线上的高度与当前点的高度"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:76
+#~ msgid "Compute the intersection candidate and schedule a future event"
+#~ msgstr "计算这对线段的交点，并安排后续事件"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:92
+#~ msgid "End this check if there is no candidate"
+#~ msgstr "没有候选交点，结束这次检查"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:9
+#~ msgid "Exact height comparisons cached by segment index. The classification loop updates entries individually; unvisited entries retain earlier values and are not yet updated for this event"
+#~ msgstr "按线段编号保存的精确高度比较缓存；分类循环逐项刷新，尚未访问的项保留先前值，不能视为全部已按当前事件更新"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:169
+#~ msgid "Exclude both endpoints to check whether the point lies in the segment interior"
+#~ msgstr "排除两端，判断当前点是否在线段内部"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:116
+#~ msgid "Exclude segments that end at the current point"
+#~ msgstr "排除在当前点结束的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:139
+#~ msgid "Exit the loop when no pending event remains"
+#~ msgstr "没有待处理的事件，结束循环"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:137
+#~ msgid "Extract the event position and contents, or enter the exit branch if no event remains"
+#~ msgstr "取出事件的位置和内容；没有事件时进入结束分支"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:64
+#~ msgid "Find the neighboring positions to check on either side of the insertion"
+#~ msgstr "找出插入位置两侧需要检查的相邻位置"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:124
+#~ msgid "Find where to insert this group into the active set"
+#~ msgstr "在活动集合中找到这组线段的插入位置"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:207
+#~ msgid "For different slopes, the intersection is the current event point"
+#~ msgstr "斜率不同时，交集就是当前事件点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:80
+#~ msgid "Geometry calls and queue insertion"
+#~ msgstr "几何调用与入队"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:9
+#~ msgid "Indices of segments incident to the current event point"
+#~ msgstr "经过当前事件点的线段编号"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:131
+#~ msgid "Insert the sorted segments back into the active set"
+#~ msgstr "把排好序的线段插回活动集合"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:114
+#~ msgid "Keep incident segments that must remain in the active set"
+#~ msgstr "从参与线段中选出还需要留在活动集合里的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:111
+#~ msgid "Keep segments that do not pass through the current point"
+#~ msgstr "保留不经过当前点的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:88
+#~ msgid "Look up both segments by their indices"
+#~ msgstr "根据编号取出两条线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:18
+#~ msgid "Neighboring pairs already checked for this event"
+#~ msgstr "本事件已经检查的邻居对"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:178
+#~ msgid "Pair only with later segments to avoid recording the same pair twice"
+#~ msgstr "只与后面的线段配对，避免重复记录同一对"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:155
+#~ msgid "Prepare separate lists for starting, ending, and passing segments"
+#~ msgstr "准备分别记录在此开始、结束和从中间经过的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:180
+#~ msgid "Prepare to convert sweep coordinates back to input coordinates"
+#~ msgstr "准备把扫描坐标还原为输入时的坐标"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:62
+#~ msgid "Prepare to record the segment pairs checked in this event"
+#~ msgstr "准备记录本轮检查过的线段对"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:129
+#~ msgid "Record how many segments will be inserted"
+#~ msgstr "记下本次要插入的线段数量"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:191
+#~ msgid "Record only at the overlap start; skip this pair here"
+#~ msgstr "只在重叠起点记录一次，跳过当前线段对"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:166
+#~ msgid "Record the segment as ending here"
+#~ msgstr "记入在此结束的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:171
+#~ msgid "Record the segment as passing through this point"
+#~ msgstr "记入从中间经过当前点的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:161
+#~ msgid "Record the segment as starting here"
+#~ msgstr "记入在此开始的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:86
+#~ msgid "Record the segment pair being checked"
+#~ msgstr "记下本次检查的线段对"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:104
+#~ msgid "Remove segments that end at the current point from the active set"
+#~ msgstr "从活动集合中移除在当前点结束的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:198
+#~ msgid "Restore both endpoints to produce an overlap result"
+#~ msgstr "还原两端坐标，生成重叠线段的结果"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:203
+#~ msgid "Restore the contact point to produce a point result"
+#~ msgstr "还原接触点坐标，生成交点结果"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:209
+#~ msgid "Restore the current point to produce a point result"
+#~ msgstr "还原当前点坐标，生成交点结果"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:83
+#~ msgid "Return no candidate if fewer than two segments remain"
+#~ msgstr "不足两条线段，返回无候选交点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:100
+#~ msgid "Return the intersection candidate found by this check"
+#~ msgstr "返回本次找到的候选交点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:176
+#~ msgid "Select each segment passing through the current point"
+#~ msgstr "依次选取一条经过当前点的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:73
+#~ msgid "Skip this check if fewer than two segments remain"
+#~ msgstr "不足两条线段，跳过这次检查"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:119
+#~ msgid "Sort these segments by their vertical order just beyond the current point"
+#~ msgstr "按越过当前点后的上下顺序排列这些线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:144
+#~ msgid "Start by collecting segments that begin at the current point"
+#~ msgstr "先收集在当前点开始的线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:213
+#~ msgid "Store the pair in ascending index order together with its intersection"
+#~ msgstr "按编号从小到大保存线段对及其交集"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:135
+#~ msgid "Take the next pending event"
+#~ msgstr "取出下一个待处理的事件"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:109
+#~ msgid "Temporarily remove segments through the current point before reinserting them in order"
+#~ msgstr "暂时移除经过当前点的线段，稍后重新排序插入"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:201
+#~ msgid "Treat a zero-length intersection as a single point"
+#~ msgstr "没有长度时，按单个交点处理"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:90
+#~ msgid "Try to compute an intersection candidate for these segments"
+#~ msgstr "尝试计算这两条线段的候选交点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:71
+#~ msgid "Try to get the two neighboring segments at this position"
+#~ msgstr "尝试取出这个位置上的两条相邻线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:81
+#~ msgid "Try to get the two neighboring segments to check"
+#~ msgstr "尝试取出要检查的两条相邻线段"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:182
+#~ msgid "Undo the shear of the x coordinate, leaving the y coordinate unchanged"
+#~ msgstr "撤销横坐标的剪切变换，纵坐标保持不变"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:194
+#~ msgid "Use the earlier end point as the overlap end"
+#~ msgstr "取两个终点中较前的一个，作为重叠终点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:187
+#~ msgid "Use the later start point as the overlap start"
+#~ msgstr "取两个起点中较后的一个，作为重叠起点"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:66
+#~ msgid "When segments are inserted, find the position of the last new segment"
+#~ msgstr "有新线段插入时，找到最后一条新线段的位置"
 
 #. Connect crossing segment names in prose. Preserve surrounding whitespace.
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:26
-msgid "learning.segmentConjunction"
-msgstr " 与 "
+#~ msgid "learning.segmentConjunction"
+#~ msgstr " 与 "
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:93
+msgid " (shadowed; last value before shadowing)"
+msgstr "（已遮蔽，遮蔽前的最后值）"
 
 #. Separator between teaching list items. Preserve surrounding whitespace.
 #. js-lingui-explicit-id
@@ -37,7 +357,7 @@ msgstr "（代码高亮加载失败）"
 
 #. placeholder {0}: points.length
 #. placeholder {1}: step.results.length
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:64
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:62
 msgid "{0, plural, one {# distinct intersection position} other {# distinct intersection positions}}; {1, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Multiple segment pairs may share the same position."
 msgstr "独立交点位置：{0}；相交线段对：{1}。同一位置可由多个线段对共享。"
 
@@ -49,34 +369,34 @@ msgstr "{0} 个相交配对"
 #. placeholder {0}: points.length
 #. placeholder {1}: visibleOverlaps.length
 #. placeholder {2}: step.results.length
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:64
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:62
 msgid "{0, plural, one {# point-result position} other {# point-result positions}}; {1, plural, one {# overlap interval} other {# overlap intervals}}; {2, plural, one {# intersecting segment pair} other {# intersecting segment pairs}}. Point-type pair results are not necessarily isolated points in the overall intersection: they may lie on recorded overlap intervals. An interval contains infinitely many shared points. Each pair remains separate; no geometric union is computed."
 msgstr "点类型结果位置：{0}；重叠区间：{1}；相交线段对：{2}。点类型配对结果不等于整体交集中的孤立点，它们也可能位于已记录的重叠区间上。区间包含无穷多个公共点，各配对保持独立，不计算几何并集。"
 
 #. placeholder {0}: formatGeometry(result.geometry)
 #. placeholder {1}: pairName(result)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:66
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:64
 msgid "{0}: {1} (including both endpoints and every point between them)"
 msgstr "{0}：{1}（包含两端及其间全部点）"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:116
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:143
 msgid "{functionName} captures"
 msgstr "{functionName} 捕获变量"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:117
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:144
 msgid "{functionName} locals"
 msgstr "{functionName} 局部变量"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:115
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:142
 msgid "{functionName} parameters"
 msgstr "{functionName} 参数"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:86
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:117
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:113
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:144
 msgid "{module} module"
 msgstr "{module} 模块"
 
@@ -101,19 +421,19 @@ msgstr "{point}：{reference} 边右侧"
 msgid "{title} teaching code"
 msgstr "{title}教学代码"
 
-#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:40
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:42
 msgid "A as reference: B points in the opposite direction"
 msgstr "以 A 为基准：B 反向"
 
-#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:40
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:42
 msgid "A as reference: B points in the same direction"
 msgstr "以 A 为基准：B 同向"
 
-#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:38
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:40
 msgid "A as reference: turn left toward B"
 msgstr "以 A 为基准：向 B 左转"
 
-#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:39
+#: src/algorithms/convex-polygon-intersection/PolygonDirection.tsx:41
 msgid "A as reference: turn right toward B"
 msgstr "以 A 为基准：向 B 右转"
 
@@ -217,7 +537,7 @@ msgid "help.SamePointRules.2"
 msgstr "零长度输入的起点和终点重合，因此同时属于开始和结束，不进入持续活动顺序，也没有对应的加入或退出动作。它与同点的线段或其他点逐对记录；坐标重合不合并输入身份。纯点集合的活动顺序始终为空，但仍有真实事件和配对结果。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:24
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:51
 msgid "a, b: sweep segments used in this geometry computation."
 msgstr "a、b：本次参与几何计算的扫描线段。"
 
@@ -231,7 +551,7 @@ msgstr "说明与帮助"
 msgid "About core variables"
 msgstr "核心变量说明"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:74
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:72
 msgid "About events"
 msgstr "事件说明"
 
@@ -239,11 +559,11 @@ msgstr "事件说明"
 msgid "About inputs"
 msgstr "输入说明"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:34
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:33
 msgid "About neighbors"
 msgstr "相邻性说明"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:36
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:35
 msgid "About overlaps"
 msgstr "重叠说明"
 
@@ -251,15 +571,15 @@ msgstr "重叠说明"
 msgid "About results"
 msgstr "结果说明"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:86
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:84
 msgid "About shared points"
 msgstr "同点说明"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:110
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:108
 msgid "About the order"
 msgstr "顺序说明"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:96
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:94
 msgid "About the queue"
 msgstr "队列说明"
 
@@ -270,16 +590,16 @@ msgid "About this case"
 msgstr "案例说明"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:155
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:182
 msgid "About to check the next iteration; no decision yet"
 msgstr "即将检查下一次迭代；本轮尚未判断"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:155
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:182
 msgid "About to execute; no result yet"
 msgstr "即将执行；结果尚未产生"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:35
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:34
 msgid "About vertical segments"
 msgstr "竖直线说明"
 
@@ -288,7 +608,7 @@ msgstr "竖直线说明"
 msgid "Access"
 msgstr "访问"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:32
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:31
 #: src/algorithms/segment-intersection/bo/learning/LearningView.tsx:46
 msgid "Action explanation"
 msgstr "操作解释"
@@ -306,14 +626,14 @@ msgid "geometry.activeAtHeight"
 msgstr "活动线段 {0}：S{id}（当前处理高度）"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:82
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:113
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:109
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:140
 msgid "Active segment loop"
 msgstr "活动线段循环"
 
 #: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:49
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:109
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:110
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:107
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:108
 #: src/algorithms/segment-intersection/bo/learning/LearningView.tsx:31
 msgid "Active segment order"
 msgstr "活动线段顺序"
@@ -329,33 +649,23 @@ msgid "help.ActiveOrderRules.0"
 msgstr "活动线段顺序"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:89
-msgid "help.ActiveOrderRules.1"
-msgstr "活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。序号从下到上递增。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:16
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:26
 msgid "Active-sequence index of the first segment in the neighboring pair"
 msgstr "邻居对中第一条线段的活动序列索引"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:23
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:50
 msgid "active: active order; lower: neighbor index; segments: sweep segments; current: current event; queue: event queue; checked: checked pairs."
 msgstr "active：活动顺序；lower：邻居索引；segments：扫描线段；current：当前事件；queue：事件队列；checked：已检查对。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:152
-msgid "Add it to the incident segments for this event"
-msgstr "把它加入本次参与处理的线段中"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:97
-msgid "Add the intersection to the queue, preserving any existing event"
-msgstr "把交点加入待处理队列，已有事件则保留"
 
 #: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:32
 msgid "Adjacency argument"
 msgstr "相邻性论证"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:18
+msgid "Adjacent cover ids whose certificate is being updated"
+msgstr "正在更新证书的相邻覆盖段编号"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:78
 msgid "Advance boundary"
@@ -370,20 +680,22 @@ msgstr "推进红色标签所属的多边形"
 msgid "After break"
 msgstr "break 之后"
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(listSeparator)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:52
-msgid "After inserting {0}, this pair lies at the boundary of the inserted segments and becomes a new pair of neighbors to check."
-msgstr "加入 {0} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。"
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:55
+#~ msgid "After inserting {0}, this pair lies at the boundary of the inserted segments and becomes a new pair of neighbors to check."
+#~ msgstr "加入 {0} 后，这一对处在新插入线段的边界，成为需要检查的新邻居。"
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(listSeparator)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:53
-msgid "After removing {0}, the intervening segments are gone and the segments on either side become new neighbors."
-msgstr "退出 {0} 后，原来隔在中间的线段消失，两侧线段成为新邻居。"
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:81
+msgid "help.EventQueueRules.2"
+msgstr "预处理后，将覆盖区间端点和零长度输入加入队列。邻接证书仅加入严格未来交点；证书取消后，空候选桶立即删除。同一位置共用一个事件桶。当前事件从队列取出后单独显示。"
 
-#. placeholder {0}: neighborChange.subjects.map(id => `S${id}`).join(conjunction)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:54
-msgid "After the crossing segments {0} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors."
-msgstr "交叉的 {0} 换序后，这一对处在换序区间的外侧边界，成为新邻居。"
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:56
+#~ msgid "After removing {0}, the intervening segments are gone and the segments on either side become new neighbors."
+#~ msgstr "退出 {0} 后，原来隔在中间的线段消失，两侧线段成为新邻居。"
+
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:57
+#~ msgid "After the crossing segments {0} reorder, this pair lies at the outer boundary of the reordered range and becomes a new pair of neighbors."
+#~ msgstr "交叉的 {0} 换序后，这一对处在换序区间的外侧边界，成为新邻居。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:136
@@ -398,7 +710,7 @@ msgstr "经过这个交点后，内部关系决定后续应收集哪一条边界
 #~ msgid "Algorithm home"
 #~ msgstr "算法首页"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:44
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:45
 msgid "Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event."
 msgstr "算法小步 · 中间状态。代码执行边界、核心变量与当前画布来自同一执行时刻；同点分组仅是事件教学摘要。"
 
@@ -410,7 +722,7 @@ msgstr "转折位置对齐，通道等宽、间隔一致，让曲折边界形成
 msgid "All collinear"
 msgstr "全部共线"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:60
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:58
 msgid "All events have been processed; no further steps are needed."
 msgstr "全部事件已处理，无需再推进。"
 
@@ -446,7 +758,7 @@ msgid "An irregular pentagon and hexagon intersect in a nine-sided region with s
 msgstr "不规则五边形与六边形相交，形成包含 6 个新交点和 3 个原顶点的九边形区域。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:158
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:185
 msgid "An iteration element is available; enter the loop body"
 msgstr "本次已取得迭代元素，进入循环体"
 
@@ -456,7 +768,7 @@ msgid "Andrew monotone chain algorithm"
 msgstr "Andrew 单调链算法"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:30
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:57
 msgid "Append an element to the target sequence."
 msgstr "向当前目标序列追加一个元素。"
 
@@ -464,6 +776,27 @@ msgstr "向当前目标序列追加一个元素。"
 #: src/algorithms/segment-intersection/bo/learning/ExecutionSymbol.tsx:151
 msgid "Argument "
 msgstr "实参 "
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:33
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:34
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:35
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:36
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:37
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:38
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:39
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:40
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:41
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:42
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:43
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:44
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:45
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:46
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:47
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:48
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:49
+msgid "Arguments are the exact values shown at this real operation."
+msgstr "参数来自当前真实操作中显示的精确值。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:11
@@ -490,12 +823,12 @@ msgid "At x = 1/2, the intersection of y ranges [−1/3, 5/3] and [1/3, 7/3] is 
 msgstr "x = 1/2 上，y 范围 [−1/3, 5/3] 与 [1/3, 7/3] 的交集是 [1/3, 5/3]。唯一配对为 (1/2, 1/3) → (1/2, 5/3)，S0 在止界结束，S1 继续至 7/3。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:24
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:51
 msgid "Atomic geometry operation in the teaching code, corresponding to the actual exact Rust computation without expanding its formulas."
 msgstr "教学伪代码中的原子几何计算；对应 Rust 实际精确计算，不展开公式。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:33
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:60
 msgid "Attach zero-based indices to iterator elements."
 msgstr "为迭代元素附加从零开始的索引。"
 
@@ -576,11 +909,6 @@ msgid "Both boundaries have completed a circuit. Stop chasing."
 msgstr "两条边界都已走过一圈，结束追边。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:59
-msgid "help.OverlapRules.3"
-msgstr "重叠两端本来就是端点事件，无需为区间内部每个点创建事件；内部仍可能出现其他成员的端点或交叉。到止界时，实际结束的成员退出，未结束的成员继续，也可能同时结束。已记录的完整区间不缩短，不再为同一配对追加边界点；第三条短成员不会切碎其他配对的完整区间。"
-
-#. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:30
 msgid "Both satisfy y = x, and the common range of x intervals [0, 4] and [1, 3] is [1, 3]. The only pair intersects over (1, 1) → (3, 3); S0 continues after the shorter member S1 ends."
 msgstr "两者均满足 y = x，x 范围 [0, 4] 与 [1, 3] 的公共范围是 [1, 3]。唯一配对交集为 (1, 1) → (3, 3)，短成员 S1 结束后 S0 继续。"
@@ -605,8 +933,8 @@ msgid "Branch tips determine the hull of this forked point set. The shape uses t
 msgstr "分叉点集的外围枝尖决定凸包。图案使用固定有理数近似 √3/2 ≈ 433/500；凸包计算对提交的坐标保持精确。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:161
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:163
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:188
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:190
 msgid "break executed; exit the loop"
 msgstr "已执行 break，退出循环"
 
@@ -628,6 +956,11 @@ msgstr "调用表达式："
 #: src/algorithms/convex-polygon-intersection/PolygonLearning.tsx:95
 msgid "Cancel loading"
 msgstr "取消加载"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:46
+msgid "Cancel old certificates, update the incident block and schedule final adjacencies."
+msgstr "取消旧证书，更新事件参与块，再安排最终邻接证书。"
 
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:198
 msgid "Cancel waiting"
@@ -702,82 +1035,41 @@ msgid "Changed in this step; previous value: "
 msgstr "本步变化；之前值："
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:23
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:50
 msgid "Check actual neighbors, enqueue future intersections, and return a geometry candidate."
 msgstr "检查实际邻居，将未来交点加入事件队列并返回几何候选。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:146
-msgid "Check each currently active segment"
-msgstr "逐条检查当前活动线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:69
-msgid "Check each neighboring position that exists"
-msgstr "依次检查存在的相邻位置"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:37
 msgid "Check interior crossings, endpoint contacts, and coincident points along a complete overlap at x = 1/2."
 msgstr "在 x = 1/2 的完整重叠上，同时检查内部交叉、端点接触和重合点。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:51
-msgid "Check neighboring segments <0>{subjects}</0>."
-msgstr "检查相邻线段 <0>{subjects}</0>："
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:54
+#~ msgid "Check neighboring segments <0>{subjects}</0>."
+#~ msgstr "检查相邻线段 <0>{subjects}</0>："
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:126
-msgid "Check whether an active segment lies below the current point"
-msgstr "判断已有线段是否位于当前点下方"
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:45
+msgid "Check only final neighboring covers after the whole block update."
+msgstr "整块更新完成后，只检查最终相邻的覆盖段。"
+
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:53
+msgid "Check the neighboring coverage segments. Their original members at this position are <0>{subjects}</0>. This supporting-line test does not mark their original input pairs as checked."
+msgstr "检查相邻覆盖段。它们在当前位置的原始成员是 <0>{subjects}</0>。这次支撑直线求交不会把这些原始输入对标记为已检查。"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:64
 msgid "Check whether polygon {boundary} lies entirely inside or on polygon {otherBoundary}."
 msgstr "检查多边形 {boundary} 是否完全位于多边形 {otherBoundary} 内部或边界上。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:28
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:55
 msgid "Check whether the comparison result is equal."
 msgstr "判断比较结果是否相等。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:56
 msgid "Check whether the comparison result is less than."
 msgstr "判断比较结果是否为小于。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:164
-msgid "Check whether the current point is the segment end"
-msgstr "判断当前点是不是这条线段的终点"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:159
-msgid "Check whether the current point is the segment start"
-msgstr "判断当前点是不是这条线段的起点"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:95
-msgid "Check whether the intersection follows the current event"
-msgstr "判断交点是否排在当前事件之后"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:196
-msgid "Check whether the intersection has nonzero length"
-msgstr "判断交集是否有长度，是一段线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:189
-msgid "Check whether this event differs from the overlap start"
-msgstr "判断当前事件是否不是这段重叠的起点"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:106
-msgid "Check whether this segment extends beyond the current point"
-msgstr "判断这条线段是否还会继续向前延伸"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:150
-msgid "Check whether this segment passes through the current point"
-msgstr "判断这条线段是否经过当前点"
 
 #: src/app/App.tsx:20
 #~ msgid "Choose a case to inspect exact intersection points and complete overlap intervals."
@@ -804,17 +1096,12 @@ msgstr "问题选择"
 #~ msgstr "算法选择"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:157
-msgid "Classify each incident segment relative to the current point"
-msgstr "逐条判断参与线段与当前点的关系"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:143
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:76
 msgid "Classify incident segments"
 msgstr "参与线段分类"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:48
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:75
 msgid "Clone the current value."
 msgstr "复制当前值。"
 
@@ -838,7 +1125,7 @@ msgid "Closed segments touch at a shared endpoint."
 msgstr "闭线段在共同端点接触。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:83
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:110
 msgid "Closure on line {line}"
 msgstr "第 {line} 行闭包"
 
@@ -917,22 +1204,7 @@ msgid "Compare endpoint connections at bridge joints with interior crossings of 
 msgstr "比较桥梁节点的端点连接与每跨斜撑的内部交叉，观察不同位置的事件归组。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:185
-msgid "Compare slopes to determine whether overlap handling is needed"
-msgstr "比较两条线段的斜率，判断是否需要处理重叠"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:121
-msgid "Compare slopes, placing smaller slopes below larger ones"
-msgstr "比较斜率，斜率较小的排在下方"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:148
-msgid "Compare the segment height at the sweep line with the current point height"
-msgstr "比较线段在扫描线上的高度与当前点的高度"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:27
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:54
 msgid "Compare two values in the current expression."
 msgstr "按当前表达式比较两个值。"
 
@@ -942,7 +1214,7 @@ msgid "help.SamePointRules.3"
 msgstr "先比较 x，再比较 y；只有两个坐标都精确相等才归为同一个事件点。同一扫描坐标不等于所有线段共点。队列里的每个点单独处理，同点的全部参与者一起归组。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:38
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:65
 msgid "compare: the current ordering rule."
 msgstr "compare：当前排序规则。"
 
@@ -976,14 +1248,14 @@ msgid "Computational Geometry"
 msgstr "计算几何"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:26
-msgid "Compute the exact segment height at the given x coordinate."
-msgstr "精确计算线段在指定横坐标的高度。"
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:47
+msgid "Compute a cover intersection and keep a certificate only for a strictly future point."
+msgstr "计算覆盖段交点，仅为严格位于当前事件之后的点保留证书。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:76
-msgid "Compute the intersection candidate and schedule a future event"
-msgstr "计算这对线段的交点，并安排后续事件"
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:53
+msgid "Compute the exact segment height at the given x coordinate."
+msgstr "精确计算线段在指定横坐标的高度。"
 
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:48
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:82
@@ -1015,7 +1287,7 @@ msgstr "包含关系"
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:60
 msgid "help.OverlapRules.4"
-msgstr "包含、完全重复和反向重复均保留独立输入编号，每个配对分别取交集。重叠成员几何并列，列表位置用于辨认身份，不表示上下交换；多个配对的区间不合并为几何并集。这是预设教学案例，不是任意重叠输入的生产级实现保证。"
+msgstr "包含、完全相同及方向相反的重复输入均保留独立输入 ID，每个相交输入对产生一个完整交集。重叠成员在几何上并列，列表位置用于辨认身份，不是上下交换。覆盖区间为扫描而合并，但输出交集仍按原始输入对分别保留。"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:43
 #~ msgid "Containment check"
@@ -1026,7 +1298,12 @@ msgid "Containment checks"
 msgstr "包含检查阶段"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:161
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:49
+msgid "Continue checking the next adjacency of the completed block."
+msgstr "继续检查已更新块的下一条邻接边。"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:188
 msgid "continue executed; move to the next iteration"
 msgstr "已执行 continue，跳往下一次迭代"
 
@@ -1041,7 +1318,7 @@ msgid "help.LearningIntroduction.5"
 msgstr "统一约定：精确有理数决定交点与排序，像素近似只用于绘图。同 <0>x</0> 的不同事件按 <1>y</1> 依次处理；当前事件处理完成后只更新该位置的顺序，同 <2>x</2> 的其他位置保留各自处理进度。交叉处按紧邻事件右侧的顺序排列。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:44
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:71
 msgid "Convert the collection into an iterator that consumes its elements."
 msgstr "将当前集合转为消耗元素的迭代器。"
 
@@ -1089,7 +1366,7 @@ msgstr "凸多边形交集图形"
 #~ msgstr "凸多边形交集结果"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:13
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:23
 msgid "Coordinate restoration closure parameter, valid only during that invocation"
 msgstr "坐标还原闭包的参数，仅在该闭包调用期间有效"
 
@@ -1122,7 +1399,12 @@ msgid "Core variables"
 msgstr "核心变量"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:31
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:11
+msgid "Cover ids incident to the current event"
+msgstr "参与当前事件的覆盖段编号"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:58
 msgid "Create an empty sequence."
 msgstr "创建空序列。"
 
@@ -1135,8 +1417,13 @@ msgstr "当前 {index} · 已生成 0–{lastStep}"
 msgid "Current action"
 msgstr "本步动作"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:73
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:74
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:16
+msgid "Current closed coverage interval"
+msgstr "当前闭覆盖区间"
+
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:71
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:72
 #: src/algorithms/segment-intersection/bo/learning/LearningView.tsx:44
 msgid "Current event"
 msgstr "当前事件"
@@ -1171,7 +1458,7 @@ msgid "Current inside relation"
 msgstr "当前内外关系"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:11
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:21
 msgid "Current outer pairing index"
 msgstr "当前外层配对索引"
 
@@ -1197,11 +1484,6 @@ msgstr "Dave Mount · CMSC 754 Lecture 4：事件、活动顺序与相邻检测"
 #: src/algorithms/segment-intersection/bo/learning/ExecutionSymbol.tsx:122
 msgid "Decrease parent depth"
 msgstr "减少 parent 深度"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:58
-msgid "help.OverlapRules.2"
-msgstr "沿先 x、后 y 的扫描方向确定各自起终点，取较晚起点和较早终点，在重叠起界一次记录完整闭区间。这不是扫描线已经走过整段，而是根据已知端点精确确定完整交集。水平、斜向和竖直线都使用同一规则；竖直线按原坐标的高度比较，分数保持精确。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:33
@@ -1233,7 +1515,7 @@ msgid "Different intersections at the same sweep coordinate"
 msgstr "同扫描坐标不同交点"
 
 #. placeholder {0}: newlyScheduled.map((point, position) => <Fragment key={formatPoint(point)}> {position > 0 && <span>{listSeparator}</span>} <span className="learning-hover-item" {...eventProps(point)}>{pointName(point)}</span> </Fragment>)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:56
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:54
 msgid "Discover future intersections <0>{0}</0>: after checking the exact intersection of <1>{subjects}</1>, add them to the queue and wait until the sweep line arrives to record the results."
 msgstr "发现未来交点 <0>{0}</0>：检查 <1>{subjects}</1> 的精确交集后加入队列，等扫描线到达再记录结果。"
 
@@ -1304,6 +1586,11 @@ msgstr "重复坐标"
 msgid "help.SamePointRules.4"
 msgstr "事件处理中展示的是更新过程，不能当作完成状态。事件处理完成后，当前点的非竖直继续活动线段按紧邻右侧的上下顺序排列；竖直线则继续走向更高的待处理位置。同 x 的较低位置已处理，较高位置仍保留处理前顺序。因此此时的列表不是整条扫描线统一右移后的顺序。"
 
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:58
+msgid "help.OverlapRules.2"
+msgstr "预处理时，对每个相交的同线输入对取较晚起点和较早终点，立即记录完整闭交集，此时尚无扫描位置。已知端点能精确确定完整区间，不是扫描线已经走过整段。水平、斜向和竖直线段使用相同规则，有理坐标保持精确。"
+
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:56
 msgid "Each convex polygon stays in the left half-plane of each directed boundary edge. These parallel edges separate those half-planes, leaving no common point."
 msgstr "凸多边形位于每条逆时针有向边的左侧半平面内。这两条平行边使两个多边形分处互不相交的半平面，因此不存在公共点。"
@@ -1345,12 +1632,17 @@ msgid "Eight radial spokes connect two octagonal rings; every web junction consi
 msgstr "八条放射骨架连接两层八边形网环，每个网格连接处都是线段端点。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:118
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:122
 msgid "Element of {expression} selected by the current index"
 msgstr "{expression} 中由当前索引选中的元素"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:106
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:119
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:42
+msgid "Emit cross-line member products and point pairs without repeating same-line pairs."
+msgstr "输出异线成员的笛卡尔积和点输入对，不重复枚举同线对。"
+
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:104
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:117
 msgid "Empty"
 msgstr "空"
 
@@ -1379,22 +1671,17 @@ msgid "End of module"
 msgstr "模块结束"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:14
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:24
 msgid "End of the candidate overlap interval"
 msgstr "重叠候选区间的终点"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:80
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:84
 msgid "End of the original segment"
 msgstr "原始线段的终点"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:92
-msgid "End this check if there is no candidate"
-msgstr "没有候选交点，结束这次检查"
-
 #. placeholder {0}: step.ends.length ? inputReferences(step.ends) : translate(msg`None`)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:90
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:88
 msgid "Ending: {0}"
 msgstr "结束：{0}"
 
@@ -1413,11 +1700,11 @@ msgid "Enter"
 msgstr "进入"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:158
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:185
 msgid "Enter the else branch"
 msgstr "本次进入 else 分支"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:41
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:42
 msgid "Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event."
 msgstr "进入取事件模块，尚未执行第一条核心语句。当前事件与画布保留上一步状态；下一小步将取出队首事件。"
 
@@ -1425,7 +1712,7 @@ msgstr "进入取事件模块，尚未执行第一条核心语句。当前事件
 msgid "Equilateral triangle"
 msgstr "等边三角形"
 
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:53
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:52
 msgid "Event complete"
 msgstr "事件处理完成"
 
@@ -1437,13 +1724,13 @@ msgstr "事件高度状态：当前事件上侧（Δ）"
 msgid "Event height: below the current event (Δ)"
 msgstr "事件高度状态：当前事件下侧（Δ）"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
-msgid "Event queue"
-msgstr "事件队列"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:79
 msgid "help.EventQueueRules.0"
+msgstr "事件队列"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:30
+msgid "Event queue"
 msgstr "事件队列"
 
 #. js-lingui-explicit-id
@@ -1481,12 +1768,7 @@ msgid "Exact fractions"
 msgstr "精确分数"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:9
-msgid "Exact height comparisons cached by segment index. The classification loop updates entries individually; unvisited entries retain earlier values and are not yet updated for this event"
-msgstr "按线段编号保存的精确高度比较缓存；分类循环逐项刷新，尚未访问的项保留先前值，不能视为全部已按当前事件更新"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:78
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:82
 msgid "Exact intercept of the sweep segment"
 msgstr "扫描线段的精确截距"
 
@@ -1499,19 +1781,14 @@ msgstr "精确有理数坐标在有序凸包结果中仍以分数显示。"
 #~ msgstr "精确线段求交与逐步教学。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:78
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:17
+msgid "Exact slope and intercept of the support line"
+msgstr "支撑直线的精确斜率与截距"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:82
 msgid "Exact slope of the sweep segment"
 msgstr "扫描线段的精确斜率"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:169
-msgid "Exclude both endpoints to check whether the point lies in the segment interior"
-msgstr "排除两端，判断当前点是否在线段内部"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:116
-msgid "Exclude segments that end at the current point"
-msgstr "排除在当前点结束的线段"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:132
@@ -1519,7 +1796,7 @@ msgid "Execution boundary: {boundary}"
 msgstr "执行边界：{boundary}"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:163
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:190
 msgid "Execution completed in this step"
 msgstr "本次执行已完成"
 
@@ -1527,11 +1804,6 @@ msgstr "本次执行已完成"
 #: src/algorithms/segment-intersection/bo/learning/trace.ts:125
 msgid "Execution trace transfer interrupted"
 msgstr "教学轨迹传输中断"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:139
-msgid "Exit the loop when no pending event remains"
-msgstr "没有待处理的事件，结束循环"
 
 #: src/algorithms/segment-intersection/bo/learning/LearningDock.tsx:19
 msgid "Expand left sidebar"
@@ -1542,12 +1814,7 @@ msgid "Expand right sidebar"
 msgstr "展开右侧辅助栏"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:137
-msgid "Extract the event position and contents, or enter the exit branch if no event remains"
-msgstr "取出事件的位置和内容；没有事件时进入结束分支"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:118
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:122
 msgid "Field {field} of {expression}"
 msgstr "{expression} 的字段 {field}"
 
@@ -1562,14 +1829,9 @@ msgid "Find all three segments passing through the point, observe the whole grou
 msgstr "找全同点的三条穿过线段，观察整组换序，区分一个交点和三个相交配对。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:64
-msgid "Find the neighboring positions to check on either side of the insertion"
-msgstr "找出插入位置两侧需要检查的相邻位置"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:124
-msgid "Find where to insert this group into the active set"
-msgstr "在活动集合中找到这组线段的插入位置"
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:39
+msgid "Find the first active cover at this height and visit only the contiguous equal-height block."
+msgstr "查找第一个达到当前高度的活动覆盖段，只遍历连续的等高块。"
 
 #: src/geometry/GeometryRotationControls.tsx:60
 msgid "Fine adjustment · hold to rotate"
@@ -1589,8 +1851,12 @@ msgstr "先 <0>x</0>，后 <1>y</1>；队首先处理。"
 msgid "First crossing: begin counting boundary circuits here and update which boundary is inside."
 msgstr "首次交叉：从此处重新计数边界圈数，并更新哪条边界位于内部。"
 
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:38
+msgid "First group nonzero inputs by their exact support line. Report same-line intersections during preparation, merge closed coverage intervals, and build member indexes. Then queue coverage endpoints and point inputs for the sweep."
+msgstr "先按精确支撑直线对非零输入分组，在预处理中报告同线交集、合并闭覆盖区间并建立成员索引，再将覆盖段端点和点输入加入扫描队列。"
+
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:11
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:21
 msgid "First segment in the current pair (an index in the sweep loop)"
 msgstr "当前配对的第一条线段（扫描循环中使用编号）"
 
@@ -1599,7 +1865,7 @@ msgstr "当前配对的第一条线段（扫描循环中使用编号）"
 #~ msgstr "固定点集与精确凸包结果。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:45
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:72
 msgid "Flatten nested iterator values; None in an Option produces no element."
 msgstr "展开嵌套迭代值；Option 中的 None 不产生元素。"
 
@@ -1615,11 +1881,6 @@ msgstr "当前沿 A 位于 B 内部的边界段前进"
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:87
 msgid "Following B inside A"
 msgstr "当前沿 B 位于 A 内部的边界段前进"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:207
-msgid "For different slopes, the intersection is the current event point"
-msgstr "斜率不同时，交集就是当前事件点"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:33
 msgid "For the checked edges, B turns left from A (or is parallel), and B's endpoint is not left of A. Advance B."
@@ -1682,27 +1943,22 @@ msgstr "轨迹生成中"
 msgid "Generating trace · total unknown"
 msgstr "正在生成轨迹 · 总步数未知"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:80
-msgid "Geometry calls and queue insertion"
-msgstr "几何调用与入队"
-
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:79
 msgid "Geometry view"
 msgstr "几何视图"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:49
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:76
 msgid "Get the entry value, inserting a default when the key is absent."
 msgstr "取得条目值；键不存在时插入默认值。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:47
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:74
 msgid "Get the map entry for the specified key."
 msgstr "取得指定键对应的映射条目。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:46
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:73
 msgid "Get the specified range, returning None when out of bounds."
 msgstr "取得指定范围；越界时返回 None。"
 
@@ -1729,6 +1985,12 @@ msgstr "把零长度点与三条穿过者一起归组，区分一个位置和六
 #: src/algorithms/segment-intersection/cases/presets.ts:16
 msgid "Group segments starting and ending at the same point, record the contact, then update the active set."
 msgstr "在同一点归组开始和结束的线段，先记录接触，再更新活动集合。"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:33
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:34
+msgid "Group support lines, report same-line intersections, merge coverage and index original members."
+msgstr "按支撑直线分组，报告同线交集，合并覆盖并为原始成员建立索引。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:20
@@ -1788,6 +2050,11 @@ msgid "help.OverlapRules.1"
 msgstr "共线线段的公共范围若具有非零长度，两端之间就有无穷多个公共点；普通 BO 的孤立点事件前提在这里不成立，不是上下交换就能处理重叠。若仅共享一个闭端点，交集仍是点。"
 
 #. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:43
+msgid "Immediately delete certificates of the old incident adjacencies and empty event buckets."
+msgstr "立即删除旧参与邻接边的证书及失去全部来源的事件桶。"
+
+#. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:68
 msgid "help.NeighborRules.1"
 msgstr "在一般位置下，考虑即将发生的下一处交叉：只有两条线段在内部相交，没有第三条线段同时经过该点，也没有端点与交叉重合。"
@@ -1802,8 +2069,8 @@ msgid "In the first span, S2 satisfies y = x and S3 satisfies y = 4 − x, cross
 msgstr "首跨 S2 满足 y = x，S3 满足 y = 4 − x，内部交于 (2, 2)；其余三跨交叉位于 (6, 2)、(10, 2)、(14, 2)。S0、S4 在共同端点 (4, 0) 连接。共 10 个结构节点和 4 个跨内交点；每根共享杆仅生成一次。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:82
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:114
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:109
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:141
 msgid "Incident segment loop"
 msgstr "参与线段循环"
 
@@ -1813,27 +2080,22 @@ msgid "Increase parent depth"
 msgstr "增加 parent 深度"
 
 #. placeholder {0}: preset.learning && translate(preset.learning.verification)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:68
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:66
 msgid "Independent mathematical check: {0}"
 msgstr "独立数学核对：{0}"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:9
-msgid "Indices of segments incident to the current event point"
-msgstr "经过当前事件点的线段编号"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:81
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:85
 msgid "Indices of segments starting at this event point"
 msgstr "在此事件点开始的线段编号"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:8
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:10
 msgid "Indices of the currently active segments"
 msgstr "当前活动线段的编号序列"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:17
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:27
 msgid "Indices of the neighboring segments being checked"
 msgstr "本次检查的相邻线段编号"
 
@@ -1870,14 +2132,9 @@ msgstr "输入 S{index}，已选中"
 msgid "Input vertices"
 msgstr "输入顶点"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:46
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
 msgid "Insert <0>{subjects}</0>: the sweep line has reached the start, and these inputs now participate in the active order."
 msgstr "加入 <0>{subjects}</0>：扫描线到达其起点，此后它参与活动顺序。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:131
-msgid "Insert the sorted segments back into the active set"
-msgstr "把排好序的线段插回活动集合"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:71
@@ -1918,7 +2175,7 @@ msgid "geometry.selectedIntersection"
 msgstr "交集 {0}，已选中"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:18
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:28
 msgid "Intersection candidate returned by the completed neighbor call"
 msgstr "已完成的邻居调用返回的交点候选"
 
@@ -1927,12 +2184,12 @@ msgid "Intersection coordinates"
 msgstr "交集坐标"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:14
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:24
 msgid "Intersection of the current pair in original coordinates"
 msgstr "当前线段对的原坐标交集"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:14
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:24
 msgid "Intersections recorded up to the current step"
 msgstr "截至当前小步已记录的交集"
 
@@ -2004,21 +2261,16 @@ msgid "Jump to step"
 msgstr "跳转步骤"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:37
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:48
+msgid "Keep a certificate only when its exact position is strictly after the current event."
+msgstr "仅当精确位置严格晚于当前事件时保留证书。"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:64
 msgid "Keep elements that satisfy the predicate."
 msgstr "保留满足条件的元素。"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:114
-msgid "Keep incident segments that must remain in the active set"
-msgstr "从参与线段中选出还需要留在活动集合里的线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:111
-msgid "Keep segments that do not pass through the current point"
-msgstr "保留不经过当前点的线段"
-
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:111
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:109
 msgid "Keeping the order from before this event"
 msgstr "保留该事件处理前顺序"
 
@@ -2039,9 +2291,9 @@ msgid "Learn step by step"
 msgstr "逐步学习"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:111
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:62
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:60
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:21
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:53
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:52
 msgid "Learning complete"
 msgstr "学习完成"
 
@@ -2064,7 +2316,7 @@ msgstr "学习目标、术语与扫描约定"
 msgid "help.LearningReferences.label"
 msgstr "学习参考"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:61
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:59
 msgid "Learning results"
 msgstr "学习结果"
 
@@ -2074,7 +2326,7 @@ msgid "Learning step out of range: valid steps for this case are 0–{0}."
 msgstr "教学步骤超出范围：此案例的有效步骤为 0–{0}。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:77
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:81
 msgid "Left endpoint of the sweep segment"
 msgstr "扫描线段的左端点"
 
@@ -2129,7 +2381,7 @@ msgid "Local variable"
 msgstr "局部变量"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:39
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:66
 msgid "Locate the boundary of an ordered partition."
 msgstr "定位有序分区的边界。"
 
@@ -2137,11 +2389,6 @@ msgstr "定位有序分区的边界。"
 #: src/algorithms/segment-intersection/cases/presets.ts:35
 msgid "Long interval and a short member"
 msgstr "长区间与短成员"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:88
-msgid "Look up both segments by their indices"
-msgstr "根据编号取出两条线段"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:133
 msgid "Lower chain scan complete."
@@ -2172,6 +2419,12 @@ msgid "Many boundary vertices"
 msgstr "多顶点边界"
 
 #. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:76
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:12
+msgid "Maximal closed coverage intervals, separate from original input ids"
+msgstr "最大的闭覆盖区间，其编号不同于原始输入编号"
+
+#. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/artPatterns.ts:61
 msgid "Meander window lattice"
 msgstr "回纹窗棂"
@@ -2179,6 +2432,11 @@ msgstr "回纹窗棂"
 #: src/algorithms/convex-hull/HullLearning.tsx:128
 msgid "Merge equal coordinates, retaining the first input identity. Duplicate positions do not add hull vertices."
 msgstr "合并相同坐标，保留最先输入的点身份。重复位置不增加凸包顶点。"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:37
+msgid "Merge touching closed intervals into maximal coverage without gaps."
+msgstr "将相接的闭区间合并为没有空隙的最大覆盖区间。"
 
 #: src/algorithms/triangulation/TriangulationPage.tsx:27
 #: src/app/AlgorithmHome.tsx:51
@@ -2194,14 +2452,9 @@ msgid "Multiple notches"
 msgstr "多个凹口"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:61
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:91
 msgid "Neighbor checks"
 msgstr "邻居检查"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:18
-msgid "Neighboring pairs already checked for this event"
-msgstr "本事件已经检查的邻居对"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:13
@@ -2213,11 +2466,11 @@ msgstr "交叉后成为邻居"
 msgid "Neighbors after removal"
 msgstr "退出后成为邻居"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:43
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:44
 msgid "next is None: the event queue is empty and the sweep loop exits. Confirming the final results."
 msgstr "next 为 None，事件队列已空，退出扫描循环。正在确认最终结果。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:43
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:44
 msgid "next is None: the event queue is empty and the sweep loop exits. Learning is complete."
 msgstr "next 为 None，事件队列已空，退出扫描循环。学习完成。"
 
@@ -2231,12 +2484,12 @@ msgstr "下一个大步"
 msgid "Next step"
 msgstr "下一步"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:46
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
 msgid "Next, check whether the new neighbors intersect in the future."
 msgstr "接下来检查新邻居是否会在未来相交。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:31
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:58
 msgid "No arguments."
 msgstr "无参数。"
 
@@ -2249,11 +2502,11 @@ msgstr "本步无可比较的值变化"
 msgid "No edge contact"
 msgstr "两边不相交"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:82
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:80
 msgid "No event processed yet"
 msgstr "尚未处理事件"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:82
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:80
 msgid "No events"
 msgstr "没有事件"
 
@@ -2285,7 +2538,7 @@ msgid "No intersection"
 msgstr "无交点"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:159
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:186
 msgid "No next element; the loop has ended"
 msgstr "本次没有下一个元素，循环已结束"
 
@@ -2294,9 +2547,9 @@ msgstr "本次没有下一个元素，循环已结束"
 msgid "No points"
 msgstr "无点"
 
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:87
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:88
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:89
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:90
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:91
 msgid "None"
 msgstr "无"
 
@@ -2313,7 +2566,7 @@ msgid "Not established"
 msgstr "尚未确定"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:153
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:180
 msgid "Not executed in this step"
 msgstr "本次尚未执行"
 
@@ -2323,7 +2576,7 @@ msgid "help.NeighborRules.3"
 msgstr "再往前看最近一次事件：两个事件之间没有端点或交叉，活动线段的成员和上下顺序不变。所以这对线段在上次事件处理后就已经相邻；在产生这一邻接关系时检查并安排交点，就能让扫描线及时停下。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:15
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:25
 msgid "Number of segments to insert in this event"
 msgstr "本次需要插入的线段数量"
 
@@ -2428,11 +2681,11 @@ msgstr "反向共线边发生接触，公共点或线段就是完整交集，结
 msgid "Orange: intersections"
 msgstr "橙色：交集"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:111
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:109
 msgid "Order after the current teaching action; the event is still in progress"
 msgstr "当前教学动作后的顺序，事件尚未处理完成"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:111
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:109
 msgid "Order after the processed event"
 msgstr "当前已处理事件之后的顺序"
 
@@ -2446,7 +2699,7 @@ msgid "Ordinary crossing"
 msgstr "普通交叉"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:84
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:111
 msgid "original closure"
 msgstr "original 闭包"
 
@@ -2466,7 +2719,33 @@ msgid "Original input explanation"
 msgstr "原始输入说明"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:125
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:14
+msgid "Original input ids on this support line"
+msgstr "当前支撑直线上的原始输入编号"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:13
+msgid "Original input ids recovered by closed interval queries"
+msgstr "闭区间查询恢复的原始输入编号"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:15
+msgid "Original input ids stored in this centered interval index"
+msgstr "当前中心区间索引保存的原始输入编号"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:7
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:28
+msgid "Original input pairs actually checked at this operation"
+msgstr "当前操作实际检查的原始输入对"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:19
+msgid "Original input projection before, at, or after the event"
+msgstr "事件前、事件处或事件后的原始输入投影"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:152
 msgid "Original input segments in original coordinates"
 msgstr "原始输入线段，使用原坐标"
 
@@ -2477,7 +2756,7 @@ msgid "Original inputs"
 msgstr "原始输入"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:16
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:26
 msgid "Outer boundaries of the insertion range that need checking"
 msgstr "需检查的插入区间外侧边界"
 
@@ -2507,7 +2786,7 @@ msgstr "重叠区间 {0} · {1}"
 msgid "Overlap at x = 1/2 has complete interval endpoints y = 1/3 and 5/3."
 msgstr "在 x = 1/2 处重叠，完整区间端点为 y = 1/3 与 5/3。"
 
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:43
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
 msgid "Overlap end boundary"
 msgstr "重叠止界"
 
@@ -2515,16 +2794,16 @@ msgstr "重叠止界"
 msgid "Overlap interval"
 msgstr "重叠区间"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
-msgid "Overlap rules"
-msgstr "重叠处理规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:55
 msgid "help.OverlapRules.label"
 msgstr "重叠处理规则"
 
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:42
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:53
+msgid "Overlap rules"
+msgstr "重叠处理规则"
+
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:41
 msgid "Overlap start boundary"
 msgstr "重叠起界"
 
@@ -2538,7 +2817,7 @@ msgstr "重叠、交叉与重合点"
 msgid "help.ActiveOrderRules.2"
 msgstr "重叠成员在同一高度并列；列表位置只用于逐个辨认，不表示它们之间存在上下差别。图中序号也指向同一几何位置。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:49
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:50
 msgid "Overlapping members coincide throughout their shared range. The list preserves each input's identity and does not indicate that they swap vertically. Other events inside the range do not split the complete recorded interval."
 msgstr "重叠成员在公共范围内几何并列，列表保留各自输入身份，不表示彼此上下交换。内部的其他事件不切碎已记录的完整区间。"
 
@@ -2547,7 +2826,7 @@ msgid "Overlapping polygons"
 msgstr "普通相交"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:34
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:61
 msgid "p: the sweep-coordinate point for this call."
 msgstr "p：本次调用的扫描坐标点。"
 
@@ -2556,14 +2835,11 @@ msgid "Page navigation"
 msgstr "页面导航"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:175
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:75
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:85
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:96
 msgid "Pair and record"
 msgstr "配对与记录"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:178
-msgid "Pair only with later segments to avoid recording the same pair twice"
-msgstr "只与后面的线段配对，避免重复记录同一对"
 
 #: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:20
 #: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:20
@@ -2604,12 +2880,12 @@ msgstr "parent 显示深度"
 msgid "Partial overlap"
 msgstr "部分重叠"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:92
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:90
 msgid "Participants at this point appear after taking an event."
 msgstr "取出事件后显示同点参与者。"
 
 #. placeholder {0}: step.passes.length ? inputReferences(step.passes) : translate(msg`None`)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:91
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:89
 msgid "Passing: {0}"
 msgstr "穿过：{0}"
 
@@ -2620,18 +2896,18 @@ msgstr "穿过：{0}"
 msgid "geometry.pendingEvent"
 msgstr "待处理事件 {0}：{1}"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:95
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:96
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:93
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:94
 #: src/algorithms/segment-intersection/bo/learning/LearningView.tsx:45
 msgid "Pending event queue"
 msgstr "待处理事件队列"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:6
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:8
 msgid "Pending events ordered by sweep coordinates"
 msgstr "按扫描坐标排序的待处理事件队列"
 
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:46
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:45
 msgid "Pending intersection"
 msgstr "待处理交点"
 
@@ -2641,8 +2917,8 @@ msgid "Penrose tiling"
 msgstr "彭罗斯拼贴"
 
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:39
-msgid "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
-msgstr "先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步进入取事件模块。"
+#~ msgid "Place all endpoints in the event queue, keeping one event per point. Endpoint contacts are therefore already queued, but intersections are recorded only when that point is processed; undiscovered interior intersections are not added in advance. The active order is empty. Choose Next step to enter the event retrieval module."
+#~ msgstr "先把所有端点放入事件队列，同一点只保留一个事件。端点接触的位置因此已在队列中，但交集要到处理该点时才记录；其他尚未发现的内部交点不预先加入。活动顺序为空，点击下一步进入取事件模块。"
 
 #. placeholder {0}: computation.message
 #: src/algorithms/convex-hull/ConvexHullPage.tsx:49
@@ -2689,12 +2965,12 @@ msgid "Point main arrow up"
 msgstr "一键朝上"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:75
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:79
 msgid "Point x coordinate"
 msgstr "点的横坐标"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:75
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:79
 msgid "Point y coordinate"
 msgstr "点的纵坐标"
 
@@ -2742,34 +3018,23 @@ msgid "Position in ordered points"
 msgstr "点列位置"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:15
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:25
 msgid "Position where new active segments enter the active sequence"
 msgstr "新活动线段插入到活动序列的位置"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:39
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:66
 msgid "predicate: the current partition condition."
 msgstr "predicate：当前分区条件。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:37
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:64
 msgid "predicate: the retention condition; self: the sequence to the left of the call."
 msgstr "predicate：保留条件；self：调用点左侧的序列。"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:155
-msgid "Prepare separate lists for starting, ending, and passing segments"
-msgstr "准备分别记录在此开始、结束和从中间经过的线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:180
-msgid "Prepare to convert sweep coordinates back to input coordinates"
-msgstr "准备把扫描坐标还原为输入时的坐标"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:62
-msgid "Prepare to record the segment pairs checked in this event"
-msgstr "准备记录本轮检查过的线段对"
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:39
+msgid "Preparing support lines and coverage: there is no current sweep position. Any results already shown were computed during this preparation."
+msgstr "正在预处理支撑直线与覆盖并集，此时还没有扫描位置。已显示的结果是在当前预处理阶段实际算出的。"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:64
 msgid "Preprocessing"
@@ -2810,7 +3075,7 @@ msgstr "沿固定 x 的不同高度处理分数边界，区分完整区间与当
 msgid "Process S0 upward along x = 0, observing two interior crossings and contact at the top until the entire vertical segment leaves."
 msgstr "沿 x = 0 从下向上处理 S0，依次观察两处内部交叉和顶端接触，直到整条竖直线退出。"
 
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:53
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:52
 msgid "Processing event"
 msgstr "事件处理中"
 
@@ -2823,6 +3088,17 @@ msgid "Pushed onto the current chain. These are candidates and may be popped lat
 msgstr "入栈到当前链。链中的点是候选点，后续仍可能被弹出。"
 
 #. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:40
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:41
+msgid "Query each incident support line for original inputs containing this exact position."
+msgstr "查询每条参与支撑直线，恢复包含当前精确位置的原始输入。"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:35
+msgid "Queue coverage endpoints and zero-length inputs, merging sources at equal positions."
+msgstr "将覆盖段端点和零长度输入入队，合并位置相同的来源。"
+
+#. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:134
 msgid "Queue empty; exit the loop"
 msgstr "队列为空，退出循环"
@@ -2832,12 +3108,16 @@ msgstr "队列为空，退出循环"
 msgid "Queue head removed; current event not matched or bound yet · intermediate state"
 msgstr "已取出队首；尚未匹配并绑定当前事件 · 中间状态"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:42
-msgid "queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state."
-msgstr "已执行 queue.pop_first()，返回值保存在 next 中。尚未匹配和绑定 point、event，所以画布仍保留上一步位置。这是模块中间状态。"
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:44
+#~ msgid "queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state."
+#~ msgstr "已执行 queue.pop_first()，返回值保存在 next 中。尚未匹配和绑定 point、event，所以画布仍保留上一步位置。这是模块中间状态。"
+
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:43
+msgid "queue.pop() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state."
+msgstr "queue.pop() 已执行，返回值保存在 next 中。point 和 event 尚未匹配绑定，因此绘图保留之前的位置。这是模块内部的中间状态。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:41
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:68
 msgid "range: the range to replace; replace_with: the new elements."
 msgstr "range：替换范围；replace_with：新元素。"
 
@@ -2846,11 +3126,11 @@ msgid "Read by topic, then close to continue your current task."
 msgstr "按主题阅读，关闭后继续当前操作。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:40
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:67
 msgid "Read the sequence length."
 msgstr "读取序列长度。"
 
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:53
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:52
 msgid "Ready to start"
 msgstr "准备开始"
 
@@ -2860,12 +3140,12 @@ msgid "Received a step after the execution trace completed"
 msgstr "教学轨迹完成后仍收到步骤"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:49
 msgid "Record <0>{0}</0>: the participating segments <1>{subjects}</1> cross here."
 msgstr "记录 <0>{0}</0>：参与线段 <1>{subjects}</1> 在这里交叉。"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:49
 msgid "Record <0>{0}</0>: the participating segments <1>{subjects}</1> touch here. Closed segments include their endpoints, so this intersection counts regardless of the approach direction."
 msgstr "记录 <0>{0}</0>：参与线段 <1>{subjects}</1> 在这里接触。闭线段包含端点，从哪一侧接近都不能忽略这个交集。"
 
@@ -2874,45 +3154,24 @@ msgstr "记录 <0>{0}</0>：参与线段 <1>{subjects}</1> 在这里接触。闭
 msgid "Record complete intervals pair by pair in a group; observe that events of an interior short member do not change the long pair."
 msgstr "逐对记录多成员的完整区间，观察内部短成员的事件不改变长配对。"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:129
-msgid "Record how many segments will be inserted"
-msgstr "记下本次要插入的线段数量"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:191
-msgid "Record only at the overlap start; skip this pair here"
-msgstr "只在重叠起点记录一次，跳过当前线段对"
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:51
+msgid "Record the complete intersection of {subjects} now. This same-line pair will not be enumerated again by the sweep."
+msgstr "现在记录 {subjects} 的完整交集。扫描阶段不会再次枚举这个同线输入对。"
 
 #. placeholder {0}: formatGeometry(recordedOverlap.geometry)
 #. placeholder {1}: inputReferences(recordedOverlap.segments, ' × ')
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:49
 msgid "Record the overlap interval <0>{0}</0>: the participating segments <1>{1}</1> overlap from the current, later start to the earlier end. Take the shared range of the two closed intervals, including both endpoints and every point between them, rather than only the current endpoint. The complete intersection follows from the known endpoints; the sweep line has not traversed the whole interval. The orange segment and its two endpoints mark the full intersection. The active order has not changed; membership changes follow after all pairs at this point are recorded."
 msgstr "记录重叠区间 <0>{0}</0>：参与线段 <1>{1}</1> 从当前较晚起点开始重合，到较早终点为止。取两个闭区间的公共范围，包含两端及其间全部点，不是只记录当前端点。这是根据已知端点确定完整交集，并非扫描线已走完整段。橙色线段和两个端点标出完整交集；活动顺序尚未更新，同点配对全部记录后再处理成员变化。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:166
-msgid "Record the segment as ending here"
-msgstr "记入在此结束的线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:171
-msgid "Record the segment as passing through this point"
-msgstr "记入从中间经过当前点的线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:161
-msgid "Record the segment as starting here"
-msgstr "记入在此开始的线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:86
-msgid "Record the segment pair being checked"
-msgstr "记下本次检查的线段对"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:94
 #~ msgid "Recorded steps"
 #~ msgstr "已记录步数"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:81
+msgid "Recover original members"
+msgstr "恢复原始输入成员"
 
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:217
 msgid "Recovery navigation"
@@ -2931,19 +3190,19 @@ msgstr "参考资料"
 msgid "Regular hexagon"
 msgstr "正六边形"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
 msgid "Remove <0>{subjects}</0>: the sweep line has reached the end and will no longer intersect these inputs; check for new neighbors after removal."
 msgstr "退出 <0>{subjects}</0>：扫描线到达其终点，后续不再与它相交；检查删除后是否出现新邻居。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:25
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:52
 msgid "Remove and return the earliest event in the queue."
 msgstr "移除并返回队列中最早的事件。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:104
-msgid "Remove segments that end at the current point from the active set"
-msgstr "从活动集合中移除在当前点结束的线段"
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:44
+msgid "Remove the entire incident block in left order, then insert survivors in right order."
+msgstr "按事件左侧顺序删除整个参与块，再按右侧顺序插入仍存活的覆盖段。"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:134
 msgid "Remove the last lower-chain endpoint to avoid duplication. This endpoint remains in the final hull via the upper chain."
@@ -2954,7 +3213,7 @@ msgid "Remove the last upper-chain endpoint to avoid duplication. This endpoint 
 msgstr "移除上链末尾端点以消除重复。该端点仍通过下链保留在最终凸包中。"
 
 #. placeholder {0}: inputReferences(step.active, ' → ')
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:50
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:52
 msgid "Reorder to <0>{0}</0>: nonvertical participants of this event are ordered bottom to top immediately to its right. Vertical participants move above those passing through this point and continue upward, then new neighbors are checked. Other event points with the same x retain their own processing progress."
 msgstr "换序为 <0>{0}</0>：本事件非竖直参与者按紧邻事件右侧从下到上的顺序排列，竖直参与者移到本点穿过者上方，继续向更高处处理，再检查新邻居。同 x 的其他事件点保留各自处理进度。"
 
@@ -2963,7 +3222,7 @@ msgid "Repeated inputs keep their identities without adding hull vertices."
 msgstr "重复输入保留各自身份，不增加凸包顶点。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:41
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:68
 msgid "Replace elements in the specified range."
 msgstr "替换指定范围中的元素。"
 
@@ -3008,58 +3267,33 @@ msgstr "重新开始"
 msgid "Restart controls"
 msgstr "重启"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:198
-msgid "Restore both endpoints to produce an overlap result"
-msgstr "还原两端坐标，生成重叠线段的结果"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:203
-msgid "Restore the contact point to produce a point result"
-msgstr "还原接触点坐标，生成交点结果"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:209
-msgid "Restore the current point to produce a point result"
-msgstr "还原当前点坐标，生成交点结果"
-
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:74
 #: src/algorithms/segment-intersection/bo/BoPages.tsx:77
 msgid "Results"
 msgstr "计算结果"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:85
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:112
 msgid "retain closure"
 msgstr "retain 闭包"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:162
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:189
 msgid "return executed; the function has returned"
 msgstr "已执行 return，函数已返回"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:83
-msgid "Return no candidate if fewer than two segments remain"
-msgstr "不足两条线段，返回无候选交点"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:100
-msgid "Return the intersection candidate found by this check"
-msgstr "返回本次找到的候选交点"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:36
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:63
 msgid "Return the larger of two values."
 msgstr "返回两个值中的较大者。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:35
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:62
 msgid "Return the smaller of two values."
 msgstr "返回两个值中的较小者。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:19
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
 msgid "Return value already produced by the current call"
 msgstr "当前调用已经产生的返回值"
 
@@ -3075,7 +3309,7 @@ msgid "Return value: "
 msgstr "返回值："
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:77
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:81
 msgid "Right endpoint of the sweep segment"
 msgstr "扫描线段的右端点"
 
@@ -3107,15 +3341,15 @@ msgid "Rotate"
 msgstr "拖动旋转"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:43
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:70
 msgid "Run the closure and return its result when the condition is true; otherwise return None."
 msgstr "条件为真时执行闭包并返回其结果，否则返回 None。"
 
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:39
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:38
 msgid "S{id} end"
 msgstr "S{id} 终点"
 
-#: src/algorithms/segment-intersection/bo/learning/learningState.ts:38
+#: src/algorithms/segment-intersection/bo/learning/learningState.ts:37
 msgid "S{id} start"
 msgstr "S{id} 起点"
 
@@ -3231,13 +3465,13 @@ msgstr "S1 从 S0 内部的 (2, 0) 向右上方出发。"
 msgid "S5 runs from (0, 0) to (0, 8), and S6 from (0, 8) to (8, 8), sharing endpoint (0, 8). S4 has y = 0, x ∈ [−2, 34], and touches S5 at (0, 0). Each of the three meanders has 7 corners and 1 crossbar contact; with the 4 frame corners and 2 contacts between crossbar and frame, there are 30 distinct positions. There are no interior crossings or overlaps."
 msgstr "S5 从 (0, 0) 到 (0, 8)，S6 从 (0, 8) 到 (8, 8)，公共端点为 (0, 8)。S4 的 y = 0、x ∈ [−2, 34]，与 S5 在 (0, 0) 接触。三组回纹各有 7 处转角和 1 处横梁接触，另有窗框 4 角及横梁与窗框的 2 处接触，共 30 个不同位置；没有内部穿越或重叠。"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
-msgid "Same-point and tie rules"
-msgstr "同点与并列规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:34
 msgid "help.SamePointRules.label"
+msgstr "同点与并列规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:31
+msgid "Same-point and tie rules"
 msgstr "同点与并列规则"
 
 #: src/algorithms/convex-hull/HullLearning.tsx:129
@@ -3259,7 +3493,7 @@ msgid "help.NeighborRules.5"
 msgstr "适用边界：共端点、端点落在内部、多线共点、竖直线、同一扫描坐标事件与共线重叠需要额外规则。本页普通案例和相邻性论证不能代替这些退化情况的完整处理证明。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:12
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:22
 msgid "Second segment in the current pair (an index in the sweep loop)"
 msgstr "当前配对的第二条线段（扫描循环中使用编号）"
 
@@ -3268,12 +3502,12 @@ msgid "Segment"
 msgstr "线段"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:10
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:20
 msgid "Segment index visited by the current loop"
 msgstr "当前循环访问的线段编号"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:7
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:9
 msgid "Segment information carried by the current event"
 msgstr "本次事件携带的线段信息"
 
@@ -3286,29 +3520,29 @@ msgstr "线段求交"
 #~ msgid "Segment intersection result"
 #~ msgstr "线段交集结果"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:85
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:86
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:83
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:84
 #: src/algorithms/segment-intersection/bo/learning/LearningView.tsx:30
 msgid "Segments at this point"
 msgstr "同点参与线段"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:10
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:20
 msgid "Segments ending at the current point"
 msgstr "在当前点结束的线段"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:10
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:20
 msgid "Segments starting at the current point"
 msgstr "在当前点开始的线段"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:8
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:10
 msgid "Segments transformed into sweep coordinates; shadows the original input parameter with the same name"
 msgstr "变换到扫描坐标的线段；遮蔽同名原始输入参数"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:11
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:21
 msgid "Segments whose interiors pass through the current point"
 msgstr "内部经过当前点的线段"
 
@@ -3333,94 +3567,89 @@ msgid "Select current point"
 msgstr "选取当前点"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:176
-msgid "Select each segment passing through the current point"
-msgstr "依次选取一条经过当前点的线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:27
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:54
 msgid "self, other: the operands at this call site, such as heights or slopes."
 msgstr "self、other：调用点的两个操作数，可为高度或斜率。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:35
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:36
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:62
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:63
 msgid "self, other: the two operands at this call site."
 msgstr "self、other：此调用点的两个操作数。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:44
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:71
 msgid "self: the collection at this call site."
 msgstr "self：调用点的集合。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:56
 msgid "self: the comparison result at this call site; no explicit arguments."
 msgstr "self：调用点的比较结果；无显式参数。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:43
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:70
 msgid "self: the condition; f: the closure producing the value."
 msgstr "self：条件；f：生成值的闭包。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:28
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:55
 msgid "self: the current height comparison result; no explicit arguments."
 msgstr "self：当前高度比较结果；无显式参数。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:25
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:52
 msgid "self: the current queue; no explicit arguments."
 msgstr "self：当前 queue；无显式参数。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:26
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:53
 msgid "self: the current segment; x: event x coordinate."
 msgstr "self：当前线段；x：事件横坐标。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:42
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:69
 msgid "self: the index at this call site; rhs: the amount to subtract."
 msgstr "self：调用点的索引；rhs：减数。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:33
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:60
 msgid "self: the iterator at this call site; no explicit arguments."
 msgstr "self：调用点的迭代器；无显式参数。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:45
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:72
 msgid "self: the iterator at this call site."
 msgstr "self：调用点的迭代器。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:47
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:74
 msgid "self: the map at this call site; key: the entry key."
 msgstr "self：调用点的映射；key：键。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:49
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:76
 msgid "self: the map entry at this call site."
 msgstr "self：调用点的映射条目。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:32
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:40
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:59
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:67
 msgid "self: the sequence at this call site; no explicit arguments."
 msgstr "self：调用点的序列；无显式参数。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:46
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:73
 msgid "self: the sequence at this call site; range: the index range."
 msgstr "self：调用点的序列；range：索引范围。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:30
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:57
 msgid "self: the sequence to the left of the call; value: the element in parentheses."
 msgstr "self：调用点左侧的序列；value：括号内的元素。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:48
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:75
 msgid "self: the value at this call site."
 msgstr "self：调用点的值。"
 
@@ -3434,7 +3663,7 @@ msgid "Seven hexagons form a finite honeycomb sheet, with each shared chemical b
 msgstr "七个六边形组成有限蜂窝片层，共享化学键仅保留一次；边缘原子的配位因截断而减少。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:76
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:103
 msgid "Shadowed (last value before shadowing was not recorded)"
 msgstr "已遮蔽（遮蔽前的最后值未记录）"
 
@@ -3452,7 +3681,7 @@ msgid "Shared interval"
 msgstr "公共区间"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:12
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:22
 msgid "Shear coefficient for sweep coordinates"
 msgstr "扫描坐标的剪切系数"
 
@@ -3476,11 +3705,6 @@ msgstr "单步"
 msgid "Six main branches each have two levels of symmetric forks, with gaps between branches. The shape approximates √3/2 by 433/500; intersections are still computed exactly for the submitted rational coordinates."
 msgstr "六条主枝各有两层对称分叉，枝间保留留白。图形以 433/500 近似 √3/2，求交仍对提交的有理坐标精确计算。"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:73
-msgid "Skip this check if fewer than two segments remain"
-msgstr "不足两条线段，跳过这次检查"
-
 #: src/algorithms/convex-polygon-intersection/cases.ts:25
 msgid "Sloping edges produce exact fractional intersection coordinates."
 msgstr "斜边产生精确的分数交点坐标。"
@@ -3495,24 +3719,24 @@ msgid "Sort by x, then y. Equal coordinates retain their input labels."
 msgstr "先按 x、再按 y 排序。相同坐标保留各自输入标签。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:119
-msgid "Sort these segments by their vertical order just beyond the current point"
-msgstr "按越过当前点后的上下顺序排列这些线段"
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:36
+msgid "Sort nonzero original inputs by exact slope, intercept, start and input id."
+msgstr "按精确斜率、截距、起点和输入编号排序非零原始输入。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:38
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:65
 msgid "Sort using the comparison function."
 msgstr "按比较函数排序。"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:28
+msgid "help.LearningReferences.8"
+msgstr "来源：CGAL 将非空线段交集列为点或线段，并明确处理重叠曲线。本实现在线组预处理时，通过闭区间公共部分记录同线配对；采用自身的线组扫描算法，不复现 CGAL，也不借用其正确性或复杂度保证。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:24
 msgid "help.LearningReferences.4"
 msgstr "核对依据：讲义标号 4 定义闭线段，标号 6 按两个坐标确定事件先后，标号 8 的 handleEvent 将开始、结束、内部穿过的线段归组，先报告交点及全部参与者，再移除与重新插入以更新顺序（PDF 第 39–42 页）。讲义从上向下扫描，本页将方向换为从左向右、同 x 时从下向上；对应的是相同的精确字典序规则，不用数值微移。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:28
-msgid "help.LearningReferences.8"
-msgstr "核对依据：CGAL 官方文档源的二维交集表将 Segment_2 与 Segment_2 的非空交集列为 Point_2 或 Segment_2；扫描线文档明确将重叠曲线列入退化情况，并依赖经过认证的几何计算。本页用闭区间公共范围解释预设重叠案例，在较晚起点记录完整区间；这不是 CGAL 的算法复刻，也不把 CGAL 的鲁棒性或复杂度保证移用于本演示。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:22
@@ -3542,11 +3766,6 @@ msgid "Star polygon"
 msgstr "星形多边形"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:144
-msgid "Start by collecting segments that begin at the current point"
-msgstr "先收集在当前点开始的线段"
-
-#. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:18
 msgid "Start in the interior"
 msgstr "起点落在内部"
@@ -3557,12 +3776,12 @@ msgid "Start learning"
 msgstr "开始学习"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:13
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:23
 msgid "Start of the candidate overlap interval"
 msgstr "重叠候选区间的起点"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:80
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:84
 msgid "Start of the original segment"
 msgstr "原始线段的起点"
 
@@ -3571,7 +3790,7 @@ msgid "Start step-by-step learning"
 msgstr "开始逐步学习"
 
 #. placeholder {0}: step.starts.length ? inputReferences(step.starts) : translate(msg`None`)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:89
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:87
 msgid "Starting: {0}"
 msgstr "开始：{0}"
 
@@ -3594,9 +3813,9 @@ msgid "Step-by-step learning"
 msgstr "逐步学习"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:213
-msgid "Store the pair in ascending index order together with its intersection"
-msgstr "按编号从小到大保存线段对及其交集"
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:38
+msgid "Store each original interval once for output-sensitive closed-point queries."
+msgstr "每个原始区间只归属一个节点，使闭点查询的工作量随实际返回成员数增长。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/penrose.ts:84
@@ -3604,7 +3823,7 @@ msgid "Subdivision uses φ = (1 + √5)/2. Matching Robinson triangles are paire
 msgstr "细分使用 φ = (1 + √5)/2，将同类 Robinson 三角形沿底边配对并去掉内部对角线，舍去边界未配对半片，得到 10 块细菱形、10 块宽菱形。50 条唯一边连接 31 个顶点：5 点度数为 2、20 点为 3、6 点为 5，所以有 5 × 1 + 20 × 3 + 6 × 10 = 125 个端点配对、31 处交点；原点连接 5 条边，恰有 10 对。接缝无内部交叉或重叠。近似后的共享顶点统一按 (x, y) → ((3x − 4y)/5, (4x + 3y)/5) 精确旋转，保持长度、夹角与接缝。服务精确计算提交的有理坐标，不把近似菱形当作精确无理几何。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:42
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:69
 msgid "Subtract an index with an underflow check."
 msgstr "执行检查下溢的索引减法。"
 
@@ -3613,12 +3832,21 @@ msgstr "执行检查下溢的索引减法。"
 #~ msgstr "连续转弯与宽窄变化，展示三角形如何连接狭窄通道。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:7
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:77
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:53
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:65
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:70
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:6
+msgid "Support lines and coverage"
+msgstr "支撑直线与覆盖并集"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:9
 msgid "Sweep coordinates of the current event"
 msgstr "本次事件的扫描坐标"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:17
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:27
 msgid "Sweep coordinates of the event being processed"
 msgstr "正在处理的事件扫描坐标"
 
@@ -3637,29 +3865,25 @@ msgid "geometry.sweepLine"
 msgstr "扫描线 x = {0}"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:126
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:153
 msgid "Sweep-coordinate segments captured by the current closure"
 msgstr "当前闭包捕获的扫描坐标线段"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:125
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:152
 msgid "Sweep-coordinate segments received by the current function"
 msgstr "当前函数接收的扫描坐标线段"
 
 #. placeholder {0}: pointName(step.current!)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:40
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:41
 msgid "Take <0>{0}</0> from the front of the queue and stop the sweep line here. The current event has left the pending queue; no insertion, removal, or reordering has happened yet. First check the participants at this point and record each pair's intersection, then update the active order following the real actions."
 msgstr "从队首取出 <0>{0}</0>，扫描线停在此处。当前事件已离开待处理队列；此刻还没有加入、退出或换序。先核对同点参与者并逐对记录交集，再按真实动作更新活动顺序。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:134
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:63
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:64
 msgid "Take an event"
 msgstr "取事件"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:135
-msgid "Take the next pending event"
-msgstr "取出下一个待处理的事件"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:100
@@ -3671,11 +3895,6 @@ msgstr "教学代码高亮加载失败，请刷新重试。"
 #: src/algorithms/segment-intersection/bo/learning/LearningReplayControls.tsx:22
 msgid "Teaching step"
 msgstr "教学步骤"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:109
-msgid "Temporarily remove segments through the current point before reinserting them in order"
-msgstr "暂时移除经过当前点的线段，稍后重新排序插入"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/carbonLattices.ts:119
@@ -3710,12 +3929,12 @@ msgid "The complete intersection of the horizontal segments is [2, 4]."
 msgstr "水平线段的完整交集为 [2, 4]。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:157
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:184
 msgid "The condition is false; skip this branch"
 msgstr "本次条件为假，跳过分支"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:156
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:183
 msgid "The condition is true; enter this branch"
 msgstr "本次条件为真，进入分支"
 
@@ -3732,18 +3951,22 @@ msgstr "图中的当前事件、队列和结果均使用原坐标；扫描线可
 msgid "The decision below uses the previous pair of edges. The canvas now shows the edges after advancing."
 msgstr "下面的推进依据来自上一对边。画布现在显示的是推进后的边。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:60
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:58
 msgid "The event is complete: the active order and pending queue are consistent."
 msgstr "事件处理完成：活动顺序和待处理队列保持一致。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:6
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:8
 msgid "The event just removed from the queue, possibly absent"
 msgstr "本次弹出的队首事件，可为空"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:63
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:61
 msgid "The event queue and active order are empty. All inputs have been processed; zero-length points need no insertion into or removal from the active order."
 msgstr "事件队列与活动顺序均为空，全部输入已处理完毕；零长度点无需加入或退出活动顺序。"
+
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:40
+msgid "The event queue is empty. All exact input-pair intersections have been reported."
+msgstr "事件队列为空，所有原始输入对的精确交集均已报告。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:10
@@ -3751,9 +3974,9 @@ msgid "help.LearningIntroduction.3"
 msgstr "事件队列按先 <0>x</0>、后 <1>y</1> 从小到大保存待处理事件；活动线段是已加入且尚未退出的线段，按从下到上排序。相邻线段指这个顺序里紧挨的两条。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:81
-msgid "help.EventQueueRules.2"
-msgstr "事件队列按先 x、后 y 从小到大保存待处理事件；当前事件从队首取出后单独显示。"
+#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:13
+msgid "help.LearningIntroduction.6"
+msgstr "精确核心处理交叉、端点接触、重合点、竖直线段及共线重叠。它先按支撑线分组并记录同线交集，再扫描最大覆盖区间。教学界面还原原坐标和原始输入身份。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/trace.ts:126
@@ -3781,17 +4004,22 @@ msgstr "输入集合为空"
 msgid "The interior point is excluded from the three-vertex hull."
 msgstr "内部点不属于由三个顶点组成的凸包。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:49
 msgid "The intersection has been recorded in the results; the active order has not changed yet."
 msgstr "交集已记入结果，活动顺序尚未更新。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
 msgid "The intersection includes this boundary. Keep the complete recorded interval without recording its end again as an isolated intersection point."
 msgstr "交集包含这个边界；保留已记录的完整区间，不再把止界重复记成孤立交点。"
 
 #: src/algorithms/convex-polygon-intersection/PolygonExplanation.tsx:60
 msgid "The intersection of convex polygons is convex. Taking the convex hull of the candidates keeps its extreme points and removes duplicates, interior points, and unnecessary points along straight edges."
 msgstr "两个凸多边形的交集仍是凸集。因此对候选点求凸包，就能保留交集的最外侧顶点，去除重复点、内部点以及直边上不必要的中间点。"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:89
+msgid "help.ActiveOrderRules.1"
+msgstr "列表按从下到上的顺序，投影当前事件之前、闭端点阶段或之后存在的原始输入。核心树存储的是覆盖区间；覆盖段编号与原始输入编号分开，邻接证书针对覆盖区间。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:9
@@ -3811,7 +4039,7 @@ msgstr "参数 <0>segments</0> 已被同名局部变量遮蔽。"
 msgid "The polygons lie to the left of their counterclockwise boundaries. Opposite directions put their interiors on opposite sides of this line, so only the common point or segment can belong to both."
 msgstr "多边形内部位于逆时针边界的左侧。两条共线边方向相反，意味着两个多边形的内部分处直线两侧，因此公共部分只能是这一个点或这一段线段。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:67
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:65
 msgid "The results are empty: no separate input pair intersects. See the mathematical check below for the geometric reasoning."
 msgstr "结果为空：没有相交的独立输入配对。具体几何依据见下方数学核对。"
 
@@ -3839,29 +4067,34 @@ msgstr "片层有 24 个原子、30 条键和 7 个六边形面；12 个内侧�
 msgid "help.SamePointRules.1"
 msgstr "按扫描方向区分开始、结束与内部穿过；这三组属于同一个精确几何点，不随中间动作改变。闭线段包含端点：先记录所有参与者的交集，再移除结束者、加入开始者，并排好继续活动者的顺序。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:60
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:59
+msgid "help.OverlapRules.3"
+msgstr "扫描队列仅包含最大覆盖区间端点、点输入和有效邻接证书。覆盖区间内部的原始成员端点不必成为事件。在真实事件位置，通过闭区间查询恢复原始成员；后续事件不会拆分或缩短已记录的配对区间。"
+
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:58
 msgid "The teaching actions for this event are complete. Next, process the first queued event."
 msgstr "本事件的教学动作已完成，下一步处理队首事件。"
 
 #. placeholder {0}: inputReferences(pointInputs)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:45
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:46
 msgid "The zero-length inputs <0>{0}</0> have coincident endpoints, so they belong to both the start and end groups without entering the persistent active order. They participate in pairs only at this exact position: contact in a segment's interior or at a closed endpoint both counts. Coincident points retain separate input identities. Point events without a matching pair also complete normally."
 msgstr "零长度点 <0>{0}</0> 的两个端点重合，所以同时属于开始和结束，不进入持续活动顺序。它们只在当前精确位置参与配对：位于线段内部或闭端点都算接触；重合点仍保留独立输入身份。没有配对的点事件也会正常完成。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:60
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:58
 msgid "There are no future intersections to add to the queue."
 msgstr "没有需要加入队列的未来交点。"
 
 #: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:39
-msgid "There are no inputs, so there are no endpoints or events. The queue and active order are empty. Step through the microsteps to see event retrieval return None and exit the loop."
-msgstr "没有输入，因此没有端点和事件。队列与活动顺序为空，可以逐小步观察取事件返回 None 并退出循环。"
+#~ msgid "There are no inputs, so there are no endpoints or events. The queue and active order are empty. Step through the microsteps to see event retrieval return None and exit the loop."
+#~ msgstr "没有输入，因此没有端点和事件。队列与活动顺序为空，可以逐小步观察取事件返回 None 并退出循环。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:49
 msgid "These pairwise records describe intersecting pairs at the same geometric point, not multiple intersection points. See the point groups for all participants; the event is not complete yet."
 msgstr "这里逐对记录的是同一个几何点的相交配对，不是多个交点；全部参与者见同点分组，整个事件尚未完成。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:160
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:187
 msgid "This branch is skipped"
 msgstr "本次跳过此分支"
 
@@ -3878,18 +4111,13 @@ msgid "This endpoint lies on one polygon and inside the other, so it belongs to 
 msgstr "这个端点在一个多边形的边界上，同时位于另一个多边形内，因此即使没有新的边交点，它也属于交集。推进前需要先保留它。"
 
 #. placeholder {0}: inputReferences(continuingOverlapInputs)
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
 msgid "This is an overlap end boundary: {0} continue while the ending inputs leave."
 msgstr "此处是重叠止界：{0} 继续，当前结束者退出。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:48
 msgid "This is an overlap end boundary: all members of these pairs end here."
 msgstr "此处是重叠止界：这些配对的成员均在此结束。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:13
-msgid "help.LearningIntroduction.6"
-msgstr "本学习流程覆盖现有范例中的普通交叉、空集合与无交集、相邻检测、同扫描坐标不同位置、端点接触、多线共点、零长度点、竖直线、共线重叠及混合事件。竖直线在固定 x 上按 y 从下向上处理；共线重叠用完整闭区间表达。这些预设教学案例不是任意退化输入的生产级实现保证。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionPanel.tsx:138
@@ -3901,7 +4129,7 @@ msgid "This point belongs to both polygon boundaries, so it belongs to the inter
 msgstr "这个点同时位于两个多边形的边界上，因此属于交集。先将它保留为候选点，供最后整理交集边界时使用。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:160
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:187
 msgid "This statement was not executed"
 msgstr "本次未执行此语句"
 
@@ -3913,7 +4141,7 @@ msgstr "当前步骤没有可对齐的主箭头"
 msgid "This step has no valid A edge to align"
 msgstr "当前步骤没有可朝上对齐的有效 A 边"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:46
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:47
 msgid "This step orders the starting and passing inputs together immediately to the right of the event, including the passing inputs' reordering. The same event is still being processed. Because a nonzero-length input starts here, insertion and reordering share one update; no second swap occurs."
 msgstr "本步已将开始者与穿过者一起排成紧邻事件右侧的顺序，穿过者的换序也已显示；这仍是同一事件的处理中状态。本点有非零长度开始者，换序与加入是同一次更新，不会再次交换。"
 
@@ -3968,11 +4196,6 @@ msgstr "轨迹加载失败"
 msgid "Trace generated"
 msgstr "轨迹已生成"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:201
-msgid "Treat a zero-length intersection as a single point"
-msgstr "没有长度时，按单个交点处理"
-
 #: src/algorithms/triangulation/cases.ts:15
 #~ msgid "Triangle"
 #~ msgstr "三角形"
@@ -4007,21 +4230,6 @@ msgstr "三角剖分案例"
 #: src/algorithms/triangulation/TriangulationPlot.tsx:22
 msgid "Triangulation plot"
 msgstr "三角剖分画布"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:90
-msgid "Try to compute an intersection candidate for these segments"
-msgstr "尝试计算这两条线段的候选交点"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:71
-msgid "Try to get the two neighboring segments at this position"
-msgstr "尝试取出这个位置上的两条相邻线段"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:81
-msgid "Try to get the two neighboring segments to check"
-msgstr "尝试取出要检查的两条相邻线段"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:27
@@ -4069,14 +4277,14 @@ msgid "Two triangles overlap in a triangle. First observe a right turn with A0 t
 msgstr "两个三角形的交集仍是三角形。先观察右转时 A0 在 B 边右侧，因此推进 A；再观察左转时 B1 在 A 边右侧，因此推进 B。这两步中，红色高亮端点所属的多边形就是要推进的多边形。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:90
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:128
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:94
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:155
 msgid "Type not provided by the current scope"
 msgstr "当前作用域未提供类型"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:85
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:95
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:89
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:99
 msgid "Type not provided by the current trace"
 msgstr "当前轨迹未提供类型"
 
@@ -4086,43 +4294,43 @@ msgid "Type: "
 msgstr "类型："
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:92
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:74
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:96
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:101
 msgid "Unassigned"
 msgstr "未赋值"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:102
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:106
 msgid "Unavailable (field not recorded in the current trace)"
 msgstr "不可用（当前轨迹未记录字段）"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:107
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:111
 msgid "Unavailable (index out of bounds or object not recorded)"
 msgstr "不可用（索引越界或对象未记录）"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:105
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:109
 msgid "Unavailable (index unassigned or unavailable)"
 msgstr "不可用（索引未赋值或不可用）"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:122
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:126
 msgid "Unavailable (no comparable value in the current call)"
 msgstr "不可用（当前调用无可比较的值）"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:78
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:105
 msgid "Unavailable (no value provided by the current trace)"
 msgstr "不可用（当前轨迹未提供值）"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:92
+#: src/algorithms/segment-intersection/bo/learning/executionAccess.ts:96
 msgid "Unavailable (not provided by the current scope or trace)"
 msgstr "不可用（当前作用域或轨迹未提供）"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:73
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:100
 msgid "Unavailable (not provided by the current scope)"
 msgstr "不可用（当前作用域未提供）"
 
@@ -4131,9 +4339,9 @@ msgstr "不可用（当前作用域未提供）"
 msgid "Unavailable at this step."
 msgstr "当前步骤不可用。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:55
-msgid "Unchanged neighbor relationships need no recheck. Bold segments in the drawing and borders in the state list mark the current pair. This step selects the pair to check without changing the queue. Endpoint events may already be queued, so contact points need not be queued again."
-msgstr "其他未改变的邻接关系无需重查。图中加粗线段与状态列表边框标出当前配对；此步选定检查配对，尚未改变队列。端点事件可能已经在队列中，接触点无需重复入队。"
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:58
+#~ msgid "Unchanged neighbor relationships need no recheck. Bold segments in the drawing and borders in the state list mark the current pair. This step selects the pair to check without changing the queue. Endpoint events may already be queued, so contact points need not be queued again."
+#~ msgstr "其他未改变的邻接关系无需重查。图中加粗线段与状态列表边框标出当前配对；此步选定检查配对，尚未改变队列。端点事件可能已经在队列中，接触点无需重复入队。"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:33
@@ -4156,12 +4364,7 @@ msgid "help.LearningIntroduction.0"
 msgstr "从零理解 Bentley–Ottmann 扫描线"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:182
-msgid "Undo the shear of the x coordinate, leaving the y coordinate unchanged"
-msgstr "撤销横坐标的剪切变换，纵坐标保持不变"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:34
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:61
 msgid "Undo the shear to restore original coordinates."
 msgstr "撤销剪切，恢复原坐标。"
 
@@ -4195,7 +4398,7 @@ msgid "Unknown page path."
 msgstr "未知页面路径。"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:103
+#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:86
 msgid "Update the active set"
 msgstr "活动集合更新"
 
@@ -4221,19 +4424,9 @@ msgstr "按钮缩放 · 拖动平移"
 msgid "Use exact fractions to explain why an interior crossing and endpoint contact share one event, and distinguish positions from pairs."
 msgstr "用精确分数解释内部交叉与端点接触归入同一事件，区分位置与配对。"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:33
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:32
 msgid "Use the drawing and state panels to understand the current teaching action."
 msgstr "结合画布与各项状态，理解当前教学动作。"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:194
-msgid "Use the earlier end point as the overlap end"
-msgstr "取两个终点中较前的一个，作为重叠终点"
-
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:187
-msgid "Use the later start point as the overlap start"
-msgstr "取两个起点中较后的一个，作为重叠起点"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/ExecutionSymbol.tsx:50
@@ -4256,7 +4449,7 @@ msgid "Variable {name} · {label}"
 msgstr "变量 {name} · {label}"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:100
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:127
 msgid "Variable in the current lexical scope"
 msgstr "当前词法作用域变量"
 
@@ -4280,13 +4473,13 @@ msgstr "竖直分数重叠"
 msgid "Vertical overlap with mixed contacts at multiple heights"
 msgstr "竖直重叠与多高度混合"
 
-#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
-msgid "Vertical segment rules"
-msgstr "竖直线处理规则"
-
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:45
 msgid "help.VerticalRules.label"
+msgstr "竖直线处理规则"
+
+#: src/algorithms/segment-intersection/bo/help/CaseHelp.tsx:51
+msgid "Vertical segment rules"
 msgstr "竖直线处理规则"
 
 #. js-lingui-explicit-id
@@ -4307,7 +4500,7 @@ msgid "View details"
 msgstr "查看详情"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:32
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:59
 msgid "Visit sequence elements in order."
 msgstr "依次访问序列元素。"
 
@@ -4331,11 +4524,6 @@ msgid "Waiting for the requested step"
 msgstr "正在等待请求的步骤"
 
 #. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionCode.ts:66
-msgid "When segments are inserted, find the position of the last new segment"
-msgstr "有新线段插入时，找到最后一条新线段的位置"
-
-#. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/help/HelpContent.tsx:67
 msgid "help.NeighborRules.0"
 msgstr "为什么只检查邻居不会漏掉交点？"
@@ -4345,7 +4533,7 @@ msgstr "为什么只检查邻居不会漏掉交点？"
 msgid "help.NeighborRules.label"
 msgstr "为什么不会漏掉交点"
 
-#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:33
+#: src/algorithms/segment-intersection/bo/learning/LearningPanels.tsx:32
 msgid "Why take this action?"
 msgstr "这一步为什么这样做？"
 

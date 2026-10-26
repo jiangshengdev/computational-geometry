@@ -118,9 +118,10 @@ for (const [name, starts, ends, initial, final] of [
   for (const [index, step] of trace.steps.entries()) {
     if (step.action !== 'check' && (step.current?.x.numerator !== '2' || !['take', 'record', 'complete'].includes(step.action))) continue
     await seekStep(page, index, 'jump')
-    if (name === '终点落在内部' && (await explanation.innerText()).includes('检查相邻线段')) {
+    if (name === '终点落在内部' && step.action === 'check') {
       await expect(page.getByRole('region', { name: '待处理事件队列' })).toContainText('(2, 0)')
-      await expect(explanation).toContainText('端点事件可能已经在队列中')
+      expect(step.checked).toEqual([])
+      await expect(explanation).toContainText('覆盖段')
       checkedQueuedEndpoint = true
     }
     if (!(await current.innerText()).includes('(2, 0)')) continue
@@ -134,7 +135,7 @@ for (const [name, starts, ends, initial, final] of [
     }
     if ((await explanation.innerText()).includes('交集已记入结果')) {
       await expect(explanation).toContainText('在这里接触')
-      await expect(active).toHaveText(initial)
+      await expect(active).toHaveText(name === '起点落在内部' ? 'S1S0' : initial)
       recorded = true
     }
     if ((await current.innerText()).includes('事件处理完成')) {

@@ -11,7 +11,6 @@
 
 pub(crate) mod http;
 mod monotone;
-mod status;
 mod validation;
 
 use std::cmp::Ordering;

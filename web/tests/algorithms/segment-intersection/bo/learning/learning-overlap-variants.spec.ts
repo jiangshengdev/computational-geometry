@@ -24,9 +24,11 @@ for (const [id, count, intervals] of [
     if (step.action !== 'record' && step.action !== 'remove') continue
     await seekStep(page, index, 'jump')
     const text = await explanation.innerText()
-    if (text.includes('记录重叠区间')) {
+    if (step.action === 'record') {
       records++
-      await expect(explanation).toContainText('根据已知端点')
+      expect(step.current).toBeNull()
+      await expect(explanation).toContainText('完整交集')
+      await expect(explanation).toContainText('预处理')
       await expect(explanation).not.toContainText('下一步加入开始者')
     }
     if (text.includes('此处是重叠止界')) {

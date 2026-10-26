@@ -59,7 +59,7 @@ for (const [id, pairs, positions, center, centerPairs, upper] of [
   await page.keyboard.press('ArrowRight')
   await expect(page.getByRole('img', { name: /^交集 S/ })).toHaveCount(4)
   await page.getByRole('button', { name: '重叠说明', exact: true }).click()
-  await expect(page.getByRole('region', { name: '重叠处理规则' })).toContainText('不合并为几何并集')
+  await expect(page.getByRole('region', { name: '重叠处理规则' })).toContainText('原始输入对分别保留')
   await page.getByRole('button', { name: '关闭帮助' }).click()
   await page.getByRole('region', { name: '操作解释' }).scrollIntoViewIfNeeded()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)

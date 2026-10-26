@@ -1,5 +1,5 @@
 //! Deterministic AVL tree for sweep edges. The caller supplies the ordering at
-//! the current event; a validated simple boundary never swaps active edges.
+//! the current event. Remove every changing item before changing its order.
 
 use std::cmp::Ordering;
 
@@ -65,6 +65,21 @@ impl Node {
 }
 
 impl Status {
+    /// First item whose monotone predicate is true, in logarithmic time.
+    pub(super) fn lower_bound(&self, at_or_after: impl Fn(usize) -> bool) -> Option<usize> {
+        let mut result = None;
+        let mut cursor = self.root.as_deref();
+        while let Some(node) = cursor {
+            if at_or_after(node.edge) {
+                result = Some(node.edge);
+                cursor = node.left.as_deref();
+            } else {
+                cursor = node.right.as_deref();
+            }
+        }
+        result
+    }
+
     pub(super) fn insert(&mut self, edge: usize, compare: &impl Fn(usize, usize) -> Ordering) {
         self.root = Some(insert(self.root.take(), edge, compare));
     }
@@ -169,3 +184,7 @@ fn take_min(mut root: Box<Node>) -> (usize, Link) {
     root.left = left;
     (edge, Some(root.balance()))
 }
+
+#[cfg(test)]
+#[path = "status_tests.rs"]
+mod tests;
