@@ -443,7 +443,7 @@ export const specialShots: Shot[] = [
     page: "pointImage",
     step: 1,
     caption:
-      "对这个点应用剪切公式，新横坐标是 a_x 加 s 乘以 a_y，新纵坐标是 a_y。两个新端点仍然重合，剪切以后仍是一个点。",
+      "对这个点应用剪切公式，新横坐标是 a_x 加上 s 乘以 a_y，新纵坐标是 a_y。两个新端点仍然重合，剪切以后仍是一个点。",
   },
   {
     id: "244-05",

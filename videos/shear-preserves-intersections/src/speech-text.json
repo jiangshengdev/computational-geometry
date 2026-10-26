@@ -3108,7 +3108,15 @@
       "text": "数",
       "pinyin": "shu4"
     },
-    " s 固定以后。",
+    " ",
+    {
+      "breakMs": 20
+    },
+    "s",
+    {
+      "breakMs": 20
+    },
+    " 固定以后。",
     {
       "text": "给",
       "pinyin": "gei3"
@@ -3662,7 +3670,15 @@
       "text": "作",
       "pinyin": "zuo4"
     },
-    " R。它剪",
+    " ",
+    {
+      "breakMs": 20
+    },
+    "R",
+    {
+      "breakMs": 20
+    },
+    "。它剪",
     {
       "text": "切",
       "pinyin": "qie1"
@@ -4796,7 +4812,12 @@
       "text": "横",
       "pinyin": "heng2"
     },
-    "坐标是 a x 加 s ",
+    "坐标是 a x 加",
+    {
+      "text": "上",
+      "pinyin": "shang4"
+    },
+    " s ",
     {
       "text": "乘",
       "pinyin": "cheng2"

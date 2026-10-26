@@ -1304,28 +1304,28 @@
     {
       "text": "系数 s 固定以后，",
       "startMs": 70,
-      "endMs": 1790,
+      "endMs": 2244,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "给定一个新位置的横纵坐标。",
-      "startMs": 1830,
-      "endMs": 3909,
+      "startMs": 2244,
+      "endMs": 4324,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "撤销公式只能算出一组原坐标，",
-      "startMs": 3871,
-      "endMs": 6391,
+      "startMs": 4603,
+      "endMs": 7444,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以原位置唯一确定。",
-      "startMs": 6471,
-      "endMs": 8271,
+      "startMs": 7470,
+      "endMs": 9230,
       "timestampMs": null,
       "confidence": null
     }
@@ -1470,28 +1470,28 @@
     {
       "text": "由于整条新线段都有原线段上的来源，",
       "startMs": 70,
-      "endMs": 3309,
+      "endMs": 3190,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "从第一条新线段反向找。",
-      "startMs": 3550,
-      "endMs": 5680,
+      "startMs": 3270,
+      "endMs": 5310,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "必能在第一条原线段上找到一个点，",
-      "startMs": 5710,
-      "endMs": 8320,
+      "startMs": 5322,
+      "endMs": 7962,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "记作 R，它剪切后就是 Q′。",
-      "startMs": 8462,
-      "endMs": 11060,
+      "startMs": 8081,
+      "endMs": 11350,
       "timestampMs": null,
       "confidence": null
     }
@@ -1900,30 +1900,30 @@
       "confidence": null
     },
     {
-      "text": "新横坐标是 a_x 加 s 乘以 a_y，",
+      "text": "新横坐标是 a_x 加上 s 乘以 a_y，",
       "startMs": 2230,
-      "endMs": 5310,
+      "endMs": 5510,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "新纵坐标是 a_y。",
-      "startMs": 5322,
-      "endMs": 6762,
+      "startMs": 5578,
+      "endMs": 7018,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两个新端点仍然重合，",
-      "startMs": 7082,
-      "endMs": 8882,
+      "startMs": 7418,
+      "endMs": 9098,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "剪切以后仍是一个点。",
-      "startMs": 8922,
-      "endMs": 10602,
+      "startMs": 9377,
+      "endMs": 10978,
       "timestampMs": null,
       "confidence": null
     }
