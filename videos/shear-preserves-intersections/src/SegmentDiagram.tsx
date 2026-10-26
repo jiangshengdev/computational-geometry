@@ -4,14 +4,12 @@ import { SvgMathText } from "./MathText";
 export function SegmentDiagram({
   symbolic,
   step,
-  compact = false,
 }: {
   symbolic: boolean;
   step: number;
-  compact?: boolean;
 }) {
   const x = (v: number) => 50 + v * 90;
-  const y = (v: number) => 430 - v * 90;
+  const y = (v: number) => 520 - v * 90;
   const line = (a: number[], b: number[], color: string, dash?: string) => (
     <line
       x1={x(a[0])}
@@ -41,10 +39,10 @@ export function SegmentDiagram({
   return (
     <svg
       data-diagram
-      viewBox="0 0 620 500"
+      viewBox="0 0 620 620"
       style={{
-        width: compact ? 440 : 620,
-        height: compact ? 355 : 500,
+        width: 620,
+        height: 620,
         flexShrink: 0,
         overflow: "visible",
       }}
@@ -68,7 +66,7 @@ export function SegmentDiagram({
       </defs>
       {[1, 2, 3, 4, 5].map((v) => (
         <g key={v}>
-          <line x1={x(v)} y1={y(0)} x2={x(v)} y2={y(4)} stroke="#dce4ec" />
+          <line x1={x(v)} y1={y(0)} x2={x(v)} y2={y(5)} stroke="#dce4ec" />
           {!symbolic && (
             <SvgMathText x={x(v)} y={y(0) + 42} align="center" fontSize={24}>
               {v}
@@ -76,7 +74,7 @@ export function SegmentDiagram({
           )}
         </g>
       ))}
-      {[1, 2, 3, 4].map((v) => (
+      {[1, 2, 3, 4, 5].map((v) => (
         <g key={v}>
           <line x1={x(0)} y1={y(v)} x2={x(5.8)} y2={y(v)} stroke="#dce4ec" />
           {!symbolic && (
@@ -87,7 +85,7 @@ export function SegmentDiagram({
         </g>
       ))}
       <path
-        d={`M${x(0)},${y(4.3)} V${y(0)} H${x(5.9)}`}
+        d={`M${x(0)},${y(5.3)} V${y(0)} H${x(5.9)}`}
         fill="none"
         stroke="#65778a"
         strokeWidth={2}
@@ -97,7 +95,7 @@ export function SegmentDiagram({
         x1={x(0)}
         y1={y(0)}
         x2={x(0)}
-        y2={y(4.3)}
+        y2={y(5.3)}
         stroke="#65778a"
         strokeWidth={2}
         markerEnd="url(#axis-arrow)"
@@ -105,7 +103,7 @@ export function SegmentDiagram({
       <SvgMathText x={x(5.9)} y={y(0) + 40}>
         x
       </SvgMathText>
-      <SvgMathText x={x(0) + 12} y={y(4.3)}>
+      <SvgMathText x={x(0) + 12} y={y(5.3)}>
         y
       </SvgMathText>
       {line([1, 1], [5, 3], "#176d93")}

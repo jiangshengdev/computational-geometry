@@ -25,6 +25,7 @@ export function TeachingPage({
   caption: string;
 }) {
   const page = pages[shot.page];
+  const hasDiagram = Boolean(page.diagram || page.referenceDiagram);
   return (
     <div
       data-production-page
@@ -49,12 +50,19 @@ export function TeachingPage({
       >
         <MathText>{page.title}</MathText>
       </header>
-      {page.referenceDiagram && (
+      {hasDiagram && (
         <div
           data-page-block
-          style={{ position: "absolute", left: 100, top: 125 }}
+          style={{ position: "absolute", left: 100, top: 230 }}
         >
-          <SegmentDiagram symbolic step={3} compact />
+          <SegmentDiagram
+            symbolic={
+              Boolean(page.referenceDiagram) || page.diagram === "similar"
+            }
+            step={
+              page.referenceDiagram || shot.page === "changes" ? 3 : visibleStep
+            }
+          />
         </div>
       )}
       {page.basis.length > 0 && (
@@ -63,7 +71,7 @@ export function TeachingPage({
           data-basis
           style={{
             position: "absolute",
-            left: page.referenceDiagram ? 570 : 100,
+            left: hasDiagram ? 770 : 100,
             right: 100,
             top: 125,
             fontSize: 30,
@@ -86,25 +94,15 @@ export function TeachingPage({
         data-main-content
         style={{
           position: "absolute",
-          left: 100,
+          left: hasDiagram ? 770 : 100,
           right: 100,
-          top: page.referenceDiagram
-            ? 500
-            : page.basis.length
-              ? 220 + 44 * page.basis.length
-              : 230,
+          top: page.basis.length ? 220 + 44 * page.basis.length : 230,
           bottom: 190,
           display: "flex",
           gap: 50,
           alignItems: "flex-start",
         }}
       >
-        {page.diagram && (
-          <SegmentDiagram
-            symbolic={page.diagram === "similar"}
-            step={shot.page === "changes" ? 3 : visibleStep}
-          />
-        )}
         <div
           data-main-column
           style={{
@@ -112,8 +110,8 @@ export function TeachingPage({
             minWidth: 0,
             display: "flex",
             flexDirection: "column",
-            alignItems: page.diagram ? "flex-start" : "center",
-            justifyContent: page.diagram ? "flex-start" : "center",
+            alignItems: hasDiagram ? "flex-start" : "center",
+            justifyContent: hasDiagram ? "flex-start" : "center",
           }}
         >
           {shot.page === "similar" && (
