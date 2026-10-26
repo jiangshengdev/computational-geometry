@@ -3,28 +3,28 @@
     {
       "text": "先看线段的两个端点，",
       "startMs": 70,
-      "endMs": 1910,
+      "endMs": 1870,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "A 的坐标是一、一。",
-      "startMs": 1910,
-      "endMs": 3510,
+      "text": "A 的坐标是一，一。",
+      "startMs": 2029,
+      "endMs": 3869,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "B 的坐标是五、三，",
-      "startMs": 3510,
-      "endMs": 5230,
+      "startMs": 3909,
+      "endMs": 5680,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "坐标总是先横后纵。",
-      "startMs": 5236,
-      "endMs": 6956,
+      "startMs": 5710,
+      "endMs": 7360,
       "timestampMs": null,
       "confidence": null
     }
@@ -47,23 +47,30 @@
   ],
   "242-03": [
     {
-      "text": "中点记作 M，从 A 走一半。",
+      "text": "用 M 表示中点，从 A 走一半。",
       "startMs": 70,
-      "endMs": 2110,
+      "endMs": 3030,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "横向增加四的一半，纵向增加二的一半。",
-      "startMs": 2230,
-      "endMs": 5510,
+      "text": "横坐标增加四的一半，",
+      "startMs": 3110,
+      "endMs": 4960,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵向增加二的一半。",
+      "startMs": 4990,
+      "endMs": 6590,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "加回起点坐标，得到三、二。",
-      "startMs": 5492,
-      "endMs": 7811,
+      "startMs": 6854,
+      "endMs": 9535,
       "timestampMs": null,
       "confidence": null
     }
