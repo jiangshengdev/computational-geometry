@@ -42,6 +42,8 @@ for (const example of [
   { id: 'vertical', x: '0', y: '3', before: 'S1S2S0', after: 'S1S2S3', update: 'insert', partial: true },
   { id: 'same-x', x: '0', y: '-1', before: 'S0S1S2S3', after: 'S1S0S2S3', update: 'reorder' },
   { id: 'same-x', x: '0', y: '3', before: 'S1S0S2S3', after: 'S1S0S3S2', update: 'reorder' },
+  { id: 'partial-overlap', x: '2', y: '0', before: 'S0', after: 'S1S0', update: 'insert' },
+  { id: 'partial-overlap', x: '4', y: '0', before: 'S1S0', after: 'S1', update: 'remove' },
 ]) test(`事件侧向状态：${example.id} (${example.x}, ${example.y})`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   const response = page.waitForResponse(r => r.url().endsWith('/api/bo/intersections'))
@@ -54,6 +56,7 @@ for (const example of [
   for (const check of [
     { action: 'take', side: '左', order: example.before },
     { action: 'record', side: null },
+    ...(example.partial ? [{ action: 'remove', side: null }] : []),
     { action: example.update, side: '右', order: example.after },
     { action: 'complete', side: '右', order: example.after },
   ]) {
@@ -82,7 +85,10 @@ test('侧向提示随按钮、快捷键、滑块、浏览器导航恢复且切�
   const slider = page.getByRole('slider', { name: '教学步骤' })
   await expect(slider).toHaveValue('0')
   await expect(side).toHaveCount(0)
-  await seekStep(page, take - 1, 'jump')
+  await page.keyboard.press('ArrowRight')
+  await expect(side).toHaveCount(0)
+  await page.keyboard.press('ArrowRight')
+  await expect(side).toHaveCount(0)
   await page.keyboard.press('ArrowRight')
   await expect(side).toHaveAccessibleName('事件侧向状态：当前事件左侧（Δ）')
   for (let index = take; index < insert; index++) await page.getByRole('button', { name: '下一步', exact: true }).click()

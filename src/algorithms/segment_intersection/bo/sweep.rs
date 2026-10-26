@@ -1,11 +1,20 @@
 //! Exact sweep state and its execution path.
 use super::teaching::*;
+use super::trace_publication;
 
-mod core;
-mod groups;
-mod queue;
-mod recording;
-use crate::{Intersection, Point, Rational, Segment};
+mod activity;
+mod classify;
+mod neighbors;
+mod observation;
+mod record;
+mod take;
+use crate::{Geometry, Intersection, Point, Rational, Segment};
+use observation::{
+    ObservationState, Recorder, block_end, call, control, observe, pending_call, reset_controls,
+};
+use std::cell::RefCell;
+use std::collections::BTreeMap;
+use std::sync::Arc;
 
 pub(crate) struct SweepSegment {
     pub(crate) left: Point,
@@ -46,6 +55,12 @@ impl SweepSegment {
 }
 
 fn choose_shear(segments: &[Segment]) -> Rational {
+    if !segments
+        .iter()
+        .any(|s| s.start.x == s.end.x && s.start.y != s.end.y)
+    {
+        return Rational::from_integer(0.into());
+    }
     let coordinates = || {
         segments
             .iter()
@@ -53,17 +68,9 @@ fn choose_shear(segments: &[Segment]) -> Rational {
     };
     // A common denominator D makes all endpoints integral.
     let mut denominator = Rational::from_integer(1.into());
-    let mut height = Rational::from_integer(1.into());
     for coordinate in coordinates() {
-        // Reduction supplies D/gcd(D,d), so repeated endpoint denominators do
-        // not inflate D. This is lcm(D,d) without a second arithmetic library.
-        let reduced = &denominator / Rational::from_integer(coordinate.denom().clone());
-        denominator = Rational::from_integer(reduced.numer() * coordinate.denom());
-        let numerator = Rational::from_integer(coordinate.numer().clone());
-        height = height
-            .max(numerator.clone())
-            .max(-numerator)
-            .max(Rational::from_integer(coordinate.denom().clone()));
+        // Multiplication is deliberate: any common multiple is sufficient.
+        denominator *= Rational::from_integer(coordinate.denom().clone());
     }
     let mut bound = Rational::from_integer(1.into());
     for coordinate in coordinates() {
@@ -77,26 +84,23 @@ fn choose_shear(segments: &[Segment]) -> Rational {
     // x ordering and breaks equal x by y. Nonzero segments become nonvertical.
     // This is exact arithmetic, not a floating-point epsilon or pairwise oracle.
     let margin = bound + Rational::from_integer(1.into());
-    let integerized =
-        Rational::from_integer(1.into()) / (Rational::from_integer(256.into()) * margin.pow(5));
-    // A second bound avoids a huge common denominator for unrelated fractions.
-    // If |numerator|, denominator <= H, homogeneous endpoint coordinates are
-    // <= H^2, line coefficients <= 2H^4, and intersection coordinates <= 8H^8.
-    // Cartesian event denominators are thus <= 8H^8, giving distinct x gap
-    // >= 1/(64H^16). Segment-contained event y lies in [-H,H]. Therefore
-    // 1/[256(H+1)^17] also preserves strict x order and breaks x ties by y.
-    // Both bounds are valid; the larger coefficient has the smaller denominator.
-    let homogeneous = Rational::from_integer(1.into())
-        / (Rational::from_integer(256.into())
-            * (height + Rational::from_integer(1.into())).pow(17));
-    integerized.max(homogeneous)
+    Rational::from_integer(1.into()) / (Rational::from_integer(256.into()) * margin.pow(5))
 }
 
 #[derive(Default)]
 pub(crate) struct Event {
-    // Recording-only projection. Starts contain original input IDs; the core
-    // queue owns coverage endpoints, point inputs and adjacency certificates.
+    // Ends and interior crossings are recovered from the active sequence at
+    // this exact point, so a discovered crossing needs no stored pair identity.
     pub(crate) starts: Vec<usize>,
+}
+
+struct SweepState {
+    segments: Vec<SweepSegment>,
+    shear: Rational,
+    queue: BTreeMap<Point, Event>,
+    active: Vec<usize>,
+    height_order: Vec<std::cmp::Ordering>,
+    result: Vec<Intersection>,
 }
 
 /// Return every intersecting input pair with its exact point or full overlap.
@@ -146,20 +150,144 @@ pub(crate) fn stream_intersections(
     sweep(segments, Some(emit), cancelled)
 }
 
+// Keeps closure blocks intact under stable rustfmt without runtime work.
+macro_rules! nop {
+    () => {};
+}
+pub(super) use nop;
+
 fn sweep(
-    input: &[Segment],
+    segments: &[Segment],
     emit: Option<&mut dyn FnMut(SweepTrace) -> bool>,
     cancelled: &dyn Fn() -> bool,
 ) -> Option<SweepOutcome> {
     if cancelled() {
         return None;
     }
-    let shear = choose_shear(input);
-    let segments: Vec<_> = input.iter().map(|s| SweepSegment::new(s, &shear)).collect();
-    let mut recorder = recording::Recording::new(input, &segments, &shear, emit, cancelled);
-    let intersections = core::run(&segments, &shear, &mut recorder, cancelled)?;
-    Some(SweepOutcome {
-        intersections,
+    let next_call = std::cell::Cell::new(1);
+    let shear = choose_shear(segments);
+    let mut publication = emit.map(|emit| trace_publication::TracePublication::new(&shear, emit));
+    let mut steps = publication
+        .as_mut()
+        .map(trace_publication::TracePublication::steps);
+    // Capture the binding immediately before it is shadowed, only for teaching.
+    let input_value = steps.as_ref().map(|_| {
+        Arc::<str>::from(format!(
+            "[{}]",
+            segments
+                .iter()
+                .map(|segment| format!(
+                    "Segment {{ start: {}, end: {} }}",
+                    point_value(&segment.start),
+                    point_value(&segment.end)
+                ))
+                .collect::<Vec<_>>()
+                .join(", ")
+        ))
+    });
+    let segments: Vec<_> = segments
+        .iter()
+        .map(|segment| SweepSegment::new(segment, &shear))
+        .collect();
+    let trace_segments = steps
+        .as_ref()
+        .map(|_| Arc::<str>::from(sweep_segments_value(&segments)));
+    let mut queue: BTreeMap<Point, Event> = BTreeMap::new();
+    for (id, segment) in segments.iter().enumerate() {
+        if cancelled() {
+            return None;
+        }
+        queue
+            .entry(segment.left.clone())
+            .or_default()
+            .starts
+            .push(id);
+        queue.entry(segment.right.clone()).or_default();
+    }
+    let active: Vec<usize> = Vec::new();
+    let height_order = vec![std::cmp::Ordering::Equal; segments.len()];
+    let result = Vec::new();
+    let mut state = SweepState {
+        segments,
         shear,
+        queue,
+        active,
+        height_order,
+        result,
+    };
+    let SweepState {
+        queue,
+        active,
+        result,
+        ..
+    } = &mut state;
+
+    let capture = RefCell::new(TraceCapture::default());
+    if let Some(steps) = &mut steps {
+        steps.push(SweepStep::capture(
+            "initial",
+            None,
+            queue,
+            active,
+            result,
+            &[],
+            &[],
+            input_value.as_ref().expect("tracing captures input"),
+            &capture,
+        ));
+    }
+    if let Some(publication) = &mut publication
+        && !publication.publish()
+    {
+        return None;
+    }
+    loop {
+        if cancelled() {
+            return None;
+        }
+        let mut recording = Recorder {
+            steps: publication
+                .as_mut()
+                .map(trace_publication::TracePublication::steps),
+            input_value: &input_value,
+            trace_segments: &trace_segments,
+            next_call: &next_call,
+            cancelled,
+            capture: &capture,
+        };
+        let Some(take::TakenEvent {
+            point,
+            event,
+            first_step,
+        }) = take::take(&mut state, &mut recording)
+        else {
+            break;
+        };
+        let classified = classify::classify(&mut state, &point, event, &mut recording)?;
+        record::record(&mut state, &point, &classified, &mut recording)?;
+        let classify::ClassifiedEvent {
+            incident,
+            participants,
+        } = classified;
+        let update = activity::update(&mut state, &point, incident, &mut recording)?;
+        let checked = neighbors::check(&mut state, &point, update, &mut recording)?;
+        if let Some(publication) = &mut publication
+            && !publication.finish_event(
+                first_step,
+                &checked,
+                participants.expect("tracing captures participants"),
+            )
+        {
+            return None;
+        }
+    }
+    if let Some(publication) = &mut publication
+        && !publication.publish()
+    {
+        return None;
+    }
+    Some(SweepOutcome {
+        intersections: state.result,
+        shear: state.shear,
     })
 }

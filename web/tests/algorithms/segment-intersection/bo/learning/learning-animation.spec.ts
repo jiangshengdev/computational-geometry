@@ -7,13 +7,19 @@ async function startLearning(page: Page) {
   return readTrace(page, 'crossing')
 }
 
-test('状态动画：整块左右顺序可反向恢复', async ({ page }) => {
+test('状态动画：换序块暂离与重插可反向恢复', async ({ page }) => {
   const trace = await startLearning(page)
   const reorder = stepIndex(trace, step => step.action === 'reorder')
+  const removal = stepIndex(trace, step => step.execution.module === 'activity' && step.execution.boundary === 2 && step.current?.x.numerator === '2')
+  await jumpTo(page, removal - 1)
+  await page.getByRole('button', { name: '下一步', exact: true }).click()
+  await expect(page.getByTestId('active-order')).toHaveText('空')
   await jumpTo(page, reorder - 1)
-  await expect(page.getByTestId('active-order')).toHaveText('S0S1')
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await expect(page.getByTestId('active-order')).toHaveText('S1S0')
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
+  await expect(page.getByTestId('active-order')).toHaveText('空')
+  await jumpTo(page, removal)
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await expect(page.getByTestId('active-order')).toHaveText('S0S1')
 })
@@ -26,11 +32,11 @@ async function jumpTo(page: Page, step: number) {
 }
 
 test('状态动画：取出队首与绑定当前事件可逐步恢复', async ({ page }) => {
-  const trace = await startLearning(page)
+  await startLearning(page)
   const text = 'S0 起点 (0, 0)'
   const current = page.getByRole('region', { name: '当前事件' })
   const pending = page.getByRole('region', { name: '待处理事件队列' })
-  await jumpTo(page, stepIndex(trace, step => step.action === 'take-entry'))
+  await jumpTo(page, 1)
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await expect(current).toContainText('尚未处理事件')
   await expect(pending).not.toContainText(text)
@@ -72,11 +78,11 @@ test('状态动画：换序中断与跳转隔离', async ({ page }) => {
   const order = page.getByTestId('active-order')
   await expect(order).toHaveText('S1S0')
   await page.getByRole('button', { name: '上一步', exact: true }).click()
-  await expect(order).toHaveText('S0S1')
+  await expect(order).toHaveText('空')
   await page.keyboard.press('ArrowRight')
   await order.getByText('S0', { exact: true }).hover()
   await expect(page.getByRole('img', { name: '输入 S0', exact: true })).toHaveAttribute('data-highlighted', 'true')
   await jumpTo(page, 0)
   await expect(order).toHaveText('空')
-  await expect(page.getByRole('region', { name: '待处理事件队列' }).locator('li')).toHaveCount(0)
+  await expect(page.locator('aside li')).toHaveCount(4)
 })

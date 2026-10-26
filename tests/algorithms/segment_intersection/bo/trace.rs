@@ -180,216 +180,254 @@ fn assert_trace_tables(response: &Response) {
 }
 
 #[tokio::test]
-async fn preprocessing_reports_same_line_pairs_before_any_sweep_position() {
-    let response = trace_segments(&[(0, 0, 4, 0), (3, 0, 1, 0), (2, -1, 2, 1), (2, 0, 2, 0)]).await;
-    let first_event = response
-        .trace
-        .steps
-        .iter()
-        .position(|s| s.action == "take")
-        .unwrap();
-    let record = response
-        .trace
-        .steps
-        .iter()
-        .position(|s| s.action == "record")
-        .unwrap();
-    assert!(record < first_event);
-    let step = &response.trace.steps[record];
-    assert_eq!(step.execution.module, "same_line");
-    assert!(step.current.is_none() && step.active.is_empty());
-    assert_eq!(step.checked, vec![[0, 1]]);
-    assert_eq!(step.subjects, vec![0, 1]);
-    assert_eq!(variable(step, "line_members").availability, "available");
-    let returned = response
-        .trace
-        .steps
-        .iter()
-        .find(|s| s.execution.context.function == "prepare" && s.execution.returning)
-        .unwrap();
-    assert_eq!(
-        variable(returned, "line_members").availability,
-        "unavailable"
-    );
-    assert!(variable(returned, "line_members").value.is_none());
-    assert_eq!(
-        response.trace.result_values[step.results[0]].segments,
-        [0, 1]
-    );
-    for step in &response.trace.steps {
-        assert!(
-            step.active
-                .iter()
-                .chain(&step.starts)
-                .chain(&step.ends)
-                .chain(&step.passes)
-                .all(|&id| id < 4)
-        );
-        for pair in &step.checked {
-            assert!(response.intersections.iter().any(|i| i.segments == *pair));
-        }
-    }
-    assert_eq!(response.intersections.len(), 6);
-}
-
-#[tokio::test]
-async fn real_calls_have_distinct_identity_pending_values_return_and_resume() {
-    let isolated = trace_segments(&[(1, 1, 1, 1)]).await;
-    let call = isolated
-        .trace
-        .steps
-        .iter()
-        .flat_map(|s| &s.execution.calls)
-        .find(|c| c.function == "recover_members")
-        .unwrap();
-    let incident = call
-        .arguments
-        .iter()
-        .find(|v| v.name == "incident")
-        .unwrap();
-    assert_eq!(incident.availability, "available");
-    assert_eq!(isolated.trace.values[incident.value.unwrap()], "[]");
+async fn retain_calls_expose_real_parameters_scopes_and_separate_returns() {
     let response = trace_segments(&[(0, 0, 4, 4), (0, 4, 4, 0)]).await;
-    for function in ["prepare", "recover_members", "schedule"] {
-        let entries: Vec<_> = response
-            .trace
-            .steps
-            .iter()
-            .enumerate()
-            .filter(|(_, s)| s.execution.context.function == function && s.execution.entry)
-            .collect();
-        assert!(!entries.is_empty(), "{function}");
-        let mut ids = std::collections::BTreeSet::new();
-        for (i, entry) in entries {
-            assert!(ids.insert(entry.execution.context.id));
-            assert_eq!(entry.execution.outer.len(), 1);
-            assert_eq!(entry.execution.outer[0].function, "sweep");
-            assert_eq!(variable(entry, "return_value").availability, "unassigned");
-            let returned = response.trace.steps[i + 1..]
-                .iter()
-                .position(|s| {
-                    s.execution.context.id == entry.execution.context.id && s.execution.returning
-                })
-                .unwrap()
-                + i
-                + 1;
-            let returned_step = &response.trace.steps[returned];
-            assert_eq!(returned_step.execution.boundary, Some(2));
-            assert!(returned_step.execution.controls.iter().any(|c| c.line
-                == if function == "recover_members" { 2 } else { 3 }
-                && c.keyword == "return"
-                && c.occurrence == 0
-                && c.state == "returned"));
-            let before = &response.trace.steps[returned - 1];
-            assert!(
-                before
-                    .execution
-                    .controls
-                    .iter()
-                    .any(|c| c.keyword == "return" && c.state == "pending")
-            );
-            assert_eq!(variable(before, "return_value").availability, "unassigned");
-            assert_eq!(
-                variable(returned_step, "return_value").availability,
-                "available"
-            );
-            assert!(
-                variable(returned_step, "return_value")
-                    .text(&response.trace.values)
-                    .is_some()
-            );
-            let resume = &response.trace.steps[returned + 1];
-            assert_eq!(resume.execution.context.id, 0);
-            assert!(resume.execution.resuming);
+    let steps = &response.trace.steps;
+    let values = &response.trace.values;
+    let mut calls = std::collections::HashSet::new();
+    let mut outcomes = std::collections::HashSet::new();
+    let mut sites = std::collections::HashSet::new();
+    for (index, step) in steps.iter().enumerate().filter(|(_, step)| {
+        step.execution.context.function == "retain closure" && !step.execution.returning
+    }) {
+        assert!(calls.insert(step.execution.context.id));
+        let id = &step.execution.context.parameters[0];
+        assert_eq!(id.name, "id");
+        assert!(matches!(id.text(values), Some("0" | "1")));
+        assert_eq!(step.execution.outer.len(), 1);
+        assert_eq!(step.execution.outer[0].function, "sweep");
+        assert!(!step.execution.context.captures.is_empty());
+        assert_ne!(variable(step, "return_value").availability, "available");
+        let returned = &steps[index + 1];
+        assert_eq!(returned.execution.context.id, step.execution.context.id);
+        assert!(returned.execution.returning);
+        outcomes.insert(variable(returned, "return_value").text(values).unwrap());
+        let caller = &steps[index + 2];
+        assert_eq!(caller.execution.context.id, step.execution.outer[0].id);
+        let call_boundary = steps[index - 1].execution.boundary.unwrap();
+        sites.insert(call_boundary);
+        assert_eq!(caller.execution.boundary, Some(call_boundary));
+        let next = &steps[index + 3];
+        if next.execution.context.id != caller.execution.context.id {
+            assert_eq!(next.execution.module, step.execution.module);
+            assert!(!next.execution.returning);
+            assert_ne!(next.execution.context.id, step.execution.context.id);
+        } else {
+            assert_eq!(next.execution.boundary, Some(call_boundary + 1));
+            assert!(next.execution.calls.iter().any(|call| {
+                call.function == "retain" && call.result.availability == "available"
+            }));
         }
     }
-}
-
-#[tokio::test]
-async fn each_result_push_exposes_pending_and_completed_values_without_future_results() {
-    let response = trace_segments(&[(0, 0, 4, 0), (1, 0, 3, 0), (2, -1, 2, 1)]).await;
-    let mut completed = 0;
-    for (i, step) in response.trace.steps.iter().enumerate() {
-        for call in &step.execution.calls {
-            if call.function != "push" || call.result.availability != "unassigned" {
-                continue;
-            }
-            assert_eq!(call.line, 1);
-            assert_eq!(call.arguments[1].r#type, "Intersection");
-            assert!(call.arguments[1].scope.is_none());
-            let after = &response.trace.steps[i + 1];
-            assert_eq!(after.results.len(), step.results.len() + 1);
-            assert_eq!(after.checked, step.checked);
-            assert_eq!(after.execution.calls[0].result.availability, "available");
-            assert_eq!(
-                call.arguments[0].text(&response.trace.values),
-                variable(step, "result").text(&response.trace.values)
-            );
-            completed += 1;
-        }
-    }
-    assert_eq!(completed, response.intersections.len());
-}
-
-#[tokio::test]
-async fn ordinary_coverage_endpoints_do_not_query_or_recheck_the_overlap_group() {
-    let response = trace_segments(&[(0, 0, 8, 0), (1, 0, 7, 0), (2, 0, 6, 0), (3, 0, 5, 0)]).await;
-    assert!(
-        !response
-            .trace
-            .steps
-            .iter()
-            .any(|s| s.execution.context.function == "recover_members")
-    );
-    assert_eq!(
-        response
-            .trace
-            .steps
-            .iter()
-            .filter(|s| s.action == "take")
-            .count(),
-        2
-    );
-    assert_eq!(
-        response
-            .trace
-            .steps
-            .iter()
-            .filter(|s| s.action == "record")
-            .count(),
-        6
-    );
+    assert!(calls.len() > 3, "real repeated calls must be recorded");
+    assert_eq!(outcomes, std::collections::HashSet::from(["true", "false"]));
+    assert_eq!(sites, std::collections::HashSet::from([0, 1, 2]));
     let empty = trace_segments(&[]).await;
-    assert!(empty.intersections.is_empty());
-    assert_eq!(empty.trace.steps.last().unwrap().execution.module, "done");
     assert!(
         !empty
             .trace
             .steps
             .iter()
-            .any(|s| s.execution.context.function == "schedule")
+            .any(|step| step.execution.context.function == "retain closure")
     );
 }
 
 #[tokio::test]
-async fn execution_coordinates_remain_sheared_while_canvas_coordinates_are_restored() {
-    let response = trace_segments(&[(0, 0, 0, 1)]).await;
-    let takes: Vec<_> = response
-        .trace
-        .steps
+async fn other_closures_preserve_actual_arguments_returns_and_no_call_paths() {
+    let response = trace_segments(&[(0, 0, 4, 4), (0, 4, 4, 0)]).await;
+    let steps = &response.trace.steps;
+    let values = &response.trace.values;
+    for function in [
+        "sort_by closure",
+        "partition_point closure",
+        "then closure",
+        "original closure",
+    ] {
+        let entries: Vec<_> = steps
+            .iter()
+            .enumerate()
+            .filter(|(_, step)| {
+                step.execution.context.function == function && !step.execution.returning
+            })
+            .collect();
+        assert!(!entries.is_empty(), "fixture reaches {function}");
+        for (index, step) in entries {
+            let returned = &steps[index + 1];
+            assert_eq!(returned.execution.context.id, step.execution.context.id);
+            assert!(returned.execution.returning);
+            assert_ne!(variable(step, "return_value").availability, "available");
+            assert_eq!(variable(returned, "return_value").availability, "available");
+            assert_eq!(
+                steps[index + 2].execution.context.id,
+                step.execution.outer.last().unwrap().id
+            );
+            let call_site = &steps[index - 1].execution;
+            let resumed = &steps[index + 2].execution;
+            assert_eq!(resumed.module, call_site.module);
+            assert_eq!(resumed.boundary, call_site.boundary);
+            let next = &steps[index + 3].execution;
+            if next.context.id != resumed.context.id {
+                assert_eq!(next.module, step.execution.module);
+                assert!(!next.returning);
+                assert_ne!(next.context.id, step.execution.context.id);
+            } else {
+                assert_ne!(next.boundary, resumed.boundary);
+            }
+            if function == "sort_by closure" {
+                assert_eq!(
+                    step.execution
+                        .context
+                        .parameters
+                        .iter()
+                        .map(|v| v.name.as_str())
+                        .collect::<Vec<_>>(),
+                    ["a", "b"]
+                );
+                assert!(matches!(
+                    variable(returned, "return_value").text(values),
+                    Some("Less" | "Equal" | "Greater")
+                ));
+            }
+            if function == "original closure" {
+                assert_eq!(
+                    step.execution.context.parameters[0].text(values),
+                    Some("(2, 2)")
+                );
+                assert_eq!(
+                    variable(returned, "return_value").text(values),
+                    Some("(2, 2)")
+                );
+            }
+        }
+    }
+    for (index, step) in steps.iter().enumerate().filter(|(_, step)| {
+        step.execution.module == "neighbors" && step.execution.boundary == Some(1)
+    }) {
+        if variable(step, "inserted").text(values) == Some("0") {
+            assert_ne!(steps[index + 1].execution.context.function, "then closure");
+        }
+    }
+}
+
+#[tokio::test]
+async fn overlap_conversions_resume_between_callbacks_then_complete_the_expression() {
+    let response = trace_segments(&[(0, 0, 4, 0), (1, 0, 3, 0)]).await;
+    let steps = &response.trace.steps;
+    let values = &response.trace.values;
+    let index = steps
         .iter()
-        .filter(|s| s.action == "take")
-        .collect();
-    assert_eq!(takes.len(), 2);
+        .position(|step| step.execution.module == "record" && step.execution.boundary == Some(9))
+        .unwrap();
+    for (offset, point) in [(1, "(1, 0)"), (4, "(3, 0)")] {
+        let entered = &steps[index + offset];
+        let returned = &steps[index + offset + 1];
+        assert_eq!(entered.execution.context.function, "original closure");
+        assert!(!entered.execution.returning);
+        assert_eq!(
+            entered.execution.context.parameters[0].text(values),
+            Some(point)
+        );
+        assert_eq!(returned.execution.context.id, entered.execution.context.id);
+        assert!(returned.execution.returning);
+        assert_eq!(variable(returned, "return_value").text(values), Some(point));
+    }
+    assert_eq!(steps[index + 3].execution.boundary, Some(9));
     assert_eq!(
-        variable(takes[0], "shear").text(&response.trace.values),
-        Some("1/8192")
+        steps[index + 3].execution.context.id,
+        steps[index].execution.context.id
     );
+    let resumed = &steps[index + 6];
     assert_eq!(
-        variable(takes[1], "point").text(&response.trace.values),
-        Some("(1/8192, 1)")
+        resumed.execution.context.id,
+        steps[index].execution.context.id
     );
-    assert_eq!(takes[1].current.as_ref().unwrap().x.numerator, "0");
+    assert_eq!(resumed.execution.boundary, Some(9));
+    assert_eq!(variable(resumed, "geometry").availability, "unassigned");
+    let completed = steps[index + 7..]
+        .iter()
+        .find(|step| {
+            step.execution.context.id == resumed.execution.context.id
+                && variable(step, "geometry").availability == "available"
+        })
+        .unwrap();
+    assert_eq!(completed.execution.module, "record");
+    assert_eq!(completed.execution.boundary, Some(13));
+    assert_eq!(control(completed, 4, "if"), Some("true"));
+    assert_eq!(control(completed, 9, "if"), Some("true"));
+    assert_eq!(variable(completed, "geometry").availability, "available");
+    assert_eq!(
+        completed
+            .execution
+            .calls
+            .iter()
+            .filter(|call| call.function == "original" && call.result.availability == "available")
+            .count(),
+        2
+    );
+}
+
+#[tokio::test]
+async fn displayed_function_calls_preserve_outer_scope_until_normal_or_early_return() {
+    let mut outcomes = std::collections::HashSet::new();
+    for segments in [
+        vec![(0, 0, 4, 4), (0, 4, 4, 0)],
+        vec![(0, 0, 4, 0), (0, 1, 4, 1)],
+    ] {
+        let response = trace_segments(&segments).await;
+        let steps = &response.trace.steps;
+        let mut ids = std::collections::HashSet::new();
+        for (index, step) in steps
+            .iter()
+            .enumerate()
+            .filter(|(_, step)| step.execution.module == "geometry" && step.execution.entry)
+        {
+            assert_ne!(step.execution.context.id, 0);
+            assert!(ids.insert(step.execution.context.id));
+            assert_eq!(step.execution.outer.len(), 1);
+            assert_eq!(
+                step.execution.outer[0].id,
+                steps[index - 1].execution.context.id
+            );
+            let candidate = step.execution.outer[0]
+                .locals
+                .iter()
+                .find(|v| v.name == "candidate")
+                .unwrap();
+            assert_eq!(candidate.availability, "unassigned");
+            let return_index = (index..steps.len())
+                .find(|&i| {
+                    steps[i].execution.context.id == step.execution.context.id
+                        && steps[i].execution.returning
+                })
+                .unwrap();
+            for frame in &steps[index..return_index] {
+                assert_eq!(frame.execution.context.id, step.execution.context.id);
+                assert_ne!(variable(frame, "return_value").availability, "available");
+                assert_eq!(
+                    frame.execution.outer[0]
+                        .locals
+                        .iter()
+                        .find(|v| v.name == "candidate")
+                        .unwrap()
+                        .availability,
+                    "unassigned"
+                );
+            }
+            let returned = &steps[return_index];
+            let value = variable(returned, "return_value")
+                .text(&response.trace.values)
+                .unwrap();
+            outcomes.insert(value.to_string());
+            assert_eq!(steps[return_index + 1].execution.context.id, 0);
+            assert_eq!(
+                variable(&steps[return_index + 1], "candidate").text(&response.trace.values),
+                Some(value)
+            );
+        }
+        assert!(!ids.is_empty());
+    }
+    assert!(outcomes.contains("None"));
+    assert!(outcomes.contains("Some((2, 2))"));
 }
 
 #[tokio::test]
@@ -420,14 +458,180 @@ async fn trace_point_table_deduplicates_equivalent_input_fraction_representation
     assert_eq!(response.intersections[0].segments, [0, 1]);
 }
 
+#[tokio::test]
+async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
+    let response = trace_json(r#"[{"start":{"x":{"numerator":"0","denominator":"1"},"y":{"numerator":"0","denominator":"1"}},"end":{"x":{"numerator":"2","denominator":"1"},"y":{"numerator":"0","denominator":"1"}}}]"#).await;
+    let values = &response.trace.values;
+    let steps = &response.trace.steps;
+    assert_eq!(
+        values
+            .iter()
+            .collect::<std::collections::HashSet<_>>()
+            .len(),
+        values.len()
+    );
+    let segment_indices: Vec<_> = steps
+        .iter()
+        .filter(|step| step.execution.module == "take")
+        .flat_map(|step| &step.execution.context.locals)
+        .filter(|variable| variable.name == "segments")
+        .map(|variable| variable.value.unwrap())
+        .collect();
+    assert!(!segment_indices.is_empty());
+    assert!(
+        segment_indices
+            .iter()
+            .all(|index| *index == segment_indices[0])
+    );
+    let entry = &steps[1];
+    let pop = &steps[2];
+    let bound = &steps[3];
+    assert_eq!(entry.action, "take-entry");
+    assert_eq!(pop.action, "take-pop");
+    assert_eq!(bound.action, "take");
+    for (step, boundary) in [(entry, 0), (pop, 1), (bound, 2)] {
+        assert_eq!(step.execution.module, "take");
+        assert_eq!(step.execution.boundary, Some(boundary));
+        assert_eq!(step.execution.entry, boundary == 0);
+    }
+    assert_eq!(entry.pending.len(), 2);
+    assert_eq!(pop.pending.len(), 1);
+    assert_eq!(pop.pending[0], entry.pending[1]);
+    assert_eq!(
+        response.trace.point_values[entry.pending[0]],
+        *bound.current.as_ref().unwrap()
+    );
+    assert!(pop.current.is_none());
+    assert!(pop.starts.is_empty());
+    assert_eq!(variable(entry, "next").availability, "unassigned");
+    assert_eq!(
+        variable(pop, "next").text(values),
+        Some("Some(((0, 0), Event { starts: [0] }))")
+    );
+    assert_eq!(variable(pop, "point").availability, "unassigned");
+    assert_eq!(variable(bound, "point").text(values), Some("(0, 0)"));
+    assert_eq!(
+        variable(bound, "event").text(values),
+        Some("Event { starts: [0] }")
+    );
+    for (index, step) in steps.iter().enumerate() {
+        if matches!(
+            step.action.as_str(),
+            "take-entry" | "take-pop" | "take-empty"
+        ) {
+            let previous = &steps[index - 1];
+            assert_eq!(step.current, previous.current);
+            assert_eq!(step.active, previous.active);
+            assert_eq!(step.starts, previous.starts);
+            assert_eq!(step.ends, previous.ends);
+            assert_eq!(step.passes, previous.passes);
+        }
+        if step.execution.context.function != "sweep" {
+            assert!(matches!(
+                step.execution.module.as_str(),
+                "retain-end"
+                    | "retain-height"
+                    | "then"
+                    | "partition-point"
+                    | "sort-by"
+                    | "original"
+            ));
+            assert!(!step.execution.entry);
+            continue;
+        }
+        assert_eq!(step.execution.context.parameters[0].name, "segments");
+        assert_eq!(
+            step.execution.context.parameters[0].availability,
+            "shadowed"
+        );
+        assert_eq!(
+            step.execution.context.parameters[0].text(values),
+            Some("[Segment { start: (0, 0), end: (2, 0) }]")
+        );
+        for variable in &step.execution.context.locals {
+            assert!(!variable.r#type.is_empty());
+            assert_eq!(
+                variable.value.is_some(),
+                variable.availability == "available"
+            );
+            if let Some(index) = variable.value {
+                assert!(index < values.len());
+            }
+        }
+        if step.action == "initial" {
+            assert_eq!(step.execution.module, step.action);
+            assert_eq!(step.execution.boundary, None);
+            assert!(!step.execution.entry);
+        } else {
+            assert!(matches!(
+                step.execution.module.as_str(),
+                "take" | "classify" | "record" | "activity" | "neighbors" | "geometry"
+            ));
+            assert!(step.execution.boundary.is_some());
+            assert_eq!(
+                step.execution.entry,
+                step.execution.boundary == Some(0) && !steps[index - 1].execution.returning
+            );
+        }
+    }
+    let final_step = steps.last().unwrap();
+    assert_eq!(final_step.action, "take-empty");
+    assert_eq!(variable(final_step, "next").text(values), Some("None"));
+    assert_eq!(variable(final_step, "point").availability, "unavailable");
+    let empty = trace_json("[]").await;
+    assert_eq!(
+        empty
+            .trace
+            .steps
+            .iter()
+            .map(|step| step.action.as_str())
+            .collect::<Vec<_>>(),
+        ["initial", "take-entry", "take-pop", "micro", "take-empty"]
+    );
+}
+
+#[tokio::test]
+async fn take_context_keeps_exact_sweep_coordinates_separate_from_canvas_coordinates() {
+    let response = trace_json(r#"[{"start":{"x":{"numerator":"0","denominator":"1"},"y":{"numerator":"0","denominator":"1"}},"end":{"x":{"numerator":"0","denominator":"1"},"y":{"numerator":"1","denominator":"1"}}}]"#).await;
+    let values = &response.trace.values;
+    let takes: Vec<_> = response
+        .trace
+        .steps
+        .iter()
+        .filter(|step| step.action == "take")
+        .collect();
+    assert_eq!(takes.len(), 2);
+    assert_eq!(variable(takes[0], "shear").text(values), Some("1/8192"));
+    assert_eq!(
+        variable(takes[0], "queue").text(values),
+        Some("{(1/8192, 1): Event { starts: [] }}")
+    );
+    assert_eq!(
+        variable(takes[1], "point").text(values),
+        Some("(1/8192, 1)")
+    );
+    assert_eq!(takes[1].current.as_ref().unwrap().x.numerator, "0");
+    assert_eq!(takes[1].current.as_ref().unwrap().x.denominator, "1");
+    assert_eq!(variable(takes[1], "next").availability, "unavailable");
+}
+
 fn variable<'a>(step: &'a Step, name: &str) -> &'a Variable {
     step.execution
         .context
         .locals
         .iter()
-        .chain(&step.execution.context.parameters)
         .find(|variable| variable.name == name)
         .unwrap()
+}
+
+fn control<'a>(step: &'a Step, line: usize, keyword: &str) -> Option<&'a str> {
+    step.execution
+        .controls
+        .iter()
+        .find(|control| {
+            control.line == line && control.keyword == keyword && control.occurrence == 0
+        })
+        .map(|control| control.state.as_str())
 }
 
 async fn trace_segments(segments: &[(i32, i32, i32, i32)]) -> Response {
@@ -447,10 +651,251 @@ async fn trace_segments(segments: &[(i32, i32, i32, i32)]) -> Response {
 }
 
 #[tokio::test]
+async fn classify_branches_report_actual_membership_without_visiting_skipped_pushes() {
+    // At the crossing both segments pass through; at endpoints they start/end.
+    let response = trace_segments(&[(0, 0, 4, 4), (0, 4, 4, 0)]).await;
+    let values = &response.trace.values;
+    let mut observed = std::collections::HashSet::new();
+    for step in response
+        .trace
+        .steps
+        .iter()
+        .filter(|step| step.execution.module == "classify")
+    {
+        for (line, push_line, list) in [(9, 10, "starts"), (11, 12, "ends"), (13, 14, "passes")] {
+            let Some(state @ ("true" | "false")) = control(step, line, "if") else {
+                continue;
+            };
+            observed.insert((line, state));
+            if state == "false" {
+                assert!(
+                    step.execution
+                        .calls
+                        .iter()
+                        .all(|call| call.line != push_line || call.function != "push")
+                );
+            }
+            if let Some(call) = step.execution.calls.iter().find(|call| {
+                call.line == push_line
+                    && call.function == "push"
+                    && call.result.availability == "available"
+            }) {
+                assert_eq!(state, "true");
+                assert_eq!(call.result.text(values), Some("()"));
+                let id = variable(step, "id").text(values).unwrap();
+                let members: Vec<usize> =
+                    serde_json::from_str(variable(step, list).text(values).unwrap()).unwrap();
+                assert!(members.contains(&id.parse().unwrap()));
+            }
+        }
+        if control(step, 2, "for") == Some("entered")
+            && variable(step, "id").availability == "available"
+        {
+            assert_eq!(
+                variable(step, "id").scope.as_deref(),
+                Some("classify.active")
+            );
+        }
+        if control(step, 8, "for") == Some("entered")
+            && variable(step, "id").availability == "available"
+        {
+            assert_eq!(
+                variable(step, "id").scope.as_deref(),
+                Some("classify.incident")
+            );
+        }
+    }
+    for line in [9, 11, 13] {
+        assert!(observed.contains(&(line, "true")));
+        assert!(observed.contains(&(line, "false")));
+    }
+}
+
+#[tokio::test]
+async fn loop_reentry_clears_previous_iteration_controls_and_bindings() {
+    // Three incident segments exercise nested record loops, including the empty
+    // suffix on the last outer iteration. The first active loop is also empty.
+    let response = trace_segments(&[(0, 0, 4, 0), (0, 0, 3, 3), (0, 0, 2, 4)]).await;
+    let mut saw_empty_active = false;
+    let mut saw_empty_inner = false;
+    let mut saw_inner_reentry = false;
+    let mut saw_outer_reentry = false;
+    for (index, step) in response.trace.steps.iter().enumerate() {
+        for exhausted in step
+            .execution
+            .controls
+            .iter()
+            .filter(|control| control.keyword == "for" && control.state == "exhausted")
+        {
+            if let Some(previous) = index.checked_sub(1).map(|i| &response.trace.steps[i]) {
+                if previous.execution.module == step.execution.module {
+                    assert_ne!(
+                        control(previous, exhausted.line, "for"),
+                        Some("pending"),
+                        "the final iteration must leave the loop without a redundant head stop"
+                    );
+                }
+            }
+        }
+        if step.execution.module == "classify"
+            && control(step, 2, "for") == Some("exhausted")
+            && step.active.is_empty()
+            && variable(step, "id").scope.as_deref() == Some("classify.active")
+        {
+            saw_empty_active = true;
+            assert_ne!(variable(step, "id").availability, "available");
+            assert!(control(step, 4, "if").is_none());
+        }
+        if step.execution.module != "record" {
+            continue;
+        }
+        if control(step, 2, "for") == Some("exhausted")
+            && variable(step, "b").availability != "available"
+        {
+            saw_empty_inner = true;
+        }
+        for (line, binding, saw) in [
+            (1, "a", &mut saw_outer_reentry),
+            (2, "b", &mut saw_inner_reentry),
+        ] {
+            if control(step, line, "for") == Some("entered")
+                && response
+                    .trace
+                    .steps
+                    .get(index.wrapping_sub(1))
+                    .is_some_and(|previous| {
+                        previous.execution.module == "record"
+                            && control(previous, line, "for") != Some("entered")
+                    })
+            {
+                *saw = true;
+                assert_eq!(variable(step, binding).availability, "available");
+                assert!(
+                    step.execution
+                        .controls
+                        .iter()
+                        .all(|control| control.line <= line),
+                    "new iteration must clear nested branch results: {:?}",
+                    step.execution.controls
+                );
+            }
+        }
+    }
+    assert!(saw_empty_active && saw_empty_inner && saw_inner_reentry && saw_outer_reentry);
+}
+
+#[tokio::test]
+async fn continue_has_a_pending_stop_then_jump_without_recording_a_duplicate_result() {
+    let response = trace_segments(&[(0, 0, 4, 0), (1, 0, 3, 0)]).await;
+    let steps = &response.trace.steps;
+    let mut skipped_pairs = 0;
+    for (index, step) in steps.iter().enumerate().filter(|(_, step)| {
+        step.execution.module == "record" && control(step, 7, "continue") == Some("pending")
+    }) {
+        skipped_pairs += 1;
+        assert_eq!(control(step, 6, "if"), Some("true"));
+        assert_ne!(variable(step, "geometry").availability, "available");
+        let next = &steps[index + 1];
+        assert_eq!(control(next, 7, "continue"), Some("jumping"));
+        assert_eq!(control(next, 2, "for"), Some("exhausted"));
+        assert_eq!(next.execution.boundary, Some(15));
+        assert_eq!(next.results, step.results);
+        assert!(
+            next.execution
+                .calls
+                .iter()
+                .all(|call| call.function != "push")
+        );
+    }
+    assert!(skipped_pairs > 0);
+    assert_eq!(response.intersections.len(), 1);
+}
+
+#[tokio::test]
+async fn missing_neighbors_complete_get_before_continue_and_empty_queue_completes_break() {
+    let response = trace_segments(&[(0, 0, 2, 0)]).await;
+    let steps = &response.trace.steps;
+    let mut skipped_neighbors = 0;
+    for (index, step) in steps.iter().enumerate().filter(|(_, step)| {
+        step.execution.module == "neighbors" && control(step, 4, "continue") == Some("pending")
+    }) {
+        skipped_neighbors += 1;
+        let get = step
+            .execution
+            .calls
+            .iter()
+            .find(|call| call.function == "get")
+            .unwrap();
+        assert_eq!(get.result.text(&response.trace.values), Some("None"));
+        assert_eq!(control(step, 4, "else"), Some("entered"));
+        assert_ne!(variable(step, "neighbors").availability, "available");
+        assert_eq!(control(&steps[index + 1], 4, "continue"), Some("jumping"));
+        assert_eq!(control(&steps[index + 1], 3, "for"), Some("exhausted"));
+        assert_eq!(steps[index + 1].execution.boundary, Some(6));
+    }
+    assert!(skipped_neighbors > 0);
+    let empty = trace_json("[]").await;
+    let steps = &empty.trace.steps;
+    let pending = steps
+        .iter()
+        .position(|step| control(step, 2, "break") == Some("pending"))
+        .unwrap();
+    assert_eq!(control(&steps[pending], 2, "else"), Some("entered"));
+    assert_eq!(
+        variable(&steps[pending], "next").text(&empty.trace.values),
+        Some("None")
+    );
+    assert_eq!(control(&steps[pending + 1], 2, "break"), Some("completed"));
+    assert_eq!(pending + 2, steps.len());
+}
+
+#[tokio::test]
+async fn geometry_early_return_is_separate_and_does_not_expose_result_before_execution() {
+    let cases = [
+        vec![(0, 0, 4, 0), (1, 1, 3, 1)], // parallel
+        vec![(0, 0, 2, 0), (1, 2, 3, 1)], // line intersection beyond both segments
+        vec![(0, 0, 4, 4), (0, 4, 4, 0)], // real candidate
+    ];
+    for (case, segments) in cases.iter().enumerate() {
+        let response = trace_segments(segments).await;
+        let steps = &response.trace.steps;
+        let return_line = if case < 2 { 4 } else { 8 };
+        let mut returns = 0;
+        for (index, step) in steps.iter().enumerate().filter(|(_, step)| {
+            step.execution.module == "geometry"
+                && control(step, return_line, "return") == Some("pending")
+        }) {
+            returns += 1;
+            assert_ne!(variable(step, "return_value").availability, "available");
+            let returned = &steps[index + 1];
+            assert_eq!(returned.execution.module, "geometry");
+            assert_eq!(control(returned, return_line, "return"), Some("returned"));
+            let value = variable(returned, "return_value")
+                .text(&response.trace.values)
+                .unwrap();
+            if case < 2 {
+                assert_eq!(value, "None");
+                assert_eq!(control(step, 4, "else"), Some("entered"));
+                assert!(control(step, 5, "if").is_none());
+            } else {
+                assert!(value.starts_with("Some("));
+                assert_eq!(control(step, 4, "else"), Some("skipped"));
+            }
+        }
+        assert!(
+            returns > 0,
+            "fixture {case} must reach its intended return path"
+        );
+    }
+}
+
+#[tokio::test]
 async fn trace_tables_preserve_fractional_overlap_and_reuse_result_indices() {
     let response = trace_json(r#"[{"start":{"x":{"numerator":"0","denominator":"1"},"y":{"numerator":"0","denominator":"1"}},"end":{"x":{"numerator":"3","denominator":"1"},"y":{"numerator":"0","denominator":"1"}}},{"start":{"x":{"numerator":"1","denominator":"3"},"y":{"numerator":"0","denominator":"1"}},"end":{"x":{"numerator":"2","denominator":"1"},"y":{"numerator":"0","denominator":"1"}}}]"#).await;
     let trace = &response.trace;
-    assert_eq!(trace.point_values.len(), 2); // only maximal coverage endpoints are fixed events
+    assert_eq!(trace.point_values.len(), 4);
+    assert_eq!(trace.point_values[1].x.numerator, "1");
+    assert_eq!(trace.point_values[1].x.denominator, "3");
     assert_eq!(trace.result_values.len(), 1);
     assert_eq!(trace.result_values[0].segments, [0, 1]);
     let Geometry::Overlap { start, end } = &trace.result_values[0].geometry else {
@@ -486,7 +931,6 @@ struct Execution {
     context: Context,
     outer: Vec<Context>,
     returning: bool,
-    resuming: bool,
     calls: Vec<ExecutionCall>,
     controls: Vec<Control>,
 }
@@ -564,8 +1008,6 @@ struct Step {
     starts: Vec<usize>,
     ends: Vec<usize>,
     passes: Vec<usize>,
-    checked: Vec<[usize; 2]>,
-    subjects: Vec<usize>,
 }
 
 #[derive(Debug, PartialEq, Eq, Hash, Deserialize)]
@@ -611,7 +1053,7 @@ async fn equal_x_trace_events_reorder_only_their_own_participants() {
             vec![0, 1, 2, 3],
             vec![1, 0, 2, 3],
             vec![0, 1],
-            vec!["take", "record", "reorder", "complete"],
+            vec!["take", "record", "reorder", "check", "complete"],
         ),
         (
             "0",
@@ -619,7 +1061,7 @@ async fn equal_x_trace_events_reorder_only_their_own_participants() {
             vec![1, 0, 2, 3],
             vec![1, 0, 3, 2],
             vec![2, 3],
-            vec!["take", "record", "reorder", "complete"],
+            vec!["take", "record", "reorder", "check", "discover", "complete"],
         ),
         (
             "2",
@@ -627,7 +1069,7 @@ async fn equal_x_trace_events_reorder_only_their_own_participants() {
             vec![1, 0, 3, 2],
             vec![1, 3, 0, 2],
             vec![0, 3],
-            vec!["take", "record", "reorder", "complete"],
+            vec!["take", "record", "reorder", "check", "check", "complete"],
         ),
     ] {
         let event: Vec<_> = response
@@ -637,7 +1079,7 @@ async fn equal_x_trace_events_reorder_only_their_own_participants() {
             .filter(|step| {
                 !matches!(
                     step.action.as_str(),
-                    "take-entry" | "take-pop" | "take-empty" | "micro" | "check" | "discover"
+                    "take-entry" | "take-pop" | "take-empty" | "micro"
                 ) && step.current.as_ref().is_some_and(|p| {
                     p.x.numerator == x
                         && p.y.numerator == y

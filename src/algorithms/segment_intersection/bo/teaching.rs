@@ -97,6 +97,10 @@ impl TraceCapture {
         }
         self.results.as_ref().expect("result snapshot exists")
     }
+
+    pub(crate) fn result_value(&mut self, results: &[Intersection]) -> Arc<str> {
+        Arc::clone(&self.results(results).1)
+    }
 }
 
 #[derive(Clone, PartialEq, Eq)]
@@ -134,6 +138,22 @@ impl Execution {
 }
 
 impl ExecutionControl {
+    pub(crate) fn exhaust_loop(steps: &mut Vec<SweepStep>, line: usize) {
+        let completed = steps.last_mut().expect("loop exit was captured");
+        completed.execution.control(line, "for", "exhausted");
+        if let [.., previous, completed] = steps.as_slice()
+            && previous.execution.module == completed.execution.module
+            && previous.execution.context.id == completed.execution.context.id
+            && previous.execution.controls.iter().any(|control| {
+                control.line == line && control.keyword == "for" && control.state == "pending"
+            })
+        {
+            // The exit already carries the cleared bindings and control state.
+            // Keep head stops only when another iteration actually follows.
+            steps.remove(steps.len() - 2);
+        }
+    }
+
     pub(crate) fn set(
         controls: &mut Vec<Self>,
         line: usize,
@@ -190,6 +210,77 @@ pub(crate) struct ExecutionContext {
     pub(crate) parameters: Vec<Variable>,
     pub(crate) locals: Vec<Variable>,
     pub(crate) captures: Vec<Variable>,
+}
+
+pub(crate) struct ClosureTrace {
+    caller: SweepStep,
+    current: SweepStep,
+}
+
+impl ClosureTrace {
+    pub(crate) fn enter(
+        steps: &mut Vec<SweepStep>,
+        next_call: &std::cell::Cell<usize>,
+        module: &'static str,
+        function: &'static str,
+        parameters: Vec<Variable>,
+        captures: &[&str],
+        result_type: &'static str,
+    ) -> Self {
+        let caller = steps.last().expect("call has a caller stop").clone();
+        let mut current = caller.clone();
+        current.action = "micro";
+        current.execution.module = module;
+        current.execution.boundary = Some(0);
+        current.execution.entry = false;
+        current.execution.resuming = false;
+        current.execution.calls.clear();
+        current.execution.controls.clear();
+        current.execution.blocks.clear();
+        current
+            .execution
+            .outer
+            .push(caller.execution.context.clone());
+        let id = next_call.get();
+        next_call.set(id + 1);
+        current.execution.context = ExecutionContext {
+            id,
+            function,
+            parameters,
+            locals: vec![Variable::absent("return_value", result_type, "unassigned")],
+            captures: captures
+                .iter()
+                .map(|name| {
+                    caller
+                        .execution
+                        .context
+                        .locals
+                        .iter()
+                        .chain(&caller.execution.context.parameters)
+                        .chain(&caller.execution.context.captures)
+                        .find(|variable| variable.name == *name)
+                        .expect("captured binding exists at the call site")
+                        .clone()
+                })
+                .collect(),
+        };
+        steps.push(current.clone());
+        Self { caller, current }
+    }
+
+    pub(crate) fn returned(mut self, steps: &mut Vec<SweepStep>, value: String) {
+        self.current.execution.boundary = Some(1);
+        self.current.execution.returning = true;
+        let result_type = self.current.execution.context.locals[0].r#type;
+        self.current.execution.context.locals[0] =
+            Variable::available("return_value", result_type, value);
+        steps.push(self.current);
+        // Returning from one callback precedes any subsequent library callback.
+        self.caller.execution.entry = false;
+        self.caller.execution.resuming = true;
+        self.caller.action = "micro";
+        steps.push(self.caller);
+    }
 }
 
 #[derive(Clone, PartialEq, Eq)]
@@ -336,6 +427,25 @@ impl SweepStep {
         }
     }
 
+    pub(crate) fn block_before(steps: &mut Vec<Self>, boundary: usize, line: usize) {
+        let mut before = steps.last().expect("block operation was captured").clone();
+        before.execution.boundary = Some(boundary);
+        before.execution.blocks = vec![ExecutionBlock {
+            line,
+            phase: "before",
+        }];
+        steps.insert(steps.len() - 1, before);
+    }
+
+    pub(crate) fn block_after(steps: &mut Vec<Self>, line: usize) {
+        let mut after = steps.last().expect("block successor was captured").clone();
+        after.execution.blocks = vec![ExecutionBlock {
+            line,
+            phase: "after",
+        }];
+        steps.insert(steps.len() - 1, after);
+    }
+
     pub(crate) fn capture(
         action: &'static str,
         current: Option<&Point>,
@@ -416,6 +526,15 @@ impl SweepStep {
             Arc::clone(segments_value),
         ));
         locals.push(Variable::available("shear", "Rational", shear.to_string()));
+    }
+
+    pub(crate) fn preserve_geometry(&mut self, previous: &Self) {
+        self.current.clone_from(&previous.current);
+        self.starts.clone_from(&previous.starts);
+        self.ends.clone_from(&previous.ends);
+        self.passes.clone_from(&previous.passes);
+        self.checked.clone_from(&previous.checked);
+        self.subjects.clone_from(&previous.subjects);
     }
 }
 

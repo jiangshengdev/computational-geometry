@@ -16,13 +16,8 @@ for (const [id, point, starts, passes, pairs] of [
     if (step.action !== 'record') continue
     await seekStep(page, index, 'jump')
     const explanation = page.getByRole('region', { name: '操作解释' })
+    if (!/记录 .*：参与线段/.test(await explanation.innerText())) continue
     records++
-    if (id === 'collinear-contact') {
-      expect(step.current).toBeNull()
-      await expect(explanation).toContainText('预处理')
-      await expect(page.getByRole('img', { name: '交集 S0 × S1', exact: true })).toBeVisible()
-      continue
-    }
     await expect(page.getByRole('region', { name: '当前事件' })).toContainText(point)
     const group = page.getByRole('region', { name: '同点参与线段' })
     await expect(group).toContainText(`开始：${starts}`)

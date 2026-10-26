@@ -96,7 +96,6 @@ test('标题序号：同点锚点、换序、缩放平移与空列表', async ({
   await expect(markers).toHaveCount(0)
   await page.getByRole('button', { name: '重新开始', exact: true }).click()
   await expect(svg.locator('.teaching-labels text:visible')).toHaveCount(0)
-  await seekStep(page, stepIndex(trace, step => step.action === 'take-entry'), 'jump')
   await page.getByRole('region', { name: '待处理事件队列' }).getByRole('listitem').first().hover()
   await expect(svg.locator('.teaching-labels text[data-event-point]')).toBeVisible()
 })

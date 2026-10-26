@@ -1,7 +1,7 @@
 use std::cmp::Ordering;
 
+use super::status::Status;
 use super::{Boundary, EventSide, zero};
-use crate::algorithms::status::Status;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum Kind {

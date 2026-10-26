@@ -1,7 +1,7 @@
 use std::collections::BTreeSet;
 
+use super::status::Status;
 use super::{Boundary, EventSide, Point, TriangulationError, zero};
-use crate::algorithms::status::Status;
 
 pub(super) fn normalize(input: &[Point]) -> Result<Boundary, TriangulationError> {
     let count = if input.len() > 1 && input.first() == input.last() {

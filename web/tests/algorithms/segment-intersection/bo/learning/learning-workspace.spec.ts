@@ -1,6 +1,6 @@
 import { expect, test } from '../support/learning-test'
 import { installCase, scrollingCase } from '../../support/scrolling-cases'
-import { captureIntersections, seekStep, waitForTraceCompletion } from '../support/trace-navigation'
+import { waitForTraceCompletion } from '../support/trace-navigation'
 
 for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 1080 }]) {
   test(`学习工作区：${viewport.width} 核心内容与回放控件可达`, async ({ page }) => {
@@ -17,17 +17,14 @@ for (const viewport of [{ width: 1360, height: 900 }, { width: 1920, height: 108
       await control.scrollIntoViewIfNeeded()
       await expect(control).toBeInViewport()
     }
-    await expect(page.getByRole('region', { name: '操作解释' })).toContainText('支撑直线对非零输入分组')
+    await expect(page.getByRole('region', { name: '操作解释' })).toContainText('其他尚未发现的内部交点不预先加入')
   })
 }
 
 test('学习工作区：真实溢出队列内部滚动不带动页面', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 720 })
   await installCase(page, scrollingCase)
-  const capture = await captureIntersections(page)
   await page.goto(`/bo/cases/${scrollingCase.id}/learn`)
-  const { trace } = await capture.result
-  await seekStep(page, trace.steps.findIndex(step => step.action === 'take-entry'), 'jump')
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   await expect(queue.getByRole('listitem')).toHaveCount(30)
   const scrollBefore = await page.evaluate(() => window.scrollY)

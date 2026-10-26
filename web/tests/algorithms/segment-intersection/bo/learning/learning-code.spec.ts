@@ -4,12 +4,12 @@ import { readTrace, seekStep } from '../support/trace-navigation'
 test('真实轨迹执行边界指向下一条语句', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const cases = [
-    { module: 'take', boundary: 1, next: 'let Some((point, event)) = next else { break; };' },
-    { module: 'event', boundary: 1, next: 'report_cross_line_and_point_pairs(incident, event.points);' },
-    { module: 'members', boundary: 3, next: 'return members;' },
-    { module: 'certificate', boundary: 3, next: 'return candidate;' },
-    { module: 'report', boundary: 1, next: null },
-    { module: 'driver', boundary: 4, next: 'report_cross_line_and_point_pairs(members);' },
+    { module: 'take', boundary: 2, next: null },
+    { module: 'classify', boundary: 6, next: 'let (mut starts, mut ends, mut passes) = (Vec::new(), Vec::new(), Vec::new());' },
+    { module: 'classify', boundary: 11, next: 'ends.push(id);' },
+    { module: 'neighbors', boundary: 4, next: 'let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);' },
+    { module: 'geometry', boundary: 4, next: 'if point > *current {' },
+    { module: 'record', boundary: 13, next: 'result.push(Intersection { segments: [a.min(b), a.max(b)], geometry });' },
   ]
   for (const example of cases) {
     const index = trace.steps.findIndex(step => step.execution.module === example.module && step.execution.boundary === example.boundary)
@@ -34,8 +34,7 @@ test('取事件的真实小步同步代码、队列和上下文，并可完整�
   await page.goto('/bo/cases/crossing/learn')
   const code = page.getByRole('region', { name: '核心代码回放' })
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
-  const trace = await readTrace(page, 'crossing')
-  await seekStep(page, trace.steps.findIndex(step => step.action === 'take-entry'), 'jump')
+  await page.getByRole('button', { name: '下一个大步', exact: true }).click()
   await expect(code.getByRole('region', { name: '取事件教学代码' })).toBeVisible()
   await expect(code).toContainText('第一条核心语句之前')
   const queue = page.getByRole('region', { name: '待处理事件队列' })
@@ -48,7 +47,7 @@ test('取事件的真实小步同步代码、队列和上下文，并可完整�
   await expect(nextValue).toContainText('(0, 0)')
   await expect(queue).not.toContainText('S0 起点 (0, 0)')
   await expect(current).toContainText('尚未处理事件')
-  await expect(code.getByRole('img', { name: /执行边界/ })).toBeVisible()
+  await expect(code.getByRole('img', { name: '执行边界：匹配之前' })).toBeVisible()
   await page.getByRole('button', { name: '下一步', exact: true }).click()
   await expect(current).toContainText('S0 起点 (0, 0)')
   await expect(variables.getByTestId('variable-point')).toContainText('(0, 0)')
@@ -64,7 +63,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   browserTest(`自动换行保持执行边界并记住跨案例偏好 ${browserName}`, async ({ page }) => {
     const trace = await readTrace(page, 'crossing')
-    const index = trace.steps.findIndex(step => step.execution.module === 'driver' && step.execution.boundary === 3)
+    const index = trace.steps.findIndex(step => step.execution.module === 'neighbors' && step.execution.boundary === 4)
     expect(index).toBeGreaterThanOrEqual(0)
     await page.setViewportSize({ width: 1100, height: 900 })
     await page.goto(`/bo/cases/crossing/learn?step=${index}`)
@@ -76,7 +75,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const expectWrappedBoundary = async () => {
       await expect.poll(() => code.evaluate(element => {
         const lines = Array.from(element.querySelectorAll<HTMLElement>('.code-line'))
-        const next = lines.find(line => line.textContent?.trim().startsWith('let members = recover_members'))!
+        const next = lines.find(line => line.textContent?.trim().startsWith('let candidate = schedule_neighbors'))!
         const boundary = element.querySelector('.execution-boundary')!
         return Math.abs(next.getBoundingClientRect().top - boundary.getBoundingClientRect().top)
       })).toBeLessThanOrEqual(1)
@@ -106,11 +105,12 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await page.goto('/bo/cases/spider-web/learn')
     const trace = await readTrace(page, 'spider-web')
     const entry = trace.steps.findIndex(step => step.action === 'take-entry')
-    await seekStep(page, entry, 'jump')
+    await page.getByRole('button', { name: '下一个大步', exact: true }).click()
+    await expect(page).toHaveURL(new RegExp(`step=${entry}$`))
     const panel = page.getByRole('region', { name: '核心代码回放' })
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
     const code = panel.getByRole('region', { name: '取事件教学代码' })
-    const boundary = panel.getByRole('img', { name: /执行边界/ })
+    const boundary = panel.getByRole('img', { name: '执行边界：取事件之前' })
     await expect(boundary).toBeVisible()
     const offset = () => boundary.evaluate(element => {
       const line = element.parentElement!.querySelector('.code-line')!
@@ -143,16 +143,19 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await expect(panel).toContainText('参与线段分类')
     const classification = panel.getByRole('region', { name: '参与线段分类教学代码' })
     await expect(classification.locator('.code-line').last()).toBeAttached()
-    // The new source is short; use a constrained viewport to exercise its
-    // scrolling container without introducing fictitious algorithm statements.
-    const driver = trace.steps.findIndex(step => step.execution.module === 'driver' && step.execution.boundary === 3)
-    await seekStep(page, driver, 'jump')
-    const longCode = panel.locator('.execution-code')
+    // The full-height column fits classification; activity supplies real long code.
+    const activity = trace.steps.findIndex(step => step.execution.module === 'activity' && step.execution.entry)
+    expect(activity).toBeGreaterThan(following)
+    await seekStep(page, activity, 'jump')
+    const longCode = panel.getByRole('region', { name: '活动集合更新教学代码' })
     await expect(longCode.locator('.code-line').last()).toBeAttached()
-    await page.setViewportSize({ width: 1360, height: 480 })
-    await longCode.evaluate(element => { element.scrollTop = element.scrollHeight })
+    await page.setViewportSize({ width: 1360, height: 720 })
+    expect(await longCode.evaluate(element => {
+      element.scrollTop = element.scrollHeight
+      return element.scrollTop
+    })).toBeGreaterThan(0)
     await page.getByRole('button', { name: '上一个大步', exact: true }).click()
-    await expect(panel.getByRole('img', { name: /执行边界/ })).toBeInViewport()
+    await expect(panel).toContainText('第一条核心语句之前')
     await expect(page).toHaveTitle('蜘蛛网 · 逐步学习 · BO 结果查看器')
     await expect(page.locator('vite-error-overlay')).toHaveCount(0)
     expect(errors).toEqual([])
@@ -164,18 +167,19 @@ test('空队列真实返回 None，回退恢复未赋值而不出现未来事件
   const next = page.getByRole('button', { name: '下一步', exact: true })
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
-  const trace = await readTrace(page, 'empty')
-  await seekStep(page, trace.steps.findIndex(step => step.action === 'take-entry'), 'jump')
+  await next.click()
   await expect(variables.getByTestId('variable-next')).toContainText('未赋值')
   await next.click()
   await expect(variables.getByTestId('variable-next')).toContainText('None')
+  await next.click()
   await expect(next).toBeEnabled()
-  await expect(panel.getByRole('img', { name: /执行边界/ })).toBeVisible()
+  await expect(panel.getByRole('img', { name: '执行边界：break 之前' })).toBeVisible()
   await expect(panel).not.toContainText('队列为空，退出循环')
   await next.click()
   await expect(next).toBeDisabled()
-  await expect(page.getByRole('region', { name: '操作解释', exact: true })).toContainText('队列为空')
-  await expect(variables.getByTestId('variable-point')).toHaveCount(0)
+  await expect(panel).toContainText('队列为空，退出循环')
+  await expect(variables.getByTestId('variable-point')).toContainText('不可用')
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await expect(variables.getByTestId('variable-next')).toContainText('未赋值')

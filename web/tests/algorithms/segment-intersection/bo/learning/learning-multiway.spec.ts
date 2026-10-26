@@ -61,18 +61,21 @@ for (const example of cases) test(`共点教学：${example.name}`, async ({ pag
       }
       if (text.includes('交集已记入结果')) {
         await expect(current).toContainText('事件处理中')
-        await expect(active).toHaveText(example.slug === 'mixed' ? 'S2S0S3S1' : example.before)
+        await expect(active).toHaveText(example.before)
         await expect(explanation).toContainText('同一个几何点')
         if (example.slug === 'mixed' && /S0 × S1|S1 × S0/.test(text)) await expect(explanation).toContainText('在这里交叉')
         records++
+      }
+      if (example.slug === 'mixed' && text.includes('退出 S2：')) {
+        await expect(current).toContainText('事件处理中')
+        await expect(active).toHaveText('S0S1')
+        await expect(explanation).toContainText('退出 S2')
+        removed = true
       }
       if (example.slug === 'mixed' && text.includes('加入 S3：')) {
         await expect(current).toContainText('事件处理中')
         await expect(active).toHaveText(example.after)
         await expect(explanation).toContainText('开始者与穿过者')
-        expect(step.ends).toContain(2)
-        expect(step.active).not.toContain(2)
-        removed = true
         inserted = true
       }
       if (!event.includes('事件处理完成')) await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)

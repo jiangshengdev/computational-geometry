@@ -132,7 +132,6 @@ fn trace_values_share_compact_geometry_and_intersection_format() {
                     .context
                     .locals
                     .iter()
-                    .chain(&step.execution.context.parameters)
                     .find(|value| value.name == "result")
                     .unwrap();
                 if call.result.availability == "available" {

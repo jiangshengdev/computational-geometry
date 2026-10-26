@@ -72,10 +72,6 @@ function items(source: string) {
 }
 
 const fields: Record<string, Record<string, { type: string; meaning: MessageDescriptor }>> = {
-  Groups: {
-    covers: { type: 'Vec<Cover>', meaning: /*i18n*/ { id: "Maximal closed coverage intervals, separate from original input ids", message: "Maximal closed coverage intervals, separate from original input ids" } },
-    lines: { type: 'Vec<Line>', meaning: /*i18n*/ { id: "Support lines and coverage", message: "Support lines and coverage" } },
-  },
   Point: { x: { type: 'Rational', meaning: /*i18n*/ { id: "Point x coordinate", message: "Point x coordinate" } }, y: { type: 'Rational', meaning: /*i18n*/ { id: "Point y coordinate", message: "Point y coordinate" } } },
   SweepSegment: {
     left: { type: 'Point', meaning: /*i18n*/ { id: "Left endpoint of the sweep segment", message: "Left endpoint of the sweep segment" } }, right: { type: 'Point', meaning: /*i18n*/ { id: "Right endpoint of the sweep segment", message: "Right endpoint of the sweep segment" } },

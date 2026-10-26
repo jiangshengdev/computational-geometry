@@ -1,5 +1,4 @@
 import { expect, test, type Locator } from '@playwright/test'
-import { readTrace } from '../support/trace-navigation'
 
 async function box(locator: Locator) {
   await expect(locator).toBeVisible()
@@ -31,9 +30,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
   })
   browserTest(`辅助栏按需浮出与临时面板重置 ${browserName}`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
-    const trace = await readTrace(page, 'crossing')
-    const entry = trace.steps.findIndex(step => step.action === 'take-entry')
-    await page.goto(`/bo/cases/crossing/learn?step=${entry}`)
+    await page.goto('/bo/cases/crossing/learn?step=1')
     const code = page.getByRole('region', { name: '核心代码回放', exact: true })
     await expect(page.getByRole('region', { name: '操作解释', exact: true })).toBeHidden()
     await page.getByRole('button', { name: '待处理事件队列', exact: true }).click()
@@ -45,7 +42,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const outside = await box(code)
     await page.mouse.click(outside.x + 10, outside.y + 10)
     await expect(queue).toBeHidden()
-    await expect(page).toHaveURL(new RegExp(`step=${entry}$`))
+    await expect(page).toHaveURL(/step=1$/)
     const opener = page.getByRole('button', { name: '待处理事件队列', exact: true })
     await opener.click()
     await page.getByRole('button', { name: '关闭待处理事件队列', exact: true }).click()
