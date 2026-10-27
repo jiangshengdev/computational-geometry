@@ -23,8 +23,8 @@ const directory = process.env.BO_PERF_FIXTURES
   ? pathToFileURL(`${resolve(process.env.BO_PERF_FIXTURES)}/`)
   : new URL('../../../../../tests/fixtures/algorithms/segment_intersection/performance/', import.meta.url)
 const family = process.env.BO_PERF_FAMILY
-if (family !== undefined && !['sparse', 'dense', 'overlap'].includes(family)) {
-  throw new Error('BO_PERF_FAMILY must be sparse, dense or overlap')
+if (family !== undefined && !['sparse', 'dense', 'overlap', 'overlap-events'].includes(family)) {
+  throw new Error('BO_PERF_FAMILY must be sparse, dense, overlap or overlap-events')
 }
 const expected = new Map<string, Intersection[]>()
 const catalog: Preset[] = []
@@ -48,10 +48,25 @@ if (family !== undefined) {
       const i = BigInt(index)
       if (family === 'sparse') return segment('0', `${i}`, `${n}`, `${i}`)
       if (family === 'dense') return segment('0', `${i + 1n}`, '1', `${-((i + 1n) ** 2n)}`)
+      if (family === 'overlap-events') return segment('0', '0', `${n + 1n}`, '0')
       return segment(`${i}`, '0', `${i + n}`, '0')
     })
     const intersections: Intersection[] = []
-    if (family !== 'sparse') for (let left = 0; left < size; left++) for (let right = left + 1; right < size; right++) {
+    if (family === 'overlap-events') {
+      for (let index = 0; index < size; index++) {
+        const x = BigInt(index + 1)
+        segments.push(segment(`${x}`, '0', `${x}`, '0'))
+      }
+      for (let index = 0; index < size; index++) {
+        const x = BigInt(index + 1)
+        segments.push(segment(`${2n * x - 1n}/2`, '-1', `${2n * x + 1n}/2`, '1'))
+      }
+      for (let left = 0; left < size; left++) {
+        for (let right = left + 1; right < size; right++) intersections.push({ segments: [left, right], geometry: { type: 'overlap', start: point('0', '0'), end: point(`${n + 1n}`, '0') } })
+        for (let index = 0; index < size; index++) for (const right of [size + index, 2 * size + index]) intersections.push({ segments: [left, right], geometry: { type: 'point', point: point(`${index + 1}`, '0') } })
+      }
+      for (let index = 0; index < size; index++) intersections.push({ segments: [size + index, 2 * size + index], geometry: { type: 'point', point: point(`${index + 1}`, '0') } })
+    } else if (family !== 'sparse') for (let left = 0; left < size; left++) for (let right = left + 1; right < size; right++) {
       const i = BigInt(left)
       const j = BigInt(right)
       intersections.push({ segments: [left, right], geometry: family === 'dense'

@@ -26,7 +26,7 @@ pub(super) fn locate(
     let compare_before = |a, b| compare(&state.groups, a, b, point, Side::Before);
     let first = state
         .active
-        .lower_bound(|g| state.groups[g].height(&point.x) >= point.y);
+        .lower_bound(|g| !state.groups[g].compare_height(point).is_lt());
     let lower = first.map_or_else(
         || state.active.left_of(|_| true),
         |g| state.active.neighbors(g, &compare_before).0,
@@ -37,7 +37,7 @@ pub(super) fn locate(
         if (recording.cancelled)() {
             return None;
         }
-        if state.groups[g].height(&point.x) != point.y {
+        if !state.groups[g].compare_height(point).is_eq() {
             break;
         }
         block.push(g);

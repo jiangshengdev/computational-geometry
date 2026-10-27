@@ -26,10 +26,18 @@ pub(crate) struct SweepSegment {
 }
 
 impl SweepSegment {
-    fn new(segment: &Segment, shear: &Rational) -> Self {
-        let transform = |point: &Point| Point {
-            x: &point.x + shear * &point.y,
-            y: point.y.clone(),
+    fn new(segment: &Segment, shear: &Rational, transformed: &mut BTreeMap<Point, Point>) -> Self {
+        let mut transform = |point: &Point| {
+            if shear.numer().bits() == 0 {
+                return point.clone();
+            }
+            transformed
+                .entry(point.clone())
+                .or_insert_with(|| Point {
+                    x: &point.x + shear * &point.y,
+                    y: point.y.clone(),
+                })
+                .clone()
         };
         let start = transform(&segment.start);
         let end = transform(&segment.end);
@@ -99,6 +107,8 @@ struct SweepState {
     groups: Vec<Group>,
     group_of: Vec<Option<usize>>,
     result: Vec<Intersection>,
+    // Allocated lazily by recording; membership mutations invalidate it.
+    groups_value: RefCell<Option<Arc<str>>>,
 }
 
 /// Return every intersecting input pair with its exact point or full overlap.
@@ -177,10 +187,15 @@ fn sweep(
                 .join(", ")
         ))
     });
-    let segments: Vec<_> = segments
-        .iter()
-        .map(|segment| SweepSegment::new(segment, &shear))
-        .collect();
+    let segments: Vec<_> = {
+        // Shared endpoints are transformed once. This initialization-local
+        // cache has at most 2n entries and is dropped inside the timed sweep.
+        let mut transformed = BTreeMap::new();
+        segments
+            .iter()
+            .map(|segment| SweepSegment::new(segment, &shear, &mut transformed))
+            .collect()
+    };
     let trace_segments = steps
         .as_ref()
         .map(|_| Arc::<str>::from(sweep_segments_value(&segments)));
@@ -217,6 +232,7 @@ fn sweep(
         groups,
         group_of,
         result: Vec::new(),
+        groups_value: RefCell::new(None),
     };
 
     let capture = RefCell::new(TraceCapture::default());

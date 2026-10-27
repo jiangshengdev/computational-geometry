@@ -1,5 +1,6 @@
 //! Fixed supporting lines and two indexes of the same dynamic membership.
 use super::{Point, Rational, SweepSegment};
+use std::cell::{Ref, RefCell};
 use std::cmp::Ordering;
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -8,11 +9,41 @@ pub(super) struct Group {
     pub(super) intercept: Rational,
     pub(super) members: BTreeSet<usize>,
     right_ends: BTreeSet<(Rational, usize)>,
+    height_cache: RefCell<Option<(Rational, Rational)>>,
 }
 
 impl Group {
     pub(super) fn height(&self, u: &Rational) -> Rational {
         &self.slope * u + &self.intercept
+    }
+
+    fn cached_height(&self, u: &Rational) -> Ref<'_, Rational> {
+        // Supporting geometry never changes with membership. Cache only the
+        // height, not the event-side order: same-x events still compare slopes
+        // against their own y and Before/After phase below. No global clearing.
+        let mut cache = self.height_cache.borrow_mut();
+        if cache.as_ref().is_none_or(|(x, _)| x != u) {
+            // This private comparison-only fraction need not be reduced.
+            // All denominators are positive; public geometry and teaching values
+            // still use height(), which returns a normalized rational.
+            // Construct directly from fixed coefficients, never a past height,
+            // so numerator/denominator bit lengths cannot accumulate by event.
+            let denominator = self.slope.denom() * u.denom();
+            let height = Rational::new_raw(
+                self.slope.numer() * u.numer() * self.intercept.denom()
+                    + self.intercept.numer() * &denominator,
+                denominator * self.intercept.denom(),
+            );
+            *cache = Some((u.clone(), height));
+        }
+        drop(cache);
+        Ref::map(self.height_cache.borrow(), |cache| {
+            &cache.as_ref().expect("height initialized").1
+        })
+    }
+
+    pub(super) fn compare_height(&self, point: &Point) -> Ordering {
+        compare_heights(&self.cached_height(&point.x), &point.y)
     }
 
     pub(super) fn insert(&mut self, id: usize, segment: &SweepSegment) {
@@ -54,6 +85,7 @@ pub(super) fn initialize(
                     intercept: segment.intercept.clone(),
                     members: BTreeSet::new(),
                     right_ends: BTreeSet::new(),
+                    height_cache: RefCell::new(None),
                 });
                 id
             });
@@ -68,14 +100,26 @@ pub(super) enum Side {
     After,
 }
 
+// Positive denominators and arbitrary-precision integers make cross products
+// exact and overflow-free. Avoid Ratio's generic continued-division comparison,
+// which must also support bounded integer types. Reduction is unnecessary.
+fn compare_heights(a: &Rational, b: &Rational) -> Ordering {
+    if a.denom() == b.denom() {
+        a.numer().cmp(b.numer())
+    } else {
+        (a.numer() * b.denom()).cmp(&(b.numer() * a.denom()))
+    }
+}
+
 pub(super) fn compare(groups: &[Group], a: usize, b: usize, point: &Point, side: Side) -> Ordering {
     if a == b {
         return Ordering::Equal;
     }
-    let height = groups[a].height(&point.x);
-    height.cmp(&groups[b].height(&point.x)).then_with(|| {
+    let height = groups[a].cached_height(&point.x);
+    compare_heights(&height, &groups[b].cached_height(&point.x)).then_with(|| {
         let slopes = groups[a].slope.cmp(&groups[b].slope);
-        if height < point.y || (height == point.y && matches!(side, Side::After)) {
+        let position = compare_heights(&height, &point.y);
+        if position.is_lt() || (position.is_eq() && matches!(side, Side::After)) {
             slopes
         } else {
             slopes.reverse()

@@ -36,38 +36,38 @@ pub(super) fn active_members(state: &SweepState) -> Vec<usize> {
 }
 
 pub(super) fn status_bindings(state: &SweepState) -> Vec<Variable> {
+    // All displayed group fields are fixed geometry or membership-derived.
+    // Preserve immutable Arc values held by earlier steps on invalidation.
+    let mut groups_value = state.groups_value.borrow_mut();
+    let groups_value = groups_value.get_or_insert_with(|| {
+        Arc::from(format!(
+            "[{}]",
+            state
+                .groups
+                .iter()
+                .enumerate()
+                .map(|(id, g)| format!(
+                    "{id}: {{ slope: {}, intercept: {}, members: {:?}, rightmost: {} }}",
+                    g.slope,
+                    g.intercept,
+                    g.members,
+                    if g.members.is_empty() {
+                        "None".to_owned()
+                    } else {
+                        format!("Some({})", g.farthest().0)
+                    }
+                ))
+                .collect::<Vec<_>>()
+                .join(", ")
+        ))
+    });
     vec![
         Variable::available(
             "active_groups",
             "Status<GroupId>",
             format!("{:?}", state.active.ordered()),
         ),
-        Variable::available(
-            "groups",
-            "Vec<Group>",
-            format!(
-                "[{}]",
-                state
-                    .groups
-                    .iter()
-                    .enumerate()
-                    .map(|(id, g)| {
-                        format!(
-                            "{id}: {{ slope: {}, intercept: {}, members: {:?}, rightmost: {} }}",
-                            g.slope,
-                            g.intercept,
-                            g.members,
-                            if g.members.is_empty() {
-                                "None".to_owned()
-                            } else {
-                                format!("Some({})", g.farthest().0)
-                            }
-                        )
-                    })
-                    .collect::<Vec<_>>()
-                    .join(", ")
-            ),
-        ),
+        Variable::available("groups", "Vec<Group>", Arc::clone(groups_value)),
     ]
 }
 

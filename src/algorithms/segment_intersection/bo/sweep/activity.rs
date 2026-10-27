@@ -19,6 +19,7 @@ pub(super) fn update(
     for &id in &event.ends {
         let g = state.group_of[id].expect("nonzero end");
         state.groups[g].remove(id, &state.segments[id]);
+        state.groups_value.get_mut().take();
         recording.observe(state, point, 1, "leave", || {
             (
                 vec![id],

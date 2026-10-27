@@ -54,6 +54,7 @@ pub(super) fn record(
                 .copied();
         }
         state.groups[g].insert(id, &state.segments[id]);
+        state.groups_value.get_mut().take();
         recording.observe(state, point, 2, "join", || {
             (
                 vec![id],
@@ -156,9 +157,14 @@ fn append(
     })?;
     let mut ordered_pair = pair;
     ordered_pair.sort_unstable();
-    let restore = |p: Point| Point {
-        x: p.x - &state.shear * &p.y,
-        y: p.y,
+    let restore = |p: Point| {
+        if state.shear.numer().bits() == 0 {
+            return p;
+        }
+        Point {
+            x: p.x - &state.shear * &p.y,
+            y: p.y,
+        }
     };
     let geometry = match scan_geometry {
         Geometry::Point(p) => Geometry::Point(restore(p)),
