@@ -1,6 +1,6 @@
 # 我们究竟要求什么 · 下集
 
-内容依据：[第 1 章文章](../../docs-site/docs/segment-intersection/what-we-compute.mdx)。制作范围见 [#288](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/288)，父规格为 [#287](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/287)。本文是完整分镜与字幕源稿；不含独立口播稿、音频或猜测的时间戳。[上集](../intersection-goals/storyboard.md)与[制作对照](../intersection-goals/production-reference.md)提供前集内容和参考能力。
+内容依据：[第 1 章文章](../../../docs-site/docs/segment-intersection/what-we-compute.mdx)。制作范围见 [#288](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/288)，父规格为 [#287](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/287)。本文是完整分镜与字幕源稿；不含独立口播稿、音频或猜测的时间戳。[上集](../intersection-goals/storyboard.md)与[制作对照](../intersection-goals/production-reference.md)提供前集内容和参考能力。
 
 ## 呈现约定
 
