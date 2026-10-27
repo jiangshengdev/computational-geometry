@@ -45,6 +45,8 @@ function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; lea
   const { _: translate } = useMessages()
   const computation = useComputation(preset, learning)
   const [selected, setSelected] = useState<Intersection | null>(null)
+  const lastFocusedPair = useRef<HTMLElement | null>(null)
+  const pointerFocusTarget = useRef<EventTarget | null>(null)
   const [hover, setHover] = useHoverTarget()
   const detailsRef = useRef<HTMLElement>(null)
   const [detailsScrollable, setDetailsScrollable] = useState(false)
@@ -97,6 +99,29 @@ function CaseViewer({ preset, learning, zenMode, layout }: { preset: Preset; lea
                       target.focus()
                     }}>
                       <ToggleButtonGroup selectionMode="single" orientation="vertical" isDetached className="w-full gap-1 p-1" aria-label={t`Select an intersecting pair`}
+                        render={props => <div {...props}
+                          onPointerDownCapture={event => { pointerFocusTarget.current = event.target }}
+                          onKeyDownCapture={event => {
+                            pointerFocusTarget.current = null
+                            // The toolbar moves focus to an edge before the browser handles Tab.
+                            if (event.key === 'Tab') lastFocusedPair.current = event.target as HTMLElement
+                            props.onKeyDownCapture?.(event)
+                          }}
+                          onBlurCapture={event => {
+                            if (!event.currentTarget.contains(event.relatedTarget) && !lastFocusedPair.current) lastFocusedPair.current = event.target
+                          }}
+                          onFocusCapture={event => {
+                            // React Aria's toolbar restores focus even during a pointer press,
+                            // scrolling the pressed item away before pointerup. Restore only
+                            // when focus enters without a pointer targeting this item.
+                            const pointerTarget = pointerFocusTarget.current
+                            pointerFocusTarget.current = null
+                            if (event.currentTarget.contains(event.relatedTarget)) return
+                            const previous = lastFocusedPair.current
+                            lastFocusedPair.current = null
+                            if (pointerTarget instanceof Node && event.target.contains(pointerTarget)) return
+                            if (previous && event.currentTarget.contains(previous)) previous.focus()
+                          }} />}
                         selectedKeys={selected ? [pairName(selected)] : []}
                         onSelectionChange={keys => setSelected(results.find(result => keys.has(pairName(result))) ?? null)}>
                         {results.map(result => <ToggleButton key={pairName(result)} id={pairName(result)} className="pair-item w-full justify-start"
