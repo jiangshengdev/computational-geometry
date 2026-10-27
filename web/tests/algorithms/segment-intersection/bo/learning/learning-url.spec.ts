@@ -84,15 +84,15 @@ test('教学步骤 URL：直达、刷新和新标签恢复同一步骤', async (
   const path = `/bo/cases/crossing/learn?step=${insert}`
   await page.goto(path)
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(insert))
-  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
+  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('重插包含 S0 的组')
   await expect(page.getByRole('region', { name: '核心代码回放' }).getByRole('img', { name: /执行边界/ })).toBeVisible()
   await page.reload()
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(insert))
-  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
+  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('重插包含 S0 的组')
   const shared = await context.newPage()
   await shared.goto(page.url())
   await expect(shared.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(insert))
-  await expect(shared.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
+  await expect(shared.getByRole('region', { name: '操作解释' })).toContainText('重插包含 S0 的组')
   await shared.close()
 })
 
@@ -120,7 +120,7 @@ test('教学步骤 URL：所有控件同步真实内容', async ({ page }) => {
   await expect(page.getByRole('region', { name: '当前事件' })).toContainText('S0 起点 (0, 0)')
   await seekStep(page, insert, 'jump')
   await expectStep(page, insert)
-  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
+  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('重插包含 S0 的组')
   await previous.click()
   await expectStep(page, insert - 1)
   await page.keyboard.press('ArrowRight')
@@ -176,7 +176,7 @@ test('教学步骤 URL：前导零是有效整数且不主动改写地址', asyn
   const query = `?step=00${insert}`
   await page.goto(`/bo/cases/crossing/learn${query}`)
   await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(insert))
-  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
+  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('重插包含 S0 的组')
   expect(new URL(page.url()).search).toBe(query)
 })
 
@@ -225,7 +225,7 @@ test('教学步骤 URL：真实轨迹加载期间不误判有效步骤越界', a
   expect(new URL(page.url()).search).toBe(`?step=${insert}`)
   release()
   await expectStep(page, insert)
-  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
+  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('重插包含 S0 的组')
 })
 
 test('教学步骤 URL：请求失败保持计算错误而不误报越界', async ({ page }) => {
@@ -275,7 +275,7 @@ for (const late of ['success', 'failure']) for (const destination of ['valid', '
     await expect(page).toHaveURL(`/bo/cases/crossing/learn?step=${step}`)
     if (destination === 'valid') {
       await expectStep(page, insert)
-      await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S0')
+      await expect(page.getByRole('region', { name: '操作解释' })).toContainText('重插包含 S0 的组')
       await expect(page.getByRole('alert')).toHaveCount(0)
     } else {
       await expect(page.getByRole('alert')).toContainText('教学步骤超出范围')

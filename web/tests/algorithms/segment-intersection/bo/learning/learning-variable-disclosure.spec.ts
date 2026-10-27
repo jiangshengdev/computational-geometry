@@ -120,7 +120,9 @@ for (const browserName of ['chromium', 'webkit'] as const) {
 
 test('单行坐标、非空编号列表及标量直接显示，不提供折叠', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
-  const index = trace.steps.findIndex(step => step.execution.context.locals.some(variable => variable.name === 'active_groups' && variable.value !== null && trace.values[variable.value] === '[0]'))
+  const index = trace.steps.findIndex(step =>
+    step.execution.context.locals.some(variable => variable.name === 'active_groups' && variable.value !== null && trace.values[variable.value] === '[0]')
+    && ['active_groups', 'point', 'shear'].every(name => step.execution.context.locals.some(variable => variable.name === name && variable.availability === 'available' && variable.value !== null)))
   expect(index).toBeGreaterThan(0)
   await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const panel = page.getByRole('region', { name: '当前执行上下文', exact: true })

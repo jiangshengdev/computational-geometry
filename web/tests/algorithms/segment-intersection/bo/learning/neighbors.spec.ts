@@ -23,7 +23,7 @@ test('相邻检测：删除中间线段后发现交点', async ({ page }) => {
   for (const [index, step] of trace.steps.entries()) {
     if (!['complete', 'check', 'discover', 'take-empty'].includes(step.action)) continue
     await seekStep(page, index, 'jump')
-    const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
+    const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻支撑线组|发现未来交点)/ }).allTextContents()).join('\n')
     await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(step.current ? 1 : 0)
     const event = (await current.locator('.coordinates:not([aria-hidden="true"])').allTextContents()).join('')
     if (event === 'S2 起点 (2, 8)' && (await current.innerText()).includes('处理完成')) {
@@ -31,10 +31,10 @@ test('相邻检测：删除中间线段后发现交点', async ({ page }) => {
       await expect(queue).not.toContainText('I0')
       separated = true
     }
-    if (text.startsWith('检查相邻线段 S0 × S2')) {
+    if (text.startsWith('检查相邻支撑线组，当前成员为 S0 × S2')) {
       expect(separated).toBe(true)
       await expect(current).toContainText('S1 终点 (3, 5)')
-      await expect(explanation).toContainText('退出 S1 后')
+      await expect(explanation).toContainText('检查更新块内部及两侧的邻接组')
       await expect(active).toHaveText('S0S2')
       await expect(queue).not.toContainText('I0')
       for (const id of [0, 2]) {
@@ -51,6 +51,7 @@ test('相邻检测：删除中间线段后发现交点', async ({ page }) => {
     }
   }
   expect(discovered).toBe(true)
+  await seekStep(page, trace.steps.length - 1, 'jump')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (5, 5)：S0 × S2')
   await expect(page.getByRole('img', { name: /^交集 / })).toHaveCount(1)
   await expect(active).toHaveText('空')
@@ -86,11 +87,11 @@ test('相邻检测：插入和交叉后发现新邻居', async ({ page }) => {
   for (const [index, step] of trace.steps.entries()) {
     if (!['complete', 'check', 'discover', 'take-empty'].includes(step.action)) continue
     await seekStep(page, index, 'jump')
-    const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻线段|发现未来交点)/ }).allTextContents()).join('\n')
+    const text = (await explanation.getByRole('paragraph').filter({ hasText: /^(检查相邻支撑线组|发现未来交点)/ }).allTextContents()).join('\n')
     await expect(current.locator('.coordinates:not([aria-hidden="true"])')).toHaveCount(step.current ? 1 : 0)
     const event = (await current.locator('.coordinates:not([aria-hidden="true"])').allTextContents()).join('')
-    if (text.startsWith('检查相邻线段 S0 × S1')) {
-      await expect(explanation).toContainText('加入 S1 后')
+    if (text.startsWith('检查相邻支撑线组，当前成员为 S0 × S1')) {
+      await expect(current).toContainText('S1 起点 (1, 3)')
       await expect(queue).not.toContainText('I0')
       inserted = true
     }
@@ -100,10 +101,10 @@ test('相邻检测：插入和交叉后发现新邻居', async ({ page }) => {
       await expect(queue).not.toContainText('I1')
       separated = true
     }
-    if (text.startsWith('检查相邻线段 S0 × S2')) {
+    if (text.startsWith('检查相邻支撑线组，当前成员为 S0 × S2')) {
       expect(separated).toBe(true)
       await expect(current).toContainText('I0 (3, 3)')
-      await expect(explanation).toContainText(/交叉的 (S0 与 S1|S1 与 S0) 换序后/)
+      await expect(explanation).toContainText('检查更新块内部及两侧的邻接组')
       await expect(active).toHaveText('S1S0S2')
       await expect(queue).not.toContainText('I1')
       await expect(page.getByRole('img', { name: '输入 S0', exact: true })).toHaveAttribute('data-checked', 'true')
@@ -122,6 +123,7 @@ test('相邻检测：插入和交叉后发现新邻居', async ({ page }) => {
     }
   }
   expect(inserted && discovered).toBe(true)
+  await seekStep(page, trace.steps.length - 1, 'jump')
   const result = page.getByRole('region', { name: '学习结果' })
   await expect(result).toContainText('I0 (3, 3)：S0 × S1')
   await expect(result).toContainText('I1 (6, 6)：S0 × S2')

@@ -58,7 +58,10 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     const trace = await readTrace(page, scrollingCase.id)
     const target = trace.steps.findIndex(step => step.action === 'locate' && step.active.length === scrollingCase.segments.length && step.subjects[0] === step.active[0])
     expect(target).toBeGreaterThan(0)
-    const prior = mode === '回退' ? target + 1 : target - 1
+    const prior = mode === '回退'
+      ? trace.steps.findIndex((step, index) => index > target && step.action === 'detach' && !step.active.includes(trace.steps[target].subjects[0]))
+      : target - 1
+    expect(prior).toBeGreaterThanOrEqual(0)
     await page.goto(`/bo/cases/${scrollingCase.id}/learn?step=${prior}`)
     const slider = page.getByRole('slider', { name: '教学步骤' })
     await expect(slider).toHaveValue(String(prior))
@@ -66,7 +69,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     const active = page.getByRole('region', { name: '活动线段顺序' })
     const row = active.getByRole('listitem').filter({ hasText: new RegExp(`^S${trace.steps[target].subjects[0]}$`) })
     if (mode === '回退') {
-      // The following detach has removed this group. Returning to locate must
+      // Detach has removed this group. Returning across the microsteps to locate must
       // restore and reveal it even when there was no source row to scroll.
       await expect(row).toHaveCount(0)
       const source = await scrollPanel(active.getByRole('listitem').first(), false)
@@ -77,7 +80,9 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     const control = mode === '滑块' ? slider : page.getByRole('button', { name: mode === '回退' ? '上一步' : '下一步', exact: true })
     await control.focus()
     const before = await page.evaluate(() => window.scrollY)
-    if (mode === '前进' || mode === '回退') await control.click()
+    if (mode === '回退') {
+      for (let index = prior; index > target; index--) await control.click()
+    } else if (mode === '前进') await control.click()
     else await control.press('ArrowRight')
     await expect(slider).toHaveValue(String(target))
     await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))

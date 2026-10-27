@@ -70,7 +70,7 @@ test('标题序号：同点锚点、换序、缩放平移与空列表', async ({
   await activeTitle.hover()
   await expect(markers).toHaveCount(0)
   const trace = await readTrace(page, 'crossing')
-  await seekStep(page, stepIndex(trace, step => step.action === 'reorder'), 'jump')
+  await seekStep(page, stepIndex(trace, step => step.action === 'reorder' && step.passes.includes(0) && step.passes.includes(1)), 'jump')
   await page.getByRole('button', { name: '放大', exact: true }).click()
   const bounds = (await svg.boundingBox())!
   await page.mouse.move(bounds.x + bounds.width / 2, bounds.y + 150)

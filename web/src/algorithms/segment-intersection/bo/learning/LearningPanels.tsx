@@ -13,7 +13,7 @@ import { Trans, Plural } from '@lingui/react/macro'
 
 export function learningPanels(state: LearningState, replay: LearningReplay, translate: I18n['_']) {
   const {
-    preset, trace, generated, step, complete, phase, pointInputs, recordedOverlap,
+    preset, trace, step, complete, phase, pointInputs, recordedOverlap,
     overlaps, visibleOverlaps, endingOverlaps, continuingOverlapInputs, checkedInputs,
     checkedWithoutDiscovery, points, pointName, newlyScheduled,
   } = state
@@ -39,7 +39,7 @@ export function learningPanels(state: LearningState, replay: LearningReplay, tra
         {step.action === 'take' && <p><Trans>Take <span className="coordinates learning-hover-item" {...eventProps(step.current!)}>{pointName(step.current!)}</span> from the front of the queue and stop the sweep line here. The current event has left the pending queue; no insertion, removal, or reordering has happened yet. First check the participants at this point and record each pair's intersection, then update the active order following the real actions.</Trans></p>}
         {step.action === 'take-entry' && <p><Trans>Enter the event retrieval module before its first core statement executes. The current event and drawing retain the previous state; the next microstep will take the first queued event.</Trans></p>}
         {step.action === 'take-pop' && <p><Trans>queue.pop_first() has executed and its return value is stored in next. point and event have not been matched and bound yet, so the drawing retains its previous position. This is an intermediate module state.</Trans></p>}
-        {step.action === 'take-empty' && <p>{generated ? <Trans>next is None: the event queue is empty and the sweep loop exits. Learning is complete.</Trans> : <Trans>next is None: the event queue is empty and the sweep loop exits. Confirming the final results.</Trans>}</p>}
+        {step.action === 'take-empty' && <p>{complete ? <Trans>next is None: the event queue is empty and the sweep loop exits. Learning is complete.</Trans> : <Trans>next is None: the event queue is empty and the sweep loop exits. Confirming the final results.</Trans>}</p>}
         {step.action === 'micro' && <p><Trans>Algorithm microstep · intermediate state. The execution boundary, core variables, and drawing come from the same execution instant; the groups at this point are only a teaching summary of the event.</Trans></p>}
         {pointInputs.length > 0 && <p><Trans>The zero-length inputs <span className="coordinates">{inputReferences(pointInputs)}</span> have coincident endpoints, so they belong to both the start and end groups without entering the persistent active order. They participate in pairs only at this exact position: contact in a segment's interior or at a closed endpoint both counts. Coincident points retain separate input identities. Point events without a matching pair also complete normally.</Trans></p>}
         {step.action === 'locate' && <p><Trans>Locate all active supporting-line groups at this exact event height. Other heights keep their own processing progress.</Trans></p>}

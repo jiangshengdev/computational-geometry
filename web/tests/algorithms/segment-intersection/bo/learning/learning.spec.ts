@@ -99,6 +99,8 @@ test('入门学习：交叉的发现、换序、退出和重新开始', async ({
   }
   await seekStep(page, stepIndex(trace, step => step.action === 'take-empty'), 'jump')
   await expect(explanation).toContainText('next 为 None')
+  await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
+  await seekStep(page, trace.steps.length - 1, 'jump')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('I0 (2, 2)：S0 × S1')
   await expect(next).toBeDisabled()
   await page.getByRole('button', { name: '重新开始', exact: true }).click()
@@ -135,6 +137,8 @@ test('入门学习：无交点完整流程与切换隔离', async ({ page }) => 
   }
   await seekStep(page, stepIndex(trace, step => step.action === 'take-empty'), 'jump')
   await expect(page.getByRole('region', { name: '操作解释' })).toContainText('next 为 None')
+  await expect(page.getByRole('region', { name: '学习结果' })).toHaveCount(0)
+  await seekStep(page, trace.steps.length - 1, 'jump')
   await expect(page.getByRole('region', { name: '学习结果' })).toContainText('结果为空')
   await expect(next).toBeDisabled()
   await page.getByRole('button', { name: '重新开始', exact: true }).click()

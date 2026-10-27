@@ -156,7 +156,7 @@ for (const invalid of [
   { path: '/missing', message: '未知页面路径。' },
   { path: '/bo/cases/not-a-case', message: '未知案例：not-a-case' },
   { path: '/bo/cases/not-a-case/learn', message: '未知案例：not-a-case' },
-  { path: '/bo/cases/empty/learn?step=5', message: '教学步骤超出范围：此案例的有效步骤为 0–4。', id: 'empty', learn: true },
+  { path: '/bo/cases/empty/learn?step=6', message: '教学步骤超出范围：此案例的有效步骤为 0–5。', id: 'empty', learn: true },
   { path: '/bo/cases/crossing/extra', message: '未知页面路径。', id: 'crossing', learn: true },
 ]) {
   test(`三页路由：非法链接 ${invalid.path} 保留地址并提供恢复入口`, async ({ page }) => {
