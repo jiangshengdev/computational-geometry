@@ -1,4 +1,11 @@
-import BOProof.Selection
+/-
+Copyright (c) 2026 Jiang Sheng. All rights reserved.
+No project license is specified.
+Authors: Jiang Sheng
+-/
+module
+
+public import BOProof.Selection
 
 /-! Kernel-reported trust dependencies of the public acceptance theorems. -/
 #print axioms BOProof.shear_inverse

@@ -1,6 +1,15 @@
-import BOProof.Integerization
+/-
+Copyright (c) 2026 Jiang Sheng. All rights reserved.
+No project license is specified.
+Authors: Jiang Sheng
+-/
+module
+
+public import BOProof.Integerization
 
 /-! Actual segment intersections, rather than arbitrary support-line intersections. -/
+@[expose] public section
+
 namespace BOProof
 
 abbrev IPoint := ℤ × ℤ

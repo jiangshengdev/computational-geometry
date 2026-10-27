@@ -1,2 +1,4 @@
-import BOProof.Basic
-import BOProof.Trust
+module
+
+public import BOProof.Basic
+public import BOProof.Trust

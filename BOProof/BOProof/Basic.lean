@@ -1,6 +1,15 @@
-import Mathlib
+/-
+Copyright (c) 2026 Jiang Sheng. All rights reserved.
+No project license is specified.
+Authors: Jiang Sheng
+-/
+module
+
+public import Mathlib
 
 /-! Rational input identities and real closed-segment geometry. -/
+@[expose] public section
+
 namespace BOProof
 
 abbrev QPoint := ℚ × ℚ

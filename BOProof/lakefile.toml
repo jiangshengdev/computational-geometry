@@ -7,6 +7,8 @@ defaultTargets = ["BOProof"]
 pp.unicode.fun = true # pretty-prints `fun a ↦ b`
 relaxedAutoImplicit = false
 weak.linter.mathlibStandardSet = true
+# Keep header validation without asserting mathlib's default Apache license for this project.
+linter.style.header.license = "No project license is specified."
 maxSynthPendingDepth = 3
 
 [[require]]

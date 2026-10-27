@@ -1,6 +1,15 @@
-import BOProof.Overlap
+/-
+Copyright (c) 2026 Jiang Sheng. All rights reserved.
+No project license is specified.
+Authors: Jiang Sheng
+-/
+module
+
+public import BOProof.Overlap
 
 /-! The explicit safety constant and strict order, for the positive branch only. -/
+@[expose] public section
+
 namespace BOProof
 
 theorem rational_separation (q r : ℚ) (M : ℕ) (hM : 1 ≤ M)

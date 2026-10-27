@@ -1,6 +1,15 @@
-import BOProof.Events
+/-
+Copyright (c) 2026 Jiang Sheng. All rights reserved.
+No project license is specified.
+Authors: Jiang Sheng
+-/
+module
+
+public import BOProof.Events
 
 /-! Collinear intersection endpoints are input endpoints, including singleton intersections. -/
+@[expose] public section
+
 namespace BOProof
 
 theorem closedSegment_eq_segment (a b : RPoint) : closedSegment a b = segment ℝ a b := by
