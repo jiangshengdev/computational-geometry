@@ -188,6 +188,36 @@ fn empty_singleton_and_disjoint_inputs_have_no_pairs() {
     );
 }
 
+#[test]
+fn extending_a_live_group_rechecks_the_unchanged_neighbor() {
+    // Initial coverage ends before x=4; a new member extends it while the
+    // support-line adjacency stays unchanged. That start must schedule (4,0).
+    let input = [
+        segment(0, 0, 2, 0),
+        segment(1, 0, 7, 0),
+        segment(0, 4, 6, -2),
+    ];
+    let expected = oracle(&input);
+    assert_eq!(expected.len(), 2);
+    assert_eq!(results(&input), expected);
+    assert_identity_invariance(&input, &expected);
+}
+
+#[test]
+fn a_group_reactivated_after_a_gap_does_not_cover_the_gap() {
+    let input = [
+        segment(0, 0, 1, 0),
+        segment(3, 0, 7, 0),
+        segment(0, 2, 6, -4), // intersection at x=2 is in the gap
+        segment(0, 5, 6, -1), // intersection at x=5 is in the second member
+        segment(2, 0, 2, 0),
+        segment(5, 0, 5, 0),
+    ];
+    let expected = oracle(&input);
+    assert_eq!(results(&input), expected);
+    assert_identity_invariance(&input, &expected);
+}
+
 // Used only to filter generated general-position samples, not to compute results.
 fn cross(ax: &Rational, ay: &Rational, bx: &Rational, by: &Rational) -> Rational {
     ax * by - ay * bx

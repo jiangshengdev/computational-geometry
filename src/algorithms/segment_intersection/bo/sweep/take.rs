@@ -8,13 +8,21 @@ pub(super) struct TakenEvent {
 }
 
 pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> Option<TakenEvent> {
+    let status = recording
+        .steps
+        .as_ref()
+        .map(|_| observation::status_bindings(state));
+    let active_snapshot = recording
+        .steps
+        .as_ref()
+        .map(|_| observation::active_members(state));
     let SweepState {
         queue,
-        active,
         result,
         shear,
         ..
     } = state;
+    let active = active_snapshot.as_deref().unwrap_or(&[]);
     let shear = &*shear;
     let input_value = recording.input_value;
     let trace_segments = recording.trace_segments;
@@ -37,6 +45,7 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
             None,
             trace_segments.as_ref().expect("tracing captures segments"),
             shear,
+            status.as_deref().expect("trace status"),
         );
         let queue_argument = step
             .execution
@@ -80,6 +89,7 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
             None,
             trace_segments.as_ref().expect("tracing captures segments"),
             shear,
+            status.as_deref().expect("trace status"),
         );
         step.execution.calls.push(ExecutionCall {
             line: 1,
@@ -133,6 +143,7 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
                 None,
                 trace_segments.as_ref().expect("tracing captures segments"),
                 shear,
+                status.as_deref().expect("trace status"),
             );
             step.execution.control(2, "else", "entered");
             step.execution.control(2, "break", "pending");
@@ -171,6 +182,7 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
             Some((&point, &event)),
             trace_segments.as_ref().expect("tracing captures segments"),
             shear,
+            status.as_deref().expect("trace status"),
         );
         step.execution.control(2, "else", "skipped");
         step.execution.control(2, "break", "skipped");
@@ -198,11 +210,14 @@ impl SweepStep {
         bound: Option<(&Point, &Event)>,
         segments_value: &Arc<str>,
         shear: &Rational,
+        status: &[Variable],
     ) {
         self.execution.module = "take";
         self.execution.boundary = Some(boundary);
         self.execution.entry = boundary == 0;
         self.sweep_context(segments_value, shear);
+        self.execution.context.locals.retain(|v| v.name != "active");
+        self.execution.context.locals.extend_from_slice(status);
         self.take_bindings(boundary, next, bound);
     }
 

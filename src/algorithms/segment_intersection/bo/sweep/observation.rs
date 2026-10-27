@@ -1,10 +1,8 @@
-//! Shared lazy teaching construction; state is only borrowed at each observation.
+//! Lazy snapshots of the sole live state, with actual function call identities.
 use super::super::teaching::*;
-use super::{Event, Point, Rational};
-use crate::Intersection;
+use super::{Point, SweepState};
 use std::{
     cell::{Cell, RefCell},
-    collections::BTreeMap,
     sync::Arc,
 };
 
@@ -15,24 +13,75 @@ pub(super) struct Recorder<'batch, 'run> {
     pub(super) next_call: &'run Cell<usize>,
     pub(super) cancelled: &'run dyn Fn() -> bool,
     pub(super) capture: &'run RefCell<TraceCapture>,
+    pub(super) frames: Vec<Frame>,
 }
 
-/// A temporary read of the one sweep state, never a second owner.
-pub(super) struct ObservationState<'a> {
-    pub(super) queue: &'a BTreeMap<Point, Event>,
-    pub(super) active: &'a [usize],
-    pub(super) result: &'a [Intersection],
-    pub(super) height_order: &'a [std::cmp::Ordering],
-    pub(super) shear: &'a Rational,
+pub(super) struct Frame {
+    id: usize,
+    function: &'static str,
+    module: &'static str,
+    result_type: &'static str,
+    parameters: Vec<Variable>,
+    caller: SweepStep,
+}
+
+/// Everything here, including member expansion and formatting, is recording-only.
+pub(super) fn active_members(state: &SweepState) -> Vec<usize> {
+    state
+        .active
+        .ordered()
+        .into_iter()
+        .flat_map(|g| state.groups[g].members.iter().copied())
+        .collect()
+}
+
+pub(super) fn status_bindings(state: &SweepState) -> Vec<Variable> {
+    vec![
+        Variable::available(
+            "active_groups",
+            "Status<GroupId>",
+            format!("{:?}", state.active.ordered()),
+        ),
+        Variable::available(
+            "groups",
+            "Vec<Group>",
+            format!(
+                "[{}]",
+                state
+                    .groups
+                    .iter()
+                    .enumerate()
+                    .map(|(id, g)| {
+                        format!(
+                            "{id}: {{ slope: {}, intercept: {}, members: {:?}, rightmost: {} }}",
+                            g.slope,
+                            g.intercept,
+                            g.members,
+                            if g.members.is_empty() {
+                                "None".to_owned()
+                            } else {
+                                format!("Some({})", g.farthest().0)
+                            }
+                        )
+                    })
+                    .collect::<Vec<_>>()
+                    .join(", ")
+            ),
+        ),
+    ]
+}
+
+fn shared_binding(name: &str) -> bool {
+    matches!(name, "queue" | "result" | "groups" | "active_groups")
 }
 
 impl Recorder<'_, '_> {
     pub(super) fn observe(
         &mut self,
-        state: ObservationState<'_>,
+        state: &SweepState,
         point: &Point,
-        module: &'static str,
         boundary: usize,
+        action: &'static str,
         values: impl FnOnce() -> (Vec<usize>, Vec<Variable>),
     ) -> Option<()> {
         if (self.cancelled)() {
@@ -40,156 +89,227 @@ impl Recorder<'_, '_> {
         }
         if let Some(steps) = &mut self.steps {
             let (subjects, locals) = values();
+            let active_groups = state.active.ordered();
+            let active = active_groups
+                .iter()
+                .flat_map(|&g| state.groups[g].members.iter().copied())
+                .collect::<Vec<_>>();
             let mut step = SweepStep::capture(
-                "micro",
+                action,
                 Some(point),
-                state.queue,
-                state.active,
-                state.result,
+                &state.queue,
+                &active,
+                &state.result,
                 &[],
                 &subjects,
-                self.input_value.as_ref().expect("tracing captures input"),
+                self.input_value.as_ref().expect("trace input"),
                 self.capture,
             );
+            // The projected member list is canvas data, not the algorithm's status.
+            step.execution.context.locals.retain(|v| v.name != "active");
             step.sweep_context(
-                self.trace_segments
-                    .as_ref()
-                    .expect("tracing captures segments"),
-                state.shear,
+                self.trace_segments.as_ref().expect("trace segments"),
+                &state.shear,
             );
-            step.execution.module = module;
+            step.execution.context.locals.extend(status_bindings(state));
+            step.execution.context.locals.extend([Variable::available(
+                "point",
+                "&Point",
+                point_value(point),
+            )]);
+            step.execution.context.locals.extend(locals);
+            if let Some(frame) = self.frames.last() {
+                step.execution.module = frame.module;
+                step.execution.context.id = frame.id;
+                step.execution.context.function = frame.function;
+                step.execution
+                    .context
+                    .parameters
+                    .clone_from(&frame.parameters);
+                step.execution
+                    .outer
+                    .clone_from(&frame.caller.execution.outer);
+                step.execution
+                    .outer
+                    .push(frame.caller.execution.context.clone());
+                for outer in &mut step.execution.outer {
+                    // A suspended mutable borrow cannot expose stale snapshots
+                    // as the caller's current state. Refresh it on resumption.
+                    for variable in &mut outer.locals {
+                        if shared_binding(variable.name) {
+                            variable.availability = "unavailable";
+                            variable.value = None;
+                        }
+                    }
+                }
+                for variable in &mut step.execution.context.locals {
+                    if !shared_binding(variable.name)
+                        && !matches!(variable.name, "point" | "segments" | "shear")
+                    {
+                        variable.scope = Some(frame.function);
+                    }
+                }
+                step.execution.context.locals.push(Variable::absent(
+                    "return_value",
+                    frame.result_type,
+                    "unassigned",
+                ));
+            } else {
+                step.execution.module = "sweep";
+            }
+            // Omitted bindings have not changed. Only an explicit absent
+            // value at the actual scope exit makes a binding unavailable.
+            if boundary != 0
+                && let Some(previous) = steps.last()
+                && previous.execution.context.id == step.execution.context.id
+            {
+                for variable in &previous.execution.context.locals {
+                    if !step
+                        .execution
+                        .context
+                        .locals
+                        .iter()
+                        .any(|current| current.name == variable.name)
+                    {
+                        step.execution.context.locals.push(variable.clone());
+                    }
+                }
+            }
             step.execution.boundary = Some(boundary);
             step.execution.entry = boundary == 0;
-            if let Some(previous) = steps.last()
-                && previous.execution.module == module
-                && boundary != 0
-            {
-                step.execution
-                    .controls
-                    .clone_from(&previous.execution.controls);
-            }
-            step.execution.context.locals.push(Variable::available(
-                "point",
-                "Point",
-                point_value(point),
-            ));
-            step.execution.context.locals.push(Variable::available(
-                "height_order",
-                "Vec<Ordering>",
-                format!("{:?}", state.height_order),
-            ));
-            step.execution.context.locals.extend(locals);
             steps.push(step);
         }
         Some(())
+    }
+
+    pub(super) fn enter(
+        &mut self,
+        module: &'static str,
+        function: &'static str,
+        result_type: &'static str,
+        parameters: impl FnOnce() -> Vec<Variable>,
+    ) {
+        if let Some(steps) = &mut self.steps {
+            let caller = steps.last_mut().expect("caller observation");
+            let parameters = parameters();
+            caller.execution.calls.push(ExecutionCall::pending(
+                caller.execution.boundary.unwrap_or(0),
+                function,
+                0,
+                parameters.clone(),
+                result_type,
+            ));
+            self.frames.push(Frame {
+                id: self.next_call.get(),
+                function,
+                module,
+                result_type,
+                parameters,
+                caller: caller.clone(),
+            });
+            self.next_call.set(self.next_call.get() + 1);
+        }
+    }
+
+    /// Called after the actual return value was computed; never invent a call
+    /// for an empty loop, and resume before the next real call.
+    pub(super) fn leave(&mut self, result: impl FnOnce() -> Variable) {
+        if let Some(steps) = &mut self.steps {
+            let frame = self.frames.pop().expect("entered function");
+            let result = result();
+            let mut returned = steps.last().expect("return boundary").clone();
+            returned.action = "micro";
+            returned.execution.entry = false;
+            returned.execution.returning = true;
+            returned
+                .execution
+                .context
+                .locals
+                .retain(|v| v.name != "return_value");
+            returned.execution.context.locals.push(result.clone());
+            let return_line = returned
+                .execution
+                .controls
+                .iter()
+                .find(|control| control.keyword == "return" && control.state == "pending")
+                .expect("real return has a pending boundary")
+                .line;
+            returned
+                .execution
+                .control(return_line, "return", "returned");
+            steps.push(returned.clone());
+            let live = returned.execution.context.locals.clone();
+            let mut resumed = returned;
+            resumed.execution = frame.caller.execution;
+            resumed.execution.entry = false;
+            resumed.execution.returning = false;
+            resumed.execution.resuming = true;
+            for variable in &mut resumed.execution.context.locals {
+                if shared_binding(variable.name)
+                    && let Some(value) = live.iter().find(|v| v.name == variable.name)
+                {
+                    *variable = value.clone();
+                }
+            }
+            if let Some(call) = resumed.execution.calls.last_mut() {
+                call.result = result;
+            }
+            steps.push(resumed);
+        }
+    }
+
+    pub(super) fn retire_parameter(&mut self, name: &str) {
+        if let Some(frame) = self.frames.last_mut() {
+            let parameter = frame
+                .parameters
+                .iter_mut()
+                .find(|p| p.name == name)
+                .expect("live parameter");
+            parameter.availability = "unavailable";
+            parameter.value = None;
+        }
+    }
+
+    pub(super) fn control(&mut self, line: usize, keyword: &'static str, status: &'static str) {
+        if let Some(steps) = &mut self.steps {
+            steps
+                .last_mut()
+                .expect("observation")
+                .execution
+                .control(line, keyword, status);
+        }
     }
 
     pub(super) fn call(&mut self, build: impl FnOnce() -> ExecutionCall) {
         if let Some(steps) = &mut self.steps {
             steps
                 .last_mut()
-                .expect("operation observation exists")
+                .expect("observation")
                 .execution
                 .calls
                 .push(build());
         }
     }
 
-    pub(super) fn control(&mut self, line: usize, keyword: &'static str, state: &'static str) {
+    pub(super) fn block_end(&mut self, line: usize) {
         if let Some(steps) = &mut self.steps {
-            if keyword == "for" && state == "exhausted" {
-                ExecutionControl::exhaust_loop(steps, line);
-            } else {
-                steps
-                    .last_mut()
-                    .expect("control observation exists")
-                    .execution
-                    .control(line, keyword, state);
-            }
+            let mut before = steps.last().expect("block body").clone();
+            before.action = "micro";
+            before.execution.blocks = vec![ExecutionBlock {
+                line,
+                phase: "before",
+            }];
+            steps.push(before);
         }
     }
 
-    pub(super) fn reset_controls(&mut self, line: usize) {
+    pub(super) fn block_after(&mut self, line: usize) {
         if let Some(steps) = &mut self.steps {
-            steps
-                .last_mut()
-                .expect("loop observation exists")
-                .execution
-                .controls
-                .retain(|control| control.line < line);
-        }
-    }
-
-    pub(super) fn block_end(&mut self, boundary: usize, line: usize) {
-        if let Some(steps) = &mut self.steps {
-            SweepStep::block_before(steps, boundary, line);
-            SweepStep::block_after(steps, line);
+            let step = steps.last_mut().expect("block successor");
+            step.execution.blocks.push(ExecutionBlock {
+                line,
+                phase: "after",
+            });
         }
     }
 }
-
-// These macros preserve lazy expression evaluation at the real operation sites.
-macro_rules! observe {
-    ($recording:expr, $state:expr, $point:expr, $module:expr, $boundary:expr, $subjects:expr, $locals:expr) => {
-        $recording.observe($state, $point, $module, $boundary, || {
-            (($subjects).to_vec(), $locals)
-        })?;
-    };
-}
-macro_rules! call {
-    ($recording:expr, $line:expr, $function:expr, $arguments:expr, $result:expr) => {
-        $recording.call(|| ExecutionCall {
-            line: $line,
-            function: $function,
-            occurrence: 0,
-            arguments: $arguments,
-            result: $result,
-        });
-    };
-}
-macro_rules! pending_call {
-    ($recording:expr, $line:expr, $function:expr, $occurrence:expr, $arguments:expr, $result_type:expr) => {
-        $recording.call(|| {
-            ExecutionCall::pending($line, $function, $occurrence, $arguments, $result_type)
-        });
-    };
-}
-macro_rules! control {
-    ($recording:expr, $line:expr, $keyword:expr, $state:expr) => {
-        $recording.control($line, $keyword, $state);
-    };
-}
-macro_rules! reset_controls {
-    ($recording:expr, $line:expr) => {
-        $recording.reset_controls($line);
-    };
-}
-macro_rules! block_end {
-    ($recording:expr, $boundary:expr, $line:expr) => {
-        $recording.block_end($boundary, $line);
-    };
-}
-macro_rules! closure_call {
-    ($recording:expr, $module:expr, $function:expr, $parameters:expr, $captures:expr, $type:expr, $body:expr, $format:expr) => {{
-        let trace = $recording.steps.as_mut().map(|steps| {
-            ClosureTrace::enter(
-                steps,
-                $recording.next_call,
-                $module,
-                $function,
-                $parameters,
-                $captures,
-                $type,
-            )
-        });
-        let value = $body;
-        if let Some(trace) = trace {
-            trace.returned(
-                $recording.steps.as_mut().expect("tracing is enabled"),
-                ($format)(&value),
-            );
-        }
-        value
-    }};
-}
-pub(super) use {block_end, call, closure_call, control, observe, pending_call, reset_controls};

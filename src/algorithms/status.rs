@@ -1,5 +1,5 @@
-//! Deterministic AVL tree for sweep edges. The caller supplies the ordering at
-//! the current event; a validated simple boundary never swaps active edges.
+//! Deterministic AVL status with caller-owned geometry ordering. Callers must
+//! remove a changing equal-position block before switching its comparator.
 
 use std::cmp::Ordering;
 
@@ -65,6 +65,35 @@ impl Node {
 }
 
 impl Status {
+    /// First node satisfying a monotone predicate (false, then true).
+    pub(super) fn lower_bound(&self, at_or_after: impl Fn(usize) -> bool) -> Option<usize> {
+        let mut result = None;
+        let mut cursor = self.root.as_deref();
+        while let Some(node) = cursor {
+            if at_or_after(node.edge) {
+                result = Some(node.edge);
+                cursor = node.left.as_deref();
+            } else {
+                cursor = node.right.as_deref();
+            }
+        }
+        result
+    }
+
+    /// Recording-only linear projection; never used to locate a sweep event.
+    pub(super) fn ordered(&self) -> Vec<usize> {
+        fn visit(node: &Link, output: &mut Vec<usize>) {
+            if let Some(node) = node {
+                visit(&node.left, output);
+                output.push(node.edge);
+                visit(&node.right, output);
+            }
+        }
+        let mut output = Vec::new();
+        visit(&self.root, &mut output);
+        output
+    }
+
     pub(super) fn insert(&mut self, edge: usize, compare: &impl Fn(usize, usize) -> Ordering) {
         self.root = Some(insert(self.root.take(), edge, compare));
     }

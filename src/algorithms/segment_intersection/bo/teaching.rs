@@ -33,7 +33,7 @@ pub(crate) struct TraceCapture {
 
 struct QueueSnapshot {
     pending: Arc<[Point]>,
-    starts: Vec<Vec<usize>>,
+    events: Vec<Event>,
     text: Arc<str>,
 }
 
@@ -46,19 +46,19 @@ impl TraceCapture {
                 || snapshot
                     .pending
                     .iter()
-                    .zip(&snapshot.starts)
+                    .zip(&snapshot.events)
                     .zip(queue)
-                    .any(|((old, starts), (point, event))| {
+                    .any(|((old, old_event), (point, event))| {
                         old.x.numer() != point.x.numer()
                             || old.x.denom() != point.x.denom()
                             || old.y.numer() != point.y.numer()
                             || old.y.denom() != point.y.denom()
-                            || starts != &event.starts
+                            || old_event != event
                     })
         }) {
             self.queue = Some(QueueSnapshot {
                 pending: queue.keys().cloned().collect(),
-                starts: queue.values().map(|event| event.starts.clone()).collect(),
+                events: queue.values().cloned().collect(),
                 text: Arc::from(format!(
                     "{{{}}}",
                     queue
@@ -138,22 +138,6 @@ impl Execution {
 }
 
 impl ExecutionControl {
-    pub(crate) fn exhaust_loop(steps: &mut Vec<SweepStep>, line: usize) {
-        let completed = steps.last_mut().expect("loop exit was captured");
-        completed.execution.control(line, "for", "exhausted");
-        if let [.., previous, completed] = steps.as_slice()
-            && previous.execution.module == completed.execution.module
-            && previous.execution.context.id == completed.execution.context.id
-            && previous.execution.controls.iter().any(|control| {
-                control.line == line && control.keyword == "for" && control.state == "pending"
-            })
-        {
-            // The exit already carries the cleared bindings and control state.
-            // Keep head stops only when another iteration actually follows.
-            steps.remove(steps.len() - 2);
-        }
-    }
-
     pub(crate) fn set(
         controls: &mut Vec<Self>,
         line: usize,
@@ -212,77 +196,6 @@ pub(crate) struct ExecutionContext {
     pub(crate) captures: Vec<Variable>,
 }
 
-pub(crate) struct ClosureTrace {
-    caller: SweepStep,
-    current: SweepStep,
-}
-
-impl ClosureTrace {
-    pub(crate) fn enter(
-        steps: &mut Vec<SweepStep>,
-        next_call: &std::cell::Cell<usize>,
-        module: &'static str,
-        function: &'static str,
-        parameters: Vec<Variable>,
-        captures: &[&str],
-        result_type: &'static str,
-    ) -> Self {
-        let caller = steps.last().expect("call has a caller stop").clone();
-        let mut current = caller.clone();
-        current.action = "micro";
-        current.execution.module = module;
-        current.execution.boundary = Some(0);
-        current.execution.entry = false;
-        current.execution.resuming = false;
-        current.execution.calls.clear();
-        current.execution.controls.clear();
-        current.execution.blocks.clear();
-        current
-            .execution
-            .outer
-            .push(caller.execution.context.clone());
-        let id = next_call.get();
-        next_call.set(id + 1);
-        current.execution.context = ExecutionContext {
-            id,
-            function,
-            parameters,
-            locals: vec![Variable::absent("return_value", result_type, "unassigned")],
-            captures: captures
-                .iter()
-                .map(|name| {
-                    caller
-                        .execution
-                        .context
-                        .locals
-                        .iter()
-                        .chain(&caller.execution.context.parameters)
-                        .chain(&caller.execution.context.captures)
-                        .find(|variable| variable.name == *name)
-                        .expect("captured binding exists at the call site")
-                        .clone()
-                })
-                .collect(),
-        };
-        steps.push(current.clone());
-        Self { caller, current }
-    }
-
-    pub(crate) fn returned(mut self, steps: &mut Vec<SweepStep>, value: String) {
-        self.current.execution.boundary = Some(1);
-        self.current.execution.returning = true;
-        let result_type = self.current.execution.context.locals[0].r#type;
-        self.current.execution.context.locals[0] =
-            Variable::available("return_value", result_type, value);
-        steps.push(self.current);
-        // Returning from one callback precedes any subsequent library callback.
-        self.caller.execution.entry = false;
-        self.caller.execution.resuming = true;
-        self.caller.action = "micro";
-        steps.push(self.caller);
-    }
-}
-
 #[derive(Clone, PartialEq, Eq)]
 pub(crate) struct Variable {
     pub(crate) scope: Option<&'static str>,
@@ -324,13 +237,6 @@ impl Variable {
 
 pub(crate) fn point_value(point: &Point) -> String {
     format!("({}, {})", point.x, point.y)
-}
-
-pub(crate) fn optional_point_value(point: &Option<Point>) -> String {
-    point.as_ref().map_or_else(
-        || "None".to_owned(),
-        |point| format!("Some({})", point_value(point)),
-    )
 }
 
 pub(crate) fn geometry_value(geometry: &Geometry) -> String {
@@ -387,7 +293,10 @@ pub(crate) fn sweep_segments_value(segments: &[SweepSegment]) -> String {
 }
 
 pub(crate) fn event_value(event: &Event) -> String {
-    format!("Event {{ starts: {:?} }}", event.starts)
+    format!(
+        "Event {{ starts: {:?}, ends: {:?}, points: {:?} }}",
+        event.starts, event.ends, event.points
+    )
 }
 
 impl SweepStep {
@@ -425,25 +334,6 @@ impl SweepStep {
             }
             steps.push(next);
         }
-    }
-
-    pub(crate) fn block_before(steps: &mut Vec<Self>, boundary: usize, line: usize) {
-        let mut before = steps.last().expect("block operation was captured").clone();
-        before.execution.boundary = Some(boundary);
-        before.execution.blocks = vec![ExecutionBlock {
-            line,
-            phase: "before",
-        }];
-        steps.insert(steps.len() - 1, before);
-    }
-
-    pub(crate) fn block_after(steps: &mut Vec<Self>, line: usize) {
-        let mut after = steps.last().expect("block successor was captured").clone();
-        after.execution.blocks = vec![ExecutionBlock {
-            line,
-            phase: "after",
-        }];
-        steps.insert(steps.len() - 1, after);
     }
 
     pub(crate) fn capture(

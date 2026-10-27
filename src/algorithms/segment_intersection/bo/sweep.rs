@@ -4,14 +4,15 @@ use super::trace_publication;
 
 mod activity;
 mod classify;
+mod groups;
 mod neighbors;
 mod observation;
 mod record;
 mod take;
+use crate::algorithms::status::Status;
 use crate::{Geometry, Intersection, Point, Rational, Segment};
-use observation::{
-    ObservationState, Recorder, block_end, call, control, observe, pending_call, reset_controls,
-};
+use groups::Group;
+use observation::Recorder;
 use std::cell::RefCell;
 use std::collections::BTreeMap;
 use std::sync::Arc;
@@ -48,10 +49,6 @@ impl SweepSegment {
             intercept,
         }
     }
-
-    fn y_at(&self, x: &Rational) -> Rational {
-        self.slope.as_ref().expect("active segment has a slope") * x + &self.intercept
-    }
 }
 
 fn choose_shear(segments: &[Segment]) -> Rational {
@@ -87,19 +84,20 @@ fn choose_shear(segments: &[Segment]) -> Rational {
     Rational::from_integer(1.into()) / (Rational::from_integer(256.into()) * margin.pow(5))
 }
 
-#[derive(Default)]
+#[derive(Clone, Default, PartialEq, Eq)]
 pub(crate) struct Event {
-    // Ends and interior crossings are recovered from the active sequence at
-    // this exact point, so a discovered crossing needs no stored pair identity.
     pub(crate) starts: Vec<usize>,
+    pub(crate) ends: Vec<usize>,
+    pub(crate) points: Vec<usize>,
 }
 
 struct SweepState {
     segments: Vec<SweepSegment>,
     shear: Rational,
     queue: BTreeMap<Point, Event>,
-    active: Vec<usize>,
-    height_order: Vec<std::cmp::Ordering>,
+    active: Status,
+    groups: Vec<Group>,
+    group_of: Vec<Option<usize>>,
     result: Vec<Intersection>,
 }
 
@@ -150,12 +148,6 @@ pub(crate) fn stream_intersections(
     sweep(segments, Some(emit), cancelled)
 }
 
-// Keeps closure blocks intact under stable rustfmt without runtime work.
-macro_rules! nop {
-    () => {};
-}
-pub(super) use nop;
-
 fn sweep(
     segments: &[Segment],
     emit: Option<&mut dyn FnMut(SweepTrace) -> bool>,
@@ -192,49 +184,69 @@ fn sweep(
     let trace_segments = steps
         .as_ref()
         .map(|_| Arc::<str>::from(sweep_segments_value(&segments)));
+    let (groups, group_of) = groups::initialize(&segments, cancelled)?;
     let mut queue: BTreeMap<Point, Event> = BTreeMap::new();
     for (id, segment) in segments.iter().enumerate() {
         if cancelled() {
             return None;
         }
-        queue
-            .entry(segment.left.clone())
-            .or_default()
-            .starts
-            .push(id);
-        queue.entry(segment.right.clone()).or_default();
+        if segment.slope.is_none() {
+            queue
+                .entry(segment.left.clone())
+                .or_default()
+                .points
+                .push(id);
+        } else {
+            queue
+                .entry(segment.left.clone())
+                .or_default()
+                .starts
+                .push(id);
+            queue
+                .entry(segment.right.clone())
+                .or_default()
+                .ends
+                .push(id);
+        }
     }
-    let active: Vec<usize> = Vec::new();
-    let height_order = vec![std::cmp::Ordering::Equal; segments.len()];
-    let result = Vec::new();
     let mut state = SweepState {
         segments,
         shear,
         queue,
-        active,
-        height_order,
-        result,
+        active: Status::default(),
+        groups,
+        group_of,
+        result: Vec::new(),
     };
-    let SweepState {
-        queue,
-        active,
-        result,
-        ..
-    } = &mut state;
 
     let capture = RefCell::new(TraceCapture::default());
     if let Some(steps) = &mut steps {
-        steps.push(SweepStep::capture(
+        let mut initial = SweepStep::capture(
             "initial",
             None,
-            queue,
-            active,
-            result,
+            &state.queue,
+            &[],
+            &state.result,
             &[],
             &[],
             input_value.as_ref().expect("tracing captures input"),
             &capture,
-        ));
+        );
+        initial
+            .execution
+            .context
+            .locals
+            .retain(|v| v.name != "active");
+        initial
+            .execution
+            .context
+            .locals
+            .extend(observation::status_bindings(&state));
+        initial.sweep_context(
+            trace_segments.as_ref().expect("trace segments"),
+            &state.shear,
+        );
+        steps.push(initial);
     }
     if let Some(publication) = &mut publication
         && !publication.publish()
@@ -254,6 +266,7 @@ fn sweep(
             next_call: &next_call,
             cancelled,
             capture: &capture,
+            frames: Vec::new(),
         };
         let Some(take::TakenEvent {
             point,
@@ -263,14 +276,75 @@ fn sweep(
         else {
             break;
         };
-        let classified = classify::classify(&mut state, &point, event, &mut recording)?;
-        record::record(&mut state, &point, &classified, &mut recording)?;
-        let classify::ClassifiedEvent {
-            incident,
-            participants,
-        } = classified;
-        let update = activity::update(&mut state, &point, incident, &mut recording)?;
-        let checked = neighbors::check(&mut state, &point, update, &mut recording)?;
+        recording.observe(&state, &point, 1, "micro", || {
+            (
+                vec![],
+                vec![Variable::available("event", "Event", event_value(&event))],
+            )
+        })?;
+        let located = classify::locate(&mut state, &point, &event, &mut recording)?;
+        recording.observe(&state, &point, 2, "micro", || {
+            (
+                vec![],
+                vec![Variable::available(
+                    "incident_groups",
+                    "Vec<GroupId>",
+                    format!("{:?}", located.groups),
+                )],
+            )
+        })?;
+        record::record(&mut state, &point, &event, &located.groups, &mut recording)?;
+        let participants = recording.steps.as_ref().map(|_| {
+            let mut starts = event.starts.clone();
+            starts.extend(&event.points);
+            starts.sort_unstable();
+            let mut ends = event.ends.clone();
+            ends.extend(&event.points);
+            ends.sort_unstable();
+            let passes = located
+                .groups
+                .iter()
+                .flat_map(|&g| &state.groups[g].members)
+                .copied()
+                .filter(|&id| state.segments[id].left < point && point < state.segments[id].right)
+                .collect();
+            (starts, ends, passes)
+        });
+        recording.observe(&state, &point, 3, "micro", || {
+            (
+                vec![],
+                vec![Variable::available(
+                    "incident_groups",
+                    "Vec<GroupId>",
+                    format!("{:?}", located.groups),
+                )],
+            )
+        })?;
+        let inserted =
+            activity::update(&mut state, &point, &event, &located.groups, &mut recording)?;
+        recording.observe(&state, &point, 4, "micro", || {
+            (
+                vec![],
+                vec![Variable::available(
+                    "inserted",
+                    "Vec<GroupId>",
+                    format!("{inserted:?}"),
+                )],
+            )
+        })?;
+        let checked = neighbors::check(
+            &mut state,
+            &point,
+            &inserted,
+            located.outside,
+            &mut recording,
+        )?;
+        recording.observe(&state, &point, 5, "micro", || {
+            (
+                vec![],
+                vec![Variable::absent("inserted", "Vec<GroupId>", "unavailable")],
+            )
+        })?;
         if let Some(publication) = &mut publication
             && !publication.finish_event(
                 first_step,
