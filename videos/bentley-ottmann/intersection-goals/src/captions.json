@@ -3,21 +3,21 @@
     {
       "text": "先看三份输入。",
       "startMs": 70,
-      "endMs": 1470,
+      "endMs": 1510,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "第 1 份从 (-1,0) 到 (1,0)，",
-      "startMs": 1540,
-      "endMs": 7780,
+      "startMs": 1590,
+      "endMs": 7030,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "是一条经过原点的水平线段。",
-      "startMs": 7880,
-      "endMs": 10000,
+      "startMs": 7130,
+      "endMs": 9409,
       "timestampMs": null,
       "confidence": null
     }
@@ -26,14 +26,14 @@
     {
       "text": "第 2 份从 (0,-1) 到 (0,1)，",
       "startMs": 70,
-      "endMs": 6190,
+      "endMs": 5510,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "是一条经过原点的竖直线段。",
-      "startMs": 6290,
-      "endMs": 8490,
+      "startMs": 5590,
+      "endMs": 7949,
       "timestampMs": null,
       "confidence": null
     }
@@ -42,35 +42,35 @@
     {
       "text": "第 3 份的两个端点都是 (0,0)，",
       "startMs": 70,
-      "endMs": 4230,
+      "endMs": 3909,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它只包含原点这一个点。",
-      "startMs": 4290,
-      "endMs": 6130,
+      "startMs": 3990,
+      "endMs": 5830,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这仍然是一份独立输入，",
-      "startMs": 6230,
-      "endMs": 7950,
+      "startMs": 5930,
+      "endMs": 7610,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "菱形只是帮助我们认出它，",
-      "startMs": 8070,
-      "endMs": 9630,
+      "startMs": 7720,
+      "endMs": 9640,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不表示有面积。",
       "startMs": 9760,
-      "endMs": 10900,
+      "endMs": 11080,
       "timestampMs": null,
       "confidence": null
     }

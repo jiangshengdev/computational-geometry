@@ -2,8 +2,8 @@
   "U01": {
     "audioFile": "U01.wav",
     "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "17baae58406afd9d8f793b5ab37ea40b4b889fd6873f36d171bc579c5f29580b",
-    "duration": 10.05,
+    "audioSha256": "8f3379aca21beb3aae7b2f4d5a25bd94e1bfe70008c7a5971e3192056a5ce03e",
+    "duration": 9.45,
     "words": [
       {
         "text": "先",
@@ -36,1556 +36,799 @@
       {
         "text": "输入",
         "startMs": 950,
-        "durationMs": 520,
+        "durationMs": 560,
         "textOffset": 4,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 1470,
+        "startMs": 1510,
         "durationMs": 0,
         "textOffset": 6,
         "wordLength": 1
       },
       {
         "text": "第",
-        "startMs": 1540,
-        "durationMs": 480,
+        "startMs": 1590,
+        "durationMs": 160,
         "textOffset": 7,
         "wordLength": 1
       },
       {
-        "text": " ",
-        "startMs": 2020,
+        "text": "一",
+        "startMs": 1750,
+        "durationMs": 120,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "份",
+        "startMs": 1870,
+        "durationMs": 280,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "从",
+        "startMs": 2150,
+        "durationMs": 200,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "横",
+        "startMs": 2350,
+        "durationMs": 160,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "坐",
+        "startMs": 2510,
+        "durationMs": 160,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "标负",
+        "startMs": 2670,
+        "durationMs": 360,
+        "textOffset": 13,
+        "wordLength": 2
+      },
+      {
+        "text": "一",
+        "startMs": 3030,
+        "durationMs": 440,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "、",
+        "startMs": 3470,
+        "durationMs": 0,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "纵坐标",
+        "startMs": 3549,
+        "durationMs": 601,
+        "textOffset": 17,
+        "wordLength": 3
+      },
+      {
+        "text": "零",
+        "startMs": 4150,
+        "durationMs": 159,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "startMs": 4309,
+        "durationMs": 120,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "点",
+        "startMs": 4429,
+        "durationMs": 281,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "到",
+        "startMs": 4710,
+        "durationMs": 239,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "横",
+        "startMs": 4949,
+        "durationMs": 161,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "坐标",
+        "startMs": 5110,
+        "durationMs": 319,
+        "textOffset": 25,
+        "wordLength": 2
+      },
+      {
+        "text": "一",
+        "startMs": 5429,
+        "durationMs": 361,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "、",
+        "startMs": 5790,
+        "durationMs": 0,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "纵坐标",
+        "startMs": 5830,
+        "durationMs": 600,
+        "textOffset": 29,
+        "wordLength": 3
+      },
+      {
+        "text": "零",
+        "startMs": 6430,
+        "durationMs": 160,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "startMs": 6590,
+        "durationMs": 120,
+        "textOffset": 33,
+        "wordLength": 1
+      },
+      {
+        "text": "点",
+        "startMs": 6710,
+        "durationMs": 320,
+        "textOffset": 34,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 7030,
+        "durationMs": 0,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 7130,
+        "durationMs": 240,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "一",
+        "startMs": 7370,
+        "durationMs": 120,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "条",
+        "startMs": 7490,
+        "durationMs": 200,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "经过",
+        "startMs": 7690,
+        "durationMs": 400,
+        "textOffset": 39,
+        "wordLength": 2
+      },
+      {
+        "text": "原点",
+        "startMs": 8090,
+        "durationMs": 440,
+        "textOffset": 41,
+        "wordLength": 2
+      },
+      {
+        "text": "的",
+        "startMs": 8530,
+        "durationMs": 120,
+        "textOffset": 43,
+        "wordLength": 1
+      },
+      {
+        "text": "水平",
+        "startMs": 8650,
+        "durationMs": 320,
+        "textOffset": 44,
+        "wordLength": 2
+      },
+      {
+        "text": "线段",
+        "startMs": 8970,
+        "durationMs": 439,
+        "textOffset": 46,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 9409,
+        "durationMs": 0,
+        "textOffset": 48,
+        "wordLength": 1
+      }
+    ],
+    "speech": "先看三份输入。第一份从横坐标负一、纵坐标零的点到横坐标一、纵坐标零的点。是一条经过原点的水平线段。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "0262c0f35a9c85e05722fa675d852c87b6ea04f4a491cc9abc80822e614971f0"
+  },
+  "U02": {
+    "audioFile": "U02.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "9d6ea52a854c2f3c5eb2a0dc8252fff4cd2df9537724165418d7866bd3ff3c96",
+    "duration": 7.96,
+    "words": [
+      {
+        "text": "第二",
+        "startMs": 70,
+        "durationMs": 360,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "份",
+        "startMs": 430,
+        "durationMs": 280,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "从",
+        "startMs": 710,
+        "durationMs": 200,
+        "textOffset": 3,
+        "wordLength": 1
+      },
+      {
+        "text": "横",
+        "startMs": 910,
+        "durationMs": 160,
+        "textOffset": 4,
+        "wordLength": 1
+      },
+      {
+        "text": "坐标",
+        "startMs": 1070,
+        "durationMs": 400,
+        "textOffset": 5,
+        "wordLength": 2
+      },
+      {
+        "text": "零",
+        "startMs": 1470,
+        "durationMs": 360,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "、",
+        "startMs": 1830,
         "durationMs": 0,
         "textOffset": 8,
         "wordLength": 1
       },
       {
-        "text": "一",
-        "startMs": 2060,
-        "durationMs": 280,
+        "text": "纵坐",
+        "startMs": 1910,
+        "durationMs": 360,
         "textOffset": 9,
-        "wordLength": 1
+        "wordLength": 2
       },
       {
-        "text": "份",
-        "startMs": 2340,
-        "durationMs": 160,
+        "text": "标负",
+        "startMs": 2270,
+        "durationMs": 400,
         "textOffset": 11,
-        "wordLength": 1
+        "wordLength": 2
       },
       {
-        "text": "从",
-        "startMs": 2500,
-        "durationMs": 200,
-        "textOffset": 12,
-        "wordLength": 1
-      },
-      {
-        "text": "横",
-        "startMs": 2700,
-        "durationMs": 200,
+        "text": "一",
+        "startMs": 2670,
+        "durationMs": 159,
         "textOffset": 13,
         "wordLength": 1
       },
       {
-        "text": "坐",
-        "startMs": 2900,
-        "durationMs": 160,
+        "text": "的",
+        "startMs": 2829,
+        "durationMs": 120,
         "textOffset": 14,
         "wordLength": 1
       },
       {
-        "text": "标负",
-        "startMs": 3060,
-        "durationMs": 400,
-        "textOffset": 15,
-        "wordLength": 2
-      },
-      {
-        "text": "一",
-        "startMs": 3460,
-        "durationMs": 439,
-        "textOffset": 17,
-        "wordLength": 1
-      },
-      {
-        "text": "、",
-        "startMs": 3899,
-        "durationMs": 0,
-        "textOffset": 18,
-        "wordLength": 1
-      },
-      {
-        "text": "纵",
-        "startMs": 4020,
-        "durationMs": 319,
-        "textOffset": 19,
-        "wordLength": 1
-      },
-      {
-        "text": "坐标",
-        "startMs": 4339,
-        "durationMs": 321,
-        "textOffset": 20,
-        "wordLength": 2
-      },
-      {
-        "text": "零",
-        "startMs": 4660,
-        "durationMs": 159,
-        "textOffset": 22,
-        "wordLength": 1
-      },
-      {
-        "text": "的",
-        "startMs": 4819,
-        "durationMs": 120,
-        "textOffset": 23,
-        "wordLength": 1
-      },
-      {
         "text": "点",
-        "startMs": 4939,
+        "startMs": 2949,
         "durationMs": 281,
-        "textOffset": 24,
+        "textOffset": 15,
         "wordLength": 1
       },
       {
         "text": "到",
-        "startMs": 5220,
-        "durationMs": 440,
-        "textOffset": 25,
-        "wordLength": 1
-      },
-      {
-        "text": "横",
-        "startMs": 5660,
-        "durationMs": 160,
-        "textOffset": 26,
-        "wordLength": 1
-      },
-      {
-        "text": "坐标",
-        "startMs": 5820,
-        "durationMs": 360,
-        "textOffset": 27,
-        "wordLength": 2
-      },
-      {
-        "text": "一",
-        "startMs": 6180,
-        "durationMs": 360,
-        "textOffset": 29,
-        "wordLength": 1
-      },
-      {
-        "text": "、",
-        "startMs": 6540,
-        "durationMs": 0,
-        "textOffset": 30,
-        "wordLength": 1
-      },
-      {
-        "text": "纵坐标",
-        "startMs": 6620,
-        "durationMs": 600,
-        "textOffset": 31,
-        "wordLength": 3
-      },
-      {
-        "text": "零",
-        "startMs": 7220,
-        "durationMs": 160,
-        "textOffset": 34,
-        "wordLength": 1
-      },
-      {
-        "text": "的",
-        "startMs": 7380,
-        "durationMs": 120,
-        "textOffset": 35,
-        "wordLength": 1
-      },
-      {
-        "text": "点",
-        "startMs": 7500,
-        "durationMs": 280,
-        "textOffset": 36,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 7780,
-        "durationMs": 0,
-        "textOffset": 37,
-        "wordLength": 1
-      },
-      {
-        "text": "是",
-        "startMs": 7880,
-        "durationMs": 280,
-        "textOffset": 38,
-        "wordLength": 1
-      },
-      {
-        "text": "一",
-        "startMs": 8160,
-        "durationMs": 120,
-        "textOffset": 39,
-        "wordLength": 1
-      },
-      {
-        "text": "条",
-        "startMs": 8280,
-        "durationMs": 160,
-        "textOffset": 40,
-        "wordLength": 1
-      },
-      {
-        "text": "经过",
-        "startMs": 8440,
-        "durationMs": 280,
-        "textOffset": 41,
-        "wordLength": 2
-      },
-      {
-        "text": "原点",
-        "startMs": 8720,
-        "durationMs": 400,
-        "textOffset": 43,
-        "wordLength": 2
-      },
-      {
-        "text": "的",
-        "startMs": 9120,
-        "durationMs": 120,
-        "textOffset": 45,
-        "wordLength": 1
-      },
-      {
-        "text": "水平",
-        "startMs": 9240,
-        "durationMs": 320,
-        "textOffset": 46,
-        "wordLength": 2
-      },
-      {
-        "text": "线段",
-        "startMs": 9560,
-        "durationMs": 440,
-        "textOffset": 48,
-        "wordLength": 2
-      },
-      {
-        "text": "。",
-        "startMs": 10000,
-        "durationMs": 0,
-        "textOffset": 50,
-        "wordLength": 1
-      }
-    ],
-    "speech": "先看三份输入。第 一 份从横坐标负一、纵坐标零的点到横坐标一、纵坐标零的点。是一条经过原点的水平线段。",
-    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "6b3b48dca15db9b31a748e85c13bf02469b1713ee52af3e25d89dabc74827ed0"
-  },
-  "U02": {
-    "audioFile": "U02.wav",
-    "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "849e956596e42dc15d0f9cc1a02ebd3cb93c368ede84d41e284dcdb47ac75c34",
-    "duration": 8.51,
-    "words": [
-      {
-        "text": "第",
-        "startMs": 70,
-        "durationMs": 440,
-        "textOffset": 0,
-        "wordLength": 1
-      },
-      {
-        "text": " ",
-        "startMs": 510,
-        "durationMs": 0,
-        "textOffset": 1,
-        "wordLength": 1
-      },
-      {
-        "text": "二",
-        "startMs": 630,
-        "durationMs": 520,
-        "textOffset": 2,
-        "wordLength": 1
-      },
-      {
-        "text": " ",
-        "startMs": 1150,
-        "durationMs": 0,
-        "textOffset": 3,
-        "wordLength": 1
-      },
-      {
-        "text": "份",
-        "startMs": 1270,
-        "durationMs": 280,
-        "textOffset": 4,
-        "wordLength": 1
-      },
-      {
-        "text": "从",
-        "startMs": 1550,
-        "durationMs": 200,
-        "textOffset": 5,
-        "wordLength": 1
-      },
-      {
-        "text": "横",
-        "startMs": 1750,
-        "durationMs": 160,
-        "textOffset": 6,
-        "wordLength": 1
-      },
-      {
-        "text": "坐标",
-        "startMs": 1910,
-        "durationMs": 360,
-        "textOffset": 7,
-        "wordLength": 2
-      },
-      {
-        "text": "零",
-        "startMs": 2270,
-        "durationMs": 360,
-        "textOffset": 9,
-        "wordLength": 1
-      },
-      {
-        "text": "、",
-        "startMs": 2630,
-        "durationMs": 0,
-        "textOffset": 10,
-        "wordLength": 1
-      },
-      {
-        "text": "纵坐",
-        "startMs": 2630,
-        "durationMs": 400,
-        "textOffset": 11,
-        "wordLength": 2
-      },
-      {
-        "text": "标负",
-        "startMs": 3030,
-        "durationMs": 359,
-        "textOffset": 13,
-        "wordLength": 2
-      },
-      {
-        "text": "一",
-        "startMs": 3389,
-        "durationMs": 161,
-        "textOffset": 15,
-        "wordLength": 1
-      },
-      {
-        "text": "的",
-        "startMs": 3550,
-        "durationMs": 120,
+        "startMs": 3230,
+        "durationMs": 239,
         "textOffset": 16,
         "wordLength": 1
       },
       {
-        "text": "点",
-        "startMs": 3670,
-        "durationMs": 279,
+        "text": "横",
+        "startMs": 3469,
+        "durationMs": 161,
         "textOffset": 17,
         "wordLength": 1
       },
       {
-        "text": "到",
-        "startMs": 3949,
-        "durationMs": 161,
-        "textOffset": 18,
-        "wordLength": 1
-      },
-      {
-        "text": "横",
-        "startMs": 4110,
-        "durationMs": 200,
-        "textOffset": 19,
-        "wordLength": 1
-      },
-      {
         "text": "坐标",
-        "startMs": 4310,
-        "durationMs": 360,
-        "textOffset": 20,
+        "startMs": 3630,
+        "durationMs": 359,
+        "textOffset": 18,
         "wordLength": 2
       },
       {
         "text": "零",
-        "startMs": 4670,
-        "durationMs": 320,
-        "textOffset": 22,
+        "startMs": 3989,
+        "durationMs": 361,
+        "textOffset": 20,
         "wordLength": 1
       },
       {
         "text": "、",
-        "startMs": 4990,
+        "startMs": 4350,
         "durationMs": 0,
-        "textOffset": 23,
+        "textOffset": 21,
         "wordLength": 1
       },
       {
         "text": "纵坐标",
-        "startMs": 5110,
-        "durationMs": 520,
-        "textOffset": 24,
+        "startMs": 4350,
+        "durationMs": 600,
+        "textOffset": 22,
         "wordLength": 3
       },
       {
         "text": "一",
-        "startMs": 5630,
+        "startMs": 4950,
         "durationMs": 160,
-        "textOffset": 27,
+        "textOffset": 25,
         "wordLength": 1
       },
       {
         "text": "的",
-        "startMs": 5790,
+        "startMs": 5110,
         "durationMs": 120,
-        "textOffset": 28,
+        "textOffset": 26,
         "wordLength": 1
       },
       {
         "text": "点",
-        "startMs": 5910,
+        "startMs": 5230,
+        "durationMs": 280,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 5510,
+        "durationMs": 0,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 5590,
         "durationMs": 280,
         "textOffset": 29,
         "wordLength": 1
       },
       {
-        "text": "。",
-        "startMs": 6190,
-        "durationMs": 0,
+        "text": "一",
+        "startMs": 5870,
+        "durationMs": 120,
         "textOffset": 30,
         "wordLength": 1
       },
       {
-        "text": "是",
-        "startMs": 6290,
+        "text": "条",
+        "startMs": 5990,
         "durationMs": 240,
         "textOffset": 31,
+        "wordLength": 1
+      },
+      {
+        "text": "经过",
+        "startMs": 6230,
+        "durationMs": 320,
+        "textOffset": 32,
+        "wordLength": 2
+      },
+      {
+        "text": "原点",
+        "startMs": 6550,
+        "durationMs": 400,
+        "textOffset": 34,
+        "wordLength": 2
+      },
+      {
+        "text": "的",
+        "startMs": 6950,
+        "durationMs": 120,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "竖",
+        "startMs": 7070,
+        "durationMs": 160,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "直线段",
+        "startMs": 7230,
+        "durationMs": 719,
+        "textOffset": 38,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 7949,
+        "durationMs": 0,
+        "textOffset": 41,
+        "wordLength": 1
+      }
+    ],
+    "speech": "第二份从横坐标零、纵坐标负一的点到横坐标零、纵坐标一的点。是一条经过原点的竖直线段。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "9faba4980eed72c87cd338be9a31fd3a9e993700291523ecc78ede7610a19759"
+  },
+  "U03": {
+    "audioFile": "U03.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "ab331a78fe586b3cb4ff9ffe75eb9088fb0c6a999fbb97f9f37cb9c8571b0a1e",
+    "duration": 11.13,
+    "words": [
+      {
+        "text": "第三",
+        "startMs": 70,
+        "durationMs": 440,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "份",
+        "startMs": 510,
+        "durationMs": 120,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "startMs": 630,
+        "durationMs": 120,
+        "textOffset": 3,
+        "wordLength": 1
+      },
+      {
+        "text": "两",
+        "startMs": 750,
+        "durationMs": 160,
+        "textOffset": 4,
+        "wordLength": 1
+      },
+      {
+        "text": "个",
+        "startMs": 910,
+        "durationMs": 120,
+        "textOffset": 5,
+        "wordLength": 1
+      },
+      {
+        "text": "端点",
+        "startMs": 1030,
+        "durationMs": 600,
+        "textOffset": 6,
+        "wordLength": 2
+      },
+      {
+        "text": "横",
+        "startMs": 1630,
+        "durationMs": 399,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "坐标",
+        "startMs": 2029,
+        "durationMs": 481,
+        "textOffset": 9,
+        "wordLength": 2
+      },
+      {
+        "text": "和",
+        "startMs": 2510,
+        "durationMs": 160,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "纵",
+        "startMs": 2670,
+        "durationMs": 199,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "坐标",
+        "startMs": 2869,
+        "durationMs": 401,
+        "textOffset": 13,
+        "wordLength": 2
+      },
+      {
+        "text": "都",
+        "startMs": 3270,
+        "durationMs": 159,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 3429,
+        "durationMs": 121,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "零",
+        "startMs": 3550,
+        "durationMs": 359,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 3909,
+        "durationMs": 0,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "它",
+        "startMs": 3990,
+        "durationMs": 240,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "只",
+        "startMs": 4230,
+        "durationMs": 120,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "包含",
+        "startMs": 4350,
+        "durationMs": 360,
+        "textOffset": 21,
+        "wordLength": 2
+      },
+      {
+        "text": "原点",
+        "startMs": 4710,
+        "durationMs": 400,
+        "textOffset": 23,
+        "wordLength": 2
+      },
+      {
+        "text": "这",
+        "startMs": 5110,
+        "durationMs": 120,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
+        "text": "一",
+        "startMs": 5230,
+        "durationMs": 120,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "个",
+        "startMs": 5350,
+        "durationMs": 120,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "点",
+        "startMs": 5470,
+        "durationMs": 360,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 5830,
+        "durationMs": 0,
+        "textOffset": 29,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 5930,
+        "durationMs": 200,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "仍然",
+        "startMs": 6130,
+        "durationMs": 280,
+        "textOffset": 31,
+        "wordLength": 2
+      },
+      {
+        "text": "是",
+        "startMs": 6410,
+        "durationMs": 120,
+        "textOffset": 33,
         "wordLength": 1
       },
       {
         "text": "一",
         "startMs": 6530,
         "durationMs": 120,
-        "textOffset": 32,
-        "wordLength": 1
-      },
-      {
-        "text": "条",
-        "startMs": 6650,
-        "durationMs": 160,
-        "textOffset": 33,
-        "wordLength": 1
-      },
-      {
-        "text": "经过",
-        "startMs": 6810,
-        "durationMs": 280,
         "textOffset": 34,
-        "wordLength": 2
-      },
-      {
-        "text": "原点",
-        "startMs": 7090,
-        "durationMs": 440,
-        "textOffset": 36,
-        "wordLength": 2
-      },
-      {
-        "text": "的",
-        "startMs": 7530,
-        "durationMs": 120,
-        "textOffset": 38,
-        "wordLength": 1
-      },
-      {
-        "text": "竖",
-        "startMs": 7650,
-        "durationMs": 160,
-        "textOffset": 39,
-        "wordLength": 1
-      },
-      {
-        "text": "直线段",
-        "startMs": 7810,
-        "durationMs": 680,
-        "textOffset": 40,
-        "wordLength": 3
-      },
-      {
-        "text": "。",
-        "startMs": 8490,
-        "durationMs": 0,
-        "textOffset": 43,
-        "wordLength": 1
-      }
-    ],
-    "speech": "第 二 份从横坐标零、纵坐标负一的点到横坐标零、纵坐标一的点。是一条经过原点的竖直线段。",
-    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "c2d1d95269e57977c4d1cf153f261d31a2796ee21a2b4428b70be8672866319f"
-  },
-  "U03": {
-    "audioFile": "U03.wav",
-    "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "f2daf694ba0dc0cd829fd0d49118be2b0472a4ff5f5793b73d5dc9a438993b8c",
-    "duration": 10.93,
-    "words": [
-      {
-        "text": "第",
-        "startMs": 70,
-        "durationMs": 480,
-        "textOffset": 0,
-        "wordLength": 1
-      },
-      {
-        "text": " ",
-        "startMs": 550,
-        "durationMs": 0,
-        "textOffset": 1,
-        "wordLength": 1
-      },
-      {
-        "text": "三",
-        "startMs": 630,
-        "durationMs": 320,
-        "textOffset": 2,
-        "wordLength": 1
-      },
-      {
-        "text": " ",
-        "startMs": 950,
-        "durationMs": 0,
-        "textOffset": 3,
         "wordLength": 1
       },
       {
         "text": "份",
-        "startMs": 950,
-        "durationMs": 120,
-        "textOffset": 4,
-        "wordLength": 1
-      },
-      {
-        "text": "的",
-        "startMs": 1070,
-        "durationMs": 120,
-        "textOffset": 5,
-        "wordLength": 1
-      },
-      {
-        "text": "两",
-        "startMs": 1190,
-        "durationMs": 160,
-        "textOffset": 6,
-        "wordLength": 1
-      },
-      {
-        "text": "个",
-        "startMs": 1350,
-        "durationMs": 120,
-        "textOffset": 7,
-        "wordLength": 1
-      },
-      {
-        "text": "端点",
-        "startMs": 1470,
-        "durationMs": 520,
-        "textOffset": 8,
-        "wordLength": 2
-      },
-      {
-        "text": "横",
-        "startMs": 1990,
-        "durationMs": 359,
-        "textOffset": 10,
-        "wordLength": 1
-      },
-      {
-        "text": "坐标",
-        "startMs": 2349,
-        "durationMs": 440,
-        "textOffset": 11,
-        "wordLength": 2
-      },
-      {
-        "text": "和",
-        "startMs": 2789,
-        "durationMs": 160,
-        "textOffset": 13,
-        "wordLength": 1
-      },
-      {
-        "text": "纵",
-        "startMs": 2949,
-        "durationMs": 161,
-        "textOffset": 14,
-        "wordLength": 1
-      },
-      {
-        "text": "坐标",
-        "startMs": 3110,
-        "durationMs": 400,
-        "textOffset": 15,
-        "wordLength": 2
-      },
-      {
-        "text": "都",
-        "startMs": 3510,
+        "startMs": 6650,
         "durationMs": 200,
-        "textOffset": 17,
-        "wordLength": 1
-      },
-      {
-        "text": "是",
-        "startMs": 3710,
-        "durationMs": 119,
-        "textOffset": 18,
-        "wordLength": 1
-      },
-      {
-        "text": "零",
-        "startMs": 3829,
-        "durationMs": 401,
-        "textOffset": 19,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 4230,
-        "durationMs": 0,
-        "textOffset": 20,
-        "wordLength": 1
-      },
-      {
-        "text": "它",
-        "startMs": 4290,
-        "durationMs": 240,
-        "textOffset": 21,
-        "wordLength": 1
-      },
-      {
-        "text": "只",
-        "startMs": 4530,
-        "durationMs": 120,
-        "textOffset": 22,
-        "wordLength": 1
-      },
-      {
-        "text": "包含",
-        "startMs": 4650,
-        "durationMs": 360,
-        "textOffset": 23,
-        "wordLength": 2
-      },
-      {
-        "text": "原点",
-        "startMs": 5010,
-        "durationMs": 400,
-        "textOffset": 25,
-        "wordLength": 2
-      },
-      {
-        "text": "这",
-        "startMs": 5410,
-        "durationMs": 120,
-        "textOffset": 27,
-        "wordLength": 1
-      },
-      {
-        "text": "一",
-        "startMs": 5530,
-        "durationMs": 120,
-        "textOffset": 28,
-        "wordLength": 1
-      },
-      {
-        "text": "个",
-        "startMs": 5650,
-        "durationMs": 120,
-        "textOffset": 29,
-        "wordLength": 1
-      },
-      {
-        "text": "点",
-        "startMs": 5770,
-        "durationMs": 360,
-        "textOffset": 30,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 6130,
-        "durationMs": 0,
-        "textOffset": 31,
-        "wordLength": 1
-      },
-      {
-        "text": "这",
-        "startMs": 6230,
-        "durationMs": 160,
-        "textOffset": 32,
-        "wordLength": 1
-      },
-      {
-        "text": "仍然",
-        "startMs": 6390,
-        "durationMs": 360,
-        "textOffset": 33,
-        "wordLength": 2
-      },
-      {
-        "text": "是",
-        "startMs": 6750,
-        "durationMs": 120,
         "textOffset": 35,
         "wordLength": 1
       },
       {
-        "text": "一",
-        "startMs": 6870,
-        "durationMs": 120,
-        "textOffset": 36,
-        "wordLength": 1
-      },
-      {
-        "text": "份",
-        "startMs": 6990,
-        "durationMs": 160,
-        "textOffset": 37,
-        "wordLength": 1
-      },
-      {
         "text": "独立",
-        "startMs": 7150,
-        "durationMs": 320,
-        "textOffset": 38,
+        "startMs": 6850,
+        "durationMs": 280,
+        "textOffset": 36,
         "wordLength": 2
       },
       {
         "text": "输入",
-        "startMs": 7470,
+        "startMs": 7130,
         "durationMs": 480,
-        "textOffset": 40,
+        "textOffset": 38,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 7950,
+        "startMs": 7610,
         "durationMs": 0,
-        "textOffset": 42,
+        "textOffset": 40,
         "wordLength": 1
       },
       {
         "text": "菱形",
-        "startMs": 8070,
-        "durationMs": 280,
-        "textOffset": 43,
+        "startMs": 7720,
+        "durationMs": 480,
+        "textOffset": 41,
         "wordLength": 2
       },
       {
         "text": "只",
-        "startMs": 8350,
+        "startMs": 8200,
         "durationMs": 120,
-        "textOffset": 45,
+        "textOffset": 43,
         "wordLength": 1
       },
       {
         "text": "是",
-        "startMs": 8470,
+        "startMs": 8320,
         "durationMs": 120,
-        "textOffset": 46,
+        "textOffset": 44,
         "wordLength": 1
       },
       {
         "text": "帮助",
-        "startMs": 8590,
-        "durationMs": 320,
-        "textOffset": 47,
+        "startMs": 8440,
+        "durationMs": 280,
+        "textOffset": 45,
         "wordLength": 2
       },
       {
         "text": "我们",
-        "startMs": 8910,
+        "startMs": 8720,
         "durationMs": 240,
-        "textOffset": 49,
+        "textOffset": 47,
         "wordLength": 2
       },
       {
         "text": "认出",
-        "startMs": 9150,
-        "durationMs": 240,
-        "textOffset": 51,
+        "startMs": 8960,
+        "durationMs": 320,
+        "textOffset": 49,
         "wordLength": 2
       },
       {
         "text": "它",
-        "startMs": 9390,
-        "durationMs": 240,
-        "textOffset": 53,
+        "startMs": 9280,
+        "durationMs": 360,
+        "textOffset": 51,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 9630,
+        "startMs": 9640,
         "durationMs": 0,
-        "textOffset": 54,
+        "textOffset": 52,
         "wordLength": 1
       },
       {
         "text": "不",
         "startMs": 9760,
-        "durationMs": 200,
-        "textOffset": 55,
+        "durationMs": 240,
+        "textOffset": 53,
         "wordLength": 1
       },
       {
         "text": "表示",
-        "startMs": 9960,
-        "durationMs": 280,
-        "textOffset": 56,
+        "startMs": 10000,
+        "durationMs": 360,
+        "textOffset": 54,
         "wordLength": 2
       },
       {
         "text": "有",
-        "startMs": 10240,
+        "startMs": 10360,
         "durationMs": 160,
-        "textOffset": 58,
+        "textOffset": 56,
         "wordLength": 1
       },
       {
         "text": "面积",
-        "textOffset": 59,
-        "wordLength": 2,
-        "startMs": 10430,
-        "durationMs": 470
+        "startMs": 10520,
+        "durationMs": 560,
+        "textOffset": 57,
+        "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 10400,
+        "startMs": 11080,
         "durationMs": 0,
-        "textOffset": 61,
+        "textOffset": 59,
         "wordLength": 1
       }
     ],
-    "speech": "第 三 份的两个端点横坐标和纵坐标都是零。它只包含原点这一个点。这仍然是一份独立输入。菱形只是帮助我们认出它。不表示有面积。",
+    "speech": "第三份的两个端点横坐标和纵坐标都是零。它只包含原点这一个点。这仍然是一份独立输入。菱形只是帮助我们认出它。不表示有面积。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "643b43b2f34d63332fb5c32cb51531e5c51be8a79bb72312085fdda65bad2125",
-    "alignment": {
-      "method": "azure-pronunciation-assessment",
-      "audioSha256": "f2daf694ba0dc0cd829fd0d49118be2b0472a4ff5f5793b73d5dc9a438993b8c",
-      "synthesisWords": [
-        {
-          "text": "第",
-          "startMs": 70,
-          "durationMs": 480,
-          "textOffset": 0,
-          "wordLength": 1
-        },
-        {
-          "text": " ",
-          "startMs": 550,
-          "durationMs": 0,
-          "textOffset": 1,
-          "wordLength": 1
-        },
-        {
-          "text": "三",
-          "startMs": 630,
-          "durationMs": 320,
-          "textOffset": 2,
-          "wordLength": 1
-        },
-        {
-          "text": " ",
-          "startMs": 950,
-          "durationMs": 0,
-          "textOffset": 3,
-          "wordLength": 1
-        },
-        {
-          "text": "份",
-          "startMs": 950,
-          "durationMs": 120,
-          "textOffset": 4,
-          "wordLength": 1
-        },
-        {
-          "text": "的",
-          "startMs": 1070,
-          "durationMs": 120,
-          "textOffset": 5,
-          "wordLength": 1
-        },
-        {
-          "text": "两",
-          "startMs": 1190,
-          "durationMs": 160,
-          "textOffset": 6,
-          "wordLength": 1
-        },
-        {
-          "text": "个",
-          "startMs": 1350,
-          "durationMs": 120,
-          "textOffset": 7,
-          "wordLength": 1
-        },
-        {
-          "text": "端点",
-          "startMs": 1470,
-          "durationMs": 520,
-          "textOffset": 8,
-          "wordLength": 2
-        },
-        {
-          "text": "横",
-          "startMs": 1990,
-          "durationMs": 359,
-          "textOffset": 10,
-          "wordLength": 1
-        },
-        {
-          "text": "坐标",
-          "startMs": 2349,
-          "durationMs": 440,
-          "textOffset": 11,
-          "wordLength": 2
-        },
-        {
-          "text": "和",
-          "startMs": 2789,
-          "durationMs": 160,
-          "textOffset": 13,
-          "wordLength": 1
-        },
-        {
-          "text": "纵",
-          "startMs": 2949,
-          "durationMs": 161,
-          "textOffset": 14,
-          "wordLength": 1
-        },
-        {
-          "text": "坐标",
-          "startMs": 3110,
-          "durationMs": 400,
-          "textOffset": 15,
-          "wordLength": 2
-        },
-        {
-          "text": "都",
-          "startMs": 3510,
-          "durationMs": 200,
-          "textOffset": 17,
-          "wordLength": 1
-        },
-        {
-          "text": "是",
-          "startMs": 3710,
-          "durationMs": 119,
-          "textOffset": 18,
-          "wordLength": 1
-        },
-        {
-          "text": "零",
-          "startMs": 3829,
-          "durationMs": 401,
-          "textOffset": 19,
-          "wordLength": 1
-        },
-        {
-          "text": "。",
-          "startMs": 4230,
-          "durationMs": 0,
-          "textOffset": 20,
-          "wordLength": 1
-        },
-        {
-          "text": "它",
-          "startMs": 4290,
-          "durationMs": 240,
-          "textOffset": 21,
-          "wordLength": 1
-        },
-        {
-          "text": "只",
-          "startMs": 4530,
-          "durationMs": 120,
-          "textOffset": 22,
-          "wordLength": 1
-        },
-        {
-          "text": "包含",
-          "startMs": 4650,
-          "durationMs": 360,
-          "textOffset": 23,
-          "wordLength": 2
-        },
-        {
-          "text": "原点",
-          "startMs": 5010,
-          "durationMs": 400,
-          "textOffset": 25,
-          "wordLength": 2
-        },
-        {
-          "text": "这",
-          "startMs": 5410,
-          "durationMs": 120,
-          "textOffset": 27,
-          "wordLength": 1
-        },
-        {
-          "text": "一",
-          "startMs": 5530,
-          "durationMs": 120,
-          "textOffset": 28,
-          "wordLength": 1
-        },
-        {
-          "text": "个",
-          "startMs": 5650,
-          "durationMs": 120,
-          "textOffset": 29,
-          "wordLength": 1
-        },
-        {
-          "text": "点",
-          "startMs": 5770,
-          "durationMs": 360,
-          "textOffset": 30,
-          "wordLength": 1
-        },
-        {
-          "text": "。",
-          "startMs": 6130,
-          "durationMs": 0,
-          "textOffset": 31,
-          "wordLength": 1
-        },
-        {
-          "text": "这",
-          "startMs": 6230,
-          "durationMs": 160,
-          "textOffset": 32,
-          "wordLength": 1
-        },
-        {
-          "text": "仍然",
-          "startMs": 6390,
-          "durationMs": 360,
-          "textOffset": 33,
-          "wordLength": 2
-        },
-        {
-          "text": "是",
-          "startMs": 6750,
-          "durationMs": 120,
-          "textOffset": 35,
-          "wordLength": 1
-        },
-        {
-          "text": "一",
-          "startMs": 6870,
-          "durationMs": 120,
-          "textOffset": 36,
-          "wordLength": 1
-        },
-        {
-          "text": "份",
-          "startMs": 6990,
-          "durationMs": 160,
-          "textOffset": 37,
-          "wordLength": 1
-        },
-        {
-          "text": "独立",
-          "startMs": 7150,
-          "durationMs": 320,
-          "textOffset": 38,
-          "wordLength": 2
-        },
-        {
-          "text": "输入",
-          "startMs": 7470,
-          "durationMs": 480,
-          "textOffset": 40,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 7950,
-          "durationMs": 0,
-          "textOffset": 42,
-          "wordLength": 1
-        },
-        {
-          "text": "菱形",
-          "startMs": 8070,
-          "durationMs": 280,
-          "textOffset": 43,
-          "wordLength": 2
-        },
-        {
-          "text": "只",
-          "startMs": 8350,
-          "durationMs": 120,
-          "textOffset": 45,
-          "wordLength": 1
-        },
-        {
-          "text": "是",
-          "startMs": 8470,
-          "durationMs": 120,
-          "textOffset": 46,
-          "wordLength": 1
-        },
-        {
-          "text": "帮助",
-          "startMs": 8590,
-          "durationMs": 320,
-          "textOffset": 47,
-          "wordLength": 2
-        },
-        {
-          "text": "我们",
-          "startMs": 8910,
-          "durationMs": 240,
-          "textOffset": 49,
-          "wordLength": 2
-        },
-        {
-          "text": "认出",
-          "startMs": 9150,
-          "durationMs": 240,
-          "textOffset": 51,
-          "wordLength": 2
-        },
-        {
-          "text": "它",
-          "startMs": 9390,
-          "durationMs": 240,
-          "textOffset": 53,
-          "wordLength": 1
-        },
-        {
-          "text": "。",
-          "startMs": 9630,
-          "durationMs": 0,
-          "textOffset": 54,
-          "wordLength": 1
-        },
-        {
-          "text": "不",
-          "startMs": 9760,
-          "durationMs": 200,
-          "textOffset": 55,
-          "wordLength": 1
-        },
-        {
-          "text": "表示",
-          "startMs": 9960,
-          "durationMs": 280,
-          "textOffset": 56,
-          "wordLength": 2
-        },
-        {
-          "text": "有",
-          "startMs": 10240,
-          "durationMs": 160,
-          "textOffset": 58,
-          "wordLength": 1
-        },
-        {
-          "text": "面积",
-          "startMs": 10400,
-          "durationMs": 0,
-          "textOffset": 59,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 10400,
-          "durationMs": 0,
-          "textOffset": 61,
-          "wordLength": 1
-        }
-      ],
-      "response": {
-        "Id": "3102e23a85b14524979f7f017605e4ea",
-        "RecognitionStatus": "Success",
-        "Offset": 500000,
-        "Duration": 108500000,
-        "Channel": 0,
-        "DisplayText": "第三份的两个端点，横坐标和纵坐标都是零，它只包含原点这一个点，这仍然是一份独立输入。菱形只是帮助我们认出它，不表示有面积。",
-        "SNR": 33.775715,
-        "NBest": [
-          {
-            "Confidence": 0.9767626,
-            "Lexical": "第 三 份 的 两 个 端点 横坐标 和 纵坐 标都 是 零 它 只 包含 原点 这 一个 点 这 仍然 是 一 份 独立 输入 菱形 只是 帮助 我们 认出 它 不 表示 有 面积",
-            "ITN": "第 三 份 的 两 个 端点 横坐标 和 纵坐 标都 是 零 它 只 包含 原点 这 一个 点 这 仍然 是 一 份 独立 输入 菱形 只是 帮助 我们 认出 它 不 表示 有 面积",
-            "MaskedITN": "第三份的两个端点横坐标和纵坐标都是零它只包含原点这一个点这仍然是一份独立输入菱形只是帮助我们认出它不表示有面积",
-            "Display": "第三份的两个端点，横坐标和纵坐标都是零，它只包含原点这一个点，这仍然是一份独立输入。菱形只是帮助我们认出它，不表示有面积。",
-            "PronunciationAssessment": {
-              "AccuracyScore": 93,
-              "FluencyScore": 99,
-              "CompletenessScore": 100,
-              "PronScore": 95.6
-            },
-            "Words": [
-              {
-                "Word": "第",
-                "Offset": 500000,
-                "Duration": 3200000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "三",
-                "Offset": 3800000,
-                "Duration": 6000000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "份",
-                "Offset": 9900000,
-                "Duration": 1100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "的",
-                "Offset": 11100000,
-                "Duration": 1000000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "两",
-                "Offset": 12200000,
-                "Duration": 1200000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 94,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "个",
-                "Offset": 13500000,
-                "Duration": 900000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "端点",
-                "Offset": 14500000,
-                "Duration": 5500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "横坐标",
-                "Offset": 20300000,
-                "Duration": 7500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "和",
-                "Offset": 27900000,
-                "Duration": 1600000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "纵坐",
-                "Offset": 29600000,
-                "Duration": 3400000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "标都",
-                "Offset": 33100000,
-                "Duration": 4100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "是",
-                "Offset": 37300000,
-                "Duration": 1300000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 91,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "零",
-                "Offset": 38700000,
-                "Duration": 3700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "它",
-                "Offset": 42700000,
-                "Duration": 2500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "只",
-                "Offset": 45300000,
-                "Duration": 1500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "包含",
-                "Offset": 46900000,
-                "Duration": 3700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "原点",
-                "Offset": 50700000,
-                "Duration": 3900000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "这",
-                "Offset": 54700000,
-                "Duration": 1000000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 69,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "一个",
-                "Offset": 55800000,
-                "Duration": 2200000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "点",
-                "Offset": 58100000,
-                "Duration": 3700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "这",
-                "Offset": 62100000,
-                "Duration": 2100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 82,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "仍然",
-                "Offset": 64300000,
-                "Duration": 3500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "是",
-                "Offset": 67900000,
-                "Duration": 1000000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 64,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "一",
-                "Offset": 69000000,
-                "Duration": 1100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "份",
-                "Offset": 70200000,
-                "Duration": 1600000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "独立",
-                "Offset": 71900000,
-                "Duration": 2900000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "输入",
-                "Offset": 74900000,
-                "Duration": 5100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 94,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "菱形",
-                "Offset": 80300000,
-                "Duration": 3700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 65,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "只是",
-                "Offset": 84100000,
-                "Duration": 2100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 88,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "帮助",
-                "Offset": 86300000,
-                "Duration": 2500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "我们",
-                "Offset": 88900000,
-                "Duration": 2200000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 82,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "认出",
-                "Offset": 91200000,
-                "Duration": 2600000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 63,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "它",
-                "Offset": 93900000,
-                "Duration": 2900000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "不",
-                "Offset": 97100000,
-                "Duration": 2500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "表示",
-                "Offset": 99700000,
-                "Duration": 3100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 73,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "有",
-                "Offset": 102900000,
-                "Duration": 1300000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "面积",
-                "Offset": 104300000,
-                "Duration": 4700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 88,
-                  "ErrorType": "None"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    }
+    "fingerprint": "193cc7af68f26b02dcb78a29285261c960f471feb6d041bd36819e9f9cb66b95"
   },
   "U04": {
     "audioFile": "U04.wav",
