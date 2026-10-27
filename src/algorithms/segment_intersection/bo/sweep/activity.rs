@@ -9,7 +9,7 @@ pub(super) fn update(
     groups: &[usize],
     recording: &mut Recorder<'_, '_>,
 ) -> Option<Vec<usize>> {
-    recording.enter("activity", "update", "Vec<GroupId>", || {
+    recording.enter("activity", "update", "Vec<GroupId>", (3, 0), || {
         vec![
             Variable::available("event", "&Event", event_value(event)),
             Variable::available("incident_groups", "&[GroupId]", format!("{groups:?}")),
@@ -22,6 +22,16 @@ pub(super) fn update(
         account!(access("groups", 1));
         account!(access("segments", 1));
         let g = state.group_of[id].expect("nonzero end");
+        recording.observe(state, point, 5, "micro", || {
+            (
+                vec![id],
+                vec![
+                    Variable::available("id", "usize", id.to_string()),
+                    Variable::available("group", "GroupId", g.to_string()),
+                ],
+            )
+        })?;
+        recording.control(1, "for", "entered");
         state.groups[g].remove(id, &state.segments[id]);
         state.groups_value.get_mut().take();
         recording.observe(state, point, 1, "leave", || {
@@ -34,7 +44,7 @@ pub(super) fn update(
             )
         })?;
         recording.control(1, "for", "entered");
-        recording.block_end(1);
+        recording.iteration_end(state, point, 1, 8, &[("id", "usize"), ("group", "GroupId")])?;
     }
     recording.observe(state, point, 2, "micro", || {
         (
@@ -42,12 +52,11 @@ pub(super) fn update(
             vec![
                 Variable::absent("id", "usize", "unavailable"),
                 Variable::absent("group", "GroupId", "unavailable"),
-                Variable::available("side", "Side", "After"),
+                Variable::absent("inserted", "Vec<GroupId>", "unassigned"),
             ],
         )
     })?;
     recording.control(1, "for", "exhausted");
-    recording.block_after(1);
     // The whole old block is already out of T. Only now is equality at p
     // ordered after the event; higher same-u crossings remain in before order.
     let mut inserted: Vec<_> = groups
@@ -62,7 +71,24 @@ pub(super) fn update(
         account!(access("groups", 2));
         state.groups[a].slope.cmp(&state.groups[b].slope)
     });
+    recording.observe(state, point, 6, "micro", || {
+        (
+            vec![],
+            vec![Variable::available(
+                "inserted",
+                "Vec<GroupId>",
+                format!("{inserted:?}"),
+            )],
+        )
+    })?;
     for &g in &inserted {
+        recording.observe(state, point, 7, "micro", || {
+            (
+                state.groups[g].members.iter().copied().collect(),
+                vec![Variable::available("group", "GroupId", g.to_string())],
+            )
+        })?;
+        recording.control(3, "for", "entered");
         account!(access("inserted_list", 1));
         account!(access("active", 1));
         account!(add("active", 1));
@@ -76,7 +102,7 @@ pub(super) fn update(
             )
         })?;
         recording.control(3, "for", "entered");
-        recording.block_end(3);
+        recording.iteration_end(state, point, 3, 6, &[("group", "GroupId")])?;
     }
     recording.observe(state, point, 4, "reorder", || {
         (
@@ -88,7 +114,6 @@ pub(super) fn update(
         )
     })?;
     recording.control(3, "for", "exhausted");
-    recording.block_after(3);
     recording.control(4, "return", "pending");
     recording
         .leave(|| Variable::available("return_value", "Vec<GroupId>", format!("{inserted:?}")));

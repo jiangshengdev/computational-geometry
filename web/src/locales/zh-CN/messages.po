@@ -350,6 +350,11 @@ msgstr ""
 #~ msgstr " 与 "
 
 #. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
+#~ msgid "Indices of the neighboring segments being checked"
+#~ msgstr "本次检查的相邻线段编号"
+
+#. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:84
 msgid " (shadowed; last value before shadowing)"
 msgstr "（已遮蔽，遮蔽前的最后值）"
@@ -2118,11 +2123,6 @@ msgstr "在此事件点开始的线段编号"
 msgid "Indices of the currently active segments"
 msgstr "当前活动线段的编号序列"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
-msgid "Indices of the neighboring segments being checked"
-msgstr "本次检查的相邻线段编号"
-
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:100
 msgid "Input and intersection plot"
 msgstr "输入与交集坐标图"
@@ -2482,6 +2482,11 @@ msgstr "邻居检查"
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:30
 msgid "Neighboring pairs already checked for this event"
 msgstr "本事件已经检查的邻居对"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
+msgid "Neighboring supporting-line group IDs to check"
+msgstr "待检查的相邻支撑线组 ID"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:13

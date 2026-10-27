@@ -350,6 +350,11 @@ msgstr ""
 #~ msgstr " and "
 
 #. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
+#~ msgid "Indices of the neighboring segments being checked"
+#~ msgstr "Indices of the neighboring segments being checked"
+
+#. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:84
 msgid " (shadowed; last value before shadowing)"
 msgstr " (shadowed; last value before shadowing)"
@@ -2118,11 +2123,6 @@ msgstr "Indices of segments starting at this event point"
 msgid "Indices of the currently active segments"
 msgstr "Indices of the currently active segments"
 
-#. js-lingui-explicit-id
-#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
-msgid "Indices of the neighboring segments being checked"
-msgstr "Indices of the neighboring segments being checked"
-
 #: src/algorithms/segment-intersection/bo/geometry/GeometryView.tsx:100
 msgid "Input and intersection plot"
 msgstr "Input and intersection plot"
@@ -2482,6 +2482,11 @@ msgstr "Neighbor checks"
 #: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:30
 msgid "Neighboring pairs already checked for this event"
 msgstr "Neighboring pairs already checked for this event"
+
+#. js-lingui-explicit-id
+#: src/algorithms/segment-intersection/bo/learning/executionSymbols.ts:29
+msgid "Neighboring supporting-line group IDs to check"
+msgstr "Neighboring supporting-line group IDs to check"
 
 #. js-lingui-explicit-id
 #: src/algorithms/segment-intersection/cases/presets.ts:13

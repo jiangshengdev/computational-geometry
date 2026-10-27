@@ -59,7 +59,7 @@ function teachingModule(title: MessageDescriptor, operations: (string | { code: 
 // Array positions are trace identities; formatting within an entry must not renumber them.
 export const teachingModules: Record<string, TeachingModule> = {
   sweep: teachingModule(/*i18n*/ { id: 'Sweep event', message: 'Sweep event' }, [
-    'let located = locate(&mut state, &point, &event);',
+    'let Located { groups: incident_groups, outside } = locate(&mut state, &point, &event);',
     'record(&mut state, &point, &event, &incident_groups);',
     'let inserted = update(&mut state, &point, &event, &incident_groups);',
     'check(&mut state, &point, &inserted, outside);',
@@ -70,41 +70,44 @@ export const teachingModules: Record<string, TeachingModule> = {
     'let incident_groups = merge_start_groups(&block, &event.starts);',
     'for group in block {\n    active_groups.remove(group, Before);\n}',
     'return Located { groups: incident_groups, outside };',
-  ], [[1], [3], [3, 2], [4]], [0, 1, 2, 3]),
+  ], [[1], [3], [3, 2], [4], [2], [3, 1]], [0, 1, 2, 3]),
   members: teachingModule(/*i18n*/ { id: 'Record member intersections', message: 'Record member intersections' }, [
     `// ${comment(/*i18n*/ { id: 'Record each same-line pair when its later member starts.', message: 'Record each same-line pair when its later member starts.' })}
 for id in event.starts {\n    let group = group_of[id];`,
-    '    for other in groups[group].members {\n        append([id, other], complete_intersection(id, other));\n    }',
+    '    for other in groups[group].members {\n        let start = segments[id].left.max(segments[other].left);\n        let end = segments[id].right.min(segments[other].right);\n        let scan_geometry = if start == end {\n            Geometry::Point(start)\n        } else {\n            Geometry::Overlap { start, end }\n        };\n        append([id, other], scan_geometry);\n    }',
     '    groups[group].insert(id);\n}',
-    'if incident_groups.len() > 1 || !event.points.is_empty() {\n    let members = expand_members(incident_groups);',
-    '    for (i, left) in members.iter().enumerate() {\n        for right in &members[i + 1..] {\n            for a in left {\n                for b in right {\n                    append([a, b], Geometry::Point(point));\n                }\n            }\n        }\n    }',
-    '    for id in event.points {\n        for group_members in members {\n            for other in group_members {\n                append([id, other], Geometry::Point(point));\n            }\n        }\n    }\n}',
-    'for (i, a) in event.points.iter().enumerate() {\n    for b in &event.points[i + 1..] {\n        append([a, b], Geometry::Point(point));\n    }\n}',
+    'if incident_groups.len() > 1 || !event.points.is_empty() {',
+    '    for [a, b] in cross_group_pairs(incident_groups) {\n        append([a, b], Geometry::Point(point));\n    }',
+    '    for [id, other] in point_member_pairs(event.points, incident_groups) {\n        append([id, other], Geometry::Point(point));\n    }\n}',
+    'for [a, b] in unordered_pairs(event.points) {\n    append([a, b], Geometry::Point(point));\n}',
     'return ();',
-  ], [[1], [2], [3, 1], [4], [7], [8], [2, 1], [5, 4], [6, 3], [7, 2]], [1, 6, 2, 4, 7, 8, 9, 5]),
+  ], [[1], [2], [3, 1], [4], [7], [8], [2, 1], [5, 1], [6, 1], [7, 1], [1, 1], [2, 8], [3], [5], [6], [5, 2], [6, 2], [7, 2], [1], [2, 9], [6, 3], [2, 2], [2, 3], [2, 4], [2, 6], [2, 7], [2, 5]], [1, 6, 2, 4, 7, 8, 9, 5]),
   output: teachingModule(/*i18n*/ { id: 'Append exact intersection', message: 'Append exact intersection' }, [
-    'let ordered_pair = sorted(pair);\nlet geometry = restore_original(scan_geometry, shear);',
+    'let ordered_pair = sorted(pair);',
+    { closure: 'original', code: 'let original = |p| {\n    Point { x: p.x - shear * p.y, y: p.y }\n};' },
+    'let geometry = match scan_geometry {\n    Geometry::Point(p) => Geometry::Point(original(p)),',
+    '    Geometry::Overlap { start, end } => {\n        let start = original(start);\n        let end = original(end);\n        ordered_overlap(start, end)\n    }\n};',
     'result.push(Intersection { segments: ordered_pair, geometry });',
     'return ();',
-  ], [[1], [2], [3]], [0, 2, 2]),
+  ], [[1], [5], [6], [2], [3], [3, 1], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5]], [0, 1, 3, 4, 2, 2]),
   activity: teachingModule(/*i18n*/ { id: 'Update the active set', message: 'Update the active set' }, [
-    'for id in event.ends {\n    let group = group_of[id];\n    groups[group].remove(id);\n}',
-    'let side = Side::After;\nlet inserted = nonempty_groups_by_slope(incident_groups);',
-    'for group in inserted {\n    active_groups.insert(group, side);\n}',
+    'for id in event.ends {\n    remove_ending_member(&mut groups, id);\n}',
+    'let inserted = nonempty_groups_by_slope(incident_groups);',
+    'for group in inserted {\n    active_groups.insert(group, After);\n}',
     'return inserted;',
-  ], [[1], [1, 3], [2], [3, 2], [4]], [1, 2, 3, 4]),
+  ], [[1], [1, 2], [2], [3, 2], [4], [1, 1], [3], [3, 1], [1]], [1, 2, 3, 4]),
   neighbors: teachingModule(/*i18n*/ { id: 'Neighbor checks', message: 'Neighbor checks' }, [
     'let neighbors = local_neighbors(outside, inserted);',
     'for pair in neighbors.windows(2) {\n    schedule(&mut state, &point, pair);\n}',
     'return ();',
-  ], [[1], [2, 1], [3]], [0, 1, 2]),
+  ], [[1], [2, 1], [3], [2], [2, 2]], [0, 1, 2]),
   schedule: teachingModule(/*i18n*/ { id: 'Schedule covered intersection', message: 'Schedule covered intersection' }, [
     'let checked_groups = pair;',
     'if groups[pair[0]].slope == groups[pair[1]].slope {\n    return ();\n}',
     'let candidate = intersect_supporting_lines(groups[pair[0]], groups[pair[1]]);',
     'if candidate > point && candidate.x <= groups[pair[0]].rightmost.unwrap() && candidate.x <= groups[pair[1]].rightmost.unwrap() {\n    queue.entry(candidate.clone()).or_default();\n}',
     'return ();',
-  ], [[1], [2, 1], [4], [4, 2], [5]], [0, 1, 2, 3, 4]),
+  ], [[1], [2, 1], [4], [4, 2], [5], [2], [3], [4, 1]], [0, 1, 2, 3, 4]),
   take: teachingModule(/*i18n*/ { id: "Take an event", message: "Take an event" }, [
     `// ${comment(/*i18n*/ { id: "Take the next pending event", message: "Take the next pending event" })}
 let next = queue.pop_first();`,

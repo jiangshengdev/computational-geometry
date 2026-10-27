@@ -22,6 +22,7 @@ pub(super) struct Frame {
     module: &'static str,
     result_type: &'static str,
     parameters: Vec<Variable>,
+    captures: Option<Vec<Variable>>,
     caller: SweepStep,
 }
 
@@ -136,11 +137,15 @@ impl Recorder<'_, '_> {
                     // A suspended mutable borrow cannot expose stale snapshots
                     // as the caller's current state. Refresh it on resumption.
                     for variable in &mut outer.locals {
-                        if shared_binding(variable.name) {
+                        if frame.captures.is_none() && shared_binding(variable.name) {
                             variable.availability = "unavailable";
                             variable.value = None;
                         }
                     }
+                }
+                if let Some(captures) = &frame.captures {
+                    step.execution.context.locals.clear();
+                    step.execution.context.captures.clone_from(captures);
                 }
                 for variable in &mut step.execution.context.locals {
                     if !shared_binding(variable.name)
@@ -149,10 +154,13 @@ impl Recorder<'_, '_> {
                         variable.scope = Some(frame.function);
                         if frame.module == "members" {
                             variable.scope = match (boundary, variable.name) {
-                                (1 | 2 | 3 | 6, "id" | "other" | "group") => Some("members.starts"),
-                                (4 | 7, "a" | "b") => Some("members.cross"),
-                                (4 | 8, "id" | "other") => Some("members.points"),
-                                (5 | 9, "a" | "b") => Some("members.point_pairs"),
+                                (
+                                    1 | 2 | 3 | 6 | 10 | 11 | 12 | 18 | 19,
+                                    "id" | "other" | "group" | "scan_geometry",
+                                ) => Some("members.starts"),
+                                (7 | 13 | 14 | 15, "a" | "b") => Some("members.cross"),
+                                (4 | 8 | 14 | 16 | 20, "id" | "other") => Some("members.points"),
+                                (4 | 5 | 9 | 17, "a" | "b") => Some("members.point_pairs"),
                                 _ => variable.scope,
                             };
                         }
@@ -196,15 +204,16 @@ impl Recorder<'_, '_> {
         module: &'static str,
         function: &'static str,
         result_type: &'static str,
+        call_site: (usize, usize),
         parameters: impl FnOnce() -> Vec<Variable>,
     ) {
         if let Some(steps) = &mut self.steps {
             let caller = steps.last_mut().expect("caller observation");
             let parameters = parameters();
             caller.execution.calls.push(ExecutionCall::pending(
-                caller.execution.boundary.unwrap_or(0),
+                call_site.0,
                 function,
-                0,
+                call_site.1,
                 parameters.clone(),
                 result_type,
             ));
@@ -214,6 +223,7 @@ impl Recorder<'_, '_> {
                 module,
                 result_type,
                 parameters,
+                captures: None,
                 caller: caller.clone(),
             });
             self.next_call.set(self.next_call.get() + 1);
@@ -230,6 +240,11 @@ impl Recorder<'_, '_> {
             returned.action = "micro";
             returned.execution.entry = false;
             returned.execution.returning = true;
+            returned
+                .execution
+                .context
+                .parameters
+                .clone_from(&frame.parameters);
             returned
                 .execution
                 .context
@@ -279,6 +294,45 @@ impl Recorder<'_, '_> {
         }
     }
 
+    /// A value moved into this call remains visible in the call arguments,
+    /// but is no longer owned by the suspended caller or its resumed frame.
+    pub(super) fn consume_caller_local(&mut self, name: &str) {
+        if let Some(frame) = self.frames.last_mut()
+            && let Some(variable) = frame
+                .caller
+                .execution
+                .context
+                .locals
+                .iter_mut()
+                .find(|v| v.name == name)
+        {
+            variable.availability = "unavailable";
+            variable.value = None;
+        }
+    }
+
+    /// Read-only closures expose only parameters, captures and their own locals.
+    pub(super) fn capture(&mut self, names: &[&str]) {
+        if let Some(frame) = self.frames.last_mut() {
+            frame.captures = Some(
+                names
+                    .iter()
+                    .map(|name| {
+                        frame
+                            .caller
+                            .execution
+                            .context
+                            .locals
+                            .iter()
+                            .find(|v| v.name == *name)
+                            .expect("captured binding")
+                            .clone()
+                    })
+                    .collect(),
+            );
+        }
+    }
+
     pub(super) fn control(&mut self, line: usize, keyword: &'static str, status: &'static str) {
         if let Some(steps) = &mut self.steps {
             steps
@@ -300,20 +354,6 @@ impl Recorder<'_, '_> {
         }
     }
 
-    pub(super) fn loops(&mut self, line: usize, count: usize, state: &'static str) {
-        if let Some(steps) = &mut self.steps {
-            let controls = &mut steps.last_mut().expect("observation").execution.controls;
-            for occurrence in 0..count {
-                controls.push(ExecutionControl {
-                    line,
-                    keyword: "for",
-                    occurrence,
-                    state,
-                });
-            }
-        }
-    }
-
     pub(super) fn block_end(&mut self, line: usize) {
         if let Some(steps) = &mut self.steps {
             let mut before = steps.last().expect("block body").clone();
@@ -324,6 +364,31 @@ impl Recorder<'_, '_> {
             }];
             steps.push(before);
         }
+    }
+
+    /// Finish one actual iteration, then expose its scope exit before asking
+    /// for another element. Empty loops never call this method.
+    pub(super) fn iteration_end(
+        &mut self,
+        state: &SweepState,
+        point: &Point,
+        line: usize,
+        boundary: usize,
+        bindings: &[(&'static str, &'static str)],
+    ) -> Option<()> {
+        self.block_end(line);
+        self.observe(state, point, boundary, "micro", || {
+            (
+                vec![],
+                bindings
+                    .iter()
+                    .map(|&(name, kind)| Variable::absent(name, kind, "unavailable"))
+                    .collect(),
+            )
+        })?;
+        self.block_after(line);
+        self.control(line, "for", "pending");
+        Some(())
     }
 
     pub(super) fn block_after(&mut self, line: usize) {

@@ -12,7 +12,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const over = page.getByRole('button', { name: '步过', exact: true })
     const out = page.getByRole('button', { name: '步出', exact: true })
     await expect(out).toBeDisabled()
-    for (const name of ['locate', 'record', 'update', 'check', 'schedule', 'append']) {
+    for (const name of ['locate', 'record', 'update', 'check', 'schedule', 'append', 'original']) {
       const entry = trace.steps.findIndex(step => step.execution.context.function === name && step.execution.entry)
       expect(entry, name).toBeGreaterThan(0)
       const call = trace.steps[entry].execution
@@ -43,6 +43,29 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     }
   })
 }
+
+test('重叠两端分别进入原地坐标恢复闭包，保留捕获值与真实返回', async ({ page }) => {
+  const trace = await readTrace(page, 'partial-overlap')
+  const entries = trace.steps.map((step, index) => ({ step, index })).filter(({ step }) => step.execution.module === 'original' && step.execution.entry)
+  expect(entries).toHaveLength(2)
+  expect(entries[0].step.execution.context.id).not.toBe(entries[1].step.execution.context.id)
+  await page.goto(`/bo/cases/partial-overlap/learn?step=${entries[0].index - 1}`)
+  const current = page.getByRole('region', { name: '当前执行上下文', exact: true })
+  const panel = page.getByRole('region', { name: '核心代码回放' })
+  for (const [position, { index }] of entries.entries()) {
+    if (position) await page.getByRole('button', { name: '下一步', exact: true }).click()
+    await page.getByRole('button', { name: '下一步', exact: true }).click()
+    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue(String(index))
+    await expect(current.getByTestId('variable-p')).toContainText(position ? '(4, 0)' : '(2, 0)')
+    await expect(current.getByTestId('variable-shear')).toContainText('0')
+    await expect(panel).toContainText('let ordered_pair')
+    await expect(panel).toContainText('p.x - shear * p.y')
+    await page.getByRole('button', { name: '下一步', exact: true }).click()
+    await expect(current.getByTestId('variable-return_value')).toContainText(position ? '(4, 0)' : '(2, 0)')
+    await page.getByRole('button', { name: '下一步', exact: true }).click()
+    await expect(current.getByRole('heading', { name: '当前函数：append', exact: true })).toBeVisible()
+  }
+})
 
 test('嵌套输出暂停调用方共享变量，恢复时读取新结果，重复调用保持独立身份', async ({ page }) => {
   const trace = await readTrace(page, 'multiway-interior')

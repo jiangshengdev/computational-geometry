@@ -343,11 +343,18 @@ fn sweep(
         recording.observe(&state, &point, 2, "micro", || {
             (
                 vec![],
-                vec![Variable::available(
-                    "incident_groups",
-                    "Vec<GroupId>",
-                    format!("{:?}", located.groups),
-                )],
+                vec![
+                    Variable::available(
+                        "outside",
+                        "(Option<GroupId>, Option<GroupId>)",
+                        format!("{:?}", located.outside),
+                    ),
+                    Variable::available(
+                        "incident_groups",
+                        "Vec<GroupId>",
+                        format!("{:?}", located.groups),
+                    ),
+                ],
             )
         })?;
         record::record(&mut state, &point, &event, &located.groups, &mut recording)?;

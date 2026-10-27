@@ -227,7 +227,16 @@ async fn real_stage_calls_preserve_identity_return_and_resumption() {
             functions.insert(execution.context.function.as_str());
             assert!(!execution.outer.is_empty());
             assert_eq!(variable(step, "return_value").availability, "unassigned");
-            assert!(execution.context.captures.is_empty());
+            if execution.context.function == "original" {
+                assert_eq!(execution.context.captures.len(), 1);
+                let capture = &execution.context.captures[0];
+                assert_eq!(capture.name, "shear");
+                assert_eq!(capture.text(values), Some("0"));
+                assert_eq!(execution.context.parameters[0].name, "p");
+                assert_eq!(execution.context.parameters[0].text(values), Some("(2, 2)"));
+            } else {
+                assert!(execution.context.captures.is_empty());
+            }
         }
         if execution.returning {
             assert!(returned.insert(execution.context.id));
@@ -268,7 +277,7 @@ async fn real_stage_calls_preserve_identity_return_and_resumption() {
     assert_eq!(
         functions,
         std::collections::HashSet::from([
-            "locate", "record", "update", "check", "schedule", "append"
+            "locate", "record", "update", "check", "schedule", "append", "original"
         ])
     );
 }

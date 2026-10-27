@@ -40,8 +40,8 @@ test('预约覆盖分支的真假判断来自当前调用并可回退', async ({
   }
 })
 
-test('成员输出时嵌套循环均已进入，同线 other 可读取真实值', async ({ page }) => {
-  for (const [preset, line, count] of [['partial-overlap', 6, 1], ['crossing', 7, 4], ['point-inputs', 8, 3], ['pure-points', 9, 2]] as const) {
+test('封装后的每次真实输入配对均可观察，同线 other 可读取真实值', async ({ page }) => {
+  for (const [preset, line, count] of [['partial-overlap', 6, 1], ['crossing', 7, 1], ['point-inputs', 8, 1], ['pure-points', 9, 1]] as const) {
     const trace = await readTrace(page, preset)
     const index = stepIndex(trace, step => step.execution.module === 'members' && step.execution.boundary === line && !step.execution.resuming)
     const panel = await openStep(page, preset, index)
@@ -77,11 +77,28 @@ test('真实成员分支保留块结束前后；未进入分支不制造结束�
   expect(trace.steps.filter(step => step.execution.context.id === skipped.execution.context.id).flatMap(step => step.execution.blocks).filter(b => b.line === 4)).toEqual([])
 })
 
+test('同线点交与区间分支只观察实际进入的块结束', async ({ page }) => {
+  for (const [preset, condition, closing] of [['collinear-contact', 'true', '} else {'], ['partial-overlap', 'false', '};']] as const) {
+    const trace = await readTrace(page, preset)
+    const entry = stepIndex(trace, step => step.execution.module === 'members' && step.execution.controls.some(control => control.line === 6 && control.keyword === 'if' && control.state === condition))
+    const end = trace.steps.findIndex((step, index) => index > entry && step.execution.blocks.some(block => block.line === 6 && block.phase === 'before'))
+    expect(end).toBeGreaterThan(entry)
+    const panel = await openStep(page, preset, entry)
+    await hoverControl(page, panel, 'if', 6, condition === 'true' ? '条件为真' : '条件为假')
+    for (let index = entry; index < end; index++) await page.getByRole('button', { name: '下一步', exact: true }).click()
+    await expectNextStatement(panel, closing)
+    await expect(panel).toContainText('块结束前')
+    await page.getByRole('button', { name: '下一步', exact: true }).click()
+    await expect(panel).toContainText('块结束后')
+    await expect(page.getByRole('region', { name: '当前执行上下文', exact: true }).getByTestId('variable-scan_geometry')).toContainText(condition === 'true' ? '(2, 2)' : '(2, 0) → (4, 0)')
+  }
+})
+
 test('成员循环退出后变量保持名称并不可用，回退恢复真实值', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const joined = stepIndex(trace, step => step.action === 'join')
   const id = trace.steps[joined].execution.context.id
-  const exited = stepIndex(trace, step => step.execution.context.id === id && step.execution.boundary === 3)
+  const exited = stepIndex(trace, step => step.execution.context.id === id && step.execution.blocks.some(block => block.line === 1 && block.phase === 'after'))
   await openStep(page, 'crossing', exited)
   const current = page.getByRole('region', { name: '当前执行上下文', exact: true })
   await expect(current.getByTestId('variable-id')).toContainText('不可用')

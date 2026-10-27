@@ -14,7 +14,7 @@ pub(super) fn locate(
     event: &Event,
     recording: &mut Recorder<'_, '_>,
 ) -> Option<Located> {
-    recording.enter("locate", "locate", "Located", || {
+    recording.enter("locate", "locate", "Located", (1, 0), || {
         vec![Variable::available("event", "&Event", event_value(event))]
     });
     recording.observe(state, point, 0, "micro", || {
@@ -49,6 +49,20 @@ pub(super) fn locate(
         block.push(g);
         upper = state.active.neighbors(g, &compare_before).1;
     }
+    recording.observe(state, point, 4, "micro", || {
+        (
+            vec![],
+            vec![
+                Variable::available("block", "Vec<GroupId>", format!("{block:?}")),
+                Variable::available(
+                    "outside",
+                    "(Option<GroupId>, Option<GroupId>)",
+                    format!("({lower:?}, {upper:?})"),
+                ),
+                Variable::absent("incident_groups", "Vec<GroupId>", "unassigned"),
+            ],
+        )
+    })?;
     account!(access("block_list", block.len()));
     let mut groups: BTreeSet<_> = block.iter().copied().collect();
     account!(add("incident_set", groups.len()));
@@ -79,12 +93,19 @@ pub(super) fn locate(
                 Variable::available(
                     "outside",
                     "(Option<GroupId>, Option<GroupId>)",
-                    format!("{lower:?}, {upper:?}"),
+                    format!("({lower:?}, {upper:?})"),
                 ),
             ],
         )
     })?;
     for &g in &block {
+        recording.observe(state, point, 5, "micro", || {
+            (
+                state.groups[g].members.iter().copied().collect(),
+                vec![Variable::available("group", "GroupId", g.to_string())],
+            )
+        })?;
+        recording.control(2, "for", "entered");
         account!(access("block_list", 1));
         account!(access("active", 1));
         state
@@ -98,7 +119,7 @@ pub(super) fn locate(
             )
         })?;
         recording.control(2, "for", "entered");
-        recording.block_end(2);
+        recording.iteration_end(state, point, 2, 1, &[("group", "GroupId")])?;
     }
     recording.observe(state, point, 3, "micro", || {
         (
@@ -107,7 +128,6 @@ pub(super) fn locate(
         )
     })?;
     recording.control(2, "for", "exhausted");
-    recording.block_after(2);
     recording.control(3, "return", "pending");
     account!(delete("block_list", block.len()));
     let located = Located {

@@ -9,7 +9,7 @@ pub(super) fn check(
     outside: (Option<usize>, Option<usize>),
     recording: &mut Recorder<'_, '_>,
 ) -> Option<Vec<[usize; 2]>> {
-    recording.enter("neighbors", "check", "()", || {
+    recording.enter("neighbors", "check", "()", (4, 0), || {
         vec![
             Variable::available("inserted", "&[GroupId]", format!("{inserted:?}")),
             Variable::available(
@@ -19,7 +19,12 @@ pub(super) fn check(
             ),
         ]
     });
-    recording.observe(state, point, 0, "micro", || (vec![], vec![]))?;
+    recording.observe(state, point, 0, "micro", || {
+        (
+            vec![],
+            vec![Variable::absent("neighbors", "Vec<GroupId>", "unassigned")],
+        )
+    })?;
     let mut checked = Vec::new();
     // Only the O(h+1) group IDs are assembled; no member data is copied.
     let neighbors: Vec<_> = outside
@@ -30,6 +35,16 @@ pub(super) fn check(
         .collect();
     account!(access("inserted_list", inserted.len()));
     account!(add("neighbor_list", neighbors.len()));
+    recording.observe(state, point, 3, "micro", || {
+        (
+            vec![],
+            vec![Variable::available(
+                "neighbors",
+                "Vec<GroupId>",
+                format!("{neighbors:?}"),
+            )],
+        )
+    })?;
     for pair in neighbors.windows(2) {
         account!(access("neighbor_list", 2));
         let pair = [pair[0], pair[1]];
@@ -53,7 +68,8 @@ pub(super) fn check(
                 state.groups[pair[1]].farthest().1,
             ]);
         }
-        recording.block_end(1);
+        recording.observe(state, point, 4, "micro", || (vec![], vec![]))?;
+        recording.iteration_end(state, point, 1, 3, &[("pair", "[GroupId; 2]")])?;
     }
     recording.observe(state, point, 2, "micro", || {
         (
@@ -62,7 +78,6 @@ pub(super) fn check(
         )
     })?;
     recording.control(1, "for", "exhausted");
-    recording.block_after(1);
     recording.control(2, "return", "pending");
     recording.leave(|| Variable::available("return_value", "()", "()"));
     account!(delete("neighbor_list", neighbors.len()));
@@ -75,7 +90,7 @@ fn schedule(
     pair: [usize; 2],
     recording: &mut Recorder<'_, '_>,
 ) -> Option<()> {
-    recording.enter("schedule", "schedule", "()", || {
+    recording.enter("schedule", "schedule", "()", (1, 0), || {
         vec![Variable::available(
             "pair",
             "[GroupId; 2]",
@@ -88,7 +103,7 @@ fn schedule(
                 .flat_map(|&g| state.groups[g].members.iter().copied())
                 .collect(),
             vec![
-                Variable::available("checked_groups", "[GroupId; 2]", format!("{pair:?}")),
+                Variable::absent("checked_groups", "[GroupId; 2]", "unassigned"),
                 Variable::absent("candidate", "Point", "unassigned"),
             ],
         )
@@ -99,6 +114,16 @@ fn schedule(
             state.groups[pair[1]].farthest().1,
         ]];
     }
+    recording.observe(state, point, 5, "micro", || {
+        (
+            vec![],
+            vec![Variable::available(
+                "checked_groups",
+                "[GroupId; 2]",
+                format!("{pair:?}"),
+            )],
+        )
+    })?;
     account!(access("groups", 2));
     let a = &state.groups[pair[0]];
     let b = &state.groups[pair[1]];
@@ -109,6 +134,7 @@ fn schedule(
         recording.leave(|| Variable::available("return_value", "()", "()"));
         return Some(());
     }
+    recording.observe(state, point, 6, "micro", || (vec![], vec![]))?;
     recording.control(1, "if", "false");
     let u = (&b.intercept - &a.intercept) / (&a.slope - &b.slope);
     let candidate = Point {
@@ -135,8 +161,9 @@ fn schedule(
             account!(access("groups", 1));
             candidate.x <= state.groups[pair[1]].farthest().0
         };
-    recording.control(3, "if", if covered { "true" } else { "false" });
     if covered {
+        recording.observe(state, point, 7, "micro", || (vec![], vec![]))?;
+        recording.control(3, "if", "true");
         let previous = state.queue.len();
         account!(access("queue", 1));
         state.queue.entry(candidate.clone()).or_insert_with(|| {
@@ -185,6 +212,8 @@ fn schedule(
     })?;
     if covered {
         recording.block_after(3);
+    } else {
+        recording.control(3, "if", "false");
     }
     recording.control(4, "return", "pending");
     recording.leave(|| Variable::available("return_value", "()", "()"));
