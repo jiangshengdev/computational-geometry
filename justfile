@@ -15,6 +15,11 @@ frontend:
 test:
     cargo test --offline
 
+# 检查 Lean 形式化证明及传递公理依赖；任何警告均视为失败。
+[working-directory('BOProof')]
+proof:
+    lake --no-cache --wfail build BOProof
+
 # 校验性能样本的已知精确结果，仅运行该集成测试。
 perf-check:
     cargo test --offline --test performance fixed_samples_have_known_exact_results -- --exact

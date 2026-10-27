@@ -5,11 +5,15 @@
 
 ## 检查入口
 
-在本目录使用已安装的固定工具链与依赖执行：
+使用已安装的固定工具链与依赖，在仓库根目录执行：
 
 ```sh
-lake --no-cache build BOProof
+just proof
 ```
+
+该入口自动切换到 `BOProof/`，执行 `lake --no-cache --wfail build BOProof`，
+检查全部证明及传递公理依赖，并将警告视为失败。也可以在本目录直接运行该 Lake 命令。
+Lake 会复用未改变模块的有效构建结果，修改证明后重新检查受影响模块。
 
 固定版本见 `lean-toolchain`、`lakefile.toml` 与 `lake-manifest.json`：Lean/mathlib
 `v4.36.0-rc1`。不安装、升级或更新依赖。库入口导入全部证明及 `BOProof.Trust`；
