@@ -132,7 +132,8 @@ export function checkContent<R extends Row>({
       Math.round((shot.pauseAfter ?? 0.4) * 60);
     if (shot.pauseAfter) pauses.push({ id: shot.id, seconds: shot.pauseAfter });
   }
-  for (const row of timelineFor()) {
+  const timeline = timelineFor();
+  for (const [index, row] of timeline.entries()) {
     const lastCaption = captions[row.id][captions[row.id].length - 1].text;
     const last = visualAt(row, row.durationInFrames - 1);
     if (
@@ -178,14 +179,26 @@ export function checkContent<R extends Row>({
     }
     if (row.pauseAfter) {
       const start = audioLeadFrames + row.speechFrames;
-      if (row.durationInFrames - start !== 4 * fps)
-        throw Error(`Short thinking window: ${row.id}`);
+      const endsPage = timeline[index + 1]?.page !== row.page;
+      const expectedSeconds = Math.max(
+        row.pauseAfter,
+        endsPage ? (pages[row.page].holdAfterSeconds ?? 3) : 0,
+      );
+      if (
+        !Number.isFinite(row.pauseAfter) ||
+        row.pauseAfter <= 0 ||
+        row.durationInFrames - start !== Math.round(expectedSeconds * fps)
+      )
+        throw Error(`Thinking window duration mismatch: ${row.id}`);
+      const frozen = JSON.stringify(visualAt(row, start));
       for (let frame = start; frame < row.durationInFrames; frame++) {
         const state = visualAt(row, frame);
         if (
           !state.thinking ||
           state.caption !== lastCaption ||
-          !row.page.startsWith("question")
+          state.visibleStep !== row.step ||
+          state.progress !== 1 ||
+          JSON.stringify(state) !== frozen
         )
           throw Error(`Question lost during thinking: ${row.id}/${frame}`);
       }
@@ -218,7 +231,9 @@ export function checkContent<R extends Row>({
     expectedPauses &&
     JSON.stringify(pauses) !== JSON.stringify(expectedPauses)
   )
-    throw Error("Both questions must have four-second thinking windows");
+    throw Error(
+      "Thinking windows do not match the declared shots and durations",
+    );
   console.log(
     JSON.stringify(
       {

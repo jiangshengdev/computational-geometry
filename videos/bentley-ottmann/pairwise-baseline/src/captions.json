@@ -1,0 +1,232 @@
+{
+  "D23": [
+    {
+      "text": "把原始输入的数量记作 n。",
+      "startMs": 70,
+      "endMs": 2030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "四份输入时，n 等于 4。",
+      "startMs": 2040,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "重合输入仍各算一份，",
+      "startMs": 4570,
+      "endMs": 6450,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "n 不是图中不同位置的数量。",
+      "startMs": 6600,
+      "endMs": 8799,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D24": [
+    {
+      "text": "先假设至少有两份输入。",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为了计数，我们暂时把先选谁、后选谁区分开；",
+      "startMs": 2290,
+      "endMs": 6179,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是计数办法，不是把无序输入对改成有方向的结果。",
+      "startMs": 6270,
+      "endMs": 10650,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D25": [
+    {
+      "text": "第一份有 n 种选择。",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "选定之后，第二份不能与第一份相同，",
+      "startMs": 1840,
+      "endMs": 5080,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以有 n-1 种选择。",
+      "startMs": 5170,
+      "endMs": 7250,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D26": [
+    {
+      "text": "每一种第一份的选择，",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都对应 n-1 种第二份的选择，",
+      "startMs": 1840,
+      "endMs": 4199,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此有顺序的选择总数是 n(n-1)。",
+      "startMs": 4280,
+      "endMs": 7880,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D27": [
+    {
+      "text": "同一个无序输入对被数了两次。",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "例如先选 1 再选 2，",
+      "startMs": 2590,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "和先选 2 再选 1。",
+      "startMs": 4330,
+      "endMs": 5780,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "任意两份不同输入都恰好有这两种顺序，",
+      "startMs": 5820,
+      "endMs": 8940,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有第三种。",
+      "startMs": 9060,
+      "endMs": 10180,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D28": [
+    {
+      "text": "因此，把有顺序的选择总数除以 2，",
+      "startMs": 40,
+      "endMs": 3166,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就得到无序输入对的数量，",
+      "startMs": 3247,
+      "endMs": 5127,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 \\dfrac{n(n-1)}{2}。",
+      "startMs": 5287,
+      "endMs": 9327,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D29": [
+    {
+      "text": "前面已经证明基准方法恰好检查每个无序输入对一次，",
+      "startMs": 70,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这个数也就是它的检查次数。",
+      "startMs": 4440,
+      "endMs": 6480,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D30": [
+    {
+      "text": "代入四份输入。",
+      "startMs": 70,
+      "endMs": 1390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先算四减一，得到三，",
+      "startMs": 1490,
+      "endMs": 3740,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子变成四乘三。",
+      "startMs": 3820,
+      "endMs": 5420,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D31": [
+    {
+      "text": "四乘三等于十二，所以现在是十二除以二。",
+      "startMs": 70,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D32": [
+    {
+      "text": "十二除以二等于六，与前面逐行列出的六对一致。",
+      "startMs": 70,
+      "endMs": 4029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公式没有替代枚举证明，",
+      "startMs": 4130,
+      "endMs": 6050,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而是数出了同一批输入对。",
+      "startMs": 6170,
+      "endMs": 8210,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

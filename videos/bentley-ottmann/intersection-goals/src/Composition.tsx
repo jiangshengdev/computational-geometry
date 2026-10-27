@@ -1,25 +1,40 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
-
-type Props = {};
-
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
+import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { TeachingPage } from "./TeachingPage";
+import {
+  timelineFor,
+  visualAt,
+  audioLeadFrames,
+  type TimelineRow,
+} from "./timeline";
+import timing from "./audio-timing.json";
+import { narrationFile } from "../../../shared/speech/source";
+const audio: Record<string, { audioFile?: string }> = timing;
+function ShotScene({ row }: { row: TimelineRow }) {
+  const frame = useCurrentFrame();
   return (
-    <Composition
-      id="MyComp"
-      component={MyComponent}
-      durationInFrames={120}
-      fps={60}
-      width={1920}
-      height={1080}
-      calculateMetadata={calculateMetadata}
-    />
+    <>
+      <TeachingPage {...visualAt(row, frame)} />
+      <Sequence from={audioLeadFrames}>
+        <Audio
+          src={staticFile(`narration/${narrationFile(row.id, audio[row.id])}`)}
+        />
+      </Sequence>
+    </>
   );
-};
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+}
+export function SampleVideo() {
+  return (
+    <>
+      {timelineFor().map((row) => (
+        <Sequence
+          key={row.id}
+          from={row.from}
+          durationInFrames={row.durationInFrames}
+          name={row.id}
+        >
+          <ShotScene row={row} />
+        </Sequence>
+      ))}
+    </>
+  );
+}

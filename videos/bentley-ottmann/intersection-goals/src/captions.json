@@ -1,0 +1,101 @@
+{
+  "U01": [
+    {
+      "text": "先看三份输入。",
+      "startMs": 70,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第 1 份从 (-1,0) 到 (1,0)，",
+      "startMs": 1540,
+      "endMs": 7780,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是一条经过原点的水平线段。",
+      "startMs": 7880,
+      "endMs": 10000,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U02": [
+    {
+      "text": "第 2 份从 (0,-1) 到 (0,1)，",
+      "startMs": 70,
+      "endMs": 6190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是一条经过原点的竖直线段。",
+      "startMs": 6290,
+      "endMs": 8490,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U03": [
+    {
+      "text": "第 3 份的两个端点都是 (0,0)，",
+      "startMs": 70,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它只包含原点这一个点。",
+      "startMs": 4290,
+      "endMs": 6130,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这仍然是一份独立输入，",
+      "startMs": 6230,
+      "endMs": 7950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "菱形只是帮助我们认出它，",
+      "startMs": 8070,
+      "endMs": 9630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不表示有面积。",
+      "startMs": 9760,
+      "endMs": 10900,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U04": [
+    {
+      "text": "把它们放在一起，公共位置只有原点。",
+      "startMs": 70,
+      "endMs": 2990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "求交结果应该记几条？",
+      "startMs": 3080,
+      "endMs": 4920,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先想一想，我们暂时不揭晓答案。",
+      "startMs": 5020,
+      "endMs": 7850,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

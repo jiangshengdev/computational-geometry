@@ -1,0 +1,95 @@
+import { useId } from "react";
+import { SvgMathText } from "./MathText";
+
+const colors = ["#2563a6", "#8a4e9f", "#b45309"];
+/** All four views use the same origin and 100 pixels per coordinate unit. */
+export function InputDiagram({ inputs }: { inputs: number[] }) {
+  const arrow = useId().replace(/:/g, "");
+  return (
+    <svg
+      width={370}
+      height={370}
+      viewBox="0 0 370 370"
+      aria-label="等比例输入坐标图"
+    >
+      <defs>
+        <marker
+          id={arrow}
+          markerWidth="8"
+          markerHeight="8"
+          refX="6"
+          refY="4"
+          orient="auto"
+        >
+          <path d="M0,0 L8,4 L0,8" fill="#94a3b8" />
+        </marker>
+      </defs>
+      <path
+        d="M185 345 V30"
+        stroke="#94a3b8"
+        strokeWidth="2"
+        fill="none"
+        markerEnd={`url(#${arrow})`}
+      />
+      <path
+        d="M25 185 H335"
+        stroke="#94a3b8"
+        strokeWidth="2"
+        markerEnd={`url(#${arrow})`}
+      />
+      <SvgMathText x={335} y={218}>
+        x
+      </SvgMathText>
+      <SvgMathText x={209} y={48}>
+        y
+      </SvgMathText>
+      {inputs.includes(1) && (
+        <g stroke={colors[0]} fill={colors[0]} strokeWidth={6}>
+          <line x1={85} y1={185} x2={285} y2={185} />
+          <circle cx={85} cy={185} r={6} />
+          <circle cx={285} cy={185} r={6} />
+        </g>
+      )}
+      {inputs.includes(2) && (
+        <g stroke={colors[1]} fill={colors[1]} strokeWidth={6}>
+          <line x1={185} y1={285} x2={185} y2={85} />
+          <circle cx={185} cy={285} r={6} />
+          <circle cx={185} cy={85} r={6} />
+        </g>
+      )}
+      {inputs.includes(3) && (
+        <path
+          d="M185 172 L198 185 L185 198 L172 185 Z"
+          fill={colors[2]}
+          stroke="#f6f8fb"
+          strokeWidth={3}
+        />
+      )}
+      {inputs.length === 1 && inputs[0] === 1 && (
+        <>
+          <SvgMathText x={85} y={230} align="center" fontSize={26}>
+            (-1,0)
+          </SvgMathText>
+          <SvgMathText x={285} y={230} align="center" fontSize={26}>
+            (1,0)
+          </SvgMathText>
+        </>
+      )}
+      {inputs.length === 1 && inputs[0] === 2 && (
+        <>
+          <SvgMathText x={210} y={89} fontSize={26}>
+            (0,1)
+          </SvgMathText>
+          <SvgMathText x={210} y={300} fontSize={26}>
+            (0,-1)
+          </SvgMathText>
+        </>
+      )}
+      {inputs.includes(3) && (
+        <SvgMathText x={210} y={230} fontSize={26}>
+          (0,0)
+        </SvgMathText>
+      )}
+    </svg>
+  );
+}
