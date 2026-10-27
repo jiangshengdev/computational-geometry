@@ -69,7 +69,12 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
         ));
         steps.push(step);
     }
+    account!(access("queue", 1));
     let next = queue.pop_first();
+    if let Some((_point, _)) = &next {
+        account!(delete("queue", 1));
+        account!(point_bits("events", _point));
+    }
     if let Some(steps) = &mut recording.steps {
         let mut step = SweepStep::capture(
             "take-pop",

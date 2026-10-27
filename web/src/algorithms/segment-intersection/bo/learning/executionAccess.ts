@@ -78,11 +78,21 @@ const fields: Record<string, Record<string, { type: string; meaning: MessageDesc
     slope: { type: 'Option<Rational>', meaning: /*i18n*/ { id: "Exact slope of the sweep segment", message: "Exact slope of the sweep segment" } }, intercept: { type: 'Rational', meaning: /*i18n*/ { id: "Exact intercept of the sweep segment", message: "Exact intercept of the sweep segment" } },
   },
   Segment: { start: { type: 'Point', meaning: /*i18n*/ { id: "Start of the original segment", message: "Start of the original segment" } }, end: { type: 'Point', meaning: /*i18n*/ { id: "End of the original segment", message: "End of the original segment" } } },
-  Event: { starts: { type: 'Vec<usize>', meaning: /*i18n*/ { id: "Indices of segments starting at this event point", message: "Indices of segments starting at this event point" } } },
+  Event: {
+    starts: { type: 'Vec<usize>', meaning: /*i18n*/ { id: "Indices of segments starting at this event point", message: "Indices of segments starting at this event point" } },
+    ends: { type: 'Vec<usize>', meaning: /*i18n*/ { id: 'Original inputs ending at this event', message: 'Original inputs ending at this event' } },
+    points: { type: 'Vec<usize>', meaning: /*i18n*/ { id: 'Zero-length original inputs at this event', message: 'Zero-length original inputs at this event' } },
+  },
+  Group: {
+    slope: { type: 'Rational', meaning: /*i18n*/ { id: 'Fixed supporting-line slope', message: 'Fixed supporting-line slope' } },
+    intercept: { type: 'Rational', meaning: /*i18n*/ { id: 'Fixed supporting-line intercept', message: 'Fixed supporting-line intercept' } },
+    members: { type: 'BTreeSet<usize>', meaning: /*i18n*/ { id: 'Current original input IDs in this group', message: 'Current original input IDs in this group' } },
+    rightmost: { type: 'Option<Rational>', meaning: /*i18n*/ { id: 'Farthest endpoint of current members in sweep coordinates', message: 'Farthest endpoint of current members in sweep coordinates' } },
+  },
 }
 
 function bareType(type: string) { return type.replace(/^&(?:mut\s+)?/, '') }
-function elementType(type: string, _: I18n['_']) { return bareType(type).match(/^(?:Vec<(.+)>|\[(.+)\])$/)?.slice(1).find(Boolean) ?? _(/*i18n*/ { id: "Type not provided by the current trace", message: "Type not provided by the current trace" }) }
+function elementType(type: string, _: I18n['_']) { return bareType(type).match(/^(?:Vec<(.+)>|\[([^;]+)(?:;\s*\d+)?\])$/)?.slice(1).find(Boolean) ?? _(/*i18n*/ { id: "Type not provided by the current trace", message: "Type not provided by the current trace" }) }
 
 function resolve(access: Access, step: SweepStep, values: string[], line: number, _: I18n['_']): Value {
   if (!access.parent) {

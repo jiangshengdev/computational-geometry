@@ -21,7 +21,7 @@ for (const [id, count, intervals] of [
   const explanation = page.getByRole('region', { name: '操作解释' })
   let records = 0, ends = 0
   for (const [index, step] of trace.steps.entries()) {
-    if (step.action !== 'record' && step.action !== 'remove') continue
+    if (step.action !== 'record' && step.action !== 'leave') continue
     await seekStep(page, index, 'jump')
     const text = await explanation.innerText()
     if (text.includes('记录重叠区间')) {

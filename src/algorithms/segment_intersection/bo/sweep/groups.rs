@@ -21,6 +21,7 @@ impl Group {
         // Supporting geometry never changes with membership. Cache only the
         // height, not the event-side order: same-x events still compare slopes
         // against their own y and Before/After phase below. No global clearing.
+        account!(access("height_cache", 1));
         let mut cache = self.height_cache.borrow_mut();
         if cache.as_ref().is_none_or(|(x, _)| x != u) {
             // This private comparison-only fraction need not be reduced.
@@ -34,6 +35,12 @@ impl Group {
                     + self.intercept.numer() * &denominator,
                 denominator * self.intercept.denom(),
             );
+            if cache.is_some() {
+                account!(update("height_cache", 1));
+            } else {
+                account!(add("height_cache", 1));
+            }
+            account!(bits("cached_height", &height));
             *cache = Some((u.clone(), height));
         }
         drop(cache);
@@ -47,16 +54,25 @@ impl Group {
     }
 
     pub(super) fn insert(&mut self, id: usize, segment: &SweepSegment) {
+        account!(access("members", 1));
+        account!(access("right_ends", 1));
+        account!(add("members", 1));
+        account!(add("right_ends", 1));
         self.members.insert(id);
         self.right_ends.insert((segment.right.x.clone(), id));
     }
 
     pub(super) fn remove(&mut self, id: usize, segment: &SweepSegment) {
+        account!(access("members", 1));
+        account!(access("right_ends", 1));
+        account!(delete("members", 1));
+        account!(delete("right_ends", 1));
         self.members.remove(&id);
         self.right_ends.remove(&(segment.right.x.clone(), id));
     }
 
     pub(super) fn farthest(&self) -> &(Rational, usize) {
+        account!(access("right_ends", 1));
         self.right_ends.last().expect("active group has a member")
     }
 }
@@ -72,13 +88,18 @@ pub(super) fn initialize(
         if cancelled() {
             return None;
         }
+        account!(add("group_of", 1));
+        account!(access("segments", 1));
         let Some(slope) = &segment.slope else {
             group_of.push(None);
             continue;
         };
+        account!(access("group_keys", 1));
         let id = *keys
             .entry((slope.clone(), segment.intercept.clone()))
             .or_insert_with(|| {
+                account!(add("group_keys", 1));
+                account!(add("groups", 1));
                 let id = groups.len();
                 groups.push(Group {
                     slope: slope.clone(),
@@ -91,6 +112,7 @@ pub(super) fn initialize(
             });
         group_of.push(Some(id));
     }
+    account!(delete("group_keys", keys.len()));
     Some((groups, group_of))
 }
 
@@ -115,8 +137,10 @@ pub(super) fn compare(groups: &[Group], a: usize, b: usize, point: &Point, side:
     if a == b {
         return Ordering::Equal;
     }
+    account!(access("groups", 2));
     let height = groups[a].cached_height(&point.x);
     compare_heights(&height, &groups[b].cached_height(&point.x)).then_with(|| {
+        account!(access("groups", 2));
         let slopes = groups[a].slope.cmp(&groups[b].slope);
         let position = compare_heights(&height, &point.y);
         if position.is_lt() || (position.is_eq() && matches!(side, Side::After)) {

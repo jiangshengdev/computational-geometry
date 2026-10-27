@@ -623,8 +623,17 @@ async fn new_iterations_clear_controls_and_exited_locals_keep_unavailable_names(
         if step.action == "join" {
             joined += 1;
             assert_eq!(variable(step, "id").availability, "available");
-            assert_eq!(variable(step, "id").scope.as_deref(), Some("record"));
-            assert!(step.execution.controls.iter().all(|c| c.line <= 1));
+            assert_eq!(
+                variable(step, "id").scope.as_deref(),
+                Some("members.starts")
+            );
+            assert!(
+                step.execution
+                    .controls
+                    .iter()
+                    .all(|c| matches!(c.line, 1 | 6))
+            );
+            assert_eq!(control(step, 6, "for"), Some("exhausted"));
         }
         if step.execution.context.function == "record"
             && control(step, 1, "for") == Some("exhausted")
@@ -997,6 +1006,12 @@ async fn live_locals_survive_observation_and_entered_branches_close_before_point
         })
         .unwrap();
     assert!(branch_after > branch_before);
+    for name in ["a", "b", "id", "other"] {
+        assert_eq!(
+            variable(&steps[branch_before], name).availability,
+            "unavailable"
+        );
+    }
     let point_pair =
         steps
             .iter()

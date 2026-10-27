@@ -24,7 +24,7 @@ for (const [id, pairs, positions, center, centerPairs, upper] of [
   let recordsAtCenter = 0
   let firstCenterRecord = ''
   for (const [index, step] of trace.steps.entries()) {
-    if (!['take', 'record', 'insert', 'remove', 'reorder', 'check', 'discover', 'complete'].includes(step.action)) continue
+    if (!['take', 'record', 'insert', 'leave', 'reorder', 'check', 'discover', 'complete'].includes(step.action)) continue
     if (!step.current || formatPoint(step.current) !== center) continue
     await seekStep(page, index, 'jump')
     const current = page.getByRole('region', { name: '当前事件' })

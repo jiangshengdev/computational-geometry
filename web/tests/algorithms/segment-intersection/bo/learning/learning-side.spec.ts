@@ -42,8 +42,8 @@ for (const example of [
   { id: 'vertical', x: '0', y: '3', before: 'S1S2S0', after: 'S1S2S3', update: 'insert', partial: true },
   { id: 'same-x', x: '0', y: '-1', before: 'S0S1S2S3', after: 'S1S0S2S3', update: 'reorder' },
   { id: 'same-x', x: '0', y: '3', before: 'S1S0S2S3', after: 'S1S0S3S2', update: 'reorder' },
-  { id: 'partial-overlap', x: '2', y: '0', before: 'S0', after: 'S1S0', update: 'insert' },
-  { id: 'partial-overlap', x: '4', y: '0', before: 'S1S0', after: 'S1', update: 'remove' },
+  { id: 'partial-overlap', x: '2', y: '0', before: 'S0', after: 'S0S1', update: 'insert' },
+  { id: 'partial-overlap', x: '4', y: '0', before: 'S0S1', after: 'S1', update: 'leave' },
 ]) test(`事件侧向状态：${example.id} (${example.x}, ${example.y})`, async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   const response = page.waitForResponse(r => r.url().endsWith('/api/bo/intersections'))
@@ -56,8 +56,8 @@ for (const example of [
   for (const check of [
     { action: 'take', side: '左', order: example.before },
     { action: 'record', side: null },
-    ...(example.partial ? [{ action: 'remove', side: null }] : []),
-    { action: example.update, side: '右', order: example.after },
+    ...(example.partial ? [{ action: 'leave', side: null }] : []),
+    { action: 'reorder', side: '右', order: example.after },
     { action: 'complete', side: '右', order: example.after },
   ]) {
     const steps = event.filter(step => step.action === check.action)

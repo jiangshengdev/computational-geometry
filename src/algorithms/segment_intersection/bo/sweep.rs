@@ -2,6 +2,17 @@
 use super::teaching::*;
 use super::trace_publication;
 
+// Erased from production builds; test timing passes leave the ledger disabled.
+macro_rules! account {
+    ($function:ident($($argument:expr),* $(,)?)) => {
+        #[cfg(test)]
+        $crate::algorithms::segment_intersection::bo::sweep::diagnostics::$function($($argument),*);
+    };
+}
+
+#[cfg(test)]
+pub(crate) mod diagnostics;
+
 mod activity;
 mod classify;
 mod groups;
@@ -31,11 +42,15 @@ impl SweepSegment {
             if shear.numer().bits() == 0 {
                 return point.clone();
             }
+            account!(access("transform_cache", 1));
             transformed
                 .entry(point.clone())
-                .or_insert_with(|| Point {
-                    x: &point.x + shear * &point.y,
-                    y: point.y.clone(),
+                .or_insert_with(|| {
+                    account!(add("transform_cache", 1));
+                    Point {
+                        x: &point.x + shear * &point.y,
+                        y: point.y.clone(),
+                    }
                 })
                 .clone()
         };
@@ -50,6 +65,13 @@ impl SweepSegment {
         let intercept = slope
             .as_ref()
             .map_or_else(|| left.y.clone(), |slope| &left.y - slope * &left.x);
+        account!(add("segments", 1));
+        account!(point_bits("scan_endpoints", &left));
+        account!(point_bits("scan_endpoints", &right));
+        if let Some(_value) = &slope {
+            account!(bits("slope", _value));
+        }
+        account!(bits("intercept", &intercept));
         Self {
             left,
             right,
@@ -88,6 +110,7 @@ fn choose_shear(segments: &[Segment]) -> Rational {
     // divides both bounds by D. Thus s = 1/(256 (M+1)^5) preserves every strict
     // x ordering and breaks equal x by y. Nonzero segments become nonvertical.
     // This is exact arithmetic, not a floating-point epsilon or pairwise oracle.
+    account!(bits("common_denominator", &denominator));
     let margin = bound + Rational::from_integer(1.into());
     Rational::from_integer(1.into()) / (Rational::from_integer(256.into()) * margin.pow(5))
 }
@@ -168,6 +191,7 @@ fn sweep(
     }
     let next_call = std::cell::Cell::new(1);
     let shear = choose_shear(segments);
+    account!(bits("shear", &shear));
     let mut publication = emit.map(|emit| trace_publication::TracePublication::new(&shear, emit));
     let mut steps = publication
         .as_mut()
@@ -191,10 +215,12 @@ fn sweep(
         // Shared endpoints are transformed once. This initialization-local
         // cache has at most 2n entries and is dropped inside the timed sweep.
         let mut transformed = BTreeMap::new();
-        segments
+        let values = segments
             .iter()
             .map(|segment| SweepSegment::new(segment, &shear, &mut transformed))
-            .collect()
+            .collect();
+        account!(delete("transform_cache", transformed.len()));
+        values
     };
     let trace_segments = steps
         .as_ref()
@@ -205,21 +231,36 @@ fn sweep(
         if cancelled() {
             return None;
         }
+        account!(access("segments", 1));
+        account!(access("queue", if segment.slope.is_none() { 1 } else { 2 }));
+        account!(add(
+            "event_metadata",
+            if segment.slope.is_none() { 1 } else { 2 }
+        ));
         if segment.slope.is_none() {
             queue
                 .entry(segment.left.clone())
-                .or_default()
+                .or_insert_with(|| {
+                    account!(add("queue", 1));
+                    Event::default()
+                })
                 .points
                 .push(id);
         } else {
             queue
                 .entry(segment.left.clone())
-                .or_default()
+                .or_insert_with(|| {
+                    account!(add("queue", 1));
+                    Event::default()
+                })
                 .starts
                 .push(id);
             queue
                 .entry(segment.right.clone())
-                .or_default()
+                .or_insert_with(|| {
+                    account!(add("queue", 1));
+                    Event::default()
+                })
                 .ends
                 .push(id);
         }
@@ -361,6 +402,12 @@ fn sweep(
                 vec![Variable::absent("inserted", "Vec<GroupId>", "unavailable")],
             )
         })?;
+        account!(delete(
+            "event_metadata",
+            event.starts.len() + event.ends.len() + event.points.len()
+        ));
+        account!(delete("incident_list", located.groups.len()));
+        account!(delete("inserted_list", inserted.len()));
         if let Some(publication) = &mut publication
             && !publication.finish_event(
                 first_step,
@@ -376,6 +423,10 @@ fn sweep(
     {
         return None;
     }
+    account!(clear("segments"));
+    account!(clear("groups"));
+    account!(clear("group_of"));
+    account!(clear("height_cache"));
     Some(SweepOutcome {
         intersections: state.result,
         shear: state.shear,

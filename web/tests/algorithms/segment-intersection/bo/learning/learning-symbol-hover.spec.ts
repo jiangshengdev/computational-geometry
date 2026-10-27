@@ -1,5 +1,5 @@
-import { closePreview, expect, test } from '../support/learning-test'
 import type { SweepTrace } from '../../../../../src/algorithms/segment-intersection/bo/learning/trace'
+import { closePreview, expect, test } from '../support/learning-test'
 import { readResponse, readTrace, waitForTraceCompletion } from '../support/trace-navigation'
 import { variableValue } from '../../../../../src/algorithms/segment-intersection/bo/learning/executionSymbols'
 import { formatExecutionValue } from '../../../../../src/algorithms/segment-intersection/bo/learning/executionValue'
@@ -16,51 +16,53 @@ test('访问识别区分字段名、字段值和路径，嵌套索引保留所�
   expect(slope.access?.parent?.parent?.expression).toBe('segments')
 })
 
-test('字段 hover 读取真实闭包参数，声明中的三个 p 均可查看且不泄露调用值', async ({ page }) => {
+test('字段 hover 读取真实候选值，各引用一致且不泄露未来结果', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
-  const index = trace.steps.findIndex(step => step.execution.module === 'original' && !step.execution.returning)
+  const index = trace.steps.findIndex(step => step.execution.module === 'schedule' && step.execution.boundary === 2 && !step.execution.returning)
   expect(index).toBeGreaterThan(0)
   await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const panel = page.getByRole('region', { name: '核心代码回放' })
-  const references = panel.locator('[data-symbol="p"][data-line="2"]')
-  await expect(references).toHaveCount(3)
-  const parameter = trace.steps[index].execution.context.parameters.find(variable => variable.name === 'p')!
+  const references = panel.locator('[data-symbol="candidate"][data-line="3"]')
+  await expect(references).toHaveCount(4)
+  const parameter = trace.steps[index].execution.context.locals.find(variable => variable.name === 'candidate')!
   for (const reference of await references.all()) {
     await reference.hover()
-    await expect(page.getByRole('dialog', { name: /^变量 p / })).toContainText(`当前值：${trace.values[parameter.value!]}`)
+    await expect(page.getByRole('dialog', { name: /^变量 candidate / })).toContainText(`当前值：${trace.values[parameter.value!]}`)
     // The preview can overlap the code heading; leave through the page navigation.
     await page.getByRole('link', { name: '返回列表', exact: true }).hover()
-    await expect(page.getByRole('dialog', { name: /^变量 p / })).toHaveCount(0)
+    await expect(page.getByRole('dialog', { name: /^变量 candidate / })).toHaveCount(0)
   }
-  const y = panel.locator('[data-symbol="y"]').last()
+  const y = panel.locator('[data-symbol="x"]').last()
   await y.hover()
-  await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toContainText('类型：Rational')
-  await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toContainText('当前值：2')
-  await closePreview(page, page.getByRole('dialog', { name: /^访问 p.y / }))
+  await expect(page.getByRole('dialog', { name: /^访问 candidate.x / })).toContainText('类型：Rational')
+  await expect(page.getByRole('dialog', { name: /^访问 candidate.x / })).toContainText('当前值：2')
+  await closePreview(page, page.getByRole('dialog', { name: /^访问 candidate.x / }))
   await page.getByRole('button', { name: '上一步', exact: true }).click()
-  await panel.locator('[data-symbol="y"]').last().hover()
-  await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toContainText('不可用')
-  await closePreview(page, page.getByRole('dialog', { name: /^访问 p.y / }))
+  await panel.locator('[data-symbol="x"]').last().hover()
+  await expect(page.getByRole('dialog', { name: /^访问 candidate.x / })).toContainText('未赋值')
+  await closePreview(page, page.getByRole('dialog', { name: /^访问 candidate.x / }))
   await page.getByRole('button', { name: '下一步', exact: true }).click()
-  await panel.locator('[data-symbol="y"]').last().hover()
-  await expect(page.getByRole('dialog', { name: /^访问 p.y / })).toContainText('当前值：2')
+  await panel.locator('[data-symbol="x"]').last().hover()
+  await expect(page.getByRole('dialog', { name: /^访问 candidate.x / })).toContainText('当前值：2')
 })
 
-test('字段与索引 hover 使用当前线段编号并随跳转变化', async ({ page }) => {
+test('字段与嵌套索引 hover 使用真实组身份；未赋值索引不泄露成员', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
-  const index = trace.steps.findIndex(step => step.execution.module === 'record' && step.execution.boundary === 3 && step.execution.context.locals.some(variable => variable.name === 'b' && variable.availability === 'available'))
+  const index = trace.steps.findIndex(step => step.execution.module === 'schedule' && step.execution.boundary === 2)
+  expect(index).toBeGreaterThan(0)
   await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   const panel = page.getByRole('region', { name: '核心代码回放' })
-  await panel.locator('[data-symbol="slope"]').first().hover()
-  await expect(page.getByRole('dialog', { name: /^访问 segments\[a\].slope / })).toContainText('当前值：Some(1)')
-  await panel.locator('[data-symbol="slope"]').nth(1).hover()
-  await expect(page.getByRole('dialog', { name: /^访问 segments\[b\].slope / })).toContainText('当前值：Some(-1)')
-  await panel.locator('[data-symbol="segments[a]"]').first().hover()
-  await expect(page.getByRole('dialog', { name: /^访问 segments\[a\] / })).toContainText('SweepSegment { left: (0, 0), right: (4, 4), slope: Some(1), intercept: 0 }')
-  const unavailable = trace.steps.findIndex(step => step.execution.module === 'record' && step.execution.boundary === 0)
+  for (const [position, value] of [[0, '1'], [1, '-1']] as const) {
+    await panel.locator('[data-symbol="slope"]').nth(position).hover()
+    const preview = page.getByRole('dialog', { name: new RegExp(`^访问 groups\\[pair\\[${position}\\]\\].slope `) })
+    await expect(preview).toContainText('类型：Rational')
+    await expect(preview).toContainText(`当前值：${value}`)
+    await closePreview(page, preview)
+  }
+  const unavailable = trace.steps.findIndex(step => step.execution.module === 'members' && step.execution.entry)
   await page.goto(`/bo/cases/crossing/learn?step=${unavailable}`)
-  await panel.locator('[data-symbol="slope"]').first().hover()
-  await expect(page.getByRole('dialog', { name: /^访问 segments\[a\].slope / })).toContainText('不可用（索引未赋值或不可用）')
+  await panel.locator('[data-symbol="members"]').first().hover()
+  await expect(page.getByRole('dialog', { name: /^访问 groups/ })).toContainText('不可用')
 })
 
 test('长变量值可滚动访问', async ({ page }) => {
@@ -79,14 +81,14 @@ test('长变量值可滚动访问', async ({ page }) => {
 })
 
 test('parent 深度保留详情，按钮与快捷键等效，切换重置并可滚动读取完整集合', async ({ page }) => {
-  const trace = await readTrace(page, 'mixed-vertical')
-  const index = trace.steps.findIndex(step => step.execution.module === 'record' && step.execution.boundary === 3 && step.execution.context.locals.some(variable => variable.name === 'b' && variable.availability === 'available'))
+  const trace = await readTrace(page, 'spider-web')
+  const index = trace.steps.findIndex(step => step.execution.module === 'schedule' && step.execution.boundary === 2 && !step.execution.returning)
   expect(index).toBeGreaterThan(0)
-  await page.goto(`/bo/cases/mixed-vertical/learn?step=${index}`)
+  await page.goto(`/bo/cases/spider-web/learn?step=${index}`)
   await waitForTraceCompletion(page)
   const panel = page.getByRole('region', { name: '核心代码回放' })
   const slope = panel.locator('[data-symbol="slope"]').first()
-  const preview = page.getByRole('dialog', { name: /^访问 segments\[a\].slope / })
+  const preview = page.getByRole('dialog', { name: /^访问 groups\[pair\[0\]\].slope / })
   const increase = preview.getByRole('button', { name: '增加 parent 深度' })
   const decrease = preview.getByRole('button', { name: '减少 parent 深度' })
   await slope.hover()
@@ -99,14 +101,14 @@ test('parent 深度保留详情，按钮与快捷键等效，切换重置并可�
   await page.keyboard.press('+')
   await expect(geometry).toHaveAttribute('transform', transform!)
   await expect(preview.locator('[data-parent]')).toHaveCount(1)
-  await expect(preview.locator('[data-parent]').first()).toHaveAttribute('data-parent', 'segments[a]')
+  await expect(preview.locator('[data-parent]').first()).toHaveAttribute('data-parent', 'groups[pair[0]]')
   await expect(preview.locator('[data-value-phase="current"]')).toHaveText(detail)
   await increase.hover()
   await increase.click()
   await expect(preview.locator('[data-parent]')).toHaveCount(2)
   await expect(increase).toBeDisabled()
-  const root = preview.locator('[data-parent="segments"]')
-  const segments = trace.steps[index].execution.context.locals.find(variable => variable.name === 'segments')!
+  const root = preview.locator('[data-parent="groups"]')
+  const segments = trace.steps[index].execution.context.locals.find(variable => variable.name === 'groups')!
   await expect(root.locator('code').last()).toHaveText(formatExecutionValue(trace.values[segments.value!]))
   await expect(preview.locator('[data-parent]')).not.toContainText(['作用域：', '类型：'])
   const last = root.locator('code').last()
@@ -123,7 +125,7 @@ test('parent 深度保留详情，按钮与快捷键等效，切换重置并可�
   await increase.click()
   await closePreview(page, preview)
   await panel.locator('[data-symbol="slope"]').nth(1).hover()
-  const other = page.getByRole('dialog', { name: /^访问 segments\[b\].slope / })
+  const other = page.getByRole('dialog', { name: /^访问 groups\[pair\[1\]\].slope / })
   await expect(other.locator('[data-parent]')).toHaveCount(0)
   await closePreview(page, other)
   await page.keyboard.press('+')
@@ -131,19 +133,19 @@ test('parent 深度保留详情，按钮与快捷键等效，切换重置并可�
   await expect(preview.locator('[data-parent]')).toHaveCount(0)
 })
 
-test('p.y 的 parent 跟随真实闭包前进回退，键盘进入浮层并关闭', async ({ page }) => {
+test('candidate.x 的 parent 随真实计算前进回退，键盘进入浮层并关闭', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
-  const index = trace.steps.findIndex(step => step.execution.module === 'original' && !step.execution.returning)
+  const index = trace.steps.findIndex(step => step.execution.module === 'schedule' && step.execution.boundary === 2 && !step.execution.returning)
   await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   await waitForTraceCompletion(page)
   const panel = page.getByRole('region', { name: '核心代码回放' })
-  const y = panel.locator('[data-symbol="y"]').last()
+  const y = panel.locator('[data-symbol="x"]').last()
   await y.hover()
   await y.focus()
-  const preview = page.getByRole('dialog', { name: /^访问 p.y / })
+  const preview = page.getByRole('dialog', { name: /^访问 candidate.x / })
   await expect(preview).toBeVisible()
   await page.keyboard.press('+')
-  await expect(preview.locator('[data-parent="p"]')).toHaveText('p：(2, 2)')
+  await expect(preview.locator('[data-parent="candidate"]')).toHaveText('candidate：(2, 2)')
   await page.keyboard.press('Tab')
   await expect(preview.getByRole('button', { name: '减少 parent 深度' })).toBeFocused()
   await closePreview(page, preview)
@@ -151,35 +153,35 @@ test('p.y 的 parent 跟随真实闭包前进回退，键盘进入浮层并关�
   // dismisses on anchor scrolling; reopen to inspect the new execution state.
   for (const [button, target, value] of [
     ['下一步', index + 1, '(2, 2)'], ['上一步', index, '(2, 2)'],
-    ['上一步', index - 1, '不可用'], ['下一步', index, '(2, 2)'],
+    ['上一步', index - 1, '未赋值'], ['下一步', index, '(2, 2)'],
   ] as const) {
     await page.getByRole('button', { name: button, exact: true }).click()
     await expect(page).toHaveURL(new RegExp(`step=${target}$`))
     await y.hover()
     await expect(preview).toBeVisible()
     await preview.getByRole('button', { name: '增加 parent 深度' }).click()
-    await expect(preview.locator('[data-parent="p"]')).toContainText(value)
+    await expect(preview.locator('[data-parent="candidate"]')).toContainText(value)
     await closePreview(page, preview)
   }
 })
 
 test('纯键盘进入 parent 浮层保留深度和焦点', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
-  const index = trace.steps.findIndex(step => step.execution.module === 'original' && !step.execution.returning)
+  const index = trace.steps.findIndex(step => step.execution.module === 'schedule' && step.execution.boundary === 2 && !step.execution.returning)
   await page.goto(`/bo/cases/crossing/learn?step=${index}`)
   await waitForTraceCompletion(page)
-  const y = page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="y"]').last()
+  const y = page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="x"]').last()
   await y.focus()
   await page.keyboard.press('Tab')
   await page.keyboard.press('Shift+Tab')
   await expect(y).toBeFocused()
-  const preview = page.getByRole('dialog', { name: /^访问 p.y / })
+  const preview = page.getByRole('dialog', { name: /^访问 candidate.x / })
   await expect(preview).toBeVisible()
   await page.keyboard.press('+')
-  await expect(preview.locator('[data-parent="p"]')).toHaveText('p：(2, 2)')
+  await expect(preview.locator('[data-parent="candidate"]')).toHaveText('candidate：(2, 2)')
   await page.keyboard.press('Tab')
   await expect(preview.getByRole('button', { name: '减少 parent 深度' })).toBeFocused()
-  await expect(preview.locator('[data-parent="p"]')).toHaveText('p：(2, 2)')
+  await expect(preview.locator('[data-parent="candidate"]')).toHaveText('candidate：(2, 2)')
   await closePreview(page, preview)
 })
 
@@ -201,7 +203,7 @@ test('事件映射在面板和悬浮提示中保留相同值', async ({ page }) 
   await variables.getByTestId('variable-queue').getByRole('button').click()
   await expect(value).toContainText('Event')
   const text = await value.textContent()
-  await expect(value).toHaveText('{ (0, 0): Event { starts: [0] }, (0, 4): Event { starts: [1] }, (4, 0): Event { starts: [] }, (4, 4): Event { starts: [] } }')
+  await expect(value).toHaveText('{ (0, 0): Event { starts: [0], ends: [], points: [] }, (0, 4): Event { starts: [1], ends: [], points: [] }, (4, 0): Event { starts: [], ends: [1], points: [] }, (4, 4): Event { starts: [], ends: [0], points: [] } }')
   await closePreview(page, page.getByRole('dialog', { name: '变量 queue · queue: BTreeMap<Point, Event>', exact: true }))
   await page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="queue"]').focus()
   await page.getByRole('region', { name: '核心代码回放' }).locator('[data-symbol="queue"]').hover()
@@ -243,7 +245,7 @@ test('被遮蔽的入参保留原坐标最后值，前进回退不混入扫描�
 for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
   test(`交集实参与核心变量使用一致的简写：${id}`, async ({ page }) => {
     const trace = await readTrace(page, id)
-    const index = trace.steps.findLastIndex(step => step.execution.module === 'record' && step.execution.boundary === 14)
+    const index = trace.steps.findLastIndex(step => step.execution.module === 'output' && step.action === 'record')
     expect(index).toBeGreaterThan(0)
     const step = trace.steps[index]
     const call = step.execution.calls.find(call => call.function === 'push')!
@@ -258,9 +260,10 @@ for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
     if (id === 'partial-overlap') expect(value).toContain(' → ')
     if (id === 'multiway-interior') expect(trace.values[receiver.value!]).not.toBe('[]')
     await page.goto(`/bo/cases/${id}/learn?step=${index}`)
-    const variables = page.getByRole('region', { name: '核心变量', exact: true })
+    const variables = page.getByRole('region', { name: '当前执行上下文', exact: true })
     const panel = page.getByRole('region', { name: '核心代码回放' })
-    await variables.getByTestId('variable-result').getByRole('button').click()
+    const expand = variables.getByTestId('variable-result').getByRole('button')
+    if (await expand.getAttribute('aria-expanded') === 'false') await expand.click()
     await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(formatExecutionValue(trace.values[result.value!]))
     await expect(panel.getByRole('img', { name: /执行边界/ })).toBeInViewport()
     await panel.locator('[data-symbol="push"]').focus()
@@ -277,7 +280,7 @@ for (const id of ['crossing', 'partial-overlap', 'multiway-interior']) {
     await page.getByRole('button', { name: '上一步', exact: true }).click()
     await expect(variables.getByTestId('variable-result').locator('dd')).toHaveText(formatExecutionValue(trace.values[previousResult.value!]))
     await panel.locator('[data-symbol="push"]').hover()
-    await expect(tooltip).toContainText('实参 value：未赋值')
+    await expect(tooltip).toContainText(`实参 value：${value}`)
     await expect(tooltip).toContainText(`实参 self：${formatExecutionValue(trace.values[previousResult.value!])}`)
   })
 }
@@ -317,63 +320,36 @@ test('真实取事件代码 hover 随前进和回退更新', async ({ page }) =>
   await expect(popTooltip).toContainText('返回值：未赋值')
   await closePreview(page, popTooltip)
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
-  await expect(panel).toContainText('参与线段分类')
+  await expect(panel).toContainText('定位参与组')
   await expect(panel.locator('[data-symbol="pop_first"]')).toHaveCount(0)
-  await panel.locator('[data-symbol="incident"]').first().hover()
-  await expect(page.getByRole('dialog', { name: /^变量 incident / })).toContainText('未赋值')
+  await panel.locator('[data-symbol="block"]').first().hover()
+  await expect(page.getByRole('dialog', { name: /^变量 block / })).toContainText('未赋值')
 })
 
-test('分类同名 id 按词法循环隔离，真实调用按行和函数展示返回值', async ({ page }) => {
-  const response = page.waitForResponse(response => response.url().endsWith('/api/bo/intersections'))
-  await page.goto('/bo/cases/crossing/learn')
-  const { trace }: { trace: SweepTrace } = await readResponse(await response)
-  const secondLoop = trace.steps.findIndex(step => step.execution.module === 'classify' && step.execution.boundary === 8 && step.execution.context.locals.some(variable => variable.name === 'id' && variable.availability === 'available'))
-  expect(secondLoop).toBeGreaterThan(0)
-  await page.goto(`/bo/cases/crossing/learn?step=${secondLoop}`)
+test('成员循环的同名 id 隔离，append 实参和返回值来自当前调用', async ({ page }) => {
+  const trace = await readTrace(page, 'point-inputs')
+  const index = trace.steps.findIndex(step => step.execution.module === 'members' && step.execution.boundary === 8 && !step.execution.resuming)
+  expect(index).toBeGreaterThan(0)
+  await page.goto(`/bo/cases/point-inputs/learn?step=${index}`)
   const panel = page.getByRole('region', { name: '核心代码回放' })
-  const firstTooltip = page.getByRole('dialog', { name: /^变量 id · 活动线段循环/ })
-  const secondTooltip = page.getByRole('dialog', { name: /^变量 id · 参与线段循环/ })
-  // Highlight loading positions the viewport at boundary 8. Wait for that
-  // navigation before scrolling back to the other loop's binding.
-  await expect(panel.getByRole('img', { name: '执行边界：参与线段分类 8', exact: true })).toBeInViewport()
-  const firstId = panel.locator('[data-symbol="id"][data-line="3"]').first()
-  await firstId.scrollIntoViewIfNeeded()
-  await firstId.hover()
-  await expect(firstTooltip).toContainText('作用域：活动线段循环')
-  await expect(firstTooltip).toContainText('当前值：不可用（当前作用域未提供）')
-  const secondId = panel.locator('[data-symbol="id"][data-line="8"]')
-  await secondId.scrollIntoViewIfNeeded()
-  await secondId.hover()
-  const id = trace.steps[secondLoop].execution.context.locals.find(variable => variable.name === 'id')!
-  await expect(secondTooltip).toContainText('作用域：参与线段循环')
-  await expect(secondTooltip).toContainText(`当前值：${trace.values[id.value!]}`)
-
-  const calculated = trace.steps.findIndex(step => step.execution.module === 'classify' && ['y_at', 'cmp'].every(name => step.execution.calls.some(call => call.line === 3 && call.function === name && call.result.availability === 'available')))
-  expect(calculated).toBeGreaterThan(0)
-  await page.goto(`/bo/cases/crossing/learn?step=${calculated}`)
-  for (const name of ['y_at', 'cmp']) {
-    const call = trace.steps[calculated].execution.calls.find(call => call.line === 3 && call.function === name)!
-    await panel.locator(`[data-symbol="${name}"][data-line="3"]`).hover()
-    const callTooltip = page.getByRole('dialog', { name: new RegExp(`^函数 ${name} `) })
-    await expect(callTooltip).toContainText(`返回值：${trace.values[call.result.value!]}`)
-    for (const argument of call.arguments) {
-      expect(argument.availability).toBe('available')
-      await expect(callTooltip).toContainText(`实参 ${argument.name}：${trace.values[argument.value!]}`)
-    }
-    await closePreview(page, callTooltip)
-  }
+  const tooltip = page.getByRole('dialog', { name: /^变量 id / })
+  await panel.locator('[data-symbol="id"][data-line="1"]').first().hover()
+  await expect(tooltip).toContainText('不可用')
+  await closePreview(page, tooltip)
+  await panel.locator('[data-symbol="id"][data-line="8"]').first().hover()
+  const variable = trace.steps[index].execution.context.locals.find(v => v.name === 'id')!
+  await expect(tooltip).toContainText(`当前值：${trace.values[variable.value!]}`)
+  await closePreview(page, tooltip)
+  await panel.locator('[data-symbol="append"][data-line="8"]').hover()
+  const callTooltip = page.getByRole('dialog', { name: /^函数 append / })
+  await expect(callTooltip).toContainText('返回值：未赋值')
+  const call = trace.steps[index].execution.calls.find(c => c.function === 'append')!
+  for (const argument of call.arguments) await expect(callTooltip).toContainText(`实参 ${argument.name}：${trace.values[argument.value!]}`)
+  await closePreview(page, callTooltip)
+  await page.getByRole('button', { name: '步过', exact: true }).click()
   await page.getByRole('button', { name: '上一步', exact: true }).click()
-  const before = trace.steps[calculated - 1].execution.calls.find(call => call.line === 3 && call.function === 'y_at')
-  expect(before).toBeDefined()
-  expect(before!.result.availability).toBe('unassigned')
-  expect(before!.result.value).toBeNull()
-  expect(before!.arguments.some(argument => argument.availability === 'available')).toBe(true)
-  await panel.locator('[data-symbol="y_at"][data-line="3"]').hover()
-  const beforeTooltip = page.getByRole('dialog', { name: /^函数 y_at / })
-  await expect(beforeTooltip).toContainText('返回值：未赋值')
-  for (const argument of before!.arguments.filter(argument => argument.availability === 'available')) {
-    await expect(beforeTooltip).toContainText(`实参 ${argument.name}：${trace.values[argument.value!]}`)
-  }
+  await panel.locator('[data-symbol="append"][data-line="8"]').hover()
+  await expect(callTooltip).toContainText('返回值：()')
 })
 
 test('右侧顶层变量浮层与代码一致，支持键盘和前进回退', async ({ page }) => {

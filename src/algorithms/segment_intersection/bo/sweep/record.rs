@@ -18,6 +18,8 @@ pub(super) fn record(
     });
     recording.observe(state, point, 0, "micro", || (vec![], vec![]))?;
     for &id in &event.starts {
+        account!(access("event_metadata", 1));
+        account!(access("group_of", 1));
         let g = state.group_of[id].expect("nonzero start");
         recording.observe(state, point, 1, "micro", || {
             (
@@ -25,6 +27,7 @@ pub(super) fn record(
                 vec![
                     Variable::available("id", "usize", id.to_string()),
                     Variable::available("group", "GroupId", g.to_string()),
+                    Variable::absent("other", "usize", "unavailable"),
                 ],
             )
         })?;
@@ -32,8 +35,12 @@ pub(super) fn record(
         // Range cursors let output borrow the whole live state for observation.
         // Each O(log n) advance is charged to the pair it emits, never to an
         // already reported pair. No member table is copied for insertion.
+        account!(access("members", 1));
+        account!(access("groups", 1));
         let mut next = state.groups[g].members.first().copied();
         while let Some(other) = next {
+            account!(access("same_line_candidates", 1));
+            account!(access("segments", 2));
             let a = &state.segments[id];
             let b = &state.segments[other];
             let start = (&a.left).max(&b.left);
@@ -46,13 +53,25 @@ pub(super) fn record(
                     end: end.clone(),
                 }
             };
+            recording.observe(state, point, 6, "micro", || {
+                (
+                    vec![id, other],
+                    vec![Variable::available("other", "usize", other.to_string())],
+                )
+            })?;
+            recording.control(1, "for", "entered");
+            recording.loops(6, 1, "entered");
             append(state, point, [id, other], geometry, recording)?;
+            account!(access("members", 1));
+            account!(access("groups", 1));
             next = state.groups[g]
                 .members
                 .range((Excluded(other), Unbounded))
                 .next()
                 .copied();
         }
+        account!(access("groups", 1));
+        account!(access("segments", 1));
         state.groups[g].insert(id, &state.segments[id]);
         state.groups_value.get_mut().take();
         recording.observe(state, point, 2, "join", || {
@@ -61,9 +80,12 @@ pub(super) fn record(
                 vec![
                     Variable::available("id", "usize", id.to_string()),
                     Variable::available("group", "GroupId", g.to_string()),
+                    Variable::absent("other", "usize", "unavailable"),
                 ],
             )
         })?;
+        recording.control(1, "for", "entered");
+        recording.loops(6, 1, "exhausted");
         recording.block_end(1);
     }
     recording.observe(state, point, 3, "micro", || {
@@ -72,6 +94,7 @@ pub(super) fn record(
             vec![
                 Variable::absent("id", "usize", "unavailable"),
                 Variable::absent("group", "GroupId", "unavailable"),
+                Variable::absent("other", "usize", "unavailable"),
             ],
         )
     })?;
@@ -83,12 +106,35 @@ pub(super) fn record(
         recording.control(4, "if", "true");
         let members: Vec<Vec<_>> = groups
             .iter()
-            .map(|&g| state.groups[g].members.iter().copied().collect())
+            .map(|&g| {
+                account!(access("incident_list", 1));
+                account!(access("groups", 1));
+                state.groups[g].members.iter().copied().collect()
+            })
             .collect();
+        account!(add("expanded_groups", members.len()));
+        account!(add("expanded_members", members.iter().map(Vec::len).sum()));
+        account!(access("members", members.iter().map(|m| m.len() + 1).sum()));
         for (i, left) in members.iter().enumerate() {
+            account!(access("expanded_groups", 1));
             for right in &members[i + 1..] {
+                account!(access("expanded_groups", 1));
                 for &a in left {
+                    account!(access("expanded_members", 1));
                     for &b in right {
+                        account!(access("expanded_members", 1));
+                        account!(access("cross_group_candidates", 1));
+                        recording.observe(state, point, 7, "micro", || {
+                            (
+                                vec![a, b],
+                                vec![
+                                    Variable::available("a", "usize", a.to_string()),
+                                    Variable::available("b", "usize", b.to_string()),
+                                ],
+                            )
+                        })?;
+                        recording.control(4, "if", "true");
+                        recording.loops(7, 4, "entered");
                         append(
                             state,
                             point,
@@ -101,8 +147,26 @@ pub(super) fn record(
             }
         }
         for &id in &event.points {
+            account!(access("event_metadata", 1));
             for group in &members {
+                account!(access("expanded_groups", 1));
                 for &other in group {
+                    account!(access("expanded_members", 1));
+                    account!(access("point_member_candidates", 1));
+                    recording.observe(state, point, 8, "micro", || {
+                        (
+                            vec![id, other],
+                            vec![
+                                Variable::available("id", "usize", id.to_string()),
+                                Variable::available("other", "usize", other.to_string()),
+                                Variable::absent("a", "usize", "unavailable"),
+                                Variable::absent("b", "usize", "unavailable"),
+                            ],
+                        )
+                    })?;
+                    recording.control(4, "if", "true");
+                    recording.loops(7, 4, "exhausted");
+                    recording.loops(8, 3, "entered");
                     append(
                         state,
                         point,
@@ -113,14 +177,49 @@ pub(super) fn record(
                 }
             }
         }
+        account!(delete(
+            "expanded_members",
+            members.iter().map(Vec::len).sum()
+        ));
+        account!(delete("expanded_groups", members.len()));
+        recording.observe(state, point, 4, "micro", || {
+            (
+                vec![],
+                vec![
+                    Variable::absent("a", "usize", "unavailable"),
+                    Variable::absent("b", "usize", "unavailable"),
+                    Variable::absent("id", "usize", "unavailable"),
+                    Variable::absent("other", "usize", "unavailable"),
+                ],
+            )
+        })?;
+        recording.control(4, "if", "true");
+        recording.loops(7, 4, "exhausted");
+        recording.loops(8, 3, "exhausted");
         recording.block_end(4);
         recording.observe(state, point, 4, "micro", || (vec![], vec![]))?;
+        recording.control(4, "if", "true");
+        recording.loops(7, 4, "exhausted");
+        recording.loops(8, 3, "exhausted");
         recording.block_after(4);
     } else {
         recording.control(4, "if", "false");
     }
     for (i, &a) in event.points.iter().enumerate() {
+        account!(access("event_metadata", 1));
         for &b in &event.points[i + 1..] {
+            account!(access("event_metadata", 1));
+            account!(access("point_pair_candidates", 1));
+            recording.observe(state, point, 9, "micro", || {
+                (
+                    vec![a, b],
+                    vec![
+                        Variable::available("a", "usize", a.to_string()),
+                        Variable::available("b", "usize", b.to_string()),
+                    ],
+                )
+            })?;
+            recording.loops(9, 2, "entered");
             append(
                 state,
                 point,
@@ -130,7 +229,16 @@ pub(super) fn record(
             )?;
         }
     }
-    recording.observe(state, point, 5, "micro", || (vec![], vec![]))?;
+    recording.observe(state, point, 5, "micro", || {
+        (
+            vec![],
+            vec![
+                Variable::absent("a", "usize", "unavailable"),
+                Variable::absent("b", "usize", "unavailable"),
+            ],
+        )
+    })?;
+    recording.loops(9, 2, "exhausted");
     recording.control(5, "return", "pending");
     recording.leave(|| Variable::available("return_value", "()", "()"));
     Some(())
@@ -155,6 +263,7 @@ fn append(
             vec![Variable::absent("geometry", "Geometry", "unassigned")],
         )
     })?;
+    account!(geometry_bits("scan_output", &scan_geometry));
     let mut ordered_pair = pair;
     ordered_pair.sort_unstable();
     let restore = |p: Point| {
@@ -181,6 +290,7 @@ fn append(
             }
         }
     };
+    account!(geometry_bits("output", &geometry));
     recording.retire_parameter("scan_geometry");
     recording.observe(state, point, 1, "micro", || {
         (
@@ -214,6 +324,7 @@ fn append(
             "()",
         )
     });
+    account!(add("output", 1));
     state.result.push(intersection);
     recording.observe(state, point, 2, "record", || {
         (

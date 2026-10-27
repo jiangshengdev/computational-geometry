@@ -24,9 +24,12 @@ pub(super) fn locate(
         )
     })?;
     let compare_before = |a, b| compare(&state.groups, a, b, point, Side::Before);
-    let first = state
-        .active
-        .lower_bound(|g| !state.groups[g].compare_height(point).is_lt());
+    account!(access("active", 1));
+    account!(access("active", 1));
+    let first = state.active.lower_bound(|g| {
+        account!(access("groups", 1));
+        !state.groups[g].compare_height(point).is_lt()
+    });
     let lower = first.map_or_else(
         || state.active.left_of(|_| true),
         |g| state.active.neighbors(g, &compare_before).0,
@@ -37,20 +40,33 @@ pub(super) fn locate(
         if (recording.cancelled)() {
             return None;
         }
+        account!(access("groups", 1));
         if !state.groups[g].compare_height(point).is_eq() {
             break;
         }
+        account!(add("block_list", 1));
+        account!(access("active", 1));
         block.push(g);
         upper = state.active.neighbors(g, &compare_before).1;
     }
+    account!(access("block_list", block.len()));
     let mut groups: BTreeSet<_> = block.iter().copied().collect();
-    groups.extend(
-        event
-            .starts
-            .iter()
-            .map(|&id| state.group_of[id].expect("nonzero start")),
-    );
-    let groups: Vec<_> = groups.into_iter().collect();
+    account!(add("incident_set", groups.len()));
+    groups.extend(event.starts.iter().map(|&id| {
+        account!(access("event_metadata", 1));
+        account!(access("group_of", 1));
+        state.group_of[id].expect("nonzero start")
+    }));
+    account!(add("incident_set", groups.len() - block.len()));
+    account!(access("incident_set", block.len() + event.starts.len()));
+    let groups: Vec<_> = groups
+        .into_iter()
+        .inspect(|_| {
+            account!(access("incident_set", 1));
+            account!(delete("incident_set", 1));
+            account!(add("incident_list", 1));
+        })
+        .collect();
     recording.observe(state, point, 1, "locate", || {
         (
             groups
@@ -69,9 +85,12 @@ pub(super) fn locate(
         )
     })?;
     for &g in &block {
+        account!(access("block_list", 1));
+        account!(access("active", 1));
         state
             .active
             .remove(g, &|a, b| compare(&state.groups, a, b, point, Side::Before));
+        account!(delete("active", 1));
         recording.observe(state, point, 2, "detach", || {
             (
                 state.groups[g].members.iter().copied().collect(),
@@ -90,6 +109,7 @@ pub(super) fn locate(
     recording.control(2, "for", "exhausted");
     recording.block_after(2);
     recording.control(3, "return", "pending");
+    account!(delete("block_list", block.len()));
     let located = Located {
         groups,
         outside: (lower, upper),

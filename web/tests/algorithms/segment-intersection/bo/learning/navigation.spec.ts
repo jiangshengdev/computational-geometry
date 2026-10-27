@@ -76,7 +76,7 @@ test('教学快捷键：大步、步过和步出与按钮等效，长按与禁�
   await page.goto('/bo/cases/crossing/learn')
   const { trace } = await capture.result
   await waitForTraceCompletion(page)
-  const start = stepIndex(trace, step => step.execution.context.function === 'retain closure' && !step.execution.returning)
+  const start = stepIndex(trace, step => step.execution.context.function === 'append' && !step.execution.returning)
   const slider = page.getByRole('slider', { name: '教学步骤' })
   const restart = page.getByRole('button', { name: '重新开始', exact: true })
   for (const action of [
@@ -196,10 +196,10 @@ test('教学动作：加入、检查、发现分别展示并可回退', async ({
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   await expect(previous).toBeDisabled()
   await seekStep(page, firstInsert, 'jump')
-  await expect(explanation).toContainText('加入 S0')
+  await expect(explanation).toContainText('重插包含 S0')
   await expect(page.getByTestId('active-order')).toHaveText('S0')
   await seekStep(page, secondInsert, 'jump')
-  await expect(explanation).toContainText('加入 S1')
+  await expect(explanation).toContainText('重插包含 S1')
   await expect(queue).not.toContainText('I0')
   await seekStep(page, check, 'jump')
   await expect(explanation).toContainText('检查相邻线段 S0 × S1')
@@ -253,7 +253,7 @@ for (const preset of ['crossing', 'disjoint']) {
     // Keep the pointer held while checking state, rather than testing release.
     await page.mouse.move(x + track.width * inserted / finalIndex, y)
     await expect(slider).toHaveValue(String(inserted))
-    await expect(page.getByRole('region', { name: '操作解释' })).toContainText('加入 S1')
+    await expect(page.getByRole('region', { name: '操作解释' })).toContainText('重插包含 S1')
     await expect(page.getByTestId('active-order').getByRole('listitem')).toHaveText(['S0', 'S1'])
     await expect(page.getByRole('region', { name: '待处理事件队列' })).not.toContainText('I0')
     await expect(page.getByRole('img', { name: '输入 S1', exact: true })).toHaveAttribute('data-active', 'true')

@@ -22,7 +22,7 @@ for (const [id, pairs, positions, pointIds, exactPoint] of [
     await seekStep(page, index, 'jump')
     for (const id of pointIds) await expect(active.locator(`[data-input-id="${id}"]`)).toHaveCount(0)
     if (id === 'pure-points') await expect(active).toHaveText('空')
-    if (id === 'point-multiway' && step.action === 'reorder') {
+    if (id === 'point-multiway' && step.action === 'reorder' && step.current && formatPoint(step.current) === exactPoint) {
       reorders++
       await expect(explanation).not.toContainText('换序已随加入一起展示')
       await expect(active).toHaveText('S0S2S1')

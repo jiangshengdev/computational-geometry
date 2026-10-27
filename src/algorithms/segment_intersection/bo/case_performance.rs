@@ -255,7 +255,20 @@ async fn actual_case_timings() {
         };
         let expected = canonical(expected);
         assert_eq!(canonical(intersections(&segments)), expected);
+        assert_eq!(
+            canonical(super::super::sweep::diagnostics::report(id, &segments)),
+            expected
+        );
         let (result, trace) = trace_intersections(&segments);
+        println!("{id} shear={}", trace.shear);
+        if id == "fullerene" {
+            assert!(
+                segments
+                    .iter()
+                    .all(|s| s.start.x != s.end.x || s.start.y == s.end.y)
+            );
+            assert_eq!(trace.shear, crate::Rational::from_integer(0.into()));
+        }
         assert_eq!(canonical(result), expected);
         assert_eq!(
             canonical(trace.steps.last().unwrap().results.to_vec()),

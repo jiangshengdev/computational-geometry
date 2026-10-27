@@ -147,6 +147,15 @@ impl Recorder<'_, '_> {
                         && !matches!(variable.name, "point" | "segments" | "shear")
                     {
                         variable.scope = Some(frame.function);
+                        if frame.module == "members" {
+                            variable.scope = match (boundary, variable.name) {
+                                (1 | 2 | 3 | 6, "id" | "other" | "group") => Some("members.starts"),
+                                (4 | 7, "a" | "b") => Some("members.cross"),
+                                (4 | 8, "id" | "other") => Some("members.points"),
+                                (5 | 9, "a" | "b") => Some("members.point_pairs"),
+                                _ => variable.scope,
+                            };
+                        }
                     }
                 }
                 step.execution.context.locals.push(Variable::absent(
@@ -288,6 +297,20 @@ impl Recorder<'_, '_> {
                 .execution
                 .calls
                 .push(build());
+        }
+    }
+
+    pub(super) fn loops(&mut self, line: usize, count: usize, state: &'static str) {
+        if let Some(steps) = &mut self.steps {
+            let controls = &mut steps.last_mut().expect("observation").execution.controls;
+            for occurrence in 0..count {
+                controls.push(ExecutionControl {
+                    line,
+                    keyword: "for",
+                    occurrence,
+                    state,
+                });
+            }
         }
     }
 

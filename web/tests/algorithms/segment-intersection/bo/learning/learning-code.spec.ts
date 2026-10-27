@@ -5,11 +5,11 @@ test('真实轨迹执行边界指向下一条语句', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const cases = [
     { module: 'take', boundary: 2, next: null },
-    { module: 'classify', boundary: 6, next: 'let (mut starts, mut ends, mut passes) = (Vec::new(), Vec::new(), Vec::new());' },
-    { module: 'classify', boundary: 11, next: 'ends.push(id);' },
-    { module: 'neighbors', boundary: 4, next: 'let candidate = schedule_neighbors(&active, lower, &segments, &point, &mut queue, &mut checked);' },
-    { module: 'geometry', boundary: 4, next: 'if point > *current {' },
-    { module: 'record', boundary: 13, next: 'result.push(Intersection { segments: [a.min(b), a.max(b)], geometry });' },
+    { module: 'locate', boundary: 1, next: 'for group in block {' },
+    { module: 'members', boundary: 3, next: 'if incident_groups.len() > 1 || !event.points.is_empty() {' },
+    { module: 'neighbors', boundary: 1, next: 'schedule(&mut state, &point, pair);' },
+    { module: 'schedule', boundary: 2, next: 'if candidate > point && candidate.x <= groups[pair[0]].rightmost.unwrap() && candidate.x <= groups[pair[1]].rightmost.unwrap() {' },
+    { module: 'output', boundary: 1, next: 'result.push(Intersection { segments: ordered_pair, geometry });' },
   ]
   for (const example of cases) {
     const index = trace.steps.findIndex(step => step.execution.module === example.module && step.execution.boundary === example.boundary)
@@ -63,7 +63,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
   const browserTest = test.extend({ browserName })
   browserTest(`自动换行保持执行边界并记住跨案例偏好 ${browserName}`, async ({ page }) => {
     const trace = await readTrace(page, 'crossing')
-    const index = trace.steps.findIndex(step => step.execution.module === 'neighbors' && step.execution.boundary === 4)
+    const index = trace.steps.findIndex(step => step.execution.module === 'neighbors' && step.execution.boundary === 1)
     expect(index).toBeGreaterThanOrEqual(0)
     await page.setViewportSize({ width: 1100, height: 900 })
     await page.goto(`/bo/cases/crossing/learn?step=${index}`)
@@ -75,7 +75,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const expectWrappedBoundary = async () => {
       await expect.poll(() => code.evaluate(element => {
         const lines = Array.from(element.querySelectorAll<HTMLElement>('.code-line'))
-        const next = lines.find(line => line.textContent?.trim().startsWith('let candidate = schedule_neighbors'))!
+        const next = lines.find(line => line.textContent?.trim().startsWith('schedule(&mut state'))!
         const boundary = element.querySelector('.execution-boundary')!
         return Math.abs(next.getBoundingClientRect().top - boundary.getBoundingClientRect().top)
       })).toBeLessThanOrEqual(1)
@@ -140,14 +140,14 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await page.getByRole('button', { name: '下一个大步', exact: true }).click()
     const following = trace.steps.findIndex((step, index) => index > entry && step.execution.entry)
     await expect(page).toHaveURL(new RegExp(`step=${following}$`))
-    await expect(panel).toContainText('参与线段分类')
-    const classification = panel.getByRole('region', { name: '参与线段分类教学代码' })
+    await expect(panel).toContainText('定位参与组')
+    const classification = panel.getByRole('region', { name: '定位参与组教学代码' })
     await expect(classification.locator('.code-line').last()).toBeAttached()
     // The full-height column fits classification; activity supplies real long code.
-    const activity = trace.steps.findIndex(step => step.execution.module === 'activity' && step.execution.entry)
+    const activity = trace.steps.findIndex(step => step.execution.module === 'members' && step.execution.entry)
     expect(activity).toBeGreaterThan(following)
     await seekStep(page, activity, 'jump')
-    const longCode = panel.getByRole('region', { name: '活动集合更新教学代码' })
+    const longCode = panel.getByRole('region', { name: '记录成员交集教学代码' })
     await expect(longCode.locator('.code-line').last()).toBeAttached()
     await page.setViewportSize({ width: 1360, height: 720 })
     expect(await longCode.evaluate(element => {

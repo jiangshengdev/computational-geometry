@@ -2,12 +2,12 @@ import { expect, test } from '../support/learning-test'
 import { selectPreset } from '../../support/cases'
 import { readTrace, seekStep, stepIndex } from '../support/trace-navigation'
 
-for (const action of ['take', 'remove', 'complete'] as const) {
+for (const action of ['take', 'leave', 'complete'] as const) {
   test(`参与线段的活动状态：普通交叉 ${action}`, async ({ page }) => {
     await page.goto('/bo/cases/crossing/learn')
     const trace = await readTrace(page, 'crossing')
     const target = stepIndex(trace, step => step.action === action && (action === 'take'
-      || (action === 'remove' ? step.subjects.includes(0) : step.active.length === 0)))
+      || (action === 'leave' ? step.subjects.includes(0) : step.active.length === 0)))
     await seekStep(page, target, 'jump')
     const input = page.getByRole('img', { name: '输入 S0', exact: true })
     await expect(page.getByTestId('active-order')).toHaveText('空')

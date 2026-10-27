@@ -39,8 +39,8 @@ test('教学 hover：操作解释中的事件点和独立线段双向联动', as
     { step: discovery, point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
     { step: stepIndex(trace, step => step.action === 'take' && step.current?.x.numerator === '2' && step.current.y.numerator === '2'), point: 'I0 (2, 2)', lines: [] },
     { step: stepIndex(trace, step => step.action === 'record'), point: 'I0 (2, 2)', lines: ['S0', 'S1'], separator: '×' },
-    { step: stepIndex(trace, step => step.action === 'reorder'), lines: ['S1', 'S0'], separator: '→' },
-    { step: stepIndex(trace, step => step.action === 'remove' && step.subjects.includes(1)), lines: ['S1'] },
+    { step: stepIndex(trace, step => step.action === 'reorder' && step.current?.x.numerator === '2'), lines: ['S1', 'S0'], separator: '→' },
+    { step: stepIndex(trace, step => step.action === 'leave' && step.subjects.includes(1)), lines: ['S1'] },
   ]
   let index = 0
   for (const scenario of cases) {

@@ -56,7 +56,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
   test(`教学定位：${mode} 定位目标步骤实际活动条目并保留页面及焦点`, async ({ page }) => {
     await page.setViewportSize({ width: 1360, height: 720 })
     const trace = await readTrace(page, scrollingCase.id)
-    const target = trace.steps.findIndex(step => step.action === 'record' && step.active.length === scrollingCase.segments.length && step.subjects[0] === step.active[0])
+    const target = trace.steps.findIndex(step => step.action === 'locate' && step.active.length === scrollingCase.segments.length && step.subjects[0] === step.active[0])
     expect(target).toBeGreaterThan(0)
     const prior = mode === '回退' ? target + 1 : target - 1
     await page.goto(`/bo/cases/${scrollingCase.id}/learn?step=${prior}`)
@@ -65,7 +65,15 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     await waitForTraceCompletion(page)
     const active = page.getByRole('region', { name: '活动线段顺序' })
     const row = active.getByRole('listitem').filter({ hasText: new RegExp(`^S${trace.steps[target].subjects[0]}$`) })
-    await hideRowInOverflowingPanel(row, false)
+    if (mode === '回退') {
+      // The following detach has removed this group. Returning to locate must
+      // restore and reveal it even when there was no source row to scroll.
+      await expect(row).toHaveCount(0)
+      const source = await scrollPanel(active.getByRole('listitem').first(), false)
+      expect(source.overflow).toBeGreaterThan(0)
+    } else {
+      await hideRowInOverflowingPanel(row, false)
+    }
     const control = mode === '滑块' ? slider : page.getByRole('button', { name: mode === '回退' ? '上一步' : '下一步', exact: true })
     await control.focus()
     const before = await page.evaluate(() => window.scrollY)
@@ -75,7 +83,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
     await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))
     await expect(control).toBeFocused()
     expect(await page.evaluate(() => window.scrollY)).toBe(before)
-    await expect(page.getByRole('region', { name: '操作解释' })).toContainText('记录')
+    await expect(page.getByRole('region', { name: '操作解释' })).toContainText('定位')
     expect(new URL(page.url()).search).toBe(`?step=${target}`)
     // Manual browsing at this step survives hover-driven rerenders.
     await scrollPanel(row, false)
@@ -90,7 +98,7 @@ for (const mode of ['前进', '回退', '快捷键', '滑块'] as const) {
 test('教学定位：点击滑块轨道跨多步跳转后定位目标而非来源步骤', async ({ page }) => {
   await page.setViewportSize({ width: 1360, height: 720 })
   const trace = await readTrace(page, scrollingCase.id)
-  const target = trace.steps.findIndex(step => step.action === 'record' && step.active.length === scrollingCase.segments.length && step.subjects[0] === step.active[0])
+  const target = trace.steps.findIndex(step => step.action === 'locate' && step.active.length === scrollingCase.segments.length && step.subjects[0] === step.active[0])
   const subject = trace.steps[target].subjects[0]
   const prior = trace.steps.findIndex((step, index) => index < target - 1 && step.active.length === scrollingCase.segments.length - 3 && step.active[0] === subject)
   expect(prior).toBeGreaterThanOrEqual(0)
@@ -114,7 +122,7 @@ test('教学定位：点击滑块轨道跨多步跳转后定位目标而非来�
   await expect.poll(() => visibilityInPanel(row)).toEqual(expect.objectContaining({ visible: true }))
   await expect(slider).toBeFocused()
   expect(await page.evaluate(() => window.scrollY)).toBe(scrollBefore)
-  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('记录')
+  await expect(page.getByRole('region', { name: '操作解释' })).toContainText('定位')
   expect(new URL(page.url()).search).toBe(`?step=${target}`)
 })
 

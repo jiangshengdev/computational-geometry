@@ -3,6 +3,18 @@ import type { ExecutionContext, ExecutionControl, ExecutionVariable, ExecutionVa
 import { formatExecutionValue } from './executionValue'
 
 const meanings: Record<string, MessageDescriptor> = {
+  other: /*i18n*/ { id: "Other original input in the current member pair", message: "Other original input in the current member pair" },
+  active_groups: /*i18n*/ { id: 'Active supporting-line group IDs in event-local order', message: 'Active supporting-line group IDs in event-local order' },
+  groups: /*i18n*/ { id: 'Fixed supporting lines and their current original members', message: 'Fixed supporting lines and their current original members' },
+  group: /*i18n*/ { id: 'Supporting-line group ID, not an original input ID', message: 'Supporting-line group ID, not an original input ID' },
+  block: /*i18n*/ { id: 'Active groups at the exact height of this event', message: 'Active groups at the exact height of this event' },
+  incident_groups: /*i18n*/ { id: 'Groups at this event, including starting members', message: 'Groups at this event, including starting members' },
+  outside: /*i18n*/ { id: 'Predecessor and successor outside the event block', message: 'Predecessor and successor outside the event block' },
+  pair: /*i18n*/ { id: 'Pair in this call; its recorded type distinguishes group IDs from input IDs', message: 'Pair in this call; its recorded type distinguishes group IDs from input IDs' },
+  checked_groups: /*i18n*/ { id: 'Two neighboring supporting-line groups actually checked', message: 'Two neighboring supporting-line groups actually checked' },
+  ordered_pair: /*i18n*/ { id: 'Original unordered input pair in ascending ID order', message: 'Original unordered input pair in ascending ID order' },
+  scan_geometry: /*i18n*/ { id: 'Exact intersection before restoration to original coordinates', message: 'Exact intersection before restoration to original coordinates' },
+  side: /*i18n*/ { id: 'Comparison phase of the current event only', message: 'Comparison phase of the current event only' },
   queue: /*i18n*/ { id: "Pending events ordered by sweep coordinates", message: "Pending events ordered by sweep coordinates" }, next: /*i18n*/ { id: "The event just removed from the queue, possibly absent", message: "The event just removed from the queue, possibly absent" },
   point: /*i18n*/ { id: "Sweep coordinates of the current event", message: "Sweep coordinates of the current event" }, event: /*i18n*/ { id: "Segment information carried by the current event", message: "Segment information carried by the current event" },
   segments: /*i18n*/ { id: "Segments transformed into sweep coordinates; shadows the original input parameter with the same name", message: "Segments transformed into sweep coordinates; shadows the original input parameter with the same name" }, active: /*i18n*/ { id: "Indices of the currently active segments", message: "Indices of the currently active segments" },
@@ -12,7 +24,7 @@ const meanings: Record<string, MessageDescriptor> = {
   b: /*i18n*/ { id: "Second segment in the current pair (an index in the sweep loop)", message: "Second segment in the current pair (an index in the sweep loop)" }, shear: /*i18n*/ { id: "Shear coefficient for sweep coordinates", message: "Shear coefficient for sweep coordinates" },
   p: /*i18n*/ { id: "Coordinate restoration closure parameter, valid only during that invocation", message: "Coordinate restoration closure parameter, valid only during that invocation" }, start: /*i18n*/ { id: "Start of the candidate overlap interval", message: "Start of the candidate overlap interval" },
   end: /*i18n*/ { id: "End of the candidate overlap interval", message: "End of the candidate overlap interval" }, geometry: /*i18n*/ { id: "Intersection of the current pair in original coordinates", message: "Intersection of the current pair in original coordinates" }, result: /*i18n*/ { id: "Intersections recorded up to the current step", message: "Intersections recorded up to the current step" },
-  position: /*i18n*/ { id: "Position where new active segments enter the active sequence", message: "Position where new active segments enter the active sequence" }, inserted: /*i18n*/ { id: "Number of segments to insert in this event", message: "Number of segments to insert in this event" },
+  inserted: /*i18n*/ { id: 'Nonempty groups reinserted in increasing slope order', message: 'Nonempty groups reinserted in increasing slope order' },
   boundaries: /*i18n*/ { id: "Outer boundaries of the insertion range that need checking", message: "Outer boundaries of the insertion range that need checking" }, lower: /*i18n*/ { id: "Active-sequence index of the first segment in the neighboring pair", message: "Active-sequence index of the first segment in the neighboring pair" },
   neighbors: /*i18n*/ { id: "Indices of the neighboring segments being checked", message: "Indices of the neighboring segments being checked" }, current: /*i18n*/ { id: "Sweep coordinates of the event being processed", message: "Sweep coordinates of the event being processed" },
   checked: /*i18n*/ { id: "Neighboring pairs already checked for this event", message: "Neighboring pairs already checked for this event" }, candidate: /*i18n*/ { id: "Intersection candidate returned by the completed neighbor call", message: "Intersection candidate returned by the completed neighbor call" },
@@ -20,6 +32,12 @@ const meanings: Record<string, MessageDescriptor> = {
 }
 
 export const functions: Record<string, { signature: string; purpose: MessageDescriptor; parameters: MessageDescriptor }> = {
+  locate: { signature: 'locate(state, point, event) -> Located', purpose: /*i18n*/ { id: 'Locate and detach the incident group block', message: 'Locate and detach the incident group block' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
+  record: { signature: 'record(state, point, event, incident_groups) -> ()', purpose: /*i18n*/ { id: 'Emit new same-line, cross-group and point pairs', message: 'Emit new same-line, cross-group and point pairs' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
+  update: { signature: 'update(state, point, event, incident_groups) -> Vec<GroupId>', purpose: /*i18n*/ { id: 'Remove ending members and reinsert nonempty groups', message: 'Remove ending members and reinsert nonempty groups' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
+  check: { signature: 'check(state, point, inserted, outside) -> ()', purpose: /*i18n*/ { id: 'Check local neighboring groups', message: 'Check local neighboring groups' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
+  schedule: { signature: 'schedule(state, point, pair) -> ()', purpose: /*i18n*/ { id: 'Schedule only a future intersection covered by current members', message: 'Schedule only a future intersection covered by current members' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
+  append: { signature: 'append(pair, scan_geometry) -> ()', purpose: /*i18n*/ { id: 'Restore exact coordinates and append one original input pair', message: 'Restore exact coordinates and append one original input pair' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
   schedule_neighbors: { signature: 'schedule_neighbors(active, lower, segments, current, queue, checked) -> Option<Point>', purpose: /*i18n*/ { id: "Check actual neighbors, enqueue future intersections, and return a geometry candidate.", message: "Check actual neighbors, enqueue future intersections, and return a geometry candidate." }, parameters: /*i18n*/ { id: "active: active order; lower: neighbor index; segments: sweep segments; current: current event; queue: event queue; checked: checked pairs.", message: "active: active order; lower: neighbor index; segments: sweep segments; current: current event; queue: event queue; checked: checked pairs." } },
   intersection_candidate: { signature: 'intersection_candidate(a, b) -> Option<Point>', purpose: /*i18n*/ { id: "Atomic geometry operation in the teaching code, corresponding to the actual exact Rust computation without expanding its formulas.", message: "Atomic geometry operation in the teaching code, corresponding to the actual exact Rust computation without expanding its formulas." }, parameters: /*i18n*/ { id: "a, b: sweep segments used in this geometry computation.", message: "a, b: sweep segments used in this geometry computation." } },
   pop_first: { signature: 'pop_first(&mut self) -> Option<(Point, Event)>', purpose: /*i18n*/ { id: "Remove and return the earliest event in the queue.", message: "Remove and return the earliest event in the queue." }, parameters: /*i18n*/ { id: "self: the current queue; no explicit arguments.", message: "self: the current queue; no explicit arguments." } },
@@ -78,26 +96,24 @@ export function variableValue(variable: ExecutionVariable | undefined, values: s
   return variable.value === null ? _(/*i18n*/ { id: "Unavailable (no value provided by the current trace)", message: "Unavailable (no value provided by the current trace)" }) : formatExecutionValue(values[variable.value])
 }
 
-export function symbolScope(name: string, module: string, line: number, _: I18n['_']) {
-  if (module === 'classify' && name === 'id') return line <= 6 ? _(/*i18n*/ { id: "Active segment loop", message: "Active segment loop" }) : _(/*i18n*/ { id: "Incident segment loop", message: "Incident segment loop" })
-  if (module === 'activity' && ['id', 'a', 'b'].includes(name)) return _(/*i18n*/ { id: "Closure on line {line}", message: "Closure on line {line}" , values: { line: String(line) }})
-  if (module === 'record' && name === 'p') return _(/*i18n*/ { id: "original closure", message: "original closure" })
-  if (module.startsWith('retain-')) return _(/*i18n*/ { id: "retain closure", message: "retain closure" })
-  return _(/*i18n*/ { id: "{module} module", message: "{module} module" , values: { module: module }})
+export function symbolScope(_name: string, module: string, _line: number, _: I18n['_']) {
+  return _(/*i18n*/ { id: "{module} module", message: "{module} module", values: { module } })
 }
 
-export function scopedVariable(name: string, step: SweepStep, line: number, _: I18n['_']) {
-  const { module, context } = step.execution
-  const variable = context.locals.find(item => item.name === name) ?? context.parameters.find(item => item.name === name) ?? context.captures.find(item => item.name === name)
-  let visible = true
-  if (module === 'classify' && name === 'id') visible = variable?.scope === (line <= 6 ? 'classify.active' : 'classify.incident')
-  // Callback parameters are distinct bindings. The sweep's a/b/id and a
-  // different invocation's arguments cannot stand in for these parameters.
-  if (module === 'activity' && ['id', 'a', 'b'].includes(name)) visible = false
-  if (module === 'record') {
-    if (name === 'p') visible = false
+export function scopedVariable(name: string, step: SweepStep, line: number, _translate: I18n['_']) {
+  const { context } = step.execution
+  // The producer marks the exact binding unavailable at its scope exit.
+  const variable = context.locals.find(item => item.name === name)
+    ?? context.parameters.find(item => item.name === name)
+    ?? context.captures.find(item => item.name === name)
+  if (step.execution.module === 'members') {
+    const scope = [1, 2, 6].includes(line) && ['id', 'other', 'group'].includes(name) ? 'members.starts'
+      : line === 7 && ['a', 'b'].includes(name) ? 'members.cross'
+      : line === 8 && ['id', 'other'].includes(name) ? 'members.points'
+      : line === 9 && ['a', 'b'].includes(name) ? 'members.point_pairs' : undefined
+    if (scope && variable?.scope !== scope) return { name, type: variable?.type ?? 'usize', availability: 'unavailable' as const, value: null, scope }
   }
-  return visible ? variable : { name, type: variable?.type ?? _(/*i18n*/ { id: "Variable in the current lexical scope", message: "Variable in the current lexical scope" }), availability: 'unavailable' as const, value: null, scope: null }
+  return variable
 }
 
 export function variableDetails(name: string, step: SweepStep, previous: SweepStep, values: string[], line: number, _: I18n['_']) {

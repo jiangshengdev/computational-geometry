@@ -38,7 +38,7 @@ export interface ExecutionState {
 }
 export interface SweepStep {
   phase: 'initial' | 'processing' | 'processed'
-  action: 'initial' | 'take-entry' | 'take-pop' | 'take-empty' | 'take' | 'micro' | 'insert' | 'remove' | 'record' | 'reorder' | 'check' | 'discover' | 'complete'
+  action: 'initial' | 'take-entry' | 'take-pop' | 'take-empty' | 'take' | 'micro' | 'locate' | 'detach' | 'join' | 'leave' | 'insert' | 'record' | 'reorder' | 'check' | 'discover' | 'complete'
   execution: ExecutionState
   subjects: number[]
   current: Point | null

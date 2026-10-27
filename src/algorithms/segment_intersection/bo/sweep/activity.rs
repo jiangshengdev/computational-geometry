@@ -17,6 +17,10 @@ pub(super) fn update(
     });
     recording.observe(state, point, 0, "micro", || (vec![], vec![]))?;
     for &id in &event.ends {
+        account!(access("event_metadata", 1));
+        account!(access("group_of", 1));
+        account!(access("groups", 1));
+        account!(access("segments", 1));
         let g = state.group_of[id].expect("nonzero end");
         state.groups[g].remove(id, &state.segments[id]);
         state.groups_value.get_mut().take();
@@ -51,8 +55,17 @@ pub(super) fn update(
         .copied()
         .filter(|&g| !state.groups[g].members.is_empty())
         .collect();
-    inserted.sort_unstable_by(|&a, &b| state.groups[a].slope.cmp(&state.groups[b].slope));
+    account!(add("inserted_list", inserted.len()));
+    account!(access("groups", groups.len()));
+    account!(access("incident_list", groups.len()));
+    inserted.sort_unstable_by(|&a, &b| {
+        account!(access("groups", 2));
+        state.groups[a].slope.cmp(&state.groups[b].slope)
+    });
     for &g in &inserted {
+        account!(access("inserted_list", 1));
+        account!(access("active", 1));
+        account!(add("active", 1));
         state
             .active
             .insert(g, &|a, b| compare(&state.groups, a, b, point, Side::After));

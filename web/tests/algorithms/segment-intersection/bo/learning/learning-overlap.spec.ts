@@ -27,7 +27,7 @@ test('重叠教学：区间边界、事件状态、完整结果与重启', async
   let ended = false
   const completed: string[] = []
   for (const [index, step] of trace.steps.entries()) {
-    if (!['record', 'remove', 'complete'].includes(step.action)) continue
+    if (!['record', 'leave', 'complete'].includes(step.action)) continue
     await seekStep(page, index, 'jump')
     const event = await current.locator('[data-event-id]:not([aria-hidden="true"])').innerText()
     if ((await explanation.innerText()).includes('记录重叠区间')) {
@@ -37,7 +37,7 @@ test('重叠教学：区间边界、事件状态、完整结果与重启', async
       await expect(explanation).toContainText('(2, 0) → (4, 0)')
       await expect(explanation).toContainText('S0 × S1')
       await expect(explanation).toContainText('不是只记录当前端点')
-      await expect(active).toHaveText('S0')
+      await expect(active).toHaveText('空')
       await expect(queue.locator('li')).toHaveText(['S0 终点 (4, 0) · 重叠止界', 'S1 终点 (6, 0)'])
       await expect(interval.locator('circle')).toHaveCount(2)
       // Independent geometry: [0,4] ∩ [2,6] = [2,4]. Its length is half S0.
@@ -54,7 +54,7 @@ test('重叠教学：区间边界、事件状态、完整结果与重启', async
     if ((await explanation.innerText()).includes('此处是重叠止界')) {
       ended = true
       await expect(current).toContainText('(4, 0)')
-      await expect(active).toHaveText('S1')
+      await expect(active).toHaveText('空')
       await expect(explanation).toContainText('不再把止界重复记成孤立交点')
     }
     if (step.action === 'complete') {

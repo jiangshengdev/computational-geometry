@@ -15,21 +15,12 @@ export function learningState(preset: Preset, trace: SweepTrace, index: number, 
   const endingOverlaps = visibleOverlaps.filter(({ geometry }) => geometry.type === 'overlap' && step.current && samePoint(geometry.end, step.current))
   const continuingOverlapInputs = [...new Set(endingOverlaps.flatMap(result => result.segments))].filter(id => !step.ends.includes(id))
   const checkedInputs = step.action === 'check' || step.action === 'discover' ? step.subjects : []
-  let neighborChange: typeof step | undefined
-  if (checkedInputs.length) {
-    for (let i = index - 1; i >= 0 && trace.steps[i].action !== 'take'; i--) {
-      if (['insert', 'remove', 'reorder'].includes(trace.steps[i].action)) {
-        neighborChange = trace.steps[i]
-        break
-      }
-    }
-  }
   const before = trace.steps[Math.max(0, index - 1)]
   const eventStart = trace.steps.findLastIndex((state, position) => position <= index && state.action === 'take')
   const eventSteps = step.action === 'complete' ? trace.steps.slice(eventStart, index + 1) : []
   const checkedWithoutDiscovery = eventSteps.some(state => state.action === 'check') && !eventSteps.some(state => state.action === 'discover')
   // A pop changes the queue, not the displayed sweep position. Keep its side too.
-  const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && ((state.execution.module === 'activity' && !state.execution.entry && (state.execution.boundary === 7 || state.active.join(',') !== trace.steps[position - 1]?.active.join(','))) || !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action)))
+  const geometryIndex = trace.steps.findLastIndex((state, position) => position <= index && !['take-entry', 'take-pop', 'take-empty', 'micro'].includes(state.action))
   const geometryStep = trace.steps[geometryIndex]
   const complete = generated && index === trace.steps.length - 1
   const points = trace.pointLabels
@@ -54,7 +45,7 @@ export function learningState(preset: Preset, trace: SweepTrace, index: number, 
   const sweep = {
     step: index,
     current: step.current,
-    side: eventSide(geometryStep, trace.steps[geometryIndex + 1]),
+    side: eventSide(geometryStep),
     participants: [...step.starts, ...step.ends, ...step.passes],
     active: step.active,
     pending: step.pending,
@@ -65,7 +56,7 @@ export function learningState(preset: Preset, trace: SweepTrace, index: number, 
   return {
     preset, trace, index, generated, step, before, complete, phase, pointInputs, recordedOverlap,
     overlaps, visibleOverlaps, endingOverlaps, continuingOverlapInputs, checkedInputs,
-    neighborChange, checkedWithoutDiscovery, points, pointName, sweep,
+    checkedWithoutDiscovery, points, pointName, sweep,
     newlyScheduled, pendingTarget, activeTarget, participantTarget,
   }
 }
