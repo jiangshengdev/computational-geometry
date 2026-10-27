@@ -20,9 +20,10 @@ const sidebars: SidebarsConfig = {
       link: {
         type: 'generated-index',
         slug: '/chapters/segment-intersection',
-        description: '理解扫描线求交中的坐标变换与精确计算。',
+        description: '从求交目标出发，理解扫描线、坐标变换与精确计算。',
       },
       items: [
+        'segment-intersection/what-we-compute',
         'segment-intersection/line-equation',
         {
           type: 'category',
