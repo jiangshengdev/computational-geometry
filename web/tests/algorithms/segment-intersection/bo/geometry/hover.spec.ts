@@ -16,6 +16,19 @@ async function pointCenter(page: Page, pair: string) {
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
 }
 
+async function hoverInputLabel(page: Page, id: number) {
+  const label = page.locator(`.drawing text[data-input="${id}"]`)
+  await expect(label).toBeVisible()
+  await label.scrollIntoViewIfNeeded()
+  // WebKit's automation quads omit SVG text x/y offsets; the DOM rect is correct.
+  const center = await label.evaluate(element => {
+    const rect = element.getBoundingClientRect()
+    return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 }
+  })
+  expect(await label.evaluate((element, point) => element.contains(document.elementFromPoint(point.x, point.y)), center)).toBe(true)
+  await page.mouse.move(center.x, center.y)
+}
+
 test('hover 三处双向联动，重合位置整体命中而标签精确命中', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
@@ -34,9 +47,9 @@ test('hover 三处双向联动，重合位置整体命中而标签精确命中',
   await page.locator('.input-item').filter({ hasText: /^S1\b/ }).hover()
   await highlighted(page, [1], ['S0 × S1', 'S1 × S4'])
   await expect(details).toContainText('选择一个配对')
-  await page.locator('.drawing text[data-input="3"]').hover()
+  await hoverInputLabel(page, 3)
   await highlighted(page, [3], [])
-  await page.locator('.drawing text[data-input="1"]').hover()
+  await hoverInputLabel(page, 1)
   await highlighted(page, [1], ['S0 × S1', 'S1 × S4'])
   await pointCenter(page, 'S0 × S1')
   await highlighted(page, [0, 1, 4], ['S0 × S1', 'S0 × S4', 'S1 × S4'])
