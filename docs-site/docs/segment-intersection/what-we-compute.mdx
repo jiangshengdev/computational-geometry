@@ -36,7 +36,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <ThemedImage
   alt="相同坐标尺度的四个小图：输入 1、2、3 分别占据从 (0,0) 到 (4,0) 的线段，第四图展示它们共同的几何位置。输入 3 的端点书写顺序与前两份相反。"
-  sources={{light: useBaseUrl('/img/intersection-goals-identity-light.svg'), dark: useBaseUrl('/img/intersection-goals-identity-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-identity-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-identity-dark.svg')}}
 />
 
 前三个小图把输入分别展示，最后一个小图显示它们占据的共同位置。每个小图使用相同的坐标范围和尺度，没有把重合线段挪到不同位置。图下的箭头只表示端点的书写顺序，不表示线段有方向；线段两端的实心圆表示端点也包含在内。
@@ -57,7 +57,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <ThemedImage
   alt="左图的输入 A 位于 y=0，中图的另一条输入位于 y=1，两者横坐标范围都是 0 到 4。右图没有公共点，标为空交集。"
-  sources={{light: useBaseUrl('/img/intersection-goals-empty-light.svg'), dark: useBaseUrl('/img/intersection-goals-empty-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-empty-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-empty-dark.svg')}}
 />
 
 这里和下面的三栏图都按「输入 A、另一份输入、完整交集」排列，坐标范围与尺度相同。右栏只画交集，不重复画输入；灰色细线是坐标轴，不属于输入或结果。
@@ -70,26 +70,26 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <ThemedImage
   alt="分别展示从 (0,0) 到 (4,0) 的输入 A、从 (2,-1) 到 (2,1) 的另一条输入，以及它们唯一的公共点 (2,0)。"
-  sources={{light: useBaseUrl('/img/intersection-goals-crossing-light.svg'), dark: useBaseUrl('/img/intersection-goals-crossing-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-crossing-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-crossing-dark.svg')}}
 />
 
 接触端点也算相交。例如，把另一条线段换成从 $(4,0)$ 到 $(6,0)$ 的水平线段：公共点的横坐标既不能超过 $4$，又不能小于 $4$，只能等于 $4$。两条线段都包含这个端点，所以交集是 $(4,0)$。
 
 <ThemedImage
   alt="输入 A 的横坐标范围是 0 到 4，另一条输入的横坐标范围是 4 到 6，都在 y=0 上。右图保留两者共同包含的端点 (4,0)。"
-  sources={{light: useBaseUrl('/img/intersection-goals-touch-light.svg'), dark: useBaseUrl('/img/intersection-goals-touch-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-touch-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-touch-dark.svg')}}
 />
 
 零长度输入也按同一个定义处理。如果另一份输入只包含点 $(2,0)$，这个点在 $A$ 上，交集就是它；如果另一份输入只包含 $(5,0)$，它不在 $A$ 的范围内，交集为空。两份点输入则只有在位置相同时才有公共点。
 
 <ThemedImage
   alt="输入 A 从 (0,0) 到 (4,0)，另一份输入只有用菱形标记的点 (2,0)。右图的交集为点 (2,0)。"
-  sources={{light: useBaseUrl('/img/intersection-goals-point-on-light.svg'), dark: useBaseUrl('/img/intersection-goals-point-on-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-point-on-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-point-on-dark.svg')}}
 />
 
 <ThemedImage
   alt="输入 A 从 (0,0) 到 (4,0)，另一份输入只有点 (5,0)，已超出 A 的范围。右图为空交集。"
-  sources={{light: useBaseUrl('/img/intersection-goals-point-off-light.svg'), dark: useBaseUrl('/img/intersection-goals-point-off-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-point-off-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-point-off-dark.svg')}}
 />
 
 中栏的菱形用来辨认「这一份输入只有一个点」，不表示它有面积。右栏仍用圆点表示点交集。
@@ -114,14 +114,14 @@ $$
 
 <ThemedImage
   alt="输入 A 从 (0,0) 到 (4,0)，输入 B 从 (2,0) 到 (6,0)。右图画出从 (2,0) 到 (4,0) 的整段公共部分，包含两个端点和全部中间点。"
-  sources={{light: useBaseUrl('/img/intersection-goals-overlap-light.svg'), dark: useBaseUrl('/img/intersection-goals-overlap-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-overlap-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-overlap-dark.svg')}}
 />
 
 如果再加入从 $(3,-1)$ 到 $(3,1)$ 的线段 $C$，它分别与 $A$、$B$ 相交于 $(3,0)$。这是另外两对输入的结果。$A$ 与 $B$ 包含哪些点并没有改变，所以它们的交集仍然是从 $(2,0)$ 到 $(4,0)$ 的一个完整区间，不能在 $(3,0)$ 处拆成两条结果。
 
 <ThemedImage
   alt="两列对照加入 C 前后：第一行展示 A，第二行展示 B，右列分别增加 x=3、纵坐标从 -1 到 1 的 C。最下行两图的 A、B 交集完全相同，都是从 (2,0) 到 (4,0) 的连续闭区间。"
-  sources={{light: useBaseUrl('/img/intersection-goals-third-segment-light.svg'), dark: useBaseUrl('/img/intersection-goals-third-segment-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-third-segment-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-third-segment-dark.svg')}}
 />
 
 按行从左向右看：前两行分别展示 A、B 与新加入的 C，避免重合线段互相遮挡。最下一行只画 A、B 的交集，左右始终是同一整段。这里比较的是输入增加前后的交集，不是扫描线的执行过程。
@@ -166,7 +166,7 @@ $$
 
 <ThemedImage
   alt="上排分别展示水平线段输入 1、竖直线段输入 2 和只有原点的输入 3。下排先将三者放回同一坐标系，再展示唯一的公共位置原点，最后列出输入对 1 与 2、1 与 3、2 与 3 的三条点交集结果。"
-  sources={{light: useBaseUrl('/img/intersection-goals-three-pairs-light.svg'), dark: useBaseUrl('/img/intersection-goals-three-pairs-dark.svg')}}
+  sources={{light: useBaseUrl('/img/segment-intersection/what-we-compute/light/intersection-goals-three-pairs-light.svg'), dark: useBaseUrl('/img/segment-intersection/what-we-compute/dark/intersection-goals-three-pairs-dark.svg')}}
 />
 
 先看上排的三份输入，再看下排：放在一起时，它们都包含原点；记录结果时，却必须分别写出右侧的三个输入对，与上表逐行对应。菱形仍表示原点输入，不能因为它与两条线段的交点重合就省略这份输入。

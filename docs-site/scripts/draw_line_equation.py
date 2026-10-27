@@ -4,7 +4,9 @@ Run with the same maintainer-provisioned environment as draw_shear_coordinates.p
     uv run --offline --with matplotlib==3.11.2 python docs-site/scripts/draw_line_equation.py
 """
 
-from draw_shear_coordinates import OUTPUT, PALETTES, plot_style, save_svg, plt
+from draw_shear_coordinates import IMAGE_ROOT, PALETTES, plot_style, save_svg, plt
+
+OUTPUT = IMAGE_ROOT / "segment-intersection" / "line-equation"
 
 
 def coordinates(ax, colors, xmax, ymax):
@@ -75,11 +77,12 @@ def draw(theme, colors, kind):
                 ax.plot([3, 3], [0, 7], color=colors["axis"], ls=":", lw=1)
                 ax.plot([1, 3], [0, 0], color=blue, lw=4)
                 ax.text(2, .45, "$1\\leq X\\leq3$", color=blue, ha="center", fontsize=17)
-        save_svg(fig, OUTPUT / f"line-equation-{kind}-{theme}.svg", colors)
+        save_svg(fig, OUTPUT / theme / f"line-equation-{kind}-{theme}.svg", colors)
         plt.close(fig)
 
 
 if __name__ == "__main__":
+    OUTPUT.mkdir(parents=True, exist_ok=True)
     for theme, colors in PALETTES.items():
         for kind in ("points", "slope", "axis-lines", "segment"):
             draw(theme, colors, kind)

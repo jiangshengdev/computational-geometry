@@ -2,7 +2,9 @@
  * Run in docs-site: pnpm exec node scripts/draw_intersection_goals.ts
  * Geometry uses one scale for both axes; input segments are never displaced.
  */
-import {writeFileSync} from 'node:fs';
+import {mkdirSync, writeFileSync} from 'node:fs';
+
+const output = new URL('../static/img/segment-intersection/what-we-compute/', import.meta.url);
 
 type Point = readonly [number, number];
 type Segment = readonly [Point, Point];
@@ -66,7 +68,9 @@ function save(name: string, theme: string, p: Palette, title: string, panels: st
 <rect width="${width}" height="${height}" fill="${p.background}"/>
 <g font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">${content}</g>
 </svg>\n`;
-  writeFileSync(new URL(`../static/img/intersection-goals-${name}-${theme}.svg`, import.meta.url), svg);
+  const themeOutput = new URL(`${theme}/`, output);
+  mkdirSync(themeOutput, {recursive: true});
+  writeFileSync(new URL(`intersection-goals-${name}-${theme}.svg`, themeOutput), svg);
 }
 
 for (const [theme, p] of Object.entries(palettes)) {

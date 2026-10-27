@@ -46,16 +46,39 @@ docs/
 
 剪切专题由 `docs/segment-intersection/shear/index.mdx` 提供阅读入口，五篇正文按侧栏顺序组织，使用 Docusaurus 的目录卡片与前后篇导航。各文档通过 front matter 的 `slug` 固定页面地址，移动文件时同步维护侧栏文档 ID 和正文相对链接。本站没有博客、搜索或语言切换。仓库内部 ADR、代理规则与任务记录不在本站内容目录中。
 
+## 图片目录
+
+图片先按所属文档主题分目录，再按明暗主题分入 `light/` 和 `dark/`：
+
+```text
+static/img/segment-intersection/
+├── what-we-compute/
+│   ├── light/       # 9 个 SVG
+│   └── dark/        # 9 个 SVG
+├── line-equation/
+│   ├── light/       # 4 个 SVG
+│   └── dark/        # 4 个 SVG
+└── shear/
+    ├── light/       # 8 个 SVG
+    └── dark/        # 8 个 SVG
+```
+
+正文使用 `/img/segment-intersection/<文档主题>/<light或dark>/<文件名>` 引用图片。新增图片应放入对应目录；移动时同时更新正文引用及生成脚本的输出目录。文件名保留原有明暗后缀。
+
+第 1 章配图由 `scripts/draw_intersection_goals.ts` 生成，在本目录执行 `pnpm exec node scripts/draw_intersection_goals.ts`。直线方程配图由 `scripts/draw_line_equation.py` 生成，复用下述剪切脚本的 Matplotlib 环境与主题样式。
+
 ## 生成坐标系图解
 
 `scripts/draw_shear_coordinates.py` 使用 Matplotlib 的 MathText 渲染数学标注，生成以下图解，每张都包含明暗主题：
 
-- 坐标系变换：`static/img/shear-coordinates-light.svg`、`static/img/shear-coordinates-dark.svg`。
-- 事件顺序颠倒：`static/img/shear-order-reversal-light.svg`、`static/img/shear-order-reversal-dark.svg`。
-- 新旧横轴重合：`static/img/shear-horizontal-axis-{light,dark}.svg`，展示横轴上的点在两套坐标中的读数相同。
-- 新纵轴的五步图解：`static/img/shear-axis-step-{1..5}-{light,dark}.svg`，依次展示选点、新横坐标、原纵坐标、原横坐标及最终位置。图中仅保留几何辅助线、符号和简短公式，中文讲解放在正文的对应步骤中。
+- 坐标系变换：`static/img/segment-intersection/shear/light/shear-coordinates-light.svg`、`static/img/segment-intersection/shear/dark/shear-coordinates-dark.svg`。
+- 事件顺序颠倒：`static/img/segment-intersection/shear/light/shear-order-reversal-light.svg`、`static/img/segment-intersection/shear/dark/shear-order-reversal-dark.svg`。
+- 新旧横轴重合：`static/img/segment-intersection/shear/<theme>/shear-horizontal-axis-<theme>.svg`，展示横轴上的点在两套坐标中的读数相同。
+- 新纵轴的五步图解：`static/img/segment-intersection/shear/<theme>/shear-axis-step-{1..5}-<theme>.svg`，依次展示选点、新横坐标、原纵坐标、原横坐标及最终位置。图中仅保留几何辅助线、符号和简短公式，中文讲解放在正文的对应步骤中。
 
 文档通过 Docusaurus 的 `ThemedImage` 随站点主题选择图片。
+
+上述路径中的 `<theme>` 为 `light` 或 `dark`，目录与文件名后缀保持一致。
 
 该脚本使用 Python，因为 Matplotlib 提供的是 Python 绘图 API。从仓库根目录执行：
 

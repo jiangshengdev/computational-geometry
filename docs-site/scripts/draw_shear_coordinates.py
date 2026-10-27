@@ -13,7 +13,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 
-OUTPUT = Path(__file__).resolve().parents[1] / "static" / "img"
+IMAGE_ROOT = Path(__file__).resolve().parents[1] / "static" / "img"
+OUTPUT = IMAGE_ROOT / "segment-intersection" / "shear"
 PALETTES = {
     "light": {
         "background": "#ffffff", "text": "#172033", "axis": "#475569",
@@ -39,6 +40,7 @@ def save_svg(fig, output, colors):
     """Normalize Matplotlib's path whitespace as part of asset generation."""
     buffer = StringIO()
     fig.savefig(buffer, format="svg", facecolor=colors["background"], metadata={"Date": None})
+    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text("\n".join(line.rstrip() for line in buffer.getvalue().splitlines()) + "\n", encoding="utf-8")
 
 
@@ -95,7 +97,7 @@ def draw(theme, colors):
 
         fig.text(.265, .085, r"$P=2(1,0)+2(0,1)$", ha="center", fontsize=23)
         fig.text(.752, .085, r"$P=3(1,0)+2(-\frac{1}{2},1)$", ha="center", fontsize=23)
-        output = OUTPUT / f"shear-coordinates-{theme}.svg"
+        output = OUTPUT / theme / f"shear-coordinates-{theme}.svg"
         save_svg(fig, output, colors)
         plt.close(fig)
         print(output)
@@ -134,7 +136,7 @@ def draw_order_reversal(theme, colors):
             ax.set_title(r"$(x',y')$" if transformed else r"$(x,y)$", fontsize=24, pad=18)
         fig.text(.265, .085, r"$x_A=0<1=x_B$", ha="center", fontsize=24)
         fig.text(.752, .085, r"$x'_B=1<2=x'_A$", ha="center", fontsize=24)
-        output = OUTPUT / f"shear-order-reversal-{theme}.svg"
+        output = OUTPUT / theme / f"shear-order-reversal-{theme}.svg"
         save_svg(fig, output, colors)
         plt.close(fig)
         print(output)
@@ -198,7 +200,7 @@ def draw_axis_steps(theme, colors):
                 ax.text(-.5, -.32, r"$1$", color=colors["negative"], ha="center")
                 ax.text(-1.15, .9, r"$2$", color=colors["negative"], ha="right")
             fig.text(.5, .075, caption, ha="center", fontsize=22, color=point)
-            output = OUTPUT / f"shear-axis-step-{step}-{theme}.svg"
+            output = OUTPUT / theme / f"shear-axis-step-{step}-{theme}.svg"
             save_svg(fig, output, colors)
             plt.close(fig)
             print(output)
@@ -231,7 +233,7 @@ def draw_horizontal_axis(theme, colors):
             ax.text(n, -.3, f"${n}$", ha="center", fontsize=19)
         ax.text(2, .35, r"$(2,0)$", color=colors["positive"], ha="center", fontsize=23)
         fig.text(.5, .07, r"$y'=0\quad\Rightarrow\quad y=0,\quad x=x'$", ha="center", fontsize=23)
-        output = OUTPUT / f"shear-horizontal-axis-{theme}.svg"
+        output = OUTPUT / theme / f"shear-horizontal-axis-{theme}.svg"
         save_svg(fig, output, colors)
         plt.close(fig)
         print(output)
