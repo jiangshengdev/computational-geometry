@@ -73,6 +73,11 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          href: 'https://cnb.cool/jiangshengdev/computational-geometry',
+          label: 'CNB',
+          position: 'right',
+        },
       ],
     },
     footer: {
@@ -101,6 +106,10 @@ const config: Config = {
             {
               label: 'GitHub',
               href: 'https://github.com/jiangshengdev/computational-geometry',
+            },
+            {
+              label: 'CNB',
+              href: 'https://cnb.cool/jiangshengdev/computational-geometry',
             },
             {
               label: 'Docusaurus',
