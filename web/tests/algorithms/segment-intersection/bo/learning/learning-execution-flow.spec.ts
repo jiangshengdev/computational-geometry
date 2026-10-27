@@ -14,6 +14,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const next = page.getByRole('button', { name: '下一步', exact: true })
     const previous = page.getByRole('button', { name: '上一步', exact: true })
     const modules = new Set<string>()
+    let sweepCode: string | undefined
     for (let i = 1; i < trace.steps.length; i++) {
       // Exercise deliberate single stepping, below WebKit's history-write
       // quota; held-key/drag URL throttling has its own interaction tests.
@@ -21,7 +22,36 @@ for (const browserName of ['chromium', 'webkit'] as const) {
       await expect(slider).toHaveValue(String(i))
       const step = trace.steps[i]
       modules.add(step.execution.module)
+      const code = page.locator('.execution-code > code')
+      const functionName = step.execution.module === 'original' ? 'append' : step.execution.context.function
+      await expect(code).toContainText(`fn ${functionName}(`)
+      if (step.execution.context.function === 'sweep') {
+        await expect(code).toContainText('loop {')
+        await expect(code).toContainText('queue.pop_first()')
+        await expect(code).toContainText('publish_event()')
+        const source = await code.textContent()
+        sweepCode ??= source!
+        expect(source).toBe(sweepCode)
+      }
       await expect(current.getByRole('heading', { name: `当前函数：${step.execution.context.function}`, exact: true })).toBeVisible()
+      if (step.execution.returning) {
+        const boundary = await page.locator('.execution-boundary').evaluate(element => {
+          const lines = [...element.parentElement!.querySelectorAll('.code-line')]
+          const before = Number((element as HTMLElement).dataset.beforeLine)
+          return { previous: lines[before - 1]?.textContent?.trim(), next: lines[before]?.textContent?.trim() }
+        })
+        expect(boundary.next).not.toMatch(/^return /)
+        expect(boundary.previous).toMatch(step.execution.module === 'original' ? /^Point / : /^return /)
+      }
+      if (step.action === 'complete') {
+        expect(trace.steps[i - 1].phase).toBe('processing')
+        expect(trace.steps[i - 1].execution.calls.some(call => call.function === 'publish_event' && call.result.availability === 'unassigned')).toBe(true)
+        await expect(page.locator('.execution-boundary')).toHaveAttribute('data-after-statement', 'publish_event();')
+        await previous.click({ delay: 150 })
+        await expect(page.locator('.execution-boundary')).toHaveAttribute('data-before-statement', 'publish_event();')
+        await next.click({ delay: 150 })
+        await expect(slider).toHaveValue(String(i))
+      }
       for (const variable of step.execution.context.locals.filter(v => ['id', 'group', 'other', 'a', 'b', 'candidate', 'geometry', 'inserted'].includes(v.name))) {
         const row = current.getByTestId(`variable-${variable.name}`)
         if (variable.availability === 'available' && variable.value !== null) {

@@ -22,7 +22,7 @@ interface InlineClosure {
   parameterColumn: number
 }
 
-export interface TeachingModule {
+interface TeachingFragment {
   title: MessageDescriptor
   code: string
   traceLines: number[]
@@ -30,7 +30,12 @@ export interface TeachingModule {
   closures: InlineClosure[]
 }
 
-function teachingModule(title: MessageDescriptor, operations: (string | { code: string; closure: string })[], stops: readonly (readonly [line: number, offset?: number])[], identities?: readonly number[]): TeachingModule {
+export interface TeachingModule extends TeachingFragment {
+  traceModules: string[]
+  boundaries: Record<string, number[]>
+}
+
+function teachingModule(title: MessageDescriptor, operations: (string | { code: string; closure: string })[], stops: readonly (readonly [line: number, offset?: number])[], identities?: readonly number[]): TeachingFragment {
   const code: string[] = []
   const traceLines: number[] = []
   // Explanations add display lines without changing statement or closure identities.
@@ -57,14 +62,14 @@ function teachingModule(title: MessageDescriptor, operations: (string | { code: 
 }
 
 // Array positions are trace identities; formatting within an entry must not renumber them.
-export const teachingModules: Record<string, TeachingModule> = {
+const fragments: Record<string, TeachingFragment> = {
   sweep: teachingModule(/*i18n*/ { id: 'Sweep event', message: 'Sweep event' }, [
     'let Located { groups: incident_groups, outside } = locate(&mut state, &point, &event);',
     'record(&mut state, &point, &event, &incident_groups);',
     'let inserted = update(&mut state, &point, &event, &incident_groups);',
     'check(&mut state, &point, &inserted, outside);',
     'publish_event();',
-  ], [[1], [1], [2], [3], [4], [5]]),
+  ], [[1], [1], [2], [3], [4], [5], [6]]),
   locate: teachingModule(/*i18n*/ { id: 'Locate incident groups', message: 'Locate incident groups' }, [
     'let (block, outside) = locate_equal_height(&active_groups, &groups, &point);',
     'let incident_groups = merge_start_groups(&block, &event.starts);',
@@ -119,12 +124,71 @@ let Some((point, event)) = next else {
   ], [[1], [2], [3], [2, 1], [2, 2]]),
 }
 
+export const teachingDeclarations: Record<string, string> = {
+  sweep: 'sweep(segments: &[Segment]) -> Vec<Intersection>',
+  locate: 'locate(state: &mut SweepState, point: &Point, event: &Event) -> Located',
+  members: 'record(state: &mut SweepState, point: &Point, event: &Event, incident_groups: &[GroupId]) -> ()',
+  output: 'append(pair: [usize; 2], scan_geometry: Geometry) -> ()',
+  activity: 'update(state: &mut SweepState, point: &Point, event: &Event, incident_groups: &[GroupId]) -> Vec<GroupId>',
+  neighbors: 'check(state: &mut SweepState, point: &Point, inserted: &[GroupId], outside: (Option<GroupId>, Option<GroupId>)) -> ()',
+  schedule: 'schedule(state: &mut SweepState, point: &Point, pair: [GroupId; 2]) -> ()',
+}
+
+function completeFunction(name: string): TeachingModule {
+  const sweep = name === 'sweep'
+  const code = [`fn ${teachingDeclarations[name]} {`]
+  const traceLines = [-1]
+  const traceModules = [name]
+  const boundaries: Record<string, number[]> = {}
+  const closures: InlineClosure[] = []
+  const add = (text: string) => { code.push(text); traceLines.push(-3); traceModules.push(name) }
+  if (sweep) {
+    add('    let (segments, mut state) = prepare(segments);')
+    traceLines[code.length - 1] = -2
+    add('    loop {')
+  }
+  for (const part of sweep ? ['take', 'sweep'] : [name]) {
+    const fragment = fragments[part]
+    const offset = code.length
+    const indent = sweep ? '        ' : '    '
+    code.push(...fragment.code.split('\n').map(line => indent + line))
+    traceLines.push(...fragment.traceLines)
+    traceModules.push(...fragment.traceLines.map(() => part))
+    boundaries[part] = fragment.boundaryLines.map(line => line + offset)
+    closures.push(...fragment.closures.map(closure => ({ ...closure,
+      start: closure.start + offset, end: closure.end + offset,
+      lines: closure.lines.map(line => line + offset), parameterColumn: closure.parameterColumn + indent.length,
+    })))
+  }
+  if (sweep) {
+    add('    }')
+    add('    return state.result;')
+    traceLines[code.length - 1] = 3
+    traceModules[code.length - 1] = 'take'
+    // A completed break leaves the loop, not merely the let-else block.
+    boundaries.take[4] = code.length - 1
+  }
+  add('}')
+  return { title: fragments[name].title, code: code.join('\n'), traceLines, traceModules,
+    boundaryLines: boundaries[name], boundaries, closures }
+}
+
+export const teachingModules: Record<string, TeachingModule> = Object.fromEntries(
+  Object.keys(teachingDeclarations).map(name => [name, completeFunction(name)]),
+)
+teachingModules.take = teachingModules.sweep
+teachingModules.initial = teachingModules.sweep
+
 const closureModules = new Map(Object.values(teachingModules).flatMap(module => module.closures.map(closure => [closure.module, module] as const)))
 
 // Map the trace boundary to its location in the displayed teaching source.
 export function executionBoundary(execution: ExecutionState) {
   if (execution.boundary === null) return undefined
-  return closureModules.has(execution.module) ? execution.boundary : teachingModules[execution.module]?.boundaryLines[execution.boundary]
+  if (closureModules.has(execution.module)) return execution.boundary
+  const line = teachingModules[execution.module]?.boundaries[execution.module][execution.boundary]
+  // Observe the value after return, with the frame still present. Reaching
+  // the closing brace here does not invent a scope-exit observation.
+  return line === undefined ? undefined : line + (execution.returning ? 1 : 0)
 }
 
 export function executionSource(steps: readonly SweepStep[], index: number) {
@@ -132,7 +196,7 @@ export function executionSource(steps: readonly SweepStep[], index: number) {
   const closureModule = closureModules.get(step.execution.module)
   if (!closureModule) return {
     module: teachingModules[step.execution.module], caller: step, closure: undefined,
-    boundaryLine: executionBoundary(step.execution) ?? 0,
+    boundaryLine: executionBoundary(step.execution) ?? teachingModules.sweep.boundaries.take[0],
   }
   const callerId = step.execution.outer.at(-1)!.id
   let callerIndex = index - 1

@@ -4,7 +4,7 @@ import { readTrace, seekStep } from '../support/trace-navigation'
 test('真实轨迹执行边界指向下一条语句', async ({ page }) => {
   const trace = await readTrace(page, 'crossing')
   const cases = [
-    { module: 'take', boundary: 2, next: null },
+    { module: 'take', boundary: 2, next: 'let Located { groups: incident_groups, outside } = locate(&mut state, &point, &event);' },
     { module: 'locate', boundary: 1, next: 'for group in block {' },
     { module: 'members', boundary: 3, next: 'if incident_groups.len() > 1 || !event.points.is_empty() {' },
     { module: 'neighbors', boundary: 1, next: 'schedule(&mut state, &point, pair);' },
@@ -35,7 +35,7 @@ test('取事件的真实小步同步代码、队列和上下文，并可完整�
   const code = page.getByRole('region', { name: '核心代码回放' })
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   await page.getByRole('button', { name: '下一个大步', exact: true }).click()
-  await expect(code.getByRole('region', { name: '取事件教学代码' })).toBeVisible()
+  await expect(code.getByRole('region', { name: '扫描事件教学代码' })).toBeVisible()
   await expect(code).toContainText('第一条核心语句之前')
   const queue = page.getByRole('region', { name: '待处理事件队列' })
   const current = page.getByRole('region', { name: '当前事件', exact: true })
@@ -109,11 +109,11 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await expect(page).toHaveURL(new RegExp(`step=${entry}$`))
     const panel = page.getByRole('region', { name: '核心代码回放' })
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
-    const code = panel.getByRole('region', { name: '取事件教学代码' })
+    const code = panel.getByRole('region', { name: '扫描事件教学代码' })
     const boundary = panel.getByRole('img', { name: '执行边界：取事件之前' })
     await expect(boundary).toBeVisible()
     const offset = () => boundary.evaluate(element => {
-      const line = element.parentElement!.querySelector('.code-line')!
+      const line = [...element.parentElement!.querySelectorAll('.code-line')].find(line => line.textContent?.includes('let next = queue.pop_first()'))!
       return element.getBoundingClientRect().top - line.getBoundingClientRect().top
     })
     const before = await offset()
@@ -176,9 +176,15 @@ test('空队列真实返回 None，回退恢复未赋值而不出现未来事件
   await expect(panel.getByRole('img', { name: '执行边界：break 之前' })).toBeVisible()
   await expect(panel).not.toContainText('队列为空，退出循环')
   await next.click()
-  await expect(next).toBeDisabled()
+  await expect(next).toBeEnabled()
   await expect(panel).toContainText('队列为空，退出循环')
+  await expect(variables.getByTestId('variable-return_value')).toContainText('未赋值')
+  await next.click()
+  await expect(next).toBeDisabled()
+  await expect(panel).toContainText('返回值已产生')
+  await expect(variables.getByTestId('variable-return_value')).toContainText('[]')
   await expect(variables.getByTestId('variable-point')).toContainText('不可用')
+  await page.getByRole('button', { name: '上一步', exact: true }).click()
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await page.getByRole('button', { name: '上一步', exact: true }).click()
   await page.getByRole('button', { name: '上一步', exact: true }).click()

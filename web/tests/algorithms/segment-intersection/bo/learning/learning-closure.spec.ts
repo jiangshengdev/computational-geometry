@@ -130,6 +130,11 @@ test('真实流尚未交付返回边界时禁用跳转，交付后才恢复导�
   const last = Number(await slider.getAttribute('max'))
   await seekStep(page, last, 'jump')
   await expect(page.getByRole('region', { name: '当前执行上下文' })).toContainText('append')
+  const code = page.getByRole('region', { name: '核心代码回放' })
+  for (const original of await code.locator('[data-symbol="original"]').all()) {
+    await expect(original).toHaveAttribute('data-call-capability', 'step-in')
+  }
+  await expect(code.locator('[data-symbol="push"]')).toHaveAttribute('data-call-capability', 'opaque')
   await expect(page.getByRole('button', { name: '步过', exact: true })).toBeDisabled()
   await expect(page.getByRole('button', { name: '步出', exact: true })).toBeDisabled()
   await expect(page.getByRole('region', { name: '回放控制' })).toContainText('轨迹生成中')
@@ -142,6 +147,10 @@ test('真实流尚未交付返回边界时禁用跳转，交付后才恢复导�
   await page.evaluate(() => (window as typeof window & { releaseClosureTrace(): void }).releaseClosureTrace())
   await waitForTraceCompletion(page)
   await expect(slider).toHaveValue(String(last))
+  for (const original of await code.locator('[data-symbol="original"]').all()) {
+    await expect(original).toHaveAttribute('data-call-capability', 'step-in')
+  }
+  await expect(code.locator('[data-symbol="push"]')).toHaveAttribute('data-call-capability', 'opaque')
   await page.getByRole('button', { name: '步过', exact: true }).click()
   await expect(slider).toHaveValue(String(last + 1))
   await expect(page.getByRole('region', { name: '当前执行上下文' }).getByTestId('variable-return_value')).toContainText('未赋值')

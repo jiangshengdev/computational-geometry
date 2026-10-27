@@ -69,11 +69,40 @@ pub(super) fn status_bindings(state: &SweepState) -> Vec<Variable> {
             format!("{:?}", state.active.ordered()),
         ),
         Variable::available("groups", "Vec<Group>", Arc::clone(groups_value)),
+        Variable::available(
+            "group_of",
+            "Vec<Option<GroupId>>",
+            format!("{:?}", state.group_of),
+        ),
     ]
 }
 
 fn shared_binding(name: &str) -> bool {
-    matches!(name, "queue" | "result" | "groups" | "active_groups")
+    matches!(
+        name,
+        "state" | "queue" | "result" | "groups" | "active_groups"
+    )
+}
+
+pub(super) fn state_binding(locals: &[Variable]) -> Variable {
+    let fields = locals
+        .iter()
+        .filter(|v| {
+            matches!(
+                v.name,
+                "segments" | "shear" | "queue" | "result" | "groups" | "active_groups" | "group_of"
+            )
+        })
+        .map(|v| {
+            format!(
+                "{}: {}",
+                v.name,
+                v.value.as_deref().expect("live state field")
+            )
+        })
+        .collect::<Vec<_>>()
+        .join(", ");
+    Variable::available("state", "&mut SweepState", format!("{{ {fields} }}"))
 }
 
 impl Recorder<'_, '_> {
@@ -113,6 +142,8 @@ impl Recorder<'_, '_> {
                 &state.shear,
             );
             step.execution.context.locals.extend(status_bindings(state));
+            let state_value = state_binding(&step.execution.context.locals);
+            step.execution.context.locals.push(state_value.clone());
             step.execution.context.locals.extend([Variable::available(
                 "point",
                 "&Point",
@@ -127,6 +158,19 @@ impl Recorder<'_, '_> {
                     .context
                     .parameters
                     .clone_from(&frame.parameters);
+                if let Some(parameter) = step
+                    .execution
+                    .context
+                    .parameters
+                    .iter_mut()
+                    .find(|v| v.name == "state")
+                {
+                    *parameter = state_value;
+                    step.execution.context.locals.retain(|v| v.name != "state");
+                }
+                if frame.parameters.iter().any(|v| v.name == "point") {
+                    step.execution.context.locals.retain(|v| v.name != "point");
+                }
                 step.execution
                     .outer
                     .clone_from(&frame.caller.execution.outer);
@@ -136,7 +180,7 @@ impl Recorder<'_, '_> {
                 for outer in &mut step.execution.outer {
                     // A suspended mutable borrow cannot expose stale snapshots
                     // as the caller's current state. Refresh it on resumption.
-                    for variable in &mut outer.locals {
+                    for variable in outer.locals.iter_mut().chain(&mut outer.parameters) {
                         if frame.captures.is_none() && shared_binding(variable.name) {
                             variable.availability = "unavailable";
                             variable.value = None;
@@ -209,7 +253,26 @@ impl Recorder<'_, '_> {
     ) {
         if let Some(steps) = &mut self.steps {
             let caller = steps.last_mut().expect("caller observation");
-            let parameters = parameters();
+            let mut parameters = parameters();
+            if matches!(
+                module,
+                "locate" | "members" | "activity" | "neighbors" | "schedule"
+            ) {
+                let binding = |name| {
+                    caller
+                        .execution
+                        .context
+                        .locals
+                        .iter()
+                        .chain(&caller.execution.context.parameters)
+                        .find(|v| v.name == name)
+                        .expect("actual call argument")
+                        .clone()
+                };
+                let mut point = binding("point");
+                point.r#type = "&Point";
+                parameters.splice(0..0, [binding("state"), point]);
+            }
             caller.execution.calls.push(ExecutionCall::pending(
                 call_site.0,
                 function,
@@ -243,11 +306,6 @@ impl Recorder<'_, '_> {
             returned
                 .execution
                 .context
-                .parameters
-                .clone_from(&frame.parameters);
-            returned
-                .execution
-                .context
                 .locals
                 .retain(|v| v.name != "return_value");
             returned.execution.context.locals.push(result.clone());
@@ -262,13 +320,26 @@ impl Recorder<'_, '_> {
                 .execution
                 .control(return_line, "return", "returned");
             steps.push(returned.clone());
-            let live = returned.execution.context.locals.clone();
+            let live = returned
+                .execution
+                .context
+                .locals
+                .iter()
+                .chain(&returned.execution.context.parameters)
+                .cloned()
+                .collect::<Vec<_>>();
             let mut resumed = returned;
             resumed.execution = frame.caller.execution;
             resumed.execution.entry = false;
             resumed.execution.returning = false;
             resumed.execution.resuming = true;
-            for variable in &mut resumed.execution.context.locals {
+            for variable in resumed
+                .execution
+                .context
+                .locals
+                .iter_mut()
+                .chain(&mut resumed.execution.context.parameters)
+            {
                 if shared_binding(variable.name)
                     && let Some(value) = live.iter().find(|v| v.name == variable.name)
                 {

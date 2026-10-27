@@ -521,6 +521,16 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
     }
     let final_step = steps.last().unwrap();
     assert_eq!(final_step.action, "take-empty");
+    assert!(final_step.execution.returning);
+    assert_eq!(
+        variable(final_step, "return_value").availability,
+        "available"
+    );
+    assert!(!steps[steps.len() - 2].execution.returning);
+    assert_eq!(
+        variable(&steps[steps.len() - 2], "return_value").availability,
+        "unassigned"
+    );
     assert_eq!(variable(final_step, "next").text(values), Some("None"));
     assert_eq!(variable(final_step, "point").availability, "unavailable");
     let empty = trace_json("[]").await;
@@ -529,6 +539,7 @@ async fn take_boundaries_show_pop_before_binding_and_empty_exit() {
             .trace
             .steps
             .iter()
+            .filter(|step| !step.execution.returning)
             .map(|step| step.action.as_str())
             .collect::<Vec<_>>(),
         ["initial", "take-entry", "take-pop", "micro", "take-empty"]

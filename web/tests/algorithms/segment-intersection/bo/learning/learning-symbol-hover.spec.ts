@@ -7,6 +7,42 @@ import { codeSymbols } from '../../../../../src/algorithms/segment-intersection/
 import { chinese } from '../../../../support/language'
 const translate = chinese._.bind(chinese)
 
+for (const browserName of ['chromium', 'webkit'] as const) {
+  test.extend({ browserName })(`调用能力在执行前与返回后保持一致，原子调用和状态可解释 ${browserName}`, async ({ page }) => {
+    const trace = await readTrace(page, 'crossing')
+    const entry = trace.steps.findIndex(step => step.execution.module === 'locate' && step.execution.entry)
+    await page.goto(`/bo/cases/crossing/learn?step=${entry - 1}`)
+    const panel = page.getByRole('region', { name: '核心代码回放' })
+    const locate = panel.locator('[data-symbol="locate"]')
+    await expect(locate).toHaveAttribute('data-call-capability', 'step-in')
+    await locate.hover()
+    const preview = page.getByRole('dialog', { name: /^函数 locate / })
+    await expect(preview).toContainText('可步入')
+    await closePreview(page, preview)
+    await page.getByRole('button', { name: '下一步', exact: true }).click()
+    for (const name of ['locate_equal_height', 'merge_start_groups']) {
+      const symbol = panel.locator(`[data-symbol="${name}"]`)
+      await expect(symbol).toHaveAttribute('data-call-capability', 'opaque')
+      await symbol.hover()
+      const detail = page.getByRole('dialog', { name: new RegExp(`^函数 ${name} `) })
+      await expect(detail).toContainText('不展开')
+      await closePreview(page, detail)
+    }
+    await expect(panel.locator('[data-symbol="Located"]')).toHaveCount(0)
+    await page.getByRole('button', { name: '步出', exact: true }).click()
+    await expect(locate).toHaveAttribute('data-call-capability', 'step-in')
+    const publish = panel.locator('[data-symbol="publish_event"]')
+    await expect(publish).toHaveAttribute('data-call-capability', 'opaque')
+    await publish.hover()
+    const detail = page.getByRole('dialog', { name: /^函数 publish_event / })
+    await expect(detail).toContainText('不展开')
+    await closePreview(page, detail)
+    await panel.locator('[data-symbol="state"]').first().hover()
+    await expect(page.getByRole('dialog', { name: /^变量 state / })).toContainText('SweepState')
+    await expect(page.getByRole('dialog', { name: /^变量 state / })).toContainText('queue')
+  })
+}
+
 test('访问识别区分字段名、字段值和路径，嵌套索引保留所属关系', () => {
   const symbols = codeSymbols('Point { x: p.x - shear * p.y, y: p.y }; Geometry::Point(p); // p.y')
   expect(symbols.filter(symbol => symbol.name === 'p')).toHaveLength(4)
@@ -226,6 +262,12 @@ test('被遮蔽的入参保留原坐标最后值，前进回退不混入扫描�
   const index = trace.steps.findIndex(step => step.action === 'take-entry')
   const displayed = formatExecutionValue(expected)
   await page.goto(`/bo/cases/vertical-overlap/learn?step=${index}`)
+  const code = page.getByRole('region', { name: '核心代码回放' })
+  await code.locator('[data-symbol="segments"][data-line="-2"]').hover()
+  const argument = page.getByRole('dialog', { name: /^变量 segments / })
+  await expect(argument).toContainText('类型：&[Segment]')
+  await expect(argument).toContainText(displayed)
+  await closePreview(page, argument)
   const variables = page.getByRole('region', { name: '核心变量', exact: true })
   const segments = variables.getByTestId('variable-segments')
   await expect(segments).toHaveCount(2)

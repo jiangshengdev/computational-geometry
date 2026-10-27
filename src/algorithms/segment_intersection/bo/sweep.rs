@@ -303,6 +303,8 @@ fn sweep(
             trace_segments.as_ref().expect("trace segments"),
             &state.shear,
         );
+        let state_value = observation::state_binding(&initial.execution.context.locals);
+        initial.execution.context.locals.push(state_value);
         steps.push(initial);
     }
     if let Some(publication) = &mut publication
@@ -403,12 +405,8 @@ fn sweep(
             located.outside,
             &mut recording,
         )?;
-        recording.observe(&state, &point, 5, "micro", || {
-            (
-                vec![],
-                vec![Variable::absent("inserted", "Vec<GroupId>", "unavailable")],
-            )
-        })?;
+        recording.observe(&state, &point, 5, "micro", || (vec![], vec![]))?;
+        recording.call(|| ExecutionCall::pending(5, "publish_event", 0, vec![], "()"));
         account!(delete(
             "event_metadata",
             event.starts.len() + event.ends.len() + event.points.len()
@@ -425,17 +423,47 @@ fn sweep(
             return None;
         }
     }
-    if let Some(publication) = &mut publication
-        && !publication.publish()
-    {
-        return None;
-    }
     account!(clear("segments"));
     account!(clear("groups"));
     account!(clear("group_of"));
     account!(clear("height_cache"));
-    Some(SweepOutcome {
+    let outcome = SweepOutcome {
         intersections: state.result,
         shear: state.shear,
-    })
+    };
+    if let Some(publication) = &mut publication {
+        let steps = publication.steps();
+        let mut returned = steps.last().expect("root return entry").clone();
+        let result = returned
+            .execution
+            .context
+            .locals
+            .iter()
+            .find(|v| v.name == "result")
+            .and_then(|v| v.value.clone())
+            .expect("actual result snapshot");
+        returned
+            .execution
+            .context
+            .locals
+            .retain(|v| v.name != "return_value");
+        returned.execution.context.locals.push(Variable::available(
+            "return_value",
+            "Vec<Intersection>",
+            result,
+        ));
+        returned.execution.returning = true;
+        returned.execution.control(3, "return", "returned");
+        for variable in &mut returned.execution.context.locals {
+            if matches!(variable.name, "state" | "result") {
+                variable.availability = "unavailable";
+                variable.value = None;
+            }
+        }
+        steps.push(returned);
+        if !publication.publish() {
+            return None;
+        }
+    }
+    Some(outcome)
 }

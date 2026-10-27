@@ -1,8 +1,11 @@
 import type { I18n, MessageDescriptor } from '@lingui/core'
 import type { ExecutionContext, ExecutionControl, ExecutionVariable, ExecutionVariableKind, SweepStep } from './trace'
 import { formatExecutionValue } from './executionValue'
+import { teachingDeclarations } from './executionCode'
 
 const meanings: Record<string, MessageDescriptor> = {
+  state: /*i18n*/ { id: 'Live sweep state at this boundary; shared mutable fields are unavailable while the caller is suspended.', message: 'Live sweep state at this boundary; shared mutable fields are unavailable while the caller is suspended.' },
+  group_of: /*i18n*/ { id: 'Supporting-line group of each original input; point inputs have no group.', message: 'Supporting-line group of each original input; point inputs have no group.' },
   other: /*i18n*/ { id: "Other original input in the current member pair", message: "Other original input in the current member pair" },
   active_groups: /*i18n*/ { id: 'Active supporting-line group IDs in event-local order', message: 'Active supporting-line group IDs in event-local order' },
   groups: /*i18n*/ { id: 'Fixed supporting lines and their current original members', message: 'Fixed supporting lines and their current original members' },
@@ -32,6 +35,10 @@ const meanings: Record<string, MessageDescriptor> = {
 }
 
 export const functions: Record<string, { signature: string; purpose: MessageDescriptor; parameters: MessageDescriptor }> = {
+  prepare: { signature: 'prepare(segments: &[Segment]) -> (Vec<SweepSegment>, SweepState)', purpose: /*i18n*/ { id: 'Transform the input, group supporting lines and initialize the queue and sweep state before replay begins.', message: 'Transform the input, group supporting lines and initialize the queue and sweep state before replay begins.' }, parameters: /*i18n*/ { id: 'Original input segments.', message: 'Original input segments.' } },
+  publish_event: { signature: 'publish_event() -> ()', purpose: /*i18n*/ { id: 'Finalize the current event observations and publish them to the replay.', message: 'Finalize the current event observations and publish them to the replay.' }, parameters: /*i18n*/ { id: 'No arguments.', message: 'No arguments.' } },
+  locate_equal_height: { signature: 'locate_equal_height(active_groups, groups, point) -> (Vec<GroupId>, (Option<GroupId>, Option<GroupId>))', purpose: /*i18n*/ { id: 'Find the equal-height active block and its outside neighbors. Located contains the merged incident groups and these outside neighbors.', message: 'Find the equal-height active block and its outside neighbors. Located contains the merged incident groups and these outside neighbors.' }, parameters: /*i18n*/ { id: 'Active group order, supporting lines, and the exact event position.', message: 'Active group order, supporting lines, and the exact event position.' } },
+  merge_start_groups: { signature: 'merge_start_groups(block, starts) -> Vec<GroupId>', purpose: /*i18n*/ { id: 'Merge the active block with groups of starting segments, removing duplicate group IDs.', message: 'Merge the active block with groups of starting segments, removing duplicate group IDs.' }, parameters: /*i18n*/ { id: 'The active block and original inputs starting at this event; group_of supplies their group identities.', message: 'The active block and original inputs starting at this event; group_of supplies their group identities.' } },
   locate: { signature: 'locate(state, point, event) -> Located', purpose: /*i18n*/ { id: 'Locate and detach the incident group block', message: 'Locate and detach the incident group block' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
   record: { signature: 'record(state, point, event, incident_groups) -> ()', purpose: /*i18n*/ { id: 'Emit new same-line, cross-group and point pairs', message: 'Emit new same-line, cross-group and point pairs' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
   update: { signature: 'update(state, point, event, incident_groups) -> Vec<GroupId>', purpose: /*i18n*/ { id: 'Remove ending members and reinsert nonempty groups', message: 'Remove ending members and reinsert nonempty groups' }, parameters: /*i18n*/ { id: 'Arguments are recorded by the actual call at this execution boundary.', message: 'Arguments are recorded by the actual call at this execution boundary.' } },
@@ -65,6 +72,30 @@ export const functions: Record<string, { signature: string; purpose: MessageDesc
   entry: { signature: 'entry(&mut self, key) -> Entry<K, V>', purpose: /*i18n*/ { id: "Get the map entry for the specified key.", message: "Get the map entry for the specified key." }, parameters: /*i18n*/ { id: "self: the map at this call site; key: the entry key.", message: "self: the map at this call site; key: the entry key." } },
   clone: { signature: 'clone(&self) -> Self', purpose: /*i18n*/ { id: "Clone the current value.", message: "Clone the current value." }, parameters: /*i18n*/ { id: "self: the value at this call site.", message: "self: the value at this call site." } },
   or_default: { signature: 'or_default(self) -> &mut V', purpose: /*i18n*/ { id: "Get the entry value, inserting a default when the key is absent.", message: "Get the entry value, inserting a default when the key is absent." }, parameters: /*i18n*/ { id: "self: the map entry at this call site.", message: "self: the map entry at this call site." } },
+}
+
+const atomicFunctions: [string, string, MessageDescriptor][] = [
+  ['remove', 'remove(group, side) -> ()', /*i18n*/ { id: 'Detach a group from the active order before this event.', message: 'Detach a group from the active order before this event.' }],
+  ['insert', 'insert(value, side) -> ()', /*i18n*/ { id: 'Insert a member into its group, or a group into the active order at the indicated side.', message: 'Insert a member into its group, or a group into the active order at the indicated side.' }],
+  ['is_empty', 'is_empty(&self) -> bool', /*i18n*/ { id: 'Check whether this collection is empty.', message: 'Check whether this collection is empty.' }],
+  ['cross_group_pairs', 'cross_group_pairs(incident_groups) -> Iterator<[usize; 2]>', /*i18n*/ { id: 'Enumerate original member pairs from different incident groups.', message: 'Enumerate original member pairs from different incident groups.' }],
+  ['point_member_pairs', 'point_member_pairs(points, incident_groups) -> Iterator<[usize; 2]>', /*i18n*/ { id: 'Enumerate point inputs paired with incident group members.', message: 'Enumerate point inputs paired with incident group members.' }],
+  ['unordered_pairs', 'unordered_pairs(points) -> Iterator<[usize; 2]>', /*i18n*/ { id: 'Enumerate each unordered pair of distinct input IDs once.', message: 'Enumerate each unordered pair of distinct input IDs once.' }],
+  ['sorted', 'sorted(pair: [usize; 2]) -> [usize; 2]', /*i18n*/ { id: 'Put the original input IDs in ascending order.', message: 'Put the original input IDs in ascending order.' }],
+  ['ordered_overlap', 'ordered_overlap(start: Point, end: Point) -> Geometry', /*i18n*/ { id: 'Order the restored endpoints of a nonzero overlap.', message: 'Order the restored endpoints of a nonzero overlap.' }],
+  ['remove_ending_member', 'remove_ending_member(groups, id) -> ()', /*i18n*/ { id: 'Remove this ending original input from its supporting-line group.', message: 'Remove this ending original input from its supporting-line group.' }],
+  ['nonempty_groups_by_slope', 'nonempty_groups_by_slope(incident_groups) -> Vec<GroupId>', /*i18n*/ { id: 'Keep nonempty incident groups in increasing slope order.', message: 'Keep nonempty incident groups in increasing slope order.' }],
+  ['local_neighbors', 'local_neighbors(outside, inserted) -> Vec<GroupId>', /*i18n*/ { id: 'Join the outside neighbors with the inserted groups in local order.', message: 'Join the outside neighbors with the inserted groups in local order.' }],
+  ['windows', 'windows(size: usize) -> Iterator<&[GroupId]>', /*i18n*/ { id: 'Visit consecutive windows of the given size.', message: 'Visit consecutive windows of the given size.' }],
+  ['intersect_supporting_lines', 'intersect_supporting_lines(a: Group, b: Group) -> Point', /*i18n*/ { id: 'Compute the exact intersection of two nonparallel supporting lines.', message: 'Compute the exact intersection of two nonparallel supporting lines.' }],
+  ['unwrap', 'unwrap(self: Option<T>) -> T', /*i18n*/ { id: 'Read the value of a known nonempty option.', message: 'Read the value of a known nonempty option.' }],
+]
+for (const [name, signature, purpose] of atomicFunctions) functions[name] = { signature, purpose,
+  parameters: /*i18n*/ { id: 'The call expression identifies the receiver and arguments; values below come only from this execution boundary.', message: 'The call expression identifies the receiver and arguments; values below come only from this execution boundary.' },
+}
+for (const declaration of Object.values(teachingDeclarations)) {
+  const name = declaration.slice(0, declaration.indexOf('('))
+  if (functions[name]) functions[name].signature = declaration
 }
 
 export function callExpression(name: string, after: string) {
@@ -102,6 +133,7 @@ export function symbolScope(_name: string, module: string, _line: number, _: I18
 
 export function scopedVariable(name: string, step: SweepStep, line: number, _translate: I18n['_']) {
   const { context } = step.execution
+  if (line === -1 || line === -2) return context.parameters.find(item => item.name === name)
   // The producer marks the exact binding unavailable at its scope exit.
   const variable = context.locals.find(item => item.name === name)
     ?? context.parameters.find(item => item.name === name)
@@ -121,7 +153,7 @@ export function variableDetails(name: string, step: SweepStep, previous: SweepSt
   // Locals deliberately win even while unassigned or unavailable: never expose
   // the input parameter hidden by the scan-coordinate local named segments.
   const variable = scopedVariable(name, step, line, _)
-  const kind = context.locals.some(item => item.name === name) ? 'locals' : context.parameters.some(item => item.name === name) ? 'parameters' : 'captures'
+  const kind = line === -1 || line === -2 ? 'parameters' : context.locals.some(item => item.name === name) ? 'locals' : context.parameters.some(item => item.name === name) ? 'parameters' : 'captures'
   return describeVariable(name, variable, kind, step, previous, values, symbolScope(name, step.execution.module, line, _), line, context, _)
 }
 
@@ -159,9 +191,10 @@ export function variableChange(variable: ExecutionVariable | undefined, kind: Ex
 }
 
 export function symbolKind(name: string, before: string, after: string) {
+  if (['let', 'fn', 'match', 'loop', 'mut'].includes(name) || /\bfn\s+$/.test(before)) return null
   if (['if', 'else', 'for', 'continue', 'return', 'break'].includes(name)) return 'control'
-  if (functions[name] && (/^\s*\(/.test(after) || name === 'original')) return 'function'
-  if (meanings[name] && !/(?:\.|::)\s*$/.test(before) && !/^\s*:/.test(after)) return 'variable'
+  if (/^[a-z_]\w*$/.test(name) && (/^\s*\(/.test(after) || name === 'original')) return 'function'
+  if (meanings[name] && !/(?:\.|::)\s*$/.test(before) && (!/^\s*:/.test(after) || before.includes('fn '))) return 'variable'
   return null
 }
 

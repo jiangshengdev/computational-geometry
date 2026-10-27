@@ -163,6 +163,12 @@ pub(super) fn take(state: &mut SweepState, recording: &mut Recorder<'_, '_>) -> 
             steps.push(step.clone());
             step.execution.boundary = Some(4);
             step.execution.control(2, "break", "completed");
+            step.execution.control(3, "return", "pending");
+            step.execution.context.locals.push(Variable::absent(
+                "return_value",
+                "Vec<Intersection>",
+                "unassigned",
+            ));
             step.action = "take-empty";
             steps.push(step);
         }
@@ -223,6 +229,8 @@ impl SweepStep {
         self.sweep_context(segments_value, shear);
         self.execution.context.locals.retain(|v| v.name != "active");
         self.execution.context.locals.extend_from_slice(status);
+        let state = observation::state_binding(&self.execution.context.locals);
+        self.execution.context.locals.push(state);
         self.take_bindings(boundary, next, bound);
     }
 

@@ -31,13 +31,22 @@ impl<'a> TracePublication<'a> {
         checked: &[[usize; 2]],
         participants: (Vec<usize>, Vec<usize>, Vec<usize>),
     ) -> bool {
-        let completed = self
+        let mut completed = self
             .steps
-            .last_mut()
-            .expect("neighbor loop exit was captured");
+            .last()
+            .expect("publish entry was captured")
+            .clone();
         completed.action = "complete";
         completed.phase = "processed";
         completed.checked = checked.to_vec();
+        completed.execution.boundary = Some(6);
+        completed
+            .execution
+            .calls
+            .last_mut()
+            .expect("publish call")
+            .result = super::teaching::Variable::available("return_value", "()", "()");
+        self.steps.push(completed);
         let (starts, ends, passes) = participants;
         for step in &mut self.steps[first_step..] {
             step.starts.clone_from(&starts);

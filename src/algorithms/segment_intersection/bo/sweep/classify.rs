@@ -23,6 +23,21 @@ pub(super) fn locate(
             vec![Variable::absent("block", "Vec<GroupId>", "unassigned")],
         )
     })?;
+    let locate_arguments = || {
+        let mut arguments = observation::status_bindings(state);
+        arguments.retain(|v| matches!(v.name, "active_groups" | "groups"));
+        arguments.push(Variable::available("point", "&Point", point_value(point)));
+        arguments
+    };
+    recording.call(|| {
+        ExecutionCall::pending(
+            0,
+            "locate_equal_height",
+            0,
+            locate_arguments(),
+            "(Vec<GroupId>, (Option<GroupId>, Option<GroupId>))",
+        )
+    });
     let compare_before = |a, b| compare(&state.groups, a, b, point, Side::Before);
     account!(access("active", 1));
     account!(access("active", 1));
@@ -63,6 +78,32 @@ pub(super) fn locate(
             ],
         )
     })?;
+    recording.call(|| ExecutionCall {
+        line: 0,
+        function: "locate_equal_height",
+        occurrence: 0,
+        arguments: locate_arguments(),
+        result: Variable::available(
+            "return_value",
+            "(Vec<GroupId>, (Option<GroupId>, Option<GroupId>))",
+            format!("({block:?}, ({lower:?}, {upper:?}))"),
+        ),
+    });
+    let merge_arguments = || {
+        vec![
+            Variable::available("block", "&[GroupId]", format!("{block:?}")),
+            Variable::available("starts", "&[usize]", format!("{:?}", event.starts)),
+        ]
+    };
+    recording.call(|| {
+        ExecutionCall::pending(
+            1,
+            "merge_start_groups",
+            0,
+            merge_arguments(),
+            "Vec<GroupId>",
+        )
+    });
     account!(access("block_list", block.len()));
     let mut groups: BTreeSet<_> = block.iter().copied().collect();
     account!(add("incident_set", groups.len()));
@@ -98,6 +139,13 @@ pub(super) fn locate(
             ],
         )
     })?;
+    recording.call(|| ExecutionCall {
+        line: 1,
+        function: "merge_start_groups",
+        occurrence: 0,
+        arguments: merge_arguments(),
+        result: Variable::available("return_value", "Vec<GroupId>", format!("{groups:?}")),
+    });
     for &g in &block {
         recording.observe(state, point, 5, "micro", || {
             (

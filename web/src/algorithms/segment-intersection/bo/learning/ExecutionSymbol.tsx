@@ -12,6 +12,7 @@ import type { ExecutionContext, ExecutionVariable, ExecutionVariableKind, SweepS
 import { controlDescription, functions, hasVariableValue, panelVariableDetails, scopedVariable, shadowedValueNote, symbolScope, variableDetails, variableValue } from './executionSymbols'
 import { RustCode } from './RustCode'
 import { type Access, accessDetails, accessParents } from './executionAccess'
+import { callCapability } from './teachingCalls'
 
 function PreviewValue({ value, hasValue }: { value: string; hasValue: boolean }) {
   const { _ } = useLingui()
@@ -48,7 +49,7 @@ export function ExecutionSymbol({ name, kind, access, line, displayLine, occurre
     }
   }
   const label = kind === 'variable' ? _(/*i18n*/ { id: "Variable", message: "Variable" }) : kind === 'access' ? _(/*i18n*/ { id: "Access", message: "Access" }) : kind === 'control' ? _(/*i18n*/ { id: "Control flow", message: "Control flow" }) : _(/*i18n*/ { id: "Function", message: "Function" })
-  return <SymbolTooltip placement="bottom" name={name} line={line} occurrence={occurrence} onKeyDown={onKeyDown} onClose={() => setDepth(0)} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line, _) : kind === 'control' ? _(/*i18n*/ { id: "Line {line}, keyword {occurrence}", message: "Line {line}, keyword {occurrence}" , values: { line: String(displayLine), occurrence: String(occurrence + 1) }}) : _(/*i18n*/ { id: "Line {line}, call {occurrence}", message: "Line {line}, call {occurrence}" , values: { line: String(displayLine), occurrence: String(occurrence + 1) }})}`} content={<>
+  return <SymbolTooltip placement="bottom" name={name} line={line} occurrence={occurrence} capability={kind === 'function' ? callCapability(module, line, name) : undefined} onKeyDown={onKeyDown} onClose={() => setDepth(0)} label={`${label} ${access?.expression ?? name} · ${kind === 'variable' ? symbolScope(name, step.execution.module, line, _) : kind === 'control' ? _(/*i18n*/ { id: "Line {line}, keyword {occurrence}", message: "Line {line}, keyword {occurrence}" , values: { line: String(displayLine), occurrence: String(occurrence + 1) }}) : _(/*i18n*/ { id: "Line {line}, call {occurrence}", message: "Line {line}, call {occurrence}" , values: { line: String(displayLine), occurrence: String(occurrence + 1) }})}`} content={<>
     <SymbolDetails name={name} kind={kind} access={access} line={line} occurrence={occurrence} module={module} expression={expression} step={step} previous={previous} values={values} label={label} />
     {access && <ParentValues access={access} step={step} values={values} line={line} depth={depth} maximum={maximum} changeDepth={changeDepth} />}
   </>}>
@@ -56,8 +57,9 @@ export function ExecutionSymbol({ name, kind, access, line, displayLine, occurre
   </SymbolTooltip>
 }
 
-function SymbolTooltip({ name, line, occurrence, label, children, content, placement, disclosure = false, onKeyDown, onClose }: {
+function SymbolTooltip({ name, line, occurrence, capability, label, children, content, placement, disclosure = false, onKeyDown, onClose }: {
   name: string; line?: number; occurrence?: number; label: string
+  capability?: 'step-in' | 'opaque'
   children: ReactNode; content: ReactNode; disclosure?: boolean
   placement: 'bottom' | 'left top'
   onKeyDown?: (event: KeyboardEvent) => void; onClose?: () => void
@@ -67,6 +69,7 @@ function SymbolTooltip({ name, line, occurrence, label, children, content, place
     if (event.pointerType !== 'touch') setInteractionModality('pointer')
   }
   const triggerProps = { 'data-symbol': name, 'data-line': line, 'data-occurrence': occurrence, 'aria-label': label,
+    'data-call-capability': capability,
     // React may synthesize the next enter from the previous target's out event.
     // Set actual pointer modality before either path reaches PreviewTrigger.
     onPointerOverCapture: pointerModality, onPointerOutCapture: pointerModality,
@@ -145,6 +148,9 @@ function SymbolDetails({ name, kind, access, line, occurrence, module, expressio
           <p>{controlDescription(name, control, _)}</p>
           {name === 'return' && control?.state === 'returned' && <p>{_(/*i18n*/ { id: "Return value: ", message: "Return value: " })}<SymbolValue variable={returnValue} values={values} /></p>}
         </> : kind === 'variable' || kind === 'access' ? <VariableDescription detail={detail} /> : <>
+          <p>{callCapability(module, line, name) === 'step-in'
+            ? _(/*i18n*/ { id: 'Step in: the replay shows this call’s internal execution.', message: 'Step in: the replay shows this call’s internal execution.' })
+            : _(/*i18n*/ { id: 'Not expanded: this call executes, but its internal process is not shown.', message: 'Not expanded: this call executes, but its internal process is not shown.' })}</p>
           <p><RustCode>{fn.signature}</RustCode></p><p>{_(fn.purpose)}</p><p>{_(/*i18n*/ { id: "Parameters: ", message: "Parameters: " })}{_(fn.parameters)}</p>
           <p>{_(/*i18n*/ { id: "Call expression: ", message: "Call expression: " })}<RustCode>{expression}</RustCode></p>
           {call ? <>
