@@ -5,6 +5,9 @@ sidebar_label: 1．我们究竟要求什么
 description: 从原始输入的身份、点与完整重叠区间出发，建立两两求交的基准方法，理解需要检查多少对。
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 给你几条线段，让你找出它们相交的地方，你会怎样做？一种直接的方法是：先取两条，检查它们有没有公共部分，再换一对，直到所有不同的两条都检查过。
 
 这个方法容易想到。不过，在寻找更省事的方法之前，我们要先说清楚：**每次检查的对象是什么，又应该留下什么结果？**
@@ -31,6 +34,13 @@ description: 从原始输入的身份、点与完整重叠区间出发，建立�
 
 它们占据的几何位置完全相同。第 $3$ 份只是把端点的书写顺序倒过来，没有改变包含哪些点。可是，这仍然是**三份输入**，不能因为画出来重合，就悄悄删成一份。
 
+<ThemedImage
+  alt="相同坐标尺度的四个小图：输入 1、2、3 分别占据从 (0,0) 到 (4,0) 的线段，第四图展示它们共同的几何位置。输入 3 的端点书写顺序与前两份相反。"
+  sources={{light: useBaseUrl('/img/intersection-goals-identity-light.svg'), dark: useBaseUrl('/img/intersection-goals-identity-dark.svg')}}
+/>
+
+前三个小图把输入分别展示，最后一个小图显示它们占据的共同位置。每个小图使用相同的坐标范围和尺度，没有把重合线段挪到不同位置。图下的箭头只表示端点的书写顺序，不表示线段有方向；线段两端的实心圆表示端点也包含在内。
+
 接下来，我们用「输入对 $1$ 与 $2$」表示取出编号为 $1$、$2$ 的两份输入。它和「输入对 $2$ 与 $1$」是同一对，因为交换检查顺序不会改变公共部分。这叫作「无序输入对」。我们只取两份不同的输入，不检查一份输入与它自身。
 
 ## 两条线段的公共部分是什么
@@ -45,15 +55,44 @@ description: 从原始输入的身份、点与完整重叠区间出发，建立�
 
 这对输入检查过了，但**不产生求交结果记录**。
 
+<ThemedImage
+  alt="左图的输入 A 位于 y=0，中图的另一条输入位于 y=1，两者横坐标范围都是 0 到 4。右图没有公共点，标为空交集。"
+  sources={{light: useBaseUrl('/img/intersection-goals-empty-light.svg'), dark: useBaseUrl('/img/intersection-goals-empty-dark.svg')}}
+/>
+
+这里和下面的三栏图都按「输入 A、另一份输入、完整交集」排列，坐标范围与尺度相同。右栏只画交集，不重复画输入；灰色细线是坐标轴，不属于输入或结果。
+
 ### 只有一个公共点：点交集
 
 换成从 $(2,-1)$ 到 $(2,1)$ 的竖直线段。它上面的点都满足 $x=2$。公共点还必须在 $A$ 上，所以纵坐标必须是 $0$。
 
 这两个条件只留下 $(2,0)$。它的横坐标 $2$ 在 $0$ 到 $4$ 之间，纵坐标 $0$ 在 $-1$ 到 $1$ 之间，因此确实同时在两条线段上。交集就是这一个点。
 
+<ThemedImage
+  alt="分别展示从 (0,0) 到 (4,0) 的输入 A、从 (2,-1) 到 (2,1) 的另一条输入，以及它们唯一的公共点 (2,0)。"
+  sources={{light: useBaseUrl('/img/intersection-goals-crossing-light.svg'), dark: useBaseUrl('/img/intersection-goals-crossing-dark.svg')}}
+/>
+
 接触端点也算相交。例如，把另一条线段换成从 $(4,0)$ 到 $(6,0)$ 的水平线段：公共点的横坐标既不能超过 $4$，又不能小于 $4$，只能等于 $4$。两条线段都包含这个端点，所以交集是 $(4,0)$。
 
+<ThemedImage
+  alt="输入 A 的横坐标范围是 0 到 4，另一条输入的横坐标范围是 4 到 6，都在 y=0 上。右图保留两者共同包含的端点 (4,0)。"
+  sources={{light: useBaseUrl('/img/intersection-goals-touch-light.svg'), dark: useBaseUrl('/img/intersection-goals-touch-dark.svg')}}
+/>
+
 零长度输入也按同一个定义处理。如果另一份输入只包含点 $(2,0)$，这个点在 $A$ 上，交集就是它；如果另一份输入只包含 $(5,0)$，它不在 $A$ 的范围内，交集为空。两份点输入则只有在位置相同时才有公共点。
+
+<ThemedImage
+  alt="输入 A 从 (0,0) 到 (4,0)，另一份输入只有用菱形标记的点 (2,0)。右图的交集为点 (2,0)。"
+  sources={{light: useBaseUrl('/img/intersection-goals-point-on-light.svg'), dark: useBaseUrl('/img/intersection-goals-point-on-dark.svg')}}
+/>
+
+<ThemedImage
+  alt="输入 A 从 (0,0) 到 (4,0)，另一份输入只有点 (5,0)，已超出 A 的范围。右图为空交集。"
+  sources={{light: useBaseUrl('/img/intersection-goals-point-off-light.svg'), dark: useBaseUrl('/img/intersection-goals-point-off-dark.svg')}}
+/>
+
+中栏的菱形用来辨认「这一份输入只有一个点」，不表示它有面积。右栏仍用圆点表示点交集。
 
 ### 有一段公共部分：重叠区间
 
@@ -73,7 +112,19 @@ $$
 
 不能只报告两个端点，因为 $(3,0)$ 等中间的点也属于交集。我们用区间的两个端点来描述整段公共部分，不是说只有这两个点相交。
 
+<ThemedImage
+  alt="输入 A 从 (0,0) 到 (4,0)，输入 B 从 (2,0) 到 (6,0)。右图画出从 (2,0) 到 (4,0) 的整段公共部分，包含两个端点和全部中间点。"
+  sources={{light: useBaseUrl('/img/intersection-goals-overlap-light.svg'), dark: useBaseUrl('/img/intersection-goals-overlap-dark.svg')}}
+/>
+
 如果再加入从 $(3,-1)$ 到 $(3,1)$ 的线段 $C$，它分别与 $A$、$B$ 相交于 $(3,0)$。这是另外两对输入的结果。$A$ 与 $B$ 包含哪些点并没有改变，所以它们的交集仍然是从 $(2,0)$ 到 $(4,0)$ 的一个完整区间，不能在 $(3,0)$ 处拆成两条结果。
+
+<ThemedImage
+  alt="两列对照加入 C 前后：第一行展示 A，第二行展示 B，右列分别增加 x=3、纵坐标从 -1 到 1 的 C。最下行两图的 A、B 交集完全相同，都是从 (2,0) 到 (4,0) 的连续闭区间。"
+  sources={{light: useBaseUrl('/img/intersection-goals-third-segment-light.svg'), dark: useBaseUrl('/img/intersection-goals-third-segment-dark.svg')}}
+/>
+
+按行从左向右看：前两行分别展示 A、B 与新加入的 C，避免重合线段互相遮挡。最下一行只画 A、B 的交集，左右始终是同一整段。这里比较的是输入增加前后的交集，不是扫描线的执行过程。
 
 ## 为什么不会出现两段分开的公共部分
 
@@ -112,6 +163,13 @@ $$
 | $1$ 与 $2$ | 点 $(0,0)$ |
 | $1$ 与 $3$ | 点 $(0,0)$ |
 | $2$ 与 $3$ | 点 $(0,0)$ |
+
+<ThemedImage
+  alt="上排分别展示水平线段输入 1、竖直线段输入 2 和只有原点的输入 3。下排先将三者放回同一坐标系，再展示唯一的公共位置原点，最后列出输入对 1 与 2、1 与 3、2 与 3 的三条点交集结果。"
+  sources={{light: useBaseUrl('/img/intersection-goals-three-pairs-light.svg'), dark: useBaseUrl('/img/intersection-goals-three-pairs-dark.svg')}}
+/>
+
+先看上排的三份输入，再看下排：放在一起时，它们都包含原点；记录结果时，却必须分别写出右侧的三个输入对，与上表逐行对应。菱形仍表示原点输入，不能因为它与两条线段的交点重合就省略这份输入。
 
 这里只有一个几何位置，却有三对相交输入，所以要保留三条结果。如果只写「原点」，就无法知道究竟哪些输入彼此相交。
 
