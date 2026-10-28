@@ -156,24 +156,6 @@ export function LessonDiagram({
           plot("每对的完整交集", [segment([0, 0], [4, 0], orange)])}
       </>
     );
-  else if (kind === "pairs")
-    children = (
-      <div style={{ fontSize: 38, lineHeight: 2.5, textAlign: "center" }}>
-        <span style={selectStyle("pair12")}>
-          <MathText>{"1 与 2"}</MathText>
-        </span>
-        <span> ⇄ </span>
-        <span style={selectStyle("pair21")}>
-          <MathText>{"2 与 1"}</MathText>
-        </span>
-        <div>同一个无序对</div>
-        {step >= 2 && (
-          <div style={selectStyle("self")}>
-            <MathText>{"1 与 1：排除自身配对"}</MathText>
-          </div>
-        )}
-      </div>
-    );
   else if (kind === "answer")
     children = (
       <>
@@ -206,11 +188,6 @@ export function LessonDiagram({
     children = (
       <div style={{ margin: "0 auto", textAlign: "center" }}>
         <InputDiagram inputs={[1, 2, 3]} attention={attention("records")} />
-        {kind === "records" && (
-          <div style={{ fontSize: 30, ...selectStyle("records") }}>
-            一个位置，三条结果
-          </div>
-        )}
       </div>
     );
   else if (kind === "third")
@@ -237,11 +214,6 @@ export function LessonDiagram({
                 [segment([3, 0], [3, 0], orange)],
                 [{ point: [3, 0], text: "(3,0)" }],
               )}
-              <div style={{ fontSize: 24, textAlign: "center" }}>
-                <MathText>{"A 与 C：(3,0)"}</MathText>
-                <br />
-                <MathText>{"B 与 C：(3,0)"}</MathText>
-              </div>
             </div>
           </>
         )}

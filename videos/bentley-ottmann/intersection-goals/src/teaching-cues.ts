@@ -65,16 +65,6 @@ export const teachingCues: Record<string, TeachingCue[]> = {
       },
     },
   ],
-  U11: [
-    { phrase: "输入对一与二", keys: ["pair12"] },
-    { phrase: "交换检查顺序", through: "所以二与一是同一对", keys: ["pair21"] },
-    { phrase: "这叫无序输入对", keys: ["pair12", "pair21"] },
-  ],
-  U12: [
-    { phrase: "我们只取两份不同的输入", keys: ["pair12"] },
-    { phrase: "不检查一份输入与它自身", keys: ["self"] },
-    { phrase: "同一份输入却不能与自己配对", keys: ["self"] },
-  ],
   U13: [
     { phrase: "横坐标零、纵坐标零的点", panels: { "输入 A": [p(0, 0)] } },
     { phrase: "横坐标四、纵坐标零的点", panels: { "输入 A": [p(4, 0)] } },
@@ -409,14 +399,7 @@ export const teachingCues: Record<string, TeachingCue[]> = {
     { phrase: "原点也在第二份输入上", panels: { "输入 2": [p(0, 0)] } },
     { phrase: "这一对仍然留下一个点结果", panels: { 同一坐标系: [p(0, 0)] } },
   ],
-  U46: [
-    { phrase: "这里只有一个相交位置", panels: { records: [p(0, 0)] } },
-    {
-      phrase: "却有三对相交输入",
-      through: "因此要保留三条结果",
-      keys: ["records"],
-    },
-  ],
+  U46: [{ phrase: "这里只有一个相交位置", panels: { records: [p(0, 0)] } }],
   U47: [
     {
       phrase: "从横坐标零、纵坐标零的点到横坐标四、纵坐标零的点的线段",

@@ -54,7 +54,7 @@ export const lessonPages = {
       "任取两份不同输入：较小编号 i，较大编号 j，i<j",
       "第 i 行包含所有更大编号，其中一定包括 j",
     ],
-    diagram: "proof",
+    diagram: "",
     holdAfterSeconds: 5,
   },
   unique: {
@@ -65,7 +65,7 @@ export const lessonPages = {
       "第 i 行中，每个更大编号只列一次",
       "更大编号排除相同编号：没有自身配对",
     ],
-    diagram: "proof",
+    diagram: "",
     holdAfterSeconds: 5,
   },
   correct: {
@@ -83,20 +83,20 @@ export const lessonPages = {
     ids: ["D33", "D34"],
     lines: [
       "n=0 或 n=1：选不出两份不同输入，检查零对",
-      "代入公式也是零；负一不是选择数量",
+      "\\frac{0(0-1)}{2}=0，\\frac{1(1-1)}{2}=0；负一不是选择数量",
     ],
-    diagram: "small",
+    diagram: "",
     holdAfterSeconds: 5,
   },
   growth: {
     title: "输入增多，检查次数增长",
     ids: ["D35", "D36"],
     lines: [
-      "10 份：45 对",
-      "100 份：4950 对",
-      "1000 份：499500 对；即使全部不相交",
+      "10 份：\\frac{10\\times9}{2}=45 对",
+      "100 份：\\frac{100\\times99}{2}=4950 对",
+      "1000 份：\\frac{1000\\times999}{2}=499500 对；即使全部不相交",
     ],
-    diagram: "growth",
+    diagram: "",
     holdAfterSeconds: 5,
   },
   output: {
@@ -104,7 +104,7 @@ export const lessonPages = {
     ids: ["D37", "D38"],
     lines: [
       "n 份输入，每份都是 (0,0) 到 (4,0)",
-      "每对都相交：结果数也是 n(n-1) 除以 2",
+      "每对都相交：逐条输出 \\frac{n(n-1)}{2} 条结果",
     ],
     diagram: "output",
     holdAfterSeconds: 3,

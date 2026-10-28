@@ -30,7 +30,7 @@ export const lessonPages = {
       "1 与 2、2 与 1：同一个无序输入对",
       "取两份不同输入；排除输入与自身配对",
     ],
-    diagram: "pairs",
+    diagram: "",
     holdAfterSeconds: 3,
   },
   empty: {

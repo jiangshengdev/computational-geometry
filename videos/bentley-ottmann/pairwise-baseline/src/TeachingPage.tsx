@@ -49,7 +49,6 @@ export function TeachingPage({
         ))}
         visibleStep={visibleStep}
         activeStep={visibleStep}
-        diagramProgress={shot.page === "complete" ? shift : 1}
         diagram={
           lesson.diagram ? (
             <LessonDiagram
@@ -135,11 +134,16 @@ export function TeachingPage({
           >
             <div
               data-teaching-column
+              data-prior-content={visibleStep >= 3 || undefined}
               style={{
                 position: "absolute",
                 left: 480,
                 top: 50,
                 width: 760,
+                boxSizing: "border-box",
+                padding: "16px 26px",
+                borderLeft: `4px solid ${visibleStep >= 3 ? "#a4b3c4" : "transparent"}`,
+                background: visibleStep >= 3 ? "#edf1f6" : undefined,
                 transform: `translateX(${-400 * shift}px)`,
               }}
             >
