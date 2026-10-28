@@ -3,7 +3,7 @@ import { left, equals } from "../../../shared/math/math-lines.ts";
 export const pages = {
   ordered: {
     title: "先数有顺序的选择",
-    holdAfterSeconds: 5,
+    holdAfterSeconds: 2, // 推导密集页
     basis: [],
     lines: [
       { text: "n 表示原始输入的份数；四份时 n=4" },
@@ -16,7 +16,7 @@ export const pages = {
   },
   unordered: {
     title: "每个无序对恰好数了两次",
-    holdAfterSeconds: 5,
+    holdAfterSeconds: 2, // 推导密集页
     basis: [
       { from: "D24", math: "n\\ge2" },
       { from: "D26", math: "n(n-1)" },
@@ -30,7 +30,7 @@ export const pages = {
   },
   substitution: {
     title: "代入四份输入",
-    holdAfterSeconds: 5,
+    holdAfterSeconds: 2, // 推导密集页
     basis: [
       { from: "D28", math: "\\frac{n(n-1)}{2}" },
       { from: "D23", math: "n=4" },

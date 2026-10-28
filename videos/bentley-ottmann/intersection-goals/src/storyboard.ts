@@ -1,6 +1,6 @@
 export const pages = {
   opening: {
-    holdAfterSeconds: 5,
+    holdAfterSeconds: 1,
     lines: ["水平输入", "竖直输入", "原点输入", "同图提问"],
   },
 };

@@ -9,15 +9,15 @@
     },
     {
       "text": "第 1 份从 (-1,0) 到 (1,0)，",
-      "startMs": 1590,
-      "endMs": 7030,
+      "startMs": 1899,
+      "endMs": 7499,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "是一条经过原点的水平线段。",
-      "startMs": 7130,
-      "endMs": 9409,
+      "startMs": 7798,
+      "endMs": 9998,
       "timestampMs": null,
       "confidence": null
     }
@@ -26,14 +26,14 @@
     {
       "text": "第 2 份从 (0,-1) 到 (0,1)，",
       "startMs": 70,
-      "endMs": 5510,
+      "endMs": 5710,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "是一条经过原点的竖直线段。",
-      "startMs": 5590,
-      "endMs": 7949,
+      "startMs": 5928,
+      "endMs": 8128,
       "timestampMs": null,
       "confidence": null
     }
@@ -42,35 +42,35 @@
     {
       "text": "第 3 份的两个端点都是 (0,0)，",
       "startMs": 70,
-      "endMs": 3909,
+      "endMs": 3869,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它只包含原点这一个点。",
-      "startMs": 3990,
-      "endMs": 5830,
+      "startMs": 4078,
+      "endMs": 5918,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这仍然是一份独立输入，",
-      "startMs": 5930,
-      "endMs": 7610,
+      "startMs": 6369,
+      "endMs": 8089,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "菱形只是帮助我们认出它，",
-      "startMs": 7720,
-      "endMs": 9640,
+      "startMs": 8418,
+      "endMs": 10270,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不表示有面积。",
-      "startMs": 9760,
-      "endMs": 11080,
+      "startMs": 10438,
+      "endMs": 11670,
       "timestampMs": null,
       "confidence": null
     }
@@ -79,21 +79,21 @@
     {
       "text": "把它们放在一起，公共位置只有原点。",
       "startMs": 70,
-      "endMs": 2990,
+      "endMs": 3128,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "求交结果应该记几条？",
-      "startMs": 3080,
-      "endMs": 4920,
+      "startMs": 3569,
+      "endMs": 5169,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "先想一想，我们暂时不揭晓答案。",
-      "startMs": 5020,
-      "endMs": 7850,
+      "startMs": 5409,
+      "endMs": 8200,
       "timestampMs": null,
       "confidence": null
     }

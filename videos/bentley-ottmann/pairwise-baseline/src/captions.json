@@ -3,28 +3,28 @@
     {
       "text": "把原始输入的数量记作 n。",
       "startMs": 70,
-      "endMs": 2030,
+      "endMs": 1910,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "四份输入时，n 等于 4。",
-      "startMs": 2040,
-      "endMs": 4430,
+      "startMs": 2399,
+      "endMs": 4758,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "重合输入仍各算一份，",
-      "startMs": 4570,
-      "endMs": 6450,
+      "startMs": 5269,
+      "endMs": 7269,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "n 不是图中不同位置的数量。",
-      "startMs": 6600,
-      "endMs": 8799,
+      "startMs": 7469,
+      "endMs": 9429,
       "timestampMs": null,
       "confidence": null
     }
@@ -39,15 +39,15 @@
     },
     {
       "text": "为了计数，我们暂时把先选谁、后选谁区分开；",
-      "startMs": 2290,
-      "endMs": 6179,
+      "startMs": 2599,
+      "endMs": 6039,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这是计数办法，不是把无序输入对改成有方向的结果。",
-      "startMs": 6270,
-      "endMs": 10650,
+      "startMs": 6358,
+      "endMs": 10380,
       "timestampMs": null,
       "confidence": null
     }
@@ -56,21 +56,21 @@
     {
       "text": "第一份有 n 种选择。",
       "startMs": 70,
-      "endMs": 1750,
+      "endMs": 1710,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "选定之后，第二份不能与第一份相同，",
-      "startMs": 1840,
-      "endMs": 5080,
+      "startMs": 2149,
+      "endMs": 5629,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以有 n-1 种选择。",
-      "startMs": 5170,
-      "endMs": 7250,
+      "startMs": 5829,
+      "endMs": 7410,
       "timestampMs": null,
       "confidence": null
     }
@@ -79,21 +79,21 @@
     {
       "text": "每一种第一份的选择，",
       "startMs": 70,
-      "endMs": 1750,
+      "endMs": 1670,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "都对应 n-1 种第二份的选择，",
-      "startMs": 1840,
-      "endMs": 4199,
+      "startMs": 1670,
+      "endMs": 4070,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此有顺序的选择总数是 n(n-1)。",
-      "startMs": 4280,
-      "endMs": 7880,
+      "startMs": 4042,
+      "endMs": 7562,
       "timestampMs": null,
       "confidence": null
     }
@@ -102,35 +102,35 @@
     {
       "text": "同一个无序输入对被数了两次。",
       "startMs": 70,
-      "endMs": 2510,
+      "endMs": 2349,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "例如先选 1 再选 2，",
-      "startMs": 2590,
-      "endMs": 4230,
+      "startMs": 2749,
+      "endMs": 4589,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "和先选 2 再选 1。",
-      "startMs": 4330,
-      "endMs": 5780,
+      "startMs": 4589,
+      "endMs": 6310,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "任意两份不同输入都恰好有这两种顺序，",
-      "startMs": 5820,
-      "endMs": 8940,
+      "startMs": 6669,
+      "endMs": 9629,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "没有第三种。",
-      "startMs": 9060,
-      "endMs": 10180,
+      "startMs": 9709,
+      "endMs": 10630,
       "timestampMs": null,
       "confidence": null
     }
@@ -138,22 +138,22 @@
   "D28": [
     {
       "text": "因此，把有顺序的选择总数除以 2，",
-      "startMs": 40,
-      "endMs": 3166,
+      "startMs": 70,
+      "endMs": 2989,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就得到无序输入对的数量，",
-      "startMs": 3247,
-      "endMs": 5127,
+      "startMs": 3030,
+      "endMs": 5030,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是 \\dfrac{n(n-1)}{2}。",
-      "startMs": 5287,
-      "endMs": 9327,
+      "startMs": 4980,
+      "endMs": 8940,
       "timestampMs": null,
       "confidence": null
     }
@@ -162,14 +162,14 @@
     {
       "text": "前面已经证明基准方法恰好检查每个无序输入对一次，",
       "startMs": 70,
-      "endMs": 4350,
+      "endMs": 4110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以这个数也就是它的检查次数。",
-      "startMs": 4440,
-      "endMs": 6480,
+      "startMs": 4127,
+      "endMs": 6207,
       "timestampMs": null,
       "confidence": null
     }
@@ -178,21 +178,21 @@
     {
       "text": "代入四份输入。",
       "startMs": 70,
-      "endMs": 1390,
+      "endMs": 1430,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "先算四减一，得到三，",
-      "startMs": 1490,
-      "endMs": 3740,
+      "startMs": 1799,
+      "endMs": 3879,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "分子变成四乘三。",
-      "startMs": 3820,
-      "endMs": 5420,
+      "startMs": 3959,
+      "endMs": 5558,
       "timestampMs": null,
       "confidence": null
     }
@@ -201,7 +201,7 @@
     {
       "text": "四乘三等于十二，所以现在是十二除以二。",
       "startMs": 70,
-      "endMs": 3230,
+      "endMs": 3309,
       "timestampMs": null,
       "confidence": null
     }
@@ -210,21 +210,21 @@
     {
       "text": "十二除以二等于六，与前面逐行列出的六对一致。",
       "startMs": 70,
-      "endMs": 4029,
+      "endMs": 3909,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "公式没有替代枚举证明，",
-      "startMs": 4130,
-      "endMs": 6050,
+      "startMs": 4299,
+      "endMs": 6059,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "而是数出了同一批输入对。",
-      "startMs": 6170,
-      "endMs": 8210,
+      "startMs": 6059,
+      "endMs": 8018,
       "timestampMs": null,
       "confidence": null
     }
