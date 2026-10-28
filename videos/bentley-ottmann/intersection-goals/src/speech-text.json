@@ -1685,7 +1685,15 @@
       "text": "与",
       "pinyin": "yu3"
     },
-    " A ",
+    " ",
+    {
+      "breakMs": 20
+    },
+    "A",
+    {
+      "breakMs": 20
+    },
+    " ",
     {
       "text": "只",
       "pinyin": "zhi3"
@@ -3335,7 +3343,15 @@
       "text": "作",
       "pinyin": "zuo4"
     },
-    " L。",
+    " ",
+    {
+      "breakMs": 20
+    },
+    "L",
+    {
+      "breakMs": 20
+    },
+    "。",
     {
       "breakMs": 200
     },

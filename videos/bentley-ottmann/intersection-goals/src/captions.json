@@ -528,15 +528,15 @@
   "U19": [
     {
       "text": "另一条线段也可以从 (4,0) 到 (6,0)，",
-      "startMs": 110,
-      "endMs": 6510,
+      "startMs": 70,
+      "endMs": 6550,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "与 A 只在端点处接触。",
-      "startMs": 6728,
-      "endMs": 8608,
+      "startMs": 6778,
+      "endMs": 9132,
       "timestampMs": null,
       "confidence": null
     }
@@ -1011,28 +1011,28 @@
     {
       "text": "沿刚才的顺序，每条线段都有一个较前端点和一个较后端点。",
       "startMs": 70,
-      "endMs": 5247,
+      "endMs": 5058,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "在两个较前端点中，选更靠后的一个，",
-      "startMs": 5719,
-      "endMs": 8998,
+      "startMs": 5519,
+      "endMs": 8968,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "记作 L；",
-      "startMs": 9288,
-      "endMs": 10050,
+      "startMs": 9210,
+      "endMs": 11078,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "端点重合时就是同一个位置。",
-      "startMs": 10258,
-      "endMs": 12690,
+      "startMs": 10678,
+      "endMs": 13077,
       "timestampMs": null,
       "confidence": null
     }
