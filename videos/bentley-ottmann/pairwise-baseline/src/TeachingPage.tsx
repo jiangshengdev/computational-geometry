@@ -2,6 +2,7 @@ import { createTeachingMathLines } from "../../../shared/ui/TeachingMathLines";
 import { Subtitles } from "../../../shared/ui/Subtitles";
 import { MathText, Latex, colorMath } from "./MathText";
 import { pages } from "./storyboard";
+import { PairingDiagram, type PairingState } from "./PairingDiagram";
 
 const MathLines = createTeachingMathLines({
   pages,
@@ -22,11 +23,13 @@ export function TeachingPage({
   visibleStep,
   caption,
   shift = 0,
+  pairing,
 }: {
   shot: { page: string };
   visibleStep: number;
   caption: string;
   shift?: number;
+  pairing: PairingState;
 }) {
   const page = pages[shot.page as keyof typeof pages];
   return (
@@ -83,24 +86,25 @@ export function TeachingPage({
           position: "absolute",
           left: 100,
           right: 100,
-          top: page.basis.length ? 320 : 210,
+          top: page.basis.length ? 260 : 170,
           bottom: 136,
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "column",
+          justifyContent: "space-between",
           alignItems: "center",
         }}
       >
         {shot.page === "ordered" ? (
           <div
             data-main-column
-            style={{ position: "relative", width: "100%", height: 500 }}
+            style={{ position: "relative", width: "100%", height: 330 }}
           >
             <div
               data-teaching-column
               style={{
                 position: "absolute",
                 left: 480,
-                top: 120,
+                top: 50,
                 width: 760,
                 transform: `translateX(${-400 * shift}px)`,
               }}
@@ -123,7 +127,7 @@ export function TeachingPage({
             </div>
             <div
               data-teaching-column
-              style={{ position: "absolute", left: 940, top: 80, width: 780 }}
+              style={{ position: "absolute", left: 940, top: 20, width: 780 }}
             >
               {pages.ordered.lines.slice(2).map((line, i) => (
                 <div
@@ -152,22 +156,12 @@ export function TeachingPage({
             <MathLines pageId={shot.page} visibleStep={visibleStep} />
           </div>
         )}
-        {shot.page === "substitution" && (
-          <div
-            data-page-block
-            data-enumeration
-            style={{
-              position: "absolute",
-              bottom: 0,
-              fontSize: 30,
-              visibility: visibleStep >= 3 ? "visible" : "hidden",
-            }}
-          >
-            <MathText>
-              六对枚举：1 与 2、1 与 3、1 与 4；2 与 3、2 与 4；3 与 4
-            </MathText>
-          </div>
-        )}
+        <PairingDiagram
+          page={shot.page}
+          visibleStep={visibleStep}
+          state={pairing}
+          shift={shift}
+        />
       </main>
       <Subtitles pageBlock>
         <span data-caption-ink>

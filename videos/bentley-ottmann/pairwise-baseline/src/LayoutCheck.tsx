@@ -26,6 +26,34 @@ export const LayoutCheck = createShotLayoutCheck({
   auditPage(page, _pageId, visibleStep) {
     const errors: string[] = [];
     checkPageBounds(page, errors);
+    const diagram = page.querySelector<HTMLElement>("[data-pairing-diagram]");
+    if (diagram && getComputedStyle(diagram).visibility !== "hidden") {
+      const bounds = diagram.getBoundingClientRect();
+      for (const ink of page.querySelectorAll<HTMLElement>("[data-line-ink]")) {
+        if (getComputedStyle(ink).visibility === "hidden") continue;
+        const rect = ink.getBoundingClientRect();
+        if (
+          Math.min(rect.right, bounds.right) >
+            Math.max(rect.left, bounds.left) &&
+          Math.min(rect.bottom, bounds.bottom) > Math.max(rect.top, bounds.top)
+        )
+          errors.push("Pairing diagram overlaps teaching text");
+      }
+      for (const label of diagram.querySelectorAll<HTMLElement>(".katex")) {
+        if (
+          getComputedStyle(label).visibility !== "hidden" &&
+          !contains(bounds, label.getBoundingClientRect())
+        )
+          errors.push(`Pairing label overflow: ${label.textContent}`);
+        const cell = label.closest<HTMLElement>("[data-choice-cell]");
+        if (
+          cell &&
+          getComputedStyle(label).visibility !== "hidden" &&
+          !contains(cell.getBoundingClientRect(), label.getBoundingClientRect())
+        )
+          errors.push(`Choice cell overflow: ${label.textContent}`);
+      }
+    }
     const visibleInk: DOMRect[] = [];
     for (const column of page.querySelectorAll<HTMLElement>(
       "[data-teaching-column]",

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { ComponentType } from "react";
 import type { Caption } from "../speech/timing";
+import { MathTextSpacingCases, checkMathTextSpacing } from "./MathTextSpacing";
 type AuditRow = {
   id: string;
   page: string;
@@ -105,6 +106,11 @@ export function createShotLayoutCheck<R extends AuditRow>({
       void document.fonts.ready.then(() => {
         if (disposed || !root.current) return;
         const state = visualAt(row, frame);
+        if (index === 0)
+          results.current.push({
+            page: "MathText-spacing",
+            errors: checkMathTextSpacing(root.current),
+          });
         const errors = auditPage(
           root.current.querySelector<HTMLElement>("[data-layout-page]")!,
           row.page,
@@ -126,6 +132,7 @@ export function createShotLayoutCheck<R extends AuditRow>({
     }, [index, row, frame]);
     return (
       <div ref={root} style={{ width: 1920, height: 1080 }}>
+        <MathTextSpacingCases />
         <output data-layout-report hidden>
           {report === null ? "pending" : JSON.stringify(report)}
         </output>

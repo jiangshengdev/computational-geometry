@@ -1,13 +1,18 @@
 import { Subtitles } from "../../../shared/ui/Subtitles";
 import { MathText } from "./MathText";
 import { InputDiagram } from "./InputDiagram";
+import type { DiagramFocus } from "./timeline";
 
 export function TeachingPage({
   visibleStep,
   caption,
+  activeInput,
+  focus,
 }: {
   visibleStep: number;
   caption: string;
+  activeInput: number;
+  focus?: DiagramFocus;
 }) {
   return (
     <div
@@ -53,10 +58,22 @@ export function TeachingPage({
                 textAlign: "center",
               }}
             >
-              <div style={{ fontSize: 36 }}>
+              <div
+                style={{
+                  fontSize: 36,
+                  opacity:
+                    activeInput === input && focus?.target === "identity"
+                      ? 0.65 +
+                        0.35 * Math.cos(focus.progress * Math.PI * 4) ** 2
+                      : 1,
+                }}
+              >
                 <MathText>{`输入 ${input}`}</MathText>
               </div>
-              <InputDiagram inputs={[input]} />
+              <InputDiagram
+                inputs={[input]}
+                focus={activeInput === input ? focus : undefined}
+              />
               <div style={{ fontSize: 28 }}>
                 {input === 1
                   ? "水平线段"
@@ -75,7 +92,10 @@ export function TeachingPage({
             }}
           >
             <div style={{ fontSize: 36 }}>放在一起</div>
-            <InputDiagram inputs={[1, 2, 3]} />
+            <InputDiagram
+              inputs={[1, 2, 3]}
+              focus={activeInput === 4 ? focus : undefined}
+            />
             <div style={{ fontSize: 28 }}>保留三份输入的身份</div>
           </section>
         </div>

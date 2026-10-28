@@ -1,10 +1,20 @@
 import { useId } from "react";
 import { SvgMathText } from "./MathText";
+import type { DiagramFocus } from "./timeline";
 
 const colors = ["#2563a6", "#8a4e9f", "#b45309"];
 /** All four views use the same origin and 100 pixels per coordinate unit. */
-export function InputDiagram({ inputs }: { inputs: number[] }) {
+export function InputDiagram({
+  inputs,
+  focus,
+}: {
+  inputs: number[];
+  focus?: DiagramFocus;
+}) {
   const arrow = useId().replace(/:/g, "");
+  const vertical = inputs[0] === 2;
+  const pulse = focus ? Math.sin(Math.PI * focus.progress) ** 2 : 0;
+  const focusColor = colors[inputs.length === 1 ? inputs[0] - 1 : 2];
   return (
     <svg
       width={370}
@@ -64,6 +74,51 @@ export function InputDiagram({ inputs }: { inputs: number[] }) {
           stroke="#f6f8fb"
           strokeWidth={3}
         />
+      )}
+      {focus && focus.target !== "identity" && (
+        <g
+          fill="none"
+          stroke={focusColor}
+          opacity={pulse}
+          strokeWidth={3}
+          aria-hidden="true"
+        >
+          {focus.target === "segment" ? (
+            <line
+              x1={vertical ? 185 : 85}
+              y1={vertical ? 285 : 185}
+              x2={vertical ? 185 : 285}
+              y2={vertical ? 85 : 185}
+              pathLength={1}
+              strokeDasharray={1}
+              strokeDashoffset={1 - focus.progress}
+              strokeWidth={12}
+            />
+          ) : focus.target === "diamond" ? (
+            <path
+              d="M185 165 L205 185 L185 205 L165 185 Z"
+              strokeWidth={2 + 3 * Math.sin(focus.progress * Math.PI * 3) ** 2}
+            />
+          ) : (
+            <circle
+              cx={
+                focus.target === "origin" || vertical
+                  ? 185
+                  : focus.target === "start"
+                    ? 85
+                    : 285
+              }
+              cy={
+                focus.target === "origin" || !vertical
+                  ? 185
+                  : focus.target === "start"
+                    ? 285
+                    : 85
+              }
+              r={16 + 5 * Math.sin(focus.progress * Math.PI * 3) ** 2}
+            />
+          )}
+        </g>
       )}
       {inputs.length === 1 && inputs[0] === 1 && (
         <>

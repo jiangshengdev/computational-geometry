@@ -33,6 +33,7 @@ export function createMathText<Role extends string, Mark>(
     );
   };
 
+  // Keep mixed text in one inline flow, including inside flex/grid parents.
   // The notation used by this episode; Chinese prose stays in the Chinese font.
   const MathText = ({
     children,
@@ -46,7 +47,7 @@ export function createMathText<Role extends string, Mark>(
     const parts = String(children).split(notation.split);
     let number = 0;
     return (
-      <>
+      <span>
         {parts.map((part, i) => {
           const count = [...part.matchAll(/\d+(?:\.\d+)?/g)].length;
           const roles = numberRoles.slice(number, number + count);
@@ -84,7 +85,7 @@ export function createMathText<Role extends string, Mark>(
             part
           );
         })}
-      </>
+      </span>
     );
   };
 
