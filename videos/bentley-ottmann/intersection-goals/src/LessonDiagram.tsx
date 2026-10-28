@@ -78,14 +78,27 @@ export function LessonDiagram({
   if (kind === "points" && step >= 3)
     return (
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-        {plot("同点：两份输入都只有 (2,0)", [
-          segment([2, 0], [2, 0], purple, true),
-        ])}
-        {plot("完整交集：点 (2,0)", [segment([2, 0], [2, 0], orange)])}
-        {plot("异点：(2,0) 与 (5,0)", [
-          segment([2, 0], [2, 0], blue, true),
-          segment([5, 0], [5, 0], purple, true),
-        ])}
+        {plot(
+          "同点：两份输入都只有 (2,0)",
+          [segment([2, 0], [2, 0], purple, true)],
+          [{ point: [2, 0], text: "(2,0)" }],
+        )}
+        {plot(
+          "完整交集：点 (2,0)",
+          [segment([2, 0], [2, 0], orange)],
+          [{ point: [2, 0], text: "(2,0)" }],
+        )}
+        {plot(
+          "异点：(2,0) 与 (5,0)",
+          [
+            segment([2, 0], [2, 0], blue, true),
+            segment([5, 0], [5, 0], purple, true),
+          ],
+          [
+            { point: [2, 0], text: "(2,0)" },
+            { point: [5, 0], text: "(5,0)" },
+          ],
+        )}
         {plot("完整交集：空", [])}
       </div>
     );
@@ -142,7 +155,14 @@ export function LessonDiagram({
           ))}
         {kind === "repeated" &&
           step >= 2 &&
-          plot("每对的完整交集", [segment([0, 0], [4, 0], orange)])}
+          plot(
+            "每对的完整交集",
+            [segment([0, 0], [4, 0], orange)],
+            [
+              { point: [0, 0], text: "(0,0)" },
+              { point: [4, 0], text: "(4,0)" },
+            ],
+          )}
       </>
     );
   else if (kind === "answer")
@@ -181,11 +201,26 @@ export function LessonDiagram({
   else if (kind === "third")
     children = (
       <>
-        {plot("输入 A 与新输入 C", [base, segment([3, -1], [3, 1], orange)])}
-        {plot("输入 B 与新输入 C", [
-          segment([2, 0], [6, 0], purple),
-          segment([3, -1], [3, 1], orange),
-        ])}
+        {plot(
+          "输入 A 与新输入 C",
+          [base, segment([3, -1], [3, 1], orange)],
+          [
+            { point: [0, 0], text: "(0,0)" },
+            { point: [4, 0], text: "(4,0)" },
+            { point: [3, -1], text: "(3,-1)" },
+            { point: [3, 1], text: "(3,1)", above: true },
+          ],
+        )}
+        {plot(
+          "输入 B 与新输入 C",
+          [segment([2, 0], [6, 0], purple), segment([3, -1], [3, 1], orange)],
+          [
+            { point: [2, 0], text: "(2,0)" },
+            { point: [6, 0], text: "(6,0)" },
+            { point: [3, -1], text: "(3,-1)" },
+            { point: [3, 1], text: "(3,1)", above: true },
+          ],
+        )}
         {step >= 2 && (
           <>
             {plot(
