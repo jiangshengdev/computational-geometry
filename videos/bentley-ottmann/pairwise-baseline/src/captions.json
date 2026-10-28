@@ -478,28 +478,28 @@
     {
       "text": "同一对只能出现在较小编号 i 那一行。",
       "startMs": 70,
-      "endMs": 3230,
+      "endMs": 3070,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "到了较大编号 j 那一行，",
-      "startMs": 3649,
-      "endMs": 5529,
+      "startMs": 3449,
+      "endMs": 6345,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "只允许找比 j 更大的编号，",
-      "startMs": 5848,
-      "endMs": 7768,
+      "startMs": 6620,
+      "endMs": 9953,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不会回头找 i。",
-      "startMs": 8068,
-      "endMs": 9228,
+      "startMs": 10203,
+      "endMs": 11483,
       "timestampMs": null,
       "confidence": null
     }
@@ -508,35 +508,35 @@
     {
       "text": "而在编号 i 那一行，",
       "startMs": 70,
-      "endMs": 1670,
+      "endMs": 1630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "每个更大的编号只列一次，",
-      "startMs": 1878,
-      "endMs": 4078,
+      "startMs": 1978,
+      "endMs": 3978,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "j 也只出现一次。",
-      "startMs": 4348,
-      "endMs": 5548,
+      "startMs": 4498,
+      "endMs": 6405,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以这一对总共只检查一次，",
-      "startMs": 5989,
-      "endMs": 7989,
+      "startMs": 6836,
+      "endMs": 8795,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "行内和行间都不会重复。",
-      "startMs": 8288,
-      "endMs": 10368,
+      "startMs": 9085,
+      "endMs": 10925,
       "timestampMs": null,
       "confidence": null
     }
@@ -821,21 +821,21 @@
     {
       "text": "十二除以二等于六，与前面逐行列出的六对一致。",
       "startMs": 70,
-      "endMs": 4117,
+      "endMs": 4833,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "公式没有替代枚举证明，",
-      "startMs": 4569,
-      "endMs": 6409,
+      "startMs": 5274,
+      "endMs": 7154,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "而是数出了同一批输入对。",
-      "startMs": 6718,
-      "endMs": 8798,
+      "startMs": 7473,
+      "endMs": 9432,
       "timestampMs": null,
       "confidence": null
     }

@@ -1677,7 +1677,13 @@
       "text": "号",
       "pinyin": "hao4"
     },
+    {
+      "breakMs": 180
+    },
     " j ",
+    {
+      "breakMs": 180
+    },
     {
       "text": "那",
       "pinyin": "na4"
@@ -1698,7 +1704,13 @@
       "text": "只允许找比",
       "pinyin": "zhi3 yun2 xu3 zhao2 bi3"
     },
+    {
+      "breakMs": 180
+    },
     " j ",
+    {
+      "breakMs": 180
+    },
     {
       "text": "更",
       "pinyin": "geng4"
@@ -1795,7 +1807,13 @@
     {
       "breakMs": 200
     },
+    {
+      "breakMs": 180
+    },
     "j ",
+    {
+      "breakMs": 180
+    },
     {
       "text": "也只",
       "pinyin": "ye2 zhi3"
@@ -2857,11 +2875,14 @@
   "D32": [
     "十二除以二等于六。",
     {
-      "breakMs": 200
+      "breakMs": 400
     },
     {
       "text": "与",
       "pinyin": "yu3"
+    },
+    {
+      "breakMs": 180
     },
     "前面",
     {
