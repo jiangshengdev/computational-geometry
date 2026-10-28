@@ -1,4 +1,6 @@
 import { useId, type ReactNode } from "react";
+import { AttentionMarks } from "./AttentionMarks";
+import type { AttentionMark } from "../speech/teaching-cues";
 
 export type DiagramSegment = {
   start: [number, number];
@@ -11,10 +13,10 @@ export type DiagramSegment = {
 export function CoordinateDiagram({
   segments,
   labels = [],
-  pulse = 0,
   active = -1,
   xAxisEnd = 338,
   label,
+  attention,
 }: {
   segments: DiagramSegment[];
   labels?: {
@@ -23,10 +25,10 @@ export function CoordinateDiagram({
     above?: boolean;
     offsetY?: number;
   }[];
-  pulse?: number;
   active?: number | number[];
   xAxisEnd?: number;
   label: (x: number, y: number, text: string) => ReactNode;
+  attention?: { marks: AttentionMark[]; progress: number };
 }) {
   const id = useId().replace(/:/g, "");
   const x = (value: number) => 52 + 40 * value;
@@ -106,7 +108,7 @@ export function CoordinateDiagram({
                 r={13}
                 fill="none"
                 strokeWidth={3}
-                opacity={pulse}
+                opacity={1}
               />
             ) : (
               <line
@@ -115,11 +117,14 @@ export function CoordinateDiagram({
                 x2={x(segment.end[0])}
                 y2={y(segment.end[1])}
                 strokeWidth={12}
-                opacity={pulse * 0.4}
+                opacity={0.4}
               />
             ))}
         </g>
       ))}
+      {attention && (
+        <AttentionMarks {...attention} project={([px, py]) => [x(px), y(py)]} />
+      )}
       {labels.map(({ point, text, above, offsetY }, index) => (
         <g key={index}>
           {label(

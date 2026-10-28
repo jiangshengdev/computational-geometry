@@ -3,14 +3,16 @@ import captions from "./captions.json" with { type: "json" };
 import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
 import {
   phraseTime,
-  spokenWordPulse,
   type AudioTiming,
   type Caption,
 } from "../../../shared/speech/timing.ts";
 import { shots, pages } from "./storyboard.ts";
+import { createTeachingCues } from "../../../shared/speech/teaching-cues.ts";
+import { teachingCues } from "./teaching-cues.ts";
 export const fps = 60;
 export const audioLeadFrames = 12;
 const audio = timing as Record<string, AudioTiming>;
+export const lessonCues = createTeachingCues(audio, teachingCues);
 export type DiagramFocus = {
   target: "start" | "end" | "segment" | "origin" | "diamond" | "identity";
   progress: number;
@@ -79,7 +81,7 @@ export function visualAt(row: TimelineRow, frame: number) {
   );
   return {
     ...shared.visualAt(row, frame),
-    pulse: spokenWordPulse(audio[row.id], ms),
+    lessonFocus: lessonCues.at(row.id, ms),
     activeInput: row.step,
     focus: cue
       ? {

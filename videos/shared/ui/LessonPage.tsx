@@ -7,7 +7,6 @@ export function LessonPage({
   lines,
   visibleStep,
   activeStep,
-  pulse,
   diagram,
   diagramProgress = 1,
   caption,
@@ -16,7 +15,6 @@ export function LessonPage({
   lines: ReactNode[];
   visibleStep: number;
   activeStep: number;
-  pulse: number;
   diagram?: ReactNode;
   diagramProgress?: number;
   caption: ReactNode;
@@ -77,11 +75,9 @@ export function LessonPage({
                 padding: "14px 18px",
                 fontSize: 34,
                 lineHeight: 1.7,
-                borderLeft: `5px solid ${index + 1 === activeStep ? `rgba(180,83,9,${0.35 + 0.65 * pulse})` : "transparent"}`,
+                borderLeft: `5px solid ${index + 1 === activeStep ? "#b45309" : "transparent"}`,
                 background:
-                  index + 1 === activeStep
-                    ? `rgba(180,83,9,${0.035 + pulse * 0.045})`
-                    : undefined,
+                  index + 1 === activeStep ? "rgba(180,83,9,0.08)" : undefined,
               }}
             >
               <span data-line-ink>{line}</span>

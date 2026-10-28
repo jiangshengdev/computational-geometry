@@ -23,6 +23,7 @@ export function createShotLayoutCheck<R extends AuditRow>({
   captions: cues,
   SceneAtFrame,
   auditPage,
+  extraFrames,
 }: {
   rows: R[];
   visualAt: (row: R, frame: number) => Visual;
@@ -30,6 +31,7 @@ export function createShotLayoutCheck<R extends AuditRow>({
   audioLeadFrames: number;
   captions: Record<string, Caption[]>;
   SceneAtFrame: ComponentType<{ row: R; frame: number }>;
+  extraFrames?: (row: R) => number[];
   auditPage: (
     page: HTMLElement,
     pageId: string,
@@ -53,6 +55,7 @@ export function createShotLayoutCheck<R extends AuditRow>({
       reveal,
       endSpeech,
       row.durationInFrames - 1,
+      ...(extraFrames?.(row) ?? []),
     ]);
     for (const stage of row.stages) {
       const frame = audioLeadFrames + Math.ceil((stage.ms * fps) / 1000);
@@ -91,6 +94,17 @@ export function createShotLayoutCheck<R extends AuditRow>({
       const frame = audioLeadFrames + Math.ceil((cue.startMs * fps) / 1000);
       frames.add(Math.max(0, frame - 1));
       frames.add(frame);
+    }
+    const requestedFrame = query.get("auditFrame");
+    if (requestedFrame !== null) {
+      const frame = Number(requestedFrame);
+      if (
+        !Number.isInteger(frame) ||
+        frame < 0 ||
+        frame >= row.durationInFrames
+      )
+        throw Error("Invalid auditFrame");
+      return [{ row, frame }];
     }
     return [...frames].sort((a, b) => a - b).map((frame) => ({ row, frame }));
   });

@@ -6,6 +6,7 @@ import { PairingDiagram, type PairingState } from "./PairingDiagram";
 import { LessonPage } from "../../../shared/ui/LessonPage";
 import { lessonPages } from "./continuation";
 import { LessonDiagram } from "./LessonDiagram";
+import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
 
 const MathLines = createTeachingMathLines({
   pages,
@@ -27,16 +28,16 @@ export function TeachingPage({
   caption,
   shift = 0,
   pairing,
-  pulse = 0,
   activeInputs = [],
+  lessonFocus,
 }: {
   shot: { page: string };
   visibleStep: number;
   caption: string;
   shift?: number;
   pairing: PairingState;
-  pulse?: number;
   activeInputs?: number[];
+  lessonFocus?: TeachingFocus;
 }) {
   if (shot.page in lessonPages) {
     const lesson = lessonPages[shot.page as keyof typeof lessonPages];
@@ -48,7 +49,6 @@ export function TeachingPage({
         ))}
         visibleStep={visibleStep}
         activeStep={visibleStep}
-        pulse={pulse}
         diagramProgress={shot.page === "complete" ? shift : 1}
         diagram={
           lesson.diagram ? (
@@ -56,8 +56,8 @@ export function TeachingPage({
               page={shot.page}
               kind={lesson.diagram}
               step={visibleStep}
-              pulse={pulse}
               activeInputs={activeInputs}
+              focus={lessonFocus}
             />
           ) : undefined
         }

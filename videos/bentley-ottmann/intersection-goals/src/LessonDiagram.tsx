@@ -4,6 +4,8 @@ import {
 } from "../../../shared/ui/CoordinateDiagram";
 import { MathText, SvgMathText } from "./MathText";
 import { InputDiagram } from "./InputDiagram";
+import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
+import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
 
 const blue = "#2563a6",
   purple = "#8a4e9f",
@@ -18,24 +20,38 @@ const base = segment([0, 0], [4, 0]);
 function Plot({
   title,
   segments,
-  pulse,
   labels = [],
+  focus,
 }: {
   title: string;
   segments: DiagramSegment[];
-  pulse: number;
   labels?: { point: [number, number]; text: string; above?: boolean }[];
+  focus?: TeachingFocus;
 }) {
   return (
-    <div style={{ width: 380, textAlign: "center" }}>
+    <div
+      data-focus-panel={title}
+      style={{
+        width: 380,
+        textAlign: "center",
+        outline:
+          focus?.active && focus.keys?.includes(title)
+            ? "3px solid #b45309"
+            : undefined,
+        outlineOffset: 4,
+      }}
+    >
       <div style={{ fontSize: 26 }}>
         <MathText>{title}</MathText>
       </div>
       <CoordinateDiagram
         segments={segments}
         labels={labels}
-        pulse={pulse}
-        active={segments.length - 1}
+        attention={
+          focus?.active && focus.panels?.[title]
+            ? { marks: focus.panels[title], progress: focus.progress }
+            : undefined
+        }
         label={(x, y, text) => (
           <SvgMathText x={x} y={y} align="center" fontSize={20}>
             {text}
@@ -48,18 +64,28 @@ function Plot({
 export function LessonDiagram({
   kind,
   step,
-  pulse,
+  focus,
 }: {
   kind: string;
   step: number;
-  pulse: number;
+  focus?: TeachingFocus;
 }) {
   if (!kind || !step) return null;
+  const attention = (panel: string) =>
+    focus?.active && focus.panels?.[panel]
+      ? { marks: focus.panels[panel], progress: focus.progress }
+      : undefined;
+  const selected = (key: string) => focus?.active && focus.keys?.includes(key);
+  const selectStyle = (key: string) => ({
+    outline: selected(key) ? "3px solid #b45309" : undefined,
+    outlineOffset: 4,
+    background: selected(key) ? "#fff4e8" : undefined,
+  });
   const plot = (
     title: string,
     segments: DiagramSegment[],
     labels: { point: [number, number]; text: string; above?: boolean }[] = [],
-  ) => <Plot title={title} segments={segments} labels={labels} pulse={pulse} />;
+  ) => <Plot title={title} segments={segments} labels={labels} focus={focus} />;
   if (kind === "points" && step >= 3)
     return (
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
@@ -133,10 +159,16 @@ export function LessonDiagram({
   else if (kind === "pairs")
     children = (
       <div style={{ fontSize: 38, lineHeight: 2.5, textAlign: "center" }}>
-        <MathText>{"1 与 2 ⇄ 2 与 1"}</MathText>
+        <span style={selectStyle("pair12")}>
+          <MathText>{"1 与 2"}</MathText>
+        </span>
+        <span> ⇄ </span>
+        <span style={selectStyle("pair21")}>
+          <MathText>{"2 与 1"}</MathText>
+        </span>
         <div>同一个无序对</div>
         {step >= 2 && (
-          <div>
+          <div style={selectStyle("self")}>
             <MathText>{"1 与 1：排除自身配对"}</MathText>
           </div>
         )}
@@ -146,7 +178,14 @@ export function LessonDiagram({
     children = (
       <>
         {[1, 2, 3, 4].map((input) => (
-          <div key={input} style={{ width: 380, textAlign: "center" }}>
+          <div
+            key={input}
+            style={{
+              width: 380,
+              textAlign: "center",
+              ...selectStyle(input === 4 ? "同一坐标系" : `输入 ${input}`),
+            }}
+          >
             <div style={{ fontSize: 26 }}>
               <MathText>
                 {input === 4 ? "同一坐标系" : `输入 ${input}`}
@@ -155,11 +194,9 @@ export function LessonDiagram({
             <InputDiagram
               inputs={input === 4 ? [1, 2, 3] : [input]}
               size={300}
-              focus={
-                pulse > 0 && (step === 1 || input === 4)
-                  ? { target: "origin", progress: pulse / 2 }
-                  : undefined
-              }
+              attention={attention(
+                input === 4 ? "同一坐标系" : `输入 ${input}`,
+              )}
             />
           </div>
         ))}
@@ -168,14 +205,11 @@ export function LessonDiagram({
   else if (kind === "records")
     children = (
       <div style={{ margin: "0 auto", textAlign: "center" }}>
-        <InputDiagram
-          inputs={[1, 2, 3]}
-          focus={
-            pulse > 0 ? { target: "origin", progress: pulse / 2 } : undefined
-          }
-        />
+        <InputDiagram inputs={[1, 2, 3]} attention={attention("records")} />
         {kind === "records" && (
-          <div style={{ fontSize: 30 }}>一个位置，三条结果</div>
+          <div style={{ fontSize: 30, ...selectStyle("records") }}>
+            一个位置，三条结果
+          </div>
         )}
       </div>
     );
@@ -346,21 +380,18 @@ export function LessonDiagram({
                 x2={510}
                 y2={y}
                 strokeWidth={14}
-                opacity={kind === "bounds" && step < 3 ? 0 : pulse * 0.4}
+                opacity={
+                  kind === "bounds" &&
+                  (step < 3 || !focus?.reached.includes("interval"))
+                    ? 0
+                    : 0.4
+                }
               />
-              {kind === "bounds" && step <= 2 && (
-                <circle
-                  cx={step === 1 ? a : b}
-                  cy={y}
-                  r={15}
-                  fill="none"
-                  strokeWidth={3}
-                  opacity={pulse}
-                />
-              )}
             </g>
           ))}
-          {(kind === "converse" || step >= 1) && (
+          {(kind === "converse" ||
+            step > 1 ||
+            focus?.reached.includes("L")) && (
             <>
               <line
                 x1={240}
@@ -375,7 +406,9 @@ export function LessonDiagram({
               </SvgMathText>
             </>
           )}
-          {(kind === "converse" || step >= 2) && (
+          {(kind === "converse" ||
+            step > 2 ||
+            focus?.reached.includes("R")) && (
             <>
               <line
                 x1={510}
@@ -400,6 +433,7 @@ export function LessonDiagram({
               strokeWidth={7}
             />
           )}
+          {attention("bounds") && <AttentionMarks {...attention("bounds")!} />}
         </svg>
         <div style={{ fontSize: 24, textAlign: "center" }}>
           一维坐标范围投影；分行只用于比较范围

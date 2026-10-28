@@ -1,21 +1,29 @@
 import { useId } from "react";
 import { SvgMathText } from "./MathText";
 import type { DiagramFocus } from "./timeline";
+import {
+  AttentionMarks,
+  sampleAttention,
+} from "../../../shared/ui/AttentionMarks";
+import type { AttentionMark } from "../../../shared/speech/teaching-cues";
 
 const colors = ["#2563a6", "#8a4e9f", "#b45309"];
 /** All four views use the same origin and 100 pixels per coordinate unit. */
 export function InputDiagram({
   inputs,
   focus,
+  animateFocus = false,
   size = 370,
+  attention,
 }: {
   inputs: number[];
   focus?: DiagramFocus;
+  animateFocus?: boolean;
   size?: number;
+  attention?: { marks: AttentionMark[]; progress: number };
 }) {
   const arrow = useId().replace(/:/g, "");
   const vertical = inputs[0] === 2;
-  const pulse = focus ? Math.sin(Math.PI * focus.progress) ** 2 : 0;
   const focusColor = colors[inputs.length === 1 ? inputs[0] - 1 : 2];
   return (
     <svg
@@ -81,7 +89,7 @@ export function InputDiagram({
         <g
           fill="none"
           stroke={focusColor}
-          opacity={pulse}
+          opacity={animateFocus ? sampleAttention(focus.progress).opacity : 1}
           strokeWidth={3}
           aria-hidden="true"
         >
@@ -93,13 +101,20 @@ export function InputDiagram({
               y2={vertical ? 85 : 185}
               pathLength={1}
               strokeDasharray={1}
-              strokeDashoffset={1 - focus.progress}
+              strokeDashoffset={
+                1 -
+                (animateFocus
+                  ? focus.progress
+                  : Math.min(1, focus.progress / 0.2))
+              }
               strokeWidth={12}
             />
           ) : focus.target === "diamond" ? (
             <path
               d="M185 165 L205 185 L185 205 L165 185 Z"
-              strokeWidth={2 + 3 * Math.sin(focus.progress * Math.PI * 3) ** 2}
+              strokeWidth={
+                animateFocus ? sampleAttention(focus.progress).diamondWidth : 5
+              }
             />
           ) : (
             <circle
@@ -117,10 +132,16 @@ export function InputDiagram({
                     ? 285
                     : 85
               }
-              r={16 + 5 * Math.sin(focus.progress * Math.PI * 3) ** 2}
+              r={animateFocus ? sampleAttention(focus.progress).radius : 18}
             />
           )}
         </g>
+      )}
+      {attention && (
+        <AttentionMarks
+          {...attention}
+          project={([x, y]) => [185 + 100 * x, 185 - 100 * y]}
+        />
       )}
       {inputs.length === 1 && inputs[0] === 1 && (
         <>

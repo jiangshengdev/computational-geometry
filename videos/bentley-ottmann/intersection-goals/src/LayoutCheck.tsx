@@ -8,6 +8,7 @@ import {
   visualAt,
   fps,
   audioLeadFrames,
+  lessonCues,
   type TimelineRow,
 } from "./timeline";
 import { TeachingPage } from "./TeachingPage";
@@ -22,6 +23,12 @@ export const LayoutCheck = createShotLayoutCheck({
   audioLeadFrames,
   captions,
   SceneAtFrame,
+  extraFrames: (row) =>
+    (lessonCues.timings[row.id] ?? []).flatMap(({ start, end }) =>
+      [start, start + (end - start) * 0.25, (start + end) / 2, end].map(
+        (ms) => audioLeadFrames + Math.ceil((ms * fps) / 1000),
+      ),
+    ),
   auditPage(page, pageId, visibleStep) {
     const errors: string[] = [];
     checkPageBounds(page, errors);

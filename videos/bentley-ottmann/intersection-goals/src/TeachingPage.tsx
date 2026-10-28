@@ -5,6 +5,7 @@ import type { DiagramFocus } from "./timeline";
 import { LessonPage } from "../../../shared/ui/LessonPage";
 import { lessonPages } from "./continuation";
 import { LessonDiagram } from "./LessonDiagram";
+import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
 
 export function TeachingPage({
   visibleStep,
@@ -12,14 +13,14 @@ export function TeachingPage({
   activeInput,
   focus,
   shot,
-  pulse = 0,
+  lessonFocus,
 }: {
   visibleStep: number;
   caption: string;
   activeInput: number;
   focus?: DiagramFocus;
   shot: { page: string };
-  pulse?: number;
+  lessonFocus?: TeachingFocus;
 }) {
   if (shot.page !== "opening") {
     const page = lessonPages[shot.page as keyof typeof lessonPages];
@@ -31,13 +32,12 @@ export function TeachingPage({
         ))}
         visibleStep={visibleStep}
         activeStep={visibleStep}
-        pulse={pulse}
         diagram={
           page.diagram ? (
             <LessonDiagram
               kind={page.diagram}
               step={visibleStep}
-              pulse={pulse}
+              focus={lessonFocus}
             />
           ) : undefined
         }
@@ -102,6 +102,7 @@ export function TeachingPage({
                 <MathText>{`输入 ${input}`}</MathText>
               </div>
               <InputDiagram
+                animateFocus
                 inputs={[input]}
                 focus={activeInput === input ? focus : undefined}
               />
@@ -124,6 +125,7 @@ export function TeachingPage({
           >
             <div style={{ fontSize: 36 }}>放在一起</div>
             <InputDiagram
+              animateFocus
               inputs={[1, 2, 3]}
               focus={activeInput === 4 ? focus : undefined}
             />

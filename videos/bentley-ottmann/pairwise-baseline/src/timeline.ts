@@ -3,14 +3,16 @@ import captions from "./captions.json" with { type: "json" };
 import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
 import {
   phraseTime,
-  spokenWordPulse,
   type AudioTiming,
   type Caption,
 } from "../../../shared/speech/timing.ts";
 import { shots, pages } from "./storyboard.ts";
+import { createTeachingCues } from "../../../shared/speech/teaching-cues.ts";
+import { teachingCues } from "./teaching-cues.ts";
 export const fps = 60;
 export const audioLeadFrames = 12;
 const audio = timing as Record<string, AudioTiming>;
+export const lessonCues = createTeachingCues(audio, teachingCues);
 const inputCues: Record<string, [string, number[]][]> = {
   D01: [
     ["第一份", [0]],
@@ -173,11 +175,11 @@ export function visualAt(row: TimelineRow, frame: number) {
     : 0;
   return {
     ...shared.visualAt(row, frame),
+    lessonFocus: lessonCues.at(row.id, ms),
     activeInputs: (inputTimings[row.id] ?? []).reduce(
       (last, cue) => (ms >= cue.start ? cue.inputs : last),
       [] as number[],
     ),
-    pulse: spokenWordPulse(audio[row.id], ms),
     pairing: {
       selection: row.id === "D25" ? progress : 1,
       first:
