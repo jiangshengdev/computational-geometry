@@ -56,8 +56,15 @@ const shared = createShotTimeline({
   audioLeadFrames,
 });
 export function timelineFor() {
-  return shared.timelineFor().map((row) => ({
+  return shared.timelineFor().map((row, index, rows) => ({
     ...row,
+    previousLessonFocus:
+      rows[index - 1]?.page === row.page
+        ? lessonCues.at(
+            rows[index - 1].id,
+            audio[rows[index - 1].id].duration * 1000,
+          )
+        : undefined,
     stages:
       row.id === "U46"
         ? [
@@ -81,7 +88,8 @@ export function visualAt(row: TimelineRow, frame: number) {
   );
   return {
     ...shared.visualAt(row, frame),
-    lessonFocus: lessonCues.at(row.id, ms),
+    // Keep introduced objects during the next shot's lead-in on the same page.
+    lessonFocus: lessonCues.at(row.id, ms) ?? row.previousLessonFocus,
     activeInput: row.step,
     focus: cue
       ? {
