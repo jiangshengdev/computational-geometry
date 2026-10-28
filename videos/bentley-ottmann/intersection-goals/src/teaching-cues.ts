@@ -423,7 +423,7 @@ export const teachingCues: Record<string, TeachingCue[]> = {
     },
     { phrase: "第三份只有原点", panels: { "输入 3": [p(0, 0)] } },
     { phrase: "这个点也在第一份输入上", panels: { "输入 1": [p(0, 0)] } },
-    { phrase: "这一对的完整交集也是原点", panels: { 同一坐标系: [p(0, 0)] } },
+    { phrase: "这一对的完整交集就是原点", panels: { 同一坐标系: [p(0, 0)] } },
   ],
   U45: [
     {

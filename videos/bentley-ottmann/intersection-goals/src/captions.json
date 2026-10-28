@@ -1286,28 +1286,28 @@
     {
       "text": "再看 1 与 3。",
       "startMs": 70,
-      "endMs": 1270,
+      "endMs": 1230,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "第 3 份只有原点，",
-      "startMs": 1649,
-      "endMs": 3209,
+      "startMs": 1599,
+      "endMs": 3079,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这个点也在第 1 份输入上，",
-      "startMs": 3498,
-      "endMs": 5298,
+      "startMs": 3398,
+      "endMs": 5198,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "所以这一对的完整交集也是原点。",
-      "startMs": 5568,
-      "endMs": 8008,
+      "text": "所以这一对的完整交集就是原点。",
+      "startMs": 5518,
+      "endMs": 7877,
       "timestampMs": null,
       "confidence": null
     }
