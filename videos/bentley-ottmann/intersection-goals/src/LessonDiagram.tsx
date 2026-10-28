@@ -34,11 +34,6 @@ function Plot({
       style={{
         width: 380,
         textAlign: "center",
-        outline:
-          focus?.active && focus.keys?.includes(title)
-            ? "3px solid #b45309"
-            : undefined,
-        outlineOffset: 4,
       }}
     >
       <div style={{ fontSize: 26 }}>
@@ -75,12 +70,6 @@ export function LessonDiagram({
     focus?.active && focus.panels?.[panel]
       ? { marks: focus.panels[panel], progress: focus.progress }
       : undefined;
-  const selected = (key: string) => focus?.active && focus.keys?.includes(key);
-  const selectStyle = (key: string) => ({
-    outline: selected(key) ? "3px solid #b45309" : undefined,
-    outlineOffset: 4,
-    background: selected(key) ? "#fff4e8" : undefined,
-  });
   const plot = (
     title: string,
     segments: DiagramSegment[],
@@ -165,7 +154,6 @@ export function LessonDiagram({
             style={{
               width: 380,
               textAlign: "center",
-              ...selectStyle(input === 4 ? "同一坐标系" : `输入 ${input}`),
             }}
           >
             <div style={{ fontSize: 26 }}>

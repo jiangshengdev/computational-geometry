@@ -28,7 +28,6 @@ export function TeachingPage({
   caption,
   shift = 0,
   pairing,
-  activeInputs = [],
   lessonFocus,
 }: {
   shot: { page: string };
@@ -36,7 +35,6 @@ export function TeachingPage({
   caption: string;
   shift?: number;
   pairing: PairingState;
-  activeInputs?: number[];
   lessonFocus?: TeachingFocus;
 }) {
   if (shot.page in lessonPages) {
@@ -55,7 +53,6 @@ export function TeachingPage({
               page={shot.page}
               kind={lesson.diagram}
               step={visibleStep}
-              activeInputs={activeInputs}
               focus={lessonFocus}
             />
           ) : undefined

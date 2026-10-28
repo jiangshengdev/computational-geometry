@@ -11,10 +11,15 @@ export function AttentionMarks({
   marks,
   progress,
   project = (p) => p,
+  color = "#b45309",
+  scale = 1,
 }: {
   marks: AttentionMark[];
   progress: number;
   project?: (point: [number, number]) => [number, number];
+  color?: string;
+  /** Total diagram scale relative to the lesson's logical canvas. */
+  scale?: number;
 }) {
   return (
     <g
@@ -31,9 +36,9 @@ export function AttentionMarks({
               key={index}
               cx={x}
               cy={y}
-              r={sampleAttention(progress).radius}
-              stroke={mark.color ?? "#b45309"}
-              strokeWidth={3}
+              r={sampleAttention(progress).radius / scale}
+              stroke={mark.color ?? color}
+              strokeWidth={3 / scale}
             />
           );
         const [x2, y2] = project(mark.to);
@@ -44,8 +49,8 @@ export function AttentionMarks({
             y1={y}
             x2={x2}
             y2={y2}
-            stroke={mark.color ?? "#b45309"}
-            strokeWidth={12}
+            stroke={mark.color ?? color}
+            strokeWidth={12 / scale}
             pathLength={1}
             strokeDasharray={1}
             strokeDashoffset={1 - progress}

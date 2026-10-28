@@ -140,6 +140,8 @@ export function InputDiagram({
       {attention && (
         <AttentionMarks
           {...attention}
+          color={focusColor}
+          scale={size / 370}
           project={([x, y]) => [185 + 100 * x, 185 - 100 * y]}
         />
       )}

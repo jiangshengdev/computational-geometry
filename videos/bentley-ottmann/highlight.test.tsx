@@ -25,7 +25,6 @@ test("body emphasis stays steady while diagrams follow semantic cues", () => {
         const state = episode.visualAt(row as never, frame);
         const key = JSON.stringify([
           state.visibleStep,
-          "activeInputs" in state ? state.activeInputs : [],
           "shift" in state ? state.shift : 0,
         ]);
         const props = { ...state, shot: row, caption: "" };
@@ -41,6 +40,11 @@ test("body emphasis stays steady while diagrams follow semantic cues", () => {
           .split('<section data-main-column="true"')[1]
           ?.split("</section>")[0];
         assert.ok(body, `${row.id}: production teaching column exists`);
+        assert.doesNotMatch(
+          html,
+          /outline:|outline-offset:/,
+          `${row.id}: no whole-diagram emphasis`,
+        );
         const previous = states.get(key);
         if (previous !== undefined)
           assert.equal(
@@ -79,12 +83,11 @@ test("every authored phrase resolves to a visible production cue, then stops", (
           Object.keys(cue.panels ?? {}).length,
           `${id}: ${cue.phrase} must reach every named panel`,
         );
-        if (cue.keys?.length)
-          assert.match(
-            html,
-            /outline:3px solid #b45309/,
-            `${id}: ${cue.phrase} must select a visible object`,
-          );
+        assert.doesNotMatch(
+          html,
+          /outline:|outline-offset:/,
+          `${id}: ${cue.phrase} must not frame the diagram`,
+        );
       }
       assert.equal(
         episode.lessonCues.at(id, cues[cues.length - 1].end + 1)?.active,
@@ -194,4 +197,102 @@ test("ordered selection retains all four highlights and pair merging", () => {
     previous = current;
   }
   assert.equal(previous, 1);
+});
+
+test("later endpoint cues preserve sample size and input color across scales", () => {
+  for (const progress of [0.2, 0.5, 0.8]) {
+    const sample = renderToStaticMarkup(
+      <InputDiagram
+        inputs={[1]}
+        animateFocus
+        focus={{ target: "start", progress }}
+      />,
+    );
+    const radius = Number(
+      [...sample.matchAll(/<circle[^>]* r="([^"]+)"/g)].at(-1)![1],
+    );
+    const row = lower.timelineFor().find((row) => row.id === "D01")!;
+    for (const [index, cue] of lower.lessonCues.timings.D01.entries()) {
+      const state = lower.visualAt(
+        row,
+        lower.audioLeadFrames +
+          ((cue.start + (cue.end - cue.start) * progress) * lower.fps) / 1000,
+      );
+      const html = renderToStaticMarkup(<LowerPage {...state} shot={row} />);
+      const mark = html
+        .split('data-attention-marks="true"')[1]
+        .split("</g>")[0];
+      assert.ok(
+        Math.abs(Number(mark.match(/ r="([^"]+)"/)![1]) * 1.4 - radius) < 1e-9,
+      );
+      assert.ok(
+        Math.abs(Number(mark.match(/stroke-width="([^"]+)"/)![1]) * 1.4 - 3) <
+          1e-9,
+      );
+      assert.ok(mark.includes(`stroke="${index < 2 ? "#2563a6" : "#8a4e9f"}"`));
+    }
+    const small = renderToStaticMarkup(
+      <InputDiagram
+        inputs={[2]}
+        size={300}
+        attention={{ marks: [{ kind: "point", at: [0, 1] }], progress }}
+      />,
+    );
+    const mark = small.split('data-attention-marks="true"')[1];
+    assert.ok(
+      Math.abs((Number(mark.match(/ r="([^"]+)"/)![1]) * 300) / 370 - radius) <
+        1e-9,
+    );
+    assert.match(mark, /stroke="#8a4e9f"/);
+  }
+});
+
+test("pairing follows the spoken input and stops without persistent emphasis", () => {
+  const row = lower.timelineFor().find((row) => row.id === "D08")!;
+  const htmlAt = (ms: number) =>
+    renderToStaticMarkup(
+      <LowerPage
+        {...lower.visualAt(
+          row,
+          lower.audioLeadFrames + (ms * lower.fps) / 1000,
+        )}
+        shot={row}
+      />,
+    );
+  const cues = lower.lessonCues.timings.D08;
+  for (const [index, color] of ["#2563a6", "#b45309", "#23765a"].entries()) {
+    const cue = cues[index];
+    for (const progress of [0.25, 0.75]) {
+      const html = htmlAt(cue.start + (cue.end - cue.start) * progress);
+      const mark = html
+        .split('data-attention-marks="true"')[1]
+        .split("</g>")[0];
+      assert.equal((mark.match(/<line /g) ?? []).length, 1);
+      assert.ok(mark.includes(`stroke="${color}"`));
+      assert.ok(
+        Math.abs(
+          Number(mark.match(/stroke-dashoffset="([^"]+)"/)![1]) -
+            (1 - progress),
+        ) < 1e-9,
+      );
+      assert.doesNotMatch(html, /opacity="0.4"/);
+    }
+  }
+  assert.doesNotMatch(
+    htmlAt(cues.at(-1)!.end + 1),
+    /data-attention-marks|opacity="0.4"/,
+  );
+  const output = lower.timelineFor().find((row) => row.id === "D37")!;
+  const end = lower.lessonCues.timings.D37.at(-1)!.end + 1;
+  const html = renderToStaticMarkup(
+    <LowerPage
+      {...lower.visualAt(
+        output,
+        lower.audioLeadFrames + (end * lower.fps) / 1000,
+      )}
+      shot={output}
+    />,
+  );
+  assert.doesNotMatch(html, /outline:|data-attention-marks/);
+  assert.match(html, /border-left:5px solid #b45309/);
 });

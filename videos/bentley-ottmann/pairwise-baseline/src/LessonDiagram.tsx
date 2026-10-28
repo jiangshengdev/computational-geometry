@@ -9,32 +9,21 @@ export function LessonDiagram({
   kind,
   step,
   page,
-  activeInputs,
   focus,
 }: {
   kind: string;
   step: number;
   page: string;
-  activeInputs: number[];
   focus?: TeachingFocus;
 }) {
   if (!step) return null;
-  const selectStyle = (key: string) => ({
-    outline:
-      focus?.active && focus.keys?.includes(key)
-        ? "3px solid #b45309"
-        : undefined,
-    outlineOffset: 3,
-    background:
-      focus?.active && focus.keys?.includes(key) ? "#fff4e8" : undefined,
-  });
   if (["inputs", "enumerate", "six", "output"].includes(kind)) {
     const count =
       kind === "output" ? 3 : page === "opening" && step < 2 ? 2 : 4;
     const plot = (segments: DiagramSegment[], panel = "inputs") => (
       <CoordinateDiagram
         segments={segments}
-        active={kind === "output" ? -1 : activeInputs}
+        attentionScale={kind === "output" ? 1 : 1.4}
         attention={
           focus?.active && focus.panels?.[panel]
             ? { marks: focus.panels[panel], progress: focus.progress }
@@ -74,7 +63,6 @@ export function LessonDiagram({
                   style={{
                     gridColumn: i === 2 ? "1 / -1" : undefined,
                     justifySelf: "center",
-                    ...selectStyle(`output${i + 1}`),
                   }}
                 >
                   <div style={{ fontSize: 26 }}>

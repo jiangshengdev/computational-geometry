@@ -13,7 +13,7 @@ export type DiagramSegment = {
 export function CoordinateDiagram({
   segments,
   labels = [],
-  active = -1,
+  attentionScale = 1,
   xAxisEnd = 338,
   label,
   attention,
@@ -25,7 +25,7 @@ export function CoordinateDiagram({
     above?: boolean;
     offsetY?: number;
   }[];
-  active?: number | number[];
+  attentionScale?: number;
   xAxisEnd?: number;
   label: (x: number, y: number, text: string) => ReactNode;
   attention?: { marks: AttentionMark[]; progress: number };
@@ -97,33 +97,15 @@ export function CoordinateDiagram({
               )}
             </>
           )}
-          {(Array.isArray(active)
-            ? active.includes(index)
-            : active === index) &&
-            (segment.start[0] === segment.end[0] &&
-            segment.start[1] === segment.end[1] ? (
-              <circle
-                cx={x(segment.start[0])}
-                cy={y(segment.start[1])}
-                r={13}
-                fill="none"
-                strokeWidth={3}
-                opacity={1}
-              />
-            ) : (
-              <line
-                x1={x(segment.start[0])}
-                y1={y(segment.start[1])}
-                x2={x(segment.end[0])}
-                y2={y(segment.end[1])}
-                strokeWidth={12}
-                opacity={0.4}
-              />
-            ))}
         </g>
       ))}
       {attention && (
-        <AttentionMarks {...attention} project={([px, py]) => [x(px), y(py)]} />
+        <AttentionMarks
+          {...attention}
+          color={segments.length === 1 ? segments[0].color : undefined}
+          scale={attentionScale}
+          project={([px, py]) => [x(px), y(py)]}
+        />
       )}
       {labels.map(({ point, text, above, offsetY }, index) => (
         <g key={index}>

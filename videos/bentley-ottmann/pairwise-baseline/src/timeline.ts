@@ -13,68 +13,12 @@ export const fps = 60;
 export const audioLeadFrames = 12;
 const audio = timing as Record<string, AudioTiming>;
 export const lessonCues = createTeachingCues(audio, teachingCues);
-const inputCues: Record<string, [string, number[]][]> = {
-  D01: [
-    ["第一份", [0]],
-    ["第二份", [1]],
-  ],
-  D02: [
-    ["第三份", [2]],
-    ["第四份", [3]],
-    ["四条线段在不同高度", [0, 1, 2, 3]],
-  ],
-  D03: [["每条线段各自所在的高度不同", [0, 1, 2, 3]]],
-  D07: [
-    ["先取输入一", [0]],
-    ["与输入二配对", [0, 1]],
-  ],
-  D08: [
-    ["仍然取输入一", [0]],
-    ["再与输入三", [0, 2]],
-    ["输入四配对", [0, 3]],
-    ["一与二", [0, 1]],
-    ["一与三", [0, 2]],
-    ["一与四", [0, 3]],
-  ],
-  D09: [
-    ["轮到输入二", [1]],
-    ["所以检查二与三", [1, 2]],
-    ["二与四", [1, 3]],
-    ["不要再回头", []],
-  ],
-  D10: [
-    ["输入三只与输入四配对", [2, 3]],
-    ["到了输入四", [3]],
-  ],
-  D12: [
-    ["一与二", [0, 1]],
-    ["一与三", [0, 2]],
-    ["一与四", [0, 3]],
-    ["零与一", [0, 1]],
-    ["零与二", [0, 2]],
-    ["零与三", [0, 3]],
-  ],
-  D13: [
-    ["二与三", [1, 2]],
-    ["二与四", [1, 3]],
-    ["三与四", [2, 3]],
-  ],
-};
 const animationPhrases: Record<string, string> = {
   D25: "选定之后",
   D26: "每一种第一份的选择。都对应 n 减一 种第二份的选择",
   D27: "任意两份不同输入都恰好有这两种顺序",
   D32: "十二除以二等于六",
 };
-const inputTimings = Object.fromEntries(
-  Object.entries(inputCues).map(([id, cues]) => [
-    id,
-    cues.map(([phrase, inputs]) => ({
-      start: phraseTime(audio[id], phrase, "start"),
-      inputs,
-    })),
-  ]),
-);
 const animations = Object.fromEntries(
   Object.entries(animationPhrases).map(([id, phrase]) => [
     id,
@@ -176,10 +120,6 @@ export function visualAt(row: TimelineRow, frame: number) {
   return {
     ...shared.visualAt(row, frame),
     lessonFocus: lessonCues.at(row.id, ms),
-    activeInputs: (inputTimings[row.id] ?? []).reduce(
-      (last, cue) => (ms >= cue.start ? cue.inputs : last),
-      [] as number[],
-    ),
     pairing: {
       selection: row.id === "D25" ? progress : 1,
       first:
