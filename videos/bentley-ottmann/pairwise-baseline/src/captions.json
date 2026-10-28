@@ -79,21 +79,21 @@
     {
       "text": "每一种第一份的选择，",
       "startMs": 70,
-      "endMs": 1710,
+      "endMs": 1670,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "都对应 n-1 种第二份的选择，",
-      "startMs": 1928,
-      "endMs": 4368,
+      "startMs": 1878,
+      "endMs": 4157,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此有顺序的选择总数是 n(n-1)。",
-      "startMs": 4648,
-      "endMs": 8208,
+      "startMs": 4448,
+      "endMs": 10328,
       "timestampMs": null,
       "confidence": null
     }
@@ -139,21 +139,21 @@
     {
       "text": "因此，把有顺序的选择总数除以 2，",
       "startMs": 40,
-      "endMs": 3224,
+      "endMs": 3184,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就得到无序输入对的数量，",
-      "startMs": 3515,
-      "endMs": 5435,
+      "startMs": 3465,
+      "endMs": 5345,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就是 n(n − 1) 除以 2。",
-      "startMs": 5735,
-      "endMs": 9775,
+      "startMs": 5635,
+      "endMs": 11395,
       "timestampMs": null,
       "confidence": null
     }

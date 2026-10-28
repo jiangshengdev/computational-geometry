@@ -335,7 +335,7 @@
     {
       "breakMs": 200
     },
-    "因此有顺序",
+    "因此要算出有顺序",
     {
       "text": "的",
       "pinyin": "de5"
@@ -348,12 +348,11 @@
       "text": "总数",
       "pinyin": "zong3 shu4"
     },
-    "是 n ",
     {
-      "text": "乘",
-      "pinyin": "cheng2"
+      "text": "可以",
+      "pinyin": "ke2 yi3"
     },
-    "以 n ",
+    "先求 n ",
     {
       "text": "与",
       "pinyin": "yu3"
@@ -365,6 +364,20 @@
     {
       "text": "的",
       "pinyin": "de5"
+    },
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "再用 n ",
+    {
+      "text": "乘",
+      "pinyin": "cheng2"
+    },
+    "以",
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
     },
     {
       "text": "差",
@@ -527,12 +540,7 @@
     {
       "breakMs": 200
     },
-    "也就是用 n ",
-    {
-      "text": "乘",
-      "pinyin": "cheng2"
-    },
-    "以 n ",
+    "也就是先求 n ",
     {
       "text": "与",
       "pinyin": "yu3"
@@ -549,7 +557,21 @@
       "text": "差",
       "pinyin": "cha1"
     },
-    "再",
+    "再用 n ",
+    {
+      "text": "乘",
+      "pinyin": "cheng2"
+    },
+    "以",
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    {
+      "text": "差",
+      "pinyin": "cha1"
+    },
+    "最后",
     {
       "text": "把所得",
       "pinyin": "ba2 suo3 de2"
