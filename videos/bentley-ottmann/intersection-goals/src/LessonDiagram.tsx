@@ -273,7 +273,16 @@ export function LessonDiagram({
             ],
           )}
         {showResult &&
-          plot(empty ? "完整交集：空" : "完整交集", empty ? [] : [result])}
+          plot(
+            empty ? "完整交集：空" : "完整交集",
+            empty ? [] : [result],
+            empty
+              ? []
+              : (kind === "overlap"
+                  ? [result.start, result.end]
+                  : [result.start]
+                ).map((point) => ({ point, text: `(${point.join(",")})` })),
+          )}
       </>
     );
   } else if (kind === "common")
