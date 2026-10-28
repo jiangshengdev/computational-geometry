@@ -1,0 +1,17 @@
+{
+  "extends": "./intersection-goals/tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es2022"],
+    "typeRoots": ["./intersection-goals/node_modules/@types"],
+    "paths": {
+      "react": ["./intersection-goals/node_modules/@types/react"],
+      "react/*": ["./intersection-goals/node_modules/@types/react/*"],
+      "react-dom/*": ["./intersection-goals/node_modules/@types/react-dom/*"],
+      "katex": ["./intersection-goals/node_modules/@types/katex"],
+      "microsoft-cognitiveservices-speech-sdk": [
+        "./intersection-goals/node_modules/microsoft-cognitiveservices-speech-sdk"
+      ]
+    }
+  },
+  "include": ["highlight.test.tsx", "run-tests.ts"]
+}

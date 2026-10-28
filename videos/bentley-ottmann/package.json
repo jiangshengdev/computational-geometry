@@ -1,0 +1,9 @@
+{
+  "name": "bentley-ottmann-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "pnpm --dir intersection-goals --config.verify-deps-before-run=false exec tsc -p ../tsconfig.json",
+    "test": "pnpm --config.verify-deps-before-run=false run typecheck && pnpm --dir intersection-goals --config.verify-deps-before-run=false exec node ../run-tests.ts"
+  }
+}
