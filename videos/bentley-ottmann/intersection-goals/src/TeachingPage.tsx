@@ -2,18 +2,49 @@ import { Subtitles } from "../../../shared/ui/Subtitles";
 import { MathText } from "./MathText";
 import { InputDiagram } from "./InputDiagram";
 import type { DiagramFocus } from "./timeline";
+import { LessonPage } from "../../../shared/ui/LessonPage";
+import { lessonPages } from "./continuation";
+import { LessonDiagram } from "./LessonDiagram";
 
 export function TeachingPage({
   visibleStep,
   caption,
   activeInput,
   focus,
+  shot,
+  pulse = 0,
 }: {
   visibleStep: number;
   caption: string;
   activeInput: number;
   focus?: DiagramFocus;
+  shot: { page: string };
+  pulse?: number;
 }) {
+  if (shot.page !== "opening") {
+    const page = lessonPages[shot.page as keyof typeof lessonPages];
+    return (
+      <LessonPage
+        title={page.title}
+        lines={page.lines.map((line) => (
+          <MathText key={line}>{line}</MathText>
+        ))}
+        visibleStep={visibleStep}
+        activeStep={visibleStep}
+        pulse={pulse}
+        diagram={
+          page.diagram ? (
+            <LessonDiagram
+              kind={page.diagram}
+              step={visibleStep}
+              pulse={pulse}
+            />
+          ) : undefined
+        }
+        caption={<MathText>{caption}</MathText>}
+      />
+    );
+  }
   return (
     <div
       data-production-page

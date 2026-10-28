@@ -97,5 +97,1410 @@
       "timestampMs": null,
       "confidence": null
     }
+  ],
+  "U05": [
+    {
+      "text": "先把输入说清楚。",
+      "startMs": 70,
+      "endMs": 1400,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在换一个例子：从 (0,0) 到 (4,0) 的线段，",
+      "startMs": 1699,
+      "endMs": 7899,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "包含两端之间所有的点，",
+      "startMs": 8198,
+      "endMs": 11077,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也包含两个端点。",
+      "startMs": 11368,
+      "endMs": 12768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这样的线段叫闭线段。",
+      "startMs": 13209,
+      "endMs": 15129,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U06": [
+    {
+      "text": "线段有范围，直线则向两端无限延伸。",
+      "startMs": 70,
+      "endMs": 3608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点 (5,0) 虽在这条线段的延长线上，",
+      "startMs": 4069,
+      "endMs": 8629,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "却不在线段上。",
+      "startMs": 8918,
+      "endMs": 10118,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U07": [
+    {
+      "text": "两个端点也可以相同。",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "端点都是 (2,0) 时，",
+      "startMs": 2199,
+      "endMs": 6180,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "输入只包含这一个点，",
+      "startMs": 6348,
+      "endMs": 8028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "长度为零。",
+      "startMs": 8318,
+      "endMs": 9358,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们也接受这样的输入。",
+      "startMs": 9859,
+      "endMs": 11459,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U08": [
+    {
+      "text": "给每份输入一个编号，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "编号只表示身份，不表示长短或位置。",
+      "startMs": 2028,
+      "endMs": 5528,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个新例子中，",
+      "startMs": 5989,
+      "endMs": 7229,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第 1 份和第 2 份的端点都是 (0,0) 与 (4,0)。",
+      "startMs": 7588,
+      "endMs": 15268,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U09": [
+    {
+      "text": "第 3 份的端点写成 (4,0) 与 (0,0)。",
+      "startMs": 70,
+      "endMs": 6670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "书写顺序倒过来，包含的点没有改变，",
+      "startMs": 7049,
+      "endMs": 10078,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段本身没有因此获得方向。",
+      "startMs": 10368,
+      "endMs": 12647,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U10": [
+    {
+      "text": "三份输入占据完全相同的位置，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但仍然有三个身份，不能因为画出来重合就删成一份。",
+      "startMs": 2878,
+      "endMs": 6977,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分栏只是分别展示，没有把它们移到不同位置。",
+      "startMs": 7439,
+      "endMs": 11118,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U11": [
+    {
+      "text": "取出编号 1 和编号 2，",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "叫作输入对 1 与 2。",
+      "startMs": 2078,
+      "endMs": 3678,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交换检查顺序，公共部分不会改变，",
+      "startMs": 4119,
+      "endMs": 7378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以 2 与 1 是同一对，",
+      "startMs": 7688,
+      "endMs": 9128,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这叫无序输入对。",
+      "startMs": 9408,
+      "endMs": 10848,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U12": [
+    {
+      "text": "我们只取两份不同的输入，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不检查一份输入与它自身。",
+      "startMs": 2178,
+      "endMs": 4098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "几何相同的两份输入可以配成一对，",
+      "startMs": 4569,
+      "endMs": 7328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同一份输入却不能与自己配对。",
+      "startMs": 7618,
+      "endMs": 10098,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U13": [
+    {
+      "text": "两条线段都包含的点，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "合起来叫它们的交集。",
+      "startMs": 2128,
+      "endMs": 3690,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来固定线段 A，",
+      "startMs": 4019,
+      "endMs": 5659,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "从 (0,0) 到 (4,0)；",
+      "startMs": 6018,
+      "endMs": 11018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用 y 表示纵坐标，",
+      "startMs": 11288,
+      "endMs": 12928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它上面的点满足 y=0，",
+      "startMs": 13208,
+      "endMs": 15368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标从 0 到 4，",
+      "startMs": 15628,
+      "endMs": 17348,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "包含两端。",
+      "startMs": 17648,
+      "endMs": 18608,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U14": [
+    {
+      "text": "另一条线段从 (0,1) 到 (4,1)，",
+      "startMs": 110,
+      "endMs": 6030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "上面的点满足 y=1。",
+      "startMs": 6228,
+      "endMs": 8900,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一个点的纵坐标不能同时等于 0 和 1，",
+      "startMs": 8910,
+      "endMs": 11740,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以没有公共点，交集为空。",
+      "startMs": 11918,
+      "endMs": 14868,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U15": [
+    {
+      "text": "右栏只展示完整交集，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "灰色细线是坐标轴，不是输入或结果。",
+      "startMs": 2328,
+      "endMs": 5940,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这一对已经检查过，但空交集不产生求交结果记录。",
+      "startMs": 6289,
+      "endMs": 10738,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U16": [
+    {
+      "text": "现在把另一份输入换成从 (2,-1) 到 (2,1) 的竖直线段。",
+      "startMs": 70,
+      "endMs": 8149,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用 x 表示横坐标，",
+      "startMs": 8549,
+      "endMs": 10229,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它上面的点都满足 x=2。",
+      "startMs": 10548,
+      "endMs": 12907,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U17": [
+    {
+      "text": "公共点还必须在线段 A 上，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以纵坐标是 0。",
+      "startMs": 2428,
+      "endMs": 3988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个条件只留下一个候选点 (2,0)。",
+      "startMs": 4469,
+      "endMs": 8749,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U18": [
+    {
+      "text": "横坐标 2 在 A 的范围内，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标 0 也在竖直线段的范围内。",
+      "startMs": 2278,
+      "endMs": 4997,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此它确实同时属于两条线段，",
+      "startMs": 5469,
+      "endMs": 8868,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集恰好是点 (2,0)。",
+      "startMs": 9168,
+      "endMs": 12487,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U19": [
+    {
+      "text": "另一条线段也可以从 (4,0) 到 (6,0)，",
+      "startMs": 110,
+      "endMs": 6510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与 A 只在端点处接触。",
+      "startMs": 6728,
+      "endMs": 8608,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U20": [
+    {
+      "text": "公共点的横坐标既不能超过 4，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又不能小于 4，只能等于 4。",
+      "startMs": 2628,
+      "endMs": 5358,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条闭线段都包含这个端点，",
+      "startMs": 5789,
+      "endMs": 8148,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以交集是点 (4,0)。",
+      "startMs": 8438,
+      "endMs": 11638,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U21": [
+    {
+      "text": "如果另一份输入只有点 (2,0)，",
+      "startMs": 70,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个点在 A 上，所以交集就是它。",
+      "startMs": 4128,
+      "endMs": 7030,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U22": [
+    {
+      "text": "如果只有点 (5,0)，",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它超出了 A 的范围，",
+      "startMs": 3078,
+      "endMs": 4518,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集为空。",
+      "startMs": 4798,
+      "endMs": 5758,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍在同一条直线上，不等于仍在线段上。",
+      "startMs": 6189,
+      "endMs": 9618,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U23": [
+    {
+      "text": "两份点输入只有在位置相同时才有公共点，",
+      "startMs": 70,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "位置不同时交集为空。",
+      "startMs": 3778,
+      "endMs": 5498,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每份输入只有一个点，",
+      "startMs": 5969,
+      "endMs": 7649,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不可能交出一整段。",
+      "startMs": 7968,
+      "endMs": 9368,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U24": [
+    {
+      "text": "再换成线段 B，从 (2,0) 到 (6,0)。",
+      "startMs": 70,
+      "endMs": 6528,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它和 A 都在横轴上。",
+      "startMs": 7019,
+      "endMs": 8619,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公共点必须同时满足 A 和 B 的横坐标范围。",
+      "startMs": 9089,
+      "endMs": 12488,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U25": [
+    {
+      "text": "B 要求横坐标至少为 2，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 要求横坐标至多为 4。",
+      "startMs": 2328,
+      "endMs": 4528,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此，每个公共点都在 2 到 4 之间，",
+      "startMs": 4970,
+      "endMs": 8935,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是第一个方向。",
+      "startMs": 9205,
+      "endMs": 10405,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U26": [
+    {
+      "text": "反过来，任取一个在 2 到 4 之间的数，",
+      "startMs": 70,
+      "endMs": 3207,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它既在 0 到 4 之间，",
+      "startMs": 3498,
+      "endMs": 5098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也在 2 到 6 之间。",
+      "startMs": 5368,
+      "endMs": 6728,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此对应的点 (x,0) 同时属于 A 和 B。",
+      "startMs": 7159,
+      "endMs": 12559,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U27": [
+    {
+      "text": "两个方向合起来，",
+      "startMs": 70,
+      "endMs": 1270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集恰好是从 (2,0) 到 (4,0) 的完整闭区间，",
+      "startMs": 1528,
+      "endMs": 8568,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "长度是 2。",
+      "startMs": 8848,
+      "endMs": 9808,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个端点用来描述整段公共部分，",
+      "startMs": 10239,
+      "endMs": 12759,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间的点 (3,0) 也属于交集，",
+      "startMs": 13088,
+      "endMs": 16940,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能只报告两个端点。",
+      "startMs": 17108,
+      "endMs": 18868,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U28": [
+    {
+      "text": "现在加入线段 C，从 (3,-1) 到 (3,1)。",
+      "startMs": 70,
+      "endMs": 6728,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它满足 x=3，与 A、B 的公共点都只能是 (3,0)；",
+      "startMs": 7169,
+      "endMs": 14828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个点在三条线段各自的范围内。",
+      "startMs": 15088,
+      "endMs": 17768,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U29": [
+    {
+      "text": "A 与 C、B 与 C 是另外两对输入，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们分别产生点结果。",
+      "startMs": 2878,
+      "endMs": 4598,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 与 B 包含哪些点没有改变，",
+      "startMs": 5109,
+      "endMs": 7348,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以原来的完整重叠区间也没有改变，",
+      "startMs": 7668,
+      "endMs": 10308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能在 (3,0) 处拆成两条结果。",
+      "startMs": 10588,
+      "endMs": 14570,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U30": [
+    {
+      "text": "这些例子展示了空、点和非零长度区间，",
+      "startMs": 70,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但例子本身不是一般证明。",
+      "startMs": 3678,
+      "endMs": 5478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为什么两条闭线段不可能交出两段分开的公共部分？",
+      "startMs": 5969,
+      "endMs": 9449,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U31": [
+    {
+      "text": "先看长度为零的情况。",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只要一份输入只有一个点，",
+      "startMs": 2399,
+      "endMs": 4039,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集只能为空或是这个点，",
+      "startMs": 4348,
+      "endMs": 6228,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不可能有更多公共点。",
+      "startMs": 6518,
+      "endMs": 7998,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U32": [
+    {
+      "text": "接下来，两条线段长度都不为零。",
+      "startMs": 70,
+      "endMs": 2858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有公共点时交集为空，",
+      "startMs": 3319,
+      "endMs": 5479,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "恰好一个公共点时是点交集。",
+      "startMs": 5818,
+      "endMs": 8018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "剩下只需要说明：有两个不同公共点时会怎样。",
+      "startMs": 8459,
+      "endMs": 12099,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U33": [
+    {
+      "text": "把两个不同的公共点叫作 P 和 Q。",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个不同的点确定一条直线。",
+      "startMs": 3199,
+      "endMs": 5399,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条线段所在的直线都经过 P 和 Q，",
+      "startMs": 5869,
+      "endMs": 8909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以它们必定在同一条直线上。",
+      "startMs": 9218,
+      "endMs": 11418,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U34": [
+    {
+      "text": "如果共同直线不竖直，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就按横坐标从小到大排列点。",
+      "startMs": 2028,
+      "endMs": 4267,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在这条直线上，一个横坐标只对应一个点；",
+      "startMs": 4719,
+      "endMs": 8448,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段包含两个端点之间每个横坐标对应的点。",
+      "startMs": 8738,
+      "endMs": 12577,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U35": [
+    {
+      "text": "如果共同直线竖直，就改按纵坐标从小到大排列，",
+      "startMs": 70,
+      "endMs": 4468,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每个纵坐标也只对应一个点，",
+      "startMs": 4748,
+      "endMs": 7147,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段同样包含端点之间全部的点。",
+      "startMs": 7418,
+      "endMs": 10297,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以竖直情况没有被排除。",
+      "startMs": 10759,
+      "endMs": 12839,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U36": [
+    {
+      "text": "沿刚才的顺序，每条线段都有一个较前端点和一个较后端点。",
+      "startMs": 70,
+      "endMs": 5247,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在两个较前端点中，选更靠后的一个，",
+      "startMs": 5719,
+      "endMs": 8998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 L；",
+      "startMs": 9288,
+      "endMs": 10050,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "端点重合时就是同一个位置。",
+      "startMs": 10258,
+      "endMs": 12690,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U37": [
+    {
+      "text": "在两个较后端点中，选更靠前的一个，",
+      "startMs": 70,
+      "endMs": 3530,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 R。",
+      "startMs": 3630,
+      "endMs": 5536,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里的前后只按坐标顺序比较，",
+      "startMs": 5296,
+      "endMs": 7856,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不由输入端点的书写顺序决定。",
+      "startMs": 8145,
+      "endMs": 10345,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U38": [
+    {
+      "text": "任何公共点都不能在 L 前面，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "否则会在某条线段的起始范围之外；",
+      "startMs": 2578,
+      "endMs": 5018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不能在 R 后面，",
+      "startMs": 5298,
+      "endMs": 6658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "否则会越过某条线段的结束范围。",
+      "startMs": 6918,
+      "endMs": 9478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此，所有公共点都在 L 到 R 之间。",
+      "startMs": 9960,
+      "endMs": 13405,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U39": [
+    {
+      "text": "反过来，L 到 R 之间的每个点，",
+      "startMs": 70,
+      "endMs": 2728,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都不早于两条线段各自较前的端点，",
+      "startMs": 2998,
+      "endMs": 5958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不晚于各自较后的端点，",
+      "startMs": 6218,
+      "endMs": 8338,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此同时属于两条线段。",
+      "startMs": 8638,
+      "endMs": 10798,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U40": [
+    {
+      "text": "我们已经知道有 P 和 Q 两个不同的公共点，",
+      "startMs": 70,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们都必须在 L 到 R 之间。",
+      "startMs": 3278,
+      "endMs": 5318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果 L 与 R 重合，",
+      "startMs": 5769,
+      "endMs": 7369,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就至多容纳一个点；",
+      "startMs": 7668,
+      "endMs": 9068,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果顺序颠倒，就没有点。",
+      "startMs": 9338,
+      "endMs": 11878,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此 L 必定在 R 前面。",
+      "startMs": 12349,
+      "endMs": 14349,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U41": [
+    {
+      "text": "公共部分恰好是从 L 到 R 的完整非零长度闭区间，",
+      "startMs": 70,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "包含两端，中间不能断开。",
+      "startMs": 4478,
+      "endMs": 6948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结合前面的情况，闭线段交集只有空、点和非零长度区间三类。",
+      "startMs": 7389,
+      "endMs": 12768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "怎样从任意端点算出交集，",
+      "startMs": 13229,
+      "endMs": 15429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "留到第 3 章。",
+      "startMs": 15728,
+      "endMs": 16888,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U42": [
+    {
+      "text": "回到开场：输入 1 是经过原点的水平线段，",
+      "startMs": 70,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "输入 2 是经过原点的竖直线段，",
+      "startMs": 4078,
+      "endMs": 6598,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "输入 3 只包含原点。",
+      "startMs": 6898,
+      "endMs": 8658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在请按输入对判断，",
+      "startMs": 9089,
+      "endMs": 10969,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "应该留下哪些结果？",
+      "startMs": 11288,
+      "endMs": 12720,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U43": [
+    {
+      "text": "先看 1 与 2。",
+      "startMs": 70,
+      "endMs": 1230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公共点必须同时满足 x=0 和 y=0，",
+      "startMs": 1599,
+      "endMs": 5199,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而原点在两条线段的端点范围内，",
+      "startMs": 5498,
+      "endMs": 8257,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这一对的完整交集是原点。",
+      "startMs": 8518,
+      "endMs": 10877,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U44": [
+    {
+      "text": "再看 1 与 3。",
+      "startMs": 70,
+      "endMs": 1270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第 3 份只有原点，",
+      "startMs": 1649,
+      "endMs": 3209,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个点也在第 1 份输入上，",
+      "startMs": 3498,
+      "endMs": 5298,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这一对的完整交集也是原点。",
+      "startMs": 5568,
+      "endMs": 8008,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U45": [
+    {
+      "text": "最后看 2 与 3。",
+      "startMs": 70,
+      "endMs": 1310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "原点也在第 2 份输入上，",
+      "startMs": 1739,
+      "endMs": 3658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这一对仍然留下一个点结果。",
+      "startMs": 3948,
+      "endMs": 6220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "三对身份不同，不能因为位置相同而合并。",
+      "startMs": 6589,
+      "endMs": 10058,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U46": [
+    {
+      "text": "这里只有一个相交位置，",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "却有三对相交输入，因此要保留三条结果。",
+      "startMs": 1928,
+      "endMs": 5708,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果只写原点，就丢掉了哪些输入彼此相交的信息。",
+      "startMs": 6189,
+      "endMs": 10720,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U47": [
+    {
+      "text": "还记得三份重合输入吗？",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们都占据从 (0,0) 到 (4,0) 的线段，",
+      "startMs": 1950,
+      "endMs": 8270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其中一份只是把端点顺序倒过来。",
+      "startMs": 8478,
+      "endMs": 10717,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这三份也有三个不同的无序输入对。",
+      "startMs": 11169,
+      "endMs": 13649,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U48": [
+    {
+      "text": "每对包含的点完全相同，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以每一对的交集都是从 (0,0) 到 (4,0) 的完整区间。",
+      "startMs": 2228,
+      "endMs": 9828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "几何重合没有取消任何输入的身份。",
+      "startMs": 10269,
+      "endMs": 12909,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U49": [
+    {
+      "text": "现在可以准确说出目标：",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "找出原始输入中所有交集非空的无序输入对。",
+      "startMs": 1910,
+      "endMs": 5670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U50": [
+    {
+      "text": "为每一对保留一条结果，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同时记录是哪一对输入，",
+      "startMs": 2228,
+      "endMs": 4108,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以及它们的完整交集。",
+      "startMs": 4398,
+      "endMs": 6080,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U51": [
+    {
+      "text": "这个交集可能是一个点，",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也可能是一段完整的非零长度重叠区间。",
+      "startMs": 1878,
+      "endMs": 4757,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "空交集不留结果，重叠区间不被第三条线段拆开。",
+      "startMs": 5219,
+      "endMs": 9798,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "U52": [
+    {
+      "text": "知道了求什么，下一步是怎样把每一对都检查一遍。",
+      "startMs": 70,
+      "endMs": 3878,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下集从四条互不相交的线段出发：",
+      "startMs": 4319,
+      "endMs": 7158,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有结果，还要做多少检查？",
+      "startMs": 7158,
+      "endMs": 9700,
+      "timestampMs": null,
+      "confidence": null
+    }
   ]
 }

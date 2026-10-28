@@ -13,7 +13,7 @@ function ShotScene({ row }: { row: TimelineRow }) {
   const frame = useCurrentFrame();
   return (
     <>
-      <TeachingPage {...visualAt(row, frame)} />
+      <TeachingPage shot={row} {...visualAt(row, frame)} />
       <Sequence from={audioLeadFrames}>
         <Audio
           src={staticFile(`narration/${narrationFile(row.id, audio[row.id])}`)}
@@ -22,7 +22,7 @@ function ShotScene({ row }: { row: TimelineRow }) {
     </>
   );
 }
-export function SampleVideo() {
+export function LessonVideo() {
   return (
     <>
       {timelineFor().map((row) => (

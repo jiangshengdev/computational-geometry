@@ -33,6 +33,19 @@ export type Caption = {
   confidence: null;
 };
 
+/** A local emphasis envelope bounded by the currently spoken, measured word. */
+export function spokenWordPulse(audio: AudioTiming, ms: number): number {
+  const word = audio.words.find(
+    (word) =>
+      word.durationMs > 0 &&
+      ms >= word.startMs &&
+      ms < word.startMs + word.durationMs,
+  );
+  return word
+    ? Math.sin((Math.PI * (ms - word.startMs)) / word.durationMs) ** 2
+    : 0;
+}
+
 // Azure spells Latin letters in uppercase regardless of source casing.
 // Fold only ASCII case for comparison; preserve source offsets and service data.
 export const speechComparisonText = (text: string) =>

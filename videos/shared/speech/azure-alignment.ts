@@ -70,9 +70,28 @@ export function createAlignmentTools(
         throw Error("Overlapping alignment words");
     }
     const synthesisWords = audio.alignment?.synthesisWords ?? audio.words;
+    // Some service events span SSML tags in their offsets/lengths. Locate the
+    // returned word text in the unchanged source; retain all measured times and
+    // keep the raw events in synthesisWords for verification. Never skip speech.
+    const source = speechComparisonText(audio.speech);
+    let sourceCursor = 0;
+    const mappedSynthesis = synthesisWords.map((word) => {
+      const offset = source.indexOf(
+        speechComparisonText(word.text),
+        sourceCursor,
+      );
+      if (
+        !word.text ||
+        offset < 0 ||
+        !/^[\p{P}\p{Z}\s]*$/u.test(audio.speech.slice(sourceCursor, offset))
+      )
+        throw Error("Synthesis word does not match source text");
+      sourceCursor = offset + word.text.length;
+      return { ...word, textOffset: offset, wordLength: word.text.length };
+    });
     // Accepted audition WAVs may have no saved synthesis boundaries. Measure
     // every word from recognition in that case, with the same review checks.
-    const original = synthesisWords.length ? synthesisWords : words;
+    const original = synthesisWords.length ? mappedSynthesis : words;
     const selected = new Set(
       original.flatMap((word, index) =>
         synthesisWords.length === 0 ||

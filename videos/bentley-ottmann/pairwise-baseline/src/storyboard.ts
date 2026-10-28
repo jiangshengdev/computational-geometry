@@ -1,6 +1,18 @@
 import { left, equals } from "../../../shared/math/math-lines.ts";
+import { lessonPages, continuationShots } from "./continuation.ts";
 
 export const pages = {
+  ...Object.fromEntries(
+    Object.entries(lessonPages).map(([id, page]) => [
+      id,
+      {
+        ...page,
+        basis: [],
+        lines: page.lines.map((text) => ({ text })),
+        groups: page.lines.map(() => left(1)),
+      },
+    ]),
+  ),
   ordered: {
     title: "先数有顺序的选择",
     holdAfterSeconds: 2, // 推导密集页
@@ -46,6 +58,7 @@ export const pages = {
 };
 
 export const shots = [
+  ...continuationShots.filter((shot) => Number(shot.id.slice(1)) < 23),
   {
     id: "D23",
     page: "ordered",
@@ -114,4 +127,5 @@ export const shots = [
     caption:
       "十二除以二等于六，与前面逐行列出的六对一致。公式没有替代枚举证明，而是数出了同一批输入对。",
   },
+  ...continuationShots.filter((shot) => Number(shot.id.slice(1)) > 32),
 ];

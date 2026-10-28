@@ -22,7 +22,7 @@ function ShotScene({ row }: { row: TimelineRow }) {
     </>
   );
 }
-export function SampleVideo() {
+export function LessonVideo() {
   return (
     <>
       {timelineFor().map((row) => (

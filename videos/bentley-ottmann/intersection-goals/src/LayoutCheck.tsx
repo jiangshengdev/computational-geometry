@@ -13,7 +13,7 @@ import {
 import { TeachingPage } from "./TeachingPage";
 import captions from "./captions.json";
 function SceneAtFrame({ row, frame }: { row: TimelineRow; frame: number }) {
-  return <TeachingPage {...visualAt(row, frame)} />;
+  return <TeachingPage shot={row} {...visualAt(row, frame)} />;
 }
 export const LayoutCheck = createShotLayoutCheck({
   rows: timelineFor(),
@@ -22,7 +22,7 @@ export const LayoutCheck = createShotLayoutCheck({
   audioLeadFrames,
   captions,
   SceneAtFrame,
-  auditPage(page, _pageId, visibleStep) {
+  auditPage(page, pageId, visibleStep) {
     const errors: string[] = [];
     checkPageBounds(page, errors);
     checkDiagramLabels(
@@ -32,6 +32,7 @@ export const LayoutCheck = createShotLayoutCheck({
       errors,
     );
     if (
+      pageId === "opening" &&
       visibleStep < 4 &&
       [...page.querySelectorAll<HTMLElement>("[data-page-block]")].some(
         (block) =>
@@ -41,6 +42,7 @@ export const LayoutCheck = createShotLayoutCheck({
     )
       errors.push("Premature question");
     if (
+      pageId === "opening" &&
       /三条结果|结果(?:是|为|共有|有|共计|计为)?[：:\s]*[3三]\s*条/.test(
         page.innerText,
       )

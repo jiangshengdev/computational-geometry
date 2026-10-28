@@ -1,4 +1,6 @@
+import { lessonPages, continuationShots } from "./continuation.ts";
 export const pages = {
+  ...lessonPages,
   opening: {
     holdAfterSeconds: 1,
     lines: ["水平输入", "竖直输入", "原点输入", "同图提问"],
@@ -34,4 +36,5 @@ export const shots = [
     caption:
       "把它们放在一起，公共位置只有原点。求交结果应该记几条？先想一想，我们暂时不揭晓答案。",
   },
+  ...continuationShots,
 ];

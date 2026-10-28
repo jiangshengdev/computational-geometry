@@ -87,9 +87,11 @@ PNG 与 WAV 导出入口不读取预检状态，不要求预检成功，也不�
 
 #### 五阶段命令模板
 
+`videos/bentley-ottmann/intersection-goals` 与 `videos/bentley-ottmann/pairwise-baseline` 也已接入下文的独立 `video:preflight`、PNG `video:export` 和 PCM `video:export-audio` 入口，复用相同共享实现。其 composition 分别为 `IntersectionGoals`、`PairwiseBaseline`，输出前缀与工程目录同名；合并工具的相对路径为 `../../shared/tools/mux-mov.ts`。该接入不授权助手渲染，提供命令前仍须核验浏览器、帧编号和当前时间线。
+
 以下是参数化模板，不是可直接复制执行的脚本。助手必须先核验并替换全部 `${…}` 参数，给出明确工作目录和必要环境设置，再提供对应阶段命令；不得将未赋值的变量交给用户猜测。浏览器路径必须按唯一浏览器约束现场核验。所有输出均须使用不存在的新路径，保留已生成产物。
 
-**第 1 步：独立预检。** 仅适用于上文已接入 `video:preflight` 的六个工程。先设置已核验的浏览器路径，再按需运行以下命令；是否已经预检及何时继续由人类判断，后续命令不依赖本步的执行或结果。未接入的工程必须先报告入口缺口，不得声称支持本模板。
+**第 1 步：独立预检。** 仅适用于上文已接入 `video:preflight` 的工程。先设置已核验的浏览器路径，再按需运行以下命令；是否已经预检及何时继续由人类判断，后续命令不依赖本步的执行或结果。未接入的工程必须先报告入口缺口，不得声称支持本模板。
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:preflight

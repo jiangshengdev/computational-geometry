@@ -3,6 +3,9 @@ import { Subtitles } from "../../../shared/ui/Subtitles";
 import { MathText, Latex, colorMath } from "./MathText";
 import { pages } from "./storyboard";
 import { PairingDiagram, type PairingState } from "./PairingDiagram";
+import { LessonPage } from "../../../shared/ui/LessonPage";
+import { lessonPages } from "./continuation";
+import { LessonDiagram } from "./LessonDiagram";
 
 const MathLines = createTeachingMathLines({
   pages,
@@ -24,13 +27,44 @@ export function TeachingPage({
   caption,
   shift = 0,
   pairing,
+  pulse = 0,
+  activeInputs = [],
 }: {
   shot: { page: string };
   visibleStep: number;
   caption: string;
   shift?: number;
   pairing: PairingState;
+  pulse?: number;
+  activeInputs?: number[];
 }) {
+  if (shot.page in lessonPages) {
+    const lesson = lessonPages[shot.page as keyof typeof lessonPages];
+    return (
+      <LessonPage
+        title={lesson.title}
+        lines={lesson.lines.map((line) => (
+          <MathText key={line}>{line}</MathText>
+        ))}
+        visibleStep={visibleStep}
+        activeStep={visibleStep}
+        pulse={pulse}
+        diagramProgress={shot.page === "complete" ? shift : 1}
+        diagram={
+          lesson.diagram ? (
+            <LessonDiagram
+              page={shot.page}
+              kind={lesson.diagram}
+              step={visibleStep}
+              pulse={pulse}
+              activeInputs={activeInputs}
+            />
+          ) : undefined
+        }
+        caption={<MathText>{caption}</MathText>}
+      />
+    );
+  }
   const page = pages[shot.page as keyof typeof pages];
   return (
     <div

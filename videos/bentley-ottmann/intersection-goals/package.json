@@ -36,7 +36,10 @@
     "video:captions": "node scripts/captions.ts",
     "video:check-content": "node scripts/check-content.ts",
     "video:check-layout": "node scripts/check-layout.ts",
-    "video:audit-narration": "node scripts/audit-narration.ts"
+    "video:audit-narration": "node scripts/audit-narration.ts",
+    "video:preflight": "node ../../shared/tools/preflight-cli.ts",
+    "video:export": "node scripts/export.ts",
+    "video:export-audio": "node scripts/export-audio.ts"
   },
   "allowScripts": {
     "esbuild": false

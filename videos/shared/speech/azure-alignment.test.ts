@@ -7,6 +7,86 @@ import type * as SDK from "microsoft-cognitiveservices-speech-sdk";
 import { createAlignmentTools } from "./azure-alignment.ts";
 import { audioSha256 } from "./audio.ts";
 import type { AudioTiming } from "./timing.ts";
+test("malformed SSML offsets are recovered from exact source text without replacing valid measured times", () => {
+  const audio: AudioTiming = {
+    speech: "R。这里。",
+    duration: 2,
+    voice: "test",
+    fingerprint: "test",
+    words: [
+      { text: "R", textOffset: 0, wordLength: 1, startMs: 100, durationMs: 0 },
+      {
+        text: "。这",
+        textOffset: 57,
+        wordLength: 60,
+        startMs: 600,
+        durationMs: 200,
+      },
+      {
+        text: "里",
+        textOffset: 3,
+        wordLength: 1,
+        startMs: 800,
+        durationMs: 200,
+      },
+      {
+        text: "。",
+        textOffset: 4,
+        wordLength: 1,
+        startMs: 1000,
+        durationMs: 0,
+      },
+    ],
+  };
+  const response = {
+    RecognitionStatus: "Success",
+    NBest: [
+      {
+        Words: [
+          {
+            Word: "R",
+            Offset: 1000000,
+            Duration: 4000000,
+            PronunciationAssessment: { ErrorType: "None" },
+          },
+          {
+            Word: "这里",
+            Offset: 6100000,
+            Duration: 3800000,
+            PronunciationAssessment: { ErrorType: "Mispronunciation" },
+          },
+        ],
+      },
+    ],
+  };
+  const { assessmentWords } = createAlignmentTools({} as typeof SDK, {
+    allowReviewedPronunciation: false,
+  });
+  assert.deepEqual(assessmentWords(audio, response), [
+    { text: "R", textOffset: 0, wordLength: 1, startMs: 100, durationMs: 400 },
+    {
+      text: "。这",
+      textOffset: 1,
+      wordLength: 2,
+      startMs: 600,
+      durationMs: 200,
+    },
+    audio.words[2],
+    audio.words[3],
+  ]);
+  assert.equal(audio.words[1].textOffset, 57);
+  assert.throws(
+    () =>
+      assessmentWords(
+        {
+          ...audio,
+          words: [{ ...audio.words[0], text: "X" }, ...audio.words.slice(1)],
+        },
+        response,
+      ),
+    /source text/,
+  );
+});
 test("listening approval is word-specific and cannot bypass audio binding or omissions", () => {
   const dir = mkdtempSync(join(tmpdir(), "reviewed-alignment-test-"));
   try {

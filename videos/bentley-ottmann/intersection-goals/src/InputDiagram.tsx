@@ -7,9 +7,11 @@ const colors = ["#2563a6", "#8a4e9f", "#b45309"];
 export function InputDiagram({
   inputs,
   focus,
+  size = 370,
 }: {
   inputs: number[];
   focus?: DiagramFocus;
+  size?: number;
 }) {
   const arrow = useId().replace(/:/g, "");
   const vertical = inputs[0] === 2;
@@ -17,8 +19,8 @@ export function InputDiagram({
   const focusColor = colors[inputs.length === 1 ? inputs[0] - 1 : 2];
   return (
     <svg
-      width={370}
-      height={370}
+      width={size}
+      height={size}
       viewBox="0 0 370 370"
       aria-label="等比例输入坐标图"
     >

@@ -3,6 +3,7 @@ import captions from "./captions.json" with { type: "json" };
 import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
 import {
   phraseTime,
+  spokenWordPulse,
   type AudioTiming,
   type Caption,
 } from "../../../shared/speech/timing.ts";
@@ -55,17 +56,30 @@ const shared = createShotTimeline({
 export function timelineFor() {
   return shared.timelineFor().map((row) => ({
     ...row,
-    stages: [{ step: row.step, ms: Math.max(0, row.revealMs - 200) }],
+    stages:
+      row.id === "U46"
+        ? [
+            { step: 1, ms: Math.max(0, row.revealMs - 200) },
+            {
+              step: 2,
+              ms: Math.max(
+                0,
+                phraseTime(audio[row.id], "如果只写原点", "start") - 200,
+              ),
+            },
+          ]
+        : [{ step: row.step, ms: Math.max(0, row.revealMs - 200) }],
   }));
 }
 export type TimelineRow = ReturnType<typeof timelineFor>[number];
 export function visualAt(row: TimelineRow, frame: number) {
   const ms = ((frame - audioLeadFrames) * 1000) / fps;
-  const cue = focusCues[row.id].find(
+  const cue = focusCues[row.id]?.find(
     ({ start, end }) => ms >= start && ms < end,
   );
   return {
     ...shared.visualAt(row, frame),
+    pulse: spokenWordPulse(audio[row.id], ms),
     activeInput: row.step,
     focus: cue
       ? {

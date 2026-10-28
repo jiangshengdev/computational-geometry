@@ -1,4 +1,615 @@
 {
+  "D01": [
+    {
+      "text": "这次从四份输入开始。",
+      "startMs": 70,
+      "endMs": 2010,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第 1 份从 (0,0) 到 (2,0)，",
+      "startMs": 2349,
+      "endMs": 7509,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第 2 份从 (0,1) 到 (2,1)。",
+      "startMs": 7798,
+      "endMs": 13078,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D02": [
+    {
+      "text": "第 3 份从 (0,2) 到 (2,2)，",
+      "startMs": 70,
+      "endMs": 5550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第 4 份从 (0,3) 到 (2,3)。",
+      "startMs": 5778,
+      "endMs": 11378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "四条线段在不同高度，",
+      "startMs": 11819,
+      "endMs": 13739,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标范围都是 0 到 2。",
+      "startMs": 14068,
+      "endMs": 16108,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D03": [
+    {
+      "text": "四条线段各自所在的高度不同，",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一个点不可能同时处在两个高度。",
+      "startMs": 2978,
+      "endMs": 5538,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此这四条线段两两都不相交。",
+      "startMs": 5969,
+      "endMs": 8649,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D04": [
+    {
+      "text": "结果显然是空的。",
+      "startMs": 70,
+      "endMs": 1410,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果使用逐对检查的方法，",
+      "startMs": 1749,
+      "endMs": 3870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还要逐对检查吗？",
+      "startMs": 4048,
+      "endMs": 5368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一共要检查多少对？",
+      "startMs": 5368,
+      "endMs": 6608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先想一想。",
+      "startMs": 6608,
+      "endMs": 7407,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D05": [
+    {
+      "text": "上集已经明确：结果按原始输入的无序对组织。",
+      "startMs": 70,
+      "endMs": 3960,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每个相交输入对保留一个点或一段完整重叠区间，",
+      "startMs": 4299,
+      "endMs": 8379,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并记录输入对的身份。",
+      "startMs": 8698,
+      "endMs": 10378,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D06": [
+    {
+      "text": "基准方法就是把每一对不同输入取出来，",
+      "startMs": 70,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "求它们的完整交集。",
+      "startMs": 3478,
+      "endMs": 5410,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "空的略过，非空的留下结果。",
+      "startMs": 5769,
+      "endMs": 8650,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来先解决怎样枚举，",
+      "startMs": 9009,
+      "endMs": 11330,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不展开一般两线段求交的计算。",
+      "startMs": 11458,
+      "endMs": 14018,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D07": [
+    {
+      "text": "从编号小的输入开始，",
+      "startMs": 70,
+      "endMs": 1980,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每次只与编号更大的输入配对。",
+      "startMs": 2178,
+      "endMs": 4378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先取输入 1，与输入 2 配对。",
+      "startMs": 4869,
+      "endMs": 7648,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D08": [
+    {
+      "text": "仍然取输入 1，再与输入 3、输入 4 配对。",
+      "startMs": 70,
+      "endMs": 3588,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这一行列出了三对：1 与 2、1 与 3、1 与 4。",
+      "startMs": 4019,
+      "endMs": 7818,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D09": [
+    {
+      "text": "轮到输入 2，只找比 2 更大的编号，",
+      "startMs": 70,
+      "endMs": 2968,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以检查 2 与 3、2 与 4。",
+      "startMs": 3248,
+      "endMs": 5408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不要再回头检查 2 与 1，",
+      "startMs": 5889,
+      "endMs": 7730,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "那与 1 与 2 是同一对。",
+      "startMs": 7888,
+      "endMs": 9448,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D10": [
+    {
+      "text": "输入 3 只与输入 4 配对。",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到了输入 4，没有更大编号，",
+      "startMs": 2449,
+      "endMs": 5128,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这一行没有新的一对。",
+      "startMs": 5418,
+      "endMs": 6898,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D11": [
+    {
+      "text": "逐行相加，三加二加一加零，",
+      "startMs": 70,
+      "endMs": 3368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一共检查六对。",
+      "startMs": 3648,
+      "endMs": 4928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来逐对核对交集。",
+      "startMs": 5389,
+      "endMs": 7269,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D12": [
+    {
+      "text": "1 与 2、1 与 3、1 与 4 的纵坐标分别是 0 与 1、0 与 2、0 与 3，",
+      "startMs": 70,
+      "endMs": 5510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都不能同时成立，因此这三对交集为空。",
+      "startMs": 5728,
+      "endMs": 10948,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D13": [
+    {
+      "text": "剩下的 2 与 3、2 与 4、3 与 4，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标也分别不同，所以交集同样为空。",
+      "startMs": 2878,
+      "endMs": 8328,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D14": [
+    {
+      "text": "开场问题有答案了：这个逐对检查方法检查六对，",
+      "startMs": 70,
+      "endMs": 4030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最后没有结果。",
+      "startMs": 4228,
+      "endMs": 5390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "看图已经知道不相交，",
+      "startMs": 5719,
+      "endMs": 7279,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会让这个方法跳过它规定要检查的输入对；",
+      "startMs": 7618,
+      "endMs": 10857,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其他方法能否少检查，",
+      "startMs": 11138,
+      "endMs": 13058,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是后面的问题。",
+      "startMs": 13358,
+      "endMs": 14590,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D15": [
+    {
+      "text": "列出四份输入的六对，",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还不是一般证明。",
+      "startMs": 1928,
+      "endMs": 3208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果输入更多，只找更大编号为什么仍然不漏、不重？",
+      "startMs": 3669,
+      "endMs": 8308,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D16": [
+    {
+      "text": "任取两份不同输入。",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的编号一定不同，",
+      "startMs": 2199,
+      "endMs": 3679,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把较小的编号叫作 i，",
+      "startMs": 3998,
+      "endMs": 5798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "较大的叫作 j，因此 i 小于 j。",
+      "startMs": 6068,
+      "endMs": 9028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里不是指定某一对，",
+      "startMs": 9529,
+      "endMs": 10929,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而是在讨论任意一对。",
+      "startMs": 11278,
+      "endMs": 12838,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D17": [
+    {
+      "text": "处理编号 i 那一行时，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "规则要求与所有更大编号配对，",
+      "startMs": 2228,
+      "endMs": 4708,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其中一定包括 j。",
+      "startMs": 4998,
+      "endMs": 6318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此这一对必定被检查到。",
+      "startMs": 6839,
+      "endMs": 9039,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "理由不依赖位置，也不依赖它们是否相交，",
+      "startMs": 9559,
+      "endMs": 12898,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不会漏掉任何一对。",
+      "startMs": 13228,
+      "endMs": 14948,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D18": [
+    {
+      "text": "同一对只能出现在较小编号 i 那一行。",
+      "startMs": 70,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到了较大编号 j 那一行，",
+      "startMs": 3649,
+      "endMs": 5529,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只允许找比 j 更大的编号，",
+      "startMs": 5848,
+      "endMs": 7768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会回头找 i。",
+      "startMs": 8068,
+      "endMs": 9228,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D19": [
+    {
+      "text": "而在编号 i 那一行，",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每个更大的编号只列一次，",
+      "startMs": 1878,
+      "endMs": 4078,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "j 也只出现一次。",
+      "startMs": 4348,
+      "endMs": 5548,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这一对总共只检查一次，",
+      "startMs": 5989,
+      "endMs": 7989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "行内和行间都不会重复。",
+      "startMs": 8288,
+      "endMs": 10368,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D20": [
+    {
+      "text": "编号更大，也排除了相同编号，",
+      "startMs": 70,
+      "endMs": 2918,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不会把输入与自身配对。",
+      "startMs": 3248,
+      "endMs": 5328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个证明适用于任意两份不同输入。",
+      "startMs": 5789,
+      "endMs": 8548,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D21": [
+    {
+      "text": "只要每次两线段求交得到的完整交集正确，",
+      "startMs": 70,
+      "endMs": 3630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "枚举就会检查到所有相交输入对，",
+      "startMs": 3828,
+      "endMs": 6227,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并且每个相交输入对恰好留下一个结果。",
+      "startMs": 6498,
+      "endMs": 9458,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D22": [
+    {
+      "text": "枚举证明不替代两线段求交本身的正确性证明。",
+      "startMs": 70,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是一个可以让后续算法对照的基准方法：",
+      "startMs": 4299,
+      "endMs": 7259,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先明确每对的交集，再保证每对都恰好检查一次。",
+      "startMs": 7259,
+      "endMs": 11348,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
   "D23": [
     {
       "text": "把原始输入的数量记作 n。",
@@ -79,21 +690,21 @@
     {
       "text": "每一种第一份的选择，",
       "startMs": 70,
-      "endMs": 1670,
+      "endMs": 1790,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "都对应 n-1 种第二份的选择，",
-      "startMs": 1878,
-      "endMs": 4157,
+      "startMs": 2028,
+      "endMs": 4267,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此有顺序的选择总数是 n(n-1)。",
-      "startMs": 4448,
-      "endMs": 10328,
+      "startMs": 4548,
+      "endMs": 10228,
       "timestampMs": null,
       "confidence": null
     }
@@ -225,6 +836,288 @@
       "text": "而是数出了同一批输入对。",
       "startMs": 6718,
       "endMs": 8798,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D33": [
+    {
+      "text": "没有输入，或者只有一份输入时，",
+      "startMs": 70,
+      "endMs": 2988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都选不出两份不同的输入，",
+      "startMs": 3288,
+      "endMs": 5368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以检查次数为零。",
+      "startMs": 5668,
+      "endMs": 7348,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个结论直接来自可配对对象，",
+      "startMs": 7809,
+      "endMs": 10048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不需要先套公式。",
+      "startMs": 10358,
+      "endMs": 11718,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D34": [
+    {
+      "text": "代入公式也都得到零。",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "零份输入时出现的负一只是代数表达式的一部分，",
+      "startMs": 2249,
+      "endMs": 6209,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能解释成有负一种选择；",
+      "startMs": 6548,
+      "endMs": 8748,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前面的选择计数推导限定在至少两份输入时。",
+      "startMs": 9018,
+      "endMs": 12817,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D35": [
+    {
+      "text": "十份输入需要检查四十五对。",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一百份输入，需要检查四千九百五十对。",
+      "startMs": 2599,
+      "endMs": 6007,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D36": [
+    {
+      "text": "一千份输入需要检查四十九万九千五百对。",
+      "startMs": 70,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "即使全部互不相交，逐对检查方法也照样检查这些对，",
+      "startMs": 3899,
+      "endMs": 8378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最后却没有结果。",
+      "startMs": 8668,
+      "endMs": 10000,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查对数和相交对数是两个不同的数量。",
+      "startMs": 10359,
+      "endMs": 13278,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D37": [
+    {
+      "text": "另一方面，",
+      "startMs": 70,
+      "endMs": 1030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "让 n 份输入都占据从 (0,0) 到 (4,0) 的同一条非零长度线段。",
+      "startMs": 1268,
+      "endMs": 9948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每一对都会相交，交集都是这条完整线段，",
+      "startMs": 10419,
+      "endMs": 14177,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "输入身份仍然不同。",
+      "startMs": 14488,
+      "endMs": 16128,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D38": [
+    {
+      "text": "此时结果条数也等于 n(n − 1) 除以 2。",
+      "startMs": 190,
+      "endMs": 7910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果要求逐条列出这些结果，",
+      "startMs": 8299,
+      "endMs": 10590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "任何方法都不能省去输出它们本身的工作。",
+      "startMs": 10748,
+      "endMs": 13467,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "几何上只有一段，不代表只需输出一条记录。",
+      "startMs": 13939,
+      "endMs": 17568,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D39": [
+    {
+      "text": "还要区分检查次数和实际耗时。",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每次检查内部要做几何判断和计算，",
+      "startMs": 2749,
+      "endMs": 5349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保存结果也要工作。",
+      "startMs": 5698,
+      "endMs": 7150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "使用精确分数时，数字越长，",
+      "startMs": 7489,
+      "endMs": 10238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "算术运算也可能越费力。",
+      "startMs": 10508,
+      "endMs": 12308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此本章只计算要检查多少对，",
+      "startMs": 12749,
+      "endMs": 15028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不把一次检查说成固定的实际耗时；",
+      "startMs": 15348,
+      "endMs": 17948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "完整工作量分析留到后续章节。",
+      "startMs": 18218,
+      "endMs": 20778,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "D40": [
+    {
+      "text": "回到开场，四条互不相交线段，",
+      "startMs": 70,
+      "endMs": 3128,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "逐对方法检查六对，结果为零。",
+      "startMs": 3448,
+      "endMs": 6408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们已有不漏、不重的基准方法，",
+      "startMs": 6859,
+      "endMs": 9340,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但它总要检查所有无序输入对。",
+      "startMs": 9508,
+      "endMs": 11668,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "能不能利用位置关系，",
+      "startMs": 12099,
+      "endMs": 13819,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "少检查一些对，同时仍然找全结果？",
+      "startMs": 14148,
+      "endMs": 17378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一章《扫描线为什么只需关注邻居》将从明确的简化条件出发研究这个问题。",
+      "startMs": 17778,
+      "endMs": 24000,
       "timestampMs": null,
       "confidence": null
     }

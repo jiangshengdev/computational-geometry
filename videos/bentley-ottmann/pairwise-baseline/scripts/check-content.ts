@@ -20,5 +20,5 @@ checkContent({
   audioLeadFrames,
   fps,
   checkPageHolds: true,
-  expectedPauses: [],
+  expectedPauses: ["D04", "D15"].map((id) => ({ id, seconds: 5 })),
 });

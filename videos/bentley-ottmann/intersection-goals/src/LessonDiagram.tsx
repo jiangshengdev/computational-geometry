@@ -1,0 +1,422 @@
+import {
+  CoordinateDiagram,
+  type DiagramSegment,
+} from "../../../shared/ui/CoordinateDiagram";
+import { MathText, SvgMathText } from "./MathText";
+import { InputDiagram } from "./InputDiagram";
+
+const blue = "#2563a6",
+  purple = "#8a4e9f",
+  orange = "#b45309";
+const segment = (
+  a: [number, number],
+  b: [number, number],
+  color = blue,
+  pointInput = false,
+): DiagramSegment => ({ start: a, end: b, color, pointInput });
+const base = segment([0, 0], [4, 0]);
+function Plot({
+  title,
+  segments,
+  pulse,
+  labels = [],
+}: {
+  title: string;
+  segments: DiagramSegment[];
+  pulse: number;
+  labels?: { point: [number, number]; text: string; above?: boolean }[];
+}) {
+  return (
+    <div style={{ width: 380, textAlign: "center" }}>
+      <div style={{ fontSize: 26 }}>
+        <MathText>{title}</MathText>
+      </div>
+      <CoordinateDiagram
+        segments={segments}
+        labels={labels}
+        pulse={pulse}
+        active={segments.length - 1}
+        label={(x, y, text) => (
+          <SvgMathText x={x} y={y} align="center" fontSize={20}>
+            {text}
+          </SvgMathText>
+        )}
+      />
+    </div>
+  );
+}
+export function LessonDiagram({
+  kind,
+  step,
+  pulse,
+}: {
+  kind: string;
+  step: number;
+  pulse: number;
+}) {
+  if (!kind || !step) return null;
+  const plot = (
+    title: string,
+    segments: DiagramSegment[],
+    labels: { point: [number, number]; text: string; above?: boolean }[] = [],
+  ) => <Plot title={title} segments={segments} labels={labels} pulse={pulse} />;
+  if (kind === "points" && step >= 3)
+    return (
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+        {plot("同点：两份输入都只有 (2,0)", [
+          segment([2, 0], [2, 0], purple, true),
+        ])}
+        {plot("完整交集：点 (2,0)", [segment([2, 0], [2, 0], orange)])}
+        {plot("异点：(2,0) 与 (5,0)", [
+          segment([2, 0], [2, 0], blue, true),
+          segment([5, 0], [5, 0], purple, true),
+        ])}
+        {plot("完整交集：空", [])}
+      </div>
+    );
+  let children;
+  if (kind === "closed")
+    children = (
+      <>
+        {plot(
+          "闭线段",
+          [
+            base,
+            ...(step >= 2
+              ? [
+                  { ...segment([4, 0], [5, 0], "#94a3b8"), dashed: true },
+                  segment([5, 0], [5, 0], orange),
+                ]
+              : []),
+          ],
+          [
+            { point: [0, 0], text: "(0,0)" },
+            { point: [4, 0], text: "(4,0)", above: true },
+          ],
+        )}
+        {step >= 3 &&
+          plot(
+            "点输入",
+            [segment([2, 0], [2, 0], purple, true)],
+            [{ point: [2, 0], text: "(2,0)" }],
+          )}
+      </>
+    );
+  else if (["identity", "repeated"].includes(kind))
+    children = (
+      <>
+        {[1, 2, 3]
+          .filter((i) => i < 3 || kind === "repeated" || step >= 2)
+          .map((i) => (
+            <div key={i}>
+              {plot(
+                `输入 ${i}`,
+                [
+                  segment(
+                    i === 3 ? [4, 0] : [0, 0],
+                    i === 3 ? [0, 0] : [4, 0],
+                    [blue, purple, orange][i - 1],
+                  ),
+                ],
+                [
+                  { point: [0, 0], text: "(0,0)" },
+                  { point: [4, 0], text: "(4,0)" },
+                ],
+              )}
+            </div>
+          ))}
+        {kind === "repeated" &&
+          step >= 2 &&
+          plot("每对的完整交集", [segment([0, 0], [4, 0], orange)])}
+      </>
+    );
+  else if (kind === "pairs")
+    children = (
+      <div style={{ fontSize: 38, lineHeight: 2.5, textAlign: "center" }}>
+        <MathText>{"1 与 2 ⇄ 2 与 1"}</MathText>
+        <div>同一个无序对</div>
+        {step >= 2 && (
+          <div>
+            <MathText>{"1 与 1：排除自身配对"}</MathText>
+          </div>
+        )}
+      </div>
+    );
+  else if (kind === "answer")
+    children = (
+      <>
+        {[1, 2, 3, 4].map((input) => (
+          <div key={input} style={{ width: 380, textAlign: "center" }}>
+            <div style={{ fontSize: 26 }}>
+              <MathText>
+                {input === 4 ? "同一坐标系" : `输入 ${input}`}
+              </MathText>
+            </div>
+            <InputDiagram
+              inputs={input === 4 ? [1, 2, 3] : [input]}
+              size={300}
+              focus={
+                pulse > 0 && (step === 1 || input === 4)
+                  ? { target: "origin", progress: pulse / 2 }
+                  : undefined
+              }
+            />
+          </div>
+        ))}
+      </>
+    );
+  else if (kind === "records")
+    children = (
+      <div style={{ margin: "0 auto", textAlign: "center" }}>
+        <InputDiagram
+          inputs={[1, 2, 3]}
+          focus={
+            pulse > 0 ? { target: "origin", progress: pulse / 2 } : undefined
+          }
+        />
+        {kind === "records" && (
+          <div style={{ fontSize: 30 }}>一个位置，三条结果</div>
+        )}
+      </div>
+    );
+  else if (kind === "third")
+    children = (
+      <>
+        {plot("输入 A 与新输入 C", [base, segment([3, -1], [3, 1], orange)])}
+        {plot("输入 B 与新输入 C", [
+          segment([2, 0], [6, 0], purple),
+          segment([3, -1], [3, 1], orange),
+        ])}
+        {step >= 2 && (
+          <>
+            {plot(
+              "A 与 B：完整区间保持连续",
+              [segment([2, 0], [4, 0], orange)],
+              [
+                { point: [2, 0], text: "(2,0)" },
+                { point: [4, 0], text: "(4,0)", above: true },
+              ],
+            )}
+            <div>
+              {plot(
+                "另外两对：各自留下点结果",
+                [segment([3, 0], [3, 0], orange)],
+                [{ point: [3, 0], text: "(3,0)" }],
+              )}
+              <div style={{ fontSize: 24, textAlign: "center" }}>
+                <MathText>{"A 与 C：(3,0)"}</MathText>
+                <br />
+                <MathText>{"B 与 C：(3,0)"}</MathText>
+              </div>
+            </div>
+          </>
+        )}
+      </>
+    );
+  else if (
+    ["empty", "crossing", "touching", "points", "overlap"].includes(kind)
+  ) {
+    const other =
+      kind === "empty"
+        ? segment([0, 1], [4, 1], purple)
+        : kind === "crossing"
+          ? segment([2, -1], [2, 1], purple)
+          : kind === "touching"
+            ? segment([4, 0], [6, 0], purple)
+            : kind === "points"
+              ? segment(
+                  [step === 1 ? 2 : 5, 0],
+                  [step === 1 ? 2 : 5, 0],
+                  purple,
+                  true,
+                )
+              : segment([2, 0], [6, 0], purple);
+    const showOther = kind !== "empty" || step >= 2;
+    const showResult =
+      kind === "empty"
+        ? step >= 2
+        : kind === "crossing"
+          ? step >= 3
+          : kind === "touching"
+            ? step >= 2
+            : kind === "overlap"
+              ? step >= 3
+              : true;
+    const empty = kind === "empty" || (kind === "points" && step === 2);
+    const result =
+      kind === "overlap"
+        ? segment([2, 0], [4, 0], orange)
+        : segment(
+            [kind === "touching" ? 4 : 2, 0],
+            [kind === "touching" ? 4 : 2, 0],
+            orange,
+          );
+    children = (
+      <>
+        {plot(
+          "输入 A",
+          [base],
+          [
+            { point: [0, 0], text: "(0,0)" },
+            { point: [4, 0], text: "(4,0)" },
+          ],
+        )}
+        {showOther &&
+          plot(
+            "另一份输入",
+            [other],
+            [
+              {
+                point: other.start,
+                text: `(${other.start.join(",")})`,
+                above: kind !== "crossing",
+              },
+              {
+                point: other.end,
+                text: `(${other.end.join(",")})`,
+                above: kind === "crossing",
+              },
+            ],
+          )}
+        {showResult &&
+          plot(empty ? "完整交集：空" : "完整交集", empty ? [] : [result])}
+      </>
+    );
+  } else if (kind === "common")
+    children =
+      step < 3
+        ? plot(
+            step === 1 ? "点输入" : "先讨论公共点的数量",
+            step === 1 ? [segment([2, 0], [2, 0], orange, true)] : [base],
+          )
+        : plot(
+            "不同公共点确定共同直线",
+            [base, segment([1, 0], [6, 0], purple)],
+            [
+              { point: [2, 0], text: "P", above: true },
+              { point: [3, 0], text: "Q" },
+            ],
+          );
+  else if (kind === "order")
+    children = (
+      <>
+        {plot(
+          "非竖直：横坐标递增",
+          [base, segment([1, 0], [6, 0], purple)],
+          [
+            { point: [2, 0], text: "P", above: true },
+            { point: [3, 0], text: "Q" },
+          ],
+        )}
+        {step >= 2 &&
+          plot(
+            "竖直：纵坐标递增",
+            [segment([2, -1], [2, 3]), segment([2, 0], [2, 2], purple)],
+            [
+              { point: [2, 0.5], text: "P" },
+              { point: [2, 1.5], text: "Q", above: true },
+            ],
+          )}
+      </>
+    );
+  else if (["bounds", "converse"].includes(kind))
+    children = (
+      <div style={{ width: 760 }}>
+        <svg width={760} height={430} viewBox="0 0 760 430">
+          <path
+            d="M60 355 H700 l-12 -8 M700 355 l-12 8"
+            fill="none"
+            stroke="#94a3b8"
+            strokeWidth={2}
+          />
+          <SvgMathText x={330} y={405} align="center" fontSize={26}>
+            坐标递增方向
+          </SvgMathText>
+          {[
+            { y: 95, a: 100, b: 510, c: blue },
+            { y: 215, a: 240, b: 650, c: purple },
+          ].map(({ y, a, b, c }, i) => (
+            <g key={i} stroke={c} fill={c}>
+              <line x1={a} y1={y} x2={b} y2={y} strokeWidth={6} />
+              <circle cx={a} cy={y} r={6} />
+              <circle cx={b} cy={y} r={6} />
+              <line
+                x1={240}
+                y1={y}
+                x2={510}
+                y2={y}
+                strokeWidth={14}
+                opacity={kind === "bounds" && step < 3 ? 0 : pulse * 0.4}
+              />
+              {kind === "bounds" && step <= 2 && (
+                <circle
+                  cx={step === 1 ? a : b}
+                  cy={y}
+                  r={15}
+                  fill="none"
+                  strokeWidth={3}
+                  opacity={pulse}
+                />
+              )}
+            </g>
+          ))}
+          {(kind === "converse" || step >= 1) && (
+            <>
+              <line
+                x1={240}
+                y1={65}
+                x2={240}
+                y2={345}
+                stroke={orange}
+                strokeDasharray="5 5"
+              />
+              <SvgMathText x={240} y={50} align="center">
+                L
+              </SvgMathText>
+            </>
+          )}
+          {(kind === "converse" || step >= 2) && (
+            <>
+              <line
+                x1={510}
+                y1={65}
+                x2={510}
+                y2={345}
+                stroke={orange}
+                strokeDasharray="5 5"
+              />
+              <SvgMathText x={510} y={50} align="center">
+                R
+              </SvgMathText>
+            </>
+          )}
+          {kind === "converse" && (
+            <line
+              x1={240}
+              y1={300}
+              x2={510}
+              y2={300}
+              stroke={orange}
+              strokeWidth={7}
+            />
+          )}
+        </svg>
+        <div style={{ fontSize: 24, textAlign: "center" }}>
+          一维坐标范围投影；分行只用于比较范围
+        </div>
+      </div>
+    );
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 12,
+      }}
+    >
+      {children}
+    </div>
+  );
+}

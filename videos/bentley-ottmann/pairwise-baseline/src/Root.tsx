@@ -1,5 +1,5 @@
 import { Composition } from "remotion";
-import { SampleVideo } from "./Composition";
+import { LessonVideo } from "./Composition";
 import { timelineFor, fps } from "./timeline";
 const loadLayoutCheck = async () => {
   const { LayoutCheck } = await import("./LayoutCheck");
@@ -8,8 +8,8 @@ const loadLayoutCheck = async () => {
 export const RemotionRoot = () => (
   <>
     <Composition
-      id="PairwiseBaselineSample"
-      component={SampleVideo}
+      id="PairwiseBaseline"
+      component={LessonVideo}
       fps={fps}
       width={1920}
       height={1080}
