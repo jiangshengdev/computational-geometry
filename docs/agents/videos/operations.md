@@ -52,18 +52,10 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 - 用户要求渲染、导出或打印命令时，默认一次性给出独立预检、PNG、无声 H.265、同时间线 PCM WAV、MOV 合并全部五步命令，无须用户另行要求“一次打印五步”。分成五个独立代码块，并标明每步的继续条件；独立预检必须作为第 1 步，不得只放在说明文字中或并入 PNG、WAV 导出。不要提供会在前一步失败后继续执行的整段脚本。提前给出命令不代表前序产物已检查通过，执行仍须遵守各阶段的检查条件。
 - 用户报告某一步报错后，暂停推进后续步骤，先定位该步问题并提供适用的解决或重试命令，等待用户解决。收到成功结果或明确确认问题已解决，并完成该步必要检查后，从下一步起依次给出后续命令；每一步完成并检查通过后，主动给出再下一步，直到流程结束。已有有效产物应保留，只修正和重试失败步骤；不能将缺少前序产物的后续报错当作独立故障。
 
-所有视频默认分阶段进行，浏览器必须满足[唯一浏览器约束](configuration.md#唯一浏览器约束)，包括单独导出音轨：
-
-1. 独立预检：完成音频解码、内容和完整布局检查，是否需要运行、结果是否足够以及何时继续由人类判断；预检不产生导出许可或影响后续命令。
-2. 用户生成并保留 PNG 帧序列；检查数量、编号、尺寸及画面异常后再继续。
-3. 用户将已检查的 PNG 序列独立编码为无声 H.265 视频；检查解码、帧数、时间戳及全片逐帧突变，可疑帧须与原 PNG 对照。
-4. 无声视频检查通过后，再由用户导出同时间线的 48 kHz、16 bit、双声道 PCM WAV，保持原速。没有已核验的同时间线音轨时，须从对应时间线单独导出，不能直接套用其他成片音轨。
-5. 检查视频与音轨后复制封装为 MOV，再检查成片音画同步。
-
-最终合并入口为 `videos/shared/tools/mux-mov.ts`，参数依次为已检查的无声 H.265 视频、同时间线 WAV、新的 MOV 路径。通过 `pnpm --config.verify-deps-before-run=false exec node ../shared/tools/mux-mov.ts <video> <audio> <output.mov> --dry-run` 只读查看合并参数；去掉 `--dry-run` 仅供用户自行执行。入口检查编码、采样率、位深、双声道和时长，使用 `-c:v copy -c:a copy`，不新增音画编码，不裁短音轨，不覆盖文件或删除 PNG。时长接近不代表内容属于同一时间线，仍须按前述流程核对来源及同步。
+最终合并入口为 `videos/shared/tools/mux-mov.ts`，参数依次为已检查的无声 H.265 视频、同时间线 WAV、新的 MOV 路径。使用下文第 5 步命令追加 `--dry-run` 可只读查看合并参数；不带 `--dry-run` 的命令仅供用户自行执行。入口检查编码、采样率、位深、双声道和时长，使用 `-c:v copy -c:a copy`，不新增音画编码，不裁短音轨，不覆盖文件或删除 PNG。时长接近不代表内容属于同一时间线，仍须按前述流程核对来源及同步。
 
 - 出现已定位的错误帧时，先提供针对该帧的 `remotion still --frame=<帧号>` 命令，输出到独立文件，与原错误帧及相邻帧对照；不得默认要求重渲染整片。单帧正常仅证明该次输出正常，不能证明并发整片渲染已无异常。
-- 正常流程一次性提供全部步骤命令；仅在用户报错后的恢复流程中，按上述规则逐步提供后续命令。预检是否执行或通过不作为后续命令的程序门槛；其余阶段按输入产物的实际状态与继续条件推进；未完成的检查明确标注，不将渲染退出码或文件头检查当作全片画面验收。
+- 预检是否执行或通过不作为后续命令的程序门槛；其余阶段按输入产物的实际状态与继续条件推进。未完成的检查明确标注，不将渲染退出码或文件头检查当作全片画面验收。
 - 保留原始 PNG、错误帧、无声视频和对照产物；排查不授权删除、覆盖、替换或回退文件，也不授权改动 `.gitignore`。本流程不改变助手禁止渲染或导出视频的约束。
 
 #### 导出命令的配置兼容性
@@ -71,27 +63,18 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 - 提供命令前，读取当前工程的 `package.json`、`remotion.config.ts` 和实际导出入口，核对 CLI 参数与工程默认值合并后的有效配置。改变 `--codec` 或输出扩展名，不代表 `audioCodec`、硬件加速等独立配置会自动切换；不得只检查命令行上显式写出的参数。
 - 单独导出 WAV 时，必须显式使用 `--codec=wav --audio-codec=pcm-16 --sample-rate=48000 --hardware-acceleration=disable`，并检查结果为双声道，避免继承视频编码和硬件加速要求。纯音频步骤关闭视频硬件加速，不改变无声 H.265 视频必须使用硬件编码的要求；浏览器参数仍须满足唯一浏览器约束。
 - 针对当前已安装的 Remotion 版本，通过本地参数解析、编码兼容表或不触发渲染的校验入口，核验输出格式与音频编码组合后再给出命令。不得以实际渲染、自动下载或安装组件作为命令试错手段；参数校验通过只能声明参数兼容，不能声明音轨已导出或成片已验收。
-- 修正某一步的参数错误时，只重试失败步骤；保留已生成的 PNG、无声视频和音轨，不默认要求重做前序步骤，也不通过覆盖既有产物绕过错误。
 
-以下入口只完成 PNG 阶段，沿用上述分阶段检查与保留流程：
+下文的 `video:export` PNG 入口适用于 `shear-intuition`、`shear-coefficient`、`shear-integer-coordinates`、`shear-intersection-denominator`、`shear-special-cases` 和 `shear-preserves-intersections`，仅供用户自行执行。这六个工程还提供独立命令 `pnpm --config.verify-deps-before-run=false run video:preflight`，执行音频解码、内容与完整生产布局检查，以日志和退出码报告结果。预检与后续步骤完全分离，不读写预检记录、不计算输入指纹，也不设置导出门槛。是否已经预检、是否需要重新检查及何时继续，由人类判断。
 
-以下命令仅供用户自行执行，适用于 `shear-intuition`、`shear-coefficient`、`shear-integer-coordinates`、`shear-intersection-denominator`、`shear-special-cases` 和 `shear-preserves-intersections`：
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:export
-```
-
-上述六个工程提供独立命令 `pnpm --config.verify-deps-before-run=false run video:preflight`，执行音频解码、内容与完整生产布局检查，以日志和退出码报告结果。预检与后续步骤完全分离，不读写预检记录、不计算输入指纹，也不设置导出门槛。是否已经预检、是否需要重新检查及何时继续，由人类判断。
-
-PNG 与 WAV 导出入口不读取预检状态，不要求预检成功，也不自动运行内容或布局检查；无需跳过参数。浏览器版本核验、独立端口、输出路径与禁止覆盖等运行条件仍由导出入口负责。PNG 输出到各工程的 `out/<工程名>-frames/`，不覆盖已有目录。添加 `--dry-run` 只展示参数，不生成画面或音轨。命令存在、dry-run 或预检通过均不代表成片已验收。`line-equation-tutorial` 使用其 README 中的专用 PNG 导出命令；其他空白工程的接入状态以各自 README 为准。
+PNG 与 WAV 导出入口不读取预检状态，不要求预检成功，也不自动运行内容或布局检查；无需跳过参数。浏览器版本核验、独立端口、输出路径与禁止覆盖等运行条件仍由导出入口负责。PNG 输出到各工程的 `out/<工程名>-frames/`，不覆盖已有目录。添加 `--dry-run` 只展示参数，不生成画面或音轨。命令存在、dry-run 或预检通过均不代表成片已验收。`line-equation-tutorial` 使用其 README 中的专用 PNG 导出命令；其他工程的接入状态以各自 README 为准。
 
 #### 五阶段命令模板
 
-`videos/bentley-ottmann/intersection-goals` 与 `videos/bentley-ottmann/pairwise-baseline` 也已接入下文的独立 `video:preflight`、PNG `video:export` 和 PCM `video:export-audio` 入口，复用相同共享实现。其 composition 分别为 `IntersectionGoals`、`PairwiseBaseline`，输出前缀与工程目录同名；合并工具的相对路径为 `../../shared/tools/mux-mov.ts`。该接入不授权助手渲染，提供命令前仍须核验浏览器、帧编号和当前时间线。
+`videos/bentley-ottmann/intersection-goals` 与 `videos/bentley-ottmann/pairwise-baseline` 也已接入下文的独立 `video:preflight`、PNG `video:export` 和 PCM `video:export-audio` 入口，复用相同共享实现。其 composition 分别为 `IntersectionGoals`、`PairwiseBaseline`，输出前缀与工程目录同名。该接入不授权助手渲染，提供命令前仍须核验浏览器、帧编号和当前时间线。
 
-以下是参数化模板，不是可直接复制执行的脚本。助手必须先核验并替换全部 `${…}` 参数，给出明确工作目录和必要环境设置，再提供对应阶段命令；不得将未赋值的变量交给用户猜测。浏览器路径必须按唯一浏览器约束现场核验。所有输出均须使用不存在的新路径，保留已生成产物。
+以下是参数化模板，不是可直接复制执行的脚本。助手必须先核验并替换全部 `${…}` 参数，给出明确工作目录和必要环境设置，再提供对应阶段命令；不得将未赋值的变量交给用户猜测。浏览器路径必须按唯一浏览器约束现场核验。所有输出均须使用不存在的新路径，保留已生成产物。`${MUX_TOOL}` 是从当前工程目录到 `videos/shared/tools/mux-mov.ts` 的已核验路径：`videos/shear/<工程>/` 与 `videos/bentley-ottmann/<工程>/` 使用 `../../shared/tools/mux-mov.ts`，`videos/line-equation-tutorial/` 使用 `../shared/tools/mux-mov.ts`。
 
-**第 1 步：独立预检。** 仅适用于上文已接入 `video:preflight` 的工程。先设置已核验的浏览器路径，再按需运行以下命令；是否已经预检及何时继续由人类判断，后续命令不依赖本步的执行或结果。未接入的工程必须先报告入口缺口，不得声称支持本模板。
+**第 1 步：独立预检。** 仅适用于上文已接入 `video:preflight` 的工程。先设置已核验的浏览器路径，再按需运行以下命令；是否需要运行、结果是否足够及何时继续由人类判断。预检不产生导出许可，后续命令不依赖本步的执行或结果。未接入的工程必须先报告入口缺口，不得声称支持本模板。
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:preflight
@@ -99,31 +82,31 @@ pnpm --config.verify-deps-before-run=false run video:preflight
 
 用户确认已经预检时，标明本步无需重跑，不索要或补造记录。已完成且检查有效的步骤须标明“已完成，无需重跑”，保留产物并继续剩余步骤，不因提供五步命令而要求重做。
 
-**第 2 步：PNG。** 对上文明确支持 `video:export` 的工程使用以下入口，不得改写成绕过端口隔离的直接 CLI。直线教程按其 README 的专用入口；第五集 `shear-safe-coefficient` 当前尚无 `video:export`，不能套用本命令或声称已经接入。生成后检查编号、数量、尺寸与画面，通过后才进入第 3 步。
+**第 2 步：PNG。** 对上文明确支持 `video:export` 的工程使用以下入口，不得改写成绕过端口隔离的直接 CLI。直线教程按其 README 的专用入口；第五集 `shear-safe-coefficient` 当前尚无 `video:export`，不能套用本命令或声称已经接入。生成并保留 PNG 后检查编号、数量、尺寸与画面异常，通过后才进入第 3 步。
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:export
 ```
 
-**第 3 步：无声 H.265。** `${PNG_PATTERN}` 必须来自实际帧目录核验；例如当前第五集为 `out/shear-safe-coefficient-frames/element-%05d.png`，起始编号为 `0`、帧率为 `60`。该例不替代其他工程的现场核验。编码后检查解码、帧数、时间戳及全片画面，再进入下一阶段。
+**第 3 步：无声 H.265。** `${PNG_PATTERN}` 必须来自实际帧目录核验；例如当前第五集为 `out/shear-safe-coefficient-frames/element-%05d.png`，起始编号为 `0`、帧率为 `60`。该例不替代其他工程的现场核验。编码后检查解码、帧数、时间戳及全片逐帧突变；可疑帧与原 PNG 对照，通过后再进入下一阶段。
 
 ```sh
 ffmpeg -n -framerate "${FPS}" -start_number "${START_NUMBER}" -i "${PNG_PATTERN}" -an -c:v hevc_videotoolbox -allow_sw 0 -pix_fmt yuv420p -tag:v hvc1 "${SILENT_VIDEO}"
 ```
 
-**第 4 步：同时间线 PCM WAV。** 第⑥集 `shear-special-cases` 与第⑦集 `shear-preserves-intersections` 已通过共享导出函数接入下列 `video:export-audio` 命令，不依赖第 1 步的执行或结果，明确选择 WAV、PCM 和关闭视频硬件加速，并在本次调用时动态分配独立端口；详情见各自工程 README。其他工程未接入时不得套用，应报告入口缺口，不得改用绕过端口隔离的底层 CLI。检查输出为 48 kHz、16 bit、双声道，并核对时间线来源后，才进入第 5 步。
+**第 4 步：同时间线 PCM WAV。** 第⑥集 `shear-special-cases` 与第⑦集 `shear-preserves-intersections` 已通过共享导出函数接入下列 `video:export-audio` 命令，不依赖第 1 步的执行或结果，明确选择 WAV、PCM 和关闭视频硬件加速，并在本次调用时动态分配独立端口；详情见各自工程 README。其他工程未接入时不得套用，应报告入口缺口，不得改用绕过端口隔离的底层 CLI。无声视频检查通过后，才导出同时间线的原速音轨；不得套用其他成片音轨。检查输出为 48 kHz、16 bit、双声道，并核对时间线来源后，才进入第 5 步。浏览器同样须满足[唯一浏览器约束](configuration.md#唯一浏览器约束)。
 
 ```sh
 pnpm --config.verify-deps-before-run=false run video:export-audio
 ```
 
-**第 5 步：MOV。** 输入必须是前面已检查的无声视频和同时间线音轨。保留两条流，不重新编码；完成后仍须验收成片。
+**第 5 步：MOV。** 输入必须是前面已检查的无声视频和同时间线音轨。保留两条流，不重新编码；完成后仍须检查成片音画同步。
 
 ```sh
-pnpm --config.verify-deps-before-run=false exec node ../shared/tools/mux-mov.ts "${SILENT_VIDEO}" "${TIMELINE_WAV}" "${FINAL_MOV}"
+pnpm --config.verify-deps-before-run=false exec node "${MUX_TOOL}" "${SILENT_VIDEO}" "${TIMELINE_WAV}" "${FINAL_MOV}"
 ```
 
-### 空白工程的发布素材
+### 发布素材
 
 适用于 `shear-integer-coordinates`、`shear-intersection-denominator`、`shear-safe-coefficient`、`shear-special-cases`、`shear-preserves-intersections`；路径相对于各自工程目录：
 

@@ -71,43 +71,23 @@ Chrome Headless Shell 157.0.8080.0。检查通过系统分配端口无头运行�
 - `video:export-audio`：同一时间线的 48 kHz、16 bit、双声道 PCM WAV，输出 `out/pairwise-baseline-audio.wav`。
 - PNG 与 WAV 命令均支持 `--dry-run`，不会覆盖已有产物。完整五阶段流程见 [工程操作说明](../../../docs/agents/videos/operations.md#五阶段命令模板)。
 
-### 当前版本的五阶段命令
+### 当前版本的导出参数
 
-以下仅供用户执行，工作目录为本工程。当前时间线为 31,186 帧、60 fps，
+五阶段命令及每步继续条件统一见[公共模板](../../../docs/agents/videos/operations.md#五阶段命令模板)，工作目录为本工程。当前时间线为 31,186 帧、60 fps，
 约 8 分 39.77 秒。已核验 Remotion 4.0.539 的默认 PNG 编号为
 `element-00000.png` 至 `element-31185.png`；导出后仍须核对实际目录。
-各输出路径必须尚不存在，不覆盖已有产物。
 
-1. 独立预检。使用已核验的 Headless Shell；是否需要重跑预检由用户判断。
+| 模板参数 | 本工程值 |
+| --- | --- |
+| `FPS` | `60` |
+| `START_NUMBER` | `0` |
+| `PNG_PATTERN` | `out/pairwise-baseline-frames/element-%05d.png` |
+| `SILENT_VIDEO` | `out/pairwise-baseline-silent.mov` |
+| `TIMELINE_WAV` | `out/pairwise-baseline-audio.wav` |
+| `FINAL_MOV` | `out/pairwise-baseline.mov` |
+| `MUX_TOOL` | `../../shared/tools/mux-mov.ts` |
 
-```sh
-export REMOTION_BROWSER_EXECUTABLE=../../line-equation-tutorial/node_modules/.remotion/chrome-headless-shell/mac-arm64/chrome-headless-shell-mac-arm64/chrome-headless-shell
-pnpm --config.verify-deps-before-run=false run video:preflight
-```
-
-2. 生成 PNG，检查数量、编号、尺寸及画面后再编码。
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:export
-```
-
-3. 使用硬件编码生成无声 H.265；检查解码、帧数、时间戳和全片画面后继续。
-
-```sh
-ffmpeg -n -framerate 60 -start_number 0 -i 'out/pairwise-baseline-frames/element-%05d.png' -an -c:v hevc_videotoolbox -allow_sw 0 -pix_fmt yuv420p -tag:v hvc1 out/pairwise-baseline-silent.mov
-```
-
-4. 导出同一时间线的 PCM WAV；入口显式选择 PCM 16 bit、48 kHz，关闭视频硬件加速。核对双声道、时长及时间线来源后再合并。
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:export-audio
-```
-
-5. 复制封装为 MOV，保留前序产物；完成后仍需完整试听及音画同步验收。
-
-```sh
-pnpm --config.verify-deps-before-run=false exec node ../../shared/tools/mux-mov.ts out/pairwise-baseline-silent.mov out/pairwise-baseline-audio.wav out/pairwise-baseline.mov
-```
+此前使用的 `REMOTION_BROWSER_EXECUTABLE` 路径为 `../../line-equation-tutorial/node_modules/.remotion/chrome-headless-shell/mac-arm64/chrome-headless-shell-mac-arm64/chrome-headless-shell`；提供命令前仍须按公共规则现场核验真实路径和版本，不能将此记录当作当前环境已核验。所有输出使用不存在的新路径，保留有效产物。
 
 制作、试听、端口与交付规则见 [视频工程规则](../../AGENTS.md)
 及其链接的各阶段文档。

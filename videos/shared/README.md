@@ -1,6 +1,6 @@
 # 视频公共基础模块
 
-`line-equation-tutorial`、`shear-intuition`、`shear-coefficient`、`shear-integer-coordinates`、`shear-intersection-denominator`、`shear-safe-coefficient`、`shear-special-cases` 共同使用本目录。每集仍独立拥有教学内容、分镜、推导、专用图示、原稿、音频及发布素材，并保留自己的命令入口。`shear-preserves-intersections` 骨架工程在制作时接入。
+本目录供直线方程教程、剪切系列和 Bentley–Ottmann 系列的工程按需使用；实际能力以各集入口与导入为准。每集仍独立拥有教学内容、分镜、推导、专用图示、原稿、音频及发布素材，并保留自己的命令入口。
 
 ## 职责与依赖
 
@@ -8,13 +8,13 @@
 - `ui/`：KaTeX 呈现、公式表格、剪切系列数学文本组合及字幕容器。各集传入着色规则、符号范围、教学数据和必要内容，不从公共模块反向导入某集分镜。
 - `speech/`：语音文档、Azure 合成与对齐、实测时间检查、字幕短句合并及查询、音频检查和适用的素材制作流程。浏览器只导入纯时间或字幕模块，Azure SDK 由各集 Node 入口传入。
 - `checks/`：内容校验、通用 DOM 边界检查、无头 Studio 检查生命周期和公共源码 lint。各集保留数学正确性、专用图示、教学揭示等检查。
-- `tools/`：既有剪切系列的用户导出流程。只能由用户执行；助手不得执行该入口。
+- `tools/`：共享预检、浏览器核验与用户导出入口；适用范围和操作边界见[工程操作说明](../../docs/agents/videos/operations.md)。
 
 第⑤、⑥集共用 `checks/ShotLayoutCheck.tsx` 和 `checks/shot-layout.ts`，前者枚举生产页面的揭示、字幕、动画和静默状态，后者管理逐镜头检查及失败汇总；各集仍负责生产场景和内容断言。`speech/audit-narration.ts` 共用逐段评估与音频哈希绑定，不把自动标记等同于已确认错读。
 
 配音生成默认串行；第⑥集显式选择三段一批。并发批次等待全部在途请求结束后才报告失败，保留暂存数据，全部目标通过前不发布正式素材。零时长或超出音频结尾的合成词时间可使用现有语音评估服务重新测量，保留原音频和原始服务响应；不会裁剪、推算词时间或放宽发音复核。
 
-用户导出函数默认仍为 PNG；第⑥集显式选择 audio 模式，输出同时间线 PCM WAV。两个模式都执行同一前置检查、分配独立端口并拒绝覆盖；助手仅执行 `--dry-run`。
+`tools/export.ts` 默认导出 PNG，`audio` 模式导出同时间线 PCM WAV。它在两个模式中复用浏览器核验、独立端口和禁止覆盖逻辑；具体工程的接入、独立预检要求与命令模板见[用户导出](../../docs/agents/videos/operations.md#用户导出)。
 
 公共模块不依赖任何具体视频目录。各集的 TypeScript 路径与 Remotion Rspack 配置使公共浏览器代码使用该集已安装的 React、KaTeX 等依赖，不创建第二份运行时，也不统一升级 Remotion。命令仍从具体视频工程目录执行。公共目录不单独安装依赖。
 
@@ -45,13 +45,13 @@
 pnpm --config.verify-deps-before-run=false run video:lint
 ```
 
-该入口同时检查本集和公共源码，并通过消费方 TypeScript 配置检查公共类型。只需单独检查公共源码时，也可在任一已接入工程目录运行：
+该入口同时检查本集和公共源码，并通过消费方 TypeScript 配置检查公共类型。只需单独检查公共源码时，可从 `videos/shear/<工程>/` 运行：
 
 ```sh
-pnpm --config.verify-deps-before-run=false exec node ../shared/checks/lint.ts
+pnpm --config.verify-deps-before-run=false exec node ../../shared/checks/lint.ts
 ```
 
-根据影响复用各工程既有字幕、时间线、语音或推导测试。剪切系列另有 `video:narration --dry-run`、`video:check-content`；四个工程均有 `video:check-layout`。不要因公共逻辑存在就给未具备某流程的工程新增检查要求。公共模块内的纯行为测试可从消费方通过 `pnpm --config.verify-deps-before-run=false exec node --test ../shared/math/math-lines.test.ts` 运行。
+根据影响复用各工程既有字幕、时间线、语音或推导测试。剪切系列另有 `video:narration --dry-run`、`video:check-content`；布局检查入口以各工程 `package.json` 为准。不要因公共逻辑存在就给未具备某流程的工程新增检查要求。公共模块内的纯行为测试可从 `videos/shear/<工程>/` 通过 `pnpm --config.verify-deps-before-run=false exec node --test ../../shared/math/math-lines.test.ts` 运行。直线方程教程目录少一层，以上两个路径使用 `../shared/`。
 
 布局检查使用已安装浏览器、无头会话及临时端口，关闭本次创建的进程，不执行视频或静帧导出。既有素材足以验证的重构不调用语音服务。内容检查、类型检查和无头页面检查各自只证明覆盖的行为；试听、成片同步和可见桌面验收未执行时须如实说明。
 

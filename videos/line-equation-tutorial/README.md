@@ -89,7 +89,9 @@ pnpm --config.verify-deps-before-run=false exec node --test scripts/azure-speech
 pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-检查要求本机已有 Playwright CLI 和 Chrome。命令启动独立 Studio，按[教学排版与布局检查规则](../../docs/agents/videos/layout.md#教学排版与布局检查)检查 `LayoutCheck` 中的 4 个开场画面及 26 个完整正文页；不是外观快照测试，也不渲染或导出视频。失败页记录 `FAIL`；`scripts/render.ts` 的导出入口先执行同一检查，失败即停止导出。
+检查使用本机已有 Playwright CLI 与符合[唯一浏览器约束](../../docs/agents/videos/configuration.md#唯一浏览器约束)的 Chrome Headless Shell。命令启动独立 Studio，按[教学排版与布局检查规则](../../docs/agents/videos/layout.md#教学排版与布局检查)检查 `LayoutCheck` 中的 4 个开场画面及 26 个完整正文页；不是外观快照测试，也不渲染或导出视频。失败页记录 `FAIL`。
+
+实现差距：`scripts/render.ts` 当前仍在导出前自动运行布局检查，失败时停止，尚未符合[预检与导出分离规则](../../docs/agents/videos/operations.md#用户导出)。这是待修正的旧实现，不是本工程的规则例外；本次文档治理未修改该入口。
 
 ## 仓库内公共基础能力
 

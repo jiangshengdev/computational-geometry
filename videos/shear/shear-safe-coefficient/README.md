@@ -111,4 +111,4 @@ pnpm --config.verify-deps-before-run=false run video:check-layout --screenshots
 
 ## 发布素材
 
-路径见公共[空白工程的发布素材](../../../docs/agents/videos/operations.md#空白工程的发布素材)。
+路径见公共[发布素材](../../../docs/agents/videos/operations.md#发布素材)。
