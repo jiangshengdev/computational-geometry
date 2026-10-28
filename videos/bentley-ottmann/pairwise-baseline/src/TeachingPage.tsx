@@ -84,7 +84,7 @@ export function TeachingPage({
           left: 100,
           right: 100,
           top: page.basis.length ? 320 : 210,
-          bottom: 180,
+          bottom: 136,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -169,7 +169,7 @@ export function TeachingPage({
           </div>
         )}
       </main>
-      <Subtitles pageBlock style={{ height: 112 }}>
+      <Subtitles pageBlock>
         <span data-caption-ink>
           <MathText>{caption}</MathText>
         </span>
