@@ -1,26 +1,20 @@
 import type { ReactNode } from "react";
 import { Subtitles } from "./Subtitles";
 
-/** Shared frame; each episode owns its mathematics, scenes and reveal cues. */
-export function LessonPage({
+/** One frame for teaching text and formulas, independent of the line types. */
+export function MathLessonPage({
   title,
-  lines,
-  visibleStep,
-  activeStep,
+  basis,
+  children,
   diagram,
   diagramProgress = 1,
-  textWidth = 1400,
-  inactiveTextColor,
   caption,
 }: {
   title: ReactNode;
-  lines: ReactNode[];
-  visibleStep: number;
-  activeStep: number;
+  basis?: ReactNode;
+  children: ReactNode;
   diagram?: ReactNode;
   diagramProgress?: number;
-  textWidth?: number | "max-content";
-  inactiveTextColor?: string;
   caption: ReactNode;
 }) {
   return (
@@ -46,49 +40,46 @@ export function LessonPage({
       >
         {title}
       </header>
+      {basis ? (
+        <aside
+          data-page-block
+          style={{
+            position: "absolute",
+            top: 135,
+            left: 100,
+            padding: 20,
+            background: "#edf1f6",
+            fontSize: 30,
+          }}
+        >
+          已讲依据：{basis}
+        </aside>
+      ) : null}
       <main
         data-main-content
         style={{
           position: "absolute",
-          top: 155,
-          bottom: 150,
           left: 100,
           right: 100,
+          top: basis ? 250 : 165,
+          bottom: 150,
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
           gap: 65,
         }}
       >
         <section
           data-main-column
           style={{
-            width: diagram ? 850 : textWidth,
+            width: diagram ? 850 : "max-content",
             maxWidth: "100%",
-            margin: diagram ? 0 : "0 auto",
             transform: diagram
               ? `translateX(${435 * (1 - diagramProgress)}px)`
               : undefined,
           }}
         >
-          {lines.map((line, index) => (
-            <div
-              key={index}
-              data-content-line
-              style={{
-                visibility: index < visibleStep ? "visible" : "hidden",
-                color: index + 1 === activeStep ? undefined : inactiveTextColor,
-                marginBottom: 28,
-                padding: "14px 18px",
-                fontSize: 34,
-                lineHeight: 1.7,
-                borderLeft: `5px solid ${index + 1 === activeStep ? "#b45309" : "transparent"}`,
-                background:
-                  index + 1 === activeStep ? "rgba(180,83,9,0.08)" : undefined,
-              }}
-            >
-              <span data-line-ink>{line}</span>
-            </div>
-          ))}
+          {children}
         </section>
         {diagram ? (
           <section

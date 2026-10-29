@@ -14,6 +14,7 @@ export function createTeachingMathLines<Role extends string, Mark>({
   Latex,
   MathText,
   defaultMathColor,
+  wrapText = false,
 }: {
   pages: Record<
     string,
@@ -30,6 +31,7 @@ export function createTeachingMathLines<Role extends string, Mark>({
     numberRoles?: (Role | undefined)[];
   }>;
   defaultMathColor?: string;
+  wrapText?: boolean | string[];
 }) {
   const MathLines = ({
     pageId,
@@ -40,6 +42,9 @@ export function createTeachingMathLines<Role extends string, Mark>({
   }) => {
     const role = pageRoles[pageId];
     const theme = objectColors[role];
+    const shouldWrapText = Array.isArray(wrapText)
+      ? wrapText.includes(pageId)
+      : wrapText;
     const groups = useMemo(() => {
       const page = pages[pageId];
       // Apply semantic annotations before splitting so occurrence-based colors
@@ -62,6 +67,10 @@ export function createTeachingMathLines<Role extends string, Mark>({
     return (
       <MathTable
         groups={groups}
+        style={shouldWrapText ? { whiteSpace: "normal" } : undefined}
+        groupStyle={
+          shouldWrapText ? { width: "100%", tableLayout: "fixed" } : undefined
+        }
         rowProps={(index) => ({
           "data-content-line": true,
           "data-revealed": index < visibleStep,
@@ -70,13 +79,14 @@ export function createTeachingMathLines<Role extends string, Mark>({
         cellStyle={(cell) => ({
           color: cell.math ? (defaultMathColor ?? theme) : "#172c45",
           fontSize: cell.math ? 42 : 36,
+          lineHeight: shouldWrapText && !cell.math ? 1.7 : 0,
         })}
         renderCell={(cell, index) => (
           <span
             data-line-ink
             style={{
               position: "relative",
-              lineHeight: 0,
+              lineHeight: shouldWrapText && !cell.math ? 1.7 : 0,
               backgroundColor:
                 index === visibleStep - 1 ? `${theme}18` : undefined,
               borderRadius: 4,

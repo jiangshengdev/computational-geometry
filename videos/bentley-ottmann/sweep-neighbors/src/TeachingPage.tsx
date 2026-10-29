@@ -1,11 +1,32 @@
 import { Subtitles } from "../../../shared/ui/Subtitles";
-import { LessonPage } from "../../../shared/ui/LessonPage";
+import { MathLessonPage } from "../../../shared/ui/MathLessonPage";
+import { createTeachingMathLines } from "../../../shared/ui/TeachingMathLines";
+import { left } from "../../../shared/math/math-lines";
 import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
-import { MathText } from "./MathText";
+import { MathText, Latex } from "./MathText";
 import { SweepDiagram } from "./SweepDiagram";
 import { pages, type Shot } from "./storyboard";
 import { states, inputs, intersections } from "./sweep-state";
 const secondaryTextColor = "#64748b";
+const MathLines = createTeachingMathLines({
+  pages: Object.fromEntries(
+    Object.entries(pages).map(([id, page]) => [
+      id,
+      {
+        lines: page.lines.map((text) => ({ text })),
+        groups: [left(page.lines.length)],
+      },
+    ]),
+  ),
+  MathText,
+  Latex,
+  colorMath: (text) => text,
+  lineMarks: {},
+  objectColors: { current: "#b45309" },
+  pageRoles: Object.fromEntries(
+    Object.keys(pages).map((id) => [id, "current" as const]),
+  ),
+});
 export function TeachingPage({
   shot,
   caption,
@@ -39,17 +60,12 @@ export function TeachingPage({
   }
   if (shot.state === "blank")
     return (
-      <LessonPage
-        textWidth="max-content"
-        inactiveTextColor={secondaryTextColor}
+      <MathLessonPage
         title={<MathText>{page.title}</MathText>}
-        lines={page.lines.map((l) => (
-          <MathText key={l}>{l}</MathText>
-        ))}
-        visibleStep={visibleStep}
-        activeStep={visibleStep}
         caption={<MathText>{caption}</MathText>}
-      />
+      >
+        <MathLines pageId={shot.page} visibleStep={visibleStep} />
+      </MathLessonPage>
     );
   const emphasis = (key: string, compact = false) => ({
     background:

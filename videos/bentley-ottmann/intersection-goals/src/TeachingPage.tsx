@@ -1,11 +1,34 @@
 import { Subtitles } from "../../../shared/ui/Subtitles";
-import { MathText } from "./MathText";
+import { MathText, Latex, colorMath } from "./MathText";
 import { InputDiagram } from "./InputDiagram";
 import type { DiagramFocus } from "./timeline";
-import { LessonPage } from "../../../shared/ui/LessonPage";
+import { MathLessonPage } from "../../../shared/ui/MathLessonPage";
+import { createTeachingMathLines } from "../../../shared/ui/TeachingMathLines";
+import { left } from "../../../shared/math/math-lines";
 import { lessonPages } from "./continuation";
 import { LessonDiagram } from "./LessonDiagram";
 import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
+
+const MathLines = createTeachingMathLines({
+  pages: Object.fromEntries(
+    Object.entries(lessonPages).map(([id, page]) => [
+      id,
+      {
+        lines: page.lines.map((text) => ({ text })),
+        groups: [left(page.lines.length)],
+      },
+    ]),
+  ),
+  MathText,
+  Latex,
+  colorMath,
+  lineMarks: {},
+  objectColors: { current: "#b45309" },
+  pageRoles: Object.fromEntries(
+    Object.keys(lessonPages).map((id) => [id, "current" as const]),
+  ),
+  wrapText: true,
+});
 
 export function TeachingPage({
   visibleStep,
@@ -25,13 +48,8 @@ export function TeachingPage({
   if (shot.page !== "opening") {
     const page = lessonPages[shot.page as keyof typeof lessonPages];
     return (
-      <LessonPage
-        title={page.title}
-        lines={page.lines.map((line) => (
-          <MathText key={line}>{line}</MathText>
-        ))}
-        visibleStep={visibleStep}
-        activeStep={visibleStep}
+      <MathLessonPage
+        title={<MathText>{page.title}</MathText>}
         diagram={
           page.diagram ? (
             <LessonDiagram
@@ -42,7 +60,9 @@ export function TeachingPage({
           ) : undefined
         }
         caption={<MathText>{caption}</MathText>}
-      />
+      >
+        <MathLines pageId={shot.page} visibleStep={visibleStep} />
+      </MathLessonPage>
     );
   }
   return (

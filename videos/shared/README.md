@@ -52,6 +52,13 @@
 
 ## 修改与验证
 
+说明与推导页使用 `ui/MathLessonPage.tsx` 和 `ui/TeachingMathLines.tsx`。
+旧 `LessonPage` 已删除，不提供兼容导出；禁止恢复或复制旧组件。
+`TeachingMathLines` 的 `wrapText` 可对指定页面启用中数混排长句换行；
+未启用的公式页保持原有分组与对齐行为。
+每个视频工程的 ESLint 配置（含新工程）都须追加
+`checks/component-policy.ts` 导出的 `componentPolicy`，共享检查也使用该策略。
+
 从调用关系确定影响范围。公共模块修改后，对所有实际受影响工程执行必要检查；只改某集内容时不要求无关工程检查。保持已有失败检测，不为迁移放宽阈值或跳过失败。
 
 在各受影响工程目录运行：

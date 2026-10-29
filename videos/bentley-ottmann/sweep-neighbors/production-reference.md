@@ -9,7 +9,7 @@
 | 中性字幕、短句与静默保留 | shared/ui/Subtitles、speech/timing、shot-timeline              | 已接入相同组件；字幕原稿在 storyboard.ts，实测字幕随正式配音生成                     |
 | 数学与中英文间距         | shared/ui/MathText、Latex；intersection-goals/src/MathText.tsx | 已接入共享完整公式排版；坐标与点名不手工拆字                                         |
 | 标签、等比例             | intersection-goals/src/InputDiagram、LessonDiagram             | 本集固定等比例坐标，端点、候选点与已发现交点分时引入                                 |
-| 空间分配                 | shared/ui/LessonPage；参考正文逐行累积                         | 本集几何图为主，右侧三份记录逐份介绍后保留；下方本页讲解累积；因四区联动采用专用页面 |
+| 空间分配                 | shared/ui/MathLessonPage 与 TeachingMathLines；正文逐行累积    | 本集说明页使用统一框架；几何图为主的扫描过程保留右侧三份记录及下方讲解的专用页面     |
 | 对象色与提示             | shared/ui/AttentionMarks、speech/teaching-cues                 | 已复用同一屏幕尺寸、透明度和描亮行为；A/B/C/D 保持稳定身份色，提示按实测语义短语切换 |
 | 推导与行距               | shared/math、shared/ui；参考 continuation.ts                   | 上集不做求交代数推导；下集保留高度差代入、展开、分组与解零点的逐行证明               |
 | 读音                     | 参考 narration-text、speech-text 与 shared/speech              | 已完成独立文本审校、词典标注及连续两轮全文盲审；合成中的局部修正单独复核             |

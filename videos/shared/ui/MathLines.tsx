@@ -4,6 +4,7 @@ import { mathSpacing, type TeachingGroup } from "../math/math-lines";
 export function MathLines<Cell>({
   groups,
   style,
+  groupStyle,
   rowProps,
   cellStyle,
   renderCell,
@@ -15,6 +16,7 @@ export function MathLines<Cell>({
     rows: { index: number; cells: Cell[] }[];
   }[];
   style?: CSSProperties;
+  groupStyle?: CSSProperties;
   rowProps: (index: number) => {
     style?: CSSProperties;
     "data-content-line"?: boolean;
@@ -34,6 +36,7 @@ export function MathLines<Cell>({
             display: "table",
             borderCollapse: "collapse",
             marginTop: groupIndex ? mathSpacing.group : 0,
+            ...groupStyle,
           }}
         >
           {group.rows.map((row) => {

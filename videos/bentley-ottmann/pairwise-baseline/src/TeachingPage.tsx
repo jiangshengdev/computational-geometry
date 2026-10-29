@@ -3,13 +3,25 @@ import { Subtitles } from "../../../shared/ui/Subtitles";
 import { MathText, Latex, colorMath } from "./MathText";
 import { pages } from "./storyboard";
 import { PairingDiagram, type PairingState } from "./PairingDiagram";
-import { LessonPage } from "../../../shared/ui/LessonPage";
+import { MathLessonPage } from "../../../shared/ui/MathLessonPage";
+import { left } from "../../../shared/math/math-lines";
 import { lessonPages } from "./continuation";
 import { LessonDiagram } from "./LessonDiagram";
 import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
 
 const MathLines = createTeachingMathLines({
-  pages,
+  pages: {
+    ...pages,
+    ...Object.fromEntries(
+      Object.entries(lessonPages).map(([id, page]) => [
+        id,
+        {
+          lines: page.lines.map((text) => ({ text })),
+          groups: [left(page.lines.length)],
+        },
+      ]),
+    ),
+  },
   MathText,
   Latex,
   colorMath,
@@ -20,7 +32,11 @@ const MathLines = createTeachingMathLines({
     ordered: "current",
     unordered: "current",
     substitution: "current",
+    ...Object.fromEntries(
+      Object.keys(lessonPages).map((id) => [id, "current" as const]),
+    ),
   },
+  wrapText: Object.keys(lessonPages),
 });
 export function TeachingPage({
   shot,
@@ -40,13 +56,8 @@ export function TeachingPage({
   if (shot.page in lessonPages) {
     const lesson = lessonPages[shot.page as keyof typeof lessonPages];
     return (
-      <LessonPage
-        title={lesson.title}
-        lines={lesson.lines.map((line) => (
-          <MathText key={line}>{line}</MathText>
-        ))}
-        visibleStep={visibleStep}
-        activeStep={visibleStep}
+      <MathLessonPage
+        title={<MathText>{lesson.title}</MathText>}
         diagram={
           lesson.diagram ? (
             <LessonDiagram
@@ -58,7 +69,9 @@ export function TeachingPage({
           ) : undefined
         }
         caption={<MathText>{caption}</MathText>}
-      />
+      >
+        <MathLines pageId={shot.page} visibleStep={visibleStep} />
+      </MathLessonPage>
     );
   }
   const page = pages[shot.page as keyof typeof pages];
