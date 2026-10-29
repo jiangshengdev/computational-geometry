@@ -8,13 +8,11 @@ import {
 // Number of spoken phrases explaining each displayed clause, reviewed against
 // the formulas. Other sentences already have a one-to-one clause correspondence.
 const counts: Record<string, Record<number, number[]>> = {
-  N06: { 1: [2, 1] },
   N07: { 1: [4, 1, 1] },
   N08: { 0: [1, 5], 1: [6, 5] },
   N09: { 0: [2, 3, 1], 1: [3] },
   N10: { 1: [1, 1, 3] },
   N11: { 0: [2, 2, 1], 1: [1, 2, 1] },
-  N15: { 1: [2] },
   N17: { 0: [2, 1] },
   N18: { 0: [3] },
 };

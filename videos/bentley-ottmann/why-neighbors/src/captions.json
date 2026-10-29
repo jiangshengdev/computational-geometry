@@ -91,7 +91,7 @@
       "confidence": null
     },
     {
-      "text": "m 和 b 是固定的数。",
+      "text": "这里 m 和 b 是固定的数。",
       "startMs": 6028,
       "endMs": 8108,
       "timestampMs": null,
@@ -165,21 +165,28 @@
   ],
   "N06": [
     {
-      "text": "现在设左边的位置叫 u，",
+      "text": "现在设 u 为左边的位置，",
       "startMs": 70,
       "endMs": 2160,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "右边叫 v，两条线段在中间一直存在。",
+      "text": "用 v 表示右边的位置，",
       "startMs": 2328,
+      "endMs": 4208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条线段在中间一直存在。",
+      "startMs": 4498,
       "endMs": 6658,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "设 d(u)>0、d(v)<0，",
+      "text": "设 d(u)>0，而 d(v)<0，",
       "startMs": 7089,
       "endMs": 10168,
       "timestampMs": null,
@@ -209,7 +216,7 @@
       "confidence": null
     },
     {
-      "text": "t 在零和一之间时，",
+      "text": "当 t 在零和一之间时，",
       "startMs": 10558,
       "endMs": 12478,
       "timestampMs": null,
@@ -382,14 +389,14 @@
   ],
   "N13": [
     {
-      "text": "任取一个交点，把它的横坐标叫 p，",
+      "text": "任取一个交点，用 p 表示它的横坐标，",
       "startMs": 110,
       "endMs": 3178,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两条交叉线段叫 U 和 V。",
+      "text": "用 U 和 V 命名这两条交叉线段。",
       "startMs": 3448,
       "endMs": 6167,
       "timestampMs": null,
@@ -426,8 +433,15 @@
       "confidence": null
     },
     {
-      "text": "它们横坐标不同，所以能在 p 左侧选足够靠近的 u，",
+      "text": "它们横坐标不同，",
       "startMs": 6439,
+      "endMs": 7799,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以能在 p 左侧选取足够靠近的一个位置 u 作为左边界，",
+      "startMs": 8088,
       "endMs": 12608,
       "timestampMs": null,
       "confidence": null
@@ -449,15 +463,22 @@
       "confidence": null
     },
     {
-      "text": "夹在中间的线段叫 W。",
+      "text": "用 W 命名夹在中间的线段。",
       "startMs": 2378,
       "endMs": 4777,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "不妨让 U 在下面、V 在上面。",
+      "text": "不妨让 U 在下面，",
       "startMs": 5219,
+      "endMs": 6699,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "让 V 在上面。",
+      "startMs": 7018,
       "endMs": 8218,
       "timestampMs": null,
       "confidence": null
@@ -470,7 +491,7 @@
       "confidence": null
     },
     {
-      "text": "W 一直夹在两者之间。",
+      "text": "线段 W 一直夹在两者之间。",
       "startMs": 10908,
       "endMs": 13187,
       "timestampMs": null,
@@ -479,7 +500,7 @@
   ],
   "N16": [
     {
-      "text": "到 p 时，W 仍然存在。",
+      "text": "到 p 时，线段 W 仍然存在。",
       "startMs": 70,
       "endMs": 3388,
       "timestampMs": null,
@@ -516,14 +537,14 @@
       "confidence": null
     },
     {
-      "text": "W 和 V 的记号同理。",
+      "text": "对于 W 和 V 也使用同样的记号。",
       "startMs": 5248,
       "endMs": 7808,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "W 在 p 处不能低于 U，",
+      "text": "线段 W 在 p 处不能低于 U 的高度，",
       "startMs": 8289,
       "endMs": 11289,
       "timestampMs": null,
@@ -544,7 +565,7 @@
       "confidence": null
     },
     {
-      "text": "同样不能高于 V。",
+      "text": "同样不能高于 V 的高度。",
       "startMs": 15028,
       "endMs": 16868,
       "timestampMs": null,
@@ -560,7 +581,7 @@
       "confidence": null
     },
     {
-      "text": "U 和 V 正在相交，",
+      "text": "线段 U 和 V 正在相交，",
       "startMs": 12889,
       "endMs": 14889,
       "timestampMs": null,
@@ -574,7 +595,7 @@
       "confidence": null
     },
     {
-      "text": "这就成为三线共点，违背了简化条件。",
+      "text": "这就成为三线共点，这就违背了简化条件。",
       "startMs": 19099,
       "endMs": 22728,
       "timestampMs": null,
@@ -726,7 +747,7 @@
       "confidence": null
     },
     {
-      "text": "p 左侧的交点按选择方式都没有漏，",
+      "text": "在 p 左侧的交点按选择方式都没有漏，",
       "startMs": 2949,
       "endMs": 5828,
       "timestampMs": null,
@@ -779,7 +800,7 @@
       "confidence": null
     },
     {
-      "text": "横坐标为 p 的交点在两段范围内且位于未来位置，",
+      "text": "横坐标为 p 的交点在两段范围内而且位于未来位置，",
       "startMs": 1878,
       "endMs": 6478,
       "timestampMs": null,
