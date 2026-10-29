@@ -53,8 +53,8 @@ docs/
 ```text
 static/img/segment-intersection/
 ├── what-we-compute/
-│   ├── light/       # 9 个 SVG
-│   └── dark/        # 9 个 SVG
+│   ├── light/       # 31 个独立子图 SVG
+│   └── dark/        # 31 个独立子图 SVG
 ├── line-equation/
 │   ├── light/       # 4 个 SVG
 │   └── dark/        # 4 个 SVG
@@ -65,9 +65,13 @@ static/img/segment-intersection/
 
 正文使用 `/img/segment-intersection/<文档主题>/<light或dark>/<文件名>` 引用图片。新增图片应放入对应目录；移动时同时更新正文引用及生成脚本的输出目录。文件名保留原有明暗后缀。
 
-第 1 章配图由 `scripts/draw_intersection_goals.ts` 生成，在本目录执行 `pnpm exec node scripts/draw_intersection_goals.ts`。直线方程配图由 `scripts/draw_line_equation.py` 生成，复用下述剪切脚本的 Matplotlib 环境与主题样式。
+第 1 章的 9 组配图使用 `IntersectionFigures` 组件：每张子图原始尺寸为 320 × 260，按原尺寸显示，空间不足时换行，不对整组图片缩放。子图文件名包含从 1 开始的编号，如 `intersection-goals-identity-1-light.svg`。前后对照每两幅独立成组，并保留「加入 C 前／后」的图外说明。生成器会清理被这些子图替换的旧拼接 SVG。
+
+第 1 章配图由 `scripts/draw_intersection_goals.ts` 生成，在本目录执行 `uv run --offline --with matplotlib==3.11.2 pnpm exec node scripts/draw_intersection_goals.ts`。脚本通过 `scripts/render_math_labels.py` 复用下述 Matplotlib 环境与 MathText 样式，将 LaTeX 数学标注嵌入为 SVG 路径。图内仅保留必要的编号和数学标注，中文说明放在正文；原点标为 $O$，坐标轴正向带箭头。直线方程配图由 `scripts/draw_line_equation.py` 生成，同样复用剪切脚本的环境与主题样式。
 
 ## 生成坐标系图解
+
+如果已有 Matplotlib 环境，但 uv 离线解析不可用，可指定现有解释器生成第 1 章图片：`MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_intersection_goals.ts`。该入口不会安装依赖。
 
 `scripts/draw_shear_coordinates.py` 使用 Matplotlib 的 MathText 渲染数学标注，生成以下图解，每张都包含明暗主题：
 

@@ -1,8 +1,10 @@
-/** Generate chapter-one SVGs without additional drawing dependencies.
- * Run in docs-site: pnpm exec node scripts/draw_intersection_goals.ts
+/** Generate chapter-one SVGs with the existing Matplotlib MathText environment.
+ * Run in docs-site: uv run --offline --with matplotlib==3.11.2 pnpm exec node scripts/draw_intersection_goals.ts
  * Geometry uses one scale for both axes; input segments are never displaced.
  */
-import {mkdirSync, writeFileSync} from 'node:fs';
+import {mkdirSync, writeFileSync, rmSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
 
 const output = new URL('../static/img/segment-intersection/what-we-compute/', import.meta.url);
 
@@ -21,16 +23,21 @@ const overlap: Segment = [[2, 0], [4, 0]];
 const x = (value: number) => 66 + value * 30;
 const y = (value: number) => 128 - value * 30;
 const escape = (value: string) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+const labels: {px: number; py: number; value: string; color: string; size: number; anchor: string}[] = [];
+const images: {target: URL; svg: string}[] = [];
+const replacedImages: URL[] = [];
+const labelScale = 0.8;
 
 function text(px: number, py: number, value: string, color: string, size = 18, anchor = 'middle') {
-  return `<text x="${px}" y="${py}" fill="${color}" font-size="${size}" text-anchor="${anchor}">${escape(value)}</text>`;
+  labels.push({px, py, value, color, size: size * labelScale, anchor});
+  return `<!--label-${labels.length - 1}-->`;
 }
 
-function line(a: Point, b: Point, color: string, width = 5) {
+function line(a: Point, b: Point, color: string, width = 2) {
   return `<line x1="${x(a[0])}" y1="${y(a[1])}" x2="${x(b[0])}" y2="${y(b[1])}" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`;
 }
 
-function dot(point: Point, color: string, radius = 4) {
+function dot(point: Point, color: string, radius = 3) {
   return `<circle cx="${x(point[0])}" cy="${y(point[1])}" r="${radius}" fill="${color}"/>`;
 }
 
@@ -38,93 +45,136 @@ function segment(s: Segment, color: string) {
   return line(s[0], s[1], color) + dot(s[0], color) + dot(s[1], color);
 }
 
+function coordinate(point: Point, color: string, dx: number, dy: number, anchor = 'middle') {
+  if (point[0] === 0 && dx === 0) {
+    dx = 12;
+    anchor = 'start';
+  }
+  return text(x(point[0]) + dx * labelScale, y(point[1]) + dy * labelScale, `$(${point.join(',')})$`, color, 22, anchor);
+}
+
+function labeledSegment(s: Segment, color: string) {
+  const vertical = s[0][0] === s[1][0];
+  return segment(s, color) + s.map((point, index) => vertical
+    ? coordinate(point, color, 15, point[1] > 0 ? -8 : 30, 'start')
+    : coordinate(point, color, 0, point[1] > 0 || (Math.abs(s[1][0] - s[0][0]) <= 2 && index === 0) ? -18 : 38)).join('');
+}
+
 function pointInput(p: Point, color: string) {
   const px = x(p[0]), py = y(p[1]);
-  return `<path d="M ${px} ${py - 7} l 7 7 -7 7 -7 -7 Z" fill="${color}"/>`;
+  return `<path d="M ${px} ${py - 5} l 5 5 -5 5 -5 -5 Z" fill="${color}"/>`;
 }
 
 function axes(p: Palette) {
   let svg = line([-1.4, 0], [7.1, 0], p.axis, 1) + line([0, -1.7], [0, 1.8], p.axis, 1);
-  for (const n of [-1, 0, 1, 2, 3, 4, 5, 6]) {
+  for (const n of [-1, 1, 2, 3, 4, 5, 6]) {
     svg += line([n, -.07], [n, .07], p.axis, 1);
-    svg += text(x(n), y(0) + 23, String(n), p.axis, 14);
   }
   for (const n of [-1, 1]) {
     svg += line([-.07, n], [.07, n], p.axis, 1);
-    svg += text(x(0) - 13, y(n) + 5, String(n), p.axis, 14);
   }
-  return svg + text(x(7.3), y(0) + 5, 'x', p.axis, 16) + text(x(0), y(2.1), 'y', p.axis, 16);
+  svg += `<path d="M ${x(7.1) - 6} ${y(0) - 3} L ${x(7.1)} ${y(0)} L ${x(7.1) - 6} ${y(0) + 3} M ${x(0) - 3} ${y(1.8) + 6} L ${x(0)} ${y(1.8)} L ${x(0) + 3} ${y(1.8) + 6}" fill="none" stroke="${p.axis}" stroke-width="1"/>`;
+  svg += text(x(0) - 13 * labelScale, y(0) + 22 * labelScale, '$O$', p.axis, 18);
+  return svg + text(x(7.1) + 9 * labelScale, y(0) + 5 * labelScale, '$x$', p.axis, 21)
+    + text(x(0), y(1.8) - 9 * labelScale, '$y$', p.axis, 21);
 }
 
-function panel(p: Palette, title: string, drawing: string, note: string, coordinateAxes = true) {
-  return text(155, 32, title, p.text, 20) + (coordinateAxes ? axes(p) : '') + drawing + text(155, 218, note, p.text, 17);
+function panel(p: Palette, drawing: string, label: string, summary = '') {
+  return text(155, y(0) - 96 * labelScale, label, p.text, 26) + axes(p) + drawing
+    + (summary ? text(155, y(0) + 104 * labelScale, summary, p.text, 23) : '');
 }
 
-function save(name: string, theme: string, p: Palette, title: string, panels: string[], columns = 3) {
-  const width = columns * 320, height = Math.ceil(panels.length / columns) * 240;
-  const content = panels.map((item, i) => `<g transform="translate(${(i % columns) * 320},${Math.floor(i / columns) * 240})">${item}</g>`).join('\n');
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title">
-<title id="title">${escape(title)}</title>
-<rect width="${width}" height="${height}" fill="${p.background}"/>
-<g font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">${content}</g>
-</svg>\n`;
+function save(name: string, theme: string, p: Palette, title: string, panels: string[]) {
   const themeOutput = new URL(`${theme}/`, output);
-  mkdirSync(themeOutput, {recursive: true});
-  writeFileSync(new URL(`intersection-goals-${name}-${theme}.svg`, themeOutput), svg);
+  panels.forEach((content, index) => {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="260" viewBox="0 0 320 260" role="img" aria-labelledby="title">
+<title id="title">${escape(title)} 子图 ${index + 1}。</title>
+<rect width="320" height="260" fill="${p.background}"/>
+<g>${content}</g>
+</svg>\n`;
+    images.push({target: new URL(`intersection-goals-${name}-${index + 1}-${theme}.svg`, themeOutput), svg});
+  });
+  replacedImages.push(new URL(`intersection-goals-${name}-${theme}.svg`, themeOutput));
 }
 
 for (const [theme, p] of Object.entries(palettes)) {
-  save('identity', theme, p, '三份输入分别显示，再显示共同的几何位置；所有小图坐标尺度相同。', [
-    panel(p, '输入 1', segment(A, p.a), '(0,0) → (4,0)'),
-    panel(p, '输入 2', segment(A, p.b), '(0,0) → (4,0)'),
-    panel(p, '输入 3', segment(A, p.result), '(4,0) → (0,0)'),
-    panel(p, '共同的几何位置', segment(A, p.text), '位置相同，仍有 3 份输入'),
-  ], 2);
+  save('identity', theme, p, '三份输入分别显示在相同的几何位置；所有小图坐标尺度相同。', [
+    panel(p, labeledSegment(A, p.a), '$S_1$', '$(0,0) \\to (4,0)$'),
+    panel(p, labeledSegment(A, p.b), '$S_2$', '$(0,0) \\to (4,0)$'),
+    panel(p, labeledSegment(A, p.result), '$S_3$', '$(4,0) \\to (0,0)$'),
+  ]);
 
-  const examples: {name: string; title: string; other: Segment; result: Point | Segment | null; note: string}[] = [
-    {name: 'empty', title: '不相交', other: [[0, 1], [4, 1]], result: null, note: '没有公共点'},
-    {name: 'crossing', title: '内部交叉', other: [[2, -1], [2, 1]], result: [2, 0], note: '交集是点 (2,0)'},
-    {name: 'touch', title: '端点接触', other: [[4, 0], [6, 0]], result: [4, 0], note: '交集是点 (4,0)'},
-    {name: 'overlap', title: '区间重叠', other: B, result: overlap, note: '从 (2,0) 到 (4,0)，包含两端'},
-    {name: 'point-on', title: '点输入在线段上', other: [[2, 0], [2, 0]], result: [2, 0], note: '交集是点 (2,0)'},
-    {name: 'point-off', title: '点输入在线段外', other: [[5, 0], [5, 0]], result: null, note: '没有公共点'},
+  const examples: {name: string; title: string; other: Segment; result: Point | Segment | null}[] = [
+    {name: 'empty', title: '不相交', other: [[0, 1], [4, 1]], result: null},
+    {name: 'crossing', title: '内部交叉', other: [[2, -1], [2, 1]], result: [2, 0]},
+    {name: 'touch', title: '端点接触', other: [[4, 0], [6, 0]], result: [4, 0]},
+    {name: 'overlap', title: '区间重叠', other: B, result: overlap},
+    {name: 'point-on', title: '点输入在线段上', other: [[2, 0], [2, 0]], result: [2, 0]},
+    {name: 'point-off', title: '点输入在线段外', other: [[5, 0], [5, 0]], result: null},
   ];
   for (const item of examples) {
     const isPoint = item.other[0][0] === item.other[1][0] && item.other[0][1] === item.other[1][1];
-    let result = text(155, 93, '空交集', p.result, 23);
+    let result = text(155, 94, '$\\varnothing$', p.result, 30);
     if (item.result !== null) {
       result = typeof item.result[0] === 'number'
-        ? dot(item.result as Point, p.result, 6)
-        : segment(item.result as Segment, p.result);
+        ? dot(item.result as Point, p.result, 4) + coordinate(item.result as Point, p.result, 0, 38)
+        : labeledSegment(item.result as Segment, p.result);
     }
     save(item.name, theme, p, `${item.title}：分别展示输入和完整交集，所有小图坐标尺度相同。`, [
-      panel(p, '输入 A', segment(A, p.a), '(0,0) 到 (4,0)'),
-      panel(p, isPoint ? '另一份输入：一个点' : '另一条输入', isPoint ? pointInput(item.other[0], p.b) : segment(item.other, p.b),
-        isPoint ? `(${item.other[0].join(',')})` : `(${item.other[0].join(',')}) 到 (${item.other[1].join(',')})`),
-      panel(p, '这对输入的完整交集', result, item.note),
+      panel(p, labeledSegment(A, p.a), '$A$'),
+      panel(p, isPoint ? pointInput(item.other[0], p.b) + coordinate(item.other[0], p.b, 0, 38) : labeledSegment(item.other, p.b), '$B$'),
+      panel(p, result, '$A\\cap B$'),
     ]);
   }
 
   save('third-segment', theme, p, '加入 C 前后，A 与 B 的交集始终为从 (2,0) 到 (4,0) 的完整区间。', [
-    panel(p, '加入 C 前：输入 A', segment(A, p.a), '(0,0) 到 (4,0)'),
-    panel(p, '加入 C 后：输入 A 与 C', segment(A, p.a) + segment(C, p.b), 'C：x = 3，−1 ≤ y ≤ 1'),
-    panel(p, '加入 C 前：输入 B', segment(B, p.a), '(2,0) 到 (6,0)'),
-    panel(p, '加入 C 后：输入 B 与 C', segment(B, p.a) + segment(C, p.b), 'C：x = 3，−1 ≤ y ≤ 1'),
-    panel(p, '加入 C 前：A、B 的交集', segment(overlap, p.result), '(2,0) 到 (4,0)'),
-    panel(p, '加入 C 后：A、B 的交集', segment(overlap, p.result), '仍然完整，不在 x = 3 处切开'),
-  ], 2);
+    panel(p, labeledSegment(A, p.a), '$A$'),
+    panel(p, labeledSegment(A, p.a) + labeledSegment(C, p.b), '$A,\\ C$'),
+    panel(p, labeledSegment(B, p.a), '$B$'),
+    panel(p, labeledSegment(B, p.a) + labeledSegment(C, p.b), '$B,\\ C$'),
+    panel(p, labeledSegment(overlap, p.result), '$A\\cap B$', '$2\\leq x\\leq4,\\quad y=0$'),
+    panel(p, labeledSegment(overlap, p.result), '$A\\cap B$', '$2\\leq x\\leq4,\\quad y=0$'),
+  ]);
 
   const horizontal: Segment = [[-1, 0], [1, 0]];
   const vertical: Segment = [[0, -1], [0, 1]];
   const origin: Point = [0, 0];
   save('three-pairs', theme, p, '横线段、竖线段和原点输入分别展示；同一个原点对应三对不同输入的结果。', [
-    panel(p, '输入 1：水平线段', segment(horizontal, p.a), '(−1,0) 到 (1,0)'),
-    panel(p, '输入 2：竖直线段', segment(vertical, p.b), '(0,−1) 到 (0,1)'),
-    panel(p, '输入 3：只有原点', pointInput(origin, p.result), '(0,0)'),
-    panel(p, '放回同一坐标系', segment(horizontal, p.a) + segment(vertical, p.b) + pointInput(origin, p.result), '三份输入都包含原点'),
-    panel(p, '公共位置', dot(origin, p.result, 6), '只有一个几何位置：(0,0)'),
-    panel(p, '按输入对保留结果',
-      text(155, 90, '1 与 2 → 点 (0,0)', p.text) + text(155, 128, '1 与 3 → 点 (0,0)', p.text) + text(155, 166, '2 与 3 → 点 (0,0)', p.text),
-      '3 对输入，3 条结果', false),
+    panel(p, labeledSegment(horizontal, p.a), '$S_1$'),
+    panel(p, labeledSegment(vertical, p.b), '$S_2$'),
+    panel(p, pointInput(origin, p.result) + coordinate(origin, p.result, 25, 38, 'start'), '$S_3$'),
+    panel(p, segment(horizontal, p.a) + segment(vertical, p.b) + pointInput(origin, p.result), '$S_1,\\ S_2,\\ S_3$', '$O=(0,0)$'),
   ]);
+}
+
+// All visible labels are mathematical; prose belongs in the article.
+const formulas = [...new Set(labels.map(({value}) => value))];
+const rendered = spawnSync(process.env.MATHTEXT_PYTHON ?? 'python', [fileURLToPath(new URL('./render_math_labels.py', import.meta.url))], {
+  input: JSON.stringify(formulas), encoding: 'utf8', maxBuffer: 16 * 1024 * 1024,
+});
+if (rendered.error || rendered.status !== 0) {
+  throw new Error(`MathText rendering failed. Use the maintainer-provisioned Matplotlib environment.\n${rendered.error ?? rendered.stderr}`);
+}
+type MathLabel = {svg: string; width: number; height: number; depth: number};
+const math: Record<string, MathLabel> = JSON.parse(rendered.stdout);
+const markup = labels.map(({px, py, value, color, size, anchor}, index) => {
+  const item = math[value];
+  const scale = size / 100;
+  const width = item.width * scale;
+  const offset = anchor === 'middle' ? -width / 2 : anchor === 'end' ? -width : 0;
+  // Each embedded SVG needs its own glyph IDs, including repeated formulas.
+  const prefix = `label-${index}-`;
+  const svg = item.svg.replace(/id="([^"]+)"/g, `id="${prefix}$1"`)
+    .replace(/xlink:href="#([^"]+)"/g, `xlink:href="#${prefix}$1"`)
+    .replace(/url\(#([^)]+)\)/g, `url(#${prefix}$1)`)
+    .replace(/width="[^"]+" height="[^"]+"/, `width="${item.width}" height="${item.height}"`);
+  return `<g transform="translate(${px + offset},${py - (item.height - item.depth) * scale}) scale(${scale})" color="${color}" role="img" aria-label="${escape(value)}">${svg}</g>`;
+});
+for (const {target, svg} of images) {
+  mkdirSync(new URL('./', target), {recursive: true});
+  writeFileSync(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
+}
+// Remove only the superseded composite outputs after every panel was generated.
+for (const target of replacedImages) {
+  rmSync(target, {force: true});
 }
