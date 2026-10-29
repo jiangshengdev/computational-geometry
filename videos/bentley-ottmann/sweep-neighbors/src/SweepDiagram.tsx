@@ -21,8 +21,9 @@ export function SweepDiagram({
   return (
     <svg
       width={900}
-      height={680}
-      viewBox="0 0 900 680"
+      height={704}
+      viewBox="0 -24 900 704"
+      style={{ display: "block", marginTop: -24 }}
       aria-label="四线段等比例扫描教学示意"
     >
       <defs>
@@ -69,7 +70,7 @@ export function SweepDiagram({
       <line
         x1={105}
         x2={105}
-        y1={bottom}
+        y1={bottom + 20}
         y2={top - 20}
         stroke="#60738a"
         markerEnd="url(#axis-arrow)"
@@ -77,7 +78,7 @@ export function SweepDiagram({
       <SvgMathText x={870} y={axisY + 5} fontSize={24}>
         x
       </SvgMathText>
-      <SvgMathText x={127} y={top - 3} fontSize={24}>
+      <SvgMathText x={127} y={top - 12} fontSize={24}>
         y
       </SvgMathText>
       <SvgMathText x={93} y={axisY + 28} align="right" fontSize={22}>
@@ -94,7 +95,7 @@ export function SweepDiagram({
           {x}
         </SvgMathText>
       ))}
-      {[-2, 2, 4, 6, 7].map((y) => (
+      {[-2, 2, 4, 6].map((y) => (
         <SvgMathText
           key={y}
           x={88}

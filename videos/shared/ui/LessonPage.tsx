@@ -9,6 +9,8 @@ export function LessonPage({
   activeStep,
   diagram,
   diagramProgress = 1,
+  textWidth = 1400,
+  inactiveTextColor,
   caption,
 }: {
   title: ReactNode;
@@ -17,6 +19,8 @@ export function LessonPage({
   activeStep: number;
   diagram?: ReactNode;
   diagramProgress?: number;
+  textWidth?: number | "max-content";
+  inactiveTextColor?: string;
   caption: ReactNode;
 }) {
   return (
@@ -58,7 +62,8 @@ export function LessonPage({
         <section
           data-main-column
           style={{
-            width: diagram ? 850 : 1400,
+            width: diagram ? 850 : textWidth,
+            maxWidth: "100%",
             margin: diagram ? 0 : "0 auto",
             transform: diagram
               ? `translateX(${435 * (1 - diagramProgress)}px)`
@@ -71,6 +76,7 @@ export function LessonPage({
               data-content-line
               style={{
                 visibility: index < visibleStep ? "visible" : "hidden",
+                color: index + 1 === activeStep ? undefined : inactiveTextColor,
                 marginBottom: 28,
                 padding: "14px 18px",
                 fontSize: 34,

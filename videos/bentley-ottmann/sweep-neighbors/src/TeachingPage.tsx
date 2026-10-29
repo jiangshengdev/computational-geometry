@@ -5,6 +5,7 @@ import { MathText } from "./MathText";
 import { SweepDiagram } from "./SweepDiagram";
 import { pages, type Shot } from "./storyboard";
 import { states, inputs, intersections } from "./sweep-state";
+const secondaryTextColor = "#64748b";
 export function TeachingPage({
   shot,
   caption,
@@ -39,6 +40,8 @@ export function TeachingPage({
   if (shot.state === "blank")
     return (
       <LessonPage
+        textWidth="max-content"
+        inactiveTextColor={secondaryTextColor}
         title={<MathText>{page.title}</MathText>}
         lines={page.lines.map((l) => (
           <MathText key={l}>{l}</MathText>
@@ -48,18 +51,29 @@ export function TeachingPage({
         caption={<MathText>{caption}</MathText>}
       />
     );
-  const emphasis = (key: string) =>
-    focus?.active && focus.keys?.includes(key)
-      ? "rgba(180,83,9,0.12)"
-      : "transparent";
+  const emphasis = (key: string, compact = false) => ({
+    background:
+      focus?.active && focus.keys?.includes(key)
+        ? "rgba(180,83,9,0.12)"
+        : "transparent",
+    // Keep grid slots fixed while the highlight hugs its content.
+    alignSelf: "start",
+    justifySelf: "start",
+    width: "max-content",
+    maxWidth: "100%",
+    padding: compact ? "2px 8px" : "8px 12px",
+    margin: compact ? 0 : "-8px -12px",
+  });
   const order = (ids: typeof state.order) =>
-    ids.length
-      ? ids.map((id, i) => (
-          <span key={id} style={{ color: inputs[id].color }}>
-            <MathText>{`${i ? ", " : ""}${id}`}</MathText>
-          </span>
-        ))
-      : "空";
+    ids.length ? (
+      ids.map((id, i) => (
+        <span key={id} style={{ color: inputs[id].color }}>
+          <MathText>{`${i ? ", " : ""}${id}`}</MathText>
+        </span>
+      ))
+    ) : (
+      <span style={{ color: secondaryTextColor }}>空</span>
+    );
   return (
     <div
       data-production-page
@@ -124,13 +138,13 @@ export function TeachingPage({
             data-page-block
             style={{
               visibility: state.records >= 1 ? "visible" : "hidden",
-              background: emphasis("order"),
+              ...emphasis("order"),
             }}
           >
             <div style={{ fontSize: 30, fontWeight: 600 }}>
               活动顺序 · 从下到上
             </div>
-            <div style={{ fontSize: 23 }}>
+            <div style={{ fontSize: 23, color: secondaryTextColor }}>
               <MathText>
                 {state.definition ? "定义示意，尚未执行扫描" : state.stage}
               </MathText>
@@ -150,7 +164,7 @@ export function TeachingPage({
             data-page-block
             style={{
               visibility: state.records >= 2 ? "visible" : "hidden",
-              background: emphasis("queue"),
+              ...emphasis("queue"),
             }}
           >
             <div style={{ fontSize: 30, fontWeight: 600 }}>
@@ -160,41 +174,47 @@ export function TeachingPage({
               data-event-queue
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: "max-content max-content",
                 gap: "2px 24px",
               }}
             >
-              {state.queue.length
-                ? state.queue.map((e) => (
-                    <div
-                      key={e.x}
-                      data-event-x={e.x}
-                      style={{ background: emphasis(e.point ?? "") }}
-                    >
-                      <MathText>{`${e.x}：${e.label}`}</MathText>
-                    </div>
-                  ))
-                : "空"}
+              {state.queue.length ? (
+                state.queue.map((e) => (
+                  <div
+                    key={e.x}
+                    data-event-x={e.x}
+                    style={emphasis(e.point ?? "", true)}
+                  >
+                    <MathText>{`${e.x}：${e.label}`}</MathText>
+                  </div>
+                ))
+              ) : (
+                <span style={{ color: secondaryTextColor }}>空</span>
+              )}
             </div>
           </div>
           <div
             data-page-block
             style={{
               visibility: state.records >= 3 ? "visible" : "hidden",
-              background: emphasis("results"),
+              ...emphasis("results"),
             }}
           >
             <div style={{ fontSize: 30, fontWeight: 600 }}>
               已报告结果 · 原始无序输入对
             </div>
             <div data-results>
-              {state.reported.length
-                ? state.reported.map((id) => (
-                    <div key={id} data-result={id}>
-                      <MathText>{`${intersections[id].pair.join(" 与 ")}：${id}=(${intersections[id].at.join(",")})`}</MathText>
-                    </div>
-                  ))
-                : "空（尚未到达交点）"}
+              {state.reported.length ? (
+                state.reported.map((id) => (
+                  <div key={id} data-result={id}>
+                    <MathText>{`${intersections[id].pair.join(" 与 ")}：${id}=(${intersections[id].at.join(",")})`}</MathText>
+                  </div>
+                ))
+              ) : (
+                <span style={{ color: secondaryTextColor }}>
+                  空（尚未到达交点）
+                </span>
+              )}
             </div>
           </div>
         </section>
@@ -216,6 +236,7 @@ export function TeachingPage({
               data-content-line
               style={{
                 visibility: i < visibleStep ? "visible" : "hidden",
+                color: i + 1 === visibleStep ? undefined : secondaryTextColor,
                 fontSize: 28,
                 lineHeight: 1.6,
                 paddingLeft: 14,
