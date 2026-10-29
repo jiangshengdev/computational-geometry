@@ -38,7 +38,7 @@
       "confidence": null
     },
     {
-      "text": "会不会漏掉原本隔得很远、后来才相交的一对？",
+      "text": "会不会漏掉原本隔得很远、后来才相交的一对线段？",
       "startMs": 3078,
       "endMs": 7078,
       "timestampMs": null,
@@ -324,15 +324,22 @@
       "confidence": null
     },
     {
-      "text": "例如，最下面是 A，",
+      "text": "例如，最下面是 A 这条线段，",
       "startMs": 4419,
       "endMs": 7113,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "中间是 B，最上面是 C。",
+      "text": "中间是 B 这条线段，",
       "startMs": 7393,
+      "endMs": 9193,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最上面是 C 这条线段。",
+      "startMs": 9463,
       "endMs": 11383,
       "timestampMs": null,
       "confidence": null
@@ -352,7 +359,7 @@
       "confidence": null
     },
     {
-      "text": "A 与 C 之间还隔着 B，",
+      "text": "A 与 C 之间还隔着 B 这条线段，",
       "startMs": 16134,
       "endMs": 18654,
       "timestampMs": null,
@@ -680,7 +687,7 @@
   ],
   "S22": [
     {
-      "text": "检查 B 与 C，直接得到两条直线的交点 (5,3)。",
+      "text": "检查 B 与 C，两条直线相交于点 (5,3)。",
       "startMs": 50,
       "endMs": 5327,
       "timestampMs": null,
@@ -703,7 +710,7 @@
   ],
   "S23": [
     {
-      "text": "B 到横坐标三就结束了，",
+      "text": "线段 B 在横坐标为三的位置结束，",
       "startMs": 70,
       "endMs": 2909,
       "timestampMs": null,
@@ -731,7 +738,7 @@
       "confidence": null
     },
     {
-      "text": "A 与 C 还隔着 B，",
+      "text": "线段 A 和线段 C 之间还隔着 B，",
       "startMs": 8909,
       "endMs": 11830,
       "timestampMs": null,
@@ -777,8 +784,15 @@
   ],
   "S25": [
     {
-      "text": "到横坐标三，B 结束。",
+      "text": "扫描线来到横坐标为三的位置，",
       "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 在这里结束。",
+      "startMs": 2928,
       "endMs": 4208,
       "timestampMs": null,
       "confidence": null
@@ -791,7 +805,7 @@
       "confidence": null
     },
     {
-      "text": "顺序变成 A、C。",
+      "text": "从下到上依次是线段 A 和线段 C。",
       "startMs": 9038,
       "endMs": 12240,
       "timestampMs": null,
@@ -1188,7 +1202,7 @@
       "confidence": null
     },
     {
-      "text": "记作 R。",
+      "text": "这个交点的名称是 R 点。",
       "startMs": 7918,
       "endMs": 9958,
       "timestampMs": null,
@@ -1497,7 +1511,7 @@
       "confidence": null
     },
     {
-      "text": "也就是 (7,1)。",
+      "text": "也就是点 (7,1)。",
       "startMs": 5618,
       "endMs": 8578,
       "timestampMs": null,
@@ -1596,15 +1610,22 @@
   ],
   "S53": [
     {
-      "text": "新的邻居是 A 与 D。",
+      "text": "新的邻居是 A 与 D 这两条线段。",
       "startMs": 70,
       "endMs": 2630,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "检查得到 Q，也就是 (5,1)，",
+      "text": "这对邻居的交点是 Q，",
       "startMs": 2999,
+      "endMs": 4799,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是点 (5,1)，",
+      "startMs": 5098,
       "endMs": 8258,
       "timestampMs": null,
       "confidence": null
@@ -1739,8 +1760,15 @@
   ],
   "S58": [
     {
-      "text": "结果记录继续保留：A 与 D 对应 Q，",
+      "text": "已经报告的结果继续保留：",
       "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 与 D 对应 Q，",
+      "startMs": 2110,
       "endMs": 3349,
       "timestampMs": null,
       "confidence": null
