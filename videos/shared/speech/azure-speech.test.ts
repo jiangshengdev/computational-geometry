@@ -3,6 +3,27 @@ import assert from "node:assert/strict";
 import type * as SDK from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "./azure-speech.ts";
 
+test("explicit English words retain word pronunciation without changing letter spelling", () => {
+  const { buildSpeechDocument } = createSpeechTools({} as typeof SDK, {
+    voice: "test",
+    commas: "document",
+    fingerprint: true,
+  });
+  const original = buildSpeechDocument("检查 Q。A");
+  const adopted = buildSpeechDocument(["检查 ", { englishWord: "cue" }, "。A"]);
+  assert.equal(adopted.text, "检查 cue。A");
+  assert.equal(
+    adopted.ssml,
+    original.ssml.replace(
+      '<lang xml:lang="en-US"><say-as interpret-as="characters">Q</say-as></lang>',
+      '<lang xml:lang="en-US">cue</lang>',
+    ),
+  );
+  assert.notEqual(adopted.fingerprint, original.fingerprint);
+  for (const englishWord of ["", "two words", "<break/>", 1])
+    assert.throws(() => buildSpeechDocument([{ englishWord }]), /englishWord/);
+});
+
 test("local pauses preserve text and letter spelling while binding the SSML fingerprint", () => {
   const { buildSpeechDocument } = createSpeechTools({} as typeof SDK, {
     voice: "test",

@@ -1,0 +1,1776 @@
+{
+  "S01": [
+    {
+      "text": "上一章用逐对检查建立了基准：",
+      "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "求交结果按原始无序输入对记录。",
+      "startMs": 2869,
+      "endMs": 5670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这一章改变检查方法，",
+      "startMs": 6049,
+      "endMs": 7809,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果的含义不变。",
+      "startMs": 8198,
+      "endMs": 9558,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S02": [
+    {
+      "text": "如果只检查当前上下紧挨着的线段，",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "会不会漏掉原本隔得很远、后来才相交的一对？",
+      "startMs": 3178,
+      "endMs": 6897,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先带着这个问题看完整过程。",
+      "startMs": 6897,
+      "endMs": 8858,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S03": [
+    {
+      "text": "先说清本章的简化条件。",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每条线段都有长度，而且不竖直，",
+      "startMs": 2599,
+      "endMs": 5708,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水平线段仍然允许。",
+      "startMs": 6018,
+      "endMs": 7850,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S04": [
+    {
+      "text": "没有两条线段重叠，没有端点落在另一条线段上，",
+      "startMs": 70,
+      "endMs": 4247,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也没有三条或更多线段经过同一个点。",
+      "startMs": 4548,
+      "endMs": 7548,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S05": [
+    {
+      "text": "所有端点和交点的横坐标互不相同。",
+      "startMs": 110,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此每次只处理一条线段开始、结束，",
+      "startMs": 3449,
+      "endMs": 6328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "或者两条线段交叉。",
+      "startMs": 6648,
+      "endMs": 8408,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S06": [
+    {
+      "text": "这些只是为了先看清机制的教学条件，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是完整算法拒绝复杂输入的理由。",
+      "startMs": 3028,
+      "endMs": 5827,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里每个非空交集都是一个点，",
+      "startMs": 6269,
+      "endMs": 8429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍按原始输入对记录。",
+      "startMs": 8758,
+      "endMs": 10478,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S07": [
+    {
+      "text": "给四份输入分别保留身份，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段都包含两端。",
+      "startMs": 2428,
+      "endMs": 4028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先看 A 的两个端点，",
+      "startMs": 4469,
+      "endMs": 6109,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "从 (0,1) 到 (10,1)。",
+      "startMs": 6418,
+      "endMs": 12418,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横轴与纵轴每格都是一个单位，",
+      "startMs": 12859,
+      "endMs": 15098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "O 表示原点。",
+      "startMs": 15408,
+      "endMs": 16648,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S08": [
+    {
+      "text": "B 从 (1,3) 到 (3,3)，",
+      "startMs": 70,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是一条较短的水平线段。",
+      "startMs": 5678,
+      "endMs": 7838,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 和 B 的身份不同。",
+      "startMs": 8309,
+      "endMs": 9829,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S09": [
+    {
+      "text": "C 从 (2,6) 到 (9,-1)，",
+      "startMs": 70,
+      "endMs": 6070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "向右下方延伸。",
+      "startMs": 6278,
+      "endMs": 7758,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "注意它只包含两个端点之间的部分。",
+      "startMs": 8219,
+      "endMs": 10819,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S10": [
+    {
+      "text": "输入 D 的左端点是 (4,0)，",
+      "startMs": 110,
+      "endMs": 4070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端点是 (8,4)，",
+      "startMs": 4278,
+      "endMs": 7478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段向右上方延伸。",
+      "startMs": 7798,
+      "endMs": 9678,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在只显示完整输入，",
+      "startMs": 10139,
+      "endMs": 11819,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图上看见的交叉还不是已经算出的结果，",
+      "startMs": 12138,
+      "endMs": 15400,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以暂时不标交点。",
+      "startMs": 15558,
+      "endMs": 17358,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S11": [
+    {
+      "text": "让一条竖直辅助线从左向右移动，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就是扫描线。",
+      "startMs": 3078,
+      "endMs": 4318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与它相交的输入叫活动线段，",
+      "startMs": 4769,
+      "endMs": 7168,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "按相交位置从下到上排列。",
+      "startMs": 7468,
+      "endMs": 9867,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一份记录保存这个活动顺序。",
+      "startMs": 10309,
+      "endMs": 12548,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S12": [
+    {
+      "text": "在这份顺序里，直接相邻的两条线段叫邻居。",
+      "startMs": 70,
+      "endMs": 4090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "例如，最下面是 A，",
+      "startMs": 4419,
+      "endMs": 7113,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间是 B，最上面是 C。",
+      "startMs": 7393,
+      "endMs": 11383,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 与 B 是一对邻居，",
+      "startMs": 11894,
+      "endMs": 13414,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 与 C 是另一对邻居。",
+      "startMs": 13753,
+      "endMs": 15593,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 与 C 之间还隔着 B，",
+      "startMs": 16134,
+      "endMs": 18654,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不是邻居。",
+      "startMs": 18993,
+      "endMs": 20220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里先用一个位置说明顺序，",
+      "startMs": 20534,
+      "endMs": 22574,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "正式扫描马上从最左端开始。",
+      "startMs": 22883,
+      "endMs": 25320,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S13": [
+    {
+      "text": "开始、结束和交叉叫扫描事件。",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二份记录是待处理清单，",
+      "startMs": 3049,
+      "endMs": 5089,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "按横坐标从小到大排序。",
+      "startMs": 5398,
+      "endMs": 7637,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所有端点一开始就已知，",
+      "startMs": 8089,
+      "endMs": 10260,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先把八个端点放进去；",
+      "startMs": 10438,
+      "endMs": 12158,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "目前没有交叉事件。",
+      "startMs": 12278,
+      "endMs": 13717,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S14": [
+    {
+      "text": "第三份记录保存已报告结果。",
+      "startMs": 70,
+      "endMs": 2300,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查发现未来交点时，",
+      "startMs": 2649,
+      "endMs": 4489,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只登记到清单；",
+      "startMs": 4798,
+      "endMs": 5918,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "扫描线真正到达那里时，",
+      "startMs": 6158,
+      "endMs": 7998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "才报告对应输入对的交集。",
+      "startMs": 8268,
+      "endMs": 10308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "三份记录介绍完后，一直保留供我们对照。",
+      "startMs": 10759,
+      "endMs": 14208,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S15": [
+    {
+      "text": "到达事件时，处理前的活动顺序，",
+      "startMs": 70,
+      "endMs": 3088,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取紧靠事件左侧的顺序。",
+      "startMs": 3348,
+      "endMs": 5548,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "紧靠是指还没有跨过别的事件。",
+      "startMs": 5989,
+      "endMs": 8469,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S16": [
+    {
+      "text": "处理后的顺序，取紧靠事件右侧的顺序。",
+      "startMs": 70,
+      "endMs": 3648,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们会把前后两份顺序并排写清楚。",
+      "startMs": 4119,
+      "endMs": 7080,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S17": [
+    {
+      "text": "两条线段在交点处高度相等，",
+      "startMs": 150,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但左右两侧的高低顺序各自明确。",
+      "startMs": 2678,
+      "endMs": 5358,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不要用交点处的等高来替代前后顺序。",
+      "startMs": 5819,
+      "endMs": 8738,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S18": [
+    {
+      "text": "扫描到横坐标零，A 开始。",
+      "startMs": 70,
+      "endMs": 2920,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把 A 放入活动顺序，",
+      "startMs": 3269,
+      "endMs": 5029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "清单移去这个端点；",
+      "startMs": 5368,
+      "endMs": 6848,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在只有一条线段，没有邻居需要检查。",
+      "startMs": 6928,
+      "endMs": 10188,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S19": [
+    {
+      "text": "扫描线来到横坐标一的位置，",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 从这里开始。",
+      "startMs": 2758,
+      "endMs": 4078,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 在 A 上方，从下到上的顺序是 A 在下面，",
+      "startMs": 4569,
+      "endMs": 8467,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "B 在上面。",
+      "startMs": 8738,
+      "endMs": 9698,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这时 A 与 B 成为一对新邻居，",
+      "startMs": 10179,
+      "endMs": 12418,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查这一对。",
+      "startMs": 12778,
+      "endMs": 13658,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S20": [
+    {
+      "text": "检查结果是没有交点：",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条水平线段高度不同。",
+      "startMs": 2110,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "清单没有增加交叉事件，",
+      "startMs": 4549,
+      "endMs": 6389,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果记录也仍为空。",
+      "startMs": 6698,
+      "endMs": 8338,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S21": [
+    {
+      "text": "到横坐标二，C 开始，",
+      "startMs": 70,
+      "endMs": 2530,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它在 B 上方。",
+      "startMs": 2698,
+      "endMs": 3858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在最下面是 A，中间是 B，",
+      "startMs": 4289,
+      "endMs": 8688,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最上面是 C，新出现的邻居是 B 与 C。",
+      "startMs": 8958,
+      "endMs": 13410,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S22": [
+    {
+      "text": "检查 B 与 C，直接得到两条直线的交点 (5,3)。",
+      "startMs": 50,
+      "endMs": 5327,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里不展开求交运算，",
+      "startMs": 5769,
+      "endMs": 7569,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先看这个候选位置是否在两条线段上。",
+      "startMs": 7918,
+      "endMs": 11157,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S23": [
+    {
+      "text": "B 到横坐标三就结束了，",
+      "startMs": 70,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "候选点的横坐标五超过三，",
+      "startMs": 3128,
+      "endMs": 5328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不在 B 上。",
+      "startMs": 5598,
+      "endMs": 6650,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此不登记这个位置。",
+      "startMs": 6989,
+      "endMs": 8600,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 与 C 还隔着 B，",
+      "startMs": 8909,
+      "endMs": 11830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "暂时不检查。",
+      "startMs": 12008,
+      "endMs": 13008,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S24": [
+    {
+      "text": "开始事件把新线段放进正确位置，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只检查它与上下邻居。",
+      "startMs": 2878,
+      "endMs": 4790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其他线段在这里没有交叉，",
+      "startMs": 5119,
+      "endMs": 7159,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "相对顺序不变，新增邻接只可能在新线段两侧。",
+      "startMs": 7518,
+      "endMs": 11588,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S25": [
+    {
+      "text": "到横坐标三，B 结束。",
+      "startMs": 70,
+      "endMs": 4208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "移去中间的 B，原来隔开的 A 与 C 成为邻居，",
+      "startMs": 4669,
+      "endMs": 8860,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "顺序变成 A、C。",
+      "startMs": 9038,
+      "endMs": 12240,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在该检查这一对了。",
+      "startMs": 12579,
+      "endMs": 14090,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S26": [
+    {
+      "text": "检查 A 与 C，得到交点 (7,1)，",
+      "startMs": 40,
+      "endMs": 4317,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把它记作 P。",
+      "startMs": 4598,
+      "endMs": 5790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "空心圆表示已经发现、还没有到达的交点。",
+      "startMs": 6189,
+      "endMs": 9229,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S27": [
+    {
+      "text": "P 在 A 的两端之间，",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也在 C 的两端之间，",
+      "startMs": 1928,
+      "endMs": 3368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "确实属于两条线段。",
+      "startMs": 3648,
+      "endMs": 5128,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标七大于当前的三，",
+      "startMs": 5589,
+      "endMs": 7669,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是严格位于右侧的未来交点。",
+      "startMs": 7988,
+      "endMs": 10188,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S28": [
+    {
+      "text": "把 P 按横坐标七放入清单。",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来先处理横坐标四的端点，",
+      "startMs": 2749,
+      "endMs": 5468,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能因为发现了 P 就立刻跳过去。",
+      "startMs": 5798,
+      "endMs": 7798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "此时还没有报告结果。",
+      "startMs": 8239,
+      "endMs": 9750,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S29": [
+    {
+      "text": "结束事件为什么只检查这一对？",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里没有其他线段开始、结束或交叉，",
+      "startMs": 2309,
+      "endMs": 5210,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其余线段的相对高低没有改变。",
+      "startMs": 5378,
+      "endMs": 7617,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S30": [
+    {
+      "text": "只有原来被 B 隔开的上下两条，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "才会因为移去 B 而接到一起。",
+      "startMs": 2828,
+      "endMs": 4787,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以只检查这两个新邻居。",
+      "startMs": 5269,
+      "endMs": 7189,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S31": [
+    {
+      "text": "如果被移走的线段缺少上侧或下侧邻居，",
+      "startMs": 70,
+      "endMs": 3220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就不会连接出一对新邻居，",
+      "startMs": 3378,
+      "endMs": 5258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不需要新增检查。",
+      "startMs": 5598,
+      "endMs": 7198,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S32": [
+    {
+      "text": "到横坐标四，D 从 (4,0) 开始，",
+      "startMs": 70,
+      "endMs": 5200,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "插在 A 下方。",
+      "startMs": 5398,
+      "endMs": 6638,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在最下面是 D，中间是 A，",
+      "startMs": 7089,
+      "endMs": 11408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最上面是 C，D 下方没有线段，",
+      "startMs": 11708,
+      "endMs": 15458,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新邻接只有 D 与 A 这一对。",
+      "startMs": 15748,
+      "endMs": 17748,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S33": [
+    {
+      "text": "检查 D 与 A，得到交点 (5,1)，",
+      "startMs": 60,
+      "endMs": 4357,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 Q。",
+      "startMs": 4648,
+      "endMs": 5328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先标空心圆，还不报告。",
+      "startMs": 5839,
+      "endMs": 8198,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S34": [
+    {
+      "text": "Q 在 A 和 D 的范围内，",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标五大于当前的四，",
+      "startMs": 2078,
+      "endMs": 4118,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "是一个真实的未来交点。",
+      "startMs": 4448,
+      "endMs": 6248,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S35": [
+    {
+      "text": "把 Q 加入清单。",
+      "startMs": 70,
+      "endMs": 1510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "虽然 P 先发现，但五小于七，",
+      "startMs": 1979,
+      "endMs": 4930,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以 Q 排在 P 前面。",
+      "startMs": 5068,
+      "endMs": 6868,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一次先到 Q，清单按位置排序，",
+      "startMs": 7309,
+      "endMs": 10558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不按发现时间排序。",
+      "startMs": 10878,
+      "endMs": 12478,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S36": [
+    {
+      "text": "到横坐标五，扫描线到达 Q。",
+      "startMs": 70,
+      "endMs": 3018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在才报告：输入对 A 与 D，",
+      "startMs": 3469,
+      "endMs": 5989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集为点 (5,1)。",
+      "startMs": 6318,
+      "endMs": 9157,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "实心圆表示已经报告。",
+      "startMs": 9609,
+      "endMs": 11449,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S37": [
+    {
+      "text": "在 Q 左侧，D 位于 A 下方；",
+      "startMs": 70,
+      "endMs": 2578,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到右侧，D 升到 A 上方。",
+      "startMs": 2578,
+      "endMs": 4958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此交换后，A 位于 D 下方，",
+      "startMs": 5439,
+      "endMs": 8308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "C 仍在它们上方。",
+      "startMs": 8608,
+      "endMs": 10048,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S38": [
+    {
+      "text": "A 与 D 仍互相相邻，",
+      "startMs": 110,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新的邻居是 D 与 C。",
+      "startMs": 2078,
+      "endMs": 3930,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查得到交点 (6,2)，",
+      "startMs": 4269,
+      "endMs": 7588,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 R。",
+      "startMs": 7918,
+      "endMs": 9958,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S39": [
+    {
+      "text": "R 在 C 和 D 的范围内，",
+      "startMs": 110,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标六大于当前的五，",
+      "startMs": 2078,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把 R 登记到清单。",
+      "startMs": 4398,
+      "endMs": 5918,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果区仍然只有已经到达的 Q。",
+      "startMs": 6389,
+      "endMs": 8668,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S40": [
+    {
+      "text": "此时 A 与 C 之间暂时隔着 D，",
+      "startMs": 150,
+      "endMs": 2490,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们不再是邻居。",
+      "startMs": 2678,
+      "endMs": 4130,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先想一想：先前登记的 P，",
+      "startMs": 4419,
+      "endMs": 7050,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "要不要删掉？",
+      "startMs": 7218,
+      "endMs": 8018,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S41": [
+    {
+      "text": "不删除。",
+      "startMs": 70,
+      "endMs": 950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "P 已经确认是两条线段的真实未来交点，",
+      "startMs": 1349,
+      "endMs": 4509,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "暂时失去邻接不会改变这个事实，",
+      "startMs": 4798,
+      "endMs": 7157,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以清单里继续保留 P。",
+      "startMs": 7468,
+      "endMs": 9350,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S42": [
+    {
+      "text": "清单接下来的交点是横坐标六的 R，",
+      "startMs": 70,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再是横坐标七的 P。",
+      "startMs": 3278,
+      "endMs": 4990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "发现时登记，到达时报告。",
+      "startMs": 5369,
+      "endMs": 7798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是两个不同的阶段。",
+      "startMs": 8259,
+      "endMs": 9659,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S43": [
+    {
+      "text": "总结交叉事件：交换两条交叉线段的上下位置。",
+      "startMs": 70,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在 Q 处，交换的就是 A 与 D。",
+      "startMs": 4649,
+      "endMs": 7480,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S44": [
+    {
+      "text": "这两条线段互相仍是邻居，",
+      "startMs": 70,
+      "endMs": 2320,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只是上下颠倒。",
+      "startMs": 2478,
+      "endMs": 3678,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "需要寻找的是交换之后新出现的外侧邻接。",
+      "startMs": 4119,
+      "endMs": 7530,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S45": [
+    {
+      "text": "本章没有第三条线段经过这个交点，",
+      "startMs": 70,
+      "endMs": 2989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "外面的线段顺序不变。",
+      "startMs": 3228,
+      "endMs": 4948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以只检查交换块两侧的新邻居；",
+      "startMs": 5419,
+      "endMs": 8099,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不存在的外侧邻居跳过。",
+      "startMs": 8258,
+      "endMs": 10059,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交叉前为什么必定相邻，",
+      "startMs": 10539,
+      "endMs": 12579,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一集会证明。",
+      "startMs": 12888,
+      "endMs": 14128,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S46": [
+    {
+      "text": "两条不同直线至多有一个交点。",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "刚交叉的这一对，不需要再寻找第二次交叉。",
+      "startMs": 2849,
+      "endMs": 6418,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S47": [
+    {
+      "text": "到横坐标六，报告输入对 C 与 D，",
+      "startMs": 70,
+      "endMs": 3128,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集为点 (6,2)。",
+      "startMs": 3448,
+      "endMs": 6247,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "R 从清单移去，图中改成实心圆。",
+      "startMs": 6729,
+      "endMs": 9988,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S48": [
+    {
+      "text": "在 R 左侧，D 低于 C；",
+      "startMs": 70,
+      "endMs": 2258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在右侧，D 高于 C。",
+      "startMs": 2258,
+      "endMs": 4248,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此交换后，C 位于 D 下方，",
+      "startMs": 4739,
+      "endMs": 7548,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 仍在它们下方。",
+      "startMs": 7858,
+      "endMs": 9218,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S49": [
+    {
+      "text": "换序后新的邻居是 A 与 C。",
+      "startMs": 70,
+      "endMs": 2400,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再次检查，得到的仍是 P，",
+      "startMs": 2749,
+      "endMs": 5400,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 (7,1)。",
+      "startMs": 5618,
+      "endMs": 8578,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新检查不一定是第一次检查这对输入。",
+      "startMs": 9009,
+      "endMs": 11368,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S50": [
+    {
+      "text": "P 已经在清单中，只保留一份，",
+      "startMs": 70,
+      "endMs": 2818,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不再重复登记。",
+      "startMs": 3148,
+      "endMs": 4388,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在还没有到 P，结果区也不能提前增加它。",
+      "startMs": 4839,
+      "endMs": 8420,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S51": [
+    {
+      "text": "到横坐标七，才报告输入对 A 与 C，",
+      "startMs": 70,
+      "endMs": 3487,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集为点 (7,1)。",
+      "startMs": 3798,
+      "endMs": 6597,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "P 也变成实心圆。",
+      "startMs": 7039,
+      "endMs": 8639,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S52": [
+    {
+      "text": "在 P 左侧，C 在 A 上方；",
+      "startMs": 70,
+      "endMs": 2618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到右侧，C 降到 A 下方。",
+      "startMs": 2618,
+      "endMs": 5088,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此交换后，C 位于 A 下方，",
+      "startMs": 5539,
+      "endMs": 8408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "D 仍在它们上方。",
+      "startMs": 8708,
+      "endMs": 9988,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S53": [
+    {
+      "text": "新的邻居是 A 与 D。",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查得到 Q，也就是 (5,1)，",
+      "startMs": 2999,
+      "endMs": 8258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但不能只看它是交点就再放进清单。",
+      "startMs": 8518,
+      "endMs": 11200,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S54": [
+    {
+      "text": "五小于当前的七，Q 已经位于扫描线左侧，",
+      "startMs": 70,
+      "endMs": 3758,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是未来事件，所以不再入队，",
+      "startMs": 4048,
+      "endMs": 6628,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不再报告一次。",
+      "startMs": 6988,
+      "endMs": 8268,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S55": [
+    {
+      "text": "继续到横坐标八，D 在这里结束。",
+      "startMs": 70,
+      "endMs": 3008,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "D 原来在最上方，移去后只剩两条线段，",
+      "startMs": 3469,
+      "endMs": 7238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "C 在下面，A 在上面，",
+      "startMs": 7538,
+      "endMs": 9868,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有新邻接需要检查。",
+      "startMs": 10178,
+      "endMs": 11978,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S56": [
+    {
+      "text": "到横坐标九，C 结束。",
+      "startMs": 70,
+      "endMs": 2928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "移去最下方的 C，只剩 A，",
+      "startMs": 3369,
+      "endMs": 6498,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然没有一对新的邻居。",
+      "startMs": 6788,
+      "endMs": 8670,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S57": [
+    {
+      "text": "到横坐标十，A 也结束。",
+      "startMs": 70,
+      "endMs": 2618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "活动顺序和待处理清单都变空，",
+      "startMs": 3069,
+      "endMs": 5669,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "扫描过程结束。",
+      "startMs": 5968,
+      "endMs": 7328,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S58": [
+    {
+      "text": "结果记录继续保留：A 与 D 对应 Q，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "C 与 D 对应 R，",
+      "startMs": 3618,
+      "endMs": 4900,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "A 与 C 对应 P。",
+      "startMs": 5090,
+      "endMs": 6510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每一条都按原始无序输入对记录。",
+      "startMs": 6889,
+      "endMs": 9449,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S59": [
+    {
+      "text": "完整过程里，开始、结束和交叉都可能带来新邻居。",
+      "startMs": 70,
+      "endMs": 4480,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只检查最初的邻居不够，",
+      "startMs": 4819,
+      "endMs": 6499,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "邻接必须随事件更新。",
+      "startMs": 6858,
+      "endMs": 8698,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S60": [
+    {
+      "text": "检查先确认线段范围，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再判断严格未来，最后避免重复登记。",
+      "startMs": 2228,
+      "endMs": 5558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "发现时登记，到达时报告，",
+      "startMs": 5989,
+      "endMs": 8468,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能把这两个时刻混在一起。",
+      "startMs": 8758,
+      "endMs": 10790,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "S61": [
+    {
+      "text": "这个案例说明规则怎样配合，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还不是一般证明。",
+      "startMs": 2478,
+      "endMs": 3798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一集解释为什么交叉前必成为邻居，",
+      "startMs": 4269,
+      "endMs": 7300,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以及为什么不会出现第一个漏掉的交点。",
+      "startMs": 7468,
+      "endMs": 10267,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

@@ -65,6 +65,17 @@ export function createSpeechTools<Fingerprint extends boolean>(
             );
           return `<break time="${segment.breakMs}ms"/>`;
         }
+        if (Object.keys(segment).length === 1 && "englishWord" in segment) {
+          if (
+            typeof segment.englishWord !== "string" ||
+            !/^[A-Za-z]+$/.test(segment.englishWord)
+          )
+            throw new Error(
+              `${location}: englishWord must contain only letters`,
+            );
+          text += segment.englishWord;
+          return `<lang xml:lang="en-US">${segment.englishWord}</lang>`;
+        }
         if (
           Object.keys(segment).length === 1 &&
           typeof segment.letter === "string"
