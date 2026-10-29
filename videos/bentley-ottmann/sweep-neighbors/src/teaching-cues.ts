@@ -119,7 +119,7 @@ export const teachingCues: Record<string, TeachingCue[]> = {
     cue("横坐标四、纵坐标零的点", [point(4, 0, inputs.D.color)]),
     cue("此时只有线段 D 和线段 A 成为新的邻居", lines("D", "A")),
   ],
-  S33: [cue("检查 D 与 A", lines("D", "A")), cue("记作 Q", mark("Q"))],
+  S33: [cue("检查 D 与 A", lines("D", "A")), cue("记作 queue", mark("Q"))],
   S34: [
     cue("Q 在 A 和 D 的范围内", lines("A", "D")),
     cue("横坐标五大于当前的四", mark("Q")),

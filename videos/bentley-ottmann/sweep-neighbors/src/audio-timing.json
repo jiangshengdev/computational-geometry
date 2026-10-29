@@ -19974,7 +19974,7 @@
   "S33": {
     "audioFile": "S33.wav",
     "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "e4e9c504b16fe40e64ef54395fbc06aad6cc2c5a6f828d14565127aa7d3206ee",
+    "audioSha256": "7e9f4e5921acefca67052342240a13b404319e18dc6a5899ebfb0978a5d290ee",
     "duration": 8.25,
     "words": [
       {
@@ -19996,14 +19996,14 @@
         "textOffset": 5,
         "wordLength": 1,
         "startMs": 760,
-        "durationMs": 130
+        "durationMs": 150
       },
       {
         "text": "A",
         "textOffset": 7,
         "wordLength": 1,
-        "startMs": 900,
-        "durationMs": 390
+        "startMs": 920,
+        "durationMs": 340
       },
       {
         "text": "。",
@@ -20014,172 +20014,172 @@
       },
       {
         "text": "得",
-        "startMs": 1478,
+        "startMs": 1428,
         "durationMs": 200,
         "textOffset": 9,
         "wordLength": 1
       },
       {
         "text": "到",
-        "startMs": 1678,
-        "durationMs": 120,
+        "startMs": 1628,
+        "durationMs": 160,
         "textOffset": 10,
         "wordLength": 1
       },
       {
         "text": "横坐标",
-        "startMs": 1798,
-        "durationMs": 600,
+        "startMs": 1788,
+        "durationMs": 560,
         "textOffset": 11,
         "wordLength": 3
       },
       {
         "text": "五",
-        "startMs": 2398,
-        "durationMs": 440,
+        "startMs": 2348,
+        "durationMs": 480,
         "textOffset": 14,
         "wordLength": 1
       },
       {
         "text": "、",
-        "startMs": 2838,
+        "startMs": 2828,
         "durationMs": 0,
         "textOffset": 15,
         "wordLength": 1
       },
       {
         "text": "纵坐标",
-        "startMs": 2838,
-        "durationMs": 680,
+        "startMs": 2828,
+        "durationMs": 640,
         "textOffset": 16,
         "wordLength": 3
       },
       {
         "text": "一",
-        "startMs": 3518,
+        "startMs": 3468,
         "durationMs": 120,
         "textOffset": 19,
         "wordLength": 1
       },
       {
         "text": "的",
-        "startMs": 3638,
+        "startMs": 3588,
         "durationMs": 119,
         "textOffset": 20,
         "wordLength": 1
       },
       {
         "text": "交点",
-        "startMs": 3757,
-        "durationMs": 600,
+        "startMs": 3707,
+        "durationMs": 560,
         "textOffset": 21,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 4357,
+        "startMs": 4267,
         "durationMs": 0,
         "textOffset": 23,
         "wordLength": 1
       },
       {
         "text": "记",
-        "startMs": 4648,
+        "startMs": 4548,
         "durationMs": 240,
         "textOffset": 24,
         "wordLength": 1
       },
       {
         "text": "作",
-        "startMs": 4888,
+        "startMs": 4788,
         "durationMs": 200,
         "textOffset": 25,
         "wordLength": 1
       },
       {
-        "text": "Q",
-        "startMs": 5088,
-        "durationMs": 240,
+        "text": "queue",
+        "startMs": 4988,
+        "durationMs": 440,
         "textOffset": 27,
-        "wordLength": 1
+        "wordLength": 5
       },
       {
         "text": "。",
-        "startMs": 5328,
+        "startMs": 5428,
         "durationMs": 0,
-        "textOffset": 28,
+        "textOffset": 32,
         "wordLength": 1
       },
       {
         "text": "先",
-        "startMs": 5839,
+        "startMs": 5889,
         "durationMs": 320,
-        "textOffset": 29,
-        "wordLength": 1
-      },
-      {
-        "text": "标",
-        "startMs": 6159,
-        "durationMs": 160,
-        "textOffset": 30,
-        "wordLength": 1
-      },
-      {
-        "text": "空心",
-        "startMs": 6319,
-        "durationMs": 400,
-        "textOffset": 31,
-        "wordLength": 2
-      },
-      {
-        "text": "圆",
-        "startMs": 6719,
-        "durationMs": 400,
         "textOffset": 33,
         "wordLength": 1
       },
       {
-        "text": "。",
-        "startMs": 7119,
-        "durationMs": 0,
+        "text": "标",
+        "startMs": 6209,
+        "durationMs": 160,
         "textOffset": 34,
         "wordLength": 1
       },
       {
-        "text": "还",
-        "startMs": 7438,
-        "durationMs": 280,
+        "text": "空心",
+        "startMs": 6369,
+        "durationMs": 400,
         "textOffset": 35,
+        "wordLength": 2
+      },
+      {
+        "text": "圆",
+        "startMs": 6769,
+        "durationMs": 400,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 7169,
+        "durationMs": 0,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "还",
+        "startMs": 7488,
+        "durationMs": 200,
+        "textOffset": 39,
         "wordLength": 1
       },
       {
         "text": "不",
-        "startMs": 7718,
+        "startMs": 7688,
         "durationMs": 120,
-        "textOffset": 36,
+        "textOffset": 40,
         "wordLength": 1
       },
       {
         "text": "报告",
-        "startMs": 7838,
+        "startMs": 7808,
         "durationMs": 360,
-        "textOffset": 37,
+        "textOffset": 41,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 8198,
+        "startMs": 8168,
         "durationMs": 0,
-        "textOffset": 39,
+        "textOffset": 43,
         "wordLength": 1
       }
     ],
-    "speech": "检查 D 与 A。得到横坐标五、纵坐标一的交点。记作 Q。先标空心圆。还不报告。",
+    "speech": "检查 D 与 A。得到横坐标五、纵坐标一的交点。记作 queue。先标空心圆。还不报告。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "3e0364ca6f0d5658ddea3abe9fa35e293a2c73960c8f112a4160087f3d6cf225",
+    "fingerprint": "5acf6305c1e29a63ccf307499130b03c98a4a60c9795bc0aa0a7217a52c5e2b3",
     "alignment": {
       "method": "azure-pronunciation-assessment",
-      "audioSha256": "e4e9c504b16fe40e64ef54395fbc06aad6cc2c5a6f828d14565127aa7d3206ee",
+      "audioSha256": "7e9f4e5921acefca67052342240a13b404319e18dc6a5899ebfb0978a5d290ee",
       "synthesisWords": [
         {
           "text": "检查",
@@ -20218,186 +20218,186 @@
         },
         {
           "text": "得",
-          "startMs": 1478,
+          "startMs": 1428,
           "durationMs": 200,
           "textOffset": 9,
           "wordLength": 1
         },
         {
           "text": "到",
-          "startMs": 1678,
-          "durationMs": 120,
+          "startMs": 1628,
+          "durationMs": 160,
           "textOffset": 10,
           "wordLength": 1
         },
         {
           "text": "横坐标",
-          "startMs": 1798,
-          "durationMs": 600,
+          "startMs": 1788,
+          "durationMs": 560,
           "textOffset": 11,
           "wordLength": 3
         },
         {
           "text": "五",
-          "startMs": 2398,
-          "durationMs": 440,
+          "startMs": 2348,
+          "durationMs": 480,
           "textOffset": 14,
           "wordLength": 1
         },
         {
           "text": "、",
-          "startMs": 2838,
+          "startMs": 2828,
           "durationMs": 0,
           "textOffset": 15,
           "wordLength": 1
         },
         {
           "text": "纵坐标",
-          "startMs": 2838,
-          "durationMs": 680,
+          "startMs": 2828,
+          "durationMs": 640,
           "textOffset": 16,
           "wordLength": 3
         },
         {
           "text": "一",
-          "startMs": 3518,
+          "startMs": 3468,
           "durationMs": 120,
           "textOffset": 19,
           "wordLength": 1
         },
         {
           "text": "的",
-          "startMs": 3638,
+          "startMs": 3588,
           "durationMs": 119,
           "textOffset": 20,
           "wordLength": 1
         },
         {
           "text": "交点",
-          "startMs": 3757,
-          "durationMs": 600,
+          "startMs": 3707,
+          "durationMs": 560,
           "textOffset": 21,
           "wordLength": 2
         },
         {
           "text": "。",
-          "startMs": 4357,
+          "startMs": 4267,
           "durationMs": 0,
           "textOffset": 23,
           "wordLength": 1
         },
         {
           "text": "记",
-          "startMs": 4648,
+          "startMs": 4548,
           "durationMs": 240,
           "textOffset": 24,
           "wordLength": 1
         },
         {
           "text": "作",
-          "startMs": 4888,
+          "startMs": 4788,
           "durationMs": 200,
           "textOffset": 25,
           "wordLength": 1
         },
         {
-          "text": "Q",
-          "startMs": 5088,
-          "durationMs": 240,
+          "text": "queue",
+          "startMs": 4988,
+          "durationMs": 440,
           "textOffset": 27,
-          "wordLength": 1
+          "wordLength": 5
         },
         {
           "text": "。",
-          "startMs": 5328,
+          "startMs": 5428,
           "durationMs": 0,
-          "textOffset": 28,
+          "textOffset": 32,
           "wordLength": 1
         },
         {
           "text": "先",
-          "startMs": 5839,
+          "startMs": 5889,
           "durationMs": 320,
-          "textOffset": 29,
-          "wordLength": 1
-        },
-        {
-          "text": "标",
-          "startMs": 6159,
-          "durationMs": 160,
-          "textOffset": 30,
-          "wordLength": 1
-        },
-        {
-          "text": "空心",
-          "startMs": 6319,
-          "durationMs": 400,
-          "textOffset": 31,
-          "wordLength": 2
-        },
-        {
-          "text": "圆",
-          "startMs": 6719,
-          "durationMs": 400,
           "textOffset": 33,
           "wordLength": 1
         },
         {
-          "text": "。",
-          "startMs": 7119,
-          "durationMs": 0,
+          "text": "标",
+          "startMs": 6209,
+          "durationMs": 160,
           "textOffset": 34,
           "wordLength": 1
         },
         {
-          "text": "还",
-          "startMs": 7438,
-          "durationMs": 280,
+          "text": "空心",
+          "startMs": 6369,
+          "durationMs": 400,
           "textOffset": 35,
+          "wordLength": 2
+        },
+        {
+          "text": "圆",
+          "startMs": 6769,
+          "durationMs": 400,
+          "textOffset": 37,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 7169,
+          "durationMs": 0,
+          "textOffset": 38,
+          "wordLength": 1
+        },
+        {
+          "text": "还",
+          "startMs": 7488,
+          "durationMs": 200,
+          "textOffset": 39,
           "wordLength": 1
         },
         {
           "text": "不",
-          "startMs": 7718,
+          "startMs": 7688,
           "durationMs": 120,
-          "textOffset": 36,
+          "textOffset": 40,
           "wordLength": 1
         },
         {
           "text": "报告",
-          "startMs": 7838,
+          "startMs": 7808,
           "durationMs": 360,
-          "textOffset": 37,
+          "textOffset": 41,
           "wordLength": 2
         },
         {
           "text": "。",
-          "startMs": 8198,
+          "startMs": 8168,
           "durationMs": 0,
-          "textOffset": 39,
+          "textOffset": 43,
           "wordLength": 1
         }
       ],
       "response": {
-        "Id": "4af2ef41253545048a9db1aff9e2a7df",
+        "Id": "8009d42024f14928a18cd1110d683488",
         "RecognitionStatus": "Success",
         "Offset": 600000,
         "Duration": 81600000,
         "Channel": 0,
-        "DisplayText": "检查D与A得到横坐标五纵坐标一的交点记作Q。先标空心圆还不报告。",
-        "SNR": 42.71904,
+        "DisplayText": "检查D与A得到横坐标五纵坐标一的交点记作queue先标空心圆还不报告。",
+        "SNR": 41.464886,
         "NBest": [
           {
-            "Confidence": 0.96554303,
-            "Lexical": "检查 D 与 A 得到 横坐标 五 纵坐 标一 的 交点 记作 Q 先 标空心圆 还 不 报告",
-            "ITN": "检查 D 与 A 得到 横坐标 五 纵坐 标一 的 交点 记作 Q 先 标空心圆 还 不 报告",
-            "MaskedITN": "检查d与a得到横坐标五纵坐标一的交点记作q先标空心圆还不报告",
-            "Display": "检查D与A得到横坐标五纵坐标一的交点记作Q。先标空心圆还不报告。",
+            "Confidence": 0.97448754,
+            "Lexical": "检查 D 与 A 得到 横坐标 五 纵坐 标一 的 交点 记作 queue 先 标空心圆 还 不 报告",
+            "ITN": "检查 D 与 A 得到 横坐标 五 纵坐 标一 的 交点 记作 queue 先 标空心圆 还 不 报告",
+            "MaskedITN": "检查d与a得到横坐标五纵坐标一的交点记作queue先标空心圆还不报告",
+            "Display": "检查D与A得到横坐标五纵坐标一的交点记作queue先标空心圆还不报告。",
             "PronunciationAssessment": {
-              "AccuracyScore": 91,
-              "FluencyScore": 85,
-              "CompletenessScore": 94,
-              "PronScore": 88
+              "AccuracyScore": 97,
+              "FluencyScore": 90,
+              "CompletenessScore": 100,
+              "PronScore": 93.4
             },
             "Words": [
               {
@@ -20414,23 +20414,23 @@
                 "Offset": 5400000,
                 "Duration": 2100000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 76,
+                  "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "与",
                 "Offset": 7600000,
-                "Duration": 1300000,
+                "Duration": 1500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 94,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "A",
-                "Offset": 9000000,
-                "Duration": 3900000,
+                "Offset": 9200000,
+                "Duration": 3400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20438,8 +20438,8 @@
               },
               {
                 "Word": "得到",
-                "Offset": 14600000,
-                "Duration": 4300000,
+                "Offset": 14400000,
+                "Duration": 4100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20447,7 +20447,7 @@
               },
               {
                 "Word": "横坐标",
-                "Offset": 19000000,
+                "Offset": 18600000,
                 "Duration": 5700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -20456,26 +20456,26 @@
               },
               {
                 "Word": "五",
-                "Offset": 24800000,
-                "Duration": 4100000,
+                "Offset": 24400000,
+                "Duration": 4300000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 100,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "纵坐",
-                "Offset": 29200000,
-                "Duration": 4700000,
+                "Offset": 29000000,
+                "Duration": 4500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 100,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "标一",
-                "Offset": 34000000,
-                "Duration": 3300000,
+                "Offset": 33600000,
+                "Duration": 3100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20483,7 +20483,7 @@
               },
               {
                 "Word": "的",
-                "Offset": 37400000,
+                "Offset": 36800000,
                 "Duration": 1100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -20492,8 +20492,8 @@
               },
               {
                 "Word": "交点",
-                "Offset": 38600000,
-                "Duration": 5800000,
+                "Offset": 38000000,
+                "Duration": 5700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -20501,26 +20501,26 @@
               },
               {
                 "Word": "记作",
-                "Offset": 46600000,
-                "Duration": 4800000,
+                "Offset": 45200000,
+                "Duration": 5500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 60,
+                  "AccuracyScore": 85,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "Q",
-                "Offset": 51500000,
-                "Duration": 2900000,
+                "Word": "queue",
+                "Offset": 50800000,
+                "Duration": 4600000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 58,
-                  "ErrorType": "Mispronunciation"
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
                 }
               },
               {
                 "Word": "先",
-                "Offset": 58800000,
-                "Duration": 3700000,
+                "Offset": 59200000,
+                "Duration": 3800000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20528,7 +20528,7 @@
               },
               {
                 "Word": "标空心圆",
-                "Offset": 62600000,
+                "Offset": 63100000,
                 "Duration": 10000000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
@@ -20537,8 +20537,8 @@
               },
               {
                 "Word": "还",
-                "Offset": 73800000,
-                "Duration": 3900000,
+                "Offset": 74400000,
+                "Duration": 3400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20546,19 +20546,19 @@
               },
               {
                 "Word": "不",
-                "Offset": 77800000,
-                "Duration": 1300000,
+                "Offset": 77900000,
+                "Duration": 1000000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 100,
+                  "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "报告",
-                "Offset": 79200000,
-                "Duration": 3000000,
+                "Offset": 79000000,
+                "Duration": 3200000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 76,
+                  "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               }
