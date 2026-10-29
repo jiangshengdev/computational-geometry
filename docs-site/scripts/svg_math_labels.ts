@@ -8,7 +8,7 @@ export const palettes: Record<string, Palette> = {
 };
 
 export const escapeXml = (value: string) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-export type SvgMathLabel = {px: number; py: number; value: string; color: string; size: number; anchor: string};
+export type SvgMathLabel = {px: number; py: number; value: string; color: string; size: number; anchor: string; background?: string};
 type MathLabel = {svg: string; width: number; height: number; depth: number};
 
 /** Batch formulas through the existing renderer and place them at SVG baselines. */
@@ -21,14 +21,21 @@ export function renderMathLabels(labels: readonly SvgMathLabel[]): string[] {
     throw new Error(`MathText rendering failed. Use the maintainer-provisioned Matplotlib environment.\n${rendered.error ?? rendered.stderr}`);
   }
   const math: Record<string, MathLabel> = JSON.parse(rendered.stdout);
-  return labels.map(({px, py, value, color, size, anchor}, index) => {
+  return labels.map(({px, py, value, color, size, anchor, background}, index) => {
     const item = math[value];
     const scale = size / 100;
     const width = item.width * scale;
     const offset = anchor === 'middle' ? -width / 2 : anchor === 'end' ? -width : 0;
     // Each embedded SVG needs its own glyph IDs, including repeated formulas.
     const prefix = `label-${index}-`;
-    const svg = item.svg.replace(/id="([^"]+)"/g, `id="${prefix}$1"`)
+    // MathText's advance box can be narrower than italic glyph ink (notably P).
+    // Let the ink and its halo extend beyond the nested viewport without scaling it.
+    const svg = item.svg.replace('<svg ', '<svg overflow="visible" ')
+      .replace(/<path\b[^>]* transform="scale\(([\d.]+)\)"[^>]*>/g, (path, glyphScale) => background
+        // Glyph outlines use font units; compensate both transforms for a 2px halo.
+        ? path.replace('<path ', `<path stroke="${background}" stroke-width="${2 / (scale * Number(glyphScale))}" stroke-linejoin="round" paint-order="stroke fill" `)
+        : path)
+      .replace(/id="([^"]+)"/g, `id="${prefix}$1"`)
       .replace(/xlink:href="#([^"]+)"/g, `xlink:href="#${prefix}$1"`)
       .replace(/url\(#([^)]+)\)/g, `url(#${prefix}$1)`)
       .replace(/width="[^"]+" height="[^"]+"/, `width="${item.width}" height="${item.height}"`);

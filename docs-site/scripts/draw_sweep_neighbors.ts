@@ -14,62 +14,59 @@ const frames: Frame[] = [
   {name: 'end', x: 3, order: 'A,C', known: ['P'], reported: []},
   {name: 'insert', x: 4, order: 'D,A,C', known: ['P', 'Q'], reported: []},
   {name: 'cross', x: 5, order: 'A,D,C', known: ['P', 'Q', 'R'], reported: ['Q']},
-  {name: 'next', x: 5.5, order: 'A,C,D', known: ['P', 'Q', 'R'], reported: ['Q', 'R']},
-  {name: 'last', x: 6, order: 'C,A,D', known: ['P', 'Q', 'R'], reported: ['Q', 'R', 'P']},
+  {name: 'next', x: 6, order: 'A,C,D', known: ['P', 'Q', 'R'], reported: ['Q', 'R']},
+  {name: 'last', x: 7, order: 'C,A,D', known: ['P', 'Q', 'R'], reported: ['Q', 'R', 'P']},
 ];
 const intersections: Record<string, {point: Point; offset: Point}> = {
-  P: {point: [6, 1], offset: [22, -8]},
+  P: {point: [7, 1], offset: [22, -8]},
   Q: {point: [5, 1], offset: [-18, -9]},
-  R: {point: [5.5, 1.5], offset: [0, -22]},
+  R: {point: [6, 2], offset: [0, -22]},
 };
 const labels: SvgMathLabel[] = [];
 const images: {target: URL; svg: string}[] = [];
 const x = (value: number) => 55 + value * 22;
-const y = (value: number) => 177 - value * 22;
-function text(px: number, py: number, value: string, color: string, size = 15) {
-  labels.push({px, py, value, color, size, anchor: 'middle'});
-  return `<!--label-${labels.length - 1}-->`;
-}
+const y = (value: number) => 188 - value * 22;
 function line(a: Point, b: Point, color: string, width = 1, dashed = false) {
   return `<line x1="${x(a[0])}" y1="${y(a[1])}" x2="${x(b[0])}" y2="${y(b[1])}" stroke="${color}" stroke-width="${width}"${dashed ? ' stroke-dasharray="4 4"' : ''}/>`;
 }
 
 for (const [theme, p] of Object.entries(palettes)) {
+  function text(px: number, py: number, value: string, color: string, size = 15) {
+    labels.push({px, py, value, color, size, anchor: 'middle', background: p.background});
+    return `<!--label-${labels.length - 1}-->`;
+  }
   const segments: Segment[] = [
     {id: 'A', a: [0, 1], b: [10, 1], color: p.a},
     {id: 'B', a: [1, 3], b: [3, 3], color: p.b},
-    {id: 'C', a: [2, 5], b: [9, -2], color: p.result},
+    {id: 'C', a: [2, 6], b: [9, -1], color: p.result},
     {id: 'D', a: [4, 0], b: [8, 4], color: theme === 'light' ? '#047857' : '#6ee7b7'},
   ];
   for (const frame of frames) {
-    let svg = line([-1, 0], [11, 0], p.axis) + line([0, -2.5], [0, 6], p.axis);
-    svg += `<path d="M ${x(11) - 5} ${y(0) - 3} L ${x(11)} ${y(0)} L ${x(11) - 5} ${y(0) + 3} M ${x(0) - 3} ${y(6) + 5} L ${x(0)} ${y(6)} L ${x(0) + 3} ${y(6) + 5}" fill="none" stroke="${p.axis}"/>`;
+    let svg = line([-1, 0], [11, 0], p.axis) + line([0, -1.5], [0, 7], p.axis);
+    svg += `<path d="M ${x(11) - 5} ${y(0) - 3} L ${x(11)} ${y(0)} L ${x(11) - 5} ${y(0) + 3} M ${x(0) - 3} ${y(7) + 5} L ${x(0)} ${y(7)} L ${x(0) + 3} ${y(7) + 5}" fill="none" stroke="${p.axis}"/>`;
     for (let n = 1; n <= 10; n++) svg += line([n, -.09], [n, .09], p.axis);
-    for (let n = -2; n <= 5; n++) if (n !== 0) svg += line([-.09, n], [.09, n], p.axis);
+    for (let n = -1; n <= 6; n++) if (n !== 0) svg += line([-.09, n], [.09, n], p.axis);
     svg += text(x(0) - 12, y(0) + 17, '$O$', p.axis)
       + text(x(11) + 10, y(0) + 4, '$x$', p.axis)
-      + text(x(0), y(6) - 8, '$y$', p.axis);
+      + text(x(0), y(7) - 8, '$y$', p.axis);
     for (const s of segments) {
       const active = frame.x === null || (s.a[0] <= frame.x && frame.x < s.b[0]);
       svg += `<g opacity="${active ? 1 : .3}">${line(s.a, s.b, s.color, 2.5)}`;
       for (const point of [s.a, s.b]) svg += `<circle cx="${x(point[0])}" cy="${y(point[1])}" r="2.5" fill="${s.color}"/>`;
       svg += '</g>';
     }
-    if (frame.x !== null) svg += line([frame.x, -2.5], [frame.x, 6], p.axis, 1.2, true);
+    if (frame.x !== null) svg += line([frame.x, -1.5], [frame.x, 7], p.axis, 1.2, true);
     // Labels stay legible even when their segment is not active.
     svg += text(x(10) + 13, y(1) + 5, '$A$', p.a)
       + text(x(2), y(3) - 9, '$B$', p.b)
-      + text(x(2) - 12, y(5) - 6, '$C$', p.result)
+      + text(x(2) - 12, y(6) - 6, '$C$', p.result)
       + text(x(8) + 13, y(4) + 4, '$D$', segments[3].color);
     for (const id of frame.known) {
       const {point, offset} = intersections[id];
       svg += `<circle cx="${x(point[0])}" cy="${y(point[1])}" r="3.8" fill="${frame.reported.includes(id) ? p.text : p.background}" stroke="${p.text}" stroke-width="1.2"/>`;
-      // Keep the moving dashed scan line from running through a point label.
-      svg += `<rect x="${x(point[0]) + offset[0] - 9}" y="${y(point[1]) + offset[1] - 14}" width="18" height="18" fill="${p.background}"/>`;
       svg += text(x(point[0]) + offset[0], y(point[1]) + offset[1], `$${id}$`, p.text);
     }
-    const position = frame.x === 5.5 ? '\\frac{11}{2}' : frame.x;
-    svg += text(170, 24, frame.x === null ? '$A, B, C, D$' : `$x=${position}$`, p.text, 17);
+    svg += text(170, 24, frame.x === null ? '$A, B, C, D$' : `$x=${frame.x}$`, p.text, 17);
     if (frame.order) svg += text(170, 252, `$${frame.order.replaceAll(',', '\\,,\\,')}$`, p.text, 15);
     const title = frame.x === null ? '主案例的四条输入线段，尚未标注交点。' : `处理横坐标 ${frame.x} 的事件后，活动顺序从下到上为 ${frame.order}。`;
     images.push({
