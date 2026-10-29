@@ -953,36 +953,36 @@
   "S32": [
     {
       "text": "到横坐标四，D 从 (4,0) 开始，",
-      "startMs": 70,
-      "endMs": 5200,
+      "startMs": 60,
+      "endMs": 6730,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "插在 A 下方。",
-      "startMs": 5398,
-      "endMs": 6638,
+      "startMs": 6880,
+      "endMs": 8240,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "现在最下面是 D，中间是 A，",
-      "startMs": 7089,
-      "endMs": 11408,
+      "startMs": 8680,
+      "endMs": 13000,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "最上面是 C，D 下方没有线段，",
-      "startMs": 11708,
-      "endMs": 15458,
+      "startMs": 13200,
+      "endMs": 17070,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "新邻接只有 D 与 A 这一对。",
-      "startMs": 15748,
-      "endMs": 17748,
+      "startMs": 17220,
+      "endMs": 20680,
       "timestampMs": null,
       "confidence": null
     }

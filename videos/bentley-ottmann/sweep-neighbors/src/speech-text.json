@@ -2533,16 +2533,29 @@
     }
   ],
   "S32": [
-    "到",
+    {
+      "text": "扫",
+      "pinyin": "sao3"
+    },
+    "描线来到",
     {
       "text": "横坐标",
       "pinyin": "heng2 zuo4 biao1"
     },
-    "四。",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "四",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位置。",
     {
       "breakMs": 200
     },
-    "D 从 ",
+    "线段 D 从",
     {
       "text": "横坐标",
       "pinyin": "heng2 zuo4 biao1"
@@ -2552,7 +2565,7 @@
       "text": "的",
       "pinyin": "de5"
     },
-    "点 开始。",
+    "点开始。",
     {
       "breakMs": 200
     },
@@ -2605,26 +2618,12 @@
     {
       "breakMs": 200
     },
-    "新邻接",
+    "此时",
     {
       "text": "只有",
       "pinyin": "zhi2 you3"
     },
-    " D ",
-    {
-      "text": "与",
-      "pinyin": "yu3"
-    },
-    " A ",
-    {
-      "text": "这",
-      "pinyin": "zhe4"
-    },
-    {
-      "text": "一对",
-      "pinyin": "yi2 dui4"
-    },
-    "。",
+    "线段 D 和线段 A 成为新的邻居。",
     {
       "breakMs": 400
     }

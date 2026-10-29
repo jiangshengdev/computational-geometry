@@ -19026,957 +19026,472 @@
   "S32": {
     "audioFile": "S32.wav",
     "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "34246154aa1c7c6a8f5cdee5bac18a0b475ce198113aac0f037d2d0bb82534ec",
-    "duration": 17.86,
+    "audioSha256": "4c2a4ed0a5cc4abdf8f51d3ac39493e70bd9fa2cd037509d93008aaef993fc84",
+    "duration": 20.71,
     "words": [
       {
-        "text": "到",
-        "startMs": 70,
-        "durationMs": 280,
+        "text": "扫描线",
         "textOffset": 0,
-        "wordLength": 1
+        "wordLength": 3,
+        "startMs": 60,
+        "durationMs": 790
+      },
+      {
+        "text": "来到",
+        "textOffset": 3,
+        "wordLength": 2,
+        "startMs": 860,
+        "durationMs": 310
       },
       {
         "text": "横坐标",
-        "startMs": 350,
-        "durationMs": 520,
-        "textOffset": 1,
-        "wordLength": 3
-      },
-      {
-        "text": "四",
-        "startMs": 870,
-        "durationMs": 440,
-        "textOffset": 4,
-        "wordLength": 1
-      },
-      {
-        "text": "。",
-        "startMs": 1310,
-        "durationMs": 0,
         "textOffset": 5,
-        "wordLength": 1
+        "wordLength": 3,
+        "startMs": 1180,
+        "durationMs": 530
       },
       {
-        "text": "D",
-        "startMs": 1528,
-        "durationMs": 240,
-        "textOffset": 6,
-        "wordLength": 1
-      },
-      {
-        "text": "从",
-        "startMs": 1768,
-        "durationMs": 440,
+        "text": "为",
         "textOffset": 8,
-        "wordLength": 1
-      },
-      {
-        "text": " ",
-        "startMs": 2208,
-        "durationMs": 0,
-        "textOffset": 9,
-        "wordLength": 1
-      },
-      {
-        "text": "横坐标",
-        "startMs": 2248,
-        "durationMs": 640,
-        "textOffset": 10,
-        "wordLength": 3
+        "wordLength": 1,
+        "startMs": 1720,
+        "durationMs": 170
       },
       {
         "text": "四",
-        "startMs": 2888,
-        "durationMs": 440,
-        "textOffset": 13,
-        "wordLength": 1
-      },
-      {
-        "text": "、",
-        "startMs": 3328,
-        "durationMs": 0,
-        "textOffset": 14,
-        "wordLength": 1
-      },
-      {
-        "text": "纵",
-        "startMs": 3368,
-        "durationMs": 280,
-        "textOffset": 15,
-        "wordLength": 1
-      },
-      {
-        "text": "坐标",
-        "startMs": 3648,
-        "durationMs": 320,
-        "textOffset": 16,
-        "wordLength": 2
-      },
-      {
-        "text": "零",
-        "startMs": 3968,
-        "durationMs": 160,
-        "textOffset": 18,
-        "wordLength": 1
+        "textOffset": 9,
+        "wordLength": 1,
+        "startMs": 1900,
+        "durationMs": 170
       },
       {
         "text": "的",
-        "startMs": 4128,
-        "durationMs": 119,
-        "textOffset": 19,
-        "wordLength": 1
+        "textOffset": 10,
+        "wordLength": 1,
+        "startMs": 2080,
+        "durationMs": 100
       },
       {
-        "text": "点",
-        "startMs": 4247,
-        "durationMs": 200,
-        "textOffset": 20,
-        "wordLength": 1
-      },
-      {
-        "text": " ",
-        "startMs": 4447,
-        "durationMs": 0,
-        "textOffset": 21,
-        "wordLength": 1
-      },
-      {
-        "text": "开始",
-        "textOffset": 22,
+        "text": "位置",
+        "textOffset": 11,
         "wordLength": 2,
-        "startMs": 4550,
+        "startMs": 2190,
+        "durationMs": 530
+      },
+      {
+        "text": "线段",
+        "textOffset": 14,
+        "wordLength": 2,
+        "startMs": 2880,
+        "durationMs": 570
+      },
+      {
+        "text": "D",
+        "textOffset": 17,
+        "wordLength": 1,
+        "startMs": 3460,
+        "durationMs": 260
+      },
+      {
+        "text": "从",
+        "textOffset": 19,
+        "wordLength": 1,
+        "startMs": 3730,
+        "durationMs": 270
+      },
+      {
+        "text": "横坐标",
+        "textOffset": 20,
+        "wordLength": 3,
+        "startMs": 4010,
+        "durationMs": 500
+      },
+      {
+        "text": "四",
+        "textOffset": 23,
+        "wordLength": 1,
+        "startMs": 4520,
+        "durationMs": 450
+      },
+      {
+        "text": "纵坐标",
+        "textOffset": 25,
+        "wordLength": 3,
+        "startMs": 5000,
         "durationMs": 650
       },
       {
-        "text": "。",
-        "startMs": 4447,
-        "durationMs": 0,
-        "textOffset": 24,
-        "wordLength": 1
+        "text": "零",
+        "textOffset": 28,
+        "wordLength": 1,
+        "startMs": 5660,
+        "durationMs": 150
+      },
+      {
+        "text": "的点",
+        "textOffset": 29,
+        "wordLength": 2,
+        "startMs": 5820,
+        "durationMs": 290
+      },
+      {
+        "text": "开始",
+        "textOffset": 31,
+        "wordLength": 2,
+        "startMs": 6120,
+        "durationMs": 610
       },
       {
         "text": "插",
-        "startMs": 5398,
-        "durationMs": 280,
-        "textOffset": 25,
-        "wordLength": 1
+        "textOffset": 34,
+        "wordLength": 1,
+        "startMs": 6880,
+        "durationMs": 360
       },
       {
         "text": "在",
-        "startMs": 5678,
-        "durationMs": 200,
-        "textOffset": 26,
-        "wordLength": 1
+        "textOffset": 35,
+        "wordLength": 1,
+        "startMs": 7250,
+        "durationMs": 180
       },
       {
         "text": "A",
-        "startMs": 5878,
-        "durationMs": 160,
-        "textOffset": 28,
-        "wordLength": 1
+        "textOffset": 37,
+        "wordLength": 1,
+        "startMs": 7440,
+        "durationMs": 190
       },
       {
         "text": "下方",
-        "startMs": 6038,
-        "durationMs": 600,
-        "textOffset": 30,
-        "wordLength": 2
-      },
-      {
-        "text": "。",
-        "startMs": 6638,
-        "durationMs": 0,
-        "textOffset": 32,
-        "wordLength": 1
+        "textOffset": 39,
+        "wordLength": 2,
+        "startMs": 7640,
+        "durationMs": 600
       },
       {
         "text": "现在",
-        "startMs": 7089,
-        "durationMs": 480,
-        "textOffset": 33,
-        "wordLength": 2
+        "textOffset": 42,
+        "wordLength": 2,
+        "startMs": 8680,
+        "durationMs": 530
       },
       {
         "text": "最",
-        "startMs": 7569,
-        "durationMs": 200,
-        "textOffset": 35,
-        "wordLength": 1
+        "textOffset": 44,
+        "wordLength": 1,
+        "startMs": 9220,
+        "durationMs": 190
       },
       {
         "text": "下面",
-        "startMs": 7769,
-        "durationMs": 360,
-        "textOffset": 36,
-        "wordLength": 2
+        "textOffset": 45,
+        "wordLength": 2,
+        "startMs": 9420,
+        "durationMs": 390
       },
       {
         "text": "是",
-        "startMs": 8129,
-        "durationMs": 200,
-        "textOffset": 38,
-        "wordLength": 1
+        "textOffset": 47,
+        "wordLength": 1,
+        "startMs": 9820,
+        "durationMs": 150
       },
       {
         "text": "D",
-        "startMs": 8329,
-        "durationMs": 240,
-        "textOffset": 40,
-        "wordLength": 1
+        "textOffset": 49,
+        "wordLength": 1,
+        "startMs": 9980,
+        "durationMs": 180
       },
       {
         "text": "这",
-        "startMs": 8569,
-        "durationMs": 160,
-        "textOffset": 42,
-        "wordLength": 1
+        "textOffset": 51,
+        "wordLength": 1,
+        "startMs": 10170,
+        "durationMs": 120
       },
       {
         "text": "条",
-        "startMs": 8729,
-        "durationMs": 200,
-        "textOffset": 43,
-        "wordLength": 1
+        "textOffset": 52,
+        "wordLength": 1,
+        "startMs": 10300,
+        "durationMs": 170
       },
       {
         "text": "线段",
-        "startMs": 8929,
-        "durationMs": 439,
-        "textOffset": 44,
-        "wordLength": 2
-      },
-      {
-        "text": "。",
-        "startMs": 9368,
-        "durationMs": 0,
-        "textOffset": 46,
-        "wordLength": 1
+        "textOffset": 53,
+        "wordLength": 2,
+        "startMs": 10480,
+        "durationMs": 520
       },
       {
         "text": "中间",
-        "startMs": 9688,
-        "durationMs": 480,
-        "textOffset": 47,
-        "wordLength": 2
+        "textOffset": 56,
+        "wordLength": 2,
+        "startMs": 11140,
+        "durationMs": 630
       },
       {
         "text": "是",
-        "startMs": 10168,
-        "durationMs": 200,
-        "textOffset": 49,
-        "wordLength": 1
+        "textOffset": 58,
+        "wordLength": 1,
+        "startMs": 11780,
+        "durationMs": 130
       },
       {
         "text": "A",
-        "startMs": 10368,
-        "durationMs": 200,
-        "textOffset": 51,
-        "wordLength": 1
+        "textOffset": 60,
+        "wordLength": 1,
+        "startMs": 11920,
+        "durationMs": 190
       },
       {
         "text": "这",
-        "startMs": 10568,
-        "durationMs": 120,
-        "textOffset": 53,
-        "wordLength": 1
+        "textOffset": 62,
+        "wordLength": 1,
+        "startMs": 12120,
+        "durationMs": 130
       },
       {
         "text": "条",
-        "startMs": 10688,
-        "durationMs": 200,
-        "textOffset": 54,
-        "wordLength": 1
+        "textOffset": 63,
+        "wordLength": 1,
+        "startMs": 12260,
+        "durationMs": 190
       },
       {
         "text": "线段",
-        "startMs": 10888,
-        "durationMs": 520,
-        "textOffset": 55,
-        "wordLength": 2
-      },
-      {
-        "text": "。",
-        "startMs": 11408,
-        "durationMs": 0,
-        "textOffset": 57,
-        "wordLength": 1
+        "textOffset": 64,
+        "wordLength": 2,
+        "startMs": 12460,
+        "durationMs": 540
       },
       {
         "text": "最",
-        "startMs": 11708,
-        "durationMs": 280,
-        "textOffset": 58,
-        "wordLength": 1
+        "textOffset": 67,
+        "wordLength": 1,
+        "startMs": 13200,
+        "durationMs": 350
       },
       {
-        "text": "上",
-        "startMs": 11988,
-        "durationMs": 200,
-        "textOffset": 59,
-        "wordLength": 1
-      },
-      {
-        "text": "面",
-        "startMs": 12188,
-        "durationMs": 240,
-        "textOffset": 60,
-        "wordLength": 1
+        "text": "上面",
+        "textOffset": 68,
+        "wordLength": 2,
+        "startMs": 13560,
+        "durationMs": 490
       },
       {
         "text": "是",
-        "startMs": 12428,
-        "durationMs": 160,
-        "textOffset": 61,
-        "wordLength": 1
+        "textOffset": 70,
+        "wordLength": 1,
+        "startMs": 14060,
+        "durationMs": 150
       },
       {
         "text": "C",
-        "startMs": 12588,
-        "durationMs": 240,
-        "textOffset": 63,
-        "wordLength": 1
+        "textOffset": 72,
+        "wordLength": 1,
+        "startMs": 14220,
+        "durationMs": 200
       },
       {
         "text": "这",
-        "startMs": 12828,
-        "durationMs": 120,
-        "textOffset": 65,
-        "wordLength": 1
+        "textOffset": 74,
+        "wordLength": 1,
+        "startMs": 14430,
+        "durationMs": 120
       },
       {
         "text": "条",
-        "startMs": 12948,
-        "durationMs": 200,
-        "textOffset": 66,
-        "wordLength": 1
+        "textOffset": 75,
+        "wordLength": 1,
+        "startMs": 14560,
+        "durationMs": 190
       },
       {
         "text": "线段",
-        "startMs": 13148,
-        "durationMs": 480,
-        "textOffset": 67,
-        "wordLength": 2
-      },
-      {
-        "text": "。",
-        "startMs": 13628,
-        "durationMs": 0,
-        "textOffset": 69,
-        "wordLength": 1
+        "textOffset": 76,
+        "wordLength": 2,
+        "startMs": 14760,
+        "durationMs": 510
       },
       {
         "text": "D",
-        "startMs": 13978,
-        "durationMs": 240,
-        "textOffset": 70,
-        "wordLength": 1
+        "textOffset": 79,
+        "wordLength": 1,
+        "startMs": 15520,
+        "durationMs": 270
       },
       {
         "text": "下方",
-        "startMs": 14218,
-        "durationMs": 400,
-        "textOffset": 72,
-        "wordLength": 2
+        "textOffset": 81,
+        "wordLength": 2,
+        "startMs": 15800,
+        "durationMs": 410
       },
       {
         "text": "没有",
-        "startMs": 14618,
-        "durationMs": 280,
-        "textOffset": 74,
-        "wordLength": 2
+        "textOffset": 83,
+        "wordLength": 2,
+        "startMs": 16220,
+        "durationMs": 270
       },
       {
         "text": "线段",
-        "startMs": 14898,
-        "durationMs": 560,
-        "textOffset": 76,
-        "wordLength": 2
+        "textOffset": 85,
+        "wordLength": 2,
+        "startMs": 16500,
+        "durationMs": 570
       },
       {
-        "text": "。",
-        "startMs": 15458,
-        "durationMs": 0,
-        "textOffset": 78,
-        "wordLength": 1
-      },
-      {
-        "text": "新",
-        "startMs": 15748,
-        "durationMs": 280,
-        "textOffset": 79,
-        "wordLength": 1
-      },
-      {
-        "text": "邻接",
-        "startMs": 16028,
-        "durationMs": 320,
-        "textOffset": 80,
-        "wordLength": 2
+        "text": "此时",
+        "textOffset": 88,
+        "wordLength": 2,
+        "startMs": 17220,
+        "durationMs": 490
       },
       {
         "text": "只有",
-        "startMs": 16348,
-        "durationMs": 280,
-        "textOffset": 82,
-        "wordLength": 2
+        "textOffset": 90,
+        "wordLength": 2,
+        "startMs": 17720,
+        "durationMs": 270
+      },
+      {
+        "text": "线段",
+        "textOffset": 92,
+        "wordLength": 2,
+        "startMs": 18000,
+        "durationMs": 390
       },
       {
         "text": "D",
-        "startMs": 16628,
-        "durationMs": 200,
-        "textOffset": 85,
-        "wordLength": 1
+        "textOffset": 95,
+        "wordLength": 1,
+        "startMs": 18400,
+        "durationMs": 330
       },
       {
-        "text": "与",
-        "startMs": 16828,
-        "durationMs": 200,
-        "textOffset": 87,
-        "wordLength": 1
+        "text": "和",
+        "textOffset": 97,
+        "wordLength": 1,
+        "startMs": 18740,
+        "durationMs": 190
+      },
+      {
+        "text": "线段",
+        "textOffset": 98,
+        "wordLength": 2,
+        "startMs": 18940,
+        "durationMs": 330
       },
       {
         "text": "A",
-        "startMs": 17028,
-        "durationMs": 200,
-        "textOffset": 89,
-        "wordLength": 1
+        "textOffset": 101,
+        "wordLength": 1,
+        "startMs": 19280,
+        "durationMs": 270
       },
       {
-        "text": "这",
-        "startMs": 17228,
-        "durationMs": 120,
-        "textOffset": 91,
-        "wordLength": 1
+        "text": "成为",
+        "textOffset": 103,
+        "wordLength": 2,
+        "startMs": 19560,
+        "durationMs": 370
       },
       {
-        "text": "一对",
-        "startMs": 17348,
-        "durationMs": 400,
-        "textOffset": 92,
-        "wordLength": 2
+        "text": "新",
+        "textOffset": 105,
+        "wordLength": 1,
+        "startMs": 19940,
+        "durationMs": 170
       },
       {
-        "text": "。",
-        "startMs": 17748,
-        "durationMs": 0,
-        "textOffset": 94,
-        "wordLength": 1
+        "text": "的",
+        "textOffset": 106,
+        "wordLength": 1,
+        "startMs": 20120,
+        "durationMs": 90
+      },
+      {
+        "text": "邻居",
+        "textOffset": 107,
+        "wordLength": 2,
+        "startMs": 20220,
+        "durationMs": 460
       }
     ],
-    "speech": "到横坐标四。D 从 横坐标四、纵坐标零的点 开始。插在 A 下方。现在最下面是 D 这条线段。中间是 A 这条线段。最上面是 C 这条线段。D 下方没有线段。新邻接只有 D 与 A 这一对。",
+    "speech": "扫描线来到横坐标为四的位置。线段 D 从横坐标四、纵坐标零的点开始。插在 A 下方。现在最下面是 D 这条线段。中间是 A 这条线段。最上面是 C 这条线段。D 下方没有线段。此时只有线段 D 和线段 A 成为新的邻居。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "083090e0015719134f1a7d03289372ac6f7156b3dfe6f9b4fe16602a21732189",
+    "fingerprint": "281a84b9148bae287ce9cb0f8c97266f39606ebbba9a2230310632c61013e59a",
     "alignment": {
       "method": "azure-pronunciation-assessment",
-      "audioSha256": "34246154aa1c7c6a8f5cdee5bac18a0b475ce198113aac0f037d2d0bb82534ec",
-      "synthesisWords": [
-        {
-          "text": "到",
-          "startMs": 70,
-          "durationMs": 280,
-          "textOffset": 0,
-          "wordLength": 1
-        },
-        {
-          "text": "横坐标",
-          "startMs": 350,
-          "durationMs": 520,
-          "textOffset": 1,
-          "wordLength": 3
-        },
-        {
-          "text": "四",
-          "startMs": 870,
-          "durationMs": 440,
-          "textOffset": 4,
-          "wordLength": 1
-        },
-        {
-          "text": "。",
-          "startMs": 1310,
-          "durationMs": 0,
-          "textOffset": 5,
-          "wordLength": 1
-        },
+      "audioSha256": "4c2a4ed0a5cc4abdf8f51d3ac39493e70bd9fa2cd037509d93008aaef993fc84",
+      "synthesisWords": [],
+      "reviewedPronunciation": [
         {
           "text": "D",
-          "startMs": 1528,
-          "durationMs": 240,
-          "textOffset": 6,
-          "wordLength": 1
-        },
-        {
-          "text": "从",
-          "startMs": 1768,
-          "durationMs": 440,
-          "textOffset": 8,
-          "wordLength": 1
-        },
-        {
-          "text": " ",
-          "startMs": 2208,
-          "durationMs": 0,
-          "textOffset": 9,
-          "wordLength": 1
-        },
-        {
-          "text": "横坐标",
-          "startMs": 2248,
-          "durationMs": 640,
-          "textOffset": 10,
-          "wordLength": 3
-        },
-        {
-          "text": "四",
-          "startMs": 2888,
-          "durationMs": 440,
-          "textOffset": 13,
-          "wordLength": 1
-        },
-        {
-          "text": "、",
-          "startMs": 3328,
-          "durationMs": 0,
-          "textOffset": 14,
-          "wordLength": 1
-        },
-        {
-          "text": "纵",
-          "startMs": 3368,
-          "durationMs": 280,
-          "textOffset": 15,
-          "wordLength": 1
-        },
-        {
-          "text": "坐标",
-          "startMs": 3648,
-          "durationMs": 320,
-          "textOffset": 16,
-          "wordLength": 2
-        },
-        {
-          "text": "零",
-          "startMs": 3968,
-          "durationMs": 160,
-          "textOffset": 18,
-          "wordLength": 1
-        },
-        {
-          "text": "的",
-          "startMs": 4128,
-          "durationMs": 119,
-          "textOffset": 19,
-          "wordLength": 1
-        },
-        {
-          "text": "点",
-          "startMs": 4247,
-          "durationMs": 200,
-          "textOffset": 20,
-          "wordLength": 1
-        },
-        {
-          "text": " ",
-          "startMs": 4447,
-          "durationMs": 0,
-          "textOffset": 21,
-          "wordLength": 1
-        },
-        {
-          "text": "开始",
-          "startMs": 4447,
-          "durationMs": 0,
-          "textOffset": 22,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 4447,
-          "durationMs": 0,
-          "textOffset": 24,
-          "wordLength": 1
-        },
-        {
-          "text": "插",
-          "startMs": 5398,
-          "durationMs": 280,
-          "textOffset": 25,
-          "wordLength": 1
-        },
-        {
-          "text": "在",
-          "startMs": 5678,
-          "durationMs": 200,
-          "textOffset": 26,
-          "wordLength": 1
-        },
-        {
-          "text": "A",
-          "startMs": 5878,
-          "durationMs": 160,
-          "textOffset": 28,
-          "wordLength": 1
-        },
-        {
-          "text": "下方",
-          "startMs": 6038,
-          "durationMs": 600,
-          "textOffset": 30,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 6638,
-          "durationMs": 0,
-          "textOffset": 32,
-          "wordLength": 1
-        },
-        {
-          "text": "现在",
-          "startMs": 7089,
-          "durationMs": 480,
-          "textOffset": 33,
-          "wordLength": 2
-        },
-        {
-          "text": "最",
-          "startMs": 7569,
-          "durationMs": 200,
-          "textOffset": 35,
-          "wordLength": 1
-        },
-        {
-          "text": "下面",
-          "startMs": 7769,
-          "durationMs": 360,
-          "textOffset": 36,
-          "wordLength": 2
+          "textOffset": 17
         },
         {
           "text": "是",
-          "startMs": 8129,
-          "durationMs": 200,
-          "textOffset": 38,
-          "wordLength": 1
-        },
-        {
-          "text": "D",
-          "startMs": 8329,
-          "durationMs": 240,
-          "textOffset": 40,
-          "wordLength": 1
-        },
-        {
-          "text": "这",
-          "startMs": 8569,
-          "durationMs": 160,
-          "textOffset": 42,
-          "wordLength": 1
-        },
-        {
-          "text": "条",
-          "startMs": 8729,
-          "durationMs": 200,
-          "textOffset": 43,
-          "wordLength": 1
-        },
-        {
-          "text": "线段",
-          "startMs": 8929,
-          "durationMs": 439,
-          "textOffset": 44,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 9368,
-          "durationMs": 0,
-          "textOffset": 46,
-          "wordLength": 1
-        },
-        {
-          "text": "中间",
-          "startMs": 9688,
-          "durationMs": 480,
-          "textOffset": 47,
-          "wordLength": 2
-        },
-        {
-          "text": "是",
-          "startMs": 10168,
-          "durationMs": 200,
-          "textOffset": 49,
-          "wordLength": 1
-        },
-        {
-          "text": "A",
-          "startMs": 10368,
-          "durationMs": 200,
-          "textOffset": 51,
-          "wordLength": 1
-        },
-        {
-          "text": "这",
-          "startMs": 10568,
-          "durationMs": 120,
-          "textOffset": 53,
-          "wordLength": 1
-        },
-        {
-          "text": "条",
-          "startMs": 10688,
-          "durationMs": 200,
-          "textOffset": 54,
-          "wordLength": 1
-        },
-        {
-          "text": "线段",
-          "startMs": 10888,
-          "durationMs": 520,
-          "textOffset": 55,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 11408,
-          "durationMs": 0,
-          "textOffset": 57,
-          "wordLength": 1
-        },
-        {
-          "text": "最",
-          "startMs": 11708,
-          "durationMs": 280,
-          "textOffset": 58,
-          "wordLength": 1
-        },
-        {
-          "text": "上",
-          "startMs": 11988,
-          "durationMs": 200,
-          "textOffset": 59,
-          "wordLength": 1
-        },
-        {
-          "text": "面",
-          "startMs": 12188,
-          "durationMs": 240,
-          "textOffset": 60,
-          "wordLength": 1
-        },
-        {
-          "text": "是",
-          "startMs": 12428,
-          "durationMs": 160,
-          "textOffset": 61,
-          "wordLength": 1
-        },
-        {
-          "text": "C",
-          "startMs": 12588,
-          "durationMs": 240,
-          "textOffset": 63,
-          "wordLength": 1
-        },
-        {
-          "text": "这",
-          "startMs": 12828,
-          "durationMs": 120,
-          "textOffset": 65,
-          "wordLength": 1
-        },
-        {
-          "text": "条",
-          "startMs": 12948,
-          "durationMs": 200,
-          "textOffset": 66,
-          "wordLength": 1
-        },
-        {
-          "text": "线段",
-          "startMs": 13148,
-          "durationMs": 480,
-          "textOffset": 67,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 13628,
-          "durationMs": 0,
-          "textOffset": 69,
-          "wordLength": 1
-        },
-        {
-          "text": "D",
-          "startMs": 13978,
-          "durationMs": 240,
-          "textOffset": 70,
-          "wordLength": 1
-        },
-        {
-          "text": "下方",
-          "startMs": 14218,
-          "durationMs": 400,
-          "textOffset": 72,
-          "wordLength": 2
-        },
-        {
-          "text": "没有",
-          "startMs": 14618,
-          "durationMs": 280,
-          "textOffset": 74,
-          "wordLength": 2
-        },
-        {
-          "text": "线段",
-          "startMs": 14898,
-          "durationMs": 560,
-          "textOffset": 76,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 15458,
-          "durationMs": 0,
-          "textOffset": 78,
-          "wordLength": 1
-        },
-        {
-          "text": "新",
-          "startMs": 15748,
-          "durationMs": 280,
-          "textOffset": 79,
-          "wordLength": 1
-        },
-        {
-          "text": "邻接",
-          "startMs": 16028,
-          "durationMs": 320,
-          "textOffset": 80,
-          "wordLength": 2
-        },
-        {
-          "text": "只有",
-          "startMs": 16348,
-          "durationMs": 280,
-          "textOffset": 82,
-          "wordLength": 2
-        },
-        {
-          "text": "D",
-          "startMs": 16628,
-          "durationMs": 200,
-          "textOffset": 85,
-          "wordLength": 1
-        },
-        {
-          "text": "与",
-          "startMs": 16828,
-          "durationMs": 200,
-          "textOffset": 87,
-          "wordLength": 1
-        },
-        {
-          "text": "A",
-          "startMs": 17028,
-          "durationMs": 200,
-          "textOffset": 89,
-          "wordLength": 1
-        },
-        {
-          "text": "这",
-          "startMs": 17228,
-          "durationMs": 120,
-          "textOffset": 91,
-          "wordLength": 1
-        },
-        {
-          "text": "一对",
-          "startMs": 17348,
-          "durationMs": 400,
-          "textOffset": 92,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 17748,
-          "durationMs": 0,
-          "textOffset": 94,
-          "wordLength": 1
+          "textOffset": 70
         }
       ],
       "response": {
-        "Id": "de69943a673a48fda7db61a044946f6e",
+        "Id": "d1e767de1bf143b3a907202aa31c6323",
         "RecognitionStatus": "Success",
-        "Offset": 700000,
-        "Duration": 177600000,
+        "Offset": 600000,
+        "Duration": 206200000,
         "Channel": 0,
-        "DisplayText": "到横坐标4D从横坐标四纵坐标零的点开始插在A下方，现在最下面是D这条线段中间是A，这条线段最上面是C这条线段，D下方没有线段，新邻接只有D与A这一对。",
-        "SNR": 44.59771,
+        "DisplayText": "扫描线来到横坐标为四的位置，线段D从横坐标四纵坐标零的点开始插在A下方，现在最下面是D这条线段中间是A这条线段最上面是C这条线段，D下方没有线段，此时只有线段D和线段A成为新的邻居。",
+        "SNR": 42.520382,
         "NBest": [
           {
-            "Confidence": 0.9631794,
-            "Lexical": "到 横坐标 四 D 从 横坐标 四 纵坐标 零 的点 开始 插 在 A 下方 现在 最 下面 是 D 这 条 线段 中间 是 A 这 条 线段 最 上面 是 C 这 条 线段 D 下方 没有 线段 新邻 接 只有 D 与 A 这 一对",
-            "ITN": "到 横坐标 4D 从 横坐标 四 纵坐标 零 的点 开始 插 在 A 下方 现在 最 下面 是 D 这 条 线段 中间 是 A 这 条 线段 最 上面 是 C 这 条 线段 D 下方 没有 线段 新邻 接 只有 D 与 A 这 一对",
-            "MaskedITN": "到横坐标4d从横坐标四纵坐标零的点开始插在a下方现在最下面是d这条线段中间是a这条线段最上面是c这条线段d下方没有线段新邻接只有d与a这一对",
-            "Display": "到横坐标4D从横坐标四纵坐标零的点开始插在A下方，现在最下面是D这条线段中间是A，这条线段最上面是C这条线段，D下方没有线段，新邻接只有D与A这一对。",
+            "Confidence": 0.9697268,
+            "Lexical": "扫描线 来到 横坐标 为 四 的 位置 线段 D 从 横坐标 四 纵坐标 零 的点 开始 插 在 A 下方 现在 最 下面 是 D 这 条 线段 中间 是 A 这 条 线段 最 上面 是 C 这 条 线段 D 下方 没有 线段 此时 只有 线段 D 和 线段 A 成为 新 的 邻居",
+            "ITN": "扫描线 来到 横坐标 为 四 的 位置 线段 D 从 横坐标 四 纵坐标 零 的点 开始 插 在 A 下方 现在 最 下面 是 D 这 条 线段 中间 是 A 这 条 线段 最 上面 是 C 这 条 线段 D 下方 没有 线段 此时 只有 线段 D 和 线段 A 成为 新 的 邻居",
+            "MaskedITN": "扫描线来到横坐标为四的位置线段d从横坐标四纵坐标零的点开始插在a下方现在最下面是d这条线段中间是a这条线段最上面是c这条线段d下方没有线段此时只有线段d和线段a成为新的邻居",
+            "Display": "扫描线来到横坐标为四的位置，线段D从横坐标四纵坐标零的点开始插在A下方，现在最下面是D这条线段中间是A这条线段最上面是C这条线段，D下方没有线段，此时只有线段D和线段A成为新的邻居。",
             "PronunciationAssessment": {
-              "AccuracyScore": 91,
+              "AccuracyScore": 90,
               "FluencyScore": 89,
-              "CompletenessScore": 94,
-              "PronScore": 90.4
+              "CompletenessScore": 96,
+              "PronScore": 90.6
             },
             "Words": [
               {
-                "Word": "到",
-                "Offset": 700000,
-                "Duration": 2500000,
+                "Word": "扫描线",
+                "Offset": 600000,
+                "Duration": 7900000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 70,
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "来到",
+                "Offset": 8600000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "横坐标",
-                "Offset": 3300000,
-                "Duration": 5700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 57,
-                  "ErrorType": "Mispronunciation"
-                }
-              },
-              {
-                "Word": "四",
-                "Offset": 9100000,
-                "Duration": 4400000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 94,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "D",
-                "Offset": 15700000,
-                "Duration": 2900000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 57,
-                  "ErrorType": "Mispronunciation"
-                }
-              },
-              {
-                "Word": "从",
-                "Offset": 18700000,
-                "Duration": 4100000,
+                "Offset": 11800000,
+                "Duration": 5300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "横坐标",
-                "Offset": 23100000,
-                "Duration": 6500000,
+                "Word": "为",
+                "Offset": 17200000,
+                "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -19984,8 +19499,71 @@
               },
               {
                 "Word": "四",
-                "Offset": 29700000,
-                "Duration": 4100000,
+                "Offset": 19000000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 20800000,
+                "Duration": 1000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "位置",
+                "Offset": 21900000,
+                "Duration": 5300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 67,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "线段",
+                "Offset": 28800000,
+                "Duration": 5700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "D",
+                "Offset": 34600000,
+                "Duration": 2600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 55,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "从",
+                "Offset": 37300000,
+                "Duration": 2700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "横坐标",
+                "Offset": 40100000,
+                "Duration": 5000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "四",
+                "Offset": 45200000,
+                "Duration": 4500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
                   "ErrorType": "None"
@@ -19993,7 +19571,7 @@
               },
               {
                 "Word": "纵坐标",
-                "Offset": 34100000,
+                "Offset": 50000000,
                 "Duration": 6500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -20002,17 +19580,17 @@
               },
               {
                 "Word": "零",
-                "Offset": 40700000,
-                "Duration": 1300000,
+                "Offset": 56600000,
+                "Duration": 1500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 100,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "的点",
-                "Offset": 42100000,
-                "Duration": 3300000,
+                "Offset": 58200000,
+                "Duration": 2900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -20020,8 +19598,8 @@
               },
               {
                 "Word": "开始",
-                "Offset": 45500000,
-                "Duration": 6500000,
+                "Offset": 61200000,
+                "Duration": 6100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
                   "ErrorType": "None"
@@ -20029,8 +19607,8 @@
               },
               {
                 "Word": "插",
-                "Offset": 53500000,
-                "Duration": 3900000,
+                "Offset": 68800000,
+                "Duration": 3600000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
                   "ErrorType": "None"
@@ -20038,8 +19616,8 @@
               },
               {
                 "Word": "在",
-                "Offset": 57500000,
-                "Duration": 1700000,
+                "Offset": 72500000,
+                "Duration": 1800000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20047,7 +19625,7 @@
               },
               {
                 "Word": "A",
-                "Offset": 59300000,
+                "Offset": 74400000,
                 "Duration": 1900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -20056,8 +19634,8 @@
               },
               {
                 "Word": "下方",
-                "Offset": 61300000,
-                "Duration": 5700000,
+                "Offset": 76400000,
+                "Duration": 6000000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -20065,17 +19643,17 @@
               },
               {
                 "Word": "现在",
-                "Offset": 71300000,
-                "Duration": 5200000,
+                "Offset": 86800000,
+                "Duration": 5300000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 100,
+                  "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "最",
-                "Offset": 76600000,
-                "Duration": 2000000,
+                "Offset": 92200000,
+                "Duration": 1900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20083,8 +19661,8 @@
               },
               {
                 "Word": "下面",
-                "Offset": 78700000,
-                "Duration": 3700000,
+                "Offset": 94200000,
+                "Duration": 3900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20092,142 +19670,79 @@
               },
               {
                 "Word": "是",
-                "Offset": 82500000,
+                "Offset": 98200000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 68,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "D",
+                "Offset": 99800000,
+                "Duration": 1800000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 60,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "这",
+                "Offset": 101700000,
+                "Duration": 1200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 62,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "条",
+                "Offset": 103000000,
                 "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "线段",
+                "Offset": 104800000,
+                "Duration": 5200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "中间",
+                "Offset": 111400000,
+                "Duration": 6300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 67,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "D",
-                "Offset": 84300000,
-                "Duration": 2700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 66,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "这",
-                "Offset": 87100000,
-                "Duration": 1100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 88,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "条",
-                "Offset": 88300000,
-                "Duration": 1900000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "线段",
-                "Offset": 90300000,
-                "Duration": 4100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "中间",
-                "Offset": 94500000,
-                "Duration": 8100000,
+                "Word": "是",
+                "Offset": 117800000,
+                "Duration": 1300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 91,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "是",
-                "Offset": 102700000,
-                "Duration": 1500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 94,
-                  "ErrorType": "None"
-                }
-              },
-              {
                 "Word": "A",
-                "Offset": 104300000,
-                "Duration": 2100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "这",
-                "Offset": 106500000,
-                "Duration": 1200000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "条",
-                "Offset": 107800000,
-                "Duration": 1800000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "线段",
-                "Offset": 109700000,
-                "Duration": 5300000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "最",
-                "Offset": 117100000,
-                "Duration": 3300000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "上面",
-                "Offset": 120500000,
-                "Duration": 4700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 88,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "是",
-                "Offset": 125300000,
-                "Duration": 1500000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 41,
-                  "ErrorType": "Mispronunciation"
-                }
-              },
-              {
-                "Word": "C",
-                "Offset": 126900000,
+                "Offset": 119200000,
                 "Duration": 1900000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 97,
+                  "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "这",
-                "Offset": 128900000,
+                "Offset": 121200000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 91,
@@ -20236,8 +19751,71 @@
               },
               {
                 "Word": "条",
-                "Offset": 130300000,
-                "Duration": 1700000,
+                "Offset": 122600000,
+                "Duration": 1900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "线段",
+                "Offset": 124600000,
+                "Duration": 5400000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "最",
+                "Offset": 132000000,
+                "Duration": 3500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "上面",
+                "Offset": 135600000,
+                "Duration": 4900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 76,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "是",
+                "Offset": 140600000,
+                "Duration": 1500000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 48,
+                  "ErrorType": "Mispronunciation"
+                }
+              },
+              {
+                "Word": "C",
+                "Offset": 142200000,
+                "Duration": 2000000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 76,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "这",
+                "Offset": 144300000,
+                "Duration": 1200000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 73,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "条",
+                "Offset": 145600000,
+                "Duration": 1900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20245,8 +19823,8 @@
               },
               {
                 "Word": "线段",
-                "Offset": 132100000,
-                "Duration": 5600000,
+                "Offset": 147600000,
+                "Duration": 5100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -20254,7 +19832,7 @@
               },
               {
                 "Word": "D",
-                "Offset": 140100000,
+                "Offset": 155200000,
                 "Duration": 2700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 61,
@@ -20263,8 +19841,8 @@
               },
               {
                 "Word": "下方",
-                "Offset": 142900000,
-                "Duration": 3900000,
+                "Offset": 158000000,
+                "Duration": 4100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -20272,7 +19850,7 @@
               },
               {
                 "Word": "没有",
-                "Offset": 146900000,
+                "Offset": 162200000,
                 "Duration": 2700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -20281,7 +19859,7 @@
               },
               {
                 "Word": "线段",
-                "Offset": 149700000,
+                "Offset": 165000000,
                 "Duration": 5700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -20289,74 +19867,101 @@
                 }
               },
               {
-                "Word": "新邻",
-                "Offset": 157300000,
-                "Duration": 5300000,
+                "Word": "此时",
+                "Offset": 172200000,
+                "Duration": 4900000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 100,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "接",
-                "Offset": 162700000,
-                "Duration": 1700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 100,
+                  "AccuracyScore": 85,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "只有",
-                "Offset": 164500000,
-                "Duration": 2200000,
+                "Offset": 177200000,
+                "Duration": 2700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
+                "Word": "线段",
+                "Offset": 180000000,
+                "Duration": 3900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
                 "Word": "D",
-                "Offset": 166800000,
-                "Duration": 2200000,
+                "Offset": 184000000,
+                "Duration": 3300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 61,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "与",
-                "Offset": 169100000,
-                "Duration": 1700000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 97,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "A",
-                "Offset": 170900000,
-                "Duration": 2200000,
+                "Word": "和",
+                "Offset": 187400000,
+                "Duration": 1900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "这",
-                "Offset": 173200000,
-                "Duration": 1000000,
+                "Word": "线段",
+                "Offset": 189400000,
+                "Duration": 3300000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 97,
+                  "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "一对",
-                "Offset": 174300000,
-                "Duration": 4000000,
+                "Word": "A",
+                "Offset": 192800000,
+                "Duration": 2700000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 73,
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "成为",
+                "Offset": 195600000,
+                "Duration": 3700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 94,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "新",
+                "Offset": 199400000,
+                "Duration": 1700000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "的",
+                "Offset": 201200000,
+                "Duration": 900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "邻居",
+                "Offset": 202200000,
+                "Duration": 4600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 91,
                   "ErrorType": "None"
                 }
               }

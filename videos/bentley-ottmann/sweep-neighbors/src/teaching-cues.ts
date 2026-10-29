@@ -117,7 +117,7 @@ export const teachingCues: Record<string, TeachingCue[]> = {
   S30: [cue("原来被 B 隔开的上下两条", lines("A", "C"))],
   S32: [
     cue("横坐标四、纵坐标零的点", [point(4, 0, inputs.D.color)]),
-    cue("新邻接只有 D 与 A", lines("D", "A")),
+    cue("此时只有线段 D 和线段 A 成为新的邻居", lines("D", "A")),
   ],
   S33: [cue("检查 D 与 A", lines("D", "A")), cue("记作 Q", mark("Q"))],
   S34: [
