@@ -5,7 +5,7 @@ description: 仅在用户明确要求时处理 Azure 英文字母读音异常，
 
 # 英文字母读音备用方案
 
-本 skill 是两种备用方案的唯一说明入口，不改变项目默认的 `say-as interpret-as="characters"` 字母拼读方式。遵循[配音与字幕制作规则](../../docs/agents/videos/narration.md)及其音色、原速、素材格式与局部处理要求。
+本 skill 是两种备用方案的唯一说明入口，不改变项目默认的 `say-as interpret-as="characters"` 字母拼读方式。遵循[配音与字幕制作规则](../../../docs/agents/videos/narration.md)及其音色、原速、素材格式与局部处理要求。
 
 ## 使用门禁
 
