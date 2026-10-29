@@ -24,6 +24,7 @@ import {
   type WordBoundary,
   phraseTime,
   type AudioTiming,
+  type CaptionPlan,
 } from "./timing.ts";
 
 export async function runNarration({
@@ -42,6 +43,7 @@ export async function runNarration({
   shots: {
     id: string;
     caption: string;
+    captionPlan?: CaptionPlan;
     reveal?: string;
     motion?: { start: string; end: string };
   }[];
@@ -73,7 +75,8 @@ export async function runNarration({
     shots.map((shot) => {
       const doc = buildSpeechDocument(speech[shot.id], shot.id);
       if (!doc.text.trim()) throw Error(`Empty speech: ${shot.id}`);
-      if (validateClauses) validateCaptionClauses(shot.caption, doc.text);
+      if (validateClauses)
+        validateCaptionClauses(shot.caption, doc.text, shot.captionPlan);
       for (const anchor of [
         ...Object.values(shot.motion ?? {}),
         ...(shot.reveal ? [shot.reveal] : []),
@@ -192,7 +195,7 @@ export async function runNarration({
             JSON.stringify(timing[shot.id], null, 2) + "\n",
           );
         }
-        createCaptions(shot.caption, timing[shot.id]);
+        createCaptions(shot.caption, timing[shot.id], shot.captionPlan);
         if (shot.reveal) phraseTime(timing[shot.id], shot.reveal, "start");
         if (shot.motion) {
           const start = phraseTime(timing[shot.id], shot.motion.start, "start");
@@ -214,7 +217,8 @@ export async function runNarration({
       }
       // Publish only after every requested shot passes decoding and duration checks.
       // captions.ts rebuilds all cues, so validate untouched shots before any copy.
-      for (const shot of shots) createCaptions(shot.caption, timing[shot.id]);
+      for (const shot of shots)
+        createCaptions(shot.caption, timing[shot.id], shot.captionPlan);
       mkdirSync(join(root, "public/narration"), { recursive: true });
       for (const shot of selected)
         copyFileSync(

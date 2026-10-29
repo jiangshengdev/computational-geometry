@@ -49,3 +49,36 @@ test("case-insensitive speech matching still rejects missing, wrong, reordered a
   ])
     assert.throws(() => validateWords({ ...audio, words }));
 });
+
+test("an explicit caption plan spans several spoken clauses without changing display punctuation", () => {
+  const expanded = {
+    ...audio,
+    speech: "a。x。",
+    words: audio.words.map((word) => ({ ...word })),
+  };
+  assert.throws(() => createCaptions("一个完整公式。", expanded));
+  assert.deepEqual(
+    createCaptions("一个完整公式。", expanded, [
+      { caption: "一个完整公式。", speech: "a。x。" },
+    ]),
+    [
+      {
+        text: "一个完整公式。",
+        startMs: 100,
+        endMs: 600,
+        timestampMs: null,
+        confidence: null,
+      },
+    ],
+  );
+  for (const plan of [
+    [{ caption: "缺失。", speech: "a。x。" }],
+    [{ caption: "一个完整公式。", speech: "a。" }],
+    [{ caption: "一个完整公式。", speech: "x。a。" }],
+    [
+      { caption: "", speech: "a。" },
+      { caption: "一个完整公式。", speech: "x。" },
+    ],
+  ])
+    assert.throws(() => createCaptions("一个完整公式。", expanded, plan));
+});

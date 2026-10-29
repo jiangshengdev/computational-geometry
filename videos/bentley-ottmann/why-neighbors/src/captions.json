@@ -1,0 +1,953 @@
+{
+  "N01": [
+    {
+      "text": "上集走完一个案例，但一个案例成功，",
+      "startMs": 70,
+      "endMs": 3168,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还不能说明所有允许的输入都会成功。",
+      "startMs": 3448,
+      "endMs": 6048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在只使用已经说明的简化条件，",
+      "startMs": 6489,
+      "endMs": 9089,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "证明为什么只检查当前邻居不会漏掉交点。",
+      "startMs": 9388,
+      "endMs": 12388,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N02": [
+    {
+      "text": "仍假设线段不竖直、有长度，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有重叠、端点接触或多线共点，",
+      "startMs": 2728,
+      "endMs": 5607,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所有端点和交点的横坐标不同。",
+      "startMs": 5978,
+      "endMs": 8378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果仍按原始无序输入对记录。",
+      "startMs": 8839,
+      "endMs": 11198,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N03": [
+    {
+      "text": "没有端点出现时，活动线段的成员不变。",
+      "startMs": 70,
+      "endMs": 3718,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "若上下顺序要颠倒，两条线段的高度差就必须改变正负。",
+      "startMs": 4169,
+      "endMs": 9037,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们先证明，这一定会经过高度相等的位置。",
+      "startMs": 9509,
+      "endMs": 13118,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N04": [
+    {
+      "text": "不竖直的直线可以写成 y=mx+b，",
+      "startMs": 70,
+      "endMs": 5830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "m 和 b 是固定的数。",
+      "startMs": 6028,
+      "endMs": 8108,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条直线的高度相减，",
+      "startMs": 8569,
+      "endMs": 10289,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍是一次式，把它写成 d(x)=ax+b。",
+      "startMs": 10658,
+      "endMs": 17328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里 a 和 b 是高度差的系数，",
+      "startMs": 17779,
+      "endMs": 20018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是沿用某一条直线的系数。",
+      "startMs": 20328,
+      "endMs": 22488,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N05": [
+    {
+      "text": "如果 a=0，高度差是常数，",
+      "startMs": 70,
+      "endMs": 3068,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会变号。",
+      "startMs": 3348,
+      "endMs": 4188,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "常数为零时，两条直线重合；",
+      "startMs": 4639,
+      "endMs": 7548,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条线段若在一段区间里同时活动就会重叠，",
+      "startMs": 7808,
+      "endMs": 11328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "已被本章条件排除。",
+      "startMs": 11628,
+      "endMs": 13388,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N06": [
+    {
+      "text": "现在设左边的位置叫 u，",
+      "startMs": 70,
+      "endMs": 2160,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边叫 v，两条线段在中间一直存在。",
+      "startMs": 2328,
+      "endMs": 6658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "设 d(u)>0、d(v)<0，",
+      "startMs": 7089,
+      "endMs": 10168,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是高度差从正变负。",
+      "startMs": 10508,
+      "endMs": 12508,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N07": [
+    {
+      "text": "用 t 表示从 u 向 v 走过的路程比例。",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "位置就是 u+t(v-u)，",
+      "startMs": 3649,
+      "endMs": 10238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "t 在零和一之间时，",
+      "startMs": 10558,
+      "endMs": 12478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "位置在两个端点之间。",
+      "startMs": 12878,
+      "endMs": 14718,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N08": [
+    {
+      "text": "把这个位置代入高度差，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 a(u+t(v-u))+b。",
+      "startMs": 2228,
+      "endMs": 10578,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "展开后是 au+at(v-u)+b，",
+      "startMs": 11099,
+      "endMs": 21948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再把它分组为 (au+b)+t(av-au)。",
+      "startMs": 22248,
+      "endMs": 36668,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N09": [
+    {
+      "text": "其中 au+b 就是 d(u)，",
+      "startMs": 70,
+      "endMs": 4668,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "av-au 等于 (av+b)-(au+b)，",
+      "startMs": 4948,
+      "endMs": 15138,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 d(v)-d(u)。",
+      "startMs": 15408,
+      "endMs": 17687,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以高度差等于 d(u)+t(d(v)-d(u))。",
+      "startMs": 18389,
+      "endMs": 27050,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N10": [
+    {
+      "text": "要让高度差等于零，就令这个式子等于零。",
+      "startMs": 70,
+      "endMs": 3618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边减去 d(u)，",
+      "startMs": 4119,
+      "endMs": 5799,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再同乘负一，得到 d(u)=t(d(u)-d(v))。",
+      "startMs": 6118,
+      "endMs": 15098,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N11": [
+    {
+      "text": "因为 d(u) 为正、d(v) 为负，",
+      "startMs": 70,
+      "endMs": 2678,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "d(u)-d(v) 大于 d(u)，",
+      "startMs": 2948,
+      "endMs": 7268,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也大于零。",
+      "startMs": 7538,
+      "endMs": 8498,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此可以除以它，",
+      "startMs": 8929,
+      "endMs": 10369,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 t 等于 d(u) 除以 (d(u)-d(v))，",
+      "startMs": 10878,
+      "endMs": 17590,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "严格位于零和一之间。",
+      "startMs": 17768,
+      "endMs": 20127,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N12": [
+    {
+      "text": "所以两条线段在 u 与 v 之间已经相交。",
+      "startMs": 70,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "若高度差从负变正，交换相减的次序就回到刚才的情况。",
+      "startMs": 3799,
+      "endMs": 8587,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此没有端点、没有交点的区间里，",
+      "startMs": 9039,
+      "endMs": 12070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "成员和上下顺序都不变。",
+      "startMs": 12238,
+      "endMs": 14118,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N13": [
+    {
+      "text": "任取一个交点，把它的横坐标叫 p，",
+      "startMs": 110,
+      "endMs": 3178,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条交叉线段叫 U 和 V。",
+      "startMs": 3448,
+      "endMs": 6167,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的端点不在这里，",
+      "startMs": 6639,
+      "endMs": 8330,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以在交点左右的一小段范围内都存在。",
+      "startMs": 8488,
+      "endMs": 11407,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N14": [
+    {
+      "text": "输入有限，每对不重叠线段至多有一个交点，",
+      "startMs": 70,
+      "endMs": 3888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "全部端点和交点也有限。",
+      "startMs": 4148,
+      "endMs": 5988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们横坐标不同，所以能在 p 左侧选足够靠近的 u，",
+      "startMs": 6439,
+      "endMs": 12608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "使 u 到 p 之间没有其他事件。",
+      "startMs": 12908,
+      "endMs": 15348,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N15": [
+    {
+      "text": "假设 U 和 V 还不是邻居，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "夹在中间的线段叫 W。",
+      "startMs": 2378,
+      "endMs": 4777,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不妨让 U 在下面、V 在上面。",
+      "startMs": 5219,
+      "endMs": 8218,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在这段没有事件的区间里，",
+      "startMs": 8709,
+      "endMs": 10770,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "W 一直夹在两者之间。",
+      "startMs": 10908,
+      "endMs": 13187,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N16": [
+    {
+      "text": "到 p 时，W 仍然存在。",
+      "startMs": 70,
+      "endMs": 3388,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它不能在中途结束，因为中间没有事件；",
+      "startMs": 3819,
+      "endMs": 7218,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不能恰好在 p 结束，",
+      "startMs": 7488,
+      "endMs": 9168,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为端点和交点的横坐标不能相同。",
+      "startMs": 9458,
+      "endMs": 12458,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N17": [
+    {
+      "text": "用 y_U(p) 表示 U 在横坐标 p 处的高度，",
+      "startMs": 70,
+      "endMs": 4958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "W 和 V 的记号同理。",
+      "startMs": 5248,
+      "endMs": 7808,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "W 在 p 处不能低于 U，",
+      "startMs": 8289,
+      "endMs": 11289,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "否则高度差早已变号，",
+      "startMs": 11588,
+      "endMs": 13268,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间已经相交；",
+      "startMs": 13558,
+      "endMs": 14758,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同样不能高于 V。",
+      "startMs": 15028,
+      "endMs": 16868,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N18": [
+    {
+      "text": "所以 y_U(p)≤y_W(p)≤y_V(p)。",
+      "startMs": 70,
+      "endMs": 12428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "U 和 V 正在相交，",
+      "startMs": 12889,
+      "endMs": 14889,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两端高度相等，中间高度只能也相等。",
+      "startMs": 15188,
+      "endMs": 18608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就成为三线共点，违背了简化条件。",
+      "startMs": 19099,
+      "endMs": 22728,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N19": [
+    {
+      "text": "因此交叉前必定成为邻居。",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这不要求它们从一开始就是邻居，",
+      "startMs": 2799,
+      "endMs": 5040,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只要求交叉前已经成为邻居。",
+      "startMs": 5198,
+      "endMs": 7330,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N20": [
+    {
+      "text": "开始时活动顺序为空。",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "插入一条线段时，新邻接只在它的两侧，",
+      "startMs": 2449,
+      "endMs": 6078,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "规则恰好检查这两侧。",
+      "startMs": 6368,
+      "endMs": 8368,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N21": [
+    {
+      "text": "移去一条线段时，新邻接只可能连接原来被它隔开的两侧，",
+      "startMs": 70,
+      "endMs": 4778,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "规则检查这一对。",
+      "startMs": 5048,
+      "endMs": 6408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "缺少一侧就没有新邻接。",
+      "startMs": 6839,
+      "endMs": 8639,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N22": [
+    {
+      "text": "交叉交换相邻两条线段时，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新邻接只在交换块外侧，",
+      "startMs": 2728,
+      "endMs": 4848,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "规则检查这些外侧对。",
+      "startMs": 5148,
+      "endMs": 6748,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有事件时不会突然出现新邻接，",
+      "startMs": 7189,
+      "endMs": 9789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以每一对新邻居都会在形成时接受检查。",
+      "startMs": 10138,
+      "endMs": 13377,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N23": [
+    {
+      "text": "还要避免循环解释：不能先假设所有交点都已处理，",
+      "startMs": 70,
+      "endMs": 3950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再用它证明不会漏。",
+      "startMs": 4078,
+      "endMs": 5518,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "假设真的漏了交点，从漏掉的交点里取横坐标最小的一个，",
+      "startMs": 5969,
+      "endMs": 10798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍用 p 表示它的横坐标。",
+      "startMs": 11088,
+      "endMs": 12928,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N24": [
+    {
+      "text": "所有端点一开始就在清单中。",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "p 左侧的交点按选择方式都没有漏，",
+      "startMs": 2949,
+      "endMs": 5828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以此前需要处理的事件都正确处理，",
+      "startMs": 6198,
+      "endMs": 9110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "活动顺序也正确。",
+      "startMs": 9268,
+      "endMs": 10548,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N25": [
+    {
+      "text": "由刚才的证明，交叉的两条线段在 p 前已成为邻居。",
+      "startMs": 70,
+      "endMs": 4678,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们形成这次邻接的事件发生在 p 左侧，",
+      "startMs": 5169,
+      "endMs": 8048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "已经处理，因此这对线段也已经接受检查。",
+      "startMs": 8368,
+      "endMs": 12257,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N26": [
+    {
+      "text": "在检查这对线段时，",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标为 p 的交点在两段范围内且位于未来位置，",
+      "startMs": 1878,
+      "endMs": 6478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "必定加入清单，并且不会因暂时失去邻接而删除。",
+      "startMs": 6748,
+      "endMs": 10828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "清单按位置取出，不可能跳过 p 去处理更右边的位置。",
+      "startMs": 11259,
+      "endMs": 15790,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N27": [
+    {
+      "text": "这与 p 被漏掉矛盾。",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不存在第一个漏掉的交点，",
+      "startMs": 2099,
+      "endMs": 4338,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就不会漏掉任何交点。",
+      "startMs": 4648,
+      "endMs": 6408,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N28": [
+    {
+      "text": "报告的点都经过求交和线段范围检查，",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此不会多报。",
+      "startMs": 3478,
+      "endMs": 4478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同一交叉只登记一次、到达时才报告，",
+      "startMs": 4919,
+      "endMs": 7519,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "加上每对线段至多有一个交点，",
+      "startMs": 7818,
+      "endMs": 10258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不会重复报告同一输入对。",
+      "startMs": 10538,
+      "endMs": 12538,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N29": [
+    {
+      "text": "开始最多检查两对，结束最多检查一对，",
+      "startMs": 70,
+      "endMs": 3058,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "普通交叉最多检查两对；",
+      "startMs": 3398,
+      "endMs": 5357,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有事件时不用更新活动顺序。",
+      "startMs": 5618,
+      "endMs": 7818,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "省掉的是每次变化都重新检查所有输入对的工作。",
+      "startMs": 8309,
+      "endMs": 11789,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N30": [
+    {
+      "text": "这不表示总检查数固定，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不保证每个案例都比逐对检查少做求交。",
+      "startMs": 2228,
+      "endMs": 5388,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "某对线段会再次成为邻居，",
+      "startMs": 5819,
+      "endMs": 7859,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交点多时必须输出的结果也多，",
+      "startMs": 8218,
+      "endMs": 10778,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "维护顺序和清单同样有代价。",
+      "startMs": 11088,
+      "endMs": 13407,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "N31": [
+    {
+      "text": "我们已经说明为何只关注不断更新的邻居。",
+      "startMs": 70,
+      "endMs": 3300,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一章还要保证高低、交点、范围和事件是否相同这些判断始终准确，",
+      "startMs": 3649,
+      "endMs": 9089,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "继续讨论怎样让几何判断保持精确。",
+      "startMs": 9398,
+      "endMs": 12237,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

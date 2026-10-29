@@ -76,6 +76,24 @@ export function createSpeechTools<Fingerprint extends boolean>(
           text += segment.englishWord;
           return `<lang xml:lang="en-US">${segment.englishWord}</lang>`;
         }
+        // Explicit, locally approved alternative; ordinary letters still use say-as.
+        if (
+          Object.keys(segment).length === 2 &&
+          "letter" in segment &&
+          "ipa" in segment
+        ) {
+          if (
+            typeof segment.letter !== "string" ||
+            !/^[A-Za-z]$/.test(segment.letter) ||
+            typeof segment.ipa !== "string" ||
+            !/^[\p{L}\p{M}ˈˌː.]+$/u.test(segment.ipa)
+          )
+            throw new Error(
+              `${location}: expected one letter and nonempty IPA phonemes`,
+            );
+          text += segment.letter;
+          return `<lang xml:lang="en-US"><phoneme alphabet="ipa" ph="${segment.ipa}">${segment.letter}</phoneme></lang>`;
+        }
         if (
           Object.keys(segment).length === 1 &&
           typeof segment.letter === "string"

@@ -3,6 +3,36 @@ import assert from "node:assert/strict";
 import type * as SDK from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "./azure-speech.ts";
 
+test("explicit letter IPA preserves reference text and leaves default spelling unchanged", () => {
+  const { buildSpeechDocument } = createSpeechTools({} as typeof SDK, {
+    voice: "test",
+    commas: "document",
+    fingerprint: true,
+  });
+  const original = buildSpeechDocument("在 p 对应位置。U");
+  const adopted = buildSpeechDocument([
+    "在 ",
+    { letter: "p", ipa: "piː" },
+    " 对应位置。U",
+  ]);
+  assert.equal(adopted.text, original.text);
+  assert.equal(
+    adopted.ssml,
+    original.ssml.replace(
+      '<lang xml:lang="en-US"><say-as interpret-as="characters">P</say-as></lang>',
+      '<lang xml:lang="en-US"><phoneme alphabet="ipa" ph="piː">p</phoneme></lang>',
+    ),
+  );
+  assert.notEqual(adopted.fingerprint, original.fingerprint);
+  for (const invalid of [
+    { letter: "pp", ipa: "piː" },
+    { letter: "p", ipa: "" },
+    { letter: "p", ipa: '"/><break/>' },
+    { letter: "p", ipa: "piː", rate: 1 },
+  ])
+    assert.throws(() => buildSpeechDocument([invalid]));
+});
+
 test("explicit English words retain word pronunciation without changing letter spelling", () => {
   const { buildSpeechDocument } = createSpeechTools({} as typeof SDK, {
     voice: "test",

@@ -1,10 +1,14 @@
 import { join } from "node:path";
 import { readFileSync, writeFileSync } from "node:fs";
-import { createCaptions, type AudioTiming } from "./timing.ts";
+import {
+  createCaptions,
+  type AudioTiming,
+  type CaptionPlan,
+} from "./timing.ts";
 
 export function writeCaptions(
   root: string,
-  shots: { id: string; caption: string }[],
+  shots: { id: string; caption: string; captionPlan?: CaptionPlan }[],
 ) {
   // Display text stays separate from speech; cues follow measured word boundaries.
   const timing = JSON.parse(
@@ -13,7 +17,10 @@ export function writeCaptions(
   const captions = Object.fromEntries(
     shots.map((shot) => {
       if (!timing[shot.id]) throw Error(`Missing measured audio: ${shot.id}`);
-      return [shot.id, createCaptions(shot.caption, timing[shot.id])];
+      return [
+        shot.id,
+        createCaptions(shot.caption, timing[shot.id], shot.captionPlan),
+      ];
     }),
   );
   writeFileSync(

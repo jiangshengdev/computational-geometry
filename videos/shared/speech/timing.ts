@@ -80,7 +80,36 @@ const clauses = (text: string) =>
     offset: m.index,
   }));
 
-export function validateCaptionClauses(display: string, speech: string) {
+export type CaptionPlan = { caption: string; speech: string }[];
+export function validateCaptionClauses(
+  display: string,
+  speech: string,
+  plan?: CaptionPlan,
+) {
+  if (plan) {
+    if (
+      !plan.length ||
+      plan.some((part) => !part.caption.trim() || !part.speech.trim()) ||
+      plan.map((part) => part.caption).join("") !== display ||
+      plan.map((part) => part.speech).join("") !== speech
+    )
+      throw Error(
+        "Caption plan must cover the complete display and speech in order",
+      );
+    let displayOffset = 0,
+      speechOffset = 0;
+    const visible = plan.map((part) => {
+      const result = { text: part.caption, offset: displayOffset };
+      displayOffset += part.caption.length;
+      return result;
+    });
+    const audible = plan.map((part) => {
+      const result = { text: part.speech, offset: speechOffset };
+      speechOffset += part.speech.length;
+      return result;
+    });
+    return { visible, audible };
+  }
   const visible = clauses(display),
     audible = clauses(speech);
   if (visible.length !== audible.length)
@@ -88,9 +117,17 @@ export function validateCaptionClauses(display: string, speech: string) {
   return { visible, audible };
 }
 
-export function createCaptions(display: string, audio: AudioTiming): Caption[] {
+export function createCaptions(
+  display: string,
+  audio: AudioTiming,
+  plan?: CaptionPlan,
+): Caption[] {
   validateWords(audio);
-  const { visible, audible } = validateCaptionClauses(display, audio.speech);
+  const { visible, audible } = validateCaptionClauses(
+    display,
+    audio.speech,
+    plan,
+  );
   return groupCaptionClauses(visible, audible).map(
     ({ text, speechStart: from, speechEnd: to }) => {
       const words = audio.words.filter(

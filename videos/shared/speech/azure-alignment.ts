@@ -1,4 +1,9 @@
-import { audioSha256 as audioHash } from "./audio.ts";
+import { audioSha256 as audioHash, verifyPcmSource } from "./audio.ts";
+import {
+  assessmentChunks,
+  combineAssessments,
+  type AssessmentResponse,
+} from "./assessment-chunks.ts";
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import type * as SpeechSdk from "microsoft-cognitiveservices-speech-sdk";
@@ -201,57 +206,111 @@ export function createAlignmentTools(
     url.protocol = "wss:";
     url.pathname = "/speech/recognition/conversation/cognitiveservices/v1";
     url.search = "";
-    if (audio.duration > 30)
-      throw Error("Alignment requires review for audio over 30 seconds");
-    const config = sdk.SpeechConfig.fromEndpoint(url, key);
-    config.speechRecognitionLanguage = "zh-CN";
-    config.outputFormat = sdk.OutputFormat.Detailed;
-    config.requestWordLevelTimestamps();
-    const input = sdk.AudioConfig.fromWavFileInput(readFileSync(wav));
-    const recognizer = new sdk.SpeechRecognizer(config, input);
-    new sdk.PronunciationAssessmentConfig(
-      audio.speech,
-      sdk.PronunciationAssessmentGradingSystem.HundredMark,
-      sdk.PronunciationAssessmentGranularity.Word,
-      true,
-    ).applyTo(recognizer);
-    let timeout: ReturnType<typeof setTimeout> | undefined;
-    try {
-      const result = await new Promise<SpeechSdk.SpeechRecognitionResult>(
-        (resolve, reject) => {
-          timeout = setTimeout(
-            () => reject(Error("Azure alignment timed out")),
-            55000,
-          );
-          recognizer.recognizeOnceAsync(resolve, () =>
-            reject(Error("Azure alignment request failed")),
-          );
-        },
-      );
-      const raw = result.properties.getProperty(
-        sdk.PropertyId.SpeechServiceResponse_JsonResult,
-      );
-      if (raw) writeFileSync(`${path}.assessment.json`, raw + "\n");
-      if (result.reason !== sdk.ResultReason.RecognizedSpeech || !raw)
-        throw Error(
-          "Azure alignment did not recognize speech; inspect temporary diagnostics",
+    const requestAssessment = async (
+      speech: string,
+      inputPath: string,
+      responsePath = `${inputPath}.assessment.json`,
+    ): Promise<AssessmentResponse> => {
+      const config = sdk.SpeechConfig.fromEndpoint(url, key);
+      config.speechRecognitionLanguage = "zh-CN";
+      config.outputFormat = sdk.OutputFormat.Detailed;
+      config.requestWordLevelTimestamps();
+      const input = sdk.AudioConfig.fromWavFileInput(readFileSync(inputPath));
+      const recognizer = new sdk.SpeechRecognizer(config, input);
+      new sdk.PronunciationAssessmentConfig(
+        speech,
+        sdk.PronunciationAssessmentGradingSystem.HundredMark,
+        sdk.PronunciationAssessmentGranularity.Word,
+        true,
+      ).applyTo(recognizer);
+      let timeout: ReturnType<typeof setTimeout> | undefined;
+      try {
+        const result = await new Promise<SpeechSdk.SpeechRecognitionResult>(
+          (resolve, reject) => {
+            timeout = setTimeout(
+              () => reject(Error("Azure alignment timed out")),
+              55000,
+            );
+            recognizer.recognizeOnceAsync(resolve, () =>
+              reject(Error("Azure alignment request failed")),
+            );
+          },
         );
-      const response: unknown = JSON.parse(raw);
-      return {
-        ...audio,
-        words: assessmentWords(audio, response),
-        alignment: {
-          method: "azure-pronunciation-assessment",
-          audioSha256: audioHash(path),
-          synthesisWords: audio.words,
-          response,
-        },
-      };
-    } finally {
-      clearTimeout(timeout);
-      recognizer.close();
-      input.close();
+        const raw = result.properties.getProperty(
+          sdk.PropertyId.SpeechServiceResponse_JsonResult,
+        );
+        if (raw) writeFileSync(responsePath, raw + "\n");
+        if (result.reason !== sdk.ResultReason.RecognizedSpeech || !raw)
+          throw Error(
+            "Azure alignment did not recognize speech; inspect temporary diagnostics",
+          );
+        return JSON.parse(raw) as AssessmentResponse;
+      } finally {
+        clearTimeout(timeout);
+        recognizer.close();
+        input.close();
+      }
+    };
+    let response: AssessmentResponse;
+    if (audio.duration > 30) {
+      verifyPcmSource(wav);
+      const pcm = execFileSync(
+        "ffmpeg",
+        [
+          "-v",
+          "error",
+          "-i",
+          wav,
+          "-f",
+          "s16le",
+          "-c:a",
+          "pcm_s16le",
+          "pipe:1",
+        ],
+        { maxBuffer: 64 * 1024 * 1024 },
+      );
+      const parts = [];
+      for (const [index, chunk] of assessmentChunks(audio, pcm).entries()) {
+        const chunkPath = `${path}.assessment-chunk-${index}.wav`;
+        execFileSync("ffmpeg", [
+          "-v",
+          "error",
+          "-y",
+          "-i",
+          wav,
+          "-af",
+          `atrim=start_sample=${chunk.startSample}:end_sample=${chunk.endSample},asetpts=PTS-STARTPTS`,
+          "-c:a",
+          "pcm_s16le",
+          chunkPath,
+        ]);
+        parts.push({
+          ...chunk,
+          response: await requestAssessment(chunk.speech, chunkPath),
+        });
+      }
+      response = combineAssessments(parts);
+    } else {
+      response = await requestAssessment(
+        audio.speech,
+        wav,
+        `${path}.assessment.json`,
+      );
     }
+    writeFileSync(
+      `${path}.assessment.json`,
+      JSON.stringify(response, null, 2) + "\n",
+    );
+    return {
+      ...audio,
+      words: assessmentWords(audio, response),
+      alignment: {
+        method: "azure-pronunciation-assessment",
+        audioSha256: audioHash(path),
+        synthesisWords: audio.alignment?.synthesisWords ?? audio.words,
+        response,
+      },
+    };
   }
 
   return { assessmentWords, verifyAlignment, alignAudio };

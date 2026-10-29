@@ -1,7 +1,8 @@
 {
   "name": "why-neighbors",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "为什么不会漏掉交点：第 2 章下集",
+  "type": "module",
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
@@ -27,10 +28,19 @@
     "typescript": "5.9.3"
   },
   "scripts": {
-    "dev": "remotion studio",
+    "dev": "remotion studio --no-open",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src scripts && tsc",
+    "video:narration": "node scripts/narration.ts",
+    "video:sentence-pauses": "node scripts/check-sentence-pauses.ts",
+    "video:captions": "node scripts/captions.ts",
+    "video:audit-narration": "node scripts/audit-narration.ts",
+    "video:check-content": "node scripts/check-content.ts",
+    "video:check-layout": "node scripts/check-layout.ts",
+    "video:preflight": "node ../../shared/tools/preflight-cli.ts",
+    "video:export": "node scripts/export.ts",
+    "video:export-audio": "node scripts/export-audio.ts"
   },
   "allowScripts": {
     "esbuild": false

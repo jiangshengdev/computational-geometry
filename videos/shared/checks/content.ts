@@ -6,13 +6,18 @@ import {
 } from "../speech/audio.ts";
 import { narrationFile, synthesisFormat } from "../speech/source.ts";
 import { readFileSync, readdirSync } from "node:fs";
-import { createCaptions, type AudioTiming } from "../speech/timing.ts";
+import {
+  createCaptions,
+  type AudioTiming,
+  type CaptionPlan,
+} from "../speech/timing.ts";
 
 type Shot = {
   id: string;
   page: string;
   step: number;
   caption: string;
+  captionPlan?: CaptionPlan;
   pauseAfter?: number;
 };
 type Row = Shot & {
@@ -117,7 +122,7 @@ export function checkContent<R extends Row>({
     const cue = captions[shot.id];
     if (
       JSON.stringify(cue) !==
-      JSON.stringify(createCaptions(shot.caption, audio))
+      JSON.stringify(createCaptions(shot.caption, audio, shot.captionPlan))
     )
       throw Error(`Stale captions: ${shot.id}`);
     if (process.argv.includes("--decode")) {
