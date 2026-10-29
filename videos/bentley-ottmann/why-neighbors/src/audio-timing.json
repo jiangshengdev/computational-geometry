@@ -3253,8 +3253,8 @@
   "N08": {
     "audioFile": "N08.wav",
     "outputFormat": "riff-48khz-16bit-mono-pcm",
-    "audioSha256": "2ea4793ab2b147df540770f20ca0f98ee3b1714bb0d0951f6ea4e26a53d0287b",
-    "duration": 36.69,
+    "audioSha256": "f28b8f06098da59ede15803ae53fe0ca94c08fc566c427553ea5b3bd3ea272ef",
+    "duration": 37.23,
     "words": [
       {
         "text": "把",
@@ -3671,550 +3671,557 @@
       },
       {
         "text": "再",
-        "startMs": 16988,
-        "durationMs": 200,
+        "startMs": 16950,
+        "durationMs": 240,
         "textOffset": 95,
         "wordLength": 1
       },
       {
-        "text": "把",
-        "startMs": 17188,
-        "durationMs": 320,
+        "text": "用",
+        "startMs": 17190,
+        "durationMs": 200,
         "textOffset": 96,
         "wordLength": 1
       },
       {
         "text": "A",
-        "startMs": 17508,
-        "durationMs": 80,
+        "startMs": 17390,
+        "durationMs": 160,
         "textOffset": 98,
         "wordLength": 1
       },
       {
-        "text": "、",
-        "startMs": 17588,
-        "durationMs": 0,
-        "textOffset": 99,
-        "wordLength": 1
-      },
-      {
-        "text": "T",
-        "startMs": 17588,
-        "durationMs": 200,
+        "text": "乘以",
+        "startMs": 17550,
+        "durationMs": 360,
         "textOffset": 100,
-        "wordLength": 1
-      },
-      {
-        "text": "和",
-        "startMs": 17788,
-        "durationMs": 120,
-        "textOffset": 102,
-        "wordLength": 1
-      },
-      {
-        "text": "这个",
-        "startMs": 17908,
-        "durationMs": 240,
-        "textOffset": 103,
         "wordLength": 2
       },
       {
-        "text": "差",
-        "startMs": 18148,
-        "durationMs": 160,
+        "text": "T",
+        "startMs": 17910,
+        "durationMs": 360,
+        "textOffset": 103,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 18270,
+        "durationMs": 0,
+        "textOffset": 104,
+        "wordLength": 1
+      },
+      {
+        "text": "再",
+        "startMs": 18350,
+        "durationMs": 240,
         "textOffset": 105,
         "wordLength": 1
       },
       {
-        "text": "相乘",
-        "startMs": 18308,
-        "durationMs": 560,
+        "text": "乘以",
+        "startMs": 18590,
+        "durationMs": 319,
         "textOffset": 106,
         "wordLength": 2
       },
       {
-        "text": "。",
-        "startMs": 18868,
-        "durationMs": 0,
+        "text": "这个",
+        "startMs": 18909,
+        "durationMs": 241,
         "textOffset": 108,
-        "wordLength": 1
+        "wordLength": 2
       },
       {
-        "text": "这",
-        "startMs": 19158,
-        "durationMs": 240,
-        "textOffset": 109,
-        "wordLength": 1
-      },
-      {
-        "text": "两",
-        "startMs": 19398,
-        "durationMs": 200,
+        "text": "差",
+        "startMs": 19150,
+        "durationMs": 199,
         "textOffset": 110,
         "wordLength": 1
       },
       {
-        "text": "项",
-        "startMs": 19598,
-        "durationMs": 160,
+        "text": "。",
+        "startMs": 19349,
+        "durationMs": 0,
         "textOffset": 111,
         "wordLength": 1
       },
       {
-        "text": "相加",
-        "startMs": 19758,
-        "durationMs": 640,
+        "text": "这",
+        "startMs": 19698,
+        "durationMs": 240,
         "textOffset": 112,
-        "wordLength": 2
+        "wordLength": 1
       },
       {
-        "text": "。",
-        "startMs": 20398,
-        "durationMs": 0,
+        "text": "两",
+        "startMs": 19938,
+        "durationMs": 200,
+        "textOffset": 113,
+        "wordLength": 1
+      },
+      {
+        "text": "项",
+        "startMs": 20138,
+        "durationMs": 160,
         "textOffset": 114,
         "wordLength": 1
       },
       {
-        "text": "再",
-        "startMs": 20828,
-        "durationMs": 240,
-        "textOffset": 115,
-        "wordLength": 1
-      },
-      {
-        "text": "与",
-        "startMs": 21068,
-        "durationMs": 120,
-        "textOffset": 116,
-        "wordLength": 1
-      },
-      {
-        "text": "B",
-        "startMs": 21188,
-        "durationMs": 160,
-        "textOffset": 118,
-        "wordLength": 1
-      },
-      {
         "text": "相加",
-        "startMs": 21348,
-        "durationMs": 600,
-        "textOffset": 120,
+        "startMs": 20298,
+        "durationMs": 640,
+        "textOffset": 115,
         "wordLength": 2
       },
       {
         "text": "。",
-        "startMs": 21948,
+        "startMs": 20938,
         "durationMs": 0,
-        "textOffset": 122,
+        "textOffset": 117,
         "wordLength": 1
       },
       {
         "text": "再",
-        "startMs": 22248,
-        "durationMs": 200,
+        "startMs": 21368,
+        "durationMs": 240,
+        "textOffset": 118,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 21608,
+        "durationMs": 120,
+        "textOffset": 119,
+        "wordLength": 1
+      },
+      {
+        "text": "B",
+        "startMs": 21728,
+        "durationMs": 160,
+        "textOffset": 121,
+        "wordLength": 1
+      },
+      {
+        "text": "相加",
+        "startMs": 21888,
+        "durationMs": 600,
         "textOffset": 123,
-        "wordLength": 1
+        "wordLength": 2
       },
       {
-        "text": "把",
-        "startMs": 22448,
-        "durationMs": 120,
-        "textOffset": 124,
-        "wordLength": 1
-      },
-      {
-        "text": "它",
-        "startMs": 22568,
-        "durationMs": 120,
+        "text": "。",
+        "startMs": 22488,
+        "durationMs": 0,
         "textOffset": 125,
         "wordLength": 1
       },
       {
-        "text": "分",
-        "startMs": 22688,
-        "durationMs": 240,
+        "text": "再",
+        "startMs": 22788,
+        "durationMs": 200,
         "textOffset": 126,
         "wordLength": 1
       },
       {
-        "text": "组",
-        "startMs": 22928,
-        "durationMs": 200,
+        "text": "把",
+        "startMs": 22988,
+        "durationMs": 120,
         "textOffset": 127,
         "wordLength": 1
       },
       {
-        "text": "为",
-        "startMs": 23128,
+        "text": "它",
+        "startMs": 23108,
         "durationMs": 120,
         "textOffset": 128,
         "wordLength": 1
       },
       {
-        "text": "两个",
-        "startMs": 23248,
-        "durationMs": 280,
+        "text": "分",
+        "startMs": 23228,
+        "durationMs": 240,
         "textOffset": 129,
+        "wordLength": 1
+      },
+      {
+        "text": "组",
+        "startMs": 23468,
+        "durationMs": 200,
+        "textOffset": 130,
+        "wordLength": 1
+      },
+      {
+        "text": "为",
+        "startMs": 23668,
+        "durationMs": 120,
+        "textOffset": 131,
+        "wordLength": 1
+      },
+      {
+        "text": "两个",
+        "startMs": 23788,
+        "durationMs": 280,
+        "textOffset": 132,
         "wordLength": 2
       },
       {
         "text": "部分",
-        "startMs": 23528,
+        "startMs": 24068,
         "durationMs": 400,
-        "textOffset": 131,
-        "wordLength": 2
-      },
-      {
-        "text": "。",
-        "startMs": 23928,
-        "durationMs": 0,
-        "textOffset": 133,
-        "wordLength": 1
-      },
-      {
-        "text": "第一",
-        "startMs": 24268,
-        "durationMs": 320,
         "textOffset": 134,
         "wordLength": 2
       },
       {
-        "text": "部分",
-        "startMs": 24588,
-        "durationMs": 440,
+        "text": "。",
+        "startMs": 24468,
+        "durationMs": 0,
         "textOffset": 136,
+        "wordLength": 1
+      },
+      {
+        "text": "第一",
+        "startMs": 24808,
+        "durationMs": 320,
+        "textOffset": 137,
+        "wordLength": 2
+      },
+      {
+        "text": "部分",
+        "startMs": 25128,
+        "durationMs": 440,
+        "textOffset": 139,
         "wordLength": 2
       },
       {
         "text": "是",
-        "startMs": 25028,
+        "startMs": 25568,
         "durationMs": 200,
-        "textOffset": 138,
+        "textOffset": 141,
         "wordLength": 1
       },
       {
         "text": "A",
-        "startMs": 25228,
+        "startMs": 25768,
         "durationMs": 160,
-        "textOffset": 140,
+        "textOffset": 143,
         "wordLength": 1
       },
       {
         "text": "与",
-        "startMs": 25388,
+        "startMs": 25928,
         "durationMs": 200,
-        "textOffset": 142,
+        "textOffset": 145,
         "wordLength": 1
       },
       {
         "text": "U",
-        "startMs": 25588,
+        "startMs": 26128,
         "durationMs": 120,
-        "textOffset": 144,
+        "textOffset": 147,
         "wordLength": 1
       },
       {
         "text": "的",
-        "startMs": 25708,
+        "startMs": 26248,
         "durationMs": 120,
-        "textOffset": 146,
-        "wordLength": 1
-      },
-      {
-        "text": "乘积",
-        "startMs": 25828,
-        "durationMs": 560,
-        "textOffset": 147,
-        "wordLength": 2
-      },
-      {
-        "text": "再",
-        "startMs": 26388,
-        "durationMs": 199,
         "textOffset": 149,
         "wordLength": 1
       },
       {
-        "text": "与",
-        "startMs": 26587,
-        "durationMs": 161,
+        "text": "乘积",
+        "startMs": 26368,
+        "durationMs": 560,
         "textOffset": 150,
-        "wordLength": 1
+        "wordLength": 2
       },
       {
-        "text": "B",
-        "startMs": 26748,
-        "durationMs": 200,
+        "text": "再",
+        "startMs": 26928,
+        "durationMs": 199,
         "textOffset": 152,
         "wordLength": 1
       },
       {
+        "text": "与",
+        "startMs": 27127,
+        "durationMs": 161,
+        "textOffset": 153,
+        "wordLength": 1
+      },
+      {
+        "text": "B",
+        "startMs": 27288,
+        "durationMs": 200,
+        "textOffset": 155,
+        "wordLength": 1
+      },
+      {
         "text": "相加",
-        "startMs": 26948,
+        "startMs": 27488,
         "durationMs": 360,
-        "textOffset": 154,
+        "textOffset": 157,
         "wordLength": 2
       },
       {
         "text": "所得",
-        "startMs": 27308,
+        "startMs": 27848,
         "durationMs": 319,
-        "textOffset": 156,
+        "textOffset": 159,
         "wordLength": 2
       },
       {
         "text": "的",
-        "startMs": 27627,
+        "startMs": 28167,
         "durationMs": 121,
-        "textOffset": 158,
+        "textOffset": 161,
         "wordLength": 1
       },
       {
         "text": "和",
-        "startMs": 27748,
+        "startMs": 28288,
         "durationMs": 399,
-        "textOffset": 159,
+        "textOffset": 162,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 28147,
+        "startMs": 28687,
         "durationMs": 0,
-        "textOffset": 160,
+        "textOffset": 163,
         "wordLength": 1
       },
       {
         "text": "第二",
-        "startMs": 28438,
+        "startMs": 28978,
         "durationMs": 360,
-        "textOffset": 161,
+        "textOffset": 164,
         "wordLength": 2
       },
       {
         "text": "部分",
-        "startMs": 28798,
+        "startMs": 29338,
         "durationMs": 480,
-        "textOffset": 163,
+        "textOffset": 166,
         "wordLength": 2
       },
       {
         "text": "先",
-        "startMs": 29278,
+        "startMs": 29818,
         "durationMs": 240,
-        "textOffset": 165,
-        "wordLength": 1
-      },
-      {
-        "text": "用",
-        "startMs": 29518,
-        "durationMs": 200,
-        "textOffset": 166,
-        "wordLength": 1
-      },
-      {
-        "text": "A",
-        "startMs": 29718,
-        "durationMs": 160,
         "textOffset": 168,
         "wordLength": 1
       },
       {
-        "text": "与",
-        "startMs": 29878,
+        "text": "用",
+        "startMs": 30058,
+        "durationMs": 200,
+        "textOffset": 169,
+        "wordLength": 1
+      },
+      {
+        "text": "A",
+        "startMs": 30258,
         "durationMs": 160,
-        "textOffset": 170,
+        "textOffset": 171,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 30418,
+        "durationMs": 160,
+        "textOffset": 173,
         "wordLength": 1
       },
       {
         "text": "V",
-        "startMs": 30038,
+        "startMs": 30578,
         "durationMs": 160,
-        "textOffset": 172,
+        "textOffset": 175,
         "wordLength": 1
       },
       {
         "text": "的",
-        "startMs": 30198,
+        "startMs": 30738,
         "durationMs": 120,
-        "textOffset": 174,
+        "textOffset": 177,
         "wordLength": 1
       },
       {
         "text": "乘积",
-        "startMs": 30318,
+        "startMs": 30858,
         "durationMs": 600,
-        "textOffset": 175,
+        "textOffset": 178,
         "wordLength": 2
       },
       {
         "text": "减去",
-        "startMs": 30918,
+        "startMs": 31458,
         "durationMs": 480,
-        "textOffset": 177,
+        "textOffset": 180,
         "wordLength": 2
       },
       {
         "text": "A",
-        "startMs": 31398,
+        "startMs": 31938,
         "durationMs": 160,
-        "textOffset": 180,
+        "textOffset": 183,
         "wordLength": 1
       },
       {
         "text": "与",
-        "startMs": 31558,
+        "startMs": 32098,
         "durationMs": 159,
-        "textOffset": 182,
+        "textOffset": 185,
         "wordLength": 1
       },
       {
         "text": "U",
-        "startMs": 31717,
+        "startMs": 32257,
         "durationMs": 161,
-        "textOffset": 184,
+        "textOffset": 187,
         "wordLength": 1
       },
       {
         "text": "的",
-        "startMs": 31878,
+        "startMs": 32418,
         "durationMs": 120,
-        "textOffset": 186,
-        "wordLength": 1
-      },
-      {
-        "text": "乘积",
-        "textOffset": 187,
-        "wordLength": 2,
-        "startMs": 32078,
-        "durationMs": 610
-      },
-      {
-        "text": "。",
-        "startMs": 31998,
-        "durationMs": 0,
         "textOffset": 189,
         "wordLength": 1
       },
       {
-        "text": "再",
-        "startMs": 32858,
-        "durationMs": 240,
+        "text": "乘积",
         "textOffset": 190,
+        "wordLength": 2,
+        "startMs": 32618,
+        "durationMs": 610
+      },
+      {
+        "text": "。",
+        "startMs": 32538,
+        "durationMs": 0,
+        "textOffset": 192,
         "wordLength": 1
       },
       {
-        "text": "用",
-        "startMs": 33098,
-        "durationMs": 160,
-        "textOffset": 191,
-        "wordLength": 1
-      },
-      {
-        "text": "T",
-        "startMs": 33258,
-        "durationMs": 280,
+        "text": "再",
+        "startMs": 33398,
+        "durationMs": 240,
         "textOffset": 193,
         "wordLength": 1
       },
       {
-        "text": "乘",
-        "startMs": 33538,
-        "durationMs": 200,
-        "textOffset": 195,
+        "text": "用",
+        "startMs": 33638,
+        "durationMs": 160,
+        "textOffset": 194,
         "wordLength": 1
       },
       {
-        "text": "以",
-        "startMs": 33738,
-        "durationMs": 120,
+        "text": "T",
+        "startMs": 33798,
+        "durationMs": 280,
         "textOffset": 196,
         "wordLength": 1
       },
       {
-        "text": "所得",
-        "startMs": 33858,
-        "durationMs": 320,
-        "textOffset": 197,
-        "wordLength": 2
+        "text": "乘",
+        "startMs": 34078,
+        "durationMs": 200,
+        "textOffset": 198,
+        "wordLength": 1
       },
       {
-        "text": "的",
-        "startMs": 34178,
+        "text": "以",
+        "startMs": 34278,
         "durationMs": 120,
         "textOffset": 199,
         "wordLength": 1
       },
       {
-        "text": "差",
-        "startMs": 34298,
-        "durationMs": 160,
+        "text": "所得",
+        "startMs": 34398,
+        "durationMs": 320,
         "textOffset": 200,
+        "wordLength": 2
+      },
+      {
+        "text": "的",
+        "startMs": 34718,
+        "durationMs": 120,
+        "textOffset": 202,
+        "wordLength": 1
+      },
+      {
+        "text": "差",
+        "startMs": 34838,
+        "durationMs": 160,
+        "textOffset": 203,
         "wordLength": 1
       },
       {
         "text": "。",
-        "startMs": 34458,
+        "startMs": 34998,
         "durationMs": 0,
-        "textOffset": 201,
-        "wordLength": 1
-      },
-      {
-        "text": "最后",
-        "startMs": 34778,
-        "durationMs": 400,
-        "textOffset": 202,
-        "wordLength": 2
-      },
-      {
-        "text": "把",
-        "startMs": 35178,
-        "durationMs": 160,
         "textOffset": 204,
         "wordLength": 1
       },
       {
-        "text": "这",
-        "startMs": 35338,
-        "durationMs": 160,
+        "text": "最后",
+        "startMs": 35318,
+        "durationMs": 400,
         "textOffset": 205,
+        "wordLength": 2
+      },
+      {
+        "text": "把",
+        "startMs": 35718,
+        "durationMs": 160,
+        "textOffset": 207,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 35878,
+        "durationMs": 160,
+        "textOffset": 208,
         "wordLength": 1
       },
       {
         "text": "两个",
-        "startMs": 35498,
+        "startMs": 36038,
         "durationMs": 280,
-        "textOffset": 206,
+        "textOffset": 209,
         "wordLength": 2
       },
       {
         "text": "部分",
-        "startMs": 35778,
+        "startMs": 36318,
         "durationMs": 240,
-        "textOffset": 208,
+        "textOffset": 211,
         "wordLength": 2
       },
       {
         "text": "相加",
-        "textOffset": 210,
+        "textOffset": 213,
         "wordLength": 2,
-        "startMs": 36138,
+        "startMs": 36678,
         "durationMs": 530
       },
       {
         "text": "。",
-        "startMs": 36018,
+        "startMs": 36558,
         "durationMs": 0,
-        "textOffset": 212,
+        "textOffset": 215,
         "wordLength": 1
       }
     ],
-    "speech": "把这个位置代入高度差。先求 v 减 u 的差。用 t 乘以这个差。再与 u 相加。用 a 乘以所得的和。最后与 b 相加。展开后。第一项是 a 与 u 的乘积。第二项先求 v 减 u 的差。再把 a、t 和这个差相乘。这两项相加。再与 b 相加。再把它分组为两个部分。第一部分是 a 与 u 的乘积再与 b 相加所得的和。第二部分先用 a 与 v 的乘积减去 a 与 u 的乘积。再用 t 乘以所得的差。最后把这两个部分相加。",
+    "speech": "把这个位置代入高度差。先求 v 减 u 的差。用 t 乘以这个差。再与 u 相加。用 a 乘以所得的和。最后与 b 相加。展开后。第一项是 a 与 u 的乘积。第二项先求 v 减 u 的差。再用 a 乘以 t。再乘以这个差。这两项相加。再与 b 相加。再把它分组为两个部分。第一部分是 a 与 u 的乘积再与 b 相加所得的和。第二部分先用 a 与 v 的乘积减去 a 与 u 的乘积。再用 t 乘以所得的差。最后把这两个部分相加。",
     "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
-    "fingerprint": "48e832e79675e0065c64387bca371c2d967482eeb74b0b198bedac0276d56fc6",
+    "fingerprint": "3b648dd10a1e1c64c46e40d54c39472b826e97136d83690a06cb1cb01b6896ef",
     "alignment": {
       "method": "azure-pronunciation-assessment",
-      "audioSha256": "2ea4793ab2b147df540770f20ca0f98ee3b1714bb0d0951f6ea4e26a53d0287b",
+      "audioSha256": "f28b8f06098da59ede15803ae53fe0ca94c08fc566c427553ea5b3bd3ea272ef",
       "synthesisWords": [
         {
           "text": "把",
@@ -4386,10 +4393,10 @@
         },
         {
           "text": "相加",
-          "startMs": 6428,
-          "durationMs": 0,
           "textOffset": 38,
-          "wordLength": 2
+          "wordLength": 2,
+          "startMs": 6510,
+          "durationMs": 470
         },
         {
           "text": "。",
@@ -4631,541 +4638,548 @@
         },
         {
           "text": "再",
-          "startMs": 16988,
-          "durationMs": 200,
+          "startMs": 16950,
+          "durationMs": 240,
           "textOffset": 95,
           "wordLength": 1
         },
         {
-          "text": "把",
-          "startMs": 17188,
-          "durationMs": 320,
+          "text": "用",
+          "startMs": 17190,
+          "durationMs": 200,
           "textOffset": 96,
           "wordLength": 1
         },
         {
           "text": "A",
-          "startMs": 17508,
-          "durationMs": 80,
+          "startMs": 17390,
+          "durationMs": 160,
           "textOffset": 98,
           "wordLength": 1
         },
         {
-          "text": "、",
-          "startMs": 17588,
-          "durationMs": 0,
-          "textOffset": 99,
-          "wordLength": 1
-        },
-        {
-          "text": "T",
-          "startMs": 17588,
-          "durationMs": 200,
+          "text": "乘以",
+          "startMs": 17550,
+          "durationMs": 360,
           "textOffset": 100,
-          "wordLength": 1
-        },
-        {
-          "text": "和",
-          "startMs": 17788,
-          "durationMs": 120,
-          "textOffset": 102,
-          "wordLength": 1
-        },
-        {
-          "text": "这个",
-          "startMs": 17908,
-          "durationMs": 240,
-          "textOffset": 103,
           "wordLength": 2
         },
         {
-          "text": "差",
-          "startMs": 18148,
-          "durationMs": 160,
+          "text": "T",
+          "startMs": 17910,
+          "durationMs": 360,
+          "textOffset": 103,
+          "wordLength": 1
+        },
+        {
+          "text": "。",
+          "startMs": 18270,
+          "durationMs": 0,
+          "textOffset": 104,
+          "wordLength": 1
+        },
+        {
+          "text": "再",
+          "startMs": 18350,
+          "durationMs": 240,
           "textOffset": 105,
           "wordLength": 1
         },
         {
-          "text": "相乘",
-          "startMs": 18308,
-          "durationMs": 560,
+          "text": "乘以",
+          "startMs": 18590,
+          "durationMs": 319,
           "textOffset": 106,
           "wordLength": 2
         },
         {
-          "text": "。",
-          "startMs": 18868,
-          "durationMs": 0,
+          "text": "这个",
+          "startMs": 18909,
+          "durationMs": 241,
           "textOffset": 108,
-          "wordLength": 1
+          "wordLength": 2
         },
         {
-          "text": "这",
-          "startMs": 19158,
-          "durationMs": 240,
-          "textOffset": 109,
-          "wordLength": 1
-        },
-        {
-          "text": "两",
-          "startMs": 19398,
-          "durationMs": 200,
+          "text": "差",
+          "startMs": 19150,
+          "durationMs": 199,
           "textOffset": 110,
           "wordLength": 1
         },
         {
-          "text": "项",
-          "startMs": 19598,
-          "durationMs": 160,
+          "text": "。",
+          "startMs": 19349,
+          "durationMs": 0,
           "textOffset": 111,
           "wordLength": 1
         },
         {
-          "text": "相加",
-          "startMs": 19758,
-          "durationMs": 640,
+          "text": "这",
+          "startMs": 19698,
+          "durationMs": 240,
           "textOffset": 112,
-          "wordLength": 2
+          "wordLength": 1
         },
         {
-          "text": "。",
-          "startMs": 20398,
-          "durationMs": 0,
+          "text": "两",
+          "startMs": 19938,
+          "durationMs": 200,
+          "textOffset": 113,
+          "wordLength": 1
+        },
+        {
+          "text": "项",
+          "startMs": 20138,
+          "durationMs": 160,
           "textOffset": 114,
           "wordLength": 1
         },
         {
-          "text": "再",
-          "startMs": 20828,
-          "durationMs": 240,
-          "textOffset": 115,
-          "wordLength": 1
-        },
-        {
-          "text": "与",
-          "startMs": 21068,
-          "durationMs": 120,
-          "textOffset": 116,
-          "wordLength": 1
-        },
-        {
-          "text": "B",
-          "startMs": 21188,
-          "durationMs": 160,
-          "textOffset": 118,
-          "wordLength": 1
-        },
-        {
           "text": "相加",
-          "startMs": 21348,
-          "durationMs": 600,
-          "textOffset": 120,
+          "startMs": 20298,
+          "durationMs": 640,
+          "textOffset": 115,
           "wordLength": 2
         },
         {
           "text": "。",
-          "startMs": 21948,
+          "startMs": 20938,
           "durationMs": 0,
-          "textOffset": 122,
+          "textOffset": 117,
           "wordLength": 1
         },
         {
           "text": "再",
-          "startMs": 22248,
-          "durationMs": 200,
+          "startMs": 21368,
+          "durationMs": 240,
+          "textOffset": 118,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 21608,
+          "durationMs": 120,
+          "textOffset": 119,
+          "wordLength": 1
+        },
+        {
+          "text": "B",
+          "startMs": 21728,
+          "durationMs": 160,
+          "textOffset": 121,
+          "wordLength": 1
+        },
+        {
+          "text": "相加",
+          "startMs": 21888,
+          "durationMs": 600,
           "textOffset": 123,
-          "wordLength": 1
+          "wordLength": 2
         },
         {
-          "text": "把",
-          "startMs": 22448,
-          "durationMs": 120,
-          "textOffset": 124,
-          "wordLength": 1
-        },
-        {
-          "text": "它",
-          "startMs": 22568,
-          "durationMs": 120,
+          "text": "。",
+          "startMs": 22488,
+          "durationMs": 0,
           "textOffset": 125,
           "wordLength": 1
         },
         {
-          "text": "分",
-          "startMs": 22688,
-          "durationMs": 240,
+          "text": "再",
+          "startMs": 22788,
+          "durationMs": 200,
           "textOffset": 126,
           "wordLength": 1
         },
         {
-          "text": "组",
-          "startMs": 22928,
-          "durationMs": 200,
+          "text": "把",
+          "startMs": 22988,
+          "durationMs": 120,
           "textOffset": 127,
           "wordLength": 1
         },
         {
-          "text": "为",
-          "startMs": 23128,
+          "text": "它",
+          "startMs": 23108,
           "durationMs": 120,
           "textOffset": 128,
           "wordLength": 1
         },
         {
-          "text": "两个",
-          "startMs": 23248,
-          "durationMs": 280,
+          "text": "分",
+          "startMs": 23228,
+          "durationMs": 240,
           "textOffset": 129,
+          "wordLength": 1
+        },
+        {
+          "text": "组",
+          "startMs": 23468,
+          "durationMs": 200,
+          "textOffset": 130,
+          "wordLength": 1
+        },
+        {
+          "text": "为",
+          "startMs": 23668,
+          "durationMs": 120,
+          "textOffset": 131,
+          "wordLength": 1
+        },
+        {
+          "text": "两个",
+          "startMs": 23788,
+          "durationMs": 280,
+          "textOffset": 132,
           "wordLength": 2
         },
         {
           "text": "部分",
-          "startMs": 23528,
+          "startMs": 24068,
           "durationMs": 400,
-          "textOffset": 131,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 23928,
-          "durationMs": 0,
-          "textOffset": 133,
-          "wordLength": 1
-        },
-        {
-          "text": "第一",
-          "startMs": 24268,
-          "durationMs": 320,
           "textOffset": 134,
           "wordLength": 2
         },
         {
-          "text": "部分",
-          "startMs": 24588,
-          "durationMs": 440,
+          "text": "。",
+          "startMs": 24468,
+          "durationMs": 0,
           "textOffset": 136,
+          "wordLength": 1
+        },
+        {
+          "text": "第一",
+          "startMs": 24808,
+          "durationMs": 320,
+          "textOffset": 137,
+          "wordLength": 2
+        },
+        {
+          "text": "部分",
+          "startMs": 25128,
+          "durationMs": 440,
+          "textOffset": 139,
           "wordLength": 2
         },
         {
           "text": "是",
-          "startMs": 25028,
+          "startMs": 25568,
           "durationMs": 200,
-          "textOffset": 138,
+          "textOffset": 141,
           "wordLength": 1
         },
         {
           "text": "A",
-          "startMs": 25228,
+          "startMs": 25768,
           "durationMs": 160,
-          "textOffset": 140,
+          "textOffset": 143,
           "wordLength": 1
         },
         {
           "text": "与",
-          "startMs": 25388,
+          "startMs": 25928,
           "durationMs": 200,
-          "textOffset": 142,
+          "textOffset": 145,
           "wordLength": 1
         },
         {
           "text": "U",
-          "startMs": 25588,
+          "startMs": 26128,
           "durationMs": 120,
-          "textOffset": 144,
+          "textOffset": 147,
           "wordLength": 1
         },
         {
           "text": "的",
-          "startMs": 25708,
+          "startMs": 26248,
           "durationMs": 120,
-          "textOffset": 146,
-          "wordLength": 1
-        },
-        {
-          "text": "乘积",
-          "startMs": 25828,
-          "durationMs": 560,
-          "textOffset": 147,
-          "wordLength": 2
-        },
-        {
-          "text": "再",
-          "startMs": 26388,
-          "durationMs": 199,
           "textOffset": 149,
           "wordLength": 1
         },
         {
-          "text": "与",
-          "startMs": 26587,
-          "durationMs": 161,
+          "text": "乘积",
+          "startMs": 26368,
+          "durationMs": 560,
           "textOffset": 150,
-          "wordLength": 1
+          "wordLength": 2
         },
         {
-          "text": "B",
-          "startMs": 26748,
-          "durationMs": 200,
+          "text": "再",
+          "startMs": 26928,
+          "durationMs": 199,
           "textOffset": 152,
           "wordLength": 1
         },
         {
+          "text": "与",
+          "startMs": 27127,
+          "durationMs": 161,
+          "textOffset": 153,
+          "wordLength": 1
+        },
+        {
+          "text": "B",
+          "startMs": 27288,
+          "durationMs": 200,
+          "textOffset": 155,
+          "wordLength": 1
+        },
+        {
           "text": "相加",
-          "startMs": 26948,
+          "startMs": 27488,
           "durationMs": 360,
-          "textOffset": 154,
+          "textOffset": 157,
           "wordLength": 2
         },
         {
           "text": "所得",
-          "startMs": 27308,
+          "startMs": 27848,
           "durationMs": 319,
-          "textOffset": 156,
+          "textOffset": 159,
           "wordLength": 2
         },
         {
           "text": "的",
-          "startMs": 27627,
+          "startMs": 28167,
           "durationMs": 121,
-          "textOffset": 158,
+          "textOffset": 161,
           "wordLength": 1
         },
         {
           "text": "和",
-          "startMs": 27748,
+          "startMs": 28288,
           "durationMs": 399,
-          "textOffset": 159,
+          "textOffset": 162,
           "wordLength": 1
         },
         {
           "text": "。",
-          "startMs": 28147,
+          "startMs": 28687,
           "durationMs": 0,
-          "textOffset": 160,
+          "textOffset": 163,
           "wordLength": 1
         },
         {
           "text": "第二",
-          "startMs": 28438,
+          "startMs": 28978,
           "durationMs": 360,
-          "textOffset": 161,
+          "textOffset": 164,
           "wordLength": 2
         },
         {
           "text": "部分",
-          "startMs": 28798,
+          "startMs": 29338,
           "durationMs": 480,
-          "textOffset": 163,
+          "textOffset": 166,
           "wordLength": 2
         },
         {
           "text": "先",
-          "startMs": 29278,
+          "startMs": 29818,
           "durationMs": 240,
-          "textOffset": 165,
-          "wordLength": 1
-        },
-        {
-          "text": "用",
-          "startMs": 29518,
-          "durationMs": 200,
-          "textOffset": 166,
-          "wordLength": 1
-        },
-        {
-          "text": "A",
-          "startMs": 29718,
-          "durationMs": 160,
           "textOffset": 168,
           "wordLength": 1
         },
         {
-          "text": "与",
-          "startMs": 29878,
+          "text": "用",
+          "startMs": 30058,
+          "durationMs": 200,
+          "textOffset": 169,
+          "wordLength": 1
+        },
+        {
+          "text": "A",
+          "startMs": 30258,
           "durationMs": 160,
-          "textOffset": 170,
+          "textOffset": 171,
+          "wordLength": 1
+        },
+        {
+          "text": "与",
+          "startMs": 30418,
+          "durationMs": 160,
+          "textOffset": 173,
           "wordLength": 1
         },
         {
           "text": "V",
-          "startMs": 30038,
+          "startMs": 30578,
           "durationMs": 160,
-          "textOffset": 172,
+          "textOffset": 175,
           "wordLength": 1
         },
         {
           "text": "的",
-          "startMs": 30198,
+          "startMs": 30738,
           "durationMs": 120,
-          "textOffset": 174,
+          "textOffset": 177,
           "wordLength": 1
         },
         {
           "text": "乘积",
-          "startMs": 30318,
+          "startMs": 30858,
           "durationMs": 600,
-          "textOffset": 175,
+          "textOffset": 178,
           "wordLength": 2
         },
         {
           "text": "减去",
-          "startMs": 30918,
+          "startMs": 31458,
           "durationMs": 480,
-          "textOffset": 177,
+          "textOffset": 180,
           "wordLength": 2
         },
         {
           "text": "A",
-          "startMs": 31398,
+          "startMs": 31938,
           "durationMs": 160,
-          "textOffset": 180,
+          "textOffset": 183,
           "wordLength": 1
         },
         {
           "text": "与",
-          "startMs": 31558,
+          "startMs": 32098,
           "durationMs": 159,
-          "textOffset": 182,
+          "textOffset": 185,
           "wordLength": 1
         },
         {
           "text": "U",
-          "startMs": 31717,
+          "startMs": 32257,
           "durationMs": 161,
-          "textOffset": 184,
+          "textOffset": 187,
           "wordLength": 1
         },
         {
           "text": "的",
-          "startMs": 31878,
+          "startMs": 32418,
           "durationMs": 120,
-          "textOffset": 186,
-          "wordLength": 1
-        },
-        {
-          "text": "乘积",
-          "startMs": 31998,
-          "durationMs": 0,
-          "textOffset": 187,
-          "wordLength": 2
-        },
-        {
-          "text": "。",
-          "startMs": 31998,
-          "durationMs": 0,
           "textOffset": 189,
           "wordLength": 1
         },
         {
-          "text": "再",
-          "startMs": 32858,
-          "durationMs": 240,
+          "text": "乘积",
           "textOffset": 190,
+          "wordLength": 2,
+          "startMs": 32618,
+          "durationMs": 610
+        },
+        {
+          "text": "。",
+          "startMs": 32538,
+          "durationMs": 0,
+          "textOffset": 192,
           "wordLength": 1
         },
         {
-          "text": "用",
-          "startMs": 33098,
-          "durationMs": 160,
-          "textOffset": 191,
-          "wordLength": 1
-        },
-        {
-          "text": "T",
-          "startMs": 33258,
-          "durationMs": 280,
+          "text": "再",
+          "startMs": 33398,
+          "durationMs": 240,
           "textOffset": 193,
           "wordLength": 1
         },
         {
-          "text": "乘",
-          "startMs": 33538,
-          "durationMs": 200,
-          "textOffset": 195,
+          "text": "用",
+          "startMs": 33638,
+          "durationMs": 160,
+          "textOffset": 194,
           "wordLength": 1
         },
         {
-          "text": "以",
-          "startMs": 33738,
-          "durationMs": 120,
+          "text": "T",
+          "startMs": 33798,
+          "durationMs": 280,
           "textOffset": 196,
           "wordLength": 1
         },
         {
-          "text": "所得",
-          "startMs": 33858,
-          "durationMs": 320,
-          "textOffset": 197,
-          "wordLength": 2
+          "text": "乘",
+          "startMs": 34078,
+          "durationMs": 200,
+          "textOffset": 198,
+          "wordLength": 1
         },
         {
-          "text": "的",
-          "startMs": 34178,
+          "text": "以",
+          "startMs": 34278,
           "durationMs": 120,
           "textOffset": 199,
           "wordLength": 1
         },
         {
-          "text": "差",
-          "startMs": 34298,
-          "durationMs": 160,
+          "text": "所得",
+          "startMs": 34398,
+          "durationMs": 320,
           "textOffset": 200,
+          "wordLength": 2
+        },
+        {
+          "text": "的",
+          "startMs": 34718,
+          "durationMs": 120,
+          "textOffset": 202,
+          "wordLength": 1
+        },
+        {
+          "text": "差",
+          "startMs": 34838,
+          "durationMs": 160,
+          "textOffset": 203,
           "wordLength": 1
         },
         {
           "text": "。",
-          "startMs": 34458,
+          "startMs": 34998,
           "durationMs": 0,
-          "textOffset": 201,
-          "wordLength": 1
-        },
-        {
-          "text": "最后",
-          "startMs": 34778,
-          "durationMs": 400,
-          "textOffset": 202,
-          "wordLength": 2
-        },
-        {
-          "text": "把",
-          "startMs": 35178,
-          "durationMs": 160,
           "textOffset": 204,
           "wordLength": 1
         },
         {
-          "text": "这",
-          "startMs": 35338,
-          "durationMs": 160,
+          "text": "最后",
+          "startMs": 35318,
+          "durationMs": 400,
           "textOffset": 205,
+          "wordLength": 2
+        },
+        {
+          "text": "把",
+          "startMs": 35718,
+          "durationMs": 160,
+          "textOffset": 207,
+          "wordLength": 1
+        },
+        {
+          "text": "这",
+          "startMs": 35878,
+          "durationMs": 160,
+          "textOffset": 208,
           "wordLength": 1
         },
         {
           "text": "两个",
-          "startMs": 35498,
+          "startMs": 36038,
           "durationMs": 280,
-          "textOffset": 206,
+          "textOffset": 209,
           "wordLength": 2
         },
         {
           "text": "部分",
-          "startMs": 35778,
+          "startMs": 36318,
           "durationMs": 240,
-          "textOffset": 208,
+          "textOffset": 211,
           "wordLength": 2
         },
         {
           "text": "相加",
-          "startMs": 36018,
-          "durationMs": 0,
-          "textOffset": 210,
-          "wordLength": 2
+          "textOffset": 213,
+          "wordLength": 2,
+          "startMs": 36678,
+          "durationMs": 530
         },
         {
           "text": "。",
-          "startMs": 36018,
+          "startMs": 36558,
           "durationMs": 0,
-          "textOffset": 212,
+          "textOffset": 215,
           "wordLength": 1
         }
       ],
@@ -5314,7 +5328,7 @@
                 "Offset": 49500000,
                 "Duration": 1100000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 76,
+                  "AccuracyScore": 94,
                   "ErrorType": "None"
                 }
               },
@@ -5350,7 +5364,7 @@
                 "Offset": 62100000,
                 "Duration": 1200000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 76,
+                  "AccuracyScore": 73,
                   "ErrorType": "None"
                 }
               },
@@ -5512,7 +5526,7 @@
                 "Offset": 130300000,
                 "Duration": 1500000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 91,
+                  "AccuracyScore": 88,
                   "ErrorType": "None"
                 }
               },
@@ -5629,23 +5643,23 @@
                 "Offset": 164000000,
                 "Duration": 3700000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 55,
+                  "AccuracyScore": 54,
                   "ErrorType": "Mispronunciation"
                 }
               },
               {
                 "Word": "再",
-                "Offset": 169500000,
-                "Duration": 2900000,
+                "Offset": 168700000,
+                "Duration": 3300000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 97,
+                  "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "把",
-                "Offset": 172500000,
-                "Duration": 1300000,
+                "Word": "用",
+                "Offset": 172100000,
+                "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5654,51 +5668,78 @@
               {
                 "Word": "a",
                 "Offset": 173900000,
-                "Duration": 1500000,
+                "Duration": 1700000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 69,
+                  "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "t",
-                "Offset": 175500000,
-                "Duration": 3100000,
-                "PronunciationAssessment": {
-                  "AccuracyScore": 88,
-                  "ErrorType": "None"
-                }
-              },
-              {
-                "Word": "和",
-                "Offset": 178700000,
-                "Duration": 1300000,
+                "Word": "乘",
+                "Offset": 175700000,
+                "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "这个",
-                "Offset": 180100000,
-                "Duration": 2100000,
+                "Word": "以",
+                "Offset": 177500000,
+                "Duration": 1300000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 88,
+                  "AccuracyScore": 100,
                   "ErrorType": "None"
                 }
               },
               {
-                "Word": "差相乘",
-                "Offset": 182300000,
-                "Duration": 7600000,
+                "Word": "t",
+                "Offset": 178900000,
+                "Duration": 3900000,
                 "PronunciationAssessment": {
-                  "AccuracyScore": 94,
+                  "AccuracyScore": 76,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "再",
+                "Offset": 183100000,
+                "Duration": 2900000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 100,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "乘以",
+                "Offset": 186100000,
+                "Duration": 3100000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 63,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "这个",
+                "Offset": 189300000,
+                "Duration": 2300000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 97,
+                  "ErrorType": "None"
+                }
+              },
+              {
+                "Word": "差",
+                "Offset": 191700000,
+                "Duration": 3600000,
+                "PronunciationAssessment": {
+                  "AccuracyScore": 64,
                   "ErrorType": "None"
                 }
               },
               {
                 "Word": "这",
-                "Offset": 191300000,
+                "Offset": 196700000,
                 "Duration": 3300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 88,
@@ -5707,7 +5748,7 @@
               },
               {
                 "Word": "两",
-                "Offset": 194700000,
+                "Offset": 200100000,
                 "Duration": 1900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 91,
@@ -5716,7 +5757,7 @@
               },
               {
                 "Word": "项",
-                "Offset": 196700000,
+                "Offset": 202100000,
                 "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5725,7 +5766,7 @@
               },
               {
                 "Word": "相加",
-                "Offset": 198500000,
+                "Offset": 203900000,
                 "Duration": 6300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 70,
@@ -5734,8 +5775,8 @@
               },
               {
                 "Word": "再",
-                "Offset": 205300000,
-                "Duration": 5900000,
+                "Offset": 210600000,
+                "Duration": 6000000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -5743,7 +5784,7 @@
               },
               {
                 "Word": "与",
-                "Offset": 211300000,
+                "Offset": 216700000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -5752,7 +5793,7 @@
               },
               {
                 "Word": "b",
-                "Offset": 212700000,
+                "Offset": 218100000,
                 "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 58,
@@ -5761,7 +5802,7 @@
               },
               {
                 "Word": "相加",
-                "Offset": 214500000,
+                "Offset": 219900000,
                 "Duration": 4700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5770,8 +5811,8 @@
               },
               {
                 "Word": "再",
-                "Offset": 219300000,
-                "Duration": 5800000,
+                "Offset": 224700000,
+                "Duration": 5900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
                   "ErrorType": "None"
@@ -5779,8 +5820,8 @@
               },
               {
                 "Word": "把",
-                "Offset": 225200000,
-                "Duration": 1000000,
+                "Offset": 230700000,
+                "Duration": 900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
                   "ErrorType": "None"
@@ -5788,7 +5829,7 @@
               },
               {
                 "Word": "它",
-                "Offset": 226300000,
+                "Offset": 231700000,
                 "Duration": 1500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5797,7 +5838,7 @@
               },
               {
                 "Word": "分组",
-                "Offset": 227900000,
+                "Offset": 233300000,
                 "Duration": 3500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 70,
@@ -5806,7 +5847,7 @@
               },
               {
                 "Word": "为",
-                "Offset": 231500000,
+                "Offset": 236900000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5815,7 +5856,7 @@
               },
               {
                 "Word": "两",
-                "Offset": 232900000,
+                "Offset": 238300000,
                 "Duration": 1900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5824,7 +5865,7 @@
               },
               {
                 "Word": "个",
-                "Offset": 234900000,
+                "Offset": 240300000,
                 "Duration": 1000000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5833,7 +5874,7 @@
               },
               {
                 "Word": "部分",
-                "Offset": 236000000,
+                "Offset": 241400000,
                 "Duration": 5100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -5842,7 +5883,7 @@
               },
               {
                 "Word": "第一",
-                "Offset": 243380000,
+                "Offset": 248780000,
                 "Duration": 3400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5851,7 +5892,7 @@
               },
               {
                 "Word": "部分",
-                "Offset": 246880000,
+                "Offset": 252280000,
                 "Duration": 4200000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5860,7 +5901,7 @@
               },
               {
                 "Word": "是",
-                "Offset": 251180000,
+                "Offset": 256580000,
                 "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 79,
@@ -5869,7 +5910,7 @@
               },
               {
                 "Word": "a",
-                "Offset": 252980000,
+                "Offset": 258380000,
                 "Duration": 1900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5878,7 +5919,7 @@
               },
               {
                 "Word": "与",
-                "Offset": 254980000,
+                "Offset": 260380000,
                 "Duration": 1500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -5887,7 +5928,7 @@
               },
               {
                 "Word": "u",
-                "Offset": 256580000,
+                "Offset": 261980000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5896,7 +5937,7 @@
               },
               {
                 "Word": "的",
-                "Offset": 257980000,
+                "Offset": 263380000,
                 "Duration": 1100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -5905,7 +5946,7 @@
               },
               {
                 "Word": "乘积",
-                "Offset": 259180000,
+                "Offset": 264580000,
                 "Duration": 5300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -5914,7 +5955,7 @@
               },
               {
                 "Word": "再",
-                "Offset": 264580000,
+                "Offset": 269980000,
                 "Duration": 2100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5923,7 +5964,7 @@
               },
               {
                 "Word": "与",
-                "Offset": 266780000,
+                "Offset": 272180000,
                 "Duration": 1600000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 85,
@@ -5932,7 +5973,7 @@
               },
               {
                 "Word": "b",
-                "Offset": 268480000,
+                "Offset": 273880000,
                 "Duration": 1800000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 59,
@@ -5941,7 +5982,7 @@
               },
               {
                 "Word": "相加",
-                "Offset": 270380000,
+                "Offset": 275780000,
                 "Duration": 3500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -5950,7 +5991,7 @@
               },
               {
                 "Word": "所得",
-                "Offset": 273980000,
+                "Offset": 279380000,
                 "Duration": 3100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
@@ -5959,7 +6000,7 @@
               },
               {
                 "Word": "的",
-                "Offset": 277180000,
+                "Offset": 282580000,
                 "Duration": 900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -5968,7 +6009,7 @@
               },
               {
                 "Word": "和",
-                "Offset": 278180000,
+                "Offset": 283580000,
                 "Duration": 4400000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -5977,7 +6018,7 @@
               },
               {
                 "Word": "第二",
-                "Offset": 284180000,
+                "Offset": 289580000,
                 "Duration": 4500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 62,
@@ -5986,7 +6027,7 @@
               },
               {
                 "Word": "部分",
-                "Offset": 288780000,
+                "Offset": 294180000,
                 "Duration": 4900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -5995,7 +6036,7 @@
               },
               {
                 "Word": "先",
-                "Offset": 293780000,
+                "Offset": 299180000,
                 "Duration": 2100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6004,7 +6045,7 @@
               },
               {
                 "Word": "用",
-                "Offset": 295980000,
+                "Offset": 301380000,
                 "Duration": 1800000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6013,7 +6054,7 @@
               },
               {
                 "Word": "a",
-                "Offset": 297880000,
+                "Offset": 303280000,
                 "Duration": 1800000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6022,7 +6063,7 @@
               },
               {
                 "Word": "与",
-                "Offset": 299780000,
+                "Offset": 305180000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6031,7 +6072,7 @@
               },
               {
                 "Word": "v",
-                "Offset": 301180000,
+                "Offset": 306580000,
                 "Duration": 1500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 91,
@@ -6040,7 +6081,7 @@
               },
               {
                 "Word": "的",
-                "Offset": 302780000,
+                "Offset": 308180000,
                 "Duration": 900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6049,7 +6090,7 @@
               },
               {
                 "Word": "乘积",
-                "Offset": 303780000,
+                "Offset": 309180000,
                 "Duration": 6000000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6058,7 +6099,7 @@
               },
               {
                 "Word": "减去",
-                "Offset": 310080000,
+                "Offset": 315480000,
                 "Duration": 4600000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6067,7 +6108,7 @@
               },
               {
                 "Word": "a",
-                "Offset": 314780000,
+                "Offset": 320180000,
                 "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6076,7 +6117,7 @@
               },
               {
                 "Word": "与",
-                "Offset": 316580000,
+                "Offset": 321980000,
                 "Duration": 1500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
@@ -6085,7 +6126,7 @@
               },
               {
                 "Word": "u",
-                "Offset": 318180000,
+                "Offset": 323580000,
                 "Duration": 1500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6094,7 +6135,7 @@
               },
               {
                 "Word": "的",
-                "Offset": 319780000,
+                "Offset": 325180000,
                 "Duration": 900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6103,7 +6144,7 @@
               },
               {
                 "Word": "乘积",
-                "Offset": 320780000,
+                "Offset": 326180000,
                 "Duration": 6100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6112,7 +6153,7 @@
               },
               {
                 "Word": "再",
-                "Offset": 328580000,
+                "Offset": 333980000,
                 "Duration": 2900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6121,7 +6162,7 @@
               },
               {
                 "Word": "用",
-                "Offset": 331580000,
+                "Offset": 336980000,
                 "Duration": 1700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6130,7 +6171,7 @@
               },
               {
                 "Word": "t",
-                "Offset": 333380000,
+                "Offset": 338780000,
                 "Duration": 2700000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 65,
@@ -6139,7 +6180,7 @@
               },
               {
                 "Word": "乘",
-                "Offset": 336180000,
+                "Offset": 341580000,
                 "Duration": 1900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6148,7 +6189,7 @@
               },
               {
                 "Word": "以",
-                "Offset": 338180000,
+                "Offset": 343580000,
                 "Duration": 1100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6157,7 +6198,7 @@
               },
               {
                 "Word": "所得",
-                "Offset": 339380000,
+                "Offset": 344780000,
                 "Duration": 3100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6166,7 +6207,7 @@
               },
               {
                 "Word": "的",
-                "Offset": 342580000,
+                "Offset": 347980000,
                 "Duration": 1100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6175,7 +6216,7 @@
               },
               {
                 "Word": "差",
-                "Offset": 343780000,
+                "Offset": 349180000,
                 "Duration": 2800000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 54,
@@ -6184,7 +6225,7 @@
               },
               {
                 "Word": "最后",
-                "Offset": 347380000,
+                "Offset": 352780000,
                 "Duration": 5300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6193,7 +6234,7 @@
               },
               {
                 "Word": "把",
-                "Offset": 352780000,
+                "Offset": 358180000,
                 "Duration": 1500000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6202,7 +6243,7 @@
               },
               {
                 "Word": "这",
-                "Offset": 354380000,
+                "Offset": 359780000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 82,
@@ -6211,7 +6252,7 @@
               },
               {
                 "Word": "两",
-                "Offset": 355780000,
+                "Offset": 361180000,
                 "Duration": 1300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6220,7 +6261,7 @@
               },
               {
                 "Word": "个",
-                "Offset": 357180000,
+                "Offset": 362580000,
                 "Duration": 1100000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 100,
@@ -6229,7 +6270,7 @@
               },
               {
                 "Word": "部分",
-                "Offset": 358380000,
+                "Offset": 363780000,
                 "Duration": 2900000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 97,
@@ -6238,7 +6279,7 @@
               },
               {
                 "Word": "相加",
-                "Offset": 361380000,
+                "Offset": 366780000,
                 "Duration": 5300000,
                 "PronunciationAssessment": {
                   "AccuracyScore": 94,
@@ -6251,28 +6292,28 @@
         "chunks": [
           {
             "startSample": 0,
-            "endSample": 1160064,
-            "speech": "把这个位置代入高度差。先求 v 减 u 的差。用 t 乘以这个差。再与 u 相加。用 a 乘以所得的和。最后与 b 相加。展开后。第一项是 a 与 u 的乘积。第二项先求 v 减 u 的差。再把 a、t 和这个差相乘。这两项相加。再与 b 相加。再把它分组为两个部分。",
+            "endSample": 1185984,
+            "speech": "把这个位置代入高度差。先求 v 减 u 的差。用 t 乘以这个差。再与 u 相加。用 a 乘以所得的和。最后与 b 相加。展开后。第一项是 a 与 u 的乘积。第二项先求 v 减 u 的差。再用 a 乘以 t。再乘以这个差。这两项相加。再与 b 相加。再把它分组为两个部分。",
             "response": {
-              "Id": "a5b58a57e6aa4862ba6498cd6dfb9f76",
+              "Id": "b27577c6dcca433c87958ff5b4c12ef2",
               "RecognitionStatus": "Success",
               "Offset": 500000,
-              "Duration": 240600000,
+              "Duration": 246000000,
               "Channel": 0,
-              "DisplayText": "把这个位置代入高度差，先求v减U的差，用T乘以这个差，再与U相加，用a乘以所得的和，最后与B相加。展开后第一项是a与U的乘积，第二项先求v减U的差，再把AT和这个差相乘，这两项相加，再与B相加，再把它分组为两个部分。",
-              "SNR": 42.950424,
+              "DisplayText": "把这个位置代入高度差，先求v减U的差，用T乘以这个差，再与U相加，用a乘以所得的和，最后与B相加。展开后第一项是a与U的乘积，第二项先求v减U的差，再用a乘以T，再乘以这个差，这两项相加，再与B相加，再把它分组为两个部分。",
+              "SNR": 43.37763,
               "NBest": [
                 {
-                  "Confidence": 0.958386,
-                  "Lexical": "把 这个 位置 代入 高度 差 先求 v 减 u 的 差 用 t 乘 以 这个 差 再 与 u 相加 用 a 乘 以 所得 的 和 最后 与 b 相加 展开 后 第一 项 是 a 与 u 的 乘积 第二 项 先求 v 减 u 的 差 再 把 a t 和 这个 差相乘 这 两 项 相加 再 与 b 相加 再 把 它 分组 为 两 个 部分",
-                  "ITN": "把 这个 位置 代入 高度 差 先求 v 减 u 的 差 用 t 乘 以 这个 差 再 与 u 相加 用 a 乘 以 所得 的 和 最后 与 b 相加 展开 后 第一 项 是 a 与 u 的 乘积 第二 项 先求 v 减 u 的 差 再 把 AT 和 这个 差相乘 这 两 项 相加 再 与 b 相加 再 把 它 分组 为 两 个 部分",
-                  "MaskedITN": "把这个位置代入高度差先求v减u的差用t乘以这个差再与u相加用a乘以所得的和最后与b相加展开后第一项是a与u的乘积第二项先求v减u的差再把at和这个差相乘这两项相加再与b相加再把它分组为两个部分",
-                  "Display": "把这个位置代入高度差，先求v减U的差，用T乘以这个差，再与U相加，用a乘以所得的和，最后与B相加。展开后第一项是a与U的乘积，第二项先求v减U的差，再把AT和这个差相乘，这两项相加，再与B相加，再把它分组为两个部分。",
+                  "Confidence": 0.95817703,
+                  "Lexical": "把 这个 位置 代入 高度 差 先求 v 减 u 的 差 用 t 乘 以 这个 差 再 与 u 相加 用 a 乘 以 所得 的 和 最后 与 b 相加 展开 后 第一 项 是 a 与 u 的 乘积 第二 项 先求 v 减 u 的 差 再 用 a 乘 以 t 再 乘以 这个 差 这 两 项 相加 再 与 b 相加 再 把 它 分组 为 两 个 部分",
+                  "ITN": "把 这个 位置 代入 高度 差 先求 v 减 u 的 差 用 t 乘 以 这个 差 再 与 u 相加 用 a 乘 以 所得 的 和 最后 与 b 相加 展开 后 第一 项 是 a 与 u 的 乘积 第二 项 先求 v 减 u 的 差 再 用 a 乘 以 t 再 乘以 这个 差 这 两 项 相加 再 与 b 相加 再 把 它 分组 为 两 个 部分",
+                  "MaskedITN": "把这个位置代入高度差先求v减u的差用t乘以这个差再与u相加用a乘以所得的和最后与b相加展开后第一项是a与u的乘积第二项先求v减u的差再用a乘以t再乘以这个差这两项相加再与b相加再把它分组为两个部分",
+                  "Display": "把这个位置代入高度差，先求v减U的差，用T乘以这个差，再与U相加，用a乘以所得的和，最后与B相加。展开后第一项是a与U的乘积，第二项先求v减U的差，再用a乘以T，再乘以这个差，这两项相加，再与B相加，再把它分组为两个部分。",
                   "PronunciationAssessment": {
                     "AccuracyScore": 91,
-                    "FluencyScore": 91,
+                    "FluencyScore": 93,
                     "CompletenessScore": 92,
-                    "PronScore": 91.2
+                    "PronScore": 91.6
                   },
                   "Words": [
                     {
@@ -6415,7 +6456,7 @@
                       "Offset": 49500000,
                       "Duration": 1100000,
                       "PronunciationAssessment": {
-                        "AccuracyScore": 76,
+                        "AccuracyScore": 94,
                         "ErrorType": "None"
                       }
                     },
@@ -6451,7 +6492,7 @@
                       "Offset": 62100000,
                       "Duration": 1200000,
                       "PronunciationAssessment": {
-                        "AccuracyScore": 76,
+                        "AccuracyScore": 73,
                         "ErrorType": "None"
                       }
                     },
@@ -6613,7 +6654,7 @@
                       "Offset": 130300000,
                       "Duration": 1500000,
                       "PronunciationAssessment": {
-                        "AccuracyScore": 91,
+                        "AccuracyScore": 88,
                         "ErrorType": "None"
                       }
                     },
@@ -6730,23 +6771,23 @@
                       "Offset": 164000000,
                       "Duration": 3700000,
                       "PronunciationAssessment": {
-                        "AccuracyScore": 55,
+                        "AccuracyScore": 54,
                         "ErrorType": "Mispronunciation"
                       }
                     },
                     {
                       "Word": "再",
-                      "Offset": 169500000,
-                      "Duration": 2900000,
+                      "Offset": 168700000,
+                      "Duration": 3300000,
                       "PronunciationAssessment": {
-                        "AccuracyScore": 97,
+                        "AccuracyScore": 100,
                         "ErrorType": "None"
                       }
                     },
                     {
-                      "Word": "把",
-                      "Offset": 172500000,
-                      "Duration": 1300000,
+                      "Word": "用",
+                      "Offset": 172100000,
+                      "Duration": 1700000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 100,
                         "ErrorType": "None"
@@ -6755,51 +6796,78 @@
                     {
                       "Word": "a",
                       "Offset": 173900000,
-                      "Duration": 1500000,
+                      "Duration": 1700000,
                       "PronunciationAssessment": {
-                        "AccuracyScore": 69,
+                        "AccuracyScore": 100,
                         "ErrorType": "None"
                       }
                     },
                     {
-                      "Word": "t",
-                      "Offset": 175500000,
-                      "Duration": 3100000,
-                      "PronunciationAssessment": {
-                        "AccuracyScore": 88,
-                        "ErrorType": "None"
-                      }
-                    },
-                    {
-                      "Word": "和",
-                      "Offset": 178700000,
-                      "Duration": 1300000,
+                      "Word": "乘",
+                      "Offset": 175700000,
+                      "Duration": 1700000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 97,
                         "ErrorType": "None"
                       }
                     },
                     {
-                      "Word": "这个",
-                      "Offset": 180100000,
-                      "Duration": 2100000,
+                      "Word": "以",
+                      "Offset": 177500000,
+                      "Duration": 1300000,
                       "PronunciationAssessment": {
-                        "AccuracyScore": 88,
+                        "AccuracyScore": 100,
                         "ErrorType": "None"
                       }
                     },
                     {
-                      "Word": "差相乘",
-                      "Offset": 182300000,
-                      "Duration": 7600000,
+                      "Word": "t",
+                      "Offset": 178900000,
+                      "Duration": 3900000,
                       "PronunciationAssessment": {
-                        "AccuracyScore": 94,
+                        "AccuracyScore": 76,
+                        "ErrorType": "None"
+                      }
+                    },
+                    {
+                      "Word": "再",
+                      "Offset": 183100000,
+                      "Duration": 2900000,
+                      "PronunciationAssessment": {
+                        "AccuracyScore": 100,
+                        "ErrorType": "None"
+                      }
+                    },
+                    {
+                      "Word": "乘以",
+                      "Offset": 186100000,
+                      "Duration": 3100000,
+                      "PronunciationAssessment": {
+                        "AccuracyScore": 63,
+                        "ErrorType": "None"
+                      }
+                    },
+                    {
+                      "Word": "这个",
+                      "Offset": 189300000,
+                      "Duration": 2300000,
+                      "PronunciationAssessment": {
+                        "AccuracyScore": 97,
+                        "ErrorType": "None"
+                      }
+                    },
+                    {
+                      "Word": "差",
+                      "Offset": 191700000,
+                      "Duration": 3600000,
+                      "PronunciationAssessment": {
+                        "AccuracyScore": 64,
                         "ErrorType": "None"
                       }
                     },
                     {
                       "Word": "这",
-                      "Offset": 191300000,
+                      "Offset": 196700000,
                       "Duration": 3300000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 88,
@@ -6808,7 +6876,7 @@
                     },
                     {
                       "Word": "两",
-                      "Offset": 194700000,
+                      "Offset": 200100000,
                       "Duration": 1900000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 91,
@@ -6817,7 +6885,7 @@
                     },
                     {
                       "Word": "项",
-                      "Offset": 196700000,
+                      "Offset": 202100000,
                       "Duration": 1700000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 100,
@@ -6826,7 +6894,7 @@
                     },
                     {
                       "Word": "相加",
-                      "Offset": 198500000,
+                      "Offset": 203900000,
                       "Duration": 6300000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 70,
@@ -6835,8 +6903,8 @@
                     },
                     {
                       "Word": "再",
-                      "Offset": 205300000,
-                      "Duration": 5900000,
+                      "Offset": 210600000,
+                      "Duration": 6000000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 97,
                         "ErrorType": "None"
@@ -6844,7 +6912,7 @@
                     },
                     {
                       "Word": "与",
-                      "Offset": 211300000,
+                      "Offset": 216700000,
                       "Duration": 1300000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 97,
@@ -6853,7 +6921,7 @@
                     },
                     {
                       "Word": "b",
-                      "Offset": 212700000,
+                      "Offset": 218100000,
                       "Duration": 1700000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 58,
@@ -6862,7 +6930,7 @@
                     },
                     {
                       "Word": "相加",
-                      "Offset": 214500000,
+                      "Offset": 219900000,
                       "Duration": 4700000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 100,
@@ -6871,8 +6939,8 @@
                     },
                     {
                       "Word": "再",
-                      "Offset": 219300000,
-                      "Duration": 5800000,
+                      "Offset": 224700000,
+                      "Duration": 5900000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 100,
                         "ErrorType": "None"
@@ -6880,8 +6948,8 @@
                     },
                     {
                       "Word": "把",
-                      "Offset": 225200000,
-                      "Duration": 1000000,
+                      "Offset": 230700000,
+                      "Duration": 900000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 97,
                         "ErrorType": "None"
@@ -6889,7 +6957,7 @@
                     },
                     {
                       "Word": "它",
-                      "Offset": 226300000,
+                      "Offset": 231700000,
                       "Duration": 1500000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 100,
@@ -6898,7 +6966,7 @@
                     },
                     {
                       "Word": "分组",
-                      "Offset": 227900000,
+                      "Offset": 233300000,
                       "Duration": 3500000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 70,
@@ -6907,7 +6975,7 @@
                     },
                     {
                       "Word": "为",
-                      "Offset": 231500000,
+                      "Offset": 236900000,
                       "Duration": 1300000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 100,
@@ -6916,7 +6984,7 @@
                     },
                     {
                       "Word": "两",
-                      "Offset": 232900000,
+                      "Offset": 238300000,
                       "Duration": 1900000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 100,
@@ -6925,7 +6993,7 @@
                     },
                     {
                       "Word": "个",
-                      "Offset": 234900000,
+                      "Offset": 240300000,
                       "Duration": 1000000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 100,
@@ -6934,7 +7002,7 @@
                     },
                     {
                       "Word": "部分",
-                      "Offset": 236000000,
+                      "Offset": 241400000,
                       "Duration": 5100000,
                       "PronunciationAssessment": {
                         "AccuracyScore": 97,
@@ -6947,11 +7015,11 @@
             }
           },
           {
-            "startSample": 1160064,
-            "endSample": 1761120,
+            "startSample": 1185984,
+            "endSample": 1787040,
             "speech": "第一部分是 a 与 u 的乘积再与 b 相加所得的和。第二部分先用 a 与 v 的乘积减去 a 与 u 的乘积。再用 t 乘以所得的差。最后把这两个部分相加。",
             "response": {
-              "Id": "f9a4c39904af4a3cabe024d13ab26229",
+              "Id": "ac9cd71b69834a43a8f6f05842740eed",
               "RecognitionStatus": "Success",
               "Offset": 1700000,
               "Duration": 123300000,
