@@ -4,7 +4,7 @@ import { SvgMathText } from "./MathText";
 import { inputs, intersections, type SweepState } from "./sweep-state";
 const project = ([x, y]: [number, number]): [number, number] => [
   105 + x * 66,
-  465 - y * 66,
+  497 - y * 66,
 ];
 export function SweepDiagram({
   state,
@@ -14,11 +14,15 @@ export function SweepDiagram({
   focus?: TeachingFocus;
 }) {
   const [sx] = project([state.x, 0]);
+  const [, axisY] = project([0, 0]);
+  const [, top] = project([0, 7]);
+  const [, bottom] = project([0, -2]);
+  const [candidateX, candidateY] = project([5, 3]);
   return (
     <svg
       width={900}
-      height={600}
-      viewBox="0 0 900 600"
+      height={680}
+      viewBox="0 0 900 680"
       aria-label="四线段等比例扫描教学示意"
     >
       <defs>
@@ -39,58 +43,58 @@ export function SweepDiagram({
           key={"x" + i}
           x1={105 + i * 66}
           x2={105 + i * 66}
-          y1={35}
-          y2={550}
+          y1={top}
+          y2={bottom}
           stroke="#dbe3ec"
         />
       ))}
-      {Array.from({ length: 8 }, (_, i) => (
+      {Array.from({ length: 10 }, (_, i) => (
         <line
           key={"y" + i}
           x1={45}
           x2={835}
-          y1={69 + i * 66}
-          y2={69 + i * 66}
+          y1={project([0, 7 - i])[1]}
+          y2={project([0, 7 - i])[1]}
           stroke="#dbe3ec"
         />
       ))}
       <line
         x1={45}
         x2={850}
-        y1={465}
-        y2={465}
+        y1={axisY}
+        y2={axisY}
         stroke="#60738a"
         markerEnd="url(#axis-arrow)"
       />
       <line
         x1={105}
         x2={105}
-        y1={552}
-        y2={25}
+        y1={bottom}
+        y2={top - 20}
         stroke="#60738a"
         markerEnd="url(#axis-arrow)"
       />
-      <SvgMathText x={870} y={470} fontSize={24}>
+      <SvgMathText x={870} y={axisY + 5} fontSize={24}>
         x
       </SvgMathText>
-      <SvgMathText x={127} y={32} fontSize={24}>
+      <SvgMathText x={127} y={top - 3} fontSize={24}>
         y
       </SvgMathText>
-      <SvgMathText x={93} y={493} align="right" fontSize={22}>
+      <SvgMathText x={93} y={axisY + 28} align="right" fontSize={22}>
         O
       </SvgMathText>
       {[2, 4, 6, 8, 10].map((x) => (
         <SvgMathText
           key={x}
           x={project([x, 0])[0]}
-          y={495}
+          y={axisY + 30}
           align="center"
           fontSize={20}
         >
           {x}
         </SvgMathText>
       ))}
-      {[-1, 2, 4, 6].map((y) => (
+      {[-2, 2, 4, 6, 7].map((y) => (
         <SvgMathText
           key={y}
           x={88}
@@ -145,8 +149,8 @@ export function SweepDiagram({
           <line
             x1={sx}
             x2={sx}
-            y1={38}
-            y2={550}
+            y1={top}
+            y2={bottom}
             stroke="#b45309"
             strokeWidth={2}
             strokeDasharray="8 7"
@@ -159,7 +163,7 @@ export function SweepDiagram({
                   ? sx + 30
                   : sx
             }
-            y={574}
+            y={bottom + 40}
             align={
               state.x === inputs.C.to[0]
                 ? "right"
@@ -177,14 +181,25 @@ export function SweepDiagram({
         <g data-candidate>
           <line
             x1={project([3, 3])[0]}
-            y1={267}
-            x2={project([5, 3])[0]}
-            y2={267}
+            y1={candidateY}
+            x2={candidateX}
+            y2={candidateY}
             stroke={inputs.B.color}
             strokeDasharray="7 7"
           />
-          <circle cx={435} cy={267} r={7} fill="none" stroke="#64748b" />
-          <SvgMathText x={449} y={250} label fontSize={23}>
+          <circle
+            cx={candidateX}
+            cy={candidateY}
+            r={7}
+            fill="none"
+            stroke="#64748b"
+          />
+          <SvgMathText
+            x={candidateX + 14}
+            y={candidateY - 17}
+            label
+            fontSize={23}
+          >
             (5,3)
           </SvgMathText>
         </g>

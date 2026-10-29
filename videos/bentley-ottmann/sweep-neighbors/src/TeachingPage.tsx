@@ -92,16 +92,18 @@ export function TeachingPage({
           right: 70,
           top: 120,
           bottom: 145,
+          display: "grid",
+          gridTemplateColumns: "900px 790px",
+          gridTemplateRows: "680px 100px",
+          gap: "12px 70px",
+          alignContent: "center",
         }}
       >
         <section
           data-page-block
           style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
             width: 900,
-            height: 600,
+            height: 680,
           }}
         >
           <SweepDiagram state={state} focus={focus} />
@@ -109,10 +111,11 @@ export function TeachingPage({
         <section
           data-main-column
           style={{
-            position: "absolute",
-            left: 970,
-            top: 5,
             width: 790,
+            alignSelf: "center",
+            display: "grid",
+            gridTemplateRows: "180px 240px 190px",
+            gap: 15,
             fontSize: 28,
             lineHeight: 1.5,
           }}
@@ -121,7 +124,6 @@ export function TeachingPage({
             data-page-block
             style={{
               visibility: state.records >= 1 ? "visible" : "hidden",
-              marginBottom: 15,
               background: emphasis("order"),
             }}
           >
@@ -133,9 +135,12 @@ export function TeachingPage({
                 {state.definition ? "定义示意，尚未执行扫描" : state.stage}
               </MathText>
             </div>
-            {!state.definition && (
-              <div data-order-before>处理前：{order(state.before)}</div>
-            )}
+            <div
+              data-order-before
+              style={{ visibility: state.definition ? "hidden" : undefined }}
+            >
+              处理前：{order(state.before)}
+            </div>
             <div data-order-after>
               {state.definition ? "当前顺序：" : "当前记录："}
               {order(state.order)}
@@ -145,7 +150,6 @@ export function TeachingPage({
             data-page-block
             style={{
               visibility: state.records >= 2 ? "visible" : "hidden",
-              marginBottom: 15,
               background: emphasis("queue"),
             }}
           >
@@ -197,12 +201,12 @@ export function TeachingPage({
         <section
           data-main-column
           style={{
-            position: "absolute",
-            left: 15,
-            right: 5,
-            top: 610,
+            gridColumn: "1 / -1",
+            marginLeft: 15,
+            marginRight: 5,
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
+            gridTemplateRows: "repeat(2, 45px)",
             gap: "10px 30px",
           }}
         >
