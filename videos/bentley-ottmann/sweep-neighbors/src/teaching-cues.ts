@@ -130,7 +130,7 @@ export const teachingCues: Record<string, TeachingCue[]> = {
   ],
   S36: [
     cue("扫描线到达 Q", mark("Q")),
-    cue("输入对 A 与 D", lines("A", "D")),
+    cue("线段 A 与线段 D 的交集", lines("A", "D")),
     cue("实心圆表示已经报告", mark("Q"), ["results"]),
   ],
   S37: [
@@ -171,7 +171,7 @@ export const teachingCues: Record<string, TeachingCue[]> = {
   S45: [cue("交换块两侧的新邻居", lines("D", "C"))],
   S46: [cue("刚交叉的这一对", lines("A", "D"))],
   S47: [
-    cue("输入对 C 与 D", lines("C", "D")),
+    cue("C 与 D 这对输入", lines("C", "D")),
     cue("图中改成实心圆", mark("R"), ["results"]),
   ],
   S48: [
@@ -194,7 +194,7 @@ export const teachingCues: Record<string, TeachingCue[]> = {
     cue("结果区也不能提前增加它", [], ["results"]),
   ],
   S51: [
-    cue("输入对 A 与 C", lines("A", "C")),
+    cue("线段 A 与线段 C 的交集", lines("A", "C")),
     cue("P 也变成实心圆", mark("P"), ["results"]),
   ],
   S52: [

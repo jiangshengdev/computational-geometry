@@ -2850,12 +2850,25 @@
     }
   ],
   "S36": [
-    "到",
+    {
+      "text": "扫",
+      "pinyin": "sao3"
+    },
+    "描线来到",
     {
       "text": "横坐标",
       "pinyin": "heng2 zuo4 biao1"
     },
-    "五。",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "五",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位置。",
     {
       "breakMs": 200
     },
@@ -2863,16 +2876,16 @@
       "text": "扫",
       "pinyin": "sao3"
     },
-    "描线到达 Q。",
+    "描线到达 Q 点。",
     {
       "breakMs": 400
     },
-    "现在才报告：输入对 A ",
+    "现在才报告线段 A ",
     {
       "text": "与",
       "pinyin": "yu3"
     },
-    " D。",
+    "线段 D 的交集。",
     {
       "breakMs": 200
     },
@@ -3570,21 +3583,34 @@
     }
   ],
   "S47": [
-    "到",
+    {
+      "text": "扫",
+      "pinyin": "sao3"
+    },
+    "描线来到",
     {
       "text": "横坐标",
       "pinyin": "heng2 zuo4 biao1"
     },
-    "六。",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "六",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位置。",
     {
       "breakMs": 200
     },
-    "报告输入对 C ",
+    "报告 C ",
     {
       "text": "与",
       "pinyin": "yu3"
     },
-    " D。",
+    " D 这对输入。",
     {
       "breakMs": 200
     },
@@ -3602,7 +3628,7 @@
     {
       "breakMs": 400
     },
-    "R 从",
+    "交点 R 从",
     {
       "text": "清单",
       "pinyin": "qing1 dan1"
@@ -3824,21 +3850,34 @@
     }
   ],
   "S51": [
-    "到",
+    {
+      "text": "扫",
+      "pinyin": "sao3"
+    },
+    "描线来到",
     {
       "text": "横坐标",
       "pinyin": "heng2 zuo4 biao1"
     },
-    "七。",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "七",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位置。",
     {
       "breakMs": 200
     },
-    "才报告输入对 A ",
+    "此时才报告线段 A ",
     {
       "text": "与",
       "pinyin": "yu3"
     },
-    " C。",
+    "线段 C 的交集。",
     {
       "breakMs": 200
     },
@@ -3860,7 +3899,7 @@
     {
       "breakMs": 400
     },
-    "P 也变成实心圆。",
+    "交点 P 也变成实心圆。",
     {
       "breakMs": 400
     }
@@ -4144,16 +4183,29 @@
     }
   ],
   "S56": [
-    "到",
+    {
+      "text": "扫",
+      "pinyin": "sao3"
+    },
+    "描线来到",
     {
       "text": "横坐标",
       "pinyin": "heng2 zuo4 biao1"
     },
-    "九。",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "九",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位置。",
     {
       "breakMs": 200
     },
-    "C 在",
+    "线段 C 在",
     {
       "text": "这里",
       "pinyin": "zhe4 li3"
@@ -4171,7 +4223,7 @@
       "text": "的",
       "pinyin": "de5"
     },
-    " C。",
+    " C 这条线段。",
     {
       "breakMs": 200
     },
@@ -4208,16 +4260,29 @@
     }
   ],
   "S57": [
-    "到",
+    {
+      "text": "扫",
+      "pinyin": "sao3"
+    },
+    "描线来到",
     {
       "text": "横坐标",
       "pinyin": "heng2 zuo4 biao1"
     },
-    "十。",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "十",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位置。",
     {
       "breakMs": 200
     },
-    "A 也",
+    "线段 A 也",
     {
       "text": "结束",
       "pinyin": "jie2 shu4"

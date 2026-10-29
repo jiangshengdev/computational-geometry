@@ -636,29 +636,43 @@
   ],
   "S21": [
     {
-      "text": "到横坐标二，C 开始，",
+      "text": "扫描线来到横坐标为二的位置，",
       "startMs": 70,
-      "endMs": 4238,
+      "endMs": 2670,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "它在 B 上方。",
-      "startMs": 4548,
+      "text": "线段 C 开始，它在 B 上方。",
+      "startMs": 2878,
       "endMs": 5668,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "现在最下面是 A，中间是 B，",
+      "text": "现在最下面是 A 这条线段，",
       "startMs": 6139,
+      "endMs": 8339,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间是 B 这条线段，",
+      "startMs": 8638,
       "endMs": 10358,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "最上面是 C，新出现的邻居是 B 与 C。",
+      "text": "最上面是 C 这条线段，",
       "startMs": 10658,
+      "endMs": 12538,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新出现的邻居是 B 与 C。",
+      "startMs": 12828,
       "endMs": 14910,
       "timestampMs": null,
       "confidence": null
@@ -952,8 +966,15 @@
   ],
   "S32": [
     {
-      "text": "到横坐标四，D 从 (4,0) 开始，",
+      "text": "扫描线来到横坐标为四的位置，",
       "startMs": 60,
+      "endMs": 2720,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 D 从 (4,0) 开始，",
+      "startMs": 2880,
       "endMs": 6730,
       "timestampMs": null,
       "confidence": null
@@ -966,22 +987,29 @@
       "confidence": null
     },
     {
-      "text": "现在最下面是 D，中间是 A，",
+      "text": "现在最下面是 D 这条线段，",
       "startMs": 8680,
+      "endMs": 11000,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间是 A 这条线段，",
+      "startMs": 11140,
       "endMs": 13000,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "最上面是 C，D 下方没有线段，",
+      "text": "最上面是 C 这条线段，",
       "startMs": 13200,
-      "endMs": 17070,
+      "endMs": 15270,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "新邻接只有 D 与 A 这一对。",
-      "startMs": 17220,
+      "text": "D 下方没有线段，此时只有线段 D 和线段 A 成为新的邻居。",
+      "startMs": 15520,
       "endMs": 20680,
       "timestampMs": null,
       "confidence": null
@@ -1072,30 +1100,37 @@
   ],
   "S36": [
     {
-      "text": "到横坐标五，扫描线到达 Q。",
+      "text": "扫描线来到横坐标为五的位置，",
       "startMs": 70,
-      "endMs": 3018,
+      "endMs": 2670,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "现在才报告：输入对 A 与 D，",
-      "startMs": 3469,
-      "endMs": 5989,
+      "text": "扫描线到达 Q 点。",
+      "startMs": 2878,
+      "endMs": 4598,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "交集为点 (5,1)。",
-      "startMs": 6318,
-      "endMs": 9157,
+      "text": "现在才报告线段 A 与线段 D 的交集，",
+      "startMs": 5069,
+      "endMs": 8260,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交集是点 (5,1)。",
+      "startMs": 8418,
+      "endMs": 11217,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "实心圆表示已经报告。",
-      "startMs": 9609,
-      "endMs": 11449,
+      "startMs": 11659,
+      "endMs": 13459,
       "timestampMs": null,
       "confidence": null
     }
@@ -1381,23 +1416,37 @@
   ],
   "S47": [
     {
-      "text": "到横坐标六，报告输入对 C 与 D，",
+      "text": "扫描线来到横坐标为六的位置，",
       "startMs": 70,
-      "endMs": 3128,
+      "endMs": 2710,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "交集为点 (6,2)。",
-      "startMs": 3448,
-      "endMs": 6247,
+      "text": "报告 C 与 D 这对输入，",
+      "startMs": 2968,
+      "endMs": 4808,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "R 从清单移去，图中改成实心圆。",
-      "startMs": 6729,
-      "endMs": 9988,
+      "text": "交集是点 (6,2)。",
+      "startMs": 5098,
+      "endMs": 7937,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交点 R 从清单移去，",
+      "startMs": 8389,
+      "endMs": 10229,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图中改成实心圆。",
+      "startMs": 10538,
+      "endMs": 12138,
       "timestampMs": null,
       "confidence": null
     }
@@ -1487,23 +1536,30 @@
   ],
   "S51": [
     {
-      "text": "到横坐标七，才报告输入对 A 与 C，",
+      "text": "扫描线来到横坐标为七的位置，",
       "startMs": 70,
-      "endMs": 3487,
+      "endMs": 2670,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "交集为点 (7,1)。",
-      "startMs": 3798,
-      "endMs": 6597,
+      "text": "此时才报告线段 A 与线段 C 的交集，",
+      "startMs": 2878,
+      "endMs": 6400,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "P 也变成实心圆。",
-      "startMs": 7039,
-      "endMs": 8639,
+      "text": "交集是点 (7,1)。",
+      "startMs": 6548,
+      "endMs": 9427,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交点 P 也变成实心圆。",
+      "startMs": 9889,
+      "endMs": 11689,
       "timestampMs": null,
       "confidence": null
     }
@@ -1616,46 +1672,67 @@
   ],
   "S56": [
     {
-      "text": "到横坐标九，C 结束。",
+      "text": "扫描线来到横坐标为九的位置，",
       "startMs": 70,
-      "endMs": 2928,
+      "endMs": 2710,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "移去最下方的 C，只剩 A，",
-      "startMs": 3369,
-      "endMs": 6498,
+      "text": "线段 C 在这里结束。",
+      "startMs": 2928,
+      "endMs": 4648,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "移去最下方的 C 这条线段，",
+      "startMs": 5119,
+      "endMs": 7199,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只剩 A 这条线段，",
+      "startMs": 7518,
+      "endMs": 8958,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "仍然没有一对新的邻居。",
-      "startMs": 6788,
-      "endMs": 8670,
+      "startMs": 9238,
+      "endMs": 10958,
       "timestampMs": null,
       "confidence": null
     }
   ],
   "S57": [
     {
-      "text": "到横坐标十，A 也结束。",
+      "text": "扫描线来到横坐标为十的位置，",
       "startMs": 70,
-      "endMs": 2618,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 A 也结束。",
+      "startMs": 2878,
+      "endMs": 4278,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "活动顺序和待处理清单都变空，",
-      "startMs": 3069,
-      "endMs": 5669,
+      "startMs": 4719,
+      "endMs": 7319,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "扫描过程结束。",
-      "startMs": 5968,
-      "endMs": 7328,
+      "startMs": 7668,
+      "endMs": 9028,
       "timestampMs": null,
       "confidence": null
     }
