@@ -39,7 +39,7 @@ export function TeachingPage({
   if (shot.state === "blank")
     return (
       <LessonPage
-        title={page.title}
+        title={<MathText>{page.title}</MathText>}
         lines={page.lines.map((l) => (
           <MathText key={l}>{l}</MathText>
         ))}
@@ -82,7 +82,7 @@ export function TeachingPage({
           fontWeight: 600,
         }}
       >
-        {page.title}
+        <MathText>{page.title}</MathText>
       </header>
       <main
         data-main-content
@@ -101,7 +101,7 @@ export function TeachingPage({
             left: 0,
             top: 0,
             width: 900,
-            height: 580,
+            height: 600,
           }}
         >
           <SweepDiagram state={state} focus={focus} />
@@ -129,7 +129,9 @@ export function TeachingPage({
               活动顺序 · 从下到上
             </div>
             <div style={{ fontSize: 23 }}>
-              {state.definition ? "定义示意，尚未执行扫描" : state.stage}
+              <MathText>
+                {state.definition ? "定义示意，尚未执行扫描" : state.stage}
+              </MathText>
             </div>
             {!state.definition && (
               <div data-order-before>处理前：{order(state.before)}</div>

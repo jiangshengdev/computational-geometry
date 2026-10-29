@@ -17,8 +17,8 @@ export function SweepDiagram({
   return (
     <svg
       width={900}
-      height={580}
-      viewBox="0 0 900 580"
+      height={600}
+      viewBox="0 0 900 600"
       aria-label="四线段等比例扫描教学示意"
     >
       <defs>
@@ -151,7 +151,24 @@ export function SweepDiagram({
             strokeWidth={2}
             strokeDasharray="8 7"
           />
-          <SvgMathText x={sx} y={577} align="center" fontSize={24}>
+          <SvgMathText
+            x={
+              state.x === inputs.C.to[0]
+                ? sx - 12
+                : state.x === inputs.A.to[0]
+                  ? sx + 30
+                  : sx
+            }
+            y={574}
+            align={
+              state.x === inputs.C.to[0]
+                ? "right"
+                : state.x === inputs.A.to[0]
+                  ? "left"
+                  : "center"
+            }
+            fontSize={24}
+          >
             {state.x < 0 || state.definition ? "扫描线" : `x=${state.x}`}
           </SvgMathText>
         </g>
