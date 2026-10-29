@@ -24,6 +24,7 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         'segment-intersection/what-we-compute',
+        'segment-intersection/why-neighbors',
         'segment-intersection/line-equation',
         {
           type: 'category',

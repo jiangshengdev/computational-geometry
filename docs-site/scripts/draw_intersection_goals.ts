@@ -3,27 +3,19 @@
  * Geometry uses one scale for both axes; input segments are never displaced.
  */
 import {mkdirSync, writeFileSync, rmSync} from 'node:fs';
-import {spawnSync} from 'node:child_process';
-import {fileURLToPath} from 'node:url';
+import {palettes, escapeXml as escape, renderMathLabels, type Palette, type SvgMathLabel} from './svg_math_labels.ts';
 
 const output = new URL('../static/img/segment-intersection/what-we-compute/', import.meta.url);
 
 type Point = readonly [number, number];
 type Segment = readonly [Point, Point];
-type Palette = {background: string; text: string; axis: string; a: string; b: string; result: string};
-// Match the existing line-equation and shear figures' light/dark colors.
-const palettes: Record<string, Palette> = {
-  light: {background: '#ffffff', text: '#172033', axis: '#475569', a: '#1d4ed8', b: '#c2410c', result: '#7c3aed'},
-  dark: {background: '#1b1b1d', text: '#e3e3e3', axis: '#cbd5e1', a: '#93c5fd', b: '#fdba74', result: '#c4b5fd'},
-};
 const A: Segment = [[0, 0], [4, 0]];
 const B: Segment = [[2, 0], [6, 0]];
 const C: Segment = [[3, -1], [3, 1]];
 const overlap: Segment = [[2, 0], [4, 0]];
 const x = (value: number) => 66 + value * 30;
 const y = (value: number) => 128 - value * 30;
-const escape = (value: string) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-const labels: {px: number; py: number; value: string; color: string; size: number; anchor: string}[] = [];
+const labels: SvgMathLabel[] = [];
 const images: {target: URL; svg: string}[] = [];
 const replacedImages: URL[] = [];
 const labelScale = 0.8;
@@ -148,28 +140,7 @@ for (const [theme, p] of Object.entries(palettes)) {
 }
 
 // All visible labels are mathematical; prose belongs in the article.
-const formulas = [...new Set(labels.map(({value}) => value))];
-const rendered = spawnSync(process.env.MATHTEXT_PYTHON ?? 'python', [fileURLToPath(new URL('./render_math_labels.py', import.meta.url))], {
-  input: JSON.stringify(formulas), encoding: 'utf8', maxBuffer: 16 * 1024 * 1024,
-});
-if (rendered.error || rendered.status !== 0) {
-  throw new Error(`MathText rendering failed. Use the maintainer-provisioned Matplotlib environment.\n${rendered.error ?? rendered.stderr}`);
-}
-type MathLabel = {svg: string; width: number; height: number; depth: number};
-const math: Record<string, MathLabel> = JSON.parse(rendered.stdout);
-const markup = labels.map(({px, py, value, color, size, anchor}, index) => {
-  const item = math[value];
-  const scale = size / 100;
-  const width = item.width * scale;
-  const offset = anchor === 'middle' ? -width / 2 : anchor === 'end' ? -width : 0;
-  // Each embedded SVG needs its own glyph IDs, including repeated formulas.
-  const prefix = `label-${index}-`;
-  const svg = item.svg.replace(/id="([^"]+)"/g, `id="${prefix}$1"`)
-    .replace(/xlink:href="#([^"]+)"/g, `xlink:href="#${prefix}$1"`)
-    .replace(/url\(#([^)]+)\)/g, `url(#${prefix}$1)`)
-    .replace(/width="[^"]+" height="[^"]+"/, `width="${item.width}" height="${item.height}"`);
-  return `<g transform="translate(${px + offset},${py - (item.height - item.depth) * scale}) scale(${scale})" color="${color}" role="img" aria-label="${escape(value)}">${svg}</g>`;
-});
+const markup = renderMathLabels(labels);
 for (const {target, svg} of images) {
   mkdirSync(new URL('./', target), {recursive: true});
   writeFileSync(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));

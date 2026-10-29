@@ -6,10 +6,12 @@ type Props = {
   name: string;
   panels: readonly string[];
   comparison?: boolean;
+  topic?: string;
+  prefix?: string;
 };
 
-export default function IntersectionFigures({name, panels, comparison = false}: Props) {
-  const base = useBaseUrl('/img/segment-intersection/what-we-compute/');
+export default function IntersectionFigures({name, panels, comparison = false, topic = 'what-we-compute', prefix = 'intersection-goals'}: Props) {
+  const base = useBaseUrl(`/img/segment-intersection/${topic}/`);
   const indexed = panels.map((alt, index) => ({alt, index}));
   const groups = comparison
     ? Array.from({length: Math.ceil(indexed.length / 2)}, (_, i) => indexed.slice(i * 2, i * 2 + 2))
@@ -29,8 +31,8 @@ export default function IntersectionFigures({name, panels, comparison = false}: 
                 width={320}
                 height={260}
                 sources={{
-                  light: `${base}light/intersection-goals-${name}-${index + 1}-light.svg`,
-                  dark: `${base}dark/intersection-goals-${name}-${index + 1}-dark.svg`,
+                  light: `${base}light/${prefix}-${name}-${index + 1}-light.svg`,
+                  dark: `${base}dark/${prefix}-${name}-${index + 1}-dark.svg`,
                 }}
               />
             </figure>
