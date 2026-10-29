@@ -168,7 +168,7 @@ export function SweepDiagram({
             align={
               state.x === inputs.C.to[0]
                 ? "right"
-                : state.x === inputs.A.to[0]
+                : state.x === inputs.A.to[0] || state.x === 0
                   ? "left"
                   : "center"
             }
