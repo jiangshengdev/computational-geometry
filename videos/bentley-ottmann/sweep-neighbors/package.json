@@ -34,6 +34,7 @@
     "upgrade": "remotion upgrade",
     "lint": "eslint src scripts && tsc",
     "video:narration": "node scripts/narration.ts",
+    "video:sentence-pauses": "node scripts/check-sentence-pauses.ts",
     "video:captions": "node scripts/captions.ts",
     "video:audit-narration": "node scripts/audit-narration.ts",
     "video:check-sweep": "node scripts/check-sweep.ts",

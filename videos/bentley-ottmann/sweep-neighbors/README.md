@@ -20,12 +20,14 @@
 ```sh
 pnpm --config.verify-deps-before-run=false run lint
 pnpm --config.verify-deps-before-run=false run video:check-sweep
+pnpm --config.verify-deps-before-run=false run video:sentence-pauses
 pnpm --config.verify-deps-before-run=false run video:narration --dry-run
 pnpm --config.verify-deps-before-run=false run video:check-content --decode
 pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
 - `narration-text.json`：由字幕派生并独立审校的纯文本。
+- `sentence-plan.json`：按原始字幕语义审校的句子与口播分段。每项 `caption` 是一个原句，`speech` 数组保存该句的口播分段；原句结束 400ms，内部边界 200ms，标点本身不决定停顿。拼接结果必须分别与分镜字幕及独立口播稿完全一致，改稿时同步重新审校分句。
 - `speech-text.json`：词典查证后的局部拼音与句界停顿，拼接文字必须与纯文本一致。
 - `scripts/narration.ts`：复用共享 Azure 制作流程，原速直接输出 48 kHz、16 bit、单声道 PCM WAV；全部目标通过才发布素材。
 - `audio-timing.json`、`captions.json`：由真实音频词边界与时长生成，不填造时间。
@@ -34,6 +36,8 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 - `scripts/check-sweep.ts`：根据独立几何计算核对事件前后顺序、严格未来、去重、持续保留与结束状态。
 - `LayoutCheck.tsx`：复用生产组件与共享检查，覆盖字幕切换、提示起中末、片段边界、静默和页末停留。
 - `out/narration-audit/`：当前音频哈希与口播指纹绑定的识别、发音评估原始记录；输出目录不强制提交。
+
+`video:sentence-pauses` 检查缺失、错误或重复的显式停顿；加 `--write` 按已审校的分句记录更新 `speech-text.json` 中的 break，保留文字、读音标注和字母拼读，不合成音频。合成 dry-run、实际生成及内容检查也复用同一校验。只有正文与分句记录匹配并通过检查，才允许请求合成；已有音频仍需按受影响片段重新生成并更新实测数据。
 
 正式音色为 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`。
 按用户最新要求，S35、S53、S58 中有问题的 Q 改用显式
@@ -58,6 +62,12 @@ S53、S58 最新改写版均已获用户整句试听认可，并原样发布到�
 不能把入口存在当作已经具备成片交付证据。
 
 ## 当前验收状态
+
+句界停顿修正已应用：61 段已按语义分句记录校验，共 284 个边界；S02、S29、S40 的问句结束各补 400ms，其余片段的合成输入保持原样。S02 仅加停顿的样本未解决用户反馈的漏读；将口播“一对？”等价改为“一对线段？”后，新版完整音频获得用户试听认可。该 9.81 秒 WAV（SHA-256 前缀 `e4850e6855711`）已原样发布，没有重新合成；同步了口播、分句记录、实测时间及字幕时间，字幕文字保持原样。S29、S40 的正式 WAV 和时间数据也已更新。
+
+当前内容与音频解码检查通过，时间线为 42733 帧（60 fps），S02、S40 的 5 秒思考窗口保留。S02 的 12 个生产状态及 S29、S40 的 32 个生产状态无头检查通过；未渲染或导出视频。61/61 段检测记录均匹配当前音频哈希和口播指纹，复用有效结果；S02 无自动异常。全片仍有 `Mispronunciation` 56 条、`Omission` 0 条、`Insertion` 0 条，评估命令因这些发音标记返回非零，不将其称为全片读音验收通过。
+
+以下为本轮句界修正前的验收基线；S02、S29、S40 的当前素材及检查以上述更新为准，不沿用旧版试听与页面检查结论。
 
 分镜字幕与纯文本已审校；独立几何核对和语义锚点文本定位通过。
 61 段原速 PCM 配音已从匹配缓存原样发布至 `public/narration/`；逐段哈希与发布前原音频一致，没有重新合成。

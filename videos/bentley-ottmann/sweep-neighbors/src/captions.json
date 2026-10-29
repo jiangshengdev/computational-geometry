@@ -33,21 +33,21 @@
     {
       "text": "如果只检查当前上下紧挨着的线段，",
       "startMs": 70,
-      "endMs": 2949,
+      "endMs": 2869,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "会不会漏掉原本隔得很远、后来才相交的一对？",
-      "startMs": 3178,
-      "endMs": 6897,
+      "startMs": 3078,
+      "endMs": 7078,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "先带着这个问题看完整过程。",
-      "startMs": 6897,
-      "endMs": 8858,
+      "startMs": 7519,
+      "endMs": 9719,
       "timestampMs": null,
       "confidence": null
     }
@@ -885,21 +885,21 @@
     {
       "text": "结束事件为什么只检查这一对？",
       "startMs": 70,
-      "endMs": 1990,
+      "endMs": 2110,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这里没有其他线段开始、结束或交叉，",
-      "startMs": 2309,
-      "endMs": 5210,
+      "startMs": 2499,
+      "endMs": 5418,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "其余线段的相对高低没有改变。",
-      "startMs": 5378,
-      "endMs": 7617,
+      "startMs": 5748,
+      "endMs": 7908,
       "timestampMs": null,
       "confidence": null
     }
@@ -1193,29 +1193,29 @@
   "S40": [
     {
       "text": "此时 A 与 C 之间暂时隔着 D，",
-      "startMs": 150,
-      "endMs": 2490,
+      "startMs": 190,
+      "endMs": 2349,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "它们不再是邻居。",
-      "startMs": 2678,
-      "endMs": 4130,
+      "startMs": 2628,
+      "endMs": 4050,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "先想一想：先前登记的 P，",
-      "startMs": 4419,
-      "endMs": 7050,
+      "startMs": 4369,
+      "endMs": 6900,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "要不要删掉？",
-      "startMs": 7218,
-      "endMs": 8018,
+      "startMs": 7118,
+      "endMs": 7998,
       "timestampMs": null,
       "confidence": null
     }
