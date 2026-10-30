@@ -1,10 +1,8 @@
-import { SvgMathText, teachingColors } from "./MathText";
+import { colors, proofColors } from "../../colors.ts";
+import { SvgMathText } from "./MathText";
 import { pages } from "./lesson";
 import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
 const ink = "#172c45",
-  blue = teachingColors.blue,
-  red = teachingColors.red,
-  green = teachingColors.green,
   grey = "#8999aa";
 const label = (x: number, y: number, value: string, color = ink) => (
   <SvgMathText x={x} y={y} fill={color} fontSize={27} colorize>
@@ -115,13 +113,13 @@ function Height({
           {label(45, y(n) + 8, String(n))}
         </g>
       ))}
-      {line(x(0), y(1), x(10), y(1), blue)}
-      {label(625, y(1) + 8, "A", blue)}
-      {line(x(2), y(6), x(9), y(-1), red)}
-      {label(x(2) + 20, y(6), "C", red)}
+      {line(x(0), y(1), x(10), y(1), proofColors.A)}
+      {label(625, y(1) + 8, "A", proofColors.A)}
+      {line(x(2), y(6), x(9), y(-1), proofColors.C)}
+      {label(x(2) + 20, y(6), "C", proofColors.C)}
       {line(x(at), 45, x(at), y(0), grey, true)}
-      <circle cx={x(at)} cy={y(1)} r={5} fill={blue} />
-      <circle cx={x(at)} cy={y(8 - at)} r={5} fill={red} />
+      <circle cx={x(at)} cy={y(1)} r={5} fill={proofColors.A} />
+      <circle cx={x(at)} cy={y(8 - at)} r={5} fill={proofColors.C} />
       {page === "signs-example" && step >= 2
         ? label(430, 275, "P=(7,1)")
         : null}
@@ -133,7 +131,7 @@ function Height({
               kind: "line",
               from: [x(at), y(1)],
               to: [x(at), y(8 - at)],
-              color: "#b45309",
+              color: colors.amber,
             },
           ]}
           progress={progress}
@@ -165,20 +163,20 @@ function Position({
       {line(end, 341, end, 359)}
       {label(start - 10, 399, numeric ? "2" : "u")}
       {label(end - 10, 399, numeric ? "10" : "v")}
-      {line(start, 155, end, 155, blue)}
-      {line(start, 147, start, 163, blue)}
-      {line(end, 147, end, 163, blue)}
+      {line(start, 155, end, 155, colors.blue)}
+      {line(start, 147, start, 163, colors.blue)}
+      {line(end, 147, end, 163, colors.blue)}
       {label(280, 125, numeric ? "全程 8" : "全程 v-u")}
       {showPart ? (
         <g>
-          {line(start, 235, point, 235, green)}
-          {line(point, 227, point, 243, green)}
+          {line(start, 235, point, 235, colors.violet)}
+          {line(point, 227, point, 243, colors.violet)}
           {label(115, 205, numeric ? "已走 2" : "已走 t(v-u)")}
         </g>
       ) : null}
       {showPosition ? (
         <g>
-          <circle cx={point} cy={350} r={6} fill={green} />
+          <circle cx={point} cy={350} r={6} fill={colors.violet} />
           {label(point - 45, 300, numeric ? "位置 4" : "u+t(v-u)")}
         </g>
       ) : null}
@@ -189,7 +187,7 @@ function Position({
               kind: "line",
               from: [start, 235],
               to: [point, 235],
-              color: green,
+              color: colors.violet,
             },
           ]}
           progress={progress}
@@ -225,10 +223,10 @@ function Adjacent({ page, step }: { page: string; step: number }) {
             ? "反证的暂时假设，不是实际执行"
             : "任意交点附近的几何示意",
       )}
-      {line(90, 330, 680, 94, blue)}
-      {line(90, 94, 680, 330, red)}
-      {label(60, 330, "U", blue)}
-      {label(60, 105, "V", red)}
+      {line(90, 330, 680, 94, proofColors.U)}
+      {line(90, 94, 680, 330, proofColors.V)}
+      {label(60, 330, "U", proofColors.U)}
+      {label(60, 105, "V", proofColors.V)}
       <Axis y={410} />
       {line(385, 212, 385, 410, grey, true)}
       {label(380, 455, "p")}
@@ -246,8 +244,8 @@ function Adjacent({ page, step }: { page: string; step: number }) {
       ) : null}
       {showW ? (
         <g>
-          {line(250, 212, triple ? 520 : 320, 212, green)}
-          {label(195, 205, "W", green)}
+          {line(250, 212, triple ? 520 : 320, 212, proofColors.W)}
+          {label(195, 205, "W", proofColors.W)}
         </g>
       ) : null}
       {triple ? <circle cx={385} cy={212} r={7} fill={ink} /> : null}
@@ -290,7 +288,7 @@ function Neighbors({
           355 - 65 * index,
           x + 130,
           355 - 65 * index,
-          name === "U" ? blue : name === "V" ? red : ink,
+          name === "U" ? proofColors.U : name === "V" ? proofColors.V : ink,
         )}
         {label(x + 150, 363 - 65 * index, name)}
       </g>
@@ -308,7 +306,13 @@ function Neighbors({
         ? after.slice(0, -1).map((_, index) =>
             kind === "swap" && index === 1 ? null : (
               <g key={index}>
-                {line(680, 350 - 65 * index, 680, 295 - 65 * index, "#b45309")}
+                {line(
+                  680,
+                  350 - 65 * index,
+                  680,
+                  295 - 65 * index,
+                  colors.amber,
+                )}
                 {active ? (
                   <AttentionMarks
                     marks={[
@@ -316,7 +320,7 @@ function Neighbors({
                         kind: "line",
                         from: [680, 350 - 65 * index],
                         to: [680, 295 - 65 * index],
-                        color: "#b45309",
+                        color: colors.amber,
                       },
                     ]}
                     progress={progress}
@@ -346,24 +350,24 @@ function Missed({ page, step }: { page: string; step: number }) {
             cx={620}
             cy={350}
             r={8}
-            fill={reported ? red : "none"}
-            stroke={red}
+            fill={reported ? colors.violet : "none"}
+            stroke={colors.violet}
             strokeWidth={2}
           />
-          {label(595, 405, "p_*", red)}
+          {label(595, 405, "p_*", colors.violet)}
         </g>
       ) : null}
       {hasS ? (
         <g>
-          {line(175, 340, 175, 360, blue)}
-          {label(165, 405, "s", blue)}
+          {line(175, 340, 175, 360, colors.blue)}
+          {label(165, 405, "s", colors.blue)}
           {label(90, 290, "形成邻接并检查")}
         </g>
       ) : null}
       {registered ? (
         <g>
-          {line(185, 170, 610, 170, green)}
-          <path d="M610 170 l-12 -6 v12 z" fill={green} />
+          {line(185, 170, 610, 170, colors.violet)}
+          <path d="M610 170 l-12 -6 v12 z" fill={colors.violet} />
           {label(270, 130, "登记或已有记录")}
           {label(260, 220, "保留到按位置取出")}
         </g>

@@ -4,11 +4,11 @@
 
 ## 文件与来源
 
-| 文件 | 内容 |
-| --- | --- |
+| 文件                                 | 内容                                                                                                       |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
 | [tailwind-v3.json](tailwind-v3.json) | 22 个标准色系，每系 50、100、200、300、400、500、600、700、800、900、950 共 11 级，以及黑、白和 CSS 特殊值 |
-| [project.json](project.json) | 项目常用的 `light`、`dark` 两组 HEX 色值，各含 17 种彩色及背景、正文、坐标轴色，保留现有文章配色 |
-| [LICENSE](LICENSE) | 上游 MIT 许可证与版权声明，适用于引入的 Tailwind 色板数据 |
+| [project.json](project.json)         | 项目常用的 `light`、`dark` 两组 HEX 色值，各含 17 种彩色及背景、正文、坐标轴色，保留现有文章配色           |
+| [LICENSE](LICENSE)                   | 上游 MIT 许可证与版权声明，适用于引入的 Tailwind 色板数据                                                  |
 
 完整色板从 [3.4.17 官方源码](https://github.com/tailwindlabs/tailwindcss/blob/v3.4.17/src/public/colors.js)提取静态属性；未执行上游代码。在线浏览可使用 [v3 官方色板](https://v3.tailwindcss.com/docs/customizing-colors)。许可证来自[同版本 LICENSE](https://github.com/tailwindlabs/tailwindcss/blob/v3.4.17/LICENSE)。
 
@@ -16,28 +16,28 @@
 
 ## 项目常用组合
 
-| 用途／字段 | 浅色主题 | 来源 | 深色主题 | 来源 |
-| --- | --- | --- | --- | --- |
-| 蓝 `blue` | `#1d4ed8` | `blue.700` | `#93c5fd` | `blue.300` |
-| 橙 `orange` | `#c2410c` | `orange.700` | `#fdba74` | `orange.300` |
-| 紫 `violet` | `#7c3aed` | `violet.600` | `#c4b5fd` | `violet.300` |
-| 绿 `emerald` | `#047857` | `emerald.700` | `#6ee7b7` | `emerald.300` |
-| 红 `red` | `#b91c1c` | `red.700` | `#fca5a5` | `red.300` |
-| 琥珀 `amber` | `#b45309` | `amber.700` | `#fcd34d` | `amber.300` |
-| 黄 `yellow` | `#a16207` | `yellow.700` | `#fde047` | `yellow.300` |
-| 黄绿 `lime` | `#4d7c0f` | `lime.700` | `#bef264` | `lime.300` |
-| 草绿 `green` | `#15803d` | `green.700` | `#86efac` | `green.300` |
-| 青绿 `teal` | `#0f766e` | `teal.700` | `#5eead4` | `teal.300` |
-| 青 `cyan` | `#0e7490` | `cyan.700` | `#67e8f9` | `cyan.300` |
-| 天蓝 `sky` | `#0369a1` | `sky.700` | `#7dd3fc` | `sky.300` |
-| 靛蓝 `indigo` | `#4338ca` | `indigo.700` | `#a5b4fc` | `indigo.300` |
-| 紫 `purple` | `#7e22ce` | `purple.700` | `#d8b4fe` | `purple.300` |
-| 紫红 `fuchsia` | `#a21caf` | `fuchsia.700` | `#f0abfc` | `fuchsia.300` |
-| 粉 `pink` | `#be185d` | `pink.700` | `#f9a8d4` | `pink.300` |
-| 玫红 `rose` | `#be123c` | `rose.700` | `#fda4af` | `rose.300` |
-| 坐标轴 `axis` | `#475569` | `slate.600` | `#cbd5e1` | `slate.300` |
-| 正文 `text` | `#172033` | 项目自定义 | `#e3e3e3` | 项目自定义 |
-| 背景 `background` | `#ffffff` | 白色 | `#1b1b1d` | 项目自定义 |
+| 用途／字段        | 浅色主题  | 来源          | 深色主题  | 来源          |
+| ----------------- | --------- | ------------- | --------- | ------------- |
+| 蓝 `blue`         | `#1d4ed8` | `blue.700`    | `#93c5fd` | `blue.300`    |
+| 橙 `orange`       | `#c2410c` | `orange.700`  | `#fdba74` | `orange.300`  |
+| 紫 `violet`       | `#7c3aed` | `violet.600`  | `#c4b5fd` | `violet.300`  |
+| 绿 `emerald`      | `#047857` | `emerald.700` | `#6ee7b7` | `emerald.300` |
+| 红 `red`          | `#b91c1c` | `red.700`     | `#fca5a5` | `red.300`     |
+| 琥珀 `amber`      | `#b45309` | `amber.700`   | `#fcd34d` | `amber.300`   |
+| 黄 `yellow`       | `#a16207` | `yellow.700`  | `#fde047` | `yellow.300`  |
+| 黄绿 `lime`       | `#4d7c0f` | `lime.700`    | `#bef264` | `lime.300`    |
+| 草绿 `green`      | `#15803d` | `green.700`   | `#86efac` | `green.300`   |
+| 青绿 `teal`       | `#0f766e` | `teal.700`    | `#5eead4` | `teal.300`    |
+| 青 `cyan`         | `#0e7490` | `cyan.700`    | `#67e8f9` | `cyan.300`    |
+| 天蓝 `sky`        | `#0369a1` | `sky.700`     | `#7dd3fc` | `sky.300`     |
+| 靛蓝 `indigo`     | `#4338ca` | `indigo.700`  | `#a5b4fc` | `indigo.300`  |
+| 紫 `purple`       | `#7e22ce` | `purple.700`  | `#d8b4fe` | `purple.300`  |
+| 紫红 `fuchsia`    | `#a21caf` | `fuchsia.700` | `#f0abfc` | `fuchsia.300` |
+| 粉 `pink`         | `#be185d` | `pink.700`    | `#f9a8d4` | `pink.300`    |
+| 玫红 `rose`       | `#be123c` | `rose.700`    | `#fda4af` | `rose.300`    |
+| 坐标轴 `axis`     | `#475569` | `slate.600`   | `#cbd5e1` | `slate.300`   |
+| 正文 `text`       | `#172033` | 项目自定义    | `#e3e3e3` | 项目自定义    |
+| 背景 `background` | `#ffffff` | 白色          | `#1b1b1d` | 项目自定义    |
 
 原有蓝、橙、紫、绿及基础色取自现有文章的 [公共定义](../../docs-site/scripts/svg_math_labels.ts)、[D 线段绿色定义](../../docs-site/scripts/draw_sweep_neighbors.ts)和 [Python 定义](../../docs-site/scripts/draw_shear_coordinates.py)，色值保持不变。其余 13 种彩色从完整 v3 色板选取，补齐 17 个彩色色系。`project.json` 保存可直接使用的 HEX 值；上表记录与完整色板的对应关系，调整组合时同步更新数据与此表。
 
@@ -54,11 +54,13 @@
 Node.js／TypeScript 工具可以使用现有运行时读取 JSON，不依赖 JSON 模块导入配置：
 
 ```ts
-import {readFileSync} from 'node:fs';
+import { readFileSync } from "node:fs";
 
-const palette = JSON.parse(readFileSync('shared/colors/tailwind-v3.json', 'utf8'));
-const project = JSON.parse(readFileSync('shared/colors/project.json', 'utf8'));
-const blue = palette.blue['700'];
+const palette = JSON.parse(
+  readFileSync("shared/colors/tailwind-v3.json", "utf8"),
+);
+const project = JSON.parse(readFileSync("shared/colors/project.json", "utf8"));
+const blue = palette.blue["700"];
 const text = project.light.text;
 ```
 
@@ -74,7 +76,7 @@ blue = palette['blue']['700']
 text = project['light']['text']
 ```
 
-浏览器或 Remotion 组件后续接入时，应根据各自构建工具的 JSON 资源支持方式读取，不能在浏览器组件中调用 `node:fs`。本次仅建立参考和数据，现有文章生成器、视频和界面尚未迁移，也没有新增消费方或构建配置。
+浏览器或 Remotion 组件接入时，应根据各自构建工具的 JSON 资源支持方式读取，不能在浏览器组件中调用 `node:fs`。[Bentley–Ottmann 视频](../../videos/bentley-ottmann/colors.ts)已通过静态 JSON 导入共用色板，覆盖四集的对象色、强调色及彩色底色；既有正文、页面背景等自定义中性色继续保留。文章生成器、其他视频和应用界面尚未迁移。
 
 ## 维护
 

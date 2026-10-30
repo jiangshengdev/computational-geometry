@@ -1,3 +1,4 @@
+import { colors } from "../../colors.ts";
 import { Subtitles } from "../../../shared/ui/Subtitles";
 import { MathText, Latex, colorMath } from "./MathText";
 import { InputDiagram } from "./InputDiagram";
@@ -23,7 +24,7 @@ const MathLines = createTeachingMathLines({
   Latex,
   colorMath,
   lineMarks: {},
-  objectColors: { current: "#b45309" },
+  objectColors: { current: colors.amber },
   pageRoles: Object.fromEntries(
     Object.keys(lessonPages).map((id) => [id, "current" as const]),
   ),
@@ -159,7 +160,7 @@ export function TeachingPage({
             marginTop: 80,
             textAlign: "center",
             fontSize: 46,
-            color: "#b45309",
+            color: colors.amber,
           }}
         >
           求交结果应该记几条？

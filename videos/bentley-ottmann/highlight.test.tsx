@@ -1,3 +1,4 @@
+import { inputColors, tints } from "./colors.ts";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -188,7 +189,7 @@ test("ordered selection retains all four highlights and pair merging", () => {
     />,
   );
   assert.match(html, /border:3px solid #b45309/);
-  assert.match(html, /background:#fff4e8/);
+  assert.ok(html.includes(`background:${tints.attention}`));
   const merge = lower.timelineFor().find((row) => row.id === "D27")!;
   let previous = 0;
   for (let frame = 0; frame < merge.durationInFrames; frame++) {
@@ -229,7 +230,11 @@ test("later endpoint cues preserve sample size and input color across scales", (
         Math.abs(Number(mark.match(/stroke-width="([^"]+)"/)![1]) * 1.4 - 3) <
           1e-9,
       );
-      assert.ok(mark.includes(`stroke="${index < 2 ? "#2563a6" : "#8a4e9f"}"`));
+      assert.ok(
+        mark.includes(
+          `stroke="${index < 2 ? inputColors[0] : inputColors[1]}"`,
+        ),
+      );
     }
     const small = renderToStaticMarkup(
       <InputDiagram
@@ -243,7 +248,7 @@ test("later endpoint cues preserve sample size and input color across scales", (
       Math.abs((Number(mark.match(/ r="([^"]+)"/)![1]) * 300) / 370 - radius) <
         1e-9,
     );
-    assert.match(mark, /stroke="#8a4e9f"/);
+    assert.ok(mark.includes(`stroke="${inputColors[1]}"`));
   }
 });
 
@@ -260,7 +265,11 @@ test("pairing follows the spoken input and stops without persistent emphasis", (
       />,
     );
   const cues = lower.lessonCues.timings.D08;
-  for (const [index, color] of ["#2563a6", "#b45309", "#23765a"].entries()) {
+  for (const [index, color] of [
+    inputColors[0],
+    inputColors[2],
+    inputColors[3],
+  ].entries()) {
     const cue = cues[index];
     for (const progress of [0.25, 0.75]) {
       const html = htmlAt(cue.start + (cue.end - cue.start) * progress);

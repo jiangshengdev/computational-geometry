@@ -1,3 +1,4 @@
+import { inputColors } from "../../colors.ts";
 import {
   CoordinateDiagram,
   type DiagramSegment,
@@ -7,13 +8,13 @@ import { InputDiagram } from "./InputDiagram";
 import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
 import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
 
-const blue = "#2563a6",
-  purple = "#8a4e9f",
-  orange = "#b45309";
+const firstInput = inputColors[0],
+  secondInput = inputColors[1],
+  resultColor = inputColors[2];
 const segment = (
   a: [number, number],
   b: [number, number],
-  color = blue,
+  color = firstInput,
   pointInput = false,
 ): DiagramSegment => ({ start: a, end: b, color, pointInput });
 const base = segment([0, 0], [4, 0]);
@@ -80,19 +81,19 @@ export function LessonDiagram({
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
         {plot(
           "同点：两份输入都只有 (2,0)",
-          [segment([2, 0], [2, 0], purple, true)],
+          [segment([2, 0], [2, 0], secondInput, true)],
           [{ point: [2, 0], text: "(2,0)" }],
         )}
         {plot(
           "完整交集：点 (2,0)",
-          [segment([2, 0], [2, 0], orange)],
+          [segment([2, 0], [2, 0], resultColor)],
           [{ point: [2, 0], text: "(2,0)" }],
         )}
         {plot(
           "异点：(2,0) 与 (5,0)",
           [
-            segment([2, 0], [2, 0], blue, true),
-            segment([5, 0], [5, 0], purple, true),
+            segment([2, 0], [2, 0], firstInput, true),
+            segment([5, 0], [5, 0], secondInput, true),
           ],
           [
             { point: [2, 0], text: "(2,0)" },
@@ -113,7 +114,7 @@ export function LessonDiagram({
             ...(step >= 2
               ? [
                   { ...segment([4, 0], [5, 0], "#94a3b8"), dashed: true },
-                  segment([5, 0], [5, 0], orange),
+                  segment([5, 0], [5, 0], resultColor),
                 ]
               : []),
           ],
@@ -125,7 +126,7 @@ export function LessonDiagram({
         {step >= 3 &&
           plot(
             "点输入",
-            [segment([2, 0], [2, 0], purple, true)],
+            [segment([2, 0], [2, 0], secondInput, true)],
             [{ point: [2, 0], text: "(2,0)" }],
           )}
       </>
@@ -143,7 +144,7 @@ export function LessonDiagram({
                   segment(
                     i === 3 ? [4, 0] : [0, 0],
                     i === 3 ? [0, 0] : [4, 0],
-                    [blue, purple, orange][i - 1],
+                    [firstInput, secondInput, resultColor][i - 1],
                   ),
                 ],
                 [
@@ -157,7 +158,7 @@ export function LessonDiagram({
           step >= 2 &&
           plot(
             "每对的完整交集",
-            [segment([0, 0], [4, 0], orange)],
+            [segment([0, 0], [4, 0], resultColor)],
             [
               { point: [0, 0], text: "(0,0)" },
               { point: [4, 0], text: "(4,0)" },
@@ -203,7 +204,7 @@ export function LessonDiagram({
       <>
         {plot(
           "输入 A 与新输入 C",
-          [base, segment([3, -1], [3, 1], orange)],
+          [base, segment([3, -1], [3, 1], resultColor)],
           [
             { point: [0, 0], text: "(0,0)" },
             { point: [4, 0], text: "(4,0)" },
@@ -213,7 +214,10 @@ export function LessonDiagram({
         )}
         {plot(
           "输入 B 与新输入 C",
-          [segment([2, 0], [6, 0], purple), segment([3, -1], [3, 1], orange)],
+          [
+            segment([2, 0], [6, 0], secondInput),
+            segment([3, -1], [3, 1], resultColor),
+          ],
           [
             { point: [2, 0], text: "(2,0)" },
             { point: [6, 0], text: "(6,0)" },
@@ -225,7 +229,7 @@ export function LessonDiagram({
           <>
             {plot(
               "A 与 B：完整区间保持连续",
-              [segment([2, 0], [4, 0], orange)],
+              [segment([2, 0], [4, 0], resultColor)],
               [
                 { point: [2, 0], text: "(2,0)" },
                 { point: [4, 0], text: "(4,0)", above: true },
@@ -234,7 +238,7 @@ export function LessonDiagram({
             <div>
               {plot(
                 "另外两对：各自留下点结果",
-                [segment([3, 0], [3, 0], orange)],
+                [segment([3, 0], [3, 0], resultColor)],
                 [{ point: [3, 0], text: "(3,0)" }],
               )}
             </div>
@@ -247,19 +251,19 @@ export function LessonDiagram({
   ) {
     const other =
       kind === "empty"
-        ? segment([0, 1], [4, 1], purple)
+        ? segment([0, 1], [4, 1], secondInput)
         : kind === "crossing"
-          ? segment([2, -1], [2, 1], purple)
+          ? segment([2, -1], [2, 1], secondInput)
           : kind === "touching"
-            ? segment([4, 0], [6, 0], purple)
+            ? segment([4, 0], [6, 0], secondInput)
             : kind === "points"
               ? segment(
                   [step === 1 ? 2 : 5, 0],
                   [step === 1 ? 2 : 5, 0],
-                  purple,
+                  secondInput,
                   true,
                 )
-              : segment([2, 0], [6, 0], purple);
+              : segment([2, 0], [6, 0], secondInput);
     const showOther = kind !== "empty" || step >= 2;
     const showResult =
       kind === "empty"
@@ -274,11 +278,11 @@ export function LessonDiagram({
     const empty = kind === "empty" || (kind === "points" && step === 2);
     const result =
       kind === "overlap"
-        ? segment([2, 0], [4, 0], orange)
+        ? segment([2, 0], [4, 0], resultColor)
         : segment(
             [kind === "touching" ? 4 : 2, 0],
             [kind === "touching" ? 4 : 2, 0],
-            orange,
+            resultColor,
           );
     children = (
       <>
@@ -325,11 +329,11 @@ export function LessonDiagram({
       step < 3
         ? plot(
             step === 1 ? "点输入" : "先讨论公共点的数量",
-            step === 1 ? [segment([2, 0], [2, 0], orange, true)] : [base],
+            step === 1 ? [segment([2, 0], [2, 0], resultColor, true)] : [base],
           )
         : plot(
             "不同公共点确定共同直线",
-            [base, segment([1, 0], [6, 0], purple)],
+            [base, segment([1, 0], [6, 0], secondInput)],
             [
               { point: [2, 0], text: "P", above: true },
               { point: [3, 0], text: "Q" },
@@ -340,7 +344,7 @@ export function LessonDiagram({
       <>
         {plot(
           "非竖直：横坐标递增",
-          [base, segment([1, 0], [6, 0], purple)],
+          [base, segment([1, 0], [6, 0], secondInput)],
           [
             { point: [2, 0], text: "P", above: true },
             { point: [3, 0], text: "Q" },
@@ -349,7 +353,7 @@ export function LessonDiagram({
         {step >= 2 &&
           plot(
             "竖直：纵坐标递增",
-            [segment([2, -1], [2, 3]), segment([2, 0], [2, 2], purple)],
+            [segment([2, -1], [2, 3]), segment([2, 0], [2, 2], secondInput)],
             [
               { point: [2, 0.5], text: "P" },
               { point: [2, 1.5], text: "Q", above: true },
@@ -371,8 +375,8 @@ export function LessonDiagram({
             坐标递增方向
           </SvgMathText>
           {[
-            { y: 95, a: 100, b: 510, c: blue },
-            { y: 215, a: 240, b: 650, c: purple },
+            { y: 95, a: 100, b: 510, c: firstInput },
+            { y: 215, a: 240, b: 650, c: secondInput },
           ].map(({ y, a, b, c }, i) => (
             <g key={i} stroke={c} fill={c}>
               <line x1={a} y1={y} x2={b} y2={y} strokeWidth={6} />
@@ -402,7 +406,7 @@ export function LessonDiagram({
                 y1={65}
                 x2={240}
                 y2={345}
-                stroke={orange}
+                stroke={resultColor}
                 strokeDasharray="5 5"
               />
               <SvgMathText x={240} y={50} align="center">
@@ -419,7 +423,7 @@ export function LessonDiagram({
                 y1={65}
                 x2={510}
                 y2={345}
-                stroke={orange}
+                stroke={resultColor}
                 strokeDasharray="5 5"
               />
               <SvgMathText x={510} y={50} align="center">
@@ -433,7 +437,7 @@ export function LessonDiagram({
               y1={300}
               x2={510}
               y2={300}
-              stroke={orange}
+              stroke={resultColor}
               strokeWidth={7}
             />
           )}

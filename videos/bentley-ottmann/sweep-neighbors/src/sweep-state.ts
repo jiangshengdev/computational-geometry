@@ -1,13 +1,14 @@
+import { sweepColors } from "../../colors.ts";
 export type InputId = "A" | "B" | "C" | "D";
 export type PointId = "P" | "Q" | "R";
 export const inputs: Record<
   InputId,
   { from: [number, number]; to: [number, number]; color: string }
 > = {
-  A: { from: [0, 1], to: [10, 1], color: "#c2410c" },
-  B: { from: [1, 3], to: [3, 3], color: "#2563eb" },
-  C: { from: [2, 6], to: [9, -1], color: "#15803d" },
-  D: { from: [4, 0], to: [8, 4], color: "#7c3aed" },
+  A: { from: [0, 1], to: [10, 1], color: sweepColors.A },
+  B: { from: [1, 3], to: [3, 3], color: sweepColors.B },
+  C: { from: [2, 6], to: [9, -1], color: sweepColors.C },
+  D: { from: [4, 0], to: [8, 4], color: sweepColors.D },
 };
 export const intersections: Record<
   PointId,

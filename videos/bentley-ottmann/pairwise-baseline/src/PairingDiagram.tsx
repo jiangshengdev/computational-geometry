@@ -1,3 +1,4 @@
+import { inputColors, colors, tints } from "../../colors.ts";
 import { Latex, MathText } from "./MathText";
 
 export type PairingState = {
@@ -9,8 +10,8 @@ const inputs = [1, 2, 3, 4];
 const pairs = inputs.flatMap((first) =>
   inputs.filter((second) => second > first).map((second) => [first, second]),
 );
-const blue = "#2563a6";
-const amber = "#b45309";
+const blue = inputColors[0];
+const amber = colors.amber;
 
 /** Arrows represent selection order, never a directed intersection result. */
 function PairMerge({
@@ -41,7 +42,7 @@ function PairMerge({
             justifyContent: "center",
             border: `2px solid ${blue}`,
             borderRadius: 10,
-            background: "#edf4fc",
+            background: tints.input,
             opacity: 1 - progress,
             fontSize: 28,
           }}
@@ -64,7 +65,7 @@ function PairMerge({
           fontSize: 28,
           border: `2px solid ${amber}`,
           borderRadius: 10,
-          background: "#fff4e8",
+          background: tints.attention,
           opacity: progress,
         }}
       >
@@ -119,7 +120,7 @@ export function PairingDiagram({
                   fontSize: 32,
                   border: `3px solid ${state.first === input ? amber : "#94a3b8"}`,
                   borderRadius: 12,
-                  background: state.first === input ? "#fff4e8" : "#fff",
+                  background: state.first === input ? tints.attention : "#fff",
                   transform: `translateY(${state.first === input ? -8 * state.selection : 0}px)`,
                 }}
               >
@@ -188,8 +189,8 @@ export function PairingDiagram({
                             ? first === second
                               ? "#e2e8f0"
                               : active
-                                ? "#fff4e8"
-                                : "#edf4fc"
+                                ? tints.attention
+                                : tints.input
                             : "transparent",
                         }}
                       >

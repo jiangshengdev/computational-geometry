@@ -1,23 +1,16 @@
+import { colors, proofColors } from "../../colors.ts";
 import { createMathText } from "../../../shared/ui/MathText";
 import { Fragment } from "react";
-
-export const teachingColors = {
-  blue: "#2878a0",
-  red: "#c25959",
-  green: "#278878",
-  difference: "#8055a0",
-  attention: "#b45309",
-};
 
 // Match whole quantities before symbols, without recoloring generated LaTeX.
 // Endpoint values keep their colors through expansion and substitution.
 const quantities: Record<string, string> = {
-  "d(u)": teachingColors.blue,
-  "d(v)": teachingColors.red,
-  "\\alpha u+\\beta": teachingColors.blue,
-  "\\alpha v+\\beta": teachingColors.red,
-  "d(v)-d(u)": teachingColors.difference,
-  "\\alpha v-\\alpha u": teachingColors.difference,
+  "d(u)": colors.blue,
+  "d(v)": colors.orange,
+  "\\alpha u+\\beta": colors.blue,
+  "\\alpha v+\\beta": colors.orange,
+  "d(v)-d(u)": colors.violet,
+  "\\alpha v-\\alpha u": colors.violet,
 };
 const escapePattern = (value: string) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -44,13 +37,9 @@ export const colorMath = (
     const color =
       quantities[term] ??
       (object
-        ? object === "A" || object === "U"
-          ? teachingColors.blue
-          : object === "C" || object === "V"
-            ? teachingColors.red
-            : teachingColors.green
+        ? proofColors[object as keyof typeof proofColors]
         : marks.includes(term)
-          ? teachingColors.attention
+          ? colors.amber
           : undefined);
     // Relations remain outside color groups for equation alignment. Keep
     // arithmetic operators neutral even within a colored compound quantity.

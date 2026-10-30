@@ -1,3 +1,4 @@
+import { colors } from "../../colors.ts";
 import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
 import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
 import { SvgMathText } from "./MathText";
@@ -152,7 +153,7 @@ export function SweepDiagram({
             x2={sx}
             y1={top}
             y2={bottom}
-            stroke="#b45309"
+            stroke={colors.amber}
             strokeWidth={2}
             strokeDasharray="8 7"
           />

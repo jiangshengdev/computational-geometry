@@ -1,3 +1,4 @@
+import { colors } from "../../colors.ts";
 import { Subtitles } from "../../../shared/ui/Subtitles";
 import { MathLessonPage } from "../../../shared/ui/MathLessonPage";
 import { createTeachingMathLines } from "../../../shared/ui/TeachingMathLines";
@@ -22,7 +23,7 @@ const MathLines = createTeachingMathLines({
   Latex,
   colorMath: (text) => text,
   lineMarks: {},
-  objectColors: { current: "#b45309" },
+  objectColors: { current: colors.amber },
   pageRoles: Object.fromEntries(
     Object.keys(pages).map((id) => [id, "current" as const]),
   ),
@@ -70,7 +71,7 @@ export function TeachingPage({
   const emphasis = (key: string, compact = false) => ({
     background:
       focus?.active && focus.keys?.includes(key)
-        ? "rgba(180,83,9,0.12)"
+        ? `${colors.amber}1f`
         : "transparent",
     // Keep grid slots fixed while the highlight hugs its content.
     alignSelf: "start",
@@ -256,7 +257,7 @@ export function TeachingPage({
                 fontSize: 28,
                 lineHeight: 1.6,
                 paddingLeft: 14,
-                borderLeft: `4px solid ${i + 1 === visibleStep ? "#b45309" : "transparent"}`,
+                borderLeft: `4px solid ${i + 1 === visibleStep ? colors.amber : "transparent"}`,
               }}
             >
               <span data-line-ink>

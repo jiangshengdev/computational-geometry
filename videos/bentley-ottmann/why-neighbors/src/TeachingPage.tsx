@@ -1,3 +1,4 @@
+import { colors, tints } from "../../colors.ts";
 import { createTeachingMathLines } from "../../../shared/ui/TeachingMathLines";
 import { MathLessonPage } from "../../../shared/ui/MathLessonPage";
 import { MathText, Latex, colorMath } from "./MathText";
@@ -11,7 +12,7 @@ const MathLines = createTeachingMathLines({
   colorMath,
   lineMarks: {},
   defaultMathColor: "#172c45",
-  objectColors: { current: "#b45309" },
+  objectColors: { current: colors.amber },
   pageRoles: Object.fromEntries(
     Object.keys(pages).map((id) => [id, "current" as const]),
   ),
@@ -51,7 +52,7 @@ export function TeachingPage({
             data-reference-active={active}
             style={{ fontSize: 25, lineHeight: 1.6 }}
           >
-            <span style={{ background: active ? "#f8e5bf" : undefined }}>
+            <span style={{ background: active ? tints.active : undefined }}>
               <MathText colorize={false}>
                 {(source.number ? `(${source.number}) ` : "") +
                   source.name +

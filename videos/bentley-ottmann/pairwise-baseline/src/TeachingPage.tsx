@@ -1,3 +1,4 @@
+import { colors } from "../../colors.ts";
 import { createTeachingMathLines } from "../../../shared/ui/TeachingMathLines";
 import { Subtitles } from "../../../shared/ui/Subtitles";
 import { MathText, Latex, colorMath } from "./MathText";
@@ -27,7 +28,7 @@ const MathLines = createTeachingMathLines({
   colorMath,
   lineMarks: {},
   defaultMathColor: "#172c45",
-  objectColors: { current: "#b45309" },
+  objectColors: { current: colors.amber },
   pageRoles: {
     ordered: "current",
     unordered: "current",
@@ -185,7 +186,7 @@ export function TeachingPage({
                     visibility: visibleStep >= i + 3 ? "visible" : "hidden",
                     fontSize: 36,
                     minHeight: 105,
-                    color: visibleStep === i + 3 ? "#b45309" : "#172c45",
+                    color: visibleStep === i + 3 ? colors.amber : "#172c45",
                   }}
                 >
                   <span data-line-ink>

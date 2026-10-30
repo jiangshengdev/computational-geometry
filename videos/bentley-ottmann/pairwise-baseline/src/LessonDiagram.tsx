@@ -1,10 +1,11 @@
+import { inputColors } from "../../colors.ts";
 import {
   CoordinateDiagram,
   type DiagramSegment,
 } from "../../../shared/ui/CoordinateDiagram";
 import { MathText, SvgMathText } from "./MathText";
 import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
-const colors = ["#2563a6", "#8a4e9f", "#b45309", "#23765a"];
+const colors = inputColors;
 export function LessonDiagram({
   kind,
   step,

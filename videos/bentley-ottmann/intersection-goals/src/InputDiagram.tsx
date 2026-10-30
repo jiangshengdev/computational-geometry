@@ -1,3 +1,4 @@
+import { inputColors } from "../../colors.ts";
 import { useId } from "react";
 import { SvgMathText } from "./MathText";
 import type { DiagramFocus } from "./timeline";
@@ -7,7 +8,7 @@ import {
 } from "../../../shared/ui/AttentionMarks";
 import type { AttentionMark } from "../../../shared/speech/teaching-cues";
 
-const colors = ["#2563a6", "#8a4e9f", "#b45309"];
+const colors = inputColors.slice(0, 3);
 /** All four views use the same origin and 100 pixels per coordinate unit. */
 export function InputDiagram({
   inputs,

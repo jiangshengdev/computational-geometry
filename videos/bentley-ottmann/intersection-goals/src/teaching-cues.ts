@@ -1,3 +1,4 @@
+import { inputColors, colors } from "../../colors.ts";
 import {
   point as p,
   stroke as s,
@@ -10,27 +11,30 @@ export const teachingCues: Record<string, TeachingCue[]> = {
   U05: [
     {
       phrase: "横坐标零、纵坐标零的点",
-      panels: { 闭线段: [p(0, 0, "#2563a6")] },
+      panels: { 闭线段: [p(0, 0, inputColors[0])] },
     },
     {
       phrase: "横坐标四、纵坐标零的点",
-      panels: { 闭线段: [p(4, 0, "#2563a6")] },
+      panels: { 闭线段: [p(4, 0, inputColors[0])] },
     },
     {
       phrase: "这条线段包含两端之间所有的点",
-      panels: { 闭线段: [s(0, 0, 4, 0, "#2563a6")] },
+      panels: { 闭线段: [s(0, 0, 4, 0, inputColors[0])] },
     },
     {
       phrase: "也包含两个端点",
-      panels: { 闭线段: [p(0, 0, "#2563a6"), p(4, 0, "#2563a6")] },
+      panels: { 闭线段: [p(0, 0, inputColors[0]), p(4, 0, inputColors[0])] },
     },
   ],
   U06: [
-    { phrase: "线段有范围", panels: { 闭线段: [s(0, 0, 4, 0, "#2563a6")] } },
+    {
+      phrase: "线段有范围",
+      panels: { 闭线段: [s(0, 0, 4, 0, inputColors[0])] },
+    },
     {
       phrase: "横坐标五、纵坐标零的点",
       through: "却不在线段上",
-      panels: { 闭线段: [p(5, 0, "#b45309")] },
+      panels: { 闭线段: [p(5, 0, colors.amber)] },
     },
   ],
   U07: [
@@ -164,7 +168,10 @@ export const teachingCues: Record<string, TeachingCue[]> = {
     {
       phrase: "位置不同时交集为空",
       panels: {
-        "异点：(2,0) 与 (5,0)": [p(2, 0, "#2563a6"), p(5, 0, "#8a4e9f")],
+        "异点：(2,0) 与 (5,0)": [
+          p(2, 0, inputColors[0]),
+          p(5, 0, inputColors[1]),
+        ],
       },
     },
   ],
@@ -284,13 +291,13 @@ export const teachingCues: Record<string, TeachingCue[]> = {
     },
     {
       phrase: "线段包含两个端点之间每个横坐标对应的点",
-      panels: { "非竖直：横坐标递增": [s(0, 0, 4, 0, "#2563a6")] },
+      panels: { "非竖直：横坐标递增": [s(0, 0, 4, 0, inputColors[0])] },
     },
   ],
   U35: [
     {
       phrase: "按纵坐标从小到大排列",
-      panels: { "竖直：纵坐标递增": [s(2, -1, 2, 3, "#2563a6")] },
+      panels: { "竖直：纵坐标递增": [s(2, -1, 2, 3, inputColors[0])] },
     },
     {
       phrase: "每个纵坐标也只对应一个点",
@@ -298,59 +305,73 @@ export const teachingCues: Record<string, TeachingCue[]> = {
     },
     {
       phrase: "线段同样包含端点之间全部的点",
-      panels: { "竖直：纵坐标递增": [s(2, -1, 2, 3, "#2563a6")] },
+      panels: { "竖直：纵坐标递增": [s(2, -1, 2, 3, inputColors[0])] },
     },
   ],
   U36: [
     {
       phrase: "一个较前端点",
-      panels: { bounds: [p(100, 95, "#2563a6"), p(240, 215, "#8a4e9f")] },
+      panels: {
+        bounds: [p(100, 95, inputColors[0]), p(240, 215, inputColors[1])],
+      },
     },
     {
       phrase: "一个较后端点",
-      panels: { bounds: [p(510, 95, "#2563a6"), p(650, 215, "#8a4e9f")] },
+      panels: {
+        bounds: [p(510, 95, inputColors[0]), p(650, 215, inputColors[1])],
+      },
     },
     {
       phrase: "在两个较前端点中",
-      panels: { bounds: [p(100, 95, "#2563a6"), p(240, 215, "#8a4e9f")] },
+      panels: {
+        bounds: [p(100, 95, inputColors[0]), p(240, 215, inputColors[1])],
+      },
     },
-    { phrase: "选更靠后的一个", panels: { bounds: [p(240, 215, "#8a4e9f")] } },
+    {
+      phrase: "选更靠后的一个",
+      panels: { bounds: [p(240, 215, inputColors[1])] },
+    },
     {
       phrase: "记作 L",
       name: "L",
-      panels: { bounds: [p(240, 215, "#8a4e9f")] },
+      panels: { bounds: [p(240, 215, inputColors[1])] },
     },
   ],
   U37: [
     {
       phrase: "在两个较后端点中",
-      panels: { bounds: [p(510, 95, "#2563a6"), p(650, 215, "#8a4e9f")] },
+      panels: {
+        bounds: [p(510, 95, inputColors[0]), p(650, 215, inputColors[1])],
+      },
     },
-    { phrase: "选更靠前的一个", panels: { bounds: [p(510, 95, "#2563a6")] } },
+    {
+      phrase: "选更靠前的一个",
+      panels: { bounds: [p(510, 95, inputColors[0])] },
+    },
     {
       phrase: "记作 R",
       name: "R",
-      panels: { bounds: [p(510, 95, "#2563a6")] },
+      panels: { bounds: [p(510, 95, inputColors[0])] },
     },
   ],
   U38: [
     {
       phrase: "任何公共点都不能在 L 前面",
       through: "起始范围之外",
-      panels: { bounds: [s(100, 215, 240, 215, "#b91c1c")] },
+      panels: { bounds: [s(100, 215, 240, 215, colors.red)] },
     },
     {
       phrase: "也不能在 R 后面",
       through: "结束范围",
-      panels: { bounds: [s(510, 95, 650, 95, "#b91c1c")] },
+      panels: { bounds: [s(510, 95, 650, 95, colors.red)] },
     },
     {
       phrase: "所有公共点都在 L 到 R 之间",
       name: "interval",
       panels: {
         bounds: [
-          s(240, 95, 510, 95, "#2563a6"),
-          s(240, 215, 510, 215, "#8a4e9f"),
+          s(240, 95, 510, 95, inputColors[0]),
+          s(240, 215, 510, 215, inputColors[1]),
         ],
       },
     },
@@ -362,18 +383,22 @@ export const teachingCues: Record<string, TeachingCue[]> = {
     },
     {
       phrase: "都不早于两条线段各自较前的端点",
-      panels: { bounds: [p(100, 95, "#2563a6"), p(240, 215, "#8a4e9f")] },
+      panels: {
+        bounds: [p(100, 95, inputColors[0]), p(240, 215, inputColors[1])],
+      },
     },
     {
       phrase: "也不晚于各自较后的端点",
-      panels: { bounds: [p(510, 95, "#2563a6"), p(650, 215, "#8a4e9f")] },
+      panels: {
+        bounds: [p(510, 95, inputColors[0]), p(650, 215, inputColors[1])],
+      },
     },
     {
       phrase: "因此同时属于两条线段",
       panels: {
         bounds: [
-          s(240, 95, 510, 95, "#2563a6"),
-          s(240, 215, 510, 215, "#8a4e9f"),
+          s(240, 95, 510, 95, inputColors[0]),
+          s(240, 215, 510, 215, inputColors[1]),
         ],
       },
     },
