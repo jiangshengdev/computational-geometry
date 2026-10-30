@@ -36,9 +36,11 @@ export function createTeachingMathLines<Role extends string, Mark>({
   const MathLines = ({
     pageId,
     visibleStep,
+    activeMarks,
   }: {
     pageId: string;
     visibleStep: number;
+    activeMarks?: Record<number, Mark[]>;
   }) => {
     const role = pageRoles[pageId];
     const theme = objectColors[role];
@@ -53,17 +55,16 @@ export function createTeachingMathLines<Role extends string, Mark>({
         page.lines.map((line, index) =>
           line.math
             ? {
-                math: colorMath(
-                  line.math,
-                  pageRoles[pageId],
-                  lineMarks[pageId]?.[index],
-                ),
+                math: colorMath(line.math, pageRoles[pageId], [
+                  ...(lineMarks[pageId]?.[index] ?? []),
+                  ...(activeMarks?.[index] ?? []),
+                ]),
               }
             : line,
         ),
         page.groups,
       );
-    }, [pageId]);
+    }, [pageId, activeMarks]);
     return (
       <MathTable
         groups={groups}

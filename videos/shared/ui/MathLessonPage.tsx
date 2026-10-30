@@ -5,6 +5,7 @@ import { Subtitles } from "./Subtitles";
 export function MathLessonPage({
   title,
   basis,
+  basisHeight = 95,
   children,
   diagram,
   diagramProgress = 1,
@@ -12,6 +13,8 @@ export function MathLessonPage({
 }: {
   title: ReactNode;
   basis?: ReactNode;
+  /** Explicit reserved space for multiple already-taught references. */
+  basisHeight?: number;
   children: ReactNode;
   diagram?: ReactNode;
   diagramProgress?: number;
@@ -61,7 +64,7 @@ export function MathLessonPage({
           position: "absolute",
           left: 100,
           right: 100,
-          top: basis ? 250 : 165,
+          top: basis ? 155 + basisHeight : 165,
           bottom: 150,
           display: "flex",
           alignItems: "center",

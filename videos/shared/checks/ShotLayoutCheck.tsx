@@ -7,13 +7,15 @@ type AuditRow = {
   page: string;
   from: number;
   revealMs: number;
-  speechFrames: number;
   durationInFrames: number;
   pauseAfter?: number;
   stages: { ms: number }[];
   mainShift?: { start: number; end: number } | null;
   motionTiming?: { start: number; end: number } | null;
-};
+} & (
+  | { speechFrames: number; readingFrames?: never }
+  | { readingFrames: number; speechFrames?: never }
+);
 type Visual = { visibleStep: number; thinking: boolean; caption: string };
 export function createShotLayoutCheck<R extends AuditRow>({
   rows: allRows,
@@ -48,7 +50,7 @@ export function createShotLayoutCheck<R extends AuditRow>({
   if (!rows.length) throw Error("LayoutCheck requires a valid auditShot");
   const cases = rows.flatMap((row) => {
     const reveal = audioLeadFrames + Math.ceil((row.revealMs * fps) / 1000);
-    const endSpeech = audioLeadFrames + row.speechFrames;
+    const endSpeech = audioLeadFrames + (row.readingFrames ?? row.speechFrames);
     const frames = new Set([
       0,
       Math.max(0, reveal - 1),

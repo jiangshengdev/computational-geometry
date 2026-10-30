@@ -1,16 +1,22 @@
 import { SvgMathText } from "./MathText";
+import { pages } from "./lesson";
 import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
-import type { TeachingFocus } from "../../../shared/speech/teaching-cues";
-const blue = "#2878a0";
-const red = "#c25959";
-const green = "#278878";
-const muted = "#8999aa";
+const ink = "#172c45",
+  blue = "#2878a0",
+  red = "#c25959",
+  green = "#278878",
+  grey = "#8999aa";
+const label = (x: number, y: number, value: string, color = ink) => (
+  <SvgMathText x={x} y={y} fill={color} fontSize={27}>
+    {value}
+  </SvgMathText>
+);
 const line = (
   x1: number,
   y1: number,
   x2: number,
   y2: number,
-  color = muted,
+  color = grey,
   dashed = false,
 ) => (
   <line
@@ -19,243 +25,354 @@ const line = (
     x2={x2}
     y2={y2}
     stroke={color}
-    strokeWidth={3}
-    strokeDasharray={dashed ? "8 8" : undefined}
+    strokeWidth={2}
+    strokeDasharray={dashed ? "7 7" : undefined}
   />
 );
-const label = (x: number, y: number, value: string, color = "#172c45") => (
-  <SvgMathText x={x} y={y} fill={color} fontSize={29}>
-    {value}
-  </SvgMathText>
-);
-function Axis({ y = 510 }: { y?: number }) {
+function Axis({ y = 350 }: { y?: number }) {
   return (
     <g>
-      {line(65, y, 710, y)}
-      <path d={"M 710 " + y + " l -15 -7 v 14 z"} fill={muted} />
+      {line(60, y, 735, y)}
+      <path d={`M735 ${y} l-13 -6 v12 z`} fill={grey} />
+      {label(750, y + 8, "x")}
     </g>
   );
 }
-
-/** Geometry is an illustration of the stated hypothesis, never an execution trace. */
+/** Only the numeric height example has coordinates. Other diagrams are explicitly schematic. */
 export function ProofDiagram({
   page,
   step,
-  focus,
+  active,
+  progress,
 }: {
   page: string;
   step: number;
-  focus?: TeachingFocus;
+  active: boolean;
+  progress: number;
 }) {
-  const isAdjacent = ["choose", "between", "squeeze", "adjacent"].includes(
-    page,
-  );
-  const isDifference = ["difference", "linear"].includes(page);
-  const isPosition = ["position", "noEvents"].includes(page);
-  const showW = page === "between" || page === "squeeze";
-  const triple = page === "squeeze" && step >= 3;
-  const marks = focus?.active ? (focus.panels?.proof ?? []) : [];
-  if (step === 0 || (page === "earliest" && step < 2))
-    return <svg width={800} height={620} data-proof-diagram />;
-  const travel =
-    page === "noEvents"
-      ? 0.65
-      : focus?.name === "travel"
-        ? focus.progress * 0.65
-        : focus?.reached.includes("travel")
-          ? 0.65
-          : 0;
+  const kind = pages[page].diagram;
   return (
-    <svg width={800} height={620} viewBox="0 0 800 620" data-proof-diagram>
-      {isAdjacent || isDifference ? (
-        <g>
-          {line(100, 440, 650, 165, blue)}
-          {line(100, 140, 650, 415, red)}
-          {isAdjacent ? (
-            <>
-              {label(80, 475, "U", blue)}
-              {label(80, 130, "V", red)}
-              <Axis />
-              {line(400, 290, 400, 510, muted, true)}
-              {label(400, 555, "p")}
-              <circle cx={400} cy={290} r={5} fill="#172c45" />
-              {page !== "choose" || step >= 3 ? (
-                <>
-                  <rect
-                    x={280}
-                    y={190}
-                    width={120}
-                    height={300}
-                    fill="#b45309"
-                    opacity={0.04}
-                  />
-                  {line(280, 190, 280, 510, muted, true)}
-                  {label(270, 555, "u")}
-                  {label(240, 600, "中间没有其他事件")}
-                </>
-              ) : null}
-              {showW ? (
-                <g data-hypothetical-w>
-                  {line(150, 290, triple ? 470 : 365, 290, green)}
-                  {label(110, 280, "W", green)}
-                  {!triple ? (
-                    <>
-                      {line(365, 290, 390, 290, green, true)}
-                      {label(460, 85, "假设夹在中间")}
-                    </>
-                  ) : (
-                    label(440, 85, step >= 4 ? "推出三线共点" : "两端高度相等")
-                  )}
-                </g>
-              ) : null}
-            </>
-          ) : (
-            <>
-              {line(240, 210, 240, 370, "#b45309")}
-              {line(550, 215, 550, 365, "#b45309")}
-              {label(145, 100, "左侧高度关系")}
-              {label(465, 100, "右侧高度关系")}
-              {page === "linear" && step >= 3
-                ? label(260, 555, "高度差 d(x)")
-                : null}
-            </>
-          )}
-        </g>
+    <svg width={800} height={500} viewBox="0 0 800 500" data-proof-diagram>
+      {kind === "height" ? (
+        <Height page={page} step={step} active={active} progress={progress} />
       ) : null}
-      {isPosition ? (
-        <g>
-          <Axis y={390} />
-          {line(160, 380, 160, 400)}
-          {line(620, 380, 620, 400)}
-          {label(145, 445, "u")}
-          {label(605, 445, "v")}
-          {label(85, 240, "d(u)>0", blue)}
-          {label(540, 240, "d(v)<0", red)}
-          {step >= 2 || page === "noEvents" ? (
-            <>
-              <line
-                x1={160}
-                y1={390}
-                x2={160 + 460 * travel}
-                y2={390}
-                stroke="#b45309"
-                strokeWidth={7}
-              />
-              <circle cx={160 + 460 * travel} cy={390} r={7} fill="#b45309" />
-              {step >= 3 || page === "noEvents"
-                ? label(
-                    255,
-                    335,
-                    page === "noEvents" ? "高度差等于零的位置" : "u+t(v-u)",
-                  )
-                : null}
-              {step >= 3 || page === "noEvents"
-                ? label(
-                    255,
-                    550,
-                    page === "noEvents" ? "两条线段在中间相交" : "0<t<1",
-                  )
-                : null}
-            </>
-          ) : null}
-        </g>
+      {kind === "numeric" || kind === "position" ? (
+        <Position
+          numeric={kind === "numeric"}
+          step={step}
+          active={active}
+          progress={progress}
+        />
       ) : null}
-      {page === "newNeighbors" ? (
-        <NeighborChanges step={step} focus={focus} />
+      {kind === "interval" || kind === "sandwich" || kind === "triple" ? (
+        <Adjacent page={page} step={step} />
       ) : null}
-      {["earliest", "earlier", "contradiction"].includes(page) ? (
-        <g>
-          <Axis y={360} />
-          <circle cx={530} cy={360} r={7} fill={red} />
-          {label(520, 410, "p", red)}
-          {label(425, 465, "假设最早漏掉的位置")}
-          {page === "contradiction" || (page === "earlier" && step >= 2) ? (
-            <>
-              <path d="M 100 358 L 510 358" stroke={green} strokeWidth={5} />
-              {label(85, 250, "此前事件已正确处理", green)}
-            </>
-          ) : null}
-          {(page === "earlier" && step >= 3) || page === "contradiction" ? (
-            <>
-              <circle cx={260} cy={360} r={7} fill={blue} />
-              {label(150, 320, "形成邻接并检查", blue)}
-            </>
-          ) : null}
-          {page === "contradiction" ? (
-            <>
-              {step >= 2 ? label(330, 110, "登记并保留 p") : null}
-              {step >= 3 ? (
-                <>
-                  {line(270, 150, 525, 150, "#b45309")}
-                  <path d="M525 150 l-14 -7 v14 z" fill="#b45309" />
-                  {label(285, 210, "按位置取出")}
-                </>
-              ) : null}
-              {step >= 4 ? label(170, 555, "与漏掉 p 矛盾") : null}
-            </>
-          ) : null}
-        </g>
+      {kind === "start" || kind === "end" || kind === "swap" ? (
+        <Neighbors
+          kind={kind}
+          step={step}
+          active={active}
+          progress={progress}
+        />
       ) : null}
-      <AttentionMarks marks={marks} progress={focus?.progress ?? 0} />
+      {kind === "missed" ? <Missed page={page} step={step} /> : null}
     </svg>
   );
 }
-
-function NeighborChanges({
+function Height({
+  page,
   step,
-  focus,
+  active,
+  progress,
 }: {
+  page: string;
   step: number;
-  focus?: TeachingFocus;
+  active: boolean;
+  progress: number;
 }) {
-  const row = (kind: number, y: number, title: string) => {
-    const visible = step >= kind;
-    const changed =
-      step > kind ||
-      focus?.reached.includes(["", "insert", "remove", "swap"][kind]);
-    const before = kind === 1 ? [0, 2] : kind === 2 ? [0, 1, 2] : [0, 1, 2, 3];
-    const after = kind === 1 ? [0, 1, 2] : kind === 2 ? [0, 2] : [0, 2, 1, 3];
-    const colors = [muted, blue, red, green];
-    const draw = (values: number[], x: number, emphasize: boolean) =>
-      values.map((value, index) => {
-        const yy = y + 110 - index * 28;
-        return (
-          <g key={value}>
-            {line(x, yy, x + 115, yy, colors[value])}
-            {emphasize &&
-            index < values.length - 1 &&
-            !(kind === 3 && index === 1) ? (
-              <line
-                x1={x + 130}
-                y1={yy - 3}
-                x2={x + 130}
-                y2={yy - 25}
-                stroke="#b45309"
-                strokeWidth={6}
-              />
-            ) : null}
-          </g>
-        );
-      });
-    return (
-      <g key={kind} visibility={visible ? "visible" : "hidden"}>
-        {label(10, y + 60, title)}
-        {kind !== 1 || changed ? draw(before, 190, false) : null}
-        {line(360, y + 70, 425, y + 70)}
-        <path d={"M425 " + (y + 70) + " l-12 -6 v12 z"} fill={muted} />
-        {kind !== 1 || changed
-          ? draw(changed ? after : before, 490, Boolean(changed))
-          : null}
-      </g>
-    );
-  };
+  // 50 pixels per unit on both axes. Exact original A and C endpoints.
+  const x = (n: number) => 100 + 50 * n,
+    y = (n: number) => 370 - 50 * n;
+  const at = page === "signs-example" ? Math.min(8, step + 5) : 6;
   return (
     <g>
-      {label(190, 45, "处理前")}
-      {label(490, 45, "处理后")}
-      {row(1, 70, "开始")}
-      {row(2, 240, "结束")}
-      {row(3, 410, "交叉")}
+      {line(70, y(0), 660, y(0))}
+      <path d={`M660 ${y(0)} l-12 -6 v12 z`} fill={grey} />
+      {line(x(0), 430, x(0), 30)}
+      <path d={`M${x(0)} 30 l-6 12 h12 z`} fill={grey} />
+      {label(670, 380, "x")}
+      {label(70, 55, "y")}
+      {label(110, 401, "O")}
+      {[2, 4, 6, 8, 10].map((n) => (
+        <g key={n}>
+          {line(x(n), 365, x(n), 375)}
+          {label(x(n) - 7, 410, String(n))}
+        </g>
+      ))}
+      {[-1, 1, 3, 5].map((n) => (
+        <g key={n}>
+          {line(95, y(n), 105, y(n))}
+          {label(45, y(n) + 8, String(n))}
+        </g>
+      ))}
+      {line(x(0), y(1), x(10), y(1), blue)}
+      {label(625, y(1) + 8, "A", blue)}
+      {line(x(2), y(6), x(9), y(-1), red)}
+      {label(x(2) + 20, y(6), "C", red)}
+      {line(x(at), 45, x(at), y(0), grey, true)}
+      <circle cx={x(at)} cy={y(1)} r={5} fill={blue} />
+      <circle cx={x(at)} cy={y(8 - at)} r={5} fill={red} />
+      {page === "signs-example" && step >= 2
+        ? label(430, 275, "P=(7,1)")
+        : null}
+      {label(245, 465, `x=${at}：同一位置比较高度`)}
+      {active ? (
+        <AttentionMarks
+          marks={[
+            {
+              kind: "line",
+              from: [x(at), y(1)],
+              to: [x(at), y(8 - at)],
+              color: "#b45309",
+            },
+          ]}
+          progress={progress}
+        />
+      ) : null}
+    </g>
+  );
+}
+function Position({
+  numeric,
+  step,
+  active,
+  progress,
+}: {
+  numeric: boolean;
+  step: number;
+  active: boolean;
+  progress: number;
+}) {
+  const start = 145,
+    end = 650,
+    point = numeric ? 271 : 360;
+  const showPart = step >= (numeric ? 2 : 3),
+    showPosition = step >= (numeric ? 3 : 4);
+  return (
+    <g>
+      <Axis />
+      {line(start, 341, start, 359)}
+      {line(end, 341, end, 359)}
+      {label(start - 10, 399, numeric ? "2" : "u")}
+      {label(end - 10, 399, numeric ? "10" : "v")}
+      {line(start, 155, end, 155, blue)}
+      {line(start, 147, start, 163, blue)}
+      {line(end, 147, end, 163, blue)}
+      {label(280, 125, numeric ? "全程 8" : "全程 v-u")}
+      {showPart ? (
+        <g>
+          {line(start, 235, point, 235, green)}
+          {line(point, 227, point, 243, green)}
+          {label(115, 205, numeric ? "已走 2" : "已走 t(v-u)")}
+        </g>
+      ) : null}
+      {showPosition ? (
+        <g>
+          <circle cx={point} cy={350} r={6} fill={green} />
+          {label(point - 45, 300, numeric ? "位置 4" : "u+t(v-u)")}
+        </g>
+      ) : null}
+      {active && showPart ? (
+        <AttentionMarks
+          marks={[
+            {
+              kind: "line",
+              from: [start, 235],
+              to: [point, 235],
+              color: green,
+            },
+          ]}
+          progress={progress}
+        />
+      ) : null}
+      {label(
+        170,
+        465,
+        numeric
+          ? "全程与已走部分从同一起点量起"
+          : "一般位置示意；比例严格在零与一之间",
+      )}
+    </g>
+  );
+}
+function Adjacent({ page, step }: { page: string; step: number }) {
+  const showR =
+    page === "stable-interval" ||
+    page === "assume-between" ||
+    page === "squeeze" ||
+    (page === "last-event" && step >= 3);
+  const showE = page === "last-event" || page === "stable-interval";
+  const showW = (page === "assume-between" && step >= 2) || page === "squeeze";
+  const triple = page === "squeeze" && step >= 3;
+  return (
+    <g>
+      {label(
+        80,
+        40,
+        page === "squeeze"
+          ? "假设导出的矛盾，不是允许输入"
+          : page === "assume-between"
+            ? "反证的暂时假设，不是实际执行"
+            : "任意交点附近的几何示意",
+      )}
+      {line(90, 330, 680, 94, blue)}
+      {line(90, 94, 680, 330, red)}
+      {label(60, 330, "U", blue)}
+      {label(60, 105, "V", red)}
+      <Axis y={410} />
+      {line(385, 212, 385, 410, grey, true)}
+      {label(380, 455, "p")}
+      {showE ? (
+        <g>
+          {line(190, 400, 190, 420)}
+          {label(180, 455, "e")}
+        </g>
+      ) : null}
+      {showR ? (
+        <g>
+          {line(287, 160, 287, 410, grey, true)}
+          {label(280, 455, "r")}
+        </g>
+      ) : null}
+      {showW ? (
+        <g>
+          {line(250, 212, triple ? 520 : 320, 212, green)}
+          {label(195, 205, "W", green)}
+        </g>
+      ) : null}
+      {triple ? <circle cx={385} cy={212} r={7} fill={ink} /> : null}
+      {page === "squeeze" && step >= 3
+        ? label(445, 285, "同一位置、同一高度")
+        : null}
+    </g>
+  );
+}
+function Neighbors({
+  kind,
+  step,
+  active,
+  progress,
+}: {
+  kind: "start" | "end" | "swap";
+  step: number;
+  active: boolean;
+  progress: number;
+}) {
+  const before =
+    kind === "start"
+      ? ["L", "H"]
+      : kind === "end"
+        ? ["L", "U", "H"]
+        : ["L", "U", "V", "H"];
+  const after =
+    kind === "start"
+      ? ["L", "U", "H"]
+      : kind === "end"
+        ? ["L", "H"]
+        : ["L", "V", "U", "H"];
+  const changed = step >= (kind === "end" ? 1 : 2),
+    checked = step >= (kind === "end" ? 2 : 3);
+  const draw = (items: string[], x: number) =>
+    items.map((name, index) => (
+      <g key={name}>
+        {line(
+          x,
+          355 - 65 * index,
+          x + 130,
+          355 - 65 * index,
+          name === "U" ? blue : name === "V" ? red : ink,
+        )}
+        {label(x + 150, 363 - 65 * index, name)}
+      </g>
+    ));
+  return (
+    <g>
+      {label(100, 45, "局部顺序示意，从下到上")}
+      {label(90, 95, "处理前")}
+      {label(460, 95, "处理后")}
+      {draw(before, 90)}
+      {line(310, 250, 395, 250)}
+      <path d="M395 250 l-12 -6 v12 z" fill={grey} />
+      {changed ? draw(after, 460) : null}
+      {checked
+        ? after.slice(0, -1).map((_, index) =>
+            kind === "swap" && index === 1 ? null : (
+              <g key={index}>
+                {line(680, 350 - 65 * index, 680, 295 - 65 * index, "#b45309")}
+                {active ? (
+                  <AttentionMarks
+                    marks={[
+                      {
+                        kind: "line",
+                        from: [680, 350 - 65 * index],
+                        to: [680, 295 - 65 * index],
+                        color: "#b45309",
+                      },
+                    ]}
+                    progress={progress}
+                  />
+                ) : null}
+              </g>
+            ),
+          )
+        : null}
+      {label(145, 450, "缺少的外侧邻居直接跳过")}
+    </g>
+  );
+}
+function Missed({ page, step }: { page: string; step: number }) {
+  const defined = page !== "earliest" || step >= 2;
+  const hasS = page !== "earliest" && (page !== "last-adjacency" || step >= 3);
+  const registered =
+    (page === "valid-future" && step >= 3) || page === "retain-report";
+  const reported = page === "retain-report" && step >= 4;
+  return (
+    <g>
+      {label(80, 45, "最早漏点反证示意，不是执行轨迹")}
+      <Axis />
+      {defined ? (
+        <g>
+          <circle
+            cx={620}
+            cy={350}
+            r={8}
+            fill={reported ? red : "none"}
+            stroke={red}
+            strokeWidth={2}
+          />
+          {label(595, 405, "p_*", red)}
+        </g>
+      ) : null}
+      {hasS ? (
+        <g>
+          {line(175, 340, 175, 360, blue)}
+          {label(165, 405, "s", blue)}
+          {label(90, 290, "形成邻接并检查")}
+        </g>
+      ) : null}
+      {registered ? (
+        <g>
+          {line(185, 170, 610, 170, green)}
+          <path d="M610 170 l-12 -6 v12 z" fill={green} />
+          {label(270, 130, "登记或已有记录")}
+          {label(260, 220, "保留到按位置取出")}
+        </g>
+      ) : null}
+      {reported
+        ? label(370, 465, "必然报告，与漏点假设矛盾")
+        : defined
+          ? label(400, 465, "假设最早漏掉的交点")
+          : null}
     </g>
   );
 }

@@ -1,26 +1,8 @@
-import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { Sequence, useCurrentFrame } from "remotion";
 import { TeachingPage } from "./TeachingPage";
-import {
-  timelineFor,
-  visualAt,
-  audioLeadFrames,
-  type TimelineRow,
-} from "./timeline";
-import timing from "./audio-timing.json";
-import { narrationFile } from "../../../shared/speech/source";
-const audio: Record<string, { audioFile?: string }> = timing;
+import { timelineFor, visualAt, type TimelineRow } from "./timeline";
 function ShotScene({ row }: { row: TimelineRow }) {
-  const frame = useCurrentFrame();
-  return (
-    <>
-      <TeachingPage shot={row} {...visualAt(row, frame)} />
-      <Sequence from={audioLeadFrames}>
-        <Audio
-          src={staticFile("narration/" + narrationFile(row.id, audio[row.id]))}
-        />
-      </Sequence>
-    </>
-  );
+  return <TeachingPage shot={row} {...visualAt(row, useCurrentFrame())} />;
 }
 export function LessonVideo() {
   return (
@@ -30,7 +12,7 @@ export function LessonVideo() {
           key={row.id}
           from={row.from}
           durationInFrames={row.durationInFrames}
-          name={row.id}
+          name={`${pages[row.page].chapter} · ${row.action}`}
         >
           <ShotScene row={row} />
         </Sequence>
@@ -38,3 +20,4 @@ export function LessonVideo() {
     </>
   );
 }
+import { pages } from "./lesson";

@@ -1,13 +1,27 @@
 # 为什么不会漏掉交点 · 第 2 章下集
 
-依据 [#297](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/297)、
-已完成的分镜票 [#298](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/298)
-及实施票 [#300](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/300)。
-最新拆票决议以第一章为已确认参考，不另设样例批准。
+当前制作依据为 [规格 #306](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/306)
+及画面执行票 #307–#312。新版覆盖六章，保持一集；权威进度与验收记录在 CNB。
+#312 后停止，#313–#315 的独立口播、读音、配音、音画同步和成片交付需要后续明确授权。
 
-31 段独立字幕与口播，23 个教学页：高度差变号、无事件不换序、
-交叉前必相邻、新邻接必检查、最早漏点反证、不多报不重复及工作量边界。
-本集不修改算法、文章、公共 API 或执行轨迹，不把教学示意当作算法运行结果。
+## 当前制作阶段
+
+`WhyNeighbors` 是无配音画面预览。1920×1080 逻辑画布、60 fps，沿用原工程。
+54 页、192 个逐步教学行；每行保留完整表达式与对应字幕，页内累积，换页前保留
+完整内容至少三秒。两处反证思考页保留五秒页末停留。
+阅读窗口合计暂定 2224 秒（37 分 4 秒），不是实测音频或最终视频时长。
+公式推导一般留十二秒，普通解释一般九秒，思考步骤显式留十二秒；后续按实际口播、
+阅读和语义提示重新核对，不变速、不倒推伪造词时间。
+
+- 第一章：具体高度、固定相减次序、正零负的含义。
+- 第二章：两条直线分别相减、系数差与常数情形。
+- 第三章：数值数轴、一般比例、完整代数推导及两种变号方向。
+- 第四章：无事件不换序、交点前区间、夹层两侧排除与相邻性反证。
+- 第五章：三类新邻接、换序依据、最早漏点从检查到报告的反证。
+- 第六章：不多报、不重复、原始输入对身份、局部与总工作量边界。
+
+内容依据是 `docs-site/docs/segment-intersection/why-neighbors-proof.mdx`。
+图示明确区分真实数值案例、一般示意和待排除的假设，不冒充算法执行轨迹。
 
 ## 制作入口
 
@@ -15,91 +29,37 @@
 
 ```sh
 pnpm --config.verify-deps-before-run=false run lint
-pnpm --config.verify-deps-before-run=false run video:sentence-pauses
-pnpm --config.verify-deps-before-run=false run video:narration --dry-run
-pnpm --config.verify-deps-before-run=false run video:check-content --decode
+pnpm --config.verify-deps-before-run=false run video:check-content
 pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-布局检查须设置已核验匹配 Remotion 4.0.539 的 Chrome Headless Shell
-157.0.8080.0 路径至 REMOTION_BROWSER_EXECUTABLE。使用独立临时端口、无头页面；
-不渲染视频或静帧。dev 入口不自动打开可见窗口。
+布局检查须将匹配 Remotion 4.0.539 的 Chrome Headless Shell 157.0.8080.0
+真实路径设置到 `REMOTION_BROWSER_EXECUTABLE`。入口使用系统分配的独立临时端口、
+真实生产组件和无头浏览器，结束时关闭自己启动的服务；不调用视频或静帧导出。
+可用 `--shots=V-replace,V-squeeze` 限定复查范围，`--screenshots` 仅保存浏览器页面截图。
+可见窗口需要当次单独授权。
 
-## 内容与素材
+内容检查核对引用先讲后用、本页来源齐全、数学排版、逐步揭示、提示结束后保留及页末停留。
+布局检查核对每步前后、提示起中末、依据与正文边界、图示标签、字幕和页末状态。
+这些检查不能替代实际试听、音画同步、连续成片观看或可见桌面验收。
 
-- storyboard.ts：#298 的字幕与叙事分组；字幕保留自然标点。
-- lesson.ts：物理分页、完整公式、已讲依据、页末停留及片段映射。
-- narration-text.json：独立数学口语稿；sentence-plan.json 按原字幕语义区分句界。
-- speech-text.json：局部读音标注与显式句末 400ms／句内 200ms 停顿。
-- caption-plan.ts：公式字幕与多句口语说明的显式对应，不以标点数量相等代替语义。
-- ProofDiagram.tsx：一般论证的几何示意、局部邻接前后对照及最早漏点因果链。
-- teaching-cues.ts：实测短语锚点；整行先完整显示，语义提示结束后内容仍保留。
-- audio-timing.json、captions.json：由实际音频生成；不估算词时间或调整音频速度。
-- LayoutCheck.tsx：实际生产组件的逐步揭示、字幕、提示起中末、静默与页末状态。
+## 权威内容与历史素材边界
 
-字幕、数学排版、提示圈与描亮、原速 PCM 配音、时间线和检查复用 videos/shared，
-不导入相邻集专有内容。参考与证明对应见 [production-reference.md](production-reference.md)。
+- `src/storyboard.ts`：六章页面、稳定 `V-…` 标识、字幕、逐行操作说明、公式编号、直接依据和暂定阅读窗口。
+- `src/lesson.ts`：从同一分镜派生生产页面与片段，不维护第二份教学文案。
+- `src/timeline.ts`：明确标记 `provisional-visual`；不读取历史音频或字幕时间数据。
+- `src/TeachingPage.tsx`：复用 `MathLessonPage`、`TeachingMathLines`；多依据同时可查，同页与跨页来源按当前操作局部提示。
+- `src/ProofDiagram.tsx`：高度比较、比例、交点前区间、夹层假设、邻接变化及最早漏点因果示意。
+- `src/LayoutCheck.tsx`：同一生产页面的状态检查，沿用共享检查能力。
 
-## 输出配置与验收
+原 `N01–N31` WAV、`narration-text.json`、`speech-text.json`、`sentence-plan.json`、
+`audio-timing.json`、`captions.json` 原样保留为历史素材。它们不参与新版 composition，
+其既往哈希、配音评估和试听结论不代表新版已完成；旧版本制作记录可从本地 Git 历史查看。
+本次未合成、替换、评估或试听配音，也未编写独立口播稿或读音标注。
 
-1920×1080 逻辑画布、60 fps、2 倍输出，composition 为 WhyNeighbors。
-音色 zh-CN-Xiaoxiao:DragonHDFlashLatestNeural，服务直接输出 48 kHz、
-16 bit、单声道 PCM WAV。音频保留原速。
+配音、字幕时间生成和导出脚本保留为工程后续入口，但当前尚无新版音频契约。
+`video:check-content --decode` 会明确拒绝将历史音频当作新版验收；当前
+`video:preflight` 不代表新版可交付。后续阶段应先完成 #313，再按 #314 的实测素材接入。
+本阶段不提供成片导出命令，助手不渲染或导出视频及静帧。
 
-video:preflight 为独立内容、音频解码和布局检查；video:export 与
-video:export-audio 仅供用户运行，分别输出 out/why-neighbors-frames、
-out/why-neighbors-audio.wav，不覆盖已有产物。提供导出命令前遵循
-[工程操作说明](../../../docs/agents/videos/operations.md)中的配音门禁和五阶段模板。
-
-完整制作源已就绪：文本、配音评估、无头页面、用户整句试听和真实成片验收分别记录。
-工程检查不能替代试听或成片验收；助手不渲染或导出视频。
-
-初次冻结口播覆盖 31 段、184 个短句，已完成纯文本独立审核及同一标注版本的
-连续两轮独立全文盲审与历史核销。当时正文 SHA-256 为
-`77d9e21d88d8914c093eebc17d0ac69ac0e352317049dae8d04f387e2650992a`，
-标注稿 SHA-256 为
-`6e56bdcb45cb4b124b79d63995fe2ff98babaf1a3680b397c49577670c07da12`。
-字母首尾、语义句界、实际音色、PCM 输出和 SSML 拼读已检查。
-
-用户试听确认 N16 的 W 与 N26 开头“检查”漏读后，局部制作独立试听并获确认采用。
-N16 仅将 W 的合成输入改为英文 `double you`，字幕和画面仍保留 W；
-N26 开头改为“在检查这对线段时”，同步字幕及揭示锚点。
-N23、N26 的字幕及相关定义行明确 p 为横坐标，与口播含义一致。
-N18 的 p 后杂音与结尾漏读经用户试听确认；单词和原文 IPA 版本未获采用，
-最终以 IPA `piː` 朗读三个 p，并改为“在横坐标 p 对应位置的值”，
-结尾为“这就违背了简化条件”。该完整片段已获用户试听确认。
-三段原样采用已确认 WAV，不重新合成；其余 28 段复用原素材。
-
-| 采用片段 |     时长 | WAV SHA-256                                                        |
-| -------- | -------: | ------------------------------------------------------------------ |
-| N16      | 12.52 秒 | `1e93e7dcd28c244778ca095dd6034036616f36163f578c931e97ed63e54183a1` |
-| N18      | 22.81 秒 | `74ec8543e63ccd7e306528c97b9ae89772896150092bf54f2b8cd0a100db0843` |
-| N26      | 15.82 秒 | `5b0f2a58dee942c26aa8443b22a45aba8e5ed28f020c79241cf2906d231c1262` |
-
-N08 的“再把 a、t 和这个差相乘”中 a 被用户听辨为“啊”。用户确认采用 B 版：
-“再用 a 乘以 t。再乘以这个差。”保留默认字母拼读。正式 N08 在原音频
-16.880–19.010 秒的句间静音边界接入已确认的 2.670 秒样本；按 PCM 样本
-无损拼接，完整保留 B 版及范围外原声，不重新合成、不调速。
-新 N08 为 37.230 秒，SHA-256 为
-`f28b8f06098da59ede15803ae53fe0ca94c08fc566c427553ea5b3bd3ea272ef`。
-原声、B 版、拼接来源和样本偏移证据保存在 `out/narration-repairs/N08-B/`。
-已同步口播稿、语义映射、真实词时间及字幕时间；字幕仍保留数学公式。
-PCM 格式、完整解码、样本一致性、内容与时间线检查通过；N08 新音频自动评估
-为 `Mispronunciation` 8、`Omission` 0、`Insertion` 0。B 版句子已获试听采用确认，
-拼接后的完整 N08 尚未获整段试听确认。
-
-当前正式素材覆盖全部 31 段，字幕与时间线由实测数据生成：30162 帧、502.700 秒。
-类型、内容、完整解码、184 个语义句界及两个五秒思考窗口检查通过。
-无头生产页面检查覆盖 592 个状态，通过；随后同步 p 的表述，
-对受影响的 N23、N26、N27 共 57 个状态定向复查，通过。
-N18 最终采用后，对其 23 个生产状态定向复查，通过；保留其他片段有效结果。
-已查看代数推导、夹层反证、新邻接和最早漏点页面的浏览器截图；未渲染视频或静帧。
-上述无头页面结果属于 N08 本次修正前的版本；本次未重跑浏览器验收。
-当前正文 SHA-256 为 `b312b2e9c194d5f85fa06104bbf7ec5c1f4e49c83fa054ac96ea428b96b01e7d`，
-标注稿为 `db18ad0fa1bc5ce437836d5dd27bcd48f458283d92161825469ad315feee34be`。
-
-全片自动评估覆盖 31/31，结果位于 `out/narration-audit/`：
-`Mispronunciation` 43、`Omission` 0、`Insertion` 0；其中 N16 为三类均零，
-N18 为 3、0、0，N26 为 2、0、0。自动发音标记不等同于实际听辨错误。
-已确认的漏读及 p 后杂音通过局部试听修复，原版与未采用试验保留为诊断证据。
-N16、N18、N26 已获试听采用确认；全片实际试听及真实成片验收尚未完成，属于后续交付阶段。
+参考继承见 [production-reference.md](production-reference.md)。
