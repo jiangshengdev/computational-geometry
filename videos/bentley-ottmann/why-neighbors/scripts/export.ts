@@ -4,5 +4,5 @@ import { exportVideo } from "../../../shared/tools/export.ts";
 await exportVideo(
   fileURLToPath(new URL("../", import.meta.url)),
   "WhyNeighbors",
-  "out/why-neighbors-frames",
+  "out/why-neighbors-306-frames",
 );

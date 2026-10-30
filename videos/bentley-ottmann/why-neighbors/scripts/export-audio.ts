@@ -4,6 +4,6 @@ import { exportVideo } from "../../../shared/tools/export.ts";
 await exportVideo(
   fileURLToPath(new URL("../", import.meta.url)),
   "WhyNeighbors",
-  "out/why-neighbors-audio.wav",
+  "out/why-neighbors-306-audio.wav",
   "audio",
 );
