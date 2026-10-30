@@ -1,22 +1,64 @@
 {
   "V-opening": [
     {
-      "text": "上集跟完一个案例，这次要说明每一组满足条件的输入为什么都成立。",
+      "text": "上集跟完了一个具体案例。",
       "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这一集要证明，每一组满足本章条件的输入，",
+      "startMs": 2228,
+      "endMs": 6188,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为什么都不会漏掉交点。",
+      "startMs": 6468,
       "endMs": 8388,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "前三步先建立几何事实，再把它与扫描规则连接起来。",
+      "text": "先研究高度差，再证明没有事件就不会换序，",
       "startMs": 8859,
+      "endMs": 12737,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接着证明两条线段交叉之前必定相邻。",
+      "startMs": 13028,
       "endMs": 16628,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "后面用反证排除第一个漏点，最后说明不多报、不重复和工作量边界。",
+      "text": "然后把几何结论接到扫描规则。",
       "startMs": 17069,
+      "endMs": 19509,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "假设存在第一个漏点，",
+      "startMs": 19818,
+      "endMs": 21618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一步步推出矛盾。",
+      "startMs": 21888,
+      "endMs": 23248,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最后说明不多报、不重复和工作量的边界。",
+      "startMs": 23508,
       "endMs": 26708,
       "timestampMs": null,
       "confidence": null
@@ -24,36 +66,78 @@
   ],
   "V-conditions": [
     {
-      "text": "本章只讨论有限条有长度、不竖直的线段，水平线段可以出现。",
+      "text": "本章的线段只有有限条，",
       "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每条都有长度，而且都不竖直。",
+      "startMs": 2428,
+      "endMs": 5148,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水平线段可以出现。",
+      "startMs": 5418,
       "endMs": 7018,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "不允许线段重叠、端点落在另一段上，或三条以上线段共点。",
+      "text": "我们排除线段重叠，也排除端点落在另一条线段上的接触，",
       "startMs": 7459,
+      "endMs": 12327,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还排除三条或更多线段经过同一个点。",
+      "startMs": 12628,
       "endMs": 15507,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "因此一次只处理一个开始、结束或两线交叉。",
+      "text": "此外，所有端点和交点的横坐标各不相同。",
       "startMs": 15969,
+      "endMs": 19770,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此一次事件只会是一条线段开始、一条线段结束，",
+      "startMs": 19943,
+      "endMs": 24103,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "或者两条线段交叉。",
+      "startMs": 24363,
       "endMs": 26163,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "完整算法还要处理更复杂的输入。",
+      "text": "完整算法还需要处理更复杂的输入。",
       "startMs": 26654,
       "endMs": 29453,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把这些条件保留下来，后面的排除步骤会明确引用它们。",
+      "text": "后面的证明只在这些条件下进行。",
       "startMs": 29924,
+      "endMs": 32564,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每次排除一种可能，都会说明用了其中哪条条件。",
+      "startMs": 32923,
       "endMs": 37193,
       "timestampMs": null,
       "confidence": null
@@ -61,29 +145,85 @@
   ],
   "V-recall": [
     {
-      "text": "当前与扫描线相交的线段叫活动线段，高度从下到上的排列叫活动顺序。",
+      "text": "扫描线从左向右移动。",
       "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "当前与扫描线相交的线段叫活动线段，",
+      "startMs": 2328,
+      "endMs": 5928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "按照高度从下往上排列，",
+      "startMs": 6198,
+      "endMs": 8437,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就是活动顺序。",
+      "startMs": 8758,
       "endMs": 9918,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "邻居中间没有其他活动线段。",
+      "text": "两条活动线段之间没有别的活动线段，",
       "startMs": 10359,
+      "endMs": 13118,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们才是直接相邻的邻居。",
+      "startMs": 13408,
       "endMs": 15208,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "端点和交点的位置叫扫描事件。",
+      "text": "端点和交点所在的位置叫扫描事件。",
       "startMs": 15699,
       "endMs": 18739,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "端点一开始就已知；检查发现真实未来交点后登记，到达时再报告。",
+      "text": "所有端点一开始就登记到待处理清单。",
       "startMs": 19219,
+      "endMs": 22179,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查发现真实的未来交点后，",
+      "startMs": 22468,
+      "endMs": 24827,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也把它登记进去。",
+      "startMs": 25138,
+      "endMs": 26218,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同一交叉只保留一份记录，",
+      "startMs": 26508,
+      "endMs": 28588,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保留到按位置取出，到达时再报告。",
+      "startMs": 28878,
       "endMs": 32038,
       "timestampMs": null,
       "confidence": null
@@ -91,28 +231,98 @@
   ],
   "V-heights": [
     {
-      "text": "仍用上集的 A 和 C：A 的高度为 1，C 的高度为 8 减 x。",
+      "text": "回到上集的线段 A 和线段 C。",
       "startMs": 70,
+      "endMs": 2640,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前者高度始终为 1，",
+      "startMs": 2828,
+      "endMs": 4620,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后者的高度是 8 减去横坐标 x 的值。",
+      "startMs": 4748,
       "endMs": 7908,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "y_C(x) 表示 C 在横坐标 x 处的高度；括号不是乘法。",
+      "text": "画面里的 y 下标 C，",
       "startMs": 8339,
+      "endMs": 10090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "括号中写了字母 x，",
+      "startMs": 10288,
+      "endMs": 12128,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "整个记号表示线段 C 在横坐标 x 处的高度。",
+      "startMs": 12408,
+      "endMs": 16207,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下标指出线段，括号指出取高度的位置，",
+      "startMs": 16478,
+      "endMs": 20157,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里不是乘法。",
+      "startMs": 20418,
       "endMs": 21618,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把 6 代入，C 比 A 高。",
+      "text": "把横坐标 6 代进去，",
       "startMs": 22109,
+      "endMs": 23789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 C 的高度是 8 − 6，",
+      "startMs": 24108,
+      "endMs": 26308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是 2。",
+      "startMs": 26578,
+      "endMs": 27418,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 A 的高度还是 1，",
+      "startMs": 27698,
+      "endMs": 29888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此前者更高。",
+      "startMs": 29898,
       "endMs": 31378,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "接下来把这种比较写成一个差。",
+      "text": "接下来把比较写成一个差。",
       "startMs": 31709,
       "endMs": 33778,
       "timestampMs": null,
@@ -121,22 +331,78 @@
   ],
   "V-define-ca": [
     {
-      "text": "给差取名 d_CA；下标 CA 提醒相减次序是 C 减 A。",
+      "text": "用字母 d 表示差，",
       "startMs": 70,
+      "endMs": 1550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它的下标依次写 C 和 A 两个字母，",
+      "startMs": 1878,
+      "endMs": 4780,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "提醒我们固定用线段 C 的高度，",
+      "startMs": 4948,
+      "endMs": 7227,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减去线段 A 的高度。",
+      "startMs": 7518,
+      "endMs": 9238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "括号仍然表示计算位置。",
+      "startMs": 9538,
       "endMs": 11738,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "分别代入两个高度，再去括号，仍是同一个差。",
+      "text": "代入两个高度，先用 8 减去当前位置，",
       "startMs": 12179,
+      "endMs": 15678,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再减去高度 1。",
+      "startMs": 15948,
+      "endMs": 17268,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "去掉前面的括号，相减次序保持不变。",
+      "startMs": 17568,
       "endMs": 21018,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "合并常数 8 减 1，得到编号(1)；之后用它判断上下关系。",
+      "text": "把 8 − 1 合并成 7，",
       "startMs": 21479,
+      "endMs": 23360,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就得到编号(1)的案例高度差。",
+      "startMs": 23528,
+      "endMs": 25648,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以后用这个差的正负判断上下关系。",
+      "startMs": 26098,
       "endMs": 29058,
       "timestampMs": null,
       "confidence": null
@@ -144,29 +410,92 @@
   ],
   "V-signs-example": [
     {
-      "text": "在 6 处，差为正，C 在 A 上方。",
+      "text": "横坐标是 6 时，高度差是 2 − 1，",
       "startMs": 70,
+      "endMs": 3348,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果为 +1。",
+      "startMs": 3648,
+      "endMs": 4780,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此线段 C 在线段 A 上方。",
+      "startMs": 4918,
       "endMs": 7438,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "在 7 处，两者等高，交点是 P=(7,1)。",
+      "text": "横坐标是 7 时，两个高度都是 1，",
       "startMs": 7909,
+      "endMs": 11030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "高度差为 0。",
+      "startMs": 11278,
+      "endMs": 12478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这时得到交点 P，它的横坐标是 7，",
+      "startMs": 12748,
+      "endMs": 16070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标是 1。",
+      "startMs": 16238,
       "endMs": 17530,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "在 8 处仍用 C 减 A，差为负，C 到了 A 下方。",
+      "text": "横坐标是 8 时，仍然用线段 C 的高度减去线段 A 的高度，",
       "startMs": 17879,
+      "endMs": 23077,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 0 − 1，也就是 −1。",
+      "startMs": 23348,
+      "endMs": 25888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此线段 C 已经到了下方。",
+      "startMs": 26188,
       "endMs": 28308,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "不能临时改成上面减下面，否则会丢掉顺序颠倒的信息。",
+      "text": "高度差可以为负，它不是永远非负的距离。",
       "startMs": 28779,
+      "endMs": 32458,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能临时改成上面的高度减下面的高度，",
+      "startMs": 32748,
+      "endMs": 35748,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "否则正负就不能记录上下顺序的颠倒。",
+      "startMs": 36018,
       "endMs": 38777,
       "timestampMs": null,
       "confidence": null
@@ -174,29 +503,127 @@
   ],
   "V-general-lines": [
     {
-      "text": "现在离开具体案例，选定任意两条不竖直的线段 U、V。",
+      "text": "现在离开具体案例，任意选定两条不竖直的线段，",
       "startMs": 70,
+      "endMs": 3928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分别叫线段 U 和线段 V，",
+      "startMs": 4198,
+      "endMs": 6477,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用对应的下标区分它们。",
+      "startMs": 6768,
       "endMs": 8688,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两条所在直线分别有自己的斜率和常数项；四个系数固定，x 可以变化。",
+      "text": "编号(2)写出两条所在直线。",
       "startMs": 9159,
+      "endMs": 11398,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "字母 m 表示斜率，",
+      "startMs": 11708,
+      "endMs": 13308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "字母 b 表示常数项，",
+      "startMs": 13578,
+      "endMs": 15418,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下标 U 或 V 指明属于哪条直线。",
+      "startMs": 15698,
+      "endMs": 18537,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这四个系数分别固定，",
+      "startMs": 18818,
+      "endMs": 20578,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标 x 可以变化。",
+      "startMs": 20838,
       "endMs": 22638,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "始终用 V 减 U；d(x) 只指这一对的差，案例仍用 d_CA(x)。",
+      "text": "编号(3)定义一般高度差，",
       "startMs": 23129,
+      "endMs": 25009,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "始终用线段 V 的高度减去线段 U 的高度，",
+      "startMs": 25478,
+      "endMs": 28958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作字母 d 在位置 x 处的值。",
+      "startMs": 29248,
+      "endMs": 31808,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "具体案例仍保留下标 CA，",
+      "startMs": 32068,
+      "endMs": 34347,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会与这一对混淆。",
+      "startMs": 34638,
       "endMs": 36158,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "先把符号与高低关系连起来，再研究这个差怎样随位置变化。",
+      "text": "差为正，线段 V 在上方；",
       "startMs": 36629,
+      "endMs": 39258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "差为零，两段等高；",
+      "startMs": 39548,
+      "endMs": 41818,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "差为负，线段 V 在下方。",
+      "startMs": 42138,
+      "endMs": 44788,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面研究这个差怎样随位置变化。",
+      "startMs": 45078,
       "endMs": 47877,
       "timestampMs": null,
       "confidence": null
@@ -204,29 +631,99 @@
   ],
   "V-subtract": [
     {
-      "text": "把(2)的两个高度代入(3)，减号后是整个 U 的表达式。",
+      "text": "把编号(2)的两条直线表达式，",
       "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "代入编号(3)的高度差定义。",
+      "startMs": 2628,
+      "endMs": 4828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "注意减去的是线段 U 的整个高度表达式。",
+      "startMs": 5098,
       "endMs": 8258,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "去掉减号后的括号，两项都要变号，不能只改第一项。",
+      "text": "去掉减号后面的括号，",
       "startMs": 8689,
+      "endMs": 10529,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "里面两项都要变号。",
+      "startMs": 10838,
+      "endMs": 12438,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是减去一个和的运算规则，",
+      "startMs": 12708,
+      "endMs": 14947,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能只改第一项。",
+      "startMs": 15228,
       "endMs": 16588,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把含 x 的项放在一起，常数项放在一起，为提取共同因子作准备。",
+      "text": "把含横坐标的两项放在一起，",
       "startMs": 17019,
+      "endMs": 19500,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再把两个常数项放在一起，",
+      "startMs": 19668,
+      "endMs": 21780,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这样就能看清共同因子。",
+      "startMs": 21938,
       "endMs": 23860,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "用分配律反向提取共同的 x，两个系数差现在都看清了。",
+      "text": "反过来使用分配律，把共同的横坐标因子提出来。",
       "startMs": 24179,
+      "endMs": 28278,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "于是横坐标前面是两个斜率的差，",
+      "startMs": 28588,
+      "endMs": 31108,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后面是两个常数项的差，",
+      "startMs": 31568,
+      "endMs": 33448,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两处都保持线段 V 减线段 U 的次序。",
+      "startMs": 33838,
       "endMs": 37077,
       "timestampMs": null,
       "confidence": null
@@ -234,35 +731,98 @@
   ],
   "V-abbreviate": [
     {
-      "text": "希腊字母 \\alpha 和 \\beta 分别记作这两个系数差，不是新增的直线系数。",
+      "text": "用两个希腊字母作简写。",
       "startMs": 70,
+      "endMs": 2220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一个读作 \\alpha，",
+      "startMs": 2378,
+      "endMs": 3658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "表示线段 V 的斜率减去线段 U 的斜率；",
+      "startMs": 4048,
+      "endMs": 7287,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二个读作 \\beta，",
+      "startMs": 7568,
+      "endMs": 8848,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "表示线段 V 的常数项减去线段 U 的常数项。",
+      "startMs": 9188,
+      "endMs": 12868,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "编号(4)记录了这两个定义。",
+      "startMs": 13158,
       "endMs": 15117,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把刚才的两个差替换为简写，得到(5)。",
+      "text": "把两个系数差换成简写，",
       "startMs": 15549,
+      "endMs": 17709,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就得到编号(5)的高度差式。",
+      "startMs": 18048,
+      "endMs": 20287,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先用斜率差乘以横坐标，",
+      "startMs": 20568,
+      "endMs": 22608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加常数项差。",
+      "startMs": 22888,
       "endMs": 24248,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "后面只需研究这一条高度差式。",
+      "text": "后面研究这一条式子就够了。",
       "startMs": 24779,
       "endMs": 26899,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "\\beta 与 b_U、b_V 是不同的量。",
+      "text": "注意常数项差，并不是某一条直线自己的常数项，",
       "startMs": 27399,
+      "endMs": 31447,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它由两个常数项相减得到。",
+      "startMs": 31718,
       "endMs": 33758,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "符号不会换页后重新赋义。",
+      "text": "这些符号以后都保持同一个含义。",
       "startMs": 34209,
       "endMs": 36488,
       "timestampMs": null,
@@ -271,28 +831,42 @@
   ],
   "V-constant": [
     {
-      "text": "若 \\alpha 为零，位置怎样变，差都是 \\beta。",
+      "text": "先看斜率差为零的情况。",
       "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "编号(5)中，零乘任何横坐标还是零，",
+      "startMs": 2228,
+      "endMs": 5538,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以高度差始终等于常数项差。",
+      "startMs": 5818,
       "endMs": 8137,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "\\beta 为正，V 始终在 U 上方。",
+      "text": "常数项差为正，说明线段 V 始终比线段 U 高。",
       "startMs": 8609,
       "endMs": 12908,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "\\beta 为负，V 始终在 U 下方。",
+      "text": "常数项差为负，说明线段 V 始终比线段 U 低。",
       "startMs": 13349,
       "endMs": 17930,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "这两种都不会换序。",
+      "text": "这两种情况都不会交换上下顺序。",
       "startMs": 18289,
       "endMs": 21568,
       "timestampMs": null,
@@ -301,29 +875,99 @@
   ],
   "V-coincident": [
     {
-      "text": "两个系数差都为零，两条所在直线的斜率、常数项分别相同。",
+      "text": "如果两个系数差都是零，",
       "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "说明两条直线的斜率相同，",
+      "startMs": 2178,
+      "endMs": 4298,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "常数项也相同。",
+      "startMs": 4598,
       "endMs": 5878,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "此时在相同横坐标处高度都相同。",
+      "text": "因此在相同横坐标处，",
       "startMs": 6339,
+      "endMs": 8630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们的高度总是相等，",
+      "startMs": 8838,
+      "endMs": 10438,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是两条所在直线完全重合。",
+      "startMs": 10708,
       "endMs": 13107,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "本章已排除重叠，所以接下来共同区间内的变号不会来自常数差。",
+      "text": "如果两条线段还共同覆盖一段非零长度的区间，",
       "startMs": 13599,
+      "endMs": 17239,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们就在这段区间重叠。",
+      "startMs": 17548,
+      "endMs": 19308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本章已经排除了重叠，",
+      "startMs": 19618,
+      "endMs": 21378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以后面共同区间里的变号，",
+      "startMs": 21638,
+      "endMs": 23957,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会来自常数差。",
+      "startMs": 24258,
       "endMs": 25538,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "常数情形已经处理完；下面要找变化中的差何时等于零。",
+      "text": "常数情形已经处理完。",
       "startMs": 26199,
+      "endMs": 27959,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "真正发生变号时，斜率差不为零。",
+      "startMs": 28248,
+      "endMs": 31518,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面要找变化中的高度差什么时候等于零。",
+      "startMs": 31788,
       "endMs": 35187,
       "timestampMs": null,
       "confidence": null
@@ -331,36 +975,92 @@
   ],
   "V-common-interval": [
     {
-      "text": "用 u、v 表示左右两个位置。",
+      "text": "把左端位置叫作小写字母 u，",
       "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端位置叫作小写字母 v，",
+      "startMs": 2728,
+      "endMs": 5047,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前者严格小于后者。",
+      "startMs": 5348,
       "endMs": 7110,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "要求两条线段覆盖从 u 到 v，连同两端。",
+      "text": "两条线段必须覆盖从左端到右端的整个区间，",
       "startMs": 7439,
+      "endMs": 11278,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "连两端也包含在内。",
+      "startMs": 11588,
       "endMs": 13268,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把 u、v 分别代入(5)，就是两个端点位置的高度差，括号不是乘法。",
+      "text": "把这两个位置分别代入编号(5)，",
       "startMs": 13729,
+      "endMs": 16550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(6)的两端高度差。",
+      "startMs": 16728,
+      "endMs": 18768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "字母 d 后面的括号指出取哪个位置，",
+      "startMs": 19398,
+      "endMs": 22157,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并不是乘法。",
+      "startMs": 22418,
       "endMs": 23418,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "先研究左端差为正、右端差为负。",
+      "text": "先研究左端高度差为正，",
       "startMs": 23959,
+      "endMs": 25959,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端高度差为负的情况。",
+      "startMs": 26358,
       "endMs": 28317,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "目标是找到中间差为零的位置。",
+      "text": "目标是在两个位置之间，",
       "startMs": 28749,
+      "endMs": 30669,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "找到高度差为零的位置。",
+      "startMs": 30998,
       "endMs": 32998,
       "timestampMs": null,
       "confidence": null
@@ -368,22 +1068,85 @@
   ],
   "V-numeric-distance": [
     {
-      "text": "先看独立的数值例子：从 2 走到 10，全程为 8。",
+      "text": "先用数轴上的具体数值认识比例。",
       "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "从 2 走到 10，",
+      "startMs": 2828,
+      "endMs": 4068,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "全程是 10 − 2，",
+      "startMs": 4348,
+      "endMs": 5748,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到 8。",
+      "startMs": 6018,
       "endMs": 6698,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "走了全程的四分之一，已走部分是 2；图中两段长度从同一起点量起。",
+      "text": "走全程的四分之一，就是用四分之一乘 8，",
       "startMs": 7409,
+      "endMs": 10848,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "已经走了 2。",
+      "startMs": 11178,
+      "endMs": 12220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图中的全程和已走部分，",
+      "startMs": 12448,
+      "endMs": 14288,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都从同一个起点量起。",
+      "startMs": 14618,
       "endMs": 16560,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "当前位置要把起点加回来，得到 4，不能只把路程当作坐标。",
+      "text": "当前位置还要加上起点 2，",
       "startMs": 16909,
+      "endMs": 19268,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "于是得到 4。",
+      "startMs": 19598,
+      "endMs": 20638,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "走过的长度是 2，当前位置是 4，",
+      "startMs": 20928,
+      "endMs": 24008,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两者不能混淆。",
+      "startMs": 24268,
       "endMs": 25468,
       "timestampMs": null,
       "confidence": null
@@ -391,35 +1154,91 @@
   ],
   "V-position": [
     {
-      "text": "从 u 到 v 的全程是 v 减 u，因为右端较大，所以全程为正。",
+      "text": "回到一般区间，用右端位置减左端位置，",
       "startMs": 70,
+      "endMs": 3817,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到全程。",
+      "startMs": 4098,
+      "endMs": 5098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端更大，所以全程是正数。",
+      "startMs": 5368,
       "endMs": 8118,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "例如四分之一，就是走了全程的四分之一；这是引入 t 的用途。",
+      "text": "用字母 t 表示比例，",
       "startMs": 8579,
+      "endMs": 10259,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就是已走部分占全程的多少。",
+      "startMs": 10578,
+      "endMs": 13058,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "例如走了全程的四分之一，",
+      "startMs": 13348,
+      "endMs": 15530,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "比例就是四分之一。",
+      "startMs": 15668,
+      "endMs": 17150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们引入这个量来描述中间位置。",
+      "startMs": 17288,
       "endMs": 20080,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "全程乘以比例，得到已经走过的部分。",
+      "text": "先求出全程，再用比例乘以这个全程，",
       "startMs": 20429,
+      "endMs": 23958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果就是已经走过的部分。",
+      "startMs": 24248,
       "endMs": 26088,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "再加起点 u，就得到当前位置(7)。",
+      "text": "把已走部分加到左端位置上，",
       "startMs": 26589,
+      "endMs": 29029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就得到编号(7)的位置表达式。",
+      "startMs": 29338,
       "endMs": 31617,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "下一页检查它何时在两端之间。",
+      "text": "下一页检查这个位置什么时候严格处在两端之间。",
       "startMs": 32079,
       "endMs": 35759,
       "timestampMs": null,
@@ -428,29 +1247,99 @@
   ],
   "V-position-range": [
     {
-      "text": "比例为零时没出发，为一时到达右端。",
+      "text": "比例为 0，还在左端；",
       "startMs": 70,
+      "endMs": 2208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "比例为 1，走完了全程，",
+      "startMs": 2498,
+      "endMs": 4808,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "正好到右端。",
+      "startMs": 5088,
       "endMs": 6088,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "比例严格在零与一之间时，乘上正数全程，不等号方向不变。",
+      "text": "现在让比例严格在 0 与 1 之间。",
       "startMs": 6529,
+      "endMs": 8888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不等式的三部分都乘上正数全程，",
+      "startMs": 9178,
+      "endMs": 11977,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大小方向不变。",
+      "startMs": 12248,
+      "endMs": 13528,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "已走部分就严格大于 0，",
+      "startMs": 13868,
+      "endMs": 15948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又小于全程。",
+      "startMs": 16238,
       "endMs": 17518,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "三部分都加上起点 u，就变成位置的大小关系。",
+      "text": "再给三部分都加上左端位置，",
       "startMs": 17979,
+      "endMs": 20218,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间就变成当前位置。",
+      "startMs": 20528,
+      "endMs": 22168,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边的左端加全程，正好是右端位置。",
+      "startMs": 22498,
       "endMs": 25898,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "记住(8)：只需找到零与一之间的比例，就能找到内部位置。",
+      "text": "这就是编号(8)的位置范围。",
       "startMs": 26359,
+      "endMs": 28159,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只要求出的比例严格在 0 与 1 之间，",
+      "startMs": 28458,
+      "endMs": 31257,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "对应位置就一定在区间内部。",
+      "startMs": 31528,
       "endMs": 33807,
       "timestampMs": null,
       "confidence": null
@@ -458,22 +1347,78 @@
   ],
   "V-substitution": [
     {
-      "text": "已知两端的正负，变形是为了用上这些条件，而不是只做计算。",
+      "text": "我们已经知道两端高度差的正负，",
       "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以要把中间的高度差，",
+      "startMs": 2678,
+      "endMs": 4398,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "改写成与两端高度差有关的式子，",
+      "startMs": 4798,
+      "endMs": 7680,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这样才能用上已知条件。",
+      "startMs": 7868,
       "endMs": 9668,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把(7)的完整位置代入(5)中的 x；左右两处表示同一个位置。",
+      "text": "把编号(7)的完整位置表达式，",
       "startMs": 10109,
+      "endMs": 12468,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "代入编号(5)的横坐标。",
+      "startMs": 12758,
+      "endMs": 14598,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左边括号内和右边被乘的整体，",
+      "startMs": 14878,
+      "endMs": 17478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "必须表示同一个位置。",
+      "startMs": 17798,
       "endMs": 19438,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "按分配律展开外层括号，\\alpha 分别乘两项。",
+      "text": "使用分配律展开外层括号，",
       "startMs": 19889,
+      "endMs": 22369,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "斜率差分别乘左端位置和已走部分，",
+      "startMs": 22688,
+      "endMs": 25848,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加上原来的常数项差。",
+      "startMs": 26158,
       "endMs": 28038,
       "timestampMs": null,
       "confidence": null
@@ -481,28 +1426,63 @@
   ],
   "V-grouping": [
     {
-      "text": "接上前页的展开式，下面只重新分组，不改变数值。",
+      "text": "接着前页的展开结果，",
       "startMs": 70,
+      "endMs": 1810,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来只调整分组，每一步都保持数值不变。",
+      "startMs": 1978,
       "endMs": 5968,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把 \\alpha 乘 u 与 \\beta 放在一起；交换乘积因子，把 t 放前面。",
+      "text": "把斜率差乘左端位置所得的乘积，",
       "startMs": 6439,
+      "endMs": 9420,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与常数项差放在一起。",
+      "startMs": 9628,
+      "endMs": 11500,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "另外一项交换乘法因子的顺序，",
+      "startMs": 11658,
+      "endMs": 14298,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把比例放在前面。",
+      "startMs": 14578,
       "endMs": 15978,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "再展开 \\alpha 乘以全程，得到(9)。",
+      "text": "再用分配律，展开斜率差与全程的乘积，",
       "startMs": 16419,
+      "endMs": 20450,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(9)。",
+      "startMs": 20638,
       "endMs": 21678,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "第一个括号就是左端的差。",
+      "text": "第一个括号正是编号(6)里的左端高度差。",
       "startMs": 22129,
       "endMs": 25008,
       "timestampMs": null,
@@ -511,29 +1491,71 @@
   ],
   "V-end-difference": [
     {
-      "text": "用(6)写出两端高度差之差，减去左端的整个括号。",
+      "text": "再单独处理编号(9)的第二个括号。",
       "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用编号(6)，写出右端高度差减左端高度差，",
+      "startMs": 2928,
+      "endMs": 7170,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里减去的是左端的整个表达式。",
+      "startMs": 7368,
       "endMs": 9968,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "去括号时把后面两项都变号。",
+      "text": "去掉减号后的括号，斜率差乘左端位置这一项要变号，",
       "startMs": 10409,
+      "endMs": 15558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后面的常数项差也要变号。",
+      "startMs": 15828,
       "endMs": 18028,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把常数移到一起，它们相减为零。",
+      "text": "把两个常数项差放到一起，",
       "startMs": 18519,
+      "endMs": 20860,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们是同一个数相减，",
+      "startMs": 21018,
+      "endMs": 22618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果为零。",
+      "startMs": 23098,
       "endMs": 24178,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "消去相同的常数项，得到(10)；它恰好对应(9)的第二个括号。",
+      "text": "消去这两项，得到编号(10)的两端之差。",
       "startMs": 24629,
+      "endMs": 27948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它恰好就是编号(9)的第二个括号。",
+      "startMs": 28548,
       "endMs": 30988,
       "timestampMs": null,
       "confidence": null
@@ -541,29 +1563,85 @@
   ],
   "V-replace": [
     {
-      "text": "用(6)，把第一个括号辨认为左端高度差。",
+      "text": "先看编号(6)，斜率差乘左端位置，",
       "startMs": 70,
+      "endMs": 3408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加常数项差，正是左端高度差。",
+      "startMs": 3698,
       "endMs": 6870,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "用(10)，把第二个括号辨认为两端高度差之差。",
+      "text": "再看编号(10)，右端高度差减左端高度差，",
       "startMs": 7159,
+      "endMs": 11308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "正是展开式里的第二个括号。",
+      "startMs": 11628,
+      "endMs": 13708,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "减法次序不能颠倒。",
+      "startMs": 13998,
       "endMs": 15638,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把两处同时代回(9)，得到(11)。",
+      "text": "把这两处对应关系同时代回编号(9)，",
       "startMs": 16139,
+      "endMs": 19058,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(11)。",
+      "startMs": 19388,
+      "endMs": 20760,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先求右端高度差减左端高度差，",
+      "startMs": 20958,
+      "endMs": 23837,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再用比例乘以所得的差，",
+      "startMs": 24328,
+      "endMs": 26048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最后加上左端高度差。",
+      "startMs": 26498,
       "endMs": 28258,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "这是推导出的恒等式，对每个比例 t 都成立。",
+      "text": "这个等式是逐步推导出来的，",
       "startMs": 28839,
+      "endMs": 31058,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "对每个比例都成立。",
+      "startMs": 31278,
       "endMs": 32678,
       "timestampMs": null,
       "confidence": null
@@ -571,29 +1649,85 @@
   ],
   "V-zero-equation": [
     {
-      "text": "两个高度相等，固定相减的结果就是零，所以令(11)右边等于零。",
+      "text": "想让两段等高，就要让高度差为零。",
       "startMs": 70,
+      "endMs": 3088,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此让编号(11)的右边等于零，",
+      "startMs": 3348,
+      "endMs": 6107,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来求出所需的比例。",
+      "startMs": 6368,
       "endMs": 8327,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "方程两边都减去 d(u)，把与 t 无关的项移到左边。",
+      "text": "方程两边都减去左端高度差，",
       "startMs": 8809,
+      "endMs": 11289,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把不含比例的那一项移到左边。",
+      "startMs": 11708,
       "endMs": 13987,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两边乘负一，右侧括号内两项都变号。",
+      "text": "再把两边都乘 −1，",
       "startMs": 14449,
+      "endMs": 16220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左边恢复为左端高度差，",
+      "startMs": 16398,
+      "endMs": 18318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边括号里的两项都变号。",
+      "startMs": 18768,
       "endMs": 20808,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "交换括号内两项的位置，得到(12)，为除去 t 的系数作准备。",
+      "text": "交换括号里两个加数的位置，",
       "startMs": 21259,
+      "endMs": 23770,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(12)。",
+      "startMs": 23958,
+      "endMs": 25198,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "此时比例的系数，是左端高度差减右端高度差，",
+      "startMs": 25518,
+      "endMs": 29858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来要除以这个系数。",
+      "startMs": 30268,
       "endMs": 32227,
       "timestampMs": null,
       "confidence": null
@@ -601,29 +1735,99 @@
   ],
   "V-division": [
     {
-      "text": "右端的差是负数，取相反数得到正数。",
+      "text": "先证明这个系数不为零。",
       "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端高度差为负，取它的相反数，",
+      "startMs": 2328,
+      "endMs": 5398,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就得到正数。",
+      "startMs": 5668,
       "endMs": 6868,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "左端的正数再加一个正数，因此 t 的系数比左端的差更大，也不为零。",
+      "text": "左端高度差本来为正，",
       "startMs": 7309,
+      "endMs": 9069,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加上刚才这个正数，",
+      "startMs": 9408,
+      "endMs": 11048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果比左端高度差更大。",
+      "startMs": 11328,
+      "endMs": 13008,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此这个系数一定为正，",
+      "startMs": 13298,
+      "endMs": 15098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会为零。",
+      "startMs": 15418,
       "endMs": 16378,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "现在才能把(12)两边同除以这个非零系数。",
+      "text": "除数不为零，现在才可以把编号(12)的两边，",
       "startMs": 16809,
+      "endMs": 20717,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同除以这个系数，右边只剩下比例。",
+      "startMs": 20978,
       "endMs": 24028,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把 t 写在左侧，得到(13)；还需要检查比例是否在零与一之间。",
+      "text": "把比例写到等号左边，",
       "startMs": 24489,
+      "endMs": 26169,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(13)。",
+      "startMs": 26488,
+      "endMs": 27768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子是左端高度差，分母是左端高度差减右端高度差所得的整个差。",
+      "startMs": 28058,
+      "endMs": 33997,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还要检查这个比例是不是严格在 0 与 1 之间。",
+      "startMs": 34448,
       "endMs": 37847,
       "timestampMs": null,
       "confidence": null
@@ -631,22 +1835,64 @@
   ],
   "V-positive-range": [
     {
-      "text": "由正变负条件，分子是正数，分母更大且为正。",
+      "text": "在左正右负的条件下，",
       "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分子为正，分母也是正数，",
+      "startMs": 2128,
+      "endMs": 4848,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而且比分子更大。",
+      "startMs": 5118,
       "endMs": 6438,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "三部分同除以正的分母，方向不变；右端自己除自己为一。",
+      "text": "不等式的三部分同除以正的分母，",
       "startMs": 6909,
+      "endMs": 9720,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "大小方向不变。",
+      "startMs": 9908,
+      "endMs": 11228,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边自己除以自己，等于 1。",
+      "startMs": 11528,
       "endMs": 14150,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "所以解出的 t 满足(8)，中间位置确实严格落在两端之间。",
+      "text": "所以求出的比例严格在 0 与 1 之间。",
       "startMs": 14489,
+      "endMs": 16888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "由编号(8)的位置范围，",
+      "startMs": 17238,
+      "endMs": 18998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "对应位置确实在两端内部。",
+      "startMs": 19258,
       "endMs": 21537,
       "timestampMs": null,
       "confidence": null
@@ -654,29 +1900,85 @@
   ],
   "V-verify-zero": [
     {
-      "text": "把(13)代回(11)右边，确认求出的比例真让高度差为零。",
+      "text": "把编号(13)求出的比例，",
       "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "代回编号(11)，检验它是否真的让高度差等于零。",
+      "startMs": 2278,
       "endMs": 6727,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两个相反次序的差互为相反数，乘积因此变成负的 d(u)。",
+      "text": "右端差减左端差，恰好是左端差减右端差的相反数。",
       "startMs": 7230,
+      "endMs": 12107,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此把右端差减左端差所得的差，",
+      "startMs": 12408,
+      "endMs": 15207,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与分式相乘，得到左端高度差的相反数。",
+      "startMs": 15708,
       "endMs": 19398,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "相同两项抵消，得零，所以两条线段在这个横坐标处等高。",
+      "text": "再加上前面的左端高度差，",
       "startMs": 19839,
+      "endMs": 21879,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两项抵消得到零。",
+      "startMs": 22388,
+      "endMs": 23988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此两段在这个横坐标处等高。",
+      "startMs": 24258,
       "endMs": 26938,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "位置在内部，而且两条线段在那里都存在，因此是线段交点。",
+      "text": "这个位置在区间内部，",
       "startMs": 27399,
+      "endMs": 29199,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条线段又都覆盖整个区间，",
+      "startMs": 29498,
+      "endMs": 31978,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这里是线段本身的交点，",
+      "startMs": 32268,
+      "endMs": 34428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是只在延长线上相交。",
+      "startMs": 34688,
       "endMs": 36608,
       "timestampMs": null,
       "confidence": null
@@ -684,29 +1986,57 @@
   ],
   "V-negative-direction": [
     {
-      "text": "现在只换两端的正负条件，d 仍是 V 减 U。",
+      "text": "现在改看左端高度差为负，",
       "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端高度差为正，高度差仍然固定用线段 V 减线段 U。",
+      "startMs": 2478,
       "endMs": 7548,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "代入和移项仍然成立。",
+      "text": "前面的代入和移项过程仍然成立。",
       "startMs": 8039,
       "endMs": 10719,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "负数减正数仍为负，因此分母依旧不为零。",
+      "text": "左端的负数再减右端的正数，",
       "startMs": 11209,
+      "endMs": 13608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果仍为负，因此比例的系数依旧不为零。",
+      "startMs": 13908,
       "endMs": 17478,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "仍可用(12)两边同除以非零系数，得到同一个(13)。",
+      "text": "编号(12)仍可两边同除以这个非零系数，",
       "startMs": 17919,
+      "endMs": 21079,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到同一个编号(13)。",
+      "startMs": 21368,
+      "endMs": 22968,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来验证这一方向的比例范围。",
+      "startMs": 23238,
       "endMs": 25718,
       "timestampMs": null,
       "confidence": null
@@ -714,36 +2044,99 @@
   ],
   "V-negative-range": [
     {
-      "text": "分子分母同时乘非零的负一，不改变这个比例。",
+      "text": "把分子和分母同时乘 −1，",
       "startMs": 70,
+      "endMs": 2360,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分式的值不变。",
+      "startMs": 2628,
       "endMs": 3868,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "条件仍是左负右正。",
+      "text": "这里仍是左端高度差为负，",
       "startMs": 4319,
+      "endMs": 6399,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端高度差为正。",
+      "startMs": 6718,
       "endMs": 8158,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "去掉分母前的负号，再交换两项次序，说明每个符号从哪里来。",
+      "text": "分母前面的负号作用于整个差，",
       "startMs": 8709,
+      "endMs": 11028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "去括号时两项都变号，",
+      "startMs": 11508,
+      "endMs": 13787,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再交换相加次序，就得到右端高度差减左端高度差。",
+      "startMs": 14078,
       "endMs": 18958,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "新的分子是正数，分母还多了正数 d(v)，所以分母更大。",
+      "text": "新的分子是左端高度差的相反数，",
       "startMs": 19539,
+      "endMs": 22338,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以为正。",
+      "startMs": 22638,
+      "endMs": 23598,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新的分母还多加了正的右端高度差，",
+      "startMs": 23958,
+      "endMs": 26598,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此分母比分子更大。",
+      "startMs": 27078,
       "endMs": 29037,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "三部分同除以正的分母，仍得到零与一之间的比例。",
+      "text": "三部分同除以正的分母，",
       "startMs": 29519,
+      "endMs": 31648,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又得到这个比例严格在 0 与 1 之间。",
+      "startMs": 31818,
+      "endMs": 34298,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "负变正的情况也满足内部位置的要求。",
+      "startMs": 34588,
       "endMs": 37387,
       "timestampMs": null,
       "confidence": null
@@ -751,42 +2144,77 @@
   ],
   "V-sign-change-result": [
     {
-      "text": "正变负、负变正都找到了合法比例。",
+      "text": "无论正变负还是负变正，",
       "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都求出了 0 与 1 之间的比例。",
+      "startMs": 2278,
       "endMs": 4478,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "代回零差方程成立，且两段都覆盖这个位置。",
+      "text": "代回去高度差为零，而且两条线段都覆盖对应位置。",
       "startMs": 4919,
       "endMs": 9508,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两种变号讨论的是两端都非零的情形。",
+      "text": "如果某一端的高度差本来就是零，",
       "startMs": 9959,
+      "endMs": 12278,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "那一端已经等高，也就是交点。",
+      "startMs": 12648,
+      "endMs": 15588,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "刚才的变号讨论，针对的是两端都不为零的情形。",
+      "startMs": 15848,
       "endMs": 19558,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "常数差不变号的情况也已处理。",
+      "text": "常数差不变号的情况也已经处理。",
       "startMs": 20009,
       "endMs": 22650,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "将结果记作(14)。",
+      "text": "把结论记作编号(14)：",
       "startMs": 22979,
+      "endMs": 24979,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两段覆盖整个区间，固定次序相减的高度差在两端异号，",
+      "startMs": 25278,
+      "endMs": 29938,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就一定在内部相交。",
+      "startMs": 30218,
       "endMs": 31698,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "它适用于任意两条满足共同区间条件的线段。",
+      "text": "它适用于任意满足这些条件的两条线段。",
       "startMs": 32159,
       "endMs": 35078,
       "timestampMs": null,
@@ -795,36 +2223,106 @@
   ],
   "V-no-events": [
     {
-      "text": "先看一段没有任何端点或交点的范围，线段不会中途开始或结束。",
+      "text": "进入第四章。",
       "startMs": 70,
+      "endMs": 1230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先看一个没有端点也没有交点的区间。",
+      "startMs": 1428,
+      "endMs": 4428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有端点，就没有线段在中途开始或结束，",
+      "startMs": 4698,
+      "endMs": 8618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "活动成员保持不变。",
+      "startMs": 8888,
       "endMs": 10568,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "假设这一对换了高低，就能在范围中取前后两个位置，让差异号。",
+      "text": "如果某一对线段颠倒了上下关系，",
       "startMs": 11029,
+      "endMs": 13589,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就能选前后两个位置，",
+      "startMs": 13878,
+      "endMs": 15558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "使固定相减的高度差在这两处异号。",
+      "startMs": 15848,
       "endMs": 18647,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两段在这整段都存在，(14)保证交点出现，与没有交点相矛盾。",
+      "text": "两段在整个区间都存在，",
       "startMs": 19089,
+      "endMs": 21129,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "编号(14)就保证中间有交点，",
+      "startMs": 21438,
+      "endMs": 23998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这却与区间内没有交点矛盾。",
+      "startMs": 24258,
+      "endMs": 26378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此不可能换序。",
+      "startMs": 26678,
       "endMs": 27918,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "因此每一对关系都不变，整个顺序不变。",
+      "text": "每一对的上下关系都不变，",
       "startMs": 28369,
+      "endMs": 30409,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "整个活动顺序就不变。",
+      "startMs": 30718,
       "endMs": 32278,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "接下来用(15)研究交叉前的邻居。",
+      "text": "这是编号(15)。",
       "startMs": 32759,
+      "endMs": 34318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来用它研究交叉前的邻居。",
+      "startMs": 34458,
       "endMs": 36777,
       "timestampMs": null,
       "confidence": null
@@ -832,36 +2330,78 @@
   ],
   "V-choose-crossing": [
     {
-      "text": "p 是一个数值，不是平面上的点。",
+      "text": "任意选一个交点，把参与交叉的两条线段记作 U 和 V。",
       "startMs": 70,
+      "endMs": 4808,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用小写字母 p 表示交点的横坐标，",
+      "startMs": 5098,
+      "endMs": 7977,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它是一个数，不是平面上的点。",
+      "startMs": 8268,
       "endMs": 10838,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "y_U(p)、y_V(p) 是两条线段在这里的高度。",
+      "text": "两个高度记号表示这两条线段在位置 p 处的高度。",
       "startMs": 11329,
       "endMs": 15208,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "相交意味着同一横坐标处等高，记作(16)。",
+      "text": "相交就意味着在同一个横坐标处等高，",
       "startMs": 15699,
+      "endMs": 18779,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是编号(16)。",
+      "startMs": 19098,
       "endMs": 20338,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "目标是证明交叉前已经相邻。",
+      "text": "目标是证明，两段在交叉之前已经相邻。",
       "startMs": 20789,
       "endMs": 24668,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "每段两个端点，每对不重叠线段至多一个交点，所以可以讨论有限个实际事件。",
+      "text": "每条线段只有两个端点，",
       "startMs": 25129,
+      "endMs": 27088,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每对不重叠的线段至多有一个交点，",
+      "startMs": 27428,
+      "endMs": 30227,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以全部实际几何事件只有有限个。",
+      "startMs": 30498,
+      "endMs": 33358,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里不要求算法已经发现这些交点。",
+      "startMs": 33518,
       "endMs": 36118,
       "timestampMs": null,
       "confidence": null
@@ -869,22 +2409,64 @@
   ],
   "V-last-event": [
     {
-      "text": "U、V 的左端点都在 p 左边，所以左侧事件集合非空；有限集合能选出最大者。",
+      "text": "两条交叉线段的左端点都在交点左边，",
       "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以左侧事件集合非空。",
+      "startMs": 3478,
+      "endMs": 5518,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它又是有限集合，就能选出横坐标最大的那个，",
+      "startMs": 5798,
+      "endMs": 9720,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用字母 e 表示这个位置。",
+      "startMs": 9888,
       "endMs": 11980,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "所有事件横坐标各不相同，最大左侧位置 e 严格小于 p。",
+      "text": "它是交点严格左侧的最后一个事件，",
       "startMs": 12329,
+      "endMs": 14809,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此位置 e 严格小于交点横坐标 p 的值。",
+      "startMs": 15168,
       "endMs": 18407,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "取两者的平均值，命名为 r；下面证明它严格处在二者之间。",
+      "text": "把这两个位置相加再除以 2，",
       "startMs": 18869,
+      "endMs": 20989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取它们的平均值，用字母 r 表示所取的位置。",
+      "startMs": 21318,
+      "endMs": 25267,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面验证它严格处在两者之间。",
+      "startMs": 25558,
       "endMs": 28078,
       "timestampMs": null,
       "confidence": null
@@ -892,29 +2474,99 @@
   ],
   "V-midpoint": [
     {
-      "text": "沿用刚选定的最后事件 e、交点 p 和中间位置 r。",
+      "text": "沿用最后左侧事件的位置、交点横坐标，",
       "startMs": 70,
+      "endMs": 3110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以及两者平均得到的中间位置。",
+      "startMs": 3328,
+      "endMs": 5687,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下面分别比较中间位置与两侧的位置。",
+      "startMs": 5948,
       "endMs": 8867,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "相减后分子是正数 p 减 e，分母 2 为正，所以 r 大于 e。",
+      "text": "从中间位置减去左侧事件的位置，",
       "startMs": 9339,
+      "endMs": 12299,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "通分后分子是交点横坐标减去左侧事件的位置。",
+      "startMs": 12588,
+      "endMs": 16988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个差为正，分母 2 也为正，",
+      "startMs": 17258,
+      "endMs": 19968,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以中间位置严格大于左侧事件的位置。",
+      "startMs": 20348,
       "endMs": 23548,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "另一侧相减也为正，所以 r 小于 p。",
+      "text": "再用交点横坐标减去中间位置，",
       "startMs": 23989,
+      "endMs": 26589,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "通分后得到同一个正的分式，",
+      "startMs": 26888,
+      "endMs": 29167,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此中间位置也严格小于交点横坐标。",
+      "startMs": 29498,
       "endMs": 32737,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "因此从 r 到 p 之前没有别的事件，这正是选最后事件 e 的用途。",
+      "text": "这就证明了画面中的严格大小关系。",
       "startMs": 33199,
+      "endMs": 35799,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "由于已经选的是最后一个左侧事件，",
+      "startMs": 36098,
+      "endMs": 38538,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "从中间位置到交点之前，",
+      "startMs": 38818,
+      "endMs": 41057,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会再有其他事件。",
+      "startMs": 41338,
       "endMs": 42698,
       "timestampMs": null,
       "confidence": null
@@ -922,29 +2574,85 @@
   ],
   "V-stable-interval": [
     {
-      "text": "因为 e 是 p 左边最后一个事件，它不会早于这两段的左端点。",
+      "text": "最后左侧事件的位置，",
       "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不早于两条交叉线段的左端点，",
+      "startMs": 2028,
+      "endMs": 4588,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为这些左端点也属于交点左侧的事件。",
+      "startMs": 4898,
       "endMs": 8137,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "交点在两段内部：端点接触已被条件排除。",
+      "text": "交点又不能是任何线段的端点，",
       "startMs": 8589,
+      "endMs": 10988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "否则违反排除端点接触的条件。",
+      "startMs": 11288,
+      "endMs": 13968,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此两段的右端点都在交点右边。",
+      "startMs": 14258,
       "endMs": 17258,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "所以 U、V 覆盖 r 到 p；其中到 p 之前没有事件，记为(17)。",
+      "text": "所以这两段从中间位置到交点一直存在，",
       "startMs": 17699,
+      "endMs": 20938,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到交点之前又没有任何事件，",
+      "startMs": 21248,
+      "endMs": 23487,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就是编号(17)的交点前区间。",
+      "startMs": 23768,
       "endMs": 26288,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把(15)用于这一段；现在可以问，两条交叉线段中间是否还能夹着别人。",
+      "text": "把编号(15)用在这个区间，",
       "startMs": 26759,
+      "endMs": 28959,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到交点之前，成员和上下顺序都不变。",
+      "startMs": 29258,
+      "endMs": 32828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在再问：这两段中间能否夹着第三条线段？",
+      "startMs": 33308,
       "endMs": 37468,
       "timestampMs": null,
       "confidence": null
@@ -952,36 +2660,99 @@
   ],
   "V-assume-between": [
     {
-      "text": "这是一种证明方法。",
+      "text": "反证就是先接受一个想要排除的假设，",
       "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再检查它是否与已有条件冲突。",
+      "startMs": 3028,
       "endMs": 5480,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "图是待排除的假设，不是已确认合法的输入。",
+      "text": "图中展示的是临时假设，",
       "startMs": 5819,
+      "endMs": 7859,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是已经确认合法的输入。",
+      "startMs": 8168,
       "endMs": 10168,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "先讨论 U 在下、V 在上；W 是临时假设的第三条活动线段。",
+      "text": "先看线段 U 在下方，",
       "startMs": 10659,
+      "endMs": 12499,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 V 在上方的顺序。",
+      "startMs": 12808,
+      "endMs": 14808,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "假设中间还有第三条活动线段 W，",
+      "startMs": 15078,
+      "endMs": 17758,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "对应的高度记号，表示它在指定横坐标处的高度。",
+      "startMs": 18048,
       "endMs": 22028,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "在 r 处，W 高于 U、低于 V，得到夹层假设(18)。",
+      "text": "在选好的位置 r 处，",
       "startMs": 22459,
+      "endMs": 24250,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第三条线段高于下方线段，",
+      "startMs": 24458,
+      "endMs": 26857,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又低于上方线段，这就是编号(18)的夹层假设。",
+      "startMs": 27178,
       "endMs": 31317,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "保留假设图，下一页分别检查中途结束与恰在 p 结束。",
+      "text": "先停一下想一想：夹在中间的这条线段，",
       "startMs": 31789,
+      "endMs": 35338,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "能不能在到达交点以前消失？",
+      "startMs": 35658,
+      "endMs": 37778,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一页分别检查两种结束位置。",
+      "startMs": 38078,
       "endMs": 40558,
       "timestampMs": null,
       "confidence": null
@@ -989,29 +2760,99 @@
   ],
   "V-w-exists": [
     {
-      "text": "这与(17)的无事件区间矛盾。",
+      "text": "如果中间这条线段在位置 r 与位置 p 之间结束，",
       "startMs": 70,
+      "endMs": 4230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里就出现了一个端点事件，",
+      "startMs": 4428,
+      "endMs": 6468,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与编号(17)规定的无事件区间矛盾。",
+      "startMs": 6748,
       "endMs": 9627,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "这与所有事件横坐标各异的条件矛盾。",
+      "text": "如果它恰好在位置 p 结束，",
       "startMs": 10139,
+      "endMs": 12059,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "端点事件与选定交点的横坐标就相同，",
+      "startMs": 12428,
+      "endMs": 15428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又违反所有事件横坐标各异的条件。",
+      "startMs": 15708,
       "endMs": 18467,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "W 从 r 到 p 都存在；由(15)，到 p 之前仍夹在两者中间。",
+      "text": "因此它从位置 r 到位置 p 都存在。",
       "startMs": 18899,
+      "endMs": 21899,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再用编号(15)，到交点之前顺序不变，",
+      "startMs": 22248,
+      "endMs": 25748,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它仍夹在另外两条之间。",
+      "startMs": 26038,
       "endMs": 27878,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "不能仅凭图猜结论，下面用已证明的变号结论排除两个方向。",
+      "text": "还要排除最后一个疑问：",
       "startMs": 28329,
+      "endMs": 29929,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到了边界位置 p 时，",
+      "startMs": 30228,
+      "endMs": 31868,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它会不会突然跑到外侧？",
+      "startMs": 32148,
+      "endMs": 33828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来用已经证明的变号结论检查，",
+      "startMs": 34118,
+      "endMs": 36957,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能只凭图猜测。",
+      "startMs": 37238,
       "endMs": 38638,
       "timestampMs": null,
       "confidence": null
@@ -1019,29 +2860,92 @@
   ],
   "V-lower-bound": [
     {
-      "text": "暂时假设在边界 p 处，W 已经低于 U。",
+      "text": "先临时假设，在交点横坐标处，",
       "startMs": 70,
+      "endMs": 3240,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间的线段 W 已经低于线段 U。",
+      "startMs": 3398,
       "endMs": 6117,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "固定用 W 减 U：由(18)，左边为正；由临时假设，右边为负。",
+      "text": "这次固定用线段 W 的高度减线段 U 的高度。",
       "startMs": 6589,
+      "endMs": 10428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "由编号(18)，在左侧位置 r 处为正；",
+      "startMs": 10738,
+      "endMs": 13908,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "由刚才的假设，在右侧位置 p 处为负。",
+      "startMs": 14228,
       "endMs": 17848,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "(14)适用于这对线段，却会在(17)的无事件区间产生交点。",
+      "text": "这两条线段覆盖整个区间，",
       "startMs": 18289,
+      "endMs": 20568,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "编号(14)保证它们在内部相交，",
+      "startMs": 20888,
+      "endMs": 23448,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但编号(17)又说明内部没有事件，",
+      "startMs": 23708,
+      "endMs": 26388,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "出现矛盾。",
+      "startMs": 26678,
       "endMs": 27678,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "所以不能严格低于 U，只能得到不小于的限制(19)；暂时还不是等号。",
+      "text": "所以在交点横坐标处，",
       "startMs": 28119,
+      "endMs": 30039,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间线段不能严格低于线段 U。",
+      "startMs": 30368,
+      "endMs": 33008,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只能得到编号(19)的不小于关系，",
+      "startMs": 33288,
+      "endMs": 35687,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在还不能直接说两者相等。",
+      "startMs": 35958,
       "endMs": 37878,
       "timestampMs": null,
       "confidence": null
@@ -1049,29 +2953,92 @@
   ],
   "V-upper-bound": [
     {
-      "text": "再假设另一方向：W 在 p 处已经高于 V。",
+      "text": "再看另一个方向。",
       "startMs": 70,
+      "endMs": 1110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "假设线段 W 在交点横坐标处，",
+      "startMs": 1328,
+      "endMs": 4290,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "已经高于线段 V。",
+      "startMs": 4498,
       "endMs": 5938,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "固定用 W 减 V：左边为负，右边为正，用的是另一种变号方向。",
+      "text": "固定用线段 W 的高度减线段 V 的高度，",
       "startMs": 6389,
+      "endMs": 9869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左侧由夹层假设得到负数，",
+      "startMs": 10188,
+      "endMs": 12467,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右侧由新的假设得到正数，",
+      "startMs": 12758,
+      "endMs": 14997,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里用的是负变正方向。",
+      "startMs": 15328,
       "endMs": 17128,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两段覆盖整个区间，(14)又与(17)冲突，所以这一方向也不可能。",
+      "text": "两段覆盖整个区间，编号(14)又保证内部有交点，",
       "startMs": 17569,
+      "endMs": 22178,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然与编号(17)的无事件区间矛盾，",
+      "startMs": 22438,
+      "endMs": 25197,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这一方向也不可能。",
+      "startMs": 25458,
       "endMs": 27138,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "因此得到不大于的限制(20)；下一页把两侧限制连起来。",
+      "text": "因此中间线段的高度不能大于线段 V 的高度，",
       "startMs": 27599,
+      "endMs": 31279,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(20)。",
+      "startMs": 31598,
+      "endMs": 32958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一页把两侧限制连起来。",
+      "startMs": 33268,
       "endMs": 34908,
       "timestampMs": null,
       "confidence": null
@@ -1079,29 +3046,85 @@
   ],
   "V-squeeze": [
     {
-      "text": "把(19)、(20)连起来，W 的高度夹在两个外侧高度之间。",
+      "text": "把编号(19)和编号(20)连起来，",
       "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间线段的高度不小于下面的高度，",
+      "startMs": 2778,
+      "endMs": 5657,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又不大于上面的高度。",
+      "startMs": 5948,
       "endMs": 7868,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "但(16)说明这两个外侧高度本来相等。",
+      "text": "而编号(16)已经说明，",
       "startMs": 8339,
+      "endMs": 10259,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个外侧高度在交点位置本来就相等。",
+      "startMs": 10588,
       "endMs": 13387,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "既不能更小，也不能更大，W 只能等于共同高度。",
+      "text": "中间这个高度既不能更小，",
       "startMs": 13829,
+      "endMs": 15829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又不能更大，就只能等于共同的高度。",
+      "startMs": 16128,
       "endMs": 19088,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "图展示假设被迫导出的矛盾，不能把它当作允许输入。",
+      "text": "于是同一个横坐标处，",
       "startMs": 19619,
+      "endMs": 21340,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "三条线段具有同一个高度，",
+      "startMs": 21488,
+      "endMs": 23727,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就是三线共点，违反本章条件。",
+      "startMs": 24008,
+      "endMs": 27268,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图中画的是从假设被迫推出的矛盾，",
+      "startMs": 27548,
+      "endMs": 30548,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是允许的输入。",
+      "startMs": 30818,
       "endMs": 32138,
       "timestampMs": null,
       "confidence": null
@@ -1109,29 +3132,106 @@
   ],
   "V-reverse-between": [
     {
-      "text": "改为另一种上下顺序，固定两对各自的相减次序。",
+      "text": "如果交点前是线段 V 在下方，",
       "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 U 在上方，仍然假设中间夹着线段 W。",
+      "startMs": 2778,
+      "endMs": 7028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分别固定两对线段的相减次序。",
+      "startMs": 7368,
       "endMs": 10008,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "W 减 V 在左边为正，W 减 U 在左边为负。",
+      "text": "线段 W 的高度减线段 V 的高度，",
       "startMs": 10459,
+      "endMs": 13338,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在左边为正；",
+      "startMs": 13658,
+      "endMs": 14698,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 W 的高度减线段 U 的高度，",
+      "startMs": 14978,
+      "endMs": 17857,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在左边为负。",
+      "startMs": 18148,
       "endMs": 19348,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "否则各自变号，在无事件区间内产生交点；两侧排除理由相同。",
+      "text": "到交点位置时，前一个差不能为负，",
       "startMs": 19789,
+      "endMs": 22968,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后一个差不能为正，否则各自发生变号，",
+      "startMs": 23258,
+      "endMs": 26508,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在无事件区间内产生交点，",
+      "startMs": 26798,
+      "endMs": 29117,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然矛盾。",
+      "startMs": 29418,
       "endMs": 30338,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两端由(16)相等，仍逼出三线共点；反向顺序也不能夹着 W。",
+      "text": "因此中间高度仍被夹在两个外侧高度之间，",
       "startMs": 30809,
+      "endMs": 34369,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而外侧高度由编号(16)相等，",
+      "startMs": 34698,
+      "endMs": 37057,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又逼出三线共点。",
+      "startMs": 37328,
+      "endMs": 38928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "相反的上下顺序也不能有夹层。",
+      "startMs": 39198,
       "endMs": 41678,
       "timestampMs": null,
       "confidence": null
@@ -1139,22 +3239,64 @@
   ],
   "V-adjacency-result": [
     {
-      "text": "应当否定的是最初假设存在的 W，而不是否定交点本身。",
+      "text": "两种上下顺序都导出了矛盾。",
       "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "应当否定的是中间存在第三条线段的假设，",
+      "startMs": 2678,
+      "endMs": 6318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是否定原来选定的交点。",
+      "startMs": 6598,
       "endMs": 8758,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "得到几何结论(21)：交叉前的一小段范围内，两条线段必定相邻。",
+      "text": "得到编号(21)的几何结论：",
       "startMs": 9189,
+      "endMs": 11269,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "任意两条交叉线段，在交点前的一小段范围里必定已经相邻。",
+      "startMs": 11588,
+      "endMs": 17057,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这不要求它们从一开始就是邻居。",
+      "startMs": 17328,
       "endMs": 19248,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "几何上相邻还不是算法不漏点；下一章把它与三类规则接起来。",
+      "text": "几何上相邻，还没有证明算法不会漏点，",
       "startMs": 19719,
+      "endMs": 23098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "还要说明扫描过程确实检查了这对邻居。",
+      "startMs": 23388,
+      "endMs": 26410,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一章把几何事实接到检查规则。",
+      "startMs": 26558,
       "endMs": 29190,
       "timestampMs": null,
       "confidence": null
@@ -1162,22 +3304,57 @@
   ],
   "V-new-neighbors": [
     {
-      "text": "邻居不是从扫描开始前就存在的，必须在某个时候形成。",
+      "text": "扫描最初活动顺序为空，",
       "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有任何邻接，所以后来出现的邻居关系，",
+      "startMs": 2278,
+      "endMs": 5528,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一定在某个时刻形成。",
+      "startMs": 5818,
       "endMs": 7298,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "成员和上下顺序都保持不变，因而邻接也不变。",
+      "text": "没有事件时，成员和上下顺序都不变，",
       "startMs": 7759,
+      "endMs": 10948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "邻接自然也不会平白改变。",
+      "startMs": 11228,
       "endMs": 13308,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "先解释几何变化，再说明规则恰好检查了哪些新邻居。",
+      "text": "因此只需要检查开始、结束和交叉三类事件。",
       "startMs": 13769,
+      "endMs": 17369,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先看几何上的局部变化，",
+      "startMs": 17668,
+      "endMs": 19548,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再看规则检查了哪些新邻居。",
+      "startMs": 19888,
       "endMs": 22048,
       "timestampMs": null,
       "confidence": null
@@ -1185,35 +3362,91 @@
   ],
   "V-insert": [
     {
-      "text": "图中顺序始终从下到上；这些字母表示局部对象，不是新坐标。",
+      "text": "开始事件的图中，顺序始终从下往上读。",
       "startMs": 70,
+      "endMs": 3478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "字母 L 表示插入位置原来的下方邻居，",
+      "startMs": 3798,
+      "endMs": 6990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "字母 H 表示上方邻居。",
+      "startMs": 7168,
+      "endMs": 9350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们是线段的名称，不是坐标。",
+      "startMs": 9538,
       "endMs": 12308,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "新线段 U 插入两者之间；原有线段的相对高低不变。",
+      "text": "新开始的线段 U 插在这两条之间，",
       "startMs": 12749,
+      "endMs": 15229,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其他已有线段的相对高低不变。",
+      "startMs": 15548,
       "endMs": 17867,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "新的邻接只有 U 的两侧，开始规则正好检查这两对。",
+      "text": "新的邻接只有两对：下方邻居与新线段一对，",
       "startMs": 18339,
+      "endMs": 22128,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新线段与上方邻居一对。",
+      "startMs": 22408,
+      "endMs": 24408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "开始规则恰好检查这两对。",
+      "startMs": 24678,
       "endMs": 26838,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "不把不存在的邻居补出来。",
+      "text": "如果某一侧没有邻居，",
       "startMs": 27269,
+      "endMs": 29098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就跳过那一侧。",
+      "startMs": 29218,
+      "endMs": 30298,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其他位置的邻接保持不变。",
+      "startMs": 30588,
       "endMs": 32388,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "开始最多带来两对检查。",
+      "text": "所以开始事件最多检查两对。",
       "startMs": 32829,
       "endMs": 34869,
       "timestampMs": null,
@@ -1222,28 +3455,56 @@
   ],
   "V-remove": [
     {
-      "text": "移去结束的 U，其他线段没有在这里开始、结束或交叉。",
+      "text": "结束事件把线段 U 移去。",
       "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其他线段没有在这个位置开始、结束或交叉，",
+      "startMs": 2478,
+      "endMs": 5820,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们自己的相对顺序不变。",
+      "startMs": 5998,
       "endMs": 7678,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "只有原来被 U 隔开的 L、H 接到一起，结束规则检查这一对。",
+      "text": "只有原来被它隔开的下方和上方邻居，",
       "startMs": 8139,
+      "endMs": 10779,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在接到一起。",
+      "startMs": 11138,
+      "endMs": 12430,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结束规则正好检查这新形成的一对。",
+      "startMs": 12558,
       "endMs": 15038,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "一侧不存在时，移去 U 不会让两条旧成员连接。",
+      "text": "如果有一侧不存在，就不会接起两条旧成员。",
       "startMs": 15499,
       "endMs": 18938,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "最多检查一对。",
+      "text": "所以结束事件最多检查一对。",
       "startMs": 19389,
       "endMs": 21309,
       "timestampMs": null,
@@ -1252,29 +3513,127 @@
   ],
   "V-swap-algebra": [
     {
-      "text": "在 p 相交，差为零；两边减去 \\alpha 乘 p，解出 \\beta。",
+      "text": "在交点位置高度差为零，",
       "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "代入编号(5)，得到画面左边的等式。",
+      "startMs": 2428,
+      "endMs": 5458,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两边都减去斜率差与交点横坐标的乘积，",
+      "startMs": 5768,
+      "endMs": 9470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就解出了常数项差。",
+      "startMs": 9638,
       "endMs": 11238,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "代回(5)，再提取共同因子 \\alpha，把与交点的左右关系显露出来。",
+      "text": "把这个结果代回编号(5)，",
       "startMs": 11779,
+      "endMs": 13990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再提取共同的斜率差因子。",
+      "startMs": 14178,
+      "endMs": 16390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先用当前位置减去交点位置，",
+      "startMs": 16548,
+      "endMs": 19028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再用斜率差乘以所得的差，",
+      "startMs": 19318,
+      "endMs": 21078,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这样就能用位置的左右判断正负。",
+      "startMs": 21538,
       "endMs": 24098,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "若 \\alpha 为零，\\beta 也为零；两段在交点附近重叠，与条件冲突。",
+      "text": "斜率差不能为零，否则常数项差也为零，",
       "startMs": 24579,
+      "endMs": 28458,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条所在直线重合，两段在交点附近就会重叠，",
+      "startMs": 28828,
+      "endMs": 33057,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "违反条件。",
+      "startMs": 33338,
       "endMs": 34338,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "\\alpha 为正时不改正负，为负时同时反转；两侧依然异号，确实换序。",
+      "text": "当前位置减交点位置，",
       "startMs": 34829,
+      "endMs": 36788,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在左侧为负，在右侧为正。",
+      "startMs": 37078,
+      "endMs": 39678,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "乘固定的正数时正负不变，",
+      "startMs": 40018,
+      "endMs": 42257,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "乘固定的负数时两侧同时反转，",
+      "startMs": 42538,
+      "endMs": 45337,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此高度差两侧依然异号，",
+      "startMs": 45608,
+      "endMs": 47608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两段确实交换高低。",
+      "startMs": 47878,
       "endMs": 49719,
       "timestampMs": null,
       "confidence": null
@@ -1282,29 +3641,92 @@
   ],
   "V-swap": [
     {
-      "text": "由(21)，U、V 交叉前相邻；只有这两条在事件处相交。",
+      "text": "由编号(21)，两条交叉线段在交叉前相邻。",
       "startMs": 70,
+      "endMs": 4297,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图中的字母 L 和 H 分别表示交换块外面的下方和上方邻居。",
+      "startMs": 4598,
+      "endMs": 9930,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这次只有中间两条参与交叉。",
+      "startMs": 10068,
       "endMs": 12387,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "换序后，外面的线段没有开始结束或参与交叉，其顺序不变。",
+      "text": "中间两条换序，外面的线段没有在这里开始、结束或交叉，",
       "startMs": 12859,
+      "endMs": 17740,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以外侧原有顺序不变。",
+      "startMs": 17928,
       "endMs": 19808,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "新邻接恰好是交换块的两侧，交叉规则检查它们。",
+      "text": "新的邻接恰好出现在交换块两侧：",
       "startMs": 20269,
+      "endMs": 23108,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "原下方邻居接到线段 V，",
+      "startMs": 23418,
+      "endMs": 25618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 U 接到原上方邻居。",
+      "startMs": 25888,
+      "endMs": 27928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交叉规则检查这两对。",
+      "startMs": 28258,
       "endMs": 30178,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两条不同直线至多一个交点，不需要寻找这一对的第二次交叉。",
+      "text": "中间两条仍是同一对原始输入。",
       "startMs": 30649,
+      "endMs": 33368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条不同直线至多有一个交点，",
+      "startMs": 33698,
+      "endMs": 36097,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不用找这一对的第二次交叉。",
+      "startMs": 36368,
+      "endMs": 38338,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有外侧邻居的一侧就跳过。",
+      "startMs": 38538,
       "endMs": 40418,
       "timestampMs": null,
       "confidence": null
@@ -1312,22 +3734,85 @@
   ],
   "V-conditional-check": [
     {
-      "text": "三类事件覆盖所有邻接变化；此前事件正确处理时，形成的新邻接一定被检查。",
+      "text": "三类事件覆盖了所有邻接变化，",
       "startMs": 70,
+      "endMs": 2560,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此得到编号(22)：",
+      "startMs": 2728,
+      "endMs": 4448,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "此前事件正确处理时，",
+      "startMs": 4748,
+      "endMs": 6428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每对新邻居形成时都会接受检查。",
+      "startMs": 6718,
+      "endMs": 9318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个前提必须保留。",
+      "startMs": 9638,
       "endMs": 11118,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "否则就用不漏点来证明不漏点，形成循环解释。",
+      "text": "不能直接假定所有交点已经处理，",
       "startMs": 11579,
+      "endMs": 13960,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "否则就是先假定不会漏点，",
+      "startMs": 14128,
+      "endMs": 16048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再用它证明不会漏点，",
+      "startMs": 16348,
+      "endMs": 17748,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "形成循环解释。",
+      "startMs": 18018,
       "endMs": 19298,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把过程前提限制在已知正确的范围，才能继续反证。",
+      "text": "下一步选择最早漏点，",
       "startMs": 19759,
+      "endMs": 21639,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只借助它左侧的事件，",
+      "startMs": 21958,
+      "endMs": 23638,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把此前正确的范围说明白。",
+      "startMs": 23928,
       "endMs": 26008,
       "timestampMs": null,
       "confidence": null
@@ -1335,42 +3820,105 @@
   ],
   "V-earliest": [
     {
-      "text": "暂时假设至少漏掉一个，图只展示这个假设和随后推得的关系。",
+      "text": "暂时假设算法结束后，",
       "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "有某对真实输入的交点没有报告，",
+      "startMs": 2178,
+      "endMs": 4738,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这才叫漏点。",
+      "startMs": 5048,
+      "endMs": 6208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图展示的是这个假设及后来推得的关系。",
+      "startMs": 6518,
       "endMs": 9478,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "漏点有限，可以选横坐标最小者 p_*。",
+      "text": "漏点只有有限个，可以选横坐标最小的那个，",
       "startMs": 9909,
+      "endMs": 13710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用字母 p 加下标星表示它的横坐标。",
+      "startMs": 13878,
       "endMs": 16998,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "星号是对象标记，不是乘法。",
+      "text": "星号只是标记这个特定对象，",
       "startMs": 17469,
+      "endMs": 19629,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是乘法。",
+      "startMs": 19918,
       "endMs": 20820,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "这对输入参与选中的最早漏点；不能偷偷把它当成已经发现。",
+      "text": "对应的两条输入线段也加下标星，",
       "startMs": 21159,
+      "endMs": 23958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分别是线段 U_* 和线段 V_*，",
+      "startMs": 24258,
+      "endMs": 26818,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用它们与前面任意选定的交叉线段区分。",
+      "startMs": 27078,
+      "endMs": 30397,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "此时不能假定这个交点已经被发现。",
+      "startMs": 30738,
       "endMs": 33097,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "这正是选最小者的作用。",
+      "text": "因为选的是最早漏点，",
       "startMs": 33539,
+      "endMs": 35299,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "严格位于它左侧的真实交点都没有漏掉。",
+      "startMs": 35588,
       "endMs": 38387,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "先思考如何用它核对左侧过程。",
+      "text": "先想一想，怎样用这一点核对左侧的处理过程？",
       "startMs": 38829,
       "endMs": 42788,
       "timestampMs": null,
@@ -1379,29 +3927,99 @@
   ],
   "V-prior-events": [
     {
-      "text": "这一点来自清单规则，不依赖交点发现。",
+      "text": "左侧端点不会漏掉，因为所有端点一开始都登记了。",
       "startMs": 70,
+      "endMs": 4180,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这来自清单规则，不依赖发现交点。",
+      "startMs": 4448,
       "endMs": 7748,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "逐个看这些事件，不对 p_* 及右侧作任何已处理假设。",
+      "text": "左侧真实交点没有漏掉，",
       "startMs": 8209,
+      "endMs": 10168,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "来自最早漏点的选择。",
+      "startMs": 10508,
+      "endMs": 12388,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们只逐个看左侧事件，",
+      "startMs": 12678,
+      "endMs": 14637,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不对这个假定漏点及其右侧作已处理的假设。",
+      "startMs": 14948,
       "endMs": 18908,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "按位置逐次应用三类正确更新，事件之间又由(15)保持顺序。",
+      "text": "从空顺序开始，按照位置先后逐次处理这些事件。",
       "startMs": 19339,
+      "endMs": 23568,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "开始就插入，结束就移去，",
+      "startMs": 23858,
+      "endMs": 26318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交叉就换序。",
+      "startMs": 26598,
+      "endMs": 27878,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "事件之间又由编号(15)保证顺序不变。",
+      "startMs": 28168,
       "endMs": 31608,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "得到(23)：到 p_* 左侧为止，维护的顺序和真实几何顺序一致。",
+      "text": "因此直到最早漏点左侧为止，",
       "startMs": 32059,
+      "endMs": 34628,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "维护的活动顺序与真实几何顺序一致，",
+      "startMs": 34808,
+      "endMs": 37567,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(23)。",
+      "startMs": 37828,
+      "endMs": 39228,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个结论不假设最早漏点已经处理。",
+      "startMs": 39498,
       "endMs": 42138,
       "timestampMs": null,
       "confidence": null
@@ -1409,36 +4027,99 @@
   ],
   "V-last-adjacency": [
     {
-      "text": "(21)是独立的几何结论，适用于任意交点，也适用于这个假定漏点。",
+      "text": "编号(21)是独立证明的几何结论，",
       "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "适用于任意交点。",
+      "startMs": 2758,
+      "endMs": 4278,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此这两条带星标记的线段，",
+      "startMs": 4548,
+      "endMs": 7108,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在假定漏点之前的一小段范围里也必定相邻。",
+      "startMs": 7368,
       "endMs": 10968,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "沿有限事件回看，找到形成并一直保持到交点前的最后一次邻接。",
+      "text": "最初顺序为空，邻接只能在事件处形成。",
       "startMs": 11409,
+      "endMs": 15158,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "沿有限个事件回看，",
+      "startMs": 15478,
+      "endMs": 17118,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "找到最后一次形成并一直保持到交点之前的那次邻接。",
+      "startMs": 17448,
       "endMs": 21860,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "用 s 表示这次事件的位置。",
+      "text": "用字母 s 表示形成这次邻接的事件横坐标。",
       "startMs": 22189,
       "endMs": 25869,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "邻接在交叉前已经存在，所以 s 严格在左侧。",
+      "text": "邻接在交叉之前已经存在，",
       "startMs": 26359,
+      "endMs": 28559,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这个位置严格在最早漏点左侧。",
+      "startMs": 28858,
       "endMs": 31697,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "由(23)，s 已正确处理；由(22)，在 s 就检查了这对输入，得到(24)。",
+      "text": "由编号(23)，这次左侧事件已正确处理。",
       "startMs": 32149,
+      "endMs": 35879,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再用编号(22)的新邻接检查规则，",
+      "startMs": 36018,
+      "endMs": 38619,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这对输入在这里就接受了检查，",
+      "startMs": 38788,
+      "endMs": 41107,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(24)。",
+      "startMs": 41408,
       "endMs": 42808,
       "timestampMs": null,
       "confidence": null
@@ -1446,22 +4127,71 @@
   ],
   "V-valid-future": [
     {
-      "text": "求两条直线的公共点，再检查线段范围，这个真实交点不会被排除。",
+      "text": "检查先求两条所在直线的公共点，",
       "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再检查它是否在两段范围内。",
+      "startMs": 3178,
+      "endMs": 5137,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个假定漏点是真实线段交点，",
+      "startMs": 5448,
+      "endMs": 7928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不会被范围检查排除。",
+      "startMs": 8218,
       "endMs": 10298,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "检查发生在 s，而交点在右侧，满足严格位于未来的登记条件。",
+      "text": "检查发生在位置 s，",
       "startMs": 10759,
+      "endMs": 12119,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交点严格在它右侧，因此也满足未来交点的登记条件。",
+      "startMs": 12508,
       "endMs": 16928,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "两种情况都保证清单里有这条记录，不依赖此前有没有检查过它。",
+      "text": "如果尚未登记，就加入清单；",
       "startMs": 17369,
+      "endMs": 20168,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "如果已经登记，就保留原来那一份。",
+      "startMs": 20488,
+      "endMs": 23188,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两种情况都保证清单中有它，",
+      "startMs": 23478,
+      "endMs": 25837,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不依赖此前是否检查过这一对。",
+      "startMs": 26148,
       "endMs": 28188,
       "timestampMs": null,
       "confidence": null
@@ -1469,29 +4199,106 @@
   ],
   "V-retain-report": [
     {
-      "text": "即使对应线段暂时失去邻接，也不删除已经确认的交点记录。",
+      "text": "已经确认的真实未来交点，",
       "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保留到取出。",
+      "startMs": 2228,
+      "endMs": 3520,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "即使对应线段暂时失去邻接，",
+      "startMs": 3698,
+      "endMs": 6260,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不删除这条记录。",
+      "startMs": 6418,
       "endMs": 8018,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "所以左侧待处理记录不会永远耗不完。",
+      "text": "端点和真实交点都只有有限个，",
       "startMs": 8459,
+      "endMs": 10899,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同一事件又不重复登记，",
+      "startMs": 11208,
+      "endMs": 12888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此左侧的待处理记录不可能永远耗不完。",
+      "startMs": 13178,
       "endMs": 16258,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "不会停在左侧无限循环，也不可能跳过仍在清单里的 p_*。",
+      "text": "清单每次取最靠左的位置，",
       "startMs": 16719,
+      "endMs": 18799,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "既不会永远停留在左侧，",
+      "startMs": 19118,
+      "endMs": 20918,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不能跳过仍在清单里的这个交点，",
+      "startMs": 21188,
+      "endMs": 23788,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以最终必然取到它。",
+      "startMs": 24058,
       "endMs": 25698,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "图中的报告是论证推得的结果，不是伪造一段实际执行轨迹。",
+      "text": "到达时就报告这一对输入的交点，",
       "startMs": 25999,
+      "endMs": 28439,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与最初假设它没有报告矛盾。",
+      "startMs": 28788,
+      "endMs": 30788,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里的报告是论证推得的结果，",
+      "startMs": 31068,
+      "endMs": 33268,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是伪造的算法执行轨迹。",
+      "startMs": 33588,
       "endMs": 35547,
       "timestampMs": null,
       "confidence": null
@@ -1499,28 +4306,70 @@
   ],
   "V-no-missing": [
     {
-      "text": "最后形成邻接时的检查，把几何交点放入清单。",
+      "text": "回顾这条链：最后形成邻接时接受检查，",
       "startMs": 110,
+      "endMs": 3797,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查确认它是合法的未来交点，",
+      "startMs": 4098,
+      "endMs": 6258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "于是登记，或者发现已经登记。",
+      "startMs": 6558,
       "endMs": 9388,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "记录不消失、左侧任务有限，因此必然报告，与漏点定义冲突。",
+      "text": "接着记录保留，左侧任务有限，",
       "startMs": 9829,
+      "endMs": 12708,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "按序取出最终就会到达并报告，",
+      "startMs": 12998,
+      "endMs": 15478,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与漏点的定义冲突。",
+      "startMs": 15768,
       "endMs": 17480,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "因此所有允许输入的交点都不会漏掉。",
+      "text": "如果有漏点，就一定能选出最早者。",
       "startMs": 17809,
+      "endMs": 21060,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但最早者已经被排除，",
+      "startMs": 21228,
+      "endMs": 23028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "于是所有满足条件的输入都不会漏点。",
+      "startMs": 23298,
       "endMs": 26097,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "下一章补齐结果和成本边界。",
+      "text": "下一章补齐报告结果与成本的边界。",
       "startMs": 26539,
       "endMs": 29539,
       "timestampMs": null,
@@ -1529,29 +4378,120 @@
   ],
   "V-soundness": [
     {
-      "text": "所以报告的不是延长线交点，也不是凭图猜出的点，不会多报。",
+      "text": "只有通过求交和线段范围检查的真实交点，",
       "startMs": 70,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "才能登记，因此不会把延长线交点或凭图猜的点报告出来，",
+      "startMs": 3378,
+      "endMs": 8728,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就不会多报。",
+      "startMs": 9018,
       "endMs": 10098,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "发现、登记、报告分开；清单规则避免重复报告同一交叉。",
+      "text": "发现、登记和报告是三个环节。",
       "startMs": 10559,
+      "endMs": 13110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同一交叉只登记一份，",
+      "startMs": 13258,
+      "endMs": 14818,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到达时才报告，清单规则避免重复报告。",
+      "startMs": 15078,
       "endMs": 18758,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "U、V 与 V、U 是同一对身份，不能因换序当成新输入对。",
+      "text": "结果绑定原始无序输入对。",
       "startMs": 19189,
+      "endMs": 21269,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "线段 U 与线段 V，",
+      "startMs": 21588,
+      "endMs": 23188,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "和线段 V 与线段 U，",
+      "startMs": 23558,
+      "endMs": 25278,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "代表同一对输入，换序不会创造一对新输入。",
+      "startMs": 25628,
       "endMs": 29257,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "没有重叠；不同直线至多一个交点，同一直线的非空交集也被简化条件限制。",
+      "text": "本章没有重叠。",
       "startMs": 29689,
+      "endMs": 30889,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不同直线至多相交一次，",
+      "startMs": 31188,
+      "endMs": 33348,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同一直线上的两段若有非空交集，",
+      "startMs": 33658,
+      "endMs": 36538,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就会重叠或端点接触，",
+      "startMs": 36728,
+      "endMs": 38528,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也已排除。",
+      "startMs": 38798,
+      "endMs": 39638,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此每对至多一个交点，",
+      "startMs": 39918,
+      "endMs": 41798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会再次报告同一对。",
+      "startMs": 42088,
       "endMs": 43568,
       "timestampMs": null,
       "confidence": null
@@ -1559,22 +4499,71 @@
   ],
   "V-local-work": [
     {
-      "text": "插入只看两侧，移去只连接原两侧，不存在的邻居跳过。",
+      "text": "开始时只看插入位置的两侧，",
       "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最多两对；",
+      "startMs": 2568,
+      "endMs": 3408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结束时只连接原来被隔开的两侧，",
+      "startMs": 3698,
+      "endMs": 6097,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最多一对。",
+      "startMs": 6408,
+      "endMs": 7208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不存在的邻居就跳过。",
+      "startMs": 7488,
       "endMs": 9128,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "只检查换序块外侧的新邻接；交叉的一对没有变成另一对。",
+      "text": "普通交叉只检查换序块外侧的新邻接，",
       "startMs": 9579,
+      "endMs": 12898,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最多两对，中间交叉的两条还是原来那一对。",
+      "startMs": 13228,
       "endMs": 16747,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "省下的是每次变化都重查所有输入对的工作，不是让所有求交消失。",
+      "text": "没有事件就不用更新活动顺序。",
       "startMs": 17189,
+      "endMs": 19588,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "省下的是每次变化后重查所有输入对的工作，",
+      "startMs": 19888,
+      "endMs": 23048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不是让求交本身消失。",
+      "startMs": 23358,
       "endMs": 25078,
       "timestampMs": null,
       "confidence": null
@@ -1582,22 +4571,57 @@
   ],
   "V-cost-boundary": [
     {
-      "text": "所以总检查数不固定，也不保证比两两检查的求交次数更少。",
+      "text": "同一对线段可能多次成为邻居，",
       "startMs": 70,
+      "endMs": 2620,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此总检查次数不固定，",
+      "startMs": 2778,
+      "endMs": 4658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不能保证求交次数一定比逐对检查更少。",
+      "startMs": 4948,
       "endMs": 8148,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "输出数量本身就是工作，不会因为使用邻居规则消失。",
+      "text": "交点多，必须输出的结果也多，",
       "startMs": 8589,
+      "endMs": 11540,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这部分工作不会因为只检查邻居就消失。",
+      "startMs": 11708,
       "endMs": 14710,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "这里只证明局部检查边界，不扩展成总复杂度证明。",
+      "text": "维护活动顺序和待处理清单也有代价。",
       "startMs": 15049,
+      "endMs": 17968,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里只说明每次局部检查的边界，",
+      "startMs": 18298,
+      "endMs": 20738,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有证明完整的总复杂度。",
+      "startMs": 21018,
       "endMs": 23178,
       "timestampMs": null,
       "confidence": null
@@ -1605,36 +4629,99 @@
   ],
   "V-closing": [
     {
-      "text": "从具体计算出发，经过完整代数推导，得到(14)。",
+      "text": "从具体高度计算出发，",
       "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "通过完整的代数推导，",
+      "startMs": 1928,
+      "endMs": 3768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到编号(14)的变号结论：",
+      "startMs": 4198,
+      "endMs": 6238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两端异号就有内部交点。",
+      "startMs": 6518,
       "endMs": 8558,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "用(14)排除无事件时的换序，再排除夹层假设。",
+      "text": "用这个结论，先排除没有事件时的换序，",
       "startMs": 9009,
+      "endMs": 12547,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再排除交叉前的夹层，",
+      "startMs": 12828,
+      "endMs": 14868,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到无事件不换序，以及交叉前必相邻。",
+      "startMs": 15148,
       "endMs": 18808,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把几何事实接到三类规则与清单保留规则，排除所有漏点。",
+      "text": "接上三类事件的新邻接检查，",
       "startMs": 19259,
+      "endMs": 21739,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再利用清单保留和按序取出的规则，",
+      "startMs": 22058,
+      "endMs": 24658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最早漏点就会产生矛盾，",
+      "startMs": 24978,
+      "endMs": 26618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此没有漏点。",
+      "startMs": 26898,
       "endMs": 28138,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "完整一集到这里结束。",
+      "text": "这一集的证明到这里结束。",
       "startMs": 28589,
       "endMs": 30589,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "下一章讨论计算如何忠实实现这些数学判断。",
+      "text": "下一章讨论，计算怎样忠实实现这些数学判断，",
       "startMs": 31059,
+      "endMs": 35238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "让几何判断保持精确。",
+      "startMs": 35568,
       "endMs": 37408,
       "timestampMs": null,
       "confidence": null
