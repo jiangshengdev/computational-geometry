@@ -8,6 +8,7 @@ import {
 } from "../src/storyboard.ts";
 import { pages } from "../src/lesson.ts";
 import { timelineFor, visualAt, fps, audio } from "../src/timeline.ts";
+import originalCaptions from "../src/captions.json" with { type: "json" };
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import {
@@ -38,10 +39,7 @@ for (const page of storyboard) {
       introduced.add(step.publish);
       local.add(step.publish);
     }
-    assert(
-      step.caption && step.seconds >= 8,
-      `${page.id}: missing teaching explanation/read time`,
-    );
+    assert(step.caption, `${page.id}: missing teaching explanation`);
     if (step.math) katex.renderToString(step.math, { throwOnError: true });
     for (const term of step.focus ?? [])
       assert(step.math?.includes(term), `${page.id}: target emphasis absent`);
@@ -83,10 +81,12 @@ for (const [index, row] of rows.entries()) {
     row.caption,
     `${row.id}: incomplete subtitle`,
   );
-  assert.equal(row.stages[0].trimBefore, 0);
-  assert.equal(
-    row.stages[row.stages.length - 1].trimAfter,
-    Math.ceil(recording.duration * fps),
+  assert.equal(row.stages[0].frame, 0);
+  assert.equal(row.speechFrames, Math.ceil(recording.duration * fps));
+  assert.deepEqual(
+    row.captions,
+    originalCaptions[row.id as keyof typeof originalCaptions],
+    "Subtitles must retain original audio times",
   );
   assert.equal(
     row.from,
@@ -96,23 +96,12 @@ for (const [index, row] of rows.entries()) {
   for (const stage of row.stages) {
     const previous = row.stages[stage.step - 2];
     if (previous) {
-      assert.equal(
-        stage.trimBefore,
-        previous.trimAfter,
-        "Original audio has a gap or repeated samples",
-      );
       assert(
-        previous.audioFrame + previous.trimAfter - previous.trimBefore <=
-          stage.frame,
-        "Audio overlaps next step",
+        previous.speechEndMs <= stage.ms && previous.frame < stage.frame,
+        "Next teaching step precedes the end of the previous explanation",
       );
     }
-    const nextFrame = row.stages[stage.step]?.frame ?? row.readingFrames;
-    assert(
-      nextFrame - stage.frame >=
-        Math.ceil(pages[row.page].steps[stage.step - 1].seconds * fps),
-      "Reading window shortened",
-    );
+    const nextFrame = row.stages[stage.step]?.frame ?? row.speechFrames;
     assert(
       stage.frame < Math.floor((stage.speechStartMs * fps) / 1000),
       "Teaching row must precede speech",
@@ -130,19 +119,25 @@ for (const [index, row] of rows.entries()) {
     assert.equal(visualAt(row, stage.frame).visibleStep, stage.step);
     if (stage.frame > 0)
       assert.equal(visualAt(row, stage.frame - 1).visibleStep, stage.step - 1);
-    for (const offset of [0, fps, 2 * fps, 4 * fps])
+    for (const frame of [
+      stage.frame,
+      Math.ceil((stage.speechEndMs * fps) / 1000),
+      nextFrame - 1,
+    ])
       assert.equal(
-        visualAt(row, stage.frame + offset).visibleStep,
+        visualAt(row, frame).visibleStep,
         stage.step,
         "Cue reset hides teaching content",
       );
   }
-  assert(
-    row.durationInFrames - row.readingFrames >= 2 * fps,
-    "Insufficient page hold",
+  const page = pages[row.page];
+  assert.equal(
+    row.durationInFrames - row.speechFrames,
+    Math.max(page.reading === "dense" ? 2 : 1, page.thinkingSeconds ?? 0) * fps,
+    "Page hold must follow reading category and preserve thinking time without stacking",
   );
   assert.deepEqual(
-    visualAt(row, row.readingFrames),
+    visualAt(row, row.speechFrames),
     visualAt(row, row.durationInFrames - 1),
     "Page hold changes completed content",
   );

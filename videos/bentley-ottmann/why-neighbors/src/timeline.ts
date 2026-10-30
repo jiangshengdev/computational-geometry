@@ -2,6 +2,7 @@ import { pages, shots } from "./lesson.ts";
 import audioData from "./audio-timing.json" with { type: "json" };
 import captionData from "./captions.json" with { type: "json" };
 import plans from "./sentence-plan.json" with { type: "json" };
+import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
 import {
   captionAt,
   phraseTime,
@@ -9,15 +10,21 @@ import {
   type Caption,
 } from "../../../shared/speech/timing.ts";
 export const fps = 60;
-export const audioLeadFrames = 12;
+export const audioLeadFrames = 0;
 export const timingKind = "measured-narration" as const;
 export const audio = audioData as Record<string, AudioTiming>;
 const captions: Record<string, Caption[]> = captionData;
-/** Keep the original WAV intact. Add reading time only between semantic steps,
- * at a frame wholly inside the measured inter-step silence. */
+const shared = createShotTimeline({
+  shots,
+  pages,
+  timing: audio,
+  captions,
+  fps,
+  audioLeadFrames,
+});
+/** Play each page's entire WAV continuously; word times only drive visuals. */
 export const timelineFor = () => {
-  let from = 0;
-  return shots.map((shot) => {
+  return shared.timelineFor().map((shot) => {
     const page = pages[shot.page];
     const recording = audio[shot.id];
     if (!recording) throw Error(`Missing measured audio: ${shot.id}`);
@@ -44,64 +51,27 @@ export const timelineFor = () => {
     });
     if (sentenceIndex !== sentences.length)
       throw Error(`${shot.id}: unused semantic sentences`);
-    const cuts = [0];
-    for (let index = 1; index < spoken.length; index++) {
-      const earliest = Math.ceil((spoken[index - 1].end * fps) / 1000);
-      const latest = Math.floor((spoken[index].start * fps) / 1000);
+    const stages = spoken.map((speech, index) => {
+      const earliest = index
+        ? Math.ceil((spoken[index - 1].end * fps) / 1000)
+        : 0;
+      const latest = Math.floor((speech.start * fps) / 1000) - 1;
       if (earliest > latest)
-        throw Error(
-          `${shot.id}: no measured silent frame before step ${index + 1}`,
-        );
-      cuts.push(Math.floor((earliest + latest) / 2));
-    }
-    cuts.push(Math.ceil(recording.duration * fps));
-    let cursor = 0;
-    const stages = page.steps.map((step, index) => {
-      const audioFrame = cursor + audioLeadFrames;
-      const shiftMs = ((audioFrame - cuts[index]) * 1000) / fps;
-      const stage = {
-        step: index + 1,
-        frame: cursor,
-        ms: (cursor * 1000) / fps,
-        audioFrame,
-        trimBefore: cuts[index],
-        trimAfter: cuts[index + 1],
-        speechStartMs: spoken[index].start + shiftMs,
-        speechEndMs: spoken[index].end + shiftMs,
-      };
-      cursor += Math.max(
-        Math.ceil(step.seconds * fps),
-        audioLeadFrames + cuts[index + 1] - cuts[index],
-      );
-      return stage;
-    });
-    const timedCaptions = captions[shot.id].map((caption) => {
-      const stage = stages.find(
-        (stage) =>
-          caption.startMs >= (stage.trimBefore * 1000) / fps &&
-          caption.startMs < (stage.trimAfter * 1000) / fps,
-      );
-      if (!stage || caption.endMs > (stage.trimAfter * 1000) / fps + 1)
-        throw Error(
-          `${shot.id}: caption crosses an audio cut: ${caption.text}`,
-        );
-      const shiftMs = ((stage.audioFrame - stage.trimBefore) * 1000) / fps;
+        throw Error(`${shot.id}: no reveal frame before step ${index + 1}`);
+      const frame = index ? Math.floor((earliest + latest) / 2) : 0;
       return {
-        ...caption,
-        startMs: caption.startMs + shiftMs,
-        endMs: caption.endMs + shiftMs,
+        step: index + 1,
+        frame,
+        ms: (frame * 1000) / fps,
+        speechStartMs: speech.start,
+        speechEndMs: speech.end,
       };
     });
-    const row = {
+    return {
       ...shot,
-      from,
       stages,
-      captions: timedCaptions,
-      readingFrames: cursor,
-      durationInFrames: cursor + page.hold * fps,
+      captions: captions[shot.id],
     };
-    from += row.durationInFrames;
-    return row;
   });
 };
 export type TimelineRow = ReturnType<typeof timelineFor>[number];

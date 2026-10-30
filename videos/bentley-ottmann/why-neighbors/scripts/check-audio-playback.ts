@@ -55,7 +55,7 @@ if (process.argv.includes("--source-peaks")) {
     .find((row) => row.id === "V-conditions")!
     .stages.slice(1)
     .map((stage) => {
-      const time = stage.trimBefore / fps;
+      const time = stage.frame / fps;
       const peakIndex = Math.floor(time * waveformRate);
       const actualSourceTime = (peakIndex * samplesPerPeak) / rate;
       const trueCutPeak = samples
@@ -65,7 +65,7 @@ if (process.argv.includes("--source-peaks")) {
         )
         .reduce((peak, value) => Math.max(peak, Math.abs(value)), 0);
       return {
-        frame: stage.trimBefore,
+        frame: stage.frame,
         intendedSourceTime: time,
         waveformSourceTime: actualSourceTime,
         errorSeconds: actualSourceTime - time,
@@ -158,15 +158,12 @@ studio.stdout.on("data", (data) => {
 studio.stderr.on("data", (data) => {
   serverLog += data;
 });
-const stages = timelineFor().flatMap((row) =>
-  row.stages.map((stage) => ({
-    id: row.id,
-    step: stage.step,
-    start: row.from + stage.audioFrame,
-    end: row.from + stage.audioFrame + stage.trimAfter - stage.trimBefore,
-    sourceStart: stage.trimBefore / fps,
-  })),
-);
+const stages = timelineFor().map((row) => ({
+  id: row.id,
+  start: row.from,
+  end: row.from + row.speechFrames,
+  sourceStart: 0,
+}));
 const start = Number(
   process.argv.find((arg) => arg.startsWith("--start="))?.split("=")[1] ?? 45,
 );

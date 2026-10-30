@@ -52,7 +52,10 @@ export const pages = Object.fromEntries(
             };
       }),
       groups: alignedGroups[page.id] ?? [left(page.steps.length)],
-      holdAfterSeconds: page.hold,
+      holdAfterSeconds: Math.max(
+        page.reading === "dense" ? 2 : 1,
+        page.thinkingSeconds ?? 0,
+      ),
     },
   ]),
 );

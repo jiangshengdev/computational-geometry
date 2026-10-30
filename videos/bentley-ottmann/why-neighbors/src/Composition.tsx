@@ -7,22 +7,9 @@ function ShotScene({ row }: { row: TimelineRow }) {
   return (
     <>
       <TeachingPage shot={row} {...visualAt(row, frame)} />
-      {row.stages.map((stage) => (
-        <Sequence
-          key={stage.step}
-          from={stage.audioFrame}
-          durationInFrames={stage.trimAfter - stage.trimBefore}
-          layout="none"
-        >
-          <Audio
-            src={staticFile(
-              `narration/${narrationFile(row.id, audio[row.id])}`,
-            )}
-            trimBefore={stage.trimBefore}
-            trimAfter={stage.trimAfter}
-          />
-        </Sequence>
-      ))}
+      <Audio
+        src={staticFile(`narration/${narrationFile(row.id, audio[row.id])}`)}
+      />
     </>
   );
 }

@@ -116,7 +116,6 @@ export type Step = {
   text?: string;
   math?: string;
   caption: string;
-  seconds: number;
   publish?: ReferenceId;
   use?: ReferenceId[];
   /** Exact subexpression shared by source and current transformation. */
@@ -139,34 +138,31 @@ export type StoryPage = {
     | "end"
     | "swap"
     | "missed";
-  hold: number;
+  reading: "ordinary" | "dense";
+  thinkingSeconds?: number;
 };
-const t = (
-  text: string,
-  caption: string,
-  use: ReferenceId[] = [],
-  seconds = 9,
-): Step => ({ text, caption, use, seconds });
+const t = (text: string, caption: string, use: ReferenceId[] = []): Step => ({
+  text,
+  caption,
+  use,
+});
 const m = (
   math: string,
   caption: string,
   use: ReferenceId[] = [],
   focus?: string,
-  seconds = 12,
 ): Step => ({
   math,
   caption,
   use,
   focus: focus ? [focus] : undefined,
-  seconds,
 });
 const ref = (
   id: ReferenceId,
   caption: string,
   use: ReferenceId[] = [],
-  seconds = 12,
   focus?: string[],
-): Step => ({ ...references[id], caption, use, publish: id, seconds, focus });
+): Step => ({ ...references[id], caption, use, publish: id, focus });
 const p = (
   id: string,
   chapter: number,
@@ -174,8 +170,10 @@ const p = (
   basis: ReferenceId[],
   steps: Step[],
   diagram?: StoryPage["diagram"],
-  hold = 3,
-): StoryPage => ({ id, chapter, title, basis, steps, diagram, hold });
+  timing: Pick<StoryPage, "reading" | "thinkingSeconds"> = {
+    reading: "ordinary",
+  },
+): StoryPage => ({ id, chapter, title, basis, steps, diagram, ...timing });
 export const storyboard: StoryPage[] = [
   p(
     "opening",
@@ -261,6 +259,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "height",
+    { reading: "dense" },
   ),
   p(
     "define-ca",
@@ -283,6 +282,8 @@ export const storyboard: StoryPage[] = [
         "把 8 − 1 合并成 7，就得到编号(1)的案例高度差。以后用这个差的正负判断上下关系。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "signs-example",
@@ -311,6 +312,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "height",
+    { reading: "dense" },
   ),
   p(
     "general-lines",
@@ -335,6 +337,8 @@ export const storyboard: StoryPage[] = [
         "差为正，线段 V 在上方；差为零，两段等高；差为负，线段 V 在下方。下面研究这个差怎样随位置变化。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "subtract",
@@ -363,6 +367,8 @@ export const storyboard: StoryPage[] = [
         "反过来使用分配律，把共同的横坐标因子提出来。于是横坐标前面是两个斜率的差，后面是两个常数项的差，两处都保持线段 V 减线段 U 的次序。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "abbreviate",
@@ -378,7 +384,6 @@ export const storyboard: StoryPage[] = [
         "affine",
         "把两个系数差换成简写，就得到编号(5)的高度差式。先用斜率差乘以横坐标，再加常数项差。后面研究这一条式子就够了。",
         ["coefficients"],
-        12,
         ["\\alpha", "\\beta"],
       ),
       t(
@@ -386,6 +391,8 @@ export const storyboard: StoryPage[] = [
         "注意常数项差，并不是某一条直线自己的常数项，它由两个常数项相减得到。这些符号以后都保持同一个含义。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "constant",
@@ -407,6 +414,8 @@ export const storyboard: StoryPage[] = [
         "常数项差为负，说明线段 V 始终比线段 U 低。这两种情况都不会交换上下顺序。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "coincident",
@@ -433,6 +442,8 @@ export const storyboard: StoryPage[] = [
         "常数情形已经处理完。真正发生变号时，斜率差不为零。下面要找变化中的高度差什么时候等于零。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "common-interval",
@@ -454,6 +465,8 @@ export const storyboard: StoryPage[] = [
         "先研究左端高度差为正，右端高度差为负的情况。目标是在两个位置之间，找到高度差为零的位置。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "numeric-distance",
@@ -475,6 +488,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "numeric",
+    { reading: "dense" },
   ),
   p(
     "position",
@@ -498,6 +512,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "position",
+    { reading: "dense" },
   ),
   p(
     "position-range",
@@ -525,6 +540,8 @@ export const storyboard: StoryPage[] = [
         "这就是编号(8)的位置范围。只要求出的比例严格在 0 与 1 之间，对应位置就一定在区间内部。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "substitution",
@@ -549,6 +566,8 @@ export const storyboard: StoryPage[] = [
         ["affine"],
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "grouping",
@@ -573,6 +592,8 @@ export const storyboard: StoryPage[] = [
         ["ends"],
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "end-difference",
@@ -601,6 +622,8 @@ export const storyboard: StoryPage[] = [
         ["expanded"],
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "replace",
@@ -624,10 +647,11 @@ export const storyboard: StoryPage[] = [
         "interpolation",
         "把这两处对应关系同时代回编号(9)，得到编号(11)。先求右端高度差减左端高度差，再用比例乘以所得的差，最后加上左端高度差。这个等式是逐步推导出来的，对每个比例都成立。",
         ["expanded", "ends", "endDifference"],
-        12,
         ["d(u)", "d(v)"],
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "zero-equation",
@@ -654,6 +678,8 @@ export const storyboard: StoryPage[] = [
         "交换括号里两个加数的位置，得到编号(12)。此时比例的系数，是左端高度差减右端高度差，接下来要除以这个系数。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "division",
@@ -681,6 +707,8 @@ export const storyboard: StoryPage[] = [
         "把比例写到等号左边，得到编号(13)。分子是左端高度差，分母是左端高度差减右端高度差所得的整个差。还要检查这个比例是不是严格在 0 与 1 之间。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "positive-range",
@@ -704,6 +732,8 @@ export const storyboard: StoryPage[] = [
         ["inside", "ratio"],
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "verify-zero",
@@ -730,6 +760,8 @@ export const storyboard: StoryPage[] = [
         ["interval"],
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "negative-direction",
@@ -752,6 +784,8 @@ export const storyboard: StoryPage[] = [
         ["equation"],
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "negative-range",
@@ -777,6 +811,8 @@ export const storyboard: StoryPage[] = [
         "三部分同除以正的分母，又得到这个比例严格在 0 与 1 之间。负变正的情况也满足内部位置的要求。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "sign-change-result",
@@ -823,6 +859,8 @@ export const storyboard: StoryPage[] = [
         "每一对的上下关系都不变，整个活动顺序就不变。这是编号(15)。接下来用它研究交叉前的邻居。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "choose-crossing",
@@ -867,6 +905,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "interval",
+    { reading: "dense" },
   ),
   p(
     "midpoint",
@@ -891,6 +930,8 @@ export const storyboard: StoryPage[] = [
         "这就证明了画面中的严格大小关系。由于已经选的是最后一个左侧事件，从中间位置到交点之前，不会再有其他事件。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "stable-interval",
@@ -918,6 +959,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "interval",
+    { reading: "dense" },
   ),
   p(
     "assume-between",
@@ -941,11 +983,10 @@ export const storyboard: StoryPage[] = [
         "先思考：W 能在到达 p 前消失吗",
         "先停一下想一想：夹在中间的这条线段，能不能在到达交点以前消失？下一页分别检查两种结束位置。",
         [],
-        12,
       ),
     ],
     "sandwich",
-    5,
+    { reading: "dense", thinkingSeconds: 5 },
   ),
   p(
     "w-exists",
@@ -973,6 +1014,8 @@ export const storyboard: StoryPage[] = [
         "还要排除最后一个疑问：到了边界位置 p 时，它会不会突然跑到外侧？接下来用已经证明的变号结论检查，不能只凭图猜测。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "lower-bound",
@@ -999,6 +1042,8 @@ export const storyboard: StoryPage[] = [
         "所以在交点横坐标处，中间线段不能严格低于线段 U。只能得到编号(19)的不小于关系，现在还不能直接说两者相等。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "upper-bound",
@@ -1025,6 +1070,8 @@ export const storyboard: StoryPage[] = [
         "因此中间线段的高度不能大于线段 V 的高度，得到编号(20)。下一页把两侧限制连起来。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "squeeze",
@@ -1053,6 +1100,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "triple",
+    { reading: "dense" },
   ),
   p(
     "reverse-between",
@@ -1079,6 +1127,8 @@ export const storyboard: StoryPage[] = [
         ["equal"],
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "adjacency-result",
@@ -1145,6 +1195,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "start",
+    { reading: "dense" },
   ),
   p(
     "remove",
@@ -1166,6 +1217,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "end",
+    { reading: "dense" },
   ),
   p(
     "swap-algebra",
@@ -1193,6 +1245,8 @@ export const storyboard: StoryPage[] = [
         "当前位置减交点位置，在左侧为负，在右侧为正。乘固定的正数时正负不变，乘固定的负数时两侧同时反转，因此高度差两侧依然异号，两段确实交换高低。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "swap",
@@ -1219,6 +1273,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "swap",
+    { reading: "dense" },
   ),
   p(
     "conditional-check",
@@ -1262,11 +1317,10 @@ export const storyboard: StoryPage[] = [
         "严格位于 p_* 左侧的真实交点都没有漏掉",
         "因为选的是最早漏点，严格位于它左侧的真实交点都没有漏掉。先想一想，怎样用这一点核对左侧的处理过程？",
         [],
-        12,
       ),
     ],
     "missed",
-    5,
+    { reading: "dense", thinkingSeconds: 5 },
   ),
   p(
     "prior-events",
@@ -1294,6 +1348,8 @@ export const storyboard: StoryPage[] = [
         "因此直到最早漏点左侧为止，维护的活动顺序与真实几何顺序一致，得到编号(23)。这个结论不假设最早漏点已经处理。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "last-adjacency",
@@ -1321,6 +1377,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "missed",
+    { reading: "dense" },
   ),
   p(
     "valid-future",
@@ -1345,6 +1402,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "missed",
+    { reading: "dense" },
   ),
   p(
     "retain-report",
@@ -1374,6 +1432,7 @@ export const storyboard: StoryPage[] = [
       ),
     ],
     "missed",
+    { reading: "dense" },
   ),
   p(
     "no-missing",
@@ -1396,6 +1455,8 @@ export const storyboard: StoryPage[] = [
         "如果有漏点，就一定能选出最早者。但最早者已经被排除，于是所有满足条件的输入都不会漏点。下一章补齐报告结果与成本的边界。",
       ),
     ],
+    undefined,
+    { reading: "dense" },
   ),
   p(
     "soundness",
