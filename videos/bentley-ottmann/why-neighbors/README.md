@@ -1,8 +1,9 @@
 # 为什么不会漏掉交点 · 第 2 章下集
 
 当前制作依据为 [规格 #306](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/306)
-及画面执行票 #307–#312。新版覆盖六章，保持一集；权威进度与验收记录在 CNB。
-#312 后停止，#313–#315 的独立口播、读音、配音、音画同步和成片交付需要后续明确授权。
+及执行票 #307–#313。新版覆盖六章，保持一集；权威进度与验收记录在 CNB。
+画面阶段已完成；#313 交付独立口播与读音标注。#314 的配音、音画同步及
+#315 的成片交付仍需后续明确授权。
 
 ## 当前制作阶段
 
@@ -52,14 +53,31 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 - `src/ProofDiagram.tsx`：高度比较、比例、交点前区间、夹层假设、邻接变化及最早漏点因果示意。
 - `src/LayoutCheck.tsx`：同一生产页面的状态检查，沿用共享检查能力。
 
-原 `N01–N31` WAV、`narration-text.json`、`speech-text.json`、`sentence-plan.json`、
-`audio-timing.json`、`captions.json` 原样保留为历史素材。它们不参与新版 composition，
-其既往哈希、配音评估和试听结论不代表新版已完成；旧版本制作记录可从本地 Git 历史查看。
-本次未合成、替换、评估或试听配音，也未编写独立口播稿或读音标注。
+`narration-text.json` 是按新版字幕独立编写并审校冻结的 54 段 `V-…` 口播正文。
+`speech-text.json` 在保持冻结正文逐字一致的前提下记录局部读音；
+`sentence-plan.json` 记录原字幕语义句与口播分段，包含 219 个原句末边界和
+560 个内部边界，分别请求 400ms 和 200ms。它同时提供字幕与口播的语义映射，
+供既有 dry-run 和后续实测字幕对齐复用，不生成或推测时间戳。
+版本哈希、独立文本审校、词典查证、两轮全文盲审与历史核销证据以
+[#313](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/313) 的完成记录为准。
 
-配音、字幕时间生成和导出脚本保留为工程后续入口，但当前尚无新版音频契约。
+原 `N01–N31` WAV、`audio-timing.json`、`captions.json` 保持原样，作为历史素材。
+旧文本及标注可从本地 Git 历史查看。历史音频不参与新版 composition，
+既往哈希、配音评估和试听结论不代表新版已完成。
+本次仅交付文本，未合成、替换、评估或试听配音。
+
+配音、字幕时间生成和导出脚本保留为工程后续入口，但当前尚无新版实测音频。
 `video:check-content --decode` 会明确拒绝将历史音频当作新版验收；当前
-`video:preflight` 不代表新版可交付。后续阶段应先完成 #313，再按 #314 的实测素材接入。
+`video:preflight` 不代表新版可交付。后续按 #314 的实测素材接入。
+文本阶段可运行 `pnpm --config.verify-deps-before-run=false run video:sentence-pauses`
+及 `pnpm --config.verify-deps-before-run=false run video:narration --dry-run`，
+后者仅检查文案、音色、SSML 与句界，不请求语音服务。
+
+冻结口播含 7950 个汉字、107 个独立英文字母及 `alpha`、`beta` 两个词。
+按每分钟约 220–280 个汉字作粗略排期，并为字母、句间及页末阅读留出余量，
+预计整集约 35–45 分钟，尚未实测。这只是排期假设，不是合成语速参数；
+不据此调整音频速率或缩短必要阅读时间。现有 37 分 4 秒仍只是画面预览时间，
+#314 必须按原速实测音频、逐行语义及阅读停留重新核对。
 本阶段不提供成片导出命令，助手不渲染或导出视频及静帧。
 
 参考继承见 [production-reference.md](production-reference.md)。

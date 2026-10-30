@@ -1,4 +1,4 @@
 import { fileURLToPath } from "node:url";
-import { shots } from "../src/lesson.ts";
+import { narrationShots } from "./sentence-pauses.ts";
 import { writeCaptions } from "../../../shared/speech/write-captions.ts";
-writeCaptions(fileURLToPath(new URL("../", import.meta.url)), shots);
+writeCaptions(fileURLToPath(new URL("../", import.meta.url)), narrationShots);

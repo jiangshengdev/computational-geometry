@@ -10,7 +10,7 @@ import { pages } from "../src/lesson.ts";
 import { timelineFor, visualAt, fps } from "../src/timeline.ts";
 if (process.argv.includes("--decode"))
   throw Error(
-    "Visual phase has no current narration. Historic audio cannot validate #306; audio work starts at #313 with separate authorization.",
+    "The current preview has no measured narration audio. Historic audio cannot validate #306; synthesis and synchronization require separate authorization for #314.",
   );
 const introduced = new Set<ReferenceId>(["example"]);
 const ids = new Set<string>();

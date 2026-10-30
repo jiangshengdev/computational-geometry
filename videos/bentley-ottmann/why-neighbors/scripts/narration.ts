@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import { shots } from "../src/lesson.ts";
+import { narrationShots } from "./sentence-pauses.ts";
 import {
   buildSpeechDocument,
   synthesize,
@@ -10,7 +10,7 @@ import {
 import { runNarration } from "../../../shared/speech/narration.ts";
 await runNarration({
   root: fileURLToPath(new URL("../", import.meta.url)),
-  shots,
+  shots: narrationShots,
   buildSpeechDocument,
   synthesize,
   voice,
