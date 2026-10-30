@@ -84,10 +84,10 @@ function heightPanels(theme: string, p: Palette) {
 
 function ratioPanel(theme: string, p: Palette, numeric: boolean) {
   const panel = new Panel(p);
-  const position = (value: number) => 16 + 32 * value;
-  const origin = position(0), start = position(2), current = position(3.5), end = position(8), axisY = 142;
+  const position = (value: number) => 16 + 26 * value;
+  const origin = position(0), start = position(2), current = position(4), end = position(10), axisY = 142;
   panel.arrow([6, axisY], [302, axisY]);
-  for (let value = 0; value <= 8; value++) {
+  for (let value = 0; value <= 10; value++) {
     const tick = position(value);
     panel.line([tick, axisY - 3], [tick, axisY + 3]);
   }
@@ -100,14 +100,14 @@ function ratioPanel(theme: string, p: Palette, numeric: boolean) {
   panel.dot([current, axisY], p.result);
   panel.dot([end, axisY], p.a);
   panel.label([start, 168], numeric ? '2' : 'u');
-  panel.label([end, 168], numeric ? '8' : 'v');
-  panel.span(start, current, 88, numeric ? '\\frac{3}{2}' : 't(v-u)', p.result);
-  panel.span(start, end, 203, numeric ? '8-2=6' : 'v-u');
+  panel.label([end, 168], numeric ? '10' : 'v');
+  panel.span(start, current, 88, numeric ? '2' : 't(v-u)', p.result);
+  panel.span(start, end, 203, numeric ? '10-2=8' : 'v-u');
   panel.label([177, 31], numeric ? 't=\\frac{1}{4}' : '0<t<1', p.text, 18);
-  panel.label([185, 123], numeric ? '\\frac{7}{2}' : 'u+t(v-u)', p.result, 17);
+  panel.label([185, 123], numeric ? '4' : 'u+t(v-u)', p.result, 17);
   panel.line([current + 5, axisY - 6], [157, 125], p.result);
   panel.save(theme, numeric ? 'ratio-numeric' : 'ratio-general', 1, numeric
-    ? '从 2 到 8，全程 6，走过四分之一即 3/2，到达 7/2。'
+    ? '从 2 到 10，全程 8，走过四分之一即 2，到达 4。'
     : '从 u 到 v，全程 v-u，走过比例 t 时到达 u+t(v-u)。示意位置不限定横坐标的正负。');
 }
 
