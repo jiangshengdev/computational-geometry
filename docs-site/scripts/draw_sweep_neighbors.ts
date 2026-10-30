@@ -39,7 +39,7 @@ for (const [theme, p] of Object.entries(palettes)) {
     {id: 'A', a: [0, 1], b: [10, 1], color: p.a},
     {id: 'B', a: [1, 3], b: [3, 3], color: p.b},
     {id: 'C', a: [2, 6], b: [9, -1], color: p.result},
-    {id: 'D', a: [4, 0], b: [8, 4], color: theme === 'light' ? '#047857' : '#6ee7b7'},
+    {id: 'D', a: [4, 0], b: [8, 4], color: p.emerald},
   ];
   for (const frame of frames) {
     let svg = line([-1, 0], [11, 0], p.axis) + line([0, -1.5], [0, 7], p.axis);

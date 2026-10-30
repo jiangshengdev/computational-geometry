@@ -27,14 +27,14 @@ import IntersectionFigures from '@site/src/components/IntersectionFigures';
 
 ## 四条线段，先不给交点答案
 
-用 $A,B,C,D$ 区分四份输入。它们都是闭线段，包含两端。
+用 $\teachBlue{A},\teachOrange{B},\teachViolet{C},\teachEmerald{D}$ 区分四份输入。它们都是闭线段，包含两端。
 
 | 输入 | 左端点 | 右端点 | 所在直线及横坐标范围 |
 | --- | --- | --- | --- |
-| $A$ | $(0,1)$ | $(10,1)$ | $y=1$，$0\le x\le10$ |
-| $B$ | $(1,3)$ | $(3,3)$ | $y=3$，$1\le x\le3$ |
-| $C$ | $(2,6)$ | $(9,-1)$ | $y=8-x$，$2\le x\le9$ |
-| $D$ | $(4,0)$ | $(8,4)$ | $y=x-4$，$4\le x\le8$ |
+| $\teachBlue{A}$ | $(0,1)$ | $(10,1)$ | $\teachBlue{y}=\teachBlue{1}$，$0\le x\le10$ |
+| $\teachOrange{B}$ | $(1,3)$ | $(3,3)$ | $\teachOrange{y}=\teachOrange{3}$，$1\le x\le3$ |
+| $\teachViolet{C}$ | $(2,6)$ | $(9,-1)$ | $\teachViolet{y}=\teachViolet{8-x}$，$2\le x\le9$ |
+| $\teachEmerald{D}$ | $(4,0)$ | $(8,4)$ | $\teachEmerald{y}=\teachEmerald{x-4}$，$4\le x\le8$ |
 
 表中的方程可以用端点核对。例如，$C$ 在 $x=2$ 时有 $y=8-2=6$，在 $x=9$ 时有 $y=8-9=-1$；$D$ 在 $x=4$ 时有 $y=4-4=0$，在 $x=8$ 时有 $y=8-4=4$。两端点确定所在直线，范围再把它限制为线段。需要回顾这个区别，可以读[由两个端点写出直线方程](./line-equation.mdx)。
 
@@ -114,7 +114,7 @@ $$
 现在 $A$ 与 $C$ 成了邻居。公共点的高度满足：
 
 $$
-1=8-x.
+\teachBlue{1}=\teachViolet{8-x}.
 $$
 
 两边加上 $x$，得到 $1+x=8$；再减去 $1$，得到 $x=7$。代入 $y=1$，交点是 $(7,1)$，记作 $P$。
@@ -138,7 +138,7 @@ $$
 新邻接只有 $D$ 与 $A$；$D$ 下方没有线段。令两个高度相等：
 
 $$
-x-4=1.
+\teachEmerald{x-4}=\teachBlue{1}.
 $$
 
 两边加上 $4$，得到 $x=5$；代入 $y=1$，交点是 $(5,1)$，记作 $Q$。$5$ 同时在 $A$ 的 $0$ 到 $10$、$D$ 的 $4$ 到 $8$ 之间，而且 $5>4$，可以加入清单。
@@ -160,7 +160,7 @@ $$
 $A$ 与 $D$ 仍然相邻，只是上下颠倒；新出现的邻接是 $D$ 与 $C$。检查这一对：
 
 $$
-x-4=8-x.
+\teachEmerald{x-4}=\teachViolet{8-x}.
 $$
 
 两边加上 $x$，得到 $2x-4=8$；两边加上 $4$，得到 $2x=12$；两边除以非零的数 $2$，得到：

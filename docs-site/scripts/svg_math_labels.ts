@@ -1,11 +1,13 @@
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import project from '../../shared/colors/project.json' with {type: 'json'};
 
-export type Palette = {background: string; text: string; axis: string; a: string; b: string; result: string};
-export const palettes: Record<string, Palette> = {
-  light: {background: '#ffffff', text: '#172033', axis: '#475569', a: '#1d4ed8', b: '#c2410c', result: '#7c3aed'},
-  dark: {background: '#1b1b1d', text: '#e3e3e3', axis: '#cbd5e1', a: '#93c5fd', b: '#fdba74', result: '#c4b5fd'},
-};
+export type Palette = typeof project.light & {a: string; b: string; result: string};
+export const palettes: Record<string, Palette> = Object.fromEntries(
+  Object.entries(project).map(([theme, colors]) => [theme, {
+    ...colors, a: colors.blue, b: colors.orange, result: colors.violet,
+  }]),
+);
 
 export const escapeXml = (value: string) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 export type SvgMathLabel = {px: number; py: number; value: string; color: string; size: number; anchor: string; background?: string};

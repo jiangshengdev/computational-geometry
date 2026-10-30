@@ -23,7 +23,7 @@ import IntersectionFigures from '@site/src/components/IntersectionFigures';
 
 现在给每份输入编一个号：第 $1$ 条、第 $2$ 条、第 $3$ 条……编号用来区分输入，不表示线段的长短或位置。
 
-假设有下面三份输入，图中分别用 $S_1$、$S_2$、$S_3$ 标出它们；下标就是输入编号：
+假设有下面三份输入，图中分别用 $\teachBlue{S_1}$、$\teachOrange{S_2}$、$\teachViolet{S_3}$ 标出它们；下标就是输入编号：
 
 | 输入编号 | 两个端点 |
 | --- | --- |
@@ -49,9 +49,9 @@ import IntersectionFigures from '@site/src/components/IntersectionFigures';
 
 两条线段都包含的点，合起来叫作它们的「交集」。没有公共点时，交集就是空的。
 
-先固定一条线段 $A$：从 $(0,0)$ 到 $(4,0)$。它包含的点都满足 $y=0$，横坐标从 $0$ 到 $4$，包含两端。下面每次另取一条线段，与 $A$ 单独比较。
+先固定一条线段 $\teachBlue{A}$：从 $(0,0)$ 到 $(4,0)$。它包含的点都满足 $y=0$，横坐标从 $0$ 到 $4$，包含两端。下面每次另取一条线段，与 $A$ 单独比较。
 
-配图中用 $B$ 标出每次另取的输入，用 $A\cap B$ 表示这两份输入的交集；符号 $\cap$ 读作「交」。没有公共点时，交集为空，用 $\varnothing$ 表示。
+配图中用 $\teachOrange{B}$ 标出每次另取的输入，用 $\teachViolet{A\cap B}$ 表示这两份输入的交集；符号 $\cap$ 读作「交」。没有公共点时，交集为空，用 $\varnothing$ 表示。
 
 ### 没有公共点：空交集
 
@@ -100,7 +100,7 @@ import IntersectionFigures from '@site/src/components/IntersectionFigures';
 一个公共点必须同时满足：
 
 $$
-0\le x\le4,\qquad 2\le x\le6.
+\teachBlue{0}\le x\le\teachBlue{4},\qquad \teachOrange{2}\le x\le\teachOrange{6}.
 $$
 
 第二个条件要求 $x$ 至少为 $2$，第一个条件要求 $x$ 至多为 $4$，所以公共点必须满足 $2\le x\le4$。

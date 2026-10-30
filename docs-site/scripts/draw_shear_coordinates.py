@@ -6,6 +6,7 @@ From the repository root (requires the maintainer-provisioned uv environment):
 
 from pathlib import Path
 from io import StringIO
+import json
 
 import matplotlib
 
@@ -16,14 +17,13 @@ import matplotlib.pyplot as plt
 IMAGE_ROOT = Path(__file__).resolve().parents[1] / "static" / "img"
 OUTPUT = IMAGE_ROOT / "segment-intersection" / "shear"
 PALETTES = {
-    "light": {
-        "background": "#ffffff", "text": "#172033", "axis": "#475569",
-        "new_axis": "#7c3aed", "positive": "#1d4ed8", "negative": "#c2410c",
-    },
-    "dark": {
-        "background": "#1b1b1d", "text": "#e3e3e3", "axis": "#cbd5e1",
-        "new_axis": "#c4b5fd", "positive": "#93c5fd", "negative": "#fdba74",
-    },
+    theme: {
+        **colors,
+        "new_axis": colors["violet"], "positive": colors["blue"], "negative": colors["orange"],
+    }
+    for theme, colors in json.loads(
+        (Path(__file__).resolve().parents[2] / "shared/colors/project.json").read_text()
+    ).items()
 }
 
 

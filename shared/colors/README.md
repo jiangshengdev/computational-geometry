@@ -76,7 +76,7 @@ blue = palette['blue']['700']
 text = project['light']['text']
 ```
 
-浏览器或 Remotion 组件接入时，应根据各自构建工具的 JSON 资源支持方式读取，不能在浏览器组件中调用 `node:fs`。[Bentley–Ottmann 视频](../../videos/bentley-ottmann/colors.ts)已通过静态 JSON 导入共用色板，覆盖四集的对象色、强调色及彩色底色；既有正文、页面背景等自定义中性色继续保留。文章生成器、其他视频和应用界面尚未迁移。
+浏览器或 Remotion 组件接入时，应根据各自构建工具的 JSON 资源支持方式读取，不能在浏览器组件中调用 `node:fs`。[Bentley–Ottmann 视频](../../videos/bentley-ottmann/colors.ts)已通过静态 JSON 导入共用色板，覆盖四集的对象色、强调色及彩色底色；既有正文、页面背景等自定义中性色继续保留。文章的 TypeScript、Python 配图入口也已接入 `project.json`，保留各案例既有对象映射。[正文配色入口](../../docs-site/teaching-colors.ts)提供适配明暗主题的局部公式标注，例如 `\teachBlue{y_A(x)}`；只在定义、关键比较、图旁说明及对应表格中使用，不按字母自动染色。站点导航、链接主题色保持不变；其他视频和应用界面尚未迁移。
 
 ## 维护
 
