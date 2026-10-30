@@ -6,6 +6,7 @@ export function MathLessonPage({
   title,
   basis,
   basisHeight = 95,
+  showBasisTitle = true,
   children,
   diagram,
   diagramPosition = "right",
@@ -16,6 +17,7 @@ export function MathLessonPage({
   basis?: ReactNode;
   /** Explicit reserved space for multiple already-taught references. */
   basisHeight?: number;
+  showBasisTitle?: boolean;
   children: ReactNode;
   diagram?: ReactNode;
   diagramPosition?: "left" | "right";
@@ -57,7 +59,8 @@ export function MathLessonPage({
             fontSize: 30,
           }}
         >
-          已讲依据：{basis}
+          {showBasisTitle ? "已讲依据：" : null}
+          {basis}
         </aside>
       ) : null}
       <main

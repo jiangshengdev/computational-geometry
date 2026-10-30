@@ -1,13 +1,13 @@
-import { SvgMathText } from "./MathText";
+import { SvgMathText, teachingColors } from "./MathText";
 import { pages } from "./lesson";
 import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
 const ink = "#172c45",
-  blue = "#2878a0",
-  red = "#c25959",
-  green = "#278878",
+  blue = teachingColors.blue,
+  red = teachingColors.red,
+  green = teachingColors.green,
   grey = "#8999aa";
 const label = (x: number, y: number, value: string, color = ink) => (
-  <SvgMathText x={x} y={y} fill={color} fontSize={27}>
+  <SvgMathText x={x} y={y} fill={color} fontSize={27} colorize>
     {value}
   </SvgMathText>
 );

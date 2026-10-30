@@ -52,14 +52,14 @@ export function TeachingPage({
             style={{ fontSize: 25, lineHeight: 1.6 }}
           >
             <span style={{ background: active ? "#f8e5bf" : undefined }}>
-              <MathText>
+              <MathText colorize={false}>
                 {(source.number ? `(${source.number}) ` : "") +
                   source.name +
                   "："}
               </MathText>
             </span>
             {source.math ? (
-              <Latex>
+              <Latex colorize={false}>
                 {colorMath(source.math, undefined, active ? current.focus : [])}
               </Latex>
             ) : (
@@ -73,11 +73,12 @@ export function TeachingPage({
   return (
     <MathLessonPage
       diagramPosition="left"
-      title={<MathText>{page.title}</MathText>}
+      title={<MathText colorize={false}>{page.title}</MathText>}
       basis={basis}
+      showBasisTitle={false}
       basisHeight={
         page.basis.length
-          ? 115 + Math.ceil(page.basis.length / 2) * 65
+          ? 75 + Math.ceil(page.basis.length / 2) * 65
           : undefined
       }
       diagram={
@@ -90,7 +91,7 @@ export function TeachingPage({
           />
         ) : undefined
       }
-      caption={<MathText>{caption}</MathText>}
+      caption={<MathText colorize={false}>{caption}</MathText>}
     >
       <MathLines
         pageId={shot.page}

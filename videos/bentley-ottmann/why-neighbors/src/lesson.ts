@@ -22,6 +22,14 @@ const alignedGroups: Record<string, TeachingGroup[]> = {
   midpoint: [left(1), equals(2), left(1)],
   squeeze: [left(1), equals(2), left(1)],
 };
+// Authored breaks affect display only: each conclusion remains one teaching
+// step, and its compact reference wording and subtitle stay unchanged.
+const textBreakAfter: Record<string, string> = {
+  conditions: "线段；",
+  crossing: "区间，",
+  queue: "一份，",
+  earliest: "横坐标；",
+};
 export const pages = Object.fromEntries(
   storyboard.map((page) => [
     page.id,
@@ -32,10 +40,15 @@ export const pages = Object.fromEntries(
           ? references[step.publish]
           : undefined;
         const number = source?.number;
+        const breakAfter = step.publish && textBreakAfter[step.publish];
         return step.math
           ? { math: step.math + (number ? `\\qquad (${number})` : "") }
           : {
-              text: (number ? `(${number}) ${source!.name}：` : "") + step.text,
+              text:
+                (number ? `(${number}) ${source!.name}：` : "") +
+                (breakAfter
+                  ? step.text?.replace(breakAfter, `${breakAfter}\n`)
+                  : step.text),
             };
       }),
       groups: alignedGroups[page.id] ?? [left(page.steps.length)],
