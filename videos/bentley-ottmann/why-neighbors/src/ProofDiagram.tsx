@@ -16,6 +16,7 @@ const line = (
   y2: number,
   color = grey,
   dashed = false,
+  strokeWidth = dashed ? 2.5 : 3,
 ) => (
   <line
     x1={x1}
@@ -23,15 +24,15 @@ const line = (
     x2={x2}
     y2={y2}
     stroke={color}
-    strokeWidth={2}
+    strokeWidth={strokeWidth}
     strokeDasharray={dashed ? "7 7" : undefined}
   />
 );
 function Axis({ y = 350 }: { y?: number }) {
   return (
     <g>
-      {line(60, y, 735, y)}
-      <path d={`M735 ${y} l-13 -6 v12 z`} fill={grey} />
+      {line(60, y, 735, y, grey, false, 2.5)}
+      <path d={`M735 ${y} l-15 -7.5 v15 z`} fill={grey} />
       {label(750, y + 8, "x")}
     </g>
   );
@@ -94,10 +95,10 @@ function Height({
   const at = page === "signs-example" ? Math.min(8, step + 5) : 6;
   return (
     <g>
-      {line(70, y(0), 660, y(0))}
-      <path d={`M660 ${y(0)} l-12 -6 v12 z`} fill={grey} />
-      {line(x(0), 430, x(0), 30)}
-      <path d={`M${x(0)} 30 l-6 12 h12 z`} fill={grey} />
+      {line(70, y(0), 660, y(0), grey, false, 2.5)}
+      <path d={`M660 ${y(0)} l-15 -7.5 v15 z`} fill={grey} />
+      {line(x(0), 430, x(0), 30, grey, false, 2.5)}
+      <path d={`M${x(0)} 30 l-7.5 15 h15 z`} fill={grey} />
       {label(670, 380, "x")}
       {label(70, 55, "y")}
       {label(110, 401, "O")}
@@ -300,7 +301,7 @@ function Neighbors({
       {label(460, 95, "处理后")}
       {draw(before, 90)}
       {line(310, 250, 395, 250)}
-      <path d="M395 250 l-12 -6 v12 z" fill={grey} />
+      <path d="M395 250 l-15 -7.5 v15 z" fill={grey} />
       {changed ? draw(after, 460) : null}
       {checked
         ? after.slice(0, -1).map((_, index) =>
@@ -352,7 +353,7 @@ function Missed({ page, step }: { page: string; step: number }) {
             r={8}
             fill={reported ? colors.violet : "none"}
             stroke={colors.violet}
-            strokeWidth={2}
+            strokeWidth={3}
           />
           {label(595, 405, "p_*", colors.violet)}
         </g>
@@ -367,7 +368,7 @@ function Missed({ page, step }: { page: string; step: number }) {
       {registered ? (
         <g>
           {line(185, 170, 610, 170, colors.violet)}
-          <path d="M610 170 l-12 -6 v12 z" fill={colors.violet} />
+          <path d="M610 170 l-15 -7.5 v15 z" fill={colors.violet} />
           {label(270, 130, "登记或已有记录")}
           {label(260, 220, "保留到按位置取出")}
         </g>
