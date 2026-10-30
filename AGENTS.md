@@ -3,6 +3,7 @@
 按当前任务涉及的范围，在相关操作前读取并遵循以下规则；同时涉及多个范围时须一并遵循。
 
 - 启动或恢复 `grill-me` / `grilling` 时，读取 [澄清流程完成门禁](docs/agents/grilling.md)。
+- 编写、修改或审校数学公式与推导时，读取 [数学符号一致性规则](docs/agents/mathematical-notation.md)。
 - 编写或修改代码、脚本前，读取 [编码、模块组织与复用规则](docs/agents/coding.md)。
 - 涉及前端的工作，读取 [前端规则](web/AGENTS.md)，包括位于根目录的前端测试配置与跨层编排。
 - 添加、修改或执行测试，以及选择验证范围前，读取 [测试规则](docs/agents/testing.md)。
