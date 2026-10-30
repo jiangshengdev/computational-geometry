@@ -8,6 +8,7 @@ export function MathLessonPage({
   basisHeight = 95,
   children,
   diagram,
+  diagramPosition = "right",
   diagramProgress = 1,
   caption,
 }: {
@@ -17,6 +18,7 @@ export function MathLessonPage({
   basisHeight?: number;
   children: ReactNode;
   diagram?: ReactNode;
+  diagramPosition?: "left" | "right";
   diagramProgress?: number;
   caption: ReactNode;
 }) {
@@ -67,6 +69,7 @@ export function MathLessonPage({
           top: basis ? 155 + basisHeight : 165,
           bottom: 150,
           display: "flex",
+          flexDirection: diagramPosition === "left" ? "row-reverse" : "row",
           alignItems: "center",
           justifyContent: "center",
           gap: 65,
@@ -77,8 +80,10 @@ export function MathLessonPage({
           style={{
             width: diagram ? 850 : "max-content",
             maxWidth: "100%",
+            minWidth: 0,
+            flexShrink: 0,
             transform: diagram
-              ? `translateX(${435 * (1 - diagramProgress)}px)`
+              ? `translateX(${(diagramPosition === "left" ? -435 : 435) * (1 - diagramProgress)}px)`
               : undefined,
           }}
         >

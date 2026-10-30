@@ -1,7 +1,27 @@
 import type { Reference } from "./storyboard.ts";
 import { storyboard } from "./storyboard.ts";
-import { left } from "../../../shared/math/math-lines.ts";
+import {
+  equals,
+  left,
+  type TeachingGroup,
+} from "../../../shared/math/math-lines.ts";
 export { references } from "./storyboard.ts";
+// Explicit teaching groups: inequalities, explanations and independent
+// judgments do not acquire equation alignment merely by containing an '='.
+const alignedGroups: Record<string, TeachingGroup[]> = {
+  "define-ca": [equals(3)],
+  "signs-example": [equals(3), left(1)],
+  subtract: [equals(4)],
+  substitution: [left(1), equals(2)],
+  grouping: [equals(3)],
+  "end-difference": [equals(4)],
+  replace: [equals(2), left(1)],
+  "zero-equation": [equals(4)],
+  division: [left(2), equals(2)],
+  "negative-range": [equals(2), left(2)],
+  midpoint: [left(1), equals(2), left(1)],
+  squeeze: [left(1), equals(2), left(1)],
+};
 export const pages = Object.fromEntries(
   storyboard.map((page) => [
     page.id,
@@ -18,7 +38,7 @@ export const pages = Object.fromEntries(
               text: (number ? `(${number}) ${source!.name}：` : "") + step.text,
             };
       }),
-      groups: [left(page.steps.length)],
+      groups: alignedGroups[page.id] ?? [left(page.steps.length)],
       holdAfterSeconds: page.hold,
     },
   ]),

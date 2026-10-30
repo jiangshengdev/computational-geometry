@@ -27,7 +27,7 @@ export function MathLines<Cell>({
   renderCell: (cell: Cell, index: number) => ReactNode;
 }) {
   return (
-    <div data-math-column style={{ ...style, whiteSpace: "nowrap" }}>
+    <div data-math-column style={{ whiteSpace: "nowrap", ...style }}>
       {groups.map((group, groupIndex) => (
         <div
           key={group.start}

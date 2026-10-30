@@ -69,9 +69,7 @@ export function createTeachingMathLines<Role extends string, Mark>({
       <MathTable
         groups={groups}
         style={shouldWrapText ? { whiteSpace: "normal" } : undefined}
-        groupStyle={
-          shouldWrapText ? { width: "100%", tableLayout: "fixed" } : undefined
-        }
+        groupStyle={shouldWrapText ? { maxWidth: "100%" } : undefined}
         rowProps={(index) => ({
           "data-content-line": true,
           "data-revealed": index < visibleStep,
@@ -80,6 +78,7 @@ export function createTeachingMathLines<Role extends string, Mark>({
         cellStyle={(cell) => ({
           color: cell.math ? (defaultMathColor ?? theme) : "#172c45",
           fontSize: cell.math ? 42 : 36,
+          whiteSpace: cell.math ? "nowrap" : undefined,
           lineHeight: shouldWrapText && !cell.math ? 1.7 : 0,
         })}
         renderCell={(cell, index) => (

@@ -72,6 +72,7 @@ export function TeachingPage({
   ) : undefined;
   return (
     <MathLessonPage
+      diagramPosition="left"
       title={<MathText>{page.title}</MathText>}
       basis={basis}
       basisHeight={

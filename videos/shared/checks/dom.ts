@@ -23,11 +23,37 @@ export function checkPageBounds(
   const lines = Array.from(
     content?.querySelectorAll<HTMLElement>("[data-line-ink]") ?? [],
   );
-  for (const line of lines)
+  for (const line of lines) {
     if (
       !contains(content!.getBoundingClientRect(), line.getBoundingClientRect())
     )
       errors.push(`Content overflow: ${line.textContent}`);
+    const column = line.closest<HTMLElement>("[data-main-column]");
+    if (
+      column &&
+      !contains(column.getBoundingClientRect(), line.getBoundingClientRect())
+    )
+      errors.push(`Text column overflow: ${line.textContent}`);
+  }
+  const diagram = content?.querySelector<HTMLElement>(
+    '[data-teaching-group="lesson-diagram"]',
+  );
+  if (diagram && getComputedStyle(diagram).visibility !== "hidden") {
+    const box = diagram.getBoundingClientRect();
+    for (const line of lines.filter(
+      (line) => getComputedStyle(line).visibility !== "hidden",
+    )) {
+      for (const ink of line.getClientRects()) {
+        if (
+          Math.min(box.right, ink.right) > Math.max(box.left, ink.left) &&
+          Math.min(box.bottom, ink.bottom) > Math.max(box.top, ink.top)
+        ) {
+          errors.push(`Text overlaps diagram: ${line.textContent}`);
+          break;
+        }
+      }
+    }
+  }
   const blocks = [...page.querySelectorAll<HTMLElement>("[data-page-block]")];
   for (const block of blocks)
     if (!contains(page.getBoundingClientRect(), block.getBoundingClientRect()))
