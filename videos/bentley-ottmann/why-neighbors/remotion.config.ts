@@ -12,6 +12,9 @@ Config.setRspack(true);
 Config.setVideoImageFormat("png");
 Config.setOverwriteOutput(false);
 Config.setDefaultPremountInSeconds(2);
+// Remotion 4.0.539 can keep hidden Sequence audio playing in Studio.
+// Unmount completed sequences so narration cannot overlap the next segment.
+Config.setSequenceActivityLimit(0);
 Config.setScale(2);
 Config.setCodec("h265");
 Config.setPixelFormat("yuv420p");
