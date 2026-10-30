@@ -20,15 +20,15 @@ export const LayoutCheck = createShotLayoutCheck({
   visualAt,
   fps,
   audioLeadFrames: 0,
-  // There are no audio-derived captions in this visual phase.
-  captions: Object.fromEntries(rows.map((row) => [row.id, []])),
+  captions: Object.fromEntries(rows.map((row) => [row.id, row.captions])),
   SceneAtFrame,
   extraFrames: (row) =>
     row.stages.flatMap((stage) => [
-      stage.frame + fps,
-      stage.frame + 2 * fps,
-      stage.frame + 4 * fps - 1,
-      stage.frame + 4 * fps,
+      Math.floor((stage.speechStartMs * fps) / 1000),
+      Math.ceil((stage.speechStartMs * fps) / 1000),
+      Math.floor(((stage.speechStartMs + stage.speechEndMs) * fps) / 2000),
+      Math.ceil((stage.speechEndMs * fps) / 1000) - 1,
+      Math.ceil((stage.speechEndMs * fps) / 1000),
     ]),
   auditPage(page, pageId, visibleStep) {
     const errors: string[] = [];
@@ -72,7 +72,7 @@ export const LayoutCheck = createShotLayoutCheck({
     if (page.querySelector(".katex-error"))
       errors.push("Invalid mathematical notation");
     if (page.querySelector("audio"))
-      errors.push("Historic audio attached to visual preview");
+      errors.push("Layout inspection must remain silent");
     const walker = document.createTreeWalker(page, NodeFilter.SHOW_TEXT);
     while (walker.nextNode()) {
       if (

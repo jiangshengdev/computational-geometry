@@ -14,6 +14,8 @@ export function buildSpeechDocument(input: unknown, context = "speech") {
   checkSentencePlan(input, document.text, context);
   return document;
 }
-export const { alignAudio, verifyAlignment } = createAlignmentTools(sdk, {
-  allowReviewedPronunciation: true,
-});
+export const { alignAudio, verifyAlignment, assessmentWords } =
+  createAlignmentTools(sdk, {
+    allowReviewedPronunciation: true,
+    deferPronunciationReview: true,
+  });

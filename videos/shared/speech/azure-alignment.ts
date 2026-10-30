@@ -1,4 +1,5 @@
 import { audioSha256 as audioHash, verifyPcmSource } from "./audio.ts";
+import { reviewedRecognitionWords } from "./reviewed-recognition.ts";
 import {
   assessmentChunks,
   combineAssessments,
@@ -28,7 +29,14 @@ type Assessment = {
 
 export function createAlignmentTools(
   sdk: typeof SpeechSdk,
-  { allowReviewedPronunciation }: { allowReviewedPronunciation: boolean },
+  {
+    allowReviewedPronunciation,
+    deferPronunciationReview = false,
+  }: {
+    allowReviewedPronunciation: boolean;
+    /** Use measured times while retaining pronunciation flags for later listening. */
+    deferPronunciationReview?: boolean;
+  },
 ) {
   // Preserve service word boundaries. Never interpolate, split, or invent durations.
   function assessmentWords(
@@ -36,12 +44,14 @@ export function createAlignmentTools(
     response: unknown,
   ): WordBoundary[] {
     const result = response as Assessment;
-    const recognized = result?.NBest?.[0]?.Words;
-    if (result?.RecognitionStatus !== "Success" || !recognized?.length)
+    const rawWords = result?.NBest?.[0]?.Words;
+    if (result?.RecognitionStatus !== "Success" || !rawWords?.length)
       throw Error("Alignment did not recognize speech");
+    const recognized = reviewedRecognitionWords(audio, rawWords);
     let cursor = 0;
     const words = recognized.map((word) => {
       if (
+        word.reviewedTextOffset === undefined &&
         !["None", "Mispronunciation"].includes(
           word.PronunciationAssessment?.ErrorType,
         )
@@ -51,6 +61,13 @@ export function createAlignmentTools(
         );
       const gap = audio.speech.slice(cursor).match(/^[\p{P}\p{Z}\s]*/u)![0];
       cursor += gap.length;
+      if (
+        word.reviewedTextOffset !== undefined &&
+        cursor !== word.reviewedTextOffset
+      )
+        throw Error(
+          "Recognition review source offset does not match response order",
+        );
       if (
         !word.Word ||
         !speechComparisonText(audio.speech).startsWith(
@@ -70,10 +87,8 @@ export function createAlignmentTools(
       return boundary;
     });
     validateWords({ ...audio, words });
-    for (let i = 1; i < words.length; i++) {
-      if (words[i].startMs < words[i - 1].startMs + words[i - 1].durationMs)
-        throw Error("Overlapping alignment words");
-    }
+    // Check overlap below on the final selected measurements. Recognition
+    // neighbors may differ from an approved synthesis event that we retain.
     const synthesisWords = audio.alignment?.synthesisWords ?? audio.words;
     // Some service events span SSML tags in their offsets/lengths. Locate the
     // returned word text in the unchanged source; retain all measured times and
@@ -133,10 +148,11 @@ export function createAlignmentTools(
         );
         if (
           errorType !== "None" &&
+          recognized[words.indexOf(word)].reviewedTextOffset === undefined &&
           !(
-            allowReviewedPronunciation &&
             errorType === "Mispronunciation" &&
-            reviewed
+            (deferPronunciationReview ||
+              (allowReviewedPronunciation && reviewed))
           )
         )
           throw Error(`Alignment requires review for timing: ${word.text}`);
@@ -309,6 +325,12 @@ export function createAlignmentTools(
         audioSha256: audioHash(path),
         synthesisWords: audio.alignment?.synthesisWords ?? audio.words,
         response,
+        ...(deferPronunciationReview
+          ? { pronunciationReview: "pending-listening" as const }
+          : {}),
+        ...(audio.alignment?.reviewedRecognition
+          ? { reviewedRecognition: audio.alignment.reviewedRecognition }
+          : {}),
       },
     };
   }

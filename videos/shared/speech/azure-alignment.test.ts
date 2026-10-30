@@ -7,6 +7,195 @@ import type * as SDK from "microsoft-cognitiveservices-speech-sdk";
 import { createAlignmentTools } from "./azure-alignment.ts";
 import { audioSha256 } from "./audio.ts";
 import type { AudioTiming } from "./timing.ts";
+test("overlap checks apply to the final measured words, including reviewed joins", () => {
+  const words = [
+    {
+      text: "字母",
+      textOffset: 0,
+      wordLength: 2,
+      startMs: 100,
+      durationMs: 200,
+    },
+    { text: "R", textOffset: 2, wordLength: 1, startMs: 300, durationMs: 200 },
+  ];
+  const audio: AudioTiming = {
+    speech: "字母r。",
+    duration: 1,
+    voice: "test",
+    fingerprint: "test",
+    words,
+  };
+  const response = {
+    RecognitionStatus: "Success",
+    NBest: [
+      {
+        Words: [
+          {
+            Word: "字母",
+            Offset: 1000000,
+            Duration: 2300000,
+            PronunciationAssessment: { ErrorType: "None" },
+          },
+          {
+            Word: "R",
+            Offset: 3000000,
+            Duration: 2000000,
+            PronunciationAssessment: { ErrorType: "None" },
+          },
+        ],
+      },
+    ],
+  };
+  const { assessmentWords } = createAlignmentTools({} as typeof SDK, {
+    allowReviewedPronunciation: false,
+  });
+  assert.deepEqual(assessmentWords(audio, response), words);
+  assert.throws(
+    () => assessmentWords({ ...audio, words: [] }, response),
+    /overlaps/,
+  );
+});
+test("confirmed recognition mistakes use existing synthesis times and preserve raw errors", () => {
+  const response = {
+    RecognitionStatus: "Success",
+    NBest: [
+      {
+        Words: [
+          {
+            Word: "二",
+            Offset: 1000000,
+            Duration: 2000000,
+            PronunciationAssessment: { ErrorType: "Insertion" },
+          },
+          {
+            Word: "r",
+            Offset: 0,
+            Duration: 0,
+            PronunciationAssessment: { ErrorType: "Omission" },
+          },
+        ],
+      },
+    ],
+  };
+  const original = structuredClone(response);
+  const audio: AudioTiming = {
+    speech: "r。",
+    duration: 1,
+    voice: "test",
+    fingerprint: "text-v1",
+    audioSha256: "wav-v1",
+    words: [
+      {
+        text: "R",
+        textOffset: 0,
+        wordLength: 1,
+        startMs: 110,
+        durationMs: 180,
+      },
+    ],
+    alignment: {
+      method: "azure-pronunciation-assessment",
+      audioSha256: "wav-v1",
+      synthesisWords: [],
+      response,
+      reviewedRecognition: [
+        {
+          audioSha256: "wav-v1",
+          fingerprint: "text-v1",
+          text: "r",
+          textOffset: 0,
+          firstWord: 0,
+          expected: [
+            { text: "二", errorType: "Insertion" },
+            { text: "r", errorType: "Omission" },
+          ],
+          decision:
+            "User listened to this WAV and confirmed the phrase is correct",
+        },
+      ],
+    },
+  };
+  audio.alignment!.synthesisWords = audio.words;
+  const { assessmentWords } = createAlignmentTools({} as typeof SDK, {
+    allowReviewedPronunciation: true,
+  });
+  assert.deepEqual(assessmentWords(audio, response), audio.words);
+  assert.deepEqual(response, original);
+  assert.throws(
+    () => assessmentWords({ ...audio, audioSha256: "different" }, response),
+    /review.*binding/i,
+  );
+  assert.throws(
+    () =>
+      assessmentWords(
+        {
+          ...audio,
+          alignment: {
+            ...audio.alignment!,
+            synthesisWords: [{ ...audio.words[0], durationMs: 0 }],
+          },
+        },
+        response,
+      ),
+    /valid synthesis/i,
+  );
+  assert.throws(
+    () =>
+      assessmentWords(
+        {
+          ...audio,
+          alignment: { ...audio.alignment!, reviewedRecognition: [] },
+        },
+        response,
+      ),
+    /requires review/,
+  );
+});
+test("deferred listening keeps measured timing usable without accepting omissions", () => {
+  const audio: AudioTiming = {
+    speech: "差。",
+    duration: 1,
+    voice: "test",
+    fingerprint: "test",
+    words: [
+      { text: "差", textOffset: 0, wordLength: 1, startMs: 100, durationMs: 0 },
+    ],
+  };
+  const response = {
+    RecognitionStatus: "Success",
+    NBest: [
+      {
+        Words: [
+          {
+            Word: "差",
+            Offset: 1000000,
+            Duration: 3000000,
+            PronunciationAssessment: { ErrorType: "Mispronunciation" },
+          },
+        ],
+      },
+    ],
+  };
+  const { assessmentWords } = createAlignmentTools({} as typeof SDK, {
+    allowReviewedPronunciation: true,
+    deferPronunciationReview: true,
+  });
+  assert.deepEqual(assessmentWords(audio, response), [
+    {
+      text: "差",
+      textOffset: 0,
+      wordLength: 1,
+      startMs: 100,
+      durationMs: 300,
+    },
+  ]);
+  assert.equal(
+    response.NBest[0].Words[0].PronunciationAssessment.ErrorType,
+    "Mispronunciation",
+  );
+  response.NBest[0].Words[0].PronunciationAssessment.ErrorType = "Omission";
+  assert.throws(() => assessmentWords(audio, response), /requires review/);
+});
 test("malformed SSML offsets are recovered from exact source text without replacing valid measured times", () => {
   const audio: AudioTiming = {
     speech: "R。这里。",

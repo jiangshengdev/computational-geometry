@@ -1,0 +1,27 @@
+{
+  "V-last-event": [
+    {
+      "audioSha256": "11c70117ddd372e8390ff77078b54e8e8de1484452d694d8e21c81628c483599",
+      "fingerprint": "d8bcb04e065f70f13aefef2d7543992e24fe6f39d0eaed2bc78220d9163591dd",
+      "text": "r",
+      "textOffset": 125,
+      "firstWord": 68,
+      "expected": [
+        { "text": "二", "errorType": "Insertion" },
+        { "text": "r", "errorType": "Omission" }
+      ],
+      "decision": "2026-10-30 用户试听完整片段并确认所列疑点都无问题。保留原 WAV 和原始评估，以原有 R 合成词时间定位；不将确认扩大到其他素材。"
+    }
+  ],
+  "V-reverse-between": [
+    {
+      "audioSha256": "4adba7b0e7349c238d578948b3804cdd615fa76bac64ac8f54d7717aa36e7013",
+      "fingerprint": "c8923423807bd523c4e3319da4805c376f68c8aaacadea2031a7b0bb8cbcb3ef",
+      "text": "也",
+      "textOffset": 198,
+      "firstWord": 110,
+      "expected": [{ "text": "也", "errorType": "Omission" }],
+      "decision": "2026-10-30 用户试听完整片段并确认所列疑点都无问题。保留原 WAV 和原始评估，以原有也字的合成词时间定位；不将确认扩大到其他素材。"
+    }
+  ]
+}

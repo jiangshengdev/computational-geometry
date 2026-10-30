@@ -23,6 +23,16 @@ export type AudioTiming = {
     response: unknown;
     // Whole-sentence listening approval for these words in audioSha256 only.
     reviewedPronunciation?: { text: string; textOffset: number }[];
+    pronunciationReview?: "pending-listening";
+    reviewedRecognition?: {
+      audioSha256: string;
+      fingerprint: string;
+      text: string;
+      textOffset: number;
+      firstWord: number;
+      expected: { text: string; errorType: "Insertion" | "Omission" }[];
+      decision: string;
+    }[];
   };
 };
 export type Caption = {

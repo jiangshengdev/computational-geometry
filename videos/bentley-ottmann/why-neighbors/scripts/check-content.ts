@@ -7,11 +7,22 @@ import {
   type Reference,
 } from "../src/storyboard.ts";
 import { pages } from "../src/lesson.ts";
-import { timelineFor, visualAt, fps } from "../src/timeline.ts";
-if (process.argv.includes("--decode"))
-  throw Error(
-    "The current preview has no measured narration audio. Historic audio cannot validate #306; synthesis and synchronization require separate authorization for #314.",
-  );
+import { timelineFor, visualAt, fps, audio } from "../src/timeline.ts";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import {
+  audioSha256,
+  verifyPcmSource,
+  decodeAudio,
+} from "../../../shared/speech/audio.ts";
+import {
+  narrationFile,
+  synthesisFormat,
+} from "../../../shared/speech/source.ts";
+import { buildSpeechDocument, verifyAlignment } from "./azure-speech.ts";
+const speech = JSON.parse(
+  readFileSync(new URL("../src/speech-text.json", import.meta.url), "utf8"),
+);
 const introduced = new Set<ReferenceId>(["example"]);
 const ids = new Set<string>();
 for (const page of storyboard) {
@@ -42,12 +53,80 @@ for (const source of Object.values(references) as Reference[])
   if (source.math) katex.renderToString(source.math, { throwOnError: true });
 const rows = timelineFor();
 for (const [index, row] of rows.entries()) {
+  const recording = audio[row.id];
+  const path = fileURLToPath(
+    new URL(
+      `../public/narration/${narrationFile(row.id, recording)}`,
+      import.meta.url,
+    ),
+  );
+  const document = buildSpeechDocument(speech[row.id], row.id);
+  assert.equal(recording.speech, document.text, `${row.id}: stale text`);
+  assert.equal(
+    recording.fingerprint,
+    document.fingerprint,
+    `${row.id}: stale SSML`,
+  );
+  assert.equal(
+    recording.audioSha256,
+    audioSha256(path),
+    `${row.id}: changed WAV`,
+  );
+  assert.equal(recording.outputFormat, synthesisFormat);
+  verifyAlignment(recording, path);
+  if (process.argv.includes("--decode")) {
+    verifyPcmSource(path);
+    decodeAudio(path);
+  }
+  assert.equal(
+    row.captions.map((cue) => cue.text).join(""),
+    row.caption,
+    `${row.id}: incomplete subtitle`,
+  );
+  assert.equal(row.stages[0].trimBefore, 0);
+  assert.equal(
+    row.stages[row.stages.length - 1].trimAfter,
+    Math.ceil(recording.duration * fps),
+  );
   assert.equal(
     row.from,
     index ? rows[index - 1].from + rows[index - 1].durationInFrames : 0,
-    "Preview gap/overlap",
+    "Timeline gap/overlap",
   );
   for (const stage of row.stages) {
+    const previous = row.stages[stage.step - 2];
+    if (previous) {
+      assert.equal(
+        stage.trimBefore,
+        previous.trimAfter,
+        "Original audio has a gap or repeated samples",
+      );
+      assert(
+        previous.audioFrame + previous.trimAfter - previous.trimBefore <=
+          stage.frame,
+        "Audio overlaps next step",
+      );
+    }
+    const nextFrame = row.stages[stage.step]?.frame ?? row.readingFrames;
+    assert(
+      nextFrame - stage.frame >=
+        Math.ceil(pages[row.page].steps[stage.step - 1].seconds * fps),
+      "Reading window shortened",
+    );
+    assert(
+      stage.frame < Math.floor((stage.speechStartMs * fps) / 1000),
+      "Teaching row must precede speech",
+    );
+    assert(
+      stage.speechEndMs > stage.speechStartMs &&
+        stage.speechEndMs <= (nextFrame * 1000) / fps,
+      "Speech outside step",
+    );
+    assert.equal(
+      visualAt(row, Math.ceil((stage.speechEndMs * fps) / 1000)).cueActive,
+      false,
+      "Cue outlives its speech",
+    );
     assert.equal(visualAt(row, stage.frame).visibleStep, stage.step);
     if (stage.frame > 0)
       assert.equal(visualAt(row, stage.frame - 1).visibleStep, stage.step - 1);
@@ -69,5 +148,5 @@ for (const [index, row] of rows.entries()) {
   );
 }
 console.log(
-  `PASS: ${storyboard.length} pages, ${storyboard.reduce((n, p) => n + p.steps.length, 0)} steps; provisional visual duration ${rows.reduce((n, r) => n + r.durationInFrames, 0) / fps}s; no audio verification claimed.`,
+  `PASS: ${storyboard.length} pages, ${storyboard.reduce((n, p) => n + p.steps.length, 0)} steps; measured timeline ${rows.reduce((n, r) => n + r.durationInFrames, 0) / fps}s; listening and rendered-film acceptance remain separate.`,
 );
