@@ -84,7 +84,7 @@ function SymbolTooltip({ name, line, occurrence, capability, label, children, co
       // modal; Pressable's mount-time focus assertion rejects that valid state.
       : <FocusableTrigger<'span'> {...triggerProps} render={props => <span {...props} tabIndex={0} />} className="execution-symbol">{children}</FocusableTrigger>}
     <PreviewLifecycle onKeyDown={onKeyDown} onClose={onClose} />
-    <Popover.Content className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement={placement} aria-label={disclosure ? _(/*i18n*/ { id: "Variable {name} · {label}", message: "Variable {name} · {label}" , values: { name, label }}) : label}>
+    <Popover.Content maxHeight={320} className={popoverVariants().base({ className: popoverVariants().dialog({ className: 'execution-symbol-tooltip' }) })} placement={placement} aria-label={disclosure ? _(/*i18n*/ { id: "Variable {name} · {label}", message: "Variable {name} · {label}" , values: { name, label }}) : label}>
       {content}
     </Popover.Content>
   </PreviewTrigger>

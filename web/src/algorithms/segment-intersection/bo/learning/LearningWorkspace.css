@@ -51,7 +51,7 @@
 .execution-symbol { cursor: help; border-radius: 2px; text-decoration: underline dotted; text-underline-offset: 3px; }
 .execution-symbol[data-call-capability="step-in"] { background: var(--accent-soft); }
 .execution-symbol[data-call-capability="opaque"] { background: var(--surface-tertiary); }
-.execution-symbol-tooltip { max-width: min(48rem, calc(100vw - 2rem)); max-height: 20rem; overflow: auto; white-space: normal; overflow-wrap: anywhere; font-size: .8125rem; }
+.execution-symbol-tooltip { max-width: min(48rem, calc(100vw - 2rem)); overflow: auto; white-space: normal; overflow-wrap: anywhere; font-size: .8125rem; }
 .execution-symbol-tooltip p { margin-top: .3rem; }
 .execution-symbol-tooltip code { padding: .1em .3em; border-radius: .25rem; background: var(--surface-secondary); font-family: var(--font-mono); white-space: pre-wrap; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .execution-symbol-tooltip code[data-multiline="true"] { display: block; margin-top: .3rem; padding: .5rem .75rem; }

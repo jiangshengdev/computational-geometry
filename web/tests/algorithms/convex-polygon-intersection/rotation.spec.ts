@@ -1,6 +1,12 @@
 import { expect, test, type Locator } from '@playwright/test'
 
 async function endpoints(line: Locator) {
+  // Screen lengths are comparable only after ResizeObserver updates the viewBox.
+  await expect.poll(() => line.evaluate(node => {
+    const svg = (node as SVGLineElement).ownerSVGElement!
+    const box = svg.getBoundingClientRect(), viewBox = svg.viewBox.baseVal
+    return box.width === viewBox.width && box.height === viewBox.height
+  })).toBe(true)
   return line.evaluate(node => {
     const element = node as SVGLineElement
     const matrix = element.getScreenCTM()!
@@ -18,6 +24,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     page.on('pageerror', error => errors.push(error.message))
     page.on('console', message => { if (message.type() === 'error') errors.push(message.text()) })
     await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn?step=15')
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
     const plot = page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true })
     const layer = plot.locator('[data-layer="geometry"]')
     const edge = plot.locator('[data-edge="A"]')
@@ -95,6 +102,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     await expect(align).toBeDisabled()
     await expect(align).toHaveAccessibleDescription('This step has no valid A edge to align')
     await page.goto('/convex-polygon-intersection/cases/irregular-overlap/learn?step=15')
+    await expect(page.getByText('Trace generated', { exact: false })).toBeVisible()
     const plot = page.getByRole('group', { name: 'Convex polygon intersection plot', exact: true })
     const edge = plot.locator('[data-edge="A"]')
     await expect(edge).toBeVisible()

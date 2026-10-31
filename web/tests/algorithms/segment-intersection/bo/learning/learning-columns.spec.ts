@@ -12,6 +12,7 @@ for (const browserName of ['chromium', 'webkit'] as const) {
     const layout = page.getByRole('button', { name: /主体布局比例/ })
     const variables = page.getByRole('region', { name: '核心变量', exact: true })
     await expect(variables).toBeVisible()
+    await expect(page.getByRole('slider', { name: '教学步骤' })).toHaveValue('3')
     const contents = await variables.innerText()
     await expect(layout).toContainText('2:3:3')
     await page.getByRole('button', { name: '展开左侧辅助栏' }).click()
