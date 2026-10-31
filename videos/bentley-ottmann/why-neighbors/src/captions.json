@@ -4129,70 +4129,70 @@
     {
       "text": "检查先求两条所在直线的公共点，",
       "startMs": 70,
-      "endMs": 2949,
+      "endMs": 2989,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "再检查它是否在两段范围内。",
-      "startMs": 3178,
-      "endMs": 5137,
+      "startMs": 3228,
+      "endMs": 5187,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这个假定漏点是真实线段交点，",
       "startMs": 5448,
-      "endMs": 7928,
+      "endMs": 8008,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以不会被范围检查排除。",
-      "startMs": 8218,
-      "endMs": 10298,
+      "startMs": 8268,
+      "endMs": 10428,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "检查发生在位置 s，",
-      "startMs": 10759,
-      "endMs": 12119,
+      "text": "检查发生在位置 s 处，",
+      "startMs": 10859,
+      "endMs": 12850,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "交点严格在它右侧，因此也满足未来交点的登记条件。",
-      "startMs": 12508,
-      "endMs": 16928,
+      "startMs": 13008,
+      "endMs": 17438,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "如果尚未登记，就加入清单；",
-      "startMs": 17369,
-      "endMs": 20168,
+      "startMs": 17869,
+      "endMs": 20758,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "如果已经登记，就保留原来那一份。",
-      "startMs": 20488,
-      "endMs": 23188,
+      "startMs": 21038,
+      "endMs": 23908,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两种情况都保证清单中有它，",
-      "startMs": 23478,
-      "endMs": 25837,
+      "startMs": 24178,
+      "endMs": 26497,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不依赖此前是否检查过这一对。",
-      "startMs": 26148,
-      "endMs": 28188,
+      "startMs": 26798,
+      "endMs": 28878,
       "timestampMs": null,
       "confidence": null
     }

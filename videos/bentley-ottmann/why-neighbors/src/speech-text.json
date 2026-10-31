@@ -10725,7 +10725,11 @@
       "text": "查发",
       "pinyin": "cha2 fa1"
     },
-    "生在位置 s 。",
+    "生在位置 ",
+    { "letter": "s", "ipa": "ɛs" },
+    " ",
+    { "text": "处", "pinyin": "chu4" },
+    "。",
     {
       "breakMs": 200
     },
