@@ -123,7 +123,7 @@ export type Step = {
 };
 export type StoryPage = {
   id: string;
-  chapter: number;
+  section: number;
   title: string;
   basis: ReferenceId[];
   steps: Step[];
@@ -165,7 +165,7 @@ const ref = (
 ): Step => ({ ...references[id], caption, use, publish: id, focus });
 const p = (
   id: string,
-  chapter: number,
+  section: number,
   title: string,
   basis: ReferenceId[],
   steps: Step[],
@@ -173,12 +173,12 @@ const p = (
   timing: Pick<StoryPage, "reading" | "thinkingSeconds"> = {
     reading: "ordinary",
   },
-): StoryPage => ({ id, chapter, title, basis, steps, diagram, ...timing });
+): StoryPage => ({ id, section, title, basis, steps, diagram, ...timing });
 export const storyboard: StoryPage[] = [
   p(
     "opening",
     1,
-    "为什么只检查邻居也不会漏点",
+    "第一节：为什么只检查邻居也不会漏点",
     [],
     [
       t(
@@ -317,7 +317,7 @@ export const storyboard: StoryPage[] = [
   p(
     "general-lines",
     2,
-    "第二章：任意两条线段怎样比较",
+    "第二节：任意两条线段怎样比较",
     ["conditions"],
     [
       t(
@@ -448,7 +448,7 @@ export const storyboard: StoryPage[] = [
   p(
     "common-interval",
     3,
-    "第三章：把中间位置表示出来",
+    "第三节：把中间位置表示出来",
     ["affine"],
     [
       ref(
@@ -838,12 +838,12 @@ export const storyboard: StoryPage[] = [
   p(
     "no-events",
     4,
-    "第四章：没有事件，为什么顺序不变",
+    "第四节：没有事件，为什么顺序不变",
     ["crossing"],
     [
       t(
         "没有端点，活动成员不变",
-        "进入第四章。先看一个没有端点也没有交点的区间。没有端点，就没有线段在中途开始或结束，活动成员保持不变。",
+        "进入第四节。先看一个没有端点也没有交点的区间。没有端点，就没有线段在中途开始或结束，活动成员保持不变。",
       ),
       t(
         "若某一对颠倒，固定高度差在两处变号",
@@ -1146,14 +1146,14 @@ export const storyboard: StoryPage[] = [
       ),
       t(
         "还需说明扫描过程确实检查了这对邻居",
-        "几何上相邻，还没有证明算法不会漏点，还要说明扫描过程确实检查了这对邻居。下一章把几何事实接到检查规则。",
+        "几何上相邻，还没有证明算法不会漏点，还要说明扫描过程确实检查了这对邻居。下一节把几何事实接到检查规则。",
       ),
     ],
   ),
   p(
     "new-neighbors",
     5,
-    "第五章：新邻接从哪里来",
+    "第五节：新邻接从哪里来",
     ["stable", "adjacent"],
     [
       t(
@@ -1452,7 +1452,7 @@ export const storyboard: StoryPage[] = [
       ),
       t(
         "若有漏点，就能选最早者；最早者已被排除",
-        "如果有漏点，就一定能选出最早者。但最早者已经被排除，于是所有满足条件的输入都不会漏点。下一章补齐报告结果与成本的边界。",
+        "如果有漏点，就一定能选出最早者。但最早者已经被排除，于是所有满足条件的输入都不会漏点。下一节补齐报告结果与成本的边界。",
       ),
     ],
     undefined,
@@ -1461,7 +1461,7 @@ export const storyboard: StoryPage[] = [
   p(
     "soundness",
     6,
-    "第六章：不多报，也不重复",
+    "第六节：不多报，也不重复",
     ["conditions", "queue"],
     [
       t(

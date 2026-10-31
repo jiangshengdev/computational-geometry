@@ -21,7 +21,7 @@ export function LessonVideo() {
           key={row.id}
           from={row.from}
           durationInFrames={row.durationInFrames}
-          name={`${pages[row.page].chapter} · ${row.action}`}
+          name={`第 ${pages[row.page].section} 节 · ${row.action}`}
         >
           <ShotScene row={row} />
         </Sequence>

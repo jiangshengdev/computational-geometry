@@ -5708,7 +5708,12 @@
     }
   ],
   "V-no-events": [
-    "进入第四章。",
+    "进入第四",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "。",
     {
       "breakMs": 200
     },
@@ -8559,7 +8564,10 @@
       "text": "下一",
       "pinyin": "xia4 yi4"
     },
-    "章",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
     {
       "text": "把几",
       "pinyin": "ba2 ji3"
@@ -11194,7 +11202,11 @@
       "text": "下一",
       "pinyin": "xia4 yi4"
     },
-    "章补",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "补",
     {
       "text": "齐",
       "pinyin": "qi2"

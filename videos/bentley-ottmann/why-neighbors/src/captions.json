@@ -2223,7 +2223,7 @@
   ],
   "V-no-events": [
     {
-      "text": "进入第四章。",
+      "text": "进入第四节。",
       "startMs": 70,
       "endMs": 1230,
       "timestampMs": null,
@@ -2239,91 +2239,91 @@
     {
       "text": "没有端点，就没有线段在中途开始或结束，",
       "startMs": 4698,
-      "endMs": 8618,
+      "endMs": 8367,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "活动成员保持不变。",
-      "startMs": 8888,
-      "endMs": 10568,
+      "startMs": 8638,
+      "endMs": 10278,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "如果某一对线段颠倒了上下关系，",
-      "startMs": 11029,
-      "endMs": 13589,
+      "startMs": 10779,
+      "endMs": 13379,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就能选前后两个位置，",
-      "startMs": 13878,
-      "endMs": 15558,
+      "startMs": 13728,
+      "endMs": 15408,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "使固定相减的高度差在这两处异号。",
-      "startMs": 15848,
-      "endMs": 18647,
+      "startMs": 15698,
+      "endMs": 18497,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两段在整个区间都存在，",
-      "startMs": 19089,
-      "endMs": 21129,
+      "startMs": 18939,
+      "endMs": 20739,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "编号(14)就保证中间有交点，",
-      "startMs": 21438,
-      "endMs": 23998,
+      "startMs": 21088,
+      "endMs": 23688,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这却与区间内没有交点矛盾。",
-      "startMs": 24258,
-      "endMs": 26378,
+      "startMs": 23958,
+      "endMs": 25958,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此不可能换序。",
-      "startMs": 26678,
-      "endMs": 27918,
+      "startMs": 26228,
+      "endMs": 27628,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "每一对的上下关系都不变，",
-      "startMs": 28369,
-      "endMs": 30409,
+      "startMs": 28069,
+      "endMs": 29949,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "整个活动顺序就不变。",
-      "startMs": 30718,
-      "endMs": 32278,
+      "startMs": 30268,
+      "endMs": 31948,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这是编号(15)。",
-      "startMs": 32759,
-      "endMs": 34318,
+      "startMs": 32409,
+      "endMs": 33898,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "接下来用它研究交叉前的邻居。",
-      "startMs": 34458,
-      "endMs": 36777,
+      "startMs": 34058,
+      "endMs": 36417,
       "timestampMs": null,
       "confidence": null
     }
@@ -3241,63 +3241,63 @@
     {
       "text": "两种上下顺序都导出了矛盾。",
       "startMs": 70,
-      "endMs": 2429,
+      "endMs": 2309,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "应当否定的是中间存在第三条线段的假设，",
-      "startMs": 2678,
-      "endMs": 6318,
+      "startMs": 2528,
+      "endMs": 6168,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不是否定原来选定的交点。",
-      "startMs": 6598,
-      "endMs": 8758,
+      "startMs": 6498,
+      "endMs": 8418,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到编号(21)的几何结论：",
-      "startMs": 9189,
-      "endMs": 11269,
+      "startMs": 8889,
+      "endMs": 11089,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "任意两条交叉线段，在交点前的一小段范围里必定已经相邻。",
-      "startMs": 11588,
-      "endMs": 17057,
+      "startMs": 11388,
+      "endMs": 16618,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这不要求它们从一开始就是邻居。",
-      "startMs": 17328,
-      "endMs": 19248,
+      "startMs": 16878,
+      "endMs": 18998,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "几何上相邻，还没有证明算法不会漏点，",
-      "startMs": 19719,
-      "endMs": 23098,
+      "startMs": 19469,
+      "endMs": 22818,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "还要说明扫描过程确实检查了这对邻居。",
-      "startMs": 23388,
-      "endMs": 26410,
+      "startMs": 23088,
+      "endMs": 26040,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "下一章把几何事实接到检查规则。",
-      "startMs": 26558,
-      "endMs": 29190,
+      "text": "下一节把几何事实接到检查规则。",
+      "startMs": 26208,
+      "endMs": 28590,
       "timestampMs": null,
       "confidence": null
     }
@@ -4307,71 +4307,71 @@
   "V-no-missing": [
     {
       "text": "回顾这条链：最后形成邻接时接受检查，",
-      "startMs": 110,
-      "endMs": 3797,
+      "startMs": 70,
+      "endMs": 3578,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "检查确认它是合法的未来交点，",
-      "startMs": 4098,
-      "endMs": 6258,
+      "startMs": 3848,
+      "endMs": 6247,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "于是登记，或者发现已经登记。",
       "startMs": 6558,
-      "endMs": 9388,
+      "endMs": 9378,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "接着记录保留，左侧任务有限，",
       "startMs": 9829,
-      "endMs": 12708,
+      "endMs": 12578,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "按序取出最终就会到达并报告，",
-      "startMs": 12998,
-      "endMs": 15478,
+      "startMs": 12848,
+      "endMs": 15288,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "与漏点的定义冲突。",
-      "startMs": 15768,
-      "endMs": 17480,
+      "startMs": 15568,
+      "endMs": 17168,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "如果有漏点，就一定能选出最早者。",
-      "startMs": 17809,
-      "endMs": 21060,
+      "startMs": 17659,
+      "endMs": 20758,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "但最早者已经被排除，",
-      "startMs": 21228,
-      "endMs": 23028,
+      "startMs": 21078,
+      "endMs": 22878,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "于是所有满足条件的输入都不会漏点。",
-      "startMs": 23298,
-      "endMs": 26097,
+      "startMs": 23148,
+      "endMs": 25748,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "下一章补齐报告结果与成本的边界。",
-      "startMs": 26539,
-      "endMs": 29539,
+      "text": "下一节补齐报告结果与成本的边界。",
+      "startMs": 26239,
+      "endMs": 29118,
       "timestampMs": null,
       "confidence": null
     }

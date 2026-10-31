@@ -6,6 +6,7 @@
 
 - 启动或恢复 `grill-me` / `grilling` 时，读取 [澄清流程完成门禁](docs/agents/grilling.md)。
 - 编写、修改或审校数学公式与推导时，读取 [数学符号一致性规则](docs/agents/mathematical-notation.md)。
+- 编写、修改或审校文章、视频的结构、标题及衔接用语时，读取 [章、篇、集与节的称呼规则](docs/agents/content-hierarchy.md)。
 - 新增或调整文章、视频及界面配色时，读取 [项目颜色规则](docs/agents/colors.md)。
 - 编写或修改代码、脚本前，读取 [编码、模块组织与复用规则](docs/agents/coding.md)。
 - 涉及前端的工作，读取 [前端规则](web/AGENTS.md)，包括位于根目录的前端测试配置与跨层编排。
