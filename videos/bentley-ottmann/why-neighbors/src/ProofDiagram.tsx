@@ -2,6 +2,10 @@ import { colors, proofColors } from "../../colors.ts";
 import { SvgMathText } from "./MathText";
 import { pages } from "./lesson";
 import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
+import {
+  stroke,
+  type AttentionMark,
+} from "../../../shared/speech/teaching-cues";
 import type { DiagramCueState } from "./diagram-cues";
 const ink = "#172c45",
   grey = "#8999aa";
@@ -426,14 +430,18 @@ function Cue({
   id,
   cues,
   at,
+  marks,
 }: {
   id: string;
   cues: DiagramCueState;
-  at: [number, number];
-}) {
+} & (
+  | { at: [number, number]; marks?: never }
+  | { marks: AttentionMark[]; at?: never }
+)) {
   return cues.active === id ? (
     <AttentionMarks
-      marks={[{ kind: "point", at, color: colors.amber }]}
+      marks={marks ?? [{ kind: "point", at, color: colors.amber }]}
+      color={colors.amber}
       progress={cues.progress}
     />
   ) : null;
@@ -519,7 +527,7 @@ function Conditions({ cues }: { cues: DiagramCueState }) {
           {line(395, 130, 500, 130, colors.amber)}
           {reject(455, 75)}
           {label(330, 175, "排除重叠")}
-          <Cue id="overlap" cues={cues} at={[450, 110]} />
+          <Cue id="overlap" cues={cues} marks={[stroke(395, 110, 500, 110)]} />
         </g>
       ) : null}
       {shown("contact") ? (
@@ -551,7 +559,15 @@ function Conditions({ cues }: { cues: DiagramCueState }) {
           {line(685, 230, 685, 370, grey, true)}
           {reject(735, 235)}
           {label(575, 390, "事件横坐标各异")}
-          <Cue id="distinct" cues={cues} at={[685, 330]} />
+          <Cue
+            id="distinct"
+            cues={cues}
+            marks={[
+              stroke(685, 275, 685, 330),
+              { kind: "point", at: [685, 275] },
+              { kind: "point", at: [685, 330] },
+            ]}
+          />
         </g>
       ) : null}
       {label(100, 465, "排除的情形只作条件示意，不是允许输入")}
@@ -603,7 +619,7 @@ function Recall({ step, cues }: { step: number; cues: DiagramCueState }) {
         <g>
           {line(600, 235, 600, 170, colors.amber)}
           {label(625, 210, "直接相邻")}
-          <Cue id="neighbor" cues={cues} at={[600, 202]} />
+          <Cue id="neighbor" cues={cues} marks={[stroke(600, 235, 600, 170)]} />
         </g>
       ) : null}
       {step >= 3 ? (
@@ -696,13 +712,23 @@ function HeightRelation({
       {page === "common-interval" && has("positive") ? (
         <g>
           {label(110, 345, "d(u)>0")}
-          <Cue id="positive" cues={cues} at={[190, 230]} />
+          {line(190, upperY(190), 190, 460 - upperY(190), colors.amber)}
+          <Cue
+            id="positive"
+            cues={cues}
+            marks={[stroke(190, upperY(190), 190, 460 - upperY(190))]}
+          />
         </g>
       ) : null}
       {page === "common-interval" && has("negative") ? (
         <g>
           {label(535, 345, "d(v)<0")}
-          <Cue id="negative" cues={cues} at={[600, 230]} />
+          {line(600, upperY(600), 600, 460 - upperY(600), colors.amber)}
+          <Cue
+            id="negative"
+            cues={cues}
+            marks={[stroke(600, upperY(600), 600, 460 - upperY(600))]}
+          />
         </g>
       ) : null}
       {general && step >= 3 ? (
@@ -724,7 +750,11 @@ function HeightRelation({
           {has("positive") ? (
             <g>
               {point(190, upperY(190), proofColors.V)}
-              <Cue id="positive" cues={cues} at={[190, upperY(190)]} />
+              <Cue
+                id="positive"
+                cues={cues}
+                marks={[stroke(190, upperY(190), 190, 460 - upperY(190))]}
+              />
             </g>
           ) : null}
           {has("zero") ? (
@@ -736,7 +766,11 @@ function HeightRelation({
           {has("negative") ? (
             <g>
               {point(600, upperY(600), proofColors.V)}
-              <Cue id="negative" cues={cues} at={[600, upperY(600)]} />
+              <Cue
+                id="negative"
+                cues={cues}
+                marks={[stroke(600, upperY(600), 600, 460 - upperY(600))]}
+              />
             </g>
           ) : null}
         </g>
@@ -1038,8 +1072,22 @@ function Boundary({
         <g>
           {line(160, 220, 550, upper ? 140 : 300, proofColors.W)}
           {label(310, upper ? 165 : 280, "W")}
-          <Cue id="left" cues={cues} at={[160, 220]} />
-          <Cue id="right" cues={cues} at={[550, upper ? 140 : 300]} />
+          {cues.shown.includes("left")
+            ? line(160, 220, 160, upper ? 100 : 340, colors.amber)
+            : null}
+          {cues.shown.includes("right")
+            ? line(550, upper ? 140 : 300, 550, 210, colors.amber)
+            : null}
+          <Cue
+            id="left"
+            cues={cues}
+            marks={[stroke(160, 220, 160, upper ? 100 : 340)]}
+          />
+          <Cue
+            id="right"
+            cues={cues}
+            marks={[stroke(550, upper ? 140 : 300, 550, 210)]}
+          />
           {cues.shown.includes("crossing") ? (
             <g>
               {point(crossingX, crossingY)}
@@ -1168,7 +1216,18 @@ function LocalWork({ step, cues }: { step: number; cues: DiagramCueState }) {
               </g>
             ))}
             {label(70 + i * 245, 410, ["最多两对", "最多一对", "最多两对"][i])}
-            <Cue id={kind} cues={cues} at={[215 + i * 245, 310]} />
+            <Cue
+              id={kind}
+              cues={cues}
+              marks={(i === 0 ? [0, 1] : i === 1 ? [0] : [0, 2]).map((pair) =>
+                stroke(
+                  215 + i * 245,
+                  335 - pair * 55,
+                  215 + i * 245,
+                  290 - pair * 55,
+                ),
+              )}
+            />
           </g>
         ) : null,
       )}
@@ -1293,7 +1352,14 @@ function ProofChain({
             <Cue
               id={id}
               cues={cues}
-              at={[100 + (i % 2) * 360, 115 + Math.floor(i / 2) * 135]}
+              marks={[
+                {
+                  kind: "rect",
+                  from: [100 + (i % 2) * 360, 80 + Math.floor(i / 2) * 135],
+                  to: [360 + (i % 2) * 360, 150 + Math.floor(i / 2) * 135],
+                  radius: 10,
+                },
+              ]}
             />
           </g>
         ) : null,
@@ -1400,6 +1466,19 @@ function NoMissing({ step, cues }: { step: number; cues: DiagramCueState }) {
               strokeWidth={2}
             />
             {label(85 + (i % 3) * 245, 175 + Math.floor(i / 3) * 170, text)}
+            <Cue
+              id={cueIds[i]}
+              cues={cues}
+              marks={[
+                {
+                  kind: "rect",
+                  from: [70 + (i % 3) * 245, 130 + Math.floor(i / 3) * 170],
+                  to: [270 + (i % 3) * 245, 200 + Math.floor(i / 3) * 170],
+                  radius: 10,
+                  color: i === 5 ? colors.violet : colors.amber,
+                },
+              ]}
+            />
             {i % 3 > 0
               ? arrow(
                   30 + (i % 3) * 245,

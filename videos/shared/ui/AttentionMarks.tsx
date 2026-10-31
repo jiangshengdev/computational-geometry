@@ -42,6 +42,22 @@ export function AttentionMarks({
             />
           );
         const [x2, y2] = project(mark.to);
+        if (mark.kind === "rect")
+          return (
+            <rect
+              key={index}
+              x={Math.min(x, x2)}
+              y={Math.min(y, y2)}
+              width={Math.abs(x2 - x)}
+              height={Math.abs(y2 - y)}
+              rx={mark.radius}
+              stroke={mark.color ?? color}
+              strokeWidth={4 / scale}
+              pathLength={1}
+              strokeDasharray={1}
+              strokeDashoffset={1 - progress}
+            />
+          );
         return (
           <line
             key={index}

@@ -3,6 +3,13 @@ import { phraseTime, type AudioTiming } from "./timing.ts";
 export type AttentionMark =
   | { kind: "point"; at: [number, number]; color?: string }
   | {
+      kind: "rect";
+      from: [number, number];
+      to: [number, number];
+      radius: number;
+      color?: string;
+    }
+  | {
       kind: "line";
       from: [number, number];
       to: [number, number];
