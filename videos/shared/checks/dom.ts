@@ -24,6 +24,27 @@ export function checkPageBounds(
     content?.querySelectorAll<HTMLElement>("[data-line-ink]") ?? [],
   );
   for (const line of lines) {
+    // KaTeX's inline wrapper does not describe the full height of stacked
+    // formulas. Measure its actual layout boxes, including fractions.
+    const formula = line.querySelector(":scope > span > .katex > .katex-html");
+    if (formula && getComputedStyle(line).visibility !== "hidden") {
+      const lineBox = line.getBoundingClientRect();
+      const underline = line.querySelector<HTMLElement>(
+        ":scope > [aria-hidden]",
+      );
+      for (const base of formula.children) {
+        const formulaBox = base.getBoundingClientRect();
+        if (!contains(lineBox, formulaBox))
+          errors.push(`Formula exceeds emphasis bounds: ${line.textContent}`);
+        if (
+          underline &&
+          underline.getBoundingClientRect().top < formulaBox.bottom
+        )
+          errors.push(
+            `Emphasis underline overlaps formula: ${line.textContent}`,
+          );
+      }
+    }
     if (
       !contains(content!.getBoundingClientRect(), line.getBoundingClientRect())
     )

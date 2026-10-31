@@ -85,6 +85,9 @@ export function createTeachingMathLines<Role extends string, Mark>({
           <span
             data-line-ink
             style={{
+              // Include the full KaTeX height (stacked rows and fractions)
+              // in the emphasis box while preserving prose line wrapping.
+              display: cell.math ? "inline-block" : undefined,
               position: "relative",
               lineHeight: shouldWrapText && !cell.math ? 1.7 : 0,
               backgroundColor:
