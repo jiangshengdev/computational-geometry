@@ -1,4 +1,5 @@
 import { pages, shots } from "./lesson.ts";
+import { diagramCues, type DiagramCueState } from "./diagram-cues.ts";
 import audioData from "./audio-timing.json" with { type: "json" };
 import captionData from "./captions.json" with { type: "json" };
 import plans from "./sentence-plan.json" with { type: "json" };
@@ -70,6 +71,13 @@ export const timelineFor = () => {
     return {
       ...shot,
       stages,
+      diagramCues: Object.entries(diagramCues[shot.page] ?? {}).map(
+        ([id, phrase]) => ({
+          id,
+          start: phraseTime(recording, phrase, "start"),
+          end: phraseTime(recording, phrase, "end"),
+        }),
+      ),
       captions: captions[shot.id],
     };
   });
@@ -80,7 +88,16 @@ export function visualAt(row: TimelineRow, frame: number) {
     row.stages.filter((stage) => stage.frame <= frame).slice(-1)[0] ??
     row.stages[0];
   const ms = (frame * 1000) / fps;
+  const active = row.diagramCues.find((cue) => ms >= cue.start && ms < cue.end);
+  const diagramState: DiagramCueState = {
+    shown: row.diagramCues
+      .filter((cue) => ms >= cue.start)
+      .map((cue) => cue.id),
+    active: active?.id,
+    progress: active ? (ms - active.start) / (active.end - active.start) : 1,
+  };
   return {
+    diagramState,
     visibleStep: stage.step,
     caption: captionAt(row.captions, ms, row.captions[0].text),
     thinking: false,

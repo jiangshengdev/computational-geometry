@@ -22,14 +22,21 @@ export const LayoutCheck = createShotLayoutCheck({
   audioLeadFrames: 0,
   captions: Object.fromEntries(rows.map((row) => [row.id, row.captions])),
   SceneAtFrame,
-  extraFrames: (row) =>
-    row.stages.flatMap((stage) => [
+  extraFrames: (row) => [
+    ...row.diagramCues.flatMap((cue) => [
+      Math.ceil((cue.start * fps) / 1000) - 1,
+      Math.ceil((cue.start * fps) / 1000),
+      Math.floor(((cue.start + cue.end) * fps) / 2000),
+      Math.ceil((cue.end * fps) / 1000),
+    ]),
+    ...row.stages.flatMap((stage) => [
       Math.floor((stage.speechStartMs * fps) / 1000),
       Math.ceil((stage.speechStartMs * fps) / 1000),
       Math.floor(((stage.speechStartMs + stage.speechEndMs) * fps) / 2000),
       Math.ceil((stage.speechEndMs * fps) / 1000) - 1,
       Math.ceil((stage.speechEndMs * fps) / 1000),
     ]),
+  ],
   auditPage(page, pageId, visibleStep) {
     const errors: string[] = [];
     checkPageBounds(page, errors);

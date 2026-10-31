@@ -131,6 +131,32 @@ for (const [index, row] of rows.entries()) {
       );
   }
   const page = pages[row.page];
+  // A phrase cue introduces an object once, then retains it after emphasis.
+  // Exercise the measured start/end boundaries, not a second timing table.
+  for (const cue of row.diagramCues) {
+    const startFrame = Math.ceil((cue.start * fps) / 1000);
+    const endFrame = Math.ceil((cue.end * fps) / 1000);
+    assert(cue.end > cue.start, `${row.id}: empty diagram cue ${cue.id}`);
+    assert(
+      !visualAt(row, startFrame - 1).diagramState.shown.includes(cue.id),
+      `${row.id}: premature diagram object ${cue.id}`,
+    );
+    assert(
+      visualAt(row, startFrame).diagramState.shown.includes(cue.id),
+      `${row.id}: missing diagram object ${cue.id}`,
+    );
+    assert(
+      visualAt(row, endFrame).diagramState.shown.includes(cue.id),
+      `${row.id}: diagram object disappears after emphasis ${cue.id}`,
+    );
+    assert.notEqual(visualAt(row, endFrame).diagramState.active, cue.id);
+    assert(
+      visualAt(row, row.durationInFrames - 1).diagramState.shown.includes(
+        cue.id,
+      ),
+      `${row.id}: page hold loses diagram object ${cue.id}`,
+    );
+  }
   assert.equal(
     row.durationInFrames - row.speechFrames,
     Math.max(page.reading === "dense" ? 2 : 1, page.thinkingSeconds ?? 0) * fps,

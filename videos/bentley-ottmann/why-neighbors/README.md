@@ -72,6 +72,12 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 - `src/timeline.ts`：标记 `measured-narration`；只消费新版 `V-…` 实测音频、字幕与语义计划。
 - `src/TeachingPage.tsx`：复用 `MathLessonPage`、`TeachingMathLines`；多依据同时可查，同页与跨页来源按当前操作局部提示。
 - `src/ProofDiagram.tsx`：高度比较、比例、交点前区间、夹层假设、邻接变化及最早漏点因果示意。
+- 图示覆盖 41 页，包括适用条件、一般高度关系、共同区间、常数情形、
+  无事件顺序、夹层两侧排除、清单流程、报告边界及局部工作量。
+  其余 13 页保留完整宽度的代数推导；同一步中的两条独立关系可上下排列，
+  全部公式、编号与推导步骤仍完整显示，不缩小字号。
+- `src/diagram-cues.ts`：直接引用现有口播中的语义短语，由实测词时间驱动
+  对象揭示和局部提示；已引入对象在提示结束及页末停留时保留。
 - `src/LayoutCheck.tsx`：同一生产页面的状态检查，沿用共享检查能力。
 
 `narration-text.json` 是按新版字幕独立编写并审校冻结的 54 段 `V-…` 口播正文。

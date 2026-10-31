@@ -30,19 +30,35 @@ const textBreakAfter: Record<string, string> = {
   queue: "一份，",
   earliest: "横坐标；",
 };
+// Two independent relations remain one reveal/spoken step, but each occupies
+// its own full-size line beside the diagram. No equality chain is shortened.
+const stackedRelations: Record<string, number> = {
+  "general-lines": 1,
+  "common-interval": 1,
+  "lower-bound": 1,
+  "upper-bound": 1,
+  "reverse-between": 1,
+};
 export const pages = Object.fromEntries(
   storyboard.map((page) => [
     page.id,
     {
       ...page,
-      lines: page.steps.map((step) => {
+      lines: page.steps.map((step, index) => {
         const source: Reference | undefined = step.publish
           ? references[step.publish]
           : undefined;
         const number = source?.number;
         const breakAfter = step.publish && textBreakAfter[step.publish];
+        let math =
+          step.math && stackedRelations[page.id] === index
+            ? `\\begin{gathered}${step.math.replace(/,\\quad\s*/u, "\\\\")}\\end{gathered}`
+            : step.math;
+        if (page.id === "division" && index === 1 && math) {
+          math = `\\begin{aligned}${math.replace("=", "&=").replace(">d(u)", "\\\\ &>d(u)")}\\end{aligned}`;
+        }
         return step.math
-          ? { math: step.math + (number ? `\\qquad (${number})` : "") }
+          ? { math: math + (number ? `\\qquad (${number})` : "") }
           : {
               text:
                 (number ? `(${number}) ${source!.name}：` : "") +

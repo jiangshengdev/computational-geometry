@@ -137,7 +137,8 @@ export type StoryPage = {
     | "start"
     | "end"
     | "swap"
-    | "missed";
+    | "missed"
+    | "concept";
   reading: "ordinary" | "dense";
   thinkingSeconds?: number;
 };
@@ -163,6 +164,35 @@ const ref = (
   use: ReferenceId[] = [],
   focus?: string[],
 ): Step => ({ ...references[id], caption, use, publish: id, focus });
+// Geometry/process pages gain a companion diagram. Pure symbolic manipulation
+// retains the full-width derivation; no teaching line or narration is replaced.
+const conceptPages = new Set([
+  "opening",
+  "conditions",
+  "recall",
+  "general-lines",
+  "constant",
+  "coincident",
+  "common-interval",
+  "division",
+  "negative-direction",
+  "sign-change-result",
+  "no-events",
+  "midpoint",
+  "w-exists",
+  "lower-bound",
+  "upper-bound",
+  "reverse-between",
+  "adjacency-result",
+  "new-neighbors",
+  "conditional-check",
+  "prior-events",
+  "no-missing",
+  "soundness",
+  "local-work",
+  "cost-boundary",
+  "closing",
+]);
 const p = (
   id: string,
   section: number,
@@ -173,7 +203,15 @@ const p = (
   timing: Pick<StoryPage, "reading" | "thinkingSeconds"> = {
     reading: "ordinary",
   },
-): StoryPage => ({ id, section, title, basis, steps, diagram, ...timing });
+): StoryPage => ({
+  id,
+  section,
+  title,
+  basis,
+  steps,
+  diagram: diagram ?? (conceptPages.has(id) ? "concept" : undefined),
+  ...timing,
+});
 export const storyboard: StoryPage[] = [
   p(
     "opening",

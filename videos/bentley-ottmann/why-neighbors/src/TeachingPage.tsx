@@ -5,6 +5,7 @@ import { MathText, Latex, colorMath } from "./MathText";
 import { pages, references, type Shot } from "./lesson";
 import { ProofDiagram } from "./ProofDiagram";
 import type { Reference } from "./storyboard";
+import type { DiagramCueState } from "./diagram-cues";
 const MathLines = createTeachingMathLines({
   pages,
   MathText,
@@ -24,12 +25,14 @@ export function TeachingPage({
   caption,
   cueActive = false,
   cueProgress = 1,
+  diagramState,
 }: {
   shot: Shot;
   visibleStep: number;
   caption: string;
   cueActive?: boolean;
   cueProgress?: number;
+  diagramState?: DiagramCueState;
 }) {
   const page = pages[shot.page];
   const current = page.steps[visibleStep - 1];
@@ -89,6 +92,7 @@ export function TeachingPage({
             step={visibleStep}
             active={cueActive}
             progress={cueProgress}
+            cues={diagramState}
           />
         ) : undefined
       }
