@@ -245,7 +245,7 @@ export function createAlignmentTools(
           (resolve, reject) => {
             timeout = setTimeout(
               () => reject(Error("Azure alignment timed out")),
-              55000,
+              240000,
             );
             recognizer.recognizeOnceAsync(resolve, () =>
               reject(Error("Azure alignment request failed")),

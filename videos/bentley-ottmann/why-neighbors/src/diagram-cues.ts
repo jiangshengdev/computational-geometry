@@ -1,4 +1,4 @@
-/** Exact phrases in the existing WAV transcript; no synthetic animation clock. */
+/** Narration phrases; production must resolve them against measured audio. */
 export const diagramCues: Record<string, Record<string, string>> = {
   opening: {
     height: "先研究高度差",
@@ -27,8 +27,12 @@ export const diagramCues: Record<string, Record<string, string>> = {
   "common-interval": {
     left: "把左端位置叫作小写字母 u",
     right: "右端位置叫作小写字母 v",
-    positive: "先研究左端高度差为正",
-    negative: "右端高度差为负的情况",
+  },
+  "order-to-signs": {
+    leftOrder: "在左端位置 u",
+    rightOrder: "在右端位置 v",
+    positive: "因此左端的高度差为正",
+    negative: "右端的高度差为负",
   },
   "no-events": {
     crossing: "编号十四就保证中间有交点",

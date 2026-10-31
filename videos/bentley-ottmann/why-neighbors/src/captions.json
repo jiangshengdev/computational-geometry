@@ -977,91 +977,256 @@
     {
       "text": "把左端位置叫作小写字母 u，",
       "startMs": 70,
-      "endMs": 2510,
+      "endMs": 2550,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "右端位置叫作小写字母 v，",
-      "startMs": 2728,
-      "endMs": 5047,
+      "startMs": 2778,
+      "endMs": 5017,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "前者严格小于后者。",
-      "startMs": 5348,
-      "endMs": 7110,
+      "startMs": 5298,
+      "endMs": 7018,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "两条线段必须覆盖从左端到右端的整个区间，",
-      "startMs": 7439,
-      "endMs": 11278,
+      "startMs": 7489,
+      "endMs": 11449,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "连两端也包含在内。",
-      "startMs": 11588,
-      "endMs": 13268,
+      "startMs": 11738,
+      "endMs": 13258,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把这两个位置分别代入编号(5)，",
       "startMs": 13729,
-      "endMs": 16550,
+      "endMs": 16470,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到编号(6)的两端高度差。",
-      "startMs": 16728,
-      "endMs": 18768,
+      "startMs": 16628,
+      "endMs": 18668,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "字母 d 后面的括号指出取哪个位置，",
-      "startMs": 19398,
-      "endMs": 22157,
+      "startMs": 19148,
+      "endMs": 21947,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "并不是乘法。",
-      "startMs": 22418,
-      "endMs": 23418,
+      "startMs": 22218,
+      "endMs": 23370,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "先研究左端高度差为正，",
-      "startMs": 23959,
-      "endMs": 25959,
+      "text": "这里说的左端和右端，",
+      "startMs": 23709,
+      "endMs": 25469,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "右端高度差为负的情况。",
-      "startMs": 26358,
-      "endMs": 28317,
+      "text": "是所取区间的两端，不要求是线段自身的端点。",
+      "startMs": 25808,
+      "endMs": 29718,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "目标是在两个位置之间，",
-      "startMs": 28749,
-      "endMs": 30669,
+      "text": "接下来研究两条线段在这两个位置颠倒上下关系的情况。",
+      "startMs": 30169,
+      "endMs": 35129,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "V-order-to-signs": [
+    {
+      "text": "我们要证明，两条线段如果交换了上下位置，",
+      "startMs": 70,
+      "endMs": 3878,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间一定相交。",
+      "startMs": 4148,
+      "endMs": 5388,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先看左边线段 V 在上方，",
+      "startMs": 5839,
+      "endMs": 8039,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右边线段 V 在下方的这一种交换方向。",
+      "startMs": 8338,
+      "endMs": 11378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在左端位置 u，线段 V 的高度大于线段 U 的高度；",
+      "startMs": 11829,
+      "endMs": 16307,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在右端位置 v，线段 V 的高度小于线段 U 的高度。",
+      "startMs": 16598,
+      "endMs": 21208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "始终用线段 V 的高度减去线段 U 的高度。",
+      "startMs": 21659,
+      "endMs": 25099,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此左端的高度差为正，",
+      "startMs": 25579,
+      "endMs": 27299,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端的高度差为负。",
+      "startMs": 27678,
+      "endMs": 29358,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就是后面引用的正变负条件，",
+      "startMs": 29819,
+      "endMs": 32098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它描述的是刚才选定的上下颠倒情形。",
+      "startMs": 32418,
+      "endMs": 35458,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两端的正负是当前的假设，",
+      "startMs": 35909,
+      "endMs": 38148,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间相交还需要证明。",
+      "startMs": 38458,
+      "endMs": 40258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "接下来要在这两个位置之间，",
+      "startMs": 40749,
+      "endMs": 42789,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "找到高度差为零的位置。",
-      "startMs": 30998,
-      "endMs": 32998,
+      "startMs": 43098,
+      "endMs": 45057,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "V-locate-zero": [
+    {
+      "text": "现在知道左端的高度差为正，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端的高度差为负，但还不知道中间哪个位置能让两段等高。",
+      "startMs": 2428,
+      "endMs": 7287,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为了找到这个位置，我们先学会表示两端之间的位置，",
+      "startMs": 7739,
+      "endMs": 11938,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再把它代入高度差，让差等于零。",
+      "startMs": 12208,
+      "endMs": 15128,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "位置可以用从左端走了全程的多少来描述，",
+      "startMs": 15569,
+      "endMs": 18928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这就是接下来引入比例的用途。",
+      "startMs": 19218,
+      "endMs": 21738,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先用一个数轴上的具体例子，",
+      "startMs": 22209,
+      "endMs": 24350,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把全程、已走部分和当前位置分清楚，",
+      "startMs": 24508,
+      "endMs": 27530,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再回到这两条线段。",
+      "startMs": 27678,
+      "endMs": 29278,
       "timestampMs": null,
       "confidence": null
     }
@@ -1735,165 +1900,200 @@
   ],
   "V-division": [
     {
-      "text": "先证明这个系数不为零。",
+      "text": "先回到选定的上下颠倒情形：",
       "startMs": 70,
-      "endMs": 2070,
+      "endMs": 2270,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "右端高度差为负，取它的相反数，",
-      "startMs": 2328,
-      "endMs": 5398,
+      "text": "左端 V 在 U 上方，",
+      "startMs": 2478,
+      "endMs": 4078,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "就得到正数。",
-      "startMs": 5668,
-      "endMs": 6868,
+      "text": "右端 V 在 U 下方。",
+      "startMs": 4398,
+      "endMs": 5998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "始终用 V 的高度减 U 的高度，",
+      "startMs": 6529,
+      "endMs": 9049,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以左正右负。",
+      "startMs": 9338,
+      "endMs": 10658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在用这个条件证明除数不为零：",
+      "startMs": 11129,
+      "endMs": 13689,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端高度差为负，取相反数就得到正数。",
+      "startMs": 13978,
+      "endMs": 17888,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "左端高度差本来为正，",
-      "startMs": 7309,
-      "endMs": 9069,
+      "startMs": 18339,
+      "endMs": 20139,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "再加上刚才这个正数，",
-      "startMs": 9408,
-      "endMs": 11048,
+      "startMs": 20488,
+      "endMs": 22208,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "结果比左端高度差更大。",
-      "startMs": 11328,
-      "endMs": 13008,
+      "startMs": 22508,
+      "endMs": 24268,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此这个系数一定为正，",
-      "startMs": 13298,
-      "endMs": 15098,
+      "startMs": 24578,
+      "endMs": 26498,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不会为零。",
-      "startMs": 15418,
-      "endMs": 16378,
+      "startMs": 26798,
+      "endMs": 27838,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "除数不为零，现在才可以把编号(12)的两边，",
-      "startMs": 16809,
-      "endMs": 20717,
+      "startMs": 28289,
+      "endMs": 32067,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "同除以这个系数，右边只剩下比例。",
-      "startMs": 20978,
-      "endMs": 24028,
+      "startMs": 32358,
+      "endMs": 35578,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "把比例写到等号左边，",
-      "startMs": 24489,
-      "endMs": 26169,
+      "startMs": 36019,
+      "endMs": 37819,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到编号(13)。",
-      "startMs": 26488,
-      "endMs": 27768,
+      "startMs": 38168,
+      "endMs": 39448,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "分子是左端高度差，分母是左端高度差减右端高度差所得的整个差。",
-      "startMs": 28058,
-      "endMs": 33997,
+      "startMs": 39738,
+      "endMs": 45768,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "还要检查这个比例是不是严格在 0 与 1 之间。",
-      "startMs": 34448,
-      "endMs": 37847,
+      "startMs": 46228,
+      "endMs": 49308,
       "timestampMs": null,
       "confidence": null
     }
   ],
   "V-positive-range": [
     {
-      "text": "在左正右负的条件下，",
+      "text": "继续沿用刚才的左正右负条件。",
       "startMs": 70,
-      "endMs": 1910,
+      "endMs": 2670,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "分子为正，分母也是正数，",
-      "startMs": 2128,
-      "endMs": 4848,
+      "text": "分子是正的左端高度差，",
+      "startMs": 3049,
+      "endMs": 5008,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "而且比分子更大。",
-      "startMs": 5118,
-      "endMs": 6438,
+      "text": "分母还加上了右端高度差的相反数，",
+      "startMs": 5398,
+      "endMs": 8358,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以也是正数，而且比分子更大。",
+      "startMs": 8668,
+      "endMs": 11598,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不等式的三部分同除以正的分母，",
-      "startMs": 6909,
-      "endMs": 9720,
+      "startMs": 12079,
+      "endMs": 14850,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "大小方向不变。",
-      "startMs": 9908,
-      "endMs": 11228,
+      "startMs": 15028,
+      "endMs": 16388,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "右边自己除以自己，等于 1。",
-      "startMs": 11528,
-      "endMs": 14150,
+      "startMs": 16698,
+      "endMs": 19390,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以求出的比例严格在 0 与 1 之间。",
-      "startMs": 14489,
-      "endMs": 16888,
+      "startMs": 19759,
+      "endMs": 22319,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "由编号(8)的位置范围，",
-      "startMs": 17238,
-      "endMs": 18998,
+      "startMs": 22608,
+      "endMs": 24408,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "对应位置确实在两端内部。",
-      "startMs": 19258,
-      "endMs": 21537,
+      "startMs": 24678,
+      "endMs": 26917,
       "timestampMs": null,
       "confidence": null
     }
@@ -1986,58 +2186,86 @@
   ],
   "V-negative-direction": [
     {
-      "text": "现在改看左端高度差为负，",
+      "text": "现在看另一种上下颠倒方向：",
       "startMs": 70,
-      "endMs": 2270,
+      "endMs": 2150,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "右端高度差为正，高度差仍然固定用线段 V 减线段 U。",
-      "startMs": 2478,
-      "endMs": 7548,
+      "text": "左端 V 在 U 下方，",
+      "startMs": 2378,
+      "endMs": 3978,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端 V 在 U 上方。",
+      "startMs": 4248,
+      "endMs": 5848,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍然固定用 V 的高度减 U 的高度，",
+      "startMs": 6289,
+      "endMs": 8969,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以左端高度差为负，",
+      "startMs": 9288,
+      "endMs": 11208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "右端高度差为正。",
+      "startMs": 11508,
+      "endMs": 12988,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "前面的代入和移项过程仍然成立。",
-      "startMs": 8039,
-      "endMs": 10719,
+      "startMs": 13499,
+      "endMs": 16139,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "左端的负数再减右端的正数，",
-      "startMs": 11209,
-      "endMs": 13608,
+      "startMs": 16619,
+      "endMs": 19018,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "结果仍为负，因此比例的系数依旧不为零。",
-      "startMs": 13908,
-      "endMs": 17478,
+      "startMs": 19318,
+      "endMs": 22888,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "编号(12)仍可两边同除以这个非零系数，",
-      "startMs": 17919,
-      "endMs": 21079,
+      "startMs": 23329,
+      "endMs": 26688,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到同一个编号(13)。",
-      "startMs": 21368,
-      "endMs": 22968,
+      "startMs": 26978,
+      "endMs": 28658,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "接下来验证这一方向的比例范围。",
-      "startMs": 23238,
-      "endMs": 25718,
+      "startMs": 28948,
+      "endMs": 31428,
       "timestampMs": null,
       "confidence": null
     }
@@ -2403,6 +2631,92 @@
       "text": "这里不要求算法已经发现这些交点。",
       "startMs": 33518,
       "endMs": 36118,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "V-quiet-before-crossing": [
+    {
+      "text": "我们已经选定了交点。",
+      "startMs": 70,
+      "endMs": 1630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "要研究它前面的邻居关系，",
+      "startMs": 1999,
+      "endMs": 4039,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先找一小段没有其他事件的范围，",
+      "startMs": 4348,
+      "endMs": 6730,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "避免成员或上下顺序在研究过程中改变。",
+      "startMs": 6918,
+      "endMs": 10317,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为得到这样的范围，我们先从交点向左回看，",
+      "startMs": 10759,
+      "endMs": 14458,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "寻找左边最后一个事件。",
+      "startMs": 14728,
+      "endMs": 16328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只要选出它，它与交点之间就不会再有其他事件。",
+      "startMs": 16769,
+      "endMs": 20748,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一页会说明为什么一定能选出来。",
+      "startMs": 21209,
+      "endMs": 23809,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们还要在这段空隙里选一个观察位置。",
+      "startMs": 24279,
+      "endMs": 27158,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "从那里到交点之前，便能使用没有事件就不换序的结论。",
+      "startMs": 27649,
+      "endMs": 32238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一页给这两个位置命名，",
+      "startMs": 32739,
+      "endMs": 34579,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并验证选取的位置确实在空隙内部。",
+      "startMs": 34888,
+      "endMs": 37687,
       "timestampMs": null,
       "confidence": null
     }
@@ -4029,98 +4343,119 @@
     {
       "text": "编号(21)是独立证明的几何结论，",
       "startMs": 70,
-      "endMs": 2469,
+      "endMs": 2630,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "适用于任意交点。",
-      "startMs": 2758,
-      "endMs": 4278,
+      "startMs": 2958,
+      "endMs": 4478,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "因此这两条带星标记的线段，",
-      "startMs": 4548,
-      "endMs": 7108,
+      "startMs": 4748,
+      "endMs": 7308,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "在假定漏点之前的一小段范围里也必定相邻。",
-      "startMs": 7368,
-      "endMs": 10968,
+      "startMs": 7618,
+      "endMs": 11417,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "最初顺序为空，邻接只能在事件处形成。",
-      "startMs": 11409,
-      "endMs": 15158,
+      "startMs": 11859,
+      "endMs": 15488,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "沿有限个事件回看，",
-      "startMs": 15478,
-      "endMs": 17118,
+      "text": "这两条线段可能更早做过邻居，",
+      "startMs": 15949,
+      "endMs": 18268,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "找到最后一次形成并一直保持到交点之前的那次邻接。",
-      "startMs": 17448,
-      "endMs": 21860,
+      "text": "后来被别的线段隔开，",
+      "startMs": 18598,
+      "endMs": 20278,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再次成为邻居。",
+      "startMs": 20568,
+      "endMs": 21770,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里沿有限个事件回看，",
+      "startMs": 22109,
+      "endMs": 23909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "我们选择最后一次形成、并一直保持到交点之前的那次邻接。",
+      "startMs": 24208,
+      "endMs": 28568,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "用字母 s 表示形成这次邻接的事件横坐标。",
-      "startMs": 22189,
-      "endMs": 25869,
+      "startMs": 28949,
+      "endMs": 32509,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "邻接在交叉之前已经存在，",
-      "startMs": 26359,
-      "endMs": 28559,
+      "startMs": 33019,
+      "endMs": 35099,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "所以这个位置严格在最早漏点左侧。",
-      "startMs": 28858,
-      "endMs": 31697,
+      "startMs": 35418,
+      "endMs": 38217,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "由编号(23)，这次左侧事件已正确处理。",
-      "startMs": 32149,
-      "endMs": 35879,
+      "startMs": 38659,
+      "endMs": 42368,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "再用编号(22)的新邻接检查规则，",
-      "startMs": 36018,
-      "endMs": 38619,
+      "startMs": 42528,
+      "endMs": 45128,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "这对输入在这里就接受了检查，",
-      "startMs": 38788,
-      "endMs": 41107,
+      "startMs": 45298,
+      "endMs": 47498,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "得到编号(24)。",
-      "startMs": 41408,
-      "endMs": 42808,
+      "startMs": 47818,
+      "endMs": 49218,
       "timestampMs": null,
       "confidence": null
     }
@@ -4380,119 +4715,168 @@
     {
       "text": "只有通过求交和线段范围检查的真实交点，",
       "startMs": 70,
-      "endMs": 3150,
+      "endMs": 3469,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "才能登记，因此不会把延长线交点或凭图猜的点报告出来，",
-      "startMs": 3378,
-      "endMs": 8728,
+      "startMs": 3678,
+      "endMs": 9088,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也就不会多报。",
-      "startMs": 9018,
-      "endMs": 10098,
+      "startMs": 9368,
+      "endMs": 10408,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "发现、登记和报告是三个环节。",
-      "startMs": 10559,
-      "endMs": 13110,
+      "startMs": 10859,
+      "endMs": 13138,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "同一交叉只登记一份，",
-      "startMs": 13258,
-      "endMs": 14818,
+      "startMs": 13458,
+      "endMs": 15138,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "到达时才报告，清单规则避免重复报告。",
-      "startMs": 15078,
-      "endMs": 18758,
+      "startMs": 15428,
+      "endMs": 19078,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "结果绑定原始无序输入对。",
-      "startMs": 19189,
-      "endMs": 21269,
+      "startMs": 19539,
+      "endMs": 21459,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "线段 U 与线段 V，",
-      "startMs": 21588,
-      "endMs": 23188,
+      "startMs": 21788,
+      "endMs": 23348,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "和线段 V 与线段 U，",
-      "startMs": 23558,
-      "endMs": 25278,
+      "startMs": 23708,
+      "endMs": 25548,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "代表同一对输入，换序不会创造一对新输入。",
-      "startMs": 25628,
-      "endMs": 29257,
+      "startMs": 25828,
+      "endMs": 29828,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "本章没有重叠。",
-      "startMs": 29689,
-      "endMs": 30889,
+      "startMs": 30289,
+      "endMs": 31449,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "不同直线至多相交一次，",
-      "startMs": 31188,
-      "endMs": 33348,
+      "startMs": 31909,
+      "endMs": 34148,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "同一直线上的两段若有非空交集，",
-      "startMs": 33658,
-      "endMs": 36538,
+      "startMs": 34458,
+      "endMs": 37438,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "就会重叠或端点接触，",
-      "startMs": 36728,
-      "endMs": 38528,
+      "startMs": 37628,
+      "endMs": 39428,
       "timestampMs": null,
       "confidence": null
     },
     {
       "text": "也已排除。",
-      "startMs": 38798,
-      "endMs": 39638,
+      "startMs": 39938,
+      "endMs": 40858,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "因此每对至多一个交点，",
-      "startMs": 39918,
-      "endMs": 41798,
+      "text": "因此每对至多一个几何交点。",
+      "startMs": 41289,
+      "endMs": 43608,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "不会再次报告同一对。",
-      "startMs": 42088,
-      "endMs": 43568,
+      "text": "还要确认，这个点报告后不会再次进入清单。",
+      "startMs": 44109,
+      "endMs": 47948,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到达交点并报告之后，",
+      "startMs": 48399,
+      "endMs": 50358,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "即使以后再次检查同一对线段，",
+      "startMs": 50648,
+      "endMs": 53088,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "得到的仍是这个旧交点。",
+      "startMs": 53368,
+      "endMs": 55168,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它已经不在检查位置的严格右侧，",
+      "startMs": 55609,
+      "endMs": 57848,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不满足未来交点的登记条件，",
+      "startMs": 58158,
+      "endMs": 60397,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此不会重新加入清单，",
+      "startMs": 60678,
+      "endMs": 62558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也就不会再次报告。",
+      "startMs": 62848,
+      "endMs": 64248,
       "timestampMs": null,
       "confidence": null
     }

@@ -35,6 +35,7 @@ const textBreakAfter: Record<string, string> = {
 const stackedRelations: Record<string, number> = {
   "general-lines": 1,
   "common-interval": 1,
+  "order-to-signs": 1,
   "lower-bound": 1,
   "upper-bound": 1,
   "reverse-between": 1,

@@ -219,8 +219,12 @@ function Adjacent({ page, step }: { page: string; step: number }) {
     page === "stable-interval" ||
     page === "assume-between" ||
     page === "squeeze" ||
+    (page === "quiet-before-crossing" && step >= 3) ||
     (page === "last-event" && step >= 3);
-  const showE = page === "last-event" || page === "stable-interval";
+  const showE =
+    page === "last-event" ||
+    page === "stable-interval" ||
+    (page === "quiet-before-crossing" && step >= 2);
   const showW = (page === "assume-between" && step >= 2) || page === "squeeze";
   const triple = page === "squeeze" && step >= 3;
   return (
@@ -232,7 +236,9 @@ function Adjacent({ page, step }: { page: string; step: number }) {
           ? "假设导出的矛盾，不是允许输入"
           : page === "assume-between"
             ? "反证的暂时假设，不是实际执行"
-            : "任意交点附近的几何示意",
+            : page === "quiet-before-crossing"
+              ? "构造目标：交点前没有其他事件的范围"
+              : "任意交点附近的几何示意",
       )}
       {line(90, 330, 680, 94, proofColors.U)}
       {line(90, 94, 680, 330, proofColors.V)}
@@ -244,13 +250,17 @@ function Adjacent({ page, step }: { page: string; step: number }) {
       {showE ? (
         <g>
           {line(190, 400, 190, 420)}
-          {label(180, 455, "e")}
+          {page === "quiet-before-crossing"
+            ? label(70, 455, "左侧最后事件")
+            : label(180, 455, "e")}
         </g>
       ) : null}
       {showR ? (
         <g>
           {line(287, 160, 287, 410, grey, true)}
-          {label(280, 455, "r")}
+          {page === "quiet-before-crossing"
+            ? label(230, 95, "观察位置")
+            : label(280, 455, "r")}
         </g>
       ) : null}
       {showW ? (
@@ -463,6 +473,8 @@ function Concept({
       return <Recall step={step} cues={cues} />;
     case "general-lines":
     case "common-interval":
+    case "order-to-signs":
+    case "locate-zero":
     case "negative-direction":
     case "sign-change-result":
       return <HeightRelation page={page} step={step} cues={cues} />;
@@ -665,6 +677,8 @@ function HeightRelation({
   const general = page === "general-lines";
   const reverse = page === "negative-direction";
   const result = page === "sign-change-result";
+  const explainSigns = page === "order-to-signs";
+  const locateZero = page === "locate-zero";
   const firstY = reverse ? 140 : 320;
   const otherY = reverse ? 320 : 140;
   const has = (id: string) => cues.shown.includes(id);
@@ -689,6 +703,8 @@ function HeightRelation({
       <Axis y={390} />
       {general ||
       (page === "common-interval" && has("left")) ||
+      explainSigns ||
+      locateZero ||
       reverse ||
       result ? (
         <g>
@@ -703,15 +719,38 @@ function HeightRelation({
           {line(190, 390, 600, 390, colors.amber, false, 5)}
         </g>
       ) : null}
-      {(page === "common-interval" && step >= 2) || reverse || result ? (
+      {(page === "common-interval" && step >= 2) ||
+      reverse ||
+      result ||
+      locateZero ? (
         <g>
           {label(120, 85, reverse ? "d(u)<0" : result ? "两端异号" : "d(u)")}
           {label(525, 85, reverse ? "d(v)>0" : result ? "内部等高" : "d(v)")}
         </g>
       ) : null}
-      {page === "common-interval" && has("positive") ? (
+      {explainSigns && has("leftOrder") ? (
         <g>
-          {label(110, 345, "d(u)>0")}
+          {label(100, 85, "y_V(u)>y_U(u)")}
+          <Cue
+            id="leftOrder"
+            cues={cues}
+            marks={[stroke(190, upperY(190), 190, 460 - upperY(190))]}
+          />
+        </g>
+      ) : null}
+      {explainSigns && has("rightOrder") ? (
+        <g>
+          {label(490, 85, "y_V(v)<y_U(v)")}
+          <Cue
+            id="rightOrder"
+            cues={cues}
+            marks={[stroke(600, upperY(600), 600, 460 - upperY(600))]}
+          />
+        </g>
+      ) : null}
+      {(explainSigns && has("positive")) || locateZero ? (
+        <g>
+          {label(220, 365, "d(u)>0")}
           {line(190, upperY(190), 190, 460 - upperY(190), colors.amber)}
           <Cue
             id="positive"
@@ -720,9 +759,9 @@ function HeightRelation({
           />
         </g>
       ) : null}
-      {page === "common-interval" && has("negative") ? (
+      {(explainSigns && has("negative")) || locateZero ? (
         <g>
-          {label(535, 345, "d(v)<0")}
+          {label(445, 365, "d(v)<0")}
           {line(600, upperY(600), 600, 460 - upperY(600), colors.amber)}
           <Cue
             id="negative"
