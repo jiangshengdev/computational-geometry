@@ -28,8 +28,10 @@ export const colorMath = (
       ),
     ]),
   ].sort((a, b) => b.length - a.length);
+  // Consume a LaTeX row break whole so its second slash cannot absorb the
+  // next quantity's first letter as a command (for example, \\y or \\d).
   const pattern = new RegExp(
-    `${terms.map(escapePattern).join("|")}|[ymb]_[ACUVW](?:\\([^()]*\\))?|(?<![A-Za-z\\\\])[ACUVW](?:_\\*)?(?![A-Za-z])|\\\\[A-Za-z]+`,
+    `${terms.map(escapePattern).join("|")}|[ymb]_[ACUVW](?:\\([^()]*\\))?|(?<![A-Za-z\\\\])[ACUVW](?:_\\*)?(?![A-Za-z])|\\\\(?:\\\\|[A-Za-z]+)`,
     "g",
   );
   return text.replace(pattern, (term) => {
