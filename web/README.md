@@ -4,7 +4,7 @@
 
 教学链接可携带步骤，例如 `/bo/cases/crossing/learn?step=2`；刷新和分享可恢复位置，步骤更新替换当前浏览器历史项。目标步骤尚未生成时等待真实轨迹，非法或越界步骤显示明确错误。旧 `/cases/:caseId` 和 `/cases/:caseId/learn` 不再提供 BO 功能，也不重定向。
 
-`/convex-hull` 提供固定点集案例列表，详情页位于 `/convex-hull/cases/:caseId`，直接访问或刷新会自动调用 Rust Andrew 算法，展示输入点、凸包和精确坐标。点集只读，不提供编辑、导入或教学回放。算法按“几何问题 → 具体算法”组织：前后端的 BO 专属实现分别位于 `web/src/algorithms/segment-intersection/bo/` 和 `src/algorithms/segment_intersection/bo/`；线段相交的公共类型与案例位于问题目录。凸包页面位于 `web/src/algorithms/convex-hull/`，后端 Andrew 单调链实现位于 `src/algorithms/convex_hull/andrew/`。前端算法测试镜像实现目录。应用入口负责路由组合，基础几何与通用应用组件继续共享。
+`/convex-hull` 提供固定点集案例列表，详情页位于 `/convex-hull/cases/:caseId`，直接访问或刷新会自动调用 Rust Andrew 算法，展示输入点、凸包和精确坐标。点集只读，不提供编辑或导入；全部凸包案例的结果页提供“逐步学习”，可进入教学页回放真实 Andrew 执行轨迹。算法按“几何问题 → 具体算法”组织：前后端的 BO 专属实现分别位于 `web/src/algorithms/segment-intersection/bo/` 和 `src/algorithms/segment_intersection/bo/`；线段相交的公共类型与案例位于问题目录。凸包页面位于 `web/src/algorithms/convex-hull/`，后端 Andrew 单调链实现位于 `src/algorithms/convex_hull/andrew/`。前端算法测试镜像实现目录。应用入口负责路由组合，基础几何与通用应用组件继续共享。
 
 ## 本地使用
 
