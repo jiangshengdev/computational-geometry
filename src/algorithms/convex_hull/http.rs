@@ -1,12 +1,7 @@
 //! HTTP boundary for exact convex hulls of submitted points.
 
 use crate::http::protocol::{ApiError, ErrorBody, PointDto, bad_request};
-use axum::{
-    Json, Router,
-    extract::{DefaultBodyLimit, rejection::JsonRejection},
-    http::StatusCode,
-    routing::post,
-};
+use axum::{Json, Router, extract::rejection::JsonRejection, http::StatusCode, routing::post};
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize)]
@@ -50,7 +45,6 @@ pub(crate) fn router() -> Router {
     Router::new()
         .route("/api/convex-hull", post(compute))
         .route("/api/convex-hull/trace", post(trace))
-        .layer(DefaultBodyLimit::disable())
 }
 
 async fn trace(

@@ -17,6 +17,9 @@ mod convex_hull_trace;
 #[path = "http/polygon_trace_tests.rs"]
 mod polygon_trace;
 
+#[path = "http/body_limits_tests.rs"]
+mod body_limits;
+
 fn point(x: &str, y: &str) -> Value {
     json!({"x": {"numerator": x, "denominator": "1"}, "y": {"numerator": y, "denominator": "1"}})
 }
