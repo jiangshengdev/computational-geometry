@@ -2,10 +2,7 @@
 
 use super::intersections;
 use axum::{
-    Json, Router,
-    extract::{DefaultBodyLimit, rejection::JsonRejection},
-    http::StatusCode,
-    response::IntoResponse,
+    Json, Router, extract::rejection::JsonRejection, http::StatusCode, response::IntoResponse,
     routing::post,
 };
 use protocol::{ApiError, ErrorBody, IntersectionDto, Request, Response, SegmentDto, bad_request};
@@ -50,7 +47,5 @@ async fn compute(
 
 /// Serve the submitted geometry directly, independently of viewer presets.
 pub fn router() -> Router {
-    Router::new()
-        .route("/api/bo/intersections", post(compute))
-        .layer(DefaultBodyLimit::disable())
+    Router::new().route("/api/bo/intersections", post(compute))
 }

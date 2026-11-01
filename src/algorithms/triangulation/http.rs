@@ -12,12 +12,7 @@
 //! `triangulate` API without repairing the submitted boundary.
 
 use crate::http::protocol::{ApiError, ErrorBody, PointDto, bad_request};
-use axum::{
-    Json, Router,
-    extract::{DefaultBodyLimit, rejection::JsonRejection},
-    http::StatusCode,
-    routing::post,
-};
+use axum::{Json, Router, extract::rejection::JsonRejection, http::StatusCode, routing::post};
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize)]
@@ -57,7 +52,5 @@ async fn compute(
 }
 
 pub(crate) fn router() -> Router {
-    Router::new()
-        .route("/api/triangulation", post(compute))
-        .layer(DefaultBodyLimit::disable())
+    Router::new().route("/api/triangulation", post(compute))
 }
