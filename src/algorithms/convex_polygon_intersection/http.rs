@@ -13,12 +13,7 @@
 
 use super::{ConvexPolygon, ConvexPolygonIntersection, convex_polygon_intersection};
 use crate::http::protocol::{ApiError, ErrorBody, PointDto, bad_request};
-use axum::{
-    Json, Router,
-    extract::{DefaultBodyLimit, rejection::JsonRejection},
-    http::StatusCode,
-    routing::post,
-};
+use axum::{Json, Router, extract::rejection::JsonRejection, http::StatusCode, routing::post};
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize)]
@@ -101,7 +96,6 @@ pub(crate) fn router() -> Router {
     Router::new()
         .route("/api/convex-polygon-intersection", post(compute))
         .route("/api/convex-polygon-intersection/trace", post(trace))
-        .layer(DefaultBodyLimit::disable())
 }
 
 /// NDJSON start preserves original input positions, with canonical-to-input orders.
