@@ -18,6 +18,10 @@
 
 ## Agent skills
 
+### 拼音补充查询
+
+查询中文拼音或在 Linux 进行口播标音时，读取共享 `pinyin-query` skill（由 codex-config 的 `skills/pinyin-query/` 维护）；口播审校的来源选择与证据要求见 [口播文本审校](docs/agents/videos/narration-review.md#上下文隔离与查证)。
+
 ### Issue tracker
 
 任务、规格和正式执行记录使用 CNB Issues；创建或更新前，读取 [CNB 任务记录规则](docs/agents/issue-tracker.md)。
