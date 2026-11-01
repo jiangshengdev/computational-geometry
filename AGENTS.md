@@ -5,6 +5,7 @@
 按当前任务涉及的范围，在相关操作前读取并遵循以下规则；同时涉及多个范围时须一并遵循。
 
 - 启动或恢复 `grill-me` / `grilling` 时，读取 [澄清流程完成门禁](docs/agents/grilling.md)。
+- 规划、编写、修改或审校文章与视频教学内容，以及估算篇幅或时长时，读取 [教学内容复用与禁止重复规则](docs/agents/teaching-content-reuse.md)。
 - 编写、修改或审校数学公式与推导时，读取 [数学符号一致性规则](docs/agents/mathematical-notation.md)。
 - 编写、修改或审校文章、视频的结构、标题及衔接用语时，读取 [章、篇、集与节的称呼规则](docs/agents/content-hierarchy.md)。
 - 新增或调整文章、视频及界面配色时，读取 [项目颜色规则](docs/agents/colors.md)。
