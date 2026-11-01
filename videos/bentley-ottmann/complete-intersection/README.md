@@ -1,54 +1,55 @@
-# Remotion video
+# 第三章上集：从任意端点求出完整交集
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+本集对应 [任务 #321](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/321) 与父规格 #320，正文依据为 `docs-site/docs/segment-intersection/exact-predicates.mdx` 第一至五节。本票止于正式配音接入之前。
 
-Welcome to your Remotion project!
+当前工作区包含 22 页、34 个稳定教学步骤。字幕与独立纯文本分别通过独立审校；同一版拼音稿完成两位新审核者顺序执行的全文盲审和历史核销，连续两轮无新增、遗留或待查项。阅读预览已完成无头浏览器页面状态检查与截图复核；正式配音及成片验收不属于本票当前交付。
 
-## Commands
+## 工程入口
 
-**Install Dependencies**
+- `src/content.ts`：按稳定教学步骤 ID 维护字幕原稿和完整教学行。
+- `storyboard.md`：逐步对应原文、首次对象、口头解释、图示任务、保留内容和思考窗口。
+- `src/narration-text.json`：字幕审校后派生的独立纯文本口播。
+- `src/speech-text.json`：冻结口播的读音准备；拼接文字必须与纯文本一致。
+- `src/TeachingPage.tsx`、`src/Diagram.tsx`、`src/DecisionPath.tsx`：五节画面。
+- `src/timeline.ts`：仅供阅读预览的暂定时间；不是音频或词时间数据。
+- `src/LayoutCheck.tsx`：生产组件的页面状态核对入口；`auditShot` 选择步骤，`auditFrame` 选择该步骤局部帧。
 
-```console
-npm i --loglevel=error
+Composition 为 `CompleteIntersection`，逻辑画布 1920×1080、60 fps；既有配置保留 2 倍输出比例。没有正式音频，不提供导出命令。后续音频阶段须按实际完整 WAV 时长和词时间替换阅读预览安排，并复核完整行先显示、短句字幕、语义提示与停留，不得把这里的阅读估计当作实测。
+
+## 必要检查
+
+在本目录，使用已经安装的依赖：
+
+```sh
+pnpm --config.verify-deps-before-run=false run lint
+pnpm --config.verify-deps-before-run=false run video:check-content
+pnpm --config.verify-deps-before-run=false run build
 ```
 
-**Start Preview**
+`build` 只打包，不导出视频。预览使用现有 `dev` 入口并显式传入本次独立分配的临时端口，不复用普通开发端口；禁止自动安装和打开可见桌面窗口。共享操作约束见 [工程操作说明](../../../docs/agents/videos/operations.md)。
 
-```console
-npm run dev
-```
+## 参考继承
 
-**Render video**
+读取参考源的本地基点为 `d5edbe36baae6e545426acb0ce63055b8af91627`。公式与推导参考 `why-neighbors`，局部几何与步骤提示参考 `sweep-neighbors`。本集不导入相邻工程，直接复用公共能力：
 
-```console
-npx remotion render
-```
+| 能力                           | 本集接入                                            | 验证边界                               |
+| ------------------------------ | --------------------------------------------------- | -------------------------------------- |
+| 页面空间、完整教学行与预留行高 | `MathLessonPage`、`TeachingMathLines`               | 源码、类型及实际页面状态检查通过       |
+| 数学混排、描边标签             | `createMathText`、`Latex`、`SvgMathText`            | 公式解析、浏览器间距及标签边界检查通过 |
+| 中性字幕、短句切换、静默保留   | `Subtitles`、`captionAt`                            | 阅读预览；没有实测音频字幕             |
+| 对象配色、提示圈及线段描亮     | 系列共享色板、`CoordinateDiagram`、`AttentionMarks` | 图示按本集语义顺序提示；提示时间暂定   |
+| 推导分组                       | 共享数学行组件，独立条件用左对齐                    | 本集引用公式，不重复消元推导           |
+| 读音消歧                       | 独立口播与拼音稿                                    | 文字审核与实际读音验收分别记录         |
+| 音画同步                       | 尚未接入正式音频                                    | 不声明通过                             |
 
-**Upgrade Remotion**
+## 当前交付边界
 
-```console
-npx remotion upgrade
-```
+`lint`（含 TypeScript）、`video:check-content`、Prettier 与打包通过。内容检查覆盖 34 步的字幕／口播／标注／句界对应、109 个数学片段和阅读预览停留；不代替人工语义审校。打包仍提示现有 `zod 4.6.7` 与 Remotion 要求的 `4.5.4` 不匹配，本次没有安装依赖或修改锁文件。
 
-## Docs
+无头浏览器检查覆盖 C01—C34 的 568 个页面状态，包含字幕句界、逐步揭示及页末停留；另外检查 31 个中间状态，覆盖正文居中到左移、双图先后保留、思考窗口、边界选择、区间揭示及完整路径累积。34 步终态与中间状态均保存普通浏览器截图。首轮发现轴标签边界及低位端点与注记相碰，调整本集图内标签位置后，17 个受影响步骤复查通过；没有改变几何坐标或稿件。独立截图复核与代码审查结果见本次交付证据。
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+使用与 Remotion 4.0.539 匹配的 Headless Shell 157.0.8080.0。本次依照明确授权临时关闭浏览器内部沙箱，仅访问独立临时端口的本机预览；参数未写入工程或默认配置，浏览器及预览进程已关闭。此前启用沙箱的启动失败不再阻塞本次阅读预览验收。
 
-## Help
+未修改 CNB，未生成正式配音，未渲染或导出视频及 Remotion 静帧。提示时间仍为阅读估计；例如 C25 的字幕已经讲到较后端点时，图示仍可能停在 L 的提示。因此本次仅确认图示推进顺序，不声明字幕与提示或实际口播同步；可见桌面、实际读音与试听、音画同步和成片验收均未执行。
 
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+详细检查与独立审校证据作为本次临时交付材料保存，不建立第二套正式任务状态；权威任务仍为 CNB #321。
