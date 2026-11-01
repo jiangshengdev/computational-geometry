@@ -26,6 +26,7 @@ const sidebars: SidebarsConfig = {
         'segment-intersection/what-we-compute',
         'segment-intersection/why-neighbors',
         'segment-intersection/why-neighbors-proof',
+        'segment-intersection/exact-predicates',
         'segment-intersection/line-equation',
         {
           type: 'category',
