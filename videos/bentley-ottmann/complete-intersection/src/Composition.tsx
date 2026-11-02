@@ -1,25 +1,23 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
-
-type Props = {};
-
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
+import { Sequence, useCurrentFrame } from "remotion";
+import { rows, visualAt, type TimelineRow } from "./timeline";
+import { TeachingPage } from "./TeachingPage";
+function ShotScene({ row }: { row: TimelineRow }) {
+  const frame = useCurrentFrame();
+  return <TeachingPage row={row} {...visualAt(row, frame)} />;
+}
+export function LessonVideo() {
   return (
-    <Composition
-      id="MyComp"
-      component={MyComponent}
-      durationInFrames={120}
-      fps={60}
-      width={1920}
-      height={1080}
-      calculateMetadata={calculateMetadata}
-    />
+    <>
+      {rows.map((row) => (
+        <Sequence
+          key={row.id}
+          from={row.from}
+          durationInFrames={row.durationInFrames}
+          name={`${row.id} · ${row.action}`}
+        >
+          <ShotScene row={row} />
+        </Sequence>
+      ))}
+    </>
   );
-};
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+}
