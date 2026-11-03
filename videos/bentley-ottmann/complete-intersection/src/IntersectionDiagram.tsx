@@ -2,6 +2,7 @@ import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
 import { colors, inputColors } from "../../colors.ts";
 import { SvgMathText } from "./MathText";
 import type { AttentionMark } from "../../../shared/speech/teaching-cues";
+import { labelColor } from "./teaching-colors";
 
 type Point = [number, number];
 type Segment = {
@@ -220,18 +221,14 @@ export function IntersectionDiagram({
             ["off", "outside", "third"].includes(v.id) ? (
               <path d={`M${x} ${y - 8} l8 8 l-8 8 l-8 -8 Z`} fill={orange} />
             ) : (
-              <circle
-                cx={x}
-                cy={y}
-                r={5}
-                fill={v.id === "p" ? result : "#172c45"}
-              />
+              <circle cx={x} cy={y} r={5} fill={labelColor(v.text)} />
             )}
             <SvgMathText
               x={x + (v.dx ?? 0)}
               y={y + (v.dy ?? 0)}
               fontSize={27}
               align="center"
+              fill={labelColor(v.text)}
             >
               {v.text}
             </SvgMathText>

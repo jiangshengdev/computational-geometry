@@ -1,4 +1,5 @@
 import { MathText } from "./MathText";
+import { pathObjectMarks, pathFocusMarks } from "./teaching-colors";
 const nodes = [
   [
     "辨认两份输入",
@@ -18,7 +19,13 @@ const nodes = [
     "L 在 R 前：完整非零长度闭区间",
   ],
 ];
-export function JudgmentPath({ step }: { step: number }) {
+export function JudgmentPath({
+  step,
+  activeCaption,
+}: {
+  step: number;
+  activeCaption: number | null;
+}) {
   return (
     <div
       data-judgment-path
@@ -36,7 +43,16 @@ export function JudgmentPath({ step }: { step: number }) {
         >
           {group.map((text, j) => (
             <div key={j}>
-              <MathText>{text}</MathText>
+              <MathText
+                marks={[
+                  ...pathObjectMarks[i],
+                  ...(i === step - 1 && activeCaption !== null
+                    ? (pathFocusMarks[i][activeCaption] ?? [])
+                    : []),
+                ]}
+              >
+                {text}
+              </MathText>
             </div>
           ))}
         </div>

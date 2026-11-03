@@ -2,6 +2,7 @@ import { AttentionMarks } from "../../../shared/ui/AttentionMarks";
 import type { AttentionMark } from "../../../shared/speech/teaching-cues";
 import { colors, inputColors } from "../../colors.ts";
 import { SvgMathText } from "./MathText";
+import { labelColor } from "./teaching-colors";
 
 type Point = [number, number];
 type Stroke = {
@@ -198,8 +199,8 @@ function scene(kind: string, step: number) {
       arrow(`order-${index}`, [130, y], [700, y]);
       line(`lower-${index}`, [left, y], [650, y], blue, false, 10);
       line(`upper-${index}`, [170, y], [right, y], orange);
-      dot(`l-${index}`, [left, y], blue);
-      dot(`r-${index}`, [right, y], orange);
+      dot(`l-${index}`, [left, y], colors.violet);
+      dot(`r-${index}`, [right, y], colors.violet);
       label([left, y - 45], index === 1 ? "L=R" : "L");
       if (index !== 1) label([right, y - 45], "R");
       if (index === 1) dot("touch", [left, y], colors.violet);
@@ -270,7 +271,14 @@ export function ConceptDiagram({
         </g>
       ))}
       {labels.map((v, i) => (
-        <SvgMathText key={i} x={v.p[0]} y={v.p[1]} fontSize={27} align="center">
+        <SvgMathText
+          key={i}
+          x={v.p[0]}
+          y={v.p[1]}
+          fontSize={27}
+          align="center"
+          fill={labelColor(v.text)}
+        >
           {v.text}
         </SvgMathText>
       ))}

@@ -58,6 +58,7 @@ export function visualAt(row: TimelineRow, frame: number) {
   // Phrase-bounded gesture. Retained objects never inherit this opacity.
   const progress = Math.max(0, Math.min(1, (raw - 0.1) / 0.8));
   return {
+    activeCaption: phrase ? row.captions.indexOf(phrase) : null,
     visibleStep: row.visibleStep,
     thinking: frame >= row.readingFrames,
     caption: (phrase ?? (frame >= last.end ? last : row.captions[0])).text,

@@ -37,10 +37,12 @@ export function createMathText<Role extends string, Mark>(
   // The notation used by this episode; Chinese prose stays in the Chinese font.
   const MathText = ({
     children,
+    marks,
     numberRoles = [],
     colorize = true,
   }: {
     children: string | number;
+    marks?: Mark[];
     numberRoles?: (Role | undefined)[];
     colorize?: boolean;
   }) => {
@@ -55,7 +57,7 @@ export function createMathText<Role extends string, Mark>(
           return notation.math.test(part) ? (
             <Fragment key={i}>
               {part.slice(0, part.length - part.trimStart().length)}
-              <Latex numberRoles={roles} colorize={colorize}>
+              <Latex numberRoles={roles} marks={marks} colorize={colorize}>
                 {part
                   .trim()
                   .replace(/′/g, "'")

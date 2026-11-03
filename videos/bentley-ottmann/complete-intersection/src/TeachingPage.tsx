@@ -7,12 +7,18 @@ import { IntersectionDiagram } from "./IntersectionDiagram";
 import { JudgmentPath } from "./JudgmentPath";
 import { ConceptDiagram, conceptKinds } from "./ConceptDiagram";
 import type { TimelineRow } from "./timeline";
+import { objectMarks, focusMarks } from "./teaching-colors";
 const MathLines = createTeachingMathLines({
   pages,
   MathText,
   Latex,
   colorMath,
-  lineMarks: {},
+  lineMarks: Object.fromEntries(
+    Object.values(pages).map((page) => [
+      page.id,
+      page.steps.map((step) => objectMarks[step.id] ?? []),
+    ]),
+  ),
   objectColors: { current: colors.amber },
   pageRoles: Object.fromEntries(
     Object.keys(pages).map((id) => [id, "current" as const]),
@@ -27,6 +33,7 @@ export function TeachingPage({
   target,
   progress,
   reached,
+  activeCaption,
 }: {
   row: TimelineRow;
   caption: string;
@@ -34,15 +41,16 @@ export function TeachingPage({
   target: string | null;
   progress: number;
   reached: string[];
+  activeCaption: number | null;
 }) {
   const p = pages[row.page];
   return (
     <MathLessonPage
       diagramPosition="left"
-      title={<MathText>{p.title}</MathText>}
+      title={<MathText colorize={false}>{p.title}</MathText>}
       diagram={
         p.diagram === "whole-path" ? (
-          <JudgmentPath step={visibleStep} />
+          <JudgmentPath step={visibleStep} activeCaption={activeCaption} />
         ) : p.diagram && conceptKinds.has(p.diagram) ? (
           <ConceptDiagram
             kind={p.diagram}
@@ -60,9 +68,17 @@ export function TeachingPage({
           />
         ) : undefined
       }
-      caption={<MathText>{caption}</MathText>}
+      caption={<MathText colorize={false}>{caption}</MathText>}
     >
-      <MathLines pageId={p.id} visibleStep={visibleStep} />
+      <MathLines
+        pageId={p.id}
+        visibleStep={visibleStep}
+        activeMarks={
+          activeCaption === null
+            ? undefined
+            : { [visibleStep - 1]: focusMarks[row.id]?.[activeCaption] ?? [] }
+        }
+      />
     </MathLessonPage>
   );
 }

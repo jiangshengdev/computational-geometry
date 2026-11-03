@@ -29,6 +29,7 @@ export function createTeachingMathLines<Role extends string, Mark>({
   MathText: ComponentType<{
     children: string;
     numberRoles?: (Role | undefined)[];
+    marks?: Mark[];
   }>;
   defaultMathColor?: string;
   wrapText?: boolean | string[];
@@ -98,7 +99,13 @@ export function createTeachingMathLines<Role extends string, Mark>({
             {cell.math ? (
               <Latex colorize={false}>{cell.math}</Latex>
             ) : (
-              <MathText numberRoles={lineNumberRoles[pageId]?.[index]}>
+              <MathText
+                numberRoles={lineNumberRoles[pageId]?.[index]}
+                marks={[
+                  ...(lineMarks[pageId]?.[index] ?? []),
+                  ...(activeMarks?.[index] ?? []),
+                ]}
+              >
                 {cell.text ?? ""}
               </MathText>
             )}
