@@ -10,6 +10,16 @@ import { validateWords } from "../../../shared/speech/timing.ts";
 import { fileURLToPath } from "node:url";
 import { shots, pageList } from "../src/storyboard.ts";
 import {
+  colorMath,
+  normalizeMath,
+  type ColorMark,
+} from "../../../shared/math/semantic-colors.ts";
+import {
+  objectMarks,
+  focusMarks,
+  gestureMarks,
+} from "../src/teaching-colors.ts";
+import {
   rows,
   visualAt,
   timingKind,
@@ -51,7 +61,81 @@ const { verifyAlignment } = createAlignmentTools(sdk, {
   allowReviewedPronunciation: false,
   deferPronunciationReview: true,
 });
+
+// Keep mathematical atom classes and script groups, discarding only color nodes.
+function withoutColor(node: unknown): unknown {
+  if (Array.isArray(node))
+    return node.flatMap((child) => {
+      const value = withoutColor(child);
+      return Array.isArray(value) ? value : [value];
+    });
+  if (!node || typeof node !== "object") return node;
+  const fields = node as Record<string, unknown>;
+  if (fields.type === "color") return withoutColor(fields.body);
+  return Object.fromEntries(
+    Object.entries(fields)
+      .filter(([key]) => key !== "loc")
+      .map(([key, value]) => {
+        const result = withoutColor(value);
+        return [
+          key,
+          !Array.isArray(value) && Array.isArray(result) && result.length === 1
+            ? result[0]
+            : result,
+        ];
+      }),
+  );
+}
+const parse = (text: string) =>
+  withoutColor(
+    (
+      katex as unknown as {
+        __parse: (text: string, options: { strict: string }) => unknown;
+      }
+    ).__parse(text, { strict: "error" }),
+  );
+function checkMarks(row: (typeof rows)[number], marks: ColorMark[]) {
+  const text = normalizeMath(row.math ?? row.text ?? "");
+  for (const mark of marks) {
+    const term = normalizeMath(mark.term);
+    assert(text.includes(term), `${row.id}: unused teaching mark ${term}`);
+    if (!/[\u3400-\u9fff]/.test(term))
+      assert(
+        colorMath(text, undefined, [mark]).includes(
+          `\\textcolor{${mark.color}}{${term}}`,
+        ),
+        `${row.id}: mark does not match a whole quantity: ${term}`,
+      );
+  }
+  if (row.math) {
+    const colored = colorMath(row.math, undefined, marks);
+    katex.renderToString(colored, { throwOnError: true, strict: "error" });
+    assert.deepEqual(
+      parse(colored),
+      parse(normalizeMath(row.math)),
+      `${row.id}: coloring changed mathematical structure`,
+    );
+  }
+}
 for (const [index, row] of rows.entries()) {
+  assert.equal(
+    focusMarks[row.id]?.length,
+    row.captions.length,
+    `${row.id}: focus/subtitle correspondence changed`,
+  );
+  const objects = objectMarks[row.id] ?? [];
+  checkMarks(row, objects);
+  for (const marks of [
+    ...focusMarks[row.id],
+    ...Object.values(gestureMarks[row.id] ?? {}),
+  ])
+    checkMarks(row, [...objects, ...marks]);
+  assert.equal(visualAt(row, 0).activeCaption, null);
+  for (const [phrase, caption] of row.captions.entries()) {
+    assert.equal(visualAt(row, caption.start).activeCaption, phrase);
+    assert.notEqual(visualAt(row, caption.end).activeCaption, phrase);
+  }
+  assert.equal(visualAt(row, row.durationInFrames - 1).activeCaption, null);
   const recording = audio[row.id];
   const path = fileURLToPath(
     new URL(`../public/narration/${recording.audioFile}`, import.meta.url),

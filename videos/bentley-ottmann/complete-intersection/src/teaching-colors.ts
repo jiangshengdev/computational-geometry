@@ -1,6 +1,10 @@
 import { colors, inputColors } from "../../colors.ts";
 
-export type ColorMark = { term: string; color: string };
+import {
+  normalizeMath,
+  type ColorMark,
+} from "../../../shared/math/semantic-colors";
+export type { ColorMark } from "../../../shared/math/semantic-colors";
 const marks = (color: string, ...terms: string[]): ColorMark[] =>
   terms.map((term) => ({ term, color }));
 const first = (...terms: string[]) => marks(inputColors[0], ...terms);
@@ -125,16 +129,6 @@ export const pathFocusMarks = [
   [focus("Δ"), focus("Δ≠0", "两份闭范围"), focus("Δ=0", "端点代入")],
   [focus("后", "同点", "前"), [], []],
 ];
-
-export const normalizeMath = (text: string) =>
-  text
-    .replace(/ᵢ/g, "_i")
-    .replace(/Δ/g, "\\Delta")
-    .replace(/≠/g, "\\ne ")
-    .replace(/_{([12])}/g, "_$1");
-
-export const escapePattern = (text: string) =>
-  text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /** Labels opt in at their diagram call site, independently of prose/captions. */
 export function labelColor(text: string) {

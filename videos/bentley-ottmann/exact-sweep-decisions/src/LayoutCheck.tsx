@@ -11,6 +11,7 @@ import {
   type TimelineRow,
 } from "./timeline";
 import { TeachingPage } from "./TeachingPage";
+import { objectMarks, activeTeachingMarks } from "./teaching-colors";
 
 function SceneAtFrame({ row, frame }: { row: TimelineRow; frame: number }) {
   return <TeachingPage row={row} state={visualAt(row, frame)} />;
@@ -34,7 +35,7 @@ export const LayoutCheck = createShotLayoutCheck({
     ]),
   ),
   extraFrames: (row) =>
-    row.gestures.flatMap((g) => [
+    [...row.gestures, ...row.captions].flatMap((g) => [
       g.start - 1,
       g.start,
       Math.floor((g.start + g.end) / 2),
@@ -53,6 +54,31 @@ export const LayoutCheck = createShotLayoutCheck({
     ].filter((line) => getComputedStyle(line).visibility !== "hidden");
     if (shown.length !== visibleStep)
       errors.push("Missing retained teaching line or premature reveal");
+    const match = page.dataset.layoutPage?.match(/^(ES\d+)-(\d+)$/);
+    const row = rows.find((entry) => entry.id === match?.[1]);
+    if (row && match) {
+      const state = visualAt(row, Number(match[2]));
+      const active = activeTeachingMarks(
+        row.id,
+        state.activeCaption,
+        state.target,
+      );
+      // Require the selected semantic colors in the production line, rather than
+      // accepting the current-row background as proof of local emphasis.
+      const selected = active.length ? active : (objectMarks[row.id] ?? []);
+      const ink = shown[visibleStep - 1];
+      const actual = [...(ink?.querySelectorAll<HTMLElement>("[style]") ?? [])]
+        .map((element) => element.style.color)
+        .filter(Boolean);
+      for (const color of new Set(selected.map((mark) => mark.color))) {
+        const swatch = document.createElement("span");
+        swatch.style.color = color;
+        if (!actual.includes(swatch.style.color))
+          errors.push(
+            `${row.id}: selected teaching color is missing from the current line`,
+          );
+      }
+    }
     if (page.querySelector(".katex-error")) errors.push("Invalid math");
     if (page.querySelector("audio,video"))
       errors.push("Visual-stage composition must be silent");

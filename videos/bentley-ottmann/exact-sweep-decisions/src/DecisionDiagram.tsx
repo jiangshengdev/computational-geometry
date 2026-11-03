@@ -6,6 +6,7 @@ import {
 } from "../../../shared/speech/teaching-cues";
 import { colors } from "../../colors.ts";
 import { SvgMathText, MathText } from "./MathText";
+import { objectMarks } from "./teaching-colors";
 import type { PageInput } from "./storyboard";
 
 type Props = {
@@ -63,22 +64,22 @@ export function DecisionDiagram({
           <div>横坐标</div>
           <div>纵坐标</div>
           <div style={{ background: emphasis("record-p") }}>
-            <MathText>本次 P</MathText>
+            <MathText marks={objectMarks.ES13}>本次 P</MathText>
           </div>
           <div style={{ background: emphasis("record-x") }}>
-            <MathText>x_P</MathText>
+            <MathText marks={objectMarks.ES13}>x_P</MathText>
           </div>
           <div style={{ background: emphasis("record-y") }}>
-            <MathText>y_P</MathText>
+            <MathText marks={objectMarks.ES13}>y_P</MathText>
           </div>
           <div style={{ background: emphasis("record-q") }}>
-            <MathText>清单 Q</MathText>
+            <MathText marks={objectMarks.ES13}>清单 Q</MathText>
           </div>
           <div style={{ background: emphasis("record-x") }}>
-            <MathText>x_Q</MathText>
+            <MathText marks={objectMarks.ES13}>x_Q</MathText>
           </div>
           <div style={{ background: emphasis("record-y") }}>
-            <MathText>y_Q</MathText>
+            <MathText marks={objectMarks.ES13}>y_Q</MathText>
           </div>
         </div>
         {(identity || step >= 2) && (
@@ -183,10 +184,10 @@ export function DecisionDiagram({
           strokeWidth={2}
           strokeDasharray="6 8"
         />
-        <Label x={230} y={500} align="center">
+        <Label x={230} y={500} align="center" fill={colors.blue}>
           x_H
         </Label>
-        <Label x={560} y={500} align="center">
+        <Label x={560} y={500} align="center" fill={colors.orange}>
           x_K
         </Label>
         {step >= 2 && (
@@ -232,11 +233,16 @@ export function DecisionDiagram({
         {px !== null && (
           <>
             {dot(px, y)}
-            <Label x={px === 400 ? px + 40 : px} y={y - 28} align="center">
+            <Label
+              x={px === 400 ? px + 40 : px}
+              y={y - 28}
+              align="center"
+              fill={colors.violet}
+            >
               P
             </Label>
             {px !== 400 && (
-              <Label x={px} y={y + 70} align="center">
+              <Label x={px} y={y + 70} align="center" fill={colors.violet}>
                 x_P
               </Label>
             )}
@@ -353,7 +359,7 @@ export function DecisionDiagram({
         {segment(100, 320, 700, 320, colors.blue)}
         {segment(160, 440, 640, 200, colors.orange)}
         {dot(400, 320)}
-        <Label x={430} y={365}>
+        <Label x={430} y={365} fill={colors.violet}>
           P
         </Label>
         <Label x={710} y={315} fill={colors.blue}>

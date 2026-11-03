@@ -5,13 +5,19 @@ import { MathText, Latex, colorMath } from "./MathText";
 import { pages } from "./storyboard";
 import { DecisionDiagram } from "./DecisionDiagram";
 import { type TimelineRow, type visualAt } from "./timeline";
+import { objectMarks, activeTeachingMarks } from "./teaching-colors";
 
 const MathLines = createTeachingMathLines({
   pages,
   MathText,
   Latex,
   colorMath,
-  lineMarks: {},
+  lineMarks: Object.fromEntries(
+    Object.values(pages).map((page) => [
+      page.id,
+      page.steps.map((step) => objectMarks[step.id] ?? []),
+    ]),
+  ),
   objectColors: { current: colors.amber },
   pageRoles: Object.fromEntries(
     Object.keys(pages).map((id) => [id, "current" as const]),
@@ -38,7 +44,21 @@ export function TeachingPage({
       }
       caption={<MathText colorize={false}>{state.caption}</MathText>}
     >
-      <MathLines pageId={row.page} visibleStep={state.visibleStep} />
+      <MathLines
+        pageId={row.page}
+        visibleStep={state.visibleStep}
+        activeMarks={
+          state.activeCaption === null
+            ? undefined
+            : {
+                [state.visibleStep - 1]: activeTeachingMarks(
+                  row.id,
+                  state.activeCaption,
+                  state.target,
+                ),
+              }
+        }
+      />
     </MathLessonPage>
   );
 }

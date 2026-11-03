@@ -79,6 +79,12 @@ export function visualAt(row: TimelineRow, frame: number) {
   );
   return {
     visibleStep: row.visibleStep,
+    activeCaption: (() => {
+      const index = row.captions.findIndex(
+        (caption) => frame >= caption.start && frame < caption.end,
+      );
+      return index < 0 ? null : index;
+    })(),
     caption: captionAt(
       measuredCaptions[row.id],
       ((frame - audioLeadFrames) * 1000) / fps,

@@ -48,6 +48,8 @@
 
 `speech/shot-timeline.ts` 由整数坐标与交点分母共同调用，维护实测音频、揭示、运动锚点、字幕延续及页末停留规则。各集保留分镜、字幕、帧率及片段选择入口。`TeachingMathLines` 的 `defaultMathColor` 允许交点分母使用中性正文公式，保留当前步骤强调；未传入时维持已有调用方的颜色行为。
 
+第三章上下集共用 `math/semantic-colors.ts` 与 `ui/SemanticMathText.tsx`，维护显式公式标记、中文关键词及不改变数学类别的染色。每集的 `teaching-colors.ts` 保留自己的对象身份与短句重点映射；`TeachingMathLines` 分别通过 `lineMarks` 和 `activeMarks` 接入。标题、字幕和非重点内容由调用方显式保留中性色，不从对象名称推断全局配色。
+
 `checks/layout.ts` 接受显式 `browserExecutable`，供调用方传入已经核验版本的 Headless Shell；交点分母的入口负责核验。旧调用方未传入该参数时的既有实现不构成满足当前唯一浏览器规则的证明。
 
 ## 修改与验证
