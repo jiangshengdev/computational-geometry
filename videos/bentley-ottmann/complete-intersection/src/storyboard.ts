@@ -79,24 +79,26 @@ export const pageList: Page[] = [
     section: 1,
     title: "先比较端点，再写直线",
     source: "第一节：先确定输入是不是一个点",
+    diagram: "point-gate",
     steps: [
       {
         id: "CI04",
         math: "A_i=B_i\\iff x_{A_i}=x_{B_i}\\text{ 且 }y_{A_i}=y_{B_i}",
         first: "端点坐标记号与相等条件",
-        action: "完整显示两个坐标条件",
+        action: "完整显示坐标条件；对照重合端点与不同端点，不引入数值案例",
         captions: [
           "字母 x 和 y 分别表示横坐标和纵坐标。",
           "下标 Aᵢ 表示取端点 Aᵢ 的坐标，i 取一或二。",
           "两个端点的横坐标相等、纵坐标也相等，才是同一点。",
           "双向箭头表示左右条件互相等价。",
         ],
+        targets: [null, "a", "same", null],
       },
       {
         id: "CI05",
         text: "两份都是点／恰好一份是点／两份都非点",
         first: "第一层分类",
-        action: "仅展开第一层三个分支",
+        action: "增加两点、一点一段、两段三组输入示意，不提前展示后续判断",
         captions: [
           "分别检查两份输入，就得到这三类。",
           "每份输入的端点要么相同，要么不同，因此没有遗漏。",
@@ -106,12 +108,13 @@ export const pageList: Page[] = [
         id: "CI06",
         text: "只有两个端点不同，才能确定唯一直线",
         first: "直线公式的使用门槛",
-        action: "将非点分支接到直线入口，其余分支保留",
+        action: "保留分类；示意同一点可经过多条直线，不同两点确定一条",
         captions: [
           "《由两个端点写出直线方程》要求端点不同。",
           "先辨认点输入，才有资格调用后面的直线公式。",
           "重合端点不能确定唯一直线。",
         ],
+        targets: ["different", "unique-line", "same"],
       },
     ],
   }),
@@ -120,6 +123,7 @@ export const pageList: Page[] = [
     section: 2,
     title: "第二节：点属于哪里",
     source: "第二节：含有点输入时，检查这个点属于哪里",
+    diagram: "point-point",
     steps: [
       {
         id: "CI07",
@@ -130,6 +134,7 @@ export const pageList: Page[] = [
           "先走两份都是点的分支。",
           "此时只需比较这两个点的位置，不必解直线方程。",
         ],
+        targets: ["same", "different-2"],
       },
       {
         id: "CI08",
@@ -140,17 +145,27 @@ export const pageList: Page[] = [
           "两个坐标分别相等，交集就是这个点。",
           "只要有一个坐标不同，两份输入就没有公共点。",
         ],
+        targets: ["point-result", "different-2"],
       },
       {
         id: "CI09",
         math: "T=(x_T,y_T),\\quad E\\ne F",
         first: "恰好一份为点时的统一记号",
-        action: "明确 T 是点输入，E、F 是原有非点输入端点",
+        action: "保留点与点对照；下方增加点 T 和另一份线段 EF，依次提示对象",
         captions: [
           "恰好一份为点时，把它叫作 T。",
           "另一份的两个不同端点叫作 E 和 F。",
           "这些名字指向原有输入，没有增加新的输入。",
           "无论点输入原来排第一还是第二，都用同一套检查。",
+        ],
+        targets: [
+          "t",
+          [
+            { phrase: "两个不同端点", target: "e" },
+            { phrase: "E 和 F", target: "f" },
+          ],
+          null,
+          null,
         ],
       },
     ],
@@ -201,38 +216,49 @@ export const pageList: Page[] = [
     section: 2,
     title: "点归属的第二关：闭范围",
     source: "第二节：线段范围结论",
+    diagram: "range",
     steps: [
       {
         id: "CI13",
         text: "先确认共线，再选不恒定的坐标",
         first: "范围公式的条件",
-        action: "完整显示门槛，尚不代入具体案例",
+        action: "完整显示门槛；用无数值的共线 E、T、F 示意，不代入案例",
         captions: [
           "以下范围检查引用《由两个端点写出直线方程》的结论。",
           "先确认共线，再看端点的横坐标是否不同。",
         ],
+        targets: [null, "ef"],
       },
       {
         id: "CI14",
-        math: "x_E\\ne x_F:\\quad\\min(x_E,x_F)\\le x_T\\le\\max(x_E,x_F)",
+        math: "\\begin{aligned}x_E\\ne x_F:\\quad&\\min(x_E,x_F)\\le x_T,\\\\&x_T\\le\\max(x_E,x_F)\\end{aligned}",
         first: "非竖直范围及 min/max",
-        action: "显示闭范围和端点顺序无关的取法",
+        action: "投影到横坐标轴，保留端点实心标记并提示闭范围",
         captions: [
           "横坐标不同时，点的横坐标必须夹在两个端点之间。",
           "min 取较小值，max 取较大值，所以不用猜端点顺序。",
           "两端都包含，小于或等于会保留端点接触。",
         ],
+        targets: [
+          "x-t",
+          "x-range",
+          [
+            { phrase: "两端都包含", target: "x-e" },
+            { phrase: "保留端点接触", target: "x-f" },
+          ],
+        ],
       },
       {
         id: "CI15",
-        math: "x_E=x_F:\\quad\\min(y_E,y_F)\\le y_T\\le\\max(y_E,y_F)",
+        math: "\\begin{aligned}x_E=x_F:\\quad&\\min(y_E,y_F)\\le y_T,\\\\&y_T\\le\\max(y_E,y_F)\\end{aligned}",
         first: "竖直输入的范围",
-        action: "保留前行，对照纵坐标条件",
+        action: "保留横坐标投影；增加竖直输入及纵坐标投影，对应另一种条件",
         captions: [
           "横坐标相同时，非点线段竖直，就改查纵坐标。",
           "共线与闭范围必须同时通过，交集才是点 T。",
           "任意一关不通过，交集就是空。",
         ],
+        targets: ["y-range", "vertical-t", null],
       },
     ],
   }),
@@ -407,38 +433,50 @@ export const pageList: Page[] = [
     section: 3,
     title: "候选点必须通过两份范围",
     source: "第三节：唯一交点的必要充分论证",
+    diagram: "candidate-range",
     steps: [
       {
         id: "CI28",
         text: "对 S₁、S₂ 分别使用闭范围检查",
         first: "把第二节的归属检查接到候选点",
-        action: "说明共线已由公式保证，范围仍逐份检查",
+        action: "实线输入、虚线所在直线与唯一候选 P；依次检查两份范围",
         captions: [
           "仍用第二节的范围检查，只是待查点换成算出的 P。",
           "每份不竖直的输入查横坐标，竖直的输入查纵坐标。",
           "公式已经保证共线，但两份闭范围都必须通过。",
+        ],
+        targets: [
+          "p-0",
+          [
+            { phrase: "不竖直的输入", target: "s1-0" },
+            { phrase: "竖直的输入", target: "s2-0" },
+          ],
+          "p-0",
         ],
       },
       {
         id: "CI29",
         text: "任意一份排除 P，就没有其他候选点",
         first: "判空为什么足够",
-        action: "一般推理，不以案例代替论证",
+        action: "保留一般论证；下方对照 P 被一份范围排除，其他几何位置不移动",
         captions: [
           "如果两条线段有公共点，它也必须在两条所在直线上。",
           "两条直线只有 P 这一个公共点。",
           "若某条线段已排除 P，就不可能在别处找到另一个公共点。",
         ],
+        targets: ["line-1-1", "p-1", "end-1"],
       },
       {
         id: "CI30",
         text: "两份都通过：交集恰好为点 P",
         first: "反向充分性",
-        action: "补齐两个方向，保持此前论证",
+        action:
+          "补齐两个方向，保留此前论证；返回两份都包含 P 的上方示意并标出结果",
         captions: [
           "反过来，两份范围都通过，P 就同时属于两条线段。",
           "因此交集恰好是它；范围包含端点，所以接触也保留。",
         ],
+        targets: ["p-0", "p-0"],
       },
     ],
   }),
@@ -525,6 +563,7 @@ export const pageList: Page[] = [
     section: 3,
     title: "分母为零：先停止除法",
     source: "第三节：分母等于零",
+    diagram: "zero-delta",
     steps: [
       {
         id: "CI36",
@@ -535,6 +574,7 @@ export const pageList: Page[] = [
           "接着处理德尔塔等于零的分支。",
           "不再使用唯一交点分式，改为区分平行与共线。",
         ],
+        targets: [null, "second-0"],
       },
       {
         id: "CI37",
@@ -546,6 +586,7 @@ export const pageList: Page[] = [
           "先算 a₁ 乘它的横坐标，再加 b₁ 乘它的纵坐标。",
           "检查所得的和是否等于 c₁。",
         ],
+        targets: ["a2-1", "a2-1", "a2-0"],
       },
       {
         id: "CI38",
@@ -557,17 +598,27 @@ export const pageList: Page[] = [
           "端点本来在第二条线上，若也在第一条上，就排除了不同平行线。",
           "等式成立便共线，不成立则平行，线段交集为空。",
         ],
+        targets: [
+          "second-0",
+          "a2-1",
+          [
+            { phrase: "成立便共线", target: "second-1" },
+            { phrase: "不成立则平行", target: "second-0" },
+          ],
+        ],
       },
       {
         id: "CI39",
         text: "一个公共点不能单独证明两条直线重合",
         first: "不能省略的前提",
-        action: "保留 Δ=0 前提，指出省略后的逻辑漏洞",
+        action:
+          "保留 Δ=0 的两种关系；下方新增 Δ≠0 共享端点反例，明确不能丢掉前提",
         captions: [
           "这里不能省略德尔塔等于零的前提。",
           "两条有唯一交点的直线也可能共享一个端点。",
           "因此仅凭一个点在线上，不能断定两条直线重合。",
         ],
+        targets: [null, "shared-endpoint", "cross-second"],
       },
     ],
   }),
@@ -714,37 +765,47 @@ export const pageList: Page[] = [
     section: 4,
     title: "比较边界的三种结果",
     source: "第四节：共线分支三种关系",
+    diagram: "three-outcomes",
     steps: [
       {
         id: "CI50",
         text: "L 在 R 后：交集为空",
         first: "逆序边界的结果",
-        action: "说明边界没有可用公共范围",
+        action: "沿共同直线显示不早于 L 与不晚于 R 的范围；逆序时中间留空",
         captions: [
           "一般地，若 L 在 R 后面，交集为空。",
           "公共点不可能既不早于 L，又不晚于 R。",
+        ],
+        targets: [
+          "l-0",
+          [
+            { phrase: "不早于 L", target: "lower-0" },
+            { phrase: "不晚于 R", target: "upper-0" },
+          ],
         ],
       },
       {
         id: "CI51",
         text: "L 与 R 同点：交集为点 L",
         first: "相等边界的结果",
-        action: "保留端点相接",
+        action: "保留逆序行，增加 L=R 行并突出唯一共同点",
         captions: [
           "若 L 与 R 是同一点，闭范围仍保留这个共同端点。",
           "此时交集是点 L，不是非零长度区间。",
         ],
+        targets: ["touch", "touch"],
       },
       {
         id: "CI52",
         text: "L 在 R 前：完整非零长度闭区间",
         first: "正序边界结果",
-        action: "保留整个区间，不重做第一章证明",
+        action: "保留前两行，增加正序行；描亮含两端的完整闭区间，不重做证明",
         captions: [
           "若 L 在 R 前面，就得到两端及中间全部点。",
           "这正是第一章已经证明的完整区间结论。",
           "前、同点、后三种关系都已得到确定结果。",
         ],
+        targets: ["interval", null, null],
       },
     ],
   }),

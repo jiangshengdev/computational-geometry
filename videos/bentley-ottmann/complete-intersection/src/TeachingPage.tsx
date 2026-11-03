@@ -5,6 +5,7 @@ import { MathText, Latex, colorMath } from "./MathText";
 import { pages } from "./storyboard";
 import { IntersectionDiagram } from "./IntersectionDiagram";
 import { JudgmentPath } from "./JudgmentPath";
+import { ConceptDiagram, conceptKinds } from "./ConceptDiagram";
 import type { TimelineRow } from "./timeline";
 const MathLines = createTeachingMathLines({
   pages,
@@ -37,10 +38,18 @@ export function TeachingPage({
   const p = pages[row.page];
   return (
     <MathLessonPage
+      diagramPosition="left"
       title={<MathText>{p.title}</MathText>}
       diagram={
         p.diagram === "whole-path" ? (
           <JudgmentPath step={visibleStep} />
+        ) : p.diagram && conceptKinds.has(p.diagram) ? (
+          <ConceptDiagram
+            kind={p.diagram}
+            step={visibleStep}
+            target={target}
+            progress={progress}
+          />
         ) : p.diagram ? (
           <IntersectionDiagram
             kind={p.diagram}

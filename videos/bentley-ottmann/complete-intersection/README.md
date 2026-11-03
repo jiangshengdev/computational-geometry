@@ -10,6 +10,7 @@
 - `src/narration-text.json`：从字幕派生并独立审校的冻结纯文本，数学公式口语化，保持自然词组及字母边界。
 - `src/speech-text.json`：与冻结稿逐字相同的读音准备稿，通过局部 `{text,pinyin}` 标注维护；字幕不读取这些发音标注。
 - `src/IntersectionDiagram.tsx`：本集局部图示；横纵每单位均为 80 个逻辑像素，重合输入保持原位置。
+- `src/ConceptDiagram.tsx`：六组无数值几何示意，配合端点辨认、点归属、坐标投影、候选点范围、零分母前提和边界比较；逐步保留已讲对象，复用共享标签与语义提示，不替代一般论证。
 - `src/TeachingPage.tsx`：统一教学页、完整行先显示、逐行累积、中性色短字幕；语义提示由当前短句选择对象。
 - `src/JudgmentPath.tsx`：第五节才把已讲分支汇成完整路径，不在开场揭示整图。
 - `src/LayoutCheck.tsx`：真实生产组件的无声 DOM 检查，不执行 Remotion 静帧或视频导出。
