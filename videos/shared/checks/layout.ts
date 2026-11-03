@@ -1,8 +1,8 @@
 import { spawn } from "node:child_process";
-import { createServer } from "node:net";
 import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { startLayoutStudio, type LayoutStudio } from "./studio.ts";
 
 // Inspect DOM in an isolated headless Studio. No video/still export, installs,
 // shared development server or font/spacing snapshot assertions.
@@ -15,6 +15,7 @@ export async function checkLayout({
   browserExecutable,
   searchParams,
   screenshotDirectory,
+  studio: sharedStudio,
 }: {
   cwd: string;
   screenshotPages?: string[];
@@ -24,6 +25,7 @@ export async function checkLayout({
   browserExecutable?: string;
   searchParams?: Record<string, string>;
   screenshotDirectory?: string;
+  studio?: LayoutStudio;
 }) {
   const session = `layout-check-${process.pid}`;
   const pnpmArgs = ["--config.verify-deps-before-run=false", "exec"];
@@ -61,46 +63,17 @@ export async function checkLayout({
 
   // Fail before starting anything if the existing CLI is unavailable.
   await command(["playwright-cli", "--version"]);
-  const allocator = createServer();
-  await new Promise<void>((resolve) =>
-    allocator.listen(0, "127.0.0.1", resolve),
-  );
-  const address = allocator.address();
-  if (!address || typeof address === "string")
-    throw new Error("Cannot allocate audit port");
-  await new Promise<void>((resolve) => allocator.close(() => resolve()));
-  const url = `http://localhost:${address.port}`;
+  const studio = sharedStudio ?? (await startLayoutStudio(cwd));
+  const { url } = studio;
   const checkUrl = new URL(`${url}/LayoutCheck`);
   for (const [key, value] of Object.entries(searchParams ?? {}))
     checkUrl.searchParams.set(key, value);
-  const studio = spawn(
-    "pnpm",
-    [...pnpmArgs, "remotion", "studio", `--port=${address.port}`, "--no-open"],
-    {
-      cwd,
-      detached: true,
-      stdio: ["ignore", "pipe", "pipe"],
-    },
-  );
-  let studioLog = "";
-  studio.stdout.on("data", (data: Buffer) => {
-    studioLog += data;
-  });
-  studio.stderr.on("data", (data: Buffer) => {
-    studioLog += data;
-  });
-  let studioError: Error | undefined;
-  studio.on("error", (error) => {
-    studioError = error;
-  });
   try {
     const deadline = Date.now() + 60000;
     for (;;) {
-      if (studioError) throw studioError;
-      if (studio.exitCode !== null)
-        throw new Error(`Studio exited: ${studioLog}`);
+      studio.assertRunning();
       if (Date.now() > deadline)
-        throw new Error(`Studio did not become ready: ${studioLog}`);
+        throw new Error(`Studio did not become ready: ${url}`);
       try {
         if ((await fetch(url, { signal: AbortSignal.timeout(1000) })).ok) break;
       } catch {
@@ -182,9 +155,7 @@ export async function checkLayout({
     try {
       await cli("close");
     } finally {
-      if (studio.pid && studio.exitCode === null) {
-        process.kill(-studio.pid, "SIGTERM");
-      }
+      if (!sharedStudio) await studio.close();
     }
   }
 }
