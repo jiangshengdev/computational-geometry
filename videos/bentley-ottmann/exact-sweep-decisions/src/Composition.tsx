@@ -1,25 +1,41 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
+import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import {
+  rows,
+  visualAt,
+  audioLeadFrames,
+  audio,
+  type TimelineRow,
+} from "./timeline";
+import { narrationFile } from "../../../shared/speech/source";
+import { TeachingPage } from "./TeachingPage";
 
-type Props = {};
-
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
+function ShotScene({ row }: { row: TimelineRow }) {
+  const frame = useCurrentFrame();
   return (
-    <Composition
-      id="MyComp"
-      component={MyComponent}
-      durationInFrames={120}
-      fps={60}
-      width={1920}
-      height={1080}
-      calculateMetadata={calculateMetadata}
-    />
+    <>
+      <TeachingPage row={row} state={visualAt(row, frame)} />
+      <Sequence from={audioLeadFrames}>
+        <Audio
+          src={staticFile(`narration/${narrationFile(row.id, audio[row.id])}`)}
+        />
+      </Sequence>
+    </>
   );
-};
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+}
+/** Every adopted original WAV plays completely at its original rate. */
+export function LessonVideo() {
+  return (
+    <>
+      {rows.map((row) => (
+        <Sequence
+          key={row.id}
+          from={row.from}
+          durationInFrames={row.durationInFrames}
+          name={`${row.id} · ${row.action}`}
+        >
+          <ShotScene row={row} />
+        </Sequence>
+      ))}
+    </>
+  );
+}
