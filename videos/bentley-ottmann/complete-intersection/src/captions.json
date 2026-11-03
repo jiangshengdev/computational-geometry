@@ -77,7 +77,7 @@
       "confidence": null
     },
     {
-      "text": "下标 Aᵢ 表示取端点 Aᵢ 的坐标，i 取一或二。",
+      "text": "端点 Aᵢ 的坐标用带有 Aᵢ 下标的 x 和 y 表示，这里 i 取一或二。",
       "startMs": 3699,
       "endMs": 9728,
       "timestampMs": null,
@@ -100,7 +100,7 @@
   ],
   "CI05": [
     {
-      "text": "分别检查两份输入，就得到这三类。",
+      "text": "分别检查两份输入，就得到两份都是点、恰好一份是点、两份都非点这三类。",
       "startMs": 70,
       "endMs": 6238,
       "timestampMs": null,
@@ -171,14 +171,14 @@
   ],
   "CI09": [
     {
-      "text": "恰好一份为点时，把它叫作 T。",
+      "text": "恰好一份为点时，把它叫作 T 这个点。",
       "startMs": 70,
       "endMs": 3438,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "另一份的两个不同端点叫作 E 和 F。",
+      "text": "另一份的两个不同端点叫作 E 和 F 这两个点。",
       "startMs": 3869,
       "endMs": 7469,
       "timestampMs": null,
@@ -293,7 +293,7 @@
       "confidence": null
     },
     {
-      "text": "min 取较小值，max 取较大值，所以不用猜端点顺序。",
+      "text": "画面里的 min 取较小值，max 取较大值，所以不用猜端点顺序。",
       "startMs": 5119,
       "endMs": 10518,
       "timestampMs": null,
@@ -316,7 +316,7 @@
       "confidence": null
     },
     {
-      "text": "共线与闭范围必须同时通过，交集才是点 T。",
+      "text": "共线与闭范围必须同时通过，交集才是点 T 这个位置。",
       "startMs": 5389,
       "endMs": 9928,
       "timestampMs": null,
@@ -339,14 +339,14 @@
       "confidence": null
     },
     {
-      "text": "端点 E 是零、零，端点 F 是四、零。",
+      "text": "端点 E 是横坐标零、纵坐标零，端点 F 是横坐标四、纵坐标零。",
       "startMs": 2599,
       "endMs": 8808,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "把这次待查点叫作 T₁，它是二、一，它不在这条水平直线上。",
+      "text": "把这次待查点叫作 T₁，它是横坐标二、纵坐标一，不在这条水平直线上。",
       "startMs": 9239,
       "endMs": 15858,
       "timestampMs": null,
@@ -362,7 +362,7 @@
   ],
   "CI17": [
     {
-      "text": "把第二次待查点叫作 T₂，它是五、零，它在同一条直线上。",
+      "text": "把第二次待查点叫作 T₂，它是横坐标五、纵坐标零，在同一条直线上。",
       "startMs": 70,
       "endMs": 6448,
       "timestampMs": null,
@@ -378,7 +378,7 @@
   ],
   "CI18": [
     {
-      "text": "把第三次待查点叫作 T₃，它是四、零，它恰好就是端点 F。",
+      "text": "把第三次待查点叫作 T₃，它是横坐标四、纵坐标零，恰好就是端点 F 这个点。",
       "startMs": 70,
       "endMs": 7098,
       "timestampMs": null,
@@ -424,14 +424,14 @@
       "confidence": null
     },
     {
-      "text": "纵坐标用 Bᵢ 减 Aᵢ，所得的差叫 aᵢ。",
+      "text": "纵坐标用 Bᵢ 减 Aᵢ 对应的坐标，所得的差叫 aᵢ 这个系数。",
       "startMs": 4099,
       "endMs": 9677,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "横坐标反过来用 Aᵢ 减 Bᵢ，所得的差叫 bᵢ。",
+      "text": "横坐标反过来用 Aᵢ 减 Bᵢ 对应的坐标，所得的差叫 bᵢ 这个系数。",
       "startMs": 10139,
       "endMs": 16127,
       "timestampMs": null,
@@ -447,14 +447,14 @@
       "confidence": null
     },
     {
-      "text": "所得的和叫 cᵢ，便得到画面中的直线方程。",
+      "text": "所得的和叫 cᵢ 这个系数，便得到画面中的直线方程。",
       "startMs": 5369,
       "endMs": 9908,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "每组系数由端点固定下来，x、y 才是线上点的坐标。",
+      "text": "每组系数由端点固定下来，字母 x、y 才是线上点的坐标。",
       "startMs": 10359,
       "endMs": 15638,
       "timestampMs": null,
@@ -532,14 +532,14 @@
   ],
   "CI25": [
     {
-      "text": "确认Δ不为零后，把唯一交点叫作 P。",
+      "text": "确认Δ不为零后，把唯一交点叫作 P 这个点。",
       "startMs": 70,
       "endMs": 4288,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "它的横坐标、纵坐标分别记作 x_P、y_P。",
+      "text": "用带有 P 下标的 x 和 y 分别表示它的横坐标和纵坐标。",
       "startMs": 4719,
       "endMs": 9479,
       "timestampMs": null,
@@ -594,7 +594,7 @@
   ],
   "CI28": [
     {
-      "text": "仍用第二节的范围检查，只是待查点换成算出的 P。",
+      "text": "仍用第二节的范围检查，只是待查点换成算出的 P 这个点。",
       "startMs": 70,
       "endMs": 4538,
       "timestampMs": null,
@@ -631,7 +631,7 @@
       "confidence": null
     },
     {
-      "text": "若某条线段已排除 P，就不可能在别处找到另一个公共点。",
+      "text": "若某条线段已排除 P 这个点，就不可能在别处找到另一个公共点。",
       "startMs": 7889,
       "endMs": 12817,
       "timestampMs": null,
@@ -640,7 +640,7 @@
   ],
   "CI30": [
     {
-      "text": "反过来，两份范围都通过，P 就同时属于两条线段。",
+      "text": "反过来，两份范围都通过，点 P 就同时属于两条线段。",
       "startMs": 70,
       "endMs": 5017,
       "timestampMs": null,
@@ -663,14 +663,14 @@
       "confidence": null
     },
     {
-      "text": "第一份从零、零到四、零。",
+      "text": "第一份从横坐标零、纵坐标零到横坐标四、纵坐标零。",
       "startMs": 3199,
       "endMs": 8079,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "第二份从二、负一到二、一。",
+      "text": "第二份从横坐标二、纵坐标负一到横坐标二、纵坐标一。",
       "startMs": 8569,
       "endMs": 13369,
       "timestampMs": null,
@@ -709,7 +709,7 @@
       "confidence": null
     },
     {
-      "text": "公式给出点二、零。",
+      "text": "公式给出横坐标二、纵坐标零的点。",
       "startMs": 4869,
       "endMs": 7869,
       "timestampMs": null,
@@ -748,7 +748,7 @@
   ],
   "CI35": [
     {
-      "text": "两条所在直线的唯一交点是五、零。",
+      "text": "两条所在直线的唯一交点是横坐标五、纵坐标零。",
       "startMs": 70,
       "endMs": 4310,
       "timestampMs": null,
@@ -801,7 +801,7 @@
       "confidence": null
     },
     {
-      "text": "检查所得的和是否等于 c₁。",
+      "text": "检查所得的和是否等于 c₁ 这个系数。",
       "startMs": 9159,
       "endMs": 12319,
       "timestampMs": null,
@@ -879,7 +879,7 @@
       "confidence": null
     },
     {
-      "text": "端点零、一不在第一条直线上，代入等式不成立。",
+      "text": "端点横坐标零、纵坐标一，不在第一条直线上，代入等式不成立。",
       "startMs": 3859,
       "endMs": 9588,
       "timestampMs": null,
@@ -941,7 +941,7 @@
   ],
   "CI44": [
     {
-      "text": "在两份较前端点中，选更靠后的一个，叫作 L。",
+      "text": "在两份较前端点中，选更靠后的一个，叫作 L 这个边界点。",
       "startMs": 70,
       "endMs": 5578,
       "timestampMs": null,
@@ -957,7 +957,7 @@
   ],
   "CI45": [
     {
-      "text": "在两份较后端点中，选更靠前的一个，叫作 R。",
+      "text": "在两份较后端点中，选更靠前的一个，叫作 R 这个边界点。",
       "startMs": 70,
       "endMs": 5348,
       "timestampMs": null,
@@ -996,21 +996,21 @@
   ],
   "CI47": [
     {
-      "text": "先看第一份较前的端点零、零。",
+      "text": "先看第一份较前的端点，它是横坐标零、纵坐标零。",
       "startMs": 70,
       "endMs": 4528,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "再看第二份较前的端点二、零。",
+      "text": "再看第二份较前的端点，它是横坐标二、纵坐标零。",
       "startMs": 4969,
       "endMs": 9497,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "较靠后的是二、零，选它作为 L。",
+      "text": "较靠后的是横坐标二、纵坐标零，选它作为 L 这个边界点。",
       "startMs": 9959,
       "endMs": 15048,
       "timestampMs": null,
@@ -1019,21 +1019,21 @@
   ],
   "CI48": [
     {
-      "text": "再看第一份较后的端点四、零。",
+      "text": "再看第一份较后的端点，它是横坐标四、纵坐标零。",
       "startMs": 70,
       "endMs": 4718,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "再看第二份较后的端点六、零。",
+      "text": "再看第二份较后的端点，它是横坐标六、纵坐标零。",
       "startMs": 5169,
       "endMs": 9908,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "较靠前的是四、零，选它作为 R。",
+      "text": "较靠前的是横坐标四、纵坐标零，选它作为 R 这个边界点。",
       "startMs": 10359,
       "endMs": 15548,
       "timestampMs": null,
@@ -1042,7 +1042,7 @@
   ],
   "CI49": [
     {
-      "text": "L 在 R 前面，所以保留从二、零到四、零的完整闭区间。",
+      "text": "边界点 L 在 R 前面，所以保留从横坐标二、纵坐标零到横坐标四、纵坐标零的完整闭区间。",
       "startMs": 70,
       "endMs": 8008,
       "timestampMs": null,
@@ -1058,14 +1058,14 @@
   ],
   "CI50": [
     {
-      "text": "一般地，若 L 在 R 后面，交集为空。",
+      "text": "一般地，若边界点 L 在 R 后面，交集为空。",
       "startMs": 70,
       "endMs": 4608,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "公共点不可能既不早于 L，又不晚于 R。",
+      "text": "公共点不可能既不早于 L 这个位置，又不晚于 R 这个位置。",
       "startMs": 5039,
       "endMs": 9708,
       "timestampMs": null,
@@ -1074,14 +1074,14 @@
   ],
   "CI51": [
     {
-      "text": "若 L 与 R 是同一点，闭范围仍保留这个共同端点。",
+      "text": "若边界点 L 与 R 是同一点，闭范围仍保留这个共同端点。",
       "startMs": 110,
       "endMs": 4767,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "此时交集是点 L，不是非零长度区间。",
+      "text": "此时交集是点 L 这个位置，不是非零长度区间。",
       "startMs": 5339,
       "endMs": 9448,
       "timestampMs": null,
@@ -1090,7 +1090,7 @@
   ],
   "CI52": [
     {
-      "text": "L 在 R 前面时，交集包含两端和中间的全部点。",
+      "text": "边界点 L 在 R 前面时，交集包含两端和中间的全部点。",
       "startMs": 70,
       "endMs": 4938,
       "timestampMs": null,
@@ -1120,14 +1120,14 @@
       "confidence": null
     },
     {
-      "text": "第一份从二、三写到二、零，端点顺序向下。",
+      "text": "第一份从横坐标二、纵坐标三写到横坐标二、纵坐标零，端点顺序向下。",
       "startMs": 3319,
       "endMs": 10068,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "第二份从二、一写到二、三。",
+      "text": "第二份从横坐标二、纵坐标一写到横坐标二、纵坐标三。",
       "startMs": 10559,
       "endMs": 15639,
       "timestampMs": null,
@@ -1143,21 +1143,21 @@
   ],
   "CI54": [
     {
-      "text": "较前端点的纵坐标是零和一，选更靠后的一，得到 L。",
+      "text": "较前端点的纵坐标是零和一，选更靠后的一，得到 L 这个边界点。",
       "startMs": 70,
       "endMs": 5998,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "每份输入中靠后的端点，纵坐标都是三，得到同一个位置 R。",
+      "text": "每份输入中靠后的端点，纵坐标都是三，得到同一个位置 R 这个边界点。",
       "startMs": 6439,
       "endMs": 12757,
       "timestampMs": null,
       "confidence": null
     },
     {
-      "text": "因此完整交集从二、一到二、三，包含两端。",
+      "text": "因此完整交集从横坐标二、纵坐标一到横坐标二、纵坐标三，包含两端。",
       "startMs": 13199,
       "endMs": 19958,
       "timestampMs": null,
@@ -1235,7 +1235,7 @@
   ],
   "CI58": [
     {
-      "text": "共线后，L 与 R 的顺序只有前、同点、后三种。",
+      "text": "共线后，边界点 L 与 R 的顺序只有前、同点、后三种。",
       "startMs": 70,
       "endMs": 5308,
       "timestampMs": null,
@@ -1304,7 +1304,7 @@
   ],
   "CI61": [
     {
-      "text": "共线时从原端点选出 L 和 R 两个边界点，比较顺序得到三个出口。",
+      "text": "共线时从原端点选出 L 这个边界点和 R 这个边界点，比较顺序得到三个出口。",
       "startMs": 70,
       "endMs": 6508,
       "timestampMs": null,
