@@ -21,6 +21,8 @@ export type PageInput = {
     | "future"
     | "heights"
     | "crossing"
+    | "future-consequence"
+    | "neighbor-order"
     | "records";
   steps: Step[];
 };
@@ -374,6 +376,7 @@ export const pageList = [
   }),
   page({
     id: "future-consequence",
+    diagram: "future-consequence",
     section: 3,
     title: "一处等号，改变登记行动",
     source: "第八节：严格未来为何必须排除等号",
@@ -501,6 +504,7 @@ export const pageList = [
   }),
   page({
     id: "wrong-neighbor",
+    diagram: "neighbor-order",
     section: 4,
     title: "比较颠倒，记录中的邻居就可能不是真邻居",
     source: "第九节：把直线方程接到活动顺序",

@@ -49,6 +49,24 @@ export const cues: Record<string, Gesture[]> = {
   ES21: [{ phrase: "交点严格在右侧", target: "future-positive" }],
   ES22: [{ phrase: "横坐标与当前位置相等", target: "future-zero" }],
   ES23: [{ phrase: "交点在当前位置左侧", target: "future-negative" }],
+  ES25: [
+    {
+      phrase: "当前位置就是 x_P",
+      speechPhrase: "当前位置就是 x P",
+      target: "at-current",
+    },
+    { phrase: "允许它重返未来清单", target: "allow-current" },
+    { phrase: "严格大于零排除", target: "reject-current" },
+  ],
+  ES26: [
+    { phrase: "真实的差为正", target: "actual-future" },
+    { phrase: "被近似成零", target: "rounded-zero" },
+    { phrase: "排除一个还没到达的交点", target: "miss-future" },
+  ],
+  ES27: [
+    { phrase: "新记录严格留在当前位置右侧", target: "entry-check" },
+    { phrase: "最左侧未处理位置先取出", target: "take-first" },
+  ],
   ES28: [{ phrase: "同一个横坐标", target: "scan" }],
   ES29: [
     { phrase: "S₁", speechPhrase: "S 一", target: "s1" },
@@ -64,6 +82,17 @@ export const cues: Record<string, Gesture[]> = {
   ],
   ES32: [{ phrase: "两份高度", target: "height" }],
   ES33: [{ phrase: "第二份在第一份上方", target: "height2" }],
+  ES34: [{ phrase: "不会等高", target: "insertion-height" }],
+  ES35: [
+    { phrase: "上下比较颠倒", target: "wrong-comparison" },
+    { phrase: "新线段就可能插错位置", target: "wrong-insertion" },
+    { phrase: "把真正相邻的一对隔开", target: "separated-neighbors" },
+    { phrase: "检查记录中的新邻居", target: "record-neighbors" },
+  ],
+  ES36: [
+    { phrase: "活动顺序", target: "geometric-order" },
+    { phrase: "哪一对接受求交检查", target: "record-neighbors" },
+  ],
   ES37: [
     { phrase: "真实交点 P", target: "intersection" },
     { phrase: "高度相等", target: "intersection" },

@@ -103,7 +103,192 @@ export function DecisionDiagram({
       </div>
     );
   }
-  if (kind === "eligibility") {
+  if (kind === "neighbor-order") {
+    // The input geometry stays fixed. Only the counterfactual record is wrong.
+    const wrong = seen("wrong-insertion");
+    const separated = seen("separated-neighbors");
+    marks["insertion-height"] = [point(230, 180, colors.orange)];
+    marks["wrong-comparison"] = [stroke(350, 180, 350, 460)];
+    marks["wrong-insertion"] = [point(610, 320, colors.orange)];
+    marks["separated-neighbors"] = [stroke(710, 180, 710, 460)];
+    marks["record-neighbors"] = [stroke(510, 180, 510, 460)];
+    marks["geometric-order"] = [stroke(330, 320, 330, 460)];
+    const existing = (x: number, y: number, color: string) => (
+      <g>
+        {segment(x - 90, y, x + 90, y, color)}
+        <Label x={x} y={y - 20} align="center" fill={color} fontSize={26}>
+          已有线段
+        </Label>
+      </g>
+    );
+    const newcomer = (x: number, y: number) => (
+      <g>
+        {dot(x, y, colors.orange)}
+        {segment(x, y, x + 90, y - 30, colors.orange)}
+        <Label
+          x={x}
+          y={y - 48}
+          align="center"
+          fill={colors.orange}
+          fontSize={26}
+        >
+          新线段
+        </Label>
+      </g>
+    );
+    content = (
+      <>
+        <Label x={230} y={75} align="center">
+          几何顺序
+        </Label>
+        <path
+          d="M110 490 V135"
+          stroke={muted}
+          strokeWidth={2}
+          markerEnd="url(#decision-arrow)"
+        />
+        <Label x={110} y={540} align="center" fontSize={25}>
+          下 → 上
+        </Label>
+        {newcomer(230, 180)}
+        {existing(230, 320, colors.blue)}
+        {existing(230, 460, colors.violet)}
+        {separated && (
+          <g data-diagram-object="true-neighbors">
+            <path
+              d="M325 320 H345 V460 H325"
+              fill="none"
+              stroke={muted}
+              strokeWidth={2}
+            />
+            <Label x={230} y={590} align="center" fontSize={26}>
+              两条已有线段真正相邻
+            </Label>
+          </g>
+        )}
+        {(seen("wrong-comparison") || step >= 3) && (
+          <Label x={610} y={75} align="center" fontSize={28}>
+            维护记录（误判示意）
+          </Label>
+        )}
+        {wrong && (
+          <g data-diagram-object="wrong-order">
+            {existing(610, 180, colors.blue)}
+            {newcomer(610, 320)}
+            {existing(610, 460, colors.violet)}
+            {separated && (
+              <Label x={610} y={540} align="center" fontSize={26}>
+                记录中被新线段隔开
+              </Label>
+            )}
+            {seen("record-neighbors") && (
+              <Label x={610} y={590} align="center" fontSize={26}>
+                检查对象随错误记录改变
+              </Label>
+            )}
+          </g>
+        )}
+      </>
+    );
+  } else if (kind === "future-consequence") {
+    marks["at-current"] = [point(270, 115)];
+    marks["allow-current"] = [
+      { kind: "rect", from: [360, 80], to: [765, 125], radius: 6 },
+    ];
+    marks["reject-current"] = [
+      { kind: "rect", from: [360, 135], to: [765, 180], radius: 6 },
+    ];
+    marks["actual-future"] = [point(300, 330)];
+    marks["rounded-zero"] = [
+      { kind: "rect", from: [360, 290], to: [765, 335], radius: 6 },
+    ];
+    marks["miss-future"] = [
+      { kind: "rect", from: [360, 345], to: [765, 390], radius: 6 },
+    ];
+    marks["entry-check"] = [stroke(115, 500, 335, 500)];
+    marks["take-first"] = [stroke(465, 500, 685, 500)];
+    const axis = (y: number, current: number, candidate: number) => (
+      <g>
+        <path
+          d={`M70 ${y} H340`}
+          stroke={muted}
+          strokeWidth={2}
+          markerEnd="url(#decision-arrow)"
+        />
+        <line
+          x1={current}
+          y1={y - 30}
+          x2={current}
+          y2={y + 25}
+          stroke={ink}
+          strokeWidth={2}
+        />
+        {dot(candidate, y)}
+        <Label x={candidate} y={y - 35} align="center" fill={colors.violet}>
+          P
+        </Label>
+        <Label x={current} y={y + 65} align="center">
+          x_0
+        </Label>
+      </g>
+    );
+    content = (
+      <>
+        {axis(115, 270, 270)}
+        {seen("allow-current") && (
+          <Label x={375} y={115} fontSize={26}>
+            错误条件：允许当前位置再加入
+          </Label>
+        )}
+        {seen("reject-current") && (
+          <Label x={375} y={170} fontSize={26}>
+            严格未来：排除当前位置
+          </Label>
+        )}
+        {step >= 2 && (
+          <g data-diagram-object="positive-misclassified">
+            {axis(330, 135, 300)}
+            <Label x={205} y={245} align="center" fontSize={27}>
+              真实 f_P&gt;0
+            </Label>
+            {seen("rounded-zero") && (
+              <Label x={375} y={325} fontSize={26}>
+                误判为零（位置没有改变）
+              </Label>
+            )}
+            {seen("miss-future") && (
+              <Label x={375} y={380} fontSize={26}>
+                错误排除：还没到达的交点
+              </Label>
+            )}
+          </g>
+        )}
+        {step >= 3 && (
+          <g data-diagram-object="shared-exact-position">
+            <Label x={400} y={465} align="center" fontSize={27}>
+              同一个精确横坐标 x_P
+            </Label>
+            <path
+              d="M400 480 L225 500 M400 480 L575 500"
+              fill="none"
+              stroke={muted}
+              strokeWidth={2}
+            />
+            {seen("entry-check") && (
+              <Label x={225} y={550} align="center" fontSize={27}>
+                严格在右侧，才有未来资格
+              </Label>
+            )}
+            {seen("take-first") && (
+              <Label x={575} y={595} align="center" fontSize={27}>
+                未处理位置中，最左侧先取出
+              </Label>
+            )}
+          </g>
+        )}
+      </>
+    );
+  } else if (kind === "eligibility") {
     const extension = seen("extension") || step > 1;
     marks.finite = [stroke(100, 320, 310, 320, colors.blue)];
     marks.extension = [point(440, 320)];
