@@ -79,6 +79,8 @@ PNG 与 WAV 导出入口不读取预检状态，不要求预检成功，也不�
 
 #### 五阶段命令模板
 
+`videos/bentley-ottmann/complete-intersection` 已接入相同的独立预检、PNG 与 PCM 导出入口，composition 为 `CompleteIntersection`，输出目录为 `out/complete-intersection-frames/`，音轨为 `out/complete-intersection-audio.wav`。配置、浏览器要求和参数检查见其 README；下列五阶段模板适用，提供命令前仍须核验当前音频检测、时间线和帧编号。
+
 `videos/bentley-ottmann/intersection-goals` 与 `videos/bentley-ottmann/pairwise-baseline` 也已接入下文的独立 `video:preflight`、PNG `video:export` 和 PCM `video:export-audio` 入口，复用相同共享实现。其 composition 分别为 `IntersectionGoals`、`PairwiseBaseline`，输出前缀与工程目录同名。该接入不授权助手渲染，提供命令前仍须核验浏览器、帧编号和当前时间线。
 
 以下是参数化模板，不是可直接复制执行的脚本。助手必须先核验并替换全部 `${…}` 参数，给出明确工作目录和必要环境设置，再提供对应阶段命令；不得将未赋值的变量交给用户猜测。浏览器路径必须按唯一浏览器约束现场核验。所有输出均须使用不存在的新路径，保留已生成产物。`${MUX_TOOL}` 是从当前工程目录到 `videos/shared/tools/mux-mov.ts` 的已核验路径：`videos/shear/<工程>/` 与 `videos/bentley-ottmann/<工程>/` 使用 `../../shared/tools/mux-mov.ts`，`videos/line-equation-tutorial/` 使用 `../shared/tools/mux-mov.ts`。

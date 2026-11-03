@@ -4,7 +4,7 @@
 
 五节、21 页、64 个教学步骤 `CI01`–`CI64` 已接入独立原速 PCM WAV、实测词时间与字幕。`timeline.ts` 复用共享完整音频时间线；旧的按字数阅读窗口已退出计算。教学行预显半秒，逐步累积；每页完整画面保留 3 秒，`CI61` 原有 4 秒观察窗保留。当前时间线为 57,921 帧（60 fps，约 16 分 5 秒），不是已经导出的成片。后续 [#325](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/325) 仍须核对整片声音、实际播放同步与用户导出的真实成片。
 
-当前 64/64 正式音频均有绑定音频哈希和口播指纹的识别与发音评估，原始响应及汇总位于 `out/narration-audit/`。原始程序标记为遗漏 0、插入 0、发音异常 40；这些是自动标记，未当作人耳确认的错误，也未删除或标为已试听通过。CI16 的 E 已获用户确认采用 IPA `/iː/`，其他字母仍使用默认英文拼读；该确认不代表其他字词或整集人耳验收完成。依照导出前音频门禁，目前不提供可执行导出命令。
+当前 64/64 正式音频均有绑定音频哈希和口播指纹的识别与发音评估，原始响应及汇总位于 `out/narration-audit/`。原始程序标记为遗漏 0、插入 0、发音异常 40；这些是自动标记，未当作人耳确认的错误，也未删除或标为已试听通过。CI16 的 E 已获用户确认采用 IPA `/iː/`，其他字母仍使用默认英文拼读；该确认不代表其他字词或整集人耳验收完成。提供导出命令前仍须按[导出前音频检查](../../../docs/agents/videos/operations.md#导出前音频检查)核验当前版本，区分检测覆盖、三类自动标记与实际试听结论。
 
 ## 内容入口
 
@@ -42,4 +42,17 @@ pnpm --config.verify-deps-before-run=false run video:narration --dry-run
 
 预览入口为 `pnpm --config.verify-deps-before-run=false run dev --port=<独立临时端口>`，不自动打开窗口；代理使用系统分配端口，不能复用普通开发端口。可见窗口须另获授权。
 
-本票不提供导出入口。后续配音与同步参见 [公共时间线规则](../../../docs/agents/videos/timeline.md)，试听及成片验收参见 [交付规则](../../../docs/agents/videos/delivery.md)，助手禁止渲染或导出。
+## 用户导出入口
+
+已接入共享的 `video:preflight`、`video:export` 和 `video:export-audio`。先按上文设置匹配版本的 `REMOTION_BROWSER_EXECUTABLE`。`video:preflight` 独立执行完整音频解码、内容及生产布局检查，不包含语音识别与发音评估，不自动执行导出。
+
+PNG 入口使用 `CompleteIntersection`，按 2 倍比例输出 3840×2160、60 fps 帧序列到 `out/complete-intersection-frames/`；音轨入口从同一 composition 输出 `out/complete-intersection-audio.wav`，显式使用 48 kHz、16 bit PCM 并关闭视频硬件加速。两者均复用共享入口的浏览器版本核验、系统分配独立端口及禁止覆盖保护，不依赖预检状态，不改变原始音频语速。
+
+以下命令只检查参数，不生成画面或音轨：
+
+```sh
+pnpm --config.verify-deps-before-run=false run video:export --dry-run
+pnpm --config.verify-deps-before-run=false run video:export-audio --dry-run
+```
+
+实际导出由用户按[五阶段命令模板](../../../docs/agents/videos/operations.md#五阶段命令模板)执行，先核验当前音频检测结果，再依次检查 PNG、无声 H.265、同时间线 WAV 与 MOV；合并入口为 `../../shared/tools/mux-mov.ts`。入口及 dry-run 不代表音轨或成片已验收，助手禁止渲染或导出。后续配音与同步参见[公共时间线规则](../../../docs/agents/videos/timeline.md)，试听及成片验收参见[交付规则](../../../docs/agents/videos/delivery.md)。
