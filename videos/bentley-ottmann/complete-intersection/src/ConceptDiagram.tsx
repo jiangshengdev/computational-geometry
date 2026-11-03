@@ -189,24 +189,44 @@ function scene(kind: string, step: number) {
       label([660, 385], "\\Delta\\ne0");
     }
   } else if (kind === "three-outcomes") {
+    label([270, 25], "输入范围");
+    label([650, 25], "完整交集");
     for (let index = 0; index < Math.min(step, 3); index++) {
-      const y = 100 + 155 * index;
+      const y = 115 + 195 * index;
       const [left, right] = [
-        [480, 300],
-        [390, 390],
-        [300, 480],
+        [360, 240],
+        [300, 300],
+        [240, 360],
       ][index];
-      arrow(`order-${index}`, [130, y], [700, y]);
-      line(`lower-${index}`, [left, y], [650, y], blue, false, 10);
-      line(`upper-${index}`, [170, y], [right, y], orange);
-      dot(`l-${index}`, [left, y], colors.violet);
-      dot(`r-${index}`, [right, y], colors.violet);
-      label([left, y - 45], index === 1 ? "L=R" : "L");
-      if (index !== 1) label([right, y - 45], "R");
-      if (index === 1) dot("touch", [left, y], colors.violet);
-      if (index === 2)
-        line("interval", [left, y], [right, y], colors.violet, false, 6);
-      label([410, y + 55], ["交集为空", "交集为点 L", "完整闭区间"][index]);
+      // Translate the result without changing the input interval's scale.
+      const resultLeft = left + 350;
+      const resultRight = right + 350;
+      arrow(`order-${index}`, [115, y + 30], [470, y + 30]);
+      line(`lower-${index}`, [left, y + 30], [450, y + 30], blue, false, 8);
+      line(`upper-${index}`, [130, y + 30], [right, y + 30], orange);
+      dot(`l-${index}`, [left, y + 30], colors.violet);
+      dot(`r-${index}`, [right, y + 30], colors.violet);
+      label([left, y - 5], index === 1 ? "L=R" : "L");
+      if (index !== 1) label([right, y - 5], "R");
+      label([300, y + 85], ["L 在 R 后", "L=R", "L 在 R 前"][index]);
+      if (index === 1) {
+        dot("touch", [resultLeft, y + 30], colors.violet);
+        label([resultLeft, y - 5], "L=R");
+      } else if (index === 2) {
+        line(
+          "interval",
+          [resultLeft, y + 30],
+          [resultRight, y + 30],
+          colors.violet,
+          false,
+          6,
+        );
+        dot("result-l", [resultLeft, y + 30], colors.violet);
+        dot("result-r", [resultRight, y + 30], colors.violet);
+        label([resultLeft, y - 5], "L");
+        label([resultRight, y - 5], "R");
+      }
+      label([650, y + 85], ["交集为空", "交集为点 L", "完整闭区间"][index]);
     }
   }
   return { strokes, dots, labels };
@@ -233,6 +253,7 @@ export function ConceptDiagram({
   progress: number;
 }) {
   const { strokes, dots, labels } = scene(kind, step);
+  const height = kind === "three-outcomes" ? 640 : 520;
   const stroke = strokes.find((v) => v.id === target);
   const point = dots.find((v) => v.id === target);
   const marks: AttentionMark[] = stroke
@@ -243,8 +264,8 @@ export function ConceptDiagram({
   return (
     <svg
       width={800}
-      height={520}
-      viewBox="0 0 800 520"
+      height={height}
+      viewBox={`0 0 800 ${height}`}
       data-concept-diagram={kind}
       role="img"
       aria-label={kind}
