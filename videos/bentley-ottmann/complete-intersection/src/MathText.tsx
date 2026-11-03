@@ -29,9 +29,14 @@ export const colorMath = (
     `(?<![A-Za-z])(?:${quantities.join("|")})|\\\\(?:\\\\|[A-Za-z]+)`,
     "g",
   );
-  return value.replace(pattern, (term) =>
-    selected.has(term) ? `{\\color{${selected.get(term)}}${term}}` : term,
-  );
+  return value.replace(pattern, (term, offset: number) => {
+    if (!selected.has(term)) return term;
+    // A surrounding {...} turns relations/operators into an ordinary atom.
+    // textcolor is transparent to KaTeX's atom classes and spacing rules.
+    const colored = `\\textcolor{${selected.get(term)}}{${term}}`;
+    // A bare script such as x_T still needs one grouped argument after _/^.
+    return /[_^]/.test(value[offset - 1] ?? "") ? `{${colored}}` : colored;
+  });
 };
 const {
   MathText: InlineMathText,
