@@ -12,6 +12,7 @@ import {
 } from "./timeline";
 import { TeachingPage } from "./TeachingPage";
 import { objectMarks, activeTeachingMarks } from "./teaching-colors";
+import { pageReferences } from "./references";
 
 function SceneAtFrame({ row, frame }: { row: TimelineRow; frame: number }) {
   return <TeachingPage row={row} state={visualAt(row, frame)} />;
@@ -58,6 +59,27 @@ export const LayoutCheck = createShotLayoutCheck({
     const row = rows.find((entry) => entry.id === match?.[1]);
     if (row && match) {
       const state = visualAt(row, Number(match[2]));
+      for (const reference of pageReferences[row.page] ?? []) {
+        const element = page.querySelector<HTMLElement>(
+          `[data-reference="${reference.id}"]`,
+        );
+        const visible = visibleStep >= (reference.visibleFrom ?? 1);
+        if (
+          !element ||
+          (getComputedStyle(element).visibility !== "hidden") !== visible
+        )
+          errors.push(
+            `${row.id}: missing source or premature reference ${reference.id}`,
+          );
+        const active =
+          visible &&
+          state.activeCaption !== null &&
+          Boolean(reference.uses[row.id]?.includes(state.activeCaption));
+        if (element?.dataset.referenceActive !== String(active))
+          errors.push(
+            `${row.id}: source emphasis out of sync: ${reference.id}`,
+          );
+      }
       const active = activeTeachingMarks(
         row.id,
         state.activeCaption,

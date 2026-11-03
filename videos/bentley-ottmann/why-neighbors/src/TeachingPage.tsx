@@ -1,6 +1,7 @@
 import { colors, tints } from "../../colors.ts";
 import { createTeachingMathLines } from "../../../shared/ui/TeachingMathLines";
 import { MathLessonPage } from "../../../shared/ui/MathLessonPage";
+import { TeachingReferences } from "../../../shared/ui/TeachingReferences";
 import { MathText, Latex, colorMath } from "./MathText";
 import { pages, references, type Shot } from "./lesson";
 import { ProofDiagram } from "./ProofDiagram";
@@ -37,42 +38,31 @@ export function TeachingPage({
   const page = pages[shot.page];
   const current = page.steps[visibleStep - 1];
   const basis = page.basis.length ? (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "10px 32px",
-        width: 1660,
-      }}
-    >
-      {page.basis.map((id) => {
+    <TeachingReferences
+      activeColor={tints.active}
+      entries={page.basis.map((id) => {
         const source: Reference = references[id];
         const active = cueActive && current?.use?.includes(id);
-        return (
-          <div
-            key={id}
-            data-reference={id}
-            data-reference-active={active}
-            style={{ fontSize: 25, lineHeight: 1.6 }}
-          >
-            <span style={{ background: active ? tints.active : undefined }}>
-              <MathText colorize={false}>
-                {(source.number ? `(${source.number}) ` : "") +
-                  source.name +
-                  "："}
-              </MathText>
-            </span>
-            {source.math ? (
-              <Latex colorize={false}>
-                {colorMath(source.math, undefined, active ? current.focus : [])}
-              </Latex>
-            ) : (
-              <MathText>{source.text ?? ""}</MathText>
-            )}
-          </div>
-        );
+        return {
+          id,
+          active: Boolean(active),
+          label: (
+            <MathText colorize={false}>
+              {(source.number ? `(${source.number}) ` : "") +
+                source.name +
+                "："}
+            </MathText>
+          ),
+          content: source.math ? (
+            <Latex colorize={false}>
+              {colorMath(source.math, undefined, active ? current.focus : [])}
+            </Latex>
+          ) : (
+            <MathText>{source.text ?? ""}</MathText>
+          ),
+        };
       })}
-    </div>
+    />
   ) : undefined;
   return (
     <MathLessonPage
