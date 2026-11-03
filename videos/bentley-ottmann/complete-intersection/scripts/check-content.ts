@@ -12,7 +12,7 @@ const read = (name: string) =>
 const plainBytes = read("narration-text");
 assert.equal(
   createHash("sha256").update(plainBytes).digest("hex"),
-  "951f78cfa62fae95a97e15a4d67f26b86ed1392840ae9fb329c47b8b4f79dd97",
+  "d8662cd758df1e07baedfb876af0aaffc2f25043a3037b2341a1250f86a5cda8",
   "Pure text changed after independent freeze; return to text review",
 );
 const plain: Record<string, string> = JSON.parse(plainBytes);
@@ -31,6 +31,18 @@ for (const [index, row] of rows.entries()) {
     plain[row.id],
     `${row.id}: pronunciation changed frozen text`,
   );
+  assert.doesNotMatch(
+    document.text,
+    /德尔塔|欧米伽/,
+    `${row.id}: Greek names must use English pronunciation`,
+  );
+  for (const name of new Set(document.text.match(/\b(?:delta|omega)\b/g))) {
+    assert.equal(
+      document.ssml.split(`<lang xml:lang="en-US">${name}</lang>`).length - 1,
+      document.text.split(name).length - 1,
+      `${row.id}: ${name} must be spoken as a complete English name`,
+    );
+  }
   if (row.math)
     katex.renderToString(row.math, { throwOnError: true, strict: "error" });
   if (row.targets)
