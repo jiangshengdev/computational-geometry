@@ -40,7 +40,15 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 
 本次两页补图通过 lint／类型检查、内容检查及 ES25–27、ES34–36 的 173 个定向检查状态。另实际观察提示前、中、后与同页切换的九个生产帧，独立复核未发现数学含义、揭示或内容保留问题。补查 ES35 局部帧 94 发现比较提示穿过标签，已将提示移至图形侧边，并在同一生产帧复查遮挡消除；其余有效结果复用。这些抽查不等于连续播放或实际音画同步验收。既有音频、字幕和实测时长未改动，其检测绑定由内容检查重新核对，无新增语音服务请求。
 
-最终视频由用户导出。助手禁止渲染或导出视频，本阶段不提供导出命令。上集既有音频及待人工试听标记保持原样，不把它们当成本集素材或本集验收结果。
+最终视频由用户导出。助手禁止渲染或导出视频。上集既有音频及待人工试听标记保持原样，不把它们当成本集素材或本集验收结果。
+
+## 用户导出入口
+
+按[五阶段命令模板](../../../docs/agents/videos/operations.md#五阶段命令模板)执行。已接入共享的 `video:preflight`、`video:export` 和 `video:export-audio`；预检使用 `--decode` 完整解码正式音频并检查内容与布局，导出入口不依赖预检记录。先将已安装且匹配 Remotion 的 Chrome Headless Shell 路径设置为 `REMOTION_BROWSER_EXECUTABLE`，不得自动下载。
+
+PNG 入口使用 `ExactSweepDecisions`，按 2 倍比例输出 3840×2160、60 fps 到 `out/exact-sweep-decisions-frames/`。当前 54,350 帧，默认编号为 `element-00000.png` 至 `element-54349.png`。音轨入口从同一 composition 输出 `out/exact-sweep-decisions-audio.wav`，显式选择 48 kHz、16 bit PCM 并关闭视频硬件加速。两者均核验浏览器版本、动态分配独立端口且禁止覆盖。追加 `--dry-run` 仅检查参数，不生成帧或音轨。
+
+提供命令前须核验当前正式音频与评估响应绑定，分别报告三类程序标记；遗漏、插入、缺失或版本不匹配会阻断提供命令。发音标记和人工试听结论分开。PNG、无声 H.265、同时间线 WAV 仍须分别检查；合并使用 `../../shared/tools/mux-mov.ts` 复制两条流至新的 MOV，成片音画同步另行验收。
 
 ## 配音合成前准备
 

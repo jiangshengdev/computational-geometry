@@ -5,7 +5,7 @@ import katex from "katex";
 import { plannedDocuments } from "./planned-documents.ts";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { createAlignmentTools } from "../../../shared/speech/azure-alignment.ts";
-import { audioSha256 } from "../../../shared/speech/audio.ts";
+import { audioSha256, decodeAudio } from "../../../shared/speech/audio.ts";
 import { validateWords } from "../../../shared/speech/timing.ts";
 import { fileURLToPath } from "node:url";
 import { shots, pageList } from "../src/storyboard.ts";
@@ -141,6 +141,7 @@ for (const [index, row] of rows.entries()) {
     new URL(`../public/narration/${recording.audioFile}`, import.meta.url),
   );
   assert.equal(recording.audioSha256, audioSha256(path));
+  if (process.argv.includes("--decode")) decodeAudio(path);
   assert.equal(recording.fingerprint, requests[row.id].fingerprint);
   validateWords(recording);
   verifyAlignment(recording, path);

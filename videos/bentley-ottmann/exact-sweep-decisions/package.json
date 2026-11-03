@@ -41,7 +41,10 @@
     "video:plan-assessment": "node scripts/plan-assessment.ts",
     "video:assess-approved": "node scripts/assess-approved.ts",
     "video:reconcile-assessment": "node scripts/reconcile-assessment.ts",
-    "video:adopt-measured-audio": "node scripts/adopt-measured-audio.ts"
+    "video:adopt-measured-audio": "node scripts/adopt-measured-audio.ts",
+    "video:preflight": "node ../../shared/tools/preflight-cli.ts",
+    "video:export": "node scripts/export.ts",
+    "video:export-audio": "node scripts/export-audio.ts"
   },
   "allowScripts": {
     "esbuild": false
