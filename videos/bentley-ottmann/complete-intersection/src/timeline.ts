@@ -1,54 +1,94 @@
-import { shots } from "./storyboard.ts";
+import { shots, pages } from "./storyboard.ts";
+import plans from "./sentence-plan.json" with { type: "json" };
+import audioData from "./audio-timing.json" with { type: "json" };
+import captionData from "./captions.json" with { type: "json" };
+import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
+import {
+  captionAt,
+  type AudioTiming,
+  type Caption,
+} from "../../../shared/speech/timing.ts";
+
 export const fps = 60;
-/** Reading placeholders only. #323 replaces these with actual uncut WAV durations. */
-const readingFrames = (caption: string) =>
-  Math.max(3 * fps, Math.ceil((Array.from(caption).length / 4.2) * fps));
-let offset = 0;
-export const rows = shots.map((shot) => {
-  let cursor = fps / 2; // Complete teaching row before the first reading phrase.
-  const captions = shot.captions.map((text, index) => {
-    const start = cursor;
-    cursor += readingFrames(text);
+export const audioLeadFrames = fps / 2;
+export const timingKind = "measured-narration";
+export const audio = audioData as Record<string, AudioTiming>;
+const measuredCaptions = captionData as Record<string, Caption[]>;
+const shared = createShotTimeline({
+  shots: shots.map((shot) => ({
+    ...shot,
+    step: shot.visibleStep,
+    pauseAfter: shot.thinkAfter ?? 1,
+  })),
+  pages,
+  timing: audio,
+  captions: measuredCaptions,
+  fps,
+  audioLeadFrames,
+});
+
+export const rows = shared.timelineFor().map((shot) => {
+  const recording = audio[shot.id];
+  const sentences = plans[shot.id as keyof typeof plans];
+  let offset = 0;
+  const frames = (ms: number) => audioLeadFrames + Math.ceil((ms * fps) / 1000);
+  // Offsets locate reviewed semantic phrases; all times remain actual word times.
+  const interval = (from: number, to: number) => {
+    const words = recording.words.filter(
+      (word) =>
+        word.textOffset < to && word.textOffset + word.wordLength > from,
+    );
+    if (!words.length) throw Error(`${shot.id}: missing measured phrase`);
+    return {
+      start: frames(words[0].startMs),
+      end: frames(
+        words[words.length - 1].startMs + words[words.length - 1].durationMs,
+      ),
+    };
+  };
+  const captions = sentences.map((sentence, index) => {
+    const spoken = sentence.speech.join("");
+    const beginning = offset;
+    offset += spoken.length;
+    const { start, end } = interval(beginning, offset);
     const target = shot.targets?.[index] ?? null;
+    let cursor = 0;
     const gestures = Array.isArray(target)
       ? target.map((cue) => {
-          const at = text.indexOf(cue.phrase);
+          const at = spoken.indexOf(cue.phrase, cursor);
           if (at < 0)
-            throw Error(`${shot.id}: unknown semantic phrase ${cue.phrase}`);
+            throw Error(`${shot.id}: missing spoken cue ${cue.phrase}`);
+          cursor = at + cue.phrase.length;
           return {
             target: cue.target,
-            start: start + Math.floor((at / text.length) * (cursor - start)),
-            end: cursor,
+            ...interval(beginning + at, beginning + cursor),
           };
         })
       : target
-        ? [{ target, start, end: cursor }]
+        ? [{ target, start, end }]
         : [];
-    for (let i = 0; i < gestures.length - 1; i++) {
-      if (gestures[i].start >= gestures[i + 1].start)
-        throw Error(`${shot.id}: unordered semantic phrases`);
-      gestures[i].end = gestures[i + 1].start;
-    }
-    return { text, start, end: cursor, gestures };
+    for (let i = 0; i < gestures.length - 1; i++)
+      if (gestures[i].end > gestures[i + 1].start)
+        throw Error(`${shot.id}: measured gestures overlap`);
+    return { text: sentence.caption, start, end, gestures };
   });
-  const durationInFrames = cursor + (shot.thinkAfter ?? 1) * fps;
-  const row = {
+  if (offset !== recording.speech.length)
+    throw Error(`${shot.id}: unused spoken text`);
+  return {
     ...shot,
-    from: offset,
     captions,
-    readingFrames: cursor,
-    durationInFrames,
+    audioEndFrame: audioLeadFrames + shot.speechFrames,
     revealMs: 0,
     stages: [] as { ms: number }[],
   };
-  offset += durationInFrames;
-  return row;
 });
-export const durationInFrames = offset;
+export const durationInFrames = rows.reduce(
+  (sum, row) => sum + row.durationInFrames,
+  0,
+);
 export type TimelineRow = (typeof rows)[number];
 export function visualAt(row: TimelineRow, frame: number) {
   const phrase = row.captions.find((c) => frame >= c.start && frame < c.end);
-  const last = row.captions[row.captions.length - 1];
   const gesture = phrase?.gestures.find(
     (g) => frame >= g.start && frame < g.end,
   );
@@ -60,8 +100,12 @@ export function visualAt(row: TimelineRow, frame: number) {
   return {
     activeCaption: phrase ? row.captions.indexOf(phrase) : null,
     visibleStep: row.visibleStep,
-    thinking: frame >= row.readingFrames,
-    caption: (phrase ?? (frame >= last.end ? last : row.captions[0])).text,
+    thinking: frame >= row.audioEndFrame,
+    caption: captionAt(
+      measuredCaptions[row.id],
+      ((frame - audioLeadFrames) * 1000) / fps,
+      row.previousCaption,
+    ),
     target: gesture?.target ?? null,
     progress,
     reached: row.captions

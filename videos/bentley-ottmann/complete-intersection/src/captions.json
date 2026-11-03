@@ -1,0 +1,1383 @@
+{
+  "CI01": [
+    {
+      "text": "第一章留下了从任意端点求出完整交集的问题。",
+      "startMs": 70,
+      "endMs": 4210,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本集把已有结论接成一条判断路径。",
+      "startMs": 4549,
+      "endMs": 7468,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这条路径接受点、水平、竖直、端点接触与重叠。",
+      "startMs": 7969,
+      "endMs": 12569,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI02": [
+    {
+      "text": "取两份不同的原始输入，记作 S₁ 和 S₂。",
+      "startMs": 70,
+      "endMs": 3978,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一份的端点叫 A₁、B₁，第二份叫 A₂、B₂。",
+      "startMs": 4419,
+      "endMs": 8608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下标区分输入，端点的书写次序不表示方向。",
+      "startMs": 9059,
+      "endMs": 13177,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI03": [
+    {
+      "text": "本集针对给定的有理数坐标，计算保留精确值。",
+      "startMs": 70,
+      "endMs": 4118,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "分数表示参见《剪切为什么保持交集》末尾。",
+      "startMs": 4569,
+      "endMs": 8328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "输入之前若已丢失精度，这里的计算不能找回。",
+      "startMs": 8789,
+      "endMs": 12748,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI04": [
+    {
+      "text": "字母 x 和 y 分别表示横坐标和纵坐标。",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下标 Aᵢ 表示取端点 Aᵢ 的坐标，i 取一或二。",
+      "startMs": 3699,
+      "endMs": 9728,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个端点的横坐标相等、纵坐标也相等，才是同一点。",
+      "startMs": 10189,
+      "endMs": 14698,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "双向箭头表示左右条件互相等价。",
+      "startMs": 15129,
+      "endMs": 18169,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI05": [
+    {
+      "text": "分别检查两份输入，就得到这三类。",
+      "startMs": 70,
+      "endMs": 6238,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每份输入的端点要么相同，要么不同，因此没有遗漏。",
+      "startMs": 6669,
+      "endMs": 11668,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI06": [
+    {
+      "text": "《由两个端点写出直线方程》要求端点不同。",
+      "startMs": 70,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先辨认点输入，才有资格调用后面的直线公式。",
+      "startMs": 4049,
+      "endMs": 8057,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "重合端点不能确定唯一直线。",
+      "startMs": 8489,
+      "endMs": 10768,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI07": [
+    {
+      "text": "先走两份都是点的分支。",
+      "startMs": 70,
+      "endMs": 2160,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "此时只需比较这两个点的位置，不必解直线方程。",
+      "startMs": 2499,
+      "endMs": 6678,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI08": [
+    {
+      "text": "两个坐标分别相等，交集就是这个点。",
+      "startMs": 70,
+      "endMs": 3228,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只要有一个坐标不同，两份输入就没有公共点。",
+      "startMs": 3669,
+      "endMs": 7508,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI09": [
+    {
+      "text": "恰好一份为点时，把它叫作 T。",
+      "startMs": 70,
+      "endMs": 3438,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "另一份的两个不同端点叫作 E 和 F。",
+      "startMs": 3869,
+      "endMs": 7469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这些名字指向原有输入，没有增加新的输入。",
+      "startMs": 7939,
+      "endMs": 11888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "无论点输入原来排第一还是第二，都用同一套检查。",
+      "startMs": 12409,
+      "endMs": 16458,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI10": [
+    {
+      "text": "引用《方向与共线》中的判断式。",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本次只使用它等于零的分支，不重做方向证明。",
+      "startMs": 3199,
+      "endMs": 7048,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI11": [
+    {
+      "text": "先取从 E 到 F 的横坐标差，乘从 E 到 T 的纵坐标差。",
+      "startMs": 70,
+      "endMs": 4778,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再取从 E 到 F 的纵坐标差，乘从 E 到 T 的横坐标差。",
+      "startMs": 5319,
+      "endMs": 10018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用前一个乘积减去后一个乘积，整个差记作 \\omega_{EF}(T)。",
+      "startMs": 10559,
+      "endMs": 17437,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "括号里的 T 指正在检查的点。",
+      "startMs": 17869,
+      "endMs": 20148,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI12": [
+    {
+      "text": "在 E 与 F 不同的条件下，算式为零当且仅当三点共线。",
+      "startMs": 70,
+      "endMs": 4947,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不为零时，点不在这条直线上，交集为空。",
+      "startMs": 5419,
+      "endMs": 9638,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为零只通过了第一关，还没有通过线段范围检查。",
+      "startMs": 10079,
+      "endMs": 13888,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI13": [
+    {
+      "text": "以下范围检查引用《由两个端点写出直线方程》的结论。",
+      "startMs": 70,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先确认共线，再看端点的横坐标是否不同。",
+      "startMs": 4949,
+      "endMs": 8907,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI14": [
+    {
+      "text": "横坐标不同时，点的横坐标必须夹在两个端点之间。",
+      "startMs": 70,
+      "endMs": 4688,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "min 取较小值，max 取较大值，所以不用猜端点顺序。",
+      "startMs": 5119,
+      "endMs": 10518,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两端都包含，小于或等于会保留端点接触。",
+      "startMs": 10979,
+      "endMs": 14797,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI15": [
+    {
+      "text": "横坐标相同时，非点线段竖直，就改查纵坐标。",
+      "startMs": 70,
+      "endMs": 4918,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "共线与闭范围必须同时通过，交集才是点 T。",
+      "startMs": 5389,
+      "endMs": 9928,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "任意一关不通过，交集就是空。",
+      "startMs": 10419,
+      "endMs": 13118,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI16": [
+    {
+      "text": "用一个局部案例辨认两关的作用。",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "端点 E 是零、零，端点 F 是四、零。",
+      "startMs": 2599,
+      "endMs": 8808,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把这次待查点叫作 T₁，它是二、一，它不在这条水平直线上。",
+      "startMs": 9239,
+      "endMs": 15858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "即使横坐标在范围内，也要在共线这一关判空。",
+      "startMs": 16299,
+      "endMs": 20198,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI17": [
+    {
+      "text": "把第二次待查点叫作 T₂，它是五、零，它在同一条直线上。",
+      "startMs": 70,
+      "endMs": 6448,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但横坐标五超过端点范围，共线仍不足以留下它。",
+      "startMs": 6889,
+      "endMs": 11158,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI18": [
+    {
+      "text": "把第三次待查点叫作 T₃，它是四、零，它恰好就是端点 F。",
+      "startMs": 70,
+      "endMs": 7098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "共线和闭范围都通过，所以交集是这个点。",
+      "startMs": 7539,
+      "endMs": 11078,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这些案例说明每关的作用，一般判定仍依据前面的结论。",
+      "startMs": 11529,
+      "endMs": 16147,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI19": [
+    {
+      "text": "现在进入两份都不是点的分支。",
+      "startMs": 70,
+      "endMs": 2500,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个端点分别不同，才可以写出两条所在直线。",
+      "startMs": 2849,
+      "endMs": 6848,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI20": [
+    {
+      "text": "沿用《由两个端点写出直线方程》的系数取法。",
+      "startMs": 70,
+      "endMs": 3740,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "纵坐标用 Bᵢ 减 Aᵢ，所得的差叫 aᵢ。",
+      "startMs": 4099,
+      "endMs": 9677,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标反过来用 Aᵢ 减 Bᵢ，所得的差叫 bᵢ。",
+      "startMs": 10139,
+      "endMs": 16127,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI21": [
+    {
+      "text": "用 aᵢ 乘端点 Aᵢ 的横坐标，再加 bᵢ 乘它的纵坐标。",
+      "startMs": 70,
+      "endMs": 4908,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所得的和叫 cᵢ，便得到画面中的直线方程。",
+      "startMs": 5369,
+      "endMs": 9908,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每组系数由端点固定下来，x、y 才是线上点的坐标。",
+      "startMs": 10359,
+      "endMs": 15638,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在每一组中，系数 aᵢ 与系数 bᵢ 不会同时为零；本集直接使用原坐标，不作缩放。",
+      "startMs": 16099,
+      "endMs": 24048,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI22": [
+    {
+      "text": "先算 a₁ 与 b₂ 的乘积，再减去 a₂ 与 b₁ 的乘积。",
+      "startMs": 70,
+      "endMs": 4860,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把所得的差记作 Δ。",
+      "startMs": 5219,
+      "endMs": 7099,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI23": [
+    {
+      "text": "《整数缩放与交点分母》的消元部分给出这个分类。",
+      "startMs": 70,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Δ不为零，两条直线有唯一交点。",
+      "startMs": 4299,
+      "endMs": 7757,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "Δ等于零，两条直线平行或重合，不能除以它。",
+      "startMs": 8189,
+      "endMs": 12928,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI24": [
+    {
+      "text": "这个分类和求交公式只要求系数对应合法直线。",
+      "startMs": 70,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "旧专题的整数条件用于估计分母上界，本集不使用那个界。",
+      "startMs": 4349,
+      "endMs": 9258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "有理数输入也可以沿这条路径继续判断。",
+      "startMs": 9739,
+      "endMs": 12939,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI25": [
+    {
+      "text": "确认Δ不为零后，把唯一交点叫作 P。",
+      "startMs": 70,
+      "endMs": 4288,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它的横坐标、纵坐标分别记作 x_P、y_P。",
+      "startMs": 4719,
+      "endMs": 9479,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI26": [
+    {
+      "text": "横坐标直接使用消元专题的公式。",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先算 c₁ 与 b₂ 的乘积，再减去 c₂ 与 b₁ 的乘积。",
+      "startMs": 2999,
+      "endMs": 7950,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把整个差除以非零的Δ，得到横坐标。",
+      "startMs": 8289,
+      "endMs": 12088,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI27": [
+    {
+      "text": "纵坐标的分子先算 a₁ 与 c₂ 的乘积。",
+      "startMs": 70,
+      "endMs": 3490,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再减去 a₂ 与 c₁ 的乘积，整个差除以Δ。",
+      "startMs": 3849,
+      "endMs": 8018,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公式保证 P 在两条直线上，还没有保证在线段范围内。",
+      "startMs": 8489,
+      "endMs": 13008,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI28": [
+    {
+      "text": "仍用第二节的范围检查，只是待查点换成算出的 P。",
+      "startMs": 70,
+      "endMs": 4538,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每份不竖直的输入查横坐标，竖直的输入查纵坐标。",
+      "startMs": 4969,
+      "endMs": 9527,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公式已经保证共线，但两份闭范围都必须通过。",
+      "startMs": 10009,
+      "endMs": 13948,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI29": [
+    {
+      "text": "如果两条线段有公共点，它也必须在两条所在直线上。",
+      "startMs": 70,
+      "endMs": 4348,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条直线只有 P 这一个公共点。",
+      "startMs": 4819,
+      "endMs": 7419,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "若某条线段已排除 P，就不可能在别处找到另一个公共点。",
+      "startMs": 7889,
+      "endMs": 12817,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI30": [
+    {
+      "text": "反过来，两份范围都通过，P 就同时属于两条线段。",
+      "startMs": 70,
+      "endMs": 5017,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此交集恰好是它；范围包含端点，所以接触也保留。",
+      "startMs": 5489,
+      "endMs": 10048,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI31": [
+    {
+      "text": "用水平和竖直输入核对这条路径。",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一份从零、零到四、零。",
+      "startMs": 3199,
+      "endMs": 8079,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二份从二、负一到二、一。",
+      "startMs": 8569,
+      "endMs": 13369,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI32": [
+    {
+      "text": "第一份的 a₁ 为零，系数 b₁ 为负四，系数 c₁ 为零。",
+      "startMs": 70,
+      "endMs": 5218,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二份的 a₂ 为二，系数 b₂ 为零，系数 c₂ 为四。",
+      "startMs": 5689,
+      "endMs": 10768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "竖直输入使自己的 b 系数为零，却不一定使Δ为零。",
+      "startMs": 11199,
+      "endMs": 15788,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI33": [
+    {
+      "text": "两乘积相减得到Δ等于八，可以用唯一交点公式。",
+      "startMs": 70,
+      "endMs": 4378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公式给出点二、零。",
+      "startMs": 4869,
+      "endMs": 7869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标二在零到四之间，纵坐标零在负一到一之间。",
+      "startMs": 8339,
+      "endMs": 12998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两份范围都通过，所以交集是这个点。",
+      "startMs": 13429,
+      "endMs": 16658,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI34": [
+    {
+      "text": "保留第一份水平输入，另取横坐标为五的竖直输入。",
+      "startMs": 70,
+      "endMs": 4427,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "竖直输入的纵坐标仍从负一到一。",
+      "startMs": 4919,
+      "endMs": 7880,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI35": [
+    {
+      "text": "两条所在直线的唯一交点是五、零。",
+      "startMs": 70,
+      "endMs": 4310,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它在竖直输入的范围内，却超过第一份的右端点。",
+      "startMs": 4699,
+      "endMs": 8628,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一份不通过就必须判空，不能只检查其中一份。",
+      "startMs": 9089,
+      "endMs": 13108,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI36": [
+    {
+      "text": "接着处理Δ等于零的分支。",
+      "startMs": 70,
+      "endMs": 2410,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不再使用唯一交点分式，改为区分平行与共线。",
+      "startMs": 2749,
+      "endMs": 6878,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI37": [
+    {
+      "text": "取第二份输入的原端点 A₂，代入第一条直线。",
+      "startMs": 70,
+      "endMs": 3858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先算 a₁ 乘它的横坐标，再加 b₁ 乘它的纵坐标。",
+      "startMs": 4319,
+      "endMs": 8718,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查所得的和是否等于 c₁。",
+      "startMs": 9159,
+      "endMs": 12319,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI38": [
+    {
+      "text": "Δ为零已把关系限定为平行或重合。",
+      "startMs": 70,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "端点本来在第二条线上，若也在第一条上，就排除了不同平行线。",
+      "startMs": 3849,
+      "endMs": 9318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等式成立便共线，不成立则平行，线段交集为空。",
+      "startMs": 9809,
+      "endMs": 15048,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI39": [
+    {
+      "text": "这里不能丢掉Δ等于零的前提。",
+      "startMs": 70,
+      "endMs": 2650,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条有唯一交点的直线也可能共享一个端点。",
+      "startMs": 2949,
+      "endMs": 6268,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此仅凭一个点在线上，不能断定两条直线重合。",
+      "startMs": 6769,
+      "endMs": 11108,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI40": [
+    {
+      "text": "看两条水平输入，第一份纵坐标为零。",
+      "startMs": 70,
+      "endMs": 3508,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二份纵坐标为一，两份横坐标范围都是零到四。",
+      "startMs": 3969,
+      "endMs": 8568,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI41": [
+    {
+      "text": "两组 a 系数都是零，所以Δ为零。",
+      "startMs": 70,
+      "endMs": 3378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "端点零、一不在第一条直线上，代入等式不成立。",
+      "startMs": 3859,
+      "endMs": 9588,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两线不同且平行，交集为空。",
+      "startMs": 10029,
+      "endMs": 13258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "横坐标范围相同也没有用，必须先确认共线。",
+      "startMs": 13719,
+      "endMs": 17518,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI42": [
+    {
+      "text": "现在两份都有长度，并且已经确认所在直线相同。",
+      "startMs": 70,
+      "endMs": 4267,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "才可以引用第一章完整区间的端点选取结论。",
+      "startMs": 4719,
+      "endMs": 8359,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI43": [
+    {
+      "text": "共同直线不竖直时按横坐标排序，竖直时按纵坐标排序。",
+      "startMs": 70,
+      "endMs": 5087,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每条输入先认出较前端点与较后端点。",
+      "startMs": 5519,
+      "endMs": 8918,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "沿同一条直线，所选坐标相等就表示同一点。",
+      "startMs": 9389,
+      "endMs": 13478,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI44": [
+    {
+      "text": "在两份较前端点中，选更靠后的一个，叫作 L。",
+      "startMs": 70,
+      "endMs": 5578,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个边界来自原端点，不需要再解零分母方程。",
+      "startMs": 6039,
+      "endMs": 10247,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI45": [
+    {
+      "text": "在两份较后端点中，选更靠前的一个，叫作 R。",
+      "startMs": 70,
+      "endMs": 5348,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一章已证明完整公共部分受这两个边界限制。",
+      "startMs": 5839,
+      "endMs": 9439,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本集新增的是先确认共线，再把这项结论接入判断路径。",
+      "startMs": 9909,
+      "endMs": 15048,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI46": [
+    {
+      "text": "局部案例用两份水平输入，它们都在横轴上。",
+      "startMs": 110,
+      "endMs": 3508,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一份从零到四，第二份从二到六，纵坐标都为零。",
+      "startMs": 3969,
+      "endMs": 8988,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI47": [
+    {
+      "text": "先看第一份较前的端点零、零。",
+      "startMs": 70,
+      "endMs": 4528,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再看第二份较前的端点二、零。",
+      "startMs": 4969,
+      "endMs": 9497,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "较靠后的是二、零，选它作为 L。",
+      "startMs": 9959,
+      "endMs": 15048,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI48": [
+    {
+      "text": "再看第一份较后的端点四、零。",
+      "startMs": 70,
+      "endMs": 4718,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再看第二份较后的端点六、零。",
+      "startMs": 5169,
+      "endMs": 9908,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "较靠前的是四、零，选它作为 R。",
+      "startMs": 10359,
+      "endMs": 15548,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI49": [
+    {
+      "text": "L 在 R 前面，所以保留从二、零到四、零的完整闭区间。",
+      "startMs": 70,
+      "endMs": 8008,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两个端点用来描述整段，中间的点也全部保留。",
+      "startMs": 8469,
+      "endMs": 12358,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI50": [
+    {
+      "text": "一般地，若 L 在 R 后面，交集为空。",
+      "startMs": 70,
+      "endMs": 4608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "公共点不可能既不早于 L，又不晚于 R。",
+      "startMs": 5039,
+      "endMs": 9708,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI51": [
+    {
+      "text": "若 L 与 R 是同一点，闭范围仍保留这个共同端点。",
+      "startMs": 110,
+      "endMs": 4767,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "此时交集是点 L，不是非零长度区间。",
+      "startMs": 5339,
+      "endMs": 9448,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI52": [
+    {
+      "text": "L 在 R 前面时，交集包含两端和中间的全部点。",
+      "startMs": 70,
+      "endMs": 4938,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这正是第一章已经证明的完整区间结论。",
+      "startMs": 5369,
+      "endMs": 8449,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前、同点、后三种关系都已得到确定结果。",
+      "startMs": 8939,
+      "endMs": 12939,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI53": [
+    {
+      "text": "再看竖直输入，横坐标都为二。",
+      "startMs": 70,
+      "endMs": 2858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一份从二、三写到二、零，端点顺序向下。",
+      "startMs": 3319,
+      "endMs": 10068,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二份从二、一写到二、三。",
+      "startMs": 10559,
+      "endMs": 15639,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里按纵坐标从小到大比较，不按书写顺序。",
+      "startMs": 16129,
+      "endMs": 19918,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI54": [
+    {
+      "text": "较前端点的纵坐标是零和一，选更靠后的一，得到 L。",
+      "startMs": 70,
+      "endMs": 5998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每份输入中靠后的端点，纵坐标都是三，得到同一个位置 R。",
+      "startMs": 6439,
+      "endMs": 12757,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此完整交集从二、一到二、三，包含两端。",
+      "startMs": 13199,
+      "endMs": 19958,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI55": [
+    {
+      "text": "完全重合时会选出整条共同线段，反写端点不改变结果。",
+      "startMs": 70,
+      "endMs": 4987,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一章的结果契约继续有效：其他输入穿过，不拆碎这一对的区间。",
+      "startMs": 5469,
+      "endMs": 11428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本集只求两份输入的完整交集，没有展开复杂输入的扫描机制。",
+      "startMs": 11879,
+      "endMs": 17158,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI56": [
+    {
+      "text": "现在核对整条路径为什么没有遗漏。",
+      "startMs": 70,
+      "endMs": 2740,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "每份输入的端点要么相同，要么不同。",
+      "startMs": 3049,
+      "endMs": 6578,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此两点、一点一段、两段这三类覆盖全部输入。",
+      "startMs": 7039,
+      "endMs": 11199,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI57": [
+    {
+      "text": "两份非点时，Δ要么为零，要么不为零。",
+      "startMs": 70,
+      "endMs": 4288,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不为零，唯一候选点再接受两份闭范围检查。",
+      "startMs": 4739,
+      "endMs": 9048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为零，代入等式要么成立，要么不成立。",
+      "startMs": 9479,
+      "endMs": 13095,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI58": [
+    {
+      "text": "共线后，L 与 R 的顺序只有前、同点、后三种。",
+      "startMs": 70,
+      "endMs": 5308,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以每条路径最终都落到空、点或完整非零长度区间。",
+      "startMs": 5769,
+      "endMs": 10529,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有任何情况被留在一个除以零的分式里。",
+      "startMs": 10989,
+      "endMs": 14050,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI59": [
+    {
+      "text": "把已经讲过的分支汇到同一张图。",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两份都是点就比较位置；恰好一份为点就查共线和闭范围。",
+      "startMs": 3149,
+      "endMs": 7998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "条件满足留下那个点，否则为空。",
+      "startMs": 8439,
+      "endMs": 11768,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI60": [
+    {
+      "text": "两份非点时看Δ。",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "非零就求候选点，检查两份闭范围。",
+      "startMs": 2349,
+      "endMs": 5808,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为零则用端点代入，不成立判空，成立进入共线分支。",
+      "startMs": 6239,
+      "endMs": 11440,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI61": [
+    {
+      "text": "共线时从原端点选出 L 和 R 两个边界点，比较顺序得到三个出口。",
+      "startMs": 70,
+      "endMs": 6508,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在可以从任意四个给定端点，沿图走到完整交集。",
+      "startMs": 6969,
+      "endMs": 11470,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "请沿一条路径检查，每个公式前是否都已满足条件。",
+      "startMs": 11809,
+      "endMs": 16338,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI62": [
+    {
+      "text": "非空结果继续绑定开场选出的原始无序输入对。",
+      "startMs": 70,
+      "endMs": 4030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "交换两份输入不会产生新的一对，位置相同也不取消输入身份。",
+      "startMs": 4399,
+      "endMs": 9508,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "空交集不产生结果记录。",
+      "startMs": 9989,
+      "endMs": 11869,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI63": [
+    {
+      "text": "这张图是一种组织数学判断的教学途径。",
+      "startMs": 70,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它不冒充实际算法函数的调用次序，也没有讲完复杂扫描。",
+      "startMs": 3499,
+      "endMs": 8498,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "CI64": [
+    {
+      "text": "有了完整交集，下集再看它如何支撑扫描中的判断。",
+      "startMs": 70,
+      "endMs": 4798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "比较、登记和顺序维护还必须沿用同一份精确值。",
+      "startMs": 5269,
+      "endMs": 9188,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

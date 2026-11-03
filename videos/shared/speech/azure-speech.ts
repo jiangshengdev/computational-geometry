@@ -26,10 +26,12 @@ export function createSpeechTools<Fingerprint extends boolean>(
     voice,
     commas,
     fingerprint,
+    configureSpeechConfig,
   }: {
     voice: string;
     commas: "segment" | "document" | "allow";
     fingerprint: Fingerprint;
+    configureSpeechConfig?: (config: SpeechSdk.SpeechConfig) => void;
   },
 ) {
   function buildSpeechDocument(input: unknown, context = "speech") {
@@ -161,6 +163,7 @@ export function createSpeechTools<Fingerprint extends boolean>(
     url.protocol = "wss:";
     url.pathname = "/cognitiveservices/websocket/v1";
     const config = sdk.SpeechConfig.fromEndpoint(url, key);
+    configureSpeechConfig?.(config);
     config.speechSynthesisVoiceName = voice;
     config.speechSynthesisOutputFormat =
       sdk.SpeechSynthesisOutputFormat.Riff48Khz16BitMonoPcm;

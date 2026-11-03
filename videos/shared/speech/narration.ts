@@ -25,6 +25,7 @@ import {
   phraseTime,
   type AudioTiming,
   type CaptionPlan,
+  validateWords,
 } from "./timing.ts";
 
 export async function runNarration({
@@ -38,6 +39,7 @@ export async function runNarration({
   requireTimingFile,
   validateClauses,
   concurrency = 1,
+  stageOnly = false,
 }: {
   root: string;
   shots: {
@@ -58,6 +60,7 @@ export async function runNarration({
   requireTimingFile: boolean;
   validateClauses: boolean;
   concurrency?: number;
+  stageOnly?: boolean;
 }) {
   if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 4)
     throw Error("Narration concurrency must be an integer from 1 to 4");
@@ -141,6 +144,7 @@ export async function runNarration({
     )
       throw Error("Resume requires a shear-speech temporary directory");
     let published = false;
+    let staged = false;
     try {
       const produceShot = async (shot: (typeof selected)[number]) => {
         const path = join(temporary, `${shot.id}.wav`);
@@ -179,7 +183,14 @@ export async function runNarration({
           JSON.stringify(timing[shot.id], null, 2) + "\n",
         );
         verifyAlignment(timing[shot.id], path);
+        let invalidWords = false;
+        try {
+          validateWords(timing[shot.id]);
+        } catch {
+          invalidWords = true;
+        }
         if (
+          invalidWords ||
           words.some(
             (word) =>
               (word.durationMs === 0 && /[\p{L}\p{N}]/u.test(word.text)) ||
@@ -215,6 +226,11 @@ export async function runNarration({
         const failed = results.find((result) => result.status === "rejected");
         if (failed?.status === "rejected") throw failed.reason;
       }
+      if (stageOnly) {
+        staged = true;
+        console.log(`Synthesis staged without publishing: ${temporary}`);
+        return;
+      }
       // Publish only after every requested shot passes decoding and duration checks.
       // captions.ts rebuilds all cues, so validate untouched shots before any copy.
       for (const shot of shots)
@@ -234,7 +250,7 @@ export async function runNarration({
       if (published) rmSync(temporary, { recursive: true });
       else
         console.error(
-          `Synthesis stopped; original assets retained. Diagnostics: ${temporary}`,
+          `${staged ? "Synthesis staged" : "Synthesis stopped"}; original assets retained. Diagnostics: ${temporary}`,
         );
     }
   }

@@ -19,13 +19,16 @@ export type Page = {
   title: string;
   source: string;
   diagram?: string;
+  dense?: boolean;
+  holdAfterSeconds: number;
   steps: Step[];
   lines: Step[];
   groups: TeachingGroup[];
 };
-type PageInput = Omit<Page, "lines" | "groups">;
+type PageInput = Omit<Page, "lines" | "groups" | "holdAfterSeconds">;
 const page = (input: PageInput): Page => ({
   ...input,
+  holdAfterSeconds: 3,
   lines: input.steps,
   groups: [left(input.steps.length)],
 });
@@ -172,6 +175,7 @@ export const pageList: Page[] = [
   }),
   page({
     id: "collinear-test",
+    dense: true,
     section: 2,
     title: "点归属的第一关：共线",
     source: "第二节：方向与共线结论",
@@ -213,6 +217,7 @@ export const pageList: Page[] = [
   }),
   page({
     id: "range",
+    dense: true,
     section: 2,
     title: "点归属的第二关：闭范围",
     source: "第二节：线段范围结论",
@@ -309,6 +314,7 @@ export const pageList: Page[] = [
   }),
   page({
     id: "coefficients",
+    dense: true,
     section: 3,
     title: "第三节：两条直线是什么关系",
     source: "第三节：端点确定系数的结论",
@@ -343,7 +349,7 @@ export const pageList: Page[] = [
           "用 aᵢ 乘端点 Aᵢ 的横坐标，再加 bᵢ 乘它的纵坐标。",
           "所得的和叫 cᵢ，便得到画面中的直线方程。",
           "每组系数由端点固定下来，x、y 才是线上点的坐标。",
-          "每组 aᵢ、bᵢ 不会同时为零；本集直接使用原坐标，不作缩放。",
+          "在每一组中，系数 aᵢ 与系数 bᵢ 不会同时为零；本集直接使用原坐标，不作缩放。",
         ],
       },
     ],
@@ -390,6 +396,7 @@ export const pageList: Page[] = [
   }),
   page({
     id: "candidate",
+    dense: true,
     section: 3,
     title: "分母非零：先得到候选点",
     source: "第三节：分母不为零",
@@ -505,8 +512,8 @@ export const pageList: Page[] = [
         first: "案例系数",
         action: "将两组系数对应到输入",
         captions: [
-          "第一份的 a₁ 为零，b₁ 为负四，c₁ 为零。",
-          "第二份的 a₂ 为二，b₂ 为零，c₂ 为四。",
+          "第一份的 a₁ 为零，系数 b₁ 为负四，系数 c₁ 为零。",
+          "第二份的 a₂ 为二，系数 b₂ 为零，系数 c₂ 为四。",
           "竖直输入使自己的 b 系数为零，却不一定使Δ为零。",
         ],
         targets: ["s1", "s2", null],
@@ -560,6 +567,7 @@ export const pageList: Page[] = [
   }),
   page({
     id: "zero-delta",
+    dense: true,
     section: 3,
     title: "分母为零：先停止除法",
     source: "第三节：分母等于零",
@@ -614,7 +622,7 @@ export const pageList: Page[] = [
         action:
           "保留 Δ=0 的两种关系；下方新增 Δ≠0 共享端点反例，明确不能丢掉前提",
         captions: [
-          "这里不能省略Δ等于零的前提。",
+          "这里不能丢掉Δ等于零的前提。",
           "两条有唯一交点的直线也可能共享一个端点。",
           "因此仅凭一个点在线上，不能断定两条直线重合。",
         ],
@@ -801,7 +809,7 @@ export const pageList: Page[] = [
         first: "正序边界结果",
         action: "保留前两行，增加正序行；描亮含两端的完整闭区间，不重做证明",
         captions: [
-          "若 L 在 R 前面，就得到两端及中间全部点。",
+          "L 在 R 前面时，交集包含两端和中间的全部点。",
           "这正是第一章已经证明的完整区间结论。",
           "前、同点、后三种关系都已得到确定结果。",
         ],
@@ -836,7 +844,7 @@ export const pageList: Page[] = [
         action: "比较两个较前候选，再比较较后候选，最后描亮整段",
         captions: [
           "较前端点的纵坐标是零和一，选更靠后的一，得到 L。",
-          "较后端点的纵坐标都是三，得到同一个位置 R。",
+          "每份输入中靠后的端点，纵坐标都是三，得到同一个位置 R。",
           "因此完整交集从二、一到二、三，包含两端。",
         ],
         targets: [
@@ -908,6 +916,7 @@ export const pageList: Page[] = [
   }),
   page({
     id: "whole-path",
+    dense: true,
     section: 5,
     title: "完整判断路径",
     source: "第五节：完整路径表",
@@ -941,7 +950,7 @@ export const pageList: Page[] = [
         first: "完整路径图最后出口",
         action: "最后补齐边界分支；留观察窗口，保持图与字幕",
         captions: [
-          "共线时从原端点选出 L、R，比较顺序得到三个出口。",
+          "共线时从原端点选出 L 和 R 两个边界点，比较顺序得到三个出口。",
           "现在可以从任意四个给定端点，沿图走到完整交集。",
           "请沿一条路径检查，每个公式前是否都已满足条件。",
         ],

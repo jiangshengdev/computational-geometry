@@ -33,7 +33,13 @@
     "upgrade": "remotion upgrade",
     "lint": "eslint src scripts && tsc",
     "video:check-layout": "node scripts/check-layout.ts",
-    "video:check-content": "node scripts/check-content.ts"
+    "video:check-content": "node scripts/check-content.ts",
+    "video:sentence-pauses": "node scripts/sentence-pauses.ts",
+    "video:plan-narration": "node scripts/plan-narration.ts",
+    "video:narration": "node scripts/narration.ts",
+    "video:captions": "node scripts/captions.ts",
+    "video:audit-narration": "node scripts/audit-narration.ts",
+    "video:check-staging": "node scripts/check-staging.ts"
   },
   "allowScripts": {
     "esbuild": false

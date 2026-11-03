@@ -3,7 +3,7 @@ import {
   checkPageBounds,
   checkDiagramLabels,
 } from "../../../shared/checks/dom";
-import { rows, visualAt, fps } from "./timeline";
+import { rows, visualAt, fps, audioLeadFrames } from "./timeline";
 import { TeachingPage } from "./TeachingPage";
 import type { TimelineRow } from "./timeline";
 function SceneAtFrame({ row, frame }: { row: TimelineRow; frame: number }) {
@@ -13,15 +13,15 @@ export const LayoutCheck = createShotLayoutCheck({
   rows,
   visualAt,
   fps,
-  audioLeadFrames: 0,
+  audioLeadFrames,
   SceneAtFrame,
   captions: Object.fromEntries(
     rows.map((r) => [
       r.id,
       r.captions.map((c) => ({
         text: c.text,
-        startMs: (c.start / fps) * 1000,
-        endMs: (c.end / fps) * 1000,
+        startMs: ((c.start - audioLeadFrames) / fps) * 1000,
+        endMs: ((c.end - audioLeadFrames) / fps) * 1000,
         timestampMs: null,
         confidence: null,
       })),
