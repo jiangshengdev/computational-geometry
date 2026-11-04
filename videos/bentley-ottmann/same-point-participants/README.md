@@ -57,7 +57,7 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 | 对象色及局部重点   | 显式 `objectMarks`、`activeMarks`；字幕与标题中性                                                      | SP02 条件切换、SP08 A→B→P、SP22–SP24 角色色                                       |
 | 图示语义提示       | `DecisionDiagram` 的共享 `AttentionMarks`、`point`、`stroke` → `ParticipantDiagram`                    | SP04 描亮、SP08 身份到交点、SP37 两路合并、SP41 六对指向同一 P、SP53 三对身份切换 |
 | 依据静态保留       | `TeachingReferences`，`active:false`                                                                   | SP27 介绍对象、SP29 核对条件，SP33 才显示第二章夹层结论；不重演两次变号反证       |
-| 字幕短句与静默保留 | 共享 `validateCaptionClauses`、`groupCaptionClauses`；本阶段没有词时间                                 | 短句切换、同页步骤间保留末条、跨页清空旧字幕                                      |
+| 字幕短句与静默保留 | 共享 `validateCaptionClauses`、`timedCaption` 与 `captionAt`；绑定真实词时间                                 | 短句切换、同页步骤间保留末条、跨页清空旧字幕                                      |
 | 未讲内容与思考     | 未来行预留空间但不可见；合并后才出现完整名单                                                           | SP27–SP33 不预设 W 的边界高度；SP61 思考窗不显示 SP62                             |
 
 数值图横纵单位相同，坐标轴正方向有箭头。点输入用同位置、同尺度分图区分身份，菱形不表示面积。一般夹层图仅表示顺序，不编造新坐标。防重复对照及问题核销以 #335 的当前记录为准；技术检查不替代新旧材料的教学内容对照。

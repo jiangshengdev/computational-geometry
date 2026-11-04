@@ -704,5 +704,23 @@
     "oldSP41": "uncertain",
     "oldSP58": "started",
     "manifestUnchanged": true
+  },
+  "finalCodeReview": {
+    "base": "7c66830f047f39c54cc2ae1fe3673134c0d9aaf2",
+    "reviewedCommit": "909a1d5e7626fc106158813870fdb98ebc172b37",
+    "standards": {
+      "hardViolations": 0,
+      "materialSmells": 0
+    },
+    "spec": {
+      "implementationDefects": 0,
+      "scopeCreep": 0,
+      "partialRequirements": [
+        "visible continuous playback synchronization",
+        "final-video acceptance"
+      ],
+      "staleReadmeStatement": "corrected after review"
+    },
+    "prApprovalPerformed": false
   }
 }
