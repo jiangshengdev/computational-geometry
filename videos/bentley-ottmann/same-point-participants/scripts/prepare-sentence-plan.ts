@@ -2,8 +2,33 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { format } from "prettier";
 import { shots } from "../src/storyboard.ts";
-import { buildSentencePlan } from "../../../shared/speech/sentence-plan-tools.ts";
 import type { SentencePlan } from "../../../shared/speech/sentence-pauses.ts";
+
+// Project-specific mapping: reference-project sources retain their own owner.
+// Existing shared sentence-pauses.ts remains the authority for pause validation.
+function buildSentencePlan(
+  caption: string,
+  text: string,
+  counts: readonly number[],
+  context: string,
+): SentencePlan {
+  const sentences = caption.match(/[^。？！]+[。？！]/g) ?? [];
+  const phrases = text.match(/[^。？！]+[。？！]/g) ?? [];
+  if (
+    sentences.join("") !== caption ||
+    phrases.join("") !== text ||
+    sentences.length !== counts.length ||
+    counts.some((count) => !Number.isInteger(count) || count < 1) ||
+    counts.reduce((sum, count) => sum + count, 0) !== phrases.length
+  )
+    throw Error(`${context}: semantic mapping no longer matches source`);
+  let cursor = 0;
+  return sentences.map((sentence, index) => {
+    const speech = phrases.slice(cursor, cursor + counts[index]);
+    cursor += counts[index];
+    return { caption: sentence, speech };
+  });
+}
 
 // Reviewed spoken-phrase counts for each ORIGINAL subtitle sentence.
 // Commas, colons and semicolons remain inside that sentence. Stable IDs exclude

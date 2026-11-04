@@ -5,31 +5,6 @@ import {
   type SentencePlan,
 } from "./sentence-pauses.ts";
 
-/** Counts are authored by sentence meaning; punctuation only locates reviewed units. */
-export function buildSentencePlan(
-  caption: string,
-  text: string,
-  phraseCounts: readonly number[],
-  context: string,
-): SentencePlan {
-  const sentences = caption.match(/[^。？！]+[。？！]/g) ?? [];
-  const phrases = text.match(/[^。？！]+[。？！]/g) ?? [];
-  if (
-    sentences.join("") !== caption ||
-    phrases.join("") !== text ||
-    sentences.length !== phraseCounts.length ||
-    phraseCounts.some((count) => !Number.isInteger(count) || count < 1) ||
-    phraseCounts.reduce((sum, count) => sum + count, 0) !== phrases.length
-  )
-    throw Error(`${context}: semantic mapping no longer matches source`);
-  let cursor = 0;
-  return sentences.map((sentence, index) => {
-    const speech = phrases.slice(cursor, cursor + phraseCounts[index]);
-    cursor += phraseCounts[index];
-    return { caption: sentence, speech };
-  });
-}
-
 export function createSentencePlanTools({
   shots,
   plans,

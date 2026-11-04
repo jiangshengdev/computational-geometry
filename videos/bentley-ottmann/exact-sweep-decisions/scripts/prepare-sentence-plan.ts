@@ -3,7 +3,6 @@ import { createHash } from "node:crypto";
 import { format } from "prettier";
 import { shots } from "../src/storyboard.ts";
 import type { SentencePlan } from "../../../shared/speech/sentence-pauses.ts";
-import { buildSentencePlan } from "../../../shared/speech/sentence-plan-tools.ts";
 
 // Authored semantic correspondence, not a rule inferred from synthesized periods.
 // Each number says how many frozen spoken phrases belong to that ORIGINAL
@@ -76,12 +75,24 @@ const plans: Record<string, SentencePlan> = {};
 if (phraseCounts.length !== shots.length)
   throw Error("Missing authored correspondence");
 for (const [index, shot] of shots.entries()) {
-  plans[shot.id] = buildSentencePlan(
-    shot.captions.join(""),
-    narration[shot.id],
-    phraseCounts[index],
-    shot.id,
-  );
+  const caption = shot.captions.join("");
+  const sentences = caption.match(/[^。？！]+[。？！]/g) ?? [];
+  const text = narration[shot.id];
+  const phrases = text.match(/[^。？！]+[。？！]/g) ?? [];
+  const counts = phraseCounts[index];
+  if (
+    sentences.join("") !== caption ||
+    phrases.join("") !== text ||
+    sentences.length !== counts.length ||
+    counts.reduce((sum, count) => sum + count, 0) !== phrases.length
+  )
+    throw Error(`${shot.id}: semantic mapping no longer matches source`);
+  let cursor = 0;
+  plans[shot.id] = sentences.map((sentence, i) => {
+    const speech = phrases.slice(cursor, cursor + counts[i]);
+    cursor += counts[i];
+    return { caption: sentence, speech };
+  });
 }
 const output = await format(JSON.stringify(plans), {
   parser: "json",
