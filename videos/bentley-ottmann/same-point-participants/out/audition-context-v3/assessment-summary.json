@@ -1,0 +1,102 @@
+{
+  "version": "context-v3",
+  "scope": [
+    "SP37",
+    "SP53"
+  ],
+  "planSha256": "24a8d5b93ded581b01153cf6535576f7d5e3072c16d80acebe77f1a408315ab5",
+  "assessmentPlanSha256": "3de522453d021d55ce2d0760f381e4674f14fa25c56681ced5dc9c3247b19f8e",
+  "synthesisRequestsSent": 2,
+  "assessmentRequestsSent": 2,
+  "automaticRetries": 0,
+  "synthesisComplete": 2,
+  "assessmentComplete": 2,
+  "counts": {
+    "Omission": 2,
+    "Mispronunciation": 1
+  },
+  "results": [
+    {
+      "id": "SP37",
+      "referenceText": "取得整个旧块后。再合并清单中从 P 开始的非零输入。本例旧块中有输入 D、输入 A 和输入 C。再把作为开始者的输入 B 加入名单。合并后得到四份参与者。结束者 A 仍然留在名单中。直到当前配对完成。",
+      "audioFile": "synthesis/SP37.wav",
+      "audioSha256": "f2c5fd8e86422d7ce9cebd70e2998f75efde54400cc4a9743c7965321d85e020",
+      "fingerprint": "63f56783de95f35f6cd5dc2e5e093f56ac774093c85c5820466223297fafb8a2",
+      "duration": 17.14,
+      "responseSha256": "21514ecf8ece4f492ae962482f7d942a6fa1226ed07d8c84852276ee91a3acc7",
+      "counts": {
+        "Omission": 2,
+        "Mispronunciation": 1
+      },
+      "flags": [
+        {
+          "word": "D",
+          "errorType": "Omission",
+          "offset": null,
+          "duration": null
+        },
+        {
+          "word": "输入",
+          "errorType": "Omission",
+          "offset": null,
+          "duration": null
+        },
+        {
+          "word": "B",
+          "errorType": "Mispronunciation",
+          "offset": 97200000,
+          "duration": 2100000
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: D (Omission)",
+      "previousCounts": {
+        "Mispronunciation": 1,
+        "Omission": 1
+      },
+      "listening": "pending",
+      "adopted": false
+    },
+    {
+      "id": "SP53",
+      "referenceText": "结果分别是 C 与 Z 一、C 与 Z 二。还有点输入 Z 一 与点输入 Z 二 之间的配对。每一对的完整交集都是 P。点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节。这里新增的是它们在扫描中的收集与去向。",
+      "audioFile": "synthesis/SP53.wav",
+      "audioSha256": "5eac0fa046587bb83cd6ffc9b0b5385090a647dd61db2943facf216c1668e828",
+      "fingerprint": "57a0bcddf3d8f8dee340db7c99c18aac75ea9af237569924cd2728f82fa0711c",
+      "duration": 19.75,
+      "responseSha256": "1024e793f0b000dc46117f32f38d72c7e14efc4d478d06bde8ac6b727a262fcc",
+      "counts": {},
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "previousCounts": {
+        "Omission": 28,
+        "Mispronunciation": 2,
+        "Insertion": 1
+      },
+      "listening": "pending",
+      "adopted": false
+    }
+  ],
+  "comparisonOnlyNotAdopted": {
+    "baseline": "omission-v2 combined 57",
+    "counts": {
+      "Mispronunciation": 68,
+      "Insertion": 1,
+      "Omission": 6
+    },
+    "noAutomaticFlags": 20,
+    "aligned": 52,
+    "omissionOrInsertionShots": [
+      "SP06",
+      "SP25",
+      "SP37",
+      "SP41",
+      "SP58"
+    ]
+  },
+  "listening": "pending",
+  "published": false,
+  "exportBlocked": true,
+  "note": "The immutable plan records its pre-execution state. Actual service execution is recorded in synthesis/manifest.json and assessment/manifest.json. Program flags are not listening conclusions."
+}

@@ -1,0 +1,66 @@
+{
+  "planSha256": "71295e851807cc8722cb4a1f027812bffd4cd88df2c05d084e54a9fa152b7193",
+  "assessmentPlanSha256": "fa65741a79190d40c6b0dae2cde8a60c6d85a98ca4bc420bf81de05659e36620",
+  "entries": [
+    {
+      "id": "SP06",
+      "fingerprint": "7247527eeb3f918b35c1e3b7bc10b8df97925e86c283285d6641d952a5121909",
+      "audioSha256": "eb50cc49f3088fde9066d6a6254fbd04453dea55b3cba60bbb51b1b89f9e80bf",
+      "state": "complete",
+      "alignmentError": "Alignment requires review: 闭 (Insertion)",
+      "responseSha256": "700bf3b20eafb6f559b2703ff124084c948d2ad458fcc40926129e4e23adef8b"
+    },
+    {
+      "id": "SP17",
+      "fingerprint": "5e6990fb90847d23477552e3941769474bac68b49664e0a5f969b3b9c7c76e16",
+      "audioSha256": "dbd81743bfcdea95d920123afe094267acaa5ffe69fd3bea38f065b93b6036cd",
+      "state": "complete",
+      "responseSha256": "3992aeb5d0b44fa9a850eaf732ec10f975e846f9a98e19c4e9a5ca6362c87c4e"
+    },
+    {
+      "id": "SP24",
+      "fingerprint": "664e2b16e46a9d5b6d623f63dae18821252e836ce6664d88adc816424f75967b",
+      "audioSha256": "babef989019b3ba43cbd3636822123c7abb27db0d59a9cb0c744f74aab57f264",
+      "state": "complete",
+      "responseSha256": "97f13c6c86bb5172871e29ce5bd3080b594168e41cff9eef863f74c8794ff480"
+    },
+    {
+      "id": "SP25",
+      "fingerprint": "c0dc3fb07b433eace87b8211f707cee6d5778234c0441b61f8942ae269fa53a9",
+      "audioSha256": "7e9a2bae0058330ba9c5c06bb2588838e9c24a978b6cf0997c649156e6829a46",
+      "state": "complete",
+      "alignmentError": "Alignment requires review: D (Omission)",
+      "responseSha256": "e1f6c30c6fc7420866cd3ae00b439f748fcf5492d23a7e702a337c3c957f2b8e"
+    },
+    {
+      "id": "SP37",
+      "fingerprint": "92caa74a69c0d006afe76001fd2f757e0bbfadb2b9aa84593e113ec5822899a4",
+      "audioSha256": "27a62c5e7d64c720bec33abd94ac398946948e2fad5cbd2869340df3b5337fa3",
+      "state": "complete",
+      "alignmentError": "Alignment requires review: B (Omission)",
+      "responseSha256": "54e06ee13436b9b27b06c3e51e1fca135efa257d17051c2b49009fcff16b6d6d"
+    },
+    {
+      "id": "SP52",
+      "fingerprint": "81eda110591fc86d62b59aab63585a00c92c11e3c97f1f8f4c2cb40058fc21e2",
+      "audioSha256": "14744e67ecf47787a229726ff342faf2bf4e2bf457e04eb6bbe26d85e87af542",
+      "state": "complete",
+      "responseSha256": "1f17b00a3c2dc1a4aac8f700da23aad4f4999908c15c5650419d83c0a3a7c7ea"
+    },
+    {
+      "id": "SP53",
+      "fingerprint": "c5c9bdc9ae4362df806e1a7819ff003e833b1a8650fdeb2f799f9eff817d3ffa",
+      "audioSha256": "5e34eeb61ebd98a22c693d4cc22df30c031a6f58849631ab0903bdbda2982dfc",
+      "state": "complete",
+      "alignmentError": "Alignment requires review: 二 (Omission)",
+      "responseSha256": "f17fd71b2d55113dc2a994ab6fead8653fcefe22a52a8d13e0149f628023a168"
+    },
+    {
+      "id": "SP55",
+      "fingerprint": "1e798557fcaed6803a4786e7a173b22d293331235f6b90485c2eb2352fe382e6",
+      "audioSha256": "b6b4491f18c76cb954c9563b73a6e1d9a4b3d934f13a43c193c6d23e49e0e140",
+      "state": "complete",
+      "responseSha256": "e6fa85e547032b0970804755ab1798ffad61f0925e983f4523096183aab1d1b1"
+    }
+  ]
+}

@@ -1,0 +1,1504 @@
+{
+  "scope": "candidate selection only; no formal adoption",
+  "listening": "not-performed; waived by user for audio machine acceptance only",
+  "counts": {
+    "Mispronunciation": 70,
+    "Omission": 3,
+    "Insertion": 1
+  },
+  "assessed": 57,
+  "aligned": 54,
+  "noAutomaticFlags": 20,
+  "blockingShots": [
+    "SP06",
+    "SP41",
+    "SP58"
+  ],
+  "serviceRequestsAdded": 0,
+  "exportBlocked": true,
+  "published": false,
+  "results": [
+    {
+      "id": "SP01",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP01.wav",
+      "audioSha256": "2e076efb3677970bda295d1b699c50f703899d6b31795114c980fcae76d07f2d",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP01.wav.assessment.json",
+      "responseSha256": "49abb84ba462c04d14d0c709fe486a492d188bb28dfa1419dd7ad782b4c27bd3",
+      "referenceText": "第三章已经给出完整求交和精确比较。本集接着处理同一个位置上的多份输入。上集先找齐参与者、报告全部输入对。下集再维护右侧顺序。并解释没有端点提示的共点为何会被发现。",
+      "duration": 15.95,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP02",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP02.wav",
+      "audioSha256": "d3d7613eb70f9ec757802574958772bc6b65f5fec4998dd928bad7584baedecc",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP02.wav.assessment.json",
+      "responseSha256": "3ec6094cd14d3c33c6d392546463b1f114d19da0f881c5957f9bee5c072d4ad4",
+      "referenceText": "本章仍要求非零输入不竖直。任意两份之间没有非零长度重叠。不同事件位置的横坐标各异。这是不同位置的限制。不妨碍多个端点集中在同一个点。",
+      "duration": 12.85,
+      "flags": [
+        {
+          "text": "竖直",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "限制",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP03",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP03.wav",
+      "audioSha256": "68b10e144c0d23e9c0e5cea5190e0e7995ac27c0e3c18e4025a73d5d7ed85646",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP03.wav.assessment.json",
+      "responseSha256": "90d58178d57106bed21672dcc38fc1665b80b5352bd5592cea3f9b26491ab36f",
+      "referenceText": "现在允许共端点、端点落在另一条线段内部、多条线段共点。也允许零长度点输入。共线但仅共享端点同样允许。重叠、同横坐标不同位置和竖直线段参与扫描。分别留给后续章节。这些不是完整算法的输入限制。",
+      "duration": 20.32,
+      "flags": [
+        {
+          "text": "限制",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP04",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP04.wav",
+      "audioSha256": "0d3622e1fecff528a7302e85a8b525696443880c1070e889704850689ee856f1",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP04.wav.assessment.json",
+      "responseSha256": "fb371ea5957f045df7fd67501af2a333cc967f438bc492882114047577041ed3",
+      "referenceText": "把共同端点叫作 P。横坐标和纵坐标都是四。蓝色输入 A 从横坐标零、纵坐标四到 P。它在这里结束。图是教学示意。不是真实执行轨迹。",
+      "duration": 13.62,
+      "flags": [
+        {
+          "text": "作",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP05",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP05.wav",
+      "audioSha256": "03e83099a6c763bd53c468b57c720ebf2e122ae91096f0efa4cc9cd5bbbcb4a2",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP05.wav.assessment.json",
+      "responseSha256": "7acb529aa3ea49dd6cc9e46af6a415b57dbba43236515ea3ba634c23adaf8a39",
+      "referenceText": "橙色输入 B 从 P 到横坐标八、纵坐标八。在这里开始。图中横纵每格都是一个单位。O 是原点。箭头标出坐标正方向。两份输入都包含端点。",
+      "duration": 14.47,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP06",
+      "variant": "omission-v2",
+      "audioFile": "out/audition-omission-v2/synthesis/SP06.wav",
+      "audioSha256": "eb50cc49f3088fde9066d6a6254fbd04453dea55b3cba60bbb51b1b89f9e80bf",
+      "responseFile": "out/audition-omission-v2/assessment/SP06.wav.assessment.json",
+      "responseSha256": "700bf3b20eafb6f559b2703ff124084c948d2ad458fcc40926129e4e23adef8b",
+      "referenceText": "A 满足纵坐标等于四。横坐标从零到四。输入 B 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。",
+      "duration": 17.59,
+      "flags": [
+        {
+          "text": "闭",
+          "errorType": "Insertion"
+        },
+        {
+          "text": "B",
+          "errorType": "Omission"
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: 闭 (Insertion)",
+      "adopted": false
+    },
+    {
+      "id": "SP07",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP07.wav",
+      "audioSha256": "25d0ccb32ed85160908e87883fb6c3c0e47783eba2ac79ac4f206d3e0a77792b",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP07.wav.assessment.json",
+      "responseSha256": "211ed021bb09b40f905a4067d56589bdde135792af5e3257e1647c4b6b1b9803",
+      "referenceText": "紧靠 P 左侧只有 A。右侧只有 B。如果先忘掉结束的 A。再读取开始的 B。配对名单里就少了 A。会漏掉这一次端点接触。",
+      "duration": 11.42,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "配对",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "接触",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP08",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP08.wav",
+      "audioSha256": "47e81a262d71e6e9a461f88a5754f3dbf588d80ef9b224e8096450cb7a5f6f46",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP08.wav.assessment.json",
+      "responseSha256": "d634519055e7b27bef69e1b6846647920ff0f4153615a5089ce4574aa95dc4b1",
+      "referenceText": "先保留 A 在本次事件中的身份。把 B 也列进来。报告 A 与 B 的交集 P。然后 A 退出、B 继续。不再向右延伸。不等于不属于当前闭端点。",
+      "duration": 12.57,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "退出",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP09",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP09.wav",
+      "audioSha256": "6315efd8d52bba6e4fc28efab359ec5bb83b5503c92359d53d3c4af70eca513b",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP09.wav.assessment.json",
+      "responseSha256": "a6a25d4b96eeb751c448f17d0b18895072e85fea24ac41e99c1bdd7fc33da170",
+      "referenceText": "这个理由不依赖两条线段的方向。只要一份闭线段在这里结束。它就仍包含这里的点。若还有其他参与者。就要在丢掉结束身份以前完成当前配对。这说的是数学依赖。不要求程序容器永远不能暂时取出成员。",
+      "duration": 17.19,
+      "flags": [
+        {
+          "text": "这里",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "要求",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP10",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP10.wav",
+      "audioSha256": "9d952d793ab8ceb7439ddf53f61bd69318f45a5db827bf39f773b9af96ab4b35",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP10.wav.assessment.json",
+      "responseSha256": "0c58366fe73ebf2b109f6874f280ab62f86fc9eeb14e0c725091939a04da7148",
+      "referenceText": "这次只取 B 和新的紫色输入 C。暂不取 A。C 从横坐标一、纵坐标七到横坐标九、纵坐标负一。满足纵坐标等于八减横坐标。",
+      "duration": 11.68,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP11",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP11.wav",
+      "audioSha256": "710df4a76f69f7868bd00ff1c9e61fea0b2f891f65721cee71de3bcc9a9c76db",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP11.wav.assessment.json",
+      "responseSha256": "6001f3f0079a0d2abf79242aff1ff26c479b79910314095559f0845b04b3d92b",
+      "referenceText": "用第三章的同一位置精确高度判断。C 在横坐标四处的高度是四。四又严格在一和九之间。所以 P 严格位于 C 内部。没有端点在 P。不代表不参加。",
+      "duration": 13.32,
+      "flags": [
+        {
+          "text": "是",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "四",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP12",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP12.wav",
+      "audioSha256": "869b4e301a88e0f25673140d2a966fa9115b580ed4adfa09eaafd780e1678fa5",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP12.wav.assessment.json",
+      "responseSha256": "a2448d3a4616009407e6356cda360e253d5fd9b3a65bc332aac2a743d9152503",
+      "referenceText": "起点清单直接给出 B。却没有把严格穿过的 C 当作端点列在这里。只用端点名单配对会漏掉 B 与 C。还要到旧活动顺序中找同高度成员。才能报告这一对对应 P。",
+      "duration": 14.15,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "一对",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP13",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP13.wav",
+      "audioSha256": "37b2c50e622954f0c9c3a3f697b19e395c30c538cb7aa364ef917cb22af1fb4e",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP13.wav.assessment.json",
+      "responseSha256": "8ba12d93e1f92cdf9d494c8d287fbe1b5c220f0441ac5b676a711d1e91a46b52",
+      "referenceText": "这里查的是仍覆盖事件横坐标的旧活动线段。再比较它们在这里的精确高度。若只是延长线经过 P。线段范围并未覆盖这里。就不能加入。点归属的共线和闭范围结论见第三章。不重做求交公式。",
+      "duration": 17.34,
+      "flags": [
+        {
+          "text": "事件",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP14",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP14.wav",
+      "audioSha256": "7be1be0dd130dc8be6af3dfe1ab327d64b9223deb28b4402585fc44684055b4b",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP14.wav.assessment.json",
+      "responseSha256": "e5f471dda4a96fd45f67b63e8b002512a22eae715e33dafe5baedb529baa1a14",
+      "referenceText": "这一页新增的机制是。端点让我们到站。旧活动顺序补齐没有端点提示的参与者。到达一个已知位置后怎样找齐。与这个位置为什么一定会被发现。是不同问题。后一个问题留给下集。",
+      "duration": 15.69,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP15",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP15.wav",
+      "audioSha256": "8a998499e40eda3586d2074159318fe6557082e504ff164068c72a4fe7605fc3",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP15.wav.assessment.json",
+      "responseSha256": "6a84a35c9684998b2a6cebaf4ec37c19ff33617cdc3e04f661d1e3bff7c504ee",
+      "referenceText": "现在取回 A。和 B、C 一起。再加入绿色输入 D。D 从横坐标二、纵坐标零到横坐标七、纵坐标十。满足纵坐标等于二倍横坐标减四。只看 P 这次事件。不重演整次扫描。",
+      "duration": 16.94,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "C",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "D",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "七",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "四",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP16",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP16.wav",
+      "audioSha256": "9644c7c5bd3545861b48f50f8ff6eb9cdf230112163c0b802e2fcfaf8a087204",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP16.wav.assessment.json",
+      "responseSha256": "1025fa7536a4cf45f0e78334697ebee3a4c55aaf0134217b473c677cd0b1ce62",
+      "referenceText": "D 在横坐标四处的高度也是四。而且四严格在二和七之间。所以 D 也严格穿过 P。其他端点的横坐标是零、一、二、七、八、九。与四不同。也彼此不同。符合本章条件。",
+      "duration": 15.69,
+      "flags": [
+        {
+          "text": "D",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP17",
+      "variant": "omission-v2",
+      "audioFile": "out/audition-omission-v2/synthesis/SP17.wav",
+      "audioSha256": "dbd81743bfcdea95d920123afe094267acaa5ffe69fd3bea38f065b93b6036cd",
+      "responseFile": "out/audition-omission-v2/assessment/SP17.wav.assessment.json",
+      "responseSha256": "3992aeb5d0b44fa9a850eaf732ec10f975e846f9a98e19c4e9a5ca6362c87c4e",
+      "referenceText": "例如检查旧邻居 A 与 C。可以算出未来位置 P。这只说明要在 P 停下。到站后不能只处理这一对。A 的结束、B 的开始。以及 C 的穿过和 D 的穿过。都属于同一次事件。",
+      "duration": 15.54,
+      "flags": [
+        {
+          "text": "算",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP18",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP18.wav",
+      "audioSha256": "bd0852e7dea725fece4ec1c62486141d5146ae232945c9d850599ea365fec94e",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP18.wav.assessment.json",
+      "responseSha256": "916086df6c4057e892b941bc0e1cd06df790af89cf4a5a62f0c1a0111276e0ce",
+      "referenceText": "引用第三章的同点结论。横坐标和纵坐标分别相等。才是同一精确位置。其他输入对再发现 P。就使用同一位置记录。不能因为来源不同。把同点拆成多次处理。",
+      "duration": 14.44,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP19",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP19.wav",
+      "audioSha256": "0299b03b2c536669af6e8ed36a7420541aa796bc968d5c54dc6bbd0c33c9ca65",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP19.wav.assessment.json",
+      "responseSha256": "6825922bdeedd99aa09ffcfb1399a14048acc02e7d3c0a414187515889468ba2",
+      "referenceText": "所有端点预先已知。所以 P 的记录可以保留哪些输入从这里开始、哪些在这里结束。交点记录并入这个位置时。不能覆盖已有端点信息。后面还要加入点输入身份。",
+      "duration": 13.1,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP20",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP20.wav",
+      "audioSha256": "1491c1a4b73c5dca6c3fc45509b83540b7bc2b840fe7ee8e3ee2f8c962cd927e",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP20.wav.assessment.json",
+      "responseSha256": "6b4999ba89bb3915a8194421c10201756600348ef34abc96d337b053a15770bc",
+      "referenceText": "继续沿用第二章《扫描过程与三类事件》的规则。真实未来交点即使暂时失去邻接。也保留到取出。清单每次取最左的未处理位置。同一位置只统一处理一次。预约的一对提供发现依据。完整名单到站再找。",
+      "duration": 17.24,
+      "flags": [
+        {
+          "text": "暂时",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "每次",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP21",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP21.wav",
+      "audioSha256": "39d04e02ef61ab2aa434e9b667278bf7b2e402cf59f9ce2ee395d38743a4658a",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP21.wav.assessment.json",
+      "responseSha256": "b9cc5e8d305773e1991dc3357f394930c03c36f716b2674fd0c2d9fa17857681",
+      "referenceText": "把同一个事件位置一般地写成 P。符号 x 下标 P 和 y 下标 P 分别表示它的横坐标和纵坐标。案例中都等于四。非零输入按横坐标认出左端点和右端点。不由端点书写顺序决定。下面的角色含义不依赖数值四。",
+      "duration": 18.72,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP22",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP22.wav",
+      "audioSha256": "feb850a18409406733deb6835f6cc8269cffc62e80c885bfbd7452de6ec0ccd8",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP22.wav.assessment.json",
+      "responseSha256": "8bdce25dbc8e6dda98f973598e68e57b9f3076edb953c09a8d04a209a5e5a3e2",
+      "referenceText": "经过 P 的非零输入。若左端点就是 P、右端点横坐标更大。就叫开始者。本例 B 是开始者。它参与当前报告。右侧也继续。但左侧旧顺序里还没有它。",
+      "duration": 14.19,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP23",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP23.wav",
+      "audioSha256": "3420c92bf97ee8592bb2320f228296c6ac6184b52b1fe199a68fdc7b25bef95b",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP23.wav.assessment.json",
+      "responseSha256": "00a8a26585efccb422ba31ab3a44213a5205658ca89e797fa852185ef765d1f6",
+      "referenceText": "若右端点就是 P、左端点横坐标更小。就叫结束者。本例 A 是结束者。在旧顺序中。也参与当前闭端点报告。只是右侧不再继续。",
+      "duration": 11.92,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP24",
+      "variant": "omission-v2",
+      "audioFile": "out/audition-omission-v2/synthesis/SP24.wav",
+      "audioSha256": "babef989019b3ba43cbd3636822123c7abb27db0d59a9cb0c744f74aab57f264",
+      "responseFile": "out/audition-omission-v2/assessment/SP24.wav.assessment.json",
+      "responseSha256": "97f13c6c86bb5172871e29ce5bd3080b594168e41cff9eef863f74c8794ff480",
+      "referenceText": "如果 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 D。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留输入 B、输入 C 和输入 D 这三份。",
+      "duration": 21.58,
+      "flags": [
+        {
+          "text": "是",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "D",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "存在",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "种",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP25",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP25.wav",
+      "audioSha256": "1831baec541bdd896bc3f85c737e768680aae3ed2561d3c241e9d6fd39588ee0",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP25.wav.assessment.json",
+      "responseSha256": "235772d1b073568f1d0d9b9f3845f1c69a22cb0c95fa87fdfec8d552961f504e",
+      "referenceText": "把紧靠 P 左侧的活动顺序叫旧顺序。其中经过 P 的旧参与者叫相遇块。它包括结束者和严格穿过者。不包括开始者。本例旧块是从下到上的 D、A、C。没有旧参与者时就是空块。",
+      "duration": 15.82,
+      "flags": [
+        {
+          "text": "D",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP26",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP26.wav",
+      "audioSha256": "4b2ee0445a7214d9621a09335af7176b341a4204c07206d5c809a9113d5c22cd",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP26.wav.assessment.json",
+      "responseSha256": "e31994717b61bd0651f564f2f0d9543c5af7265348bed5481d8d2f6102616d4f",
+      "referenceText": "旧参与者不足两条时。空块或单成员块已经连续。至少有两条时。才需要证明。旧顺序里夹在它们中间的其他成员。会不会不参加当前事件？",
+      "duration": 12.57,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP27",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP27.wav",
+      "audioSha256": "4aac5edb3f84501fa8264acf01851d739040808b899d0880c83af60c8ac63076",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP27.wav.assessment.json",
+      "responseSha256": "ae0c36e835c7f8975327909fcd919a3c870ec4d3b57b2946a5234aaec6524056",
+      "referenceText": "离开四输入的数值。任取旧参与者中最下的 U、最上的 V。若中间还有旧成员。把它叫 W。图仅表示从下到上的关系。不另造数值案例。U 和 V 都到达 P。横坐标仍用 x 下标 P。纵坐标仍用 y 下标 P。",
+      "duration": 19.83,
+      "flags": [
+        {
+          "text": "仅",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "y",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP29",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP29.wav",
+      "audioSha256": "f0c494859b37fa048cb21324576ecbb5b98dcb0733ca8c24a9008904c41b6492",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP29.wav.assessment.json",
+      "responseSha256": "011f1f4cb53714982568ce1516bd5f154b194e72bcc20317d242134e3c97db9b",
+      "referenceText": "沿用第二章《为什么不会漏掉交点》的无事件区间。W 在紧邻 P 左侧不会提前结束。这次还允许它恰好在 P 结束。闭线段包含结束端点。所以到 P 仍存在。共同存在和左侧夹层的条件仍满足。",
+      "duration": 17.72,
+      "flags": [
+        {
+          "text": "存在",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP33",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP33.wav",
+      "audioSha256": "b66089b89eb6b2db9dab379095c642753742f6f1d6515c4cd501c05faa381adb",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP33.wav.assessment.json",
+      "responseSha256": "f12d4c60255fc3d1daef682c520b413de47107fe9616665a9eb9f83146794f6a",
+      "referenceText": "直接引用第二章《为什么不会漏掉交点》的夹层结论。U 和 V 到达同一个 P。中间的 W 也经过 P。本章允许共点。所以这次要把 W 一起收进相遇块。所有夹在最下和最上参与者之间的旧成员都要收进来。因此旧参与者连续成块。不能照搬任意两条交叉前必相邻的结论。",
+      "duration": 22.71,
+      "flags": [
+        {
+          "text": "V",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "者",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP34",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP34.wav",
+      "audioSha256": "0ca9c80edd9461542ea03ae232aed43d58bd771367b076bba11f8bb7caead002",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP34.wav.assessment.json",
+      "responseSha256": "759c17a844944123a43d9b630fc79c010591874650da9fae9cb3447002a08402",
+      "referenceText": "沿用第二章的边界高度结论。把所有旧成员的高度都取在 x 下标 P。顺序仍从下到上不递减。允许相等。",
+      "duration": 9.48,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP35",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP35.wav",
+      "audioSha256": "74a475c28b05c4673279906a8f078ec6c2b899ff549ad03af72fd727e6606313",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP35.wav.assessment.json",
+      "responseSha256": "90c3d81aebf32609aa9e5d2cbb796736fb62716139b5a518e26cd03cbc2a818a",
+      "referenceText": "现在可以按精确高度。有序定位第一条不低于 y 下标 P 的旧成员。利用已经维护的顺序来找块首。不必每次遍历所有输入。这里说明查找用途。不展开容器代码。",
+      "duration": 14.32,
+      "flags": [
+        {
+          "text": "每次",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "展开",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP36",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP36.wav",
+      "audioSha256": "eb6e3fb488774cc6cb27157c905a3095748a771575bf446d0f138356facee290",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP36.wav.assessment.json",
+      "responseSha256": "2425f34cb7e2708340b6b3ad557df516acf05b2666669ab5c89c46f73bdb4f52",
+      "referenceText": "若第一条等于 y 下标 P。就沿相等者逐条取出。直到遇见不相等者。若第一条已经更高。或根本没有不低于者。就没有相等块。只得到插入空隙。结束者也在旧块中。端点名单可核对其身份。",
+      "duration": 17.28,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP37",
+      "variant": "context-v4",
+      "audioFile": "out/audition-context-v4/synthesis/SP37.wav",
+      "audioSha256": "abb3d1ef7e4e0907f85e44cbd251513204db59323ffecc3852c211baaedbdf8c",
+      "responseFile": "out/audition-context-v4/assessment/SP37.wav.assessment.json",
+      "responseSha256": "1d6bf17212e0817a216aeda05af4c221ba5150205a49457c72759303f168c55f",
+      "referenceText": "取得整个旧块后。再合并清单中从 P 开始的非零输入。本例旧块中的三份输入分别是 D、A 和 C。再把作为开始者的输入 B 加入名单。合并后得到四份参与者。结束者 A 仍然留在名单中。直到当前配对完成。",
+      "duration": 18.29,
+      "flags": [
+        {
+          "text": "D",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "者",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP38",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP38.wav",
+      "audioSha256": "5d008394bc5081ac85bcc7c846d14478bfbdc4b3d7fd3b1786c75e434dcedaa7",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP38.wav.assessment.json",
+      "responseSha256": "85e7c2df1261834eaf52536da56945e7fd1d368db7ba3bef88aae2e53b5eb367",
+      "referenceText": "端点记录中也能读到 A 的结束身份。但 A 已在旧块中。不能再加一份。合并按原始编号去重。相同编号只留一次。不同编号即使同点也不能合并。",
+      "duration": 12.87,
+      "flags": [
+        {
+          "text": "原始",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP39",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP39.wav",
+      "audioSha256": "5f68983fa801cd9ec5e33de422d863b23af43463dfc984ab3d99f5d560d9773b",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP39.wav.assessment.json",
+      "responseSha256": "1f4695cedc02445cc6663a6556d23b16363ca2beadc4ff16a35eb9dbd916c12f",
+      "referenceText": "任取一份包含 P 的非零非竖直输入。左端点若在 P 左边。它就在紧邻左侧活动。已由旧块收集。若左端点不在左边。只能恰好是 P。便在开始者名单中。这两路覆盖全部非零参与者。",
+      "duration": 16.91,
+      "flags": [
+        {
+          "text": "点若",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "覆盖",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP40",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP40.wav",
+      "audioSha256": "9d691f63c498dce1bf8ac7f83e75066ba6fd4a4ccac7d7b012167cb671dc203d",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP40.wav.assessment.json",
+      "responseSha256": "e9eff2e737d137e36b3f36294b918583ed63f8bd06db5727876b19c49467a24e",
+      "referenceText": "反过来。旧块里的成员覆盖 x 下标 P 且精确等高。所以确实经过 P。块外成员高度不同。不经过 P。开始者则由真实端点给出。两路没有凭空加入旁观者。点输入稍后单列。当前论证只针对非零输入。",
+      "duration": 19.28,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP41",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP41.wav",
+      "audioSha256": "53d0566ae10f2382b9537d5c12151f7dee91a1ed95506df1a96d6c9f5aaee84d",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP41.wav.assessment.json",
+      "responseSha256": "7e0ad79c9b7d3d75173ee1188e66de639f88b81b9915d7797c9d3dc987701eda",
+      "referenceText": "沿用第一章《逐对检查的基准方法》的无序对枚举结论。当前名单 A、B、C、D 对应图中的六个不同输入对。每对的交集都是 P。",
+      "duration": 10.96,
+      "flags": [
+        {
+          "text": "名单",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "A",
+          "errorType": "Omission"
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: A (Omission)",
+      "adopted": false
+    },
+    {
+      "id": "SP43",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP43.wav",
+      "audioSha256": "449e4df4c257a8c7d66a3087ab62ce5fbeb9bf1123c09cde4daf98a393c55494",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP43.wav.assessment.json",
+      "responseSha256": "d6e255529ad87e896adb7c812b6abedbb5957ac8e7d406debb0b2889e6021079",
+      "referenceText": "清单只处理一个 P。求交结果却保留六个输入对的身份。不能用一条这里有交点代替六条结果。这里列的是当前已找齐成员之间的报告。不是扫描所有原始输入对。",
+      "duration": 13.9,
+      "flags": [
+        {
+          "text": "原始",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP44",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP44.wav",
+      "audioSha256": "f26f6ff89e27d512b2685f731f58d82f946d1e5991007c264fdf66bb38987986",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP44.wav.assessment.json",
+      "responseSha256": "29b913f78e0250488a6dc6ce782f6412ad8f6604dbc1b31ae89560e64ba896fc",
+      "referenceText": "六对只是数值案例。还需要对任意数量的参与者说明理由。每份参与者已经确认包含 P。所以任取两份。它们至少共享 P。不会报告一个不存在的交集。",
+      "duration": 13.12,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP45",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP45.wav",
+      "audioSha256": "d67b2416d8c528bd2ba5bdbd43ac1949d9c1d8d4bb36bcf5fde2e92ca7c87bfc",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP45.wav.assessment.json",
+      "responseSha256": "464a862c937f56fe1277406129478c25a479ddb0b1618fd10b8de6ab02d1533f",
+      "referenceText": "引用第一章《我们究竟要求什么》的结论。两条闭线段若有两个不同公共点。就共享非零长度区间。本章不允许这种重叠。所以这两份的完整交集恰好只有 P。只要有点输入。也不可能出现第二个公共点。",
+      "duration": 17.44,
+      "flags": [
+        {
+          "text": "章",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "究竟",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP46",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP46.wav",
+      "audioSha256": "00389c55d113983de5fdddc00bb52e31ccd1882b82a0c4fea619239dd79237f8",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP46.wav.assessment.json",
+      "responseSha256": "f6b61de0c0331ede51ce6c16e4c8dda5f255c79f7a9785a706ec0f721be0f68f",
+      "referenceText": "反过来。任意一对若在当前位置真实相交。两份都包含 P。参与者已找齐。它们便都在名单中。较小编号那一行必配到较大编号。所以当前位置没有漏报。",
+      "duration": 14.34,
+      "flags": [
+        {
+          "text": "较小",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP47",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP47.wav",
+      "audioSha256": "a247eea4efa8a2e85243492b924582acae7c32067746392458a630a658b4e769",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP47.wav.assessment.json",
+      "responseSha256": "1e1f5e3f4db40123f751f4294160ece077af171765790efbb42abb1ee215996b",
+      "referenceText": "第一章《逐对检查的基准方法》已证明。只找更大原始编号。每个无序对恰好出现一次。这里直接把它用于当前名单。不配自身。也不把交换次序算成另一对。",
+      "duration": 13.72,
+      "flags": [
+        {
+          "text": "原始",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "名单",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP48",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP48.wav",
+      "audioSha256": "cd88b050f91ee8349e23642ce469398655eb519811838fca87074a22be118375",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP48.wav.assessment.json",
+      "responseSha256": "9cbda4f8578a2b9a70a8aebc7d18db390600d062f06b216831c4e11f3169bf73",
+      "referenceText": "跨事件也不会重复。本章每对非空交集只能是一个点。而同一精确位置只处理一次。这是已到达位置的完整报告理由。没有端点提示的共点为何一定被预约。到下集再证明。不能提前假定已经解决。",
+      "duration": 17.14,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP49",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP49.wav",
+      "audioSha256": "383258761c58acebe4701dda7185dcc85ad4e4fbb1f6984e0178513edc8482d4",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP49.wav.assessment.json",
+      "responseSha256": "2c16fe31e18f0dc064e5309ab46347a5812eb693a528979ce2c0bec435644eb2",
+      "referenceText": "现在只取 C。再取两份新输入 Z 一、Z 二。它们的两个端点都等于 P。两份各只有一个点。却有不同原始编号。图分开显示这两个重合身份。位置和尺度相同。没有挪动点。",
+      "duration": 15.71,
+      "flags": [
+        {
+          "text": "取",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "原始",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "显示",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP50",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP50.wav",
+      "audioSha256": "ff3c8a42f5f4d21004fe0604d0f39658fe149e9691de1deef61490529091bc10",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP50.wav.assessment.json",
+      "responseSha256": "19fc7f7ba1c21eb5f47835a48739d82b0a6f5eb9491711641ce7359b465c1419",
+      "referenceText": "菱形只帮助辨认零长度输入。不表示它有面积。两幅图里的 C 是同一条线段。这些是新选取的点输入。不是把四输入案例悄悄换掉后仍声称同一组输入。",
+      "duration": 13.45,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP51",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP51.wav",
+      "audioSha256": "1a923895378151cb697245d8b6a7b81bb24a9419d8786051d208012107fa8123",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP51.wav.assessment.json",
+      "responseSha256": "8fcad9f53ba783b5000b639c3f1548c03fbd49d163ece5b7b67d634a072d63f4",
+      "referenceText": "若把点输入同时当开始者和结束者拼接。同一个编号可能被放两次。因此另设点输入角色。与非零开始者、结束者分开。在这个位置按原始编号各留一次。",
+      "duration": 13.25,
+      "flags": [
+        {
+          "text": "当",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "者",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "原始",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP52",
+      "variant": "omission-v2",
+      "audioFile": "out/audition-omission-v2/synthesis/SP52.wav",
+      "audioSha256": "14744e67ecf47787a229726ff342faf2bf4e2bf457e04eb6bbe26d85e87af542",
+      "responseFile": "out/audition-omission-v2/assessment/SP52.wav.assessment.json",
+      "responseSha256": "1f17b00a3c2dc1a4aac8f700da23aad4f4999908c15c5650419d83c0a3a7c7ea",
+      "referenceText": "到达 P。先按前面的方法找齐非零参与者。再合并这里的点输入。这次名单包含线段 C。还有点输入 Z 一 和点输入 Z 二。同一位置不合并不同身份。同一身份也不重复加入。",
+      "duration": 15.79,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP53",
+      "variant": "context-v3",
+      "audioFile": "out/audition-context-v3/synthesis/SP53.wav",
+      "audioSha256": "5eac0fa046587bb83cd6ffc9b0b5385090a647dd61db2943facf216c1668e828",
+      "responseFile": "out/audition-context-v3/assessment/SP53.wav.assessment.json",
+      "responseSha256": "1024e793f0b000dc46117f32f38d72c7e14efc4d478d06bde8ac6b727a262fcc",
+      "referenceText": "结果分别是 C 与 Z 一、C 与 Z 二。还有点输入 Z 一 与点输入 Z 二 之间的配对。每一对的完整交集都是 P。点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节。这里新增的是它们在扫描中的收集与去向。",
+      "duration": 19.75,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP54",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP54.wav",
+      "audioSha256": "453558cbf977d7406642a07564137433f65fb048a6dc20ea81f2b416876c4eb2",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP54.wav.assessment.json",
+      "responseSha256": "448b009108b7b6c3ab0516d9fc6dede268d08b7f0060d7e4bf8b1598e5d02392",
+      "referenceText": "点输入只在横坐标等于 x 下标 P 时存在。任意更大的横坐标都没有它的点。所以配对后不进入右侧活动顺序。不给它安排在 C 上方或下方。也不用凭空指定直线或斜率。本例两侧都只有 C。",
+      "duration": 16.77,
+      "flags": [
+        {
+          "text": "等于",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "存在",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP55",
+      "variant": "omission-v2",
+      "audioFile": "out/audition-omission-v2/synthesis/SP55.wav",
+      "audioSha256": "b6b4491f18c76cb954c9563b73a6e1d9a4b3d934f13a43c193c6d23e49e0e140",
+      "responseFile": "out/audition-omission-v2/assessment/SP55.wav.assessment.json",
+      "responseSha256": "e6fa85e547032b0970804755ab1798ffad61f0925e983f4523096183aab1d1b1",
+      "referenceText": "如果只取点输入 Z 一 和点输入 Z 二。没有非零线段。仍报告这一对对应 P。两侧活动顺序都为空。不能因为没有旧块或新块。就把当前点配对跳过去。",
+      "duration": 13.37,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP56",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP56.wav",
+      "audioSha256": "d501cbdc6cfee20fcf257a35710645fb1866385dc2ab5467e3fb1ba8a3c2a0fe",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP56.wav.assessment.json",
+      "responseSha256": "07491c3835433298246335dc36cc59a4fd63d7e1ebb96a88f6cace41133c888d",
+      "referenceText": "若只取 Z 一。当前只有一个原始身份。配不出不同输入对。结果为空。但这个已知端点事件仍正常处理完毕。没有结果。不等于没有事件。",
+      "duration": 12.79,
+      "flags": [
+        {
+          "text": "取",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "原始",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP57",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP57.wav",
+      "audioSha256": "b20e2af2f6e5208298a33751f7e42e7968afd7f5be7ed1e666fb9967975df9d6",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP57.wav.assessment.json",
+      "responseSha256": "6668de04e1ab8fe996849b2f665e98af97c01ff4120833f274a990b249675481",
+      "referenceText": "点恰好落在闭端点也一样。先单独取 A 与 Z 一。报告这一对对应 P。然后 A 结束。点输入不进入右侧。这一案例右侧没有活动成员。",
+      "duration": 12.47,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP58",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP58.wav",
+      "audioSha256": "6c714fa60c9c7aba7e421b75905625e0a1784118f9180d226c232c37ddb3719e",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP58.wav.assessment.json",
+      "responseSha256": "0483fc630824e432e6b025b698e1f4bd73b5e88366589141eeba7d82317f319e",
+      "referenceText": "再单独取 B 与 Z 一。先报告当前配对。然后只有 B 向右继续。这是另一个两输入案例。与左图分别处理。不能把 A、B 和两份画出的 Z 一 误拼成四个身份。",
+      "duration": 13.97,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "报告",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "A",
+          "errorType": "Omission"
+        },
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: A (Omission)",
+      "adopted": false
+    },
+    {
+      "id": "SP59",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP59.wav",
+      "audioSha256": "60d7a8120c0d7b2fbc16f9a7ec9db37dd7c993612bc7adf573aab888862c86db",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP59.wav.assessment.json",
+      "responseSha256": "92c649a5414f1d314aeddf5c09c2a85abec0772f4058cd9aa89974662ead5bd0",
+      "referenceText": "更多同位置点输入时。每份都分别与每条非零参与者配对。点身份之间也按原始编号配对。点只有 P。不会带来另一个交点。保留不同身份、同一编号一次的规则。让先前的不漏、不多报、不重复理由继续成立。",
+      "duration": 18.19,
+      "flags": [
+        {
+          "text": "原始",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP60",
+      "variant": "ipa-chinese-v1",
+      "audioFile": "out/audition-ipa-chinese-v1/synthesis/SP60.wav",
+      "audioSha256": "48d790a0e9576d46bfd0c8dc5ea555c1087782aef5587d3747cc56788ba35c12",
+      "responseFile": "out/audition-ipa-chinese-v1/assessment/SP60.wav.assessment.json",
+      "responseSha256": "607328841bc11d90f9f8fea57eba29cbe6706ff7ce670abea44f4ec9474d84a4",
+      "referenceText": "现在可以说清当前位置的完整名单从哪里来。精确高度找到旧相遇块。补入非零开始者。再合并点输入。按原始身份各留一次。结束者先参加闭端点报告。点输入只参加这一次。",
+      "duration": 16.14,
+      "flags": [
+        {
+          "text": "找到",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP61",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP61.wav",
+      "audioSha256": "e91d1a68fba0626b72802a4049a81cc8f73db71c928da718a8e3f5a38d69ee08",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP61.wav.assessment.json",
+      "responseSha256": "858041fd3d06ce5c8b7e9b0a951a8360f6daf39e30906634724da176b64cdbfb",
+      "referenceText": "先停一下。若只处理预约交点的那一对。会在哪一步漏掉其他身份？试着用旧相遇块、开始者和点输入三路说明。不需要重演整次扫描。",
+      "duration": 10.75,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP62",
+      "variant": "original",
+      "audioFile": "out/synthesis-39f9c1e2fc2d/SP62.wav",
+      "audioSha256": "ce8988d06d245a30d6e8ffbc2fd9df739431c5b2bbdbb71f6c83a38b6a1a633f",
+      "responseFile": "out/assessment-39f9c1e2fc2d/run/SP62.wav.assessment.json",
+      "responseSha256": "c6e4b8b64f4cdb2d1a211e9f75fb0ee04bd9792b4281181523aef903ee0364da",
+      "referenceText": "本集已经解释到站后怎样找齐并完整报告。接下来还要筛选继续成员、排出整个右侧块、检查新增邻接。没有端点提示的共点为何一定能到站。也留给第四章下集。到这里。不把当前位置的完整处理当作整次扫描已经证明。",
+      "duration": 18.97,
+      "flags": [],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    }
+  ],
+  "staticTimeline": {
+    "timingKind": "provisional-silent-reading",
+    "shots": 57,
+    "pages": 20,
+    "adjacentSamePageBoundaries": [
+      {
+        "from": "SP01",
+        "to": "SP02",
+        "preserved": true
+      },
+      {
+        "from": "SP02",
+        "to": "SP03",
+        "preserved": true
+      },
+      {
+        "from": "SP04",
+        "to": "SP05",
+        "preserved": true
+      },
+      {
+        "from": "SP05",
+        "to": "SP06",
+        "preserved": true
+      },
+      {
+        "from": "SP07",
+        "to": "SP08",
+        "preserved": true
+      },
+      {
+        "from": "SP08",
+        "to": "SP09",
+        "preserved": true
+      },
+      {
+        "from": "SP10",
+        "to": "SP11",
+        "preserved": true
+      },
+      {
+        "from": "SP11",
+        "to": "SP12",
+        "preserved": true
+      },
+      {
+        "from": "SP13",
+        "to": "SP14",
+        "preserved": true
+      },
+      {
+        "from": "SP15",
+        "to": "SP16",
+        "preserved": true
+      },
+      {
+        "from": "SP16",
+        "to": "SP17",
+        "preserved": true
+      },
+      {
+        "from": "SP18",
+        "to": "SP19",
+        "preserved": true
+      },
+      {
+        "from": "SP19",
+        "to": "SP20",
+        "preserved": true
+      },
+      {
+        "from": "SP21",
+        "to": "SP22",
+        "preserved": true
+      },
+      {
+        "from": "SP22",
+        "to": "SP23",
+        "preserved": true
+      },
+      {
+        "from": "SP23",
+        "to": "SP24",
+        "preserved": true
+      },
+      {
+        "from": "SP25",
+        "to": "SP26",
+        "preserved": true
+      },
+      {
+        "from": "SP27",
+        "to": "SP29",
+        "preserved": true
+      },
+      {
+        "from": "SP29",
+        "to": "SP33",
+        "preserved": true
+      },
+      {
+        "from": "SP34",
+        "to": "SP35",
+        "preserved": true
+      },
+      {
+        "from": "SP35",
+        "to": "SP36",
+        "preserved": true
+      },
+      {
+        "from": "SP37",
+        "to": "SP38",
+        "preserved": true
+      },
+      {
+        "from": "SP38",
+        "to": "SP39",
+        "preserved": true
+      },
+      {
+        "from": "SP39",
+        "to": "SP40",
+        "preserved": true
+      },
+      {
+        "from": "SP41",
+        "to": "SP43",
+        "preserved": true
+      },
+      {
+        "from": "SP44",
+        "to": "SP45",
+        "preserved": true
+      },
+      {
+        "from": "SP46",
+        "to": "SP47",
+        "preserved": true
+      },
+      {
+        "from": "SP47",
+        "to": "SP48",
+        "preserved": true
+      },
+      {
+        "from": "SP49",
+        "to": "SP50",
+        "preserved": true
+      },
+      {
+        "from": "SP50",
+        "to": "SP51",
+        "preserved": true
+      },
+      {
+        "from": "SP52",
+        "to": "SP53",
+        "preserved": true
+      },
+      {
+        "from": "SP53",
+        "to": "SP54",
+        "preserved": true
+      },
+      {
+        "from": "SP55",
+        "to": "SP56",
+        "preserved": true
+      },
+      {
+        "from": "SP57",
+        "to": "SP58",
+        "preserved": true
+      },
+      {
+        "from": "SP58",
+        "to": "SP59",
+        "preserved": true
+      },
+      {
+        "from": "SP60",
+        "to": "SP61",
+        "preserved": true
+      },
+      {
+        "from": "SP61",
+        "to": "SP62",
+        "preserved": true
+      }
+    ],
+    "pageHolds": [
+      {
+        "page": "scope",
+        "lastShot": "SP03",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "endpoint-input",
+        "lastShot": "SP06",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "endpoint-report",
+        "lastShot": "SP09",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "interior-input",
+        "lastShot": "SP12",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "range",
+        "lastShot": "SP14",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "meeting-input",
+        "lastShot": "SP17",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "queue",
+        "lastShot": "SP20",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "roles",
+        "lastShot": "SP24",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "old-block",
+        "lastShot": "SP26",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "block-reuse",
+        "lastShot": "SP33",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "height-search",
+        "lastShot": "SP36",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "collect",
+        "lastShot": "SP40",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "pairs",
+        "lastShot": "SP43",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "truth",
+        "lastShot": "SP45",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "unique",
+        "lastShot": "SP48",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "points-input",
+        "lastShot": "SP51",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "points-report",
+        "lastShot": "SP54",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "pure-points",
+        "lastShot": "SP56",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "point-endpoints",
+        "lastShot": "SP59",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      },
+      {
+        "page": "closing",
+        "lastShot": "SP62",
+        "requiredSeconds": 3,
+        "actualSilentPreviewSeconds": 3,
+        "lastCaptionRetained": true
+      }
+    ],
+    "thinkingWindows": [
+      {
+        "id": "SP61",
+        "seconds": 8
+      }
+    ],
+    "runtimeAudioSync": "not-verified; production composition has no audio and uses provisional captions",
+    "semanticActionSync": "not-verified; production targets use caption slots rather than measured speech",
+    "captionChangesRequired": [
+      "SP06",
+      "SP17",
+      "SP24",
+      "SP37",
+      "SP52",
+      "SP53",
+      "SP55"
+    ]
+  }
+}

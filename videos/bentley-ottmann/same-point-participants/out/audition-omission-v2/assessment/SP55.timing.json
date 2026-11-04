@@ -1,0 +1,1113 @@
+{
+  "audioFile": "SP55.wav",
+  "audioSha256": "b6b4491f18c76cb954c9563b73a6e1d9a4b3d934f13a43c193c6d23e49e0e140",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "duration": 13.37,
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "fingerprint": "1e798557fcaed6803a4786e7a173b22d293331235f6b90485c2eb2352fe382e6",
+  "speech": "如果只取点输入 Z 一 和点输入 Z 二。没有非零线段。仍报告这一对对应 P。两侧活动顺序都为空。不能因为没有旧块或新块。就把当前点配对跳过去。",
+  "words": [
+    {
+      "text": "如果",
+      "startMs": 70,
+      "durationMs": 320,
+      "textOffset": 0,
+      "wordLength": 2
+    },
+    {
+      "text": "只取",
+      "startMs": 390,
+      "durationMs": 320,
+      "textOffset": 2,
+      "wordLength": 2
+    },
+    {
+      "text": "点",
+      "startMs": 710,
+      "durationMs": 200,
+      "textOffset": 4,
+      "wordLength": 1
+    },
+    {
+      "text": "输入",
+      "startMs": 910,
+      "durationMs": 520,
+      "textOffset": 5,
+      "wordLength": 2
+    },
+    {
+      "text": " ",
+      "startMs": 1430,
+      "durationMs": 0,
+      "textOffset": 7,
+      "wordLength": 1
+    },
+    {
+      "text": "Z",
+      "startMs": 1430,
+      "durationMs": 200,
+      "textOffset": 8,
+      "wordLength": 1
+    },
+    {
+      "text": "一",
+      "startMs": 1630,
+      "durationMs": 200,
+      "textOffset": 10,
+      "wordLength": 1
+    },
+    {
+      "text": "和",
+      "startMs": 1830,
+      "durationMs": 120,
+      "textOffset": 12,
+      "wordLength": 1
+    },
+    {
+      "text": "点",
+      "startMs": 1950,
+      "durationMs": 200,
+      "textOffset": 13,
+      "wordLength": 1
+    },
+    {
+      "text": "输入",
+      "startMs": 2150,
+      "durationMs": 480,
+      "textOffset": 14,
+      "wordLength": 2
+    },
+    {
+      "text": " ",
+      "startMs": 2630,
+      "durationMs": 0,
+      "textOffset": 16,
+      "wordLength": 1
+    },
+    {
+      "text": "Z",
+      "startMs": 2630,
+      "durationMs": 239,
+      "textOffset": 17,
+      "wordLength": 1
+    },
+    {
+      "text": "二",
+      "startMs": 2869,
+      "durationMs": 241,
+      "textOffset": 19,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 3110,
+      "durationMs": 0,
+      "textOffset": 20,
+      "wordLength": 1
+    },
+    {
+      "text": "没",
+      "startMs": 3378,
+      "durationMs": 240,
+      "textOffset": 21,
+      "wordLength": 1
+    },
+    {
+      "text": "有",
+      "startMs": 3618,
+      "durationMs": 160,
+      "textOffset": 22,
+      "wordLength": 1
+    },
+    {
+      "text": "非",
+      "startMs": 3778,
+      "durationMs": 160,
+      "textOffset": 23,
+      "wordLength": 1
+    },
+    {
+      "text": "零线段",
+      "startMs": 3938,
+      "durationMs": 720,
+      "textOffset": 24,
+      "wordLength": 3
+    },
+    {
+      "text": "。",
+      "startMs": 4658,
+      "durationMs": 0,
+      "textOffset": 27,
+      "wordLength": 1
+    },
+    {
+      "text": "仍",
+      "startMs": 4998,
+      "durationMs": 280,
+      "textOffset": 28,
+      "wordLength": 1
+    },
+    {
+      "text": "报告",
+      "startMs": 5278,
+      "durationMs": 360,
+      "textOffset": 29,
+      "wordLength": 2
+    },
+    {
+      "text": "这",
+      "startMs": 5638,
+      "durationMs": 120,
+      "textOffset": 31,
+      "wordLength": 1
+    },
+    {
+      "text": "一对",
+      "startMs": 5758,
+      "durationMs": 320,
+      "textOffset": 32,
+      "wordLength": 2
+    },
+    {
+      "text": "对应",
+      "startMs": 6078,
+      "durationMs": 320,
+      "textOffset": 34,
+      "wordLength": 2
+    },
+    {
+      "text": "P",
+      "textOffset": 37,
+      "wordLength": 1,
+      "startMs": 6470,
+      "durationMs": 360
+    },
+    {
+      "text": "。",
+      "startMs": 6398,
+      "durationMs": 0,
+      "textOffset": 38,
+      "wordLength": 1
+    },
+    {
+      "text": "两",
+      "startMs": 7189,
+      "durationMs": 240,
+      "textOffset": 39,
+      "wordLength": 1
+    },
+    {
+      "text": "侧",
+      "startMs": 7429,
+      "durationMs": 200,
+      "textOffset": 40,
+      "wordLength": 1
+    },
+    {
+      "text": "活动",
+      "startMs": 7629,
+      "durationMs": 320,
+      "textOffset": 41,
+      "wordLength": 2
+    },
+    {
+      "text": "顺序",
+      "startMs": 7949,
+      "durationMs": 320,
+      "textOffset": 43,
+      "wordLength": 2
+    },
+    {
+      "text": "都",
+      "startMs": 8269,
+      "durationMs": 160,
+      "textOffset": 45,
+      "wordLength": 1
+    },
+    {
+      "text": "为空",
+      "startMs": 8429,
+      "durationMs": 520,
+      "textOffset": 46,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 8949,
+      "durationMs": 0,
+      "textOffset": 48,
+      "wordLength": 1
+    },
+    {
+      "text": "不",
+      "startMs": 9238,
+      "durationMs": 200,
+      "textOffset": 49,
+      "wordLength": 1
+    },
+    {
+      "text": "能",
+      "startMs": 9438,
+      "durationMs": 120,
+      "textOffset": 50,
+      "wordLength": 1
+    },
+    {
+      "text": "因为",
+      "startMs": 9558,
+      "durationMs": 240,
+      "textOffset": 51,
+      "wordLength": 2
+    },
+    {
+      "text": "没",
+      "startMs": 9798,
+      "durationMs": 160,
+      "textOffset": 53,
+      "wordLength": 1
+    },
+    {
+      "text": "有旧",
+      "startMs": 9958,
+      "durationMs": 240,
+      "textOffset": 54,
+      "wordLength": 2
+    },
+    {
+      "text": "块",
+      "startMs": 10198,
+      "durationMs": 200,
+      "textOffset": 56,
+      "wordLength": 1
+    },
+    {
+      "text": "或",
+      "startMs": 10398,
+      "durationMs": 120,
+      "textOffset": 57,
+      "wordLength": 1
+    },
+    {
+      "text": "新",
+      "startMs": 10518,
+      "durationMs": 160,
+      "textOffset": 58,
+      "wordLength": 1
+    },
+    {
+      "text": "块",
+      "startMs": 10678,
+      "durationMs": 360,
+      "textOffset": 59,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 11038,
+      "durationMs": 0,
+      "textOffset": 60,
+      "wordLength": 1
+    },
+    {
+      "text": "就",
+      "startMs": 11308,
+      "durationMs": 200,
+      "textOffset": 61,
+      "wordLength": 1
+    },
+    {
+      "text": "把",
+      "startMs": 11508,
+      "durationMs": 120,
+      "textOffset": 62,
+      "wordLength": 1
+    },
+    {
+      "text": "当前",
+      "startMs": 11628,
+      "durationMs": 400,
+      "textOffset": 63,
+      "wordLength": 2
+    },
+    {
+      "text": "点",
+      "startMs": 12028,
+      "durationMs": 200,
+      "textOffset": 65,
+      "wordLength": 1
+    },
+    {
+      "text": "配对",
+      "startMs": 12228,
+      "durationMs": 360,
+      "textOffset": 66,
+      "wordLength": 2
+    },
+    {
+      "text": "跳过去",
+      "startMs": 12588,
+      "durationMs": 720,
+      "textOffset": 68,
+      "wordLength": 3
+    },
+    {
+      "text": "。",
+      "startMs": 13308,
+      "durationMs": 0,
+      "textOffset": 71,
+      "wordLength": 1
+    }
+  ],
+  "alignment": {
+    "method": "azure-pronunciation-assessment",
+    "audioSha256": "b6b4491f18c76cb954c9563b73a6e1d9a4b3d934f13a43c193c6d23e49e0e140",
+    "synthesisWords": [
+      {
+        "text": "如果",
+        "startMs": 70,
+        "durationMs": 320,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "只取",
+        "startMs": 390,
+        "durationMs": 320,
+        "textOffset": 2,
+        "wordLength": 2
+      },
+      {
+        "text": "点",
+        "startMs": 710,
+        "durationMs": 200,
+        "textOffset": 4,
+        "wordLength": 1
+      },
+      {
+        "text": "输入",
+        "startMs": 910,
+        "durationMs": 520,
+        "textOffset": 5,
+        "wordLength": 2
+      },
+      {
+        "text": " ",
+        "startMs": 1430,
+        "durationMs": 0,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "Z",
+        "startMs": 1430,
+        "durationMs": 200,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "一",
+        "startMs": 1630,
+        "durationMs": 200,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "和",
+        "startMs": 1830,
+        "durationMs": 120,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "点",
+        "startMs": 1950,
+        "durationMs": 200,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "输入",
+        "startMs": 2150,
+        "durationMs": 480,
+        "textOffset": 14,
+        "wordLength": 2
+      },
+      {
+        "text": " ",
+        "startMs": 2630,
+        "durationMs": 0,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "Z",
+        "startMs": 2630,
+        "durationMs": 239,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "二",
+        "startMs": 2869,
+        "durationMs": 241,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 3110,
+        "durationMs": 0,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "没",
+        "startMs": 3378,
+        "durationMs": 240,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "有",
+        "startMs": 3618,
+        "durationMs": 160,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "非",
+        "startMs": 3778,
+        "durationMs": 160,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "零线段",
+        "startMs": 3938,
+        "durationMs": 720,
+        "textOffset": 24,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 4658,
+        "durationMs": 0,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "仍",
+        "startMs": 4998,
+        "durationMs": 280,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "报告",
+        "startMs": 5278,
+        "durationMs": 360,
+        "textOffset": 29,
+        "wordLength": 2
+      },
+      {
+        "text": "这",
+        "startMs": 5638,
+        "durationMs": 120,
+        "textOffset": 31,
+        "wordLength": 1
+      },
+      {
+        "text": "一对",
+        "startMs": 5758,
+        "durationMs": 320,
+        "textOffset": 32,
+        "wordLength": 2
+      },
+      {
+        "text": "对应",
+        "startMs": 6078,
+        "durationMs": 320,
+        "textOffset": 34,
+        "wordLength": 2
+      },
+      {
+        "text": "P",
+        "startMs": 6398,
+        "durationMs": 0,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 6398,
+        "durationMs": 0,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "两",
+        "startMs": 7189,
+        "durationMs": 240,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "侧",
+        "startMs": 7429,
+        "durationMs": 200,
+        "textOffset": 40,
+        "wordLength": 1
+      },
+      {
+        "text": "活动",
+        "startMs": 7629,
+        "durationMs": 320,
+        "textOffset": 41,
+        "wordLength": 2
+      },
+      {
+        "text": "顺序",
+        "startMs": 7949,
+        "durationMs": 320,
+        "textOffset": 43,
+        "wordLength": 2
+      },
+      {
+        "text": "都",
+        "startMs": 8269,
+        "durationMs": 160,
+        "textOffset": 45,
+        "wordLength": 1
+      },
+      {
+        "text": "为空",
+        "startMs": 8429,
+        "durationMs": 520,
+        "textOffset": 46,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 8949,
+        "durationMs": 0,
+        "textOffset": 48,
+        "wordLength": 1
+      },
+      {
+        "text": "不",
+        "startMs": 9238,
+        "durationMs": 200,
+        "textOffset": 49,
+        "wordLength": 1
+      },
+      {
+        "text": "能",
+        "startMs": 9438,
+        "durationMs": 120,
+        "textOffset": 50,
+        "wordLength": 1
+      },
+      {
+        "text": "因为",
+        "startMs": 9558,
+        "durationMs": 240,
+        "textOffset": 51,
+        "wordLength": 2
+      },
+      {
+        "text": "没",
+        "startMs": 9798,
+        "durationMs": 160,
+        "textOffset": 53,
+        "wordLength": 1
+      },
+      {
+        "text": "有旧",
+        "startMs": 9958,
+        "durationMs": 240,
+        "textOffset": 54,
+        "wordLength": 2
+      },
+      {
+        "text": "块",
+        "startMs": 10198,
+        "durationMs": 200,
+        "textOffset": 56,
+        "wordLength": 1
+      },
+      {
+        "text": "或",
+        "startMs": 10398,
+        "durationMs": 120,
+        "textOffset": 57,
+        "wordLength": 1
+      },
+      {
+        "text": "新",
+        "startMs": 10518,
+        "durationMs": 160,
+        "textOffset": 58,
+        "wordLength": 1
+      },
+      {
+        "text": "块",
+        "startMs": 10678,
+        "durationMs": 360,
+        "textOffset": 59,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 11038,
+        "durationMs": 0,
+        "textOffset": 60,
+        "wordLength": 1
+      },
+      {
+        "text": "就",
+        "startMs": 11308,
+        "durationMs": 200,
+        "textOffset": 61,
+        "wordLength": 1
+      },
+      {
+        "text": "把",
+        "startMs": 11508,
+        "durationMs": 120,
+        "textOffset": 62,
+        "wordLength": 1
+      },
+      {
+        "text": "当前",
+        "startMs": 11628,
+        "durationMs": 400,
+        "textOffset": 63,
+        "wordLength": 2
+      },
+      {
+        "text": "点",
+        "startMs": 12028,
+        "durationMs": 200,
+        "textOffset": 65,
+        "wordLength": 1
+      },
+      {
+        "text": "配对",
+        "startMs": 12228,
+        "durationMs": 360,
+        "textOffset": 66,
+        "wordLength": 2
+      },
+      {
+        "text": "跳过去",
+        "startMs": 12588,
+        "durationMs": 720,
+        "textOffset": 68,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 13308,
+        "durationMs": 0,
+        "textOffset": 71,
+        "wordLength": 1
+      }
+    ],
+    "response": {
+      "Id": "199c0faa91b54151b5b1fede3e323b52",
+      "RecognitionStatus": "Success",
+      "Offset": 400000,
+      "Duration": 133000000,
+      "Channel": 0,
+      "DisplayText": "如果只取点输入Z1和点输入Z2没有非零线段，仍报告这一对对应P两侧活动顺序都为空，不能因为没有旧块或新块就把当前点配对跳过去。",
+      "SNR": 40.77702,
+      "NBest": [
+        {
+          "Confidence": 0.9723708,
+          "Lexical": "如果 只 取点 输入 Z 一 和点 输入 Z 二 没有 非 零线 段 仍 报告 这 一对 对应 P 两侧 活动 顺序 都 为 空 不能 因为 没有 旧 块 或 新 块 就 把 当前 点 配对 跳 过去",
+          "ITN": "如果 只 取点 输入 Z1 和点 输入 Z2 没有 非 零线 段 仍 报告 这 一对 对应 P 两侧 活动 顺序 都 为 空 不能 因为 没有 旧 块 或 新 块 就 把 当前 点 配对 跳 过去",
+          "MaskedITN": "如果只取点输入z1和点输入z2没有非零线段仍报告这一对对应p两侧活动顺序都为空不能因为没有旧块或新块就把当前点配对跳过去",
+          "Display": "如果只取点输入Z1和点输入Z2没有非零线段，仍报告这一对对应P两侧活动顺序都为空，不能因为没有旧块或新块就把当前点配对跳过去。",
+          "PronunciationAssessment": {
+            "AccuracyScore": 96,
+            "FluencyScore": 90,
+            "CompletenessScore": 100,
+            "PronScore": 93.2
+          },
+          "Words": [
+            {
+              "Word": "如果",
+              "Offset": 400000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "只",
+              "Offset": 3800000,
+              "Duration": 2100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "取点",
+              "Offset": 6000000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "输入",
+              "Offset": 9200000,
+              "Duration": 4900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "Z",
+              "Offset": 14400000,
+              "Duration": 2300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "一",
+              "Offset": 16800000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "和点",
+              "Offset": 18400000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "输入",
+              "Offset": 21800000,
+              "Duration": 4600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "Z",
+              "Offset": 26500000,
+              "Duration": 1800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "二",
+              "Offset": 28400000,
+              "Duration": 3600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "没有",
+              "Offset": 33400000,
+              "Duration": 5000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "非",
+              "Offset": 38500000,
+              "Duration": 1800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "零线",
+              "Offset": 40400000,
+              "Duration": 3900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 88,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "段",
+              "Offset": 44400000,
+              "Duration": 3400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "仍",
+              "Offset": 49800000,
+              "Duration": 3600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "报告",
+              "Offset": 53500000,
+              "Duration": 3600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 76,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "这",
+              "Offset": 57200000,
+              "Duration": 1100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "一对",
+              "Offset": 58400000,
+              "Duration": 3000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 79,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "对应",
+              "Offset": 61500000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "P",
+              "Offset": 64700000,
+              "Duration": 3600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 79,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "两侧",
+              "Offset": 72000000,
+              "Duration": 5300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "活动",
+              "Offset": 77400000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "顺序",
+              "Offset": 80600000,
+              "Duration": 3200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "都",
+              "Offset": 83900000,
+              "Duration": 1300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "为",
+              "Offset": 85300000,
+              "Duration": 1400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "空",
+              "Offset": 86800000,
+              "Duration": 3900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不能",
+              "Offset": 91800000,
+              "Duration": 4400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "因为",
+              "Offset": 96300000,
+              "Duration": 2600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "没有",
+              "Offset": 99000000,
+              "Duration": 2500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "旧",
+              "Offset": 101600000,
+              "Duration": 1100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "块",
+              "Offset": 102800000,
+              "Duration": 1700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "或",
+              "Offset": 104600000,
+              "Duration": 1300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "新",
+              "Offset": 106000000,
+              "Duration": 1900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "块",
+              "Offset": 108000000,
+              "Duration": 3400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "就",
+              "Offset": 113000000,
+              "Duration": 2800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "把",
+              "Offset": 115900000,
+              "Duration": 1200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "当前",
+              "Offset": 117200000,
+              "Duration": 3900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "点",
+              "Offset": 121200000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "配对",
+              "Offset": 122800000,
+              "Duration": 3900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "跳",
+              "Offset": 126800000,
+              "Duration": 2100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "过去",
+              "Offset": 129000000,
+              "Duration": 4400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pronunciationReview": "pending-listening"
+  }
+}

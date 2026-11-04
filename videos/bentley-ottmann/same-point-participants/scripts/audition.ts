@@ -24,7 +24,11 @@ import speech from "../src/speech-text.json" with { type: "json" };
 import sentences from "../src/sentence-plan.json" with { type: "json" };
 import { shots } from "../src/storyboard.ts";
 
-export type AuditionVersion = "ipa-chinese-v1" | "omission-v2";
+export type AuditionVersion =
+  | "ipa-chinese-v1"
+  | "omission-v2"
+  | "context-v3"
+  | "context-v4";
 export const auditionRootFor = (version: AuditionVersion) =>
   new URL(`../out/audition-${version}/`, import.meta.url);
 export const auditionRoot = auditionRootFor("ipa-chinese-v1");
@@ -135,6 +139,35 @@ function replaceParts(
 }
 
 export function buildAuditionPlan(version: AuditionVersion = "ipa-chinese-v1") {
+  if (version === "context-v3" || version === "context-v4") {
+    const source = readFileSync(
+      new URL(`./audition-${version}-plan.json`, import.meta.url),
+      "utf8",
+    );
+    assert.equal(
+      hash(source),
+      version === "context-v4"
+        ? "041f1fdec6d585cbabe12167135cf1522c0a550edd64d5ef1be49504c1fed348"
+        : "24a8d5b93ded581b01153cf6535576f7d5e3072c16d80acebe77f1a408315ab5",
+    );
+    const plan = JSON.parse(source) as ReturnType<typeof buildOmissionPlan>;
+    assert.deepEqual(
+      plan.documents.map((d: { id: string }) => d.id),
+      version === "context-v4" ? ["SP37"] : ["SP37", "SP53"],
+    );
+    const { buildSpeechDocument } = createSpeechTools(sdk, {
+      voice: plan.voice,
+      commas: "document",
+      fingerprint: true,
+    });
+    for (const document of plan.documents) {
+      const rebuilt = buildSpeechDocument(document.input, document.id);
+      assert.equal(rebuilt.text, document.text);
+      assert.equal(rebuilt.ssml, document.ssml);
+      assert.equal(rebuilt.fingerprint, document.fingerprint);
+    }
+    return plan;
+  }
   if (version === "omission-v2") return buildOmissionPlan();
   return buildIpaPlan();
 }
@@ -422,7 +455,12 @@ async function run() {
   const version =
     process.argv.find((a) => a.startsWith("--version="))?.slice(10) ??
     "ipa-chinese-v1";
-  assert(version === "ipa-chinese-v1" || version === "omission-v2");
+  assert(
+    version === "ipa-chinese-v1" ||
+      version === "omission-v2" ||
+      version === "context-v3" ||
+      version === "context-v4",
+  );
   const auditionRoot = auditionRootFor(version);
   const plan = buildAuditionPlan(version);
   const planBytes = bytes(plan),

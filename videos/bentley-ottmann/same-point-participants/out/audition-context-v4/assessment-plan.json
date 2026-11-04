@@ -1,0 +1,19 @@
+{
+  "planSha256": "041f1fdec6d585cbabe12167135cf1522c0a550edd64d5ef1be49504c1fed348",
+  "language": "zh-CN",
+  "gradingSystem": "HundredMark",
+  "granularity": "Word",
+  "enableMiscue": true,
+  "concurrency": 1,
+  "automaticRetries": 0,
+  "requests": [
+    {
+      "id": "SP37",
+      "audioFile": "SP37.wav",
+      "audioSha256": "abb3d1ef7e4e0907f85e44cbd251513204db59323ffecc3852c211baaedbdf8c",
+      "duration": 18.29,
+      "fingerprint": "24400ccee9d25b70e147e15a65f0d3566b1ffc15269c294236f84e56126391c3",
+      "referenceText": "取得整个旧块后。再合并清单中从 P 开始的非零输入。本例旧块中的三份输入分别是 D、A 和 C。再把作为开始者的输入 B 加入名单。合并后得到四份参与者。结束者 A 仍然留在名单中。直到当前配对完成。"
+    }
+  ]
+}
