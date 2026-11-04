@@ -38,6 +38,7 @@
     "video:check-synthesis": "node scripts/check-synthesis.ts",
     "video:assessment": "node scripts/assessment.ts",
     "video:reconcile-assessment": "node scripts/reconcile-assessment.ts",
+    "video:audition": "node scripts/audition.ts",
     "video:check-content": "node scripts/check-content.ts",
     "video:check-layout": "node scripts/check-layout.ts"
   },
