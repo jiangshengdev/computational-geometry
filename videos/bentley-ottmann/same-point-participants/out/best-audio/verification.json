@@ -689,10 +689,9 @@
     ]
   },
   "notCompleted": [
-    "actual listening (waived by user)",
-    "continuous preview synchronization acceptance: observed SP35 clock discrepancy",
-    "visible desktop acceptance (only approved Headless Shell was used)",
-    "rendered final-video acceptance: no user-exported file supplied"
+    "actual listening (waived for this audio task by user)",
+    "historical intermittent SP35 root cause/resolution: not reproduced in this fully instrumented continuous run, absence not proven",
+    "human/visible final-video acceptance: user-exported file not supplied"
   ],
   "issues": {
     "334": "unchanged",
@@ -755,5 +754,23 @@
     "mediaSeekOrStallEvents": 0,
     "productionFixApplied": false,
     "status": "not reproduced; original intermittent discrepancy unresolved"
+  },
+  "instrumentedFullPlaybackRecheck": {
+    "criteria": "full-clock-recheck.criteria.json",
+    "summary": "full-clock-recheck.summary.json",
+    "raw": "full-clock-recheck.raw.json",
+    "complete": true,
+    "firstFrame": 0,
+    "lastFrame": 61218,
+    "samples": 11274,
+    "endedClips": 57,
+    "DOMMismatches": 0,
+    "mediaDiagnosticEvents": 0,
+    "SP35MaxDriftSeconds": 0.1331800000000003,
+    "wholeRunMaxDriftSeconds": 0.369441666666666,
+    "predeclaredSignalsDetected": false,
+    "historicalIntermittentIssueProvenAbsent": false,
+    "productionFixApplied": false,
+    "independentEvidenceReview": "Passed: pre-run criteria/hash, raw sample counts, media events, SP35 subset comparison and stated limitations independently recalculated; no material findings. Not a PR approval or final-video acceptance."
   }
 }
