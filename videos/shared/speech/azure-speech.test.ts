@@ -1,7 +1,64 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import type * as SDK from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "./azure-speech.ts";
+
+test("successful audio without word events can be retained exclusively without weakening defaults", () => {
+  // Credentials and files are isolated from the test process; the SDK is fake.
+  execFileSync(
+    process.execPath,
+    [
+      "--input-type=module",
+      "-e",
+      `
+        import assert from 'node:assert/strict';
+        import { mkdtempSync, existsSync, readFileSync, rmSync } from 'node:fs';
+        import { tmpdir } from 'node:os';
+        import { join } from 'node:path';
+        import { createSpeechTools } from ${JSON.stringify(new URL("./azure-speech.ts", import.meta.url).href)};
+        let calls = 0;
+        const sdk = {
+          SpeechConfig: { fromEndpoint: () => ({ setProperty() {} }) },
+          SpeechSynthesisOutputFormat: { Riff48Khz16BitMonoPcm: 1 },
+          PropertyId: { SpeechServiceResponse_RequestWordBoundary: 1 },
+          ResultReason: { SynthesizingAudioCompleted: 1 },
+          SpeechSynthesizer: class {
+            speakSsmlAsync(_ssml, success) {
+              calls++;
+              success({ reason: 1, audioData: Buffer.from('original WAV bytes') });
+            }
+            close() {}
+          },
+        };
+        const { synthesize } = createSpeechTools(sdk, {
+          voice: 'test', commas: 'document', fingerprint: true,
+        });
+        const root = mkdtempSync(join(tmpdir(), 'speech-source-'));
+        const destination = join(root, 'sample.wav');
+        try {
+          await assert.rejects(synthesize('测试。', destination), /no word boundaries/);
+          assert.equal(existsSync(destination), false);
+          const options = { requireWordBoundaries: false, exclusive: true };
+          assert.deepEqual(await synthesize('测试。', destination, options), []);
+          assert.equal(readFileSync(destination, 'utf8'), 'original WAV bytes');
+          await assert.rejects(synthesize('测试。', destination, options), { code: 'EEXIST' });
+          assert.equal(readFileSync(destination, 'utf8'), 'original WAV bytes');
+          assert.equal(calls, 3);
+        } finally { rmSync(root, { recursive: true, force: true }); }
+      `,
+    ],
+    {
+      env: {
+        ...process.env,
+        AZURE_SPEECH_KEY: "fake-test-key",
+        AZURE_SPEECH_ENDPOINT: "https://test.api.cognitive.microsoft.com",
+        AZURE_SPEECH_VOICE: "test",
+      },
+      stdio: "pipe",
+    },
+  );
+});
 
 test("explicit letter IPA preserves reference text and leaves default spelling unchanged", () => {
   const { buildSpeechDocument } = createSpeechTools({} as typeof SDK, {

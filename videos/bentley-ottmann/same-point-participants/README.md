@@ -60,6 +60,16 @@ pnpm --config.verify-deps-before-run=false run video:plan-narration --dry-run
 上述指纹仅绑定本次合成前准备；正式合成仍须按 #336 的请求计划确认门禁推进。
 识别与发音评估须绑定后续真实音频及其哈希另行规划，不能把本计划或旧静默检查当作音频与同步验收。
 
+### 已确认计划的正式合成
+
+`video:synthesize-approved --dry-run` 重新运行既有规划校验，并逐项比较实际合成输入与上述完整快照；只有显式传入该快照 SHA-256 的执行参数才请求服务。使用共享 SSML、句界停顿及合成实现；本集显式允许保留缺少词边界的成功音频，并采用独占文件写入。已有调用方仍保留原来的词边界要求。
+
+本次按用户确认完成 57 次串行正式合成，无失败、无自动重试。原始 WAV、词事件与素材清单位于被忽略的 `out/synthesis-39f9c1e2fc2d/`，文件未裁切或调速；源音频合计 855.53 秒，不代表成片时长。全部素材通过 PCM 格式、完整解码、实测时长和音频哈希核对。
+
+`video:check-synthesis` 只读核对素材；显式追加 `--write-report` 时独占写入 `source-check.json`，不请求服务或修补时间。现有词时间校验为 11 段通过、46 段失败，包含零时长词事件或文本偏移异常；校验命令因此返回非零，不将成功合成等同于时间线可用，也不据此判定实际漏读。完整事件和失败证据均保留，未补造时间或重新合成。
+
+这些源素材仍在暂存区，尚未执行识别、发音评估和实际整句试听，也未接入生产字幕、语义动作与时间线。后续须基于本批真实音频及哈希另行规划所需服务请求。
+
 在本目录使用已安装依赖运行：
 
 ```sh
@@ -70,6 +80,6 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 
 布局检查使用当前 Remotion 对应的已安装 Chrome Headless Shell，在独立临时端口启动无头 Studio，检查真实生产组件。附加 `-- --shots=SP08,SP53 --screenshots` 可检查指定步骤并保存浏览器 DOM 截图，不执行视频或静帧渲染。
 
-正式执行与审校证据记录在 #335，完成状态以该票当前记录为准。音频与同步由 [#336](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/336) 承接，整体验收由 [#337](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/337) 承接。本工程尚无正式配音、实测词时间或音画同步验收；没有执行视频渲染、成片或可见桌面验收。
+文案与画面执行及审校证据记录在 #335，完成状态以该票当前记录为准。音频与同步由 [#336](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/336) 承接，整体验收由 [#337](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/337) 承接。本工程已有上述正式合成源素材暂存，当前生产组件仍为无配音预览；尚未完成可用词时间、实际读音或音画同步验收，没有执行视频渲染、成片或可见桌面验收。
 
 共享命令与浏览器约束见 [工程操作说明](../../../docs/agents/videos/operations.md) 和 [视频制作配置](../../../docs/agents/videos/configuration.md)。

@@ -34,6 +34,8 @@
     "lint": "eslint src scripts && tsc",
     "video:sentence-plan": "node scripts/prepare-sentence-plan.ts",
     "video:plan-narration": "node scripts/plan-narration.ts",
+    "video:synthesize-approved": "node scripts/synthesize-approved.ts",
+    "video:check-synthesis": "node scripts/check-synthesis.ts",
     "video:check-content": "node scripts/check-content.ts",
     "video:check-layout": "node scripts/check-layout.ts"
   },

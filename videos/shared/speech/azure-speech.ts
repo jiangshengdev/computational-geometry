@@ -141,7 +141,11 @@ export function createSpeechTools<Fingerprint extends boolean>(
     ) as SpeechDocument<Fingerprint>;
   }
 
-  async function synthesize(input: unknown, destination: string) {
+  async function synthesize(
+    input: unknown,
+    destination: string,
+    { requireWordBoundaries = true, exclusive = false } = {},
+  ) {
     const { ssml } = buildSpeechDocument(input);
     const key = process.env.AZURE_SPEECH_KEY;
     const endpoint = process.env.AZURE_SPEECH_ENDPOINT;
@@ -202,9 +206,11 @@ export function createSpeechTools<Fingerprint extends boolean>(
       );
       if (result.reason !== sdk.ResultReason.SynthesizingAudioCompleted)
         throw new Error(`Azure synthesis failed: ${result.errorDetails}`);
-      if (!boundaries.length)
+      if (requireWordBoundaries && !boundaries.length)
         throw new Error("Azure returned no word boundaries");
-      writeFileSync(destination, Buffer.from(result.audioData));
+      writeFileSync(destination, Buffer.from(result.audioData), {
+        flag: exclusive ? "wx" : "w",
+      });
       return boundaries;
     } finally {
       clearTimeout(timeout);
