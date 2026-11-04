@@ -1,4 +1,10 @@
 import assert from "node:assert/strict";
+import {
+  aliasReferenceText,
+  mapAliasWords,
+  type SpeechAlias,
+} from "./speech-alias.ts";
+type AliasDocument = { synthesisText?: string; aliases?: SpeechAlias[] };
 import { createHash } from "node:crypto";
 import {
   constants,
@@ -29,7 +35,9 @@ export type AuditionVersion =
   | "omission-v2"
   | "context-v3"
   | "context-v4"
-  | "context-v5";
+  | "context-v5"
+  | "context-v6"
+  | "context-v7";
 export const auditionRootFor = (version: AuditionVersion) =>
   new URL(`../out/audition-${version}/`, import.meta.url);
 export const auditionRoot = auditionRootFor("ipa-chinese-v1");
@@ -143,7 +151,9 @@ export function buildAuditionPlan(version: AuditionVersion = "ipa-chinese-v1") {
   if (
     version === "context-v3" ||
     version === "context-v4" ||
-    version === "context-v5"
+    version === "context-v5" ||
+    version === "context-v6" ||
+    version === "context-v7"
   ) {
     const source = readFileSync(
       new URL(`./audition-${version}-plan.json`, import.meta.url),
@@ -151,20 +161,28 @@ export function buildAuditionPlan(version: AuditionVersion = "ipa-chinese-v1") {
     );
     assert.equal(
       hash(source),
-      version === "context-v5"
-        ? "0e15a0404f994f858ba2a3baf3902956ff3e58de63cdc79f00efe64875ee8730"
-        : version === "context-v4"
-          ? "041f1fdec6d585cbabe12167135cf1522c0a550edd64d5ef1be49504c1fed348"
-          : "24a8d5b93ded581b01153cf6535576f7d5e3072c16d80acebe77f1a408315ab5",
+      version === "context-v7"
+        ? "9527205ebdc8a7057fdbc9f250df64bc0177986a9617c87c2ba1f92f8ef0bf84"
+        : version === "context-v6"
+          ? "7dad4f73fe385a678b07fcdc94825d242898c9a4e6c606c69537390983fd1173"
+          : version === "context-v5"
+            ? "0e15a0404f994f858ba2a3baf3902956ff3e58de63cdc79f00efe64875ee8730"
+            : version === "context-v4"
+              ? "041f1fdec6d585cbabe12167135cf1522c0a550edd64d5ef1be49504c1fed348"
+              : "24a8d5b93ded581b01153cf6535576f7d5e3072c16d80acebe77f1a408315ab5",
     );
     const plan = JSON.parse(source) as ReturnType<typeof buildOmissionPlan>;
     assert.deepEqual(
       plan.documents.map((d: { id: string }) => d.id),
-      version === "context-v5"
-        ? ["SP06", "SP41", "SP58"]
-        : version === "context-v4"
-          ? ["SP37"]
-          : ["SP37", "SP53"],
+      version === "context-v7"
+        ? ["SP41", "SP06"]
+        : version === "context-v6"
+          ? ["SP41", "SP58", "SP06"]
+          : version === "context-v5"
+            ? ["SP06", "SP41", "SP58"]
+            : version === "context-v4"
+              ? ["SP37"]
+              : ["SP37", "SP53"],
     );
     const { buildSpeechDocument } = createSpeechTools(sdk, {
       voice: plan.voice,
@@ -173,7 +191,12 @@ export function buildAuditionPlan(version: AuditionVersion = "ipa-chinese-v1") {
     });
     for (const document of plan.documents) {
       const rebuilt = buildSpeechDocument(document.input, document.id);
-      assert.equal(rebuilt.text, document.text);
+      const alias = document as typeof document & AliasDocument;
+      assert.equal(rebuilt.text, alias.synthesisText ?? document.text);
+      assert.equal(
+        aliasReferenceText(rebuilt.text, alias.aliases ?? []),
+        document.text,
+      );
       assert.equal(rebuilt.ssml, document.ssml);
       assert.equal(rebuilt.fingerprint, document.fingerprint);
     }
@@ -471,7 +494,9 @@ async function run() {
       version === "omission-v2" ||
       version === "context-v3" ||
       version === "context-v4" ||
-      version === "context-v5",
+      version === "context-v5" ||
+      version === "context-v6" ||
+      version === "context-v7",
   );
   const auditionRoot = auditionRootFor(version);
   const plan = buildAuditionPlan(version);
@@ -711,6 +736,42 @@ async function run() {
       constants.COPYFILE_EXCL,
     );
     const raw = read(new URL(`${request.id}.response.json`, synthesisRoot));
+    const document = plan.documents.find((d) => d.id === request.id)!;
+    const alias = document as typeof document & AliasDocument;
+    let words = raw.words;
+    if (alias.aliases?.length) {
+      try {
+        words = mapAliasWords(
+          alias.synthesisText!,
+          request.referenceText,
+          alias.aliases,
+          raw.words,
+        );
+        writeFileSync(
+          new URL(`${request.id}.alias-mapping.json`, root),
+          bytes({
+            sourceResponseSha256: sha(
+              new URL(`${request.id}.response.json`, synthesisRoot),
+            ),
+            synthesisText: alias.synthesisText,
+            referenceText: request.referenceText,
+            aliases: alias.aliases,
+            words,
+            rawEventsPreservedInSynthesisResponse: true,
+          }),
+          { flag: "wx" },
+        );
+      } catch (error) {
+        entry.state = "blocked-offline-alias";
+        entry.alignmentError =
+          error instanceof Error ? error.message : "Alias mapping failed";
+        save();
+        console.log(
+          `${entry.id}: alias mapping blocked; no assessment request`,
+        );
+        continue;
+      }
+    }
     const audio: AudioTiming = {
       audioFile: request.audioFile,
       audioSha256: request.audioSha256,
@@ -719,7 +780,7 @@ async function run() {
       voice: plan.voice,
       fingerprint: request.fingerprint,
       speech: request.referenceText,
-      words: raw.words,
+      words,
     };
     entry.state = "started";
     save();

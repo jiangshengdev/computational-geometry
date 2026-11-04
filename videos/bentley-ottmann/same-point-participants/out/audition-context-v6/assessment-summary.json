@@ -1,0 +1,115 @@
+{
+  "version": "context-v6",
+  "planSha256": "7dad4f73fe385a678b07fcdc94825d242898c9a4e6c606c69537390983fd1173",
+  "assessmentPlanSha256": "4c791d20a92ebf0eec50e4825e54a796639951c546463baf90f989d6e01023b8",
+  "synthesisRequestsSent": 3,
+  "assessmentRequestsSent": 3,
+  "automaticRetries": 0,
+  "results": [
+    {
+      "id": "SP41",
+      "variant": "context-v6",
+      "referenceText": "第一章《逐对检查的基准方法》已经给出无序对的枚举结论。当前名单的四份输入分别是 A、B、C 和 D。它们对应图中的六个不同输入对。每对的交集都是 P。",
+      "synthesisText": "第一章《逐对检查的基准方法》已经给出无序对的枚举结论。当前名单的四份输入分别是 A、B、C 和 D。它们对应图中的六个不同输入对。每对的交集都是 P。",
+      "aliases": [],
+      "audioFile": "out/audition-context-v6/synthesis/SP41.wav",
+      "audioSha256": "ad666e27d4ab3cb36daaa1f39e070c3fc271d7ea1304a3f03338b638d7a18dbe",
+      "responseFile": "out/audition-context-v6/assessment/SP41.wav.assessment.json",
+      "responseSha256": "dbe029429648ccf580e78428fe7c4e241fa928e785c318f3ab454e9ad5627fcf",
+      "fingerprint": "a21df92075e845b14efb9d8dde75730fc0f45b38e24711cb0092e91cf1cee14e",
+      "duration": 13.18,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Omission",
+          "startMs": null,
+          "durationMs": null
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: B (Omission)",
+      "adopted": false
+    },
+    {
+      "id": "SP58",
+      "variant": "context-v6",
+      "referenceText": "再单独取 B 与 Z 一。先报告当前配对。然后只有 B 向右继续。这是另一个两输入案例。与左图分别处理。左图的非零输入记作 A。右图的非零输入记作 B。两次画出的 Z 一 不能算作两个身份。不能把两个案例误拼成四个身份。",
+      "synthesisText": "再单独取 B 与 Z 一。先报告当前配对。然后只有 B 向右继续。这是另一个两输入案例。与左图分别处理。左图的非零输入记作 A。右图的非零输入记作 B。两次画出的 Z 一 不能算作两个身份。不能把两个案例误拼成四个身份。",
+      "aliases": [],
+      "audioFile": "out/audition-context-v6/synthesis/SP58.wav",
+      "audioSha256": "7cca97a7c3a9c128d9bd0a593dc38b4b97b78ab9a164fb0b184402ffe48dac4b",
+      "responseFile": "out/audition-context-v6/assessment/SP58.wav.assessment.json",
+      "responseSha256": "70d5760dbd9d7ed7caeb623ede1f0d035b44486e286af292583ddb8e38e8bf3b",
+      "fingerprint": "a7820e601167a8680efcd85e747a56e7b32b592f32734c82b9c80abe4b0300ab",
+      "duration": 19.58,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation",
+          "startMs": 880,
+          "durationMs": 150
+        },
+        {
+          "text": "报告",
+          "errorType": "Mispronunciation",
+          "startMs": 2380,
+          "durationMs": 330
+        },
+        {
+          "text": "B",
+          "errorType": "Mispronunciation",
+          "startMs": 13800,
+          "durationMs": 410
+        }
+      ],
+      "aligned": true,
+      "alignmentError": null,
+      "adopted": false
+    },
+    {
+      "id": "SP06",
+      "variant": "context-v6",
+      "referenceText": "A 满足纵坐标等于四。横坐标从零到四。另一份输入 B 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。",
+      "synthesisText": "A 满足纵坐标等于四。横坐标从零到四。另一份输入 bee 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。",
+      "aliases": [
+        {
+          "sourceOffset": 25,
+          "spoken": "bee",
+          "letter": "B"
+        }
+      ],
+      "audioFile": "out/audition-context-v6/synthesis/SP06.wav",
+      "audioSha256": "c2e34d6555d2533ee03456ed46d16818897d992f693e906005fee72dca09bd43",
+      "responseFile": "out/audition-context-v6/assessment/SP06.wav.assessment.json",
+      "responseSha256": "e15ffa2c0392b5cd27613828e5db304fb1cb4abcec47a8b5eeeb0649483c7dd5",
+      "fingerprint": "1c59560511c6748d0fed5a8a1b906f93d8266bf276552c5e7377b4224201a4f3",
+      "duration": 17.89,
+      "flags": [
+        {
+          "text": "闭",
+          "errorType": "Insertion",
+          "startMs": 5220,
+          "durationMs": 210
+        },
+        {
+          "text": "B",
+          "errorType": "Omission",
+          "startMs": null,
+          "durationMs": null
+        },
+        {
+          "text": "点",
+          "errorType": "Mispronunciation",
+          "startMs": 12860,
+          "durationMs": 250
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: 闭 (Insertion)",
+      "adopted": false
+    }
+  ],
+  "listening": "not-performed per user instruction",
+  "published": false,
+  "exportBlocked": true
+}
