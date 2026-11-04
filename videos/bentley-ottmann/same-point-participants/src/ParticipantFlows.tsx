@@ -8,7 +8,7 @@ type Cue = {
   progress: number;
   reached: string[];
   visibleStep: number;
-  activeCaption: number | null;
+  reachedCaption: number | null;
   thinking: boolean;
 };
 const muted = "#94a3b8";
@@ -263,7 +263,7 @@ export function EventRecordDiagram({ visibleStep, target }: Cue) {
 const oldOrder = ["D", "A", "C"];
 
 export function CollectionDiagram({ page, ...cue }: Cue & { page: string }) {
-  const { target, progress, reached, visibleStep, activeCaption, thinking } =
+  const { target, progress, reached, visibleStep, reachedCaption, thinking } =
     cue;
   if (page === "collect") {
     const merged = reached.includes("merge");
@@ -363,7 +363,8 @@ export function CollectionDiagram({ page, ...cue }: Cue & { page: string }) {
   const collected =
     selected >= 0 ? selected + 1 : reached.includes("collect-old") ? 3 : 0;
   const emptyBranch =
-    collecting && ((activeCaption !== null && activeCaption >= 1) || thinking);
+    collecting &&
+    ((reachedCaption !== null && reachedCaption >= 1) || thinking);
   return (
     <svg
       width={780}

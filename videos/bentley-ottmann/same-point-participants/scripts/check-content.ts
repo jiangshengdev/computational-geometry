@@ -82,7 +82,10 @@ assert.deepEqual(
   [2, 4, 5],
 );
 
-assert.equal(timingKind, "provisional-silent-reading");
+assert.equal(timingKind, "measured-narration");
+const narrationMap = JSON.parse(
+  readFileSync(new URL("../src/narration-map.json", import.meta.url), "utf8"),
+);
 assert.equal(new Set(shots.map((s) => s.id)).size, shots.length);
 assert.deepEqual(
   Object.keys(Object.fromEntries(pageList.map((p) => [p.section, true]))),
@@ -96,7 +99,7 @@ for (const [index, row] of rows.entries()) {
   );
   assert.equal(
     row.captions.map((c) => c.text).join(""),
-    shots[index].captions.join(""),
+    narrationMap[row.id].map((p: { caption: string }) => p.caption).join(""),
   );
   assert.equal(visualAt(row, 0).visibleStep, row.visibleStep);
   assert.equal(visualAt(row, 0).activeCaption, null);
@@ -104,9 +107,25 @@ for (const [index, row] of rows.entries()) {
     assert.equal(row.targets.length, shots[index].captions.length);
   if (row.focus) assert.equal(row.focus.length, shots[index].captions.length);
   for (const c of row.captions) {
+    assert(
+      c.source >= 0 && c.source < shots[index].captions.length,
+      `${row.id}: invalid teaching source`,
+    );
     assert.equal(visualAt(row, c.start).activeCaption, c.source);
     assert.equal(visualAt(row, c.start).caption, c.text);
     checkMarks(row, [...objectMarks[row.id], ...activeMarks(row.id, c.source)]);
+  }
+  let prior = visualAt(row, 0);
+  for (let frame = 1; frame < row.durationInFrames; frame++) {
+    const state = visualAt(row, frame);
+    assert(
+      (state.reachedCaption ?? -1) >= (prior.reachedCaption ?? -1),
+      `${row.id}: introduced content retreated`,
+    );
+    for (const target of prior.reached) assert(state.reached.includes(target));
+    if (state.target && state.target === prior.target)
+      assert(state.progress >= prior.progress, `${row.id}: action restarted`);
+    prior = state;
   }
   checkMarks(row, objectMarks[row.id]);
   const end = visualAt(row, row.durationInFrames - 1);
@@ -114,12 +133,12 @@ for (const [index, row] of rows.entries()) {
   assert.equal(end.caption, row.captions[row.captions.length - 1].text);
   assert.equal(end.visibleStep, row.visibleStep);
   assert(
-    row.durationInFrames - audioLeadFrames - row.readingFrames >=
+    row.durationInFrames - audioLeadFrames - row.speechFrames >=
       (row.thinkAfter ?? 1) * fps,
   );
   if (rows[index + 1]?.page !== row.page)
     assert(
-      row.durationInFrames - audioLeadFrames - row.readingFrames >=
+      row.durationInFrames - audioLeadFrames - row.speechFrames >=
         pageList.find((p) => p.id === row.page)!.holdAfterSeconds * fps,
     );
   const previous = rows[index - 1];
@@ -179,5 +198,5 @@ for (const id of Object.keys(plain)) {
     }
 }
 console.log(
-  `PASS ${shots.length} steps / ${pageList.length} pages: example arithmetic, marks and KaTeX structure, silent timing, retained content, captions and pronunciation text. No audio/synchronization acceptance claimed.`,
+  `PASS ${shots.length} steps / ${pageList.length} pages: example arithmetic, marks and KaTeX structure, measured timing, retained content, captions and historical pronunciation text. Runtime synchronization requires separate verification.`,
 );

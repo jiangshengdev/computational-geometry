@@ -1,117 +1,140 @@
 import { shots, pages } from "./storyboard.ts";
-import { validateCaptionClauses } from "../../../shared/speech/timing.ts";
-import { groupCaptionClauses } from "../../../shared/speech/captions.ts";
-
+import plans from "./narration-map.json" with { type: "json" };
+import audioData from "../out/best-audio/audio-timing.json" with { type: "json" };
+import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
+import {
+  captionAt,
+  validateCaptionClauses,
+  wordsInTextRange,
+  type AudioTiming,
+} from "../../../shared/speech/timing.ts";
+import { timedCaption } from "../../../shared/speech/captions.ts";
 export const fps = 60;
 export const audioLeadFrames = 30;
-/** Reading slots are an editing aid, never measured speech or word times. */
-export const timingKind = "provisional-silent-reading";
-const display = shots.map((shot) =>
-  shot.captions.flatMap((text, source) => {
-    const { visible, audible } = validateCaptionClauses(text, text);
-    return groupCaptionClauses(visible, audible).map((part) => ({
-      text: part.text,
-      source,
-    }));
+export const timingKind = "measured-narration";
+export const audio = audioData as Record<string, AudioTiming>;
+type Phrase = {
+  caption: string;
+  speech: string;
+  source: number;
+  target?: string;
+};
+const mapped = Object.fromEntries(
+  shots.map((shot) => {
+    const plan: Phrase[] = plans[shot.id as keyof typeof plans];
+    const recording = audio[shot.id];
+    validateCaptionClauses(
+      plan.map((p) => p.caption).join(""),
+      recording.speech,
+      plan,
+    );
+    let offset = 0;
+    return [
+      shot.id,
+      plan.map((part) => {
+        const words = wordsInTextRange(
+          recording,
+          offset,
+          offset + part.speech.length,
+        ).filter((w) => w.durationMs > 0);
+        offset += part.speech.length;
+        if (!words.length) throw Error(`${shot.id}: missing measured phrase`);
+        return {
+          ...timedCaption(part.caption, words),
+          source: part.source,
+          target: part.target ?? shot.targets?.[part.source] ?? null,
+        };
+      }),
+    ];
   }),
 );
-let cursor = 0;
-export const rows = shots.map((shot, index) => {
-  const samePage = shots[index - 1]?.page === shot.page;
-  const captions = display[index].map((part, i) => ({
-    ...part,
-    start: audioLeadFrames + i * 300,
-    end: audioLeadFrames + (i + 1) * 300,
-  }));
-  const readingFrames = captions.length * 300;
-  const endsPage = shots[index + 1]?.page !== shot.page;
-  const durationInFrames =
-    audioLeadFrames +
-    readingFrames +
-    Math.round(
-      Math.max(
-        shot.thinkAfter ?? 1,
-        endsPage ? pages[shot.page].holdAfterSeconds : 0,
-      ) * fps,
-    );
-  const previousReached = shots
+const shared = createShotTimeline({
+  shots: shots.map((s) => ({
+    ...s,
+    step: s.visibleStep,
+    pauseAfter: s.thinkAfter ?? 1,
+  })),
+  pages,
+  timing: audio,
+  captions: mapped,
+  fps,
+  audioLeadFrames,
+});
+export const rows = shared.timelineFor().map((shot, index) => ({
+  ...shot,
+  audioEndFrame: audioLeadFrames + shot.speechFrames,
+  revealMs: 0,
+  stages: [] as { ms: number }[],
+  captions: mapped[shot.id].map((c) => ({
+    ...c,
+    start: audioLeadFrames + Math.ceil((c.startMs * fps) / 1000),
+    end: audioLeadFrames + Math.ceil((c.endMs * fps) / 1000),
+  })),
+  previousReached: shots
     .slice(0, index)
     .filter((s) => s.page === shot.page)
-    .flatMap((s) => s.targets ?? []);
-  const row = {
-    ...shot,
-    from: cursor,
-    durationInFrames,
-    readingFrames,
-    revealMs: -500,
-    stages: [],
-    captions,
-    previousCaption: samePage
-      ? display[index - 1][display[index - 1].length - 1].text
-      : "",
-    previousReached,
-  };
-  cursor += durationInFrames;
-  return row;
-});
+    .flatMap((s) => mapped[s.id].flatMap((c) => (c.target ? [c.target] : []))),
+}));
 export type TimelineRow = (typeof rows)[number];
-export const durationInFrames = cursor;
-
+export const durationInFrames = rows.reduce(
+  (n, r) => n + r.durationInFrames,
+  0,
+);
 export function visualAt(row: TimelineRow, frame: number) {
-  const activeCaption = row.captions.findIndex(
-    (c) => frame >= c.start && frame < c.end,
-  );
-  const current = row.captions[activeCaption];
-  const reached = [
-    ...row.previousReached,
-    ...row.captions
-      .filter((c) => frame >= c.start)
-      .flatMap((c) => row.targets?.[c.source] ?? []),
-  ];
-  const target = current ? (row.targets?.[current.source] ?? null) : null;
-  let first = activeCaption,
-    last = activeCaption;
+  const current = row.captions.find((c) => frame >= c.start && frame < c.end);
+  const introduced = row.captions.filter((c) => frame >= c.start);
+  // One semantic action can span several subtitle clauses; do not restart it.
+  let first = row.captions.findIndex((c) => frame >= c.start && frame < c.end);
+  if (first < 0)
+    first = row.captions.findIndex(
+      (c, i) =>
+        frame >= c.end &&
+        frame < (row.captions[i + 1]?.start ?? c.end) &&
+        c.target === row.captions[i + 1]?.target,
+    );
+  let last = first;
+  const target = first >= 0 ? row.captions[first].target : null;
   if (target) {
-    while (
-      first > 0 &&
-      row.targets?.[row.captions[first - 1].source] === target
-    )
-      first--;
+    while (first > 0 && row.captions[first - 1].target === target) first--;
     while (
       last + 1 < row.captions.length &&
-      row.targets?.[row.captions[last + 1].source] === target
+      row.captions[last + 1].target === target
     )
       last++;
   }
-  const caption =
-    current?.text ??
-    (frame < audioLeadFrames
-      ? row.previousCaption
-      : row.captions[row.captions.length - 1].text);
   return {
     visibleStep: row.visibleStep,
+    reachedCaption: introduced[introduced.length - 1]?.source ?? null,
     activeCaption: current?.source ?? null,
-    caption,
-    reached,
+    caption: captionAt(
+      mapped[row.id],
+      ((frame - audioLeadFrames) * 1000) / fps,
+      row.previousCaption,
+    ),
+    reached: [
+      ...row.previousReached,
+      ...row.captions
+        .filter((c) => frame >= c.start)
+        .flatMap((c) => (c.target ? [c.target] : [])),
+    ],
     target,
-    progress: current
-      ? Math.max(
-          0,
-          Math.min(
-            1,
-            (frame - row.captions[first].start) /
-              (row.captions[last].end - row.captions[first].start),
-          ),
-        )
-      : 1,
-    thinking: frame >= audioLeadFrames + row.readingFrames,
+    progress:
+      target && first >= 0
+        ? Math.max(
+            0,
+            Math.min(
+              1,
+              (frame - row.captions[first].start) /
+                (row.captions[last].end - row.captions[first].start),
+            ),
+          )
+        : 1,
+    thinking: frame >= row.audioEndFrame,
   };
 }
-
 export function rowAt(frame: number) {
   return (
-    rows.find(
-      (row) => frame >= row.from && frame < row.from + row.durationInFrames,
-    ) ?? rows[rows.length - 1]
+    rows.find((r) => frame >= r.from && frame < r.from + r.durationInFrames) ??
+    rows[rows.length - 1]
   );
 }

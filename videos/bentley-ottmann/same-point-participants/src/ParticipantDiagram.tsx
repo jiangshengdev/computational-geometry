@@ -23,7 +23,7 @@ type State = {
   target: string | null;
   progress: number;
   reached: string[];
-  activeCaption: number | null;
+  reachedCaption: number | null;
   thinking: boolean;
 };
 import { inputs, type Name } from "./example.ts";
@@ -224,7 +224,7 @@ export function ParticipantDiagram({
   target,
   progress,
   reached,
-  activeCaption,
+  reachedCaption,
   thinking,
 }: State) {
   const cue = {
@@ -232,7 +232,7 @@ export function ParticipantDiagram({
     progress,
     reached,
     visibleStep,
-    activeCaption,
+    reachedCaption,
     thinking,
   };
   if (kind === "endpoint" || kind === "interior" || kind === "meeting") {
@@ -298,7 +298,7 @@ export function ParticipantDiagram({
             <PointMembership
               current={["C", "Z_1", "Z_2"]}
               continuing={["C"]}
-              showRight={(activeCaption ?? -1) >= 1 || thinking}
+              showRight={(reachedCaption ?? -1) >= 1 || thinking}
             />
           </div>
         )}
@@ -309,7 +309,7 @@ export function ParticipantDiagram({
               current={["A", "Z_1"]}
               continuing={[]}
               showRight={
-                visibleStep >= 2 || (activeCaption ?? -1) >= 1 || thinking
+                visibleStep >= 2 || (reachedCaption ?? -1) >= 1 || thinking
               }
             />
             {visibleStep >= 2 && (
@@ -318,7 +318,7 @@ export function ParticipantDiagram({
                 current={["B", "Z_1"]}
                 continuing={["B"]}
                 showRight={
-                  visibleStep >= 3 || (activeCaption ?? -1) >= 1 || thinking
+                  visibleStep >= 3 || (reachedCaption ?? -1) >= 1 || thinking
                 }
               />
             )}

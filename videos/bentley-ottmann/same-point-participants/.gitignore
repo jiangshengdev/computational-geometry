@@ -3,21 +3,8 @@ dist
 .DS_Store
 .env
 
-# Keep narration WAVs and their handoff records; ignore unrelated output.
+# Keep only the selected audio evidence. Historical output is recoverable from Git.
 /out/**
-!/out/**/
-!/out/**/*.wav
-!/out/narration-plan.json
-!/out/synthesis-39f9c1e2fc2d/**/*.json
-!/out/assessment-39f9c1e2fc2d/**/*.json
-!/out/assessment-39f9c1e2fc2d/review.html
-!/out/audition-ipa-chinese-v1/**/*.json
-!/out/audition-ipa-chinese-v1/review.html
-!/out/audition-omission-v2/**/*.json
-!/out/audition-context-v3/**/*.json
-!/out/audition-context-v4/**/*.json
-!/out/machine-selection-v1/**/*.json
-!/out/audition-context-v5/**/*.json
-!/out/audition-context-v6/**/*.json
-!/out/audition-context-v7/**/*.json
-!/out/machine-selection-v2/**/*.json
+!/out/best-audio/
+!/out/best-audio/**/
+!/out/best-audio/**/*.json

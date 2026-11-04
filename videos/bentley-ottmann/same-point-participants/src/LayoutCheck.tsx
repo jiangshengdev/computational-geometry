@@ -26,9 +26,7 @@ export const LayoutCheck = createShotLayoutCheck({
     row.captions.flatMap((c) => [
       c.start,
       c.start + 1,
-      c.start + 75,
-      c.start + 150,
-      c.start + 225,
+      Math.floor((c.start + c.end) / 2),
       c.end - 1,
       c.end,
     ]),

@@ -32,15 +32,9 @@
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src scripts && tsc",
-    "video:sentence-plan": "node scripts/prepare-sentence-plan.ts",
-    "video:plan-narration": "node scripts/plan-narration.ts",
-    "video:synthesize-approved": "node scripts/synthesize-approved.ts",
-    "video:check-synthesis": "node scripts/check-synthesis.ts",
-    "video:assessment": "node scripts/assessment.ts",
-    "video:reconcile-assessment": "node scripts/reconcile-assessment.ts",
-    "video:audition": "node scripts/audition.ts",
     "video:check-content": "node scripts/check-content.ts",
-    "video:check-layout": "node scripts/check-layout.ts"
+    "video:check-layout": "node scripts/check-layout.ts",
+    "video:check-audio": "node scripts/check-best-audio.ts"
   },
   "allowScripts": {
     "esbuild": false

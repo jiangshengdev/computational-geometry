@@ -1,0 +1,708 @@
+{
+  "audio": {
+    "clips": 57,
+    "format": "pcm_s16le / 48000 Hz / mono",
+    "fullDecode": true,
+    "sha256": true,
+    "strictMeasuredAlignment": true,
+    "rawFlags": {
+      "Mispronunciation": 61,
+      "Omission": 1,
+      "Insertion": 1
+    },
+    "userAcceptedRecognition": {
+      "id": "SP06",
+      "version": "original",
+      "quote": "b/闭问题通过",
+      "actualListening": false
+    },
+    "unresolvedMiscues": 0,
+    "newServiceCalls": 0
+  },
+  "sourceHashes": {
+    "src/timeline.ts": "93b58b5e9661c60bf1117ded5f7c60affc4e39e01a581ffbd95cf6020e3b0c61",
+    "src/Composition.tsx": "02482f6a9b5eedeaf4e7f14c68199bd740c82018d9d1381511928d9a529ad0a5",
+    "src/narration-map.json": "abd1a8d1af86b8af86e85cf615d7796e14787c0ffe2e86c6da20c222b2f73ae3",
+    "src/ParticipantDiagram.tsx": "3778a42d75b1957920a03a6556e94a39c53afe987f4a0b6ad60c88f39ea90594",
+    "src/ParticipantFlows.tsx": "76f6eb033387904be767f26ca92de2243a2284dfb51da859f852e3870c51e6ce",
+    "src/LayoutCheck.tsx": "f3c59a4a3d8c1013d7689edcb0f42d65d417a4feb569f63efc36d9325980da48"
+  },
+  "checks": {
+    "lint": "passed",
+    "content": "passed: example arithmetic, caption coverage, measured intervals, monotonic introduced content and semantic progress, page holds and same-page continuity",
+    "audio": "passed: full source decode, PCM format, hashes, original responses, source word events, strict alignment and full playback duration"
+  },
+  "independentReview": {
+    "scope": "static code, source mapping, mathematical meaning of eight rewritten clips, measured-time state checks",
+    "fixed": [
+      "source index mismatch",
+      "introduced content disappeared during word gaps",
+      "SP36 collection progress restarted at subtitle boundaries",
+      "SP58 A / point identity cue incorrectly highlighted B"
+    ],
+    "remainingFindings": [],
+    "runtimeObservedByReviewer": false
+  },
+  "browser": {
+    "state": "passed",
+    "engine": "Chrome Headless Shell 157.0.8080.0",
+    "remotion": "4.0.540",
+    "scope": "production TeachingPage at sampled actual-word boundaries, midpoints, holds and adjacent states; no audio in layout-only scene",
+    "initialAllShotsStates": 2234,
+    "afterFixFirst30ShotsStates": 1190,
+    "coverage": "57/57 shots; first 30 rechecked after source/retention/action fixes, remaining 27 checked after those fixes; SP58 checked after final cue correction"
+  },
+  "timeline": {
+    "fps": 60,
+    "durationInFrames": 61219,
+    "seconds": 1020.3166666666667,
+    "pages": 20,
+    "samePageJoins": 37,
+    "rows": [
+      {
+        "id": "SP01",
+        "page": "scope",
+        "from": 0,
+        "audioFrom": 30,
+        "audioEnd": 987,
+        "end": 1047,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP02",
+        "page": "scope",
+        "from": 1047,
+        "audioFrom": 1077,
+        "audioEnd": 1860,
+        "end": 1920,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP03",
+        "page": "scope",
+        "from": 1920,
+        "audioFrom": 1950,
+        "audioEnd": 3149,
+        "end": 3329,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP04",
+        "page": "endpoint-input",
+        "from": 3329,
+        "audioFrom": 3359,
+        "audioEnd": 4177,
+        "end": 4237,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP05",
+        "page": "endpoint-input",
+        "from": 4237,
+        "audioFrom": 4267,
+        "audioEnd": 5136,
+        "end": 5196,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP06",
+        "page": "endpoint-input",
+        "from": 5196,
+        "audioFrom": 5226,
+        "audioEnd": 6261,
+        "end": 6441,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP07",
+        "page": "endpoint-report",
+        "from": 6441,
+        "audioFrom": 6471,
+        "audioEnd": 7157,
+        "end": 7217,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP08",
+        "page": "endpoint-report",
+        "from": 7217,
+        "audioFrom": 7247,
+        "audioEnd": 7999,
+        "end": 8059,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP09",
+        "page": "endpoint-report",
+        "from": 8059,
+        "audioFrom": 8089,
+        "audioEnd": 9130,
+        "end": 9310,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP10",
+        "page": "interior-input",
+        "from": 9310,
+        "audioFrom": 9340,
+        "audioEnd": 10044,
+        "end": 10104,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP11",
+        "page": "interior-input",
+        "from": 10104,
+        "audioFrom": 10134,
+        "audioEnd": 10934,
+        "end": 10994,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP12",
+        "page": "interior-input",
+        "from": 10994,
+        "audioFrom": 11024,
+        "audioEnd": 11879,
+        "end": 12059,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP13",
+        "page": "range",
+        "from": 12059,
+        "audioFrom": 12089,
+        "audioEnd": 13145,
+        "end": 13205,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP14",
+        "page": "range",
+        "from": 13205,
+        "audioFrom": 13235,
+        "audioEnd": 14177,
+        "end": 14357,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP15",
+        "page": "meeting-input",
+        "from": 14357,
+        "audioFrom": 14387,
+        "audioEnd": 15389,
+        "end": 15449,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP16",
+        "page": "meeting-input",
+        "from": 15449,
+        "audioFrom": 15479,
+        "audioEnd": 16421,
+        "end": 16481,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP17",
+        "page": "meeting-input",
+        "from": 16481,
+        "audioFrom": 16511,
+        "audioEnd": 17444,
+        "end": 17624,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP18",
+        "page": "queue",
+        "from": 17624,
+        "audioFrom": 17654,
+        "audioEnd": 18521,
+        "end": 18581,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP19",
+        "page": "queue",
+        "from": 18581,
+        "audioFrom": 18611,
+        "audioEnd": 19397,
+        "end": 19457,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP20",
+        "page": "queue",
+        "from": 19457,
+        "audioFrom": 19487,
+        "audioEnd": 20558,
+        "end": 20738,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP21",
+        "page": "roles",
+        "from": 20738,
+        "audioFrom": 20768,
+        "audioEnd": 21892,
+        "end": 21952,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP22",
+        "page": "roles",
+        "from": 21952,
+        "audioFrom": 21982,
+        "audioEnd": 22834,
+        "end": 22894,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP23",
+        "page": "roles",
+        "from": 22894,
+        "audioFrom": 22924,
+        "audioEnd": 23640,
+        "end": 23700,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP24",
+        "page": "roles",
+        "from": 23700,
+        "audioFrom": 23730,
+        "audioEnd": 25025,
+        "end": 25205,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP25",
+        "page": "old-block",
+        "from": 25205,
+        "audioFrom": 25235,
+        "audioEnd": 26185,
+        "end": 26245,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP26",
+        "page": "old-block",
+        "from": 26245,
+        "audioFrom": 26275,
+        "audioEnd": 27030,
+        "end": 27210,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP27",
+        "page": "block-reuse",
+        "from": 27210,
+        "audioFrom": 27240,
+        "audioEnd": 28430,
+        "end": 28490,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP29",
+        "page": "block-reuse",
+        "from": 28490,
+        "audioFrom": 28520,
+        "audioEnd": 29584,
+        "end": 29644,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP33",
+        "page": "block-reuse",
+        "from": 29644,
+        "audioFrom": 29674,
+        "audioEnd": 31097,
+        "end": 31277,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP34",
+        "page": "height-search",
+        "from": 31277,
+        "audioFrom": 31307,
+        "audioEnd": 31876,
+        "end": 31936,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP35",
+        "page": "height-search",
+        "from": 31936,
+        "audioFrom": 31966,
+        "audioEnd": 32829,
+        "end": 32889,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP36",
+        "page": "height-search",
+        "from": 32889,
+        "audioFrom": 32919,
+        "audioEnd": 33956,
+        "end": 34136,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP37",
+        "page": "collect",
+        "from": 34136,
+        "audioFrom": 34166,
+        "audioEnd": 35264,
+        "end": 35324,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP38",
+        "page": "collect",
+        "from": 35324,
+        "audioFrom": 35354,
+        "audioEnd": 36127,
+        "end": 36187,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP39",
+        "page": "collect",
+        "from": 36187,
+        "audioFrom": 36217,
+        "audioEnd": 37223,
+        "end": 37283,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP40",
+        "page": "collect",
+        "from": 37283,
+        "audioFrom": 37313,
+        "audioEnd": 38470,
+        "end": 38650,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP41",
+        "page": "pairs",
+        "from": 38650,
+        "audioFrom": 38680,
+        "audioEnd": 39658,
+        "end": 39718,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP43",
+        "page": "pairs",
+        "from": 39718,
+        "audioFrom": 39748,
+        "audioEnd": 40546,
+        "end": 40726,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP44",
+        "page": "truth",
+        "from": 40726,
+        "audioFrom": 40756,
+        "audioEnd": 41544,
+        "end": 41604,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP45",
+        "page": "truth",
+        "from": 41604,
+        "audioFrom": 41634,
+        "audioEnd": 42660,
+        "end": 42840,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP46",
+        "page": "unique",
+        "from": 42840,
+        "audioFrom": 42870,
+        "audioEnd": 43728,
+        "end": 43788,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP47",
+        "page": "unique",
+        "from": 43788,
+        "audioFrom": 43818,
+        "audioEnd": 44636,
+        "end": 44696,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP48",
+        "page": "unique",
+        "from": 44696,
+        "audioFrom": 44726,
+        "audioEnd": 45755,
+        "end": 45935,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP49",
+        "page": "points-input",
+        "from": 45935,
+        "audioFrom": 45965,
+        "audioEnd": 46893,
+        "end": 46953,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP50",
+        "page": "points-input",
+        "from": 46953,
+        "audioFrom": 46983,
+        "audioEnd": 47790,
+        "end": 47850,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP51",
+        "page": "points-input",
+        "from": 47850,
+        "audioFrom": 47880,
+        "audioEnd": 48693,
+        "end": 48873,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP52",
+        "page": "points-report",
+        "from": 48873,
+        "audioFrom": 48903,
+        "audioEnd": 49851,
+        "end": 49911,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP53",
+        "page": "points-report",
+        "from": 49911,
+        "audioFrom": 49941,
+        "audioEnd": 51126,
+        "end": 51186,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP54",
+        "page": "points-report",
+        "from": 51186,
+        "audioFrom": 51216,
+        "audioEnd": 52211,
+        "end": 52391,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP55",
+        "page": "pure-points",
+        "from": 52391,
+        "audioFrom": 52421,
+        "audioEnd": 53224,
+        "end": 53284,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP56",
+        "page": "pure-points",
+        "from": 53284,
+        "audioFrom": 53314,
+        "audioEnd": 54076,
+        "end": 54256,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP57",
+        "page": "point-endpoints",
+        "from": 54256,
+        "audioFrom": 54286,
+        "audioEnd": 55035,
+        "end": 55095,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP58",
+        "page": "point-endpoints",
+        "from": 55095,
+        "audioFrom": 55125,
+        "audioEnd": 56300,
+        "end": 56360,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP59",
+        "page": "point-endpoints",
+        "from": 56360,
+        "audioFrom": 56390,
+        "audioEnd": 57476,
+        "end": 57656,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP60",
+        "page": "closing",
+        "from": 57656,
+        "audioFrom": 57686,
+        "audioEnd": 58655,
+        "end": 58715,
+        "holdFrames": 60,
+        "endsPage": false,
+        "thinkAfter": null
+      },
+      {
+        "id": "SP61",
+        "page": "closing",
+        "from": 58715,
+        "audioFrom": 58745,
+        "audioEnd": 59390,
+        "end": 59870,
+        "holdFrames": 480,
+        "endsPage": false,
+        "thinkAfter": 8
+      },
+      {
+        "id": "SP62",
+        "page": "closing",
+        "from": 59870,
+        "audioFrom": 59900,
+        "audioEnd": 61039,
+        "end": 61219,
+        "holdFrames": 180,
+        "endsPage": true,
+        "thinkAfter": null
+      }
+    ]
+  },
+  "notCompleted": [
+    "actual listening (waived by user)",
+    "visible continuous playback synchronization acceptance",
+    "rendered final-video acceptance (assistant rendering/export prohibited)"
+  ],
+  "issues": {
+    "334": "unchanged",
+    "336": "open: runtime synchronization acceptance remains",
+    "337": "open: final acceptance remains"
+  },
+  "history": {
+    "archiveFiles": 746,
+    "sourceCommit": "a4d50dfba776d140266b5d2f2dc4023b1f0e4426",
+    "oldSP41": "uncertain",
+    "oldSP58": "started",
+    "manifestUnchanged": true
+  }
+}
