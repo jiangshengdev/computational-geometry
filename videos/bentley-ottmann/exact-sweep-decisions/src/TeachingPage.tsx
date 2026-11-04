@@ -42,30 +42,12 @@ export function TeachingPage({
       activeColor={tints.active}
       entries={references.map((reference) => {
         const visible = state.visibleStep >= (reference.visibleFrom ?? 1);
-        const active =
-          visible &&
-          state.activeCaption !== null &&
-          Boolean(reference.uses[row.id]?.includes(state.activeCaption));
         return {
           id: reference.id,
           visible,
-          active,
+          active: false,
           label: <MathText colorize={false}>{reference.name + "："}</MathText>,
-          content: (
-            <Latex colorize={false}>
-              {colorMath(
-                reference.math,
-                undefined,
-                active
-                  ? activeTeachingMarks(
-                      row.id,
-                      state.activeCaption,
-                      state.target,
-                    ).filter((mark) => reference.math.includes(mark.term))
-                  : [],
-              )}
-            </Latex>
-          ),
+          content: <Latex colorize={false}>{reference.math}</Latex>,
         };
       })}
     />

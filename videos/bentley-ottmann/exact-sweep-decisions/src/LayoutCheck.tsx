@@ -71,13 +71,9 @@ export const LayoutCheck = createShotLayoutCheck({
           errors.push(
             `${row.id}: missing source or premature reference ${reference.id}`,
           );
-        const active =
-          visible &&
-          state.activeCaption !== null &&
-          Boolean(reference.uses[row.id]?.includes(state.activeCaption));
-        if (element?.dataset.referenceActive !== String(active))
+        if (element?.dataset.referenceActive !== "false")
           errors.push(
-            `${row.id}: source emphasis out of sync: ${reference.id}`,
+            `${row.id}: reference must remain static: ${reference.id}`,
           );
       }
       const active = activeTeachingMarks(
