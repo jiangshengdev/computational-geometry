@@ -1,0 +1,2273 @@
+{
+  "version": "omission-v2",
+  "scope": "independent full-clip auditions only; no formal adoption",
+  "synthesisPlanSha256": "39f9c1e2fc2ddfbdf890b3c4f5f189c62694eabe590a8c505a0b65aa56641a45",
+  "baselineReportSha256": "5cb5fe21c932ffd532614061f7500284f8096135f6fb91a8355647b5899adb44",
+  "chineseEditsSha256": "738d302f2251ef309a8ee81f0b57b8d7430f8f920348325489adaf9d255c30b6",
+  "narrationSha256": "f972441e0e309f3b65c9529eb5e13e6da5c0ffb034aaa9237c476c6c1323cc1a",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "synthesisRequests": 10,
+  "assessmentRequests": 10,
+  "concurrency": 1,
+  "automaticRetries": 0,
+  "documents": [
+    {
+      "id": "SP06",
+      "audioFile": "SP06.wav",
+      "text": "A 满足纵坐标等于四。横坐标从零到四。输入 B 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">A</say-as></lang> 满足纵坐标等于四。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"heng 2 zuo 4 biao 1\">横坐标</phoneme>从零到四。<break time=\"200ms\"/>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang> 满足纵坐标等于<phoneme alphabet=\"sapi\" ph=\"heng 2 zuo 4 biao 1\">横坐标</phoneme>。<break time=\"200ms\"/>范围从四到八。<break time=\"400ms\"/>引用第三章<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>完整求交<phoneme alphabet=\"sapi\" ph=\"jie 2 lun 4\">结论</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"wei 2 yi 1\">唯一</phoneme><phoneme alphabet=\"sapi\" ph=\"hou 4 xuan 2 dian 3\">候选点</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme>两份闭范围<phoneme alphabet=\"sapi\" ph=\"jian 3 cha 2\">检查</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2 dui 4\">一对</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>完整交集就是 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "7247527eeb3f918b35c1e3b7bc10b8df97925e86c283285d6641d952a5121909",
+      "input": [
+        "A 满足纵坐标等于四。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "横坐标",
+          "pinyin": "heng2 zuo4 biao1"
+        },
+        "从零到四。",
+        {
+          "breakMs": 200
+        },
+        "输入 ",
+        {
+          "letter": "B",
+          "ipa": "biː"
+        },
+        " 满足纵坐标等于",
+        {
+          "text": "横坐标",
+          "pinyin": "heng2 zuo4 biao1"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "范围从四到八。",
+        {
+          "breakMs": 400
+        },
+        "引用第三章",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "完整求交",
+        {
+          "text": "结论",
+          "pinyin": "jie2 lun4"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "唯一",
+          "pinyin": "wei2 yi1"
+        },
+        {
+          "text": "候选点",
+          "pinyin": "hou4 xuan2 dian3"
+        },
+        " P ",
+        {
+          "text": "通",
+          "pinyin": "tong1"
+        },
+        {
+          "text": "过",
+          "pinyin": "guo4"
+        },
+        "两份闭范围",
+        {
+          "text": "检查",
+          "pinyin": "jian3 cha2"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "所以",
+          "pinyin": "suo2 yi3"
+        },
+        {
+          "text": "这",
+          "pinyin": "zhe4"
+        },
+        {
+          "text": "一对",
+          "pinyin": "yi2 dui4"
+        },
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "完整交集就是 P。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "25163f810a5263bde36693bfc15d6136a9f76ad4a8fdb1c155418999e7695621",
+      "baselineFingerprint": "dfb6710398817d1bc750300dbc53f0484c1dabfd10e17d77715c37c80471b954",
+      "changes": [
+        {
+          "from": 19,
+          "to": 32,
+          "parts": [
+            "输入 ",
+            {
+              "letter": "B",
+              "ipa": "biː"
+            },
+            " 满足纵坐标等于",
+            {
+              "text": "横坐标",
+              "pinyin": "heng2 zuo4 biao1"
+            },
+            "。"
+          ],
+          "before": "B 满足纵坐标等于横坐标。",
+          "after": "输入 B 满足纵坐标等于横坐标。",
+          "reason": "B→闭是用户可接受的识别差异；只试验增加对象词，原始标记仍保留。"
+        }
+      ],
+      "originalText": "A 满足纵坐标等于四。横坐标从零到四。B 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。",
+      "sentencePlan": [
+        {
+          "caption": "A 满足纵坐标等于四，横坐标从零到四；B 满足纵坐标等于横坐标，范围从四到八。",
+          "speech": [
+            "A 满足纵坐标等于四。",
+            "横坐标从零到四。",
+            "输入 B 满足纵坐标等于横坐标。",
+            "范围从四到八。"
+          ]
+        },
+        {
+          "caption": "引用第三章的完整求交结论：唯一候选点 P 通过两份闭范围检查，所以这一对的完整交集就是 P。",
+          "speech": [
+            "引用第三章的完整求交结论。",
+            "唯一候选点 P 通过两份闭范围检查。",
+            "所以这一对的完整交集就是 P。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP17",
+      "audioFile": "SP17.wav",
+      "text": "例如检查旧邻居 A 与 C。可以算出未来位置 P。这只说明要在 P 停下。到站后不能只处理这一对。A 的结束、B 的开始。以及 C 的穿过和 D 的穿过。都属于同一次事件。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">例如<phoneme alphabet=\"sapi\" ph=\"jian 3 cha 2\">检查</phoneme>旧邻居 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">A</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">C</say-as></lang>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ke 2 yi 3\">可以</phoneme><phoneme alphabet=\"sapi\" ph=\"suan 4 chu 1\">算出</phoneme>未来位置 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"piː\">P</phoneme></lang>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"shuo 1\">说</phoneme>明<phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>在 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"piː\">P</phoneme></lang> 停<phoneme alphabet=\"sapi\" ph=\"xia 4\">下</phoneme>。<break time=\"400ms\"/>到站后<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 2 li 3\">处理</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2 dui 4\">一对</phoneme>。<break time=\"400ms\"/><lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"eɪ\">A</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2 shu 4\">结束</phoneme>、<lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>开始。<break time=\"200ms\"/>以及 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"chuan 1 guo 4\">穿过</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme> <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"diː\">D</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"chuan 1 guo 4\">穿过</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 3 yu 2\">属于</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2 yi 2 ci 4\">同一次</phoneme>事件。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "5e6990fb90847d23477552e3941769474bac68b49664e0a5f969b3b9c7c76e16",
+      "input": [
+        "例如",
+        {
+          "text": "检查",
+          "pinyin": "jian3 cha2"
+        },
+        "旧邻居 A ",
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        " C。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "可以",
+          "pinyin": "ke2 yi3"
+        },
+        {
+          "text": "算出",
+          "pinyin": "suan4 chu1"
+        },
+        "未来位置 ",
+        {
+          "letter": "P",
+          "ipa": "piː"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "这",
+          "pinyin": "zhe4"
+        },
+        {
+          "text": "只",
+          "pinyin": "zhi3"
+        },
+        {
+          "text": "说",
+          "pinyin": "shuo1"
+        },
+        "明",
+        {
+          "text": "要",
+          "pinyin": "yao4"
+        },
+        "在 ",
+        {
+          "letter": "P",
+          "ipa": "piː"
+        },
+        " 停",
+        {
+          "text": "下",
+          "pinyin": "xia4"
+        },
+        "。",
+        {
+          "breakMs": 400
+        },
+        "到站后",
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        "能",
+        {
+          "text": "只",
+          "pinyin": "zhi3"
+        },
+        {
+          "text": "处理",
+          "pinyin": "chu2 li3"
+        },
+        {
+          "text": "这",
+          "pinyin": "zhe4"
+        },
+        {
+          "text": "一对",
+          "pinyin": "yi2 dui4"
+        },
+        "。",
+        {
+          "breakMs": 400
+        },
+        {
+          "letter": "A",
+          "ipa": "eɪ"
+        },
+        " ",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        {
+          "text": "结束",
+          "pinyin": "jie2 shu4"
+        },
+        "、",
+        {
+          "letter": "B",
+          "ipa": "biː"
+        },
+        " ",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "开始。",
+        {
+          "breakMs": 200
+        },
+        "以及 ",
+        {
+          "letter": "C",
+          "ipa": "siː"
+        },
+        " ",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        {
+          "text": "穿过",
+          "pinyin": "chuan1 guo4"
+        },
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        " ",
+        {
+          "letter": "D",
+          "ipa": "diː"
+        },
+        " ",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        {
+          "text": "穿过",
+          "pinyin": "chuan1 guo4"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "都",
+          "pinyin": "dou1"
+        },
+        {
+          "text": "属于",
+          "pinyin": "shu3 yu2"
+        },
+        {
+          "text": "同一次",
+          "pinyin": "tong2 yi2 ci4"
+        },
+        "事件。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "0cf8f6ddae9fc34e9c02d57804cf98b629a9e17d161d6c4cec2a6a9bac23e4c3",
+      "baselineFingerprint": "b259f26d0ab045502808815b44c11e2fe78e43443cbaa9a5c093e199103b42ff",
+      "changes": [
+        {
+          "from": 61,
+          "to": 72,
+          "parts": [
+            "以及 ",
+            {
+              "letter": "C",
+              "ipa": "siː"
+            },
+            " ",
+            {
+              "text": "的",
+              "pinyin": "de5"
+            },
+            {
+              "text": "穿过",
+              "pinyin": "chuan1 guo4"
+            },
+            {
+              "text": "和",
+              "pinyin": "he2"
+            },
+            " ",
+            {
+              "letter": "D",
+              "ipa": "diː"
+            },
+            " ",
+            {
+              "text": "的",
+              "pinyin": "de5"
+            },
+            {
+              "text": "穿过",
+              "pinyin": "chuan1 guo4"
+            },
+            "。"
+          ],
+          "before": "以及 C、D 的穿过。",
+          "after": "以及 C 的穿过和 D 的穿过。",
+          "reason": "分别说明两个穿过者，避免 C、D 紧邻列举；不改变两者均穿过 P 的含义。"
+        }
+      ],
+      "originalText": "例如检查旧邻居 A 与 C。可以算出未来位置 P。这只说明要在 P 停下。到站后不能只处理这一对。A 的结束、B 的开始。以及 C、D 的穿过。都属于同一次事件。",
+      "sentencePlan": [
+        {
+          "caption": "例如检查旧邻居 A 与 C，可以算出未来位置 P；这只说明要在 P 停下。",
+          "speech": [
+            "例如检查旧邻居 A 与 C。",
+            "可以算出未来位置 P。",
+            "这只说明要在 P 停下。"
+          ]
+        },
+        {
+          "caption": "到站后不能只处理这一对。",
+          "speech": [
+            "到站后不能只处理这一对。"
+          ]
+        },
+        {
+          "caption": "A 的结束、B 的开始，以及 C、D 的穿过，都属于同一次事件。",
+          "speech": [
+            "A 的结束、B 的开始。",
+            "以及 C 的穿过和 D 的穿过。",
+            "都属于同一次事件。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP24",
+      "audioFile": "SP24.wav",
+      "text": "如果 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 D。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留输入 B、输入 C 和输入 D 这三份。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">如果 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"piː\">P</phoneme></lang> 在线段<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"heng 2 zuo 4 biao 1\">横坐标</phoneme>又严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"jia 1 zai 4\">夹在</phoneme>两端<phoneme alphabet=\"sapi\" ph=\"zhi 1 jian 1\">之间</phoneme>。<break time=\"200ms\"/>就叫严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"chuan 1 guo 4\">穿过</phoneme>者。<break time=\"400ms\"/>本例是 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme> <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"diː\">D</phoneme></lang>。<break time=\"200ms\"/>两<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>存在。<break time=\"400ms\"/>非零<phoneme alphabet=\"sapi\" ph=\"qie 3\">且</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2 shu 4 zhi 2\">不竖直</phoneme>保证两端<phoneme alphabet=\"sapi\" ph=\"heng 2 zuo 4 biao 1\">横坐标</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme><phoneme alphabet=\"sapi\" ph=\"san 1\">三</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 3\">种</phoneme><phoneme alphabet=\"sapi\" ph=\"jue 2 se 4\">角色</phoneme>互<phoneme alphabet=\"sapi\" ph=\"bu 2 hun 4 xiao 2\">不混淆</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"dang 1 qian 2\">当前</phoneme>四份<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1 jia 1\">参加</phoneme>。<break time=\"200ms\"/>右<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 2 bao 3 liu 2\">只保留</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang>、输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"diː\">D</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>三份。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "664e2b16e46a9d5b6d623f63dae18821252e836ce6664d88adc816424f75967b",
+      "input": [
+        "如果 ",
+        {
+          "letter": "P",
+          "ipa": "piː"
+        },
+        " 在线段",
+        {
+          "text": "上",
+          "pinyin": "shang4"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "横坐标",
+          "pinyin": "heng2 zuo4 biao1"
+        },
+        "又严",
+        {
+          "text": "格",
+          "pinyin": "ge2"
+        },
+        {
+          "text": "夹在",
+          "pinyin": "jia1 zai4"
+        },
+        "两端",
+        {
+          "text": "之间",
+          "pinyin": "zhi1 jian1"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "就叫严",
+        {
+          "text": "格",
+          "pinyin": "ge2"
+        },
+        {
+          "text": "穿过",
+          "pinyin": "chuan1 guo4"
+        },
+        "者。",
+        {
+          "breakMs": 400
+        },
+        "本例是 ",
+        {
+          "letter": "C",
+          "ipa": "siː"
+        },
+        " ",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        " ",
+        {
+          "letter": "D",
+          "ipa": "diː"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "两",
+        {
+          "text": "侧",
+          "pinyin": "ce4"
+        },
+        {
+          "text": "都",
+          "pinyin": "dou1"
+        },
+        "存在。",
+        {
+          "breakMs": 400
+        },
+        "非零",
+        {
+          "text": "且",
+          "pinyin": "qie3"
+        },
+        {
+          "text": "不竖直",
+          "pinyin": "bu2 shu4 zhi2"
+        },
+        "保证两端",
+        {
+          "text": "横坐标",
+          "pinyin": "heng2 zuo4 biao1"
+        },
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        {
+          "text": "同",
+          "pinyin": "tong2"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "所以",
+          "pinyin": "suo2 yi3"
+        },
+        {
+          "text": "三",
+          "pinyin": "san1"
+        },
+        {
+          "text": "种",
+          "pinyin": "zhong3"
+        },
+        {
+          "text": "角色",
+          "pinyin": "jue2 se4"
+        },
+        "互",
+        {
+          "text": "不混淆",
+          "pinyin": "bu2 hun4 xiao2"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "当前",
+          "pinyin": "dang1 qian2"
+        },
+        "四份",
+        {
+          "text": "都",
+          "pinyin": "dou1"
+        },
+        {
+          "text": "参加",
+          "pinyin": "can1 jia1"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "右",
+        {
+          "text": "侧",
+          "pinyin": "ce4"
+        },
+        {
+          "text": "只保留",
+          "pinyin": "zhi2 bao3 liu2"
+        },
+        "输入 ",
+        {
+          "letter": "B",
+          "ipa": "biː"
+        },
+        "、输入 ",
+        {
+          "letter": "C",
+          "ipa": "siː"
+        },
+        " ",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        "输入 ",
+        {
+          "letter": "D",
+          "ipa": "diː"
+        },
+        " ",
+        {
+          "text": "这",
+          "pinyin": "zhe4"
+        },
+        "三份。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "21ee9efdf791f4be7e0c53fc66d4f7f3d7456d8fc4e5800de34e48b98598e429",
+      "baselineFingerprint": "ab6374c02dcaf61a24311bfa85df29e05b2c112de1c04a4ba4c796be8a3666e8",
+      "changes": [
+        {
+          "from": 0,
+          "to": 9,
+          "parts": [
+            "如果 ",
+            {
+              "letter": "P",
+              "ipa": "piː"
+            },
+            " 在线段",
+            {
+              "text": "上",
+              "pinyin": "shang4"
+            },
+            "。"
+          ],
+          "before": "若 P 在线段上。",
+          "after": "如果 P 在线段上。",
+          "reason": "若有新增漏读标记；保留条件含义，改为完整双音节连接词。"
+        },
+        {
+          "from": 81,
+          "to": 93,
+          "parts": [
+            "右",
+            {
+              "text": "侧",
+              "pinyin": "ce4"
+            },
+            {
+              "text": "只保留",
+              "pinyin": "zhi2 bao3 liu2"
+            },
+            "输入 ",
+            {
+              "letter": "B",
+              "ipa": "biː"
+            },
+            "、输入 ",
+            {
+              "letter": "C",
+              "ipa": "siː"
+            },
+            " ",
+            {
+              "text": "和",
+              "pinyin": "he2"
+            },
+            "输入 ",
+            {
+              "letter": "D",
+              "ipa": "diː"
+            },
+            " ",
+            {
+              "text": "这",
+              "pinyin": "zhe4"
+            },
+            "三份。"
+          ],
+          "before": "右侧只保留 B、C、D。",
+          "after": "右侧只保留输入 B、输入 C 和输入 D 这三份。",
+          "reason": "逐项增加对象词，并让末项 D 后接数量短语；三份右侧身份不变。"
+        }
+      ],
+      "originalText": "若 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 D。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留 B、C、D。",
+      "sentencePlan": [
+        {
+          "caption": "若 P 在线段上，横坐标又严格夹在两端之间，就叫严格穿过者。",
+          "speech": [
+            "如果 P 在线段上。",
+            "横坐标又严格夹在两端之间。",
+            "就叫严格穿过者。"
+          ]
+        },
+        {
+          "caption": "本例是 C 和 D，两侧都存在。",
+          "speech": [
+            "本例是 C 和 D。",
+            "两侧都存在。"
+          ]
+        },
+        {
+          "caption": "非零且不竖直保证两端横坐标不同，所以三种角色互不混淆；当前四份都参加，右侧只保留 B、C、D。",
+          "speech": [
+            "非零且不竖直保证两端横坐标不同。",
+            "所以三种角色互不混淆。",
+            "当前四份都参加。",
+            "右侧只保留输入 B、输入 C 和输入 D 这三份。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP25",
+      "audioFile": "SP25.wav",
+      "text": "把紧靠 P 左侧的活动顺序叫旧顺序。其中经过 P 的旧参与者叫相遇块。它包括结束者和严格穿过者。不包括开始者。本例旧块从下到上依次是输入 D、输入 A 和输入 C。没有旧参与者时就是空块。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>紧靠 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 左<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>活动顺序叫旧顺序。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"qi 2\">其</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1 guo 4\">经过</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>旧<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4 zhe 3\">参与者</phoneme>叫<phoneme alphabet=\"sapi\" ph=\"xiang 1 yu 4\">相遇</phoneme>块。<break time=\"400ms\"/>它包括<phoneme alphabet=\"sapi\" ph=\"jie 2 shu 4\">结束</phoneme>者<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"chuan 1 guo 4\">穿过</phoneme>者。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>包括<phoneme alphabet=\"sapi\" ph=\"kai 1 shi 2 zhe 3\">开始者</phoneme>。<break time=\"200ms\"/>本例旧块从<phoneme alphabet=\"sapi\" ph=\"xia 4\">下</phoneme>到<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>依次是输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"diː\">D</phoneme></lang>、输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"eɪ\">A</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme>有旧<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4 zhe 3\">参与者</phoneme>时就是<phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>块。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "c0dc3fb07b433eace87b8211f707cee6d5778234c0441b61f8942ae269fa53a9",
+      "input": [
+        {
+          "text": "把",
+          "pinyin": "ba3"
+        },
+        "紧靠 P 左",
+        {
+          "text": "侧",
+          "pinyin": "ce4"
+        },
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "活动顺序叫旧顺序。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "其",
+          "pinyin": "qi2"
+        },
+        {
+          "text": "中",
+          "pinyin": "zhong1"
+        },
+        {
+          "text": "经过",
+          "pinyin": "jing1 guo4"
+        },
+        " P ",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "旧",
+        {
+          "text": "参与者",
+          "pinyin": "can1 yu4 zhe3"
+        },
+        "叫",
+        {
+          "text": "相遇",
+          "pinyin": "xiang1 yu4"
+        },
+        "块。",
+        {
+          "breakMs": 400
+        },
+        "它包括",
+        {
+          "text": "结束",
+          "pinyin": "jie2 shu4"
+        },
+        "者",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        "严",
+        {
+          "text": "格",
+          "pinyin": "ge2"
+        },
+        {
+          "text": "穿过",
+          "pinyin": "chuan1 guo4"
+        },
+        "者。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        "包括",
+        {
+          "text": "开始者",
+          "pinyin": "kai1 shi2 zhe3"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "本例旧块从",
+        {
+          "text": "下",
+          "pinyin": "xia4"
+        },
+        "到",
+        {
+          "text": "上",
+          "pinyin": "shang4"
+        },
+        "依次是输入 ",
+        {
+          "letter": "D",
+          "ipa": "diː"
+        },
+        "、输入 ",
+        {
+          "letter": "A",
+          "ipa": "eɪ"
+        },
+        " ",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        "输入 ",
+        {
+          "letter": "C",
+          "ipa": "siː"
+        },
+        "。",
+        {
+          "breakMs": 400
+        },
+        {
+          "text": "没",
+          "pinyin": "mei2"
+        },
+        "有旧",
+        {
+          "text": "参与者",
+          "pinyin": "can1 yu4 zhe3"
+        },
+        "时就是",
+        {
+          "text": "空",
+          "pinyin": "kong1"
+        },
+        "块。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "298c4c957fbc31ddaea86776072c86deac780687c411465282208957c50a69e8",
+      "baselineFingerprint": "f920e912dd02f0284113136d74839245db1da61f5049b3490f070c03b1337ac1",
+      "changes": [
+        {
+          "from": 55,
+          "to": 72,
+          "parts": [
+            "本例旧块从",
+            {
+              "text": "下",
+              "pinyin": "xia4"
+            },
+            "到",
+            {
+              "text": "上",
+              "pinyin": "shang4"
+            },
+            "依次是输入 ",
+            {
+              "letter": "D",
+              "ipa": "diː"
+            },
+            "、输入 ",
+            {
+              "letter": "A",
+              "ipa": "eɪ"
+            },
+            " ",
+            {
+              "text": "和",
+              "pinyin": "he2"
+            },
+            "输入 ",
+            {
+              "letter": "C",
+              "ipa": "siː"
+            },
+            "。"
+          ],
+          "before": "本例旧块是从下到上的 D、A、C。",
+          "after": "本例旧块从下到上依次是输入 D、输入 A 和输入 C。",
+          "reason": "避免 的 D 紧邻，保留从下到上的 D、A、C 顺序和全部身份。"
+        }
+      ],
+      "originalText": "把紧靠 P 左侧的活动顺序叫旧顺序。其中经过 P 的旧参与者叫相遇块。它包括结束者和严格穿过者。不包括开始者。本例旧块是从下到上的 D、A、C。没有旧参与者时就是空块。",
+      "sentencePlan": [
+        {
+          "caption": "把紧靠 P 左侧的活动顺序叫旧顺序，其中经过 P 的旧参与者叫相遇块。",
+          "speech": [
+            "把紧靠 P 左侧的活动顺序叫旧顺序。",
+            "其中经过 P 的旧参与者叫相遇块。"
+          ]
+        },
+        {
+          "caption": "它包括结束者和严格穿过者，不包括开始者；本例旧块是从下到上的 D、A、C。",
+          "speech": [
+            "它包括结束者和严格穿过者。",
+            "不包括开始者。",
+            "本例旧块从下到上依次是输入 D、输入 A 和输入 C。"
+          ]
+        },
+        {
+          "caption": "没有旧参与者时就是空块。",
+          "speech": [
+            "没有旧参与者时就是空块。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP37",
+      "audioFile": "SP37.wav",
+      "text": "取得整个旧块后。再合并清单中从 P 开始的非零输入。本例旧块中有输入 D、输入 A 和输入 C。再把开始者 B 加入名单。合并后得到四份参与者。结束者 A 仍然留在名单中。直到当前配对完成。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"qu 3 de 2\">取得</phoneme>整<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>旧块后。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme><phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme>清<phoneme alphabet=\"sapi\" ph=\"dan 1\">单</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>从 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 开始<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>非零输入。<break time=\"400ms\"/>本例旧块<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>有输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"diː\">D</phoneme></lang>、输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"eɪ\">A</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang>。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"kai 1 shi 2 zhe 3\">开始者</phoneme> <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang> 加入<phoneme alphabet=\"sapi\" ph=\"ming 2 dan 1\">名单</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"he 2 bing 4\">合并</phoneme>后<phoneme alphabet=\"sapi\" ph=\"de 2 dao 4\">得到</phoneme>四份<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4 zhe 3\">参与者</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"jie 2 shu 4 zhe 3\">结束者</phoneme> <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"eɪ\">A</phoneme></lang> 仍然留在<phoneme alphabet=\"sapi\" ph=\"ming 2 dan 1\">名单</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>。<break time=\"200ms\"/>直到<phoneme alphabet=\"sapi\" ph=\"dang 1 qian 2\">当前</phoneme>配对完成。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "92caa74a69c0d006afe76001fd2f757e0bbfadb2b9aa84593e113ec5822899a4",
+      "input": [
+        {
+          "text": "取得",
+          "pinyin": "qu3 de2"
+        },
+        "整",
+        {
+          "text": "个",
+          "pinyin": "ge4"
+        },
+        "旧块后。",
+        {
+          "breakMs": 200
+        },
+        "再",
+        {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        {
+          "text": "并",
+          "pinyin": "bing4"
+        },
+        "清",
+        {
+          "text": "单",
+          "pinyin": "dan1"
+        },
+        {
+          "text": "中",
+          "pinyin": "zhong1"
+        },
+        "从 P 开始",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "非零输入。",
+        {
+          "breakMs": 400
+        },
+        "本例旧块",
+        {
+          "text": "中",
+          "pinyin": "zhong1"
+        },
+        "有输入 ",
+        {
+          "letter": "D",
+          "ipa": "diː"
+        },
+        "、输入 ",
+        {
+          "letter": "A",
+          "ipa": "eɪ"
+        },
+        " ",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        "输入 ",
+        {
+          "letter": "C",
+          "ipa": "siː"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "再",
+        {
+          "text": "把",
+          "pinyin": "ba3"
+        },
+        {
+          "text": "开始者",
+          "pinyin": "kai1 shi2 zhe3"
+        },
+        " ",
+        {
+          "letter": "B",
+          "ipa": "biː"
+        },
+        " 加入",
+        {
+          "text": "名单",
+          "pinyin": "ming2 dan1"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "合并",
+          "pinyin": "he2 bing4"
+        },
+        "后",
+        {
+          "text": "得到",
+          "pinyin": "de2 dao4"
+        },
+        "四份",
+        {
+          "text": "参与者",
+          "pinyin": "can1 yu4 zhe3"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "结束者",
+          "pinyin": "jie2 shu4 zhe3"
+        },
+        " ",
+        {
+          "letter": "A",
+          "ipa": "eɪ"
+        },
+        " 仍然留在",
+        {
+          "text": "名单",
+          "pinyin": "ming2 dan1"
+        },
+        {
+          "text": "中",
+          "pinyin": "zhong1"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "直到",
+        {
+          "text": "当前",
+          "pinyin": "dang1 qian2"
+        },
+        "配对完成。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "4109d55f80545aea7cc9beff1488d3bb260d77d948b0dbcd62efd230048475c4",
+      "baselineFingerprint": "80f06b00852c94a9229d80cb40a605fd10740460ec900974b87bb581997be453",
+      "changes": [
+        {
+          "from": 26,
+          "to": 43,
+          "parts": [
+            "本例旧块",
+            {
+              "text": "中",
+              "pinyin": "zhong1"
+            },
+            "有输入 ",
+            {
+              "letter": "D",
+              "ipa": "diː"
+            },
+            "、输入 ",
+            {
+              "letter": "A",
+              "ipa": "eɪ"
+            },
+            " ",
+            {
+              "text": "和",
+              "pinyin": "he2"
+            },
+            "输入 ",
+            {
+              "letter": "C",
+              "ipa": "siː"
+            },
+            "。再",
+            {
+              "text": "把",
+              "pinyin": "ba3"
+            },
+            {
+              "text": "开始者",
+              "pinyin": "kai1 shi2 zhe3"
+            },
+            " ",
+            {
+              "letter": "B",
+              "ipa": "biː"
+            },
+            " 加入",
+            {
+              "text": "名单",
+              "pinyin": "ming2 dan1"
+            },
+            "。"
+          ],
+          "before": "本例由旧块 D、A、C 补入 B。",
+          "after": "本例旧块中有输入 D、输入 A 和输入 C。再把开始者 B 加入名单。",
+          "reason": "先明确旧块三份身份，再说明合并开始者 B；避免 D 与前词粘连。"
+        },
+        {
+          "from": 43,
+          "to": 51,
+          "parts": [
+            {
+              "text": "合并",
+              "pinyin": "he2 bing4"
+            },
+            "后",
+            {
+              "text": "得到",
+              "pinyin": "de2 dao4"
+            },
+            "四份",
+            {
+              "text": "参与者",
+              "pinyin": "can1 yu4 zhe3"
+            },
+            "。"
+          ],
+          "before": "得到四份参与者。",
+          "after": "合并后得到四份参与者。",
+          "reason": "为四份数量补足明确主语语境，保留合并结果。"
+        },
+        {
+          "from": 51,
+          "to": 68,
+          "parts": [
+            {
+              "text": "结束者",
+              "pinyin": "jie2 shu4 zhe3"
+            },
+            " ",
+            {
+              "letter": "A",
+              "ipa": "eɪ"
+            },
+            " 仍然留在",
+            {
+              "text": "名单",
+              "pinyin": "ming2 dan1"
+            },
+            {
+              "text": "中",
+              "pinyin": "zhong1"
+            },
+            "。直到",
+            {
+              "text": "当前",
+              "pinyin": "dang1 qian2"
+            },
+            "配对完成。"
+          ],
+          "before": "结束者 A 仍保留到当前配对完成。",
+          "after": "结束者 A 仍然留在名单中。直到当前配对完成。",
+          "reason": "把保留对象与保留终点分开表达，完整保留结束者 A 参加当前配对的要求。"
+        }
+      ],
+      "originalText": "取得整个旧块后。再合并清单中从 P 开始的非零输入。本例由旧块 D、A、C 补入 B。得到四份参与者。结束者 A 仍保留到当前配对完成。",
+      "sentencePlan": [
+        {
+          "caption": "取得整个旧块后，再合并清单中从 P 开始的非零输入。",
+          "speech": [
+            "取得整个旧块后。",
+            "再合并清单中从 P 开始的非零输入。"
+          ]
+        },
+        {
+          "caption": "本例由旧块 D、A、C 补入 B，得到四份参与者；结束者 A 仍保留到当前配对完成。",
+          "speech": [
+            "本例旧块中有输入 D、输入 A 和输入 C。",
+            "再把开始者 B 加入名单。",
+            "合并后得到四份参与者。",
+            "结束者 A 仍然留在名单中。",
+            "直到当前配对完成。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP41",
+      "audioFile": "SP41.wav",
+      "text": "沿用第一章《逐对检查的基准方法》的无序对枚举结论。当前名单包含输入 A、输入 B、输入 C 和输入 D。它们对应图中的六个不同输入对。每对的交集都是 P。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">沿用<phoneme alphabet=\"sapi\" ph=\"di 4 yi 1\">第一</phoneme>章《逐对<phoneme alphabet=\"sapi\" ph=\"jian 3 cha 2\">检查</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>基准方法》<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wu 2 xu 4\">无序</phoneme>对<phoneme alphabet=\"sapi\" ph=\"mei 2 ju 3\">枚举</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2 lun 4\">结论</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"dang 1 qian 2 ming 2 dan 1\">当前名单</phoneme>包含输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"eɪ\">A</phoneme></lang>、输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang>、输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"diː\">D</phoneme></lang>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1 men 5\">它们</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4 ying 4\">对应</phoneme>图<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>六<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>输入对。<break time=\"200ms\"/>每对<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>交集<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>是 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "abe5296fbd9fa827d8088b81af2c54f1c58bc316a991387e0ca89b0aa12dd104",
+      "input": [
+        "沿用",
+        {
+          "text": "第一",
+          "pinyin": "di4 yi1"
+        },
+        "章《逐对",
+        {
+          "text": "检查",
+          "pinyin": "jian3 cha2"
+        },
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "基准方法》",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        {
+          "text": "无序",
+          "pinyin": "wu2 xu4"
+        },
+        "对",
+        {
+          "text": "枚举",
+          "pinyin": "mei2 ju3"
+        },
+        {
+          "text": "结论",
+          "pinyin": "jie2 lun4"
+        },
+        "。",
+        {
+          "breakMs": 400
+        },
+        {
+          "text": "当前名单",
+          "pinyin": "dang1 qian2 ming2 dan1"
+        },
+        "包含输入 ",
+        {
+          "letter": "A",
+          "ipa": "eɪ"
+        },
+        "、输入 ",
+        {
+          "letter": "B",
+          "ipa": "biː"
+        },
+        "、输入 ",
+        {
+          "letter": "C",
+          "ipa": "siː"
+        },
+        " ",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        "输入 ",
+        {
+          "letter": "D",
+          "ipa": "diː"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "它们",
+          "pinyin": "ta1 men5"
+        },
+        {
+          "text": "对应",
+          "pinyin": "dui4 ying4"
+        },
+        "图",
+        {
+          "text": "中",
+          "pinyin": "zhong1"
+        },
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "六",
+        {
+          "text": "个",
+          "pinyin": "ge4"
+        },
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        {
+          "text": "同",
+          "pinyin": "tong2"
+        },
+        "输入对。",
+        {
+          "breakMs": 200
+        },
+        "每对",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "交集",
+        {
+          "text": "都",
+          "pinyin": "dou1"
+        },
+        "是 P。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "53d0566ae10f2382b9537d5c12151f7dee91a1ed95506df1a96d6c9f5aaee84d",
+      "baselineFingerprint": "f7970095e5f88fb4f3643ac005b01667c3f3213e5e2887ca7ddefbd263409cf4",
+      "changes": [
+        {
+          "from": 25,
+          "to": 51,
+          "parts": [
+            {
+              "text": "当前名单",
+              "pinyin": "dang1 qian2 ming2 dan1"
+            },
+            "包含输入 ",
+            {
+              "letter": "A",
+              "ipa": "eɪ"
+            },
+            "、输入 ",
+            {
+              "letter": "B",
+              "ipa": "biː"
+            },
+            "、输入 ",
+            {
+              "letter": "C",
+              "ipa": "siː"
+            },
+            " ",
+            {
+              "text": "和",
+              "pinyin": "he2"
+            },
+            "输入 ",
+            {
+              "letter": "D",
+              "ipa": "diː"
+            },
+            "。",
+            {
+              "text": "它们",
+              "pinyin": "ta1 men5"
+            },
+            {
+              "text": "对应",
+              "pinyin": "dui4 ying4"
+            },
+            "图",
+            {
+              "text": "中",
+              "pinyin": "zhong1"
+            },
+            {
+              "text": "的",
+              "pinyin": "de5"
+            },
+            "六",
+            {
+              "text": "个",
+              "pinyin": "ge4"
+            },
+            {
+              "text": "不",
+              "pinyin": "bu4"
+            },
+            {
+              "text": "同",
+              "pinyin": "tong2"
+            },
+            "输入对。"
+          ],
+          "before": "当前名单 A、B、C、D 对应图中的六个不同输入对。",
+          "after": "当前名单包含输入 A、输入 B、输入 C 和输入 D。它们对应图中的六个不同输入对。",
+          "reason": "逐项明确名单身份，再承接六个无序输入对结论；没有删去或新增身份。"
+        }
+      ],
+      "originalText": "沿用第一章《逐对检查的基准方法》的无序对枚举结论。当前名单 A、B、C、D 对应图中的六个不同输入对。每对的交集都是 P。",
+      "sentencePlan": [
+        {
+          "caption": "沿用第一章《逐对检查的基准方法》的无序对枚举结论。",
+          "speech": [
+            "沿用第一章《逐对检查的基准方法》的无序对枚举结论。"
+          ]
+        },
+        {
+          "caption": "当前名单 A、B、C、D 对应图中的六个不同输入对，每对的交集都是 P。",
+          "speech": [
+            "当前名单包含输入 A、输入 B、输入 C 和输入 D。",
+            "它们对应图中的六个不同输入对。",
+            "每对的交集都是 P。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP52",
+      "audioFile": "SP52.wav",
+      "text": "到达 P。先按前面的方法找齐非零参与者。再合并这里的点输入。这次名单包含线段 C。还有点输入 Z 一 和点输入 Z 二。同一位置不合并不同身份。同一身份也不重复加入。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">到达 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang>。<break time=\"200ms\"/>先按前面<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>方法找<phoneme alphabet=\"sapi\" ph=\"qi 2\">齐</phoneme>非零<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4 zhe 3\">参与者</phoneme>。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme><phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4 li 3\">这里</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>点输入。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>次<phoneme alphabet=\"sapi\" ph=\"ming 2 dan 1\">名单</phoneme>包含线段 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"hai 2 you 3\">还有</phoneme>点输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"ziː\">Z</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>点输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"ziː\">Z</phoneme></lang> 二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"tong 2 yi 1\">同一</phoneme>位置<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme><phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"shen 1 fen 4\">身份</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"tong 2 yi 1\">同一</phoneme><phoneme alphabet=\"sapi\" ph=\"shen 1 fen 4\">身份</phoneme>也<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"chong 2 fu 4\">重复</phoneme>加入。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "81eda110591fc86d62b59aab63585a00c92c11e3c97f1f8f4c2cb40058fc21e2",
+      "input": [
+        "到达 P。",
+        {
+          "breakMs": 200
+        },
+        "先按前面",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "方法找",
+        {
+          "text": "齐",
+          "pinyin": "qi2"
+        },
+        "非零",
+        {
+          "text": "参与者",
+          "pinyin": "can1 yu4 zhe3"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "再",
+        {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        {
+          "text": "并",
+          "pinyin": "bing4"
+        },
+        {
+          "text": "这里",
+          "pinyin": "zhe4 li3"
+        },
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "点输入。",
+        {
+          "breakMs": 400
+        },
+        {
+          "text": "这",
+          "pinyin": "zhe4"
+        },
+        "次",
+        {
+          "text": "名单",
+          "pinyin": "ming2 dan1"
+        },
+        "包含线段 ",
+        {
+          "letter": "C",
+          "ipa": "siː"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "还有",
+          "pinyin": "hai2 you3"
+        },
+        "点输入 ",
+        {
+          "letter": "Z",
+          "ipa": "ziː"
+        },
+        " ",
+        {
+          "text": "一",
+          "pinyin": "yi1"
+        },
+        " ",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        "点输入 ",
+        {
+          "letter": "Z",
+          "ipa": "ziː"
+        },
+        " 二。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "同一",
+          "pinyin": "tong2 yi1"
+        },
+        "位置",
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        {
+          "text": "并",
+          "pinyin": "bing4"
+        },
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        {
+          "text": "同",
+          "pinyin": "tong2"
+        },
+        {
+          "text": "身份",
+          "pinyin": "shen1 fen4"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "同一",
+          "pinyin": "tong2 yi1"
+        },
+        {
+          "text": "身份",
+          "pinyin": "shen1 fen4"
+        },
+        "也",
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        {
+          "text": "重复",
+          "pinyin": "chong2 fu4"
+        },
+        "加入。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "031a071e474e8f4cd03cea576b3ca1084c381f0f19b7c1a83878ced372a97746",
+      "baselineFingerprint": "478dd893051ab53fc6a6f133e111a7ed448b9519dfe159b926f5a6cc589093ee",
+      "changes": [
+        {
+          "from": 30,
+          "to": 46,
+          "parts": [
+            {
+              "text": "这",
+              "pinyin": "zhe4"
+            },
+            "次",
+            {
+              "text": "名单",
+              "pinyin": "ming2 dan1"
+            },
+            "包含线段 ",
+            {
+              "letter": "C",
+              "ipa": "siː"
+            },
+            "。",
+            {
+              "text": "还有",
+              "pinyin": "hai2 you3"
+            },
+            "点输入 ",
+            {
+              "letter": "Z",
+              "ipa": "ziː"
+            },
+            " ",
+            {
+              "text": "一",
+              "pinyin": "yi1"
+            },
+            " ",
+            {
+              "text": "和",
+              "pinyin": "he2"
+            },
+            "点输入 ",
+            {
+              "letter": "Z",
+              "ipa": "ziː"
+            },
+            " 二。"
+          ],
+          "before": "这次名单是 C、Z 一、Z 二。",
+          "after": "这次名单包含线段 C。还有点输入 Z 一 和点输入 Z 二。",
+          "reason": "分清线段与两个点输入，用对象词分隔 Z 一 和 Z 二；编号仍直接朗读。"
+        }
+      ],
+      "originalText": "到达 P。先按前面的方法找齐非零参与者。再合并这里的点输入。这次名单是 C、Z 一、Z 二。同一位置不合并不同身份。同一身份也不重复加入。",
+      "sentencePlan": [
+        {
+          "caption": "到达 P，先按前面的方法找齐非零参与者，再合并这里的点输入。",
+          "speech": [
+            "到达 P。",
+            "先按前面的方法找齐非零参与者。",
+            "再合并这里的点输入。"
+          ]
+        },
+        {
+          "caption": "这次名单是 C、Z_1、Z_2；同一位置不合并不同身份，同一身份也不重复加入。",
+          "speech": [
+            "这次名单包含线段 C。",
+            "还有点输入 Z 一 和点输入 Z 二。",
+            "同一位置不合并不同身份。",
+            "同一身份也不重复加入。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP53",
+      "audioFile": "SP53.wav",
+      "text": "结果分别是 C 与 Z 一、C 与 Z 二。还有点输入 Z 一 与点输入 Z 二 组成的一对。每一对的完整交集都是 P。点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节。这里新增的是它们在扫描中的收集与去向。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"jie 2 guo 3\">结果</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1 bie 2\">分别</phoneme>是 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">C</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Z</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">C</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Z</say-as></lang> 二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"hai 2 you 3\">还有</phoneme>点输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"ziː\">Z</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme> <phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>点输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"ziː\">Z</phoneme></lang> 二 组成<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2 dui 4\">一对</phoneme>。<break time=\"200ms\"/>每<phoneme alphabet=\"sapi\" ph=\"yi 2 dui 4\">一对</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>完整交集<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>是 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang>。<break time=\"400ms\"/>点<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>线段、点<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>点<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>精确<phoneme alphabet=\"sapi\" ph=\"pan 4 duan 4\">判断</phoneme>引用第三章《从<phoneme alphabet=\"sapi\" ph=\"ren 4\">任</phoneme>意端点求出完整交集》第二<phoneme alphabet=\"sapi\" ph=\"jie 2\">节</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">里</phoneme>新增<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>是<phoneme alphabet=\"sapi\" ph=\"ta 1 men 5\">它们</phoneme>在<phoneme alphabet=\"sapi\" ph=\"sao 3 miao 2\">扫描</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>收集<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>去向。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "c5c9bdc9ae4362df806e1a7819ff003e833b1a8650fdeb2f799f9eff817d3ffa",
+      "input": [
+        {
+          "text": "结果",
+          "pinyin": "jie2 guo3"
+        },
+        {
+          "text": "分别",
+          "pinyin": "fen1 bie2"
+        },
+        "是 C ",
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        " Z ",
+        {
+          "text": "一",
+          "pinyin": "yi1"
+        },
+        "、C ",
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        " Z 二。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "还有",
+          "pinyin": "hai2 you3"
+        },
+        "点输入 ",
+        {
+          "letter": "Z",
+          "ipa": "ziː"
+        },
+        " ",
+        {
+          "text": "一",
+          "pinyin": "yi1"
+        },
+        " ",
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        "点输入 ",
+        {
+          "letter": "Z",
+          "ipa": "ziː"
+        },
+        " 二 组成",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        {
+          "text": "一对",
+          "pinyin": "yi2 dui4"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "每",
+        {
+          "text": "一对",
+          "pinyin": "yi2 dui4"
+        },
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "完整交集",
+        {
+          "text": "都",
+          "pinyin": "dou1"
+        },
+        "是 P。",
+        {
+          "breakMs": 400
+        },
+        "点",
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        "线段、点",
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        "点",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "精确",
+        {
+          "text": "判断",
+          "pinyin": "pan4 duan4"
+        },
+        "引用第三章《从",
+        {
+          "text": "任",
+          "pinyin": "ren4"
+        },
+        "意端点求出完整交集》第二",
+        {
+          "text": "节",
+          "pinyin": "jie2"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "这",
+          "pinyin": "zhe4"
+        },
+        {
+          "text": "里",
+          "pinyin": "li3"
+        },
+        "新增",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "是",
+        {
+          "text": "它们",
+          "pinyin": "ta1 men5"
+        },
+        "在",
+        {
+          "text": "扫描",
+          "pinyin": "sao3 miao2"
+        },
+        {
+          "text": "中",
+          "pinyin": "zhong1"
+        },
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "收集",
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        "去向。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "86240aa6d37e95ae0ca35610b8b7292ad9500f732bf77c93dbbdfc6abddb1005",
+      "baselineFingerprint": "2acd7d15507239603122d8e5234e8fb7b3809005b04dd65773324e0da0334e1b",
+      "changes": [
+        {
+          "from": 22,
+          "to": 35,
+          "parts": [
+            {
+              "text": "还有",
+              "pinyin": "hai2 you3"
+            },
+            "点输入 ",
+            {
+              "letter": "Z",
+              "ipa": "ziː"
+            },
+            " ",
+            {
+              "text": "一",
+              "pinyin": "yi1"
+            },
+            " ",
+            {
+              "text": "与",
+              "pinyin": "yu3"
+            },
+            "点输入 ",
+            {
+              "letter": "Z",
+              "ipa": "ziː"
+            },
+            " 二 组成",
+            {
+              "text": "的",
+              "pinyin": "de5"
+            },
+            {
+              "text": "一对",
+              "pinyin": "yi2 dui4"
+            },
+            "。"
+          ],
+          "before": "以及 Z 一 与 Z 二。",
+          "after": "还有点输入 Z 一 与点输入 Z 二 组成的一对。",
+          "reason": "为点与点的第三对补足对象词和谓语，保留 Z 一 与 Z 二 这一对。"
+        }
+      ],
+      "originalText": "结果分别是 C 与 Z 一、C 与 Z 二。以及 Z 一 与 Z 二。每一对的完整交集都是 P。点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节。这里新增的是它们在扫描中的收集与去向。",
+      "sentencePlan": [
+        {
+          "caption": "结果分别是 C 与 Z_1、C 与 Z_2，以及 Z_1与 Z_2，每一对的完整交集都是 P。",
+          "speech": [
+            "结果分别是 C 与 Z 一、C 与 Z 二。",
+            "还有点输入 Z 一 与点输入 Z 二 组成的一对。",
+            "每一对的完整交集都是 P。"
+          ]
+        },
+        {
+          "caption": "点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节，这里新增的是它们在扫描中的收集与去向。",
+          "speech": [
+            "点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节。",
+            "这里新增的是它们在扫描中的收集与去向。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP55",
+      "audioFile": "SP55.wav",
+      "text": "如果只取点输入 Z 一 和点输入 Z 二。没有非零线段。仍报告这一对对应 P。两侧活动顺序都为空。不能因为没有旧块或新块。就把当前点配对跳过去。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">如果<phoneme alphabet=\"sapi\" ph=\"zhi 2 qu 3\">只取</phoneme>点输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"ziː\">Z</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>点输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"ziː\">Z</phoneme></lang> 二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme>有非零线段。<break time=\"200ms\"/>仍报告<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2 dui 4\">一对</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4 ying 4\">对应</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang>。<break time=\"400ms\"/>两<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme>活动顺序<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2 kong 1\">为空</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能<phoneme alphabet=\"sapi\" ph=\"yin 1 wei 4\">因为</phoneme><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme>有旧块或新块。<break time=\"200ms\"/>就<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"dang 1 qian 2\">当前</phoneme>点配对<phoneme alphabet=\"sapi\" ph=\"tiao 4 guo 4 qu 5\">跳过去</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "1e798557fcaed6803a4786e7a173b22d293331235f6b90485c2eb2352fe382e6",
+      "input": [
+        "如果",
+        {
+          "text": "只取",
+          "pinyin": "zhi2 qu3"
+        },
+        "点输入 ",
+        {
+          "letter": "Z",
+          "ipa": "ziː"
+        },
+        " ",
+        {
+          "text": "一",
+          "pinyin": "yi1"
+        },
+        " ",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        "点输入 ",
+        {
+          "letter": "Z",
+          "ipa": "ziː"
+        },
+        " 二。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "没",
+          "pinyin": "mei2"
+        },
+        "有非零线段。",
+        {
+          "breakMs": 200
+        },
+        "仍报告",
+        {
+          "text": "这",
+          "pinyin": "zhe4"
+        },
+        {
+          "text": "一对",
+          "pinyin": "yi2 dui4"
+        },
+        {
+          "text": "对应",
+          "pinyin": "dui4 ying4"
+        },
+        " P。",
+        {
+          "breakMs": 400
+        },
+        "两",
+        {
+          "text": "侧",
+          "pinyin": "ce4"
+        },
+        "活动顺序",
+        {
+          "text": "都",
+          "pinyin": "dou1"
+        },
+        {
+          "text": "为空",
+          "pinyin": "wei2 kong1"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        "能",
+        {
+          "text": "因为",
+          "pinyin": "yin1 wei4"
+        },
+        {
+          "text": "没",
+          "pinyin": "mei2"
+        },
+        "有旧块或新块。",
+        {
+          "breakMs": 200
+        },
+        "就",
+        {
+          "text": "把",
+          "pinyin": "ba3"
+        },
+        {
+          "text": "当前",
+          "pinyin": "dang1 qian2"
+        },
+        "点配对",
+        {
+          "text": "跳过去",
+          "pinyin": "tiao4 guo4 qu5"
+        },
+        "。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "52764440c718241b8ff00a8b1c9116274f0a8d28d3aedcefb4d359a757151cc4",
+      "baselineFingerprint": "9b043a283c15334c58ac7872f252d3488445c07e2bd777f708d5d63b05614bd8",
+      "changes": [
+        {
+          "from": 0,
+          "to": 12,
+          "parts": [
+            "如果",
+            {
+              "text": "只取",
+              "pinyin": "zhi2 qu3"
+            },
+            "点输入 ",
+            {
+              "letter": "Z",
+              "ipa": "ziː"
+            },
+            " ",
+            {
+              "text": "一",
+              "pinyin": "yi1"
+            },
+            " ",
+            {
+              "text": "和",
+              "pinyin": "he2"
+            },
+            "点输入 ",
+            {
+              "letter": "Z",
+              "ipa": "ziː"
+            },
+            " 二。"
+          ],
+          "before": "若只取 Z 一、Z 二。",
+          "after": "如果只取点输入 Z 一 和点输入 Z 二。",
+          "reason": "将两个点输入写成完整并列短语，保留仅这两份输入的条件。"
+        }
+      ],
+      "originalText": "若只取 Z 一、Z 二。没有非零线段。仍报告这一对对应 P。两侧活动顺序都为空。不能因为没有旧块或新块。就把当前点配对跳过去。",
+      "sentencePlan": [
+        {
+          "caption": "若只取 Z_1、Z_2，没有非零线段，仍报告这一对对应 P。",
+          "speech": [
+            "如果只取点输入 Z 一 和点输入 Z 二。",
+            "没有非零线段。",
+            "仍报告这一对对应 P。"
+          ]
+        },
+        {
+          "caption": "两侧活动顺序都为空，不能因为没有旧块或新块，就把当前点配对跳过去。",
+          "speech": [
+            "两侧活动顺序都为空。",
+            "不能因为没有旧块或新块。",
+            "就把当前点配对跳过去。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SP58",
+      "audioFile": "SP58.wav",
+      "text": "再单独取 B 与 Z 一。先报告当前配对。然后只有 B 向右继续。这是另一个两输入案例。与左图分别处理。不能把输入 A、输入 B 和两次画出的 Z 一。误拼成四个身份。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">再<phoneme alphabet=\"sapi\" ph=\"dan 1 du 2\">单独</phoneme>取 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme> <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"ziː\">Z</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>先<phoneme alphabet=\"sapi\" ph=\"bao 4 gao 4\">报告</phoneme><phoneme alphabet=\"sapi\" ph=\"dang 1 qian 2\">当前</phoneme>配对。<break time=\"200ms\"/>然后<phoneme alphabet=\"sapi\" ph=\"zhi 2 you 3\">只有</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">B</say-as></lang> 向右继续。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>是<phoneme alphabet=\"sapi\" ph=\"ling 4 yi 2 ge 4\">另一个</phoneme>两输入案例。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>左图<phoneme alphabet=\"sapi\" ph=\"fen 1 bie 2\">分别</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 2 li 3\">处理</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"eɪ\">A</phoneme></lang>、输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>两次画出<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme> <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"ziː\">Z</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>误拼成四<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"shen 1 fen 4\">身份</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "e6b84320d413aca1cbc397afb717cf3349f0b4bd111772cc06cef78450a3ff38",
+      "input": [
+        "再",
+        {
+          "text": "单独",
+          "pinyin": "dan1 du2"
+        },
+        "取 ",
+        {
+          "letter": "B",
+          "ipa": "biː"
+        },
+        " ",
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        " ",
+        {
+          "letter": "Z",
+          "ipa": "ziː"
+        },
+        " ",
+        {
+          "text": "一",
+          "pinyin": "yi1"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "先",
+        {
+          "text": "报告",
+          "pinyin": "bao4 gao4"
+        },
+        {
+          "text": "当前",
+          "pinyin": "dang1 qian2"
+        },
+        "配对。",
+        {
+          "breakMs": 200
+        },
+        "然后",
+        {
+          "text": "只有",
+          "pinyin": "zhi2 you3"
+        },
+        " B 向右继续。",
+        {
+          "breakMs": 400
+        },
+        {
+          "text": "这",
+          "pinyin": "zhe4"
+        },
+        "是",
+        {
+          "text": "另一个",
+          "pinyin": "ling4 yi2 ge4"
+        },
+        "两输入案例。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "与",
+          "pinyin": "yu3"
+        },
+        "左图",
+        {
+          "text": "分别",
+          "pinyin": "fen1 bie2"
+        },
+        {
+          "text": "处理",
+          "pinyin": "chu2 li3"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        {
+          "text": "不",
+          "pinyin": "bu4"
+        },
+        "能",
+        {
+          "text": "把",
+          "pinyin": "ba3"
+        },
+        "输入 ",
+        {
+          "letter": "A",
+          "ipa": "eɪ"
+        },
+        "、输入 ",
+        {
+          "letter": "B",
+          "ipa": "biː"
+        },
+        " ",
+        {
+          "text": "和",
+          "pinyin": "he2"
+        },
+        "两次画出",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        " ",
+        {
+          "letter": "Z",
+          "ipa": "ziː"
+        },
+        " ",
+        {
+          "text": "一",
+          "pinyin": "yi1"
+        },
+        "。",
+        {
+          "breakMs": 200
+        },
+        "误拼成四",
+        {
+          "text": "个",
+          "pinyin": "ge4"
+        },
+        {
+          "text": "身份",
+          "pinyin": "shen1 fen4"
+        },
+        "。",
+        {
+          "breakMs": 400
+        }
+      ],
+      "baselineAudioSha256": "6c714fa60c9c7aba7e421b75905625e0a1784118f9180d226c232c37ddb3719e",
+      "baselineFingerprint": "34f306aba64d65cc3544df1d94b137584d00938e045c00bf85f53277715fae98",
+      "changes": [
+        {
+          "from": 52,
+          "to": 79,
+          "parts": [
+            {
+              "text": "不",
+              "pinyin": "bu4"
+            },
+            "能",
+            {
+              "text": "把",
+              "pinyin": "ba3"
+            },
+            "输入 ",
+            {
+              "letter": "A",
+              "ipa": "eɪ"
+            },
+            "、输入 ",
+            {
+              "letter": "B",
+              "ipa": "biː"
+            },
+            " ",
+            {
+              "text": "和",
+              "pinyin": "he2"
+            },
+            "两次画出",
+            {
+              "text": "的",
+              "pinyin": "de5"
+            },
+            " ",
+            {
+              "letter": "Z",
+              "ipa": "ziː"
+            },
+            " ",
+            {
+              "text": "一",
+              "pinyin": "yi1"
+            },
+            "。误拼成四",
+            {
+              "text": "个",
+              "pinyin": "ge4"
+            },
+            {
+              "text": "身份",
+              "pinyin": "shen1 fen4"
+            },
+            "。"
+          ],
+          "before": "不能把 A、B 和两份画出的 Z 一 误拼成四个身份。",
+          "after": "不能把输入 A、输入 B 和两次画出的 Z 一。误拼成四个身份。",
+          "reason": "增加 A、B 的对象词，并明确 Z 一 只是画了两次；保留两案例分开及不得拼成四个身份的警告。"
+        }
+      ],
+      "originalText": "再单独取 B 与 Z 一。先报告当前配对。然后只有 B 向右继续。这是另一个两输入案例。与左图分别处理。不能把 A、B 和两份画出的 Z 一 误拼成四个身份。",
+      "sentencePlan": [
+        {
+          "caption": "再单独取 B 与 Z_1，先报告当前配对，然后只有 B 向右继续。",
+          "speech": [
+            "再单独取 B 与 Z 一。",
+            "先报告当前配对。",
+            "然后只有 B 向右继续。"
+          ]
+        },
+        {
+          "caption": "这是另一个两输入案例，与左图分别处理；不能把 A、B 和两份画出的 Z_1误拼成四个身份。",
+          "speech": [
+            "这是另一个两输入案例。",
+            "与左图分别处理。",
+            "不能把输入 A、输入 B 和两次画出的 Z 一。",
+            "误拼成四个身份。"
+          ]
+        }
+      ]
+    }
+  ],
+  "parentVersion": "ipa-chinese-v1",
+  "parentPlanSha256": "615055ed4e1c2c01edd9400cc5438cba00150e49dabe95902626469e6445fae6",
+  "wordingEditsSha256": "259e9439e3002b158b493300c1bde3fcc499bcf18d7cad9ba816c47b51d54587"
+}

@@ -1,0 +1,1426 @@
+{
+  "audioFile": "SP09.wav",
+  "audioSha256": "6315efd8d52bba6e4fc28efab359ec5bb83b5503c92359d53d3c4af70eca513b",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "duration": 17.19,
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "fingerprint": "bf4297995e892c3a12ec60e8df00bbcb3028bbf64447c0f4c28e286e33c59cf5",
+  "speech": "这个理由不依赖两条线段的方向。只要一份闭线段在这里结束。它就仍包含这里的点。若还有其他参与者。就要在丢掉结束身份以前完成当前配对。这说的是数学依赖。不要求程序容器永远不能暂时取出成员。",
+  "words": [
+    {
+      "text": "这个",
+      "startMs": 70,
+      "durationMs": 320,
+      "textOffset": 0,
+      "wordLength": 2
+    },
+    {
+      "text": "理由",
+      "startMs": 390,
+      "durationMs": 600,
+      "textOffset": 2,
+      "wordLength": 2
+    },
+    {
+      "text": "不",
+      "startMs": 990,
+      "durationMs": 200,
+      "textOffset": 4,
+      "wordLength": 1
+    },
+    {
+      "text": "依赖",
+      "startMs": 1190,
+      "durationMs": 320,
+      "textOffset": 5,
+      "wordLength": 2
+    },
+    {
+      "text": "两",
+      "startMs": 1510,
+      "durationMs": 160,
+      "textOffset": 7,
+      "wordLength": 1
+    },
+    {
+      "text": "条",
+      "startMs": 1670,
+      "durationMs": 200,
+      "textOffset": 8,
+      "wordLength": 1
+    },
+    {
+      "text": "线段",
+      "startMs": 1870,
+      "durationMs": 280,
+      "textOffset": 9,
+      "wordLength": 2
+    },
+    {
+      "text": "的",
+      "startMs": 2150,
+      "durationMs": 120,
+      "textOffset": 11,
+      "wordLength": 1
+    },
+    {
+      "text": "方向",
+      "startMs": 2270,
+      "durationMs": 440,
+      "textOffset": 12,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 2710,
+      "durationMs": 0,
+      "textOffset": 14,
+      "wordLength": 1
+    },
+    {
+      "text": "只",
+      "startMs": 2928,
+      "durationMs": 200,
+      "textOffset": 15,
+      "wordLength": 1
+    },
+    {
+      "text": "要",
+      "startMs": 3128,
+      "durationMs": 120,
+      "textOffset": 16,
+      "wordLength": 1
+    },
+    {
+      "text": "一份",
+      "startMs": 3248,
+      "durationMs": 320,
+      "textOffset": 17,
+      "wordLength": 2
+    },
+    {
+      "text": "闭线段",
+      "startMs": 3568,
+      "durationMs": 640,
+      "textOffset": 19,
+      "wordLength": 3
+    },
+    {
+      "text": "在",
+      "startMs": 4208,
+      "durationMs": 160,
+      "textOffset": 22,
+      "wordLength": 1
+    },
+    {
+      "text": "这",
+      "startMs": 4368,
+      "durationMs": 120,
+      "textOffset": 23,
+      "wordLength": 1
+    },
+    {
+      "text": "里",
+      "startMs": 4488,
+      "durationMs": 120,
+      "textOffset": 24,
+      "wordLength": 1
+    },
+    {
+      "text": "结束",
+      "startMs": 4608,
+      "durationMs": 559,
+      "textOffset": 25,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 5167,
+      "durationMs": 0,
+      "textOffset": 27,
+      "wordLength": 1
+    },
+    {
+      "text": "它",
+      "startMs": 5448,
+      "durationMs": 200,
+      "textOffset": 28,
+      "wordLength": 1
+    },
+    {
+      "text": "就",
+      "startMs": 5648,
+      "durationMs": 120,
+      "textOffset": 29,
+      "wordLength": 1
+    },
+    {
+      "text": "仍",
+      "startMs": 5768,
+      "durationMs": 200,
+      "textOffset": 30,
+      "wordLength": 1
+    },
+    {
+      "text": "包含",
+      "startMs": 5968,
+      "durationMs": 360,
+      "textOffset": 31,
+      "wordLength": 2
+    },
+    {
+      "text": "这里",
+      "startMs": 6328,
+      "durationMs": 240,
+      "textOffset": 33,
+      "wordLength": 2
+    },
+    {
+      "text": "的",
+      "startMs": 6568,
+      "durationMs": 120,
+      "textOffset": 35,
+      "wordLength": 1
+    },
+    {
+      "text": "点",
+      "startMs": 6688,
+      "durationMs": 360,
+      "textOffset": 36,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 7048,
+      "durationMs": 0,
+      "textOffset": 37,
+      "wordLength": 1
+    },
+    {
+      "text": "若",
+      "startMs": 7489,
+      "durationMs": 160,
+      "textOffset": 38,
+      "wordLength": 1
+    },
+    {
+      "text": "还",
+      "startMs": 7649,
+      "durationMs": 120,
+      "textOffset": 39,
+      "wordLength": 1
+    },
+    {
+      "text": "有",
+      "startMs": 7769,
+      "durationMs": 120,
+      "textOffset": 40,
+      "wordLength": 1
+    },
+    {
+      "text": "其",
+      "startMs": 7889,
+      "durationMs": 160,
+      "textOffset": 41,
+      "wordLength": 1
+    },
+    {
+      "text": "他",
+      "startMs": 8049,
+      "durationMs": 200,
+      "textOffset": 42,
+      "wordLength": 1
+    },
+    {
+      "text": "参与者",
+      "startMs": 8249,
+      "durationMs": 600,
+      "textOffset": 43,
+      "wordLength": 3
+    },
+    {
+      "text": "。",
+      "startMs": 8849,
+      "durationMs": 0,
+      "textOffset": 46,
+      "wordLength": 1
+    },
+    {
+      "text": "就",
+      "startMs": 9188,
+      "durationMs": 240,
+      "textOffset": 47,
+      "wordLength": 1
+    },
+    {
+      "text": "要",
+      "startMs": 9428,
+      "durationMs": 120,
+      "textOffset": 48,
+      "wordLength": 1
+    },
+    {
+      "text": "在",
+      "startMs": 9548,
+      "durationMs": 120,
+      "textOffset": 49,
+      "wordLength": 1
+    },
+    {
+      "text": "丢掉",
+      "startMs": 9668,
+      "durationMs": 280,
+      "textOffset": 50,
+      "wordLength": 2
+    },
+    {
+      "text": "结束",
+      "startMs": 9948,
+      "durationMs": 360,
+      "textOffset": 52,
+      "wordLength": 2
+    },
+    {
+      "text": "身份",
+      "startMs": 10308,
+      "durationMs": 320,
+      "textOffset": 54,
+      "wordLength": 2
+    },
+    {
+      "text": "以前",
+      "startMs": 10628,
+      "durationMs": 480,
+      "textOffset": 56,
+      "wordLength": 2
+    },
+    {
+      "text": "完成",
+      "startMs": 11108,
+      "durationMs": 439,
+      "textOffset": 58,
+      "wordLength": 2
+    },
+    {
+      "text": "当前",
+      "startMs": 11547,
+      "durationMs": 321,
+      "textOffset": 60,
+      "wordLength": 2
+    },
+    {
+      "text": "配对",
+      "startMs": 11868,
+      "durationMs": 480,
+      "textOffset": 62,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 12348,
+      "durationMs": 0,
+      "textOffset": 64,
+      "wordLength": 1
+    },
+    {
+      "text": "这",
+      "startMs": 12608,
+      "durationMs": 200,
+      "textOffset": 65,
+      "wordLength": 1
+    },
+    {
+      "text": "说",
+      "startMs": 12808,
+      "durationMs": 160,
+      "textOffset": 66,
+      "wordLength": 1
+    },
+    {
+      "text": "的",
+      "startMs": 12968,
+      "durationMs": 120,
+      "textOffset": 67,
+      "wordLength": 1
+    },
+    {
+      "text": "是",
+      "startMs": 13088,
+      "durationMs": 120,
+      "textOffset": 68,
+      "wordLength": 1
+    },
+    {
+      "text": "数学",
+      "startMs": 13208,
+      "durationMs": 320,
+      "textOffset": 69,
+      "wordLength": 2
+    },
+    {
+      "text": "依赖",
+      "startMs": 13528,
+      "durationMs": 480,
+      "textOffset": 71,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 14008,
+      "durationMs": 0,
+      "textOffset": 73,
+      "wordLength": 1
+    },
+    {
+      "text": "不",
+      "startMs": 14278,
+      "durationMs": 120,
+      "textOffset": 74,
+      "wordLength": 1
+    },
+    {
+      "text": "要求",
+      "startMs": 14398,
+      "durationMs": 320,
+      "textOffset": 75,
+      "wordLength": 2
+    },
+    {
+      "text": "程序",
+      "startMs": 14718,
+      "durationMs": 320,
+      "textOffset": 77,
+      "wordLength": 2
+    },
+    {
+      "text": "容器",
+      "startMs": 15038,
+      "durationMs": 480,
+      "textOffset": 79,
+      "wordLength": 2
+    },
+    {
+      "text": "永远",
+      "startMs": 15518,
+      "durationMs": 240,
+      "textOffset": 81,
+      "wordLength": 2
+    },
+    {
+      "text": "不",
+      "startMs": 15758,
+      "durationMs": 120,
+      "textOffset": 83,
+      "wordLength": 1
+    },
+    {
+      "text": "能",
+      "startMs": 15878,
+      "durationMs": 160,
+      "textOffset": 84,
+      "wordLength": 1
+    },
+    {
+      "text": "暂时",
+      "startMs": 16038,
+      "durationMs": 320,
+      "textOffset": 85,
+      "wordLength": 2
+    },
+    {
+      "text": "取出",
+      "startMs": 16358,
+      "durationMs": 279,
+      "textOffset": 87,
+      "wordLength": 2
+    },
+    {
+      "text": "成",
+      "startMs": 16637,
+      "durationMs": 201,
+      "textOffset": 89,
+      "wordLength": 1
+    },
+    {
+      "text": "员",
+      "startMs": 16838,
+      "durationMs": 279,
+      "textOffset": 90,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 17117,
+      "durationMs": 0,
+      "textOffset": 91,
+      "wordLength": 1
+    }
+  ],
+  "alignment": {
+    "method": "azure-pronunciation-assessment",
+    "audioSha256": "6315efd8d52bba6e4fc28efab359ec5bb83b5503c92359d53d3c4af70eca513b",
+    "synthesisWords": [
+      {
+        "text": "这个",
+        "startMs": 70,
+        "durationMs": 320,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "理由",
+        "startMs": 390,
+        "durationMs": 600,
+        "textOffset": 2,
+        "wordLength": 2
+      },
+      {
+        "text": "不",
+        "startMs": 990,
+        "durationMs": 200,
+        "textOffset": 4,
+        "wordLength": 1
+      },
+      {
+        "text": "依赖",
+        "startMs": 1190,
+        "durationMs": 320,
+        "textOffset": 5,
+        "wordLength": 2
+      },
+      {
+        "text": "两",
+        "startMs": 1510,
+        "durationMs": 160,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "条",
+        "startMs": 1670,
+        "durationMs": 200,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "线段",
+        "startMs": 1870,
+        "durationMs": 280,
+        "textOffset": 9,
+        "wordLength": 2
+      },
+      {
+        "text": "的",
+        "startMs": 2150,
+        "durationMs": 120,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "方向",
+        "startMs": 2270,
+        "durationMs": 440,
+        "textOffset": 12,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 2710,
+        "durationMs": 0,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "只",
+        "startMs": 2928,
+        "durationMs": 200,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "要",
+        "startMs": 3128,
+        "durationMs": 120,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "一份",
+        "startMs": 3248,
+        "durationMs": 320,
+        "textOffset": 17,
+        "wordLength": 2
+      },
+      {
+        "text": "闭线段",
+        "startMs": 3568,
+        "durationMs": 640,
+        "textOffset": 19,
+        "wordLength": 3
+      },
+      {
+        "text": "在",
+        "startMs": 4208,
+        "durationMs": 160,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 4368,
+        "durationMs": 120,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "里",
+        "startMs": 4488,
+        "durationMs": 120,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "结束",
+        "startMs": 4608,
+        "durationMs": 559,
+        "textOffset": 25,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 5167,
+        "durationMs": 0,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "它",
+        "startMs": 5448,
+        "durationMs": 200,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "就",
+        "startMs": 5648,
+        "durationMs": 120,
+        "textOffset": 29,
+        "wordLength": 1
+      },
+      {
+        "text": "仍",
+        "startMs": 5768,
+        "durationMs": 200,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "包含",
+        "startMs": 5968,
+        "durationMs": 360,
+        "textOffset": 31,
+        "wordLength": 2
+      },
+      {
+        "text": "这里",
+        "startMs": 6328,
+        "durationMs": 240,
+        "textOffset": 33,
+        "wordLength": 2
+      },
+      {
+        "text": "的",
+        "startMs": 6568,
+        "durationMs": 120,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "点",
+        "startMs": 6688,
+        "durationMs": 360,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 7048,
+        "durationMs": 0,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "若",
+        "startMs": 7489,
+        "durationMs": 160,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "还",
+        "startMs": 7649,
+        "durationMs": 120,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "有",
+        "startMs": 7769,
+        "durationMs": 120,
+        "textOffset": 40,
+        "wordLength": 1
+      },
+      {
+        "text": "其",
+        "startMs": 7889,
+        "durationMs": 160,
+        "textOffset": 41,
+        "wordLength": 1
+      },
+      {
+        "text": "他",
+        "startMs": 8049,
+        "durationMs": 200,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "参与者",
+        "startMs": 8249,
+        "durationMs": 600,
+        "textOffset": 43,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 8849,
+        "durationMs": 0,
+        "textOffset": 46,
+        "wordLength": 1
+      },
+      {
+        "text": "就",
+        "startMs": 9188,
+        "durationMs": 240,
+        "textOffset": 47,
+        "wordLength": 1
+      },
+      {
+        "text": "要",
+        "startMs": 9428,
+        "durationMs": 120,
+        "textOffset": 48,
+        "wordLength": 1
+      },
+      {
+        "text": "在",
+        "startMs": 9548,
+        "durationMs": 120,
+        "textOffset": 49,
+        "wordLength": 1
+      },
+      {
+        "text": "丢掉",
+        "startMs": 9668,
+        "durationMs": 280,
+        "textOffset": 50,
+        "wordLength": 2
+      },
+      {
+        "text": "结束",
+        "startMs": 9948,
+        "durationMs": 360,
+        "textOffset": 52,
+        "wordLength": 2
+      },
+      {
+        "text": "身份",
+        "startMs": 10308,
+        "durationMs": 320,
+        "textOffset": 54,
+        "wordLength": 2
+      },
+      {
+        "text": "以前",
+        "startMs": 10628,
+        "durationMs": 480,
+        "textOffset": 56,
+        "wordLength": 2
+      },
+      {
+        "text": "完成",
+        "startMs": 11108,
+        "durationMs": 439,
+        "textOffset": 58,
+        "wordLength": 2
+      },
+      {
+        "text": "当前",
+        "startMs": 11547,
+        "durationMs": 321,
+        "textOffset": 60,
+        "wordLength": 2
+      },
+      {
+        "text": "配对",
+        "startMs": 11868,
+        "durationMs": 480,
+        "textOffset": 62,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 12348,
+        "durationMs": 0,
+        "textOffset": 64,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 12608,
+        "durationMs": 200,
+        "textOffset": 65,
+        "wordLength": 1
+      },
+      {
+        "text": "说",
+        "startMs": 12808,
+        "durationMs": 160,
+        "textOffset": 66,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "startMs": 12968,
+        "durationMs": 120,
+        "textOffset": 67,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 13088,
+        "durationMs": 120,
+        "textOffset": 68,
+        "wordLength": 1
+      },
+      {
+        "text": "数学",
+        "startMs": 13208,
+        "durationMs": 320,
+        "textOffset": 69,
+        "wordLength": 2
+      },
+      {
+        "text": "依赖",
+        "startMs": 13528,
+        "durationMs": 480,
+        "textOffset": 71,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 14008,
+        "durationMs": 0,
+        "textOffset": 73,
+        "wordLength": 1
+      },
+      {
+        "text": "不",
+        "startMs": 14278,
+        "durationMs": 120,
+        "textOffset": 74,
+        "wordLength": 1
+      },
+      {
+        "text": "要求",
+        "startMs": 14398,
+        "durationMs": 320,
+        "textOffset": 75,
+        "wordLength": 2
+      },
+      {
+        "text": "程序",
+        "startMs": 14718,
+        "durationMs": 320,
+        "textOffset": 77,
+        "wordLength": 2
+      },
+      {
+        "text": "容器",
+        "startMs": 15038,
+        "durationMs": 480,
+        "textOffset": 79,
+        "wordLength": 2
+      },
+      {
+        "text": "永远",
+        "startMs": 15518,
+        "durationMs": 240,
+        "textOffset": 81,
+        "wordLength": 2
+      },
+      {
+        "text": "不",
+        "startMs": 15758,
+        "durationMs": 120,
+        "textOffset": 83,
+        "wordLength": 1
+      },
+      {
+        "text": "能",
+        "startMs": 15878,
+        "durationMs": 160,
+        "textOffset": 84,
+        "wordLength": 1
+      },
+      {
+        "text": "暂时",
+        "startMs": 16038,
+        "durationMs": 320,
+        "textOffset": 85,
+        "wordLength": 2
+      },
+      {
+        "text": "取出",
+        "startMs": 16358,
+        "durationMs": 279,
+        "textOffset": 87,
+        "wordLength": 2
+      },
+      {
+        "text": "成",
+        "startMs": 16637,
+        "durationMs": 201,
+        "textOffset": 89,
+        "wordLength": 1
+      },
+      {
+        "text": "员",
+        "startMs": 16838,
+        "durationMs": 279,
+        "textOffset": 90,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 17117,
+        "durationMs": 0,
+        "textOffset": 91,
+        "wordLength": 1
+      }
+    ],
+    "response": {
+      "Id": "8c4e8e53746146768849b991d397c7b3",
+      "RecognitionStatus": "Success",
+      "Offset": 400000,
+      "Duration": 171200000,
+      "Channel": 0,
+      "DisplayText": "这个理由不依赖两条线段的方向，只要一份闭线段在这里结束，它就仍包含这里的点。若还有其他参与者，就要在丢掉结束身份以前完成当前配对。这说的是数学依赖。不要求程序，容器永远不能暂时取出成员。",
+      "SNR": 41.22516,
+      "NBest": [
+        {
+          "Confidence": 0.9761435,
+          "Lexical": "这个 理由 不 依赖 两 条 线段 的 方向 只要 一 份 闭线 段 在 这里 结束 它 就 仍 包含 这里 的 点 若 还有 其他 参与 者 就 要 在 丢掉 结束 身份 以前 完成 当前 配对 这 说 的 是 数学 依赖 不 要求 程序 容器 永远 不能 暂时 取出 成员",
+          "ITN": "这个 理由 不 依赖 两 条 线段 的 方向 只要 一 份 闭线 段 在 这里 结束 它 就 仍 包含 这里 的 点 若 还有 其他 参与 者 就 要 在 丢掉 结束 身份 以前 完成 当前 配对 这 说 的 是 数学 依赖 不 要求 程序 容器 永远 不能 暂时 取出 成员",
+          "MaskedITN": "这个理由不依赖两条线段的方向只要一份闭线段在这里结束它就仍包含这里的点若还有其他参与者就要在丢掉结束身份以前完成当前配对这说的是数学依赖不要求程序容器永远不能暂时取出成员",
+          "Display": "这个理由不依赖两条线段的方向，只要一份闭线段在这里结束，它就仍包含这里的点。若还有其他参与者，就要在丢掉结束身份以前完成当前配对。这说的是数学依赖。不要求程序，容器永远不能暂时取出成员。",
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "FluencyScore": 95,
+            "CompletenessScore": 96,
+            "PronScore": 94.6
+          },
+          "Words": [
+            {
+              "Word": "这个",
+              "Offset": 400000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "理由",
+              "Offset": 4000000,
+              "Duration": 5700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不",
+              "Offset": 9800000,
+              "Duration": 2300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "依赖",
+              "Offset": 12200000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "两",
+              "Offset": 15400000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "条",
+              "Offset": 17000000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "线段",
+              "Offset": 18600000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "的",
+              "Offset": 21800000,
+              "Duration": 900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "方向",
+              "Offset": 22800000,
+              "Duration": 4700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 85,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "只要",
+              "Offset": 29000000,
+              "Duration": 4100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "一",
+              "Offset": 33200000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "份",
+              "Offset": 34800000,
+              "Duration": 1800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "闭线",
+              "Offset": 36700000,
+              "Duration": 3800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "段",
+              "Offset": 40600000,
+              "Duration": 2300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "在",
+              "Offset": 43000000,
+              "Duration": 1300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "这里",
+              "Offset": 44400000,
+              "Duration": 2500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 76,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "结束",
+              "Offset": 47000000,
+              "Duration": 5800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "它",
+              "Offset": 54000000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "就",
+              "Offset": 57200000,
+              "Duration": 1300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "仍",
+              "Offset": 58600000,
+              "Duration": 1700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "包含",
+              "Offset": 60400000,
+              "Duration": 3700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "这里",
+              "Offset": 64200000,
+              "Duration": 2400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 59,
+                "ErrorType": "Mispronunciation"
+              }
+            },
+            {
+              "Word": "的",
+              "Offset": 66700000,
+              "Duration": 1000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "点",
+              "Offset": 67800000,
+              "Duration": 3700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "若",
+              "Offset": 74800000,
+              "Duration": 2600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "还有",
+              "Offset": 77500000,
+              "Duration": 2600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "其他",
+              "Offset": 80200000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "参与",
+              "Offset": 83400000,
+              "Duration": 3200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 82,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "者",
+              "Offset": 86700000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 82,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "就",
+              "Offset": 91800000,
+              "Duration": 2500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "要",
+              "Offset": 94400000,
+              "Duration": 1300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "在",
+              "Offset": 95800000,
+              "Duration": 1400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "丢掉",
+              "Offset": 97300000,
+              "Duration": 3000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "结束",
+              "Offset": 100400000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "身份",
+              "Offset": 103800000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "以前",
+              "Offset": 107200000,
+              "Duration": 4700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "完成",
+              "Offset": 112000000,
+              "Duration": 4100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "当前",
+              "Offset": 116200000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 88,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "配对",
+              "Offset": 119400000,
+              "Duration": 4900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "这",
+              "Offset": 125600000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "说",
+              "Offset": 128800000,
+              "Duration": 1600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "的",
+              "Offset": 130500000,
+              "Duration": 1000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "是",
+              "Offset": 131600000,
+              "Duration": 1300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "数学",
+              "Offset": 133000000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "依赖",
+              "Offset": 136000000,
+              "Duration": 5200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不",
+              "Offset": 142200000,
+              "Duration": 2500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "要求",
+              "Offset": 144800000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 59,
+                "ErrorType": "Mispronunciation"
+              }
+            },
+            {
+              "Word": "程序",
+              "Offset": 148000000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "容器",
+              "Offset": 151200000,
+              "Duration": 4600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "永远",
+              "Offset": 155900000,
+              "Duration": 2800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不能",
+              "Offset": 158800000,
+              "Duration": 2100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "暂时",
+              "Offset": 161000000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 69,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "取出",
+              "Offset": 164400000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "成员",
+              "Offset": 167400000,
+              "Duration": 4200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 82,
+                "ErrorType": "None"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pronunciationReview": "pending-listening"
+  }
+}

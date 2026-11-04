@@ -1,0 +1,75 @@
+{
+  "planSha256": "71295e851807cc8722cb4a1f027812bffd4cd88df2c05d084e54a9fa152b7193",
+  "language": "zh-CN",
+  "gradingSystem": "HundredMark",
+  "granularity": "Word",
+  "enableMiscue": true,
+  "concurrency": 1,
+  "automaticRetries": 0,
+  "requests": [
+    {
+      "id": "SP06",
+      "audioFile": "SP06.wav",
+      "audioSha256": "eb50cc49f3088fde9066d6a6254fbd04453dea55b3cba60bbb51b1b89f9e80bf",
+      "duration": 17.59,
+      "fingerprint": "7247527eeb3f918b35c1e3b7bc10b8df97925e86c283285d6641d952a5121909",
+      "referenceText": "A 满足纵坐标等于四。横坐标从零到四。输入 B 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。"
+    },
+    {
+      "id": "SP17",
+      "audioFile": "SP17.wav",
+      "audioSha256": "dbd81743bfcdea95d920123afe094267acaa5ffe69fd3bea38f065b93b6036cd",
+      "duration": 15.54,
+      "fingerprint": "5e6990fb90847d23477552e3941769474bac68b49664e0a5f969b3b9c7c76e16",
+      "referenceText": "例如检查旧邻居 A 与 C。可以算出未来位置 P。这只说明要在 P 停下。到站后不能只处理这一对。A 的结束、B 的开始。以及 C 的穿过和 D 的穿过。都属于同一次事件。"
+    },
+    {
+      "id": "SP24",
+      "audioFile": "SP24.wav",
+      "audioSha256": "babef989019b3ba43cbd3636822123c7abb27db0d59a9cb0c744f74aab57f264",
+      "duration": 21.58,
+      "fingerprint": "664e2b16e46a9d5b6d623f63dae18821252e836ce6664d88adc816424f75967b",
+      "referenceText": "如果 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 D。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留输入 B、输入 C 和输入 D 这三份。"
+    },
+    {
+      "id": "SP25",
+      "audioFile": "SP25.wav",
+      "audioSha256": "7e9a2bae0058330ba9c5c06bb2588838e9c24a978b6cf0997c649156e6829a46",
+      "duration": 16.32,
+      "fingerprint": "c0dc3fb07b433eace87b8211f707cee6d5778234c0441b61f8942ae269fa53a9",
+      "referenceText": "把紧靠 P 左侧的活动顺序叫旧顺序。其中经过 P 的旧参与者叫相遇块。它包括结束者和严格穿过者。不包括开始者。本例旧块从下到上依次是输入 D、输入 A 和输入 C。没有旧参与者时就是空块。"
+    },
+    {
+      "id": "SP37",
+      "audioFile": "SP37.wav",
+      "audioSha256": "27a62c5e7d64c720bec33abd94ac398946948e2fad5cbd2869340df3b5337fa3",
+      "duration": 17.19,
+      "fingerprint": "92caa74a69c0d006afe76001fd2f757e0bbfadb2b9aa84593e113ec5822899a4",
+      "referenceText": "取得整个旧块后。再合并清单中从 P 开始的非零输入。本例旧块中有输入 D、输入 A 和输入 C。再把开始者 B 加入名单。合并后得到四份参与者。结束者 A 仍然留在名单中。直到当前配对完成。"
+    },
+    {
+      "id": "SP52",
+      "audioFile": "SP52.wav",
+      "audioSha256": "14744e67ecf47787a229726ff342faf2bf4e2bf457e04eb6bbe26d85e87af542",
+      "duration": 15.79,
+      "fingerprint": "81eda110591fc86d62b59aab63585a00c92c11e3c97f1f8f4c2cb40058fc21e2",
+      "referenceText": "到达 P。先按前面的方法找齐非零参与者。再合并这里的点输入。这次名单包含线段 C。还有点输入 Z 一 和点输入 Z 二。同一位置不合并不同身份。同一身份也不重复加入。"
+    },
+    {
+      "id": "SP53",
+      "audioFile": "SP53.wav",
+      "audioSha256": "5e34eeb61ebd98a22c693d4cc22df30c031a6f58849631ab0903bdbda2982dfc",
+      "duration": 12.05,
+      "fingerprint": "c5c9bdc9ae4362df806e1a7819ff003e833b1a8650fdeb2f799f9eff817d3ffa",
+      "referenceText": "结果分别是 C 与 Z 一、C 与 Z 二。还有点输入 Z 一 与点输入 Z 二 组成的一对。每一对的完整交集都是 P。点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节。这里新增的是它们在扫描中的收集与去向。"
+    },
+    {
+      "id": "SP55",
+      "audioFile": "SP55.wav",
+      "audioSha256": "b6b4491f18c76cb954c9563b73a6e1d9a4b3d934f13a43c193c6d23e49e0e140",
+      "duration": 13.37,
+      "fingerprint": "1e798557fcaed6803a4786e7a173b22d293331235f6b90485c2eb2352fe382e6",
+      "referenceText": "如果只取点输入 Z 一 和点输入 Z 二。没有非零线段。仍报告这一对对应 P。两侧活动顺序都为空。不能因为没有旧块或新块。就把当前点配对跳过去。"
+    }
+  ]
+}

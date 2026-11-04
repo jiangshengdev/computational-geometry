@@ -1,0 +1,72 @@
+{
+  "planSha256": "71295e851807cc8722cb4a1f027812bffd4cd88df2c05d084e54a9fa152b7193",
+  "entries": [
+    {
+      "id": "SP06",
+      "fingerprint": "7247527eeb3f918b35c1e3b7bc10b8df97925e86c283285d6641d952a5121909",
+      "state": "complete",
+      "audioSha256": "eb50cc49f3088fde9066d6a6254fbd04453dea55b3cba60bbb51b1b89f9e80bf",
+      "duration": 17.59
+    },
+    {
+      "id": "SP17",
+      "fingerprint": "5e6990fb90847d23477552e3941769474bac68b49664e0a5f969b3b9c7c76e16",
+      "state": "complete",
+      "audioSha256": "dbd81743bfcdea95d920123afe094267acaa5ffe69fd3bea38f065b93b6036cd",
+      "duration": 15.54
+    },
+    {
+      "id": "SP24",
+      "fingerprint": "664e2b16e46a9d5b6d623f63dae18821252e836ce6664d88adc816424f75967b",
+      "state": "complete",
+      "audioSha256": "babef989019b3ba43cbd3636822123c7abb27db0d59a9cb0c744f74aab57f264",
+      "duration": 21.58
+    },
+    {
+      "id": "SP25",
+      "fingerprint": "c0dc3fb07b433eace87b8211f707cee6d5778234c0441b61f8942ae269fa53a9",
+      "state": "complete",
+      "audioSha256": "7e9a2bae0058330ba9c5c06bb2588838e9c24a978b6cf0997c649156e6829a46",
+      "duration": 16.32
+    },
+    {
+      "id": "SP37",
+      "fingerprint": "92caa74a69c0d006afe76001fd2f757e0bbfadb2b9aa84593e113ec5822899a4",
+      "state": "complete",
+      "audioSha256": "27a62c5e7d64c720bec33abd94ac398946948e2fad5cbd2869340df3b5337fa3",
+      "duration": 17.19
+    },
+    {
+      "id": "SP41",
+      "fingerprint": "abe5296fbd9fa827d8088b81af2c54f1c58bc316a991387e0ca89b0aa12dd104",
+      "state": "uncertain",
+      "error": "SYNTHESIS_OR_CHECK_FAILED_NO_RETRY"
+    },
+    {
+      "id": "SP52",
+      "fingerprint": "81eda110591fc86d62b59aab63585a00c92c11e3c97f1f8f4c2cb40058fc21e2",
+      "state": "complete",
+      "audioSha256": "14744e67ecf47787a229726ff342faf2bf4e2bf457e04eb6bbe26d85e87af542",
+      "duration": 15.79
+    },
+    {
+      "id": "SP53",
+      "fingerprint": "c5c9bdc9ae4362df806e1a7819ff003e833b1a8650fdeb2f799f9eff817d3ffa",
+      "state": "complete",
+      "audioSha256": "5e34eeb61ebd98a22c693d4cc22df30c031a6f58849631ab0903bdbda2982dfc",
+      "duration": 12.05
+    },
+    {
+      "id": "SP55",
+      "fingerprint": "1e798557fcaed6803a4786e7a173b22d293331235f6b90485c2eb2352fe382e6",
+      "state": "complete",
+      "audioSha256": "b6b4491f18c76cb954c9563b73a6e1d9a4b3d934f13a43c193c6d23e49e0e140",
+      "duration": 13.37
+    },
+    {
+      "id": "SP58",
+      "fingerprint": "e6b84320d413aca1cbc397afb717cf3349f0b4bd111772cc06cef78450a3ff38",
+      "state": "started"
+    }
+  ]
+}

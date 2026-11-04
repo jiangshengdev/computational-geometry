@@ -1,0 +1,966 @@
+{
+  "audioFile": "SP04.wav",
+  "audioSha256": "0d3622e1fecff528a7302e85a8b525696443880c1070e889704850689ee856f1",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "duration": 13.62,
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "fingerprint": "5350fb8d3de8e742110cd3961480fc1666881a8b2c37e9cf6c4089812d6c3d8f",
+  "speech": "把共同端点叫作 P。横坐标和纵坐标都是四。蓝色输入 A 从横坐标零、纵坐标四到 P。它在这里结束。图是教学示意。不是真实执行轨迹。",
+  "words": [
+    {
+      "text": "把",
+      "startMs": 70,
+      "durationMs": 200,
+      "textOffset": 0,
+      "wordLength": 1
+    },
+    {
+      "text": "共",
+      "startMs": 270,
+      "durationMs": 160,
+      "textOffset": 1,
+      "wordLength": 1
+    },
+    {
+      "text": "同",
+      "startMs": 430,
+      "durationMs": 240,
+      "textOffset": 2,
+      "wordLength": 1
+    },
+    {
+      "text": "端点",
+      "startMs": 670,
+      "durationMs": 400,
+      "textOffset": 3,
+      "wordLength": 2
+    },
+    {
+      "text": "叫",
+      "startMs": 1070,
+      "durationMs": 200,
+      "textOffset": 5,
+      "wordLength": 1
+    },
+    {
+      "text": "作",
+      "startMs": 1270,
+      "durationMs": 160,
+      "textOffset": 6,
+      "wordLength": 1
+    },
+    {
+      "text": "P",
+      "startMs": 1430,
+      "durationMs": 400,
+      "textOffset": 8,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 1830,
+      "durationMs": 0,
+      "textOffset": 9,
+      "wordLength": 1
+    },
+    {
+      "text": "横坐标",
+      "startMs": 2078,
+      "durationMs": 720,
+      "textOffset": 10,
+      "wordLength": 3
+    },
+    {
+      "text": "和",
+      "startMs": 2798,
+      "durationMs": 160,
+      "textOffset": 13,
+      "wordLength": 1
+    },
+    {
+      "text": "纵坐标",
+      "startMs": 2958,
+      "durationMs": 480,
+      "textOffset": 14,
+      "wordLength": 3
+    },
+    {
+      "text": "都",
+      "startMs": 3438,
+      "durationMs": 160,
+      "textOffset": 17,
+      "wordLength": 1
+    },
+    {
+      "text": "是",
+      "startMs": 3598,
+      "durationMs": 120,
+      "textOffset": 18,
+      "wordLength": 1
+    },
+    {
+      "text": "四",
+      "startMs": 3718,
+      "durationMs": 360,
+      "textOffset": 19,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 4078,
+      "durationMs": 0,
+      "textOffset": 20,
+      "wordLength": 1
+    },
+    {
+      "text": "蓝色",
+      "startMs": 4519,
+      "durationMs": 480,
+      "textOffset": 21,
+      "wordLength": 2
+    },
+    {
+      "text": "输入",
+      "startMs": 4999,
+      "durationMs": 360,
+      "textOffset": 23,
+      "wordLength": 2
+    },
+    {
+      "text": "A",
+      "startMs": 5359,
+      "durationMs": 240,
+      "textOffset": 26,
+      "wordLength": 1
+    },
+    {
+      "text": "从",
+      "startMs": 5599,
+      "durationMs": 200,
+      "textOffset": 28,
+      "wordLength": 1
+    },
+    {
+      "text": "横坐标",
+      "startMs": 5799,
+      "durationMs": 560,
+      "textOffset": 29,
+      "wordLength": 3
+    },
+    {
+      "text": "零",
+      "startMs": 6359,
+      "durationMs": 399,
+      "textOffset": 32,
+      "wordLength": 1
+    },
+    {
+      "text": "、",
+      "startMs": 6758,
+      "durationMs": 0,
+      "textOffset": 33,
+      "wordLength": 1
+    },
+    {
+      "text": "纵",
+      "startMs": 6798,
+      "durationMs": 281,
+      "textOffset": 34,
+      "wordLength": 1
+    },
+    {
+      "text": "坐标",
+      "startMs": 7079,
+      "durationMs": 400,
+      "textOffset": 35,
+      "wordLength": 2
+    },
+    {
+      "text": "四",
+      "startMs": 7479,
+      "durationMs": 200,
+      "textOffset": 37,
+      "wordLength": 1
+    },
+    {
+      "text": "到",
+      "startMs": 7679,
+      "durationMs": 159,
+      "textOffset": 38,
+      "wordLength": 1
+    },
+    {
+      "text": "P",
+      "textOffset": 40,
+      "wordLength": 1,
+      "startMs": 7940,
+      "durationMs": 410
+    },
+    {
+      "text": "。",
+      "startMs": 7838,
+      "durationMs": 0,
+      "textOffset": 41,
+      "wordLength": 1
+    },
+    {
+      "text": "它",
+      "startMs": 8518,
+      "durationMs": 200,
+      "textOffset": 42,
+      "wordLength": 1
+    },
+    {
+      "text": "在",
+      "startMs": 8718,
+      "durationMs": 120,
+      "textOffset": 43,
+      "wordLength": 1
+    },
+    {
+      "text": "这",
+      "startMs": 8838,
+      "durationMs": 120,
+      "textOffset": 44,
+      "wordLength": 1
+    },
+    {
+      "text": "里",
+      "startMs": 8958,
+      "durationMs": 160,
+      "textOffset": 45,
+      "wordLength": 1
+    },
+    {
+      "text": "结束",
+      "startMs": 9118,
+      "durationMs": 560,
+      "textOffset": 46,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 9678,
+      "durationMs": 0,
+      "textOffset": 48,
+      "wordLength": 1
+    },
+    {
+      "text": "图",
+      "startMs": 10109,
+      "durationMs": 280,
+      "textOffset": 49,
+      "wordLength": 1
+    },
+    {
+      "text": "是",
+      "startMs": 10389,
+      "durationMs": 360,
+      "textOffset": 50,
+      "wordLength": 1
+    },
+    {
+      "text": "教学",
+      "startMs": 10749,
+      "durationMs": 400,
+      "textOffset": 51,
+      "wordLength": 2
+    },
+    {
+      "text": "示意",
+      "startMs": 11149,
+      "durationMs": 560,
+      "textOffset": 53,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 11709,
+      "durationMs": 0,
+      "textOffset": 55,
+      "wordLength": 1
+    },
+    {
+      "text": "不是",
+      "startMs": 12008,
+      "durationMs": 320,
+      "textOffset": 56,
+      "wordLength": 2
+    },
+    {
+      "text": "真实",
+      "startMs": 12328,
+      "durationMs": 360,
+      "textOffset": 58,
+      "wordLength": 2
+    },
+    {
+      "text": "执行",
+      "startMs": 12688,
+      "durationMs": 280,
+      "textOffset": 60,
+      "wordLength": 2
+    },
+    {
+      "text": "轨迹",
+      "startMs": 12968,
+      "durationMs": 600,
+      "textOffset": 62,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 13568,
+      "durationMs": 0,
+      "textOffset": 64,
+      "wordLength": 1
+    }
+  ],
+  "alignment": {
+    "method": "azure-pronunciation-assessment",
+    "audioSha256": "0d3622e1fecff528a7302e85a8b525696443880c1070e889704850689ee856f1",
+    "synthesisWords": [
+      {
+        "text": "把",
+        "startMs": 70,
+        "durationMs": 200,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "共",
+        "startMs": 270,
+        "durationMs": 160,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
+        "text": "同",
+        "startMs": 430,
+        "durationMs": 240,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "端点",
+        "startMs": 670,
+        "durationMs": 400,
+        "textOffset": 3,
+        "wordLength": 2
+      },
+      {
+        "text": "叫",
+        "startMs": 1070,
+        "durationMs": 200,
+        "textOffset": 5,
+        "wordLength": 1
+      },
+      {
+        "text": "作",
+        "startMs": 1270,
+        "durationMs": 160,
+        "textOffset": 6,
+        "wordLength": 1
+      },
+      {
+        "text": "P",
+        "startMs": 1430,
+        "durationMs": 400,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 1830,
+        "durationMs": 0,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "横坐标",
+        "startMs": 2078,
+        "durationMs": 720,
+        "textOffset": 10,
+        "wordLength": 3
+      },
+      {
+        "text": "和",
+        "startMs": 2798,
+        "durationMs": 160,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "纵坐标",
+        "startMs": 2958,
+        "durationMs": 480,
+        "textOffset": 14,
+        "wordLength": 3
+      },
+      {
+        "text": "都",
+        "startMs": 3438,
+        "durationMs": 160,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 3598,
+        "durationMs": 120,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "四",
+        "startMs": 3718,
+        "durationMs": 360,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 4078,
+        "durationMs": 0,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "蓝色",
+        "startMs": 4519,
+        "durationMs": 480,
+        "textOffset": 21,
+        "wordLength": 2
+      },
+      {
+        "text": "输入",
+        "startMs": 4999,
+        "durationMs": 360,
+        "textOffset": 23,
+        "wordLength": 2
+      },
+      {
+        "text": "A",
+        "startMs": 5359,
+        "durationMs": 240,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "从",
+        "startMs": 5599,
+        "durationMs": 200,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "横坐标",
+        "startMs": 5799,
+        "durationMs": 560,
+        "textOffset": 29,
+        "wordLength": 3
+      },
+      {
+        "text": "零",
+        "startMs": 6359,
+        "durationMs": 399,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "、",
+        "startMs": 6758,
+        "durationMs": 0,
+        "textOffset": 33,
+        "wordLength": 1
+      },
+      {
+        "text": "纵",
+        "startMs": 6798,
+        "durationMs": 281,
+        "textOffset": 34,
+        "wordLength": 1
+      },
+      {
+        "text": "坐标",
+        "startMs": 7079,
+        "durationMs": 400,
+        "textOffset": 35,
+        "wordLength": 2
+      },
+      {
+        "text": "四",
+        "startMs": 7479,
+        "durationMs": 200,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "到",
+        "startMs": 7679,
+        "durationMs": 159,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "P",
+        "startMs": 7838,
+        "durationMs": 0,
+        "textOffset": 40,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 7838,
+        "durationMs": 0,
+        "textOffset": 41,
+        "wordLength": 1
+      },
+      {
+        "text": "它",
+        "startMs": 8518,
+        "durationMs": 200,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "在",
+        "startMs": 8718,
+        "durationMs": 120,
+        "textOffset": 43,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 8838,
+        "durationMs": 120,
+        "textOffset": 44,
+        "wordLength": 1
+      },
+      {
+        "text": "里",
+        "startMs": 8958,
+        "durationMs": 160,
+        "textOffset": 45,
+        "wordLength": 1
+      },
+      {
+        "text": "结束",
+        "startMs": 9118,
+        "durationMs": 560,
+        "textOffset": 46,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 9678,
+        "durationMs": 0,
+        "textOffset": 48,
+        "wordLength": 1
+      },
+      {
+        "text": "图",
+        "startMs": 10109,
+        "durationMs": 280,
+        "textOffset": 49,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 10389,
+        "durationMs": 360,
+        "textOffset": 50,
+        "wordLength": 1
+      },
+      {
+        "text": "教学",
+        "startMs": 10749,
+        "durationMs": 400,
+        "textOffset": 51,
+        "wordLength": 2
+      },
+      {
+        "text": "示意",
+        "startMs": 11149,
+        "durationMs": 560,
+        "textOffset": 53,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 11709,
+        "durationMs": 0,
+        "textOffset": 55,
+        "wordLength": 1
+      },
+      {
+        "text": "不是",
+        "startMs": 12008,
+        "durationMs": 320,
+        "textOffset": 56,
+        "wordLength": 2
+      },
+      {
+        "text": "真实",
+        "startMs": 12328,
+        "durationMs": 360,
+        "textOffset": 58,
+        "wordLength": 2
+      },
+      {
+        "text": "执行",
+        "startMs": 12688,
+        "durationMs": 280,
+        "textOffset": 60,
+        "wordLength": 2
+      },
+      {
+        "text": "轨迹",
+        "startMs": 12968,
+        "durationMs": 600,
+        "textOffset": 62,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 13568,
+        "durationMs": 0,
+        "textOffset": 64,
+        "wordLength": 1
+      }
+    ],
+    "response": {
+      "Id": "027b680a1b30481d9ee836410a414ad8",
+      "RecognitionStatus": "Success",
+      "Offset": 500000,
+      "Duration": 135400000,
+      "Channel": 0,
+      "DisplayText": "把共同端点叫作P，横坐标和纵坐标都是四蓝色输入A从横坐标零，纵坐标四到P，它在这里结束。图是教学示意，不是真实执行轨迹。",
+      "SNR": 43.57313,
+      "NBest": [
+        {
+          "Confidence": 0.9727225,
+          "Lexical": "把 共同 端点 叫 作 P 横坐标 和 纵坐 标都 是 四 蓝色 输入 A 从 横坐标 零 纵坐标 四 到 P 它 在 这里 结束 图 是 教学 示意 不是 真实 执行 轨迹",
+          "ITN": "把 共同 端点 叫 作 P 横坐标 和 纵坐 标都 是 四 蓝色 输入 A 从 横坐标 零 纵坐标 四 到 P 它 在 这里 结束 图 是 教学 示意 不是 真实 执行 轨迹",
+          "MaskedITN": "把共同端点叫作p横坐标和纵坐标都是四蓝色输入a从横坐标零纵坐标四到p它在这里结束图是教学示意不是真实执行轨迹",
+          "Display": "把共同端点叫作P，横坐标和纵坐标都是四蓝色输入A从横坐标零，纵坐标四到P，它在这里结束。图是教学示意，不是真实执行轨迹。",
+          "PronunciationAssessment": {
+            "AccuracyScore": 95,
+            "FluencyScore": 93,
+            "CompletenessScore": 97,
+            "PronScore": 94.2
+          },
+          "Words": [
+            {
+              "Word": "把",
+              "Offset": 500000,
+              "Duration": 2300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "共同",
+              "Offset": 2900000,
+              "Duration": 3700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "端点",
+              "Offset": 6700000,
+              "Duration": 4100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "叫",
+              "Offset": 10900000,
+              "Duration": 1700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "作",
+              "Offset": 12700000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 58,
+                "ErrorType": "Mispronunciation"
+              }
+            },
+            {
+              "Word": "P",
+              "Offset": 14300000,
+              "Duration": 4500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "横坐标",
+              "Offset": 20300000,
+              "Duration": 8500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "和",
+              "Offset": 28900000,
+              "Duration": 1300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "纵坐",
+              "Offset": 30300000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "标都",
+              "Offset": 33300000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "是",
+              "Offset": 36900000,
+              "Duration": 1100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 76,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "四",
+              "Offset": 38100000,
+              "Duration": 3800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "蓝色",
+              "Offset": 45700000,
+              "Duration": 5100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "输入",
+              "Offset": 50900000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "A",
+              "Offset": 54300000,
+              "Duration": 2500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "从",
+              "Offset": 56900000,
+              "Duration": 2300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "横坐标",
+              "Offset": 59300000,
+              "Duration": 5500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "零",
+              "Offset": 64900000,
+              "Duration": 3800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "纵坐标",
+              "Offset": 69000000,
+              "Duration": 6800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "四",
+              "Offset": 75900000,
+              "Duration": 1700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "到",
+              "Offset": 77700000,
+              "Duration": 1600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "P",
+              "Offset": 79400000,
+              "Duration": 4100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "它",
+              "Offset": 84700000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "在",
+              "Offset": 87900000,
+              "Duration": 1200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "这里",
+              "Offset": 89200000,
+              "Duration": 2600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 82,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "结束",
+              "Offset": 91900000,
+              "Duration": 6100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "图",
+              "Offset": 100700000,
+              "Duration": 4300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "是",
+              "Offset": 105100000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "教学",
+              "Offset": 108500000,
+              "Duration": 3900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "示意",
+              "Offset": 112500000,
+              "Duration": 6000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不是",
+              "Offset": 119500000,
+              "Duration": 4500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "真实",
+              "Offset": 124100000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 73,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "执行",
+              "Offset": 127500000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "轨迹",
+              "Offset": 130500000,
+              "Duration": 5400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pronunciationReview": "pending-listening"
+  }
+}

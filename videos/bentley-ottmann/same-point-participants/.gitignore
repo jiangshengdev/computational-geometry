@@ -3,7 +3,14 @@ dist
 .DS_Store
 .env
 
-# Keep all recorded WAVs in Git LFS; ignore other generated output.
+# Keep narration WAVs and their handoff records; ignore unrelated output.
 /out/**
 !/out/**/
 !/out/**/*.wav
+!/out/narration-plan.json
+!/out/synthesis-39f9c1e2fc2d/**/*.json
+!/out/assessment-39f9c1e2fc2d/**/*.json
+!/out/assessment-39f9c1e2fc2d/review.html
+!/out/audition-ipa-chinese-v1/**/*.json
+!/out/audition-ipa-chinese-v1/review.html
+!/out/audition-omission-v2/**/*.json

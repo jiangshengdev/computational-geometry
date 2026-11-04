@@ -1,0 +1,1095 @@
+{
+  "audioFile": "SP35.wav",
+  "audioSha256": "74a475c28b05c4673279906a8f078ec6c2b899ff549ad03af72fd727e6606313",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "duration": 14.32,
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "fingerprint": "1b36f104cc2bb627f71fcbfe4356a1e48ee4b54c0f62cf349f08b049ba99a546",
+  "speech": "现在可以按精确高度。有序定位第一条不低于 y 下标 P 的旧成员。利用已经维护的顺序来找块首。不必每次遍历所有输入。这里说明查找用途。不展开容器代码。",
+  "words": [
+    {
+      "text": "现在",
+      "startMs": 70,
+      "durationMs": 360,
+      "textOffset": 0,
+      "wordLength": 2
+    },
+    {
+      "text": "可以",
+      "startMs": 430,
+      "durationMs": 240,
+      "textOffset": 2,
+      "wordLength": 2
+    },
+    {
+      "text": "按",
+      "startMs": 670,
+      "durationMs": 360,
+      "textOffset": 4,
+      "wordLength": 1
+    },
+    {
+      "text": "精确",
+      "startMs": 1030,
+      "durationMs": 360,
+      "textOffset": 5,
+      "wordLength": 2
+    },
+    {
+      "text": "高",
+      "startMs": 1390,
+      "durationMs": 200,
+      "textOffset": 7,
+      "wordLength": 1
+    },
+    {
+      "text": "度",
+      "startMs": 1590,
+      "durationMs": 280,
+      "textOffset": 8,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 1870,
+      "durationMs": 0,
+      "textOffset": 9,
+      "wordLength": 1
+    },
+    {
+      "text": "有序",
+      "startMs": 2078,
+      "durationMs": 440,
+      "textOffset": 10,
+      "wordLength": 2
+    },
+    {
+      "text": "定位",
+      "startMs": 2518,
+      "durationMs": 360,
+      "textOffset": 12,
+      "wordLength": 2
+    },
+    {
+      "text": "第一",
+      "startMs": 2878,
+      "durationMs": 240,
+      "textOffset": 14,
+      "wordLength": 2
+    },
+    {
+      "text": "条",
+      "startMs": 3118,
+      "durationMs": 400,
+      "textOffset": 16,
+      "wordLength": 1
+    },
+    {
+      "text": "不",
+      "startMs": 3518,
+      "durationMs": 200,
+      "textOffset": 17,
+      "wordLength": 1
+    },
+    {
+      "text": "低于",
+      "startMs": 3718,
+      "durationMs": 360,
+      "textOffset": 18,
+      "wordLength": 2
+    },
+    {
+      "text": "Y",
+      "startMs": 4078,
+      "durationMs": 200,
+      "textOffset": 21,
+      "wordLength": 1
+    },
+    {
+      "text": "下",
+      "startMs": 4278,
+      "durationMs": 159,
+      "textOffset": 23,
+      "wordLength": 1
+    },
+    {
+      "text": "标",
+      "startMs": 4437,
+      "durationMs": 201,
+      "textOffset": 24,
+      "wordLength": 1
+    },
+    {
+      "text": "P",
+      "startMs": 4638,
+      "durationMs": 159,
+      "textOffset": 26,
+      "wordLength": 1
+    },
+    {
+      "text": "的",
+      "startMs": 4797,
+      "durationMs": 120,
+      "textOffset": 28,
+      "wordLength": 1
+    },
+    {
+      "text": "旧成",
+      "startMs": 4917,
+      "durationMs": 400,
+      "textOffset": 29,
+      "wordLength": 2
+    },
+    {
+      "text": "员",
+      "startMs": 5317,
+      "durationMs": 321,
+      "textOffset": 31,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 5638,
+      "durationMs": 0,
+      "textOffset": 32,
+      "wordLength": 1
+    },
+    {
+      "text": "利用",
+      "startMs": 6069,
+      "durationMs": 400,
+      "textOffset": 33,
+      "wordLength": 2
+    },
+    {
+      "text": "已",
+      "startMs": 6469,
+      "durationMs": 120,
+      "textOffset": 35,
+      "wordLength": 1
+    },
+    {
+      "text": "经",
+      "startMs": 6589,
+      "durationMs": 160,
+      "textOffset": 36,
+      "wordLength": 1
+    },
+    {
+      "text": "维护",
+      "startMs": 6749,
+      "durationMs": 360,
+      "textOffset": 37,
+      "wordLength": 2
+    },
+    {
+      "text": "的",
+      "startMs": 7109,
+      "durationMs": 120,
+      "textOffset": 39,
+      "wordLength": 1
+    },
+    {
+      "text": "顺序",
+      "startMs": 7229,
+      "durationMs": 400,
+      "textOffset": 40,
+      "wordLength": 2
+    },
+    {
+      "text": "来",
+      "startMs": 7629,
+      "durationMs": 160,
+      "textOffset": 42,
+      "wordLength": 1
+    },
+    {
+      "text": "找",
+      "startMs": 7789,
+      "durationMs": 120,
+      "textOffset": 43,
+      "wordLength": 1
+    },
+    {
+      "text": "块",
+      "startMs": 7909,
+      "durationMs": 240,
+      "textOffset": 44,
+      "wordLength": 1
+    },
+    {
+      "text": "首",
+      "startMs": 8149,
+      "durationMs": 360,
+      "textOffset": 45,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 8509,
+      "durationMs": 0,
+      "textOffset": 46,
+      "wordLength": 1
+    },
+    {
+      "text": "不必",
+      "startMs": 8818,
+      "durationMs": 320,
+      "textOffset": 47,
+      "wordLength": 2
+    },
+    {
+      "text": "每次",
+      "startMs": 9138,
+      "durationMs": 400,
+      "textOffset": 49,
+      "wordLength": 2
+    },
+    {
+      "text": "遍历",
+      "startMs": 9538,
+      "durationMs": 280,
+      "textOffset": 51,
+      "wordLength": 2
+    },
+    {
+      "text": "所有",
+      "startMs": 9818,
+      "durationMs": 280,
+      "textOffset": 53,
+      "wordLength": 2
+    },
+    {
+      "text": "输入",
+      "startMs": 10098,
+      "durationMs": 400,
+      "textOffset": 55,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 10498,
+      "durationMs": 0,
+      "textOffset": 57,
+      "wordLength": 1
+    },
+    {
+      "text": "这",
+      "startMs": 10788,
+      "durationMs": 200,
+      "textOffset": 58,
+      "wordLength": 1
+    },
+    {
+      "text": "里",
+      "startMs": 10988,
+      "durationMs": 120,
+      "textOffset": 59,
+      "wordLength": 1
+    },
+    {
+      "text": "说",
+      "startMs": 11108,
+      "durationMs": 120,
+      "textOffset": 60,
+      "wordLength": 1
+    },
+    {
+      "text": "明",
+      "startMs": 11228,
+      "durationMs": 200,
+      "textOffset": 61,
+      "wordLength": 1
+    },
+    {
+      "text": "查找",
+      "startMs": 11428,
+      "durationMs": 360,
+      "textOffset": 62,
+      "wordLength": 2
+    },
+    {
+      "text": "用途",
+      "startMs": 11788,
+      "durationMs": 600,
+      "textOffset": 64,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 12388,
+      "durationMs": 0,
+      "textOffset": 66,
+      "wordLength": 1
+    },
+    {
+      "text": "不",
+      "startMs": 12708,
+      "durationMs": 200,
+      "textOffset": 67,
+      "wordLength": 1
+    },
+    {
+      "text": "展开",
+      "startMs": 12908,
+      "durationMs": 400,
+      "textOffset": 68,
+      "wordLength": 2
+    },
+    {
+      "text": "容器",
+      "startMs": 13308,
+      "durationMs": 360,
+      "textOffset": 70,
+      "wordLength": 2
+    },
+    {
+      "text": "代码",
+      "startMs": 13668,
+      "durationMs": 560,
+      "textOffset": 72,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 14228,
+      "durationMs": 0,
+      "textOffset": 74,
+      "wordLength": 1
+    }
+  ],
+  "alignment": {
+    "method": "azure-pronunciation-assessment",
+    "audioSha256": "74a475c28b05c4673279906a8f078ec6c2b899ff549ad03af72fd727e6606313",
+    "synthesisWords": [
+      {
+        "text": "现在",
+        "startMs": 70,
+        "durationMs": 360,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "可以",
+        "startMs": 430,
+        "durationMs": 240,
+        "textOffset": 2,
+        "wordLength": 2
+      },
+      {
+        "text": "按",
+        "startMs": 670,
+        "durationMs": 360,
+        "textOffset": 4,
+        "wordLength": 1
+      },
+      {
+        "text": "精确",
+        "startMs": 1030,
+        "durationMs": 360,
+        "textOffset": 5,
+        "wordLength": 2
+      },
+      {
+        "text": "高",
+        "startMs": 1390,
+        "durationMs": 200,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "度",
+        "startMs": 1590,
+        "durationMs": 280,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 1870,
+        "durationMs": 0,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "有序",
+        "startMs": 2078,
+        "durationMs": 440,
+        "textOffset": 10,
+        "wordLength": 2
+      },
+      {
+        "text": "定位",
+        "startMs": 2518,
+        "durationMs": 360,
+        "textOffset": 12,
+        "wordLength": 2
+      },
+      {
+        "text": "第一",
+        "startMs": 2878,
+        "durationMs": 240,
+        "textOffset": 14,
+        "wordLength": 2
+      },
+      {
+        "text": "条",
+        "startMs": 3118,
+        "durationMs": 400,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "不",
+        "startMs": 3518,
+        "durationMs": 200,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "低于",
+        "startMs": 3718,
+        "durationMs": 360,
+        "textOffset": 18,
+        "wordLength": 2
+      },
+      {
+        "text": "Y",
+        "startMs": 4078,
+        "durationMs": 200,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "下",
+        "startMs": 4278,
+        "durationMs": 159,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "标",
+        "startMs": 4437,
+        "durationMs": 201,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "P",
+        "startMs": 4638,
+        "durationMs": 159,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "startMs": 4797,
+        "durationMs": 120,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "旧成",
+        "startMs": 4917,
+        "durationMs": 400,
+        "textOffset": 29,
+        "wordLength": 2
+      },
+      {
+        "text": "员",
+        "startMs": 5317,
+        "durationMs": 321,
+        "textOffset": 31,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 5638,
+        "durationMs": 0,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "利用",
+        "startMs": 6069,
+        "durationMs": 400,
+        "textOffset": 33,
+        "wordLength": 2
+      },
+      {
+        "text": "已",
+        "startMs": 6469,
+        "durationMs": 120,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "经",
+        "startMs": 6589,
+        "durationMs": 160,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "维护",
+        "startMs": 6749,
+        "durationMs": 360,
+        "textOffset": 37,
+        "wordLength": 2
+      },
+      {
+        "text": "的",
+        "startMs": 7109,
+        "durationMs": 120,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "顺序",
+        "startMs": 7229,
+        "durationMs": 400,
+        "textOffset": 40,
+        "wordLength": 2
+      },
+      {
+        "text": "来",
+        "startMs": 7629,
+        "durationMs": 160,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "找",
+        "startMs": 7789,
+        "durationMs": 120,
+        "textOffset": 43,
+        "wordLength": 1
+      },
+      {
+        "text": "块",
+        "startMs": 7909,
+        "durationMs": 240,
+        "textOffset": 44,
+        "wordLength": 1
+      },
+      {
+        "text": "首",
+        "startMs": 8149,
+        "durationMs": 360,
+        "textOffset": 45,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 8509,
+        "durationMs": 0,
+        "textOffset": 46,
+        "wordLength": 1
+      },
+      {
+        "text": "不必",
+        "startMs": 8818,
+        "durationMs": 320,
+        "textOffset": 47,
+        "wordLength": 2
+      },
+      {
+        "text": "每次",
+        "startMs": 9138,
+        "durationMs": 400,
+        "textOffset": 49,
+        "wordLength": 2
+      },
+      {
+        "text": "遍历",
+        "startMs": 9538,
+        "durationMs": 280,
+        "textOffset": 51,
+        "wordLength": 2
+      },
+      {
+        "text": "所有",
+        "startMs": 9818,
+        "durationMs": 280,
+        "textOffset": 53,
+        "wordLength": 2
+      },
+      {
+        "text": "输入",
+        "startMs": 10098,
+        "durationMs": 400,
+        "textOffset": 55,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 10498,
+        "durationMs": 0,
+        "textOffset": 57,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 10788,
+        "durationMs": 200,
+        "textOffset": 58,
+        "wordLength": 1
+      },
+      {
+        "text": "里",
+        "startMs": 10988,
+        "durationMs": 120,
+        "textOffset": 59,
+        "wordLength": 1
+      },
+      {
+        "text": "说",
+        "startMs": 11108,
+        "durationMs": 120,
+        "textOffset": 60,
+        "wordLength": 1
+      },
+      {
+        "text": "明",
+        "startMs": 11228,
+        "durationMs": 200,
+        "textOffset": 61,
+        "wordLength": 1
+      },
+      {
+        "text": "查找",
+        "startMs": 11428,
+        "durationMs": 360,
+        "textOffset": 62,
+        "wordLength": 2
+      },
+      {
+        "text": "用途",
+        "startMs": 11788,
+        "durationMs": 600,
+        "textOffset": 64,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 12388,
+        "durationMs": 0,
+        "textOffset": 66,
+        "wordLength": 1
+      },
+      {
+        "text": "不",
+        "startMs": 12708,
+        "durationMs": 200,
+        "textOffset": 67,
+        "wordLength": 1
+      },
+      {
+        "text": "展开",
+        "startMs": 12908,
+        "durationMs": 400,
+        "textOffset": 68,
+        "wordLength": 2
+      },
+      {
+        "text": "容器",
+        "startMs": 13308,
+        "durationMs": 360,
+        "textOffset": 70,
+        "wordLength": 2
+      },
+      {
+        "text": "代码",
+        "startMs": 13668,
+        "durationMs": 560,
+        "textOffset": 72,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 14228,
+        "durationMs": 0,
+        "textOffset": 74,
+        "wordLength": 1
+      }
+    ],
+    "response": {
+      "Id": "4c1335bf55f145e288afa19e7afcd057",
+      "RecognitionStatus": "Success",
+      "Offset": 400000,
+      "Duration": 142500000,
+      "Channel": 0,
+      "DisplayText": "现在可以按精确高度有序定位。第一条不低于y下标P的旧成员，利用已经维护的顺序来找块首，不必每次遍历所有输入。这里说明查找用途，不展开容器代码。",
+      "SNR": 41.136734,
+      "NBest": [
+        {
+          "Confidence": 0.9758696,
+          "Lexical": "现在 可以 按 精确 高度 有序 定位 第一 条 不 低于 y 下标 P 的 旧 成员 利用 已经 维护 的 顺序 来 找 块 首 不必 每次 遍历 所有 输入 这里 说明 查找 用途 不 展开 容器 代码",
+          "ITN": "现在 可以 按 精确 高度 有序 定位 第一 条 不 低于 y 下标 P 的 旧 成员 利用 已经 维护 的 顺序 来 找 块 首 不必 每次 遍历 所有 输入 这里 说明 查找 用途 不 展开 容器 代码",
+          "MaskedITN": "现在可以按精确高度有序定位第一条不低于y下标p的旧成员利用已经维护的顺序来找块首不必每次遍历所有输入这里说明查找用途不展开容器代码",
+          "Display": "现在可以按精确高度有序定位。第一条不低于y下标P的旧成员，利用已经维护的顺序来找块首，不必每次遍历所有输入。这里说明查找用途，不展开容器代码。",
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "FluencyScore": 94,
+            "CompletenessScore": 95,
+            "PronScore": 92.4
+          },
+          "Words": [
+            {
+              "Word": "现在",
+              "Offset": 400000,
+              "Duration": 4100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 91,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "可以",
+              "Offset": 4600000,
+              "Duration": 2200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "按",
+              "Offset": 6900000,
+              "Duration": 3600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 82,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "精确",
+              "Offset": 10600000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "高度",
+              "Offset": 14000000,
+              "Duration": 5100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "有序",
+              "Offset": 20800000,
+              "Duration": 5100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "定位",
+              "Offset": 26000000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "第一",
+              "Offset": 29600000,
+              "Duration": 2700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "条",
+              "Offset": 32400000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不",
+              "Offset": 36200000,
+              "Duration": 1700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "低于",
+              "Offset": 38000000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "y",
+              "Offset": 41600000,
+              "Duration": 1700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 85,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "下标",
+              "Offset": 43400000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "P",
+              "Offset": 47000000,
+              "Duration": 1900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 70,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "的",
+              "Offset": 49000000,
+              "Duration": 900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "旧",
+              "Offset": 50000000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "成员",
+              "Offset": 51600000,
+              "Duration": 5500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "利用",
+              "Offset": 61000000,
+              "Duration": 4500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "已经",
+              "Offset": 65600000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "维护",
+              "Offset": 68600000,
+              "Duration": 3400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "的",
+              "Offset": 72100000,
+              "Duration": 1200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "顺序",
+              "Offset": 73400000,
+              "Duration": 3900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 66,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "来",
+              "Offset": 77400000,
+              "Duration": 1300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "找",
+              "Offset": 78800000,
+              "Duration": 1400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "块",
+              "Offset": 80300000,
+              "Duration": 2400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "首",
+              "Offset": 82800000,
+              "Duration": 3800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 61,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不必",
+              "Offset": 87600000,
+              "Duration": 4700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "每次",
+              "Offset": 92400000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 54,
+                "ErrorType": "Mispronunciation"
+              }
+            },
+            {
+              "Word": "遍历",
+              "Offset": 96000000,
+              "Duration": 2700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "所有",
+              "Offset": 98800000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "输入",
+              "Offset": 101800000,
+              "Duration": 4600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 73,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "这里",
+              "Offset": 107600000,
+              "Duration": 4300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 79,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "说明",
+              "Offset": 112000000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "查找",
+              "Offset": 115000000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "用途",
+              "Offset": 118600000,
+              "Duration": 6700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不",
+              "Offset": 126400000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "展开",
+              "Offset": 129800000,
+              "Duration": 4100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 59,
+                "ErrorType": "Mispronunciation"
+              }
+            },
+            {
+              "Word": "容器",
+              "Offset": 134000000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 88,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "代码",
+              "Offset": 137600000,
+              "Duration": 5300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pronunciationReview": "pending-listening"
+  }
+}

@@ -1,0 +1,473 @@
+{
+  "synthesisPlanSha256": "39f9c1e2fc2ddfbdf890b3c4f5f189c62694eabe590a8c505a0b65aa56641a45",
+  "narrationSha256": "f972441e0e309f3b65c9529eb5e13e6da5c0ffb034aaa9237c476c6c1323cc1a",
+  "operation": "combined recognition and word-level pronunciation assessment",
+  "language": "zh-CN",
+  "gradingSystem": "HundredMark",
+  "granularity": "Word",
+  "enableMiscue": true,
+  "requestCount": 57,
+  "concurrency": 1,
+  "automaticRetries": 0,
+  "synthesisRequests": 0,
+  "totalAudioSeconds": 855.53,
+  "media": "complete recognition copies; original source WAV unchanged; no rate changes",
+  "requests": [
+    {
+      "id": "SP01",
+      "audioFile": "SP01.wav",
+      "audioSha256": "2e076efb3677970bda295d1b699c50f703899d6b31795114c980fcae76d07f2d",
+      "audioSeconds": 15.95,
+      "referenceText": "第三章已经给出完整求交和精确比较。本集接着处理同一个位置上的多份输入。上集先找齐参与者、报告全部输入对。下集再维护右侧顺序。并解释没有端点提示的共点为何会被发现。",
+      "synthesisFingerprint": "817e11189876e82bb2a4e64fb054c3087db9eb8b64a0d8454ca209226ce00487"
+    },
+    {
+      "id": "SP02",
+      "audioFile": "SP02.wav",
+      "audioSha256": "327f7973a84539127b45f6075d1e71d1db4a96ba3c8bef266234f2cee6920b0e",
+      "audioSeconds": 13.05,
+      "referenceText": "本章仍要求非零输入不竖直。任意两份之间没有非零长度重叠。不同事件位置的横坐标各异。这是不同位置的限制。不妨碍多个端点集中在同一个点。",
+      "synthesisFingerprint": "e92693a03447aa6613d7326dd6e1dfe9ef78a69a876bb328b889ad200fa3eea4"
+    },
+    {
+      "id": "SP03",
+      "audioFile": "SP03.wav",
+      "audioSha256": "b694687ab90f306142e07932c9c797890eea70cfa7637cf68547ad6569da0639",
+      "audioSeconds": 19.97,
+      "referenceText": "现在允许共端点、端点落在另一条线段内部、多条线段共点。也允许零长度点输入。共线但仅共享端点同样允许。重叠、同横坐标不同位置和竖直线段参与扫描。分别留给后续章节。这些不是完整算法的输入限制。",
+      "synthesisFingerprint": "30eb75287d776a40c948ee260c6c3a3c0d38c87e4101a52955a4fbb4e38ba216"
+    },
+    {
+      "id": "SP04",
+      "audioFile": "SP04.wav",
+      "audioSha256": "d5f911d7a73f7272c6f4bd4097ff926d27c6eb52d8e52979ef03244bd1f33726",
+      "audioSeconds": 13.37,
+      "referenceText": "把共同端点叫作 P。横坐标和纵坐标都是四。蓝色输入 A 从横坐标零、纵坐标四到 P。它在这里结束。图是教学示意。不是真实执行轨迹。",
+      "synthesisFingerprint": "0aeb453028991dbcd935643231122ab7ae311c521ea442e9fdf208f43e906092"
+    },
+    {
+      "id": "SP05",
+      "audioFile": "SP05.wav",
+      "audioSha256": "9b0d16496e6bcf41934738c13701477a086effc8d1e6c91232ed5cb26259bbd4",
+      "audioSeconds": 13.52,
+      "referenceText": "橙色输入 B 从 P 到横坐标八、纵坐标八。在这里开始。图中横纵每格都是一个单位。O 是原点。箭头标出坐标正方向。两份输入都包含端点。",
+      "synthesisFingerprint": "158d7e70d560e85d4702d4b8965ef78d683e5a062405c1b8ac6de6c5aa3ad11f"
+    },
+    {
+      "id": "SP06",
+      "audioFile": "SP06.wav",
+      "audioSha256": "8869d67fdc93f69cbe3671514ae98d926e8a8e8b5044907a40d479d4ed35d1b2",
+      "audioSeconds": 17.24,
+      "referenceText": "A 满足纵坐标等于四。横坐标从零到四。B 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。",
+      "synthesisFingerprint": "8d43fa3f746e493604a817e1df8d3b54a69d8e9bbd342472f3405565bd55ea73"
+    },
+    {
+      "id": "SP07",
+      "audioFile": "SP07.wav",
+      "audioSha256": "b8152a12556b0f68fd270325a556b60178ca5d99111082eba90d527c3e91977b",
+      "audioSeconds": 11.17,
+      "referenceText": "紧靠 P 左侧只有 A。右侧只有 B。如果先忘掉结束的 A。再读取开始的 B。配对名单里就少了 A。会漏掉这一次端点接触。",
+      "synthesisFingerprint": "efc9b73d0c94883fc4a007296b09f58119a61f8f14afd51b8304eb88ff93707a"
+    },
+    {
+      "id": "SP08",
+      "audioFile": "SP08.wav",
+      "audioSha256": "e0b1c7697afa19047d08bf1f1587bc934f155f92b569581d264653a78653a4f4",
+      "audioSeconds": 12.52,
+      "referenceText": "先保留 A 在本次事件中的身份。把 B 也列进来。报告 A 与 B 的交集 P。然后 A 退出、B 继续。不再向右延伸。不等于不属于当前闭端点。",
+      "synthesisFingerprint": "9523fcd423aa496ef3ec0e6d88e6cfba39dcb2f34e900306f89d8fae847eec71"
+    },
+    {
+      "id": "SP09",
+      "audioFile": "SP09.wav",
+      "audioSha256": "725018ad15a3c448c165222aa21010275a1e6eba5c159536dcd341c25cb4056a",
+      "audioSeconds": 17.34,
+      "referenceText": "这个理由不依赖两条线段的方向。只要一份闭线段在这里结束。它就仍包含这里的点。若还有其他参与者。就要在丢掉结束身份以前完成当前配对。这说的是数学依赖。不要求程序容器永远不能暂时取出成员。",
+      "synthesisFingerprint": "4a2ab18738850e60faea0a70cc2e8237e9f00ae9744abd1ebe8b2c96a6a8ccbb"
+    },
+    {
+      "id": "SP10",
+      "audioFile": "SP10.wav",
+      "audioSha256": "d6e35ffc9db97c557f49e21b49e87492752d89dda7ac764725c1634222f45545",
+      "audioSeconds": 11.73,
+      "referenceText": "这次只取 B 和新的紫色输入 C。暂不取 A。C 从横坐标一、纵坐标七到横坐标九、纵坐标负一。满足纵坐标等于八减横坐标。",
+      "synthesisFingerprint": "6dbef7f096fccb0f89c213c8b8dd73536d7b3652fafd05ee7de3f515706c0b32"
+    },
+    {
+      "id": "SP11",
+      "audioFile": "SP11.wav",
+      "audioSha256": "866d4decf6a86ed11ecbd6b6c909ca57bcd5093dc6d1cb492c1b2de482db9520",
+      "audioSeconds": 12.52,
+      "referenceText": "用第三章的同一位置精确高度判断。C 在横坐标四处的高度是四。四又严格在一和九之间。所以 P 严格位于 C 内部。没有端点在 P。不代表不参加。",
+      "synthesisFingerprint": "c4fb7189ed8e474859a81339cc7259850e67aee47b7d66e0abbed706fc3e7952"
+    },
+    {
+      "id": "SP12",
+      "audioFile": "SP12.wav",
+      "audioSha256": "21de05c763a9b951d345fee3e85710b3089ea5820852ff2735544a111873590c",
+      "audioSeconds": 14.25,
+      "referenceText": "起点清单直接给出 B。却没有把严格穿过的 C 当作端点列在这里。只用端点名单配对会漏掉 B 与 C。还要到旧活动顺序中找同高度成员。才能报告这一对对应 P。",
+      "synthesisFingerprint": "e93c4fbb1adfbf00fcdaeb7e7e887bb20181513fd93b6393b1892914c001b8ff"
+    },
+    {
+      "id": "SP13",
+      "audioFile": "SP13.wav",
+      "audioSha256": "44e6d6499137d9f3746f502cd70c95ef2984ab70afec0d9117e575afe560e556",
+      "audioSeconds": 17.59,
+      "referenceText": "这里查的是仍覆盖事件横坐标的旧活动线段。再比较它们在这里的精确高度。若只是延长线经过 P。线段范围并未覆盖这里。就不能加入。点归属的共线和闭范围结论见第三章。不重做求交公式。",
+      "synthesisFingerprint": "1563b5e9a7880e8cfdc132b6e6fd0cbb316c3e2b8dcacc47dbe492d1b8f62ea7"
+    },
+    {
+      "id": "SP14",
+      "audioFile": "SP14.wav",
+      "audioSha256": "7be1be0dd130dc8be6af3dfe1ab327d64b9223deb28b4402585fc44684055b4b",
+      "audioSeconds": 15.69,
+      "referenceText": "这一页新增的机制是。端点让我们到站。旧活动顺序补齐没有端点提示的参与者。到达一个已知位置后怎样找齐。与这个位置为什么一定会被发现。是不同问题。后一个问题留给下集。",
+      "synthesisFingerprint": "c8cb1921bceabeb4dd854b77269658da878a92d11cd15270596bcc433888eb02"
+    },
+    {
+      "id": "SP15",
+      "audioFile": "SP15.wav",
+      "audioSha256": "9754ca267e9ddf65896487d99f4c2dac14025e9bc0a93eb563f47ed89165539d",
+      "audioSeconds": 16.69,
+      "referenceText": "现在取回 A。和 B、C 一起。再加入绿色输入 D。D 从横坐标二、纵坐标零到横坐标七、纵坐标十。满足纵坐标等于二倍横坐标减四。只看 P 这次事件。不重演整次扫描。",
+      "synthesisFingerprint": "3bc81c281bb3ef25ee4b3e6e776fdb582b53a6662e45fe8e57e2cd68b62bfe23"
+    },
+    {
+      "id": "SP16",
+      "audioFile": "SP16.wav",
+      "audioSha256": "2e1901661adf513dc27a2c73f0d1df0d8d9c76731d27f82f2a0b59aa02acabc1",
+      "audioSeconds": 15.29,
+      "referenceText": "D 在横坐标四处的高度也是四。而且四严格在二和七之间。所以 D 也严格穿过 P。其他端点的横坐标是零、一、二、七、八、九。与四不同。也彼此不同。符合本章条件。",
+      "synthesisFingerprint": "ccfd66f4445326fd304f5ac2ed038ebcb24ad8fd676f8c68e65d159e5b3f83b6"
+    },
+    {
+      "id": "SP17",
+      "audioFile": "SP17.wav",
+      "audioSha256": "f0c7744fab5f8170e6f31692eafd2c6e10c67c0b77d1b5790d11e04b49eb8a8f",
+      "audioSeconds": 14.49,
+      "referenceText": "例如检查旧邻居 A 与 C。可以算出未来位置 P。这只说明要在 P 停下。到站后不能只处理这一对。A 的结束、B 的开始。以及 C、D 的穿过。都属于同一次事件。",
+      "synthesisFingerprint": "9dbd7d1b1e1ecd947e99130a35a40e4fdc0f9839d777e070f947031aff7af501"
+    },
+    {
+      "id": "SP18",
+      "audioFile": "SP18.wav",
+      "audioSha256": "bd0852e7dea725fece4ec1c62486141d5146ae232945c9d850599ea365fec94e",
+      "audioSeconds": 14.44,
+      "referenceText": "引用第三章的同点结论。横坐标和纵坐标分别相等。才是同一精确位置。其他输入对再发现 P。就使用同一位置记录。不能因为来源不同。把同点拆成多次处理。",
+      "synthesisFingerprint": "4138711e4b2dfa215ab5c678ff0a933b5ad8b4d2b2f7bf4c14cd90e20236a9c0"
+    },
+    {
+      "id": "SP19",
+      "audioFile": "SP19.wav",
+      "audioSha256": "fe1af304b2e5b0665ea2874388e62f4b14e4a2b07edb5fa6c279db3f55e98fc4",
+      "audioSeconds": 13.4,
+      "referenceText": "所有端点预先已知。所以 P 的记录可以保留哪些输入从这里开始、哪些在这里结束。交点记录并入这个位置时。不能覆盖已有端点信息。后面还要加入点输入身份。",
+      "synthesisFingerprint": "9c4d78f8d9babf90acd0208c7a067880ddf9c496fb5bc06d0f35309eba596da6"
+    },
+    {
+      "id": "SP20",
+      "audioFile": "SP20.wav",
+      "audioSha256": "d8765a49f368aa07f946fbdf32f3a96ae5b2efa4ae5dbd830f6f6b064fc3bd44",
+      "audioSeconds": 17.84,
+      "referenceText": "继续沿用第二章《扫描过程与三类事件》的规则。真实未来交点即使暂时失去邻接。也保留到取出。清单每次取最左的未处理位置。同一位置只统一处理一次。预约的一对提供发现依据。完整名单到站再找。",
+      "synthesisFingerprint": "aa2cf7443e72f6b25e32e27447fbe2699eaab345df21557b9775f157ce45f47f"
+    },
+    {
+      "id": "SP21",
+      "audioFile": "SP21.wav",
+      "audioSha256": "3d1b52e625ce66be8f676b1cdb9aa9b59c7e07ddd9a3864b163b4ddc410c32de",
+      "audioSeconds": 18.62,
+      "referenceText": "把同一个事件位置一般地写成 P。符号 x 下标 P 和 y 下标 P 分别表示它的横坐标和纵坐标。案例中都等于四。非零输入按横坐标认出左端点和右端点。不由端点书写顺序决定。下面的角色含义不依赖数值四。",
+      "synthesisFingerprint": "bbe0e77a2f8e1dbe8115ba074992d5915b2fdc477b025e43eb0d8d0a7fa4f28c"
+    },
+    {
+      "id": "SP22",
+      "audioFile": "SP22.wav",
+      "audioSha256": "4ff79d372baa90dab430711f97462e952dd887f5494477502fb2c779d41457bb",
+      "audioSeconds": 13.99,
+      "referenceText": "经过 P 的非零输入。若左端点就是 P、右端点横坐标更大。就叫开始者。本例 B 是开始者。它参与当前报告。右侧也继续。但左侧旧顺序里还没有它。",
+      "synthesisFingerprint": "9339097474eb9fc8ac48172fb5b1f12aec6545425701593481f177a5204f98de"
+    },
+    {
+      "id": "SP23",
+      "audioFile": "SP23.wav",
+      "audioSha256": "3420c92bf97ee8592bb2320f228296c6ac6184b52b1fe199a68fdc7b25bef95b",
+      "audioSeconds": 11.92,
+      "referenceText": "若右端点就是 P、左端点横坐标更小。就叫结束者。本例 A 是结束者。在旧顺序中。也参与当前闭端点报告。只是右侧不再继续。",
+      "synthesisFingerprint": "cd686aaec5c487c8fff12cbdcdd321898bb4e9f1fb5bac51526c7c2411afdaac"
+    },
+    {
+      "id": "SP24",
+      "audioFile": "SP24.wav",
+      "audioSha256": "5af6f7c64c05dda5545826a9c72ce85e583ecb314126dfe8d2b94f8d318189e0",
+      "audioSeconds": 18.13,
+      "referenceText": "若 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 D。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留 B、C、D。",
+      "synthesisFingerprint": "da3101d3da699dbb251c19af2c1ab9d7e3735f70838949dfe8bc60907b5f1d9d"
+    },
+    {
+      "id": "SP25",
+      "audioFile": "SP25.wav",
+      "audioSha256": "1831baec541bdd896bc3f85c737e768680aae3ed2561d3c241e9d6fd39588ee0",
+      "audioSeconds": 15.82,
+      "referenceText": "把紧靠 P 左侧的活动顺序叫旧顺序。其中经过 P 的旧参与者叫相遇块。它包括结束者和严格穿过者。不包括开始者。本例旧块是从下到上的 D、A、C。没有旧参与者时就是空块。",
+      "synthesisFingerprint": "9cc19d635a56531fdef1768edfe18460efdb007a4b04a39b29e493a0284ce273"
+    },
+    {
+      "id": "SP26",
+      "audioFile": "SP26.wav",
+      "audioSha256": "4b2ee0445a7214d9621a09335af7176b341a4204c07206d5c809a9113d5c22cd",
+      "audioSeconds": 12.57,
+      "referenceText": "旧参与者不足两条时。空块或单成员块已经连续。至少有两条时。才需要证明。旧顺序里夹在它们中间的其他成员。会不会不参加当前事件？",
+      "synthesisFingerprint": "a8bc06d2d19deabd39257e84d6af7d9d6e9914de4b2e9c2a811477e596fa4fe8"
+    },
+    {
+      "id": "SP27",
+      "audioFile": "SP27.wav",
+      "audioSha256": "368fbb89e1dff668f6953cb2b6796c6e1cb863f2205694111a319356875920bd",
+      "audioSeconds": 19.48,
+      "referenceText": "离开四输入的数值。任取旧参与者中最下的 U、最上的 V。若中间还有旧成员。把它叫 W。图仅表示从下到上的关系。不另造数值案例。U 和 V 都到达 P。横坐标仍用 x 下标 P。纵坐标仍用 y 下标 P。",
+      "synthesisFingerprint": "c21b0bb17dfe91d1782ac018d7141e8ba33193265fcbf3f1b86828b1cf8f46eb"
+    },
+    {
+      "id": "SP29",
+      "audioFile": "SP29.wav",
+      "audioSha256": "74f97fc5b3a5de1ef16c69bc6435240f1a1dc9ae8f3d531bde7125e43f00f842",
+      "audioSeconds": 17.22,
+      "referenceText": "沿用第二章《为什么不会漏掉交点》的无事件区间。W 在紧邻 P 左侧不会提前结束。这次还允许它恰好在 P 结束。闭线段包含结束端点。所以到 P 仍存在。共同存在和左侧夹层的条件仍满足。",
+      "synthesisFingerprint": "1ef2cd7032c4d4fa915133541e99dd57e104f29dad15ababee8a4cc0dc3463e8"
+    },
+    {
+      "id": "SP33",
+      "audioFile": "SP33.wav",
+      "audioSha256": "8f91cb12719de261a67cb0d437fbb7f37c839ecdad2704e3e43a426984687599",
+      "audioSeconds": 23.71,
+      "referenceText": "直接引用第二章《为什么不会漏掉交点》的夹层结论。U 和 V 到达同一个 P。中间的 W 也经过 P。本章允许共点。所以这次要把 W 一起收进相遇块。所有夹在最下和最上参与者之间的旧成员都要收进来。因此旧参与者连续成块。不能照搬任意两条交叉前必相邻的结论。",
+      "synthesisFingerprint": "1b85a0a51e31e25c94866e0848c9c56e9e0c8786c3a376a21a127c367ba82717"
+    },
+    {
+      "id": "SP34",
+      "audioFile": "SP34.wav",
+      "audioSha256": "0ca9c80edd9461542ea03ae232aed43d58bd771367b076bba11f8bb7caead002",
+      "audioSeconds": 9.48,
+      "referenceText": "沿用第二章的边界高度结论。把所有旧成员的高度都取在 x 下标 P。顺序仍从下到上不递减。允许相等。",
+      "synthesisFingerprint": "754b08f2cd5b2a54f1720a19ef7f7514e4266dfaa556f7b97320655e3da3acc5"
+    },
+    {
+      "id": "SP35",
+      "audioFile": "SP35.wav",
+      "audioSha256": "ec2408a52cc5103434081ec0e41ef2238bfd5d56fac81163476bf117dccca6e4",
+      "audioSeconds": 14.37,
+      "referenceText": "现在可以按精确高度。有序定位第一条不低于 y 下标 P 的旧成员。利用已经维护的顺序来找块首。不必每次遍历所有输入。这里说明查找用途。不展开容器代码。",
+      "synthesisFingerprint": "56862c3c59bea6df3dd9a48989e5528b10f0779703e1237e804b252e30fb9b51"
+    },
+    {
+      "id": "SP36",
+      "audioFile": "SP36.wav",
+      "audioSha256": "eb6e3fb488774cc6cb27157c905a3095748a771575bf446d0f138356facee290",
+      "audioSeconds": 17.28,
+      "referenceText": "若第一条等于 y 下标 P。就沿相等者逐条取出。直到遇见不相等者。若第一条已经更高。或根本没有不低于者。就没有相等块。只得到插入空隙。结束者也在旧块中。端点名单可核对其身份。",
+      "synthesisFingerprint": "1fcb84a7cc61306341b537cc157ff06e72a025529f1bbde0fe9a08b3e886d8fa"
+    },
+    {
+      "id": "SP37",
+      "audioFile": "SP37.wav",
+      "audioSha256": "8b14d2154186e87c6915525118a7ca595f19860ef1b26b4ba25a7f4cd2d6d143",
+      "audioSeconds": 12.55,
+      "referenceText": "取得整个旧块后。再合并清单中从 P 开始的非零输入。本例由旧块 D、A、C 补入 B。得到四份参与者。结束者 A 仍保留到当前配对完成。",
+      "synthesisFingerprint": "7635d7c2e7069c61e23054112b7f339125142facf3eafed1cf960addae036811"
+    },
+    {
+      "id": "SP38",
+      "audioFile": "SP38.wav",
+      "audioSha256": "f635818d31b5e85aa038174c16955207db3e8f321e18c96af78b6b7f874892a5",
+      "audioSeconds": 12.87,
+      "referenceText": "端点记录中也能读到 A 的结束身份。但 A 已在旧块中。不能再加一份。合并按原始编号去重。相同编号只留一次。不同编号即使同点也不能合并。",
+      "synthesisFingerprint": "1551c2d5965df675a45db98cf2c7f006203f247a46367a47bd011b9b49eb6c44"
+    },
+    {
+      "id": "SP39",
+      "audioFile": "SP39.wav",
+      "audioSha256": "900f76d0bff1c266f5201cd96935d29080a7dcdc190e555b7df86897262a67e1",
+      "audioSeconds": 16.76,
+      "referenceText": "任取一份包含 P 的非零非竖直输入。左端点若在 P 左边。它就在紧邻左侧活动。已由旧块收集。若左端点不在左边。只能恰好是 P。便在开始者名单中。这两路覆盖全部非零参与者。",
+      "synthesisFingerprint": "59ea83efbfc7c5001ba0846079499e27d5c1442df26ef96f77e31790de5fd666"
+    },
+    {
+      "id": "SP40",
+      "audioFile": "SP40.wav",
+      "audioSha256": "9d691f63c498dce1bf8ac7f83e75066ba6fd4a4ccac7d7b012167cb671dc203d",
+      "audioSeconds": 19.28,
+      "referenceText": "反过来。旧块里的成员覆盖 x 下标 P 且精确等高。所以确实经过 P。块外成员高度不同。不经过 P。开始者则由真实端点给出。两路没有凭空加入旁观者。点输入稍后单列。当前论证只针对非零输入。",
+      "synthesisFingerprint": "12e7d5b30418661b3ee4b3f090a3ca17f5b13d9798048cedbd441bde785821d2"
+    },
+    {
+      "id": "SP41",
+      "audioFile": "SP41.wav",
+      "audioSha256": "6e785d658f2e15a5ba6aa479a7b5030a46b8a61026b118eac225c78f206d3aaa",
+      "audioSeconds": 10.66,
+      "referenceText": "沿用第一章《逐对检查的基准方法》的无序对枚举结论。当前名单 A、B、C、D 对应图中的六个不同输入对。每对的交集都是 P。",
+      "synthesisFingerprint": "1e34e6e79ab7c9ca189bf3d990fe8a633aed16e0fb55782b7867183ed8d94a15"
+    },
+    {
+      "id": "SP43",
+      "audioFile": "SP43.wav",
+      "audioSha256": "92f1284b141b091143825beada53791482d389010d68b9067a38e2ba71057be9",
+      "audioSeconds": 13.3,
+      "referenceText": "清单只处理一个 P。求交结果却保留六个输入对的身份。不能用一条这里有交点代替六条结果。这里列的是当前已找齐成员之间的报告。不是扫描所有原始输入对。",
+      "synthesisFingerprint": "cd0a3635404aa2a9a23094c286f581b8e780fd03f031e5fe1b25bd334103c537"
+    },
+    {
+      "id": "SP44",
+      "audioFile": "SP44.wav",
+      "audioSha256": "f26f6ff89e27d512b2685f731f58d82f946d1e5991007c264fdf66bb38987986",
+      "audioSeconds": 13.12,
+      "referenceText": "六对只是数值案例。还需要对任意数量的参与者说明理由。每份参与者已经确认包含 P。所以任取两份。它们至少共享 P。不会报告一个不存在的交集。",
+      "synthesisFingerprint": "bd213c80ab52f8d97804526f968d129ffc4360072a267f6b138576ac6f5d450e"
+    },
+    {
+      "id": "SP45",
+      "audioFile": "SP45.wav",
+      "audioSha256": "31dd2c176e97095dbd8450ed2539bbb1e76005cca0081ca452b651b9f1d5bf8d",
+      "audioSeconds": 17.09,
+      "referenceText": "引用第一章《我们究竟要求什么》的结论。两条闭线段若有两个不同公共点。就共享非零长度区间。本章不允许这种重叠。所以这两份的完整交集恰好只有 P。只要有点输入。也不可能出现第二个公共点。",
+      "synthesisFingerprint": "3492193e2fe672c4612749508cfa5b901f379a94a25f3d282cf1ed21191c2665"
+    },
+    {
+      "id": "SP46",
+      "audioFile": "SP46.wav",
+      "audioSha256": "87a97072062497be14b418682bfaaa322d4dce758d625faedf29c96033d09d91",
+      "audioSeconds": 14.29,
+      "referenceText": "反过来。任意一对若在当前位置真实相交。两份都包含 P。参与者已找齐。它们便都在名单中。较小编号那一行必配到较大编号。所以当前位置没有漏报。",
+      "synthesisFingerprint": "05681ad2decac4b90a1ddd03a17fa95079ccf0719609be817e3f322ae6293eea"
+    },
+    {
+      "id": "SP47",
+      "audioFile": "SP47.wav",
+      "audioSha256": "41f256502a1bf20c6eeda63f5ce923369670959abdfc23699a4bb7cfc0b8510c",
+      "audioSeconds": 13.62,
+      "referenceText": "第一章《逐对检查的基准方法》已证明。只找更大原始编号。每个无序对恰好出现一次。这里直接把它用于当前名单。不配自身。也不把交换次序算成另一对。",
+      "synthesisFingerprint": "e6a7451a19aa325c2ad517bea316482123b51f46266a917cbd5a6b5e23fc6db7"
+    },
+    {
+      "id": "SP48",
+      "audioFile": "SP48.wav",
+      "audioSha256": "cd88b050f91ee8349e23642ce469398655eb519811838fca87074a22be118375",
+      "audioSeconds": 17.14,
+      "referenceText": "跨事件也不会重复。本章每对非空交集只能是一个点。而同一精确位置只处理一次。这是已到达位置的完整报告理由。没有端点提示的共点为何一定被预约。到下集再证明。不能提前假定已经解决。",
+      "synthesisFingerprint": "097a8d33c727893e5afa13d772e490b2e48dc67affec850fce7810aa86bf4c89"
+    },
+    {
+      "id": "SP49",
+      "audioFile": "SP49.wav",
+      "audioSha256": "91ef39485e677aea7bb4a7b02168152766ecc45c1207631487cc1a32d99aa61d",
+      "audioSeconds": 15.46,
+      "referenceText": "现在只取 C。再取两份新输入 Z 一、Z 二。它们的两个端点都等于 P。两份各只有一个点。却有不同原始编号。图分开显示这两个重合身份。位置和尺度相同。没有挪动点。",
+      "synthesisFingerprint": "dd44bf8bfc4a4c33c18221066d59fd44e264171fbfdbc82580775d94f1386fe7"
+    },
+    {
+      "id": "SP50",
+      "audioFile": "SP50.wav",
+      "audioSha256": "bb4b57c8482e6c4e9d70308342911111292d30e97bbc230050b1b9288d125fd9",
+      "audioSeconds": 13.5,
+      "referenceText": "菱形只帮助辨认零长度输入。不表示它有面积。两幅图里的 C 是同一条线段。这些是新选取的点输入。不是把四输入案例悄悄换掉后仍声称同一组输入。",
+      "synthesisFingerprint": "54935307783c3f4e5ec54e698dd6639fde8f19cb5750e71634d1be9a56b5cd18"
+    },
+    {
+      "id": "SP51",
+      "audioFile": "SP51.wav",
+      "audioSha256": "146d43cc969d66b8ceda75dba201931e3bab38ffa661aa7d06ed14b9e5b5791c",
+      "audioSeconds": 13.55,
+      "referenceText": "若把点输入同时当开始者和结束者拼接。同一个编号可能被放两次。因此另设点输入角色。与非零开始者、结束者分开。在这个位置按原始编号各留一次。",
+      "synthesisFingerprint": "b366b62bdaa31360e7d6c5071550c00a922ea85bdb5b6f16034a8bf9686a90d8"
+    },
+    {
+      "id": "SP52",
+      "audioFile": "SP52.wav",
+      "audioSha256": "c3a351be24d24460c2c2eb069079d1662255dad392040c2642f9d060eeb7d20b",
+      "audioSeconds": 12.92,
+      "referenceText": "到达 P。先按前面的方法找齐非零参与者。再合并这里的点输入。这次名单是 C、Z 一、Z 二。同一位置不合并不同身份。同一身份也不重复加入。",
+      "synthesisFingerprint": "5bddb9c18832e86eff5e788c6acb1b801a62b4147474605a3cc4628f6db6871a"
+    },
+    {
+      "id": "SP53",
+      "audioFile": "SP53.wav",
+      "audioSha256": "7f6bf58c47d5de9a5251641dde8f80675f6b036f967de9bc75930100e649870b",
+      "audioSeconds": 17.6,
+      "referenceText": "结果分别是 C 与 Z 一、C 与 Z 二。以及 Z 一 与 Z 二。每一对的完整交集都是 P。点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节。这里新增的是它们在扫描中的收集与去向。",
+      "synthesisFingerprint": "47cd0c6505dc3e85daf471eb786429ce5fd9ab82fc25a202408fbbef22393c68"
+    },
+    {
+      "id": "SP54",
+      "audioFile": "SP54.wav",
+      "audioSha256": "fa8eba004538e8ffe95bbff95e706bcf4ded573b437b9958403bbb6f5bde61e9",
+      "audioSeconds": 16.57,
+      "referenceText": "点输入只在横坐标等于 x 下标 P 时存在。任意更大的横坐标都没有它的点。所以配对后不进入右侧活动顺序。不给它安排在 C 上方或下方。也不用凭空指定直线或斜率。本例两侧都只有 C。",
+      "synthesisFingerprint": "e8734b4bd32d31d6a1c753ddcf196b7190de4f628a81cf35a07f838cb4e0bdc5"
+    },
+    {
+      "id": "SP55",
+      "audioFile": "SP55.wav",
+      "audioSha256": "164e56f876dc462790f3db6d32f6f164440c6b74b15033cb9aa0e0663e14ecf1",
+      "audioSeconds": 11.82,
+      "referenceText": "若只取 Z 一、Z 二。没有非零线段。仍报告这一对对应 P。两侧活动顺序都为空。不能因为没有旧块或新块。就把当前点配对跳过去。",
+      "synthesisFingerprint": "aa748f454d2506228bad3fcd75a76ae138835320bb21e21744f001a25bab7fe2"
+    },
+    {
+      "id": "SP56",
+      "audioFile": "SP56.wav",
+      "audioSha256": "255db33104825047391b9717e7c097ec325a9a1e8fb3f7f872a0fa868f77e535",
+      "audioSeconds": 12.69,
+      "referenceText": "若只取 Z 一。当前只有一个原始身份。配不出不同输入对。结果为空。但这个已知端点事件仍正常处理完毕。没有结果。不等于没有事件。",
+      "synthesisFingerprint": "9d3b1ccab8626fb14f449ed10e80887afa38fe113ef659a1215b76577465a832"
+    },
+    {
+      "id": "SP57",
+      "audioFile": "SP57.wav",
+      "audioSha256": "b20e2af2f6e5208298a33751f7e42e7968afd7f5be7ed1e666fb9967975df9d6",
+      "audioSeconds": 12.47,
+      "referenceText": "点恰好落在闭端点也一样。先单独取 A 与 Z 一。报告这一对对应 P。然后 A 结束。点输入不进入右侧。这一案例右侧没有活动成员。",
+      "synthesisFingerprint": "48062925b3165891bdf766df7e2c315a95c9ceb0956e615f03fc769cedecf28e"
+    },
+    {
+      "id": "SP58",
+      "audioFile": "SP58.wav",
+      "audioSha256": "acf84b66b5aafa6c12cd8d625675704b1c5fd912e512fdf55dbc4ad14dbc3b42",
+      "audioSeconds": 13.77,
+      "referenceText": "再单独取 B 与 Z 一。先报告当前配对。然后只有 B 向右继续。这是另一个两输入案例。与左图分别处理。不能把 A、B 和两份画出的 Z 一 误拼成四个身份。",
+      "synthesisFingerprint": "c57d3ff64d3514af1850de968a16195c530b8874f56c6da8647801a4442a44b7"
+    },
+    {
+      "id": "SP59",
+      "audioFile": "SP59.wav",
+      "audioSha256": "1e2305eccc292ccda3f45e312b5dadf396a58b5bfea145ea8682bbe7c9dc823e",
+      "audioSeconds": 18.09,
+      "referenceText": "更多同位置点输入时。每份都分别与每条非零参与者配对。点身份之间也按原始编号配对。点只有 P。不会带来另一个交点。保留不同身份、同一编号一次的规则。让先前的不漏、不多报、不重复理由继续成立。",
+      "synthesisFingerprint": "d40ce69f211a1d772694c3dab473affef7b1a67050e996f222b2ed3077e8d0d0"
+    },
+    {
+      "id": "SP60",
+      "audioFile": "SP60.wav",
+      "audioSha256": "3a21065233ba468eb65541eb7fdac092e2d44e3e0ef69863ddc6f76fcd410721",
+      "audioSeconds": 16.04,
+      "referenceText": "现在可以说清当前位置的完整名单从哪里来。精确高度找到旧相遇块。补入非零开始者。再合并点输入。按原始身份各留一次。结束者先参加闭端点报告。点输入只参加这一次。",
+      "synthesisFingerprint": "bcffbd629b5ee08d0ed02e90548682bfaa389ec0af921f42932f8113aecc3764"
+    },
+    {
+      "id": "SP61",
+      "audioFile": "SP61.wav",
+      "audioSha256": "e91d1a68fba0626b72802a4049a81cc8f73db71c928da718a8e3f5a38d69ee08",
+      "audioSeconds": 10.75,
+      "referenceText": "先停一下。若只处理预约交点的那一对。会在哪一步漏掉其他身份？试着用旧相遇块、开始者和点输入三路说明。不需要重演整次扫描。",
+      "synthesisFingerprint": "f3d12a0b9c38e484ffbe83e252ca8459959f04ec21e8416722e3f7d293bea7dd"
+    },
+    {
+      "id": "SP62",
+      "audioFile": "SP62.wav",
+      "audioSha256": "ce8988d06d245a30d6e8ffbc2fd9df739431c5b2bbdbb71f6c83a38b6a1a633f",
+      "audioSeconds": 18.97,
+      "referenceText": "本集已经解释到站后怎样找齐并完整报告。接下来还要筛选继续成员、排出整个右侧块、检查新增邻接。没有端点提示的共点为何一定能到站。也留给第四章下集。到这里。不把当前位置的完整处理当作整次扫描已经证明。",
+      "synthesisFingerprint": "922cdfbac58e8c6374cb3c116c5a4947a7ca96e7f392e2e2ded0ea715db86e1d"
+    }
+  ]
+}
