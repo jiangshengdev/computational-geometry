@@ -1,0 +1,140 @@
+{
+  "version": "context-v5",
+  "synthesisRequestsSent": 3,
+  "assessmentRequestsSent": 3,
+  "automaticRetries": 0,
+  "planSha256": "0e15a0404f994f858ba2a3baf3902956ff3e58de63cdc79f00efe64875ee8730",
+  "assessmentPlanSha256": "c82230532f3cd19b546d2d2697d1641337dbd83855f442d6074fcd6c0a11fd97",
+  "results": [
+    {
+      "id": "SP06",
+      "variant": "context-v5",
+      "referenceText": "A 满足纵坐标等于四。横坐标从零到四。另一份输入 B 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。",
+      "audioFile": "out/audition-context-v5/synthesis/SP06.wav",
+      "audioSha256": "986713ff0a0b4f9a5cf920af3c6e7252c21958bbf1e67edd7ae22a8c53a475ec",
+      "responseFile": "out/audition-context-v5/assessment/SP06.wav.assessment.json",
+      "responseSha256": "17f5338cb8c714b5c5109a13818f8c2dcd6adc4ed1b3a8c6f981e9423aaaa84f",
+      "fingerprint": "452f49c38ed09f2f744fc9c04ff59d24b149e9b5a88ba75060f45e6d82ea2568",
+      "duration": 18.69,
+      "flags": [
+        {
+          "text": "闭",
+          "errorType": "Insertion",
+          "startMs": 5440,
+          "durationMs": 490
+        },
+        {
+          "text": "B",
+          "errorType": "Omission",
+          "startMs": null,
+          "durationMs": null
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: 闭 (Insertion)",
+      "adopted": false
+    },
+    {
+      "id": "SP41",
+      "variant": "context-v5",
+      "referenceText": "沿用第一章《逐对检查的基准方法》的无序对枚举结论。当前名单的四份输入分别是 A、B、C 和 D。它们对应图中的六个不同输入对。每对的交集都是 P。",
+      "audioFile": "out/audition-context-v5/synthesis/SP41.wav",
+      "audioSha256": "a401cd4bd87d8f675e2a2cb441f082fcd6b89fc2d9e20f73d81cceacbd74159d",
+      "responseFile": "out/audition-context-v5/assessment/SP41.wav.assessment.json",
+      "responseSha256": "45eddee435433665d6925add1d5fa0b70f320ef8b95eb183f7c1a938c8b056c2",
+      "fingerprint": "c76077461a36e1c8e32d64923f4c8ce2c5b8594c747ff0ef5c7f5cba812f35ea",
+      "duration": 13.18,
+      "flags": [
+        {
+          "text": "都",
+          "errorType": "Insertion",
+          "startMs": 3020,
+          "durationMs": 250
+        },
+        {
+          "text": "的",
+          "errorType": "Omission",
+          "startMs": null,
+          "durationMs": null
+        },
+        {
+          "text": "D",
+          "errorType": "Mispronunciation",
+          "startMs": 8320,
+          "durationMs": 340
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: 都 (Insertion)",
+      "adopted": false
+    },
+    {
+      "id": "SP58",
+      "variant": "context-v5",
+      "referenceText": "再单独取 B 与 Z 一。先报告当前配对。然后只有 B 向右继续。这是另一个两输入案例。与左图分别处理。不能把左图中的 A、右图中的 B 和两次画出的 Z 一。误拼成四个身份。",
+      "audioFile": "out/audition-context-v5/synthesis/SP58.wav",
+      "audioSha256": "5ce8af3ab002ab74292d88a9d3857939eb5305d6518e1a7e12aa6d45e1c6ecc2",
+      "responseFile": "out/audition-context-v5/assessment/SP58.wav.assessment.json",
+      "responseSha256": "4a62d4af0fa24ce9c226e983a62b9bf4871a9ab0f10f46ec792bbf25adec3d8a",
+      "fingerprint": "774cf1820785cfae82271e4895e865e6366705afa1e238a7d9d08aeb5b6fe7ae",
+      "duration": 16.14,
+      "flags": [
+        {
+          "text": "B",
+          "errorType": "Mispronunciation",
+          "startMs": 920,
+          "durationMs": 160
+        },
+        {
+          "text": "报告",
+          "errorType": "Mispronunciation",
+          "startMs": 2440,
+          "durationMs": 310
+        },
+        {
+          "text": "A",
+          "errorType": "Omission",
+          "startMs": null,
+          "durationMs": null
+        },
+        {
+          "text": "B",
+          "errorType": "Mispronunciation",
+          "startMs": 12240,
+          "durationMs": 330
+        }
+      ],
+      "aligned": false,
+      "alignmentError": "Alignment requires review: A (Omission)",
+      "adopted": false
+    }
+  ],
+  "comparisonOnlyNotAdopted": {
+    "counts": {
+      "Mispronunciation": 70,
+      "Omission": 3,
+      "Insertion": 2
+    },
+    "aligned": 54,
+    "noAutomaticFlags": 20,
+    "blockingShots": [
+      "SP06",
+      "SP41",
+      "SP58"
+    ]
+  },
+  "retainedSelection": {
+    "path": "out/machine-selection-v1/assessment-summary.json",
+    "sha256": "ca3888626517aeef1c4cf8f4bbe2dec4d110960b952045895c3d9403d7fe14e3",
+    "counts": {
+      "Mispronunciation": 70,
+      "Omission": 3,
+      "Insertion": 1
+    },
+    "aligned": 54,
+    "reason": "New candidates do not improve omission/insertion gates; SP41 adds an insertion in an unchanged reference clause."
+  },
+  "listening": "not-performed per user instruction",
+  "published": false,
+  "exportBlocked": true
+}

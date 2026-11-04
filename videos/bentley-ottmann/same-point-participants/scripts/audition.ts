@@ -28,7 +28,8 @@ export type AuditionVersion =
   | "ipa-chinese-v1"
   | "omission-v2"
   | "context-v3"
-  | "context-v4";
+  | "context-v4"
+  | "context-v5";
 export const auditionRootFor = (version: AuditionVersion) =>
   new URL(`../out/audition-${version}/`, import.meta.url);
 export const auditionRoot = auditionRootFor("ipa-chinese-v1");
@@ -139,21 +140,31 @@ function replaceParts(
 }
 
 export function buildAuditionPlan(version: AuditionVersion = "ipa-chinese-v1") {
-  if (version === "context-v3" || version === "context-v4") {
+  if (
+    version === "context-v3" ||
+    version === "context-v4" ||
+    version === "context-v5"
+  ) {
     const source = readFileSync(
       new URL(`./audition-${version}-plan.json`, import.meta.url),
       "utf8",
     );
     assert.equal(
       hash(source),
-      version === "context-v4"
-        ? "041f1fdec6d585cbabe12167135cf1522c0a550edd64d5ef1be49504c1fed348"
-        : "24a8d5b93ded581b01153cf6535576f7d5e3072c16d80acebe77f1a408315ab5",
+      version === "context-v5"
+        ? "0e15a0404f994f858ba2a3baf3902956ff3e58de63cdc79f00efe64875ee8730"
+        : version === "context-v4"
+          ? "041f1fdec6d585cbabe12167135cf1522c0a550edd64d5ef1be49504c1fed348"
+          : "24a8d5b93ded581b01153cf6535576f7d5e3072c16d80acebe77f1a408315ab5",
     );
     const plan = JSON.parse(source) as ReturnType<typeof buildOmissionPlan>;
     assert.deepEqual(
       plan.documents.map((d: { id: string }) => d.id),
-      version === "context-v4" ? ["SP37"] : ["SP37", "SP53"],
+      version === "context-v5"
+        ? ["SP06", "SP41", "SP58"]
+        : version === "context-v4"
+          ? ["SP37"]
+          : ["SP37", "SP53"],
     );
     const { buildSpeechDocument } = createSpeechTools(sdk, {
       voice: plan.voice,
@@ -459,7 +470,8 @@ async function run() {
     version === "ipa-chinese-v1" ||
       version === "omission-v2" ||
       version === "context-v3" ||
-      version === "context-v4",
+      version === "context-v4" ||
+      version === "context-v5",
   );
   const auditionRoot = auditionRootFor(version);
   const plan = buildAuditionPlan(version);

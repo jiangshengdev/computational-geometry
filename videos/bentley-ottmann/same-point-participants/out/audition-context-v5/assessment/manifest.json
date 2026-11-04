@@ -1,0 +1,30 @@
+{
+  "planSha256": "0e15a0404f994f858ba2a3baf3902956ff3e58de63cdc79f00efe64875ee8730",
+  "assessmentPlanSha256": "c82230532f3cd19b546d2d2697d1641337dbd83855f442d6074fcd6c0a11fd97",
+  "entries": [
+    {
+      "id": "SP06",
+      "fingerprint": "452f49c38ed09f2f744fc9c04ff59d24b149e9b5a88ba75060f45e6d82ea2568",
+      "audioSha256": "986713ff0a0b4f9a5cf920af3c6e7252c21958bbf1e67edd7ae22a8c53a475ec",
+      "state": "complete",
+      "alignmentError": "Alignment requires review: 闭 (Insertion)",
+      "responseSha256": "17f5338cb8c714b5c5109a13818f8c2dcd6adc4ed1b3a8c6f981e9423aaaa84f"
+    },
+    {
+      "id": "SP41",
+      "fingerprint": "c76077461a36e1c8e32d64923f4c8ce2c5b8594c747ff0ef5c7f5cba812f35ea",
+      "audioSha256": "a401cd4bd87d8f675e2a2cb441f082fcd6b89fc2d9e20f73d81cceacbd74159d",
+      "state": "complete",
+      "alignmentError": "Alignment requires review: 都 (Insertion)",
+      "responseSha256": "45eddee435433665d6925add1d5fa0b70f320ef8b95eb183f7c1a938c8b056c2"
+    },
+    {
+      "id": "SP58",
+      "fingerprint": "774cf1820785cfae82271e4895e865e6366705afa1e238a7d9d08aeb5b6fe7ae",
+      "audioSha256": "5ce8af3ab002ab74292d88a9d3857939eb5305d6518e1a7e12aa6d45e1c6ecc2",
+      "state": "complete",
+      "alignmentError": "Alignment requires review: A (Omission)",
+      "responseSha256": "4a62d4af0fa24ce9c226e983a62b9bf4871a9ab0f10f46ec792bbf25adec3d8a"
+    }
+  ]
+}

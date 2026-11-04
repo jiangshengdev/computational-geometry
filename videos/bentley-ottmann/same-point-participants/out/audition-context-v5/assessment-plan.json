@@ -1,0 +1,35 @@
+{
+  "planSha256": "0e15a0404f994f858ba2a3baf3902956ff3e58de63cdc79f00efe64875ee8730",
+  "language": "zh-CN",
+  "gradingSystem": "HundredMark",
+  "granularity": "Word",
+  "enableMiscue": true,
+  "concurrency": 1,
+  "automaticRetries": 0,
+  "requests": [
+    {
+      "id": "SP06",
+      "audioFile": "SP06.wav",
+      "audioSha256": "986713ff0a0b4f9a5cf920af3c6e7252c21958bbf1e67edd7ae22a8c53a475ec",
+      "duration": 18.69,
+      "fingerprint": "452f49c38ed09f2f744fc9c04ff59d24b149e9b5a88ba75060f45e6d82ea2568",
+      "referenceText": "A 满足纵坐标等于四。横坐标从零到四。另一份输入 B 满足纵坐标等于横坐标。范围从四到八。引用第三章的完整求交结论。唯一候选点 P 通过两份闭范围检查。所以这一对的完整交集就是 P。"
+    },
+    {
+      "id": "SP41",
+      "audioFile": "SP41.wav",
+      "audioSha256": "a401cd4bd87d8f675e2a2cb441f082fcd6b89fc2d9e20f73d81cceacbd74159d",
+      "duration": 13.18,
+      "fingerprint": "c76077461a36e1c8e32d64923f4c8ce2c5b8594c747ff0ef5c7f5cba812f35ea",
+      "referenceText": "沿用第一章《逐对检查的基准方法》的无序对枚举结论。当前名单的四份输入分别是 A、B、C 和 D。它们对应图中的六个不同输入对。每对的交集都是 P。"
+    },
+    {
+      "id": "SP58",
+      "audioFile": "SP58.wav",
+      "audioSha256": "5ce8af3ab002ab74292d88a9d3857939eb5305d6518e1a7e12aa6d45e1c6ecc2",
+      "duration": 16.14,
+      "fingerprint": "774cf1820785cfae82271e4895e865e6366705afa1e238a7d9d08aeb5b6fe7ae",
+      "referenceText": "再单独取 B 与 Z 一。先报告当前配对。然后只有 B 向右继续。这是另一个两输入案例。与左图分别处理。不能把左图中的 A、右图中的 B 和两次画出的 Z 一。误拼成四个身份。"
+    }
+  ]
+}
