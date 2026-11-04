@@ -5,7 +5,13 @@ import {
   stroke,
   type AttentionMark,
 } from "../../../shared/speech/teaching-cues";
-import { SvgMathText as Label, MathText } from "./MathText";
+import { SvgMathText as Label } from "./MathText";
+import {
+  CollectionDiagram,
+  EventRecordDiagram,
+  PointMembership,
+  RoleDiagram,
+} from "./ParticipantFlows";
 import { colors } from "../../colors.ts";
 import { objectColors } from "./teaching-colors";
 import type { DiagramKind } from "./storyboard";
@@ -17,6 +23,8 @@ type State = {
   target: string | null;
   progress: number;
   reached: string[];
+  activeCaption: number | null;
+  thinking: boolean;
 };
 import { inputs, type Name } from "./example.ts";
 const ink = "#172c45";
@@ -209,90 +217,6 @@ function Geometry({
   );
 }
 
-function Collection({
-  target,
-  merged,
-  progress,
-  collecting,
-  reached,
-}: {
-  target: string | null;
-  merged: boolean;
-  progress: number;
-  collecting: boolean;
-  reached: string[];
-}) {
-  const oldNames = ["D", "A", "C"];
-  const selected =
-    target === "collect-old" ? Math.min(2, Math.floor(progress * 3)) : -1;
-  const collected =
-    selected >= 0 ? selected + 1 : reached.includes("collect-old") ? 3 : 0;
-  const cells = (names: string[], top: number, label: string) => (
-    <g>
-      <Label x={40} y={top - 50} fontSize={28}>
-        {label}
-      </Label>
-      {names.map((name, i) => (
-        <g key={name} data-diagram-object={name}>
-          <rect
-            x={40 + i * 160}
-            y={top}
-            width={130}
-            height={75}
-            rx={8}
-            fill={
-              target === "old" ||
-              target === "merge" ||
-              target === name ||
-              name === oldNames[selected]
-                ? "#fef3c7"
-                : "#edf1f6"
-            }
-            stroke={objectColors[name]}
-            strokeWidth={2}
-          />
-          <Label
-            x={105 + i * 160}
-            y={top + 50}
-            align="center"
-            fill={objectColors[name]}
-          >
-            {name}
-          </Label>
-        </g>
-      ))}
-    </g>
-  );
-  return (
-    <svg width={780} height={580} viewBox="0 0 780 580">
-      {cells(oldNames, 100, "旧块：从下到上")}
-      <Label x={40} y={240} fontSize={28}>
-        开始者
-      </Label>
-      <Label x={230} y={240} fill={objectColors.B}>
-        B
-      </Label>
-      <Label x={40} y={330} fontSize={27}>
-        按原始身份合并，结束者不重复加入
-      </Label>
-      {target === "search" && (
-        <path
-          d="M30 80 V190 H190"
-          fill="none"
-          stroke={colors.amber}
-          strokeWidth={4}
-        />
-      )}
-      {merged && cells(["A", "B", "C", "D"], 430, "当前参与者")}
-      {collecting && (
-        <g data-collected-identities={oldNames.slice(0, collected).join(",")}>
-          {cells(oldNames.slice(0, collected), 430, "已取出的旧参与者")}
-        </g>
-      )}
-    </svg>
-  );
-}
-
 export function ParticipantDiagram({
   page,
   kind,
@@ -300,7 +224,17 @@ export function ParticipantDiagram({
   target,
   progress,
   reached,
+  activeCaption,
+  thinking,
 }: State) {
+  const cue = {
+    target,
+    progress,
+    reached,
+    visibleStep,
+    activeCaption,
+    thinking,
+  };
   if (kind === "endpoint" || kind === "interior" || kind === "meeting") {
     const names: Name[] =
       kind === "endpoint"
@@ -330,79 +264,76 @@ export function ParticipantDiagram({
       <div
         style={{
           display: "flex",
-          gap: 25,
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           height: 610,
         }}
       >
-        <Geometry
-          compact
-          names={leftNames}
-          target={target}
-          progress={progress}
-          title={kind === "endpoint-point" ? "案例一" : undefined}
-        />
-        {!solo && (kind !== "endpoint-point" || visibleStep >= 2) && (
+        <div style={{ display: "flex", gap: 25, alignItems: "center" }}>
           <Geometry
             compact
-            names={rightNames}
+            names={leftNames}
             target={target}
             progress={progress}
-            title={kind === "endpoint-point" ? "案例二" : undefined}
+            title={kind === "endpoint-point" ? "案例一" : undefined}
           />
+          {!solo && (kind !== "endpoint-point" || visibleStep >= 2) && (
+            <Geometry
+              compact
+              names={rightNames}
+              target={target}
+              progress={progress}
+              title={kind === "endpoint-point" ? "案例二" : undefined}
+            />
+          )}
+        </div>
+        {page === "points-report" && (
+          <div
+            style={{
+              height: 135,
+              visibility: visibleStep >= 3 ? "visible" : "hidden",
+            }}
+          >
+            <PointMembership
+              current={["C", "Z_1", "Z_2"]}
+              continuing={["C"]}
+              showRight={(activeCaption ?? -1) >= 1 || thinking}
+            />
+          </div>
+        )}
+        {kind === "endpoint-point" && (
+          <div style={{ display: "flex", gap: 25 }}>
+            <PointMembership
+              compact
+              current={["A", "Z_1"]}
+              continuing={[]}
+              showRight={
+                visibleStep >= 2 || (activeCaption ?? -1) >= 1 || thinking
+              }
+            />
+            {visibleStep >= 2 && (
+              <PointMembership
+                compact
+                current={["B", "Z_1"]}
+                continuing={["B"]}
+                showRight={
+                  visibleStep >= 3 || (activeCaption ?? -1) >= 1 || thinking
+                }
+              />
+            )}
+          </div>
         )}
       </div>
     );
   }
-  if (kind === "collect")
-    return (
-      <Collection
-        target={target}
-        merged={page === "collect" && reached.includes("merge")}
-        progress={progress}
-        collecting={page === "height-search" && visibleStep >= 3}
-        reached={reached}
-      />
-    );
-  if (kind === "roles")
-    return (
-      <div style={{ fontSize: 32, lineHeight: 2.2, padding: 25 }}>
-        <MathText colorize={false}>当前 P：都参加配对</MathText>
-        {[
-          { id: "B", label: "开始者", step: 2 },
-          { id: "A", label: "结束者", step: 3 },
-          { id: "C、D", label: "严格穿过者", step: 4 },
-        ].map((r) => (
-          <div
-            key={r.id}
-            style={{
-              visibility: visibleStep >= r.step ? "visible" : "hidden",
-              background:
-                target && r.id.includes(target) ? "#fef3c7" : undefined,
-              marginTop: 25,
-            }}
-          >
-            <MathText
-              marks={r.id
-                .split("、")
-                .map((term) => ({ term, color: objectColors[term] }))}
-            >
-              {r.label + "：" + r.id}
-            </MathText>
-          </div>
-        ))}
-      </div>
-    );
+  if (kind === "collect") return <CollectionDiagram page={page} {...cue} />;
+  if (kind === "roles") return <RoleDiagram {...cue} />;
   if (kind === "block") {
-    const joined = page === "block-bounds" && visibleStep >= 4;
+    const joined = visibleStep >= 3;
     const marks: Record<string, AttentionMark[]> = {
       UV: [point(140, 420, colors.blue), point(140, 100, colors.orange)],
       W: [stroke(140, 260, joined ? 590 : 300, 260, colors.violet)],
-      UW: [stroke(90, 420, 90, 260)],
-      WV: [stroke(90, 260, 90, 100)],
-      lower: [point(590, 260)],
-      upper: [point(590, 260)],
       P: [point(590, 260)],
       interval: [stroke(140, 520, 590, 520)],
     };
@@ -453,31 +384,13 @@ export function ParticipantDiagram({
         <AttentionMarks marks={marks[target ?? ""] ?? []} progress={progress} />
         <Label x={390} y={600} align="center" fontSize={23}>
           {joined
-            ? "W 也经过 P，纳入相遇块"
-            : "只画 W 左侧局部，边界高度待论证"}
+            ? "沿用夹层结论：W 也经过 P，纳入相遇块"
+            : "先核对旧结论的适用条件"}
         </Label>
       </svg>
     );
   }
-  if (kind === "queue")
-    return (
-      <div style={{ padding: 35, fontSize: 30, lineHeight: 2 }}>
-        <MathText>A 的结束、B 的开始、预约的一对</MathText>
-        <div style={{ margin: "40px 0", fontSize: 46 }}>↓</div>
-        <div
-          style={{
-            padding: 25,
-            border: `2px solid ${muted}`,
-            background: target === "merge" ? "#fef3c7" : "#edf1f6",
-          }}
-        >
-          <MathText>同一个 P：保留端点身份</MathText>
-        </div>
-        {visibleStep >= 3 && (
-          <div style={{ marginTop: 50 }}>真实未来位置保留到取出</div>
-        )}
-      </div>
-    );
+  if (kind === "queue") return <EventRecordDiagram {...cue} />;
   const pairs = [
     ["A", "B"],
     ["A", "C"],
@@ -486,26 +399,7 @@ export function ParticipantDiagram({
     ["B", "D"],
     ["C", "D"],
   ];
-  const revealed =
-    target === "A-pairs"
-      ? 1 + Math.min(2, Math.floor(progress * 3))
-      : target === "B-pairs"
-        ? 4 + Math.min(1, Math.floor(progress * 2))
-        : reached.includes("C-pairs")
-          ? 6
-          : reached.includes("B-pairs")
-            ? 5
-            : reached.includes("A-pairs")
-              ? 3
-              : 0;
-  const selected =
-    target === "A-pairs"
-      ? Math.min(2, Math.floor(progress * 3))
-      : target === "B-pairs"
-        ? 3 + Math.min(1, Math.floor(progress * 2))
-        : target === "C-pairs"
-          ? 5
-          : -1;
+  const revealed = reached.includes("all-pairs") ? pairs.length : 0;
   return (
     <svg
       width={780}
@@ -525,7 +419,7 @@ export function ParticipantDiagram({
             width={300}
             height={65}
             rx={7}
-            fill={i === selected ? "#fef3c7" : "#edf1f6"}
+            fill="#edf1f6"
           />
           <Label x={100} y={45 + i * 85} fill={objectColors[a]}>
             {a}

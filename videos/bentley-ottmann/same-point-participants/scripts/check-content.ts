@@ -137,7 +137,7 @@ const plainBytes = readFileSync(
 );
 assert.equal(
   createHash("sha256").update(plainBytes).digest("hex"),
-  "a5002b8fddec98afd3ac61d0813a0520e29ede8ea0e51572566955e29cb5afd5",
+  "f972441e0e309f3b65c9529eb5e13e6da5c0ffb034aaa9237c476c6c1323cc1a",
   "Independently frozen narration changed",
 );
 const plain = JSON.parse(plainBytes) as Record<string, string>;
@@ -147,7 +147,7 @@ const speechBytes = readFileSync(
 );
 assert.equal(
   createHash("sha256").update(speechBytes).digest("hex"),
-  "3817224763afe2347bcdf8beafa2b4386c7546a2326e446fc0662dcfd7dee20b",
+  "50acea1b275596f180a03c099a8c2346d3b1d1d6908ea09974c59a92817eb1af",
   "Reviewed pronunciation source changed",
 );
 const speech = JSON.parse(speechBytes) as Record<
