@@ -1,3 +1,4 @@
+import { uncoloredMathTree } from "../../../shared/checks/math-structure.ts";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
@@ -62,32 +63,8 @@ const { verifyAlignment } = createAlignmentTools(sdk, {
   deferPronunciationReview: true,
 });
 
-// Keep mathematical atom classes and script groups, discarding only color nodes.
-function withoutColor(node: unknown): unknown {
-  if (Array.isArray(node))
-    return node.flatMap((child) => {
-      const value = withoutColor(child);
-      return Array.isArray(value) ? value : [value];
-    });
-  if (!node || typeof node !== "object") return node;
-  const fields = node as Record<string, unknown>;
-  if (fields.type === "color") return withoutColor(fields.body);
-  return Object.fromEntries(
-    Object.entries(fields)
-      .filter(([key]) => key !== "loc")
-      .map(([key, value]) => {
-        const result = withoutColor(value);
-        return [
-          key,
-          !Array.isArray(value) && Array.isArray(result) && result.length === 1
-            ? result[0]
-            : result,
-        ];
-      }),
-  );
-}
 const parse = (text: string) =>
-  withoutColor(
+  uncoloredMathTree(
     (
       katex as unknown as {
         __parse: (text: string, options: { strict: string }) => unknown;
