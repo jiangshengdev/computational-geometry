@@ -82,6 +82,8 @@ static/img/segment-intersection/
 
 文档通过 Docusaurus 的 `ThemedImage` 随站点主题选择图片。
 
+第四章《同一个点上的事情一起处理》使用 `IntersectionFigures` 展示 7 幅独立子图，明暗主题共 14 个 SVG，位于 `static/img/segment-intersection/same-point-events/<theme>/`。生成入口为 `scripts/draw_same_point_events.ts`，复用 `svg_math_labels.ts` 的主题颜色与 MathText 排版；在本目录执行 `MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_same_point_events.ts`。各图保持 320 × 260 原始尺寸与相同坐标尺度，点输入分图展示但不移动位置，事件两侧图只画相应侧的成员；这些是教学示意，不是真实执行轨迹。
+
 上述路径中的 `<theme>` 为 `light` 或 `dark`，目录与文件名后缀保持一致。
 
 该脚本使用 Python，因为 Matplotlib 提供的是 Python 绘图 API。从仓库根目录执行：
