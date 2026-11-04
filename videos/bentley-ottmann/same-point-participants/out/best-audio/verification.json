@@ -740,5 +740,20 @@
     "renderedOrExported": false,
     "focusedSP35MaxClockDifferenceSeconds": 0.18787799999999955,
     "focusedSP35Samples": 140
+  },
+  "previewClockDiagnosis": {
+    "report": "clock-diagnosis.json",
+    "window": [
+      "SP33",
+      "SP34",
+      "SP35",
+      "SP36"
+    ],
+    "completed": true,
+    "samples": 3862,
+    "SP35MaximumClockDifferenceSeconds": 0.06786100000000017,
+    "mediaSeekOrStallEvents": 0,
+    "productionFixApplied": false,
+    "status": "not reproduced; original intermittent discrepancy unresolved"
   }
 }
