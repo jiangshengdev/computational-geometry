@@ -690,8 +690,9 @@
   },
   "notCompleted": [
     "actual listening (waived by user)",
-    "visible continuous playback synchronization acceptance",
-    "rendered final-video acceptance (assistant rendering/export prohibited)"
+    "continuous preview synchronization acceptance: observed SP35 clock discrepancy",
+    "visible desktop acceptance (only approved Headless Shell was used)",
+    "rendered final-video acceptance: no user-exported file supplied"
   ],
   "issues": {
     "334": "unchanged",
@@ -722,5 +723,22 @@
       "staleReadmeStatement": "corrected after review"
     },
     "prApprovalPerformed": false
+  },
+  "continuousPlayback": {
+    "report": "continuous-playback.json",
+    "testedCommit": "66f7b450ec8522f51807dd3f0d52feba22d24b54",
+    "traversal": "completed with documented Studio loop wrap",
+    "shots": 57,
+    "samples": 10013,
+    "captionMismatchSamples": 0,
+    "allObservedRates": [
+      1
+    ],
+    "maximumClockDifferenceSeconds": 0.6353120000000008,
+    "synchronization": "not-accepted: sustained SP35 preview clock discrepancy",
+    "actualListening": false,
+    "renderedOrExported": false,
+    "focusedSP35MaxClockDifferenceSeconds": 0.18787799999999955,
+    "focusedSP35Samples": 140
   }
 }
