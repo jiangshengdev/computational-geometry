@@ -98,6 +98,7 @@ export function createMathText<Role extends string, Mark>(
     fontSize = 30,
     fill = "#172c45",
     align = "left",
+    verticalAlign = "baseline",
     label = true,
     colorize = false,
   }: {
@@ -107,6 +108,8 @@ export function createMathText<Role extends string, Mark>(
     fontSize?: number;
     fill?: string;
     align?: "left" | "right" | "center";
+    /** Use middle when y is the center of a containing shape. */
+    verticalAlign?: "baseline" | "middle";
     label?: boolean;
     colorize?: boolean;
   }) => (
@@ -122,7 +125,7 @@ export function createMathText<Role extends string, Mark>(
             lineHeight: 1.2,
             WebkitTextStroke: "5px #f6f8fb",
             paintOrder: "stroke fill",
-            transform: `translate(${align === "right" ? "-100%" : align === "center" ? "-50%" : "0"}, -80%)`,
+            transform: `translate(${align === "right" ? "-100%" : align === "center" ? "-50%" : "0"}, ${verticalAlign === "middle" ? "-50%" : "-80%"})`,
           } as CSSProperties
         }
       >

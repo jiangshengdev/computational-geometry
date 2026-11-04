@@ -41,8 +41,9 @@ function Identity({
       />
       <Label
         x={x + width / 2}
-        y={y + 38}
+        y={y + 28}
         align="center"
+        verticalAlign="middle"
         fill={objectColors[name]}
       >
         {name}
