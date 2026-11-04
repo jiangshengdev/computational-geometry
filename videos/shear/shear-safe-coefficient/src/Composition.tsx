@@ -1,51 +1,14 @@
-import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import * as remotion from "remotion";
+import { createNarratedLesson } from "../../../shared/ui/NarratedLesson";
 import { TeachingPage } from "./TeachingPage";
-import {
+import timing from "./audio-timing.json";
+import { timelineFor, visualAt, audioLeadFrames } from "./timeline";
+
+export const { ShotScene, LessonVideo: SampleVideo } = createNarratedLesson({
+  runtime: remotion,
   timelineFor,
   visualAt,
+  audio: timing,
   audioLeadFrames,
-  type TimelineRow,
-} from "./timeline";
-import timingData from "./audio-timing.json";
-import { narrationFile } from "../../../shared/speech/source";
-const audioFiles: Record<string, { duration: number; audioFile?: string }> =
-  timingData;
-export function ShotScene({
-  row,
-  audioEnabled = true,
-}: {
-  row: TimelineRow;
-  audioEnabled?: boolean;
-}) {
-  const frame = useCurrentFrame();
-  return (
-    <>
-      <TeachingPage shot={row} {...visualAt(row, frame)} />
-      {audioEnabled ? (
-        <Sequence from={audioLeadFrames}>
-          <Audio
-            src={staticFile(
-              `narration/${narrationFile(row.id, audioFiles[row.id])}`,
-            )}
-          />
-        </Sequence>
-      ) : null}
-    </>
-  );
-}
-export function SampleVideo({ issue }: { issue?: string }) {
-  return (
-    <>
-      {timelineFor(issue).map((row) => (
-        <Sequence
-          key={row.id}
-          from={row.from}
-          durationInFrames={row.durationInFrames}
-          name={row.id}
-        >
-          <ShotScene row={row} />
-        </Sequence>
-      ))}
-    </>
-  );
-}
+  renderPage: (row, state) => <TeachingPage shot={row} {...state} />,
+});

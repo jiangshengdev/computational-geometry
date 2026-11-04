@@ -1,8 +1,8 @@
-import { createShotLayoutCheck } from "../../../shared/checks/ShotLayoutCheck";
 import {
-  checkPageBounds,
-  checkDiagramLabels,
-} from "../../../shared/checks/dom";
+  createShotLayoutCheck,
+  captionsFromFrames,
+} from "../../../shared/checks/ShotLayoutCheck";
+import { checkTeachingPage } from "../../../shared/checks/dom";
 import {
   rows,
   visualAt,
@@ -23,18 +23,7 @@ export const LayoutCheck = createShotLayoutCheck({
   fps,
   audioLeadFrames,
   SceneAtFrame,
-  captions: Object.fromEntries(
-    rows.map((row) => [
-      row.id,
-      row.captions.map((c) => ({
-        text: c.text,
-        startMs: ((c.start - audioLeadFrames) / fps) * 1000,
-        endMs: ((c.end - audioLeadFrames) / fps) * 1000,
-        timestampMs: null,
-        confidence: null,
-      })),
-    ]),
-  ),
+  captions: captionsFromFrames(rows, fps, audioLeadFrames),
   extraFrames: (row) =>
     [...row.gestures, ...row.captions].flatMap((g) => [
       g.start - 1,
@@ -45,16 +34,7 @@ export const LayoutCheck = createShotLayoutCheck({
     ]),
   auditPage(page, _pageId, visibleStep) {
     const errors: string[] = [];
-    checkPageBounds(page, errors);
-    checkDiagramLabels(
-      [...page.querySelectorAll<HTMLElement>("[data-diagram-label]")],
-      errors,
-    );
-    const shown = [
-      ...page.querySelectorAll<HTMLElement>("[data-content-line]"),
-    ].filter((line) => getComputedStyle(line).visibility !== "hidden");
-    if (shown.length !== visibleStep)
-      errors.push("Missing retained teaching line or premature reveal");
+    const shown = checkTeachingPage(page, visibleStep, errors);
     const match = page.dataset.layoutPage?.match(/^(ES\d+)-(\d+)$/);
     const row = rows.find((entry) => entry.id === match?.[1]);
     if (row && match) {

@@ -1,32 +1,14 @@
-import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import * as remotion from "remotion";
+import { createNarratedLesson } from "../../../shared/ui/NarratedLesson";
 import { TeachingPage } from "./TeachingPage";
-import { timelineFor, visualAt, audio, type TimelineRow } from "./timeline";
-import { narrationFile } from "../../../shared/speech/source";
-function ShotScene({ row }: { row: TimelineRow }) {
-  const frame = useCurrentFrame();
-  return (
-    <>
-      <TeachingPage shot={row} {...visualAt(row, frame)} />
-      <Audio
-        src={staticFile(`narration/${narrationFile(row.id, audio[row.id])}`)}
-      />
-    </>
-  );
-}
-export function LessonVideo() {
-  return (
-    <>
-      {timelineFor().map((row) => (
-        <Sequence
-          key={row.id}
-          from={row.from}
-          durationInFrames={row.durationInFrames}
-          name={`第 ${pages[row.page].section} 节 · ${row.action}`}
-        >
-          <ShotScene row={row} />
-        </Sequence>
-      ))}
-    </>
-  );
-}
 import { pages } from "./lesson";
+import { timelineFor, visualAt, audio } from "./timeline";
+
+export const { LessonVideo } = createNarratedLesson({
+  runtime: remotion,
+  timelineFor,
+  visualAt,
+  audio: audio,
+  renderPage: (row, state) => <TeachingPage shot={row} {...state} />,
+  sequenceName: (row) => `第 ${pages[row.page].section} 节 · ${row.action}`,
+});

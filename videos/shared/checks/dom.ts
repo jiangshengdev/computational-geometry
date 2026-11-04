@@ -107,3 +107,22 @@ export function checkDiagramLabels(
     });
   });
 }
+
+/** Audit shared page geometry and retained rows; callers add semantic checks. */
+export function checkTeachingPage(
+  page: HTMLElement,
+  visibleStep: number,
+  errors: string[],
+  missingLineMessage = "Missing retained teaching line or premature reveal",
+) {
+  checkPageBounds(page, errors);
+  checkDiagramLabels(
+    [...page.querySelectorAll<HTMLElement>("[data-diagram-label]")],
+    errors,
+  );
+  const shown = [
+    ...page.querySelectorAll<HTMLElement>("[data-content-line]"),
+  ].filter((line) => getComputedStyle(line).visibility !== "hidden");
+  if (shown.length !== visibleStep) errors.push(missingLineMessage);
+  return shown;
+}

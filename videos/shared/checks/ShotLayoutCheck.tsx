@@ -17,6 +17,30 @@ type AuditRow = {
   | { readingFrames: number; speechFrames?: never }
 );
 type Visual = { visibleStep: number; thinking: boolean; caption: string };
+
+/** Convert frame-based inspection cues without rounding their measured edges. */
+export function captionsFromFrames(
+  rows: {
+    id: string;
+    captions: { text: string; start: number; end: number }[];
+  }[],
+  fps: number,
+  audioLeadFrames: number,
+): Record<string, Caption[]> {
+  return Object.fromEntries(
+    rows.map((row) => [
+      row.id,
+      row.captions.map((caption) => ({
+        text: caption.text,
+        startMs: ((caption.start - audioLeadFrames) / fps) * 1000,
+        endMs: ((caption.end - audioLeadFrames) / fps) * 1000,
+        timestampMs: null,
+        confidence: null,
+      })),
+    ]),
+  );
+}
+
 export function createShotLayoutCheck<R extends AuditRow>({
   rows: allRows,
   visualAt,

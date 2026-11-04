@@ -1,8 +1,8 @@
-import { createShotLayoutCheck } from "../../../shared/checks/ShotLayoutCheck";
 import {
-  checkPageBounds,
-  checkDiagramLabels,
-} from "../../../shared/checks/dom";
+  createShotLayoutCheck,
+  captionsFromFrames,
+} from "../../../shared/checks/ShotLayoutCheck";
+import { checkTeachingPage } from "../../../shared/checks/dom";
 import { rows, visualAt, fps, audioLeadFrames } from "./timeline";
 import { TeachingPage } from "./TeachingPage";
 import type { TimelineRow } from "./timeline";
@@ -15,18 +15,7 @@ export const LayoutCheck = createShotLayoutCheck({
   fps,
   audioLeadFrames,
   SceneAtFrame,
-  captions: Object.fromEntries(
-    rows.map((r) => [
-      r.id,
-      r.captions.map((c) => ({
-        text: c.text,
-        startMs: ((c.start - audioLeadFrames) / fps) * 1000,
-        endMs: ((c.end - audioLeadFrames) / fps) * 1000,
-        timestampMs: null,
-        confidence: null,
-      })),
-    ]),
-  ),
+  captions: captionsFromFrames(rows, fps, audioLeadFrames),
   extraFrames: (r) =>
     r.captions.flatMap((c) => [
       c.start - 1,
@@ -45,16 +34,12 @@ export const LayoutCheck = createShotLayoutCheck({
     ]),
   auditPage(page, pageId, visibleStep) {
     const errors: string[] = [];
-    checkPageBounds(page, errors);
-    checkDiagramLabels(
-      [...page.querySelectorAll<HTMLElement>("[data-diagram-label]")],
+    checkTeachingPage(
+      page,
+      visibleStep,
       errors,
+      "Missing retained teaching row or premature reveal",
     );
-    const shown = [
-      ...page.querySelectorAll<HTMLElement>("[data-content-line]"),
-    ].filter((n) => getComputedStyle(n).visibility !== "hidden");
-    if (shown.length !== visibleStep)
-      errors.push("Missing retained teaching row or premature reveal");
     if (page.querySelector("audio,video"))
       errors.push("Visual-stage inspection must remain silent");
     if (page.querySelector(".katex-error"))

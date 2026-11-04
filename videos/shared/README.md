@@ -4,6 +4,7 @@
 
 ## 职责与依赖
 
+- `config/`：各集共用的 Remotion 制作配置与 TypeScript 编译选项。Remotion 入口传入本集安装版本的 `Config`，显式保留输出覆盖和 Sequence 活动策略；TypeScript 的类型范围、JSON 支持及 `node_modules` 路径仍由各集配置维护。
 - `math/`：教学分组、等号对齐和完整分组的行高计算。直线方程教程保留自己的文字转公式策略、跨列选取与无等号处理；剪切系列使用顶层等号切分策略。
 - `ui/`：KaTeX 呈现、公式表格、剪切系列数学文本组合及字幕容器。各集传入着色规则、符号范围、教学数据和必要内容，不从公共模块反向导入某集分镜。
 - `speech/`：语音文档、Azure 合成与对齐、实测时间检查、字幕短句合并及查询、音频检查和适用的素材制作流程。浏览器只导入纯时间或字幕模块，Azure SDK 由各集 Node 入口传入。
@@ -22,6 +23,12 @@
 `tools/export.ts` 默认导出 PNG，`audio` 模式导出同时间线 PCM WAV。它在两个模式中复用浏览器核验、独立端口和禁止覆盖逻辑；具体工程的接入、独立预检要求与命令模板见[用户导出](../../docs/agents/videos/operations.md#用户导出)。
 
 公共模块不依赖任何具体视频目录。各集的 TypeScript 路径与 Remotion Rspack 配置使公共浏览器代码使用该集已安装的 React、KaTeX 等依赖，不创建第二份运行时，也不统一升级 Remotion。命令仍从具体视频工程目录执行。公共目录不单独安装依赖。
+
+`ui/NarratedLesson.tsx` 的 `createNarratedLesson` 供剪切系列及 Bentley–Ottmann 已制作视频共享镜头序列与完整原速音频播放。各集提供本地 Remotion 运行时、时间线、画面状态、生产页面和音频索引，并保留自己的导出名称、片段选择及镜头名称。`ShotScene` 的 `audioEnabled=false` 用于静默检查；未指定 `audioLeadFrames` 的工程维持直接播放音频。直线方程教程保留自己的双层章节与字幕总轨，第四章空工程保留当前制作阶段。
+
+`speech/timing.ts` 的 `wordsInTextRange` 只按源文本区间选择重叠的实测词，不更改或推算服务时间；短语唯一性、游标消歧、正时长筛选及失败诊断仍由相应调用方负责。剪切直觉与系数复用 `createShotTimeline` 的基础编排，保留各自的行走、对比及运动中点映射。
+
+第三章两集通过 `checks/ShotLayoutCheck.tsx` 的 `captionsFromFrames` 转换检查字幕，通过 `checks/dom.ts` 的 `checkTeachingPage` 核对页面边界、图示标签与保留的教学行；判断路径、引用、语义配色和静默等专属断言继续在各集维护。
 
 `speech/sentence-plan-tools.ts` 由第 2 章上下集共同使用，核对字幕原句、
 独立口播和读音稿的对应关系，按语义分句记录检查或生成 400ms／200ms 停顿。

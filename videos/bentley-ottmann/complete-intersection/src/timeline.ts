@@ -5,6 +5,7 @@ import captionData from "./captions.json" with { type: "json" };
 import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
 import {
   captionAt,
+  wordsInTextRange,
   type AudioTiming,
   type Caption,
 } from "../../../shared/speech/timing.ts";
@@ -34,10 +35,7 @@ export const rows = shared.timelineFor().map((shot) => {
   const frames = (ms: number) => audioLeadFrames + Math.ceil((ms * fps) / 1000);
   // Offsets locate reviewed semantic phrases; all times remain actual word times.
   const interval = (from: number, to: number) => {
-    const words = recording.words.filter(
-      (word) =>
-        word.textOffset < to && word.textOffset + word.wordLength > from,
-    );
+    const words = wordsInTextRange(recording, from, to);
     if (!words.length) throw Error(`${shot.id}: missing measured phrase`);
     return {
       start: frames(words[0].startMs),

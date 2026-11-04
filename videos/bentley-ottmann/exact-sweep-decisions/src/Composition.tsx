@@ -1,41 +1,14 @@
-import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
-import {
-  rows,
-  visualAt,
-  audioLeadFrames,
-  audio,
-  type TimelineRow,
-} from "./timeline";
-import { narrationFile } from "../../../shared/speech/source";
+import * as remotion from "remotion";
+import { createNarratedLesson } from "../../../shared/ui/NarratedLesson";
 import { TeachingPage } from "./TeachingPage";
+import { rows, visualAt, audioLeadFrames, audio } from "./timeline";
 
-function ShotScene({ row }: { row: TimelineRow }) {
-  const frame = useCurrentFrame();
-  return (
-    <>
-      <TeachingPage row={row} state={visualAt(row, frame)} />
-      <Sequence from={audioLeadFrames}>
-        <Audio
-          src={staticFile(`narration/${narrationFile(row.id, audio[row.id])}`)}
-        />
-      </Sequence>
-    </>
-  );
-}
-/** Every adopted original WAV plays completely at its original rate. */
-export function LessonVideo() {
-  return (
-    <>
-      {rows.map((row) => (
-        <Sequence
-          key={row.id}
-          from={row.from}
-          durationInFrames={row.durationInFrames}
-          name={`${row.id} · ${row.action}`}
-        >
-          <ShotScene row={row} />
-        </Sequence>
-      ))}
-    </>
-  );
-}
+export const { LessonVideo } = createNarratedLesson({
+  runtime: remotion,
+  timelineFor: () => rows,
+  visualAt,
+  audio: audio,
+  audioLeadFrames,
+  renderPage: (row, state) => <TeachingPage row={row} state={state} />,
+  sequenceName: (row) => `${row.id} · ${row.action}`,
+});

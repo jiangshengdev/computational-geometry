@@ -5,6 +5,7 @@ import captionData from "./captions.json" with { type: "json" };
 import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
 import {
   captionAt,
+  wordsInTextRange,
   type AudioTiming,
   type Caption,
 } from "../../../shared/speech/timing.ts";
@@ -41,9 +42,7 @@ export const rows = shared.timelineFor().map((shot) => {
     if (offset < 0)
       throw Error(`${shot.id}: missing spoken semantic anchor ${phrase}`);
     cueCursor = offset + phrase.length;
-    const words = recording.words.filter(
-      (w) => w.textOffset < cueCursor && w.textOffset + w.wordLength > offset,
-    );
+    const words = wordsInTextRange(recording, offset, cueCursor);
     if (!words.length)
       throw Error(`${shot.id}: semantic anchor has no measured words`);
     return {

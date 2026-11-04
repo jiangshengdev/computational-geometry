@@ -4,6 +4,7 @@ import {
   createCaptions,
   phraseTime,
   validateWords,
+  wordsInTextRange,
   type AudioTiming,
 } from "./timing.ts";
 
@@ -17,6 +18,18 @@ const audio: AudioTiming = {
     { text: "X", textOffset: 2, wordLength: 1, startMs: 400, durationMs: 200 },
   ],
 };
+
+test("text intervals include crossing words, exclude touching edges and retain measured data", () => {
+  const words = [
+    { text: "ab", textOffset: 0, wordLength: 2, startMs: 100, durationMs: 80 },
+    { text: "cd", textOffset: 2, wordLength: 2, startMs: 200, durationMs: 0 },
+    { text: "ef", textOffset: 4, wordLength: 2, startMs: 300, durationMs: 90 },
+  ];
+  assert.deepEqual(wordsInTextRange({ words }, 1, 3), words.slice(0, 2));
+  assert.deepEqual(wordsInTextRange({ words }, 2, 4), [words[1]]);
+  assert.deepEqual(wordsInTextRange({ words }, 6, 8), []);
+  assert.strictEqual(wordsInTextRange({ words }, 1, 3)[1], words[1]);
+});
 
 test("uppercase service letters retain measured caption and anchor times for lowercase speech", () => {
   const original = structuredClone(audio);

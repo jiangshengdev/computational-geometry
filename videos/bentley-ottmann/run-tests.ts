@@ -16,7 +16,12 @@ try {
   const output = join(temporary, "highlight.test.cjs");
   await build({
     absWorkingDir: fileURLToPath(new URL("./", import.meta.url)),
-    entryPoints: ["highlight.test.tsx"],
+    stdin: {
+      contents:
+        'import "./highlight.test.tsx"; import "../shared/ui/NarratedLesson.test.tsx";',
+      resolveDir: fileURLToPath(new URL("./", import.meta.url)),
+      loader: "tsx",
+    },
     outfile: output,
     bundle: true,
     platform: "node",

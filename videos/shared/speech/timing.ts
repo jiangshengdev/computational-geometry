@@ -43,6 +43,17 @@ export type Caption = {
   confidence: null;
 };
 
+/** Select measured words overlapping a source-text interval, preserving order. */
+export function wordsInTextRange(
+  audio: Pick<AudioTiming, "words">,
+  from: number,
+  to: number,
+) {
+  return audio.words.filter(
+    (word) => word.textOffset < to && word.textOffset + word.wordLength > from,
+  );
+}
+
 // Azure spells Latin letters in uppercase regardless of source casing.
 // Fold only ASCII case for comparison; preserve source offsets and service data.
 export const speechComparisonText = (text: string) =>
@@ -140,11 +151,8 @@ export function createCaptions(
   );
   return groupCaptionClauses(visible, audible).map(
     ({ text, speechStart: from, speechEnd: to }) => {
-      const words = audio.words.filter(
-        (w) =>
-          w.durationMs > 0 &&
-          w.textOffset < to &&
-          w.textOffset + w.wordLength > from,
+      const words = wordsInTextRange(audio, from, to).filter(
+        (word) => word.durationMs > 0,
       );
       if (!words.length) throw Error(`No word timing: ${text}`);
       return timedCaption(text, words);
@@ -161,11 +169,7 @@ export function phraseTime(
   const offset = audio.speech.indexOf(phrase);
   if (offset < 0 || audio.speech.indexOf(phrase, offset + 1) !== -1)
     throw Error(`Missing or ambiguous speech anchor: ${phrase}`);
-  const words = audio.words.filter(
-    (w) =>
-      w.textOffset < offset + phrase.length &&
-      w.textOffset + w.wordLength > offset,
-  );
+  const words = wordsInTextRange(audio, offset, offset + phrase.length);
   if (!words.length) throw Error(`Missing timing for anchor: ${phrase}`);
   const word = edge === "start" ? words[0] : words[words.length - 1];
   return word.startMs + (edge === "end" ? word.durationMs : 0);
