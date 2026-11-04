@@ -95,7 +95,8 @@ const summary = {
     .length,
   invalidWordTimings: entries.filter((entry) => entry.timingError !== null)
     .length,
-  recognitionAssessmentAndListening: "not performed",
+  recognitionAssessmentAndListening:
+    "not evaluated by this source-only check; see video:reconcile-assessment",
   timingReadyForAdoption: entries.every((entry) => entry.timingError === null),
 };
 if (process.argv.includes("--write-report"))

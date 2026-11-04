@@ -68,7 +68,20 @@ pnpm --config.verify-deps-before-run=false run video:plan-narration --dry-run
 
 `video:check-synthesis` 只读核对素材；显式追加 `--write-report` 时独占写入 `source-check.json`，不请求服务或修补时间。现有词时间校验为 11 段通过、46 段失败，包含零时长词事件或文本偏移异常；校验命令因此返回非零，不将成功合成等同于时间线可用，也不据此判定实际漏读。完整事件和失败证据均保留，未补造时间或重新合成。
 
-这些源素材仍在暂存区，尚未执行识别、发音评估和实际整句试听，也未接入生产字幕、语义动作与时间线。后续须基于本批真实音频及哈希另行规划所需服务请求。
+### 当前识别评估与采用阻塞
+
+已按用户“完成上集全部工作。除非阻塞”的授权，完成同批 57 段原音频的识别与词级发音评估。请求计划位于 `out/assessment-39f9c1e2fc2d/plan.json`，SHA-256 为 `a74d5bde109d0e08cc24fce7c357960559fad4c54b277aeb480967f390fc5636`；使用 `zh-CN`、`HundredMark`、`Word`、`enableMiscue=true`，串行 57 次，无失败、无重试、未重新合成。原始响应保留在该目录的 `run/` 中。
+
+`video:reconcile-assessment` 复用共享时间对齐与校验，只离线检查当前稿件、请求、源 WAV、识别副本及响应哈希，不请求服务。追加 `--write` 生成 `assessment-summary.json`、`aligned-timing.json` 和 `review.html`；复核页逐段并列完整口播、完整原音频、标记字词、可用的实测位置及应读短句，不写入试听结论。原始服务标记分别为 `Mispronunciation=74`、`Omission=19`、`Insertion=3`；57/57 段覆盖、缺失或失败为 0，13 段无自动标记。这些是程序标记，尚未经过实际听辨确认。
+
+47 段通过实测词时间核验；SP06、SP11、SP17、SP24、SP27、SP37、SP41、SP52、SP53、SP58 因漏读或插入标记无法通过。没有补造时间、放宽检查或把未核实标记当作误报。当前工具不能实际听辨这些本地音频，完整语境试听及必要修正是继续采用的阻塞；离线汇总命令据此返回非零。原始素材仍保留在暂存区，未替换正式播放素材，生产字幕、语义动作及时间线尚未切换到实测音频。按[导出前音频检查](../../../docs/agents/videos/operations.md#导出前音频检查)，此状态不得导出，也不提供导出命令。
+
+```sh
+pnpm --config.verify-deps-before-run=false run video:assessment --dry-run
+pnpm --config.verify-deps-before-run=false run video:reconcile-assessment --write
+```
+
+上面的命令均不请求服务；后者会重新生成派生复核材料并以非零退出保留当前阻塞。不要重跑 `video:assessment --execute-plan=…`，现有全部响应已经收齐，执行目录独占创建会阻止重复运行。
 
 在本目录使用已安装依赖运行：
 
@@ -80,6 +93,6 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 
 布局检查使用当前 Remotion 对应的已安装 Chrome Headless Shell，在独立临时端口启动无头 Studio，检查真实生产组件。附加 `-- --shots=SP08,SP53 --screenshots` 可检查指定步骤并保存浏览器 DOM 截图，不执行视频或静帧渲染。
 
-文案与画面执行及审校证据记录在 #335，完成状态以该票当前记录为准。音频与同步由 [#336](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/336) 承接，整体验收由 [#337](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/337) 承接。本工程已有上述正式合成源素材暂存，当前生产组件仍为无配音预览；尚未完成可用词时间、实际读音或音画同步验收，没有执行视频渲染、成片或可见桌面验收。
+文案与画面执行及审校证据记录在 #335，完成状态以该票当前记录为准。音频与同步由 [#336](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/336) 承接，整体验收由 [#337](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/337) 承接。本工程已有上述合成源素材和全部识别评估响应，当前生产组件仍为无配音预览；47/57 段实测词时间可用，其余待核实，未完成实际读音或音画同步验收。音频和原始检测文件位于被忽略的 `out/`，不会强制暂存；代码提交不代表素材已经正式采用或整集已验收。没有执行视频渲染、成片或可见桌面验收。
 
 共享命令与浏览器约束见 [工程操作说明](../../../docs/agents/videos/operations.md) 和 [视频制作配置](../../../docs/agents/videos/configuration.md)。
