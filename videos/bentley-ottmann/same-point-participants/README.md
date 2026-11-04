@@ -36,6 +36,30 @@
 
 ## 检查与下一阶段
 
+### 配音请求准备（#336）
+
+`src/sentence-plan.json` 按当前字幕原句记录对应的完整口播分段，由
+`scripts/prepare-sentence-plan.ts` 中逐步审阅的语义分组生成。
+句末请求 400ms，原句内部请求 200ms；保留字幕标点、冻结口播及读音标注。
+规划入口复用共享 SSML 构建与停顿校验，不读取凭据，不请求服务，不写音频或时间数据。
+
+```sh
+pnpm --config.verify-deps-before-run=false run video:sentence-plan
+pnpm --config.verify-deps-before-run=false run video:plan-narration --dry-run
+```
+
+修改已审分句对应关系后，使用 `video:sentence-plan --write` 重建 JSON，再运行非写入检查。
+完整本地请求快照位于被忽略的 `out/narration-plan.json`，包含每步全文、实际 SSML、指纹及独立 WAV 文件名。
+当前计划为 57 次串行合成、无自动重试，使用默认音色
+`zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`，原速直接输出
+`riff-48khz-16bit-mono-pcm`。纯口播共 4,453 个码点，序列化 SSML 共 88,602 个码点；
+这些不是计费字符、账户额度或实测时长。143 个原句末尾请求 400ms，216 个内部边界请求 200ms，163 个独立字母使用默认英文拼读。
+
+分句 JSON SHA-256：`6ad9277a0ecdc163f4270e8c4d7038f0555ea24b11329939a7acec4a06b12d48`。
+完整请求快照 SHA-256：`39f9c1e2fc2ddfbdf890b3c4f5f189c62694eabe590a8c505a0b65aa56641a45`。
+上述指纹仅绑定本次合成前准备；正式合成仍须按 #336 的请求计划确认门禁推进。
+识别与发音评估须绑定后续真实音频及其哈希另行规划，不能把本计划或旧静默检查当作音频与同步验收。
+
 在本目录使用已安装依赖运行：
 
 ```sh

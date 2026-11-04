@@ -6,7 +6,10 @@
     "paths": {
       "react": ["./node_modules/@types/react"],
       "react/*": ["./node_modules/@types/react/*"],
-      "katex": ["./node_modules/@types/katex"]
+      "katex": ["./node_modules/@types/katex"],
+      "microsoft-cognitiveservices-speech-sdk": [
+        "./node_modules/microsoft-cognitiveservices-speech-sdk"
+      ]
     }
   },
   "exclude": ["remotion.config.ts"]
