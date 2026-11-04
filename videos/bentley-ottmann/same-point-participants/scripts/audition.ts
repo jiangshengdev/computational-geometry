@@ -24,10 +24,10 @@ import speech from "../src/speech-text.json" with { type: "json" };
 import sentences from "../src/sentence-plan.json" with { type: "json" };
 import { shots } from "../src/storyboard.ts";
 
-export const auditionRoot = new URL(
-  "../out/audition-ipa-chinese-v1/",
-  import.meta.url,
-);
+export type AuditionVersion = "ipa-chinese-v1" | "omission-v2";
+export const auditionRootFor = (version: AuditionVersion) =>
+  new URL(`../out/audition-${version}/`, import.meta.url);
+export const auditionRoot = auditionRootFor("ipa-chinese-v1");
 const originalRoot = new URL("../out/synthesis-39f9c1e2fc2d/", import.meta.url);
 const assessmentRoot = new URL(
   "../out/assessment-39f9c1e2fc2d/",
@@ -134,7 +134,12 @@ function replaceParts(
   return output;
 }
 
-export function buildAuditionPlan() {
+export function buildAuditionPlan(version: AuditionVersion = "ipa-chinese-v1") {
+  if (version === "omission-v2") return buildOmissionPlan();
+  return buildIpaPlan();
+}
+
+function buildIpaPlan() {
   const originalBytes = readFileSync(
     new URL("approved-plan.json", originalRoot),
   );
@@ -295,8 +300,131 @@ export function buildAuditionPlan() {
   };
 }
 
+function buildOmissionPlan() {
+  const parent = buildIpaPlan();
+  assert.equal(
+    readFileSync(new URL("plan.json", auditionRoot), "utf8"),
+    bytes(parent),
+  );
+  const baseline = read(new URL("assessment-summary.json", auditionRoot));
+  assert.equal(baseline.assessed, 57);
+  assert.equal(baseline.missingOrFailed, 0);
+  const editsFile = new URL("./audition-omission-edits.json", import.meta.url);
+  const edits = read(editsFile) as {
+    id: string;
+    from: string;
+    to: (string | { text: string; pinyin: string })[];
+    reason: string;
+  }[];
+  const targets = baseline.results
+    .filter((r: { flags: { errorType: string }[] }) =>
+      r.flags.some((f) => ["Omission", "Insertion"].includes(f.errorType)),
+    )
+    .map((r: { id: string }) => r.id) as string[];
+  assert.deepEqual([...new Set(edits.map((e) => e.id))], targets);
+  const { buildSpeechDocument } = createSpeechTools(sdk, {
+    voice: parent.voice,
+    commas: "document",
+    fingerprint: true,
+  });
+  const documents = targets.map((id) => {
+    const source = parent.documents.find((d) => d.id === id)!;
+    assert(source);
+    const result = baseline.results.find((r: { id: string }) => r.id === id);
+    assert.equal(result.fingerprint, source.fingerprint);
+    assert.equal(
+      sha(new URL(`synthesis/${id}.wav`, auditionRoot)),
+      result.audioSha256,
+    );
+    assert.equal(
+      sha(new URL(`assessment/${id}.wav.assessment.json`, auditionRoot)),
+      result.responseSha256,
+    );
+    const changes = edits
+      .filter((e) => e.id === id)
+      .map((edit) => {
+        const from = source.text.indexOf(edit.from);
+        assert(from >= 0 && source.text.indexOf(edit.from, from + 1) === -1);
+        assert(edit.reason);
+        const parts = edit.to.flatMap<Part>((part) => {
+          if (typeof part !== "string") return [part];
+          return part
+            .split(/([A-Z])/)
+            .filter(Boolean)
+            .map((value) =>
+              /^[A-Z]$/.test(value)
+                ? { letter: value, ipa: ipa[value] }
+                : value,
+            );
+        });
+        const replacement = buildSpeechDocument(parts).text;
+        assert.notEqual(edit.from, replacement);
+        // Every affected symbol and its order survives the wording adjustment.
+        assert.deepEqual(
+          replacement.match(/[A-Z]/g),
+          edit.from.match(/[A-Z]/g),
+        );
+        return {
+          from,
+          to: from + edit.from.length,
+          parts,
+          before: edit.from,
+          after: replacement,
+          reason: edit.reason,
+        };
+      });
+    const originalInput = source.input.filter(
+      (part) => typeof part === "string" || !("breakMs" in part),
+    ) as Part[];
+    const changed = replaceParts(originalInput, source.text, changes);
+    const text = buildSpeechDocument(changed).text;
+    const sentencePlan = sentences[id as keyof typeof sentences].map((s) => ({
+      caption: s.caption,
+      speech: s.speech.flatMap((phrase) => {
+        let revised = phrase;
+        for (const change of changes) {
+          if (!revised.includes(change.before)) continue;
+          revised = revised.replace(change.before, change.after);
+        }
+        // New phrases stay inside the same reviewed original sentence.
+        return revised.match(/[^。！？]+[。！？]/g) ?? [revised];
+      }),
+    }));
+    const caption = shots.find((s) => s.id === id)!.captions.join("");
+    const input = applySentencePauses(caption, changed, text, sentencePlan);
+    const document = buildSpeechDocument(input, id);
+    assert(!/<prosody\b|\brate=/.test(document.ssml));
+    return {
+      ...source,
+      ...document,
+      input,
+      changes,
+      originalText: source.text,
+      sentencePlan,
+      baselineAudioSha256: result.audioSha256,
+      baselineFingerprint: source.fingerprint,
+    };
+  });
+  return {
+    ...parent,
+    version: "omission-v2",
+    parentVersion: "ipa-chinese-v1" as const,
+    parentPlanSha256: sha(new URL("plan.json", auditionRoot)),
+    baselineReportSha256: sha(new URL("assessment-summary.json", auditionRoot)),
+    wordingEditsSha256: sha(editsFile),
+    synthesisRequests: documents.length,
+    assessmentRequests: documents.length,
+    documents,
+  };
+}
+
 async function run() {
-  const plan = buildAuditionPlan();
+  const version =
+    process.argv.find((a) => a.startsWith("--version="))?.slice(10) ??
+    "ipa-chinese-v1";
+  assert(version === "ipa-chinese-v1" || version === "omission-v2");
+  const auditionRoot = auditionRootFor(version);
+  const plan = buildAuditionPlan(version);
   const planBytes = bytes(plan),
     planSha256 = hash(planBytes);
   if (process.argv.includes("--write-plan")) {
@@ -342,7 +470,8 @@ async function run() {
   }
   if (synthesize) {
     const root = new URL("synthesis/", auditionRoot);
-    mkdirSync(root);
+    const continueUnstarted = process.argv.includes("--continue-unstarted");
+    if (!continueUnstarted) mkdirSync(root);
     const { synthesize: request } = createSpeechTools(sdk, {
       voice: plan.voice,
       commas: "document",
@@ -355,11 +484,31 @@ async function run() {
       audioSha256?: string;
       duration?: number;
       error?: string;
-    }[] = plan.documents.map((d) => ({
-      id: d.id,
-      fingerprint: d.fingerprint,
-      state: "planned",
-    }));
+    }[] = continueUnstarted
+      ? read(new URL("manifest.json", root)).entries
+      : plan.documents.map((d) => ({
+          id: d.id,
+          fingerprint: d.fingerprint,
+          state: "planned",
+        }));
+    if (continueUnstarted) {
+      assert.equal(read(new URL("manifest.json", root)).planSha256, planSha256);
+      assert.equal(entries.length, plan.documents.length);
+      for (const [index, entry] of entries.entries()) {
+        const document = plan.documents[index];
+        assert.equal(entry.id, document.id);
+        assert.equal(entry.fingerprint, document.fingerprint);
+        assert(["planned", "complete", "uncertain"].includes(entry.state));
+        const path = new URL(document.audioFile, root);
+        if (entry.state === "complete")
+          assert.equal(sha(path), entry.audioSha256);
+        else if (entry.state === "planned") {
+          assert(!existsSync(path));
+          assert(!existsSync(new URL(`${entry.id}.response.json`, root)));
+          assert(!existsSync(new URL(`${entry.id}.diagnostic.json`, root)));
+        }
+      }
+    }
     const save = () =>
       writeFileSync(
         new URL("manifest.json", root),
@@ -368,6 +517,11 @@ async function run() {
     save();
     for (const [index, document] of plan.documents.entries()) {
       const entry = entries[index];
+      // An uncertain request is never replayed, even when no WAV was returned.
+      if (entry.state !== "planned") {
+        console.log(`${entry.id}: retained ${entry.state}; no service call`);
+        continue;
+      }
       entry.state = "started";
       save();
       console.log(
@@ -426,22 +580,25 @@ async function run() {
     enableMiscue: true,
     concurrency: 1,
     automaticRetries: 0,
-    requests: plan.documents.map((d, i) => {
+    requests: plan.documents.flatMap((d, i) => {
       const entry = synthesized.entries[i];
       assert.equal(entry.id, d.id);
-      assert.equal(entry.state, "complete");
       assert.equal(entry.fingerprint, d.fingerprint);
+      if (entry.state !== "complete") return [];
       assert.equal(sha(new URL(d.audioFile, synthesisRoot)), entry.audioSha256);
-      return {
-        id: d.id,
-        audioFile: d.audioFile,
-        audioSha256: entry.audioSha256 as string,
-        duration: entry.duration as number,
-        fingerprint: d.fingerprint,
-        referenceText: d.text,
-      };
+      return [
+        {
+          id: d.id,
+          audioFile: d.audioFile,
+          audioSha256: entry.audioSha256 as string,
+          duration: entry.duration as number,
+          fingerprint: d.fingerprint,
+          referenceText: d.text,
+        },
+      ];
     }),
   };
+  assert(assessmentPlan.requests.length, "No complete audio to assess");
   const assessmentBytes = bytes(assessmentPlan),
     assessmentPlanSha256 = hash(assessmentBytes);
   if (process.argv.includes("--write-assessment-plan")) {

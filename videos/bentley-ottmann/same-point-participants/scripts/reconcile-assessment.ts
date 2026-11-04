@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
+import { relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { audioSha256 } from "../../../shared/speech/audio.ts";
@@ -11,7 +12,11 @@ import {
   type AudioTiming,
   type WordBoundary,
 } from "../../../shared/speech/timing.ts";
-import { auditionRoot, buildAuditionPlan } from "./audition.ts";
+import {
+  auditionRootFor,
+  buildAuditionPlan,
+  type AuditionVersion,
+} from "./audition.ts";
 
 // Offline only. Retain every raw flag; never infer a listening decision or timing.
 const source = new URL("../out/synthesis-39f9c1e2fc2d/", import.meta.url);
@@ -39,28 +44,30 @@ const manifest = parse(new URL("manifest.json", run));
 assert.equal(manifest.planSha256, assessmentPlanSha256);
 assert.equal(manifest.entries.length, plan.requests.length);
 const synthesis = parse(approved);
-const audition = process.argv.includes("--audition=ipa-chinese-v1")
-  ? buildAuditionPlan()
-  : null;
-const reportRoot = audition ? auditionRoot : root;
-const auditionPlanSha256 = audition
-  ? sha256(new URL("plan.json", auditionRoot))
-  : null;
-if (audition)
+const version = process.argv
+  .find((a) => a.startsWith("--audition="))
+  ?.slice(11);
+assert(!version || version === "ipa-chinese-v1" || version === "omission-v2");
+const versions: AuditionVersion[] =
+  version === "omission-v2"
+    ? ["ipa-chinese-v1", "omission-v2"]
+    : version
+      ? [version as AuditionVersion]
+      : [];
+const stages = versions.map((version) => {
+  const auditionRoot = auditionRootFor(version);
+  const audition = buildAuditionPlan(version);
+  const auditionPlanSha256 = sha256(new URL("plan.json", auditionRoot));
   assert.equal(
     readFileSync(new URL("plan.json", auditionRoot), "utf8"),
     JSON.stringify(audition, null, 2) + "\n",
   );
-const auditionSynthesis = audition
-  ? parse(new URL("synthesis/manifest.json", auditionRoot))
-  : null;
-const auditionAssessment = audition
-  ? parse(new URL("assessment/manifest.json", auditionRoot))
-  : null;
-const baseline = audition
-  ? parse(new URL("assessment-summary.json", root))
-  : null;
-if (audition) {
+  const auditionSynthesis = parse(
+    new URL("synthesis/manifest.json", auditionRoot),
+  );
+  const auditionAssessment = parse(
+    new URL("assessment/manifest.json", auditionRoot),
+  );
   assert.equal(auditionSynthesis.planSha256, auditionPlanSha256);
   assert.equal(auditionAssessment.planSha256, auditionPlanSha256);
   assert.equal(
@@ -68,8 +75,56 @@ if (audition) {
     sha256(new URL("assessment-plan.json", auditionRoot)),
   );
   assert.equal(auditionSynthesis.entries.length, audition.documents.length);
-  assert.equal(auditionAssessment.entries.length, audition.documents.length);
-}
+  assert.equal(
+    auditionAssessment.entries.length,
+    auditionSynthesis.entries.filter(
+      (e: { state: string }) => e.state === "complete",
+    ).length,
+  );
+  return {
+    version,
+    auditionRoot,
+    audition,
+    auditionPlanSha256,
+    auditionSynthesis,
+    auditionAssessment,
+  };
+});
+const current = stages[stages.length - 1];
+const audition = current?.audition;
+const unavailable = current
+  ? current.audition.documents.flatMap((d) => {
+      const synthesisEntry = current.auditionSynthesis.entries.find(
+        (e: { id: string }) => e.id === d.id,
+      );
+      const assessmentEntry = current.auditionAssessment.entries.find(
+        (e: { id: string }) => e.id === d.id,
+      );
+      return synthesisEntry?.state === "complete" &&
+        assessmentEntry?.state === "complete"
+        ? []
+        : [
+            {
+              id: d.id,
+              synthesis: synthesisEntry?.state ?? "missing",
+              assessment: assessmentEntry?.state ?? "not-requested",
+              candidateText: d.text,
+            },
+          ];
+    })
+  : [];
+const regenerated = current
+  ? current.audition.documents.length - unavailable.length
+  : 0;
+const reportRoot = current?.auditionRoot ?? root;
+const baseline = current
+  ? parse(
+      new URL(
+        "assessment-summary.json",
+        version === "omission-v2" ? auditionRootFor("ipa-chinese-v1") : root,
+      ),
+    )
+  : null;
 const { assessmentWords, verifyAlignment } = createAlignmentTools(sdk, {
   allowReviewedPronunciation: false,
   deferPronunciationReview: true,
@@ -91,11 +146,25 @@ type Request = {
   synthesisFingerprint: string;
 };
 const requests = (plan.requests as Request[]).map((original, index) => {
-  const variant = audition?.documents.find(
+  const stage = [...stages]
+    .reverse()
+    .find(
+      (s) =>
+        s.audition.documents.some((d) => d.id === original.id) &&
+        s.auditionSynthesis.entries.some(
+          (e: { id: string; state: string }) =>
+            e.id === original.id && e.state === "complete",
+        ) &&
+        s.auditionAssessment.entries.some(
+          (e: { id: string; state: string }) =>
+            e.id === original.id && e.state === "complete",
+        ),
+    );
+  const variant = stage?.audition.documents.find(
     (document) => document.id === original.id,
   );
   const synthesisEntry = variant
-    ? auditionSynthesis.entries.find(
+    ? stage!.auditionSynthesis.entries.find(
         (entry: { id: string }) => entry.id === original.id,
       )
     : null;
@@ -115,10 +184,11 @@ const requests = (plan.requests as Request[]).map((original, index) => {
         }
       : {}),
     variant,
-    sourceRoot: variant ? new URL("synthesis/", auditionRoot) : source,
-    responseRoot: variant ? new URL("assessment/", auditionRoot) : run,
+    variantVersion: stage?.version ?? "original",
+    sourceRoot: stage ? new URL("synthesis/", stage.auditionRoot) : source,
+    responseRoot: stage ? new URL("assessment/", stage.auditionRoot) : run,
     entry: variant
-      ? auditionAssessment.entries.find(
+      ? stage!.auditionAssessment.entries.find(
           (entry: { id: string }) => entry.id === original.id,
         )
       : manifest.entries[index],
@@ -243,10 +313,11 @@ const results = requests.map((request) => {
   }
   return {
     id: request.id,
-    audioFile: request.variant
-      ? `synthesis/${request.audioFile}`
-      : `../synthesis-39f9c1e2fc2d/${request.audioFile}`,
-    variant: request.variant ? "ipa-chinese-v1" : "original",
+    audioFile: relative(fileURLToPath(reportRoot), fileURLToPath(audio)),
+    variant: request.variantVersion,
+    originalText: synthesis.documents.find(
+      (d: { id: string }) => d.id === request.id,
+    ).text as string,
     changes: request.variant?.changes ?? [],
     audioSha256: request.audioSha256,
     fingerprint: request.synthesisFingerprint,
@@ -263,10 +334,14 @@ const summary = {
   assessmentPlanSha256,
   ...(audition
     ? {
-        auditionPlanSha256,
-        auditionAssessmentPlanSha256: auditionAssessment.assessmentPlanSha256,
-        regenerated: audition.documents.length,
-        reused: 57 - audition.documents.length,
+        auditionPlanSha256: current!.auditionPlanSha256,
+        auditionAssessmentPlanSha256:
+          current!.auditionAssessment.assessmentPlanSha256,
+        plannedRegenerations: audition.documents.length,
+        regenerated,
+        reused: 57 - regenerated,
+        regenerationMissingOrFailed: unavailable.length,
+        unavailable,
         baselineCounts: baseline.counts,
         delta: Object.fromEntries(
           Object.entries(counts).map(([key, value]) => [
@@ -286,7 +361,8 @@ const summary = {
   serviceRequestsAdded: 0,
   published: false,
   listening: "pending",
-  exportBlocked: counts.Omission > 0 || counts.Insertion > 0,
+  exportBlocked:
+    counts.Omission > 0 || counts.Insertion > 0 || unavailable.length > 0,
   results,
 };
 if (process.argv.includes("--write")) {
@@ -314,11 +390,13 @@ if (process.argv.includes("--write")) {
   const cards = results
     .map(
       (result) => `<article id="${result.id}">
-<h2>${result.id} · ${result.variant === "original" ? "原始配音" : "IPA／中文标注微调试音版"} · 待完整语境试听</h2>
+<h2>${result.id} · ${result.variant} · 待完整语境试听</h2>
+${unavailable.some((entry) => entry.id === result.id) ? `<p class="blocked">本轮新候选未完成；下方复用先前版本及匹配检测，不代表新候选已生成或通过。未完成候选全文：${escape(unavailable.find((entry) => entry.id === result.id)!.candidateText)}</p>` : ""}
 <p class="text">${escape(result.referenceText)}</p>
 <audio controls preload="none" src="${escape(result.audioFile)}"></audio>
-<p>口播文字及语速未改。${result.variant === "original" ? "此段复用原始音频及检测。" : "此段仅微调字母 IPA 或中文读音标注，完整重新合成并评估；未正式采用。"}下列均为原始自动标记，尚未听辨确认。漏读条目没有可靠时间位置。</p>
-${result.variant === "original" ? "" : `<details><summary>本段读音试验的具体改动</summary><pre>${escape(JSON.stringify(result.changes, null, 2))}</pre></details><p>对照原版（上方全文同样适用）：</p><audio controls preload="none" src="../synthesis-39f9c1e2fc2d/${result.id}.wav"></audio>`}
+<p>语速未改。${result.variant === "original" ? "此段复用原始音频及检测。" : result.variant === "omission-v2" ? "此段局部改写中文句式，保留应读符号及含义，沿用 IPA 方法，完整重合成并评估；未正式采用。" : "此段仅微调字母 IPA 或中文读音标注，完整重新合成并评估；未正式采用。"}下列均为原始自动标记，尚未听辨确认。漏读条目没有可靠时间位置。</p>
+${result.variant === "original" ? "" : `<details><summary>本段试验的具体改动</summary><pre>${escape(JSON.stringify(result.changes, null, 2))}</pre></details><p>原版完整对照文本：</p><p class="text">${escape(result.originalText)}</p><audio controls preload="none" src="../synthesis-39f9c1e2fc2d/${result.id}.wav"></audio>`}
+${result.variant === "omission-v2" ? `<p>上一轮 IPA／中文标注版完整文本：</p><p class="text">${escape(result.originalText)}</p><audio controls preload="none" src="../audition-ipa-chinese-v1/synthesis/${result.id}.wav"></audio>` : ""}
 ${result.flags.length ? `<table><thead><tr><th>类型</th><th>字词</th><th>实测位置</th><th>应读短句或附近应读短句</th><th>服务词序及邻近文字</th></tr></thead><tbody>${result.flags.map((flag) => `<tr><td>${escape(flag.errorType)}</td><td>${escape(flag.text)}</td><td>${flag.startMs === null ? "无实测位置" : `${(flag.startMs / 1000).toFixed(2)} 秒`}</td><td>${escape(flag.referenceContext ?? "见完整口播，未建立可靠局部对应")}</td><td>#${flag.wordIndex} ${escape(flag.recognitionContext)}</td></tr>`).join("")}</tbody></table>` : "<p>服务未标异常；仍待整句试听。</p>"}
 <p>应读内容为上方完整口播；插入标记只表示服务识别出的疑似额外字词，不加入应读稿。</p>
 ${result.alignmentError ? `<p class="blocked">时间对齐被阻断：${escape(result.alignmentError)}</p>` : "<p>实测时间已离线核验，尚未采用到正式播放。</p>"}
@@ -332,9 +410,9 @@ ${result.alignmentError ? `<p class="blocked">时间对齐被阻断：${escape(r
 <html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>上集配音与检测复核</title>
 <style>body{font:17px/1.7 system-ui,sans-serif;max-width:1000px;margin:32px auto;padding:0 24px;color:#172c45;background:#f6f8fb}article{background:white;padding:24px;margin:24px 0;border:1px solid #cbd5e1;border-radius:12px;scroll-margin-top:12px}audio{width:100%}.text{white-space:pre-wrap;font-size:20px}table{width:100%;border-collapse:collapse}td,th{text-align:left;border-bottom:1px solid #cbd5e1;padding:8px;overflow-wrap:anywhere}details{overflow-wrap:anywhere}.blocked{color:#9a3412}nav{display:flex;flex-wrap:wrap;gap:12px}h1{font-size:28px}</style>
-<h1>第四章上集：${audition ? "IPA／中文标注微调试音版" : "原始配音"}与检测复核</h1>
+<h1>第四章上集：${version ?? "原始配音"}与检测复核</h1>
 <p>57/57 段已检测；Mispronunciation=${counts.Mispronunciation}，Omission=${counts.Omission}，Insertion=${counts.Insertion}。这些是程序标记条数，不能视为已听辨确认的错误数量。</p>
-${audition ? `<p>整集候选组合：${audition.documents.length} 段重新生成／评估，${57 - audition.documents.length} 段复用未变原音频及原评估。原始计数：Mispronunciation=${baseline.counts.Mispronunciation}，Omission=${baseline.counts.Omission}，Insertion=${baseline.counts.Insertion}。</p>` : ""}
+${audition ? `<p>整集候选组合：本轮计划 ${audition.documents.length} 段，实际 ${regenerated} 段重新生成／评估，${57 - regenerated} 段复用已有音频及匹配评估。候选缺失或失败 ${unavailable.length} 段：${unavailable.map((entry) => escape(`${entry.id}（合成=${entry.synthesis}；评估=${entry.assessment}）`)).join("、") || "无"}。对照基线计数：Mispronunciation=${baseline.counts.Mispronunciation}，Omission=${baseline.counts.Omission}，Insertion=${baseline.counts.Insertion}。</p>` : ""}
 <p>所有 WAV 完整、原速播放；试听候选尚未正式采用。所有片段尚待完整语境试听，当前不提供导出。完整响应及汇总保留在本目录。本页不写入任何验收结论。</p>
 <p>有漏读或插入标记的片段：</p><nav>${results
       .filter((result) =>
