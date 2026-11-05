@@ -1,0 +1,516 @@
+{
+  "audioSha256": "efad0bbdd73fe5123e720d6a721ccf33dec10d7e1adfacdeed546bdeba031c16",
+  "referenceText": "如果 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 D。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留输入 B、输入 C 和输入 D 这三份。",
+  "aliases": [
+    {
+      "sourceOffset": 39,
+      "spoken": "dee",
+      "letter": "D"
+    },
+    {
+      "sourceOffset": 103,
+      "spoken": "dee",
+      "letter": "D"
+    }
+  ],
+  "words": [
+    {
+      "text": "如果",
+      "startMs": 70,
+      "durationMs": 560,
+      "textOffset": 0,
+      "wordLength": 2
+    },
+    {
+      "text": " ",
+      "startMs": 630,
+      "durationMs": 0,
+      "textOffset": 2,
+      "wordLength": 1
+    },
+    {
+      "text": "P",
+      "startMs": 630,
+      "durationMs": 240,
+      "textOffset": 3,
+      "wordLength": 1
+    },
+    {
+      "text": "在",
+      "startMs": 870,
+      "durationMs": 160,
+      "textOffset": 5,
+      "wordLength": 1
+    },
+    {
+      "text": "线段",
+      "startMs": 1030,
+      "durationMs": 440,
+      "textOffset": 6,
+      "wordLength": 2
+    },
+    {
+      "text": "上",
+      "startMs": 1470,
+      "durationMs": 320,
+      "textOffset": 8,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 1790,
+      "durationMs": 0,
+      "textOffset": 9,
+      "wordLength": 1
+    },
+    {
+      "text": "横坐标",
+      "startMs": 2028,
+      "durationMs": 720,
+      "textOffset": 10,
+      "wordLength": 3
+    },
+    {
+      "text": "又",
+      "startMs": 2748,
+      "durationMs": 200,
+      "textOffset": 13,
+      "wordLength": 1
+    },
+    {
+      "text": "严",
+      "startMs": 2948,
+      "durationMs": 200,
+      "textOffset": 14,
+      "wordLength": 1
+    },
+    {
+      "text": "格",
+      "startMs": 3148,
+      "durationMs": 200,
+      "textOffset": 15,
+      "wordLength": 1
+    },
+    {
+      "text": "夹在",
+      "startMs": 3348,
+      "durationMs": 280,
+      "textOffset": 16,
+      "wordLength": 2
+    },
+    {
+      "text": "两端",
+      "startMs": 3628,
+      "durationMs": 359,
+      "textOffset": 18,
+      "wordLength": 2
+    },
+    {
+      "text": "之间",
+      "startMs": 3987,
+      "durationMs": 481,
+      "textOffset": 20,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 4468,
+      "durationMs": 0,
+      "textOffset": 22,
+      "wordLength": 1
+    },
+    {
+      "text": "就",
+      "startMs": 4748,
+      "durationMs": 240,
+      "textOffset": 23,
+      "wordLength": 1
+    },
+    {
+      "text": "叫",
+      "startMs": 4988,
+      "durationMs": 120,
+      "textOffset": 24,
+      "wordLength": 1
+    },
+    {
+      "text": "严",
+      "startMs": 5108,
+      "durationMs": 240,
+      "textOffset": 25,
+      "wordLength": 1
+    },
+    {
+      "text": "格",
+      "startMs": 5348,
+      "durationMs": 160,
+      "textOffset": 26,
+      "wordLength": 1
+    },
+    {
+      "text": "穿过",
+      "startMs": 5508,
+      "durationMs": 320,
+      "textOffset": 27,
+      "wordLength": 2
+    },
+    {
+      "text": "者",
+      "startMs": 5828,
+      "durationMs": 0,
+      "textOffset": 29,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 5828,
+      "durationMs": 0,
+      "textOffset": 30,
+      "wordLength": 1
+    },
+    {
+      "text": "本例",
+      "startMs": 6589,
+      "durationMs": 400,
+      "textOffset": 31,
+      "wordLength": 2
+    },
+    {
+      "text": "是",
+      "startMs": 6989,
+      "durationMs": 160,
+      "textOffset": 33,
+      "wordLength": 1
+    },
+    {
+      "text": "C",
+      "startMs": 7149,
+      "durationMs": 240,
+      "textOffset": 35,
+      "wordLength": 1
+    },
+    {
+      "text": "和",
+      "startMs": 7389,
+      "durationMs": 160,
+      "textOffset": 37,
+      "wordLength": 1
+    },
+    {
+      "text": "D",
+      "startMs": 7549,
+      "durationMs": 0,
+      "textOffset": 39,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 7549,
+      "durationMs": 0,
+      "textOffset": 40,
+      "wordLength": 1
+    },
+    {
+      "text": "两",
+      "startMs": 8188,
+      "durationMs": 240,
+      "textOffset": 41,
+      "wordLength": 1
+    },
+    {
+      "text": "侧",
+      "startMs": 8428,
+      "durationMs": 200,
+      "textOffset": 42,
+      "wordLength": 1
+    },
+    {
+      "text": "都",
+      "startMs": 8628,
+      "durationMs": 160,
+      "textOffset": 43,
+      "wordLength": 1
+    },
+    {
+      "text": "存在",
+      "startMs": 8788,
+      "durationMs": 480,
+      "textOffset": 44,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 9268,
+      "durationMs": 0,
+      "textOffset": 46,
+      "wordLength": 1
+    },
+    {
+      "text": "非零",
+      "startMs": 9729,
+      "durationMs": 480,
+      "textOffset": 47,
+      "wordLength": 2
+    },
+    {
+      "text": "且",
+      "startMs": 10209,
+      "durationMs": 120,
+      "textOffset": 49,
+      "wordLength": 1
+    },
+    {
+      "text": "不竖直",
+      "startMs": 10329,
+      "durationMs": 640,
+      "textOffset": 50,
+      "wordLength": 3
+    },
+    {
+      "text": "保证",
+      "startMs": 10969,
+      "durationMs": 400,
+      "textOffset": 53,
+      "wordLength": 2
+    },
+    {
+      "text": "两端",
+      "startMs": 11369,
+      "durationMs": 440,
+      "textOffset": 55,
+      "wordLength": 2
+    },
+    {
+      "text": "横坐标",
+      "startMs": 11809,
+      "durationMs": 480,
+      "textOffset": 57,
+      "wordLength": 3
+    },
+    {
+      "text": "不",
+      "startMs": 12289,
+      "durationMs": 120,
+      "textOffset": 60,
+      "wordLength": 1
+    },
+    {
+      "text": "同",
+      "startMs": 12409,
+      "durationMs": 320,
+      "textOffset": 61,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 12729,
+      "durationMs": 0,
+      "textOffset": 62,
+      "wordLength": 1
+    },
+    {
+      "text": "所以",
+      "startMs": 13078,
+      "durationMs": 280,
+      "textOffset": 63,
+      "wordLength": 2
+    },
+    {
+      "text": "三",
+      "startMs": 13358,
+      "durationMs": 160,
+      "textOffset": 65,
+      "wordLength": 1
+    },
+    {
+      "text": "种",
+      "startMs": 13518,
+      "durationMs": 160,
+      "textOffset": 66,
+      "wordLength": 1
+    },
+    {
+      "text": "角色",
+      "startMs": 13678,
+      "durationMs": 320,
+      "textOffset": 67,
+      "wordLength": 2
+    },
+    {
+      "text": "互",
+      "startMs": 13998,
+      "durationMs": 160,
+      "textOffset": 69,
+      "wordLength": 1
+    },
+    {
+      "text": "不混淆",
+      "startMs": 14158,
+      "durationMs": 640,
+      "textOffset": 70,
+      "wordLength": 3
+    },
+    {
+      "text": "。",
+      "startMs": 14798,
+      "durationMs": 0,
+      "textOffset": 73,
+      "wordLength": 1
+    },
+    {
+      "text": "当前",
+      "startMs": 15098,
+      "durationMs": 440,
+      "textOffset": 74,
+      "wordLength": 2
+    },
+    {
+      "text": "四",
+      "startMs": 15538,
+      "durationMs": 160,
+      "textOffset": 76,
+      "wordLength": 1
+    },
+    {
+      "text": "份",
+      "startMs": 15698,
+      "durationMs": 200,
+      "textOffset": 77,
+      "wordLength": 1
+    },
+    {
+      "text": "都",
+      "startMs": 15898,
+      "durationMs": 120,
+      "textOffset": 78,
+      "wordLength": 1
+    },
+    {
+      "text": "参加",
+      "startMs": 16018,
+      "durationMs": 0,
+      "textOffset": 79,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 16018,
+      "durationMs": 0,
+      "textOffset": 81,
+      "wordLength": 1
+    },
+    {
+      "text": "右",
+      "startMs": 16868,
+      "durationMs": 280,
+      "textOffset": 82,
+      "wordLength": 1
+    },
+    {
+      "text": "侧",
+      "startMs": 17148,
+      "durationMs": 200,
+      "textOffset": 83,
+      "wordLength": 1
+    },
+    {
+      "text": "只保留",
+      "startMs": 17348,
+      "durationMs": 440,
+      "textOffset": 84,
+      "wordLength": 3
+    },
+    {
+      "text": "输入",
+      "startMs": 17788,
+      "durationMs": 360,
+      "textOffset": 87,
+      "wordLength": 2
+    },
+    {
+      "text": "B",
+      "startMs": 18148,
+      "durationMs": 320,
+      "textOffset": 90,
+      "wordLength": 1
+    },
+    {
+      "text": "、",
+      "startMs": 18468,
+      "durationMs": 0,
+      "textOffset": 91,
+      "wordLength": 1
+    },
+    {
+      "text": "输入",
+      "startMs": 18508,
+      "durationMs": 560,
+      "textOffset": 92,
+      "wordLength": 2
+    },
+    {
+      "text": " ",
+      "startMs": 19068,
+      "durationMs": 0,
+      "textOffset": 94,
+      "wordLength": 1
+    },
+    {
+      "text": "C",
+      "startMs": 19068,
+      "durationMs": 240,
+      "textOffset": 95,
+      "wordLength": 1
+    },
+    {
+      "text": "和",
+      "startMs": 19308,
+      "durationMs": 200,
+      "textOffset": 97,
+      "wordLength": 1
+    },
+    {
+      "text": "输入",
+      "startMs": 19508,
+      "durationMs": 320,
+      "textOffset": 98,
+      "wordLength": 2
+    },
+    {
+      "text": "D",
+      "startMs": 19828,
+      "durationMs": 240,
+      "textOffset": 101,
+      "wordLength": 1
+    },
+    {
+      "text": "这",
+      "startMs": 20068,
+      "durationMs": 119,
+      "textOffset": 103,
+      "wordLength": 1
+    },
+    {
+      "text": "三",
+      "startMs": 20187,
+      "durationMs": 241,
+      "textOffset": 104,
+      "wordLength": 1
+    },
+    {
+      "text": "份",
+      "startMs": 20428,
+      "durationMs": 279,
+      "textOffset": 105,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 20707,
+      "durationMs": 0,
+      "textOffset": 106,
+      "wordLength": 1
+    }
+  ],
+  "rawEvents": "SP24.response.json"
+}
