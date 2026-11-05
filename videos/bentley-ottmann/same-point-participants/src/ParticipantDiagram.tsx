@@ -81,7 +81,7 @@ function Geometry({
     A: [1.6, 4.5],
     B: [7.5, 6.7],
     C: [1.2, 7.9],
-    D: [6.2, 9.6],
+    D: [5.4, 9.1],
   };
   return (
     <svg
@@ -198,8 +198,10 @@ function Geometry({
               strokeWidth={2.5}
             />
             <Label
-              x={x(4) + 25}
-              y={y(4) - 16}
+              x={x(4)}
+              y={y(4) - 52}
+              align="center"
+              verticalAlign="middle"
               fill={objectColors[name]}
               fontSize={26}
             >
@@ -210,7 +212,12 @@ function Geometry({
       {!names.some((n) => n.startsWith("Z")) && (
         <circle cx={x(4)} cy={y(4)} r={5} fill={ink} />
       )}
-      <Label x={x(4) + 18} y={y(4) + 42} fontSize={compact ? 23 : 28}>
+      <Label
+        x={x(4) + 36}
+        y={y(4)}
+        verticalAlign="middle"
+        fontSize={compact ? 23 : 28}
+      >
         P
       </Label>
     </svg>
@@ -421,10 +428,20 @@ export function ParticipantDiagram({
             rx={7}
             fill="#edf1f6"
           />
-          <Label x={100} y={45 + i * 85} fill={objectColors[a]}>
+          <Label
+            x={100}
+            y={67.5 + i * 85}
+            verticalAlign="middle"
+            fill={objectColors[a]}
+          >
             {a}
           </Label>
-          <Label x={215} y={45 + i * 85} fill={objectColors[b]}>
+          <Label
+            x={215}
+            y={67.5 + i * 85}
+            verticalAlign="middle"
+            fill={objectColors[b]}
+          >
             {b}
           </Label>
           <line
@@ -438,7 +455,7 @@ export function ParticipantDiagram({
         </g>
       ))}
       <circle cx={650} cy={285} r={6} fill={ink} />
-      <Label x={650} y={315} align="center">
+      <Label x={674} y={285} verticalAlign="middle">
         P
       </Label>
     </svg>
