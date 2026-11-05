@@ -1,0 +1,3005 @@
+{
+  "SP01": [
+    {
+      "text": "第三章已经给出完整求交和精确比较，",
+      "startMs": 70,
+      "endMs": 3590,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "本集接着处理同一个位置上的多份输入。",
+      "startMs": 3828,
+      "endMs": 6908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "上集先找齐参与者、报告全部输入对；",
+      "startMs": 7369,
+      "endMs": 9929,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "下集再维护右侧顺序，",
+      "startMs": 10268,
+      "endMs": 12388,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "并解释没有端点提示的共点为何会被发现。",
+      "startMs": 12688,
+      "endMs": 15888,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP02": [
+    {
+      "text": "本章仍要求非零输入不竖直，",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "任意两份之间没有非零长度重叠。",
+      "startMs": 2718,
+      "endMs": 5477,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "不同事件位置的横坐标各异；",
+      "startMs": 5919,
+      "endMs": 8158,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "这是不同位置的限制，",
+      "startMs": 8468,
+      "endMs": 10068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "不妨碍多个端点集中在同一个点。",
+      "startMs": 10338,
+      "endMs": 12978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP03": [
+    {
+      "text": "现在允许共端点、端点落在另一条线段内部、多条线段共点，",
+      "startMs": 70,
+      "endMs": 5350,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "也允许零长度点输入。",
+      "startMs": 5578,
+      "endMs": 7578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "共线但仅共享端点同样允许；",
+      "startMs": 8019,
+      "endMs": 10800,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "重叠、同横坐标不同位置和竖直线段参与扫描，",
+      "startMs": 10968,
+      "endMs": 15048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    },
+    {
+      "text": "分别留给后续章节。",
+      "startMs": 15338,
+      "endMs": 17098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    },
+    {
+      "text": "这些不是完整算法的输入限制。",
+      "startMs": 17529,
+      "endMs": 19940,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": null
+    }
+  ],
+  "SP04": [
+    {
+      "text": "把共同端点叫作 P，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "P"
+    },
+    {
+      "text": "横坐标和纵坐标都是四。",
+      "startMs": 2078,
+      "endMs": 4078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "P"
+    },
+    {
+      "text": "蓝色输入 A 从横坐标零、纵坐标四到 P；",
+      "startMs": 4519,
+      "endMs": 8350,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "A"
+    },
+    {
+      "text": "它在这里结束。",
+      "startMs": 8518,
+      "endMs": 9678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "A"
+    },
+    {
+      "text": "图是教学示意，不是真实执行轨迹。",
+      "startMs": 10109,
+      "endMs": 13568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "A"
+    }
+  ],
+  "SP05": [
+    {
+      "text": "橙色输入 B 从 P 到横坐标八、纵坐标八，",
+      "startMs": 70,
+      "endMs": 4390,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "在这里开始。",
+      "startMs": 4628,
+      "endMs": 5850,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "图中横纵每格都是一个单位，",
+      "startMs": 6219,
+      "endMs": 8379,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "O 是原点，箭头标出坐标正方向。",
+      "startMs": 8668,
+      "endMs": 11938,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "两份输入都包含端点。",
+      "startMs": 12429,
+      "endMs": 14388,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    }
+  ],
+  "SP06": [
+    {
+      "text": "A 满足纵坐标等于四，",
+      "startMs": 110,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "横坐标从零到四；",
+      "startMs": 2228,
+      "endMs": 3868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "B 满足纵坐标等于横坐标，",
+      "startMs": 4148,
+      "endMs": 6507,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "范围从四到八。",
+      "startMs": 6818,
+      "endMs": 8218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "引用第三章的完整求交结论：",
+      "startMs": 8709,
+      "endMs": 10948,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "唯一候选点 P 通过两份闭范围检查，",
+      "startMs": 11258,
+      "endMs": 14418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "所以这一对的完整交集就是 P。",
+      "startMs": 14678,
+      "endMs": 17210,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    }
+  ],
+  "SP07": [
+    {
+      "text": "紧靠 P 左侧只有 A，",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "右侧只有 B。",
+      "startMs": 2078,
+      "endMs": 3238,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "如果先忘掉结束的 A，",
+      "startMs": 3719,
+      "endMs": 5439,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "再读取开始的 B，配对名单里就少了 A，",
+      "startMs": 5768,
+      "endMs": 9240,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "会漏掉这一次端点接触。",
+      "startMs": 9358,
+      "endMs": 11358,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    }
+  ],
+  "SP08": [
+    {
+      "text": "先保留 A 在本次事件中的身份，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "把 B 也列进来，报告 A 与 B 的交集 P。",
+      "startMs": 2728,
+      "endMs": 6150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    },
+    {
+      "text": "然后 A 退出、B 继续；",
+      "startMs": 6489,
+      "endMs": 8409,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": "B"
+    },
+    {
+      "text": "不再向右延伸，不等于不属于当前闭端点。",
+      "startMs": 8738,
+      "endMs": 12458,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": "B"
+    }
+  ],
+  "SP09": [
+    {
+      "text": "这个理由不依赖两条线段的方向：",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "只要一份闭线段在这里结束，",
+      "startMs": 3028,
+      "endMs": 5228,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "它就仍包含这里的点。",
+      "startMs": 5498,
+      "endMs": 7098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "若还有其他参与者，就要在丢掉结束身份以前完成当前配对；",
+      "startMs": 7589,
+      "endMs": 12148,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "这说的是数学依赖，不要求程序容器永远不能暂时取出成员。",
+      "startMs": 12458,
+      "endMs": 17288,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP10": [
+    {
+      "text": "这次只取 B 和新的紫色输入 C，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "暂不取 A。",
+      "startMs": 2878,
+      "endMs": 3798,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "C 从横坐标一、纵坐标七到横坐标九、纵坐标负一，",
+      "startMs": 4269,
+      "endMs": 9000,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "满足纵坐标等于八减横坐标。",
+      "startMs": 9168,
+      "endMs": 11648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    }
+  ],
+  "SP11": [
+    {
+      "text": "用第三章的同一位置精确高度判断，",
+      "startMs": 70,
+      "endMs": 2949,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "C 在横坐标四处的高度是四。",
+      "startMs": 3178,
+      "endMs": 5577,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "四又严格在一和九之间，",
+      "startMs": 6019,
+      "endMs": 7899,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "所以 P 严格位于 C 内部；",
+      "startMs": 8218,
+      "endMs": 10218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "没有端点在 P，不代表不参加。",
+      "startMs": 10538,
+      "endMs": 13290,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    }
+  ],
+  "SP12": [
+    {
+      "text": "起点清单直接给出 B，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "却没有把严格穿过的 C 当作端点列在这里。",
+      "startMs": 2128,
+      "endMs": 5460,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "只用端点名单配对会漏掉 B 与 C；",
+      "startMs": 5769,
+      "endMs": 8780,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "还要到旧活动顺序中找同高度成员，",
+      "startMs": 8968,
+      "endMs": 11968,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "才能报告这一对对应 P。",
+      "startMs": 12238,
+      "endMs": 14158,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    }
+  ],
+  "SP13": [
+    {
+      "text": "这里查的是仍覆盖事件横坐标的旧活动线段，",
+      "startMs": 70,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "再比较它们在这里的精确高度。",
+      "startMs": 4078,
+      "endMs": 6078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "若只是延长线经过 P，",
+      "startMs": 6569,
+      "endMs": 8570,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "线段范围并未覆盖这里，",
+      "startMs": 8718,
+      "endMs": 10920,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "就不能加入。",
+      "startMs": 11128,
+      "endMs": 12128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "点归属的共线和闭范围结论见第三章，",
+      "startMs": 12579,
+      "endMs": 15619,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "P"
+    },
+    {
+      "text": "不重做求交公式。",
+      "startMs": 15928,
+      "endMs": 17488,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "P"
+    }
+  ],
+  "SP14": [
+    {
+      "text": "这一页新增的机制是：",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "P"
+    },
+    {
+      "text": "端点让我们到站，旧活动顺序补齐没有端点提示的参与者。",
+      "startMs": 1918,
+      "endMs": 6680,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "P"
+    },
+    {
+      "text": "到达一个已知位置后怎样找齐，",
+      "startMs": 6989,
+      "endMs": 9370,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "与这个位置为什么一定会被发现，",
+      "startMs": 9538,
+      "endMs": 12098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "是不同问题。",
+      "startMs": 12408,
+      "endMs": 13488,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "后一个问题留给下集。",
+      "startMs": 13949,
+      "endMs": 15589,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    }
+  ],
+  "SP15": [
+    {
+      "text": "现在取回 A，和 B、C 一起，",
+      "startMs": 70,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "ABC"
+    },
+    {
+      "text": "再加入绿色输入 D。",
+      "startMs": 3298,
+      "endMs": 5030,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "ABC"
+    },
+    {
+      "text": "D 从横坐标二、纵坐标零到横坐标七、纵坐标十，",
+      "startMs": 5389,
+      "endMs": 9829,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "D"
+    },
+    {
+      "text": "满足纵坐标等于二倍横坐标减四。",
+      "startMs": 10138,
+      "endMs": 13017,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "D"
+    },
+    {
+      "text": "只看 P 这次事件，",
+      "startMs": 13479,
+      "endMs": 14839,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": "D"
+    },
+    {
+      "text": "不重演整次扫描。",
+      "startMs": 15128,
+      "endMs": 16608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": "D"
+    }
+  ],
+  "SP16": [
+    {
+      "text": "D 在横坐标四处的高度也是四，",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "D"
+    },
+    {
+      "text": "而且四严格在二和七之间。",
+      "startMs": 2778,
+      "endMs": 4818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "D"
+    },
+    {
+      "text": "所以 D 也严格穿过 P。",
+      "startMs": 5269,
+      "endMs": 7190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "P"
+    },
+    {
+      "text": "其他端点的横坐标是零、一、二、七、八、九，",
+      "startMs": 7539,
+      "endMs": 11539,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "P"
+    },
+    {
+      "text": "与四不同，也彼此不同，",
+      "startMs": 11888,
+      "endMs": 14208,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "P"
+    },
+    {
+      "text": "符合本章条件。",
+      "startMs": 14478,
+      "endMs": 15638,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": "P"
+    }
+  ],
+  "SP17": [
+    {
+      "text": "例如检查旧邻居 A 与 C，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "AC"
+    },
+    {
+      "text": "可以算出未来位置 P；",
+      "startMs": 2478,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "AC"
+    },
+    {
+      "text": "这只说明要在 P 停下。",
+      "startMs": 4448,
+      "endMs": 6048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "AC"
+    },
+    {
+      "text": "到站后不能只处理这一对。",
+      "startMs": 6489,
+      "endMs": 8689,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "BD"
+    },
+    {
+      "text": "A 的结束、B 的开始，",
+      "startMs": 9199,
+      "endMs": 11250,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "BD"
+    },
+    {
+      "text": "以及 C 的穿过和 D 的穿过，",
+      "startMs": 11408,
+      "endMs": 13608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "BD"
+    },
+    {
+      "text": "都属于同一次事件。",
+      "startMs": 13878,
+      "endMs": 15478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "BD"
+    }
+  ],
+  "SP18": [
+    {
+      "text": "引用第三章的同点结论：",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "position"
+    },
+    {
+      "text": "横坐标和纵坐标分别相等，",
+      "startMs": 2228,
+      "endMs": 4560,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "position"
+    },
+    {
+      "text": "才是同一精确位置。",
+      "startMs": 4788,
+      "endMs": 6308,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "position"
+    },
+    {
+      "text": "其他输入对再发现 P，",
+      "startMs": 6739,
+      "endMs": 8710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "就使用同一位置记录；",
+      "startMs": 8888,
+      "endMs": 10488,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "不能因为来源不同，把同点拆成多次处理。",
+      "startMs": 10758,
+      "endMs": 14410,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    }
+  ],
+  "SP19": [
+    {
+      "text": "所有端点预先已知，",
+      "startMs": 70,
+      "endMs": 1820,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "endpoints"
+    },
+    {
+      "text": "所以 P 的记录可以保留哪些输入从这里开始、哪些在这里结束。",
+      "startMs": 1978,
+      "endMs": 5777,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "endpoints"
+    },
+    {
+      "text": "交点记录并入这个位置时，",
+      "startMs": 6219,
+      "endMs": 8379,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "不能覆盖已有端点信息。",
+      "startMs": 8668,
+      "endMs": 10620,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "后面还要加入点输入身份。",
+      "startMs": 10959,
+      "endMs": 12999,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    }
+  ],
+  "SP20": [
+    {
+      "text": "继续沿用第二章《扫描过程与三类事件》的规则：",
+      "startMs": 70,
+      "endMs": 3800,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "keep"
+    },
+    {
+      "text": "真实未来交点即使暂时失去邻接，",
+      "startMs": 3978,
+      "endMs": 6780,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "keep"
+    },
+    {
+      "text": "也保留到取出。",
+      "startMs": 6948,
+      "endMs": 8360,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "keep"
+    },
+    {
+      "text": "清单每次取最左的未处理位置，",
+      "startMs": 8689,
+      "endMs": 11129,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "同一位置只统一处理一次。",
+      "startMs": 11438,
+      "endMs": 13198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "预约的一对提供发现依据，",
+      "startMs": 13719,
+      "endMs": 15719,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "merge"
+    },
+    {
+      "text": "完整名单到站再找。",
+      "startMs": 16078,
+      "endMs": 17758,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "merge"
+    }
+  ],
+  "SP21": [
+    {
+      "text": "把同一个事件位置一般地写成 P，",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "符号 x_P 和 y_P 分别表示它的横坐标和纵坐标，",
+      "startMs": 2728,
+      "endMs": 7808,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "案例中都等于四。",
+      "startMs": 8098,
+      "endMs": 9578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    },
+    {
+      "text": "非零输入按横坐标认出左端点和右端点，",
+      "startMs": 10039,
+      "endMs": 13479,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": null
+    },
+    {
+      "text": "不由端点书写顺序决定。",
+      "startMs": 13788,
+      "endMs": 15628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": null
+    },
+    {
+      "text": "下面的角色含义不依赖数值四。",
+      "startMs": 16079,
+      "endMs": 18639,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": null
+    }
+  ],
+  "SP22": [
+    {
+      "text": "经过 P 的非零输入，",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "若左端点就是 P、右端点横坐标更大，",
+      "startMs": 2018,
+      "endMs": 5178,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "就叫开始者。",
+      "startMs": 5448,
+      "endMs": 6650,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "本例 B 是开始者；",
+      "startMs": 6989,
+      "endMs": 8850,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    },
+    {
+      "text": "它参与当前报告，右侧也继续，",
+      "startMs": 8988,
+      "endMs": 11958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    },
+    {
+      "text": "但左侧旧顺序里还没有它。",
+      "startMs": 12228,
+      "endMs": 14160,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    }
+  ],
+  "SP23": [
+    {
+      "text": "若右端点就是 P、左端点横坐标更小，",
+      "startMs": 70,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "就叫结束者。",
+      "startMs": 3578,
+      "endMs": 4600,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "本例 A 是结束者，",
+      "startMs": 4919,
+      "endMs": 6490,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "A"
+    },
+    {
+      "text": "在旧顺序中，也参与当前闭端点报告；",
+      "startMs": 6618,
+      "endMs": 10118,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "A"
+    },
+    {
+      "text": "只是右侧不再继续。",
+      "startMs": 10408,
+      "endMs": 11848,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "A"
+    }
+  ],
+  "SP24": [
+    {
+      "text": "如果 P 在线段上，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "横坐标又严格夹在两端之间，",
+      "startMs": 2028,
+      "endMs": 4468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "就叫严格穿过者。",
+      "startMs": 4748,
+      "endMs": 6270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "本例是 C 和 D，",
+      "startMs": 6589,
+      "endMs": 8070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "两侧都存在。",
+      "startMs": 8188,
+      "endMs": 9268,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "非零且不竖直保证两端横坐标不同，",
+      "startMs": 9729,
+      "endMs": 12729,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "D"
+    },
+    {
+      "text": "所以三种角色互不混淆。",
+      "startMs": 13078,
+      "endMs": 14798,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "D"
+    },
+    {
+      "text": "当前四份都参加，",
+      "startMs": 15098,
+      "endMs": 16680,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "D"
+    },
+    {
+      "text": "右侧只保留输入 B、输入 C 和输入 D 这三份。",
+      "startMs": 16868,
+      "endMs": 20707,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "D"
+    }
+  ],
+  "SP25": [
+    {
+      "text": "把紧靠 P 左侧的活动顺序叫旧顺序，",
+      "startMs": 70,
+      "endMs": 3110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "其中经过 P 的旧参与者叫相遇块。",
+      "startMs": 3328,
+      "endMs": 6008,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "它包括结束者和严格穿过者，",
+      "startMs": 6469,
+      "endMs": 8800,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "old"
+    },
+    {
+      "text": "不包括开始者；",
+      "startMs": 8968,
+      "endMs": 10270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "old"
+    },
+    {
+      "text": "本例旧块是从下到上的 D、A、C。",
+      "startMs": 10388,
+      "endMs": 13400,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "old"
+    },
+    {
+      "text": "没有旧参与者时就是空块。",
+      "startMs": 13729,
+      "endMs": 15688,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "old"
+    }
+  ],
+  "SP26": [
+    {
+      "text": "旧参与者不足两条时，",
+      "startMs": 70,
+      "endMs": 1900,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "空块或单成员块已经连续。",
+      "startMs": 2078,
+      "endMs": 4397,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "至少有两条时，才需要证明：",
+      "startMs": 4869,
+      "endMs": 7508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "旧顺序里夹在它们中间的其他成员，",
+      "startMs": 7788,
+      "endMs": 10268,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "会不会不参加当前事件？",
+      "startMs": 10558,
+      "endMs": 12517,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP27": [
+    {
+      "text": "离开四输入的数值，任取旧参与者中最下的 U、最上的 V；",
+      "startMs": 70,
+      "endMs": 4958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "UV"
+    },
+    {
+      "text": "若中间还有旧成员，把它叫 W。",
+      "startMs": 5248,
+      "endMs": 8198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "UV"
+    },
+    {
+      "text": "图仅表示从下到上的关系，",
+      "startMs": 8709,
+      "endMs": 10948,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "W"
+    },
+    {
+      "text": "不另造数值案例。",
+      "startMs": 11258,
+      "endMs": 12738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "W"
+    },
+    {
+      "text": "U 和 V 都到达 P，",
+      "startMs": 13199,
+      "endMs": 14710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "W"
+    },
+    {
+      "text": "横坐标仍用 x_P，",
+      "startMs": 14898,
+      "endMs": 17230,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "W"
+    },
+    {
+      "text": "纵坐标仍用 y_P。",
+      "startMs": 17418,
+      "endMs": 19737,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "W"
+    }
+  ],
+  "SP29": [
+    {
+      "text": "沿用第二章《为什么不会漏掉交点》的无事件区间，",
+      "startMs": 70,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "interval"
+    },
+    {
+      "text": "W 在紧邻 P 左侧不会提前结束。",
+      "startMs": 4378,
+      "endMs": 7257,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "interval"
+    },
+    {
+      "text": "这次还允许它恰好在 P 结束；",
+      "startMs": 7719,
+      "endMs": 9879,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "W"
+    },
+    {
+      "text": "闭线段包含结束端点，",
+      "startMs": 10168,
+      "endMs": 12168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "W"
+    },
+    {
+      "text": "所以到 P 仍存在。",
+      "startMs": 12488,
+      "endMs": 14088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "W"
+    },
+    {
+      "text": "共同存在和左侧夹层的条件仍满足。",
+      "startMs": 14579,
+      "endMs": 17690,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "W"
+    }
+  ],
+  "SP33": [
+    {
+      "text": "直接引用第二章《为什么不会漏掉交点》的夹层结论：",
+      "startMs": 70,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "W"
+    },
+    {
+      "text": "U 和 V 到达同一个 P，",
+      "startMs": 4178,
+      "endMs": 5990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "W"
+    },
+    {
+      "text": "中间的 W 也经过 P。",
+      "startMs": 6148,
+      "endMs": 8100,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "W"
+    },
+    {
+      "text": "本章允许共点，所以这次要把 W 一起收进相遇块。",
+      "startMs": 8489,
+      "endMs": 12838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "W"
+    },
+    {
+      "text": "所有夹在最下和最上参与者之间的旧成员都要收进来，",
+      "startMs": 13279,
+      "endMs": 17279,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "UV"
+    },
+    {
+      "text": "因此旧参与者连续成块。",
+      "startMs": 17578,
+      "endMs": 19618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "UV"
+    },
+    {
+      "text": "不能照搬任意两条交叉前必相邻的结论。",
+      "startMs": 20069,
+      "endMs": 23589,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": "P"
+    }
+  ],
+  "SP34": [
+    {
+      "text": "沿用第二章的边界高度结论，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "把所有旧成员的高度都取在 x_P，",
+      "startMs": 2378,
+      "endMs": 5697,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "顺序仍从下到上不递减，",
+      "startMs": 5998,
+      "endMs": 8078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "允许相等。",
+      "startMs": 8368,
+      "endMs": 9368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    }
+  ],
+  "SP35": [
+    {
+      "text": "现在可以按精确高度，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "search"
+    },
+    {
+      "text": "有序定位第一条不低于 y_P 的旧成员。",
+      "startMs": 2028,
+      "endMs": 5668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "search"
+    },
+    {
+      "text": "利用已经维护的顺序来找块首，",
+      "startMs": 6119,
+      "endMs": 8518,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "old"
+    },
+    {
+      "text": "不必每次遍历所有输入；",
+      "startMs": 8818,
+      "endMs": 10618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "old"
+    },
+    {
+      "text": "这里说明查找用途，不展开容器代码。",
+      "startMs": 10888,
+      "endMs": 14340,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "old"
+    }
+  ],
+  "SP36": [
+    {
+      "text": "若第一条等于 y_P，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "collect-old"
+    },
+    {
+      "text": "就沿相等者逐条取出，",
+      "startMs": 2378,
+      "endMs": 4500,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "collect-old"
+    },
+    {
+      "text": "直到遇见不相等者。",
+      "startMs": 4698,
+      "endMs": 6260,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "collect-old"
+    },
+    {
+      "text": "若第一条已经更高，或根本没有不低于者，",
+      "startMs": 6589,
+      "endMs": 9990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "search"
+    },
+    {
+      "text": "就没有相等块，只得到插入空隙。",
+      "startMs": 10158,
+      "endMs": 13108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "search"
+    },
+    {
+      "text": "结束者也在旧块中，端点名单可核对其身份。",
+      "startMs": 13569,
+      "endMs": 17198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "A"
+    }
+  ],
+  "SP37": [
+    {
+      "text": "取得整个旧块后，",
+      "startMs": 70,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "再合并清单中从 P 开始的非零输入。",
+      "startMs": 1678,
+      "endMs": 4517,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "merge"
+    },
+    {
+      "text": "本例旧块中的三份输入分别是 D、A 和 C，",
+      "startMs": 4969,
+      "endMs": 8490,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "old"
+    },
+    {
+      "text": "再把作为开始者的输入 B 加入名单，",
+      "startMs": 8668,
+      "endMs": 11547,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "合并后得到四份参与者。",
+      "startMs": 11838,
+      "endMs": 13638,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "结束者 A 仍然留在名单中，",
+      "startMs": 13958,
+      "endMs": 16197,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "直到当前配对完成。",
+      "startMs": 16528,
+      "endMs": 18208,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    }
+  ],
+  "SP38": [
+    {
+      "text": "端点记录中也能读到 A 的结束身份，",
+      "startMs": 70,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "但 A 已在旧块中，",
+      "startMs": 3128,
+      "endMs": 4528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "不能再加一份。",
+      "startMs": 4848,
+      "endMs": 5928,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "A"
+    },
+    {
+      "text": "合并按原始编号去重；",
+      "startMs": 6389,
+      "endMs": 8189,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    },
+    {
+      "text": "相同编号只留一次，不同编号即使同点也不能合并。",
+      "startMs": 8488,
+      "endMs": 12768,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "merge"
+    }
+  ],
+  "SP39": [
+    {
+      "text": "任取一份包含 P 的非零非竖直输入：",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "左端点若在 P 左边，",
+      "startMs": 3028,
+      "endMs": 4828,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "它就在紧邻左侧活动，",
+      "startMs": 5098,
+      "endMs": 6698,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "已由旧块收集。",
+      "startMs": 7018,
+      "endMs": 8338,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "old"
+    },
+    {
+      "text": "若左端点不在左边，只能恰好是 P，",
+      "startMs": 8809,
+      "endMs": 12310,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    },
+    {
+      "text": "便在开始者名单中。",
+      "startMs": 12320,
+      "endMs": 13890,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    },
+    {
+      "text": "这两路覆盖全部非零参与者。",
+      "startMs": 14319,
+      "endMs": 16730,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    }
+  ],
+  "SP40": [
+    {
+      "text": "反过来，旧块里的成员覆盖 x_P 且精确等高，",
+      "startMs": 70,
+      "endMs": 4528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "所以确实经过 P；",
+      "startMs": 4798,
+      "endMs": 6158,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "块外成员高度不同，不经过 P。",
+      "startMs": 6468,
+      "endMs": 9280,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "开始者则由真实端点给出。",
+      "startMs": 9629,
+      "endMs": 12100,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    },
+    {
+      "text": "两路没有凭空加入旁观者。",
+      "startMs": 12449,
+      "endMs": 14680,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    },
+    {
+      "text": "点输入稍后单列，当前论证只针对非零输入。",
+      "startMs": 15019,
+      "endMs": 19187,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    }
+  ],
+  "SP41": [
+    {
+      "text": "第一章《逐对检查的基准方法》已经给出无序对的枚举结论。",
+      "startMs": 70,
+      "endMs": 4750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "identity"
+    },
+    {
+      "text": "当前名单包含 A 与 B 这两份输入，",
+      "startMs": 5149,
+      "endMs": 8149,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "all-pairs"
+    },
+    {
+      "text": "还包含 C 与 D 这两份输入。",
+      "startMs": 8448,
+      "endMs": 10648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "all-pairs"
+    },
+    {
+      "text": "这四份输入对应图中的六个不同输入对，",
+      "startMs": 10918,
+      "endMs": 13998,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "all-pairs"
+    },
+    {
+      "text": "每对的交集都是 P 这个点。",
+      "startMs": 14288,
+      "endMs": 16247,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "all-pairs"
+    }
+  ],
+  "SP43": [
+    {
+      "text": "清单只处理一个 P，",
+      "startMs": 70,
+      "endMs": 1650,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "all-pairs"
+    },
+    {
+      "text": "求交结果却保留六个输入对的身份。",
+      "startMs": 1878,
+      "endMs": 4478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "all-pairs"
+    },
+    {
+      "text": "不能用一条这里有交点代替六条结果。",
+      "startMs": 4919,
+      "endMs": 7930,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "position"
+    },
+    {
+      "text": "这里列的是当前已找齐成员之间的报告，",
+      "startMs": 8239,
+      "endMs": 11078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "position"
+    },
+    {
+      "text": "不是扫描所有原始输入对。",
+      "startMs": 11388,
+      "endMs": 13188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "position"
+    }
+  ],
+  "SP44": [
+    {
+      "text": "六对只是数值案例，还需要对任意数量的参与者说明理由。",
+      "startMs": 70,
+      "endMs": 4658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "每份参与者已经确认包含 P，",
+      "startMs": 5119,
+      "endMs": 7630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "所以任取两份，它们至少共享 P，",
+      "startMs": 7818,
+      "endMs": 10960,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "不会报告一个不存在的交集。",
+      "startMs": 11158,
+      "endMs": 13090,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP45": [
+    {
+      "text": "引用第一章《我们究竟要求什么》的结论：",
+      "startMs": 70,
+      "endMs": 2850,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "两条闭线段若有两个不同公共点，",
+      "startMs": 2978,
+      "endMs": 5658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "就共享非零长度区间。",
+      "startMs": 5948,
+      "endMs": 7868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "本章不允许这种重叠，",
+      "startMs": 8339,
+      "endMs": 10099,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "所以这两份的完整交集恰好只有 P。",
+      "startMs": 10388,
+      "endMs": 13280,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "只要有点输入，也不可能出现第二个公共点。",
+      "startMs": 13629,
+      "endMs": 17028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    }
+  ],
+  "SP46": [
+    {
+      "text": "反过来，任意一对若在当前位置真实相交，",
+      "startMs": 70,
+      "endMs": 3647,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "两份都包含 P。",
+      "startMs": 3948,
+      "endMs": 5348,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "参与者已找齐，它们便都在名单中；",
+      "startMs": 5839,
+      "endMs": 8938,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "较小编号那一行必配到较大编号，",
+      "startMs": 9208,
+      "endMs": 12047,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "所以当前位置没有漏报。",
+      "startMs": 12328,
+      "endMs": 14208,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP47": [
+    {
+      "text": "第一章《逐对检查的基准方法》已证明，",
+      "startMs": 70,
+      "endMs": 3110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "只找更大原始编号，每个无序对恰好出现一次。",
+      "startMs": 3328,
+      "endMs": 7308,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "这里直接把它用于当前名单，",
+      "startMs": 7789,
+      "endMs": 9748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "不配自身，也不把交换次序算成另一对。",
+      "startMs": 10088,
+      "endMs": 13558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP48": [
+    {
+      "text": "跨事件也不会重复：本章每对非空交集只能是一个点，",
+      "startMs": 70,
+      "endMs": 4587,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "而同一精确位置只处理一次。",
+      "startMs": 4898,
+      "endMs": 7137,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "这是已到达位置的完整报告理由；",
+      "startMs": 7589,
+      "endMs": 9988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "没有端点提示的共点为何一定被预约，",
+      "startMs": 10288,
+      "endMs": 13400,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    },
+    {
+      "text": "到下集再证明，不能提前假定已经解决。",
+      "startMs": 13558,
+      "endMs": 17058,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    }
+  ],
+  "SP49": [
+    {
+      "text": "现在只取 C，再取两份新输入 Z_1、Z_2，",
+      "startMs": 70,
+      "endMs": 3478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "它们的两个端点都等于 P。",
+      "startMs": 3798,
+      "endMs": 5780,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "两份各只有一个点，却有不同原始编号。",
+      "startMs": 6139,
+      "endMs": 9478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z2"
+    },
+    {
+      "text": "图分开显示这两个重合身份，",
+      "startMs": 9929,
+      "endMs": 12089,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z2"
+    },
+    {
+      "text": "位置和尺度相同，没有挪动点。",
+      "startMs": 12378,
+      "endMs": 15368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z2"
+    }
+  ],
+  "SP50": [
+    {
+      "text": "菱形只帮助辨认零长度输入，",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "不表示它有面积。",
+      "startMs": 2628,
+      "endMs": 4150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "两幅图里的 C 是同一条线段。",
+      "startMs": 4469,
+      "endMs": 6868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "这些是新选取的点输入，",
+      "startMs": 7339,
+      "endMs": 9298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z2"
+    },
+    {
+      "text": "不是把四输入案例悄悄换掉后仍声称同一组输入。",
+      "startMs": 9588,
+      "endMs": 13387,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z2"
+    }
+  ],
+  "SP51": [
+    {
+      "text": "若把点输入同时当开始者和结束者拼接，",
+      "startMs": 70,
+      "endMs": 3320,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "同一个编号可能被放两次。",
+      "startMs": 3478,
+      "endMs": 5558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "因此另设点输入角色，",
+      "startMs": 6019,
+      "endMs": 7899,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z2"
+    },
+    {
+      "text": "与非零开始者、结束者分开；",
+      "startMs": 8218,
+      "endMs": 10497,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z2"
+    },
+    {
+      "text": "在这个位置按原始编号各留一次。",
+      "startMs": 10788,
+      "endMs": 13468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z2"
+    }
+  ],
+  "SP52": [
+    {
+      "text": "到达 P，",
+      "startMs": 70,
+      "endMs": 900,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "先按前面的方法找齐非零参与者，",
+      "startMs": 1078,
+      "endMs": 3920,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "C"
+    },
+    {
+      "text": "再合并这里的点输入。",
+      "startMs": 4098,
+      "endMs": 5898,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "points"
+    },
+    {
+      "text": "这次名单包含线段 C，",
+      "startMs": 6339,
+      "endMs": 8259,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "还有点输入 Z_1 和点输入 Z_2。",
+      "startMs": 8588,
+      "endMs": 11387,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "points"
+    },
+    {
+      "text": "同一位置不合并不同身份，",
+      "startMs": 11708,
+      "endMs": 13708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "points"
+    },
+    {
+      "text": "同一身份也不重复加入。",
+      "startMs": 13978,
+      "endMs": 15738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "points"
+    }
+  ],
+  "SP53": [
+    {
+      "text": "结果分别是 C 与 Z_1、",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "CZ1"
+    },
+    {
+      "text": "C 与 Z_2，",
+      "startMs": 1790,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "CZ2"
+    },
+    {
+      "text": "还有点输入 Z_1 与点输入 Z_2 之间的配对，",
+      "startMs": 2878,
+      "endMs": 6078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "Z1Z2"
+    },
+    {
+      "text": "每一对的完整交集都是 P。",
+      "startMs": 6398,
+      "endMs": 8318,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": "P"
+    },
+    {
+      "text": "点与线段、点与点的精确判断引用第三章《从任意端点求出完整交集》第二节，",
+      "startMs": 8789,
+      "endMs": 16390,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4,
+      "target": "reference"
+    },
+    {
+      "text": "这里新增的是它们在扫描中的收集与去向。",
+      "startMs": 16538,
+      "endMs": 19698,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 5,
+      "target": "reference"
+    }
+  ],
+  "SP54": [
+    {
+      "text": "点输入只在横坐标等于 x_P 时存在；",
+      "startMs": 70,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "points"
+    },
+    {
+      "text": "任意更大的横坐标都没有它的点。",
+      "startMs": 3878,
+      "endMs": 6318,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "points"
+    },
+    {
+      "text": "所以配对后不进入右侧活动顺序，",
+      "startMs": 6769,
+      "endMs": 9329,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "不给它安排在 C 上方或下方，",
+      "startMs": 9668,
+      "endMs": 11907,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "C"
+    },
+    {
+      "text": "也不用凭空指定直线或斜率。",
+      "startMs": 12238,
+      "endMs": 14597,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": "C"
+    },
+    {
+      "text": "本例两侧都只有 C。",
+      "startMs": 15029,
+      "endMs": 16540,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": "C"
+    }
+  ],
+  "SP55": [
+    {
+      "text": "如果只取点输入 Z_1 和点输入 Z_2，",
+      "startMs": 70,
+      "endMs": 3110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1Z2"
+    },
+    {
+      "text": "没有非零线段，",
+      "startMs": 3378,
+      "endMs": 4658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1Z2"
+    },
+    {
+      "text": "仍报告这一对对应 P。",
+      "startMs": 4998,
+      "endMs": 6830,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1Z2"
+    },
+    {
+      "text": "两侧活动顺序都为空，",
+      "startMs": 7189,
+      "endMs": 8949,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "points"
+    },
+    {
+      "text": "不能因为没有旧块或新块，",
+      "startMs": 9238,
+      "endMs": 11038,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "points"
+    },
+    {
+      "text": "就把当前点配对跳过去。",
+      "startMs": 11308,
+      "endMs": 13308,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "points"
+    }
+  ],
+  "SP56": [
+    {
+      "text": "若只取 Z_1，当前只有一个原始身份，",
+      "startMs": 60,
+      "endMs": 3198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "配不出不同输入对。",
+      "startMs": 3498,
+      "endMs": 4978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "Z1"
+    },
+    {
+      "text": "结果为空，但这个已知端点事件仍正常处理完毕。",
+      "startMs": 5439,
+      "endMs": 9688,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z1"
+    },
+    {
+      "text": "没有结果，不等于没有事件。",
+      "startMs": 10129,
+      "endMs": 12598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z1"
+    }
+  ],
+  "SP57": [
+    {
+      "text": "点恰好落在闭端点也一样。",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "AZ1"
+    },
+    {
+      "text": "先单独取 A 与 Z_1，",
+      "startMs": 2499,
+      "endMs": 4259,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "AZ1"
+    },
+    {
+      "text": "报告这一对对应 P，",
+      "startMs": 4598,
+      "endMs": 6270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "AZ1"
+    },
+    {
+      "text": "然后 A 结束。",
+      "startMs": 6508,
+      "endMs": 7708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "AZ1"
+    },
+    {
+      "text": "点输入不进入右侧，这一案例右侧没有活动成员。",
+      "startMs": 8159,
+      "endMs": 12358,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "Z1"
+    }
+  ],
+  "SP58": [
+    {
+      "text": "再单独取 B 与 Z_1，",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "BZ1"
+    },
+    {
+      "text": "先报告当前配对，",
+      "startMs": 1978,
+      "endMs": 3458,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "BZ1"
+    },
+    {
+      "text": "然后只有 B 向右继续。",
+      "startMs": 3748,
+      "endMs": 5548,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": "B"
+    },
+    {
+      "text": "这是另一个两输入案例，",
+      "startMs": 5989,
+      "endMs": 7629,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    },
+    {
+      "text": "与左图分别处理；",
+      "startMs": 7938,
+      "endMs": 9600,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    },
+    {
+      "text": "左图的非零输入记作 A，",
+      "startMs": 9808,
+      "endMs": 11728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "A"
+    },
+    {
+      "text": "右图的非零输入记作 B。",
+      "startMs": 12028,
+      "endMs": 14210,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "B"
+    },
+    {
+      "text": "两次画出的 Z_1 不能算作两个身份，",
+      "startMs": 14398,
+      "endMs": 17078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "points"
+    },
+    {
+      "text": "不能把两个案例误拼成四个身份。",
+      "startMs": 17368,
+      "endMs": 19488,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": "points"
+    }
+  ],
+  "SP59": [
+    {
+      "text": "更多同位置点输入时，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "每份都分别与每条非零参与者配对，",
+      "startMs": 2128,
+      "endMs": 4927,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "点身份之间也按原始编号配对。",
+      "startMs": 5198,
+      "endMs": 7838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "点只有 P，不会带来另一个交点；",
+      "startMs": 8289,
+      "endMs": 11198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "保留不同身份、同一编号一次的规则，",
+      "startMs": 11508,
+      "endMs": 14210,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    },
+    {
+      "text": "让先前的不漏、不多报、不重复理由继续成立。",
+      "startMs": 14378,
+      "endMs": 18018,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3,
+      "target": null
+    }
+  ],
+  "SP60": [
+    {
+      "text": "现在可以说清当前位置的完整名单从哪里来：",
+      "startMs": 70,
+      "endMs": 3389,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "精确高度找到旧相遇块，",
+      "startMs": 3628,
+      "endMs": 5508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "补入非零开始者，再合并点输入。",
+      "startMs": 5798,
+      "endMs": 8948,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "按原始身份各留一次，",
+      "startMs": 9409,
+      "endMs": 11368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "结束者先参加闭端点报告，",
+      "startMs": 11708,
+      "endMs": 13987,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "点输入只参加这一次。",
+      "startMs": 14278,
+      "endMs": 16078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP61": [
+    {
+      "text": "先停一下：若只处理预约交点的那一对，",
+      "startMs": 70,
+      "endMs": 3118,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "会在哪一步漏掉其他身份？",
+      "startMs": 3398,
+      "endMs": 5118,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "试着用旧相遇块、开始者和点输入三路说明，",
+      "startMs": 5589,
+      "endMs": 8669,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "不需要重演整次扫描。",
+      "startMs": 8988,
+      "endMs": 10668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    }
+  ],
+  "SP62": [
+    {
+      "text": "本集已经解释到站后怎样找齐并完整报告。",
+      "startMs": 70,
+      "endMs": 3550,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "接下来还要筛选继续成员、排出整个右侧块、检查新增邻接。",
+      "startMs": 3949,
+      "endMs": 8840,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0,
+      "target": null
+    },
+    {
+      "text": "没有端点提示的共点为何一定能到站，",
+      "startMs": 9169,
+      "endMs": 11849,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "也留给第四章下集。",
+      "startMs": 12168,
+      "endMs": 13960,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1,
+      "target": null
+    },
+    {
+      "text": "到这里，不把当前位置的完整处理当作整次扫描已经证明。",
+      "startMs": 14309,
+      "endMs": 18898,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2,
+      "target": null
+    }
+  ]
+}

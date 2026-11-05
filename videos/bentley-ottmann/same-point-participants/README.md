@@ -1,80 +1,63 @@
 # 第四章上集：找齐同点参与者，报告全部输入对
 
-依据：[规格 #334](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/334)、[#336 音频与同步](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/336)、[#337 整体验收](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/337)。父规格未修改。
+Composition：`SamePointParticipants`。依据：[规格 #334](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/334)、[文案与画面 #335](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/335)、[音频与同步 #336](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/336)、[整体验收 #337](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/337)。
 
-`SamePointParticipants` 已接入 57 段完整原速 WAV，20 页、60 fps。时间线由实测音频时长及真实词事件计算，总长 1019.5167 秒；开口前保留半秒，页末保留完整画面及最后字幕，SP61 思考窗口仍为八秒。旧五秒阅读槽已退出播放计算。
+57 个教学步骤、20 页，60 fps、61,171 帧，约 16 分 59.52 秒。范围为第四章正文第一至五节：共端点、端点落在内部、多线共点、连续相遇块、完整配对与零长度点输入。整块更新及无端点提示的共点发现留给下集；防重复与一般论证沿用 #335 的已确认结果。
 
-## 当前音频与用户确认
+## 制作源与生成物
 
-用户要求保留最优音频，不进行实际试听，并明确确认“b/闭问题通过”，随后要求合并主干推送。按可验证词时间、较少发音标记、较早版本的顺序选出 57 段；用户明确选定的后续试听版本优先。版本与逐段 SHA-256 见 `narration/selection.json`。组合为原版 37、IPA v1 12、omission v2 3、D-dee-v1 1、context v3/v4/v6/v7 各 1。原始 WAV 逐字节复用，音色 Xiaoxiao、48 kHz／16 bit／单声道 PCM，无裁切、调速或重合成。
+| 文件                       | 职责                                                              |
+| -------------------------- | ----------------------------------------------------------------- |
+| `src/storyboard.ts`        | 当前字幕母稿、教学行、语义操作、分页与停留                        |
+| `src/narration-text.json`  | 当前采用的独立口播，保留数学身份字母                              |
+| `src/speech-text.json`     | 对应口播的实际读音与显式停顿；SSML 由共享构造器生成               |
+| `src/sentence-plan.json`   | 当前字幕原句与口播短句的语义对应，原句末 400ms／句内 200ms        |
+| `src/caption-plan.json`    | 当前短字幕与口播的对应，`source`／`target` 定位本集教学操作       |
+| `src/audio-selection.json` | 明确选定的版本、音频哈希、请求指纹及已确认识别例外                |
+| `public/narration/*.wav`   | 唯一一套正式完整原速音频，Git LFS 管理                            |
+| `src/audio-timing.json`    | 正式音频、真实词事件及原始评估响应；SP24 同时保留映射前的合成事件 |
+| `src/captions.json`        | 从当前字幕计划和实测词时间生成的播放字幕                          |
 
-原始 Azure 计数：发音 60、漏读 1、插入 1；评估覆盖 57/57，缺失 0。SP06 原版 B／“闭”的两项严重标记由用户明确接受，未解决漏读／插入为 0，但原始计数没有归零。确认通过现有 `reviewedRecognition` 绑定该 WAV 哈希、口播指纹和具体词位置，采用原始识别事件的真实时长，不删除原始响应、不伪造词时间、不声称实际试听通过。所有 57 段通过真实词时间校验。其余发音标记保留为机器疑点。
+当前稿件可重建全部 57 份已采用请求的原始 SSML 与指纹，不再把旧冻结稿当作当前制作输入。SP24 的两处 D 在读音稿中明确写为 `{ "letter": "D", "englishWord": "dee" }`；字幕、独立口播和教学对象仍为 D。其正式 WAV 为用户选定的 `D-dee-v1`，20.78 秒，SHA-256：
+`efad0bbdd73fe5123e720d6a721ccf33dec10d7e1adfacdeed546bdeba031c16`。
 
-用户随后指出 SP24“本例是 C 和 D”中的 D 听成 Day，并明确要求接入 D → `dee` 的整段试听版 `D-dee-v1`。已将其原始 20.78 秒 WAV 原样替换到 `public/narration/SP24.wav`，SHA-256 为 `efad0bbdd73fe5123e720d6a721ccf33dec10d7e1adfacdeed546bdeba031c16`。仅补做该音频的一次评估：发音标记 4、漏读 0、插入 0；实测词时间已同步，两处 `dee` 映射回字幕与时间线中的 D，原始合成事件保留。普通措辞和字幕文字未改，助手未实际试听，不将程序检查表述为听辨结论。
+音频均为服务直接返回的 48 kHz／16 bit／单声道 PCM WAV，未裁切、调速或重合成。字幕、时间线、页面和播放复用 `videos/shared/`；本集不导入相邻视频业务源码。运行和检查不读取 `out`，临时输出整体忽略，历史试听和诊断可从 Git 历史追溯。
 
-## 当前文件与验证入口
+## 本地入口
 
-- `public/narration/`：唯一一套所选完整音频，Git LFS 管理。
-- `src/audio-timing.json`：当前播放和字幕共用的实测时间及明确确认记录，与上一集采用相同位置。
-- `narration/selection.json`：选择依据、原始计数、逐段来源和候选比较；`sourcePath`、`sourcePlan` 仅标识历史来源，不作为当前文件路径读取。
-- `narration/records/`：所选版本的原始评估及合成词事件，保持原始字节。
-- `narration/requests.json`：所选独立口播、SSML、指纹及历史分句依据。
-- `narration/adoptions/SP24-D-dee-v1/`：所接入试听的原始请求、合成事件、单词别名映射、新评估及接入记录；原试听清单保持历史状态，当前采用状态见 `adoption.json`。
-- `src/narration-map.json`：当前字幕原稿、对应口播短句、原分镜语义索引及提示对象；改写的八段使用自然书面标点并保留数学符号。
-- `src/storyboard.ts`：教学正文、原始字幕语义索引、动作和思考窗口。`narration-text.json`、`speech-text.json`、`sentence-plan.json` 为原始冻结稿，只用于历史复核；当前播放读取上述选定版本。
-- `src/timeline.ts`、`Composition.tsx`：复用共享实测时间线和完整音频播放组件；已引入内容与短时提示分别维护。
-
-`out` 仅用于临时生成输出，整体被 Git 忽略，不保留提交例外。正常播放、类型检查和正式音频检查不读取 `out`；删除整个目录后仍可执行下列离线检查。
-
-仅离线检查，不请求 Azure：
+在本目录运行，仅使用已安装工具：
 
 ```sh
 pnpm --config.verify-deps-before-run=false run lint
-pnpm --config.verify-deps-before-run=false run video:check-audio
-pnpm --config.verify-deps-before-run=false run video:check-content
+pnpm --config.verify-deps-before-run=false run video:check-content --decode
 pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-布局检查由 `verifiedBrowser` 按当前已安装的 `@remotion/renderer` 核验 Chrome Headless Shell，并分配独立临时端口。此次 SP23–SP25 局部复核使用现场匹配的 158.0.8127.2，覆盖 136 个生产状态；未安装任何组件。历史完整复核使用的浏览器版本另记于下文。
+`video:check-content` 检查数学、语义提示、内容保留、停顿，以及当前稿件→请求→所选音频→原始评估→实测词时间→生成字幕的完整对应；`--decode` 追加完整解码。`video:check-audio` 可单独执行完整音频检查。三类自动标记分别报告，不等同于实际听辨结论。
 
-## 最新带时间戳的完整连续复核
+`video:plan-narration` 仅打印当前完整 SSML、指纹和计量，不读取凭据、不请求服务、不写音频。后续合成仍须按[配音规则](../../../docs/agents/videos/narration.md)另行展示计划并取得授权；没有自动重试或历史续跑入口。
 
-以提交 `8f4576f` 为被测版本，播放前冻结诊断标准，关闭循环并静音、1 倍速从第 0 帧连续播放到第 61218 帧。57 段均按顺序到达原始时长结尾；11,274 个采样中 DOM 字幕与当前帧不匹配为 0，等待、卡顿、跳转、调速和错误媒体事件为 0。没有改动音频或生产时间线，没有安装、试听、渲染或导出。
+`video:adopt-measured-audio --staging=<完整暂存目录>` 默认只验证；目录内提供全部所选 `SP*.wav` 和 `audio-timing.json`。先维护当前稿件、字幕计划和明确选定的音频清单，再核对整批格式、解码、哈希、请求、原始评估及真实词时间；全部有效后，显式加 `--write` 才复制完整原始 WAV，并统一生成正式时间数据和字幕。不能仅保存试听就宣称正式采用。接入回归检查：`pnpm --config.verify-deps-before-run=false exec node --test scripts/adopt-measured-audio.test.ts scripts/speech-alias.test.ts`。
 
-SP35 最大时钟差约 0.133 秒；17 个短暂字幕边界差异采样的最长连续观测跨度约 50 毫秒，其中伴随超过 0.25 秒时钟差的跨界采样为 0。旧记录的 7 个样本来自“大偏差”子集，不能直接与本次全部短暂差异计数比较。
+`video:preflight` 复用共享的完整解码、内容和布局检查；`video:export`、`video:export-audio` 复用共享用户导出入口。助手禁止渲染或导出；用户导出须遵守[工程操作说明](../../../docs/agents/videos/operations.md)的音频门禁和五阶段流程。浏览器由共享入口核验为当前 Remotion 对应且已安装的 Chrome Headless Shell，使用独立临时端口；不自动安装，不启动可见窗口。
 
-全片最大偏差约 0.369 秒（SP58），另有 SP54 约 0.341 秒，均为孤立采样，紧邻主线程长任务，随后恢复。没有检出预设的持续至少 1 秒且偏差超过 0.25 秒、达到 0.5 秒的偏差，或观测跨度至少 0.25 秒的字幕跨界事件。这是本次诊断结果，不证明历史间歇问题不存在或已经修复。长任务附近有约半秒采样空档，不能排除未采到的短暂停顿，也不能据此断定原 SP35 的根因。
+## 参考继承
 
-这次连续复核的预设标准、完整原始数据和逐段统计保存在历史提交 `30e0b4d`，相应诊断输出已从当前树删除，不作为播放或检查依赖。#337 仍需用户提供实际导出的整集，对画面、声音、可懂性、字母公式、最终同步和停顿作人工验收；助手不能生成这份成片。父规格 #334 未修改。
+工程组织参考第三章上下集；画面基准沿用 `511068a` 时的 `exact-sweep-decisions`。以下已确认表现继续保留：
 
-## 历史输出清理与未决请求
+| 要求                                     | 本集实现与观察位置                                                                                                                                 |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 左图右文、数学排版、对象色与临时重点分开 | `TeachingPage.tsx` → 共享 `MathLessonPage`，显式 `diagramPosition="left"`；正文 850、图示 800、间距 65；公式 42、文字 36                           |
+| 对象选择、描亮与同页内容累积             | `ParticipantDiagram.tsx`／`ParticipantFlows.tsx`；SP08 A→B→P，SP36 D→A→C，SP37 合并名单                                                            |
+| 依据静态保留，未讲内容隐藏               | SP27／SP29 不预设 W 的终点，SP33 才出现夹层依据；共享 `TeachingReferences` 使用 `active:false`                                                     |
+| 原始身份与完整报告                       | SP41 六对对应一个 P；SP53 分别提示 C/Z₁、C/Z₂、Z₁/Z₂，同位置身份不合并                                                                             |
+| 已确认箭头形态                           | 实心三角头部 8×8、连线普通 2／高亮 3；事件三终点收拢；SP35／SP36 查找箭头保留圆角修正                                                              |
+| 完整原速音频、真实字幕与语义动作时间     | `timeline.ts` 读取正式时间和生成字幕；共享 `createShotTimeline`／`createNarratedLesson`；开口前半秒、页末三秒、SP61 八秒思考，答案 SP62 不提前显示 |
 
-历史上提交的 `out` 文件已全部从当前树移除。正式音频保留在 `public/narration/`，播放时间数据移至 `src/audio-timing.json`，必要核验记录移至 `narration/`；旧诊断输出直接删除。Git 历史未重写。
+## 当前验收与未决请求
 
-`narration/unresolved/omission-v2/` 原样保留旧计划、SP41 诊断及请求清单。SP41 仍为 uncertain，SP58 仍为 started，服务端最终状态未知；没有重放旧请求。清单 SHA-256 仍为 `6758e28a7a989204305ef80fc5ade058cd32cc6a6b8fafce40a9d167a4c131fd`。目录整理没有新服务调用。
+原始自动评估覆盖 57/57：Mispronunciation 60、Omission 1、Insertion 1。SP06 的 B／“闭”两项严重标记已获用户明确接受，确认仍绑定原音频哈希、请求指纹和具体词位置；原始响应与原始计数保留。其他发音标记仍为机器疑点。助手未实际听辨，不将源文件一致、解码或布局通过表述为声音验收通过。
 
-历史生成脚本仍保留供审计，但已从 package 命令入口退役；它们依赖已归档的原计划，不是当前播放或续跑入口。恢复历史记录不构成重新请求服务的授权。禁止为重试改写或删除未决清单。
+#336、#337 仍未完成。既有 SP35 长播时钟偏差未稳定复现，连续音画同步仍未验收；真实成片、实际听辨与可见桌面验收分别保留。历史连续诊断见提交 `30e0b4d`，不作为当前版本完整播放验收。
 
-## 验收边界
-
-数学示例、字幕对应、所有实测词时间、完整解码与哈希通过。逐帧状态检查覆盖内容保留、语义动作进度、同页衔接与全页停留，独立复核修复了分句索引、静默回退和收集动作重启问题。历史浏览器覆盖及剩余事项记录保存在提交 `30e0b4d`；目录整理不新增试听或成片验收结论。
-
-按用户要求未进行实际试听。浏览器状态检查不证明实际连续播放的音画同步或成片验收；已完成现有 Headless Shell 中的静音、1 倍速整集连续播放：57 段均到达媒体结尾，10,013 个采样点无字幕不匹配或加载错误，SP61 有 80 个静默窗口采样。Studio 到结尾后默认循环，采样未命中最后三帧，原始循环日志与额外两段结束事件一并保留。
-
-连续预览同步仍未验收通过：SP35 观察到最大约 0.635 秒的音频时钟偏差，连续 35 个采样超过 0.25 秒。已安装 Remotion 的默认容差为 0.65 秒；关闭循环后对 SP35 单独完整复查，140 个采样的最大偏差约 0.188 秒，没有 SP35 内的跳转，未稳定复现长播偏差。0.25 秒仅用于诊断统计，不是新设项目验收门槛。具体成因以及无头环境／检测开销的影响尚未定位，不据此判定 WAV 或真实词时间损坏，不以调速、裁切或主动跳转掩盖。进一步连续复查 SP33–SP36（约 75 秒），同时记录帧提交与定时采样、媒体事件和长任务；SP35 最大偏差约 0.068 秒，四段均到达结尾，未出现跳转、卡顿或调速事件。旧长播记录有 7 个采样跨过了字幕分句边界，不能仅因低于 SDK 容差就忽略。旧记录的 35 次采样不是精确 3.5 秒，且 SP35 时尚未启用完整媒体事件监听，不能排除内部校时。这些原始诊断数据保存在历史提交 `30e0b4d`，已从当前树删除。尚无证据支持修改音频或生产时间线，间歇性长播偏差继续保留为未解决项。可见桌面与用户导出后的真实成片验收仍未完成；#337 所需成片尚未提供。未渲染、导出或发布视频，不提供导出命令。#336、#337 仍保持未完成，不将主干合并等同于整集验收通过。
-
-## 参考继承与观察位置
-
-代码基准为 `511068a` 时的第三章下集 `exact-sweep-decisions`。共享基础模块直接从 `videos/shared/` 引用，工程不导入相邻视频业务源码。
-
-| 要求               | 基准入口 → 本集入口                                                                                    | 必要观察状态                                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
-| 页面、方向与空间   | 两集 `TeachingPage.tsx` → `MathLessonPage`，显式 `diagramPosition="left"`；正文 850、图示 800、间距 65 | SP04/SP06 输入递增；SP27/SP29/SP33 条件与结论；无图页居中                         |
-| 数学与中数间距     | `SemanticMathText`、`TeachingMathLines`，公式 42、文字 36，长文换行                                    | SP06 混排、SP33 下标与夹层依据；未强调、强调与撤去                                |
-| 对象色及局部重点   | 显式 `objectMarks`、`activeMarks`；字幕与标题中性                                                      | SP02 条件切换、SP08 A→B→P、SP22–SP24 角色色                                       |
-| 图示语义提示       | `DecisionDiagram` 的共享 `AttentionMarks`、`point`、`stroke` → `ParticipantDiagram`                    | SP04 描亮、SP08 身份到交点、SP37 两路合并、SP41 六对指向同一 P、SP53 三对身份切换 |
-| 依据静态保留       | `TeachingReferences`，`active:false`                                                                   | SP27 介绍对象、SP29 核对条件，SP33 才显示第二章夹层结论；不重演两次变号反证       |
-| 字幕短句与静默保留 | 共享 `validateCaptionClauses`、`timedCaption` 与 `captionAt`；绑定真实词时间                           | 短句切换、同页步骤间保留末条、跨页清空旧字幕                                      |
-| 未讲内容与思考     | 未来行预留空间但不可见；合并后才出现完整名单                                                           | SP27–SP33 不预设 W 的边界高度；SP61 思考窗不显示 SP62                             |
-
-数值图横纵单位相同，坐标轴正方向有箭头。点输入用同位置、同尺度分图区分身份，菱形不表示面积。一般夹层图仅表示顺序，不编造新坐标。防重复对照及问题核销以 #335 的当前记录为准；技术检查不替代新旧材料的教学内容对照。
+`narration/unresolved/omission-v2/` 仅保留四份未决请求原始记录，不参与当前播放、生成或正式音频检查。旧 SP41 请求为 uncertain、SP58 为 started，服务端最终状态未知，禁止据此重试；清单 SHA-256 为 `6758e28a7a989204305ef80fc5ade058cd32cc6a6b8fafce40a9d167a4c131fd`。该旧请求状态与当前已选音频是不同事项。

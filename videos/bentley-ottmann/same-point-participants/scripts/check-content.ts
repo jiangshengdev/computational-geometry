@@ -1,7 +1,7 @@
 import { uncoloredMathTree } from "../../../shared/checks/math-structure.ts";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { createHash } from "node:crypto";
+import { checkAudio } from "./check-audio.ts";
 import katex from "katex";
 import { pageList, shots } from "../src/storyboard.ts";
 import { inputs, type Name } from "../src/example.ts";
@@ -83,8 +83,8 @@ assert.deepEqual(
 );
 
 assert.equal(timingKind, "measured-narration");
-const narrationMap = JSON.parse(
-  readFileSync(new URL("../src/narration-map.json", import.meta.url), "utf8"),
+const captionPlan = JSON.parse(
+  readFileSync(new URL("../src/caption-plan.json", import.meta.url), "utf8"),
 );
 assert.equal(new Set(shots.map((s) => s.id)).size, shots.length);
 assert.deepEqual(
@@ -99,7 +99,7 @@ for (const [index, row] of rows.entries()) {
   );
   assert.equal(
     row.captions.map((c) => c.text).join(""),
-    narrationMap[row.id].map((p: { caption: string }) => p.caption).join(""),
+    captionPlan[row.id].map((p: { caption: string }) => p.caption).join(""),
   );
   assert.equal(visualAt(row, 0).visibleStep, row.visibleStep);
   assert.equal(visualAt(row, 0).activeCaption, null);
@@ -150,53 +150,8 @@ for (const [index, row] of rows.entries()) {
   );
 }
 
-const plainBytes = readFileSync(
-  new URL("../src/narration-text.json", import.meta.url),
-  "utf8",
-);
-assert.equal(
-  createHash("sha256").update(plainBytes).digest("hex"),
-  "f972441e0e309f3b65c9529eb5e13e6da5c0ffb034aaa9237c476c6c1323cc1a",
-  "Independently frozen narration changed",
-);
-const plain = JSON.parse(plainBytes) as Record<string, string>;
-const speechBytes = readFileSync(
-  new URL("../src/speech-text.json", import.meta.url),
-  "utf8",
-);
-assert.equal(
-  createHash("sha256").update(speechBytes).digest("hex"),
-  "50acea1b275596f180a03c099a8c2346d3b1d1d6908ea09974c59a92817eb1af",
-  "Reviewed pronunciation source changed",
-);
-const speech = JSON.parse(speechBytes) as Record<
-  string,
-  (string | { text: string; pinyin: string })[]
->;
-assert.deepEqual(
-  Object.keys(plain),
-  shots.map((s) => s.id),
-);
-assert.deepEqual(Object.keys(speech), Object.keys(plain));
-for (const id of Object.keys(plain)) {
-  assert.doesNotMatch(plain[id], /[,，]/);
-  assert.equal(
-    speech[id]
-      .map((part) => (typeof part === "string" ? part : part.text))
-      .join(""),
-    plain[id],
-    `${id}: pronunciation changed frozen text`,
-  );
-  for (const part of speech[id])
-    if (typeof part !== "string") {
-      assert.deepEqual(Object.keys(part).sort(), ["pinyin", "text"]);
-      assert.match(part.text, /^[\u3400-\u9fff]+$/);
-      const syllables = part.pinyin.split(" ");
-      assert.equal(syllables.length, [...part.text].length);
-      for (const syllable of syllables)
-        assert.match(syllable, /^[a-zv]+[1-5]$/);
-    }
-}
+const { clips, counts } = checkAudio(process.argv.includes("--decode"));
+console.log(JSON.stringify({ clips, counts, actualListeningPerformed: false }));
 console.log(
-  `PASS ${shots.length} steps / ${pageList.length} pages: example arithmetic, marks and KaTeX structure, measured timing, retained content, captions and historical pronunciation text. Runtime synchronization requires separate verification.`,
+  `PASS ${shots.length} steps / ${pageList.length} pages: example arithmetic, marks and KaTeX structure, measured timing, retained content, captions and current narration requests. Runtime synchronization requires separate verification.`,
 );

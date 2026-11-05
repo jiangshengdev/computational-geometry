@@ -1,53 +1,23 @@
 import { shots, pages } from "./storyboard.ts";
-import plans from "./narration-map.json" with { type: "json" };
+import captionData from "./captions.json" with { type: "json" };
 import audioData from "./audio-timing.json" with { type: "json" };
 import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
 import {
   captionAt,
-  validateCaptionClauses,
-  wordsInTextRange,
   type AudioTiming,
+  type Caption,
 } from "../../../shared/speech/timing.ts";
-import { timedCaption } from "../../../shared/speech/captions.ts";
 export const fps = 60;
 export const audioLeadFrames = 30;
 export const timingKind = "measured-narration";
 export const audio = audioData as Record<string, AudioTiming>;
-type Phrase = {
-  caption: string;
-  speech: string;
-  source: number;
-  target?: string;
-};
-const mapped = Object.fromEntries(
-  shots.map((shot) => {
-    const plan: Phrase[] = plans[shot.id as keyof typeof plans];
-    const recording = audio[shot.id];
-    validateCaptionClauses(
-      plan.map((p) => p.caption).join(""),
-      recording.speech,
-      plan,
-    );
-    let offset = 0;
-    return [
-      shot.id,
-      plan.map((part) => {
-        const words = wordsInTextRange(
-          recording,
-          offset,
-          offset + part.speech.length,
-        ).filter((w) => w.durationMs > 0);
-        offset += part.speech.length;
-        if (!words.length) throw Error(`${shot.id}: missing measured phrase`);
-        return {
-          ...timedCaption(part.caption, words),
-          source: part.source,
-          target: part.target ?? shot.targets?.[part.source] ?? null,
-        };
-      }),
-    ];
-  }),
-);
+const mapped = captionData as Record<
+  string,
+  (Caption & {
+    source: number;
+    target: string | null;
+  })[]
+>;
 const shared = createShotTimeline({
   shots: shots.map((s) => ({
     ...s,
