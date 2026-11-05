@@ -8,12 +8,3 @@ dist
 !/out/best-audio/
 !/out/best-audio/**/
 !/out/best-audio/**/*.json
-
-# Preserve the requested SP24 D/dee audition and its exact request records.
-!/out/audition-SP24-D-dee-v1/
-!/out/audition-SP24-D-dee-v1/SP24.wav
-!/out/audition-SP24-D-dee-v1/SP24.alias-timing.json
-!/out/audition-SP24-D-dee-v1/SP24.response.json
-!/out/audition-SP24-D-dee-v1/manifest.json
-!/out/audition-SP24-D-dee-v1/plan.json
-!/out/audition-SP24-D-dee-v1/request.ssml
