@@ -9,8 +9,8 @@ import {
   verifyPcmSource,
 } from "../../../shared/speech/audio.ts";
 import { audio, rows, fps, audioLeadFrames } from "../src/timeline.ts";
-import selection from "../out/best-audio/selection.json" with { type: "json" };
-import requests from "../out/best-audio/requests.json" with { type: "json" };
+import selection from "../narration/selection.json" with { type: "json" };
+import requests from "../narration/requests.json" with { type: "json" };
 const hash = (path: string) =>
   createHash("sha256").update(readFileSync(path)).digest("hex");
 const tools = createAlignmentTools(sdk, {
@@ -24,7 +24,7 @@ const counts: Record<string, number> = {
 };
 assert.equal(selection.records.length, 57);
 assert.equal(
-  hash("out/best-audio/unresolved/omission-v2/synthesis/manifest.json"),
+  hash("narration/unresolved/omission-v2/synthesis/manifest.json"),
   "6758e28a7a989204305ef80fc5ade058cd32cc6a6b8fafce40a9d167a4c131fd",
 );
 assert.deepEqual(
@@ -37,19 +37,19 @@ for (const record of selection.records) {
   const timing = audio[record.id];
   assert.equal(hash(record.audioFile), record.audioSha256);
   assert.equal(
-    hash(`out/best-audio/records/${record.id}.assessment.json`),
+    hash(`narration/records/${record.id}.assessment.json`),
     record.responseSha256,
   );
   assert.equal(
-    hash(`out/best-audio/records/${record.id}.synthesis.json`),
+    hash(`narration/records/${record.id}.synthesis.json`),
     record.synthesisResponseSha256,
   );
   const response = JSON.parse(
-    readFileSync(`out/best-audio/records/${record.id}.assessment.json`, "utf8"),
+    readFileSync(`narration/records/${record.id}.assessment.json`, "utf8"),
   );
   assert.deepEqual(timing.alignment?.response, response);
   const source = JSON.parse(
-    readFileSync(`out/best-audio/records/${record.id}.synthesis.json`, "utf8"),
+    readFileSync(`narration/records/${record.id}.synthesis.json`, "utf8"),
   );
   assert.deepEqual(timing.alignment?.synthesisWords, source.words);
   assert.deepEqual(tools.assessmentWords(timing, response), timing.words);

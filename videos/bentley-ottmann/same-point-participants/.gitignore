@@ -3,8 +3,5 @@ dist
 .DS_Store
 .env
 
-# Keep only the selected audio evidence. Historical output is recoverable from Git.
-/out/**
-!/out/best-audio/
-!/out/best-audio/**/
-!/out/best-audio/**/*.json
+# Ignore generated output; production assets and timing live in public/ and src/.
+out

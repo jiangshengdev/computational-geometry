@@ -1,6 +1,6 @@
 import { shots, pages } from "./storyboard.ts";
 import plans from "./narration-map.json" with { type: "json" };
-import audioData from "../out/best-audio/audio-timing.json" with { type: "json" };
+import audioData from "./audio-timing.json" with { type: "json" };
 import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
 import {
   captionAt,
