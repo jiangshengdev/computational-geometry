@@ -1,0 +1,49 @@
+{
+  "id": "SP24",
+  "version": "D-dee-v1",
+  "state": "adopted",
+  "audioSha256": "efad0bbdd73fe5123e720d6a721ccf33dec10d7e1adfacdeed546bdeba031c16",
+  "requests": 1,
+  "automaticRetries": 0,
+  "synthesisRequests": 0,
+  "formalAdoption": true,
+  "counts": {
+    "Mispronunciation": 4,
+    "Omission": 0,
+    "Insertion": 0
+  },
+  "recognitionStatus": "Success",
+  "measuredTimingVerified": true,
+  "productionAudioFile": "public/narration/SP24.wav",
+  "previousAudioSha256": "babef989019b3ba43cbd3636822123c7abb27db0d59a9cb0c744f74aab57f264",
+  "previousDuration": 21.58,
+  "duration": 20.78,
+  "decision": "用户明确要求接入 D-dee-v1 试听版本；保留原始 WAV、语速、字幕数学符号和全部服务时间。",
+  "verification": {
+    "sourceWavMatchesApprovedSha256": true,
+    "format": "pcm_s16le / 48000 Hz / 16 bit / mono",
+    "fullDecode": true,
+    "measuredTiming": true,
+    "captionTextUnchanged": true,
+    "other56AudioAndTimingUnchanged": true,
+    "content": "passed",
+    "lint": "passed",
+    "aliasTests": "2 passed",
+    "layout": {
+      "shots": [
+        "SP23",
+        "SP24",
+        "SP25"
+      ],
+      "states": 136,
+      "result": "passed",
+      "engine": "Chrome Headless Shell 158.0.8127.2",
+      "headless": true
+    },
+    "durationInFrames": 61171,
+    "fps": 60,
+    "totalSeconds": 1019.5166666666667,
+    "actualListeningPerformed": false,
+    "videoRendered": false
+  }
+}

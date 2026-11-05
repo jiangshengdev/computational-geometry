@@ -1,9 +1,9 @@
 {
-  "selectionRule": "Prefer verified complete measured timing, then fewer raw pronunciation flags, then earliest version; raw miscue exceptions require explicit recorded user confirmation.",
+  "selectionRule": "Explicit user-selected auditions take precedence; otherwise prefer verified complete measured timing, then fewer raw pronunciation flags, then earliest version. Raw miscue exceptions require explicit recorded user confirmation.",
   "sourceCommit": "a4d50dfba776d140266b5d2f2dc4023b1f0e4426",
   "total": 57,
   "counts": {
-    "Mispronunciation": 61,
+    "Mispronunciation": 60,
     "Omission": 1,
     "Insertion": 1
   },
@@ -501,24 +501,16 @@
     },
     {
       "id": "SP24",
-      "version": "omission-v2",
+      "version": "D-dee-v1",
       "audioFile": "public/narration/SP24.wav",
-      "audioSha256": "babef989019b3ba43cbd3636822123c7abb27db0d59a9cb0c744f74aab57f264",
-      "duration": 21.58,
-      "fingerprint": "664e2b16e46a9d5b6d623f63dae18821252e836ce6664d88adc816424f75967b",
-      "sourcePath": "out/audition-omission-v2/synthesis/SP24.wav",
-      "sourcePlan": "out/audition-omission-v2/plan.json",
-      "responseSha256": "97f13c6c86bb5172871e29ce5bd3080b594168e41cff9eef863f74c8794ff480",
-      "synthesisResponseSha256": "bb352094e9f0c049a704ac29f053fcc646642b546b5211413c09fdd01b92e7a7",
+      "audioSha256": "efad0bbdd73fe5123e720d6a721ccf33dec10d7e1adfacdeed546bdeba031c16",
+      "duration": 20.78,
+      "fingerprint": "852f4389d905a5b90f5a584e0465c82779c2643ae03e8064a27a1d03bfa96583",
+      "sourcePath": "public/narration/SP24.wav",
+      "sourcePlan": "narration/adoptions/SP24-D-dee-v1/plan.json",
+      "responseSha256": "5d91142b74d372ac80c74513d5a46a7396384dcb18eb2dfc68e88c268d507cef",
+      "synthesisResponseSha256": "770ef80f58241daedad6f6364af937cd87e76c2ce88c9094bf6ce1cc7d0d791d",
       "rawFlags": [
-        {
-          "text": "是",
-          "errorType": "Mispronunciation"
-        },
-        {
-          "text": "D",
-          "errorType": "Mispronunciation"
-        },
         {
           "text": "存在",
           "errorType": "Mispronunciation"
@@ -530,10 +522,15 @@
         {
           "text": "B",
           "errorType": "Mispronunciation"
+        },
+        {
+          "text": "这",
+          "errorType": "Mispronunciation"
         }
       ],
       "reviewedRecognition": [],
-      "aligned": true
+      "aligned": true,
+      "adoptionDecision": "用户确认接入 SP24 D-dee-v1；原样复用试听 WAV，D 使用 en-US dee。"
     },
     {
       "id": "SP25",
@@ -3153,6 +3150,30 @@
         }
       ],
       "alignmentError": "Alignment requires review: 闭 (Insertion)"
+    },
+    {
+      "id": "SP24",
+      "version": "D-dee-v1",
+      "audioSha256": "efad0bbdd73fe5123e720d6a721ccf33dec10d7e1adfacdeed546bdeba031c16",
+      "rawFlags": [
+        {
+          "text": "存在",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "种",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "B",
+          "errorType": "Mispronunciation"
+        },
+        {
+          "text": "这",
+          "errorType": "Mispronunciation"
+        }
+      ],
+      "alignmentError": null
     }
   ]
 }

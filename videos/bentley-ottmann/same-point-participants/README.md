@@ -2,15 +2,15 @@
 
 依据：[规格 #334](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/334)、[#336 音频与同步](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/336)、[#337 整体验收](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/337)。父规格未修改。
 
-`SamePointParticipants` 已接入 57 段完整原速 WAV，20 页、60 fps。时间线由实测音频时长及真实词事件计算，总长 1020.3167 秒；开口前保留半秒，页末保留完整画面及最后字幕，SP61 思考窗口仍为八秒。旧五秒阅读槽已退出播放计算。
+`SamePointParticipants` 已接入 57 段完整原速 WAV，20 页、60 fps。时间线由实测音频时长及真实词事件计算，总长 1019.5167 秒；开口前保留半秒，页末保留完整画面及最后字幕，SP61 思考窗口仍为八秒。旧五秒阅读槽已退出播放计算。
 
 ## 当前音频与用户确认
 
-用户要求保留最优音频，不进行实际试听，并明确确认“b/闭问题通过”，随后要求合并主干推送。按可验证词时间、较少发音标记、较早版本的顺序选出 57 段，版本与逐段 SHA-256 见 `narration/selection.json`。组合为原版 37、IPA v1 12、omission v2 4、context v3/v4/v6/v7 各 1。原始 WAV 逐字节复用，音色 Xiaoxiao、48 kHz／16 bit／单声道 PCM，无裁切、调速或重合成。
+用户要求保留最优音频，不进行实际试听，并明确确认“b/闭问题通过”，随后要求合并主干推送。按可验证词时间、较少发音标记、较早版本的顺序选出 57 段；用户明确选定的后续试听版本优先。版本与逐段 SHA-256 见 `narration/selection.json`。组合为原版 37、IPA v1 12、omission v2 3、D-dee-v1 1、context v3/v4/v6/v7 各 1。原始 WAV 逐字节复用，音色 Xiaoxiao、48 kHz／16 bit／单声道 PCM，无裁切、调速或重合成。
 
-原始 Azure 计数：发音 61、漏读 1、插入 1；评估覆盖 57/57，缺失 0。SP06 原版 B／“闭”的两项严重标记由用户明确接受，未解决漏读／插入为 0，但原始计数没有归零。确认通过现有 `reviewedRecognition` 绑定该 WAV 哈希、口播指纹和具体词位置，采用原始识别事件的真实时长，不删除原始响应、不伪造词时间、不声称实际试听通过。所有 57 段通过真实词时间校验。其余发音标记保留为机器疑点。
+原始 Azure 计数：发音 60、漏读 1、插入 1；评估覆盖 57/57，缺失 0。SP06 原版 B／“闭”的两项严重标记由用户明确接受，未解决漏读／插入为 0，但原始计数没有归零。确认通过现有 `reviewedRecognition` 绑定该 WAV 哈希、口播指纹和具体词位置，采用原始识别事件的真实时长，不删除原始响应、不伪造词时间、不声称实际试听通过。所有 57 段通过真实词时间校验。其余发音标记保留为机器疑点。
 
-用户随后指出 SP24“本例是 C 和 D”中的 D 听成 Day。已生成过 D → `dee` 的整段独立试听，尚未正式采用；该问题仍待处理，不能由上述程序计数核销。
+用户随后指出 SP24“本例是 C 和 D”中的 D 听成 Day，并明确要求接入 D → `dee` 的整段试听版 `D-dee-v1`。已将其原始 20.78 秒 WAV 原样替换到 `public/narration/SP24.wav`，SHA-256 为 `efad0bbdd73fe5123e720d6a721ccf33dec10d7e1adfacdeed546bdeba031c16`。仅补做该音频的一次评估：发音标记 4、漏读 0、插入 0；实测词时间已同步，两处 `dee` 映射回字幕与时间线中的 D，原始合成事件保留。普通措辞和字幕文字未改，助手未实际试听，不将程序检查表述为听辨结论。
 
 ## 当前文件与验证入口
 
@@ -19,6 +19,7 @@
 - `narration/selection.json`：选择依据、原始计数、逐段来源和候选比较；`sourcePath`、`sourcePlan` 仅标识历史来源，不作为当前文件路径读取。
 - `narration/records/`：所选版本的原始评估及合成词事件，保持原始字节。
 - `narration/requests.json`：所选独立口播、SSML、指纹及历史分句依据。
+- `narration/adoptions/SP24-D-dee-v1/`：所接入试听的原始请求、合成事件、单词别名映射、新评估及接入记录；原试听清单保持历史状态，当前采用状态见 `adoption.json`。
 - `src/narration-map.json`：当前字幕原稿、对应口播短句、原分镜语义索引及提示对象；改写的八段使用自然书面标点并保留数学符号。
 - `src/storyboard.ts`：教学正文、原始字幕语义索引、动作和思考窗口。`narration-text.json`、`speech-text.json`、`sentence-plan.json` 为原始冻结稿，只用于历史复核；当前播放读取上述选定版本。
 - `src/timeline.ts`、`Composition.tsx`：复用共享实测时间线和完整音频播放组件；已引入内容与短时提示分别维护。
@@ -34,7 +35,7 @@ pnpm --config.verify-deps-before-run=false run video:check-content
 pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-布局检查仅使用已核验、匹配 Remotion 4.0.540 的 Chrome Headless Shell 157.0.8080.0，并分配独立临时端口。助手未安装任何组件；本环境复用了已经安装的同版本依赖。
+布局检查由 `verifiedBrowser` 按当前已安装的 `@remotion/renderer` 核验 Chrome Headless Shell，并分配独立临时端口。此次 SP23–SP25 局部复核使用现场匹配的 158.0.8127.2，覆盖 136 个生产状态；未安装任何组件。历史完整复核使用的浏览器版本另记于下文。
 
 ## 最新带时间戳的完整连续复核
 

@@ -11,6 +11,7 @@ import {
 import { audio, rows, fps, audioLeadFrames } from "../src/timeline.ts";
 import selection from "../narration/selection.json" with { type: "json" };
 import requests from "../narration/requests.json" with { type: "json" };
+import { mapAliasWords, type SpeechAlias } from "./speech-alias.ts";
 const hash = (path: string) =>
   createHash("sha256").update(readFileSync(path)).digest("hex");
 const tools = createAlignmentTools(sdk, {
@@ -51,13 +52,27 @@ for (const record of selection.records) {
   const source = JSON.parse(
     readFileSync(`narration/records/${record.id}.synthesis.json`, "utf8"),
   );
-  assert.deepEqual(timing.alignment?.synthesisWords, source.words);
+  const request = requests[record.id as keyof typeof requests].document;
+  const alias = request as typeof request & {
+    synthesisText?: string;
+    aliases?: SpeechAlias[];
+  };
+  let synthesisWords = source.words;
+  if (alias.aliases?.length) {
+    assert(alias.synthesisText, `${record.id}: missing synthesis alias text`);
+    synthesisWords = mapAliasWords(
+      alias.synthesisText,
+      request.text,
+      alias.aliases,
+      source.words,
+    );
+  }
+  assert.deepEqual(timing.alignment?.synthesisWords, synthesisWords);
   assert.deepEqual(tools.assessmentWords(timing, response), timing.words);
   tools.verifyAlignment(timing, record.audioFile);
   verifyPcmSource(record.audioFile);
   decodeAudio(record.audioFile);
   assert.equal(measureAudio(record.audioFile), timing.duration);
-  const request = requests[record.id as keyof typeof requests].document;
   assert.equal(timing.speech, request.text);
   assert.equal(timing.fingerprint, request.fingerprint);
   for (const word of response.NBest[0].Words) {

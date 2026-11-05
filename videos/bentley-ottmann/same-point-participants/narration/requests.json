@@ -2739,13 +2739,12 @@
     ]
   },
   "SP24": {
-    "version": "omission-v2",
+    "version": "D-dee-v1",
     "document": {
       "id": "SP24",
       "audioFile": "SP24.wav",
       "text": "如果 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 D。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留输入 B、输入 C 和输入 D 这三份。",
-      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">如果 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"piː\">P</phoneme></lang> 在线段<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"heng 2 zuo 4 biao 1\">横坐标</phoneme>又严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"jia 1 zai 4\">夹在</phoneme>两端<phoneme alphabet=\"sapi\" ph=\"zhi 1 jian 1\">之间</phoneme>。<break time=\"200ms\"/>就叫严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"chuan 1 guo 4\">穿过</phoneme>者。<break time=\"400ms\"/>本例是 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme> <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"diː\">D</phoneme></lang>。<break time=\"200ms\"/>两<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>存在。<break time=\"400ms\"/>非零<phoneme alphabet=\"sapi\" ph=\"qie 3\">且</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2 shu 4 zhi 2\">不竖直</phoneme>保证两端<phoneme alphabet=\"sapi\" ph=\"heng 2 zuo 4 biao 1\">横坐标</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme><phoneme alphabet=\"sapi\" ph=\"san 1\">三</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 3\">种</phoneme><phoneme alphabet=\"sapi\" ph=\"jue 2 se 4\">角色</phoneme>互<phoneme alphabet=\"sapi\" ph=\"bu 2 hun 4 xiao 2\">不混淆</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"dang 1 qian 2\">当前</phoneme>四份<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1 jia 1\">参加</phoneme>。<break time=\"200ms\"/>右<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 2 bao 3 liu 2\">只保留</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang>、输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"diː\">D</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>三份。<break time=\"400ms\"/></voice></speak>",
-      "fingerprint": "664e2b16e46a9d5b6d623f63dae18821252e836ce6664d88adc816424f75967b",
+      "synthesisText": "如果 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 dee。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留输入 B、输入 C 和输入 dee 这三份。",
       "input": [
         "如果 ",
         {
@@ -2808,8 +2807,7 @@
         },
         " ",
         {
-          "letter": "D",
-          "ipa": "diː"
+          "englishWord": "dee"
         },
         "。",
         {
@@ -2922,8 +2920,7 @@
         },
         "输入 ",
         {
-          "letter": "D",
-          "ipa": "diː"
+          "englishWord": "dee"
         },
         " ",
         {
@@ -2935,75 +2932,20 @@
           "breakMs": 400
         }
       ],
-      "baselineAudioSha256": "21ee9efdf791f4be7e0c53fc66d4f7f3d7456d8fc4e5800de34e48b98598e429",
-      "baselineFingerprint": "ab6374c02dcaf61a24311bfa85df29e05b2c112de1c04a4ba4c796be8a3666e8",
-      "changes": [
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">如果 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"piː\">P</phoneme></lang> 在线段<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"heng 2 zuo 4 biao 1\">横坐标</phoneme>又严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"jia 1 zai 4\">夹在</phoneme>两端<phoneme alphabet=\"sapi\" ph=\"zhi 1 jian 1\">之间</phoneme>。<break time=\"200ms\"/>就叫严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"chuan 1 guo 4\">穿过</phoneme>者。<break time=\"400ms\"/>本例是 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme> <lang xml:lang=\"en-US\">dee</lang>。<break time=\"200ms\"/>两<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>存在。<break time=\"400ms\"/>非零<phoneme alphabet=\"sapi\" ph=\"qie 3\">且</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2 shu 4 zhi 2\">不竖直</phoneme>保证两端<phoneme alphabet=\"sapi\" ph=\"heng 2 zuo 4 biao 1\">横坐标</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme><phoneme alphabet=\"sapi\" ph=\"san 1\">三</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 3\">种</phoneme><phoneme alphabet=\"sapi\" ph=\"jue 2 se 4\">角色</phoneme>互<phoneme alphabet=\"sapi\" ph=\"bu 2 hun 4 xiao 2\">不混淆</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"dang 1 qian 2\">当前</phoneme>四份<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1 jia 1\">参加</phoneme>。<break time=\"200ms\"/>右<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 2 bao 3 liu 2\">只保留</phoneme>输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"biː\">B</phoneme></lang>、输入 <lang xml:lang=\"en-US\"><phoneme alphabet=\"ipa\" ph=\"siː\">C</phoneme></lang> <phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>输入 <lang xml:lang=\"en-US\">dee</lang> <phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>三份。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "852f4389d905a5b90f5a584e0465c82779c2643ae03e8064a27a1d03bfa96583",
+      "aliases": [
         {
-          "from": 0,
-          "to": 9,
-          "parts": [
-            "如果 ",
-            {
-              "letter": "P",
-              "ipa": "piː"
-            },
-            " 在线段",
-            {
-              "text": "上",
-              "pinyin": "shang4"
-            },
-            "。"
-          ],
-          "before": "若 P 在线段上。",
-          "after": "如果 P 在线段上。",
-          "reason": "若有新增漏读标记；保留条件含义，改为完整双音节连接词。"
+          "sourceOffset": 39,
+          "spoken": "dee",
+          "letter": "D"
         },
         {
-          "from": 81,
-          "to": 93,
-          "parts": [
-            "右",
-            {
-              "text": "侧",
-              "pinyin": "ce4"
-            },
-            {
-              "text": "只保留",
-              "pinyin": "zhi2 bao3 liu2"
-            },
-            "输入 ",
-            {
-              "letter": "B",
-              "ipa": "biː"
-            },
-            "、输入 ",
-            {
-              "letter": "C",
-              "ipa": "siː"
-            },
-            " ",
-            {
-              "text": "和",
-              "pinyin": "he2"
-            },
-            "输入 ",
-            {
-              "letter": "D",
-              "ipa": "diː"
-            },
-            " ",
-            {
-              "text": "这",
-              "pinyin": "zhe4"
-            },
-            "三份。"
-          ],
-          "before": "右侧只保留 B、C、D。",
-          "after": "右侧只保留输入 B、输入 C 和输入 D 这三份。",
-          "reason": "逐项增加对象词，并让末项 D 后接数量短语；三份右侧身份不变。"
+          "sourceOffset": 103,
+          "spoken": "dee",
+          "letter": "D"
         }
       ],
-      "originalText": "若 P 在线段上。横坐标又严格夹在两端之间。就叫严格穿过者。本例是 C 和 D。两侧都存在。非零且不竖直保证两端横坐标不同。所以三种角色互不混淆。当前四份都参加。右侧只保留 B、C、D。",
       "sentencePlan": [
         {
           "caption": "若 P 在线段上，横坐标又严格夹在两端之间，就叫严格穿过者。",
@@ -3029,7 +2971,8 @@
             "右侧只保留输入 B、输入 C 和输入 D 这三份。"
           ]
         }
-      ]
+      ],
+      "parentFingerprint": "664e2b16e46a9d5b6d623f63dae18821252e836ce6664d88adc816424f75967b"
     },
     "sentencePlan": [
       {
