@@ -54,10 +54,8 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 | 已确认箭头形态                           | 实心三角头部 8×8、连线普通 2／高亮 3；事件三终点收拢；SP35／SP36 查找箭头保留圆角修正                                                              |
 | 完整原速音频、真实字幕与语义动作时间     | `timeline.ts` 读取正式时间和生成字幕；共享 `createShotTimeline`／`createNarratedLesson`；开口前半秒、页末三秒、SP61 八秒思考，答案 SP62 不提前显示 |
 
-## 当前验收与未决请求
+## 当前验收
 
 原始自动评估覆盖 57/57：Mispronunciation 60、Omission 1、Insertion 1。SP06 的 B／“闭”两项严重标记已获用户明确接受，确认仍绑定原音频哈希、请求指纹和具体词位置；原始响应与原始计数保留。其他发音标记仍为机器疑点。助手未实际听辨，不将源文件一致、解码或布局通过表述为声音验收通过。
 
 #336、#337 仍未完成。既有 SP35 长播时钟偏差未稳定复现，连续音画同步仍未验收；真实成片、实际听辨与可见桌面验收分别保留。历史连续诊断见提交 `30e0b4d`，不作为当前版本完整播放验收。
-
-`narration/unresolved/omission-v2/` 仅保留四份未决请求原始记录，不参与当前播放、生成或正式音频检查。旧 SP41 请求为 uncertain、SP58 为 started，服务端最终状态未知，禁止据此重试；清单 SHA-256 为 `6758e28a7a989204305ef80fc5ade058cd32cc6a6b8fafce40a9d167a4c131fd`。该旧请求状态与当前已选音频是不同事项。
