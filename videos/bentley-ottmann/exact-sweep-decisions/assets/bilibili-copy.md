@@ -40,13 +40,13 @@
 
 ## 发布资源
 
-| 用途 | 原图 PNG | 同尺寸 JPG | 完整提示词 |
-| --- | --- | --- | --- |
-| 横版 | [封面](covers/bilibili-cover-16x9.png) | [JPG](covers/bilibili-cover-16x9.jpg) | [提示词](covers/bilibili-cover-16x9.png.prompt.txt) |
-| 4:3 | [封面](covers/bilibili-cover-4x3.png) | [JPG](covers/bilibili-cover-4x3.jpg) | [提示词](covers/bilibili-cover-4x3.png.prompt.txt) |
+| 用途 | 原图 PNG | 完整提示词 |
+| --- | --- | --- |
+| 横版 | [封面](covers/bilibili-cover-16x9.png) | [提示词](covers/bilibili-cover-16x9.png.prompt.txt) |
+| 4:3 | [封面](covers/bilibili-cover-4x3.png) | [提示词](covers/bilibili-cover-4x3.png.prompt.txt) |
 
 生成方式为 `node-imagegen generate`，模型 `gpt-image-2.5-sunburst`，请求 `quality=max`、`size=auto`、不透明 PNG；两种构图均从各自完整文字提示词生成，没有输入参考图片或编辑生成结果。提示词为实际提交全文。
 
 - 横版原图：1672×941，接近但不精确等于 16:9。
 - 4:3 原图：1448×1086，精确为 4:3。
-- PNG 保留服务返回的原始像素；JPG 按相同像素尺寸转换，没有缩放、裁剪或补边。
+- PNG 保留服务返回的原始像素，没有缩放、裁剪或补边。
