@@ -39,7 +39,10 @@
     "video:synthesize-narration": "node scripts/synthesize-narration.ts",
     "video:assess-narration": "node scripts/assess-narration.ts",
     "video:adopt-measured-audio": "node scripts/adopt-measured-audio.ts",
-    "video:captions": "node scripts/captions.ts"
+    "video:captions": "node scripts/captions.ts",
+    "video:preflight": "node ../../shared/tools/preflight-cli.ts",
+    "video:export": "node scripts/export.ts",
+    "video:export-audio": "node scripts/export-audio.ts"
   },
   "allowScripts": {
     "esbuild": false

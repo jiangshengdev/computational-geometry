@@ -23,7 +23,7 @@
 - `SamePointUpdates` 是完整生产 composition；`LayoutCheck` 直接使用相同生产页面，
   覆盖步骤揭示、短字幕切换、提示起止与中间状态、思考和页末保留。
 - `Composition.tsx` 复用共享 `createNarratedLesson` 播放全部正式 WAV，无裁切或变速。
-  当前为 63,526 帧／60 fps，约 17 分 38.77 秒；尚无整片音画同步或成片验收，不提供成片导出入口。
+  当前为 63,526 帧／60 fps，约 17 分 38.77 秒；已接入用户导出入口，尚无整片音画同步或成片验收。
 
 ## 内容与前置结论的分工
 
@@ -113,6 +113,20 @@ WAV、原始词事件和段落元数据保存在暂存目录；`manifest.json` �
 内容检查核对案例算术、字幕完整保留、整行先显示、语义提示连续性与页末停顿；
 布局检查只证明实际覆盖状态的内容边界与可达性，不替代独立画面观察。
 没有执行可见桌面验收、音频试听或成片验收；文案画面依据 #338，音频与同步任务为 #339。
+
+## 用户导出入口
+
+遵循[五阶段命令模板](../../../docs/agents/videos/operations.md#五阶段命令模板)，
+使用已核验、与 Remotion 4.0.540 匹配的 Headless Shell 设置
+`REMOTION_BROWSER_EXECUTABLE`。以下入口只供用户执行导出；助手只核验参数。
+
+- `video:preflight` 复用共享独立预检，运行本集内容检查（含完整音频解码、哈希、请求指纹、原始评估及字幕一致性）和生产布局检查。
+- `video:export` 导出 `SamePointUpdates` 的 4K PNG 到 `out/same-point-updates-frames/`。
+- `video:export-audio` 导出相同 composition 的原速 PCM WAV 到 `out/same-point-updates-audio.wav`，显式使用 48 kHz、16 bit 并关闭视频硬件加速；输出后还须检查双声道与时间线来源。
+- 两个导出入口复用共享实现，分别动态分配独立端口，拒绝覆盖已有输出；支持 `--dry-run`，不依赖预检状态、不自动运行预检。
+- PNG 经检查后按模板硬件编码为无声 H.265，再由 `../../shared/tools/mux-mov.ts` 与同时间线音轨复制封装为 MOV。保留原始帧，不裁切或调速。
+
+入口和参数检查不代表实际导出、完整试听、整集同步或成片验收；提供可执行命令前仍须核对当前全片音频覆盖及三类自动标记。
 
 ## 当前正式音频与验证（#339）
 
