@@ -767,7 +767,13 @@ function UnifiedFlow({ state }: { state: VisualState }) {
               rx={8}
               fill={key === "report" ? "#fef3c7" : "#e2e8f0"}
             />
-            <Label x={380} y={y + 4} fontSize={31} align="center">
+            <Label
+              x={380}
+              y={y + 3}
+              fontSize={31}
+              align="center"
+              verticalAlign="middle"
+            >
               {text}
             </Label>
             <AttentionMarks
