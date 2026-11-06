@@ -501,6 +501,22 @@ function DiscoveryDiagram({ state }: { state: VisualState }) {
         stroke={muted}
         strokeWidth={2}
       />
+      {has(state, "pair")
+        ? endpoints
+            .slice(0, 2)
+            .map(([x, y], i) => (
+              <line
+                key={i}
+                x1={x}
+                y1={y}
+                x2={350}
+                y2={280}
+                stroke={[colors.blue, colors.orange][i]}
+                strokeWidth={9}
+                opacity={0.25}
+              />
+            ))
+        : null}
       {paths.map((d, i) => (
         <path
           key={d}
@@ -522,13 +538,6 @@ function DiscoveryDiagram({ state }: { state: VisualState }) {
           stroke={colors.amber}
           strokeWidth={3}
         />
-      ) : null}
-      {has(state, "pair") ? (
-        <>
-          <circle cx={188} cy={202} r={6} fill={colors.blue} />
-          <circle cx={188} cy={259} r={6} fill={colors.orange} />
-          <path d="M165 202 V259" stroke={colors.amber} strokeWidth={3} />
-        </>
       ) : null}
       <AttentionMarks
         marks={selected
