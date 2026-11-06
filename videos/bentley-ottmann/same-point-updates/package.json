@@ -35,7 +35,9 @@
     "video:check-layout": "node scripts/check-layout.ts",
     "video:check-content": "node scripts/check-content.ts",
     "video:sentence-pauses": "node scripts/sentence-pauses.ts",
-    "video:plan-narration": "node scripts/plan-narration.ts"
+    "video:plan-narration": "node scripts/plan-narration.ts",
+    "video:synthesize-narration": "node scripts/synthesize-narration.ts",
+    "video:assess-narration": "node scripts/assess-narration.ts"
   },
   "allowScripts": {
     "esbuild": false
