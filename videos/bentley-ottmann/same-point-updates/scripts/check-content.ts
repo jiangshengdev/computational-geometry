@@ -6,6 +6,22 @@ import { inputs, type Name } from "../src/example.ts";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "../../../shared/speech/azure-speech.ts";
 import { updateSentencePauses } from "./sentence-plan.ts";
+import { verifyRecordings, readTiming } from "./measured-audio.ts";
+import { fileURLToPath } from "node:url";
+const formal = verifyRecordings(
+  fileURLToPath(new URL("../public/narration/", import.meta.url)),
+  readTiming(
+    fileURLToPath(new URL("../src/audio-timing.json", import.meta.url)),
+  ),
+  process.argv.includes("--decode"),
+);
+assert.deepEqual(
+  JSON.parse(
+    readFileSync(new URL("../src/captions.json", import.meta.url), "utf8"),
+  ),
+  formal.captions,
+  "Regenerate stale captions",
+);
 
 // Validate observable teaching behavior, not exact wording or source shape.
 updateSentencePauses(false);
@@ -27,6 +43,20 @@ assert.deepEqual(
   shots.map((s) => s.id),
 );
 for (const [index, row] of rows.entries()) {
+  assert.equal(row.audioEndFrame, audioLeadFrames + row.speechFrames);
+  assert(
+    row.durationInFrames >= row.audioEndFrame + (row.thinkAfter ?? 1) * fps,
+  );
+  assert(
+    row.captions.every(
+      (c) => c.start >= audioLeadFrames && c.end <= row.audioEndFrame,
+    ),
+  );
+  for (let i = 1; i < row.captions.length; i++)
+    assert(
+      row.captions[i].start >= row.captions[i - 1].end,
+      `${row.id}: caption overlap`,
+    );
   assert.equal(
     row.captions.map((c) => c.text).join(""),
     row.cues.map((c) => c.caption).join(""),
@@ -71,10 +101,7 @@ for (const [index, row] of rows.entries()) {
   const next = rows[index + 1];
   if (next?.page === row.page)
     assert.equal(visualAt(next, 0).caption, end.caption);
-  else
-    assert(
-      row.durationInFrames - audioLeadFrames - row.readingFrames >= 3 * fps,
-    );
+  else assert(row.durationInFrames - row.audioEndFrame >= 3 * fps);
 }
 const slope = (name: Name) => {
   const { start: a, end: b } = inputs[name];
@@ -99,5 +126,5 @@ assert.equal(
   Math.min(inputs.A.end[0], inputs.F.end[0]),
 );
 console.log(
-  `PASS ${shots.length} shots / ${pageList.length} pages: article arithmetic, caption retention, step reveal, semantic cue continuity and page holds. Silent provisional timing only; no audio or listening validation.`,
+  `PASS ${shots.length} shots / ${pageList.length} pages: measured audio, article arithmetic, caption retention, step reveal, semantic cue continuity and page holds. Flags: ${JSON.stringify(formal.counts)}. Actual listening not performed.`,
 );

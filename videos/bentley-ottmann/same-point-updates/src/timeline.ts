@@ -1,61 +1,60 @@
 import { shots, pages } from "./storyboard.ts";
-import { groupCaptionClauses } from "../../../shared/speech/captions.ts";
+import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
+import type { AudioTiming, Caption } from "../../../shared/speech/timing.ts";
+import audioData from "./audio-timing.json" with { type: "json" };
+import captionData from "./captions.json" with { type: "json" };
 export const fps = 60;
 export const audioLeadFrames = 30;
-export const timingKind = "provisional-silent-reading";
-function captionChunks(text: string) {
-  const clauses = Array.from(
-    text.matchAll(/[^，。！？；：]+[，。！？；：]?/g),
-    (match) => ({ text: match[0], offset: match.index! }),
-  );
-  return groupCaptionClauses(clauses, clauses);
-}
-// Visual rehearsal only; never passed to an audio timing API.
-let cursor = 0;
-export const rows = shots.map((shot, index) => {
-  let frame = audioLeadFrames;
-  const captions = shot.cues.flatMap((cue, source) => {
-    return captionChunks(cue.caption).map(({ text }) => {
-      const start = frame;
-      frame += Math.ceil(Math.max(2, text.length / 4.3) * fps);
-      return { ...cue, text, source, start, end: frame };
-    });
-  });
-  const endsPage = shots[index + 1]?.page !== shot.page;
-  const pauseAfter = Math.max(
-    shot.thinkAfter ?? 1,
-    endsPage ? pages[shot.page].holdAfterSeconds : 0,
-  );
-  const previous = shots[index - 1];
-  const row = {
+export const timingKind = "measured-narration";
+export const audio = audioData as Record<string, AudioTiming>;
+const measured = captionData as Record<
+  string,
+  (Caption & { source: number; target: string | null; focus: string | null })[]
+>;
+const shared = createShotTimeline({
+  shots: shots.map((shot) => ({
     ...shot,
-    from: cursor,
-    captions,
-    readingFrames: frame - audioLeadFrames,
-    durationInFrames: frame + pauseAfter * fps,
-    pauseAfter,
+    step: shot.visibleStep,
+    pauseAfter: shot.thinkAfter ?? 1,
+  })),
+  pages,
+  timing: audio,
+  captions: measured,
+  fps,
+  audioLeadFrames,
+});
+export const rows = shared.timelineFor().map((shot, index) => {
+  return {
+    ...shot,
+    captions: measured[shot.id].map((c) => ({
+      ...c,
+      start: audioLeadFrames + Math.ceil((c.startMs * fps) / 1000),
+      end: audioLeadFrames + Math.ceil((c.endMs * fps) / 1000),
+    })),
+    audioEndFrame: audioLeadFrames + shot.speechFrames,
     revealMs: 0,
     stages: [] as { ms: number }[],
-    previousCaption:
-      previous?.page === shot.page
-        ? (() => {
-            const text = previous.cues[previous.cues.length - 1].caption;
-            const chunks = captionChunks(text);
-            return chunks[chunks.length - 1].text;
-          })()
-        : "",
     previousReached: shots
       .slice(0, index)
       .filter((s) => s.page === shot.page)
       .flatMap((s) => s.cues.flatMap((c) => (c.target ? [c.target] : []))),
   };
-  cursor += row.durationInFrames;
-  return row;
 });
 export type TimelineRow = (typeof rows)[number];
-export const durationInFrames = cursor;
+export const durationInFrames = rows.reduce(
+  (total, row) => total + row.durationInFrames,
+  0,
+);
 export function visualAt(row: TimelineRow, frame: number) {
-  const active = row.captions.find((c) => frame >= c.start && frame < c.end);
+  // Continue one semantic action through its internal measured pauses.
+  const active = row.captions.find(
+    (c, index) =>
+      frame >= c.start &&
+      frame <
+        (c.target && c.target === row.captions[index + 1]?.target
+          ? row.captions[index + 1].start
+          : c.end),
+  );
   const reached = row.captions.filter((c) => frame >= c.start);
   let first = active ? row.captions.indexOf(active) : -1;
   let last = first;
@@ -82,7 +81,7 @@ export function visualAt(row: TimelineRow, frame: number) {
       ? (frame - row.captions[first].start) /
         (row.captions[last].end - row.captions[first].start)
       : 1,
-    thinking: frame >= audioLeadFrames + row.readingFrames,
+    thinking: frame >= row.audioEndFrame,
   };
 }
 export type VisualState = ReturnType<typeof visualAt>;

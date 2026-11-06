@@ -1,0 +1,819 @@
+{
+  "synthesis": {
+    "planSha256": "066bb4d6b9cc402ffe61e552d4d1811797e854e30a6b685454cc05321d3ec686",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "automaticRetries": 0,
+    "published": false,
+    "requests": [
+      {
+        "id": "SU01",
+        "fingerprint": "cb6fc5e96b187f67e62782a3525cc92f1db87a83bb8c135e62b7ceeb05b3fb6e",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T04:59:46.383Z",
+        "endedAt": "2026-11-06T05:00:04.498Z"
+      },
+      {
+        "id": "SU02",
+        "fingerprint": "59363be2caadf5312d0a0623ef080a12ee1d20f69bf86237182e2e473beacfbb",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:00:04.499Z",
+        "endedAt": "2026-11-06T05:00:24.496Z"
+      },
+      {
+        "id": "SU03",
+        "fingerprint": "b3af2a7059834dd89f55224a2a15866836af0e31da284fbc08ea110047121d8f",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:00:24.496Z",
+        "endedAt": "2026-11-06T05:00:43.356Z"
+      },
+      {
+        "id": "SU04",
+        "fingerprint": "481f17f4754ffeda6feb78b7f31a24b7db2cba03f18fa8665c95c237abd49c37",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:00:43.356Z",
+        "endedAt": "2026-11-06T05:00:48.958Z"
+      },
+      {
+        "id": "SU05",
+        "fingerprint": "a1a35efe0332403f82974ecc5818062b771f77b8f543143cb9876b4a6cc7a957",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:00:48.958Z",
+        "endedAt": "2026-11-06T05:01:00.263Z"
+      },
+      {
+        "id": "SU06",
+        "fingerprint": "3a5bb3848143168a77bc560d05f65691f0d426f54cdc170469a602353a9cc729",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:01:00.263Z",
+        "endedAt": "2026-11-06T05:01:20.584Z"
+      },
+      {
+        "id": "SU07",
+        "fingerprint": "cd0efd89a8c2bc38f9a7c6205ae22f9362c3340e68f012fc3e7d4c4cc3fa2b54",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:01:20.585Z",
+        "endedAt": "2026-11-06T05:01:45.921Z"
+      },
+      {
+        "id": "SU08",
+        "fingerprint": "fdcc79d9de832def21d413b309814512c00ddfc0fdb4564c4ab613748e442350",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:01:45.921Z",
+        "endedAt": "2026-11-06T05:02:50.095Z"
+      },
+      {
+        "id": "SU09",
+        "fingerprint": "9b63c7a4bf3fdec4865c7a6757f6bfe45f454c79b9a453bc82ba5f04c8c31789",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:02:50.096Z",
+        "endedAt": "2026-11-06T05:03:13.380Z"
+      },
+      {
+        "id": "SU10",
+        "fingerprint": "187414249409eefbbcea2703600cebabc8ac026eaafe2ff901cf497c30c8333d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:03:13.380Z",
+        "endedAt": "2026-11-06T05:03:27.366Z"
+      },
+      {
+        "id": "SU11",
+        "fingerprint": "59ebafaa1143f2e0a7cc8563298b313d71ae8f86100ddd1d93a8afa584027534",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:03:27.367Z",
+        "endedAt": "2026-11-06T05:04:08.805Z"
+      },
+      {
+        "id": "SU12",
+        "fingerprint": "400adf632addf8eea3af0479a08c0b8b7aa97628da3c7bd9d97c898b5c99fffe",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:04:08.805Z",
+        "endedAt": "2026-11-06T05:04:29.230Z"
+      },
+      {
+        "id": "SU13",
+        "fingerprint": "ec6f70c700548b6fabd4c0c95eaab5480eafdc9ed6948333976cd0e17b64eb0d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:04:29.230Z",
+        "endedAt": "2026-11-06T05:04:56.500Z"
+      },
+      {
+        "id": "SU14",
+        "fingerprint": "4c8e6d2e2df793e1168e648b74b06fb5b6e109bd7a78eab9e4df49611f83b97d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:04:56.500Z",
+        "endedAt": "2026-11-06T05:05:23.681Z"
+      },
+      {
+        "id": "SU15",
+        "fingerprint": "f9ae429c514a07b096054f6abf6b1f7a782e81a24476c36ab35231a90c3606d1",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:05:23.681Z",
+        "endedAt": "2026-11-06T05:05:53.952Z"
+      },
+      {
+        "id": "SU16",
+        "fingerprint": "960c006101d9222308812d31ab31faf8a78a4c907a1f6cdf4498f0a13a6d3832",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:05:53.952Z",
+        "endedAt": "2026-11-06T05:06:24.232Z"
+      },
+      {
+        "id": "SU17",
+        "fingerprint": "5d6354c81815f38de1957299064d88ddd128ae1b96222675f883f4bb4e89122d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:06:24.232Z",
+        "endedAt": "2026-11-06T05:07:05.900Z"
+      },
+      {
+        "id": "SU18",
+        "fingerprint": "d359ec5901fa47ee57823cb5b95f5c91f4e0f7cce55d6ad8b1aacb665eb57fa5",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:07:05.900Z",
+        "endedAt": "2026-11-06T05:07:42.043Z"
+      },
+      {
+        "id": "SU19",
+        "fingerprint": "66da511921eb4aa097e8ef74858061de006506ce099b025de220647802a2809a",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:07:42.043Z",
+        "endedAt": "2026-11-06T05:08:08.848Z"
+      },
+      {
+        "id": "SU20",
+        "fingerprint": "1b193a4f67da77d6c1a559eed3c140d45658459ef6898cb0d75678de8d6247f3",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:08:08.848Z",
+        "endedAt": "2026-11-06T05:09:05.331Z"
+      },
+      {
+        "id": "SU21",
+        "fingerprint": "57d09a7cb4f7ab9b9b476a11f8ec0f79f1026a75666ba9f90305f373d3d2e75b",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:09:05.332Z",
+        "endedAt": "2026-11-06T05:09:34.956Z"
+      },
+      {
+        "id": "SU22",
+        "fingerprint": "7b8cc4a50d5d3e8c6fd6662f57a49c123babf606368f4ba2aa3242537e5b72b2",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:09:34.956Z",
+        "endedAt": "2026-11-06T05:09:58.385Z"
+      },
+      {
+        "id": "SU23",
+        "fingerprint": "aafd01eed04276a338882b92318770c85d73df8fc726423ce9189a5fc4cd875e",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:09:58.385Z",
+        "endedAt": "2026-11-06T05:10:03.622Z"
+      },
+      {
+        "id": "SU24",
+        "fingerprint": "8c432df9401fec6ea3bf6aca20692ad8ec58465bcee585ececf9208a0d59d1ce",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:10:03.622Z",
+        "endedAt": "2026-11-06T05:10:07.424Z"
+      },
+      {
+        "id": "SU25",
+        "fingerprint": "eefdfaecd3ba11535da6ec1c368a1f7e6606898d04b6ebf8b5e55130d446d9e1",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:10:07.424Z",
+        "endedAt": "2026-11-06T05:10:41.173Z"
+      },
+      {
+        "id": "SU26",
+        "fingerprint": "ddad12237ae9d45eea4811a1cbf57130ccf04cc3f4ce7d6aa0daabb4bfd6fcd4",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:10:41.173Z",
+        "endedAt": "2026-11-06T05:10:45.848Z"
+      },
+      {
+        "id": "SU27",
+        "fingerprint": "9194ff5491509d290ce115bd1ffc71ebbdbcefc7a6080981a6f3ee525d22e9fe",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:10:45.848Z",
+        "endedAt": "2026-11-06T05:10:57.628Z"
+      },
+      {
+        "id": "SU28",
+        "fingerprint": "2fdc285ce2e6221b5be45e0ff7079f5c61059eacd1d2716d6402dbefb711f367",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:10:57.628Z",
+        "endedAt": "2026-11-06T05:11:12.051Z"
+      },
+      {
+        "id": "SU29",
+        "fingerprint": "f9a1211c935337a6298bbdfd91a68371759379f8fc0bbcfc8a3203fb9b9edb61",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:11:12.051Z",
+        "endedAt": "2026-11-06T05:11:25.577Z"
+      },
+      {
+        "id": "SU30",
+        "fingerprint": "f30384e1cbc46f7850e56cb6e484775ae28db9636b7caab16f533db2e03789e7",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:11:25.577Z",
+        "endedAt": "2026-11-06T05:11:46.328Z"
+      },
+      {
+        "id": "SU31",
+        "fingerprint": "af7aa363e65ca1b559ce87fb1a3b419e4f65e78e93ebbbaf39b198895e0e6563",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:11:46.328Z",
+        "endedAt": "2026-11-06T05:11:56.643Z"
+      },
+      {
+        "id": "SU32",
+        "fingerprint": "0b15f4044429b204a07fc55a602dfd907b2ef5683a83c649604dd93c43b9936d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:11:56.643Z",
+        "endedAt": "2026-11-06T05:12:26.949Z"
+      },
+      {
+        "id": "SU33",
+        "fingerprint": "6bdeec114b9af89b8b1d6d0c0e4828588d68d9e8dde16bf99c278aa07df83f21",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:12:26.949Z",
+        "endedAt": "2026-11-06T05:12:53.766Z"
+      },
+      {
+        "id": "SU34",
+        "fingerprint": "a407fc456230a791ee1f26f4e9310793c17ab36acef80a43dbc93b4c4c1a41dd",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:12:53.766Z",
+        "endedAt": "2026-11-06T05:13:11.584Z"
+      },
+      {
+        "id": "SU35",
+        "fingerprint": "f27e73ea2d7d24ad5a5bd6a2dda8462d7b86a04676bae391b2904c3f4c6d5400",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:13:11.584Z",
+        "endedAt": "2026-11-06T05:13:27.541Z"
+      },
+      {
+        "id": "SU36",
+        "fingerprint": "e8b6ee1381f07e9b1a4dc6eca2c22e51228bb57671e35c92a47ce5125c291c74",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:13:27.542Z",
+        "endedAt": "2026-11-06T05:13:50.436Z"
+      },
+      {
+        "id": "SU37",
+        "fingerprint": "980c8b460b996bfb034a87d2bfb990c99d46519bb6f084be4cef918262b06525",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:13:50.437Z",
+        "endedAt": "2026-11-06T05:13:54.880Z"
+      },
+      {
+        "id": "SU38",
+        "fingerprint": "89a9f4c3c6b89f19a2f184feae971d52b5e89d0c033f9a8b513b9d0ddce79980",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:13:54.880Z",
+        "endedAt": "2026-11-06T05:14:15.288Z"
+      },
+      {
+        "id": "SU39",
+        "fingerprint": "dc5119578ebafa3215e89297d48be85b05920f281935ad0ad7fd72e5b1a79012",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:14:15.288Z",
+        "endedAt": "2026-11-06T05:14:37.112Z"
+      },
+      {
+        "id": "SU40",
+        "fingerprint": "615a41737579d1d07fe3ac9daa8426fdf7c4224fe36385ef1fab2ee0c97b1d80",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:14:37.112Z",
+        "endedAt": "2026-11-06T05:15:03.204Z"
+      },
+      {
+        "id": "SU41",
+        "fingerprint": "ce633b4db0af62ff5e2b6ef6762ee25e329fc5a0cde9c983de10139c7cf6e03a",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:15:03.205Z",
+        "endedAt": "2026-11-06T05:15:08.644Z"
+      },
+      {
+        "id": "SU42",
+        "fingerprint": "e3923f5f78eb5fb9123502ea31b9bf57411788579a6730733c29de4f93f8e867",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:15:08.644Z",
+        "endedAt": "2026-11-06T05:15:11.625Z"
+      },
+      {
+        "id": "SU43",
+        "fingerprint": "ac565b34507eb6851412b4f7c57ba68d18597d2fced2eb289e65e48582019ee9",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:15:11.625Z",
+        "endedAt": "2026-11-06T05:15:37.622Z"
+      },
+      {
+        "id": "SU44",
+        "fingerprint": "58b4ae5439ddbd28beaf9fa347bb72a54576743db6e94ab289d9449df2348efc",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:15:37.622Z",
+        "endedAt": "2026-11-06T05:15:46.817Z"
+      },
+      {
+        "id": "SU45",
+        "fingerprint": "6989712b0a53668873ce21281ae81f726e884aed9d4c0c5cc09b49e5e39c2a59",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:15:46.818Z",
+        "endedAt": "2026-11-06T05:16:00.895Z"
+      },
+      {
+        "id": "SU46",
+        "fingerprint": "2d491e023b1c75d78f8e89dd75830975bad018d49e9e16bf9e78046ec528bc34",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:16:00.895Z",
+        "endedAt": "2026-11-06T05:16:16.394Z"
+      },
+      {
+        "id": "SU47",
+        "fingerprint": "81fdb44b0f6f05ba942cfb96bf91d0d3dd3de8f6298498341c088984b7a788c2",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:16:16.394Z",
+        "endedAt": "2026-11-06T05:16:22.999Z"
+      },
+      {
+        "id": "SU48",
+        "fingerprint": "9cfb43cd3682c8b00efb80d591d051e6c0bfbd5d10afcccfaed2e4189722ecf4",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:16:22.999Z",
+        "endedAt": "2026-11-06T05:16:27.674Z"
+      },
+      {
+        "id": "SU49",
+        "fingerprint": "545e002f6d7205c0dbc50ef3465c0ac244ab8d291d1b33f81450bb1a013aa15d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:16:27.674Z",
+        "endedAt": "2026-11-06T05:16:46.292Z"
+      },
+      {
+        "id": "SU50",
+        "fingerprint": "ecc782deaa0c015ba969284fac255e88231f05ac66368e5d975a7753fabbf873",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:16:46.292Z",
+        "endedAt": "2026-11-06T05:16:54.518Z"
+      },
+      {
+        "id": "SU51",
+        "fingerprint": "708f9a248e2e4308eaa56697ba66324ff7211b16ecdfc1d13ffd034e439bcc5e",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:16:54.519Z",
+        "endedAt": "2026-11-06T05:17:10.340Z"
+      },
+      {
+        "id": "SU52",
+        "fingerprint": "30bc71b89f40fa368d3699f0db15bbc815ab877491d4be442af7daa5407719e9",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:17:10.340Z",
+        "endedAt": "2026-11-06T05:17:20.738Z"
+      },
+      {
+        "id": "SU53",
+        "fingerprint": "1308815958c999c944a898e0bef9b6c5b7415222794f014248c41985985749d3",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:17:20.738Z",
+        "endedAt": "2026-11-06T05:17:24.535Z"
+      },
+      {
+        "id": "SU54",
+        "fingerprint": "ac4f6138bd079340f8bc3371db464cbbb7b24fa3cf6254b4032962278447155b",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:17:24.535Z",
+        "endedAt": "2026-11-06T05:17:41.178Z"
+      },
+      {
+        "id": "SU55",
+        "fingerprint": "c7c54972dfd324ef63c057b6e3dd0a48cc5a6386e651cd374943baffe315e4a5",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:17:41.179Z",
+        "endedAt": "2026-11-06T05:17:54.858Z"
+      },
+      {
+        "id": "SU56",
+        "fingerprint": "0397031452e42d8c04f51288f52bc0d9ce368af929a520d0f0957a38a2fdd62f",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:17:54.859Z",
+        "endedAt": "2026-11-06T05:18:00.355Z"
+      },
+      {
+        "id": "SU57",
+        "fingerprint": "aeffa53df80e160354fff38bb6f8e3ae15e00ea4d3f971b581bfe0a93e2e6bab",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-06T05:18:00.356Z",
+        "endedAt": "2026-11-06T05:18:23.888Z"
+      }
+    ]
+  },
+  "assessment": {
+    "planSha256": "066bb4d6b9cc402ffe61e552d4d1811797e854e30a6b685454cc05321d3ec686",
+    "automaticRetries": 0,
+    "published": false,
+    "listening": "not-performed",
+    "requests": [
+      {
+        "id": "SU01",
+        "status": "assessed-timing-available",
+        "audioSha256": "2c47abd66f0be98ecb53ba3d7a0791788c849a7daa3b609243b480582d1e808e",
+        "fingerprint": "cb6fc5e96b187f67e62782a3525cc92f1db87a83bb8c135e62b7ceeb05b3fb6e",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU02",
+        "status": "assessed-timing-available",
+        "audioSha256": "8afdbe2cd3bb554c537ad4d78d76346b8dfb287e030ce1d15d0d7213ebfa1c37",
+        "fingerprint": "59363be2caadf5312d0a0623ef080a12ee1d20f69bf86237182e2e473beacfbb",
+        "flags": { "Mispronunciation": 3, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU03",
+        "status": "assessed-timing-available",
+        "audioSha256": "be9538660bf5c8601d45527f9913034635a09f9d6f8576557d6b449e1a01fadb",
+        "fingerprint": "b3af2a7059834dd89f55224a2a15866836af0e31da284fbc08ea110047121d8f",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU04",
+        "status": "assessed-timing-available",
+        "audioSha256": "5bb203b5512838ef314c8bd08014c97bb458c1da0737382a3019e8bfa29e39f9",
+        "fingerprint": "481f17f4754ffeda6feb78b7f31a24b7db2cba03f18fa8665c95c237abd49c37",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU05",
+        "status": "assessed-timing-available",
+        "audioSha256": "a1a181ca7ae3cebf78e64de38bdcd4d5901b976d32129b0b9f067b49319cb4a5",
+        "fingerprint": "a1a35efe0332403f82974ecc5818062b771f77b8f543143cb9876b4a6cc7a957",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU06",
+        "status": "assessed-timing-available",
+        "audioSha256": "72a3552f30c15406d875b0493287148f7b1435d6d091c6a04c82364f67b1ac3b",
+        "fingerprint": "3a5bb3848143168a77bc560d05f65691f0d426f54cdc170469a602353a9cc729",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU07",
+        "status": "assessed-timing-available",
+        "audioSha256": "96148d796347bbc540a0073ff405d335a3690db322a92281e45f6e3d56f90ab8",
+        "fingerprint": "cd0efd89a8c2bc38f9a7c6205ae22f9362c3340e68f012fc3e7d4c4cc3fa2b54",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU08",
+        "status": "assessed-timing-available",
+        "audioSha256": "0848142ba8427e560d13aedac0041abf0de470b294f61ad344f6dfe3b93148dc",
+        "fingerprint": "fdcc79d9de832def21d413b309814512c00ddfc0fdb4564c4ab613748e442350",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU09",
+        "status": "assessed-timing-available",
+        "audioSha256": "9d1956629956995636f7613537953af78ea56ca648c720f059850178721cd4ea",
+        "fingerprint": "9b63c7a4bf3fdec4865c7a6757f6bfe45f454c79b9a453bc82ba5f04c8c31789",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU10",
+        "status": "assessed-timing-available",
+        "audioSha256": "1369e2051b108ea45df4f8f1fd45c190ad0e898e283684579d07751dc63f1173",
+        "fingerprint": "187414249409eefbbcea2703600cebabc8ac026eaafe2ff901cf497c30c8333d",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU11",
+        "status": "assessed-timing-available",
+        "audioSha256": "b9a180ad55acac5fda9e4b855559c01ea38d87961f256ac09f67ca0f60578075",
+        "fingerprint": "59ebafaa1143f2e0a7cc8563298b313d71ae8f86100ddd1d93a8afa584027534",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU12",
+        "status": "assessed-timing-available",
+        "audioSha256": "815a2ced0bbea7f54d15493a6d877d3fc6b9a3dfe3d65e8b79c26bbcd1714111",
+        "fingerprint": "400adf632addf8eea3af0479a08c0b8b7aa97628da3c7bd9d97c898b5c99fffe",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU13",
+        "status": "assessed-timing-available",
+        "audioSha256": "a9ed1f845bdac58249ad3b929511c7e648c4e63272ff8f8079c5374bc1031336",
+        "fingerprint": "ec6f70c700548b6fabd4c0c95eaab5480eafdc9ed6948333976cd0e17b64eb0d",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU14",
+        "status": "assessed-timing-available",
+        "audioSha256": "550b194f097f3e95aff2a00a621717585e3ec8bbf9d048dc8bb0ff4107059a09",
+        "fingerprint": "4c8e6d2e2df793e1168e648b74b06fb5b6e109bd7a78eab9e4df49611f83b97d",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU15",
+        "status": "assessed-timing-available",
+        "audioSha256": "e81f938748527dfded4dedac76000d8502ec4e23d57481ed3ade98f7964cc7c5",
+        "fingerprint": "f9ae429c514a07b096054f6abf6b1f7a782e81a24476c36ab35231a90c3606d1",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU16",
+        "status": "assessed-timing-available",
+        "audioSha256": "c7ab1e659ead1af9db57160475830f917c2e6721ce40f529f906b1ee62282a54",
+        "fingerprint": "960c006101d9222308812d31ab31faf8a78a4c907a1f6cdf4498f0a13a6d3832",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU17",
+        "status": "assessed-timing-available",
+        "audioSha256": "2c1e930ba9d2ab459b32c79f3e40ba3b520930038736a66a78bc83efee97d296",
+        "fingerprint": "5d6354c81815f38de1957299064d88ddd128ae1b96222675f883f4bb4e89122d",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU18",
+        "status": "assessed-timing-available",
+        "audioSha256": "30bcc95da19231ef309913de2ac6c9173f0a605d79a244c67e04f5f5ef2de966",
+        "fingerprint": "d359ec5901fa47ee57823cb5b95f5c91f4e0f7cce55d6ad8b1aacb665eb57fa5",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU19",
+        "status": "assessed-timing-available",
+        "audioSha256": "9e1095ae4eece37304d2a803af49e74f4699672d98f6e99ca5f4562a959e362a",
+        "fingerprint": "66da511921eb4aa097e8ef74858061de006506ce099b025de220647802a2809a",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU20",
+        "status": "assessed-timing-available",
+        "audioSha256": "28dc74ac3cbc39bb578dc653645fe1aea35aea18cf41039a2bd5bf79d85e3b4e",
+        "fingerprint": "1b193a4f67da77d6c1a559eed3c140d45658459ef6898cb0d75678de8d6247f3",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU21",
+        "status": "assessed-timing-available",
+        "audioSha256": "4eccda337de942971724d4b42746ee3882b95389a77690fd5c3d20d3675b6134",
+        "fingerprint": "57d09a7cb4f7ab9b9b476a11f8ec0f79f1026a75666ba9f90305f373d3d2e75b",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU22",
+        "status": "assessed-timing-available",
+        "audioSha256": "c900a4a9995bbd35c005938b1ee6b4ee62764384a83e4a756152b43046eed668",
+        "fingerprint": "7b8cc4a50d5d3e8c6fd6662f57a49c123babf606368f4ba2aa3242537e5b72b2",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU23",
+        "status": "assessed-timing-available",
+        "audioSha256": "beabe70d7af7e53dba57bd05e0dda0408efcc72e61408f5d1a44dd329d00c5e1",
+        "fingerprint": "aafd01eed04276a338882b92318770c85d73df8fc726423ce9189a5fc4cd875e",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU24",
+        "status": "assessed-timing-available",
+        "audioSha256": "a4bc3d9536a221f2dfc266655b6477ff4b814d2d5dd5fc684b6cd5c7079894d0",
+        "fingerprint": "8c432df9401fec6ea3bf6aca20692ad8ec58465bcee585ececf9208a0d59d1ce",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU25",
+        "status": "assessed-timing-available",
+        "audioSha256": "9a0ebb6e54c555e534ee1a808024016d2939f5d9eeebf4b863b23cc9a167d15c",
+        "fingerprint": "eefdfaecd3ba11535da6ec1c368a1f7e6606898d04b6ebf8b5e55130d446d9e1",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU26",
+        "status": "assessed-timing-available",
+        "audioSha256": "5b2807f4c4840e64fbc703e5c057549e0f0ea50389ce96d367b018dd8fb55f54",
+        "fingerprint": "ddad12237ae9d45eea4811a1cbf57130ccf04cc3f4ce7d6aa0daabb4bfd6fcd4",
+        "flags": { "Mispronunciation": 3, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU27",
+        "status": "assessed-timing-available",
+        "audioSha256": "bdcc75969f03183b0ed791c0b472a554ea1fb4d567a94a48fa73049c04c67a24",
+        "fingerprint": "9194ff5491509d290ce115bd1ffc71ebbdbcefc7a6080981a6f3ee525d22e9fe",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU28",
+        "status": "assessed-timing-available",
+        "audioSha256": "ff3dc48e0eb1b920acec5cd4c9d93203695798ea905c4159436bed75f975adeb",
+        "fingerprint": "2fdc285ce2e6221b5be45e0ff7079f5c61059eacd1d2716d6402dbefb711f367",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU29",
+        "status": "assessed-timing-available",
+        "audioSha256": "eb2c6f6b1a8c9bab19f344ea87732bcfd7acca676823d59a6da39a0f42ed8543",
+        "fingerprint": "f9a1211c935337a6298bbdfd91a68371759379f8fc0bbcfc8a3203fb9b9edb61",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU30",
+        "status": "assessed-timing-available",
+        "audioSha256": "908eba8b711a762606be899e8ef142635f1144a8d0c2288be10cb96f1446615b",
+        "fingerprint": "f30384e1cbc46f7850e56cb6e484775ae28db9636b7caab16f533db2e03789e7",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU31",
+        "status": "assessed-timing-available",
+        "audioSha256": "1a2926352e76ea1f9895a47514cb7901fb9bd4ccecd8dd04fc2407ce9983a798",
+        "fingerprint": "af7aa363e65ca1b559ce87fb1a3b419e4f65e78e93ebbbaf39b198895e0e6563",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU32",
+        "status": "assessed-timing-available",
+        "audioSha256": "491102405ab486558907ce68c576246301ab8dba27af713fd10bd115548d51b9",
+        "fingerprint": "0b15f4044429b204a07fc55a602dfd907b2ef5683a83c649604dd93c43b9936d",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU33",
+        "status": "assessed-timing-available",
+        "audioSha256": "6b356faef82caaa0ac08818fd90dede97316db9f8c8cfde6362bdababc2c52cd",
+        "fingerprint": "6bdeec114b9af89b8b1d6d0c0e4828588d68d9e8dde16bf99c278aa07df83f21",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU34",
+        "status": "assessed-timing-available",
+        "audioSha256": "406419e7ac8afaff1bbf96eddfd7ddcac887c0a93c7deb219ebbe4be30e83267",
+        "fingerprint": "a407fc456230a791ee1f26f4e9310793c17ab36acef80a43dbc93b4c4c1a41dd",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU35",
+        "status": "assessed-timing-available",
+        "audioSha256": "6773939cc2516b8287b4e3700a02b0508bc5021566edd462a86f0d2c5db6ff5c",
+        "fingerprint": "f27e73ea2d7d24ad5a5bd6a2dda8462d7b86a04676bae391b2904c3f4c6d5400",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU36",
+        "status": "assessed-timing-available",
+        "audioSha256": "10d15df690079730582286c04a4c9f1aa4eb67b8990baa8aa5498c68dca4a9d9",
+        "fingerprint": "e8b6ee1381f07e9b1a4dc6eca2c22e51228bb57671e35c92a47ce5125c291c74",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU37",
+        "status": "assessed-timing-available",
+        "audioSha256": "e56eefbc82229966e7fe78b124166c20424d974a125a3ac02dff608ab7ed8124",
+        "fingerprint": "980c8b460b996bfb034a87d2bfb990c99d46519bb6f084be4cef918262b06525",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU38",
+        "status": "assessed-timing-available",
+        "audioSha256": "d052881c8dd1b4524da3fcdd83b7c3734ff55f0f41ab203f2b84c4ec5f4fba14",
+        "fingerprint": "89a9f4c3c6b89f19a2f184feae971d52b5e89d0c033f9a8b513b9d0ddce79980",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU39",
+        "status": "assessed-timing-available",
+        "audioSha256": "c4f85eedc648fc11651a4555af0b457c8c5de1b4ef95c839f72715e2fc5967ae",
+        "fingerprint": "dc5119578ebafa3215e89297d48be85b05920f281935ad0ad7fd72e5b1a79012",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU40",
+        "status": "assessed-timing-available",
+        "audioSha256": "0899c9254fd9eb03056b892e84e4782625e430b960b5e90a267be4d943840eb4",
+        "fingerprint": "615a41737579d1d07fe3ac9daa8426fdf7c4224fe36385ef1fab2ee0c97b1d80",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU41",
+        "status": "assessed-timing-available",
+        "audioSha256": "0fc81b15b87f0b72d162628c656699016627a58a590a38670df8158f5a4d3aba",
+        "fingerprint": "ce633b4db0af62ff5e2b6ef6762ee25e329fc5a0cde9c983de10139c7cf6e03a",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU42",
+        "status": "assessed-timing-available",
+        "audioSha256": "4e718bee64c1cdf0c9a6c2fe1c00576b558a7cbb9793ee45503b9e320fd21653",
+        "fingerprint": "e3923f5f78eb5fb9123502ea31b9bf57411788579a6730733c29de4f93f8e867",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU43",
+        "status": "assessed-timing-available",
+        "audioSha256": "03ec18f4200f35747ebde620d024defb1ad832dc785b0fa826239b46cc0ca723",
+        "fingerprint": "ac565b34507eb6851412b4f7c57ba68d18597d2fced2eb289e65e48582019ee9",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU44",
+        "status": "assessed-timing-available",
+        "audioSha256": "179c624a2737cd1f82829044de267f48cda47b4355460052bb33585c6bbd7291",
+        "fingerprint": "58b4ae5439ddbd28beaf9fa347bb72a54576743db6e94ab289d9449df2348efc",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU45",
+        "status": "assessed-timing-available",
+        "audioSha256": "89e075758a3eec028f9636f10bb0e144a6275a47e52f58b094bf2b7fd685625f",
+        "fingerprint": "6989712b0a53668873ce21281ae81f726e884aed9d4c0c5cc09b49e5e39c2a59",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU46",
+        "status": "assessed-timing-available",
+        "audioSha256": "2579d0eb99b718730134d2d3e2afff7e4322fdeaafafbd178e7204a8ac3e586d",
+        "fingerprint": "2d491e023b1c75d78f8e89dd75830975bad018d49e9e16bf9e78046ec528bc34",
+        "flags": { "Mispronunciation": 2, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU47",
+        "status": "assessed-timing-available",
+        "audioSha256": "6a3b1e92c2b97c1070b286f9b390137b4291c1d2f355016e4612c12122e2987d",
+        "fingerprint": "81fdb44b0f6f05ba942cfb96bf91d0d3dd3de8f6298498341c088984b7a788c2",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU48",
+        "status": "assessed-timing-available",
+        "audioSha256": "97f19ab8fcf98d0f8567fd613e8cf4f25d52d8b2313594880852f5d5fe8c352a",
+        "fingerprint": "9cfb43cd3682c8b00efb80d591d051e6c0bfbd5d10afcccfaed2e4189722ecf4",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU49",
+        "status": "assessed-timing-available",
+        "audioSha256": "e58d2c9ec18864b4fe38a190661aa96999692f8f7cb57bf655c390a83094c5d3",
+        "fingerprint": "545e002f6d7205c0dbc50ef3465c0ac244ab8d291d1b33f81450bb1a013aa15d",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU50",
+        "status": "assessed-timing-available",
+        "audioSha256": "f32fd2b9f455e8e7cc45e3b5710d9353510b48361ebfd589adfde1f35721f8be",
+        "fingerprint": "ecc782deaa0c015ba969284fac255e88231f05ac66368e5d975a7753fabbf873",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU51",
+        "status": "assessed-timing-available",
+        "audioSha256": "1cce3d9e672d3e6e08fa17e992386531aa40f5f4f02ee53df6b53301b7180bd0",
+        "fingerprint": "708f9a248e2e4308eaa56697ba66324ff7211b16ecdfc1d13ffd034e439bcc5e",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU52",
+        "status": "assessed-timing-available",
+        "audioSha256": "fe66c7ecbfe6691ded7eedebcdbe584eed85aac3c5d3b3ae7f0b812a7baa6098",
+        "fingerprint": "30bc71b89f40fa368d3699f0db15bbc815ab877491d4be442af7daa5407719e9",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU53",
+        "status": "assessed-timing-available",
+        "audioSha256": "177da88c76d130d34ce45dfb7834e32f2054e84c7bf8c5e9faaefc0c08df3b51",
+        "fingerprint": "1308815958c999c944a898e0bef9b6c5b7415222794f014248c41985985749d3",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU54",
+        "status": "assessed-timing-available",
+        "audioSha256": "ead2eafc4974ec8620bb5e4c392b2288d37587be8415fcf466d44aade9a4fb92",
+        "fingerprint": "ac4f6138bd079340f8bc3371db464cbbb7b24fa3cf6254b4032962278447155b",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU55",
+        "status": "assessed-timing-available",
+        "audioSha256": "080c3bd79be14d29c02666f8214e49c3148f695dcadc201d59569d0aaa0be285",
+        "fingerprint": "c7c54972dfd324ef63c057b6e3dd0a48cc5a6386e651cd374943baffe315e4a5",
+        "flags": { "Mispronunciation": 0, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU56",
+        "status": "assessed-timing-available",
+        "audioSha256": "8fc825bd93837787ff9d241212cdb352a35f9e23f8411b70c112cf1cb1756db0",
+        "fingerprint": "0397031452e42d8c04f51288f52bc0d9ce368af929a520d0f0957a38a2fdd62f",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      },
+      {
+        "id": "SU57",
+        "status": "assessed-timing-available",
+        "audioSha256": "ce9a022d36b01415145b56adffdda9cc2b5d46d5885d60e1390a5c53f1c1aa10",
+        "fingerprint": "aeffa53df80e160354fff38bb6f8e3ae15e00ea4d3f971b581bfe0a93e2e6bab",
+        "flags": { "Mispronunciation": 1, "Omission": 0, "Insertion": 0 }
+      }
+    ]
+  },
+  "adopted": true,
+  "actualListeningPerformed": false
+}
