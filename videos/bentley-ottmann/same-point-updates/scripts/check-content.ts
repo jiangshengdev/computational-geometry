@@ -5,8 +5,10 @@ import { shots, pageList } from "../src/storyboard.ts";
 import { inputs, type Name } from "../src/example.ts";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "../../../shared/speech/azure-speech.ts";
+import { updateSentencePauses } from "./sentence-plan.ts";
 
 // Validate observable teaching behavior, not exact wording or source shape.
+updateSentencePauses(false);
 const narration = JSON.parse(
   readFileSync(new URL("../src/narration-text.json", import.meta.url), "utf8"),
 );

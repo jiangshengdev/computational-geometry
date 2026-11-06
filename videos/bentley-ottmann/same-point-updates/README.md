@@ -9,7 +9,10 @@
 - `src/storyboard.ts`：21 页、57 个稳定步骤 SU01–SU57，独立字幕原稿、正文依据、首次对象、图示操作与思考停顿。
 - `src/narration-text.json`：从已审校字幕派生的独立纯文本口播。
 - `src/speech-text.json`：读音标注稿；拼接文字必须与冻结纯文本一致，不作为字幕源。
-  本阶段尚未加入 `break`；句界映射、停顿和实测时间在后续音频阶段处理。
+  已按 `src/sentence-plan.json` 的语义对应加入句末 400ms、句内 200ms 的请求停顿；
+  原文字、拼音和字母身份保持不变。停顿请求值不是实测静音长度。
+- `src/sentence-plan.json`：原始字幕完整句子与独立口播短句的逐项对应，
+  通过共享校验器核对全文覆盖和停顿位置，不用于推测实际词时间。
 - `src/UpdateDiagram.tsx`、`src/example.ts`：本集专用的成员、整块次序、空隙、邻接、发现与流程图。
 - `src/timeline.ts`：明确标记为 `provisional-silent-reading` 的静默阅读预览。
   不伪造词时间，不使用音频数据格式；以后进入音频阶段须换成实测时间并重新核对语义提示。
@@ -62,9 +65,18 @@ pnpm --config.verify-deps-before-run=false run dev
 pnpm --config.verify-deps-before-run=false run lint
 pnpm --config.verify-deps-before-run=false run video:check-content
 pnpm --config.verify-deps-before-run=false run video:check-layout
+pnpm --config.verify-deps-before-run=false run video:sentence-pauses
+pnpm --config.verify-deps-before-run=false run video:plan-narration --dry-run
 ```
 
 `dev` 不自动打开浏览器；代理检查使用共享入口分配独立临时端口，不复用用户服务。
+`video:plan-narration` 仅输出 57 段的完整 SSML、请求指纹和停顿位置，
+不读取凭据、不创建服务客户端、不请求合成或评估、不写音频或时间数据。
+默认音色为 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`，请求格式为
+`riff-48khz-16bit-mono-pcm`，不指定语速、不自动重试。
+请求计划须另行确认后才可进入实际生成；本入口不执行合成。
+`video:sentence-pauses --write` 仅通过共享生成器按已审校分句更新读音稿中的停顿；
+不修改文字或已有读音标注，默认不带参数仅校验。
 布局检查要求 `REMOTION_BROWSER_EXECUTABLE` 指向已核实与本集 Remotion 4.0.540
 匹配的 Chrome Headless Shell 158.0.8127.2，缺失时报错，不自动下载。
 可用 `--shots=SU08,SU25` 限定实际受影响步骤；`--screenshots` 保存生产页面浏览器截图到系统临时目录。
