@@ -1,54 +1,76 @@
-# Remotion video
+# 第四章下集：统一更新顺序，让扫描继续
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+本集实施依据为 [两集规格 #334](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/334) 与
+[文案与画面 #338](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/338)。
+对应第四章文章第六至九节；承接上集的参与者与报告结论。
 
-Welcome to your Remotion project!
+## 当前制作入口
 
-## Commands
+- `src/storyboard.ts`：21 页、57 个稳定步骤 SU01–SU57，独立字幕原稿、正文依据、首次对象、图示操作与思考停顿。
+- `src/narration-text.json`：从已审校字幕派生的独立纯文本口播。
+- `src/speech-text.json`：读音标注稿；拼接文字必须与冻结纯文本一致，不作为字幕源。
+  本阶段尚未加入 `break`；句界映射、停顿和实测时间在后续音频阶段处理。
+- `src/UpdateDiagram.tsx`、`src/example.ts`：本集专用的成员、整块次序、空隙、邻接、发现与流程图。
+- `src/timeline.ts`：明确标记为 `provisional-silent-reading` 的静默阅读预览。
+  不伪造词时间，不使用音频数据格式；以后进入音频阶段须换成实测时间并重新核对语义提示。
+- `SamePointUpdates` 是完整生产 composition；`LayoutCheck` 直接使用相同生产页面，
+  覆盖步骤揭示、短字幕切换、提示起止与中间状态、思考和页末保留。
+- 本阶段没有音频文件、合成请求或音画同步验收；不提供成片导出入口。
+  预览时长不是实测片长，也不是需要填满的内容指标。
 
-**Install Dependencies**
+## 内容与前置结论的分工
 
-```console
-npm i --loglevel=error
+| 本集位置 | 已有材料                                                             | 本集新增联系                                                 |
+| -------- | -------------------------------------------------------------------- | ------------------------------------------------------------ |
+| SU03–05  | 上集 SP22–24、SP54、SP60–62；文章第三、五节                          | 报告后筛选继续成员，整块更新                                 |
+| SU06–14  | 第三章下集 ES37–42；文章精确判断第九节                               | 逐对高低确定全块；同侧等斜率排除；A、F 仅端点接触            |
+| SU15–20  | 上集 SP25–35 的连续块；第二章下集 V-no-events、V-sign-change-result  | 块外继续存在、严格间隔及插入空隙保持                         |
+| SU21–30  | 第二章下集三类事件；上集相遇块                                       | 非空块内部与边界、空块连接、纯点不变，以及完备分类           |
+| SU31–33  | 第三章下集 ES07–08、ES19–27；第二章清单保留规则                      | 把真实交集、严格未来与同点更新接起来                         |
+| SU34–45  | 上集连续块；第二章 V-last-adjacency、V-retain-report、V-prior-events | 块内至少一对真正邻居替代旧交叉对，核对最早漏点所需的左侧前提 |
+| SU46–57  | 上集已介绍的最小案例与本集 A、F                                      | 统一信息依赖与各分支的简短核对，不重演完整扫描               |
+
+前三章已有代数推导、上集参与者收集和无序对报告证明不再展开。
+一般示意不指定新坐标、不冒充真实执行轨迹；数值图保留文章输入身份及配色。
+A、F 是独立的仅端点接触案例，不与 A、B、C、D 拼成同一组输入。
+
+## 参考实现与继承
+
+采用当前上集 `same-point-participants` 的完整生产页面组合（引入于本地提交
+`1b7cb24`），并核对第三章下集 `exact-sweep-decisions`（参考区域最后调整
+`cdf51d4`）。具体视频只作参考，不从相邻工程导入内容或制作依赖。
+
+| 能力                       | 基准实际入口                                                         | 本集接入与检查                                                                 |
+| -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| 左图右文、正文累积         | 上集 `TeachingPage.tsx` 的 `diagramPosition="left"`、`wrapText=true` | 同样显式传参，复用 `MathLessonPage` 与 `TeachingMathLines`；隐藏后续行保留排版 |
+| 数学混排、公式下标         | 共享 `SemanticMathText`；上集 `MathText.tsx`                         | 正文、字幕、SVG 标注使用同一数学组件；标题与字幕不染色                         |
+| 身份色与当前局部重点       | 上集 `teaching-colors.ts`、`ParticipantDiagram.tsx`                  | 沿用蓝 A、橙 B、紫 C、绿 D；当前短语焦点与对象提示独立，正文不是只用整行背景   |
+| 描亮、提示圈及撤去后的保留 | 共享 `AttentionMarks` 与 `teaching-cues`                             | 原几何位置不动，只有提示层变化；相同语义跨短字幕不重启动画                     |
+| 字幕短句与静默保留         | 共享 `groupCaptionClauses`、上集 timeline                            | 自然标点原样保留；同页短句续接，跨页不泄漏旧字幕；采用暂定阅读时间             |
+| 无头生产状态检查           | 共享 `ShotLayoutCheck` 与 `checkShotLayouts`                         | 本集 `LayoutCheck.tsx` 和 `scripts/check-layout.ts`；无音频、无视频导出        |
+
+本集没有需要已知依据辅助栏的新页型，前置结论在主场景用明确来源简短引用。
+专用过程图分别承担成员筛选、整块次序、邻接分类和事件发现，不以换主题为由改造共享排版。
+正式音频的读音、实测时间与音画同步属于后续阶段。
+
+## 命令
+
+在本工程目录运行，使用已安装依赖：
+
+```sh
+pnpm --config.verify-deps-before-run=false run dev
+pnpm --config.verify-deps-before-run=false run lint
+pnpm --config.verify-deps-before-run=false run video:check-content
+pnpm --config.verify-deps-before-run=false run video:check-layout
 ```
 
-**Start Preview**
+`dev` 不自动打开浏览器；代理检查使用共享入口分配独立临时端口，不复用用户服务。
+布局检查要求 `REMOTION_BROWSER_EXECUTABLE` 指向已核实与本集 Remotion 4.0.540
+匹配的 Chrome Headless Shell 158.0.8127.2，缺失时报错，不自动下载。
+可用 `--shots=SU08,SU25` 限定实际受影响步骤；`--screenshots` 保存生产页面浏览器截图到系统临时目录。
+`build` 仅打包，不渲染。工具与交付边界见
+[视频规则](../../AGENTS.md)和[工程操作说明](../../../docs/agents/videos/operations.md)。
 
-```console
-npm run dev
-```
-
-**Render video**
-
-```console
-npx remotion render
-```
-
-**Upgrade Remotion**
-
-```console
-npx remotion upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+内容检查核对案例算术、字幕完整保留、整行先显示、语义提示连续性与页末停顿；
+布局检查只证明实际覆盖状态的内容边界与可达性，不替代独立画面观察。
+没有执行可见桌面验收、音频试听或成片验收；执行状态以 #338 为权威记录。
