@@ -21,6 +21,8 @@ export function checkAudio(decode = true) {
   return {
     clips: result.clips,
     counts: result.counts,
+    reviewedRecognition: result.reviewedRecognition,
+    unresolved: result.unresolved,
     actualListeningPerformed: false,
   };
 }

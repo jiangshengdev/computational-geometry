@@ -23,14 +23,27 @@ export async function synthesizeBatch(
   sdk: typeof SpeechSdk,
   speech: Record<string, unknown>,
   validateSource: () => void,
+  { concurrency: defaultConcurrency = 1 } = {},
 ) {
   const args = process.argv.slice(2);
+  const concurrencyArgs = args.filter((arg) =>
+    arg.startsWith("--concurrency="),
+  );
+  assert(concurrencyArgs.length <= 1, "Repeated --concurrency");
+  const concurrency = concurrencyArgs.length
+    ? Number(concurrencyArgs[0].slice("--concurrency=".length))
+    : defaultConcurrency;
+  assert(
+    Number.isInteger(concurrency) && concurrency >= 1 && concurrency <= 4,
+    "Synthesis concurrency must be an integer from 1 to 4",
+  );
   const flags = ["--continue-unstarted", "--dry-run"];
   for (const flag of flags)
     assert(args.filter((arg) => arg === flag).length <= 1);
   const names = ["plan", "plan-sha256", "output"];
   assert.equal(
-    args.filter((arg) => !flags.includes(arg)).length,
+    args.filter((arg) => !flags.includes(arg) && !concurrencyArgs.includes(arg))
+      .length,
     names.length,
     "Require --plan, --plan-sha256 and --output",
   );
@@ -160,6 +173,7 @@ export async function synthesizeBatch(
       JSON.stringify(
         {
           mode: "dry-run",
+          concurrency,
           requests: selected.map((doc: { id: string }) => doc.id),
           skipped: manifest.requests.filter(
             (record) => record.status !== "not-started",
@@ -201,7 +215,7 @@ export async function synthesizeBatch(
         JSON.stringify(manifest, null, 2) + "\n",
       );
     save();
-    for (const doc of selected) {
+    const produce = async (doc: (typeof selected)[number]) => {
       const record = manifest.requests.find(
         (r: { id: string }) => r.id === doc.id,
       )!;
@@ -263,6 +277,15 @@ export async function synthesizeBatch(
           `${doc.id}: ${record.status}; stopped without retry; inspect ${output}`,
         );
       }
+    };
+    // Settle every in-flight request before releasing the lock or reporting a
+    // failure. A failed wave never starts the next wave or retries a request.
+    for (let index = 0; index < selected.length; index += concurrency) {
+      const results = await Promise.allSettled(
+        selected.slice(index, index + concurrency).map(produce),
+      );
+      const failure = results.find((result) => result.status === "rejected");
+      if (failure?.status === "rejected") throw failure.reason;
     }
     console.log(
       `Staged ${manifest.requests.filter((record) => record.status === "synthesized-and-decoded").length}/${manifest.requests.length} complete original WAV files: ${output}; not adopted or listened; unresolved requests are preserved`,

@@ -28,8 +28,8 @@ export const visualCues: Record<string, { name: string; phrase: string }[]> = {
     { name: "endB", phrase: "随后旧成员退出" },
   ],
   OR21: [
-    { name: "endsI", phrase: "第一份的左端横坐标" },
-    { name: "endsJ", phrase: "另一份的左端横坐标" },
+    { name: "endsI", phrase: "第一份的左端 x 坐标" },
+    { name: "endsJ", phrase: "另一份的左端 x 坐标" },
   ],
   OR22: [{ name: "orders", phrase: "两份的开始位置只有" }],
   OR23: [

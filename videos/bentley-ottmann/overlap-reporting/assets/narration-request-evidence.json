@@ -7,6 +7,15 @@
       "status": "request-failed-or-uncertain",
       "startedAt": "2026-11-07T06:51:22.032Z",
       "endedAt": "2026-11-07T06:55:22.034Z"
+    },
+    {
+      "id": "OR31",
+      "fingerprint": "b6b3523ec13050772a470c48001da74e63e06d008c31363aa09fbd560e4734c5",
+      "status": "interrupted-result-unknown",
+      "startedAt": "2026-11-07T10:41:36.801Z",
+      "endedAt": "2026-11-07T10:42:55.686Z",
+      "planSha256": "d43a826e98a6f53822d19c753813f67b88f0932df43d74b8192d3514b58c5fa2",
+      "reason": "user-requested-stop-and-concurrent-restart"
     }
   ],
   "replacements": [
@@ -18,6 +27,15 @@
       "startedAt": "2026-11-07T07:04:18.253Z",
       "endedAt": "2026-11-07T07:05:19.546Z",
       "audioSha256": "d74ee4e7f885c0e6dac0d967793ec07d70a7403027118b1851cd6308af16f72e"
+    },
+    {
+      "id": "OR31",
+      "fingerprint": "b6b3523ec13050772a470c48001da74e63e06d008c31363aa09fbd560e4734c5",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-07T10:43:26.254Z",
+      "endedAt": "2026-11-07T10:45:06.016Z",
+      "planSha256": "113e101c2b0e3fa2b3d23b17959685d1b98b2305f1ceecdbce4d10ad6c1c667d",
+      "audioSha256": "9ff42b5f6ec72921189a5c7a40200d72fa453e1cb0f2a74fa893d33839957fd2"
     }
   ]
 }

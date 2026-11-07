@@ -45,30 +45,30 @@
     {
       "text": "仍保留两项教学条件：",
       "startMs": 70,
-      "endMs": 1790,
+      "endMs": 1830,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "非零输入不竖直，不同事件位置的横坐标各异。",
-      "startMs": 2028,
-      "endMs": 6137,
+      "text": "非零输入不竖直，不同事件位置的 x 坐标各异。",
+      "startMs": 2078,
+      "endMs": 6338,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "多个端点可以是同一个位置。",
-      "startMs": 6589,
-      "endMs": 8868,
+      "startMs": 6789,
+      "endMs": 9068,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "事件位置包括输入端点和不同所在直线上的实际交点，",
-      "startMs": 9359,
+      "startMs": 9559,
       "endMs": 13839,
       "timestampMs": null,
       "confidence": null,
@@ -77,7 +77,7 @@
     {
       "text": "重叠区间内的每个点不各自成为事件。",
       "startMs": 14158,
-      "endMs": 16997,
+      "endMs": 17077,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -85,41 +85,41 @@
   ],
   "OR03": [
     {
-      "text": "先取蓝色输入 A，从横坐标零、纵坐标零，",
+      "text": "先取蓝色输入 A，从 x 坐标零、y 坐标零，",
       "startMs": 70,
-      "endMs": 4828,
+      "endMs": 4977,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "到横坐标六、纵坐标零。",
-      "startMs": 5098,
-      "endMs": 7377,
+      "text": "到 x 坐标六、y 坐标零。",
+      "startMs": 5248,
+      "endMs": 7688,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "图是教学示意。",
-      "startMs": 7839,
-      "endMs": 9239,
+      "startMs": 8139,
+      "endMs": 9579,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "各子图尺度相同，横纵每格均为一个单位，",
-      "startMs": 9709,
-      "endMs": 13528,
+      "startMs": 10059,
+      "endMs": 13638,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "O 表示原点，箭头表示坐标正方向。",
-      "startMs": 13828,
-      "endMs": 17638,
+      "startMs": 13928,
+      "endMs": 17688,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -127,33 +127,33 @@
   ],
   "OR04": [
     {
-      "text": "再取橙色输入 B，从横坐标二、纵坐标零，",
+      "text": "再取橙色输入 B，从 x 坐标二、y 坐标零，",
       "startMs": 70,
-      "endMs": 4878,
+      "endMs": 5108,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "到横坐标八、纵坐标零。",
-      "startMs": 5148,
-      "endMs": 7387,
+      "text": "到 x 坐标八、y 坐标零。",
+      "startMs": 5398,
+      "endMs": 7757,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "它与前一份部分重叠，",
-      "startMs": 7839,
-      "endMs": 9599,
+      "startMs": 8189,
+      "endMs": 9789,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "两份原始身份仍然分别保留。",
-      "startMs": 9888,
-      "endMs": 12167,
+      "startMs": 10138,
+      "endMs": 12618,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -161,49 +161,49 @@
   ],
   "OR05": [
     {
-      "text": "紫色输入 C 从横坐标三、纵坐标零，",
+      "text": "紫色输入 C 从 x 坐标三、y 坐标零，",
       "startMs": 70,
-      "endMs": 3429,
+      "endMs": 3510,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "到横坐标四、纵坐标零，",
-      "startMs": 3628,
-      "endMs": 5867,
+      "text": "到 x 坐标四、y 坐标零，",
+      "startMs": 3728,
+      "endMs": 6168,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "嵌在前两份内部。",
-      "startMs": 6228,
-      "endMs": 7708,
+      "startMs": 6568,
+      "endMs": 8008,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "三图分别展示三份输入，",
-      "startMs": 8139,
-      "endMs": 10219,
+      "startMs": 8439,
+      "endMs": 10479,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "纵坐标始终都是零。",
-      "startMs": 10538,
-      "endMs": 11938,
+      "text": "其中 y 坐标始终都是零。",
+      "startMs": 10788,
+      "endMs": 12628,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "分图没有把重叠成员挪到不同高度。",
-      "startMs": 12379,
-      "endMs": 15059,
+      "startMs": 13079,
+      "endMs": 15958,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -211,33 +211,33 @@
   ],
   "OR06": [
     {
-      "text": "横坐标严格在三和四之间时，",
+      "text": "当 x 坐标严格在三和四之间时，",
       "startMs": 70,
-      "endMs": 2510,
+      "endMs": 2989,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "三份输入都活动，扫描线与它们相遇在同一个点。",
-      "startMs": 2728,
-      "endMs": 6368,
+      "startMs": 3228,
+      "endMs": 6998,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "交换编号也不会产生几何高低，",
-      "startMs": 6839,
-      "endMs": 9230,
+      "startMs": 7439,
+      "endMs": 9599,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "因此不把三份排成三个不同的高度位置。",
-      "startMs": 9388,
-      "endMs": 12307,
+      "startMs": 9938,
+      "endMs": 12978,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -247,55 +247,55 @@
     {
       "text": "把所在直线相同的非零输入归为一个同线组。",
       "startMs": 70,
-      "endMs": 3730,
+      "endMs": 3800,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "这三份属于组 G_0，",
-      "startMs": 4049,
-      "endMs": 5809,
+      "startMs": 4149,
+      "endMs": 5949,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "固定直线是纵坐标等于零。",
-      "startMs": 6098,
-      "endMs": 8298,
+      "text": "固定直线是 y 坐标等于零。",
+      "startMs": 6248,
+      "endMs": 8527,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "每个非空组在活动顺序中只占一个位置，",
-      "startMs": 8739,
-      "endMs": 11978,
+      "startMs": 8989,
+      "endMs": 12228,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "组内另存当前活动的原始身份。",
-      "startMs": 12288,
-      "endMs": 14848,
+      "startMs": 12538,
+      "endMs": 15098,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "分组使用第三章的精确共线判断，",
-      "startMs": 15279,
-      "endMs": 17879,
+      "startMs": 15529,
+      "endMs": 18248,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "不同的平行线属于不同组。",
-      "startMs": 18178,
-      "endMs": 20160,
+      "startMs": 18578,
+      "endMs": 20660,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -313,47 +313,47 @@
     {
       "text": "成员名单却随开始和结束改变。",
       "startMs": 2378,
-      "endMs": 4898,
+      "endMs": 4777,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "例如横坐标在零和二之间时，",
-      "startMs": 5369,
-      "endMs": 8009,
+      "text": "例如 x 坐标在零和二之间时，",
+      "startMs": 5219,
+      "endMs": 7899,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "输入 B 虽然属于这个组，",
-      "startMs": 8318,
-      "endMs": 10340,
+      "startMs": 8218,
+      "endMs": 10310,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "却还未开始，当前只有输入 A 活动。",
-      "startMs": 10488,
-      "endMs": 13608,
+      "startMs": 10438,
+      "endMs": 13548,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "报告时仍读取原始编号和端点，",
-      "startMs": 14049,
-      "endMs": 16888,
+      "startMs": 13999,
+      "endMs": 16758,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "不把所有同线输入合成一份新输入。",
-      "startMs": 17198,
-      "endMs": 19758,
+      "startMs": 17048,
+      "endMs": 19728,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -363,31 +363,31 @@
     {
       "text": "沿这三份输入的事件向右看。",
       "startMs": 70,
-      "endMs": 2309,
+      "endMs": 2389,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "横坐标零时，输入 A 开始，",
-      "startMs": 2699,
-      "endMs": 5578,
+      "text": "当 x 坐标为零时，",
+      "startMs": 2799,
+      "endMs": 4599,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "组内没有旧成员可配，",
-      "startMs": 5918,
-      "endMs": 7598,
+      "text": "输入 A 开始，组内没有旧成员可配，",
+      "startMs": 4898,
+      "endMs": 8278,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "加入后只有它自己。",
-      "startMs": 7888,
-      "endMs": 9520,
+      "startMs": 8588,
+      "endMs": 10120,
       "timestampMs": null,
       "confidence": null,
       "source": 0
@@ -395,49 +395,49 @@
   ],
   "OR10": [
     {
-      "text": "到横坐标二时，输入 B 开始，",
+      "text": "到 x 坐标二时，输入 B 开始，",
       "startMs": 70,
-      "endMs": 3120,
+      "endMs": 3098,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "原来的输入 A 尚未结束。",
-      "startMs": 3298,
-      "endMs": 5178,
+      "startMs": 3398,
+      "endMs": 5278,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "两份同线且都包含当前位置。",
-      "startMs": 5759,
-      "endMs": 8079,
+      "startMs": 5739,
+      "endMs": 8299,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "引用第三章的完整区间结论，",
-      "startMs": 8559,
-      "endMs": 10838,
+      "startMs": 8759,
+      "endMs": 11038,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "这一对的交集从横坐标二、纵坐标零，",
-      "startMs": 11158,
-      "endMs": 14557,
+      "text": "这一对的交集从 x 坐标二、y 坐标零，",
+      "startMs": 11358,
+      "endMs": 15038,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "到横坐标六、纵坐标零。",
-      "startMs": 14828,
-      "endMs": 17067,
+      "text": "到 x 坐标六、y 坐标零。",
+      "startMs": 15328,
+      "endMs": 17808,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -445,57 +445,57 @@
   ],
   "OR11": [
     {
-      "text": "扫描线还没走到横坐标六，",
+      "text": "扫描线还没走到 x 坐标六，",
       "startMs": 70,
-      "endMs": 2270,
+      "endMs": 2469,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "两个原始右端点却早已给定，",
-      "startMs": 2478,
-      "endMs": 4877,
+      "startMs": 2678,
+      "endMs": 5240,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "报告完整交集的信息已经齐全。",
-      "startMs": 5148,
-      "endMs": 7188,
+      "startMs": 5448,
+      "endMs": 7767,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "扫描进度决定谁进入活动集合，",
-      "startMs": 7639,
-      "endMs": 10398,
+      "startMs": 8239,
+      "endMs": 11038,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "不限制读取已知输入的完整端点。",
-      "startMs": 10688,
-      "endMs": 13447,
+      "startMs": 11338,
+      "endMs": 13978,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "因此新成员先与当时同组所有成员报告完整交集，",
-      "startMs": 13879,
-      "endMs": 18410,
+      "startMs": 14429,
+      "endMs": 18780,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "再把自己加入。",
-      "startMs": 18578,
-      "endMs": 19738,
+      "startMs": 18928,
+      "endMs": 20088,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -503,57 +503,57 @@
   ],
   "OR12": [
     {
-      "text": "到横坐标三时，输入 C 开始。",
+      "text": "到 x 坐标三时，输入 C 开始。",
       "startMs": 70,
-      "endMs": 3080,
+      "endMs": 3240,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "先与旧成员 A 配对，",
-      "startMs": 3419,
-      "endMs": 5179,
+      "startMs": 3569,
+      "endMs": 5289,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "再与旧成员 B 配对。",
-      "startMs": 5518,
-      "endMs": 7278,
+      "startMs": 5618,
+      "endMs": 7378,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "两对的交集各自都是从横坐标三、纵坐标零，",
-      "startMs": 7709,
-      "endMs": 11508,
+      "text": "两对的交集各自都是从 x 坐标三、y 坐标零，",
+      "startMs": 7809,
+      "endMs": 11889,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "到横坐标四、纵坐标零。",
-      "startMs": 11808,
-      "endMs": 14047,
+      "text": "到 x 坐标四、y 坐标零。",
+      "startMs": 12208,
+      "endMs": 14567,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "结果位置相同，输入对身份不同，",
-      "startMs": 14499,
-      "endMs": 17558,
+      "startMs": 15049,
+      "endMs": 18258,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "所以分别保留。",
-      "startMs": 17818,
-      "endMs": 19138,
+      "startMs": 18518,
+      "endMs": 19838,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -595,65 +595,65 @@
   ],
   "OR14": [
     {
-      "text": "横坐标四时，输入 C 结束，",
+      "text": "当 x 坐标为四时，",
       "startMs": 70,
-      "endMs": 2958,
+      "endMs": 1830,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "组内还剩另外两份；",
-      "startMs": 3248,
-      "endMs": 4768,
+      "text": "输入 C 结束，组内还剩另外两份；",
+      "startMs": 2028,
+      "endMs": 5278,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "结束事件不重新枚举旧成员对。",
-      "startMs": 5068,
-      "endMs": 7427,
+      "startMs": 5568,
+      "endMs": 7927,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "横坐标六时，输入 A 结束，",
-      "startMs": 7859,
-      "endMs": 10748,
+      "text": "当 x 坐标为六时，",
+      "startMs": 8359,
+      "endMs": 10159,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "保留输入 B。",
-      "startMs": 11028,
-      "endMs": 12908,
+      "text": "输入 A 结束，保留输入 B。",
+      "startMs": 10458,
+      "endMs": 13948,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "横坐标八时，最后一份也结束，",
-      "startMs": 13369,
-      "endMs": 16258,
+      "text": "当 x 坐标为八时，",
+      "startMs": 14419,
+      "endMs": 16339,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "组变为空。",
-      "startMs": 16538,
-      "endMs": 17538,
+      "text": "最后一份也结束，组变为空。",
+      "startMs": 16668,
+      "endMs": 19188,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "三个完整结果始终保留。",
-      "startMs": 18029,
-      "endMs": 19709,
+      "startMs": 19679,
+      "endMs": 21559,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -662,7 +662,7 @@
   "OR15": [
     {
       "text": "另取一个独立案例。",
-      "startMs": 110,
+      "startMs": 70,
       "endMs": 1470,
       "timestampMs": null,
       "confidence": null,
@@ -671,55 +671,55 @@
     {
       "text": "三份输入分别记作 J_1、J_2 和 J_3，",
       "startMs": 1849,
-      "endMs": 5369,
+      "endMs": 5289,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "都占据从横坐标一、纵坐标零，",
-      "startMs": 5698,
-      "endMs": 8497,
+      "text": "都占据从 x 坐标一、y 坐标零，",
+      "startMs": 5598,
+      "endMs": 8638,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "到横坐标五、纵坐标零的线段。",
-      "startMs": 8768,
-      "endMs": 11567,
+      "text": "到 x 坐标五、y 坐标零的线段。",
+      "startMs": 8918,
+      "endMs": 11757,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "第三份的端点反向书写。",
-      "startMs": 12009,
-      "endMs": 14200,
+      "startMs": 12209,
+      "endMs": 14380,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "沿用第一章的身份结论，",
-      "startMs": 14529,
-      "endMs": 16169,
+      "startMs": 14729,
+      "endMs": 16489,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "归一到左右端点后仍是三份不同输入，",
-      "startMs": 16478,
-      "endMs": 19558,
+      "startMs": 16778,
+      "endMs": 19978,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "都在同一点开始。",
-      "startMs": 19848,
-      "endMs": 21130,
+      "startMs": 20248,
+      "endMs": 21580,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -755,71 +755,71 @@
     {
       "text": "第三份再与前面两份分别配对，",
       "startMs": 70,
-      "endMs": 2550,
+      "endMs": 2630,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "最后加入。",
-      "startMs": 2778,
-      "endMs": 3778,
+      "startMs": 2828,
+      "endMs": 3828,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "三对各留一条从横坐标一、纵坐标零，",
-      "startMs": 4219,
-      "endMs": 7859,
+      "text": "三对各留一条从 x 坐标一、y 坐标零，",
+      "startMs": 4269,
+      "endMs": 7749,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "到横坐标五、纵坐标零的完整区间。",
-      "startMs": 8168,
-      "endMs": 11248,
+      "text": "到 x 坐标五、y 坐标零的完整区间。",
+      "startMs": 8068,
+      "endMs": 11307,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "任取两个同点开始者，",
-      "startMs": 11709,
-      "endMs": 13650,
+      "startMs": 11759,
+      "endMs": 13750,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "先加入者都会成为后加入者的对象。",
-      "startMs": 13858,
-      "endMs": 16538,
+      "startMs": 13908,
+      "endMs": 16667,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "若把所有开始者同时留在组外，",
-      "startMs": 16999,
-      "endMs": 19238,
+      "startMs": 17099,
+      "endMs": 19338,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "只检查更早的旧成员，",
-      "startMs": 19548,
-      "endMs": 21148,
+      "startMs": 19648,
+      "endMs": 21328,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "就会漏掉新成员之间的配对。",
-      "startMs": 21418,
-      "endMs": 23618,
+      "startMs": 21618,
+      "endMs": 23818,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -829,39 +829,39 @@
     {
       "text": "再单独取输入 B，与新输入 E 组成两输入案例。",
       "startMs": 70,
-      "endMs": 4937,
+      "endMs": 4807,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "新输入从横坐标八、纵坐标零，",
-      "startMs": 5419,
-      "endMs": 8419,
+      "text": "新输入从 x 坐标八、y 坐标零，",
+      "startMs": 5269,
+      "endMs": 8349,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "到横坐标十、纵坐标零。",
-      "startMs": 8718,
-      "endMs": 10798,
+      "text": "到 x 坐标十、y 坐标零。",
+      "startMs": 8668,
+      "endMs": 10907,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "到横坐标八时，一份结束，",
-      "startMs": 11259,
-      "endMs": 14098,
+      "text": "到 x 坐标八时，一份结束，",
+      "startMs": 11359,
+      "endMs": 14218,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "另一份开始。",
-      "startMs": 14378,
-      "endMs": 15510,
+      "startMs": 14478,
+      "endMs": 15460,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -871,55 +871,55 @@
     {
       "text": "引用第四章的闭端点原则。",
       "startMs": 70,
-      "endMs": 2309,
+      "endMs": 2230,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "开始者先与尚未移去的结束者配对，",
-      "startMs": 2699,
-      "endMs": 5299,
+      "startMs": 2599,
+      "endMs": 5180,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "得到横坐标八、纵坐标零这一个完整点交集。",
-      "startMs": 5598,
-      "endMs": 9598,
+      "text": "得到 x 坐标八、y 坐标零这一个完整点交集。",
+      "startMs": 5348,
+      "endMs": 9147,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "随后旧成员退出。",
-      "startMs": 10039,
-      "endMs": 11770,
+      "startMs": 9589,
+      "endMs": 11189,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "新增的联系是组内交接也遵循这个次序。",
-      "startMs": 12109,
-      "endMs": 15149,
+      "startMs": 11709,
+      "endMs": 14948,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "同线配对既可能给出区间，",
-      "startMs": 15629,
-      "endMs": 17908,
+      "startMs": 15429,
+      "endMs": 17668,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "也可能只给出一个点。",
-      "startMs": 18228,
-      "endMs": 19668,
+      "startMs": 17978,
+      "endMs": 19418,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -961,33 +961,33 @@
   ],
   "OR21": [
     {
-      "text": "第一份的左端横坐标记作 \\ell_i，",
+      "text": "第一份的左端 x 坐标记作 \\ell_i，",
       "startMs": 70,
-      "endMs": 3070,
+      "endMs": 3230,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "右端横坐标记作 r_i。",
-      "startMs": 3278,
-      "endMs": 5718,
+      "text": "右端 x 坐标记作 r_i。",
+      "startMs": 3428,
+      "endMs": 5988,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "另一份的两个横坐标分别记作 \\ell_j 和 r_j，",
-      "startMs": 6169,
-      "endMs": 12128,
+      "text": "另一份的两个 x 坐标分别记作 \\ell_j 和 r_j，",
+      "startMs": 6419,
+      "endMs": 12568,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "下标区分两份输入。",
-      "startMs": 12388,
-      "endMs": 14188,
+      "startMs": 12838,
+      "endMs": 14718,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -995,17 +995,25 @@
   ],
   "OR22": [
     {
-      "text": "非零且不竖直，保证每份的左端横坐标严格小于自己的右端横坐标。",
+      "text": "非零且不竖直，",
       "startMs": 70,
-      "endMs": 5928,
+      "endMs": 1550,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "保证每份的左端 x 坐标严格小于自己的右端 x 坐标。",
+      "startMs": 1778,
+      "endMs": 6218,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "两份的开始位置只有第一份更早、第二份更早、同时开始这三种情况。",
-      "startMs": 6369,
-      "endMs": 11449,
+      "startMs": 6669,
+      "endMs": 11429,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1139,49 +1147,49 @@
   ],
   "OR26": [
     {
-      "text": "如果左端横坐标相等，",
+      "text": "如果左端 x 坐标相等，",
       "startMs": 70,
-      "endMs": 1950,
+      "endMs": 2110,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "同一非竖直直线上它们就是同一个位置，",
-      "startMs": 2178,
-      "endMs": 4858,
+      "startMs": 2328,
+      "endMs": 5167,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "属于同点开始者。",
-      "startMs": 5148,
-      "endMs": 6650,
+      "startMs": 5448,
+      "endMs": 6950,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "依次加入时，先处理者已经在组里，",
-      "startMs": 6939,
-      "endMs": 10230,
+      "startMs": 7329,
+      "endMs": 10590,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "后处理者必能配到它。",
-      "startMs": 10408,
-      "endMs": 12048,
+      "startMs": 10758,
+      "endMs": 12358,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "开始先后的全部情况都已覆盖。",
-      "startMs": 12549,
-      "endMs": 14788,
+      "startMs": 12849,
+      "endMs": 15049,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1290,40 +1298,40 @@
     },
     {
       "text": "再加入绿色输入 D，",
-      "startMs": 2278,
-      "endMs": 4758,
+      "startMs": 2328,
+      "endMs": 4808,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "从横坐标一、纵坐标负四，",
-      "startMs": 5048,
-      "endMs": 7367,
+      "text": "从 x 坐标一、y 坐标负四，",
+      "startMs": 5098,
+      "endMs": 7658,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "到横坐标九、纵坐标四。",
-      "startMs": 7668,
-      "endMs": 9868,
+      "text": "到 x 坐标九、y 坐标四。",
+      "startMs": 7918,
+      "endMs": 10317,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "它的所在直线是纵坐标等于横坐标减五，",
-      "startMs": 10309,
-      "endMs": 13990,
+      "text": "它的所在直线是 y 坐标等于 x 坐标减五，",
+      "startMs": 10759,
+      "endMs": 14650,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "属于另一个组，记作组 G_1。",
-      "startMs": 14158,
-      "endMs": 16860,
+      "startMs": 14858,
+      "endMs": 17360,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1331,33 +1339,33 @@
   ],
   "OR30": [
     {
-      "text": "把横坐标五、纵坐标零的点记作 P，",
+      "text": "把 x 坐标五、y 坐标零的点记作 P，",
       "startMs": 70,
-      "endMs": 3750,
+      "endMs": 3869,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "再取点输入 Z，它的两个端点都是这个点。",
-      "startMs": 3978,
-      "endMs": 8218,
+      "startMs": 4078,
+      "endMs": 8318,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "菱形用于辨认点输入。",
-      "startMs": 8689,
-      "endMs": 10489,
+      "startMs": 8789,
+      "endMs": 10589,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "沿用第四章的单独角色，",
-      "startMs": 10959,
-      "endMs": 12918,
+      "startMs": 11059,
+      "endMs": 12939,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1373,7 +1381,7 @@
     {
       "text": "不分到同线组，也不留在右侧顺序中。",
       "startMs": 15478,
-      "endMs": 18828,
+      "endMs": 18638,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1381,41 +1389,41 @@
   ],
   "OR31": [
     {
-      "text": "在横坐标五处，绿色输入的高度是零，",
+      "text": "在 x 坐标五处，绿色输入的高度是零，",
       "startMs": 70,
-      "endMs": 3408,
+      "endMs": 3458,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "而且五严格在一和九之间，",
-      "startMs": 3698,
-      "endMs": 5937,
+      "startMs": 3748,
+      "endMs": 5788,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "因此它包含这个点。",
-      "startMs": 6218,
-      "endMs": 7898,
+      "startMs": 6068,
+      "endMs": 7708,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "水平组中输入 A 和输入 B 仍覆盖这里，",
-      "startMs": 8359,
-      "endMs": 11690,
+      "startMs": 8159,
+      "endMs": 11359,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "短成员 C 已经在横坐标四结束，",
-      "startMs": 11858,
-      "endMs": 14617,
+      "text": "短成员 C 已经在 x 坐标四结束，",
+      "startMs": 11708,
+      "endMs": 14587,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1423,15 +1431,15 @@
     {
       "text": "不能参加。",
       "startMs": 14878,
-      "endMs": 15720,
+      "endMs": 15870,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "两幅图中的绿色线段与点输入各是同一份身份。",
-      "startMs": 16019,
-      "endMs": 19778,
+      "startMs": 16169,
+      "endMs": 20209,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1497,49 +1505,49 @@
   ],
   "OR33": [
     {
-      "text": "一个活动组的旧成员都覆盖当前横坐标，",
+      "text": "一个活动组的旧成员都覆盖当前 x 坐标，",
       "startMs": 70,
-      "endMs": 3309,
+      "endMs": 3630,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "组的直线又经过当前点，",
-      "startMs": 3528,
-      "endMs": 5528,
+      "startMs": 3828,
+      "endMs": 5787,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "所以这些成员都包含这个点。",
-      "startMs": 5798,
-      "endMs": 7757,
+      "startMs": 6098,
+      "endMs": 8138,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "当前结束者仍保留，新开始者也参加。",
-      "startMs": 8189,
-      "endMs": 11650,
+      "startMs": 8589,
+      "endMs": 11970,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "未开始或已经结束的身份不混进来。",
-      "startMs": 11979,
-      "endMs": 14419,
+      "startMs": 12279,
+      "endMs": 14719,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "组内各原始身份只保留一次。",
-      "startMs": 14899,
-      "endMs": 16979,
+      "startMs": 15199,
+      "endMs": 17359,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1581,49 +1589,49 @@
   ],
   "OR35": [
     {
-      "text": "旧同线对已经在横坐标二时报告过完整区间，",
+      "text": "旧同线对已经在 x 坐标二时报告过完整区间，",
       "startMs": 70,
-      "endMs": 3750,
+      "endMs": 3949,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "这里不再把它报告成点。",
-      "startMs": 3978,
-      "endMs": 5858,
+      "startMs": 4178,
+      "endMs": 5618,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "第四章把参与者全部两两配对的做法不能直接照搬，",
-      "startMs": 6319,
-      "endMs": 10559,
+      "startMs": 6069,
+      "endMs": 10429,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "因为本章已经允许重叠。",
-      "startMs": 10908,
-      "endMs": 12868,
+      "startMs": 10718,
+      "endMs": 13037,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "第一章要求保留完整区间，",
-      "startMs": 13309,
-      "endMs": 15509,
+      "startMs": 13509,
+      "endMs": 15669,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "这里通过报告时机落实它。",
-      "startMs": 15808,
-      "endMs": 17767,
+      "startMs": 15958,
+      "endMs": 17840,
       "timestampMs": null,
       "confidence": null,
       "source": 1
@@ -1667,55 +1675,55 @@
     {
       "text": "加上之前的三个区间，",
       "startMs": 70,
-      "endMs": 1670,
+      "endMs": 1750,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "五输入案例一共八条结果。",
-      "startMs": 1878,
-      "endMs": 4190,
+      "startMs": 1978,
+      "endMs": 4290,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
       "text": "其余两对分别是短成员与绿色输入、短成员与点输入。",
-      "startMs": 4569,
-      "endMs": 9049,
+      "startMs": 4669,
+      "endMs": 9349,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "两对都只能在横坐标五处相遇，",
-      "startMs": 9539,
-      "endMs": 11818,
+      "text": "两对都只能在 x 坐标五处相遇，",
+      "startMs": 9839,
+      "endMs": 12638,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "但短成员的右端横坐标是四，",
-      "startMs": 12138,
-      "endMs": 14578,
+      "text": "但短成员的右端 x 坐标是四，",
+      "startMs": 12938,
+      "endMs": 15538,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "所以都为空。",
-      "startMs": 14858,
-      "endMs": 16098,
+      "startMs": 15848,
+      "endMs": 16968,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
       "text": "这里核对的是全部无序输入对。",
-      "startMs": 16549,
-      "endMs": 18549,
+      "startMs": 17399,
+      "endMs": 19599,
       "timestampMs": null,
       "confidence": null,
       "source": 1

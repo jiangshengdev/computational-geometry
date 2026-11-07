@@ -325,8 +325,14 @@ export function ReportingProofDiagram({
         <GeneralGroups row={row} state={state} />
       ) : (
         <>
-          <Label x={390} y={25} align="center" fontSize={23}>
-            横坐标范围分图 · 非几何高度
+          <Label
+            x={390}
+            y={25}
+            align="center"
+            verticalAlign="middle"
+            fontSize={23}
+          >
+            x 坐标范围分图 · 非几何高度
           </Label>
           {row.page === "proof-setup" ? (
             <>
@@ -414,7 +420,7 @@ export function ReportingProofDiagram({
               <line
                 x1={210}
                 x2={210}
-                y1={60}
+                y1={78}
                 y2={170}
                 stroke={colors.amber}
                 strokeDasharray="5 5"
@@ -451,7 +457,7 @@ export function ReportingProofDiagram({
                 </g>
               ) : null}
               {n === 28 && has("sharedPoint") ? (
-                <Label x={210} y={55} align="center" fontSize={22}>
+                <Label x={210} y={70} align="center" fontSize={22}>
                   共同包含当前点
                 </Label>
               ) : null}

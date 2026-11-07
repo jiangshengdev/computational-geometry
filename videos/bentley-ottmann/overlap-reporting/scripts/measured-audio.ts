@@ -30,6 +30,7 @@ export function verifyRecordings(
     deferPronunciationReview: true,
   });
   const counts = { Omission: 0, Insertion: 0, Mispronunciation: 0 };
+  const reviewedRecognition = { Omission: 0, Insertion: 0 };
   for (const doc of plan.documents) {
     const audio = timing[doc.id];
     const source =
@@ -44,12 +45,30 @@ export function verifyRecordings(
       decode,
       counts,
     });
+    // verifyAlignment above validates every review against this exact WAV,
+    // request, raw response span and original measured synthesis event.
+    for (const review of audio.alignment?.reviewedRecognition ?? [])
+      for (const word of review.expected) reviewedRecognition[word.errorType]++;
   }
-  assert.equal(counts.Omission, 0, "Omission blocks adoption/export");
-  assert.equal(counts.Insertion, 0, "Insertion blocks adoption/export");
+  const unresolved = {
+    Omission: counts.Omission - reviewedRecognition.Omission,
+    Insertion: counts.Insertion - reviewedRecognition.Insertion,
+  };
+  assert.equal(
+    unresolved.Omission,
+    0,
+    "Unresolved omission blocks adoption/export",
+  );
+  assert.equal(
+    unresolved.Insertion,
+    0,
+    "Unresolved insertion blocks adoption/export",
+  );
   return {
     clips: shots.length,
     counts,
+    reviewedRecognition,
+    unresolved,
     captions: measuredCaptions(timing),
     actualListeningPerformed: false,
   };
