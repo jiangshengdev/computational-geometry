@@ -1,25 +1,9 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
-
-type Props = {};
-
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
-  return (
-    <Composition
-      id="OverlapReporting"
-      component={MyComponent}
-      durationInFrames={60}
-      fps={60}
-      width={1920}
-      height={1080}
-      calculateMetadata={calculateMetadata}
-    />
-  );
-};
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+import { useCurrentFrame } from "remotion";
+import { TeachingPage } from "./TeachingPage";
+import { rowAt, visualAt } from "./timeline";
+/** #344 is silent. No provisional duration is represented as measured audio. */
+export function MyComposition() {
+  const frame = useCurrentFrame();
+  const row = rowAt(frame);
+  return <TeachingPage row={row} state={visualAt(row, frame - row.from)} />;
+}

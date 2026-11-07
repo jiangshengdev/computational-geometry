@@ -95,7 +95,7 @@ export function validateWords(audio: AudioTiming) {
   }
 }
 
-const clauses = (text: string) =>
+export const clauses = (text: string) =>
   Array.from(text.matchAll(/[^，。！？；：]+[，。！？；：]?/g), (m) => ({
     text: m[0],
     offset: m.index,
