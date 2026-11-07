@@ -3,12 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { createAlignmentTools } from "../../../shared/speech/azure-alignment.ts";
-import {
-  audioSha256,
-  decodeAudio,
-  measureAudio,
-  verifyPcmSource,
-} from "../../../shared/speech/audio.ts";
+import { verifyRecording } from "../../../shared/speech/verify-recording.ts";
 import { synthesisFormat } from "../../../shared/speech/source.ts";
 import type {
   AudioTiming,
@@ -48,19 +43,6 @@ export function verifyRecordings(
     const recording = timing[request.id];
     const selected = selection[request.id];
     const path = join(directory, request.audioFile);
-    assert.equal(recording.audioFile, request.audioFile);
-    assert.equal(recording.outputFormat, synthesisFormat);
-    assert.equal(recording.voice, voice);
-    assert.equal(
-      recording.speech,
-      request.text,
-      `${request.id}: stale narration`,
-    );
-    assert.equal(
-      recording.fingerprint,
-      request.fingerprint,
-      `${request.id}: stale request`,
-    );
     assert.equal(
       selected.fingerprint,
       request.fingerprint,
@@ -70,11 +52,6 @@ export function verifyRecordings(
       recording.audioSha256,
       selected.audioSha256,
       `${request.id}: unselected audio`,
-    );
-    assert.equal(
-      audioSha256(path),
-      selected.audioSha256,
-      `${request.id}: audio hash mismatch`,
     );
     const alignment = recording.alignment;
     assert(alignment, `${request.id}: missing assessment`);
@@ -103,25 +80,14 @@ export function verifyRecordings(
       selected.reviewedRecognition,
       `${request.id}: changed recognition decision`,
     );
-    assert.deepEqual(
-      tools.assessmentWords(recording, alignment.response),
-      recording.words,
-    );
-    tools.verifyAlignment(recording, path);
-    verifyPcmSource(path);
-    assert.equal(measureAudio(path), recording.duration);
-    if (decode) decodeAudio(path);
-    const response = alignment.response as {
-      NBest: { Words: { PronunciationAssessment: { ErrorType: string } }[] }[];
-    };
-    for (const word of response.NBest[0].Words) {
-      const flag = word.PronunciationAssessment.ErrorType;
-      assert(
-        flag === "None" || flag in counts,
-        `${request.id}: unknown assessment flag`,
-      );
-      if (flag !== "None") counts[flag as keyof typeof counts]++;
-    }
+    verifyRecording({
+      audio: recording,
+      path,
+      expected: { ...request, voice, outputFormat: synthesisFormat },
+      verifyAlignment: tools.verifyAlignment,
+      decode,
+      counts,
+    });
   }
   return {
     captions: measuredCaptions(timing),

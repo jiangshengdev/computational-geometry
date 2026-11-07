@@ -4,6 +4,8 @@ import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "../../../shared/speech/azure-speech.ts";
 import { shots, pageList } from "../src/storyboard.ts";
 import { inputs, results, type Name } from "../src/example.ts";
+import { checkSentencePlan } from "./sentence-plan.ts";
+import { checkAudio } from "./check-audio.ts";
 import {
   rows,
   visualAt,
@@ -74,7 +76,8 @@ const { buildSpeechDocument } = createSpeechTools(sdk, {
 });
 assert.deepEqual(Object.keys(speech).sort(), shots.map((s) => s.id).sort());
 assert.deepEqual(Object.keys(narration).sort(), shots.map((s) => s.id).sort());
-assert.equal(timingKind, "provisional-visual-inspection");
+assert.equal(timingKind, "measured-narration");
+const audioResult = checkAudio(process.argv.includes("--decode"));
 for (const [i, row] of rows.entries()) {
   assert.equal(
     row.from,
@@ -86,6 +89,7 @@ for (const [i, row] of rows.entries()) {
   );
   assert(row.source && row.first && row.action && row.reference);
   assert(!/[，,]/.test(narration[row.id]), `${row.id}: comma in spoken text`);
+  checkSentencePlan(speech[row.id], narration[row.id], row.id);
   assert.equal(
     buildSpeechDocument(speech[row.id], row.id).text,
     narration[row.id],
@@ -103,10 +107,23 @@ for (const [i, row] of rows.entries()) {
   assert.equal(end.target, null);
   assert.equal(end.caption, row.captions[row.captions.length - 1].text);
   assert(
-    row.durationInFrames - audioLeadFrames - row.readingFrames >=
+    row.durationInFrames - audioLeadFrames - row.speechFrames >=
       (row.thinkAfter ?? 1) * fps,
   );
   if (rows[i + 1]?.page !== row.page) assert(row.pauseAfter >= 3);
+  assert.equal(row.audioEndFrame, audioLeadFrames + row.speechFrames);
+  for (const cue of [...row.captions, ...row.operations]) {
+    assert(
+      cue.start >= audioLeadFrames && cue.end > cue.start,
+      `${row.id}: invalid measured cue`,
+    );
+    assert(
+      cue.end <= row.audioEndFrame,
+      `${row.id}: cue outside complete audio`,
+    );
+  }
+  assert(!visualAt(row, row.audioEndFrame - 1).thinking);
+  assert(visualAt(row, row.audioEndFrame).thinking);
   let last = -1;
   for (let f = 0; f < row.durationInFrames; f++) {
     const state = visualAt(row, f);
@@ -115,5 +132,5 @@ for (const [i, row] of rows.entries()) {
   }
 }
 console.log(
-  `PASS: ${shots.length} shots, ${pageList.length} pages; complete article pairs, subtitle preservation, provisional states and holds. No audio validation.`,
+  `PASS: ${shots.length} shots, ${pageList.length} pages; complete article pairs, subtitle preservation, measured cues, complete audio and holds. ${JSON.stringify(audioResult)}`,
 );

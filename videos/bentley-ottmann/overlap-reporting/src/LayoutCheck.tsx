@@ -35,7 +35,7 @@ export const LayoutCheck = createShotLayoutCheck({
     checkTeachingPage(page, visibleStep, errors);
     if (page.querySelector(".katex-error")) errors.push("Invalid math");
     if (page.querySelector("audio,video"))
-      errors.push("Visual-stage scene must remain silent");
+      errors.push("Layout inspection scene must remain silent");
     return errors;
   },
 });

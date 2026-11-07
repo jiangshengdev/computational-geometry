@@ -1,70 +1,48 @@
 import { shots, pages } from "./storyboard.ts";
-import { clauses } from "../../../shared/speech/timing.ts";
-import { groupCaptionClauses } from "../../../shared/speech/captions.ts";
-import { visualCues } from "./visual-cues.ts";
+import captionData from "./captions.json" with { type: "json" };
+import audioData from "./audio-timing.json" with { type: "json" };
+import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
+import type { AudioTiming, Caption } from "../../../shared/speech/timing.ts";
+import { measuredOperations } from "./operation-timing.ts";
+
 export const fps = 60;
 export const audioLeadFrames = 30;
-export const timingKind = "provisional-visual-inspection";
-/** Reading windows only; never audio metadata. #345 replaces this clock. */
-let cursor = 0;
-let previousCaption = "";
-export const rows = shots.map((shot, index) => {
-  let at = audioLeadFrames;
-  const captions = shot.captions.flatMap((text, source) => {
-    const parts = clauses(text);
-    return groupCaptionClauses(parts, parts).map(({ text }) => {
-      const start = at;
-      at += Math.max(180, Math.ceil((text.length / 4.5) * fps));
-      return { text, source, start, end: at };
-    });
-  });
-  const last = shots[index + 1]?.page !== shot.page;
-  const pauseAfter = Math.max(
-    shot.thinkAfter ?? 1,
-    last ? pages[shot.page].holdAfterSeconds : 0,
-  );
-  const durationInFrames = at + pauseAfter * fps;
-  const operations = (visualCues[shot.id] ?? []).map((cue) => {
-    const caption = captions.find((c) => c.text.includes(cue.phrase));
-    if (!caption)
-      throw new Error(`${shot.id}: missing visual anchor ${cue.phrase}`);
-    const offset = caption.text.indexOf(cue.phrase);
-    const span = caption.end - caption.start;
-    return {
-      name: cue.name,
-      start:
-        caption.start +
-        Math.floor(
-          (span * (offset + cue.phrase.length * (cue.part ?? 0))) /
-            caption.text.length,
-        ),
-      end:
-        caption.start +
-        Math.floor((span * (offset + cue.phrase.length)) / caption.text.length),
-    };
-  });
-  operations.forEach((op, i) => {
-    op.end = Math.min(op.end, operations[i + 1]?.start ?? op.end);
-  });
-  const row = {
+export const timingKind = "measured-narration";
+export const audio = audioData as Record<string, AudioTiming>;
+const mapped = captionData as Record<string, (Caption & { source: number })[]>;
+const shared = createShotTimeline({
+  shots: shots.map((shot) => ({
     ...shot,
-    from: cursor,
-    captions,
-    operations,
-    readingFrames: at - audioLeadFrames,
-    durationInFrames,
-    pauseAfter,
-    revealMs: -500,
-    stages: [] as { ms: number }[],
-    previousCaption:
-      shots[index - 1]?.page === shot.page ? previousCaption : "",
-  };
-  previousCaption = captions[captions.length - 1].text;
-  cursor += durationInFrames;
-  return row;
+    step: shot.visibleStep,
+    pauseAfter: shot.thinkAfter ?? 1,
+  })),
+  pages,
+  timing: audio,
+  captions: mapped,
+  fps,
+  audioLeadFrames,
 });
+export const rows = shared.timelineFor().map((row, index) => ({
+  ...row,
+  audioEndFrame: audioLeadFrames + row.speechFrames,
+  pauseAfter: Math.max(
+    row.thinkAfter ?? 1,
+    shots[index + 1]?.page !== row.page ? pages[row.page].holdAfterSeconds : 0,
+  ),
+  revealMs: -500,
+  stages: [] as { ms: number }[],
+  captions: mapped[row.id].map((caption) => ({
+    ...caption,
+    start: audioLeadFrames + Math.floor((caption.startMs * fps) / 1000),
+    end: audioLeadFrames + Math.ceil((caption.endMs * fps) / 1000),
+  })),
+  operations: measuredOperations(row.id, audio[row.id], fps, audioLeadFrames),
+}));
 export type TimelineRow = (typeof rows)[number];
-export const durationInFrames = cursor;
+export const durationInFrames = rows.reduce(
+  (sum, row) => sum + row.durationInFrames,
+  0,
+);
 export function visualAt(row: TimelineRow, frame: number) {
   const activeCaption = row.captions.findIndex(
     (c) => frame >= c.start && frame < c.end,
@@ -90,11 +68,12 @@ export function visualAt(row: TimelineRow, frame: number) {
     operationProgress: operation
       ? (frame - operation.start) / (operation.end - operation.start)
       : 1,
-    thinking: frame >= end,
+    thinking: frame >= row.audioEndFrame,
     target: frame >= start && frame < end ? (row.target ?? null) : null,
   };
 }
 export type VisualState = ReturnType<typeof visualAt>;
 export const rowAt = (frame: number) =>
-  rows.find((r) => frame >= r.from && frame < r.from + r.durationInFrames) ??
-  rows[rows.length - 1];
+  rows.find(
+    (row) => frame >= row.from && frame < row.from + row.durationInFrames,
+  ) ?? rows[rows.length - 1];

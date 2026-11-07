@@ -1,0 +1,1976 @@
+{
+  "OR01": [
+    {
+      "text": "第四章已经处理同点事件。",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "本章继续允许同点事件和点输入，",
+      "startMs": 2699,
+      "endMs": 5498,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "并解除非零长度重叠的限制。",
+      "startMs": 5798,
+      "endMs": 8197,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "本集研究同线成员怎样参与扫描，",
+      "startMs": 8639,
+      "endMs": 11719,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "以及完整结果在什么时候报告。",
+      "startMs": 12038,
+      "endMs": 14317,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR02": [
+    {
+      "text": "仍保留两项教学条件：",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "非零输入不竖直，不同事件位置的横坐标各异。",
+      "startMs": 2028,
+      "endMs": 6137,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "多个端点可以是同一个位置。",
+      "startMs": 6589,
+      "endMs": 8868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "事件位置包括输入端点和不同所在直线上的实际交点，",
+      "startMs": 9359,
+      "endMs": 13839,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "重叠区间内的每个点不各自成为事件。",
+      "startMs": 14158,
+      "endMs": 16997,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR03": [
+    {
+      "text": "先取蓝色输入 A，从横坐标零、纵坐标零，",
+      "startMs": 70,
+      "endMs": 4828,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "到横坐标六、纵坐标零。",
+      "startMs": 5098,
+      "endMs": 7377,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "图是教学示意。",
+      "startMs": 7839,
+      "endMs": 9239,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "各子图尺度相同，横纵每格均为一个单位，",
+      "startMs": 9709,
+      "endMs": 13528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "O 表示原点，箭头表示坐标正方向。",
+      "startMs": 13828,
+      "endMs": 17638,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR04": [
+    {
+      "text": "再取橙色输入 B，从横坐标二、纵坐标零，",
+      "startMs": 70,
+      "endMs": 4878,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "到横坐标八、纵坐标零。",
+      "startMs": 5148,
+      "endMs": 7387,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它与前一份部分重叠，",
+      "startMs": 7839,
+      "endMs": 9599,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两份原始身份仍然分别保留。",
+      "startMs": 9888,
+      "endMs": 12167,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR05": [
+    {
+      "text": "紫色输入 C 从横坐标三、纵坐标零，",
+      "startMs": 70,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "到横坐标四、纵坐标零，",
+      "startMs": 3628,
+      "endMs": 5867,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "嵌在前两份内部。",
+      "startMs": 6228,
+      "endMs": 7708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "三图分别展示三份输入，",
+      "startMs": 8139,
+      "endMs": 10219,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "纵坐标始终都是零。",
+      "startMs": 10538,
+      "endMs": 11938,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "分图没有把重叠成员挪到不同高度。",
+      "startMs": 12379,
+      "endMs": 15059,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR06": [
+    {
+      "text": "横坐标严格在三和四之间时，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "三份输入都活动，扫描线与它们相遇在同一个点。",
+      "startMs": 2728,
+      "endMs": 6368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "交换编号也不会产生几何高低，",
+      "startMs": 6839,
+      "endMs": 9230,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此不把三份排成三个不同的高度位置。",
+      "startMs": 9388,
+      "endMs": 12307,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR07": [
+    {
+      "text": "把所在直线相同的非零输入归为一个同线组。",
+      "startMs": 70,
+      "endMs": 3730,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这三份属于组 G_0，",
+      "startMs": 4049,
+      "endMs": 5809,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "固定直线是纵坐标等于零。",
+      "startMs": 6098,
+      "endMs": 8298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "每个非空组在活动顺序中只占一个位置，",
+      "startMs": 8739,
+      "endMs": 11978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "组内另存当前活动的原始身份。",
+      "startMs": 12288,
+      "endMs": 14848,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "分组使用第三章的精确共线判断，",
+      "startMs": 15279,
+      "endMs": 17879,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不同的平行线属于不同组。",
+      "startMs": 18178,
+      "endMs": 20160,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR08": [
+    {
+      "text": "组的直线不随成员改变，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "成员名单却随开始和结束改变。",
+      "startMs": 2378,
+      "endMs": 4898,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "例如横坐标在零和二之间时，",
+      "startMs": 5369,
+      "endMs": 8009,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "输入 B 虽然属于这个组，",
+      "startMs": 8318,
+      "endMs": 10340,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "却还未开始，当前只有输入 A 活动。",
+      "startMs": 10488,
+      "endMs": 13608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "报告时仍读取原始编号和端点，",
+      "startMs": 14049,
+      "endMs": 16888,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不把所有同线输入合成一份新输入。",
+      "startMs": 17198,
+      "endMs": 19758,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR09": [
+    {
+      "text": "沿这三份输入的事件向右看。",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "横坐标零时，输入 A 开始，",
+      "startMs": 2699,
+      "endMs": 5578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "组内没有旧成员可配，",
+      "startMs": 5918,
+      "endMs": 7598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "加入后只有它自己。",
+      "startMs": 7888,
+      "endMs": 9520,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "OR10": [
+    {
+      "text": "到横坐标二时，输入 B 开始，",
+      "startMs": 70,
+      "endMs": 3120,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "原来的输入 A 尚未结束。",
+      "startMs": 3298,
+      "endMs": 5178,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两份同线且都包含当前位置。",
+      "startMs": 5759,
+      "endMs": 8079,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "引用第三章的完整区间结论，",
+      "startMs": 8559,
+      "endMs": 10838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这一对的交集从横坐标二、纵坐标零，",
+      "startMs": 11158,
+      "endMs": 14557,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "到横坐标六、纵坐标零。",
+      "startMs": 14828,
+      "endMs": 17067,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR11": [
+    {
+      "text": "扫描线还没走到横坐标六，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两个原始右端点却早已给定，",
+      "startMs": 2478,
+      "endMs": 4877,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "报告完整交集的信息已经齐全。",
+      "startMs": 5148,
+      "endMs": 7188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "扫描进度决定谁进入活动集合，",
+      "startMs": 7639,
+      "endMs": 10398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不限制读取已知输入的完整端点。",
+      "startMs": 10688,
+      "endMs": 13447,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此新成员先与当时同组所有成员报告完整交集，",
+      "startMs": 13879,
+      "endMs": 18410,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "再把自己加入。",
+      "startMs": 18578,
+      "endMs": 19738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR12": [
+    {
+      "text": "到横坐标三时，输入 C 开始。",
+      "startMs": 70,
+      "endMs": 3080,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先与旧成员 A 配对，",
+      "startMs": 3419,
+      "endMs": 5179,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再与旧成员 B 配对。",
+      "startMs": 5518,
+      "endMs": 7278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两对的交集各自都是从横坐标三、纵坐标零，",
+      "startMs": 7709,
+      "endMs": 11508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "到横坐标四、纵坐标零。",
+      "startMs": 11808,
+      "endMs": 14047,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "结果位置相同，输入对身份不同，",
+      "startMs": 14499,
+      "endMs": 17558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所以分别保留。",
+      "startMs": 17818,
+      "endMs": 19138,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR13": [
+    {
+      "text": "完成这两次报告后，再把输入 C 加入组内。",
+      "startMs": 70,
+      "endMs": 3738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前三份都活动，累计结果是三个完整区间。",
+      "startMs": 4219,
+      "endMs": 8467,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "部分重叠与嵌套都按这条规则处理，",
+      "startMs": 8909,
+      "endMs": 11800,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不需要另一种扫描过程。",
+      "startMs": 11958,
+      "endMs": 13638,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR14": [
+    {
+      "text": "横坐标四时，输入 C 结束，",
+      "startMs": 70,
+      "endMs": 2958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "组内还剩另外两份；",
+      "startMs": 3248,
+      "endMs": 4768,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "结束事件不重新枚举旧成员对。",
+      "startMs": 5068,
+      "endMs": 7427,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "横坐标六时，输入 A 结束，",
+      "startMs": 7859,
+      "endMs": 10748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "保留输入 B。",
+      "startMs": 11028,
+      "endMs": 12908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "横坐标八时，最后一份也结束，",
+      "startMs": 13369,
+      "endMs": 16258,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "组变为空。",
+      "startMs": 16538,
+      "endMs": 17538,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "三个完整结果始终保留。",
+      "startMs": 18029,
+      "endMs": 19709,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR15": [
+    {
+      "text": "另取一个独立案例。",
+      "startMs": 110,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "三份输入分别记作 J_1、J_2 和 J_3，",
+      "startMs": 1849,
+      "endMs": 5369,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "都占据从横坐标一、纵坐标零，",
+      "startMs": 5698,
+      "endMs": 8497,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "到横坐标五、纵坐标零的线段。",
+      "startMs": 8768,
+      "endMs": 11567,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "第三份的端点反向书写。",
+      "startMs": 12009,
+      "endMs": 14200,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "沿用第一章的身份结论，",
+      "startMs": 14529,
+      "endMs": 16169,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "归一到左右端点后仍是三份不同输入，",
+      "startMs": 16478,
+      "endMs": 19558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "都在同一点开始。",
+      "startMs": 19848,
+      "endMs": 21130,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR16": [
+    {
+      "text": "在这一次事件内，按原始编号依次处理。",
+      "startMs": 70,
+      "endMs": 3540,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "第一份先加入，第二份与已加入的第一份报告完整区间，",
+      "startMs": 3869,
+      "endMs": 8508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再加入。",
+      "startMs": 8788,
+      "endMs": 9628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "OR17": [
+    {
+      "text": "第三份再与前面两份分别配对，",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "最后加入。",
+      "startMs": 2778,
+      "endMs": 3778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "三对各留一条从横坐标一、纵坐标零，",
+      "startMs": 4219,
+      "endMs": 7859,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "到横坐标五、纵坐标零的完整区间。",
+      "startMs": 8168,
+      "endMs": 11248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "任取两个同点开始者，",
+      "startMs": 11709,
+      "endMs": 13650,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "先加入者都会成为后加入者的对象。",
+      "startMs": 13858,
+      "endMs": 16538,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "若把所有开始者同时留在组外，",
+      "startMs": 16999,
+      "endMs": 19238,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "只检查更早的旧成员，",
+      "startMs": 19548,
+      "endMs": 21148,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "就会漏掉新成员之间的配对。",
+      "startMs": 21418,
+      "endMs": 23618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR18": [
+    {
+      "text": "再单独取输入 B，与新输入 E 组成两输入案例。",
+      "startMs": 70,
+      "endMs": 4937,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新输入从横坐标八、纵坐标零，",
+      "startMs": 5419,
+      "endMs": 8419,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "到横坐标十、纵坐标零。",
+      "startMs": 8718,
+      "endMs": 10798,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "到横坐标八时，一份结束，",
+      "startMs": 11259,
+      "endMs": 14098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "另一份开始。",
+      "startMs": 14378,
+      "endMs": 15510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR19": [
+    {
+      "text": "引用第四章的闭端点原则。",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "开始者先与尚未移去的结束者配对，",
+      "startMs": 2699,
+      "endMs": 5299,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "得到横坐标八、纵坐标零这一个完整点交集。",
+      "startMs": 5598,
+      "endMs": 9598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "随后旧成员退出。",
+      "startMs": 10039,
+      "endMs": 11770,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新增的联系是组内交接也遵循这个次序。",
+      "startMs": 12109,
+      "endMs": 15149,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "同线配对既可能给出区间，",
+      "startMs": 15629,
+      "endMs": 17908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "也可能只给出一个点。",
+      "startMs": 18228,
+      "endMs": 19668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR20": [
+    {
+      "text": "接下来证明一般结论。",
+      "startMs": 70,
+      "endMs": 1630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "任取两份不同的同线非零输入，",
+      "startMs": 2049,
+      "endMs": 4328,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "记作 S_i 和 S_j。",
+      "startMs": 4698,
+      "endMs": 7138,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里讨论任意一对，不依赖前面的数值。",
+      "startMs": 7589,
+      "endMs": 10638,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "OR21": [
+    {
+      "text": "第一份的左端横坐标记作 \\ell_i，",
+      "startMs": 70,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "右端横坐标记作 r_i。",
+      "startMs": 3278,
+      "endMs": 5718,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "另一份的两个横坐标分别记作 \\ell_j 和 r_j，",
+      "startMs": 6169,
+      "endMs": 12128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "下标区分两份输入。",
+      "startMs": 12388,
+      "endMs": 14188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR22": [
+    {
+      "text": "非零且不竖直，保证每份的左端横坐标严格小于自己的右端横坐标。",
+      "startMs": 70,
+      "endMs": 5928,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两份的开始位置只有第一份更早、第二份更早、同时开始这三种情况。",
+      "startMs": 6369,
+      "endMs": 11449,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR23": [
+    {
+      "text": "先看第一份开始更早。",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "如果两份相交，",
+      "startMs": 2249,
+      "endMs": 3649,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "第三章的闭范围结论保证第二份的左端不超过第一份的右端。",
+      "startMs": 3998,
+      "endMs": 8758,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "否则第一份在第二份开始以前已经结束，",
+      "startMs": 9189,
+      "endMs": 11588,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两份没有共同范围。",
+      "startMs": 11888,
+      "endMs": 13488,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR24": [
+    {
+      "text": "到第二份开始时，第一份早已加入。",
+      "startMs": 70,
+      "endMs": 3328,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若这里严格在第一份的右端以前，",
+      "startMs": 3769,
+      "endMs": 6128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它仍然穿过当前位置。",
+      "startMs": 6418,
+      "endMs": 8178,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若恰好等于它的右端，",
+      "startMs": 8649,
+      "endMs": 10209,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "它作为结束者仍保留到报告以后。",
+      "startMs": 10508,
+      "endMs": 13108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此两个分支下，它都在配对名单里。",
+      "startMs": 13549,
+      "endMs": 16780,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR25": [
+    {
+      "text": "所以这对一定在第二份加入时被处理。",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若第二份反而开始更早，",
+      "startMs": 2799,
+      "endMs": 4599,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "就交换先后角色，在第一份加入时报告。",
+      "startMs": 4898,
+      "endMs": 8298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两种开始先后使用同一个理由。",
+      "startMs": 8759,
+      "endMs": 10959,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR26": [
+    {
+      "text": "如果左端横坐标相等，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同一非竖直直线上它们就是同一个位置，",
+      "startMs": 2178,
+      "endMs": 4858,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "属于同点开始者。",
+      "startMs": 5148,
+      "endMs": 6650,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "依次加入时，先处理者已经在组里，",
+      "startMs": 6939,
+      "endMs": 10230,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "后处理者必能配到它。",
+      "startMs": 10408,
+      "endMs": 12048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "开始先后的全部情况都已覆盖。",
+      "startMs": 12549,
+      "endMs": 14788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR27": [
+    {
+      "text": "每份输入只开始一次，",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这对就在后加入者的这一次加入中产生。",
+      "startMs": 1978,
+      "endMs": 4978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "以后的结束和外部交叉不再枚举旧同线成员对，",
+      "startMs": 5419,
+      "endMs": 9059,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此不会再次报告。",
+      "startMs": 9368,
+      "endMs": 10728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不需要先重复生成，再用已输出清单去重。",
+      "startMs": 11159,
+      "endMs": 14958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR28": [
+    {
+      "text": "反过来，加入时配到的旧成员与新成员同线，",
+      "startMs": 70,
+      "endMs": 3978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "而且都包含当前点，交集确实非空。",
+      "startMs": 4248,
+      "endMs": 7488,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "完整范围由原始端点确定，",
+      "startMs": 7959,
+      "endMs": 10278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "分离的同线输入不会同时进入这样的配对名单。",
+      "startMs": 10608,
+      "endMs": 13847,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这样既不漏报，也不多报，",
+      "startMs": 14299,
+      "endMs": 16588,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "每个相交同线对恰好一次。",
+      "startMs": 16868,
+      "endMs": 18988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR29": [
+    {
+      "text": "回到原来的三份水平输入，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再加入绿色输入 D，",
+      "startMs": 2278,
+      "endMs": 4758,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从横坐标一、纵坐标负四，",
+      "startMs": 5048,
+      "endMs": 7367,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "到横坐标九、纵坐标四。",
+      "startMs": 7668,
+      "endMs": 9868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的所在直线是纵坐标等于横坐标减五，",
+      "startMs": 10309,
+      "endMs": 13990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "属于另一个组，记作组 G_1。",
+      "startMs": 14158,
+      "endMs": 16860,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR30": [
+    {
+      "text": "把横坐标五、纵坐标零的点记作 P，",
+      "startMs": 70,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再取点输入 Z，它的两个端点都是这个点。",
+      "startMs": 3978,
+      "endMs": 8218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "菱形用于辨认点输入。",
+      "startMs": 8689,
+      "endMs": 10489,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "沿用第四章的单独角色，",
+      "startMs": 10959,
+      "endMs": 12918,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "点输入不确定唯一直线，",
+      "startMs": 13258,
+      "endMs": 15217,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不分到同线组，也不留在右侧顺序中。",
+      "startMs": 15478,
+      "endMs": 18828,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR31": [
+    {
+      "text": "在横坐标五处，绿色输入的高度是零，",
+      "startMs": 70,
+      "endMs": 3408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "而且五严格在一和九之间，",
+      "startMs": 3698,
+      "endMs": 5937,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此它包含这个点。",
+      "startMs": 6218,
+      "endMs": 7898,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "水平组中输入 A 和输入 B 仍覆盖这里，",
+      "startMs": 8359,
+      "endMs": 11690,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "短成员 C 已经在横坐标四结束，",
+      "startMs": 11858,
+      "endMs": 14617,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能参加。",
+      "startMs": 14878,
+      "endMs": 15720,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两幅图中的绿色线段与点输入各是同一份身份。",
+      "startMs": 16019,
+      "endMs": 19778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR32": [
+    {
+      "text": "沿用第四章的定位方式，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先在旧顺序中找出经过当前位置的组，",
+      "startMs": 2228,
+      "endMs": 5228,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再合并从这里开始的非零输入所属的组，",
+      "startMs": 5548,
+      "endMs": 8467,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "点输入另外加入。",
+      "startMs": 8768,
+      "endMs": 10248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里先说明到站后的名单如何展开，",
+      "startMs": 10709,
+      "endMs": 13508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "组层顺序与未来发现为什么可靠，",
+      "startMs": 13808,
+      "endMs": 16248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "留给下集连接证明。",
+      "startMs": 16528,
+      "endMs": 18288,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR33": [
+    {
+      "text": "一个活动组的旧成员都覆盖当前横坐标，",
+      "startMs": 70,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "组的直线又经过当前点，",
+      "startMs": 3528,
+      "endMs": 5528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以这些成员都包含这个点。",
+      "startMs": 5798,
+      "endMs": 7757,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前结束者仍保留，新开始者也参加。",
+      "startMs": 8189,
+      "endMs": 11650,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "未开始或已经结束的身份不混进来。",
+      "startMs": 11979,
+      "endMs": 14419,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "组内各原始身份只保留一次。",
+      "startMs": 14899,
+      "endMs": 16979,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR34": [
+    {
+      "text": "这次只展开不同非零组之间的输入对。",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "水平组的输入 A 与绿色输入配对，",
+      "startMs": 3249,
+      "endMs": 6008,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再让输入 B 与绿色输入配对，",
+      "startMs": 6348,
+      "endMs": 8707,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "各得到点 P 这个完整交集。",
+      "startMs": 8968,
+      "endMs": 11048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "OR35": [
+    {
+      "text": "旧同线对已经在横坐标二时报告过完整区间，",
+      "startMs": 70,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里不再把它报告成点。",
+      "startMs": 3978,
+      "endMs": 5858,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "第四章把参与者全部两两配对的做法不能直接照搬，",
+      "startMs": 6319,
+      "endMs": 10559,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因为本章已经允许重叠。",
+      "startMs": 10908,
+      "endMs": 12868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "第一章要求保留完整区间，",
+      "startMs": 13309,
+      "endMs": 15509,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这里通过报告时机落实它。",
+      "startMs": 15808,
+      "endMs": 17767,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR36": [
+    {
+      "text": "点输入先与水平组中的两份当前成员分别配对，",
+      "startMs": 70,
+      "endMs": 4110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再与绿色输入配对。",
+      "startMs": 4328,
+      "endMs": 5928,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这三对的完整交集也都是点 P 这个位置。",
+      "startMs": 6419,
+      "endMs": 9258,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "短成员已经结束，不能因为同组而参与点配对。",
+      "startMs": 9779,
+      "endMs": 13458,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR37": [
+    {
+      "text": "加上之前的三个区间，",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "五输入案例一共八条结果。",
+      "startMs": 1878,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "其余两对分别是短成员与绿色输入、短成员与点输入。",
+      "startMs": 4569,
+      "endMs": 9049,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两对都只能在横坐标五处相遇，",
+      "startMs": 9539,
+      "endMs": 11818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "但短成员的右端横坐标是四，",
+      "startMs": 12138,
+      "endMs": 14578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所以都为空。",
+      "startMs": 14858,
+      "endMs": 16098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这里核对的是全部无序输入对。",
+      "startMs": 16549,
+      "endMs": 18549,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR38": [
+    {
+      "text": "对于任意数量的组，先逐个取不同的无序组对，",
+      "startMs": 40,
+      "endMs": 3718,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再把一组每个当前参与成员与另一组每个当前参与成员配对。",
+      "startMs": 3998,
+      "endMs": 9118,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "任意一个跨组参与对都在对应组对的展开中。",
+      "startMs": 9589,
+      "endMs": 12988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "同一组对只展开一次，",
+      "startMs": 13459,
+      "endMs": 15139,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "每个身份在组内只出现一次，",
+      "startMs": 15458,
+      "endMs": 17737,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "本次就不会漏掉或重复这对。",
+      "startMs": 18028,
+      "endMs": 20108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR39": [
+    {
+      "text": "不同组的所在直线不同，",
+      "startMs": 70,
+      "endMs": 1920,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "却已经共享当前点，因此完整交集只能是这个点，",
+      "startMs": 2078,
+      "endMs": 6357,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不会还有一段重叠区间。",
+      "startMs": 6618,
+      "endMs": 8857,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它们也不会在另一个事件再次相交。",
+      "startMs": 9309,
+      "endMs": 11869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "同一精确位置只处理一次，",
+      "startMs": 12329,
+      "endMs": 14209,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所以跨事件同样不会重复。",
+      "startMs": 14528,
+      "endMs": 16608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR40": [
+    {
+      "text": "含点输入的对沿用第四章规则。",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同位置不同点身份之间也各配一次，",
+      "startMs": 3049,
+      "endMs": 6089,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "即使没有非零组仍然执行。",
+      "startMs": 6398,
+      "endMs": 8398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "含点输入的一对不可能产生第二个交点，",
+      "startMs": 8889,
+      "endMs": 11569,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此也不会在别处再次报告。",
+      "startMs": 11888,
+      "endMs": 14048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR41": [
+    {
+      "text": "非空结果现在分成三类。",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同线非零对在加入时报告，",
+      "startMs": 2449,
+      "endMs": 4728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不同组的非零对在唯一交点报告，",
+      "startMs": 5048,
+      "endMs": 7608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "含点输入的对在那个点报告。",
+      "startMs": 7868,
+      "endMs": 10147,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "类别互不混淆，完整交集仍按原始身份保留。",
+      "startMs": 10609,
+      "endMs": 14757,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR42": [
+    {
+      "text": "请用报告时机说明：第三条线穿过重叠区域时，",
+      "startMs": 70,
+      "endMs": 4227,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "为什么不重报旧同线对？",
+      "startMs": 4498,
+      "endMs": 6258,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同时检查：当前成员名单里为什么不能混入已经结束的短成员？",
+      "startMs": 6739,
+      "endMs": 11418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OR43": [
+    {
+      "text": "本集完成了到站后怎样报告完整结果，",
+      "startMs": 70,
+      "endMs": 3290,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "以及为什么只报告一次。",
+      "startMs": 3478,
+      "endMs": 5278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "还没有证明每个未来交点一定会被发现。",
+      "startMs": 5769,
+      "endMs": 8809,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "下集研究组的当前覆盖，",
+      "startMs": 9289,
+      "endMs": 11209,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "以及成员加入改变覆盖以后需要怎样补充检查。",
+      "startMs": 11588,
+      "endMs": 15427,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ]
+}

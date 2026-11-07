@@ -1,6 +1,6 @@
 # 第五章上集工程
 
-本集由 Remotion Blank 模板创建，配置参考 `same-point-participants`。需求以 [#343](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/343) 和 [#344](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/344) 为准。
+本集由 Remotion Blank 模板创建，配置参考 `same-point-participants`。需求以 [#343](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/343) 为准，文案与画面对应 [#344](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/344)，配音同步与交付对应 [#345](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/345)，真实成片验收对应 [#346](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/346)。
 
 ## 当前配置
 
@@ -15,13 +15,19 @@
 
 在本集目录执行 `pnpm --config.verify-deps-before-run=false run lint`，进行 ESLint 与 TypeScript 检查；执行 `pnpm --config.verify-deps-before-run=false run build` 只进行打包，不渲染视频。
 
-当前为 #344 的文案与画面阶段：16 页、43 个稳定教学步骤（`OR01`–`OR43`）。完整字幕与分镜在 `src/storyboard.ts`，独立纯文本口播在 `src/narration-text.json`。正式音频和实测时间线由后续 #345 接续，本集目前静音，不提供导出入口。下集内容制作仍遵循既定前置任务。
+本集有 16 页、43 个稳定教学步骤（`OR01`–`OR43`）。完整字幕与分镜在 `src/storyboard.ts`，独立纯文本口播在 `src/narration-text.json`；每步独立生成原速 PCM WAV，以实测时长构建时间线。下集内容制作仍遵循既定前置任务。
 
-`src/speech-text.json` 保存与冻结纯文本逐字对应的局部读音标注。下一阶段还须建立原始字幕语义句与口播分段的对应记录，按共享 `sentence-pauses.ts` 校验 400ms／200ms 句界请求，再检查实际请求并合成；当前标注稿不冒充已完成的合成请求计划。
+`src/speech-text.json` 保存与冻结纯文本逐字对应的局部读音标注。`src/sentence-plan.json` 记录原始字幕语义句与口播分段，复用共享 `sentence-pauses.ts` 校验句末 400ms／内部边界 200ms 的请求；共 278 个边界。`video:plan-narration` 离线重建全部 SSML，不调用服务。合成使用计划文件及其 SHA-256；默认不自动重试，`--continue-unstarted` 只继续未发送片段，保留结果未知的请求。评估通过 `--shots` 显式选择已完成片段，并保存独占请求记录。
 
-`src/timeline.ts` 明确标记 `provisional-visual-inspection`：按字幕阅读窗口安排页面检查，每页末保留 3 秒，`OR42` 保留 8 秒思考；这些数值不是实测配音或成片时长。下一阶段必须以原速完整音频的实测数据替换阅读窗口，并重新核对语义提示、字幕与画面同步，不能把这套暂定时间作为音频元数据。
+`src/timeline.ts` 使用 `measured-narration`，复用共享完整音频时间线与播放组件。`src/audio-timing.json` 绑定当前 WAV 哈希、请求指纹和原始评估响应，`src/captions.json` 由原字幕与真实词时间生成。阅读估时与比例切分退出播放路径。每段引入 0.5 秒，完整音频后按教学步骤停留；每页末保留 3 秒，`OR42` 保留 8 秒思考，不裁切或调速音频。
 
-`src/visual-cues.ts` 将配对、加入和退出绑定到明确的字幕短语；同一短语中的两次配对在该短语窗口内依次出现。已产生的成员与结果持续保留，强调在动作结束后撤去。结果区域预留本页完整容量，新增结果不改变已有图示的位置。
+当前时间线为 47,642 帧／60 fps，即 13 分 14.033 秒。当前正式音频检测覆盖 43/43 段，原始程序标记为 `Omission=0`、`Insertion=0`、`Mispronunciation=44`；没有缺失评估。发音标记不是已听辨确认的错误，实际试听尚未验收。OR38 的局部改句“同一组对只展开一次”已同步字幕、纯口播、读音、句界与所选音频。
+
+本次类型检查、打包、内容与完整音频校验通过；已核验版本的无头浏览器检查通过 1,624 个生产布局状态。规范与规格两项源码审查均无未解决发现。这些结果不替代实际试听和真实成片验收。
+
+独立对齐观察 422 个生产状态，覆盖语义动作、字幕边界、27 处同页衔接与 OR42 八秒思考窗。实际媒体观察范围为 OR16、OR17、OR34、OR35：均从 0 原速播放至 `ended`，没有重叠；OR34 连续场景观察确认 AD→BD 的顺序、单次描亮与结果保留。该范围不代表全片实际播放或听辨通过。
+
+`src/visual-cues.ts` 将配对、加入和退出绑定到明确的语义短语；`src/operation-timing.ts` 使用真实词边界安排动作，同一句中的两次配对依次出现。已产生的成员与结果持续保留，强调在动作结束后撤去。结果区域预留本页完整容量，新增结果不改变已有图示的位置。
 
 ## 内容与参考继承
 
@@ -42,18 +48,20 @@
 ## 阶段检查
 
 ```sh
-cd videos/bentley-ottmann/overlap-reporting
+cd <仓库目录>/videos/bentley-ottmann/overlap-reporting
 pnpm --config.verify-deps-before-run=false run lint
 pnpm --config.verify-deps-before-run=false run video:check-content
 ```
 
-内容入口核对文章案例的全部输入对、独立案例范围、字幕标点完整保留、稿件 ID、暂定状态及停留，并复用共享语音构造入口离线核对标注格式和冻结文本一致性，不创建服务客户端。同页交界直接保留上一镜头的实际末条字幕。布局入口使用实际生产页面及共享检查器，覆盖每个字幕和语义动作的边界、中间状态及页末；运行前须设置经本机核验的 `REMOTION_BROWSER_EXECUTABLE`。`--screenshots` 保存浏览器截图到系统临时目录，不调用 Remotion 导出。具体完成状态与独立审核证据以 #344 为准，程序通过不替代独立视觉观察。
+内容入口核对文章案例的全部输入对、独立案例范围、字幕标点完整保留、稿件 ID、实测提示及停留，并离线重建当前请求、核对全部正式音频与原始评估，分别报告三类标记。`--decode` 另检查完整解码；`video:preflight` 依次执行该解码检查与生产布局检查。遗漏或插入非零阻断采用和音频检查。同页交界保留上一镜头的实际末条字幕。布局检查覆盖每个字幕和语义动作的边界、中间状态及页末；运行前须设置经本机核验的 `REMOTION_BROWSER_EXECUTABLE`。`--screenshots` 保存浏览器截图到系统临时目录，不调用 Remotion 导出。程序通过不替代实际试听和成片验收。
 
 ## 制作与导出
 
 遵循[视频工程规则](../../AGENTS.md)与[工程操作说明](../../../docs/agents/videos/operations.md)。浏览器必须匹配本集 Remotion 指定的 Chrome Headless Shell；使用前单独核验，不自动下载。
 
-正式导出须在后续阶段完成相应检查并接入项目五阶段模板，由用户执行；本工程目前不提供导出命令。配音沿用项目默认音色与原始语速，在获得相应授权和通过门禁后接入。
+已接入独立预检、PNG 与同时间线 PCM 导出入口，均复用共享实现。正式导出按上述操作说明的五阶段模板由用户执行，提供命令前须核对当前全部音频评估与参数。PNG 目标为 `out/overlap-reporting-frames/`，音轨目标为 `out/overlap-reporting-audio.wav`；入口动态分配独立端口，不覆盖已有输出。助手未渲染视频，实际试听依用户要求留到全部制作之后，真实成片仍待用户导出后验收。
+
+`assets/narration-request-evidence.json` 保留未决请求及所选替代版本的最小状态；`assets/narration-review/` 仅保留尚待试听核实的旧候选及原始评估，不参与播放。当前正式素材、字幕与离线检查不依赖系统临时目录。
 
 ## Remotion 许可
 

@@ -4,12 +4,7 @@ import { join } from "node:path";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "../../../shared/speech/azure-speech.ts";
 import { createAlignmentTools } from "../../../shared/speech/azure-alignment.ts";
-import {
-  audioSha256,
-  decodeAudio,
-  measureAudio,
-  verifyPcmSource,
-} from "../../../shared/speech/audio.ts";
+import { verifyRecording } from "../../../shared/speech/verify-recording.ts";
 import { synthesisFormat } from "../../../shared/speech/source.ts";
 import {
   validateCaptionClauses,
@@ -51,32 +46,20 @@ export function verifyRecordings(
       const doc = buildSpeechDocument(speech[id], id);
       checkSentencePlan(speech[id], narration[id], id);
       assert.equal(doc.text, narration[id]);
-      assert.equal(audio.speech, doc.text);
-      assert.equal(audio.fingerprint, doc.fingerprint);
-      assert.equal(audio.voice, voice);
-      assert.equal(audio.audioFile, `${id}.wav`);
-      assert.equal(audio.outputFormat, synthesisFormat);
-      const path = join(directory, audio.audioFile!);
-      assert.equal(audioSha256(path), audio.audioSha256);
-      verifyPcmSource(path);
-      assert.equal(measureAudio(path), audio.duration);
-      if (decode) decodeAudio(path);
-      assert(audio.alignment, `${id}: missing raw assessment`);
-      assert.deepEqual(
-        alignment.assessmentWords(audio, audio.alignment.response),
-        audio.words,
-      );
-      alignment.verifyAlignment(audio, path);
-      const response = audio.alignment.response as {
-        NBest: {
-          Words: { PronunciationAssessment: { ErrorType: string } }[];
-        }[];
-      };
-      for (const word of response.NBest[0].Words) {
-        const flag = word.PronunciationAssessment.ErrorType;
-        assert(flag === "None" || flag in counts);
-        if (flag !== "None") counts[flag as keyof typeof counts]++;
-      }
+      verifyRecording({
+        audio,
+        path: join(directory, `${id}.wav`),
+        expected: {
+          ...doc,
+          id,
+          audioFile: `${id}.wav`,
+          voice,
+          outputFormat: synthesisFormat,
+        },
+        verifyAlignment: alignment.verifyAlignment,
+        decode,
+        counts,
+      });
       const plan = plans[id];
       validateCaptionClauses(
         shot.cues.map((c) => c.caption).join(""),

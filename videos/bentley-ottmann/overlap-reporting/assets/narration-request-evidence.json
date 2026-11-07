@@ -1,0 +1,23 @@
+{
+  "unresolved": [
+    {
+      "planSha256": "379285b91486ef4d67c987883392a99f4e454d82562a9619c2efd757e91fd091",
+      "id": "OR18",
+      "fingerprint": "137c035e0659c81889e36079b29de7482f31d0ac1867cd0f647f45b91792cb1c",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-07T06:51:22.032Z",
+      "endedAt": "2026-11-07T06:55:22.034Z"
+    }
+  ],
+  "replacements": [
+    {
+      "planSha256": "495ac87cc5f394dcbefc1a0fcd16abc63d2a2fdb60e199f653b5233cd78efb22",
+      "id": "OR18",
+      "fingerprint": "137c035e0659c81889e36079b29de7482f31d0ac1867cd0f647f45b91792cb1c",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-07T07:04:18.253Z",
+      "endedAt": "2026-11-07T07:05:19.546Z",
+      "audioSha256": "d74ee4e7f885c0e6dac0d967793ec07d70a7403027118b1851cd6308af16f72e"
+    }
+  ]
+}

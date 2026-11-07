@@ -1,9 +1,5 @@
-/** Explicit subtitle anchors for the silent teaching rehearsal, not audio timings.
- * Two actions in one clause divide that clause's reading window. */
-export const visualCues: Record<
-  string,
-  { name: string; phrase: string; part?: number }[]
-> = {
+/** Semantic anchors resolved against measured speech by operation-timing.ts. */
+export const visualCues: Record<string, { name: string; phrase: string }[]> = {
   OR09: [{ name: "addA", phrase: "加入后只有它自己" }],
   OR10: [{ name: "AB", phrase: "这一对的交集" }],
   OR11: [{ name: "addB", phrase: "再把自己加入" }],
@@ -24,7 +20,7 @@ export const visualCues: Record<
   ],
   OR17: [
     { name: "J13", phrase: "第三份再与前面两份分别配对" },
-    { name: "J23", phrase: "第三份再与前面两份分别配对", part: 0.5 },
+    { name: "J23", phrase: "第三份再与前面两份分别配对" },
     { name: "addJ3", phrase: "最后加入" },
   ],
   OR19: [
@@ -40,7 +36,6 @@ export const visualCues: Record<
     {
       name: "BZ",
       phrase: "点输入先与水平组中的两份当前成员分别配对",
-      part: 0.5,
     },
     { name: "DZ", phrase: "再与绿色输入配对" },
   ],

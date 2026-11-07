@@ -1,9 +1,12 @@
-import { useCurrentFrame } from "remotion";
+import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { createNarratedLesson } from "../../../shared/ui/NarratedLesson";
 import { TeachingPage } from "./TeachingPage";
-import { rowAt, visualAt } from "./timeline";
-/** #344 is silent. No provisional duration is represented as measured audio. */
-export function MyComposition() {
-  const frame = useCurrentFrame();
-  const row = rowAt(frame);
-  return <TeachingPage row={row} state={visualAt(row, frame - row.from)} />;
-}
+import { rows, visualAt, audio, audioLeadFrames } from "./timeline";
+export const { LessonVideo: MyComposition } = createNarratedLesson({
+  runtime: { Audio, Sequence, staticFile, useCurrentFrame },
+  timelineFor: () => rows,
+  visualAt,
+  audio,
+  audioLeadFrames,
+  renderPage: (row, state) => <TeachingPage row={row} state={state} />,
+});
