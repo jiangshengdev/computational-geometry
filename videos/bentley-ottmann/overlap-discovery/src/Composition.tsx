@@ -1,25 +1,24 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
+import { Sequence, useCurrentFrame } from "remotion";
+import { rows, visualAt, type TimelineRow } from "./timeline";
+import { TeachingPage } from "./TeachingPage";
 
-type Props = {};
+function SilentShot({ row }: { row: TimelineRow }) {
+  const frame = useCurrentFrame();
+  return <TeachingPage row={row} state={visualAt(row, frame)} />;
+}
 
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
-  return (
-    <Composition
-      id="OverlapDiscovery"
-      component={MyComponent}
-      durationInFrames={60}
-      fps={60}
-      width={1920}
-      height={1080}
-      calculateMetadata={calculateMetadata}
-    />
-  );
-};
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+/** #347 has no audio. #348 replaces inspection windows with verified speech. */
+export const MyComposition = () => (
+  <>
+    {rows.map((row) => (
+      <Sequence
+        key={row.id}
+        from={row.from}
+        durationInFrames={row.durationInFrames}
+        name={row.id}
+      >
+        <SilentShot row={row} />
+      </Sequence>
+    ))}
+  </>
+);

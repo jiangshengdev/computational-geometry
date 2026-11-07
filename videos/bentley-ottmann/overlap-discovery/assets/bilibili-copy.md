@@ -47,9 +47,9 @@ https://cgd.jiangshengdev.com/docs/segment-intersection/overlapping-segments/
 
 ## 制作依据与状态
 
-文案依据第五章文章第四至七节，以及上集 OR43 对当前覆盖和补检的预告准备。下集工程 README 指向整章规格 #343 与下集任务 #347；本次未读取线上任务正文，不把文章摘要冒充任务核验结果。
+发布素材最初依据第五章文章第四至七节，以及上集 OR43 对当前覆盖和补检的预告准备。当前下集工程实施已核对整章规格 #343 与下集任务 #347，正文范围与本页列出的主题对应。
 
-下集工程当前仍为空白占位，尚无正式分镜、口播与成片。这是预先准备的发布素材，发布前须与下集实际制作内容核对，不表示视频制作或成片验收完成。
+下集文案与画面制作见工程 README 和任务 #347，已覆盖这里列出的六项主题；本套素材的准备过程不代表正式配音、实测同步或成片验收完成。发布前仍须与后续实际成片核对。
 
 ## 封面生成输入
 
@@ -58,10 +58,10 @@ https://cgd.jiangshengdev.com/docs/segment-intersection/overlapping-segments/
 
 ## 发布资源
 
-| 用途 | 原图 PNG | 实际提交的完整提示词 | 原生尺寸 |
-| --- | --- | --- | --- |
+| 用途 | 原图 PNG                               | 实际提交的完整提示词                                | 原生尺寸                        |
+| ---- | -------------------------------------- | --------------------------------------------------- | ------------------------------- |
 | 横版 | [封面](covers/bilibili-cover-16x9.png) | [提示词](covers/bilibili-cover-16x9.png.prompt.txt) | 1672×941，接近但不精确等于 16:9 |
-| 4:3 | [封面](covers/bilibili-cover-4x3.png) | [提示词](covers/bilibili-cover-4x3.png.prompt.txt) | 1448×1086，精确 4:3 |
+| 4:3  | [封面](covers/bilibili-cover-4x3.png)  | [提示词](covers/bilibili-cover-4x3.png.prompt.txt)  | 1448×1086，精确 4:3             |
 
 两张封面通过 Node 图片生成 CLI 的 generate 入口，从完整文字独立生成，请求参数为 gpt-image-2.6-sunburst、quality=max、size=auto、不透明 PNG。实际提交提示词与对应生成输入一致。
 
