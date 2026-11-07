@@ -10,6 +10,8 @@ import type { TimelineRow, VisualState } from "./timeline";
 
 const ink = "#172c45";
 const muted = "#94a3b8";
+const panelWidth = 390;
+const panelHeight = 210;
 /** The shared sample's fixed viewport cannot contain x=10 and y=-4.
  * These article-specific panels keep the same coordinate scale within each comparison. */
 function Geometry({
@@ -30,11 +32,11 @@ function Geometry({
   result?: { from: Point; to: Point };
 }) {
   const uid = useId().replace(/:/g, "");
-  const width = wide ? 390 : 260,
-    height = wide ? 390 : 180,
-    unit = wide ? 30 : 19;
+  const width = panelWidth,
+    height = wide ? 390 : panelHeight,
+    unit = 30;
   const x = (v: number) => 35 + unit * v,
-    y = (v: number) => (wide ? 205 : 85) - unit * v;
+    y = (v: number) => (wide ? 205 : 90) - unit * v;
   const ys = wide ? [-4, -3, -2, -1, 0, 1, 2, 3, 4] : [-2, -1, 0, 1, 2];
   return (
     <svg
@@ -161,14 +163,16 @@ function Geometry({
                   ? x(8)
                   : name === "Z"
                     ? x(5) + 12
-                    : x((s.start[0] + s.end[0]) / 2)
+                    : wide && name === "B"
+                      ? x(3)
+                      : x((s.start[0] + s.end[0]) / 2)
               }
               y={
                 name === "D" ? y(3) - 15 : name === "Z" ? y(0) - 18 : y(0) - 16
               }
               align={name === "Z" ? "left" : "center"}
               fill={s.color}
-              fontSize={22}
+              fontSize={wide ? 22 : 26}
             >
               {name}
             </Label>
@@ -209,7 +213,7 @@ function Geometry({
         </Label>
       ) : null}
       {!wide ? (
-        <Label x={width / 2} y={132} align="center" fontSize={18}>
+        <Label x={width / 2} y={177} align="center" fontSize={22}>
           {result
             ? `(${result.from.join(",")}) — (${result.to.join(",")})`
             : names.length === 1
@@ -218,6 +222,50 @@ function Geometry({
         </Label>
       ) : null}
     </svg>
+  );
+}
+function GeometryPanels({
+  names,
+  visibleCount = names.length,
+  scan,
+  highlight,
+  progress,
+}: {
+  names: Name[];
+  visibleCount?: number;
+  scan?: number;
+  highlight?: Name;
+  progress: number;
+}) {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(2, ${panelWidth}px)`,
+        gridTemplateRows: `repeat(${names.length > 2 ? 2 : 1}, ${panelHeight}px)`,
+        justifyContent: "center",
+      }}
+    >
+      {names.map((name, i) => (
+        <div
+          key={name}
+          style={{
+            gridRow: i < 2 ? 1 : 2,
+            gridColumn:
+              i === 2 || (i === 0 && visibleCount === 1) ? "1 / -1" : i + 1,
+            justifySelf: "center",
+            visibility: i < visibleCount ? "visible" : "hidden",
+          }}
+        >
+          <Geometry
+            names={[name]}
+            scan={scan}
+            highlight={highlight === name ? name : undefined}
+            progress={progress}
+          />
+        </div>
+      ))}
+    </div>
   );
 }
 function Members({
@@ -307,21 +355,13 @@ export function OverlapDiagram({
     const names: Name[] = ["A", "B", "C"];
     return (
       <div>
-        <div style={{ display: "flex", height: 180 }}>
-          {names.map((name, i) => (
-            <div
-              key={name}
-              style={{ visibility: i < count ? "visible" : "hidden" }}
-            >
-              <Geometry
-                names={[name]}
-                scan={row.page === "group" ? (n === 8 ? 1 : 3.5) : undefined}
-                highlight={state.target === name ? name : undefined}
-                progress={p}
-              />
-            </div>
-          ))}
-        </div>
+        <GeometryPanels
+          names={names}
+          visibleCount={count}
+          scan={row.page === "group" ? (n === 8 ? 1 : 3.5) : undefined}
+          highlight={names.find((name) => state.target === name)}
+          progress={p}
+        />
         {row.page === "group" ? (
           <div style={{ visibility: n >= 7 ? "visible" : "hidden" }}>
             <Members names={n === 8 ? ["A"] : names} />
@@ -387,17 +427,12 @@ export function OverlapDiagram({
       n === 10 ? "B" : n === 12 ? "C" : undefined;
     return (
       <div>
-        <div style={{ display: "flex" }}>
-          {(["A", "B", "C"] as Name[]).map((name) => (
-            <Geometry
-              key={name}
-              names={[name]}
-              scan={scan}
-              highlight={highlight === name ? name : undefined}
-              progress={p}
-            />
-          ))}
-        </div>
+        <GeometryPanels
+          names={row.page === "join" ? ["A", "B"] : ["A", "B", "C"]}
+          scan={scan}
+          highlight={highlight}
+          progress={p}
+        />
         <Members
           names={members}
           pending={
@@ -416,9 +451,10 @@ export function OverlapDiagram({
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: 20,
+              gap: 0,
               visibility: count ? "visible" : "hidden",
             }}
           >
@@ -458,25 +494,20 @@ export function OverlapDiagram({
             ];
     return (
       <div>
-        <div style={{ display: "flex" }}>
-          {(["J_1", "J_2", "J_3"] as Name[]).map((name) => (
-            <Geometry
-              key={name}
-              names={[name]}
-              scan={1}
-              highlight={
-                n === 16
-                  ? !has("J12")
-                    ? "J_1"
-                    : "J_2"
-                  : n === 17
-                    ? "J_3"
-                    : undefined
-              }
-              progress={p}
-            />
-          ))}
-        </div>
+        <GeometryPanels
+          names={["J_1", "J_2", "J_3"]}
+          scan={1}
+          highlight={
+            n === 16
+              ? !has("J12")
+                ? "J_1"
+                : "J_2"
+              : n === 17
+                ? "J_3"
+                : undefined
+          }
+          progress={p}
+        />
         <Members label="当前同线成员" names={members} />
         <div style={{ fontSize: 24, padding: 25 }}>
           {["J_1,J_2", "J_1,J_3", "J_2,J_3"].map((pair) => (
@@ -497,17 +528,12 @@ export function OverlapDiagram({
   if (row.page === "handoff")
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          {(["B", "E"] as Name[]).map((name) => (
-            <Geometry
-              key={name}
-              names={[name]}
-              scan={8}
-              highlight={state.target === "E" ? "E" : undefined}
-              progress={p}
-            />
-          ))}
-        </div>
+        <GeometryPanels
+          names={["B", "E"]}
+          scan={8}
+          highlight={state.target === "E" ? "E" : undefined}
+          progress={p}
+        />
         <Members
           names={n === 18 || !has("endB") ? ["B"] : ["E"]}
           pending={n === 18 || !has("endB") ? ["E"] : []}
