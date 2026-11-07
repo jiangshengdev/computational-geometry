@@ -1,11 +1,11 @@
 {
   "name": "overlap-reporting",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "第五章上集：重叠线段的完整结果怎样只报告一次",
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
-    "node": "^20.19.0 || ^22.13.0 || >=24"
+    "node": "^22.18.0 || >=24"
   },
   "private": true,
   "dependencies": {
@@ -27,9 +27,10 @@
     "typescript": "5.9.3"
   },
   "scripts": {
-    "dev": "remotion studio",
+    "dev": "remotion studio --no-open",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
-  }
+  },
+  "type": "module"
 }
