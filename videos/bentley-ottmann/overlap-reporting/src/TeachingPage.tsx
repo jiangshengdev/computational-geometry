@@ -7,6 +7,10 @@ import { colors, tints } from "../../colors.ts";
 import { pages } from "./storyboard";
 import { inputs } from "./example";
 import { OverlapDiagram } from "./OverlapDiagram";
+import {
+  ReportingProofDiagram,
+  proofIdentityMarks,
+} from "./ReportingProofDiagram";
 import type { TimelineRow, VisualState } from "./timeline";
 const MathLines = createTeachingMathLines({
   pages,
@@ -16,13 +20,14 @@ const MathLines = createTeachingMathLines({
   lineMarks: Object.fromEntries(
     Object.values(pages).map((p) => [
       p.id,
-      p.steps.map((s) =>
-        Object.entries(inputs)
+      p.steps.map((s) => [
+        ...(p.id.startsWith("proof-") ? proofIdentityMarks : []),
+        ...Object.entries(inputs)
           .filter(([name]) =>
             new RegExp(`(?<![A-Za-z])${name}(?![A-Za-z0-9_])`).test(s.text),
           )
           .map(([term, input]) => ({ term, color: input.color })),
-      ),
+      ]),
     ]),
   ),
   objectColors: { current: colors.amber },
@@ -63,7 +68,11 @@ export function TeachingPage({
       showBasisTitle={false}
       basisHeight={page.basis ? 95 : undefined}
       diagram={
-        page.diagram ? <OverlapDiagram row={row} state={state} /> : undefined
+        page.diagram === "proof" ? (
+          <ReportingProofDiagram row={row} state={state} />
+        ) : page.diagram ? (
+          <OverlapDiagram row={row} state={state} />
+        ) : undefined
       }
       caption={<MathText colorize={false}>{state.caption}</MathText>}
     >

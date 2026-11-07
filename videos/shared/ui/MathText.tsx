@@ -101,6 +101,7 @@ export function createMathText<Role extends string, Mark>(
     verticalAlign = "baseline",
     label = true,
     colorize = false,
+    marks = [],
   }: {
     x: number;
     y: number;
@@ -112,6 +113,7 @@ export function createMathText<Role extends string, Mark>(
     verticalAlign?: "baseline" | "middle";
     label?: boolean;
     colorize?: boolean;
+    marks?: Mark[];
   }) => (
     <foreignObject x={x} y={y} width={1} height={1} overflow="visible">
       <div
@@ -129,7 +131,9 @@ export function createMathText<Role extends string, Mark>(
           } as CSSProperties
         }
       >
-        <MathText colorize={colorize}>{children}</MathText>
+        <MathText colorize={colorize} marks={marks}>
+          {children}
+        </MathText>
       </div>
     </foreignObject>
   );
