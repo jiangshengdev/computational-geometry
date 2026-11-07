@@ -28,6 +28,7 @@ const sidebars: SidebarsConfig = {
         'segment-intersection/why-neighbors-proof',
         'segment-intersection/exact-predicates',
         'segment-intersection/same-point-events',
+        'segment-intersection/overlapping-segments',
         'segment-intersection/line-equation',
         {
           type: 'category',

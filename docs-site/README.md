@@ -84,6 +84,13 @@ static/img/segment-intersection/
 
 第四章《同一个点上的事情一起处理》使用 `IntersectionFigures` 展示 7 幅独立子图，明暗主题共 14 个 SVG，位于 `static/img/segment-intersection/same-point-events/<theme>/`。生成入口为 `scripts/draw_same_point_events.ts`，复用 `svg_math_labels.ts` 的主题颜色与 MathText 排版；在本目录执行 `MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_same_point_events.ts`。各图保持 320 × 260 原始尺寸与相同坐标尺度，点输入分图展示但不移动位置，事件两侧图只画相应侧的成员；这些是教学示意，不是真实执行轨迹。
 
+第五章《重叠线段怎样参与扫描》沿用同一组件与数学标注能力，包含 8 幅独立子图，明暗主题共 16 个 SVG，位于 `static/img/segment-intersection/overlapping-segments/<theme>/`。子图保留重叠成员的原坐标，分别说明同线身份、外部穿越、覆盖延长与空隙；它们是教学示意，不是真实执行轨迹。使用已有 Matplotlib 环境重新生成：
+
+```bash
+cd docs-site
+MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_overlapping_segments.ts
+```
+
 上述路径中的 `<theme>` 为 `light` 或 `dark`，目录与文件名后缀保持一致。
 
 该脚本使用 Python，因为 Matplotlib 提供的是 Python 绘图 API。从仓库根目录执行：
