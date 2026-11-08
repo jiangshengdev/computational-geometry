@@ -9,6 +9,7 @@ import {
   fps,
   audioLeadFrames,
   motionStart,
+  motionEnd,
   type TimelineRow,
 } from "./timeline";
 import { TeachingPage } from "./TeachingPage";
@@ -26,18 +27,16 @@ export const LayoutCheck = createShotLayoutCheck({
     [
       29,
       30,
-      89,
-      90,
-      134,
-      135,
-      179,
-      180,
-      ...[
-        motionStart(row),
-        ...(row.id === "SC35" ? [motionStart(row, "紫色退出")] : []),
-      ].flatMap((f) => [f - 1, f, f + 45, f + 90]),
+      ...[undefined, ...(row.id === "SC35" ? ["紫色退出"] : [])].flatMap(
+        (anchor) => {
+          const start = motionStart(row, anchor),
+            end = motionEnd(row, anchor);
+          return [start - 1, start, Math.floor((start + end) / 2), end];
+        },
+      ),
+      ...row.spoken.flatMap((cue) => [cue.start - 1, cue.start, cue.end]),
       ...[0.25, 0.5, 0.75, 1].map(
-        (p) => audioLeadFrames + Math.floor(row.readingFrames * p),
+        (p) => audioLeadFrames + Math.floor(row.speechFrames * p),
       ),
     ].filter((f) => f < row.durationInFrames),
   auditPage(page, _id, visibleStep) {

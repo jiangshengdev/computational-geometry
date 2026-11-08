@@ -1,43 +1,64 @@
 import { shots, pages } from "./storyboard.ts";
+import captionData from "./captions.json" with { type: "json" };
+import audioData from "./audio-timing.json" with { type: "json" };
+import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
+import {
+  clauses,
+  wordsInTextRange,
+  type AudioTiming,
+  type Caption,
+} from "../../../shared/speech/timing.ts";
 export const fps = 60;
 export const audioLeadFrames = 30;
-export const timingKind = "silent-inspection-only";
-// Reading estimates enable inspection only. No audio files or measured cues exist.
-let cursor = 0;
-export const rows = shots.map((shot, index) => {
-  let local = audioLeadFrames;
-  const captions = shot.captions
-    .flatMap((text) => text.match(/[^，。；？！]+[，。；？！]?/g) ?? [])
-    .map((text) => {
-      const start = local;
-      local += Math.ceil(Math.max(2, text.length / 4) * fps);
-      return { text, start, end: local };
-    });
-  const pauseAfter =
-    shots[index + 1]?.page !== shot.page
-      ? pages[shot.page].holdAfterSeconds
-      : 1;
-  const row = {
+export const timingKind = "measured-narration";
+export const audio = audioData as Record<string, AudioTiming>;
+const mapped = captionData as Record<string, (Caption & { source: number })[]>;
+const shared = createShotTimeline({
+  shots: shots.map((shot) => ({
     ...shot,
-    from: cursor,
-    durationInFrames: local + pauseAfter * fps,
-    readingFrames: local - audioLeadFrames,
-    pauseAfter,
+    step: shot.visibleStep,
+    pauseAfter: 1,
+  })),
+  pages,
+  timing: audio,
+  captions: mapped,
+  fps,
+  audioLeadFrames,
+});
+export const rows = shared.timelineFor().map((row, index) => {
+  const spoken = clauses(audio[row.id].speech).map(({ text, offset }) => {
+    const words = wordsInTextRange(audio[row.id], offset, offset + text.length);
+    if (!words.length) throw Error(`${row.id}: missing spoken phrase timing`);
+    const last = words[words.length - 1];
+    return {
+      text,
+      start: audioLeadFrames + Math.floor((words[0].startMs * fps) / 1000),
+      end:
+        audioLeadFrames +
+        Math.ceil(((last.startMs + last.durationMs) * fps) / 1000),
+    };
+  });
+  return {
+    ...row,
+    pauseAfter:
+      shots[index + 1]?.page !== row.page
+        ? pages[row.page].holdAfterSeconds
+        : 1,
+    audioEndFrame: audioLeadFrames + row.speechFrames,
     revealMs: -500,
     stages: [] as { ms: number }[],
-    captions,
-    previousCaption:
-      index && shots[index - 1].page === shot.page
-        ? shots[index - 1].captions
-            .slice(-1)[0]
-            .match(/[^，。；？！]+[，。；？！]?/g)!
-            .slice(-1)[0]
-        : "",
+    spoken,
+    captions: mapped[row.id].map((caption) => ({
+      ...caption,
+      start: audioLeadFrames + Math.floor((caption.startMs * fps) / 1000),
+      end: audioLeadFrames + Math.ceil((caption.endMs * fps) / 1000),
+    })),
   };
-  cursor += row.durationInFrames;
-  return row;
 });
-export const durationInFrames = cursor;
+export const durationInFrames = rows.reduce(
+  (sum, row) => sum + row.durationInFrames,
+  0,
+);
 export type TimelineRow = (typeof rows)[number];
 const motionAnchors: Record<string, string> = {
   SC14: "蓝色输入加入",
@@ -51,33 +72,67 @@ const motionAnchors: Record<string, string> = {
   SC34: "绿色退出",
   SC35: "蓝色退出",
 };
-export function motionStart(row: TimelineRow, anchor = motionAnchors[row.id]) {
-  return anchor
-    ? row.captions.find((c) => c.text.includes(anchor))!.start
-    : audioLeadFrames + 60;
+function motionCue(row: TimelineRow, anchor = motionAnchors[row.id]) {
+  if (!anchor)
+    return {
+      start: row.spoken[0].start,
+      end: row.spoken[row.spoken.length - 1].end,
+    };
+  const matches = row.spoken.filter((c) => c.text.includes(anchor));
+  if (matches.length !== 1)
+    throw Error(`${row.id}: missing or ambiguous motion cue ${anchor}`);
+  return matches[0];
 }
+export const motionStart = (row: TimelineRow, anchor?: string) =>
+  motionCue(row, anchor).start;
+export const motionEnd = (row: TimelineRow, anchor?: string) =>
+  motionCue(row, anchor).end;
+const progressAt = (frame: number, start: number, end: number) =>
+  Math.max(0, Math.min(1, (frame - start) / (end - start)));
 export function visualAt(row: TimelineRow, frame: number) {
   const activeCaption = row.captions.findIndex(
     (c) => frame >= c.start && frame < c.end,
   );
-  const end = audioLeadFrames + row.readingFrames;
   const started = row.captions.filter((c) => frame >= c.start);
-  const progress = Math.max(
-    0,
-    Math.min(1, (frame - audioLeadFrames) / row.readingFrames),
-  );
+  const reached = row.spoken.filter((c) => frame >= c.start).map((c) => c.text);
+  const secondPair = row.id === "SC12" && frame >= row.spoken[2].start;
+  const emphasis =
+    row.id === "SC12"
+      ? {
+          start: row.spoken[secondPair ? 2 : 0].start,
+          end: row.spoken[secondPair ? 3 : 1].end,
+        }
+      : row.id === "SC35"
+        ? motionCue(
+            row,
+            reached.some((c) => c.includes("紫色退出"))
+              ? "紫色退出"
+              : "蓝色退出",
+          )
+        : {
+            start: row.spoken[0].start,
+            end: row.spoken[row.spoken.length - 1].end,
+          };
   return {
     visibleStep: row.visibleStep,
     caption: started[started.length - 1]?.text ?? row.previousCaption,
-    thinking: frame >= end,
-    active: frame >= audioLeadFrames && frame < end,
+    thinking: frame >= row.audioEndFrame,
+    active:
+      frame >= row.spoken[0].start &&
+      frame < row.spoken[row.spoken.length - 1].end,
+    diagramActive: frame >= emphasis.start && frame < emphasis.end,
+    secondPair,
     activeCaption,
-    progress,
-    reached: started.map((c) => c.text),
-    motion: Math.max(0, Math.min(1, (frame - motionStart(row)) / 90)),
+    progress: progressAt(frame, emphasis.start, emphasis.end),
+    reached,
+    motion: progressAt(frame, motionStart(row), motionEnd(row)),
     secondMotion:
       row.id === "SC35"
-        ? Math.max(0, Math.min(1, (frame - motionStart(row, "紫色退出")) / 90))
+        ? progressAt(
+            frame,
+            motionStart(row, "紫色退出"),
+            motionEnd(row, "紫色退出"),
+          )
         : 0,
   };
 }

@@ -27,7 +27,7 @@ function Geometry({ row, state }: { row: TimelineRow; state: VisualState }) {
   if (n === 10) selected = [0, 3];
   if (n >= 28 && n <= 30) selected = [0, 3];
   if (n === 11) selected = [1, 2];
-  if (n === 12) selected = state.progress < 0.5 ? [0, 2] : [1, 3];
+  if (n === 12) selected = state.secondPair ? [1, 3] : [0, 2];
   if (n >= 14 && n <= 17) selected = [n - 14];
   if (n === 33) selected = [1];
   if (n === 34) selected = [3];
@@ -174,9 +174,9 @@ function Geometry({ row, state }: { row: TimelineRow; state: VisualState }) {
           >{`S_${s.id}`}</Label>
         </g>
       ))}
-      {state.active && (
+      {state.diagramActive && (
         <AttentionMarks
-          progress={n === 12 ? (state.progress * 2) % 1 : state.progress}
+          progress={state.progress}
           marks={selected.map((i) => ({
             kind: "line",
             from: [inputs[i].start[0], inputs[i].start[1]],

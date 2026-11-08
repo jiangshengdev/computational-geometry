@@ -15,8 +15,13 @@ import {
   audioLeadFrames,
   timingKind,
   motionStart,
+  motionEnd,
+  audio,
 } from "../src/timeline.ts";
 import { pageList, shots } from "../src/storyboard.ts";
+import { checkSentencePlan } from "./sentence-plan.ts";
+import { validateWords } from "../../../shared/speech/timing.ts";
+import { checkAudio } from "./check-audio.ts";
 
 // Verify the six mathematical input pairs independently of the teaching sequence.
 const found: Record<string, number[]> = {};
@@ -56,7 +61,7 @@ assert(!strictlyFuture(intersections.P, intersections.P));
 assert(!strictlyFuture(intersections.P, intersections.Q));
 assert(!strictlyFuture([-1, 100], intersections.P));
 assert(strictlyFuture([1, -100], intersections.P));
-assert.equal(timingKind, "silent-inspection-only");
+assert.equal(timingKind, "measured-narration");
 const narration: Record<string, string> = JSON.parse(
   readFileSync(new URL("../src/narration-text.json", import.meta.url), "utf8"),
 );
@@ -78,6 +83,8 @@ assert.deepEqual(
 );
 assert.equal(new Set(shots.map((s) => s.id)).size, shots.length);
 for (const [i, row] of rows.entries()) {
+  validateWords(audio[row.id]);
+  checkSentencePlan(speech[row.id], narration[row.id], row.id);
   assert(!/[，,]/.test(narration[row.id]), `${row.id}: spoken comma`);
   assert.equal(
     buildSpeechDocument(speech[row.id], row.id).text,
@@ -90,7 +97,7 @@ for (const [i, row] of rows.entries()) {
     `${row.id}: motion precedes semantic cue`,
   );
   assert.equal(
-    visualAt(row, motionStart(row) + 90).motion,
+    visualAt(row, motionEnd(row)).motion,
     1,
     `${row.id}: motion does not finish`,
   );
@@ -112,9 +119,29 @@ for (const [i, row] of rows.entries()) {
   assert.equal(end.visibleStep, row.visibleStep);
   assert.equal(end.motion, 1);
   assert(end.thinking && !end.active);
-  assert(row.durationInFrames >= audioLeadFrames + row.readingFrames + fps);
+  assert(
+    row.spoken[0].start >= audioLeadFrames,
+    `${row.id}: speech before line reveal`,
+  );
+  assert(
+    row.durationInFrames >=
+      audioLeadFrames + Math.ceil(audio[row.id].duration * fps) + fps,
+  );
+  assert(
+    motionEnd(row) <= row.audioEndFrame,
+    `${row.id}: motion exceeds narration`,
+  );
+  if (row.id === "SC35") {
+    assert(motionEnd(row) < motionStart(row, "紫色退出"));
+    assert.equal(
+      visualAt(row, motionStart(row, "紫色退出") - 1).secondMotion,
+      0,
+    );
+    assert.equal(visualAt(row, motionEnd(row, "紫色退出")).secondMotion, 1);
+  }
   if (rows[i + 1]?.page !== row.page) assert(row.pauseAfter >= 3);
 }
 console.log(
-  `Verified six input pairs, strict-future cases, ${pageList.length} pages / ${rows.length} silent steps and caption/hold continuity.`,
+  `Verified six input pairs, strict-future cases, ${pageList.length} pages / ${rows.length} measured steps, original audio duration and caption/hold continuity.`,
 );
+console.log(JSON.stringify(checkAudio(process.argv.includes("--decode"))));

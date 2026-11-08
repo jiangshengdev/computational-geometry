@@ -1,0 +1,1706 @@
+{
+  "SC01": [
+    {
+      "text": "同一列上，低处两条线段相交，",
+      "startMs": 70,
+      "endMs": 3028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处另外两条也相交。",
+      "startMs": 3348,
+      "endMs": 5028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "处理完低处，顺序该是什么样？",
+      "startMs": 5489,
+      "endMs": 8278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "本集跟随四份输入，从开始走到退出。",
+      "startMs": 8729,
+      "endMs": 12410,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC02": [
+    {
+      "text": "本章解除不同事件位置的 x 坐标各异这一限制，",
+      "startMs": 70,
+      "endMs": 4270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "仍要求非零输入不竖直。",
+      "startMs": 4478,
+      "endMs": 6437,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同点多参与者、点输入和重叠继续允许。",
+      "startMs": 6919,
+      "endMs": 10240,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "我们沿用逐点机制，每次只处理一个精确位置。",
+      "startMs": 10589,
+      "endMs": 14238,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能提前更新同列别处；",
+      "startMs": 14729,
+      "endMs": 16688,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "另行定义的整列批处理算法，",
+      "startMs": 16978,
+      "endMs": 19380,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "需要自己的规则与证明。",
+      "startMs": 19548,
+      "endMs": 21428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SC03": [
+    {
+      "text": "蓝色输入记作 S_0，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从点 (-1,-3) 到点 (3,1)，",
+      "startMs": 2878,
+      "endMs": 5740,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所在直线为 y=x-2。",
+      "startMs": 5898,
+      "endMs": 8257,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "坐标先写 x 坐标，",
+      "startMs": 8689,
+      "endMs": 10329,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再写 y 坐标；",
+      "startMs": 10638,
+      "endMs": 11918,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "图中两轴单位相同，O 表示原点。",
+      "startMs": 12208,
+      "endMs": 15928,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC04": [
+    {
+      "text": "橙色输入记作 S_1，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从点 (-1,-1) 到点 (3,-5)，",
+      "startMs": 2878,
+      "endMs": 5400,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所在直线为 y=-x-2。",
+      "startMs": 5598,
+      "endMs": 8477,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色线段仍保留，颜色和编号始终对应原来的输入。",
+      "startMs": 8939,
+      "endMs": 13267,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC05": [
+    {
+      "text": "紫色输入记作 S_2，",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从点 (-1,1) 到点 (3,5)，",
+      "startMs": 2978,
+      "endMs": 5680,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所在直线为 y=x+2。",
+      "startMs": 5848,
+      "endMs": 8207,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC06": [
+    {
+      "text": "绿色输入记作 S_3，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从点 (-1,3) 到点 (3,-1)，",
+      "startMs": 2928,
+      "endMs": 5490,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所在直线为 y=-x+2。",
+      "startMs": 5698,
+      "endMs": 8680,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "四份都是闭线段，x 坐标范围都从负一到三，",
+      "startMs": 9079,
+      "endMs": 13547,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "包含两端。",
+      "startMs": 13808,
+      "endMs": 14768,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC07": [
+    {
+      "text": "后面上下顺序会变，输入身份和颜色不会变。",
+      "startMs": 70,
+      "endMs": 3858,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这些画面是教学示意，",
+      "startMs": 4319,
+      "endMs": 6399,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不是算法执行截图。",
+      "startMs": 6718,
+      "endMs": 8438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC08": [
+    {
+      "text": "先看蓝色与橙色。",
+      "startMs": 70,
+      "endMs": 1510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "在 x 坐标零处，两条直线的高度都是负二，",
+      "startMs": 1899,
+      "endMs": 5688,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "交点记作 P。",
+      "startMs": 5968,
+      "endMs": 7688,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "零在两份闭范围内，所以这对的完整交集就是 P。",
+      "startMs": 8159,
+      "endMs": 12437,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC09": [
+    {
+      "text": "再看紫色与绿色。",
+      "startMs": 70,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "在 x 坐标零处，高度都是二，",
+      "startMs": 1899,
+      "endMs": 4788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "交点记作 Q。",
+      "startMs": 5068,
+      "endMs": 6748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它也在两份闭范围内。",
+      "startMs": 7209,
+      "endMs": 8889,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两个交点同列，但高度不同，",
+      "startMs": 9379,
+      "endMs": 11988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "是两个位置。",
+      "startMs": 12298,
+      "endMs": 13378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC10": [
+    {
+      "text": "蓝色与绿色在 x 坐标二处，",
+      "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高度都是零，交点记作 R。",
+      "startMs": 2878,
+      "endMs": 5978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "二也在两份闭范围内。",
+      "startMs": 6479,
+      "endMs": 8279,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这是右方的第三个真实交点。",
+      "startMs": 8759,
+      "endMs": 10919,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC11": [
+    {
+      "text": "橙色与紫色的直线交于点 (-2,0)，",
+      "startMs": 70,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "但负二小于左端的负一。",
+      "startMs": 3378,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "只有延长线在那里相交，",
+      "startMs": 5819,
+      "endMs": 7778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两条线段没有交集。",
+      "startMs": 8068,
+      "endMs": 9868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC12": [
+    {
+      "text": "蓝色与紫色的斜率同为一，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "常数项不同。",
+      "startMs": 2228,
+      "endMs": 3468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "橙色与绿色的斜率同为负一，",
+      "startMs": 3919,
+      "endMs": 6500,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "常数项也不同。",
+      "startMs": 6668,
+      "endMs": 7908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这两对分别平行且不同，",
+      "startMs": 8359,
+      "endMs": 10359,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "交集为空。",
+      "startMs": 10658,
+      "endMs": 11818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC13": [
+    {
+      "text": "六个无序输入对已全部核对，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "只有刚才的三个点结果。",
+      "startMs": 2378,
+      "endMs": 4190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里提前核对几何事实；",
+      "startMs": 4519,
+      "endMs": 6279,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "扫描何时发现、何时报告，",
+      "startMs": 6618,
+      "endMs": 8458,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "还要跟随下面的事件过程。",
+      "startMs": 8738,
+      "endMs": 10818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC14": [
+    {
+      "text": "所有端点预先登记。",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "事件先按 x 坐标从小到大取出，",
+      "startMs": 2149,
+      "endMs": 5470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同列再按 y 坐标从低到高。",
+      "startMs": 5648,
+      "endMs": 8007,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "左端点都在 x 坐标负一这一列，",
+      "startMs": 8439,
+      "endMs": 10999,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先到高度负三，蓝色输入加入原本为空的顺序。",
+      "startMs": 11288,
+      "endMs": 15508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC15": [
+    {
+      "text": "再到高度负一，橙色输入加入蓝色上方，",
+      "startMs": 70,
+      "endMs": 3828,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两者成为邻居。",
+      "startMs": 4098,
+      "endMs": 5400,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "检查得到低处真实交点，",
+      "startMs": 5689,
+      "endMs": 7769,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "于是登记 P，等待到站。",
+      "startMs": 8128,
+      "endMs": 10918,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这时还不报告交集。",
+      "startMs": 11399,
+      "endMs": 13160,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC16": [
+    {
+      "text": "到高度一，紫色输入加入橙色上方。",
+      "startMs": 70,
+      "endMs": 3348,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新邻居的候选 x 坐标是负二，",
+      "startMs": 3819,
+      "endMs": 6259,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "已被闭范围排除，不登记。",
+      "startMs": 6568,
+      "endMs": 9188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC17": [
+    {
+      "text": "到高度三，绿色输入加入紫色上方。",
+      "startMs": 70,
+      "endMs": 3467,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处这一对成为邻居，",
+      "startMs": 3919,
+      "endMs": 5519,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "登记 Q。",
+      "startMs": 5918,
+      "endMs": 7398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "四次开始在不同位置分别完成，",
+      "startMs": 7859,
+      "endMs": 10299,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "端点彼此不接触。",
+      "startMs": 10608,
+      "endMs": 12168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC18": [
+    {
+      "text": "旁边的竖列从下向上读，",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "表示维护的顺序，不表示线段移到了新坐标。",
+      "startMs": 2528,
+      "endMs": 6508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "此时蓝色最低，橙色在它上方，",
+      "startMs": 6939,
+      "endMs": 9818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再上面是紫色和绿色。",
+      "startMs": 10108,
+      "endMs": 11868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色与绿色中间还有成员，",
+      "startMs": 12299,
+      "endMs": 14499,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "尚未由邻接发现右方交点。",
+      "startMs": 14798,
+      "endMs": 17037,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC19": [
+    {
+      "text": "全部端点在 x 坐标负一或三，",
+      "startMs": 110,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "真实交点的 x 坐标只有零与二。",
+      "startMs": 2978,
+      "endMs": 5458,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此从负一到零之间没有事件。",
+      "startMs": 5919,
+      "endMs": 8399,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "由第二章《为什么不会漏掉交点》的无事件不换序结论，",
+      "startMs": 8889,
+      "endMs": 12728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "刚才的顺序保持到零这一列左侧。",
+      "startMs": 13038,
+      "endMs": 15678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC20": [
+    {
+      "text": "同列的低处交点先到，",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处交点后到。",
+      "startMs": 2078,
+      "endMs": 3438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "现在取出 P，只找高度负二的参与者；",
+      "startMs": 3869,
+      "endMs": 8000,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处的预约继续保留。",
+      "startMs": 8138,
+      "endMs": 9898,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC21": [
+    {
+      "text": "在 P，蓝色与橙色的高度都是负二，",
+      "startMs": 70,
+      "endMs": 3778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先报告这一对的完整交集。",
+      "startMs": 4048,
+      "endMs": 6048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色与绿色在高度二，",
+      "startMs": 6489,
+      "endMs": 8249,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不经过当前点，不参加这次处理。",
+      "startMs": 8538,
+      "endMs": 11390,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC22": [
+    {
+      "text": "蓝色和橙色都严格穿过，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "报告后继续。",
+      "startMs": 2228,
+      "endMs": 3428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "橙色斜率为负一，蓝色为一，",
+      "startMs": 3869,
+      "endMs": 6850,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "按右侧斜率从小到大排列，",
+      "startMs": 7138,
+      "endMs": 9417,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "低处块改为橙色在下、蓝色在上。",
+      "startMs": 9708,
+      "endMs": 12708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC23": [
+    {
+      "text": "看局部枝条：低处显示处理后的右侧，",
+      "startMs": 70,
+      "endMs": 3287,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处仍显示处理前的左侧。",
+      "startMs": 3598,
+      "endMs": 5678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "顺序竖列里只交换低处两份，",
+      "startMs": 6139,
+      "endMs": 8418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色仍在绿色下方。",
+      "startMs": 8738,
+      "endMs": 10338,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这就是两次事件之间的中间状态。",
+      "startMs": 10779,
+      "endMs": 13299,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC24": [
+    {
+      "text": "如果把整条扫描线移到零的右侧，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处也会变成绿色在下、紫色在上。",
+      "startMs": 2828,
+      "endMs": 5428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "但我们尚未取出 Q，",
+      "startMs": 5869,
+      "endMs": 7949,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不能把它的更新当作已经完成。",
+      "startMs": 8268,
+      "endMs": 10547,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前状态不能画成整列右侧状态。",
+      "startMs": 11009,
+      "endMs": 13768,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC25": [
+    {
+      "text": "低处更新后，新的边界邻居是蓝色与紫色。",
+      "startMs": 70,
+      "endMs": 3717,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它们平行，不登记新交点。",
+      "startMs": 4169,
+      "endMs": 6828,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处两份仍然相邻，已有的 Q 预约继续保留。",
+      "startMs": 7259,
+      "endMs": 11438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC26": [
+    {
+      "text": "下一次取出 Q，找齐紫色和绿色，",
+      "startMs": 70,
+      "endMs": 3598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "报告这一对对应的高处交点。",
+      "startMs": 3898,
+      "endMs": 5978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "低处已经处理好的两份保持原状态。",
+      "startMs": 6439,
+      "endMs": 8999,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC27": [
+    {
+      "text": "绿色斜率为负一，紫色为一，",
+      "startMs": 110,
+      "endMs": 2930,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "右侧绿色在下、紫色在上。",
+      "startMs": 3048,
+      "endMs": 5248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "完成高处更新后，从下向上是橙色、蓝色、绿色、紫色。",
+      "startMs": 5689,
+      "endMs": 10578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC28": [
+    {
+      "text": "高处块的下边界发生变化：",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "绿色现在紧挨着蓝色，",
+      "startMs": 2468,
+      "endMs": 4068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两者中间没有别的成员。",
+      "startMs": 4348,
+      "endMs": 6228,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这个新邻接需要检查。",
+      "startMs": 6689,
+      "endMs": 8369,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC29": [
+    {
+      "text": "这对线段在右方相交，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "交点用 R 表示。",
+      "startMs": 2228,
+      "endMs": 3628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的 x 坐标二大于当前位置的零，",
+      "startMs": 4069,
+      "endMs": 6828,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此现在登记。",
+      "startMs": 7168,
+      "endMs": 8408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "发现是确认真实交点，",
+      "startMs": 8859,
+      "endMs": 10739,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "登记是把位置留在待处理清单；",
+      "startMs": 11058,
+      "endMs": 13417,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "报告要等到到站、找齐参与者之后。",
+      "startMs": 13678,
+      "endMs": 16358,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC30": [
+    {
+      "text": "如果再次发现清单里已有的同一位置，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "就保留原记录，不多登记一份。",
+      "startMs": 2878,
+      "endMs": 5678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前相遇块内部已经相交，",
+      "startMs": 6139,
+      "endMs": 8418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也不能把当前位置重新预约为未来。",
+      "startMs": 8788,
+      "endMs": 11388,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC31": [
+    {
+      "text": "接下来到 R，蓝色与绿色都经过这个点，",
+      "startMs": 70,
+      "endMs": 3778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "报告它们这一对。",
+      "startMs": 4048,
+      "endMs": 5250,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "低处的橙色和高处的紫色不是当前参与者。",
+      "startMs": 5589,
+      "endMs": 8800,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC32": [
+    {
+      "text": "绿色斜率较小，在右侧排在蓝色下方。",
+      "startMs": 110,
+      "endMs": 3608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "于是最低仍是橙色，中间先绿色再蓝色，",
+      "startMs": 4069,
+      "endMs": 7548,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "最高仍是紫色。",
+      "startMs": 7838,
+      "endMs": 9038,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两侧的新邻居各是一对平行线，",
+      "startMs": 9479,
+      "endMs": 11959,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "没有新交点。",
+      "startMs": 12278,
+      "endMs": 13358,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC33": [
+    {
+      "text": "到 x 坐标三这一列，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先处理高度负五的橙色右端点。",
+      "startMs": 2128,
+      "endMs": 4728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里没有别的参与者，",
+      "startMs": 5219,
+      "endMs": 6850,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不产生新的输入对；",
+      "startMs": 7018,
+      "endMs": 8338,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "完成当前点处理后，橙色退出。",
+      "startMs": 8638,
+      "endMs": 11870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处三份还在等待。",
+      "startMs": 12199,
+      "endMs": 13719,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC34": [
+    {
+      "text": "再到高度负一的绿色右端点，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "完成这次端点处理后，",
+      "startMs": 2578,
+      "endMs": 4498,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "绿色退出。",
+      "startMs": 4798,
+      "endMs": 6010,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色与紫色仍保留到各自的位置。",
+      "startMs": 6339,
+      "endMs": 9019,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC35": [
+    {
+      "text": "随后到高度一，蓝色退出。",
+      "startMs": 70,
+      "endMs": 2738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "最后到高度五，紫色退出。",
+      "startMs": 3219,
+      "endMs": 5970,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "四个右端点分四次处理，",
+      "startMs": 6359,
+      "endMs": 8630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "顺序才变为空。",
+      "startMs": 8848,
+      "endMs": 10168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC36": [
+    {
+      "text": "结果与最开始的六对核对一致：",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色与橙色对应低处交点，",
+      "startMs": 2378,
+      "endMs": 4697,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色与绿色对应高处交点，",
+      "startMs": 4998,
+      "endMs": 7158,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色与绿色对应右方交点。",
+      "startMs": 7418,
+      "endMs": 9657,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "三对各报告一次，其余三对为空。",
+      "startMs": 10109,
+      "endMs": 12898,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC37": [
+    {
+      "text": "回看低处交点刚处理完的时刻。",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处交点虽然 x 坐标同为零，",
+      "startMs": 2999,
+      "endMs": 5838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "却还没处理，仍在未来。",
+      "startMs": 6148,
+      "endMs": 8468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "只要求候选 x 坐标严格更大，",
+      "startMs": 8909,
+      "endMs": 11268,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "就会把它错误排除。",
+      "startMs": 11608,
+      "endMs": 13168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC38": [
+    {
+      "text": "现在写出通用比较。",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "把当前位置记作 E，",
+      "startMs": 2099,
+      "endMs": 4179,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的 x 坐标记作 t，",
+      "startMs": 4498,
+      "endMs": 6777,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "y 坐标记作 h。",
+      "startMs": 7068,
+      "endMs": 9467,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "左图转为不指定数值的一般位置示意。",
+      "startMs": 9909,
+      "endMs": 12788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC39": [
+    {
+      "text": "把已经确认真实的候选位置记作 F，",
+      "startMs": 70,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的 x 坐标是 u，",
+      "startMs": 3918,
+      "endMs": 5958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "y 坐标是 v。",
+      "startMs": 6248,
+      "endMs": 8248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这两套记号用于一般比较，",
+      "startMs": 8739,
+      "endMs": 10659,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不改变案例中三个交点的名称。",
+      "startMs": 10988,
+      "endMs": 13387,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC40": [
+    {
+      "text": "第一种未来位置在当前列右方，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "候选 x 坐标严格大于当前 x 坐标。",
+      "startMs": 2628,
+      "endMs": 5788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这时不论候选高度更低还是更高，",
+      "startMs": 6219,
+      "endMs": 8978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "都在后面处理。",
+      "startMs": 9268,
+      "endMs": 10508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC41": [
+    {
+      "text": "第二种未来位置与当前点同列，",
+      "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "x 坐标相等，但候选的 y 坐标严格更大，",
+      "startMs": 2928,
+      "endMs": 7298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也就是同列更高。",
+      "startMs": 7568,
+      "endMs": 9008,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两种情况用“或”连接，",
+      "startMs": 9459,
+      "endMs": 11259,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这就是完整位置的严格未来条件。",
+      "startMs": 11608,
+      "endMs": 14168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC42": [
+    {
+      "text": "两个坐标都相等，是同一个位置，",
+      "startMs": 70,
+      "endMs": 2838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "统一处理，不再预约。",
+      "startMs": 3148,
+      "endMs": 5430,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "候选在左方，或同列但更低，",
+      "startMs": 5759,
+      "endMs": 8710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "都已经经过，也不预约。",
+      "startMs": 8878,
+      "endMs": 11300,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不能只把 x 坐标条件放宽成大于或等于。",
+      "startMs": 11639,
+      "endMs": 15079,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC43": [
+    {
+      "text": "本集从同列开始、低处与高处交叉，",
+      "startMs": 70,
+      "endMs": 3290,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "走到新邻居发现右方交点，",
+      "startMs": 3478,
+      "endMs": 5757,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再逐点退出。",
+      "startMs": 6048,
+      "endMs": 7410,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "关键是同列从低到高，",
+      "startMs": 7789,
+      "endMs": 9629,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "每次只更新当前块，其他位置保留各自的处理进度。",
+      "startMs": 9938,
+      "endMs": 14158,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "SC44": [
+    {
+      "text": "四线段案例展示了规则，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "还没有证明所有允许输入都成立。",
+      "startMs": 2328,
+      "endMs": 4727,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "下集解释中间状态为什么仍能定位参与者、发现后续事件，",
+      "startMs": 5169,
+      "endMs": 9769,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再把同线组的覆盖与报告接回来。",
+      "startMs": 10068,
+      "endMs": 12628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ]
+}
