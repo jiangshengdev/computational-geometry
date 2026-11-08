@@ -49,6 +49,14 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 
 文案、读音与独立对齐的权威审核记录归 [#347](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/347)。类型、内容与布局检查分别只证明对应范围；文本、实际发音、音画同步和真实成片验收分开记录。
 
+## 配音请求准备
+
+配音同步阶段对应 [#348](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/348)。`src/sentence-plan.json` 将全部 54 段的原始字幕语义句对应到冻结口播短句：177 个原句末请求 400ms，199 个句内边界请求 200ms。`scripts/sentence-plan.ts` 复用共享 `createSentencePlanTools`；其 `updateSentencePauses(true)` 只重建显式停顿，保留文字及读音对象，`checkSentencePlan` 已接入内容检查。
+
+`video:plan-narration --dry-run` 复用共享 `planBatch`，输出每段完整口播、SSML、请求指纹、停顿位置及格式；不读取凭据、不请求服务、不写音频或时间数据。当前计划包含 OD01–OD54 共 54 次合成，采用 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural` 和 `riff-48khz-16bit-mono-pcm`，不设置语速，自动重试为零。修改字幕、口播、读音或分句后须重新校验并生成计划。
+
+本次准备保持 #347 放行的字幕与冻结口播不变，读音对象也原样保留。独立规范审查及全部 177 个原句的语义映射审查未发现问题；ESLint、TypeScript、内容检查、格式检查和共享句界模块的 4 项既有测试通过。这些仅证明离线请求准备，不证明音频听感或同步。本集尚未请求合成服务；完整请求计划须按执行票确认后再进入正式合成。
+
 ## 制作与导出
 
 遵循[视频工程规则](../../AGENTS.md)与[工程操作说明](../../../docs/agents/videos/operations.md)。浏览器必须匹配本集 Remotion 指定的 Chrome Headless Shell；使用前单独核验，不自动下载。

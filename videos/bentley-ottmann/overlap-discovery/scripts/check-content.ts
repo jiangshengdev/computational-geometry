@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "../../../shared/speech/azure-speech.ts";
+import { checkSentencePlan } from "./sentence-plan.ts";
 import { pageList, shots } from "../src/storyboard.ts";
 import { inputs, type Name } from "../src/example.ts";
 import {
@@ -92,6 +93,7 @@ if (existsSync(speechFile)) {
   assert.deepEqual(Object.keys(speech), Object.keys(narration));
   for (const id of Object.keys(narration)) {
     assert.equal(buildSpeechDocument(speech[id]).text, narration[id]);
+    checkSentencePlan(speech[id], narration[id], id);
     assert.equal(
       speech[id]
         .map((part) => (typeof part === "string" ? part : part.text))
