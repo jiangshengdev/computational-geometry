@@ -1,6 +1,6 @@
 # 第五章下集工程
 
-本集由 Remotion Blank 模板创建，配置参考 `same-point-updates`。需求以 [#343](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/343) 和 [#347](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/347) 为准。
+本集由 Remotion Blank 模板创建，配置参考 `same-point-updates`。需求以 [#343](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/343)、文案画面票 [#347](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/347) 和配音同步票 [#348](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/348) 为准。
 
 ## 当前配置
 
@@ -15,17 +15,21 @@
 
 在本集目录执行 `pnpm --config.verify-deps-before-run=false run lint`，进行 ESLint 与 TypeScript 检查；执行 `pnpm --config.verify-deps-before-run=false run build` 只进行打包，不渲染视频。
 
-已接入完整字幕分镜、独立口播和教学画面，共 54 个稳定步骤（`OD01`–`OD54`）。本阶段只提供无声检查时间窗，`timingKind` 为 `silent-inspection-only`；没有正式音频或实测同步，暂定总时长不代表成片长度。上集当前版本的导出命令已经交付，下集承接其正式报告规则与“x 坐标／y 坐标”读法。
+已接入完整字幕分镜、独立口播、教学画面与 54 段原速 PCM WAV（`OD01`–`OD54`）。`timingKind` 为 `measured-narration`，原无声估算窗口已退出播放与检查路径。配音总长 913.1375 秒；加上引入、思考和页末停留，时间线共 62374 帧，即 17 分 19.57 秒。上集当前版本的导出命令已经交付，下集承接其正式报告规则与“x 坐标／y 坐标”读法。
 
-| 入口                       | 职责                                                     |
-| -------------------------- | -------------------------------------------------------- |
-| `src/storyboard.ts`        | 字幕原稿、教学行、首次对象、画面任务、来源与前置复用位置 |
-| `src/narration-text.json`  | 独立口语稿；先审校字幕，再派生并独立审校                 |
-| `src/speech-text.json`     | 保持冻结全文的局部读音标注；不代表实际配音验收           |
-| `src/example.ts`           | 两个独立案例的精确输入与对象颜色                         |
-| `src/DiscoveryDiagram.tsx` | 连续覆盖、延长、空隙、组层顺序与首次足够的教学示意       |
-| `src/timeline.ts`          | 无声阅读时间窗、语义切换、字幕保留、页末三秒及思考八秒   |
-| `src/LayoutCheck.tsx`      | 使用实际生产页面检查字幕、正文、标签及切换状态           |
+| 入口                             | 职责                                                           |
+| -------------------------------- | -------------------------------------------------------------- |
+| `src/storyboard.ts`              | 字幕原稿、教学行、首次对象、画面任务、来源与前置复用位置       |
+| `src/narration-text.json`        | 独立口语稿；先审校字幕，再派生并独立审校                       |
+| `src/speech-text.json`           | 保持冻结全文的局部读音标注；不代表实际配音验收                 |
+| `src/example.ts`                 | 两个独立案例的精确输入与对象颜色                               |
+| `src/DiscoveryDiagram.tsx`       | 连续覆盖、延长、空隙、组层顺序与首次足够的教学示意             |
+| `src/timeline.ts`                | 实测音频时间窗、语义切换、字幕保留、页末三秒及思考八秒         |
+| `src/LayoutCheck.tsx`            | 使用实际生产页面检查字幕、正文、标签及切换状态                 |
+| `public/narration/`              | 服务返回的 54 段完整原速 WAV                                   |
+| `src/audio-timing.json`          | 音频哈希、请求指纹、原始识别评估及实测词时间                   |
+| `src/captions.json`              | 从字幕原稿和实测词时间生成的字幕                               |
+| `assets/narration-requests.json` | 原始合成请求日志；保留当时暂存状态，当前采用状态以正式素材为准 |
 
 内容检查和布局检查分别运行：
 
@@ -45,7 +49,7 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 - `same-point-updates` 的左右顺序、块外关系和新邻接分类只引用适用结论；本集补充分组后的条件。`overlap-reporting` 的完整报告规则只用于承接。
 - 页面沿用两集实际采用的 `MathLessonPage`、`TeachingReferences`、`TeachingMathLines` 与 `SemanticMathText`：显式左图右文、依据静态、中性字幕、正文对象色和局部重点色；不依赖相邻工程的内容或素材。
 - 几何图使用等单位坐标，重叠成员分图显示。一般覆盖图按身份分行，明确不表示几何高度。无事件间隙、连续块及覆盖阈值图均为教学示意，不是真实执行轨迹。
-- 字幕短句复用共享分句与组句能力，保留所有原始标点；同页新步骤引入前保留上一步末条字幕。教学行完整显示后开始检查时间窗，步骤累积保留。语义切换绑定具体字幕短语，正式音频阶段再按实测时间映射。
+- 字幕短句复用共享分句与组句能力，保留所有原始标点；同页新步骤引入前保留上一步末条字幕。教学行完整显示后开始完整原速音频，步骤累积保留。语义切换绑定对应口播短语的实测词时间，不按字数插值估算。
 
 文案、读音与独立对齐的权威审核记录归 [#347](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/347)。类型、内容与布局检查分别只证明对应范围；文本、实际发音、音画同步和真实成片验收分开记录。
 
@@ -55,13 +59,21 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 
 `video:plan-narration --dry-run` 复用共享 `planBatch`，输出每段完整口播、SSML、请求指纹、停顿位置及格式；不读取凭据、不请求服务、不写音频或时间数据。当前计划包含 OD01–OD54 共 54 次合成，采用 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural` 和 `riff-48khz-16bit-mono-pcm`，不设置语速，自动重试为零。修改字幕、口播、读音或分句后须重新校验并生成计划。
 
-本次准备保持 #347 放行的字幕与冻结口播不变，读音对象也原样保留。独立规范审查及全部 177 个原句的语义映射审查未发现问题；ESLint、TypeScript、内容检查、格式检查和共享句界模块的 4 项既有测试通过。这些仅证明离线请求准备，不证明音频听感或同步。本集尚未请求合成服务；完整请求计划须按执行票确认后再进入正式合成。
+正式合成沿用已确认计划，SHA-256 为 `0579cb4e9d8c82bfd469f1bc0c5a3c705dbd6ee4bd24ad4a94ee1cfef4d7a355`，保持 #347 放行的字幕、冻结口播和读音对象不变。54 次合成均成功并完成格式、解码与哈希核对，无失败或重试。共享合成入口按端点主机持久计数、独占执行，滚动 60 秒最多发起 20 次请求；区域端点的不同资源保守合并计数，本机其他未使用该入口的客户端或其他设备不在本地锁控制范围。已发出的请求全部结束后才释放锁，续跑不重放已开始或结果未知的请求。识别评估串行执行，遵守 F0 一路并发。
+
+`video:adopt-measured-audio` 复用共享 `adoptBatch` 和 `verifyBatch`，整批离线校验成功后采用；`video:check-audio` 无需凭据，不请求语音服务，核对当前音频、请求、原始评估和字幕。OD04、OD05、OD09、OD10、OD40 的数学定义展开及 OD46 的因果短句使用显式字幕映射，不修改字幕原文或伪造词时间。
+
+当前评估覆盖 54/54 段，原始程序标记分别为 `Omission=0`、`Insertion=0`、`Mispronunciation=40`，没有请求失败或缺失结果。发音标记保留为待听辨，不等于已经确认的错读。制作过程中未试听；实际整集听辨、用户导出后的音画同步和真实成片验收尚未完成。
+
+实测接入后，ESLint、TypeScript、内容与完整音频校验通过；生产布局覆盖全部 54 段、2196 个状态。独立规范与规格审查没有未解决问题；独立无声页面观察覆盖 OD20 条件与预约、OD24→25 空组保持、OD28→29 空隙、OD37→38 边界与明确回看、OD47 首次足够的开始、中间、结束及相邻片段状态。上述证据不替代实际听辨、可见桌面或真实成片验收。
 
 ## 制作与导出
 
 遵循[视频工程规则](../../AGENTS.md)与[工程操作说明](../../../docs/agents/videos/operations.md)。浏览器必须匹配本集 Remotion 指定的 Chrome Headless Shell；使用前单独核验，不自动下载。
 
-正式导出须在后续阶段完成相应检查并接入项目五阶段模板，由用户执行；本工程目前不提供导出命令。配音沿用项目默认音色与原始语速，在获得相应授权和通过门禁后接入。
+已接入项目五阶段模板：`video:preflight` 为独立内容、解码及生产布局检查；`video:export` 导出 `OverlapDiscovery` 的 PNG；`video:export-audio` 导出同时间线 PCM WAV。两项导出入口由用户执行，使用系统分配的独立端口，不复用 Studio 端口，不覆盖既有输出。助手只检查 `--dry-run` 参数，不执行导出。
+
+PNG 目录为 `out/overlap-discovery-frames/`，音轨为 `out/overlap-discovery-audio.wav`。本机核验的 Remotion `4.0.540` 指定 Chrome Headless Shell `158.0.8127.2`；运行前设置匹配的 `REMOTION_BROWSER_EXECUTABLE`。导出命令按[五阶段模板](../../../docs/agents/videos/operations.md#五阶段命令模板)提供，PNG 编码前仍须核对实际帧编号、数量与图像；无声 H.265 与同时间线 PCM 检查通过后再复制流合并 MOV。可导出工程、实际听辨与真实成片验收分别记录，不以自动检查替代未执行的验收。
 
 ## Remotion 许可
 

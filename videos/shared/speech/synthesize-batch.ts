@@ -18,6 +18,7 @@ import {
 } from "./audio.ts";
 import { synthesisFormat } from "./source.ts";
 import type { buildBatchPlan } from "./plan-batch.ts";
+import { acquireSynthesisWindow } from "./request-window.ts";
 
 export async function synthesizeBatch(
   sdk: typeof SpeechSdk,
@@ -34,8 +35,8 @@ export async function synthesizeBatch(
     ? Number(concurrencyArgs[0].slice("--concurrency=".length))
     : defaultConcurrency;
   assert(
-    Number.isInteger(concurrency) && concurrency >= 1 && concurrency <= 4,
-    "Synthesis concurrency must be an integer from 1 to 4",
+    Number.isSafeInteger(concurrency) && concurrency >= 1,
+    "Synthesis concurrency must be a positive safe integer",
   );
   const flags = ["--continue-unstarted", "--dry-run"];
   for (const flag of flags)
@@ -278,15 +279,34 @@ export async function synthesizeBatch(
         );
       }
     };
-    // Settle every in-flight request before releasing the lock or reporting a
-    // failure. A failed wave never starts the next wave or retries a request.
-    for (let index = 0; index < selected.length; index += concurrency) {
-      const results = await Promise.allSettled(
-        selected.slice(index, index + concurrency).map(produce),
-      );
-      const failure = results.find((result) => result.status === "rejected");
-      if (failure?.status === "rejected") throw failure.reason;
+    const window = acquireSynthesisWindow(process.env.AZURE_SPEECH_ENDPOINT!);
+    const active = new Set<Promise<void>>();
+    let failure: unknown;
+    try {
+      for (const doc of selected) {
+        while (
+          !failure &&
+          (active.size >= concurrency || window.delay(Date.now()) > 0)
+        ) {
+          await Promise.race([
+            ...active,
+            new Promise<void>((resolve) => setTimeout(resolve, 250)),
+          ]);
+        }
+        if (failure) break;
+        window.record(Date.now());
+        const pending = produce(doc)
+          .catch((error: unknown) => {
+            failure ??= error;
+          })
+          .finally(() => active.delete(pending));
+        active.add(pending);
+      }
+    } finally {
+      await Promise.allSettled(active);
+      window.release();
     }
+    if (failure) throw failure;
     console.log(
       `Staged ${manifest.requests.filter((record) => record.status === "synthesized-and-decoded").length}/${manifest.requests.length} complete original WAV files: ${output}; not adopted or listened; unresolved requests are preserved`,
     );

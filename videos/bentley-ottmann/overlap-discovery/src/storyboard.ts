@@ -26,7 +26,7 @@ const page = (p: Page) => ({
   holdAfterSeconds: 3,
 });
 
-/** Subtitle master. This phase uses silent inspection windows, never measured speech. */
+/** Reviewed subtitle master; speech and measured timings remain separate sources. */
 export const pageList = [
   page({
     id: "scope",

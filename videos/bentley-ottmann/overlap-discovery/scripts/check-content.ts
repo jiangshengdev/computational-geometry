@@ -3,6 +3,7 @@ import { readFileSync, existsSync } from "node:fs";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "../../../shared/speech/azure-speech.ts";
 import { checkSentencePlan } from "./sentence-plan.ts";
+import { checkAudio } from "./check-audio.ts";
 import { pageList, shots } from "../src/storyboard.ts";
 import { inputs, type Name } from "../src/example.ts";
 import {
@@ -11,6 +12,7 @@ import {
   fps,
   audioLeadFrames,
   timingKind,
+  audio,
 } from "../src/timeline.ts";
 
 // Independent arithmetic checks for the two article cases, not a sweep engine.
@@ -46,7 +48,8 @@ assert.deepEqual(
   shots.map((s) => s.id),
 );
 assert.equal(new Set(shots.map((s) => s.id)).size, shots.length);
-assert.equal(timingKind, "silent-inspection-only");
+assert.equal(timingKind, "measured-narration");
+const audioCheck = checkAudio(process.argv.includes("--decode"));
 for (const [i, row] of rows.entries()) {
   assert.equal(
     row.from,
@@ -70,7 +73,27 @@ for (const [i, row] of rows.entries()) {
     );
   assert.equal(
     row.durationInFrames,
-    audioLeadFrames + row.readingFrames + row.pauseAfter * fps,
+    audioLeadFrames + row.speechFrames + row.pauseAfter * fps,
+  );
+  assert.equal(row.speechFrames, Math.ceil(audio[row.id].duration * fps));
+  assert(
+    row.durationInFrames >= audioLeadFrames + audio[row.id].duration * fps,
+  );
+  assert(
+    row.captions[0].start >= audioLeadFrames,
+    `${row.id}: captions precede audio`,
+  );
+  assert(
+    row.captions[row.captions.length - 1].end <=
+      audioLeadFrames + row.speechFrames,
+  );
+  assert(
+    row.phaseStarts.every(
+      (start, index) =>
+        start >= audioLeadFrames &&
+        start < audioLeadFrames + row.speechFrames &&
+        (index === 0 || start >= row.phaseStarts[index - 1]),
+    ),
   );
   assert(!/[\u3400-\u9fff]\s+[\u3400-\u9fff]/u.test(narration[row.id]));
   for (const sentence of narration[row.id].split(/[。！？]/).filter(Boolean))
@@ -104,5 +127,5 @@ if (existsSync(speechFile)) {
   }
 } else throw Error("Missing reviewed pronunciation source");
 console.log(
-  `PASS: ${pageList.length} pages, ${shots.length} shots; both independent article cases, subtitle continuity, page holds, frozen speech binding. Silent inspection only.`,
+  `PASS: ${pageList.length} pages, ${shots.length} shots; both independent article cases, measured subtitle continuity, full original audio, page holds, frozen speech binding. ${JSON.stringify(audioCheck)}`,
 );

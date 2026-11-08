@@ -1,0 +1,2315 @@
+{
+  "OD01": [
+    {
+      "text": "上集说明了到站后怎样报告完整结果。",
+      "startMs": 70,
+      "endMs": 3060,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本集接着研究：覆盖变化以后，",
+      "startMs": 3399,
+      "endMs": 6368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "怎样保证未来交点仍然会被发现？",
+      "startMs": 6668,
+      "endMs": 8868,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD02": [
+    {
+      "text": "继续允许重叠、同点事件和点输入。",
+      "startMs": 70,
+      "endMs": 3110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍保留两项条件：非零输入不竖直，",
+      "startMs": 3499,
+      "endMs": 6678,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不同事件位置的 x 坐标各异。",
+      "startMs": 6968,
+      "endMs": 9408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "事件位置包括端点与不同所在直线上的实际交点。",
+      "startMs": 9859,
+      "endMs": 13738,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "重叠区间内每个点不各自成为事件。",
+      "startMs": 14229,
+      "endMs": 17269,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD03": [
+    {
+      "text": "把当前事件的 x 坐标记作 t，",
+      "startMs": 70,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取一个更新后仍非空的组，",
+      "startMs": 3428,
+      "endMs": 5660,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 G_a。",
+      "startMs": 5798,
+      "endMs": 7500,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图中各行是同一条直线上不同成员的独立范围示意，",
+      "startMs": 7839,
+      "endMs": 11718,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "共用一条 x 方向刻度。",
+      "startMs": 12038,
+      "endMs": 14078,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "上下分行只为分清身份，",
+      "startMs": 14529,
+      "endMs": 16768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不表示几何高度不同。",
+      "startMs": 17078,
+      "endMs": 18758,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这是一般论证，没有指定数值。",
+      "startMs": 19219,
+      "endMs": 21858,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD04": [
+    {
+      "text": "对任意当前成员，",
+      "startMs": 110,
+      "endMs": 1550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用 l_i 和 r_i 分别表示它的左、右端 x 坐标。",
+      "startMs": 1628,
+      "endMs": 7247,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "更新后的成员已经开始，",
+      "startMs": 7689,
+      "endMs": 9560,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而且还向右继续，所以左端不大于当前位置，",
+      "startMs": 9738,
+      "endMs": 13597,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "当前位置严格小于右端。",
+      "startMs": 13878,
+      "endMs": 16038,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD05": [
+    {
+      "text": "把这些右端 x 坐标的最大值记作 R_{G_a}，",
+      "startMs": 70,
+      "endMs": 5778,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "称为当前最远右端。",
+      "startMs": 6048,
+      "endMs": 7688,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "成员有限且非空，必有一份成员真的取得这个最大值。",
+      "startMs": 8139,
+      "endMs": 12790,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "把这份成员记作 S_j。",
+      "startMs": 13129,
+      "endMs": 15968,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD06": [
+    {
+      "text": "任取从当前位置到最远右端之间的一个 x 坐标，",
+      "startMs": 70,
+      "endMs": 4070,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 u。",
+      "startMs": 4278,
+      "endMs": 5558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取得最远右端的那份成员不晚于当前位置就已开始，",
+      "startMs": 6019,
+      "endMs": 10090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并一直延伸到这个最远右端。",
+      "startMs": 10268,
+      "endMs": 12547,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD07": [
+    {
+      "text": "因此，所选位置就在这份成员的闭范围内。",
+      "startMs": 40,
+      "endMs": 3824,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "从当前位置到最远右端的每一个位置都如此，",
+      "startMs": 4136,
+      "endMs": 7540,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "整段连续被覆盖，中间没有空隙。",
+      "startMs": 7735,
+      "endMs": 10595,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD08": [
+    {
+      "text": "反过来，如果所选位置超过最远右端，",
+      "startMs": 70,
+      "endMs": 3368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它就超过每份当前成员的右端。",
+      "startMs": 3648,
+      "endMs": 5927,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有任何当前成员能覆盖那里。",
+      "startMs": 6389,
+      "endMs": 8700,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD09": [
+    {
+      "text": "再取相邻的非空组 G_b，",
+      "startMs": 70,
+      "endMs": 4098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它的当前最远右端记作 R_{G_b}。",
+      "startMs": 4398,
+      "endMs": 9428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "相邻是指活动组顺序中间没有别的组。",
+      "startMs": 9859,
+      "endMs": 13060,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两组分别保留自己的覆盖上限。",
+      "startMs": 13379,
+      "endMs": 15618,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD10": [
+    {
+      "text": "若两条固定直线平行且不同，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就没有候选交点。",
+      "startMs": 2578,
+      "endMs": 4058,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "否则沿用第三章的精确判断，",
+      "startMs": 4519,
+      "endMs": 6599,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "求得唯一候选点 Q。",
+      "startMs": 6918,
+      "endMs": 10328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用 x_Q 和 y_Q 分别表示它的 x 坐标与 y 坐标。",
+      "startMs": 10779,
+      "endMs": 16538,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD11": [
+    {
+      "text": "只有三个条件同时成立才预约：",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "候选严格在当前右侧；",
+      "startMs": 2678,
+      "endMs": 4558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第一组覆盖它；",
+      "startMs": 4848,
+      "endMs": 6090,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第二组也覆盖它。",
+      "startMs": 6268,
+      "endMs": 7670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后两个条件各保证一份真实成员包含候选点，",
+      "startMs": 7959,
+      "endMs": 11559,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这是真实输入交点。",
+      "startMs": 11858,
+      "endMs": 13618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于某组最远右端仍满足闭端点条件。",
+      "startMs": 14049,
+      "endMs": 17249,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "等于当前位置则不是严格未来。",
+      "startMs": 17769,
+      "endMs": 20289,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只检查一组的覆盖不够。",
+      "startMs": 20789,
+      "endMs": 22549,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD12": [
+    {
+      "text": "发现位置时，用两条固定直线与各自当前最远右端就够了。",
+      "startMs": 70,
+      "endMs": 4860,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到站以后，再按那时的实际成员展开全部跨组输入对。",
+      "startMs": 5219,
+      "endMs": 9807,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "并不是每份成员都能到达最远处。",
+      "startMs": 10259,
+      "endMs": 12770,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD13": [
+    {
+      "text": "沿用前章的清单规则：",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "真实未来位置一经预约，",
+      "startMs": 2078,
+      "endMs": 4060,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就继续保留。",
+      "startMs": 4248,
+      "endMs": 5208,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "后来换了邻居，也不取消。",
+      "startMs": 5639,
+      "endMs": 8138,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到站时重新找齐参与者。",
+      "startMs": 8579,
+      "endMs": 10499,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD14": [
+    {
+      "text": "连续覆盖的理由依赖每份被计入的成员已经覆盖当前位置。",
+      "startMs": 70,
+      "endMs": 4550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "尚未开始的同线输入即使右端很远，",
+      "startMs": 4949,
+      "endMs": 7868,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不能拿来提高当前最远右端。",
+      "startMs": 8198,
+      "endMs": 10597,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "否则就失去了没有空隙的依据。",
+      "startMs": 11039,
+      "endMs": 13200,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD15": [
+    {
+      "text": "另取一个独立的三输入案例。",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "蓝色输入 F 从点零、零到点二、零，",
+      "startMs": 2499,
+      "endMs": 5898,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "属于水平组 G_2。",
+      "startMs": 6198,
+      "endMs": 7798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里坐标先说 x 坐标，",
+      "startMs": 8239,
+      "endMs": 10359,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再说 y 坐标。",
+      "startMs": 10688,
+      "endMs": 11888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "各子图横纵每格都是一个单位，",
+      "startMs": 12379,
+      "endMs": 14819,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "O 表示原点。",
+      "startMs": 15128,
+      "endMs": 16728,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD16": [
+    {
+      "text": "橙色输入 G 从点一、零到点七、零，",
+      "startMs": 70,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也属于这个水平组。",
+      "startMs": 3678,
+      "endMs": 5200,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "输入名 G 与带下标的组名要分清。",
+      "startMs": 5519,
+      "endMs": 8079,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两幅子图分别显示重叠成员，",
+      "startMs": 8539,
+      "endMs": 11019,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "都保持在原来的直线上。",
+      "startMs": 11338,
+      "endMs": 13018,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD17": [
+    {
+      "text": "绿色输入 H 从点负一、五到点六、负二，",
+      "startMs": 110,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所在直线是 y 等于四减 x，",
+      "startMs": 3928,
+      "endMs": 7167,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "属于另一个组 G_3。",
+      "startMs": 7448,
+      "endMs": 9048,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它与水平直线的候选交点记作 Q_1，",
+      "startMs": 9539,
+      "endMs": 13019,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "坐标为四、零。",
+      "startMs": 13338,
+      "endMs": 14898,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "空心圈先标候选位置，",
+      "startMs": 15329,
+      "endMs": 17409,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不表示已经预约。",
+      "startMs": 17728,
+      "endMs": 19110,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD18": [
+    {
+      "text": "在 x 坐标零处，短成员开始，",
+      "startMs": 70,
+      "endMs": 3260,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两组成为邻居。",
+      "startMs": 3448,
+      "endMs": 4648,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水平组此时只有短成员，",
+      "startMs": 5139,
+      "endMs": 7059,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最远右端是二。",
+      "startMs": 7388,
+      "endMs": 8668,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "候选 x 坐标四超出它的范围，",
+      "startMs": 9129,
+      "endMs": 11729,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以不能预约。",
+      "startMs": 12078,
+      "endMs": 13240,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "长成员还没开始。",
+      "startMs": 13569,
+      "endMs": 15030,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD19": [
+    {
+      "text": "到 x 坐标一处，长成员开始。",
+      "startMs": 70,
+      "endMs": 3130,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先按上集规则与短成员报告从点一、零到点二、零的完整区间，",
+      "startMs": 3469,
+      "endMs": 8949,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再加入。",
+      "startMs": 9268,
+      "endMs": 10148,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水平组最远右端由二延长到七，",
+      "startMs": 10649,
+      "endMs": 13290,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "短成员此时仍然在组内。",
+      "startMs": 13458,
+      "endMs": 15378,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD20": [
+    {
+      "text": "两组仍是原来的邻居，",
+      "startMs": 70,
+      "endMs": 1710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "但现在候选严格在当前右侧，",
+      "startMs": 1978,
+      "endMs": 4217,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "且不超过水平组的七，",
+      "startMs": 4538,
+      "endMs": 6218,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不超过另一组的六。",
+      "startMs": 6518,
+      "endMs": 7998,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "必须补检，并预约这个真实交点。",
+      "startMs": 8459,
+      "endMs": 11658,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "第四章每个顺序位置对应端点固定的输入。",
+      "startMs": 12099,
+      "endMs": 15779,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在组的直线虽固定，",
+      "startMs": 16269,
+      "endMs": 17989,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "当前覆盖却可能变长，",
+      "startMs": 18318,
+      "endMs": 20198,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能照搬邻居没变就不重查。",
+      "startMs": 20488,
+      "endMs": 22488,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD21": [
+    {
+      "text": "一般地，新成员加入使最远右端增大时，",
+      "startMs": 70,
+      "endMs": 4047,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "就重新检查这个组与更新后的上下邻组。",
+      "startMs": 4348,
+      "endMs": 7410,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "某一侧没有邻组，就没有那一对。",
+      "startMs": 7739,
+      "endMs": 10518,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "若邻居同时改变，也按新增邻接检查。",
+      "startMs": 11019,
+      "endMs": 14398,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD22": [
+    {
+      "text": "如果加入者没有延长最远右端，",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而且邻接保持不变，两条候选直线没有变，",
+      "startMs": 2478,
+      "endMs": 5988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两组覆盖也没有增加。",
+      "startMs": 6468,
+      "endMs": 8230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "原来被范围排除的候选，",
+      "startMs": 8609,
+      "endMs": 10489,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会因这次加入突然通过。",
+      "startMs": 10808,
+      "endMs": 12767,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD23": [
+    {
+      "text": "到 x 坐标二处，短成员结束，",
+      "startMs": 70,
+      "endMs": 3008,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "长成员仍在，最远右端还是七。",
+      "startMs": 3298,
+      "endMs": 6360,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水平组继续活动。",
+      "startMs": 6749,
+      "endMs": 8309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到候选点时，参加的是长成员与绿色输入，",
+      "startMs": 8779,
+      "endMs": 12727,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "短成员已经结束，不能再参与。",
+      "startMs": 12998,
+      "endMs": 15578,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD24": [
+    {
+      "text": "这个三输入案例只有两个非空结果：",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两份水平输入的完整区间，",
+      "startMs": 3028,
+      "endMs": 5387,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以及长成员与绿色输入在点四、零的交点。",
+      "startMs": 5648,
+      "endMs": 8967,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "短成员与绿色输入没有交集。",
+      "startMs": 9439,
+      "endMs": 12000,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到 x 坐标六处绿色输入结束，",
+      "startMs": 12309,
+      "endMs": 14869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到七处水平组才变空。",
+      "startMs": 15208,
+      "endMs": 17128,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD25": [
+    {
+      "text": "一般地，若移去结束者以后组仍非空，",
+      "startMs": 70,
+      "endMs": 3518,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "至少有一个继续成员的右端大于当前位置。",
+      "startMs": 3798,
+      "endMs": 7037,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "刚结束者的右端只有当前位置，",
+      "startMs": 7489,
+      "endMs": 9888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不可能比继续者更远。",
+      "startMs": 10138,
+      "endMs": 11618,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此删除结束者不会缩短仍非空组的最远右端。",
+      "startMs": 12079,
+      "endMs": 16039,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只有没有继续成员、也没有新成员补入时，",
+      "startMs": 16499,
+      "endMs": 19338,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "组才退出，再检查移走后接起来的外侧邻居。",
+      "startMs": 19648,
+      "endMs": 23377,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD26": [
+    {
+      "text": "再取独立案例。",
+      "startMs": 70,
+      "endMs": 1150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "蓝色输入 I 从点零、零到点一、零，",
+      "startMs": 1549,
+      "endMs": 4589,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "橙色输入 J 从点三、零到点七、零。",
+      "startMs": 4898,
+      "endMs": 8098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两份同线，但从 x 坐标一到三之间存在空隙。",
+      "startMs": 8539,
+      "endMs": 13268,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD27": [
+    {
+      "text": "绿色输入 K 从点负一、三到点六、负四，",
+      "startMs": 150,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "直线是 y 等于二减 x。",
+      "startMs": 3728,
+      "endMs": 6368,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它与水平直线交于点二、零，",
+      "startMs": 6819,
+      "endMs": 9299,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 Q_2。",
+      "startMs": 9618,
+      "endMs": 11058,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点输入 W 的两端都是这个点，",
+      "startMs": 11509,
+      "endMs": 13908,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用菱形标出。",
+      "startMs": 14208,
+      "endMs": 15580,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两份水平输入都不包含这里。",
+      "startMs": 15899,
+      "endMs": 18410,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD28": [
+    {
+      "text": "在 x 坐标零处，水平组只有短成员，",
+      "startMs": 70,
+      "endMs": 3488,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最远右端是一，覆盖不到候选位置二。",
+      "startMs": 3798,
+      "endMs": 7098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到一处，短成员结束，",
+      "startMs": 7599,
+      "endMs": 9858,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水平组变空并退出。",
+      "startMs": 10168,
+      "endMs": 12130,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "未来成员的右端虽是七，",
+      "startMs": 12469,
+      "endMs": 14610,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不能提前用它填平空隙。",
+      "startMs": 14768,
+      "endMs": 16688,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD29": [
+    {
+      "text": "到 x 坐标二处，点输入自带端点信息，",
+      "startMs": 70,
+      "endMs": 3880,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以这里仍然会到站。",
+      "startMs": 4048,
+      "endMs": 5608,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "只有绿色输入与点输入配对，",
+      "startMs": 6039,
+      "endMs": 8278,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结果就是这个点。",
+      "startMs": 8788,
+      "endMs": 10028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水平组没有活动成员，",
+      "startMs": 10479,
+      "endMs": 12159,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不参加。",
+      "startMs": 12420,
+      "endMs": 13310,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD30": [
+    {
+      "text": "到 x 坐标三处，橙色输入开始，",
+      "startMs": 70,
+      "endMs": 3480,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "水平组重新进入顺序，",
+      "startMs": 3648,
+      "endMs": 5408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "当前只有它自己。",
+      "startMs": 5718,
+      "endMs": 7220,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "与绿色直线的交点已经在左侧，",
+      "startMs": 7679,
+      "endMs": 9958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "也不在橙色输入上，不会成为新结果。",
+      "startMs": 10258,
+      "endMs": 13260,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这个四输入案例只有绿色输入与点输入这一对非空，",
+      "startMs": 13569,
+      "endMs": 17569,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其余五对都为空。",
+      "startMs": 17868,
+      "endMs": 19268,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "一般的空隙也一样：组名可以保留，",
+      "startMs": 19709,
+      "endMs": 22628,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "活动覆盖必须有当前成员作依据。",
+      "startMs": 22928,
+      "endMs": 25710,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "重新激活时按开始事件插入并检查邻接。",
+      "startMs": 26069,
+      "endMs": 28988,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD31": [
+    {
+      "text": "现在把前章的顺序结论用于组。",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "无事件间隙中，每个非空组都有成员覆盖，",
+      "startMs": 3039,
+      "endMs": 6868,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "组的高度由固定直线决定。",
+      "startMs": 7168,
+      "endMs": 9288,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不同组若等高，那里就是真实交点；",
+      "startMs": 9759,
+      "endMs": 12798,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "平行且不同的组不会等高。",
+      "startMs": 13078,
+      "endMs": 15397,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此第二章的无事件不换序结论仍适用。",
+      "startMs": 15869,
+      "endMs": 19029,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "成员加入与结束本来就是端点事件，",
+      "startMs": 19489,
+      "endMs": 22169,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不会在间隙里悄悄发生。",
+      "startMs": 22488,
+      "endMs": 24648,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "图是一般组层示意，不指定数值。",
+      "startMs": 25129,
+      "endMs": 28088,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD32": [
+    {
+      "text": "取经过当前点的最下与最上两个旧组。",
+      "startMs": 70,
+      "endMs": 2860,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "夹在中间的组在紧邻左侧仍活动，",
+      "startMs": 3239,
+      "endMs": 6038,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能在无事件间隙里结束。",
+      "startMs": 6348,
+      "endMs": 8428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "即使恰在当前点结束，",
+      "startMs": 8889,
+      "endMs": 10569,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "闭端点仍保留它。",
+      "startMs": 10888,
+      "endMs": 12380,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "于是前章的夹层高度结论适用于这些组直线，",
+      "startMs": 12729,
+      "endMs": 16409,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "中间组也经过当前点。",
+      "startMs": 16728,
+      "endMs": 18728,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "旧参与组构成连续块；",
+      "startMs": 19219,
+      "endMs": 21059,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "零个或一个旧组时直接成立。",
+      "startMs": 21368,
+      "endMs": 23607,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD33": [
+    {
+      "text": "先找齐旧组，合并同点开始者和点输入，",
+      "startMs": 70,
+      "endMs": 3728,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "按上集的三类规则报告。",
+      "startMs": 3998,
+      "endMs": 5838,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "随后移去结束成员，删除空组，",
+      "startMs": 6409,
+      "endMs": 9570,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保留继续组并加入新激活的组。",
+      "startMs": 9758,
+      "endMs": 12570,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "点输入不参加右侧顺序。",
+      "startMs": 12899,
+      "endMs": 15019,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD34": [
+    {
+      "text": "如果经过同一点的两个组斜率相同，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们就在同一条直线上，",
+      "startMs": 3028,
+      "endMs": 4748,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "本应属于同一组。",
+      "startMs": 5048,
+      "endMs": 6600,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此不同参与组之间斜率必不相同。",
+      "startMs": 7239,
+      "endMs": 10158,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "这里靠分组识别同线，",
+      "startMs": 10659,
+      "endMs": 12539,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而不是靠禁止重叠。",
+      "startMs": 12858,
+      "endMs": 14458,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD35": [
+    {
+      "text": "所以对右侧仍存在的组，",
+      "startMs": 70,
+      "endMs": 1760,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "直接使用第三章的两侧斜率结论，",
+      "startMs": 2028,
+      "endMs": 4347,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "按斜率从小到大排列。",
+      "startMs": 4648,
+      "endMs": 6528,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "左侧的旧参与组按斜率从大到小排列。",
+      "startMs": 6989,
+      "endMs": 10149,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "比较对象是不同组，不为同组成员编造高低。",
+      "startMs": 10609,
+      "endMs": 14428,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD36": [
+    {
+      "text": "块外组不经过当前点，",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "在那里严格较高或较低。",
+      "startMs": 1978,
+      "endMs": 4140,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不同位置的 x 坐标各异，",
+      "startMs": 4469,
+      "endMs": 6589,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "又保证它们没有在此处另行开始或结束。",
+      "startMs": 6768,
+      "endMs": 9567,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此第四章的块外顺序理由仍适用：",
+      "startMs": 10009,
+      "endMs": 12489,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新组块放回原来上下外侧组之间，",
+      "startMs": 12808,
+      "endMs": 15768,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其他位置保持顺序。",
+      "startMs": 16028,
+      "endMs": 17708,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD37": [
+    {
+      "text": "第一类是邻接新形成。",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "直接沿用第四章的分类：",
+      "startMs": 2249,
+      "endMs": 3849,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新块内部、上下边界，",
+      "startMs": 4248,
+      "endMs": 6328,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "以及空块移走后接起来的两侧。",
+      "startMs": 6618,
+      "endMs": 8977,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "现在每个顺序位置换成一个非空组。",
+      "startMs": 9409,
+      "endMs": 12009,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不存在的一侧不制造配对。",
+      "startMs": 12529,
+      "endMs": 14409,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD38": [
+    {
+      "text": "块内不同组已经在当前点相交，",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "固定直线不可能再有第二个交点，",
+      "startMs": 2778,
+      "endMs": 4978,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以没有严格未来的内部候选。",
+      "startMs": 5248,
+      "endMs": 7448,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "边界与空块接起的新邻接，",
+      "startMs": 8039,
+      "endMs": 10270,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "则按两组覆盖条件检查。",
+      "startMs": 10438,
+      "endMs": 12598,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD39": [
+    {
+      "text": "第二类是邻接仍在，但某组覆盖延长，",
+      "startMs": 70,
+      "endMs": 3428,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "必须补检当前邻居。",
+      "startMs": 3698,
+      "endMs": 5258,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "当前相遇块外的组没有端点或相交，",
+      "startMs": 5939,
+      "endMs": 9019,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "成员不变；",
+      "startMs": 9338,
+      "endMs": 10378,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "除去已经检查的新邻接，",
+      "startMs": 10658,
+      "endMs": 12600,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "其余邻接也不变，没有第三类新增变化。",
+      "startMs": 12728,
+      "endMs": 16320,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "结束后仍非空的组不缩短最远右端；",
+      "startMs": 16689,
+      "endMs": 19689,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "组变空造成的邻接变化，",
+      "startMs": 19988,
+      "endMs": 21988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "已经归入第一类。",
+      "startMs": 22308,
+      "endMs": 23548,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD40": [
+    {
+      "text": "任取一个没有任何输入端点的真实跨组交点，",
+      "startMs": 70,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "记作 Q_*。",
+      "startMs": 3528,
+      "endMs": 4968,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用 x_* 和 y_* 分别表示它的 x 坐标与 y 坐标。",
+      "startMs": 5419,
+      "endMs": 11008,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "先只假定它左侧的事件已经正确处理，",
+      "startMs": 11459,
+      "endMs": 14520,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有把目标当作已经到达。",
+      "startMs": 14658,
+      "endMs": 16590,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD41": [
+    {
+      "text": "输入端点有限，不同组的固定直线每对至多一个交点，",
+      "startMs": 70,
+      "endMs": 4647,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以事件位置仍然有限，",
+      "startMs": 4948,
+      "endMs": 7028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "虽然重叠区间有无限多个点。",
+      "startMs": 7358,
+      "endMs": 9637,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "由此可以在目标紧邻左侧取到没有其他事件的间隙。",
+      "startMs": 10109,
+      "endMs": 14028,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "包含目标的输入在那里都已经开始，",
+      "startMs": 14529,
+      "endMs": 17010,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而且尚未结束，因为目标本身没有端点。",
+      "startMs": 17178,
+      "endMs": 20588,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD42": [
+    {
+      "text": "这些输入所属的组形成连续相遇块，",
+      "startMs": 70,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "至少有两个不同组。",
+      "startMs": 3228,
+      "endMs": 4720,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "选其中紧挨着的一对，",
+      "startMs": 5019,
+      "endMs": 6779,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "仍用 G_a 和 G_b 表示所选两组。",
+      "startMs": 7118,
+      "endMs": 10420,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们也是整个活动顺序中的邻居，",
+      "startMs": 10759,
+      "endMs": 13390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "唯一的直线交点就是目标。",
+      "startMs": 13558,
+      "endMs": 15438,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD43": [
+    {
+      "text": "沿左侧有限个事件回看，",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取这一次形成、并一直保持到目标左侧的邻接。",
+      "startMs": 2378,
+      "endMs": 5830,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "形成时已经检查过，但不能直接断言当时两组都能覆盖目标。",
+      "startMs": 6169,
+      "endMs": 10957,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "前面的延长案例就展示了覆盖不足的情形。",
+      "startMs": 11409,
+      "endMs": 14489,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD44": [
+    {
+      "text": "先看第一种情形：形成邻接时，",
+      "startMs": 70,
+      "endMs": 3080,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两组最远右端都不小于目标的 x 坐标。",
+      "startMs": 3248,
+      "endMs": 6408,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "候选真实、严格在未来、又被两组覆盖，",
+      "startMs": 6839,
+      "endMs": 9999,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "当时的检查就会预约它，",
+      "startMs": 10288,
+      "endMs": 12190,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "或者保留已有记录。",
+      "startMs": 12358,
+      "endMs": 14118,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD45": [
+    {
+      "text": "再看形成时至少一组覆盖不足。",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到目标紧邻左侧，两组都已经有成员包含目标。",
+      "startMs": 3199,
+      "endMs": 7457,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此在这次持续邻接期间，",
+      "startMs": 7939,
+      "endMs": 10099,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "覆盖一定从不足变成两组同时足够。",
+      "startMs": 10388,
+      "endMs": 13468,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "取首次发生这种变化的事件。",
+      "startMs": 13929,
+      "endMs": 16089,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD46": [
+    {
+      "text": "每份固定成员的右端不会自行移动。",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "持续邻接意味着这两组一直非空。",
+      "startMs": 3249,
+      "endMs": 5849,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "删除结束者也不会增加覆盖；",
+      "startMs": 6369,
+      "endMs": 8449,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "刚才还证明了，它不会缩短仍非空组的最远右端。",
+      "startMs": 8768,
+      "endMs": 13098,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此，从不足变为足够，",
+      "startMs": 13529,
+      "endMs": 15529,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "必须有新成员加入并把最远右端向右延长。",
+      "startMs": 15878,
+      "endMs": 19558,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD47": [
+    {
+      "text": "就在使两组首次同时达到目标的那次加入中，",
+      "startMs": 70,
+      "endMs": 3469,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "至少一个原来不足的组延长了覆盖。",
+      "startMs": 3678,
+      "endMs": 6318,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "补检规则会检查它与当前邻居，",
+      "startMs": 6769,
+      "endMs": 9600,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "而另一组正是持续相邻的邻居。",
+      "startMs": 9808,
+      "endMs": 12390,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "检查时两组已经同时够到目标，",
+      "startMs": 12709,
+      "endMs": 15108,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "所以目标通过全部覆盖条件。",
+      "startMs": 15458,
+      "endMs": 17857,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "即使较早的加入只让一组够到，",
+      "startMs": 18299,
+      "endMs": 20698,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "最后使两组同时够到的这次加入仍然会触发检查。",
+      "startMs": 20998,
+      "endMs": 24717,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD48": [
+    {
+      "text": "这次加入严格发生在目标左侧，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因为目标没有任何输入端点，",
+      "startMs": 2728,
+      "endMs": 4888,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不能把所需的开始事件拖到目标本身。",
+      "startMs": 5148,
+      "endMs": 7828,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两条固定直线交于目标，",
+      "startMs": 8289,
+      "endMs": 10568,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两组都覆盖它，而且它严格在未来。",
+      "startMs": 10888,
+      "endMs": 14088,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "于是补检必会预约，或保留已有记录。",
+      "startMs": 14639,
+      "endMs": 17888,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD49": [
+    {
+      "text": "两种情况都在目标左侧得到预约：",
+      "startMs": 70,
+      "endMs": 2700,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "要么形成邻接时覆盖已足够，",
+      "startMs": 2878,
+      "endMs": 4958,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "要么持续邻接期间延长补检。",
+      "startMs": 5248,
+      "endMs": 7647,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再引用第二章结论：保留真实位置、事件有限、按序取出，",
+      "startMs": 8089,
+      "endMs": 12988,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "保证随后到站。",
+      "startMs": 13308,
+      "endMs": 14628,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD50": [
+    {
+      "text": "同线相交对在较晚的开始事件报告，",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "同点开始者按事件内顺序处理，",
+      "startMs": 2978,
+      "endMs": 5650,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "开始端点预先登记。",
+      "startMs": 5798,
+      "endMs": 7558,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "含点输入的结果，也有该点自身的端点提示。",
+      "startMs": 7989,
+      "endMs": 11747,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "因此这两类不需要跨组发现证明。",
+      "startMs": 12179,
+      "endMs": 14819,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD51": [
+    {
+      "text": "最后沿用第四章的最早未到达位置论证。",
+      "startMs": 70,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "假如有最早漏掉的位置，",
+      "startMs": 3549,
+      "endMs": 5508,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它不能是已经登记的端点。",
+      "startMs": 5798,
+      "endMs": 7757,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它左侧已按本章规则正确处理，",
+      "startMs": 8189,
+      "endMs": 10870,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "刚才的跨组发现理由就适用，",
+      "startMs": 11038,
+      "endMs": 13917,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "推出它已经预约并会到达，",
+      "startMs": 14208,
+      "endMs": 16167,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "产生矛盾。",
+      "startMs": 16478,
+      "endMs": 17358,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新增的关键连接是持续邻接期间覆盖变够也会补检。",
+      "startMs": 17819,
+      "endMs": 22219,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "没有预先假定目标已经处理。",
+      "startMs": 22689,
+      "endMs": 24800,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD52": [
+    {
+      "text": "请想一想：形成邻接时，",
+      "startMs": 70,
+      "endMs": 2640,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两组都覆盖不到目标。",
+      "startMs": 2798,
+      "endMs": 4438,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "它们持续相邻，一组先够到，",
+      "startMs": 4889,
+      "endMs": 7688,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "另一组后来才够到。",
+      "startMs": 7998,
+      "endMs": 9198,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "哪一次检查保证发现目标？",
+      "startMs": 9649,
+      "endMs": 11569,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "为什么不需要等目标到站以后才知道？",
+      "startMs": 12069,
+      "endMs": 14348,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD53": [
+    {
+      "text": "后一组通过新成员加入延长覆盖时，",
+      "startMs": 70,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "两组首次同时足够，补检当时就会发现目标。",
+      "startMs": 3428,
+      "endMs": 7228,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "使用的是已经开始成员的已知端点，",
+      "startMs": 7689,
+      "endMs": 10448,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "不需要预先到达目标。",
+      "startMs": 10738,
+      "endMs": 12418,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ],
+  "OD54": [
+    {
+      "text": "本章用同线组维护顺序，",
+      "startMs": 70,
+      "endMs": 2230,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "用当前最远右端检查候选。",
+      "startMs": 2478,
+      "endMs": 4797,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "新增邻接与覆盖延长都检查，",
+      "startMs": 5269,
+      "endMs": 7709,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "空组退出，后来重新激活。",
+      "startMs": 8018,
+      "endMs": 10588,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "到站后按实际成员报告，",
+      "startMs": 11029,
+      "endMs": 13069,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "旧同线结果保持完整。",
+      "startMs": 13378,
+      "endMs": 15178,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "下一章处理同 x 坐标的不同位置，",
+      "startMs": 15619,
+      "endMs": 18579,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "再下一章接入剪切。",
+      "startMs": 18868,
+      "endMs": 20860,
+      "timestampMs": null,
+      "confidence": null
+    },
+    {
+      "text": "完整混合扫描、一般正确性整合和总工作量留给后续章节。",
+      "startMs": 21209,
+      "endMs": 25820,
+      "timestampMs": null,
+      "confidence": null
+    }
+  ]
+}

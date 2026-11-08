@@ -14,7 +14,7 @@ for (const concurrency of [undefined, 2, 4]) {
       env: {
         ...process.env,
         AZURE_SPEECH_KEY: "test-only",
-        AZURE_SPEECH_ENDPOINT: "https://example.invalid",
+        AZURE_SPEECH_ENDPOINT: `https://${root.split("/").at(-1)}.invalid`,
         AZURE_SPEECH_VOICE: "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
       },
       input: `
@@ -57,7 +57,7 @@ for (const concurrency of [undefined, 2, 4]) {
         assert.equal(readFileSync(root+'/batch/manifest.json','utf8'),before);
         assert.equal(started,${concurrency ?? 1});
         process.argv=[...args,'--dry-run','--concurrency=0'];
-        await assert.rejects(synthesizeBatch(sdk,speech,()=>{},options),/integer from 1 to 4/);
+        await assert.rejects(synthesizeBatch(sdk,speech,()=>{},options),/positive safe integer/);
       `,
     });
     assert.equal(result.status, 0, result.stderr || result.stdout);

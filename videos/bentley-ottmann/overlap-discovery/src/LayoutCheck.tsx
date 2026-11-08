@@ -28,7 +28,7 @@ export const LayoutCheck = createShotLayoutCheck({
         start,
         Math.floor(
           (start +
-            (row.phaseStarts[i + 1] ?? audioLeadFrames + row.readingFrames)) /
+            (row.phaseStarts[i + 1] ?? audioLeadFrames + row.speechFrames)) /
             2,
         ),
       ]),
@@ -39,7 +39,7 @@ export const LayoutCheck = createShotLayoutCheck({
         c.end - 1,
       ]),
       ...[0, 1 / 3, 2 / 3, 1].flatMap((p) => {
-        const f = audioLeadFrames + Math.floor(row.readingFrames * p);
+        const f = audioLeadFrames + Math.floor(row.speechFrames * p);
         return [f - 1, f, f + 1];
       }),
     ].filter((f) => f >= 0 && f < row.durationInFrames),
@@ -60,7 +60,7 @@ export const LayoutCheck = createShotLayoutCheck({
     }
     if (page.querySelector(".katex-error")) errors.push("Invalid math");
     if (page.querySelector("audio,video"))
-      errors.push("#347 must remain silent");
+      errors.push("Layout inspection must not play media");
     return errors;
   },
 });
