@@ -46,6 +46,18 @@ export const LayoutCheck = createShotLayoutCheck({
   auditPage(page, _id, visibleStep) {
     const errors: string[] = [];
     checkTeachingPage(page, visibleStep, errors);
+    for (const svg of page.querySelectorAll<SVGSVGElement>(
+      "svg[data-geometry-inputs]",
+    )) {
+      // HTML math labels inside foreignObject must share native SVG units.
+      // Non-1:1 viewBox scaling can displace their pixels in WebKit even when
+      // DOM bounds (and Chromium screenshots) look correct.
+      if (
+        svg.viewBox.baseVal.width !== svg.width.baseVal.value ||
+        svg.viewBox.baseVal.height !== svg.height.baseVal.value
+      )
+        errors.push("Coordinate labels require a 1:1 SVG viewport");
+    }
     if (page.querySelector(".katex-error")) errors.push("Invalid math");
     if (page.querySelector("audio,video"))
       errors.push("#347 must remain silent");

@@ -21,6 +21,7 @@ function CoordinatePanel({
   pointInput,
   emphasis,
   progress,
+  width,
 }: {
   names: Name[];
   title: string;
@@ -29,15 +30,23 @@ function CoordinatePanel({
   pointInput?: boolean;
   emphasis?: Name;
   progress: number;
+  width: number;
 }) {
   const uid = useId().replace(/:/g, "");
-  const x = (n: number) => 70 + 29 * n,
-    y = (n: number) => 215 - 29 * n;
+  // Keep foreignObject math in native SVG units; viewBox scaling can displace
+  // its HTML pixels in WebKit. Scale geometry and label anchors together.
+  const scale = width / 350;
+  const px = (n: number) => n * scale;
+  const height = px(385);
+  const x = (n: number) => px(70 + 29 * n),
+    y = (n: number) => px(215 - 29 * n);
   return (
     <svg
-      width={350}
-      height={385}
-      viewBox="0 0 350 385"
+      width={width}
+      height={height}
+      style={{ flexShrink: 0 }}
+      viewBox={`0 0 ${width} ${height}`}
+      strokeWidth={scale}
       data-geometry-inputs={names.join(",")}
       aria-label="等比例教学分图"
     >
@@ -53,7 +62,7 @@ function CoordinatePanel({
           <path d="M0 0 L6 3 L0 6 Z" fill={muted} />
         </marker>
       </defs>
-      <Label x={175} y={35} align="center" fontSize={23}>
+      <Label x={px(175)} y={px(35)} align="center" fontSize={px(23)}>
         {title}
       </Label>
       {Array.from({ length: 9 }, (_, i) => i - 1).map((n) => (
@@ -62,8 +71,8 @@ function CoordinatePanel({
           <line
             x1={x(n)}
             x2={x(n)}
-            y1={y(0) - 3}
-            y2={y(0) + 3}
+            y1={y(0) - px(3)}
+            y2={y(0) + px(3)}
             stroke={muted}
           />
         </g>
@@ -90,17 +99,28 @@ function CoordinatePanel({
         stroke={muted}
         markerEnd={`url(#${uid})`}
       />
-      <Label x={x(0) - 10} y={y(0) + 24} align="right" fontSize={20}>
+      <Label
+        x={x(0) - px(10)}
+        y={y(0) + px(24)}
+        align="right"
+        fontSize={px(20)}
+      >
         O
       </Label>
-      <Label x={x(7.8)} y={y(0) + 24} fontSize={20}>
+      <Label x={x(7.8)} y={y(0) + px(24)} fontSize={px(20)}>
         x
       </Label>
-      <Label x={x(0) + 12} y={y(4.4)} fontSize={20}>
+      <Label x={x(0) + px(12)} y={y(4.4)} fontSize={px(20)}>
         y
       </Label>
       {[1, 2, 3, 4, 6, 7].map((n) => (
-        <Label key={n} x={x(n)} y={y(0) + 24} align="center" fontSize={17}>
+        <Label
+          key={n}
+          x={x(n)}
+          y={y(0) + px(24)}
+          align="center"
+          fontSize={px(17)}
+        >
           {String(n)}
         </Label>
       ))}
@@ -112,13 +132,13 @@ function CoordinatePanel({
             y1={y(-4)}
             y2={y(5)}
             stroke={colors.amber}
-            strokeDasharray="5 5"
+            strokeDasharray={`${px(5)} ${px(5)}`}
           />
           <Label
-            x={175}
-            y={374}
+            x={px(175)}
+            y={px(374)}
             align="center"
-            fontSize={21}
+            fontSize={px(21)}
           >{`x=${scan}，${pointInput ? "当前配对" : "更新后"}`}</Label>
         </>
       ) : null}
@@ -131,10 +151,10 @@ function CoordinatePanel({
               y1={y(s.start[1])}
               x2={x(s.end[0])}
               y2={y(s.end[1])}
-              strokeWidth={3}
+              strokeWidth={px(3)}
             />
             {[s.start, s.end].map((p, i) => (
-              <circle key={i} cx={x(p[0])} cy={y(p[1])} r={3} />
+              <circle key={i} cx={x(p[0])} cy={y(p[1])} r={px(3)} />
             ))}
             <Label
               x={x(
@@ -144,9 +164,9 @@ function CoordinatePanel({
                     ? 6.4
                     : (s.start[0] + s.end[0]) / 2,
               )}
-              y={y(name === "K" ? 2 : (s.start[1] + s.end[1]) / 2) - 18}
+              y={y(name === "K" ? 2 : (s.start[1] + s.end[1]) / 2) - px(18)}
               align="center"
-              fontSize={24}
+              fontSize={px(24)}
             >
               {name}
             </Label>
@@ -158,12 +178,12 @@ function CoordinatePanel({
           <circle
             cx={x(candidate)}
             cy={y(0)}
-            r={7}
+            r={px(7)}
             fill="white"
             stroke={ink}
-            strokeWidth={2}
+            strokeWidth={px(2)}
           />
-          <Label x={x(candidate) + 15} y={y(0) - 24} fontSize={21}>
+          <Label x={x(candidate) + px(15)} y={y(0) - px(24)} fontSize={px(21)}>
             {candidate === 4 ? "Q_1" : "Q_2"}
           </Label>
         </>
@@ -171,12 +191,17 @@ function CoordinatePanel({
       {pointInput ? (
         <>
           <path
-            d={`M${x(2)} ${y(0) - 11} l11 11 l-11 11 l-11 -11 Z`}
+            d={`M${x(2)} ${y(0) - px(11)} l${px(11)} ${px(11)} l${px(-11)} ${px(11)} l${px(-11)} ${px(-11)} Z`}
             fill="none"
             stroke={colors.violet}
-            strokeWidth={2}
+            strokeWidth={px(2)}
           />
-          <Label x={x(2) - 15} y={y(0) + 76} align="right" fontSize={21}>
+          <Label
+            x={x(2) - px(15)}
+            y={y(0) + px(76)}
+            align="right"
+            fontSize={px(21)}
+          >
             W
           </Label>
         </>
@@ -193,6 +218,7 @@ function CoordinatePanel({
           ]}
           project={(p) => [x(p[0]), y(p[1])]}
           progress={progress}
+          scale={1 / scale}
         />
       ) : null}
     </svg>
@@ -601,6 +627,7 @@ export function DiscoveryDiagram({
     return (
       <div style={{ textAlign: "center" }}>
         <CoordinatePanel
+          width={490}
           names={names}
           title={introduction ? "独立四输入案例" : "当前活动成员"}
           scan={scan}
@@ -640,9 +667,10 @@ export function DiscoveryDiagram({
   const g: Name[] = n >= 16 && (intro || n >= 19) && scan < 7 ? ["G"] : [];
   const h: Name[] = n >= 17 && (intro || scan < 6) ? ["H"] : [];
   return (
-    <div style={{ width: 740, textAlign: "center" }}>
-      <div style={{ display: "flex", gap: 20 }}>
+    <div style={{ width: 800, textAlign: "center" }}>
+      <div style={{ display: "flex", gap: 20, justifyContent: "center" }}>
         <CoordinatePanel
+          width={n >= 16 ? 390 : 490}
           names={[...f, ...h]}
           title={intro ? (n >= 17 ? "输入 F 与 H" : "输入 F") : "短成员分图"}
           scan={intro ? undefined : scan}
@@ -652,6 +680,7 @@ export function DiscoveryDiagram({
         />
         {n >= 16 ? (
           <CoordinatePanel
+            width={390}
             names={[...g, ...h]}
             title={
               intro ? (n >= 17 ? "输入 G 与同一份 H" : "输入 G") : "长成员分图"
