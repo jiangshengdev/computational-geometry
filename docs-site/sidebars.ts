@@ -29,6 +29,7 @@ const sidebars: SidebarsConfig = {
         'segment-intersection/exact-predicates',
         'segment-intersection/same-point-events',
         'segment-intersection/overlapping-segments',
+        'segment-intersection/same-x-events',
         'segment-intersection/line-equation',
         {
           type: 'category',
