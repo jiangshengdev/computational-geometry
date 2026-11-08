@@ -310,6 +310,13 @@ function Order({ row, state }: { row: TimelineRow; state: VisualState }) {
           b = after.indexOf(id);
         if (b < 0 && motion === 1) return null;
         const exiting = num(row.id) >= 33 && num(row.id) <= 35;
+        // Give the SVG border and foreignObject label the same position directly.
+        // Avoid relying on ancestor SVG transforms for HTML label positioning.
+        const xx =
+          135 +
+          (!exiting && a >= 0 && b >= 0
+            ? Math.sign(b - a) * Math.sin(Math.PI * motion) * 60
+            : 0);
         const yy = exiting
           ? slot(orders.afterR.indexOf(id))
           : a < 0
@@ -320,12 +327,11 @@ function Order({ row, state }: { row: TimelineRow; state: VisualState }) {
         return (
           <g
             key={id}
-            transform={`translate(${!exiting && a >= 0 && b >= 0 ? Math.sign(b - a) * Math.sin(Math.PI * motion) * 60 : 0},0)`}
             opacity={a < 0 ? motion : b < 0 ? 1 - motion : 1}
             data-order-member={id}
           >
             <rect
-              x={65}
+              x={xx - 70}
               y={yy - 25}
               width={140}
               height={50}
@@ -335,7 +341,7 @@ function Order({ row, state }: { row: TimelineRow; state: VisualState }) {
               strokeWidth={2}
             />
             <Label
-              x={135}
+              x={xx}
               y={yy}
               align="center"
               verticalAlign="middle"
