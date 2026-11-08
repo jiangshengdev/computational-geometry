@@ -1,25 +1,23 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
-
-type Props = {};
-
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
+import { Sequence, useCurrentFrame } from "remotion";
+import { rows, visualAt, type TimelineRow } from "./timeline";
+import { TeachingPage } from "./TeachingPage";
+function Shot({ row }: { row: TimelineRow }) {
+  return <TeachingPage row={row} state={visualAt(row, useCurrentFrame())} />;
+}
+// Deliberately silent: formal audio is outside #354 and must not be guessed.
+export function MyComposition() {
   return (
-    <Composition
-      id="SameColumnEvents"
-      component={MyComponent}
-      durationInFrames={60}
-      fps={60}
-      width={1920}
-      height={1080}
-      calculateMetadata={calculateMetadata}
-    />
+    <>
+      {rows.map((row) => (
+        <Sequence
+          key={row.id}
+          from={row.from}
+          durationInFrames={row.durationInFrames}
+          name={row.id}
+        >
+          <Shot row={row} />
+        </Sequence>
+      ))}
+    </>
   );
-};
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+}
