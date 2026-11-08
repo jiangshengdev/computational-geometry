@@ -8,6 +8,12 @@ import { colors } from "../../colors.ts";
 import { pages } from "./storyboard";
 import type { TimelineRow, VisualState } from "./timeline";
 import { inputs, type Name } from "./example";
+import {
+  CandidateCoverage,
+  EndingCoverage,
+  NeighborCoverage,
+  ThresholdCoverage,
+} from "./CoverageDiagrams";
 
 const ink = "#172c45",
   muted = "#94a3b8";
@@ -388,6 +394,54 @@ function Order({ row, state }: { row: TimelineRow; state: VisualState }) {
       <Label x={370} y={440} align="center" fontSize={23}>
         当前点所在截面
       </Label>
+      {!empty ? (
+        <>
+          <Label x={180} y={65} align="center" fontSize={22}>
+            左侧顺序
+          </Label>
+          <line
+            x1={180}
+            x2={180}
+            y1={100}
+            y2={360}
+            stroke={muted}
+            strokeDasharray="3 5"
+          />
+          {[-1, 0, 1].map((s, i) => (
+            <circle
+              key={s}
+              cx={180}
+              cy={230 + s * (190 / 220) * 100}
+              r={7}
+              fill={[colors.blue, colors.orange, colors.emerald][i]}
+            />
+          ))}
+          {n > 35 || (n === 35 && state.phase >= 1) ? (
+            <>
+              <Label x={560} y={65} align="center" fontSize={22}>
+                右侧顺序
+              </Label>
+              <line
+                x1={560}
+                x2={560}
+                y1={100}
+                y2={360}
+                stroke={muted}
+                strokeDasharray="3 5"
+              />
+              {[-1, 0, 1].map((s, i) => (
+                <circle
+                  key={s}
+                  cx={560}
+                  cy={230 - s * (190 / 220) * 100}
+                  r={7}
+                  fill={[colors.blue, colors.orange, colors.emerald][i]}
+                />
+              ))}
+            </>
+          ) : null}
+        </>
+      ) : null}
       {n >= 32 && !empty ? (
         <rect
           x={130}
@@ -494,101 +548,7 @@ function Discovery({ row, state }: { row: TimelineRow; state: VisualState }) {
         ) : null}
       </svg>
     );
-  const first = n === 44;
-  const enough = first || n >= 48 || (n === 47 && state.phase >= 1);
-  const ends = first ? [590, 610] : [590, enough ? 610 : 400];
-  return (
-    <svg
-      width={740}
-      height={470}
-      viewBox="0 0 740 470"
-      aria-label="持续邻接期间覆盖阈值示意"
-    >
-      <Label x={370} y={35} align="center" fontSize={24}>
-        {first ? "形成时，两组已经够到目标" : "持续邻接期间的当前覆盖"}
-      </Label>
-      <line
-        x1={520}
-        x2={520}
-        y1={70}
-        y2={335}
-        stroke={ink}
-        strokeDasharray="6 5"
-      />
-      <Label x={520} y={365} align="center" fontSize={27}>
-        x_*
-      </Label>
-      {ends.map((end, i) => (
-        <g key={i}>
-          <Label x={65} y={145 + 110 * i} fontSize={27}>
-            {i ? "G_b" : "G_a"}
-          </Label>
-          <line
-            x1={155}
-            x2={end}
-            y1={140 + 110 * i}
-            y2={140 + 110 * i}
-            stroke={i ? colors.orange : colors.blue}
-            strokeWidth={4}
-          />
-          <circle
-            cx={end}
-            cy={140 + 110 * i}
-            r={5}
-            fill={i ? colors.orange : colors.blue}
-          />
-          <Label x={end} y={115 + 110 * i} align="center" fontSize={24}>
-            {i ? "R_{G_b}" : "R_{G_a}"}
-          </Label>
-        </g>
-      ))}
-      <line
-        x1={155}
-        x2={155}
-        y1={80}
-        y2={300}
-        stroke={muted}
-        strokeDasharray="4 5"
-      />
-      <Label x={155} y={330} align="center" fontSize={23}>
-        当前
-      </Label>
-      {n === 47 ? (
-        <AttentionMarks
-          marks={[
-            {
-              kind: "line",
-              from: [400, 250],
-              to: [610, 250],
-              color: colors.orange,
-            },
-          ]}
-          progress={state.progress}
-        />
-      ) : null}
-      {n >= 45 ? (
-        <>
-          <path
-            d="M100 410 H650 M640 404 L650 410 L640 416"
-            stroke={muted}
-            fill="none"
-          />
-          <circle cx={180} cy={410} r={4} fill={ink} />
-          <circle cx={390} cy={410} r={4} fill={colors.amber} />
-          <circle cx={620} cy={410} r={7} stroke={ink} fill="white" />
-          <Label x={180} y={450} align="center" fontSize={21}>
-            形成邻接
-          </Label>
-          <Label x={390} y={450} align="center" fontSize={21}>
-            加入延长
-          </Label>
-          <Label x={620} y={450} align="center" fontSize={23}>
-            Q_*
-          </Label>
-        </>
-      ) : null}
-    </svg>
-  );
+  return <ThresholdCoverage row={row} state={state} />;
 }
 
 export function DiscoveryDiagram({
@@ -601,6 +561,11 @@ export function DiscoveryDiagram({
   const kind = pages[row.page].diagram,
     n = Number(row.id.slice(2));
   if (kind === "coverage") return <Coverage row={row} state={state} />;
+  if (kind === "candidate")
+    return <CandidateCoverage row={row} state={state} />;
+  if (kind === "neighbors" || n === 39)
+    return <NeighborCoverage row={row} state={state} />;
+  if (n === 25) return <EndingCoverage state={state} />;
   if (kind === "order") return <Order row={row} state={state} />;
   if (kind === "discovery") return <Discovery row={row} state={state} />;
   if (kind === "gap") {

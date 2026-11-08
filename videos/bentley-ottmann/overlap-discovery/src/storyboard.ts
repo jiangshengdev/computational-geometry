@@ -1,6 +1,13 @@
 import { left } from "../../../shared/math/math-lines.ts";
 
-export type Diagram = "coverage" | "extension" | "gap" | "order" | "discovery";
+export type Diagram =
+  | "coverage"
+  | "candidate"
+  | "neighbors"
+  | "extension"
+  | "gap"
+  | "order"
+  | "discovery";
 export type Step = {
   id: string;
   text: string;
@@ -136,6 +143,7 @@ export const pageList = [
   }),
   page({
     id: "candidate",
+    diagram: "candidate",
     title: "两组都覆盖，候选才是真实交点",
     source: "第四节：预约条件",
     reference: "第三章精确直线求交、严格未来；新增两组覆盖条件",
@@ -163,7 +171,8 @@ export const pageList = [
         id: "OD11",
         text: "t < x_Q，x_Q ≤ R_{G_a}，x_Q ≤ R_{G_b}",
         first: "完整预约条件",
-        action: "依次解释未来与两组覆盖",
+        action:
+          "共用横坐标标出候选，按实测短语依次提示严格未来、第一组覆盖、第二组覆盖",
         focus: "x_Q",
         captions: [
           "只有三个条件同时成立才预约：候选严格在当前右侧；第一组覆盖它；第二组也覆盖它。后两个条件各保证一份真实成员包含候选点，所以这是真实输入交点。",
@@ -287,6 +296,7 @@ export const pageList = [
   }),
   page({
     id: "extension-rule",
+    diagram: "neighbors",
     title: "覆盖延长时，检查更新后的上下邻组",
     source: "第五节一般规则",
     reference: "新增覆盖变化；引用第三章求交",
@@ -295,7 +305,8 @@ export const pageList = [
         id: "OD21",
         text: "最远右端增大：检查当前上下邻组",
         first: "一般补检规则",
-        action: "突出覆盖变化与检查对象",
+        action:
+          "保留上下邻组，加入者独立分行，更新当前组覆盖上限并依次提示上下邻接",
         focus: "增大",
         captions: [
           "一般地，新成员加入使最远右端增大时，就重新检查这个组与更新后的上下邻组。某一侧没有邻组，就没有那一对。若邻居同时改变，也按新增邻接检查。",
@@ -305,7 +316,7 @@ export const pageList = [
         id: "OD22",
         text: "邻接与两组覆盖均未增加：没有新通过的候选",
         first: "无需重复检查的条件",
-        action: "保留未变条件",
+        action: "保留前页已延长的覆盖上限，显示未超过上限的加入者，邻接保持",
         captions: [
           "如果加入者没有延长最远右端，而且邻接保持不变，两条候选直线没有变，两组覆盖也没有增加。原来被范围排除的候选，不会因这次加入突然通过。",
         ],
@@ -342,7 +353,8 @@ export const pageList = [
         id: "OD25",
         text: "结束者右端为 t；继续者右端 > t",
         first: "一般不缩短理由",
-        action: "比较结束者与继续者的右端",
+        action:
+          "切换一般成员范围图：结束者止于 t，继续者伸向右侧；删除结束者不移动最远右端，最后单独展示空组条件",
         focus: "继续者",
         captions: [
           "一般地，若移去结束者以后组仍非空，至少有一个继续成员的右端大于当前位置。刚结束者的右端只有当前位置，不可能比继续者更远。",
@@ -477,7 +489,8 @@ export const pageList = [
         id: "OD35",
         text: "右侧非空组：按斜率从小到大排列",
         first: "组层排序",
-        action: "展示新块右侧从下到上的顺序",
+        action:
+          "在左右截面标出各组位置，以相同对象色对应反转前后，右侧按实测短语引入",
         captions: [
           "所以对右侧仍存在的组，直接使用第三章的两侧斜率结论，按斜率从小到大排列。左侧的旧参与组按斜率从大到小排列。比较对象是不同组，不为同组成员编造高低。",
         ],
@@ -523,7 +536,8 @@ export const pageList = [
         id: "OD39",
         text: "持续邻接：最远右端延长也要补检",
         first: "检查覆盖完整性",
-        action: "连接第二类变化与已有新增邻接",
+        action:
+          "切换活动组覆盖示意：邻组保持，加入者延长当前覆盖，提示两侧补检",
         focus: "延长",
         captions: [
           "第二类是邻接仍在，但某组覆盖延长，必须补检当前邻居。当前相遇块外的组没有端点或相交，成员不变；除去已经检查的新邻接，其余邻接也不变，没有第三类新增变化。",
@@ -629,7 +643,8 @@ export const pageList = [
         id: "OD47",
         text: "首次同时达到 x_* 的加入，触发邻组补检",
         first: "首次同时足够必被检查",
-        action: "描亮最后达到阈值的覆盖与补检时刻",
+        action:
+          "先显示最后不足的一组由加入延长；讲到较早加入时明确回看两组都不足、先一组足够、后两组同时足够；固定成员端点不移动",
         focus: "首次同时",
         captions: [
           "就在使两组首次同时达到目标的那次加入中，至少一个原来不足的组延长了覆盖。补检规则会检查它与当前邻居，而另一组正是持续相邻的邻居。",

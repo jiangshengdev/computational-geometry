@@ -10,12 +10,31 @@ export const timingKind = "measured-narration";
 export const audio = audioData as Record<string, AudioTiming>;
 // Teaching transitions use actual spoken phrases and original measured words.
 const phaseAnchors: Record<string, string[]> = {
+  OD10: ["求得唯一候选点"],
+  OD11: [
+    "候选严格在当前右侧",
+    "第一组覆盖它",
+    "第二组也覆盖它",
+    "后两个条件各保证",
+  ],
   OD20: ["也不超过另一组的六", "并预约这个真实交点"],
+  OD21: ["最远右端增大时", "就重新检查这个组", "上下邻组", "某一侧没有邻组"],
   OD23: ["到候选点时", "到候选点时"],
   OD24: ["到 x 坐标六处", "到七处"],
+  OD25: ["因此删除结束者", "组才退出"],
   OD28: ["到一处", "到一处"],
   OD37: ["上下边界", "以及空块移走后"],
-  OD47: ["至少一个原来不足的组延长了覆盖", "检查时两组已经同时够到目标"],
+  OD35: ["按斜率从小到大排列"],
+  OD39: ["某组覆盖延长", "必须补检当前邻居", "当前相遇块外的组"],
+  OD44: ["当时的检查就会预约它"],
+  OD47: [
+    "至少一个原来不足的组延长了覆盖",
+    "检查时两组已经同时够到目标",
+    "即使较早的加入",
+    "只让一组够到",
+    "最后使两组同时够到",
+  ],
+  OD48: ["于是补检必会预约"],
 };
 const shared = createShotTimeline({
   shots: shots.map((shot) => ({
