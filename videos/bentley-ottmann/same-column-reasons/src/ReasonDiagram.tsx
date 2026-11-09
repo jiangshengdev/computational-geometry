@@ -327,25 +327,9 @@ function Roles({ row, state }: { row: TimelineRow; state: VisualState }) {
   );
 }
 function Neighbors({ row, state }: { row: TimelineRow; state: VisualState }) {
-  const frame = 30 + state.progress * row.readingFrames;
-  const operation = (start: number, end: number) =>
-    Math.max(
-      0,
-      Math.min(
-        1,
-        (frame - row.captions[start].start) /
-          (row.captions[end].end - row.captions[start].start),
-      ),
-    );
-  const insert = row.id === "SR20" && state.active && state.phase < 2;
+  const insert = row.id === "SR20" && !state.secondOperation;
   const empty =
-    row.id === "SR20"
-      ? state.phase < 2
-        ? 0
-        : operation(2, 3)
-      : row.id === "SR21"
-        ? 1
-        : 0;
+    row.id === "SR20" ? state.secondMotion : row.id === "SR21" ? 1 : 0;
   return (
     <>
       <Text x={390} y={45}>
@@ -364,10 +348,10 @@ function Neighbors({ row, state }: { row: TimelineRow; state: VisualState }) {
       {insert ? (
         <>
           <Card
-            x={540 - 150 * operation(0, 1)}
+            x={540 - 150 * state.motion}
             y={275}
             color={colors.blue}
-            opacity={operation(0, 1)}
+            opacity={state.motion}
           >
             开始者
           </Card>
@@ -470,12 +454,14 @@ function Target({ row, state }: { row: TimelineRow; state: VisualState }) {
       {discovery ? (
         <>
           <path
+            opacity={row.id === "SR29" ? state.motion : 1}
             d="M710 115 H730 V180 H710"
             fill="none"
             stroke={colors.amber}
             strokeWidth={4}
           />
           <path
+            opacity={row.id === "SR29" ? state.secondMotion : 1}
             d="M710 180 Q765 460 180 460"
             fill="none"
             stroke={colors.amber}
@@ -640,9 +626,15 @@ function Coverage({ row, state }: { row: TimelineRow; state: VisualState }) {
       {row.id === "SR43" ? (
         <Line
           x1={current}
-          y1={state.phase === 0 ? 255 : 370}
-          x2={target}
-          y2={state.phase === 0 ? 255 : 370}
+          y1={state.secondCoverage === 0 ? 255 : 370}
+          x2={
+            current +
+            (target - current) *
+              (state.secondCoverage === 0
+                ? state.firstCoverage
+                : state.secondCoverage)
+          }
+          y2={state.secondCoverage === 0 ? 255 : 370}
           color={colors.amber}
           width={7}
         />

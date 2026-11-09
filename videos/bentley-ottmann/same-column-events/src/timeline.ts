@@ -1,10 +1,8 @@
 import { shots, pages } from "./storyboard.ts";
 import captionData from "./captions.json" with { type: "json" };
 import audioData from "./audio-timing.json" with { type: "json" };
-import { createShotTimeline } from "../../../shared/speech/shot-timeline.ts";
+import { measuredShotRows } from "../../../shared/speech/measured-shot-rows.ts";
 import {
-  clauses,
-  wordsInTextRange,
   type AudioTiming,
   type Caption,
 } from "../../../shared/speech/timing.ts";
@@ -13,47 +11,13 @@ export const audioLeadFrames = 30;
 export const timingKind = "measured-narration";
 export const audio = audioData as Record<string, AudioTiming>;
 const mapped = captionData as Record<string, (Caption & { source: number })[]>;
-const shared = createShotTimeline({
-  shots: shots.map((shot) => ({
-    ...shot,
-    step: shot.visibleStep,
-    pauseAfter: 1,
-  })),
+export const rows = measuredShotRows({
+  shots,
   pages,
-  timing: audio,
+  audio,
   captions: mapped,
   fps,
   audioLeadFrames,
-});
-export const rows = shared.timelineFor().map((row, index) => {
-  const spoken = clauses(audio[row.id].speech).map(({ text, offset }) => {
-    const words = wordsInTextRange(audio[row.id], offset, offset + text.length);
-    if (!words.length) throw Error(`${row.id}: missing spoken phrase timing`);
-    const last = words[words.length - 1];
-    return {
-      text,
-      start: audioLeadFrames + Math.floor((words[0].startMs * fps) / 1000),
-      end:
-        audioLeadFrames +
-        Math.ceil(((last.startMs + last.durationMs) * fps) / 1000),
-    };
-  });
-  return {
-    ...row,
-    pauseAfter:
-      shots[index + 1]?.page !== row.page
-        ? pages[row.page].holdAfterSeconds
-        : 1,
-    audioEndFrame: audioLeadFrames + row.speechFrames,
-    revealMs: -500,
-    stages: [] as { ms: number }[],
-    spoken,
-    captions: mapped[row.id].map((caption) => ({
-      ...caption,
-      start: audioLeadFrames + Math.floor((caption.startMs * fps) / 1000),
-      end: audioLeadFrames + Math.ceil((caption.endMs * fps) / 1000),
-    })),
-  };
 });
 export const durationInFrames = rows.reduce(
   (sum, row) => sum + row.durationInFrames,

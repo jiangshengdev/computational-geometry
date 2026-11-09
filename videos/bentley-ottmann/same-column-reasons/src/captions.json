@@ -1,0 +1,2430 @@
+{
+  "SR01": [
+    {
+      "text": "上集展示了同列从低到高、每次只更新当前块。",
+      "startMs": 70,
+      "endMs": 4448,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "本集说明一般理由：中间状态怎样定位参与者，",
+      "startMs": 4919,
+      "endMs": 9170,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "怎样发现后续事件，再怎样接回同线组。",
+      "startMs": 9338,
+      "endMs": 12968,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR02": [
+    {
+      "text": "仍要求非零输入不竖直，",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同点事件、点输入和重叠继续允许。",
+      "startMs": 2228,
+      "endMs": 5680,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "以下图形是一般论证的教学示意，",
+      "startMs": 6019,
+      "endMs": 8499,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不指定数值，也不是算法执行轨迹。",
+      "startMs": 8818,
+      "endMs": 11908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR03": [
+    {
+      "text": "沿用上集的当前位置 E，",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "x 坐标为 t，高度为 h。",
+      "startMs": 2678,
+      "endMs": 6928,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "左图固定这一列。",
+      "startMs": 7389,
+      "endMs": 8869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "每个顺序位置代表一个非空同线组，",
+      "startMs": 9359,
+      "endMs": 12319,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "组内保留原始身份。",
+      "startMs": 12658,
+      "endMs": 14418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "没有重叠时可以只有一份成员。",
+      "startMs": 14849,
+      "endMs": 17088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR04": [
+    {
+      "text": "严格低于当前高度的已处理位置，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "保留更新后的成员和局部右侧次序。",
+      "startMs": 2828,
+      "endMs": 5707,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "严格高于当前高度的未处理位置，",
+      "startMs": 6169,
+      "endMs": 8769,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "仍保留更新前的成员和局部左侧次序。",
+      "startMs": 9118,
+      "endMs": 11957,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "没有事件的高度无需更新。",
+      "startMs": 12409,
+      "endMs": 14449,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR05": [
+    {
+      "text": "当前高度先找齐参与者并报告，",
+      "startMs": 70,
+      "endMs": 2829,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再保留向右继续者、排好新块。",
+      "startMs": 3078,
+      "endMs": 5558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所谓左右侧次序只描述各个等高块内部，",
+      "startMs": 6019,
+      "endMs": 9418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不是把整列取在同一个偏右位置。",
+      "startMs": 9718,
+      "endMs": 12198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "旁边的竖列表示顺序，",
+      "startMs": 12659,
+      "endMs": 14459,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不表示几何坐标。",
+      "startMs": 14758,
+      "endMs": 16238,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR06": [
+    {
+      "text": "先只假定此前事件已正确处理。",
+      "startMs": 70,
+      "endMs": 2340,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "输入端点有限，不同组的固定直线每对至多一个交点，",
+      "startMs": 2649,
+      "endMs": 7348,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以真实事件位置有限。",
+      "startMs": 7618,
+      "endMs": 9577,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此能在本列严格左侧取一段没有事件的间隙。",
+      "startMs": 10009,
+      "endMs": 13808,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "同列其他事件在边界，",
+      "startMs": 14279,
+      "endMs": 15919,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不在这个开区间内。",
+      "startMs": 16228,
+      "endMs": 17788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "最左一列的旧顺序为空，",
+      "startMs": 18219,
+      "endMs": 19939,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "直接成立。",
+      "startMs": 20268,
+      "endMs": 21228,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR07": [
+    {
+      "text": "间隙中活动的成员不会在里面结束，",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "否则那里已有端点事件。",
+      "startMs": 3028,
+      "endMs": 4508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "即使它恰在当前列结束，",
+      "startMs": 4969,
+      "endMs": 6769,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "闭端点仍包含在输入中。",
+      "startMs": 7068,
+      "endMs": 9068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此可以把左侧的高度关系一直比较到边界。",
+      "startMs": 9509,
+      "endMs": 12989,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR08": [
+    {
+      "text": "引用第二章的边界高度差结论：",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "原来较低的一组，不能到边界突然严格高于另一组。",
+      "startMs": 2758,
+      "endMs": 6797,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "否则覆盖间隙的成员在内部已有交点，",
+      "startMs": 7289,
+      "endMs": 10289,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "与无事件矛盾。",
+      "startMs": 10588,
+      "endMs": 11988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "于是按旧顺序读取本列高度，",
+      "startMs": 12429,
+      "endMs": 14589,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "得到不递减的一列数，",
+      "startMs": 14878,
+      "endMs": 16438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "允许相等。",
+      "startMs": 16898,
+      "endMs": 17778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR09": [
+    {
+      "text": "假定轮到某个高度以前，",
+      "startMs": 70,
+      "endMs": 2029,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高度不递减。",
+      "startMs": 2228,
+      "endMs": 3228,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "取旧参与组里最下与最上两组，",
+      "startMs": 3719,
+      "endMs": 6390,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "中间高度不能低于下端，",
+      "startMs": 6568,
+      "endMs": 8568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也不能高于上端。",
+      "startMs": 8888,
+      "endMs": 10128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两端都是当前高度，中间只能相等。",
+      "startMs": 10579,
+      "endMs": 13738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此旧参与组连续。",
+      "startMs": 14169,
+      "endMs": 15729,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "零组或单组时，分别是空块或单位置块。",
+      "startMs": 16189,
+      "endMs": 20248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR10": [
+    {
+      "text": "本次移去的结束成员都在当前高度，",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新插入或重新排列的组也都在这个高度。",
+      "startMs": 2978,
+      "endMs": 5777,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "删掉一些相等的数，或者在原位置放回相同的数，",
+      "startMs": 6219,
+      "endMs": 10678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不会让下方高度超过上方。",
+      "startMs": 10988,
+      "endMs": 13028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "空组退出也只是删除一个位置。",
+      "startMs": 13479,
+      "endMs": 15679,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR11": [
+    {
+      "text": "从最低事件开始，每次更新都保持高度不递减。",
+      "startMs": 70,
+      "endMs": 3808,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "依次用这一步，到当前事件时仍然成立。",
+      "startMs": 4269,
+      "endMs": 7648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "于是可以定位第一组高度不低于当前高度的位置，",
+      "startMs": 8109,
+      "endMs": 11348,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "再收取全部等高组。",
+      "startMs": 11658,
+      "endMs": 13530,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "若第一组更高，或根本不存在不低于者，",
+      "startMs": 13849,
+      "endMs": 17080,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "就只得到插入空隙。",
+      "startMs": 17218,
+      "endMs": 18698,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR12": [
+    {
+      "text": "非竖直直线在这一列只有一个高度。",
+      "startMs": 70,
+      "endMs": 2550,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此同一份非零输入，",
+      "startMs": 2949,
+      "endMs": 5149,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不可能既经过低处事件，",
+      "startMs": 5448,
+      "endMs": 7248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "又经过同列的高处事件。",
+      "startMs": 7518,
+      "endMs": 9558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的端点在这一列也只能落在自己的那个高度。",
+      "startMs": 10009,
+      "endMs": 13489,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR13": [
+    {
+      "text": "所以低处刚加入或退出的输入，",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不会成为高处还需要的同点参与者。",
+      "startMs": 3028,
+      "endMs": 5588,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处结束者要等自己的端点报告后退出，",
+      "startMs": 6069,
+      "endMs": 9360,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "高处开始者也要等自己的端点再加入。",
+      "startMs": 9518,
+      "endMs": 12158,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能按整列提前增删。",
+      "startMs": 12609,
+      "endMs": 14369,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR14": [
+    {
+      "text": "任取包含当前位置的非零输入。",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "左端若在本列左方，它已经活动，",
+      "startMs": 2799,
+      "endMs": 5808,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也不可能在同列低处被删掉，",
+      "startMs": 6118,
+      "endMs": 8517,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "由旧块收集。",
+      "startMs": 8788,
+      "endMs": 9988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "左端若在本列，只能就是当前点，",
+      "startMs": 10429,
+      "endMs": 13268,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "由端点名单补入。",
+      "startMs": 13548,
+      "endMs": 15028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此第四章的两路收集仍找得齐，",
+      "startMs": 15489,
+      "endMs": 18380,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "未开始者不会提前混入。",
+      "startMs": 18538,
+      "endMs": 20578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR15": [
+    {
+      "text": "结束成员仍包含自己的闭端点，",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "要先参加当前报告，随后才移去身份。",
+      "startMs": 2878,
+      "endMs": 6198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "此处沿用第四章的顺序。",
+      "startMs": 6719,
+      "endMs": 8639,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "允许重叠时，报告分类沿用第五章，",
+      "startMs": 9109,
+      "endMs": 12518,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "稍后接回来。",
+      "startMs": 12828,
+      "endMs": 13988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR16": [
+    {
+      "text": "点输入由端点名单给出，",
+      "startMs": 70,
+      "endMs": 2200,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "只参加自己的精确位置，",
+      "startMs": 2378,
+      "endMs": 4218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不确定斜率，也不留下活动顺序位置。",
+      "startMs": 4498,
+      "endMs": 7628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "图中菱形只是辨认点输入，",
+      "startMs": 8109,
+      "endMs": 10309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不表示面积。",
+      "startMs": 10608,
+      "endMs": 11760,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "与后续事件同列但高度不同，",
+      "startMs": 12099,
+      "endMs": 14378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "就不是那个点，不能留到高处再次配对。",
+      "startMs": 14698,
+      "endMs": 17748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR17": [
+    {
+      "text": "对经过当前点、向右继续的组，",
+      "startMs": 70,
+      "endMs": 2580,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "直接用第三章的右侧斜率结论排序。",
+      "startMs": 2728,
+      "endMs": 5368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不同组若同点又同斜率，",
+      "startMs": 5819,
+      "endMs": 7979,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "就是同一直线，本应归为一组。",
+      "startMs": 8268,
+      "endMs": 11080,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此组间没有等斜率平局，",
+      "startMs": 11469,
+      "endMs": 13589,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "同组内部只保留身份，",
+      "startMs": 13878,
+      "endMs": 15638,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不编造高低。",
+      "startMs": 15898,
+      "endMs": 16880,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR18": [
+    {
+      "text": "块外高度严格较低或较高，",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前块内部排序不会改变这项比较。",
+      "startMs": 2528,
+      "endMs": 5447,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "低处等高组保留已完成的右侧次序，",
+      "startMs": 5919,
+      "endMs": 8479,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "高处等高组保留尚未更新的左侧次序。",
+      "startMs": 8818,
+      "endMs": 11898,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "它们可能在本列有事件，",
+      "startMs": 12359,
+      "endMs": 14159,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "只是不在当前高度。",
+      "startMs": 14458,
+      "endMs": 16018,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR19": [
+    {
+      "text": "块外的相对次序与成员保持，",
+      "startMs": 70,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "和当前块接起的边界邻居却可以改变。",
+      "startMs": 2828,
+      "endMs": 5667,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "直接沿用第四章分类：",
+      "startMs": 6119,
+      "endMs": 7799,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "新块非空时检查上下边界。",
+      "startMs": 8118,
+      "endMs": 10477,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "内部不同组已经在当前点相交，",
+      "startMs": 10909,
+      "endMs": 13469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不会再有另一个直线交点。",
+      "startMs": 13758,
+      "endMs": 15518,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR20": [
+    {
+      "text": "旧块为空而有开始者，",
+      "startMs": 70,
+      "endMs": 1800,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "就在高度空隙插入。",
+      "startMs": 1978,
+      "endMs": 3578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新块为空，就检查移去后新接起来的外侧两组；",
+      "startMs": 4069,
+      "endMs": 8230,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "缺少一侧就没有那一对。",
+      "startMs": 8388,
+      "endMs": 10188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "旧块和新块都空、覆盖也没变化时，",
+      "startMs": 10629,
+      "endMs": 13320,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "顺序不动。",
+      "startMs": 13478,
+      "endMs": 14478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "点输入的当前报告仍然正常完成。",
+      "startMs": 15019,
+      "endMs": 17579,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR21": [
+    {
+      "text": "已有的新邻接分类继续适用。",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新增联系是每次检查都要用上集的完整位置未来条件，",
+      "startMs": 2699,
+      "endMs": 6859,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "还要核对两组实际覆盖。",
+      "startMs": 7198,
+      "endMs": 8998,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "邻接没变而覆盖延长的补检也保留。",
+      "startMs": 9439,
+      "endMs": 12278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "直线的交点不自动是真实线段交点。",
+      "startMs": 12759,
+      "endMs": 15719,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR22": [
+    {
+      "text": "等本列全部事件处理完，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "各个相遇高度都采用右侧次序，",
+      "startMs": 2278,
+      "endMs": 4677,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "结束者已退出，开始者已进入。",
+      "startMs": 4948,
+      "endMs": 7948,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "此时才可以把整列理解为紧邻右侧的活动顺序。",
+      "startMs": 8449,
+      "endMs": 12128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR23": [
+    {
+      "text": "不同高度之间有严格高度差，",
+      "startMs": 70,
+      "endMs": 2110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "有限条固定直线只在有限位置相交。",
+      "startMs": 2478,
+      "endMs": 5357,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "可以选足够靠近的右侧间隙，",
+      "startMs": 5819,
+      "endMs": 7979,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "使这些严格高低保持。",
+      "startMs": 8268,
+      "endMs": 10028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "等高块内部则由右侧斜率决定。",
+      "startMs": 10459,
+      "endMs": 13019,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "没有事件时继续保持顺序，",
+      "startMs": 13529,
+      "endMs": 15689,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "直到下一列。",
+      "startMs": 15978,
+      "endMs": 17098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这里论证间隙存在，不要求程序猜小数偏移。",
+      "startMs": 17569,
+      "endMs": 21668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR24": [
+    {
+      "text": "沿用上集的记号：当前位置的坐标是 t 和 h，",
+      "startMs": 70,
+      "endMs": 4708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "候选位置 F 的坐标是 u 和 v。",
+      "startMs": 4998,
+      "endMs": 9708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "严格未来是候选在右方，",
+      "startMs": 10159,
+      "endMs": 12199,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "或者同列且更高。",
+      "startMs": 12508,
+      "endMs": 14108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "当前位置和过去仍不预约；",
+      "startMs": 14549,
+      "endMs": 16730,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "同点合并位置记录，不合并不同输入对的结果。",
+      "startMs": 16898,
+      "endMs": 20777,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR25": [
+    {
+      "text": "任取一个没有任何输入端点的真实跨组交点，",
+      "startMs": 110,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "记作 F 星这个点。",
+      "startMs": 3728,
+      "endMs": 5208,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的 x 坐标记作 u 星，",
+      "startMs": 5669,
+      "endMs": 8068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高度记作 v 星。",
+      "startMs": 8368,
+      "endMs": 10168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "星号用来区分目标，不是乘法。",
+      "startMs": 10609,
+      "endMs": 13420,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先只假定按完整位置次序排在目标以前的事件已正确处理，",
+      "startMs": 13749,
+      "endMs": 18870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不假定目标已经到站。",
+      "startMs": 19048,
+      "endMs": 20648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR26": [
+    {
+      "text": "在目标列严格左侧取无事件间隙。",
+      "startMs": 70,
+      "endMs": 2789,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因为目标没有端点，包含目标的成员在那里都已开始且未结束。",
+      "startMs": 3199,
+      "endMs": 8178,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "引用第五章的连续相遇块结论：",
+      "startMs": 8639,
+      "endMs": 11079,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这些参与组在左侧构成至少含两组的连续块。",
+      "startMs": 11388,
+      "endMs": 14948,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "图中三组只帮助看关系，",
+      "startMs": 15379,
+      "endMs": 17419,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "论证不限于三组。",
+      "startMs": 17848,
+      "endMs": 19310,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR27": [
+    {
+      "text": "接下来还可能先处理同列更低的事件。",
+      "startMs": 70,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "但目标组在这列只有目标高度，",
+      "startMs": 3299,
+      "endMs": 5859,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不参加任何低处事件。",
+      "startMs": 6148,
+      "endMs": 7628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以低处更新不会增删目标组的成员，",
+      "startMs": 8089,
+      "endMs": 11089,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "也不会在目标组内部换序。",
+      "startMs": 11388,
+      "endMs": 13428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR28": [
+    {
+      "text": "低处新插入或重新排列的组，",
+      "startMs": 70,
+      "endMs": 2620,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高度严格低于目标高度。",
+      "startMs": 2778,
+      "endMs": 4618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "刚才证明的高度不递减，",
+      "startMs": 5069,
+      "endMs": 6629,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "阻止它们插进这批等高组中间。",
+      "startMs": 6918,
+      "endMs": 8998,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "于是目标块的内部邻接一直保持到目标处理前。",
+      "startMs": 9459,
+      "endMs": 13218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "此处只证明状态关系，",
+      "startMs": 13799,
+      "endMs": 15479,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "没有先把目标登记或取出。",
+      "startMs": 15778,
+      "endMs": 17910,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR29": [
+    {
+      "text": "在目标块里选相邻两组，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它们也是整个顺序中的邻居。",
+      "startMs": 2428,
+      "endMs": 4440,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "沿此前有限次事件，回看这一次形成并持续保持的邻接。",
+      "startMs": 4769,
+      "endMs": 10160,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "沿用第五章的两个分支，",
+      "startMs": 10509,
+      "endMs": 12540,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "分别检查形成邻接时和覆盖首次变够时的条件。",
+      "startMs": 12708,
+      "endMs": 16507,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR30": [
+    {
+      "text": "若形成邻接时，两组已同时覆盖目标，",
+      "startMs": 70,
+      "endMs": 3478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当时的新邻接检查就负责发现。",
+      "startMs": 3798,
+      "endMs": 6037,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "目标是真实交点，按完整位置严格在那次事件之后，",
+      "startMs": 6489,
+      "endMs": 11287,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此加入清单，或者保留已有记录。",
+      "startMs": 11558,
+      "endMs": 14488,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR31": [
+    {
+      "text": "若形成时覆盖不足，持续邻接期间首次使两组覆盖同时足够的成员加入，",
+      "startMs": 70,
+      "endMs": 6038,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "会触发覆盖延长补检。",
+      "startMs": 6298,
+      "endMs": 8218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "包含目标的成员都在目标列左侧开始；",
+      "startMs": 8689,
+      "endMs": 11910,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "低处又不改变目标组成员或内部邻接。",
+      "startMs": 12088,
+      "endMs": 15288,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此所需形成或覆盖变够不会拖到目标之后。",
+      "startMs": 15779,
+      "endMs": 19698,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR32": [
+    {
+      "text": "真实位置一经预约，即使后来暂时不再相邻也保留。",
+      "startMs": 70,
+      "endMs": 4267,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "端点与跨组交点有限，",
+      "startMs": 4759,
+      "endMs": 6678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同点不反复加入。",
+      "startMs": 6968,
+      "endMs": 8528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "把第二章的取出顺序换成先比较 x 坐标、同列再比较高度，",
+      "startMs": 8959,
+      "endMs": 14119,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "目标之前仍只有有限个位置。",
+      "startMs": 14408,
+      "endMs": 16767,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "取完就会到站。",
+      "startMs": 17199,
+      "endMs": 18279,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR33": [
+    {
+      "text": "若存在最早未到达的真实位置，",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它不会是预先登记的端点。",
+      "startMs": 2528,
+      "endMs": 4408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它之前已正确处理，刚才的状态保持与发现理由就适用，",
+      "startMs": 4869,
+      "endMs": 9408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "推出它应该到站，矛盾。",
+      "startMs": 9688,
+      "endMs": 12088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "本集补的是同列条件改变后的连接。",
+      "startMs": 12549,
+      "endMs": 15560,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "完整混合扫描的一般正确性整合，",
+      "startMs": 15869,
+      "endMs": 18509,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "仍留给后续章节。",
+      "startMs": 18818,
+      "endMs": 20298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR34": [
+    {
+      "text": "同一非竖直直线在一列只有一个点。",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同组成员若在同一 x 坐标开始，",
+      "startMs": 2849,
+      "endMs": 5820,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "开始位置必相同，仍在一次事件中按身份依次加入。",
+      "startMs": 5998,
+      "endMs": 10378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以相交同线对的较晚开始事件没有被拆开。",
+      "startMs": 10809,
+      "endMs": 14289,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "沿用第五章加入时报告完整交集的规则，",
+      "startMs": 14779,
+      "endMs": 18110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "结束身份报告后才退出。",
+      "startMs": 18278,
+      "endMs": 20360,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR35": [
+    {
+      "text": "跨组到站时，经过当前点的组内旧成员都覆盖当前列，",
+      "startMs": 70,
+      "endMs": 4608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以都包含当前点，再合并这里的开始者与点输入。",
+      "startMs": 4938,
+      "endMs": 9057,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "按第五章分类展开实际输入对，",
+      "startMs": 9509,
+      "endMs": 12029,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不重新枚举旧同线成员对。",
+      "startMs": 12358,
+      "endMs": 14398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "其他高度不进入当前名单。",
+      "startMs": 14849,
+      "endMs": 16808,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "结果仍按原始无序输入对保留，",
+      "startMs": 17269,
+      "endMs": 19829,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "完整区间不切碎。",
+      "startMs": 20118,
+      "endMs": 21598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR36": [
+    {
+      "text": "取中间状态的任一非空组 G_a。",
+      "startMs": 70,
+      "endMs": 3918,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "沿用第五章记号，",
+      "startMs": 4419,
+      "endMs": 5699,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前成员的左、右端 x 坐标分别是 l_i 和 r_i，",
+      "startMs": 6018,
+      "endMs": 12418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "下标区分成员。",
+      "startMs": 12708,
+      "endMs": 14188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "左图各行是同一直线不同身份的范围示意，",
+      "startMs": 14649,
+      "endMs": 17888,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "共用 x 方向刻度，",
+      "startMs": 18198,
+      "endMs": 19838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "上下分行不表示几何高度。",
+      "startMs": 20118,
+      "endMs": 22397,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR37": [
+    {
+      "text": "每份已在集合中的成员都已开始、尚未越过右端，",
+      "startMs": 70,
+      "endMs": 3909,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以覆盖当前列，左右都允许等号。",
+      "startMs": 4128,
+      "endMs": 7258,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "左端等号来自本列已处理的开始位置，",
+      "startMs": 7689,
+      "endMs": 10849,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "未处理的开始者尚不在集合。",
+      "startMs": 11138,
+      "endMs": 13218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "右端等号可以来自本列高处尚未处理的结束者，",
+      "startMs": 13679,
+      "endMs": 17420,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能提前删掉。",
+      "startMs": 17578,
+      "endMs": 18658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR38": [
+    {
+      "text": "继续用 R_{G_a} 表示当前成员右端的最大值。",
+      "startMs": 70,
+      "endMs": 5008,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "第五章的连续覆盖证明只需要所有成员已经覆盖当前列。",
+      "startMs": 5469,
+      "endMs": 9909,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "取得最大值的那份输入，",
+      "startMs": 10389,
+      "endMs": 12069,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "覆盖从当前列到最远右端的整个闭范围，",
+      "startMs": 12388,
+      "endMs": 15548,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这个结论仍然成立。",
+      "startMs": 15808,
+      "endMs": 17368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR39": [
+    {
+      "text": "现在允许候选的 x 坐标 u 等于当前列。",
+      "startMs": 70,
+      "endMs": 3949,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "对不小于当前列的位置，",
+      "startMs": 4349,
+      "endMs": 6069,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "存在当前成员覆盖它，",
+      "startMs": 6398,
+      "endMs": 8200,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当且仅当它不超过最远右端。",
+      "startMs": 8368,
+      "endMs": 10607,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "超过最大值时所有成员都够不到，",
+      "startMs": 11059,
+      "endMs": 13259,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "沿用第五章的反方向。",
+      "startMs": 13558,
+      "endMs": 15198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR40": [
+    {
+      "text": "特别地，若最大右端恰好等于当前列，",
+      "startMs": 40,
+      "endMs": 3387,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "仍覆盖这个边界位置，",
+      "startMs": 3648,
+      "endMs": 5248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "但不提供向右的正长度。",
+      "startMs": 5568,
+      "endMs": 7248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "图中现在换成高处尚未处理的结束组，",
+      "startMs": 7709,
+      "endMs": 10860,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不是把原输入的端点改短。",
+      "startMs": 11008,
+      "endMs": 13048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "它要等自己的位置报告后才退出。",
+      "startMs": 13549,
+      "endMs": 15760,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR41": [
+    {
+      "text": "再取相邻非空组 G_b，",
+      "startMs": 70,
+      "endMs": 3700,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的最远右端记作 R_{G_b}。",
+      "startMs": 3848,
+      "endMs": 7087,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先求两组固定直线的候选点 F，",
+      "startMs": 7539,
+      "endMs": 10818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "坐标仍为 u 和 v。",
+      "startMs": 11138,
+      "endMs": 13377,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "平行且不同就没有候选；",
+      "startMs": 13829,
+      "endMs": 15788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "有候选时，接下来两类条件必须同时成立。",
+      "startMs": 16128,
+      "endMs": 20228,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR42": [
+    {
+      "text": "第一类检查完整位置严格未来：",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "候选在右方，或者同列更高。",
+      "startMs": 2678,
+      "endMs": 5508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这决定位置是否还在后面处理，",
+      "startMs": 5939,
+      "endMs": 8470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不替代线段范围检查。",
+      "startMs": 8638,
+      "endMs": 10558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR43": [
+    {
+      "text": "第二类分别检查候选 x 坐标不超过第一组最远右端，",
+      "startMs": 70,
+      "endMs": 4430,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也不超过第二组最远右端。",
+      "startMs": 4678,
+      "endMs": 6598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "未来条件已经保证候选不在当前列左方，",
+      "startMs": 7069,
+      "endMs": 10269,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此两项上限各保证真实成员包含这个候选点。",
+      "startMs": 10568,
+      "endMs": 14728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "只通过一组不够。",
+      "startMs": 15159,
+      "endMs": 16399,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR44": [
+    {
+      "text": "若候选同列且更高，两条候选直线在本列的高度都是那个高处。",
+      "startMs": 70,
+      "endMs": 5290,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它们属于尚未处理的高处，",
+      "startMs": 5619,
+      "endMs": 7619,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不是刚更新的低处。",
+      "startMs": 7968,
+      "endMs": 9730,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "旧成员仍保留，闭覆盖可以接受恰在高处结束的成员。",
+      "startMs": 10059,
+      "endMs": 14338,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这个事件可能早已登记，",
+      "startMs": 14799,
+      "endMs": 16479,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "或由端点提供，不要求它刚在低处被发现。",
+      "startMs": 16798,
+      "endMs": 20298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR45": [
+    {
+      "text": "反过来，即使两组覆盖都通过，",
+      "startMs": 70,
+      "endMs": 2618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若候选就是当前位置，",
+      "startMs": 2898,
+      "endMs": 4698,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也不能重新预约。",
+      "startMs": 4968,
+      "endMs": 6200,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "未来条件管处理次序，",
+      "startMs": 6509,
+      "endMs": 8468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "覆盖条件管实际成员是否够到。",
+      "startMs": 8808,
+      "endMs": 11408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两项职责不同，不能互相替代。",
+      "startMs": 11849,
+      "endMs": 14538,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR46": [
+    {
+      "text": "新成员只在自己的开始位置加入。",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若最远右端延长，仍检查该组更新后的上下邻居，",
+      "startMs": 3039,
+      "endMs": 7538,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "并使用完整未来条件。",
+      "startMs": 7868,
+      "endMs": 9708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "即使邻接未变，覆盖变够也可能首次发现真实交点，",
+      "startMs": 10159,
+      "endMs": 14607,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能省略第五章的补检。",
+      "startMs": 14878,
+      "endMs": 16598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR47": [
+    {
+      "text": "在这个组自己的结束位置，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先报告，再移去结束成员。",
+      "startMs": 2278,
+      "endMs": 4728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若组仍非空，继续成员在同一个组点向右延伸，",
+      "startMs": 5189,
+      "endMs": 9587,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "右端严格大于当前列。",
+      "startMs": 9858,
+      "endMs": 11738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此第五章的删除结论在这个位置仍适用：",
+      "startMs": 12199,
+      "endMs": 15598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "移去结束者不会缩短仍非空组的最远右端。",
+      "startMs": 15898,
+      "endMs": 19297,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR48": [
+    {
+      "text": "若没有继续成员，也没有同点开始者接入，",
+      "startMs": 70,
+      "endMs": 3568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "空组退出，并检查新接起来的邻居。",
+      "startMs": 3848,
+      "endMs": 7227,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "未来才开始的同线成员不能提前填平空隙。",
+      "startMs": 7759,
+      "endMs": 11199,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "沿用第五章的空组规则，",
+      "startMs": 11679,
+      "endMs": 13399,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "只把执行时刻明确到各自精确位置。",
+      "startMs": 13728,
+      "endMs": 16408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR49": [
+    {
+      "text": "本集说明：低处局部更新保持本列高度不递减，",
+      "startMs": 70,
+      "endMs": 4257,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以仍能定位高处完整块。",
+      "startMs": 4548,
+      "endMs": 6668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "非竖直性又保证不同高度的成员不混在一起。",
+      "startMs": 7139,
+      "endMs": 10630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高处目标块内部邻接保留，",
+      "startMs": 10959,
+      "endMs": 13198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "接上此前邻接或覆盖检查，",
+      "startMs": 13508,
+      "endMs": 15907,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "才推出预约与到站。",
+      "startMs": 16228,
+      "endMs": 17868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "SR50": [
+    {
+      "text": "同线报告继续保留完整交集与原始身份，",
+      "startMs": 70,
+      "endMs": 3349,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前成员覆盖允许右端等于本列。",
+      "startMs": 3578,
+      "endMs": 6578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "未来资格与实际覆盖必须分别核验。",
+      "startMs": 7069,
+      "endMs": 9709,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "下一章接入竖直输入与剪切，",
+      "startMs": 10189,
+      "endMs": 12789,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "完整混合扫描、一般正确性整合和总工作量留给后续章节。",
+      "startMs": 13138,
+      "endMs": 17978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ]
+}

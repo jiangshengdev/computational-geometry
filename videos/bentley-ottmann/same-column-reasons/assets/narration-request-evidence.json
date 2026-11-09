@@ -1,0 +1,61 @@
+{
+  "unresolved": [
+    {
+      "planSha256": "21a7f4319ede524b0d5d82b6c3c39c6d164c7936246be3bfde32f58aff7cf8c7",
+      "id": "SR46",
+      "fingerprint": "96cbb11cf3eb31848c43fa91bb6a2d31af644982e7fc651bcec01155bab2b5c0",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-09T01:47:22.156Z",
+      "endedAt": "2026-11-09T01:47:25.123Z"
+    },
+    {
+      "planSha256": "68d5b73cee1fe77d79d57342080cf88baf8e8cc2ef5c9a07dedc1de90deceea6",
+      "id": "SR46",
+      "fingerprint": "96cbb11cf3eb31848c43fa91bb6a2d31af644982e7fc651bcec01155bab2b5c0",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-09T02:02:17.928Z",
+      "endedAt": "2026-11-09T02:02:21.501Z"
+    },
+    {
+      "planSha256": "68d5b73cee1fe77d79d57342080cf88baf8e8cc2ef5c9a07dedc1de90deceea6",
+      "id": "SR46",
+      "fingerprint": "96cbb11cf3eb31848c43fa91bb6a2d31af644982e7fc651bcec01155bab2b5c0",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-09T02:06:16.631Z",
+      "endedAt": "2026-11-09T02:06:19.772Z",
+      "diagnostic": "Azure synthesis failed: Status(StatusCode=\"FailedPrecondition\", Detail=\"Unkown phoneme\") websocket error code: 1007"
+    }
+  ],
+  "replacements": [
+    {
+      "planSha256": "053128a21b61a3f098d8e1c27d1062972750a3ee8af46a4e66f3082ebc82ecf9",
+      "id": "SR46",
+      "fingerprint": "780046e51dd08acddadf3cea79e6f60edae92b9b6150015181267d6db47e25fd",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-09T02:09:38.995Z",
+      "endedAt": "2026-11-09T02:09:43.207Z",
+      "diagnostic": "",
+      "audioSha256": "de27fd5a8183cfad195f0aff1045afd9df3d3949d79d26af05f2a33cb42abdfa"
+    },
+    {
+      "planSha256": "053128a21b61a3f098d8e1c27d1062972750a3ee8af46a4e66f3082ebc82ecf9",
+      "id": "SR46",
+      "fingerprint": "780046e51dd08acddadf3cea79e6f60edae92b9b6150015181267d6db47e25fd",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-09T02:09:38.995Z",
+      "endedAt": "2026-11-09T02:09:43.207Z",
+      "diagnostic": "",
+      "audioSha256": "de27fd5a8183cfad195f0aff1045afd9df3d3949d79d26af05f2a33cb42abdfa"
+    },
+    {
+      "planSha256": "053128a21b61a3f098d8e1c27d1062972750a3ee8af46a4e66f3082ebc82ecf9",
+      "id": "SR46",
+      "fingerprint": "780046e51dd08acddadf3cea79e6f60edae92b9b6150015181267d6db47e25fd",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-09T02:09:38.995Z",
+      "endedAt": "2026-11-09T02:09:43.207Z",
+      "diagnostic": "",
+      "audioSha256": "de27fd5a8183cfad195f0aff1045afd9df3d3949d79d26af05f2a33cb42abdfa"
+    }
+  ]
+}
