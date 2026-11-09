@@ -4,6 +4,19 @@ import { execFileSync } from "node:child_process";
 import type * as SDK from "microsoft-cognitiveservices-speech-sdk";
 import { createSpeechTools } from "./azure-speech.ts";
 
+test("Chinese pinyin converts üe to Azure ue while preserving ü and tones", () => {
+  const { buildSpeechDocument } = createSpeechTools({} as typeof SDK, {
+    voice: "test",
+    commas: "document",
+    fingerprint: true,
+  });
+  const document = buildSpeechDocument([
+    { text: "省略虐女绿", pinyin: "sheng3 lve4 nve4 nv3 lv4" },
+  ]);
+  assert.equal(document.text, "省略虐女绿");
+  assert.match(document.ssml, /ph="sheng 3 lue 4 nue 4 nv 3 lv 4"/);
+});
+
 test("successful audio without word events can be retained exclusively without weakening defaults", () => {
   // Credentials and files are isolated from the test process; the SDK is fake.
   execFileSync(

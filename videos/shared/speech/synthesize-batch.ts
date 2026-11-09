@@ -20,6 +20,24 @@ import { synthesisFormat } from "./source.ts";
 import type { buildBatchPlan } from "./plan-batch.ts";
 import { acquireSynthesisWindow } from "./request-window.ts";
 
+function failureDiagnostic(error: unknown) {
+  let message = error instanceof Error ? error.message : String(error);
+  for (const value of [
+    process.env.AZURE_SPEECH_KEY,
+    process.env.AZURE_SPEECH_ENDPOINT,
+    process.env.HOME,
+  ]) {
+    if (value) {
+      message = message.split(value).join("[REDACTED]");
+      message = message.split(encodeURIComponent(value)).join("[REDACTED]");
+    }
+  }
+  return message
+    .replace(/(?:https?|wss?):\/\/[^\s"'<>]+/gi, "[REDACTED_URL]")
+    .replace(/(Bearer\s+)\S+/gi, "$1[REDACTED]")
+    .slice(0, 4000);
+}
+
 export async function synthesizeBatch(
   sdk: typeof SpeechSdk,
   speech: Record<string, unknown>,
@@ -107,6 +125,7 @@ export async function synthesizeBatch(
         status: "not-started",
         startedAt: "",
         endedAt: "",
+        diagnostic: "",
       }),
     ),
   };
@@ -267,13 +286,15 @@ export async function synthesizeBatch(
         console.log(
           `${doc.id}: saved ${duration.toFixed(3)}s; ${words.length} original word events`,
         );
-      } catch {
+      } catch (error) {
         record.status = received
           ? "received-validation-failed"
           : "request-failed-or-uncertain";
         record.endedAt = new Date().toISOString();
+        record.diagnostic = failureDiagnostic(error);
         save();
-        // Do not print provider diagnostics that may contain credentials or endpoints.
+        // Keep a redacted cause in the request ledger without replaying or
+        // changing the unknown-result classification. Never print raw errors.
         throw Error(
           `${doc.id}: ${record.status}; stopped without retry; inspect ${output}`,
         );

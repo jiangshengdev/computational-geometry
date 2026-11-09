@@ -122,7 +122,13 @@ export function createSpeechTools<Fingerprint extends boolean>(
           );
         text += segment.text;
         const phones = syllables
-          .map((syllable) => syllable.replace(/([1-5])$/, " $1"))
+          // Azure SAPI spells the üe final as ue (略: lue 4), but
+          // keeps v for ü itself (女: nv 3). Source pinyin stays unchanged.
+          .map((syllable) =>
+            syllable
+              .replace(/^([nl])ve([1-5])$/, "$1ue$2")
+              .replace(/([1-5])$/, " $1"),
+          )
           .join(" ");
         return `<phoneme alphabet="sapi" ph="${phones}">${escapeXml(segment.text)}</phoneme>`;
       })

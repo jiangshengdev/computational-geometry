@@ -33,7 +33,7 @@ for (const concurrency of [undefined, 2, 4]) {
           SpeechSynthesizer:class {
             speakSsmlAsync(ssml, resolve, reject){
               const index=started++; active++; maximum=Math.max(maximum,active);
-              setTimeout(()=>{active--; reject(Error('test-only rejection'));},index===0?1:40);
+              setTimeout(()=>{active--; reject(Error('provider rejection key='+process.env.AZURE_SPEECH_KEY+' endpoint='+process.env.AZURE_SPEECH_ENDPOINT+' path='+process.env.HOME+'/private.wav'));},index===0?1:40);
             }
             close(){closed++;assert(existsSync(root+'/batch/synthesis.lock'));}
           }
@@ -71,5 +71,10 @@ for (const concurrency of [undefined, 2, 4]) {
       ),
     );
     assert(!existsSync(join(root, "batch/T0.wav")));
+    const diagnostic = manifest.requests[0].diagnostic;
+    assert.match(diagnostic, /provider rejection/);
+    assert.doesNotMatch(diagnostic, /key=test-only|https:\/\//);
+    assert(!diagnostic.includes(process.env.HOME));
+    assert.equal(manifest.automaticRetries, 0);
   });
 }
