@@ -1,54 +1,67 @@
-# Remotion video
+# 第六章下集：同列逐点更新为什么成立
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+对应 [#357](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/357)，父规格为 [#353](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/353)。内容依据是文章《横坐标相同，也不能一起换序》第四至七节。正式执行与独立审校记录以 CNB 为准，不在本地另建任务档案。
 
-Welcome to your Remotion project!
+本票制作字幕、独立口播与无声教学画面。独立工程由原生入口初始化，依赖与本集 Chrome Headless Shell 已安装；没有导入相邻工程的教学内容或音频。Composition 为 `SameColumnReasons`，逻辑画布 1920×1080、60 fps，共享配置采用 4K 输出参数。本阶段没有正式音频，不提供渲染或导出命令。
 
-## Commands
+## 当前制作源
 
-**Install Dependencies**
+| 文件                      | 职责                                                              |
+| ------------------------- | ----------------------------------------------------------------- |
+| `src/storyboard.ts`       | 字幕原稿、逐步正文、教学动作、来源与前置引用；SR01–SR50           |
+| `src/narration-text.json` | 从已审校字幕派生的独立自然口播；不与字幕共用标点                  |
+| `src/speech-text.json`    | 冻结口播的局部读音标注；拼接必须逐字一致                          |
+| `src/ReasonDiagram.tsx`   | 本集专用的一般理由图示与过程，不是算法轨迹                        |
+| `src/TeachingPage.tsx`    | 共享成熟页面、数学排版、依据、对象色与局部强调                    |
+| `src/timeline.ts`         | `provisional-silent-reading` 无声阅读估算；无实测音频或虚构词时间 |
+| `src/LayoutCheck.tsx`     | 使用实际生产页面检查引入、讲解、收束及静默状态                    |
 
-```console
-pnpm i
-```
+本集从第一节重新编号，始终属于第六章。字幕以自然标点保留完整原文，在语义分句处切换。每行正文先完整显示，再进入对应估算阅读窗口；同页片段保留已讲内容与上一句字幕。每页最后另留三秒完整画面，开场与收束也适用。估算窗口仅供无声检查；正式配音阶段须采用完整原速音频的实测时间，不能把这些估算冒称同步结果。
 
-**Start Preview**
+## 制作与检查入口
 
-```console
-pnpm run dev
-```
+以下入口只使用本集已安装依赖，运行前不自动安装。布局检查的浏览器由 `REMOTION_BROWSER_EXECUTABLE` 指向本集 `node_modules/.remotion/chrome-headless-shell/mac-arm64/chrome-headless-shell-mac-arm64/chrome-headless-shell`，共享核验器要求与 Remotion 4.0.540 指定的 158.0.8127.2 一致。检查使用系统分配的独立端口与无头会话，结束后清理自有进程。
 
-**Render video**
+| 入口                  | 覆盖                                                                     |
+| --------------------- | ------------------------------------------------------------------------ |
+| `lint`                | ESLint（含共享组件禁用策略）与 TypeScript                                |
+| `build`               | Remotion 打包，不渲染                                                    |
+| `video:check-content` | 字幕完整性、时间线连续性、整行先显示、同页字幕与页末保留、口播和标注绑定 |
+| `video:check-layout`  | 生产页面边界、图示标签、数学解析、无媒体元素及多个过程状态               |
+| `dev`                 | 不自动打开窗口的 Studio；代理诊断使用共享临时端口入口                    |
 
-```console
-pnpm exec remotion render
-```
+布局入口支持 `--shots=SR10,SR28` 限定受影响步骤，`--screenshots` 保存生产页面浏览器截图到系统临时目录。截图不调用 Remotion 静帧导出。工程公共流程见[工程操作说明](../../../docs/agents/videos/operations.md)；本票不接入正式音频预检与导出路径。
 
-**Upgrade Remotion**
+## 参考继承与教学对应
 
-```console
-pnpm exec remotion upgrade
-```
+实际参考为第四章 `same-point-updates` 与第五章 `overlap-reporting`、`overlap-discovery` 的生产页面。共享能力直接复用，本集独立维护专用内容及图示。以下对照结合 `storyboard.ts` 的逐页来源和逐步动作阅读。
 
-## Docs
+| 参考入口及实际行为                                                                       | 本集对应                                             | 需要观察的状态                       |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------ |
+| 第五章 `TeachingPage`：`MathLessonPage`、`diagramPosition="left"`、850/800 列宽、65 间距 | 所有有图页；无图开场和条件链由共享布局居中           | 第一行、完整页、前后片段             |
+| 第五章 `basis` 与 `TeachingReferences`：95 高度静态依据                                  | `block`、`outside`、`target`、`equal`、`high-ending` | 只用已介绍对象；依据不随局部强调闪烁 |
+| 第四、五章 `TeachingMathLines`：按 `visibleStep` 累积，隐藏行预留空间                    | 各页步骤，数学与普通文字采用同一组合                 | 引入前、每次推进与静默保留           |
+| 第五章语义对象色、正文局部重点、中性字幕                                                 | 蓝色第一组与其最远右端、橙色第二组；琥珀色当前关系   | 强调前、中、撤去；不靠字幕染色       |
+| 第四章局部块与外侧邻接过程                                                               | SR04–SR05、SR17–SR23 的不同处理进度、边界和空块      | 当前块变化时其他高度保持             |
+| 第五章分行范围、覆盖延长与空组                                                           | SR36–SR48；新增闭端等号与完整未来的独立职责          | 当前范围、闭端、延长、退出与未来成员 |
+| 第四、五章页末静默及短句字幕保留                                                         | 本集估算阅读时间线；整页另留三秒                     | 相邻片段两侧、最终字幕与完整页       |
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+图示统一采用原生 780×560 SVG，显示尺寸与 viewBox 为 1:1，数学标签使用共享 `SvgMathText`。位置和范围图是无数值的一般示意；阶段顺序、身份分行和列表位置均标明含义，不用它们冒充移动后的几何坐标。图形的变化不承担一般证明本身，证明由逐步正文与口播说明。
 
-## Help
+## 前置内容与新增推理
 
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
+| 旧材料具体位置                                                   | 本集承接             | 新增内容                                                           |
+| ---------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------ |
+| 上集 SC38–SC44；文章第一至三节                                   | SR01–SR05、SR24      | 沿用 E=(t,h)、F=(u,v) 与完整未来，不重演四线段                     |
+| 第二章 `why-neighbors` V-no-events、V-lower-bound、V-upper-bound | SR06–SR08、SR23      | 无事件开间隙的边界允许同列端点，闭端点仍提供覆盖                   |
+| 第四章 `same-point-participants` SP33–SP40                       | SR09–SR14            | 从最低高度逐个保持不递减，接到高处定位；非竖直唯一高度保证两路收集 |
+| 第四章 SP49–SP60、下集 SU06–SU20；第三章两侧斜率                 | SR15–SR18、SR22–SR23 | 点输入不能留到同列高处；块外允许同列其他事件，保留各自进度         |
+| 第四章 SU23–SU33、第五章 OD37–OD39                               | SR19–SR21            | 引用边界分类，检查条件改为完整位置与闭覆盖                         |
+| 第五章 OD40–OD49；第二章保留并按序取出                           | SR25–SR33            | 低处不改高处成员、不插入目标等高块；既有检查仍在目标之前           |
+| 第五章 OR20–OR28、OR32–OR41                                      | SR34–SR35            | 同线同列开始仍是同点；其他高度不混入报告身份                       |
+| 第五章 OD03–OD11                                                 | SR36–SR45            | 从 t<r_i 改为 t≤r_i，允许最大右端等于本列，未来与覆盖分别核验      |
+| 第五章 OD21–OD30                                                 | SR46–SR48            | 延长、结束和空组按各自精确位置发生，引用既有结论，不重演旧案例     |
 
-## Issues
+## 验收边界
 
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+本阶段的文稿审校、工程检查及无头画面观察分别记录在 #357。类型、内容、布局检查不代替教学含义和动态过程核对。正式音频、实际听辨、实测音画同步、可见桌面与真实成片验收均不属于本票的完成声明。
