@@ -10,6 +10,22 @@
 
 本节记录现有工程的操作入口，不要求尚未实现某项能力的工程提前提供脚本。命令均在对应工程目录执行；安装命令仅供用户自行执行。
 
+### 新工程初始化命令
+
+- 给出初始化命令前，先读取本节并检查目标目录。目录已存在时，核对已有文件、锁文件和安装状态，区分已经创建与尚未创建；不得继续提供会撞名的新建命令，不得擅自删除、覆盖或换名重建。若需迁移包管理器，按现有工程状态与用户授权处理。
+- 沿用本项目已验证的原生入口及完整参数。用户要求参考旧命令或指出回退时，直接核对原始聊天中的命令和结果，不以记忆摘要或通用 skill 示例替代；已验证的环境变量、版本和参数必须保留。版本或环境确需变更时，先核验差异，不静默改用 `latest`。
+- 外层 `pnpm dlx` 不保证初始化器内部也用 pnpm。提供命令前，核验对应版本的包管理器选择逻辑或有效执行证据；不得通过助手实际安装依赖来验证。初始化后检查实际锁文件与安装结果，不把生成了目录或 `package.json` 等同于 pnpm 工程就绪。
+- 已核验的 `create-video@4.0.541` 在 pnpm 11 新缓存布局下可能识别失败并回退到 npm。该版本读取 `npm_config_argv` 的 `remain[0]`，下面的环境变量使其选择 pnpm；这是识别元数据，不是调用 npm。保留 `--yes --blank --no-tailwind`。此结论限定于已核验版本，不推广到未来版本。
+
+以下为供助手填入已核验参数的模板，初始化包含依赖安装，只能由用户执行。向用户提供时，必须将两个占位参数替换为实际父目录的绝对路径和不存在的新工程名，不直接交付未赋值变量：
+
+```sh
+cd "${VIDEO_PARENT_ABSOLUTE_PATH}"
+npm_config_argv='{"remain":["dlx"]}' pnpm dlx create-video@4.0.541 --yes --blank --no-tailwind "${NEW_VIDEO_NAME}"
+```
+
+初始化器版本与模板生成的 Remotion 依赖版本须分别核对；固定初始化器版本不代表模板依赖也已固定。工具或依赖缺失仍遵循[新工程就绪门禁](new-video.md#新工程就绪后才能开工)，不得由助手安装。
+
 ### 基础命令
 
 以下命令适用于 `shear-intuition`、`shear-coefficient`、`shear-integer-coordinates`、`shear-intersection-denominator`、`shear-safe-coefficient`、`shear-special-cases`、`shear-preserves-intersections`：
