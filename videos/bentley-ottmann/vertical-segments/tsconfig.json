@@ -10,7 +10,9 @@
       "microsoft-cognitiveservices-speech-sdk": [
         "./node_modules/microsoft-cognitiveservices-speech-sdk"
       ]
-    }
+    },
+    "target": "ES2020",
+    "lib": ["ES2023", "DOM"]
   },
   "exclude": ["remotion.config.ts"]
 }
