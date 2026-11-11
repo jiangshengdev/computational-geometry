@@ -1,3 +1,4 @@
+import { failureDiagnostic } from "./request-diagnostic.ts";
 import { audioSha256 as audioHash, verifyPcmSource } from "./audio.ts";
 import { reviewedRecognitionWords } from "./reviewed-recognition.ts";
 import {
@@ -242,33 +243,79 @@ export function createAlignmentTools(
         sdk.PronunciationAssessmentGranularity.Word,
         true,
       ).applyTo(recognizer);
+      const trace: {
+        startedAt: string;
+        endedAt?: string;
+        sessionId?: string;
+        resultId?: string;
+        reason?: number;
+        diagnostic?: string;
+      } = { startedAt: new Date().toISOString() };
+      const saveTrace = () =>
+        writeFileSync(
+          `${responsePath}.request.json`,
+          JSON.stringify(trace, null, 2) + "\n",
+        );
+      const safeId = (value: string) =>
+        /^[a-zA-Z0-9-]{1,128}$/.test(value) ? value : undefined;
+      recognizer.sessionStarted = (_sender, event) => {
+        trace.sessionId = safeId(event.sessionId);
+      };
       let timeout: ReturnType<typeof setTimeout> | undefined;
+      let response: AssessmentResponse | undefined;
+      let failure: Error | undefined;
       try {
+        saveTrace();
         const result = await new Promise<SpeechSdk.SpeechRecognitionResult>(
           (resolve, reject) => {
             timeout = setTimeout(
               () => reject(Error("Azure alignment timed out")),
               240000,
             );
-            recognizer.recognizeOnceAsync(resolve, () =>
-              reject(Error("Azure alignment request failed")),
+            recognizer.recognizeOnceAsync(resolve, (error) =>
+              reject(
+                Error(
+                  `Azure alignment request failed: ${failureDiagnostic(error)}`,
+                ),
+              ),
             );
           },
         );
+        trace.resultId = safeId(result.resultId);
+        trace.reason = result.reason;
         const raw = result.properties.getProperty(
           sdk.PropertyId.SpeechServiceResponse_JsonResult,
         );
         if (raw) writeFileSync(responsePath, raw + "\n");
         if (result.reason !== sdk.ResultReason.RecognizedSpeech || !raw)
           throw Error(
-            "Azure alignment did not recognize speech; inspect temporary diagnostics",
+            `Azure alignment did not recognize speech; reason=${result.reason}; rawResponse=${Boolean(raw)}; ${failureDiagnostic(result.errorDetails ?? "")}`,
           );
-        return JSON.parse(raw) as AssessmentResponse;
+        response = JSON.parse(raw) as AssessmentResponse;
+      } catch (error) {
+        trace.diagnostic = failureDiagnostic(error);
+        failure = Error(trace.diagnostic);
       } finally {
         clearTimeout(timeout);
-        recognizer.close();
-        input.close();
+        try {
+          recognizer.close();
+        } finally {
+          try {
+            input.close();
+          } finally {
+            trace.endedAt = new Date().toISOString();
+            try {
+              saveTrace();
+            } catch (error) {
+              failure = Error(
+                `Could not save assessment diagnostics: ${failureDiagnostic(error)}; original failure: ${trace.diagnostic ?? "none"}`,
+              );
+            }
+          }
+        }
       }
+      if (failure) throw failure;
+      return response!;
     };
     let response: AssessmentResponse;
     if (audio.duration > 30) {

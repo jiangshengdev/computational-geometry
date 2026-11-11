@@ -1,3 +1,4 @@
+import { failureDiagnostic } from "./request-diagnostic.ts";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import {
@@ -13,7 +14,10 @@ import { createAlignmentTools } from "./azure-alignment.ts";
 import { audioSha256 } from "./audio.ts";
 import type { AudioTiming } from "./timing.ts";
 
-export async function assessBatch(sdk: typeof SpeechSdk) {
+export async function assessBatch(
+  sdk: typeof SpeechSdk,
+  configureSpeechConfig?: (config: SpeechSdk.SpeechConfig) => void,
+) {
   const args = process.argv.slice(2);
   assert(
     args.filter((arg) => arg.startsWith("--staging=")).length === 1 &&
@@ -90,6 +94,7 @@ export async function assessBatch(sdk: typeof SpeechSdk) {
     "Assessment already started; inspect saved state, do not replay",
   );
   const { alignAudio } = createAlignmentTools(sdk, {
+    configureSpeechConfig,
     allowReviewedPronunciation: false,
     deferPronunciationReview: true,
   });
@@ -99,6 +104,9 @@ export async function assessBatch(sdk: typeof SpeechSdk) {
     audioSha256: string;
     fingerprint: string;
     flags?: Record<string, number>;
+    startedAt?: string;
+    endedAt?: string;
+    diagnostic?: string;
   }[] = [];
   // Validate the entire batch before sending any request.
   const audios: { id: string; path: string; audio: AudioTiming }[] =
@@ -166,15 +174,18 @@ export async function assessBatch(sdk: typeof SpeechSdk) {
       { flag: "wx" },
     );
     record.status = "started";
+    record.startedAt = new Date().toISOString();
     save();
     console.log(`${id}: assessment started`);
     let aligned: AudioTiming | undefined;
     try {
       aligned = await alignAudio(audio, path);
-    } catch {
+    } catch (error) {
+      record.diagnostic = failureDiagnostic(error);
       // A successful response can still fail strict timing checks. Preserve it
       // for listening; only a missing/failed response stops later requests.
     }
+    record.endedAt = new Date().toISOString();
     const responsePath = `${path}.assessment.json`;
     const response = existsSync(responsePath)
       ? JSON.parse(readFileSync(responsePath, "utf8"))

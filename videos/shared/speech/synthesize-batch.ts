@@ -1,3 +1,4 @@
+import { failureDiagnostic } from "./request-diagnostic.ts";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import {
@@ -20,29 +21,17 @@ import { synthesisFormat } from "./source.ts";
 import type { buildBatchPlan } from "./plan-batch.ts";
 import { acquireSynthesisWindow } from "./request-window.ts";
 
-function failureDiagnostic(error: unknown) {
-  let message = error instanceof Error ? error.message : String(error);
-  for (const value of [
-    process.env.SPEECH_KEY,
-    process.env.SPEECH_ENDPOINT,
-    process.env.HOME,
-  ]) {
-    if (value) {
-      message = message.split(value).join("[REDACTED]");
-      message = message.split(encodeURIComponent(value)).join("[REDACTED]");
-    }
-  }
-  return message
-    .replace(/(?:https?|wss?):\/\/[^\s"'<>]+/gi, "[REDACTED_URL]")
-    .replace(/(Bearer\s+)\S+/gi, "$1[REDACTED]")
-    .slice(0, 4000);
-}
-
 export async function synthesizeBatch(
   sdk: typeof SpeechSdk,
   speech: Record<string, unknown>,
   validateSource: () => void,
-  { concurrency: defaultConcurrency = 1 } = {},
+  {
+    concurrency: defaultConcurrency = 1,
+    configureSpeechConfig,
+  }: {
+    concurrency?: number;
+    configureSpeechConfig?: (config: SpeechSdk.SpeechConfig) => void;
+  } = {},
 ) {
   const args = process.argv.slice(2);
   const concurrencyArgs = args.filter((arg) =>
@@ -93,6 +82,7 @@ export async function synthesizeBatch(
   );
   validateSource();
   const { buildSpeechDocument, synthesize } = createSpeechTools(sdk, {
+    configureSpeechConfig,
     voice,
     commas: "document",
     fingerprint: true,
