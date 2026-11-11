@@ -1,0 +1,377 @@
+{
+  "Id": "5d0c49305e3a482d95acb248af30e9a8",
+  "RecognitionStatus": "Success",
+  "Offset": 400000,
+  "Duration": 175600000,
+  "Channel": 0,
+  "DisplayText": "点上等高并不等于右侧任意排序。引用第三章让精确结果支撑扫描判断的右侧斜率。结论，橙色斜率零较小，排在蓝色下方，更新后最低是橙色，中间蓝色最高紫色。",
+  "SNR": 40.953735,
+  "NBest": [
+    {
+      "Confidence": 0.97517586,
+      "Lexical": "点 上等 高 并 不 等于 右侧 任意 排序 引用 第三 章 让 精确 结果 支撑 扫描 判断 的 右侧 斜率 结论 橙色 斜率 零 较小 排 在 蓝色 下方 更新 后 最低 是 橙色 中间 蓝色 最高 紫色",
+      "ITN": "点 上等 高 并 不 等于 右侧 任意 排序 引用 第三 章 让 精确 结果 支撑 扫描 判断 的 右侧 斜率 结论 橙色 斜率 零 较小 排 在 蓝色 下方 更新 后 最低 是 橙色 中间 蓝色 最高 紫色",
+      "MaskedITN": "点上等高并不等于右侧任意排序引用第三章让精确结果支撑扫描判断的右侧斜率结论橙色斜率零较小排在蓝色下方更新后最低是橙色中间蓝色最高紫色",
+      "Display": "点上等高并不等于右侧任意排序。引用第三章让精确结果支撑扫描判断的右侧斜率。结论，橙色斜率零较小，排在蓝色下方，更新后最低是橙色，中间蓝色最高紫色。",
+      "PronunciationAssessment": {
+        "AccuracyScore": 91,
+        "FluencyScore": 92,
+        "CompletenessScore": 100,
+        "PronScore": 93
+      },
+      "Words": [
+        {
+          "Word": "点",
+          "Offset": 400000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "上等",
+          "Offset": 3400000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "高",
+          "Offset": 7200000,
+          "Duration": 4200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "并",
+          "Offset": 13400000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "不",
+          "Offset": 16800000,
+          "Duration": 1000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "等于",
+          "Offset": 17900000,
+          "Duration": 4000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 61,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "右侧",
+          "Offset": 22000000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "任意",
+          "Offset": 25600000,
+          "Duration": 2600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "排序",
+          "Offset": 28300000,
+          "Duration": 6200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 73,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "引用",
+          "Offset": 37600000,
+          "Duration": 4200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "第三",
+          "Offset": 41900000,
+          "Duration": 3400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "章",
+          "Offset": 45400000,
+          "Duration": 4200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 65,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "让",
+          "Offset": 49900000,
+          "Duration": 4200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "精确",
+          "Offset": 54200000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "结果",
+          "Offset": 57600000,
+          "Duration": 4700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "支撑",
+          "Offset": 62400000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "扫描",
+          "Offset": 65800000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "判断",
+          "Offset": 69000000,
+          "Duration": 5100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 74400000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "右侧",
+          "Offset": 77400000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "斜率",
+          "Offset": 81600000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "结论",
+          "Offset": 85000000,
+          "Duration": 5000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "橙色",
+          "Offset": 91200000,
+          "Duration": 6300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "斜率",
+          "Offset": 97600000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "零",
+          "Offset": 100800000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "较小",
+          "Offset": 102400000,
+          "Duration": 6700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 64,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "排",
+          "Offset": 110400000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "在",
+          "Offset": 113600000,
+          "Duration": 1400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "蓝色",
+          "Offset": 115100000,
+          "Duration": 3400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "下方",
+          "Offset": 118600000,
+          "Duration": 5400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "更新",
+          "Offset": 127400000,
+          "Duration": 5900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 63,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "后",
+          "Offset": 133400000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "最低",
+          "Offset": 138800000,
+          "Duration": 6100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 145000000,
+          "Duration": 1100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 79,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "橙色",
+          "Offset": 146200000,
+          "Duration": 6600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 88,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "中间",
+          "Offset": 154000000,
+          "Duration": 4900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 68,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "蓝色",
+          "Offset": 159000000,
+          "Duration": 6000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 64,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "最高",
+          "Offset": 166200000,
+          "Duration": 4900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "紫色",
+          "Offset": 171200000,
+          "Duration": 4800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 85,
+            "ErrorType": "None"
+          }
+        }
+      ]
+    }
+  ]
+}

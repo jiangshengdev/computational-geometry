@@ -34,7 +34,11 @@
     "video:check-content": "node scripts/check-content.ts",
     "video:check-layout": "node scripts/check-layout.ts",
     "video:plan-narration": "node scripts/plan-narration.ts",
-    "video:synthesize": "node scripts/synthesize-narration.ts"
+    "video:synthesize": "node scripts/synthesize-narration.ts",
+    "video:assess": "node scripts/assess-narration.ts",
+    "video:adopt-measured-audio": "node scripts/adopt-measured-audio.ts",
+    "video:check-audio": "node scripts/check-audio.ts",
+    "video:check-staged-audio": "node scripts/check-staged-audio.ts"
   },
   "type": "module"
 }

@@ -1,0 +1,607 @@
+{
+  "audioFile": "VS36.wav",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "audioSha256": "03af0d4be197bf54467101071edfdb0239052cf7957ec3ea4f596661a2053c42",
+  "duration": 6.14,
+  "words": [
+    {
+      "text": "先",
+      "startMs": 70,
+      "durationMs": 280,
+      "textOffset": 0,
+      "wordLength": 1
+    },
+    {
+      "text": "看",
+      "startMs": 350,
+      "durationMs": 160,
+      "textOffset": 1,
+      "wordLength": 1
+    },
+    {
+      "text": "蓝",
+      "startMs": 510,
+      "durationMs": 200,
+      "textOffset": 2,
+      "wordLength": 1
+    },
+    {
+      "text": "色",
+      "startMs": 710,
+      "durationMs": 160,
+      "textOffset": 3,
+      "wordLength": 1
+    },
+    {
+      "text": "输入",
+      "startMs": 870,
+      "durationMs": 600,
+      "textOffset": 4,
+      "wordLength": 2
+    },
+    {
+      "text": "：",
+      "startMs": 1470,
+      "durationMs": 0,
+      "textOffset": 6,
+      "wordLength": 1
+    },
+    {
+      "text": "两",
+      "startMs": 1510,
+      "durationMs": 320,
+      "textOffset": 7,
+      "wordLength": 1
+    },
+    {
+      "text": "倍",
+      "startMs": 1830,
+      "durationMs": 160,
+      "textOffset": 8,
+      "wordLength": 1
+    },
+    {
+      "text": "系",
+      "startMs": 1990,
+      "durationMs": 200,
+      "textOffset": 9,
+      "wordLength": 1
+    },
+    {
+      "text": "数",
+      "startMs": 2190,
+      "durationMs": 199,
+      "textOffset": 10,
+      "wordLength": 1
+    },
+    {
+      "text": "严",
+      "startMs": 2389,
+      "durationMs": 201,
+      "textOffset": 11,
+      "wordLength": 1
+    },
+    {
+      "text": "格",
+      "startMs": 2590,
+      "durationMs": 160,
+      "textOffset": 12,
+      "wordLength": 1
+    },
+    {
+      "text": "夹",
+      "startMs": 2750,
+      "durationMs": 199,
+      "textOffset": 13,
+      "wordLength": 1
+    },
+    {
+      "text": "在",
+      "startMs": 2949,
+      "durationMs": 241,
+      "textOffset": 14,
+      "wordLength": 1
+    },
+    {
+      "text": "零",
+      "startMs": 3190,
+      "durationMs": 199,
+      "textOffset": 15,
+      "wordLength": 1
+    },
+    {
+      "text": "和",
+      "startMs": 3389,
+      "durationMs": 161,
+      "textOffset": 16,
+      "wordLength": 1
+    },
+    {
+      "text": "三",
+      "startMs": 3550,
+      "durationMs": 200,
+      "textOffset": 17,
+      "wordLength": 1
+    },
+    {
+      "text": "倍",
+      "startMs": 3750,
+      "durationMs": 159,
+      "textOffset": 18,
+      "wordLength": 1
+    },
+    {
+      "text": "系",
+      "startMs": 3909,
+      "durationMs": 161,
+      "textOffset": 19,
+      "wordLength": 1
+    },
+    {
+      "text": "数",
+      "startMs": 4070,
+      "durationMs": 160,
+      "textOffset": 20,
+      "wordLength": 1
+    },
+    {
+      "text": "之",
+      "startMs": 4230,
+      "durationMs": 160,
+      "textOffset": 21,
+      "wordLength": 1
+    },
+    {
+      "text": "间",
+      "startMs": 4390,
+      "durationMs": 320,
+      "textOffset": 22,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 4710,
+      "durationMs": 0,
+      "textOffset": 23,
+      "wordLength": 1
+    },
+    {
+      "text": "闭",
+      "startMs": 4928,
+      "durationMs": 240,
+      "textOffset": 24,
+      "wordLength": 1
+    },
+    {
+      "text": "范围",
+      "startMs": 5168,
+      "durationMs": 320,
+      "textOffset": 25,
+      "wordLength": 2
+    },
+    {
+      "text": "通",
+      "startMs": 5488,
+      "durationMs": 240,
+      "textOffset": 27,
+      "wordLength": 1
+    },
+    {
+      "text": "过",
+      "startMs": 5728,
+      "durationMs": 360,
+      "textOffset": 28,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 6088,
+      "durationMs": 0,
+      "textOffset": 29,
+      "wordLength": 1
+    }
+  ],
+  "speech": "先看蓝色输入：两倍系数严格夹在零和三倍系数之间。闭范围通过。",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "fingerprint": "95a49c19ace0a1babf73b540e76d407420af99b2fe87f0ae54381b1101133540",
+  "alignment": {
+    "method": "azure-pronunciation-assessment",
+    "audioSha256": "03af0d4be197bf54467101071edfdb0239052cf7957ec3ea4f596661a2053c42",
+    "synthesisWords": [
+      {
+        "text": "先",
+        "startMs": 70,
+        "durationMs": 280,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "看",
+        "startMs": 350,
+        "durationMs": 160,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
+        "text": "蓝",
+        "startMs": 510,
+        "durationMs": 200,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "色",
+        "startMs": 710,
+        "durationMs": 160,
+        "textOffset": 3,
+        "wordLength": 1
+      },
+      {
+        "text": "输入",
+        "startMs": 870,
+        "durationMs": 600,
+        "textOffset": 4,
+        "wordLength": 2
+      },
+      {
+        "text": "：",
+        "startMs": 1470,
+        "durationMs": 0,
+        "textOffset": 6,
+        "wordLength": 1
+      },
+      {
+        "text": "两",
+        "startMs": 1510,
+        "durationMs": 320,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "倍",
+        "startMs": 1830,
+        "durationMs": 160,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "系",
+        "startMs": 1990,
+        "durationMs": 200,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "数",
+        "startMs": 2190,
+        "durationMs": 199,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "严",
+        "startMs": 2389,
+        "durationMs": 201,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "格",
+        "startMs": 2590,
+        "durationMs": 160,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "夹",
+        "startMs": 2750,
+        "durationMs": 199,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "在",
+        "startMs": 2949,
+        "durationMs": 241,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "零",
+        "startMs": 3190,
+        "durationMs": 199,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "和",
+        "startMs": 3389,
+        "durationMs": 161,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "三",
+        "startMs": 3550,
+        "durationMs": 200,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "倍",
+        "startMs": 3750,
+        "durationMs": 159,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "系",
+        "startMs": 3909,
+        "durationMs": 161,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "数",
+        "startMs": 4070,
+        "durationMs": 160,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "之",
+        "startMs": 4230,
+        "durationMs": 160,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "间",
+        "startMs": 4390,
+        "durationMs": 320,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 4710,
+        "durationMs": 0,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "闭",
+        "startMs": 4928,
+        "durationMs": 240,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "范围",
+        "startMs": 5168,
+        "durationMs": 320,
+        "textOffset": 25,
+        "wordLength": 2
+      },
+      {
+        "text": "通",
+        "startMs": 5488,
+        "durationMs": 240,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "过",
+        "startMs": 5728,
+        "durationMs": 360,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 6088,
+        "durationMs": 0,
+        "textOffset": 29,
+        "wordLength": 1
+      }
+    ],
+    "response": {
+      "Id": "890a5cace92f4f54a64e8c98ef30b795",
+      "RecognitionStatus": "Success",
+      "Offset": 500000,
+      "Duration": 60600000,
+      "Channel": 0,
+      "DisplayText": "先看蓝色，输入两倍系数，严格夹在零和三倍系数之间，闭范围通过。",
+      "SNR": 30.813246,
+      "NBest": [
+        {
+          "Confidence": 0.9749479,
+          "Lexical": "先 看 蓝色 输入 两 倍 系数 严格 夹 在 零 和 三 倍 系数 之间 闭 范围 通过",
+          "ITN": "先 看 蓝色 输入 两 倍 系数 严格 夹 在 零 和 三 倍 系数 之间 闭 范围 通过",
+          "MaskedITN": "先看蓝色输入两倍系数严格夹在零和三倍系数之间闭范围通过",
+          "Display": "先看蓝色，输入两倍系数，严格夹在零和三倍系数之间，闭范围通过。",
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "FluencyScore": 98,
+            "CompletenessScore": 100,
+            "PronScore": 96
+          },
+          "Words": [
+            {
+              "Word": "先",
+              "Offset": 500000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "看",
+              "Offset": 3700000,
+              "Duration": 1600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "蓝色",
+              "Offset": 5400000,
+              "Duration": 3400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "输入",
+              "Offset": 8900000,
+              "Duration": 5700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 64,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "两",
+              "Offset": 14900000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 76,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "倍",
+              "Offset": 18300000,
+              "Duration": 1700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "系数",
+              "Offset": 20100000,
+              "Duration": 3900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "严格",
+              "Offset": 24100000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "夹",
+              "Offset": 27700000,
+              "Duration": 1900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "在",
+              "Offset": 29700000,
+              "Duration": 2300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "零",
+              "Offset": 32100000,
+              "Duration": 1900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 66,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "和",
+              "Offset": 34100000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "三",
+              "Offset": 35700000,
+              "Duration": 1900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "倍",
+              "Offset": 37700000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "系数",
+              "Offset": 39300000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "之间",
+              "Offset": 42500000,
+              "Duration": 5200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "闭",
+              "Offset": 48900000,
+              "Duration": 3400000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "范围",
+              "Offset": 52400000,
+              "Duration": 3000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "通过",
+              "Offset": 55500000,
+              "Duration": 5600000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pronunciationReview": "pending-listening"
+  }
+}

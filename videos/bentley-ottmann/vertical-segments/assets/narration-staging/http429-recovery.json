@@ -1,0 +1,37 @@
+{
+  "originalManifestSha256": "31efc73e3cba471d6b5c584d5a8cebb4d3ed663cd18353ce82e2312fefe71d31",
+  "reason": "Explicit HTTP 429 rejection; original rate window elapsed; one controlled recovery with shared rate ledger and reduced concurrency; original records retained.",
+  "checkedAt": "2026-11-11T02:38:46.184035+00:00",
+  "requests": [
+    {
+      "id": "VS21",
+      "fingerprint": "efe8ddc902ec3d7511b046c3f904d6c4d75f7d028dc6aa5a1b7e452fccc2f863",
+      "originalStatus": "request-failed-or-uncertain",
+      "originalEndedAt": "2026-11-11T02:36:06.493Z"
+    },
+    {
+      "id": "VS24",
+      "fingerprint": "564f96e058849bfd51ec2a3a1718f9cfd601bb4aff5624b2d3b978368bb31179",
+      "originalStatus": "request-failed-or-uncertain",
+      "originalEndedAt": "2026-11-11T02:36:06.518Z"
+    },
+    {
+      "id": "VS32",
+      "fingerprint": "bb384317e606f0fd44dd43cd2251b57f7a6c1ff0c8dee216d209010e5ad06f84",
+      "originalStatus": "request-failed-or-uncertain",
+      "originalEndedAt": "2026-11-11T02:36:06.580Z"
+    },
+    {
+      "id": "VS34",
+      "fingerprint": "b1b6d643c9e6b1dac9c8ff00292d4670a9101f463861dd8ae1528cc479a75888",
+      "originalStatus": "request-failed-or-uncertain",
+      "originalEndedAt": "2026-11-11T02:36:06.566Z"
+    },
+    {
+      "id": "VS38",
+      "fingerprint": "9f427806f3ebc513639e9fe5614c1d762d7b9018bfc84d276ba8024317bca6ba",
+      "originalStatus": "request-failed-or-uncertain",
+      "originalEndedAt": "2026-11-11T02:36:06.583Z"
+    }
+  ]
+}

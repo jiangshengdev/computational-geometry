@@ -1,0 +1,1985 @@
+{
+  "mode": "plan-only",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "automaticRetries": 0,
+  "requests": 64,
+  "documents": [
+    {
+      "id": "VS01",
+      "audioFile": "VS01.wav",
+      "text": "第六章《同列事件怎样逐点更新》已经允许同列不同高度的事件。现在接入竖直输入：先统一变换。在新坐标中扫描。再把完整答案还给原始输入。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">第<phoneme alphabet=\"sapi\" ph=\"liu 4\">六</phoneme><phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>《<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>怎<phoneme alphabet=\"sapi\" ph=\"yang 4\">样</phoneme><phoneme alphabet=\"sapi\" ph=\"zhu 2\">逐</phoneme>点<phoneme alphabet=\"sapi\" ph=\"geng 1\">更</phoneme>新》<phoneme alphabet=\"sapi\" ph=\"yi 3\">已</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme><phoneme alphabet=\"sapi\" ph=\"yun 2\">允</phoneme><phoneme alphabet=\"sapi\" ph=\"xu 3\">许</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"400ms\"/>现在<phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme>入竖直输入：先统<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>变换。<break time=\"200ms\"/>在新坐标<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"sao 3\">扫</phoneme><phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme>。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整<phoneme alphabet=\"sapi\" ph=\"da 2\">答</phoneme>案<phoneme alphabet=\"sapi\" ph=\"huan 2\">还</phoneme><phoneme alphabet=\"sapi\" ph=\"gei 3\">给</phoneme>原始输入。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "50ba96a3dda5c2d36130b72638ea973fb7f56571382b4f82c77d655401ec1dbc",
+      "pauses": [
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 44,
+          "breakMs": 200
+        },
+        {
+          "offset": 52,
+          "breakMs": 200
+        },
+        {
+          "offset": 65,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS02",
+      "audioFile": "VS02.wav",
+      "text": "蓝色输入 V 从原点到x 坐标零、高度三。它是一条竖直闭线段。图中横纵每格都是一个单位。字母 O 表示原点。箭头表示坐标正方向。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">V</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>原点到<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>、<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>三。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"tiao 2\">条</phoneme>竖直闭线段。<break time=\"400ms\"/>图<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"heng 2\">横</phoneme>纵每<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"dan 1\">单</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>。<break time=\"200ms\"/>字<phoneme alphabet=\"sapi\" ph=\"mu 3\">母</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">O</say-as></lang> 表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme>原点。<break time=\"200ms\"/>箭<phoneme alphabet=\"sapi\" ph=\"tou 2\">头</phoneme>表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme>坐标<phoneme alphabet=\"sapi\" ph=\"zheng 4\">正</phoneme><phoneme alphabet=\"sapi\" ph=\"fang 1\">方</phoneme>向。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "0efa4a2965618ca66fc91b2f267af21c9606395b375caa59817a55a1e6691762",
+      "pauses": [
+        {
+          "offset": 21,
+          "breakMs": 400
+        },
+        {
+          "offset": 31,
+          "breakMs": 400
+        },
+        {
+          "offset": 44,
+          "breakMs": 200
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 64,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS03",
+      "audioFile": "VS03.wav",
+      "text": "橙色输入 A 从x 坐标负一、高度一。延伸到x 坐标一、高度一。它与竖直输入的公共点用 P 表示。坐标为零、一。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">A</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme><lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标负<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>延伸到<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>竖直输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>公<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme>点用 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme>。<break time=\"200ms\"/>坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "dad6e874145bebfdf931ee3dce4e083dafa5569ac8037fda992b0221920fc0e6",
+      "pauses": [
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 32,
+          "breakMs": 400
+        },
+        {
+          "offset": 49,
+          "breakMs": 200
+        },
+        {
+          "offset": 56,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS04",
+      "audioFile": "VS04.wav",
+      "text": "紫色输入 B 从x 坐标负一、高度二。延伸到x 坐标一、高度二。它与竖直输入相交的位置用 Q 表示。坐标为零、二。两条水平输入互相平行。没有公共点。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">B</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme><lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标负<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>二。<break time=\"200ms\"/>延伸到<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>二。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>竖直输入<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置用 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Q</say-as></lang> 表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme>。<break time=\"200ms\"/>坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>、二。<break time=\"400ms\"/>两条水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>输入互<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme><phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme><phoneme alphabet=\"sapi\" ph=\"xing 2\">行</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>公<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme>点。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "ba9ce0ee936b9aa771649542c6b3dfee017a90c68188a2f77d3364bbb68fe8ca",
+      "pauses": [
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 32,
+          "breakMs": 400
+        },
+        {
+          "offset": 50,
+          "breakMs": 200
+        },
+        {
+          "offset": 57,
+          "breakMs": 400
+        },
+        {
+          "offset": 68,
+          "breakMs": 200
+        },
+        {
+          "offset": 74,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS05",
+      "audioFile": "VS05.wav",
+      "text": "在x 坐标零这一列。竖直输入同时包含低处和高处两个公共点。若把它只放在高度一的位置。就描述不了它在高度二的参与资格。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">在<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme>。<break time=\"200ms\"/>竖直输入<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>时<phoneme alphabet=\"sapi\" ph=\"bao 1\">包</phoneme><phoneme alphabet=\"sapi\" ph=\"han 2\">含</phoneme>低<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>公<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme>点。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ruo 4\">若</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"fang 4\">放</phoneme>在<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/>就<phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">述</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 5\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"liao 3\">了</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme>在<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>二<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 4\">与</phoneme>资<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "797d1e17ac17f25a7801fffe470887f13b6591dc375280f813004cfd6f442d2d",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS06",
+      "audioFile": "VS06.wav",
+      "text": "反过来。只选高度二。也不能描述低处参与。给竖直输入随意指定一个斜率。并不会改变这段高度范围。我们先恢复旧规则的适用条件。再使用它。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"fan 3\">反</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 5\">过</phoneme><phoneme alphabet=\"sapi\" ph=\"lai 5\">来</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhi 2\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"xuan 3\">选</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"neng 2\">能</phoneme><phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme>述低<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 4\">与</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"gei 3\">给</phoneme>竖直输入随<phoneme alphabet=\"sapi\" ph=\"yi 4\">意</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 3\">指</phoneme>定<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>改变<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>段<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>范围。<break time=\"400ms\"/>我<phoneme alphabet=\"sapi\" ph=\"men 5\">们</phoneme>先恢复旧规则<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">适</phoneme>用条<phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"200ms\"/>再使用<phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f587c60c2c4774f43fad096b7633cf05ef10d11774689255cdd65eb3447eb50a",
+      "pauses": [
+        {
+          "offset": 4,
+          "breakMs": 200
+        },
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 20,
+          "breakMs": 400
+        },
+        {
+          "offset": 34,
+          "breakMs": 200
+        },
+        {
+          "offset": 46,
+          "breakMs": 400
+        },
+        {
+          "offset": 60,
+          "breakMs": 200
+        },
+        {
+          "offset": 65,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS07",
+      "audioFile": "VS07.wav",
+      "text": "沿用《剪切如何改变坐标》的正变换。其中 x 坐标表示左右位置。而 y 坐标表示高度。先求系数 s 与原高度的乘积。再把这个乘积加到原来的 x 坐标上。所得的和就是新 x 坐标。高度不变。撇号区分新旧坐标。不改变输入身份。所有输入的所有端点使用同一个正系数。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme>用《剪<phoneme alphabet=\"sapi\" ph=\"qie 1\">切</phoneme>如<phoneme alphabet=\"sapi\" ph=\"he 2\">何</phoneme>改变坐标》<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"zheng 4\">正</phoneme>变换。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"qi 2\">其</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme>左右<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"er 2\">而</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Y</say-as></lang> 坐标表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>。<break time=\"400ms\"/>先求<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">S</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>原<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>。<break time=\"400ms\"/>再<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>加到原来<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"zuo 4\">坐</phoneme><phoneme alphabet=\"sapi\" ph=\"biao 1\">标</phoneme><phoneme alphabet=\"sapi\" ph=\"shang 5\">上</phoneme>。<break time=\"200ms\"/>所<phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>就<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>变。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"pie 3\">撇</phoneme><phoneme alphabet=\"sapi\" ph=\"hao 4\">号</phoneme><phoneme alphabet=\"sapi\" ph=\"qu 1\">区</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme>新旧坐标。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>改变输入<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>端点使用<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"zheng 4\">正</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "497fdb9c4d355232b8135de4ad51baba235454fc83641a3bfbfb235daf4103f3",
+      "pauses": [
+        {
+          "offset": 17,
+          "breakMs": 400
+        },
+        {
+          "offset": 31,
+          "breakMs": 200
+        },
+        {
+          "offset": 42,
+          "breakMs": 400
+        },
+        {
+          "offset": 57,
+          "breakMs": 400
+        },
+        {
+          "offset": 75,
+          "breakMs": 200
+        },
+        {
+          "offset": 88,
+          "breakMs": 400
+        },
+        {
+          "offset": 93,
+          "breakMs": 400
+        },
+        {
+          "offset": 102,
+          "breakMs": 200
+        },
+        {
+          "offset": 110,
+          "breakMs": 400
+        },
+        {
+          "offset": 128,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS08",
+      "audioFile": "VS08.wav",
+      "text": "原来共享的位置。无论沿哪份输入计算。都得到同一个新位置。若每条线各选一个系数。就不再是整幅图的同一变换。不能套用交集对应结论。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">原来<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme>享<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"wu 2\">无</phoneme><phoneme alphabet=\"sapi\" ph=\"lun 4\">论</phoneme><phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme><phoneme alphabet=\"sapi\" ph=\"na 3\">哪</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>输入计算。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>新<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ruo 4\">若</phoneme>每条线<phoneme alphabet=\"sapi\" ph=\"ge 4\">各</phoneme>选<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>就<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>再<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>整<phoneme alphabet=\"sapi\" ph=\"fu 2\">幅</phoneme>图<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>变换。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"neng 2\">能</phoneme><phoneme alphabet=\"sapi\" ph=\"tao 4\">套</phoneme>用交集对<phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"lun 4\">论</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "c51193c47fe161d83655fe100d4a008014e19687dc1d1d4445dca210cc653f5e",
+      "pauses": [
+        {
+          "offset": 8,
+          "breakMs": 200
+        },
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 28,
+          "breakMs": 400
+        },
+        {
+          "offset": 39,
+          "breakMs": 200
+        },
+        {
+          "offset": 52,
+          "breakMs": 200
+        },
+        {
+          "offset": 63,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS09",
+      "audioFile": "VS09.wav",
+      "text": "为看清推斜过程。图中使用二分之一作为放大示意系数。坐标轴固定。把新坐标画成新点。示意的水平距离不能用来验算扫描。也不是真实执行轨迹。实际系数接下来单独确定。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"wei 4\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"kan 4\">看</phoneme><phoneme alphabet=\"sapi\" ph=\"qing 1\">清</phoneme>推<phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme>程。<break time=\"200ms\"/>图<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>使用二<phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"fang 4\">放</phoneme><phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">意</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>坐标<phoneme alphabet=\"sapi\" ph=\"zhou 2\">轴</phoneme>固定。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>新坐标画成新点。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">意</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>距<phoneme alphabet=\"sapi\" ph=\"li 2\">离</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"neng 2\">能</phoneme>用来验算<phoneme alphabet=\"sapi\" ph=\"sao 3\">扫</phoneme><phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>真实执<phoneme alphabet=\"sapi\" ph=\"xing 2\">行</phoneme>轨<phoneme alphabet=\"sapi\" ph=\"ji 4\">迹</phoneme>。<break time=\"400ms\"/>实际<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme><phoneme alphabet=\"sapi\" ph=\"xia 5\">下</phoneme><phoneme alphabet=\"sapi\" ph=\"lai 5\">来</phoneme><phoneme alphabet=\"sapi\" ph=\"dan 1\">单</phoneme>独确定。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "3dde481d7d7567558d8f1d6f8efff46ffe9df77d8f7217842da545b159c3336e",
+      "pauses": [
+        {
+          "offset": 8,
+          "breakMs": 200
+        },
+        {
+          "offset": 25,
+          "breakMs": 400
+        },
+        {
+          "offset": 31,
+          "breakMs": 200
+        },
+        {
+          "offset": 40,
+          "breakMs": 400
+        },
+        {
+          "offset": 56,
+          "breakMs": 200
+        },
+        {
+          "offset": 66,
+          "breakMs": 400
+        },
+        {
+          "offset": 78,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS10",
+      "audioFile": "VS10.wav",
+      "text": "对于有理数端点坐标。取正整数 D 作为公共分母。使全部端点坐标乘它以后成为整数。符号 M 取一与这些整数绝对值的最大值。本例端点已经是整数。公共分母取一。最大值是三。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">对<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"you 2\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">理</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>端点坐标。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"qu 3\">取</phoneme><phoneme alphabet=\"sapi\" ph=\"zheng 4\">正</phoneme>整<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">D</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>公<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"mu 3\">母</phoneme>。<break time=\"200ms\"/>使全<phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>端点坐标<phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme>后成<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>整<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>符<phoneme alphabet=\"sapi\" ph=\"hao 4\">号</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">M</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"qu 3\">取</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"xie 1\">些</phoneme>整<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>绝对值<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme><phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme>值。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ben 3\">本</phoneme><phoneme alphabet=\"sapi\" ph=\"li 4\">例</phoneme>端点<phoneme alphabet=\"sapi\" ph=\"yi 3\">已</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>整<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>公<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"mu 3\">母</phoneme><phoneme alphabet=\"sapi\" ph=\"qu 3\">取</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme><phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme>值<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>三。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "2b378a6feb95eff03566c3dbaf2cc6705ba174bf6122165adc654e9a13ff9cb8",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 24,
+          "breakMs": 200
+        },
+        {
+          "offset": 40,
+          "breakMs": 400
+        },
+        {
+          "offset": 60,
+          "breakMs": 400
+        },
+        {
+          "offset": 70,
+          "breakMs": 200
+        },
+        {
+          "offset": 77,
+          "breakMs": 200
+        },
+        {
+          "offset": 83,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS11",
+      "audioFile": "VS11.wav",
+      "text": "直接使用《事件间距与剪切系数》中最大值为三时已经算出的系数：二十六万二千一百四十四分之一。后面的字母 s 始终表示这个精确分数。不换成演示系数。也不截成小数。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">直<phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme>使用《<phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme>距<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>剪<phoneme alphabet=\"sapi\" ph=\"qie 1\">切</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>》<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme><phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme>值<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>三时<phoneme alphabet=\"sapi\" ph=\"yi 3\">已</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>算出<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>：二十<phoneme alphabet=\"sapi\" ph=\"liu 4\">六</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 4\">万</phoneme>二千<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bai 3\">百</phoneme>四十四<phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/>后面<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>字<phoneme alphabet=\"sapi\" ph=\"mu 3\">母</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">S</say-as></lang> 始终表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">精</phoneme>确<phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>换成<phoneme alphabet=\"sapi\" ph=\"yan 3\">演</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>截成小<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "3024ef17651206f2f17ffa4730ab2bc0110cbd72811e0848f722d75a7196817a",
+      "pauses": [
+        {
+          "offset": 45,
+          "breakMs": 400
+        },
+        {
+          "offset": 64,
+          "breakMs": 200
+        },
+        {
+          "offset": 72,
+          "breakMs": 200
+        },
+        {
+          "offset": 79,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS12",
+      "audioFile": "VS12.wav",
+      "text": "引用《同横坐标、退化输入与原坐标》的安全系数结论：原 x 坐标不同的端点和实际交点保留左右先后；原来同列不同高度的位置按从低到高展开。每份非零输入都不再竖直。原来不竖直的也不会变竖直。点输入仍是点。原坐标使用同一个系数。无须再乘除公共分母。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">引用《<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"heng 2\">横</phoneme>坐标、退<phoneme alphabet=\"sapi\" ph=\"hua 4\">化</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>原坐标》<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>安全<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"lun 4\">论</phoneme>：原 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>端点<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>实际交点保<phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme>左右先后；原来<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置按<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>低到<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme>展开。<break time=\"400ms\"/>每<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"fei 1\">非</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>再竖直。<break time=\"200ms\"/>原来<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>竖直<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>变竖直。<break time=\"400ms\"/>点输入仍<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>点。<break time=\"400ms\"/>原坐标使用<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"wu 2\">无</phoneme>须再<phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 2\">除</phoneme>公<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"mu 3\">母</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "b6f297c2e13e0ae8e2890b18815b4e9be495608ddacc2b84327778cccd1ffe56",
+      "pauses": [
+        {
+          "offset": 67,
+          "breakMs": 400
+        },
+        {
+          "offset": 79,
+          "breakMs": 200
+        },
+        {
+          "offset": 92,
+          "breakMs": 400
+        },
+        {
+          "offset": 99,
+          "breakMs": 400
+        },
+        {
+          "offset": 110,
+          "breakMs": 200
+        },
+        {
+          "offset": 120,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS13",
+      "audioFile": "VS13.wav",
+      "text": "竖直输入的下端保持在原点。上端的新 x 坐标是零加三倍系数。也就是三倍系数。新横向长度为三倍系数。大于零。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">竖直输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>下端保持在原点。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>端<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>加三<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme>就<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>三<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>新<phoneme alphabet=\"sapi\" ph=\"heng 2\">横</phoneme>向<phoneme alphabet=\"sapi\" ph=\"chang 2\">长</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>三<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "444fde0319f9eef1318fbb9ef68ab5d5fb3d092c9493a1db5130d2fce28d0b4e",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 30,
+          "breakMs": 200
+        },
+        {
+          "offset": 38,
+          "breakMs": 400
+        },
+        {
+          "offset": 49,
+          "breakMs": 200
+        },
+        {
+          "offset": 53,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS14",
+      "audioFile": "VS14.wav",
+      "text": "橙色输入的两端高度都是一。所以两个x 坐标都加上一次系数。新左端是负一加系数。新右端是一加系数。高度仍为一。两端x 坐标之差仍为二。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>两端<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>加<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>新左端<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>负<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>加<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>新右端<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>加<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>仍<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/>两端<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"cha 1\">差</phoneme>仍<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>二。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "b175b50c55b6be81ddf372df48e90ff5e1e51ce8e34fbb881b38ef7fdb18d697",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 39,
+          "breakMs": 200
+        },
+        {
+          "offset": 48,
+          "breakMs": 200
+        },
+        {
+          "offset": 54,
+          "breakMs": 400
+        },
+        {
+          "offset": 66,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS15",
+      "audioFile": "VS15.wav",
+      "text": "紫色输入的两端高度都是二。所以两个x 坐标都加上两倍系数。高度仍为二。横向长度也仍为二。右侧坐标表使用实际系数。左图只放大展示相应关系。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>两端<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>加<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>仍<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"heng 2\">横</phoneme>向<phoneme alphabet=\"sapi\" ph=\"chang 2\">长</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme>仍<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>二。<break time=\"400ms\"/>右<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme>坐标表使用实际<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>左图<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"fang 4\">放</phoneme><phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme>展<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme><phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme><phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme>关<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "b9b88fa5255b001cfdb6e7ce8d97c34e871fed10e7bb233beebf856a87d4af21",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 35,
+          "breakMs": 200
+        },
+        {
+          "offset": 44,
+          "breakMs": 400
+        },
+        {
+          "offset": 56,
+          "breakMs": 200
+        },
+        {
+          "offset": 68,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS16",
+      "audioFile": "VS16.wav",
+      "text": "引用交集保持结论。原来的公共点不会丢失。也不会凭空新增。低处点的新坐标为一倍系数、一。高处点的新坐标为两倍系数、二。分别记作 P 撇和 Q 撇这两个点。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">引用交集保持<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"lun 4\">论</phoneme>。<break time=\"200ms\"/>原来<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>公<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme>点<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>丢<phoneme alphabet=\"sapi\" ph=\"shi 1\">失</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>凭<phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>新<phoneme alphabet=\"sapi\" ph=\"zeng 1\">增</phoneme>。<break time=\"400ms\"/>低<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>点<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>点<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>、二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"bie 2\">别</phoneme>记<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"pie 3\">撇</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Q</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"pie 3\">撇</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>点。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "26f2864ddd37a1c3ac8a94eb85a0a07ffa5e8f598250afb8bf31fc027d8503e6",
+      "pauses": [
+        {
+          "offset": 9,
+          "breakMs": 200
+        },
+        {
+          "offset": 20,
+          "breakMs": 200
+        },
+        {
+          "offset": 28,
+          "breakMs": 400
+        },
+        {
+          "offset": 43,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 200
+        },
+        {
+          "offset": 76,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS17",
+      "audioFile": "VS17.wav",
+      "text": "两点的新 x 坐标之差恰好是一倍系数。严格为正。因此先遇到低处点变成的位置。再遇到高处点变成的位置。不再要求同列一个位置同时代表两个高度。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"liang 2\">两</phoneme><phoneme alphabet=\"sapi\" ph=\"dian 3\">点</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"cha 1\">差</phoneme>恰<phoneme alphabet=\"sapi\" ph=\"hao 3\">好</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"zheng 4\">正</phoneme>。<break time=\"400ms\"/>因此先<phoneme alphabet=\"sapi\" ph=\"yu 4\">遇</phoneme>到低<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>点变成<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"yu 4\">遇</phoneme>到<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>点变成<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>再<phoneme alphabet=\"sapi\" ph=\"yao 1\">要</phoneme>求<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>时代表两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "e9b7add5ffd0e30539bbf2c9f5b06ac01197585b5f177974d553ab978f1f1dac",
+      "pauses": [
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 24,
+          "breakMs": 400
+        },
+        {
+          "offset": 38,
+          "breakMs": 200
+        },
+        {
+          "offset": 50,
+          "breakMs": 200
+        },
+        {
+          "offset": 69,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS18",
+      "audioFile": "VS18.wav",
+      "text": "完全重合的位置仍完全重合。不能拆成两次事件。同线关系也保持。所以第五章《完整结果怎样只报告一次》中的同线组继续适用。组内各份原始身份仍分别保留。点输入没有唯一直线。不加入同线组。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>全<phoneme alphabet=\"sapi\" ph=\"chong 2\">重</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置仍<phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>全<phoneme alphabet=\"sapi\" ph=\"chong 2\">重</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"neng 2\">能</phoneme><phoneme alphabet=\"sapi\" ph=\"chai 1\">拆</phoneme>成两<phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>线关<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"ye 2\">也</phoneme>保持。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme>第五<phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>《<phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>怎<phoneme alphabet=\"sapi\" ph=\"yang 4\">样</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme>》<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>线组继续<phoneme alphabet=\"sapi\" ph=\"shi 4\">适</phoneme>用。<break time=\"200ms\"/>组<phoneme alphabet=\"sapi\" ph=\"nei 4\">内</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">各</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>原始<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>仍<phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"bie 2\">别</phoneme>保<phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme>。<break time=\"400ms\"/>点输入<phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">唯</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>直线。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>加入<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>线组。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "87e2fc731a9bb0fd6ffc510f5af1a54315d35e2cfdd78b3c0745f9c1b3b0f89f",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 22,
+          "breakMs": 400
+        },
+        {
+          "offset": 30,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 200
+        },
+        {
+          "offset": 72,
+          "breakMs": 400
+        },
+        {
+          "offset": 82,
+          "breakMs": 200
+        },
+        {
+          "offset": 89,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS19",
+      "audioFile": "VS19.wav",
+      "text": "可逆性与整条线段对应。保证变换前后求的是同一个交集问题。这个结论不依赖系数足够小。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"ke 3\">可</phoneme>逆性<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>整条线段对<phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme>。<break time=\"200ms\"/>保证变换<phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme>后求<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>交集问题。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"lun 4\">论</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">依</phoneme>赖<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"zu 2\">足</phoneme>够小。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "437af819b19a39186e18ffb802074cef24f63c30cd8d01c1a631349b69424f29",
+      "pauses": [
+        {
+          "offset": 11,
+          "breakMs": 200
+        },
+        {
+          "offset": 28,
+          "breakMs": 400
+        },
+        {
+          "offset": 41,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS20",
+      "audioFile": "VS20.wav",
+      "text": "安全系数另外负责事件先后。避免原来不同列的位置颠倒。并把同列不同高度按顺序展开。它补上扫描所需的非竖直条件。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">安全<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>另外负责<phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>先后。<break time=\"200ms\"/>避<phoneme alphabet=\"sapi\" ph=\"mian 3\">免</phoneme>原来<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置颠<phoneme alphabet=\"sapi\" ph=\"dao 3\">倒</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>按顺序展开。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme>补<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme><phoneme alphabet=\"sapi\" ph=\"sao 3\">扫</phoneme><phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme>所<phoneme alphabet=\"sapi\" ph=\"xu 1\">需</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"fei 1\">非</phoneme>竖直条<phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "d196b580ed4557c060376858e29c20a6edccbd6f1471581a145563a3081500ef",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 40,
+          "breakMs": 400
+        },
+        {
+          "offset": 54,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS21",
+      "audioFile": "VS21.wav",
+      "text": "精确有理数运算负责不把分数截成有限位小数。后面的高度、覆盖和未来比较都保留精确值。系数很小。不等于计算没有舍入。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"jing 1\">精</phoneme>确<phoneme alphabet=\"sapi\" ph=\"you 2\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">理</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"yun 4\">运</phoneme>算负责<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>截成<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"xian 4\">限</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>小<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>后面<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>、覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>未来<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>保<phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">精</phoneme>确值。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"hen 2\">很</phoneme><phoneme alphabet=\"sapi\" ph=\"xiao 3\">小</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>等<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme>计算<phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"she 3\">舍</phoneme>入。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "efe8ddc902ec3d7511b046c3f904d6c4d75f7d028dc6aa5a1b7e452fccc2f863",
+      "pauses": [
+        {
+          "offset": 21,
+          "breakMs": 400
+        },
+        {
+          "offset": 41,
+          "breakMs": 400
+        },
+        {
+          "offset": 46,
+          "breakMs": 200
+        },
+        {
+          "offset": 56,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS22",
+      "audioFile": "VS22.wav",
+      "text": "现在高度、斜率、端点范围和未来比较全部使用新坐标。原竖直输入满足x 坐标为零。代入变换得到新 x 坐标等于系数乘新高度。系数为正。除以它得到新高度等于新 x 坐标除以系数。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">现在<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>、<phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme>、端点范围<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>未来<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较全<phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>使用新坐标。<break time=\"400ms\"/>原竖直输入满<phoneme alphabet=\"sapi\" ph=\"zu 2\">足</phoneme><lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"200ms\"/>代入变换<phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标等<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme>新<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"zheng 4\">正</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"chu 2\">除</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到新<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>等<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"chu 2\">除</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "542445b2dda10c080666a011e1db41983b54a6c9577870839c91e4b6bbfb71ff",
+      "pauses": [
+        {
+          "offset": 25,
+          "breakMs": 400
+        },
+        {
+          "offset": 39,
+          "breakMs": 200
+        },
+        {
+          "offset": 60,
+          "breakMs": 400
+        },
+        {
+          "offset": 65,
+          "breakMs": 200
+        },
+        {
+          "offset": 86,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS23",
+      "audioFile": "VS23.wav",
+      "text": "因此蓝色输入的新斜率为系数的倒数。也就是二十六万二千一百四十四。它的新 x 坐标闭范围从零到三倍系数。不能再拿原来的x 坐标零来判断新候选的覆盖。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">因此<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新<phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"dao 4\">倒</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme>就<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>二十<phoneme alphabet=\"sapi\" ph=\"liu 4\">六</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 4\">万</phoneme>二千<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bai 3\">百</phoneme>四十四。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标闭范围<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>到三<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"neng 2\">能</phoneme>再拿原来<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>来判断新候选<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "d8ae8c27dfad911055c87d71d265e64cf4163b2d83092e3859afe234563f3fff",
+      "pauses": [
+        {
+          "offset": 17,
+          "breakMs": 200
+        },
+        {
+          "offset": 32,
+          "breakMs": 400
+        },
+        {
+          "offset": 51,
+          "breakMs": 400
+        },
+        {
+          "offset": 73,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS24",
+      "audioFile": "VS24.wav",
+      "text": "橙色输入在新坐标中的高度恒为一。斜率为零。它的闭范围由刚才两个新端点给出。从负一加系数。到一加系数。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入在新坐标<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>恒<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>闭范围<phoneme alphabet=\"sapi\" ph=\"you 2\">由</phoneme>刚<phoneme alphabet=\"sapi\" ph=\"cai 2\">才</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>新端点<phoneme alphabet=\"sapi\" ph=\"gei 3\">给</phoneme>出。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>负<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>加<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>到<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>加<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "564f96e058849bfd51ec2a3a1718f9cfd601bb4aff5624b2d3b978368bb31179",
+      "pauses": [
+        {
+          "offset": 16,
+          "breakMs": 200
+        },
+        {
+          "offset": 21,
+          "breakMs": 400
+        },
+        {
+          "offset": 37,
+          "breakMs": 200
+        },
+        {
+          "offset": 44,
+          "breakMs": 200
+        },
+        {
+          "offset": 50,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS25",
+      "audioFile": "VS25.wav",
+      "text": "紫色输入的新高度恒为二。斜率也为零。闭范围从负一加两倍系数。到一加两倍系数。输入名称始终代表原始身份。不按上下顺序重新编号。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>恒<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"400ms\"/>闭范围<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>负<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>加两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>到<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>加两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>输入<phoneme alphabet=\"sapi\" ph=\"ming 2\">名</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 1\">称</phoneme>始终代表原始<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>按<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>下顺序<phoneme alphabet=\"sapi\" ph=\"chong 2\">重</phoneme>新编<phoneme alphabet=\"sapi\" ph=\"hao 4\">号</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "9b59f66b236d97bee341de999171447344959ed0993731e2d70c2745672691a4",
+      "pauses": [
+        {
+          "offset": 12,
+          "breakMs": 200
+        },
+        {
+          "offset": 18,
+          "breakMs": 400
+        },
+        {
+          "offset": 30,
+          "breakMs": 200
+        },
+        {
+          "offset": 38,
+          "breakMs": 400
+        },
+        {
+          "offset": 51,
+          "breakMs": 200
+        },
+        {
+          "offset": 62,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS26",
+      "audioFile": "VS26.wav",
+      "text": "全部端点预先登记。因为实际系数在零与二分之一之间。橙色左端先于紫色左端。两者都在原点左侧。先到橙色开始位置。此时只保留它自己。旁边竖列从下向上读。表示活动顺序。不是另一个坐标图。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">全<phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>端点预先<phoneme alphabet=\"sapi\" ph=\"deng 1\">登</phoneme>记。<break time=\"400ms\"/>因<phoneme alphabet=\"sapi\" ph=\"wei 4\">为</phoneme>实际<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>在<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>二<phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>左端先<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>左端。<break time=\"200ms\"/>两者<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>在原点左<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme>。<break time=\"400ms\"/>先到<phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>开始<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/>此时<phoneme alphabet=\"sapi\" ph=\"zhi 2\">只</phoneme>保<phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme>自<phoneme alphabet=\"sapi\" ph=\"ji 3\">己</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"pang 2\">旁</phoneme><phoneme alphabet=\"sapi\" ph=\"bian 1\">边</phoneme>竖<phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme><phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>下向<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme><phoneme alphabet=\"sapi\" ph=\"du 2\">读</phoneme>。<break time=\"200ms\"/>表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme><phoneme alphabet=\"sapi\" ph=\"huo 2\">活</phoneme>动顺序。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>另<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>坐标图。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "bd384802679fcac6378fda737749efd636dbdc2d9e95e7bc08c21a6828ef696a",
+      "pauses": [
+        {
+          "offset": 9,
+          "breakMs": 400
+        },
+        {
+          "offset": 25,
+          "breakMs": 200
+        },
+        {
+          "offset": 36,
+          "breakMs": 200
+        },
+        {
+          "offset": 45,
+          "breakMs": 400
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 63,
+          "breakMs": 400
+        },
+        {
+          "offset": 73,
+          "breakMs": 200
+        },
+        {
+          "offset": 80,
+          "breakMs": 200
+        },
+        {
+          "offset": 89,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS27",
+      "audioFile": "VS27.wav",
+      "text": "再到紫色开始位置。把它放在高度一的橙色输入上方。两份成为邻居。但它们是不同的平行线。没有交点可预约。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">再到紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>开始<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"fang 4\">放</phoneme>在<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme><phoneme alphabet=\"sapi\" ph=\"fang 1\">方</phoneme>。<break time=\"400ms\"/>两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>成<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>邻<phoneme alphabet=\"sapi\" ph=\"ju 1\">居</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"dan 4\">但</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"men 5\">们</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme><phoneme alphabet=\"sapi\" ph=\"xing 2\">行</phoneme>线。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>交点<phoneme alphabet=\"sapi\" ph=\"ke 3\">可</phoneme>预<phoneme alphabet=\"sapi\" ph=\"yue 1\">约</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "cbd47311e87bd8a7a2fa3ba6517f08d98e515125844c77481ded61dbbad71138",
+      "pauses": [
+        {
+          "offset": 9,
+          "breakMs": 200
+        },
+        {
+          "offset": 24,
+          "breakMs": 400
+        },
+        {
+          "offset": 31,
+          "breakMs": 200
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 50,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS28",
+      "audioFile": "VS28.wav",
+      "text": "接着到原点。蓝色输入从高度零开始。在两条水平输入下方。它的新邻居是橙色输入。紫色输入与它之间还隔着一份。不因这次加入直接成为邻居。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 5\">着</phoneme>到原点。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>开始。<break time=\"200ms\"/>在两条水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>输入下<phoneme alphabet=\"sapi\" ph=\"fang 1\">方</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新邻<phoneme alphabet=\"sapi\" ph=\"ju 1\">居</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入。<break time=\"400ms\"/>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme><phoneme alphabet=\"sapi\" ph=\"hai 2\">还</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 2\">隔</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 5\">着</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>因<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme>加入直<phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme>成<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>邻<phoneme alphabet=\"sapi\" ph=\"ju 1\">居</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "35496abc972289006ffe7a8463b1034466d1763f59f34b8e953ee4c5c1a7978f",
+      "pauses": [
+        {
+          "offset": 6,
+          "breakMs": 200
+        },
+        {
+          "offset": 17,
+          "breakMs": 200
+        },
+        {
+          "offset": 27,
+          "breakMs": 400
+        },
+        {
+          "offset": 38,
+          "breakMs": 400
+        },
+        {
+          "offset": 52,
+          "breakMs": 200
+        },
+        {
+          "offset": 65,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS29",
+      "audioFile": "VS29.wav",
+      "text": "检查蓝色与橙色这对邻居。令它们的新高度相等。得到新 x 坐标除以系数等于一。两边乘系数。得到候选x 坐标为一倍系数。高度为一。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">检<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>对邻<phoneme alphabet=\"sapi\" ph=\"ju 1\">居</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ling 4\">令</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"men 5\">们</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>等。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"chu 2\">除</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>等<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/>两<phoneme alphabet=\"sapi\" ph=\"bian 1\">边</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到候选<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "6c65acc103f9c430218dfe0dec2dfd12246122c23c0037fdd0ccf7351051de98",
+      "pauses": [
+        {
+          "offset": 12,
+          "breakMs": 400
+        },
+        {
+          "offset": 22,
+          "breakMs": 200
+        },
+        {
+          "offset": 38,
+          "breakMs": 400
+        },
+        {
+          "offset": 44,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 200
+        },
+        {
+          "offset": 63,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS30",
+      "audioFile": "VS30.wav",
+      "text": "先检查真实覆盖：一倍系数在蓝色闭范围内部。也在橙色闭范围内部。因此这不是只在线段以外相交的延长线候选。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">先检<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>真实覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme>：<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>在<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>闭范围<phoneme alphabet=\"sapi\" ph=\"nei 4\">内</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme>在<phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>闭范围<phoneme alphabet=\"sapi\" ph=\"nei 4\">内</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>。<break time=\"400ms\"/>因此<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>在线段<phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme>外<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>延<phoneme alphabet=\"sapi\" ph=\"chang 2\">长</phoneme>线候选。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "bda05c7fe9165ce69e44fda663b24c54806c81f0e296dc31b382db8d5246ed90",
+      "pauses": [
+        {
+          "offset": 21,
+          "breakMs": 200
+        },
+        {
+          "offset": 31,
+          "breakMs": 400
+        },
+        {
+          "offset": 51,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS31",
+      "audioFile": "VS31.wav",
+      "text": "再检查严格未来：候选x 坐标大于当前位置的零。两项都通过。才把这个位置登记为待处理事件。登记并不等于现在就报告结果。要等到达该位置。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">再检<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme>未来：候选<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme><phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"400ms\"/>两项<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"cai 2\">才</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"deng 1\">登</phoneme>记<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"dai 4\">待</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 2\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">理</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"deng 1\">登</phoneme>记<phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>等<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme>现在就报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>等到<phoneme alphabet=\"sapi\" ph=\"da 2\">达</phoneme>该<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "bac40d8dcbeb2d512190f512dc0fc564245023ffebd9484723daa2ca821ecc35",
+      "pauses": [
+        {
+          "offset": 23,
+          "breakMs": 400
+        },
+        {
+          "offset": 29,
+          "breakMs": 200
+        },
+        {
+          "offset": 44,
+          "breakMs": 400
+        },
+        {
+          "offset": 58,
+          "breakMs": 200
+        },
+        {
+          "offset": 66,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS32",
+      "audioFile": "VS32.wav",
+      "text": "到达低处交点时。蓝色与橙色的高度都是一。紫色高度是二。不经过当前点。不参加这次报告。先记录蓝色与橙色这一对。对应 P 撇这个位置。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">到<phoneme alphabet=\"sapi\" ph=\"da 2\">达</phoneme>低<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>交点时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme><phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme>点。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme>加<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme>。<break time=\"400ms\"/>先记录<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme>。<break time=\"200ms\"/>对<phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"pie 3\">撇</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "bb384317e606f0fd44dd43cd2251b57f7a6c1ff0c8dee216d209010e5ad06f84",
+      "pauses": [
+        {
+          "offset": 8,
+          "breakMs": 200
+        },
+        {
+          "offset": 20,
+          "breakMs": 400
+        },
+        {
+          "offset": 27,
+          "breakMs": 200
+        },
+        {
+          "offset": 34,
+          "breakMs": 200
+        },
+        {
+          "offset": 42,
+          "breakMs": 400
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 65,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS33",
+      "audioFile": "VS33.wav",
+      "text": "点上等高。并不等于右侧任意排序。引用第三章《让精确结果支撑扫描判断》的右侧斜率结论。橙色斜率零较小。排在蓝色下方。更新后。最低是橙色。中间蓝色。最高紫色。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">点<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>等<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>等<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme>右<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"ren 4\">任</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">意</phoneme><phoneme alphabet=\"sapi\" ph=\"pai 2\">排</phoneme>序。<break time=\"400ms\"/>引用第三<phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>《让<phoneme alphabet=\"sapi\" ph=\"jing 1\">精</phoneme>确<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 1\">支</phoneme>撑<phoneme alphabet=\"sapi\" ph=\"sao 3\">扫</phoneme><phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme>判断》<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>右<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"lun 4\">论</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>较小。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"pai 2\">排</phoneme>在<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>下<phoneme alphabet=\"sapi\" ph=\"fang 1\">方</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"geng 1\">更</phoneme>新后。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme>低<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "212e0409075e91c363086adf6c827cb2f9541113e59862f5f36d7aa47dc81c9b",
+      "pauses": [
+        {
+          "offset": 5,
+          "breakMs": 200
+        },
+        {
+          "offset": 16,
+          "breakMs": 400
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 50,
+          "breakMs": 200
+        },
+        {
+          "offset": 57,
+          "breakMs": 400
+        },
+        {
+          "offset": 61,
+          "breakMs": 200
+        },
+        {
+          "offset": 67,
+          "breakMs": 200
+        },
+        {
+          "offset": 72,
+          "breakMs": 200
+        },
+        {
+          "offset": 77,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS34",
+      "audioFile": "VS34.wav",
+      "text": "换序以后。蓝色与紫色之间不再有橙色输入隔着。这个新邻接触发下一次检查。第二个交点不是在蓝色刚加入时直接由这对发现的。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">换序<phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme>后。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>再<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"ge 2\">隔</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 5\">着</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme>新邻<phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme>触<phoneme alphabet=\"sapi\" ph=\"fa 1\">发</phoneme>下<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme>检<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>。<break time=\"400ms\"/>第二<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>交点<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>在<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>刚加入时直<phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme><phoneme alphabet=\"sapi\" ph=\"you 2\">由</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>对<phoneme alphabet=\"sapi\" ph=\"fa 1\">发</phoneme>现<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "b1b6d643c9e6b1dac9c8ff00292d4670a9101f463861dd8ae1528cc479a75888",
+      "pauses": [
+        {
+          "offset": 5,
+          "breakMs": 200
+        },
+        {
+          "offset": 22,
+          "breakMs": 400
+        },
+        {
+          "offset": 35,
+          "breakMs": 400
+        },
+        {
+          "offset": 58,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS35",
+      "audioFile": "VS35.wav",
+      "text": "让新邻居的高度相等。新 x 坐标除以系数等于二。两边乘系数。得到新 x 坐标为两倍系数。高度为二。这就是高处候选。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">让新邻<phoneme alphabet=\"sapi\" ph=\"ju 1\">居</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>等。<break time=\"200ms\"/>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"chu 2\">除</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>等<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme>二。<break time=\"400ms\"/>两<phoneme alphabet=\"sapi\" ph=\"bian 1\">边</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>就<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>候选。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "2feaf56b3ab6b7c86b9dfc621ad2edd1e12e92536dfe67fb6211d8c8ebd9c540",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 24,
+          "breakMs": 400
+        },
+        {
+          "offset": 30,
+          "breakMs": 200
+        },
+        {
+          "offset": 44,
+          "breakMs": 200
+        },
+        {
+          "offset": 49,
+          "breakMs": 200
+        },
+        {
+          "offset": 57,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS36",
+      "audioFile": "VS36.wav",
+      "text": "先看蓝色输入：两倍系数严格夹在零和三倍系数之间。闭范围通过。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">先<phoneme alphabet=\"sapi\" ph=\"kan 4\">看</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入：两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"jia 1\">夹</phoneme>在<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>三<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme>。<break time=\"200ms\"/>闭范围<phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "95a49c19ace0a1babf73b540e76d407420af99b2fe87f0ae54381b1101133540",
+      "pauses": [
+        {
+          "offset": 24,
+          "breakMs": 200
+        },
+        {
+          "offset": 30,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS37",
+      "audioFile": "VS37.wav",
+      "text": "再看紫色输入：候选x 坐标比左端大一。比右端小一。这份闭范围也通过。真实覆盖与未来资格是不同判断。不能用其中一项替代另一项。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">再<phoneme alphabet=\"sapi\" ph=\"kan 4\">看</phoneme>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入：候选<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"bi 2\">比</phoneme><phoneme alphabet=\"sapi\" ph=\"zuo 3\">左</phoneme>端<phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>右端小<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>闭范围<phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme>。<break time=\"400ms\"/>真实覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>未来资<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>判断。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"neng 2\">能</phoneme>用<phoneme alphabet=\"sapi\" ph=\"qi 2\">其</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"xiang 4\">项</phoneme>替代另<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"xiang 4\">项</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "aed5b78bdb0b1473d82f5344a5525e46fbcaa1ea34663a97c11094a0ea0ba6d7",
+      "pauses": [
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 25,
+          "breakMs": 200
+        },
+        {
+          "offset": 34,
+          "breakMs": 400
+        },
+        {
+          "offset": 49,
+          "breakMs": 200
+        },
+        {
+          "offset": 62,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS38",
+      "audioFile": "VS38.wav",
+      "text": "最后与当前交点比较。两倍系数大于一倍系数。所以候选严格在右方。现在登记高处位置。当前已经报告的低处位置不会因为再次遇到。就重新成为未来事件。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme>后<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme><phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme>交点<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较。<break time=\"200ms\"/>两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme>候选严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme>在右<phoneme alphabet=\"sapi\" ph=\"fang 1\">方</phoneme>。<break time=\"400ms\"/>现在<phoneme alphabet=\"sapi\" ph=\"deng 1\">登</phoneme>记<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme><phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">已</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>低<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>因<phoneme alphabet=\"sapi\" ph=\"wei 4\">为</phoneme>再<phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 4\">遇</phoneme>到。<break time=\"200ms\"/>就<phoneme alphabet=\"sapi\" ph=\"chong 2\">重</phoneme>新成<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>未来<phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "9f427806f3ebc513639e9fe5614c1d762d7b9018bfc84d276ba8024317bca6ba",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 21,
+          "breakMs": 200
+        },
+        {
+          "offset": 31,
+          "breakMs": 400
+        },
+        {
+          "offset": 40,
+          "breakMs": 400
+        },
+        {
+          "offset": 60,
+          "breakMs": 200
+        },
+        {
+          "offset": 70,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS39",
+      "audioFile": "VS39.wav",
+      "text": "到高处交点时。蓝色与紫色的高度都是二。橙色高度为一。不参加当前事件。报告蓝色与紫色这一对。对应 Q 撇这个位置。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">到<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>交点时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>二。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme>加<phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme><phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"400ms\"/>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme>。<break time=\"200ms\"/>对<phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Q</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"pie 3\">撇</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "17381e10bf87d54dd813fd0bd3e8f1f7500a699a7eb48f084d4a2bcb09bc5ad7",
+      "pauses": [
+        {
+          "offset": 7,
+          "breakMs": 200
+        },
+        {
+          "offset": 19,
+          "breakMs": 400
+        },
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 34,
+          "breakMs": 400
+        },
+        {
+          "offset": 45,
+          "breakMs": 200
+        },
+        {
+          "offset": 56,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS40",
+      "audioFile": "VS40.wav",
+      "text": "报告后按右侧斜率排列。紫色在蓝色下方。最低仍是橙色。中间变成紫色。最高是蓝色。蓝色不改名。变化的是它在顺序中的位置。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme>后按右<phoneme alphabet=\"sapi\" ph=\"ce 4\">侧</phoneme><phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme><phoneme alphabet=\"sapi\" ph=\"pai 2\">排</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme>。<break time=\"200ms\"/>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>在<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>下<phoneme alphabet=\"sapi\" ph=\"fang 1\">方</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme>低仍<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme>变成紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>改<phoneme alphabet=\"sapi\" ph=\"ming 2\">名</phoneme>。<break time=\"200ms\"/>变<phoneme alphabet=\"sapi\" ph=\"hua 4\">化</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme>在顺序<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "9c16b0a3bf2f8eb1b62942e0dd5664e01f1e9afea7c7e2937a0462bb5cccfe8a",
+      "pauses": [
+        {
+          "offset": 11,
+          "breakMs": 200
+        },
+        {
+          "offset": 19,
+          "breakMs": 400
+        },
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 33,
+          "breakMs": 200
+        },
+        {
+          "offset": 39,
+          "breakMs": 400
+        },
+        {
+          "offset": 45,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS41",
+      "audioFile": "VS41.wav",
+      "text": "新的边界邻居是两条水平输入。它们平行且不在同一直线上。因此没有新交点。已经报告的两对结果继续保留。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">新<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"bian 1\">边</phoneme>界邻<phoneme alphabet=\"sapi\" ph=\"ju 1\">居</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>两条水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>输入。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"men 5\">们</phoneme><phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme><phoneme alphabet=\"sapi\" ph=\"xing 2\">行</phoneme><phoneme alphabet=\"sapi\" ph=\"qie 3\">且</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>在<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 2\">直</phoneme><phoneme alphabet=\"sapi\" ph=\"xian 4\">线</phoneme><phoneme alphabet=\"sapi\" ph=\"shang 5\">上</phoneme>。<break time=\"200ms\"/>因此<phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>新交点。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"yi 3\">已</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>两对<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>继续保<phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "43acbb1037b9b6f679b97ff5895b1a03026a559c8a92c1fe0bdf0e287ec3cee7",
+      "pauses": [
+        {
+          "offset": 14,
+          "breakMs": 400
+        },
+        {
+          "offset": 27,
+          "breakMs": 200
+        },
+        {
+          "offset": 35,
+          "breakMs": 400
+        },
+        {
+          "offset": 49,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS42",
+      "audioFile": "VS42.wav",
+      "text": "由于两倍系数小于一。三倍系数小于一加系数。因此先到蓝色右端。这里没有其他输入经过。不新增结果。蓝色退出后。两条水平输入继续。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"you 2\">由</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme>两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>小<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>三<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>小<phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>加<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>因此先到<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>右端。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">里</phoneme><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"qi 2\">其</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">他</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>新<phoneme alphabet=\"sapi\" ph=\"zeng 1\">增</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>退出后。<break time=\"200ms\"/>两条水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>输入继续。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "bf7b7465646a6a851af02d34f9772601e55a62c3e606d6e9ee430b912a425e59",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 21,
+          "breakMs": 200
+        },
+        {
+          "offset": 30,
+          "breakMs": 400
+        },
+        {
+          "offset": 41,
+          "breakMs": 200
+        },
+        {
+          "offset": 47,
+          "breakMs": 400
+        },
+        {
+          "offset": 53,
+          "breakMs": 200
+        },
+        {
+          "offset": 62,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS43",
+      "audioFile": "VS43.wav",
+      "text": "再到橙色右端。完成该位置处理后。橙色退出。此处也没有另一份参与者。只留下紫色输入。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">再到<phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>右端。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>成该<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"chu 2\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">理</phoneme>后。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>退出。<break time=\"400ms\"/>此<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>另<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 4\">与</phoneme>者。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme>下紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "31717461d5182d718b2aa0e3293a041c6a0694c8ee3a8e729ddef62a9f8fd113",
+      "pauses": [
+        {
+          "offset": 7,
+          "breakMs": 200
+        },
+        {
+          "offset": 16,
+          "breakMs": 200
+        },
+        {
+          "offset": 21,
+          "breakMs": 400
+        },
+        {
+          "offset": 33,
+          "breakMs": 200
+        },
+        {
+          "offset": 41,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS44",
+      "audioFile": "VS44.wav",
+      "text": "最后到紫色右端。处理完后活动顺序为空。六个端点和两个真实交点都已处理。主案例只有两对点结果。水平输入这一对为空。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme>后到紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>右端。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"chu 2\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">理</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>后<phoneme alphabet=\"sapi\" ph=\"huo 2\">活</phoneme>动顺序<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"liu 4\">六</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>端点<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>真实交点<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">已</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 2\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">理</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zhu 3\">主</phoneme>案<phoneme alphabet=\"sapi\" ph=\"li 4\">例</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 2\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>两对点<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>。<break time=\"200ms\"/>水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "fe35ba3d01f15960a751567132816f39b32ec594aff41d668a096859eb29edf2",
+      "pauses": [
+        {
+          "offset": 8,
+          "breakMs": 200
+        },
+        {
+          "offset": 19,
+          "breakMs": 400
+        },
+        {
+          "offset": 35,
+          "breakMs": 400
+        },
+        {
+          "offset": 46,
+          "breakMs": 200
+        },
+        {
+          "offset": 56,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS45",
+      "audioFile": "VS45.wav",
+      "text": "本例中每个事件的新 x 坐标都不同。因此未来判断表现为严格在右方。一般输入仍沿用第六章《同列事件怎样逐点更新》的完整位置比较：先比较新 x 坐标。相同再比较新高度；同位置统一处理。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"ben 3\">本</phoneme><phoneme alphabet=\"sapi\" ph=\"li 4\">例</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>每<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>。<break time=\"200ms\"/>因此未来判断表现<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme>在右<phoneme alphabet=\"sapi\" ph=\"fang 1\">方</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ban 1\">般</phoneme>输入仍<phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme>用第<phoneme alphabet=\"sapi\" ph=\"liu 4\">六</phoneme><phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>《<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"lie 4\">列</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>怎<phoneme alphabet=\"sapi\" ph=\"yang 4\">样</phoneme><phoneme alphabet=\"sapi\" ph=\"zhu 2\">逐</phoneme>点<phoneme alphabet=\"sapi\" ph=\"geng 1\">更</phoneme>新》<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较：先<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>再<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较新<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>；<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置统<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 2\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">理</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "61cd03f7cff32e37eed6beb59f589943cfbf2a2164b2b390d43c2aec8f6b29b1",
+      "pauses": [
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 33,
+          "breakMs": 400
+        },
+        {
+          "offset": 73,
+          "breakMs": 200
+        },
+        {
+          "offset": 90,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS46",
+      "audioFile": "VS46.wav",
+      "text": "一般输入仍按第四章《找齐参与者。报告全部输入对》收集身份。并沿用第五章《覆盖变化后怎样发现未来交点》的同线组与覆盖延长补检。组的最远右端也必须取新端点的新 x 坐标。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ban 1\">般</phoneme>输入仍按第四<phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>《<phoneme alphabet=\"sapi\" ph=\"zhao 3\">找</phoneme><phoneme alphabet=\"sapi\" ph=\"qi 2\">齐</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 4\">与</phoneme>者。<break time=\"200ms\"/>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme>全<phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>输入对》收集<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme><phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme>用第五<phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>《覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme>变<phoneme alphabet=\"sapi\" ph=\"hua 4\">化</phoneme>后怎<phoneme alphabet=\"sapi\" ph=\"yang 4\">样</phoneme><phoneme alphabet=\"sapi\" ph=\"fa 1\">发</phoneme>现未来交点》<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>线组<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme>延<phoneme alphabet=\"sapi\" ph=\"chang 2\">长</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">补</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 3\">检</phoneme>。<break time=\"400ms\"/>组<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme>远右端<phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme>必须<phoneme alphabet=\"sapi\" ph=\"qu 3\">取</phoneme>新端点<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "8bcfdf8296523e78561435ac1530e8e3038d0bd2b74fc9b9a1905211824baf76",
+      "pauses": [
+        {
+          "offset": 16,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 200
+        },
+        {
+          "offset": 62,
+          "breakMs": 400
+        },
+        {
+          "offset": 83,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS47",
+      "audioFile": "VS47.wav",
+      "text": "扫描记录的位置还在新坐标中。先取蓝色与橙色这一对。保留输入身份。使用同一系数的逆变换。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"sao 3\">扫</phoneme><phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme>记录<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"hai 2\">还</phoneme>在新坐标<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>。<break time=\"400ms\"/>先<phoneme alphabet=\"sapi\" ph=\"qu 3\">取</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme>。<break time=\"200ms\"/>保<phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/>使用<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>逆变换。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "a642a1ee9e82ad037f34b26b8bfe26da929482181be2b04dc7dd7cdf1d70b0ae",
+      "pauses": [
+        {
+          "offset": 14,
+          "breakMs": 400
+        },
+        {
+          "offset": 25,
+          "breakMs": 200
+        },
+        {
+          "offset": 32,
+          "breakMs": 200
+        },
+        {
+          "offset": 43,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS48",
+      "audioFile": "VS48.wav",
+      "text": "先用系数乘新高度一。再从新 x 坐标的一倍系数中减去这个乘积。得到零。高度仍是一。因此这对结果恢复为原图中的 P 点。坐标零、一。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">先用<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme>新<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>减<phoneme alphabet=\"sapi\" ph=\"qu 4\">去</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>仍<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>因此<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>对<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>恢复<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>原图<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 点。<break time=\"200ms\"/>坐标<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "fa2413044c975920053aeae6613c507ad0c6679f97d04def193ce8ca67436222",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 31,
+          "breakMs": 200
+        },
+        {
+          "offset": 35,
+          "breakMs": 400
+        },
+        {
+          "offset": 41,
+          "breakMs": 200
+        },
+        {
+          "offset": 59,
+          "breakMs": 200
+        },
+        {
+          "offset": 65,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS49",
+      "audioFile": "VS49.wav",
+      "text": "再取蓝色与紫色这一对。新 x 坐标是两倍系数。新高度是二。仍沿用原始输入对。不能把它和前一对合成无身份的点集合。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">再<phoneme alphabet=\"sapi\" ph=\"qu 3\">取</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme>。<break time=\"400ms\"/>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>新<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>二。<break time=\"400ms\"/>仍<phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme>用原始输入对。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"neng 2\">能</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme><phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>成<phoneme alphabet=\"sapi\" ph=\"wu 2\">无</phoneme><phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>点集<phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "31c5866912b422bade11a504c7b173cd4d9fd96b78cae1a708063d1427e7c2fa",
+      "pauses": [
+        {
+          "offset": 11,
+          "breakMs": 400
+        },
+        {
+          "offset": 23,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 38,
+          "breakMs": 200
+        },
+        {
+          "offset": 56,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS50",
+      "audioFile": "VS50.wav",
+      "text": "先求系数与二的乘积。再从两倍系数中减去这个乘积。结果为零。高度是二。所以恢复为原图中的 Q 点。坐标零、二。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">先求<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>二<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>减<phoneme alphabet=\"sapi\" ph=\"qu 4\">去</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme>恢复<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>原图<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Q</say-as></lang> 点。<break time=\"200ms\"/>坐标<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>、二。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "8dc291fd4c0b4dddf757dcddbd3892f5f73f5be8f30e103ed5bd2d79c05e805b",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 24,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 34,
+          "breakMs": 200
+        },
+        {
+          "offset": 48,
+          "breakMs": 200
+        },
+        {
+          "offset": 54,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS51",
+      "audioFile": "VS51.wav",
+      "text": "最终蓝色与橙色对应低处点。蓝色与紫色对应高处点。两条水平输入没有公共点。原始无序输入对与完整交集一起交付。不把新坐标位置直接当成原图答案。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme>终<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>对<phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme>低<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>点。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>对<phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>点。<break time=\"400ms\"/>两条水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>公<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme>点。<break time=\"400ms\"/>原始<phoneme alphabet=\"sapi\" ph=\"wu 2\">无</phoneme>序输入对<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整交集<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"qi 3\">起</phoneme>交付。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>新坐标<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置直<phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme><phoneme alphabet=\"sapi\" ph=\"dang 4\">当</phoneme>成原图<phoneme alphabet=\"sapi\" ph=\"da 2\">答</phoneme>案。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "700863d00906d18830150446b2bead2e1dbd9f7f1323d44e1e2d9ecfa3bb7490",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 24,
+          "breakMs": 400
+        },
+        {
+          "offset": 36,
+          "breakMs": 400
+        },
+        {
+          "offset": 53,
+          "breakMs": 200
+        },
+        {
+          "offset": 69,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS52",
+      "audioFile": "VS52.wav",
+      "text": "换一个独立短例。只取竖直输入 V 与绿色输入 W 这两份。绿色输入从零、一到零、二。完整地落在蓝色输入内部。本例没有两条水平输入。最大绝对端点坐标仍是三。实际系数不变。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">换<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>独<phoneme alphabet=\"sapi\" ph=\"li 4\">立</phoneme>短<phoneme alphabet=\"sapi\" ph=\"li 4\">例</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhi 2\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"qu 3\">取</phoneme>竖直输入 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">V</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">绿</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">W</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"lv 4\">绿</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>到<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>、二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整<phoneme alphabet=\"sapi\" ph=\"de 5\">地</phoneme><phoneme alphabet=\"sapi\" ph=\"luo 4\">落</phoneme>在<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"nei 4\">内</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ben 3\">本</phoneme><phoneme alphabet=\"sapi\" ph=\"li 4\">例</phoneme><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>两条水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>输入。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme><phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme>绝对端点坐标仍<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>三。<break time=\"200ms\"/>实际<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>变。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "3df332e81e8d1b836113c3ba36586fd6868e56c941673d5d2fde64f7545b96c2",
+      "pauses": [
+        {
+          "offset": 8,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 54,
+          "breakMs": 400
+        },
+        {
+          "offset": 65,
+          "breakMs": 200
+        },
+        {
+          "offset": 77,
+          "breakMs": 200
+        },
+        {
+          "offset": 84,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS53",
+      "audioFile": "VS53.wav",
+      "text": "统一变换后。两份仍在同一条直线上。蓝色覆盖零到三倍系数。绿色覆盖一倍到两倍系数。虚线和实线只帮助辨认重合身份。不把它们挪到不同位置。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">统<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>变换后。<break time=\"200ms\"/>两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>仍在<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"tiao 2\">条</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 2\">直</phoneme><phoneme alphabet=\"sapi\" ph=\"xian 4\">线</phoneme><phoneme alphabet=\"sapi\" ph=\"shang 5\">上</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>到三<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lv 4\">绿</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme>到两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>虚线<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>实线<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>帮<phoneme alphabet=\"sapi\" ph=\"zhu 4\">助</phoneme><phoneme alphabet=\"sapi\" ph=\"bian 4\">辨</phoneme>认<phoneme alphabet=\"sapi\" ph=\"chong 2\">重</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme><phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"men 5\">们</phoneme>挪到<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "d9493f6220ded16877f09372649bacfc35c8c6e74337807178963af57a7e0c6e",
+      "pauses": [
+        {
+          "offset": 6,
+          "breakMs": 200
+        },
+        {
+          "offset": 17,
+          "breakMs": 400
+        },
+        {
+          "offset": 28,
+          "breakMs": 200
+        },
+        {
+          "offset": 40,
+          "breakMs": 400
+        },
+        {
+          "offset": 55,
+          "breakMs": 200
+        },
+        {
+          "offset": 66,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS54",
+      "audioFile": "VS54.wav",
+      "text": "绿色输入在一倍系数、高度一的位置加入时。按第五章《完整结果怎样只报告一次》的加入报告规则与同组蓝色输入报告完整交集。从一倍系数、一。到两倍系数、二的整段都属于这一条结果。不是两个点结果。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"lv 4\">绿</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入在<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>、<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置加入时。<break time=\"200ms\"/>按第五<phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>《<phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>怎<phoneme alphabet=\"sapi\" ph=\"yang 4\">样</phoneme><phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme>》<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>加入报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme>规则<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>组<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整交集。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>到两<phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>、二<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>整段<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 3\">属</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 2\">于</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"tiao 2\">条</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>点<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "01b26db8cb75fd7fe046dc5abd7493158138f369b3062dac8128749a4aa81893",
+      "pauses": [
+        {
+          "offset": 20,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 400
+        },
+        {
+          "offset": 66,
+          "breakMs": 200
+        },
+        {
+          "offset": 85,
+          "breakMs": 200
+        },
+        {
+          "offset": 93,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS55",
+      "audioFile": "VS55.wav",
+      "text": "下端的新 x 坐标减去系数与一的乘积。恢复为零。高度一不变。上端的新 x 坐标减去系数与二的乘积。也恢复为零。高度二不变。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">下端<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标减<phoneme alphabet=\"sapi\" ph=\"qu 4\">去</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>。<break time=\"200ms\"/>恢复<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>变。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme>端<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标减<phoneme alphabet=\"sapi\" ph=\"qu 4\">去</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>二<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme>恢复<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>二<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>变。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "fd3797c7e5c629af017ddd23e0495a6aece51993ddaf3ebf8eb410773c6023ac",
+      "pauses": [
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 24,
+          "breakMs": 200
+        },
+        {
+          "offset": 30,
+          "breakMs": 400
+        },
+        {
+          "offset": 49,
+          "breakMs": 200
+        },
+        {
+          "offset": 55,
+          "breakMs": 200
+        },
+        {
+          "offset": 61,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS56",
+      "audioFile": "VS56.wav",
+      "text": "由整条线段对应结论。恢复的是这两个边界之间的完整闭线段。保留蓝色与绿色这一对身份。不把区间切成两个点。也不因内部穿越而把旧同线对重报为点。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"you 2\">由</phoneme>整条线段对<phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"lun 4\">论</phoneme>。<break time=\"200ms\"/>恢复<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"bian 1\">边</phoneme>界<phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整闭线段。<break time=\"400ms\"/>保<phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">绿</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme><phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"qu 1\">区</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme><phoneme alphabet=\"sapi\" ph=\"qie 1\">切</phoneme>成两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>点。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>因<phoneme alphabet=\"sapi\" ph=\"nei 4\">内</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme><phoneme alphabet=\"sapi\" ph=\"chuan 1\">穿</phoneme><phoneme alphabet=\"sapi\" ph=\"yue 4\">越</phoneme><phoneme alphabet=\"sapi\" ph=\"er 2\">而</phoneme><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>旧<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>线对<phoneme alphabet=\"sapi\" ph=\"chong 2\">重</phoneme>报<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>点。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "e0cf434410a16e5a422a4333b85ff0aaf093496e5ac80492f8bbf843b478d1d3",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 28,
+          "breakMs": 400
+        },
+        {
+          "offset": 41,
+          "breakMs": 200
+        },
+        {
+          "offset": 51,
+          "breakMs": 200
+        },
+        {
+          "offset": 69,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS57",
+      "audioFile": "VS57.wav",
+      "text": "再换一个独立短例。只取蓝色线段和两份点输入。用 Z 一、Z 二这两个编号区分点输入。它们的两个端点都在零、一这个位置。本例没有水平输入或绿色线段。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">再换<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>独<phoneme alphabet=\"sapi\" ph=\"li 4\">立</phoneme>短<phoneme alphabet=\"sapi\" ph=\"li 4\">例</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhi 2\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"qu 3\">取</phoneme><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>线段<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>点输入。<break time=\"400ms\"/>用 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Z</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Z</say-as></lang> 二<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>编<phoneme alphabet=\"sapi\" ph=\"hao 4\">号</phoneme><phoneme alphabet=\"sapi\" ph=\"qu 1\">区</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme>点输入。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"men 5\">们</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>端点<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>在<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ben 3\">本</phoneme><phoneme alphabet=\"sapi\" ph=\"li 4\">例</phoneme><phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>水<phoneme alphabet=\"sapi\" ph=\"ping 2\">平</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"huo 4\">或</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">绿</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>线段。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "421137d71b872953fb1464ab83afee3c46c884ad0ff6deff3b75c18abfe4a737",
+      "pauses": [
+        {
+          "offset": 9,
+          "breakMs": 200
+        },
+        {
+          "offset": 22,
+          "breakMs": 400
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 59,
+          "breakMs": 400
+        },
+        {
+          "offset": 73,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS58",
+      "audioFile": "VS58.wav",
+      "text": "全部端点仍用相同的实际系数。两份点输入的两个新端点都在一倍系数、一的位置。因此仍是零长度输入。而且仍在同一个事件中。图里的圆环与菱形中心重合。标记不表示面积。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">全<phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>端点仍用<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>实际<phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>点输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>两<phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme>新端点<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>在<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/>因此仍<phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme><phoneme alphabet=\"sapi\" ph=\"chang 2\">长</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>输入。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"er 2\">而</phoneme><phoneme alphabet=\"sapi\" ph=\"qie 3\">且</phoneme>仍在<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"tu 2\">图</phoneme><phoneme alphabet=\"sapi\" ph=\"li 5\">里</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>圆环<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>菱形<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>心<phoneme alphabet=\"sapi\" ph=\"chong 2\">重</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>。<break time=\"200ms\"/>标记<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>表<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme>面<phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "bee716ac60ba079bca21c7ed0a57e3e68f47633d6895660a1dd208670cb6f7e6",
+      "pauses": [
+        {
+          "offset": 14,
+          "breakMs": 400
+        },
+        {
+          "offset": 37,
+          "breakMs": 200
+        },
+        {
+          "offset": 47,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 400
+        },
+        {
+          "offset": 71,
+          "breakMs": 200
+        },
+        {
+          "offset": 79,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS59",
+      "audioFile": "VS59.wav",
+      "text": "到这个位置时。蓝色输入严格穿过。按第四章《找齐参与者。报告全部输入对》的同点规则。把非零参与者与两份点身份一起收集。位置相同不意味着输入身份相同。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">到<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>输入严<phoneme alphabet=\"sapi\" ph=\"ge 2\">格</phoneme><phoneme alphabet=\"sapi\" ph=\"chuan 1\">穿</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme>。<break time=\"400ms\"/>按第四<phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>《<phoneme alphabet=\"sapi\" ph=\"zhao 3\">找</phoneme><phoneme alphabet=\"sapi\" ph=\"qi 2\">齐</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 4\">与</phoneme>者。<break time=\"200ms\"/>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme>全<phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>输入对》<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>点规则。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme><phoneme alphabet=\"sapi\" ph=\"fei 1\">非</phoneme><phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 4\">与</phoneme>者<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>点<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"qi 3\">起</phoneme>收集。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">意</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">味</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 5\">着</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "8a8e61ed196408111314626757c255d2108436ee9070faf5ea91e6e776d4e20d",
+      "pauses": [
+        {
+          "offset": 7,
+          "breakMs": 200
+        },
+        {
+          "offset": 16,
+          "breakMs": 400
+        },
+        {
+          "offset": 27,
+          "breakMs": 200
+        },
+        {
+          "offset": 41,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 400
+        },
+        {
+          "offset": 73,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS60",
+      "audioFile": "VS60.wav",
+      "text": "先让蓝色线段与第一份点输入配对。再与第二份点输入配对。两对各产生一条点结果。两条结果的位置都在当前点。原始身份分别保留。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">先让<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>线段<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"di 4\">第</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>点输入配对。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>第二<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>点输入配对。<break time=\"200ms\"/>两对<phoneme alphabet=\"sapi\" ph=\"ge 4\">各</phoneme>产生<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"tiao 2\">条</phoneme>点<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>。<break time=\"400ms\"/>两条<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>在<phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme><phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme>点。<break time=\"200ms\"/>原始<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"bie 2\">别</phoneme>保<phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f36c731b4ff625a90e60bfb1c4eba2a87a730acff59568f0d6a2233336ddb30c",
+      "pauses": [
+        {
+          "offset": 16,
+          "breakMs": 200
+        },
+        {
+          "offset": 27,
+          "breakMs": 200
+        },
+        {
+          "offset": 38,
+          "breakMs": 400
+        },
+        {
+          "offset": 51,
+          "breakMs": 200
+        },
+        {
+          "offset": 60,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS61",
+      "audioFile": "VS61.wav",
+      "text": "两份点输入之间也构成一个无序输入对。它们在同一位置。所以这一对也有一条点结果。三对位置相同。不能合并成只有一份身份的记录。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>点输入<phoneme alphabet=\"sapi\" ph=\"zhi 1\">之</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme><phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme>构成<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wu 2\">无</phoneme>序输入对。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"men 5\">们</phoneme>在<phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">以</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme><phoneme alphabet=\"sapi\" ph=\"ye 2\">也</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"tiao 2\">条</phoneme>点<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>。<break time=\"400ms\"/>三对<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"neng 2\">能</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme><phoneme alphabet=\"sapi\" ph=\"bing 4\">并</phoneme>成<phoneme alphabet=\"sapi\" ph=\"zhi 2\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>记录。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "7ea9a2ec8f75605bc1134c11adcf09f0f8d9a477ec62e8ed7e4656387e208d0b",
+      "pauses": [
+        {
+          "offset": 18,
+          "breakMs": 400
+        },
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 39,
+          "breakMs": 400
+        },
+        {
+          "offset": 46,
+          "breakMs": 200
+        },
+        {
+          "offset": 61,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS62",
+      "audioFile": "VS62.wav",
+      "text": "对三条结果分别使用逆变换。新 x 坐标的一倍系数。减去系数与高度一的乘积。得到零；高度保持一。三对各自恢复为原图中的同一个位置。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">对三条<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1\">分</phoneme><phoneme alphabet=\"sapi\" ph=\"bie 2\">别</phoneme>使用逆变换。<break time=\"400ms\"/>新 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"bei 4\">倍</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>减<phoneme alphabet=\"sapi\" ph=\"qu 4\">去</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme><phoneme alphabet=\"sapi\" ph=\"ji 1\">积</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到<phoneme alphabet=\"sapi\" ph=\"ling 2\">零</phoneme>；<phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>保持<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/>三对<phoneme alphabet=\"sapi\" ph=\"ge 4\">各</phoneme>自恢复<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>原图<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"tong 2\">同</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 4\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f308efc84f2e5d778dbaf7302c1fc160d8ee21517923a6d3a86d810419c09ba5",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 400
+        },
+        {
+          "offset": 25,
+          "breakMs": 200
+        },
+        {
+          "offset": 37,
+          "breakMs": 200
+        },
+        {
+          "offset": 47,
+          "breakMs": 400
+        },
+        {
+          "offset": 64,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS63",
+      "audioFile": "VS63.wav",
+      "text": "两份点输入只参与这一次事件。不获得斜率。不进入后续活动顺序。蓝色线段在这里继续。处理后仍只有它活动。点身份已经保存在结果中。退出顺序不会删除结果。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>点输入<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 4\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">事</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>获<phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme><phoneme alphabet=\"sapi\" ph=\"xie 2\">斜</phoneme><phoneme alphabet=\"sapi\" ph=\"lv 4\">率</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>进入后续<phoneme alphabet=\"sapi\" ph=\"huo 2\">活</phoneme>动顺序。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>线段在<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">里</phoneme>继续。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"chu 2\">处</phoneme><phoneme alphabet=\"sapi\" ph=\"li 3\">理</phoneme>后仍<phoneme alphabet=\"sapi\" ph=\"zhi 2\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"ta 1\">它</phoneme><phoneme alphabet=\"sapi\" ph=\"huo 2\">活</phoneme>动。<break time=\"400ms\"/>点<phoneme alphabet=\"sapi\" ph=\"shen 1\">身</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 3\">已</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>保存在<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme><phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>。<break time=\"200ms\"/>退出顺序<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>删<phoneme alphabet=\"sapi\" ph=\"chu 2\">除</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 3\">果</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "26cc3b1c1415401c543c4352af269ce3fbfbb8bbfc05060f30003e7e5b86bf8f",
+      "pauses": [
+        {
+          "offset": 14,
+          "breakMs": 200
+        },
+        {
+          "offset": 20,
+          "breakMs": 200
+        },
+        {
+          "offset": 30,
+          "breakMs": 400
+        },
+        {
+          "offset": 40,
+          "breakMs": 200
+        },
+        {
+          "offset": 50,
+          "breakMs": 400
+        },
+        {
+          "offset": 62,
+          "breakMs": 200
+        },
+        {
+          "offset": 73,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "VS64",
+      "audioFile": "VS64.wav",
+      "text": "本集把竖直输入接回已有扫描：统一系数补上非竖直条件。所有判断使用新坐标。点与完整区间按原始输入对还原。下一章再组织完整混合扫描。一般正确性与总工作量留给后续章节。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"ben 3\">本</phoneme>集<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>竖直输入<phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme>回<phoneme alphabet=\"sapi\" ph=\"yi 2\">已</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme><phoneme alphabet=\"sapi\" ph=\"sao 3\">扫</phoneme><phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme>：统<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"xi 4\">系</phoneme><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>补<phoneme alphabet=\"sapi\" ph=\"shang 4\">上</phoneme><phoneme alphabet=\"sapi\" ph=\"fei 1\">非</phoneme>竖直条<phoneme alphabet=\"sapi\" ph=\"jian 4\">件</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2\">所</phoneme><phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>判断使用新坐标。<break time=\"200ms\"/>点<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整<phoneme alphabet=\"sapi\" ph=\"qu 1\">区</phoneme><phoneme alphabet=\"sapi\" ph=\"jian 1\">间</phoneme>按原始输入对<phoneme alphabet=\"sapi\" ph=\"huan 2\">还</phoneme>原。<break time=\"400ms\"/>下<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme>再组织<phoneme alphabet=\"sapi\" ph=\"wan 2\">完</phoneme>整<phoneme alphabet=\"sapi\" ph=\"hun 4\">混</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme><phoneme alphabet=\"sapi\" ph=\"sao 3\">扫</phoneme><phoneme alphabet=\"sapi\" ph=\"miao 2\">描</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"ban 1\">般</phoneme><phoneme alphabet=\"sapi\" ph=\"zheng 4\">正</phoneme>确性<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>总工<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme><phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme><phoneme alphabet=\"sapi\" ph=\"liu 2\">留</phoneme><phoneme alphabet=\"sapi\" ph=\"gei 3\">给</phoneme>后续<phoneme alphabet=\"sapi\" ph=\"zhang 1\">章</phoneme><phoneme alphabet=\"sapi\" ph=\"jie 2\">节</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "485c63ce7ffae11aa6fb6bd09b1625afff69b90b72a3fb1e130fa60fda42124c",
+      "pauses": [
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 36,
+          "breakMs": 200
+        },
+        {
+          "offset": 51,
+          "breakMs": 400
+        },
+        {
+          "offset": 64,
+          "breakMs": 200
+        },
+        {
+          "offset": 81,
+          "breakMs": 400
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { configureSpeechConfig } from "./speech-network.ts";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { synthesizeBatch } from "../../../shared/speech/synthesize-batch.ts";
 import { updateSentencePauses } from "./sentence-plan.ts";
@@ -10,5 +11,6 @@ await synthesizeBatch(
   () => updateSentencePauses(false),
   {
     concurrency: 20,
+    configureSpeechConfig,
   },
 );

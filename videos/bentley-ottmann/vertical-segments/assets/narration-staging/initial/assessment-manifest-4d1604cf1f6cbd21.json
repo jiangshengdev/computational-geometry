@@ -1,0 +1,228 @@
+{
+  "planSha256": "e8bcffc71c5458c6efd9e71e3cc6d07da1e6021e4e6e624dd953eedadd0c10a4",
+  "automaticRetries": 0,
+  "published": false,
+  "listening": "not-performed",
+  "requests": [
+    {
+      "id": "VS01",
+      "status": "assessed-timing-available",
+      "audioSha256": "53b0f21a03a4d2af74e4538539129e5bc71a42630e8d55cf9f89185a19b0e98b",
+      "fingerprint": "50ba96a3dda5c2d36130b72638ea973fb7f56571382b4f82c77d655401ec1dbc",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS02",
+      "status": "assessed-timing-available",
+      "audioSha256": "11ddd8d9be288bfc9e562a6556160e79d3893dc043ea35506f1db710a0fd1630",
+      "fingerprint": "0efa4a2965618ca66fc91b2f267af21c9606395b375caa59817a55a1e6691762",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS03",
+      "status": "assessed-timing-available",
+      "audioSha256": "6a671ec4618e12605b117b90523442893bafc12f0ad3f7a3c955b70dca129463",
+      "fingerprint": "dad6e874145bebfdf931ee3dce4e083dafa5569ac8037fda992b0221920fc0e6",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS04",
+      "status": "assessed-timing-available",
+      "audioSha256": "0f7fe0bc9aabe931742b86e9e1e60e161545155a7c25624cbcf8a8391c558d20",
+      "fingerprint": "ba9ce0ee936b9aa771649542c6b3dfee017a90c68188a2f77d3364bbb68fe8ca",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS05",
+      "status": "assessed-timing-available",
+      "audioSha256": "8e2fd5a15e49332cba6f2f71b2ccd584720f128938623dd6f91fa7181dd892d6",
+      "fingerprint": "797d1e17ac17f25a7801fffe470887f13b6591dc375280f813004cfd6f442d2d",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS06",
+      "status": "assessed-timing-available",
+      "audioSha256": "77866b53c77b03591f9946bc9f2e859008c77e7ba06974a18720371d089cdb54",
+      "fingerprint": "f587c60c2c4774f43fad096b7633cf05ef10d11774689255cdd65eb3447eb50a",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS07",
+      "status": "assessed-timing-available",
+      "audioSha256": "d9f69df04f4fb86b7e8b2033601717ced7291c3ea111920a7769b329044935a0",
+      "fingerprint": "497fdb9c4d355232b8135de4ad51baba235454fc83641a3bfbfb235daf4103f3",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS08",
+      "status": "assessed-timing-available",
+      "audioSha256": "b1ccbcacc980c59ca6026688f237689e7e670dca3a2ec1cbeb1e5d225c730445",
+      "fingerprint": "c51193c47fe161d83655fe100d4a008014e19687dc1d1d4445dca210cc653f5e",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS09",
+      "status": "assessed-timing-available",
+      "audioSha256": "ed5e62e78be6f509a20b52326600231f7ef14ec9682a0c68bd513440b70edf45",
+      "fingerprint": "3dde481d7d7567558d8f1d6f8efff46ffe9df77d8f7217842da545b159c3336e",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS10",
+      "status": "assessed-timing-available",
+      "audioSha256": "85d83667b7a29711c459e40b7181771428890c3b3112cd09241447083fb63026",
+      "fingerprint": "2b378a6feb95eff03566c3dbaf2cc6705ba174bf6122165adc654e9a13ff9cb8",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS11",
+      "status": "assessed-timing-available",
+      "audioSha256": "d697217f26ebedf55bd945214044c274ddb5d6e2cbd347c21590cb31b7b30e7a",
+      "fingerprint": "3024ef17651206f2f17ffa4730ab2bc0110cbd72811e0848f722d75a7196817a",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS12",
+      "status": "assessed-timing-available",
+      "audioSha256": "9a1677bbaaab5c65fe707c1118ecc8881a3ebc4e4441739e2d48dbcd7a329496",
+      "fingerprint": "b6f297c2e13e0ae8e2890b18815b4e9be495608ddacc2b84327778cccd1ffe56",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS13",
+      "status": "assessed-timing-available",
+      "audioSha256": "fa325f2931c723f3a4a957bcfddf04674d8e38d90e702e0072e9994b2b911797",
+      "fingerprint": "444fde0319f9eef1318fbb9ef68ab5d5fb3d092c9493a1db5130d2fce28d0b4e",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS14",
+      "status": "assessed-timing-available",
+      "audioSha256": "4f358057df1ac4114ed20a914c8e3db8f8f5cdf7034152b95fa065ef7e78b2f6",
+      "fingerprint": "b175b50c55b6be81ddf372df48e90ff5e1e51ce8e34fbb881b38ef7fdb18d697",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS15",
+      "status": "assessed-timing-available",
+      "audioSha256": "6ac6d341874b9f7e9b0788306e86bee774fd262219201eef9deb223001f4384e",
+      "fingerprint": "b9b88fa5255b001cfdb6e7ce8d97c34e871fed10e7bb233beebf856a87d4af21",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS16",
+      "status": "assessed-timing-available",
+      "audioSha256": "cf1324acccedd45ae182607342032e655b79fa88e7c0b012b451aab0cd9d1088",
+      "fingerprint": "26f2864ddd37a1c3ac8a94eb85a0a07ffa5e8f598250afb8bf31fc027d8503e6",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS17",
+      "status": "assessed-timing-available",
+      "audioSha256": "c31d8538ba0ebfa88308d864faae679ac9a0f7849fb9461d329d8702f8347230",
+      "fingerprint": "e9b7add5ffd0e30539bbf2c9f5b06ac01197585b5f177974d553ab978f1f1dac",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS18",
+      "status": "assessed-timing-available",
+      "audioSha256": "ea3348e0be38d55e92e8673fba09507c35a9dfa195df5a70e9e69a32c0dc128a",
+      "fingerprint": "87e2fc731a9bb0fd6ffc510f5af1a54315d35e2cfdd78b3c0745f9c1b3b0f89f",
+      "flags": {
+        "Mispronunciation": 2,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS19",
+      "status": "assessed-timing-available",
+      "audioSha256": "288b0aca99027ca050e00e2512cd402baf3b7233ac67008d75b181f088081356",
+      "fingerprint": "437af819b19a39186e18ffb802074cef24f63c30cd8d01c1a631349b69424f29",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "VS20",
+      "status": "assessed-timing-available",
+      "audioSha256": "901b31b811e83ce137e99adf79ad4c07914e5013116c9da43c1199b9c2252b71",
+      "fingerprint": "d196b580ed4557c060376858e29c20a6edccbd6f1471581a145563a3081500ef",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    }
+  ]
+}
