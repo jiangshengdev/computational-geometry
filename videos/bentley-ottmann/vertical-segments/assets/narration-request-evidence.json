@@ -97,5 +97,42 @@
       "diagnostic": "",
       "audioSha256": "041e5e925d02b23c58f8a48bd6fee7873a7b459583858fd11b905d049efb9587"
     }
-  ]
+  ],
+  "historyCommit": "0da23999a87f30cbbe6c5613c85ea98390013491",
+  "assessmentRecovery": {
+    "id": "VS33",
+    "original": {
+      "planSha256": "e8bcffc71c5458c6efd9e71e3cc6d07da1e6021e4e6e624dd953eedadd0c10a4",
+      "id": "VS33",
+      "status": "request-failed-or-uncertain",
+      "audioSha256": "b6d1324020983aab4a66ae0a74272724b6c691f3e691ede19a7c6d38bc0e0d47",
+      "fingerprint": "212e0409075e91c363086adf6c827cb2f9541113e59862f5f36d7aa47dc81c9b"
+    },
+    "replacement": {
+      "planSha256": "e8bcffc71c5458c6efd9e71e3cc6d07da1e6021e4e6e624dd953eedadd0c10a4",
+      "id": "VS33",
+      "status": "assessed-timing-available",
+      "audioSha256": "b6d1324020983aab4a66ae0a74272724b6c691f3e691ede19a7c6d38bc0e0d47",
+      "fingerprint": "212e0409075e91c363086adf6c827cb2f9541113e59862f5f36d7aa47dc81c9b",
+      "startedAt": "2026-11-11T02:59:57.556Z",
+      "endedAt": "2026-11-11T03:00:06.328Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    "originalOutcome": "unknown; both requests may count toward usage; do not replay the original request"
+  },
+  "supersededRecovery": {
+    "planSha256": "9208a71128cc2e054000691d6cdd9f2aad165c13b5b30f8f01fb6bfcd34d1467",
+    "id": "VS32",
+    "fingerprint": "bb384317e606f0fd44dd43cd2251b57f7a6c1ff0c8dee216d209010e5ad06f84",
+    "status": "synthesized-and-decoded",
+    "startedAt": "2026-11-11T02:38:55.655Z",
+    "endedAt": "2026-11-11T02:38:59.354Z",
+    "diagnostic": "",
+    "audioSha256": "34630dde4526b3f27cd67d32ccca9c81d12ed34ef5975edd38d1c32a9238d7f1",
+    "retainedEvidence": "assets/narration-review/VS32-34630dde4526.json"
+  }
 }
