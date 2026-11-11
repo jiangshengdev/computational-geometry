@@ -1,258 +1,258 @@
 ---
 slug: /docs/segment-intersection/same-point-events
-title: 同一个点上的事情一起处理
-sidebar_label: 4．同一个点上的事情一起处理
-description: 从共端点逐步走到多线共点与点输入，解释怎样找齐参与者、报告全部输入对，再统一更新活动顺序。
+title: Handle everything at the same point together
+sidebar_label: 4. Handle everything at the same point together
+description: Progress from shared endpoints to many segments meeting and point inputs, collecting all participants, reporting every input pair, then updating the active order together.
 ---
 
 import IntersectionFigures from '@site/src/components/IntersectionFigures';
 
-第二章把开始、结束和两线交叉分别处理。现在，如果一条线段结束的地方恰好也是另一条的起点，应该先做哪件事？若同一个位置还有别的线段穿过，只交换发现交点的那两条，够不够？
+Chapter 2 handled starts, ends, and crossings of two segments separately. What happens when one segment ends exactly where another begins? Which action comes first? If other segments also pass through that position, is swapping only the pair that discovered the intersection enough?
 
-这是线段求交系列的第四章。我们从只有两份输入的接触开始，逐步建立一条规则：**先找齐同点参与者，报告这个位置的全部相交输入对，再更新活动顺序，最后检查新邻居。**
+This is Chapter 4 of the segment-intersection series. Starting with contact between just two inputs, we build one rule: **collect every same-point participant first, report all intersecting input pairs at this position, then update the active order, and finally check new neighbors.**
 
-## 第一节：共端点处，为什么不能先删除
+## Section 1: Why a shared endpoint must be reported before removal {/* #第一节共端点处为什么不能先删除 */}
 
-本章仍保留以下教学条件：非零线段都不竖直，任意两份输入之间没有非零长度重叠；不同事件位置的横坐标仍各不相同。解除的是另一些限制：同一个精确位置可以有多个端点、多条线段相遇，也允许零长度点输入。共线但仅共享端点的线段同样允许。
+We retain these teaching assumptions: nonzero segments are nonvertical, no two inputs have a positive-length overlap, and distinct event positions still have distinct horizontal coordinates. Other restrictions are lifted: several endpoints and segments may meet at one exact position, and zero-length point inputs are allowed. Collinear segments sharing only an endpoint are also allowed.
 
-这些是本章的教学范围，不是完整算法的输入限制。重叠、同横坐标不同位置和竖直线段参与扫描，分别留给后续章节。
+These conditions define this chapter's teaching scope, not the full algorithm's input restrictions. Overlaps, distinct positions with the same horizontal coordinate, and vertical segments are incorporated into the sweep in later chapters.
 
-先只取两条闭线段，给共同端点取名 $P=(4,4)$：
+First take only two closed segments and name their common endpoint $P=(4,4)$:
 
-| 输入 | 左端点 | 右端点 | 所在直线与范围 |
+| Input | Left endpoint | Right endpoint | Supporting line and range |
 | --- | --- | --- | --- |
-| $\teachBlue{A}$ | $(0,4)$ | $P=(4,4)$ | $y=4$，$0\le x\le4$ |
-| $\teachOrange{B}$ | $P=(4,4)$ | $(8,8)$ | $y=x$，$4\le x\le8$ |
+| $\teachBlue{A}$ | $(0,4)$ | $P=(4,4)$ | $y=4$, $0\le x\le4$ |
+| $\teachOrange{B}$ | $P=(4,4)$ | $(8,8)$ | $y=x$, $4\le x\le8$ |
 
 <IntersectionFigures topic="same-point-events" prefix="same-point" name="endpoint"
-  panels={['共端点案例：A 从 (0,4) 到 P=(4,4)，B 从 P 到 (8,8)。事件左侧只有 A，右侧只有 B。']}
+  panels={['Shared-endpoint example: A runs from (0,4) to P=(4,4), and B from P to (8,8). Only A exists to the left of the event, and only B to the right.']}
 />
 
-本篇所有图都是按讲解组织的教学示意，不是真实执行轨迹。每张原始尺寸为 320 × 260，空间不足时换行，依次从左到右、从上到下阅读。图内一格表示一个坐标单位，$O$ 是原点；具体端点与范围以上表及正文为准。
+All figures here are teaching diagrams arranged around the explanation, not real execution traces. Each has an original size of 320 × 260 and wraps onto a new row if space is limited. Read left to right, then top to bottom. One grid square is one coordinate unit, and $O$ is the origin. The table and text specify the exact endpoints and ranges.
 
-复用第一章[闭线段包含端点的约定](./what-we-compute.mdx#一份输入有一个身份)，$P$ 同时属于 $A,B$。再用第三章[唯一候选点与闭范围检查](./exact-predicates.mdx#分母不为零算出候选点再检查范围)：两条所在直线在 $P$ 相交，$4$ 又分别在两份闭范围内，所以这一对的完整交集是 $P$。
+By Chapter 1's [convention that a closed segment contains its endpoints](./what-we-compute.mdx#一份输入有一个身份), $P$ belongs to both $A,B$. Then apply Chapter 3's [unique-candidate and closed-range checks](./exact-predicates.mdx#分母不为零算出候选点再检查范围): their supporting lines intersect at $P$, and $4$ belongs to both closed ranges, so this pair's complete intersection is $P$.
 
-紧靠 $P$ 左侧的活动顺序只有 $A$，右侧只有 $B$。如果把「$A$ 结束」理解为立即忘掉 $A$，随后才处理「$B$ 开始」，配对时就少了一份输入，漏掉 $A,B$ 的端点接触。
+The active order immediately left of $P$ contains only $A$, and immediately right only $B$. If “$A$ ends” means immediately forgetting $A$, before handling “$B$ starts,” one input is missing when pairs are formed, and the endpoint contact of $A,B$ is missed.
 
-正确次序是：先保留 $A$ 在本次事件中的身份，把 $B$ 也列为参与者，报告输入对 $A,B$ 的交集 $P$；然后才让 $A$ 退出、$B$ 进入后续活动顺序。**不再向右延伸，不等于不属于当前闭端点。**
+The correct order is to retain $A$'s identity for this event, include $B$ as a participant, and report intersection $P$ for input pair $A,B$. Only then does $A$ leave and $B$ enter the subsequent active order. **Not extending farther right does not mean failing to contain the current closed endpoint.**
 
-这个理由不依赖图中两条线的方向。只要某份输入在这里结束，它仍包含这个点；若这里还有别的参与者，就必须在丢掉结束成员之前完成当前配对。
+This reasoning does not depend on the two lines' directions in the figure. Any input ending here still contains this point. If other participants are present, pairing at the current position must be completed before discarding ending members.
 
-## 第二节：端点落在内部，清单之外还有谁
+## Section 2: An endpoint inside another input needs participants beyond the list {/* #第二节端点落在内部清单之外还有谁 */}
 
-保留 $B$，这次只与新输入 $\teachViolet{C}$ 组成两输入案例；暂不取 $A$。$C$ 从 $(1,7)$ 到 $(9,-1)$，满足 $y=8-x$，范围为 $1\le x\le9$。代入 $x=4$ 得到 $y=8-4=4$，且 $1<4<9$，所以 $P$ 严格位于 $C$ 内部。
+Keep $B$ and pair it only with a new input $\teachViolet{C}$ for this example; omit $A$ for now. $C$ runs from $(1,7)$ to $(9,-1)$ on $y=8-x$, with range $1\le x\le9$. Substituting $x=4$ gives $y=8-4=4$, and $1<4<9$, so $P$ lies strictly inside $C$.
 
 <IntersectionFigures topic="same-point-events" prefix="same-point" name="interior"
-  panels={['端点落在内部：B 从 P=(4,4) 开始，C 从 (1,7) 到 (9,-1) 严格穿过 P。左侧只有 C，右侧从下到上为 C、B。']}
+  panels={['An endpoint lies inside another segment: B starts at P=(4,4); C, from (1,7) to (9,-1), passes strictly through P. Only C exists to the left; the right-side bottom-to-top order is C, B.']}
 />
 
-$B$ 的起点一开始就在待处理清单中，但仅仅读出「$B$ 开始」，还没有找到 $C$。如果只配对清单上写着的端点输入，这次又会漏掉结果。
+$B$'s start is on the pending list from the beginning, but merely reading “$B$ starts” has not located $C$. Pairing only the endpoint inputs named in the list would again miss a result.
 
-在事件横坐标处，复用第三章[同一位置的精确高度判断](./exact-predicates.mdx#第九节把直线方程接到活动顺序)。对仍覆盖 $x=4$ 的旧活动线段计算高度：$C$ 的高度等于 $P$ 的纵坐标 $4$，因此它也经过 $P$，应与新开始的 $B$ 一起参与。求交结果是输入对 $B,C$ 对应点 $P$。
+At the event's horizontal coordinate, reuse Chapter 3's [exact height comparison at one position](./exact-predicates.mdx#第九节把直线方程接到活动顺序). Compute the heights of old active segments still covering $x=4$. $C$ has height $4$, equal to $P$'s vertical coordinate, so it also passes through $P$ and must participate alongside starting input $B$. The intersection result is point $P$ for pair $B,C$.
 
-这里新增的规则是：**读到端点后，还要查找同一高度上的旧活动成员。** 不能因为一条线段没有端点出现在当前清单记录里，就认定它与本次事件无关。反过来，若只有延长线经过 $P$，线段范围并未覆盖此处，就不是参与者；第三章的[点归属检查](./exact-predicates.mdx#第二节含有点输入时检查这个点属于哪里)仍须满足。
+The new rule is: **after reading an endpoint, also find old active members at the same height.** A segment is not irrelevant merely because none of its endpoints appears in the current list entry. Conversely, if only its extended line passes through $P$ while its segment range does not cover it, it is not a participant. Chapter 3's [point-membership check](./exact-predicates.mdx#第二节含有点输入时检查这个点属于哪里) must still pass.
 
-## 第三节：多线共点，预约的一对不是全体
+## Section 3: When many segments meet, the scheduled pair is not everyone {/* #第三节多线共点预约的一对不是全体 */}
 
-现在取 $A,B,C$，再加入 $\teachEmerald{D}$，只观察它们在 $P$ 的这一次事件，不重演整次扫描。$D$ 从 $(2,0)$ 到 $(7,10)$，满足 $y=2x-4$，范围为 $2\le x\le7$。在 $x=4$ 时，$2\times4-4=8-4=4$，且 $2<4<7$，所以 $D$ 也严格穿过 $P$。
+Now take $A,B,C$ and add $\teachEmerald{D}$. Observe only their event at $P$, without replaying the entire sweep. $D$ runs from $(2,0)$ to $(7,10)$ on $y=2x-4$, with range $2\le x\le7$. At $x=4$, $2\times4-4=8-4=4$, and $2<4<7$, so $D$ also passes strictly through $P$.
 
-四份输入都已确定；后面的案例继续沿用这些字母、坐标和含义。它们的其他端点横坐标为 $0,1,2,7,8,9$，与 $P$ 的横坐标 $4$ 不同，也彼此不同。
+All four inputs are now fixed; later examples retain these letters, coordinates, and meanings. Their other endpoints have horizontal coordinates $0,1,2,7,8,9$, distinct from $P$'s coordinate $4$ and from each other.
 
 <IntersectionFigures topic="same-point-events" prefix="same-point" name="meeting"
-  panels={['四份输入同点：A 在 P 结束，B 从 P 开始，C、D 严格穿过 P。左侧从下到上为 D、A、C，右侧为 C、B、D。']}
+  panels={['Four inputs at one point: A ends at P, B starts at P, and C, D pass strictly through P. The bottom-to-top order is D, A, C on the left and C, B, D on the right.']}
 />
 
-例如，检查旧邻居 $A,C$ 时，就可能已经发现 $P$。这次发现提供的是「未来要到 $P$ 停下」的依据，不能据此断言到了那里只处理 $A,C$。$B$ 的起点、$A$ 的终点，以及 $C,D$ 的穿过都属于同一次事件。
+For example, checking old neighbors $A,C$ may already have discovered $P$. That discovery establishes a future stop at $P$, but does not imply that only $A,C$ should be processed on arrival. $B$'s start, $A$'s end, and the passages of $C,D$ all belong to the same event.
 
-### 位置只登记一次，端点信息要合并
+### Register the position once and merge endpoint information {/* #位置只登记一次端点信息要合并 */}
 
-复用第三章[两个坐标分别相等才是同点](./exact-predicates.mdx#第七节事件先后与同点识别分别比较什么)的结论。若后来另一对输入也算出 $P$，就使用清单中已有的同一位置；起点和终点属于谁的信息也并入这个位置，不能覆盖掉原信息。
+Reuse Chapter 3's result that [both coordinates must respectively agree for points to be identical](./exact-predicates.mdx#第七节事件先后与同点识别分别比较什么). If another input pair later computes $P$ too, use the same existing position in the list. Merge information about which inputs start and end there, rather than overwriting existing information.
 
-所有输入的端点预先已知。因而清单可以在一个位置保留这里的开始者、结束者；点输入的处理稍后加入。预约交点时，即使只由一对邻居发现，也只需保证这个真实位置留在清单中。**到站后重新找齐参与者，不把预约输入对当成参与者全集。**
+Every input endpoint is known beforehand, so the list can retain the starters and enders at each position; point-input handling is added shortly. Even when a neighboring pair alone discovers an intersection, registration need only ensure that the real position stays on the list. **Collect every participant anew on arrival; the pair that scheduled the event is not the full participant set.**
 
-这里仍沿用第二章[保留真实未来交点直到取出](./why-neighbors.mdx#一份待处理清单)的规则。暂时失去邻接，不取消已经确认的事件位置。清单取最左的未处理位置，同一个位置只取出并统一处理一次。
+Continue to use Chapter 2's rule of [retaining real future intersections until removal from the list](./why-neighbors.mdx#一份待处理清单). Temporarily losing adjacency does not cancel a confirmed event position. The list returns the leftmost unprocessed position; each position is removed and handled together only once.
 
-### 用角色区分当前配对与后续成员
+### Use roles to distinguish current pairing from later membership {/* #用角色区分当前配对与后续成员 */}
 
-先给当前事件的非零参与者分角色。仍把同一位置写作 $P=(x_P,y_P)$，其中 $x_P,y_P$ 分别是它的横、纵坐标，案例中都为 $4$；下面的规则不依赖这个数值。把每条非零线段按横坐标认出左、右端点，含义不依赖原端点的书写次序。它若经过 $P$，只会属于下列一种角色：
+First assign roles to the current event's nonzero participants. Continue to write its position as $P=(x_P,y_P)$, where $x_P,y_P$ are its horizontal and vertical coordinates, both $4$ in this example. The rules below do not depend on that value. Identify the left and right endpoints of each nonzero segment by horizontal coordinate, independently of the original written endpoint order. If it contains $P$, it has exactly one of these roles:
 
-| 角色 | 精确条件 | 在 $P$ 右侧还活动吗 |
+| Role | Exact condition | Active to the right of $P$? |
 | --- | --- | --- |
-| 开始者 | 左端点就是 $P$，右端点横坐标大于 $x_P$ | 是 |
-| 结束者 | 右端点就是 $P$，左端点横坐标小于 $x_P$ | 否 |
-| 严格穿过者 | $P$ 在线段上，且横坐标严格夹在两端之间 | 是 |
+| Starting member | Left endpoint is $P$; right endpoint has horizontal coordinate greater than $x_P$ | Yes |
+| Ending member | Right endpoint is $P$; left endpoint has horizontal coordinate less than $x_P$ | No |
+| Strictly through member | $P$ belongs to the segment, with horizontal coordinate strictly between its endpoints | Yes |
 
-非零且不竖直保证左、右端点不同，所以上面三种角色互不混淆。四输入案例中，开始者为 $B$，结束者为 $A$，严格穿过者为 $C,D$。它们都要参与当前配对，右侧却只留下 $B,C,D$。
+Being nonzero and nonvertical guarantees distinct left and right endpoints, so these three roles do not conflict. In the four-input example, $B$ starts, $A$ ends, and $C,D$ pass strictly through. All participate in current pairing, but only $B,C,D$ remain on the right.
 
-### 怎样找齐旧活动参与者
+### How to collect every old active participant {/* #怎样找齐旧活动参与者 */}
 
-把紧靠 $P$ 左侧的活动顺序叫作「旧顺序」。其中经过 $P$ 的线段包括结束者和严格穿过者；开始者还没进入。我们把这些旧参与者连在一起的部分叫作「相遇块」。若没有旧参与者，相遇块就是空的。
+Call the active order immediately left of $P$ the “old order.” Its segments through $P$ include ending and strictly through members; starters have not entered yet. Call the consecutive portion consisting of these old participants the “meeting block.” With no old participants, it is empty.
 
-为什么它们一定连续？旧参与者不足两条时，是空块或单成员块。至少有两条时，取其中最下与最上的两个，若中间夹着另一条旧成员，它到 $P$ 也仍存在：它不能在紧邻左侧的无事件间隙里结束；即使恰好在 $P$ 结束，闭线段也包含 $P$。
+Why must they be consecutive? With fewer than two old participants, the block is empty or has one member. Otherwise choose the lowest and highest participants. Any old member between them still exists on reaching $P$: it cannot end in the immediately preceding event-free interval, and even if it ends exactly at $P$, its closed segment includes that endpoint.
 
-现在使用第二章[夹在线段中间时的高度差推理](./why-neighbors-proof.mdx#到交点时w-的高度被限制在哪里)：到达边界 $x_P$ 时，中间成员的高度不能低于原来下面的成员，否则二者从左侧的正高度差变成负值，必在此前的无事件间隙中相交；也不能高于原来上面的成员，否则同样出现一次此前交叉。两端在 $P$ 的高度都是 $y_P$，夹在中间的高度因此只能等于 $y_P$。它也经过 $P$。
+Now use Chapter 2's [height-difference argument for a segment between two others](./why-neighbors-proof.mdx#到交点时w-的高度被限制在哪里). At boundary $x_P$, the middle member cannot be below the formerly lower member. Otherwise their positive height difference on the left becomes negative, forcing an intersection in the preceding event-free interval. Nor can it be above the formerly upper member, for the same reason. Both outside participants have height $y_P$ at $P$, so the height between them must also equal $y_P$. The middle member passes through $P$ too.
 
-第二章在这里用「不允许三线共点」排除中间者；本章允许共点，得到的新结论是：**中间者必须一起纳入相遇块。** 不能沿用第二章的限制，只保留最初选中的两条。
+Chapter 2 excluded this middle member using its prohibition of three segments meeting. We now allow such meetings, and obtain a new conclusion: **the middle member must be included in the meeting block.** We cannot reuse Chapter 2's restriction to keep only the first two selected inputs.
 
-同样的边界理由保证：把旧顺序中的高度都取在 $x_P$，高度仍从下到上不递减，允许一整块等于 $y_P$。否则原来较低者在这里变得更高，又会产生此前的交叉。于是可以按精确高度定位第一条不低于 $y_P$ 的旧成员，再沿相等者逐条取出，遇到不等者停止；若第一条已经高于 $y_P$，就没有相等块，只得到插入空隙。这个定位可用有序查找，不必每次遍历全部输入。
+The same boundary argument ensures that evaluating every old member's height at $x_P$ yields a nondecreasing bottom-to-top sequence, possibly with a whole block equal to $y_P$. Otherwise a formerly lower member would become higher here, implying an earlier crossing. We can therefore locate exactly the first old member with height at least $y_P$, then collect consecutive equal-height members until the height differs. If that first member is already higher, there is no equal-height block, only an insertion gap. This can use ordered search, rather than scanning every input each time.
 
-取得整块后，再合并清单中从 $P$ 开始的输入。结束者应已在旧块里，端点清单也提供了核对其身份的信息；按原始编号合并，同一份输入只留一次。任意包含 $P$ 的非零输入，不是在左侧已经活动，就是从这里开始，所以这两路覆盖全部非零参与者。块外旧成员高度不等于 $y_P$，不经过 $P$；新输入则由端点信息明确给出，不会凭空加入旁观者。
+After collecting the whole block, merge inputs starting at $P$ from the list. Ending members should already be in the old block, and the endpoint list also identifies them for checking. Merge by original identifier, keeping each input once. Every nonzero input containing $P$ is either already active on the left or starts here, so these two routes cover all nonzero participants. Old members outside the block have heights different from $y_P$ and do not pass through $P$. New inputs are explicitly supplied by endpoint information, so bystanders are not added without cause.
 
-## 第四节：四份参与者，为什么留下六条结果
+## Section 4: Why four participants give six results {/* #第四节四份参与者为什么留下六条结果 */}
 
-四输入案例的参与者是 $A,B,C,D$。沿用第一章[只与更大原始编号配对的办法](./what-we-compute.mdx#怎样把每一对都检查一遍)，按它们的原始编号顺序列出：
+The four-input example has participants $A,B,C,D$. Use Chapter 1's [method of pairing only with larger original identifiers](./what-we-compute.mdx#怎样把每一对都检查一遍), listing them in original identifier order:
 
-| 当前输入 | 本行配对 | 完整交集 |
+| Current input | Pairs in this row | Complete intersection |
 | --- | --- | --- |
-| $A$ | $A,B$；$A,C$；$A,D$ | 每一对都是 $P=(4,4)$ |
-| $B$ | $B,C$；$B,D$ | 每一对都是 $P=(4,4)$ |
+| $A$ | $A,B$; $A,C$; $A,D$ | $P=(4,4)$ for every pair |
+| $B$ | $B,C$; $B,D$ | $P=(4,4)$ for every pair |
 | $C$ | $C,D$ | $P=(4,4)$ |
-| $D$ | 无 | 无新结果 |
+| $D$ | None | No new result |
 
-共 $3+2+1=6$ 条结果。这里的字母按表中顺序对应四个不同原始编号，不按当前上下顺序重新编号。
+There are $3+2+1=6$ results. In this table the letters represent four distinct original identifiers in the listed order; they are not renumbered according to current vertical order.
 
-这六对为什么都是真的？前面已经确认每份参与者包含 $P$，因此任取两份，都至少有这个公共点。第一章[交集形状的结论](./what-we-compute.mdx#为什么不会出现两段分开的公共部分)又说明：若两条闭线段还有另一个不同的公共点，就会共享一段非零长度区间。本章排除了这种重叠，所以完整交集恰好是 $P$。这对任意数量的参与者都成立，不依赖四输入例子。
+Why are all six pairs genuine? We established that every participant contains $P$, so any two share at least that point. Chapter 1's [intersection-shape result](./what-we-compute.mdx#为什么不会出现两段分开的公共部分) states that if two closed segments shared another distinct point, they would share a positive-length interval. Such overlap is excluded in this chapter, so the complete intersection is exactly $P$. This holds for any number of participants, not just four.
 
-只与更大编号配对，保证本次每对恰好出现一次，不与自身配对，交换顺序也不多出一对。跨事件也不会重复：本章任意一对的非空交集只能是一个点，这个精确位置又只处理一次。反过来，任意一对在当前位置的真实点交集，两份输入都包含这个点；参与者找齐后，它们必在配对名单中。因此，这一步没有漏报、假报或重复报告。
+Pairing only with larger identifiers makes every pair appear once in this event, excludes self-pairing, and prevents reversed order from creating another pair. There is no duplication across events either: under our conditions, any pair's nonempty intersection is one point, and that exact position is processed once. Conversely, for any real point intersection at the current position, both inputs contain that point. Once all participants are collected, that pair must appear. Thus this step neither misses, invents, nor duplicates results.
 
-这也说明「合并位置」的准确含义：清单只保留一个 $P$，结果却分别保留六对输入的身份。不能把六条结果压成一条「这里有交点」。
+This also explains precisely what merging positions means: the list retains one $P$, but the results separately retain all six input-pair identities. Six results must not be compressed into a single statement that an intersection exists here.
 
-## 第五节：零长度输入参与这一次，不留到右侧
+## Section 5: Zero-length inputs participate here, but do not continue rightward {/* #第五节零长度输入参与这一次不留到右侧 */}
 
-现在只取 $C$，再取两份新输入 $Z_1,Z_2$：它们的两个端点都为 $P=(4,4)$。它们各自只有一个点，却是两个不同的原始身份。
+Now take only $C$, together with two new inputs $Z_1,Z_2$, each with both endpoints at $P=(4,4)$. Each consists of one point, but they have distinct original identities.
 
 <IntersectionFigures topic="same-point-events" prefix="same-point" name="points"
   panels={[
-    'C 严格穿过 P，点输入 Z_1 的两个端点都为 P。菱形标记只表示零长度输入。',
-    '同一坐标与尺度下，C 严格穿过 P，另一份点输入 Z_2 也只有 P。没有挪开重合点的位置。',
+    'C passes strictly through P. Point input Z_1 has both endpoints at P. The diamond marks only a zero-length input.',
+    'At the same coordinates and scale, C passes strictly through P, and the other point input Z_2 also consists only of P. Coincident points have not been moved apart.',
   ]}
 />
 
-两幅图分开显示 $Z_1,Z_2$，避免重合标记互相遮挡；它们没有被移动到不同位置。菱形不表示面积，$C$ 在两图中是同一条输入。
+The two figures show $Z_1,Z_2$ separately so overlapping markers do not obscure one another; they have not been moved to different positions. A diamond does not represent an area, and $C$ is the same input in both figures.
 
-若把点输入同时当成一份开始者和一份结束者直接拼入名单，就可能把同一身份放两次。我们另设「点输入」角色：端点重合的输入，在该位置的清单中按原始编号保留一次，与非零开始者、结束者分开分类。
+Treating a point input as both a starter and an ender and simply concatenating the lists could insert its identity twice. Instead define a separate “point input” role: an input with coincident endpoints is kept once by original identifier in that position's list, classified separately from nonzero starters and enders.
 
-到达 $P$ 后，先找齐非零参与者，再合并这里的点输入。因此本例参与者为 $C,Z_1,Z_2$，结果为：
+On reaching $P$, first collect all nonzero participants, then merge point inputs at this position. The participants here are therefore $C,Z_1,Z_2$, giving:
 
-| 原始无序输入对 | 完整交集 |
+| Original unordered input pair | Complete intersection |
 | --- | --- |
-| $C,Z_1$ | 点 $P$ |
-| $C,Z_2$ | 点 $P$ |
-| $Z_1,Z_2$ | 点 $P$ |
+| $C,Z_1$ | Point $P$ |
+| $C,Z_2$ | Point $P$ |
+| $Z_1,Z_2$ | Point $P$ |
 
-第三章已经给出[点与线段、点与点的精确判断](./exact-predicates.mdx#第二节含有点输入时检查这个点属于哪里)。这里新增的是扫描中的去向：点输入只在 $x=x_P$ 存在，任意 $x>x_P$ 都没有它的点，所以**配对后不进入右侧活动顺序**。它不能被安排在 $C$ 上方或下方，也不需要凭空指定一条直线或斜率。
+Chapter 3 already gave [exact point–segment and point–point decisions](./exact-predicates.mdx#第二节含有点输入时检查这个点属于哪里). What is new here is their place in the sweep: a point input exists only at $x=x_P$ and has no point at any $x>x_P$, so **after pairing it does not enter the active order on the right**. It cannot be placed above or below $C$, and needs no invented supporting line or slope.
 
-本例左、右两侧都只有 $C$。若只取 $Z_1,Z_2$，没有非零线段，仍要报告它们这一对，两侧活动顺序都为空。若只取 $Z_1$，配不出不同输入对，结果为空，但这个端点事件仍正常处理完毕。
+Only $C$ exists on both sides in this example. With only $Z_1,Z_2$ and no nonzero segment, their pair must still be reported, while both side orders remain empty. With only $Z_1$, no pair of distinct inputs can be formed, so the result is empty, but the endpoint event is still processed normally.
 
-点落在闭端点也一样：只取 $A,Z_1$ 时，先报告 $A,Z_1$ 对应 $P$，随后 $A$ 结束；点输入不留在右侧。只取 $B,Z_1$ 时，先报告同点配对，再由 $B$ 单独继续。多份同位置点输入与每条非零参与者都分别配对，彼此之间也按原始编号配对；不会因为几何位置相同而合并身份。
+The same applies when a point lies on a closed endpoint. With only $A,Z_1$, report $P$ for that pair before $A$ ends; the point input does not remain on the right. With only $B,Z_1$, first report their same-point pair, then let $B$ continue alone. Multiple point inputs at one position are paired separately with every nonzero participant and with each other by original identifier. Geometric coincidence does not merge identities.
 
-## 第六节：先报告，再排出整个右侧相遇块
+## Section 6: Report first, then order the entire right-side meeting block {/* #第六节先报告再排出整个右侧相遇块 */}
 
-回到 $A,B,C,D$ 的事件。当前结果已经全部报告，接下来才更新成员：结束者 $A$ 退出，严格穿过者 $C,D$ 继续，开始者 $B$ 加入。若同点还有点输入，它们也已完成配对，但不参加后续排序。
+Return to the event for $A,B,C,D$. Only after all current results have been reported do we update membership: ending member $A$ leaves, strictly through members $C,D$ continue, and starting member $B$ joins. Any point inputs at this position have also completed pairing, but do not participate in later ordering.
 
-此时不能依照「哪个输入对先预约」随意做一串两两交换。要排的是所有继续向右的参与者组成的**整个新块**。
+We must not perform an arbitrary chain of pairwise swaps based on which input pair scheduled the event first. What needs ordering is the **entire new block** of participants continuing to the right.
 
-### 用已有的斜率关系排两侧顺序
+### Use the established slope relation to order both sides {/* #用已有的斜率关系排两侧顺序 */}
 
-复用第三章[交点处等高与两侧顺序的区别](./exact-predicates.mdx#到了交点等高不等于两侧顺序)：经过同一点的两条非竖直直线，若斜率不同，右侧斜率较大者在上方，左侧相反。它只要求两段在所讨论的一侧存在，不要求交点只有两条线段参加；因此可以逐对用于本章的相遇块。
+Reuse Chapter 3's [distinction between equal height at an intersection and order on either side](./exact-predicates.mdx#到了交点等高不等于两侧顺序). For two nonvertical lines through one point with different slopes, the larger slope is above on the right, with the opposite order on the left. This requires only that both segments exist on the side discussed, not that only two segments participate in the event. It can therefore be applied pair by pair to this chapter's meeting block.
 
-这里 $m_A,m_B,m_C,m_D$ 分别表示四条所在直线的斜率。从已经写出的 $y=4,y=x,y=8-x,y=2x-4$ 读取，依次为 $0,1,-1,2$。旧成员只有 $A,C,D$；在左侧，斜率从大到小排，得到从下到上的 $D,A,C$。新成员只有 $B,C,D$；在右侧，斜率从小到大排，得到 $C,B,D$。
+Here $m_A,m_B,m_C,m_D$ denote the four supporting lines' slopes. Reading them from $y=4,y=x,y=8-x,y=2x-4$ gives $0,1,-1,2$ respectively. The old members are only $A,C,D$; decreasing slope on the left gives bottom-to-top order $D,A,C$. The new members are only $B,C,D$; increasing slope on the right gives $C,B,D$.
 
 <IntersectionFigures topic="same-point-events" prefix="same-point" name="order"
   panels={[
-    'P 左侧顺序 D、A、C：只显示在左侧活动的线段部分，右侧为空；从下到上对应斜率 2、0、-1。',
-    'P 右侧顺序 C、B、D：只显示在右侧活动的线段部分，左侧为空；从下到上对应斜率 -1、1、2。',
+    'Order to the left of P: D, A, C. Only portions active on the left are drawn, leaving the right empty; bottom-to-top slopes are 2, 0, -1.',
+    'Order to the right of P: C, B, D. Only portions active on the right are drawn, leaving the left empty; bottom-to-top slopes are -1, 1, 2.',
   ]}
 />
 
-两图按「左侧成员与顺序、右侧成员与顺序」排列；每幅只画相应侧实际存在的部分，换行后仍按这个次序读。图中的 $x<4$、$x>4$ 指事件的紧邻两侧，不表示取一个固定小数偏移来采样。
+The figures show left-side members and order, followed by right-side members and order. Each draws only the portions actually present on that side; retain this reading order if they wrap. The labels $x<4$ and $x>4$ refer to the immediate sides of the event, not sampling at a fixed decimal offset.
 
-为什么逐对比较足以确定整个块？右侧任意两份新成员都经过 $P$、在右侧有长度，故斜率较小的一份必在较大者下方。把所有斜率从小到大排，便同时满足每一对的高低关系。左侧对旧成员使用相反次序，理由相同。
+Why do pairwise comparisons determine the whole block? Any two new right-side members pass through $P$ and have positive length to the right, so the smaller slope must lie below the larger. Sorting all slopes from small to large simultaneously satisfies every pair's vertical relation. The same reasoning gives the reverse order for old members on the left.
 
-还要处理斜率相等的分支。两条非竖直直线既经过 $P$ 又斜率相同，就在同一条直线上。若两份输入都向右延伸，则它们从 $P$ 到较早右端点之间共享一段正长度区间，违反本章条件；若都从左侧到达，同理会在左侧重叠。因此同一侧块中不会出现两个等斜率成员，不需要任意打破平局。
+We must also handle equal slopes. Two nonvertical lines through $P$ with the same slope are the same line. If both inputs extend rightward, they share a positive-length interval from $P$ to the earlier right endpoint, violating our conditions. If both arrive from the left, they similarly overlap on the left. Thus two equal-slope members cannot occur in the same side's block, and no arbitrary tie-break is needed.
 
-但是，一份在这里结束、另一份从这里开始，可以等斜率。例如另取输入 $F$，从 $P$ 到 $(6,4)$，只与 $A$ 组成案例。两份都满足 $y=4$，范围分别为 $0\le x\le4$、$4\le x\le6$，公共范围只有 $x=4$，所以完整交集为 $P$。左侧只有 $A$，右侧只有 $F$；先配对再替换成员，**不对两个同时存续的成员做换序**，因为它们并没有同时存续。不同斜率的仅端点接触也按角色增删，不强行套用两条穿过者的交换规则。
+However, one input ending here and another starting here may have equal slopes. For example, take another input $F$ from $P$ to $(6,4)$, paired only with $A$. Both satisfy $y=4$, with ranges $0\le x\le4$ and $4\le x\le6$. Their only common horizontal coordinate is $x=4$, so their complete intersection is $P$. Only $A$ exists on the left and only $F$ on the right. Pair them first, then replace membership; **do not reorder two simultaneously continuing members**, because these inputs do not continue together. Endpoint-only contact with different slopes also uses role-based insertion and removal, rather than forcing the swap rule for two through members.
 
-### 为什么块外顺序仍然正确
+### Why order outside the block remains correct {/* #为什么块外顺序仍然正确 */}
 
-旧块外的活动成员不经过 $P$，在 $x_P$ 的高度严格低于或高于 $y_P$。它们在这里也没有端点，否则会成为同横坐标的另一个事件，违反本章条件；所以在紧邻两侧都继续存在。
+Active members outside the old block do not pass through $P$, so their heights at $x_P$ are strictly below or above $y_P$. They have no endpoints at this horizontal coordinate either: that would create a distinct event with the same horizontal coordinate, violating this chapter's assumptions. They therefore exist immediately on both sides.
 
-任取一个块外成员和一个新块成员：若它们在右侧任意靠近 $P$ 的位置就颠倒了在 $P$ 处的严格高低，用第二章的高度差变号结论，它们必须在中间相交。这会使紧邻右侧的无事件间隙中出现事件，矛盾。因此，新的相遇块仍放在原来的上下外侧成员之间；块外成员彼此也没有在这里相交或增删，保持原顺序。
+Take any outside member and any new-block member. If their strict vertical order at $P$ reversed arbitrarily close on the right, Chapter 2's height-difference sign-change result would force an intersection between those positions. That would create an event in the immediate event-free interval on the right, a contradiction. Thus the new meeting block remains between the original outside members below and above. Outside members neither intersect each other nor enter or leave here, so they retain their order.
 
-输入有限、没有非零重叠，所以端点和点交集位置只有有限个。不同位置的横坐标各异，保证事件两侧确实能选到不含其他事件的间隙。上面的「紧邻」是用这个间隙作论证，不是要求算法猜一个足够小的小数。
+There are finitely many inputs and no positive-length overlaps, hence finitely many endpoints and point-intersection positions. Distinct event horizontal coordinates ensure an interval free of other events exists on each side. “Immediately” above refers to such an interval for the proof, not to an algorithm guessing a sufficiently small decimal.
 
-若旧块为空而有开始者，就按 $y_P$ 找到的空隙插入新块；若新块也为空，则保持或连接原空隙两侧。这样同时覆盖只有开始、只有结束、普通交叉、混合同点和纯点事件。
+If the old block is empty but there are starters, insert the new block in the gap found at $y_P$. If the new block is also empty, retain or connect the two sides of the original gap. This covers start-only, end-only, ordinary-crossing, mixed same-point, and pure-point events.
 
-## 第七节：更新以后，检查哪些邻接
+## Section 7: Which adjacencies need checking after the update {/* #第七节更新以后检查哪些邻接 */}
 
-把新块从下到上记作 $K_1,\ldots,K_k$，其中 $k$ 是新块成员数，$K_i$ 表示第 $i$ 个成员。用 $T_-$ 表示空隙下方紧挨着的块外成员，$T_+$ 表示上方紧挨着的块外成员；它们是本次局部位置的称呼，不是新增输入，某一侧可以不存在。
+Write the new block from bottom to top as $K_1,\ldots,K_k$, where $k$ is its member count and $K_i$ its $i$th member. Let $T_-$ denote the outside member immediately below the gap and $T_+$ the one immediately above. These name local positions, not new inputs, and either side may be absent.
 
-当 $k\ge1$，更新后这一小段顺序是：
+When $k\ge1$, this short portion of the updated order is
 
 $$
 T_-,\quad K_1,\ldots,K_k,\quad T_+.
 $$
 
-只看这段连续顺序中紧挨着的输入对：
+Consider only input pairs consecutive in this sequence:
 
-| 位置 | 需要核对的邻接 | 怎样处理 |
+| Position | Adjacency to examine | Action |
 | --- | --- | --- |
-| 下边界 | $T_-,K_1$ | 下方成员存在时检查真实交集与严格未来 |
-| 新块内部 | $K_1,K_2$，直到 $K_{k-1},K_k$ | 各对都已经在 $P$ 相交，不能把 $P$ 再预约为未来 |
-| 上边界 | $K_k,T_+$ | 上方成员存在时检查真实交集与严格未来 |
+| Lower boundary | $T_-,K_1$ | If the lower member exists, check real intersection and strict future |
+| Inside the new block | $K_1,K_2$ through $K_{k-1},K_k$ | Every pair already intersects at $P$; do not schedule $P$ again as future |
+| Upper boundary | $K_k,T_+$ | If the upper member exists, check real intersection and strict future |
 
-当 $k=1$ 时没有内部邻接。块内任意两条都包含 $P$，本章又不允许重叠，所以它们的交集只有 $P$，不可能再有未来交点。可以直接据此排除未来预约；若仍统一求交检查，也只能得到当前位置，必须被严格未来条件挡住。**不应在已经排完新块后，再为某个预约输入对额外交换一次。**
+For $k=1$ there are no internal adjacencies. Any two block members contain $P$, and overlaps are excluded here, so their intersection is only $P$, with no future intersection possible. We can reject future scheduling directly on that basis. A uniform intersection check would also return only the current position, which the strict-future condition must reject. **After ordering the new block, do not perform an extra swap for some pair that scheduled the event.**
 
-当 $k=0$，旧块移去后，$T_-,T_+$ 若都存在，就直接相邻，要检查这一对；缺一侧便没有这对新邻居。若旧块原来也为空，例如纯点事件，两侧原本已经相邻，没有新增邻接，可以跳过重复检查。
+For $k=0$, removing the old block makes $T_-,T_+$ direct neighbors if both exist; check that pair. A missing side means no such new neighboring pair. If the old block was empty too, as in a pure-point event, the sides were already neighbors. There is no new adjacency and a repeated check can be skipped.
 
-边界检查继续用第三章的[真实交集判断](./exact-predicates.mdx#第五节检查这条路径有没有遗漏)和[严格未来条件](./exact-predicates.mdx#第八节严格未来为何必须排除等号)：判空则不预约；得到点时，只有横坐标严格大于 $x_P$ 才属于未来。等于 $x_P$ 的当前位置已经统一处理，不再加入；小于它的也不加入。清单中已有的真实未来位置继续保留，不能因本次换邻居而丢失。
+Boundary checks continue to use Chapter 3's [real-intersection decision](./exact-predicates.mdx#第五节检查这条路径有没有遗漏) and [strict-future condition](./exact-predicates.mdx#第八节严格未来为何必须排除等号). Empty intersections are not scheduled. A resulting point is future only if its horizontal coordinate is strictly greater than $x_P$. The current position with coordinate $x_P$ has been handled together and is not re-added; positions to its left are not added either. Existing real future positions remain listed and must not be lost because neighbors changed.
 
-为什么这些检查充分？块外没有增删或相对换序，所以远处原有邻接保持。任何新邻接，若两条都在新块中，就是表里的内部邻接；若只有一条在块中，只能跨上、下边界；若两条都在块外，只有新块为空、旧块移去后连接两侧这一种新增可能。所有分支均已包括。保持不变的邻接不必每次重查；它形成时已经检查过，发现的真实未来位置也仍在清单里。
+Why are these checks sufficient? Outside members are neither inserted, removed, nor reordered relative to each other, so distant old adjacencies remain. Any new adjacency with both inputs in the new block is an internal pair in the table. With only one input in the block, it must cross the upper or lower boundary. With both inputs outside, the only new possibility is connecting the two sides after removing the old block when the new one is empty. Every case is covered. Unchanged adjacencies need not be rechecked every time: they were checked when formed, and their discovered real future positions remain on the list.
 
-这里的「新邻接一定检查」以此前顺序已正确维护、此前新邻接已检查为前提。本节说明一次同点更新如何保持这项约定，没有预先假定尚未到达的交点已经处理。
+The claim that every new adjacency is checked assumes that the previous order was maintained correctly and previous new adjacencies were checked. This section shows how a same-point update preserves that rule; it does not assume that unreached intersections have already been processed.
 
-## 第八节：没有端点提示的共点，为什么也会预约
+## Section 8: Why a shared point without an endpoint is also scheduled {/* #第八节没有端点提示的共点为什么也会预约 */}
 
-前三个案例的 $P$ 都带有端点，因此清单一开始就知道这个位置。但如果两条或更多线段全都严格穿过某点，没有一条在那里开始或结束，靠什么第一次发现它？「到站后扩大相遇块」不能回答这个问题，因为还需要解释为何会到站。
+In the first three examples, $P$ contains an endpoint, so the list knows its position from the start. But if two or more segments all pass strictly through a point, with none starting or ending there, how is it first discovered? Expanding the meeting block on arrival cannot answer this: we still need to explain why arrival happens.
 
-现在另取一个任意的、没有端点提示的共点位置，叫作 $Q=(x_Q,y_Q)$，与前面案例的 $P$ 区分。这里至少有两条严格穿过者。先只假定 $Q$ 左侧的事件已经正确处理：
+Choose an arbitrary shared point without an endpoint, denoted by $Q=(x_Q,y_Q)$ to distinguish it from the earlier $P$. At least two segments pass strictly through it. Assume only that events to the left of $Q$ have been processed correctly:
 
-1. 全部真实事件位置有限，能在 $Q$ 左侧选出一段没有其他事件的间隙。所有经过 $Q$ 的输入都严格穿过，所以在这个间隙中已经活动。
-2. 第三节的夹层论证适用于 $Q$：若别的活动成员夹在两条穿过者之间，它也必须经过 $Q$。因此这些穿过者在 $Q$ 左侧构成一个连续块，至少有两个成员。
-3. 在这块中任选紧挨着的两个。它们也是整个活动顺序里的邻居，而不只是删去旁观者以后才相邻。沿此前有限个事件回看，取这一次邻接形成、并保持到 $Q$ 左侧的时刻；最初顺序为空，所以它一定曾形成，且位置严格在 $Q$ 左边。
-4. 根据第七节对所有新邻接的分类，这一对在形成时就接受了检查。它们确实都包含 $Q$，没有非零重叠，所以交集只有 $Q$；当时 $Q$ 还严格在未来。因此清单要么加入 $Q$，要么已有这个位置并继续保留。
-5. 按横坐标取最左的未处理位置，左侧有限个事件处理完后，就会取到仍保留的 $Q$。到站再找齐整个块，报告其中全部无序输入对，不只报告曾经预约的那一对。
+1. Real event positions are finite, so an interval without other events can be chosen to the left of $Q$. All inputs through $Q$ pass strictly through it, so they are already active in that interval.
+2. Section 3's between-neighbors argument applies at $Q$: any active member between two through members must also pass through $Q$. These through members therefore form a consecutive block of at least two members on the left.
+3. Choose any consecutive pair in this block. They are neighbors in the entire active order, not merely after removing bystanders. Look back through the finite earlier events to when this uninterrupted adjacency formed and persisted to the left of $Q$. The initial order was empty, so it must have formed at some time, strictly left of $Q$.
+4. By Section 7's classification of all new adjacencies, this pair was checked when it formed. Both inputs contain $Q$, and positive-length overlaps are excluded, so their intersection is exactly $Q$. At that time $Q$ was strictly future. The list therefore either added $Q$ or already contained and retained it.
+5. Removing the leftmost unprocessed position by horizontal coordinate eventually exhausts the finite events on the left and reaches the retained $Q$. On arrival, collect the whole block and report all unordered input pairs, not just the pair that scheduled it.
 
-这里没有断言共点的每一对都必须提前相邻：**至少一对先前邻居足以预约位置，完整参与者由到站后的查找补齐。**
+This does not claim that every pair meeting at a point must previously have been adjacent. **At least one earlier neighboring pair suffices to schedule the position; searching on arrival supplies all remaining participants.**
 
-「左侧已经正确处理」也不是循环假设。若存在第一个没有到达的真实事件位置，它不可能是预先登记的端点；它左侧的事件都已到达，并由本章的参与者、配对和顺序规则正确处理。于是上面五步适用于它，推出它已经被预约且必会到达，与假定矛盾。这里补上的是允许多线共点后的发现理由；第二章排除三线共点的「选定两条交叉前必相邻」不能原封不动搬来。
+Assuming the left side was correctly processed is not circular. If a first real event position were never reached, it could not be a preregistered endpoint. All events on its left would have arrived and been handled correctly by this chapter's participant, pairing, and order rules. The five steps would then apply, showing that it was scheduled and must arrive, a contradiction. This supplies the discovery argument after allowing many segments at a point. Chapter 2's claim that two chosen crossing segments must be neighbors beforehand depended on excluding triple meetings and cannot be copied unchanged.
 
-## 第九节：把一次同点处理接成完整流程
+## Section 9: Assemble one same-point event into a complete procedure {/* #第九节把一次同点处理接成完整流程 */}
 
-现在可以把已经建立的规则放在一起。下面每行指一个事件位置的教学处理阶段，不是某个实际函数的执行轨迹。
+We can now put the established rules together. Each row below is a teaching stage for one event position, not an execution trace of a particular implemented function.
 
-| 次序 | 做什么 | 为什么这一步需要在这里 |
+| Stage | Action | Why it belongs here |
 | --- | --- | --- |
-| 取位置 | 从清单取最左未处理位置，合并同点端点信息 | 同一个精确位置统一处理一次 |
-| 找参与者 | 精确定位旧活动相遇块，合并开始者和点输入，按原始编号去重 | 预约输入对与端点清单都不等于全部参与者 |
-| 报告 | 对不同原始输入按较小编号与较大编号配对，记录完整交集 | 结束者还包含当前闭端点，多个同点输入对各有结果 |
-| 更新 | 移去结束者，保留严格穿过者，加入非零开始者，按右侧斜率顺序排新块 | 当前参与者与后续活动成员不同，点输入不留到右侧 |
-| 检查 | 检查新块内部与两侧的邻接；新块为空时检查连接起来的外侧邻接 | 覆盖全部新增邻接，只预约严格未来的真实位置 |
+| Take the position | Remove the leftmost unprocessed position and merge same-point endpoint information | Process one exact position together, once |
+| Find participants | Locate the old active meeting block exactly, merge starters and point inputs, and deduplicate by original identifier | Neither the scheduled pair nor the endpoint list alone contains all participants |
+| Report | Pair distinct original inputs by smaller and larger identifiers and record complete intersections | Enders still contain the current closed endpoint; each same-point input pair has its own result |
+| Update | Remove enders, retain through members, add nonzero starters, and order the new block by right-side slope order | Current participants differ from subsequent active members; point inputs do not continue rightward |
+| Check | Check internal and boundary adjacencies of the new block; if empty, check the newly connected outside pair | Cover all new adjacencies and schedule only real positions strictly in the future |
 
-实现可能为了定位与重排，临时把状态块从某个容器取出；只要仍完整保留参与者并先完成当前交集报告，就不等于提前丢弃结束身份。本篇规定的是数学上依赖哪些信息、成员何时失去参与资格，不据此猜测代码内部容器动作的先后。
+An implementation may temporarily remove a state block from a container to locate or reorder it. Provided it retains every participant and first completes the current intersection reports, this is not premature loss of ending identities. This article specifies which information mathematics depends on and when members cease to qualify as participants; it does not infer an order for internal container operations.
 
-最后用各个最小案例核对当前事件。每行只包含该行明确列出的输入，不把不同案例合成一组：
+Finally, check the current event against each minimal example. Each row contains only the explicitly listed inputs; do not combine separate examples into one set:
 
-| 案例输入 | 旧顺序，从下到上 | 本次参与者 | 本次结果 | 新顺序，从下到上 |
+| Example inputs | Old bottom-to-top order | Current participants | Current results | New bottom-to-top order |
 | --- | --- | --- | --- | --- |
-| $A,B$ | $A$ | $A,B$ | $A,B$ 对应 $P$ | $B$ |
-| $B,C$ | $C$ | $B,C$ | $B,C$ 对应 $P$ | $C,B$ |
-| $A,B,C,D$ | $D,A,C$ | $A,B,C,D$ | 第四节列出的六对，均对应 $P$ | $C,B,D$ |
-| $C,Z_1,Z_2$ | $C$ | $C,Z_1,Z_2$ | $C,Z_1$；$C,Z_2$；$Z_1,Z_2$，均对应 $P$ | $C$ |
-| $Z_1,Z_2$ | 空 | $Z_1,Z_2$ | $Z_1,Z_2$ 对应 $P$ | 空 |
-| $Z_1$ | 空 | $Z_1$ | 无 | 空 |
-| $A,F$ | $A$ | $A,F$ | $A,F$ 对应 $P$ | $F$ |
+| $A,B$ | $A$ | $A,B$ | $P$ for $A,B$ | $B$ |
+| $B,C$ | $C$ | $B,C$ | $P$ for $B,C$ | $C,B$ |
+| $A,B,C,D$ | $D,A,C$ | $A,B,C,D$ | The six pairs listed in Section 4, all at $P$ | $C,B,D$ |
+| $C,Z_1,Z_2$ | $C$ | $C,Z_1,Z_2$ | $C,Z_1$; $C,Z_2$; $Z_1,Z_2$, all at $P$ | $C$ |
+| $Z_1,Z_2$ | Empty | $Z_1,Z_2$ | $P$ for $Z_1,Z_2$ | Empty |
+| $Z_1$ | Empty | $Z_1$ | None | Empty |
+| $A,F$ | $A$ | $A,F$ | $P$ for $A,F$ | $F$ |
 
-一个位置只处理一次，保留的结果却可能有很多条；结束者先参与闭端点配对，点输入也保留自身身份；右侧顺序只留真正继续的非零成员。这三件事分清后，开始、结束和交叉就能合在同一次事件中处理。
+One position is processed once but can yield many retained results. Ending members participate in closed-endpoint pairing before leaving; point inputs retain their own identities; and the right-side order keeps only nonzero members that genuinely continue. Distinguishing these three facts lets starts, ends, and crossings be handled together in one event.
 
-本章已经分别论证参与者完整、结果真实且只报一次、事件后顺序正确、新邻接检查充分，以及没有端点提示时位置仍能被发现。这里依赖没有非零重叠、非零输入不竖直、不同事件横坐标各异。下一篇[第五章《重叠线段怎样参与扫描》](./overlapping-segments.mdx)再处理重叠参与扫描，第六章讨论同横坐标不同位置，第七章接入剪切；完整混合扫描、一般正确性整合与总工作量分别留给第八至十章。
+This chapter separately established participant completeness, genuine results reported once, correct post-event order, sufficient new-neighbor checks, and discovery even without endpoint hints. The arguments require no positive-length overlap, nonvertical nonzero inputs, and distinct horizontal coordinates for distinct events. Next, [Chapter 5, How overlapping segments participate in the sweep](./overlapping-segments.mdx), incorporates overlaps. Chapter 6 handles distinct positions with equal horizontal coordinates, and Chapter 7 introduces shearing. The complete mixed-input sweep, general correctness, and total work are left to Chapters 8–10 respectively.

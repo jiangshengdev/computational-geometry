@@ -1,83 +1,83 @@
 ---
 slug: /docs/segment-intersection/vertical-segments
-title: 用剪切处理竖直线段
-sidebar_label: 7．用剪切处理竖直线段
-description: 将竖直输入统一剪切，沿用已有扫描规则，再把点和完整重叠区间还原到原坐标。
+title: Handling vertical segments with a shear
+sidebar_label: 7. Handling vertical segments with a shear
+description: Shear all inputs together, reuse the existing sweep rules, and restore points and complete overlap intervals to the original coordinates.
 ---
 
 import IntersectionFigures from '@site/src/components/IntersectionFigures';
 
-一条竖直线段先后经过两个不同高度的交点。它们的 $x$ 坐标相同，这条线段该放在活动顺序的哪个高度？
+A vertical segment passes through intersections at two different heights. Both have the same $x$ coordinate. At which height should this segment sit in the active order?
 
-这是线段求交系列的第七章。本篇把竖直输入接入[第六篇的逐点扫描](./same-x-events.mdx)：先统一变换输入，在新坐标中使用已有规则，最后还原求交结果。剪切专题负责数学证明；这里在使用处说明结论和条件，重点跟随一组输入走完这个过程，不需要先读完整专题。
+This is Chapter 7 of the segment-intersection series. It incorporates vertical inputs into [Chapter 6's point-by-point sweep](./same-x-events.mdx): transform all inputs together, apply the existing rules in the new coordinates, then restore the intersection results. The shear topics provide mathematical proofs. Here we state their results and conditions where needed and follow one set of inputs through the process. You need not read the complete topic first.
 
-## 第一节：竖直线段卡在哪里
+## Section 1: Where a vertical segment gets stuck {/* #第一节竖直线段卡在哪里 */}
 
-取三份闭线段，名称代表固定的原始身份：
+Take three closed segments, whose names denote fixed original identities:
 
-| 输入 | 两个端点 | 原坐标中的范围 |
+| Input | Endpoints | Range in the original coordinates |
 | --- | --- | --- |
-| $\teachBlue{V}$ | $(0,0),(0,3)$ | $x=0$，$0\le y\le3$ |
-| $\teachOrange{A}$ | $(-1,1),(1,1)$ | $y=1$，$-1\le x\le1$ |
-| $\teachViolet{B}$ | $(-1,2),(1,2)$ | $y=2$，$-1\le x\le1$ |
+| $\teachBlue{V}$ | $(0,0),(0,3)$ | $x=0$, $0\le y\le3$ |
+| $\teachOrange{A}$ | $(-1,1),(1,1)$ | $y=1$, $-1\le x\le1$ |
+| $\teachViolet{B}$ | $(-1,2),(1,2)$ | $y=2$, $-1\le x\le1$ |
 
-$A$ 穿过 $V$ 的位置记作 $P=(0,1)$，$B$ 穿过 $V$ 的位置记作 $Q=(0,2)$。两点都在各自的闭范围内；$A,B$ 位于不同的水平直线上，没有公共点。所以三对输入中，只有 $V,A$ 与 $V,B$ 相交。
+Call the position where $A$ crosses $V$ $P=(0,1)$, and where $B$ crosses $V$ $Q=(0,2)$. Both points lie within their respective closed ranges. $A,B$ lie on distinct horizontal lines and have no common point. Of the three input pairs, only $V,A$ and $V,B$ intersect.
 
 <IntersectionFigures topic="vertical-segments" prefix="vertical" name="main"
-  panels={['图 1：原输入 V、A、B。V 在 x=0 上从 O 延伸到高度 3，P、Q 分别位于高度 1、2。', '图 2：用演示系数二分之一画出的变换后输入，P′、Q′ 从左到右排列。此图不使用正文实际计算系数。']}
+  panels={['Figure 1: Original inputs V, A, B. V extends along x=0 from O to height 3; P and Q are at heights 1 and 2.', 'Figure 2: Transformed inputs drawn with the demonstration coefficient one half. P′ and Q′ are ordered left to right. This figure does not use the actual calculation coefficient.']}
 />
 
-图 1、图 2 按编号配对阅读，换行后仍保持此顺序。每幅原始尺寸为 320 × 260，横纵单位相同，$O$ 表示原点。**本篇所有变换后配图都用演示系数 $s_{\mathrm{vis}}=1/2$ 放大剪切效果；它不是后面计算所用的 $s$，图上的水平距离不能拿来验算扫描。** 原图与演示图都是教学示意，不是真实执行轨迹。正文坐标表、公式及事件表始终使用实际系数。
+Read Figures 1 and 2 as a numbered pair, retaining that order when they wrap onto separate rows. Each has an original size of 320 × 260 and equal horizontal and vertical units; $O$ is the origin. **All transformed figures here use the demonstration coefficient $s_{\mathrm{vis}}=1/2$ to magnify the shear. It is not the $s$ used below, and horizontal distances in the figures cannot check the sweep calculations.** Both original and demonstration figures are teaching diagrams, not real execution traces. Coordinate tables, formulas, and event tables always use the actual coefficient.
 
-第六篇[只更新当前块的理由](./same-x-events.mdx#第五节为什么只更新当前块)用到一个条件：非竖直直线在固定 $x$ 坐标只有一个高度。因此同一份非零输入不能同时参加同列低处和高处的两个事件。
+Chapter 6's [reason for updating only the current block](./same-x-events.mdx#第五节为什么只更新当前块) uses this condition: a nonvertical line has only one height at a fixed $x$ coordinate. One nonzero input therefore cannot participate in both a low and a high event in one column.
 
-这里 $V$ 在 $x=0$ 覆盖从 $0$ 到 $3$ 的整段高度，既包含 $P$，又包含 $Q$。若把它当成只有一个高度的位置，选 $1$ 会丢掉它在 $Q$ 的参与资格，选 $2$ 又不能描述它在 $P$ 的参与。给它任意指定一个斜率也不能改变这个事实。我们要先让输入满足旧规则的条件，再使用那套规则。
+Here $V$ covers every height from $0$ to $3$ at $x=0$, containing both $P$ and $Q$. Treating it as one position with a single height fails: choosing $1$ loses its participation at $Q$, while choosing $2$ cannot describe its participation at $P$. Assigning an arbitrary slope does not change this fact. We must first make the inputs satisfy the old rules' conditions, then use those rules.
 
-## 第二节：把输入变成可以扫描的样子
+## Section 2: Transform the inputs into a form the sweep can handle {/* #第二节把输入变成可以扫描的样子 */}
 
-沿用[《剪切如何改变坐标》](./shear/intuition.mdx)的变换：
+Reuse the transformation from [How a shear changes coordinates](./shear/intuition.mdx):
 
 $$
 x'=x+sy,\qquad y'=y.
 $$
 
-$x,y$ 是原坐标，$x',y'$ 是新坐标；撇号用于区分新旧，不表示另一个输入身份。$s$ 是这次处理统一选定的正数，称为剪切系数。计算一个点时，先把它的 $y$ 坐标乘 $s$，加到原 $x$ 坐标上；高度不变。本篇固定坐标轴，把算出的数画成新点，不重新讲斜坐标轴的读数。
+$x,y$ are original coordinates and $x',y'$ are new coordinates. The prime distinguishes coordinates, not input identities. The same positive number $s$, called the shear coefficient, is chosen for this computation. To transform a point, multiply its $y$ coordinate by $s$ and add that to its original $x$ coordinate; leave its height unchanged. We fix the axes and plot the calculated coordinates as new points, without repeating the interpretation of tilted coordinate axes.
 
-**所有输入的所有端点都使用同一个 $s$。** 这使原来共享的位置接受同一个变换：无论沿哪份输入计算，都得到同一个新位置。若每条线各选系数，就不是对整幅图使用同一变换，不能套用交集对应的结论。
+**Every endpoint of every input uses the same $s$.** A shared original position therefore undergoes the same transformation: whichever input we compute along, we get the same new position. Different coefficients for different lines would not transform the whole figure uniformly, so the intersection-correspondence result would not apply.
 
-### 系数怎样保证旧条件成立
+### How the coefficient ensures the old conditions {/* #系数怎样保证旧条件成立 */}
 
-输入坐标为有理数时，按[《整数缩放与交点分母》](./shear/denominator.mdx)选正整数公共分母 $D$，使全部端点的 $Dx,Dy$ 都是整数；$M$ 是 $1$ 与这些整数绝对值的最大值。使用[《事件间距与剪切系数》](./shear/order.mdx)给出的选择
+For rational coordinates, follow [Integer scaling and intersection denominators](./shear/denominator.mdx): choose a positive integer common denominator $D$ making every endpoint's $Dx,Dy$ integers. Let $M$ be the maximum of $1$ and the absolute values of these integers. Use the choice established in [Event spacing and the shear coefficient](./shear/order.mdx):
 
 $$
 s=\frac{1}{256(M+1)^5}.
 $$
 
-这个选择保证原来 $x$ 坐标不同的端点和实际交点保持左右先后。分母界、五次方和常数的推导见上述两篇。缩放只是用于选系数；[原坐标仍使用同一个 $s$](./shear/special-cases.mdx#回到原坐标为什么不用再调整系数)，不再乘除一次 $D$。
+This preserves the left-to-right order of endpoints and actual intersections with originally different $x$ coordinates. The topics above derive the denominator bound, fifth power, and constant. Scaling is used only to select the coefficient; [the original coordinates still use the same $s$](./shear/special-cases.mdx#回到原坐标为什么不用再调整系数), without an extra multiplication or division by $D$.
 
-由[《同横坐标、退化输入与原坐标》](./shear/special-cases.mdx#同横坐标竖直线段和退化输入)可直接核对两种输入：原端点的 $x$ 坐标不同，保序保证新端点的 $x'$ 坐标仍不同；原端点的 $x$ 坐标相同而高度不同，正系数把较低端点放到较高端点左方。因此**每份非零输入都不再竖直，原来不竖直的也不会变竖直**。这正好补上上一节缺少的条件。零长度输入仍是点，不能由这句话推成非零线段。
+The result in [Equal horizontal coordinates, degenerate inputs, and original coordinates](./shear/special-cases.mdx#同横坐标竖直线段和退化输入) directly checks both input types. Originally different endpoint $x$ coordinates remain different $x'$ coordinates by order preservation. For endpoints with the same $x$ but different heights, the positive coefficient places the lower endpoint left of the higher. Thus **every nonzero input becomes nonvertical, and originally nonvertical inputs do not become vertical**. This supplies the missing condition. Zero-length inputs remain points; the statement does not turn them into nonzero segments.
 
-主案例的端点已经是整数，取 $D=1$，最大绝对坐标为 $3$，所以 $M=3$。这与专题中[最大绝对坐标为 3 的示例](./shear/order.mdx#示例最大绝对坐标为-3)满足同一系数选择条件，直接使用那里已算出的结果：
+The main example already has integer endpoints: take $D=1$. Its largest absolute coordinate is $3$, so $M=3$. It meets the same conditions as the topic's [example with largest absolute coordinate 3](./shear/order.mdx#示例最大绝对坐标为-3), so reuse the result calculated there:
 
 $$
 s=\frac{1}{262144}.
 $$
 
-下文保留字母 $s$，它始终等于这个精确分数，不改用演示系数或小数近似。
+We retain the letter $s$ below. It always equals this exact fraction, never the demonstration coefficient or a decimal approximation.
 
-| 输入身份 | 变换后的左端点 | 变换后的右端点 |
+| Input identity | Transformed left endpoint | Transformed right endpoint |
 | --- | --- | --- |
 | $V$ | $(0,0)$ | $(3s,3)$ |
 | $A$ | $(-1+s,1)$ | $(1+s,1)$ |
 | $B$ | $(-1+2s,2)$ | $(1+2s,2)$ |
 
-例如 $V$ 的上端点满足 $x'=0+s\times3=3s$；$A$ 的左端点满足 $x'=-1+s\times1=-1+s$。每行两端的高度分别保持原值。$V$ 的新横向长度是 $3s>0$，$A,B$ 的新横向长度都为 $2$。
+For example, the upper endpoint of $V$ has $x'=0+s\times3=3s$, and the left endpoint of $A$ has $x'=-1+s\times1=-1+s$. Each row retains its original endpoint heights. The new horizontal length of $V$ is $3s>0$, while those of $A,B$ are both $2$.
 
-## 第三节：原来的事件怎样对应过去
+## Section 3: How original events correspond to transformed events {/* #第三节原来的事件怎样对应过去 */}
 
-先确认变换后求的仍是原问题。[《剪切为什么保持交集》](./shear/intersection.mdx)证明：固定同一个系数时，整条闭线段对应到新端点之间的整条闭线段；变换又能唯一撤销，因此公共点不会丢失，也不会新增。这个结论对任意有理系数成立，**不依赖小系数保序**。
+First confirm that the transformed problem is still the original problem. [Why shearing preserves intersections](./shear/intersection.mdx) proves that one fixed coefficient maps an entire closed segment to the entire closed segment between its transformed endpoints. The transformation can be uniquely undone, so no common points are lost or introduced. This holds for any rational coefficient and **does not depend on order preservation by a small coefficient**.
 
-主案例的两个公共点因此分别变为
+The main example's two common points therefore become
 
 $$
 P'=(0+s\times1,1)=(s,1).
@@ -87,103 +87,103 @@ $$
 Q'=(0+s\times2,2)=(2s,2).
 $$
 
-它们的新 $x'$ 坐标之差为 $2s-s=s>0$。原来同列从低到高的 $P,Q$，现在变成从左到右的 $P',Q'$。这条对应不仅是给点换名字：$V$ 现在先在 $x'=s$ 遇到高度 $1$，再在 $x'=2s$ 遇到高度 $2$，不再要求一个顺序位置在同一列承担两个高度。
+Their new $x'$ coordinates differ by $2s-s=s>0$. The bottom-to-top pair $P,Q$ in one original column becomes the left-to-right pair $P',Q'$. This is more than renaming points: $V$ reaches height $1$ at $x'=s$, then height $2$ at $x'=2s$. One order position no longer has to represent two heights in one column.
 
-对于其他输入，同列展开及原先不同列保序的保证都来自上一节引用的系数结论。因此可以把第六篇的完整事件次序用于新坐标；原来完全重合的位置仍完全重合，不能把同点参与者拆成先后两次处理。这里保序的是几何事件位置，端点信息和输入编号仍需各自保留。
+For other inputs, both same-column separation and preservation of order between originally different columns follow from the coefficient result above. Chapter 6's complete event order can therefore be used in new coordinates. Originally coincident positions remain coincident: same-point participants must not be split into separate processing times. The preserved order is that of geometric event positions; endpoint information and input identifiers must still be retained separately.
 
-同线关系也由[交集专题的直线结论](./shear/intersection.mdx)保持。原来同线的非零输入，变换后仍在同一条直线上；不同的直线不会被合成同一条，因为可以唯一撤销。于是第五篇的同线组仍按新坐标中的直线组织，组内保留每份原始身份。点输入没有唯一支撑直线，不加入这类组。
+Collinearity is also preserved by the [line result in the intersection topic](./shear/intersection.mdx). Originally collinear nonzero inputs remain on one line. Distinct lines cannot merge into one because the transformation is uniquely reversible. Chapter 5's collinear groups are therefore organized by lines in the new coordinates, retaining each original identity inside. Point inputs have no unique supporting line and do not join these groups.
 
-还要区分第三件事：**精确有理数运算**负责不把分数截成有限位小数。可逆且保持整条线段的变换负责交集对应，选定系数负责事件保序，分数运算负责避免舍入误差。不能把「系数很小」当成计算精确的理由。
+Keep a third responsibility separate: **exact rational arithmetic** prevents fractions from being truncated to finite decimals. The invertible, whole-segment-preserving transformation gives intersection correspondence; the chosen coefficient gives event order preservation; fraction arithmetic avoids rounding error. A small coefficient is not itself a reason for exact calculation.
 
-## 第四节：在新坐标里完成扫描
+## Section 4: Complete the sweep in the new coordinates {/* #第四节在新坐标里完成扫描 */}
 
-现在开始扫描变换后的输入。高度、斜率、端点范围、候选交点和未来比较全部使用 $x',y'$。名字 $V,A,B$ 仍指原来的三份输入，不随着顺序变化重新编号。
+Now sweep the transformed inputs. Heights, slopes, endpoint ranges, candidate intersections, and future comparisons all use $x',y'$. The names $V,A,B$ still refer to the same original inputs and are not renumbered when their order changes.
 
-### 写出新直线与覆盖范围
+### Write the new lines and coverage ranges {/* #写出新直线与覆盖范围 */}
 
-对 $V$，原来 $x=0$，代入得到 $x'=sy$；又因 $y'=y$，所以 $x'=sy'$。$s>0$，两边除以 $s$ 得到 $y'=x'/s$。另外两条高度不变：
+For $V$, originally $x=0$, substitution gives $x'=sy$. Since $y'=y$, this is $x'=sy'$. As $s>0$, divide both sides by $s$ to get $y'=x'/s$. The other two heights remain unchanged:
 
-| 输入 | 新坐标中的高度 | 新斜率 | 新 $x'$ 坐标的闭范围 |
+| Input | Height in new coordinates | New slope | Closed range of new $x'$ coordinates |
 | --- | --- | --- | --- |
 | $V$ | $y'=x'/s$ | $1/s=262144$ | $[0,3s]$ |
 | $A$ | $y'=1$ | $0$ | $[-1+s,1+s]$ |
 | $B$ | $y'=2$ | $0$ | $[-1+2s,1+2s]$ |
 
-范围取自变换后的两端；斜率表示新 $x'$ 坐标每增加 $1$ 时，新高度改变多少。这里不能拿原来竖直的 $V$ 去求旧斜率，也不能用原来只有 $x=0$ 的范围判断新交点。
+Ranges come from transformed endpoints. A slope states how much new height changes when the new $x'$ coordinate increases by $1$. We cannot use an old slope for originally vertical $V$, or its old range $x=0$ alone to judge a new intersection.
 
-### 从开始事件走到两个交点
+### From the start events to the two intersections {/* #从开始事件走到两个交点 */}
 
-因为 $0<s=1/262144<1/2$，所以 $2s<1$。两条水平输入的左端先后是 $-1+s<-1+2s<0$；两者都先于 $V$ 开始。$A$ 加入后只有它自己，$B$ 加入后位于它上方，两条水平线平行，不预约交点。
+Because $0<s=1/262144<1/2$, we have $2s<1$. The horizontal inputs' left endpoints satisfy $-1+s<-1+2s<0$, so both start before $V$. $A$ is alone when it joins, and $B$ joins above it. These horizontal lines are parallel; no intersection is scheduled.
 
-到 $(0,0)$，$V$ 从高度 $0$ 加入，在 $A,B$ 下方。新邻居 $V,A$ 的直线交点满足 $x'/s=1$；两边乘以 $s$，得 $x'=s$，高度为 $1$。$0<s<3s$，而 $-1+s<s<1+s$，候选同时在两份闭范围内，又严格在当前位置右方，于是登记 $P'$。此时 $V,B$ 中间隔着 $A$，没有因这个加入事件直接成为邻居。
+At $(0,0)$, $V$ joins at height $0$, below $A,B$. The line intersection of new neighbors $V,A$ satisfies $x'/s=1$. Multiplying both sides by $s$ gives $x'=s$, at height $1$. Since $0<s<3s$ and $-1+s<s<1+s$, the candidate is in both closed ranges and strictly right of the current position, so register $P'$. $A$ still separates $V,B$; this start event has not made them direct neighbors.
 
-到 $P'$ 时，$V,A$ 的高度都是 $1$，$B$ 的高度是 $2$。先报告 $V,A$ 对应 $P'$，再沿用[第三篇的右侧斜率关系](./exact-predicates.mdx#到了交点等高不等于两侧顺序)：$A$ 的斜率 $0$ 小于 $V$ 的 $1/s$，所以右侧从下到上变成 $A,V,B$。
+At $P'$, both $V,A$ have height $1$ and $B$ has height $2$. First report $P'$ for $V,A$, then use [Chapter 3's slope relation on the right](./exact-predicates.mdx#到了交点等高不等于两侧顺序): $A$ has slope $0$, less than $V$'s $1/s$, so the right-side bottom-to-top order becomes $A,V,B$.
 
-现在 $V,B$ 新相邻，才检查这一对。方程 $x'/s=2$ 两边乘 $s$，得 $x'=2s$，高度为 $2$。它满足 $0<2s<3s$ 以及 $-1+2s<2s<1+2s$，两份都覆盖；又有 $2s>s$，严格在 $P'$ 之后。因此登记 $Q'$。这里承接[第六篇的未来与覆盖分工](./same-x-events.mdx#第七节把同线组的覆盖与报告接回来)：真实范围通过与尚未处理必须分别核对。
+Only now do $V,B$ become new neighbors and get checked. Multiplying $x'/s=2$ by $s$ gives $x'=2s$, height $2$. It satisfies $0<2s<3s$ and $-1+2s<2s<1+2s$, so both inputs cover it. Also $2s>s$, placing it strictly after $P'$, so register $Q'$. This uses [Chapter 6's distinct future and coverage checks](./same-x-events.mdx#第七节把同线组的覆盖与报告接回来): actual range membership and still awaiting processing must be checked separately.
 
-到 $Q'$，只有高度为 $2$ 的 $V,B$ 参加；$A$ 高度为 $1$，不参加。报告 $V,B$ 对应 $Q'$ 后，右侧按 $0<1/s$ 排成 $B,V$，整列从下到上为 $A,B,V$。新邻接 $A,B$ 是平行线，没有新交点。
+At $Q'$, only $V,B$, both at height $2$, participate; $A$ at height $1$ does not. After reporting $Q'$ for $V,B$, order them $B,V$ on the right since $0<1/s$. The full bottom-to-top order is $A,B,V$. New neighbors $A,B$ are parallel and have no new intersection.
 
-下面汇总所有事件。顺序列写的是**该事件处理后**，不是相遇点上等高成员的任意排序。
+Here are all the events. The order column describes the state **after processing the event**, not an arbitrary ordering of equal-height participants at the meeting point.
 
-| 新事件位置 | 当前动作 | 处理后从下到上的顺序 |
+| New event position | Current action | Bottom-to-top order after processing |
 | --- | --- | --- |
-| $(-1+s,1)$ | $A$ 开始 | $A$ |
-| $(-1+2s,2)$ | $B$ 开始；$A,B$ 平行 | $A,B$ |
-| $(0,0)$ | $V$ 开始；发现并登记 $P'$ | $V,A,B$ |
-| $P'=(s,1)$ | 报告 $V,A$；更新后发现并登记 $Q'$ | $A,V,B$ |
-| $Q'=(2s,2)$ | 报告 $V,B$；$A,B$ 平行 | $A,B,V$ |
-| $(3s,3)$ | $V$ 结束 | $A,B$ |
-| $(1+s,1)$ | $A$ 结束 | $B$ |
-| $(1+2s,2)$ | $B$ 结束 | 空 |
+| $(-1+s,1)$ | $A$ starts | $A$ |
+| $(-1+2s,2)$ | $B$ starts; $A,B$ are parallel | $A,B$ |
+| $(0,0)$ | $V$ starts; discover and register $P'$ | $V,A,B$ |
+| $P'=(s,1)$ | Report $V,A$; after updating, discover and register $Q'$ | $A,V,B$ |
+| $Q'=(2s,2)$ | Report $V,B$; $A,B$ are parallel | $A,B,V$ |
+| $(3s,3)$ | $V$ ends | $A,B$ |
+| $(1+s,1)$ | $A$ ends | $B$ |
+| $(1+2s,2)$ | $B$ ends | Empty |
 
-后面三个端点确实按表排列：$3s<1+s$ 等价于两边减去 $s$ 后的 $2s<1$；而 $1+s<1+2s$ 来自 $s>0$。各结束点没有其他输入经过，不增加结果。所有端点和两个真实交点都已处理。
+The last three endpoints really occur in this order: subtracting $s$ from both sides makes $3s<1+s$ equivalent to $2s<1$; and $1+s<1+2s$ follows from $s>0$. No other input passes through these end events, so no results are added. All endpoints and both real intersections have been processed.
 
-这个案例展示了剪切后的扫描接入，没有重证邻接发现机制。一般输入仍使用第四篇的[同点参与者收集](./same-point-events.mdx#怎样找齐旧活动参与者)、第五篇的[覆盖延长补检](./overlapping-segments.mdx#第五节邻居没变覆盖延长也要补检)和第六篇的[完整未来比较](./same-x-events.mdx#第六节完整的未来次序怎样接到事件发现)。它们所需的非竖直条件现在已经满足；同线组的最远右端也必须从新端点取 $x'$ 坐标，不能混入旧端点的 $x$ 坐标。
+This example incorporates transformed inputs into the sweep without reproving neighbor discovery. General inputs still use Chapter 4's [same-point participant collection](./same-point-events.mdx#怎样找齐旧活动参与者), Chapter 5's [coverage-extension checks](./overlapping-segments.mdx#第五节邻居没变覆盖延长也要补检), and Chapter 6's [complete future comparison](./same-x-events.mdx#第六节完整的未来次序怎样接到事件发现). Their nonvertical condition is now satisfied. A collinear group's farthest right endpoint must also use transformed endpoints' $x'$ coordinates, not a mixture with old endpoints' $x$ coordinates.
 
-## 第五节：把答案还给原来的图形
+## Section 5: Return the answer to the original figure {/* #第五节把答案还给原来的图形 */}
 
-扫描得到的是新坐标中的交集。使用[剪切专题已经给出的撤销公式](./shear/intuition.mdx#从新坐标求回原坐标)：
+The sweep obtained intersections in the new coordinates. Use the [inverse formulas from the shear topic](./shear/intuition.mdx#从新坐标求回原坐标):
 
 $$
 x=x'-sy',\qquad y=y'.
 $$
 
-对 $V,A$ 的结果 $P'=(s,1)$，代入得到
+For the result $P'=(s,1)$ of $V,A$, substitution gives
 
 $$
 x=s-s\times1=s-s=0,\qquad y=1.
 $$
 
-因此恢复为 $P=(0,1)$。对 $V,B$ 的结果 $Q'=(2s,2)$，同样得到
+This restores $P=(0,1)$. For the result $Q'=(2s,2)$ of $V,B$, likewise obtain
 
 $$
 x=2s-s\times2=2s-2s=0,\qquad y=2.
 $$
 
-因此恢复为 $Q=(0,2)$。最终是两条按原始无序输入对保留的结果：$V,A$ 对应 $P$，$V,B$ 对应 $Q$；$A,B$ 的交集为空。不要只交付两个没有输入对身份的点，也不要把新坐标中的 $P',Q'$ 当作原图答案。
+This restores $Q=(0,2)$. The final answer has two results attached to original unordered input pairs: $P$ for $V,A$ and $Q$ for $V,B$; $A,B$ has empty intersection. Do not return two points without input-pair identities, or mistake the new-coordinate $P',Q'$ for answers in the original figure.
 
-### 完整重叠区间也要整段还原
+### Restore an entire overlap interval as an entire interval {/* #完整重叠区间也要整段还原 */}
 
-另取一个独立短例，只保留 $V$，与新输入 $\teachEmerald{W}$ 配对：$W$ 的端点为 $(0,1),(0,2)$。本例没有 $A,B$。最大绝对端点坐标仍为 $3$，因此实际系数仍是同一个 $s=1/262144$。
+Take a separate short example with only $V$ and a new input $\teachEmerald{W}$, whose endpoints are $(0,1),(0,2)$. Neither $A$ nor $B$ is present. The largest absolute endpoint coordinate remains $3$, so the actual coefficient is still $s=1/262144$.
 
 <IntersectionFigures topic="vertical-segments" prefix="vertical" name="overlap"
-  panels={['图 3：只取 V 与 W，W 在原竖直线段 V 内从高度 1 到 2。虚线为 V，较粗实线为 W，也是这对输入的完整交集。', '图 4：演示剪切后仍在同一直线上，W 对应的整段位于 V 内；虚线与实线没有被错开。演示系数为二分之一。']}
+  panels={['Figure 3: Only V and W are present. W lies inside original vertical segment V from height 1 to 2. The dashed segment is V; the thicker solid segment is W and also this pair’s complete intersection.', 'Figure 4: After the demonstration shear they remain on the same line, with the whole of W inside V; the dashed and solid segments have not separated. The demonstration coefficient is one half.']}
 />
 
-变换后，$V$ 覆盖 $[0,3s]$，$W$ 覆盖 $[s,2s]$，两份都在 $y'=x'/s$ 上。按第五篇[新成员加入时报告完整交集](./overlapping-segments.mdx#第二节新成员加入时就报告完整交集)的规则，$W$ 在 $(s,1)$ 加入时，与同组的 $V$ 报告从 $(s,1)$ 到 $(2s,2)$ 的完整区间。这里的两个位置不是两条点结果；图中实线强调的是整段公共部分。
+After transformation, $V$ covers $[0,3s]$ and $W$ covers $[s,2s]$, both on $y'=x'/s$. By Chapter 5's rule of [reporting the complete intersection when a new member joins](./overlapping-segments.mdx#第二节新成员加入时就报告完整交集), when $W$ joins at $(s,1)$ it reports, with same-group member $V$, the complete interval from $(s,1)$ to $(2s,2)$. These positions are not two point results: the solid line emphasizes the entire common part.
 
-恢复下端：$x=s-s\times1=0,y=1$；恢复上端：$x=2s-s\times2=0,y=2$。由第三节引用的整条线段对应结论，恢复这两个边界确定的整段，得到从 $(0,1)$ 到 $(0,2)$ 的完整重叠区间。保留输入对 $V,W$，不把两份身份合并。内部即使另有穿越事件，也沿用第五篇的分类报告，不把这个区间切碎或重报成点。
+Restore the lower endpoint: $x=s-s\times1=0,y=1$; restore the upper: $x=2s-s\times2=0,y=2$. By the whole-segment correspondence cited in Section 3, restore the entire segment determined by these boundaries, obtaining the complete overlap interval from $(0,1)$ to $(0,2)$. Keep the input pair $V,W$, without merging identities. Even if another crossing occurs inside, use Chapter 5's classified reporting, without splitting this interval or reporting it again as a point.
 
-### 点输入仍只参加自己的事件
+### Point inputs still participate only in their own event {/* #点输入仍只参加自己的事件 */}
 
-再取另一个独立短例：只取 $V$ 和两份点输入 $Z_1,Z_2$，两份的两端都为 $P=(0,1)$。没有 $A,B,W$。仍用相同的实际 $s$。
+Take another separate short example with only $V$ and two point inputs $Z_1,Z_2$, each with both endpoints at $P=(0,1)$. There are no $A,B,W$. Use the same actual $s$.
 
 <IntersectionFigures topic="vertical-segments" prefix="vertical" name="points"
-  panels={['图 5：原坐标中 V 与同位置的两份点输入 Z1、Z2，圆环和菱形中心均为 P，标记不表示面积。', '图 6：演示剪切后，两份点输入仍在同一个 P′，没有变成长线段，也没有分开位置。演示系数为二分之一。']}
+  panels={['Figure 5: In the original coordinates, V meets two point inputs Z1, Z2 at the same position. Both the ring and diamond are centered at P; the marks do not represent areas.', 'Figure 6: After the demonstration shear, both point inputs still occupy the same P′. Neither becomes a positive-length segment, and their positions do not separate. The demonstration coefficient is one half.']}
 />
 
-两个端点都经同一个变换成为 $(s,1)$，所以每份仍是零长度输入。按第四篇[点输入只参与这一次事件](./same-point-events.mdx#第五节零长度输入参与这一次不留到右侧)的规则，在 $P'$ 合并两份点身份与非零参与者 $V$，分别得到 $V,Z_1$、$V,Z_2$、$Z_1,Z_2$ 三对点结果。它们的位置相同，身份不同；每个结果都按 $x=s-s\times1=0,y=1$ 恢复为 $P$。
+Both endpoints become $(s,1)$ under the same transformation, so each input still has zero length. By Chapter 4's rule that [point inputs participate in only this event](./same-point-events.mdx#第五节零长度输入参与这一次不留到右侧), merge both point identities with nonzero participant $V$ at $P'$. This produces three point-result pairs: $V,Z_1$, $V,Z_2$, and $Z_1,Z_2$. They share a position but have different identities. Each result is restored to $P$ using $x=s-s\times1=0,y=1$.
 
-$Z_1,Z_2$ 不获得斜率，也不占据后续活动顺序位置。$V$ 在此继续，处理后仍只有它活动。这是把点输入的已有参与规则接到变换前后，不需要再引入一种扫描机制。
+$Z_1,Z_2$ acquire neither slopes nor later positions in the active order. $V$ continues through this point and remains the only active input afterward. This connects the existing point-participation rule across the transformation; no new sweep mechanism is needed.
 
-至此，输入先用统一系数满足扫描条件，全部判断在新坐标中完成，再用逆变换恢复点或完整区间，原始输入对始终保留。下一章再组织完整混合扫描；一般正确性整合与总工作量仍分别留给第九、十章。
+The inputs now satisfy the sweep conditions through one uniform coefficient; all decisions use new coordinates; inverse transformation restores points or complete intervals; and original input pairs are retained throughout. The next chapter organizes the complete mixed-input sweep. General correctness and total work remain for Chapters 9 and 10 respectively.

@@ -1,230 +1,230 @@
 ---
 slug: /docs/segment-intersection/what-we-compute
-title: 我们究竟要求什么
-sidebar_label: 1．我们究竟要求什么
-description: 从原始输入的身份、点与完整重叠区间出发，建立两两求交的基准方法，理解需要检查多少对。
+title: What Are We Trying to Compute?
+sidebar_label: 1. What Are We Trying to Compute?
+description: Start with original input identities, points, and complete overlap intervals, then establish pairwise testing as a baseline and count the pairs it checks.
 ---
 
 import IntersectionFigures from '@site/src/components/IntersectionFigures';
 
-给你几条线段，让你找出它们相交的地方，你会怎样做？一种直接的方法是：先取两条，检查它们有没有公共部分，再换一对，直到所有不同的两条都检查过。
+If someone gives you several line segments and asks where they intersect, what would you do? A direct approach is to take two segments, check whether they share any part, and then move on to another pair until every pair of distinct inputs has been checked.
 
-这个方法容易想到。不过，在寻找更省事的方法之前，我们要先说清楚：**每次检查的对象是什么，又应该留下什么结果？**
+This approach is easy to think of. Before looking for a method that does less work, however, we need to clarify two things: **what do we check each time, and what result should we keep?**
 
-这是 Bentley–Ottmann 线段求交系列的第 1 章。本章先建立问题和基准方法；下一章再研究扫描线怎样减少需要关注的线段对。
+This is Chapter 1 of the Bentley–Ottmann segment intersection series. We first establish the problem and a baseline method. The next chapter studies how a sweep line can reduce the number of segment pairs that need attention.
 
-## 一份输入，有一个身份
+## Each Input Has Its Own Identity {/* #一份输入有一个身份 */}
 
-一条线段可以用两个端点描述。例如，端点为 $(0,0)$ 和 $(4,0)$ 的线段，是横轴上从 $0$ 到 $4$ 的那一段。
+A segment can be described by two endpoints. For example, the segment with endpoints $(0,0)$ and $(4,0)$ is the part of the horizontal axis from $0$ to $4$.
 
-我们讨论的线段**包含两个端点**，这种线段叫作「闭线段」。所以 $(0,0)$ 和 $(4,0)$ 都在线段上。直线会向两端无限延伸，线段却有范围；例如 $(5,0)$ 在这条线段的延长线上，但不在线段上。若需要回顾方程和范围怎样配合表示线段，可以阅读[由两个端点写出直线方程](./line-equation.mdx)。
+The segments we discuss **include both endpoints**. Such a segment is called a “closed segment.” Thus, both $(0,0)$ and $(4,0)$ lie on this segment. A line extends indefinitely in both directions, but a segment has a limited extent: $(5,0)$ lies on the line extending this segment, but not on the segment itself. To review how an equation and coordinate bounds work together to describe a segment, see [Writing a Line Equation from Two Endpoints](./line-equation.mdx).
 
-两个端点也可以相同。端点都是 $(2,0)$ 时，这份输入只包含点 $(2,0)$，长度为 $0$。我们仍然接受这样的输入。
+The two endpoints may also be the same. If both are $(2,0)$, the input contains only the point $(2,0)$ and has length $0$. We accept inputs like this too.
 
-现在给每份输入编一个号：第 $1$ 条、第 $2$ 条、第 $3$ 条……编号用来区分输入，不表示线段的长短或位置。
+Now number the inputs: input $1$, input $2$, input $3$, and so on. A number distinguishes one input from another; it does not describe the segment's length or location.
 
-假设有下面三份输入，图中分别用 $\teachBlue{S_1}$、$\teachOrange{S_2}$、$\teachViolet{S_3}$ 标出它们；下标就是输入编号：
+Suppose we have the following three inputs. The figures label them $\teachBlue{S_1}$, $\teachOrange{S_2}$, and $\teachViolet{S_3}$; the subscript is the input number:
 
-| 输入编号 | 两个端点 |
+| Input number | Endpoints |
 | --- | --- |
-| $1$ | $(0,0)$ 和 $(4,0)$ |
-| $2$ | $(0,0)$ 和 $(4,0)$ |
-| $3$ | $(4,0)$ 和 $(0,0)$ |
+| $1$ | $(0,0)$ and $(4,0)$ |
+| $2$ | $(0,0)$ and $(4,0)$ |
+| $3$ | $(4,0)$ and $(0,0)$ |
 
-它们占据的几何位置完全相同。第 $3$ 份只是把端点的书写顺序倒过来，没有改变包含哪些点。可是，这仍然是**三份输入**，不能因为画出来重合，就悄悄删成一份。
+They occupy exactly the same geometric location. The third input merely lists its endpoints in reverse order, which does not change the points it contains. Nevertheless, these are **three inputs**. We must not silently merge them into one just because their drawings coincide.
 
 <IntersectionFigures name="identity"
   panels={[
-    '输入 1：从 (0,0) 到 (4,0) 的闭线段。',
-    '输入 2：从 (0,0) 到 (4,0) 的闭线段，与输入 1 重合。',
-    '输入 3：端点按 (4,0)、(0,0) 书写，几何位置与前两份输入相同。',
+    'Input 1: the closed segment from (0,0) to (4,0).',
+    'Input 2: the closed segment from (0,0) to (4,0), coinciding with input 1.',
+    'Input 3: endpoints listed as (4,0), (0,0); its geometric location is the same as the first two inputs.',
   ]}
 />
 
-三个小图依次展示输入 $1$、$2$、$3$；空间不足时自动换行，按从左到右、从上到下的顺序阅读。每个小图保持原始尺寸，使用相同的坐标范围和尺度，没有把重合线段挪到不同位置；第三份输入虽然倒过来书写端点，画出的线段仍然相同。各图下方的箭头只表示端点的书写顺序，不表示线段有方向。图中 $O$ 表示原点，坐标轴上的箭头表示正方向，线段两端的实心圆表示端点也包含在内。
+The three panels show inputs $1$, $2$, and $3$ in order. When space is limited, they wrap onto another row; read from left to right and then top to bottom. Every panel retains its original size and uses the same coordinate range and scale. Coincident segments have not been shifted apart. Although the third input lists its endpoints in reverse order, its segment is unchanged. The arrow below each panel shows only the order in which the endpoints are written; it does not give the segment a direction. In the figures, $O$ denotes the origin, axis arrows indicate positive directions, and filled endpoint circles show that the endpoints are included.
 
-接下来，我们用「输入对 $1$ 与 $2$」表示取出编号为 $1$、$2$ 的两份输入。它和「输入对 $2$ 与 $1$」是同一对，因为交换检查顺序不会改变公共部分。这叫作「无序输入对」。我们只取两份不同的输入，不检查一份输入与它自身。
+We use “input pair $1$ and $2$” to mean the two inputs numbered $1$ and $2$. This is the same pair as “input pair $2$ and $1$,” because reversing the order of checking does not change their common part. This is called an “unordered input pair.” We choose two distinct inputs and never check an input against itself.
 
-## 两条线段的公共部分是什么
+## What Can Two Segments Have in Common? {/* #两条线段的公共部分是什么 */}
 
-两条线段都包含的点，合起来叫作它们的「交集」。没有公共点时，交集就是空的。
+All points belonging to both segments together form their “intersection.” If they have no common point, their intersection is empty.
 
-先固定一条线段 $\teachBlue{A}$：从 $(0,0)$ 到 $(4,0)$。它包含的点都满足 $y=0$，横坐标从 $0$ 到 $4$，包含两端。下面每次另取一条线段，与 $A$ 单独比较。
+Fix a segment $\teachBlue{A}$ from $(0,0)$ to $(4,0)$. Every point on it satisfies $y=0$, and its horizontal coordinate ranges from $0$ to $4$, including both ends. In each example below, choose one other segment and compare it with $A$ alone.
 
-配图中用 $\teachOrange{B}$ 标出每次另取的输入，用 $\teachViolet{A\cap B}$ 表示这两份输入的交集；符号 $\cap$ 读作「交」。没有公共点时，交集为空，用 $\varnothing$ 表示。
+In the figures, $\teachOrange{B}$ labels the other input, and $\teachViolet{A\cap B}$ denotes the intersection of the two inputs. The symbol $\cap$ is read as “intersection.” When there is no common point, we denote the empty intersection by $\varnothing$.
 
-### 没有公共点：空交集
+### No Common Point: An Empty Intersection {/* #没有公共点空交集 */}
 
-另一条线段从 $(0,1)$ 到 $(4,1)$。它上面的点都满足 $y=1$，而 $A$ 上面的点都满足 $y=0$。一个点的纵坐标不能既是 $0$ 又是 $1$，因此两条线段没有公共点。
+Let the other segment run from $(0,1)$ to $(4,1)$. All its points satisfy $y=1$, whereas all points on $A$ satisfy $y=0$. A point's vertical coordinate cannot be both $0$ and $1$, so the segments have no common point.
 
-这对输入检查过了，但**不产生求交结果记录**。
+We have checked this input pair, but it **produces no intersection result record**.
 
 <IntersectionFigures name="empty"
-  panels={['输入 A：从 (0,0) 到 (4,0)。', '输入 B：从 (0,1) 到 (4,1)。', 'A 与 B 没有公共点，交集为空集。']}
+  panels={['Input A: from (0,0) to (4,0).', 'Input B: from (0,1) to (4,1).', 'A and B have no common point; their intersection is empty.']}
 />
 
-这里和下面每组的三个小图都按「输入 A、另一份输入 B、完整交集」的顺序排列，换行后继续按此顺序阅读，坐标范围与尺度相同。端点旁标出坐标，第三幅只画交集，不重复画输入；交集为空时，用 $\varnothing$ 标明。灰色细线是坐标轴，不属于输入或结果。
+Here and in the groups below, the three panels are ordered as “input A, other input B, complete intersection.” Continue in that order if the panels wrap. All use the same coordinate range and scale. Coordinates are shown beside endpoints. The third panel shows only the intersection, without drawing the inputs again; an empty intersection is marked $\varnothing$. Thin gray lines are coordinate axes, not parts of the inputs or results.
 
-### 只有一个公共点：点交集
+### Exactly One Common Point: A Point Intersection {/* #只有一个公共点点交集 */}
 
-换成从 $(2,-1)$ 到 $(2,1)$ 的竖直线段。它上面的点都满足 $x=2$。公共点还必须在 $A$ 上，所以纵坐标必须是 $0$。
+Replace the other segment with the vertical segment from $(2,-1)$ to $(2,1)$. Every point on it satisfies $x=2$. A common point must also lie on $A$, so its vertical coordinate must be $0$.
 
-这两个条件只留下 $(2,0)$。它的横坐标 $2$ 在 $0$ 到 $4$ 之间，纵坐标 $0$ 在 $-1$ 到 $1$ 之间，因此确实同时在两条线段上。交集就是这一个点。
+These two conditions leave only $(2,0)$. Its horizontal coordinate $2$ is between $0$ and $4$, and its vertical coordinate $0$ is between $-1$ and $1$, so it really lies on both segments. Their intersection is this one point.
 
 <IntersectionFigures name="crossing"
-  panels={['输入 A：从 (0,0) 到 (4,0)。', '输入 B：从 (2,-1) 到 (2,1)。', 'A 与 B 的完整交集为点 (2,0)。']}
+  panels={['Input A: from (0,0) to (4,0).', 'Input B: from (2,-1) to (2,1).', 'The complete intersection of A and B is the point (2,0).']}
 />
 
-接触端点也算相交。例如，把另一条线段换成从 $(4,0)$ 到 $(6,0)$ 的水平线段：公共点的横坐标既不能超过 $4$，又不能小于 $4$，只能等于 $4$。两条线段都包含这个端点，所以交集是 $(4,0)$。
+Touching at an endpoint also counts as intersecting. For example, replace the other segment with the horizontal segment from $(4,0)$ to $(6,0)$. A common point's horizontal coordinate can be neither greater than $4$ nor less than $4$, so it must equal $4$. Both segments include this endpoint, making their intersection $(4,0)$.
 
 <IntersectionFigures name="touch"
-  panels={['输入 A：从 (0,0) 到 (4,0)。', '输入 B：从 (4,0) 到 (6,0)。', 'A 与 B 的完整交集为共同端点 (4,0)。']}
+  panels={['Input A: from (0,0) to (4,0).', 'Input B: from (4,0) to (6,0).', 'The complete intersection of A and B is their shared endpoint (4,0).']}
 />
 
-零长度输入也按同一个定义处理。如果另一份输入只包含点 $(2,0)$，这个点在 $A$ 上，交集就是它；如果另一份输入只包含 $(5,0)$，它不在 $A$ 的范围内，交集为空。两份点输入则只有在位置相同时才有公共点。
+Zero-length inputs follow the same definition. If the other input contains only $(2,0)$, that point lies on $A$ and is the intersection. If it contains only $(5,0)$, the point is outside the bounds of $A$, so the intersection is empty. Two point inputs have a common point only when their locations are the same.
 
 <IntersectionFigures name="point-on"
-  panels={['输入 A：从 (0,0) 到 (4,0)。', '输入 B：用菱形标记的点 (2,0)，位于 A 上。', 'A 与 B 的完整交集为点 (2,0)，用圆点标记。']}
+  panels={['Input A: from (0,0) to (4,0).', 'Input B: the point (2,0), marked by a diamond, lies on A.', 'The complete intersection of A and B is the point (2,0), marked by a dot.']}
 />
 
 <IntersectionFigures name="point-off"
-  panels={['输入 A：从 (0,0) 到 (4,0)。', '输入 B：点 (5,0)，位于 A 的范围之外。', 'A 与 B 的交集为空集。']}
+  panels={['Input A: from (0,0) to (4,0).', 'Input B: the point (5,0), outside the bounds of A.', 'The intersection of A and B is empty.']}
 />
 
-每组第二幅图中的菱形用来辨认「这一份输入只有一个点」，不表示它有面积。第三幅图仍用圆点表示点交集。
+The diamond in each group's second panel identifies an input consisting of just one point. It does not mean the input has area. The third panel still uses a dot for a point intersection.
 
-### 有一段公共部分：重叠区间
+### A Shared Segment: An Overlap Interval {/* #有一段公共部分重叠区间 */}
 
-再换成线段 $B$，从 $(2,0)$ 到 $(6,0)$。它和 $A$ 都在横轴上。
+Now let segment $B$ run from $(2,0)$ to $(6,0)$. Both it and $A$ lie on the horizontal axis.
 
-一个公共点必须同时满足：
+A common point must satisfy both
 
 $$
 \teachBlue{0}\le x\le\teachBlue{4},\qquad \teachOrange{2}\le x\le\teachOrange{6}.
 $$
 
-第二个条件要求 $x$ 至少为 $2$，第一个条件要求 $x$ 至多为 $4$，所以公共点必须满足 $2\le x\le4$。
+The second condition requires $x$ to be at least $2$, and the first requires it to be at most $4$. Thus a common point must satisfy $2\le x\le4$.
 
-反过来，任取一个满足 $2\le x\le4$ 的数，它既在 $0$ 到 $4$ 之间，也在 $2$ 到 $6$ 之间。因此，点 $(x,0)$ 同时属于两条线段。
+Conversely, take any number satisfying $2\le x\le4$. It is between $0$ and $4$ and also between $2$ and $6$. Therefore, $(x,0)$ belongs to both segments.
 
-两个方向合起来说明：交集恰好是从 $(2,0)$ 到 $(4,0)$ 的**完整闭区间**，两端也包含在内。它的长度为 $4-2=2$，不是只有一个点。
+Together, these two directions show that the intersection is exactly the **complete closed interval** from $(2,0)$ to $(4,0)$, including both endpoints. Its length is $4-2=2$; it is not just a single point.
 
-不能只报告两个端点，因为 $(3,0)$ 等中间的点也属于交集。我们用区间的两个端点来描述整段公共部分，不是说只有这两个点相交。
+Reporting only two endpoint intersections would be wrong, because intermediate points such as $(3,0)$ also belong to the intersection. We use the interval's two endpoints to describe the entire common part, not to claim that only those two points are shared.
 
 <IntersectionFigures name="overlap"
-  panels={['输入 A：从 (0,0) 到 (4,0)。', '输入 B：从 (2,0) 到 (6,0)。', '完整交集：从 (2,0) 到 (4,0)，包含两端及全部中间点。']}
+  panels={['Input A: from (0,0) to (4,0).', 'Input B: from (2,0) to (6,0).', 'Complete intersection: from (2,0) to (4,0), including both endpoints and every point between them.']}
 />
 
-如果再加入从 $(3,-1)$ 到 $(3,1)$ 的线段 $C$，它分别与 $A$、$B$ 相交于 $(3,0)$。这是另外两对输入的结果。$A$ 与 $B$ 包含哪些点并没有改变，所以它们的交集仍然是从 $(2,0)$ 到 $(4,0)$ 的一个完整区间，不能在 $(3,0)$ 处拆成两条结果。
+If we add a segment $C$ from $(3,-1)$ to $(3,1)$, it intersects $A$ and $B$ separately at $(3,0)$. These are results for two other input pairs. The points contained in $A$ and $B$ have not changed, so their intersection remains one complete interval from $(2,0)$ to $(4,0)$. It must not be split into two results at $(3,0)$.
 
 <IntersectionFigures name="third-segment" comparison
   panels={[
-    '加入 C 前：输入 A 从 (0,0) 到 (4,0)。',
-    '加入 C 后：A 保持原样，C 从 (3,-1) 到 (3,1)。',
-    '加入 C 前：输入 B 从 (2,0) 到 (6,0)。',
-    '加入 C 后：B 保持原样，C 从 (3,-1) 到 (3,1)。',
-    '加入 C 前：A 与 B 的完整交集从 (2,0) 到 (4,0)。',
-    '加入 C 后：A 与 B 的完整交集仍从 (2,0) 到 (4,0)，没有被切开。',
+    'Before adding C: input A runs from (0,0) to (4,0).',
+    'After adding C: A is unchanged; C runs from (3,-1) to (3,1).',
+    'Before adding C: input B runs from (2,0) to (6,0).',
+    'After adding C: B is unchanged; C runs from (3,-1) to (3,1).',
+    'Before adding C: the complete intersection of A and B runs from (2,0) to (4,0).',
+    'After adding C: the complete intersection of A and B still runs from (2,0) to (4,0), without being split.',
   ]}
 />
 
-这六幅图分成三组前后对照，每组按「加入 C 前」「加入 C 后」阅读；放不下时，后一幅换到下一行，仍归在同一组。前两组分别展示 A、B 与新加入的 C，避免重合线段互相遮挡。最后一组只画 A、B 的交集，前后始终是同一整段。这里比较的是输入增加前后的交集，不是扫描线的执行过程。
+These six panels form three before-and-after pairs. Read each pair as “before adding C” and then “after adding C.” If there is not enough space, the second panel wraps onto the next row but remains in the same group. The first two pairs show A and B separately alongside the newly added C, so that coincident segments do not hide one another. The last pair shows only the intersection of A and B, which remains the same complete interval. This compares the intersections before and after adding an input; it is not a sweep-line execution sequence.
 
-## 为什么不会出现两段分开的公共部分
+## Why Can the Common Part Not Be Two Separate Pieces? {/* #为什么不会出现两段分开的公共部分 */}
 
-上面看到了空、点和非零长度区间。对闭线段来说，这三类已经包含全部可能。
+We have seen empty intersections, points, and intervals of nonzero length. For closed segments, these cover every possibility.
 
-先考虑某条输入长度为 $0$ 的情况。它只有一个点，公共部分只能是这个点或空，不可能有更多点。
+First consider an input of length $0$. It contains only one point, so the common part can only be that point or the empty set; it cannot contain more points.
 
-再考虑两条长度都不为 $0$ 的线段。如果公共部分没有点，就是空；如果恰好有一个点，就是点交集。剩下要说明的是：**只要有两个不同的公共点，公共部分就一定是一整段。**
+Now consider two segments of nonzero length. If the common part has no points, it is empty; if it has exactly one, it is a point intersection. What remains to show is this: **as soon as there are two distinct common points, the common part must be one complete segment.**
 
-把这两个不同的公共点叫作 $P$、$Q$。两个不同的点确定一条直线。两条线段所在的直线都经过 $P$、$Q$，所以它们在同一条直线上。
+Call the two distinct common points $P$ and $Q$. Two distinct points determine one line. The lines containing both segments pass through $P$ and $Q$, so they are the same line.
 
-如果这条直线不竖直，就按横坐标从小到大排列点。在这条直线上，一个横坐标只对应一个点；线段从一个端点连续延伸到另一个端点，中间所有横坐标对应的点都包含在内。若直线竖直，就改用纵坐标排列，理由相同。
+If this line is not vertical, order its points by increasing horizontal coordinate. On this line, each horizontal coordinate corresponds to exactly one point. A segment extends continuously from one endpoint to the other, containing the points at every horizontal coordinate in between. If the line is vertical, use vertical coordinates instead; the reasoning is the same.
 
-沿这个顺序比较两条线段：把它们各自较前的端点中**更靠后**的一个记作 $L$，把各自较后的端点中**更靠前**的一个记作 $R$。
+Compare the segments in this order. Let $L$ be the **later** of their two earlier endpoints, and let $R$ be the **earlier** of their two later endpoints.
 
-任何公共点都不能在 $L$ 前面，否则它会落在某条线段的起始范围之外；也不能在 $R$ 后面，否则它会越过某条线段的结束范围。因此，所有公共点都只能在 $L$ 到 $R$ 之间。
+No common point can precede $L$: it would be before the beginning of one segment. Nor can it follow $R$: it would be beyond the end of one segment. Thus every common point must lie between $L$ and $R$.
 
-反过来，$L$ 到 $R$ 之间的每个点都不早于两条线段各自较前的端点，也不晚于各自较后的端点，因而同时属于两条线段。又因为这里已经有两个不同的公共点，$L$ 必定在 $R$ 前面，不会与 $R$ 重合。
+Conversely, every point from $L$ to $R$ is no earlier than either segment's earlier endpoint and no later than either segment's later endpoint. It therefore belongs to both segments. Since we already have two distinct common points, $L$ must precede $R$ and cannot coincide with it.
 
-所以公共部分恰好是从 $L$ 到 $R$ 的完整非零长度闭区间，中间不可能断开。这样就说明了全部三种可能。本章用它明确结果的形状；怎样根据任意端点算出结果，留到第 3 章展开。
+The common part is therefore exactly the complete closed interval of nonzero length from $L$ to $R$; there can be no gap inside it. This establishes all three possibilities. Here we use this fact to specify the shape of a result. Chapter 3 will explain how to compute the result from arbitrary endpoints.
 
-## 结果既要记位置，也要记是哪一对
+## Record Both the Location and the Input Pair {/* #结果既要记位置也要记是哪一对 */}
 
-现在看一个有三条输入的小例子：
+Consider this small example with three inputs:
 
-| 输入编号 | 两个端点 |
+| Input number | Endpoints |
 | --- | --- |
-| $1$ | $(-1,0)$ 和 $(1,0)$ |
-| $2$ | $(0,-1)$ 和 $(0,1)$ |
-| $3$ | $(0,0)$ 和 $(0,0)$ |
+| $1$ | $(-1,0)$ and $(1,0)$ |
+| $2$ | $(0,-1)$ and $(0,1)$ |
+| $3$ | $(0,0)$ and $(0,0)$ |
 
-第 $1$ 条在横轴上，第 $2$ 条在纵轴上，它们的唯一公共点是原点 $(0,0)$：公共点必须同时满足 $x=0$、$y=0$，并且原点在两条线段的端点范围内。第 $3$ 份只包含原点，而原点又同时在前两条线段上。因此结果为：
+Input $1$ lies on the horizontal axis, and input $2$ on the vertical axis. Their only common point is the origin $(0,0)$: a common point must satisfy both $x=0$ and $y=0$, and the origin is within both segments' endpoint bounds. Input $3$ contains only the origin, which also belongs to each of the first two segments. The results are therefore:
 
-| 输入对 | 完整交集 |
+| Input pair | Complete intersection |
 | --- | --- |
-| $1$ 与 $2$ | 点 $(0,0)$ |
-| $1$ 与 $3$ | 点 $(0,0)$ |
-| $2$ 与 $3$ | 点 $(0,0)$ |
+| $1$ and $2$ | Point $(0,0)$ |
+| $1$ and $3$ | Point $(0,0)$ |
+| $2$ and $3$ | Point $(0,0)$ |
 
 <IntersectionFigures name="three-pairs"
   panels={[
-    '输入 1：从 (-1,0) 到 (1,0) 的水平线段。',
-    '输入 2：从 (0,-1) 到 (0,1) 的竖直线段。',
-    '输入 3：只有原点，用菱形标记。',
-    '三份输入放回同一坐标系，都包含原点 (0,0)。',
+    'Input 1: the horizontal segment from (-1,0) to (1,0).',
+    'Input 2: the vertical segment from (0,-1) to (0,1).',
+    'Input 3: only the origin, marked by a diamond.',
+    'All three inputs in the same coordinate system; each contains the origin (0,0).',
   ]}
 />
 
-按从左到右、从上到下的顺序，前三幅图分别展示输入 $1$、$2$、$3$，第四幅将它们放在一起。三份输入都包含原点，但记录结果时，仍须像上表那样分别写出三个输入对。菱形仍表示原点输入，不能因为它与两条线段的交点重合就省略这份输入。
+Reading left to right and then top to bottom, the first three panels show inputs $1$, $2$, and $3$ separately, and the fourth places them together. All three contain the origin, but the results must still list the three input pairs separately, as in the table. The diamond still denotes the point input at the origin; we must not omit this input merely because it coincides with the intersection of the two segments.
 
-这里只有一个几何位置，却有三对相交输入，所以要保留三条结果。如果只写「原点」，就无法知道究竟哪些输入彼此相交。
+There is only one geometric location but three intersecting input pairs, so we keep three results. Writing only “the origin” would not tell us which inputs intersect one another.
 
-回到开头的三份重合输入，它们也有三对：$1$ 与 $2$、$1$ 与 $3$、$2$ 与 $3$。由于每份输入包含的点完全相同，每一对的交集都是从 $(0,0)$ 到 $(4,0)$ 的完整区间。几何位置重合没有取消任何一份输入的身份。
+Return to the three coincident inputs at the start. They also form three pairs: $1$ and $2$, $1$ and $3$, and $2$ and $3$. Each input contains exactly the same points, so every pair's intersection is the complete interval from $(0,0)$ to $(4,0)$. Coinciding geometrically does not remove any input's identity.
 
-因此，我们的目标可以准确写成：**找出原始输入中所有交集非空的无序输入对，为每一对保留一条结果，记录输入对以及它们的完整交集。**
+We can therefore state our goal precisely: **find every unordered pair of original inputs with a nonempty intersection, and keep one result for each pair, recording the input pair and its complete intersection.**
 
-## 怎样把每一对都检查一遍
+## How Do We Check Every Pair Once? {/* #怎样把每一对都检查一遍 */}
 
-先用四份输入练习枚举。这里只列要检查的输入对，具体位置暂时不影响枚举。
+Practice enumerating pairs with four inputs. Here we list only the pairs to check; their locations do not affect this enumeration.
 
-| 当前取出的输入 | 只与编号更大的输入配对 | 本行检查数 |
+| Current input | Pair only with higher-numbered inputs | Checks in this row |
 | --- | --- | --- |
-| $1$ | $1$ 与 $2$、$1$ 与 $3$、$1$ 与 $4$ | $3$ |
-| $2$ | $2$ 与 $3$、$2$ 与 $4$ | $2$ |
-| $3$ | $3$ 与 $4$ | $1$ |
-| $4$ | 没有编号更大的输入 | $0$ |
+| $1$ | $1$ and $2$, $1$ and $3$, $1$ and $4$ | $3$ |
+| $2$ | $2$ and $3$, $2$ and $4$ | $2$ |
+| $3$ | $3$ and $4$ | $1$ |
+| $4$ | No higher-numbered input | $0$ |
 
-总共检查 $3+2+1=6$ 对。每取出一对，就求这两份输入的交集：空的略过，非空的按前面的规则记录。
+This checks $3+2+1=6$ pairs in total. For each pair, compute the intersection of its two inputs. Skip empty intersections, and record nonempty ones using the rules above.
 
-同样的方法也适用于更多输入。下面说明它为什么既不漏对，也不重复。
+The same method works for more inputs. Let us explain why it misses no pair and checks none twice.
 
-**为什么不漏？** 任取两份不同输入，其中必定有一个编号小、一个编号大。处理较小编号那一行时，规则要求与所有更大的编号配对，因此一定会检查到这一对。这个理由适用于任意两份不同输入，不依赖它们的位置或是否相交。
+**Why is no pair missed?** Take any two distinct inputs. One must have the smaller number and the other the larger. In the row for the smaller number, the rule pairs it with every larger number, so this pair must be checked. This applies to any two distinct inputs, regardless of their positions or whether they intersect.
 
-**为什么不重复？** 同一对只能出现在较小编号那一行。到了较大编号那一行，规则只允许找更大的编号，不会再回头找较小编号。在较小编号那一行，每个更大编号又只出现一次，因此这一对总共只检查一次。
+**Why is no pair repeated?** A pair can occur only in the row for its smaller number. In the row for the larger number, the rule allows only still larger numbers; it never returns to the smaller one. In the smaller number's row, each larger number occurs only once. Thus the pair is checked exactly once in total.
 
-这也不会把输入与自身配对，因为「编号更大」排除了相同编号。只要每次两线段求交得到的完整交集正确，枚举就会检查到所有相交输入对，并且每对最多留下一个结果。这就是后续算法可以对照的基准方法。
+The rule also avoids pairing an input with itself, because “higher-numbered” excludes an equal number. Provided each two-segment check computes the complete intersection correctly, the enumeration finds every intersecting input pair and keeps at most one result per pair. This is the baseline against which we can compare later algorithms.
 
-## 一共需要检查多少对
+## How Many Pairs Must Be Checked? {/* #一共需要检查多少对 */}
 
-把原始输入的数量记作 $n$。例如，四份输入时 $n=4$。这里数的是输入份数，重合输入仍然各算一份。
+Let $n$ denote the number of original inputs. For example, with four inputs, $n=4$. We are counting inputs, so coincident inputs still count separately.
 
-先假设 $n\ge2$。为了数清不同输入对的数量，我们暂时允许交换顺序再数一次：先任选第一份输入，有 $n$ 种选择；再选一份与它不同的输入，有 $n-1$ 种选择。每一种第一份的选择都对应 $n-1$ 种第二份的选择，所以总数为
+First suppose $n\ge2$. To count the distinct pairs, temporarily allow both possible orders. There are $n$ choices for the first input and then $n-1$ choices for a different second input. Each first choice has $n-1$ second choices, giving a total of
 
 $$
 n(n-1).
 $$
 
-但这样把同一对数了两次：例如先选 $1$ 再选 $2$，以及先选 $2$ 再选 $1$。每一对不同输入恰好有这两种顺序，没有第三种；而我们只需要其中的一次。因此把刚才的总数除以 $2$，得到
+But this counts each pair twice: for example, choosing $1$ then $2$, and choosing $2$ then $1$. Every pair of distinct inputs has exactly these two orders and no third; we need only one. Dividing the count by $2$ gives
 
 $$
 \frac{n(n-1)}{2}.
 $$
 
-前面已经证明，逐对检查方法恰好检查每个无序输入对一次，所以这也是它的检查次数。
+We have already proved that the pairwise method checks each unordered input pair exactly once, so this is also its number of checks.
 
-代入 $n=4$，先算括号里的减法，再做乘除：
+Substitute $n=4$, doing the subtraction in parentheses before multiplication and division:
 
 $$
 \frac{4(4-1)}{2}
@@ -233,28 +233,28 @@ $$
 =6,
 $$
 
-与表中逐行得到的 $6$ 对一致。
+which agrees with the $6$ pairs counted row by row in the table.
 
-如果没有输入，或只有一份输入，就选不出两份不同的输入，检查次数都是 $0$。公式也分别给出 $0\times(0-1)/2=0$ 和 $1\times(1-1)/2=0$；这两个边界先由「没有可配对对象」确定，不需要把负数解释成选择数量。
+With no inputs or only one, we cannot choose two distinct inputs, so there are $0$ checks. The formula also gives $0\times(0-1)/2=0$ and $1\times(1-1)/2=0$. We establish these boundary cases first from “there is no pair to choose”; there is no need to interpret a negative number as a number of choices.
 
-输入多起来时，检查数增长得很快：
+The number of checks grows quickly as the input count increases:
 
-| 输入数 $n$ | 检查次数 |
+| Input count $n$ | Number of checks |
 | --- | --- |
 | $10$ | $10\times9/2=45$ |
 | $100$ | $100\times99/2=4950$ |
 | $1000$ | $1000\times999/2=499500$ |
 
-即使这些线段全部互不相交，逐对检查方法仍然会检查这么多对，最后却没有任何求交结果。因此，**检查过多少对**和**实际有多少对相交**是两个不同的数量。
+Even if no two segments intersect, the pairwise method still checks this many pairs and produces no intersection results. Thus **the number of pairs checked** and **the number of pairs that actually intersect** are different quantities.
 
-另一方面，也确实存在每一对都相交的输入。例如，让 $n$ 份输入都占据同一条非零长度线段，每一对的交集就是那条完整线段。此时需要保留的结果条数也是 $n(n-1)/2$。如果要求逐条列出这些结果，任何方法都不能省去输出它们本身的工作。
+On the other hand, inputs for which every pair intersects do exist. For example, let all $n$ inputs occupy the same nonzero-length segment. Every pair's intersection is that entire segment, so the number of result records is also $n(n-1)/2$. If the results must be listed one by one, no method can avoid the work of outputting them.
 
-还要注意，检查次数不是完整运行时间。一次检查内部要做几何判断和计算，保存结果也需要工作；使用精确分数时，数字越长，算术运算也可能越费力。本章只计算「要检查多少对」，不把一次检查说成固定的实际耗时。完整的工作量分析将在后续章节展开。
+Also, the number of checks is not the complete running time. Each check involves geometric decisions and calculations, and storing a result takes work too. With exact fractions, arithmetic can also become more expensive as the numbers get longer. This chapter counts only “how many pairs must be checked”; it does not claim that a check takes a fixed amount of real time. Later chapters will develop the full workload analysis.
 
-## 从基准方法走向扫描线
+## From the Baseline to a Sweep Line {/* #从基准方法走向扫描线 */}
 
-我们已经有了明确目标：结果按原始输入对组织，每个相交输入对保留一个点或一段完整重叠区间。也有了可靠的基准方法：逐对检查，既不漏对，也不重复，但无论实际相交情况如何，都要检查 $n(n-1)/2$ 对。
+We now have a precise goal: organize results by original input pair, retaining a point or one complete overlap interval for each intersecting pair. We also have a reliable baseline: checking pairs one by one misses none and repeats none, but checks $n(n-1)/2$ pairs regardless of how many actually intersect.
 
-接下来的问题是：**当许多线段彼此并不相交时，能不能利用它们的位置关系，少检查一些对，同时仍然找全结果？**
+The next question is: **when many segments do not intersect, can we use their relative positions to check fewer pairs while still finding every result?**
 
-第二章分为[上篇《扫描过程与三类事件》](./why-neighbors.mdx)和[下篇《为什么不会漏掉交点》](./why-neighbors-proof.mdx)，将从明确的简化条件出发，研究这个问题。
+Chapter 2, in [Part 1: The Sweep and Three Types of Events](./why-neighbors.mdx) and [Part 2: Why No Intersection Is Missed](./why-neighbors-proof.mdx), explores this question under explicit simplifying assumptions.

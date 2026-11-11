@@ -1,428 +1,428 @@
 ---
 slug: /docs/line-equation
-title: 由两个端点写出直线方程
-description: 从具体的坐标和一次函数出发，一步步理解直线方程，以及怎样用两个端点写出它。
+title: Writing a Line Equation from Two Endpoints
+description: Starting with coordinates and linear functions, understand line equations step by step and learn how to write one from two endpoints.
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-这篇从坐标和初中学过的一次函数讲起。我们要解决的问题是：**知道一条线段的两个端点，怎样用一个等式表示它所在的直线？**
+This article starts with coordinates and the linear functions learned in middle school. Our question is: **given the two endpoints of a segment, how can we use an equation to describe its containing line?**
 
-## 先看懂「点满足一个等式」
+## First Understand What It Means for a Point to Satisfy an Equation {/* #先看懂点满足一个等式 */}
 
-点 $(1,3)$ 表示横坐标是 $1$，纵坐标是 $3$。下面用 $X$ 表示横坐标，用 $Y$ 表示纵坐标，大写字母和课本里的小写 $x,y$ 用法一样。
+The point $(1,3)$ has horizontal coordinate $1$ and vertical coordinate $3$. Below, $X$ denotes the horizontal coordinate and $Y$ the vertical coordinate. These capital letters work just like the lowercase $x,y$ in textbooks.
 
-看这个等式：
+Consider this equation:
 
 $$
 Y=2X+1.
 $$
 
-它说的是：**纵坐标等于横坐标的 $2$ 倍再加 $1$。**
+It says: **the vertical coordinate is $2$ times the horizontal coordinate, plus $1$.**
 
-| 横坐标 $X$ | 算出纵坐标 $\teachBlue{Y}=\teachBlue{2X+1}$ | 得到的点 |
+| Horizontal coordinate $X$ | Calculate the vertical coordinate $\teachBlue{Y}=\teachBlue{2X+1}$ | Resulting point |
 | --- | --- | --- |
 | $0$ | $2\times0+1=1$ | $(0,1)$ |
 | $1$ | $2\times1+1=3$ | $(1,3)$ |
 | $2$ | $2\times2+1=5$ | $(2,5)$ |
 | $3$ | $2\times3+1=7$ | $(3,7)$ |
 
-把表中的四个点画出来，就是下图中的四个圆点。它们都在蓝色直线上；另外用叉号标出了点 $(2,6)$，用来作比较。
+The four dots below plot the four points in the table. They all lie on the blue line. A cross additionally marks $(2,6)$ for comparison.
 
 <ThemedImage
-  alt="四个圆点 (0,1)、(1,3)、(2,5)、(3,7) 位于直线 Y=2X+1 上；叉号 (2,6) 比同一横坐标处的 (2,5) 高 1，不在直线上。"
+  alt="Four dots, (0,1), (1,3), (2,5), and (3,7), lie on Y=2X+1. The cross at (2,6) is 1 above (2,5) at the same horizontal coordinate and is not on the line."
   sources={{
     light: useBaseUrl('/img/segment-intersection/line-equation/light/line-equation-points-light.svg'),
     dark: useBaseUrl('/img/segment-intersection/line-equation/dark/line-equation-points-dark.svg'),
   }}
 />
 
-沿着图中 $X=2$ 的位置看：等式要求 $Y=2\times2+1=5$，所以 $(2,5)$ 在线上，而高出 $1$ 的 $(2,6)$ 不在线上，因为 $6\ne2\times2+1$。**横坐标相同，并不意味着两个点都满足等式；纵坐标也必须符合要求。**
+Look at $X=2$ in the figure. The equation requires $Y=2\times2+1=5$, so $(2,5)$ lies on the line. The point $(2,6)$, which is $1$ higher, does not, since $6\ne2\times2+1$. **Sharing a horizontal coordinate does not mean both points satisfy the equation; the vertical coordinate must also meet its requirement.**
 
-图中只标出了有限个点。初中学过的一次函数告诉我们：让 $X$ 取遍所有实数，包括负数和小数，$Y=2X+1$ 的图像就是一整条直线。
+Only finitely many points are marked. From linear functions in middle school, we know that letting $X$ range over all real numbers, including negative numbers and decimals, gives an entire straight line as the graph of $Y=2X+1$.
 
-所以这个等式也叫这条直线的「方程」。要判断一个点在不在直线上，只要把它的两个坐标代入，检查等号是否成立。
+This equality is therefore called the line's “equation.” To test whether a point lies on the line, substitute both coordinates and check whether the equality holds.
 
-## 已知两个端点，怎样求出这个等式
+## How Can We Find the Equation from Two Endpoints? {/* #已知两个端点怎样求出这个等式 */}
 
-现在反过来：只告诉你两个端点是 $\teachBlue{A}=(1,3)$、$\teachBlue{B}=(3,7)$，怎样求出它们所在的直线方程？
+Now reverse the question. Given only the endpoints $\teachBlue{A}=(1,3)$ and $\teachBlue{B}=(3,7)$, how do we find the equation of their line?
 
-先看从 $A$ 到 $B$ 时，两个坐标各改变了多少。图中的虚线把变化拆成两段：先向右走 $3-1=2$，再向上走 $7-3=4$。虚线是读数的辅助线，不是原来的线段。
+First consider how much each coordinate changes from $A$ to $B$. The dashed lines split the change into two parts: move right by $3-1=2$, then up by $7-3=4$. These are auxiliary reading guides, not the original segment.
 
 <ThemedImage
-  alt="从 A=(1,3) 水平向右到 (3,3)，横坐标增加 2；再竖直向上到 B=(3,7)，纵坐标增加 4。直线 AB 的斜率为 4 除以 2，等于 2。"
+  alt="Move horizontally right from A=(1,3) to (3,3), increasing the horizontal coordinate by 2, then vertically up to B=(3,7), increasing the vertical coordinate by 4. The slope of line AB is 4 divided by 2, which equals 2."
   sources={{
     light: useBaseUrl('/img/segment-intersection/line-equation/light/line-equation-slope-light.svg'),
     dark: useBaseUrl('/img/segment-intersection/line-equation/dark/line-equation-slope-dark.svg'),
   }}
 />
 
-两个不同的点确定一条直线。对于这条不竖直的直线，可以先按一次函数的形式写成
+Two distinct points determine a line. Since this line is not vertical, start with the linear-function form
 
 $$
 Y=kX+d.
 $$
 
-这里的 $k,d$ 是两个还不知道的数。课本里常把最后一个数写成 $b$；这里先用 $d$，后面会把 $b$ 用在另一种写法中。
+Here $k,d$ are two unknown numbers. Textbooks often use $b$ for the last number. We use $d$ for now because $b$ will appear in another form later.
 
-因为直线经过 $A=(1,3)$，代入后应当成立：
+The line passes through $A=(1,3)$, so substitution must give a true equation:
 
 $$
 3=k+d.
 $$
 
-它也经过 $B=(3,7)$，所以还有：
+It also passes through $B=(3,7)$, so
 
 $$
 7=3k+d.
 $$
 
-用第二个等式减去第一个等式，两边的 $d$ 就消去了：
+Subtract the first equation from the second to eliminate $d$:
 
 $$
 7-3=(3k+d)-(k+d),
 $$
 
-也就是 $4=2k$。这里的 $4$ 和 $2$ 正是图中向上、向右的变化量：横坐标增加 $2$，纵坐标增加 $2k$，而我们知道它实际增加了 $4$。两边除以 $2$，得到 $k=2$。这个数叫作「斜率」，在本例中表示沿直线每向右走 $1$，就向上走 $2$。
+which gives $4=2k$. The $4$ and $2$ are exactly the upward and rightward changes in the figure: a horizontal increase of $2$ gives a vertical increase of $2k$, and we know that increase is $4$. Divide both sides by $2$ to obtain $k=2$. This number is the “slope.” Here it means moving $1$ to the right along the line takes us $2$ upward.
 
-再代回 $3=k+d$，得到 $3=2+d$；两边减去 $2$，得到 $d=1$。
+Substitute back into $3=k+d$ to get $3=2+d$. Subtract $2$ from both sides to obtain $d=1$.
 
-于是直线方程就是
+The line equation is therefore
 
 $$
 Y=2X+1.
 $$
 
-## 为什么又写成 aX+bY=c
+## Why Also Write aX+bY=c? {/* #为什么又写成-axbyc */}
 
-把刚才的等式换一种写法。先把 $2X$ 移到左边：
+Rewrite the same equation. First move $2X$ to the left:
 
 $$
 Y-2X=1.
 $$
 
-再把左右两边都乘以 $-1$：
+Then multiply both sides by $-1$:
 
 $$
 2X-Y=-1.
 $$
 
-这两次变形没有改变等式的解，因此它仍然表示同一条直线。
+Neither transformation changes the equation's solutions, so it still describes the same line.
 
-把 $X$ 前面的数叫作 $a$，把 $Y$ 前面的数叫作 $b$，把右边的数叫作 $c$，就可以统一写成
+Call the number before $X$ by the name $a$, the number before $Y$ by $b$, and the number on the right by $c$. Then we can write the general form
 
 $$
 aX+bY=c.
 $$
 
-在 $2X-Y=-1$ 中，$a=2$、$b=-1$、$c=-1$。注意，$-Y$ 就是 $(-1)\times Y$，所以这里的 $b$ 是 $-1$。
+In $2X-Y=-1$, we have $a=2$, $b=-1$, and $c=-1$. Remember that $-Y$ means $(-1)\times Y$, so $b$ is $-1$ here.
 
-**$a,b,c$ 是固定的三个数；$X,Y$ 是直线上点的坐标，可以变化。**
+**$a,b,c$ are three fixed numbers; $X,Y$ are the coordinates of a point on the line and can vary.**
 
-## 能不能直接从端点算出 a、b、c
+## Can We Calculate a, b, c Directly from the Endpoints? {/* #能不能直接从端点算出-abc */}
 
-可以，不必先求一次函数里的 $k,d$。但这里的「算出」不是说 $a,b,c$ 只有唯一一组答案，而是要找到一组数，让方程 $aX+bY=c$ 表示经过这两个端点的直线。
+Yes, without first finding $k,d$ in the linear-function form. However, “calculate” does not mean that there is only one possible triple $a,b,c$. We need to find a triple making $aX+bY=c$ describe the line through the two endpoints.
 
-仍然用 $A=(1,3)$、$B=(3,7)$。我们先从这两个点必须满足的等式出发，不急着记公式。
+Keep using $A=(1,3)$ and $B=(3,7)$. Start with the equalities these two points must satisfy, rather than rushing to memorize a formula.
 
-### 两个点给 a、b 提出了什么要求
+### What Requirements Do the Two Points Place on a and b? {/* #两个点给-ab-提出了什么要求 */}
 
-直线经过 $A=(1,3)$，所以把 $X=1$、$Y=3$ 代入 $aX+bY=c$，等号必须成立：
+The line passes through $A=(1,3)$, so substituting $X=1$, $Y=3$ into $aX+bY=c$ must make the equality true:
 
 $$
 a\times1+b\times3=c.
 $$
 
-也就是
+That is,
 
 $$
 a+3b=c.
 $$
 
-直线还经过 $B=(3,7)$。代入 $X=3$、$Y=7$，得到
+The line also passes through $B=(3,7)$. Substituting $X=3$, $Y=7$ gives
 
 $$
 a\times3+b\times7=c,
 $$
 
-也就是
+or
 
 $$
 3a+7b=c.
 $$
 
-这两个等式的右边都是同一个数 $c$。用第二个等式减去第一个等式，就能消去 $c$：
+Both equations have the same number $c$ on the right. Subtract the first from the second to eliminate it:
 
 $$
 (3a+7b)-(a+3b)=c-c.
 $$
 
-去掉括号。注意，减去整个括号时，括号里的两项都要变号：
+Remove the parentheses. When subtracting an entire parenthesized expression, change the signs of both terms:
 
 $$
 3a+7b-a-3b=0.
 $$
 
-把含 $a$ 的项放在一起，把含 $b$ 的项放在一起：
+Group the $a$ terms and the $b$ terms:
 
 $$
 (3a-a)+(7b-3b)=0.
 $$
 
-合并同类项，得到
+Combine like terms:
 
 $$
 2a+4b=0.
 $$
 
-回看前面的虚线图：从 $A$ 到 $B$，横坐标增加了 $3-1=2$，纵坐标增加了 $7-3=4$。因此，$aX+bY$ 的值一共改变了 $2a+4b$。**两个点代入后都要等于同一个 $c$，这个变化量就必须是 $0$。**
+Look back at the dashed-line diagram. From $A$ to $B$, the horizontal coordinate increases by $3-1=2$ and the vertical coordinate by $7-3=4$. Thus the total change in $aX+bY$ is $2a+4b$. **Both substituted points must give the same $c$, so this change must equal $0$.**
 
-### 先求出一组，再看为什么答案不唯一
+### Find One Triple, Then See Why It Is Not Unique {/* #先求出一组再看为什么答案不唯一 */}
 
-从 $2a+4b=0$ 出发，两边同时减去 $4b$：
+Starting from $2a+4b=0$, subtract $4b$ from both sides:
 
 $$
 2a=-4b.
 $$
 
-两边同时除以非零的数 $2$：
+Divide both sides by the nonzero number $2$:
 
 $$
 a=-2b.
 $$
 
-这个等式告诉我们：选定 $b$ 后，$a$ 就是 $b$ 的 $-2$ 倍。它没有规定 $b$ 必须是多少。
+This says that once we choose $b$, $a$ is $-2$ times $b$. It does not prescribe a particular value for $b$.
 
-在本例中，不能选 $b=0$，因为这会使 $a=0$。再代入端点就会得到 $c=0$，方程变成 $0=0$；所有点都满足它，不能用来表示我们要找的直线。
+In this example, we cannot choose $b=0$, because that would also make $a=0$. Substituting an endpoint would then give $c=0$, and the equation would become $0=0$. Every point satisfies it, so it cannot describe the line we want.
 
-先选一个容易计算的数 $b=-1$。代入 $a=-2b$：
+First choose an easy value, $b=-1$. Substitute into $a=-2b$:
 
 $$
 a=(-2)\times(-1)=2.
 $$
 
-于是，方程暂时写成
+The equation is now
 
 $$
 2X-Y=c.
 $$
 
-现在只剩下 $c$ 不知道。因为第一个点 $(1,3)$ 在直线上，代入它的坐标后等号必须成立：
+Only $c$ remains unknown. The first point $(1,3)$ lies on the line, so substituting its coordinates must make the equation true:
 
 $$
 2\times1-3=c.
 $$
 
-先做乘法，得到 $2-3=c$；再做减法，得到 $-1=c$，也就是 $c=-1$。所以我们已经求出一个方程：
+First multiply to get $2-3=c$, then subtract to get $-1=c$, or $c=-1$. We have found an equation:
 
 $$
 2X-Y=-1.
 $$
 
-用第二个点 $(3,7)$ 检查，左边等于 $2\times3-7=6-7=-1$，也等于右边。
+Check the second point $(3,7)$: the left side is $2\times3-7=6-7=-1$, equal to the right side too.
 
-如果把这个方程两边同时乘以 $2$，得到
+Multiplying both sides of this equation by $2$ gives
 
 $$
 2(2X-Y)=2\times(-1).
 $$
 
-用乘法分配律展开左边，并计算右边：
+Expand the left side using the distributive law and calculate the right side:
 
 $$
 4X-2Y=-2.
 $$
 
-这时，$a=4$、$b=-2$、$c=-2$。乘以 $2$ 的操作可以通过两边同时除以 $2$ 撤回，所以满足这两个方程的点完全相同。**$(2,-1,-1)$ 和 $(4,-2,-2)$ 是两组不同的系数，却表示同一条直线。**
+Now $a=4$, $b=-2$, and $c=-2$. Multiplication by $2$ can be reversed by dividing both sides by $2$, so exactly the same points satisfy the two equations. **$(2,-1,-1)$ and $(4,-2,-2)$ are different coefficient triples describing the same line.**
 
-### 怎样直接选择 a、b，省去刚才的除法
+### Choose a and b Directly to Avoid That Division {/* #怎样直接选择-ab省去刚才的除法 */}
 
-刚才先选 $b=-1$，最后又把整个方程乘以 $2$，是为了把「系数不唯一」说明白。实际计算时，可以直接选择后一组里的 $a=4$、$b=-2$。
+We first chose $b=-1$ and later multiplied the whole equation by $2$ to explain why the coefficients are not unique. In an actual calculation, we can directly choose $a=4$, $b=-2$ from the latter triple.
 
-为什么会想到这两个数？再看两个端点要求的关系：
+Why choose these numbers? Look again at the condition imposed by the endpoints:
 
 $$
 2a+4b=0.
 $$
 
-我们的目标是让左边两项互相抵消。乘法有交换律，$2\times4$ 和 $4\times2$ 相等。因此，把第一项中的 $a$ 取成 $4$，把第二项中的 $b$ 取成 $-2$，左边就变成
+We want the two terms on the left to cancel. Multiplication is commutative: $2\times4$ equals $4\times2$. Therefore, choosing $a=4$ in the first term and $b=-2$ in the second makes the left side
 
 $$
 2\times4+4\times(-2)=8+(-8)=0.
 $$
 
-这就是一种不需要除法的取法：**让 $a$ 等于纵坐标的变化，让 $b$ 等于横坐标变化的相反数。** 本例中，纵坐标变化是 $7-3=4$，所以取 $a=4$；横坐标变化是 $3-1=2$，它的相反数是 $-(3-1)=-2$，所以取 $b=-2$。也可以把这个相反数写成 $1-3$，这就是第二个减法顺序反过来的原因。
+This is a choice requiring no division: **take $a$ as the change in vertical coordinate, and $b$ as the negative of the change in horizontal coordinate.** Here the vertical change is $7-3=4$, so $a=4$. The horizontal change is $3-1=2$, whose negative is $-(3-1)=-2$, so $b=-2$. We can also write that negative as $1-3$, which explains the reversed subtraction order in the second coefficient.
 
-选好这两个数后，方程暂时是
+Having chosen these two numbers, the equation is temporarily
 
 $$
 4X-2Y=c.
 $$
 
-**右边的 $c$ 要等于直线上任意一个点代入左边所得的值。** 我们已经知道第一个点 $(1,3)$ 在直线上，所以可以用它来算。代入 $X=1$、$Y=3$：
+**The right side $c$ must equal the value obtained by substituting any point on the line into the left side.** We already know the first point $(1,3)$ lies on the line, so use it to calculate. Substitute $X=1$, $Y=3$:
 
 $$
 c=4\times1+(-2)\times3.
 $$
 
-先算两次乘法：$4\times1=4$，$(-2)\times3=-6$。再相加：
+First calculate the two products: $4\times1=4$ and $(-2)\times3=-6$. Then add:
 
 $$
 c=4+(-6)=-2.
 $$
 
-这里不是把两个点的坐标相乘，而是把第一个点的横坐标乘以 $a$、纵坐标乘以 $b$，再把结果相加。用第二个点来算也可以：$4\times3+(-2)\times7=12+(-14)=-2$，结果相同。
+We are not multiplying the coordinates of the two different points together. We multiply the first point's horizontal coordinate by $a$, its vertical coordinate by $b$, and add the results. Using the second point also works: $4\times3+(-2)\times7=12+(-14)=-2$, the same result.
 
-### 把这个取法写成通用公式
+### Write This Choice as a General Formula {/* #把这个取法写成通用公式 */}
 
-先给两个点的坐标起名字：
+First name the coordinates of the two points:
 
-| 记号 | 含义 | 在本例中的值 |
+| Symbol | Meaning | Value in this example |
 | --- | --- | --- |
-| $X_1$ | 第一个点的横坐标 | $1$ |
-| $Y_1$ | 第一个点的纵坐标 | $3$ |
-| $X_2$ | 第二个点的横坐标 | $3$ |
-| $Y_2$ | 第二个点的纵坐标 | $7$ |
+| $X_1$ | Horizontal coordinate of the first point | $1$ |
+| $Y_1$ | Vertical coordinate of the first point | $3$ |
+| $X_2$ | Horizontal coordinate of the second point | $3$ |
+| $Y_2$ | Vertical coordinate of the second point | $7$ |
 
-右下角的 $1,2$ 只是编号，用来区分两个点；$X_1$ 不是 $X\times1$。
+The subscripts $1,2$ are just labels distinguishing the two points; $X_1$ does not mean $X\times1$.
 
-第一个点写作 $(X_1,Y_1)$，第二个点写作 $(X_2,Y_2)$。从第一个点到第二个点，横坐标变化是 $X_2-X_1$，纵坐标变化是 $Y_2-Y_1$。
+Write the first point as $(X_1,Y_1)$ and the second as $(X_2,Y_2)$. From the first to the second, the horizontal change is $X_2-X_1$ and the vertical change is $Y_2-Y_1$.
 
-按照刚才的取法，先让 $a$ 等于纵坐标变化：
+Following the choice above, first take $a$ as the vertical change:
 
 $$
 a=Y_2-Y_1,
 $$
 
-再让 $b$ 等于横坐标变化的相反数。去掉前面带负号的括号时，两项都变号：
+then take $b$ as the negative of the horizontal change. Removing parentheses preceded by a minus sign changes both signs:
 
 $$
 b=-(X_2-X_1)=X_1-X_2.
 $$
 
-最后，因为第一个点在直线上，把 $X=X_1$、$Y=Y_1$ 代入 $aX+bY=c$，就得到
+Finally, because the first point is on the line, substitute $X=X_1$, $Y=Y_1$ into $aX+bY=c$ to obtain
 
 $$
 c=a\times X_1+b\times Y_1.
 $$
 
-省略乘号后，最后一行就写作 $c=aX_1+bY_1$。它的含义仍然是「把第一个点代入左边，算出右边应该等于多少」。
+Omitting multiplication signs, the last line is $c=aX_1+bY_1$. It still means “substitute the first point into the left side to calculate what the right side must be.”
 
-这里要求两个端点不同，使 $a,b$ 不会同时为 $0$：若 $a=Y_2-Y_1=0$，两个纵坐标就相同；若 $b=X_1-X_2=0$，两个横坐标也相同；两者同时成立就说明两个点重合。
+The endpoints must be distinct so that $a,b$ are not both $0$. If $a=Y_2-Y_1=0$, their vertical coordinates are equal. If $b=X_1-X_2=0$, their horizontal coordinates are equal too. If both hold, the points coincide.
 
-这三步只用加、减、乘。两个端点的坐标都是整数时，得到的 $a,b,c$ 也都是整数。下面证明它为什么适用于一般情况，并检查竖直线和水平线。
+These three steps use only addition, subtraction, and multiplication. Integer endpoint coordinates therefore give integer $a,b,c$. Next we prove why the method works in general and check vertical and horizontal lines.
 
-## 为什么这三步算出来的一定对
+## Why Do These Three Steps Always Work? {/* #为什么这三步算出来的一定对 */}
 
-下面把刚才求 $k,d$ 的过程，用两个点的坐标再做一遍。先考虑两个点的横坐标不同的情况。
+Repeat the earlier calculation of $k,d$, now using coordinates for the two points. First consider the case where their horizontal coordinates differ.
 
-两个点都在 $Y=kX+d$ 上，所以分别代入得到
+Both points lie on $Y=kX+d$, so substituting each gives
 
 $$
 Y_1=kX_1+d,\qquad Y_2=kX_2+d.
 $$
 
-第二个等式减去第一个等式，消去 $d$：
+Subtract the first equation from the second to eliminate $d$:
 
 $$
 Y_2-Y_1=k(X_2-X_1).
 $$
 
-因为 $X_2-X_1$ 不为 $0$，两边可以除以它，得到
+Since $X_2-X_1$ is nonzero, divide both sides by it:
 
 $$
 k=\frac{Y_2-Y_1}{X_2-X_1}.
 $$
 
-再看直线上的任意一个点 $(X,Y)$。把它的等式 $Y=kX+d$，减去第一个端点的等式 $Y_1=kX_1+d$，同样能消去 $d$：
+Now take any point $(X,Y)$ on the line. Subtract the first endpoint's equation $Y_1=kX_1+d$ from its equation $Y=kX+d$, again eliminating $d$:
 
 $$
 Y-Y_1=k(X-X_1).
 $$
 
-把刚求出的 $k$ 代进去：
+Substitute the value of $k$ just found:
 
 $$
 Y-Y_1=\frac{Y_2-Y_1}{X_2-X_1}(X-X_1).
 $$
 
-两边乘以 $X_2-X_1$，去掉分母：
+Multiply both sides by $X_2-X_1$ to clear the denominator:
 
 $$
 (X_2-X_1)(Y-Y_1)=(Y_2-Y_1)(X-X_1).
 $$
 
-用乘法分配律展开两边的括号：
+Expand both sides with the distributive law:
 
 $$
 (X_2-X_1)Y-(X_2-X_1)Y_1
 =(Y_2-Y_1)X-(Y_2-Y_1)X_1.
 $$
 
-把含有 $X,Y$ 的项放在左边，其余项放在右边，得到
+Move the terms containing $X,Y$ to the left and the remaining terms to the right:
 
 $$
 (Y_2-Y_1)X-(X_2-X_1)Y
 =(Y_2-Y_1)X_1-(X_2-X_1)Y_1.
 $$
 
-注意 $-(X_2-X_1)=X_1-X_2$。因此，左边 $X$ 前面的数正是 $a=Y_2-Y_1$，$Y$ 前面的数正是 $b=X_1-X_2$；右边就是 $aX_1+bY_1$，也就是 $c$。
+Note that $-(X_2-X_1)=X_1-X_2$. Thus the coefficient of $X$ on the left is exactly $a=Y_2-Y_1$, and the coefficient of $Y$ is exactly $b=X_1-X_2$. The right side is $aX_1+bY_1$, which is $c$.
 
-这样便得到了 $aX+bY=c$。公式中的减法顺序来自移项，不是随意规定的。
+This gives $aX+bY=c$. The subtraction order in the formula comes from rearranging the equation; it is not arbitrary.
 
-## 竖直线和水平线也能这样写吗
+## Does This Also Work for Vertical and Horizontal Lines? {/* #竖直线和水平线也能这样写吗 */}
 
-**竖直线可以，不过需要单独说明。** 刚才除以了 $X_2-X_1$，而竖直线上两个点的横坐标相同，不能除以 $0$。
+**Yes for vertical lines, but they need a separate explanation.** We divided by $X_2-X_1$ above. Two points on a vertical line have equal horizontal coordinates, and division by $0$ is not allowed.
 
-下图把两种特殊情况画在同一个坐标系里。先看竖直的蓝线：从 $(2,1)$ 到 $(2,4)$，纵坐标变了，横坐标却始终是 $2$，所以这条直线的方程是 $\teachBlue{X}=\teachBlue{2}$。
+The figure below places the two special cases in one coordinate system. First consider the vertical blue line. From $(2,1)$ to $(2,4)$, the vertical coordinate changes, but the horizontal coordinate remains $2$, so its equation is $\teachBlue{X}=\teachBlue{2}$.
 
 <ThemedImage
-  alt="竖直线 X=2 经过 (2,1) 和 (2,4)，横坐标固定；水平线 Y=3 经过 (1,3) 和 (4,3)，纵坐标固定。"
+  alt="The vertical line X=2 passes through (2,1) and (2,4), keeping the horizontal coordinate fixed. The horizontal line Y=3 passes through (1,3) and (4,3), keeping the vertical coordinate fixed."
   sources={{
     light: useBaseUrl('/img/segment-intersection/line-equation/light/line-equation-axis-lines-light.svg'),
     dark: useBaseUrl('/img/segment-intersection/line-equation/dark/line-equation-axis-lines-dark.svg'),
   }}
 />
 
-这也说明了为什么不能用 $Y=kX+d$ 表示竖直线：当 $X=2$ 时，右边只能算出一个数 $2k+d$，不可能同时等于图中的 $1$ 和 $4$。
+This also explains why $Y=kX+d$ cannot describe a vertical line: when $X=2$, the right side produces only one value, $2k+d$, which cannot equal both $1$ and $4$ from the figure.
 
-按三步公式计算：
+Apply the three-step formula:
 
 $$
 a=4-1=3,\qquad b=2-2=0,\qquad c=3\times2+0\times1=6.
 $$
 
-得到 $3X+0Y=6$，也就是 $X=2$，确实正确。对于任意两个横坐标相同的不同端点，都会有 $b=0$、$a\ne0$，方程变成 $aX=aX_1$；除以 $a$ 后就是 $X=X_1$。
+We obtain $3X+0Y=6$, or $X=2$, which is correct. For any two distinct endpoints with the same horizontal coordinate, $b=0$ and $a\ne0$. The equation becomes $aX=aX_1$; dividing by $a$ gives $X=X_1$.
 
-**水平线也可以。** 再看图中水平的橙线：从 $(1,3)$ 到 $(4,3)$，横坐标变了，纵坐标始终是 $3$，所以方程应当是 $\teachOrange{Y}=\teachOrange{3}$。
+**Horizontal lines work too.** Consider the horizontal orange line: from $(1,3)$ to $(4,3)$, the horizontal coordinate changes but the vertical coordinate stays $3$, so the equation should be $\teachOrange{Y}=\teachOrange{3}$.
 
-代入公式得到 $a=0$、$b=-3$、$c=-9$，所以方程为 $-3Y=-9$，也就是 $Y=3$。
+Substitution into the formula gives $a=0$, $b=-3$, and $c=-9$. The equation is therefore $-3Y=-9$, or $Y=3$.
 
-因此，$aX+bY=c$ 能把普通的斜线、水平线和竖直线写成同一种形式。
+Thus $aX+bY=c$ expresses ordinary slanted lines, horizontal lines, and vertical lines in the same form.
 
-## 最后分清两个问题
+## Finally, Distinguish Two Issues {/* #最后分清两个问题 */}
 
-**两个端点必须是不同的点。** 如果它们重合，公式会得到 $a=b=c=0$，方程成了 $0=0$。任何点都满足这个等式，它不能表示一条确定的直线。几何上也一样：只知道一个点，经过它可以画出许多条不同的直线。
+**The endpoints must be distinct points.** If they coincide, the formula gives $a=b=c=0$ and the equation becomes $0=0$. Every point satisfies it, so it cannot specify a particular line. The geometry agrees: through a single known point, we can draw many different lines.
 
-**直线方程表示的是整条延长线。** 下图中，加粗的实线只是 $A=(1,3)$ 到 $B=(3,7)$ 之间的线段；两端的虚线表示直线还会继续延伸。
+**A line equation describes the entire extended line.** In the figure below, the thick solid part is only the segment from $A=(1,3)$ to $B=(3,7)$. Dashed portions at both ends show that the line continues.
 
 <ThemedImage
-  alt="线段 AB 用粗实线表示，端点外的直线用虚线表示。P=(4,9) 在 B 外侧的延长线上。A、B 向横轴的投影标出线段的横坐标范围为 1 到 3，包含两端。"
+  alt="Segment AB is thick and solid; the line beyond its endpoints is dashed. P=(4,9) lies on the extension beyond B. Projections of A and B onto the horizontal axis mark the segment's horizontal range from 1 to 3, including both ends."
   sources={{
     light: useBaseUrl('/img/segment-intersection/line-equation/light/line-equation-segment-light.svg'),
     dark: useBaseUrl('/img/segment-intersection/line-equation/dark/line-equation-segment-dark.svg'),
   }}
 />
 
-看图中的 $P=(4,9)$：代入得到 $9=2\times4+1$，等式成立，所以它在直线上；但它已经越过 $B$，不在粗实线段上。
+Consider $P=(4,9)$ in the figure. Substitution gives $9=2\times4+1$, a true equality, so it lies on the line. But it is beyond $B$, outside the thick solid segment.
 
-再沿两条竖直辅助线向下看，$A$、$B$ 对应的横坐标分别是 $1$、$3$。因此，在这个例子中必须同时要求
+Follow the two vertical guides downward: the horizontal coordinates of $A,B$ are $1,3$. Therefore this example requires both
 
 $$
 Y=2X+1,\qquad 1\le X\le3,
 $$
 
-才表示原来的线段，其中两个等号把端点也包含在内。**方程确定点所在的直线，坐标范围再限定取其中哪一段。** 这里使用横坐标作限制，是因为这条直线不竖直；对于竖直线，应改用两个端点的纵坐标限定范围。
+to describe the original segment. The two equality signs in the bounds include its endpoints. **The equation determines the line containing the points; the coordinate bounds then select which part of it to take.** We use horizontal bounds here because this line is not vertical. For a vertical line, use the endpoints' vertical coordinates to bound the segment instead.
 
-理解这组系数后，可以继续阅读[整数缩放与交点分母](./shear/denominator.mdx)，看它怎样用于两条直线的求交计算。
+With these coefficients understood, continue to [Integer Scaling and Intersection Denominators](./shear/denominator.mdx) to see how they are used to compute the intersection of two lines.

@@ -1,85 +1,85 @@
 ---
 id: shear-denominator
 slug: /docs/shear-coefficient/denominator
-title: 整数缩放与交点分母
-description: 从二元一次方程组出发，逐步证明交点分母的上界。
+title: Integer Scaling and Intersection Denominators
+description: Derive an upper bound on intersection denominators step by step from two linear equations in two unknowns.
 ---
 
-为了选出能统一使用的系数，我们先估计交点坐标的分母。这一篇从整数端点开始，用加减消元法推导交点公式。
+To choose one coefficient that works throughout, we first bound the denominators of intersection coordinates. This article starts with integer endpoints and derives the intersection formula by eliminating variables through addition and subtraction.
 
-## 先把有理坐标变成整数
+## First turn rational coordinates into integers {/* #先把有理坐标变成整数 */}
 
-输入端点的坐标都是有理数，即可以写成整数之比。选一个正整数公共分母 $D$，让所有端点坐标乘上 $D$ 后都是整数。公共分母不必最小；把各个正分母相乘也是合法选择。
+Input endpoint coordinates are rational numbers: they can be written as ratios of integers. Choose a positive integer common denominator $D$ so that multiplying every endpoint coordinate by $D$ gives an integer. The common denominator need not be the least one; multiplying all the positive denominators is also a valid choice.
 
-用大写字母表示放大后的坐标：
+Use uppercase letters for the scaled coordinates:
 
 $$
 X=Dx,\qquad Y=Dy.
 $$
 
-例如，坐标中只有分母 $2$ 和 $3$ 时，可以取 $D=6$。点 $(1/2,-2/3)$ 放大后变成 $(3,-4)$，因为 $6\times(1/2)=3$，$6\times(-2/3)=-4$。其他端点也必须使用同一个 $D$，不能每个点各选一个倍数。这是对两个坐标方向做同倍数缩放。
+For example, if the only denominators in the coordinates are $2$ and $3$, we can choose $D=6$. The point $(1/2,-2/3)$ becomes $(3,-4)$ after scaling, because $6\times(1/2)=3$ and $6\times(-2/3)=-4$. All other endpoints must use the same $D$; we cannot choose a separate multiplier for each point. Both coordinate directions are scaled by the same factor.
 
-定义 $M$ 为 $1$ 与所有放大后端点坐标绝对值的最大值。因此 $M$ 是整数，且
+Define $M$ as the maximum of $1$ and the absolute values of all scaled endpoint coordinates. Thus $M$ is an integer, and
 
 $$
 M\ge1,\qquad |X|\le M,\quad |Y|\le M.
 $$
 
-以下先在放大后的整数坐标中证明，最后再回到原坐标。若原输入已经是整数，可以取 $D=1$。
+We first prove the result in scaled integer coordinates, then return to the original coordinates at the end. If the input coordinates are already integers, we can take $D=1$.
 
-例如，若全部端点是 $(3,-4)$ 和 $(-2,1)$，参与比较的数就是 $1,3,4,2,1$，最大的是 $4$，所以 $M=4$。把 $1$ 也放进比较，是为了保证 $M$ 至少为 $1$，后面除以 $M$ 时不会除以零。
+For example, if the complete set of endpoints is $(3,-4)$ and $(-2,1)$, we compare $1,3,4,2,1$. Their maximum is $4$, so $M=4$. Including $1$ ensures that $M$ is at least $1$, so later division by $M$ is not division by zero.
 
-注意：这里变成整数的是**输入端点**。即使端点都是整数，两条线段的交点也可能有分数坐标；下一节就是估计这些分数的分母。
+Notice that it is the **input endpoints** that become integers. Even with integer endpoints, the intersection of two segments may have fractional coordinates; the next section bounds the denominators of those fractions.
 
-## 交点分母为什么不超过 8M²
+## Why intersection denominators are at most 8M² {/* #交点分母为什么不超过-8m */}
 
-### 第一步：写出经过两个端点的直线方程
+### Step 1: Write the line equation through two endpoints {/* #第一步写出经过两个端点的直线方程 */}
 
-为了求两条线段的交点，先写出它们所在直线的方程。这里要求每条线段的两个端点不重合。
+To find the intersection of two segments, first write the equations of their supporting lines. Here we require that the two endpoints of each segment be distinct.
 
-先看其中一条线段，把两个端点记为 $(X_1,Y_1)$、$(X_2,Y_2)$。按照[由两个端点写出直线方程](../line-equation.mdx)中的取法，令
+Consider one of the segments, with endpoints $(X_1,Y_1)$ and $(X_2,Y_2)$. Following the choice in [Writing a line equation from two endpoints](../line-equation.mdx), let
 
 $$
 a=Y_2-Y_1,\qquad b=X_1-X_2,\qquad c=aX_1+bY_1,
 $$
 
-就能把这条线段所在的直线写成
+Then the supporting line of this segment can be written as
 
 $$
 aX+bY=c.
 $$
 
-这组系数为什么这样选，以及为什么也适用于水平线和竖直线，前一篇已经说明。这里接着研究两个问题：**这些系数是不是整数？其中的 $a,b$ 最大能有多大？** 这两点将用于后面的交点分母估计。
+The preceding article explained why these coefficients are chosen and why they also work for horizontal and vertical lines. Here we investigate two further questions: **Are these coefficients integers? How large can $a,b$ be?** Both answers will be used to bound intersection denominators.
 
-先看整数性质。上一节已经把所有端点坐标统一缩放成整数。$a$ 和 $b$ 都由两个整数相减得到，所以也是整数。计算 $c=aX_1+bY_1$ 时，先做两次整数乘法，再把结果相加，因此 $c$ 也是整数。
+First consider whether they are integers. The previous section scaled every endpoint coordinate by the same factor to make them all integers. Both $a$ and $b$ are differences of two integers, so they are integers too. To calculate $c=aX_1+bY_1$, we perform two integer multiplications and add the results, so $c$ is also an integer.
 
-再看 $a,b$ 的大小。上一节选定的 $M$ 保证所有端点坐标都在 $-M$ 到 $M$ 之间。在这个范围内，两个数相距最远的情况是一个等于 $-M$，另一个等于 $M$，相差
+Next consider the sizes of $a,b$. The chosen $M$ ensures that every endpoint coordinate lies between $-M$ and $M$. Within this range, two numbers are farthest apart when one is $-M$ and the other is $M$, a difference of
 
 $$
 M-(-M)=M+M=2M.
 $$
 
-例如，若 $M=4$，坐标就在 $-4$ 到 $4$ 之间，两个坐标最多相差 $4-(-4)=8$。减法顺序反过来，结果会从 $8$ 变成 $-8$，但绝对值仍然是 $8$。
+For example, if $M=4$, the coordinates lie between $-4$ and $4$, and two coordinates differ by at most $4-(-4)=8$. Reversing the subtraction changes the result from $8$ to $-8$, but its absolute value is still $8$.
 
-$a=Y_2-Y_1$ 是两个纵坐标的差。它的绝对值表示这两个纵坐标相差多少，因此
+$a=Y_2-Y_1$ is the difference of two vertical coordinates. Its absolute value measures how far apart those coordinates are, so
 
 $$
 |a|=|Y_2-Y_1|\le2M.
 $$
 
-$b=X_1-X_2$ 是两个横坐标的差。同样，这两个横坐标最多相差 $2M$，所以
+$b=X_1-X_2$ is the difference of two horizontal coordinates. Similarly, they differ by at most $2M$, so
 
 $$
 |b|=|X_1-X_2|\le2M.
 $$
 
-这样，我们得到后面要用的结论：**按上述公式选取的 $a,b,c$ 都是整数，而且 $a,b$ 的绝对值分别不超过 $2M$。** 这里没有限制 $c$ 的绝对值不超过 $2M$；这个大小估计也只针对上述取法，不能在任意放大系数后继续沿用。
+We have now obtained the result needed later: **the coefficients $a,b,c$ chosen by these formulas are all integers, and the absolute values of $a,b$ are each at most $2M$.** We have not bounded the absolute value of $c$ by $2M$. This bound also applies only to this choice of coefficients; it cannot be reused after multiplying them by an arbitrary factor.
 
-对另一条线段采用同样的取法，就得到第二个直线方程。接下来联立这两个方程求交点。
+Apply the same choice to the other segment to obtain the second line equation. We now solve the two equations together to find the intersection.
 
-### 第二步：用加减消元法求交点
+### Step 2: Find the intersection by elimination {/* #第二步用加减消元法求交点 */}
 
-给两条直线的系数加下标以便区分。下标 $1$ 表示第一条直线，下标 $2$ 表示第二条直线。交点同时在两条直线上，所以它的坐标同时满足
+Add subscripts to distinguish the coefficients of the two lines. Subscript $1$ denotes the first line and subscript $2$ the second. The intersection lies on both lines, so its coordinates satisfy both equations:
 
 $$
 \begin{cases}
@@ -88,7 +88,7 @@ $$
 \end{cases}
 $$
 
-先消去 $Y$。把第一式的两边都乘 $b_2$，第二式的两边都乘 $b_1$：
+First eliminate $Y$. Multiply both sides of the first equation by $b_2$, and both sides of the second by $b_1$:
 
 $$
 \begin{aligned}
@@ -97,31 +97,31 @@ a_2b_1X+b_2b_1Y&=c_2b_1.
 \end{aligned}
 $$
 
-用上面一式减去下面一式。因为 $b_1b_2=b_2b_1$，两个含 $Y$ 的项抵消，剩下
+Subtract the lower equation from the upper one. Since $b_1b_2=b_2b_1$, the two terms containing $Y$ cancel, leaving
 
 $$
 (a_1b_2-a_2b_1)X=c_1b_2-c_2b_1.
 $$
 
-为了少写一些字，把括号里的数记为 $\Delta$（读作「德尔塔」）：
+For brevity, denote the number in parentheses by $\Delta$ (read "delta"):
 
 $$
 \Delta=a_1b_2-a_2b_1.
 $$
 
-**为什么可以除以 $\Delta$？** 这里选的是两条不平行、也不重合的直线。下面分情况说明 $\Delta$ 不会等于 $0$。
+**Why is division by $\Delta$ allowed?** We chose two lines that are neither parallel nor coincident. The following cases show that $\Delta$ cannot be $0$.
 
-- 若 $b_1,b_2$ 都不为 $0$，两条直线可写成 $Y=-(a_1/b_1)X+c_1/b_1$ 和 $Y=-(a_2/b_2)X+c_2/b_2$。如果 $\Delta=0$，就有 $a_1b_2=a_2b_1$，两边除以非零数 $b_1b_2$，得到 $a_1/b_1=a_2/b_2$。两条直线的 $X$ 的系数相同：常数项相同就重合，常数项不同就平行，都不符合我们的选择。
-- 若 $b_1=0$，第一条直线竖直，且 $a_1\ne0$。第二条不能也竖直，因此 $b_2\ne0$。于是 $\Delta=a_1b_2\ne0$。
-- 若 $b_2=0$，同理有 $a_2\ne0$、$b_1\ne0$，于是 $\Delta=-a_2b_1\ne0$。
+- If both $b_1,b_2$ differ from $0$, the lines can be written as $Y=-(a_1/b_1)X+c_1/b_1$ and $Y=-(a_2/b_2)X+c_2/b_2$. If $\Delta=0$, then $a_1b_2=a_2b_1$. Dividing both sides by the nonzero number $b_1b_2$ gives $a_1/b_1=a_2/b_2$. The coefficients of $X$ are the same: equal constant terms would make the lines coincide, and different constant terms would make them parallel. Neither possibility fits our choice.
+- If $b_1=0$, the first line is vertical and $a_1\ne0$. The second line cannot also be vertical, so $b_2\ne0$. Hence $\Delta=a_1b_2\ne0$.
+- If $b_2=0$, similarly $a_2\ne0$ and $b_1\ne0$, so $\Delta=-a_2b_1\ne0$.
 
-因此，可以将消元后的方程两边同除以 $\Delta$，得到
+We may therefore divide both sides of the equation obtained by elimination by $\Delta$, giving
 
 $$
 X=\frac{c_1b_2-c_2b_1}{\Delta}.
 $$
 
-再消去 $X$。把原方程组的第一式乘 $a_2$，第二式乘 $a_1$：
+Next eliminate $X$. Multiply the first original equation by $a_2$ and the second by $a_1$:
 
 $$
 \begin{aligned}
@@ -130,32 +130,32 @@ a_2a_1X+a_1b_2Y&=a_1c_2.
 \end{aligned}
 $$
 
-这次用下面一式减去上面一式，含 $X$ 的项抵消，得到
+This time subtract the upper equation from the lower one. The terms containing $X$ cancel, giving
 
 $$
 (a_1b_2-a_2b_1)Y=a_1c_2-a_2c_1.
 $$
 
-再除以 $\Delta$，得到
+Dividing by $\Delta$ again gives
 
 $$
 Y=\frac{a_1c_2-a_2c_1}{\Delta}.
 $$
 
-例如，两条直线 $X+Y=1$、$X-Y=0$ 的系数分别为 $(1,1,1)$ 和 $(1,-1,0)$。此时 $\Delta=1\times(-1)-1\times1=-2$，所以
+For example, the lines $X+Y=1$ and $X-Y=0$ have coefficients $(1,1,1)$ and $(1,-1,0)$ respectively. Here $\Delta=1\times(-1)-1\times1=-2$, so
 
 $$
 X=\frac{1\times(-1)-0\times1}{-2}=\frac12,\qquad
 Y=\frac{1\times0-1\times1}{-2}=\frac12.
 $$
 
-把 $(1/2,1/2)$ 代回原来的两个方程，分别得到 $1=1$ 和 $0=0$，可以核对它确实是交点。
+Substituting $(1/2,1/2)$ into the original equations gives $1=1$ and $0=0$, confirming that it is their intersection.
 
-### 第三步：估计公式中的分母
+### Step 3: Bound the denominator in the formula {/* #第三步估计公式中的分母 */}
 
-$\Delta$ 是整数，因为它由整数相乘、相减得到。它又不为零，所以可能是 $1,-1,2,-2,\ldots$，绝对值至少为 $1$。
+$\Delta$ is an integer because it is formed by multiplying and subtracting integers. It is nonzero, so its possible values are $1,-1,2,-2,\ldots$, and its absolute value is at least $1$.
 
-另一方面，$a_1,a_2,b_1,b_2$ 的绝对值都不超过 $2M$，因此 $a_1b_2$ 与 $a_2b_1$ 的绝对值都不超过 $(2M)(2M)=4M^2$。两个数相减时，差的绝对值最多是它们绝对值的和。例如 $4-(-4)=8$：减去负数也可能让绝对值变大，不能只取一个乘积的上界。所以
+On the other hand, the absolute values of $a_1,a_2,b_1,b_2$ are all at most $2M$. Thus the absolute values of $a_1b_2$ and $a_2b_1$ are both at most $(2M)(2M)=4M^2$. When two numbers are subtracted, the absolute value of their difference is at most the sum of their absolute values. For example, $4-(-4)=8$: subtracting a negative number can increase the absolute value, so the bound for just one product is not enough. Therefore
 
 $$
 1\le|\Delta|
@@ -163,6 +163,6 @@ $$
 \le4M^2+4M^2=8M^2.
 $$
 
-交点坐标的分子也是整数。若分母 $\Delta$ 为负数，就把分子和分母同时乘 $-1$，数值不变，分母变成 $|\Delta|$。约分是把分子和分母同除以正的公因数，只会让正分母变小或保持不变。例如 $-2/-6=2/6=1/3$，最后的分母 $3$ 不超过原分母的绝对值 $6$。
+The numerators of the intersection coordinates are integers too. If the denominator $\Delta$ is negative, multiply both numerator and denominator by $-1$. This leaves the value unchanged and makes the denominator $|\Delta|$. Reducing a fraction divides its numerator and denominator by a positive common factor, so it can only decrease the positive denominator or leave it unchanged. For example, $-2/-6=2/6=1/3$, and the final denominator $3$ does not exceed the original denominator's absolute value $6$.
 
-于是每个坐标约分后的正分母都不超过 $8M^2$。端点本来是整数，可以写成「该整数除以 $1$」，也满足这个界。**$8M^2$ 是允许的最大值估计，不是说每个交点的分母都等于它。**
+Thus the positive denominator of each coordinate in lowest terms is at most $8M^2$. Endpoints are already integers and can be written as that integer divided by $1$, so they satisfy the same bound. **$8M^2$ is an upper bound, not a claim that every intersection denominator equals it.**

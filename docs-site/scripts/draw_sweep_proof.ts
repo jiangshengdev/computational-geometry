@@ -1,7 +1,7 @@
+import {writeLocalizedSvg} from './localized_svg.ts';
 /** Authored teaching diagrams, not algorithm traces. Generate with
  * MATHTEXT_PYTHON=/path/to/existing/python pnpm exec node scripts/draw_sweep_proof.ts.
  */
-import {mkdirSync, writeFileSync} from 'node:fs';
 import {escapeXml, palettes, renderMathLabels, type Palette, type SvgMathLabel} from './svg_math_labels.ts';
 
 type Point = readonly [number, number];
@@ -185,6 +185,5 @@ for (const [theme, palette] of Object.entries(palettes)) {
 
 const markup = renderMathLabels(labels);
 for (const {target, svg} of images) {
-  mkdirSync(new URL('./', target), {recursive: true});
-  writeFileSync(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
+  writeLocalizedSvg(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
 }

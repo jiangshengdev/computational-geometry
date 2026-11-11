@@ -1,41 +1,41 @@
 ---
 id: shear-intersection
 slug: /docs/shear-coefficient/intersection
-title: 剪切为什么保持交集
-description: 用撤销公式和相似三角形说明交点与完整重叠区间如何保持。
+title: Why Shear Preserves Intersections
+description: Use the inverse formula and similar triangles to explain how intersection points and complete overlap intervals are preserved.
 ---
 
-前几篇证明了系数足够小时事件顺序不会颠倒。本篇回答另一个问题：为什么剪切不会丢掉或新增交点？这里只使用 $x'=x+sy$、$y'=y$，不需要对 $s$ 的大小作限制。
+The preceding articles proved that a sufficiently small coefficient prevents event order from reversing. This article answers a different question: why does a shear neither lose nor add intersections? We use only $x'=x+sy$ and $y'=y$, with no restriction on the size of $s$.
 
-## 为什么剪切不会丢掉或新增交点
+## Why shear neither loses nor adds intersections {/* #为什么剪切不会丢掉或新增交点 */}
 
-剪切也能精确撤销：
+A shear can also be undone exactly:
 
 $$
 x=\teachViolet{x'}-s\teachViolet{y'},\qquad y=\teachViolet{y'}.
 $$
 
-把 $x'=x+sy$ 和 $y'=y$ 代入撤销公式，得到 $x'-sy'=x+sy-sy=x$，纵坐标也恢复为 $y$。因此每个新位置都能唯一地还原到原位置，两个不同的位置不会被挤成同一个位置。
+Substituting $x'=x+sy$ and $y'=y$ into the inverse formula gives $x'-sy'=x+sy-sy=x$, and the vertical coordinate returns to $y$ as well. Each new position therefore has a unique original position; two different positions cannot be squeezed into the same position.
 
-不过，只说明「能还原」还不够：还要检查线段上的点经过剪切后，确实组成新端点之间的整条线段。
+However, showing that the transformation can be undone is not enough. We must also check that the sheared points of a segment form the entire segment between the new endpoints.
 
-设一条线段的端点为 $A=(a_x,a_y)$、$B=(b_x,b_y)$。从 $A$ 向 $B$ 走全长的 $u$ 倍，其中 $0\le u\le1$，到达的点坐标为
+Let a segment have endpoints $A=(a_x,a_y)$ and $B=(b_x,b_y)$. Traveling from $A$ toward $B$ by a fraction $u$ of the full length, with $0\le u\le1$, reaches the point with coordinates
 
 $$
 x=(1-u)a_x+ub_x,\qquad y=(1-u)a_y+ub_y.
 $$
 
-这里的 $a_x,a_y$ 只是端点 $A$ 的横、纵坐标，下标不是乘法；$b_x,b_y$ 同理。为什么能按同一个比例计算两个坐标？对既不水平也不竖直的线段，沿线段走到某一点，再向横轴、纵轴作平行线，会得到与整条线段对应的直角三角形相似的小三角形。由相似三角形的对应边成比例，水平和竖直方向的变化也都是全程变化的 $u$ 倍。水平或竖直线段则只有一个坐标变化，同样成立。
+Here $a_x,a_y$ are just the horizontal and vertical coordinates of endpoint $A$; the subscripts do not mean multiplication. The same applies to $b_x,b_y$. Why can both coordinates be calculated using the same fraction? For a segment that is neither horizontal nor vertical, travel along it to a point and draw lines parallel to the horizontal and vertical axes. This creates a smaller right triangle similar to the right triangle for the whole segment. Corresponding sides of similar triangles are proportional, so the horizontal and vertical changes are also $u$ times the full changes. For a horizontal or vertical segment, only one coordinate changes, and the same conclusion holds.
 
-因此，横坐标从 $a_x$ 出发增加 $u(b_x-a_x)$，展开后为
+Thus the horizontal coordinate starts at $a_x$ and increases by $u(b_x-a_x)$. Expanding gives
 
 $$
 a_x+u(b_x-a_x)=a_x+ub_x-ua_x=(1-u)a_x+ub_x.
 $$
 
-纵坐标同理。这就是上面的分点公式。例如 $u=0$ 时是 $A$，$u=1$ 时是 $B$，$u=1/2$ 时是中点。让 $u$ 取遍 $0$ 到 $1$，就得到整条线段。
+The vertical coordinate works in the same way. This gives the point formula above. For example, $u=0$ gives $A$, $u=1$ gives $B$, and $u=1/2$ gives the midpoint. Letting $u$ range from $0$ to $1$ gives the entire segment.
 
-对这个点剪切，将 $x,y$ 的表达式代入并展开：
+Shear this point by substituting the expressions for $x,y$ and expanding:
 
 $$
 \begin{aligned}
@@ -46,16 +46,16 @@ y'&=(1-u)a_y+ub_y.
 \end{aligned}
 $$
 
-端点剪切后的坐标恰好为 $A'=(a_x+sa_y,a_y)$、$B'=(b_x+sb_y,b_y)$。因此，上面的 $x',y'$ 就是从 $A'$ 向 $B'$ 走全长的 $u$ 倍到达的点。让 $u$ 取遍 $0$ 到 $1$，仍得到整条新线段，没有漏掉中间的点。即使 $A=B$，公式也成立，只是所有 $u$ 都对应同一个点。
+The sheared endpoint coordinates are exactly $A'=(a_x+sa_y,a_y)$ and $B'=(b_x+sb_y,b_y)$. The $x',y'$ above therefore describe the point reached by traveling from $A'$ toward $B'$ by a fraction $u$ of the full length. Letting $u$ range from $0$ to $1$ still gives the entire new segment, with no intermediate points missing. The formula holds even when $A=B$; in that case every value of $u$ gives the same point.
 
-由此可以逐项解释为什么交集没有改变：
+We can now explain, one case at a time, why the intersection is preserved:
 
-- 原来的公共点同时属于两条线段，剪切后自然同时属于两条新线段，所以已有交点不会丢失。
-- 若两条新线段有公共点，由于新线段上的点都来自原线段，它必定来自第一条原线段上的某个点，也来自第二条原线段上的某个点。撤销公式只能还原出一个位置，因此这两个原来的点必定重合，也就是原来已经有公共点，不会凭空新增交点。
-- 原来若重叠成一段，重叠段上的所有点一起变成一条完整的新线段；再按撤销公式还原，就得到原来的完整重叠段。
+- An original common point belongs to both segments. After shearing, it belongs to both new segments, so an existing intersection point cannot be lost.
+- If two new segments have a common point, every point of either new segment comes from its original segment. The common point must therefore come from a point on the first original segment and from a point on the second. The inverse formula recovers only one position, so those two original points must coincide. The original segments already had a common point; no new intersection has appeared from nowhere.
+- If the originals overlap over a segment, all points of the overlap transform together into a complete new segment. Applying the inverse formula recovers the original complete overlap segment.
 
-同一个分点公式允许 $u$ 取任意实数时，描述的是整条延长线。因此直线仍变成直线，同一直线上的点仍在同一直线上。两条不同的平行线若剪切后相交，撤销交点就会得到原来两条直线的交点，产生矛盾；所以平行关系也保持。
+If $u$ is allowed to be any real number, the same point formula describes the entire extended line. Lines therefore remain lines, and collinear points remain collinear. If two distinct parallel lines intersected after shearing, undoing that intersection would produce an intersection of the original lines, a contradiction. Parallelism is therefore preserved as well.
 
-使用精确有理数运算时，这些加法和乘法始终按分子、分母计算，例如 $1/3+1/6=1/2$，不需要先把 $1/3$ 截成有限位小数。因此没有浮点舍入误差；结果经过逆剪切可恢复到原坐标。几何上重合的输入仍然保留各自的原始输入身份。
+With exact rational arithmetic, these additions and multiplications always operate on numerators and denominators. For example, $1/3+1/6=1/2$, without first truncating $1/3$ to a finite decimal. There is therefore no floating-point rounding error, and the inverse shear restores results to the original coordinates. Geometrically coincident inputs still retain their separate original input identities.
 
-可逆性对任意有理系数都成立；本文的小系数额外保证了事件顺序。不能把「足够小」误当成精确性的来源。
+Invertibility holds for any rational coefficient; the small coefficient used here additionally preserves event order. Do not mistake "sufficiently small" for the source of exactness.

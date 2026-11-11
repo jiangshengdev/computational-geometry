@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "当前版本",
+    "description": "The label for version current"
+  },
+  "sidebar.documents.category.Convex hulls": {
+    "message": "凸包",
+    "description": "The label for category 'Convex hulls' in sidebar 'documents'"
+  },
+  "sidebar.documents.category.Convex hulls.link.generated-index.description": {
+    "message": "理解凸包算法中的方向判断与数学原理。",
+    "description": "The generated-index page description for category 'Convex hulls' in sidebar 'documents'"
+  },
+  "sidebar.documents.category.Segment intersection": {
+    "message": "线段求交",
+    "description": "The label for category 'Segment intersection' in sidebar 'documents'"
+  },
+  "sidebar.documents.category.Segment intersection.link.generated-index.description": {
+    "message": "从求交目标出发，理解扫描线、坐标变换与精确计算。",
+    "description": "The generated-index page description for category 'Segment intersection' in sidebar 'documents'"
+  },
+  "sidebar.documents.category.Choosing and proving a shear coefficient": {
+    "message": "剪切系数的选择与证明",
+    "description": "The label for category 'Choosing and proving a shear coefficient' in sidebar 'documents'"
+  }
+}

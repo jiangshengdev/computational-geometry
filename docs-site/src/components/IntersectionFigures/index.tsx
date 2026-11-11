@@ -1,3 +1,5 @@
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {translate} from '@docusaurus/Translate';
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
@@ -11,7 +13,9 @@ type Props = {
 };
 
 export default function IntersectionFigures({name, panels, comparison = false, topic = 'what-we-compute', prefix = 'intersection-goals'}: Props) {
-  const base = useBaseUrl(`/img/segment-intersection/${topic}/`);
+  const {i18n: {currentLocale}} = useDocusaurusContext();
+  const localized = currentLocale === 'zh-Hans' ? 'zh-Hans/' : '';
+  const base = useBaseUrl(`/img/${localized}segment-intersection/${topic}/`);
   const indexed = panels.map((alt, index) => ({alt, index}));
   const groups = comparison
     ? Array.from({length: Math.ceil(indexed.length / 2)}, (_, i) => indexed.slice(i * 2, i * 2 + 2))
@@ -21,10 +25,10 @@ export default function IntersectionFigures({name, panels, comparison = false, t
     <div className={styles.figures}>
       {groups.map((group, groupIndex) => (
         <div className={styles.row} key={groupIndex} role="group"
-          aria-label={comparison ? `第 ${groupIndex + 1} 组：加入 C 前后对照` : '按顺序阅读子图'}>
+          aria-label={comparison ? translate({id: 'figures.comparisonGroup', message: 'Group {number}: before and after adding C'}, {number: groupIndex + 1}) : translate({id: 'figures.readingOrder', message: 'Read the panels in order'})}>
           {group.map(({alt, index}) => (
             <figure className={styles.panel} key={index}>
-              {comparison ? <figcaption className={styles.caption}>{index % 2 === 0 ? '加入 C 前' : '加入 C 后'}</figcaption> : null}
+              {comparison ? <figcaption className={styles.caption}>{index % 2 === 0 ? translate({id: 'figures.before', message: 'Before adding C'}) : translate({id: 'figures.after', message: 'After adding C'})}</figcaption> : null}
               <ThemedImage
                 className={styles.image}
                 alt={alt}

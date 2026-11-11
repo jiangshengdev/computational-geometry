@@ -1,25 +1,25 @@
 ---
 slug: /docs/segment-intersection/same-x-events
-title: 横坐标相同，也不能一起换序
-sidebar_label: 6．横坐标相同，也不能一起换序
-description: 跟随四条线段，理解同横坐标事件的逐点处理、中间状态和完整位置的严格未来条件。
+title: Equal horizontal coordinates do not mean a simultaneous swap
+sidebar_label: 6. Equal horizontal coordinates do not mean a simultaneous swap
+description: Follow four segments to understand point-by-point processing of same-column events, intermediate states, and the strict-future condition on complete positions.
 ---
 
 import IntersectionFigures from '@site/src/components/IntersectionFigures';
 
-同一条竖直线上，低处两条线段相交，高处另外两条也相交。处理完低处时，是否应该顺手把高处也换好？
+On one vertical line, two segments intersect low down and two others intersect higher up. After processing the low intersection, should we also swap the high pair immediately?
 
-这是线段求交系列的第六章。我们解除第五章「不同事件位置的横坐标各异」的限制，仍要求**非零输入不竖直**，并继续允许同点多参与者、开始与结束、点输入和非零重叠。标题中的「不能」限定于本篇沿用的逐点机制：当前只处理一个精确位置，不能提前改变其他位置的状态；它不否定另行定义并证明的整列批处理算法。
+This is Chapter 6 of the segment-intersection series. We remove Chapter 5's restriction that distinct event positions have distinct horizontal coordinates. **Nonzero inputs must still be nonvertical**, while multiple participants at one point, starts and ends, point inputs, and positive-length overlaps remain allowed. The title's prohibition applies to the point-by-point mechanism used here: process one exact position at a time without prematurely changing other positions' states. It does not rule out separately defined and proved algorithms that process a whole column as a batch.
 
-## 第一节：先到左边，同列再从低到高
+## Section 1: Left first, then bottom to top within a column {/* #第一节先到左边同列再从低到高 */}
 
-沿用第三章[两个坐标分别相等才是同点](./exact-predicates.mdx#第七节事件先后与同点识别分别比较什么)。横坐标相等只表示同列；纵坐标不同，仍是两个位置。
+Reuse Chapter 3's requirement that [both coordinates must respectively agree for points to be identical](./exact-predicates.mdx#第七节事件先后与同点识别分别比较什么). Equal horizontal coordinates mean only the same column. Different vertical coordinates still describe different positions.
 
-清单按这样的次序取出事件：先比较横坐标，小的在前；横坐标相同，再比较纵坐标，低的在前。两个坐标都相等，则合并为同一次事件，仍按第四章[找齐同点参与者](./same-point-events.mdx#怎样找齐旧活动参与者)的规则统一处理。
+Remove events from the list in this order: compare horizontal coordinates first, smaller first; if equal, compare vertical coordinates, lower first. If both coordinates agree, merge them into one event and process it using Chapter 4's rule for [collecting every same-point participant](./same-point-events.mdx#怎样找齐旧活动参与者).
 
-取下列四份闭线段。编号固定，不随上下顺序改变；图中的颜色也始终对应同一份输入。
+Take these four closed segments. Their identifiers stay fixed as their vertical order changes, and each color always denotes the same input.
 
-| 输入 | 左端点 | 右端点 | 所在直线 | 闭范围 |
+| Input | Left endpoint | Right endpoint | Supporting line | Closed range |
 | --- | --- | --- | --- | --- |
 | $\teachBlue{S_0}$ | $(-1,-3)$ | $(3,1)$ | $y=x-2$ | $-1\le x\le3$ |
 | $\teachOrange{S_1}$ | $(-1,-1)$ | $(3,-5)$ | $y=-x-2$ | $-1\le x\le3$ |
@@ -27,213 +27,213 @@ import IntersectionFigures from '@site/src/components/IntersectionFigures';
 | $\teachEmerald{S_3}$ | $(-1,3)$ | $(3,-1)$ | $y=-x+2$ | $-1\le x\le3$ |
 
 <IntersectionFigures topic="same-x-events" prefix="same-x" name="input"
-  panels={['四份输入及三个真实交点：低处 P=(0,-2)，高处 Q=(0,2)，右方 R=(2,0)。']}
+  panels={['Four inputs and three real intersections: low P=(0,-2), high Q=(0,2), and R=(2,0) to the right.']}
 />
 
-本篇配图是教学示意，不是算法执行截图。每幅保持 320 × 260 原始尺寸，放不下时换行，按图内编号从小到大读。几何图横纵单位相同；$O$ 是原点。阶段图只截取相遇处的局部线段，旁边的竖列表示维护的顺序，**不表示线段被移到了新的坐标**。
+The figures are teaching diagrams, not screenshots of algorithm execution. Each retains its original 320 × 260 size; if necessary they wrap onto new rows. Read them in increasing figure-number order. Geometric plots use equal horizontal and vertical units, with $O$ as the origin. Stage diagrams show only short portions near the meeting points. The adjacent vertical list shows the maintained order; **it does not mean the segments have moved to new coordinates**.
 
-四个左端点也共享横坐标 $-1$，不能把它们当成一次事件。依次在高度 $-3,-1,1,3$ 开始，四份输入逐个加入。它们在这些端点互不接触。完成这四次开始后，从下到上为 $S_0,S_1,S_2,S_3$。
+The four left endpoints also share horizontal coordinate $-1$, but are not a single event. They start at heights $-3,-1,1,3$ in turn, so inputs join one by one. They do not touch each other at these endpoints. After all four starts, the bottom-to-top order is $S_0,S_1,S_2,S_3$.
 
-先核对全部六个无序输入对，使用第三章[直线交点与闭范围检查](./exact-predicates.mdx#分母不为零算出候选点再检查范围)，不重新推导求交公式：
+First check all six unordered input pairs using Chapter 3's [line intersection and closed-range checks](./exact-predicates.mdx#分母不为零算出候选点再检查范围), without deriving the formulas again:
 
-| 输入对 | 直线关系或候选点 | 线段的完整交集 |
+| Input pair | Line relationship or candidate | Complete segment intersection |
 | --- | --- | --- |
-| $S_0,S_1$ | $P=(0,-2)$：两式代入 $x=0$ 都得 $-2$ | $0\in[-1,3]$，交集为 $P$ |
-| $S_2,S_3$ | $Q=(0,2)$：两式代入 $x=0$ 都得 $2$ | $0\in[-1,3]$，交集为 $Q$ |
-| $S_0,S_3$ | $R=(2,0)$：$2-2=0$，$-2+2=0$ | $2\in[-1,3]$，交集为 $R$ |
-| $S_1,S_2$ | $(-2,0)$：$-(-2)-2=0$，$-2+2=0$ | $-2<-1$，只在延长线上相交 |
-| $S_0,S_2$ | 斜率同为 $1$，常数项不同 | 平行且不同，无交集 |
-| $S_1,S_3$ | 斜率同为 $-1$，常数项不同 | 平行且不同，无交集 |
+| $S_0,S_1$ | $P=(0,-2)$: substituting $x=0$ into both equations gives $-2$ | $0\in[-1,3]$; intersection is $P$ |
+| $S_2,S_3$ | $Q=(0,2)$: substituting $x=0$ into both equations gives $2$ | $0\in[-1,3]$; intersection is $Q$ |
+| $S_0,S_3$ | $R=(2,0)$: $2-2=0$, $-2+2=0$ | $2\in[-1,3]$; intersection is $R$ |
+| $S_1,S_2$ | $(-2,0)$: $-(-2)-2=0$, $-2+2=0$ | $-2<-1$; only the extended lines intersect |
+| $S_0,S_2$ | Both slopes are $1$, with different constant terms | Distinct parallel lines; no intersection |
+| $S_1,S_3$ | Both slopes are $-1$, with different constant terms | Distinct parallel lines; no intersection |
 
-非平行的两条直线至多有一个交点，因此表中代入确认的候选就是唯一候选。端点也逐一满足所列直线：左端代入依次为 $-1-2=-3$、$1-2=-1$、$-1+2=1$、$1+2=3$；右端代入依次为 $3-2=1$、$-3-2=-5$、$3+2=5$、$-3+2=-1$。
+Two nonparallel lines have at most one intersection, so each candidate confirmed by substitution is the unique candidate. The endpoints also satisfy their listed equations: substitution at the left gives $-1-2=-3$, $1-2=-1$, $-1+2=1$, $1+2=3$ respectively; at the right it gives $3-2=1$, $-3-2=-5$, $3+2=5$, $-3+2=-1$.
 
-所以从 $x=-1$ 到 $x=0$ 之前没有交点或端点。由第二章[无事件不换序](./why-neighbors-proof.mdx#没有事件就不会改变顺序)，刚才的顺序一直保持到 $x=0$ 左侧。这就是下面局部过程的入口，不是凭图指定的初始排列。开始时形成的邻接已经分别发现并登记 $P,Q$；$S_1,S_2$ 的候选被闭范围排除。此时 $S_0,S_3$ 之间还有别的成员，尚未由邻接发现 $R$。
+Thus there is no intersection or endpoint strictly between $x=-1$ and $x=0$. By Chapter 2's [no-event, no-order-change result](./why-neighbors-proof.mdx#没有事件就不会改变顺序), the order persists immediately to the left of $x=0$. This establishes the entry state for the local process below; it is not an arrangement guessed from the picture. Adjacencies formed at the starts have already discovered and registered $P,Q$, while the $S_1,S_2$ candidate was excluded by the closed ranges. Other members still separate $S_0,S_3$, so adjacency has not yet discovered $R$.
 
-## 第二节：低处处理完，高处仍然在等待
+## Section 2: After the low event, the high event still waits {/* #第二节低处处理完高处仍然在等待 */}
 
-从 $P$ 与 $Q$ 中先取 $P$，因为它们横坐标相同，而 $-2<2$。在 $P$ 只找高度为 $-2$ 的参与者：$S_0,S_1$。高处的 $S_2,S_3$ 高度为 $2$，不在这个点。
+Take $P$ before $Q$: their horizontal coordinates agree and $-2<2$. At $P$, collect only participants at height $-2$, namely $S_0,S_1$. The higher pair $S_2,S_3$ is at height $2$, not at this point.
 
-先报告输入对 $S_0,S_1$ 的完整交集 $P$。两份都严格穿过，报告后都继续。沿用第三章[相遇点两侧的斜率关系](./exact-predicates.mdx#到了交点等高不等于两侧顺序)：右侧按斜率从小到大排。$S_1$ 的斜率为 $-1$，$S_0$ 为 $1$，所以当前块从下到上改为 $S_1,S_0$。
+First report the complete intersection $P$ for pair $S_0,S_1$. Both pass strictly through the point and continue afterward. Reuse Chapter 3's [slope relation on the two sides of a meeting point](./exact-predicates.mdx#到了交点等高不等于两侧顺序): on the right, order by increasing slope. $S_1$ has slope $-1$ and $S_0$ slope $1$, so the current block becomes $S_1,S_0$ from bottom to top.
 
 <IntersectionFigures topic="same-x-events" prefix="same-x" name="stages"
   panels={[
-    '图 1：P 处理前。低处和高处均显示左侧局部枝条，顺序从下到上 S0、S1、S2、S3。',
-    '图 2：P 处理后、Q 处理前。低处显示右侧枝条，高处仍显示左侧枝条，顺序 S1、S0、S2、S3。',
-    '图 3：Q 处理后。两处均显示右侧枝条，顺序 S1、S0、S3、S2；S0 与 S3 新相邻。',
+    'Figure 1: Before P. Both low and high positions show local left-side branches; the bottom-to-top order is S0, S1, S2, S3.',
+    'Figure 2: After P but before Q. The low position shows right-side branches, while the high position still shows left-side branches. Order: S1, S0, S2, S3.',
+    'Figure 3: After Q. Both positions show right-side branches. Order: S1, S0, S3, S2; S0 and S3 are new neighbors.',
   ]}
 />
 
-图 2 是关键：低处已经采用处理后状态，高处仍保留处理前状态。它们同在 $x=0$，却处于不同处理进度。此时维护的顺序为
+Figure 2 is crucial: the low position has its post-event state, while the high position retains its pre-event state. Both are at $x=0$, but their processing progress differs. The maintained order is now
 
 $$
-S_1,\quad S_0,\quad S_2,\quad S_3\qquad\text{（从下到上）}。
+S_1,\quad S_0,\quad S_2,\quad S_3\qquad\text{(bottom to top)}.
 $$
 
-这不是把一条完整竖直扫描线挪到 $x=0$ 右侧之后看到的顺序。若整列移到右侧，高处也会变成 $S_3,S_2$；但我们还没有取出 $Q$，不能把那次更新当成已经完成。
+This is not the order seen after moving an entire vertical sweep line to the right of $x=0$. Moving the whole column right would also turn the high pair into $S_3,S_2$. But we have not yet removed $Q$ from the list, so that update cannot be treated as completed.
 
-本次新边界邻居是 $S_0,S_2$，两者平行，不登记新交点。$S_2,S_3$ 的邻接和预约 $Q$ 都保留。下一次取出 $Q$，找齐 $S_2,S_3$，报告这一对对应 $Q$，再按斜率由小到大排成 $S_3,S_2$。于是图 3 的整列顺序成为
-
-$$
-S_1,\quad S_0,\quad S_3,\quad S_2。
-$$
-
-每次只改变当前块。若在 $P$ 时提前把高处也换序，到了 $Q$ 前，所存的高处顺序便不再是它的处理前顺序；仍照逐点规则执行下一次更新，就失去了规则所需的前提。这里指出的是状态与处理进度的矛盾，而非声称任何批处理办法都会漏点。
-
-## 第三节：新邻居发现右方交点
-
-处理 $Q$ 后，新的下边界邻居是 $S_0,S_3$。第一节已经核对它们的真实交点为 $R=(2,0)$，且在两份闭范围内。它在当前横坐标 $0$ 的右边，因此现在登记 $R$，但还不报告这一对。
-
-**发现**是确认真实交点，**登记**是把这个位置保留在待处理清单，**报告**是在到达位置、找齐参与者后产生求交结果。再次发现已有位置不多登记一份；当前相遇块内部的交点也不重新预约。
-
-接下来到 $R$，参与者是 $S_0,S_3$，报告它们这一对。右侧斜率较小的 $S_3$ 在下，$S_0$ 在上，得到
+The new boundary neighbors are $S_0,S_2$, which are parallel, so no new intersection is registered. The adjacency of $S_2,S_3$ and the scheduled event $Q$ remain. Next remove $Q$, collect $S_2,S_3$, report $Q$ for that pair, then order them by increasing slope as $S_3,S_2$. The complete order in Figure 3 becomes
 
 $$
-S_1,\quad S_3,\quad S_0,\quad S_2。
+S_1,\quad S_0,\quad S_3,\quad S_2.
+$$
+
+Only the current block changes each time. Swapping the high pair prematurely at $P$ would leave its stored order different from its pre-event order before $Q$ is reached. Applying the next point-by-point update would then lack its required premise. This identifies a mismatch between state and processing progress; it does not claim that every batch-processing approach misses intersections.
+
+## Section 3: New neighbors discover the intersection to the right {/* #第三节新邻居发现右方交点 */}
+
+After $Q$, the new neighbors at the lower boundary are $S_0,S_3$. Section 1 confirmed their real intersection $R=(2,0)$ lies in both closed ranges. It is to the right of current horizontal coordinate $0$, so register $R$ now, but do not yet report this pair.
+
+**Discovery** confirms a real intersection. **Registration** keeps that position on the pending list. **Reporting** produces an intersection result after reaching the position and collecting its participants. Rediscovering a listed position does not add another copy; intersections inside the current meeting block are not scheduled again either.
+
+Next reach $R$, whose participants are $S_0,S_3$, and report their pair. On the right, the smaller-slope $S_3$ is below $S_0$, giving
+
+$$
+S_1,\quad S_3,\quad S_0,\quad S_2.
 $$
 
 <IntersectionFigures topic="same-x-events" prefix="same-x" name="later"
-  panels={['图 4：到 R 报告后，S3 在 S0 下方；外侧 S1、S2 不变。图显示 x=2 右侧的局部线段和完整顺序。']}
+  panels={['Figure 4: After reporting at R, S3 is below S0; the outside inputs S1 and S2 are unchanged. The figure shows local segments to the right of x=2 and the complete order.']}
 />
 
-两侧新邻接 $S_1,S_3$ 与 $S_0,S_2$ 都是平行线，没有新交点。到 $x=3$ 时，四个右端点也逐点处理：高度依次为 $-5,-1,1,5$，对应 $S_1,S_3,S_0,S_2$ 依次退出，最后顺序为空。结果正是第一节的三个非空输入对，各报告一次。
+The new outer adjacencies $S_1,S_3$ and $S_0,S_2$ are both parallel pairs, so there are no new intersections. At $x=3$, process the four right endpoints individually too: their heights are $-5,-1,1,5$, so $S_1,S_3,S_0,S_2$ leave in that order, leaving an empty order. Exactly the three nonempty input pairs from Section 1 have been reported, once each.
 
-本例中 $Q$ 早已登记，但处理完 $P$ 后，它仍须算作未来。只写「候选横坐标严格更大」就会错误地排除它。一般地，把当前位置写成 $E=(t,h)$，候选写成 $F=(u,v)$；四个小写字母分别是两点的横、纵坐标，$E,F$ 不替换案例中的 $P,Q,R$。严格未来条件是
+Although $Q$ was registered earlier, it must still count as future after $P$ is processed. Requiring only a strictly greater candidate horizontal coordinate would wrongly exclude it. In general, write the current position as $E=(t,h)$ and a candidate as $F=(u,v)$. These four lowercase letters are the points' horizontal and vertical coordinates; $E,F$ do not replace $P,Q,R$ in the example. The strict-future condition is
 
 $$
-u>t\quad\text{或}\quad (u=t\ \text{且}\ v>h)。
+u>t\quad\text{or}\quad (u=t\ \text{and}\ v>h).
 $$
 
-两个坐标都相等，是当前位置，不再预约；横坐标更小，或同列但更低，是已经经过的位置，也不预约。在 $P$ 之后，$Q$ 满足第二种未来条件，$R$ 满足第一种。下一节要说明一般理由；四线段案例本身不能代替对所有允许输入的论证。
+Equal values for both coordinates mean the current position, which is not scheduled again. A smaller horizontal coordinate, or the same column at a lower height, means a position already passed and is not scheduled either. After $P$, $Q$ satisfies the second future condition and $R$ the first. The next section supplies general reasons: a four-segment example cannot replace an argument for all allowed inputs.
 
-## 第四节：中间状态为什么还能按高度查找
+## Section 4: Why intermediate states still support height-based search {/* #第四节中间状态为什么还能按高度查找 */}
 
-继续用 $E=(t,h)$ 表示当前事件，$t$ 是横坐标，$h$ 是高度。先把维护的状态说清楚。对同一列 $x=t$，不是所有位置同时向右一步，而是：
+Continue to denote the current event by $E=(t,h)$, where $t$ is horizontal coordinate and $h$ is height. First specify the maintained state. For the column $x=t$, not every position steps right simultaneously. Instead:
 
-| 在本列的位置 | 处理 $E$ 前 | 处理 $E$ 后 |
+| Position within this column | Before processing $E$ | After processing $E$ |
 | --- | --- | --- |
-| 严格低于 $h$ 的已处理位置 | 已完成增删与局部右侧排序 | 保留 |
-| 高度恰为 $h$ 的当前位置 | 旧成员到站，开始者等待合并 | 报告后，只留下向右继续者，排好新块 |
-| 严格高于 $h$ 的未处理位置 | 保留左侧成员与局部左侧排序 | 仍保留，等自己的事件 |
+| Already processed positions strictly below $h$ | Insertions, removals, and local right-side ordering are complete | Retain them |
+| Current position at exactly height $h$ | Old members have arrived; starters await merging | After reporting, retain only rightward continuers and order the new block |
+| Unprocessed positions strictly above $h$ | Retain left-side members and local left-side order | Continue retaining them until their own event |
 
-没有事件的高度无需更新。这里「右侧排序」只用来确定某个等高块内部的次序，不是让整列共用一个偏右横坐标。若有重叠，沿用第五章[同线组](./overlapping-segments.mdx#第一节在顺序中占一个位置组内保留每份身份)：以下每个顺序位置对应一个非空组；没有重叠时，每组只有一条输入，主案例正是这种情况。
+Heights without events require no update. Here “right-side ordering” determines only the internal order of one equal-height block; it does not give the entire column one shared horizontal coordinate slightly to the right. For overlaps, reuse Chapter 5's [collinear groups](./overlapping-segments.mdx#第一节在顺序中占一个位置组内保留每份身份): each order position below represents a nonempty group. Without overlaps, each group has one input, as in the main example.
 
-### 刚到一列时，高度为什么不递减
+### Why heights are nondecreasing on arrival at a column {/* #刚到一列时高度为什么不递减 */}
 
-先只假定此前事件已正确处理，不提前假定本列交点已经到站。端点有限，不同组的固定直线每对至多一个交点，所以真实事件位置仍有限。可以在 $t$ 严格左侧选一小段没有事件的横坐标间隙；同列的其他事件在边界 $x=t$，不在这个开区间内部。若这是最左一列，旧顺序为空，结论直接成立。
+Assume only that earlier events have been handled correctly, not that intersections in this column have already been reached. There are finitely many endpoints, and each pair of fixed lines from different groups has at most one intersection, so real event positions are finite. Choose a short event-free horizontal interval strictly to the left of $t$. Other events in this column lie at boundary $x=t$, not inside this open interval. If this is the leftmost column, the old order is empty and the claim holds directly.
 
-在该间隙活动的输入，到 $x=t$ 仍包含对应点：不会在间隙内结束，即使恰在边界结束，闭端点也包含在内。因此第二章[边界上的高度差与夹层结论](./why-neighbors-proof.mdx#到交点时w-的高度被限制在哪里)仍可使用。旧顺序原来较低的一组，在 $t$ 处不能突然严格高于原来较高的一组，否则两组覆盖这段间隙的成员在内部已有交点，违背无事件条件。这里允许在边界等高，也允许在边界结束，没有沿用第二章排除同横坐标端点的那项限制。
+An input active in this interval still contains its corresponding point at $x=t$: it cannot end inside the interval, and even if it ends exactly at the boundary, its closed endpoint is included. Thus Chapter 2's [boundary height-difference and between-neighbors result](./why-neighbors-proof.mdx#到交点时w-的高度被限制在哪里) still applies. A group lower in the old order cannot suddenly be strictly above a formerly higher group at $t$. Otherwise, members of the two groups covering this interval would have intersected inside it, contradicting the absence of events. Equality at the boundary and endings at the boundary are allowed here; we are not retaining Chapter 2's exclusion of endpoints with equal horizontal coordinates.
 
-所以把旧顺序各组的高度都取在 $t$，得到从下到上不递减的一列数。等高的不同组在同一点相遇，尚未更新时按已有的左侧斜率关系排列。
+Evaluating all old groups' heights at $t$ therefore gives a nondecreasing bottom-to-top sequence. Distinct equal-height groups meet at one point; before updating, they remain in their existing left-side slope order.
 
-### 处理低处为什么不会破坏这个性质
+### Why processing a low position preserves this property {/* #处理低处为什么不会破坏这个性质 */}
 
-假定轮到某个高度之前，整列高度不递减。该高度的全部旧参与组必连续：取其中最下与最上两组，夹在中间的高度既不能小于下端，也不能大于上端；两端都是当前高度，中间也只能相等。零组、单组时自然是空块或单位置块。
+Suppose the entire height sequence is nondecreasing before a particular height is processed. All old participating groups at that height must be consecutive. Take their lowest and highest groups: heights between them can be neither below the lower one nor above the upper one. Both ends equal the current height, so every intermediate height must equal it too. With zero or one group, the block is simply empty or a single position.
 
-这次报告后，移去的都是该高度的结束成员；新插入或重新排列的组也全在该高度。删掉一段相等的数，或在原位置放回若干个同样的数，都不会使下方高度超过上方高度。空组退出也只是删除其中一个位置。于是更新后高度依然不递减。
+After reporting, every removed member ends at this height; every newly inserted or reordered group also lies at this height. Deleting a run of equal numbers, or replacing it with several copies of the same number at that position, cannot put a lower height above a higher one. Removing an empty group just deletes a position. Heights therefore remain nondecreasing after the update.
 
-从本列最低事件开始逐个使用这一步，所有已经处理的低处都保持该性质。因此轮到 $E$ 时，仍可以精确定位第一组高度不低于 $h$ 的位置，再收取全部等于 $h$ 的连续组。若第一组已经更高，或者不存在不低于者，旧块为空，只得到插入空隙。**低处内部已经换序，不妨碍用当前列的精确高度定位高处。**
+Apply this step successively from the lowest event in the column. Every processed lower position preserves the property. When $E$ is reached, we can still locate exactly the first group whose height is at least $h$, then collect the entire consecutive run with height $h$. If that first group is already higher, or no group has height at least $h$, the old block is empty and we obtain an insertion gap. **Reordering within lower positions does not prevent locating higher positions by exact heights in the current column.**
 
-## 第五节：为什么只更新当前块
+## Section 5: Why only the current block is updated {/* #第五节为什么只更新当前块 */}
 
-先看成员资格。非竖直直线在 $x=t$ 只有一个高度，所以同一份非零输入不可能既经过低处事件，又经过同列的另一个高处事件。它的端点在这一列也只能落在自己那一个高度。
+First consider membership. A nonvertical line has only one height at $x=t$, so one nonzero input cannot pass through both a low event and a different high event in the same column. Its endpoints in this column can likewise lie only at its own height.
 
-于是，低处刚加入的输入不会成为高处的同点参与者；低处刚退出的输入也不可能是高处还需要的参与者。高处的结束者必须等到自己的端点报告后再退出，高处的开始者也必须等到自己的端点再加入。按整列提前增删，会破坏这一成员含义。
+An input just inserted low down cannot be a same-point participant higher up; an input just removed low down cannot be needed as a participant higher up either. A high ending input must wait to be reported at its own endpoint before leaving; a high starting input must wait for its own endpoint before joining. Premature whole-column insertions or removals would violate this membership meaning.
 
-对当前高度 $h$，旧块收集的是从左侧到达的结束者与穿过者，再补入端点清单中的开始者及点输入。包含 $E$ 的非零输入，其左端要么在 $t$ 左侧，要么就是 $E$：若左端也在 $x=t$，同一直线上只有一个高度，故不能是同列的别处。前者尚未在低处被删除，属于旧块；后者由端点清单给出。这说明第四章的两路收集仍找得齐，且未开始者不会提前混入。
+At current height $h$, the old block collects ending and through members arriving from the left, then merges starters and point inputs from the endpoint list. A nonzero input containing $E$ has its left endpoint either strictly left of $t$ or exactly at $E$: if the left endpoint also has $x=t$, its line has only one height there, so it cannot lie elsewhere in the column. The former input has not been removed at a lower height and belongs to the old block; the latter comes from the endpoint list. Thus Chapter 4's two collection routes still find everyone, without prematurely including inputs that have not started.
 
-闭端点先参与报告，随后才删除结束身份；点输入只参与自己的精确位置，不留下斜率或顺序位置。特别是，点输入即使与后续事件横坐标相等，高度不同就不是那个点，不能留到高处再次配对。更多同点身份的去重与配对沿用[第四章](./same-point-events.mdx#第五节零长度输入参与这一次不留到右侧)，重叠的分类报告在第七节接回。
+Closed endpoints participate in reporting before ending identities are removed. A point input participates only at its own exact position and leaves no slope or order position behind. In particular, even if it shares a horizontal coordinate with a later event, a different height means a different point; it cannot remain to be paired again higher up. Further deduplication and pairing of same-point identities follow [Chapter 4](./same-point-events.mdx#第五节零长度输入参与这一次不留到右侧). Section 7 reconnects the classified reporting for overlaps.
 
-### 块内用哪一侧，块外保留什么
+### Which side orders the block, and what stays outside it {/* #块内用哪一侧块外保留什么 */}
 
-对经过 $E$ 且向右继续的不同组，复用第三章[两侧斜率关系](./exact-predicates.mdx#到了交点等高不等于两侧顺序)，把当前新块按斜率从小到大排；它只要求这些组在该侧存在。不同组若同点又同斜率，就属于同一直线，本应是一组，所以组之间没有等斜率平局。同组内部保留原始成员身份，不编造高低次序。
+For distinct groups through $E$ that continue rightward, reuse Chapter 3's [two-sided slope relation](./exact-predicates.mdx#到了交点等高不等于两侧顺序) and order the new block by increasing slope. This requires only that the groups exist on that side. Distinct groups sharing both a point and a slope would be on one line and should already form one group, so there is no slope tie between groups. Within a group, retain original member identities without inventing a vertical order.
 
-块外的高度严格小于或大于 $h$，故当前组块仍放在这些严格高度之间。这里不能照搬第四章「块外在这个横坐标没有端点或交叉」的理由：它们现在可能有，只是位于其他高度。正确理由分开看：
+Outside heights are strictly below or above $h$, so the current group block still belongs between those strict heights. We cannot copy Chapter 4's reason that outside groups have no endpoint or crossing at this horizontal coordinate: now they may, just at other heights. The correct reasons are separate:
 
-- 高度不同的两个位置，先按高度排序，当前块内部改变斜率次序不改变这项比较。
-- 同在低处的等高组已经处理，仍保留它们的右侧次序与更新后成员。
-- 同在高处的等高组尚未处理，仍保留左侧次序与更新前成员。当前事件不包含它们，没有理由替它们增删或换序。
+- Positions at different heights are ordered by height first. Changing slope order within the current block does not affect that comparison.
+- Equal-height groups at a lower position have already been processed; retain their right-side order and updated members.
+- Equal-height groups at a higher position have not been processed; retain their left-side order and pre-event members. They are not part of the current event, so it has no reason to insert, remove, or reorder them.
 
-因此，当前块外的相对次序和成员保留各自进度。它们与当前块的边界邻接可以改变，这正是接下来要检查的地方；「块外相对次序不变」不等于「边界邻居不变」。旧块为空时，在高度空隙中插入；新块为空时，连接尚存在的两侧；两块都空时，顺序不动，点输入的报告仍正常完成。
+Thus the relative order and membership outside the current block retain their own processing progress. Their boundary adjacency with the current block may change, and that is what must be checked next. Unchanged relative order outside the block does not mean unchanged boundary neighbors. If the old block is empty, insert in the height gap. If the new block is empty, connect the surviving sides. If both are empty, leave the order unchanged while still completing point-input reporting.
 
-等本列全部事件处理完，每个相遇高度都已采用右侧次序，结束者已退出，开始者已进入。此时才可以把整列理解为紧邻 $t$ 右侧的活动顺序。不同高度之间存在严格高度差，有限条固定直线只在有限位置相交，因此能选择足够靠近的右侧无事件间隙，使这些严格高低保持；各等高块内部则由右侧斜率关系决定。没有事件时继续沿用第二章结论，直到下一列。这是在论证间隙存在，不要求程序猜一个小数偏移。
+Only after every event in the column is processed have all meeting heights adopted right-side order, all ending inputs left, and all starters joined. We can then interpret the whole column as the active order immediately right of $t$. Distinct heights have strict height differences, and finitely many fixed lines intersect at finitely many positions. Hence a sufficiently close event-free interval on the right preserves those strict comparisons, while right-side slope relations order each equal-height block. With no events, Chapter 2's result continues to apply until the next column. This proves an interval exists; it does not ask a program to guess a decimal offset.
 
-## 第六节：完整的未来次序，怎样接到事件发现
+## Section 6: Connect the complete future order to event discovery {/* #第六节完整的未来次序怎样接到事件发现 */}
 
-第三节的未来条件与清单的取出顺序必须一致。对当前位置 $E=(t,h)$ 和已经确认真实的候选 $F=(u,v)$，逐项检查：
+Section 3's future condition must agree with the list's removal order. For current position $E=(t,h)$ and a candidate $F=(u,v)$ already confirmed real, check each case:
 
-| 位置关系 | 是否严格未来 | 清单行动 |
+| Position relationship | Strictly future? | List action |
 | --- | --- | --- |
-| $u>t$ | 是，不论 $v$ 的高低 | 尚未登记就加入，已有则保留 |
-| $u=t,\ v>h$ | 是，本列更高位置 | 同上，不能被横坐标等号挡住 |
-| $u=t,\ v=h$ | 否，就是当前位置 | 不再预约 |
-| $u<t$，或 $u=t,\ v<h$ | 否，已处理位置 | 不加入 |
+| $u>t$ | Yes, regardless of $v$ | Add if unregistered; otherwise retain |
+| $u=t,\ v>h$ | Yes, higher in this column | Same action; horizontal-coordinate equality must not exclude it |
+| $u=t,\ v=h$ | No: this is the current position | Do not schedule again |
+| $u<t$, or $u=t,\ v<h$ | No: an already processed position | Do not add |
 
-只检查横坐标的严格不等式会漏掉第二行；改成横坐标「大于等于」又会误收第三、四行中的同列位置。必须比较完整位置。这里「同点只处理一次」是对精确坐标去重，不能据此合并不同输入对的结果。
+Testing only a strict horizontal-coordinate inequality misses the second row. Changing it to “greater than or equal” wrongly accepts same-column positions in the third and fourth rows. Compare complete positions. Processing a point only once deduplicates exact coordinates; it does not merge results for distinct input pairs.
 
-### 新邻接分类仍然完整
+### The classification of new adjacencies remains complete {/* #新邻接分类仍然完整 */}
 
-第五节已经证明，只替换一个连续块，块外保持各自次序。因此第四章[新邻接的分类](./same-point-events.mdx#第七节更新以后检查哪些邻接)可以直接用于组：新块非空时检查上下边界，新块内部不同组已在当前点相交，不会再有另一个直线交点；新块为空时检查新接起的外侧两组。某侧不存在，就没有那一对。旧、新块都空且没有覆盖变化，不产生新检查理由。
+Section 5 proved that we replace just one consecutive block and preserve outside order. Chapter 4's [classification of new adjacencies](./same-point-events.mdx#第七节更新以后检查哪些邻接) therefore applies directly to groups: if the new block is nonempty, check its upper and lower boundaries. Distinct groups inside it already meet at the current point and cannot have another line intersection. If the new block is empty, check the two outside groups newly connected across it. A missing side means no such pair. When both blocks are empty and coverage has not changed, no new reason for a check arises.
 
-新增联系是：每次检查都使用上表的完整未来条件，不能继续使用前章限定条件下的横坐标判断。对于第五章的组，还要检查覆盖；直线交点不自动是真实线段交点，第七节会分别核对这两件事。
+The new connection is that every check uses the complete future condition above, rather than the horizontal-only test valid under the previous chapter's restriction. Chapter 5's groups also require a coverage check: a line intersection is not automatically a real segment intersection. Section 7 checks these two requirements separately.
 
-### 同列低处的更新，会不会妨碍高处被发现
+### Can updates lower in the column prevent discovering a high event? {/* #同列低处的更新会不会妨碍高处被发现 */}
 
-取一个没有任何输入端点的真实跨组交点，记作 $F_*=(u_*,v_*)$，星号只是区分这个任意选定的目标，不是乘法。先只假定按完整位置次序排在它之前的事件已正确处理。
+Choose a real cross-group intersection with no input endpoint, denoted $F_*=(u_*,v_*)$. The star distinguishes this arbitrary target and is not multiplication. Assume only that events earlier in the complete position order have been correctly processed.
 
-在 $x=u_*$ 严格左侧取无事件间隙。所有包含 $F_*$ 的输入在那里都已开始且未结束，因为目标没有端点。沿用第五章[连续相遇块与覆盖发现](./overlapping-segments.mdx#没有端点提示时怎样保证来得及预约)的结论，目标的参与组在左侧形成至少含两组的连续块。
+Take an event-free interval strictly left of $x=u_*$. Every input containing $F_*$ has already started and has not ended there, since the target contains no endpoints. By Chapter 5's [consecutive meeting-block and coverage-discovery result](./overlapping-segments.mdx#没有端点提示时怎样保证来得及预约), the target's participating groups form a consecutive block of at least two groups on the left.
 
-现在还可能先处理同列更低的事件。这些更新会不会拆开目标块？不会。参与组在 $u_*$ 处的高度都是 $v_*$，每条非竖直组直线在该列只有这个高度，不参加任何更低事件；低处插入或换序的组高度严格更低，也不能插到这批等高组中间。因此目标块的内部邻接保持到目标处理前。
+We may now process lower events in the same column first. Can those updates split the target block? No. Every participating group has height $v_*$ at $u_*$. Its nonvertical line has only that height in this column and participates in no lower event. Groups inserted or reordered lower down have strictly lower heights and cannot enter this equal-height block. Its internal adjacencies therefore persist until the target is processed.
 
-在这块里选一对相邻组。沿此前有限次事件回看它们这一次形成且持续保持的邻接，分成前章已有的两个分支：形成时两组已覆盖目标，则当时检查；形成时覆盖不足，则在持续邻接期间，某次成员加入首次使两组覆盖同时足够，覆盖延长补检负责检查。这里不重推覆盖延长结论，核对新增条件即可：包含目标的成员都在 $u_*$ 左侧开始；同列低处不改变目标组的成员或内部邻接，所以需要的形成或覆盖变够不会被拖到目标之后。
+Choose adjacent groups within this block. Look back through the finite earlier events to the formation of this uninterrupted adjacency. The previous chapter gives two cases: if both groups already covered the target when adjacency formed, they were checked then; otherwise, during that continuous adjacency, some member insertion first made both coverages sufficient, and the coverage-extension check handled it. We need not rederive that result, only verify the new conditions: members containing the target start left of $u_*$, and lower events in this column do not change the target groups' membership or internal adjacency. The necessary formation or coverage extension therefore cannot be delayed until after the target.
 
-检查得到的候选是真实位置，且按完整次序严格在当时事件之后，于是要么加入清单，要么保留已有记录。已有真实事件即使暂时失去邻接也不取消；端点与跨组交点有限，同一位置不反复加入。把第二章[保留并按序取出](./why-neighbors-proof.mdx#从检查一直追到报告)中的次序改为「先横坐标，再纵坐标」，目标之前仍只有有限个位置，取完后就会到达目标。
+The resulting candidate is real and strictly follows the event of the check in the complete order. It is therefore either added to the list or retained if already listed. A registered real event is not canceled merely because its groups temporarily cease to be neighbors. Endpoints and cross-group intersections are finite, and the same position is not repeatedly added. Replace the order in Chapter 2's [retention and ordered-removal argument](./why-neighbors-proof.mdx#从检查一直追到报告) with horizontal-first, then vertical order. Only finitely many positions precede the target, so removing them eventually reaches it.
 
-这段论证没有先假定目标已经到站。若存在最早未到达的真实位置，它不会是预先登记的端点；它之前的事件已处理，第四、五节的状态保持理由适用，刚才的发现理由便推出它应当到站，形成矛盾。本篇补的是取消同横坐标限制后的这几个连接步骤，完整混合扫描的一般正确性整合仍留给后续章节。
+This argument did not assume that the target had already arrived. If an earliest real position were never reached, it could not be a preregistered endpoint. Its earlier events would have been processed, so Sections 4 and 5 would preserve the required state, and the discovery argument would force arrival, a contradiction. These are the extra connections needed after removing the distinct-horizontal-coordinate restriction. General correctness of the complete mixed-input sweep remains for later chapters.
 
-## 第七节：把同线组的覆盖与报告接回来
+## Section 7: Reconnect collinear-group coverage and reporting {/* #第七节把同线组的覆盖与报告接回来 */}
 
-主案例每组只有一份输入；一般情形继续保留第五章的原始成员身份和报告时机。**同一非竖直直线在一列只有一个点**，是这些规则与逐点进度相接的关键。
+Each group in the main example has one input. In general, retain Chapter 5's original member identities and reporting times. **One nonvertical line has only one point in a column**: this connects those rules to point-by-point processing progress.
 
-首先，同组成员若在同一横坐标开始，开始位置必相同，仍在一次事件内按身份依次加入。相交同线对的较晚开始事件仍是原来的那个事件，不会被拆成同列不同高度两次。于是[加入时报告完整交集](./overlapping-segments.mdx#第二节新成员加入时就报告完整交集)的证明与完整区间都保留；结束成员参加闭端点配对后才退出。
+First, same-group members starting at the same horizontal coordinate must start at the same position. They still join one at a time by identity within one event. The later start event of an intersecting collinear pair remains that same event; it is not split into two heights in a column. Thus the proof of [reporting the complete intersection on insertion](./overlapping-segments.mdx#第二节新成员加入时就报告完整交集) and the complete interval remain valid. Ending members leave only after closed-endpoint pairing.
 
-其次，跨组事件到站时，经过当前位置的组内旧成员都覆盖当前横坐标，因而都包含当前点；再合并这里的开始者。按第五章[跨组展开与点输入配对](./overlapping-segments.mdx#第三节外部穿越只展开跨组对)报告，不重新枚举旧同线成员对。其他高度的成员不会因「在同一列」而进入当前参与名单。报告结果仍按原始无序输入对保存，重叠区间不切碎、不改成点。
+Second, when a cross-group event arrives, every old member of a group through the current position covers the current horizontal coordinate and thus contains the current point. Merge starters at this position too. Report using Chapter 5's [cross-group expansion and point-input pairing](./overlapping-segments.mdx#第三节外部穿越只展开跨组对), without re-enumerating old collinear member pairs. Members at other heights do not join merely because they share the column. Results remain attached to original unordered input pairs; overlap intervals are neither split nor converted into points.
 
-### 中间状态中的覆盖，等号怎样处理
+### How equality works in intermediate-state coverage {/* #中间状态中的覆盖等号怎样处理 */}
 
-还要修正第五章覆盖证明的使用条件。那里在一个事件后对全体活动成员写「右端严格大于当前横坐标」；现在本列高处的结束者尚未退出，右端可能正好等于 $t$。不能把它们先删掉以维持旧表述。
+We must adjust the conditions under which Chapter 5's coverage proof is used. It stated that, after an event, every active member's right endpoint is strictly beyond the current horizontal coordinate. Now, ending members higher in this column have not yet left, so their right endpoint may equal $t$. We cannot remove them prematurely just to preserve the old wording.
 
-对中间状态里任一非空组 $G_a$，用 $\ell_i,r_i$ 表示它当前成员 $S_i$ 的左右端点横坐标。每个已在集合中的成员满足
-
-$$
-\ell_i\le t\le r_i。
-$$
-
-左端等号只可能来自本列已经处理的开始位置；尚未处理的开始者不在集合里。右端等号来自本列尚未处理的结束位置，包含端点，所以仍能作为当前覆盖依据。
-
-继续以 $R_{G_a}$ 表示这些 $r_i$ 的最大值。第五章[最大右端提供连续覆盖](./overlapping-segments.mdx#第四节当前最远右端为什么够用)的证明只需要所有成员已覆盖 $t$：取得最大值的那份输入覆盖从 $t$ 到 $R_{G_a}$ 的闭范围。这里把允许讨论的候选横坐标扩到 $u=t$，故对 $u\ge t$，有成员覆盖该横坐标，当且仅当 $u\le R_{G_a}$；当 $R_{G_a}=t$ 时也成立，只覆盖这个边界位置，并不提供右侧正长度。
-
-对另一相邻非空组 $G_b$ 及其最远右端 $R_{G_b}$，先求两条固定直线的候选 $F=(u,v)$。平行且不同就没有候选；有候选时，要求以下两类条件同时成立：
-
-完整位置严格在未来：
+For any nonempty group $G_a$ in an intermediate state, let $\ell_i,r_i$ denote the horizontal coordinates of the left and right endpoints of its current member $S_i$. Every member already in the set satisfies
 
 $$
-u>t\quad\text{或}\quad (u=t\ \text{且}\ v>h)。
+\ell_i\le t\le r_i.
 $$
 
-两组都实际覆盖：
+Equality at the left endpoint can come only from a start position already processed in this column; unprocessed starters are not in the set. Equality at the right endpoint comes from an end position still awaiting processing in this column. The endpoint is included, so it still provides valid current coverage.
+
+Continue to write $R_{G_a}$ for the maximum of these $r_i$. Chapter 5's proof that [the maximum right endpoint provides continuous coverage](./overlapping-segments.mdx#第四节当前最远右端为什么够用) requires only that every member cover $t$: the member attaining the maximum covers the closed range from $t$ to $R_{G_a}$. We now allow candidate horizontal coordinate $u=t$ too. Thus, for $u\ge t$, some member covers that coordinate if and only if $u\le R_{G_a}$. This also holds when $R_{G_a}=t$: it covers only the boundary position, not a positive length to the right.
+
+For another adjacent nonempty group $G_b$, with farthest right endpoint $R_{G_b}$, first find candidate $F=(u,v)$ from their two fixed lines. Distinct parallel lines have no candidate. When one exists, require both kinds of condition:
+
+The complete position is strictly in the future:
 
 $$
-u\le R_{G_a},\qquad u\le R_{G_b}。
+u>t\quad\text{or}\quad (u=t\ \text{and}\ v>h).
 $$
 
-若 $u=t,v>h$，两条候选直线在本列的高度都是 $v$；它们属于尚未处理的高处，而不是刚更新的低处。其旧成员仍保留，闭范围检查可以接受在高处结束的成员。这样的事件也可能早已登记或由端点提供；未来条件允许它，不等于要求它必须刚在低处被发现。反过来，覆盖条件通过也不能把当前位置重新变成未来。这两种检查职责不同，缺一不可。
+Both groups actually cover it:
 
-### 覆盖延长和空组仍按自己的位置处理
+$$
+u\le R_{G_a},\qquad u\le R_{G_b}.
+$$
 
-新成员只在自己的开始位置加入；若最远右端延长，仍按第五章[覆盖延长补检](./overlapping-segments.mdx#第五节邻居没变覆盖延长也要补检)，检查该组更新后的邻居，并使用完整未来条件。邻接没变而覆盖变够，仍可能第一次发现真实交点，不能省掉。
+If $u=t,v>h$, both candidate lines have height $v$ in this column. They belong to an unprocessed high position, not the low position just updated. Their old members remain, and the closed-range check can accept members ending at that high position. Such an event may already be registered or supplied by an endpoint. Being allowed by the future test does not mean it must have just been discovered at the low event. Conversely, passing coverage cannot turn the current position back into a future event. These two checks have different responsibilities and both are necessary.
 
-结束成员只在自己的结束位置移去。若组仍非空，保留下来的成员在这一列同一个组点继续向右，右端严格大于 $t$；因此右端为 $t$ 的结束者不可能提供更远的最大值，删除它不会缩短仍非空组的最远右端。若没有继续成员，也没有同点开始者接入，空组退出并检查新接起的邻居；未来才开始的同线成员不能提前填平空隙。这里复用第五章[空组退出与重新激活](./overlapping-segments.mdx#第六节组空了以后不能跨过空隙继续覆盖)，只把执行时刻明确到各自精确位置。
+### Coverage extension and empty groups are still handled at their own positions {/* #覆盖延长和空组仍按自己的位置处理 */}
 
-这样，低处的一次更新只影响当前块、边界邻接及实际延长的覆盖；高处保留到自己的事件。同线对和含点输入的对仍有已登记的端点负责到站，跨组位置由前一节的邻接与覆盖理由负责到站，报告时再展开实际身份。
+A new member joins only at its own start position. If the farthest right endpoint extends, use Chapter 5's [coverage-extension check](./overlapping-segments.mdx#第五节邻居没变覆盖延长也要补检) on that group's updated neighbors, with the complete future condition. Unchanged adjacency with newly sufficient coverage may discover a real intersection for the first time, so this check cannot be omitted.
 
-本篇从四线段案例走到了一般的逐点状态：同列从低到高，当前块局部更新，未来按完整位置比较，覆盖独立核验。需要回看重叠成员的完整案例，可返回[第五章《重叠线段怎样参与扫描》](./overlapping-segments.mdx)。下一篇[第七章《用剪切处理竖直线段》](./vertical-segments.mdx)接入竖直输入与剪切，相关数学专题从[剪切系数的选择与证明](./shear/index.mdx)进入；第八至十章分别承担完整混合扫描、一般正确性整合与总工作量。
+An ending member is removed only at its own end position. If the group remains nonempty, its retained members continue rightward from the same group point in this column, with right endpoints strictly greater than $t$. An ending member with right endpoint $t$ therefore cannot provide a farther maximum; removing it does not shorten the still-nonempty group's farthest right endpoint. If no continuing member or same-point starter remains, the empty group exits and its newly connected neighbors are checked. A collinear member starting in the future cannot fill the gap early. This reuses Chapter 5's [empty-group exit and reactivation](./overlapping-segments.mdx#第六节组空了以后不能跨过空隙继续覆盖), specifying execution at each exact position.
+
+An update low down thus affects only its current block, boundary adjacency, and coverage that actually extends. Higher positions remain until their own events. Collinear pairs and pairs containing point inputs still arrive through registered endpoints; cross-group positions arrive by the preceding section's adjacency and coverage arguments. Actual identities are expanded when reporting.
+
+We have moved from the four-segment example to a general point-by-point state: bottom to top within a column, local updates of the current block, complete-position future comparison, and separate coverage verification. For the full overlapping-member example, return to [Chapter 5, How overlapping segments participate in the sweep](./overlapping-segments.mdx). Next, [Chapter 7, Handling vertical segments with a shear](./vertical-segments.mdx), incorporates vertical inputs and shearing. Enter the related mathematics through [Choosing and proving the shear coefficient](./shear/index.mdx). Chapters 8–10 cover the complete mixed-input sweep, general correctness, and total work respectively.

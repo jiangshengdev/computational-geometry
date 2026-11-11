@@ -1,4 +1,4 @@
-# Chinese documentation site
+# Bilingual documentation site
 
 English | [简体中文](README.zh-CN.md)
 
@@ -14,7 +14,7 @@ pnpm --dir docs-site install --frozen-lockfile
 pnpm --dir docs-site run start --host 127.0.0.1
 ```
 
-Node.js 20 or later is required; use the pnpm version specified by `packageManager`. Maintainers perform dependency installation. Preview does not open a browser by default; visit the printed address. Maintainers can specify an available port with `--port <空闲端口>`.
+Node.js 22.18 or later in the 22.x line, or Node.js 24 or later is required; use the pnpm version specified by `packageManager`. Maintainers perform dependency installation. Preview does not open a browser by default; visit the printed address. Maintainers can specify an available port with `--port <available-port>`.
 
 ## Build and checks
 
@@ -31,9 +31,23 @@ Agent validation must allocate a separate temporary port and pass that concrete 
 
 Functional acceptance uses a headless browser to check navigation from the home page to proof pages, sidebar navigation, article table-of-contents anchors, direct proof-page access and refresh, and inline/display formula rendering. It checks content and interaction, without visual snapshots. Mathematical content needs separate review; successful rendering does not establish proof correctness.
 
+## Bilingual publishing
+
+English is the default display language at `/`; Simplified Chinese uses `/zh-Hans/`. Chinese remains the authoritative authoring source at `i18n/zh-Hans/docusaurus-plugin-content-docs/current/`; `docs/` contains its complete English translation. This storage layout does not make English the source text. Both include the home page and all 16 content pages.
+
+For every addition or revision, update the Chinese source and English translation in the same change and release. Preserve mathematical conditions, formulas, examples, proof steps, teaching depth, document IDs, and slugs. Review meaning independently; a successful build cannot establish translation quality. Update both languages of navigation, category descriptions, figure captions, alternative text, and other public strings in the same change. Do not publish untranslated fallback pages or knowingly stale translations.
+
+Docusaurus translates `IntersectionFigures` strings through `i18n/zh-Hans/code.json`; navigation, footer, and categories have their native plugin JSON catalogs. Regenerate catalogs with `pnpm run write-translations --locale zh-Hans`, then translate new messages and check the diff. The framework's generic Chinese strings are included, with remaining English accessibility labels translated locally.
+
+The previous Chinese root URLs now show the corresponding English topics. No redirect takes them away from English. Translated headings explicitly retain the previously generated Chinese fragment IDs; displayed English headings and table-of-contents labels are translated, while old fragment links and same-heading language switches keep working. Preserve these compatibility IDs when editing headings and verify any new fragment links in both languages.
+
+Build all locales together with `pnpm run build` (no `--locale` restriction for publication). To preview Chinese during development, use `pnpm run start --locale zh-Hans --host 127.0.0.1 --port <available-port>`. The generated site remains independent of the computation app and Rust API; no domain or deployment configuration changes are required.
+
+After building, run `pnpm run check:built-site`. This uses Playwright with an isolated static server on an OS-assigned port and closes both browser and server afterward. Set `PLAYWRIGHT_EXECUTABLE_PATH` to an installed compatible Chromium executable, or install Playwright's Chromium with `pnpm exec playwright install chromium`; the check does not install anything. It checks all 38 localized pages, language switching, links and anchors, public text, chapter navigation, and images in both themes. Review mathematical equivalence separately. Temporary build output and browser caches are not source files and must be cleaned after task validation.
+
 ## Content maintenance
 
-Articles are Markdown or MDX files under `docs/`, organized by chapter and topic; `sidebars.ts` maintains the sidebar. Level-two and level-three headings generate the article table of contents. Use `$...$` or `$$...$$` for formulas.
+English articles are Markdown or MDX files under `docs/`, organized by chapter and topic; `sidebars.ts` maintains the sidebar. Level-two and level-three headings generate the article table of contents. Use `$...$` or `$$...$$` for formulas.
 
 ```text
 docs/
@@ -50,7 +64,9 @@ docs/
         └── intersection.mdx
 ```
 
-`docs/segment-intersection/shear/index.mdx` is the entry point to the shear topic. Its five articles follow sidebar order, using Docusaurus directory cards and previous/next navigation. Front-matter `slug` fields fix page addresses. When moving files, update sidebar document IDs and relative article links together. The site has no blog, search, or language switch. Internal ADRs, agent rules, and task records are outside the site's content directory.
+`docs/segment-intersection/shear/index.mdx` is the entry point to the shear topic. Its five articles follow sidebar order, using Docusaurus directory cards and previous/next navigation. Front-matter `slug` fields fix page addresses. When moving files, update sidebar document IDs and relative article links together. The site has a native language switch and no blog or search. Internal ADRs, agent rules, and task records are outside the site's content directory.
+
+Figure generators share geometry and MathText layout. `scripts/localized_svg.ts` writes localized SVG titles and `xml:lang`: English at `static/img/segment-intersection/`, Chinese at `static/img/zh-Hans/segment-intersection/` for the seven `IntersectionFigures` topics. Missing title translations fail generation. `IntersectionFigures` selects the resource by locale. Purely mathematical shear and line-equation diagrams remain shared; their article alt text is translated. Regenerate both locales together with the existing drawing commands; never hand-edit generated SVGs.
 
 ## Image directories
 
@@ -69,7 +85,7 @@ static/img/segment-intersection/
     └── dark/        # 8 SVGs
 ```
 
-Articles reference `/img/segment-intersection/<文档主题>/<light或dark>/<文件名>`. Put new images in the corresponding directory. Moves require updating article references and generator output directories. Keep existing theme suffixes in filenames.
+Articles reference `/img/segment-intersection/<topic>/<light-or-dark>/<filename>`. Put new images in the corresponding directory. Moves require updating article references and generator output directories. Keep existing theme suffixes in filenames.
 
 Chapter 1's nine figure groups use `IntersectionFigures`. Each subfigure is 320 × 260 and displayed at native size, wrapping when space is insufficient without scaling the entire group. Filenames include one-based numbering, such as `intersection-goals-identity-1-light.svg`. Before/after comparisons form independent pairs and retain external captions meaning “before/after adding C”. The generator cleans up old combined SVGs replaced by these subfigures.
 
@@ -80,7 +96,7 @@ cd /path/to/computational-geometry/docs-site
 uv run --offline --with matplotlib==3.11.2 pnpm exec node scripts/draw_intersection_goals.ts
 ```
 
-Through `scripts/render_math_labels.py`, the script reuses the Matplotlib environment and MathText styles described below, embedding LaTeX math labels as SVG paths. Figures retain only necessary numbering and mathematical labels; Chinese explanations belong in the article. The origin is labeled $O$, and positive axis directions have arrows. Line-equation figures are generated by `scripts/draw_line_equation.py`, also reusing the shear script's environment and theme styles.
+Through `scripts/render_math_labels.py`, the script reuses the Matplotlib environment and MathText styles described below, embedding LaTeX math labels as SVG paths. Figures retain only necessary numbering and mathematical labels; Explanations belong in the article in its current language. The origin is labeled $O$, and positive axis directions have arrows. Line-equation figures are generated by `scripts/draw_line_equation.py`, also reusing the shear script's environment and theme styles.
 
 ## Generating coordinate diagrams
 
@@ -96,7 +112,7 @@ MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/
 - Coordinate-system transformation: `static/img/segment-intersection/shear/light/shear-coordinates-light.svg` and `static/img/segment-intersection/shear/dark/shear-coordinates-dark.svg`.
 - Event-order reversal: `static/img/segment-intersection/shear/light/shear-order-reversal-light.svg` and `static/img/segment-intersection/shear/dark/shear-order-reversal-dark.svg`.
 - Coinciding old/new horizontal axes: `static/img/segment-intersection/shear/<theme>/shear-horizontal-axis-<theme>.svg`, showing that points on the horizontal axis have the same readings in both coordinate systems.
-- Five steps for the new vertical axis: `static/img/segment-intersection/shear/<theme>/shear-axis-step-{1..5}-<theme>.svg`, showing point selection, new x coordinate, original y coordinate, original x coordinate, and final position. Figures retain geometric guides, symbols, and short formulas; Chinese explanations appear in the corresponding article steps.
+- Five steps for the new vertical axis: `static/img/segment-intersection/shear/<theme>/shear-axis-step-{1..5}-<theme>.svg`, showing point selection, new x coordinate, original y coordinate, original x coordinate, and final position. Figures retain geometric guides, symbols, and short formulas; Explanations appear in the corresponding localized article steps.
 
 Articles use Docusaurus `ThemedImage` to select images for the site theme.
 

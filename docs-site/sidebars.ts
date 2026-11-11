@@ -4,23 +4,23 @@ const sidebars: SidebarsConfig = {
   documents: [
     {
       type: 'category',
-      label: '凸包',
+      label: 'Convex hulls',
       collapsed: false,
       link: {
         type: 'generated-index',
         slug: '/chapters/convex-hull',
-        description: '理解凸包算法中的方向判断与数学原理。',
+        description: 'Understand orientation tests and the mathematics behind convex hull algorithms.',
       },
       items: ['convex-hull/determinant-orientation'],
     },
     {
       type: 'category',
-      label: '线段求交',
+      label: 'Segment intersection',
       collapsed: false,
       link: {
         type: 'generated-index',
         slug: '/chapters/segment-intersection',
-        description: '从求交目标出发，理解扫描线、坐标变换与精确计算。',
+        description: 'Start with the intersection result, then explore sweeps, coordinate transformations, and exact computation.',
       },
       items: [
         'segment-intersection/what-we-compute',
@@ -34,7 +34,7 @@ const sidebars: SidebarsConfig = {
         'segment-intersection/line-equation',
         {
           type: 'category',
-          label: '剪切系数的选择与证明',
+          label: 'Choosing and proving a shear coefficient',
           link: {type: 'doc', id: 'segment-intersection/shear/shear-coefficient'},
           items: [
             'segment-intersection/shear/shear-intuition',

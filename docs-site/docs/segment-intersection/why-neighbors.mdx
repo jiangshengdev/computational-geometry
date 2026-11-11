@@ -1,252 +1,252 @@
 ---
 slug: /docs/segment-intersection/why-neighbors
-title: 扫描过程与三类事件
-sidebar_label: 2（上）．扫描过程与三类事件
-description: 跟随四条线段理解活动顺序、待处理清单，以及开始、结束和交叉时怎样检查新邻居。
+title: The Sweep and Three Types of Events
+sidebar_label: 2 (Part 1). The Sweep and Three Types of Events
+description: Follow four segments to understand the active order, the pending list, and how to check new neighbors when segments start, end, or cross.
 ---
 
 import IntersectionFigures from '@site/src/components/IntersectionFigures';
 
-上一章[《我们究竟要求什么》](./what-we-compute.mdx)用两两检查建立了基准方法。每对输入是否有公共部分，都检查一次，结果不会漏掉；可是，其中许多线段相隔很远。
+The previous chapter, [What Are We Trying to Compute?](./what-we-compute.mdx), established pairwise checking as a baseline. Checking every input pair for a common part misses no result, but many of those segments are far apart.
 
-这一次，我们让一条竖直辅助线从左向右移动，只在必要的位置停下来。这条辅助线叫作「扫描线」。我们要回答：**如果每次只检查上下紧挨着的线段，会不会漏掉原本隔得很远、后来才相交的一对？**
+This time, we move a vertical auxiliary line from left to right and stop only where necessary. This is called a “sweep line.” Our question is: **if we check only segments that are immediately next to each other vertically, might we miss a pair that starts far apart and intersects later?**
 
-第二章分成上下两篇。本篇先跟随一个案例，看邻居怎样随扫描过程更新、未来交点怎样被发现；下篇[《为什么不会漏掉交点》](./why-neighbors-proof.mdx)再把理由推广到本章允许的所有输入。读完本篇，可以先停下来，尝试独立复述三类事件的规则。
+Chapter 2 has two parts. Here we follow an example to see how neighbors change during the sweep and how future intersections are discovered. [Part 2: Why No Intersection Is Missed](./why-neighbors-proof.mdx) then extends the reasoning to every input allowed in this chapter. After this part, you can pause and try to explain the three event rules in your own words.
 
-## 先把本章的条件说清楚
+## State the Assumptions First {/* #先把本章的条件说清楚 */}
 
-为了先看清基础机制，本章暂时要求：
+To see the basic mechanism clearly, we temporarily require the following:
 
-- 每条线段长度大于零，且不竖直。
-- 没有两条线段重叠，没有端点落在另一条线段上，也没有三条或更多线段经过同一个点。
-- 所有端点和交点的横坐标互不相同。
+- Every segment has positive length and is nonvertical.
+- No two segments overlap, no endpoint lies on another segment, and no point lies on three or more segments.
+- All endpoints and intersections have different horizontal coordinates.
 
-因此，每个交点都在恰好两条线段的内部；每次停下，只处理一条线段的开始、结束，或者两条线段的交叉。水平线段、互不相交的线段都可以出现。
+Thus, each intersection lies in the interiors of exactly two segments. At each stop, we handle one segment starting, one segment ending, or two segments crossing. Horizontal segments and nonintersecting segments are allowed.
 
-这些是本章的教学条件，**不是完整算法拒绝复杂输入的理由**。后续章节会逐步解除它们。本章的求交结果仍按原始无序输入对记录，只是在这些条件下，每个非空交集都是一个点。
+These are teaching assumptions for this chapter, **not reasons for the complete algorithm to reject more complicated inputs**. Later chapters will remove them one by one. Results are still recorded by original unordered input pair; under these assumptions, every nonempty intersection happens to be a point.
 
-## 四条线段，先不给交点答案
+## Four Segments, Without Giving Away the Intersections {/* #四条线段先不给交点答案 */}
 
-用 $\teachBlue{A},\teachOrange{B},\teachViolet{C},\teachEmerald{D}$ 区分四份输入。它们都是闭线段，包含两端。
+Use $\teachBlue{A},\teachOrange{B},\teachViolet{C},\teachEmerald{D}$ to distinguish four inputs. All are closed segments and include both endpoints.
 
-| 输入 | 左端点 | 右端点 | 所在直线及横坐标范围 |
+| Input | Left endpoint | Right endpoint | Containing line and horizontal range |
 | --- | --- | --- | --- |
-| $\teachBlue{A}$ | $(0,1)$ | $(10,1)$ | $\teachBlue{y}=\teachBlue{1}$，$0\le x\le10$ |
-| $\teachOrange{B}$ | $(1,3)$ | $(3,3)$ | $\teachOrange{y}=\teachOrange{3}$，$1\le x\le3$ |
-| $\teachViolet{C}$ | $(2,6)$ | $(9,-1)$ | $\teachViolet{y}=\teachViolet{8-x}$，$2\le x\le9$ |
-| $\teachEmerald{D}$ | $(4,0)$ | $(8,4)$ | $\teachEmerald{y}=\teachEmerald{x-4}$，$4\le x\le8$ |
+| $\teachBlue{A}$ | $(0,1)$ | $(10,1)$ | $\teachBlue{y}=\teachBlue{1}$, $0\le x\le10$ |
+| $\teachOrange{B}$ | $(1,3)$ | $(3,3)$ | $\teachOrange{y}=\teachOrange{3}$, $1\le x\le3$ |
+| $\teachViolet{C}$ | $(2,6)$ | $(9,-1)$ | $\teachViolet{y}=\teachViolet{8-x}$, $2\le x\le9$ |
+| $\teachEmerald{D}$ | $(4,0)$ | $(8,4)$ | $\teachEmerald{y}=\teachEmerald{x-4}$, $4\le x\le8$ |
 
-表中的方程可以用端点核对。例如，$C$ 在 $x=2$ 时有 $y=8-2=6$，在 $x=9$ 时有 $y=8-9=-1$；$D$ 在 $x=4$ 时有 $y=4-4=0$，在 $x=8$ 时有 $y=8-4=4$。两端点确定所在直线，范围再把它限制为线段。需要回顾这个区别，可以读[由两个端点写出直线方程](./line-equation.mdx)。
+You can check the equations using the endpoints. For $C$, when $x=2$, $y=8-2=6$; when $x=9$, $y=8-9=-1$. For $D$, when $x=4$, $y=4-4=0$; when $x=8$, $y=8-4=4$. Two endpoints determine the containing line, and the bounds restrict it to the segment. To review the distinction, see [Writing a Line Equation from Two Endpoints](./line-equation.mdx).
 
 <IntersectionFigures topic="why-neighbors" prefix="sweep-neighbors" name="input"
-  panels={['四条输入：A 从 (0,1) 到 (10,1)，B 从 (1,3) 到 (3,3)，C 从 (2,6) 到 (9,-1)，D 从 (4,0) 到 (8,4)。尚未标注交点。']}
+  panels={['Four inputs: A from (0,1) to (10,1), B from (1,3) to (3,3), C from (2,6) to (9,-1), and D from (4,0) to (8,4). Intersections have not yet been marked.']}
 />
 
-横轴、纵轴每一小格都表示一个单位，各图使用同一尺度。$O$ 表示原点。图可以让我们看见完整输入，但现在还没有检查任何输入对，不能把肉眼看到的交点当作已经算出的结果。
+Each grid interval represents one unit on both axes, and all figures use the same scale. $O$ denotes the origin. The figure lets us see the complete inputs, but no input pair has been checked yet. An intersection we can spot by eye is not yet a computed result.
 
-本篇配图是按讲解组织的教学示意。每幅保持固定尺寸；图中只放简短数学标记，详细步骤放在正文和记录表中。
+The figures in this part are teaching diagrams arranged to follow the explanation. Each keeps a fixed size. They contain only short mathematical labels; detailed steps appear in the prose and record table.
 
-## 扫描时记住什么
+## What Do We Keep Track of During the Sweep? {/* #扫描时记住什么 */}
 
-线段开始、结束或者交叉，会改变扫描线遇到的线段或它们的上下关系。我们把这样需要停下来处理的位置叫作「扫描事件」。下面的两份记录分别回答「当前谁挨着谁」和「接下来去哪里」。
+When a segment starts, ends, or crosses another, the segments met by the sweep line or their vertical relationship can change. A position where we must stop and process such a change is called a “sweep event.” The two records below answer “who is next to whom now?” and “where do we go next?”
 
-### 一份从下到上的顺序
+### An Order from Bottom to Top {/* #一份从下到上的顺序 */}
 
-扫描线的位置用横坐标 $x$ 表示。不在端点或交点上时，与扫描线相交的输入线段叫作当前的「活动线段」。因为输入不竖直，每条活动线段只与扫描线相交于一点，可以按这些点的高低，从下到上排成一列。这一列叫作「活动顺序」。
+The sweep line's position is given by its horizontal coordinate $x$. Away from endpoints and intersections, input segments meeting the sweep line are called the current “active segments.” Since no input is vertical, each active segment meets the sweep line at one point. We can arrange the segments from bottom to top by those points' heights. This list is called the “active order.”
 
-这里的「邻居」就是这列中直接相邻的两条线段，中间没有另一条活动线段。例如，顺序为 $A,B,C$ 时，邻居是 $A$ 与 $B$、$B$ 与 $C$；$A$ 与 $C$ 还不是邻居。
+“Neighbors” means two immediately consecutive segments in this list, with no active segment between them. For example, in the order $A,B,C$, the neighbors are $A$ and $B$, and $B$ and $C$; $A$ and $C$ are not neighbors yet.
 
-到了一个事件位置，我们区分处理前、处理后：处理前取扫描线紧靠该位置左侧的顺序，处理后取紧靠右侧的顺序。「紧靠」表示尚未越过下一个事件，不是任意跳一段固定距离。交点处两条线段的高度相等，但左右两侧的顺序各自明确。
+At an event, distinguish before processing from after processing. Before processing, use the order immediately to the left; afterward, use the order immediately to the right. “Immediately” means without crossing another event, not moving an arbitrary fixed distance. At an intersection the two heights are equal, but the orders on its left and right are each well defined.
 
-### 一份待处理清单
+### A List of Pending Events {/* #一份待处理清单 */}
 
-所有端点一开始就已知，所以先把它们按横坐标从小到大放入「待处理清单」。每次取出清单中最靠左的位置；处理时新发现的未来交点，也按横坐标加入清单。
+All endpoints are known from the start, so place them in a “pending list,” sorted by increasing horizontal coordinate. Each time, take the leftmost position from this list. Future intersections newly discovered during processing are also inserted in horizontal-coordinate order.
 
-本例开始时的清单是：
+The initial list for our example is:
 
-| 横坐标 | 已知事件 |
+| Horizontal coordinate | Known event |
 | --- | --- |
-| $0$ | $A$ 开始 |
-| $1$ | $B$ 开始 |
-| $2$ | $C$ 开始 |
-| $3$ | $B$ 结束 |
-| $4$ | $D$ 开始 |
-| $8$ | $D$ 结束 |
-| $9$ | $C$ 结束 |
-| $10$ | $A$ 结束 |
+| $0$ | $A$ starts |
+| $1$ | $B$ starts |
+| $2$ | $C$ starts |
+| $3$ | $B$ ends |
+| $4$ | $D$ starts |
+| $8$ | $D$ ends |
+| $9$ | $C$ ends |
+| $10$ | $A$ ends |
 
-**这份清单目前没有交叉事件。**「发现」是检查一对线段，算出并确认它们有交点；「登记」是把尚未到达的交点放入清单，留待之后处理；「报告」则发生在扫描线真正到达交点时，此时才记下该输入对的求交结果并处理换序。三者并不是同一时刻发生的事。
+**This list does not contain any crossing events yet.** “Discovering” means checking a segment pair and computing and confirming its intersection. “Registering” means placing an intersection we have not reached into the list for later processing. “Reporting” happens when the sweep line actually reaches the intersection: only then do we record this input pair's result and handle its order change. These are not all the same moment.
 
-清单中同一个交叉只登记一次。本章保留已经发现的真实未来交点：即使那两条线段后来暂时不相邻，也不删除它；再次检查到同一个交点时不重复加入。这样讲解的重点是何时发现交点，不需要引入取消预约的管理办法。
+Register a given crossing only once. In this chapter, we retain every real future intersection already discovered: even if its two segments temporarily stop being neighbors, we do not remove it. If another check finds the same intersection, we do not insert a duplicate. This keeps the explanation focused on when intersections are discovered, without introducing a procedure for canceling scheduled events.
 
-## 从开始事件认识邻居
+## Learn About Neighbors from Start Events {/* #从开始事件认识邻居 */}
 
-扫描到 $x=0$，$A$ 开始，活动顺序只有 $A$，没有邻居需要检查。
+At $x=0$, $A$ starts. The active order consists only of $A$, with no neighbor to check.
 
-到 $x=1$，$B$ 开始。$A$ 的高度是 $1$，$B$ 的高度是 $3$，所以顺序变成 $A,B$。检查这一对：一个要求 $y=1$，另一个要求 $y=3$，无法同时成立，没有交点。
+At $x=1$, $B$ starts. The height of $A$ is $1$ and that of $B$ is $3$, giving order $A,B$. Check the pair: one requires $y=1$ and the other $y=3$, which cannot both hold. They have no intersection.
 
-到 $x=2$，$C$ 开始。它的高度是 $8-2=6$，高于 $B$ 的 $3$，顺序变成 $A,B,C$。
+At $x=2$, $C$ starts. Its height is $8-2=6$, above $B$ at $3$, so the order becomes $A,B,C$.
 
 <IntersectionFigures topic="why-neighbors" prefix="sweep-neighbors" name="start"
-  panels={['处理 x=2 的 C 开始事件后，活动顺序从下到上为 A、B、C。D 尚未开始，淡色显示。没有已发现的交点。']}
+  panels={['After processing C starting at x=2, the bottom-to-top active order is A, B, C. D has not started and is shown faintly. No intersections have been discovered.']}
 />
 
-竖直虚线表示当前事件位置，图底部列出**处理后从下到上**的顺序。尚未开始或已经结束的线段淡色显示；仍保留它们的位置，方便前后对照。
+The vertical dashed line marks the current event position. The bottom of the figure lists the **bottom-to-top order after processing**. Segments that have not started or have already ended are faint; their positions remain visible to help compare successive states.
 
-这次新出现的邻居是 $B$ 与 $C$。求公共点时，纵坐标必须同时满足 $y=3$ 和 $y=8-x$，因此：
+The new neighbors are $B$ and $C$. A common point's vertical coordinate must satisfy both $y=3$ and $y=8-x$, so
 
 $$
 3=8-x.
 $$
 
-两边加上 $x$，得到 $3+x=8$；两边减去 $3$，得到 $x=5$。代回 $y=3$，两条**直线**相交于 $(5,3)$。
+Add $x$ to both sides to obtain $3+x=8$, then subtract $3$ from both sides to obtain $x=5$. Substituting into $y=3$, the two **lines** intersect at $(5,3)$.
 
-可是，$B$ 到 $x=3$ 就结束了，$5>3$，这个点不在 $B$ 上。因此没有未来交叉加入清单。此时仍不检查 $A$ 与 $C$，因为中间隔着 $B$。
+However, $B$ ends at $x=3$. Since $5>3$, this point is not on $B$, so no future crossing is added to the list. We still do not check $A$ against $C$, because $B$ is between them.
 
-**开始事件的规则：把新线段放进正确位置，只检查它与上下邻居。** 如果一侧没有邻居，那一侧就不检查。
+**Start-event rule: insert the new segment in the correct position and check it against its neighbors above and below.** If one side has no neighbor, skip that side.
 
-为什么只需要这些新检查？在一个开始事件处，没有其他端点或交点，原来各条线段的相对高低没有改变。插入一条新线段，只可能拆开原来的一对邻居，并产生新线段两侧的邻接；其他邻接与刚才完全一样。
+Why are these the only new checks needed? No other endpoint or intersection is at this start event, so the relative heights of the existing segments do not change. Inserting one segment can only split one old neighboring pair and create adjacencies on the new segment's two sides. Every other adjacency stays exactly as it was.
 
-## 中间线段结束，远处的交点才被发现
+## An Intervening Segment Ends, Revealing a Distant Intersection {/* #中间线段结束远处的交点才被发现 */}
 
-到 $x=3$，$B$ 结束。移去 $B$ 后，顺序从 $A,B,C$ 变成 $A,C$。
+At $x=3$, $B$ ends. Removing it changes the order from $A,B,C$ to $A,C$.
 
-现在 $A$ 与 $C$ 成了邻居。公共点的高度满足：
+Now $A$ and $C$ are neighbors. The height of a common point satisfies
 
 $$
 \teachBlue{1}=\teachViolet{8-x}.
 $$
 
-两边加上 $x$，得到 $1+x=8$；再减去 $1$，得到 $x=7$。代入 $y=1$，交点是 $(7,1)$，记作 $P$。
+Add $x$ to both sides to obtain $1+x=8$, then subtract $1$ to obtain $x=7$. Substitute into $y=1$: the intersection is $(7,1)$, which we call $P$.
 
-检查范围：$7$ 在 $A$ 的 $0$ 到 $10$ 之间，也在 $C$ 的 $2$ 到 $9$ 之间，确实是两条线段的交点。又因为 $7>3$，它在当前扫描位置的右边，所以把 $P$ 加入清单。
+Check the bounds: $7$ is within $A$'s range from $0$ to $10$ and $C$'s range from $2$ to $9$. It is indeed an intersection of the segments. Since $7>3$, it lies to the right of the current sweep position, so add $P$ to the list.
 
 <IntersectionFigures topic="why-neighbors" prefix="sweep-neighbors" name="end"
-  panels={['处理 x=3 的 B 结束事件后，A 与 C 相邻，发现未来交点 P=(7,1)。P 用空心圆标记，尚未报告。']}
+  panels={['After processing B ending at x=3, A and C are neighbors and the future intersection P=(7,1) is discovered. P is marked by a hollow circle and has not been reported.']}
 />
 
-空心圆表示已经发现、尚未到达的交点。此时清单余下的横坐标依次为 $4,7,8,9,10$。**发现了 $P$，不等于立刻跳到 $P$：还要先处理 $x=4$ 的端点。**
+A hollow circle marks an intersection already discovered but not yet reached. The remaining horizontal coordinates in the list are $4,7,8,9,10$. **Discovering $P$ does not mean jumping straight to it: we must process the endpoint at $x=4$ first.**
 
-**结束事件的规则：移去结束的线段，如果它原来上下两侧都有邻居，就检查这两个新邻居。** 如果只剩一侧，移去它没有产生新的邻接对。
+**End-event rule: remove the ending segment. If it had both a neighbor below and a neighbor above, check those two new neighbors.** If there is a neighbor on only one side, removing the segment creates no new neighboring pair.
 
-理由也来自局部变化：其他线段没有在这里交叉或开始结束，相对顺序不变；只有被移走线段原来隔开的两条线段可能接到一起。
+Again, the reason is a local change: no other segment crosses, starts, or ends here, so the others retain their relative order. Only the two segments formerly separated by the removed one can become adjacent.
 
-## 新加入的线段，让清单多了一个更早的交点
+## A Newly Starting Segment Adds an Earlier Intersection {/* #新加入的线段让清单多了一个更早的交点 */}
 
-到 $x=4$，$D$ 从 $(4,0)$ 开始。此处 $A$ 的高度是 $1$，$C$ 的高度是 $8-4=4$，所以处理后的顺序是 $D,A,C$。
+At $x=4$, $D$ starts at $(4,0)$. Here $A$ has height $1$ and $C$ has height $8-4=4$, so the order after processing is $D,A,C$.
 
-新邻接只有 $D$ 与 $A$；$D$ 下方没有线段。令两个高度相等：
+The only new adjacency is $D$ with $A$; there is no segment below $D$. Set their heights equal:
 
 $$
 \teachEmerald{x-4}=\teachBlue{1}.
 $$
 
-两边加上 $4$，得到 $x=5$；代入 $y=1$，交点是 $(5,1)$，记作 $Q$。$5$ 同时在 $A$ 的 $0$ 到 $10$、$D$ 的 $4$ 到 $8$ 之间，而且 $5>4$，可以加入清单。
+Add $4$ to both sides to obtain $x=5$. Substitute into $y=1$: the intersection is $(5,1)$, which we call $Q$. The value $5$ is within both $A$'s range from $0$ to $10$ and $D$'s range from $4$ to $8$. Also, $5>4$, so we can add it to the list.
 
 <IntersectionFigures topic="why-neighbors" prefix="sweep-neighbors" name="insert"
-  panels={['处理 x=4 的 D 开始事件后，顺序为 D、A、C。发现 Q=(5,1)，清单中 Q 在先前发现的 P 前面。两个交点均尚未报告。']}
+  panels={['After processing D starting at x=4, the order is D, A, C. Q=(5,1) is discovered and precedes the previously discovered P in the list. Neither intersection has been reported.']}
 />
 
-清单余下的位置现在是 $5,7,8,9,10$。$P$ 虽然发现得早，$Q$ 却必须先处理，因为 $5<7$。清单按位置排序，不按发现时间排序。
+The remaining positions are now $5,7,8,9,10$. Although $P$ was discovered earlier, $Q$ must be processed first because $5<7$. The list is sorted by position, not discovery time.
 
-## 交叉以后，新的邻居带来第三个交点
+## After a Crossing, New Neighbors Reveal a Third Intersection {/* #交叉以后新的邻居带来第三个交点 */}
 
-### 在 Q 处，A 与 D 交换顺序
+### At Q, A and D Exchange Order {/* #在-q-处a-与-d-交换顺序 */}
 
-到 $x=5$，扫描线到达 $Q$，报告「输入对 $A$ 与 $D$，交集为点 $(5,1)$」。
+At $x=5$, the sweep line reaches $Q$. Report “input pair $A$ and $D$, with intersection point $(5,1)$.”
 
-为什么发生换序？$A$ 的高度恒为 $1$。对 $D$，当 $x<5$ 时，$x-4<1$，它在 $A$ 下方；当 $x>5$ 时，$x-4>1$，它在 $A$ 上方。因此，处理前的 $D,A,C$ 变成处理后的 $A,D,C$。
+Why does their order change? The height of $A$ is always $1$. For $D$, when $x<5$, $x-4<1$, so it is below $A$; when $x>5$, $x-4>1$, so it is above $A$. Thus the order before processing, $D,A,C$, becomes $A,D,C$ afterward.
 
-$A$ 与 $D$ 仍然相邻，只是上下颠倒；新出现的邻接是 $D$ 与 $C$。检查这一对：
+$A$ and $D$ are still neighbors, but their vertical order is reversed. The new adjacency is $D$ with $C$. Check this pair:
 
 $$
 \teachEmerald{x-4}=\teachViolet{8-x}.
 $$
 
-两边加上 $x$，得到 $2x-4=8$；两边加上 $4$，得到 $2x=12$；两边除以非零的数 $2$，得到：
+Add $x$ to both sides to obtain $2x-4=8$. Add $4$ to both sides to obtain $2x=12$. Divide both sides by the nonzero number $2$ to obtain
 
 $$
 x=6.
 $$
 
-代入 $y=x-4$，得到：
+Substitute into $y=x-4$:
 
 $$
 y=6-4=2.
 $$
 
-把这个交点记作 $R=(6,2)$。横坐标 $6$ 在 $C$ 的 $2$ 到 $9$、$D$ 的 $4$ 到 $8$ 之间，又因为 $6>5$，它在当前位置的右边，所以加入清单。
+Call this intersection $R=(6,2)$. Its horizontal coordinate $6$ is within $C$'s range from $2$ to $9$ and $D$'s range from $4$ to $8$. Since $6>5$, it lies to the right of the current position, so add it to the list.
 
 <IntersectionFigures topic="why-neighbors" prefix="sweep-neighbors" name="cross"
-  panels={['处理 x=5 的 Q 交叉事件后，顺序为 A、D、C。Q 已报告，用实心圆表示；新邻居 D 与 C 带来未来交点 R=(6,2)。P 和 R 仍为空心圆。']}
+  panels={['After processing the crossing at Q with x=5, the order is A, D, C. Q has been reported and is a filled circle. New neighbors D and C reveal the future intersection R=(6,2). P and R remain hollow circles.']}
 />
 
-图中实心交点表示已经报告。现在清单余下的位置为 $6,7,8,9,10$。$A$ 与 $C$ 暂时不相邻，但已经登记的真实交点 $P$ 仍保留。
+A filled intersection point has already been reported. The remaining positions in the list are now $6,7,8,9,10$. $A$ and $C$ are temporarily not neighbors, but their registered real intersection $P$ remains in the list.
 
-**交叉事件的规则：交换两条交叉线段的上下位置，检查换序后新出现的外侧邻接。** 例如，原顺序为 $L,U,V,H$，其中 $U,V$ 交叉，处理后变成 $L,V,U,H$；需要检查 $L,V$ 和 $U,H$。不存在的外侧邻居跳过。这里的字母只用来表示连续排列的四条线段。
+**Crossing-event rule: exchange the two crossing segments' vertical positions and check the newly created outer adjacencies.** For example, if the order is $L,U,V,H$ and $U,V$ cross, it becomes $L,V,U,H$. Check $L,V$ and $U,H$, skipping any outer neighbor that does not exist. These letters simply represent four consecutive segments.
 
-为什么不用检查更远的线段？本章没有第三条线段经过这个交点，交叉附近的变化只涉及这两条线段；外面的线段保持原顺序。两条交叉线段互相仍是邻居，它们刚刚相交，且两条不同直线不可能再有第二个交点，所以也不需要为这一对寻找第二次交叉。下篇会证明：交叉前它们确实必定相邻。
+Why not check more distant segments? No third segment passes through this intersection under our assumptions, so the local change involves only these two segments; outside segments keep their relative order. The crossing segments remain each other's neighbors. They have just intersected, and two distinct lines cannot have a second intersection, so we do not need to look for another crossing of this same pair either. The next part will prove that the segments must indeed be neighbors immediately before crossing.
 
-### 在 R 处，C 与 D 交换顺序
+### At R, C and D Exchange Order {/* #在-r-处c-与-d-交换顺序 */}
 
-到 $x=6$，报告「输入对 $C$ 与 $D$，交集为点 $(6,2)$」。
+At $x=6$, report “input pair $C$ and $D$, with intersection point $(6,2)$.”
 
-$D$ 的高度减去 $C$ 的高度，等于：
+The height of $D$ minus the height of $C$ is
 
 $$
 (x-4)-(8-x)=x-4-8+x=2x-12.
 $$
 
-在 $x<6$ 时，两边乘以正数 $2$，得到 $2x<12$，所以 $2x-12<0$，$D$ 在 $C$ 下方；在 $x>6$ 时，同样得到 $2x>12$，所以 $2x-12>0$，$D$ 在 $C$ 上方。因此顺序从 $A,D,C$ 变成 $A,C,D$。
+When $x<6$, multiply both sides by positive $2$ to get $2x<12$, so $2x-12<0$ and $D$ is below $C$. When $x>6$, the same operation gives $2x>12$, so $2x-12>0$ and $D$ is above $C$. The order therefore changes from $A,D,C$ to $A,C,D$.
 
 <IntersectionFigures topic="why-neighbors" prefix="sweep-neighbors" name="next"
-  panels={['处理 x=6 的 R 交叉事件后，顺序为 A、C、D。Q、R 已报告。重新成为邻居的 A、C 对应 P，但 P 已在清单中，不重复登记。']}
+  panels={['After processing the crossing at R with x=6, the order is A, C, D. Q and R have been reported. A and C become neighbors again and give P, but P is already in the list and is not registered twice.']}
 />
 
-新邻接是 $A$ 与 $C$。检查得到的仍是 $P=(7,1)$，但清单里已经有它，不再放入第二份。余下位置为 $7,8,9,10$。
+The new adjacency is $A$ with $C$. The check again gives $P=(7,1)$, but it is already in the list, so we do not add a second copy. The remaining positions are $7,8,9,10$.
 
-### 在 P 处，A 与 C 交换顺序
+### At P, A and C Exchange Order {/* #在-p-处a-与-c-交换顺序 */}
 
-到 $x=7$，报告「输入对 $A$ 与 $C$，交集为点 $(7,1)$」。$C$ 与 $A$ 的高度差为 $(8-x)-1=7-x$：在 $7$ 左侧为正，右侧为负，所以顺序从 $A,C,D$ 变成 $C,A,D$。
+At $x=7$, report “input pair $A$ and $C$, with intersection point $(7,1)$.” Their height difference, $C$ minus $A$, is $(8-x)-1=7-x$: positive to the left of $7$, negative to its right. Thus the order changes from $A,C,D$ to $C,A,D$.
 
 <IntersectionFigures topic="why-neighbors" prefix="sweep-neighbors" name="last"
-  panels={['处理 x=7 的 P 交叉事件后，顺序为 C、A、D。三个交点都已报告。新邻接 A、D 的交点 Q 在扫描线左侧，不加入清单。']}
+  panels={['After processing the crossing at P with x=7, the order is C, A, D. All three intersections have been reported. The new neighbors A and D intersect at Q, to the left of the sweep line, so Q is not added to the list.']}
 />
 
-新邻接是 $A$ 与 $D$。它们的交点 $Q$ 在 $x=5$，已经位于扫描线左侧，不是未来事件，不再加入清单。
+The new adjacency is $A$ with $D$. Their intersection $Q$ is at $x=5$, already to the left of the sweep line. It is not a future event, so it is not added to the list again.
 
-接着依次处理 $x=8$ 的 $D$ 结束、$x=9$ 的 $C$ 结束、$x=10$ 的 $A$ 结束。这三次都没有上下两侧同时存在的旧邻居，不产生新的邻接对。最后活动顺序和清单都为空，扫描结束。
+Next process $D$ ending at $x=8$, $C$ ending at $x=9$, and $A$ ending at $x=10$, in that order. In none of these cases does the ending segment have old neighbors on both sides, so no new neighboring pair is created. Finally, both the active order and the pending list are empty, and the sweep ends.
 
-## 把每个事件放回同一张记录表
+## Put Every Event into One Record Table {/* #把每个事件放回同一张记录表 */}
 
-表中的顺序始终从下到上，表示处理后的状态。「新检查」指本次因邻接变化而检查的输入对；它可能以前检查过，不等于第一次检查。
+The order in this table is always from bottom to top, after processing. A “new check” means a pair checked now because an adjacency changed. The pair may have been checked before; this does not necessarily mean its first check.
 
-| 当前事件 | 处理后顺序 | 本次新检查的邻居 | 新加入清单的交点 | 本次报告 |
+| Current event | Order afterward | Neighbors checked now | Intersection newly added to list | Reported now |
 | --- | --- | --- | --- | --- |
-| $x=0$，$A$ 开始 | $A$ | 无 | 无 | 无 |
-| $x=1$，$B$ 开始 | $A,B$ | $A,B$：不相交 | 无 | 无 |
-| $x=2$，$C$ 开始 | $A,B,C$ | $B,C$：延长线交点超出 $B$ | 无 | 无 |
-| $x=3$，$B$ 结束 | $A,C$ | $A,C$ | $P=(7,1)$ | 无 |
-| $x=4$，$D$ 开始 | $D,A,C$ | $D,A$ | $Q=(5,1)$ | 无 |
-| $x=5$，到达 $Q$ | $A,D,C$ | $D,C$ | $R=(6,2)$ | $A,D$ 对应 $Q$ |
-| $x=6$，到达 $R$ | $A,C,D$ | $A,C$：$P$ 已在清单中 | 无 | $C,D$ 对应 $R$ |
-| $x=7$，到达 $P$ | $C,A,D$ | $A,D$：$Q$ 已在左侧 | 无 | $A,C$ 对应 $P$ |
-| $x=8$，$D$ 结束 | $C,A$ | 无 | 无 | 无 |
-| $x=9$，$C$ 结束 | $A$ | 无 | 无 | 无 |
-| $x=10$，$A$ 结束 | 空 | 无 | 无 | 无 |
+| $x=0$, $A$ starts | $A$ | None | None | None |
+| $x=1$, $B$ starts | $A,B$ | $A,B$: no intersection | None | None |
+| $x=2$, $C$ starts | $A,B,C$ | $B,C$: line intersection beyond $B$ | None | None |
+| $x=3$, $B$ ends | $A,C$ | $A,C$ | $P=(7,1)$ | None |
+| $x=4$, $D$ starts | $D,A,C$ | $D,A$ | $Q=(5,1)$ | None |
+| $x=5$, reaching $Q$ | $A,D,C$ | $D,C$ | $R=(6,2)$ | $A,D$ at $Q$ |
+| $x=6$, reaching $R$ | $A,C,D$ | $A,C$: $P$ already listed | None | $C,D$ at $R$ |
+| $x=7$, reaching $P$ | $C,A,D$ | $A,D$: $Q$ already to the left | None | $A,C$ at $P$ |
+| $x=8$, $D$ ends | $C,A$ | None | None | None |
+| $x=9$, $C$ ends | $A$ | None | None | None |
+| $x=10$, $A$ ends | Empty | None | None | None |
 
-这张表呈现两个容易遗漏的来源：在 $x=3$，中间的 $B$ 结束，带来 $A,C$；在 $x=5$，$A,D$ 交叉，带来 $D,C$。它们都不在最初的邻接关系中。
+The table shows two sources of new neighbors that are easy to overlook: at $x=3$, the intervening $B$ ends, bringing together $A,C$; at $x=5$, $A,D$ cross, bringing together $D,C$. Neither pair was adjacent at the start.
 
-## 先停下来，把三类规则连起来
+## Pause and Connect the Three Rules {/* #先停下来把三类规则连起来 */}
 
-扫描过程中，我们始终维护从下到上的活动顺序和按横坐标排序的待处理清单。
+Throughout the sweep, we maintain the bottom-to-top active order and the pending list sorted by horizontal coordinate.
 
-- 一条线段开始：放到正确位置，检查它与上下邻居。
-- 一条线段结束：移去它，检查原来被它隔开的两条线段。
-- 两条线段交叉：报告这一输入对的结果，交换顺序，检查新出现的外侧邻接。
+- A segment starts: insert it in the correct position and check its neighbors above and below.
+- A segment ends: remove it and check the two segments it used to separate.
+- Two segments cross: report this input pair's result, exchange their order, and check the new outer adjacencies.
 
-每次检查都要确认交点确实属于两条线段，并且严格在当前扫描位置右侧；满足条件才登记。同一个真实未来交点只留一份，即使对应线段暂时不相邻也继续保留，到达时再报告。
+Every check must confirm that the intersection belongs to both segments and lies strictly to the right of the current sweep position. Only then is it registered. Keep just one copy of each real future intersection, even if its segments temporarily stop being neighbors, and report it when reached.
 
-现在可以遮住记录表，试着回答：为什么 $P$ 比 $Q$ 先发现，却比 $Q$ 后报告？为什么移去 $B$ 和交换 $A,D$ 都能带来新邻居？能解释这两件事，就抓住了本篇的扫描过程。
+Now cover the table and try answering: why was $P$ discovered before $Q$ but reported after it? Why do removing $B$ and exchanging $A,D$ both create new neighbors? If you can explain these two points, you have understood this part's sweep process.
 
-不过，跟完一个案例还不能证明任何允许的输入都不会漏。剩下的关键是：原本隔得很远的一对，是否一定在交叉前成为邻居，而且来得及接受检查？下篇[《为什么不会漏掉交点》](./why-neighbors-proof.mdx)从高度差开始，一步步证明这件事。
+Following one example does not yet prove that no allowed input can be missed. The remaining question is whether a pair that begins far apart must become neighbors before crossing, early enough to be checked. [Part 2: Why No Intersection Is Missed](./why-neighbors-proof.mdx) proves this step by step, starting from height differences.

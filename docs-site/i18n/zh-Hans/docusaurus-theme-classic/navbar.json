@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "计算几何",
+    "description": "The title in the navbar"
+  },
+  "item.label.Convex hulls": {
+    "message": "凸包",
+    "description": "Navbar item with label Convex hulls"
+  },
+  "item.label.Segment intersection": {
+    "message": "线段求交",
+    "description": "Navbar item with label Segment intersection"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "item.label.CNB": {
+    "message": "CNB",
+    "description": "Navbar item with label CNB"
+  }
+}

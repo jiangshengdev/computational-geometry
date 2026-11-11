@@ -1,4 +1,4 @@
-# 中文文档站
+# 中英文双语文档站
 
 [English](README.md) | 简体中文
 
@@ -14,7 +14,7 @@ pnpm --dir docs-site install --frozen-lockfile
 pnpm --dir docs-site run start --host 127.0.0.1
 ```
 
-从仓库根目录执行。需要 Node.js 20 或以上；使用 `packageManager` 指定的 pnpm 版本。依赖安装由维护者执行。预览默认不打开浏览器，访问命令输出的地址。维护者可用 `--port <空闲端口>` 指定端口。
+从仓库根目录执行。需要 Node.js 22.18以上的22.x版本，或24及以上版本；使用 `packageManager` 指定的 pnpm 版本。依赖安装由维护者执行。预览默认不打开浏览器，访问命令输出的地址。维护者可用 `--port <空闲端口>` 指定端口。
 
 ## 构建与检查
 
@@ -31,9 +31,23 @@ pnpm --dir docs-site run serve --host 127.0.0.1
 
 功能验收使用无头浏览器检查首页进入证明页、侧栏导航、文章目录锚点、证明页直接访问与刷新，以及行内和独立公式的渲染。只检查内容和交互，不做外观快照。数学内容须另行复核，不能以渲染通过代替证明正确。
 
+## 双语同步发布
+
+英文是默认展示语言，位于 `/`；简体中文位于 `/zh-Hans/`。中文仍是创作和修订原稿，放在 `i18n/zh-Hans/docusaurus-plugin-content-docs/current/`；`docs/` 保存完整英文译文。框架的存储位置不改变内容权威关系。两种语言均覆盖首页和全部16篇内容页。
+
+每次新增或修改都必须在同一变更和发布中同步更新中文原稿及英文译文，保持数学条件、公式、实例、证明步骤、教学深度、文档ID与slug一致。语义须独立复核，构建成功不能替代翻译质量审校。导航、分类说明、图注、替代文本和其他公共文字也必须同步修改；不发布缺译回退页或已知过时译文。
+
+`IntersectionFigures` 的文字通过 `i18n/zh-Hans/code.json` 翻译，导航、页脚和分类使用框架原生插件JSON目录。用 `pnpm run write-translations --locale zh-Hans` 更新目录后，翻译新增消息并核对差异。框架通用中文文字已纳入，其中剩余的英文无障碍标签在本地补齐。
+
+旧中文根路径现在展示对应英文主题，不添加把它们转走的中文重定向。英文标题显式保留旧版生成的中文片段ID：可见标题与目录文字为英文，旧片段链接和同一标题处切换语言仍可定位。修改标题时保留这些兼容ID；新增片段链接须核验两种语言。
+
+发布构建使用 `pnpm run build` 同时生成全部语言，不带单语言 `--locale` 限制。开发时可用 `pnpm run start --locale zh-Hans --host 127.0.0.1 --port <空闲端口>` 单独预览中文。站点继续独立于计算应用与Rust API，不需要修改域名或部署配置。
+
+构建后执行 `pnpm run check:built-site`。该检查使用Playwright及操作系统分配端口的独立静态服务，结束后关闭浏览器和服务。可用 `PLAYWRIGHT_EXECUTABLE_PATH` 指定已安装的兼容Chromium，或先用 `pnpm exec playwright install chromium` 安装；检查不会自动安装。覆盖38个本地化页面、语言切换、链接与锚点、公共文字、章节导航和两种主题的图片。数学语义一致性另行审校。任务验证结束后清理临时构建产物和浏览器缓存，不将其作为源码提交。
+
 ## 内容维护
 
-正文放在 `docs/` 的 Markdown 或 MDX 文件中，按章节和专题分目录；侧栏由 `sidebars.ts` 维护。二级、三级标题生成文章目录；公式使用 `$...$` 或 `$$...$$`。
+英文译文放在 `docs/` 的 Markdown 或 MDX 文件中，按章节和专题分目录；侧栏由 `sidebars.ts` 维护。二级、三级标题生成文章目录；公式使用 `$...$` 或 `$$...$$`。
 
 ```text
 docs/
@@ -50,7 +64,9 @@ docs/
         └── intersection.mdx
 ```
 
-剪切专题由 `docs/segment-intersection/shear/index.mdx` 提供阅读入口，五篇正文按侧栏顺序组织，使用 Docusaurus 的目录卡片与前后篇导航。各文档通过 front matter 的 `slug` 固定页面地址，移动文件时同步维护侧栏文档 ID 和正文相对链接。本站没有博客、搜索或语言切换。仓库内部 ADR、代理规则与任务记录不在本站内容目录中。
+剪切专题由 `docs/segment-intersection/shear/index.mdx` 提供阅读入口，五篇正文按侧栏顺序组织，使用 Docusaurus 的目录卡片与前后篇导航。各文档通过 front matter 的 `slug` 固定页面地址，移动文件时同步维护侧栏文档 ID 和正文相对链接。本站提供原生语言切换，没有博客或搜索。仓库内部 ADR、代理规则与任务记录不在本站内容目录中。
+
+配图生成器共享几何和MathText布局。`scripts/localized_svg.ts` 同时写入两种语言的SVG标题与 `xml:lang`：七个 `IntersectionFigures` 专题的英文资源位于 `static/img/segment-intersection/`，中文资源位于 `static/img/zh-Hans/segment-intersection/`。缺失标题翻译会使生成失败，组件按当前语言选图。只有数学符号的剪切和直线方程图继续共享，正文替代文本分别翻译。使用原有绘图命令同时生成两种语言，不手工修改生成的SVG。
 
 ## 图片目录
 

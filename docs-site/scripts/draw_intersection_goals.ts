@@ -1,8 +1,9 @@
+import {writeLocalizedSvg} from './localized_svg.ts';
 /** Generate chapter-one SVGs with the existing Matplotlib MathText environment.
  * Run in docs-site: uv run --offline --with matplotlib==3.11.2 pnpm exec node scripts/draw_intersection_goals.ts
  * Geometry uses one scale for both axes; input segments are never displaced.
  */
-import {mkdirSync, writeFileSync, rmSync} from 'node:fs';
+import {rmSync} from 'node:fs';
 import {palettes, escapeXml as escape, renderMathLabels, type Palette, type SvgMathLabel} from './svg_math_labels.ts';
 
 const output = new URL('../static/img/segment-intersection/what-we-compute/', import.meta.url);
@@ -142,8 +143,7 @@ for (const [theme, p] of Object.entries(palettes)) {
 // All visible labels are mathematical; prose belongs in the article.
 const markup = renderMathLabels(labels);
 for (const {target, svg} of images) {
-  mkdirSync(new URL('./', target), {recursive: true});
-  writeFileSync(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
+  writeLocalizedSvg(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
 }
 // Remove only the superseded composite outputs after every panel was generated.
 for (const target of replacedImages) {

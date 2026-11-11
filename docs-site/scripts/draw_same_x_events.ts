@@ -1,7 +1,7 @@
+import {writeLocalizedSvg} from './localized_svg.ts';
 /** Chapter-six teaching diagrams, not execution traces.
  * MATHTEXT_PYTHON=/path/to/existing/python pnpm exec node scripts/draw_same_x_events.ts
  */
-import {mkdirSync, writeFileSync} from 'node:fs';
 import {escapeXml, palettes, renderMathLabels, type SvgMathLabel} from './svg_math_labels.ts';
 
 type Point = readonly [number, number];
@@ -92,6 +92,5 @@ for (const [theme, p] of Object.entries(palettes)) {
 }
 const markup = renderMathLabels(labels);
 for (const {target, svg} of images) {
-  mkdirSync(new URL('./', target), {recursive: true});
-  writeFileSync(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
+  writeLocalizedSvg(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
 }

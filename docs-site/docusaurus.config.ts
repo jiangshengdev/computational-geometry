@@ -6,9 +6,11 @@ import teachingColors, {teachingMath} from './teaching-colors';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const chinese = process.env.DOCUSAURUS_CURRENT_LOCALE === 'zh-Hans';
+
 const config: Config = {
-  title: '计算几何文档',
-  tagline: '理解计算几何算法背后的数学',
+  title: chinese ? '计算几何文档' : 'Computational Geometry',
+  tagline: chinese ? '理解计算几何算法背后的数学' : 'Understand the mathematics behind computational geometry algorithms',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -23,14 +25,15 @@ const config: Config = {
   trailingSlash: true,
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
+  markdown: {hooks: {onBrokenMarkdownLinks: 'throw'}},
   plugins: [teachingColors],
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // English is the default display language; Chinese remains the authoring source.
   i18n: {
-    defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    defaultLocale: 'en',
+    locales: ['en', 'zh-Hans'],
+    localeConfigs: {en: {label: 'English'}, 'zh-Hans': {label: '简体中文'}},
   },
 
   presets: [
@@ -56,19 +59,20 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: '计算几何',
+      title: 'Computational Geometry',
       items: [
+        {type: 'localeDropdown', position: 'right'},
         {
           to: '/chapters/convex-hull/',
-          activeBaseRegex: '^/(chapters/convex-hull|docs/determinant-orientation)(/|$)',
+          activeBaseRegex: '^/(?:zh-Hans/)?(chapters/convex-hull|docs/determinant-orientation)(/|$)',
           position: 'left',
-          label: '凸包',
+          label: 'Convex hulls',
         },
         {
           to: '/chapters/segment-intersection/',
-          activeBaseRegex: '^/(chapters/segment-intersection|docs/shear-coefficient)(/|$)',
+          activeBaseRegex: '^/(?:zh-Hans/)?(chapters/segment-intersection|docs/segment-intersection|docs/line-equation|docs/shear-[^/]+)(/|$)',
           position: 'left',
-          label: '线段求交',
+          label: 'Segment intersection',
         },
         {
           href: 'https://github.com/jiangshengdev/computational-geometry',
@@ -86,24 +90,24 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: '章节',
+          title: 'Chapters',
           items: [
             {
-              label: '首页',
+              label: 'Home',
               to: '/',
             },
             {
-              label: '凸包',
+              label: 'Convex hulls',
               to: '/chapters/convex-hull/',
             },
             {
-              label: '线段求交',
+              label: 'Segment intersection',
               to: '/chapters/segment-intersection/',
             },
           ],
         },
         {
-          title: '项目',
+          title: 'Project',
           items: [
             {
               label: 'GitHub',

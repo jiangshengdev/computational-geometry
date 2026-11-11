@@ -1,8 +1,8 @@
+import {writeLocalizedSvg} from './localized_svg.ts';
 /** Authored chapter-four diagrams, not algorithm execution traces.
  * Run in docs-site with the existing MathText environment:
  * MATHTEXT_PYTHON=/path/to/existing/python pnpm exec node scripts/draw_same_point_events.ts
  */
-import {mkdirSync, writeFileSync} from 'node:fs';
 import {escapeXml, palettes, renderMathLabels, type SvgMathLabel} from './svg_math_labels.ts';
 
 type Point = readonly [number, number];
@@ -104,6 +104,5 @@ for (const [theme, palette] of Object.entries(palettes)) {
 
 const markup = renderMathLabels(labels);
 for (const {target, svg} of images) {
-  mkdirSync(new URL('./', target), {recursive: true});
-  writeFileSync(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
+  writeLocalizedSvg(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
 }

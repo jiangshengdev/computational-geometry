@@ -1,7 +1,7 @@
+import {writeLocalizedSvg} from './localized_svg.ts';
 /** Chapter-seven illustrations. s_vis=1/2 is visual only, never the scan coefficient.
  * From docs-site/: MPLCONFIGDIR=/tmp/cg-matplotlib MATHTEXT_PYTHON=python3 PYTHONDONTWRITEBYTECODE=1 pnpm --config.verify-deps-before-run=false exec node scripts/draw_vertical_segments.ts
  */
-import {mkdirSync, writeFileSync} from 'node:fs';
 import {escapeXml, palettes, renderMathLabels, type SvgMathLabel} from './svg_math_labels.ts';
 
 type Point = readonly [number, number];
@@ -85,6 +85,5 @@ for (const [theme, palette] of Object.entries(palettes)) {
 }
 const markup = renderMathLabels(labels);
 for (const {target, svg} of images) {
-  mkdirSync(new URL('./', target), {recursive: true});
-  writeFileSync(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
+  writeLocalizedSvg(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
 }

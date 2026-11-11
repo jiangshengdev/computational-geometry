@@ -1,8 +1,8 @@
+import {writeLocalizedSvg} from './localized_svg.ts';
 /** Generate fixed-size chapter-two panels. Run with pnpm exec node and the
  * maintainer-provisioned MATHTEXT_PYTHON, as for draw_intersection_goals.ts.
  * These are authored teaching states, not algorithm execution traces.
  */
-import {mkdirSync, writeFileSync} from 'node:fs';
 import {palettes, escapeXml, renderMathLabels, type SvgMathLabel} from './svg_math_labels.ts';
 
 type Point = readonly [number, number];
@@ -77,6 +77,5 @@ for (const [theme, p] of Object.entries(palettes)) {
 }
 const markup = renderMathLabels(labels);
 for (const {target, svg} of images) {
-  mkdirSync(new URL('./', target), {recursive: true});
-  writeFileSync(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
+  writeLocalizedSvg(target, svg.replace(/<!--label-(\d+)-->/g, (_, index) => markup[Number(index)]));
 }
