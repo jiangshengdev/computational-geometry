@@ -1,0 +1,86 @@
+{
+  "VS29": [
+    {
+      "text": "检查蓝色与橙色这对邻居。",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "令它们的新高度相等，",
+      "startMs": 2399,
+      "endMs": 4039,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "得到新横坐标除以系数等于一。",
+      "startMs": 4348,
+      "endMs": 6908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两边乘以系数，候选点的新横坐标等于系数，",
+      "startMs": 7629,
+      "endMs": 11618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "高度为一。",
+      "startMs": 11908,
+      "endMs": 12868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS32": [
+    {
+      "text": "到达低处交点时，蓝色与橙色的高度都是一。",
+      "startMs": 70,
+      "endMs": 3837,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色高度是二，不经过当前点，",
+      "startMs": 4319,
+      "endMs": 7188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不参加这次报告。",
+      "startMs": 7488,
+      "endMs": 8648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "首先记录蓝色与橙色这一对，",
+      "startMs": 9079,
+      "endMs": 11119,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "对应 P′这个位置。",
+      "startMs": 11428,
+      "endMs": 13028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ]
+}

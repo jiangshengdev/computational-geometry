@@ -1,0 +1,451 @@
+{
+  "version": "wording-repair-1",
+  "status": "candidate-not-adopted",
+  "shots": [
+    {
+      "id": "VS29",
+      "caption": "检查蓝色与橙色这对邻居。令它们的新高度相等，得到新横坐标除以系数等于一。两边乘以系数，候选点的新横坐标等于系数，高度为一。"
+    },
+    {
+      "id": "VS32",
+      "caption": "到达低处交点时，蓝色与橙色的高度都是一。紫色高度是二，不经过当前点，不参加这次报告。首先记录蓝色与橙色这一对，对应 P′这个位置。"
+    }
+  ],
+  "narration": {
+    "VS29": "检查蓝色与橙色这对邻居。令它们的新高度相等。得到新横坐标除以系数等于一。两边乘以系数。候选点的新横坐标等于系数。高度为一。",
+    "VS32": "到达低处交点时。蓝色与橙色的高度都是一。紫色高度是二。不经过当前点。不参加这次报告。首先记录蓝色与橙色这一对。对应 P 撇这个位置。"
+  },
+  "speech": {
+    "VS29": [
+      "检",
+      {
+        "text": "查",
+        "pinyin": "cha2"
+      },
+      {
+        "text": "蓝",
+        "pinyin": "lan2"
+      },
+      {
+        "text": "色",
+        "pinyin": "se4"
+      },
+      {
+        "text": "与",
+        "pinyin": "yu3"
+      },
+      {
+        "text": "橙",
+        "pinyin": "cheng2"
+      },
+      {
+        "text": "色",
+        "pinyin": "se4"
+      },
+      {
+        "text": "这",
+        "pinyin": "zhe4"
+      },
+      "对邻",
+      {
+        "text": "居",
+        "pinyin": "ju1"
+      },
+      "。",
+      {
+        "breakMs": 400
+      },
+      {
+        "text": "令",
+        "pinyin": "ling4"
+      },
+      {
+        "text": "它",
+        "pinyin": "ta1"
+      },
+      {
+        "text": "们",
+        "pinyin": "men5"
+      },
+      {
+        "text": "的",
+        "pinyin": "de5"
+      },
+      "新",
+      {
+        "text": "高",
+        "pinyin": "gao1"
+      },
+      {
+        "text": "度",
+        "pinyin": "du4"
+      },
+      {
+        "text": "相",
+        "pinyin": "xiang1"
+      },
+      "等。",
+      {
+        "breakMs": 200
+      },
+      {
+        "text": "得",
+        "pinyin": "de2"
+      },
+      "到新",
+      {
+        "text": "横",
+        "pinyin": "heng2"
+      },
+      "坐标",
+      {
+        "text": "除",
+        "pinyin": "chu2"
+      },
+      {
+        "text": "以",
+        "pinyin": "yi3"
+      },
+      {
+        "text": "系",
+        "pinyin": "xi4"
+      },
+      {
+        "text": "数",
+        "pinyin": "shu4"
+      },
+      "等",
+      {
+        "text": "于",
+        "pinyin": "yu2"
+      },
+      {
+        "text": "一",
+        "pinyin": "yi1"
+      },
+      "。",
+      {
+        "breakMs": 400
+      },
+      "两",
+      {
+        "text": "边",
+        "pinyin": "bian1"
+      },
+      {
+        "text": "乘",
+        "pinyin": "cheng2"
+      },
+      {
+        "text": "以",
+        "pinyin": "yi3"
+      },
+      {
+        "text": "系",
+        "pinyin": "xi4"
+      },
+      {
+        "text": "数",
+        "pinyin": "shu4"
+      },
+      "。",
+      {
+        "breakMs": 200
+      },
+      "候选点",
+      {
+        "text": "的",
+        "pinyin": "de5"
+      },
+      "新",
+      {
+        "text": "横",
+        "pinyin": "heng2"
+      },
+      "坐标等",
+      {
+        "text": "于",
+        "pinyin": "yu2"
+      },
+      {
+        "text": "系",
+        "pinyin": "xi4"
+      },
+      {
+        "text": "数",
+        "pinyin": "shu4"
+      },
+      "。",
+      {
+        "breakMs": 200
+      },
+      {
+        "text": "高",
+        "pinyin": "gao1"
+      },
+      {
+        "text": "度",
+        "pinyin": "du4"
+      },
+      {
+        "text": "为",
+        "pinyin": "wei2"
+      },
+      {
+        "text": "一",
+        "pinyin": "yi1"
+      },
+      "。",
+      {
+        "breakMs": 400
+      }
+    ],
+    "VS32": [
+      "到",
+      {
+        "text": "达",
+        "pinyin": "da2"
+      },
+      "低",
+      {
+        "text": "处",
+        "pinyin": "chu4"
+      },
+      "交点时。",
+      {
+        "breakMs": 200
+      },
+      {
+        "text": "蓝",
+        "pinyin": "lan2"
+      },
+      {
+        "text": "色",
+        "pinyin": "se4"
+      },
+      {
+        "text": "与",
+        "pinyin": "yu3"
+      },
+      {
+        "text": "橙",
+        "pinyin": "cheng2"
+      },
+      {
+        "text": "色",
+        "pinyin": "se4"
+      },
+      {
+        "text": "的",
+        "pinyin": "de5"
+      },
+      {
+        "text": "高",
+        "pinyin": "gao1"
+      },
+      {
+        "text": "度",
+        "pinyin": "du4"
+      },
+      {
+        "text": "都",
+        "pinyin": "dou1"
+      },
+      {
+        "text": "是",
+        "pinyin": "shi4"
+      },
+      {
+        "text": "一",
+        "pinyin": "yi1"
+      },
+      "。",
+      {
+        "breakMs": 400
+      },
+      "紫",
+      {
+        "text": "色",
+        "pinyin": "se4"
+      },
+      {
+        "text": "高",
+        "pinyin": "gao1"
+      },
+      {
+        "text": "度",
+        "pinyin": "du4"
+      },
+      {
+        "text": "是",
+        "pinyin": "shi4"
+      },
+      "二。",
+      {
+        "breakMs": 200
+      },
+      {
+        "text": "不",
+        "pinyin": "bu4"
+      },
+      {
+        "text": "经",
+        "pinyin": "jing1"
+      },
+      {
+        "text": "过",
+        "pinyin": "guo4"
+      },
+      {
+        "text": "当",
+        "pinyin": "dang1"
+      },
+      {
+        "text": "前",
+        "pinyin": "qian2"
+      },
+      "点。",
+      {
+        "breakMs": 200
+      },
+      {
+        "text": "不",
+        "pinyin": "bu4"
+      },
+      {
+        "text": "参",
+        "pinyin": "can1"
+      },
+      "加",
+      {
+        "text": "这",
+        "pinyin": "zhe4"
+      },
+      {
+        "text": "次",
+        "pinyin": "ci4"
+      },
+      "报",
+      {
+        "text": "告",
+        "pinyin": "gao4"
+      },
+      "。",
+      {
+        "breakMs": 400
+      },
+      "首先记录",
+      {
+        "text": "蓝",
+        "pinyin": "lan2"
+      },
+      {
+        "text": "色",
+        "pinyin": "se4"
+      },
+      {
+        "text": "与",
+        "pinyin": "yu3"
+      },
+      {
+        "text": "橙",
+        "pinyin": "cheng2"
+      },
+      {
+        "text": "色",
+        "pinyin": "se4"
+      },
+      {
+        "text": "这",
+        "pinyin": "zhe4"
+      },
+      {
+        "text": "一",
+        "pinyin": "yi2"
+      },
+      {
+        "text": "对",
+        "pinyin": "dui4"
+      },
+      "。",
+      {
+        "breakMs": 200
+      },
+      "对",
+      {
+        "text": "应",
+        "pinyin": "ying4"
+      },
+      " P ",
+      {
+        "text": "撇",
+        "pinyin": "pie3"
+      },
+      {
+        "text": "这",
+        "pinyin": "zhe4"
+      },
+      {
+        "text": "个",
+        "pinyin": "ge5"
+      },
+      {
+        "text": "位",
+        "pinyin": "wei4"
+      },
+      "置。",
+      {
+        "breakMs": 400
+      }
+    ]
+  },
+  "sentences": {
+    "VS29": [
+      {
+        "caption": "检查蓝色与橙色这对邻居。",
+        "speech": [
+          "检查蓝色与橙色这对邻居。"
+        ]
+      },
+      {
+        "caption": "令它们的新高度相等，得到新横坐标除以系数等于一。",
+        "speech": [
+          "令它们的新高度相等。",
+          "得到新横坐标除以系数等于一。"
+        ]
+      },
+      {
+        "caption": "两边乘以系数，候选点的新横坐标等于系数，高度为一。",
+        "speech": [
+          "两边乘以系数。",
+          "候选点的新横坐标等于系数。",
+          "高度为一。"
+        ]
+      }
+    ],
+    "VS32": [
+      {
+        "caption": "到达低处交点时，蓝色与橙色的高度都是一。",
+        "speech": [
+          "到达低处交点时。",
+          "蓝色与橙色的高度都是一。"
+        ]
+      },
+      {
+        "caption": "紫色高度是二，不经过当前点，不参加这次报告。",
+        "speech": [
+          "紫色高度是二。",
+          "不经过当前点。",
+          "不参加这次报告。"
+        ]
+      },
+      {
+        "caption": "首先记录蓝色与橙色这一对，对应 P′这个位置。",
+        "speech": [
+          "首先记录蓝色与橙色这一对。",
+          "对应 P 撇这个位置。"
+        ]
+      }
+    ]
+  }
+}

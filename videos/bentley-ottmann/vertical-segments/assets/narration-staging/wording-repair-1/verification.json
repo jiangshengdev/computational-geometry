@@ -1,0 +1,41 @@
+{
+  "version": "wording-repair-1",
+  "sourceSha256": "961dc1078a72230d0ab6cb3a08027f7054941b4236dfcd136de3f687ed44526a",
+  "clips": [
+    {
+      "id": "VS29",
+      "audioSha256": "5a27e6d63cc4efdfae67de919b506c31a27f5e27f55205a72e816eefc3c2a063",
+      "bytes": 1245164,
+      "duration": 12.97,
+      "fingerprint": "2120fd14d69a272e0092d2eab48644c12be95c3bbe1b84e127da782b2b81508a",
+      "zeroDurationLexicalEvents": 0
+    },
+    {
+      "id": "VS32",
+      "audioSha256": "b289bbea67de663ecb82d9cd77b99eee730923324c9d9296bf7b444c77a0098d",
+      "bytes": 1256684,
+      "duration": 13.09,
+      "fingerprint": "c6895de65fe6eeb2dce5977ad84207f7d0875d458803d40ef754d7ddc4c8e255",
+      "zeroDurationLexicalEvents": 0
+    }
+  ],
+  "counts": {
+    "Omission": 0,
+    "Insertion": 0,
+    "Mispronunciation": 0
+  },
+  "reviewedRecognition": {
+    "Omission": 0,
+    "Insertion": 0
+  },
+  "unresolved": {
+    "Omission": 0,
+    "Insertion": 0
+  },
+  "actualListeningPerformed": false,
+  "pcm": "48000Hz/16bit/mono",
+  "fullDecode": true,
+  "candidateCaptions": "candidate-captions.json",
+  "adopted": false,
+  "visualSynchronization": "not-performed; production remains provisional-visual-inspection"
+}
