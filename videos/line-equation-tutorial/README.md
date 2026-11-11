@@ -37,7 +37,7 @@ pnpm --config.verify-deps-before-run=false exec node scripts/render.ts still Lin
 - `src/Intro.tsx`、`src/intro-storyboard.ts`：本工程独立维护的开场画面与展示文案。字幕和时间线与其他章节共用同一份数据。
 - `scripts/azure-speech.ts`：本集 Azure 配置与公共请求函数入口。
 
-配音依赖、默认音色与失败续跑见公共[配音环境与续跑](../../docs/agents/videos/operations.md#配音环境与续跑)。本工程可选的 `AZURE_SPEECH_VOICE` 必须与选定音色一致；生成入口为：
+配音依赖、默认音色与失败续跑见公共[配音环境与续跑](../../docs/agents/videos/operations.md#配音环境与续跑)。本工程可选的 `SPEECH_VOICE` 必须与选定音色一致；生成入口为：
 
 ```sh
 pnpm --config.verify-deps-before-run=false exec node scripts/narration.ts

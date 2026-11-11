@@ -211,8 +211,8 @@ export function createAlignmentTools(
       "pcm_s16le",
       wav,
     ]);
-    const key = process.env.AZURE_SPEECH_KEY;
-    const endpoint = process.env.AZURE_SPEECH_ENDPOINT;
+    const key = process.env.SPEECH_KEY;
+    const endpoint = process.env.SPEECH_ENDPOINT;
     if (!key || !endpoint)
       throw Error("Azure Speech key and endpoint are required");
     const url = new URL(endpoint);

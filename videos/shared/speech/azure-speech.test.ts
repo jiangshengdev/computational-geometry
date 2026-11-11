@@ -32,7 +32,11 @@ test("successful audio without word events can be retained exclusively without w
         import { createSpeechTools } from ${JSON.stringify(new URL("./azure-speech.ts", import.meta.url).href)};
         let calls = 0;
         const sdk = {
-          SpeechConfig: { fromEndpoint: () => ({ setProperty() {} }) },
+          SpeechConfig: { fromEndpoint: (url, key) => {
+            assert.equal(key, 'fake-test-key');
+            assert.equal(url.href, 'wss://test.tts.speech.microsoft.com/cognitiveservices/websocket/v1');
+            return { setProperty() {} };
+          } },
           SpeechSynthesisOutputFormat: { Riff48Khz16BitMonoPcm: 1 },
           PropertyId: { SpeechServiceResponse_RequestWordBoundary: 1 },
           ResultReason: { SynthesizingAudioCompleted: 1 },
@@ -63,10 +67,12 @@ test("successful audio without word events can be retained exclusively without w
     ],
     {
       env: {
-        ...process.env,
-        AZURE_SPEECH_KEY: "fake-test-key",
-        AZURE_SPEECH_ENDPOINT: "https://test.api.cognitive.microsoft.com",
-        AZURE_SPEECH_VOICE: "test",
+        PATH: process.env.PATH,
+        HOME: process.env.HOME,
+        TMPDIR: process.env.TMPDIR,
+        SPEECH_KEY: "fake-test-key",
+        SPEECH_ENDPOINT: "https://test.api.cognitive.microsoft.com",
+        SPEECH_VOICE: "test",
       },
       stdio: "pipe",
     },

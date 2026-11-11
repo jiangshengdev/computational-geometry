@@ -153,15 +153,15 @@ export function createSpeechTools<Fingerprint extends boolean>(
     { requireWordBoundaries = true, exclusive = false } = {},
   ) {
     const { ssml } = buildSpeechDocument(input);
-    const key = process.env.AZURE_SPEECH_KEY;
-    const endpoint = process.env.AZURE_SPEECH_ENDPOINT;
+    const key = process.env.SPEECH_KEY;
+    const endpoint = process.env.SPEECH_ENDPOINT;
     if (!key || !endpoint)
       throw new Error("Azure Speech key and endpoint are required");
     if (
-      process.env.AZURE_SPEECH_VOICE &&
-      process.env.AZURE_SPEECH_VOICE !== voice
+      process.env.SPEECH_VOICE &&
+      process.env.SPEECH_VOICE !== voice
     )
-      throw new Error(`AZURE_SPEECH_VOICE must be ${voice}`);
+      throw new Error(`SPEECH_VOICE must be ${voice}`);
     const url = new URL(endpoint);
     if (url.protocol !== "https:")
       throw new Error("Azure Speech requires HTTPS");

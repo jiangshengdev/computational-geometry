@@ -46,9 +46,8 @@ if (!process.argv.includes(`--execute-approved-plan=${approvedHash}`))
     }),
   );
 else {
-  const key = process.env.SPEECH_KEY ?? process.env.AZURE_SPEECH_KEY;
-  const endpoint =
-    process.env.SPEECH_ENDPOINT ?? process.env.AZURE_SPEECH_ENDPOINT;
+  const key = process.env.SPEECH_KEY;
+  const endpoint = process.env.SPEECH_ENDPOINT;
   if (
     !key ||
     !endpoint ||

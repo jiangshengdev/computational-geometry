@@ -4,9 +4,6 @@ import { createAlignmentTools } from "../../../shared/speech/azure-alignment.ts"
 import { checkSentencePlan } from "./sentence-pauses.ts";
 
 export const voice = "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural";
-// Map the managed runtime bindings for this process only, without persisting keys.
-process.env.AZURE_SPEECH_KEY ??= process.env.SPEECH_KEY;
-process.env.AZURE_SPEECH_ENDPOINT ??= process.env.SPEECH_ENDPOINT;
 const configureSpeechConfig = (config: sdk.SpeechConfig) => {
   const proxy = process.env.HTTPS_PROXY ?? process.env.HTTP_PROXY;
   if (proxy) {

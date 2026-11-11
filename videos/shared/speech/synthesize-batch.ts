@@ -23,8 +23,8 @@ import { acquireSynthesisWindow } from "./request-window.ts";
 function failureDiagnostic(error: unknown) {
   let message = error instanceof Error ? error.message : String(error);
   for (const value of [
-    process.env.AZURE_SPEECH_KEY,
-    process.env.AZURE_SPEECH_ENDPOINT,
+    process.env.SPEECH_KEY,
+    process.env.SPEECH_ENDPOINT,
     process.env.HOME,
   ]) {
     if (value) {
@@ -207,12 +207,12 @@ export async function synthesizeBatch(
     return;
   }
   assert(
-    process.env.AZURE_SPEECH_KEY && process.env.AZURE_SPEECH_ENDPOINT,
+    process.env.SPEECH_KEY && process.env.SPEECH_ENDPOINT,
     "Azure credentials missing",
   );
-  assert(new URL(process.env.AZURE_SPEECH_ENDPOINT).protocol === "https:");
+  assert(new URL(process.env.SPEECH_ENDPOINT).protocol === "https:");
   assert(
-    !process.env.AZURE_SPEECH_VOICE || process.env.AZURE_SPEECH_VOICE === voice,
+    !process.env.SPEECH_VOICE || process.env.SPEECH_VOICE === voice,
     "Voice override differs",
   );
   if (!continuing) {
@@ -300,7 +300,7 @@ export async function synthesizeBatch(
         );
       }
     };
-    const window = acquireSynthesisWindow(process.env.AZURE_SPEECH_ENDPOINT!);
+    const window = acquireSynthesisWindow(process.env.SPEECH_ENDPOINT!);
     const active = new Set<Promise<void>>();
     let failure: unknown;
     try {

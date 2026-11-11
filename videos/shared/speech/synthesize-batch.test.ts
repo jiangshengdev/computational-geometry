@@ -12,10 +12,12 @@ for (const concurrency of [undefined, 2, 4]) {
     const result = spawnSync(process.execPath, ["--input-type=module", "-"], {
       encoding: "utf8",
       env: {
-        ...process.env,
-        AZURE_SPEECH_KEY: "test-only",
-        AZURE_SPEECH_ENDPOINT: `https://${root.split("/").at(-1)}.invalid`,
-        AZURE_SPEECH_VOICE: "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+        PATH: process.env.PATH,
+        HOME: process.env.HOME,
+        TMPDIR: process.env.TMPDIR,
+        SPEECH_KEY: "test-only",
+        SPEECH_ENDPOINT: `https://${root.split("/").at(-1)}.invalid`,
+        SPEECH_VOICE: "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
       },
       input: `
         import assert from 'node:assert/strict';
@@ -33,7 +35,7 @@ for (const concurrency of [undefined, 2, 4]) {
           SpeechSynthesizer:class {
             speakSsmlAsync(ssml, resolve, reject){
               const index=started++; active++; maximum=Math.max(maximum,active);
-              setTimeout(()=>{active--; reject(Error('provider rejection key='+process.env.AZURE_SPEECH_KEY+' endpoint='+process.env.AZURE_SPEECH_ENDPOINT+' path='+process.env.HOME+'/private.wav'));},index===0?1:40);
+              setTimeout(()=>{active--; reject(Error('provider rejection key='+process.env.SPEECH_KEY+' endpoint='+process.env.SPEECH_ENDPOINT+' path='+process.env.HOME+'/private.wav'));},index===0?1:40);
             }
             close(){closed++;assert(existsSync(root+'/batch/synthesis.lock'));}
           }

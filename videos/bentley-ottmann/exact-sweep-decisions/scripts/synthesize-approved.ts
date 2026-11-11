@@ -34,9 +34,8 @@ if (!process.argv.includes(`--execute-approved-plan=${approvedPlanSha256}`)) {
   );
 } else {
   // Read credentials only inside the explicitly approved execution path.
-  const key = process.env.SPEECH_KEY ?? process.env.AZURE_SPEECH_KEY;
-  const endpoint =
-    process.env.SPEECH_ENDPOINT ?? process.env.AZURE_SPEECH_ENDPOINT;
+  const key = process.env.SPEECH_KEY;
+  const endpoint = process.env.SPEECH_ENDPOINT;
   if (!key || !endpoint)
     throw Error("Configured Speech credential or endpoint unavailable");
   const url = new URL(endpoint);

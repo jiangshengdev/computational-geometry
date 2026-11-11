@@ -22,7 +22,7 @@
 
 父规格 #363 的无声稿阶段 #364 已交付。当前补齐 `src/sentence-plan.json`，按原字幕的完整语义句映射冻结口播短句：171 个原句末请求 400ms，179 个内部短句末请求 200ms。`speech-text.json` 仅新增独立停顿对象，冻结正文和已有读音对象不变；350 个边界由共享句界校验检查。请求值不是实际静音长度。
 
-`video:plan-narration` 和 `video:synthesize` 复用共享批次工具及第六章的薄入口，固定既有音色与 48 kHz / 16 bit / 单声道 PCM WAV，禁止调速和自动重试。当前环境缺少 `AZURE_SPEECH_KEY`、`AZURE_SPEECH_ENDPOINT`，正式合成尚未执行；不将离线计划或 dry-run 视为音频验收。凭据只能由运行环境提供，不写入工程。
+`video:plan-narration` 和 `video:synthesize` 复用共享批次工具及第六章的薄入口，固定既有音色与 48 kHz / 16 bit / 单声道 PCM WAV，禁止调速和自动重试。代码直接使用运行环境的 `SPEECH_KEY`、`SPEECH_ENDPOINT`，可选的 `SPEECH_VOICE` 必须与固定音色一致，不进行变量别名映射。正式合成尚未执行，也未获本轮服务调用授权；不将离线计划或 dry-run 视为音频验收。凭据只能由运行环境提供，不写入工程。
 
 在本目录可离线重建并检查计划（以下命令均不请求服务）：
 
