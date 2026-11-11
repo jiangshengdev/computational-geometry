@@ -52,8 +52,8 @@ https://cgd.jiangshengdev.com/docs/segment-intersection/same-point-events/
 
 ## 封面生成输入
 
-- [16:9 完整提示词](covers/bilibili-cover-16x9-prompt.txt)
-- [4:3 完整提示词](covers/bilibili-cover-4x3-prompt.txt)
+- [16:9 完整提示词](covers/bilibili-cover-16x9.png.prompt.txt)
+- [4:3 完整提示词](covers/bilibili-cover-4x3.png.prompt.txt)
 
 ## 发布资源
 
