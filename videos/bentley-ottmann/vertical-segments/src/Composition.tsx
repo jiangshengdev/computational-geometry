@@ -1,23 +1,13 @@
-import { Sequence, useCurrentFrame } from "remotion";
-import { rows, visualAt, type TimelineRow } from "./timeline";
+import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { createNarratedLesson } from "../../../shared/ui/NarratedLesson";
+import { rows, visualAt, audio, audioLeadFrames } from "./timeline";
 import { TeachingPage } from "./TeachingPage";
-function Shot({ row }: { row: TimelineRow }) {
-  const frame = useCurrentFrame();
-  return <TeachingPage row={row} state={visualAt(row, frame)} />;
-}
-export function MyComposition() {
-  return (
-    <>
-      {rows.map((row) => (
-        <Sequence
-          key={row.id}
-          name={row.id}
-          from={row.from}
-          durationInFrames={row.durationInFrames}
-        >
-          <Shot row={row} />
-        </Sequence>
-      ))}
-    </>
-  );
-}
+
+export const { LessonVideo: MyComposition } = createNarratedLesson({
+  runtime: { Audio, Sequence, staticFile, useCurrentFrame },
+  timelineFor: () => rows,
+  visualAt,
+  audio,
+  audioLeadFrames,
+  renderPage: (row, state) => <TeachingPage row={row} state={state} />,
+});

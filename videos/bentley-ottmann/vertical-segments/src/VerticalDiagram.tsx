@@ -146,8 +146,10 @@ export function VerticalDiagram({
     n >= 29 && n <= 31 ? "P′" : n >= 35 && n <= 38 ? "Q′" : null;
   const pendingP = n === 31 && state.motion === 1;
   const pendingQ = n === 38 && state.motion === 1;
-  const reports =
-    n >= 39 ? ["(V,A)：P′", "(V,B)：Q′"] : n >= 32 ? ["(V,A)：P′"] : [];
+  const reports = [
+    ...(n > 32 || (n === 32 && state.currentReport) ? ["(V,A)：P′"] : []),
+    ...(n > 39 || (n === 39 && state.currentReport) ? ["(V,B)：Q′"] : []),
+  ];
   const event = actualEvents[Math.max(0, eventIndex(n))];
   const eventX =
     Number(event.point[0] - event.point[1]) / Number(N) +
@@ -466,15 +468,15 @@ export function VerticalDiagram({
                 <circle cx={p[0]} cy={p[1]} r={5} fill={objectColors.W} />
                 <circle cx={q[0]} cy={q[1]} r={5} fill={objectColors.W} />
                 <circle
-                  cx={state.captionIndex === 0 ? p[0] : q[0]}
-                  cy={state.captionIndex === 0 ? p[1] : q[1]}
+                  cx={state.boundaryPointIndex === 0 ? p[0] : q[0]}
+                  cy={state.boundaryPointIndex === 0 ? p[1] : q[1]}
                   r={18}
                   fill="none"
                   stroke={colors.amber}
                   strokeWidth={4}
                   opacity={
                     state.active
-                      ? Math.sin(Math.PI * state.captionProgress) ** 2
+                      ? Math.sin(Math.PI * state.boundaryProgress) ** 2
                       : 0
                   }
                 />
@@ -553,21 +555,18 @@ export function VerticalDiagram({
             <PointLabel x={640} y={120}>
               {n >= 63 ? "已保留结果" : "同点结果"}
             </PointLabel>
-            {n >= 60 && (
+            {(n > 60 || (n === 60 && state.firstPointPair)) && (
               <PointLabel x={640} y={200}>
                 (V,Z₁)
               </PointLabel>
             )}
-            {n >= 60 &&
-              (n > 60 ||
-                row.captions
-                  .slice(0, state.captionIndex + 1)
-                  .some((c) => c.text.includes("再与第二份"))) && (
+            {(n > 60 || (n === 60 && state.firstPointPair)) &&
+              (n > 60 || state.secondPointPair) && (
                 <PointLabel x={640} y={260}>
                   (V,Z₂)
                 </PointLabel>
               )}
-            {n >= 61 && (
+            {(n > 61 || (n === 61 && state.pointIdentityPair)) && (
               <PointLabel x={640} y={320}>
                 (Z₁,Z₂)
               </PointLabel>

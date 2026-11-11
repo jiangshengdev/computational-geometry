@@ -22,19 +22,31 @@ export const LayoutCheck = createShotLayoutCheck({
   audioLeadFrames,
   SceneAtFrame,
   captions: captionsFromFrames(rows, fps, audioLeadFrames),
-  extraFrames: (row) => [
-    ...row.captions.flatMap((c) => [
-      c.start - 1,
-      c.start,
-      Math.floor((c.start + c.end) / 2),
-      c.end,
-    ]),
-    ...[0.15, 0.35, 0.65, 0.85].map((p) =>
-      Math.floor(
-        motionCue(row).start + p * (motionCue(row).end - motionCue(row).start),
+  extraFrames: (row) =>
+    [
+      ...row.captions.flatMap((c) => [
+        c.start - 1,
+        c.start,
+        Math.floor((c.start + c.end) / 2),
+        c.end,
+      ]),
+      ...row.spoken.flatMap((phrase) => [
+        phrase.start - 1,
+        phrase.start,
+        Math.floor((phrase.start + phrase.end) / 2),
+        phrase.end,
+        phrase.end + 1,
+      ]),
+      motionCue(row).start - 1,
+      motionCue(row).start,
+      motionCue(row).end,
+      ...[0.15, 0.35, 0.65, 0.85].map((p) =>
+        Math.floor(
+          motionCue(row).start +
+            p * (motionCue(row).end - motionCue(row).start),
+        ),
       ),
-    ),
-  ],
+    ].filter((frame) => frame >= 0 && frame < row.durationInFrames),
   auditPage(page, _id, visibleStep) {
     const errors: string[] = [];
     checkTeachingPage(page, visibleStep, errors);
@@ -49,7 +61,7 @@ export const LayoutCheck = createShotLayoutCheck({
     }
     if (page.querySelector(".katex-error")) errors.push("Invalid math");
     if (page.querySelector("audio,video"))
-      errors.push("Silent draft must not play media");
+      errors.push("Layout sampling must not play media");
     return errors;
   },
 });

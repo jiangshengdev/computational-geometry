@@ -1,87 +1,50 @@
 # 第七章：用剪切处理竖直线段
 
-本集承接 [规格 #363](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/363)，当前制作范围为 [#364：完整无声教学稿与画面](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/364)。工程由远端原生 Remotion 初始化提交 `732e35a` 建立，配置在 `9381d5a` 对齐第六章；本次在该工程中制作，不复制相邻工程或依赖目录。
+本集承接 [规格 #363](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/363)，无声教学稿阶段为 [#364](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/364)，当前正式配音与同步工作为 [#365](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/365)。最终成片验收属于 [#366](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/366)，依赖用户导出。助手不渲染或导出视频。
 
-## 当前内容
+## 当前工程
 
-五节、22 页、64 个稳定步骤 `VS01`–`VS64`。字幕原稿及来源、承接与新增联系在 `src/storyboard.ts`；独立自然口播在 `src/narration-text.json`。`src/speech-text.json` 仅承载局部读音标注，不是正式音频。当前提供离线请求计划及受计划指纹约束的配音入口；已生成64段原始音频，尚未通过整批采用门禁，不提供视频导出入口。
+五节、22页、64个稳定步骤 VS01–VS64，Composition 为 `VerticalSegments`，1920×1080逻辑画布、60fps、输出比例2。独立分镜在 `src/storyboard.ts`，口播在 `src/narration-text.json`，标音在 `src/speech-text.json`，350个句界由 `src/sentence-plan.json` 约束。原句末请求400ms，内部短句末请求200ms；这些是请求值，不冒充实测静音长度。
 
-| 节                       | 步骤      | 内容                                                       |
-| ------------------------ | --------- | ---------------------------------------------------------- |
-| 第一节：竖直输入卡在哪里 | VS01–VS06 | 主案例 V、A、B 与同列两个高度的参与资格                    |
-| 第二节：统一变换输入     | VS07–VS21 | 同一系数、端点表、事件对应及三个保证的分工                 |
-| 第三节：走完主案例扫描   | VS22–VS46 | 六个端点和两个交点；P′ 后换序、新邻接、Q′ 的覆盖与严格未来 |
-| 第四节：还原完整答案     | VS47–VS56 | 两对点结果；独立 V、W 案例的完整重叠区间                   |
-| 第五节：接回点输入       | VS57–VS64 | 独立 V、Z₁、Z₂ 案例的三对结果与点输入退出                  |
-
-所有实际计算使用 `s=1/262144`。`example.ts` 用整数分子与公共分母表示实际变换坐标，供画面输入及内容检查共用；其恢复函数返回原 x 坐标的同分母分子。几何过程图明确使用放大示意系数 `s_vis=1/2`，保持横纵单位相同，不把示意的水平距离用于实际候选判断。活动顺序竖列表示关系，不是几何坐标。
-
-`timeline.ts` 明确标记 `provisional-visual-inspection`，按字幕阅读窗口安排无声检查时长，每页末另留 3 秒。该版本阅读窗口合计约 16.3 分钟，只服务当前无声稿检查，不是配音实测、最终时长或音画同步结论。正式音频阶段须用原速完整音频的实测数据替换阅读窗口，重新绑定语义动作及字幕。句子内的配对、换序与登记按对应字幕短语安排，提示结束后教学对象和本页结论继续保留。
-
-## 正式配音状态（#365，尚未完成）
-
-父规格 #363 的无声稿阶段 #364 已交付。当前补齐 `src/sentence-plan.json`，按原字幕的完整语义句映射冻结口播短句：171 个原句末请求 400ms，179 个内部短句末请求 200ms。`speech-text.json` 仅新增独立停顿对象，冻结正文和已有读音对象不变；350 个边界由共享句界校验检查。请求值不是实际静音长度。
-
-`video:plan-narration` 和 `video:synthesize` 复用共享批次工具及第六章的薄入口，固定既有音色与 48 kHz / 16 bit / 单声道 PCM WAV，禁止调速和自动重试。代码直接使用运行环境的 `SPEECH_KEY`、`SPEECH_ENDPOINT`，可选的 `SPEECH_VOICE` 必须与固定音色一致，不进行变量别名映射。本轮已执行合成与评估；不将离线计划或 dry-run 视为音频验收。凭据只能由运行环境提供，不写入工程。
-
-在本目录可离线重建并检查计划（以下命令均不请求服务）：
-
-```sh
-pnpm --config.verify-deps-before-run=false run video:plan-narration --dry-run > /tmp/vertical-narration-plan.json
-plan_sha=$(sha256sum /tmp/vertical-narration-plan.json | cut -d ' ' -f 1)
-pnpm --config.verify-deps-before-run=false run video:synthesize --plan=/tmp/vertical-narration-plan.json --plan-sha256="$plan_sha" --output=/tmp/vertical-audio-not-requested --dry-run
-```
-
-两个入口均支持 `--shots=VS01,VS02`，局部计划和执行须使用相同的显式片段集合。真实请求前须核实阶段授权、服务配置及当前免费层限制；请求计划须重新核对并绑定哈希。共享工具保留逐段状态、音频哈希和请求指纹，结果未知时不得直接重放。当前素材及评估证据保存在 `assets/narration-staging/{initial,recovery}`，尚未采用。`video:assess`、`video:adopt-measured-audio`、`video:check-audio` 复用共享流程；只有整批通过后才可写入正式素材和实测时间，不以占位结果替代。
-
-本轮64段原始音频均为48 kHz、16 bit、单声道PCM WAV，完整解码、哈希及当前请求指纹核对通过，原始音频总长868.85秒（不是整集时间线时长）。首批请求中的5段收到明确HTTP 429；原始记录保持不变，窗口过去后以共享速率账本和降低并发进行一次恢复，5段均成功。`http429-recovery.json` 绑定原清单与恢复理由。没有升级资源或改变音色、语速。
-
-已为64段发起65次评估：64段取得响应，其中62段可建立实测对齐。VS33首次请求未取得可确认响应，原 `request-failed-or-uncertain` 记录保持不变；旧入口吞掉异常，无法断言是超时或中断。核查实时 SDK 没有适用的已知作业查询/幂等恢复入口后，对同一17.63秒原音频单独进行一次新评估，返回成功且三类标记均为0；两次请求可能均计入用量。`vs33-assessment-recovery.json` 绑定原记录哈希与第二次记录，第二次结果和时间在 `assessment-vs33-second`，没有自动循环重试。以下为程序标记，未经实际听辨确认，不能当作已确认错读：
-
-|片段|阻断证据|后续边界|
+|节|步骤|内容|
 |---|---|---|
-|VS29|9个Omission、2个Insertion；主要涉及“得到新 x 坐标除以系数等于一”和“得到候选x 坐标为一倍系数”|先核对完整音频与原文，不删除应读内容或清除标记|
-|VS32|“先记录蓝色与橙色这一对”中的“先”标为Omission|核对整句，区分实际漏读和识别误报|
-|VS33|第一次未知原因不可恢复；第二次评估成功，0个漏读/插入/误读标记|保留第一次未知记录与第二次独立记录；当前对齐阻碍已解除，程序结果不等于听辨通过|
+|第一节：竖直输入卡在哪里|VS01–VS06|主案例V、A、B与同列两个高度的参与资格|
+|第二节：统一变换输入|VS07–VS21|同一系数、端点表、事件对应及三个保证的分工|
+|第三节：走完主案例扫描|VS22–VS46|六个端点和两个交点；P′后换序、新邻接、Q′的覆盖与严格未来|
+|第四节：还原完整答案|VS47–VS56|两对点结果；独立V、W案例的完整重叠区间|
+|第五节：接回点输入|VS57–VS64|独立V、Z₁、Z₂案例的三对结果与点输入退出|
 
-`pnpm --config.verify-deps-before-run=false run video:check-staged-audio` 离线检查64段PCM、解码、指纹与逐段评估绑定，并因VS29、VS32这2项阻断以非零状态退出。`video:adopt-measured-audio` 的整批门禁仍保留；没有生成正式 `public/narration`、`audio-timing.json` 或 `captions.json`。已取得的62段实测数据保留在候选 `.aligned.json`，供后续问题核销后复用；实际整句听辨尚未完成。
+所有实际计算使用 `s=1/262144`；`example.ts` 用整数分子与公共分母表达实际变换坐标。几何过程图明确使用放大示意系数 `s_vis=1/2`，横纵单位相同，不能用示意水平距离验算实际候选。活动顺序竖列表示关系。保留主案例8事件、两对点结果、VW完整区间和三对点输入身份，不重证剪切或邻居发现的前置结论。
 
-### 待听辨原片与核对点
+## 正式音频与实测同步
 
-当前工具没有实际音频感知能力，未声称听过以下音频；下列原片可交由用户整句听辨。程序合计标记仍为10个Omission、2个Insertion、35个Mispronunciation，均保留为自动标记，不等于已确认错误。
+`public/narration/VS01.wav`–`VS64.wav` 是当前选用的完整原始PCM：48 kHz、16 bit、单声道，音色 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural`。源音频总长 **871.55秒**。`src/audio-timing.json` 绑定每段音频哈希、口播/SSML指纹、原始评估和实测词时间；`src/captions.json` 是相应字幕及语义来源编号。播放和正式离线检查只读取这些正式文件，不依赖暂存目录、临时文件或再次请求语音服务。
 
-- [VS29原始音频（10.82秒）](assets/narration-staging/initial/VS29.wav)。完整口播：“检查蓝色与橙色这对邻居。令它们的新高度相等。得到新 x 坐标除以系数等于一。两边乘系数。得到候选x 坐标为一倍系数。高度为一。” 核对第三、第五句是否完整读出x、坐标、除以、等于及候选；识别结果分别缩成“得到新系数与一”“的为一倍系数”。原合成词事件从约5.578秒开始存在零时长，不能用它证明实际漏读，也不能据此补造对齐。
-- [VS32原始音频（12.54秒）](assets/narration-staging/recovery/VS32.wav)。完整口播：“到达低处交点时。蓝色与橙色的高度都是一。紫色高度是二。不经过当前点。不参加这次报告。先记录蓝色与橙色这一对。对应 P 撇这个位置。” 核对第六句的“先”；合成事件记为8.979秒、长0.120秒，识别文本未包含该字。这是可能的识别误报证据，不能代替听辨结论。
+选用版本：VS29、VS32 使用 `wording-repair-1` 新片；VS33复用原音频与第二次成功评估；其余61段复用最初或限流恢复批次的有效结果。没有重生成其余62段。64段均有当前版本评估，缺失0、当前采用版本请求失败0。原始程序标记合计：**Omission 0、Insertion 0、Mispronunciation 34**。漏读/插入门禁通过，34项误读标记按现行规则单列，未删除、改类或冒充已听辨核销。`actualListeningPerformed` 保持 false。
 
-先确定实际读法：若确有错漏，按原文局部修复并重新合成、评估；若原片完整，则按共享流程记录针对实际音频的识别误报证据，不删除原始标记。上述为原片交付时的状态；后续两段局部文案修复见下节，原始记录和门禁保持。
+时间线标记为 `measured-narration`，**58,198帧／60fps＝969.967秒（约16分10秒）**。旧阅读估算退出播放计算。每段保留30帧开口前引导，先展示当前完整教学行；按完整音频向上取整帧数安排播放。相邻段音频不重叠，同页无额外尾停留，22页每页末保留完整画面3秒；字幕与已讲内容持续到下一段/换页。
 
-### 两段文案修复候选（wording-repair-1）
+字幕由实测词时间生成；动作使用口播语义短句，独立于字幕重分组。特别覆盖统一变换、P′/Q′登记与报告、两次换序、逆变换、VW上下边界及Z₁/Z₂配对。VS32/39报告结果在对应报告短句开始后出现；VS55上下端分别跟随各自短句；VS60第二对不再依赖字幕数组下标。所有动作在结束后保留已得到的对象和结果。
 
-仅针对 VS29、VS32 生成独立待试听候选，保留 `initial/VS29`、`recovery/VS32` 的原片和原评估；其余62段没有重生成或重评估。候选字幕先行，独立口播、标音和句界映射保存在 [wording-repair-source.json](assets/narration-staging/wording-repair-source.json)，尚未覆盖 `src` 或正式素材。
+### VS29、VS32局部修复及历史证据
 
-|片段与句子|原文|候选改写|含义及画面对应|
+|位置|旧文案|正式选用文案|数学/过程含义|
 |---|---|---|---|
-|VS29 第三句|得到新 x 坐标除以系数等于一。|得到新横坐标除以系数等于一。|横坐标仍指 x′，对应 `candidate-P` 的 x′/s=1；避免混合语言字母切换|
-|VS29 第四句|两边乘系数。|两边乘以系数。|保留等式两边同乘非零系数的推导|
-|VS29 第五句|得到候选x 坐标为一倍系数。|候选点的新横坐标等于系数。|明确候选点与变换后坐标；一倍系数与系数相等，对应 x′=s|
-|VS32 第六句|先记录蓝色与橙色这一对。|首先记录蓝色与橙色这一对。|保留 `report-P` 先报告、VS33 再换序的顺序|
+|VS29第三句|得到新 x 坐标除以系数等于一。|得到新横坐标除以系数等于一。|新横坐标仍指x′，对应x′/s=1|
+|VS29第四句|两边乘系数。|两边乘以系数。|等式两边同乘非零系数|
+|VS29第五句|得到候选x 坐标为一倍系数。|候选点的新横坐标等于系数。|对应x′=s，保留高度为一与P′=(s,1)|
+|VS32第六句|先记录蓝色与橙色这一对。|首先记录蓝色与橙色这一对。|保留先报告、VS33再换序|
 
-其他句子保持原文。VS29 保留高度为一，故候选点仍为 P′=(s,1)；不增加前置证明或改变几何计算。候选字幕使用相应普通措辞，“P 撇”仍显示为 P′。两段继续使用既有音色及48 kHz、16 bit、单声道PCM，不调速、不裁剪。新“横”按横坐标标 `heng2`；原有“乘、系、数”和“一”的语境标音保留。局部读音查询参考已安装 pypinyin 0.55.0，库查询不等于实际读音验收。
+两段其余句子保持；正式字幕、独立口播、标音与句界映射同步采用上述改写。新横坐标的“横”标 `heng2`，其余语境读音沿用已审校版本。候选来源在 `assets/narration-staging/wording-repair-source.json`，候选阶段记录中的 `not-adopted` 是历史状态；当前选用状态由正式素材及本节说明确定。
 
-|候选原片|时长|SHA-256|
+|片段|正式原片时长|SHA-256|
 |---|---|---|
-|[VS29](assets/narration-staging/wording-repair-1/VS29.wav)|12.97秒|`5a27e6d63cc4efdfae67de919b506c31a27f5e27f55205a72e816eefc3c2a063`|
-|[VS32](assets/narration-staging/wording-repair-1/VS32.wav)|13.09秒|`b289bbea67de663ecb82d9cd77b99eee730923324c9d9296bf7b444c77a0098d`|
+|VS29|12.97秒|`5a27e6d63cc4efdfae67de919b506c31a27f5e27f55205a72e816eefc3c2a063`|
+|VS32|13.09秒|`b289bbea67de663ecb82d9cd77b99eee730923324c9d9296bf7b444c77a0098d`|
 
-每段仅一次合成、一次评估，无自动重试。复用 `buildBatchPlan`、`synthesizeBatch`（并发1）、`assessBatch`、`verifyBatch`、`createCaptionPlans`；本地使用已安装的 Speech SDK 1.53.0、FFmpeg/ffprobe。计划与请求状态在候选目录中保留，凭据仅由运行环境提供。
+两段各一次受控合成、一次评估，无自动重试；三类自动标记及非标点零时长事件均0。原VS29的24项零时长事件没有在新版复现，这不证明旧片实际漏读或服务根因已确认。原片、旧评估及原请求保留在 `assets/narration-staging/{initial,recovery}`；`assets/narration-review` 明确标记被替代素材，不进入播放。原VS33首次评估结果未知，第二次成功记录保留；两次可能均计入服务用量。失败请求及替代关系在 `assets/narration-request-evidence.json`，不重放未知请求。
 
-两段完整PCM解码、音频哈希、请求指纹、正文和SSML绑定检查通过；两段各有0个Omission、0个Insertion、0个Mispronunciation自动标记，均可建立候选实测对齐。原始合成事件中的非标点零时长数量均为0，VS29原先的24项零时长事件没有在新片复现；这说明新事件数据可用，不证明旧片实际漏读或根因已确认。
-
-[verification.json](assets/narration-staging/wording-repair-1/verification.json) 绑定候选输入与两段原片；[candidate-captions.json](assets/narration-staging/wording-repair-1/candidate-captions.json) 通过共享字幕映射生成，保持语义来源编号且时间处于完整音频内。原合成事件、逐段评估响应与候选 `.aligned.json` 均保留。独立审查核对数学等价、局部变化、原片保留、PCM/指纹和候选边界。
-
-实际整句听辨尚未完成，候选未正式采用；生产字幕、暂定无声时间线及整批采用门禁保持原样。候选字幕的离线时间映射通过不等于视觉同步验收。后续应试听两段完整新片，核对VS29两处横坐标关系、VS32“首先记录”，再按当前源版本同步正式口播、字幕与实测时间线；不能直接使用原片的时间数据。此次没有发布新试听附件或导出视频。
-
-当前 `Composition`、字幕和暂定时间线仍是已验证的无声版本。#366 的成片检查另依赖用户导出；助手不渲染或导出视频。
+旧 `video:check-staged-audio` 入口已退役：它针对旧稿和旧选用批次，正式版本统一使用 `video:check-audio`。暂存证据保留不代表当前采用旧素材。实际听辨、可见桌面验收及最终成片听看均未完成，不以自动评估或无头检查替代。
 
 ## 参考继承与本集差异
 
@@ -95,28 +58,39 @@ pnpm --config.verify-deps-before-run=false run video:synthesize --plan=/tmp/vert
 | 数学标签与坐标                 | `SvgMathText`，1:1 SVG 视口                                | 本例专用 800×600 图示，等单位网格与正向箭头；标签坐标与几何共用变换                  |
 | 换序与新邻接                   | 第六章 `EventDiagram` 的顺序竖列，`timeline` 的语义锚点    | VS33/40 标签与形状共用位移；VS34–38 独立展示邻接、覆盖、未来与登记                   |
 | 提示收束、跨片段保留           | 共享 `AttentionMarks` 线段描亮；第六章字幕末句保留         | 只复用单次线段描亮；端点使用定半径提示，不引入重复脉动；`visualAt` 保留已达状态      |
-| 正式配音与实测同步             | 第六章实测时间线                                           | 本阶段不适用；独立口播和标注不冒充音频                                               |
+| 正式配音与实测同步 | 第六章实测时间线与共享 measuredShotRows/createNarratedLesson | 64段完整PCM、实测字幕及按口播短句触发的语义动作 |
 
 本集新增专用剪切/逆变换、区间与点身份图示，是原参考不能直接表达的新几何任务；公共页面与检查能力仍从 `videos/shared` 复用，不导入相邻集的教学内容或音频。逆变换时整幅示意一起还原，避免把原坐标点直接混画在新坐标图中。
 
 ## 检查与运行
 
-在本目录执行，使用已安装依赖。Remotion 固定为 `4.0.540`，要求 Headless Shell `158.0.8127.2`。本次新云实例已核验的浏览器路径为：
+在本工程目录运行。依赖由 `pnpm-lock.yaml` 锁定，Remotion 4.0.540、React 19.3.1、Speech SDK 1.53.0；浏览器必须是该版本要求的 Chrome Headless Shell 158.0.8127.2。当前云实例已核验路径如下：
 
 ```sh
 export REMOTION_BROWSER_EXECUTABLE=/workspace/.local/share/remotion-browsers/158.0.8127.2/chrome-headless-shell-linux64/chrome-headless-shell
 pnpm --config.verify-deps-before-run=false run lint
-pnpm --config.verify-deps-before-run=false run video:check-content
+pnpm --config.verify-deps-before-run=false run video:check-content --decode
 pnpm --config.verify-deps-before-run=false run video:check-layout
 pnpm --config.verify-deps-before-run=false run build
 ```
 
-`build` 只打包。布局入口为当前生产页面建立独立系统临时端口的无头 Studio，覆盖字幕边界、语义动作中途、步骤切换和页末，结束关闭自身进程。可用 `--shots=VS33,VS38` 做局部复查，`--screenshots` 将浏览器截图写入系统临时目录；不调用 Remotion 静帧或视频导出。
+`build` 只打包，不渲染。内容检查核对数学、完整音频生命周期、350句界、64段字幕/口播绑定、22页停留和关键语义触发，`--decode` 同时执行64段完整PCM解码与正式音频证据检查。`video:check-audio` 可单独检查正式音频；`video:preflight` 组合内容/完整解码与生产布局检查。布局检查使用系统分配的独立端口及上述浏览器，覆盖每个实测短句和动作前、中、后及相邻状态，结束关闭自身进程。尚未执行的检查不能由命令存在推定通过。
 
-内容检查覆盖实际坐标变换、八事件先后、两份范围与严格未来、点和区间逆变换、64 段字幕/口播对应及页末保留。它不代替独立文本、读音、视觉过程审查。已完成证据、问题核销及最终状态以 #364 正式记录和提交说明为准；未取得的实际听辨、正式音画同步、可见桌面和成片验收不属于本阶段完成声明。
+本次全64段浏览器布局检查覆盖2587个生产状态，全部通过；每段留存终态截图。已完成：ESLint与TypeScript检查、正式64段完整解码与内容绑定检查、相关共享时间线单测、Remotion打包，以及两个导出入口的只读预演。另用匹配版本的浏览器实际查看31个指定状态：VS29/32/33/40/48/55/60/62前中后与VS30/34/49/56/63起始衔接；未见裁切遮挡，报告、换序、逆变换与配对状态符合对应口播短句。这是指定帧的视觉抽查，不是连续全片观看或实际听辨。
 
-## 配置
+### 用户导出边界
 
-Composition 为 `VerticalSegments`，逻辑画布 1920×1080、60 fps，输出比例 2。继续复用共享 Remotion、TypeScript 与 ESLint 组件策略；本集 TypeScript 目标 ES2020、库声明 ES2023/DOM 支持精确整数和当前已安装运行时。共享配置的 H.265、PNG、48 kHz PCM、并发 4 与禁止覆盖设置保持原样；这些设置不授权助手渲染。
+本集已接入 `video:export`（PNG序列）和 `video:export-audio`（同时间线PCM WAV），两个入口的 `--dry-run` 已核验，不生成媒体。遵循[五阶段模板](../../../docs/agents/videos/operations.md#五阶段命令模板)：独立预检 → PNG → 无声H.265 → 同时间线PCM WAV → MOV复用封装，每步检查实际输出后继续。源图形和音频都不得裁剪或变速，不覆盖已有输出。
 
-遵循 [视频工程规则](../../AGENTS.md)、[工程操作说明](../../../docs/agents/videos/operations.md)及 [Remotion 许可](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md)。
+当前Linux云环境没有模板要求的 `hevc_videotoolbox` 编码器，不能把macOS硬件编码步骤称为本环境可执行。尚未生成PNG帧，因此帧序列只能按当前Remotion命名实现预测为 `element-00000.png`–`element-58197.png`，不能冒充已检查的真实帧目录；必须在用户导出后核对数量、尺寸、编号和实际格式，再填入第3步命令。当前不提供未经实际帧目录核验的完整编码命令。最终目标路径为 `out/vertical-segments.mov`，并非已存在成片。
+
+在本工程、确认目标路径不存在且浏览器仍与已安装Remotion一致后，由用户执行：
+
+```sh
+pnpm --config.verify-deps-before-run=false run video:preflight
+pnpm --config.verify-deps-before-run=false run video:export
+```
+
+本次完整预检如仍对应当前版本，无需为导出重复执行。PNG检查与兼容的H.265硬件编码完成后，才执行同时间线音轨入口及复用封装；详细顺序与条件以公共模板为准。助手不执行视频或音轨导出，不宣称已生成成片。
+
+遵循[视频工程规则](../../AGENTS.md)、[工程操作说明](../../../docs/agents/videos/operations.md)及[Remotion许可](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md)。

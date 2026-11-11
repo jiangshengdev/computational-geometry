@@ -1,0 +1,2570 @@
+{
+  "VS01": [
+    {
+      "text": "第六章《同列事件怎样逐点更新》已经允许同列不同高度的事件。",
+      "startMs": 110,
+      "endMs": 5310,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "现在接入竖直输入：先统一变换，",
+      "startMs": 5699,
+      "endMs": 8578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "在新坐标中扫描，再把完整答案还给原始输入。",
+      "startMs": 8898,
+      "endMs": 13057,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS02": [
+    {
+      "text": "蓝色输入 V 从原点到x 坐标零、高度三。",
+      "startMs": 70,
+      "endMs": 3869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它是一条竖直闭线段。",
+      "startMs": 4249,
+      "endMs": 5969,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "图中横纵每格都是一个单位，",
+      "startMs": 6469,
+      "endMs": 8549,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "字母 O 表示原点，",
+      "startMs": 8868,
+      "endMs": 10468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "箭头表示坐标正方向。",
+      "startMs": 10738,
+      "endMs": 12697,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS03": [
+    {
+      "text": "橙色输入 A 从x 坐标负一、高度一，",
+      "startMs": 70,
+      "endMs": 3470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "延伸到x 坐标一、高度一。",
+      "startMs": 3628,
+      "endMs": 6080,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它与竖直输入的公共点用 P 表示，",
+      "startMs": 6419,
+      "endMs": 9099,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "坐标为零、一。",
+      "startMs": 9418,
+      "endMs": 10900,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS04": [
+    {
+      "text": "紫色输入 B 从x 坐标负一、高度二，",
+      "startMs": 70,
+      "endMs": 3270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "延伸到x 坐标一、高度二。",
+      "startMs": 3478,
+      "endMs": 5837,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它与竖直输入相交的位置用 Q 表示，",
+      "startMs": 6269,
+      "endMs": 9349,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "坐标为零、二。",
+      "startMs": 9668,
+      "endMs": 11148,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两条水平输入互相平行，",
+      "startMs": 11609,
+      "endMs": 13890,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "没有公共点。",
+      "startMs": 14058,
+      "endMs": 15178,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS05": [
+    {
+      "text": "在x 坐标零这一列，",
+      "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "竖直输入同时包含低处和高处两个公共点。",
+      "startMs": 2028,
+      "endMs": 5668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若把它只放在高度一的位置，",
+      "startMs": 6119,
+      "endMs": 8078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "就描述不了它在高度二的参与资格。",
+      "startMs": 8368,
+      "endMs": 10900,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS06": [
+    {
+      "text": "反过来，只选高度二，",
+      "startMs": 70,
+      "endMs": 2138,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也不能描述低处参与。",
+      "startMs": 2398,
+      "endMs": 4158,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "给竖直输入随意指定一个斜率，",
+      "startMs": 4589,
+      "endMs": 7069,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "并不会改变这段高度范围。",
+      "startMs": 7388,
+      "endMs": 9268,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "我们先恢复旧规则的适用条件，",
+      "startMs": 9729,
+      "endMs": 12169,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "再使用它。",
+      "startMs": 12478,
+      "endMs": 13438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS07": [
+    {
+      "text": "沿用《剪切如何改变坐标》的正变换。",
+      "startMs": 70,
+      "endMs": 3110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "其中 x 坐标表示左右位置，",
+      "startMs": 3499,
+      "endMs": 5898,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "而 y 坐标表示高度。",
+      "startMs": 6238,
+      "endMs": 7958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "先求系数 s 与原高度的乘积。",
+      "startMs": 8389,
+      "endMs": 11100,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "再把这个乘积加到原来的 x 坐标上，",
+      "startMs": 11459,
+      "endMs": 14459,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "所得的和就是新 x 坐标。",
+      "startMs": 14758,
+      "endMs": 16958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "高度不变。",
+      "startMs": 17399,
+      "endMs": 18319,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    },
+    {
+      "text": "撇号区分新旧坐标，不改变输入身份。",
+      "startMs": 18819,
+      "endMs": 22308,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 5
+    },
+    {
+      "text": "所有输入的所有端点使用同一个正系数。",
+      "startMs": 22759,
+      "endMs": 25998,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 6
+    }
+  ],
+  "VS08": [
+    {
+      "text": "原来共享的位置，无论沿哪份输入计算，",
+      "startMs": 110,
+      "endMs": 3398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "都得到同一个新位置。",
+      "startMs": 3698,
+      "endMs": 5178,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若每条线各选一个系数，",
+      "startMs": 5639,
+      "endMs": 7679,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "就不再是整幅图的同一变换，",
+      "startMs": 7988,
+      "endMs": 10148,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能套用交集对应结论。",
+      "startMs": 10408,
+      "endMs": 12168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS09": [
+    {
+      "text": "为看清推斜过程，图中使用二分之一作为放大示意系数。",
+      "startMs": 70,
+      "endMs": 4788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "坐标轴固定，把新坐标画成新点。",
+      "startMs": 5219,
+      "endMs": 8478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "示意的水平距离不能用来验算扫描，",
+      "startMs": 8959,
+      "endMs": 11919,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "也不是真实执行轨迹。",
+      "startMs": 12258,
+      "endMs": 14018,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "实际系数接下来单独确定。",
+      "startMs": 14449,
+      "endMs": 16768,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    }
+  ],
+  "VS10": [
+    {
+      "text": "对于有理数端点坐标，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "取正整数 D 作为公共分母，",
+      "startMs": 2178,
+      "endMs": 4530,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "使全部端点坐标乘它以后成为整数。",
+      "startMs": 4698,
+      "endMs": 7738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "符号 M 取一与这些整数绝对值的最大值。",
+      "startMs": 8189,
+      "endMs": 11120,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "本例端点已经是整数，",
+      "startMs": 11459,
+      "endMs": 13339,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "公共分母取一，最大值是三。",
+      "startMs": 13658,
+      "endMs": 16478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS11": [
+    {
+      "text": "直接使用《事件间距与剪切系数》中最大值为三时已经算出的系数：",
+      "startMs": 70,
+      "endMs": 6110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "二十六万二千一百四十四分之一。",
+      "startMs": 6170,
+      "endMs": 8810,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "后面的字母 s 始终表示这个精确分数，",
+      "startMs": 9149,
+      "endMs": 12428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "不换成演示系数，也不截成小数。",
+      "startMs": 12748,
+      "endMs": 15758,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS12": [
+    {
+      "text": "引用《同横坐标、退化输入与原坐标》的安全系数结论：",
+      "startMs": 70,
+      "endMs": 4670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "原 x 坐标不同的端点和实际交点保留左右先后；",
+      "startMs": 4950,
+      "endMs": 9270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "原来同列不同高度的位置按从低到高展开。",
+      "startMs": 9350,
+      "endMs": 12870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "每份非零输入都不再竖直，",
+      "startMs": 13249,
+      "endMs": 15329,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "原来不竖直的也不会变竖直。",
+      "startMs": 15648,
+      "endMs": 17688,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "点输入仍是点。",
+      "startMs": 18139,
+      "endMs": 19579,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    },
+    {
+      "text": "原坐标使用同一个系数，",
+      "startMs": 20059,
+      "endMs": 22139,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 5
+    },
+    {
+      "text": "无须再乘除公共分母。",
+      "startMs": 22498,
+      "endMs": 24340,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 5
+    }
+  ],
+  "VS13": [
+    {
+      "text": "竖直输入的下端保持在原点，",
+      "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "上端的新 x 坐标是零加三倍系数，",
+      "startMs": 2728,
+      "endMs": 5928,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也就是三倍系数。",
+      "startMs": 6198,
+      "endMs": 7678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新横向长度为三倍系数，",
+      "startMs": 8139,
+      "endMs": 10299,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "大于零。",
+      "startMs": 10588,
+      "endMs": 11428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS14": [
+    {
+      "text": "橙色输入的两端高度都是一，",
+      "startMs": 70,
+      "endMs": 2180,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以两个x 坐标都加上一次系数。",
+      "startMs": 2378,
+      "endMs": 5338,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新左端是负一加系数，",
+      "startMs": 5769,
+      "endMs": 7809,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "新右端是一加系数，高度仍为一。",
+      "startMs": 8118,
+      "endMs": 11280,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两端x 坐标之差仍为二。",
+      "startMs": 11579,
+      "endMs": 13858,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS15": [
+    {
+      "text": "紫色输入的两端高度都是二，",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以两个x 坐标都加上两倍系数。",
+      "startMs": 2578,
+      "endMs": 5457,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高度仍为二，横向长度也仍为二。",
+      "startMs": 5919,
+      "endMs": 8808,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "右侧坐标表使用实际系数，",
+      "startMs": 9259,
+      "endMs": 11618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "左图只放大展示相应关系。",
+      "startMs": 11908,
+      "endMs": 14108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS16": [
+    {
+      "text": "引用交集保持结论，原来的公共点不会丢失，",
+      "startMs": 70,
+      "endMs": 3870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也不会凭空新增。",
+      "startMs": 4048,
+      "endMs": 5408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "低处点的新坐标为一倍系数、一，",
+      "startMs": 5889,
+      "endMs": 9010,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "高处点的新坐标为两倍系数、二，",
+      "startMs": 9288,
+      "endMs": 12087,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "分别记作 P′和 Q′这两个点。",
+      "startMs": 12358,
+      "endMs": 14918,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    }
+  ],
+  "VS17": [
+    {
+      "text": "两点的新 x 坐标之差恰好是一倍系数，",
+      "startMs": 70,
+      "endMs": 3309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "严格为正。",
+      "startMs": 3528,
+      "endMs": 4368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此先遇到低处点变成的位置，",
+      "startMs": 4819,
+      "endMs": 7499,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "再遇到高处点变成的位置，",
+      "startMs": 7818,
+      "endMs": 9818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "不再要求同列一个位置同时代表两个高度。",
+      "startMs": 10088,
+      "endMs": 13128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    }
+  ],
+  "VS18": [
+    {
+      "text": "完全重合的位置仍完全重合，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不能拆成两次事件。",
+      "startMs": 2628,
+      "endMs": 4188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同线关系也保持，",
+      "startMs": 4619,
+      "endMs": 6019,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所以第五章《完整结果怎样只报告一次》中的同线组继续适用，",
+      "startMs": 6318,
+      "endMs": 10398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "组内各份原始身份仍分别保留。",
+      "startMs": 10688,
+      "endMs": 13288,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "点输入没有唯一直线，",
+      "startMs": 13729,
+      "endMs": 15409,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    },
+    {
+      "text": "不加入同线组。",
+      "startMs": 15728,
+      "endMs": 17060,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    }
+  ],
+  "VS19": [
+    {
+      "text": "可逆性与整条线段对应，",
+      "startMs": 70,
+      "endMs": 1910,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "保证变换前后求的是同一个交集问题。",
+      "startMs": 2228,
+      "endMs": 5250,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这个结论不依赖系数足够小。",
+      "startMs": 5569,
+      "endMs": 7769,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS20": [
+    {
+      "text": "安全系数另外负责事件先后，",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "避免原来不同列的位置颠倒，",
+      "startMs": 2628,
+      "endMs": 4668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "并把同列不同高度按顺序展开。",
+      "startMs": 4948,
+      "endMs": 7588,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它补上扫描所需的非竖直条件。",
+      "startMs": 8039,
+      "endMs": 10639,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS21": [
+    {
+      "text": "精确有理数运算负责不把分数截成有限位小数。",
+      "startMs": 70,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "后面的高度、覆盖和未来比较都保留精确值。",
+      "startMs": 4749,
+      "endMs": 8010,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "系数很小，不等于计算没有舍入。",
+      "startMs": 8369,
+      "endMs": 11618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS22": [
+    {
+      "text": "现在高度、斜率、端点范围和未来比较全部使用新坐标。",
+      "startMs": 70,
+      "endMs": 4160,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "原竖直输入满足x 坐标为零，",
+      "startMs": 4499,
+      "endMs": 7258,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "代入变换得到新 x 坐标等于系数乘新高度。",
+      "startMs": 7548,
+      "endMs": 11188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "系数为正，除以它得到新高度等于新 x 坐标除以系数。",
+      "startMs": 11639,
+      "endMs": 16797,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS23": [
+    {
+      "text": "因此蓝色输入的新斜率为系数的倒数，",
+      "startMs": 70,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也就是二十六万二千一百四十四。",
+      "startMs": 3378,
+      "endMs": 5818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的新 x 坐标闭范围从零到三倍系数。",
+      "startMs": 6269,
+      "endMs": 9749,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能再拿原来的x 坐标零来判断新候选的覆盖。",
+      "startMs": 10239,
+      "endMs": 14078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS24": [
+    {
+      "text": "橙色输入在新坐标中的高度恒为一，",
+      "startMs": 70,
+      "endMs": 3060,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "斜率为零。",
+      "startMs": 3228,
+      "endMs": 4348,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的闭范围由刚才两个新端点给出，",
+      "startMs": 4819,
+      "endMs": 7890,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "从负一加系数，到一加系数。",
+      "startMs": 8068,
+      "endMs": 10978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS25": [
+    {
+      "text": "紫色输入的新高度恒为二，",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "斜率也为零。",
+      "startMs": 2428,
+      "endMs": 3708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "闭范围从负一加两倍系数，",
+      "startMs": 4169,
+      "endMs": 6528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "到一加两倍系数。",
+      "startMs": 6818,
+      "endMs": 8298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "输入名称始终代表原始身份，",
+      "startMs": 8759,
+      "endMs": 11078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "不按上下顺序重新编号。",
+      "startMs": 11408,
+      "endMs": 13288,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS26": [
+    {
+      "text": "全部端点预先登记。",
+      "startMs": 70,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因为实际系数在零与二分之一之间，",
+      "startMs": 2149,
+      "endMs": 4789,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "橙色左端先于紫色左端，",
+      "startMs": 5098,
+      "endMs": 7298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两者都在原点左侧。",
+      "startMs": 7618,
+      "endMs": 9378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "先到橙色开始位置，此时只保留它自己。",
+      "startMs": 9809,
+      "endMs": 13500,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "旁边竖列从下向上读，",
+      "startMs": 13849,
+      "endMs": 15849,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "表示活动顺序，不是另一个坐标图。",
+      "startMs": 16198,
+      "endMs": 19268,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    }
+  ],
+  "VS27": [
+    {
+      "text": "再到紫色开始位置，把它放在高度一的橙色输入上方。",
+      "startMs": 70,
+      "endMs": 4388,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两份成为邻居，但它们是不同的平行线，",
+      "startMs": 4819,
+      "endMs": 7958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "没有交点可预约。",
+      "startMs": 8238,
+      "endMs": 9720,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS28": [
+    {
+      "text": "接着到原点，蓝色输入从高度零开始，",
+      "startMs": 70,
+      "endMs": 3450,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "在两条水平输入下方。",
+      "startMs": 3748,
+      "endMs": 5668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的新邻居是橙色输入。",
+      "startMs": 6189,
+      "endMs": 8069,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "紫色输入与它之间还隔着一份，",
+      "startMs": 8559,
+      "endMs": 10639,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "不因这次加入直接成为邻居。",
+      "startMs": 10958,
+      "endMs": 12878,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS29": [
+    {
+      "text": "检查蓝色与橙色这对邻居。",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "令它们的新高度相等，",
+      "startMs": 2399,
+      "endMs": 4039,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "得到新横坐标除以系数等于一。",
+      "startMs": 4348,
+      "endMs": 6908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两边乘以系数，候选点的新横坐标等于系数，",
+      "startMs": 7629,
+      "endMs": 11618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "高度为一。",
+      "startMs": 11908,
+      "endMs": 12868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS30": [
+    {
+      "text": "先检查真实覆盖：一倍系数在蓝色闭范围内部，",
+      "startMs": 70,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "也在橙色闭范围内部。",
+      "startMs": 3978,
+      "endMs": 5778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此这不是只在线段以外相交的延长线候选。",
+      "startMs": 6269,
+      "endMs": 10068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS31": [
+    {
+      "text": "再检查严格未来：候选x 坐标大于当前位置的零。",
+      "startMs": 70,
+      "endMs": 4350,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两项都通过，才把这个位置登记为待处理事件。",
+      "startMs": 4749,
+      "endMs": 8647,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "登记并不等于现在就报告结果，",
+      "startMs": 9089,
+      "endMs": 11410,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "要等到达该位置。",
+      "startMs": 11588,
+      "endMs": 12868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS32": [
+    {
+      "text": "到达低处交点时，蓝色与橙色的高度都是一。",
+      "startMs": 70,
+      "endMs": 3837,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色高度是二，不经过当前点，",
+      "startMs": 4319,
+      "endMs": 7188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不参加这次报告。",
+      "startMs": 7488,
+      "endMs": 8648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "首先记录蓝色与橙色这一对，",
+      "startMs": 9079,
+      "endMs": 11119,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "对应 P′这个位置。",
+      "startMs": 11428,
+      "endMs": 13028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS33": [
+    {
+      "text": "点上等高，并不等于右侧任意排序。",
+      "startMs": 70,
+      "endMs": 3337,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "引用第三章《让精确结果支撑扫描判断》的右侧斜率结论，",
+      "startMs": 3769,
+      "endMs": 8849,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "橙色斜率零较小，排在蓝色下方。",
+      "startMs": 9168,
+      "endMs": 12288,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "更新后，最低是橙色，",
+      "startMs": 12729,
+      "endMs": 15168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "中间蓝色，最高紫色。",
+      "startMs": 15448,
+      "endMs": 17548,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS34": [
+    {
+      "text": "换序以后，蓝色与紫色之间不再有橙色输入隔着。",
+      "startMs": 70,
+      "endMs": 3997,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这个新邻接触发下一次检查。",
+      "startMs": 4569,
+      "endMs": 6888,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "第二个交点不是在蓝色刚加入时直接由这对发现的。",
+      "startMs": 7389,
+      "endMs": 11550,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS35": [
+    {
+      "text": "让新邻居的高度相等，",
+      "startMs": 70,
+      "endMs": 1670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新 x 坐标除以系数等于二。",
+      "startMs": 1878,
+      "endMs": 4117,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两边乘系数，得到新 x 坐标为两倍系数，",
+      "startMs": 4569,
+      "endMs": 8527,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "高度为二，这就是高处候选。",
+      "startMs": 8788,
+      "endMs": 11228,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS36": [
+    {
+      "text": "先看蓝色输入：两倍系数严格夹在零和三倍系数之间，",
+      "startMs": 70,
+      "endMs": 4710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "闭范围通过。",
+      "startMs": 4928,
+      "endMs": 6088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "VS37": [
+    {
+      "text": "再看紫色输入：候选x 坐标比左端大一，",
+      "startMs": 70,
+      "endMs": 3789,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "比右端小一，这份闭范围也通过。",
+      "startMs": 4028,
+      "endMs": 7108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "真实覆盖与未来资格是不同判断，",
+      "startMs": 7639,
+      "endMs": 10119,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能用其中一项替代另一项。",
+      "startMs": 10438,
+      "endMs": 12397,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS38": [
+    {
+      "text": "最后与当前交点比较，",
+      "startMs": 70,
+      "endMs": 1950,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两倍系数大于一倍系数，",
+      "startMs": 2178,
+      "endMs": 4378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以候选严格在右方。",
+      "startMs": 4648,
+      "endMs": 6328,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "现在登记高处位置。",
+      "startMs": 6789,
+      "endMs": 8269,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "当前已经报告的低处位置不会因为再次遇到，",
+      "startMs": 8759,
+      "endMs": 11998,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "就重新成为未来事件。",
+      "startMs": 12308,
+      "endMs": 13988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS39": [
+    {
+      "text": "到高处交点时，蓝色与紫色的高度都是二。",
+      "startMs": 70,
+      "endMs": 3648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "橙色高度为一，不参加当前事件。",
+      "startMs": 4119,
+      "endMs": 7028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "报告蓝色与紫色这一对，",
+      "startMs": 7509,
+      "endMs": 9440,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "对应 Q′这个位置。",
+      "startMs": 9608,
+      "endMs": 11248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS40": [
+    {
+      "text": "报告后按右侧斜率排列，",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色在蓝色下方。",
+      "startMs": 2278,
+      "endMs": 3678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "最低仍是橙色，中间变成紫色，",
+      "startMs": 4119,
+      "endMs": 7098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "最高是蓝色。",
+      "startMs": 7388,
+      "endMs": 8428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "蓝色不改名，变化的是它在顺序中的位置。",
+      "startMs": 8879,
+      "endMs": 12578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS41": [
+    {
+      "text": "新的边界邻居是两条水平输入。",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它们平行且不在同一直线上，",
+      "startMs": 2999,
+      "endMs": 5079,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此没有新交点。",
+      "startMs": 5398,
+      "endMs": 6798,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "已经报告的两对结果继续保留。",
+      "startMs": 7239,
+      "endMs": 9518,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS42": [
+    {
+      "text": "由于两倍系数小于一，",
+      "startMs": 70,
+      "endMs": 1830,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "三倍系数小于一加系数，",
+      "startMs": 2128,
+      "endMs": 4407,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此先到蓝色右端。",
+      "startMs": 4698,
+      "endMs": 6378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里没有其他输入经过，",
+      "startMs": 6839,
+      "endMs": 8479,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不新增结果。",
+      "startMs": 8788,
+      "endMs": 10140,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "蓝色退出后，两条水平输入继续。",
+      "startMs": 10479,
+      "endMs": 13788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS43": [
+    {
+      "text": "再到橙色右端，完成该位置处理后，",
+      "startMs": 70,
+      "endMs": 3168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "橙色退出。",
+      "startMs": 3448,
+      "endMs": 4710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "此处也没有另一份参与者，",
+      "startMs": 5089,
+      "endMs": 7110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "只留下紫色输入。",
+      "startMs": 7288,
+      "endMs": 8528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS44": [
+    {
+      "text": "最后到紫色右端，处理完后活动顺序为空。",
+      "startMs": 70,
+      "endMs": 3798,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "六个端点和两个真实交点都已处理。",
+      "startMs": 4269,
+      "endMs": 7250,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "主案例只有两对点结果，",
+      "startMs": 7589,
+      "endMs": 9620,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "水平输入这一对为空。",
+      "startMs": 9788,
+      "endMs": 11508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS45": [
+    {
+      "text": "本例中每个事件的新 x 坐标都不同，",
+      "startMs": 70,
+      "endMs": 2909,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此未来判断表现为严格在右方。",
+      "startMs": 3128,
+      "endMs": 6088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "一般输入仍沿用第六章《同列事件怎样逐点更新》的完整位置比较：",
+      "startMs": 6519,
+      "endMs": 11479,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "先比较新 x 坐标，",
+      "startMs": 11679,
+      "endMs": 13479,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "相同再比较新高度；",
+      "startMs": 13768,
+      "endMs": 15448,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "同位置统一处理。",
+      "startMs": 15528,
+      "endMs": 16900,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    }
+  ],
+  "VS46": [
+    {
+      "text": "一般输入仍按第四章《找齐参与者，",
+      "startMs": 70,
+      "endMs": 2800,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "报告全部输入对》收集身份，",
+      "startMs": 2978,
+      "endMs": 5098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "并沿用第五章《覆盖变化后怎样发现未来交点》的同线组与覆盖延长补检。",
+      "startMs": 5398,
+      "endMs": 11398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "组的最远右端也必须取新端点的新 x 坐标。",
+      "startMs": 11839,
+      "endMs": 15519,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS47": [
+    {
+      "text": "扫描记录的位置还在新坐标中。",
+      "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先取蓝色与橙色这一对，",
+      "startMs": 3099,
+      "endMs": 5000,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "保留输入身份，使用同一系数的逆变换。",
+      "startMs": 5198,
+      "endMs": 8608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS48": [
+    {
+      "text": "先用系数乘新高度一，",
+      "startMs": 70,
+      "endMs": 1940,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再从新 x 坐标的一倍系数中减去这个乘积，",
+      "startMs": 2228,
+      "endMs": 6040,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "得到零。",
+      "startMs": 6248,
+      "endMs": 7048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高度仍是一，因此这对结果恢复为原图中的 P 点，",
+      "startMs": 7539,
+      "endMs": 12080,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "坐标零、一。",
+      "startMs": 12258,
+      "endMs": 13340,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS49": [
+    {
+      "text": "再取蓝色与紫色这一对。",
+      "startMs": 70,
+      "endMs": 1860,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新 x 坐标是两倍系数，",
+      "startMs": 2199,
+      "endMs": 4279,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "新高度是二。",
+      "startMs": 4598,
+      "endMs": 5758,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "仍沿用原始输入对，不能把它和前一对合成无身份的点集合。",
+      "startMs": 6189,
+      "endMs": 10917,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS50": [
+    {
+      "text": "先求系数与二的乘积，",
+      "startMs": 70,
+      "endMs": 1930,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再从两倍系数中减去这个乘积，",
+      "startMs": 2128,
+      "endMs": 4980,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "结果为零。",
+      "startMs": 5198,
+      "endMs": 6198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高度是二，所以恢复为原图中的 Q 点，",
+      "startMs": 6639,
+      "endMs": 10038,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "坐标零、二。",
+      "startMs": 10308,
+      "endMs": 11268,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS51": [
+    {
+      "text": "最终蓝色与橙色对应低处点，",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色与紫色对应高处点。",
+      "startMs": 2828,
+      "endMs": 4988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两条水平输入没有公共点。",
+      "startMs": 5419,
+      "endMs": 7579,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "原始无序输入对与完整交集一起交付，",
+      "startMs": 8039,
+      "endMs": 11358,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "不把新坐标位置直接当成原图答案。",
+      "startMs": 11688,
+      "endMs": 14407,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS52": [
+    {
+      "text": "换一个独立短例，只取竖直输入 V 与绿色输入 W 这两份。",
+      "startMs": 70,
+      "endMs": 4857,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "绿色输入从零、一到零、二，",
+      "startMs": 5399,
+      "endMs": 7439,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "完整地落在蓝色输入内部。",
+      "startMs": 7768,
+      "endMs": 9768,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "本例没有两条水平输入，",
+      "startMs": 10209,
+      "endMs": 12089,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "最大绝对端点坐标仍是三，",
+      "startMs": 12408,
+      "endMs": 14807,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "实际系数不变。",
+      "startMs": 15078,
+      "endMs": 16438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS53": [
+    {
+      "text": "统一变换后，两份仍在同一条直线上。",
+      "startMs": 70,
+      "endMs": 3468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色覆盖零到三倍系数，",
+      "startMs": 3919,
+      "endMs": 5999,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "绿色覆盖一倍到两倍系数。",
+      "startMs": 6398,
+      "endMs": 8438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "虚线和实线只帮助辨认重合身份，",
+      "startMs": 8909,
+      "endMs": 11628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "不把它们挪到不同位置。",
+      "startMs": 11958,
+      "endMs": 13558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS54": [
+    {
+      "text": "绿色输入在一倍系数、高度一的位置加入时，",
+      "startMs": 110,
+      "endMs": 3429,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "按第五章《完整结果怎样只报告一次》的加入报告规则与同组蓝色输入报告完整交集。",
+      "startMs": 3628,
+      "endMs": 11210,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "从一倍系数、一，到两倍系数、二的整段都属于这一条结果，",
+      "startMs": 11569,
+      "endMs": 16670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "不是两个点结果。",
+      "startMs": 16838,
+      "endMs": 18170,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS55": [
+    {
+      "text": "下端的新 x 坐标减去系数与一的乘积，",
+      "startMs": 70,
+      "endMs": 3620,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "恢复为零，高度一不变。",
+      "startMs": 3778,
+      "endMs": 6088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "上端的新 x 坐标减去系数与二的乘积，",
+      "startMs": 6539,
+      "endMs": 10080,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "也恢复为零，高度二不变。",
+      "startMs": 10288,
+      "endMs": 12648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS56": [
+    {
+      "text": "由整条线段对应结论，",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "恢复的是这两个边界之间的完整闭线段。",
+      "startMs": 2228,
+      "endMs": 5268,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "保留蓝色与绿色这一对身份，",
+      "startMs": 5719,
+      "endMs": 7919,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不把区间切成两个点，",
+      "startMs": 8268,
+      "endMs": 10108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "也不因内部穿越而把旧同线对重报为点。",
+      "startMs": 10388,
+      "endMs": 13388,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "VS57": [
+    {
+      "text": "再换一个独立短例，只取蓝色线段和两份点输入。",
+      "startMs": 70,
+      "endMs": 3987,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "用 Z₁、Z₂ 这两个编号区分点输入，",
+      "startMs": 4419,
+      "endMs": 7658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "它们的两个端点都在零、一这个位置。",
+      "startMs": 8008,
+      "endMs": 11207,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "本例没有水平输入或绿色线段。",
+      "startMs": 11659,
+      "endMs": 14179,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS58": [
+    {
+      "text": "全部端点仍用相同的实际系数。",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两份点输入的两个新端点都在一倍系数、一的位置，",
+      "startMs": 3149,
+      "endMs": 7360,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此仍是零长度输入，",
+      "startMs": 7548,
+      "endMs": 9507,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "而且仍在同一个事件中。",
+      "startMs": 9768,
+      "endMs": 11568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "图里的圆环与菱形中心重合，",
+      "startMs": 12009,
+      "endMs": 14489,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    },
+    {
+      "text": "标记不表示面积。",
+      "startMs": 14808,
+      "endMs": 16340,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    }
+  ],
+  "VS59": [
+    {
+      "text": "到这个位置时，蓝色输入严格穿过。",
+      "startMs": 70,
+      "endMs": 3158,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "按第四章《找齐参与者，",
+      "startMs": 3619,
+      "endMs": 5750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "报告全部输入对》的同点规则，",
+      "startMs": 5918,
+      "endMs": 7920,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "把非零参与者与两份点身份一起收集。",
+      "startMs": 8088,
+      "endMs": 11300,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "位置相同不意味着输入身份相同。",
+      "startMs": 11629,
+      "endMs": 14540,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS60": [
+    {
+      "text": "先让蓝色线段与第一份点输入配对，",
+      "startMs": 70,
+      "endMs": 3070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "再与第二份点输入配对，",
+      "startMs": 3278,
+      "endMs": 5198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两对各产生一条点结果。",
+      "startMs": 5498,
+      "endMs": 7590,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "两条结果的位置都在当前点，",
+      "startMs": 7939,
+      "endMs": 10099,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "原始身份分别保留。",
+      "startMs": 10428,
+      "endMs": 11948,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    }
+  ],
+  "VS61": [
+    {
+      "text": "两份点输入之间也构成一个无序输入对。",
+      "startMs": 70,
+      "endMs": 3030,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它们在同一位置，所以这一对也有一条点结果。",
+      "startMs": 3399,
+      "endMs": 7200,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "三对位置相同，不能合并成只有一份身份的记录。",
+      "startMs": 7539,
+      "endMs": 11848,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS62": [
+    {
+      "text": "对三条结果分别使用逆变换。",
+      "startMs": 70,
+      "endMs": 2349,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新 x 坐标的一倍系数，",
+      "startMs": 2749,
+      "endMs": 4708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "减去系数与高度一的乘积，",
+      "startMs": 4998,
+      "endMs": 7180,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "得到零；",
+      "startMs": 7468,
+      "endMs": 8228,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "高度保持一。",
+      "startMs": 8268,
+      "endMs": 9330,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "三对各自恢复为原图中的同一个位置。",
+      "startMs": 9809,
+      "endMs": 12969,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS63": [
+    {
+      "text": "两份点输入只参与这一次事件，",
+      "startMs": 70,
+      "endMs": 2389,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不获得斜率，不进入后续活动顺序。",
+      "startMs": 2628,
+      "endMs": 5648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色线段在这里继续，",
+      "startMs": 6089,
+      "endMs": 8048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "处理后仍只有它活动。",
+      "startMs": 8388,
+      "endMs": 10188,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "点身份已经保存在结果中，",
+      "startMs": 10629,
+      "endMs": 12789,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "退出顺序不会删除结果。",
+      "startMs": 13078,
+      "endMs": 15310,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "VS64": [
+    {
+      "text": "本集把竖直输入接回已有扫描：",
+      "startMs": 70,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "统一系数补上非竖直条件，",
+      "startMs": 2710,
+      "endMs": 4910,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所有判断使用新坐标，",
+      "startMs": 5128,
+      "endMs": 7048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    },
+    {
+      "text": "点与完整区间按原始输入对还原。",
+      "startMs": 7348,
+      "endMs": 10187,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 3
+    },
+    {
+      "text": "下一章再组织完整混合扫描，",
+      "startMs": 10639,
+      "endMs": 13239,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    },
+    {
+      "text": "一般正确性与总工作量留给后续章节。",
+      "startMs": 13538,
+      "endMs": 16457,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 4
+    }
+  ]
+}

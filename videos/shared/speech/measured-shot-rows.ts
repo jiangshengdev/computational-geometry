@@ -15,6 +15,7 @@ export function measuredShotRows<
   captions: mapped,
   fps,
   audioLeadFrames,
+  betweenShotPauseSeconds = 1,
 }: {
   shots: S[];
   pages: Record<string, { holdAfterSeconds: number }>;
@@ -22,12 +23,15 @@ export function measuredShotRows<
   captions: Record<string, (Caption & { source: number })[]>;
   fps: number;
   audioLeadFrames: number;
+  betweenShotPauseSeconds?: number;
 }) {
+  if (!Number.isFinite(betweenShotPauseSeconds) || betweenShotPauseSeconds < 0)
+    throw Error("Between-shot pause must be a finite nonnegative duration");
   const shared = createShotTimeline({
     shots: shots.map((shot) => ({
       ...shot,
       step: shot.visibleStep,
-      pauseAfter: 1,
+      pauseAfter: betweenShotPauseSeconds,
     })),
     pages,
     timing: audio,
@@ -57,7 +61,7 @@ export function measuredShotRows<
       pauseAfter:
         shots[index + 1]?.page !== row.page
           ? pages[row.page].holdAfterSeconds
-          : 1,
+          : betweenShotPauseSeconds,
       audioEndFrame: audioLeadFrames + row.speechFrames,
       revealMs: -500,
       stages: [] as { ms: number }[],

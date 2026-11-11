@@ -4742,7 +4742,12 @@
       "text": "得",
       "pinyin": "de2"
     },
-    "到新 x 坐标",
+    "到新",
+    {
+      "text": "横",
+      "pinyin": "heng2"
+    },
+    "坐标",
     {
       "text": "除",
       "pinyin": "chu2"
@@ -4782,6 +4787,10 @@
       "pinyin": "cheng2"
     },
     {
+      "text": "以",
+      "pinyin": "yi3"
+    },
+    {
       "text": "系",
       "pinyin": "xi4"
     },
@@ -4793,22 +4802,20 @@
     {
       "breakMs": 200
     },
+    "候选点",
     {
-      "text": "得",
-      "pinyin": "de2"
+      "text": "的",
+      "pinyin": "de5"
     },
-    "到候选x 坐标",
+    "新",
     {
-      "text": "为",
-      "pinyin": "wei2"
+      "text": "横",
+      "pinyin": "heng2"
     },
+    "坐标等",
     {
-      "text": "一",
-      "pinyin": "yi2"
-    },
-    {
-      "text": "倍",
-      "pinyin": "bei4"
+      "text": "于",
+      "pinyin": "yu2"
     },
     {
       "text": "系",
@@ -5265,7 +5272,7 @@
     {
       "breakMs": 400
     },
-    "先记录",
+    "首先记录",
     {
       "text": "蓝",
       "pinyin": "lan2"

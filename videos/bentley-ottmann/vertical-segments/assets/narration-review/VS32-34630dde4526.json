@@ -1,0 +1,806 @@
+{
+  "id": "VS32",
+  "status": "superseded-candidate-awaiting-listening",
+  "original": {
+    "audioFile": "VS32.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "34630dde4526b3f27cd67d32ccca9c81d12ed34ef5975edd38d1c32a9238d7f1",
+    "duration": 12.54,
+    "words": [
+      {
+        "text": "到",
+        "startMs": 70,
+        "durationMs": 240,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "达",
+        "startMs": 310,
+        "durationMs": 160,
+        "textOffset": 1,
+        "wordLength": 1
+      },
+      {
+        "text": "低",
+        "startMs": 470,
+        "durationMs": 160,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "处",
+        "startMs": 630,
+        "durationMs": 200,
+        "textOffset": 3,
+        "wordLength": 1
+      },
+      {
+        "text": "交点",
+        "startMs": 830,
+        "durationMs": 440,
+        "textOffset": 4,
+        "wordLength": 2
+      },
+      {
+        "text": "时",
+        "startMs": 1270,
+        "durationMs": 400,
+        "textOffset": 6,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 1670,
+        "durationMs": 0,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "蓝",
+        "startMs": 1878,
+        "durationMs": 280,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "色",
+        "startMs": 2158,
+        "durationMs": 160,
+        "textOffset": 9,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 2318,
+        "durationMs": 160,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "橙",
+        "startMs": 2478,
+        "durationMs": 200,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "色",
+        "startMs": 2678,
+        "durationMs": 120,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "的",
+        "startMs": 2798,
+        "durationMs": 120,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "高",
+        "startMs": 2918,
+        "durationMs": 160,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "度",
+        "startMs": 3078,
+        "durationMs": 120,
+        "textOffset": 15,
+        "wordLength": 1
+      },
+      {
+        "text": "都",
+        "startMs": 3198,
+        "durationMs": 160,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 3358,
+        "durationMs": 160,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "一",
+        "startMs": 3518,
+        "durationMs": 280,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 3798,
+        "durationMs": 0,
+        "textOffset": 19,
+        "wordLength": 1
+      },
+      {
+        "text": "紫",
+        "startMs": 4269,
+        "durationMs": 240,
+        "textOffset": 20,
+        "wordLength": 1
+      },
+      {
+        "text": "色",
+        "startMs": 4509,
+        "durationMs": 200,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "高",
+        "startMs": 4709,
+        "durationMs": 200,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "度",
+        "startMs": 4909,
+        "durationMs": 160,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "是",
+        "startMs": 5069,
+        "durationMs": 160,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "二",
+        "startMs": 5229,
+        "durationMs": 320,
+        "textOffset": 25,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 5549,
+        "durationMs": 0,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "不",
+        "startMs": 5868,
+        "durationMs": 200,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "经",
+        "startMs": 6068,
+        "durationMs": 200,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "过",
+        "startMs": 6268,
+        "durationMs": 160,
+        "textOffset": 29,
+        "wordLength": 1
+      },
+      {
+        "text": "当",
+        "startMs": 6428,
+        "durationMs": 200,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "前",
+        "startMs": 6628,
+        "durationMs": 240,
+        "textOffset": 31,
+        "wordLength": 1
+      },
+      {
+        "text": "点",
+        "startMs": 6868,
+        "durationMs": 400,
+        "textOffset": 32,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 7268,
+        "durationMs": 0,
+        "textOffset": 33,
+        "wordLength": 1
+      },
+      {
+        "text": "不",
+        "startMs": 7538,
+        "durationMs": 160,
+        "textOffset": 34,
+        "wordLength": 1
+      },
+      {
+        "text": "参",
+        "startMs": 7698,
+        "durationMs": 160,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "加",
+        "startMs": 7858,
+        "durationMs": 120,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 7978,
+        "durationMs": 160,
+        "textOffset": 37,
+        "wordLength": 1
+      },
+      {
+        "text": "次",
+        "startMs": 8138,
+        "durationMs": 120,
+        "textOffset": 38,
+        "wordLength": 1
+      },
+      {
+        "text": "报",
+        "startMs": 8258,
+        "durationMs": 120,
+        "textOffset": 39,
+        "wordLength": 1
+      },
+      {
+        "text": "告",
+        "startMs": 8378,
+        "durationMs": 160,
+        "textOffset": 40,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 8538,
+        "durationMs": 0,
+        "textOffset": 41,
+        "wordLength": 1
+      },
+      {
+        "text": "先",
+        "startMs": 8979,
+        "durationMs": 120,
+        "textOffset": 42,
+        "wordLength": 1
+      },
+      {
+        "text": "记录",
+        "startMs": 9099,
+        "durationMs": 240,
+        "textOffset": 43,
+        "wordLength": 2
+      },
+      {
+        "text": "蓝",
+        "startMs": 9339,
+        "durationMs": 120,
+        "textOffset": 45,
+        "wordLength": 1
+      },
+      {
+        "text": "色",
+        "startMs": 9459,
+        "durationMs": 120,
+        "textOffset": 46,
+        "wordLength": 1
+      },
+      {
+        "text": "与",
+        "startMs": 9579,
+        "durationMs": 120,
+        "textOffset": 47,
+        "wordLength": 1
+      },
+      {
+        "text": "橙",
+        "startMs": 9699,
+        "durationMs": 280,
+        "textOffset": 48,
+        "wordLength": 1
+      },
+      {
+        "text": "色",
+        "startMs": 9979,
+        "durationMs": 160,
+        "textOffset": 49,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 10139,
+        "durationMs": 120,
+        "textOffset": 50,
+        "wordLength": 1
+      },
+      {
+        "text": "一",
+        "startMs": 10259,
+        "durationMs": 120,
+        "textOffset": 51,
+        "wordLength": 1
+      },
+      {
+        "text": "对",
+        "startMs": 10379,
+        "durationMs": 240,
+        "textOffset": 52,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 10619,
+        "durationMs": 0,
+        "textOffset": 53,
+        "wordLength": 1
+      },
+      {
+        "text": "对",
+        "startMs": 10928,
+        "durationMs": 240,
+        "textOffset": 54,
+        "wordLength": 1
+      },
+      {
+        "text": "应",
+        "startMs": 11168,
+        "durationMs": 120,
+        "textOffset": 55,
+        "wordLength": 1
+      },
+      {
+        "text": "P",
+        "startMs": 11288,
+        "durationMs": 200,
+        "textOffset": 57,
+        "wordLength": 1
+      },
+      {
+        "text": "撇",
+        "startMs": 11488,
+        "durationMs": 200,
+        "textOffset": 59,
+        "wordLength": 1
+      },
+      {
+        "text": "这",
+        "startMs": 11688,
+        "durationMs": 160,
+        "textOffset": 60,
+        "wordLength": 1
+      },
+      {
+        "text": "个",
+        "startMs": 11848,
+        "durationMs": 120,
+        "textOffset": 61,
+        "wordLength": 1
+      },
+      {
+        "text": "位",
+        "startMs": 11968,
+        "durationMs": 160,
+        "textOffset": 62,
+        "wordLength": 1
+      },
+      {
+        "text": "置",
+        "startMs": 12128,
+        "durationMs": 360,
+        "textOffset": 63,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 12488,
+        "durationMs": 0,
+        "textOffset": 64,
+        "wordLength": 1
+      }
+    ],
+    "speech": "到达低处交点时。蓝色与橙色的高度都是一。紫色高度是二。不经过当前点。不参加这次报告。先记录蓝色与橙色这一对。对应 P 撇这个位置。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "bb384317e606f0fd44dd43cd2251b57f7a6c1ff0c8dee216d209010e5ad06f84"
+  },
+  "request": {
+    "id": "VS32",
+    "audioFile": "VS32.wav",
+    "text": "到达低处交点时。蓝色与橙色的高度都是一。紫色高度是二。不经过当前点。不参加这次报告。先记录蓝色与橙色这一对。对应 P 撇这个位置。",
+    "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">到<phoneme alphabet=\"sapi\" ph=\"da 2\">达</phoneme>低<phoneme alphabet=\"sapi\" ph=\"chu 4\">处</phoneme>交点时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"gao 1\">高</phoneme><phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme><phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>二。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme><phoneme alphabet=\"sapi\" ph=\"guo 4\">过</phoneme><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme><phoneme alphabet=\"sapi\" ph=\"qian 2\">前</phoneme>点。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme>加<phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ci 4\">次</phoneme>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme>。<break time=\"400ms\"/>先记录<phoneme alphabet=\"sapi\" ph=\"lan 2\">蓝</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme><phoneme alphabet=\"sapi\" ph=\"cheng 2\">橙</phoneme><phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme><phoneme alphabet=\"sapi\" ph=\"dui 4\">对</phoneme>。<break time=\"200ms\"/>对<phoneme alphabet=\"sapi\" ph=\"ying 4\">应</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"pie 3\">撇</phoneme><phoneme alphabet=\"sapi\" ph=\"zhe 4\">这</phoneme><phoneme alphabet=\"sapi\" ph=\"ge 5\">个</phoneme><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"400ms\"/></voice></speak>",
+    "fingerprint": "bb384317e606f0fd44dd43cd2251b57f7a6c1ff0c8dee216d209010e5ad06f84",
+    "pauses": [
+      { "offset": 8, "breakMs": 200 },
+      { "offset": 20, "breakMs": 400 },
+      { "offset": 27, "breakMs": 200 },
+      { "offset": 34, "breakMs": 200 },
+      { "offset": 42, "breakMs": 400 },
+      { "offset": 54, "breakMs": 200 },
+      { "offset": 65, "breakMs": 400 }
+    ]
+  },
+  "response": {
+    "Id": "75a23e3865394343a5cb3d26244c3184",
+    "RecognitionStatus": "Success",
+    "Offset": 700000,
+    "Duration": 124400000,
+    "Channel": 0,
+    "DisplayText": "到达低处交点时，蓝色与橙色的高度都是一紫色，高度是二，不经过当前点不参加这次报告记录蓝色与橙色这一对对应P撇这个位置。",
+    "SNR": 42.21901,
+    "NBest": [
+      {
+        "Confidence": 0.96990764,
+        "Lexical": "到达 低处 交点 时 蓝色 与 橙色 的 高度 都 是 一 紫色 高度 是 二 不 经过 当前 点 不 参加 这次 报告 记录 蓝色 与 橙色 这 一对 对应 P 撇 这个 位置",
+        "ITN": "到达 低处 交点 时 蓝色 与 橙色 的 高度 都 是 一 紫色 高度 是 二 不 经过 当前 点 不 参加 这次 报告 记录 蓝色 与 橙色 这 一对 对应 P 撇 这个 位置",
+        "MaskedITN": "到达低处交点时蓝色与橙色的高度都是一紫色高度是二不经过当前点不参加这次报告记录蓝色与橙色这一对对应p撇这个位置",
+        "Display": "到达低处交点时，蓝色与橙色的高度都是一紫色，高度是二，不经过当前点不参加这次报告记录蓝色与橙色这一对对应P撇这个位置。",
+        "PronunciationAssessment": {
+          "AccuracyScore": 91,
+          "FluencyScore": 92,
+          "CompletenessScore": 97,
+          "PronScore": 92.4
+        },
+        "Words": [
+          {
+            "Word": "到达",
+            "Offset": 700000,
+            "Duration": 4100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "低处",
+            "Offset": 4900000,
+            "Duration": 3500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "交点",
+            "Offset": 8500000,
+            "Duration": 4300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "时",
+            "Offset": 12900000,
+            "Duration": 4100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "蓝色",
+            "Offset": 18300000,
+            "Duration": 5800000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "与",
+            "Offset": 24200000,
+            "Duration": 1200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "橙色",
+            "Offset": 25500000,
+            "Duration": 3300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "的",
+            "Offset": 28900000,
+            "Duration": 900000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "高度",
+            "Offset": 29900000,
+            "Duration": 2800000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "都",
+            "Offset": 32800000,
+            "Duration": 1800000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "是",
+            "Offset": 34700000,
+            "Duration": 1000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 91,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "一",
+            "Offset": 35800000,
+            "Duration": 3400000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "紫色",
+            "Offset": 42500000,
+            "Duration": 5300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "高度",
+            "Offset": 47900000,
+            "Duration": 3900000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "是",
+            "Offset": 51900000,
+            "Duration": 1200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 79,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "二",
+            "Offset": 53200000,
+            "Duration": 3200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 70,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "不",
+            "Offset": 56500000,
+            "Duration": 5000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "经过",
+            "Offset": 61600000,
+            "Duration": 3200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "当前",
+            "Offset": 64900000,
+            "Duration": 4500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "点",
+            "Offset": 69500000,
+            "Duration": 3900000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "不",
+            "Offset": 74700000,
+            "Duration": 3100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "参加",
+            "Offset": 77900000,
+            "Duration": 2800000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "这次",
+            "Offset": 80800000,
+            "Duration": 2200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 85,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "报告",
+            "Offset": 83100000,
+            "Duration": 3700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 82,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "先",
+            "PronunciationAssessment": { "ErrorType": "Omission" },
+            "Offset": null
+          },
+          {
+            "Word": "记录",
+            "Offset": 89900000,
+            "Duration": 3900000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "蓝色",
+            "Offset": 93900000,
+            "Duration": 3200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "与",
+            "Offset": 97200000,
+            "Duration": 1000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "橙色",
+            "Offset": 98300000,
+            "Duration": 4100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "这",
+            "Offset": 102500000,
+            "Duration": 1000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "一对",
+            "Offset": 103600000,
+            "Duration": 4000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 67,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "对应",
+            "Offset": 109100000,
+            "Duration": 4500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "P",
+            "Offset": 113700000,
+            "Duration": 1900000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 70,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "撇",
+            "Offset": 115700000,
+            "Duration": 2000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "这个",
+            "Offset": 117800000,
+            "Duration": 2200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "位置",
+            "Offset": 120100000,
+            "Duration": 5000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 76,
+              "ErrorType": "None"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "selectedAudioSha256": "b289bbea67de663ecb82d9cd77b99eee730923324c9d9296bf7b444c77a0098d",
+  "actualListeningPerformed": false
+}

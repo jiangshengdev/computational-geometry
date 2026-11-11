@@ -1,10 +1,19 @@
+import { checkAudio } from "./check-audio.ts";
 import { updateSentencePauses } from "./sentence-plan.ts";
 import assert from "node:assert/strict";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
-import {createSpeechTools} from "../../../shared/speech/azure-speech.ts";
+import { createSpeechTools } from "../../../shared/speech/azure-speech.ts";
 import { readFileSync } from "node:fs";
 import { pageList, shots } from "../src/storyboard.ts";
-import { rows, visualAt, fps, timingKind } from "../src/timeline.ts";
+import {
+  rows,
+  visualAt,
+  motionCue,
+  fps,
+  audioLeadFrames,
+  audio,
+  timingKind,
+} from "../src/timeline.ts";
 import {
   N,
   inputs,
@@ -48,10 +57,21 @@ assert.deepEqual(
   Object.keys(narration),
   shots.map((s) => s.id),
 );
-const marked = JSON.parse(readFileSync(new URL('../src/speech-text.json', import.meta.url),'utf8')) as Record<string,unknown>;
-const {buildSpeechDocument}=createSpeechTools(sdk,{voice:'zh-CN-Xiaoxiao:DragonHDFlashLatestNeural',commas:'document',fingerprint:true});
-assert.deepEqual(Object.keys(marked),Object.keys(narration));
-for(const id of Object.keys(narration)) assert.equal(buildSpeechDocument(marked[id],id).text,narration[id],id+': pronunciation changed text');
+const marked = JSON.parse(
+  readFileSync(new URL("../src/speech-text.json", import.meta.url), "utf8"),
+) as Record<string, unknown>;
+const { buildSpeechDocument } = createSpeechTools(sdk, {
+  voice: "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  commas: "document",
+  fingerprint: true,
+});
+assert.deepEqual(Object.keys(marked), Object.keys(narration));
+for (const id of Object.keys(narration))
+  assert.equal(
+    buildSpeechDocument(marked[id], id).text,
+    narration[id],
+    id + ": pronunciation changed text",
+  );
 const normalize = (s: string) =>
   s
     .replace(/([PQ])′/g, "$1 撇")
@@ -66,9 +86,10 @@ for (const row of rows) {
   );
   assert(!/[,，]/.test(narration[row.id]), row.id + " speech comma");
   assert(
-    !/横坐标|纵坐标/.test(
-      narration[row.id].replace("《同横坐标、退化输入与原坐标》", ""),
-    ),
+    row.id === "VS29" ||
+      !/横坐标|纵坐标/.test(
+        narration[row.id].replace("《同横坐标、退化输入与原坐标》", ""),
+      ),
     row.id + " old coordinate terms",
   );
   for (const sentence of narration[row.id].split(/[。？！]/).filter(Boolean)) {
@@ -78,8 +99,28 @@ for (const row of rows) {
   const last = visualAt(row, row.durationInFrames - 1);
   assert.equal(last.visibleStep, row.visibleStep);
   assert.equal(last.caption, row.captions.at(-1)!.text);
+  assert.equal(
+    row.audioEndFrame,
+    audioLeadFrames + Math.ceil(audio[row.id].duration * fps),
+  );
+  assert.equal(row.durationInFrames, row.audioEndFrame + row.pauseAfter * fps);
+  assert(
+    row.captions.every(
+      (c) => c.start >= audioLeadFrames && c.end <= row.audioEndFrame,
+    ),
+  );
+  assert.equal(visualAt(row, row.audioEndFrame - 1).thinking, false);
+  assert.equal(visualAt(row, row.audioEndFrame).thinking, true);
+  const cue = motionCue(row);
+  assert(
+    cue.start >= audioLeadFrames &&
+      cue.start < cue.end &&
+      cue.end <= row.audioEndFrame,
+  );
+  assert.equal(visualAt(row, cue.start - 1).motion, 0);
+  assert.equal(visualAt(row, cue.end).motion, 1);
   if (row.pauseAfter)
-    assert(row.durationInFrames - row.captions.at(-1)!.end >= 3 * fps);
+    assert.equal(row.durationInFrames - row.audioEndFrame, 3 * fps);
   assert.equal(
     row.captions.map((c) => c.text).join(""),
     shots.find((s) => s.id === row.id)!.captions.join(""),
@@ -89,9 +130,46 @@ assert.equal(
   pageList.filter((p) => /^第[一二三四五]节/.test(p.title)).length,
   5,
 );
-assert.equal(timingKind, "provisional-visual-inspection");
+assert.equal(timingKind, "measured-narration");
+for (const [index, row] of rows.entries()) {
+  const previous = rows[index - 1];
+  assert.equal(
+    row.from,
+    previous ? previous.from + previous.durationInFrames : 0,
+  );
+  assert.equal(
+    row.previousCaption,
+    previous?.page === row.page ? previous.captions.at(-1)!.text : "",
+  );
+  assert.equal(row.pauseAfter, rows[index + 1]?.page === row.page ? 0 : 3);
+}
+for (const [id, phrase] of [
+  ["VS32", "首先记录"],
+  ["VS39", "报告蓝色与紫色"],
+]) {
+  const row = rows.find((r) => r.id === id)!;
+  const start = motionCue(row, [phrase]).start;
+  assert.equal(visualAt(row, start - 1).currentReport, false);
+  assert.equal(visualAt(row, start).currentReport, true);
+  assert.equal(visualAt(row, row.durationInFrames - 1).currentReport, true);
+}
+const boundaries = rows.find((r) => r.id === "VS55")!;
+const upper = motionCue(boundaries, ["上端的新"]).start;
+assert.equal(visualAt(boundaries, upper - 1).boundaryPointIndex, 0);
+assert.equal(visualAt(boundaries, upper).boundaryPointIndex, 1);
+const pairs = rows.find((r) => r.id === "VS60")!;
+const second = motionCue(pairs, ["再与第二份"]).start;
+assert.equal(visualAt(pairs, second - 1).secondPointPair, false);
+assert.equal(visualAt(pairs, second).secondPointPair, true);
 console.log(
   `PASS: exact main-case coordinates and 8 events, two covered future candidates, point/interval restoration, ${shots.length} subtitle/narration pairs and ${pageList.length} page holds. No audio or visual acceptance implied.`,
 );
 
 updateSentencePauses(false);
+
+const args = process.argv.slice(2);
+assert(
+  args.length === 0 || (args.length === 1 && args[0] === "--decode"),
+  "Use [--decode]",
+);
+console.log(JSON.stringify(checkAudio(args.includes("--decode"))));
