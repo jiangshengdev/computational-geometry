@@ -30,9 +30,11 @@
     "dev": "remotion studio --no-open",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc",
+    "lint": "eslint src scripts && tsc",
     "video:check-content": "node scripts/check-content.ts",
-    "video:check-layout": "node scripts/check-layout.ts"
+    "video:check-layout": "node scripts/check-layout.ts",
+    "video:plan-narration": "node scripts/plan-narration.ts",
+    "video:synthesize": "node scripts/synthesize-narration.ts"
   },
   "type": "module"
 }

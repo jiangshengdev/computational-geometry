@@ -1,3 +1,4 @@
+import { updateSentencePauses } from "./sentence-plan.ts";
 import assert from "node:assert/strict";
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import {createSpeechTools} from "../../../shared/speech/azure-speech.ts";
@@ -92,3 +93,5 @@ assert.equal(timingKind, "provisional-visual-inspection");
 console.log(
   `PASS: exact main-case coordinates and 8 events, two covered future candidates, point/interval restoration, ${shots.length} subtitle/narration pairs and ${pageList.length} page holds. No audio or visual acceptance implied.`,
 );
+
+updateSentencePauses(false);
