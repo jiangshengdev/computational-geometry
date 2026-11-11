@@ -1,33 +1,39 @@
-# 中文文档站
+# Chinese documentation site
 
-使用 Docusaurus 3，正式地址为 https://cgd.jiangshengdev.com/。本站独立生成静态页面，不启动 Rust API，也不依赖计算应用的运行状态。
+English | [简体中文](README.zh-CN.md)
 
-## 本地使用
+Built with Docusaurus 3 and configured for https://cgd.jiangshengdev.com/. The site independently generates static pages; it neither starts the Rust API nor depends on the computation app running.
+
+## Local use
+
+Replace `/path/to/computational-geometry` with your checkout location. Run from the repository root:
 
 ```bash
+cd /path/to/computational-geometry
 pnpm --dir docs-site install --frozen-lockfile
-pnpm --dir docs-site start --host 127.0.0.1
+pnpm --dir docs-site run start --host 127.0.0.1
 ```
 
-从仓库根目录执行。需要 Node.js 20 或以上；使用 `packageManager` 指定的 pnpm 版本。依赖安装由维护者执行。预览默认不打开浏览器，访问命令输出的地址。维护者可用 `--port <空闲端口>` 指定端口。
+Node.js 20 or later is required; use the pnpm version specified by `packageManager`. Maintainers perform dependency installation. Preview does not open a browser by default; visit the printed address. Maintainers can specify an available port with `--port <空闲端口>`.
 
-## 构建与检查
+## Build and checks
 
 ```bash
-pnpm --dir docs-site typecheck
-pnpm --dir docs-site build
-pnpm --dir docs-site serve --host 127.0.0.1
+cd /path/to/computational-geometry
+pnpm --dir docs-site run typecheck
+pnpm --dir docs-site run build
+pnpm --dir docs-site run serve --host 127.0.0.1
 ```
 
-构建产物位于 `docs-site/build/`，静态预览不需要后端。构建会检查内部断链；公式由 remark-math 与 rehype-katex 编译，KaTeX 样式及字体随构建产物提供，不访问外部公式 CDN。
+Build output is in `docs-site/build/`; static preview requires no backend. The build checks internal broken links. Formulas compile through remark-math and rehype-katex; KaTeX styles and fonts ship with the build, without an external math CDN.
 
-代理验证必须先分配独立临时端口，再将具体端口号传给 `--port`，不得使用或复用维护者服务。Docusaurus 3.10.2 的端口预检不支持直接用 `--port 0` 启动。
+Agent validation must allocate a separate temporary port and pass that concrete port to `--port`, without using or reusing a maintainer's service. Docusaurus 3.10.2's port precheck does not support starting directly with `--port 0`.
 
-功能验收使用无头浏览器检查首页进入证明页、侧栏导航、文章目录锚点、证明页直接访问与刷新，以及行内和独立公式的渲染。只检查内容和交互，不做外观快照。数学内容须另行复核，不能以渲染通过代替证明正确。
+Functional acceptance uses a headless browser to check navigation from the home page to proof pages, sidebar navigation, article table-of-contents anchors, direct proof-page access and refresh, and inline/display formula rendering. It checks content and interaction, without visual snapshots. Mathematical content needs separate review; successful rendering does not establish proof correctness.
 
-## 内容维护
+## Content maintenance
 
-正文放在 `docs/` 的 Markdown 或 MDX 文件中，按章节和专题分目录；侧栏由 `sidebars.ts` 维护。二级、三级标题生成文章目录；公式使用 `$...$` 或 `$$...$$`。
+Articles are Markdown or MDX files under `docs/`, organized by chapter and topic; `sidebars.ts` maintains the sidebar. Level-two and level-three headings generate the article table of contents. Use `$...$` or `$$...$$` for formulas.
 
 ```text
 docs/
@@ -44,75 +50,95 @@ docs/
         └── intersection.mdx
 ```
 
-剪切专题由 `docs/segment-intersection/shear/index.mdx` 提供阅读入口，五篇正文按侧栏顺序组织，使用 Docusaurus 的目录卡片与前后篇导航。各文档通过 front matter 的 `slug` 固定页面地址，移动文件时同步维护侧栏文档 ID 和正文相对链接。本站没有博客、搜索或语言切换。仓库内部 ADR、代理规则与任务记录不在本站内容目录中。
+`docs/segment-intersection/shear/index.mdx` is the entry point to the shear topic. Its five articles follow sidebar order, using Docusaurus directory cards and previous/next navigation. Front-matter `slug` fields fix page addresses. When moving files, update sidebar document IDs and relative article links together. The site has no blog, search, or language switch. Internal ADRs, agent rules, and task records are outside the site's content directory.
 
-## 图片目录
+## Image directories
 
-图片先按所属文档主题分目录，再按明暗主题分入 `light/` 和 `dark/`：
+Images are organized by document topic, then into `light/` and `dark/` themes:
 
 ```text
 static/img/segment-intersection/
 ├── what-we-compute/
-│   ├── light/       # 31 个独立子图 SVG
-│   └── dark/        # 31 个独立子图 SVG
+│   ├── light/       # 31 individual SVG subfigures
+│   └── dark/        # 31 individual SVG subfigures
 ├── line-equation/
-│   ├── light/       # 4 个 SVG
-│   └── dark/        # 4 个 SVG
+│   ├── light/       # 4 SVGs
+│   └── dark/        # 4 SVGs
 └── shear/
-    ├── light/       # 8 个 SVG
-    └── dark/        # 8 个 SVG
+    ├── light/       # 8 SVGs
+    └── dark/        # 8 SVGs
 ```
 
-正文使用 `/img/segment-intersection/<文档主题>/<light或dark>/<文件名>` 引用图片。新增图片应放入对应目录；移动时同时更新正文引用及生成脚本的输出目录。文件名保留原有明暗后缀。
+Articles reference `/img/segment-intersection/<文档主题>/<light或dark>/<文件名>`. Put new images in the corresponding directory. Moves require updating article references and generator output directories. Keep existing theme suffixes in filenames.
 
-第 1 章的 9 组配图使用 `IntersectionFigures` 组件：每张子图原始尺寸为 320 × 260，按原尺寸显示，空间不足时换行，不对整组图片缩放。子图文件名包含从 1 开始的编号，如 `intersection-goals-identity-1-light.svg`。前后对照每两幅独立成组，并保留「加入 C 前／后」的图外说明。生成器会清理被这些子图替换的旧拼接 SVG。
+Chapter 1's nine figure groups use `IntersectionFigures`. Each subfigure is 320 × 260 and displayed at native size, wrapping when space is insufficient without scaling the entire group. Filenames include one-based numbering, such as `intersection-goals-identity-1-light.svg`. Before/after comparisons form independent pairs and retain external captions meaning “before/after adding C”. The generator cleans up old combined SVGs replaced by these subfigures.
 
-第 1 章配图由 `scripts/draw_intersection_goals.ts` 生成，在本目录执行 `uv run --offline --with matplotlib==3.11.2 pnpm exec node scripts/draw_intersection_goals.ts`。脚本通过 `scripts/render_math_labels.py` 复用下述 Matplotlib 环境与 MathText 样式，将 LaTeX 数学标注嵌入为 SVG 路径。图内仅保留必要的编号和数学标注，中文说明放在正文；原点标为 $O$，坐标轴正向带箭头。直线方程配图由 `scripts/draw_line_equation.py` 生成，同样复用剪切脚本的环境与主题样式。
-
-## 生成坐标系图解
-
-如果已有 Matplotlib 环境，但 uv 离线解析不可用，可指定现有解释器生成第 1 章图片：`MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_intersection_goals.ts`。该入口不会安装依赖。
-
-`scripts/draw_shear_coordinates.py` 使用 Matplotlib 的 MathText 渲染数学标注，生成以下图解，每张都包含明暗主题：
-
-- 坐标系变换：`static/img/segment-intersection/shear/light/shear-coordinates-light.svg`、`static/img/segment-intersection/shear/dark/shear-coordinates-dark.svg`。
-- 事件顺序颠倒：`static/img/segment-intersection/shear/light/shear-order-reversal-light.svg`、`static/img/segment-intersection/shear/dark/shear-order-reversal-dark.svg`。
-- 新旧横轴重合：`static/img/segment-intersection/shear/<theme>/shear-horizontal-axis-<theme>.svg`，展示横轴上的点在两套坐标中的读数相同。
-- 新纵轴的五步图解：`static/img/segment-intersection/shear/<theme>/shear-axis-step-{1..5}-<theme>.svg`，依次展示选点、新横坐标、原纵坐标、原横坐标及最终位置。图中仅保留几何辅助线、符号和简短公式，中文讲解放在正文的对应步骤中。
-
-文档通过 Docusaurus 的 `ThemedImage` 随站点主题选择图片。
-
-第四章《同一个点上的事情一起处理》使用 `IntersectionFigures` 展示 7 幅独立子图，明暗主题共 14 个 SVG，位于 `static/img/segment-intersection/same-point-events/<theme>/`。生成入口为 `scripts/draw_same_point_events.ts`，复用 `svg_math_labels.ts` 的主题颜色与 MathText 排版；在本目录执行 `MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_same_point_events.ts`。各图保持 320 × 260 原始尺寸与相同坐标尺度，点输入分图展示但不移动位置，事件两侧图只画相应侧的成员；这些是教学示意，不是真实执行轨迹。
-
-第五章《重叠线段怎样参与扫描》沿用同一组件与数学标注能力，包含 8 幅独立子图，明暗主题共 16 个 SVG，位于 `static/img/segment-intersection/overlapping-segments/<theme>/`。子图保留重叠成员的原坐标，分别说明同线身份、外部穿越、覆盖延长与空隙；它们是教学示意，不是真实执行轨迹。使用已有 Matplotlib 环境重新生成：
+Chapter 1 figures are generated by `scripts/draw_intersection_goals.ts`:
 
 ```bash
-cd docs-site
+cd /path/to/computational-geometry/docs-site
+uv run --offline --with matplotlib==3.11.2 pnpm exec node scripts/draw_intersection_goals.ts
+```
+
+Through `scripts/render_math_labels.py`, the script reuses the Matplotlib environment and MathText styles described below, embedding LaTeX math labels as SVG paths. Figures retain only necessary numbering and mathematical labels; Chinese explanations belong in the article. The origin is labeled $O$, and positive axis directions have arrows. Line-equation figures are generated by `scripts/draw_line_equation.py`, also reusing the shear script's environment and theme styles.
+
+## Generating coordinate diagrams
+
+If a Matplotlib environment already exists but uv offline resolution is unavailable, specify the existing interpreter for Chapter 1 figures; this entry point does not install dependencies:
+
+```bash
+cd /path/to/computational-geometry/docs-site
+MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_intersection_goals.ts
+```
+
+`scripts/draw_shear_coordinates.py` renders mathematical labels with Matplotlib MathText and generates both light and dark versions of:
+
+- Coordinate-system transformation: `static/img/segment-intersection/shear/light/shear-coordinates-light.svg` and `static/img/segment-intersection/shear/dark/shear-coordinates-dark.svg`.
+- Event-order reversal: `static/img/segment-intersection/shear/light/shear-order-reversal-light.svg` and `static/img/segment-intersection/shear/dark/shear-order-reversal-dark.svg`.
+- Coinciding old/new horizontal axes: `static/img/segment-intersection/shear/<theme>/shear-horizontal-axis-<theme>.svg`, showing that points on the horizontal axis have the same readings in both coordinate systems.
+- Five steps for the new vertical axis: `static/img/segment-intersection/shear/<theme>/shear-axis-step-{1..5}-<theme>.svg`, showing point selection, new x coordinate, original y coordinate, original x coordinate, and final position. Figures retain geometric guides, symbols, and short formulas; Chinese explanations appear in the corresponding article steps.
+
+Articles use Docusaurus `ThemedImage` to select images for the site theme.
+
+Chapter 4, “Handling everything at the same point together”, uses `IntersectionFigures` for seven separate subfigures, totaling 14 themed SVGs under `static/img/segment-intersection/same-point-events/<theme>/`. The generator `scripts/draw_same_point_events.ts` reuses theme colors and MathText layout from `svg_math_labels.ts`:
+
+```bash
+cd /path/to/computational-geometry/docs-site
+MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_same_point_events.ts
+```
+
+Each figure retains native 320 × 260 dimensions and the same coordinate scale. Point inputs appear in separate figures without changing position. Figures on either side of an event draw only members on that side. These are teaching illustrations, not actual execution traces.
+
+Chapter 5, “How overlapping segments participate in the sweep”, reuses the same component and math-label capabilities, with eight subfigures and 16 themed SVGs under `static/img/segment-intersection/overlapping-segments/<theme>/`. They preserve overlapping members' original coordinates and illustrate collinear identity, external crossings, coverage extension, and gaps. These are teaching illustrations, not actual execution traces. Regenerate using an existing Matplotlib environment:
+
+```bash
+cd /path/to/computational-geometry/docs-site
 MATHTEXT_PYTHON=/path/to/existing/environment/bin/python pnpm exec node scripts/draw_overlapping_segments.ts
 ```
 
-上述路径中的 `<theme>` 为 `light` 或 `dark`，目录与文件名后缀保持一致。
+In these paths, `<theme>` is `light` or `dark`, matching directory names and filename suffixes.
 
-该脚本使用 Python，因为 Matplotlib 提供的是 Python 绘图 API。从仓库根目录执行：
+The shear-coordinate script uses Python because Matplotlib provides a Python plotting API. Run from the repository root:
 
 ```bash
+cd /path/to/computational-geometry
 uv run --offline --with matplotlib==3.11.2 python docs-site/scripts/draw_shear_coordinates.py
 ```
 
-需要维护者预先准备 uv 和对应的 Matplotlib 环境；命令以离线模式复用缓存。图片已纳入版本管理，正常构建文档站无需运行 Python。修改图片时应修改脚本并重新生成，不手工编辑 SVG。两种主题共用几何与排版逻辑，只替换配色；公式导出为路径，不依赖浏览器安装数学字体。
+Maintainers must prepare uv and the corresponding Matplotlib environment in advance; the command reuses cached resources offline. Images are version-controlled, so normal site builds do not need Python. To change images, edit scripts and regenerate rather than hand-editing SVGs. Both themes share geometry and layout, changing only colors. Formulas are exported as paths and do not depend on installed browser math fonts.
 
-## 独立 Vercel 项目
+## Separate Vercel project
 
-创建文档站自己的 Vercel 项目时，将 **Root Directory 设置为 `docs-site`**。该目录的 `vercel.json` 指定：
+Create a separate Vercel project for the documentation site and set **Root Directory to `docs-site`**. Its `vercel.json` defines:
 
-- 安装：`pnpm install --frozen-lockfile`
-- 构建：`pnpm build`
-- 输出：`build`
-- 框架标识：`docusaurus-2`（Vercel 对 Docusaurus 2/3 使用的标识）
-- 站点根路径 `/`，页面使用尾斜杠，与 Docusaurus 静态目录输出一致。
+- Installation: `pnpm install --frozen-lockfile`
+- Build: `pnpm build`
+- Output: `build`
+- Framework identifier: `docusaurus-2` (Vercel's identifier for Docusaurus 2/3)
+- Site root `/`, with trailing-slash page URLs matching Docusaurus static-directory output.
 
-使用 Node.js 24，并启用 Vercel 的 Corepack 支持（项目环境变量 `ENABLE_EXPERIMENTAL_COREPACK=1`），以使用 `packageManager` 声明的 pnpm 版本。
+Use Node.js 24 and enable Vercel Corepack support through project environment variable `ENABLE_EXPERIMENTAL_COREPACK=1` to use the pnpm version declared by `packageManager`.
 
-后续发布时将正式域名绑定到该独立项目。已有仓库根 `vercel.json` 继续负责计算前端与 Rust API 的共同发布，不改用本站配置；本站也不添加计算应用的 SPA/API 路由回退。
+Bind the production domain to this separate project when publishing. The existing root `vercel.json` continues to deploy the computation frontend and Rust API together; it does not switch to the site configuration. The documentation site does not add computation-app SPA/API fallbacks.
 
-本次只提供本地框架与部署配置，没有创建云端项目、执行部署或修改 DNS；域名出现在生成的 canonical URL 中不代表已经上线。
+This setup supplies only the local framework and deployment configuration. It has not created a cloud project, deployed the site, or changed DNS. A domain appearing in generated canonical URLs does not establish that the site is live.

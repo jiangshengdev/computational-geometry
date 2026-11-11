@@ -1,89 +1,86 @@
-# 视频公共基础模块
+# Shared video foundations
 
-本目录供直线方程教程、剪切系列和 Bentley–Ottmann 系列的工程按需使用；实际能力以各集入口与导入为准。每集仍独立拥有教学内容、分镜、推导、专用图示、原稿、音频及发布素材，并保留自己的命令入口。
+English | [简体中文](README.zh-CN.md)
 
-## 职责与依赖
+The line-equation tutorial, shear series, and Bentley–Ottmann series use this directory as needed; actual capabilities depend on each episode's entry points and imports. Each episode still owns its teaching content, storyboard, derivations, specialized diagrams, source text, audio, publication assets, and command entry points.
 
-- `config/`：各集共用的 Remotion 制作配置与 TypeScript 编译选项。Remotion 入口传入本集安装版本的 `Config`，显式保留输出覆盖和 Sequence 活动策略；TypeScript 的类型范围、JSON 支持及 `node_modules` 路径仍由各集配置维护。
-- `math/`：教学分组、等号对齐和完整分组的行高计算。直线方程教程保留自己的文字转公式策略、跨列选取与无等号处理；剪切系列使用顶层等号切分策略。
-- `ui/`：KaTeX 呈现、公式表格、剪切系列数学文本组合及字幕容器。各集传入着色规则、符号范围、教学数据和必要内容，不从公共模块反向导入某集分镜。
-- `speech/`：语音文档、Azure 合成与对齐、实测时间检查、字幕短句合并及查询、音频检查和适用的素材制作流程。浏览器只导入纯时间或字幕模块，Azure SDK 由各集 Node 入口传入。
-- `checks/`：内容校验、通用 DOM 边界检查、无头 Studio 检查生命周期和公共源码 lint。各集保留数学正确性、专用图示、教学揭示等检查。
-- `tools/`：共享预检、浏览器核验与用户导出入口；适用范围和操作边界见[工程操作说明](../../docs/agents/videos/operations.md)。
+## Responsibilities and dependencies
 
-第⑤、⑥集共用 `checks/ShotLayoutCheck.tsx` 和 `checks/shot-layout.ts`，前者枚举生产页面的揭示、字幕、动画和静默状态，后者管理逐镜头检查及失败汇总；各集仍负责生产场景和内容断言。`speech/audit-narration.ts` 共用逐段评估与音频哈希绑定，不把自动标记等同于已确认错读。
+- `config/`: shared Remotion production configuration and TypeScript compiler options. Remotion entry points pass `Config` from the locally installed version and explicitly retain output-overwrite and Sequence activity policies. Each episode still maintains its TypeScript type scope, JSON support, and `node_modules` paths.
+- `math/`: teaching groups, equals-sign alignment, and row-height calculation for complete groups. The line-equation tutorial retains its text-to-formula strategy, selection across columns, and handling of lines without equals signs; the shear series splits at top-level equals signs.
+- `ui/`: KaTeX rendering, formula tables, shear-series mathematical text composition, and subtitle containers. Episodes supply coloring rules, symbol scopes, teaching data, and necessary content. Shared modules do not import an episode's storyboard.
+- `speech/`: speech documents, Azure synthesis/alignment, measured-timing checks, subtitle phrase merging and lookup, audio checks, and applicable asset-production flows. Browser code imports only pure timing or subtitle modules; each episode's Node entry point supplies the Azure SDK.
+- `checks/`: content validation, general DOM boundary checks, headless Studio checking lifecycle, and shared-source lint. Episodes retain mathematical correctness, specialized diagram, and teaching-reveal checks.
+- `tools/`: shared preflight, browser verification, and user-export entry points. See [engineering operations](../../docs/agents/videos/operations.md) for applicability and operation boundaries.
 
-配音生成默认串行；第⑥集显式选择三段一批。并发批次等待全部在途请求结束后才报告失败，保留暂存数据，全部目标通过前不发布正式素材。零时长或超出音频结尾的合成词时间可使用现有语音评估服务重新测量，保留原音频和原始服务响应；不会裁剪、推算词时间或放宽发音复核。
+Episodes ⑤ and ⑥ share `checks/ShotLayoutCheck.tsx` and `checks/shot-layout.ts`. The former enumerates reveal, subtitle, animation, and silent states of production pages; the latter manages per-shot checks and failure summaries. Each episode still supplies production scenes and content assertions. `speech/audit-narration.ts` shares per-segment assessment and audio-hash binding; automatic flags do not establish confirmed mispronunciations.
 
-超过 30 秒的 48 kHz 单声道 PCM 配音，通过 `speech/assessment-chunks.ts`
-在实测句界附近验证实际静音，再把识别副本按连续样本切分为短段。
-正式音频不变；保留每段参考文本、样本范围和原始响应，按样本起点换算识别时间。
-合并后仍执行完整文本、漏读、插入及读音复核门禁；找不到可靠切分点时停止。
+Narration generation is sequential by default; episode ⑥ explicitly selects batches of three segments. Concurrent batches wait for all in-flight requests before reporting failure, retain staged data, and do not publish formal assets until all targets pass. Zero-duration synthesis word times or times beyond the audio end may be remeasured using the existing speech assessment service, preserving original audio and raw service responses. This does not trim audio, infer word times, or relax pronunciation review.
 
-`tools/export.ts` 默认导出 PNG，`audio` 模式导出同时间线 PCM WAV。它在两个模式中复用浏览器核验、独立端口和禁止覆盖逻辑；具体工程的接入、独立预检要求与命令模板见[用户导出](../../docs/agents/videos/operations.md#用户导出)。
+For 48 kHz mono PCM narration longer than 30 seconds, `speech/assessment-chunks.ts` verifies actual silence near measured sentence boundaries, then splits a recognition copy into short chunks of contiguous samples. Formal audio is unchanged. Each chunk retains reference text, sample range, and raw response; recognition times are offset by its starting sample. After merging, full-text, omission, insertion, and pronunciation-review gates still apply. Processing stops if no reliable split point exists.
 
-公共模块不依赖任何具体视频目录。各集的 TypeScript 路径与 Remotion Rspack 配置使公共浏览器代码使用该集已安装的 React、KaTeX 等依赖，不创建第二份运行时，也不统一升级 Remotion。命令仍从具体视频工程目录执行。公共目录不单独安装依赖。
+`tools/export.ts` exports PNG by default; `audio` mode exports PCM WAV from the same timeline. Both modes share browser verification, independent ports, and overwrite prevention. See [user export](../../docs/agents/videos/operations.md#用户导出) for episode integration, independent preflight requirements, and command templates.
 
-`ui/NarratedLesson.tsx` 的 `createNarratedLesson` 供剪切系列及 Bentley–Ottmann 已制作视频共享镜头序列与完整原速音频播放。各集提供本地 Remotion 运行时、时间线、画面状态、生产页面和音频索引，并保留自己的导出名称、片段选择及镜头名称。`ShotScene` 的 `audioEnabled=false` 用于静默检查；未指定 `audioLeadFrames` 的工程维持直接播放音频。直线方程教程保留自己的双层章节与字幕总轨，第四章空工程保留当前制作阶段。
+Shared modules do not depend on any specific video directory. Episode TypeScript paths and Remotion Rspack configuration let shared browser code use that episode's installed React, KaTeX, and other dependencies, without creating a second runtime or uniformly upgrading Remotion. Commands run from individual video project directories. The shared directory has no separate dependency installation.
 
-`speech/timing.ts` 的 `wordsInTextRange` 只按源文本区间选择重叠的实测词，不更改或推算服务时间；短语唯一性、游标消歧、正时长筛选及失败诊断仍由相应调用方负责。剪切直觉与系数复用 `createShotTimeline` 的基础编排，保留各自的行走、对比及运动中点映射。
+`createNarratedLesson` in `ui/NarratedLesson.tsx` shares shot sequencing and complete original-speed audio playback across the shear series and produced Bentley–Ottmann videos. Episodes supply their local Remotion runtime, timeline, visual state, production pages, and audio index, while retaining export names, segment selection, and shot names. `ShotScene` uses `audioEnabled=false` for silent checks. Projects without `audioLeadFrames` retain direct audio playback. The line-equation tutorial retains its two-level chapter structure and overall subtitle track; the Chapter 4 empty project retains its current production stage.
 
-第三章两集通过 `checks/ShotLayoutCheck.tsx` 的 `captionsFromFrames` 转换检查字幕，通过 `checks/dom.ts` 的 `checkTeachingPage` 核对页面边界、图示标签与保留的教学行；判断路径、引用、语义配色和静默等专属断言继续在各集维护。
+`wordsInTextRange` in `speech/timing.ts` selects overlapping measured words only by source-text range, without changing or inferring service times. Callers still own phrase uniqueness, cursor disambiguation, positive-duration filtering, and failure diagnostics. Shear intuition and coefficient projects reuse the basic orchestration of `createShotTimeline`, retaining their own walking, comparison, and motion-midpoint mappings.
 
-`speech/sentence-plan-tools.ts` 由第 2 章上下集共同使用，核对字幕原句、
-独立口播和读音稿的对应关系，按语义分句记录检查或生成 400ms／200ms 停顿。
-`speech/timing.ts` 的显式 `CaptionPlan` 支持一段公式字幕对应多句自然口播；
-两侧必须按原顺序逐字覆盖完整文本，再依据实际词时间生成字幕。
-未提供对应表的既有工程保留原来的短句匹配规则，不改变已有素材或时间数据。
+The two Chapter 3 episodes convert checking subtitles through `captionsFromFrames` in `checks/ShotLayoutCheck.tsx` and use `checkTeachingPage` in `checks/dom.ts` to check page boundaries, diagram labels, and retained teaching lines. Episode-specific assertions for decision paths, references, semantic colors, and silence remain local.
 
-经用户明确批准的单字母 IPA 例外使用 `{ letter: "p", ipa: "piː" }`，
-保留字母文本并生成英文 IPA 标签，SSML 纳入指纹；普通字母仍默认拼读。
-本接口不授权自动尝试或切换读音方法。
+Both Chapter 2 episodes use `speech/sentence-plan-tools.ts` to check correspondence among subtitle source sentences, independent narration, and pronunciation text. Semantic sentence records drive checks or generation of 400ms/200ms pauses. Explicit `CaptionPlan` in `speech/timing.ts` supports one formula subtitle corresponding to several natural narration sentences. Both sides must cover the full text character for character in the original order before subtitles are generated from actual word times. Existing projects without a mapping retain their phrase-matching rules, assets, and timing data.
 
-## 保留的行为差异
+The explicitly user-approved single-letter IPA exception uses `{ letter: "p", ipa: "piː" }`, retaining letter text and generating an English IPA tag. SSML is included in the fingerprint; ordinary letters still default to spelling. This interface does not authorize automatic experiments or pronunciation-method changes.
 
-- 直线方程教程在片段层拒绝口播逗号，语音文档只返回文本和 SSML；剪切系数与整数坐标在完整文档层拒绝逗号并返回指纹。剪切直觉的既有构造器不增加逗号拒绝行为；新口播仍须遵守制作规则。
-- 全部七个配音工程统一使用 `lang="en-US"` 与 `say-as interpret-as="characters"` 拼读单字母；显式 `{letter}` 和普通字符串中的独立字母使用同一规则，完整英文单词与中文拼音标注保持原样。旧稿中用作 Y 的 `why` 已还原为 Y。整数坐标与交点分母保留 dry-run 分句校验。
-- 剪切直觉不接受用于修复时间戳的误读复核例外；剪切系数与整数坐标保留原有、绑定具体音频的人工复核策略。
-- 直线方程教程保留口播公式内句号的遮蔽规则，以及按词起点选取时间戳的方式；剪切系列保留按重叠范围选取正时长词的方式。共同维护短句合并、时间戳结果构造和静默期间字幕查询。
-- 各集保留字幕着色、原有图示标注和页面强调策略；共享化不将所有集改成某一集的样式。
-- 直线方程教程保留自己的章节、静默行与素材续跑数据格式。剪切系列共用镜头制作流程，并以明确选项保留时间数据文件要求及提前分句校验差异。
+## Preserved behavioral differences
 
-这些选项表示现有调用方确有的行为差异，不是临时兼容层。修改策略含义需明确处理受影响的各集，不能借重构修正旧问题。
+- The line-equation tutorial rejects narration commas at segment level, returning only text and SSML from speech documents. Shear coefficient and integer-coordinate projects reject commas at full-document level and return fingerprints. The existing shear-intuition constructor gains no comma rejection; new narration must still follow production rules.
+- All seven narration projects use `lang="en-US"` with `say-as interpret-as="characters"` for single letters. Explicit `{letter}` values and standalone letters in ordinary strings follow the same rule; full English words and Chinese pinyin annotations remain unchanged. Historical `why` used as Y has been restored to Y. Integer-coordinate and intersection-denominator projects retain dry-run sentence validation.
+- Shear intuition does not accept mispronunciation-review exceptions for timestamp repair. Shear coefficient and integer-coordinate projects retain their original human-review policies bound to specific audio.
+- The line-equation tutorial retains period masking within spoken formulas and selects timestamps by word start. The shear series retains positive-duration words selected by overlap. Phrase merging, timestamp-result construction, and subtitle lookup during silence are shared.
+- Episodes retain subtitle colors, existing diagram labels, and page-emphasis strategies; sharing does not restyle every episode after one example.
+- The line-equation tutorial retains its chapter, silent-line, and asset-resumption formats. The shear series shares shot-production flows, using explicit options to preserve timing-data file requirements and differences in early sentence validation.
 
-字母模式改变会更新 SSML 指纹。仅更新合成方案而保留历史音频的工程，其既有素材仍使用旧时间数据；内容检查会报告与新口播方案不一致，不能改写旧指纹或放宽检查来冒充已经重新合成。
+These options represent real differences among existing callers, not temporary compatibility layers. Changing a policy's meaning requires explicitly handling affected episodes; refactoring must not silently repair unrelated old issues.
 
-`speech/shot-timeline.ts` 由整数坐标与交点分母共同调用，维护实测音频、揭示、运动锚点、字幕延续及页末停留规则。各集保留分镜、字幕、帧率及片段选择入口。`TeachingMathLines` 的 `defaultMathColor` 允许交点分母使用中性正文公式，保留当前步骤强调；未传入时维持已有调用方的颜色行为。
+Changing letter mode updates SSML fingerprints. Projects that update only synthesis plans while keeping historical audio still use their old timing data. Content checks report mismatches with the new narration plan. Do not rewrite old fingerprints or relax checks to pretend that resynthesis occurred.
 
-第三章上下集共用 `math/semantic-colors.ts` 与 `ui/SemanticMathText.tsx`，维护显式公式标记、中文关键词及不改变数学类别的染色。每集的 `teaching-colors.ts` 保留自己的对象身份与短句重点映射；`TeachingMathLines` 分别通过 `lineMarks` 和 `activeMarks` 接入。标题、字幕和非重点内容由调用方显式保留中性色，不从对象名称推断全局配色。
+`speech/shot-timeline.ts` is shared by the integer-coordinate and intersection-denominator projects, maintaining measured audio, reveals, motion anchors, subtitle continuation, and end-of-page holds. Episodes retain storyboards, subtitles, frame rates, and segment-selection entry points. `TeachingMathLines` supports `defaultMathColor` so the intersection-denominator project can use neutral body formulas with current-step emphasis; omitting it preserves existing callers' colors.
 
-`checks/layout.ts` 接受显式 `browserExecutable`，供调用方传入已经核验版本的 Headless Shell；交点分母的入口负责核验。旧调用方未传入该参数时的既有实现不构成满足当前唯一浏览器规则的证明。
+Both Chapter 3 episodes share `math/semantic-colors.ts` and `ui/SemanticMathText.tsx` for explicit formula marks, Chinese keywords, and coloring that does not change mathematical categories. Each episode's `teaching-colors.ts` retains object identities and phrase-emphasis mappings. `TeachingMathLines` receives them through `lineMarks` and `activeMarks`. Callers explicitly keep titles, subtitles, and non-emphasized content neutral; global colors are not inferred from object names.
 
-## 修改与验证
+`checks/layout.ts` accepts an explicit `browserExecutable` so callers can pass a version-verified Headless Shell; the intersection-denominator entry point performs that verification. Existing behavior of old callers that omit it does not prove compliance with the current sole-browser rule.
 
-说明与推导页使用 `ui/MathLessonPage.tsx` 和 `ui/TeachingMathLines.tsx`。
-旧 `LessonPage` 已删除，不提供兼容导出；禁止恢复或复制旧组件。
-`TeachingMathLines` 的 `wrapText` 可对指定页面启用中数混排长句换行；
-未启用的公式页保持原有分组与对齐行为。
-每个视频工程的 ESLint 配置（含新工程）都须追加
-`checks/component-policy.ts` 导出的 `componentPolicy`，共享检查也使用该策略。
+## Changes and validation
 
-从调用关系确定影响范围。公共模块修改后，对所有实际受影响工程执行必要检查；只改某集内容时不要求无关工程检查。保持已有失败检测，不为迁移放宽阈值或跳过失败。
+Explanation and derivation pages use `ui/MathLessonPage.tsx` and `ui/TeachingMathLines.tsx`. The old `LessonPage` was deleted with no compatibility export; do not restore or copy it. `TeachingMathLines` supports `wrapText` for long mixed Chinese/math sentences on selected pages. Formula pages without it retain their existing grouping and alignment. Every video project's ESLint configuration, including new projects, must append `componentPolicy` exported by `checks/component-policy.ts`; shared checks use the same policy.
 
-在各受影响工程目录运行：
+Determine impact from actual callers. After shared-module changes, run necessary checks for all affected projects; changing only one episode's content does not require unrelated project checks. Preserve failure detection without relaxing thresholds or skipping failures for migration.
+
+Run in each affected project (replace the path with its actual directory):
 
 ```sh
+cd /path/to/video-project
 pnpm --config.verify-deps-before-run=false run video:lint
 ```
 
-该入口同时检查本集和公共源码，并通过消费方 TypeScript 配置检查公共类型。只需单独检查公共源码时，可从 `videos/shear/<工程>/` 运行：
+This checks episode and shared source, including shared types through the consumer's TypeScript configuration. To check only shared source, run from `videos/shear/<工程>/` (the example below uses `shear-intuition`):
 
 ```sh
+cd /path/to/computational-geometry/videos/shear/shear-intuition
 pnpm --config.verify-deps-before-run=false exec node ../../shared/checks/lint.ts
 ```
 
-根据影响复用各工程既有字幕、时间线、语音或推导测试。剪切系列另有 `video:narration --dry-run`、`video:check-content`；布局检查入口以各工程 `package.json` 为准。不要因公共逻辑存在就给未具备某流程的工程新增检查要求。公共模块内的纯行为测试可从 `videos/shear/<工程>/` 通过 `pnpm --config.verify-deps-before-run=false exec node --test ../../shared/math/math-lines.test.ts` 运行。直线方程教程目录少一层，以上两个路径使用 `../shared/`。
+Reuse existing subtitle, timeline, speech, or derivation tests according to impact. The shear series also has `video:narration --dry-run` and `video:check-content`; layout entry points depend on each project's `package.json`. Shared logic does not justify imposing checks on projects lacking those flows. Pure shared-module behavior tests can run from `videos/shear/<工程>/` (the example below uses `shear-intuition`):
 
-布局检查使用已安装浏览器、无头会话及临时端口，关闭本次创建的进程，不执行视频或静帧导出。既有素材足以验证的重构不调用语音服务。内容检查、类型检查和无头页面检查各自只证明覆盖的行为；试听、成片同步和可见桌面验收未执行时须如实说明。
+```sh
+cd /path/to/computational-geometry/videos/shear/shear-intuition
+pnpm --config.verify-deps-before-run=false exec node --test ../../shared/math/math-lines.test.ts
+```
 
-公共代码只有一个维护来源。新增调用方应提供内容或必要策略，不复制公共实现；新增抽象须有实际调用需求，不扩展成统一视频框架。
+The line-equation tutorial is one directory level shallower and uses `../shared/` for those two shared paths.
+
+Layout checks use installed browsers, headless sessions, and temporary ports, close processes they create, and do not export video or stills. Refactoring verifiable with existing assets does not call speech services. Content, type, and headless-page checks each establish only their covered behavior. Listening, final-film synchronization, and visible-desktop acceptance must be reported as unperformed when they have not occurred.
+
+Shared code has one maintenance source. New callers supply content or necessary policies rather than copying implementations. New abstractions require actual caller needs; this is not a general video framework.

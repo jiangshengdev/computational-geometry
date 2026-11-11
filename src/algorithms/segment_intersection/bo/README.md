@@ -1,116 +1,58 @@
-# 动态同线组求交与轨迹生产契约
+# Dynamic collinear groups: intersection and trace production contracts
 
-实现依据为 CNB #260、#261 论证评论 `2114895925653762048` 和实施票 #262。
-普通 `intersections` 与带记录 `stream_intersections` 共用 `sweep`；暴力参考只用于显式校验。
-本文件说明代码与交付接口，不替代 CNB 的任务状态或验收记录。
+English | [简体中文](README.zh-CN.md)
 
-## 核心不变量及操作成本
+The implementation follows CNB #260, the reasoning in comment `2114895925653762048` on #261, and implementation ticket #262. Ordinary `intersections` and recorded `stream_intersections` share `sweep`; the brute-force reference is used only for explicit validation. This document describes code and delivery interfaces, not task status or acceptance records maintained in CNB.
 
-- `groups::initialize` 按固定精确 `(slope, intercept)` 建组。点输入无组。
-  每组的 `members` 与 `right_ends` 是同一动态成员集合的两个索引；每条非零段各增删一次。
-- `Event` 合并同一精确位置的 `starts`、`ends`、`points`。预约只加入位置，不保存成员对。
-  `choose_shear` 沿用非零竖直段检测与原安全界；点输入及同 x 事件不会单独触发剪切。
-- `classify::locate` 用 AVL 高度 lower_bound 和 successor 定位连续等高块，保存外侧间隙，
-  合并起点组后移除原块。不会扫描全部活动组，也不会扫描组成员求覆盖范围。
-- `groups::compare` 在当前事件下按高度排序：较低等高位置斜率升序，较高等高位置降序；
-  当前高度在移除前降序、重插后升序。更新当前块不会提前翻转更高的同 x 交会。
-- `record` 对每个新起点只枚举当前同组成员并输出完整交集，然后加入两个索引。
-  同线遍历以有序 range 游标推进，每个输出支付一次对数查找。不会枚举旧旧成员对再去重。
-  跨组笛卡尔积、点与成员及点与点分别产生真实新输出；仅有一组且无点输入时不展开旧成员。
-  跨组/点配对所需的临时成员列表由对应输出付费。
-- `activity::update` 在闭端点输出完成后删除结束成员，将仍非空的当前组按斜率升序重插。
-- `neighbors::check` 只检查新块内部及两侧，空块只检查外侧新邻接。
-  `schedule` 从固定直线求候选，必须严格未来且不超过两个组当前最远右端才入队。
-  即使组次序未变，成员开始造成覆盖延长也会触发补检。无需证书失效处理。
+## Core invariants and operation costs
 
-以 n 为所有原始输入数、k 为相交无序原始输入对数，事件数 E≤2n+k。
-每事件等高组数 h 的总和为 O(n+k)：多组事件的组对由当场输出支付，单组事件由事件数支付。
-初始化、两套成员索引、队列、定位、移除重插、局部排序、预约和结果生成全部计入
-O((n+k) log(n+1)) 次操作；空输入另有常数开销。结果追加与结构清理按累计量计费。
-不存在预先同线输出、最大覆盖段、静态成员查询索引或备用慢路径。
+- `groups::initialize` groups segments by fixed, exact `(slope, intercept)`. Point inputs have no group. Each group's `members` and `right_ends` index the same dynamic member set; each nonzero segment is inserted and removed once in each index.
+- `Event` merges `starts`, `ends`, and `points` at the same exact position. Scheduling adds only a position, without storing member pairs. `choose_shear` retains nonzero vertical-segment detection and the original safety bound; point inputs and equal-x events do not independently trigger shearing.
+- `classify::locate` uses AVL height lower_bound and successor operations to locate a contiguous equal-height block, records its outside gaps, merges starting groups, and removes the original block. It scans neither all active groups nor group members to determine coverage.
+- `groups::compare` orders by height at the current event. At lower equal-height positions, slopes ascend; at higher equal-height positions, slopes descend. At the current height, slopes descend before removal and ascend after reinsertion. Updating the current block does not prematurely reverse higher crossings with the same x.
+- `record` enumerates only current members of the same group for each new start, outputs each complete intersection, and then adds the new member to both indexes. Collinear traversal advances through ordered range cursors, charging one logarithmic lookup per output. It does not enumerate old–old member pairs and deduplicate them. Cross-group Cartesian products, point–member pairs, and point–point pairs each produce actual new outputs. With only one group and no point input, old members are not expanded. Temporary member lists needed for cross-group/point pairing are charged to their corresponding outputs.
+- `activity::update` removes ending members after closed-endpoint output, then reinserts current groups that remain nonempty in ascending slope order.
+- `neighbors::check` checks only inside the new block and at its two boundaries; an empty block requires only the newly adjacent outside pair. `schedule` derives a candidate from fixed lines and enqueues it only if it lies strictly in the future and no farther than the current farthest right endpoint of either group. New members extending coverage trigger another check even if group order is unchanged. No certificate invalidation is needed.
 
-普通计算峰值辅助存储 O(n+k) 条记录，结果 O(k)；累计逻辑记录创建/删除为 O(n+k)，
-树查找、平衡和游标推进总成本含在上述时间界中。教学的全状态投影、字符串与快照不参与此界。
-普通路径不会构造这些投影；`Recorder` 的值闭包只在记录开启时执行。
-输入分子分母 B 位时，不剪切的固定公式数值为 O(B) 位，现有公分母剪切下为 O(nB) 位。
-此处是操作/记录数界，不是完整位复杂度、实际耗时或固定字节内存保证。
-资源测量与合并验收属于 #264。
+Let n be the number of all original inputs and k the number of intersecting unordered original input pairs. The event count satisfies E≤2n+k. The sum of the equal-height group count h over all events is O(n+k): group pairs at multigroup events are charged to outputs at those events, and single-group events to the event count. Initialization, both member indexes, the queue, location, removal/reinsertion, local sorting, scheduling, and result generation are all included in O((n+k) log(n+1)) operations, with constant overhead for empty input. Result appends and structural cleanup are charged cumulatively. There is no preliminary collinear output pass, maximal covering segment, static member-query index, or fallback slow path.
 
-### 诊断计数口径
+Ordinary computation uses O(n+k) peak auxiliary records and O(k) results; cumulative logical record creation/deletion is O(n+k). Total tree lookup, balancing, and cursor advancement costs are included in the time bound above. Full-state teaching projections, strings, and snapshots are excluded. The ordinary path does not construct them; `Recorder` value closures execute only when recording is enabled. For B-bit input numerators and denominators, fixed formulas without shearing use O(B)-bit values; the current common-denominator shear uses O(nB)-bit values. These are operation/record bounds, not full bit complexity, wall-clock time, or fixed-byte memory guarantees. Resource measurements and integrated acceptance belong to #264.
 
-`case_performance::actual_case_timings` 在独立、非计时的普通求交调用中启用
-`sweep/diagnostics.rs` 的线程局部 ledger，然后按原有入口测量普通、教学及 HTTP 路径。
-插桩仅编译于 `cfg(test)`，不增加生产 API、日志或备用算法。
-测试计时关闭 ledger，但仍包括插桩调用的 TLS/RefCell 检查及实参计算；不是无插桩生产耗时。
+### Diagnostic counting conventions
 
-- `current/peak/created/deleted` 按逻辑记录计数：扫描段、组、输入到组映射、变换/组键缓存、
-  队列位置与端点元数据、AVL 组节点、两个成员索引、缓存高度以及临时列表。
-  一个 Vec 元素或索引条目是一项；不包含容器容量、BTree 内部节点、栈上的常数个标量或大整数 limb。
-  `logical_aux_peak` 是这些被计数项同时存活的最大和，不是各分类峰值相加，也不是分配字节/RSS。
-- `accessed` 是树索引调用、显式索引读取及迭代记录访问；不含标准库内部节点读取/排序交换、
-  字段读取、len/is_empty 或析构的读操作。成员展开计一次迭代器初始化及逐成员访问；
-  每个同线 range 游标初始化/推进单独计一次索引调用，其对数成本仍需理论计费。
-  `updated` 计缓存记录的值替换；创建/删除另计。排序只改变列表顺序，不创建新的逻辑 ID。
-- `*_candidates.accessed` 是四类实际输出循环次数，不是存储项。其和必须等于 k；
-  旧同线对不会在点/穿越事件重复进入同线候选循环。
-- 辅助项计至正常返回时释放为零；输出 k 项归调用方，输出析构不在普通计时中。
-  初始化缓存和核心辅助结构的释放在计时内；统计期间含 ledger 开销，ledger 自身存储不计入核心。
-  计数不支持取消中途的资源报告，诊断入口只运行完整普通求交。
-- `bits` 分别打印输入、剪切、公分母、扫描端点、固定直线系数、缓存高度、候选、事件及输出
-  的实际最大分子/分母位长；零分子记 0 位。缓存高度是未约分的私有比较值。
-  这些是记录点的数值，未采集大整数算术内部瞬时中间值，不是完整位复杂度或峰值字节保证。
+`case_performance::actual_case_timings` enables the thread-local ledger in `sweep/diagnostics.rs` during a separate, untimed ordinary intersection call, then measures ordinary, teaching, and HTTP paths through the existing entry points. Instrumentation is compiled only under `cfg(test)` and adds no production API, logging, or alternative algorithm. Timed test runs disable the ledger, but still include instrumentation calls' TLS/RefCell checks and argument evaluation; they are not uninstrumented production timings.
 
-固定端点变换缓存和组键表各至多 O(n) 项，均在初始化中销毁。高度缓存每组至多一项，
-更新次数按实际 AVL 比较访问计费，最多 O((n+k) log(n+1))，不能把反复更新当免费。
-每次高度从固定 slope/intercept 与当前 u 直接构造，不递推过去的分数，避免跨事件位长累积。
-初始化、入队尝试（包括重复位置）、pop、每次 successor、删除重插、同线 range 初始化、
-局部排序 O(h log(h+1))、所有临时列表的构造和销毁均计入总界。
-事件队列至多 O(n+k) 位置；其余核心持久结构 O(n)，单事件临时列表 O(n)。
-累计列表项/节点创建删除 O(n+k)，索引访问及缓存更新的总成本另有上述对数因子。
-教学成员投影、快照、字符串字典、序列化和传输分别测量，不能用累计 `active_memberships`
-估算核心内存；教学收集器持有整个轨迹，流式 HTTP 则按批次交付，二者存储生命周期不同。
+- `current/peak/created/deleted` count logical records: sweep segments, groups, input-to-group mappings, transformation/group-key caches, queue positions and endpoint metadata, AVL group nodes, both member indexes, cached heights, and temporary lists. One Vec element or index entry counts as one item. Container capacity, internal BTree nodes, a constant number of stack scalars, and big-integer limbs are excluded. `logical_aux_peak` is the maximum sum of simultaneously live counted items, not the sum of category peaks or allocated bytes/RSS.
+- `accessed` counts tree-index calls, explicit index reads, and iterated record accesses. It excludes standard-library internal node reads/sort swaps, field reads, len/is_empty, and destructor reads. Member expansion counts one iterator initialization plus per-member accesses. Each collinear range cursor initialization/advance counts as one index call; its logarithmic cost still requires theoretical accounting. `updated` counts cached-record value replacements; creation/deletion are separate. Sorting changes list order without creating logical IDs.
+- `*_candidates.accessed` counts iterations in the four actual output loops, not stored items. Their sum must equal k. Old collinear pairs do not reenter the collinear candidate loop at point/crossing events.
+- Auxiliary items are counted until release reaches zero at normal return. The caller owns the k output items; output destruction is outside ordinary timing. Initialization-cache and core auxiliary-structure cleanup are timed. Counting includes ledger overhead, but ledger storage itself is excluded from the core. Cancellation midway is not supported for resource reporting; the diagnostic entry point runs only complete ordinary computations.
+- `bits` prints actual maximum numerator/denominator bit lengths for input, shear, common denominator, sweep endpoints, fixed line coefficients, cached heights, candidates, events, and outputs; a zero numerator has 0 bits. Cached heights are unreduced private comparison values. These are values at recording points, not transient internal big-integer arithmetic values, and do not establish full bit complexity or peak-byte guarantees.
 
-## 观察数据与身份
+The fixed endpoint-transformation cache and group-key table each contain at most O(n) entries and are destroyed during initialization. Each group has at most one cached height. Updates are charged to actual AVL comparison accesses, at most O((n+k) log(n+1)); repeated updates are not free. Every height is constructed directly from fixed slope/intercept and current u, without recursively using past fractions, avoiding bit-length accumulation across events. Initialization, enqueue attempts including duplicate positions, pop, each successor, removal/reinsertion, collinear range initialization, local sorting O(h log(h+1)), and all temporary-list construction/destruction count toward the total bound. The event queue has at most O(n+k) positions; other core persistent structures use O(n), and per-event temporary lists use O(n). Cumulative list-item/node creation/deletion is O(n+k); total index access and cache-update costs include the logarithmic factor above. Teaching member projections, snapshots, string dictionaries, serialization, and transport are measured separately. Cumulative `active_memberships` cannot estimate core memory. The teaching collector retains the entire trace, whereas streaming HTTP delivers batches; their storage lifetimes differ.
 
-传输外壳与请求级字典保持不变。`current`、`pending` 与 `results` 交付原始坐标；
-变量中的 `point`、队列、组直线和候选使用真实扫描坐标。
-`active` 是当前 AVL 节点依序展开的原始成员 ID，组内按原始 ID 排序；
-`active_groups: Status<GroupId>` 则是组节点顺序，不能把它当成原始线段 ID。
-移除当前块后、重插前，`active` 不含被移除的组，即使 `groups` 中的成员仍存在。
-`groups` 明示固定直线、当前成员与最远右端。端点参与者在事件发布时补齐，点输入同时列入
-`starts` 和 `ends`，不进入 `active`；`passes` 为非零段的严格内部成员。
+## Observed data and identity
 
-`schedule` 的 `checked_groups` 表示实际检查的两个组。画布 `checked` 只给出两个组
-各自最远右端成员组成的一对真实见证，`subjects` 给出组成员投影；不表示枚举过所有成员对。
-事件完成时的 `checked` 汇总这些实际邻接检查的见证对。
+The transport envelope and request-level dictionary remain unchanged. `current`, `pending`, and `results` deliver original coordinates; variable `point`, the queue, group lines, and candidates use actual sweep coordinates. `active` expands current AVL nodes into original member IDs in order, with original IDs sorted inside each group. `active_groups: Status<GroupId>` is group-node order and must not be interpreted as original segment IDs. Between current-block removal and reinsertion, `active` excludes removed groups even if their members still exist in `groups`. `groups` explicitly exposes fixed lines, current members, and farthest right endpoints. Endpoint participants are filled in when the event is published. Point inputs appear in both `starts` and `ends`, never in `active`; `passes` contains strict interior members of nonzero segments.
 
-## 动作和边界映射
+The `checked_groups` of `schedule` identifies the two groups actually checked. Canvas `checked` supplies only one actual witness pair, formed by the farthest-right-end member of each group; `subjects` supplies the group-member projection. This does not mean every member pair was enumerated. At event completion, `checked` summarizes the witness pairs from these actual adjacency checks.
 
-`boundary` 是生产端语义边界编号，不是源码行号。`micro` 表示无独立画布动作的停步。
-除 `take` 外，各阶段具有真实函数调用 ID；嵌套 `append` 和 `schedule` 保留调用栈。
-返回前 `return_value` 未赋值，返回后单独记录 `returning`，随后 `resuming` 恢复调用方。
-循环退出保留不可用绑定，不复用上一轮变量值或分支结果。借出状态期间，外层共享状态变量
-标为不可用，恢复调用时刷新为实际值。块前后含义只在相同完整状态下合并。
+## Action and boundary mapping
 
-| module / function | boundary 与真实含义 | 画布动作 |
+`boundary` identifies a producer-side semantic boundary, not a source line. `micro` denotes a stop without a separate canvas action. Every phase except `take` has real function-call IDs; nested `append` and `schedule` preserve the call stack. `return_value` is unassigned before return; `returning` is recorded separately after return, followed by `resuming` in the caller. Loop exits retain unavailable bindings rather than reusing the previous iteration's values or branch results. While state is borrowed, outer shared-state variables are unavailable; resumption refreshes them to actual values. Before/after-block meanings merge only when complete states are identical.
+
+| module / function | Boundary and actual meaning | Canvas action |
 | --- | --- | --- |
-| `take` / `sweep` | 0 弹出前；1 弹出后未绑定；2 绑定事件；3 空队列 break 前；4 break 后 | `take-entry`、`take-pop`、`take`、`take-empty` |
-| `sweep` / `sweep` | 1 调用定位；2 调用成员输出；3 调用更新；4 调用邻接；5 事件完成 | `micro`，最后发布为 `complete` |
-| `locate` / `locate` | 0 入口；1 定位等高块和间隙；2 每次实际移除；3 循环退出、返回 | `locate`、`detach` |
-| `members` / `record` | 0 入口；1 当前新成员；2 成员加入；3 新成员循环退出；4 跨组/点展开分支退出；5 输出阶段返回；6 同线对调用；7 跨组对调用；8 点与成员调用；9 点与点调用 | `join` |
-| `output` / `append` | 0 实际扫描坐标实参；1 排序配对并恢复坐标后；2 push 后、返回前 | `record` |
-| `activity` / `update` | 0 入口；1 每次结束成员删除；2 删除循环退出、切换当前事件比较阶段；3 每次组重插；4 重插完成、返回 | `leave`、`insert`、`reorder` |
-| `neighbors` / `check` | 0 入口；1 当前邻接组对；2 循环结束、返回 | `micro` |
-| `schedule` / `schedule` | 0 检查组；平行时控制位置 1 提前返回；2 固定直线候选；3 覆盖/严格未来检查通过并入队；4 返回 | `check`、新位置入队时 `discover` |
+| `take` / `sweep` | 0 before pop; 1 popped but unbound; 2 bind event; 3 before empty-queue break; 4 after break | `take-entry`, `take-pop`, `take`, `take-empty` |
+| `sweep` / `sweep` | 1 call location; 2 call member output; 3 call update; 4 call adjacency; 5 event complete | `micro`, finally published as `complete` |
+| `locate` / `locate` | 0 entry; 1 locate equal-height block and gaps; 2 each actual removal; 3 loop exit and return | `locate`, `detach` |
+| `members` / `record` | 0 entry; 1 current new member; 2 member added; 3 new-member loop exit; 4 cross-group/point expansion branch exit; 5 output phase return; 6 collinear-pair call; 7 cross-group-pair call; 8 point–member call; 9 point–point call | `join` |
+| `output` / `append` | 0 actual sweep-coordinate arguments; 1 after pair sorting and coordinate restoration; 2 after push, before return | `record` |
+| `activity` / `update` | 0 entry; 1 each ending-member removal; 2 removal-loop exit and change of current-event comparison phase; 3 each group reinsertion; 4 reinsertion complete and return | `leave`, `insert`, `reorder` |
+| `neighbors` / `check` | 0 entry; 1 current adjacent group pair; 2 loop end and return | `micro` |
+| `schedule` / `schedule` | 0 check groups; control position 1 returns early for parallel lines; 2 fixed-line candidate; 3 coverage/strict-future checks pass and enqueue; 4 return | `check`, and `discover` when a new position is enqueued |
 
-几何公式、AVL 比较与平衡、库容器操作内部不作为可步入的教学函数；调用结果来自真实操作。
-旧 `retain`、旧逐活动段 classify、旧重叠跳过和旧 `geometry/schedule_neighbors` 映射不再存在。
-渐进发布仍按事件完成后交付，保留取消检查、原坐标恢复及请求级字典复用。
+Geometric formulas, AVL comparison/balancing, and library-container internals are not teaching functions that can be stepped into; their results come from real operations. The old `retain`, per-active-segment classify, overlap skipping, and `geometry/schedule_neighbors` mappings no longer exist. Progressive publication still delivers after event completion, retaining cancellation checks, original-coordinate restoration, and request-level dictionary reuse.
 
-## 消费者迁移边界
+## Consumer migration boundary
 
-#263 直接迁移 `learning/trace.ts`、`executionCode.ts`、`executionSymbols.ts`、
-`executionAccess.ts`、`eventSide.ts`，并通过 `executionNavigation.ts` 导航真实调用及画布。
-成员循环按边界 6–9 记录控制 occurrence；成员变量使用 starts、cross、points、point_pairs 词法作用域。
-尤其不能沿用旧 activity 边界推断同 x 前后状态，或把 `active_groups` 当成原始 ID。
-#262 不保留旧动作适配器，不声称旧教学界面已兼容，也不代表 #260 的合并验收完成。
+#263 directly migrates `learning/trace.ts`, `executionCode.ts`, `executionSymbols.ts`, `executionAccess.ts`, and `eventSide.ts`, using `executionNavigation.ts` to navigate actual calls and the canvas. Member loops record control occurrences at boundaries 6–9; member variables use the starts, cross, points, and point_pairs lexical scopes. In particular, consumers must not infer equal-x before/after states from old activity boundaries or treat `active_groups` as original IDs. #262 retains no old-action adapter, does not claim compatibility with the old teaching UI, and does not establish integrated acceptance of #260.

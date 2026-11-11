@@ -1,68 +1,48 @@
 # BOProof
 
-有限有理输入的 BO 剪切数学模型。权威规格为 [CNB #278](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/278)，
-实施票为 #279–#283。本文件解释库接口与数学前提；执行状态以 CNB 为准。
+English | [简体中文](README.zh-CN.md)
 
-## 检查入口
+A mathematical model of BO shearing for finite rational inputs. The authoritative specification is [CNB #278](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/278), implemented through #279–#283. This document explains the library interface and mathematical assumptions; execution status is maintained in CNB.
 
-使用已安装的固定工具链与依赖，在仓库根目录执行：
+## Checking the proofs
+
+Using the installed, pinned toolchain and dependencies, run from your checkout (replace `/path/to/computational-geometry` with its location):
 
 ```sh
+cd /path/to/computational-geometry
 just proof
 ```
 
-该入口自动切换到 `BOProof/`，执行 `lake --no-cache --wfail build BOProof`，
-检查全部证明及传递公理依赖，并将警告视为失败。也可以在本目录直接运行该 Lake 命令。
-Lake 会复用未改变模块的有效构建结果，修改证明后重新检查受影响模块。
+This entry point changes into `BOProof/` and runs `lake --no-cache --wfail build BOProof`, checking all proofs and transitive axiom dependencies and treating warnings as failures. You can also run that Lake command directly in this directory. Lake reuses valid build results for unchanged modules and rechecks affected modules after proof changes.
 
-固定版本见 `lean-toolchain`、`lakefile.toml` 与 `lake-manifest.json`：Lean/mathlib
-`v4.36.0-rc1`。不安装、升级或更新依赖。库入口导入全部证明及 `BOProof.Trust`；
-后者枚举 `BOProof` 命名空间下全部声明并检查传递公理依赖，任何超出
-`propext`、`Classical.choice`、`Quot.sound` 的依赖（包括 `sorryAx`）都会使构建失败，
-并打印主要目标定理的依赖。检查源码中的占位与新增公理仍是审查的一部分。
+The pinned versions in `lean-toolchain`, `lakefile.toml`, and `lake-manifest.json` are Lean/mathlib `v4.36.0-rc1`. Do not install, upgrade, or update dependencies as part of checking. The library entry point imports all proofs and `BOProof.Trust`. The latter enumerates every declaration in the `BOProof` namespace and checks transitive axiom dependencies. Any dependency outside `propext`, `Classical.choice`, and `Quot.sound`, including `sorryAx`, fails the build. It also prints dependencies of the main target theorems. Reviewing source for placeholders and newly introduced axioms remains necessary.
 
-## 模型与前提
+## Model and assumptions
 
-`Input n = Fin n → InputSegment` 保留身份；重复几何输入不被合并。
-端点属于 `ℚ × ℚ`，`closedSegment` 使用实参数 `t ∈ [0,1]`，因此包含无理内部点。
-`shear s (x,y) = (x+s*y,y)` 的几何定理适用于任意有理 `s`。
+`Input n = Fin n → InputSegment` preserves identity; geometrically duplicate inputs are not merged. Endpoints belong to `ℚ × ℚ`, while `closedSegment` uses a real parameter `t ∈ [0,1]`, so irrational interior points are included. The geometric theorems for `shear s (x,y) = (x+s*y,y)` apply to any rational `s`.
 
-`LegalDenominator input D` 要求正整数 `D` 被所有坐标正分母整除。
-`commonDenominator_legal` 构造分母乘积；`coordinateBound` 是自然数表示的整数界，
-精确定义为 `max 1` 与全部放大后整数坐标绝对值的最大值。空输入得到 `D=1`、`M=1`。
-并未要求输入本身非空、非退化或处于一般位置。
+`LegalDenominator input D` requires a positive integer `D` divisible by every positive coordinate denominator. `commonDenominator_legal` constructs the product of the denominators. `coordinateBound` is an integer bound represented as a natural number: `max 1` applied to the maximum of the absolute values of all scaled integer coordinates. Empty input gives `D=1`, `M=1`. Inputs need not be nonempty, nondegenerate, or in general position.
 
-`IsEvent` 只包含端点及非平行段的实际交点；后者必须属于两条实数闭线段。
-`OriginalEvent` 是这些事件经正缩放的原像，`original_event_iff` 证明其等价于
-原坐标下的同一定义。非平行条件是方向行列式非零；`nonparallel_nonzero` 排除
-对此公式使用零长度段。平行或共线输入不进入除法公式，其端点仍属于事件。
-`collinear_overlap` 证明共线交集为空或是以输入端点为边界的闭线段；
-`overlap_endpoints_are_events` 将两个边界纳入事件，未将重叠内部无限多个点纳入。
+`IsEvent` includes only endpoints and actual intersections of nonparallel segments; each such intersection must belong to both real closed segments. `OriginalEvent` is the preimage of these events under positive scaling, and `original_event_iff` proves equivalence to the same definition in the original coordinates. Nonparallel means that the direction determinant is nonzero; `nonparallel_nonzero` excludes zero-length segments from this formula. Parallel or collinear inputs do not enter the division formula, but their endpoints remain events. `collinear_overlap` proves that a collinear intersection is empty or a closed segment bounded by input endpoints. `overlap_endpoints_are_events` includes both boundaries as events, without including the infinitely many interior points of an overlap.
 
-## 规格与定理对应
+## Specification and theorem mapping
 
-下表中的文字推导路径相对于 `docs-site/docs/segment-intersection/shear/`。
+Exposition paths below are relative to `docs-site/docs/segment-intersection/shear/`.
 
-| 票 | 数学要求 | 公开定理 | 文字推导 |
+| Ticket | Mathematical requirement | Public theorems | Exposition |
 | --- | --- | --- | --- |
-| #279 | 可逆、实数闭线段、完整交集及逆向还原 | `shear_inverse`、`shear_segment`、`shear_segment_intersection`、`restore_intersection`、`closedSegment_self` | `intersection.mdx` |
-| #280 | 任意合法公共分母、乘积构造、整数最大值 | `commonDenominator_legal`、`integerCoordinate_cast`、`integerCoordinate_bound`、`coordinateBound_pos`、两个 `_empty` 定理 | `denominator.mdx` |
-| #280 | 实际交点有理性、正分母 ≤ 8M² | `line_equation`、`determinant_ne_zero`、`determinant_bound`、`actual_crossing`、`event_rational_den_bound` | `denominator.mdx` |
-| #280 | 有限事件、重叠边界、点输入、高度差 ≤ 2M | `event_finite`、`overlap_endpoints_are_events`、`endpoint_mem`、`event_height_difference` | `special-cases.mdx`、`order.mdx` |
-| #281 | 间距 ≥ 1/(64M⁴)、具体系数安全性 | `rational_separation`、`event_separation`、`safeCoefficient_bounds` | `order.mdx` |
-| #281 | 字典序严格保序、不同位置分离、重合仍重合 | `event_lex_order`、`event_x_injective` | `special-cases.mdx` |
-| #282 | 缩放交换、原坐标事件覆盖与保序 | `scale_shear`、`integerInput_segment`、`original_event_iff`、`original_positive_order` | `special-cases.mdx` |
-| #282 | 两分支完整后置条件 | `chosen_postconditions`、`chosen_nonvertical`、`chosen_zero` | `index.mdx`、`special-cases.mdx` |
-| #283 | 全部声明及传递信任依赖 | `BOProof.Trust`，由库入口导入 | 本库验收入口 |
+| #279 | Invertibility, real closed segments, complete intersections, and inverse restoration | `shear_inverse`, `shear_segment`, `shear_segment_intersection`, `restore_intersection`, `closedSegment_self` | `intersection.mdx` |
+| #280 | Any legal common denominator, product construction, and integer maximum | `commonDenominator_legal`, `integerCoordinate_cast`, `integerCoordinate_bound`, `coordinateBound_pos`, the two `_empty` theorems | `denominator.mdx` |
+| #280 | Rationality of actual intersections; positive denominator ≤ 8M² | `line_equation`, `determinant_ne_zero`, `determinant_bound`, `actual_crossing`, `event_rational_den_bound` | `denominator.mdx` |
+| #280 | Finite events, overlap boundaries, point inputs, and height difference ≤ 2M | `event_finite`, `overlap_endpoints_are_events`, `endpoint_mem`, `event_height_difference` | `special-cases.mdx`, `order.mdx` |
+| #281 | Separation ≥ 1/(64M⁴) and safety of the concrete coefficient | `rational_separation`, `event_separation`, `safeCoefficient_bounds` | `order.mdx` |
+| #281 | Strict lexicographic order preservation, separation of distinct positions, and preservation of coincident positions | `event_lex_order`, `event_x_injective` | `special-cases.mdx` |
+| #282 | Commutation with scaling, event coverage and order in original coordinates | `scale_shear`, `integerInput_segment`, `original_event_iff`, `original_positive_order` | `special-cases.mdx` |
+| #282 | Complete postconditions for both branches | `chosen_postconditions`, `chosen_nonvertical`, `chosen_zero` | `index.mdx`, `special-cases.mdx` |
+| #283 | All declarations and transitive trust dependencies | `BOProof.Trust`, imported by the library entry point | Library checking entry point |
 
-`chosen_postconditions` 仅以有限有理输入为参数，没有外加分母界、间距、安全性、
-事件覆盖或一般位置假设。存在非零竖直段时选择 `1/[256(M+1)^5]`，证明严格保序和
-不同事件位置的横坐标分离；否则选择 `0`，证明恒等变换。
-两分支均证明全部非零段非竖直，以及完整交集保持与逆向还原。
-零系数分支不声称分离同 x 不同 y 的事件。零长度输入由 `closedSegment_self` 覆盖。
+`chosen_postconditions` takes only finite rational input, without additional assumptions about denominator bounds, separation, safety, event coverage, or general position. If a nonzero vertical segment exists, it chooses `1/[256(M+1)^5]` and proves strict order preservation and separation of the x coordinates of distinct event positions. Otherwise it chooses `0` and proves the identity transformation. Both branches prove that every nonzero segment becomes nonvertical, that complete intersections are preserved, and that inverse restoration is valid. The zero-coefficient branch does not claim to separate events with equal x and different y. Zero-length inputs are covered by `closedSegment_self`.
 
-## 证明边界
+## Proof boundary
 
-这是数学模型的内核检查，不是 Rust 实现与 Lean 的精化证明。
-不涵盖 BO 扫描状态、事件预约完备性、输出枚举唯一性或复杂度，
-不修改生产剪切系数，也不以有限数值案例替代全称证明。
+This is a kernel check of a mathematical model, not a refinement proof connecting Rust to Lean. It does not cover BO sweep state, completeness of event scheduling, uniqueness of output enumeration, or complexity. It does not change the production shear coefficient or replace universal proofs with finite numerical examples.
