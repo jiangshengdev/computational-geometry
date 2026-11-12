@@ -39,10 +39,12 @@ import IntersectionFigures from '@site/src/components/IntersectionFigures';
 按[安全系数的既有选择](./shear/order.mdx)，本例端点都是整数，公共分母为 $1$，最大绝对端点坐标为 $M=8$。公共分母在本篇只用文字称呼，字母 $D$ 始终指输入。于是
 
 $$
-s=\frac{1}{256(M+1)^5}
-=\frac{1}{256\times9^5}
-=\frac{1}{256\times59049}
+\begin{aligned}
+s&=\frac{1}{256(M+1)^5}
+=\frac{1}{256\times9^5}\\
+&=\frac{1}{256\times59049}
 =\frac{1}{15116544}.
+\end{aligned}
 $$
 
 全部输入统一变为 $x'=x+sy,\ y'=y$。后文的 $s$ 始终是这个精确分数；不换成小数。例：$V$ 的下端变成 $(3-s,-1)$，上端变成 $(3+2s,2)$，所以在新坐标中不再竖直。
