@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
         'segment-intersection/overlapping-segments',
         'segment-intersection/same-x-events',
         'segment-intersection/vertical-segments',
+        'segment-intersection/complete-sweep',
         'segment-intersection/line-equation',
         {
           type: 'category',

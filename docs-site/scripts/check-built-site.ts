@@ -43,7 +43,7 @@ try {
   const english = routes.filter((route) => !route.startsWith('/zh-Hans/')).sort();
   const chinese = routes.filter((route) => route.startsWith('/zh-Hans/')).sort();
   for (const route of Object.keys(legacyFragments)) assert(english.includes(route), `Old page URL missing: ${route}`);
-  assert.equal(english.length, 19, 'Home, 16 content pages and two chapter indexes');
+  assert.equal(english.length, 20, 'Home, 17 content pages and two chapter indexes');
   assert.deepEqual(chinese.map((route) => route.slice('/zh-Hans'.length)), english);
   let checkedLinks = 0;
   let checkedImages = 0;

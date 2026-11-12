@@ -40,6 +40,8 @@ const intersectionKinds: Record<string, string> = {
 };
 
 function englishTitle(source: string): string {
+  const completeSweep = /^完整扫描示意图 (\d+)。$/.exec(source);
+  if (completeSweep) return `Complete sweep teaching diagram ${completeSweep[1]}.`;
   if (titles[source]) return titles[source];
   const panel = /^(.*) 子图 (\d+)。$/.exec(source);
   if (panel) return `${englishTitle(panel[1])} Panel ${panel[2]}.`;

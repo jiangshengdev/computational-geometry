@@ -1,0 +1,188 @@
+---
+slug: /docs/segment-intersection/complete-sweep
+title: Putting all the rules into one sweep
+sidebar_label: 8. Putting all the rules into one sweep
+description: Follow seven mixed inputs through thirteen events, connecting coverage extension, same-point reporting, closed endpoints, gaps, and inverse shear in one state and queue.
+---
+
+import IntersectionFigures from '@site/src/components/IntersectionFigures';
+
+Why check a collinear group's neighbor again when that neighbor has not changed? Why collect participants on arrival when the position is already in the pending queue? Can a future collinear member provide coverage after the group disappears?
+
+This is Chapter 8 of the segment-intersection series. The rules established separately now cooperate on **one set of inputs, one active state, and one pending queue**. We proceed from input preparation to an empty queue, following four actions at each event: read, report, update, and check. Chapter 9 connects the general correctness argument; Chapter 10 analyzes total work. This example replaces neither.
+
+## Section 1: Seven inputs, one shear coefficient {#inputs}
+
+Names always denote original identities, regardless of active order. Every segment includes its endpoints; the two endpoints of $Z$ coincide.
+
+| Input | Original endpoints | Supporting line or position |
+| --- | --- | --- |
+| $A$ | $(0,0),(2,0)$ | $y=0$ |
+| $B$ | $(1,0),(4,0)$ | $y=0$ |
+| $C$ | $(6,0),(8,0)$ | $y=0$ |
+| $D$ | $(-1,4),(7,-4)$ | $y=3-x$ |
+| $V$ | $(3,-1),(3,2)$ | $x=3$ |
+| $H$ | $(2,3),(7,-2)$ | $y=5-x$ |
+| $Z$ | $(3,2),(3,2)$ | Only the point $(3,2)$ |
+
+We use the following established conclusions without proving them again:
+
+| Prerequisite | Conclusion used here | New connection in this article |
+| --- | --- | --- |
+| [Chapter 1: results and identities](./what-we-compute.mdx#结果既要记位置也要记是哪一对) | Retain a point or complete interval for each unordered input pair | Reconcile seven result records with two point positions |
+| [Chapter 2: the pending queue](./why-neighbors.mdx#一份待处理清单), [Chapter 3: exact decisions](./exact-predicates.mdx) | Retain real future positions; use exact values for ranges, positions, and order | Track the only newly discovered position from the initial endpoint queue |
+| [Chapter 4: same-point participants](./same-point-events.mdx#怎样找齐旧活动参与者) | Collect the old block on arrival, merge starters and point inputs, report before updating | Distinguish an event with three passing members from one with an ending member and a point input |
+| [Chapter 5: collinear groups](./overlapping-segments.mdx) | Report complete same-line intersections on insertion; recheck extended coverage and remove empty groups | Extension, a short member's departure, a gap, and reactivation occur in one sweep |
+| [Chapter 6: complete future order](./same-x-events.mdx#第六节完整的未来次序怎样接到事件发现) | Compare both coordinates for future positions; preserve state outside the current block | Apply this decision in the actual sweep coordinates |
+| [Chapter 7: uniform shear and restoration](./vertical-segments.mdx) | Transform all inputs with one coefficient, then restore complete intersections | Connect the transformation to every endpoint, candidate, and result here |
+
+Using the established [safe coefficient choice](./shear/order.mdx), all endpoints here are integral, the common denominator is $1$, and the largest absolute endpoint coordinate is $M=8$. We refer to the common denominator in words only: the letter $D$ always denotes the input. Thus
+
+$$
+s=\frac{1}{256(M+1)^5}
+=\frac{1}{256\times9^5}
+=\frac{1}{256\times59049}
+=\frac{1}{15116544}.
+$$
+
+Every input is transformed by $x'=x+sy,\ y'=y$. Throughout, $s$ denotes this exact fraction, never a decimal approximation. For example, the lower and upper endpoints of $V$ become $(3-s,-1)$ and $(3+2s,2)$, so it is no longer vertical in the new coordinates.
+
+<IntersectionFigures topic="complete-sweep" prefix="complete" name="input"
+  panels={['Figure 1: Original coordinates of the seven inputs. Dashed A overlays its shared portion with B. The diamond for Z is centered on the upper endpoint of V; no input is displaced.', 'Figure 2: The same inputs under an exaggerated demonstration shear of one eighth. This coefficient is not used for the calculations.']}
+/>
+
+Read the numbered panels as original coordinates followed by the exaggerated shear, even when they wrap. Each panel is displayed at its original 320 × 260 size, with equal horizontal and vertical units; $O$ marks the origin and ticks are one unit apart. $A$ is blue, $B$ orange, $C$ violet, $D$ green, $V$ red, $H$ cyan, and $Z$ pink. Dashed $A$ distinguishes overlapping identities, not missing coverage. The diamond has no area and does not displace $Z$.
+
+**Only Figure 2 uses $s_{\mathrm{vis}}=1/8$ to exaggerate the shear; this is not the calculation coefficient.** Later local geometry panels show original coordinates; order diagrams use discrete positions for the active order. All are teaching illustrations, not execution screenshots. Coordinate tables and decisions always use the actual $s$. The originally same-column positions $(3,-1),(3,0),(3,2)$ acquire horizontal coordinates $3-s,3,3+2s$, so they are no longer same-column events in sweep coordinates.
+
+## Section 2: Initialization knows positions, not reported results {#initialization}
+
+Let $G$ denote the fixed collinear group containing $A,B,C$. Its line is $y'=0$, but its member set changes. $D,V,H$ each occupy a separate group; their input names also label those order positions below. $Z$ belongs to no nonzero group. $G[A,B]$ means that the current members are $A,B$; it neither merges their identities nor assigns them an internal vertical order.
+
+Name the original-coordinate candidates $P=(3,0)$, $Q=(3,2)$, and $R=(5,0)$. Their new coordinates are $P'=(3,0)$, $Q'=(3+2s,2)$, and $R'=(5,0)$. $R$ is only the candidate intersection of the horizontal line with the line supporting $H$, not an event assumed to be real.
+
+Substitute the inverse relation $x=x'-sy'$ into the equation for $D$: $y'=3-(x'-sy')=3-x'+sy'$. Subtract $sy'$ from both sides to obtain $(1-s)y'=3-x'$. Since $0<s<1$, division by $1-s$ is valid. The same substitution applies to $H$. The sweep therefore uses these fixed lines and closed ranges:
+
+| Group | Height | Ranges that current members may supply |
+| --- | --- | --- |
+| $G$ | $y'=0$ | $A:[0,2]$, $B:[1,4]$, $C:[6,8]$; only members that have started count |
+| $D$ | $y'=(3-x')/(1-s)$ | $[-1+4s,7-4s]$ |
+| $V$ | $y'=(x'-3)/s$ | $[3-s,3+2s]$ |
+| $H$ | $y'=(5-x')/(1-s)$ | $[2+3s,7-2s]$ |
+
+The expression for $V$ follows from $x'=3+sy'$ by subtracting $3$ and dividing by positive $s$. Write $R_G$ for the rightmost covered endpoint of $G$; this is a different object from candidate point $R$. While nonempty, the other groups have rightmost endpoints $7-4s,3+2s,7-2s$, respectively.
+
+Initialization registers both endpoints of each nonzero input and the position of $Z$. Coincident positions merge while retaining every identity. Thus the end of $V$ and point input $Z$ share $Q'$; the two identical endpoints of $Z$ do not register it twice. There are **12 positions**, with empty active order and results. $P'$ has no input endpoint and is not registered yet; neither is $R'$.
+
+For reference, call the positions eventually processed $E_1$ through $E_{13}$; Section 6 gives all coordinates. These labels do **not** mean that all thirteen positions are known at initialization: the initial queue contains $E_1$ through $E_6$, then $E_8$ through $E_{13}$. Each extraction still chooses the smallest unprocessed position in the new coordinates.
+
+## Section 3: Unchanged neighbors, extended coverage {#extension}
+
+At $E_1=(-1+4s,4)$, $D$ starts. There are no old participants or pairs to report. Inserting $D$ leaves it alone, with no neighbor to check.
+
+At $E_2=(0,0)$, read starter $A$. The height of $D$ is $3/(1-s)>0$, so it does not pass through this point and there is no new result. Inserting $G[A]$ gives bottom-to-top order $G[A],D$, with $R_G=2$.
+
+The new neighbors $G,D$ have candidate $P'=(3,0)$: substituting $y'=0$ into the line of $D$ gives $0=3-x'$, hence $x'=3$. This is future and covered by $D$, but $3>R_G=2$, so **it cannot be scheduled**. $B$, which has not started, cannot supply current coverage.
+
+At $E_3=(1,0)$, $A$ is an old participant and $B$ starts. Following the [same-line insertion rule](./overlapping-segments.mdx#第二节新成员加入时就报告完整交集), first report the complete interval $(1,0)$—$(2,0)$ for $A,B$, then add $B$. $G$ remains below $D$, but $R_G$ extends from $2$ to $4$.
+
+<IntersectionFigures topic="complete-sweep" prefix="complete" name="extension"
+  panels={['Figure 3: After E2, only A supplies coverage, ending at 2. Hollow candidate P is outside that coverage.', 'Figure 4: After E3, A and B share a group and B extends coverage to 4, covering P. Dashed A and solid B retain their original coordinates.']}
+/>
+
+These panels isolate $A,B,D$ from the same example, without changing the inputs. Recheck the still-adjacent $G,D$: $1<3\le4$ and $-1+4s<3<7-4s$. Both groups currently cover $P'$ and it is strictly future. Add $P'=E_7$ to the queue. **Reporting an interval on insertion and discovering a future point after updating coverage are separate actions.**
+
+At $E_4=(2,0)$, $A$ ends while $B$ passes through. Retain $A$'s eligibility at its closed endpoint, but do not report the already-reported $A,B$ interval again as a point. Then remove $A$. $G[B]$ remains, with $R_G=4$. Rechecking neighbors $G,D$ yields the already registered $P'$, so retain its existing record. Coverage did not extend and there is no new discovery; this check cannot report $A,B$ again.
+
+At $E_5=(2+3s,3)$, $H$ starts. Here $D$ has height $(1-3s)/(1-s)<3$: multiplying by positive $1-s$ reduces the comparison to $1-3s<3-3s$, or $1<3$. Its height is also positive because $s<1/3$. There is no other participant; the new order is $G[B],D,H$. The only new adjacency is $D,H$. Their slopes both equal $-1/(1-s)$ and their constant terms differ, so they are distinct parallel lines: no event is scheduled. $D$ still separates $G,H$, which are not directly checked here.
+
+## Section 4: One discovered position, three passing participants {#crossing}
+
+At $E_6=(3-s,-1)$, $V$ starts. $G$ has height $0$; $D$ has height $s/(1-s)>0$; $H$ is another $2/(1-s)>0$ above $D$. There is no old same-point participant. Inserting $V$ gives $V,G[B],D,H$. Its only new neighbor is $G$; the candidate is again $P'$. Both cover it and $3>3-s$, but the queue already contains that position. Keep one record. Inserting $V$ between $G,D$ does not cancel their earlier discovery.
+
+Extract $E_7=P'$. In the old order, $V,G,D$ all have height $0$, forming the entire meeting block. $H$, at height $2/(1-s)>0$, is outside it. Expanding $G$ yields only current member $B$, not departed $A$ or future $C$. The participants are therefore $B,D,V$, all passing through their interiors.
+
+First report the three pairs $B,D$, $B,V$, and $D,V$, each with complete intersection $P'$. Reporting only the earliest discovering pair $B,D$ would be insufficient. Do not report old same-line pair $A,B$ again: its earlier complete interval remains unchanged, neither split nor rewritten as a point.
+
+<IntersectionFigures topic="complete-sweep" prefix="complete" name="crossing"
+  panels={['Figure 5: Before P′, the bottom-to-top group order is V, G[B], D, H. The box marks the meeting block V, G[B], D.', 'Figure 6: After P′, that block becomes D, G[B], V, while H stays above it. V and H are new boundary neighbors.']}
+/>
+
+Spacing in the order diagrams aids reading; it does not represent geometric heights. After reporting, all three groups continue. Use the established [right-side slope ordering](./exact-predicates.mdx#到了交点等高不等于两侧顺序): $D$ has slope $-1/(1-s)<0$, $G$ has slope $0$, and $V$ has slope $1/s>0$. The full order becomes $D,G[B],V,H$.
+
+Internal neighbors $D,G$ and $G,V$ intersect at the current position, which fails the strict-future condition. There is no group below the block. The new upper boundary neighbors $V,H$ yield $Q'$: on the original line $x=3$ of $V$, the height of $H$ is $5-3=2$, transforming to $(3+2s,2)$. It lies to the right of $P'$. $V$ covers that closed endpoint, and $H$ covers it too. **The initial endpoint and point-input records already contain $Q'$; do not add another copy.** Do not report these pairs before arrival.
+
+## Section 5: Report closed endpoints first; do not fill future gaps {#gap}
+
+At $E_8=Q'$, read the end record for $V$ and point input $Z$, and find passing $H$ in the old meeting block. $G$ has height $0$ and $D$ has height $-2s/(1-s)<0$; neither participates in this height-$2$ event.
+
+First report $V,H$, $V,Z$, and $H,Z$, each with complete intersection $Q'$. Then $V$ leaves and $H$ continues. $Z$ participates only in these pairings: it gets neither a slope nor an active-order position. The remaining order is $D,G[B],H$.
+
+<IntersectionFigures topic="complete-sweep" prefix="complete" name="endpoint"
+  panels={['Figure 7: Original-coordinate detail at Q: the upper endpoint of V, the interior of H, and point input Z coincide. Retain all three identities for reporting.', 'Figure 8: After Q′, the active groups are only D, G[B], H. Neither V nor Z remains in the order.']}
+/>
+
+The new boundary neighbors $G,H$ have line candidate $R'=(5,0)$. It is future: $s<1$ implies $3+2s<5$. $H$ covers it, but $G$ currently contains only $B$, with $R_G=4<5$, so do not schedule it. The future endpoint $8$ of $C$ cannot replace the current coverage limit.
+
+At $E_9=(4,0)$, only ending $B$ participates, with no new result. Removing it empties $G$, which leaves the order. The newly connected $D,H$ are parallel and yield no candidate. The next queue entry is $E_{10}=(6,0)$: there is no stop at $(5,0)$, which is neither an endpoint nor an intersection covered by both groups.
+
+<IntersectionFigures topic="complete-sweep" prefix="complete" name="gap"
+  panels={['Figure 9: Original positions of B and H. Candidate R=(5,0) lies beyond B’s endpoint 4. Dashed C has not started and cannot supply coverage.', 'Figure 10: When C starts at (6,0), R is already behind and outside C’s range. Reactivating the group does not revive that candidate.']}
+/>
+
+At $E_{10}$, read starter $C$. The heights of $D,H$ are $-3/(1-s)$ and $-1/(1-s)$: both are below $0$, with $D$ below $H$. There is no new result. Reinserting $G[C]$ gives $D,H,G[C]$. This is the same fixed-line group, but its only current member is $C$ and $R_G=8$; it was not active throughout the preceding gap.
+
+Only new neighbors $H,G$ need checking. Their candidate is still $R'$, but $5<6$, so it is not future; $C$ starts at $6$ and does not contain it either. The rightmost-endpoint criterion applies toward the future from a position currently covered by the group. The inequality $5\le8$ alone cannot fill the past. $H$ separates $D,G$, so that pair is not a new adjacency here.
+
+Finally process the end of $D$ at $E_{11}=(7-4s,-4)$, the end of $H$ at $E_{12}=(7-2s,-2)$, and the end of $C$ at $E_{13}=(8,0)$. Each event has only its ending participant and no new result. Each removes the bottommost group without connecting groups on both sides, so there are no new appointments. Both the queue and active order become empty.
+
+## Section 6: The complete event ledger {#event-ledger}
+
+Every order, member set, coverage limit, and result count below is taken **after all reporting, updating, and checking for that row**. Orders run bottom to top. The coverage limits of $D,V,H$ are given in Section 2 and remain fixed while nonempty; the changing $R_G$ is listed here. Every candidate must satisfy both real coverage and complete-position strict futurity. Distinct positions happen to have distinct $x'$ values in this example; this does not remove the vertical-coordinate comparison from the general rule.
+
+| Event | Original → actual sweep position | Current participants; new results | Order afterward; $R_G$ | Neighbor checks and queue changes | Results / pending positions |
+| --- | --- | --- | --- | --- | --- |
+| Initial | No position extracted | None; none | Empty; none | Register twelve endpoint positions, excluding $E_7$ | $0/12$ |
+| $E_1$ | $(-1,4)\to(-1+4s,4)$ | $D$ starts; no pair | $D$; none | No neighbor; extract $E_1$ | $0/11$ |
+| $E_2$ | $(0,0)\to(0,0)$ | $A$ starts; no pair | $G[A],D$; $2$ | $G,D$: $P'$ exceeds coverage; extract $E_2$ | $0/10$ |
+| $E_3$ | $(1,0)\to(1,0)$ | $A$ passes, $B$ starts; interval for $A,B$ | $G[A,B],D$; $4$ | Extension recheck of $G,D$ adds $E_7$; extract $E_3$ | $1/10$ |
+| $E_4$ | $(2,0)\to(2,0)$ | $A$ ends, $B$ passes; no repeat of old same-line pair | $G[B],D$; $4$ | Rechecking $G,D$ retains existing $E_7$; extract $E_4$ | $1/9$ |
+| $E_5$ | $(2,3)\to(2+3s,3)$ | $H$ starts; no pair | $G[B],D,H$; $4$ | $D,H$ are parallel; extract $E_5$ | $1/8$ |
+| $E_6$ | $(3,-1)\to(3-s,-1)$ | $V$ starts; no pair | $V,G[B],D,H$; $4$ | $V,G$ yield existing $E_7$; extract $E_6$ | $1/7$ |
+| $E_7$ | $(3,0)\to(3,0)$ | $B,D,V$ pass; three point-result pairs | $D,G[B],V,H$; $4$ | $D,G$ and $G,V$ yield current position; $V,H$ yield existing $E_8$; extract $E_7$ | $4/6$ |
+| $E_8$ | $(3,2)\to(3+2s,2)$ | $V$ ends, $H$ passes, point $Z$; three point-result pairs | $D,G[B],H$; $4$ | $G,H$: $R'$ exceeds coverage; extract $E_8$ | $7/5$ |
+| $E_9$ | $(4,0)\to(4,0)$ | $B$ ends; no pair | $D,H$; none | After empty-group removal, $D,H$ are parallel; extract $E_9$ | $7/4$ |
+| $E_{10}$ | $(6,0)\to(6,0)$ | $C$ starts; no pair | $D,H,G[C]$; $8$ | $H,G$: $R'$ is past and outside $C$; extract $E_{10}$ | $7/3$ |
+| $E_{11}$ | $(7,-4)\to(7-4s,-4)$ | $D$ ends; no pair | $H,G[C]$; $8$ | No new adjacency; extract $E_{11}$ | $7/2$ |
+| $E_{12}$ | $(7,-2)\to(7-2s,-2)$ | $H$ ends; no pair | $G[C]$; $8$ | No new adjacency; extract $E_{12}$ | $7/1$ |
+| $E_{13}$ | $(8,0)\to(8,0)$ | $C$ ends; no pair | Empty; none | No neighbor; extract $E_{13}$, leaving an empty queue | $7/0$ |
+
+Reconstruct the queue row by row: start with twelve entries, remove the current one in each row, and add $E_7$ only at $E_3$. Rediscovery never inserts a duplicate. In particular, after $E_3$ the remaining order is $E_4,E_5,E_6,E_7,E_8,E_9,E_{10},E_{11},E_{12},E_{13}$.
+
+Exact values verify the event order. Since $0<s<1/4$, we have $-1+4s<0$ and $2<2+3s<3-s<3<3+2s<4$. The middle comparison $2+3s<3-s$ follows from $4s<1$; $3+2s<4$ follows from $2s<1$. At the other end, $6<7-4s<7-2s<8$ follows respectively from $4s<1$, $2s>0$, and $-2s<1$. Together with $0<1<2$ and $4<6$, these establish the strict order of all thirteen entries.
+
+## Section 7: Restore and check seven complete pair intersections {#results}
+
+The sweep results use new coordinates. Apply the established [inverse transformation](./shear/intuition.mdx#从新坐标求回原坐标), $x=x'-sy',\ y=y'$. The interval endpoints have height zero, restoring horizontal coordinates $1-s\times0=1$ and $2-s\times0=2$. $P'$ restores to $3-s\times0=3,y=0$; $Q'$ restores to $3+2s-s\times2=3+2s-2s=3,y=2$. Restoring the whole interval relies on [intersection preservation under shear](./shear/intersection.mdx), not on treating it as two point results.
+
+| Original unordered input pair | Complete intersection in original coordinates | Reporting event |
+| --- | --- | --- |
+| $A,B$ | Closed interval from $(1,0)$ to $(2,0)$ | $E_3$ |
+| $B,D$; $B,V$; $D,V$ | Point $(3,0)$ for each pair | $E_7$ |
+| $V,H$; $V,Z$; $H,Z$ | Point $(3,2)$ for each pair | $E_8$ |
+
+These are **7 input pairs: 1 interval pair and 6 point pairs, with only 2 distinct point positions**. Independently check the set by applying Chapter 1's pairwise method to the other fourteen pairs, using Chapter 3's exact intersection conclusions:
+
+| Unreported pairs | Specific reason for an empty intersection |
+| --- | --- |
+| $A,C$; $B,C$ | Disjoint collinear closed ranges: $2<6$ and $4<6$ |
+| $A,D$; $C,D$ | Unique line candidate $(3,0)$ is beyond $A$ and before $C$, respectively |
+| $A,V$; $C,V$ | The unique candidate is again $(3,0)$, outside their respective horizontal ranges |
+| $A,H$; $B,H$; $C,H$ | Unique candidate $(5,0)$ is outside $[0,2]$, $[1,4]$, and $[6,8]$ |
+| $D,H$ | $y=3-x$ and $y=5-x$ are distinct parallel lines |
+| $A,Z$; $B,Z$; $C,Z$ | $Z$ has height $2$, so is not on the horizontal line $y=0$ |
+| $D,Z$ | At $x=3$, the height of $D$ is $0$, not the height $2$ of $Z$ |
+
+Seven nonempty pairs plus fourteen empty pairs account for all $7\times6/2=21$ unordered pairs. This checks the complete result set for this example, not correctness of the general algorithm.
+
+The continuous process connects three distinctions in one state: fixed collinear membership is not current coverage; discovering a position is not collecting all participants on arrival; and eligibility for reporting at an endpoint is not continued activity. The next chapter connects the established local arguments into a general explanation of no missed, false, or repeated results for all allowed inputs.

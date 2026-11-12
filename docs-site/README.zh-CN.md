@@ -33,7 +33,7 @@ pnpm --dir docs-site run serve --host 127.0.0.1
 
 ## 双语同步发布
 
-英文是默认展示语言，位于 `/`；简体中文位于 `/zh-Hans/`。中文仍是创作和修订原稿，放在 `i18n/zh-Hans/docusaurus-plugin-content-docs/current/`；`docs/` 保存完整英文译文。框架的存储位置不改变内容权威关系。两种语言均覆盖首页和全部16篇内容页。
+英文是默认展示语言，位于 `/`；简体中文位于 `/zh-Hans/`。中文仍是创作和修订原稿，放在 `i18n/zh-Hans/docusaurus-plugin-content-docs/current/`；`docs/` 保存完整英文译文。框架的存储位置不改变内容权威关系。两种语言均覆盖首页和全部17篇内容页。
 
 每次新增或修改都必须在同一变更和发布中同步更新中文原稿及英文译文，保持数学条件、公式、实例、证明步骤、教学深度、文档ID与slug一致。语义须独立复核，构建成功不能替代翻译质量审校。导航、分类说明、图注、替代文本和其他公共文字也必须同步修改；不发布缺译回退页或已知过时译文。
 
@@ -43,7 +43,7 @@ pnpm --dir docs-site run serve --host 127.0.0.1
 
 发布构建使用 `pnpm run build` 同时生成全部语言，不带单语言 `--locale` 限制。开发时可用 `pnpm run start --locale zh-Hans --host 127.0.0.1 --port <空闲端口>` 单独预览中文。站点继续独立于计算应用与Rust API，不需要修改域名或部署配置。
 
-构建后执行 `pnpm run check:built-site`。该检查使用Playwright及操作系统分配端口的独立静态服务，结束后关闭浏览器和服务。可用 `PLAYWRIGHT_EXECUTABLE_PATH` 指定已安装的兼容Chromium，或先用 `pnpm exec playwright install chromium` 安装；检查不会自动安装。覆盖38个本地化页面、语言切换、链接与锚点、公共文字、章节导航和两种主题的图片。数学语义一致性另行审校。任务验证结束后清理临时构建产物和浏览器缓存，不将其作为源码提交。
+构建后执行 `pnpm run check:built-site`。该检查使用Playwright及操作系统分配端口的独立静态服务，结束后关闭浏览器和服务。可用 `PLAYWRIGHT_EXECUTABLE_PATH` 指定已安装的兼容Chromium，或先用 `pnpm exec playwright install chromium` 安装；检查不会自动安装。覆盖40个本地化页面、语言切换、链接与锚点、公共文字、章节导航和两种主题的图片。数学语义一致性另行审校。任务验证结束后清理临时构建产物和浏览器缓存，不将其作为源码提交。
 
 ## 内容维护
 
@@ -158,3 +158,13 @@ uv run --offline --with matplotlib==3.11.2 python docs-site/scripts/draw_shear_c
 后续发布时将正式域名绑定到该独立项目。已有仓库根 `vercel.json` 继续负责计算前端与 Rust API 的共同发布，不改用本站配置；本站也不添加计算应用的 SPA/API 路由回退。
 
 本次只提供本地框架与部署配置，没有创建云端项目、执行部署或修改 DNS；域名出现在生成的 canonical URL 中不代表已经上线。
+
+## 第八章配图
+
+`complete-sweep.mdx` 使用十幅 320 × 260 教学示意图，展示 CNB #382 的七输入案例。两种语言、明暗主题共享几何与数学标注。只有图 2 使用演示系数 1/8，正文计算使用精确系数 1/15116544。通过已有 Matplotlib 环境生成已纳入版本管理的本地化 SVG，不安装依赖：
+
+```bash
+MPLCONFIGDIR=/tmp/cg-matplotlib MATHTEXT_PYTHON=/path/to/existing/python PYTHONDONTWRITEBYTECODE=1 node docs-site/scripts/draw_complete_sweep.ts
+```
+
+从仓库根目录运行。生成器复用 `svg_math_labels.ts`、`render_math_labels.py` 与 `localized_svg.ts`，不手工修改生成的 SVG。
