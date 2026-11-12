@@ -70,7 +70,7 @@ for (const [theme, palette] of Object.entries(palettes)) {
         }
         const selected: Input[] = topic === 'input' ? ['B', 'A', 'C', 'D', 'V', 'H'] : topic === 'extension' ? (panel === 1 ? ['A', 'D'] : ['B', 'A', 'D']) : topic === 'gap' ? (panel === 1 ? ['B', 'C', 'H'] : ['C', 'H']) : ['V', 'H'];
         const labelAt: Record<Input, Point> = local ? {A:[0,0], B:[0,0], C:[0,0], D:[0,0], V:[153,199], H:[222,138]} : {
-          A:[78,119], B:[162,153], C:[227,120], D:[91,69], V:[150,180], H:[205,83],
+          A:[78,119], B:[162,153], C:[227,120], D:[91,69], V:[150,180], H:[219,155],
         };
         for (const id of selected) {
           let [a, b] = segments[id];
