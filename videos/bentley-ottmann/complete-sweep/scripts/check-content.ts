@@ -12,6 +12,8 @@ import {
   covers,
   height,
   groupLabel,
+  endpointIdentities,
+  eventLabel,
   type Point,
   type Input,
 } from "../src/example.ts";
@@ -62,6 +64,45 @@ const endpointKeys = new Set(
   names.flatMap((name) => inputs[name].map((p) => scan(p).join(","))),
 );
 assert.equal(endpointKeys.size, 12);
+assert.deepEqual(
+  events.map((e) => eventLabel(e.n)),
+  [
+    "D头",
+    "A头",
+    "B头",
+    "A尾",
+    "H头",
+    "V头",
+    "新增交点 P",
+    "V尾＋Z点",
+    "B尾",
+    "C头",
+    "D尾",
+    "H尾",
+    "C尾",
+  ],
+);
+for (const name of names.filter((name) => name !== "Z")) {
+  const ends = inputs[name].toSorted((a, b) =>
+    scan(a)[0] < scan(b)[0] ? -1 : 1,
+  );
+  assert(scan(ends[0])[0] < scan(ends[1])[0]);
+  assert(
+    endpointIdentities(ends[0]).some(
+      (i) => i.input === name && i.role === "头",
+    ),
+  );
+  assert(
+    endpointIdentities(ends[1]).some(
+      (i) => i.input === name && i.role === "尾",
+    ),
+  );
+}
+assert.deepEqual(endpointIdentities(inputs.Z[0]), [
+  { input: "V", role: "尾" },
+  { input: "Z", role: "点" },
+]);
+assert.equal(scan(inputs.V[1])[0] - scan(inputs.V[0])[0], 3n);
 assert.deepEqual(
   initialQueue.map((n) => events[n - 1].scan.join(",")).sort(),
   [...endpointKeys].sort(),
@@ -153,6 +194,15 @@ for (const row of rows) {
   }
 }
 for (const p of pageList) {
+  const audienceText = [
+    p.title,
+    p.basis,
+    ...p.steps.flatMap((s) => [s.text, ...s.captions]),
+  ].join("\n");
+  assert(
+    !/E_\{?\d|[一二三四五六七八九十]+号位置|图中编号/.test(audienceText),
+    "Audience must not need internal event numbers",
+  );
   const last = rows.filter((r) => r.page === p.id).at(-1)!;
   assert.equal(last.step, p.steps.length);
   assert(last.pauseAfter >= 2);

@@ -12,6 +12,9 @@ import {
   scanLabel,
   groupLabel,
   results,
+  initialQueue,
+  eventIdentities,
+  eventLabel,
   type Group,
   type Input,
 } from "./example";
@@ -56,6 +59,47 @@ function Text({
     >
       {children}
     </Label>
+  );
+}
+export const identityMarks = Object.entries(objectColors).flatMap(
+  ([input, color]) =>
+    ["头", "尾", "点"].map((role) => ({ term: `${input}${role}`, color })),
+);
+function EventIdentity({
+  n,
+  x,
+  y,
+  size = 22,
+}: {
+  n: number;
+  x: number;
+  y: number;
+  size?: number;
+}) {
+  const identities = eventIdentities(n);
+  return (
+    <g data-event-identity={n} aria-label={eventLabel(n)}>
+      {identities.length ? (
+        identities.map(({ input, role }, i) => (
+          <Text
+            key={input}
+            x={x + (i - (identities.length - 1) / 2) * 68}
+            y={y}
+            size={size}
+            color={objectColors[input]}
+          >{`${input}${role}`}</Text>
+        ))
+      ) : (
+        <Text x={x} y={y} size={size} color={colors.amber}>
+          新增交点 P
+        </Text>
+      )}
+      {identities.length > 1 && (
+        <Text x={x} y={y} size={size}>
+          ＋
+        </Text>
+      )}
+    </g>
   );
 }
 function Order({ row, state }: { row: TimelineRow; state: VisualState }) {
@@ -293,11 +337,12 @@ function Geometry({ row, state }: { row: TimelineRow; state: VisualState }) {
             strokeWidth={2}
             fill="none"
           />
+          <EventIdentity n={evt.n} x={112} y={456} />
           <Text
-            x={270}
-            y={459}
-            size={22}
-          >{`E_{${evt.n}}：${xy(evt.point)} → ${scanLabel(evt.point)}`}</Text>
+            x={400}
+            y={456}
+            size={20}
+          >{`${xy(evt.point)} → ${scanLabel(evt.point)}`}</Text>
         </>
       )}
       {row.candidate && (
@@ -446,13 +491,16 @@ function Ledger({ state }: { state: VisualState }) {
       <Text x={400} y={20}>
         逐步形成的事件表（均为处理后）
       </Text>
-      <Text x={75} y={61} size={19}>
+      <Text x={90} y={61} size={19}>
+        事件身份
+      </Text>
+      <Text x={245} y={61} size={19}>
         原位置
       </Text>
-      <Text x={355} y={61} size={19}>
+      <Text x={435} y={61} size={19}>
         顺序（下到上）
       </Text>
-      <Text x={590} y={61} size={19}>
+      <Text x={620} y={61} size={19}>
         R_G
       </Text>
       <Text x={715} y={61} size={19}>
@@ -462,15 +510,14 @@ function Ledger({ state }: { state: VisualState }) {
         .filter((e) => e.n <= state.completed)
         .map((e) => (
           <g key={e.n} data-ledger-event={e.n}>
-            <Text
-              x={90}
-              y={84 + e.n * 32}
-              size={19}
-            >{`E_{${e.n}} ${xy(e.point)}`}</Text>
-            <Text x={355} y={84 + e.n * 32} size={19}>
+            <EventIdentity n={e.n} x={90} y={84 + e.n * 32} size={19} />
+            <Text x={245} y={84 + e.n * 32} size={19}>
+              {xy(e.point)}
+            </Text>
+            <Text x={435} y={84 + e.n * 32} size={19}>
               {e.order.map((g) => groupLabel(g, e.members)).join("，") || "空"}
             </Text>
-            <Text x={590} y={84 + e.n * 32} size={19}>
+            <Text x={620} y={84 + e.n * 32} size={19}>
               {e.right === null ? "无" : String(e.right)}
             </Text>
             <Text
@@ -480,6 +527,44 @@ function Ledger({ state }: { state: VisualState }) {
             >{`${e.results.length}／${e.queue.length}`}</Text>
           </g>
         ))}
+    </g>
+  );
+}
+function InitialEndpoints() {
+  return (
+    <g data-initial-endpoints>
+      <Text x={400} y={22}>
+        从输入端点得到十二个初始位置
+      </Text>
+      <Text x={120} y={64} size={22}>
+        输入身份
+      </Text>
+      <Text x={345} y={64} size={22}>
+        原端点 (x,y)
+      </Text>
+      <Text x={615} y={64} size={22}>
+        扫描坐标 (x′,y′)
+      </Text>
+      {initialQueue.map((n, i) => {
+        const y = 100 + i * 36;
+        return (
+          <g key={n} data-endpoint-row={n}>
+            <EventIdentity n={n} x={120} y={y} />
+            <Text x={345} y={y} size={22}>
+              {xy(events[n - 1].point)}
+            </Text>
+            <Text x={615} y={y} size={22}>
+              {scanLabel(events[n - 1].point)}
+            </Text>
+          </g>
+        );
+      })}
+      <Text x={400} y={540} size={20}>
+        按扫描坐标从上到下排列；同位置身份并列
+      </Text>
+      <Text x={400} y={580} size={20}>
+        十二个初始位置；P 尚未发现，R 未登记
+      </Text>
     </g>
   );
 }
@@ -627,7 +712,9 @@ export function SweepDiagram({
   return (
     <div>
       <svg width={800} height={600} viewBox="0 0 800 600" data-geometry-inputs>
-        {row.view === "results" ? (
+        {row.view === "initial" ? (
+          <InitialEndpoints />
+        ) : row.view === "results" ? (
           <Results row={row} state={state} />
         ) : row.view === "coverage" ? (
           <Coverage row={row} state={state} />
@@ -637,31 +724,43 @@ export function SweepDiagram({
           <Geometry row={row} state={state} />
         )}
         {Number(row.id.slice(2)) >= 26 &&
+          row.view !== "initial" &&
           row.view !== "ledger" &&
           row.view !== "results" && (
             <>
               <Text
-                x={400}
-                y={494}
-                size={21}
-              >{`待处理（${state.queue.length}）：${state.queue.map((n) => `E_{${n}}`).join("，") || "空"}`}</Text>
+                x={60}
+                y={501}
+                size={18}
+              >{`待处理 ${state.queue.length}`}</Text>
+              <g data-pending-queue>
+                {state.queue.map((n, i) => (
+                  <EventIdentity
+                    key={n}
+                    n={n}
+                    x={165 + (i % 6) * 110}
+                    y={490 + Math.floor(i / 6) * 36}
+                    size={20}
+                  />
+                ))}
+                {!state.queue.length && (
+                  <Text x={400} y={501}>
+                    空
+                  </Text>
+                )}
+              </g>
               <Text
                 x={400}
-                y={536}
-                size={22}
-              >{`累计 ${state.results.length} 对：${state.results.map((r) => r.pair.join("/")).join("，") || "无"}`}</Text>
-              <Text x={400} y={578} size={20}>
-                {state.results.length
-                  ? "A/B 始终为完整区间；其余已报告对为点"
-                  : "尚未报告非空交集"}
-              </Text>
+                y={575}
+                size={20}
+              >{`累计 ${state.results.length} 对：${state.results.map((r) => r.pair.join("/") + (r.event === 3 ? "（完整区间）" : "")).join("，") || "无"}`}</Text>
             </>
           )}
       </svg>
       <div style={{ fontSize: 20, textAlign: "center", color: muted }}>
-        <MathText colorize={false}>
+        <MathText marks={identityMarks}>
           {row.event
-            ? `E_{${row.event}} · ${phase}；画面暂定计时，尚无配音`
+            ? `${eventLabel(row.event)} · ${phase}；画面暂定计时，尚无配音`
             : "第八章教学示意；实际判断使用精确扫描坐标"}
         </MathText>
       </div>

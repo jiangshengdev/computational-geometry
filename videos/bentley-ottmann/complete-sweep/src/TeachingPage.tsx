@@ -5,13 +5,16 @@ import { MathText, Latex } from "../../../shared/ui/SemanticMathText";
 import { colorMath } from "../../../shared/math/semantic-colors";
 import { colors, tints } from "../../colors.ts";
 import { makePages } from "./storyboard";
-import { SweepDiagram, objectColors } from "./SweepDiagram";
+import { SweepDiagram, objectColors, identityMarks } from "./SweepDiagram";
 import type { TimelineRow, VisualState } from "./timeline";
 const pages = makePages();
-const marks = Object.entries(objectColors).map(([term, color]) => ({
-  term,
-  color,
-}));
+const marks = [
+  ...identityMarks,
+  ...Object.entries(objectColors).map(([term, color]) => ({
+    term,
+    color,
+  })),
+];
 const MathLines = createTeachingMathLines({
   pages,
   MathText,
@@ -38,7 +41,7 @@ export function TeachingPage({
   return (
     <MathLessonPage
       diagramPosition="left"
-      title={<MathText colorize={false}>{page.title}</MathText>}
+      title={<MathText marks={identityMarks}>{page.title}</MathText>}
       basis={
         page.basis ? (
           <TeachingReferences

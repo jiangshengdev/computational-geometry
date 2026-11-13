@@ -41,6 +41,28 @@ export const restore = ([x, y]: readonly [bigint, bigint]) =>
 export const xy = ([x, y]: Point) => `(${x},${y})`;
 export const scanLabel = ([x, y]: Point) =>
   `(${x}${y === 0 ? "" : y === 1 ? "+s" : y === -1 ? "-s" : `${y > 0 ? "+" : ""}${y}s`},${y})`;
+export type EndpointIdentity = { input: Input; role: "头" | "尾" | "点" };
+/** Head/tail mean earlier/later in the exact sheared scan, not visual up/down. */
+export function endpointIdentities(point: Point): EndpointIdentity[] {
+  const same = (a: Point, b: Point) => a[0] === b[0] && a[1] === b[1];
+  return names.flatMap((input): EndpointIdentity[] => {
+    const [a, b] = inputs[input];
+    if (same(a, b)) return same(point, a) ? [{ input, role: "点" }] : [];
+    const [head, tail] = scan(a)[0] < scan(b)[0] ? [a, b] : [b, a];
+    return same(point, head)
+      ? [{ input, role: "头" }]
+      : same(point, tail)
+        ? [{ input, role: "尾" }]
+        : [];
+  });
+}
+export const eventIdentities = (n: number) => endpointIdentities(points[n - 1]);
+export const eventLabel = (n: number) => {
+  const identities = eventIdentities(n);
+  return identities.length
+    ? identities.map(({ input, role }) => `${input}${role}`).join("＋")
+    : "新增交点 P";
+};
 export const groupOf = (name: Input): Group =>
   ["A", "B", "C"].includes(name) ? "G" : (name as Group);
 export function covers(name: Input, x: bigint) {

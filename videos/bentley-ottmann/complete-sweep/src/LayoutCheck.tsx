@@ -35,6 +35,32 @@ export const LayoutCheck = createShotLayoutCheck({
       )
         errors.push("SVG viewport must be 1:1");
     if (page.querySelector(".katex-error")) errors.push("Invalid math");
+    if (/E_\{?\d|E\d+|[七八]号位置/.test(page.textContent ?? ""))
+      errors.push(
+        "Audience-facing content must use event identities, not event numbers",
+      );
+    const initial = page.querySelector("[data-initial-endpoints]");
+    if (
+      initial &&
+      (initial.querySelectorAll("[data-endpoint-row]").length !== 12 ||
+        initial.querySelector('[data-event-identity="7"]'))
+    )
+      errors.push(
+        "Initialization must show twelve endpoint positions without P",
+      );
+    for (const joint of page.querySelectorAll('[data-event-identity="8"]')) {
+      const labels = joint.querySelectorAll<HTMLElement>(
+        "[data-diagram-label]",
+      );
+      if (
+        !labels[0]?.textContent?.includes("V尾") ||
+        !labels[1]?.textContent?.includes("Z点") ||
+        labels[0].style.color === labels[1].style.color
+      )
+        errors.push(
+          "The shared endpoint must retain distinct colored V-tail and Z-point identities",
+        );
+    }
     for (const group of page.querySelectorAll('[data-order-member="G"]'))
       if (/G\s*\[\s*\]/.test(group.textContent ?? ""))
         errors.push(
