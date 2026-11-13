@@ -1,0 +1,4628 @@
+{
+  "CS01": [
+    {
+      "text": "这一集把前七章的规则",
+      "pinyin": "zhe4 yi4 ji2 ba3 qian2 qi1 zhang1 de5 gui1 ze2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "接到同一份状态和清单上",
+      "pinyin": "jie1 dao4 tong2 yi2 fen4 zhuang4 tai4 he2 qing1 dan1 shang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "从输入出发",
+      "pinyin": "cong2 shu1 ru4 chu1 fa1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "走到扫描结束",
+      "pinyin": "zou3 dao4 sao3 miao2 jie2 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "再核对完整结果",
+      "pinyin": "zai4 he2 dui4 wan2 zheng3 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS02": [
+    {
+      "text": "先看蓝色输入",
+      "pinyin": "xian1 kan4 lan2 se4 shu1 ru4"
+    },
+    " A ",
+    {
+      "text": "这条线段",
+      "pinyin": "zhe4 tiao2 xian4 duan4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "从原点到",
+      "pinyin": "cong2 yuan2 dian3 dao4"
+    },
+    " x ",
+    {
+      "text": "坐标为二且",
+      "pinyin": "zuo4 biao1 wei2 er4 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为零的点",
+      "pinyin": "zuo4 biao1 wei2 ling2 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "原坐标图的两条坐标轴每格都是一个单位",
+      "pinyin": "yuan2 zuo4 biao1 tu2 de5 liang3 tiao2 zuo4 biao1 zhou2 mei3 ge2 dou1 shi4 yi2 ge4 dan1 wei4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "字母",
+      "pinyin": "zi4 mu3"
+    },
+    " O ",
+    {
+      "text": "表示原点",
+      "pinyin": "biao3 shi4 yuan2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS03": [
+    {
+      "text": "橙色输入",
+      "pinyin": "cheng2 se4 shu1 ru4"
+    },
+    " B ",
+    {
+      "text": "这条线段",
+      "pinyin": "zhe4 tiao2 xian4 duan4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    " x ",
+    {
+      "text": "坐标为一且",
+      "pinyin": "zuo4 biao1 wei2 yi1 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为零的点",
+      "pinyin": "zuo4 biao1 wei2 ling2 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "到",
+      "pinyin": "dao4"
+    },
+    " x ",
+    {
+      "text": "坐标为四且",
+      "pinyin": "zuo4 biao1 wei2 si4 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为零的点",
+      "pinyin": "zuo4 biao1 wei2 ling2 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "蓝色虚线只为辨认重叠身份",
+      "pinyin": "lan2 se4 xu1 xian4 zhi3 wei4 bian4 ren4 chong2 die2 shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "两份都保留真实位置",
+      "pinyin": "liang3 fen4 dou1 bao3 liu2 zhen1 shi2 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS04": [
+    {
+      "text": "紫色输入",
+      "pinyin": "zi3 se4 shu1 ru4"
+    },
+    " C ",
+    {
+      "text": "也在高度零",
+      "pinyin": "ye3 zai4 gao1 du4 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    " x ",
+    {
+      "text": "坐标为六的点到",
+      "pinyin": "zuo4 biao1 wei2 liu4 de5 dian3 dao4"
+    },
+    " x ",
+    {
+      "text": "坐标为八的点",
+      "pinyin": "zuo4 biao1 wei2 ba1 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它与前两份之间留有空隙",
+      "pinyin": "ta1 yu3 qian2 liang3 fen4 zhi1 jian1 liu2 you3 kong4 xi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能提前补上",
+      "pinyin": "bu4 neng2 ti2 qian2 bu3 shang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS05": [
+    {
+      "text": "绿色输入",
+      "pinyin": "lv4 se4 shu1 ru4"
+    },
+    " D ",
+    {
+      "text": "这条线段",
+      "pinyin": "zhe4 tiao2 xian4 duan4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    " x ",
+    {
+      "text": "坐标为负一且",
+      "pinyin": "zuo4 biao1 wei2 fu4 yi1 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为四的点",
+      "pinyin": "zuo4 biao1 wei2 si4 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "到",
+      "pinyin": "dao4"
+    },
+    " x ",
+    {
+      "text": "坐标为七且",
+      "pinyin": "zuo4 biao1 wei2 qi1 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为负四的点",
+      "pinyin": "zuo4 biao1 wei2 fu4 si4 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所在直线的方程是",
+      "pinyin": "suo3 zai4 zhi2 xian4 de5 fang1 cheng2 shi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "用三减去",
+      "pinyin": "yong4 san1 jian3 qu4"
+    },
+    " x ",
+    {
+      "text": "坐标",
+      "pinyin": "zuo4 biao1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "就得到",
+      "pinyin": "jiu4 de2 dao4"
+    },
+    " y ",
+    {
+      "text": "坐标",
+      "pinyin": "zuo4 biao1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "这里的字母",
+      "pinyin": "zhe4 li3 de5 zi4 mu3"
+    },
+    " D ",
+    {
+      "text": "始终是输入名",
+      "pinyin": "shi3 zhong1 shi4 shu1 ru4 ming2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS06": [
+    {
+      "text": "红色输入",
+      "pinyin": "hong2 se4 shu1 ru4"
+    },
+    " V ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    " x ",
+    {
+      "text": "坐标固定为三",
+      "pinyin": "zuo4 biao1 gu4 ding4 wei2 san1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "下端高度负一",
+      "pinyin": "xia4 duan1 gao1 du4 fu4 yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "上端高度二",
+      "pinyin": "shang4 duan1 gao1 du4 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "两端都包含",
+      "pinyin": "liang3 duan1 dou1 bao1 han2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS07": [
+    {
+      "text": "青色输入",
+      "pinyin": "qing1 se4 shu1 ru4"
+    },
+    " H ",
+    {
+      "text": "这条线段",
+      "pinyin": "zhe4 tiao2 xian4 duan4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    " x ",
+    {
+      "text": "坐标为二且",
+      "pinyin": "zuo4 biao1 wei2 er4 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为三的点",
+      "pinyin": "zuo4 biao1 wei2 san1 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "到",
+      "pinyin": "dao4"
+    },
+    " x ",
+    {
+      "text": "坐标为七且",
+      "pinyin": "zuo4 biao1 wei2 qi1 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为负二的点",
+      "pinyin": "zuo4 biao1 wei2 fu4 er4 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它与绿色所在直线平行",
+      "pinyin": "ta1 yu3 lv4 se4 suo3 zai4 zhi2 xian4 ping2 xing2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "但不是同一条直线",
+      "pinyin": "dan4 bu2 shi4 tong2 yi4 tiao2 zhi2 xian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS08": [
+    {
+      "text": "粉色菱形的中心标出点输入",
+      "pinyin": "fen3 se4 ling2 xing2 de5 zhong1 xin1 biao1 chu1 dian3 shu1 ru4"
+    },
+    " Z ",
+    {
+      "text": "的位置",
+      "pinyin": "de5 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它的",
+      "pinyin": "ta1 de5"
+    },
+    " x ",
+    {
+      "text": "坐标为三",
+      "pinyin": "zuo4 biao1 wei2 san1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它的",
+      "pinyin": "ta1 de5"
+    },
+    " y ",
+    {
+      "text": "坐标为二",
+      "pinyin": "zuo4 biao1 wei2 er4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它就在红色上端",
+      "pinyin": "ta1 jiu4 zai4 hong2 se4 shang4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "菱形不表示面积",
+      "pinyin": "ling2 xing2 bu4 biao3 shi4 mian4 ji1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也没有挪动这个点",
+      "pinyin": "ye3 mei2 you3 nuo2 dong4 zhe4 ge5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS09": [
+    {
+      "text": "本例的端点坐标都是整数",
+      "pinyin": "ben3 li4 de5 duan1 dian3 zuo4 biao1 dou1 shi4 zheng3 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "公共分母取一",
+      "pinyin": "gong1 gong4 fen1 mu3 qu3 yi1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "端点坐标绝对值的最大值是八",
+      "pinyin": "duan1 dian3 zuo4 biao1 jue2 dui4 zhi2 de5 zui4 da4 zhi2 shi4 ba1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以参数",
+      "pinyin": "suo2 yi3 can1 shu4"
+    },
+    " M ",
+    {
+      "text": "等于八",
+      "pinyin": "deng3 yu2 ba1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS10": [
+    {
+      "text": "直接代入剪切专题已经证明的安全系数",
+      "pinyin": "zhi2 jie1 dai4 ru4 jian3 qie1 zhuan1 ti2 yi3 jing1 zheng4 ming2 de5 an1 quan2 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "八加一为九",
+      "pinyin": "ba1 jia1 yi1 wei2 jiu3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到分母二百五十六乘九的五次方",
+      "pinyin": "de2 dao4 fen1 mu3 er4 bai2 wu3 shi2 liu4 cheng2 jiu3 de5 wu3 ci4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS11": [
+    {
+      "text": "九的五次方为五万九千零四十九",
+      "pinyin": "jiu3 de5 wu3 ci4 fang1 wei2 wu3 wan4 jiu3 qian1 ling2 si4 shi2 jiu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "乘以二百五十六",
+      "pinyin": "cheng2 yi3 er4 bai2 wu3 shi2 liu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到分母一千五百一十一万六千五百四十四",
+      "pinyin": "de2 dao4 fen1 mu3 yi4 qian1 wu2 bai3 yi1 shi2 yi1 wan4 liu4 qian1 wu2 bai3 si4 shi2 si4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "后面的系数",
+      "pinyin": "hou4 mian4 de5 xi4 shu4"
+    },
+    " s ",
+    {
+      "text": "始终是以这个数为分母且分子为一的精确分数",
+      "pinyin": "shi3 zhong1 shi4 yi3 zhe4 ge5 shu4 wei2 fen1 mu3 qie3 fen1 zi3 wei2 yi1 de5 jing1 que4 fen1 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不换成小数",
+      "pinyin": "bu2 huan4 cheng2 xiao3 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS12": [
+    {
+      "text": "所有输入使用同一个系数",
+      "pinyin": "suo2 you3 shu1 ru4 shi3 yong4 tong2 yi2 ge4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "红色下端的新",
+      "pinyin": "hong2 se4 xia4 duan1 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标为三减系数",
+      "pinyin": "zuo4 biao1 wei2 san1 jian3 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "上端为三加两倍系数",
+      "pinyin": "shang4 duan1 wei2 san1 jia1 liang3 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "用上端的新",
+      "pinyin": "yong4 shang4 duan1 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标减去下端的新",
+      "pinyin": "zuo4 biao1 jian3 qu4 xia4 duan1 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标",
+      "pinyin": "zuo4 biao1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到三倍系数",
+      "pinyin": "de2 dao4 san1 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "这个差大于零",
+      "pinyin": "zhe4 ge5 cha1 da4 yu2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以它不再竖直",
+      "pinyin": "suo2 yi3 ta1 bu2 zai4 shu4 zhi2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS13": [
+    {
+      "text": "现在只为看清对应关系",
+      "pinyin": "xian4 zai4 zhi3 wei4 kan4 qing1 dui4 ying4 guan1 xi5"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "显示八分之一系数的放大示意",
+      "pinyin": "xian3 shi4 ba1 fen1 zhi1 yi1 xi4 shu4 de5 fang4 da4 shi4 yi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这幅示意不参与任何范围",
+      "pinyin": "zhe4 fu2 shi4 yi4 bu4 can1 yu4 ren4 he2 fan4 wei2"
+    },
+    "、",
+    {
+      "text": "顺序或候选计算",
+      "pinyin": "shun4 xu4 huo4 hou4 xuan3 ji4 suan4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS14": [
+    {
+      "text": "原图中同列的三个位置",
+      "pinyin": "yuan2 tu2 zhong1 tong2 lie4 de5 san1 ge4 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "高度分别是负一",
+      "pinyin": "gao1 du4 fen1 bie2 shi4 fu4 yi1"
+    },
+    "、",
+    {
+      "text": "零",
+      "pinyin": "ling2"
+    },
+    "、",
+    {
+      "text": "二",
+      "pinyin": "er4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "实际变换后",
+      "pinyin": "shi2 ji4 bian4 huan4 hou4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它们的",
+      "pinyin": "ta1 men5 de5"
+    },
+    " x ",
+    {
+      "text": "坐标依次是三减系数",
+      "pinyin": "zuo4 biao1 yi1 ci4 shi4 san1 jian3 xi4 shu4"
+    },
+    "、",
+    {
+      "text": "三",
+      "pinyin": "san1"
+    },
+    "、",
+    {
+      "text": "三加两倍系数",
+      "pinyin": "san1 jia1 liang3 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以不能把它们称为扫描坐标中的同列事件",
+      "pinyin": "suo2 yi3 bu4 neng2 ba3 ta1 men5 cheng1 wei2 sao3 miao2 zuo4 biao1 zhong1 de5 tong2 lie4 shi4 jian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS15": [
+    {
+      "text": "三份水平输入归到同一个固定同线组",
+      "pinyin": "san1 fen4 shui3 ping2 shu1 ru4 gui1 dao4 tong2 yi2 ge4 gu4 ding4 tong2 xian4 zu3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "用字母",
+      "pinyin": "yong4 zi4 mu3"
+    },
+    " G ",
+    {
+      "text": "表示这个组",
+      "pinyin": "biao3 shi4 zhe4 ge5 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "组名不变",
+      "pinyin": "zu3 ming2 bu2 bian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "但活动成员随开始和结束变化",
+      "pinyin": "dan4 huo2 dong4 cheng2 yuan2 sui2 kai1 shi3 he2 jie2 shu4 bian4 hua4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "组内不编造高低",
+      "pinyin": "zu3 nei4 bu4 bian1 zao4 gao1 di1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "其余非零输入各自独占一个组",
+      "pinyin": "qi2 yu2 fei1 ling2 shu1 ru4 ge4 zi4 du2 zhan4 yi2 ge4 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS16": [
+    {
+      "text": "方括号列出当前成员",
+      "pinyin": "fang1 kuo4 hao4 lie4 chu1 dang1 qian2 cheng2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不是把输入合成一个身份",
+      "pinyin": "bu2 shi4 ba3 shu1 ru4 he2 cheng2 yi2 ge4 shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "组的最远右端用",
+      "pinyin": "zu3 de5 zui4 yuan3 you4 duan1 yong4"
+    },
+    " R G ",
+    {
+      "text": "表示",
+      "pinyin": "biao3 shi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "这里只能取已开始的活动成员",
+      "pinyin": "zhe4 li3 zhi3 neng2 qu2 yi3 kai1 shi3 de5 huo2 dong4 cheng2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS17": [
+    {
+      "text": "后面把三线相遇的原位置用",
+      "pinyin": "hou4 mian4 ba3 san1 xian4 xiang1 yu4 de5 yuan2 wei4 zhi4 yong4"
+    },
+    " P ",
+    {
+      "text": "表示",
+      "pinyin": "biao3 shi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "把上端公共位置用",
+      "pinyin": "ba3 shang4 duan1 gong1 gong4 wei4 zhi4 yong4"
+    },
+    " Q ",
+    {
+      "text": "表示",
+      "pinyin": "biao3 shi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "水平直线与青色直线的候选用",
+      "pinyin": "shui3 ping2 zhi2 xian4 yu3 qing1 se4 zhi2 xian4 de5 hou4 xuan3 yong4"
+    },
+    " R ",
+    {
+      "text": "表示",
+      "pinyin": "biao3 shi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它的原",
+      "pinyin": "ta1 de5 yuan2"
+    },
+    " x ",
+    {
+      "text": "坐标为五",
+      "pinyin": "zuo4 biao1 wei2 wu3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "原",
+      "pinyin": "yuan2"
+    },
+    " y ",
+    {
+      "text": "坐标为零",
+      "pinyin": "zuo4 biao1 wei2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这个候选点与组的最远右端是不同对象",
+      "pinyin": "zhe4 ge5 hou4 xuan2 dian3 yu2 zu3 de5 zui4 yuan3 you4 duan1 shi4 bu4 tong2 dui4 xiang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS18": [
+    {
+      "text": "把逆变换代入绿色直线的原方程",
+      "pinyin": "ba3 ni4 bian4 huan4 dai4 ru4 lv4 se4 zhi2 xian4 de5 yuan2 fang1 cheng2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "新高度等于三减去括号中的原",
+      "pinyin": "xin1 gao1 du4 deng3 yu2 san1 jian3 qu4 kuo4 hao4 zhong1 de5 yuan2"
+    },
+    " x ",
+    {
+      "text": "坐标",
+      "pinyin": "zuo4 biao1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS19": [
+    {
+      "text": "右侧展开后有一项",
+      "pinyin": "you4 ce4 zhan3 kai1 hou4 you3 yi2 xiang4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    " s ",
+    {
+      "text": "乘以新高度",
+      "pinyin": "cheng2 yi3 xin1 gao1 du4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "将这一项移到左边",
+      "pinyin": "jiang1 zhe4 yi2 xiang4 yi2 dao4 zuo3 bian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到一减系数的差",
+      "pinyin": "de2 dao4 yi1 jian3 xi4 shu4 de5 cha1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "再用这个差乘以新高度",
+      "pinyin": "zai4 yong4 zhe4 ge5 cha1 cheng2 yi3 xin1 gao1 du4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS20": [
+    {
+      "text": "因为一减系数为正",
+      "pinyin": "yin1 wei4 yi1 jian3 xi4 shu4 wei2 zheng4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "可以除以它",
+      "pinyin": "ke2 yi3 chu2 yi3 ta1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "绿色输入的新",
+      "pinyin": "lv4 se4 shu1 ru4 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标闭范围",
+      "pinyin": "zuo4 biao1 bi4 fan4 wei2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "左端是负一加四倍系数",
+      "pinyin": "zuo3 duan1 shi4 fu4 yi1 jia1 si4 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "右端是七减四倍系数",
+      "pinyin": "you4 duan1 shi4 qi1 jian3 si4 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS21": [
+    {
+      "text": "青色直线作同样代入",
+      "pinyin": "qing1 se4 zhi2 xian4 zuo4 tong2 yang4 dai4 ru4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "只把常数三换成五",
+      "pinyin": "zhi2 ba3 chang2 shu4 san1 huan4 cheng2 wu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它的新",
+      "pinyin": "ta1 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标闭范围",
+      "pinyin": "zuo4 biao1 bi4 fan4 wei2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "左端是二加三倍系数",
+      "pinyin": "zuo3 duan1 shi4 er4 jia1 san1 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "右端是七减两倍系数",
+      "pinyin": "you4 duan1 shi4 qi1 jian2 liang3 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "高度始终比绿色高",
+      "pinyin": "gao1 du4 shi3 zhong1 bi3 lv4 se4 gao1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS22": [
+    {
+      "text": "红色输入原来的",
+      "pinyin": "hong2 se4 shu1 ru4 yuan2 lai2 de5"
+    },
+    " x ",
+    {
+      "text": "坐标为三",
+      "pinyin": "zuo4 biao1 wei2 san1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "代入统一变换",
+      "pinyin": "dai4 ru4 tong3 yi1 bian4 huan4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "新",
+      "pinyin": "xin1"
+    },
+    " x ",
+    {
+      "text": "坐标就是三加系数乘新高度",
+      "pinyin": "zuo4 biao1 jiu4 shi4 san1 jia1 xi4 shu4 cheng2 xin1 gao1 du4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS23": [
+    {
+      "text": "两边减三",
+      "pinyin": "liang3 bian1 jian3 san1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "再除以正系数",
+      "pinyin": "zai4 chu2 yi3 zheng4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到扫描所用的高度",
+      "pinyin": "de2 dao4 sao3 miao2 suo3 yong4 de5 gao1 du4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "实际的新",
+      "pinyin": "shi2 ji4 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标闭范围",
+      "pinyin": "zuo4 biao1 bi4 fan4 wei2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "左端是三减系数",
+      "pinyin": "zuo3 duan1 shi4 san1 jian3 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "右端是三加两倍系数",
+      "pinyin": "you4 duan1 shi4 san1 jia1 liang3 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS24": [
+    {
+      "text": "水平输入高度零",
+      "pinyin": "shui3 ping2 shu1 ru4 gao1 du4 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "变换不改变它们的",
+      "pinyin": "bian4 huan4 bu4 gai3 bian4 ta1 men5 de5"
+    },
+    " x ",
+    {
+      "text": "坐标",
+      "pinyin": "zuo4 biao1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这三个范围是原始成员的范围",
+      "pinyin": "zhe4 san1 ge4 fan4 wei2 shi4 yuan2 shi3 cheng2 yuan2 de5 fan4 wei2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "当前覆盖仍只取活动成员",
+      "pinyin": "dang1 qian2 fu4 gai4 reng2 zhi2 qu3 huo2 dong4 cheng2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS24a": [
+    {
+      "text": "把开头给定的每条线段的两个端点",
+      "pinyin": "ba3 kai1 tou2 gei3 ding4 de5 mei3 tiao2 xian4 duan4 de5 liang3 ge4 duan1 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "代入同一个剪切变换",
+      "pinyin": "dai4 ru4 tong2 yi2 ge4 jian3 qie1 bian4 huan4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "本片把新",
+      "pinyin": "ben3 pian4 ba3 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标较小",
+      "pinyin": "zuo4 biao1 jiao4 xiao3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "扫描先遇到的一端叫头",
+      "pinyin": "sao3 miao2 xian1 yu4 dao4 de5 yi4 duan1 jiao4 tou2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "较大且后遇到的一端叫尾",
+      "pinyin": "jiao4 da4 qie3 hou4 yu4 dao4 de5 yi4 duan1 jiao4 wei3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "标签使用线段原来的颜色",
+      "pinyin": "biao1 qian1 shi3 yong4 xian4 duan4 yuan2 lai2 de5 yan2 se4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "并保留输入字母",
+      "pinyin": "bing4 bao3 liu2 shu1 ru4 zi4 mu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS24b": [
+    {
+      "text": "红色两端的新",
+      "pinyin": "hong2 se4 liang3 duan1 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标相差三倍正系数",
+      "pinyin": "zuo4 biao1 xiang1 cha1 san1 bei4 zheng4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以较低的原端点是头",
+      "pinyin": "suo2 yi3 jiao4 di1 de5 yuan2 duan1 dian3 shi4 tou2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "较高的是尾",
+      "pinyin": "jiao4 gao1 de5 shi4 wei3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "粉色点输入恰好在红色尾端",
+      "pinyin": "fen3 se4 dian3 shu1 ru4 qia4 hao3 zai4 hong2 se4 wei3 duan1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它自己没有两个不同端点",
+      "pinyin": "ta1 zi4 ji3 mei2 you2 liang3 ge4 bu4 tong2 duan1 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "始终用粉色的",
+      "pinyin": "shi3 zhong1 yong4 fen3 se4 de5"
+    },
+    " Z ",
+    {
+      "text": "点标签表示",
+      "pinyin": "dian3 biao1 qian1 biao3 shi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS25": [
+    {
+      "text": "六条线段各提供头尾两个端点",
+      "pinyin": "liu4 tiao2 xian4 duan4 ge4 ti2 gong1 tou2 wei2 liang3 ge4 duan1 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "共十二个不同位置",
+      "pinyin": "gong4 shi2 er4 ge4 bu4 tong2 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "粉色点输入就在红色尾端",
+      "pinyin": "fen3 se4 dian3 shu1 ru4 jiu4 zai4 hong2 se4 wei3 duan1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "合为同一个位置",
+      "pinyin": "he2 wei2 tong2 yi2 ge4 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "红色尾端与粉色点输入的身份都保留",
+      "pinyin": "hong2 se4 wei3 duan1 yu2 fen3 se4 dian3 shu1 ru4 de5 shen1 fen4 dou1 bao3 liu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以加入点输入后仍是十二个位置",
+      "pinyin": "suo2 yi3 jia1 ru4 dian3 shu1 ru4 hou4 reng2 shi4 shi2 er4 ge4 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "表中逐行对应原端点和扫描坐标",
+      "pinyin": "biao3 zhong1 zhu2 hang2 dui4 ying4 yuan2 duan1 dian3 he2 sao3 miao2 zuo4 biao1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS26": [
+    {
+      "text": "合并后共十二个位置",
+      "pinyin": "he2 bing4 hou4 gong4 shi2 er4 ge4 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "活动顺序和结果都为空",
+      "pinyin": "huo2 dong4 shun4 xu4 he2 jie2 guo3 dou1 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "表中按新",
+      "pinyin": "biao3 zhong1 an4 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标从上到下排列",
+      "pinyin": "zuo4 biao1 cong2 shang4 dao4 xia4 pai2 lie4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "交点",
+      "pinyin": "jiao1 dian3"
+    },
+    " P ",
+    {
+      "text": "尚未发现",
+      "pinyin": "shang4 wei4 fa1 xian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不在其中",
+      "pinyin": "bu2 zai4 qi2 zhong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS27": [
+    {
+      "text": "三线相遇的位置没有输入端点",
+      "pinyin": "san1 xian4 xiang1 yu4 de5 wei4 zhi4 mei2 you3 shu1 ru4 duan1 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "要在扫描中发现",
+      "pinyin": "yao4 zai4 sao3 miao2 zhong1 fa1 xian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "空隙候选也不是预先已知的事件",
+      "pinyin": "kong4 xi4 hou4 xuan3 ye3 bu2 shi4 yu4 xian1 yi3 zhi1 de5 shi4 jian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "后面每次按实际扫描坐标取最小的未处理位置",
+      "pinyin": "hou4 mian4 mei3 ci4 an4 shi2 ji4 sao3 miao2 zuo4 biao1 qu3 zui4 xiao3 de5 wei4 chu2 li3 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS28": [
+    {
+      "text": "先到绿色输入的开始位置",
+      "pinyin": "xian1 dao4 lv4 se4 shu1 ru4 de5 kai1 shi3 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "旧活动顺序为空",
+      "pinyin": "jiu4 huo2 dong4 shun4 xu4 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "只有一份身份",
+      "pinyin": "zhi2 you3 yi2 fen4 shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "没有输入对可以报告",
+      "pinyin": "mei2 you3 shu1 ru4 dui4 ke2 yi3 bao4 gao4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS29": [
+    {
+      "text": "把绿色输入加入顺序",
+      "pinyin": "ba3 lv4 se4 shu1 ru4 jia1 ru4 shun4 xu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "没有第二个组",
+      "pinyin": "mei2 you3 di4 er4 ge4 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "因此没有候选可查",
+      "pinyin": "yin1 ci3 mei2 you3 hou4 xuan2 ke3 cha2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结果仍为空",
+      "pinyin": "jie2 guo3 reng2 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "清单剩十一项",
+      "pinyin": "qing1 dan1 sheng4 shi2 yi1 xiang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS30": [
+    {
+      "text": "事件表记下处理后的状态",
+      "pinyin": "shi4 jian4 biao3 ji4 xia4 chu2 li3 hou4 de5 zhuang4 tai4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "再继续取下一项",
+      "pinyin": "zai4 ji4 xu4 qu3 xia4 yi2 xiang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS31": [
+    {
+      "text": "来到原点",
+      "pinyin": "lai2 dao4 yuan2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "开始者是蓝色输入",
+      "pinyin": "kai1 shi2 zhe3 shi4 lan2 se4 shu1 ru4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "绿色在这里的高度为正",
+      "pinyin": "lv4 se4 zai4 zhe4 li3 de5 gao1 du4 wei2 zheng4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不参加这次事件",
+      "pinyin": "bu4 can1 jia1 zhe4 ci4 shi4 jian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以没有新结果",
+      "pinyin": "suo2 yi3 mei2 you3 xin1 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS32": [
+    {
+      "text": "把只有蓝色成员的水平组放在绿色下方",
+      "pinyin": "ba3 zhi2 you3 lan2 se4 cheng2 yuan2 de5 shui3 ping2 zu3 fang4 zai4 lv4 se4 xia4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "当前最远右端为二",
+      "pinyin": "dang1 qian2 zui4 yuan3 you4 duan1 wei2 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "尚未开始的橙色成员不能提供覆盖",
+      "pinyin": "shang4 wei4 kai1 shi3 de5 cheng2 se4 cheng2 yuan2 bu4 neng2 ti2 gong1 fu4 gai4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS33": [
+    {
+      "text": "新邻居是水平组与绿色组",
+      "pinyin": "xin1 lin2 ju1 shi4 shui3 ping2 zu3 yu3 lv4 se4 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "令绿色直线的高度为零",
+      "pinyin": "ling4 lv4 se4 zhi2 xian4 de5 gao1 du4 wei2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到候选",
+      "pinyin": "de2 dao4 hou4 xuan3"
+    },
+    " x ",
+    {
+      "text": "坐标为三",
+      "pinyin": "zuo4 biao1 wei2 san1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS34": [
+    {
+      "text": "候选在未来",
+      "pinyin": "hou4 xuan3 zai4 wei4 lai2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "绿色也覆盖它",
+      "pinyin": "lv4 se4 ye3 fu4 gai4 ta1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "但三超过当前水平覆盖的右端二",
+      "pinyin": "dan4 san1 chao1 guo4 dang1 qian2 shui3 ping2 fu4 gai4 de5 you4 duan1 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以不预约",
+      "pinyin": "suo2 yi3 bu2 yu4 yue1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS35": [
+    {
+      "text": "来到",
+      "pinyin": "lai2 dao4"
+    },
+    " x ",
+    {
+      "text": "坐标为一且",
+      "pinyin": "zuo4 biao1 wei2 yi1 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为零的点",
+      "pinyin": "zuo4 biao1 wei2 ling2 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "蓝色仍在",
+      "pinyin": "lan2 se4 reng2 zai4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "橙色从这里开始",
+      "pinyin": "cheng2 se4 cong2 zhe4 li3 kai1 shi3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "先读取这两份原始身份",
+      "pinyin": "xian1 du2 qu3 zhe4 liang3 fen4 yuan2 shi3 shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "再更新成员",
+      "pinyin": "zai4 geng1 xin1 cheng2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS36": [
+    {
+      "text": "两份左端较大的是一",
+      "pinyin": "liang3 fen4 zuo3 duan1 jiao4 da4 de5 shi4 yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "右端较小的是二",
+      "pinyin": "you4 duan1 jiao4 xiao3 de5 shi4 er4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "按已讲的完整区间结论",
+      "pinyin": "an4 yi2 jiang3 de5 wan2 zheng3 qu1 jian1 jie2 lun4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "交集是这两个边界之间的闭线段",
+      "pinyin": "jiao1 ji2 shi4 zhe4 liang3 ge4 bian1 jie4 zhi1 jian1 de5 bi4 xian4 duan4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS37": [
+    {
+      "text": "先报告这一整段",
+      "pinyin": "xian1 bao4 gao4 zhe4 yi4 zheng3 duan4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "而不是只报告当前位置",
+      "pinyin": "er2 bu2 shi4 zhi3 bao4 gao4 dang1 qian2 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "右端点早已在输入中给出",
+      "pinyin": "you4 duan1 dian3 zao2 yi3 zai4 shu1 ru4 zhong1 gei3 chu1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不必等扫描走到二",
+      "pinyin": "bu2 bi4 deng2 sao3 miao2 zou3 dao4 er4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS38": [
+    {
+      "text": "现在把橙色成员加入水平组",
+      "pinyin": "xian4 zai4 ba3 cheng2 se4 cheng2 yuan2 jia1 ru4 shui3 ping2 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "组仍在绿色下方",
+      "pinyin": "zu3 reng2 zai4 lv4 se4 xia4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "但最远右端从二延长到四",
+      "pinyin": "dan4 zui4 yuan3 you4 duan1 cong2 er4 yan2 chang2 dao4 si4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS39": [
+    {
+      "text": "仍然检查原来的两个邻组",
+      "pinyin": "reng2 ran2 jian3 cha2 yuan2 lai2 de5 liang3 ge4 lin2 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "候选",
+      "pinyin": "hou4 xuan3"
+    },
+    " x ",
+    {
+      "text": "坐标三严格大于当前的一",
+      "pinyin": "zuo4 biao1 san1 yan2 ge2 da4 yu2 dang1 qian2 de5 yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也在水平组当前覆盖以内",
+      "pinyin": "ye3 zai4 shui3 ping2 zu3 dang1 qian2 fu4 gai4 yi3 nei4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS40": [
+    {
+      "text": "绿色两端也把候选夹在中间",
+      "pinyin": "lv4 se4 liang3 duan1 ye2 ba3 hou4 xuan3 jia1 zai4 zhong1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "两份真实成员都能到达",
+      "pinyin": "liang3 fen4 zhen1 shi2 cheng2 yuan2 dou1 neng2 dao4 da2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "覆盖与严格未来同时满足",
+      "pinyin": "fu4 gai4 yu3 yan2 ge2 wei4 lai2 tong2 shi2 man3 zu2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "才允许登记",
+      "pinyin": "cai2 yun2 xu3 deng1 ji4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS41": [
+    {
+      "text": "现在把新增交点",
+      "pinyin": "xian4 zai4 ba3 xin1 zeng1 jiao1 dian3"
+    },
+    " P ",
+    {
+      "text": "加入待处理清单",
+      "pinyin": "jia1 ru4 dai4 chu2 li3 qing1 dan1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "清单剩十项",
+      "pinyin": "qing1 dan1 sheng4 shi2 xiang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "刚才报告区间",
+      "pinyin": "gang1 cai2 bao4 gao4 qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "现在发现未来点",
+      "pinyin": "xian4 zai4 fa1 xian4 wei4 lai2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "两项行动要分清",
+      "pinyin": "liang3 xiang4 xing2 dong4 yao4 fen1 qing1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS42": [
+    {
+      "text": "来到蓝色右端",
+      "pinyin": "lai2 dao4 lan2 se4 you4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它仍具有当前闭端点资格",
+      "pinyin": "ta1 reng2 ju4 you3 dang1 qian2 bi4 duan1 dian3 zi1 ge2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "但这一同线对已经报告完整区间",
+      "pinyin": "dan4 zhe4 yi4 tong2 xian4 dui4 yi3 jing1 bao4 gao4 wan2 zheng3 qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不再改报一个点",
+      "pinyin": "bu2 zai4 gai3 bao4 yi2 ge4 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS43": [
+    {
+      "text": "移去结束的蓝色成员",
+      "pinyin": "yi2 qu4 jie2 shu4 de5 lan2 se4 cheng2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "橙色仍向右继续",
+      "pinyin": "cheng2 se4 reng2 xiang4 you4 ji4 xu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "水平组不退出",
+      "pinyin": "shui3 ping2 zu3 bu2 tui4 chu1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "最远右端仍为四",
+      "pinyin": "zui4 yuan3 you4 duan1 reng2 wei2 si4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS44": [
+    {
+      "text": "核对这对邻居",
+      "pinyin": "he2 dui4 zhe4 dui4 lin2 ju1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "候选还是已经登记过的那个交点",
+      "pinyin": "hou4 xuan3 hai2 shi4 yi3 jing1 deng1 ji4 guo5 de5 na4 ge5 jiao1 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "没有覆盖延长",
+      "pinyin": "mei2 you3 fu4 gai4 yan2 chang2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不产生新的发现",
+      "pinyin": "bu4 chan3 sheng1 xin1 de5 fa1 xian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也不重报旧区间",
+      "pinyin": "ye3 bu4 chong2 bao4 jiu4 qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS45": [
+    {
+      "text": "到这里",
+      "pinyin": "dao4 zhe4 li3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "顺序从下到上是水平组",
+      "pinyin": "shun4 xu4 cong2 xia4 dao4 shang4 shi4 shui3 ping2 zu3"
+    },
+    "、",
+    {
+      "text": "绿色组",
+      "pinyin": "lv4 se4 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "一对结果与剩余九个位置原样接到后面的过程",
+      "pinyin": "yi2 dui4 jie2 guo3 yu3 sheng4 yu2 jiu3 ge4 wei4 zhi4 yuan2 yang4 jie1 dao4 hou4 mian4 de5 guo4 cheng2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS46": [
+    {
+      "text": "从刚才的水平组和绿色组接着走",
+      "pinyin": "cong2 gang1 cai2 de5 shui3 ping2 zu3 he2 lv4 se4 zu3 jie1 zhe5 zou3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "累计区间继续保留",
+      "pinyin": "lei3 ji4 qu1 jian1 ji4 xu4 bao3 liu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "现在青色输入开始",
+      "pinyin": "xian4 zai4 qing1 se4 shu1 ru4 kai1 shi3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它的新",
+      "pinyin": "ta1 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标是二加三倍系数",
+      "pinyin": "zuo4 biao1 shi4 er4 jia1 san1 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "新",
+      "pinyin": "xin1"
+    },
+    " y ",
+    {
+      "text": "坐标是三",
+      "pinyin": "zuo4 biao1 shi4 san1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS47": [
+    {
+      "text": "将新",
+      "pinyin": "jiang1 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标代入绿色高度",
+      "pinyin": "zuo4 biao1 dai4 ru4 lv4 se4 gao1 du4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "分子是一减去三倍系数",
+      "pinyin": "fen1 zi3 shi4 yi1 jian3 qu4 san1 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "分母是一减去系数",
+      "pinyin": "fen1 mu3 shi4 yi1 jian3 qu4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "用这个分子除以这个分母",
+      "pinyin": "yong4 zhe4 ge5 fen1 zi3 chu2 yi3 zhe4 ge5 fen1 mu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "分子和分母都为正",
+      "pinyin": "fen1 zi3 he2 fen1 mu3 dou1 wei2 zheng4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "把所得的商与三比较",
+      "pinyin": "ba2 suo3 de2 de5 shang1 yu3 san1 bi3 jiao4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "等价于一小于三",
+      "pinyin": "deng3 jia4 yu2 yi1 xiao3 yu2 san1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以绿色在水平组上方",
+      "pinyin": "suo2 yi3 lv4 se4 zai4 shui3 ping2 zu3 shang4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "又在青色起点下方",
+      "pinyin": "you4 zai4 qing1 se4 qi2 dian3 xia4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS48": [
+    {
+      "text": "没有其他输入经过这个起点",
+      "pinyin": "mei2 you3 qi2 ta1 shu1 ru4 jing1 guo4 zhe4 ge5 qi2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "因此无新结果",
+      "pinyin": "yin1 ci3 wu2 xin1 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "青色组加入最上方",
+      "pinyin": "qing1 se4 zu3 jia1 ru4 zui4 shang4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "只产生绿色与青色这一对新邻接",
+      "pinyin": "zhi2 chan3 sheng1 lv4 se4 yu3 qing1 se4 zhe4 yi2 dui4 xin1 lin2 jie1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS49": [
+    {
+      "text": "两条直线的斜率",
+      "pinyin": "liang3 tiao2 zhi2 xian4 de5 xie2 lv4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "都以负一为分子",
+      "pinyin": "dou1 yi3 fu4 yi1 wei2 fen1 zi3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "一减系数为分母",
+      "pinyin": "yi1 jian3 xi4 shu4 wei2 fen1 mu3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "常数项不同",
+      "pinyin": "chang2 shu4 xiang4 bu4 tong2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它们平行",
+      "pinyin": "ta1 men5 ping2 xing2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不预约",
+      "pinyin": "bu2 yu4 yue1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "水平与青色之间仍隔着绿色",
+      "pinyin": "shui3 ping2 yu3 qing1 se4 zhi1 jian1 reng2 ge2 zhe5 lv4 se4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS50": [
+    {
+      "text": "来到红色输入的下端",
+      "pinyin": "lai2 dao4 hong2 se4 shu1 ru4 de5 xia4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "新高度为负一",
+      "pinyin": "xin1 gao1 du4 wei2 fu4 yi1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "水平组高度零",
+      "pinyin": "shui3 ping2 zu3 gao1 du4 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "绿色高度的分子是系数",
+      "pinyin": "lv4 se4 gao1 du4 de5 fen1 zi3 shi4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "分母是一减系数",
+      "pinyin": "fen1 mu3 shi4 yi1 jian3 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "青色又更高",
+      "pinyin": "qing1 se4 you4 geng4 gao1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "因此没有旧输入经过这个起点",
+      "pinyin": "yin1 ci3 mei2 you3 jiu4 shu1 ru4 jing1 guo4 zhe4 ge5 qi2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS51": [
+    {
+      "text": "红色组插到最下方",
+      "pinyin": "hong2 se4 zu3 cha1 dao4 zui4 xia4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "新邻居只有它与水平组",
+      "pinyin": "xin1 lin2 ju1 zhi2 you3 ta1 yu2 shui3 ping2 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "原来的水平",
+      "pinyin": "yuan2 lai2 de5 shui3 ping2"
+    },
+    "、",
+    {
+      "text": "绿色邻接仍保留",
+      "pinyin": "lv4 se4 lin2 jie1 reng2 bao3 liu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS52": [
+    {
+      "text": "让红色的新高度等于零",
+      "pinyin": "rang4 hong2 se4 de5 xin1 gao1 du4 deng3 yu2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到新",
+      "pinyin": "de2 dao4 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标三",
+      "pinyin": "zuo4 biao1 san1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "红色与橙色当前成员都覆盖它",
+      "pinyin": "hong2 se4 yu3 cheng2 se4 dang1 qian2 cheng2 yuan2 dou1 fu4 gai4 ta1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "并且三大于三减系数",
+      "pinyin": "bing4 qie3 san1 da4 yu2 san1 jian3 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS53": [
+    {
+      "text": "这个真实未来位置已经在清单中",
+      "pinyin": "zhe4 ge5 zhen1 shi2 wei4 lai2 wei4 zhi4 yi3 jing1 zai4 qing1 dan1 zhong1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以不再插入",
+      "pinyin": "suo2 yi3 bu2 zai4 cha1 ru4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "原来的预约仍然有效",
+      "pinyin": "yuan2 lai2 de5 yu4 yue1 reng2 ran2 you3 xiao4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "到站以后才找齐全部参与者",
+      "pinyin": "dao4 zhan4 yi3 hou4 cai2 zhao3 qi2 quan2 bu4 can1 yu4 zhe3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS54": [
+    {
+      "text": "取出刚才补检发现的位置",
+      "pinyin": "qu3 chu1 gang1 cai2 bu2 jian3 fa1 xian4 de5 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "红色",
+      "pinyin": "hong2 se4"
+    },
+    "、",
+    {
+      "text": "水平组和绿色在这里的高度都是零",
+      "pinyin": "shui3 ping2 zu3 he2 lv4 se4 zai4 zhe4 li3 de5 gao1 du4 dou1 shi4 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "组成整个相遇块",
+      "pinyin": "zu3 cheng2 zheng3 ge4 xiang1 yu4 kuai4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS55": [
+    {
+      "text": "青色的高度严格为正",
+      "pinyin": "qing1 se4 de5 gao1 du4 yan2 ge2 wei2 zheng4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不经过当前点",
+      "pinyin": "bu4 jing1 guo4 dang1 qian2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它保留在相遇块上方",
+      "pinyin": "ta1 bao3 liu2 zai4 xiang1 yu4 kuai4 shang4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不参加当前报告",
+      "pinyin": "bu4 can1 jia1 dang1 qian2 bao4 gao4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS56": [
+    {
+      "text": "水平组当前只含橙色成员",
+      "pinyin": "shui3 ping2 zu3 dang1 qian2 zhi3 han2 cheng2 se4 cheng2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能带回已结束的蓝色",
+      "pinyin": "bu4 neng2 dai4 hui2 yi3 jie2 shu4 de5 lan2 se4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "紫色尚未开始",
+      "pinyin": "zi3 se4 shang4 wei4 kai1 shi3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也不能加入名单",
+      "pinyin": "ye3 bu4 neng2 jia1 ru4 ming2 dan1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "三份当前参与者都严格穿过这个点",
+      "pinyin": "san1 fen4 dang1 qian2 can1 yu4 zhe3 dou1 yan2 ge2 chuan1 guo4 zhe4 ge5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS57": [
+    {
+      "text": "先把橙色成员与绿色输入配对",
+      "pinyin": "xian1 ba3 cheng2 se4 cheng2 yuan2 yu3 lv4 se4 shu1 ru4 pei4 dui4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "交集为当前点",
+      "pinyin": "jiao1 ji2 wei2 dang1 qian2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS58": [
+    {
+      "text": "再把同一橙色成员与红色输入配对",
+      "pinyin": "zai4 ba3 tong2 yi1 cheng2 se4 cheng2 yuan2 yu3 hong2 se4 shu1 ru4 pei4 dui4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "另留一条点结果",
+      "pinyin": "ling4 liu2 yi4 tiao2 dian3 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "位置相同",
+      "pinyin": "wei4 zhi4 xiang1 tong2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "输入对身份不同",
+      "pinyin": "shu1 ru4 dui4 shen1 fen4 bu4 tong2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS59": [
+    {
+      "text": "绿色与红色之间也有一条点结果",
+      "pinyin": "lv4 se4 yu3 hong2 se4 zhi1 jian1 ye2 you3 yi4 tiao2 dian3 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "加上早先的完整区间",
+      "pinyin": "jia1 shang4 zao3 xian1 de5 wan2 zheng3 qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "现在累计四对",
+      "pinyin": "xian4 zai4 lei3 ji4 si4 dui4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "旧区间没有切碎",
+      "pinyin": "jiu4 qu1 jian1 mei2 you3 qie1 sui4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也没有改报为点",
+      "pinyin": "ye3 mei2 you2 gai3 bao4 wei2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS60": [
+    {
+      "text": "绿色斜率为负",
+      "pinyin": "lv4 se4 xie2 lv4 wei2 fu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "水平组斜率为零",
+      "pinyin": "shui3 ping2 zu3 xie2 lv4 wei2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "红色斜率为正",
+      "pinyin": "hong2 se4 xie2 lv4 wei2 zheng4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "三组都继续",
+      "pinyin": "san1 zu3 dou1 ji4 xu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "因此右侧按这个次序排列",
+      "pinyin": "yin1 ci3 you4 ce4 an4 zhe4 ge5 ci4 xu4 pai2 lie4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS61": [
+    {
+      "text": "现在重排整个相遇块",
+      "pinyin": "xian4 zai4 chong2 pai2 zheng3 ge4 xiang1 yu4 kuai4"
+    },
+    "：",
+    {
+      "text": "绿色到下方",
+      "pinyin": "lv4 se4 dao4 xia4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "红色到上方",
+      "pinyin": "hong2 se4 dao4 shang4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "水平组仍在中间",
+      "pinyin": "shui3 ping2 zu3 reng2 zai4 zhong1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "青色始终保留在块外上方",
+      "pinyin": "qing1 se4 shi3 zhong1 bao3 liu2 zai4 kuai4 wai4 shang4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "竖列中的间距只表示离散顺序",
+      "pinyin": "shu4 lie4 zhong1 de5 jian1 ju4 zhi2 biao3 shi4 li2 san4 shun4 xu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不表示几何高度",
+      "pinyin": "bu4 biao3 shi4 ji3 he2 gao1 du4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS62": [
+    {
+      "text": "绿色与水平组",
+      "pinyin": "lv4 se4 yu2 shui3 ping2 zu3"
+    },
+    "、",
+    {
+      "text": "水平组与红色",
+      "pinyin": "shui3 ping2 zu3 yu3 hong2 se4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "再求交仍是当前点",
+      "pinyin": "zai4 qiu2 jiao1 reng2 shi4 dang1 qian2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "严格未来条件拒绝它们",
+      "pinyin": "yan2 ge2 wei4 lai2 tiao2 jian4 ju4 jue2 ta1 men5"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能把当前点重新预约",
+      "pinyin": "bu4 neng2 ba3 dang1 qian2 dian3 chong2 xin1 yu4 yue1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS63": [
+    {
+      "text": "换序之后",
+      "pinyin": "huan4 xu4 zhi1 hou4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "红色与青色之间不再隔着绿色组",
+      "pinyin": "hong2 se4 yu3 qing1 se4 zhi1 jian1 bu2 zai4 ge2 zhe5 lv4 se4 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这对新邻居触发边界检查",
+      "pinyin": "zhe4 dui4 xin1 lin2 ju1 chu4 fa1 bian1 jie4 jian3 cha2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "下方没有块外组",
+      "pinyin": "xia4 fang1 mei2 you3 kuai4 wai4 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS64": [
+    {
+      "text": "在红色原直线上代入青色方程",
+      "pinyin": "zai4 hong2 se4 yuan2 zhi2 xian4 shang4 dai4 ru4 qing1 se4 fang1 cheng2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "原高度为二",
+      "pinyin": "yuan2 gao1 du4 wei2 er4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "统一变换后",
+      "pinyin": "tong3 yi1 bian4 huan4 hou4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "候选的新",
+      "pinyin": "hou4 xuan3 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标为三加两倍系数",
+      "pinyin": "zuo4 biao1 wei2 san1 jia1 liang3 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "新",
+      "pinyin": "xin1"
+    },
+    " y ",
+    {
+      "text": "坐标为二",
+      "pinyin": "zuo4 biao1 wei2 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "用",
+      "pinyin": "yong4"
+    },
+    " Q ",
+    {
+      "text": "撇表示这个新位置",
+      "pinyin": "pie2 biao3 shi4 zhe4 ge5 xin1 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS65": [
+    {
+      "text": "这个点正是红色闭右端",
+      "pinyin": "zhe4 ge5 dian3 zheng4 shi4 hong2 se4 bi4 you4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "青色也覆盖它",
+      "pinyin": "qing1 se4 ye3 fu4 gai4 ta1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它的新",
+      "pinyin": "ta1 de5 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标大于当前的三",
+      "pinyin": "zuo4 biao1 da4 yu2 dang1 qian2 de5 san1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以严格在未来",
+      "pinyin": "suo2 yi3 yan2 ge2 zai4 wei4 lai2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS66": [
+    {
+      "text": "红色尾端与点输入的共同位置",
+      "pinyin": "hong2 se4 wei3 duan1 yu2 dian3 shu1 ru4 de5 gong4 tong2 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "早已进入初始清单",
+      "pinyin": "zao2 yi3 jin4 ru4 chu1 shi3 qing1 dan1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "现在只保留原记录",
+      "pinyin": "xian4 zai4 zhi2 bao3 liu2 yuan2 ji4 lu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不新增第二份",
+      "pinyin": "bu4 xin1 zeng1 di4 er4 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也不到站前报告",
+      "pinyin": "ye3 bu2 dao4 zhan4 qian2 bao4 gao4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS67": [
+    {
+      "text": "来到原",
+      "pinyin": "lai2 dao4 yuan2"
+    },
+    " x ",
+    {
+      "text": "坐标为三且原",
+      "pinyin": "zuo4 biao1 wei2 san1 qie3 yuan2"
+    },
+    " y ",
+    {
+      "text": "坐标为二的点所对应的新位置",
+      "pinyin": "zuo4 biao1 wei2 er4 de5 dian2 suo3 dui4 ying4 de5 xin1 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "清单给出红色结束与点输入两种身份",
+      "pinyin": "qing1 dan1 gei3 chu1 hong2 se4 jie2 shu4 yu2 dian3 shu1 ru4 liang2 zhong3 shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "先都保留下来",
+      "pinyin": "xian1 dou1 bao3 liu2 xia4 lai2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS68": [
+    {
+      "text": "青色输入严格穿过当前点",
+      "pinyin": "qing1 se4 shu1 ru4 yan2 ge2 chuan1 guo4 dang1 qian2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "要从旧活动顺序中找齐",
+      "pinyin": "yao4 cong2 jiu4 huo2 dong4 shun4 xu4 zhong1 zhao3 qi2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "完整名单包含红色结束者",
+      "pinyin": "wan2 zheng3 ming2 dan1 bao1 han2 hong2 se4 jie2 shu4 zhe3"
+    },
+    "、",
+    {
+      "text": "青色穿过者和粉色点输入",
+      "pinyin": "qing1 se4 chuan1 guo4 zhe3 he2 fen3 se4 dian3 shu1 ru4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS69": [
+    {
+      "text": "当前点的高度是二",
+      "pinyin": "dang1 qian2 dian3 de5 gao1 du4 shi4 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "水平组与绿色都不在这里",
+      "pinyin": "shui3 ping2 zu3 yu3 lv4 se4 dou1 bu2 zai4 zhe4 li3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以这两组不参加当前报告",
+      "pinyin": "suo2 yi3 zhe4 liang2 zu3 bu4 can1 jia1 dang1 qian2 bao4 gao4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "仍保留在下方",
+      "pinyin": "reng2 bao3 liu2 zai4 xia4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS70": [
+    {
+      "text": "先报告红色闭端点与青色穿过者的交集",
+      "pinyin": "xian1 bao4 gao4 hong2 se4 bi4 duan1 dian3 yu3 qing1 se4 chuan1 guo4 zhe3 de5 jiao1 ji2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "红色即将结束",
+      "pinyin": "hong2 se4 ji2 jiang1 jie2 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不影响当前端点资格",
+      "pinyin": "bu4 ying2 xiang3 dang1 qian2 duan1 dian3 zi1 ge2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS71": [
+    {
+      "text": "点输入与红色线段也配成一对",
+      "pinyin": "dian3 shu1 ru4 yu3 hong2 se4 xian4 duan4 ye3 pei4 cheng2 yi2 dui4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "完整交集仍是当前点",
+      "pinyin": "wan2 zheng3 jiao1 ji2 reng2 shi4 dang1 qian2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS72": [
+    {
+      "text": "点输入还与青色线段配成一对",
+      "pinyin": "dian3 shu1 ru4 hai2 yu3 qing1 se4 xian4 duan4 pei4 cheng2 yi2 dui4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "三条新结果加到原有四条之上",
+      "pinyin": "san1 tiao2 xin1 jie2 guo3 jia1 dao4 yuan2 you3 si4 tiao2 zhi1 shang4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "累计七对",
+      "pinyin": "lei3 ji4 qi1 dui4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS73": [
+    {
+      "text": "完成报告后",
+      "pinyin": "wan2 cheng2 bao4 gao4 hou4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "红色退出",
+      "pinyin": "hong2 se4 tui4 chu1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "青色继续",
+      "pinyin": "qing1 se4 ji4 xu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "点输入不获得斜率",
+      "pinyin": "dian3 shu1 ru4 bu2 huo4 de2 xie2 lv4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也不进入后续顺序",
+      "pinyin": "ye3 bu2 jin4 ru4 hou4 xu4 shun4 xu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "更新后从下到上是绿色",
+      "pinyin": "geng1 xin1 hou4 cong2 xia4 dao4 shang4 shi4 lv4 se4"
+    },
+    "、",
+    {
+      "text": "水平组",
+      "pinyin": "shui3 ping2 zu3"
+    },
+    "、",
+    {
+      "text": "青色",
+      "pinyin": "qing1 se4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS74": [
+    {
+      "text": "移去红色以后",
+      "pinyin": "yi2 qu4 hong2 se4 yi3 hou4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "水平组与青色成为邻居",
+      "pinyin": "shui3 ping2 zu3 yu3 qing1 se4 cheng2 wei2 lin2 ju1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "令青色的新高度为零",
+      "pinyin": "ling4 qing1 se4 de5 xin1 gao1 du4 wei2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到候选新",
+      "pinyin": "de2 dao4 hou4 xuan3 xin1"
+    },
+    " x ",
+    {
+      "text": "坐标为五",
+      "pinyin": "zuo4 biao1 wei2 wu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS75": [
+    {
+      "text": "因为系数小于一",
+      "pinyin": "yin1 wei4 xi4 shu4 xiao3 yu2 yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "五在当前新位置右方",
+      "pinyin": "wu3 zai4 dang1 qian2 xin1 wei4 zhi4 you4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "青色覆盖它",
+      "pinyin": "qing1 se4 fu4 gai4 ta1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "但水平组只有橙色成员",
+      "pinyin": "dan4 shui3 ping2 zu3 zhi2 you3 cheng2 se4 cheng2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "覆盖只到四",
+      "pinyin": "fu4 gai4 zhi3 dao4 si4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "尚未开始的紫色不能提供覆盖",
+      "pinyin": "shang4 wei4 kai1 shi3 de5 zi3 se4 bu4 neng2 ti2 gong1 fu4 gai4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以拒绝预约",
+      "pinyin": "suo2 yi3 ju4 jue2 yu4 yue1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS76": [
+    {
+      "text": "这一段结束后",
+      "pinyin": "zhe4 yi2 duan4 jie2 shu4 hou4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "七对结果全部保留",
+      "pinyin": "qi1 dui4 jie2 guo3 quan2 bu4 bao3 liu2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "清单还剩五项",
+      "pinyin": "qing1 dan1 hai2 sheng4 wu3 xiang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "接下来要把剩余输入处理完",
+      "pinyin": "jie1 xia4 lai2 yao4 ba3 sheng4 yu2 shu1 ru4 chu2 li3 wan2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能只因结果已齐就结束扫描",
+      "pinyin": "bu4 neng2 zhi3 yin1 jie2 guo3 yi3 qi2 jiu4 jie2 shu4 sao3 miao2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS77": [
+    {
+      "text": "来到橙色右端",
+      "pinyin": "lai2 dao4 cheng2 se4 you4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "当前只有橙色输入参与",
+      "pinyin": "dang1 qian2 zhi2 you3 cheng2 se4 shu1 ru4 can1 yu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "没有其他输入覆盖当前点",
+      "pinyin": "mei2 you3 qi2 ta1 shu1 ru4 fu4 gai4 dang1 qian2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "因此没有新结果",
+      "pinyin": "yin1 ci3 mei2 you3 xin1 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS78": [
+    {
+      "text": "移去橙色后",
+      "pinyin": "yi2 qu4 cheng2 se4 hou4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "水平组已没有活动成员",
+      "pinyin": "shui3 ping2 zu3 yi3 mei2 you3 huo2 dong4 cheng2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "整个组退出顺序",
+      "pinyin": "zheng3 ge4 zu3 tui4 chu1 shun4 xu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "剩下绿色和青色",
+      "pinyin": "sheng4 xia4 lv4 se4 he2 qing1 se4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS79": [
+    {
+      "text": "新的相邻两组斜率相同而截距不同",
+      "pinyin": "xin1 de5 xiang1 lin2 liang2 zu3 xie2 lv4 xiang1 tong2 er2 jie2 ju4 bu4 tong2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以平行",
+      "pinyin": "suo2 yi3 ping2 xing2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "原",
+      "pinyin": "yuan2"
+    },
+    " x ",
+    {
+      "text": "坐标为五且原",
+      "pinyin": "zuo4 biao1 wei2 wu3 qie3 yuan2"
+    },
+    " y ",
+    {
+      "text": "坐标为零的那个候选点从未登记",
+      "pinyin": "zuo4 biao1 wei2 ling2 de5 na4 ge5 hou4 xuan2 dian3 cong2 wei4 deng1 ji4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "清单不会在那里停下",
+      "pinyin": "qing1 dan1 bu2 hui4 zai4 na4 li3 ting2 xia4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS80": [
+    {
+      "text": "保留七对结果",
+      "pinyin": "bao3 liu2 qi1 dui4 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "直接前往紫色左端",
+      "pinyin": "zhi2 jie1 qian2 wang2 zi3 se4 zuo3 duan1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS81": [
+    {
+      "text": "紫色在六开始",
+      "pinyin": "zi3 se4 zai4 liu4 kai1 shi3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "先核对当前点",
+      "pinyin": "xian1 he2 dui4 dang1 qian2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "绿色和青色都在它下方",
+      "pinyin": "lv4 se4 he2 qing1 se4 dou1 zai4 ta1 xia4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "没有新的同点配对",
+      "pinyin": "mei2 you3 xin1 de5 tong2 dian3 pei4 dui4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS82": [
+    {
+      "text": "紫色重新激活固定的水平组",
+      "pinyin": "zi3 se4 chong2 xin1 ji1 huo2 gu4 ding4 de5 shui3 ping2 zu3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "当前成员只有紫色",
+      "pinyin": "dang1 qian2 cheng2 yuan2 zhi2 you2 zi3 se4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "组排在最上方",
+      "pinyin": "zu3 pai2 zai4 zui4 shang4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "覆盖到八",
+      "pinyin": "fu4 gai4 dao4 ba1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "旧成员不会复活",
+      "pinyin": "jiu4 cheng2 yuan2 bu2 hui4 fu4 huo2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS83": [
+    {
+      "text": "检查青色与水平组",
+      "pinyin": "jian3 cha2 qing1 se4 yu2 shui3 ping2 zu3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "原直线仍交于五",
+      "pinyin": "yuan2 zhi2 xian4 reng2 jiao1 yu2 wu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "候选已经在当前扫描位置左方",
+      "pinyin": "hou4 xuan3 yi3 jing1 zai4 dang1 qian2 sao3 miao2 wei4 zhi4 zuo3 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能成为未来事件",
+      "pinyin": "bu4 neng2 cheng2 wei2 wei4 lai2 shi4 jian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS84": [
+    {
+      "text": "此外",
+      "pinyin": "ci3 wai4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "紫色只覆盖六到八",
+      "pinyin": "zi3 se4 zhi3 fu4 gai4 liu4 dao4 ba1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "五也不在它的闭范围里",
+      "pinyin": "wu2 ye3 bu2 zai4 ta1 de5 bi4 fan4 wei2 li3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同线身份没有填平橙色与紫色之间的旧空隙",
+      "pinyin": "tong2 xian4 shen1 fen4 mei2 you3 tian2 ping2 cheng2 se4 yu2 zi3 se4 zhi1 jian1 de5 jiu4 kong4 xi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS85": [
+    {
+      "text": "两项拒绝理由都成立",
+      "pinyin": "liang3 xiang4 ju4 jue2 li3 you2 dou1 cheng2 li4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "保留七对结果",
+      "pinyin": "bao3 liu2 qi1 dui4 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "清单剩三项",
+      "pinyin": "qing1 dan1 sheng4 san1 xiang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS86": [
+    {
+      "text": "先到绿色右端",
+      "pinyin": "xian1 dao4 lv4 se4 you4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "青色此刻在上方",
+      "pinyin": "qing1 se4 ci3 ke4 zai4 shang4 fang1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "紫色高度为零",
+      "pinyin": "zi3 se4 gao1 du4 wei2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "均不在当前点",
+      "pinyin": "jun1 bu2 zai4 dang1 qian2 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "当前没有新配对",
+      "pinyin": "dang1 qian2 mei2 you3 xin1 pei4 dui4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS87": [
+    {
+      "text": "绿色从最下方退出",
+      "pinyin": "lv4 se4 cong2 zui4 xia4 fang1 tui4 chu1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "青色和紫色原本就相邻",
+      "pinyin": "qing1 se4 he2 zi3 se4 yuan2 ben3 jiu4 xiang1 lin2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "没有新边界要预约",
+      "pinyin": "mei2 you3 xin1 bian1 jie4 yao4 yu4 yue1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结果仍为七对",
+      "pinyin": "jie2 guo3 reng2 wei2 qi1 dui4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "清单剩两项",
+      "pinyin": "qing1 dan1 sheng4 liang3 xiang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS88": [
+    {
+      "text": "记录这一行后继续前进",
+      "pinyin": "ji4 lu4 zhe4 yi4 hang2 hou4 ji4 xu4 qian2 jin4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS89": [
+    {
+      "text": "再到青色右端",
+      "pinyin": "zai4 dao4 qing1 se4 you4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "紫色高度为零",
+      "pinyin": "zi3 se4 gao1 du4 wei2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不参加这个点",
+      "pinyin": "bu4 can1 jia1 zhe4 ge5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "因此仍然没有新结果",
+      "pinyin": "yin1 ci3 reng2 ran2 mei2 you3 xin1 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS90": [
+    {
+      "text": "移去青色以后只剩一个组",
+      "pinyin": "yi2 qu4 qing1 se4 yi3 hou4 zhi3 sheng4 yi2 ge4 zu3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不存在相邻两组",
+      "pinyin": "bu4 cun2 zai4 xiang1 lin2 liang2 zu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "没有新预约",
+      "pinyin": "mei2 you3 xin1 yu4 yue1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "清单只剩紫色右端",
+      "pinyin": "qing1 dan1 zhi3 sheng4 zi3 se4 you4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS91": [
+    {
+      "text": "记下这一行",
+      "pinyin": "ji4 xia4 zhe4 yi4 hang2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "处理最后一个位置",
+      "pinyin": "chu2 li3 zui4 hou4 yi2 ge4 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS92": [
+    {
+      "text": "最后来到紫色右端",
+      "pinyin": "zui4 hou4 lai2 dao4 zi3 se4 you4 duan1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "没有其他参与者",
+      "pinyin": "mei2 you3 qi2 ta1 can1 yu4 zhe3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "因此没有新结果",
+      "pinyin": "yin1 ci3 mei2 you3 xin1 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS93": [
+    {
+      "text": "移去紫色",
+      "pinyin": "yi2 qu4 zi3 se4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "水平组再次变空并退出",
+      "pinyin": "shui3 ping2 zu3 zai4 ci4 bian4 kong1 bing4 tui4 chu1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "活动顺序为空",
+      "pinyin": "huo2 dong4 shun4 xu4 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "待处理清单也为空",
+      "pinyin": "dai4 chu2 li3 qing1 dan1 ye3 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "扫描至此终止",
+      "pinyin": "sao3 miao2 zhi4 ci3 zhong1 zhi3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS94": [
+    {
+      "text": "事件表是刚才逐步形成的记录",
+      "pinyin": "shi4 jian4 biao3 shi4 gang1 cai2 zhu2 bu4 xing2 cheng2 de5 ji4 lu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "最后一行保留七份配对结果",
+      "pinyin": "zui4 hou4 yi4 hang2 bao3 liu2 qi1 fen4 pei4 dui4 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "顺序和清单均为空",
+      "pinyin": "shun4 xu4 he2 qing1 dan1 jun1 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS95": [
+    {
+      "text": "扫描结束后",
+      "pinyin": "sao3 miao2 jie2 shu4 hou4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "用同一个逆变换还原每份完整交集",
+      "pinyin": "yong4 tong2 yi2 ge4 ni4 bian4 huan4 huan2 yuan2 mei3 fen4 wan2 zheng3 jiao1 ji2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "结果身份保留",
+      "pinyin": "jie2 guo3 shen1 fen4 bao3 liu2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不把多个配对合并成一个结果",
+      "pinyin": "bu4 ba3 duo1 ge4 pei4 dui4 he2 bing4 cheng2 yi2 ge4 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS96": [
+    {
+      "text": "蓝色与橙色的两个边界高度都是零",
+      "pinyin": "lan2 se4 yu3 cheng2 se4 de5 liang3 ge4 bian1 jie4 gao1 du4 dou1 shi4 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "原",
+      "pinyin": "yuan2"
+    },
+    " x ",
+    {
+      "text": "坐标不变",
+      "pinyin": "zuo4 biao1 bu2 bian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "还原后仍是高度零的完整闭区间",
+      "pinyin": "huan2 yuan2 hou4 reng2 shi4 gao1 du4 ling2 de5 wan2 zheng3 bi4 qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "左端的",
+      "pinyin": "zuo3 duan1 de5"
+    },
+    " x ",
+    {
+      "text": "坐标为一",
+      "pinyin": "zuo4 biao1 wei2 yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "右端的",
+      "pinyin": "you4 duan1 de5"
+    },
+    " x ",
+    {
+      "text": "坐标为二",
+      "pinyin": "zuo4 biao1 wei2 er4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS97": [
+    {
+      "text": "橙色与绿色的点结果高度也是零",
+      "pinyin": "cheng2 se4 yu3 lv4 se4 de5 dian3 jie2 guo3 gao1 du4 ye3 shi4 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "还原后",
+      "pinyin": "huan2 yuan2 hou4"
+    },
+    " x ",
+    {
+      "text": "坐标为三",
+      "pinyin": "zuo4 biao1 wei2 san1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "原",
+      "pinyin": "yuan2"
+    },
+    " y ",
+    {
+      "text": "坐标为零",
+      "pinyin": "zuo4 biao1 wei2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS98": [
+    {
+      "text": "橙色与红色",
+      "pinyin": "cheng2 se4 yu3 hong2 se4"
+    },
+    "、",
+    {
+      "text": "绿色与红色分别保留为两对结果",
+      "pinyin": "lv4 se4 yu3 hong2 se4 fen1 bie2 bao3 liu2 wei2 liang3 dui4 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它们还原到同一个点",
+      "pinyin": "ta1 men5 huan2 yuan2 dao4 tong2 yi2 ge4 dian3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "但不是同一份配对记录",
+      "pinyin": "dan4 bu2 shi4 tong2 yi2 fen4 pei4 dui4 ji4 lu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS99": [
+    {
+      "text": "红色与青色的结果",
+      "pinyin": "hong2 se4 yu3 qing1 se4 de5 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "新",
+      "pinyin": "xin1"
+    },
+    " x ",
+    {
+      "text": "坐标减去二倍系数",
+      "pinyin": "zuo4 biao1 jian3 qu4 er4 bei4 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到三",
+      "pinyin": "de2 dao4 san1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "高度保持二",
+      "pinyin": "gao1 du4 bao3 chi2 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "因此还原后的",
+      "pinyin": "yin1 ci3 huan2 yuan2 hou4 de5"
+    },
+    " x ",
+    {
+      "text": "坐标为三",
+      "pinyin": "zuo4 biao1 wei2 san1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "原",
+      "pinyin": "yuan2"
+    },
+    " y ",
+    {
+      "text": "坐标为二",
+      "pinyin": "zuo4 biao1 wei2 er4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS100": [
+    {
+      "text": "红色与点输入也还原到同一原位置",
+      "pinyin": "hong2 se4 yu2 dian3 shu1 ru4 ye3 huan2 yuan2 dao4 tong2 yi1 yuan2 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "配对身份继续单独保留",
+      "pinyin": "pei4 dui4 shen1 fen4 ji4 xu4 dan1 du2 bao3 liu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS101": [
+    {
+      "text": "青色与点输入是第七对",
+      "pinyin": "qing1 se4 yu2 dian3 shu1 ru4 shi4 di4 qi1 dui4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "同样还原到",
+      "pinyin": "tong2 yang4 huan2 yuan2 dao4"
+    },
+    " x ",
+    {
+      "text": "坐标为三且",
+      "pinyin": "zuo4 biao1 wei2 san1 qie3"
+    },
+    " y ",
+    {
+      "text": "坐标为二的点",
+      "pinyin": "zuo4 biao1 wei2 er4 de5 dian3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "至此七对完整交集都已还原",
+      "pinyin": "zhi4 ci3 qi1 dui4 wan2 zheng3 jiao1 ji2 dou1 yi3 huan2 yuan2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS102": [
+    {
+      "text": "区间结果只有蓝色与橙色这一对",
+      "pinyin": "qu1 jian1 jie2 guo3 zhi2 you3 lan2 se4 yu3 cheng2 se4 zhe4 yi2 dui4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "另外六对是点结果",
+      "pinyin": "ling4 wai4 liu4 dui4 shi4 dian3 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它们只占据两个不同点位置",
+      "pinyin": "ta1 men5 zhi3 zhan4 ju4 liang3 ge4 bu4 tong2 dian3 wei4 zhi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS103": [
+    {
+      "text": "再独立检查没有输出的配对",
+      "pinyin": "zai4 du2 li4 jian3 cha2 mei2 you3 shu1 chu1 de5 pei4 dui4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "蓝色",
+      "pinyin": "lan2 se4"
+    },
+    "、",
+    {
+      "text": "橙色的右端分别为二和四",
+      "pinyin": "cheng2 se4 de5 you4 duan1 fen1 bie2 wei2 er4 he2 si4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "都小于紫色左端六",
+      "pinyin": "dou1 xiao3 yu2 zi3 se4 zuo3 duan1 liu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这两对同线",
+      "pinyin": "zhe4 liang3 dui4 tong2 xian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "但闭范围没有相接",
+      "pinyin": "dan4 bi4 fan4 wei2 mei2 you3 xiang1 jie1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS104": [
+    {
+      "text": "绿色与水平直线的唯一候选",
+      "pinyin": "lv4 se4 yu2 shui3 ping2 zhi2 xian4 de5 wei2 yi1 hou4 xuan3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "候选点的",
+      "pinyin": "hou4 xuan2 dian3 de5"
+    },
+    " x ",
+    {
+      "text": "坐标为三",
+      "pinyin": "zuo4 biao1 wei2 san1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "候选点的",
+      "pinyin": "hou4 xuan2 dian3 de5"
+    },
+    " y ",
+    {
+      "text": "坐标为零",
+      "pinyin": "zuo4 biao1 wei2 ling2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它在蓝色右端之外",
+      "pinyin": "ta1 zai4 lan2 se4 you4 duan1 zhi1 wai4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也在紫色左端之前",
+      "pinyin": "ye3 zai4 zi3 se4 zuo3 duan1 zhi1 qian2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以这两对为空",
+      "pinyin": "suo2 yi3 zhe4 liang3 dui4 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS105": [
+    {
+      "text": "红色与水平直线也只有这个候选",
+      "pinyin": "hong2 se4 yu2 shui3 ping2 zhi2 xian4 ye2 zhi2 you3 zhe4 ge5 hou4 xuan3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "相同的水平范围检查排除了蓝色和紫色",
+      "pinyin": "xiang1 tong2 de5 shui3 ping2 fan4 wei2 jian3 cha2 pai2 chu2 le5 lan2 se4 he2 zi3 se4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS106": [
+    {
+      "text": "青色与水平直线的候选在五",
+      "pinyin": "qing1 se4 yu2 shui3 ping2 zhi2 xian4 de5 hou4 xuan3 zai4 wu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "蓝色只到二",
+      "pinyin": "lan2 se4 zhi3 dao4 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "橙色只到四",
+      "pinyin": "cheng2 se4 zhi3 dao4 si4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "紫色从六开始",
+      "pinyin": "zi3 se4 cong2 liu4 kai1 shi3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "三份都不覆盖它",
+      "pinyin": "san1 fen4 dou1 bu2 fu4 gai4 ta1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS107": [
+    {
+      "text": "绿色与青色的原方程斜率都是负一",
+      "pinyin": "lv4 se4 yu3 qing1 se4 de5 yuan2 fang1 cheng2 xie2 lv4 dou1 shi4 fu4 yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "截距分别为三和五",
+      "pinyin": "jie2 ju4 fen1 bie2 wei2 san1 he2 wu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "两条直线平行且不同",
+      "pinyin": "liang3 tiao2 zhi2 xian4 ping2 xing2 qie3 bu4 tong2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "因此这对也为空",
+      "pinyin": "yin1 ci3 zhe4 dui4 ye3 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS108": [
+    {
+      "text": "点输入高度为二",
+      "pinyin": "dian3 shu1 ru4 gao1 du4 wei2 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "三份水平输入都在高度零",
+      "pinyin": "san1 fen4 shui3 ping2 shu1 ru4 dou1 zai4 gao1 du4 ling2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "因此点输入与它们形成的三对都为空",
+      "pinyin": "yin1 ci3 dian3 shu1 ru4 yu3 ta1 men5 xing2 cheng2 de5 san1 dui4 dou1 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS109": [
+    {
+      "text": "最后把点输入的",
+      "pinyin": "zui4 hou4 ba2 dian3 shu1 ru4 de5"
+    },
+    " x ",
+    {
+      "text": "坐标三代入绿色方程",
+      "pinyin": "zuo4 biao1 san1 dai4 ru4 lv4 se4 fang1 cheng2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得到高度零",
+      "pinyin": "de2 dao4 gao1 du4 ling2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它不等于点输入的高度二",
+      "pinyin": "ta1 bu4 deng3 yu2 dian3 shu1 ru4 de5 gao1 du4 er4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以最后这对为空",
+      "pinyin": "suo2 yi3 zui4 hou4 zhe4 dui4 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS110": [
+    {
+      "text": "七对非空加十四对空",
+      "pinyin": "qi1 dui4 fei1 kong1 jia1 shi2 si4 dui4 kong1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "覆盖七份输入的全部二十一种无序配对",
+      "pinyin": "fu4 gai4 qi1 fen4 shu1 ru4 de5 quan2 bu4 er4 shi2 yi1 zhong3 wu2 xu4 pei4 dui4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "紫色参与的每一对都已排除",
+      "pinyin": "zi3 se4 can1 yu4 de5 mei3 yi2 dui4 dou1 yi3 pai2 chu2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "完整结果集合核对结束",
+      "pinyin": "wan2 zheng3 jie2 guo3 ji2 he2 he2 dui4 jie2 shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "CS111": [
+    {
+      "text": "这一次扫描把重叠",
+      "pinyin": "zhe4 yi2 ci4 sao3 miao2 ba3 chong2 die2"
+    },
+    "、",
+    {
+      "text": "同点",
+      "pinyin": "tong2 dian3"
+    },
+    "、",
+    {
+      "text": "原竖直线段与点输入接在同一份状态上",
+      "pinyin": "yuan2 shu4 zhi2 xian4 duan4 yu2 dian3 shu1 ru4 jie1 zai4 tong2 yi2 fen4 zhuang4 tai4 shang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "每站先报告",
+      "pinyin": "mei3 zhan4 xian1 bao4 gao4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "再更新并检查新邻接",
+      "pinyin": "zai4 geng1 xin1 bing4 jian3 cha2 xin1 lin2 jie1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "清单耗尽后还原完整结果",
+      "pinyin": "qing1 dan1 hao4 jin4 hou4 huan2 yuan2 wan2 zheng3 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ]
+}

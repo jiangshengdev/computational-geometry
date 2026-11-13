@@ -1,10 +1,10 @@
 # 第八章：把所有规则放回一次扫描
 
-本集依据 [规格 #386](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/386)，按 [#387](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/387) → [#388](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/388) → [#389](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/389) 实现全片画面。当前仅为画面、字幕和暂定时序；没有独立口播稿、语音请求或音频。#390 配音和 #391 成片交付尚未启动，不提供导出入口。
+本集依据 [规格 #386](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/386)，按 [#387](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/387) → [#388](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/388) → [#389](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/389) 实现全片画面。用户已授权进入 [#390 配音](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/390) 与 [#391 交付检查](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/391)。以下画面证据保留其原有范围，当前配音进度另记于文末；不能将画面检查解释为实际听辨或成片验收。
 
 ## 当前工程与内容
 
-Composition 为 `CompleteSweep`，1920×1080、60 fps，共 34 页、113 个稳定步骤（CS01–CS111，另含 CS24a、CS24b）。字幕是 `src/storyboard.ts` 中的 `captions`，正文、历史依据、文章位置和旧集承接位置与它们放在同一分镜源中。`timeline.ts` 从字幕按阅读估算形成暂定时间：76,408 帧，约 21 分 13 秒。每页末保留最后一句和已揭示内容两秒，不设置答题等待。20～25 分钟只是规格估计，不为凑时长增加复述。
+Composition 为 `CompleteSweep`，1920×1080、60 fps，共 34 页、113 个稳定步骤（CS01–CS111，另含 CS24a、CS24b）。字幕是 `src/storyboard.ts` 中的 `captions`，正文、历史依据、文章位置和旧集承接位置与它们放在同一分镜源中。`timeline.ts` 已移除按字幕字数估算的暂定计时，改由 113 条正式 WAV 的实测时长及词时间生成：74,238 帧，即 20 分 37.3 秒。每段引入 30 帧，同页段间停留 0.5 秒，每页末保留最后一句和已揭示内容两秒；这些停顿在完整音频之外编排，不裁切源文件，也不设置答题等待。20～25 分钟只是规格估计，不为凑时长增加复述。
 
 | 步骤       | 教学范围                                                                         |
 | ---------- | -------------------------------------------------------------------------------- |
@@ -36,9 +36,9 @@ E1–E13 只作为工程中的稳定索引和文章对照数据存在，观众�
 | 左图右文、累积正文、历史依据 | `src/TeachingPage.tsx`                           | 沿用第七章 `vertical-segments` 的实际 `MathLessonPage` / `TeachingMathLines` / `TeachingReferences`；显式左图，依据静态，字幕中性 |
 | 数学与对象色                 | `src/SweepDiagram.tsx`、共享数学组件             | A 蓝、B 橙、C 紫、D 绿、V 红、H 青、Z 粉，与本章文章一致；KaTeX 数学、1:1 SVG、正向坐标轴及 O                                     |
 | 几何、活动顺序、覆盖与结果   | `src/SweepDiagram.tsx`                           | 继承第七章的原始身份、活动顺序与完整结果表达；本集新增三组换序、覆盖延长、同组再次入场和七对结果表                                |
-| 提示与保留                   | `src/timeline.ts`                                | 线段提示复用 `AttentionMarks`；端点采用固定半径单次提示；动作在对应首句结束前完成，字幕末句和已报告结果持续保留                   |
-| 正式播放                     | `src/Composition.tsx`、`src/Root.tsx`            | 共享 `NarratedLesson` 会挂载音频，因此本阶段只用 Remotion Sequence 连接同一 `TeachingPage`，不导入音频组件                        |
-| 检查                         | `src/LayoutCheck.tsx`、`scripts/check-layout.ts` | 复用共享生产页面检查、独立端口和浏览器校验，覆盖字幕边界、动作起中末、页末及 1:1 SVG；禁止挂载媒体                                |
+| 提示与保留                   | `src/timeline.ts`                                | 线段提示复用 `AttentionMarks`；端点采用固定半径单次提示；动作对应实测语义短语，字幕末句和已报告结果持续保留                   |
+| 正式播放                     | `src/Composition.tsx`、`src/Root.tsx`            | 共享 `NarratedLesson` 连接同一 `TeachingPage` 并完整播放 `public/narration` 中由 `audio-timing.json` 指定的 WAV                        |
+| 检查                         | `src/LayoutCheck.tsx`、`scripts/check-layout.ts` | 复用共享生产页面检查、独立端口和浏览器校验，覆盖实测字幕边界、动作起中末、完整音频结束、页末及 1:1 SVG；静默布局检查不挂载媒体                                |
 
 直接阅读的前序内容包括 `same-point-participants`、`same-point-updates`、`overlap-reporting`、`overlap-discovery`、`same-column-events`、`vertical-segments` 的口播源。已有剪切证明、同点规则及邻居发现证明只作依据引用；本集新增七输入代入、十三站因果联系和完整答案核对。工程不导入相邻集的内容或音频。
 
@@ -84,6 +84,46 @@ pnpm --config.verify-deps-before-run=false run build
 
 此次自动布局发现并修复的偏差是初始化混合文字行距不足、V尾/加号间距不足、双行队列与结果行相挤以及当前位置说明靠近 D 标签。分别扩大行距、分隔同位置标签、将 A/B 完整区间说明并入结果行、调整当前位置说明，保留所有输入身份与完整交集内容；不削弱原布局检查。
 
-本轮临时 Studio、浏览器会话、网页打包产物、截图和诊断日志已关闭或清理；保留已安装的依赖和匹配浏览器。当前播放和检查只依赖正式源文件与已安装工具，没有媒体产物或暂存配音路径。
+上述画面阶段的临时 Studio、浏览器会话、网页打包产物、截图和诊断日志已关闭或清理；保留已安装的依赖和匹配浏览器。当时尚未生成配音，当前音频采用及检查见下节。
 
-本阶段不等于音画同步、读音、可见桌面或成片验收。后续在 #390 审校独立口播并获得原速音频后，用实测时间替换当前阅读估算，重新对齐字幕和语义动作；不得把暂定帧数当作实测冻结值。助手不渲染或导出视频，也未发布评论或关闭任务。
+以上历史画面证据不等于读音、可见桌面或成片验收。本次已在 #390 获得原速音频并替换暂定计时；助手仍不渲染或导出视频，也未发布评论或关闭任务。
+
+## 配音制作与审校记录
+
+本次开始时 `main` 与远端同为 `655918a4c843279fe34cce869da71c8afb26a688`，工作区干净。重新读取 #386、#390、#391 当前正文，三条均无评论。配置仓库 `/workspace/codex-config` 仍在 `main@f13c97629f7187e262cefeecf2c179f3a23abcbe`，本次不修改配置规则。
+
+独立纯文本为 `src/narration-text.json`；`src/sentence-plan.json` 按原字幕完整句子对应到实际口播短句，原句结束请求 400 ms，内部拆句请求 200 ms。数学口语化仅写入口播副本；字幕保留自然标点和数学记法。字幕及对应正文的六段“横坐标”统一为“x 坐标”。稳定配音单元仍为 CS01–CS111 加 CS24a、CS24b，共 113 段。
+
+纯文本审核者 `narration_text_review` 未参与撰稿，以新上下文完成全部 113 段的语义、数学范围、对象指代、分句、字母位置和信息价值检查。原稿哈希 `82037db80e9156b513b0a48b18f60e281425f770afdc177f29e0e99d858f314b`：CS08、CS96、CS97、CS99 及 CS104 两个短句以独立字母开头；CS20 先构造相反数再回到原表达，没有额外教学价值。六处分别补充已有对象的自然承接，CS20 直接读“负一加四倍系数”；没有删去数学信息。审核者复核局部修正并重新核对全稿 485 个实际短句、全部分句映射和字母位置，通过后自动冻结，不把可接受读法方案升级为额外修改。
+
+冻结纯文本 SHA-256：`9fde73225da5c135bd08712d4a4f4774ce3d3780f46b73306190b4a6b74ecf05`；分句映射 SHA-256：`94abd287e318bdc1bdd4c6cb0b2f4a2759770a123f079c56e1dc1af7ba5af70c`。前置复用沿用上文已有六集实际口播对照，不重复声称新的前集全文审校。
+
+合成入口复用共享 `plan-batch`、`synthesize-batch`、`assess-batch`、`verify-batch` 和 `adopt-batch`。直接使用运行环境中的 `SPEECH_KEY` / `SPEECH_ENDPOINT`，不保存凭据；实际 `SPEECH_VOICE` 与指定 `zh-CN-Xiaoxiao:DragonHDFlashLatestNeural` 一致。微软当前配额文档仍列 F0 实时合成每资源滚动 60 秒 20 次请求、识别和发音评估单路并发；使用共享窗口记录，不自动重发结果未知的请求。源码、请求计划、原始 WAV、服务词边界及评估响应按稳定 ID 和哈希绑定，不调速、不裁切。
+
+首次标注由新代理 `narration_annotation` 完成；加入 485 个已审语义停顿后，`narration_blind_one`、`narration_blind_two` 先后对同一版本完成全部 113 段盲审，再分别接收历史记录核销。两轮新增错误、历史遗留、待查证均为零，全文标注稿哈希为 `49eb0190f4e9d683f4c9395783cca037b286bdb024503b1a762ab6152630db49`。证据及完整覆盖清单在 `assets/narration-text-review.json`；其中原始报告的 `/tmp` 路径是查询来源记录，不是当前制作依赖。拼音库为 pypinyin 0.55.0，库选音仅作为辅助，行、重、分子、差、一不变调等均结合词义判断。
+
+合成出现过 CS24b 的 HTTP 429，连接在 WebSocket 升级前被拒绝。原记录保留，后续只推进未开始片段并把峰值并发降为 10；冷却后仅补做该明确拒绝的片段。识别首个 CS01 请求在 WebSocket 升级前返回 HTTP 401；同一密钥向官方 token 端点返回 200，CS02/CS03 验证 token 认证可用后才继续。`assessment-network.ts` 的 token 只保留在内存，八分钟刷新，继承代理；评估入口需要 Node 24 的 `--use-env-proxy`。共享评估配置回调允许异步初始化并在创建识别器前等待，不改变单路评估限制。CS01 复用原 WAV，未重新合成。原始状态和恢复依据保存在 `assets/narration-service-requests.json`、`assets/narration-request-evidence.json`。
+
+CS94 原始评估把“七对结果”的“对”标为 Omission，把“的”标为 Insertion，不能据此确认实际读错。仅把该句字幕及独立口播改为“最后一行保留七份配对结果”，增加明确的数量单位；原审核者局部核对语义、分句和新增 `fen4 pei4` 通过，其他 112 段不变，不重启全文轮次。新候选原始评估三类均零。当前纯文本哈希 `e3e184897a21b36b4f43ec0dea81f7fd0e75379f1058589dba3fdce4bb8bb56b`，标注稿哈希 `f523208ae7411de1e07d52a62ea4e87e91d8810e421ca5e532f165fa1f3ebad2`；局部修订链与库查询在同一审校证据中。旧版 WAV 与原始响应保留于 `assets/narration-review/CS94-0e580d086972.*`，仅供后续听辨，不进入正式时间线；没有删除或改写旧标记来制造通过。
+
+## 当前音频、时间线与交付范围
+
+正式素材是 `public/narration/CS*.wav` 共 113 条，由 Azure 直接返回 48 kHz、16 bit、单声道 PCM。`src/audio-timing.json` 绑定源文件、SHA-256、SSML 指纹、实测时长、原始合成事件和逐段识别评估响应；`src/captions.json` 按当前分句对应生成，字幕保留原有自然标点。整批采用前与写入时均完成格式、完整解码、哈希、文字及时间核验，不依赖暂存路径或再次调用服务。当前正式版本评估覆盖 **113/113，Omission 0、Insertion 0、Mispronunciation 61**，没有缺失或失败的正式评估；发音自动标记不等于实际错读结论。
+
+`Composition.tsx` 使用共享 `NarratedLesson`，每条 WAV 从首个采样完整原速播放，未设置裁切、播放速率或重采样。实测词时间定位普通首句动作，以及 CS33/74 的候选计算、CS38 覆盖延长、CS41 登记、CS61 换序、CS64 变换后候选。字幕在句间停顿保持上一句；同页切换保留上一段末句，换页后等待本页首句。原有字数估算、`readingFrames` 和“尚无配音”画面说明已移除。
+
+实测接入检查定位到共享语义锚点错误：部分服务标点事件为零时长且时间戳为零，不能用作发声结束。`phraseTime` 与 `measuredShotRows` 仅从有实际时长的事件定位动作，不修改原始事件或捏造时间；回归覆盖标点为零的句末、正文测量及完整 WAV 页末停留。
+
+用户导出入口已接入共享 `video:preflight`、PNG `video:export`、同时间线 PCM `video:export-audio`，只做过参数 dry-run，未导出。核验的 Remotion 4.0.540 与 Headless Shell 158.0.8127.2 匹配，PNG 比例 2；当前源码命名规则对应 `out/complete-sweep-frames/element-%05d.png`、起始 0、74,238 帧。音轨入口显式 WAV、PCM-16、48 kHz，并关闭视频硬件加速；最终合并复用 `../../shared/tools/mux-mov.ts`。目标分别为 `out/complete-sweep-frames/`、`out/complete-sweep-audio.wav`，最终 MOV 尚不存在。
+
+实际执行仍须遵循[五阶段模板](../../../docs/agents/videos/operations.md#五阶段命令模板)：独立预检、PNG、硬件 H.265、同时间线 PCM、MOV。当前 Linux 没有 VideoToolbox 编码器，也未发现 NVIDIA/DRI GPU 设备，不能声称已具备项目要求的硬件编码条件，更不能回退软件编码。需要在用户选定的可用硬件环境核验浏览器与路径后，给出该环境完整的五阶段命令，由用户执行；助手未启动 PNG、视频或音轨导出。
+
+当前工具明确不支持音频听觉输入，`actualListeningPerformed=false`。优先待听辨的是 CS94 新旧整句对照；61 条当前自动发音标记和全片实际读音也尚无听辨结论。正常速度的无头媒体播放、解码、时间数据与页面检查均不代替实际听辨、可见桌面或用户导出的成片验收，#391 尚不能宣称全片交付完成。
+
+当前计时版布局覆盖 113 步、1,607 个不重复生产状态。首次遍历发现 CS82 入场 G[C] 与主图 x 标签相碰；缩短入场距离的尝试又使 CS32/51 与补位者相碰，已撤回。最终保持 104 px 分离距离，改从顺序栏右侧入场；五个受影响步骤 CS29/32/48/51/82 的 70 个状态通过，替换对应旧检查后其余有效证据继续复用。退出方向、真正换序弧线及数学顺序均不变。第三批首次启动曾遇到并行 Rspack 缓存冲突，结束其他启动后单独恢复成功；启动失败没有计入通过数量。
+
+ESLint/TypeScript、网页打包、8 个共享识别对齐测试及 6 个语义计时/完整音频停留测试通过。清理四个合成暂存批次和网页打包目录后，正式工程的内容与完整音频解码检查仍通过，服务调用为零；播放和检查不依赖暂存目录。
+
+独立对齐者 `audio_integration_review` 复核当前全部实测映射，并正常 1x 播放 CS38/41/61/78/94，观察覆盖延长、登记交接、三组换序、退出与终态。入场修复后续查五段共 30 个关键状态，并正常速观察 CS82：D/H 稳定、G[C] 从右进入并在 CS83 保留，实际媒体到达 8.65/8.65 秒且 `ended=true`；CS82-33 问题核销。其余五段实测播放到达各自完整时长 7.41/10.10/13.52/7.13/7.01 秒。Studio 与浏览器会话已关闭；这证明所列过程与媒体播放，不替代听辨、逐帧全片或成片验收。
+
+待人工核验的最小入口：先完整试听 `assets/narration-review/CS94-0e580d086972.wav` 与 `public/narration/CS94.wav`。旧句位置是“最后一行保留七对结果”的“对”（自动漏词/插入“的”标记，实际未确认），当前应读“最后一行保留七份配对结果”，新版自动三类均零。其余 61 条自动发音标记分布于 41 段，具体词与时间保存在当前 `src/audio-timing.json` 的原始 `alignment.response.NBest[0].Words`，均待整句听辨，不能据此直接改音。最后仍须在用户导出后完整检查成片的声音、画面与同步。

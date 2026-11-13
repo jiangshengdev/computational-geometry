@@ -1,0 +1,6693 @@
+{
+  "scope": "Text and pinyin only; does not certify actual audio pronunciation",
+  "coverage": [
+    "CS01",
+    "CS02",
+    "CS03",
+    "CS04",
+    "CS05",
+    "CS06",
+    "CS07",
+    "CS08",
+    "CS09",
+    "CS10",
+    "CS11",
+    "CS12",
+    "CS13",
+    "CS14",
+    "CS15",
+    "CS16",
+    "CS17",
+    "CS18",
+    "CS19",
+    "CS20",
+    "CS21",
+    "CS22",
+    "CS23",
+    "CS24",
+    "CS24a",
+    "CS24b",
+    "CS25",
+    "CS26",
+    "CS27",
+    "CS28",
+    "CS29",
+    "CS30",
+    "CS31",
+    "CS32",
+    "CS33",
+    "CS34",
+    "CS35",
+    "CS36",
+    "CS37",
+    "CS38",
+    "CS39",
+    "CS40",
+    "CS41",
+    "CS42",
+    "CS43",
+    "CS44",
+    "CS45",
+    "CS46",
+    "CS47",
+    "CS48",
+    "CS49",
+    "CS50",
+    "CS51",
+    "CS52",
+    "CS53",
+    "CS54",
+    "CS55",
+    "CS56",
+    "CS57",
+    "CS58",
+    "CS59",
+    "CS60",
+    "CS61",
+    "CS62",
+    "CS63",
+    "CS64",
+    "CS65",
+    "CS66",
+    "CS67",
+    "CS68",
+    "CS69",
+    "CS70",
+    "CS71",
+    "CS72",
+    "CS73",
+    "CS74",
+    "CS75",
+    "CS76",
+    "CS77",
+    "CS78",
+    "CS79",
+    "CS80",
+    "CS81",
+    "CS82",
+    "CS83",
+    "CS84",
+    "CS85",
+    "CS86",
+    "CS87",
+    "CS88",
+    "CS89",
+    "CS90",
+    "CS91",
+    "CS92",
+    "CS93",
+    "CS94",
+    "CS95",
+    "CS96",
+    "CS97",
+    "CS98",
+    "CS99",
+    "CS100",
+    "CS101",
+    "CS102",
+    "CS103",
+    "CS104",
+    "CS105",
+    "CS106",
+    "CS107",
+    "CS108",
+    "CS109",
+    "CS110",
+    "CS111"
+  ],
+  "frozenTextSha256": "9fde73225da5c135bd08712d4a4f4774ce3d3780f46b73306190b4a6b74ecf05",
+  "reviewedSpeechSha256": "49eb0190f4e9d683f4c9395783cca037b286bdb024503b1a762ab6152630db49",
+  "sentencePlanSha256": "94abd287e318bdc1bdd4c6cb0b2f4a2759770a123f079c56e1dc1af7ba5af70c",
+  "consecutivePassingBlindReviews": 2,
+  "records": [
+    {
+      "source": "complete-sweep-annotation-report.json",
+      "originalSha256": "9730302420d80ebd5426d01df7feb446fc3fe815b979baa16d429c32620cdb92",
+      "report": {
+        "stage": "首次拼音标注完成，尚待独立盲审；不是音频验收",
+        "narrationSha256": "9fde73225da5c135bd08712d4a4f4774ce3d3780f46b73306190b4a6b74ecf05",
+        "speechSha256": "eadb43183bcf710d2d757c3b74730583fa3076de54a762ee02081f3ab35d0dc8",
+        "coverage": [
+          "CS01",
+          "CS02",
+          "CS03",
+          "CS04",
+          "CS05",
+          "CS06",
+          "CS07",
+          "CS08",
+          "CS09",
+          "CS10",
+          "CS11",
+          "CS12",
+          "CS13",
+          "CS14",
+          "CS15",
+          "CS16",
+          "CS17",
+          "CS18",
+          "CS19",
+          "CS20",
+          "CS21",
+          "CS22",
+          "CS23",
+          "CS24",
+          "CS24a",
+          "CS24b",
+          "CS25",
+          "CS26",
+          "CS27",
+          "CS28",
+          "CS29",
+          "CS30",
+          "CS31",
+          "CS32",
+          "CS33",
+          "CS34",
+          "CS35",
+          "CS36",
+          "CS37",
+          "CS38",
+          "CS39",
+          "CS40",
+          "CS41",
+          "CS42",
+          "CS43",
+          "CS44",
+          "CS45",
+          "CS46",
+          "CS47",
+          "CS48",
+          "CS49",
+          "CS50",
+          "CS51",
+          "CS52",
+          "CS53",
+          "CS54",
+          "CS55",
+          "CS56",
+          "CS57",
+          "CS58",
+          "CS59",
+          "CS60",
+          "CS61",
+          "CS62",
+          "CS63",
+          "CS64",
+          "CS65",
+          "CS66",
+          "CS67",
+          "CS68",
+          "CS69",
+          "CS70",
+          "CS71",
+          "CS72",
+          "CS73",
+          "CS74",
+          "CS75",
+          "CS76",
+          "CS77",
+          "CS78",
+          "CS79",
+          "CS80",
+          "CS81",
+          "CS82",
+          "CS83",
+          "CS84",
+          "CS85",
+          "CS86",
+          "CS87",
+          "CS88",
+          "CS89",
+          "CS90",
+          "CS91",
+          "CS92",
+          "CS93",
+          "CS94",
+          "CS95",
+          "CS96",
+          "CS97",
+          "CS98",
+          "CS99",
+          "CS100",
+          "CS101",
+          "CS102",
+          "CS103",
+          "CS104",
+          "CS105",
+          "CS106",
+          "CS107",
+          "CS108",
+          "CS109",
+          "CS110",
+          "CS111"
+        ],
+        "segments": 113,
+        "annotatedHanzi": 4527,
+        "objects": 589,
+        "queryEvidence": "/tmp/complete-sweep-annotation-queries.json",
+        "contextDecisions": "/tmp/complete-sweep-annotation-decisions.json",
+        "sources": [
+          {
+            "url": "https://www.gsjtxy.edu.cn/jcjxb/content/169/t2024210-169-17094.html",
+            "read": "2026-11-13",
+            "application": "上声连读，一/不变调，复杂数词个位一不变，十位一允许不变。已读原文。"
+          },
+          {
+            "url": "https://www.edu.cn/pu_tong_hua_483/20060323/t20060323_19443.shtml",
+            "read": "2026-11-13",
+            "application": "轻声、助词后缀、声调及变调。已读原文。"
+          }
+        ],
+        "semanticFindings": [
+          "为：数学等值、成为、作为为wei2；因为、只为目的为wei4。",
+          "数学分子fen1 zi3；差/相差cha1；剪切/切碎qie1；表格逐行/一行hang2；重报/重排/重新chong2；符号撇pie3；所得de2。",
+          "的de5、它们men5、着zhe5、经历助词过guo5、了le5、关系xi5、这个/那个ge5；分子zi3非轻声。其余允许本调的词不机械弱读。",
+          "数值、负一、八分之一、一减系数、复合数词十一项/二十一种的个位一保留yi1；数量一份/一个/一对/一次取yi2，一集/一条/一端/一行/一整段取yi4。CS11一千yi4，后两处一读yi1。",
+          "三声逐处结合词组和句法选定。所有、所以、处理、可以、允许、起点、补检、影响等作连读变调；数字/主谓/名词与连词边界不以相邻拼音机械唯一化。"
+        ],
+        "checks": [
+          "113段查询和标注全覆盖",
+          "4527汉字全部标注，无中文漏在普通字符串",
+          "对象仅text/pinyin，每字一音节1–5",
+          "拼接后与冻结全文逐字符一致",
+          "sentence-plan逐段重组与冻结全文一致",
+          "所有标点、字母、空格不变；无break"
+        ],
+        "pending": []
+      }
+    },
+    {
+      "source": "complete-sweep-annotation-decisions.json",
+      "originalSha256": "ccf1715ab9455fa5bfbebb0eafab0a0b415eeb56660603dec7cf9ea2627d1941",
+      "report": [
+        {
+          "id": "CS01",
+          "index": 1,
+          "context": "这一集把前七章的规则",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS01",
+          "index": 14,
+          "context": "章的规则。接到同一份状态和清单上。",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS02",
+          "index": 23,
+          "context": "原点到 x 坐标为二且 y 坐标为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS02",
+          "index": 31,
+          "context": "为二且 y 坐标为零的点。原坐标图",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS03",
+          "index": 18,
+          "context": "段。从 x 坐标为一且 y 坐标为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS03",
+          "index": 26,
+          "context": "为一且 y 坐标为零的点。到 x ",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS03",
+          "index": 37,
+          "context": "点。到 x 坐标为四且 y 坐标为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS03",
+          "index": 45,
+          "context": "为四且 y 坐标为零的点。蓝色虚线",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS04",
+          "index": 19,
+          "context": "零。从 x 坐标为六的点到 x 坐",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS04",
+          "index": 29,
+          "context": "的点到 x 坐标为八的点。它与前两",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS05",
+          "index": 18,
+          "context": "段。从 x 坐标为负一且 y 坐标",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS05",
+          "index": 27,
+          "context": "负一且 y 坐标为四的点。到 x ",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS05",
+          "index": 38,
+          "context": "点。到 x 坐标为七且 y 坐标为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS05",
+          "index": 46,
+          "context": "为七且 y 坐标为负四的点。所在直",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS06",
+          "index": 15,
+          "context": "的 x 坐标固定为三。下端高度负一",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS07",
+          "index": 18,
+          "context": "段。从 x 坐标为二且 y 坐标为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS07",
+          "index": 26,
+          "context": "为二且 y 坐标为三的点。到 x ",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS07",
+          "index": 37,
+          "context": "点。到 x 坐标为七且 y 坐标为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS07",
+          "index": 45,
+          "context": "为七且 y 坐标为负二的点。它与绿",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS07",
+          "index": 66,
+          "context": "线平行。但不是同一条直线。",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS08",
+          "index": 26,
+          "context": "。它的 x 坐标为三。它的 y 坐",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS08",
+          "index": 36,
+          "context": "。它的 y 坐标为二。它就在红色上",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS10",
+          "index": 21,
+          "context": "安全系数。八加一为九。得到分母二百",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS10",
+          "index": 5,
+          "context": "直接代入剪切专题已经证明的安",
+          "from": "qie4",
+          "to": "qie1",
+          "reason": "几何剪切变换"
+        },
+        {
+          "id": "CS11",
+          "index": 5,
+          "context": "九的五次方为五万九千零四十九",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS11",
+          "index": 58,
+          "context": " 始终是以这个数为分母且分子为一的",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS11",
+          "index": 64,
+          "context": "个数为分母且分子为一的精确分数。不",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS11",
+          "index": 62,
+          "context": "以这个数为分母且分子为一的精确分数",
+          "from": "fen4",
+          "to": "fen1",
+          "reason": "数学分式的分子，非成员分子"
+        },
+        {
+          "id": "CS11",
+          "index": 27,
+          "context": "五十六。得到分母一千五百一十一万六",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "复合数词千位一，千为阴平"
+        },
+        {
+          "id": "CS11",
+          "index": 72,
+          "context": "为一的精确分数。不换成小数。",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS12",
+          "index": 23,
+          "context": "端的新 x 坐标为三减系数。上端为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS12",
+          "index": 31,
+          "context": "为三减系数。上端为三加两倍系数。用",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS12",
+          "index": 70,
+          "context": "到三倍系数。这个差大于零。所以它不",
+          "from": "cha4",
+          "to": "cha1",
+          "reason": "减法所得差或相差"
+        },
+        {
+          "id": "CS12",
+          "index": 7,
+          "context": "所有输入使用同一个系数。红色下端",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS12",
+          "index": 78,
+          "context": "差大于零。所以它不再竖直。",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS13",
+          "index": 9,
+          "context": "在只为看清对应关系。显示八分之一系",
+          "from": "xi4",
+          "to": "xi5",
+          "reason": "关系名词轻声"
+        },
+        {
+          "id": "CS15",
+          "index": 9,
+          "context": "份水平输入归到同一个固定同线组。用",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS15",
+          "index": 31,
+          "context": "表示这个组。组名不变。但活动成员随",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS17",
+          "index": 59,
+          "context": "它的原 x 坐标为五。原 y 坐标",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS17",
+          "index": 68,
+          "context": "五。原 y 坐标为零。这个候选点与",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS19",
+          "index": 36,
+          "context": "。得到一减系数的差。再用这个差乘以",
+          "from": "cha4",
+          "to": "cha1",
+          "reason": "减法所得差或相差"
+        },
+        {
+          "id": "CS19",
+          "index": 42,
+          "context": "数的差。再用这个差乘以新高度。",
+          "from": "cha4",
+          "to": "cha1",
+          "reason": "减法所得差或相差"
+        },
+        {
+          "id": "CS19",
+          "index": 6,
+          "context": "右侧展开后有一项。系数 s 乘",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS19",
+          "index": 22,
+          "context": "乘以新高度。将这一项移到左边。得到",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS20",
+          "index": 6,
+          "context": "因为一减系数为正。可以除以它。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS22",
+          "index": 12,
+          "context": "原来的 x 坐标为三。代入统一变换",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS24a",
+          "index": 19,
+          "context": "两个端点。代入同一个剪切变换。本片",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS24a",
+          "index": 44,
+          "context": "小。扫描先遇到的一端叫头。较大且后",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS24a",
+          "index": 56,
+          "context": "。较大且后遇到的一端叫尾。标签使用",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS24b",
+          "index": 12,
+          "context": "的新 x 坐标相差三倍正系数。所以",
+          "from": "cha4",
+          "to": "cha1",
+          "reason": "减法所得差或相差"
+        },
+        {
+          "id": "CS25",
+          "index": 36,
+          "context": "就在红色尾端。合为同一个位置。红色",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS25",
+          "index": 79,
+          "context": "二个位置。表中逐行对应原端点和扫描",
+          "from": "xing2",
+          "to": "hang2",
+          "reason": "表格逐行"
+        },
+        {
+          "id": "CS25",
+          "index": 38,
+          "context": "红色尾端。合为同一个位置。红色尾端",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS26",
+          "index": 18,
+          "context": "活动顺序和结果都为空。表中按新 x",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS26",
+          "index": 47,
+          "context": " P 尚未发现。不在其中。",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS28",
+          "index": 17,
+          "context": "位置。旧活动顺序为空。只有一份身份",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS28",
+          "index": 22,
+          "context": "动顺序为空。只有一份身份。没有输入",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS29",
+          "index": 29,
+          "context": "候选可查。结果仍为空。清单剩十一项",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS30",
+          "index": 17,
+          "context": "状态。再继续取下一项。",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS31",
+          "index": 22,
+          "context": "绿色在这里的高度为正。不参加这次事",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS32",
+          "index": 24,
+          "context": "方。当前最远右端为二。尚未开始的橙",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS33",
+          "index": 20,
+          "context": "令绿色直线的高度为零。得到候选 x",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS33",
+          "index": 32,
+          "context": "到候选 x 坐标为三。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS34",
+          "index": 30,
+          "context": "盖的右端二。所以不预约。",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS35",
+          "index": 7,
+          "context": "来到 x 坐标为一且 y 坐标为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS35",
+          "index": 15,
+          "context": "为一且 y 坐标为零的点。蓝色仍在",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS37",
+          "index": 4,
+          "context": "先报告这一整段。而不是只报",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS37",
+          "index": 31,
+          "context": "已在输入中给出。不必等扫描走到二。",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS42",
+          "index": 21,
+          "context": "闭端点资格。但这一同线对已经报告完",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS42",
+          "index": 34,
+          "context": "经报告完整区间。不再改报一个点。",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS43",
+          "index": 30,
+          "context": "退出。最远右端仍为四。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS43",
+          "index": 21,
+          "context": "向右继续。水平组不退出。最远右端仍",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS44",
+          "index": 39,
+          "context": "生新的发现。也不重报旧区间。",
+          "from": "zhong4",
+          "to": "chong2",
+          "reason": "重复报告"
+        },
+        {
+          "id": "CS44",
+          "index": 15,
+          "context": "候选还是已经登记过的那个交点。没有",
+          "from": "guo4",
+          "to": "guo5",
+          "reason": "经历助词过"
+        },
+        {
+          "id": "CS45",
+          "index": 19,
+          "context": "水平组、绿色组。一对结果与剩余九个",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS47",
+          "index": 52,
+          "context": "母。分子和分母都为正。把所得的商与",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS47",
+          "index": 14,
+          "context": "标代入绿色高度。分子是一减去三倍系",
+          "from": "fen4",
+          "to": "fen1",
+          "reason": "数学分式的分子，非成员分子"
+        },
+        {
+          "id": "CS47",
+          "index": 37,
+          "context": "减去系数。用这个分子除以这个分母。",
+          "from": "fen4",
+          "to": "fen1",
+          "reason": "数学分式的分子，非成员分子"
+        },
+        {
+          "id": "CS47",
+          "index": 57,
+          "context": "分母都为正。把所得的商与三比较。等",
+          "from": "de5",
+          "to": "de2",
+          "reason": "获得的商"
+        },
+        {
+          "id": "CS48",
+          "index": 38,
+          "context": "产生绿色与青色这一对新邻接。",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS49",
+          "index": 12,
+          "context": "的斜率。都以负一为分子。一减系数为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS49",
+          "index": 20,
+          "context": "为分子。一减系数为分母。常数项不同",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS49",
+          "index": 13,
+          "context": "斜率。都以负一为分子。一减系数为分",
+          "from": "fen4",
+          "to": "fen1",
+          "reason": "数学分式的分子，非成员分子"
+        },
+        {
+          "id": "CS49",
+          "index": 35,
+          "context": "不同。它们平行。不预约。水平与青色",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS50",
+          "index": 13,
+          "context": "入的下端。新高度为负一。水平组高度",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS50",
+          "index": 29,
+          "context": "度零。绿色高度的分子是系数。分母是",
+          "from": "fen4",
+          "to": "fen1",
+          "reason": "数学分式的分子，非成员分子"
+        },
+        {
+          "id": "CS53",
+          "index": 17,
+          "context": "经在清单中。所以不再插入。原来的预",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS55",
+          "index": 7,
+          "context": "青色的高度严格为正。不经过当前点",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS57",
+          "index": 16,
+          "context": "色输入配对。交集为当前点。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS58",
+          "index": 18,
+          "context": "色输入配对。另留一条点结果。位置相",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS59",
+          "index": 45,
+          "context": "切碎。也没有改报为点。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS59",
+          "index": 37,
+          "context": "四对。旧区间没有切碎。也没有改报为",
+          "from": "qie4",
+          "to": "qie1",
+          "reason": "切开碎裂"
+        },
+        {
+          "id": "CS59",
+          "index": 9,
+          "context": "色与红色之间也有一条点结果。加上早",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS60",
+          "index": 4,
+          "context": "绿色斜率为负。水平组斜率为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS60",
+          "index": 12,
+          "context": "为负。水平组斜率为零。红色斜率为正",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS60",
+          "index": 19,
+          "context": "率为零。红色斜率为正。三组都继续。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS61",
+          "index": 2,
+          "context": "现在重排整个相遇块：绿",
+          "from": "zhong4",
+          "to": "chong2",
+          "reason": "重新排序"
+        },
+        {
+          "id": "CS63",
+          "index": 12,
+          "context": "。红色与青色之间不再隔着绿色组。这",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS64",
+          "index": 17,
+          "context": "青色方程。原高度为二。统一变换后。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS64",
+          "index": 35,
+          "context": "选的新 x 坐标为三加两倍系数。新",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS64",
+          "index": 49,
+          "context": "数。新 y 坐标为二。用 Q 撇表",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS64",
+          "index": 56,
+          "context": "标为二。用 Q 撇表示这个新位置。",
+          "from": "pie1",
+          "to": "pie3",
+          "reason": "符号撇号"
+        },
+        {
+          "id": "CS67",
+          "index": 8,
+          "context": "来到原 x 坐标为三且原 y 坐标",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS67",
+          "index": 17,
+          "context": "三且原 y 坐标为二的点所对应的新",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS68",
+          "index": 8,
+          "context": "青色输入严格穿过当前点。要从旧活动",
+          "from": "dang4",
+          "to": "dang1",
+          "reason": "现时位置"
+        },
+        {
+          "id": "CS69",
+          "index": 16,
+          "context": "。水平组与绿色都不在这里。所以这两",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS71",
+          "index": 11,
+          "context": "与红色线段也配成一对。完整交集仍是",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS72",
+          "index": 11,
+          "context": "还与青色线段配成一对。三条新结果加",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS73",
+          "index": 19,
+          "context": "青色继续。点输入不获得斜率。也不进",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS73",
+          "index": 26,
+          "context": "入不获得斜率。也不进入后续顺序。更",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS74",
+          "index": 25,
+          "context": "。令青色的新高度为零。得到候选新 ",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS74",
+          "index": 38,
+          "context": "候选新 x 坐标为五。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS76",
+          "index": 1,
+          "context": "这一段结束后。七对结",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS79",
+          "index": 27,
+          "context": "行。原 x 坐标为五且原 y 坐标",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS79",
+          "index": 36,
+          "context": "五且原 y 坐标为零的那个候选点从",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS84",
+          "index": 14,
+          "context": "覆盖六到八。五也不在它的闭范围里。",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS86",
+          "index": 19,
+          "context": "在上方。紫色高度为零。均不在当前点",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS86",
+          "index": 23,
+          "context": "紫色高度为零。均不在当前点。当前没",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS87",
+          "index": 32,
+          "context": "界要预约。结果仍为七对。清单剩两项",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS88",
+          "index": 3,
+          "context": "记录这一行后继续前进。",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "表格一行数量短语"
+        },
+        {
+          "id": "CS88",
+          "index": 4,
+          "context": "记录这一行后继续前进。",
+          "from": "xing2",
+          "to": "hang2",
+          "reason": "表格一行数量短语"
+        },
+        {
+          "id": "CS89",
+          "index": 11,
+          "context": "色右端。紫色高度为零。不参加这个点",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS91",
+          "index": 3,
+          "context": "记下这一行。处理最后一个",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "表格一行数量短语"
+        },
+        {
+          "id": "CS91",
+          "index": 4,
+          "context": "记下这一行。处理最后一个位",
+          "from": "xing2",
+          "to": "hang2",
+          "reason": "表格一行数量短语"
+        },
+        {
+          "id": "CS93",
+          "index": 20,
+          "context": "并退出。活动顺序为空。待处理清单也",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS93",
+          "index": 29,
+          "context": "空。待处理清单也为空。扫描至此终止",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS94",
+          "index": 31,
+          "context": "果。顺序和清单均为空。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS94",
+          "index": 16,
+          "context": "形成的记录。最后一行保留七对结果。",
+          "from": "yi1",
+          "to": "yi4",
+          "reason": "表格一行数量短语"
+        },
+        {
+          "id": "CS94",
+          "index": 17,
+          "context": "成的记录。最后一行保留七对结果。顺",
+          "from": "xing2",
+          "to": "hang2",
+          "reason": "表格一行数量短语"
+        },
+        {
+          "id": "CS95",
+          "index": 8,
+          "context": "扫描结束后。用同一个逆变换还原每份",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS96",
+          "index": 48,
+          "context": "左端的 x 坐标为一。右端的 x ",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS96",
+          "index": 59,
+          "context": "右端的 x 坐标为二。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS96",
+          "index": 22,
+          "context": "零。原 x 坐标不变。还原后仍是高",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS97",
+          "index": 23,
+          "context": "还原后 x 坐标为三。原 y 坐标",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS97",
+          "index": 32,
+          "context": "三。原 y 坐标为零。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS98",
+          "index": 15,
+          "context": "色与红色分别保留为两对结果。它们还",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS98",
+          "index": 27,
+          "context": "果。它们还原到同一个点。但不是同一",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS98",
+          "index": 35,
+          "context": "一个点。但不是同一份配对记录。",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS99",
+          "index": 43,
+          "context": "原后的 x 坐标为三。原 y 坐标",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS99",
+          "index": 52,
+          "context": "三。原 y 坐标为二。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS101",
+          "index": 21,
+          "context": "还原到 x 坐标为三且 y 坐标为",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS101",
+          "index": 29,
+          "context": "为三且 y 坐标为二的点。至此七对",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS102",
+          "index": 12,
+          "context": "只有蓝色与橙色这一对。另外六对是点",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS103",
+          "index": 23,
+          "context": "、橙色的右端分别为二和四。都小于紫",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS104",
+          "index": 22,
+          "context": "选点的 x 坐标为三。候选点的 y",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS104",
+          "index": 34,
+          "context": "选点的 y 坐标为零。它在蓝色右端",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS104",
+          "index": 60,
+          "context": "之前。所以这两对为空。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS106",
+          "index": 35,
+          "context": "从六开始。三份都不覆盖它。",
+          "from": "bu4",
+          "to": "bu2",
+          "reason": "不：紧接去声变二声，其余保留四声"
+        },
+        {
+          "id": "CS107",
+          "index": 20,
+          "context": "是负一。截距分别为三和五。两条直线",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS107",
+          "index": 40,
+          "context": "不同。因此这对也为空。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS108",
+          "index": 5,
+          "context": "点输入高度为二。三份水平输入",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS108",
+          "index": 34,
+          "context": "它们形成的三对都为空。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS109",
+          "index": 44,
+          "context": "二。所以最后这对为空。",
+          "from": "wei4",
+          "to": "wei2",
+          "reason": "为：原因/目的用wei4；等于、成为、作为用wei2"
+        },
+        {
+          "id": "CS110",
+          "index": 34,
+          "context": "对。紫色参与的每一对都已排除。完整",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS111",
+          "index": 1,
+          "context": "这一次扫描把重叠、同",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS111",
+          "index": 24,
+          "context": "段与点输入接在同一份状态上。每站先",
+          "from": "yi1",
+          "to": "yi2",
+          "reason": "数量短语一：去声前二声，非去声前四声；个按本调去声"
+        },
+        {
+          "id": "CS09",
+          "index": 33,
+          "context": "值的最大值是八。所以参数 M 等于",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS10",
+          "index": 29,
+          "context": "为九。得到分母二百五十六乘九的五次",
+          "from": "bai3",
+          "to": "bai2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS11",
+          "index": 18,
+          "context": "零四十九。乘以二百五十六。得到分母",
+          "from": "bai3",
+          "to": "bai2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS11",
+          "index": 29,
+          "context": "六。得到分母一千五百一十一万六千五",
+          "from": "wu3",
+          "to": "wu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS11",
+          "index": 37,
+          "context": "五百一十一万六千五百四十四。后面的",
+          "from": "wu3",
+          "to": "wu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS12",
+          "index": 0,
+          "context": "所有输入使用同一个",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS12",
+          "index": 75,
+          "context": "。这个差大于零。所以它不再竖直。",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS14",
+          "index": 54,
+          "context": "、三加两倍系数。所以不能把它们称为",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS16",
+          "index": 41,
+          "context": " 表示。这里只能取已开始的活动成员",
+          "from": "qu3",
+          "to": "qu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS17",
+          "index": 74,
+          "context": "坐标为零。这个候选点与组的最远右端",
+          "from": "xuan3",
+          "to": "xuan2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS17",
+          "index": 76,
+          "context": "为零。这个候选点与组的最远右端是不",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS20",
+          "index": 9,
+          "context": "为一减系数为正。可以除以它。绿色输",
+          "from": "ke3",
+          "to": "ke2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS21",
+          "index": 10,
+          "context": "直线作同样代入。只把常数三换成五。",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS21",
+          "index": 45,
+          "context": "倍系数。右端是七减两倍系数。高度始",
+          "from": "jian3",
+          "to": "jian2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS24",
+          "index": 41,
+          "context": "范围。当前覆盖仍只取活动成员。",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS24b",
+          "index": 19,
+          "context": "相差三倍正系数。所以较低的原端点是",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS24b",
+          "index": 53,
+          "context": "色尾端。它自己没有两个不同端点。始",
+          "from": "you3",
+          "to": "you2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS25",
+          "index": 8,
+          "context": "六条线段各提供头尾两个端点。共十二",
+          "from": "wei3",
+          "to": "wei2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS25",
+          "index": 47,
+          "context": "个位置。红色尾端与粉色点输入的身份",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS25",
+          "index": 60,
+          "context": "入的身份都保留。所以加入点输入后仍",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS27",
+          "index": 53,
+          "context": "描坐标取最小的未处理位置。",
+          "from": "chu3",
+          "to": "chu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS28",
+          "index": 20,
+          "context": "旧活动顺序为空。只有一份身份。没有",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS28",
+          "index": 32,
+          "context": "身份。没有输入对可以报告。",
+          "from": "ke3",
+          "to": "ke2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS29",
+          "index": 22,
+          "context": "个组。因此没有候选可查。结果仍为空",
+          "from": "xuan3",
+          "to": "xuan2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS30",
+          "index": 5,
+          "context": "事件表记下处理后的状态。再继",
+          "from": "chu3",
+          "to": "chu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS31",
+          "index": 6,
+          "context": "来到原点。开始者是蓝色输入。绿",
+          "from": "shi3",
+          "to": "shi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS31",
+          "index": 33,
+          "context": "不参加这次事件。所以没有新结果。",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS32",
+          "index": 1,
+          "context": "把只有蓝色成员的水平",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS34",
+          "index": 28,
+          "context": "平覆盖的右端二。所以不预约。",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS36",
+          "index": 19,
+          "context": "端较小的是二。按已讲的完整区间结论",
+          "from": "yi3",
+          "to": "yi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS37",
+          "index": 22,
+          "context": "当前位置。右端点早已在输入中给出。",
+          "from": "zao3",
+          "to": "zao2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS37",
+          "index": 33,
+          "context": "输入中给出。不必等扫描走到二。",
+          "from": "deng3",
+          "to": "deng2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS40",
+          "index": 4,
+          "context": "绿色两端也把候选夹在中间。",
+          "from": "ye3",
+          "to": "ye2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS40",
+          "index": 37,
+          "context": "未来同时满足。才允许登记。",
+          "from": "yun3",
+          "to": "yun2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS41",
+          "index": 13,
+          "context": "交点 P 加入待处理清单。清单剩十",
+          "from": "chu3",
+          "to": "chu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS47",
+          "index": 55,
+          "context": "子和分母都为正。把所得的商与三比较",
+          "from": "ba3",
+          "to": "ba2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS47",
+          "index": 73,
+          "context": "等价于一小于三。所以绿色在水平组上",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS47",
+          "index": 88,
+          "context": "组上方。又在青色起点下方。",
+          "from": "qi3",
+          "to": "qi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS48",
+          "index": 10,
+          "context": "其他输入经过这个起点。因此无新结果",
+          "from": "qi3",
+          "to": "qi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS48",
+          "index": 29,
+          "context": "色组加入最上方。只产生绿色与青色这",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS50",
+          "index": 60,
+          "context": "有旧输入经过这个起点。",
+          "from": "qi3",
+          "to": "qi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS51",
+          "index": 12,
+          "context": "到最下方。新邻居只有它与水平组。原",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS51",
+          "index": 15,
+          "context": "方。新邻居只有它与水平组。原来的水",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS53",
+          "index": 15,
+          "context": "置已经在清单中。所以不再插入。原来",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS54",
+          "index": 4,
+          "context": "取出刚才补检发现的位置。红",
+          "from": "bu3",
+          "to": "bu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS59",
+          "index": 7,
+          "context": "绿色与红色之间也有一条点结果。加",
+          "from": "ye3",
+          "to": "ye2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS59",
+          "index": 42,
+          "context": "间没有切碎。也没有改报为点。",
+          "from": "you3",
+          "to": "you2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS61",
+          "index": 48,
+          "context": "方。竖列中的间距只表示离散顺序。不",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS62",
+          "index": 2,
+          "context": "绿色与水平组、水平组与",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS64",
+          "index": 56,
+          "context": "标为二。用 Q 撇表示这个新位置。",
+          "from": "pie3",
+          "to": "pie2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS65",
+          "index": 33,
+          "context": "标大于当前的三。所以严格在未来。",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS66",
+          "index": 4,
+          "context": "红色尾端与点输入的共同位置",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS66",
+          "index": 14,
+          "context": "输入的共同位置。早已进入初始清单。",
+          "from": "zao3",
+          "to": "zao2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS66",
+          "index": 25,
+          "context": "入初始清单。现在只保留原记录。不新",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS67",
+          "index": 20,
+          "context": " y 坐标为二的点所对应的新位置。",
+          "from": "dian3",
+          "to": "dian2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS67",
+          "index": 37,
+          "context": "清单给出红色结束与点输入两种身份。",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS67",
+          "index": 41,
+          "context": "红色结束与点输入两种身份。先都保留",
+          "from": "liang3",
+          "to": "liang2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS69",
+          "index": 21,
+          "context": "绿色都不在这里。所以这两组不参加当",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS69",
+          "index": 24,
+          "context": "不在这里。所以这两组不参加当前报告",
+          "from": "liang3",
+          "to": "liang2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS70",
+          "index": 26,
+          "context": "红色即将结束。不影响当前端点资格。",
+          "from": "ying3",
+          "to": "ying2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS75",
+          "index": 28,
+          "context": "覆盖它。但水平组只有橙色成员。覆盖",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS75",
+          "index": 55,
+          "context": "色不能提供覆盖。所以拒绝预约。",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS76",
+          "index": 32,
+          "context": "下来要把剩余输入处理完。不能只因结",
+          "from": "chu3",
+          "to": "chu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS77",
+          "index": 9,
+          "context": "到橙色右端。当前只有橙色输入参与。",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS79",
+          "index": 4,
+          "context": "新的相邻两组斜率相同而截距",
+          "from": "liang3",
+          "to": "liang2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS79",
+          "index": 16,
+          "context": "相同而截距不同。所以平行。原 x ",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS79",
+          "index": 42,
+          "context": "坐标为零的那个候选点从未登记。清单",
+          "from": "xuan3",
+          "to": "xuan2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS80",
+          "index": 10,
+          "context": "七对结果。直接前往紫色左端。",
+          "from": "wang3",
+          "to": "wang2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS82",
+          "index": 17,
+          "context": "水平组。当前成员只有紫色。组排在最",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS82",
+          "index": 18,
+          "context": "平组。当前成员只有紫色。组排在最上",
+          "from": "you3",
+          "to": "you2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS83",
+          "index": 4,
+          "context": "检查青色与水平组。原直线仍",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS84",
+          "index": 12,
+          "context": "色只覆盖六到八。五也不在它的闭范围",
+          "from": "wu3",
+          "to": "wu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS84",
+          "index": 33,
+          "context": "身份没有填平橙色与紫色之间的旧空隙",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS90",
+          "index": 17,
+          "context": "个组。不存在相邻两组。没有新预约。",
+          "from": "liang3",
+          "to": "liang2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS91",
+          "index": 6,
+          "context": "记下这一行。处理最后一个位置。",
+          "from": "chu3",
+          "to": "chu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS93",
+          "index": 24,
+          "context": "活动顺序为空。待处理清单也为空。扫",
+          "from": "chu3",
+          "to": "chu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS100",
+          "index": 2,
+          "context": "红色与点输入也还原到同",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS101",
+          "index": 2,
+          "context": "青色与点输入是第七对。",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS102",
+          "index": 4,
+          "context": "区间结果只有蓝色与橙色这一",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS104",
+          "index": 2,
+          "context": "绿色与水平直线的唯一候",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS104",
+          "index": 14,
+          "context": "线的唯一候选。候选点的 x 坐标为",
+          "from": "xuan3",
+          "to": "xuan2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS104",
+          "index": 26,
+          "context": "x 坐标为三。候选点的 y 坐标为",
+          "from": "xuan3",
+          "to": "xuan2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS104",
+          "index": 55,
+          "context": "在紫色左端之前。所以这两对为空。",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS105",
+          "index": 2,
+          "context": "红色与水平直线也只有这",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS105",
+          "index": 7,
+          "context": "红色与水平直线也只有这个候选。相",
+          "from": "ye3",
+          "to": "ye2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS105",
+          "index": 8,
+          "context": "红色与水平直线也只有这个候选。相同",
+          "from": "zhi3",
+          "to": "zhi2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS106",
+          "index": 2,
+          "context": "青色与水平直线的候选在",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS109",
+          "index": 2,
+          "context": "最后把点输入的 x 坐",
+          "from": "ba3",
+          "to": "ba2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS109",
+          "index": 38,
+          "context": "点输入的高度二。所以最后这对为空。",
+          "from": "suo3",
+          "to": "suo2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        },
+        {
+          "id": "CS111",
+          "index": 17,
+          "context": "同点、原竖直线段与点输入接在同一份",
+          "from": "yu3",
+          "to": "yu2",
+          "reason": "已核对短语/连读组的上上相连，前上声变二声；不跨标点、字母强制变调"
+        }
+      ]
+    },
+    {
+      "source": "complete-sweep-blind-one-original.json",
+      "originalSha256": "26bbeb33fa9c27560fb3a7a24882c0ab8ea06eb86ee2a022a8fce2a3397c491e",
+      "report": {
+        "stage": "independent-full-blind-review-1-original-before-history",
+        "reviewer": "narration_blind_one",
+        "hashes": {
+          "narration-text.json": "9fde73225da5c135bd08712d4a4f4774ce3d3780f46b73306190b4a6b74ecf05",
+          "speech-text.json": "49eb0190f4e9d683f4c9395783cca037b286bdb024503b1a762ab6152630db49"
+        },
+        "coverage": [
+          {
+            "id": "CS01",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS02",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS03",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS04",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS05",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS06",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS07",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS08",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS09",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS10",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS11",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS12",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS13",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS14",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS15",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS16",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS17",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS18",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS19",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS20",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS21",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS22",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS23",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS24",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS24a",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS24b",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS25",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS26",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS27",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS28",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS29",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS30",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS31",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS32",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS33",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS34",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS35",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS36",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS37",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS38",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS39",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS40",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS41",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS42",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS43",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS44",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS45",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS46",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS47",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS48",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS49",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS50",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS51",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS52",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS53",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS54",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS55",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS56",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS57",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS58",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS59",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS60",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS61",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS62",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS63",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS64",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS65",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS66",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS67",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS68",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS69",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS70",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS71",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS72",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS73",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS74",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS75",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS76",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS77",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS78",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS79",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS80",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS81",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS82",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS83",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS84",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS85",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS86",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS87",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS88",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS89",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS90",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS91",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS92",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS93",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS94",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS95",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS96",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS97",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS98",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS99",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS100",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS101",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS102",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS103",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS104",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS105",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS106",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS107",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS108",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS109",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS110",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          },
+          {
+            "id": "CS111",
+            "checked": [
+              "全文逐句汉字声调",
+              "多音字语境",
+              "轻声",
+              "一不变调",
+              "三声及韵律边界",
+              "漏标",
+              "冻结文本一致性"
+            ],
+            "result": "未发现确定错误或待查证项"
+          }
+        ],
+        "counts": {
+          "segments": 113,
+          "annotatedChineseSyllables": 4527,
+          "unmarkedChinese": 0,
+          "syllableCountMismatch": 0,
+          "textMismatch": 0,
+          "pypinyinQueries": 113,
+          "queryFailures": 0
+        },
+        "definiteErrors": [],
+        "pendingVerification": [],
+        "acceptableReadings": [
+          {
+            "ids": [
+              "CS10",
+              "CS24a",
+              "CS59"
+            ],
+            "text": "剪切；切碎",
+            "current": "jian3 qie1；qie1 sui4",
+            "reason": "切表示剪切/切分，非迫切、切实；库在CS10及CS59选qie4不能覆盖语义。汉典剪切条为jiǎn qiē。"
+          },
+          {
+            "ids": [
+              "CS25",
+              "CS88",
+              "CS91",
+              "CS94"
+            ],
+            "text": "逐行；这一行；最后一行",
+            "current": "hang2",
+            "reason": "表格的一行，非行走/行动；库选xing2属于语境误选。"
+          },
+          {
+            "ids": [
+              "CS11",
+              "CS47",
+              "CS49",
+              "CS50"
+            ],
+            "text": "分子、分数",
+            "current": "fen1",
+            "reason": "数学分式的分子及分数，非成分、分量；库个别fen4不适用。"
+          },
+          {
+            "ids": [
+              "CS12",
+              "CS19",
+              "CS24b"
+            ],
+            "text": "差、相差",
+            "current": "cha1",
+            "reason": "减法所得之差或量的差别，非差劲及差遣。"
+          },
+          {
+            "ids": [
+              "CS44",
+              "CS61"
+            ],
+            "text": "重报、重排",
+            "current": "chong2",
+            "reason": "重新报告、重新排列，非重量或重要。"
+          },
+          {
+            "ids": [
+              "CS11",
+              "CS29",
+              "CS110"
+            ],
+            "text": "一千五百一十一万六千五百四十四；十一项；二十一种",
+            "current": "yi4 qian1 wu2 bai3 yi1 shi2 yi1 wan4 ...；shi2 yi1 xiang4；er4 shi2 yi1 zhong3",
+            "reason": "复杂数词末位一保留本调；一十一中十位一可不变；一千的一按连读为yi4可接受。百五十六跨数位按bai2 wu3可接受，不据无停顿强制更换另一方案。"
+          },
+          {
+            "ids": [
+              "CS58",
+              "CS100",
+              "CS104",
+              "CS22",
+              "CS64"
+            ],
+            "text": "同一橙色成员；同一原位置；唯一候选；统一变换",
+            "current": "tong2 yi1；wei2 yi1；tong3 yi1",
+            "reason": "同一=相同，唯一=仅有一个，统一为固定词；词尾一可保留本调，不把后续名词当作数量短语机械变调。"
+          },
+          {
+            "ids": [
+              "CS16",
+              "CS24b",
+              "CS25",
+              "CS32",
+              "CS67",
+              "CS82",
+              "CS105"
+            ],
+            "text": "这里只能；没有两个；头尾两个；把只有；点所对应；只有紫色；也只有",
+            "current": "li3 zhi3；you2 liang3；wei2 liang3；ba3 zhi2 you3；dian2 suo3；zhi2 you2 zi3；ye2 zhi2 you3",
+            "reason": "三声连读结合词组及重音分组；现有跨词连读/边界读法均有可接受实现。不能以没有显式停顿为由强制跨词变调。"
+          },
+          {
+            "ids": [
+              "CS13",
+              "CS24a",
+              "CS33",
+              "CS44",
+              "CS51",
+              "CS63",
+              "CS74"
+            ],
+            "text": "关系；开头；邻居",
+            "current": "guan1 xi5；kai1 tou2；lin2 ju1",
+            "reason": "关系轻声可接受；开头为本片起始部分，tou2可接受；邻居为相邻对象，ju1可接受，不仅因口语常轻读就判错。"
+          },
+          {
+            "ids": [
+              "CS04",
+              "CS27",
+              "CS84",
+              "CS93"
+            ],
+            "text": "空隙、为空；处理",
+            "current": "kong4 xi4；wei2 kong1；chu2 li3",
+            "reason": "空隙指间隔；为空指空集合；处理=办理/操作，其chu3在li3前连读标chu2。"
+          },
+          {
+            "ids": [
+              "CS64"
+            ],
+            "text": "Q撇表示",
+            "current": "pie2 biao3",
+            "reason": "数学撇号原调pie3，紧接biao3构成连读时pie2可接受。"
+          }
+        ],
+        "sources": [
+          {
+            "type": "pypinyin",
+            "version": "0.55.0",
+            "fullResults": "/tmp/complete-sweep-blind-one-all-queries.json",
+            "note": "每段冻结全文独立调用skill原入口，保留完整查询、库选标音及逐字候选；不是词典释义或规范裁决。"
+          },
+          {
+            "url": "https://zdic.net/hans/剪切",
+            "used": "jiǎn qiē及剪切语义"
+          },
+          {
+            "url": "https://www.gsjtxy.edu.cn/jcjxb/content/169/t2024210-169-17094.html",
+            "used": "三声词组韵律、一不变调、复杂数词末位一、十位一分歧"
+          },
+          {
+            "url": "https://zdic.net/hans/同一",
+            "used": "tóng yī，相同、同样"
+          },
+          {
+            "url": "https://zdic.net/hans/唯一",
+            "used": "wéi yī，只有一个"
+          },
+          {
+            "url": "https://zdic.net/hans/开头",
+            "used": "kāi tóu，事物最前部分"
+          },
+          {
+            "url": "https://zdic.net/hans/邻居",
+            "status": "web open failed HTTP500，未当作查询成功",
+            "note": "本项不是确定争议；库lin2 ju1与一般词义一致，不据轻声可选方案制造阻塞"
+          }
+        ],
+        "limits": "仅文本拼音；未读历史、README审校记录或他人记录，未改工程，未合成/试听/发布/Git/继续委派。未作最终全文放行，等待历史核销。"
+      }
+    },
+    {
+      "source": "complete-sweep-blind-one-history-reconciliation.json",
+      "originalSha256": "473b1a8fea71c6c0f7c838d2b5639c82b2b19104512137b8fc3842e2be637a78",
+      "report": {
+        "stage": "blind-one-history-reconciliation",
+        "originalReport": "/tmp/complete-sweep-blind-one-original.json",
+        "originalPreserved": true,
+        "currentHashes": {
+          "narration-text.json": "9fde73225da5c135bd08712d4a4f4774ce3d3780f46b73306190b4a6b74ecf05",
+          "speech-text.json": "49eb0190f4e9d683f4c9395783cca037b286bdb024503b1a762ab6152630db49"
+        },
+        "historicalUnresolvedPinyin": [],
+        "items": [
+          {
+            "item": "CS08/96/97/99及CS104两句句首字母",
+            "result": "已修复且当前保持",
+            "evidence": {
+              "CS08": "粉色菱形的中心标出点输入 Z 的位置。它的 x 坐标为三。它的 y 坐标为二。它就在红色上端。菱形不表示面积。也没有挪动这个点。",
+              "CS96": "蓝色与橙色的两个边界高度都是零。原 x 坐标不变。还原后仍是高度零的完整闭区间。左端的 x 坐标为一。右端的 x 坐标为二。",
+              "CS97": "橙色与绿色的点结果高度也是零。还原后 x 坐标为三。原 y 坐标为零。",
+              "CS99": "红色与青色的结果。新 x 坐标减去二倍系数。得到三。高度保持二。因此还原后的 x 坐标为三。原 y 坐标为二。",
+              "CS104": "绿色与水平直线的唯一候选。候选点的 x 坐标为三。候选点的 y 坐标为零。它在蓝色右端之外。也在紫色左端之前。所以这两对为空。"
+            }
+          },
+          {
+            "item": "CS20相反数冗余",
+            "result": "已删除且当前保持",
+            "evidence": "因为一减系数为正。可以除以它。绿色输入的新 x 坐标闭范围。左端是负一加四倍系数。右端是七减四倍系数。"
+          },
+          {
+            "item": "字幕六段坐标术语同步",
+            "result": "复用主代理交接的纯文本审核冻结结论；本轮核对冻结哈希及speech拼接一致，未扩大到未授权字幕文件验收"
+          },
+          {
+            "item": "数学为/目的为、分子、差、剪切、表格行、重复重",
+            "result": "与本轮独立词义判定一致，可接受；不是新发现或新修复"
+          },
+          {
+            "item": "数值一、负一、分数一、运算数值一、复杂数词一",
+            "result": "与本轮独立判定一致。CS11一千yi4，后续一十一两个yi1；CS29十一项及CS110二十一种末位yi1均可接受"
+          },
+          {
+            "item": "轻声及三声",
+            "result": "现稿的de5/men5/zhe5/guo5/le5/xi5/ge5及语境三声与独立结论一致；分子zi3不轻读，开头tou2/邻居ju1不强制弱读"
+          },
+          {
+            "item": "首次标注246条决策记录",
+            "result": "245个最终位置全部符合当前稿；CS64撇先由pie1校为pie3，再按撇表示连读变为pie2，是同一阶段词义与变调两步，不是反复改回或未解决项"
+          },
+          {
+            "item": "首次报告speech哈希eadb43183bcf710d2d757c3b74730583fa3076de54a762ee02081f3ab35d0dc8与当前不同",
+            "result": "已核实仅break对象差异：从当前稿内存过滤breakMs对象，以ensure_ascii=False/indent=2及末尾换行序列化，恰好还原该哈希。文字、标音、对象顺序及切分一致；审核绑定当前49eb哈希，未将旧哈希冒充当前。"
+          }
+        ],
+        "decisionPositionChecks": [
+          {
+            "id": "CS01",
+            "index": 1,
+            "context": "这一集把前七章的规则",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS01",
+            "index": 14,
+            "context": "章的规则。接到同一份状态和清单上。",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS02",
+            "index": 23,
+            "context": "原点到 x 坐标为二且 y 坐标为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS02",
+            "index": 31,
+            "context": "为二且 y 坐标为零的点。原坐标图",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS03",
+            "index": 18,
+            "context": "段。从 x 坐标为一且 y 坐标为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS03",
+            "index": 26,
+            "context": "为一且 y 坐标为零的点。到 x ",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS03",
+            "index": 37,
+            "context": "点。到 x 坐标为四且 y 坐标为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS03",
+            "index": 45,
+            "context": "为四且 y 坐标为零的点。蓝色虚线",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS04",
+            "index": 19,
+            "context": "零。从 x 坐标为六的点到 x 坐",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS04",
+            "index": 29,
+            "context": "的点到 x 坐标为八的点。它与前两",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS05",
+            "index": 18,
+            "context": "段。从 x 坐标为负一且 y 坐标",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS05",
+            "index": 27,
+            "context": "负一且 y 坐标为四的点。到 x ",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS05",
+            "index": 38,
+            "context": "点。到 x 坐标为七且 y 坐标为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS05",
+            "index": 46,
+            "context": "为七且 y 坐标为负四的点。所在直",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS06",
+            "index": 15,
+            "context": "的 x 坐标固定为三。下端高度负一",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS07",
+            "index": 18,
+            "context": "段。从 x 坐标为二且 y 坐标为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS07",
+            "index": 26,
+            "context": "为二且 y 坐标为三的点。到 x ",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS07",
+            "index": 37,
+            "context": "点。到 x 坐标为七且 y 坐标为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS07",
+            "index": 45,
+            "context": "为七且 y 坐标为负二的点。它与绿",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS07",
+            "index": 66,
+            "context": "线平行。但不是同一条直线。",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS08",
+            "index": 26,
+            "context": "。它的 x 坐标为三。它的 y 坐",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS08",
+            "index": 36,
+            "context": "。它的 y 坐标为二。它就在红色上",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS10",
+            "index": 21,
+            "context": "安全系数。八加一为九。得到分母二百",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS10",
+            "index": 5,
+            "context": "直接代入剪切专题已经证明的安",
+            "expected": "qie1",
+            "current": "qie1",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 5,
+            "context": "九的五次方为五万九千零四十九",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 58,
+            "context": " 始终是以这个数为分母且分子为一的",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 64,
+            "context": "个数为分母且分子为一的精确分数。不",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 62,
+            "context": "以这个数为分母且分子为一的精确分数",
+            "expected": "fen1",
+            "current": "fen1",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 27,
+            "context": "五十六。得到分母一千五百一十一万六",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 72,
+            "context": "为一的精确分数。不换成小数。",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS12",
+            "index": 23,
+            "context": "端的新 x 坐标为三减系数。上端为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS12",
+            "index": 31,
+            "context": "为三减系数。上端为三加两倍系数。用",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS12",
+            "index": 70,
+            "context": "到三倍系数。这个差大于零。所以它不",
+            "expected": "cha1",
+            "current": "cha1",
+            "result": "符合"
+          },
+          {
+            "id": "CS12",
+            "index": 7,
+            "context": "所有输入使用同一个系数。红色下端",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS12",
+            "index": 78,
+            "context": "差大于零。所以它不再竖直。",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS13",
+            "index": 9,
+            "context": "在只为看清对应关系。显示八分之一系",
+            "expected": "xi5",
+            "current": "xi5",
+            "result": "符合"
+          },
+          {
+            "id": "CS15",
+            "index": 9,
+            "context": "份水平输入归到同一个固定同线组。用",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS15",
+            "index": 31,
+            "context": "表示这个组。组名不变。但活动成员随",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS17",
+            "index": 59,
+            "context": "它的原 x 坐标为五。原 y 坐标",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS17",
+            "index": 68,
+            "context": "五。原 y 坐标为零。这个候选点与",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS19",
+            "index": 36,
+            "context": "。得到一减系数的差。再用这个差乘以",
+            "expected": "cha1",
+            "current": "cha1",
+            "result": "符合"
+          },
+          {
+            "id": "CS19",
+            "index": 42,
+            "context": "数的差。再用这个差乘以新高度。",
+            "expected": "cha1",
+            "current": "cha1",
+            "result": "符合"
+          },
+          {
+            "id": "CS19",
+            "index": 6,
+            "context": "右侧展开后有一项。系数 s 乘",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS19",
+            "index": 22,
+            "context": "乘以新高度。将这一项移到左边。得到",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS20",
+            "index": 6,
+            "context": "因为一减系数为正。可以除以它。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS22",
+            "index": 12,
+            "context": "原来的 x 坐标为三。代入统一变换",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS24a",
+            "index": 19,
+            "context": "两个端点。代入同一个剪切变换。本片",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS24a",
+            "index": 44,
+            "context": "小。扫描先遇到的一端叫头。较大且后",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS24a",
+            "index": 56,
+            "context": "。较大且后遇到的一端叫尾。标签使用",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS24b",
+            "index": 12,
+            "context": "的新 x 坐标相差三倍正系数。所以",
+            "expected": "cha1",
+            "current": "cha1",
+            "result": "符合"
+          },
+          {
+            "id": "CS25",
+            "index": 36,
+            "context": "就在红色尾端。合为同一个位置。红色",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS25",
+            "index": 79,
+            "context": "二个位置。表中逐行对应原端点和扫描",
+            "expected": "hang2",
+            "current": "hang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS25",
+            "index": 38,
+            "context": "红色尾端。合为同一个位置。红色尾端",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS26",
+            "index": 18,
+            "context": "活动顺序和结果都为空。表中按新 x",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS26",
+            "index": 47,
+            "context": " P 尚未发现。不在其中。",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS28",
+            "index": 17,
+            "context": "位置。旧活动顺序为空。只有一份身份",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS28",
+            "index": 22,
+            "context": "动顺序为空。只有一份身份。没有输入",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS29",
+            "index": 29,
+            "context": "候选可查。结果仍为空。清单剩十一项",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS30",
+            "index": 17,
+            "context": "状态。再继续取下一项。",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS31",
+            "index": 22,
+            "context": "绿色在这里的高度为正。不参加这次事",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS32",
+            "index": 24,
+            "context": "方。当前最远右端为二。尚未开始的橙",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS33",
+            "index": 20,
+            "context": "令绿色直线的高度为零。得到候选 x",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS33",
+            "index": 32,
+            "context": "到候选 x 坐标为三。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS34",
+            "index": 30,
+            "context": "盖的右端二。所以不预约。",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS35",
+            "index": 7,
+            "context": "来到 x 坐标为一且 y 坐标为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS35",
+            "index": 15,
+            "context": "为一且 y 坐标为零的点。蓝色仍在",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS37",
+            "index": 4,
+            "context": "先报告这一整段。而不是只报",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS37",
+            "index": 31,
+            "context": "已在输入中给出。不必等扫描走到二。",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS42",
+            "index": 21,
+            "context": "闭端点资格。但这一同线对已经报告完",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS42",
+            "index": 34,
+            "context": "经报告完整区间。不再改报一个点。",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS43",
+            "index": 30,
+            "context": "退出。最远右端仍为四。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS43",
+            "index": 21,
+            "context": "向右继续。水平组不退出。最远右端仍",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS44",
+            "index": 39,
+            "context": "生新的发现。也不重报旧区间。",
+            "expected": "chong2",
+            "current": "chong2",
+            "result": "符合"
+          },
+          {
+            "id": "CS44",
+            "index": 15,
+            "context": "候选还是已经登记过的那个交点。没有",
+            "expected": "guo5",
+            "current": "guo5",
+            "result": "符合"
+          },
+          {
+            "id": "CS45",
+            "index": 19,
+            "context": "水平组、绿色组。一对结果与剩余九个",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS47",
+            "index": 52,
+            "context": "母。分子和分母都为正。把所得的商与",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS47",
+            "index": 14,
+            "context": "标代入绿色高度。分子是一减去三倍系",
+            "expected": "fen1",
+            "current": "fen1",
+            "result": "符合"
+          },
+          {
+            "id": "CS47",
+            "index": 37,
+            "context": "减去系数。用这个分子除以这个分母。",
+            "expected": "fen1",
+            "current": "fen1",
+            "result": "符合"
+          },
+          {
+            "id": "CS47",
+            "index": 57,
+            "context": "分母都为正。把所得的商与三比较。等",
+            "expected": "de2",
+            "current": "de2",
+            "result": "符合"
+          },
+          {
+            "id": "CS48",
+            "index": 38,
+            "context": "产生绿色与青色这一对新邻接。",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS49",
+            "index": 12,
+            "context": "的斜率。都以负一为分子。一减系数为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS49",
+            "index": 20,
+            "context": "为分子。一减系数为分母。常数项不同",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS49",
+            "index": 13,
+            "context": "斜率。都以负一为分子。一减系数为分",
+            "expected": "fen1",
+            "current": "fen1",
+            "result": "符合"
+          },
+          {
+            "id": "CS49",
+            "index": 35,
+            "context": "不同。它们平行。不预约。水平与青色",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS50",
+            "index": 13,
+            "context": "入的下端。新高度为负一。水平组高度",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS50",
+            "index": 29,
+            "context": "度零。绿色高度的分子是系数。分母是",
+            "expected": "fen1",
+            "current": "fen1",
+            "result": "符合"
+          },
+          {
+            "id": "CS53",
+            "index": 17,
+            "context": "经在清单中。所以不再插入。原来的预",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS55",
+            "index": 7,
+            "context": "青色的高度严格为正。不经过当前点",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS57",
+            "index": 16,
+            "context": "色输入配对。交集为当前点。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS58",
+            "index": 18,
+            "context": "色输入配对。另留一条点结果。位置相",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS59",
+            "index": 45,
+            "context": "切碎。也没有改报为点。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS59",
+            "index": 37,
+            "context": "四对。旧区间没有切碎。也没有改报为",
+            "expected": "qie1",
+            "current": "qie1",
+            "result": "符合"
+          },
+          {
+            "id": "CS59",
+            "index": 9,
+            "context": "色与红色之间也有一条点结果。加上早",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS60",
+            "index": 4,
+            "context": "绿色斜率为负。水平组斜率为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS60",
+            "index": 12,
+            "context": "为负。水平组斜率为零。红色斜率为正",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS60",
+            "index": 19,
+            "context": "率为零。红色斜率为正。三组都继续。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS61",
+            "index": 2,
+            "context": "现在重排整个相遇块：绿",
+            "expected": "chong2",
+            "current": "chong2",
+            "result": "符合"
+          },
+          {
+            "id": "CS63",
+            "index": 12,
+            "context": "。红色与青色之间不再隔着绿色组。这",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS64",
+            "index": 17,
+            "context": "青色方程。原高度为二。统一变换后。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS64",
+            "index": 35,
+            "context": "选的新 x 坐标为三加两倍系数。新",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS64",
+            "index": 49,
+            "context": "数。新 y 坐标为二。用 Q 撇表",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS64",
+            "index": 56,
+            "context": "标为二。用 Q 撇表示这个新位置。",
+            "expected": "pie2",
+            "current": "pie2",
+            "result": "符合"
+          },
+          {
+            "id": "CS67",
+            "index": 8,
+            "context": "来到原 x 坐标为三且原 y 坐标",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS67",
+            "index": 17,
+            "context": "三且原 y 坐标为二的点所对应的新",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS68",
+            "index": 8,
+            "context": "青色输入严格穿过当前点。要从旧活动",
+            "expected": "dang1",
+            "current": "dang1",
+            "result": "符合"
+          },
+          {
+            "id": "CS69",
+            "index": 16,
+            "context": "。水平组与绿色都不在这里。所以这两",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS71",
+            "index": 11,
+            "context": "与红色线段也配成一对。完整交集仍是",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS72",
+            "index": 11,
+            "context": "还与青色线段配成一对。三条新结果加",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS73",
+            "index": 19,
+            "context": "青色继续。点输入不获得斜率。也不进",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS73",
+            "index": 26,
+            "context": "入不获得斜率。也不进入后续顺序。更",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS74",
+            "index": 25,
+            "context": "。令青色的新高度为零。得到候选新 ",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS74",
+            "index": 38,
+            "context": "候选新 x 坐标为五。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS76",
+            "index": 1,
+            "context": "这一段结束后。七对结",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS79",
+            "index": 27,
+            "context": "行。原 x 坐标为五且原 y 坐标",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS79",
+            "index": 36,
+            "context": "五且原 y 坐标为零的那个候选点从",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS84",
+            "index": 14,
+            "context": "覆盖六到八。五也不在它的闭范围里。",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS86",
+            "index": 19,
+            "context": "在上方。紫色高度为零。均不在当前点",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS86",
+            "index": 23,
+            "context": "紫色高度为零。均不在当前点。当前没",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS87",
+            "index": 32,
+            "context": "界要预约。结果仍为七对。清单剩两项",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS88",
+            "index": 3,
+            "context": "记录这一行后继续前进。",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS88",
+            "index": 4,
+            "context": "记录这一行后继续前进。",
+            "expected": "hang2",
+            "current": "hang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS89",
+            "index": 11,
+            "context": "色右端。紫色高度为零。不参加这个点",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS91",
+            "index": 3,
+            "context": "记下这一行。处理最后一个",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS91",
+            "index": 4,
+            "context": "记下这一行。处理最后一个位",
+            "expected": "hang2",
+            "current": "hang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS93",
+            "index": 20,
+            "context": "并退出。活动顺序为空。待处理清单也",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS93",
+            "index": 29,
+            "context": "空。待处理清单也为空。扫描至此终止",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS94",
+            "index": 31,
+            "context": "果。顺序和清单均为空。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS94",
+            "index": 16,
+            "context": "形成的记录。最后一行保留七对结果。",
+            "expected": "yi4",
+            "current": "yi4",
+            "result": "符合"
+          },
+          {
+            "id": "CS94",
+            "index": 17,
+            "context": "成的记录。最后一行保留七对结果。顺",
+            "expected": "hang2",
+            "current": "hang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS95",
+            "index": 8,
+            "context": "扫描结束后。用同一个逆变换还原每份",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS96",
+            "index": 48,
+            "context": "左端的 x 坐标为一。右端的 x ",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS96",
+            "index": 59,
+            "context": "右端的 x 坐标为二。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS96",
+            "index": 22,
+            "context": "零。原 x 坐标不变。还原后仍是高",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS97",
+            "index": 23,
+            "context": "还原后 x 坐标为三。原 y 坐标",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS97",
+            "index": 32,
+            "context": "三。原 y 坐标为零。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS98",
+            "index": 15,
+            "context": "色与红色分别保留为两对结果。它们还",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS98",
+            "index": 27,
+            "context": "果。它们还原到同一个点。但不是同一",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS98",
+            "index": 35,
+            "context": "一个点。但不是同一份配对记录。",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS99",
+            "index": 43,
+            "context": "原后的 x 坐标为三。原 y 坐标",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS99",
+            "index": 52,
+            "context": "三。原 y 坐标为二。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS101",
+            "index": 21,
+            "context": "还原到 x 坐标为三且 y 坐标为",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS101",
+            "index": 29,
+            "context": "为三且 y 坐标为二的点。至此七对",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS102",
+            "index": 12,
+            "context": "只有蓝色与橙色这一对。另外六对是点",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS103",
+            "index": 23,
+            "context": "、橙色的右端分别为二和四。都小于紫",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS104",
+            "index": 22,
+            "context": "选点的 x 坐标为三。候选点的 y",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS104",
+            "index": 34,
+            "context": "选点的 y 坐标为零。它在蓝色右端",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS104",
+            "index": 60,
+            "context": "之前。所以这两对为空。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS106",
+            "index": 35,
+            "context": "从六开始。三份都不覆盖它。",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS107",
+            "index": 20,
+            "context": "是负一。截距分别为三和五。两条直线",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS107",
+            "index": 40,
+            "context": "不同。因此这对也为空。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS108",
+            "index": 5,
+            "context": "点输入高度为二。三份水平输入",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS108",
+            "index": 34,
+            "context": "它们形成的三对都为空。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS109",
+            "index": 44,
+            "context": "二。所以最后这对为空。",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS110",
+            "index": 34,
+            "context": "对。紫色参与的每一对都已排除。完整",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS111",
+            "index": 1,
+            "context": "这一次扫描把重叠、同",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS111",
+            "index": 24,
+            "context": "段与点输入接在同一份状态上。每站先",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS09",
+            "index": 33,
+            "context": "值的最大值是八。所以参数 M 等于",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS10",
+            "index": 29,
+            "context": "为九。得到分母二百五十六乘九的五次",
+            "expected": "bai2",
+            "current": "bai2",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 18,
+            "context": "零四十九。乘以二百五十六。得到分母",
+            "expected": "bai2",
+            "current": "bai2",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 29,
+            "context": "六。得到分母一千五百一十一万六千五",
+            "expected": "wu2",
+            "current": "wu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS11",
+            "index": 37,
+            "context": "五百一十一万六千五百四十四。后面的",
+            "expected": "wu2",
+            "current": "wu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS12",
+            "index": 0,
+            "context": "所有输入使用同一个",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS12",
+            "index": 75,
+            "context": "。这个差大于零。所以它不再竖直。",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS14",
+            "index": 54,
+            "context": "、三加两倍系数。所以不能把它们称为",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS16",
+            "index": 41,
+            "context": " 表示。这里只能取已开始的活动成员",
+            "expected": "qu2",
+            "current": "qu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS17",
+            "index": 74,
+            "context": "坐标为零。这个候选点与组的最远右端",
+            "expected": "xuan2",
+            "current": "xuan2",
+            "result": "符合"
+          },
+          {
+            "id": "CS17",
+            "index": 76,
+            "context": "为零。这个候选点与组的最远右端是不",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS20",
+            "index": 9,
+            "context": "为一减系数为正。可以除以它。绿色输",
+            "expected": "ke2",
+            "current": "ke2",
+            "result": "符合"
+          },
+          {
+            "id": "CS21",
+            "index": 10,
+            "context": "直线作同样代入。只把常数三换成五。",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS21",
+            "index": 45,
+            "context": "倍系数。右端是七减两倍系数。高度始",
+            "expected": "jian2",
+            "current": "jian2",
+            "result": "符合"
+          },
+          {
+            "id": "CS24",
+            "index": 41,
+            "context": "范围。当前覆盖仍只取活动成员。",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS24b",
+            "index": 19,
+            "context": "相差三倍正系数。所以较低的原端点是",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS24b",
+            "index": 53,
+            "context": "色尾端。它自己没有两个不同端点。始",
+            "expected": "you2",
+            "current": "you2",
+            "result": "符合"
+          },
+          {
+            "id": "CS25",
+            "index": 8,
+            "context": "六条线段各提供头尾两个端点。共十二",
+            "expected": "wei2",
+            "current": "wei2",
+            "result": "符合"
+          },
+          {
+            "id": "CS25",
+            "index": 47,
+            "context": "个位置。红色尾端与粉色点输入的身份",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS25",
+            "index": 60,
+            "context": "入的身份都保留。所以加入点输入后仍",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS27",
+            "index": 53,
+            "context": "描坐标取最小的未处理位置。",
+            "expected": "chu2",
+            "current": "chu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS28",
+            "index": 20,
+            "context": "旧活动顺序为空。只有一份身份。没有",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS28",
+            "index": 32,
+            "context": "身份。没有输入对可以报告。",
+            "expected": "ke2",
+            "current": "ke2",
+            "result": "符合"
+          },
+          {
+            "id": "CS29",
+            "index": 22,
+            "context": "个组。因此没有候选可查。结果仍为空",
+            "expected": "xuan2",
+            "current": "xuan2",
+            "result": "符合"
+          },
+          {
+            "id": "CS30",
+            "index": 5,
+            "context": "事件表记下处理后的状态。再继",
+            "expected": "chu2",
+            "current": "chu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS31",
+            "index": 6,
+            "context": "来到原点。开始者是蓝色输入。绿",
+            "expected": "shi2",
+            "current": "shi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS31",
+            "index": 33,
+            "context": "不参加这次事件。所以没有新结果。",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS32",
+            "index": 1,
+            "context": "把只有蓝色成员的水平",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS34",
+            "index": 28,
+            "context": "平覆盖的右端二。所以不预约。",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS36",
+            "index": 19,
+            "context": "端较小的是二。按已讲的完整区间结论",
+            "expected": "yi2",
+            "current": "yi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS37",
+            "index": 22,
+            "context": "当前位置。右端点早已在输入中给出。",
+            "expected": "zao2",
+            "current": "zao2",
+            "result": "符合"
+          },
+          {
+            "id": "CS37",
+            "index": 33,
+            "context": "输入中给出。不必等扫描走到二。",
+            "expected": "deng2",
+            "current": "deng2",
+            "result": "符合"
+          },
+          {
+            "id": "CS40",
+            "index": 4,
+            "context": "绿色两端也把候选夹在中间。",
+            "expected": "ye2",
+            "current": "ye2",
+            "result": "符合"
+          },
+          {
+            "id": "CS40",
+            "index": 37,
+            "context": "未来同时满足。才允许登记。",
+            "expected": "yun2",
+            "current": "yun2",
+            "result": "符合"
+          },
+          {
+            "id": "CS41",
+            "index": 13,
+            "context": "交点 P 加入待处理清单。清单剩十",
+            "expected": "chu2",
+            "current": "chu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS47",
+            "index": 55,
+            "context": "子和分母都为正。把所得的商与三比较",
+            "expected": "ba2",
+            "current": "ba2",
+            "result": "符合"
+          },
+          {
+            "id": "CS47",
+            "index": 73,
+            "context": "等价于一小于三。所以绿色在水平组上",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS47",
+            "index": 88,
+            "context": "组上方。又在青色起点下方。",
+            "expected": "qi2",
+            "current": "qi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS48",
+            "index": 10,
+            "context": "其他输入经过这个起点。因此无新结果",
+            "expected": "qi2",
+            "current": "qi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS48",
+            "index": 29,
+            "context": "色组加入最上方。只产生绿色与青色这",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS50",
+            "index": 60,
+            "context": "有旧输入经过这个起点。",
+            "expected": "qi2",
+            "current": "qi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS51",
+            "index": 12,
+            "context": "到最下方。新邻居只有它与水平组。原",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS51",
+            "index": 15,
+            "context": "方。新邻居只有它与水平组。原来的水",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS53",
+            "index": 15,
+            "context": "置已经在清单中。所以不再插入。原来",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS54",
+            "index": 4,
+            "context": "取出刚才补检发现的位置。红",
+            "expected": "bu2",
+            "current": "bu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS59",
+            "index": 7,
+            "context": "绿色与红色之间也有一条点结果。加",
+            "expected": "ye2",
+            "current": "ye2",
+            "result": "符合"
+          },
+          {
+            "id": "CS59",
+            "index": 42,
+            "context": "间没有切碎。也没有改报为点。",
+            "expected": "you2",
+            "current": "you2",
+            "result": "符合"
+          },
+          {
+            "id": "CS61",
+            "index": 48,
+            "context": "方。竖列中的间距只表示离散顺序。不",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS62",
+            "index": 2,
+            "context": "绿色与水平组、水平组与",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS65",
+            "index": 33,
+            "context": "标大于当前的三。所以严格在未来。",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS66",
+            "index": 4,
+            "context": "红色尾端与点输入的共同位置",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS66",
+            "index": 14,
+            "context": "输入的共同位置。早已进入初始清单。",
+            "expected": "zao2",
+            "current": "zao2",
+            "result": "符合"
+          },
+          {
+            "id": "CS66",
+            "index": 25,
+            "context": "入初始清单。现在只保留原记录。不新",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS67",
+            "index": 20,
+            "context": " y 坐标为二的点所对应的新位置。",
+            "expected": "dian2",
+            "current": "dian2",
+            "result": "符合"
+          },
+          {
+            "id": "CS67",
+            "index": 37,
+            "context": "清单给出红色结束与点输入两种身份。",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS67",
+            "index": 41,
+            "context": "红色结束与点输入两种身份。先都保留",
+            "expected": "liang2",
+            "current": "liang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS69",
+            "index": 21,
+            "context": "绿色都不在这里。所以这两组不参加当",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS69",
+            "index": 24,
+            "context": "不在这里。所以这两组不参加当前报告",
+            "expected": "liang2",
+            "current": "liang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS70",
+            "index": 26,
+            "context": "红色即将结束。不影响当前端点资格。",
+            "expected": "ying2",
+            "current": "ying2",
+            "result": "符合"
+          },
+          {
+            "id": "CS75",
+            "index": 28,
+            "context": "覆盖它。但水平组只有橙色成员。覆盖",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS75",
+            "index": 55,
+            "context": "色不能提供覆盖。所以拒绝预约。",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS76",
+            "index": 32,
+            "context": "下来要把剩余输入处理完。不能只因结",
+            "expected": "chu2",
+            "current": "chu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS77",
+            "index": 9,
+            "context": "到橙色右端。当前只有橙色输入参与。",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS79",
+            "index": 4,
+            "context": "新的相邻两组斜率相同而截距",
+            "expected": "liang2",
+            "current": "liang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS79",
+            "index": 16,
+            "context": "相同而截距不同。所以平行。原 x ",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS79",
+            "index": 42,
+            "context": "坐标为零的那个候选点从未登记。清单",
+            "expected": "xuan2",
+            "current": "xuan2",
+            "result": "符合"
+          },
+          {
+            "id": "CS80",
+            "index": 10,
+            "context": "七对结果。直接前往紫色左端。",
+            "expected": "wang2",
+            "current": "wang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS82",
+            "index": 17,
+            "context": "水平组。当前成员只有紫色。组排在最",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS82",
+            "index": 18,
+            "context": "平组。当前成员只有紫色。组排在最上",
+            "expected": "you2",
+            "current": "you2",
+            "result": "符合"
+          },
+          {
+            "id": "CS83",
+            "index": 4,
+            "context": "检查青色与水平组。原直线仍",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS84",
+            "index": 12,
+            "context": "色只覆盖六到八。五也不在它的闭范围",
+            "expected": "wu2",
+            "current": "wu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS84",
+            "index": 33,
+            "context": "身份没有填平橙色与紫色之间的旧空隙",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS90",
+            "index": 17,
+            "context": "个组。不存在相邻两组。没有新预约。",
+            "expected": "liang2",
+            "current": "liang2",
+            "result": "符合"
+          },
+          {
+            "id": "CS91",
+            "index": 6,
+            "context": "记下这一行。处理最后一个位置。",
+            "expected": "chu2",
+            "current": "chu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS93",
+            "index": 24,
+            "context": "活动顺序为空。待处理清单也为空。扫",
+            "expected": "chu2",
+            "current": "chu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS100",
+            "index": 2,
+            "context": "红色与点输入也还原到同",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS101",
+            "index": 2,
+            "context": "青色与点输入是第七对。",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS102",
+            "index": 4,
+            "context": "区间结果只有蓝色与橙色这一",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS104",
+            "index": 2,
+            "context": "绿色与水平直线的唯一候",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS104",
+            "index": 14,
+            "context": "线的唯一候选。候选点的 x 坐标为",
+            "expected": "xuan2",
+            "current": "xuan2",
+            "result": "符合"
+          },
+          {
+            "id": "CS104",
+            "index": 26,
+            "context": "x 坐标为三。候选点的 y 坐标为",
+            "expected": "xuan2",
+            "current": "xuan2",
+            "result": "符合"
+          },
+          {
+            "id": "CS104",
+            "index": 55,
+            "context": "在紫色左端之前。所以这两对为空。",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS105",
+            "index": 2,
+            "context": "红色与水平直线也只有这",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS105",
+            "index": 7,
+            "context": "红色与水平直线也只有这个候选。相",
+            "expected": "ye2",
+            "current": "ye2",
+            "result": "符合"
+          },
+          {
+            "id": "CS105",
+            "index": 8,
+            "context": "红色与水平直线也只有这个候选。相同",
+            "expected": "zhi2",
+            "current": "zhi2",
+            "result": "符合"
+          },
+          {
+            "id": "CS106",
+            "index": 2,
+            "context": "青色与水平直线的候选在",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          },
+          {
+            "id": "CS109",
+            "index": 2,
+            "context": "最后把点输入的 x 坐",
+            "expected": "ba2",
+            "current": "ba2",
+            "result": "符合"
+          },
+          {
+            "id": "CS109",
+            "index": 38,
+            "context": "点输入的高度二。所以最后这对为空。",
+            "expected": "suo2",
+            "current": "suo2",
+            "result": "符合"
+          },
+          {
+            "id": "CS111",
+            "index": 17,
+            "context": "同点、原竖直线段与点输入接在同一份",
+            "expected": "yu2",
+            "current": "yu2",
+            "result": "符合"
+          }
+        ],
+        "annotationQueries": {
+          "count": 113,
+          "allMatchFrozen": true,
+          "versions": [
+            "0.55.0"
+          ]
+        },
+        "result": "本轮全文独立盲审及历史核销通过",
+        "newErrors": [],
+        "unresolved": [],
+        "pending": [],
+        "gate": "仅完成第1轮；尚需另一位新审核者对同一未改版本顺序完成第2轮独立全文盲审和历史核销；无音频验收声明。"
+      }
+    },
+    {
+      "source": "complete-sweep-blind-two-raw.json",
+      "originalSha256": "33ef791c10a3a667af656eb3ee0f68f11b397f93405929344e67f70855e38bc4",
+      "report": {
+        "reviewer": "narration_blind_two",
+        "stage": "independent blind raw review before history reconciliation",
+        "hashes": {
+          "narration-text.json": "9fde73225da5c135bd08712d4a4f4774ce3d3780f46b73306190b4a6b74ecf05",
+          "speech-text.json": "49eb0190f4e9d683f4c9395783cca037b286bdb024503b1a762ab6152630db49"
+        },
+        "coverage": [
+          "CS01",
+          "CS02",
+          "CS03",
+          "CS04",
+          "CS05",
+          "CS06",
+          "CS07",
+          "CS08",
+          "CS09",
+          "CS10",
+          "CS11",
+          "CS12",
+          "CS13",
+          "CS14",
+          "CS15",
+          "CS16",
+          "CS17",
+          "CS18",
+          "CS19",
+          "CS20",
+          "CS21",
+          "CS22",
+          "CS23",
+          "CS24",
+          "CS24a",
+          "CS24b",
+          "CS25",
+          "CS26",
+          "CS27",
+          "CS28",
+          "CS29",
+          "CS30",
+          "CS31",
+          "CS32",
+          "CS33",
+          "CS34",
+          "CS35",
+          "CS36",
+          "CS37",
+          "CS38",
+          "CS39",
+          "CS40",
+          "CS41",
+          "CS42",
+          "CS43",
+          "CS44",
+          "CS45",
+          "CS46",
+          "CS47",
+          "CS48",
+          "CS49",
+          "CS50",
+          "CS51",
+          "CS52",
+          "CS53",
+          "CS54",
+          "CS55",
+          "CS56",
+          "CS57",
+          "CS58",
+          "CS59",
+          "CS60",
+          "CS61",
+          "CS62",
+          "CS63",
+          "CS64",
+          "CS65",
+          "CS66",
+          "CS67",
+          "CS68",
+          "CS69",
+          "CS70",
+          "CS71",
+          "CS72",
+          "CS73",
+          "CS74",
+          "CS75",
+          "CS76",
+          "CS77",
+          "CS78",
+          "CS79",
+          "CS80",
+          "CS81",
+          "CS82",
+          "CS83",
+          "CS84",
+          "CS85",
+          "CS86",
+          "CS87",
+          "CS88",
+          "CS89",
+          "CS90",
+          "CS91",
+          "CS92",
+          "CS93",
+          "CS94",
+          "CS95",
+          "CS96",
+          "CS97",
+          "CS98",
+          "CS99",
+          "CS100",
+          "CS101",
+          "CS102",
+          "CS103",
+          "CS104",
+          "CS105",
+          "CS106",
+          "CS107",
+          "CS108",
+          "CS109",
+          "CS110",
+          "CS111"
+        ],
+        "counts": {
+          "segments": 113,
+          "pinyin_objects": 589,
+          "annotated_hanzi": 4527
+        },
+        "confirmed_errors": [],
+        "unresolved_questions": [],
+        "checks": {
+          "full_sentence_manual_review": true,
+          "reconstructed_text_matches": true,
+          "sentence_plan_matches": true,
+          "unannotated_hanzi": 0,
+          "pinyin_structure_errors": 0
+        },
+        "source": {
+          "name": "pypinyin",
+          "version": "0.55.0",
+          "full_context_queries": 113,
+          "raw_evidence": "/tmp/complete-sweep-blind-two-queries.json",
+          "limitation": "Library generated readings and character alternatives, not dictionary definitions or normative decisions."
+        },
+        "accepted_findings": [
+          {
+            "ids": [
+              "CS25",
+              "CS88",
+              "CS91",
+              "CS94"
+            ],
+            "text": "逐行／这一行／最后一行",
+            "current": "hang2",
+            "reason": "事件表的一行，非行走；库在这些完整上下文选xing2不能套用。"
+          },
+          {
+            "ids": [
+              "CS44",
+              "CS61"
+            ],
+            "text": "重报／重排",
+            "current": "chong2",
+            "reason": "重复报告、重新排序；不是重量或重要；库选zhong4不适用。"
+          },
+          {
+            "ids": [
+              "CS10",
+              "CS24a",
+              "CS59"
+            ],
+            "text": "剪切／切碎",
+            "current": "qie1",
+            "reason": "剪切变换及切分区间，不是切实或迫切。"
+          },
+          {
+            "ids": [
+              "CS11",
+              "CS47",
+              "CS49",
+              "CS50"
+            ],
+            "text": "分子",
+            "current": "fen1 zi3",
+            "reason": "分数的分子，非社会成员意义的分子fen4 zi3；数学名称子不轻声。"
+          },
+          {
+            "ids": [
+              "CS12",
+              "CS19",
+              "CS24b"
+            ],
+            "text": "差／相差",
+            "current": "cha1",
+            "reason": "算术差值和数值差额；非差劲、差不多或差遣。"
+          },
+          {
+            "ids": [
+              "CS64"
+            ],
+            "text": "撇表示",
+            "current": "pie2 biao3 shi4",
+            "reason": "符号撇的本调pie3，接表示biao3发生三声变调；不是撇开pie1。"
+          },
+          {
+            "ids": [
+              "CS26",
+              "CS28",
+              "CS29",
+              "CS93",
+              "CS104",
+              "CS110"
+            ],
+            "text": "为空／变空／非空",
+            "current": "kong1",
+            "reason": "集合或容器没有元素；CS04等空隙kong4 xi4指间隙，二者语义不同。"
+          },
+          {
+            "ids": [
+              "CS95",
+              "CS96",
+              "CS97",
+              "CS98",
+              "CS99",
+              "CS100",
+              "CS101",
+              "CS111"
+            ],
+            "text": "还原",
+            "current": "huan2 yuan2",
+            "reason": "恢复原坐标，与还剩hai2 sheng4、还与hai2 yu3区分。"
+          },
+          {
+            "ids": [
+              "CS03",
+              "CS09",
+              "CS11",
+              "CS19",
+              "CS29",
+              "CS47",
+              "CS110"
+            ],
+            "text": "数值一、十一项、二十一种、一项",
+            "current": "数值及多位数末位一yi1；一项yi2 xiang4",
+            "reason": "公式独立数值、十位数末位与数量短语分开；CS11一千yi4 qian1以及五百wu2 bai3、二百五bai2 wu3可接受。"
+          },
+          {
+            "ids": [
+              "CS16",
+              "CS17",
+              "CS25",
+              "CS32",
+              "CS33",
+              "CS45",
+              "CS58",
+              "CS100",
+              "CS104"
+            ],
+            "text": "这里／组与／结果与／同一／唯一等边界",
+            "current": "保留当前标法",
+            "reason": "按词义与语法节奏划分；缺少显式停顿不证明必须跨词变调。同一、唯一词末yi1及组与等保留本调不构成已证错误。"
+          },
+          {
+            "ids": [
+              "CS13",
+              "CS14",
+              "CS44",
+              "CS46",
+              "CS49",
+              "CS105"
+            ],
+            "text": "关系、它们、登记过的、接着、隔着、排除了",
+            "current": "xi5、men5、guo5、de5、zhe5、le5",
+            "reason": "词汇轻声、复数后缀、结构或动态助词分别适用；实名分子zi3、位置zhi4、身份fen4不机械轻声。"
+          }
+        ],
+        "limitations": [
+          "No previous review records, annotator notes, agent conversations, or prior temporary evidence were read.",
+          "No project edits, audio synthesis, Git operations, publishing, or further delegation.",
+          "History reconciliation pending parent handoff.",
+          "Audio has not been generated; no audio pronunciation acceptance is claimed."
+        ]
+      }
+    },
+    {
+      "source": "complete-sweep-blind-two-history-reconciliation.json",
+      "originalSha256": "8092a277e99539d0fe476466ead8e0ee786630c4f61a12f4e429de5304b0cd43",
+      "report": {
+        "stage": "blind-two-history-reconciliation",
+        "reviewer": "narration_blind_two",
+        "originalReport": "/tmp/complete-sweep-blind-two-raw.json",
+        "originalReportSha256": "33ef791c10a3a667af656eb3ee0f68f11b397f93405929344e67f70855e38bc4",
+        "originalPreserved": true,
+        "currentHashes": {
+          "narration-text.json": "9fde73225da5c135bd08712d4a4f4774ce3d3780f46b73306190b4a6b74ecf05",
+          "speech-text.json": "49eb0190f4e9d683f4c9395783cca037b286bdb024503b1a762ab6152630db49"
+        },
+        "coverage": [
+          "CS01",
+          "CS02",
+          "CS03",
+          "CS04",
+          "CS05",
+          "CS06",
+          "CS07",
+          "CS08",
+          "CS09",
+          "CS10",
+          "CS11",
+          "CS12",
+          "CS13",
+          "CS14",
+          "CS15",
+          "CS16",
+          "CS17",
+          "CS18",
+          "CS19",
+          "CS20",
+          "CS21",
+          "CS22",
+          "CS23",
+          "CS24",
+          "CS24a",
+          "CS24b",
+          "CS25",
+          "CS26",
+          "CS27",
+          "CS28",
+          "CS29",
+          "CS30",
+          "CS31",
+          "CS32",
+          "CS33",
+          "CS34",
+          "CS35",
+          "CS36",
+          "CS37",
+          "CS38",
+          "CS39",
+          "CS40",
+          "CS41",
+          "CS42",
+          "CS43",
+          "CS44",
+          "CS45",
+          "CS46",
+          "CS47",
+          "CS48",
+          "CS49",
+          "CS50",
+          "CS51",
+          "CS52",
+          "CS53",
+          "CS54",
+          "CS55",
+          "CS56",
+          "CS57",
+          "CS58",
+          "CS59",
+          "CS60",
+          "CS61",
+          "CS62",
+          "CS63",
+          "CS64",
+          "CS65",
+          "CS66",
+          "CS67",
+          "CS68",
+          "CS69",
+          "CS70",
+          "CS71",
+          "CS72",
+          "CS73",
+          "CS74",
+          "CS75",
+          "CS76",
+          "CS77",
+          "CS78",
+          "CS79",
+          "CS80",
+          "CS81",
+          "CS82",
+          "CS83",
+          "CS84",
+          "CS85",
+          "CS86",
+          "CS87",
+          "CS88",
+          "CS89",
+          "CS90",
+          "CS91",
+          "CS92",
+          "CS93",
+          "CS94",
+          "CS95",
+          "CS96",
+          "CS97",
+          "CS98",
+          "CS99",
+          "CS100",
+          "CS101",
+          "CS102",
+          "CS103",
+          "CS104",
+          "CS105",
+          "CS106",
+          "CS107",
+          "CS108",
+          "CS109",
+          "CS110",
+          "CS111"
+        ],
+        "historySources": [
+          "/tmp/complete-sweep-blind-one-original.json",
+          "/tmp/complete-sweep-blind-one-history-reconciliation.json",
+          "/tmp/complete-sweep-annotation-decisions.json",
+          "/tmp/complete-sweep-annotation-report.json"
+        ],
+        "items": [
+          {
+            "item": "CS08/96/97/99及CS104两句句首字母",
+            "prior_result": "已修复且当前保持",
+            "second_round_result": "复用同一版本有效核销，无新反证；本轮独立盲审未发现冲突或遗漏，不计为本轮新修复。"
+          },
+          {
+            "item": "CS20相反数冗余",
+            "prior_result": "已删除且当前保持",
+            "second_round_result": "复用同一版本有效核销，无新反证；本轮独立盲审未发现冲突或遗漏，不计为本轮新修复。"
+          },
+          {
+            "item": "字幕六段坐标术语同步",
+            "prior_result": "复用主代理交接的纯文本审核冻结结论；本轮核对冻结哈希及speech拼接一致，未扩大到未授权字幕文件验收",
+            "second_round_result": "复用同一版本有效核销，无新反证；本轮独立盲审未发现冲突或遗漏，不计为本轮新修复。"
+          },
+          {
+            "item": "数学为/目的为、分子、差、剪切、表格行、重复重",
+            "prior_result": "与本轮独立词义判定一致，可接受；不是新发现或新修复",
+            "second_round_result": "复用同一版本有效核销，无新反证；本轮独立盲审未发现冲突或遗漏，不计为本轮新修复。"
+          },
+          {
+            "item": "数值一、负一、分数一、运算数值一、复杂数词一",
+            "prior_result": "与本轮独立判定一致。CS11一千yi4，后续一十一两个yi1；CS29十一项及CS110二十一种末位yi1均可接受",
+            "second_round_result": "复用同一版本有效核销，无新反证；本轮独立盲审未发现冲突或遗漏，不计为本轮新修复。"
+          },
+          {
+            "item": "轻声及三声",
+            "prior_result": "现稿的de5/men5/zhe5/guo5/le5/xi5/ge5及语境三声与独立结论一致；分子zi3不轻读，开头tou2/邻居ju1不强制弱读",
+            "second_round_result": "复用同一版本有效核销，无新反证；本轮独立盲审未发现冲突或遗漏，不计为本轮新修复。"
+          },
+          {
+            "item": "首次标注246条决策记录",
+            "prior_result": "245个最终位置全部符合当前稿；CS64撇先由pie1校为pie3，再按撇表示连读变为pie2，是同一阶段词义与变调两步，不是反复改回或未解决项",
+            "second_round_result": "复用同一版本有效核销，无新反证；本轮独立盲审未发现冲突或遗漏，不计为本轮新修复。"
+          },
+          {
+            "item": "首次报告speech哈希eadb43183bcf710d2d757c3b74730583fa3076de54a762ee02081f3ab35d0dc8与当前不同",
+            "prior_result": "已核实仅break对象差异：从当前稿内存过滤breakMs对象，以ensure_ascii=False/indent=2及末尾换行序列化，恰好还原该哈希。文字、标音、对象顺序及切分一致；审核绑定当前49eb哈希，未将旧哈希冒充当前。",
+            "second_round_result": "复用同一版本有效核销，无新反证；本轮独立盲审未发现冲突或遗漏，不计为本轮新修复。"
+          }
+        ],
+        "decisionPositionReconciliation": {
+          "decision_entries": 246,
+          "final_positions": 245,
+          "all_prior_positions_conform": true,
+          "treatment": "同一哈希、同一113段，复用第一轮245位置核销；CS64的pie1→pie3→pie2是词义选音后变调的两步，不是遗留冲突。"
+        },
+        "newErrors": [],
+        "historicalUnresolved": [],
+        "pendingVerification": [],
+        "result": "同一未改版本第二轮独立全文盲审及历史核销通过；连续两轮由不同审核者顺序完成，均无新增、遗留或待查证项。",
+        "gate": "对应哈希的全文文本与拼音满足连续两轮门禁，可由主代理汇总放行。音频尚未生成，不包括实际音频读音验收。",
+        "scope": "未重做全文、未重复查询、未修改原报告或工程、未合成。"
+      }
+    }
+  ],
+  "currentVersions": {
+    "narration-text.json": "e3e184897a21b36b4f43ec0dea81f7fd0e75379f1058589dba3fdce4bb8bb56b",
+    "speech-text.json": "f523208ae7411de1e07d52a62ea4e87e91d8810e421ca5e532f165fa1f3ebad2",
+    "sentence-plan.json": "5b200f8ecd82c4263e167bb38792a0ba2b6712d587819387d0c1664c1eb45d4a"
+  },
+  "localRevisions": [
+    {
+      "id": "CS94",
+      "reviewer": "narration_text_review",
+      "changedText": {
+        "before": "最后一行保留七对结果",
+        "after": "最后一行保留七份配对结果"
+      },
+      "reason": "ASR marked 对 as Omission and 的 as Insertion; actual listening unsupported, no claim of confirmed audio error. Make the count unit explicit in an independent candidate.",
+      "pinyinChange": "七对结果 qi1 dui4 jie2 guo3 → 七份配对结果 qi1 fen4 pei4 dui4 jie2 guo3",
+      "query": {
+        "source": "pypinyin",
+        "version": "0.55.0",
+        "query": "最后一行保留七份配对结果。",
+        "contextual": {
+          "symbol": [
+            "zuì",
+            "hòu",
+            "yī",
+            "xíng",
+            "bǎo",
+            "liú",
+            "qī",
+            "fèn",
+            "pèi",
+            "duì",
+            "jié",
+            "guǒ",
+            "。"
+          ],
+          "number": [
+            "zui4",
+            "hou4",
+            "yi1",
+            "xing2",
+            "bao3",
+            "liu2",
+            "qi1",
+            "fen4",
+            "pei4",
+            "dui4",
+            "jie2",
+            "guo3",
+            "。"
+          ],
+          "plain": [
+            "zui",
+            "hou",
+            "yi",
+            "xing",
+            "bao",
+            "liu",
+            "qi",
+            "fen",
+            "pei",
+            "dui",
+            "jie",
+            "guo",
+            "。"
+          ]
+        },
+        "characterCandidates": [
+          {
+            "origin": "最",
+            "readings": [
+              "zuì",
+              "cuō"
+            ]
+          },
+          {
+            "origin": "后",
+            "readings": [
+              "hòu"
+            ]
+          },
+          {
+            "origin": "一",
+            "readings": [
+              "yī",
+              "yí",
+              "yì"
+            ]
+          },
+          {
+            "origin": "行",
+            "readings": [
+              "xíng",
+              "háng",
+              "héng",
+              "xìng",
+              "hàng"
+            ]
+          },
+          {
+            "origin": "保",
+            "readings": [
+              "bǎo"
+            ]
+          },
+          {
+            "origin": "留",
+            "readings": [
+              "liú",
+              "liù",
+              "liǔ"
+            ]
+          },
+          {
+            "origin": "七",
+            "readings": [
+              "qī",
+              "qí"
+            ]
+          },
+          {
+            "origin": "份",
+            "readings": [
+              "fèn",
+              "bīn"
+            ]
+          },
+          {
+            "origin": "配",
+            "readings": [
+              "pèi"
+            ]
+          },
+          {
+            "origin": "对",
+            "readings": [
+              "duì"
+            ]
+          },
+          {
+            "origin": "结",
+            "readings": [
+              "jié",
+              "jiē"
+            ]
+          },
+          {
+            "origin": "果",
+            "readings": [
+              "guǒ",
+              "luǒ",
+              "guàn"
+            ]
+          },
+          {
+            "origin": "。",
+            "readings": []
+          }
+        ]
+      },
+      "contextDecision": "表格行取hang2，保留已审yi4 hang2；量词份fen4，配对pei4 dui4。",
+      "result": "Local text, meaning, sentence mapping and pinyin passed; no listening acceptance.",
+      "unchangedIds": [
+        "CS01",
+        "CS02",
+        "CS03",
+        "CS04",
+        "CS05",
+        "CS06",
+        "CS07",
+        "CS08",
+        "CS09",
+        "CS10",
+        "CS11",
+        "CS12",
+        "CS13",
+        "CS14",
+        "CS15",
+        "CS16",
+        "CS17",
+        "CS18",
+        "CS19",
+        "CS20",
+        "CS21",
+        "CS22",
+        "CS23",
+        "CS24",
+        "CS24a",
+        "CS24b",
+        "CS25",
+        "CS26",
+        "CS27",
+        "CS28",
+        "CS29",
+        "CS30",
+        "CS31",
+        "CS32",
+        "CS33",
+        "CS34",
+        "CS35",
+        "CS36",
+        "CS37",
+        "CS38",
+        "CS39",
+        "CS40",
+        "CS41",
+        "CS42",
+        "CS43",
+        "CS44",
+        "CS45",
+        "CS46",
+        "CS47",
+        "CS48",
+        "CS49",
+        "CS50",
+        "CS51",
+        "CS52",
+        "CS53",
+        "CS54",
+        "CS55",
+        "CS56",
+        "CS57",
+        "CS58",
+        "CS59",
+        "CS60",
+        "CS61",
+        "CS62",
+        "CS63",
+        "CS64",
+        "CS65",
+        "CS66",
+        "CS67",
+        "CS68",
+        "CS69",
+        "CS70",
+        "CS71",
+        "CS72",
+        "CS73",
+        "CS74",
+        "CS75",
+        "CS76",
+        "CS77",
+        "CS78",
+        "CS79",
+        "CS80",
+        "CS81",
+        "CS82",
+        "CS83",
+        "CS84",
+        "CS85",
+        "CS86",
+        "CS87",
+        "CS88",
+        "CS89",
+        "CS90",
+        "CS91",
+        "CS92",
+        "CS93",
+        "CS95",
+        "CS96",
+        "CS97",
+        "CS98",
+        "CS99",
+        "CS100",
+        "CS101",
+        "CS102",
+        "CS103",
+        "CS104",
+        "CS105",
+        "CS106",
+        "CS107",
+        "CS108",
+        "CS109",
+        "CS110",
+        "CS111"
+      ],
+      "versions": {
+        "narration-text.json": "e3e184897a21b36b4f43ec0dea81f7fd0e75379f1058589dba3fdce4bb8bb56b",
+        "speech-text.json": "f523208ae7411de1e07d52a62ea4e87e91d8810e421ca5e532f165fa1f3ebad2",
+        "sentence-plan.json": "5b200f8ecd82c4263e167bb38792a0ba2b6712d587819387d0c1664c1eb45d4a"
+      }
+    }
+  ]
+}

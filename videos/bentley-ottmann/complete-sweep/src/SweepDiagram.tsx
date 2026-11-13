@@ -139,7 +139,7 @@ function Order({ row, state }: { row: TimelineRow; state: VisualState }) {
           (swapping && next < 0
             ? 104 * p
             : swapping && old < 0
-              ? -104 * (1 - p)
+              ? 104 * (1 - p)
               : moving && old !== next && row.action === "swap"
                 ? Math.sin(Math.PI * p) * (next > old ? 104 : -104)
                 : 0);
@@ -760,7 +760,7 @@ export function SweepDiagram({
       <div style={{ fontSize: 20, textAlign: "center", color: muted }}>
         <MathText marks={identityMarks}>
           {row.event
-            ? `${eventLabel(row.event)} · ${phase}；画面暂定计时，尚无配音`
+            ? `${eventLabel(row.event)} · ${phase}`
             : "第八章教学示意；实际判断使用精确扫描坐标"}
         </MathText>
       </div>

@@ -16,7 +16,9 @@ import type { AudioTiming } from "./timing.ts";
 
 export async function assessBatch(
   sdk: typeof SpeechSdk,
-  configureSpeechConfig?: (config: SpeechSdk.SpeechConfig) => void,
+  configureSpeechConfig?: (
+    config: SpeechSdk.SpeechConfig,
+  ) => void | Promise<void>,
 ) {
   const args = process.argv.slice(2);
   assert(

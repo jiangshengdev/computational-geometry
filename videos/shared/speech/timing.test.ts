@@ -19,6 +19,25 @@ const audio: AudioTiming = {
   ],
 };
 
+test("semantic phrase anchors ignore zero-duration service punctuation", () => {
+  const measured: AudioTiming = {
+    ...audio,
+    words: [
+      ...audio.words,
+      {
+        text: "。",
+        textOffset: 3,
+        wordLength: 1,
+        startMs: 0,
+        durationMs: 0,
+      },
+    ],
+  };
+  assert.equal(phraseTime(measured, "a x。", "start"), 100);
+  assert.equal(phraseTime(measured, "a x。", "end"), 600);
+  assert.throws(() => phraseTime(measured, "。", "end"), /Missing timing/);
+});
+
 test("text intervals include crossing words, exclude touching edges and retain measured data", () => {
   const words = [
     { text: "ab", textOffset: 0, wordLength: 2, startMs: 100, durationMs: 80 },

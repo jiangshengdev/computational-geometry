@@ -169,7 +169,11 @@ export function phraseTime(
   const offset = audio.speech.indexOf(phrase);
   if (offset < 0 || audio.speech.indexOf(phrase, offset + 1) !== -1)
     throw Error(`Missing or ambiguous speech anchor: ${phrase}`);
-  const words = wordsInTextRange(audio, offset, offset + phrase.length);
+  // Punctuation events can have zero duration and a service timestamp of zero.
+  // They are source markers, not audible anchors for the operation's lifetime.
+  const words = wordsInTextRange(audio, offset, offset + phrase.length).filter(
+    (word) => word.durationMs > 0,
+  );
   if (!words.length) throw Error(`Missing timing for anchor: ${phrase}`);
   const word = edge === "start" ? words[0] : words[words.length - 1];
   return word.startMs + (edge === "end" ? word.durationMs : 0);

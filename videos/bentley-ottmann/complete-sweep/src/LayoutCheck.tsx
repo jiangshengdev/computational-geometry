@@ -3,7 +3,14 @@ import {
   captionsFromFrames,
 } from "../../../shared/checks/ShotLayoutCheck";
 import { checkTeachingPage } from "../../../shared/checks/dom";
-import { rows, visualAt, fps, motionCue, type TimelineRow } from "./timeline";
+import {
+  rows,
+  visualAt,
+  fps,
+  audioLeadFrames,
+  motionCue,
+  type TimelineRow,
+} from "./timeline";
 import { TeachingPage } from "./TeachingPage";
 const SceneAtFrame = ({ row, frame }: { row: TimelineRow; frame: number }) => (
   <TeachingPage row={row} state={visualAt(row, frame)} />
@@ -12,9 +19,9 @@ export const LayoutCheck = createShotLayoutCheck({
   rows,
   visualAt,
   fps,
-  audioLeadFrames: 0,
+  audioLeadFrames,
   SceneAtFrame,
-  captions: captionsFromFrames(rows, fps, 0),
+  captions: captionsFromFrames(rows, fps, audioLeadFrames),
   extraFrames: (row) => [
     ...row.captions.flatMap((c) => [c.start, c.end - 1]),
     ...[0, 0.25, 0.5, 0.75, 1].map((p) =>
@@ -67,7 +74,7 @@ export const LayoutCheck = createShotLayoutCheck({
           "A visible group must retain its entering or exiting members",
         );
     if (page.querySelector("audio,video"))
-      errors.push("Visual stage must not mount media");
+      errors.push("Silent layout audit must not mount media");
     return errors;
   },
 });

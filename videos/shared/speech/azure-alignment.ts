@@ -38,7 +38,9 @@ export function createAlignmentTools(
     allowReviewedPronunciation: boolean;
     /** Use measured times while retaining pronunciation flags for later listening. */
     deferPronunciationReview?: boolean;
-    configureSpeechConfig?: (config: SpeechSdk.SpeechConfig) => void;
+    configureSpeechConfig?: (
+      config: SpeechSdk.SpeechConfig,
+    ) => void | Promise<void>;
   },
 ) {
   // Preserve service word boundaries. Never interpolate, split, or invent durations.
@@ -231,7 +233,7 @@ export function createAlignmentTools(
       responsePath = `${inputPath}.assessment.json`,
     ): Promise<AssessmentResponse> => {
       const config = sdk.SpeechConfig.fromEndpoint(url, key);
-      configureSpeechConfig?.(config);
+      await configureSpeechConfig?.(config);
       config.speechRecognitionLanguage = "zh-CN";
       config.outputFormat = sdk.OutputFormat.Detailed;
       config.requestWordLevelTimestamps();

@@ -25,6 +25,13 @@ test("measured rows preserve full audio and page holds with an explicit zero bet
             startMs: 70,
             durationMs: 800,
           },
+          {
+            text: "。",
+            textOffset: 1,
+            wordLength: 1,
+            startMs: 0,
+            durationMs: 0,
+          },
         ],
       },
     ]),
@@ -61,6 +68,7 @@ test("measured rows preserve full audio and page holds with an explicit zero bet
   assert.equal(immediate[0].durationInFrames, 30 + 61);
   for (const rows of [standard, immediate]) {
     assert.equal(rows[0].audioEndFrame, 91);
+    assert.deepEqual(rows[0].spoken, [{ text: "甲。", start: 34, end: 83 }]);
     assert.equal(rows[1].durationInFrames, 30 + 61 + 180);
     assert.equal(rows[2].durationInFrames, 30 + 61 + 180);
     assert.equal(rows[1].from, rows[0].durationInFrames);

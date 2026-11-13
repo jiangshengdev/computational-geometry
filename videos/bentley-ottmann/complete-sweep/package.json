@@ -5,7 +5,7 @@
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
-    "node": "^22.18.0 || >=24"
+    "node": ">=24"
   },
   "private": true,
   "dependencies": {
@@ -32,7 +32,16 @@
     "upgrade": "remotion upgrade",
     "lint": "eslint src scripts && tsc",
     "video:check-content": "node scripts/check-content.ts",
-    "video:check-layout": "node scripts/check-layout.ts"
+    "video:check-layout": "node scripts/check-layout.ts",
+    "video:plan-narration": "node scripts/plan-narration.ts",
+    "video:sentence-pauses": "node --input-type=module -e \"import {updateSentencePauses} from './scripts/sentence-plan.ts'; updateSentencePauses(process.argv.includes('--write'))\" --",
+    "video:synthesize": "node scripts/synthesize-narration.ts",
+    "video:assess": "node --use-env-proxy scripts/assess-narration.ts",
+    "video:adopt-audio": "node scripts/adopt-measured-audio.ts",
+    "video:check-audio": "node scripts/check-audio.ts",
+    "video:preflight": "node ../../shared/tools/preflight-cli.ts",
+    "video:export": "node scripts/export.ts",
+    "video:export-audio": "node scripts/export-audio.ts"
   },
   "type": "module"
 }

@@ -1,0 +1,2671 @@
+{
+  "actualListeningPerformed": false,
+  "authenticationRecovery": {
+    "original": "CS01 WebSocket upgrade rejected with HTTP 401 before recognition session",
+    "keyValidation": "Official regional token endpoint returned HTTP 200; token itself was not logged or saved",
+    "resolution": "Same credential via short-lived in-memory token; CS02 and CS03 verified before remaining requests; unchanged CS01 WAV reassessed after confirmed rejection"
+  },
+  "rateLimitRecovery": {
+    "original": "CS24b WebSocket upgrade rejected with HTTP 429",
+    "resolution": "Kept original record, continued only unstarted shots at peak concurrency 10, retried this confirmed rejected shot once after cooldown"
+  },
+  "batches": [
+    {
+      "name": "narration-20261113",
+      "synthesisOrReuseManifest": {
+        "planSha256": "cff37cc859f39e5667ad7cd05c211a7ff3d6281b3c54cc72164f2123c4e0ba8c",
+        "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+        "outputFormat": "riff-48khz-16bit-mono-pcm",
+        "automaticRetries": 0,
+        "published": false,
+        "requests": [
+          {
+            "id": "CS01",
+            "fingerprint": "2f0e5ab67a97d20a2f684dfa9198494557db4c9b0b05377ee848904023016e6d",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.844Z",
+            "endedAt": "2026-11-13T05:45:59.247Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS02",
+            "fingerprint": "048f88c5b41e831a735d3948a63b1e627734122cecff4dc316ba5c6c1b601fb6",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.847Z",
+            "endedAt": "2026-11-13T05:45:59.001Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS03",
+            "fingerprint": "ad5a32a21c5a9e053d0215fd64774202c9c7f0ad8927cf6d6e873300bd1d4ed2",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.848Z",
+            "endedAt": "2026-11-13T05:45:58.190Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS04",
+            "fingerprint": "aebc812e6f1a09f689f6cb916c390e76a727ef1bdeffc3e680c152d579c5236b",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.849Z",
+            "endedAt": "2026-11-13T05:45:56.407Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS05",
+            "fingerprint": "88466ba0eceba6cb7a31f89f42673bfba73cfaa095bbe92c4c4ad518d85ef2a2",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.850Z",
+            "endedAt": "2026-11-13T05:46:01.121Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS06",
+            "fingerprint": "9eb189f90286753e9ccdb40242c9015d829b116b53bfe1da916a55e683939dc4",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.851Z",
+            "endedAt": "2026-11-13T05:45:56.951Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS07",
+            "fingerprint": "213f6d9fec801048aa71c5353bb9fe90ff8547d5b1399994b626ea97e8283c48",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.852Z",
+            "endedAt": "2026-11-13T05:45:59.529Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS08",
+            "fingerprint": "15ceed1277fc8440d8f6445c966b2e462ed2ef64fa18a43217b782b43ff1dbfb",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.853Z",
+            "endedAt": "2026-11-13T05:46:00.558Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS09",
+            "fingerprint": "105e79301696b036357e9f5f1b7e6fd5d430867ec534c5eea529157b6899ff7c",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.854Z",
+            "endedAt": "2026-11-13T05:45:57.227Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS10",
+            "fingerprint": "7eb2217c2d4fd71997560aca72d4e79532a61f60bd97ea4ac27ef3bc21d0d0cf",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.858Z",
+            "endedAt": "2026-11-13T05:45:57.457Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS11",
+            "fingerprint": "d018471c05a51b529aed55448d711fb82b54c979566ca9dd6023d25bfc541ab6",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.859Z",
+            "endedAt": "2026-11-13T05:46:01.363Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS12",
+            "fingerprint": "da71c92c87beeb29baba84da01cd920575133514814f0dc856f87477ca541170",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.860Z",
+            "endedAt": "2026-11-13T05:45:58.716Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS13",
+            "fingerprint": "0ccc985297ab54a476f60eca8a3298d0d39156f41ef44beafd4a63a324df0fc2",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.860Z",
+            "endedAt": "2026-11-13T05:45:59.776Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS14",
+            "fingerprint": "ffb2cebc39c41aea0f4085f79bcef3f051cb2c95249c939ef0a0b594833ae50e",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.861Z",
+            "endedAt": "2026-11-13T05:46:00.303Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS15",
+            "fingerprint": "94542c264751d133d5a1ab206d2386ab920fb16add447e94315af66eef2adcd5",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.861Z",
+            "endedAt": "2026-11-13T05:46:00.856Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS16",
+            "fingerprint": "aa9fa0a063ded65e5c2c731c05a7dd7fd476288e86abefc765ddb0fb0a668eb8",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.862Z",
+            "endedAt": "2026-11-13T05:45:56.679Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS17",
+            "fingerprint": "bc6640fc1e320f1c610ab67400afa2ebaa2afc27d42ac500e07eedbac345d48e",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.862Z",
+            "endedAt": "2026-11-13T05:46:00.021Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS18",
+            "fingerprint": "bfa71bad05048a12e743cedfe23a741e25e073fb1fb3a1125e9c4242223ea55a",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.863Z",
+            "endedAt": "2026-11-13T05:45:57.696Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS19",
+            "fingerprint": "efe0003f10897244a9657474040c2a2aac5bc2dd1f5c54f22e54f8e0590f2aa7",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.863Z",
+            "endedAt": "2026-11-13T05:45:58.429Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS20",
+            "fingerprint": "69761d29806dcfbbce664a61374cfcf280f234cab581453a3a5fa9cfd5a8c15d",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.864Z",
+            "endedAt": "2026-11-13T05:45:57.950Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS21",
+            "fingerprint": "1bd1e9d033264628075ac32b43f1dc5bf1fc3f49273263d4309e4e536b653e65",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:51.990Z",
+            "endedAt": "2026-11-13T05:46:58.700Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS22",
+            "fingerprint": "16a80ac515e98a5cd60316783060d2da1985458f8f9d5b0158be8600abfc7bd6",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:51.995Z",
+            "endedAt": "2026-11-13T05:46:56.498Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS23",
+            "fingerprint": "893a285dd1e3ef325e76b16a133d6a2a5bf8cea48eb784da2bc9ecd8fd4c4424",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:51.996Z",
+            "endedAt": "2026-11-13T05:46:57.730Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS24",
+            "fingerprint": "a35143149ef92cae74e04ed0e036162d6fd0d8e2f2d6d1510f4a5460ef3ef5af",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:51.998Z",
+            "endedAt": "2026-11-13T05:46:58.923Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS24a",
+            "fingerprint": "a60d172b76bed5b4bde8dab7fbd9a31ff11176664d6108a2098884a96c2df8a5",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:51.999Z",
+            "endedAt": "2026-11-13T05:46:58.477Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS24b",
+            "fingerprint": "857b50be8deaa35ab8bb3a9524c837d5473a2a0d3b6952e26ca9d604fad01aff",
+            "status": "request-failed-or-uncertain",
+            "startedAt": "2026-11-13T05:46:51.999Z",
+            "endedAt": "2026-11-13T05:46:52.890Z",
+            "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+          },
+          {
+            "id": "CS25",
+            "fingerprint": "0ab796b44854e7a65c19df94abc92a0f4d5970d5c0ff2d19eaaff5732a85f0f4",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.000Z",
+            "endedAt": "2026-11-13T05:46:59.415Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS26",
+            "fingerprint": "a2e2bc558c66c51d327f2c2b21e313ae73c602ceb41a98b9c623da15e5030c28",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.001Z",
+            "endedAt": "2026-11-13T05:46:57.981Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS27",
+            "fingerprint": "2ecf4a4f96540a195c00c6df0179c252089c8a67977d2e1fc075ccde64e7d0c6",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.001Z",
+            "endedAt": "2026-11-13T05:46:57.235Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS28",
+            "fingerprint": "5ce99c6603488b80e8515036bc2116762264dd307152afc3b7644b6356aa2046",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.002Z",
+            "endedAt": "2026-11-13T05:46:56.264Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS29",
+            "fingerprint": "06d286e293ed98b0d1cf97c819e069a29cb826681a284f2cbb1402f24ea32ee3",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.004Z",
+            "endedAt": "2026-11-13T05:46:56.751Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS30",
+            "fingerprint": "cdb48558369e10136561850c8ca72366814d8f5fbd5d72a0fe03d13351aae2bb",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.004Z",
+            "endedAt": "2026-11-13T05:46:54.535Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS31",
+            "fingerprint": "78efe2ba103ed843f913c79b7f4ad14feef491dbbe3f4480dadeec0b32830541",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.005Z",
+            "endedAt": "2026-11-13T05:46:55.478Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS32",
+            "fingerprint": "445bec177b5d1d15bf4456ebe8670e12dfaa7333361dfcabe49ac8ba4c8f6168",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.006Z",
+            "endedAt": "2026-11-13T05:46:55.754Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS33",
+            "fingerprint": "0cd74a1ca359bcfe39fe9a0b434d344a0662c888f8c52358aa488cb42671a3e8",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.006Z",
+            "endedAt": "2026-11-13T05:46:56.972Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS34",
+            "fingerprint": "8ae1e4e9908385c72a0af655f6236f66498fc948e932be1e63b01536ca6f2b84",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.007Z",
+            "endedAt": "2026-11-13T05:46:59.155Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS35",
+            "fingerprint": "ab35c7a2f50be0c4a94aefc76726e4411ff84b37270a974ead1500cf0c6fd6bb",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.008Z",
+            "endedAt": "2026-11-13T05:46:57.470Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS36",
+            "fingerprint": "1c03e76c8825f0e96d2c6afeeff7f2494d6f9181f7e88918e282342f1ef7933b",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.009Z",
+            "endedAt": "2026-11-13T05:46:58.240Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS37",
+            "fingerprint": "0567ecab67efc4ba5700d837f60773e328982ff8f3f69f4b92202819eae11034",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.009Z",
+            "endedAt": "2026-11-13T05:46:55.996Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS38",
+            "fingerprint": "c187694dcbc15b4774343b54f870f90eba0f855db5042bab8d316a03aef1c9c9",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:46:52.010Z",
+            "endedAt": "2026-11-13T05:46:55.211Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS39",
+            "fingerprint": "1ec645081232246fa8ac8d99d578803a820e3369580b2c956e86c2ce10435d40",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.861Z",
+            "endedAt": "2026-11-13T05:48:26.211Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS40",
+            "fingerprint": "b43a305d8a53fe0cd23dfe88cf3928c3a8de0b0f4ba616ed119de6a3c49072f7",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.865Z",
+            "endedAt": "2026-11-13T05:48:26.689Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS41",
+            "fingerprint": "da58439abfff594e7ccb0161e45a218006b4ae90ac75ebab73f5b81634649f38",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.865Z",
+            "endedAt": "2026-11-13T05:48:28.244Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS42",
+            "fingerprint": "6e7d3782adc97840776fecac7b3f0f5941c217a9cc4311e635d2eeb585d8a248",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.866Z",
+            "endedAt": "2026-11-13T05:48:28.004Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS43",
+            "fingerprint": "425f16a63e385ca61af5e5cd8bc8a70a71b547147f13141dd3be66958bdc9f1e",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.867Z",
+            "endedAt": "2026-11-13T05:48:26.460Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS44",
+            "fingerprint": "e423aabe45cb0c04b8909f24a244095120d2c1cd34fc04ae5373cf27df9f0722",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.868Z",
+            "endedAt": "2026-11-13T05:48:27.498Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS45",
+            "fingerprint": "f96a0964d0eeaa634becf4c4eacf90e7e173005e559d2fbcc68101a7b3a34c33",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.868Z",
+            "endedAt": "2026-11-13T05:48:26.939Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS46",
+            "fingerprint": "172356245406cd1f626f8ce629afbeec208c100ddab4e6741d3231eee25521d3",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.869Z",
+            "endedAt": "2026-11-13T05:48:27.767Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS47",
+            "fingerprint": "e34b3ad04c8f5cff80fedb52ac23e3a3c6623050fa5eee0d41a8ae265974f2f4",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.870Z",
+            "endedAt": "2026-11-13T05:48:28.887Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS48",
+            "fingerprint": "a3f27000d43fa8c602107081fa21ca32e5f97086b6fbd0b35a875e332afa4ce7",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:22.871Z",
+            "endedAt": "2026-11-13T05:48:27.262Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS49",
+            "fingerprint": "8a0948811160aedd8b8e67651513247dd588a7c7f89829e35ce1cfc799e08339",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:26.211Z",
+            "endedAt": "2026-11-13T05:48:31.848Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS50",
+            "fingerprint": "62e77e4734c0d22715a271159817e3776da7083563b120389593a9806edb54c6",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:26.460Z",
+            "endedAt": "2026-11-13T05:48:33.181Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS51",
+            "fingerprint": "e96532c5df36c240bfd11ba5a6b76c034f156b2b0fc12732adf1879394723ef2",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:26.691Z",
+            "endedAt": "2026-11-13T05:48:31.347Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS52",
+            "fingerprint": "56df653b453caa5a2cc1bb50b40da27b60a897eddef6f5aeeff770796197ec26",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:26.940Z",
+            "endedAt": "2026-11-13T05:48:32.071Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS53",
+            "fingerprint": "947c88190c194ab41fc28778f8ce7a5941914ea36103cfa51948a9fd9bec7a92",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:27.263Z",
+            "endedAt": "2026-11-13T05:48:32.305Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS54",
+            "fingerprint": "c418ea292f72b53a43f9c892107c0395f316138eabca7d8b2986c83b5a5cc1ed",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:27.499Z",
+            "endedAt": "2026-11-13T05:48:31.610Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS55",
+            "fingerprint": "9a9a2e7349b15ae61ade77764ab307cc5a041b95307230d4aef92c1ef679efd5",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:27.767Z",
+            "endedAt": "2026-11-13T05:48:31.103Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS56",
+            "fingerprint": "ff85d8d6753a75c5456387e60956cd5e3473646b5a007901149e7815e89c0faa",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:28.005Z",
+            "endedAt": "2026-11-13T05:48:32.528Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS57",
+            "fingerprint": "1795ba7a9392f08fbbba483b1ac47e5af1276f01ecd8d2e6326a6aa1f27098c9",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:28.244Z",
+            "endedAt": "2026-11-13T05:48:30.863Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS58",
+            "fingerprint": "d6014c3babc2fec1914a964ea867711feebf2cf9f0289530656f675183242e92",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:48:28.887Z",
+            "endedAt": "2026-11-13T05:48:32.769Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS59",
+            "fingerprint": "194a8645e4922fd149c57d7f4e2c0715a9e26112fb0fc039a1806dc0eb31f529",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.041Z",
+            "endedAt": "2026-11-13T05:49:26.693Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS60",
+            "fingerprint": "58d7a4941654fd8f4ced8f58a7df719146149aafd30cbdab89e199d5794ed026",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.043Z",
+            "endedAt": "2026-11-13T05:49:27.929Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS61",
+            "fingerprint": "66c8e20075f29a8d7bdce94633e69c29b51180caef081f0286c9a4f314785a93",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.044Z",
+            "endedAt": "2026-11-13T05:49:26.956Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS62",
+            "fingerprint": "37f517ea8c69eede529a760b299cc8ec7fe6381dcd9fb32d9c18541c9191d299",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.045Z",
+            "endedAt": "2026-11-13T05:49:27.203Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS63",
+            "fingerprint": "7fe69becf1be057f85ded8cf52f482eaa4c6af8ec92bd3a8a166a9937984f476",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.046Z",
+            "endedAt": "2026-11-13T05:49:26.375Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS64",
+            "fingerprint": "8ce231e0833e5d6fff61e78650bbca4132ac8c78396c384cde9106228d705f74",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.046Z",
+            "endedAt": "2026-11-13T05:49:28.423Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS65",
+            "fingerprint": "cb29fbd24b7c181e9c2d2bfdca2b4d49c98063af76c6dec502dd991ac689c9f1",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.047Z",
+            "endedAt": "2026-11-13T05:49:26.120Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS66",
+            "fingerprint": "c9dc26ef4ecd3a92d8549e3ae8de49cf71cbf77e94d523f7007e0b72ce10157d",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.048Z",
+            "endedAt": "2026-11-13T05:49:27.459Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS67",
+            "fingerprint": "a0903850be2ffee64dc7b74a8e49aa18499f467f2ba59d669f072bac261ee370",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.049Z",
+            "endedAt": "2026-11-13T05:49:28.178Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS68",
+            "fingerprint": "7f04757e8dd1ef01295b354b0f433d46c64e6095d8f889c89e4169631149b2a5",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:23.050Z",
+            "endedAt": "2026-11-13T05:49:27.688Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS69",
+            "fingerprint": "b9317c9328f9221c376e489c1c6cc09e5d19b4a2d2e71b4dd149db7a07a92a2e",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:26.376Z",
+            "endedAt": "2026-11-13T05:49:30.416Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS70",
+            "fingerprint": "ead6dbdfede6ba868ebd2b4216c3bcfff68914d3c126a70da04d81fc20267cb0",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:26.694Z",
+            "endedAt": "2026-11-13T05:49:31.606Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS71",
+            "fingerprint": "1512230d7db30a3441cbc4344b5268f126a3e05e08f67b1062220c88ffb3af9a",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:26.695Z",
+            "endedAt": "2026-11-13T05:49:31.151Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS72",
+            "fingerprint": "dcec7c77e14acffaad5523b4c516ed9dfc425c66684fcb3ca9249689d691a9a4",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:26.957Z",
+            "endedAt": "2026-11-13T05:49:31.834Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS73",
+            "fingerprint": "771e0ff89984354cf842efdf9c3a043770114dfd52b6d7dd291641dba336d2c3",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:27.459Z",
+            "endedAt": "2026-11-13T05:49:32.809Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS74",
+            "fingerprint": "8bae6ca383413846d6180da66d94c7cdf41c70b39ea343b7b35c3d94e644d588",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:27.688Z",
+            "endedAt": "2026-11-13T05:49:32.345Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS75",
+            "fingerprint": "6a0d4020ce5a9b1a1e280c8eb7dcb8f1d7b1d6c734f7b7e6239050936434a3a8",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:27.929Z",
+            "endedAt": "2026-11-13T05:49:33.200Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS76",
+            "fingerprint": "3df6e78c3349d1d3ef44cc1d96ded767a357533053204ef869aac59a15c84867",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:28.179Z",
+            "endedAt": "2026-11-13T05:49:32.095Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS77",
+            "fingerprint": "82a91c3eb245cc2b82ff5c32ddca32b749ccfea66c401949426c362d57f22713",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:28.424Z",
+            "endedAt": "2026-11-13T05:49:31.380Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS78",
+            "fingerprint": "0db239674e89b51094eb4ff434b873ef3be367242f856804a5d8cfcce17a6780",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:49:28.925Z",
+            "endedAt": "2026-11-13T05:49:32.574Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS79",
+            "fingerprint": "611c450b0806c776331434785a6a7b98fe095548886e32b0a18f51c124b559c0",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.088Z",
+            "endedAt": "2026-11-13T05:50:27.846Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS80",
+            "fingerprint": "a1164d22316e1602304ce99f20db4387aa9b7bdfbb232a3c244d4ce574550c16",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.092Z",
+            "endedAt": "2026-11-13T05:50:25.547Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS81",
+            "fingerprint": "8c9f6015b916d3523c8cca741491b7c2ee5c011b78287a9e999fb7333540c9fe",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.093Z",
+            "endedAt": "2026-11-13T05:50:27.158Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS82",
+            "fingerprint": "9a91454d1d1985277f4dec737403a6ce6e26b0762c2f4f6e9f47ef241bd58645",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.094Z",
+            "endedAt": "2026-11-13T05:50:27.610Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS83",
+            "fingerprint": "2cb6488d1c9d8afdcfa2a2b5778e72ff96c27b4d078516cef71f16b6621133d9",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.094Z",
+            "endedAt": "2026-11-13T05:50:26.138Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS84",
+            "fingerprint": "a2a5b86870555760a0e37e254257363633e81cf9f1a8cbd7d99b6c894e78ae05",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.095Z",
+            "endedAt": "2026-11-13T05:50:26.385Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS85",
+            "fingerprint": "7a30d7d4efe332085da2d694893bfef259c2accc0329ae1f8cc54a470adf310e",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.096Z",
+            "endedAt": "2026-11-13T05:50:26.652Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS86",
+            "fingerprint": "2d66a1f9a91a72224d6eedc9f914e11b8b16d44e8b71f63909c8df80551d0c07",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.096Z",
+            "endedAt": "2026-11-13T05:50:27.389Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS87",
+            "fingerprint": "e4b0e508841f4d9f33c3ae09287f772377fc32eef38efeb97c9e17e7da765bdc",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.097Z",
+            "endedAt": "2026-11-13T05:50:26.877Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS88",
+            "fingerprint": "c3717e69c321f1e0edbe62fbd47664c1cba89f9d7ce2f72b7ae7ef9a9e514174",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:23.098Z",
+            "endedAt": "2026-11-13T05:50:25.292Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS89",
+            "fingerprint": "d0f8d10b403961bf66f2213b78c90d8d6d14b4aaaae3cc16ca6eb0987a711cd0",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:26.385Z",
+            "endedAt": "2026-11-13T05:50:30.662Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS90",
+            "fingerprint": "c9d1834b6972849dfc53c321fc6a608d06768ad2cfd97d325d4e94838afdcb52",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:26.877Z",
+            "endedAt": "2026-11-13T05:50:31.817Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS91",
+            "fingerprint": "fe6d7bc36ec75cd77947a1b11a73108ec4983dd7d9a0da9fd2e79fae9863f301",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:26.878Z",
+            "endedAt": "2026-11-13T05:50:30.304Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS92",
+            "fingerprint": "c3507610d358d90862f459e81061f2b06c3122fe548abc6b0d177d4afedb0a57",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:27.159Z",
+            "endedAt": "2026-11-13T05:50:31.132Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS93",
+            "fingerprint": "1fc1fa9cec80d6edd0025f818ec0cc77a4ed3b87e2e94b148b48c62395acab0b",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:27.611Z",
+            "endedAt": "2026-11-13T05:50:30.886Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS94",
+            "fingerprint": "a2fa077fbde3056fe106ec75419bace852b62edf7fc78773d53e9d2f77279ec0",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:27.846Z",
+            "endedAt": "2026-11-13T05:50:31.351Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS95",
+            "fingerprint": "4659d3c4b0ef4f43d1d710482f684d836a831b222e3825f5a68f7efc001f8b48",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:28.098Z",
+            "endedAt": "2026-11-13T05:50:31.571Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS96",
+            "fingerprint": "22c07920da3babf2cc42bf428e356c496e7328b66ed5ce0000b89319bf30fa93",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:28.348Z",
+            "endedAt": "2026-11-13T05:50:32.261Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS97",
+            "fingerprint": "a9531c0f6057e443390617109a55b3106c5b604fed51c68602f8929ca5be1b52",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:28.600Z",
+            "endedAt": "2026-11-13T05:50:32.042Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS98",
+            "fingerprint": "b661365572d1cb3396af7b04c994645b079ab544b4e71824b94ac7776c021700",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:50:29.104Z",
+            "endedAt": "2026-11-13T05:50:32.513Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS99",
+            "fingerprint": "b2ffc2837df486e3d6e7c146125507f1272878b1f69156755c1e001a4765bfe8",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.110Z",
+            "endedAt": "2026-11-13T05:51:27.797Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS100",
+            "fingerprint": "58c69c212cebcd6a24f8648756a74965f37c77cf9ef32594ad2b0b50579299ba",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.113Z",
+            "endedAt": "2026-11-13T05:51:25.887Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS101",
+            "fingerprint": "3038f817f5c2757ef70b14a1aa935adb0dee75a805b771d215807d146aded699",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.114Z",
+            "endedAt": "2026-11-13T05:51:26.144Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS102",
+            "fingerprint": "38fb07fce0edfd46decc77ef0225cb88f95eafb77cc07e1f87a8694aa5f03465",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.114Z",
+            "endedAt": "2026-11-13T05:51:26.377Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS103",
+            "fingerprint": "c9cc206366fae365e346fbdadcf290de1e756654d78ee9fb41a99a23c0b4ef0a",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.115Z",
+            "endedAt": "2026-11-13T05:51:28.041Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS104",
+            "fingerprint": "2870d53d4720ea8f366d4a6e16c663d0c3a49d4976d1c2099ed80c9e353c68d2",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.116Z",
+            "endedAt": "2026-11-13T05:51:27.078Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS105",
+            "fingerprint": "a162cece5b88678533c94c39f06e75c9511da591971d10fae8471613cb874246",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.116Z",
+            "endedAt": "2026-11-13T05:51:26.601Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS106",
+            "fingerprint": "46eff77e66e78119b518956e8a0732fc315f0734951920a8ba4bb041c97c3fee",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.117Z",
+            "endedAt": "2026-11-13T05:51:27.547Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS107",
+            "fingerprint": "d53da269dda47cb45a4d4af00035f49c5b275a561e364eac855eeaffd85c3a8c",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.118Z",
+            "endedAt": "2026-11-13T05:51:27.306Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS108",
+            "fingerprint": "2fdd6b471af2cfcbc4b61cc7fe78c91495777df27ca654b5ddf3183755cd4a4b",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:23.118Z",
+            "endedAt": "2026-11-13T05:51:26.848Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS109",
+            "fingerprint": "ef9e66b6be4d80bdb048cd24d39b91ea90e4152e1ac6a2b8a3f76f864a257d67",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:26.602Z",
+            "endedAt": "2026-11-13T05:51:31.184Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS110",
+            "fingerprint": "4068662827390d8a0176b8aec228e126e9a93c2f3bbab039008eab765f9fa82e",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:27.079Z",
+            "endedAt": "2026-11-13T05:51:31.752Z",
+            "diagnostic": ""
+          },
+          {
+            "id": "CS111",
+            "fingerprint": "1d16d95891b79f289854a69e20e12e7ad08b6594c61c06a4f22b775041991ab0",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:51:27.080Z",
+            "endedAt": "2026-11-13T05:51:32.039Z",
+            "diagnostic": ""
+          }
+        ]
+      },
+      "assessmentManifests": [
+        {
+          "planSha256": "cff37cc859f39e5667ad7cd05c211a7ff3d6281b3c54cc72164f2123c4e0ba8c",
+          "automaticRetries": 0,
+          "published": false,
+          "listening": "not-performed",
+          "requests": [
+            {
+              "id": "CS04",
+              "status": "assessed-timing-available",
+              "audioSha256": "2fdaa8eeb8e6bebb34f4240b6182289e5e872187e4b9b04d32a2f3c35c654585",
+              "fingerprint": "aebc812e6f1a09f689f6cb916c390e76a727ef1bdeffc3e680c152d579c5236b",
+              "startedAt": "2026-11-13T05:52:49.578Z",
+              "endedAt": "2026-11-13T05:52:54.449Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS05",
+              "status": "assessed-timing-available",
+              "audioSha256": "2cb54c6e13fd297847ee8a40d01228b8fc442ed97906373f22c8e1ab7f7f4308",
+              "fingerprint": "88466ba0eceba6cb7a31f89f42673bfba73cfaa095bbe92c4c4ad518d85ef2a2",
+              "startedAt": "2026-11-13T05:52:54.450Z",
+              "endedAt": "2026-11-13T05:53:02.747Z",
+              "flags": {
+                "Mispronunciation": 4,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS06",
+              "status": "assessed-timing-available",
+              "audioSha256": "0cea6c4f30f2d2bc3a963572b202e8d2036c94a92faf3724d092642d020f2c16",
+              "fingerprint": "9eb189f90286753e9ccdb40242c9015d829b116b53bfe1da916a55e683939dc4",
+              "startedAt": "2026-11-13T05:53:02.748Z",
+              "endedAt": "2026-11-13T05:53:05.444Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS07",
+              "status": "assessed-timing-available",
+              "audioSha256": "faa3e2e0f9b0dd8e136bf6d17276742b3eae3e19f220a78530d772cb2febd666",
+              "fingerprint": "213f6d9fec801048aa71c5353bb9fe90ff8547d5b1399994b626ea97e8283c48",
+              "startedAt": "2026-11-13T05:53:05.451Z",
+              "endedAt": "2026-11-13T05:53:11.547Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS08",
+              "status": "assessed-timing-available",
+              "audioSha256": "044cef70c9ce7d7e4c41d334df6bd381499a36572c4fca0112f2c26cca50c415",
+              "fingerprint": "15ceed1277fc8440d8f6445c966b2e462ed2ef64fa18a43217b782b43ff1dbfb",
+              "startedAt": "2026-11-13T05:53:11.549Z",
+              "endedAt": "2026-11-13T05:53:16.651Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS09",
+              "status": "assessed-timing-available",
+              "audioSha256": "34473a444def78a59d95fb223c1dc11253f47626f74ecb2f25ece32b486ad1d6",
+              "fingerprint": "105e79301696b036357e9f5f1b7e6fd5d430867ec534c5eea529157b6899ff7c",
+              "startedAt": "2026-11-13T05:53:16.655Z",
+              "endedAt": "2026-11-13T05:53:20.520Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS10",
+              "status": "assessed-timing-available",
+              "audioSha256": "ed1493dc1faa17adf2a01eda77d9a162793bb759bc9042774f033f29d477d712",
+              "fingerprint": "7eb2217c2d4fd71997560aca72d4e79532a61f60bd97ea4ac27ef3bc21d0d0cf",
+              "startedAt": "2026-11-13T05:53:20.522Z",
+              "endedAt": "2026-11-13T05:53:23.415Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS11",
+              "status": "assessed-timing-available",
+              "audioSha256": "5a4a915898075cf1f06b03b63f43b9835186c7995cf006f2fd91ea38385a8d93",
+              "fingerprint": "d018471c05a51b529aed55448d711fb82b54c979566ca9dd6023d25bfc541ab6",
+              "startedAt": "2026-11-13T05:53:23.417Z",
+              "endedAt": "2026-11-13T05:53:30.535Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS12",
+              "status": "assessed-timing-available",
+              "audioSha256": "85dcef4bd16606564aa4469086018b73392ff4cb0f9042e20225a8971ff00327",
+              "fingerprint": "da71c92c87beeb29baba84da01cd920575133514814f0dc856f87477ca541170",
+              "startedAt": "2026-11-13T05:53:30.537Z",
+              "endedAt": "2026-11-13T05:53:38.599Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS13",
+              "status": "assessed-timing-available",
+              "audioSha256": "13aa57990f2b2a56e7d382587f73565d7644599edf0a7a09db890257ca0b3353",
+              "fingerprint": "0ccc985297ab54a476f60eca8a3298d0d39156f41ef44beafd4a63a324df0fc2",
+              "startedAt": "2026-11-13T05:53:38.601Z",
+              "endedAt": "2026-11-13T05:53:41.754Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS14",
+              "status": "assessed-timing-available",
+              "audioSha256": "bebb0daa220d6403a2150295a0519ed3283cbf1b5a5d1afe503125743232cb58",
+              "fingerprint": "ffb2cebc39c41aea0f4085f79bcef3f051cb2c95249c939ef0a0b594833ae50e",
+              "startedAt": "2026-11-13T05:53:41.755Z",
+              "endedAt": "2026-11-13T05:53:48.355Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS15",
+              "status": "assessed-timing-available",
+              "audioSha256": "183576d278982b02abc110f060fc01761245ff287e7441c2230ccb642a5b1d1b",
+              "fingerprint": "94542c264751d133d5a1ab206d2386ab920fb16add447e94315af66eef2adcd5",
+              "startedAt": "2026-11-13T05:53:48.357Z",
+              "endedAt": "2026-11-13T05:53:54.946Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS16",
+              "status": "assessed-timing-available",
+              "audioSha256": "974c9950408d873c4a57c2de3d365151cf2212e3e18ea2be2b52b670f11cd471",
+              "fingerprint": "aa9fa0a063ded65e5c2c731c05a7dd7fd476288e86abefc765ddb0fb0a668eb8",
+              "startedAt": "2026-11-13T05:53:54.947Z",
+              "endedAt": "2026-11-13T05:53:58.832Z",
+              "flags": {
+                "Mispronunciation": 3,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS17",
+              "status": "assessed-timing-available",
+              "audioSha256": "6e9051b7cfd24d076c574b8d7c3e5151833e2916b515e1c181afd713f32c8f36",
+              "fingerprint": "bc6640fc1e320f1c610ab67400afa2ebaa2afc27d42ac500e07eedbac345d48e",
+              "startedAt": "2026-11-13T05:53:58.833Z",
+              "endedAt": "2026-11-13T05:54:06.722Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS18",
+              "status": "assessed-timing-available",
+              "audioSha256": "4285cee2608c076f10d3049811260c174168041eedb20a327f5607f5d794394c",
+              "fingerprint": "bfa71bad05048a12e743cedfe23a741e25e073fb1fb3a1125e9c4242223ea55a",
+              "startedAt": "2026-11-13T05:54:06.723Z",
+              "endedAt": "2026-11-13T05:54:09.114Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS19",
+              "status": "assessed-timing-available",
+              "audioSha256": "a698947db127e2cabbd2f24f491817d3fdd0c945b0f051f552ffe8a65af79afd",
+              "fingerprint": "efe0003f10897244a9657474040c2a2aac5bc2dd1f5c54f22e54f8e0590f2aa7",
+              "startedAt": "2026-11-13T05:54:09.116Z",
+              "endedAt": "2026-11-13T05:54:13.073Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS20",
+              "status": "assessed-timing-available",
+              "audioSha256": "fa8c1bbc3e58690cd5714a76a0ea6aea79e10b737972120cfdd6946a4ab9fdf5",
+              "fingerprint": "69761d29806dcfbbce664a61374cfcf280f234cab581453a3a5fa9cfd5a8c15d",
+              "startedAt": "2026-11-13T05:54:13.075Z",
+              "endedAt": "2026-11-13T05:54:17.444Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS21",
+              "status": "assessed-timing-available",
+              "audioSha256": "06723c86a98798d2f94a9b9aab98e0186603e7784b2e9327520a5ba5c87298b7",
+              "fingerprint": "1bd1e9d033264628075ac32b43f1dc5bf1fc3f49273263d4309e4e536b653e65",
+              "startedAt": "2026-11-13T05:54:17.446Z",
+              "endedAt": "2026-11-13T05:54:23.051Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS22",
+              "status": "assessed-timing-available",
+              "audioSha256": "9021d218fca34b21407aef3b8f6c1d59de55f2efcfb3ddf28294f767a1218c64",
+              "fingerprint": "16a80ac515e98a5cd60316783060d2da1985458f8f9d5b0158be8600abfc7bd6",
+              "startedAt": "2026-11-13T05:54:23.054Z",
+              "endedAt": "2026-11-13T05:54:25.755Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS23",
+              "status": "assessed-timing-available",
+              "audioSha256": "58c624539415d6be291cd87f8eaa91df7d903930f87cc2e35f42e2cb4028ac05",
+              "fingerprint": "893a285dd1e3ef325e76b16a133d6a2a5bf8cea48eb784da2bc9ecd8fd4c4424",
+              "startedAt": "2026-11-13T05:54:25.756Z",
+              "endedAt": "2026-11-13T05:54:30.626Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS24",
+              "status": "assessed-timing-available",
+              "audioSha256": "5a12fc14ab92990b217d5c5968187279679aa662354b91a909fc768ab4f5a5d5",
+              "fingerprint": "a35143149ef92cae74e04ed0e036162d6fd0d8e2f2d6d1510f4a5460ef3ef5af",
+              "startedAt": "2026-11-13T05:54:30.628Z",
+              "endedAt": "2026-11-13T05:54:34.428Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS24a",
+              "status": "assessed-timing-available",
+              "audioSha256": "b96530d5a39e23f63fe4d0512fe99995a70dc0d74a5612f26a948ef0a865cc42",
+              "fingerprint": "a60d172b76bed5b4bde8dab7fbd9a31ff11176664d6108a2098884a96c2df8a5",
+              "startedAt": "2026-11-13T05:54:34.430Z",
+              "endedAt": "2026-11-13T05:54:42.066Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS25",
+              "status": "assessed-timing-available",
+              "audioSha256": "951b07affe1dd2b998085fc8185769986e37de08e034f589315980435a24b18a",
+              "fingerprint": "0ab796b44854e7a65c19df94abc92a0f4d5970d5c0ff2d19eaaff5732a85f0f4",
+              "startedAt": "2026-11-13T05:54:42.069Z",
+              "endedAt": "2026-11-13T05:54:50.543Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS26",
+              "status": "assessed-timing-available",
+              "audioSha256": "94bece4eac9dfa8f6af0609904afc6cfdcc31cc595addf69e9272ab1ab8fdfbb",
+              "fingerprint": "a2e2bc558c66c51d327f2c2b21e313ae73c602ceb41a98b9c623da15e5030c28",
+              "startedAt": "2026-11-13T05:54:50.547Z",
+              "endedAt": "2026-11-13T05:54:54.697Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS27",
+              "status": "assessed-timing-available",
+              "audioSha256": "86ad681d53d505297ec7f19a17cea6b8c434e96ec16b536b48bd9ad74e704dd5",
+              "fingerprint": "2ecf4a4f96540a195c00c6df0179c252089c8a67977d2e1fc075ccde64e7d0c6",
+              "startedAt": "2026-11-13T05:54:54.699Z",
+              "endedAt": "2026-11-13T05:54:59.709Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS28",
+              "status": "assessed-timing-available",
+              "audioSha256": "aabd1d1714cdca8053f6028de9a602e3285fb537500ac279926019e8a6ba4f2c",
+              "fingerprint": "5ce99c6603488b80e8515036bc2116762264dd307152afc3b7644b6356aa2046",
+              "startedAt": "2026-11-13T05:54:59.710Z",
+              "endedAt": "2026-11-13T05:55:02.451Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS29",
+              "status": "assessed-timing-available",
+              "audioSha256": "be9c46e7e9a1dd6598bb0d3ff3306a4a4811a33f6ea2da340c5b776445620121",
+              "fingerprint": "06d286e293ed98b0d1cf97c819e069a29cb826681a284f2cbb1402f24ea32ee3",
+              "startedAt": "2026-11-13T05:55:02.453Z",
+              "endedAt": "2026-11-13T05:55:05.624Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS30",
+              "status": "assessed-timing-available",
+              "audioSha256": "45220f753c560b9c21707a3525b73dcf10b9625c2cd1959f18f6c647753cd645",
+              "fingerprint": "cdb48558369e10136561850c8ca72366814d8f5fbd5d72a0fe03d13351aae2bb",
+              "startedAt": "2026-11-13T05:55:05.626Z",
+              "endedAt": "2026-11-13T05:55:07.572Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS31",
+              "status": "assessed-timing-available",
+              "audioSha256": "d08268d09f98492cbd1d998bc7d50662e4771fa0afda192da1e55666470c2482",
+              "fingerprint": "78efe2ba103ed843f913c79b7f4ad14feef491dbbe3f4480dadeec0b32830541",
+              "startedAt": "2026-11-13T05:55:07.573Z",
+              "endedAt": "2026-11-13T05:55:10.611Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS32",
+              "status": "assessed-timing-available",
+              "audioSha256": "e3042e843cf70710836181a34144772133cec49b5855d5d186a60a66f9393088",
+              "fingerprint": "445bec177b5d1d15bf4456ebe8670e12dfaa7333361dfcabe49ac8ba4c8f6168",
+              "startedAt": "2026-11-13T05:55:10.613Z",
+              "endedAt": "2026-11-13T05:55:13.546Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS33",
+              "status": "assessed-timing-available",
+              "audioSha256": "bd4e58abdda2f6cb820ce393bc11686e97f18fa16f7636a057667fee98dd6f7a",
+              "fingerprint": "0cd74a1ca359bcfe39fe9a0b434d344a0662c888f8c52358aa488cb42671a3e8",
+              "startedAt": "2026-11-13T05:55:13.548Z",
+              "endedAt": "2026-11-13T05:55:16.006Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS34",
+              "status": "assessed-timing-available",
+              "audioSha256": "5932278bb728bd35026b85b49000d04df9118c181d5da5faf54fde7983fc7694",
+              "fingerprint": "8ae1e4e9908385c72a0af655f6236f66498fc948e932be1e63b01536ca6f2b84",
+              "startedAt": "2026-11-13T05:55:16.019Z",
+              "endedAt": "2026-11-13T05:55:18.547Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS35",
+              "status": "assessed-timing-available",
+              "audioSha256": "0ca2d03a2a55a66195893c674199ebdae9fe464fb185d2af68f05daab95bc620",
+              "fingerprint": "ab35c7a2f50be0c4a94aefc76726e4411ff84b37270a974ead1500cf0c6fd6bb",
+              "startedAt": "2026-11-13T05:55:18.550Z",
+              "endedAt": "2026-11-13T05:55:22.798Z",
+              "flags": {
+                "Mispronunciation": 3,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS36",
+              "status": "assessed-timing-available",
+              "audioSha256": "6a7fc2ec505c0d5935ca5ee17cbd4ff8302d481072a347591a9b7e1c2237e29b",
+              "fingerprint": "1c03e76c8825f0e96d2c6afeeff7f2494d6f9181f7e88918e282342f1ef7933b",
+              "startedAt": "2026-11-13T05:55:22.799Z",
+              "endedAt": "2026-11-13T05:55:26.330Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS37",
+              "status": "assessed-timing-available",
+              "audioSha256": "503509c990bc1fa093b0b2706e3d0267f4e432e8a57c7a851f09761b28585f73",
+              "fingerprint": "0567ecab67efc4ba5700d837f60773e328982ff8f3f69f4b92202819eae11034",
+              "startedAt": "2026-11-13T05:55:26.331Z",
+              "endedAt": "2026-11-13T05:55:29.588Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS38",
+              "status": "assessed-timing-available",
+              "audioSha256": "4985b64a3746109f841a4322541b79e07f9145841b1f75a5540fc022c451adfe",
+              "fingerprint": "c187694dcbc15b4774343b54f870f90eba0f855db5042bab8d316a03aef1c9c9",
+              "startedAt": "2026-11-13T05:55:29.589Z",
+              "endedAt": "2026-11-13T05:55:32.317Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS39",
+              "status": "assessed-timing-available",
+              "audioSha256": "55b235a78942ea9ccbb33c25bba69773742552d479d6f1f604783076bae5970c",
+              "fingerprint": "1ec645081232246fa8ac8d99d578803a820e3369580b2c956e86c2ce10435d40",
+              "startedAt": "2026-11-13T05:55:32.318Z",
+              "endedAt": "2026-11-13T05:55:35.271Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS40",
+              "status": "assessed-timing-available",
+              "audioSha256": "27b9412895f1fb9876b266e7a62e8a6e2a00d755a9fd2278148a2fefbc322c9b",
+              "fingerprint": "b43a305d8a53fe0cd23dfe88cf3928c3a8de0b0f4ba616ed119de6a3c49072f7",
+              "startedAt": "2026-11-13T05:55:35.274Z",
+              "endedAt": "2026-11-13T05:55:38.530Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS41",
+              "status": "assessed-timing-available",
+              "audioSha256": "2c9214f1bffadd755fba29f45723edd6c516cf18351facaa92112d7141d92429",
+              "fingerprint": "da58439abfff594e7ccb0161e45a218006b4ae90ac75ebab73f5b81634649f38",
+              "startedAt": "2026-11-13T05:55:38.532Z",
+              "endedAt": "2026-11-13T05:55:42.527Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS42",
+              "status": "assessed-timing-available",
+              "audioSha256": "bb8fe86f08e6346d49291a9b9bdce87cb5f5329e57ea1149c2b764ac7a4f76d8",
+              "fingerprint": "6e7d3782adc97840776fecac7b3f0f5941c217a9cc4311e635d2eeb585d8a248",
+              "startedAt": "2026-11-13T05:55:42.528Z",
+              "endedAt": "2026-11-13T05:55:45.650Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS43",
+              "status": "assessed-timing-available",
+              "audioSha256": "b87f1fa83ea2426647bd40afcc3eec98b9f4a2fd74fdc3de0701e741d8bf5ca4",
+              "fingerprint": "425f16a63e385ca61af5e5cd8bc8a70a71b547147f13141dd3be66958bdc9f1e",
+              "startedAt": "2026-11-13T05:55:45.653Z",
+              "endedAt": "2026-11-13T05:55:48.350Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS44",
+              "status": "assessed-timing-available",
+              "audioSha256": "2b597f70bbe7fd61a4ef0a56c25f9d7ed2ce34b94f168b1af175c959aa621a7e",
+              "fingerprint": "e423aabe45cb0c04b8909f24a244095120d2c1cd34fc04ae5373cf27df9f0722",
+              "startedAt": "2026-11-13T05:55:48.352Z",
+              "endedAt": "2026-11-13T05:55:51.798Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS45",
+              "status": "assessed-timing-available",
+              "audioSha256": "df6379d491323f5aa49e6b0b09e23d3507e2d3c7ea1c9d0e2af01d65a27d92a7",
+              "fingerprint": "f96a0964d0eeaa634becf4c4eacf90e7e173005e559d2fbcc68101a7b3a34c33",
+              "startedAt": "2026-11-13T05:55:51.801Z",
+              "endedAt": "2026-11-13T05:55:54.652Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS46",
+              "status": "assessed-timing-available",
+              "audioSha256": "9c2e3d17318fb735e03e40ff9c885a8d9d7fd269a7b0c4b2cee0ce838df51ab6",
+              "fingerprint": "172356245406cd1f626f8ce629afbeec208c100ddab4e6741d3231eee25521d3",
+              "startedAt": "2026-11-13T05:55:54.653Z",
+              "endedAt": "2026-11-13T05:55:59.626Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS47",
+              "status": "assessed-timing-available",
+              "audioSha256": "1fa9ae35676391fee846ba6a844aa8f9e13c77eb9a43715f156fc02cf96c24ef",
+              "fingerprint": "e34b3ad04c8f5cff80fedb52ac23e3a3c6623050fa5eee0d41a8ae265974f2f4",
+              "startedAt": "2026-11-13T05:55:59.628Z",
+              "endedAt": "2026-11-13T05:56:09.119Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS48",
+              "status": "assessed-timing-available",
+              "audioSha256": "e5871fcba0ebc90715e445e718faa83a6fbe6c4bb659dea2ca301724ffb6a70a",
+              "fingerprint": "a3f27000d43fa8c602107081fa21ca32e5f97086b6fbd0b35a875e332afa4ce7",
+              "startedAt": "2026-11-13T05:56:09.122Z",
+              "endedAt": "2026-11-13T05:56:12.535Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS49",
+              "status": "assessed-timing-available",
+              "audioSha256": "2c7cfd4e646e80b16b40bed8258e785e545fa27c6a5c984937791355e115104f",
+              "fingerprint": "8a0948811160aedd8b8e67651513247dd588a7c7f89829e35ce1cfc799e08339",
+              "startedAt": "2026-11-13T05:56:12.536Z",
+              "endedAt": "2026-11-13T05:56:17.530Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS50",
+              "status": "assessed-timing-available",
+              "audioSha256": "05d5d7623d01a570a27e272b4a651b451016a75dbfa58bf780d9aed794683dd6",
+              "fingerprint": "62e77e4734c0d22715a271159817e3776da7083563b120389593a9806edb54c6",
+              "startedAt": "2026-11-13T05:56:17.532Z",
+              "endedAt": "2026-11-13T05:56:23.740Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS51",
+              "status": "assessed-timing-available",
+              "audioSha256": "261cab5f8dfec8f0e6ad2bb530dd35b7a1e47ac9abefc388abd84e60d10feeb5",
+              "fingerprint": "e96532c5df36c240bfd11ba5a6b76c034f156b2b0fc12732adf1879394723ef2",
+              "startedAt": "2026-11-13T05:56:23.742Z",
+              "endedAt": "2026-11-13T05:56:26.131Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS52",
+              "status": "assessed-timing-available",
+              "audioSha256": "df3f62fa986213bdf50a71ce4ed0d79f2b1c157e427ddf32631f323c8d94126e",
+              "fingerprint": "56df653b453caa5a2cc1bb50b40da27b60a897eddef6f5aeeff770796197ec26",
+              "startedAt": "2026-11-13T05:56:26.133Z",
+              "endedAt": "2026-11-13T05:56:29.697Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS53",
+              "status": "assessed-timing-available",
+              "audioSha256": "3aa2b7025fd6d8712446e6e08173f36407f06a39ee36cd5ddbcb45ac71dc8a17",
+              "fingerprint": "947c88190c194ab41fc28778f8ce7a5941914ea36103cfa51948a9fd9bec7a92",
+              "startedAt": "2026-11-13T05:56:29.701Z",
+              "endedAt": "2026-11-13T05:56:33.250Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS54",
+              "status": "assessed-timing-available",
+              "audioSha256": "b09b5708f1c60359bb9916e18d0c321b4080c6c53b1773c091af3af2b5d43a4e",
+              "fingerprint": "c418ea292f72b53a43f9c892107c0395f316138eabca7d8b2986c83b5a5cc1ed",
+              "startedAt": "2026-11-13T05:56:33.254Z",
+              "endedAt": "2026-11-13T05:56:36.438Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS55",
+              "status": "assessed-timing-available",
+              "audioSha256": "553d48fdf6037b632e7ae0c258d069c9f7616c16c38735fff03c2ba14fa7ea29",
+              "fingerprint": "9a9a2e7349b15ae61ade77764ab307cc5a041b95307230d4aef92c1ef679efd5",
+              "startedAt": "2026-11-13T05:56:36.440Z",
+              "endedAt": "2026-11-13T05:56:39.222Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS56",
+              "status": "assessed-timing-available",
+              "audioSha256": "267ac8b97d2652a59289ae79b59ae0c19c3130da0801883d46f927c6061fcc73",
+              "fingerprint": "ff85d8d6753a75c5456387e60956cd5e3473646b5a007901149e7815e89c0faa",
+              "startedAt": "2026-11-13T05:56:39.223Z",
+              "endedAt": "2026-11-13T05:56:43.713Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS57",
+              "status": "assessed-timing-available",
+              "audioSha256": "6f97694c6d10e8520687f1752ad2873b14df5dea0c3808f1d664c7d1acc09c83",
+              "fingerprint": "1795ba7a9392f08fbbba483b1ac47e5af1276f01ecd8d2e6326a6aa1f27098c9",
+              "startedAt": "2026-11-13T05:56:43.716Z",
+              "endedAt": "2026-11-13T05:56:45.819Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS58",
+              "status": "assessed-timing-available",
+              "audioSha256": "2bfbab014404b7c83d1ad7b14e3cc97822120c2344c17859e0e4b8cd718fb969",
+              "fingerprint": "d6014c3babc2fec1914a964ea867711feebf2cf9f0289530656f675183242e92",
+              "startedAt": "2026-11-13T05:56:45.821Z",
+              "endedAt": "2026-11-13T05:56:48.822Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS59",
+              "status": "assessed-timing-available",
+              "audioSha256": "6784bcc8bf17e4acf787037b77d51697cd2ea6749d52dca1f68a631333b96e93",
+              "fingerprint": "194a8645e4922fd149c57d7f4e2c0715a9e26112fb0fc039a1806dc0eb31f529",
+              "startedAt": "2026-11-13T05:56:48.823Z",
+              "endedAt": "2026-11-13T05:56:52.566Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS60",
+              "status": "assessed-timing-available",
+              "audioSha256": "cff683841185a56ea096c0b0d0dc34fd039576f1ea039b6aebeb3af983e6d3a8",
+              "fingerprint": "58d7a4941654fd8f4ced8f58a7df719146149aafd30cbdab89e199d5794ed026",
+              "startedAt": "2026-11-13T05:56:52.567Z",
+              "endedAt": "2026-11-13T05:56:56.040Z",
+              "flags": {
+                "Mispronunciation": 3,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS61",
+              "status": "assessed-timing-available",
+              "audioSha256": "48cda6e06067cae2a61844332d4056b69a57dac7ad44ce1583bf69743d0fcfc5",
+              "fingerprint": "66c8e20075f29a8d7bdce94633e69c29b51180caef081f0286c9a4f314785a93",
+              "startedAt": "2026-11-13T05:56:56.042Z",
+              "endedAt": "2026-11-13T05:57:02.069Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS62",
+              "status": "assessed-timing-available",
+              "audioSha256": "d319fe681eb0a26bf2244d1bc3877857334fafc0818dca95b0a992583e12d3b1",
+              "fingerprint": "37f517ea8c69eede529a760b299cc8ec7fe6381dcd9fb32d9c18541c9191d299",
+              "startedAt": "2026-11-13T05:57:02.073Z",
+              "endedAt": "2026-11-13T05:57:05.605Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS63",
+              "status": "assessed-timing-available",
+              "audioSha256": "7e19929f156e7b47cbb58603619db5bd873e6245e397767413cc03b191e46d0f",
+              "fingerprint": "7fe69becf1be057f85ded8cf52f482eaa4c6af8ec92bd3a8a166a9937984f476",
+              "startedAt": "2026-11-13T05:57:05.607Z",
+              "endedAt": "2026-11-13T05:57:08.743Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS64",
+              "status": "assessed-timing-available",
+              "audioSha256": "ae742df14000ed4285ac5fe030f65a1e29beac73d02b2c358eb21d333f267cf8",
+              "fingerprint": "8ce231e0833e5d6fff61e78650bbca4132ac8c78396c384cde9106228d705f74",
+              "startedAt": "2026-11-13T05:57:08.746Z",
+              "endedAt": "2026-11-13T05:57:14.888Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS65",
+              "status": "assessed-timing-available",
+              "audioSha256": "28999c8313b7101d22f6fd7286fc27f673a2695ac4ac4759b8eff60ca61a24b5",
+              "fingerprint": "cb29fbd24b7c181e9c2d2bfdca2b4d49c98063af76c6dec502dd991ac689c9f1",
+              "startedAt": "2026-11-13T05:57:14.889Z",
+              "endedAt": "2026-11-13T05:57:17.575Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS66",
+              "status": "assessed-timing-available",
+              "audioSha256": "6a07d316af67e712555a893b49bf0bf6309b23e429a17de4afd73399ad2d51c6",
+              "fingerprint": "c9dc26ef4ecd3a92d8549e3ae8de49cf71cbf77e94d523f7007e0b72ce10157d",
+              "startedAt": "2026-11-13T05:57:17.577Z",
+              "endedAt": "2026-11-13T05:57:21.353Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS67",
+              "status": "assessed-timing-available",
+              "audioSha256": "c105151975521b2b36dd512e66b4af54c3b0f47c34f8ada86f8a2a88f0abcfba",
+              "fingerprint": "a0903850be2ffee64dc7b74a8e49aa18499f467f2ba59d669f072bac261ee370",
+              "startedAt": "2026-11-13T05:57:21.356Z",
+              "endedAt": "2026-11-13T05:57:25.342Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS68",
+              "status": "assessed-timing-available",
+              "audioSha256": "9aff1fd4007c216360e2f5a8e6eb5eb953d6cea71b8820659bb3ab5cd1d79735",
+              "fingerprint": "7f04757e8dd1ef01295b354b0f433d46c64e6095d8f889c89e4169631149b2a5",
+              "startedAt": "2026-11-13T05:57:25.344Z",
+              "endedAt": "2026-11-13T05:57:28.889Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS69",
+              "status": "assessed-timing-available",
+              "audioSha256": "275ec1fad23e803234fe3f9970c98f3632978e4f31cf41bcf13b2c815259d123",
+              "fingerprint": "b9317c9328f9221c376e489c1c6cc09e5d19b4a2d2e71b4dd149db7a07a92a2e",
+              "startedAt": "2026-11-13T05:57:28.891Z",
+              "endedAt": "2026-11-13T05:57:31.799Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS70",
+              "status": "assessed-timing-available",
+              "audioSha256": "fd274b117908c5ed6791d5392902ed8a6b31b0f9d4b1d9f356b2bbd91daf6e78",
+              "fingerprint": "ead6dbdfede6ba868ebd2b4216c3bcfff68914d3c126a70da04d81fc20267cb0",
+              "startedAt": "2026-11-13T05:57:31.801Z",
+              "endedAt": "2026-11-13T05:57:34.240Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS71",
+              "status": "assessed-timing-available",
+              "audioSha256": "7d1cead53698cbbeccce520da4e5a56e9c62307685ab3e11dab76deb15ea18a9",
+              "fingerprint": "1512230d7db30a3441cbc4344b5268f126a3e05e08f67b1062220c88ffb3af9a",
+              "startedAt": "2026-11-13T05:57:34.243Z",
+              "endedAt": "2026-11-13T05:57:36.427Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS72",
+              "status": "assessed-timing-available",
+              "audioSha256": "b55be5f7ecaf1710b4d6f2f47865b3dd26d7e819b9f702f73cea0f43c7ca0d1b",
+              "fingerprint": "dcec7c77e14acffaad5523b4c516ed9dfc425c66684fcb3ca9249689d691a9a4",
+              "startedAt": "2026-11-13T05:57:36.429Z",
+              "endedAt": "2026-11-13T05:57:38.987Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS73",
+              "status": "assessed-timing-available",
+              "audioSha256": "80e428f4b84067c998b7881d21b039e29392759e4278fb8f8e35c7cb71070a72",
+              "fingerprint": "771e0ff89984354cf842efdf9c3a043770114dfd52b6d7dd291641dba336d2c3",
+              "startedAt": "2026-11-13T05:57:38.989Z",
+              "endedAt": "2026-11-13T05:57:43.655Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS74",
+              "status": "assessed-timing-available",
+              "audioSha256": "d5ccb95b79e894d055f892acab6a7640431fb18b11753e02b966450cacb85141",
+              "fingerprint": "8bae6ca383413846d6180da66d94c7cdf41c70b39ea343b7b35c3d94e644d588",
+              "startedAt": "2026-11-13T05:57:43.657Z",
+              "endedAt": "2026-11-13T05:57:46.662Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS75",
+              "status": "assessed-timing-available",
+              "audioSha256": "96ef3f7a82de028b82d5e833c558f8d26ec4bcea4449bd0fec092a8a821764fe",
+              "fingerprint": "6a0d4020ce5a9b1a1e280c8eb7dcb8f1d7b1d6c734f7b7e6239050936434a3a8",
+              "startedAt": "2026-11-13T05:57:46.664Z",
+              "endedAt": "2026-11-13T05:57:52.451Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS76",
+              "status": "assessed-timing-available",
+              "audioSha256": "8179b19fb9b84eed4f9797db56ab761c2d5cc51e67df7688844b7f6e0cdc9b1c",
+              "fingerprint": "3df6e78c3349d1d3ef44cc1d96ded767a357533053204ef869aac59a15c84867",
+              "startedAt": "2026-11-13T05:57:52.453Z",
+              "endedAt": "2026-11-13T05:57:56.502Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS77",
+              "status": "assessed-timing-available",
+              "audioSha256": "48cd914c7898b49ea609dfc36e772f6f66301629563f1d7b0a155a23448da5c9",
+              "fingerprint": "82a91c3eb245cc2b82ff5c32ddca32b749ccfea66c401949426c362d57f22713",
+              "startedAt": "2026-11-13T05:57:56.504Z",
+              "endedAt": "2026-11-13T05:57:59.217Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS78",
+              "status": "assessed-timing-available",
+              "audioSha256": "5a836ee50fc40666fc21f028ee8b44e259239a2fc238233fd58b15ab382fb25c",
+              "fingerprint": "0db239674e89b51094eb4ff434b873ef3be367242f856804a5d8cfcce17a6780",
+              "startedAt": "2026-11-13T05:57:59.219Z",
+              "endedAt": "2026-11-13T05:58:01.752Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS79",
+              "status": "assessed-timing-available",
+              "audioSha256": "0b299f0ee55404275d3ae87d7185c9bc145bd85556c94c2e7ec7ec275f0ee8f3",
+              "fingerprint": "611c450b0806c776331434785a6a7b98fe095548886e32b0a18f51c124b559c0",
+              "startedAt": "2026-11-13T05:58:01.755Z",
+              "endedAt": "2026-11-13T05:58:07.060Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS80",
+              "status": "assessed-timing-available",
+              "audioSha256": "d77591363054d69171135f28fbe1b05f45175f909cc0d6597cbfae6f58f65545",
+              "fingerprint": "a1164d22316e1602304ce99f20db4387aa9b7bdfbb232a3c244d4ce574550c16",
+              "startedAt": "2026-11-13T05:58:07.062Z",
+              "endedAt": "2026-11-13T05:58:08.942Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS81",
+              "status": "assessed-timing-available",
+              "audioSha256": "e53974af4583ce932f7eebb88605dad19eeb7a5e1a8f0348ebe85d88db1603cd",
+              "fingerprint": "8c9f6015b916d3523c8cca741491b7c2ee5c011b78287a9e999fb7333540c9fe",
+              "startedAt": "2026-11-13T05:58:08.944Z",
+              "endedAt": "2026-11-13T05:58:11.455Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS82",
+              "status": "assessed-timing-available",
+              "audioSha256": "18c1589a7116ddcf22440cee58fcfdfdae5a8997e797cdaead1e6daf1b1bc812",
+              "fingerprint": "9a91454d1d1985277f4dec737403a6ce6e26b0762c2f4f6e9f47ef241bd58645",
+              "startedAt": "2026-11-13T05:58:11.457Z",
+              "endedAt": "2026-11-13T05:58:14.952Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS83",
+              "status": "assessed-timing-available",
+              "audioSha256": "39d97f0eb941e1e347ba82c49906e039cf0b9ec5e38bf4aa8cad915638e49d26",
+              "fingerprint": "2cb6488d1c9d8afdcfa2a2b5778e72ff96c27b4d078516cef71f16b6621133d9",
+              "startedAt": "2026-11-13T05:58:14.954Z",
+              "endedAt": "2026-11-13T05:58:18.189Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS84",
+              "status": "assessed-timing-available",
+              "audioSha256": "d664d1c89270a9a86eb9090abb882272d4d3aa44d283c8ee4fb8912830f5adf7",
+              "fingerprint": "a2a5b86870555760a0e37e254257363633e81cf9f1a8cbd7d99b6c894e78ae05",
+              "startedAt": "2026-11-13T05:58:18.191Z",
+              "endedAt": "2026-11-13T05:58:21.592Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS85",
+              "status": "assessed-timing-available",
+              "audioSha256": "31b03034c71caa79789a4ccf3cc61259d61d8b5909b9a454b2a56d72a0a359a4",
+              "fingerprint": "7a30d7d4efe332085da2d694893bfef259c2accc0329ae1f8cc54a470adf310e",
+              "startedAt": "2026-11-13T05:58:21.594Z",
+              "endedAt": "2026-11-13T05:58:23.832Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS86",
+              "status": "assessed-timing-available",
+              "audioSha256": "6d645a73b6487843f729f6e278b0e6a8858ee8fa52785e8f5519bf24e6beddd3",
+              "fingerprint": "2d66a1f9a91a72224d6eedc9f914e11b8b16d44e8b71f63909c8df80551d0c07",
+              "startedAt": "2026-11-13T05:58:23.834Z",
+              "endedAt": "2026-11-13T05:58:26.740Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS87",
+              "status": "assessed-timing-available",
+              "audioSha256": "aa4148749ea9ec46e894f5299c2d1e4a11f47e945070fcb19b0915e705760402",
+              "fingerprint": "e4b0e508841f4d9f33c3ae09287f772377fc32eef38efeb97c9e17e7da765bdc",
+              "startedAt": "2026-11-13T05:58:26.743Z",
+              "endedAt": "2026-11-13T05:58:30.288Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS88",
+              "status": "assessed-timing-available",
+              "audioSha256": "0bd2feee5e9f1da1d484dda28389e86bfdf52363bee6d90c5e90cee4b8893618",
+              "fingerprint": "c3717e69c321f1e0edbe62fbd47664c1cba89f9d7ce2f72b7ae7ef9a9e514174",
+              "startedAt": "2026-11-13T05:58:30.290Z",
+              "endedAt": "2026-11-13T05:58:31.900Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS89",
+              "status": "assessed-timing-available",
+              "audioSha256": "73ecad4f25ae7ca43242d3bd87f7bd8dc3eb3ddb18b43c9607817bba2878deb4",
+              "fingerprint": "d0f8d10b403961bf66f2213b78c90d8d6d14b4aaaae3cc16ca6eb0987a711cd0",
+              "startedAt": "2026-11-13T05:58:31.901Z",
+              "endedAt": "2026-11-13T05:58:34.345Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS90",
+              "status": "assessed-timing-available",
+              "audioSha256": "e43d3258724e56cbed270fd214d5c95fa0c4f9d5b6ec3e86848065243eeb5faa",
+              "fingerprint": "c9d1834b6972849dfc53c321fc6a608d06768ad2cfd97d325d4e94838afdcb52",
+              "startedAt": "2026-11-13T05:58:34.347Z",
+              "endedAt": "2026-11-13T05:58:36.785Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS91",
+              "status": "assessed-timing-available",
+              "audioSha256": "004f5c1508d44d146696792adad230bc8d0d4b407bfe1c6f23679e2954a8b59d",
+              "fingerprint": "fe6d7bc36ec75cd77947a1b11a73108ec4983dd7d9a0da9fd2e79fae9863f301",
+              "startedAt": "2026-11-13T05:58:36.787Z",
+              "endedAt": "2026-11-13T05:58:38.538Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS92",
+              "status": "assessed-timing-available",
+              "audioSha256": "fb412fe355969b5ebea920b68dc07e99bb0fb77e36e93d32c3d6c95dcc58a9c6",
+              "fingerprint": "c3507610d358d90862f459e81061f2b06c3122fe548abc6b0d177d4afedb0a57",
+              "startedAt": "2026-11-13T05:58:38.539Z",
+              "endedAt": "2026-11-13T05:58:40.925Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS93",
+              "status": "assessed-timing-available",
+              "audioSha256": "5c5e6f12e27e6da0fe2172876630649b0fa2d1c7bbf2cbe5d33385acbc7dad51",
+              "fingerprint": "1fc1fa9cec80d6edd0025f818ec0cc77a4ed3b87e2e94b148b48c62395acab0b",
+              "startedAt": "2026-11-13T05:58:40.927Z",
+              "endedAt": "2026-11-13T05:58:44.201Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS94",
+              "status": "assessed-timing-needs-review",
+              "audioSha256": "0e580d08697231d1bcdea2a0e71b7b6a04ece42e5e97f8df468f4de74faec812",
+              "fingerprint": "a2fa077fbde3056fe106ec75419bace852b62edf7fc78773d53e9d2f77279ec0",
+              "startedAt": "2026-11-13T05:58:44.207Z",
+              "diagnostic": "Alignment requires review: 的 (Insertion)",
+              "endedAt": "2026-11-13T05:58:46.637Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 1,
+                "Insertion": 1
+              }
+            },
+            {
+              "id": "CS95",
+              "status": "assessed-timing-available",
+              "audioSha256": "6fa4a6c143d4f3f90c16097347a270e86dbe95788b89be2f876706b8fee69bfc",
+              "fingerprint": "4659d3c4b0ef4f43d1d710482f684d836a831b222e3825f5a68f7efc001f8b48",
+              "startedAt": "2026-11-13T05:58:46.639Z",
+              "endedAt": "2026-11-13T05:58:49.834Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS96",
+              "status": "assessed-timing-available",
+              "audioSha256": "1265161bd3b15d6c6b5e1a40fe0f856e7f5366174da641b5ffb32cc02dcca53c",
+              "fingerprint": "22c07920da3babf2cc42bf428e356c496e7328b66ed5ce0000b89319bf30fa93",
+              "startedAt": "2026-11-13T05:58:49.837Z",
+              "endedAt": "2026-11-13T05:58:54.765Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS97",
+              "status": "assessed-timing-available",
+              "audioSha256": "c29f05e14035ec006d483b8c7f83ac4baeaef3a4a9487578aaccf729ccb6e8c7",
+              "fingerprint": "a9531c0f6057e443390617109a55b3106c5b604fed51c68602f8929ca5be1b52",
+              "startedAt": "2026-11-13T05:58:54.768Z",
+              "endedAt": "2026-11-13T05:58:57.122Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS98",
+              "status": "assessed-timing-available",
+              "audioSha256": "29875b4141cf529abc046d756b442cceef9bdbab22f5b637bea159a2ff4c55b9",
+              "fingerprint": "b661365572d1cb3396af7b04c994645b079ab544b4e71824b94ac7776c021700",
+              "startedAt": "2026-11-13T05:58:57.125Z",
+              "endedAt": "2026-11-13T05:59:00.037Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS99",
+              "status": "assessed-timing-available",
+              "audioSha256": "42f17b9810e2175bf0ff4621f300bc382d1e34d166f6baa7337c8468a0aba266",
+              "fingerprint": "b2ffc2837df486e3d6e7c146125507f1272878b1f69156755c1e001a4765bfe8",
+              "startedAt": "2026-11-13T05:59:00.040Z",
+              "endedAt": "2026-11-13T05:59:04.532Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS100",
+              "status": "assessed-timing-available",
+              "audioSha256": "0c356b27859420eb482917161e07cf254eeb1058dda9e7e65103de478661b4b5",
+              "fingerprint": "58c69c212cebcd6a24f8648756a74965f37c77cf9ef32594ad2b0b50579299ba",
+              "startedAt": "2026-11-13T05:59:04.534Z",
+              "endedAt": "2026-11-13T05:59:06.728Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS101",
+              "status": "assessed-timing-available",
+              "audioSha256": "56d9ec4bf2787973d9f7bef54cd9ff5769235359eee61a4c30c9cb6c459cddf0",
+              "fingerprint": "3038f817f5c2757ef70b14a1aa935adb0dee75a805b771d215807d146aded699",
+              "startedAt": "2026-11-13T05:59:06.729Z",
+              "endedAt": "2026-11-13T05:59:10.134Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS102",
+              "status": "assessed-timing-available",
+              "audioSha256": "9c5839e5278cf0847e9b4eabef032cccedbe2bdc307d06862139e6ea17454ef5",
+              "fingerprint": "38fb07fce0edfd46decc77ef0225cb88f95eafb77cc07e1f87a8694aa5f03465",
+              "startedAt": "2026-11-13T05:59:10.136Z",
+              "endedAt": "2026-11-13T05:59:12.491Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS103",
+              "status": "assessed-timing-available",
+              "audioSha256": "2a5919873e7eb7a4426092a22df095a02b698ac688aa2ae1757fcab832004392",
+              "fingerprint": "c9cc206366fae365e346fbdadcf290de1e756654d78ee9fb41a99a23c0b4ef0a",
+              "startedAt": "2026-11-13T05:59:12.493Z",
+              "endedAt": "2026-11-13T05:59:17.464Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS104",
+              "status": "assessed-timing-available",
+              "audioSha256": "2a89af77f003c8fc1c16c3055ec26d902cee1c01522c78340e968eb57531808e",
+              "fingerprint": "2870d53d4720ea8f366d4a6e16c663d0c3a49d4976d1c2099ed80c9e353c68d2",
+              "startedAt": "2026-11-13T05:59:17.467Z",
+              "endedAt": "2026-11-13T05:59:22.889Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS105",
+              "status": "assessed-timing-available",
+              "audioSha256": "6b85fa35017d6c4c362f31f46f51092d8be7c2a838997d00394cd0f359b596db",
+              "fingerprint": "a162cece5b88678533c94c39f06e75c9511da591971d10fae8471613cb874246",
+              "startedAt": "2026-11-13T05:59:22.893Z",
+              "endedAt": "2026-11-13T05:59:25.212Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS106",
+              "status": "assessed-timing-available",
+              "audioSha256": "88ef76c97fec73913f52980bcd9e05e2790dff2876e32f3f072364a171e947d9",
+              "fingerprint": "46eff77e66e78119b518956e8a0732fc315f0734951920a8ba4bb041c97c3fee",
+              "startedAt": "2026-11-13T05:59:25.214Z",
+              "endedAt": "2026-11-13T05:59:28.730Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS107",
+              "status": "assessed-timing-available",
+              "audioSha256": "984299c0069b5a5358afa15340b67270cceb52068005640c2932a5bafa387bec",
+              "fingerprint": "d53da269dda47cb45a4d4af00035f49c5b275a561e364eac855eeaffd85c3a8c",
+              "startedAt": "2026-11-13T05:59:28.731Z",
+              "endedAt": "2026-11-13T05:59:32.322Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS108",
+              "status": "assessed-timing-available",
+              "audioSha256": "eb8ff48a6e100c1cf2f3c51eba8ae45acf73a573abf463c423a5b852c26f9ed6",
+              "fingerprint": "2fdd6b471af2cfcbc4b61cc7fe78c91495777df27ca654b5ddf3183755cd4a4b",
+              "startedAt": "2026-11-13T05:59:32.325Z",
+              "endedAt": "2026-11-13T05:59:35.144Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS109",
+              "status": "assessed-timing-available",
+              "audioSha256": "b53c1c74917179592f4a48be889b474ec8baae1f7953a91f1eeaf84388eec6a7",
+              "fingerprint": "ef9e66b6be4d80bdb048cd24d39b91ea90e4152e1ac6a2b8a3f76f864a257d67",
+              "startedAt": "2026-11-13T05:59:35.146Z",
+              "endedAt": "2026-11-13T05:59:38.795Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS110",
+              "status": "assessed-timing-available",
+              "audioSha256": "fc1ed9336730177f8397c95ca98fe586f65d2b9c7687b24dbefae78631ce8d14",
+              "fingerprint": "4068662827390d8a0176b8aec228e126e9a93c2f3bbab039008eab765f9fa82e",
+              "startedAt": "2026-11-13T05:59:38.797Z",
+              "endedAt": "2026-11-13T05:59:42.990Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            },
+            {
+              "id": "CS111",
+              "status": "assessed-timing-available",
+              "audioSha256": "0f27092fec3845fca26786c86a638424152a5922313ed82b7505fa5b9eda67c7",
+              "fingerprint": "1d16d95891b79f289854a69e20e12e7ad08b6594c61c06a4f22b775041991ab0",
+              "startedAt": "2026-11-13T05:59:42.994Z",
+              "endedAt": "2026-11-13T05:59:48.441Z",
+              "flags": {
+                "Mispronunciation": 1,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            }
+          ]
+        },
+        {
+          "planSha256": "cff37cc859f39e5667ad7cd05c211a7ff3d6281b3c54cc72164f2123c4e0ba8c",
+          "automaticRetries": 0,
+          "published": false,
+          "listening": "not-performed",
+          "requests": [
+            {
+              "id": "CS02",
+              "status": "assessed-timing-available",
+              "audioSha256": "dfafd0b8c18ce3b507898577d1ed45df65bc04e650eee9b31a232093434ed040",
+              "fingerprint": "048f88c5b41e831a735d3948a63b1e627734122cecff4dc316ba5c6c1b601fb6",
+              "startedAt": "2026-11-13T05:49:44.511Z",
+              "endedAt": "2026-11-13T05:49:49.961Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            }
+          ]
+        },
+        {
+          "planSha256": "cff37cc859f39e5667ad7cd05c211a7ff3d6281b3c54cc72164f2123c4e0ba8c",
+          "automaticRetries": 0,
+          "published": false,
+          "listening": "not-performed",
+          "requests": [
+            {
+              "id": "CS01",
+              "status": "request-failed-or-uncertain",
+              "audioSha256": "92e348e32df828d97cf6bd2cd7eed76e7ae4a52434f831f407bf405193cb6fc2",
+              "fingerprint": "2f0e5ab67a97d20a2f684dfa9198494557db4c9b0b05377ee848904023016e6d",
+              "startedAt": "2026-11-13T05:46:22.764Z",
+              "diagnostic": "Azure alignment did not recognize speech; reason=1; rawResponse=false; Unable to contact server. StatusCode: 1006, [REDACTED_URL] Reason:  Unexpected server response: 401",
+              "endedAt": "2026-11-13T05:46:41.474Z"
+            },
+            {
+              "id": "CS02",
+              "status": "not-started",
+              "audioSha256": "dfafd0b8c18ce3b507898577d1ed45df65bc04e650eee9b31a232093434ed040",
+              "fingerprint": "048f88c5b41e831a735d3948a63b1e627734122cecff4dc316ba5c6c1b601fb6"
+            },
+            {
+              "id": "CS03",
+              "status": "not-started",
+              "audioSha256": "7c483c99e3fe4f015b88dd586d98d92952547d9f88f7aa65adf45269affb4439",
+              "fingerprint": "ad5a32a21c5a9e053d0215fd64774202c9c7f0ad8927cf6d6e873300bd1d4ed2"
+            },
+            {
+              "id": "CS04",
+              "status": "not-started",
+              "audioSha256": "2fdaa8eeb8e6bebb34f4240b6182289e5e872187e4b9b04d32a2f3c35c654585",
+              "fingerprint": "aebc812e6f1a09f689f6cb916c390e76a727ef1bdeffc3e680c152d579c5236b"
+            },
+            {
+              "id": "CS05",
+              "status": "not-started",
+              "audioSha256": "2cb54c6e13fd297847ee8a40d01228b8fc442ed97906373f22c8e1ab7f7f4308",
+              "fingerprint": "88466ba0eceba6cb7a31f89f42673bfba73cfaa095bbe92c4c4ad518d85ef2a2"
+            },
+            {
+              "id": "CS06",
+              "status": "not-started",
+              "audioSha256": "0cea6c4f30f2d2bc3a963572b202e8d2036c94a92faf3724d092642d020f2c16",
+              "fingerprint": "9eb189f90286753e9ccdb40242c9015d829b116b53bfe1da916a55e683939dc4"
+            },
+            {
+              "id": "CS07",
+              "status": "not-started",
+              "audioSha256": "faa3e2e0f9b0dd8e136bf6d17276742b3eae3e19f220a78530d772cb2febd666",
+              "fingerprint": "213f6d9fec801048aa71c5353bb9fe90ff8547d5b1399994b626ea97e8283c48"
+            },
+            {
+              "id": "CS08",
+              "status": "not-started",
+              "audioSha256": "044cef70c9ce7d7e4c41d334df6bd381499a36572c4fca0112f2c26cca50c415",
+              "fingerprint": "15ceed1277fc8440d8f6445c966b2e462ed2ef64fa18a43217b782b43ff1dbfb"
+            },
+            {
+              "id": "CS09",
+              "status": "not-started",
+              "audioSha256": "34473a444def78a59d95fb223c1dc11253f47626f74ecb2f25ece32b486ad1d6",
+              "fingerprint": "105e79301696b036357e9f5f1b7e6fd5d430867ec534c5eea529157b6899ff7c"
+            },
+            {
+              "id": "CS10",
+              "status": "not-started",
+              "audioSha256": "ed1493dc1faa17adf2a01eda77d9a162793bb759bc9042774f033f29d477d712",
+              "fingerprint": "7eb2217c2d4fd71997560aca72d4e79532a61f60bd97ea4ac27ef3bc21d0d0cf"
+            },
+            {
+              "id": "CS11",
+              "status": "not-started",
+              "audioSha256": "5a4a915898075cf1f06b03b63f43b9835186c7995cf006f2fd91ea38385a8d93",
+              "fingerprint": "d018471c05a51b529aed55448d711fb82b54c979566ca9dd6023d25bfc541ab6"
+            },
+            {
+              "id": "CS12",
+              "status": "not-started",
+              "audioSha256": "85dcef4bd16606564aa4469086018b73392ff4cb0f9042e20225a8971ff00327",
+              "fingerprint": "da71c92c87beeb29baba84da01cd920575133514814f0dc856f87477ca541170"
+            },
+            {
+              "id": "CS13",
+              "status": "not-started",
+              "audioSha256": "13aa57990f2b2a56e7d382587f73565d7644599edf0a7a09db890257ca0b3353",
+              "fingerprint": "0ccc985297ab54a476f60eca8a3298d0d39156f41ef44beafd4a63a324df0fc2"
+            },
+            {
+              "id": "CS14",
+              "status": "not-started",
+              "audioSha256": "bebb0daa220d6403a2150295a0519ed3283cbf1b5a5d1afe503125743232cb58",
+              "fingerprint": "ffb2cebc39c41aea0f4085f79bcef3f051cb2c95249c939ef0a0b594833ae50e"
+            },
+            {
+              "id": "CS15",
+              "status": "not-started",
+              "audioSha256": "183576d278982b02abc110f060fc01761245ff287e7441c2230ccb642a5b1d1b",
+              "fingerprint": "94542c264751d133d5a1ab206d2386ab920fb16add447e94315af66eef2adcd5"
+            },
+            {
+              "id": "CS16",
+              "status": "not-started",
+              "audioSha256": "974c9950408d873c4a57c2de3d365151cf2212e3e18ea2be2b52b670f11cd471",
+              "fingerprint": "aa9fa0a063ded65e5c2c731c05a7dd7fd476288e86abefc765ddb0fb0a668eb8"
+            },
+            {
+              "id": "CS17",
+              "status": "not-started",
+              "audioSha256": "6e9051b7cfd24d076c574b8d7c3e5151833e2916b515e1c181afd713f32c8f36",
+              "fingerprint": "bc6640fc1e320f1c610ab67400afa2ebaa2afc27d42ac500e07eedbac345d48e"
+            },
+            {
+              "id": "CS18",
+              "status": "not-started",
+              "audioSha256": "4285cee2608c076f10d3049811260c174168041eedb20a327f5607f5d794394c",
+              "fingerprint": "bfa71bad05048a12e743cedfe23a741e25e073fb1fb3a1125e9c4242223ea55a"
+            },
+            {
+              "id": "CS19",
+              "status": "not-started",
+              "audioSha256": "a698947db127e2cabbd2f24f491817d3fdd0c945b0f051f552ffe8a65af79afd",
+              "fingerprint": "efe0003f10897244a9657474040c2a2aac5bc2dd1f5c54f22e54f8e0590f2aa7"
+            },
+            {
+              "id": "CS20",
+              "status": "not-started",
+              "audioSha256": "fa8c1bbc3e58690cd5714a76a0ea6aea79e10b737972120cfdd6946a4ab9fdf5",
+              "fingerprint": "69761d29806dcfbbce664a61374cfcf280f234cab581453a3a5fa9cfd5a8c15d"
+            }
+          ]
+        },
+        {
+          "planSha256": "cff37cc859f39e5667ad7cd05c211a7ff3d6281b3c54cc72164f2123c4e0ba8c",
+          "automaticRetries": 0,
+          "published": false,
+          "listening": "not-performed",
+          "requests": [
+            {
+              "id": "CS03",
+              "status": "assessed-timing-available",
+              "audioSha256": "7c483c99e3fe4f015b88dd586d98d92952547d9f88f7aa65adf45269affb4439",
+              "fingerprint": "ad5a32a21c5a9e053d0215fd64774202c9c7f0ad8927cf6d6e873300bd1d4ed2",
+              "startedAt": "2026-11-13T05:51:29.629Z",
+              "endedAt": "2026-11-13T05:51:36.884Z",
+              "flags": {
+                "Mispronunciation": 2,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "narration-CS24b-after-429",
+      "synthesisOrReuseManifest": {
+        "planSha256": "de279932be79d8e9d13c1a17f9e0fc462fc47dbfe9850c8d837ba08d7a3bd285",
+        "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+        "outputFormat": "riff-48khz-16bit-mono-pcm",
+        "automaticRetries": 0,
+        "published": false,
+        "requests": [
+          {
+            "id": "CS24b",
+            "fingerprint": "857b50be8deaa35ab8bb3a9524c837d5473a2a0d3b6952e26ca9d604fad01aff",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:53:02.039Z",
+            "endedAt": "2026-11-13T05:53:06.379Z",
+            "diagnostic": ""
+          }
+        ]
+      },
+      "assessmentManifests": [
+        {
+          "planSha256": "de279932be79d8e9d13c1a17f9e0fc462fc47dbfe9850c8d837ba08d7a3bd285",
+          "automaticRetries": 0,
+          "published": false,
+          "listening": "not-performed",
+          "requests": [
+            {
+              "id": "CS24b",
+              "status": "assessed-timing-available",
+              "audioSha256": "e0fcdb2ead25f16afee26f1f300490c0ce226a071d72dd96b7d08108791092f5",
+              "fingerprint": "857b50be8deaa35ab8bb3a9524c837d5473a2a0d3b6952e26ca9d604fad01aff",
+              "startedAt": "2026-11-13T06:00:20.935Z",
+              "endedAt": "2026-11-13T06:00:28.077Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "narration-CS01-token-recovery",
+      "synthesisOrReuseManifest": {
+        "planSha256": "cff37cc859f39e5667ad7cd05c211a7ff3d6281b3c54cc72164f2123c4e0ba8c",
+        "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+        "outputFormat": "riff-48khz-16bit-mono-pcm",
+        "automaticRetries": 0,
+        "published": false,
+        "requests": [
+          {
+            "id": "CS01",
+            "fingerprint": "2f0e5ab67a97d20a2f684dfa9198494557db4c9b0b05377ee848904023016e6d",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T05:45:51.844Z",
+            "endedAt": "2026-11-13T05:45:59.247Z",
+            "diagnostic": ""
+          }
+        ],
+        "reusedOriginalAudio": {
+          "sourceBatch": "narration-20261113",
+          "reason": "Reuse unchanged WAV after a confirmed HTTP 401 WebSocket handshake rejection; token authentication verified separately on CS02 and CS03. No resynthesis."
+        }
+      },
+      "assessmentManifests": [
+        {
+          "planSha256": "cff37cc859f39e5667ad7cd05c211a7ff3d6281b3c54cc72164f2123c4e0ba8c",
+          "automaticRetries": 0,
+          "published": false,
+          "listening": "not-performed",
+          "requests": [
+            {
+              "id": "CS01",
+              "status": "assessed-timing-available",
+              "audioSha256": "92e348e32df828d97cf6bd2cd7eed76e7ae4a52434f831f407bf405193cb6fc2",
+              "fingerprint": "2f0e5ab67a97d20a2f684dfa9198494557db4c9b0b05377ee848904023016e6d",
+              "startedAt": "2026-11-13T06:00:15.271Z",
+              "endedAt": "2026-11-13T06:00:19.714Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "narration-CS94-count-unit",
+      "synthesisOrReuseManifest": {
+        "planSha256": "7c02cb85833a260cad9618bb25f8f03edae199c2a025727957118598ea558a44",
+        "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+        "outputFormat": "riff-48khz-16bit-mono-pcm",
+        "automaticRetries": 0,
+        "published": false,
+        "requests": [
+          {
+            "id": "CS94",
+            "fingerprint": "b1cd65dd2549015c131a1cd03839c2e4baa4d4c732221136375feacdb548da00",
+            "status": "synthesized-and-decoded",
+            "startedAt": "2026-11-13T06:03:47.689Z",
+            "endedAt": "2026-11-13T06:03:51.088Z",
+            "diagnostic": ""
+          }
+        ]
+      },
+      "assessmentManifests": [
+        {
+          "planSha256": "7c02cb85833a260cad9618bb25f8f03edae199c2a025727957118598ea558a44",
+          "automaticRetries": 0,
+          "published": false,
+          "listening": "not-performed",
+          "requests": [
+            {
+              "id": "CS94",
+              "status": "assessed-timing-available",
+              "audioSha256": "c9905aaf83e4cdb97df6dc89b4376fb4691037232da07fd2d4793f88d992f61d",
+              "fingerprint": "b1cd65dd2549015c131a1cd03839c2e4baa4d4c732221136375feacdb548da00",
+              "startedAt": "2026-11-13T06:03:51.804Z",
+              "endedAt": "2026-11-13T06:03:55.357Z",
+              "flags": {
+                "Mispronunciation": 0,
+                "Omission": 0,
+                "Insertion": 0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "initialAuthenticationTrace": {
+    "startedAt": "2026-11-13T05:46:22.881Z",
+    "resultId": "934EFF67811A4C15930F669559460F87",
+    "reason": 1,
+    "diagnostic": "Azure alignment did not recognize speech; reason=1; rawResponse=false; Unable to contact server. StatusCode: 1006, [REDACTED_URL] Reason:  Unexpected server response: 401",
+    "endedAt": "2026-11-13T05:46:41.474Z"
+  }
+}

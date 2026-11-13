@@ -1,0 +1,291 @@
+{
+  "id": "CS94",
+  "status": "superseded-candidate-awaiting-listening",
+  "original": {
+    "audioFile": "CS94.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "0e580d08697231d1bcdea2a0e71b7b6a04ece42e5e97f8df468f4de74faec812",
+    "duration": 6.51,
+    "words": [
+      {
+        "text": "事件表是刚才逐步形成的记录",
+        "startMs": 70,
+        "durationMs": 2239,
+        "textOffset": 0,
+        "wordLength": 13
+      },
+      {
+        "text": "。",
+        "startMs": 2309,
+        "durationMs": 0,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "最后一行保留七对结果",
+        "startMs": 2629,
+        "durationMs": 0,
+        "textOffset": 14,
+        "wordLength": 10
+      },
+      {
+        "text": "。",
+        "startMs": 2629,
+        "durationMs": 0,
+        "textOffset": 24,
+        "wordLength": 1
+      },
+      {
+        "text": "顺序和清单均为空",
+        "startMs": 4698,
+        "durationMs": 1720,
+        "textOffset": 25,
+        "wordLength": 8
+      },
+      {
+        "text": "。",
+        "startMs": 6418,
+        "durationMs": 0,
+        "textOffset": 33,
+        "wordLength": 1
+      }
+    ],
+    "speech": "事件表是刚才逐步形成的记录。最后一行保留七对结果。顺序和清单均为空。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "a2fa077fbde3056fe106ec75419bace852b62edf7fc78773d53e9d2f77279ec0"
+  },
+  "request": {
+    "id": "CS94",
+    "audioFile": "CS94.wav",
+    "text": "事件表是刚才逐步形成的记录。最后一行保留七对结果。顺序和清单均为空。",
+    "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"shi 4 jian 4 biao 3 shi 4 gang 1 cai 2 zhu 2 bu 4 xing 2 cheng 2 de 5 ji 4 lu 4\">事件表是刚才逐步形成的记录</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zui 4 hou 4 yi 4 hang 2 bao 3 liu 2 qi 1 dui 4 jie 2 guo 3\">最后一行保留七对结果</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"shun 4 xu 4 he 2 qing 1 dan 1 jun 1 wei 2 kong 1\">顺序和清单均为空</phoneme>。<break time=\"400ms\"/></voice></speak>",
+    "fingerprint": "a2fa077fbde3056fe106ec75419bace852b62edf7fc78773d53e9d2f77279ec0",
+    "pauses": [
+      { "offset": 14, "breakMs": 400 },
+      { "offset": 25, "breakMs": 200 },
+      { "offset": 34, "breakMs": 400 }
+    ]
+  },
+  "response": {
+    "Id": "a8adc603a4fb418fb1ff579ed6b0823c",
+    "RecognitionStatus": "Success",
+    "Offset": 400000,
+    "Duration": 64400000,
+    "Channel": 0,
+    "DisplayText": "事件表是刚才逐步形成的记录。最后一行保留七的结果顺序和清单均为空。",
+    "SNR": 38.235924,
+    "NBest": [
+      {
+        "Confidence": 0.9658632,
+        "Lexical": "事件 表 是 刚才 逐步 形成 的 记录 最后 一 行 保留 七 的 结果 顺序 和 清单 均 为 空",
+        "ITN": "事件 表 是 刚才 逐步 形成 的 记录 最后 一 行 保留 七 的 结果 顺序 和 清单 均 为 空",
+        "MaskedITN": "事件表是刚才逐步形成的记录最后一行保留七的结果顺序和清单均为空",
+        "Display": "事件表是刚才逐步形成的记录。最后一行保留七的结果顺序和清单均为空。",
+        "PronunciationAssessment": {
+          "AccuracyScore": 90,
+          "FluencyScore": 91,
+          "CompletenessScore": 90,
+          "PronScore": 90.2
+        },
+        "Words": [
+          {
+            "Word": "事件",
+            "Offset": 400000,
+            "Duration": 4300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 88,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "表",
+            "Offset": 4800000,
+            "Duration": 1700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "是",
+            "Offset": 6600000,
+            "Duration": 1800000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "刚才",
+            "Offset": 8500000,
+            "Duration": 3200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "逐步",
+            "Offset": 11800000,
+            "Duration": 2900000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 91,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "形成",
+            "Offset": 14800000,
+            "Duration": 3100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 88,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "的",
+            "Offset": 18000000,
+            "Duration": 1000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "记录",
+            "Offset": 19100000,
+            "Duration": 4700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "最后",
+            "Offset": 26800000,
+            "Duration": 4400000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "一",
+            "Offset": 31300000,
+            "Duration": 1000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 82,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "行",
+            "Offset": 32400000,
+            "Duration": 1500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "保留",
+            "Offset": 34000000,
+            "Duration": 3300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "七",
+            "Offset": 37400000,
+            "Duration": 1600000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "的",
+            "Offset": 39100000,
+            "Duration": 1200000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "Insertion"
+            }
+          },
+          {
+            "Word": "对",
+            "PronunciationAssessment": { "ErrorType": "Omission" },
+            "Offset": null
+          },
+          {
+            "Word": "结果",
+            "Offset": 40400000,
+            "Duration": 4800000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "顺序",
+            "Offset": 47000000,
+            "Duration": 5300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 59,
+              "ErrorType": "Mispronunciation"
+            }
+          },
+          {
+            "Word": "和",
+            "Offset": 52400000,
+            "Duration": 1500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "清单",
+            "Offset": 54000000,
+            "Duration": 3700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "均",
+            "Offset": 57800000,
+            "Duration": 1600000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "为",
+            "Offset": 59500000,
+            "Duration": 1500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "空",
+            "Offset": 61100000,
+            "Duration": 3700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "selectedAudioSha256": "c9905aaf83e4cdb97df6dc89b4376fb4691037232da07fd2d4793f88d992f61d",
+  "actualListeningPerformed": false
+}

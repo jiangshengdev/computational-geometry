@@ -17,7 +17,15 @@ import {
   type Point,
   type Input,
 } from "../src/example.ts";
-import { rows, visualAt, motionCue, fps } from "../src/timeline.ts";
+import {
+  rows,
+  visualAt,
+  motionCue,
+  fps,
+  audio,
+  audioLeadFrames,
+} from "../src/timeline.ts";
+import { checkAudio } from "./check-audio.ts";
 import { pageList } from "../src/storyboard.ts";
 assert.equal(N, 256n * 9n ** 5n);
 // Independently derive all 21 complete intersections directly from original endpoints.
@@ -184,10 +192,16 @@ for (const row of rows) {
     ),
     "Captions must use single-line fractions",
   );
-  assert(motionCue(row).end <= row.readingFrames);
-  assert(motionCue(row).end < row.captions[0].end);
-  if (row.pauseAfter)
-    assert(row.durationInFrames - row.readingFrames >= 2 * fps);
+  assert(motionCue(row).start >= audioLeadFrames);
+  assert(motionCue(row).end > motionCue(row).start);
+  assert(motionCue(row).end <= row.audioEndFrame);
+  // The coverage extension and transformed candidate are explained after the
+  // opening sentence. Every operation must finish within its measured narration.
+  if (!["CS33", "CS38", "CS64", "CS74"].includes(row.id))
+    assert(motionCue(row).end <= row.captions[0].end);
+  assert.equal(row.speechFrames, Math.ceil(audio[row.id].duration * fps));
+  assert.equal(row.audioEndFrame, audioLeadFrames + row.speechFrames);
+  assert(row.durationInFrames - row.audioEndFrame >= row.pauseAfter * fps);
   for (const c of row.captions) {
     assert.equal(visualAt(row, c.start).caption, c.text);
     assert.equal(visualAt(row, c.end - 1).caption, c.text);
@@ -206,6 +220,10 @@ for (const p of pageList) {
   const last = rows.filter((r) => r.page === p.id).at(-1)!;
   assert.equal(last.step, p.steps.length);
   assert(last.pauseAfter >= 2);
+  assert(
+    last.durationInFrames - Math.max(last.audioEndFrame, motionCue(last).end) >=
+      2 * fps,
+  );
 }
 const registration = rows.find((r) => r.id === "CS41")!;
 assert(!visualAt(registration, 0).queue.includes(7));
@@ -236,6 +254,16 @@ const lastEvent = rows.find((r) => r.id === "CS94")!;
 assert.deepEqual(visualAt(lastEvent, 0).order, []);
 assert.deepEqual(visualAt(lastEvent, 0).queue, []);
 assert.equal(visualAt(lastEvent, 0).results.length, 7);
+const audioReport = checkAudio(process.argv.includes("--decode"));
 console.log(
-  `PASS: 21 complete input pairs; 13 exact event states; ${rows.length} visual steps, caption boundaries and retained page holds. No audio requested.`,
+  JSON.stringify({
+    result: "PASS",
+    inputPairs: 21,
+    events: 13,
+    steps: rows.length,
+    audio: audioReport,
+    checks:
+      "measured caption boundaries, complete original WAV lifetimes, semantic cues and retained page holds",
+    serviceRequests: 0,
+  }),
 );

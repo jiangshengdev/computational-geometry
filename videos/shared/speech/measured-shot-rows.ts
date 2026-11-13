@@ -45,7 +45,7 @@ export function measuredShotRows<
         audio[row.id],
         offset,
         offset + text.length,
-      );
+      ).filter((word) => word.durationMs > 0);
       if (!words.length) throw Error(`${row.id}: missing spoken phrase timing`);
       const last = words[words.length - 1];
       return {

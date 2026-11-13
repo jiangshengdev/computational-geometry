@@ -1,0 +1,25 @@
+{
+  "unresolved": [
+    {
+      "planSha256": "cff37cc859f39e5667ad7cd05c211a7ff3d6281b3c54cc72164f2123c4e0ba8c",
+      "id": "CS24b",
+      "fingerprint": "857b50be8deaa35ab8bb3a9524c837d5473a2a0d3b6952e26ca9d604fad01aff",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-13T05:46:51.999Z",
+      "endedAt": "2026-11-13T05:46:52.890Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    }
+  ],
+  "replacements": [
+    {
+      "planSha256": "de279932be79d8e9d13c1a17f9e0fc462fc47dbfe9850c8d837ba08d7a3bd285",
+      "id": "CS24b",
+      "fingerprint": "857b50be8deaa35ab8bb3a9524c837d5473a2a0d3b6952e26ca9d604fad01aff",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-13T05:53:02.039Z",
+      "endedAt": "2026-11-13T05:53:06.379Z",
+      "diagnostic": "",
+      "audioSha256": "e0fcdb2ead25f16afee26f1f300490c0ce226a071d72dd96b7d08108791092f5"
+    }
+  ]
+}

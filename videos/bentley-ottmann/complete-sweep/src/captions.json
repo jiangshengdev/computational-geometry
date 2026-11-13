@@ -1,0 +1,2116 @@
+{
+  "CS01": [
+    {
+      "text": "这一集把前七章的规则，接到同一份状态和清单上。",
+      "startMs": 70,
+      "endMs": 4328,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从输入出发，走到扫描结束，再核对完整结果。",
+      "startMs": 4780,
+      "endMs": 9170,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS02": [
+    {
+      "text": "先看蓝色输入 A，从原点到点 (2,0)。",
+      "startMs": 60,
+      "endMs": 6610,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "原坐标图横纵每格都是一个单位，O 表示原点。",
+      "startMs": 6969,
+      "endMs": 12350,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS03": [
+    {
+      "text": "橙色输入 B 从点 (1,0) 到点 (4,0)。",
+      "startMs": 40,
+      "endMs": 9190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色虚线只为辨认重叠身份，两份都保留真实位置。",
+      "startMs": 9539,
+      "endMs": 14138,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS04": [
+    {
+      "text": "紫色输入 C 也在高度零，从点 (6,0) 到点 (8,0)。",
+      "startMs": 40,
+      "endMs": 5670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它与前两份之间留有空隙，不能提前补上。",
+      "startMs": 6019,
+      "endMs": 9448,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS05": [
+    {
+      "text": "绿色输入 D 从点 (-1,4) 到点 (7,-4)。",
+      "startMs": 70,
+      "endMs": 9700,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所在直线是 y=3-x，这里的字母 D 始终是输入名。",
+      "startMs": 10039,
+      "endMs": 17860,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS06": [
+    {
+      "text": "红色输入 V 的 x 坐标固定为三。",
+      "startMs": 70,
+      "endMs": 2600,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "下端高度负一，上端高度二，两端都包含。",
+      "startMs": 2610,
+      "endMs": 7468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS07": [
+    {
+      "text": "青色输入 H 从点 (2,3) 到点 (7,-2)。",
+      "startMs": 80,
+      "endMs": 9490,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它与绿色所在直线平行，但不是同一条直线。",
+      "startMs": 9839,
+      "endMs": 13568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS08": [
+    {
+      "text": "粉色菱形的中心标出点输入 Z，位置为 (3,2)。",
+      "startMs": 60,
+      "endMs": 6690,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它就在红色上端，菱形不表示面积，也没有挪动这个点。",
+      "startMs": 7039,
+      "endMs": 11908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS09": [
+    {
+      "text": "本例的端点坐标都是整数，公共分母取一。",
+      "startMs": 70,
+      "endMs": 3848,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "端点坐标绝对值的最大值是八，所以 M=8。",
+      "startMs": 3850,
+      "endMs": 9100,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS10": [
+    {
+      "text": "直接代入剪切专题已经证明的安全系数。",
+      "startMs": 70,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "八加一为九，得到分母二百五十六乘九的五次方。",
+      "startMs": 3549,
+      "endMs": 7778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS11": [
+    {
+      "text": "九的五次方为五万九千零四十九。",
+      "startMs": 50,
+      "endMs": 2760,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "乘以二百五十六，得到分母一千五百一十一万六千五百四十四。",
+      "startMs": 3099,
+      "endMs": 8398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "后面的 s 始终是这个精确分数，不换成小数。",
+      "startMs": 8839,
+      "endMs": 15818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS12": [
+    {
+      "text": "所有输入使用同一个系数。",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "红色下端的新 x 坐标为三减系数，上端为三加两倍系数。",
+      "startMs": 2680,
+      "endMs": 8138,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "上端减下端为 3s>0，所以它不再竖直。",
+      "startMs": 8620,
+      "endMs": 17088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS13": [
+    {
+      "text": "现在只为看清对应关系，显示八分之一系数的放大示意。",
+      "startMs": 70,
+      "endMs": 4568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这幅示意不参与任何范围、顺序或候选计算。",
+      "startMs": 5019,
+      "endMs": 8019,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS14": [
+    {
+      "text": "原图中同列的三个位置，高度分别是负一、零、二。",
+      "startMs": 70,
+      "endMs": 4368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "实际变换后，它们的 x 坐标依次是三减系数、三、三加两倍系数。",
+      "startMs": 4819,
+      "endMs": 10950,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所以不能把它们称为扫描坐标中的同列事件。",
+      "startMs": 11309,
+      "endMs": 14749,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS15": [
+    {
+      "text": "三份水平输入归到同一个固定同线组 G。",
+      "startMs": 60,
+      "endMs": 5590,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "组名不变，但活动成员随开始和结束变化。",
+      "startMs": 5919,
+      "endMs": 9788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "组内不编造高低；其余非零输入各自独占一个组。",
+      "startMs": 10280,
+      "endMs": 14490,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS16": [
+    {
+      "text": "方括号列出当前成员，不是把输入合成一个身份。",
+      "startMs": 70,
+      "endMs": 4287,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "组的最远右端记为 R_G，只能取已开始的活动成员。",
+      "startMs": 4800,
+      "endMs": 9408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS17": [
+    {
+      "text": "后面把三线相遇的原位置记为 P，上端公共位置记为 Q。",
+      "startMs": 60,
+      "endMs": 6130,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "水平直线与青色直线的候选记为 R，原坐标是 (5,0)。",
+      "startMs": 6460,
+      "endMs": 13580,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "候选点 R 与最远右端 R_G 是不同对象。",
+      "startMs": 13979,
+      "endMs": 17258,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS18": [
+    {
+      "text": "把逆变换代入绿色直线的原方程。",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "新高度等于三减去括号中的原 x 坐标。",
+      "startMs": 3270,
+      "endMs": 6760,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS19": [
+    {
+      "text": "右侧展开后有一项 s 乘新高度。",
+      "startMs": 70,
+      "endMs": 3970,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "将这一项移到左边，得到一减系数乘新高度。",
+      "startMs": 4319,
+      "endMs": 9888,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS20": [
+    {
+      "text": "因为一减系数为正，可以除以它。",
+      "startMs": 70,
+      "endMs": 2910,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "绿色输入的新 x 坐标闭范围是 [-1+4s,7-4s]。",
+      "startMs": 3190,
+      "endMs": 10478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS21": [
+    {
+      "text": "青色直线作同样代入，只把常数三换成五。",
+      "startMs": 70,
+      "endMs": 4130,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的闭范围是 [2+3s,7-2s]，高度始终比绿色高。",
+      "startMs": 4490,
+      "endMs": 12708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS22": [
+    {
+      "text": "红色输入原来的 x 坐标为三。",
+      "startMs": 60,
+      "endMs": 2570,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "代入统一变换，新 x 坐标就是三加系数乘新高度。",
+      "startMs": 2899,
+      "endMs": 7480,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS23": [
+    {
+      "text": "两边减三，再除以正数 s，得到扫描所用的高度。",
+      "startMs": 70,
+      "endMs": 4808,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "实际闭范围是 [3-s,3+2s]。",
+      "startMs": 5310,
+      "endMs": 11548,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS24": [
+    {
+      "text": "水平输入高度零，变换不改变它们的 x 坐标。",
+      "startMs": 110,
+      "endMs": 4210,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这三个范围是原始成员的范围，当前覆盖仍只取活动成员。",
+      "startMs": 4569,
+      "endMs": 9457,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS24a": [
+    {
+      "text": "把开头给定的每条线段的两个端点，代入同一个剪切变换。",
+      "startMs": 70,
+      "endMs": 4978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "本片把新x 坐标较小、扫描先遇到的一端叫头，较大、后遇到的一端叫尾。",
+      "startMs": 5420,
+      "endMs": 12277,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "标签使用线段原来的颜色，并保留输入字母。",
+      "startMs": 12729,
+      "endMs": 16698,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS24b": [
+    {
+      "text": "红色两端的新x 坐标相差三倍正系数，所以较低的原端点是头，较高的是尾。",
+      "startMs": 60,
+      "endMs": 7078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "点输入 Z 恰好在红色尾端。",
+      "startMs": 7539,
+      "endMs": 10099,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "它自己没有两个不同端点，始终标为粉色的 Z 点。",
+      "startMs": 10559,
+      "endMs": 15490,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS25": [
+    {
+      "text": "六条线段各提供头尾两个端点，共十二个不同位置。",
+      "startMs": 70,
+      "endMs": 4508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "点输入 Z 就在红色尾端，合为同一个位置，红色尾端与粉色点输入的身份都保留。",
+      "startMs": 5019,
+      "endMs": 11728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所以加入 Z 后仍是十二个位置；表中逐行对应原端点和扫描坐标。",
+      "startMs": 12229,
+      "endMs": 18418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS26": [
+    {
+      "text": "合并后共十二个位置，活动顺序和结果都为空。",
+      "startMs": 70,
+      "endMs": 4208,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "表中按新x 坐标从上到下排列；交点 P 尚未发现，不在其中。",
+      "startMs": 4650,
+      "endMs": 10548,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS27": [
+    {
+      "text": "三线相遇的位置没有输入端点，要在扫描中发现。",
+      "startMs": 70,
+      "endMs": 4238,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "空隙候选也不是预先已知的事件。",
+      "startMs": 4669,
+      "endMs": 7229,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "后面每次按实际扫描坐标取最小的未处理位置。",
+      "startMs": 7689,
+      "endMs": 11329,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS28": [
+    {
+      "text": "先到绿色输入的开始位置，旧活动顺序为空。",
+      "startMs": 70,
+      "endMs": 3908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "只有一份身份，没有输入对可以报告。",
+      "startMs": 4369,
+      "endMs": 7508,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS29": [
+    {
+      "text": "把绿色输入加入顺序，没有第二个组。",
+      "startMs": 70,
+      "endMs": 3330,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此没有候选可查，结果仍为空，清单剩十一项。",
+      "startMs": 3619,
+      "endMs": 8118,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS30": [
+    {
+      "text": "事件表记下处理后的状态，再继续取下一项。",
+      "startMs": 70,
+      "endMs": 3588,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS31": [
+    {
+      "text": "来到原点，开始者是蓝色输入。",
+      "startMs": 70,
+      "endMs": 2918,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "绿色在这里的高度为正，不参加这次事件，所以没有新结果。",
+      "startMs": 3409,
+      "endMs": 8120,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS32": [
+    {
+      "text": "把只有蓝色成员的水平组放在绿色下方。",
+      "startMs": 70,
+      "endMs": 3150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前最远右端为二，尚未开始的橙色成员不能提供覆盖。",
+      "startMs": 3549,
+      "endMs": 7838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS33": [
+    {
+      "text": "新邻居是水平组与绿色组。",
+      "startMs": 40,
+      "endMs": 2140,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "令绿色直线的高度为零，得到候选 x 坐标为三。",
+      "startMs": 2449,
+      "endMs": 6730,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS34": [
+    {
+      "text": "候选在未来，绿色也覆盖它。",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "但三超过当前水平覆盖的右端二，所以不预约。",
+      "startMs": 2969,
+      "endMs": 7068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS35": [
+    {
+      "text": "来到点 (1,0)，蓝色仍在，橙色从这里开始。",
+      "startMs": 70,
+      "endMs": 6400,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先读取这两份原始身份，再更新成员。",
+      "startMs": 6739,
+      "endMs": 10318,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS36": [
+    {
+      "text": "两份左端较大的是一，右端较小的是二。",
+      "startMs": 70,
+      "endMs": 3428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "按已讲的完整区间结论，交集是这两个边界之间的闭线段。",
+      "startMs": 3869,
+      "endMs": 8648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS37": [
+    {
+      "text": "先报告这一整段，而不是只报告当前位置。",
+      "startMs": 70,
+      "endMs": 3708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "右端点早已在输入中给出，不必等扫描走到二。",
+      "startMs": 4169,
+      "endMs": 8378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS38": [
+    {
+      "text": "现在把橙色成员加入水平组。",
+      "startMs": 50,
+      "endMs": 2670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "组仍在绿色下方，但最远右端从二延长到四。",
+      "startMs": 2999,
+      "endMs": 7348,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS39": [
+    {
+      "text": "仍然检查原来的两个邻组。",
+      "startMs": 40,
+      "endMs": 2100,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "候选 x 坐标三严格大于当前的一，也在水平组当前覆盖以内。",
+      "startMs": 2420,
+      "endMs": 7930,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS40": [
+    {
+      "text": "绿色两端也把候选夹在中间，两份真实成员都能到达。",
+      "startMs": 110,
+      "endMs": 4648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "覆盖与严格未来同时满足，才允许登记。",
+      "startMs": 5169,
+      "endMs": 8868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS41": [
+    {
+      "text": "现在把新增交点 P 加入待处理清单，清单剩十项。",
+      "startMs": 50,
+      "endMs": 4678,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "刚才报告区间，现在发现未来点，两项行动要分清。",
+      "startMs": 5119,
+      "endMs": 9988,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS42": [
+    {
+      "text": "来到蓝色右端，它仍具有当前闭端点资格。",
+      "startMs": 70,
+      "endMs": 3708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "但这一同线对已经报告完整区间，不再改报一个点。",
+      "startMs": 4169,
+      "endMs": 8248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS43": [
+    {
+      "text": "移去结束的蓝色成员，橙色仍向右继续。",
+      "startMs": 70,
+      "endMs": 3728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "水平组不退出，最远右端仍为四。",
+      "startMs": 4220,
+      "endMs": 7518,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS44": [
+    {
+      "text": "核对这对邻居，候选还是已登记的交点 P。",
+      "startMs": 40,
+      "endMs": 3777,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "没有覆盖延长，不产生新的发现，也不重报旧区间。",
+      "startMs": 4219,
+      "endMs": 8838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS45": [
+    {
+      "text": "到这里，顺序从下到上是水平组、绿色组。",
+      "startMs": 70,
+      "endMs": 3910,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "一对结果与剩余九个位置原样接到后面的过程。",
+      "startMs": 4219,
+      "endMs": 7819,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS46": [
+    {
+      "text": "从刚才的水平组、绿色组接着走，累计区间继续保留。",
+      "startMs": 50,
+      "endMs": 4398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "现在青色输入开始，它的新位置是 (2+3s,3)。",
+      "startMs": 4890,
+      "endMs": 11270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS47": [
+    {
+      "text": "将新 x 坐标代入绿色高度，得到一减三倍系数除以一减系数。",
+      "startMs": 70,
+      "endMs": 9478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "分子、分母都为正；与三比较，等价于一小于三。",
+      "startMs": 9959,
+      "endMs": 15468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所以绿色在水平组上方，又在青色起点下方。",
+      "startMs": 15959,
+      "endMs": 19998,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS48": [
+    {
+      "text": "没有其他输入经过这个起点，因此无新结果。",
+      "startMs": 70,
+      "endMs": 3980,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "青色组加入最上方，只产生绿色与青色这一对新邻接。",
+      "startMs": 4269,
+      "endMs": 8950,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS49": [
+    {
+      "text": "两条直线斜率同为负一除以一减系数，常数项不同。",
+      "startMs": 70,
+      "endMs": 6610,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它们平行，不预约；水平与青色之间仍隔着绿色。",
+      "startMs": 6909,
+      "endMs": 11568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS50": [
+    {
+      "text": "来到红色输入的下端，新高度为负一。",
+      "startMs": 70,
+      "endMs": 3590,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "水平组高度零，绿色高度为 s 除以一减 s，青色又更高。",
+      "startMs": 3969,
+      "endMs": 11098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此没有旧输入经过这个起点。",
+      "startMs": 11549,
+      "endMs": 14029,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS51": [
+    {
+      "text": "红色组插到最下方，新邻居只有它与水平组。",
+      "startMs": 70,
+      "endMs": 3628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "原来的水平、绿色邻接仍保留。",
+      "startMs": 4199,
+      "endMs": 6518,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS52": [
+    {
+      "text": "让红色的新高度等于零，得到新 x 坐标三。",
+      "startMs": 70,
+      "endMs": 3850,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "红色与橙色当前成员都覆盖它，并且三大于三减系数。",
+      "startMs": 3860,
+      "endMs": 8948,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS53": [
+    {
+      "text": "这个真实未来位置已经在清单中，所以不再插入。",
+      "startMs": 70,
+      "endMs": 4068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "原来的预约仍然有效，到站以后才找齐全部参与者。",
+      "startMs": 4540,
+      "endMs": 8950,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS54": [
+    {
+      "text": "取出刚才补检发现的位置。",
+      "startMs": 70,
+      "endMs": 2150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "红色、水平组和绿色在这里的高度都是零，组成整个相遇块。",
+      "startMs": 2549,
+      "endMs": 7448,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS55": [
+    {
+      "text": "青色的高度严格为正，不经过当前点。",
+      "startMs": 70,
+      "endMs": 3298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它保留在相遇块上方，不参加当前报告。",
+      "startMs": 3769,
+      "endMs": 7208,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS56": [
+    {
+      "text": "水平组当前只含橙色成员，不能带回已结束的蓝色。",
+      "startMs": 70,
+      "endMs": 4248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色尚未开始，也不能加入名单。",
+      "startMs": 4720,
+      "endMs": 7708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "三份当前参与者都严格穿过这个点。",
+      "startMs": 8159,
+      "endMs": 10958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS57": [
+    {
+      "text": "先把橙色成员与绿色输入配对，交集为当前点。",
+      "startMs": 70,
+      "endMs": 4468,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS58": [
+    {
+      "text": "再把同一橙色成员与红色输入配对，另留一条点结果。",
+      "startMs": 70,
+      "endMs": 4900,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "位置相同，输入对身份不同。",
+      "startMs": 5269,
+      "endMs": 8108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS59": [
+    {
+      "text": "绿色与红色之间也有一条点结果。",
+      "startMs": 40,
+      "endMs": 2370,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "加上早先的完整区间，现在累计四对。",
+      "startMs": 2749,
+      "endMs": 6108,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "旧区间没有切碎，也没有改报为点。",
+      "startMs": 6589,
+      "endMs": 9698,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS60": [
+    {
+      "text": "绿色斜率为负，水平组斜率为零，红色斜率为正。",
+      "startMs": 70,
+      "endMs": 4748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "三组都继续，因此右侧按这个次序排列。",
+      "startMs": 5189,
+      "endMs": 8748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS61": [
+    {
+      "text": "现在重排整个相遇块：绿色到下方，红色到上方。",
+      "startMs": 70,
+      "endMs": 4338,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "水平组仍在中间，青色始终保留在块外上方。",
+      "startMs": 4769,
+      "endMs": 8588,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "竖列中的间距只表示离散顺序，不表示几何高度。",
+      "startMs": 9059,
+      "endMs": 13448,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS62": [
+    {
+      "text": "绿色与水平组、水平组与红色，再求交仍是当前点。",
+      "startMs": 70,
+      "endMs": 4618,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "严格未来条件拒绝它们，不能把当前点重新预约。",
+      "startMs": 5069,
+      "endMs": 9038,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS63": [
+    {
+      "text": "换序之后，红色与青色之间不再隔着绿色组。",
+      "startMs": 70,
+      "endMs": 3630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这对新邻居触发边界检查，下方没有块外组。",
+      "startMs": 3969,
+      "endMs": 8100,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS64": [
+    {
+      "text": "在红色原直线上代入青色方程，原高度为二。",
+      "startMs": 70,
+      "endMs": 4388,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "统一变换后，候选为 (3+2s,2)，记为 Q′。",
+      "startMs": 4819,
+      "endMs": 13490,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS65": [
+    {
+      "text": "这个点正是红色闭右端，青色也覆盖它。",
+      "startMs": 70,
+      "endMs": 3450,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它的新 x 坐标大于当前的三，所以严格在未来。",
+      "startMs": 3800,
+      "endMs": 7658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS66": [
+    {
+      "text": "红色尾端与点输入的共同位置，早已进入初始清单。",
+      "startMs": 70,
+      "endMs": 4118,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "现在只保留原记录，不新增第二份，也不到站前报告。",
+      "startMs": 4569,
+      "endMs": 9398,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS67": [
+    {
+      "text": "来到原位置 (3,2) 对应的新位置。",
+      "startMs": 60,
+      "endMs": 5110,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "清单给出红色结束与点输入两种身份，先都保留下来。",
+      "startMs": 5449,
+      "endMs": 9908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS68": [
+    {
+      "text": "青色输入严格穿过当前点，要从旧活动顺序中找齐。",
+      "startMs": 70,
+      "endMs": 4748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "完整名单包含红色结束者、青色穿过者和粉色点输入。",
+      "startMs": 5219,
+      "endMs": 9259,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS69": [
+    {
+      "text": "当前点的高度是二，水平组与绿色都不在这里。",
+      "startMs": 70,
+      "endMs": 3860,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以这两组不参加当前报告，仍保留在下方。",
+      "startMs": 4219,
+      "endMs": 7958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS70": [
+    {
+      "text": "先报告红色闭端点与青色穿过者的交集。",
+      "startMs": 50,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "红色即将结束，不影响当前端点资格。",
+      "startMs": 3549,
+      "endMs": 6930,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS71": [
+    {
+      "text": "点输入与红色线段也配成一对，完整交集仍是当前点。",
+      "startMs": 70,
+      "endMs": 4568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS72": [
+    {
+      "text": "点输入还与青色线段配成一对。",
+      "startMs": 70,
+      "endMs": 2630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "三条新结果加到原有四条之上，累计七对。",
+      "startMs": 3049,
+      "endMs": 7038,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS73": [
+    {
+      "text": "完成报告后，红色退出，青色继续。",
+      "startMs": 70,
+      "endMs": 3938,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "点输入不获得斜率，也不进入后续顺序。",
+      "startMs": 4389,
+      "endMs": 7718,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "更新后从下到上是绿色、水平组、青色。",
+      "startMs": 8179,
+      "endMs": 11139,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS74": [
+    {
+      "text": "移去红色以后，水平组与青色成为邻居。",
+      "startMs": 70,
+      "endMs": 3337,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "令青色的新高度为零，得到候选新 x 坐标为五。",
+      "startMs": 3819,
+      "endMs": 8150,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS75": [
+    {
+      "text": "因为系数小于一，五在当前新位置右方。",
+      "startMs": 60,
+      "endMs": 3967,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "青色覆盖它，但水平组只有橙色成员，覆盖只到四。",
+      "startMs": 4400,
+      "endMs": 9168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "尚未开始的紫色不能提供覆盖，所以拒绝预约。",
+      "startMs": 9629,
+      "endMs": 13560,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "CS76": [
+    {
+      "text": "这一段结束后，七对结果全部保留，清单还剩五项。",
+      "startMs": 70,
+      "endMs": 4778,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "接下来要把剩余输入处理完，不能只因结果已齐就结束扫描。",
+      "startMs": 5239,
+      "endMs": 10068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS77": [
+    {
+      "text": "来到橙色右端，当前只有橙色输入参与。",
+      "startMs": 70,
+      "endMs": 3578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "没有其他输入覆盖当前点，因此没有新结果。",
+      "startMs": 4019,
+      "endMs": 7800,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS78": [
+    {
+      "text": "移去橙色后，水平组已没有活动成员。",
+      "startMs": 70,
+      "endMs": 3458,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "整个组退出顺序，剩下绿色和青色。",
+      "startMs": 3919,
+      "endMs": 7078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS79": [
+    {
+      "text": "新的相邻两组斜率相同而截距不同，所以平行。",
+      "startMs": 70,
+      "endMs": 4608,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "候选点 (5,0) 从未登记，清单不会在那里停下。",
+      "startMs": 5069,
+      "endMs": 11968,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS80": [
+    {
+      "text": "保留七对结果，直接前往紫色左端。",
+      "startMs": 40,
+      "endMs": 3278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS81": [
+    {
+      "text": "紫色在六开始，先核对当前点。",
+      "startMs": 40,
+      "endMs": 3068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "绿色和青色都在它下方，没有新的同点配对。",
+      "startMs": 3519,
+      "endMs": 7028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS82": [
+    {
+      "text": "紫色重新激活固定的水平组，当前成员只有紫色。",
+      "startMs": 40,
+      "endMs": 4028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "组排在最上方，覆盖到八；旧成员不会复活。",
+      "startMs": 4469,
+      "endMs": 8598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS83": [
+    {
+      "text": "检查青色与水平组，原直线仍交于五。",
+      "startMs": 40,
+      "endMs": 3720,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "候选已经在当前扫描位置左方，不能成为未来事件。",
+      "startMs": 4069,
+      "endMs": 8478,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS84": [
+    {
+      "text": "此外，紫色只覆盖六到八，五也不在它的闭范围里。",
+      "startMs": 70,
+      "endMs": 4570,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同线身份没有填平橙色与紫色之间的旧空隙。",
+      "startMs": 4944,
+      "endMs": 8624,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS85": [
+    {
+      "text": "两项拒绝理由都成立，保留七对结果，清单剩三项。",
+      "startMs": 70,
+      "endMs": 4838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS86": [
+    {
+      "text": "先到绿色右端。",
+      "startMs": 70,
+      "endMs": 1430,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "青色此刻在上方，紫色高度为零，均不在当前点。",
+      "startMs": 1799,
+      "endMs": 6038,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前没有新配对。",
+      "startMs": 6509,
+      "endMs": 7909,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS87": [
+    {
+      "text": "绿色从最下方退出，青色和紫色原本就相邻。",
+      "startMs": 40,
+      "endMs": 4087,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "没有新边界要预约；结果仍为七对，清单剩两项。",
+      "startMs": 4520,
+      "endMs": 9028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS88": [
+    {
+      "text": "记录这一行后继续前进。",
+      "startMs": 70,
+      "endMs": 1870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS89": [
+    {
+      "text": "再到青色右端。",
+      "startMs": 70,
+      "endMs": 1390,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色高度为零，不参加这个点。",
+      "startMs": 1799,
+      "endMs": 4428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此仍然没有新结果。",
+      "startMs": 4910,
+      "endMs": 6700,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS90": [
+    {
+      "text": "移去青色以后只剩一个组，不存在相邻两组。",
+      "startMs": 40,
+      "endMs": 3488,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "没有新预约，清单只剩紫色右端。",
+      "startMs": 3980,
+      "endMs": 7048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS91": [
+    {
+      "text": "记下这一行，处理最后一个位置。",
+      "startMs": 70,
+      "endMs": 2598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS92": [
+    {
+      "text": "最后来到紫色右端。",
+      "startMs": 70,
+      "endMs": 1630,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "没有其他参与者，因此没有新结果。",
+      "startMs": 1999,
+      "endMs": 5030,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS93": [
+    {
+      "text": "移去紫色，水平组再次变空并退出。",
+      "startMs": 70,
+      "endMs": 3480,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "活动顺序为空，待处理清单也为空，扫描至此终止。",
+      "startMs": 3819,
+      "endMs": 8920,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS94": [
+    {
+      "text": "事件表是刚才逐步形成的记录。",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "最后一行保留七份配对结果，顺序和清单均为空。",
+      "startMs": 2849,
+      "endMs": 6858,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS95": [
+    {
+      "text": "扫描结束后，用同一个逆变换还原每份完整交集。",
+      "startMs": 70,
+      "endMs": 4338,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "结果身份保留，不把多个配对合并成一个结果。",
+      "startMs": 4769,
+      "endMs": 8750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS96": [
+    {
+      "text": "蓝色与橙色的两个边界高度都是零，x 坐标不变。",
+      "startMs": 70,
+      "endMs": 4750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "还原后仍是从点 (1,0) 到点 (2,0) 的完整闭区间。",
+      "startMs": 5119,
+      "endMs": 11870,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS97": [
+    {
+      "text": "橙色与绿色的点结果高度也是零，还原为点 (3,0)。",
+      "startMs": 70,
+      "endMs": 6380,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS98": [
+    {
+      "text": "橙色与红色、绿色与红色分别保留为两对结果。",
+      "startMs": 70,
+      "endMs": 3750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它们还原到同一个点，但不是同一份配对记录。",
+      "startMs": 4099,
+      "endMs": 7708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS99": [
+    {
+      "text": "红色与青色的结果，新x 坐标减去二倍系数，得到三。",
+      "startMs": 40,
+      "endMs": 5118,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "高度保持二，因此还原为点 (3,2)。",
+      "startMs": 5589,
+      "endMs": 10740,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS100": [
+    {
+      "text": "红色与点输入也还原到同一原位置，配对身份继续单独保留。",
+      "startMs": 70,
+      "endMs": 5068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS101": [
+    {
+      "text": "青色与点输入是第七对，同样还原到点 (3,2)。",
+      "startMs": 70,
+      "endMs": 6320,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "至此七对完整交集都已还原。",
+      "startMs": 6669,
+      "endMs": 8869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS102": [
+    {
+      "text": "区间结果只有蓝色与橙色这一对。",
+      "startMs": 70,
+      "endMs": 2270,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "另外六对是点结果，它们只占据两个不同点位置。",
+      "startMs": 2680,
+      "endMs": 6418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS103": [
+    {
+      "text": "再独立检查没有输出的配对。",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色、橙色的右端分别为二和四，都小于紫色左端六。",
+      "startMs": 2399,
+      "endMs": 7418,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这两对同线，但闭范围没有相接。",
+      "startMs": 7889,
+      "endMs": 11120,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS104": [
+    {
+      "text": "绿色与水平直线的唯一候选是点 (3,0)。",
+      "startMs": 110,
+      "endMs": 6970,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它在蓝色右端之外，也在紫色左端之前，所以这两对为空。",
+      "startMs": 7339,
+      "endMs": 12248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS105": [
+    {
+      "text": "红色与水平直线也只有这个候选。",
+      "startMs": 70,
+      "endMs": 2750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "相同的水平范围检查排除了蓝色和紫色。",
+      "startMs": 3149,
+      "endMs": 6109,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "CS106": [
+    {
+      "text": "青色与水平直线的候选在五。",
+      "startMs": 40,
+      "endMs": 2610,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "蓝色只到二，橙色只到四，紫色从六开始；三份都不覆盖它。",
+      "startMs": 2949,
+      "endMs": 9020,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS107": [
+    {
+      "text": "绿色与青色的原方程斜率都是负一，截距分别为三和五。",
+      "startMs": 110,
+      "endMs": 5230,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两条直线平行且不同，因此这对也为空。",
+      "startMs": 5649,
+      "endMs": 9278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS108": [
+    {
+      "text": "点输入高度为二，三份水平输入都在高度零。",
+      "startMs": 70,
+      "endMs": 3938,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此点输入与它们形成的三对都为空。",
+      "startMs": 4369,
+      "endMs": 7128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS109": [
+    {
+      "text": "最后把点输入的x 坐标三代入绿色方程，得到高度零。",
+      "startMs": 80,
+      "endMs": 5008,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "它不等于点输入的高度二，所以最后这对为空。",
+      "startMs": 5469,
+      "endMs": 9198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS110": [
+    {
+      "text": "七对非空加十四对空，覆盖七份输入的全部二十一种无序配对。",
+      "startMs": 70,
+      "endMs": 5517,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色参与的每一对都已排除，完整结果集合核对结束。",
+      "startMs": 5969,
+      "endMs": 10308,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "CS111": [
+    {
+      "text": "这一次扫描把重叠、同点、原竖直线段与点输入接在同一份状态上。",
+      "startMs": 70,
+      "endMs": 5430,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "每站先报告，再更新并检查新邻接；清单耗尽后还原完整结果。",
+      "startMs": 5799,
+      "endMs": 11650,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ]
+}
