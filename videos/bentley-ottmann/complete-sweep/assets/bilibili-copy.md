@@ -56,5 +56,3 @@ https://cgd.jiangshengdev.com/docs/segment-intersection/complete-sweep/
 | 4:3 | [封面](covers/bilibili-cover-4x3.png) | [提示词](covers/bilibili-cover-4x3.png.prompt.txt) | 1448×1086，精确 4:3 |
 
 两张采用封面通过 Node 图片生成 CLI 的 `generate-batch` 入口从完整文字独立生成，无图片输入。请求参数为 `gpt-image-2.6-sunburst`、`quality=max`、`size=auto`、不透明 PNG。逐张检查中文、章号、对象颜色、蓝橙重叠范围、水平空隙和两处公共位置；完整解码确认所有像素不透明。封面表达原始输入关系，不用于量取坐标。保留服务返回的原始尺寸，没有缩放、裁切、补边或转换 JPG。
-
-未采用的横版首图 [bilibili-cover-16x9.png](covers/bilibili-cover-16x9.png) 及其[提示词](covers/bilibili-cover-16x9.png.prompt.txt) 保留作生成记录：蓝色短线被画到中央三线交点，错误扩大覆盖范围。v2 通过补充完整提示词重新生成，蓝色在交点左侧结束；首版不用于发布。
