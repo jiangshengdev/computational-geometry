@@ -8,6 +8,9 @@
 - 提供命令或执行相关操作前，必须核验当前 Remotion 版本、该版本指定的 Headless Shell 版本，以及已安装二进制的真实路径和实际版本；核验一致后固定使用该二进制。不能仅凭文件存在、缓存编号较新或名称含有 `headless` 判断匹配，也不能直接采用未经版本核验的 Playwright 缓存浏览器。
 - Remotion CLI 命令必须显式指定 `--chrome-mode=headless-shell` 和已核验的 `--browser-executable`；API 或其他自动化工具必须显式传入同一已核验二进制的路径。禁止使用完整 Google Chrome、Chrome for Testing、其他 Chromium 或不匹配版本的 Headless Shell；完整 Chrome 的无头模式不满足本约束。
 - 缺失对应二进制、版本不匹配或无法完成核验时，停止提供可执行导出命令及依赖该浏览器的操作，报告缺失项，等待用户自行安装并明确通知后重新核验。禁止自动安装、自动下载、删除路径参数触发下载或回退到其他浏览器。
+- 查找已安装浏览器时，先检查当前工程的 `node_modules/.remotion/`，显式包含被忽略的目录；不得仅搜索 Playwright 缓存后断言浏览器缺失。用户报告安装完成后，核验该工程实际二进制的路径与 `--version` 输出。
+- 需要用户安装浏览器时，使用当前工程已安装的 Remotion：先给出 `cd <当前工程绝对路径>`，再给出完整命令 `pnpm --config.verify-deps-before-run=false exec remotion browser ensure --chrome-mode=headless-shell`。保留显式的 `--chrome-mode=headless-shell`；不以手动下载、解压浏览器包替代该入口。此安装命令仅供用户执行，不授权助手安装；上文渲染命令的 `--browser-executable` 要求不适用于首次安装。
+- 用户要求沿用之前的安装方式或指出命令不一致时，先读取原始聊天中的完整命令及成功输出，再按当前工程替换工作目录；不得凭记忆反复提供猜测命令，也不得把历史安装成功当作当前工程已安装的证据。
 - 依据：Remotion [issue #9473](https://github.com/remotion-dev/remotion/issues/9473) 报告完整 Chrome 并发渲染时偶发单帧内容丢失或画面重复平铺；[PR #9577](https://github.com/remotion-dev/remotion/pull/9577) 仅补充浏览器选用建议，不是代码修复。使用 Headless Shell 不替代实际产物检查。
 
 ## 默认制作配置
