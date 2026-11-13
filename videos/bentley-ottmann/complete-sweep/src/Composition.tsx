@@ -1,25 +1,21 @@
-import { CalculateMetadataFunction, Composition } from "remotion";
-
-type Props = {};
-
-const calculateMetadata: CalculateMetadataFunction<Props> = () => {
-  return {};
-};
-
-export const MyComposition = () => {
-  return (
-    <Composition
-      id="CompleteSweep"
-      component={MyComponent}
-      durationInFrames={120}
-      fps={60}
-      width={1920}
-      height={1080}
-      calculateMetadata={calculateMetadata}
-    />
-  );
-};
-
-export const MyComponent: React.FC<Props> = () => {
-  return null;
-};
+import { Sequence, useCurrentFrame } from "remotion";
+import { rows, visualAt, type TimelineRow } from "./timeline";
+import { TeachingPage } from "./TeachingPage";
+function Shot({ row }: { row: TimelineRow }) {
+  return <TeachingPage row={row} state={visualAt(row, useCurrentFrame())} />;
+}
+/** Visuals-only stage. No audio component, source, synthesis, or export side effects. */
+export const MyComposition = () => (
+  <>
+    {rows.map((row) => (
+      <Sequence
+        key={row.id}
+        from={row.from}
+        durationInFrames={row.durationInFrames}
+        name={row.id}
+      >
+        <Shot row={row} />
+      </Sequence>
+    ))}
+  </>
+);

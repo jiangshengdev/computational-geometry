@@ -1,54 +1,73 @@
-# Remotion video
+# 第八章：把所有规则放回一次扫描
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+本集依据 [规格 #386](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/386)，按 [#387](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/387) → [#388](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/388) → [#389](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/389) 实现全片画面。当前仅为画面、字幕和暂定时序；没有独立口播稿、语音请求或音频。#390 配音和 #391 成片交付尚未启动，不提供导出入口。
 
-Welcome to your Remotion project!
+## 当前工程与内容
 
-## Commands
+Composition 为 `CompleteSweep`，1920×1080、60 fps，共 33 页、111 个稳定步骤 CS01–CS111。字幕是 `src/storyboard.ts` 中的 `captions`，正文、历史依据、文章位置和旧集承接位置与它们放在同一分镜源中。`timeline.ts` 从字幕按阅读估算形成暂定时间：73,718 帧，约 20 分 29 秒。每页末保留最后一句和已揭示内容两秒，不设置答题等待。20～25 分钟只是规格估计，不为凑时长增加复述。
 
-**Install Dependencies**
+| 步骤       | 教学范围                                                                         |
+| ---------- | -------------------------------------------------------------------------------- |
+| CS01–CS27  | 七输入、精确系数、统一变换、组与覆盖、十二个初始位置                             |
+| CS28–CS45  | E1–E4：拒绝覆盖外 P、完整区间报告、延长覆盖后登记 E7、短成员退出                 |
+| CS46–CS76  | E5–E8：三组同点、分对报告、换序、新邻接去重、闭端点与点输入、拒绝 R              |
+| CS77–CS94  | E9–E13：组变空、C 再入场、过去且覆盖外的候选、逐个结束至双空                     |
+| CS95–CS111 | 七对完整交集逐对还原、一个区间与六对点、两个点位置、十四空对的分组核对、C 无结果 |
 
-```console
-pnpm i
+`src/example.ts` 保存七份原始输入，以 bigint 分子及公共分母表达实际扫描坐标 `s=1/15116544`，计算所有十三站的活动成员、顺序、覆盖和队列。`scripts/check-content.ts` 独立从原始端点计算全部 21 对完整交集，对照七对非空答案，并核对各站预期状态、同点参与者、唯一新增事件及逆变换。
+
+主图始终是横纵等单位的原坐标图；离散顺序竖列明确不代表几何高度。只有 CS13 使用八分之一的放大剪切示意，并明确禁止将其用于实际计算。覆盖页把 A/B/C 分行辨认，但共用横向刻度；A/B 的已报告完整区间独立保留。固定同线成员与当前活动成员分开，最大覆盖右端 `R_G` 与候选点 R 不混用。结尾用逐对映射表还原扫描结果，不把原坐标点混画进剪切图。
+
+## 文件与参考继承
+
+| 职责                         | 本集入口                                         | 基准及必要差异                                                                                                                    |
+| ---------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| 分镜、字幕及内容对应         | `src/storyboard.ts`                              | 直接对照第八章文章和前序六集实际口播；逐页 `source` / `reference` 标出已有结论与新增案例                                          |
+| 左图右文、累积正文、历史依据 | `src/TeachingPage.tsx`                           | 沿用第七章 `vertical-segments` 的实际 `MathLessonPage` / `TeachingMathLines` / `TeachingReferences`；显式左图，依据静态，字幕中性 |
+| 数学与对象色                 | `src/SweepDiagram.tsx`、共享数学组件             | A 蓝、B 橙、C 紫、D 绿、V 红、H 青、Z 粉，与本章文章一致；KaTeX 数学、1:1 SVG、正向坐标轴及 O                                     |
+| 几何、活动顺序、覆盖与结果   | `src/SweepDiagram.tsx`                           | 继承第七章的原始身份、活动顺序与完整结果表达；本集新增三组换序、覆盖延长、同组再次入场和七对结果表                                |
+| 提示与保留                   | `src/timeline.ts`                                | 线段提示复用 `AttentionMarks`；端点采用固定半径单次提示；动作在对应首句结束前完成，字幕末句和已报告结果持续保留                   |
+| 正式播放                     | `src/Composition.tsx`、`src/Root.tsx`            | 共享 `NarratedLesson` 会挂载音频，因此本阶段只用 Remotion Sequence 连接同一 `TeachingPage`，不导入音频组件                        |
+| 检查                         | `src/LayoutCheck.tsx`、`scripts/check-layout.ts` | 复用共享生产页面检查、独立端口和浏览器校验，覆盖字幕边界、动作起中末、页末及 1:1 SVG；禁止挂载媒体                                |
+
+直接阅读的前序内容包括 `same-point-participants`、`same-point-updates`、`overlap-reporting`、`overlap-discovery`、`same-column-events`、`vertical-segments` 的口播源。已有剪切证明、同点规则及邻居发现证明只作依据引用；本集新增七输入代入、十三站因果联系和完整答案核对。工程不导入相邻集的内容或音频。
+
+## 检查入口
+
+依赖由已有锁文件固定。浏览器必须与 Remotion 4.0.540 对应，当前要求 Chrome Headless Shell 158.0.8127.2。当前云实例准备路径如下；其他环境应使用自身已核验的对应路径。具体运行约束见[工程操作说明](../../../docs/agents/videos/operations.md)和[唯一浏览器约束](../../../docs/agents/videos/configuration.md#唯一浏览器约束)。
+
+```sh
+cd /workspace/computational-geometry/videos/bentley-ottmann/complete-sweep
+export REMOTION_BROWSER_EXECUTABLE=/workspace/.cg-tools/headless-158/chrome-headless-shell-linux64/chrome-headless-shell
+pnpm --config.verify-deps-before-run=false run lint
+pnpm --config.verify-deps-before-run=false run video:check-content
+pnpm --config.verify-deps-before-run=false run video:check-layout
+pnpm --config.verify-deps-before-run=false run build
 ```
 
-**Start Preview**
+`build` 仅打包网页，不渲染或导出媒体。布局检查可用 `--shots=CS41,CS42` 定向复查，`--screenshots` 只保存浏览器页面证据。检查自行申请独立端口，结束关闭自身服务和会话；不会复用或关闭用户服务器。`dev` 只启动 Studio，不自动打开浏览器。
 
-```console
-pnpm run dev
-```
+## 当前验收边界
 
-**Render video**
+数学与字幕时序检查已覆盖 111 步、十三事件和全部 21 对输入。独立检查由未参与制作的代理直接对照基准、分镜和生产页面，观察字幕切换、提示结束后的内容保留及关键过程的正常速播放；同一检查者的续查是复查，不算新增独立审查。
 
-```console
-pnpm exec remotion render
-```
+独立检查已完成 #387–#389 的内容对应与防重复检查，并在生产页面正常速度播放关键过程：CS13 剪切、CS36 边界选择、CS38 覆盖延长、CS41/42 登记交接、CS57–61 报告与三组换序、CS70–73 报告后退出、CS93/94 双空终态、CS98/99 逆变换接续、CS110/111 收束。未发现当前阶段未解决阻断；这是关键过程播放和完整内容/状态核对，不是连续全片观看或可见桌面验收。
 
-**Upgrade Remotion**
+| 问题定位           | 当前修复及复核范围                                                 | 结果 |
+| ------------------ | ------------------------------------------------------------------ | ---- |
+| VA387-01           | CS18/20/21/22/23 纯公式采用数学撇号；检查 KaTeX 与实际画面         | 核销 |
+| VA387-02           | CS20/21/23 在正文同时给出 D/H/V 高度与扫描闭范围                   | 核销 |
+| VA387-03           | 待处理 E10–E13 使用完整多位下标；CS26/34/38 实景                   | 核销 |
+| VA387-04           | Z/B 标签移位并添加引线；CS13 剪切始中末随对象保持归属              | 核销 |
+| VA387-05           | CS41 在对应首句结束前完成 E7 登记；CS42 去掉 E4 后剩九项           | 核销 |
+| VA388-01           | CS46–49 依据区分数不等式改为完整自然语言，消除断行拆式             | 核销 |
+| CS73 退出审计      | 退出者向右淡出并在结束后卸载，H 入位；复核中途与终态               | 核销 |
+| CS103 内容对应补充 | CS103–109 分组解释十四空对，CS110 核对总数；直接对照文章与实际页面 | 完成 |
 
-```console
-pnpm exec remotion upgrade
-```
+独立检查者另执行 ESLint/TypeScript、内容检查和 19 个定向布局（包含 CS103–111），均通过。定向续查 VA-CS-06：CS32/78/82/93 新组立即显示进入成员、退出组保留原成员至卸载，消除暂时的 G[]；VA-CS-07：CS51/73/87 普通补位只竖向移动，E7 真正换序仍走原弧线，消除 G[C] 压到主图 x 标签；两项均以正常速播放复核核销。
 
-## Docs
+制作方 ESLint/TypeScript、内容检查及 Remotion 网页打包通过。布局首次遍历 CS01–104 共 1,271 个状态，发现 CS87 中途标签遮挡；修复后九个受影响步骤的 110 个状态通过。结尾新版 CS103–111 的 107 个状态另行通过。合并仍有效的检查后，当前 CS01–111 共 **1,353 个不重复页面状态通过**；没有把首次失败写成通过，也没有为局部修复重复全片遍历。当前字幕、首句动作截止、页末保留及两次票间状态交接由内容检查同步核验。
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+所有临时 Studio 和浏览器已关闭；本轮网页打包、临时截图、诊断日志和浏览器下载包已清理，安装的依赖及匹配浏览器保留用于后续预览。当前播放和检查只依赖正式源文件与已安装工具，没有媒体产物或暂存配音路径。
 
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+本阶段不等于音画同步、读音、可见桌面或成片验收。后续在 #390 审校独立口播并获得原速音频后，用实测时间替换当前阅读估算，重新对齐字幕和语义动作；不得把暂定帧数当作实测冻结值。助手不渲染或导出视频，也未发布评论或关闭任务。
