@@ -1,0 +1,30 @@
+main:
+  web_trigger_github_pull:
+    - name: 从 GitHub 获取新代码
+      imports:
+        - https://cnb.cool/jiangshengdev/secret/-/blob/main/github.yml
+      stages:
+        - name: GitHub main → CNB main
+          image: tencentcom/git-sync
+          settings:
+            target_url: https://github.com/jiangshengdev/computational-geometry.git
+            auth_type: https
+            username: jiangshengdev
+            password: ${GH_TAG_PUSH_TOKEN}
+            branch: main
+            sync_mode: pull
+
+  web_trigger_github_push:
+    - name: 推送到 GitHub
+      imports:
+        - https://cnb.cool/jiangshengdev/secret/-/blob/main/github.yml
+      stages:
+        - name: CNB main → GitHub main
+          image: tencentcom/git-sync
+          settings:
+            target_url: https://github.com/jiangshengdev/computational-geometry.git
+            auth_type: https
+            username: jiangshengdev
+            password: ${GH_TAG_PUSH_TOKEN}
+            branch: main
+            sync_mode: push

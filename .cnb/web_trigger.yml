@@ -1,0 +1,17 @@
+branch:
+  - reg: ^main$
+    buttons:
+      - name: 从 GitHub 获取新代码
+        description: 使用官方 Git Sync 插件，将 GitHub main 同步到 CNB main。
+        event: web_trigger_github_pull
+        groupName: GitHub 同步
+        permissions:
+          roles:
+            - master
+      - name: 推送到 GitHub
+        description: 使用官方 Git Sync 插件，将 CNB main 同步到 GitHub main。
+        event: web_trigger_github_push
+        groupName: GitHub 同步
+        permissions:
+          roles:
+            - master
