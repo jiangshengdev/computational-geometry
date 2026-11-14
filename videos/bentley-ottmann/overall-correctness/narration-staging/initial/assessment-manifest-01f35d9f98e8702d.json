@@ -1,0 +1,282 @@
+{
+  "planSha256": "24bd7b83c28ff1d83fd6362db455e7130b0b4ff8c99a54182d4776930b6ae8a6",
+  "automaticRetries": 0,
+  "published": false,
+  "listening": "not-performed",
+  "requests": [
+    {
+      "id": "OC41",
+      "status": "assessed-timing-available",
+      "audioSha256": "02d81910ad6cb8c913a3afc1806b72eec0a2a118e47ffa79733b86582028feba",
+      "fingerprint": "d8845dccb5cd91d129cc077e1e00488bcf56a9e01e41501eee7000a71e00ea26",
+      "startedAt": "2026-11-14T14:45:19.750Z",
+      "endedAt": "2026-11-14T14:45:23.823Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC42",
+      "status": "assessed-timing-available",
+      "audioSha256": "1106ac54003bd16d81a1bf6a0114c1b284b8799416b289e09339094135c18db2",
+      "fingerprint": "d34c592f50a49606a047261d016620124be02f8b193155163335117482d030f6",
+      "startedAt": "2026-11-14T14:45:23.827Z",
+      "endedAt": "2026-11-14T14:45:31.710Z",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC43",
+      "status": "assessed-timing-available",
+      "audioSha256": "19d4040d04adbd41c0baf01618497304ae92f5f84cdbbb006e70cce9c0fb22b9",
+      "fingerprint": "9da7da1028294fee9d81bca23d3b1a608f7136d88f60af7eed49eca61adc4dda",
+      "startedAt": "2026-11-14T14:45:31.711Z",
+      "endedAt": "2026-11-14T14:45:38.447Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC44",
+      "status": "assessed-timing-available",
+      "audioSha256": "c3d5725a1dd91d9fe8842cfc3bd142acd5e7b0e0ecf72c9b9c75acbaf2f269a3",
+      "fingerprint": "239cc8ee954618a34ff53bd3cd81b65969db0a2e638f2b621cc0f1f565466d52",
+      "startedAt": "2026-11-14T14:45:38.448Z",
+      "endedAt": "2026-11-14T14:45:42.897Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC45",
+      "status": "assessed-timing-available",
+      "audioSha256": "2ce006e50902a15a8c6acce112759ea6d1cb7399c59f934e2a61d30eb2841b3d",
+      "fingerprint": "33ac74f70b28334f1e7d0186bca8693ccd676d087e03a5028f65c03353bcdc16",
+      "startedAt": "2026-11-14T14:45:42.908Z",
+      "endedAt": "2026-11-14T14:45:49.414Z",
+      "flags": {
+        "Mispronunciation": 2,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC46",
+      "status": "assessed-timing-available",
+      "audioSha256": "c92e06648d952d06f45e68026dabffd9a20cd29f57b10a652a8f68651ab7cb99",
+      "fingerprint": "3dbe2f3ea77be9b172bf3a15a1448fa69c11f181848d3476ec6f3b1d0ed790ea",
+      "startedAt": "2026-11-14T14:45:49.418Z",
+      "endedAt": "2026-11-14T14:45:53.594Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC47",
+      "status": "assessed-timing-available",
+      "audioSha256": "39ad751ecf9d2bf5c91ee2d773b76aff1d194f66f2ef60af59749c42005311b8",
+      "fingerprint": "d229905340f4d13b71cf3fb6d102298a7d0d2af93e267fe6a04417b3c476f580",
+      "startedAt": "2026-11-14T14:45:53.596Z",
+      "endedAt": "2026-11-14T14:46:00.381Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC48",
+      "status": "assessed-timing-available",
+      "audioSha256": "2382bbe2c05c5469ca31c2e935e436b541a0ac42a54b12c0c679b31e3c600c40",
+      "fingerprint": "12a2ead004c5c6fd56f4a6ab644fa34908f2b8a5bd81bb4166b5ef645175c931",
+      "startedAt": "2026-11-14T14:46:00.383Z",
+      "endedAt": "2026-11-14T14:46:06.146Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC49",
+      "status": "assessed-timing-available",
+      "audioSha256": "c076e27707b365792f103c14c5677fc518ec5a155aa5792f2e611426fc9349cb",
+      "fingerprint": "0fc4e354ff68be9b1ec07466025713bdbb265b162795d5e810f80406a6af1d14",
+      "startedAt": "2026-11-14T14:46:06.148Z",
+      "endedAt": "2026-11-14T14:46:10.819Z",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC50",
+      "status": "assessed-timing-available",
+      "audioSha256": "2a49fb090b87dd21dd085d327c511eae57e7941ac392e7c17790ec839c1d20eb",
+      "fingerprint": "a628bdf9c05f8d9444e4c4fae3fa5668d5e1673d6ac147e752cc580b683c2e6c",
+      "startedAt": "2026-11-14T14:46:10.822Z",
+      "endedAt": "2026-11-14T14:46:17.786Z",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC51",
+      "status": "assessed-timing-available",
+      "audioSha256": "e6bb9bca7d0d1ba188022fbfecfad65cd8d4d9d7c5682acfdd62a464fffa0a72",
+      "fingerprint": "cc9e9d6e19d3a9844279f0facaea15d84089647d8f5747b90c3410355cbec05f",
+      "startedAt": "2026-11-14T14:46:17.789Z",
+      "endedAt": "2026-11-14T14:46:22.919Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC52",
+      "status": "assessed-timing-needs-review",
+      "audioSha256": "f7ad0abfd35d701efe4592b491dd0bf49bc40bac4b2560ad6b4a583c2c3c7d80",
+      "fingerprint": "a8c1ad4fd5e72ade1a126cf11b99068816d428ed86b03e80a1da9b59d6f3966b",
+      "startedAt": "2026-11-14T14:46:22.921Z",
+      "diagnostic": "Alignment requires review: 也 (Insertion)",
+      "endedAt": "2026-11-14T14:46:26.693Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 2,
+        "Insertion": 1
+      }
+    },
+    {
+      "id": "OC53",
+      "status": "assessed-timing-available",
+      "audioSha256": "6cc90da2291ff541df73d3f4f4b6f23ab86d84ad6faaf7e687eadb1ff24969ee",
+      "fingerprint": "15055838337dcdd6fadffed050841f2d65a29de3b31482ee86987322fa5ca65b",
+      "startedAt": "2026-11-14T14:46:26.694Z",
+      "endedAt": "2026-11-14T14:46:33.302Z",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC54",
+      "status": "assessed-timing-available",
+      "audioSha256": "15fa19bcde5e24892cb3222da050536ac90ac40fd87fccceb680158deb3874d1",
+      "fingerprint": "654a0fed4784b5eeb66897f41ef133c46062f1fa555e0b88a4b2f9b4dd14a687",
+      "startedAt": "2026-11-14T14:46:33.304Z",
+      "endedAt": "2026-11-14T14:46:37.615Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC55",
+      "status": "assessed-timing-available",
+      "audioSha256": "24b59996dd6b1ca5271923de8d7bd8f3b7e869a7d0ca2991b498e179861cd6ce",
+      "fingerprint": "b2b5e10894b5168b7f032bb7760c55889da7ca59690ef8a20f8d37af53f11518",
+      "startedAt": "2026-11-14T14:46:37.617Z",
+      "endedAt": "2026-11-14T14:46:44.538Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC56",
+      "status": "assessed-timing-available",
+      "audioSha256": "e6fbd85b982cc32b59ef3030e05c91ba689cc4d55f6b3d66f0dca057820633e7",
+      "fingerprint": "e0b206da9353a8492b49d7dd521ae9fd59043403baef36bc9c6a5019101dae1f",
+      "startedAt": "2026-11-14T14:46:44.541Z",
+      "endedAt": "2026-11-14T14:46:46.311Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC57",
+      "status": "assessed-timing-available",
+      "audioSha256": "8ffaa668b248d4fe6077c8890f05daf84ab1cf1ca572ef34d741949584f49cb8",
+      "fingerprint": "ab529d45193dbed8451100308c4f16229b6ba047a3da57e090b7d5816b203f62",
+      "startedAt": "2026-11-14T14:46:46.313Z",
+      "endedAt": "2026-11-14T14:46:48.900Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC58",
+      "status": "assessed-timing-available",
+      "audioSha256": "7fd35904ba110a5f89b230e633744a84c71a0c73649c07b150626bf6914e57ce",
+      "fingerprint": "ea324a2e4a62cdf0f969665112839a11ee5d8c056ef315b2e9b40192d360142d",
+      "startedAt": "2026-11-14T14:46:48.907Z",
+      "endedAt": "2026-11-14T14:46:52.700Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC59",
+      "status": "assessed-timing-available",
+      "audioSha256": "0552df15053634cb531ca207bef6db809ce61d4df746887ef2e1f6c9c9d16ea5",
+      "fingerprint": "41cbd4f1d90b36f56200b5d68c756d9def6ad85f9d0b72a1640e7a384a462fb6",
+      "startedAt": "2026-11-14T14:46:52.703Z",
+      "endedAt": "2026-11-14T14:46:58.630Z",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC60",
+      "status": "assessed-timing-available",
+      "audioSha256": "f4f37752acda1f202f7c56ed4f1060ae212e99be794cf758e5b2c9ccc12d9e4b",
+      "fingerprint": "2f2ca109e286387b8382308e0803393a068806aedaf2889304613339483b7163",
+      "startedAt": "2026-11-14T14:46:58.632Z",
+      "endedAt": "2026-11-14T14:47:06.792Z",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    },
+    {
+      "id": "OC61",
+      "status": "assessed-timing-available",
+      "audioSha256": "322a7fb2341bd27324430ae787bbefd90a313b2c59eb76478dc355debeb78e71",
+      "fingerprint": "f29dbd9d02e9967720561fd970e7f1254ac429c0220508e49c98ccc632332787",
+      "startedAt": "2026-11-14T14:47:06.794Z",
+      "endedAt": "2026-11-14T14:47:13.493Z",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      }
+    }
+  ]
+}

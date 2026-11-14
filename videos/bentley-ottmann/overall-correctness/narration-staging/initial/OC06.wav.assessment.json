@@ -1,0 +1,305 @@
+{
+  "Id": "29d7d4f5acf744e394b53f2d89c71aaa",
+  "RecognitionStatus": "Success",
+  "Offset": 600000,
+  "Duration": 123400000,
+  "Channel": 0,
+  "DisplayText": "第三章的精确计算，用于求交同点识别闭范围和次序比较剪切负责满足几何条件精确计算负责忠实判断，两者不能互相替代。",
+  "SNR": 37.595547,
+  "NBest": [
+    {
+      "Confidence": 0.9759912,
+      "Lexical": "第三 章 的 精确 计算 用 于 求 交 同点 识别 闭 范围 和 次序 比较 剪切 负责 满足 几何 条件 精确 计算 负责 忠实 判断 两 者 不能 互相 替代",
+      "ITN": "第三 章 的 精确 计算 用 于 求 交 同点 识别 闭 范围 和 次序 比较 剪切 负责 满足 几何 条件 精确 计算 负责 忠实 判断 两 者 不能 互相 替代",
+      "MaskedITN": "第三章的精确计算用于求交同点识别闭范围和次序比较剪切负责满足几何条件精确计算负责忠实判断两者不能互相替代",
+      "Display": "第三章的精确计算，用于求交同点识别闭范围和次序比较剪切负责满足几何条件精确计算负责忠实判断，两者不能互相替代。",
+      "PronunciationAssessment": {
+        "AccuracyScore": 95,
+        "FluencyScore": 92,
+        "CompletenessScore": 100,
+        "PronScore": 94.2
+      },
+      "Words": [
+        {
+          "Word": "第三",
+          "Offset": 600000,
+          "Duration": 4300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "章",
+          "Offset": 5000000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 6600000,
+          "Duration": 900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "精确",
+          "Offset": 7600000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "计算",
+          "Offset": 11000000,
+          "Duration": 4900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 67,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "用",
+          "Offset": 16000000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "于",
+          "Offset": 18000000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "求",
+          "Offset": 19400000,
+          "Duration": 2300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "交",
+          "Offset": 21800000,
+          "Duration": 5200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "同点",
+          "Offset": 27300000,
+          "Duration": 5000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "识别",
+          "Offset": 32400000,
+          "Duration": 5900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "闭",
+          "Offset": 38600000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "范围",
+          "Offset": 41400000,
+          "Duration": 3000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "和",
+          "Offset": 44500000,
+          "Duration": 1200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 79,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "次序",
+          "Offset": 45800000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "比较",
+          "Offset": 49200000,
+          "Duration": 5000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 85,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "剪切",
+          "Offset": 58400000,
+          "Duration": 5900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "负责",
+          "Offset": 64400000,
+          "Duration": 3000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "满足",
+          "Offset": 67500000,
+          "Duration": 3800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "几何",
+          "Offset": 71400000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "条件",
+          "Offset": 74400000,
+          "Duration": 6300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "精确",
+          "Offset": 82400000,
+          "Duration": 5500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "计算",
+          "Offset": 88000000,
+          "Duration": 4500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "负责",
+          "Offset": 92600000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "忠实",
+          "Offset": 96000000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "判断",
+          "Offset": 99400000,
+          "Duration": 5500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "两",
+          "Offset": 109000000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 70,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "者",
+          "Offset": 112200000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "不能",
+          "Offset": 114200000,
+          "Duration": 2200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "互相",
+          "Offset": 116500000,
+          "Duration": 3000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "替代",
+          "Offset": 119600000,
+          "Duration": 4400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        }
+      ]
+    }
+  ]
+}

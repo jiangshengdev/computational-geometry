@@ -1,0 +1,278 @@
+{
+  "Id": "4660d19bd2bf4f10b824dbfd8cbe8e8b",
+  "RecognitionStatus": "Success",
+  "Offset": 500000,
+  "Duration": 99000000,
+  "Channel": 0,
+  "DisplayText": "非空组的当前最远右端是这些当前成员右端的最大值。未来才开始的成员不在集合中，不能提前把空隙填满。",
+  "SNR": 40.72274,
+  "NBest": [
+    {
+      "Confidence": 0.97571814,
+      "Lexical": "非 空组 的 当前 最 远 右端 是 这些 当前 成员 右端 的 最大 值 未来 才 开始 的 成员 不在 集合 中 不能 提前 把 空隙 填满",
+      "ITN": "非 空组 的 当前 最 远 右端 是 这些 当前 成员 右端 的 最大 值 未来 才 开始 的 成员 不在 集合 中 不能 提前 把 空隙 填满",
+      "MaskedITN": "非空组的当前最远右端是这些当前成员右端的最大值未来才开始的成员不在集合中不能提前把空隙填满",
+      "Display": "非空组的当前最远右端是这些当前成员右端的最大值。未来才开始的成员不在集合中，不能提前把空隙填满。",
+      "PronunciationAssessment": {
+        "AccuracyScore": 96,
+        "FluencyScore": 95,
+        "CompletenessScore": 100,
+        "PronScore": 96.2
+      },
+      "Words": [
+        {
+          "Word": "非",
+          "Offset": 500000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "空组",
+          "Offset": 3500000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 6900000,
+          "Duration": 1000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "当前",
+          "Offset": 8000000,
+          "Duration": 4600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "最",
+          "Offset": 12700000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "远",
+          "Offset": 14300000,
+          "Duration": 1400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "右端",
+          "Offset": 15800000,
+          "Duration": 5300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 23300000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 65,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "这些",
+          "Offset": 26700000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "当前",
+          "Offset": 29900000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "成员",
+          "Offset": 33300000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "右端",
+          "Offset": 36900000,
+          "Duration": 3400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 40400000,
+          "Duration": 1000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "最大",
+          "Offset": 41500000,
+          "Duration": 3900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "值",
+          "Offset": 45500000,
+          "Duration": 3800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "未来",
+          "Offset": 52700000,
+          "Duration": 5300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "才",
+          "Offset": 58100000,
+          "Duration": 1400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "开始",
+          "Offset": 59600000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 62800000,
+          "Duration": 1000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "成员",
+          "Offset": 63900000,
+          "Duration": 5100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "不在",
+          "Offset": 69100000,
+          "Duration": 3400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "集合",
+          "Offset": 72600000,
+          "Duration": 3400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "中",
+          "Offset": 76100000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "不能",
+          "Offset": 78900000,
+          "Duration": 5900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "提前",
+          "Offset": 84900000,
+          "Duration": 3900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "把",
+          "Offset": 88900000,
+          "Duration": 1100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "空隙",
+          "Offset": 90100000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "填满",
+          "Offset": 93700000,
+          "Duration": 5800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        }
+      ]
+    }
+  ]
+}

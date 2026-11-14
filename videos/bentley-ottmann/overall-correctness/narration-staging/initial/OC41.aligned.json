@@ -1,0 +1,657 @@
+{
+  "audioFile": "OC41.wav",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "audioSha256": "02d81910ad6cb8c913a3afc1806b72eec0a2a118e47ffa79733b86582028feba",
+  "duration": 8.38,
+  "words": [
+    {
+      "text": "若",
+      "startMs": 70,
+      "durationMs": 280,
+      "textOffset": 0,
+      "wordLength": 1
+    },
+    {
+      "text": "Q",
+      "startMs": 350,
+      "durationMs": 240,
+      "textOffset": 2,
+      "wordLength": 1
+    },
+    {
+      "text": "带端",
+      "startMs": 590,
+      "durationMs": 400,
+      "textOffset": 4,
+      "wordLength": 2
+    },
+    {
+      "text": "点",
+      "startMs": 990,
+      "durationMs": 240,
+      "textOffset": 6,
+      "wordLength": 1
+    },
+    {
+      "text": "或",
+      "startMs": 1230,
+      "durationMs": 160,
+      "textOffset": 7,
+      "wordLength": 1
+    },
+    {
+      "text": "点",
+      "startMs": 1390,
+      "durationMs": 200,
+      "textOffset": 8,
+      "wordLength": 1
+    },
+    {
+      "text": "输入",
+      "startMs": 1590,
+      "durationMs": 520,
+      "textOffset": 9,
+      "wordLength": 2
+    },
+    {
+      "text": "。",
+      "startMs": 2110,
+      "durationMs": 0,
+      "textOffset": 11,
+      "wordLength": 1
+    },
+    {
+      "text": "它",
+      "startMs": 2328,
+      "durationMs": 200,
+      "textOffset": 12,
+      "wordLength": 1
+    },
+    {
+      "text": "在",
+      "startMs": 2528,
+      "durationMs": 160,
+      "textOffset": 13,
+      "wordLength": 1
+    },
+    {
+      "text": "初始",
+      "startMs": 2688,
+      "durationMs": 360,
+      "textOffset": 14,
+      "wordLength": 2
+    },
+    {
+      "text": "化",
+      "startMs": 3048,
+      "durationMs": 200,
+      "textOffset": 16,
+      "wordLength": 1
+    },
+    {
+      "text": "时",
+      "startMs": 3248,
+      "durationMs": 320,
+      "textOffset": 17,
+      "wordLength": 1
+    },
+    {
+      "text": "就",
+      "startMs": 3568,
+      "durationMs": 160,
+      "textOffset": 18,
+      "wordLength": 1
+    },
+    {
+      "text": "已登",
+      "startMs": 3728,
+      "durationMs": 360,
+      "textOffset": 19,
+      "wordLength": 2
+    },
+    {
+      "text": "记",
+      "startMs": 4088,
+      "durationMs": 320,
+      "textOffset": 21,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 4408,
+      "durationMs": 0,
+      "textOffset": 22,
+      "wordLength": 1
+    },
+    {
+      "text": "这个位",
+      "startMs": 4869,
+      "durationMs": 600,
+      "textOffset": 23,
+      "wordLength": 3
+    },
+    {
+      "text": "置",
+      "startMs": 5469,
+      "durationMs": 240,
+      "textOffset": 26,
+      "wordLength": 1
+    },
+    {
+      "text": "尚",
+      "startMs": 5709,
+      "durationMs": 200,
+      "textOffset": 27,
+      "wordLength": 1
+    },
+    {
+      "text": "未",
+      "startMs": 5909,
+      "durationMs": 120,
+      "textOffset": 28,
+      "wordLength": 1
+    },
+    {
+      "text": "处理",
+      "textOffset": 29,
+      "wordLength": 2,
+      "startMs": 6150,
+      "durationMs": 620
+    },
+    {
+      "text": "。",
+      "startMs": 6269,
+      "durationMs": 0,
+      "textOffset": 31,
+      "wordLength": 1
+    },
+    {
+      "text": "记录",
+      "startMs": 6918,
+      "durationMs": 440,
+      "textOffset": 32,
+      "wordLength": 2
+    },
+    {
+      "text": "仍",
+      "startMs": 7358,
+      "durationMs": 160,
+      "textOffset": 34,
+      "wordLength": 1
+    },
+    {
+      "text": "在",
+      "startMs": 7518,
+      "durationMs": 200,
+      "textOffset": 35,
+      "wordLength": 1
+    },
+    {
+      "text": "清单",
+      "textOffset": 36,
+      "wordLength": 2,
+      "startMs": 7770,
+      "durationMs": 390
+    },
+    {
+      "text": "里",
+      "textOffset": 38,
+      "wordLength": 1,
+      "startMs": 8170,
+      "durationMs": 180
+    },
+    {
+      "text": "。",
+      "startMs": 7718,
+      "durationMs": 0,
+      "textOffset": 39,
+      "wordLength": 1
+    }
+  ],
+  "speech": "若 Q 带端点或点输入。它在初始化时就已登记。这个位置尚未处理。记录仍在清单里。",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "fingerprint": "d8845dccb5cd91d129cc077e1e00488bcf56a9e01e41501eee7000a71e00ea26",
+  "alignment": {
+    "method": "azure-pronunciation-assessment",
+    "audioSha256": "02d81910ad6cb8c913a3afc1806b72eec0a2a118e47ffa79733b86582028feba",
+    "synthesisWords": [
+      {
+        "text": "若",
+        "startMs": 70,
+        "durationMs": 280,
+        "textOffset": 0,
+        "wordLength": 1
+      },
+      {
+        "text": "Q",
+        "startMs": 350,
+        "durationMs": 240,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "带端",
+        "startMs": 590,
+        "durationMs": 400,
+        "textOffset": 4,
+        "wordLength": 2
+      },
+      {
+        "text": "点",
+        "startMs": 990,
+        "durationMs": 240,
+        "textOffset": 6,
+        "wordLength": 1
+      },
+      {
+        "text": "或",
+        "startMs": 1230,
+        "durationMs": 160,
+        "textOffset": 7,
+        "wordLength": 1
+      },
+      {
+        "text": "点",
+        "startMs": 1390,
+        "durationMs": 200,
+        "textOffset": 8,
+        "wordLength": 1
+      },
+      {
+        "text": "输入",
+        "startMs": 1590,
+        "durationMs": 520,
+        "textOffset": 9,
+        "wordLength": 2
+      },
+      {
+        "text": "。",
+        "startMs": 2110,
+        "durationMs": 0,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "它",
+        "startMs": 2328,
+        "durationMs": 200,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "在",
+        "startMs": 2528,
+        "durationMs": 160,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "初始",
+        "startMs": 2688,
+        "durationMs": 360,
+        "textOffset": 14,
+        "wordLength": 2
+      },
+      {
+        "text": "化",
+        "startMs": 3048,
+        "durationMs": 200,
+        "textOffset": 16,
+        "wordLength": 1
+      },
+      {
+        "text": "时",
+        "startMs": 3248,
+        "durationMs": 320,
+        "textOffset": 17,
+        "wordLength": 1
+      },
+      {
+        "text": "就",
+        "startMs": 3568,
+        "durationMs": 160,
+        "textOffset": 18,
+        "wordLength": 1
+      },
+      {
+        "text": "已登",
+        "startMs": 3728,
+        "durationMs": 360,
+        "textOffset": 19,
+        "wordLength": 2
+      },
+      {
+        "text": "记",
+        "startMs": 4088,
+        "durationMs": 320,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 4408,
+        "durationMs": 0,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "这个位",
+        "startMs": 4869,
+        "durationMs": 600,
+        "textOffset": 23,
+        "wordLength": 3
+      },
+      {
+        "text": "置",
+        "startMs": 5469,
+        "durationMs": 240,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "尚",
+        "startMs": 5709,
+        "durationMs": 200,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "未",
+        "startMs": 5909,
+        "durationMs": 120,
+        "textOffset": 28,
+        "wordLength": 1
+      },
+      {
+        "text": "处",
+        "startMs": 6029,
+        "durationMs": 240,
+        "textOffset": 29,
+        "wordLength": 1
+      },
+      {
+        "text": "理",
+        "startMs": 6269,
+        "durationMs": 0,
+        "textOffset": 30,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 6269,
+        "durationMs": 0,
+        "textOffset": 31,
+        "wordLength": 1
+      },
+      {
+        "text": "记录",
+        "startMs": 6918,
+        "durationMs": 440,
+        "textOffset": 32,
+        "wordLength": 2
+      },
+      {
+        "text": "仍",
+        "startMs": 7358,
+        "durationMs": 160,
+        "textOffset": 34,
+        "wordLength": 1
+      },
+      {
+        "text": "在",
+        "startMs": 7518,
+        "durationMs": 200,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "清单里",
+        "startMs": 7718,
+        "durationMs": 0,
+        "textOffset": 36,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 7718,
+        "durationMs": 0,
+        "textOffset": 39,
+        "wordLength": 1
+      }
+    ],
+    "response": {
+      "Id": "42fef802a599446389e5cd510f16699b",
+      "RecognitionStatus": "Success",
+      "Offset": 700000,
+      "Duration": 82800000,
+      "Channel": 0,
+      "DisplayText": "若Q带端点或点输入，它在初始化时就已登记这个位置尚未处理记录仍在清单里。",
+      "SNR": 43.353466,
+      "NBest": [
+        {
+          "Confidence": 0.97251004,
+          "Lexical": "若 Q 带 端点 或点 输入 它 在 初始 化 时 就 已 登记 这个 位置 尚未 处理 记录 仍 在 清单 里",
+          "ITN": "若 Q 带 端点 或点 输入 它 在 初始 化 时 就 已 登记 这个 位置 尚未 处理 记录 仍 在 清单 里",
+          "MaskedITN": "若q带端点或点输入它在初始化时就已登记这个位置尚未处理记录仍在清单里",
+          "Display": "若Q带端点或点输入，它在初始化时就已登记这个位置尚未处理记录仍在清单里。",
+          "PronunciationAssessment": {
+            "AccuracyScore": 95,
+            "FluencyScore": 93,
+            "CompletenessScore": 100,
+            "PronScore": 94.8
+          },
+          "Words": [
+            {
+              "Word": "若",
+              "Offset": 700000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 66,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "Q",
+              "Offset": 3700000,
+              "Duration": 2500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "带",
+              "Offset": 6300000,
+              "Duration": 1800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "端点",
+              "Offset": 8200000,
+              "Duration": 4200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 79,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "或点",
+              "Offset": 12500000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "输入",
+              "Offset": 16100000,
+              "Duration": 5300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 76,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "它",
+              "Offset": 23100000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "在",
+              "Offset": 26100000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "初始",
+              "Offset": 27700000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "化",
+              "Offset": 31300000,
+              "Duration": 1900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "时",
+              "Offset": 33300000,
+              "Duration": 2900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "就",
+              "Offset": 36300000,
+              "Duration": 1700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "已",
+              "Offset": 38100000,
+              "Duration": 1100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "登记",
+              "Offset": 39300000,
+              "Duration": 6000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "这个",
+              "Offset": 48500000,
+              "Duration": 4900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 94,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "位置",
+              "Offset": 53500000,
+              "Duration": 4500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 79,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "尚未",
+              "Offset": 58100000,
+              "Duration": 3300000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "处理",
+              "Offset": 61500000,
+              "Duration": 6200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "记录",
+              "Offset": 68700000,
+              "Duration": 5700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "仍",
+              "Offset": 74500000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "在",
+              "Offset": 76100000,
+              "Duration": 1500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "清单",
+              "Offset": 77700000,
+              "Duration": 3900000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "里",
+              "Offset": 81700000,
+              "Duration": 1800000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pronunciationReview": "pending-listening"
+  }
+}

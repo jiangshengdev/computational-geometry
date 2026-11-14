@@ -11,6 +11,7 @@
   "dependencies": {
     "@remotion/cli": "4.0.543",
     "katex": "0.19.1",
+    "microsoft-cognitiveservices-speech-sdk": "1.53.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "remotion": "4.0.543"
@@ -32,7 +33,14 @@
     "video:check-layout": "node scripts/check-layout.ts",
     "video:check-content": "node scripts/check-content.ts",
     "video:prepare-text": "node scripts/prepare-text.ts",
-    "video:check-text": "node scripts/check-text.ts"
+    "video:check-text": "node scripts/check-text.ts",
+    "video:plan-narration": "node scripts/plan-narration.ts",
+    "video:synthesize": "node scripts/synthesize-narration.ts",
+    "video:assess": "node --use-env-proxy scripts/assess-narration.ts",
+    "video:adopt-audio": "node scripts/adopt-measured-audio.ts",
+    "video:check-audio": "node scripts/check-audio.ts",
+    "video:report-staged-audio": "node scripts/report-staged-audio.ts",
+    "video:check-speech-tools": "node --test ../../shared/speech/synthesize-batch.test.ts ../../shared/speech/assess-batch.test.ts ../../shared/speech/request-window.test.ts"
   },
   "type": "module"
 }

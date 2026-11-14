@@ -1,0 +1,133 @@
+{
+  "mode": "plan-only",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "automaticRetries": 0,
+  "requests": 4,
+  "documents": [
+    {
+      "id": "OC24",
+      "audioFile": "OC24.wav",
+      "text": "在 P 结束的成员还没退出。所以共端点接触不会丢。端点落在内部时。穿过者来自旧块。多线共点时。整块都收齐。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">在 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>束<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>成<phoneme alphabet=\"sapi\" ph=\"yuan 2 hai 2 mei 2\">员还没</phoneme>退出。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3 gong 4\">所以共</phoneme>端点<phoneme alphabet=\"sapi\" ph=\"jie 1\">接</phoneme>触<phoneme alphabet=\"sapi\" ph=\"bu 2 hui 4\">不会</phoneme>丢。<break time=\"400ms\"/>端点<phoneme alphabet=\"sapi\" ph=\"luo 4\">落</phoneme>在<phoneme alphabet=\"sapi\" ph=\"nei 4 bu 4\">内部</phoneme>时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"chuan 1 guo 4\">穿过</phoneme>者来自旧<phoneme alphabet=\"sapi\" ph=\"kuai 4\">块</phoneme>。<break time=\"200ms\"/>多线<phoneme alphabet=\"sapi\" ph=\"gong 4\">共</phoneme>点时。<break time=\"200ms\"/>整<phoneme alphabet=\"sapi\" ph=\"kuai 4 dou 1\">块都</phoneme>收<phoneme alphabet=\"sapi\" ph=\"qi 2\">齐</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f3969585925bd39d0c185d042bf7c2ea1637270c346edb1e72828b1e2e48749b",
+      "pauses": [
+        {
+          "offset": 14,
+          "breakMs": 200
+        },
+        {
+          "offset": 25,
+          "breakMs": 400
+        },
+        {
+          "offset": 33,
+          "breakMs": 200
+        },
+        {
+          "offset": 41,
+          "breakMs": 200
+        },
+        {
+          "offset": 47,
+          "breakMs": 200
+        },
+        {
+          "offset": 53,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "OC27",
+      "audioFile": "OC27.wav",
+      "text": "至少一份是点输入时。在这个点与其他参与者配对。点与点也按无序对各取一次。交集只能是这个点。报告时机只有这一个位置。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"zhi 4 shao 3 yi 2 fen 4 shi 4\">至少一份是</phoneme>点输入时。<break time=\"200ms\"/>在<phoneme alphabet=\"sapi\" ph=\"zhe 4 ge 5\">这个</phoneme>点<phoneme alphabet=\"sapi\" ph=\"yu 3 qi 2 ta 1 can 1 yu 4\">与其他参与</phoneme>者配对。<break time=\"400ms\"/>点<phoneme alphabet=\"sapi\" ph=\"yu 2\">与</phoneme>点<phoneme alphabet=\"sapi\" ph=\"ye 3\">也</phoneme>按<phoneme alphabet=\"sapi\" ph=\"wu 2\">无</phoneme>序对<phoneme alphabet=\"sapi\" ph=\"ge 4 qu 3 yi 2 ci 4\">各取一次</phoneme>。<break time=\"400ms\"/>交集<phoneme alphabet=\"sapi\" ph=\"zhi 3 neng 2 shi 4 zhe 4 ge 5\">只能是这个</phoneme>点。<break time=\"200ms\"/>报<phoneme alphabet=\"sapi\" ph=\"gao 4\">告</phoneme>时<phoneme alphabet=\"sapi\" ph=\"ji 1 zhi 2 you 3 zhe 4 yi 2 ge 5 wei 4\">机只有这一个位</phoneme>置。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "cce0731a266398b82b50e5e44afebcd1aad360a4a60c315cb4e2df28d1a50e7f",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 23,
+          "breakMs": 400
+        },
+        {
+          "offset": 36,
+          "breakMs": 400
+        },
+        {
+          "offset": 45,
+          "breakMs": 200
+        },
+        {
+          "offset": 57,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "OC30",
+      "audioFile": "OC30.wav",
+      "text": "图中是同线的一对非零输入。为区分身份。把各自的范围分行展示。位置 P 是较晚的开始位置。两份输入的原始端点已经全部给定。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">图<phoneme alphabet=\"sapi\" ph=\"zhong 1 shi 4 tong 2\">中是同</phoneme>线<phoneme alphabet=\"sapi\" ph=\"de 5 yi 2\">的一</phoneme>对<phoneme alphabet=\"sapi\" ph=\"fei 1 ling 2\">非零</phoneme>输入。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"wei 4 qu 1 fen 1 shen 1 fen 4\">为区分身份</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ba 3 ge 4\">把各</phoneme>自<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>范围<phoneme alphabet=\"sapi\" ph=\"fen 1 hang 2\">分行</phoneme>展<phoneme alphabet=\"sapi\" ph=\"shi 4\">示</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"shi 4\">是</phoneme>较晚<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>开始<phoneme alphabet=\"sapi\" ph=\"wei 4\">位</phoneme>置。<break time=\"200ms\"/>两<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>原始端点<phoneme alphabet=\"sapi\" ph=\"yi 3 jing 1\">已经</phoneme>全<phoneme alphabet=\"sapi\" ph=\"bu 4 gei 3\">部给</phoneme>定。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "cd76f218997801a0dbb6ead7e0af6e9071fd66921d92c5fe2c9c6b419e34e1e1",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 400
+        },
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 30,
+          "breakMs": 400
+        },
+        {
+          "offset": 44,
+          "breakMs": 200
+        },
+        {
+          "offset": 60,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "OC35",
+      "audioFile": "OC35.wav",
+      "text": "成员变化后重算当前覆盖。图中新增成员使最远右端延长。邻居名字虽然没变。也要补检。确认交点时只能用真实闭范围。不能拿整条支撑直线替代。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">成<phoneme alphabet=\"sapi\" ph=\"yuan 2\">员</phoneme>变<phoneme alphabet=\"sapi\" ph=\"hua 4\">化</phoneme>后<phoneme alphabet=\"sapi\" ph=\"chong 2\">重</phoneme>算<phoneme alphabet=\"sapi\" ph=\"dang 1 qian 2\">当前</phoneme>覆<phoneme alphabet=\"sapi\" ph=\"gai 4\">盖</phoneme>。<break time=\"400ms\"/>图<phoneme alphabet=\"sapi\" ph=\"zhong 1\">中</phoneme>新<phoneme alphabet=\"sapi\" ph=\"zeng 1\">增</phoneme>成<phoneme alphabet=\"sapi\" ph=\"yuan 2\">员</phoneme>使<phoneme alphabet=\"sapi\" ph=\"zui 4\">最</phoneme>远右端延<phoneme alphabet=\"sapi\" ph=\"chang 2\">长</phoneme>。<break time=\"200ms\"/>邻<phoneme alphabet=\"sapi\" ph=\"ju 1 ming 2 zi 5\">居名字</phoneme>虽然<phoneme alphabet=\"sapi\" ph=\"mei 2\">没</phoneme>变。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"ye 3 yao 4 bu 2\">也要补</phoneme>检。<break time=\"400ms\"/>确认交点时<phoneme alphabet=\"sapi\" ph=\"zhi 3 neng 2\">只能</phoneme>用真实闭范围。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4 neng 2\">不能</phoneme>拿整条<phoneme alphabet=\"sapi\" ph=\"zhi 1\">支</phoneme>撑直线替代。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "648c8e4a3f5d7d945ac6dfa99e32026ba1322a23d6ad9a742c59117248bb6ce2",
+      "pauses": [
+        {
+          "offset": 12,
+          "breakMs": 400
+        },
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 35,
+          "breakMs": 200
+        },
+        {
+          "offset": 40,
+          "breakMs": 400
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 66,
+          "breakMs": 400
+        }
+      ]
+    }
+  ]
+}

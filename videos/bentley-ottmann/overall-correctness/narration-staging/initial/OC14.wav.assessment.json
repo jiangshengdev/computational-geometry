@@ -1,0 +1,391 @@
+{
+  "Id": "b06bd1d100474caf8ac4be6d9b1c44f3",
+  "RecognitionStatus": "Success",
+  "Offset": 500000,
+  "Duration": 141900000,
+  "Channel": 0,
+  "DisplayText": "用T表示当前列的X坐标。输入身份用I表示开始X坐标用Li表示的X坐标用Li表示图中按身份分行展示范围，不表示不同几何高度。",
+  "SNR": 42.12911,
+  "NBest": [
+    {
+      "Confidence": 0.96852463,
+      "Lexical": "用 t 表示 当前 列 的 x 坐标 输入 身份 用 i 表示 开始 x 坐标 用 l i 表示 的 x 坐标 用 l i 表示 图 中 按 身份 分行 展示 范围 不 表示 不同 几何 高度",
+      "ITN": "用 t 表示 当前 列 的 x 坐标 输入 身份 用 i 表示 开始 x 坐标 用 LI 表示 的 x 坐标 用 LI 表示 图 中 按 身份 分行 展示 范围 不 表示 不同 几何 高度",
+      "MaskedITN": "用t表示当前列的x坐标输入身份用i表示开始x坐标用li表示的x坐标用li表示图中按身份分行展示范围不表示不同几何高度",
+      "Display": "用T表示当前列的X坐标。输入身份用I表示开始X坐标用Li表示的X坐标用Li表示图中按身份分行展示范围，不表示不同几何高度。",
+      "PronunciationAssessment": {
+        "AccuracyScore": 90,
+        "FluencyScore": 90,
+        "CompletenessScore": 95,
+        "PronScore": 91
+      },
+      "Words": [
+        {
+          "Word": "用",
+          "Offset": 500000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "t",
+          "Offset": 3500000,
+          "Duration": 2400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 60,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "表示",
+          "Offset": 6000000,
+          "Duration": 3200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "当前",
+          "Offset": 9300000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "列",
+          "Offset": 13100000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 14500000,
+          "Duration": 1100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "x",
+          "Offset": 15700000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 88,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "坐标",
+          "Offset": 19100000,
+          "Duration": 5600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "输入",
+          "Offset": 26100000,
+          "Duration": 5300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "身份",
+          "Offset": 31500000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "用",
+          "Offset": 35700000,
+          "Duration": 1700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "i",
+          "Offset": 37500000,
+          "Duration": 1700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "表示",
+          "Offset": 39300000,
+          "Duration": 6300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 79,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "开始",
+          "Offset": 49300000,
+          "Duration": 5000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "x",
+          "Offset": 54400000,
+          "Duration": 3200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "坐标",
+          "Offset": 57700000,
+          "Duration": 3900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "用",
+          "Offset": 61700000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "l",
+          "Offset": 63700000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "i",
+          "Offset": 65700000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 85,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "表示",
+          "Offset": 67100000,
+          "Duration": 6200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 75100000,
+          "Duration": 1400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "Insertion"
+          }
+        },
+        {
+          "Word": "结束",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        },
+        {
+          "Word": "x",
+          "Offset": 76600000,
+          "Duration": 4400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "坐标",
+          "Offset": 81100000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "用",
+          "Offset": 84900000,
+          "Duration": 2300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "l",
+          "Offset": 87300000,
+          "Duration": 1200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 88,
+            "ErrorType": "Insertion"
+          }
+        },
+        {
+          "Word": "r",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        },
+        {
+          "Word": "i",
+          "Offset": 88600000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "表示",
+          "Offset": 90200000,
+          "Duration": 6000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "图",
+          "Offset": 99500000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "中",
+          "Offset": 102700000,
+          "Duration": 2500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "按",
+          "Offset": 105300000,
+          "Duration": 2300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "身份",
+          "Offset": 107700000,
+          "Duration": 3400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "分行",
+          "Offset": 111200000,
+          "Duration": 3600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 66,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "展示",
+          "Offset": 114900000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "范围",
+          "Offset": 118300000,
+          "Duration": 5400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "不",
+          "Offset": 124900000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "表示",
+          "Offset": 128100000,
+          "Duration": 4500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 88,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "不同",
+          "Offset": 132700000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "几何",
+          "Offset": 135700000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "高度",
+          "Offset": 138500000,
+          "Duration": 3900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        }
+      ]
+    }
+  ]
+}

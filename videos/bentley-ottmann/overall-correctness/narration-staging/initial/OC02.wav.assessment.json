@@ -1,0 +1,296 @@
+{
+  "Id": "092aa066f4e842828afc98568c4be08d",
+  "RecognitionStatus": "Success",
+  "Offset": 400000,
+  "Duration": 109400000,
+  "Channel": 0,
+  "DisplayText": "输入是有限份闭线段坐标是精确有理数共端点内部端点多线共点同列重叠竖直线段和点输入都允许。",
+  "SNR": 39.30086,
+  "NBest": [
+    {
+      "Confidence": 0.97208065,
+      "Lexical": "输入 是 有限 份 闭线 段 坐标 是 精确 有理 数 共端 点 内部 端点 多 线 共 点 同 列 重叠 竖 直线 段 和 点 输入 都 允许",
+      "ITN": "输入 是 有限 份 闭线 段 坐标 是 精确 有理 数 共端 点 内部 端点 多 线 共 点 同 列 重叠 竖 直线 段 和 点 输入 都 允许",
+      "MaskedITN": "输入是有限份闭线段坐标是精确有理数共端点内部端点多线共点同列重叠竖直线段和点输入都允许",
+      "Display": "输入是有限份闭线段坐标是精确有理数共端点内部端点多线共点同列重叠竖直线段和点输入都允许。",
+      "PronunciationAssessment": {
+        "AccuracyScore": 92,
+        "FluencyScore": 95,
+        "CompletenessScore": 97,
+        "PronScore": 93.6
+      },
+      "Words": [
+        {
+          "Word": "输入",
+          "Offset": 400000,
+          "Duration": 6700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 7200000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 79,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "有限",
+          "Offset": 8600000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "份",
+          "Offset": 12200000,
+          "Duration": 1700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 68,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "闭线",
+          "Offset": 14000000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 58,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "段",
+          "Offset": 17200000,
+          "Duration": 3400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "坐标",
+          "Offset": 21800000,
+          "Duration": 6500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 28400000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 70,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "精确",
+          "Offset": 30000000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "有理",
+          "Offset": 33800000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "数",
+          "Offset": 37400000,
+          "Duration": 4000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "共端",
+          "Offset": 44800000,
+          "Duration": 4900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "点",
+          "Offset": 49800000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "内部",
+          "Offset": 53200000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "端点",
+          "Offset": 57000000,
+          "Duration": 5000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "多",
+          "Offset": 62300000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "线",
+          "Offset": 65100000,
+          "Duration": 1600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "共",
+          "Offset": 66800000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "点",
+          "Offset": 68800000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "同",
+          "Offset": 72200000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "列",
+          "Offset": 75800000,
+          "Duration": 2600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "重叠",
+          "Offset": 78800000,
+          "Duration": 6900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "竖",
+          "Offset": 86400000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 62,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "直线",
+          "Offset": 89400000,
+          "Duration": 3200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 88,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "段",
+          "Offset": 92700000,
+          "Duration": 1400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "和",
+          "Offset": 94200000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "点",
+          "Offset": 95600000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "输入",
+          "Offset": 97600000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "都",
+          "Offset": 101800000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "允许",
+          "Offset": 104800000,
+          "Duration": 5000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 70,
+            "ErrorType": "None"
+          }
+        }
+      ]
+    }
+  ]
+}

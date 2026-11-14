@@ -1,0 +1,1893 @@
+{
+  "expected": 61,
+  "generated": 61,
+  "assessed": 61,
+  "sourceDurationSeconds": 809.455,
+  "counts": {
+    "Mispronunciation": 31,
+    "Omission": 6,
+    "Insertion": 3
+  },
+  "actualListeningPerformed": false,
+  "adopted": false,
+  "exportGatePassed": false,
+  "requests": [
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC01",
+      "fingerprint": "e47cfcf5078128fa659f6f2d8e09084f146d02d914304f9bceb591b0ef7f4a1e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.260Z",
+      "endedAt": "2026-11-14T14:36:04.826Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC02",
+      "fingerprint": "1255132901d9d7b1be2fa90377c98cffcdff095714b274b4fdf0c278bb254a8b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.270Z",
+      "endedAt": "2026-11-14T14:36:05.240Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC03",
+      "fingerprint": "1d9f20dca9632d2be23b76495be582ba3077f75dfd37fa10c5d7e9a489bdf4cf",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.271Z",
+      "endedAt": "2026-11-14T14:36:08.239Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC04",
+      "fingerprint": "823b2956be857c973d829f2ae0de8c23138c14735fb79b67127b2a177a393d75",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.271Z",
+      "endedAt": "2026-11-14T14:36:07.412Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC05",
+      "fingerprint": "f90d5ae40115cc9f32d9740e934a3d48ce02dcfe4f811ec266acc47db4e9748a",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.272Z",
+      "endedAt": "2026-11-14T14:36:11.419Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC06",
+      "fingerprint": "ae118a7e07140914850bf4a5008cea581afb0f8244b7decf26d455154b6faeec",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.272Z",
+      "endedAt": "2026-11-14T14:36:11.843Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC07",
+      "fingerprint": "708f4f1964ed581d604a454e1081fa554d0ebb687b56b674f2639bc18023c299",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.272Z",
+      "endedAt": "2026-11-14T14:36:08.623Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC08",
+      "fingerprint": "307dd72575817e5f3c7f67e7f28fbb0b0b8a3c271726136ad85bbd5eada9d885",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.273Z",
+      "endedAt": "2026-11-14T14:36:07.863Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC09",
+      "fingerprint": "b81c2ef33f1ffe322d2069a8fba6f61e00a6da71722685706f0fae41e8fcaa1e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.274Z",
+      "endedAt": "2026-11-14T14:36:04.372Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC10",
+      "fingerprint": "095862da160d15b283fda09d3f52fe2411a5d48359d43cd58e6f1c992828b4a3",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.274Z",
+      "endedAt": "2026-11-14T14:36:12.318Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC11",
+      "fingerprint": "0045cf1d4a25811f7fb318355e92bce404044689559e6c6a9ee169073fce81f7",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.275Z",
+      "endedAt": "2026-11-14T14:36:06.955Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC12",
+      "fingerprint": "80e175cf0600988e45bcac6578ad776a3e04654811c4c743814d2e2e88dffb9e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.275Z",
+      "endedAt": "2026-11-14T14:36:05.666Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC13",
+      "fingerprint": "33a4532af6d82cbaaf5165d5ab74608677a7b6704d626d5b68e860615d863d1a",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.275Z",
+      "endedAt": "2026-11-14T14:36:03.870Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC14",
+      "fingerprint": "23434f66a577e81926f018bdb113dec103f0224e649bba197f6a8deedac018e8",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.276Z",
+      "endedAt": "2026-11-14T14:36:09.447Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC15",
+      "fingerprint": "5509e3bd549cecf52b1551642f3ba85629330ed264373fcd4cfbd8ec2c4d4e37",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.276Z",
+      "endedAt": "2026-11-14T14:36:09.011Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC16",
+      "fingerprint": "4774f7cb227b8a8acc067450e5f7a2694ef83679a32c6604f8d51a7a44e0b8fb",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.280Z",
+      "endedAt": "2026-11-14T14:36:06.517Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC17",
+      "fingerprint": "7cb1a292c0a308545b519a8febf25ac727e16698726cff0a2f4f1d7bb33e3142",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.280Z",
+      "endedAt": "2026-11-14T14:36:10.611Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC18",
+      "fingerprint": "132439459a77165a1606b62211e0e528f50a0ef5211036dab0214278177c2801",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.282Z",
+      "endedAt": "2026-11-14T14:36:09.990Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC19",
+      "fingerprint": "62d6614756bf48372410bdbe83864a5bdfe8bf0670b4d252e678625e0d521bb5",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.283Z",
+      "endedAt": "2026-11-14T14:36:06.065Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC20",
+      "fingerprint": "cfd9d02735c004a9450f447fc2c19c33ad765e84b3770e5df202f510fcec4f7d",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.284Z",
+      "endedAt": "2026-11-14T14:36:10.997Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC21",
+      "fingerprint": "3e7d4c4a0119f9d1286a02420bbaf0002d6071f8da4236c350d259576952a38f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.262Z",
+      "endedAt": "2026-11-14T14:37:06.227Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC22",
+      "fingerprint": "55e330614f4b90b0188a5bc457deb10e51893a35847c6c7f6476fc8e7c9e96e9",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.272Z",
+      "endedAt": "2026-11-14T14:37:03.444Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC23",
+      "fingerprint": "5cc5181e70306cb9622bfd65292c6687a0c9fa090365cca07bbdcde884030d28",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.274Z",
+      "endedAt": "2026-11-14T14:37:05.365Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC24",
+      "fingerprint": "f3969585925bd39d0c185d042bf7c2ea1637270c346edb1e72828b1e2e48749b",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.275Z",
+      "endedAt": "2026-11-14T14:36:59.221Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC25",
+      "fingerprint": "07dca45e208ae708abf4be69bc15403501f3d65db92370b0c31b21a6e1c2ad3c",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.276Z",
+      "endedAt": "2026-11-14T14:37:08.371Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC26",
+      "fingerprint": "2938034d2483825874de65924fa7b0202532c9f56478f6636ea66848907901d1",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.276Z",
+      "endedAt": "2026-11-14T14:37:09.754Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC27",
+      "fingerprint": "cce0731a266398b82b50e5e44afebcd1aad360a4a60c315cb4e2df28d1a50e7f",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.277Z",
+      "endedAt": "2026-11-14T14:36:59.234Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC28",
+      "fingerprint": "5b2d0e47250efd9e5538f26b92d397c430965cc8030d3a44d461d3db73206163",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.277Z",
+      "endedAt": "2026-11-14T14:37:06.659Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC29",
+      "fingerprint": "5ac932ac4b447d45e374ba19b6633ddb3408c732ef617233e49726e2f6a08450",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.278Z",
+      "endedAt": "2026-11-14T14:37:08.828Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC30",
+      "fingerprint": "cd76f218997801a0dbb6ead7e0af6e9071fd66921d92c5fe2c9c6b419e34e1e1",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.279Z",
+      "endedAt": "2026-11-14T14:36:59.242Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC31",
+      "fingerprint": "ebe9331a10d2b74c8881c5e66e59fa4f13730342f7ce2e01fae67ec87899e19e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.279Z",
+      "endedAt": "2026-11-14T14:37:07.959Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC32",
+      "fingerprint": "a2ae6e7c7180c01ecc8c87ade08e8974e196ac514fed43e45be4cc6a524e42b5",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.282Z",
+      "endedAt": "2026-11-14T14:37:04.184Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC33",
+      "fingerprint": "01d1dc3b53f8a1d7762e345557963377eaa017a546878e71c3c9fc8b4b772782",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.283Z",
+      "endedAt": "2026-11-14T14:37:03.837Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC34",
+      "fingerprint": "180c1bea36bfed1f5323f7ea6683e2aaa3cc837ab0dcf61e37aaa86e6409cde3",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.283Z",
+      "endedAt": "2026-11-14T14:37:07.510Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC35",
+      "fingerprint": "648c8e4a3f5d7d945ac6dfa99e32026ba1322a23d6ad9a742c59117248bb6ce2",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.284Z",
+      "endedAt": "2026-11-14T14:36:59.305Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC36",
+      "fingerprint": "0ec6a0696953f1152c3372877eaa70531d09fb0b98ab2c43af9fd14f068a8cc2",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.284Z",
+      "endedAt": "2026-11-14T14:37:05.805Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC37",
+      "fingerprint": "5c5db19f4d28761d5de23378f32c5c1c0fbef1164b16ecf6bb8f90c628673c99",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.286Z",
+      "endedAt": "2026-11-14T14:37:04.546Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC38",
+      "fingerprint": "fc67198b22243cc4f080b22289083351ce7b87c4043b44e1e8805c749e9191a0",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.287Z",
+      "endedAt": "2026-11-14T14:37:07.113Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC39",
+      "fingerprint": "188a6e7a0907b57e36b945594a7a937d6aabccd5ce810e6f920814b6f9b7dac9",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.288Z",
+      "endedAt": "2026-11-14T14:37:04.928Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC40",
+      "fingerprint": "0d83372c25019f381eb837a99d2adeb0921f59e9c7c1550689d40b5031813ef3",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.288Z",
+      "endedAt": "2026-11-14T14:37:09.189Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC41",
+      "fingerprint": "d8845dccb5cd91d129cc077e1e00488bcf56a9e01e41501eee7000a71e00ea26",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:04.139Z",
+      "endedAt": "2026-11-14T14:39:07.664Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC42",
+      "fingerprint": "d34c592f50a49606a047261d016620124be02f8b193155163335117482d030f6",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:07.665Z",
+      "endedAt": "2026-11-14T14:39:12.990Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC43",
+      "fingerprint": "9da7da1028294fee9d81bca23d3b1a608f7136d88f60af7eed49eca61adc4dda",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:12.991Z",
+      "endedAt": "2026-11-14T14:39:18.309Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC44",
+      "fingerprint": "239cc8ee954618a34ff53bd3cd81b65969db0a2e638f2b621cc0f1f565466d52",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:18.310Z",
+      "endedAt": "2026-11-14T14:39:22.336Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC45",
+      "fingerprint": "33ac74f70b28334f1e7d0186bca8693ccd676d087e03a5028f65c03353bcdc16",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:22.337Z",
+      "endedAt": "2026-11-14T14:39:26.785Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC46",
+      "fingerprint": "3dbe2f3ea77be9b172bf3a15a1448fa69c11f181848d3476ec6f3b1d0ed790ea",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:26.786Z",
+      "endedAt": "2026-11-14T14:39:30.421Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC47",
+      "fingerprint": "d229905340f4d13b71cf3fb6d102298a7d0d2af93e267fe6a04417b3c476f580",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:30.421Z",
+      "endedAt": "2026-11-14T14:39:35.442Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC48",
+      "fingerprint": "12a2ead004c5c6fd56f4a6ab644fa34908f2b8a5bd81bb4166b5ef645175c931",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:35.442Z",
+      "endedAt": "2026-11-14T14:39:40.257Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC49",
+      "fingerprint": "0fc4e354ff68be9b1ec07466025713bdbb265b162795d5e810f80406a6af1d14",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:40.258Z",
+      "endedAt": "2026-11-14T14:39:44.799Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC50",
+      "fingerprint": "a628bdf9c05f8d9444e4c4fae3fa5668d5e1673d6ac147e752cc580b683c2e6c",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:44.802Z",
+      "endedAt": "2026-11-14T14:39:49.967Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC51",
+      "fingerprint": "cc9e9d6e19d3a9844279f0facaea15d84089647d8f5747b90c3410355cbec05f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:49.971Z",
+      "endedAt": "2026-11-14T14:39:54.195Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC52",
+      "fingerprint": "a8c1ad4fd5e72ade1a126cf11b99068816d428ed86b03e80a1da9b59d6f3966b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:54.200Z",
+      "endedAt": "2026-11-14T14:39:58.184Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC53",
+      "fingerprint": "15055838337dcdd6fadffed050841f2d65a29de3b31482ee86987322fa5ca65b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:58.185Z",
+      "endedAt": "2026-11-14T14:40:03.302Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC54",
+      "fingerprint": "654a0fed4784b5eeb66897f41ef133c46062f1fa555e0b88a4b2f9b4dd14a687",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:03.303Z",
+      "endedAt": "2026-11-14T14:40:07.365Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC55",
+      "fingerprint": "b2b5e10894b5168b7f032bb7760c55889da7ca59690ef8a20f8d37af53f11518",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:07.366Z",
+      "endedAt": "2026-11-14T14:40:12.692Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC56",
+      "fingerprint": "e0b206da9353a8492b49d7dd521ae9fd59043403baef36bc9c6a5019101dae1f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:12.693Z",
+      "endedAt": "2026-11-14T14:40:15.484Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC57",
+      "fingerprint": "ab529d45193dbed8451100308c4f16229b6ba047a3da57e090b7d5816b203f62",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:15.486Z",
+      "endedAt": "2026-11-14T14:40:18.873Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC58",
+      "fingerprint": "ea324a2e4a62cdf0f969665112839a11ee5d8c056ef315b2e9b40192d360142d",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:18.873Z",
+      "endedAt": "2026-11-14T14:40:22.520Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC59",
+      "fingerprint": "41cbd4f1d90b36f56200b5d68c756d9def6ad85f9d0b72a1640e7a384a462fb6",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:22.520Z",
+      "endedAt": "2026-11-14T14:40:27.553Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC60",
+      "fingerprint": "2f2ca109e286387b8382308e0803393a068806aedaf2889304613339483b7163",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:27.554Z",
+      "endedAt": "2026-11-14T14:40:33.493Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/initial",
+      "id": "OC61",
+      "fingerprint": "f29dbd9d02e9967720561fd970e7f1254ac429c0220508e49c98ccc632332787",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:33.494Z",
+      "endedAt": "2026-11-14T14:40:38.230Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/recovery",
+      "id": "OC24",
+      "fingerprint": "f3969585925bd39d0c185d042bf7c2ea1637270c346edb1e72828b1e2e48749b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:44:16.469Z",
+      "endedAt": "2026-11-14T14:44:20.678Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/recovery",
+      "id": "OC27",
+      "fingerprint": "cce0731a266398b82b50e5e44afebcd1aad360a4a60c315cb4e2df28d1a50e7f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:44:20.679Z",
+      "endedAt": "2026-11-14T14:44:24.492Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/recovery",
+      "id": "OC30",
+      "fingerprint": "cd76f218997801a0dbb6ead7e0af6e9071fd66921d92c5fe2c9c6b419e34e1e1",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:44:24.493Z",
+      "endedAt": "2026-11-14T14:44:28.724Z",
+      "diagnostic": ""
+    },
+    {
+      "batch": "narration-staging/recovery",
+      "id": "OC35",
+      "fingerprint": "648c8e4a3f5d7d945ac6dfa99e32026ba1322a23d6ad9a742c59117248bb6ce2",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:44:28.728Z",
+      "endedAt": "2026-11-14T14:44:32.987Z",
+      "diagnostic": ""
+    }
+  ],
+  "results": [
+    {
+      "id": "OC01",
+      "file": "narration-staging/initial/OC01.wav",
+      "audioSha256": "5a8bee825148c1b430a580100afce767f8d53fa2ed914190719c0e6aab94cb96",
+      "fingerprint": "e47cfcf5078128fa659f6f2d8e09084f146d02d914304f9bceb591b0ef7f4a1e",
+      "durationSeconds": 12.4,
+      "speech": "第八章跟完了一次扫描。现在离开那份案例。说明任意允许输入为什么都成立。从空状态起步。连接每次处理、下一处必达和结束时的完整结果。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "每次",
+          "Offset": 94100000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 53,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC02",
+      "file": "narration-staging/initial/OC02.wav",
+      "audioSha256": "b1d7415131fb491bbf08d037cc4570668c1bdba85f55127b9fe744647d20907c",
+      "fingerprint": "1255132901d9d7b1be2fa90377c98cffcdff095714b274b4fdf0c278bb254a8b",
+      "durationSeconds": 11.01,
+      "speech": "输入是有限份闭线段。坐标是精确有理数。共端点、内部端点、多线共点、同列、重叠、竖直线段和点输入都允许。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "闭线",
+          "Offset": 14000000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 58,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC03",
+      "file": "narration-staging/initial/OC03.wav",
+      "audioSha256": "f7582a972840971271081fc7ebe904b264b47c1644bc559bb3bf15eda5d72f8c",
+      "fingerprint": "1d9f20dca9632d2be23b76495be582ba3077f75dfd37fa10c5d7e9a489bdf4cf",
+      "durationSeconds": 14.17,
+      "speech": "每个相交的原始无序输入对。恰好留下一个完整交集。可以是点。也可以是非零长度闭区间。不相交的对没有结果。完全重合和端点反向的输入仍保留各自身份。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 2,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "原始",
+          "Offset": 9000000,
+          "Duration": 4700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 45,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "零长度",
+          "Offset": 66600000,
+          "Duration": 5500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 22,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC04",
+      "file": "narration-staging/initial/OC04.wav",
+      "audioSha256": "281d30d0c58e60568be4696c455ee230723bf2b9a1ab54ec77081d29d1179422",
+      "fingerprint": "823b2956be857c973d829f2ae0de8c23138c14735fb79b67127b2a177a393d75",
+      "durationSeconds": 15.79,
+      "speech": "没有非零竖直输入时。沿用原坐标。否则按第七章选安全系数。统一变换全部输入。包括点。这里使用第七章已证明安全的系数。统一满足保序、非竖直和完整交集保持。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "竖直",
+          "Offset": 8000000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 59,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC05",
+      "file": "narration-staging/initial/OC05.wav",
+      "audioSha256": "f39310e3a299bd5e35b19ac73ee76b38bb91747ae19a5b75ad1c612f6b6ab421",
+      "fingerprint": "f90d5ae40115cc9f32d9740e934a3d48ce02dcfe4f811ec266acc47db4e9748a",
+      "durationSeconds": 13.97,
+      "speech": "以下坐标都指实际扫描坐标。先到 x 坐标较小的位置。同列再从低到高。无须剪切时仍可能同列。不能省掉第二层比较。两个坐标都相等才合并位置。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC06",
+      "file": "narration-staging/initial/OC06.wav",
+      "audioSha256": "8f96e23e6275b1baccc1268d1b40a90fefb5f83c13b507ffc140ad6e5ab27eb4",
+      "fingerprint": "ae118a7e07140914850bf4a5008cea581afb0f8244b7decf26d455154b6faeec",
+      "durationSeconds": 12.43,
+      "speech": "第三章的精确计算用于求交、同点识别、闭范围和次序比较。剪切负责满足几何条件。精确计算负责忠实判断。两者不能互相替代。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC07",
+      "file": "narration-staging/initial/OC07.wav",
+      "audioSha256": "76b360fd62c17b1bdeb607187cba9a49553ddafb4c4915f7b61d6a9f7f92ff61",
+      "fingerprint": "708f4f1964ed581d604a454e1081fa554d0ebb687b56b674f2639bc18023c299",
+      "durationSeconds": 13.38,
+      "speech": "第三节先只回答：此前正确。而且这次确实到达下一处。处理后怎样继续正确。沿用无事件不换序、完整同点收集、分类报告及同列局部更新的结论和条件。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC08",
+      "file": "narration-staging/initial/OC08.wav",
+      "audioSha256": "dc4d60294767b93b08ec9460aa03443f7b91625ddb1a5cb8f6278ff4d86a1a00",
+      "fingerprint": "307dd72575817e5f3c7f67e7f28fbb0b0b8a3c271726136ad85bbd5eada9d885",
+      "durationSeconds": 15.8,
+      "speech": "第四节再用组发现及同列发现结论。补齐确实到达下一处这个前提。所需条件是此前正确处理、新邻接与覆盖延长都检查。以及真实预约保留。没有假定全部未来交点已登记。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "这个",
+          "Offset": 51400000,
+          "Duration": 2400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 52,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC09",
+      "file": "narration-staging/initial/OC09.wav",
+      "audioSha256": "bf5f61f680b2ac84647094a4c158d8b8b3d1f31b227edaf5175d396a1c6aa477",
+      "fingerprint": "b81c2ef33f1ffe322d2069a8fba6f61e00a6da71722685706f0fae41e8fcaa1e",
+      "durationSeconds": 11.65,
+      "speech": "先说明五项记录。当前指刚完成一个精确位置。尚未处理下一个位置的时刻。同列也有进度。不能只给出 x 坐标就认为状态已经确定。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC10",
+      "file": "narration-staging/initial/OC10.wav",
+      "audioSha256": "a0af825bd4c4978a129123f57ec572bce9f05e738df56ed66b9a506fdef48e3f",
+      "fingerprint": "095862da160d15b283fda09d3f52fe2411a5d48359d43cd58e6f1c992828b4a3",
+      "durationSeconds": 16.52,
+      "speech": "活动成员从自己的开始事件加入。在自己的结束事件报告后退出。点输入只参加自己的位置。非空同线组按当前进度从下到上排列。覆盖只由当前成员决定。不由固定同线归属决定。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 2,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "事件",
+          "Offset": 40200000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 58,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "退出",
+          "Offset": 48200000,
+          "Duration": 6700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 54,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC11",
+      "file": "narration-staging/initial/OC11.wav",
+      "audioSha256": "1e2eec5de14987a6e2c49371edca12c80b1a188b1695bb31a0b76459445b57c4",
+      "fingerprint": "0045cf1d4a25811f7fb318355e92bce404044689559e6c6a9ee169073fce81f7",
+      "durationSeconds": 16.57,
+      "speech": "清单保存尚未取出的端点和已确认的真实未来交点。同位置一份。输入身份全部保留。结果按已经发生的报告时机累计完整交集。每对一次。不是扫描位置左侧所有几何部分的合集。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC12",
+      "file": "narration-staging/initial/OC12.wav",
+      "audioSha256": "868a078c5d9fc28a8ee7662cc0994577367bb239eab473fb73dca2d28a69865b",
+      "fingerprint": "80e175cf0600988e45bcac6578ad776a3e04654811c4c743814d2e2e88dffb9e",
+      "durationSeconds": 13.24,
+      "speech": "左图是一般状态示意。不是某份输入的执行轨迹。虚线表示当前列。低处的相遇块已经处理。保留右侧顺序。高处还没处理。仍保留左侧顺序。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC13",
+      "file": "narration-staging/initial/OC13.wav",
+      "audioSha256": "7ccd3b4c8c108dbf1e61e3e689606fc2f26ee90ed99dcad122dd57d8edf45670",
+      "fingerprint": "33a4532af6d82cbaaf5165d5ab74608677a7b6704d626d5b68e860615d863d1a",
+      "durationSeconds": 10.18,
+      "speech": "高处尚未处理的结束者仍包含闭端点。不能在低处处理后提前删掉。只有整列处理完。留下的成员才都继续到该列右侧。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC14",
+      "file": "narration-staging/initial/OC14.wav",
+      "audioSha256": "ecda29fc4ecc6970bcfef8900fbbe15590a673cf284976968aec8bc4f5d20e95",
+      "fingerprint": "23434f66a577e81926f018bdb113dec103f0224e649bba197f6a8deedac018e8",
+      "durationSeconds": 14.27,
+      "speech": "用 t 表示当前列的 x 坐标。输入身份用 i 表示。开始 x 坐标用 l i 表示。结束 x 坐标用 r i 表示。图中按身份分行展示范围。不表示不同几何高度。",
+      "assessment": "assessed-timing-needs-review",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 2,
+        "Insertion": 2
+      },
+      "flaggedWords": [
+        {
+          "Word": "的",
+          "Offset": 75100000,
+          "Duration": 1400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "Insertion"
+          }
+        },
+        {
+          "Word": "结束",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        },
+        {
+          "Word": "l",
+          "Offset": 87300000,
+          "Duration": 1200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 88,
+            "ErrorType": "Insertion"
+          }
+        },
+        {
+          "Word": "r",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        }
+      ]
+    },
+    {
+      "id": "OC15",
+      "file": "narration-staging/initial/OC15.wav",
+      "audioSha256": "6e848139b47bbfe0d8f7595fc9b2701dd97b2679c4a2bcaf7596253d8e37c5ab",
+      "fingerprint": "5509e3bd549cecf52b1551642f3ba85629330ed264373fcd4cfbd8ec2c4d4e37",
+      "durationSeconds": 19.86,
+      "speech": "每份当前成员都覆盖这一列。所以左右都允许等号。紫色行是另一份高处未处理的结束者。它的编号用 j 表示。结束 x 坐标用 r j 表示。这个坐标与当前列坐标 t 相等。若改成严格小于。就会把这类成员提前排除。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 2,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "t",
+          "Offset": 146000000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 51,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "小于",
+          "Offset": 167400000,
+          "Duration": 6800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 59,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC16",
+      "file": "narration-staging/initial/OC16.wav",
+      "audioSha256": "593206c54addf2644dcf8b58e405a79cdb0c5c2de6c6432c2e518615d29148f1",
+      "fingerprint": "4774f7cb227b8a8acc067450e5f7a2694ef83679a32c6604f8d51a7a44e0b8fb",
+      "durationSeconds": 9.98,
+      "speech": "非空组的当前最远右端。是这些当前成员右端的最大值。未来才开始的成员不在集合中。不能提前把空隙填满。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC17",
+      "file": "narration-staging/initial/OC17.wav",
+      "audioSha256": "4504b2d21c947c8678a6c33e5759f2f44139b4b435bcf140d891383366dff202",
+      "fingerprint": "7cb1a292c0a308545b519a8febf25ac727e16698726cff0a2f4f1d7bb33e3142",
+      "durationSeconds": 13.12,
+      "speech": "初始化时尚未处理任何位置。活动成员为空。没有非空组、组顺序和覆盖。没有到达任何报告时机。结果也为空。这些空记录符合刚才的含义。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "覆盖",
+          "Offset": 63700000,
+          "Duration": 5100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 51,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC18",
+      "file": "narration-staging/initial/OC18.wav",
+      "audioSha256": "3ff4281138a916db97a2570e1bb6eb4226b694e7a3e59d437d67eb6c56e95ee8",
+      "fingerprint": "132439459a77165a1606b62211e0e528f50a0ef5211036dab0214278177c2801",
+      "durationSeconds": 15.71,
+      "speech": "端点由输入直接给出。非零输入登记两端。点输入登记自己的位置。同位置合并记录。保留全部身份。再按精确次序排列。图中只画已知位置。不预先加入交点。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC19",
+      "file": "narration-staging/initial/OC19.wav",
+      "audioSha256": "4da778f0972639e42deefa7fb4225633f10004c824b8bebe25348dc9d22c8a5a",
+      "fingerprint": "62d6614756bf48372410bdbe83864a5bdfe8bf0670b4d252e678625e0d521bb5",
+      "durationSeconds": 17.77,
+      "speech": "任何交集位置都不早于参与输入的开始位置。非零输入不竖直。内部严格在开始端点右边。所以非空输入的最早真实事件必是已登记端点。它之前没有活动成员或应报告的对。空输入直接得到完整空结果。",
+      "assessment": "assessed-timing-needs-review",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 1,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "竖直",
+          "Offset": 49000000,
+          "Duration": 5800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 56,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "内部",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        }
+      ]
+    },
+    {
+      "id": "OC20",
+      "file": "narration-staging/initial/OC20.wav",
+      "audioSha256": "638227dda4ea42a2eef9c073822bc7bc2b6803c173b2307682fe094880ce07c8",
+      "fingerprint": "cfd9d02735c004a9450f447fc2c19c33ad765e84b3770e5df202f510fcec4f7d",
+      "durationSeconds": 13.75,
+      "speech": "本次位置用 P 表示。严格更早的真实事件已依次正确处理。而且 P 确实是下一处。这里只证明满足这两个前提以后怎样保持正确。不假定更晚的交点都已登记。",
+      "assessment": "assessed-timing-needs-review",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 1,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "已",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        },
+        {
+          "Word": "依次",
+          "Offset": 39900000,
+          "Duration": 3400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 54,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC21",
+      "file": "narration-staging/initial/OC21.wav",
+      "audioSha256": "d7327dab110b521245c01016609870a63f774fc07d7d927690ee78612a6a904e",
+      "fingerprint": "3e7d4c4a0119f9d1286a02420bbaf0002d6071f8da4236c350d259576952a38f",
+      "durationSeconds": 15.37,
+      "speech": "从上次处理后到 P 之前。没有跳过别的端点或交点。成员和组顺序仍可用。若 P 在同列高处。使用低处已更新、高处未更新的中间状态。第六章保证仍能按高度找齐块。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "章",
+          "Offset": 129400000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 56,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC22",
+      "file": "narration-staging/initial/OC22.wav",
+      "audioSha256": "9dfe7c91682946bd2c69f1d2bef0cd66c4bbe257bf0e477bf00046fda6a69fa9",
+      "fingerprint": "55e330614f4b90b0188a5bc457deb10e51893a35847c6c7f6476fc8e7c9e96e9",
+      "durationSeconds": 13.3,
+      "speech": "图中交汇处用 P 表示。预约对只负责发现这个位置。不限制到站后的参与者数量。从正确旧状态找齐经过 P 的组。再展开这些组在这里的全部当前成员。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "限制",
+          "Offset": 51100000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 56,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC23",
+      "file": "narration-staging/initial/OC23.wav",
+      "audioSha256": "a659f06bb957d7b2b8d3e8c901d5cf70d456987d8e1066a55e5faf09f6e8fdcd",
+      "fingerprint": "5cc5181e70306cb9622bfd65292c6687a0c9fa090365cca07bbdcde884030d28",
+      "durationSeconds": 12,
+      "speech": "把在 P 开始的非零输入。以及位于 P 的点输入合进来。点输入只参加这个位置。不进入持续活动顺序。它的身份来自预先登记的端点记录。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC24",
+      "file": "narration-staging/recovery/OC24.wav",
+      "audioSha256": "3da601dfceb0d00c6a013d207784292ab426c8ef3887d1ded8707cc94240e0cb",
+      "fingerprint": "f3969585925bd39d0c185d042bf7c2ea1637270c346edb1e72828b1e2e48749b",
+      "durationSeconds": 11.37,
+      "speech": "在 P 结束的成员还没退出。所以共端点接触不会丢。端点落在内部时。穿过者来自旧块。多线共点时。整块都收齐。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 2,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "退出",
+          "Offset": 17700000,
+          "Duration": 6500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 52,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "端点",
+          "Offset": 32900000,
+          "Duration": 3600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 55,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC25",
+      "file": "narration-staging/initial/OC25.wav",
+      "audioSha256": "67754f4f32db7c4d1380b92e0983072b36378bfdc2dccd6bc3d52b416326580a",
+      "fingerprint": "07dca45e208ae708abf4be69bc15403501f3d65db92370b0c31b21a6e1c2ad3c",
+      "durationSeconds": 14.47,
+      "speech": "两份非零输入同线时。后开始者加入。与仍包含此处的成员配对。留下完整闭交集。同点开始者按固定身份顺序逐一加入。每对只有一个较晚的加入时机。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC26",
+      "file": "narration-staging/initial/OC26.wav",
+      "audioSha256": "79c709550646641f27525bafffc35e8f1c36b680720edd41d1fa60fb31f8c745",
+      "fingerprint": "2938034d2483825874de65924fa7b0202532c9f56478f6636ea66848907901d1",
+      "durationSeconds": 12.15,
+      "speech": "不同组的非零输入在共同位置展开全部跨组成员对。不在这里重报组内对。不同直线至多有一个交点。这个点就是完整交集。也是唯一报告位置。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC27",
+      "file": "narration-staging/recovery/OC27.wav",
+      "audioSha256": "d592c1e97edd10ebecc73998c7c613b467db60f2293b497b34313afbf2fa6b9f",
+      "fingerprint": "cce0731a266398b82b50e5e44afebcd1aad360a4a60c315cb4e2df28d1a50e7f",
+      "durationSeconds": 11,
+      "speech": "至少一份是点输入时。在这个点与其他参与者配对。点与点也按无序对各取一次。交集只能是这个点。报告时机只有这一个位置。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC28",
+      "file": "narration-staging/initial/OC28.wav",
+      "audioSha256": "0d699b37ef581f9308a5601e230e1a3754afb12ff1b92e420b26140bca8673ee",
+      "fingerprint": "5b2d0e47250efd9e5538f26b92d397c430965cc8030d3a44d461d3db73206163",
+      "durationSeconds": 14.51,
+      "speech": "每对要么含点。要么两份都非零。两份都非零时。所在直线要么相同。要么不同。所以三类穷尽且互斥。跨类不会重复。类内唯一性由刚才的规则保证。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC29",
+      "file": "narration-staging/initial/OC29.wav",
+      "audioSha256": "a8f4cae767434773f5ff2eeb396aaae082f52a46b0dd317fd6c17050d942b8db",
+      "fingerprint": "5ac932ac4b447d45e374ba19b6633ddb3408c732ef617233e49726e2f6a08450",
+      "durationSeconds": 16.44,
+      "speech": "收集既完整。又没有混入不经过 P 的成员。因此不漏本次该报的对。也不增加空交集。此前已报告的对不会重报。重复或反向输入仍保留不同身份。交换同一对的次序才不产生新对。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC30",
+      "file": "narration-staging/recovery/OC30.wav",
+      "audioSha256": "b6acd46498dd0ca062d9e6e6ee1571e4a3d84fb1dd22dd59dfe13c51d01976b2",
+      "fingerprint": "cd76f218997801a0dbb6ead7e0af6e9071fd66921d92c5fe2c9c6b419e34e1e1",
+      "durationSeconds": 12.2,
+      "speech": "图中是同线的一对非零输入。为区分身份。把各自的范围分行展示。位置 P 是较晚的开始位置。两份输入的原始端点已经全部给定。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "原始",
+          "Offset": 101000000,
+          "Duration": 3600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 44,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC31",
+      "file": "narration-staging/initial/OC31.wav",
+      "audioSha256": "5ff04cbd6af18846eb76de8721f156f36b3e19e290b5a938d76a32964d6b97b8",
+      "fingerprint": "ebe9331a10d2b74c8881c5e66e59fa4f13730342f7ce2e01fae67ec87899e19e",
+      "durationSeconds": 13.5,
+      "speech": "现在就能确定并报告整段闭交集。右端可以在 P 的右边。不必等扫描走到那里。累计结果按报告时机成立。不能把它改写成当前位置左边所有几何部分的合集。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC32",
+      "file": "narration-staging/initial/OC32.wav",
+      "audioSha256": "ea6097357da3043c774765aecdac72441b46cf6b7e3de75ff13c7d20d409dd78",
+      "fingerprint": "a2ae6e7c7180c01ecc8c87ade08e8974e196ac514fed43e45be4cc6a524e42b5",
+      "durationSeconds": 11.7,
+      "speech": "图中当前位置 P 在低处。高处是同列尚未处理的位置。先报告所有本次该报的对。在 P 结束的成员和点输入。都参加这次报告。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC33",
+      "file": "narration-staging/initial/OC33.wav",
+      "audioSha256": "6a30ab777a458fb43aff7e44ec99f769748c290f64efbde6611ccba516061dea",
+      "fingerprint": "01d1dc3b53f8a1d7762e345557963377eaa017a546878e71c3c9fc8b4b772782",
+      "durationSeconds": 12.27,
+      "speech": "报告完成后。在 P 结束的成员退出。点输入也不留到后面。留下穿过者和非零开始者。只把当前块改成右侧顺序。块外保留原状态。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "退出",
+          "Offset": 27300000,
+          "Duration": 6600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 53,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC34",
+      "file": "narration-staging/initial/OC34.wav",
+      "audioSha256": "3445155e4a561991e452f8e5895dc71df0864b17e7d1f58ab6c308597d1fcc0e",
+      "fingerprint": "180c1bea36bfed1f5323f7ea6683e2aaa3cc837ab0dcf61e37aaa86e6409cde3",
+      "durationSeconds": 10.88,
+      "speech": "同列高处尚未处理的结束者仍保留。不能随着低处一起删除或换序。低处已处理、高处未处理的约定。就这样延续到下一个位置。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC35",
+      "file": "narration-staging/recovery/OC35.wav",
+      "audioSha256": "7d4389c0de26934b5d0a0aef6d23689b2d076d566143b42bee1ac844fe7ccf18",
+      "fingerprint": "648c8e4a3f5d7d945ac6dfa99e32026ba1322a23d6ad9a742c59117248bb6ce2",
+      "durationSeconds": 13.82,
+      "speech": "成员变化后重算当前覆盖。图中新增成员使最远右端延长。邻居名字虽然没变。也要补检。确认交点时只能用真实闭范围。不能拿整条支撑直线替代。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 2,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "覆盖",
+          "Offset": 19800000,
+          "Duration": 4900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 59,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "真实",
+          "Offset": 106600000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 58,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC36",
+      "file": "narration-staging/initial/OC36.wav",
+      "audioSha256": "f210b4c67e18190ae4b041eccfd610bd0522edf456e458e95de4bd16dcc7f2e5",
+      "fingerprint": "0ec6a0696953f1152c3372877eaa70531d09fb0b98ab2c43af9fd14f068a8cc2",
+      "durationSeconds": 12.55,
+      "speech": "若组已没有成员。就退出活动顺序。以后同线成员开始时再加入。尚未开始的部分不能倒过来填补眼前的空隙。也不能提前参与未来检查。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC37",
+      "file": "narration-staging/initial/OC37.wav",
+      "audioSha256": "0771f033ebed7b346b47bd80a94de1d8bb860ee6040bfdcb3ce1745bd56e38af",
+      "fingerprint": "5c5db19f4d28761d5de23378f32c5c1c0fbef1164b16ecf6bb8f90c628673c99",
+      "durationSeconds": 11.43,
+      "speech": "更新形成的新邻接都要检查：新块内部、它与外侧的边界。以及块空时新连上的两侧。这些新邻接检查与覆盖延长补检。两者缺一不可。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC38",
+      "file": "narration-staging/initial/OC38.wav",
+      "audioSha256": "ba353b0482c858064bedba17937bac48dd3274fc7f021e53ee32a6833bff54ee",
+      "fingerprint": "fc67198b22243cc4f080b22289083351ce7b87c4043b44e1e8805c749e9191a0",
+      "durationSeconds": 15.6,
+      "speech": "先确认交点落在真实闭范围。再按 x 坐标优先、同列按高度的完整次序判断严格未来。同列高处仍可在未来。当前位置和过去不重新加入。已登记的真实未来位置继续保留。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "真实",
+          "Offset": 138800000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 59,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC39",
+      "file": "narration-staging/initial/OC39.wav",
+      "audioSha256": "586bdf524674546edf1031da44e8ada87674fd1c13abf38655e792bdafc10850",
+      "fingerprint": "188a6e7a0907b57e36b945594a7a937d6aabccd5ce810e6f920814b6f9b7dac9",
+      "durationSeconds": 16.15,
+      "speech": "重复发现只合并位置。不合并原始输入身份。成员、顺序、覆盖和累计结果的保证继续成立。这次还执行了两类检查。接下来单独说明：为什么所假设的下一处不会被清单跳过。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "原始",
+          "Offset": 28500000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 44,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC40",
+      "file": "narration-staging/initial/OC40.wav",
+      "audioSha256": "241d7d10033ec88727d709d33076e7ea5b7afddf7c9732762d0f0c281e42bd10",
+      "fingerprint": "0d83372c25019f381eb837a99d2adeb0921f59e9c7c1550689d40b5031813ef3",
+      "durationSeconds": 14.92,
+      "speech": "现在从已正确处理的边界向后看。若还有真实事件。就取按完整次序最早的一个。并用 Q 表示这个位置。这是证明里选择实际几何位置。不是要求算法先枚举全部交点。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC41",
+      "file": "narration-staging/initial/OC41.wav",
+      "audioSha256": "02d81910ad6cb8c913a3afc1806b72eec0a2a118e47ffa79733b86582028feba",
+      "fingerprint": "d8845dccb5cd91d129cc077e1e00488bcf56a9e01e41501eee7000a71e00ea26",
+      "durationSeconds": 8.38,
+      "speech": "若 Q 带端点或点输入。它在初始化时就已登记。这个位置尚未处理。记录仍在清单里。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC42",
+      "file": "narration-staging/initial/OC42.wav",
+      "audioSha256": "1106ac54003bd16d81a1bf6a0114c1b284b8799416b289e09339094135c18db2",
+      "fingerprint": "d34c592f50a49606a047261d016620124be02f8b193155163335117482d030f6",
+      "durationSeconds": 16.895,
+      "speech": "否则。位置 Q 只能是不同组非零输入的真实交点。此前事件已正确处理。两类检查也都执行。当前成员真实覆盖交点。真实预约保留。已有组发现及同列结论于是保证 Q 及时登记。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "覆盖",
+          "Offset": 101300000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 50,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC43",
+      "file": "narration-staging/initial/OC43.wav",
+      "audioSha256": "19d4040d04adbd41c0baf01618497304ae92f5f84cdbbb006e70cce9c0fb22b9",
+      "fingerprint": "9da7da1028294fee9d81bca23d3b1a608f7136d88f60af7eed49eca61adc4dda",
+      "durationSeconds": 15.12,
+      "speech": "有些交点还要等新邻接或覆盖延长才被发现。邻居不变而覆盖后来才够到。也已被补检覆盖。图中的顺序是完整位置次序。不只是 x 坐标。同列高处也可能是下一处。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC44",
+      "file": "narration-staging/initial/OC44.wav",
+      "audioSha256": "c3d5725a1dd91d9fe8842cfc3bd142acd5e7b0e0ecf72c9b9c75acbaf2f269a3",
+      "fingerprint": "239cc8ee954618a34ff53bd3cd81b65969db0a2e638f2b621cc0f1f565466d52",
+      "durationSeconds": 11.1,
+      "speech": "清单只含真实未处理位置。而且已经包含 Q 这个位置。若还有比 Q 更早的清单位置。它也是真实未处理事件。就与 Q 的选择矛盾。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC45",
+      "file": "narration-staging/initial/OC45.wav",
+      "audioSha256": "2ce006e50902a15a8c6acce112759ea6d1cb7399c59f934e2a61d30eb2841b3d",
+      "fingerprint": "33ac74f70b28334f1e7d0186bca8693ccd676d087e03a5028f65c03353bcdc16",
+      "durationSeconds": 14.52,
+      "speech": "所以取清单最小位置。必然取到 Q 这个位置。这才补上第三节所需的下一处前提。同位置合并保证只到站一次。到站后仍收齐全部参与者。保留不同原始输入对。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 2,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "取",
+          "Offset": 4800000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 44,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "原始",
+          "Offset": 135400000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 45,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC46",
+      "file": "narration-staging/initial/OC46.wav",
+      "audioSha256": "c92e06648d952d06f45e68026dabffd9a20cd29f57b10a652a8f68651ab7cb99",
+      "fingerprint": "3dbe2f3ea77be9b172bf3a15a1448fa69c11f181848d3476ec6f3b1d0ed790ea",
+      "durationSeconds": 10.08,
+      "speech": "第二节建立空状态和第一处。第三节在到达那里后保持保证。并执行两类检查。这就得到一个新的已正确处理边界。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC47",
+      "file": "narration-staging/initial/OC47.wav",
+      "audioSha256": "39ad751ecf9d2bf5c91ee2d773b76aff1d194f66f2ef60af59749c42005311b8",
+      "fingerprint": "d229905340f4d13b71cf3fb6d102298a7d0d2af93e267fe6a04417b3c476f580",
+      "durationSeconds": 14.62,
+      "speech": "从这个边界。第四节保证下一处及时登记并被取到。第三节再说明处理后继续正确。每一步只用此前已经建立的状态。没有借用后面的处理结果。因而没有循环论证。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC48",
+      "file": "narration-staging/initial/OC48.wav",
+      "audioSha256": "2382bbe2c05c5469ca31c2e935e436b541a0ac42a54b12c0c679b31e3c600c40",
+      "fingerprint": "12a2ead004c5c6fd56f4a6ab644fa34908f2b8a5bd81bb4166b5ef645175c931",
+      "durationSeconds": 12.9,
+      "speech": "输入有限。所以端点和点输入位置有限。非零输入的所在直线也有限。每两条不同直线至多相交一次。只有落在实际闭范围内的位置才成为事件。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC49",
+      "file": "narration-staging/initial/OC49.wav",
+      "audioSha256": "c076e27707b365792f103c14c5677fc518ec5a155aa5792f2e611426fc9349cb",
+      "fingerprint": "0fc4e354ff68be9b1ec07466025713bdbb265b162795d5e810f80406a6af1d14",
+      "durationSeconds": 11.38,
+      "speech": "重叠区间虽然有无穷多个公共点。但在加入时作为完整区间报告。不会把区间里的每个点都列成事件。因此真实事件位置仍然有限。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "区间",
+          "Offset": 67200000,
+          "Duration": 3200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 44,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC50",
+      "file": "narration-staging/initial/OC50.wav",
+      "audioSha256": "2a49fb090b87dd21dd085d327c511eae57e7941ac392e7c17790ec839c1d20eb",
+      "fingerprint": "a628bdf9c05f8d9444e4c4fae3fa5668d5e1673d6ac147e752cc580b683c2e6c",
+      "durationSeconds": 15.62,
+      "speech": "每步只处理有限成员、输入对和检查。处理后移去当前位置。严格未来比较禁止它重新加入。同位置合并也禁止存多份。每次完成一个此前未完成的真实位置。所以只能处理有限次。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "重新",
+          "Offset": 70000000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 46,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC51",
+      "file": "narration-staging/initial/OC51.wav",
+      "audioSha256": "e6bb9bca7d0d1ba188022fbfecfad65cd8d4d9d7c5682acfdd62a464fffa0a72",
+      "fingerprint": "cc9e9d6e19d3a9844279f0facaea15d84089647d8f5747b90c3410355cbec05f",
+      "durationSeconds": 12.4,
+      "speech": "有限终止还不等于结果完整。假设结束时仍有真实事件未处理。就能选出最早的 Q 这个位置。这里需要第四节的下一处必达。不能只靠刚才的有限性。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC52",
+      "file": "narration-staging/initial/OC52.wav",
+      "audioSha256": "f7ad0abfd35d701efe4592b491dd0bf49bc40bac4b2560ad6b4a583c2c3c7d80",
+      "fingerprint": "a8c1ad4fd5e72ade1a126cf11b99068816d428ed86b03e80a1da9b59d6f3966b",
+      "durationSeconds": 10.03,
+      "speech": "第四节保证 Q 已经在清单里。这与清单为空矛盾。所以全部真实事件都已到达。第三节也把正确性保持到了最后一个边界。",
+      "assessment": "assessed-timing-needs-review",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 2,
+        "Insertion": 1
+      },
+      "flaggedWords": [
+        {
+          "Word": "也",
+          "Offset": 31000000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "Insertion"
+          }
+        },
+        {
+          "Word": "与",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        },
+        {
+          "Word": "也",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        }
+      ]
+    },
+    {
+      "id": "OC53",
+      "file": "narration-staging/initial/OC53.wav",
+      "audioSha256": "6cc90da2291ff541df73d3f4f4b6f23ab86d84ad6faaf7e687eadb1ff24969ee",
+      "fingerprint": "15055838337dcdd6fadffed050841f2d65a29de3b31482ee86987322fa5ca65b",
+      "durationSeconds": 14.82,
+      "speech": "同线非零相交对的后开始者端点已处理。同点开始者也已按固定身份顺序加入。因此唯一报告时机已经发生。留下完整闭交集。可能是一段区间。也可能只有一个点。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "顺序",
+          "Offset": 61200000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 59,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC54",
+      "file": "narration-staging/initial/OC54.wav",
+      "audioSha256": "15fa19bcde5e24892cb3222da050536ac90ac40fd87fccceb680158deb3874d1",
+      "fingerprint": "654a0fed4784b5eeb66897f41ef133c46062f1fa555e0b88a4b2f9b4dd14a687",
+      "durationSeconds": 11.13,
+      "speech": "不同组非零相交对的唯一交点已处理。完整相遇块展开了这一对。含点的相交对也在点位置配对完成。这两类都得到那个点。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC55",
+      "file": "narration-staging/initial/OC55.wav",
+      "audioSha256": "24b59996dd6b1ca5271923de8d7bd8f3b7e869a7d0ca2991b498e179861cd6ce",
+      "fingerprint": "b2b5e10894b5168b7f032bb7760c55889da7ca59690ef8a20f8d37af53f11518",
+      "durationSeconds": 14.87,
+      "speech": "三类互斥穷尽、类内唯一。又不报告空交集。现在所有报告时机都已发生。所以不漏、不多报、不重复。多个输入对可以共享同一结果位置。位置合并不删去不同的对。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC56",
+      "file": "narration-staging/initial/OC56.wav",
+      "audioSha256": "e6fbd85b982cc32b59ef3030e05c91ba689cc4d55f6b3d66f0dca057820633e7",
+      "fingerprint": "e0b206da9353a8492b49d7dd521ae9fd59043403baef36bc9c6a5019101dae1f",
+      "durationSeconds": 4.61,
+      "speech": "没有输入时。不需要走出第一步。空结果已经完整。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC57",
+      "file": "narration-staging/initial/OC57.wav",
+      "audioSha256": "8ffaa668b248d4fe6077c8890f05daf84ab1cf1ca572ef34d741949584f49cb8",
+      "fingerprint": "ab529d45193dbed8451100308c4f16229b6ba047a3da57e090b7d5816b203f62",
+      "durationSeconds": 7.38,
+      "speech": "只有一份输入时。可能处理它的端点。但没有两份不同输入可配对。结果仍为空。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC58",
+      "file": "narration-staging/initial/OC58.wav",
+      "audioSha256": "7fd35904ba110a5f89b230e633744a84c71a0c73649c07b150626bf6914e57ce",
+      "fingerprint": "ea324a2e4a62cdf0f969665112839a11ee5d8c056ef315b2e9b40192d360142d",
+      "durationSeconds": 10,
+      "speech": "全部互不相交时。每次也都找不到非空输入对。得到空结果。前面的推进和结束理由。从未要求至少有一个交点。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC59",
+      "file": "narration-staging/initial/OC59.wav",
+      "audioSha256": "0552df15053634cb531ca207bef6db809ce61d4df746887ef2e1f6c9c9d16ea5",
+      "fingerprint": "41cbd4f1d90b36f56200b5d68c756d9def6ad85f9d0b72a1640e7a384a462fb6",
+      "durationSeconds": 13.67,
+      "speech": "没有使用剪切时。结果已经是原坐标中的结果。使用剪切时。字母 x 撇和 y 撇表示扫描坐标。字母 x 和 y 表示原坐标。统一系数仍用 s 表示。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 0,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": []
+    },
+    {
+      "id": "OC60",
+      "file": "narration-staging/initial/OC60.wav",
+      "audioSha256": "f4f37752acda1f202f7c56ed4f1060ae212e99be794cf758e5b2c9ccc12d9e4b",
+      "fingerprint": "2f2ca109e286387b8382308e0803393a068806aedaf2889304613339483b7163",
+      "durationSeconds": 17.54,
+      "speech": "用第七章的逆变换。原 x 坐标等于扫描 x 坐标减去系数与扫描 y 坐标的乘积。原 y 坐标保持不变。点还原为点。区间两端逆变换以后。结果是两端之间的整段闭交集。不是两个点结果。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "y",
+          "Offset": 59800000,
+          "Duration": 1600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 53,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OC61",
+      "file": "narration-staging/initial/OC61.wav",
+      "audioSha256": "322a7fb2341bd27324430ae787bbefd90a313b2c59eb76478dc355debeb78e71",
+      "fingerprint": "f29dbd9d02e9967720561fd970e7f1254ac429c0220508e49c98ccc632332787",
+      "durationSeconds": 15.19,
+      "speech": "变换一一对应。身份始终保留。所以不会制造相交对。也不合并重复或反向输入。从空状态到每次必达并保持。再到全部报告完成和原坐标还原。整体证明到此闭合。",
+      "assessment": "assessed-timing-available",
+      "flags": {
+        "Mispronunciation": 1,
+        "Omission": 0,
+        "Insertion": 0
+      },
+      "flaggedWords": [
+        {
+          "Word": "每次",
+          "Offset": 89600000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 46,
+            "ErrorType": "Mispronunciation"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "audioFile": "OC56.wav",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "audioSha256": "e6fbd85b982cc32b59ef3030e05c91ba689cc4d55f6b3d66f0dca057820633e7",
+  "duration": 4.61,
+  "words": [
+    {
+      "text": "没有",
+      "startMs": 70,
+      "durationMs": 400,
+      "textOffset": 0,
+      "wordLength": 2
+    },
+    {
+      "text": "输入",
+      "startMs": 470,
+      "durationMs": 360,
+      "textOffset": 2,
+      "wordLength": 2
+    },
+    {
+      "text": "时",
+      "startMs": 830,
+      "durationMs": 440,
+      "textOffset": 4,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 1270,
+      "durationMs": 0,
+      "textOffset": 5,
+      "wordLength": 1
+    },
+    {
+      "text": "不需要",
+      "startMs": 1478,
+      "durationMs": 480,
+      "textOffset": 6,
+      "wordLength": 3
+    },
+    {
+      "text": "走出",
+      "startMs": 1958,
+      "durationMs": 320,
+      "textOffset": 9,
+      "wordLength": 2
+    },
+    {
+      "text": "第",
+      "startMs": 2278,
+      "durationMs": 120,
+      "textOffset": 11,
+      "wordLength": 1
+    },
+    {
+      "text": "一",
+      "startMs": 2398,
+      "durationMs": 160,
+      "textOffset": 12,
+      "wordLength": 1
+    },
+    {
+      "text": "步",
+      "startMs": 2558,
+      "durationMs": 280,
+      "textOffset": 13,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 2838,
+      "durationMs": 0,
+      "textOffset": 14,
+      "wordLength": 1
+    },
+    {
+      "text": "空结果已经完",
+      "startMs": 3138,
+      "durationMs": 1120,
+      "textOffset": 15,
+      "wordLength": 6
+    },
+    {
+      "text": "整",
+      "startMs": 4258,
+      "durationMs": 280,
+      "textOffset": 21,
+      "wordLength": 1
+    },
+    {
+      "text": "。",
+      "startMs": 4538,
+      "durationMs": 0,
+      "textOffset": 22,
+      "wordLength": 1
+    }
+  ],
+  "speech": "没有输入时。不需要走出第一步。空结果已经完整。",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "fingerprint": "e0b206da9353a8492b49d7dd521ae9fd59043403baef36bc9c6a5019101dae1f",
+  "alignment": {
+    "method": "azure-pronunciation-assessment",
+    "audioSha256": "e6fbd85b982cc32b59ef3030e05c91ba689cc4d55f6b3d66f0dca057820633e7",
+    "synthesisWords": [
+      {
+        "text": "没有",
+        "startMs": 70,
+        "durationMs": 400,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "输入",
+        "startMs": 470,
+        "durationMs": 360,
+        "textOffset": 2,
+        "wordLength": 2
+      },
+      {
+        "text": "时",
+        "startMs": 830,
+        "durationMs": 440,
+        "textOffset": 4,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 1270,
+        "durationMs": 0,
+        "textOffset": 5,
+        "wordLength": 1
+      },
+      {
+        "text": "不需要",
+        "startMs": 1478,
+        "durationMs": 480,
+        "textOffset": 6,
+        "wordLength": 3
+      },
+      {
+        "text": "走出",
+        "startMs": 1958,
+        "durationMs": 320,
+        "textOffset": 9,
+        "wordLength": 2
+      },
+      {
+        "text": "第",
+        "startMs": 2278,
+        "durationMs": 120,
+        "textOffset": 11,
+        "wordLength": 1
+      },
+      {
+        "text": "一",
+        "startMs": 2398,
+        "durationMs": 160,
+        "textOffset": 12,
+        "wordLength": 1
+      },
+      {
+        "text": "步",
+        "startMs": 2558,
+        "durationMs": 280,
+        "textOffset": 13,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 2838,
+        "durationMs": 0,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "空结果已经完",
+        "startMs": 3138,
+        "durationMs": 1120,
+        "textOffset": 15,
+        "wordLength": 6
+      },
+      {
+        "text": "整",
+        "startMs": 4258,
+        "durationMs": 280,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 4538,
+        "durationMs": 0,
+        "textOffset": 22,
+        "wordLength": 1
+      }
+    ],
+    "response": {
+      "Id": "c06b7ffd6a274a5f8832ac1c850b6214",
+      "RecognitionStatus": "Success",
+      "Offset": 400000,
+      "Duration": 45400000,
+      "Channel": 0,
+      "DisplayText": "没有输入时，不需要走出第一步空结果已经完整。",
+      "SNR": 41.272755,
+      "NBest": [
+        {
+          "Confidence": 0.9791637,
+          "Lexical": "没有 输入 时 不 需要 走出 第一 步 空结果 已经 完整",
+          "ITN": "没有 输入 时 不 需要 走出 第一 步 空结果 已经 完整",
+          "MaskedITN": "没有输入时不需要走出第一步空结果已经完整",
+          "Display": "没有输入时，不需要走出第一步空结果已经完整。",
+          "PronunciationAssessment": {
+            "AccuracyScore": 95,
+            "FluencyScore": 98,
+            "CompletenessScore": 100,
+            "PronScore": 96.6
+          },
+          "Words": [
+            {
+              "Word": "没有",
+              "Offset": 400000,
+              "Duration": 4100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "输入",
+              "Offset": 4600000,
+              "Duration": 3500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "时",
+              "Offset": 8200000,
+              "Duration": 4700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "不",
+              "Offset": 13800000,
+              "Duration": 3700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "需要",
+              "Offset": 17600000,
+              "Duration": 2700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 97,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "走出",
+              "Offset": 20400000,
+              "Duration": 3100000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 68,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "第一",
+              "Offset": 23600000,
+              "Duration": 2700000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "步",
+              "Offset": 26400000,
+              "Duration": 3200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "空结果",
+              "Offset": 29900000,
+              "Duration": 8200000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 88,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "已经",
+              "Offset": 38200000,
+              "Duration": 2500000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            },
+            {
+              "Word": "完整",
+              "Offset": 40800000,
+              "Duration": 5000000,
+              "PronunciationAssessment": {
+                "AccuracyScore": 100,
+                "ErrorType": "None"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "pronunciationReview": "pending-listening"
+  }
+}

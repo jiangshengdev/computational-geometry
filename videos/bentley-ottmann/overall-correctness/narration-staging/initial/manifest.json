@@ -1,0 +1,497 @@
+{
+  "planSha256": "24bd7b83c28ff1d83fd6362db455e7130b0b4ff8c99a54182d4776930b6ae8a6",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "automaticRetries": 0,
+  "published": false,
+  "requests": [
+    {
+      "id": "OC01",
+      "fingerprint": "e47cfcf5078128fa659f6f2d8e09084f146d02d914304f9bceb591b0ef7f4a1e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.260Z",
+      "endedAt": "2026-11-14T14:36:04.826Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC02",
+      "fingerprint": "1255132901d9d7b1be2fa90377c98cffcdff095714b274b4fdf0c278bb254a8b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.270Z",
+      "endedAt": "2026-11-14T14:36:05.240Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC03",
+      "fingerprint": "1d9f20dca9632d2be23b76495be582ba3077f75dfd37fa10c5d7e9a489bdf4cf",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.271Z",
+      "endedAt": "2026-11-14T14:36:08.239Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC04",
+      "fingerprint": "823b2956be857c973d829f2ae0de8c23138c14735fb79b67127b2a177a393d75",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.271Z",
+      "endedAt": "2026-11-14T14:36:07.412Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC05",
+      "fingerprint": "f90d5ae40115cc9f32d9740e934a3d48ce02dcfe4f811ec266acc47db4e9748a",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.272Z",
+      "endedAt": "2026-11-14T14:36:11.419Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC06",
+      "fingerprint": "ae118a7e07140914850bf4a5008cea581afb0f8244b7decf26d455154b6faeec",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.272Z",
+      "endedAt": "2026-11-14T14:36:11.843Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC07",
+      "fingerprint": "708f4f1964ed581d604a454e1081fa554d0ebb687b56b674f2639bc18023c299",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.272Z",
+      "endedAt": "2026-11-14T14:36:08.623Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC08",
+      "fingerprint": "307dd72575817e5f3c7f67e7f28fbb0b0b8a3c271726136ad85bbd5eada9d885",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.273Z",
+      "endedAt": "2026-11-14T14:36:07.863Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC09",
+      "fingerprint": "b81c2ef33f1ffe322d2069a8fba6f61e00a6da71722685706f0fae41e8fcaa1e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.274Z",
+      "endedAt": "2026-11-14T14:36:04.372Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC10",
+      "fingerprint": "095862da160d15b283fda09d3f52fe2411a5d48359d43cd58e6f1c992828b4a3",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.274Z",
+      "endedAt": "2026-11-14T14:36:12.318Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC11",
+      "fingerprint": "0045cf1d4a25811f7fb318355e92bce404044689559e6c6a9ee169073fce81f7",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.275Z",
+      "endedAt": "2026-11-14T14:36:06.955Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC12",
+      "fingerprint": "80e175cf0600988e45bcac6578ad776a3e04654811c4c743814d2e2e88dffb9e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.275Z",
+      "endedAt": "2026-11-14T14:36:05.666Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC13",
+      "fingerprint": "33a4532af6d82cbaaf5165d5ab74608677a7b6704d626d5b68e860615d863d1a",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.275Z",
+      "endedAt": "2026-11-14T14:36:03.870Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC14",
+      "fingerprint": "23434f66a577e81926f018bdb113dec103f0224e649bba197f6a8deedac018e8",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.276Z",
+      "endedAt": "2026-11-14T14:36:09.447Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC15",
+      "fingerprint": "5509e3bd549cecf52b1551642f3ba85629330ed264373fcd4cfbd8ec2c4d4e37",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.276Z",
+      "endedAt": "2026-11-14T14:36:09.011Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC16",
+      "fingerprint": "4774f7cb227b8a8acc067450e5f7a2694ef83679a32c6604f8d51a7a44e0b8fb",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.280Z",
+      "endedAt": "2026-11-14T14:36:06.517Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC17",
+      "fingerprint": "7cb1a292c0a308545b519a8febf25ac727e16698726cff0a2f4f1d7bb33e3142",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.280Z",
+      "endedAt": "2026-11-14T14:36:10.611Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC18",
+      "fingerprint": "132439459a77165a1606b62211e0e528f50a0ef5211036dab0214278177c2801",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.282Z",
+      "endedAt": "2026-11-14T14:36:09.990Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC19",
+      "fingerprint": "62d6614756bf48372410bdbe83864a5bdfe8bf0670b4d252e678625e0d521bb5",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.283Z",
+      "endedAt": "2026-11-14T14:36:06.065Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC20",
+      "fingerprint": "cfd9d02735c004a9450f447fc2c19c33ad765e84b3770e5df202f510fcec4f7d",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:35:58.284Z",
+      "endedAt": "2026-11-14T14:36:10.997Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC21",
+      "fingerprint": "3e7d4c4a0119f9d1286a02420bbaf0002d6071f8da4236c350d259576952a38f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.262Z",
+      "endedAt": "2026-11-14T14:37:06.227Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC22",
+      "fingerprint": "55e330614f4b90b0188a5bc457deb10e51893a35847c6c7f6476fc8e7c9e96e9",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.272Z",
+      "endedAt": "2026-11-14T14:37:03.444Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC23",
+      "fingerprint": "5cc5181e70306cb9622bfd65292c6687a0c9fa090365cca07bbdcde884030d28",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.274Z",
+      "endedAt": "2026-11-14T14:37:05.365Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC24",
+      "fingerprint": "f3969585925bd39d0c185d042bf7c2ea1637270c346edb1e72828b1e2e48749b",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.275Z",
+      "endedAt": "2026-11-14T14:36:59.221Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "id": "OC25",
+      "fingerprint": "07dca45e208ae708abf4be69bc15403501f3d65db92370b0c31b21a6e1c2ad3c",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.276Z",
+      "endedAt": "2026-11-14T14:37:08.371Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC26",
+      "fingerprint": "2938034d2483825874de65924fa7b0202532c9f56478f6636ea66848907901d1",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.276Z",
+      "endedAt": "2026-11-14T14:37:09.754Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC27",
+      "fingerprint": "cce0731a266398b82b50e5e44afebcd1aad360a4a60c315cb4e2df28d1a50e7f",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.277Z",
+      "endedAt": "2026-11-14T14:36:59.234Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "id": "OC28",
+      "fingerprint": "5b2d0e47250efd9e5538f26b92d397c430965cc8030d3a44d461d3db73206163",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.277Z",
+      "endedAt": "2026-11-14T14:37:06.659Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC29",
+      "fingerprint": "5ac932ac4b447d45e374ba19b6633ddb3408c732ef617233e49726e2f6a08450",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.278Z",
+      "endedAt": "2026-11-14T14:37:08.828Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC30",
+      "fingerprint": "cd76f218997801a0dbb6ead7e0af6e9071fd66921d92c5fe2c9c6b419e34e1e1",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.279Z",
+      "endedAt": "2026-11-14T14:36:59.242Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "id": "OC31",
+      "fingerprint": "ebe9331a10d2b74c8881c5e66e59fa4f13730342f7ce2e01fae67ec87899e19e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.279Z",
+      "endedAt": "2026-11-14T14:37:07.959Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC32",
+      "fingerprint": "a2ae6e7c7180c01ecc8c87ade08e8974e196ac514fed43e45be4cc6a524e42b5",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.282Z",
+      "endedAt": "2026-11-14T14:37:04.184Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC33",
+      "fingerprint": "01d1dc3b53f8a1d7762e345557963377eaa017a546878e71c3c9fc8b4b772782",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.283Z",
+      "endedAt": "2026-11-14T14:37:03.837Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC34",
+      "fingerprint": "180c1bea36bfed1f5323f7ea6683e2aaa3cc837ab0dcf61e37aaa86e6409cde3",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.283Z",
+      "endedAt": "2026-11-14T14:37:07.510Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC35",
+      "fingerprint": "648c8e4a3f5d7d945ac6dfa99e32026ba1322a23d6ad9a742c59117248bb6ce2",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.284Z",
+      "endedAt": "2026-11-14T14:36:59.305Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "id": "OC36",
+      "fingerprint": "0ec6a0696953f1152c3372877eaa70531d09fb0b98ab2c43af9fd14f068a8cc2",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.284Z",
+      "endedAt": "2026-11-14T14:37:05.805Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC37",
+      "fingerprint": "5c5db19f4d28761d5de23378f32c5c1c0fbef1164b16ecf6bb8f90c628673c99",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.286Z",
+      "endedAt": "2026-11-14T14:37:04.546Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC38",
+      "fingerprint": "fc67198b22243cc4f080b22289083351ce7b87c4043b44e1e8805c749e9191a0",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.287Z",
+      "endedAt": "2026-11-14T14:37:07.113Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC39",
+      "fingerprint": "188a6e7a0907b57e36b945594a7a937d6aabccd5ce810e6f920814b6f9b7dac9",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.288Z",
+      "endedAt": "2026-11-14T14:37:04.928Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC40",
+      "fingerprint": "0d83372c25019f381eb837a99d2adeb0921f59e9c7c1550689d40b5031813ef3",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:36:58.288Z",
+      "endedAt": "2026-11-14T14:37:09.189Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC41",
+      "fingerprint": "d8845dccb5cd91d129cc077e1e00488bcf56a9e01e41501eee7000a71e00ea26",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:04.139Z",
+      "endedAt": "2026-11-14T14:39:07.664Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC42",
+      "fingerprint": "d34c592f50a49606a047261d016620124be02f8b193155163335117482d030f6",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:07.665Z",
+      "endedAt": "2026-11-14T14:39:12.990Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC43",
+      "fingerprint": "9da7da1028294fee9d81bca23d3b1a608f7136d88f60af7eed49eca61adc4dda",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:12.991Z",
+      "endedAt": "2026-11-14T14:39:18.309Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC44",
+      "fingerprint": "239cc8ee954618a34ff53bd3cd81b65969db0a2e638f2b621cc0f1f565466d52",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:18.310Z",
+      "endedAt": "2026-11-14T14:39:22.336Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC45",
+      "fingerprint": "33ac74f70b28334f1e7d0186bca8693ccd676d087e03a5028f65c03353bcdc16",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:22.337Z",
+      "endedAt": "2026-11-14T14:39:26.785Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC46",
+      "fingerprint": "3dbe2f3ea77be9b172bf3a15a1448fa69c11f181848d3476ec6f3b1d0ed790ea",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:26.786Z",
+      "endedAt": "2026-11-14T14:39:30.421Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC47",
+      "fingerprint": "d229905340f4d13b71cf3fb6d102298a7d0d2af93e267fe6a04417b3c476f580",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:30.421Z",
+      "endedAt": "2026-11-14T14:39:35.442Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC48",
+      "fingerprint": "12a2ead004c5c6fd56f4a6ab644fa34908f2b8a5bd81bb4166b5ef645175c931",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:35.442Z",
+      "endedAt": "2026-11-14T14:39:40.257Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC49",
+      "fingerprint": "0fc4e354ff68be9b1ec07466025713bdbb265b162795d5e810f80406a6af1d14",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:40.258Z",
+      "endedAt": "2026-11-14T14:39:44.799Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC50",
+      "fingerprint": "a628bdf9c05f8d9444e4c4fae3fa5668d5e1673d6ac147e752cc580b683c2e6c",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:44.802Z",
+      "endedAt": "2026-11-14T14:39:49.967Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC51",
+      "fingerprint": "cc9e9d6e19d3a9844279f0facaea15d84089647d8f5747b90c3410355cbec05f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:49.971Z",
+      "endedAt": "2026-11-14T14:39:54.195Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC52",
+      "fingerprint": "a8c1ad4fd5e72ade1a126cf11b99068816d428ed86b03e80a1da9b59d6f3966b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:54.200Z",
+      "endedAt": "2026-11-14T14:39:58.184Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC53",
+      "fingerprint": "15055838337dcdd6fadffed050841f2d65a29de3b31482ee86987322fa5ca65b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:39:58.185Z",
+      "endedAt": "2026-11-14T14:40:03.302Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC54",
+      "fingerprint": "654a0fed4784b5eeb66897f41ef133c46062f1fa555e0b88a4b2f9b4dd14a687",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:03.303Z",
+      "endedAt": "2026-11-14T14:40:07.365Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC55",
+      "fingerprint": "b2b5e10894b5168b7f032bb7760c55889da7ca59690ef8a20f8d37af53f11518",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:07.366Z",
+      "endedAt": "2026-11-14T14:40:12.692Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC56",
+      "fingerprint": "e0b206da9353a8492b49d7dd521ae9fd59043403baef36bc9c6a5019101dae1f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:12.693Z",
+      "endedAt": "2026-11-14T14:40:15.484Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC57",
+      "fingerprint": "ab529d45193dbed8451100308c4f16229b6ba047a3da57e090b7d5816b203f62",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:15.486Z",
+      "endedAt": "2026-11-14T14:40:18.873Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC58",
+      "fingerprint": "ea324a2e4a62cdf0f969665112839a11ee5d8c056ef315b2e9b40192d360142d",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:18.873Z",
+      "endedAt": "2026-11-14T14:40:22.520Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC59",
+      "fingerprint": "41cbd4f1d90b36f56200b5d68c756d9def6ad85f9d0b72a1640e7a384a462fb6",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:22.520Z",
+      "endedAt": "2026-11-14T14:40:27.553Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC60",
+      "fingerprint": "2f2ca109e286387b8382308e0803393a068806aedaf2889304613339483b7163",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:27.554Z",
+      "endedAt": "2026-11-14T14:40:33.493Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "OC61",
+      "fingerprint": "f29dbd9d02e9967720561fd970e7f1254ac429c0220508e49c98ccc632332787",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:40:33.494Z",
+      "endedAt": "2026-11-14T14:40:38.230Z",
+      "diagnostic": ""
+    }
+  ]
+}
