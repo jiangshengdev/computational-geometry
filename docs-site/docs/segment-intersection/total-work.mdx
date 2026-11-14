@@ -77,7 +77,7 @@ Merge old-block group identities with groups of starting inputs. Let $s_p$ be th
 
 Remove the old block, filter out groups emptied by ending members, sort remaining groups by slope, and reinsert this block. These operations follow [Chapter 6's local update](./same-x-events.mdx#第五节为什么只更新当前块), without reordering higher unprocessed blocks prematurely. There are at most $h_p$ deletions and insertions each; filtering and local-list construction are at most linear in $h_p$.
 
-Local comparison sorting costs $O(h_p\log(h_p+1))$. Since $0\le h_p\le n$ and logarithms are nondecreasing on positive arguments,
+“Comparison sorting” orders items by comparing pairs; not every sorting method is fast enough. The [sorting facility used here guarantees a worst-case linear-times-logarithmic cost](https://doc.rust-lang.org/std/primitive.slice.html#method.sort_unstable_by), provided comparisons define a consistent order. Fixed exact slopes satisfy that condition, each slope comparison counts as one exact comparison, and sorting moves group identities rather than whole memberships. Sorting at most $h_p$ items therefore costs $O(h_p\log(h_p+1))$; sorting correctly alone would not establish its speed. Since $0\le h_p\le n$ and logarithms are nondecreasing on positive arguments,
 
 $$
 h_p\log(h_p+1)\le h_p\log(n+1).
@@ -109,6 +109,7 @@ $$
 \begin{aligned}
 E+1&\le2n+k+1\\
 &\le2n+\frac{n(n-1)}2+1\\
+&=\frac{4n+n^2-n+2}2\\
 &=\frac{n^2+3n+2}2\\
 &=\frac{(n+1)(n+2)}2\\
 &\le(n+1)^2.
@@ -167,7 +168,7 @@ Now multiply cumulative operation counts by their respective costs, rather than 
 | Input preparation, conditional shear, fixed lines, endpoint cache, and initial list | $O(n\log(n+1))$ |
 | Updates to both member indexes and input-identity mapping accesses | Each nonzero input joins and leaves once: $O(n\log(n+1))$ |
 | Height location, successor queries, group-identity merging, local block removal and reinsertion | $O((E+H+n)\log(n+1))$ |
-| Local sorting, filtering, and updates needed for numerical comparisons | $O(H\log(n+1))$, with fixed event overhead included separately in $E$ |
+| Local sorting and filtering, including numerical updates for their comparisons | $O(H\log(n+1))$, with fixed event overhead included separately in $E$ |
 | Adjacency and coverage checks, successful or repeated scheduling, and queue removal | $O((E+H+n)\log(n+1))$ |
 | Same-line cursors, cross-group and point expansion, pairing, and result restoration | $O((n+k)\log(n+1))$ |
 
