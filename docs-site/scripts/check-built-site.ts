@@ -6,6 +6,14 @@ import {fileURLToPath} from 'node:url';
 import {chromium} from 'playwright';
 import legacyFragments from './test-data/legacy-fragments.json' with {type: 'json'};
 
+// Pass English route paths; each selection exercises both locales.
+const requestedRoutes = process.argv.slice(2).map((argument) => {
+  assert(argument.startsWith('--route='), `Unknown argument: ${argument}; use --route=/path/`);
+  const route = argument.slice('--route='.length);
+  assert(route.startsWith('/') && route.endsWith('/') && !route.startsWith('/zh-Hans/'), `Expected an English route with trailing slash: ${route}`);
+  return route;
+});
+
 // Exercise the generated reader experience, without starting another application.
 const root = fileURLToPath(new URL('../build/', import.meta.url));
 const mime: Record<string, string> = {'.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.xml': 'application/xml', '.json': 'application/json'};
@@ -43,11 +51,15 @@ try {
   const english = routes.filter((route) => !route.startsWith('/zh-Hans/')).sort();
   const chinese = routes.filter((route) => route.startsWith('/zh-Hans/')).sort();
   for (const route of Object.keys(legacyFragments)) assert(english.includes(route), `Old page URL missing: ${route}`);
-  assert.equal(english.length, 20, 'Home, 17 content pages and two chapter indexes');
+  assert.equal(english.length, 21, 'Home, 18 content pages and two chapter indexes');
   assert.deepEqual(chinese.map((route) => route.slice('/zh-Hans'.length)), english);
+  for (const route of requestedRoutes) assert(english.includes(route), `Requested route missing: ${route}`);
+  const selectedRoutes = requestedRoutes.length
+    ? routes.filter((route) => requestedRoutes.includes(route.replace(/^\/zh-Hans(?=\/)/, '')))
+    : routes;
   let checkedLinks = 0;
   let checkedImages = 0;
-  for (const route of routes) {
+  for (const route of selectedRoutes) {
     const zh = route.startsWith('/zh-Hans/');
     const response = await page.goto(origin + route);
     assert.equal(response?.status(), 200, route);
@@ -55,6 +67,7 @@ try {
     await page.waitForFunction(() => document.documentElement.dataset.hasHydrated === 'true');
     assert.equal(await page.locator('html').getAttribute('lang'), zh ? 'zh-Hans' : 'en');
     const article = page.locator('.theme-doc-markdown');
+    assert.equal(await page.locator('.katex-error').count(), 0, `Invalid mathematics: ${route}`);
     const text = await (await article.count() ? article : page.locator('main')).innerText();
     assert(zh ? /[\p{Script=Han}]/u.test(text) : !/[\p{Script=Han}]/u.test(text), `Wrong body language: ${route}`);
     assert.match(await page.locator('nav.navbar').innerText(), zh ? /计算几何/ : /Computational Geometry/);
@@ -88,7 +101,9 @@ try {
     for (const id of fragments) {
       assert(await page.evaluate((anchor) => Boolean(document.getElementById(anchor)), id), `Legacy fragment missing: ${route}#${id}`);
     }
-    const hash = fragments.length ? '#' + encodeURIComponent(fragments[0]) : '';
+    const firstHeading = article.locator('h2[id]').first();
+    const heading = fragments[0] ?? (await firstHeading.count() ? await firstHeading.getAttribute('id') : null);
+    const hash = heading ? '#' + encodeURIComponent(heading) : '';
     if (hash) await page.goto(origin + route + hash);
     // Exercise the framework's actual same-document locale navigation in both directions.
     const otherRoute = zh ? route.slice('/zh-Hans'.length) : `/zh-Hans${route}`;
@@ -138,7 +153,7 @@ try {
     assert.equal(page.url(), origin + prefix + '/docs/segment-intersection/what-we-compute/');
   }
   assert.deepEqual(errors, [], 'Browser errors');
-  console.log(`PASS: ${routes.length} pages, ${checkedLinks} links/anchors, ${checkedImages} themed image loads, bidirectional article locale switching and chapter navigation`);
+  console.log(`PASS: ${selectedRoutes.length} pages, ${checkedLinks} links/anchors, ${checkedImages} themed image loads, bidirectional article locale switching and chapter navigation`);
 } finally {
   await browser?.close();
   await new Promise<void>((done, reject) => server.close((error) => error ? reject(error) : done()));

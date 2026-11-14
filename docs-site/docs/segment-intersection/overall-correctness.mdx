@@ -1,0 +1,137 @@
+---
+slug: /docs/segment-intersection/overall-correctness
+title: Why the whole algorithm remains correct
+sidebar_label: 9. Why the whole algorithm remains correct
+description: Connect initialization, preservation, and completion to explain how the full sweep reaches every necessary position and retains one complete intersection per intersecting input pair.
+---
+
+[Chapter 8](./complete-sweep.mdx) followed one mixed sweep to its end. Now leave that particular input behind: **why does the whole process still work for any allowed input?** Earlier chapters established the local reasons. This chapter connects their conditions in an order that supports the process from beginning to end.
+
+## Section 1: Connect established results into a complete proof {/* #premises */}
+
+The input consists of finitely many closed segments with exact rational coordinates. Shared endpoints, endpoints inside other segments, many segments meeting at one point, events in the same column, overlaps, vertical segments, and zero-length point inputs are all allowed. Empty input, a single input, and inputs with no intersections are included too.
+
+The goal remains [Chapter 1's result contract](./what-we-compute.mdx): each intersecting unordered pair of original inputs has exactly one complete intersection, either a point or a closed interval of positive length. Disjoint pairs have no result. Coincident inputs and inputs with reversed endpoints retain separate identities. “Unordered” means that exchanging the two inputs of a pair does not create another pair; it does not merge different inputs at the same position.
+
+First establish the coordinates used by the sweep. If there is no nonzero vertical input, keep the original coordinates. Otherwise, choose the safe shear coefficient from [Chapter 7](./vertical-segments.mdx) and transform every input uniformly, including points. Reuse the [order guarantee](./shear/order.mdx) and [nonvertical condition](./shear/special-cases.mdx): real events with different original horizontal coordinates keep their order; distinct positions originally in one column separate in height order; every transformed nonzero input is nonvertical. This requires a coefficient already proved safe, not an arbitrary small decimal. The transformation [preserves complete intersections](./shear/intersection.mdx), so we can prove the sweep correct in the new coordinates and then restore its results.
+
+Below, horizontal and vertical coordinates always mean **the coordinates actually used for scanning**. Follow [Chapter 6's complete order](./same-x-events.mdx#第一节先到左边同列再从低到高): compare horizontal coordinates first, then vertical coordinates within a column. Only equality of both means the same position. Without shear, same-column events can remain, so the second comparison is necessary. [Chapter 3's exact decisions](./exact-predicates.mdx#第六节让求交结果继续参与判断) make intersection calculations, position equality, range checks, and ordering use the same exact values. Shear establishes geometric conditions; exact arithmetic faithfully decides them. Neither replaces the other.
+
+The connections below use these established results:
+
+| Established result and its conditions | Its use here |
+| --- | --- |
+| [No order change without an event](./why-neighbors-proof.mdx#没有事件就不会改变顺序): members persist, with no endpoint or intersection in between; collinear members are handled as [groups](./overlapping-segments.mdx#第七节把顺序与事件发现的理由接到组上) | Move from the previous post-event state to just before the next position |
+| [Collect all same-point participants](./same-point-events.mdx#怎样找齐旧活动参与者): the old state is correct; find the full block through the position, then combine its endpoints and point inputs; with overlaps, expand [group members through that position](./overlapping-segments.mdx#第三节外部穿越只展开跨组对) | Report more than the pair that first discovered the position |
+| [Unique collinear reporting and current coverage](./overlapping-segments.mdx#第二节新成员加入时就报告完整交集): use only members that have started and have not left at their own end event; retain closed endpoints | Connect accumulated results, group membership, and future checks |
+| [Same-column state preservation](./same-x-events.mdx#第四节中间状态为什么还能按高度查找) and [complete future comparison](./same-x-events.mdx#第六节完整的未来次序怎样接到事件发现): process positions from bottom to top and update only the current block | Avoid moving the entire column prematurely to its right-side order |
+| [Group intersection discovery](./overlapping-segments.mdx#没有端点提示时怎样保证来得及预约) and its [same-column connection](./same-x-events.mdx#同列低处的更新会不会妨碍高处被发现): earlier states are correct, new adjacencies and coverage extensions have both been checked, and real future positions are retained | Register the next necessary position in time |
+
+We do not apply these results after assuming that the whole process is already correct. We start with the empty state. Section 3 asks: **if earlier work is correct and this really is the next position, why does processing it preserve correctness?** Section 4 then explains why this next position cannot be skipped.
+
+## Section 2: Where correctness starts before the sweep {/* #initialization */}
+
+First specify the records retained after processing a position. “Current” means after completing this position and before processing the next one. A horizontal coordinate alone does not specify progress within a column.
+
+| Record | Meaning to preserve |
+| --- | --- |
+| Active members | A nonzero input joins at its own start event and leaves after reporting at its own end event. Unstarted inputs are inactive; point inputs participate only at their own position |
+| Group order | Current nonempty collinear groups are ordered from bottom to top. Processed low blocks in a column use right-side order; unprocessed high blocks retain left-side order. Heights across the column remain nondecreasing |
+| Current coverage | Each nonempty group uses only its current members to determine its farthest right endpoint. Fixed collinear membership does not mean continuous coverage |
+| Pending list | All endpoints not yet taken out, together with confirmed real future intersections. One entry per position, retaining every associated input identity |
+| Accumulated results | Complete intersections for pairs whose reporting occasions have occurred, once per pair. This is not the collection of geometric pieces lying left of the scan position |
+
+Equality in coverage matters. Let $t$ be the current column's horizontal coordinate, and let $l_i,r_i$ be the start and end horizontal coordinates of member $i$. Partway through a column, retained old members can satisfy
+
+$$
+l_i\le t\le r_i.
+$$
+
+Here $i$ identifies an input, and $l_i,r_i$ name its two boundaries. A higher ending member not yet processed may have $r_i=t$. Completing a lower position does not justify requiring $t<r_i$ of every member in the column. A nonempty group's current farthest right endpoint is the largest $r_i$ among its members. Only after completing the whole column do all remaining members continue to its right. This is [Chapter 6's coverage equality distinction](./same-x-events.mdx#中间状态中的覆盖等号怎样处理).
+
+Initially, no position has been processed. There are no active members, hence no nonempty groups, group order, or coverage. No reporting occasion has occurred, so the result is empty. These empty records satisfy the table without assuming any known intersection.
+
+Endpoints come from the inputs themselves: register both endpoints of each nonzero segment and the position of each point input. Merge coincident position entries while retaining every associated identity, then order them exactly. **This does not enumerate all intersections in advance.** Future intersections must be discovered by later checks.
+
+Why does this establish a first step? Nonempty input has an earliest endpoint. Every position in a nonempty intersection is no earlier than the participating inputs' starts. In coordinates satisfying the nonvertical condition, the interior of a nonzero segment is strictly to the right of its start, while a point input occupies only its own position. Thus the earliest real event must be a registered endpoint position. Before it there are no active members and no pair whose reporting occasion has occurred. With empty input, no first step is needed: the answer is already empty.
+
+## Section 3: How one processing step preserves correctness {/* #preservation */}
+
+Call this position $P$. Make only two assumptions: **real events strictly earlier than $P$ have been processed correctly in order, and $P$ really is the next necessary position.** Do not assume that all later intersections are registered.
+
+### Use the earlier state to collect this position's participants {/* #participants */}
+
+No endpoint or intersection was skipped between the previous post-event state and arrival at $P$. The established membership and order guarantees therefore remain usable. If $P$ is higher in the same column, use the intermediate state with lower blocks already updated and higher blocks still waiting. [Chapter 6](./same-x-events.mdx#第四节中间状态为什么还能按高度查找) guarantees that height-based search still finds the complete meeting block in this state.
+
+
+The [same-point collection result](./same-point-events.mdx#怎样找齐旧活动参与者) now applies: collect every old active group through $P$ and its current members, then add inputs starting at $P$ and point inputs located there. Ending members have not left, so shared-endpoint contacts are retained. At an endpoint inside another segment, the interior participant comes from the old block. When many segments meet, the entire block is collected regardless of how many pairs originally scheduled the position. Point inputs do not belong to the persistent active order, but their identities are supplied here by the endpoint list.
+
+### Extend the earlier results with this position's reports {/* #reporting */}
+
+Use the established rules to divide unordered pairs of distinct original inputs into three classes:
+
+| Class | Reporting occasion and justification |
+| --- | --- |
+| Two nonzero inputs on the same line | When the later-starting member joins, pair it with members of that group still containing the position. Insert simultaneous starts one by one in fixed identity order. The [unique collinear reporting result](./overlapping-segments.mdx#为什么每个相交同线输入对恰好报告一次) supplies the complete closed intersection |
+| Two nonzero inputs in different groups | At their shared position $P$, expand all cross-group member pairs. Different lines have at most one intersection, so this point is each such pair's complete intersection. Do not expand within-group pairs again here |
+| At least one point input | At that point's position, pair it with all other participants there; take each unordered point–point pair once too. The [point-input rule](./same-point-events.mdx#第五节零长度输入参与这一次不留到右侧) supplies that point as the intersection |
+
+Every pair either contains a point input or consists of two nonzero inputs. In the latter case, their lines are either the same or different. The three classes therefore cover all possibilities, and no pair belongs to two classes. This excludes repetition across classes; the rules in the table ensure unique reporting within each class. Inputs with distinct identities but identical geometry are still paired individually.
+
+Earlier results are already correct. This step adds only pairs whose reporting occasion occurs at $P$. Participants are complete, and none fails to contain this position, so no report due here is omitted and no empty intersection is added. An earlier pair is not reported again merely because it passes through another position: collinear pairs report only at the later insertion, cross-group pairs have only one intersection, and point-containing pairs report only at the point's sole position.
+
+In particular, a collinear pair reports its **complete interval** now, even if the interval ends to the right of $P$. Original endpoints are known, and [Chapter 3's complete collinear intersection](./exact-predicates.mdx#第四节共线时从原端点选出完整区间) determines that range. There is no need to wait for its far end. A result extending into the future therefore satisfies Section 2's guarantee stated in terms of reporting occasions.
+
+### Retain the conditions needed by the next step {/* #update */}
+
+Only after reporting do members ending at $P$ leave. Point inputs do not remain active either. Keep continuing and nonzero starting members, updating them to [the current block's right-side order](./same-x-events.mdx#第五节为什么只更新当前块). Outside the block, nothing starts, ends, or crosses at $P$, so its previous state remains. The processed-low/unprocessed-high convention survives: higher ending members are neither removed nor reordered prematurely.
+
+Next, determine coverage from current members. If an insertion extends the farthest right endpoint, perform the [coverage-extension recheck](./overlapping-segments.mdx#第五节邻居没变覆盖延长也要补检), even when neighbor identities have not changed. An empty group leaves the active order. If a collinear member starts later, it joins then; its unstarted portion cannot fill the earlier gap. These steps use the [empty-group result](./overlapping-segments.mdx#第六节组空了以后不能跨过空隙继续覆盖) and [same-column coverage rules](./same-x-events.mdx#覆盖延长和空组仍按自己的位置处理).
+
+Check every new adjacency formed by the update: inside the new block, at its outer boundaries, and across the two sides when the block is empty. The [established classification](./same-point-events.mdx#第七节更新以后检查哪些邻接) covers these cases. First confirm a real closed-range intersection, then use complete position order to decide whether it is strictly later than $P$. A higher same-column position can still be future; the current position and past positions cannot be inserted again. Retain already registered real future positions. Repeated discovery merges position entries, not input-pair identities.
+
+One step thus preserves membership, order, coverage, and results, and performs both checks needed for later discovery: **new-adjacency checks and coverage-extension rechecks**. What remains is to justify the assumption that the list will not skip the next necessary position.
+
+## Section 4: Why every necessary next position is reached {/* #discovery */}
+
+Here we reuse the discovery proof rather than proving pre-intersection adjacency again. The required results are [Chapter 5's group discovery result](./overlapping-segments.mdx#没有端点提示时怎样保证来得及预约) and [Chapter 6's same-column version](./same-x-events.mdx#同列低处的更新会不会妨碍高处被发现): **if earlier events were processed correctly, both kinds of check were performed, and real scheduled positions were retained, a real group intersection without an endpoint reminder is registered before arrival.** Current members must actually cover that intersection; a whole supporting line or an unstarted member cannot substitute for coverage.
+
+Now look forward from a correctly processed boundary. If any real event remains, choose the earliest remaining position in complete order and call it $Q$. This selects an object from actual geometry for the proof; it does not ask the algorithm to calculate every intersection in advance. There are only finitely many positions, whose sources are listed in the next section when connecting the termination argument.
+
+1. If $Q$ has an endpoint or point input, initialization registered it. It has not been processed, so its entry remains.
+2. Otherwise, $Q$ must be a real intersection of nonzero inputs from different groups. All real events strictly before $Q$ belong to the correctly processed part. Section 3 guarantees that both kinds of check were performed in that part. The discovery result therefore has its required premises, so $Q$ has been registered. This includes unchanged neighbors whose coverage only later became sufficient to reach $Q$.
+3. The list contains only real endpoints and range-confirmed real intersections, and no processed positions. It cannot still contain an unprocessed position earlier than $Q$, or $Q$ would not be the earliest one chosen. Since it does contain $Q$, taking its minimum must take $Q$.
+
+These steps supply Section 3's condition for the next processing step. Section 2 establishes the starting point. Reach the first position and preserve correctness after processing it; from this new boundary, use the same connection to reach and correctly process the next one. Each use depends only on the state already established, never on later processing results.
+
+There is also no need to claim that every future intersection is already in the list at every moment. Some are discovered only when an adjacency forms or coverage extends. The necessary connection is: **whenever a next real event exists, it is registered in time and taken out.** Merging positions ensures one visit per position. On arrival, Section 3 still collects every participant and reports the distinct original input pairs.
+
+## Section 5: Why an empty list now means a complete answer {/* #completion */}
+
+Chapter 2 already used [finitely many positions, retained entries, and ordered removal](./why-neighbors-proof.mdx#从检查一直追到报告) to explain why the process cannot remain forever before an intersection. Connect those conditions to the full input now.
+
+Finite input gives finitely many endpoint positions, including point-input positions. There are also only finitely many supporting lines of nonzero inputs. Each pair of different lines has at most one intersection, and only positions inside actual closed input ranges require processing. Thus there are finitely many real event positions. An overlap contains infinitely many common points, but is reported as one complete interval on insertion; its individual points are not listed as events.
+
+Each processing step involves finitely many members, input pairs, and adjacency checks. Completion removes the current position. Exact strictly-future comparison forbids reinserting it, while same-position merging prevents multiple entries for it. Each step therefore completes a previously unprocessed real position. Only finitely many such steps are possible, so the sweep terminates.
+
+**Termination alone does not mean completeness; Section 4 is essential here.** If an unprocessed real event remained at termination, there would be a next one. Section 4 guarantees that it is in the list, contradicting the empty list. Every real event has therefore been reached, and Section 3 has preserved correctness through the last boundary.
+
+Now check each pair's reporting occasion:
+
+- Intersecting nonzero collinear pair: the later start has been processed, including simultaneous starts inserted in fixed identity order. Its unique reporting occasion has occurred, producing the complete closed intersection.
+- Intersecting nonzero pair from different groups: its unique intersection has been processed, and the full meeting block expanded this pair, producing that point.
+- Intersecting pair containing a point input: the point's position has been processed, and the pair was included among its complete participants, producing that point.
+
+Section 3 established that these classes are disjoint and exhaustive, do not repeat pairs internally, and never report empty intersections. We now also know that every intersecting pair's reporting occasion has occurred. Together these give the promised conclusion: **each intersecting unordered pair of original inputs has exactly one complete intersection, with no missing, false, or repeated results.** Different pairs may share a point-result position. Processing that position once does not discard those distinct pairs.
+
+For empty input, the empty result is complete immediately. With one input, its endpoints may be processed, but there are no two distinct inputs to pair, so the result remains empty. If all inputs are disjoint, no reporting step finds a nonempty pair, again producing an empty result. Neither progress nor termination requires an intersection to exist.
+
+Finally return to the original coordinates. Without shear, results already use them. With shear, write the scan coordinates as $(x',y')$, the original coordinates as $(x,y)$, and the uniform coefficient as $s$. Reuse the [inverse transformation](./shear/intuition.mdx#从新坐标求回原坐标):
+
+$$
+x=x'-sy',\qquad y=y'.
+$$
+
+By the [intersection-preservation result](./shear/intersection.mdx), a point maps back to the original point, and a complete closed intersection interval maps back to the **entire** closed segment between its inverse-transformed endpoints, not two point results. The transformation is one-to-one, and original input identities have been retained throughout. It neither creates extra intersecting pairs nor merges coincident or reversed inputs. The guarantee in scan coordinates therefore becomes the guarantee for the original problem stated in Section 1.
+
+Start from the empty state, reach each necessary position while preserving the guarantees, complete all reporting occasions after finitely many steps, and restore original coordinates: the proof is now connected from beginning to end. Chapter 10 will address the work needed to maintain these records and exact numbers.
