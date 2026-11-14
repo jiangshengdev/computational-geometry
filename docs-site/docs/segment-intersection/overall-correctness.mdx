@@ -41,13 +41,13 @@ First specify the records retained after processing a position. “Current” me
 | Pending list | All endpoints not yet taken out, together with confirmed real future intersections. One entry per position, retaining every associated input identity |
 | Accumulated results | Complete intersections for pairs whose reporting occasions have occurred, once per pair. This is not the collection of geometric pieces lying left of the scan position |
 
-Equality in coverage matters. Let $t$ be the current column's horizontal coordinate, and let $l_i,r_i$ be the start and end horizontal coordinates of member $i$. Partway through a column, retained old members can satisfy
+Equality in coverage matters. Let $t$ be the current column's horizontal coordinate, and let $\ell_i,r_i$ be the start and end horizontal coordinates of member $i$. Partway through a column, retained old members can satisfy
 
 $$
-l_i\le t\le r_i.
+\ell_i\le t\le r_i.
 $$
 
-Here $i$ identifies an input, and $l_i,r_i$ name its two boundaries. A higher ending member not yet processed may have $r_i=t$. Completing a lower position does not justify requiring $t<r_i$ of every member in the column. A nonempty group's current farthest right endpoint is the largest $r_i$ among its members. Only after completing the whole column do all remaining members continue to its right. This is [Chapter 6's coverage equality distinction](./same-x-events.mdx#中间状态中的覆盖等号怎样处理).
+Here $i$ identifies an input, and $\ell_i,r_i$ name its two boundaries. A higher ending member not yet processed may have $r_i=t$. Completing a lower position does not justify requiring $t<r_i$ of every member in the column. A nonempty group's current farthest right endpoint is the largest $r_i$ among its members. Only after completing the whole column do all remaining members continue to its right. This is [Chapter 6's coverage equality distinction](./same-x-events.mdx#中间状态中的覆盖等号怎样处理).
 
 Initially, no position has been processed. There are no active members, hence no nonempty groups, group order, or coverage. No reporting occasion has occurred, so the result is empty. These empty records satisfy the table without assuming any known intersection.
 
