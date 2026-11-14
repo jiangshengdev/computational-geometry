@@ -1,0 +1,212 @@
+---
+slug: /docs/segment-intersection/total-work
+title: Why the total work stays bounded
+sidebar_label: 10. Why the total work stays bounded
+description: Count events and cumulative group participation, then account for membership, sorting, scheduling, output, and cleanup while separating operation counts, exact-number costs, and teaching records.
+---
+
+[Chapter 9](./overall-correctness.mdx) connected the correctness of the full sweep. Now ask a different question: when one event can involve many groups and original inputs, why is total work still bounded by input and output size? Counting events, or merely saying “use a balanced tree,” does not yet answer it.
+
+## Section 1: What we count and what an operation costs {/* #quantities */}
+
+Let $n$ be the number of original inputs and $k$ the number of intersecting unordered pairs of original inputs. Coincident inputs and reversed inputs count separately. A pair's complete intersection counts as one result, whether it is a point or a nonzero closed interval. Thus $k$ is neither the number of distinct intersection positions nor the number of active groups. The input conditions remain those of [Chapter 9, Section 1](./overall-correctness.mdx#premises), including points, overlaps, many-way meetings, and same-column events.
+
+Reuse [Chapter 1's input-pair count and output lower bound](./what-we-compute.mdx#一共需要检查多少对):
+
+$$
+0\le k\le\frac{n(n-1)}2.
+$$
+
+Delivering $k$ individual results already requires at least work proportional to $k$ in result records. Rather than proving those conclusions again, this chapter explains why the sweep's additional work is also controlled.
+
+We count exact arithmetic, comparisons, and basic record operations: for example, one rational operation, one coordinate comparison, or one record access. A tree search performs many comparisons; the whole search is not one free basic operation. Number lengths and the actual time for arithmetic are distinguished in the final section.
+
+We assume readers know AVL trees and logarithmic search, insertion, and deletion costs. The active **group** order uses an AVL tree. The queue, fixed collinear-group lookup, and member indexes use ordered containers; they are not all AVL trees. We use their logarithmic operation costs without explaining balance maintenance.
+
+Here $\log$ means base-$2$ logarithm; choosing another fixed base greater than $1$ changes only a constant. $O(f)$ means that a fixed constant multiple of $f$ bounds the operation count, not that it is the exact count or that every input reaches it. First assume $n\ge1$; Section 7 handles empty input's constant overhead separately.
+
+## Section 2: Count events and accumulate their participating groups {/* #events-and-groups */}
+
+Let $E$ be the number of distinct positions actually processed. By [Chapter 9's event sources and unique reporting](./overall-correctness.mdx#completion), each nonzero input contributes at most two endpoint positions and each point input contributes one. Thus there are at most $2n$ endpoint positions. Merging positions only reduces this count.
+
+Other events are real segment intersections on different supporting lines. For each such non-endpoint position, choose a pair of original inputs actually intersecting there as a witness. A pair on different lines has at most one intersection, so it cannot witness two distinct positions. The number of these positions is therefore at most $k$. The infinitely many points in an overlap do not each become events. Combining the two sources gives
+
+$$
+E\le2n+k.
+$$
+
+Next count participating groups. Call an arbitrary event position $p$, and let $h_p$ be the number of distinct nonzero collinear groups there: both old active groups through $p$ and groups belonging to inputs starting here, counting each group once. Point inputs are not groups. Ending members remain until after reporting. Consequently, after starts join and before ends leave, all $h_p$ groups are nonempty and every member contains $p$.
+
+Let $c_p$ be the number of cross-group original input pairs reported at $p$. It counts only nonzero inputs in different groups, excluding same-line and point-containing pairs. If $h_p\ge2$, every two groups supply at least one genuinely intersecting member pair. Different group pairs supply different original input pairs. Applying the same unordered-pair count,
+
+$$
+\frac{h_p(h_p-1)}2\le c_p.
+$$
+
+Since $h_p\ge2$, we have $h_p-1\ge1$. Multiplying by nonnegative $h_p$ gives $h_p(h_p-1)\ge h_p$. Together,
+
+$$
+h_p\le h_p(h_p-1)\le2c_p.
+$$
+
+If $h_p=1$, charge that one group to the event itself. If $h_p=0$, there is no group contribution, as at an isolated point event. Let $H$ be the sum of group participation over all events; $\sum_p$ means adding the corresponding quantity for each event. Then
+
+$$
+H=\sum_p h_p\le E+2\sum_p c_p\le E+2k\le2n+3k.
+$$
+
+The step $\sum_p c_p\le k$ uses [unique cross-group reporting](./overall-correctness.mdx#reporting): the same pair cannot pay repeatedly at different events. Hence $H=O(n+k)$. This does not make participation constant at every event. A large event's work is bounded by its real new output, and newly starting groups are included in $h_p$.
+
+## Section 3: Accumulate membership and local-state maintenance {/* #maintenance */}
+
+### Initialization and the two member indexes {/* #initialization-and-members */}
+
+Initialization scans the input and applies the [established shear condition](./vertical-segments.mdx). Detection, common-denominator and coordinate-bound calculation, a fixed number of coefficient operations, and each endpoint transformation require $O(n)$ exact arithmetic operations or comparisons. This counts operations; it does not claim that multiplying a growing common denominator takes fixed time.
+
+The shared-endpoint transformation cache handles at most $2n$ endpoints. Fixed line keys identify at most $n$ collinear groups, and an input-to-group mapping is built once per input. Endpoints enter the ordered list with at most $2n$ start, end, and point identities in total. These ordered lookups, insertions, and initialization records cost $O(n\log(n+1))$ altogether, including cache construction and cleanup.
+
+Each nonzero input joins once at its own start and leaves once at its own end. [Chapter 5's dynamic membership and coverage](./overlapping-segments.mdx#第四节当前最远右端为什么够用) correspond to two indexes: one stores members by input identity, the other orders them by right-end horizontal coordinate and identity. They index the same current members. Every insertion and removal updates both, and each contains at most $n$ entries. All membership maintenance therefore costs $O(n\log(n+1))$.
+
+The current farthest right endpoint is read from the second index's maximum key, not found by scanning every member again. Even conservatively charging $O(\log(n+1))$ per read fits within the corresponding adjacency checks. An empty group leaves the active order and can join again later. Every original member still starts and ends once; reactivation does not rebuild every fixed group.
+
+### Locate, remove, sort, and reinsert {/* #local-status */}
+
+At $p$, first locate the old block's first group by height, then query successors until leaving the equal-height block, retaining its outer boundaries. Charge logarithmic cost to every query. There are at most $h_p$ groups inside and a constant number of boundary queries, so location costs $O((h_p+1)\log(n+1))$ without scanning other active groups.
+
+Merge old-block group identities with groups of starting inputs. Let $s_p$ be the number of nonzero starts here. Reading start identities, deduplicating group identities, and constructing the local group list cost $O((h_p+s_p+1)\log(n+1))$. Every nonzero input starts once, so $\sum_p s_p\le n$.
+
+Remove the old block, filter out groups emptied by ending members, sort remaining groups by slope, and reinsert this block. These operations follow [Chapter 6's local update](./same-x-events.mdx#第五节为什么只更新当前块), without reordering higher unprocessed blocks prematurely. There are at most $h_p$ deletions and insertions each; filtering and local-list construction are at most linear in $h_p$.
+
+Local comparison sorting costs $O(h_p\log(h_p+1))$. Since $0\le h_p\le n$ and logarithms are nondecreasing on positive arguments,
+
+$$
+h_p\log(h_p+1)\le h_p\log(n+1).
+$$
+
+Adding over all events gives
+
+$$
+\sum_p h_p\log(h_p+1)\le H\log(n+1)=O((n+k)\log(n+1)).
+$$
+
+With zero groups there is no sorting; one group needs only constant handling. These cases are included in local and per-event costs. Height and slope comparisons during tree searches must also be counted. A height comes from a fixed line and the current horizontal coordinate using a fixed number of exact operations. Its cache is updated when needed, without recalculating or clearing every group whenever the scan moves. Each comparison therefore adds only a constant number of exact operations, not another full active-state scan.
+
+## Section 4: Adjacency checks and scheduling attempts are not free {/* #scheduling */}
+
+If the updated block has $r$ groups, it has at most $r-1$ internal adjacent pairs and one pair at each outer boundary, at most $r+1$ altogether. If the block is empty, at most one pair connects its former sides. Since $r\le h_p$, each event performs $O(h_p+1)$ checks.
+
+This includes [coverage-extension rechecks](./overlapping-segments.mdx#第五节邻居没变覆盖延长也要补检): when membership changes without changing neighbor identities, the block's relevant adjacencies are still checked. Total checks are therefore
+
+$$
+O\!\left(\sum_p(h_p+1)\right)=O(H+E)=O(n+k).
+$$
+
+Each check calculates a candidate from fixed lines and tests strict future order and both groups' farthest right endpoints. It does not expand every member pair. Parallel lines, insufficient coverage, or a nonfuture candidate end the check. Only a real future candidate triggers a queue insertion attempt. **Even if that position is already present, the lookup and attempt cost work.** Attempts are bounded by checks, not merely by the number of successful new insertions.
+
+The queue removes one position at a time, $E$ removals in total, besides at most $2n$ initial endpoint registrations. Its size is at most $E=O(n+k)$. Why can its logarithmic operation cost still be written $O(\log(n+1))$? For $n\ge1$, apply the pair bound step by step:
+
+$$
+\begin{aligned}
+E+1&\le2n+k+1\\
+&\le2n+\frac{n(n-1)}2+1\\
+&=\frac{n^2+3n+2}2\\
+&=\frac{(n+1)(n+2)}2\\
+&\le(n+1)^2.
+\end{aligned}
+$$
+
+The last step uses $n+2\le2(n+1)$: the right side minus the left is $n\ge0$. Multiply by positive $(n+1)/2$ to obtain the stated inequality. Taking increasing logarithms of positive quantities, and using the fact that squaring doubles the logarithm, gives
+
+$$
+\log(E+1)\le\log((n+1)^2)=2\log(n+1).
+$$
+
+Registrations, repeated attempts, removals, and the checks' coverage reads thus cost $O((n+k)\log(n+1))$ altogether. Events and participation were first bounded from real geometry and output, then used to bound scheduling work. Scheduling cost was not used to justify itself.
+
+## Section 5: Which new results pay for member expansion? {/* #output */}
+
+Bounding $H$ is not enough: one group can contain many members. Reuse [Chapter 9's three unique-reporting classes](./overall-correctness.mdx#reporting): nonzero same-line pairs, nonzero cross-group pairs, and pairs containing point inputs. They are disjoint and total $k$. We charge only to **new results from this occasion**, never repeatedly to earlier overlap results.
+
+### Same-line insertion {/* #same-line-output */}
+
+Insert new members one by one, visiting each member currently in the group. Every visit immediately produces a previously unreported complete intersection. Simultaneous starts follow fixed identity order, and closed endpoints remain until after reporting. These established rules make each visit correspond to one new result.
+
+Finding the first old member, including finding none, requires one lookup per new member, at most $n$ altogether. Advancing the actual ordered-member cursor to the next identity can conservatively cost $O(\log(n+1))$, rather than an assumed constant. Each advance follows the pair just emitted, including the final unsuccessful advance after the last pair. This part therefore costs $O((n+k)\log(n+1))$. Later events do not enumerate old–old same-line pairs and then deduplicate them.
+
+### Temporary member lists for cross-group and point output {/* #expanded-members */}
+
+At event $p$, let $a_1,\ldots,a_{h_p}$ be the participating groups' member counts after starts join; each $a_i\ge1$. Define
+
+$$
+M_p=a_1+\cdots+a_{h_p}
+$$
+
+as total nonzero participation, setting $M_p=0$ when there are no groups. Let $t_p$ count point inputs at this position. Summing $t_p$ over all positions gives at most $n$.
+
+Ordinary computation expands relevant members into temporary lists only when there are at least two groups or a point input.
+
+- If $h_p\ge2$, cross-group output is $c_p=\sum_{i<j}a_i a_j$. Each member pairs with at least one member of every other group. Adding each member's cross-group participation counts every output at both ends, so $2c_p\ge(h_p-1)M_p\ge M_p$. Hence expansion size $M_p\le2c_p$.
+- If $h_p=1$ and $t_p\ge1$, there are exactly $t_pM_p$ point–segment outputs. Since $t_p\ge1$, we have $M_p\le t_pM_p$, enough to pay for this expansion.
+- If $h_p=1$ and $t_p=0$, do not expand the entire old member list. A pure ending event in a large overlap group deletes only the ending identities. Earlier same-line outputs cannot pay for repeated full-group scans.
+- If $h_p=0$, there are no nonzero members to expand; handle only the point inputs here.
+
+Starting an ordered traversal for each group conservatively costs $O(\log(n+1))$, after which a full traversal is charged by member count. Even charging logarithmic cost to each advance conservatively preserves the bound. There are at most $H$ traversal starts, and the new outputs above bound total expansion by $O(k)$. Creation, filling, and destruction of temporary member lists are therefore included.
+
+With lists available, each group pair generates its $a_i a_j$ results. For two nonempty groups, $a_i+a_j\le2a_i a_j$, since both $a_i\le a_i a_j$ and $a_j\le a_i a_j$. Group-pair loops, outer member visits, and inner visits can all be charged to that group's new pair outputs; we have not counted only the innermost loop.
+
+Point–segment visits are paid by the $t_pM_p$ results. When groups exist, each is nonempty, so group visits are also bounded by corresponding member visits. With no groups, each point still incurs one outer-loop cost, paid in total by $\sum_p t_p\le n$. Point–point pairing generates $t_p(t_p-1)/2$ new results plus $O(t_p)$ outer-loop work. This includes zero or one point.
+
+Every result contains two original identities and one point or two interval endpoints; a complete interval is not charged by its interior point count. Construction, endpoint comparison, and inverse transformation each take a fixed number of exact operations. The result list uses its container’s [amortized append guarantee](https://doc.rust-lang.org/std/vec/struct.Vec.html#guarantees): counting an entire sequence of appends together with reallocation moves, $k$ appends total $O(k)$ record operations. “Amortized” refers to this cumulative cost, not a claim that every append avoids reallocation or that capacity grows by a fixed factor. Unique reporting in all three classes ensures these charges do not repeatedly use the same result across events.
+
+## Section 6: Add all necessary work {/* #total */}
+
+Now multiply cumulative operation counts by their respective costs, rather than labeling every event constant work.
+
+| Work | Cumulative count and cost |
+| --- | --- |
+| Input preparation, conditional shear, fixed lines, endpoint cache, and initial list | $O(n\log(n+1))$ |
+| Updates to both member indexes and input-identity mapping accesses | Each nonzero input joins and leaves once: $O(n\log(n+1))$ |
+| Height location, successor queries, group-identity merging, local block removal and reinsertion | $O((E+H+n)\log(n+1))$ |
+| Local sorting, filtering, and updates needed for numerical comparisons | $O(H\log(n+1))$, with fixed event overhead included separately in $E$ |
+| Adjacency and coverage checks, successful or repeated scheduling, and queue removal | $O((E+H+n)\log(n+1))$ |
+| Same-line cursors, cross-group and point expansion, pairing, and result restoration | $O((n+k)\log(n+1))$ |
+
+Temporary records also count. Endpoint identities total $O(n)$. Old-block, merged-group, new-block, and neighbor lists each contain only $O(h_p+1)$ group identities per event, totaling $O(H+E)$. Section 5 already counted temporary member lists and results. Allocation, growth, traversal, and destruction are charged to these cumulative quantities, with ordered-structure maintenance carrying the corresponding logarithmic factor. Height caches update only when accessed; updates and replacements are included in comparison counts. Finally, releasing fixed geometry, groups, mappings, and remaining caches costs work for $O(n)$ records; releasing results individually costs work for $O(k)$ records. Processing the bytes of large integers is outside unit record cost, as explained next.
+
+Since $E\le2n+k$ and $H\le2n+3k$, every row is bounded by $O((n+k)\log(n+1))$. There are a fixed number of rows, so adding them changes only a constant. For $n\ge1$, ordinary computation therefore uses
+
+$$
+\boxed{O((n+k)\log(n+1))}
+$$
+
+exact arithmetic, comparison, and basic state operations. With no intersecting pairs, $k=0$: multi-group events cannot create unpaid work, and events and participation return to $O(n)$. A single input is included too. Many-way meetings can make one event large, and overlaps can make one group large, but their cumulative costs are bounded respectively by current cross-group output and necessary member output, rather than excluding these inputs.
+
+## Section 7: The added one, number lengths, and teaching records {/* #cost-boundaries */}
+
+### Why retain log(n+1)? {/* #log-notation */}
+
+This project and chapter retain $\log(n+1)$ for now. For $n\ge2$, we have $n\le n+1\le2n$, hence
+
+$$
+\log n\le\log(n+1)\le\log(2n)=1+\log n\le2\log n.
+$$
+
+The last step uses $\log n\ge1$. The expressions differ by at most constant factors, so they are asymptotically equivalent. At $n=1$, $\log(n+1)=1$ accommodates the fixed work still required for one input; $\log n=0$ is unsuitable as a direct multiplier for this small case.
+
+At $n=0$, both $k=0$ and $\log(n+1)=0$, so the product remains zero. It does not cover the constant overhead of a call and empty-state handling. Charge empty input $O(1)$ separately, or write $O(1+(n+k)\log(n+1))$ to include every size.
+
+Adding one is a notation choice accommodating small inputs. It does not improve performance or strengthen the asymptotic conclusion, and is neither required by the sweep algorithm nor a convention uniformly adopted by all papers.
+
+### Operation count is not fixed elapsed time {/* #numeric-cost */}
+
+Reuse [Chapter 3's numerical-cost boundary](./exact-predicates.mdx#第十节精确判断接上证明也有计算成本): longer rational numerators and denominators can make multiplication, division, comparison, reduction, and number storage more expensive. The [common denominator and coefficient](./shear/denominator.mdx) for a necessary shear can also produce long numbers. Counting successive multiplications above did not remove their bit costs.
+
+The current sweep derives lines from fixed endpoints, then calculates candidate intersections and heights directly from fixed lines. This identifies the operations behind numerical updates; it does not supply a complete bit-complexity theorem here. The formula cannot be read directly as seconds, fixed byte costs, or a measured speedup. Comparing elapsed time across inputs also requires considering number lengths and the actual arithmetic implementation.
+
+### Ordinary intersections versus teaching records {/* #teaching-cost */}
+
+Ordinary computation follows the same real sweep path, but does not construct teaching projections of the entire active state, member-description strings, or queue and accumulated-result snapshots. The necessary local group lists, member expansion, and results are already included above; they cannot be relabeled as teaching overhead.
+
+With teaching recording enabled, the same members or accumulated results can be projected, formatted, saved, and serialized at many teaching stops. These additional visits need not be bounded by $O(n+k)$, and transmission and display have costs of their own. A teaching run therefore costs ordinary computation plus the actual recording, transmission, and display work. The ordinary operation-count bound cannot simply be applied to that total. Teaching comes from real execution, but recording is not free.
+
+Chapter 9 explained why the complete answer is obtained. This chapter has connected the ordinary operations needed to obtain it to input count and intersecting original-pair count. Number length and additional teaching records retain their own cost boundaries.

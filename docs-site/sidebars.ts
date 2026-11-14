@@ -33,6 +33,7 @@ const sidebars: SidebarsConfig = {
         'segment-intersection/vertical-segments',
         'segment-intersection/complete-sweep',
         'segment-intersection/overall-correctness',
+        'segment-intersection/total-work',
         'segment-intersection/line-equation',
         {
           type: 'category',

@@ -33,7 +33,7 @@ pnpm --dir docs-site run serve --host 127.0.0.1
 
 ## 双语同步发布
 
-英文是默认展示语言，位于 `/`；简体中文位于 `/zh-Hans/`。中文仍是创作和修订原稿，放在 `i18n/zh-Hans/docusaurus-plugin-content-docs/current/`；`docs/` 保存完整英文译文。框架的存储位置不改变内容权威关系。两种语言均覆盖首页和全部18篇内容页。
+英文是默认展示语言，位于 `/`；简体中文位于 `/zh-Hans/`。中文仍是创作和修订原稿，放在 `i18n/zh-Hans/docusaurus-plugin-content-docs/current/`；`docs/` 保存完整英文译文。框架的存储位置不改变内容权威关系。两种语言均覆盖首页和全部19篇内容页。
 
 每次新增或修改都必须在同一变更和发布中同步更新中文原稿及英文译文，保持数学条件、公式、实例、证明步骤、教学深度、文档ID与slug一致。语义须独立复核，构建成功不能替代翻译质量审校。导航、分类说明、图注、替代文本和其他公共文字也必须同步修改；不发布缺译回退页或已知过时译文。
 
@@ -43,7 +43,7 @@ pnpm --dir docs-site run serve --host 127.0.0.1
 
 发布构建使用 `pnpm run build` 同时生成全部语言，不带单语言 `--locale` 限制。开发时可用 `pnpm run start --locale zh-Hans --host 127.0.0.1 --port <空闲端口>` 单独预览中文。站点继续独立于计算应用与Rust API，不需要修改域名或部署配置。
 
-构建后执行 `pnpm run check:built-site`。该检查使用Playwright及操作系统分配端口的独立静态服务，结束后关闭浏览器和服务。可用 `PLAYWRIGHT_EXECUTABLE_PATH` 指定已安装的兼容Chromium，或先用 `pnpm exec playwright install chromium` 安装；检查不会自动安装。默认覆盖42个本地化页面、语言切换、链接与锚点、公共文字、章节导航和两种主题的图片。数学语义一致性另行审校。任务验证结束后清理临时构建产物和浏览器缓存，不将其作为源码提交。
+构建后执行 `pnpm run check:built-site`。该检查使用Playwright及操作系统分配端口的独立静态服务，结束后关闭浏览器和服务。可用 `PLAYWRIGHT_EXECUTABLE_PATH` 指定已安装的兼容Chromium，或先用 `pnpm exec playwright install chromium` 安装；检查不会自动安装。默认覆盖44个本地化页面、语言切换、链接与锚点、公共文字、章节导航和两种主题的图片。数学语义一致性另行审校。任务验证结束后清理临时构建产物和浏览器缓存，不将其作为源码提交。
 
 局部变更可传入带末尾斜杠的英文路由，例如 `pnpm run check:built-site --route=/docs/segment-intersection/overall-correctness/ --route=/docs/segment-intersection/complete-sweep/ --route=/chapters/segment-intersection/ --route=/`。每个选中路由都会以相同断言检查两种语言，并保留站点地图对应与章节导航检查；其他实际受影响的导航页也须加入。省略参数仍执行完整遍历。
 
