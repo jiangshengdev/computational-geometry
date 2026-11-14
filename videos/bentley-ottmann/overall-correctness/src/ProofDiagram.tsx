@@ -2,6 +2,7 @@ import { SvgMathText } from "../../../shared/ui/SemanticMathText";
 import { colors } from "../../colors.ts";
 import { pages } from "./storyboard";
 import type { TimelineRow, VisualState } from "./timeline";
+import { CoverageExtension } from "./CoverageExtension";
 const label = (x: number, y: number, text: string, fill = "#172c45") => (
   <SvgMathText x={x} y={y} fontSize={28} fill={fill}>
     {text}
@@ -289,32 +290,7 @@ export function ProofDiagram({
       {kind === "checks" && (
         <>
           {row.step === 1 ? (
-            <>
-              <path
-                d="M100 220 L350 220"
-                stroke={colors.blue}
-                strokeWidth={5}
-              />
-              <path
-                d="M250 220 L650 220"
-                stroke={colors.violet}
-                strokeWidth={5}
-              />
-              <path
-                d="M150 540 L700 100"
-                stroke={colors.blue}
-                strokeWidth={3}
-              />
-              <circle cx={550} cy={220} r={7} fill={colors.blue} />
-              <circle cx={150} cy={540} r={5} fill={colors.blue} />
-              <circle cx={700} cy={100} r={5} fill={colors.blue} />
-              {label(100, 170, "原覆盖")}
-              {label(380, 170, "加入者延长覆盖")}
-              {label(450, 390, "同一个邻组")}
-              {label(560, 270, "未来交点")}
-              <circle cx={350} cy={220} r={6} fill={colors.blue} />
-              <circle cx={650} cy={220} r={6} fill={colors.violet} />
-            </>
+            <CoverageExtension stage={state.coverageStage} />
           ) : (
             <>
               <path

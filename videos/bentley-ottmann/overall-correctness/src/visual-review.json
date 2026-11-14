@@ -1,4 +1,54 @@
 {
+  "baselineCommit": "5a095602c2ab4182aaad87142adfed09e4d44404",
+  "scopeNote": "原 reviewer/method/sourceSha256/states 等字段记录基线全片审查；其中旧 OC35 状态由 oc35Revision 替代。其他60镜沿用未失效证据，不宣称本次重验全片。",
+  "oc35Revision": {
+    "reviewer": "oc35_alignment; fork_turns=none; 未参与本次制作",
+    "result": "局部独立对齐通过，无未解决阻塞问题",
+    "sourceSha256": {
+      "CoverageExtension.tsx": "86ff9630d4b3bdec541d753e7d2c37cb92bd6c4a1750446c802eb6499dbc7fd2",
+      "ProofDiagram.tsx": "bc50314deb74f428bd5d4b904ca3608756a82b6bed7fcc3f173b06750c9be16b",
+      "timeline.ts": "0a6f002e915c4f0b24f2189207ba89fdf4424a5fef3cb580e29e03ef75681092",
+      "LayoutCheck.tsx": "b3d5ae661307da426526a53d95f4c40c6f1f0ca956307b104cd45963fdf73437"
+    },
+    "visuallyReviewedLocalFrames": [
+      0, 29, 30, 59, 60, 120, 179, 180, 209, 210, 563, 564, 743, 744, 910, 911,
+      940
+    ],
+    "distinctStateIntervalsInclusive": [
+      [[0, 29]],
+      [
+        [30, 59],
+        [180, 209]
+      ],
+      [[60, 179]],
+      [[210, 563]],
+      [[564, 743]],
+      [[744, 940]]
+    ],
+    "seamGlobalFrames": [33612, 33613, 34553, 34554],
+    "browserScreenshots": [
+      "/tmp/oc35-review-<localFrame>.png",
+      "/tmp/oc35-review-seam-<globalFrame>.png"
+    ],
+    "normalSpeedPlayback": {
+      "composition": "OverallCorrectness",
+      "speed": "1x",
+      "globalFrameSampleRange": [33553, 34809],
+      "evidence": "/tmp/oc35-review-play.txt",
+      "screenshots": "/tmp/oc35-review-play-*.png",
+      "observed": "OC34尾部→OC35完整过程→OC36开始；前态、延长、入列及后续空组画面，无观察到的回退或提前入列",
+      "limits": "无头播放抽查，预览显示约37–61 FPS；不证明逐帧无丢帧、稳定60fps或全片连续播放"
+    },
+    "semanticReview": "直接对照第九章 preservation/update、第五章覆盖延长及现有文稿。Q仅标记同一候选交点，不引入最早剩余真实事件假设。邻组在加入处之前已存在，邻接不变；闭范围确认后入列。",
+    "invariance": "与基线逐项比较：61镜时间与字幕、总58912帧不变；其余60镜所有帧视觉输入相同；分镜、独立口播、标音及文本审查文件未修改。",
+    "checks": "ESLint/TypeScript、现有内容检查通过；OC34/36各14个布局状态通过，OC35标签间距修正后18状态通过；未新增测试。",
+    "resolvedIssue": "OC35加入处标签与闭范围说明边界相交；增大局部间距后布局与独立实际画面复核通过。",
+    "limits": [
+      "仅局部修复与接缝复核，未全片重验。",
+      "截图为临时浏览器证据，不是媒体导出。",
+      "未做可见桌面、音频或成片验收。"
+    ]
+  },
   "reviewer": "visual_alignment; fork_turns=none; 未参与制作；后续为同一检查者定向复核",
   "method": "Actual production LayoutCheck screenshots visually reviewed; equivalence by page/step/caption/active. No animated props consumed beyond active. Inclusive local-frame intervals partition each shot. Screenshot capture is visual evidence; source only establishes equivalence.",
   "sourceSha256": {

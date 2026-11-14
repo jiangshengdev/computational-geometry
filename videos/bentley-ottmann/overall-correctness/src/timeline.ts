@@ -39,6 +39,15 @@ export function visualAt(row: TimelineRow, frame: number) {
     caption: cue?.text ?? row.previousCaption,
     thinking: frame >= row.readingFrames + audioLeadFrames,
     active: frame >= 60 && frame < 180,
+    // OC35-only visual progression; all reading windows remain unchanged.
+    coverageStage:
+      row.id !== "OC35"
+        ? undefined
+        : frame < 210
+          ? "before"
+          : frame < row.captions[1].start + 180
+            ? "extended"
+            : "queued",
   };
 }
 export type VisualState = ReturnType<typeof visualAt>;

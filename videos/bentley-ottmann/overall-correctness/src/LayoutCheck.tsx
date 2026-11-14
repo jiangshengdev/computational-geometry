@@ -27,6 +27,7 @@ export const LayoutCheck = createShotLayoutCheck({
     120,
     179,
     180,
+    ...(row.id === "OC35" ? [209, 210, 743, 744] : []),
     ...row.captions.flatMap((c) => [c.start, c.end - 1]),
   ],
   auditPage(page, _id, step) {
