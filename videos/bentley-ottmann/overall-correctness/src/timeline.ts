@@ -48,6 +48,13 @@ export function visualAt(row: TimelineRow, frame: number) {
           : frame < row.captions[1].start + 180
             ? "extended"
             : "queued",
+    preservationAfter: row.id === "OC39" && frame >= 270,
+    boundaryDiagramProgress:
+      row.id === "OC39" ? Math.min(1, frame / audioLeadFrames) : 1,
+    preservationEmphasis: row.id === "OC39" && frame >= 270 && frame < 450,
+    nextEventTaken: row.id === "OC45" && frame >= 150,
+    nextEventParticipants: row.id === "OC45" && frame >= row.captions[1].start,
+    emptyQueueConclusion: row.id === "OC52" && frame >= row.captions[1].start,
   };
 }
 export type VisualState = ReturnType<typeof visualAt>;

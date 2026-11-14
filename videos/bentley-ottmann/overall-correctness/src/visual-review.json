@@ -1,6 +1,57 @@
 {
   "baselineCommit": "5a095602c2ab4182aaad87142adfed09e4d44404",
-  "scopeNote": "原 reviewer/method/sourceSha256/states 等字段记录基线全片审查；其中旧 OC35 状态由 oc35Revision 替代。其他60镜沿用未失效证据，不宣称本次重验全片。",
+  "scopeNote": "原 reviewer/method/sourceSha256/states 等字段记录基线全片审查；旧OC35由oc35Revision替代，OC39/44/45/52由remainingVisualizationRevision替代。各次修订按自身基线及哈希解释，未受影响镜头沿用有效证据，不宣称本次重验全片。",
+  "remainingVisualizationRevision": {
+    "baseCommit": "fb01bc5f941c9c7165bedcf0d67a2cb0ff847217",
+    "reviewer": "remaining_visual_alignment; fork_turns=none; 未参与制作；重点色补查为同一检查者定向续查",
+    "result": "独立局部对齐通过，无未解决阻塞问题",
+    "sourceSha256": {
+      "BoundaryRecords.tsx": "eab81aa4c059d5135a56cb5568ba21390af4e70872988a5f31a10370d520704c",
+      "NextEventTimeline.tsx": "0892f41c5a2384b689e86a5084634a3b800c45ded10aa6424cf851584366ba0c",
+      "ProofDiagram.tsx": "623f3c74f87a2dc52adf63999531fa0480c7d21194e1c4a24376de72891d29e4",
+      "TeachingPage.tsx": "ca1ca9062620189b326894df1f02c27c056fef0a88708ba521a8b93eb158cf87",
+      "timeline.ts": "cdd8477b33bc876a1c32561cddceadacfaf81db21898c7313d24c3f566c3b2a9",
+      "LayoutCheck.tsx": "d5d1435b27cbd6fc4031ff7b1525d42be07bb91d043189035814551c87b46e8f"
+    },
+    "visuallyReviewedLocalFrames": {
+      "OC39": [0, 15, 29, 30, 120, 269, 270, 360, 449, 450, 577, 1071, 1190],
+      "OC44": [0, 30, 120, 310, 833],
+      "OC45": [0, 30, 149, 150, 469, 470, 937, 1056],
+      "OC52": [0, 120, 349, 350, 777, 896]
+    },
+    "staticMethod": "直接目视全部离散语义状态、当前重点色及字幕状态；OC39连续让位另观察开始/中途/末段/完成帧与实际播放，不声称连续动画逐帧目视。",
+    "seams": ["OC38末帧→39→40", "OC43末帧→44→45→46", "OC51末帧→52→53"],
+    "browserScreenshots": "/tmp/oc-rest-review-OC<shot>-<localFrame>.png",
+    "normalSpeedPlayback": {
+      "composition": "OverallCorrectness",
+      "speed": "1x",
+      "globalFrameSampleRanges": [
+        [37420, 38947],
+        [42452, 44778],
+        [50074, 51226]
+      ],
+      "extraSeamStartFrame": 37465,
+      "evidence": [
+        "/tmp/oc-rest-review-play1.txt",
+        "/tmp/oc-rest-review-play2.txt",
+        "/tmp/oc-rest-review-play3.txt",
+        "/tmp/oc-rest-review-seam.txt"
+      ],
+      "limits": "实际1x设置下局部过程及接缝抽查；无头预览有帧率波动，最低UI采样7.5 FPS，不证明稳定60fps、逐帧无丢帧或全片连续流畅验收。"
+    },
+    "semanticReview": "直接对照父规格400、第九章原文及现有字幕/口播。P前后同列语义和三类记录成立；Q及时登记与随后取出分开，不预知全部未来交点；空清单矛盾依赖下一处必达，继续接原有逐类报告完整性论证。",
+    "invariance": "61镜rows及总58912帧与基线完全一致；其余57镜既有逐帧视觉输入相同，diagramProgress等于原默认1。分镜、字幕、独立口播、标音与文本审查文件未变。OC35组件哈希86ff9630d4b3bdec541d753e7d2c37cb92bd6c4a1750446c802eb6499dbc7fd2及实际状态保留。",
+    "checks": "最终OC39/44/45/52布局状态分别21/14/16/14通过；ESLint/TypeScript、既有内容检查及冻结范围比较通过，无新增测试。",
+    "resolvedIssues": [
+      "Q登记卡片两行边界相交：调整两行中心后布局及独立目视通过。",
+      "OC39无图到有图的正文跳位：复用共享diagramProgress，在原30帧开口前窗口平滑让位，逐状态及1x接缝复查通过。"
+    ],
+    "limits": [
+      "未全片重验、未作可见桌面或成片验收。",
+      "浏览器截图为会话临时证据，不是媒体导出。",
+      "无语音合成、试听或媒体导出；未启动405/406。"
+    ]
+  },
   "oc35Revision": {
     "reviewer": "oc35_alignment; fork_turns=none; 未参与本次制作",
     "result": "局部独立对齐通过，无未解决阻塞问题",

@@ -31,6 +31,7 @@ export function TeachingPage({
   return (
     <MathLessonPage
       diagramPosition="left"
+      diagramProgress={state.boundaryDiagramProgress}
       title={<MathText colorize={false}>{page.title}</MathText>}
       basis={
         page.basis ? (
@@ -51,7 +52,9 @@ export function TeachingPage({
       showBasisTitle={false}
       basisHeight={105}
       diagram={
-        page.diagram ? <ProofDiagram row={row} state={state} /> : undefined
+        page.diagram || row.id === "OC39" ? (
+          <ProofDiagram row={row} state={state} />
+        ) : undefined
       }
       caption={<MathText colorize={false}>{state.caption}</MathText>}
     >

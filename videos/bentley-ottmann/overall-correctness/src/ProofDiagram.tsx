@@ -3,6 +3,8 @@ import { colors } from "../../colors.ts";
 import { pages } from "./storyboard";
 import type { TimelineRow, VisualState } from "./timeline";
 import { CoverageExtension } from "./CoverageExtension";
+import { BoundaryRecords } from "./BoundaryRecords";
+import { NextEventTimeline } from "./NextEventTimeline";
 const label = (x: number, y: number, text: string, fill = "#172c45") => (
   <SvgMathText x={x} y={y} fontSize={28} fill={fill}>
     {text}
@@ -30,7 +32,14 @@ export function ProofDiagram({
           <path d="M0,0 L8,4 L0,8" fill="#64748b" />
         </marker>
       </defs>
-      {label(20, 35, "一般关系示意（非执行轨迹）")}
+      {label(
+        20,
+        35,
+        row.id === "OC39"
+          ? "两穿过组在 P 相交：局部示意"
+          : "一般关系示意（非执行轨迹）",
+      )}
+      {row.id === "OC39" && <BoundaryRecords state={state} />}
       {kind === "column" && (
         <>
           <line
@@ -351,9 +360,19 @@ export function ProofDiagram({
                   markerEnd="url(#axis-arrow)"
                 />
                 {label(420, 350, "必已登记")}
+                <path
+                  d="M605 190 L640 235 M640 190 L605 235"
+                  stroke={colors.amber}
+                  strokeWidth={3}
+                />
+                {label(685, 230, "矛盾")}
+                {state.emptyQueueConclusion &&
+                  label(60, 525, "由下一处必达：全部事件已到达")}
               </>
             )}
           </>
+        ) : row.id === "OC44" || row.id === "OC45" ? (
+          <NextEventTimeline state={state} />
         ) : (
           <>
             {label(60, 120, "真实事件：证明中的完整次序")}
