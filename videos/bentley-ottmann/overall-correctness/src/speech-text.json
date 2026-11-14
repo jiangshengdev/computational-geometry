@@ -1,0 +1,5947 @@
+{
+  "OC01": [
+    "第",
+    {
+      "text": "八章",
+      "pinyin": "ba1 zhang1"
+    },
+    "跟",
+    {
+      "text": "完了一次扫描",
+      "pinyin": "wan2 le5 yi2 ci4 sao3 miao2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "现在",
+    {
+      "text": "离",
+      "pinyin": "li2"
+    },
+    "开",
+    {
+      "text": "那份",
+      "pinyin": "na4 fen4"
+    },
+    "案",
+    {
+      "text": "例",
+      "pinyin": "li4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "说明任意允许",
+      "pinyin": "shuo1 ming2 ren4 yi4 yun2 xu3"
+    },
+    "输入",
+    {
+      "text": "为什么都",
+      "pinyin": "wei4 shen2 me5 dou1"
+    },
+    "成",
+    {
+      "text": "立",
+      "pinyin": "li4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "从空",
+      "pinyin": "cong2 kong1"
+    },
+    "状态起步。",
+    {
+      "breakMs": 200
+    },
+    "连",
+    {
+      "text": "接",
+      "pinyin": "jie1"
+    },
+    "每",
+    {
+      "text": "次处",
+      "pinyin": "ci4 chu2"
+    },
+    "理、下",
+    {
+      "text": "一处",
+      "pinyin": "yi2 chu4"
+    },
+    "必",
+    {
+      "text": "达和结",
+      "pinyin": "da2 he2 jie2"
+    },
+    "束时",
+    {
+      "text": "的完",
+      "pinyin": "de5 wan2"
+    },
+    "整",
+    {
+      "text": "结果",
+      "pinyin": "jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC02": [
+    "输入",
+    {
+      "text": "是有限份",
+      "pinyin": "shi4 you3 xian4 fen4"
+    },
+    "闭线段。",
+    {
+      "breakMs": 200
+    },
+    "坐标",
+    {
+      "text": "是精",
+      "pinyin": "shi4 jing1"
+    },
+    "确",
+    {
+      "text": "有",
+      "pinyin": "you2"
+    },
+    "理",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "共",
+      "pinyin": "gong4"
+    },
+    "端点、",
+    {
+      "text": "内部",
+      "pinyin": "nei4 bu4"
+    },
+    "端点、多线",
+    {
+      "text": "共",
+      "pinyin": "gong4"
+    },
+    "点、",
+    {
+      "text": "同列",
+      "pinyin": "tong2 lie4"
+    },
+    "、",
+    {
+      "text": "重",
+      "pinyin": "chong2"
+    },
+    "叠、竖直线段",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "点输入",
+    {
+      "text": "都允许",
+      "pinyin": "dou1 yun2 xu3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC03": [
+    "每",
+    {
+      "text": "个相",
+      "pinyin": "ge5 xiang1"
+    },
+    "交",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原始",
+    {
+      "text": "无",
+      "pinyin": "wu2"
+    },
+    "序输入对。",
+    {
+      "breakMs": 200
+    },
+    "恰",
+    {
+      "text": "好留",
+      "pinyin": "hao3 liu2"
+    },
+    "下",
+    {
+      "text": "一个完",
+      "pinyin": "yi2 ge5 wan2"
+    },
+    "整交集。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "可以是",
+      "pinyin": "ke2 yi3 shi4"
+    },
+    "点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也可以是非零长度",
+      "pinyin": "ye3 ke2 yi3 shi4 fei1 ling2 chang2 du4"
+    },
+    "闭",
+    {
+      "text": "区间",
+      "pinyin": "qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "不相",
+      "pinyin": "bu4 xiang1"
+    },
+    "交",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "对",
+    {
+      "text": "没有结果",
+      "pinyin": "mei2 you3 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "全",
+    {
+      "text": "重合和",
+      "pinyin": "chong2 he2 he2"
+    },
+    "端点",
+    {
+      "text": "反",
+      "pinyin": "fan3"
+    },
+    "向",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "输入仍保",
+    {
+      "text": "留各",
+      "pinyin": "liu2 ge4"
+    },
+    "自",
+    {
+      "text": "身份",
+      "pinyin": "shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC04": [
+    {
+      "text": "没有非零",
+      "pinyin": "mei2 you3 fei1 ling2"
+    },
+    "竖直输入时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "沿",
+      "pinyin": "yan2"
+    },
+    "用原坐标。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "否",
+      "pinyin": "fou3"
+    },
+    "则按第",
+    {
+      "text": "七章",
+      "pinyin": "qi1 zhang1"
+    },
+    "选安全",
+    {
+      "text": "系数",
+      "pinyin": "xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "统",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "变换全",
+    {
+      "text": "部",
+      "pinyin": "bu4"
+    },
+    "输入。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "包括",
+      "pinyin": "bao1 kuo4"
+    },
+    "点。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这里",
+      "pinyin": "zhe4 li3"
+    },
+    "使用第",
+    {
+      "text": "七章已",
+      "pinyin": "qi1 zhang1 yi3"
+    },
+    "证",
+    {
+      "text": "明",
+      "pinyin": "ming2"
+    },
+    "安全",
+    {
+      "text": "的系数",
+      "pinyin": "de5 xi4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "统",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "满",
+    {
+      "text": "足",
+      "pinyin": "zu2"
+    },
+    "保序、",
+    {
+      "text": "非",
+      "pinyin": "fei1"
+    },
+    "竖直",
+    {
+      "text": "和完",
+      "pinyin": "he2 wan2"
+    },
+    "整交集保持。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC05": [
+    {
+      "text": "以",
+      "pinyin": "yi3"
+    },
+    "下坐标",
+    {
+      "text": "都指",
+      "pinyin": "dou1 zhi3"
+    },
+    "实际",
+    {
+      "text": "扫描",
+      "pinyin": "sao3 miao2"
+    },
+    "坐标。",
+    {
+      "breakMs": 400
+    },
+    "先到 x 坐标较小",
+    {
+      "text": "的位",
+      "pinyin": "de5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "同列",
+      "pinyin": "tong2 lie4"
+    },
+    "再",
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    "低到",
+    {
+      "text": "高",
+      "pinyin": "gao1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "无",
+      "pinyin": "wu2"
+    },
+    "须剪",
+    {
+      "text": "切",
+      "pinyin": "qie1"
+    },
+    "时仍",
+    {
+      "text": "可能同列",
+      "pinyin": "ke3 neng2 tong2 lie4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能省掉",
+      "pinyin": "bu4 neng2 sheng3 diao4"
+    },
+    "第二层",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较。",
+    {
+      "breakMs": 400
+    },
+    "两",
+    {
+      "text": "个",
+      "pinyin": "ge5"
+    },
+    "坐标",
+    {
+      "text": "都相",
+      "pinyin": "dou1 xiang1"
+    },
+    "等",
+    {
+      "text": "才合并位",
+      "pinyin": "cai2 he2 bing4 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC06": [
+    "第三",
+    {
+      "text": "章的精",
+      "pinyin": "zhang1 de5 jing1"
+    },
+    "确计算用",
+    {
+      "text": "于",
+      "pinyin": "yu2"
+    },
+    "求交、",
+    {
+      "text": "同",
+      "pinyin": "tong2"
+    },
+    "点",
+    {
+      "text": "识别",
+      "pinyin": "shi2 bie2"
+    },
+    "、闭范围",
+    {
+      "text": "和次",
+      "pinyin": "he2 ci4"
+    },
+    "序",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较。",
+    {
+      "breakMs": 400
+    },
+    "剪",
+    {
+      "text": "切",
+      "pinyin": "qie1"
+    },
+    "负责满",
+    {
+      "text": "足几何",
+      "pinyin": "zu2 ji3 he2"
+    },
+    "条",
+    {
+      "text": "件",
+      "pinyin": "jian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "精",
+      "pinyin": "jing1"
+    },
+    "确计算负责忠实判断。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "两",
+      "pinyin": "liang2"
+    },
+    "者",
+    {
+      "text": "不能",
+      "pinyin": "bu4 neng2"
+    },
+    "互",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "替代。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC07": [
+    "第三",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "先",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "回",
+    {
+      "text": "答",
+      "pinyin": "da2"
+    },
+    "：此",
+    {
+      "text": "前正",
+      "pinyin": "qian2 zheng4"
+    },
+    "确。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "而且这次",
+      "pinyin": "er2 qie3 zhe4 ci4"
+    },
+    "确实到",
+    {
+      "text": "达",
+      "pinyin": "da2"
+    },
+    "下",
+    {
+      "text": "一处",
+      "pinyin": "yi2 chu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理后怎",
+    {
+      "text": "样",
+      "pinyin": "yang4"
+    },
+    "继续",
+    {
+      "text": "正",
+      "pinyin": "zheng4"
+    },
+    "确。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "沿",
+      "pinyin": "yan2"
+    },
+    "用",
+    {
+      "text": "无事件不",
+      "pinyin": "wu2 shi4 jian4 bu2"
+    },
+    "换序、",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "整",
+    {
+      "text": "同",
+      "pinyin": "tong2"
+    },
+    "点收集、",
+    {
+      "text": "分",
+      "pinyin": "fen1"
+    },
+    "类报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "及",
+    {
+      "text": "同列",
+      "pinyin": "tong2 lie4"
+    },
+    "局",
+    {
+      "text": "部更",
+      "pinyin": "bu4 geng1"
+    },
+    "新",
+    {
+      "text": "的结论和",
+      "pinyin": "de5 jie2 lun4 he2"
+    },
+    "条",
+    {
+      "text": "件",
+      "pinyin": "jian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC08": [
+    "第四",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "再用组",
+    {
+      "text": "发",
+      "pinyin": "fa1"
+    },
+    "现及",
+    {
+      "text": "同列发",
+      "pinyin": "tong2 lie4 fa1"
+    },
+    "现",
+    {
+      "text": "结论",
+      "pinyin": "jie2 lun4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "补",
+    {
+      "text": "齐",
+      "pinyin": "qi2"
+    },
+    "确实到",
+    {
+      "text": "达",
+      "pinyin": "da2"
+    },
+    "下",
+    {
+      "text": "一处这个前提",
+      "pinyin": "yi2 chu4 zhe4 ge5 qian2 ti2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "所",
+    {
+      "text": "需",
+      "pinyin": "xu1"
+    },
+    "条",
+    {
+      "text": "件是",
+      "pinyin": "jian4 shi4"
+    },
+    "此",
+    {
+      "text": "前正",
+      "pinyin": "qian2 zheng4"
+    },
+    "确",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理、新邻",
+    {
+      "text": "接与",
+      "pinyin": "jie1 yu3"
+    },
+    "覆",
+    {
+      "text": "盖",
+      "pinyin": "gai4"
+    },
+    "延",
+    {
+      "text": "长都",
+      "pinyin": "chang2 dou1"
+    },
+    "检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "以",
+      "pinyin": "yi3"
+    },
+    "及真实预",
+    {
+      "text": "约",
+      "pinyin": "yue1"
+    },
+    "保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "没有假",
+      "pinyin": "mei2 you3 jia3"
+    },
+    "定全",
+    {
+      "text": "部",
+      "pinyin": "bu4"
+    },
+    "未来交点",
+    {
+      "text": "已登",
+      "pinyin": "yi3 deng1"
+    },
+    "记。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC09": [
+    "先",
+    {
+      "text": "说明",
+      "pinyin": "shuo1 ming2"
+    },
+    "五项记录。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "当前指",
+      "pinyin": "dang1 qian2 zhi3"
+    },
+    "刚",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "成",
+    {
+      "text": "一个精",
+      "pinyin": "yi2 ge5 jing1"
+    },
+    "确",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "尚",
+      "pinyin": "shang4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理下",
+    {
+      "text": "一个位",
+      "pinyin": "yi2 ge5 wei4"
+    },
+    "置",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "时",
+    {
+      "text": "刻",
+      "pinyin": "ke4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同列也有",
+      "pinyin": "tong2 lie4 ye2 you3"
+    },
+    "进",
+    {
+      "text": "度",
+      "pinyin": "du4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能只给",
+      "pinyin": "bu4 neng2 zhi2 gei3"
+    },
+    "出 x 坐标就认",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "状态",
+    {
+      "text": "已经",
+      "pinyin": "yi3 jing1"
+    },
+    "确定。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC10": [
+    {
+      "text": "活",
+      "pinyin": "huo2"
+    },
+    "动成",
+    {
+      "text": "员从",
+      "pinyin": "yuan2 cong2"
+    },
+    "自",
+    {
+      "text": "己的",
+      "pinyin": "ji3 de5"
+    },
+    "开始",
+    {
+      "text": "事件",
+      "pinyin": "shi4 jian4"
+    },
+    "加入。",
+    {
+      "breakMs": 200
+    },
+    "在自",
+    {
+      "text": "己的结",
+      "pinyin": "ji3 de5 jie2"
+    },
+    "束",
+    {
+      "text": "事件",
+      "pinyin": "shi4 jian4"
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "后退出。",
+    {
+      "breakMs": 400
+    },
+    "点输入",
+    {
+      "text": "只参",
+      "pinyin": "zhi3 can1"
+    },
+    "加自",
+    {
+      "text": "己的位",
+      "pinyin": "ji3 de5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "非空同",
+      "pinyin": "fei1 kong1 tong2"
+    },
+    "线组按",
+    {
+      "text": "当前",
+      "pinyin": "dang1 qian2"
+    },
+    "进",
+    {
+      "text": "度从",
+      "pinyin": "du4 cong2"
+    },
+    "下到",
+    {
+      "text": "上排列",
+      "pinyin": "shang4 pai2 lie4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "覆",
+    {
+      "text": "盖只由当前",
+      "pinyin": "gai4 zhi3 you2 dang1 qian2"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "决定。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不由",
+      "pinyin": "bu4 you2"
+    },
+    "固定",
+    {
+      "text": "同",
+      "pinyin": "tong2"
+    },
+    "线归",
+    {
+      "text": "属",
+      "pinyin": "shu3"
+    },
+    "决定。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC11": [
+    {
+      "text": "清单",
+      "pinyin": "qing1 dan1"
+    },
+    "保存",
+    {
+      "text": "尚",
+      "pinyin": "shang4"
+    },
+    "未",
+    {
+      "text": "取",
+      "pinyin": "qu3"
+    },
+    "出",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "端点",
+    {
+      "text": "和已",
+      "pinyin": "he2 yi3"
+    },
+    "确认",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "真实未来交点。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同位",
+      "pinyin": "tong2 wei4"
+    },
+    "置",
+    {
+      "text": "一份",
+      "pinyin": "yi2 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "输入",
+    {
+      "text": "身份",
+      "pinyin": "shen1 fen4"
+    },
+    "全",
+    {
+      "text": "部",
+      "pinyin": "bu4"
+    },
+    "保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "结果",
+      "pinyin": "jie2 guo3"
+    },
+    "按",
+    {
+      "text": "已经发",
+      "pinyin": "yi3 jing1 fa1"
+    },
+    "生",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "时",
+    {
+      "text": "机累",
+      "pinyin": "ji1 lei3"
+    },
+    "计",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "整交集。",
+    {
+      "breakMs": 200
+    },
+    "每对",
+    {
+      "text": "一次",
+      "pinyin": "yi2 ci4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "不是扫描位",
+      "pinyin": "bu2 shi4 sao3 miao2 wei4"
+    },
+    "置左",
+    {
+      "text": "侧所有几何部分的合",
+      "pinyin": "ce4 suo2 you3 ji3 he2 bu4 fen4 de5 he2"
+    },
+    "集。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC12": [
+    "左图",
+    {
+      "text": "是一般",
+      "pinyin": "shi4 yi4 ban1"
+    },
+    "状态",
+    {
+      "text": "示意",
+      "pinyin": "shi4 yi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不是某份",
+      "pinyin": "bu2 shi4 mou3 fen4"
+    },
+    "输入",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "执",
+    {
+      "text": "行",
+      "pinyin": "xing2"
+    },
+    "轨",
+    {
+      "text": "迹",
+      "pinyin": "ji4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "虚线表",
+    {
+      "text": "示当前列",
+      "pinyin": "shi4 dang1 qian2 lie4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "低",
+    {
+      "text": "处的相遇块已经处",
+      "pinyin": "chu4 de5 xiang1 yu4 kuai4 yi3 jing1 chu2"
+    },
+    "理。",
+    {
+      "breakMs": 200
+    },
+    "保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "右",
+    {
+      "text": "侧",
+      "pinyin": "ce4"
+    },
+    "顺序。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "高处还没处",
+      "pinyin": "gao1 chu4 hai2 mei2 chu2"
+    },
+    "理。",
+    {
+      "breakMs": 200
+    },
+    "仍保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "左",
+    {
+      "text": "侧",
+      "pinyin": "ce4"
+    },
+    "顺序。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC13": [
+    {
+      "text": "高处尚",
+      "pinyin": "gao1 chu4 shang4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "的结",
+      "pinyin": "de5 jie2"
+    },
+    "束者仍",
+    {
+      "text": "包含",
+      "pinyin": "bao1 han2"
+    },
+    "闭端点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能",
+      "pinyin": "bu4 neng2"
+    },
+    "在低",
+    {
+      "text": "处处",
+      "pinyin": "chu4 chu2"
+    },
+    "理后",
+    {
+      "text": "提前",
+      "pinyin": "ti2 qian2"
+    },
+    "删",
+    {
+      "text": "掉",
+      "pinyin": "diao4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "只有",
+      "pinyin": "zhi2 you3"
+    },
+    "整",
+    {
+      "text": "列处",
+      "pinyin": "lie4 chu2"
+    },
+    "理",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "下",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "成",
+    {
+      "text": "员才都",
+      "pinyin": "yuan2 cai2 dou1"
+    },
+    "继续到该",
+    {
+      "text": "列",
+      "pinyin": "lie4"
+    },
+    "右",
+    {
+      "text": "侧",
+      "pinyin": "ce4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC14": [
+    "用 t 表",
+    {
+      "text": "示当前列的",
+      "pinyin": "shi4 dang1 qian2 lie4 de5"
+    },
+    " x 坐标。",
+    {
+      "breakMs": 200
+    },
+    "输入",
+    {
+      "text": "身份",
+      "pinyin": "shen1 fen4"
+    },
+    "用 i 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "开始 x 坐标用 l i 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束 x 坐标用 r i 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "图",
+    {
+      "text": "中",
+      "pinyin": "zhong1"
+    },
+    "按",
+    {
+      "text": "身份分行",
+      "pinyin": "shen1 fen4 fen1 hang2"
+    },
+    "展",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "范围。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "表",
+    {
+      "text": "示不同几何高度",
+      "pinyin": "shi4 bu4 tong2 ji3 he2 gao1 du4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC15": [
+    "每",
+    {
+      "text": "份当前",
+      "pinyin": "fen4 dang1 qian2"
+    },
+    "成",
+    {
+      "text": "员都",
+      "pinyin": "yuan2 dou1"
+    },
+    "覆",
+    {
+      "text": "盖这一列",
+      "pinyin": "gai4 zhe4 yi2 lie4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以左右都允许",
+      "pinyin": "suo2 yi3 zuo3 you4 dou1 yun2 xu3"
+    },
+    "等",
+    {
+      "text": "号",
+      "pinyin": "hao4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "紫",
+    {
+      "text": "色行是",
+      "pinyin": "se4 hang2 shi4"
+    },
+    "另",
+    {
+      "text": "一份高处",
+      "pinyin": "yi2 fen4 gao1 chu4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "的结",
+      "pinyin": "de5 jie2"
+    },
+    "束者。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它的",
+      "pinyin": "ta1 de5"
+    },
+    "编",
+    {
+      "text": "号",
+      "pinyin": "hao4"
+    },
+    "用 j 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束 x 坐标用 r j 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "坐标",
+    {
+      "text": "与当前列",
+      "pinyin": "yu3 dang1 qian2 lie4"
+    },
+    "坐标 t ",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "等。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "若",
+      "pinyin": "ruo4"
+    },
+    "改成严",
+    {
+      "text": "格",
+      "pinyin": "ge2"
+    },
+    "小",
+    {
+      "text": "于",
+      "pinyin": "yu2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "就",
+    {
+      "text": "会把这",
+      "pinyin": "hui4 ba3 zhe4"
+    },
+    "类成",
+    {
+      "text": "员提前排除",
+      "pinyin": "yuan2 ti2 qian2 pai2 chu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC16": [
+    {
+      "text": "非空",
+      "pinyin": "fei1 kong1"
+    },
+    "组",
+    {
+      "text": "的当前最",
+      "pinyin": "de5 dang1 qian2 zui4"
+    },
+    "远右端。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "是这些当前",
+      "pinyin": "shi4 zhe4 xie1 dang1 qian2"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "右端",
+    {
+      "text": "的最大",
+      "pinyin": "de5 zui4 da4"
+    },
+    "值。",
+    {
+      "breakMs": 400
+    },
+    "未来",
+    {
+      "text": "才",
+      "pinyin": "cai2"
+    },
+    "开始",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "成",
+    {
+      "text": "员不",
+      "pinyin": "yuan2 bu2"
+    },
+    "在集",
+    {
+      "text": "合中",
+      "pinyin": "he2 zhong1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能提前把空",
+      "pinyin": "bu4 neng2 ti2 qian2 ba3 kong4"
+    },
+    "隙",
+    {
+      "text": "填",
+      "pinyin": "tian2"
+    },
+    "满。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC17": [
+    "初始",
+    {
+      "text": "化",
+      "pinyin": "hua4"
+    },
+    "时",
+    {
+      "text": "尚",
+      "pinyin": "shang4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "任何位",
+      "pinyin": "ren4 he2 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "活",
+      "pinyin": "huo2"
+    },
+    "动成",
+    {
+      "text": "员为空",
+      "pinyin": "yuan2 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "没有非空",
+      "pinyin": "mei2 you3 fei1 kong1"
+    },
+    "组、组顺序",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "覆",
+    {
+      "text": "盖",
+      "pinyin": "gai4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "到",
+    {
+      "text": "达任何",
+      "pinyin": "da2 ren4 he2"
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "时",
+    {
+      "text": "机",
+      "pinyin": "ji1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结果也为空",
+      "pinyin": "jie2 guo3 ye3 wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这些空",
+      "pinyin": "zhe4 xie1 kong1"
+    },
+    "记录符",
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    "刚",
+    {
+      "text": "才的含",
+      "pinyin": "cai2 de5 han2"
+    },
+    "义。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC18": [
+    "端点",
+    {
+      "text": "由",
+      "pinyin": "you2"
+    },
+    "输入直",
+    {
+      "text": "接给",
+      "pinyin": "jie1 gei3"
+    },
+    "出。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "非零",
+      "pinyin": "fei1 ling2"
+    },
+    "输入",
+    {
+      "text": "登",
+      "pinyin": "deng1"
+    },
+    "记两端。",
+    {
+      "breakMs": 200
+    },
+    "点输入",
+    {
+      "text": "登",
+      "pinyin": "deng1"
+    },
+    "记自",
+    {
+      "text": "己的位",
+      "pinyin": "ji3 de5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同位",
+      "pinyin": "tong2 wei4"
+    },
+    "置",
+    {
+      "text": "合并",
+      "pinyin": "he2 bing4"
+    },
+    "记录。",
+    {
+      "breakMs": 200
+    },
+    "保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "全",
+    {
+      "text": "部身份",
+      "pinyin": "bu4 shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "再按",
+    {
+      "text": "精",
+      "pinyin": "jing1"
+    },
+    "确",
+    {
+      "text": "次",
+      "pinyin": "ci4"
+    },
+    "序",
+    {
+      "text": "排列",
+      "pinyin": "pai2 lie4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "图",
+    {
+      "text": "中只",
+      "pinyin": "zhong1 zhi3"
+    },
+    "画",
+    {
+      "text": "已知位",
+      "pinyin": "yi3 zhi1 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "预先加入交点。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC19": [
+    {
+      "text": "任何",
+      "pinyin": "ren4 he2"
+    },
+    "交集",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置",
+    {
+      "text": "都不",
+      "pinyin": "dou1 bu4"
+    },
+    "早",
+    {
+      "text": "于参与",
+      "pinyin": "yu2 can1 yu4"
+    },
+    "输入",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "开始",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "非零",
+      "pinyin": "fei1 ling2"
+    },
+    "输入",
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "竖直。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "内部",
+      "pinyin": "nei4 bu4"
+    },
+    "严",
+    {
+      "text": "格",
+      "pinyin": "ge2"
+    },
+    "在开始端点右",
+    {
+      "text": "边",
+      "pinyin": "bian1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以非空",
+      "pinyin": "suo2 yi3 fei1 kong1"
+    },
+    "输入",
+    {
+      "text": "的最",
+      "pinyin": "de5 zui4"
+    },
+    "早真实",
+    {
+      "text": "事件",
+      "pinyin": "shi4 jian4"
+    },
+    "必",
+    {
+      "text": "是已登",
+      "pinyin": "shi4 yi3 deng1"
+    },
+    "记端点。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它之前没有活",
+      "pinyin": "ta1 zhi1 qian2 mei2 you3 huo2"
+    },
+    "动成",
+    {
+      "text": "员或应",
+      "pinyin": "yuan2 huo4 ying1"
+    },
+    "报",
+    {
+      "text": "告的",
+      "pinyin": "gao4 de5"
+    },
+    "对。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "空",
+      "pinyin": "kong1"
+    },
+    "输入直",
+    {
+      "text": "接得",
+      "pinyin": "jie1 de2"
+    },
+    "到",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "整",
+    {
+      "text": "空结果",
+      "pinyin": "kong1 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC20": [
+    {
+      "text": "本次位",
+      "pinyin": "ben3 ci4 wei4"
+    },
+    "置用 P 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "严",
+    {
+      "text": "格更",
+      "pinyin": "ge2 geng4"
+    },
+    "早",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "真实",
+    {
+      "text": "事件已依次正",
+      "pinyin": "shi4 jian4 yi3 yi1 ci4 zheng4"
+    },
+    "确",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "而且",
+      "pinyin": "er2 qie3"
+    },
+    " P 确实",
+    {
+      "text": "是",
+      "pinyin": "shi4"
+    },
+    "下",
+    {
+      "text": "一处",
+      "pinyin": "yi2 chu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这里只",
+      "pinyin": "zhe4 li3 zhi3"
+    },
+    "证",
+    {
+      "text": "明",
+      "pinyin": "ming2"
+    },
+    "满",
+    {
+      "text": "足这",
+      "pinyin": "zu2 zhe4"
+    },
+    "两",
+    {
+      "text": "个前提以",
+      "pinyin": "ge5 qian2 ti2 yi3"
+    },
+    "后怎",
+    {
+      "text": "样",
+      "pinyin": "yang4"
+    },
+    "保持",
+    {
+      "text": "正",
+      "pinyin": "zheng4"
+    },
+    "确。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不假",
+      "pinyin": "bu4 jia3"
+    },
+    "定",
+    {
+      "text": "更",
+      "pinyin": "geng4"
+    },
+    "晚",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "交点",
+    {
+      "text": "都已登",
+      "pinyin": "dou1 yi3 deng1"
+    },
+    "记。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC21": [
+    {
+      "text": "从上次处",
+      "pinyin": "cong2 shang4 ci4 chu2"
+    },
+    "理后到 P ",
+    {
+      "text": "之前",
+      "pinyin": "zhi1 qian2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "没有跳过别的",
+      "pinyin": "mei2 you3 tiao4 guo4 bie2 de5"
+    },
+    "端点",
+    {
+      "text": "或",
+      "pinyin": "huo4"
+    },
+    "交点。",
+    {
+      "breakMs": 200
+    },
+    "成",
+    {
+      "text": "员和",
+      "pinyin": "yuan2 he2"
+    },
+    "组顺序仍",
+    {
+      "text": "可",
+      "pinyin": "ke3"
+    },
+    "用。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "若",
+      "pinyin": "ruo4"
+    },
+    " P 在",
+    {
+      "text": "同列高处",
+      "pinyin": "tong2 lie4 gao1 chu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "使用低",
+    {
+      "text": "处已更",
+      "pinyin": "chu4 yi3 geng1"
+    },
+    "新、",
+    {
+      "text": "高处",
+      "pinyin": "gao1 chu4"
+    },
+    "未",
+    {
+      "text": "更",
+      "pinyin": "geng1"
+    },
+    "新",
+    {
+      "text": "的中间",
+      "pinyin": "de5 zhong1 jian1"
+    },
+    "状态。",
+    {
+      "breakMs": 400
+    },
+    "第",
+    {
+      "text": "六章",
+      "pinyin": "liu4 zhang1"
+    },
+    "保证仍",
+    {
+      "text": "能",
+      "pinyin": "neng2"
+    },
+    "按",
+    {
+      "text": "高度找齐块",
+      "pinyin": "gao1 du4 zhao3 qi2 kuai4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC22": [
+    "图",
+    {
+      "text": "中",
+      "pinyin": "zhong1"
+    },
+    "交汇",
+    {
+      "text": "处",
+      "pinyin": "chu4"
+    },
+    "用 P 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "预",
+    {
+      "text": "约",
+      "pinyin": "yue1"
+    },
+    "对",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "负责",
+    {
+      "text": "发",
+      "pinyin": "fa1"
+    },
+    "现",
+    {
+      "text": "这个位",
+      "pinyin": "zhe4 ge5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不限",
+      "pinyin": "bu2 xian4"
+    },
+    "制到",
+    {
+      "text": "站",
+      "pinyin": "zhan4"
+    },
+    "后",
+    {
+      "text": "的参与",
+      "pinyin": "de5 can1 yu4"
+    },
+    "者",
+    {
+      "text": "数量",
+      "pinyin": "shu4 liang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "从正",
+      "pinyin": "cong2 zheng4"
+    },
+    "确旧状态",
+    {
+      "text": "找齐经过",
+      "pinyin": "zhao3 qi2 jing1 guo4"
+    },
+    " P ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "组。",
+    {
+      "breakMs": 200
+    },
+    "再展开",
+    {
+      "text": "这些",
+      "pinyin": "zhe4 xie1"
+    },
+    "组在",
+    {
+      "text": "这里的",
+      "pinyin": "zhe4 li3 de5"
+    },
+    "全",
+    {
+      "text": "部当前",
+      "pinyin": "bu4 dang1 qian2"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC23": [
+    {
+      "text": "把",
+      "pinyin": "ba3"
+    },
+    "在 P 开始",
+    {
+      "text": "的非零",
+      "pinyin": "de5 fei1 ling2"
+    },
+    "输入。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "以",
+      "pinyin": "yi3"
+    },
+    "及",
+    {
+      "text": "位于",
+      "pinyin": "wei4 yu2"
+    },
+    " P ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "点输入",
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    "进",
+    {
+      "text": "来",
+      "pinyin": "lai5"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "点输入",
+    {
+      "text": "只参",
+      "pinyin": "zhi3 can1"
+    },
+    "加",
+    {
+      "text": "这个位",
+      "pinyin": "zhe4 ge5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "进入持续",
+    {
+      "text": "活",
+      "pinyin": "huo2"
+    },
+    "动顺序。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "它的身份",
+      "pinyin": "ta1 de5 shen1 fen4"
+    },
+    "来自预先",
+    {
+      "text": "登",
+      "pinyin": "deng1"
+    },
+    "记",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "端点记录。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC24": [
+    "在 P ",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "成",
+    {
+      "text": "员还没",
+      "pinyin": "yuan2 hai2 mei2"
+    },
+    "退出。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以共",
+      "pinyin": "suo2 yi3 gong4"
+    },
+    "端点",
+    {
+      "text": "接",
+      "pinyin": "jie1"
+    },
+    "触",
+    {
+      "text": "不会",
+      "pinyin": "bu2 hui4"
+    },
+    "丢。",
+    {
+      "breakMs": 400
+    },
+    "端点",
+    {
+      "text": "落",
+      "pinyin": "luo4"
+    },
+    "在",
+    {
+      "text": "内部",
+      "pinyin": "nei4 bu4"
+    },
+    "时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "穿过",
+      "pinyin": "chuan1 guo4"
+    },
+    "者来自旧",
+    {
+      "text": "块",
+      "pinyin": "kuai4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "多线",
+    {
+      "text": "共",
+      "pinyin": "gong4"
+    },
+    "点时。",
+    {
+      "breakMs": 200
+    },
+    "整",
+    {
+      "text": "块都",
+      "pinyin": "kuai4 dou1"
+    },
+    "收",
+    {
+      "text": "齐",
+      "pinyin": "qi2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC25": [
+    "两",
+    {
+      "text": "份非零",
+      "pinyin": "fen4 fei1 ling2"
+    },
+    "输入",
+    {
+      "text": "同",
+      "pinyin": "tong2"
+    },
+    "线时。",
+    {
+      "breakMs": 200
+    },
+    "后开始者加入。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    "仍",
+    {
+      "text": "包含",
+      "pinyin": "bao1 han2"
+    },
+    "此",
+    {
+      "text": "处的",
+      "pinyin": "chu4 de5"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "配对。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "下",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "整闭交集。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同",
+      "pinyin": "tong2"
+    },
+    "点开始者按固定",
+    {
+      "text": "身份",
+      "pinyin": "shen1 fen4"
+    },
+    "顺序",
+    {
+      "text": "逐一",
+      "pinyin": "zhu2 yi1"
+    },
+    "加入。",
+    {
+      "breakMs": 400
+    },
+    "每对",
+    {
+      "text": "只有一个",
+      "pinyin": "zhi2 you3 yi2 ge5"
+    },
+    "较晚",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "加入时",
+    {
+      "text": "机",
+      "pinyin": "ji1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC26": [
+    {
+      "text": "不同",
+      "pinyin": "bu4 tong2"
+    },
+    "组",
+    {
+      "text": "的非零",
+      "pinyin": "de5 fei1 ling2"
+    },
+    "输入在",
+    {
+      "text": "共同位",
+      "pinyin": "gong4 tong2 wei4"
+    },
+    "置展开全",
+    {
+      "text": "部跨",
+      "pinyin": "bu4 kua4"
+    },
+    "组成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "对。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "在",
+    {
+      "text": "这里重",
+      "pinyin": "zhe4 li3 chong2"
+    },
+    "报组",
+    {
+      "text": "内",
+      "pinyin": "nei4"
+    },
+    "对。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "不同",
+      "pinyin": "bu4 tong2"
+    },
+    "直线",
+    {
+      "text": "至",
+      "pinyin": "zhi4"
+    },
+    "多",
+    {
+      "text": "有一个",
+      "pinyin": "you3 yi2 ge5"
+    },
+    "交点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "点就",
+    {
+      "text": "是完",
+      "pinyin": "shi4 wan2"
+    },
+    "整交集。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也是唯一",
+      "pinyin": "ye3 shi4 wei2 yi1"
+    },
+    "报",
+    {
+      "text": "告位",
+      "pinyin": "gao4 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC27": [
+    {
+      "text": "至少一份是",
+      "pinyin": "zhi4 shao3 yi2 fen4 shi4"
+    },
+    "点输入时。",
+    {
+      "breakMs": 200
+    },
+    "在",
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "点",
+    {
+      "text": "与其他参与",
+      "pinyin": "yu3 qi2 ta1 can1 yu4"
+    },
+    "者配对。",
+    {
+      "breakMs": 400
+    },
+    "点",
+    {
+      "text": "与",
+      "pinyin": "yu2"
+    },
+    "点",
+    {
+      "text": "也",
+      "pinyin": "ye3"
+    },
+    "按",
+    {
+      "text": "无",
+      "pinyin": "wu2"
+    },
+    "序对",
+    {
+      "text": "各取一次",
+      "pinyin": "ge4 qu3 yi2 ci4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "交集",
+    {
+      "text": "只能是这个",
+      "pinyin": "zhi3 neng2 shi4 zhe4 ge5"
+    },
+    "点。",
+    {
+      "breakMs": 200
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "时",
+    {
+      "text": "机只有这一个位",
+      "pinyin": "ji1 zhi2 you3 zhe4 yi2 ge5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC28": [
+    "每对",
+    {
+      "text": "要么含",
+      "pinyin": "yao4 me5 han2"
+    },
+    "点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "要么",
+      "pinyin": "yao4 me5"
+    },
+    "两",
+    {
+      "text": "份都非零",
+      "pinyin": "fen4 dou1 fei1 ling2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "两",
+    {
+      "text": "份都非零",
+      "pinyin": "fen4 dou1 fei1 ling2"
+    },
+    "时。",
+    {
+      "breakMs": 200
+    },
+    "所在直线",
+    {
+      "text": "要么相同",
+      "pinyin": "yao4 me5 xiang1 tong2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "要么不同",
+      "pinyin": "yao4 me5 bu4 tong2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以",
+      "pinyin": "suo2 yi3"
+    },
+    "三类穷",
+    {
+      "text": "尽且",
+      "pinyin": "jin4 qie3"
+    },
+    "互",
+    {
+      "text": "斥",
+      "pinyin": "chi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "跨",
+      "pinyin": "kua4"
+    },
+    "类",
+    {
+      "text": "不会重",
+      "pinyin": "bu2 hui4 chong2"
+    },
+    "复。",
+    {
+      "breakMs": 200
+    },
+    "类",
+    {
+      "text": "内唯一",
+      "pinyin": "nei4 wei2 yi1"
+    },
+    "性",
+    {
+      "text": "由",
+      "pinyin": "you2"
+    },
+    "刚",
+    {
+      "text": "才的",
+      "pinyin": "cai2 de5"
+    },
+    "规则保证。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC29": [
+    "收集",
+    {
+      "text": "既完",
+      "pinyin": "ji4 wan2"
+    },
+    "整。",
+    {
+      "breakMs": 200
+    },
+    "又",
+    {
+      "text": "没有混",
+      "pinyin": "mei2 you3 hun4"
+    },
+    "入",
+    {
+      "text": "不经过",
+      "pinyin": "bu4 jing1 guo4"
+    },
+    " P ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "因此",
+    {
+      "text": "不漏本次",
+      "pinyin": "bu2 lou4 ben3 ci4"
+    },
+    "该报",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "对。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也不增",
+      "pinyin": "ye3 bu4 zeng1"
+    },
+    "加",
+    {
+      "text": "空",
+      "pinyin": "kong1"
+    },
+    "交集。",
+    {
+      "breakMs": 400
+    },
+    "此",
+    {
+      "text": "前已",
+      "pinyin": "qian2 yi3"
+    },
+    "报",
+    {
+      "text": "告的",
+      "pinyin": "gao4 de5"
+    },
+    "对",
+    {
+      "text": "不会重",
+      "pinyin": "bu2 hui4 chong2"
+    },
+    "报。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "重",
+      "pinyin": "chong2"
+    },
+    "复",
+    {
+      "text": "或反",
+      "pinyin": "huo4 fan3"
+    },
+    "向输入仍保",
+    {
+      "text": "留不同身份",
+      "pinyin": "liu2 bu4 tong2 shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "交换",
+    {
+      "text": "同一",
+      "pinyin": "tong2 yi2"
+    },
+    "对",
+    {
+      "text": "的次",
+      "pinyin": "de5 ci4"
+    },
+    "序",
+    {
+      "text": "才不",
+      "pinyin": "cai2 bu4"
+    },
+    "产生新对。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC30": [
+    "图",
+    {
+      "text": "中是同",
+      "pinyin": "zhong1 shi4 tong2"
+    },
+    "线",
+    {
+      "text": "的一",
+      "pinyin": "de5 yi2"
+    },
+    "对",
+    {
+      "text": "非零",
+      "pinyin": "fei1 ling2"
+    },
+    "输入。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "为区分身份",
+      "pinyin": "wei4 qu1 fen1 shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "把各",
+      "pinyin": "ba3 ge4"
+    },
+    "自",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "范围",
+    {
+      "text": "分行",
+      "pinyin": "fen1 hang2"
+    },
+    "展",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置 P ",
+    {
+      "text": "是",
+      "pinyin": "shi4"
+    },
+    "较晚",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "开始",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    "两",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "输入",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原始端点",
+    {
+      "text": "已经",
+      "pinyin": "yi3 jing1"
+    },
+    "全",
+    {
+      "text": "部给",
+      "pinyin": "bu4 gei3"
+    },
+    "定。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC31": [
+    "现在就",
+    {
+      "text": "能",
+      "pinyin": "neng2"
+    },
+    "确定",
+    {
+      "text": "并",
+      "pinyin": "bing4"
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "整段闭交集。",
+    {
+      "breakMs": 200
+    },
+    "右端",
+    {
+      "text": "可以",
+      "pinyin": "ke2 yi3"
+    },
+    "在 P ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "右",
+    {
+      "text": "边",
+      "pinyin": "bian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "必等",
+    {
+      "text": "扫描",
+      "pinyin": "sao3 miao2"
+    },
+    "走到",
+    {
+      "text": "那里",
+      "pinyin": "na4 li3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "累",
+      "pinyin": "lei3"
+    },
+    "计",
+    {
+      "text": "结果",
+      "pinyin": "jie2 guo3"
+    },
+    "按报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "时",
+    {
+      "text": "机",
+      "pinyin": "ji1"
+    },
+    "成",
+    {
+      "text": "立",
+      "pinyin": "li4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "不能把它改写",
+      "pinyin": "bu4 neng2 ba3 ta1 gai2 xie3"
+    },
+    "成",
+    {
+      "text": "当前位",
+      "pinyin": "dang1 qian2 wei4"
+    },
+    "置左",
+    {
+      "text": "边所有几何部分的合",
+      "pinyin": "bian1 suo2 you3 ji3 he2 bu4 fen4 de5 he2"
+    },
+    "集。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC32": [
+    "图",
+    {
+      "text": "中当前位",
+      "pinyin": "zhong1 dang1 qian2 wei4"
+    },
+    "置 P 在低",
+    {
+      "text": "处",
+      "pinyin": "chu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "高处是同列尚",
+      "pinyin": "gao1 chu4 shi4 tong2 lie4 shang4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "的位",
+      "pinyin": "de5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    "先报",
+    {
+      "text": "告所有本次",
+      "pinyin": "gao4 suo2 you3 ben3 ci4"
+    },
+    "该报",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "对。",
+    {
+      "breakMs": 400
+    },
+    "在 P ",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "成",
+    {
+      "text": "员和",
+      "pinyin": "yuan2 he2"
+    },
+    "点输入。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "都参",
+      "pinyin": "dou1 can1"
+    },
+    "加",
+    {
+      "text": "这次",
+      "pinyin": "zhe4 ci4"
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC33": [
+    "报",
+    {
+      "text": "告完",
+      "pinyin": "gao4 wan2"
+    },
+    "成后。",
+    {
+      "breakMs": 200
+    },
+    "在 P ",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "退出。",
+    {
+      "breakMs": 200
+    },
+    "点输入",
+    {
+      "text": "也不留",
+      "pinyin": "ye3 bu4 liu2"
+    },
+    "到后面。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "下",
+    {
+      "text": "穿过",
+      "pinyin": "chuan1 guo4"
+    },
+    "者",
+    {
+      "text": "和非零",
+      "pinyin": "he2 fei1 ling2"
+    },
+    "开始者。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "只把当前块",
+      "pinyin": "zhi2 ba3 dang1 qian2 kuai4"
+    },
+    "改成右",
+    {
+      "text": "侧",
+      "pinyin": "ce4"
+    },
+    "顺序。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "块",
+      "pinyin": "kuai4"
+    },
+    "外保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "原状态。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC34": [
+    {
+      "text": "同列高处尚",
+      "pinyin": "tong2 lie4 gao1 chu4 shang4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "的结",
+      "pinyin": "de5 jie2"
+    },
+    "束者仍保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能",
+      "pinyin": "bu4 neng2"
+    },
+    "随",
+    {
+      "text": "着",
+      "pinyin": "zhe5"
+    },
+    "低",
+    {
+      "text": "处一",
+      "pinyin": "chu4 yi4"
+    },
+    "起删",
+    {
+      "text": "除或",
+      "pinyin": "chu2 huo4"
+    },
+    "换序。",
+    {
+      "breakMs": 400
+    },
+    "低",
+    {
+      "text": "处已处",
+      "pinyin": "chu4 yi3 chu2"
+    },
+    "理、",
+    {
+      "text": "高处",
+      "pinyin": "gao1 chu4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "的约",
+      "pinyin": "de5 yue1"
+    },
+    "定。",
+    {
+      "breakMs": 200
+    },
+    "就",
+    {
+      "text": "这样",
+      "pinyin": "zhe4 yang4"
+    },
+    "延续到下",
+    {
+      "text": "一个位",
+      "pinyin": "yi2 ge5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC35": [
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "变",
+    {
+      "text": "化",
+      "pinyin": "hua4"
+    },
+    "后",
+    {
+      "text": "重",
+      "pinyin": "chong2"
+    },
+    "算",
+    {
+      "text": "当前",
+      "pinyin": "dang1 qian2"
+    },
+    "覆",
+    {
+      "text": "盖",
+      "pinyin": "gai4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "图",
+    {
+      "text": "中",
+      "pinyin": "zhong1"
+    },
+    "新",
+    {
+      "text": "增",
+      "pinyin": "zeng1"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "使",
+    {
+      "text": "最",
+      "pinyin": "zui4"
+    },
+    "远右端延",
+    {
+      "text": "长",
+      "pinyin": "chang2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "邻",
+    {
+      "text": "居名字",
+      "pinyin": "ju1 ming2 zi5"
+    },
+    "虽然",
+    {
+      "text": "没",
+      "pinyin": "mei2"
+    },
+    "变。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也要补",
+      "pinyin": "ye3 yao4 bu2"
+    },
+    "检。",
+    {
+      "breakMs": 400
+    },
+    "确认交点时",
+    {
+      "text": "只能",
+      "pinyin": "zhi3 neng2"
+    },
+    "用真实闭范围。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能",
+      "pinyin": "bu4 neng2"
+    },
+    "拿整条",
+    {
+      "text": "支",
+      "pinyin": "zhi1"
+    },
+    "撑直线替代。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC36": [
+    {
+      "text": "若",
+      "pinyin": "ruo4"
+    },
+    "组",
+    {
+      "text": "已没有",
+      "pinyin": "yi3 mei2 you3"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "就退出",
+    {
+      "text": "活",
+      "pinyin": "huo2"
+    },
+    "动顺序。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "以",
+      "pinyin": "yi3"
+    },
+    "后",
+    {
+      "text": "同",
+      "pinyin": "tong2"
+    },
+    "线成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "开始时再加入。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "尚",
+      "pinyin": "shang4"
+    },
+    "未开始",
+    {
+      "text": "的部分不能倒过来填",
+      "pinyin": "de5 bu4 fen4 bu4 neng2 dao4 guo4 lai5 tian2"
+    },
+    "补",
+    {
+      "text": "眼前的空",
+      "pinyin": "yan3 qian2 de5 kong4"
+    },
+    "隙。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也不能提前参与",
+      "pinyin": "ye3 bu4 neng2 ti2 qian2 can1 yu4"
+    },
+    "未来检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC37": [
+    {
+      "text": "更",
+      "pinyin": "geng1"
+    },
+    "新形成",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "新邻",
+    {
+      "text": "接都要",
+      "pinyin": "jie1 dou1 yao4"
+    },
+    "检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "：新",
+    {
+      "text": "块内部",
+      "pinyin": "kuai4 nei4 bu4"
+    },
+    "、",
+    {
+      "text": "它与",
+      "pinyin": "ta1 yu3"
+    },
+    "外",
+    {
+      "text": "侧的边",
+      "pinyin": "ce4 de5 bian1"
+    },
+    "界。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "以",
+      "pinyin": "yi3"
+    },
+    "及",
+    {
+      "text": "块空",
+      "pinyin": "kuai4 kong1"
+    },
+    "时新连",
+    {
+      "text": "上的",
+      "pinyin": "shang4 de5"
+    },
+    "两",
+    {
+      "text": "侧",
+      "pinyin": "ce4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这些",
+      "pinyin": "zhe4 xie1"
+    },
+    "新邻",
+    {
+      "text": "接",
+      "pinyin": "jie1"
+    },
+    "检",
+    {
+      "text": "查与",
+      "pinyin": "cha2 yu3"
+    },
+    "覆",
+    {
+      "text": "盖",
+      "pinyin": "gai4"
+    },
+    "延",
+    {
+      "text": "长补",
+      "pinyin": "chang2 bu2"
+    },
+    "检。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "两",
+      "pinyin": "liang2"
+    },
+    "者",
+    {
+      "text": "缺一不可",
+      "pinyin": "que1 yi1 bu4 ke3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC38": [
+    "先确认交点",
+    {
+      "text": "落",
+      "pinyin": "luo4"
+    },
+    "在真实闭范围。",
+    {
+      "breakMs": 200
+    },
+    "再按 x 坐标",
+    {
+      "text": "优",
+      "pinyin": "you1"
+    },
+    "先、",
+    {
+      "text": "同列",
+      "pinyin": "tong2 lie4"
+    },
+    "按",
+    {
+      "text": "高度的完",
+      "pinyin": "gao1 du4 de5 wan2"
+    },
+    "整",
+    {
+      "text": "次",
+      "pinyin": "ci4"
+    },
+    "序判断严",
+    {
+      "text": "格",
+      "pinyin": "ge2"
+    },
+    "未来。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同列高处",
+      "pinyin": "tong2 lie4 gao1 chu4"
+    },
+    "仍",
+    {
+      "text": "可",
+      "pinyin": "ke3"
+    },
+    "在未来。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "当前位",
+      "pinyin": "dang1 qian2 wei4"
+    },
+    "置",
+    {
+      "text": "和过去不重",
+      "pinyin": "he2 guo4 qu4 bu4 chong2"
+    },
+    "新加入。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "已登",
+      "pinyin": "yi3 deng1"
+    },
+    "记",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "真实未来",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置继续保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC39": [
+    {
+      "text": "重",
+      "pinyin": "chong2"
+    },
+    "复",
+    {
+      "text": "发",
+      "pinyin": "fa1"
+    },
+    "现",
+    {
+      "text": "只合并位",
+      "pinyin": "zhi3 he2 bing4 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不合并",
+      "pinyin": "bu4 he2 bing4"
+    },
+    "原始输入",
+    {
+      "text": "身份",
+      "pinyin": "shen1 fen4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "、顺序、覆",
+    {
+      "text": "盖和累",
+      "pinyin": "gai4 he2 lei3"
+    },
+    "计",
+    {
+      "text": "结果的",
+      "pinyin": "jie2 guo3 de5"
+    },
+    "保证继续成",
+    {
+      "text": "立",
+      "pinyin": "li4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这次还",
+      "pinyin": "zhe4 ci4 hai2"
+    },
+    "执",
+    {
+      "text": "行了",
+      "pinyin": "xing2 le5"
+    },
+    "两类检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "接",
+      "pinyin": "jie1"
+    },
+    "下",
+    {
+      "text": "来单",
+      "pinyin": "lai5 dan1"
+    },
+    "独",
+    {
+      "text": "说明",
+      "pinyin": "shuo1 ming2"
+    },
+    "：",
+    {
+      "text": "为什么",
+      "pinyin": "wei4 shen2 me5"
+    },
+    "所",
+    {
+      "text": "假",
+      "pinyin": "jia3"
+    },
+    "设",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "下",
+    {
+      "text": "一处不会被清单跳过",
+      "pinyin": "yi2 chu4 bu2 hui4 bei4 qing1 dan1 tiao4 guo4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC40": [
+    "现在",
+    {
+      "text": "从已正",
+      "pinyin": "cong2 yi3 zheng4"
+    },
+    "确",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "的边",
+      "pinyin": "de5 bian1"
+    },
+    "界向后",
+    {
+      "text": "看",
+      "pinyin": "kan4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "若还有",
+      "pinyin": "ruo4 hai2 you3"
+    },
+    "真实",
+    {
+      "text": "事件",
+      "pinyin": "shi4 jian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "就",
+    {
+      "text": "取",
+      "pinyin": "qu3"
+    },
+    "按",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "整",
+    {
+      "text": "次",
+      "pinyin": "ci4"
+    },
+    "序",
+    {
+      "text": "最",
+      "pinyin": "zui4"
+    },
+    "早",
+    {
+      "text": "的一个",
+      "pinyin": "de5 yi2 ge5"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "并",
+      "pinyin": "bing4"
+    },
+    "用 Q 表",
+    {
+      "text": "示这个位",
+      "pinyin": "shi4 zhe4 ge5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这是",
+      "pinyin": "zhe4 shi4"
+    },
+    "证",
+    {
+      "text": "明里",
+      "pinyin": "ming2 li3"
+    },
+    "选",
+    {
+      "text": "择",
+      "pinyin": "ze2"
+    },
+    "实际",
+    {
+      "text": "几何位",
+      "pinyin": "ji3 he2 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不是要",
+      "pinyin": "bu2 shi4 yao1"
+    },
+    "求算法先枚举全",
+    {
+      "text": "部",
+      "pinyin": "bu4"
+    },
+    "交点。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC41": [
+    {
+      "text": "若",
+      "pinyin": "ruo4"
+    },
+    " Q 带端点",
+    {
+      "text": "或",
+      "pinyin": "huo4"
+    },
+    "点输入。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它",
+      "pinyin": "ta1"
+    },
+    "在初始",
+    {
+      "text": "化",
+      "pinyin": "hua4"
+    },
+    "时就",
+    {
+      "text": "已登",
+      "pinyin": "yi3 deng1"
+    },
+    "记。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这个位",
+      "pinyin": "zhe4 ge5 wei4"
+    },
+    "置",
+    {
+      "text": "尚",
+      "pinyin": "shang4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理。",
+    {
+      "breakMs": 200
+    },
+    "记录仍在",
+    {
+      "text": "清单里",
+      "pinyin": "qing1 dan1 li3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC42": [
+    {
+      "text": "否",
+      "pinyin": "fou3"
+    },
+    "则。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置 Q ",
+    {
+      "text": "只能是不同",
+      "pinyin": "zhi3 neng2 shi4 bu4 tong2"
+    },
+    "组",
+    {
+      "text": "非零",
+      "pinyin": "fei1 ling2"
+    },
+    "输入",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "真实交点。",
+    {
+      "breakMs": 400
+    },
+    "此",
+    {
+      "text": "前事件已正",
+      "pinyin": "qian2 shi4 jian4 yi3 zheng4"
+    },
+    "确",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理。",
+    {
+      "breakMs": 200
+    },
+    "两类检",
+    {
+      "text": "查也都",
+      "pinyin": "cha2 ye3 dou1"
+    },
+    "执",
+    {
+      "text": "行",
+      "pinyin": "xing2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "当前",
+      "pinyin": "dang1 qian2"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "真实覆",
+    {
+      "text": "盖",
+      "pinyin": "gai4"
+    },
+    "交点。",
+    {
+      "breakMs": 200
+    },
+    "真实预",
+    {
+      "text": "约",
+      "pinyin": "yue1"
+    },
+    "保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "已有",
+      "pinyin": "yi2 you3"
+    },
+    "组",
+    {
+      "text": "发",
+      "pinyin": "fa1"
+    },
+    "现及",
+    {
+      "text": "同列结论于是",
+      "pinyin": "tong2 lie4 jie2 lun4 yu2 shi4"
+    },
+    "保证 Q 及时",
+    {
+      "text": "登",
+      "pinyin": "deng1"
+    },
+    "记。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC43": [
+    {
+      "text": "有些",
+      "pinyin": "you3 xie1"
+    },
+    "交点",
+    {
+      "text": "还要",
+      "pinyin": "hai2 yao4"
+    },
+    "等新邻",
+    {
+      "text": "接或",
+      "pinyin": "jie1 huo4"
+    },
+    "覆",
+    {
+      "text": "盖",
+      "pinyin": "gai4"
+    },
+    "延",
+    {
+      "text": "长才被发",
+      "pinyin": "chang2 cai2 bei4 fa1"
+    },
+    "现。",
+    {
+      "breakMs": 400
+    },
+    "邻",
+    {
+      "text": "居不",
+      "pinyin": "ju1 bu2"
+    },
+    "变",
+    {
+      "text": "而",
+      "pinyin": "er2"
+    },
+    "覆",
+    {
+      "text": "盖",
+      "pinyin": "gai4"
+    },
+    "后来",
+    {
+      "text": "才",
+      "pinyin": "cai2"
+    },
+    "够到。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也已被补",
+      "pinyin": "ye2 yi3 bei4 bu2"
+    },
+    "检覆",
+    {
+      "text": "盖",
+      "pinyin": "gai4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "图",
+    {
+      "text": "中的",
+      "pinyin": "zhong1 de5"
+    },
+    "顺序",
+    {
+      "text": "是完",
+      "pinyin": "shi4 wan2"
+    },
+    "整",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置",
+    {
+      "text": "次",
+      "pinyin": "ci4"
+    },
+    "序。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不只是",
+      "pinyin": "bu4 zhi3 shi4"
+    },
+    " x 坐标。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同列高处也可能是",
+      "pinyin": "tong2 lie4 gao1 chu4 ye3 ke3 neng2 shi4"
+    },
+    "下",
+    {
+      "text": "一处",
+      "pinyin": "yi2 chu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC44": [
+    {
+      "text": "清单只含",
+      "pinyin": "qing1 dan1 zhi3 han2"
+    },
+    "真实未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "而且已经包含",
+      "pinyin": "er2 qie3 yi3 jing1 bao1 han2"
+    },
+    " Q ",
+    {
+      "text": "这个位",
+      "pinyin": "zhe4 ge5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "若还有比",
+      "pinyin": "ruo4 hai2 you3 bi3"
+    },
+    " Q ",
+    {
+      "text": "更",
+      "pinyin": "geng4"
+    },
+    "早",
+    {
+      "text": "的清单位",
+      "pinyin": "de5 qing1 dan1 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "它也是",
+      "pinyin": "ta1 ye3 shi4"
+    },
+    "真实未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "事件",
+      "pinyin": "shi4 jian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "就",
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    " Q ",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "选",
+    {
+      "text": "择",
+      "pinyin": "ze2"
+    },
+    "矛",
+    {
+      "text": "盾",
+      "pinyin": "dun4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC45": [
+    {
+      "text": "所以取清单最",
+      "pinyin": "suo2 yi3 qu3 qing1 dan1 zui4"
+    },
+    "小",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    "必然",
+    {
+      "text": "取",
+      "pinyin": "qu3"
+    },
+    "到 Q ",
+    {
+      "text": "这个位",
+      "pinyin": "zhe4 ge5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这才",
+      "pinyin": "zhe4 cai2"
+    },
+    "补",
+    {
+      "text": "上",
+      "pinyin": "shang4"
+    },
+    "第三",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "所",
+    {
+      "text": "需的",
+      "pinyin": "xu1 de5"
+    },
+    "下",
+    {
+      "text": "一处前提",
+      "pinyin": "yi2 chu4 qian2 ti2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同位",
+      "pinyin": "tong2 wei4"
+    },
+    "置",
+    {
+      "text": "合并",
+      "pinyin": "he2 bing4"
+    },
+    "保证",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "到",
+    {
+      "text": "站一次",
+      "pinyin": "zhan4 yi2 ci4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "到",
+    {
+      "text": "站",
+      "pinyin": "zhan4"
+    },
+    "后仍收",
+    {
+      "text": "齐",
+      "pinyin": "qi2"
+    },
+    "全",
+    {
+      "text": "部参与",
+      "pinyin": "bu4 can1 yu4"
+    },
+    "者。",
+    {
+      "breakMs": 200
+    },
+    "保",
+    {
+      "text": "留不同",
+      "pinyin": "liu2 bu4 tong2"
+    },
+    "原始输入对。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC46": [
+    "第二",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "建",
+    {
+      "text": "立空",
+      "pinyin": "li4 kong1"
+    },
+    "状态",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "第",
+    {
+      "text": "一处",
+      "pinyin": "yi1 chu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "第三",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "在到",
+    {
+      "text": "达那里",
+      "pinyin": "da2 na4 li3"
+    },
+    "后保持保证。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "并",
+      "pinyin": "bing4"
+    },
+    "执",
+    {
+      "text": "行",
+      "pinyin": "xing2"
+    },
+    "两类检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这",
+      "pinyin": "zhe4"
+    },
+    "就",
+    {
+      "text": "得",
+      "pinyin": "de2"
+    },
+    "到",
+    {
+      "text": "一个",
+      "pinyin": "yi2 ge5"
+    },
+    "新",
+    {
+      "text": "的已正",
+      "pinyin": "de5 yi3 zheng4"
+    },
+    "确",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理",
+    {
+      "text": "边",
+      "pinyin": "bian1"
+    },
+    "界。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC47": [
+    {
+      "text": "从这个边",
+      "pinyin": "cong2 zhe4 ge5 bian1"
+    },
+    "界。",
+    {
+      "breakMs": 200
+    },
+    "第四",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "保证下",
+    {
+      "text": "一处",
+      "pinyin": "yi2 chu4"
+    },
+    "及时",
+    {
+      "text": "登",
+      "pinyin": "deng1"
+    },
+    "记",
+    {
+      "text": "并被取",
+      "pinyin": "bing4 bei4 qu3"
+    },
+    "到。",
+    {
+      "breakMs": 200
+    },
+    "第三",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "再",
+    {
+      "text": "说明处",
+      "pinyin": "shuo1 ming2 chu2"
+    },
+    "理后继续",
+    {
+      "text": "正",
+      "pinyin": "zheng4"
+    },
+    "确。",
+    {
+      "breakMs": 400
+    },
+    "每",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "步",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "用此",
+    {
+      "text": "前已经",
+      "pinyin": "qian2 yi3 jing1"
+    },
+    "建",
+    {
+      "text": "立的",
+      "pinyin": "li4 de5"
+    },
+    "状态。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "借用后面",
+    {
+      "text": "的处",
+      "pinyin": "de5 chu2"
+    },
+    "理",
+    {
+      "text": "结果",
+      "pinyin": "jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "因",
+    {
+      "text": "而没有",
+      "pinyin": "er2 mei2 you3"
+    },
+    "循环",
+    {
+      "text": "论",
+      "pinyin": "lun4"
+    },
+    "证。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC48": [
+    "输入",
+    {
+      "text": "有限",
+      "pinyin": "you3 xian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以",
+      "pinyin": "suo2 yi3"
+    },
+    "端点",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "点输入",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置",
+    {
+      "text": "有限",
+      "pinyin": "you3 xian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "非零",
+      "pinyin": "fei1 ling2"
+    },
+    "输入",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "所在直线",
+    {
+      "text": "也有限",
+      "pinyin": "ye2 you3 xian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "每",
+      "pinyin": "mei2"
+    },
+    "两条",
+    {
+      "text": "不同",
+      "pinyin": "bu4 tong2"
+    },
+    "直线",
+    {
+      "text": "至",
+      "pinyin": "zhi4"
+    },
+    "多",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "交",
+    {
+      "text": "一次",
+      "pinyin": "yi2 ci4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "只有落",
+      "pinyin": "zhi2 you3 luo4"
+    },
+    "在实际闭范围",
+    {
+      "text": "内的位",
+      "pinyin": "nei4 de5 wei4"
+    },
+    "置",
+    {
+      "text": "才",
+      "pinyin": "cai2"
+    },
+    "成",
+    {
+      "text": "为事件",
+      "pinyin": "wei2 shi4 jian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC49": [
+    {
+      "text": "重",
+      "pinyin": "chong2"
+    },
+    "叠",
+    {
+      "text": "区间",
+      "pinyin": "qu1 jian1"
+    },
+    "虽然",
+    {
+      "text": "有无",
+      "pinyin": "you3 wu2"
+    },
+    "穷多",
+    {
+      "text": "个",
+      "pinyin": "ge5"
+    },
+    "公",
+    {
+      "text": "共",
+      "pinyin": "gong4"
+    },
+    "点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "但",
+      "pinyin": "dan4"
+    },
+    "在加入时",
+    {
+      "text": "作为完",
+      "pinyin": "zuo4 wei2 wan2"
+    },
+    "整",
+    {
+      "text": "区间",
+      "pinyin": "qu1 jian1"
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "不会把区间里的",
+      "pinyin": "bu2 hui4 ba3 qu1 jian1 li3 de5"
+    },
+    "每",
+    {
+      "text": "个",
+      "pinyin": "ge5"
+    },
+    "点",
+    {
+      "text": "都列",
+      "pinyin": "dou1 lie4"
+    },
+    "成",
+    {
+      "text": "事件",
+      "pinyin": "shi4 jian4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "因此真实",
+    {
+      "text": "事件位",
+      "pinyin": "shi4 jian4 wei4"
+    },
+    "置仍然",
+    {
+      "text": "有限",
+      "pinyin": "you3 xian4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC50": [
+    "每步",
+    {
+      "text": "只处",
+      "pinyin": "zhi3 chu2"
+    },
+    "理",
+    {
+      "text": "有限",
+      "pinyin": "you3 xian4"
+    },
+    "成",
+    {
+      "text": "员",
+      "pinyin": "yuan2"
+    },
+    "、输入对",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理后",
+    {
+      "text": "移去当前位",
+      "pinyin": "yi2 qu4 dang1 qian2 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    "严",
+    {
+      "text": "格",
+      "pinyin": "ge2"
+    },
+    "未来",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较",
+    {
+      "text": "禁",
+      "pinyin": "jin4"
+    },
+    "止",
+    {
+      "text": "它重",
+      "pinyin": "ta1 chong2"
+    },
+    "新加入。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同位",
+      "pinyin": "tong2 wei4"
+    },
+    "置",
+    {
+      "text": "合并也禁",
+      "pinyin": "he2 bing4 ye3 jin4"
+    },
+    "止存多",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "每",
+    {
+      "text": "次完",
+      "pinyin": "ci4 wan2"
+    },
+    "成",
+    {
+      "text": "一个",
+      "pinyin": "yi2 ge5"
+    },
+    "此",
+    {
+      "text": "前",
+      "pinyin": "qian2"
+    },
+    "未",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "成",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "真实",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以只能处",
+      "pinyin": "suo2 yi3 zhi3 neng2 chu2"
+    },
+    "理",
+    {
+      "text": "有限次",
+      "pinyin": "you3 xian4 ci4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC51": [
+    {
+      "text": "有限",
+      "pinyin": "you3 xian4"
+    },
+    "终止",
+    {
+      "text": "还不",
+      "pinyin": "hai2 bu4"
+    },
+    "等",
+    {
+      "text": "于结果完",
+      "pinyin": "yu2 jie2 guo3 wan2"
+    },
+    "整。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "假",
+      "pinyin": "jia3"
+    },
+    "设",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束时仍",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    "真实",
+    {
+      "text": "事件",
+      "pinyin": "shi4 jian4"
+    },
+    "未",
+    {
+      "text": "处",
+      "pinyin": "chu2"
+    },
+    "理。",
+    {
+      "breakMs": 200
+    },
+    "就",
+    {
+      "text": "能",
+      "pinyin": "neng2"
+    },
+    "选出",
+    {
+      "text": "最",
+      "pinyin": "zui4"
+    },
+    "早",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    " Q ",
+    {
+      "text": "这个位",
+      "pinyin": "zhe4 ge5 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这里需要",
+      "pinyin": "zhe4 li3 xu1 yao4"
+    },
+    "第四",
+    {
+      "text": "节的",
+      "pinyin": "jie2 de5"
+    },
+    "下",
+    {
+      "text": "一处",
+      "pinyin": "yi2 chu4"
+    },
+    "必",
+    {
+      "text": "达",
+      "pinyin": "da2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不能只",
+      "pinyin": "bu4 neng2 zhi3"
+    },
+    "靠刚",
+    {
+      "text": "才的有限",
+      "pinyin": "cai2 de5 you3 xian4"
+    },
+    "性。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC52": [
+    "第四",
+    {
+      "text": "节",
+      "pinyin": "jie2"
+    },
+    "保证 Q ",
+    {
+      "text": "已经",
+      "pinyin": "yi3 jing1"
+    },
+    "在",
+    {
+      "text": "清单里",
+      "pinyin": "qing1 dan1 li3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "这与清单为空",
+      "pinyin": "zhe4 yu3 qing1 dan1 wei2 kong1"
+    },
+    "矛",
+    {
+      "text": "盾",
+      "pinyin": "dun4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以",
+      "pinyin": "suo2 yi3"
+    },
+    "全",
+    {
+      "text": "部",
+      "pinyin": "bu4"
+    },
+    "真实",
+    {
+      "text": "事件都已",
+      "pinyin": "shi4 jian4 dou1 yi3"
+    },
+    "到",
+    {
+      "text": "达",
+      "pinyin": "da2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "第三",
+    {
+      "text": "节也把正",
+      "pinyin": "jie2 ye2 ba3 zheng4"
+    },
+    "确性保持到",
+    {
+      "text": "了最",
+      "pinyin": "le5 zui4"
+    },
+    "后",
+    {
+      "text": "一个边",
+      "pinyin": "yi2 ge5 bian1"
+    },
+    "界。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC53": [
+    {
+      "text": "同",
+      "pinyin": "tong2"
+    },
+    "线",
+    {
+      "text": "非零相",
+      "pinyin": "fei1 ling2 xiang1"
+    },
+    "交对",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "后开始者端点",
+    {
+      "text": "已处",
+      "pinyin": "yi3 chu2"
+    },
+    "理。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "同",
+      "pinyin": "tong2"
+    },
+    "点开始者",
+    {
+      "text": "也已",
+      "pinyin": "ye2 yi3"
+    },
+    "按固定",
+    {
+      "text": "身份",
+      "pinyin": "shen1 fen4"
+    },
+    "顺序加入。",
+    {
+      "breakMs": 400
+    },
+    "因此",
+    {
+      "text": "唯一",
+      "pinyin": "wei2 yi1"
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "时",
+    {
+      "text": "机已经发",
+      "pinyin": "ji1 yi3 jing1 fa1"
+    },
+    "生。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "下",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "整闭交集。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "可能是一",
+      "pinyin": "ke3 neng2 shi4 yi2"
+    },
+    "段",
+    {
+      "text": "区间",
+      "pinyin": "qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也可能只有一个",
+      "pinyin": "ye3 ke3 neng2 zhi2 you3 yi2 ge5"
+    },
+    "点。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC54": [
+    {
+      "text": "不同",
+      "pinyin": "bu4 tong2"
+    },
+    "组",
+    {
+      "text": "非零相",
+      "pinyin": "fei1 ling2 xiang1"
+    },
+    "交对",
+    {
+      "text": "的唯一",
+      "pinyin": "de5 wei2 yi1"
+    },
+    "交点",
+    {
+      "text": "已处",
+      "pinyin": "yi3 chu2"
+    },
+    "理。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "整",
+    {
+      "text": "相遇块",
+      "pinyin": "xiang1 yu4 kuai4"
+    },
+    "展开",
+    {
+      "text": "了这一",
+      "pinyin": "le5 zhe4 yi2"
+    },
+    "对。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "含",
+      "pinyin": "han2"
+    },
+    "点",
+    {
+      "text": "的相",
+      "pinyin": "de5 xiang1"
+    },
+    "交对",
+    {
+      "text": "也",
+      "pinyin": "ye3"
+    },
+    "在点",
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置配对",
+    {
+      "text": "完",
+      "pinyin": "wan2"
+    },
+    "成。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "这",
+      "pinyin": "zhe4"
+    },
+    "两类",
+    {
+      "text": "都得",
+      "pinyin": "dou1 de2"
+    },
+    "到",
+    {
+      "text": "那个",
+      "pinyin": "na4 ge5"
+    },
+    "点。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC55": [
+    "三类互",
+    {
+      "text": "斥",
+      "pinyin": "chi4"
+    },
+    "穷",
+    {
+      "text": "尽",
+      "pinyin": "jin4"
+    },
+    "、类",
+    {
+      "text": "内唯一",
+      "pinyin": "nei4 wei2 yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "又",
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "报",
+    {
+      "text": "告空",
+      "pinyin": "gao4 kong1"
+    },
+    "交集。",
+    {
+      "breakMs": 400
+    },
+    "现在",
+    {
+      "text": "所有",
+      "pinyin": "suo2 you3"
+    },
+    "报",
+    {
+      "text": "告",
+      "pinyin": "gao4"
+    },
+    "时",
+    {
+      "text": "机都已发",
+      "pinyin": "ji1 dou1 yi3 fa1"
+    },
+    "生。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以不漏",
+      "pinyin": "suo2 yi3 bu2 lou4"
+    },
+    "、",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "多报、",
+    {
+      "text": "不重",
+      "pinyin": "bu4 chong2"
+    },
+    "复。",
+    {
+      "breakMs": 400
+    },
+    "多",
+    {
+      "text": "个",
+      "pinyin": "ge5"
+    },
+    "输入对",
+    {
+      "text": "可以共",
+      "pinyin": "ke2 yi3 gong4"
+    },
+    "享",
+    {
+      "text": "同一结果位",
+      "pinyin": "tong2 yi4 jie2 guo3 wei4"
+    },
+    "置。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "位",
+      "pinyin": "wei4"
+    },
+    "置",
+    {
+      "text": "合并不",
+      "pinyin": "he2 bing4 bu4"
+    },
+    "删",
+    {
+      "text": "去不同的",
+      "pinyin": "qu4 bu4 tong2 de5"
+    },
+    "对。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC56": [
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "输入时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不需要",
+      "pinyin": "bu4 xu1 yao4"
+    },
+    "走出第",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "步。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "空结果已经完",
+      "pinyin": "kong1 jie2 guo3 yi3 jing1 wan2"
+    },
+    "整。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC57": [
+    {
+      "text": "只有一份",
+      "pinyin": "zhi2 you3 yi2 fen4"
+    },
+    "输入时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "可能处",
+      "pinyin": "ke3 neng2 chu2"
+    },
+    "理",
+    {
+      "text": "它的",
+      "pinyin": "ta1 de5"
+    },
+    "端点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "但没有",
+      "pinyin": "dan4 mei2 you3"
+    },
+    "两",
+    {
+      "text": "份不同",
+      "pinyin": "fen4 bu4 tong2"
+    },
+    "输入",
+    {
+      "text": "可",
+      "pinyin": "ke3"
+    },
+    "配对。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "结果",
+      "pinyin": "jie2 guo3"
+    },
+    "仍",
+    {
+      "text": "为空",
+      "pinyin": "wei2 kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC58": [
+    "全",
+    {
+      "text": "部",
+      "pinyin": "bu4"
+    },
+    "互",
+    {
+      "text": "不相",
+      "pinyin": "bu4 xiang1"
+    },
+    "交时。",
+    {
+      "breakMs": 200
+    },
+    "每",
+    {
+      "text": "次也都找不",
+      "pinyin": "ci4 ye3 dou1 zhao3 bu5"
+    },
+    "到",
+    {
+      "text": "非空",
+      "pinyin": "fei1 kong1"
+    },
+    "输入对。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "得",
+      "pinyin": "de2"
+    },
+    "到",
+    {
+      "text": "空结果",
+      "pinyin": "kong1 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "前",
+      "pinyin": "qian2"
+    },
+    "面",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "推进",
+    {
+      "text": "和结",
+      "pinyin": "he2 jie2"
+    },
+    "束理",
+    {
+      "text": "由",
+      "pinyin": "you2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    "未",
+    {
+      "text": "要",
+      "pinyin": "yao1"
+    },
+    "求",
+    {
+      "text": "至少有一个",
+      "pinyin": "zhi4 shao3 you3 yi2 ge5"
+    },
+    "交点。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC59": [
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "使用剪",
+    {
+      "text": "切",
+      "pinyin": "qie1"
+    },
+    "时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结果已经是",
+      "pinyin": "jie2 guo3 yi3 jing1 shi4"
+    },
+    "原坐标",
+    {
+      "text": "中的结果",
+      "pinyin": "zhong1 de5 jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "使用剪",
+    {
+      "text": "切",
+      "pinyin": "qie1"
+    },
+    "时。",
+    {
+      "breakMs": 200
+    },
+    "字",
+    {
+      "text": "母",
+      "pinyin": "mu3"
+    },
+    " x ",
+    {
+      "text": "撇和",
+      "pinyin": "pie3 he2"
+    },
+    " y ",
+    {
+      "text": "撇",
+      "pinyin": "pie3"
+    },
+    "表",
+    {
+      "text": "示扫描",
+      "pinyin": "shi4 sao3 miao2"
+    },
+    "坐标。",
+    {
+      "breakMs": 200
+    },
+    "字",
+    {
+      "text": "母",
+      "pinyin": "mu3"
+    },
+    " x ",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    " y 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "原坐标。",
+    {
+      "breakMs": 200
+    },
+    "统",
+    {
+      "text": "一系数",
+      "pinyin": "yi1 xi4 shu4"
+    },
+    "仍用 s 表",
+    {
+      "text": "示",
+      "pinyin": "shi4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC60": [
+    "用第",
+    {
+      "text": "七章的",
+      "pinyin": "qi1 zhang1 de5"
+    },
+    "逆变换。",
+    {
+      "breakMs": 200
+    },
+    "原 x 坐标等",
+    {
+      "text": "于扫描",
+      "pinyin": "yu2 sao3 miao2"
+    },
+    " x 坐标减",
+    {
+      "text": "去系数与扫描",
+      "pinyin": "qu4 xi4 shu4 yu3 sao3 miao2"
+    },
+    " y 坐标",
+    {
+      "text": "的乘积",
+      "pinyin": "de5 cheng2 ji1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "原 y 坐标保持",
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "变。",
+    {
+      "breakMs": 400
+    },
+    "点",
+    {
+      "text": "还",
+      "pinyin": "huan2"
+    },
+    "原",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "区间",
+      "pinyin": "qu1 jian1"
+    },
+    "两端逆变换",
+    {
+      "text": "以",
+      "pinyin": "yi3"
+    },
+    "后。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结果是",
+      "pinyin": "jie2 guo3 shi4"
+    },
+    "两端",
+    {
+      "text": "之间的",
+      "pinyin": "zhi1 jian1 de5"
+    },
+    "整段闭交集。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不是",
+      "pinyin": "bu2 shi4"
+    },
+    "两",
+    {
+      "text": "个",
+      "pinyin": "ge5"
+    },
+    "点",
+    {
+      "text": "结果",
+      "pinyin": "jie2 guo3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "OC61": [
+    "变换",
+    {
+      "text": "一一",
+      "pinyin": "yi1 yi1"
+    },
+    "对",
+    {
+      "text": "应",
+      "pinyin": "ying4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "身份",
+      "pinyin": "shen1 fen4"
+    },
+    "始终保",
+    {
+      "text": "留",
+      "pinyin": "liu2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以不会",
+      "pinyin": "suo2 yi3 bu2 hui4"
+    },
+    "制",
+    {
+      "text": "造相",
+      "pinyin": "zao4 xiang1"
+    },
+    "交对。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "也不合并重",
+      "pinyin": "ye3 bu4 he2 bing4 chong2"
+    },
+    "复",
+    {
+      "text": "或反",
+      "pinyin": "huo4 fan3"
+    },
+    "向输入。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "从空",
+      "pinyin": "cong2 kong1"
+    },
+    "状态到每",
+    {
+      "text": "次",
+      "pinyin": "ci4"
+    },
+    "必",
+    {
+      "text": "达并",
+      "pinyin": "da2 bing4"
+    },
+    "保持。",
+    {
+      "breakMs": 200
+    },
+    "再到全",
+    {
+      "text": "部",
+      "pinyin": "bu4"
+    },
+    "报",
+    {
+      "text": "告完",
+      "pinyin": "gao4 wan2"
+    },
+    "成",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "原坐标",
+    {
+      "text": "还",
+      "pinyin": "huan2"
+    },
+    "原。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "整体",
+      "pinyin": "zheng2 ti3"
+    },
+    "证",
+    {
+      "text": "明",
+      "pinyin": "ming2"
+    },
+    "到此闭",
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ]
+}

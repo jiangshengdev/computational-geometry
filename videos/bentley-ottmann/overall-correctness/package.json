@@ -1,0 +1,38 @@
+{
+  "name": "overall-correctness",
+  "version": "1.0.0",
+  "description": "第九章：为什么整个算法始终正确",
+  "repository": {},
+  "license": "UNLICENSED",
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.543",
+    "katex": "0.19.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.543"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.543",
+    "@types/katex": "0.16.8",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/web": "0.0.166",
+    "eslint": "10.12.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio --no-open",
+    "build": "remotion bundle",
+    "lint": "eslint src scripts && tsc",
+    "video:check-layout": "node scripts/check-layout.ts",
+    "video:check-content": "node scripts/check-content.ts",
+    "video:prepare-text": "node scripts/prepare-text.ts",
+    "video:check-text": "node scripts/check-text.ts"
+  },
+  "type": "module"
+}

@@ -1,0 +1,944 @@
+{
+  "reviewer": "visual_alignment; fork_turns=none; 未参与制作；后续为同一检查者定向复核",
+  "method": "Actual production LayoutCheck screenshots visually reviewed; equivalence by page/step/caption/active. No animated props consumed beyond active. Inclusive local-frame intervals partition each shot. Screenshot capture is visual evidence; source only establishes equivalence.",
+  "sourceSha256": {
+    "storyboard.ts": "606e3c0bcbc710fbae1cf38a0c874dbcecc7974b40aa31c9dbd38fad70b6cb93",
+    "timeline.ts": "0c0b58bbe794ca2547a67c21cc87bf4e800999cd3b9bcb5248224460af7f8712",
+    "TeachingPage.tsx": "97d4376d7f0215319021d47774de7099f78f469d4652ed2905885ec038e8d5ba",
+    "ProofDiagram.tsx": "0a4cf633d02775e93d8562f6976831a0bb0f9cdcd97fd86bda8f39d5bad3e05e"
+  },
+  "staticCoverage": {
+    "shots": 61,
+    "distinctStates": 246,
+    "captionTransitions": 124,
+    "samePageBoundaries": 38,
+    "crossPageBoundaries": 22,
+    "pageHolds": 23,
+    "allListedStatesVisuallyReviewed": true
+  },
+  "stateColumns": [
+    "shot",
+    "localCaptureFrame",
+    "equivalentLocalFrameIntervals",
+    "browserScreenshot"
+  ],
+  "states": [
+    ["OC01", 0, [[0, 29]], "/tmp/oc-supp-OC01-entry.png"],
+    [
+      "OC01",
+      180,
+      [
+        [30, 59],
+        [180, 496]
+      ],
+      "/tmp/oc-supp-OC01-caption1.png"
+    ],
+    ["OC01", 913, [[497, 913]], "/tmp/oc-supp-OC01-caption2.png"],
+    ["OC01", 120, [[60, 179]], "/tmp/oc-v-OC01.png"],
+    ["OC02", 0, [[0, 29]], "/tmp/oc-supp-OC02-entry.png"],
+    [
+      "OC02",
+      180,
+      [
+        [30, 59],
+        [180, 283]
+      ],
+      "/tmp/oc-supp-OC02-caption1.png"
+    ],
+    ["OC02", 740, [[284, 740]], "/tmp/oc-supp-OC02-caption2.png"],
+    ["OC02", 120, [[60, 179]], "/tmp/oc-v-OC02.png"],
+    ["OC03", 0, [[0, 29]], "/tmp/oc-supp-OC03-entry.png"],
+    [
+      "OC03",
+      180,
+      [
+        [30, 59],
+        [180, 576]
+      ],
+      "/tmp/oc-supp-OC03-caption1.png"
+    ],
+    ["OC03", 1096, [[577, 1096]], "/tmp/oc-supp-OC03-caption2.png"],
+    ["OC03", 120, [[60, 179]], "/tmp/oc-v-OC03.png"],
+    ["OC04", 0, [[0, 29]], "/tmp/oc-supp-OC04-entry.png"],
+    [
+      "OC04",
+      180,
+      [
+        [30, 59],
+        [180, 576]
+      ],
+      "/tmp/oc-supp-OC04-caption1.png"
+    ],
+    ["OC04", 1060, [[577, 1060]], "/tmp/oc-supp-OC04-caption2.png"],
+    ["OC04", 120, [[60, 179]], "/tmp/oc-v-OC04.png"],
+    ["OC05", 0, [[0, 29]], "/tmp/oc-supp-OC05-entry.png"],
+    [
+      "OC05",
+      180,
+      [
+        [30, 59],
+        [180, 483]
+      ],
+      "/tmp/oc-supp-OC05-caption1.png"
+    ],
+    ["OC05", 967, [[484, 967]], "/tmp/oc-supp-OC05-caption2.png"],
+    ["OC05", 120, [[60, 179]], "/tmp/oc-v-OC05.png"],
+    ["OC06", 0, [[0, 29]], "/tmp/oc-supp-OC06-entry.png"],
+    [
+      "OC06",
+      180,
+      [
+        [30, 59],
+        [180, 389]
+      ],
+      "/tmp/oc-supp-OC06-caption1.png"
+    ],
+    ["OC06", 923, [[390, 923]], "/tmp/oc-supp-OC06-caption2.png"],
+    ["OC06", 120, [[60, 179]], "/tmp/oc-v-OC06.png"],
+    ["OC07", 0, [[0, 29]], "/tmp/oc-supp-OC07-entry.png"],
+    [
+      "OC07",
+      180,
+      [
+        [30, 59],
+        [180, 496]
+      ],
+      "/tmp/oc-supp-OC07-caption1.png"
+    ],
+    ["OC07", 980, [[497, 980]], "/tmp/oc-supp-OC07-caption2.png"],
+    ["OC07", 120, [[60, 179]], "/tmp/oc-v-OC07.png"],
+    ["OC08", 0, [[0, 29]], "/tmp/oc-supp-OC08-entry.png"],
+    [
+      "OC08",
+      180,
+      [
+        [30, 59],
+        [180, 429]
+      ],
+      "/tmp/oc-supp-OC08-caption1.png"
+    ],
+    ["OC08", 430, [[430, 869]], "/tmp/oc-supp-OC08-caption2.png"],
+    ["OC08", 1176, [[870, 1176]], "/tmp/oc-supp-OC08-caption3.png"],
+    ["OC08", 120, [[60, 179]], "/tmp/oc-v-OC08.png"],
+    ["OC09", 0, [[0, 29]], "/tmp/oc-supp-OC09-entry.png"],
+    [
+      "OC09",
+      180,
+      [
+        [30, 59],
+        [180, 483]
+      ],
+      "/tmp/oc-supp-OC09-caption1.png"
+    ],
+    ["OC09", 873, [[484, 873]], "/tmp/oc-supp-OC09-caption2.png"],
+    ["OC09", 120, [[60, 179]], "/tmp/oc-v-OC09.png"],
+    ["OC10", 0, [[0, 29]], "/tmp/oc-supp-OC10-entry.png"],
+    [
+      "OC10",
+      180,
+      [
+        [30, 59],
+        [180, 576]
+      ],
+      "/tmp/oc-supp-OC10-caption1.png"
+    ],
+    ["OC10", 1126, [[577, 1126]], "/tmp/oc-supp-OC10-caption2.png"],
+    ["OC10", 120, [[60, 179]], "/tmp/oc-v-OC10.png"],
+    ["OC11", 0, [[0, 29]], "/tmp/oc-supp-OC11-entry.png"],
+    [
+      "OC11",
+      180,
+      [
+        [30, 59],
+        [180, 536]
+      ],
+      "/tmp/oc-supp-OC11-caption1.png"
+    ],
+    ["OC11", 1216, [[537, 1216]], "/tmp/oc-supp-OC11-caption2.png"],
+    ["OC11", 120, [[60, 179]], "/tmp/oc-v-OC11.png"],
+    ["OC12", 0, [[0, 29]], "/tmp/oc-supp-OC12-entry.png"],
+    [
+      "OC12",
+      180,
+      [
+        [30, 59],
+        [180, 429]
+      ],
+      "/tmp/oc-supp-OC12-caption1.png"
+    ],
+    ["OC12", 899, [[430, 899]], "/tmp/oc-supp-OC12-caption2.png"],
+    ["OC12", 120, [[60, 179]], "/tmp/oc-v-OC12.png"],
+    ["OC13", 0, [[0, 29]], "/tmp/oc-supp-OC13-entry.png"],
+    [
+      "OC13",
+      180,
+      [
+        [30, 59],
+        [180, 429]
+      ],
+      "/tmp/oc-supp-OC13-caption1.png"
+    ],
+    ["OC13", 856, [[430, 856]], "/tmp/oc-supp-OC13-caption2.png"],
+    ["OC13", 120, [[60, 179]], "/tmp/oc-v-OC13.png"],
+    ["OC14", 0, [[0, 29]], "/tmp/oc-supp-OC14-entry.png"],
+    [
+      "OC14",
+      180,
+      [
+        [30, 59],
+        [180, 389]
+      ],
+      "/tmp/oc-supp-OC14-caption1.png"
+    ],
+    ["OC14", 390, [[390, 723]], "/tmp/oc-supp-OC14-caption2.png"],
+    ["OC14", 1047, [[724, 1047]], "/tmp/oc-supp-OC14-caption3.png"],
+    ["OC14", 120, [[60, 179]], "/tmp/oc-v-OC14.png"],
+    ["OC15", 0, [[0, 29]], "/tmp/oc-supp-OC15-entry.png"],
+    [
+      "OC15",
+      180,
+      [
+        [30, 59],
+        [180, 336]
+      ],
+      "/tmp/oc-supp-OC15-caption1.png"
+    ],
+    ["OC15", 337, [[337, 856]], "/tmp/oc-supp-OC15-caption2.png"],
+    ["OC15", 1153, [[857, 1153]], "/tmp/oc-supp-OC15-caption3.png"],
+    ["OC15", 120, [[60, 179]], "/tmp/oc-final-OC15.png"],
+    ["OC16", 0, [[0, 29]], "/tmp/oc-supp-OC16-entry.png"],
+    [
+      "OC16",
+      180,
+      [
+        [30, 59],
+        [180, 363]
+      ],
+      "/tmp/oc-supp-OC16-caption1.png"
+    ],
+    ["OC16", 803, [[364, 803]], "/tmp/oc-supp-OC16-caption2.png"],
+    ["OC16", 120, [[60, 179]], "/tmp/oc-v-OC16.png"],
+    ["OC17", 0, [[0, 29]], "/tmp/oc-supp-OC17-entry.png"],
+    [
+      "OC17",
+      180,
+      [
+        [30, 59],
+        [180, 469]
+      ],
+      "/tmp/oc-supp-OC17-caption1.png"
+    ],
+    ["OC17", 899, [[470, 899]], "/tmp/oc-supp-OC17-caption2.png"],
+    ["OC17", 120, [[60, 179]], "/tmp/oc-v-OC17.png"],
+    ["OC18", 0, [[0, 29]], "/tmp/oc-supp-OC18-entry.png"],
+    [
+      "OC18",
+      180,
+      [
+        [30, 59],
+        [180, 429]
+      ],
+      "/tmp/oc-supp-OC18-caption1.png"
+    ],
+    ["OC18", 1006, [[430, 1006]], "/tmp/oc-supp-OC18-caption2.png"],
+    ["OC18", 120, [[60, 179]], "/tmp/oc-v-OC18.png"],
+    ["OC19", 0, [[0, 29]], "/tmp/oc-supp-OC19-entry.png"],
+    [
+      "OC19",
+      180,
+      [
+        [30, 59],
+        [180, 563]
+      ],
+      "/tmp/oc-supp-OC19-caption1.png"
+    ],
+    ["OC19", 564, [[564, 1057]], "/tmp/oc-supp-OC19-caption2.png"],
+    ["OC19", 1357, [[1058, 1357]], "/tmp/oc-supp-OC19-caption3.png"],
+    ["OC19", 120, [[60, 179]], "/tmp/oc-v-OC19.png"],
+    ["OC20", 0, [[0, 29]], "/tmp/oc-supp-OC20-entry.png"],
+    [
+      "OC20",
+      180,
+      [
+        [30, 59],
+        [180, 549]
+      ],
+      "/tmp/oc-supp-OC20-caption1.png"
+    ],
+    ["OC20", 1033, [[550, 1033]], "/tmp/oc-supp-OC20-caption2.png"],
+    ["OC20", 120, [[60, 179]], "/tmp/oc-v-OC20.png"],
+    ["OC21", 0, [[0, 29]], "/tmp/oc-supp-OC21-entry.png"],
+    [
+      "OC21",
+      180,
+      [
+        [30, 59],
+        [180, 496]
+      ],
+      "/tmp/oc-supp-OC21-caption1.png"
+    ],
+    ["OC21", 1190, [[497, 1190]], "/tmp/oc-supp-OC21-caption2.png"],
+    ["OC21", 120, [[60, 179]], "/tmp/oc-v-OC21.png"],
+    ["OC22", 0, [[0, 29]], "/tmp/oc-supp-OC22-entry.png"],
+    [
+      "OC22",
+      180,
+      [
+        [30, 59],
+        [180, 496]
+      ],
+      "/tmp/oc-supp-OC22-caption1.png"
+    ],
+    ["OC22", 966, [[497, 966]], "/tmp/oc-supp-OC22-caption2.png"],
+    ["OC22", 120, [[60, 179]], "/tmp/oc-v-OC22.png"],
+    ["OC23", 0, [[0, 29]], "/tmp/oc-supp-OC23-entry.png"],
+    [
+      "OC23",
+      180,
+      [
+        [30, 59],
+        [180, 403]
+      ],
+      "/tmp/oc-supp-OC23-caption1.png"
+    ],
+    ["OC23", 927, [[404, 927]], "/tmp/oc-supp-OC23-caption2.png"],
+    ["OC23", 120, [[60, 179]], "/tmp/oc-v-OC23.png"],
+    ["OC24", 0, [[0, 29]], "/tmp/oc-supp-OC24-entry.png"],
+    [
+      "OC24",
+      180,
+      [
+        [30, 59],
+        [180, 363]
+      ],
+      "/tmp/oc-supp-OC24-caption1.png"
+    ],
+    ["OC24", 857, [[364, 857]], "/tmp/oc-supp-OC24-caption2.png"],
+    ["OC24", 120, [[60, 179]], "/tmp/oc-v-OC24.png"],
+    ["OC25", 0, [[0, 29]], "/tmp/oc-supp-OC25-entry.png"],
+    [
+      "OC25",
+      180,
+      [
+        [30, 59],
+        [180, 523]
+      ],
+      "/tmp/oc-supp-OC25-caption1.png"
+    ],
+    ["OC25", 967, [[524, 967]], "/tmp/oc-supp-OC25-caption2.png"],
+    ["OC25", 120, [[60, 179]], "/tmp/oc-v-OC25.png"],
+    ["OC26", 0, [[0, 29]], "/tmp/oc-supp-OC26-entry.png"],
+    [
+      "OC26",
+      180,
+      [
+        [30, 59],
+        [180, 469]
+      ],
+      "/tmp/oc-supp-OC26-caption1.png"
+    ],
+    ["OC26", 913, [[470, 913]], "/tmp/oc-supp-OC26-caption2.png"],
+    ["OC26", 120, [[60, 179]], "/tmp/oc-v-OC26.png"],
+    ["OC27", 0, [[0, 29]], "/tmp/oc-supp-OC27-entry.png"],
+    [
+      "OC27",
+      180,
+      [
+        [30, 59],
+        [180, 509]
+      ],
+      "/tmp/oc-supp-OC27-caption1.png"
+    ],
+    ["OC27", 909, [[510, 909]], "/tmp/oc-supp-OC27-caption2.png"],
+    ["OC27", 120, [[60, 179]], "/tmp/oc-v-OC27.png"],
+    ["OC28", 0, [[0, 29]], "/tmp/oc-supp-OC28-entry.png"],
+    [
+      "OC28",
+      180,
+      [
+        [30, 59],
+        [180, 509]
+      ],
+      "/tmp/oc-supp-OC28-caption1.png"
+    ],
+    ["OC28", 953, [[510, 953]], "/tmp/oc-supp-OC28-caption2.png"],
+    ["OC28", 120, [[60, 179]], "/tmp/oc-v-OC28.png"],
+    ["OC29", 0, [[0, 29]], "/tmp/oc-supp-OC29-entry.png"],
+    [
+      "OC29",
+      180,
+      [
+        [30, 59],
+        [180, 563]
+      ],
+      "/tmp/oc-supp-OC29-caption1.png"
+    ],
+    ["OC29", 1243, [[564, 1243]], "/tmp/oc-supp-OC29-caption2.png"],
+    ["OC29", 120, [[60, 179]], "/tmp/oc-v-OC29.png"],
+    ["OC30", 0, [[0, 29]], "/tmp/oc-supp-OC30-entry.png"],
+    [
+      "OC30",
+      180,
+      [
+        [30, 59],
+        [180, 429]
+      ],
+      "/tmp/oc-supp-OC30-caption1.png"
+    ],
+    ["OC30", 819, [[430, 819]], "/tmp/oc-supp-OC30-caption2.png"],
+    ["OC30", 120, [[60, 179]], "/tmp/oc-v-OC30.png"],
+    ["OC31", 0, [[0, 29]], "/tmp/oc-supp-OC31-entry.png"],
+    [
+      "OC31",
+      180,
+      [
+        [30, 59],
+        [180, 523]
+      ],
+      "/tmp/oc-supp-OC31-caption1.png"
+    ],
+    ["OC31", 1110, [[524, 1110]], "/tmp/oc-supp-OC31-caption2.png"],
+    ["OC31", 120, [[60, 179]], "/tmp/oc-v-OC31.png"],
+    ["OC32", 0, [[0, 29]], "/tmp/oc-supp-OC32-entry.png"],
+    [
+      "OC32",
+      180,
+      [
+        [30, 59],
+        [180, 349]
+      ],
+      "/tmp/oc-supp-OC32-caption1.png"
+    ],
+    ["OC32", 833, [[350, 833]], "/tmp/oc-supp-OC32-caption2.png"],
+    ["OC32", 120, [[60, 179]], "/tmp/oc-v-OC32.png"],
+    ["OC33", 0, [[0, 29]], "/tmp/oc-supp-OC33-entry.png"],
+    [
+      "OC33",
+      180,
+      [
+        [30, 59],
+        [180, 403]
+      ],
+      "/tmp/oc-supp-OC33-caption1.png"
+    ],
+    ["OC33", 860, [[404, 860]], "/tmp/oc-supp-OC33-caption2.png"],
+    ["OC33", 120, [[60, 179]], "/tmp/oc-v-OC33.png"],
+    ["OC34", 0, [[0, 29]], "/tmp/oc-supp-OC34-entry.png"],
+    [
+      "OC34",
+      180,
+      [
+        [30, 59],
+        [180, 429]
+      ],
+      "/tmp/oc-supp-OC34-caption1.png"
+    ],
+    ["OC34", 909, [[430, 909]], "/tmp/oc-supp-OC34-caption2.png"],
+    ["OC34", 120, [[60, 179]], "/tmp/oc-v-OC34.png"],
+    ["OC35", 0, [[0, 29]], "/tmp/oc-supp-OC35-entry.png"],
+    [
+      "OC35",
+      180,
+      [
+        [30, 59],
+        [180, 563]
+      ],
+      "/tmp/oc-supp-OC35-caption1.png"
+    ],
+    ["OC35", 940, [[564, 940]], "/tmp/oc-supp-OC35-caption2.png"],
+    ["OC35", 120, [[60, 179]], "/tmp/oc-final-OC35.png"],
+    ["OC36", 0, [[0, 29]], "/tmp/oc-supp-OC36-entry.png"],
+    [
+      "OC36",
+      180,
+      [
+        [30, 59],
+        [180, 416]
+      ],
+      "/tmp/oc-supp-OC36-caption1.png"
+    ],
+    ["OC36", 963, [[417, 963]], "/tmp/oc-supp-OC36-caption2.png"],
+    ["OC36", 120, [[60, 179]], "/tmp/oc-v-OC36.png"],
+    ["OC37", 0, [[0, 29]], "/tmp/oc-supp-OC37-entry.png"],
+    [
+      "OC37",
+      180,
+      [
+        [30, 59],
+        [180, 536]
+      ],
+      "/tmp/oc-supp-OC37-caption1.png"
+    ],
+    ["OC37", 860, [[537, 860]], "/tmp/oc-supp-OC37-caption2.png"],
+    ["OC37", 120, [[60, 179]], "/tmp/oc-v-OC37.png"],
+    ["OC38", 0, [[0, 29]], "/tmp/oc-supp-OC38-entry.png"],
+    [
+      "OC38",
+      180,
+      [
+        [30, 59],
+        [180, 563]
+      ],
+      "/tmp/oc-supp-OC38-caption1.png"
+    ],
+    ["OC38", 1100, [[564, 1100]], "/tmp/oc-supp-OC38-caption2.png"],
+    ["OC38", 120, [[60, 179]], "/tmp/oc-v-OC38.png"],
+    ["OC39", 0, [[0, 29]], "/tmp/oc-supp-OC39-entry.png"],
+    [
+      "OC39",
+      180,
+      [
+        [30, 59],
+        [180, 576]
+      ],
+      "/tmp/oc-supp-OC39-caption1.png"
+    ],
+    ["OC39", 1190, [[577, 1190]], "/tmp/oc-supp-OC39-caption2.png"],
+    ["OC39", 120, [[60, 179]], "/tmp/oc-v-OC39.png"],
+    ["OC40", 0, [[0, 29]], "/tmp/oc-supp-OC40-entry.png"],
+    [
+      "OC40",
+      180,
+      [
+        [30, 59],
+        [180, 563]
+      ],
+      "/tmp/oc-supp-OC40-caption1.png"
+    ],
+    ["OC40", 967, [[564, 967]], "/tmp/oc-supp-OC40-caption2.png"],
+    ["OC40", 120, [[60, 179]], "/tmp/oc-v-OC40.png"],
+    ["OC41", 0, [[0, 29]], "/tmp/oc-supp-OC41-entry.png"],
+    [
+      "OC41",
+      180,
+      [
+        [30, 59],
+        [180, 336]
+      ],
+      "/tmp/oc-supp-OC41-caption1.png"
+    ],
+    ["OC41", 593, [[337, 593]], "/tmp/oc-supp-OC41-caption2.png"],
+    ["OC41", 120, [[60, 179]], "/tmp/oc-v-OC41.png"],
+    ["OC42", 0, [[0, 29]], "/tmp/oc-supp-OC42-entry.png"],
+    [
+      "OC42",
+      180,
+      [
+        [30, 59],
+        [180, 563]
+      ],
+      "/tmp/oc-supp-OC42-caption1.png"
+    ],
+    ["OC42", 1217, [[564, 1217]], "/tmp/oc-supp-OC42-caption2.png"],
+    ["OC42", 120, [[60, 179]], "/tmp/oc-v-OC42.png"],
+    ["OC43", 0, [[0, 29]], "/tmp/oc-supp-OC43-entry.png"],
+    [
+      "OC43",
+      180,
+      [
+        [30, 59],
+        [180, 576]
+      ],
+      "/tmp/oc-supp-OC43-caption1.png"
+    ],
+    ["OC43", 1060, [[577, 1060]], "/tmp/oc-supp-OC43-caption2.png"],
+    ["OC43", 120, [[60, 179]], "/tmp/oc-v-OC43.png"],
+    ["OC44", 0, [[0, 29]], "/tmp/oc-supp-OC44-entry.png"],
+    [
+      "OC44",
+      180,
+      [
+        [30, 59],
+        [180, 309]
+      ],
+      "/tmp/oc-supp-OC44-caption1.png"
+    ],
+    ["OC44", 833, [[310, 833]], "/tmp/oc-supp-OC44-caption2.png"],
+    ["OC44", 120, [[60, 179]], "/tmp/oc-final-OC44.png"],
+    ["OC45", 0, [[0, 29]], "/tmp/oc-supp-OC45-entry.png"],
+    [
+      "OC45",
+      180,
+      [
+        [30, 59],
+        [180, 469]
+      ],
+      "/tmp/oc-supp-OC45-caption1.png"
+    ],
+    ["OC45", 1056, [[470, 1056]], "/tmp/oc-supp-OC45-caption2.png"],
+    ["OC45", 120, [[60, 179]], "/tmp/oc-final-OC45.png"],
+    ["OC46", 0, [[0, 29]], "/tmp/oc-supp-OC46-entry.png"],
+    [
+      "OC46",
+      180,
+      [
+        [30, 59],
+        [180, 496]
+      ],
+      "/tmp/oc-supp-OC46-caption1.png"
+    ],
+    ["OC46", 740, [[497, 740]], "/tmp/oc-supp-OC46-caption2.png"],
+    ["OC46", 120, [[60, 179]], "/tmp/oc-v-OC46.png"],
+    ["OC47", 0, [[0, 29]], "/tmp/oc-supp-OC47-entry.png"],
+    [
+      "OC47",
+      180,
+      [
+        [30, 59],
+        [180, 523]
+      ],
+      "/tmp/oc-supp-OC47-caption1.png"
+    ],
+    ["OC47", 1123, [[524, 1123]], "/tmp/oc-supp-OC47-caption2.png"],
+    ["OC47", 120, [[60, 179]], "/tmp/oc-v-OC47.png"],
+    ["OC48", 0, [[0, 29]], "/tmp/oc-supp-OC48-entry.png"],
+    [
+      "OC48",
+      180,
+      [
+        [30, 59],
+        [180, 443]
+      ],
+      "/tmp/oc-supp-OC48-caption1.png"
+    ],
+    ["OC48", 913, [[444, 913]], "/tmp/oc-supp-OC48-caption2.png"],
+    ["OC48", 120, [[60, 179]], "/tmp/oc-v-OC48.png"],
+    ["OC49", 0, [[0, 29]], "/tmp/oc-supp-OC49-entry.png"],
+    [
+      "OC49",
+      180,
+      [
+        [30, 59],
+        [180, 416]
+      ],
+      "/tmp/oc-supp-OC49-caption1.png"
+    ],
+    ["OC49", 833, [[417, 833]], "/tmp/oc-supp-OC49-caption2.png"],
+    ["OC49", 120, [[60, 179]], "/tmp/oc-v-OC49.png"],
+    ["OC50", 0, [[0, 29]], "/tmp/oc-supp-OC50-entry.png"],
+    [
+      "OC50",
+      180,
+      [
+        [30, 59],
+        [180, 576]
+      ],
+      "/tmp/oc-supp-OC50-caption1.png"
+    ],
+    ["OC50", 1216, [[577, 1216]], "/tmp/oc-supp-OC50-caption2.png"],
+    ["OC50", 120, [[60, 179]], "/tmp/oc-v-OC50.png"],
+    ["OC51", 0, [[0, 29]], "/tmp/oc-supp-OC51-entry.png"],
+    [
+      "OC51",
+      180,
+      [
+        [30, 59],
+        [180, 536]
+      ],
+      "/tmp/oc-supp-OC51-caption1.png"
+    ],
+    ["OC51", 900, [[537, 900]], "/tmp/oc-supp-OC51-caption2.png"],
+    ["OC51", 120, [[60, 179]], "/tmp/oc-final-OC51.png"],
+    ["OC52", 0, [[0, 29]], "/tmp/oc-supp-OC52-entry.png"],
+    [
+      "OC52",
+      180,
+      [
+        [30, 59],
+        [180, 349]
+      ],
+      "/tmp/oc-supp-OC52-caption1.png"
+    ],
+    ["OC52", 896, [[350, 896]], "/tmp/oc-supp-OC52-caption2.png"],
+    ["OC52", 120, [[60, 179]], "/tmp/oc-final-OC52.png"],
+    ["OC53", 0, [[0, 29]], "/tmp/oc-supp-OC53-entry.png"],
+    [
+      "OC53",
+      180,
+      [
+        [30, 59],
+        [180, 496]
+      ],
+      "/tmp/oc-supp-OC53-caption1.png"
+    ],
+    ["OC53", 1033, [[497, 1033]], "/tmp/oc-supp-OC53-caption2.png"],
+    ["OC53", 120, [[60, 179]], "/tmp/oc-v-OC53.png"],
+    ["OC54", 0, [[0, 29]], "/tmp/oc-supp-OC54-entry.png"],
+    [
+      "OC54",
+      180,
+      [
+        [30, 59],
+        [180, 416]
+      ],
+      "/tmp/oc-supp-OC54-caption1.png"
+    ],
+    ["OC54", 793, [[417, 793]], "/tmp/oc-supp-OC54-caption2.png"],
+    ["OC54", 120, [[60, 179]], "/tmp/oc-v-OC54.png"],
+    ["OC55", 0, [[0, 29]], "/tmp/oc-supp-OC55-entry.png"],
+    [
+      "OC55",
+      180,
+      [
+        [30, 59],
+        [180, 469]
+      ],
+      "/tmp/oc-supp-OC55-caption1.png"
+    ],
+    ["OC55", 1136, [[470, 1136]], "/tmp/oc-supp-OC55-caption2.png"],
+    ["OC55", 120, [[60, 179]], "/tmp/oc-v-OC55.png"],
+    ["OC56", 0, [[0, 29]], "/tmp/oc-supp-OC56-entry.png"],
+    [
+      "OC56",
+      366,
+      [
+        [30, 59],
+        [180, 366]
+      ],
+      "/tmp/oc-supp-OC56-caption1.png"
+    ],
+    ["OC56", 120, [[60, 179]], "/tmp/oc-v-OC56.png"],
+    ["OC57", 0, [[0, 29]], "/tmp/oc-supp-OC57-entry.png"],
+    [
+      "OC57",
+      539,
+      [
+        [30, 59],
+        [180, 539]
+      ],
+      "/tmp/oc-supp-OC57-caption1.png"
+    ],
+    ["OC57", 120, [[60, 179]], "/tmp/oc-v-OC57.png"],
+    ["OC58", 0, [[0, 29]], "/tmp/oc-supp-OC58-entry.png"],
+    [
+      "OC58",
+      180,
+      [
+        [30, 59],
+        [180, 389]
+      ],
+      "/tmp/oc-supp-OC58-caption1.png"
+    ],
+    ["OC58", 816, [[390, 816]], "/tmp/oc-supp-OC58-caption2.png"],
+    ["OC58", 120, [[60, 179]], "/tmp/oc-v-OC58.png"],
+    ["OC59", 0, [[0, 29]], "/tmp/oc-supp-OC59-entry.png"],
+    [
+      "OC59",
+      180,
+      [
+        [30, 59],
+        [180, 309]
+      ],
+      "/tmp/oc-supp-OC59-caption1.png"
+    ],
+    ["OC59", 913, [[310, 913]], "/tmp/oc-supp-OC59-caption2.png"],
+    ["OC59", 120, [[60, 179]], "/tmp/oc-fixed-OC59.png"],
+    ["OC60", 0, [[0, 29]], "/tmp/oc-supp-OC60-entry.png"],
+    [
+      "OC60",
+      180,
+      [
+        [30, 59],
+        [180, 616]
+      ],
+      "/tmp/oc-supp-OC60-caption1.png"
+    ],
+    ["OC60", 1153, [[617, 1153]], "/tmp/oc-supp-OC60-caption2.png"],
+    ["OC60", 120, [[60, 179]], "/tmp/oc-v-OC60.png"],
+    ["OC61", 0, [[0, 29]], "/tmp/oc-supp-OC61-entry.png"],
+    [
+      "OC61",
+      180,
+      [
+        [30, 59],
+        [180, 509]
+      ],
+      "/tmp/oc-supp-OC61-caption1.png"
+    ],
+    ["OC61", 1123, [[510, 1123]], "/tmp/oc-supp-OC61-caption2.png"],
+    ["OC61", 120, [[60, 179]], "/tmp/oc-v-OC61.png"]
+  ],
+  "pageHolds": [
+    {
+      "id": "OC03",
+      "page": "premises",
+      "hold_start": 977,
+      "hold_end": 1096,
+      "capture_frame": 1096
+    },
+    {
+      "id": "OC06",
+      "page": "coordinates",
+      "hold_start": 804,
+      "hold_end": 923,
+      "capture_frame": 923
+    },
+    {
+      "id": "OC08",
+      "page": "dependencies",
+      "hold_start": 1057,
+      "hold_end": 1176,
+      "capture_frame": 1176
+    },
+    {
+      "id": "OC11",
+      "page": "records",
+      "hold_start": 1097,
+      "hold_end": 1216,
+      "capture_frame": 1216
+    },
+    {
+      "id": "OC13",
+      "page": "column",
+      "hold_start": 737,
+      "hold_end": 856,
+      "capture_frame": 856
+    },
+    {
+      "id": "OC16",
+      "page": "coverage",
+      "hold_start": 684,
+      "hold_end": 803,
+      "capture_frame": 803
+    },
+    {
+      "id": "OC19",
+      "page": "initial",
+      "hold_start": 1238,
+      "hold_end": 1357,
+      "capture_frame": 1357
+    },
+    {
+      "id": "OC21",
+      "page": "preservation",
+      "hold_start": 1071,
+      "hold_end": 1190,
+      "capture_frame": 1190
+    },
+    {
+      "id": "OC24",
+      "page": "participants",
+      "hold_start": 738,
+      "hold_end": 857,
+      "capture_frame": 857
+    },
+    {
+      "id": "OC27",
+      "page": "classes",
+      "hold_start": 790,
+      "hold_end": 909,
+      "capture_frame": 909
+    },
+    {
+      "id": "OC29",
+      "page": "accounting",
+      "hold_start": 1124,
+      "hold_end": 1243,
+      "capture_frame": 1243
+    },
+    {
+      "id": "OC31",
+      "page": "interval",
+      "hold_start": 991,
+      "hold_end": 1110,
+      "capture_frame": 1110
+    },
+    {
+      "id": "OC34",
+      "page": "update",
+      "hold_start": 790,
+      "hold_end": 909,
+      "capture_frame": 909
+    },
+    {
+      "id": "OC36",
+      "page": "coverage-update",
+      "hold_start": 844,
+      "hold_end": 963,
+      "capture_frame": 963
+    },
+    {
+      "id": "OC39",
+      "page": "future-checks",
+      "hold_start": 1071,
+      "hold_end": 1190,
+      "capture_frame": 1190
+    },
+    {
+      "id": "OC42",
+      "page": "discovery",
+      "hold_start": 1098,
+      "hold_end": 1217,
+      "capture_frame": 1217
+    },
+    {
+      "id": "OC45",
+      "page": "minimum",
+      "hold_start": 937,
+      "hold_end": 1056,
+      "capture_frame": 1056
+    },
+    {
+      "id": "OC47",
+      "page": "induction",
+      "hold_start": 1004,
+      "hold_end": 1123,
+      "capture_frame": 1123
+    },
+    {
+      "id": "OC50",
+      "page": "termination",
+      "hold_start": 1097,
+      "hold_end": 1216,
+      "capture_frame": 1216
+    },
+    {
+      "id": "OC52",
+      "page": "empty-queue",
+      "hold_start": 777,
+      "hold_end": 896,
+      "capture_frame": 896
+    },
+    {
+      "id": "OC55",
+      "page": "complete-reports",
+      "hold_start": 1017,
+      "hold_end": 1136,
+      "capture_frame": 1136
+    },
+    {
+      "id": "OC58",
+      "page": "degenerate",
+      "hold_start": 697,
+      "hold_end": 816,
+      "capture_frame": 816
+    },
+    {
+      "id": "OC61",
+      "page": "restore",
+      "hold_start": 1004,
+      "hold_end": 1123,
+      "capture_frame": 1123
+    }
+  ],
+  "normalSpeedPlayback": {
+    "speed": "1x",
+    "evidence": ["/tmp/oc-independent-play.txt", "/tmp/oc-play-seams.txt"],
+    "samples": [
+      "opening 0–13s",
+      "OC39→40 ~10:42–10:50",
+      "OC51→52 ~13:51–14:00",
+      "OC59→60 ~15:36–15:44"
+    ],
+    "limits": "Not full continuous playback or stable 60fps verification. No audio review."
+  },
+  "supersededEvidence": {
+    "/tmp/oc-stage-OC39-pause-end.png": "/tmp/oc-supp-OC39-caption2.png"
+  },
+  "unresolvedVisualIssues": [],
+  "limits": [
+    "不是全片连续播放或稳定60fps验收。",
+    "浏览器截图为本次会话临时证据；稳定ID、捕获帧、等价区间与源码哈希保留以供复核。",
+    "没有语音、试听、视频或Remotion静帧导出。"
+  ]
+}

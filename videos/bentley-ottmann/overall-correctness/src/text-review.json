@@ -1,0 +1,4006 @@
+{
+  "scope": "CNB #404：只审字幕、画面和独立口播文字/拼音；无语音合成或试听",
+  "subtitle": {
+    "ids": [
+      "OC01",
+      "OC02",
+      "OC03",
+      "OC04",
+      "OC05",
+      "OC06",
+      "OC07",
+      "OC08",
+      "OC09",
+      "OC10",
+      "OC11",
+      "OC12",
+      "OC13",
+      "OC14",
+      "OC15",
+      "OC16",
+      "OC17",
+      "OC18",
+      "OC19",
+      "OC20",
+      "OC21",
+      "OC22",
+      "OC23",
+      "OC24",
+      "OC25",
+      "OC26",
+      "OC27",
+      "OC28",
+      "OC29",
+      "OC30",
+      "OC31",
+      "OC32",
+      "OC33",
+      "OC34",
+      "OC35",
+      "OC36",
+      "OC37",
+      "OC38",
+      "OC39",
+      "OC40",
+      "OC41",
+      "OC42",
+      "OC43",
+      "OC44",
+      "OC45",
+      "OC46",
+      "OC47",
+      "OC48",
+      "OC49",
+      "OC50",
+      "OC51",
+      "OC52",
+      "OC53",
+      "OC54",
+      "OC55",
+      "OC56",
+      "OC57",
+      "OC58",
+      "OC59",
+      "OC60",
+      "OC61"
+    ],
+    "frozenCaptionSha256": "f03719f7402e06fa98d63d5152034242e323bca10683a0fad942a39beb9d83df",
+    "storyboardSha256": "606e3c0bcbc710fbae1cf38a0c874dbcecc7974b40aa31c9dbd38fad70b6cb93",
+    "reviewer": "visual_alignment（fork_turns=none）",
+    "status": "全文文字及实际引用范围的防重复/条件承接通过；画面覆盖另列README"
+  },
+  "plainText": {
+    "reviewer": "plain_text_review（fork_turns=none；未参与撰写）",
+    "status": "passed",
+    "narrationSha256": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+    "sentencePlanSha256": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b",
+    "ids": [
+      "OC01",
+      "OC02",
+      "OC03",
+      "OC04",
+      "OC05",
+      "OC06",
+      "OC07",
+      "OC08",
+      "OC09",
+      "OC10",
+      "OC11",
+      "OC12",
+      "OC13",
+      "OC14",
+      "OC15",
+      "OC16",
+      "OC17",
+      "OC18",
+      "OC19",
+      "OC20",
+      "OC21",
+      "OC22",
+      "OC23",
+      "OC24",
+      "OC25",
+      "OC26",
+      "OC27",
+      "OC28",
+      "OC29",
+      "OC30",
+      "OC31",
+      "OC32",
+      "OC33",
+      "OC34",
+      "OC35",
+      "OC36",
+      "OC37",
+      "OC38",
+      "OC39",
+      "OC40",
+      "OC41",
+      "OC42",
+      "OC43",
+      "OC44",
+      "OC45",
+      "OC46",
+      "OC47",
+      "OC48",
+      "OC49",
+      "OC50",
+      "OC51",
+      "OC52",
+      "OC53",
+      "OC54",
+      "OC55",
+      "OC56",
+      "OC57",
+      "OC58",
+      "OC59",
+      "OC60",
+      "OC61"
+    ],
+    "originalSentenceCount": 177,
+    "spokenPhraseCount": 330,
+    "letterPhraseCount": 41,
+    "letterExceptions": [],
+    "unresolved": [],
+    "findings": [
+      "逐段双向核对字幕、画面源码与第九章全文；含义、顺序、对象指代、运算范围一致。",
+      "OC14–15按当前列、身份、开始/结束边界解释；OC59按扫描坐标、原坐标与系数分组；OC60明确减去整个乘积。",
+      "P的条件性保持、两类检查、Q的必达、清单空的完备性分开论证，无循环。",
+      "全部实际短句检查字母首尾与相邻字母密度，未拆开中文词组，无需例外。",
+      "内部条件/主谓片段继续归属原字幕语义句，内部200ms、原句末400ms。"
+    ],
+    "letterBoundaryRewrites": {
+      "OC20": "句尾 P 改为“本次位置用 P 表示”。",
+      "OC22": "句尾 P 改为“图中交汇处用 P 表示”。",
+      "OC30": "句首 P 改为“位置 P 是较晚的开始位置”。",
+      "OC32": "“当前的 P”改为“当前位置 P 在低处”。",
+      "OC40": "句尾 Q 改为“并用 Q 表示这个位置”。",
+      "OC42": "句首 Q 改为“位置 Q 只能是……”。",
+      "OC44,OC45,OC51": "句尾 Q 后接明确的“这个位置”。",
+      "OC59": "分开解释带撇扫描坐标、原坐标和统一系数，字母均位于中文承接中。",
+      "OC60": "完整表达扫描 x 坐标减去系数与扫描 y 坐标的乘积，y 前补“原”，避免字母句首。"
+    }
+  },
+  "pronunciation": {
+    "status": "passed: two sequential independent full blind reviews and history reconciliations on unchanged annotated version",
+    "frozenNarrationSha256": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+    "blindRounds": [
+      {
+        "rawReport": {
+          "reviewer": "pinyin_blind_one",
+          "phase": "independent_full_blind_review_before_history",
+          "hashes": {
+            "speech-text.json": "f8badf9a9c3e639ac6399b109ded6a6dc64cc4dc977e850eb02c953adf97f9d4",
+            "narration-text.json": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+            "sentence-plan.json": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b"
+          },
+          "coverage": {
+            "ids": [
+              "OC01",
+              "OC02",
+              "OC03",
+              "OC04",
+              "OC05",
+              "OC06",
+              "OC07",
+              "OC08",
+              "OC09",
+              "OC10",
+              "OC11",
+              "OC12",
+              "OC13",
+              "OC14",
+              "OC15",
+              "OC16",
+              "OC17",
+              "OC18",
+              "OC19",
+              "OC20",
+              "OC21",
+              "OC22",
+              "OC23",
+              "OC24",
+              "OC25",
+              "OC26",
+              "OC27",
+              "OC28",
+              "OC29",
+              "OC30",
+              "OC31",
+              "OC32",
+              "OC33",
+              "OC34",
+              "OC35",
+              "OC36",
+              "OC37",
+              "OC38",
+              "OC39",
+              "OC40",
+              "OC41",
+              "OC42",
+              "OC43",
+              "OC44",
+              "OC45",
+              "OC46",
+              "OC47",
+              "OC48",
+              "OC49",
+              "OC50",
+              "OC51",
+              "OC52",
+              "OC53",
+              "OC54",
+              "OC55",
+              "OC56",
+              "OC57",
+              "OC58",
+              "OC59",
+              "OC60",
+              "OC61"
+            ],
+            "originalSentences": 177,
+            "shortSentences": 330,
+            "method": "逐句实际通读全部完整标注、冻结文字及177原句；检查字音、语义多音、变调、轻声、应标未标、文字一致。查询结果不是人工审校替代。",
+            "segments": [
+              {
+                "id": "OC01",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC02",
+                "shortSentences": 3,
+                "read": true
+              },
+              {
+                "id": "OC03",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC04",
+                "shortSentences": 7,
+                "read": true
+              },
+              {
+                "id": "OC05",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC06",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC07",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC08",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC09",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC10",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC11",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC12",
+                "shortSentences": 7,
+                "read": true
+              },
+              {
+                "id": "OC13",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC14",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC15",
+                "shortSentences": 8,
+                "read": true
+              },
+              {
+                "id": "OC16",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC17",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC18",
+                "shortSentences": 8,
+                "read": true
+              },
+              {
+                "id": "OC19",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC20",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC21",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC22",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC23",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC24",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC25",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC26",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC27",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC28",
+                "shortSentences": 8,
+                "read": true
+              },
+              {
+                "id": "OC29",
+                "shortSentences": 7,
+                "read": true
+              },
+              {
+                "id": "OC30",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC31",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC32",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC33",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC34",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC35",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC36",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC37",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC38",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC39",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC40",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC41",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC42",
+                "shortSentences": 7,
+                "read": true
+              },
+              {
+                "id": "OC43",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC44",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC45",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC46",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC47",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC48",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC49",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC50",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC51",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC52",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC53",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC54",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC55",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC56",
+                "shortSentences": 3,
+                "read": true
+              },
+              {
+                "id": "OC57",
+                "shortSentences": 4,
+                "read": true
+              },
+              {
+                "id": "OC58",
+                "shortSentences": 5,
+                "read": true
+              },
+              {
+                "id": "OC59",
+                "shortSentences": 6,
+                "read": true
+              },
+              {
+                "id": "OC60",
+                "shortSentences": 7,
+                "read": true
+              },
+              {
+                "id": "OC61",
+                "shortSentences": 7,
+                "read": true
+              }
+            ]
+          },
+          "isolation": "未读历史报告、text-review、README结果或标注者证据；独立查询61整段。",
+          "sources": [
+            {
+              "type": "supplemental_library",
+              "name": "pypinyin",
+              "version": "0.55.0",
+              "path": "/tmp/oc-blind-one-queries",
+              "details": "61完整语境，指定query.py，保留contextual与characterCandidates；库在OC16/OC60也输出错误的di2/di4，未采作规范依据。"
+            },
+            {
+              "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=7457&q=1",
+              "details": "打开原文，的 de 为助词，置于名词、代名词、修饰片语后。"
+            },
+            {
+              "url": "https://zdic.net/hans/%E7%9A%84",
+              "details": "打开原文，de 定语助词；di2 真实实在；di4 箭靶中心。"
+            },
+            {
+              "url": "https://zdic.net/hans/%E5%89%AA%E5%88%87",
+              "details": "打开原文，剪切标 jiǎn qiē；词条通用shearing，尚需核验数学仿射剪切的专门读法是否有qie4依据。"
+            }
+          ],
+          "issues": [
+            {
+              "id": "B1-01",
+              "segment": "OC16",
+              "sentence": "非空组的当前最远右端。",
+              "current": {
+                "text": "的当前最",
+                "pinyin": "di2 dang1 qian2 zui4"
+              },
+              "required": "de5 dang1 qian2 zui4",
+              "status": "confirmed_error",
+              "reason": "非空组是修饰当前最远右端的定语，的为结构助词，不是确实、实在义。"
+            },
+            {
+              "id": "B1-02",
+              "segment": "OC60",
+              "sentence": "原 x 坐标等于扫描 x 坐标减去系数与扫描 y 坐标的乘积。",
+              "current": {
+                "text": "的乘积",
+                "pinyin": "di4 cheng2 ji1"
+              },
+              "required": "de5 cheng2 ji1",
+              "status": "confirmed_error",
+              "reason": "系数与扫描y坐标修饰乘积，的为结构助词，不是目的、箭靶义。"
+            },
+            {
+              "id": "B1-03",
+              "segments": ["OC05", "OC06", "OC59"],
+              "sentences": [
+                "无须剪切时仍可能同列。",
+                "剪切负责满足几何条件。",
+                "没有使用剪切时。",
+                "使用剪切时。"
+              ],
+              "current": "切 qie4（4处）",
+              "candidate": "qie1",
+              "status": "needs_contextual_verification",
+              "reason": "独立词条原文剪切jiǎn qiē与当前qie4冲突；数学仿射剪切并非剪断材料，不把通用词条直接当作已完成语境裁决，需历史核销或专门数学语境读音依据。"
+            }
+          ],
+          "acceptedNotes": [
+            "词内上声连读：处理chu2 li3、允许yun2 xu3、可以ke2 yi3、整体zheng2 ti3；跨词边界不机械强制变调。",
+            "第一处、第一步为序数；每一步/下一处/一份按数量与连读语境区分；统一、一一、唯一不机械改音。",
+            "为wei2用于为空、成为、还原为；wei4用于为什么、为区分；重chong2用于重叠、重合、重算、重报；撇pie3为数学符号；间jian1为区间。",
+            "轻声的de5、了le5、个ge5、们/么与趋向补语、可能补语找不到bu5分别按句法接受；未因可接受另一变体强改。"
+          ],
+          "textConsistency": "全部61片段speech文本拼接与冻结稿逐字一致；sentence-plan短句拼接一致；未新增文字问题。",
+          "result": "not_passed_two_confirmed_errors_and_one_pending_contextual_item",
+          "historyReconciliation": "awaiting_parent_after_blind_submission",
+          "mutations": "仅/tmp独立查询与报告；未修改仓库/配置/Git；无音频/渲染。"
+        },
+        "historyReconciliation": {
+          "phase": "history_reconciliation_after_blind_submission",
+          "reviewer": "pinyin_blind_one",
+          "originalBlindReport": "/tmp/oc-blind-one-report.json",
+          "originalBlindReportSha256": "cef1298c2c30ebf40494ba1c044bade32a9e38615aa8fd484b206b055e82b44a",
+          "boundHashes": {
+            "speech-text.json": "f8badf9a9c3e639ac6399b109ded6a6dc64cc4dc977e850eb02c953adf97f9d4",
+            "narration-text.json": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+            "sentence-plan.json": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b"
+          },
+          "currentSpeechSha256": "f8badf9a9c3e639ac6399b109ded6a6dc64cc4dc977e850eb02c953adf97f9d4",
+          "historyItems": [
+            {
+              "id": "PN-M1",
+              "segment": "OC15",
+              "status": "confirmed_still_present",
+              "sentence": "所以左右都允许等号。",
+              "current": "suo2 yi3 zuo2 you3 dou1 yun2 xu3",
+              "required": "suo2 yi3 zuo3 you4 dou1 yun2 xu3",
+              "reason": "左右指左右两端/两方面，词典zuǒ yòu；右本调去声，无左因邻上声变2的条件。标注者把右改成you3再对左变调错误。",
+              "sources": [
+                "https://dict.concised.moe.edu.tw/dictView.jsp?ID=37447&la=0&powerMode=0",
+                "https://zdic.net/hans/%E5%B7%A6%E5%8F%B3"
+              ],
+              "sourceReview": "本次已打开两份原文，核对字音和左方右方释义；库候选仅补充。",
+              "blindMiss": "原始盲审实际读过但未识别此错误，本次通过历史核销补入，不回写成盲审发现。"
+            }
+          ],
+          "blindItemsReconciled": [
+            {
+              "id": "B1-01",
+              "status": "confirmed_still_present",
+              "required": "OC16结构助词的 di2→de5",
+              "reason": "当前稿未变；历史材料无撤回依据。"
+            },
+            {
+              "id": "B1-02",
+              "status": "confirmed_still_present",
+              "required": "OC60结构助词的 di4→de5",
+              "reason": "当前稿未变；历史材料无撤回依据。"
+            },
+            {
+              "id": "B1-03",
+              "status": "needs_contextual_verification",
+              "segments": ["OC05", "OC06", "OC59"],
+              "occurrences": 4,
+              "current": "qie4",
+              "candidate": "qie1",
+              "reason": "标注者rationale写jian3 qie1，但实际4处为qie4，decisions未落实修正；完整query显示库选qie4，与独立汉典原文jiǎn qiē冲突。标注者意图和库输出均不能解决语境。当前可靠词条释义是材料shearing；尚缺数学仿射剪切读音的语境核验，故不凭意图宣布已修复或撤回疑点。",
+              "nextAction": "由独立修正/查证者核对剪切词条能否适用于此处仿射shear，或提供明确语境读音来源；若确认qie1，只改4处拼音。"
+            }
+          ],
+          "summary": {
+            "confirmedUnresolved": 3,
+            "pendingContextualItems": 1,
+            "repaired": 0,
+            "withdrawn": 0,
+            "passesThisRound": false
+          },
+          "mutationBoundary": "原始报告完全保留；本文件仅追加核销证据；仓库稿件、配置、Git均未修改。"
+        },
+        "countsAsClean": false
+      },
+      {
+        "rawReport": {
+          "reviewer": "pinyin_blind_two",
+          "phase": "independent-full-blind-review-before-history",
+          "versions": {
+            "speech-text.json": "76753aad5eb51dc697981e006096924ced11d43df5d92476168e18cf1dbe92d1",
+            "narration-text.json": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+            "sentence-plan.json": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b"
+          },
+          "ids": [
+            "OC01",
+            "OC02",
+            "OC03",
+            "OC04",
+            "OC05",
+            "OC06",
+            "OC07",
+            "OC08",
+            "OC09",
+            "OC10",
+            "OC11",
+            "OC12",
+            "OC13",
+            "OC14",
+            "OC15",
+            "OC16",
+            "OC17",
+            "OC18",
+            "OC19",
+            "OC20",
+            "OC21",
+            "OC22",
+            "OC23",
+            "OC24",
+            "OC25",
+            "OC26",
+            "OC27",
+            "OC28",
+            "OC29",
+            "OC30",
+            "OC31",
+            "OC32",
+            "OC33",
+            "OC34",
+            "OC35",
+            "OC36",
+            "OC37",
+            "OC38",
+            "OC39",
+            "OC40",
+            "OC41",
+            "OC42",
+            "OC43",
+            "OC44",
+            "OC45",
+            "OC46",
+            "OC47",
+            "OC48",
+            "OC49",
+            "OC50",
+            "OC51",
+            "OC52",
+            "OC53",
+            "OC54",
+            "OC55",
+            "OC56",
+            "OC57",
+            "OC58",
+            "OC59",
+            "OC60",
+            "OC61"
+          ],
+          "coverage": {
+            "segments": 61,
+            "originalSentences": 177,
+            "actualShortSentences": 330,
+            "manualFullRead": true,
+            "checks": [
+              "多音选音及句内词义",
+              "全标注声调",
+              "变调及语义分组",
+              "轻声方案",
+              "漏标",
+              "冻结文字一致"
+            ],
+            "perShortSentence": "/tmp/oc-blind-two-coverage.json"
+          },
+          "frozenTextEquality": true,
+          "annotationAndBreakTextMatchesPlan": true,
+          "queries": {
+            "file": "/tmp/oc-blind-two-queries.json",
+            "count": 330,
+            "source": "pypinyin",
+            "version": "0.55.0",
+            "command": "uv run --project /workspace/codex-config --no-sync --offline --no-python-downloads python /workspace/codex-config/skills/pinyin-query/scripts/query.py <完整短句单参数>",
+            "dictionaryAuthority": false,
+            "retained": [
+              "完整原文",
+              "contextual symbol/number/plain",
+              "逐字全部候选",
+              "版本"
+            ]
+          },
+          "sources": [
+            {
+              "name": "北京语言大学《现代汉语一》音变：变调",
+              "url": "https://manage.eblcu.cn/specls/cls/201073/coures/unit02/02_6_B_3.html",
+              "verified": "正文36–48行",
+              "basis": "三声连读须结合语义段；一的序数读法与补语中的不须分别处理。",
+              "application": "处理 chu2 li3、允许 yun2 xu3、补检 bu2 jian3；跨词的也可以/也可能不按无标点机械要求全部二声；第一处/第一步 yi1；找不到 bu5。"
+            },
+            {
+              "name": "甘肃交通职业技术学院：普通话语音基础知识（9）",
+              "url": "https://www.gsjtxy.edu.cn/jcjxb/content/169/t2024210-169-17094.html",
+              "verified": "正文变调章节",
+              "basis": "一在去声前变阳平、非去声前变去声；序数及复杂数词有原调条件。",
+              "application": "一次/一处/一份 yi2；一般/一起 yi4；序数第一 yi1，不能把逐一、统一、唯一等词尾一视作一+量词。"
+            },
+            {
+              "name": "汉典：部分",
+              "url": "https://zdic.net/hans/部分",
+              "verified": "词语解释46–48行；国语辞典86–90行",
+              "originalReading": "bù fèn；另栏 bù fen",
+              "basis": "词语解释列bù fèn，释义为整体中的局部；另栏轻声不构成当前四声错误的证明。",
+              "application": "OC11、OC31、OC36表示几何局部，bu4 fen4可接受。"
+            },
+            {
+              "name": "汉典：身份",
+              "url": "https://zdic.net/hans/身份",
+              "verified": "词语解释43–47行",
+              "originalReading": "shēn fèn",
+              "basis": "词条指身份资格 identity。",
+              "application": "稿中输入身份是识别对象的身份，shen1 fen4可接受。"
+            },
+            {
+              "name": "教育部《国语辞典简编本》：一一",
+              "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=40211&la=0&powerMode=0",
+              "verified": "词条28–35行",
+              "originalReading": "yī yī",
+              "basis": "固定逐一用语的词条，不把数词重叠机械改成普通数量短语。",
+              "application": "OC61一一对应保留yi1 yi1。该词条为原读补证，不将其泛化成所有语境的连读规范。"
+            }
+          ],
+          "originalIssues": [],
+          "pendingVerification": [],
+          "acceptableVariants": [
+            {
+              "ids": ["OC03", "OC43", "OC53"],
+              "item": "也可以/也可能",
+              "decision": "词内可以 ke2 yi3；跨词也与可以/可能不机械连续变调，不以另一语流读法认定错误。"
+            },
+            {
+              "ids": ["OC46", "OC56"],
+              "item": "第一处/第一步",
+              "decision": "序数第一 yi1，不套用一处/一步数量短语变调。"
+            },
+            {
+              "ids": ["OC11", "OC31", "OC36"],
+              "item": "部分 bu4 fen4",
+              "decision": "词条支持整体中的局部这一词义，轻声替代方案不构成必改。"
+            },
+            {
+              "ids": ["OC58"],
+              "item": "找不到 zhao3 bu5 dao4",
+              "decision": "动词与补语之间的不轻读，与否定不在去声前变bu2分别判断。"
+            }
+          ],
+          "blindConclusion": "本版本61片段177原句330短句全文盲审未发现新增确定问题、漏标或待查证项。",
+          "historyReconciliation": "尚未接收历史问题，不计整轮放行；收到后单独追加核销报告，不覆盖本报告。",
+          "limits": [
+            "未验收实际音频",
+            "未合成或试听",
+            "未运行任何媒体导出",
+            "未改仓库或Git",
+            "未读取既往审校结论"
+          ]
+        },
+        "historyReconciliation": {
+          "reviewer": "pinyin_blind_two",
+          "phase": "history-reconciliation-after-blind-submission",
+          "originalBlindReport": "/tmp/oc-blind-two-report.json",
+          "originalBlindSha256": "33863fc0fcad747487cdd790505916c3d8dcbbc82c225c667f60f583e4516d1e",
+          "versions": {
+            "speech-text.json": "76753aad5eb51dc697981e006096924ced11d43df5d92476168e18cf1dbe92d1",
+            "narration-text.json": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+            "sentence-plan.json": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b"
+          },
+          "ids": [
+            "OC01",
+            "OC02",
+            "OC03",
+            "OC04",
+            "OC05",
+            "OC06",
+            "OC07",
+            "OC08",
+            "OC09",
+            "OC10",
+            "OC11",
+            "OC12",
+            "OC13",
+            "OC14",
+            "OC15",
+            "OC16",
+            "OC17",
+            "OC18",
+            "OC19",
+            "OC20",
+            "OC21",
+            "OC22",
+            "OC23",
+            "OC24",
+            "OC25",
+            "OC26",
+            "OC27",
+            "OC28",
+            "OC29",
+            "OC30",
+            "OC31",
+            "OC32",
+            "OC33",
+            "OC34",
+            "OC35",
+            "OC36",
+            "OC37",
+            "OC38",
+            "OC39",
+            "OC40",
+            "OC41",
+            "OC42",
+            "OC43",
+            "OC44",
+            "OC45",
+            "OC46",
+            "OC47",
+            "OC48",
+            "OC49",
+            "OC50",
+            "OC51",
+            "OC52",
+            "OC53",
+            "OC54",
+            "OC55",
+            "OC56",
+            "OC57",
+            "OC58",
+            "OC59",
+            "OC60",
+            "OC61"
+          ],
+          "coverage": {
+            "segments": 61,
+            "originalSentences": 177,
+            "shortSentences": 330
+          },
+          "historyItems": [
+            {
+              "id": "B1-01",
+              "segment": "OC16",
+              "arrayIndex": 2,
+              "text": "的当前最",
+              "before": "di2 dang1 qian2 zui4",
+              "current": "de5 dang1 qian2 zui4",
+              "status": "verified_repaired",
+              "reason": "非空组修饰当前最远右端；的为结构助词，de5。"
+            },
+            {
+              "id": "B1-02",
+              "segment": "OC60",
+              "arrayIndex": 9,
+              "text": "的乘积",
+              "before": "di4 cheng2 ji1",
+              "current": "de5 cheng2 ji1",
+              "status": "verified_repaired",
+              "reason": "系数与扫描y坐标修饰乘积；的为结构助词，de5。"
+            },
+            {
+              "id": "PN-M1",
+              "segment": "OC15",
+              "arrayIndex": 8,
+              "text": "所以左右都允许",
+              "before": "suo2 yi3 zuo2 you3 dou1 yun2 xu3",
+              "current": "suo2 yi3 zuo3 you4 dou1 yun2 xu3",
+              "status": "verified_repaired",
+              "reason": "左右为左方和右方，zuo3 you4；右为去声，左无相邻上声变调条件。"
+            },
+            {
+              "id": "B1-03",
+              "segment": "OC05",
+              "arrayIndex": 20,
+              "text": "切",
+              "before": "qie4",
+              "current": "qie1",
+              "status": "verified_repaired",
+              "reason": "四处剪切均为shear坐标变换；词条剪切jian3 qie1与切变qie1 bian4提供标音/义类，MathWorks官方矩阵与OC59–60逆变换一致提供数学定义。结合词典与语境可核销qie4→qie1，不冒称MathWorks提供拼音。"
+            },
+            {
+              "id": "B1-03",
+              "segment": "OC06",
+              "arrayIndex": 15,
+              "text": "切",
+              "before": "qie4",
+              "current": "qie1",
+              "status": "verified_repaired",
+              "reason": "四处剪切均为shear坐标变换；词条剪切jian3 qie1与切变qie1 bian4提供标音/义类，MathWorks官方矩阵与OC59–60逆变换一致提供数学定义。结合词典与语境可核销qie4→qie1，不冒称MathWorks提供拼音。"
+            },
+            {
+              "id": "B1-03",
+              "segment": "OC59",
+              "arrayIndex": 2,
+              "text": "切",
+              "before": "qie4",
+              "current": "qie1",
+              "status": "verified_repaired",
+              "reason": "四处剪切均为shear坐标变换；词条剪切jian3 qie1与切变qie1 bian4提供标音/义类，MathWorks官方矩阵与OC59–60逆变换一致提供数学定义。结合词典与语境可核销qie4→qie1，不冒称MathWorks提供拼音。"
+            },
+            {
+              "id": "B1-03",
+              "segment": "OC59",
+              "arrayIndex": 11,
+              "text": "切",
+              "before": "qie4",
+              "current": "qie1",
+              "status": "verified_repaired",
+              "reason": "四处剪切均为shear坐标变换；词条剪切jian3 qie1与切变qie1 bian4提供标音/义类，MathWorks官方矩阵与OC59–60逆变换一致提供数学定义。结合词典与语境可核销qie4→qie1，不冒称MathWorks提供拼音。"
+            }
+          ],
+          "sourceOriginalsReopened": [
+            "https://dict.concised.moe.edu.tw/dictView.jsp?ID=7457&q=1",
+            "https://dict.concised.moe.edu.tw/dictView.jsp?ID=37447&la=0&powerMode=0",
+            "https://zdic.net/hans/剪切",
+            "https://zdic.net/hans/切变",
+            "https://ww2.mathworks.cn/help/images/matrix-representation-of-geometric-transformations.html"
+          ],
+          "sourceDistinction": "词典原文提供词头、标音和释义；MathWorks原文提供仿射剪切矩阵，数学义对应属于明确综合推断；pypinyin为独立补充，不作规范裁决。",
+          "summary": {
+            "historyIssueCount": 4,
+            "repairedOccurrenceCount": 7,
+            "newIssues": 0,
+            "unresolvedHistory": 0,
+            "pendingVerification": 0,
+            "thisRoundBlindAndReconciliationPass": true
+          },
+          "conclusion": "本版本本轮全文盲审与历史核销完成，可计一次通过；不宣布连续两轮门禁通过。",
+          "unchangedOriginalReport": true,
+          "limits": [
+            "只读仓库",
+            "无Git修改",
+            "未安装",
+            "未合成/试听/导出",
+            "本结论仅文本与拼音，不含实际音频验收"
+          ]
+        },
+        "sources": [
+          {
+            "name": "北京语言大学《现代汉语一》音变：变调",
+            "url": "https://manage.eblcu.cn/specls/cls/201073/coures/unit02/02_6_B_3.html",
+            "verified": "正文36–48行",
+            "basis": "三声连读须结合语义段；一的序数读法与补语中的不须分别处理。",
+            "application": "处理 chu2 li3、允许 yun2 xu3、补检 bu2 jian3；跨词的也可以/也可能不按无标点机械要求全部二声；第一处/第一步 yi1；找不到 bu5。"
+          },
+          {
+            "name": "甘肃交通职业技术学院：普通话语音基础知识（9）",
+            "url": "https://www.gsjtxy.edu.cn/jcjxb/content/169/t2024210-169-17094.html",
+            "verified": "正文变调章节",
+            "basis": "一在去声前变阳平、非去声前变去声；序数及复杂数词有原调条件。",
+            "application": "一次/一处/一份 yi2；一般/一起 yi4；序数第一 yi1，不能把逐一、统一、唯一等词尾一视作一+量词。"
+          },
+          {
+            "name": "汉典：部分",
+            "url": "https://zdic.net/hans/部分",
+            "verified": "词语解释46–48行；国语辞典86–90行",
+            "originalReading": "bù fèn；另栏 bù fen",
+            "basis": "词语解释列bù fèn，释义为整体中的局部；另栏轻声不构成当前四声错误的证明。",
+            "application": "OC11、OC31、OC36表示几何局部，bu4 fen4可接受。"
+          },
+          {
+            "name": "汉典：身份",
+            "url": "https://zdic.net/hans/身份",
+            "verified": "词语解释43–47行",
+            "originalReading": "shēn fèn",
+            "basis": "词条指身份资格 identity。",
+            "application": "稿中输入身份是识别对象的身份，shen1 fen4可接受。"
+          },
+          {
+            "name": "教育部《国语辞典简编本》：一一",
+            "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=40211&la=0&powerMode=0",
+            "verified": "词条28–35行",
+            "originalReading": "yī yī",
+            "basis": "固定逐一用语的词条，不把数词重叠机械改成普通数量短语。",
+            "application": "OC61一一对应保留yi1 yi1。该词条为原读补证，不将其泛化成所有语境的连读规范。"
+          }
+        ],
+        "countsAsClean": true
+      },
+      {
+        "rawReport": {
+          "reviewer": "pinyin_blind_three",
+          "phase": "independent-full-blind-review-submitted-before-history",
+          "hashes": {
+            "speech-text.json": "76753aad5eb51dc697981e006096924ced11d43df5d92476168e18cf1dbe92d1",
+            "narration-text.json": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+            "sentence-plan.json": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b"
+          },
+          "ids": [
+            "OC01",
+            "OC02",
+            "OC03",
+            "OC04",
+            "OC05",
+            "OC06",
+            "OC07",
+            "OC08",
+            "OC09",
+            "OC10",
+            "OC11",
+            "OC12",
+            "OC13",
+            "OC14",
+            "OC15",
+            "OC16",
+            "OC17",
+            "OC18",
+            "OC19",
+            "OC20",
+            "OC21",
+            "OC22",
+            "OC23",
+            "OC24",
+            "OC25",
+            "OC26",
+            "OC27",
+            "OC28",
+            "OC29",
+            "OC30",
+            "OC31",
+            "OC32",
+            "OC33",
+            "OC34",
+            "OC35",
+            "OC36",
+            "OC37",
+            "OC38",
+            "OC39",
+            "OC40",
+            "OC41",
+            "OC42",
+            "OC43",
+            "OC44",
+            "OC45",
+            "OC46",
+            "OC47",
+            "OC48",
+            "OC49",
+            "OC50",
+            "OC51",
+            "OC52",
+            "OC53",
+            "OC54",
+            "OC55",
+            "OC56",
+            "OC57",
+            "OC58",
+            "OC59",
+            "OC60",
+            "OC61"
+          ],
+          "coverage": {
+            "segments": 61,
+            "originalSentences": 177,
+            "actualShortSentences": 330,
+            "method": "实际顺序通读全部正文与全部局部标注；逐短句检查选音、调号、变调、轻声、漏标。脚本只核对版本、拼接及覆盖索引，不替代人工审校。",
+            "allManuallyRead": true
+          },
+          "sentenceCoverage": [
+            {
+              "id": "OC01",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "第八章跟完了一次扫描。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "现在离开那份案例。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "说明任意允许输入为什么都成立。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "从空状态起步。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "连接每次处理、下一处必达和结束时的完整结果。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC02",
+              "originalCount": 2,
+              "actualCount": 3,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "输入是有限份闭线段。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "坐标是精确有理数。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "共端点、内部端点、多线共点、同列、重叠、竖直线段和点输入都允许。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC03",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "每个相交的原始无序输入对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "恰好留下一个完整交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "可以是点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "也可以是非零长度闭区间。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "不相交的对没有结果。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "完全重合和端点反向的输入仍保留各自身份。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC04",
+              "originalCount": 3,
+              "actualCount": 7,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "没有非零竖直输入时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "沿用原坐标。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "否则按第七章选安全系数。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "统一变换全部输入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "包括点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "这里使用第七章已证明安全的系数。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "统一满足保序、非竖直和完整交集保持。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC05",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "以下坐标都指实际扫描坐标。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "先到 x 坐标较小的位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "同列再从低到高。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "无须剪切时仍可能同列。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "不能省掉第二层比较。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "两个坐标都相等才合并位置。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC06",
+              "originalCount": 3,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "第三章的精确计算用于求交、同点识别、闭范围和次序比较。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "剪切负责满足几何条件。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "精确计算负责忠实判断。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "两者不能互相替代。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC07",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "第三节先只回答：此前正确。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "而且这次确实到达下一处。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "处理后怎样继续正确。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "沿用无事件不换序、完整同点收集、分类报告及同列局部更新的结论和条件。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC08",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "第四节再用组发现及同列发现结论。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "补齐确实到达下一处这个前提。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "所需条件是此前正确处理、新邻接与覆盖延长都检查。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "以及真实预约保留。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "没有假定全部未来交点已登记。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC09",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "先说明五项记录。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "当前指刚完成一个精确位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "尚未处理下一个位置的时刻。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "同列也有进度。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "不能只给出 x 坐标就认为状态已经确定。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC10",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "活动成员从自己的开始事件加入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "在自己的结束事件报告后退出。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "点输入只参加自己的位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "非空同线组按当前进度从下到上排列。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "覆盖只由当前成员决定。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 2,
+                  "text": "不由固定同线归属决定。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC11",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "清单保存尚未取出的端点和已确认的真实未来交点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "同位置一份。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "输入身份全部保留。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "结果按已经发生的报告时机累计完整交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "每对一次。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "不是扫描位置左侧所有几何部分的合集。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC12",
+              "originalCount": 3,
+              "actualCount": 7,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "左图是一般状态示意。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "不是某份输入的执行轨迹。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "虚线表示当前列。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "低处的相遇块已经处理。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "保留右侧顺序。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 3,
+                  "text": "高处还没处理。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 4,
+                  "text": "仍保留左侧顺序。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC13",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "高处尚未处理的结束者仍包含闭端点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "不能在低处处理后提前删掉。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "只有整列处理完。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "留下的成员才都继续到该列右侧。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC14",
+              "originalCount": 3,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "用 t 表示当前列的 x 坐标。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "输入身份用 i 表示。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "开始 x 坐标用 l i 表示。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "结束 x 坐标用 r i 表示。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "图中按身份分行展示范围。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "不表示不同几何高度。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC15",
+              "originalCount": 3,
+              "actualCount": 8,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "每份当前成员都覆盖这一列。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "所以左右都允许等号。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "紫色行是另一份高处未处理的结束者。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "它的编号用 j 表示。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "结束 x 坐标用 r j 表示。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 4,
+                  "text": "这个坐标与当前列坐标 t 相等。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "若改成严格小于。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "就会把这类成员提前排除。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC16",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "非空组的当前最远右端。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "是这些当前成员右端的最大值。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "未来才开始的成员不在集合中。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "不能提前把空隙填满。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC17",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "初始化时尚未处理任何位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "活动成员为空。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "没有非空组、组顺序和覆盖。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "没有到达任何报告时机。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "结果也为空。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "这些空记录符合刚才的含义。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC18",
+              "originalCount": 4,
+              "actualCount": 8,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "端点由输入直接给出。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "非零输入登记两端。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "点输入登记自己的位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "同位置合并记录。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "保留全部身份。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 3,
+                  "text": "再按精确次序排列。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "图中只画已知位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 2,
+                  "text": "不预先加入交点。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC19",
+              "originalCount": 5,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "任何交集位置都不早于参与输入的开始位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "非零输入不竖直。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "内部严格在开始端点右边。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "所以非空输入的最早真实事件必是已登记端点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "它之前没有活动成员或应报告的对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 5,
+                  "short": 1,
+                  "text": "空输入直接得到完整空结果。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC20",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "本次位置用 P 表示。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "严格更早的真实事件已依次正确处理。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "而且 P 确实是下一处。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "这里只证明满足这两个前提以后怎样保持正确。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "不假定更晚的交点都已登记。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC21",
+              "originalCount": 3,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "从上次处理后到 P 之前。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "没有跳过别的端点或交点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "成员和组顺序仍可用。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "若 P 在同列高处。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "使用低处已更新、高处未更新的中间状态。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "第六章保证仍能按高度找齐块。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC22",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "图中交汇处用 P 表示。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "预约对只负责发现这个位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "不限制到站后的参与者数量。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "从正确旧状态找齐经过 P 的组。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "再展开这些组在这里的全部当前成员。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC23",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "把在 P 开始的非零输入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "以及位于 P 的点输入合进来。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "点输入只参加这个位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "不进入持续活动顺序。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "它的身份来自预先登记的端点记录。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC24",
+              "originalCount": 2,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "在 P 结束的成员还没退出。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "所以共端点接触不会丢。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "端点落在内部时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "穿过者来自旧块。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "多线共点时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 4,
+                  "text": "整块都收齐。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC25",
+              "originalCount": 3,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "两份非零输入同线时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "后开始者加入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "与仍包含此处的成员配对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 4,
+                  "text": "留下完整闭交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "同点开始者按固定身份顺序逐一加入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "每对只有一个较晚的加入时机。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC26",
+              "originalCount": 2,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "不同组的非零输入在共同位置展开全部跨组成员对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "不在这里重报组内对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "不同直线至多有一个交点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "这个点就是完整交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "也是唯一报告位置。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC27",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "至少一份是点输入时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "在这个点与其他参与者配对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "点与点也按无序对各取一次。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "交集只能是这个点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "报告时机只有这一个位置。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC28",
+              "originalCount": 3,
+              "actualCount": 8,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "每对要么含点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "要么两份都非零。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "两份都非零时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 4,
+                  "text": "所在直线要么相同。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 5,
+                  "text": "要么不同。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "所以三类穷尽且互斥。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "跨类不会重复。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "类内唯一性由刚才的规则保证。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC29",
+              "originalCount": 4,
+              "actualCount": 7,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "收集既完整。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "又没有混入不经过 P 的成员。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "因此不漏本次该报的对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "也不增加空交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "此前已报告的对不会重报。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "重复或反向输入仍保留不同身份。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 2,
+                  "text": "交换同一对的次序才不产生新对。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC30",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "图中是同线的一对非零输入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "为区分身份。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "把各自的范围分行展示。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "位置 P 是较晚的开始位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "两份输入的原始端点已经全部给定。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC31",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "现在就能确定并报告整段闭交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "右端可以在 P 的右边。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "不必等扫描走到那里。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "累计结果按报告时机成立。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "不能把它改写成当前位置左边所有几何部分的合集。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC32",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "图中当前位置 P 在低处。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "高处是同列尚未处理的位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "先报告所有本次该报的对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "在 P 结束的成员和点输入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "都参加这次报告。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC33",
+              "originalCount": 3,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "报告完成后。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "在 P 结束的成员退出。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "点输入也不留到后面。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "留下穿过者和非零开始者。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "只把当前块改成右侧顺序。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "块外保留原状态。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC34",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "同列高处尚未处理的结束者仍保留。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "不能随着低处一起删除或换序。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "低处已处理、高处未处理的约定。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "就这样延续到下一个位置。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC35",
+              "originalCount": 3,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "成员变化后重算当前覆盖。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "图中新增成员使最远右端延长。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "邻居名字虽然没变。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "也要补检。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "确认交点时只能用真实闭范围。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "不能拿整条支撑直线替代。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC36",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "若组已没有成员。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "就退出活动顺序。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "以后同线成员开始时再加入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "尚未开始的部分不能倒过来填补眼前的空隙。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "也不能提前参与未来检查。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC37",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "更新形成的新邻接都要检查：新块内部、它与外侧的边界。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "以及块空时新连上的两侧。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "这些新邻接检查与覆盖延长补检。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "两者缺一不可。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC38",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "先确认交点落在真实闭范围。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "再按 x 坐标优先、同列按高度的完整次序判断严格未来。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "同列高处仍可在未来。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "当前位置和过去不重新加入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "已登记的真实未来位置继续保留。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC39",
+              "originalCount": 4,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "重复发现只合并位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "不合并原始输入身份。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "成员、顺序、覆盖和累计结果的保证继续成立。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "这次还执行了两类检查。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "接下来单独说明：为什么所假设的下一处不会被清单跳过。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC40",
+              "originalCount": 3,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "现在从已正确处理的边界向后看。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "若还有真实事件。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "就取按完整次序最早的一个。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "并用 Q 表示这个位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "这是证明里选择实际几何位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "不是要求算法先枚举全部交点。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC41",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "若 Q 带端点或点输入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "它在初始化时就已登记。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "这个位置尚未处理。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "记录仍在清单里。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC42",
+              "originalCount": 4,
+              "actualCount": 7,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "否则。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "位置 Q 只能是不同组非零输入的真实交点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "此前事件已正确处理。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "两类检查也都执行。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "当前成员真实覆盖交点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "真实预约保留。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "已有组发现及同列结论于是保证 Q 及时登记。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC43",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "有些交点还要等新邻接或覆盖延长才被发现。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "邻居不变而覆盖后来才够到。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "也已被补检覆盖。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "图中的顺序是完整位置次序。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "不只是 x 坐标。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "同列高处也可能是下一处。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC44",
+              "originalCount": 2,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "清单只含真实未处理位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "而且已经包含 Q 这个位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "若还有比 Q 更早的清单位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "它也是真实未处理事件。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "就与 Q 的选择矛盾。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC45",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "所以取清单最小位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "必然取到 Q 这个位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "这才补上第三节所需的下一处前提。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "同位置合并保证只到站一次。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "到站后仍收齐全部参与者。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 2,
+                  "text": "保留不同原始输入对。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC46",
+              "originalCount": 3,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "第二节建立空状态和第一处。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "第三节在到达那里后保持保证。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "并执行两类检查。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "这就得到一个新的已正确处理边界。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC47",
+              "originalCount": 2,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "从这个边界。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "第四节保证下一处及时登记并被取到。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "第三节再说明处理后继续正确。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "每一步只用此前已经建立的状态。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "没有借用后面的处理结果。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "因而没有循环论证。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC48",
+              "originalCount": 2,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "输入有限。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "所以端点和点输入位置有限。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "非零输入的所在直线也有限。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "每两条不同直线至多相交一次。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "只有落在实际闭范围内的位置才成为事件。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC49",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "重叠区间虽然有无穷多个公共点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "但在加入时作为完整区间报告。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "不会把区间里的每个点都列成事件。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "因此真实事件位置仍然有限。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC50",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "每步只处理有限成员、输入对和检查。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "处理后移去当前位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "严格未来比较禁止它重新加入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "同位置合并也禁止存多份。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "每次完成一个此前未完成的真实位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 2,
+                  "text": "所以只能处理有限次。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC51",
+              "originalCount": 3,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "有限终止还不等于结果完整。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "假设结束时仍有真实事件未处理。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "就能选出最早的 Q 这个位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "这里需要第四节的下一处必达。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "不能只靠刚才的有限性。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC52",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "第四节保证 Q 已经在清单里。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "这与清单为空矛盾。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "所以全部真实事件都已到达。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "第三节也把正确性保持到了最后一个边界。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC53",
+              "originalCount": 3,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "同线非零相交对的后开始者端点已处理。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "同点开始者也已按固定身份顺序加入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "因此唯一报告时机已经发生。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 2,
+                  "text": "留下完整闭交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 3,
+                  "text": "可能是一段区间。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 4,
+                  "text": "也可能只有一个点。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC54",
+              "originalCount": 3,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "不同组非零相交对的唯一交点已处理。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "完整相遇块展开了这一对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "含点的相交对也在点位置配对完成。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "这两类都得到那个点。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC55",
+              "originalCount": 4,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "三类互斥穷尽、类内唯一。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "又不报告空交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "现在所有报告时机都已发生。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 3,
+                  "short": 1,
+                  "text": "所以不漏、不多报、不重复。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 1,
+                  "text": "多个输入对可以共享同一结果位置。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 4,
+                  "short": 2,
+                  "text": "位置合并不删去不同的对。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC56",
+              "originalCount": 1,
+              "actualCount": 3,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "没有输入时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "不需要走出第一步。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "空结果已经完整。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC57",
+              "originalCount": 2,
+              "actualCount": 4,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "只有一份输入时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "可能处理它的端点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "但没有两份不同输入可配对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "结果仍为空。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC58",
+              "originalCount": 2,
+              "actualCount": 5,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "全部互不相交时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "每次也都找不到非空输入对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "得到空结果。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "前面的推进和结束理由。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "从未要求至少有一个交点。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC59",
+              "originalCount": 2,
+              "actualCount": 6,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "没有使用剪切时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "结果已经是原坐标中的结果。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "使用剪切时。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "字母 x 撇和 y 撇表示扫描坐标。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "字母 x 和 y 表示原坐标。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 4,
+                  "text": "统一系数仍用 s 表示。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC60",
+              "originalCount": 2,
+              "actualCount": 7,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "用第七章的逆变换。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "原 x 坐标等于扫描 x 坐标减去系数与扫描 y 坐标的乘积。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "原 y 坐标保持不变。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "点还原为点。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "区间两端逆变换以后。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "结果是两端之间的整段闭交集。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 4,
+                  "text": "不是两个点结果。",
+                  "manuallyReviewed": true
+                }
+              ]
+            },
+            {
+              "id": "OC61",
+              "originalCount": 2,
+              "actualCount": 7,
+              "sentences": [
+                {
+                  "original": 1,
+                  "short": 1,
+                  "text": "变换一一对应。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 2,
+                  "text": "身份始终保留。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 3,
+                  "text": "所以不会制造相交对。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 1,
+                  "short": 4,
+                  "text": "也不合并重复或反向输入。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 1,
+                  "text": "从空状态到每次必达并保持。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 2,
+                  "text": "再到全部报告完成和原坐标还原。",
+                  "manuallyReviewed": true
+                },
+                {
+                  "original": 2,
+                  "short": 3,
+                  "text": "整体证明到此闭合。",
+                  "manuallyReviewed": true
+                }
+              ]
+            }
+          ],
+          "issues": [],
+          "pendingQuestions": [],
+          "historyReconciliation": "尚未接收历史问题，不宣告本轮门禁通过。",
+          "evidence": {
+            "queryFile": "/tmp/oc-blind-three-query.json",
+            "pypinyinVersion": "0.55.0",
+            "command": "uv run --no-sync --offline --no-python-downloads python skills/pinyin-query/scripts/query.py <queryFile.query>",
+            "queryStatus": "success;完整查询、库选音、逐字候选保留；库无词典释义、不作规范裁决。",
+            "tavily": "工具目录无 tavily-search；使用现有 web search/open 定位并读原文。"
+          },
+          "sources": [
+            {
+              "url": "https://www.edu.cn/pu_tong_hua_483/20060323/t20060323_19443.shtml",
+              "title": "普通话语音",
+              "read": "148–160行",
+              "basis": "两上相连前音变阳平；多个上声按结构处理；一/不随语境变调；动词补语间不轻读。"
+            },
+            {
+              "url": "https://mooc1.chaoxing.com/mooc-ans/ztnodedetailcontroller/visitnodedetail?_fromV2_=&_from_=&courseId=83872947&knowledgeId=83872965&nohead=1&rtag=",
+              "title": "普通话口语交际 第三节 普通话的音节变化",
+              "read": "79–195行",
+              "basis": "序数的一保留本调，列统一为原调例；连续上声应考虑词组与逻辑重音。"
+            },
+            {
+              "url": "https://zdic.net/hans/处理",
+              "title": "处理",
+              "originalPronunciation": "chǔ lǐ",
+              "meaning": "处置、办理"
+            },
+            {
+              "url": "https://zdic.net/hans/身份",
+              "title": "身份",
+              "originalPronunciation": "shēn fèn",
+              "meaning": "身份/identity"
+            },
+            {
+              "url": "https://zdic.net/hans/部分",
+              "title": "部分",
+              "originalPronunciation": "bù fèn；国语辞典另列bù fen",
+              "meaning": "整体中的局部"
+            },
+            {
+              "url": "https://zdic.net/hans/位置",
+              "title": "位置",
+              "originalPronunciation": "wèi zhì",
+              "meaning": "所在或所占的地方"
+            },
+            {
+              "url": "https://zdic.net/hans/这里",
+              "title": "这里",
+              "originalPronunciation": "zhè lǐ",
+              "meaning": "这个地方或段落"
+            },
+            {
+              "url": "https://zdic.net/hans/那里",
+              "title": "那里",
+              "originalPronunciation": "nà lǐ",
+              "meaning": "彼处；不使用疑问义nǎ"
+            },
+            {
+              "url": "https://zdic.net/hans/一一",
+              "title": "一一",
+              "originalPronunciation": "yī yī",
+              "meaning": "一个一个地"
+            },
+            {
+              "url": "https://zdic.net/hans/缺一不可",
+              "title": "缺一不可",
+              "originalPronunciation": "quē yī bù kě",
+              "meaning": "缺少任何一样都不行"
+            }
+          ],
+          "judgments": [
+            {
+              "scope": "全文处理/一处/高处/低处",
+              "decision": "处理处本调chu3，在理li3前标chu2；位置义处chu4，均适当。"
+            },
+            {
+              "scope": "全文同线重叠、重合、重报、重复、重新；当前、延长、行、还、为",
+              "decision": "分别按chong2、dang1、chang2、分行hang2/执行xing2、还有hai2/还原huan2、作为wei2/为区分wei4核对；未发现错误。"
+            },
+            {
+              "scope": "OC02/06/35/37/42/43/48/52/53/61",
+              "decision": "有理you2 li3、两者liang2 zhe3、补检bu2 jian3、已有yi2 you3、也已ye2 yi3、每两mei2 liang3、整体zheng2 ti3等上声处理成立；跨词处不机械追加。"
+            },
+            {
+              "scope": "OC46/56与全文下一处、一个、一份、一起",
+              "decision": "第一处/第一步是序数yi1；下一处/数量短语按去声前yi2；一起yi4，均成立。"
+            },
+            {
+              "scope": "OC04/25/37/59/61",
+              "decision": "统一、逐一保持词末一原调；缺一不可中的一独立指任何一项，保留原调可接受；一一对应按一对一逐项关系保留yi1 yi1，不按普通数量短语强改。"
+            },
+            {
+              "scope": "全文身份/部分/位置/这里/那里",
+              "decision": "fen4、zhi4、li3有对应词义下词典依据；轻声可选方案不证明当前本调错误。"
+            },
+            {
+              "scope": "OC58 找不到",
+              "decision": "bu5为动词与补语间的轻读，不能用库的bu2否定。"
+            },
+            {
+              "scope": "全文的/了/着/个/什么/要么/名字/趋向来",
+              "decision": "逐处核对现有轻声与词义，无确定错误或漏标。"
+            }
+          ],
+          "scopeLimits": [
+            "未读取README、text-review.json、历史报告或历史聊天",
+            "未修改仓库或Git",
+            "未合成、调用音频API、试听或导出",
+            "不声称实际音频读音验收或全片视觉验收"
+          ]
+        },
+        "historyReconciliation": {
+          "reviewer": "pinyin_blind_three",
+          "phase": "history-reconciliation-after-submitted-blind-review",
+          "originalBlindReport": "/tmp/oc-blind-three-report.json",
+          "originalBlindSha256": "54420e37c2150e41b11ff002e35e1d25081c17ba812c8d0bc85270a1a7c52cd0",
+          "originalReportUnchanged": true,
+          "hashes": {
+            "speech-text.json": "76753aad5eb51dc697981e006096924ced11d43df5d92476168e18cf1dbe92d1",
+            "narration-text.json": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+            "sentence-plan.json": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b"
+          },
+          "ids": [
+            "OC01",
+            "OC02",
+            "OC03",
+            "OC04",
+            "OC05",
+            "OC06",
+            "OC07",
+            "OC08",
+            "OC09",
+            "OC10",
+            "OC11",
+            "OC12",
+            "OC13",
+            "OC14",
+            "OC15",
+            "OC16",
+            "OC17",
+            "OC18",
+            "OC19",
+            "OC20",
+            "OC21",
+            "OC22",
+            "OC23",
+            "OC24",
+            "OC25",
+            "OC26",
+            "OC27",
+            "OC28",
+            "OC29",
+            "OC30",
+            "OC31",
+            "OC32",
+            "OC33",
+            "OC34",
+            "OC35",
+            "OC36",
+            "OC37",
+            "OC38",
+            "OC39",
+            "OC40",
+            "OC41",
+            "OC42",
+            "OC43",
+            "OC44",
+            "OC45",
+            "OC46",
+            "OC47",
+            "OC48",
+            "OC49",
+            "OC50",
+            "OC51",
+            "OC52",
+            "OC53",
+            "OC54",
+            "OC55",
+            "OC56",
+            "OC57",
+            "OC58",
+            "OC59",
+            "OC60",
+            "OC61"
+          ],
+          "coverage": {
+            "segments": 61,
+            "originalSentences": 177,
+            "actualShortSentences": 330,
+            "method": "实际顺序通读全部正文与全部局部标注；逐短句检查选音、调号、变调、轻声、漏标。脚本只核对版本、拼接及覆盖索引，不替代人工审校。",
+            "allManuallyRead": true
+          },
+          "historyItems": [
+            {
+              "id": "B1-01",
+              "segment": "OC16",
+              "arrayIndex": 2,
+              "text": "的当前最",
+              "before": "di2 dang1 qian2 zui4",
+              "current": "de5 dang1 qian2 zui4",
+              "required": "de5 dang1 qian2 zui4",
+              "status": "verified_repaired",
+              "reason": "非空组修饰当前最远右端；的为结构助词de5，不是确实义di2。"
+            },
+            {
+              "id": "B1-02",
+              "segment": "OC60",
+              "arrayIndex": 9,
+              "text": "的乘积",
+              "before": "di4 cheng2 ji1",
+              "current": "de5 cheng2 ji1",
+              "required": "de5 cheng2 ji1",
+              "status": "verified_repaired",
+              "reason": "系数与扫描y坐标修饰乘积；的为结构助词de5，不是箭靶义di4。"
+            },
+            {
+              "id": "PN-M1",
+              "segment": "OC15",
+              "arrayIndex": 8,
+              "text": "所以左右都允许",
+              "before": "suo2 yi3 zuo2 you3 dou1 yun2 xu3",
+              "current": "suo2 yi3 zuo3 you4 dou1 yun2 xu3",
+              "required": "suo2 yi3 zuo3 you4 dou1 yun2 xu3",
+              "status": "verified_repaired",
+              "reason": "当前左右指左右两侧边界，词典zuǒ yòu与此义相符；右是去声，左不触发上上变调。"
+            },
+            {
+              "id": "B1-03",
+              "segment": "OC05",
+              "arrayIndex": 20,
+              "text": "切",
+              "before": "qie4",
+              "current": "qie1",
+              "required": "qie1",
+              "status": "verified_repaired",
+              "reason": "重读四处句子并联系OC60逆变换，均为仿射shear。剪切词条jiǎn qiē；切变qiē biàn说明形变不要求qiè。MathWorks表中sh_x=s、sh_y=0对应x′=x+s y,y′=y，逆变换与当前正文一致。故词典标音与数学义类综合支持qie1，不能因非切断材料而改qie4；MathWorks不提供读音，此处明确为语境综合判断。"
+            },
+            {
+              "id": "B1-03",
+              "segment": "OC06",
+              "arrayIndex": 15,
+              "text": "切",
+              "before": "qie4",
+              "current": "qie1",
+              "required": "qie1",
+              "status": "verified_repaired",
+              "reason": "重读四处句子并联系OC60逆变换，均为仿射shear。剪切词条jiǎn qiē；切变qiē biàn说明形变不要求qiè。MathWorks表中sh_x=s、sh_y=0对应x′=x+s y,y′=y，逆变换与当前正文一致。故词典标音与数学义类综合支持qie1，不能因非切断材料而改qie4；MathWorks不提供读音，此处明确为语境综合判断。"
+            },
+            {
+              "id": "B1-03",
+              "segment": "OC59",
+              "arrayIndex": 2,
+              "text": "切",
+              "before": "qie4",
+              "current": "qie1",
+              "required": "qie1",
+              "status": "verified_repaired",
+              "reason": "重读四处句子并联系OC60逆变换，均为仿射shear。剪切词条jiǎn qiē；切变qiē biàn说明形变不要求qiè。MathWorks表中sh_x=s、sh_y=0对应x′=x+s y,y′=y，逆变换与当前正文一致。故词典标音与数学义类综合支持qie1，不能因非切断材料而改qie4；MathWorks不提供读音，此处明确为语境综合判断。"
+            },
+            {
+              "id": "B1-03",
+              "segment": "OC59",
+              "arrayIndex": 11,
+              "text": "切",
+              "before": "qie4",
+              "current": "qie1",
+              "required": "qie1",
+              "status": "verified_repaired",
+              "reason": "重读四处句子并联系OC60逆变换，均为仿射shear。剪切词条jiǎn qiē；切变qiē biàn说明形变不要求qiè。MathWorks表中sh_x=s、sh_y=0对应x′=x+s y,y′=y，逆变换与当前正文一致。故词典标音与数学义类综合支持qie1，不能因非切断材料而改qie4；MathWorks不提供读音，此处明确为语境综合判断。"
+            }
+          ],
+          "sourceOriginalsReopened": [
+            "https://dict.concised.moe.edu.tw/dictView.jsp?ID=7457&q=1",
+            "https://dict.concised.moe.edu.tw/dictView.jsp?ID=37447&la=0&powerMode=0",
+            "https://zdic.net/hans/剪切",
+            "https://zdic.net/hans/切变",
+            "https://ww2.mathworks.cn/help/images/matrix-representation-of-geometric-transformations.html"
+          ],
+          "priorAcceptedVariantsReconciled": [
+            {
+              "scope": "OC03/43/53 也可以、也可能",
+              "result": "与本轮独立判断一致；跨词语流不机械追加上声变调，无新增反证。"
+            },
+            {
+              "scope": "OC46/56 第一处、第一步",
+              "result": "与本轮独立核对的序数规则一致；保留yi1。"
+            },
+            {
+              "scope": "OC11/31/36 部分",
+              "result": "本轮亦独立打开部分原文，局部义允许fen4；另一轻声方案不构成错误。"
+            },
+            {
+              "scope": "OC58 找不到",
+              "result": "本轮独立规则核对已确认动词补语间bu5；库bu2不构成规范反证。"
+            }
+          ],
+          "summary": {
+            "historyIssueCount": 4,
+            "repairedOccurrenceCount": 7,
+            "newIssues": 0,
+            "unresolvedHistory": 0,
+            "pendingVerification": 0,
+            "thisRoundBlindAndReconciliationPass": true
+          },
+          "conclusion": "本轮独立全文盲审与历史核销均完成；当前未变版本可计一次通过。连续两轮门禁由主代理结合前轮证据核对。",
+          "limits": [
+            "原始盲审未覆盖或改写",
+            "不改仓库、不改Git、不合成、不试听、不导出",
+            "结论仅文本与拼音，不含实际音频或画面验收"
+          ]
+        },
+        "countsAsClean": true
+      }
+    ],
+    "consecutiveCleanRounds": 2,
+    "historicalIssues": [
+      {
+        "id": "PN-M1",
+        "shot": "OC15",
+        "status": "corrected and reconciled independently by pinyin_blind_two and pinyin_blind_three"
+      },
+      {
+        "id": "B1-01",
+        "shot": "OC16",
+        "status": "corrected and reconciled independently by pinyin_blind_two and pinyin_blind_three"
+      },
+      {
+        "id": "B1-02",
+        "shot": "OC60",
+        "status": "corrected and reconciled independently by pinyin_blind_two and pinyin_blind_three"
+      },
+      {
+        "id": "B1-03",
+        "shots": ["OC05", "OC06", "OC59"],
+        "status": "corrected and reconciled independently by pinyin_blind_two and pinyin_blind_three"
+      }
+    ],
+    "unresolved": [],
+    "initialAnnotationSha256": "f8badf9a9c3e639ac6399b109ded6a6dc64cc4dc977e850eb02c953adf97f9d4",
+    "annotationReviewer": "pinyin_annotation; fork_turns=none",
+    "annotationQuerySource": {
+      "source": "pypinyin",
+      "version": "0.55.0",
+      "method": "61 complete contextual query.py calls; library evidence is supplementary, not dictionary authority"
+    },
+    "currentSpeechSha256": "76753aad5eb51dc697981e006096924ced11d43df5d92476168e18cf1dbe92d1",
+    "correction": {
+      "reviewer": "pinyin_correction; fork_turns=none; independent of annotation and review",
+      "rawReport": {
+        "role": "independent_pinyin_corrector",
+        "inputHashes": {
+          "speech-text.json": "f8badf9a9c3e639ac6399b109ded6a6dc64cc4dc977e850eb02c953adf97f9d4",
+          "narration-text.json": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+          "sentence-plan.json": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b"
+        },
+        "outputHashes": {
+          "speech-text.json": "76753aad5eb51dc697981e006096924ced11d43df5d92476168e18cf1dbe92d1",
+          "narration-text.json": "052941d06da3b239ea39befa97133bae5e3c143767a13a92e21610781b697753",
+          "sentence-plan.json": "1b6e44e12e4a31349adce9453650ffa1dcaa4c0216aa97c9c3018865cf43759b"
+        },
+        "changes": [
+          {
+            "issue": "B1-01",
+            "shot": "OC16",
+            "arrayIndex": 2,
+            "text": "的当前最",
+            "before": "di2 dang1 qian2 zui4",
+            "after": "de5 dang1 qian2 zui4"
+          },
+          {
+            "issue": "B1-02",
+            "shot": "OC60",
+            "arrayIndex": 9,
+            "text": "的乘积",
+            "before": "di4 cheng2 ji1",
+            "after": "de5 cheng2 ji1"
+          },
+          {
+            "issue": "PN-M1",
+            "shot": "OC15",
+            "arrayIndex": 8,
+            "text": "所以左右都允许",
+            "before": "suo2 yi3 zuo2 you3 dou1 yun2 xu3",
+            "after": "suo2 yi3 zuo3 you4 dou1 yun2 xu3"
+          },
+          {
+            "issue": "B1-03",
+            "shot": "OC05",
+            "arrayIndex": 20,
+            "text": "切",
+            "before": "qie4",
+            "after": "qie1"
+          },
+          {
+            "issue": "B1-03",
+            "shot": "OC06",
+            "arrayIndex": 15,
+            "text": "切",
+            "before": "qie4",
+            "after": "qie1"
+          },
+          {
+            "issue": "B1-03",
+            "shot": "OC59",
+            "arrayIndex": 2,
+            "text": "切",
+            "before": "qie4",
+            "after": "qie1"
+          },
+          {
+            "issue": "B1-03",
+            "shot": "OC59",
+            "arrayIndex": 11,
+            "text": "切",
+            "before": "qie4",
+            "after": "qie1"
+          }
+        ],
+        "scope": "Only seven pinyin fields changed; all 61 texts and break objects preserved; no review pass asserted.",
+        "pendingIssues": [],
+        "next": "Independent full blind review required by parent workflow."
+      },
+      "evidence": "# 独立拼音修正证据\n\n本轮只核实指定问题，读取了当前 OC01–OC61 完整标注稿与冻结纯文本。只写 speech-text.json 的七个 pinyin 字段；不宣布全文审核通过。逐项索引、前后值与哈希见 oc-pinyin-correction-report.json。没有查询库输出代替词典，也未发送稿件到网络；网上仅查公共词语及几何变换资料。当前无 tavily-search 工具，使用 web 搜索并打开原文。\n\n## B1-01 / B1-02\n\n原文 https://dict.concised.moe.edu.tw/dictView.jsp?ID=7457&q=1 ：词头“的”，拼音 de，注音轻声。释义区分名词/代词后表示所属以及修饰片语或子句后的助词用法。\n句内判断：OC16“非空组的当前最远右端”的“的”连接定语与名词性中心语；OC60“系数与扫描 y 坐标的乘积”同样连接运算对象与乘积。均不是实在或箭靶义。因此分别 di2、di4 改 de5，其他音节不变。\n\n## PN-M1\n\n原文 https://dict.concised.moe.edu.tw/dictView.jsp?ID=37447&la=0&powerMode=0 ：“左右”zuǒ yòu，第一义为左方与右方。\n句内判断：OC15“所以左右都允许等号”指两侧的边界条件。右为去声，不是上声；左不具紧接上声的变调条件。只将 zuo2 you3 改 zuo3 you4。\n\n## B1-03：数学剪切语境的独立核实\n\n1. 完整词条原文 https://zdic.net/hans/剪切 标“jiǎn qiē”，英文 shearing；释义是依靠剪切力分开材料。该词条不是数学专条，不能谎称其释义直接描述本稿变换。\n2. 原文 https://zdic.net/hans/切变 标“qiē biàn”，英文 shear；释义涉及相反平行力造成的形变。因此“不是剪断、只是形变”本身不是选 qiè 的条件。此相关词条仅用来核验义类，不将其冒充“剪切”的精确词条。\n3. 原文 https://zdic.net/hans/切 的 qiè 义项为密合、贴近、紧急、实在、反切等，详细释义亦有摩擦、接触、契合等；这些义项不对应本稿的坐标变换。不能因术语用于数学就自动改成 qiè。\n4. 数学语境依据是 MathWorks 官方文档 https://ww2.mathworks.cn/help/images/matrix-representation-of-geometric-transformations.html 的二维仿射变换表：名为“剪切”的矩阵为 [[1,sh_x,0],[sh_y,1,0],[0,0,1]]。令 sh_x=s、sh_y=0 即本稿 x′=x+s y、y′=y；逆变换 x=x′−s y′、y=y′ 正好对应 OC59–OC60。该文档确定术语含义，不提供拼音。\n\n明确的综合推断：四处“剪切”均指同一 shear 坐标变换，是剪切/切变的变形义类；精确词头“剪切”的可靠标音为 qiē，相关形变词“切变”也为 qiē。已查 qiè 义项没有本稿适用义。故不以“非材料切断”推导读音分叉；当前 qie4 是错误，四处均最小改为 qie1。本判断由词典标音与数学定义共同支持，未声称找到直接给出仿射剪切拼音的数学词典，也未凭首次标注者意图或库选音判定。\n\n## 验证与边界\n\n- 修改前核对三个输入 SHA-256，与交接完全一致。\n- JSON 深比较确认只改七个 pinyin 字段，所有 text、普通字符串、breakMs、数组与顺序保持不变。\n- 61 段拼接文字逐字等于冻结 narration-text.json。\n- narration-text.json 与 sentence-plan.json 的 SHA-256 保持交接值。\n- pnpm --config.verify-deps-before-run=false run video:check-text：退出码 0；61 annotated-text shots、330 semantic phrase boundaries。该检查只证明结构与文字对应，不代替下一轮独立全文盲审。\n- 本轮未新增待查项；四个问题已落实拼音修正，仍交由主代理安排后续独立审核。不宣布全文通过或音频已验收。\n- 无其他仓库文件写入、Git 操作、依赖安装、语音 API、合成、试听、渲染、导出、外部发信或再委派。\n"
+    }
+  },
+  "release": {
+    "textAndPinyinApproved": true,
+    "synthesisPrerequisitesMet": true,
+    "audioGenerated": false,
+    "listeningPerformed": false,
+    "videoExported": false,
+    "stopPoint": "#401–404 completed; stop before synthesis. #405/#406 not started. Issue states unchanged."
+  }
+}
