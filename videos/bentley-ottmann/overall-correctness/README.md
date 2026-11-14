@@ -2,7 +2,7 @@
 
 规格：[CNB #400](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/400)。#401–#404 已验收；现已获准继续 #405→#406，工单状态保持不变。
 
-**当前停点：61 段原速 WAV 已生成并完成机器评估，尚未正式采用。** 原始音频共 809.455 秒；机器标记为 `Mispronunciation=31`、`Omission=6`、`Insertion=3`。漏读／插入门禁未通过，不能提供导出命令。实际听辨、实测音画同步和成片验收均未完成；详见 [配音交接](NARRATION_HANDOFF.md)。下文画面和文稿验收是 `5a39664` 及其前序版本的无声阶段证据，不代表当前音频已验收。
+**当前停点：原 61 段音频保留；四段措辞候选已局部复测，尚未听辨或正式采用。** 原批次共 809.455 秒，标记为 `Mispronunciation=31`、`Omission=6`、`Insertion=3`。最新 OC14/19/20/52 候选复测为 `Mispronunciation=3`、`Omission=0`、`Insertion=0`，这是四段局部结果，不是全片重测或正式替换。完整前后文案、音频及证据见[候选复核](narration-candidates/REVIEW.md)。实际听辨、实测音画同步和成片验收均未完成；详见 [配音交接](NARRATION_HANDOFF.md)。下文画面和文稿验收是 `5a39664` 及其前序版本的无声阶段证据，不代表当前音频已验收。
 
 ## 当前制作入口
 

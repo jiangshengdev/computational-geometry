@@ -35,6 +35,8 @@
     "video:prepare-text": "node scripts/prepare-text.ts",
     "video:check-text": "node scripts/check-text.ts",
     "video:plan-narration": "node scripts/plan-narration.ts",
+    "video:plan-candidate": "node scripts/candidate-narration.ts --plan-only",
+    "video:synthesize-candidate": "node scripts/candidate-narration.ts --synthesize",
     "video:synthesize": "node scripts/synthesize-narration.ts",
     "video:assess": "node --use-env-proxy scripts/assess-narration.ts",
     "video:adopt-audio": "node scripts/adopt-measured-audio.ts",
