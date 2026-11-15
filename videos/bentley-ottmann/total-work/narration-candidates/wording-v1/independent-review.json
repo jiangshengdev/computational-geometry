@@ -1,0 +1,224 @@
+{
+  "scope": "TW06/TW21/TW26/TW34 candidate wording-v1 pre-synthesis independent local review",
+  "baseline": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+  "result": "local candidate text and audio-file/raw-machine-evidence review passed; not listening approval or adoption",
+  "reviews": {
+    "TW06": {
+      "textOnlyTargetChange": true,
+      "speechFlattenMatches": true,
+      "captionMappingUnchanged": true,
+      "breaks200400MatchSemanticPlan": true,
+      "breaks": [
+        200,
+        200,
+        200,
+        400,
+        200,
+        200,
+        200,
+        400
+      ],
+      "semanticReview": "逐位置序列1,1,1,4,1,1,1等价改写，E7/H10/k6及局部1/4/6不变"
+    },
+    "TW21": {
+      "textOnlyTargetChange": true,
+      "speechFlattenMatches": true,
+      "captionMappingUnchanged": true,
+      "breaks200400MatchSemanticPlan": true,
+      "breaks": [
+        200,
+        400,
+        200,
+        200,
+        400
+      ],
+      "semanticReview": "两份仍是两个原始长成员；x0与x2两阶段及新输出1/2不变"
+    },
+    "TW26": {
+      "textOnlyTargetChange": true,
+      "speechFlattenMatches": true,
+      "captionMappingUnchanged": true,
+      "breaks200400MatchSemanticPlan": true,
+      "breaks": [
+        200,
+        200,
+        400,
+        200,
+        200,
+        200,
+        400
+      ],
+      "semanticReview": "单组且无点为合取条件；有点/无点/零组分支不变"
+    },
+    "TW34": {
+      "textOnlyTargetChange": true,
+      "speechFlattenMatches": true,
+      "captionMappingUnchanged": true,
+      "breaks200400MatchSemanticPlan": true,
+      "breaks": [
+        200,
+        400,
+        200,
+        400
+      ],
+      "semanticReview": "明确否定不会展开全部成员对；固定直线和真实覆盖检查保留"
+    }
+  },
+  "pinyinReview": "Target phrase annotations checked against contextual meaning and saved pypinyin query. chang2 retained for long members (query wrongly selects zhang3); yi4 zu3 and bu2 hui4 contextual sandhi retained. No claim of dictionary adjudication. Untouched annotations reused.",
+  "sourceHashes": {
+    "narration-text": "2217e1d933b4756c1585b862a4082094137be489ccf39a259e22f89e3cad3670",
+    "speech-text": "908a651e49b9fc231135e9a890a43dce3ac4be479aa966e59cc857937b73d4fe",
+    "sentence-plan": "dbbfe8e2f2038c48b9fcb668f7c8bd79866e3f764c79f1da24acb8206aae0d87",
+    "change-review": "e20c6895539a43048481649a79f0953f6de89c595debe8d16e0c0a11886e6b33",
+    "query": "854efc82c42e9787fbf29035a9219ba22729bdfd60be705ae20dd1c92b6e5933"
+  },
+  "listened": false,
+  "audioApiCalled": false,
+  "adopted": false,
+  "limitations": [
+    "No actual listening; remaining machine pronunciation flags are unconfirmed.",
+    "No adoption, subtitle/timeline synchronization, video export or ticket-state review performed.",
+    "LFS pointers locally verified; upload/independent remote checkout remains production agent responsibility."
+  ],
+  "audioReview": [
+    {
+      "id": "TW06",
+      "sha256": "492f1eed2d62473816b296b0142733c8bd832f20f2e0c0c076ebff0d58f45d76",
+      "size": 1901804,
+      "seconds": 19.81,
+      "format": "48kHz/16bit/mono/PCM; all frames readable",
+      "beforeFlags": [
+        {
+          "word": "依次",
+          "type": "Mispronunciation",
+          "offsetMs": 4010.0
+        },
+        {
+          "word": "一",
+          "type": "Omission",
+          "offsetMs": null
+        },
+        {
+          "word": "七",
+          "type": "Mispronunciation",
+          "offsetMs": 8190.0
+        },
+        {
+          "word": "原始",
+          "type": "Mispronunciation",
+          "offsetMs": 11530.0
+        }
+      ],
+      "afterFlags": [
+        {
+          "word": "七",
+          "type": "Mispronunciation",
+          "offsetMs": 11680.0
+        },
+        {
+          "word": "原始",
+          "type": "Mispronunciation",
+          "offsetMs": 14900.0
+        }
+      ],
+      "stagedLfsPointerMatches": true
+    },
+    {
+      "id": "TW21",
+      "sha256": "25dd3470f05703371b0e2288d6934d943012f78a012ffd48b490bff3e488950d",
+      "size": 1617644,
+      "seconds": 16.85,
+      "format": "48kHz/16bit/mono/PCM; all frames readable",
+      "beforeFlags": [
+        {
+          "word": "的",
+          "type": "Insertion",
+          "offsetMs": 2360.0
+        },
+        {
+          "word": "个",
+          "type": "Omission",
+          "offsetMs": null
+        },
+        {
+          "word": "次",
+          "type": "Mispronunciation",
+          "offsetMs": 14720.0
+        }
+      ],
+      "afterFlags": [
+        {
+          "word": "事件",
+          "type": "Mispronunciation",
+          "offsetMs": 14850.0
+        }
+      ],
+      "stagedLfsPointerMatches": true
+    },
+    {
+      "id": "TW26",
+      "sha256": "73328b9cf9ec0f3b439cc2831fe43497fef98f8e336ffb02fb7cb48d90773797",
+      "size": 1515884,
+      "seconds": 15.79,
+      "format": "48kHz/16bit/mono/PCM; all frames readable",
+      "beforeFlags": [
+        {
+          "word": "而",
+          "type": "Omission",
+          "offsetMs": null
+        }
+      ],
+      "afterFlags": [],
+      "stagedLfsPointerMatches": true
+    },
+    {
+      "id": "TW34",
+      "sha256": "35ee132e073633f095e4efe2f85993602eb922527c3d258c837a01222ad7a491",
+      "size": 1279724,
+      "seconds": 13.33,
+      "format": "48kHz/16bit/mono/PCM; all frames readable",
+      "beforeFlags": [
+        {
+          "word": "覆盖",
+          "type": "Mispronunciation",
+          "offsetMs": 9760.0
+        },
+        {
+          "word": "不",
+          "type": "Omission",
+          "offsetMs": null
+        }
+      ],
+      "afterFlags": [
+        {
+          "word": "覆盖",
+          "type": "Mispronunciation",
+          "offsetMs": 9560.0
+        }
+      ],
+      "stagedLfsPointerMatches": true
+    }
+  ],
+  "totalCandidateSeconds": 65.78,
+  "unchangedBaselineFilesChecked": 331,
+  "sourceAndOriginalBatchUnchanged": true,
+  "intermediateFilesFound": [],
+  "rawCandidateTotals": {
+    "Omission": 0,
+    "Insertion": 0,
+    "Mispronunciation": 4
+  },
+  "codeReview": {
+    "baseline": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+    "reviewedCommit": "ecb8b5637cb1b18d901ecc9ee4e469db49e6ecb3",
+    "Standards": {
+      "reviewer": "tw_candidate_standards",
+      "findings": 0
+    },
+    "Spec": {
+      "reviewer": "tw_candidate_spec",
+      "findings": 0
+    },
+    "scope": "Read-only source/semantic/evidence review; not actual listening or remote verification."
+  }
+}
