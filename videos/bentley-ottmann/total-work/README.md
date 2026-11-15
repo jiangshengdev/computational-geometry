@@ -4,7 +4,7 @@
 
 依据为[第十章中文正文](../../../docs-site/i18n/zh-Hans/docusaurus-plugin-content-docs/current/segment-intersection/total-work.mdx)。#396 是文章规格，不是本集父规格。第九集成果不改动。
 
-当前为无声阶段：16 页、45 个独立教学步骤，1920×1080 逻辑尺寸、60 fps。暂定阅读时间线 54420 帧（15:07.000），包括每页完整终态至少两秒。该时间不是配音实测，后续必须按完整原速音频重新确定字幕、提示及镜头时长。本集无音频文件、Audio 元素或语音服务入口。
+当前为无声阶段：16 页、45 个独立教学步骤，1920×1080 逻辑尺寸、60 fps。暂定阅读时间线 54420 帧（15:07.000），包括每页完整终态至少两秒。该时间不是配音实测，后续必须按完整原速音频重新确定字幕、提示及镜头时长。生产预览仍无 Audio 元素；本轮合成的独立 WAV 仅存于待验收目录，尚未接入。
 
 ## 预览与检查
 
@@ -63,4 +63,17 @@ pnpm --config.verify-deps-before-run=false run video:check-layout
 
 ## 停点
 
-本轮不生成或接入语音，不执行音画同步，不渲染静帧、音轨或视频，不发布。后续 #412 必须使用定稿文本、合法配置的原速语音服务和实际音频时序；#413 由作者按[项目五阶段流程](../../../docs/agents/videos/operations.md#五阶段命令模板)导出，再验收真实成片。当前没有成片，不能声明成片验收完成。
+无声版已完成。本轮另获全片语音合成与机器评估授权，结果见 [配音交接](NARRATION_HANDOFF.md)；不接入正式素材、不执行音画同步、不渲染静帧、音轨或视频、不发布。后续 #412 必须使用定稿文本、合法配置的原速语音服务和实际音频时序；#413 由作者按[项目五阶段流程](../../../docs/agents/videos/operations.md#五阶段命令模板)导出，再验收真实成片。当前没有成片，不能声明成片验收完成。
+
+## 独立配音批次
+
+原速源素材与原始请求／评估证据位于 `narration-staging/original-speed/`，不在生产播放路径。口播、字幕、画面和暂定时间线保持无声验收版不变。`scripts/narration-plan.ts` 复用共享计划器，合成与评估入口复用共享请求调度、网络配置和不可重放记录；读取现有 `SPEECH_KEY` / `SPEECH_ENDPOINT`，不创建凭据别名。
+
+离线核验：
+
+```sh
+pnpm --config.verify-deps-before-run=false run narration:plan --dry-run
+pnpm --config.verify-deps-before-run=false run narration:check-staged --staging=narration-staging/original-speed --decode
+```
+
+合成使用 `narration:synthesize --plan=<计划路径> --plan-sha256=<计划哈希> --output=<新的批次目录>`；发请求前加 `--dry-run` 检查。续跑只使用已有共享 `--continue-unstarted` 语义，不重发已尝试或结果未知的请求。评估使用 `narration:assess --staging=<批次目录> [--shots=TWxx,...]`，已有结果不能重跑。上述真实服务入口均须处于相应用户授权范围，不因命令存在自动授权后续批次。

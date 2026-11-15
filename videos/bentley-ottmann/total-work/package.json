@@ -11,6 +11,7 @@
   "dependencies": {
     "@remotion/cli": "4.0.543",
     "katex": "0.19.1",
+    "microsoft-cognitiveservices-speech-sdk": "1.53.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "remotion": "4.0.543"
@@ -30,7 +31,11 @@
     "lint": "eslint src scripts && tsc",
     "video:check-content": "node scripts/check-content.ts",
     "video:check-layout": "node scripts/check-layout.ts",
-    "video:check-text": "node scripts/check-text.ts"
+    "video:check-text": "node scripts/check-text.ts",
+    "narration:plan": "node scripts/plan-narration.ts",
+    "narration:synthesize": "node scripts/synthesize-narration.ts",
+    "narration:assess": "node scripts/assess-narration.ts",
+    "narration:check-staged": "node scripts/check-staged-audio.ts"
   },
   "type": "module"
 }

@@ -1,0 +1,1450 @@
+{
+  "mode": "plan-only",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "automaticRetries": 0,
+  "requests": 45,
+  "documents": [
+    {
+      "id": "TW01",
+      "audioFile": "TW01.wav",
+      "text": "这四条线段所在的直线不同。却都包含原点。蓝色与橙色两条穿过原点。紫色这一条在这里结束。绿色这一条从这里开始。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">这四条线段所在<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>直线<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同。<break time=\"200ms\"/>却<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>包含原点。<break time=\"400ms\"/>蓝<phoneme alphabet=\"sapi\" ph=\"se 4 yu 3\">色与</phoneme>橙<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>两条穿过原点。<break time=\"200ms\"/>紫<phoneme alphabet=\"sapi\" ph=\"se 4\">色</phoneme>这<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>条在这里<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>束。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lv 4 se 4\">绿色</phoneme>这<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>条<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>这里开始。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "b5979dbb1698e800a86a6bbbf89f6bcccf946c4458458c9c4287417f51eae9d0",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 20,
+          "breakMs": 400
+        },
+        {
+          "offset": 32,
+          "breakMs": 200
+        },
+        {
+          "offset": 43,
+          "breakMs": 200
+        },
+        {
+          "offset": 54,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW02",
+      "audioFile": "TW02.wav",
+      "text": "沿用同点报告规则。开始者已经加入。结束者在报告后才退出。所以报告时。这四条闭线段分别属于四个不同的非零同线组。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme>用同点报告规则。<break time=\"200ms\"/>开始者已<phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>加入。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>束者在报告后才退出。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme>报告时。<break time=\"200ms\"/>这四条闭线段<phoneme alphabet=\"sapi\" ph=\"fen 1 bie 2 shu 3\">分别属</phoneme>于四个<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>非零同线组。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "2a1ace50973a5f49afb048a6f795f0d5b578a25114f02b372c95f37157b47038",
+      "pauses": [
+        {
+          "offset": 9,
+          "breakMs": 200
+        },
+        {
+          "offset": 17,
+          "breakMs": 200
+        },
+        {
+          "offset": 28,
+          "breakMs": 400
+        },
+        {
+          "offset": 34,
+          "breakMs": 200
+        },
+        {
+          "offset": 55,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW03",
+      "audioFile": "TW03.wav",
+      "text": "依次记录这六个不同的原始无序输入对。结果都位于原点。但每对身份分别保留。这里只处理一个事件位置。却已经要输出六条结果。事件少。不代表这一次要做的工作少。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">依次记录这六个<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>原始无序输入对。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>位于原点。<break time=\"200ms\"/>但每对身<phoneme alphabet=\"sapi\" ph=\"fen 4 fen 1 bie 2\">份分别</phoneme>保留。<break time=\"400ms\"/>这里<phoneme alphabet=\"sapi\" ph=\"zhi 3 chu 2 li 3 yi 2\">只处理一</phoneme>个事件位置。<break time=\"200ms\"/>却已<phoneme alphabet=\"sapi\" ph=\"jing 1 yao 4\">经要</phoneme>输出六条<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果。<break time=\"200ms\"/>事件<phoneme alphabet=\"sapi\" ph=\"shao 3\">少</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>代表这<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次<phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>做<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>工<phoneme alphabet=\"sapi\" ph=\"zuo 4 shao 3\">作少</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "4120153de8ed05c93eef815f07830355b3bdfaafbf918972e004dc88dca07fe1",
+      "pauses": [
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 36,
+          "breakMs": 400
+        },
+        {
+          "offset": 48,
+          "breakMs": 200
+        },
+        {
+          "offset": 59,
+          "breakMs": 200
+        },
+        {
+          "offset": 63,
+          "breakMs": 200
+        },
+        {
+          "offset": 76,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW04",
+      "audioFile": "TW04.wav",
+      "text": "用字母 n 表示原始输入份数。用字母 k 表示相交的原始无序输入对数。每对的完整交集算一条。点和非零闭区间都如此。重合输入仍各算一份。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">用字母 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">N</say-as></lang> 表示原始输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>。<break time=\"200ms\"/>用字母 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">K</say-as></lang> 表示<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>原始无序输入对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>每对<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>完整交集算<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>条。<break time=\"200ms\"/>点<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>非零闭<phoneme alphabet=\"sapi\" ph=\"qu 1 jian 1 dou 1\">区间都</phoneme>如此。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"chong 2 he 2\">重合</phoneme>输入仍各算<phoneme alphabet=\"sapi\" ph=\"yi 2 fen 4\">一份</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "ce8a7ebbcde60979ca756a380aedadd4dc725782bacd858c92ff0ffd466e9a6e",
+      "pauses": [
+        {
+          "offset": 15,
+          "breakMs": 200
+        },
+        {
+          "offset": 35,
+          "breakMs": 400
+        },
+        {
+          "offset": 46,
+          "breakMs": 200
+        },
+        {
+          "offset": 57,
+          "breakMs": 200
+        },
+        {
+          "offset": 67,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW05",
+      "audioFile": "TW05.wav",
+      "text": "用大写 E 累计处理了多少不同事件位置。用大写 H 把每次参与的不同非零同线组数加起来。同一个组在不同事件参加。要分别计入。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">用<phoneme alphabet=\"sapi\" ph=\"da 4 xie 3\">大写</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">E</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 chu 2 li 3 le 5\">累计处理了</phoneme>多<phoneme alphabet=\"sapi\" ph=\"shao 3 bu 4\">少不</phoneme>同事件位置。<break time=\"400ms\"/>用<phoneme alphabet=\"sapi\" ph=\"da 4 xie 3\">大写</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">H</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>每次<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4 de 5 bu 4\">参与的不</phoneme>同非零同线组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"qi 3 lai 5\">起来</phoneme>。<break time=\"200ms\"/>同<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个组在<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同事件<phoneme alphabet=\"sapi\" ph=\"can 1\">参</phoneme>加。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"yao 4 fen 1 bie 2\">要分别</phoneme>计入。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "22010cfe00b92144487808ffd385dd67f03abf4b82bcd2a3c00abaa161e11ae9",
+      "pauses": [
+        {
+          "offset": 20,
+          "breakMs": 400
+        },
+        {
+          "offset": 44,
+          "breakMs": 200
+        },
+        {
+          "offset": 56,
+          "breakMs": 200
+        },
+        {
+          "offset": 62,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW06",
+      "audioFile": "TW06.wav",
+      "text": "沿完整位置次序走过七个事件。每次参与的组数依次是一、一、一、四、一、一、一。于是全程事件数是七。累计参与组数是十。相交原始对数是六。原点那一次的局部数目仍然是一、四、六。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme>完整位置次序走过七个事件。<break time=\"200ms\"/>每次<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4 de 5\">参与的</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>依次是<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、四、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"400ms\"/>于是全程事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>是七。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 can 1 yu 4\">累计参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>是十。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交原始对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>是六。<break time=\"200ms\"/>原点<phoneme alphabet=\"sapi\" ph=\"na 4 yi 2\">那一</phoneme>次<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>局部<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>目仍然是<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、四、六。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f350354426994e18b98025c662d2e5a60b596de2c3593779fe31ed7020b23b93",
+      "pauses": [
+        {
+          "offset": 14,
+          "breakMs": 200
+        },
+        {
+          "offset": 38,
+          "breakMs": 400
+        },
+        {
+          "offset": 48,
+          "breakMs": 200
+        },
+        {
+          "offset": 57,
+          "breakMs": 200
+        },
+        {
+          "offset": 66,
+          "breakMs": 200
+        },
+        {
+          "offset": 85,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW07",
+      "audioFile": "TW07.wav",
+      "text": "本集数的是精确算术、比较和基本记录操作的次数。例如一次有理数运算、一次坐标比较或一次记录访问。一次树查找包含多次比较。不能把整次查找免费算作一个基本操作。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">本集<phoneme alphabet=\"sapi\" ph=\"shu 3 de 5\">数的</phoneme>是精确算术、<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>基本记录操<phoneme alphabet=\"sapi\" ph=\"zuo 4 de 5\">作的</phoneme>次<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>例如<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次<phoneme alphabet=\"sapi\" ph=\"you 2 li 3 shu 4\">有理数</phoneme>运算、<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次坐标<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较或<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次记录访问。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次树<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>找包含多次<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>整次<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>找免费算<phoneme alphabet=\"sapi\" ph=\"zuo 4 yi 2\">作一</phoneme>个基本操<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "4848cd2448f3da9238aa6e441686607216a806d80817bd075e66274c671e470e",
+      "pauses": [
+        {
+          "offset": 23,
+          "breakMs": 200
+        },
+        {
+          "offset": 47,
+          "breakMs": 400
+        },
+        {
+          "offset": 59,
+          "breakMs": 200
+        },
+        {
+          "offset": 77,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW08",
+      "audioFile": "TW08.wav",
+      "text": "活动组顺序使用 A V L 树。队列、固定组查找和成员索引也使用有序容器。这里沿用这些容器的对数操作成本。不展开平衡维护。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">活动组顺序使用 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">A</say-as></lang> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">V</say-as></lang> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">L</say-as></lang> 树。<break time=\"200ms\"/>队列、固定组<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>找<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>成员<phoneme alphabet=\"sapi\" ph=\"suo 2 yin 3\">索引</phoneme>也使用<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>序容器。<break time=\"400ms\"/>这里<phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme>用这些容器<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>操<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>成本。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>展开平衡维护。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "90a4fc1b0b269e9993f96ebc0374eeeade256f8201b8f113c2314c2152b980b6",
+      "pauses": [
+        {
+          "offset": 16,
+          "breakMs": 200
+        },
+        {
+          "offset": 37,
+          "breakMs": 400
+        },
+        {
+          "offset": 53,
+          "breakMs": 200
+        },
+        {
+          "offset": 61,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW09",
+      "audioFile": "TW09.wav",
+      "text": "先讨论至少有一份输入的情况。对数的底取二。大写 O 表示操作次数可以由所写表达式的固定常数倍控制。它不是每份输入的精确次数。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">先讨<phoneme alphabet=\"sapi\" ph=\"lun 4\">论</phoneme>至<phoneme alphabet=\"sapi\" ph=\"shao 3 you 3 yi 2 fen 4\">少有一份</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>情况。<break time=\"200ms\"/>对<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5 di 3 qu 3\">数的底取</phoneme>二。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"da 4 xie 3\">大写</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">O</say-as></lang> 表示操<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>次<phoneme alphabet=\"sapi\" ph=\"shu 4 ke 2 yi 3\">数可以</phoneme>由所<phoneme alphabet=\"sapi\" ph=\"xie 3\">写</phoneme>表达式<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>固定常<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>倍控制。<break time=\"200ms\"/>它<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>是每<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>精确次<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "511a52871ef074b7d6ec53e86227a5293bb6b64138e681bc3c475039ccbe5fb6",
+      "pauses": [
+        {
+          "offset": 14,
+          "breakMs": 200
+        },
+        {
+          "offset": 21,
+          "breakMs": 400
+        },
+        {
+          "offset": 49,
+          "breakMs": 200
+        },
+        {
+          "offset": 62,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW10",
+      "audioFile": "TW10.wav",
+      "text": "每份非零输入至多提供两个端点位置。点输入只提供一个。共享位置合并只会减少数量。所以端点位置至多是原始输入份数的两倍。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">每<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>非零输入至多<phoneme alphabet=\"sapi\" ph=\"ti 2\">提</phoneme><phoneme alphabet=\"sapi\" ph=\"gong 1\">供</phoneme>两个端点位置。<break time=\"200ms\"/>点输入<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"ti 2\">提</phoneme><phoneme alphabet=\"sapi\" ph=\"gong 1 yi 2\">供一</phoneme>个。<break time=\"400ms\"/>共享位置<phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>并<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>减<phoneme alphabet=\"sapi\" ph=\"shao 3 shu 4 liang 4\">少数量</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme>端点位置至多是原始输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4 de 5\">份数的</phoneme>两倍。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "95f77dee22aaeaef8f3407a71e85942a14984d4f69a930cb2bf81c02869df6c0",
+      "pauses": [
+        {
+          "offset": 17,
+          "breakMs": 200
+        },
+        {
+          "offset": 26,
+          "breakMs": 400
+        },
+        {
+          "offset": 39,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW11",
+      "audioFile": "TW11.wav",
+      "text": "其余事件位置来自不同支撑直线上的真实交点。给每个这样的位置选一对在这里相交的原始输入作为见证。不同直线至多有一个交点。所以同一对不能给两个不同位置作见证。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">其余事件位置来自<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同支撑直线上<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>真实交点。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"gei 3\">给</phoneme>每个这样<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>位置选<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>对在这里<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>原始输入<phoneme alphabet=\"sapi\" ph=\"zuo 4 wei 2\">作为</phoneme>见证。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同直线至多<phoneme alphabet=\"sapi\" ph=\"you 3 yi 2\">有一</phoneme>个交点。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme>同<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>对<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能<phoneme alphabet=\"sapi\" ph=\"gei 3\">给</phoneme>两个<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同位置<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>见证。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "661ca3d4ee884e6717b81ef0421fa3470a80d081b81ddf829b40a0aeb409e925",
+      "pauses": [
+        {
+          "offset": 21,
+          "breakMs": 400
+        },
+        {
+          "offset": 47,
+          "breakMs": 200
+        },
+        {
+          "offset": 59,
+          "breakMs": 200
+        },
+        {
+          "offset": 77,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW12",
+      "audioFile": "TW12.wav",
+      "text": "因此。非端点事件位置至多有 k 个。加上端点来源。事件数至多是输入份数的两倍。再加相交原始对数。重叠区间内的无穷多个点。不会各自成为事件。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">因此。<break time=\"200ms\"/>非端点事件位置至多<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">K</say-as></lang> 个。<break time=\"200ms\"/>加上端点来源。<break time=\"200ms\"/>事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>至多是输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4 de 5\">份数的</phoneme>两倍。<break time=\"200ms\"/>再加<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交原始对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"chong 2 die 2 qu 1 jian 1\">重叠区间</phoneme>内<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>无穷多个点。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>各自成<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>事件。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "7528415ba98463b8772990117b8c2eb87540d7f96737a45cb67754903ef43a1b",
+      "pauses": [
+        {
+          "offset": 3,
+          "breakMs": 200
+        },
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 25,
+          "breakMs": 200
+        },
+        {
+          "offset": 39,
+          "breakMs": 200
+        },
+        {
+          "offset": 48,
+          "breakMs": 400
+        },
+        {
+          "offset": 60,
+          "breakMs": 200
+        },
+        {
+          "offset": 69,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW13",
+      "audioFile": "TW13.wav",
+      "text": "任一事件位置用小写 p 表示。用 h 下标 p 表示这里不同的非零参与组数。处理前经过当前位置的旧活动组与本次开始者所属的组合并。同组只算一次。点输入不算组。结束者报告后才退出。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"ren 4 yi 1\">任一</phoneme>事件位置用<phoneme alphabet=\"sapi\" ph=\"xiao 2 xie 3\">小写</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 表示。<break time=\"200ms\"/>用 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">H</say-as></lang> 下标 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 表示这里<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>非零<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"chu 2 li 3\">处理</phoneme>前<phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>过<phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme>前位置<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>旧活动组<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>本次开始者<phoneme alphabet=\"sapi\" ph=\"suo 2 shu 3 de 5\">所属的</phoneme>组<phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>并。<break time=\"200ms\"/>同组<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>算<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次。<break time=\"400ms\"/>点输入<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>算组。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>束者报告后才退出。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "2faf824711c944c7e128891f69de4dd8e9aa92915edeb90f5fd646c2ecbb3836",
+      "pauses": [
+        {
+          "offset": 15,
+          "breakMs": 200
+        },
+        {
+          "offset": 38,
+          "breakMs": 200
+        },
+        {
+          "offset": 65,
+          "breakMs": 200
+        },
+        {
+          "offset": 72,
+          "breakMs": 400
+        },
+        {
+          "offset": 79,
+          "breakMs": 200
+        },
+        {
+          "offset": 89,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW14",
+      "audioFile": "TW14.wav",
+      "text": "用 c 下标 p 表示这里新报告的跨组非零输入对数。同线对和含点输入的对不计在这个量中。回到原点的报告时刻。参与组数是四。这次跨组新输出是六。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">用 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">C</say-as></lang> 下标 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 表示这里新报告<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>跨组非零输入对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>同线对<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>含点输入<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>对<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>计在<phoneme alphabet=\"sapi\" ph=\"zhe 4 ge 5 liang 4 zhong 1\">这个量中</phoneme>。<break time=\"400ms\"/>回到原点<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>报告时刻。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>是四。<break time=\"200ms\"/>这次跨组新输出是六。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f780361c78cc45ffe3e4ba63337e4d66da59300bb6a1c717cd4efec38076d7fe",
+      "pauses": [
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 44,
+          "breakMs": 400
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 61,
+          "breakMs": 200
+        },
+        {
+          "offset": 71,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW15",
+      "audioFile": "TW15.wav",
+      "text": "至少有两个组时。每组都非空。而且各成员包含当前位置。每两个组各选一份成员。就得到一个真实相交的原始输入对。不同组对选出的原始对不同。因此组对的数量。不超过这一次的跨组新输出数量。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">至<phoneme alphabet=\"sapi\" ph=\"shao 3 you 3\">少有</phoneme>两个组时。<break time=\"200ms\"/>每组<phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>非<phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>。<break time=\"200ms\"/>而且各成员包含<phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme>前位置。<break time=\"400ms\"/>每两个组各选<phoneme alphabet=\"sapi\" ph=\"yi 2 fen 4\">一份</phoneme>成员。<break time=\"200ms\"/>就<phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个真实<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>原始输入对。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同组对选出<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>原始对<phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>同。<break time=\"200ms\"/>因此组对<phoneme alphabet=\"sapi\" ph=\"de 5 shu 4 liang 4\">的数量</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>超过这<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>跨组新输出<phoneme alphabet=\"sapi\" ph=\"shu 4 liang 4\">数量</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "12367c620e37b9013136eed197a7cffc3ea33209172b8ec85e8929590b40ccdd",
+      "pauses": [
+        {
+          "offset": 8,
+          "breakMs": 200
+        },
+        {
+          "offset": 14,
+          "breakMs": 200
+        },
+        {
+          "offset": 26,
+          "breakMs": 400
+        },
+        {
+          "offset": 37,
+          "breakMs": 200
+        },
+        {
+          "offset": 53,
+          "breakMs": 200
+        },
+        {
+          "offset": 66,
+          "breakMs": 200
+        },
+        {
+          "offset": 74,
+          "breakMs": 200
+        },
+        {
+          "offset": 89,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW16",
+      "audioFile": "TW16.wav",
+      "text": "参与组数至少为二时。将它减一。所得的数至少为一。因此参与组数不超过参与组数与这个差的乘积。再用上一行的界。就得到参与组数不超过当场跨组新输出数的两倍。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>至<phoneme alphabet=\"sapi\" ph=\"shao 3 wei 2\">少为</phoneme>二时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"jiang 1\">将</phoneme>它减<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>所<phoneme alphabet=\"sapi\" ph=\"de 2 de 5 shu 4\">得的数</phoneme>至<phoneme alphabet=\"sapi\" ph=\"shao 3 wei 2 yi 1\">少为一</phoneme>。<break time=\"400ms\"/>因此<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4 bu 4\">数不</phoneme>超过<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4 yu 3 zhe 4 ge 5 cha 1 de 5 cheng 2\">数与这个差的乘</phoneme>积。<break time=\"200ms\"/>再用上<phoneme alphabet=\"sapi\" ph=\"yi 4 hang 2 de 5\">一行的</phoneme>界。<break time=\"200ms\"/>就<phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4 bu 4\">数不</phoneme>超过<phoneme alphabet=\"sapi\" ph=\"dang 1 chang 3\">当场</phoneme>跨组新输出<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5\">数的</phoneme>两倍。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "a3df06dffdefaab21f1f896c0b003b51d57639371dbd2aea1470a19a80910042",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 15,
+          "breakMs": 200
+        },
+        {
+          "offset": 24,
+          "breakMs": 400
+        },
+        {
+          "offset": 45,
+          "breakMs": 200
+        },
+        {
+          "offset": 53,
+          "breakMs": 200
+        },
+        {
+          "offset": 75,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW17",
+      "audioFile": "TW17.wav",
+      "text": "只有一个组时。这一个组的贡献计在事件本身。零个组时没有组贡献。例如孤立的点输入事件。点输入需要的输出工作稍后单独计入。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"zhi 2 you 3 yi 2\">只有一</phoneme>个组时。<break time=\"200ms\"/>这<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个组<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>贡献计在事件本身。<break time=\"400ms\"/>零个组时<phoneme alphabet=\"sapi\" ph=\"mei 2 you 3\">没有</phoneme>组贡献。<break time=\"200ms\"/>例如孤立<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>点输入事件。<break time=\"200ms\"/>点输入需<phoneme alphabet=\"sapi\" ph=\"yao 4 de 5\">要的</phoneme>输出工<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme><phoneme alphabet=\"sapi\" ph=\"shao 1\">稍</phoneme>后<phoneme alphabet=\"sapi\" ph=\"dan 1\">单</phoneme>独计入。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "9db033d4ffb115aad5d39606bf70bd98ab3bc0fd9addd7c14a919655209179ec",
+      "pauses": [
+        {
+          "offset": 7,
+          "breakMs": 200
+        },
+        {
+          "offset": 21,
+          "breakMs": 400
+        },
+        {
+          "offset": 31,
+          "breakMs": 200
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 59,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW18",
+      "audioFile": "TW18.wav",
+      "text": "把每次事件的参与组数相加。用大写 H 表示这个和。画面上的求和符号。就是把每个位置对应的量加起来。每个事件保守记一次。再加两倍的跨组新输出总数。就覆盖了零组、单组和多组情况。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>每次事件<phoneme alphabet=\"sapi\" ph=\"de 5 can 1 yu 4\">的参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4 xiang 1\">数相</phoneme>加。<break time=\"200ms\"/>用<phoneme alphabet=\"sapi\" ph=\"da 4 xie 3\">大写</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">H</say-as></lang> 表示<phoneme alphabet=\"sapi\" ph=\"zhe 4 ge 5 he 2\">这个和</phoneme>。<break time=\"200ms\"/>画面上<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>求<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>符<phoneme alphabet=\"sapi\" ph=\"hao 4\">号</phoneme>。<break time=\"200ms\"/>就是<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>每个位置对<phoneme alphabet=\"sapi\" ph=\"ying 4 de 5 liang 4\">应的量</phoneme>加<phoneme alphabet=\"sapi\" ph=\"qi 3 lai 5\">起来</phoneme>。<break time=\"400ms\"/>每个事件<phoneme alphabet=\"sapi\" ph=\"bao 2 shou 3\">保守</phoneme>记<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次。<break time=\"200ms\"/>再加两倍<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>跨组新输出总<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>就覆盖<phoneme alphabet=\"sapi\" ph=\"le 5\">了</phoneme>零组、<phoneme alphabet=\"sapi\" ph=\"dan 1\">单</phoneme>组<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>多组情况。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "1478dd1febd50d0b5731b04282657e1d613370ae5302679e25fc86c2c292e426",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 25,
+          "breakMs": 200
+        },
+        {
+          "offset": 34,
+          "breakMs": 200
+        },
+        {
+          "offset": 49,
+          "breakMs": 400
+        },
+        {
+          "offset": 59,
+          "breakMs": 200
+        },
+        {
+          "offset": 72,
+          "breakMs": 200
+        },
+        {
+          "offset": 87,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW19",
+      "audioFile": "TW19.wav",
+      "text": "上集的跨组唯一报告保证。同一个原始对不会在别的事件再次支付费用。所以全部跨组新输出数不超过 k 这个总数。代入事件数的界。累计参与组数至多是输入份数的两倍。再加相交原始对数的三倍。于是它是输入量与输出量之和的常数倍。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">上集<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>跨组唯<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>报告保证。<break time=\"200ms\"/>同<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个原始对<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme><phoneme alphabet=\"sapi\" ph=\"hui 4\">会</phoneme>在<phoneme alphabet=\"sapi\" ph=\"bie 2 de 5\">别的</phoneme>事件再次支付费用。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme>全部跨组新输出<phoneme alphabet=\"sapi\" ph=\"shu 4 bu 4\">数不</phoneme>超过 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">K</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"zhe 4 ge 5\">这个</phoneme>总<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>代入事件<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5\">数的</phoneme>界。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 can 1 yu 4\">累计参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>至多是输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4 de 5\">份数的</phoneme>两倍。<break time=\"200ms\"/>再加<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交原始对<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5\">数的</phoneme>三倍。<break time=\"200ms\"/>于是它是输入<phoneme alphabet=\"sapi\" ph=\"liang 4 yu 3\">量与</phoneme>输出<phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme>之<phoneme alphabet=\"sapi\" ph=\"he 2 de 5\">和的</phoneme>常<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>倍。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "bfa59eb50d1711173532073c25f011a6096409574966973cfd24774b7c50952d",
+      "pauses": [
+        {
+          "offset": 12,
+          "breakMs": 200
+        },
+        {
+          "offset": 32,
+          "breakMs": 200
+        },
+        {
+          "offset": 53,
+          "breakMs": 400
+        },
+        {
+          "offset": 61,
+          "breakMs": 200
+        },
+        {
+          "offset": 78,
+          "breakMs": 200
+        },
+        {
+          "offset": 90,
+          "breakMs": 200
+        },
+        {
+          "offset": 108,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW20",
+      "audioFile": "TW20.wav",
+      "text": "换成一个独立的三输入案例。两份长成员都覆盖从零到六的闭区间。一份短成员覆盖从二到三的闭区间。三份都在横轴上。分行只为区分身份。并没有改变几何高度。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">换成<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个独立<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>三输入案例。<break time=\"200ms\"/>两<phoneme alphabet=\"sapi\" ph=\"fen 4 chang 2 cheng 2 yuan 2 dou 1\">份长成员都</phoneme>覆盖<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>零到六<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>闭<phoneme alphabet=\"sapi\" ph=\"qu 1 jian 1\">区间</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"yi 2 fen 4\">一份</phoneme>短成员覆盖<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>二到三<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>闭<phoneme alphabet=\"sapi\" ph=\"qu 1 jian 1\">区间</phoneme>。<break time=\"400ms\"/>三<phoneme alphabet=\"sapi\" ph=\"fen 4 dou 1\">份都</phoneme>在<phoneme alphabet=\"sapi\" ph=\"heng 2 zhou 2\">横轴</phoneme>上。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"fen 1 hang 2 zhi 3 wei 4 qu 1 fen 1\">分行只为区分</phoneme>身<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/>并<phoneme alphabet=\"sapi\" ph=\"mei 2 you 3\">没有</phoneme>改变<phoneme alphabet=\"sapi\" ph=\"ji 3\">几</phoneme>何高<phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "d7b04c562d8a9e23e1b4f3fbe5eaafa19924a2d3f278fdd2968a772bc3fe4478",
+      "pauses": [
+        {
+          "offset": 13,
+          "breakMs": 200
+        },
+        {
+          "offset": 30,
+          "breakMs": 200
+        },
+        {
+          "offset": 46,
+          "breakMs": 400
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 63,
+          "breakMs": 200
+        },
+        {
+          "offset": 73,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW21",
+      "audioFile": "TW21.wav",
+      "text": "当 x 坐标为零时。两个长成员报告一条从零到六的完整重叠区间。当 x 坐标为二时。短成员与两个长成员分别报告一条从二到三的完整重叠区间。前两次事件分别新增一对和两对。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>零时。<break time=\"200ms\"/>两个<phoneme alphabet=\"sapi\" ph=\"chang 2 cheng 2 yuan 2\">长成员</phoneme>报告<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>条<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>零到六<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>完整<phoneme alphabet=\"sapi\" ph=\"chong 2 die 2 qu 1 jian 1\">重叠区间</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>二时。<break time=\"200ms\"/>短成员<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>两个<phoneme alphabet=\"sapi\" ph=\"chang 2 cheng 2 yuan 2 fen 1 bie 2\">长成员分别</phoneme>报告<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>条<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>二到三<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>完整<phoneme alphabet=\"sapi\" ph=\"chong 2 die 2 qu 1 jian 1\">重叠区间</phoneme>。<break time=\"200ms\"/>前两次事件<phoneme alphabet=\"sapi\" ph=\"fen 1 bie 2\">分别</phoneme>新增<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>对<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>两对。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "52541c30f8453ab9a3727f1f9181127a0167f4361c1626878de4fdb6d2b55739",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 31,
+          "breakMs": 400
+        },
+        {
+          "offset": 41,
+          "breakMs": 200
+        },
+        {
+          "offset": 68,
+          "breakMs": 200
+        },
+        {
+          "offset": 83,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW22",
+      "audioFile": "TW22.wav",
+      "text": "到 x 坐标为三时。只按结束身份删除短成员。两个长成员和这个组继续保留。这里不遍历整个旧成员表。也不重新输出。先前的长区间结果始终保持完整。不能拿它支付每一次全组扫描。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">到 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>三时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>按<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>束身<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>删除短成员。<break time=\"200ms\"/>两个<phoneme alphabet=\"sapi\" ph=\"chang 2 cheng 2 yuan 2 he 2 zhe 4 ge 5\">长成员和这个</phoneme>组继续保留。<break time=\"400ms\"/>这里<phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>遍历整个旧成员表。<break time=\"200ms\"/>也<phoneme alphabet=\"sapi\" ph=\"bu 4 chong 2 xin 1\">不重新</phoneme>输出。<break time=\"200ms\"/>先前<phoneme alphabet=\"sapi\" ph=\"de 5 chang 2 qu 1 jian 1 jie 2\">的长区间结</phoneme>果始终保持完整。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能拿它支付每<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次全组<phoneme alphabet=\"sapi\" ph=\"sao 3\">扫</phoneme>描。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "6d7565a2a6538edc4c5e214cd11723272c3a184a1c8d42ace3fcbef021846889",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 22,
+          "breakMs": 200
+        },
+        {
+          "offset": 36,
+          "breakMs": 400
+        },
+        {
+          "offset": 48,
+          "breakMs": 200
+        },
+        {
+          "offset": 55,
+          "breakMs": 200
+        },
+        {
+          "offset": 70,
+          "breakMs": 200
+        },
+        {
+          "offset": 84,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW23",
+      "audioFile": "TW23.wav",
+      "text": "到 x 坐标为六时。两个长成员结束。组才变空。四次事件的新输出依次是一、二、零、零。累计仍是三对。结束事件所做的必要删除另计。但不重新枚举这些旧对。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">到 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>六时。<break time=\"200ms\"/>两个<phoneme alphabet=\"sapi\" ph=\"chang 2 cheng 2 yuan 2 jie 2\">长成员结</phoneme>束。<break time=\"200ms\"/>组才变<phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>。<break time=\"400ms\"/>四次事件<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新输出依次是<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、二、零、零。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4\">累计</phoneme>仍是三对。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>束事件所做<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>必<phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>删除另计。<break time=\"200ms\"/>但<phoneme alphabet=\"sapi\" ph=\"bu 4 chong 2 xin 1\">不重新</phoneme>枚举这些旧对。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "84220fe8b4b48b5b37553e0751560880dbef3854959152cecd03deabbcdbc99f",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 23,
+          "breakMs": 400
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 49,
+          "breakMs": 200
+        },
+        {
+          "offset": 63,
+          "breakMs": 200
+        },
+        {
+          "offset": 74,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW24",
+      "audioFile": "TW24.wav",
+      "text": "用大写 M 下标 p 表示非零参与成员总数。用 t 下标 p 表示这个位置的点输入数。普通计算只在至少有两个组。或者有点输入时。才把相关成员展开成临时列表。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">用<phoneme alphabet=\"sapi\" ph=\"da 4 xie 3\">大写</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">M</say-as></lang> 下标 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 表示非零<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>成员总<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>用 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">T</say-as></lang> 下标 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">P</say-as></lang> 表示<phoneme alphabet=\"sapi\" ph=\"zhe 4 ge 5\">这个</phoneme>位置<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>点输入<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>普<phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme>计算<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>在至<phoneme alphabet=\"sapi\" ph=\"shao 3 you 3\">少有</phoneme>两个组。<break time=\"200ms\"/>或者<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>点输入时。<break time=\"200ms\"/>才<phoneme alphabet=\"sapi\" ph=\"ba 3 xiang 1\">把相</phoneme>关成员展开成临时列表。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "70432acc6e042a609a818357f341926a3b4ee2ba917e5fd9013b2d07653bc170",
+      "pauses": [
+        {
+          "offset": 22,
+          "breakMs": 200
+        },
+        {
+          "offset": 43,
+          "breakMs": 400
+        },
+        {
+          "offset": 56,
+          "breakMs": 200
+        },
+        {
+          "offset": 64,
+          "breakMs": 200
+        },
+        {
+          "offset": 78,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW25",
+      "audioFile": "TW25.wav",
+      "text": "至少有两个组时。每份成员至少与另一个组的一份成员配对。将各成员参与跨组输出的次数相加。每条结果被两端各数一次。因此展开的成员总数。不超过跨组新输出数的两倍。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">至<phoneme alphabet=\"sapi\" ph=\"shao 3 you 3\">少有</phoneme>两个组时。<break time=\"200ms\"/>每<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>成员至<phoneme alphabet=\"sapi\" ph=\"shao 3 yu 3\">少与</phoneme>另<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个组<phoneme alphabet=\"sapi\" ph=\"de 5 yi 2 fen 4\">的一份</phoneme>成员配对。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"jiang 1\">将</phoneme>各成员<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>跨组输出<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>次<phoneme alphabet=\"sapi\" ph=\"shu 4 xiang 1\">数相</phoneme>加。<break time=\"200ms\"/>每条<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果被两端各<phoneme alphabet=\"sapi\" ph=\"shu 3 yi 2\">数一</phoneme>次。<break time=\"200ms\"/>因此展开<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>成员总<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>超过跨组新输出<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5\">数的</phoneme>两倍。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "653cbe1509d8976dd9c3a296389f05d0c3d3168ae0dc11aca24337068edf95d1",
+      "pauses": [
+        {
+          "offset": 8,
+          "breakMs": 200
+        },
+        {
+          "offset": 27,
+          "breakMs": 400
+        },
+        {
+          "offset": 43,
+          "breakMs": 200
+        },
+        {
+          "offset": 55,
+          "breakMs": 200
+        },
+        {
+          "offset": 65,
+          "breakMs": 200
+        },
+        {
+          "offset": 78,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW26",
+      "audioFile": "TW26.wav",
+      "text": "只有一个组但有点输入时。每份成员至少产生一个新的点与线段的结果。足够支付展开。只有一个组而没有点输入时。不展开整个旧成员表。零个组时。没有非零成员可展开。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"zhi 2 you 3 yi 2\">只有一</phoneme>个组但<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>点输入时。<break time=\"200ms\"/>每<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>成员至<phoneme alphabet=\"sapi\" ph=\"shao 3\">少</phoneme>产生<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个新<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>点<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>线段<phoneme alphabet=\"sapi\" ph=\"de 5 jie 2\">的结</phoneme>果。<break time=\"200ms\"/>足够支付展开。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zhi 2 you 3 yi 2\">只有一</phoneme>个组而<phoneme alphabet=\"sapi\" ph=\"mei 2 you 3\">没有</phoneme>点输入时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>展开整个旧成员表。<break time=\"200ms\"/>零个组时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"mei 2 you 3\">没有</phoneme>非零成员<phoneme alphabet=\"sapi\" ph=\"ke 3\">可</phoneme>展开。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f1a7f38aa4ac6bce0be102d183ec63137471a313778b1e5185ef6ba266e10a50",
+      "pauses": [
+        {
+          "offset": 12,
+          "breakMs": 200
+        },
+        {
+          "offset": 32,
+          "breakMs": 200
+        },
+        {
+          "offset": 39,
+          "breakMs": 400
+        },
+        {
+          "offset": 52,
+          "breakMs": 200
+        },
+        {
+          "offset": 62,
+          "breakMs": 200
+        },
+        {
+          "offset": 67,
+          "breakMs": 200
+        },
+        {
+          "offset": 77,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW27",
+      "audioFile": "TW27.wav",
+      "text": "新同线成员逐个加入。每次访问旧成员。都立即产生一条新结果。每次加入至多做一次空表检查。游标推进也保守按对数成本计费。最后一次失败推进紧随最后一个结果。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">新同线成员逐个加入。<break time=\"200ms\"/>每次访问旧成员。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"dou 1\">都</phoneme>立即产生<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>条新<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果。<break time=\"400ms\"/>每次加入至多做<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次<phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>表检<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>。<break time=\"200ms\"/>游标推进也<phoneme alphabet=\"sapi\" ph=\"bao 2 shou 3\">保守</phoneme>按对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>成本计费。<break time=\"200ms\"/>最后<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次失败推进紧随最后<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "105f8a3354cca129b6f5297d99f301441112413c5334af8d5d58eafb563a3d09",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 43,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 200
+        },
+        {
+          "offset": 75,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW28",
+      "audioFile": "TW28.wav",
+      "text": "跨组与点和线段配对时。外层成员访问也由这次新结果支付。点与点按原始无序对输出。没有非零组时。每个点仍有一次外层开销。所有位置的点身份合计至多有 n 份。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">跨组<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>点<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>线段配对时。<break time=\"200ms\"/>外层成员访问也由这次新<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果支付。<break time=\"200ms\"/>点<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>点按原始无序对输出。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"mei 2 you 3\">没有</phoneme>非零组时。<break time=\"200ms\"/>每个点仍<phoneme alphabet=\"sapi\" ph=\"you 3 yi 2\">有一</phoneme>次外层开销。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 you 3\">所有</phoneme>位置<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>点身<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>计至多<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">N</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "ba240b745efea6412520d725cc1afe97ea639824342f4c809004900e17abecfb",
+      "pauses": [
+        {
+          "offset": 11,
+          "breakMs": 200
+        },
+        {
+          "offset": 27,
+          "breakMs": 200
+        },
+        {
+          "offset": 39,
+          "breakMs": 400
+        },
+        {
+          "offset": 46,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 200
+        },
+        {
+          "offset": 76,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW29",
+      "audioFile": "TW29.wav",
+      "text": "每条结果只保存两个身份。以及一个点或两个区间端点。构造与坐标还原需要固定次数的精确操作。全部结果追加按容器的摊还保证累计为输出数的常数倍。扩容移动已经包括在内。临时成员表的创建和销毁。也按已经支付的展开量计入。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">每条<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>保存两个身<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/>以及<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个点或两个<phoneme alphabet=\"sapi\" ph=\"qu 1 jian 1\">区间</phoneme>端点。<break time=\"400ms\"/>构造<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>坐标<phoneme alphabet=\"sapi\" ph=\"huan 2 yuan 2\">还原</phoneme>需<phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>固定次<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5\">数的</phoneme>精确操<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>。<break time=\"200ms\"/>全部<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果追加按容器<phoneme alphabet=\"sapi\" ph=\"de 5 tan 1 huan 2\">的摊还</phoneme>保证<phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 wei 2\">累计为</phoneme>输出<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5\">数的</phoneme>常<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>倍。<break time=\"200ms\"/>扩容移动已<phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>包括在内。<break time=\"200ms\"/>临时成员表<phoneme alphabet=\"sapi\" ph=\"de 5 chuang 4\">的创</phoneme>建<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>销毁。<break time=\"200ms\"/>也按已<phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>支付<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>展开<phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme>计入。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "94bb22b1a0540a436cf16f58c9666286e0b56e45c0cda06f2b9095360d8809c9",
+      "pauses": [
+        {
+          "offset": 12,
+          "breakMs": 200
+        },
+        {
+          "offset": 25,
+          "breakMs": 400
+        },
+        {
+          "offset": 44,
+          "breakMs": 200
+        },
+        {
+          "offset": 69,
+          "breakMs": 200
+        },
+        {
+          "offset": 80,
+          "breakMs": 200
+        },
+        {
+          "offset": 92,
+          "breakMs": 200
+        },
+        {
+          "offset": 105,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW30",
+      "audioFile": "TW30.wav",
+      "text": "输入准备、必要剪切、固定组与端点缓存按输入量累计。每份非零成员只加入和退出各一次。两套成员索引同步增删。最远右端从最大键读取。不重扫全组。这些有序维护合计为输入份数乘以对数的数量级。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">输入准备、必<phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>剪<phoneme alphabet=\"sapi\" ph=\"qie 1\">切</phoneme>、固定组<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>端点缓存按输入<phoneme alphabet=\"sapi\" ph=\"liang 4 lei 3 ji 4\">量累计</phoneme>。<break time=\"400ms\"/>每<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>非零成员<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>加入<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>退出各<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次。<break time=\"200ms\"/>两套成员<phoneme alphabet=\"sapi\" ph=\"suo 2 yin 3\">索引</phoneme>同步增删。<break time=\"200ms\"/>最远右端<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>最<phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme>键<phoneme alphabet=\"sapi\" ph=\"du 2 qu 3\">读取</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4 chong 2 sao 3\">不重扫</phoneme>全组。<break time=\"200ms\"/>这些<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>序维护<phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>计<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4 cheng 2\">份数乘</phoneme>以对<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5 shu 4 liang 4\">数的数量</phoneme>级。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "7195605627686428213e2ee9619abe62e66f917180dad08bde12f2a8aa58f46d",
+      "pauses": [
+        {
+          "offset": 25,
+          "breakMs": 400
+        },
+        {
+          "offset": 41,
+          "breakMs": 200
+        },
+        {
+          "offset": 52,
+          "breakMs": 200
+        },
+        {
+          "offset": 63,
+          "breakMs": 200
+        },
+        {
+          "offset": 69,
+          "breakMs": 200
+        },
+        {
+          "offset": 91,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW31",
+      "audioFile": "TW31.wav",
+      "text": "每次只定位相遇块。访问参与组和常数个边界。开始身份在全程至多有 n 份。块的移除、过滤和重插按累计参与量计费。不扫描其余活动组。于是总账由事件数、累计参与组数和输入份数共同控制。再乘有序操作的对数成本。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">每次<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>定位<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>遇块。<break time=\"200ms\"/>访问<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>常<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>个边界。<break time=\"400ms\"/>开始身<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>在全程至多<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">N</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/>块<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>移除、过滤<phoneme alphabet=\"sapi\" ph=\"he 2 chong 2 cha 1\">和重插</phoneme>按<phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 can 1 yu 4 liang 4\">累计参与量</phoneme>计费。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4 sao 3\">不扫</phoneme>描其余活动组。<break time=\"200ms\"/>于是总账由事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>、<phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 can 1 yu 4\">累计参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4 he 2\">数和</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>共同控制。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"cheng 2 you 3\">乘有</phoneme>序操<phoneme alphabet=\"sapi\" ph=\"zuo 4 de 5\">作的</phoneme>对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>成本。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "6a230747a29c61ba46d96b3fd4314a7932375ab8c1ef4d03187b36d0a6cf2706",
+      "pauses": [
+        {
+          "offset": 9,
+          "breakMs": 200
+        },
+        {
+          "offset": 21,
+          "breakMs": 400
+        },
+        {
+          "offset": 36,
+          "breakMs": 200
+        },
+        {
+          "offset": 55,
+          "breakMs": 200
+        },
+        {
+          "offset": 64,
+          "breakMs": 200
+        },
+        {
+          "offset": 89,
+          "breakMs": 200
+        },
+        {
+          "offset": 101,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW32",
+      "audioFile": "TW32.wav",
+      "text": "局部排序只移动组身份。不移动整组成员。固定的精确斜率给出一致次序。采用具有最坏情况下对数乘线性保证的比较排序。每次参与组数不超过输入份数。所以逐次排序成本相加。不超过累计参与组数乘以对数。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">局部排序<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>移动组身<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>移动整组成员。<break time=\"200ms\"/>固定<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>精确<phoneme alphabet=\"sapi\" ph=\"xie 2 lv 4 gei 3\">斜率给</phoneme>出<phoneme alphabet=\"sapi\" ph=\"yi 2 zhi 4\">一致</phoneme>次序。<break time=\"400ms\"/>采用具<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>最坏情况下对<phoneme alphabet=\"sapi\" ph=\"shu 4 cheng 2\">数乘</phoneme>线性保证<phoneme alphabet=\"sapi\" ph=\"de 5 bi 3\">的比</phoneme>较排序。<break time=\"200ms\"/>每次<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4 bu 4\">数不</phoneme>超过输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme>逐次排序成本<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>加。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>超过<phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 can 1 yu 4\">累计参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4 cheng 2\">数乘</phoneme>以对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "5e6dbf8ad2ef22c395baaaa7ae0db326ea4166d72311a1aa69c387189cabb2c9",
+      "pauses": [
+        {
+          "offset": 11,
+          "breakMs": 200
+        },
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 33,
+          "breakMs": 400
+        },
+        {
+          "offset": 55,
+          "breakMs": 200
+        },
+        {
+          "offset": 69,
+          "breakMs": 200
+        },
+        {
+          "offset": 80,
+          "breakMs": 200
+        },
+        {
+          "offset": 94,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW33",
+      "audioFile": "TW33.wav",
+      "text": "更新后的新块非空且有 r 个组时。新块只保留参与本次事件的组。因此组数不超过本次参与组数。内部邻居对数至多是组数减一。两端各至多一对。空块只可能接起原来的两侧。覆盖延长后。即使邻居名字没变。对相关邻接的补检也包含在这里。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"geng 1 xin 1\">更新</phoneme>后<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>新块非<phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>且<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">R</say-as></lang> 个组时。<break time=\"200ms\"/>新块<phoneme alphabet=\"sapi\" ph=\"zhi 2 bao 3\">只保</phoneme>留<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>本次事件<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>组。<break time=\"200ms\"/>因此组<phoneme alphabet=\"sapi\" ph=\"shu 4 bu 4\">数不</phoneme>超过本次<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>内部邻居对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>至多是组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>减<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>两端各至多<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>对。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>块<phoneme alphabet=\"sapi\" ph=\"zhi 3 ke 3\">只可</phoneme>能接起原来<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>两侧。<break time=\"200ms\"/>覆盖延<phoneme alphabet=\"sapi\" ph=\"chang 2\">长</phoneme>后。<break time=\"200ms\"/>即使邻居<phoneme alphabet=\"sapi\" ph=\"ming 2 zi 5 mei 2\">名字没</phoneme>变。<break time=\"200ms\"/>对<phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>关邻接<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>补检也包含在这里。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "d6acebf779d0b3306c2bc6ced3e6335cb10d11004a6223054a78ca70a740653a",
+      "pauses": [
+        {
+          "offset": 17,
+          "breakMs": 200
+        },
+        {
+          "offset": 31,
+          "breakMs": 200
+        },
+        {
+          "offset": 45,
+          "breakMs": 200
+        },
+        {
+          "offset": 59,
+          "breakMs": 200
+        },
+        {
+          "offset": 67,
+          "breakMs": 400
+        },
+        {
+          "offset": 80,
+          "breakMs": 200
+        },
+        {
+          "offset": 86,
+          "breakMs": 200
+        },
+        {
+          "offset": 95,
+          "breakMs": 200
+        },
+        {
+          "offset": 110,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW34",
+      "audioFile": "TW34.wav",
+      "text": "每次事件的检查量由参与组数加一控制。累计就是参与组总数与事件数之和的数量级。每次用固定直线和真实覆盖检查候选。不展开两组全部成员对。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">每次事件<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>检<phoneme alphabet=\"sapi\" ph=\"cha 2 liang 4\">查量</phoneme>由<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>控制。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4\">累计</phoneme>就是<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组总<phoneme alphabet=\"sapi\" ph=\"shu 4 yu 3\">数与</phoneme>事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>之<phoneme alphabet=\"sapi\" ph=\"he 2 de 5 shu 4 liang 4\">和的数量</phoneme>级。<break time=\"400ms\"/>每次用固定直线<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>真实覆盖检<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>候选。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>展开<phoneme alphabet=\"sapi\" ph=\"liang 2 zu 3\">两组</phoneme>全部成员对。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "d818892ad96c567d11ef94b1c33c263604ffb92f94f5d5cc68282e02909ce8ac",
+      "pauses": [
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 38,
+          "breakMs": 400
+        },
+        {
+          "offset": 55,
+          "breakMs": 200
+        },
+        {
+          "offset": 66,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW35",
+      "audioFile": "TW35.wav",
+      "text": "同一个真实未来位置可能被再次发现。队列只保留一份。但这次查找和尝试仍然收费。尝试总数不超过检查总数。不能只数最后成功新增的位置。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">同<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个真实未来位置<phoneme alphabet=\"sapi\" ph=\"ke 3\">可</phoneme>能被再次<phoneme alphabet=\"sapi\" ph=\"fa 1\">发</phoneme>现。<break time=\"200ms\"/>队列<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>保留<phoneme alphabet=\"sapi\" ph=\"yi 2 fen 4\">一份</phoneme>。<break time=\"400ms\"/>但这次<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>找<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>尝试仍然收费。<break time=\"200ms\"/>尝试总<phoneme alphabet=\"sapi\" ph=\"shu 4 bu 4\">数不</phoneme>超过检<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>总<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能<phoneme alphabet=\"sapi\" ph=\"zhi 3 shu 3\">只数</phoneme>最后成功新增<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>位置。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f68159ae87b00d9b4fc711a877303d0b6f3dc1571828aa6c34ee9144117a16fc",
+      "pauses": [
+        {
+          "offset": 17,
+          "breakMs": 200
+        },
+        {
+          "offset": 25,
+          "breakMs": 400
+        },
+        {
+          "offset": 38,
+          "breakMs": 200
+        },
+        {
+          "offset": 50,
+          "breakMs": 200
+        },
+        {
+          "offset": 64,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW36",
+      "audioFile": "TW36.wav",
+      "text": "由事件数界和第一章的输入对数上界。事件数加一不超过输入份数加一所得的和的平方。因此。队列的一次对数操作成本。也受输入份数加一的对数的常数倍控制。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">由事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>界<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>第<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>章<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>输入对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>上界。<break time=\"200ms\"/>事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1 bu 4\">一不</phoneme>超过输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>所<phoneme alphabet=\"sapi\" ph=\"de 2 de 5 he 2 de 5\">得的和的</phoneme>平方。<break time=\"400ms\"/>因此。<break time=\"200ms\"/>队列<phoneme alphabet=\"sapi\" ph=\"de 5 yi 2\">的一</phoneme>次对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>操<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>成本。<break time=\"200ms\"/>也受输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1 de 5\">一的</phoneme>对<phoneme alphabet=\"sapi\" ph=\"shu 4 de 5\">数的</phoneme>常<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>倍控制。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "151d424bd88545e7328a8e9520bedb64d42149068e721dd214261fa777e7266e",
+      "pauses": [
+        {
+          "offset": 17,
+          "breakMs": 200
+        },
+        {
+          "offset": 39,
+          "breakMs": 400
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 72,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW37",
+      "audioFile": "TW37.wav",
+      "text": "初始化至多登记输入份数两倍的端点身份。之后计入全部预约尝试和每个事件的一次弹出。检查中的覆盖读取也收费。合计仍由输入量与输出量之和。乘以输入份数加一的对数来控制。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">初始化至多登记输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>两倍<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>端点身<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>。<break time=\"200ms\"/>之后计入全部预<phoneme alphabet=\"sapi\" ph=\"yue 1\">约</phoneme>尝试<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>每个事件<phoneme alphabet=\"sapi\" ph=\"de 5 yi 2\">的一</phoneme>次<phoneme alphabet=\"sapi\" ph=\"tan 2 chu 1\">弹出</phoneme>。<break time=\"400ms\"/>检<phoneme alphabet=\"sapi\" ph=\"cha 2 zhong 1 de 5\">查中的</phoneme>覆盖<phoneme alphabet=\"sapi\" ph=\"du 2 qu 3\">读取</phoneme>也收费。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme>计仍由输入<phoneme alphabet=\"sapi\" ph=\"liang 4 yu 3\">量与</phoneme>输出<phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme>之<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme>以输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1 de 5\">一的</phoneme>对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>来控制。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "bcd3a52d537e6314eb74c0c60d3a3e4e215001c1c0c7ba10cdc237ba48981e1b",
+      "pauses": [
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 40,
+          "breakMs": 400
+        },
+        {
+          "offset": 52,
+          "breakMs": 200
+        },
+        {
+          "offset": 66,
+          "breakMs": 200
+        },
+        {
+          "offset": 81,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW38",
+      "audioFile": "TW38.wav",
+      "text": "局部组表累计按参与组总数与事件数计费。必要成员表已经由新输出支付。高度缓存按实际访问更新。不每次重算全部组。最后释放几何、组和映射的工作按输入量计。逐条释放结果按输出量计。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">局部组表<phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4\">累计</phoneme>按<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组总<phoneme alphabet=\"sapi\" ph=\"shu 4 yu 3\">数与</phoneme>事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>计费。<break time=\"200ms\"/>必<phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>成员表已<phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>由新输出支付。<break time=\"400ms\"/>高<phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>缓存按实际访问<phoneme alphabet=\"sapi\" ph=\"geng 1 xin 1\">更新</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>每次<phoneme alphabet=\"sapi\" ph=\"chong 2 suan 4\">重算</phoneme>全部组。<break time=\"200ms\"/>最后释放<phoneme alphabet=\"sapi\" ph=\"ji 3\">几</phoneme>何、组<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>映射<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>工<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>按输入<phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme>计。<break time=\"200ms\"/>逐条释放<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果按输出<phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme>计。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "8bd095fd8403aaebed882136806201b1d959d852aed3caa3aad93a9f81354172",
+      "pauses": [
+        {
+          "offset": 19,
+          "breakMs": 200
+        },
+        {
+          "offset": 33,
+          "breakMs": 400
+        },
+        {
+          "offset": 45,
+          "breakMs": 200
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 74,
+          "breakMs": 200
+        },
+        {
+          "offset": 86,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW39",
+      "audioFile": "TW39.wav",
+      "text": "账本里的每一行都受同一个上界控制。固定行数相加只改变常数。因此。普通求交的精确算术、比较和基本状态操作次数。由输入量与输出量之和。乘以输入份数加一的对数来控制。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">账本里<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>每<phoneme alphabet=\"sapi\" ph=\"yi 4 hang 2 dou 1\">一行都</phoneme>受同<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个上界控制。<break time=\"200ms\"/>固定<phoneme alphabet=\"sapi\" ph=\"hang 2 shu 4 xiang 1\">行数相</phoneme>加<phoneme alphabet=\"sapi\" ph=\"zhi 3\">只</phoneme>改变常<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"400ms\"/>因此。<break time=\"200ms\"/>普<phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme>求交<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>精确算术、<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>基本状态操<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>次<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/>由输入<phoneme alphabet=\"sapi\" ph=\"liang 4 yu 3\">量与</phoneme>输出<phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme>之<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme>以输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1 de 5\">一的</phoneme>对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>来控制。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "6215000371795f65d05e80e8a68f78f639da7faa4cf559ca0e4a5ebc8a1fc7f6",
+      "pauses": [
+        {
+          "offset": 17,
+          "breakMs": 200
+        },
+        {
+          "offset": 29,
+          "breakMs": 400
+        },
+        {
+          "offset": 32,
+          "breakMs": 200
+        },
+        {
+          "offset": 54,
+          "breakMs": 200
+        },
+        {
+          "offset": 65,
+          "breakMs": 200
+        },
+        {
+          "offset": 80,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW40",
+      "audioFile": "TW40.wav",
+      "text": "只有一份输入时。输入份数加一的对数等于一。仍能容纳固定工作。空输入的调用和空状态处理另外计常数开销。若合写所有规模。就在主界的表达式前加一。这个加一是记法选择。不是性能改进。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"zhi 2 you 3 yi 2 fen 4\">只有一份</phoneme>输入时。<break time=\"200ms\"/>输入<phoneme alphabet=\"sapi\" ph=\"fen 4 shu 4\">份数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1 de 5\">一的</phoneme>对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>等于<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/>仍能容纳固定工<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"kong 1\">空</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"de 5 diao 4 yong 4 he 2 kong 1\">的调用和空</phoneme>状态<phoneme alphabet=\"sapi\" ph=\"chu 2 li 3\">处理</phoneme>另外计常<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>开销。<break time=\"200ms\"/>若<phoneme alphabet=\"sapi\" ph=\"he 2\">合</phoneme><phoneme alphabet=\"sapi\" ph=\"xie 3 suo 2 you 3\">写所有</phoneme>规<phoneme alphabet=\"sapi\" ph=\"mo 2\">模</phoneme>。<break time=\"200ms\"/>就在主界<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>表达式前加<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4 ge 5\">这个</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>是记法选择。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 2\">不</phoneme>是性能改进。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "7072545bae0c4a2de89ae1806ed8277bc9fb5a71fcc9c09adf8603019c73a577",
+      "pauses": [
+        {
+          "offset": 8,
+          "breakMs": 200
+        },
+        {
+          "offset": 21,
+          "breakMs": 200
+        },
+        {
+          "offset": 30,
+          "breakMs": 400
+        },
+        {
+          "offset": 50,
+          "breakMs": 200
+        },
+        {
+          "offset": 58,
+          "breakMs": 200
+        },
+        {
+          "offset": 70,
+          "breakMs": 200
+        },
+        {
+          "offset": 80,
+          "breakMs": 200
+        },
+        {
+          "offset": 87,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW41",
+      "audioFile": "TW41.wav",
+      "text": "回到原点这个事件。定位、局部排序、邻接检查和六条结果。属于普通求交。必要的成员展开和临时表也已经计入。不能把这些必要工作推到教学成本一栏。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">回到原点<phoneme alphabet=\"sapi\" ph=\"zhe 4 ge 5\">这个</phoneme>事件。<break time=\"200ms\"/>定位、局部排序、邻接检<phoneme alphabet=\"sapi\" ph=\"cha 2 he 2\">查和</phoneme>六条<phoneme alphabet=\"sapi\" ph=\"jie 2\">结</phoneme>果。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"shu 3\">属</phoneme>于普<phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme>求交。<break time=\"400ms\"/>必<phoneme alphabet=\"sapi\" ph=\"yao 4 de 5\">要的</phoneme>成员展开<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>临时表也已<phoneme alphabet=\"sapi\" ph=\"jing 1\">经</phoneme>计入。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>这些必<phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>工<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>推到<phoneme alphabet=\"sapi\" ph=\"jiao 4\">教</phoneme>学成本<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>栏。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "e3e185b21802e73e08fc76738630dec40c6bf186f83ede5b49b843bc00ea1e25",
+      "pauses": [
+        {
+          "offset": 9,
+          "breakMs": 200
+        },
+        {
+          "offset": 27,
+          "breakMs": 200
+        },
+        {
+          "offset": 34,
+          "breakMs": 400
+        },
+        {
+          "offset": 51,
+          "breakMs": 200
+        },
+        {
+          "offset": 69,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW42",
+      "audioFile": "TW42.wav",
+      "text": "同一次精确比较或算术。成本还取决于数字长度。有理数的分子、分母越长。乘除、比较或约分可能越费时。前面的操作次数界。不能直接当作秒数、固定字节成本或完整的位复杂度定理。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">同<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次精确<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较或算术。<break time=\"200ms\"/>成本<phoneme alphabet=\"sapi\" ph=\"hai 2 qu 3\">还取</phoneme>决于<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>字<phoneme alphabet=\"sapi\" ph=\"chang 2 du 4\">长度</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"you 2 li 3 shu 4 de 5 fen 1 zi 3\">有理数的分子</phoneme>、<phoneme alphabet=\"sapi\" ph=\"fen 1 mu 3 yue 4 chang 2\">分母越长</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"cheng 2\">乘</phoneme>除、<phoneme alphabet=\"sapi\" ph=\"bi 3\">比</phoneme>较或<phoneme alphabet=\"sapi\" ph=\"yue 1\">约</phoneme><phoneme alphabet=\"sapi\" ph=\"fen 1 ke 3\">分可</phoneme>能越费时。<break time=\"400ms\"/>前面<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>操<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>次<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>界。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>能直接<phoneme alphabet=\"sapi\" ph=\"dang 4 zuo 4\">当作</phoneme>秒<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>、固定字节成本或完整<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>位复杂<phoneme alphabet=\"sapi\" ph=\"du 4\">度</phoneme>定理。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "07d511ba4af72a9df313fe00fc17c50fd7f1952dc055f1c4e12c38f58acbf8c2",
+      "pauses": [
+        {
+          "offset": 11,
+          "breakMs": 200
+        },
+        {
+          "offset": 22,
+          "breakMs": 200
+        },
+        {
+          "offset": 34,
+          "breakMs": 200
+        },
+        {
+          "offset": 48,
+          "breakMs": 400
+        },
+        {
+          "offset": 57,
+          "breakMs": 200
+        },
+        {
+          "offset": 83,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW43",
+      "audioFile": "TW43.wav",
+      "text": "教学模式可能在多个停步重复保存全活动状态、成员说明和累计结果。还要格式化、传输和展示。这些额外访问未必受输入量与输出量之和控制。教学来自真实执行。并不意味着记录免费。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"jiao 4\">教</phoneme>学<phoneme alphabet=\"sapi\" ph=\"mo 2\">模</phoneme>式<phoneme alphabet=\"sapi\" ph=\"ke 3\">可</phoneme>能在多个停步<phoneme alphabet=\"sapi\" ph=\"chong 2 fu 4\">重复</phoneme>保存全活动状态、成员<phoneme alphabet=\"sapi\" ph=\"shuo 1\">说</phoneme>明<phoneme alphabet=\"sapi\" ph=\"he 2 lei 3 ji 4 jie 2\">和累计结</phoneme>果。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"hai 2 yao 4\">还要</phoneme>格式化、<phoneme alphabet=\"sapi\" ph=\"chuan 2\">传</phoneme>输<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>展示。<break time=\"400ms\"/>这些额外访问未必受输入<phoneme alphabet=\"sapi\" ph=\"liang 4 yu 3\">量与</phoneme>输出<phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme>之<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>控制。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"jiao 4\">教</phoneme>学来自真实执<phoneme alphabet=\"sapi\" ph=\"xing 2\">行</phoneme>。<break time=\"200ms\"/>并<phoneme alphabet=\"sapi\" ph=\"bu 2 yi 4 wei 4 zhe 5\">不意味着</phoneme>记录免费。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "ab2d13e95fb622ede1e431ab966d6fbb3698843e5a673ddf16892eb46ca605b1",
+      "pauses": [
+        {
+          "offset": 31,
+          "breakMs": 200
+        },
+        {
+          "offset": 43,
+          "breakMs": 400
+        },
+        {
+          "offset": 64,
+          "breakMs": 200
+        },
+        {
+          "offset": 73,
+          "breakMs": 200
+        },
+        {
+          "offset": 83,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW44",
+      "audioFile": "TW44.wav",
+      "text": "事件数控制到站次数。累计参与组数控制局部维护。成员展开由当场的新输出支付。再把重复预约和必要清理计入。就把普通求交的总工作量连接到了输入量与输出量。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>控制到站次<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 can 1 yu 4\">累计参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>控制局部维护。<break time=\"400ms\"/>成员展开由<phoneme alphabet=\"sapi\" ph=\"dang 1 chang 3 de 5\">当场的</phoneme>新输出支付。<break time=\"200ms\"/>再<phoneme alphabet=\"sapi\" ph=\"ba 3 chong 2 fu 4\">把重复</phoneme>预<phoneme alphabet=\"sapi\" ph=\"yue 1\">约</phoneme><phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>必<phoneme alphabet=\"sapi\" ph=\"yao 4\">要</phoneme>清理计入。<break time=\"200ms\"/>就<phoneme alphabet=\"sapi\" ph=\"ba 3\">把</phoneme>普<phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme>求交<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>总工<phoneme alphabet=\"sapi\" ph=\"zuo 4 liang 4\">作量</phoneme>连接到<phoneme alphabet=\"sapi\" ph=\"le 5\">了</phoneme>输入<phoneme alphabet=\"sapi\" ph=\"liang 4 yu 3\">量与</phoneme>输出<phoneme alphabet=\"sapi\" ph=\"liang 4\">量</phoneme>。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "893280c05e99877736a17cbb96f25b071c4aa896108845fa669c3841d35f260d",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 23,
+          "breakMs": 400
+        },
+        {
+          "offset": 37,
+          "breakMs": 200
+        },
+        {
+          "offset": 51,
+          "breakMs": 200
+        },
+        {
+          "offset": 74,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW45",
+      "audioFile": "TW45.wav",
+      "text": "一次事件可以很大。一个组也可以很大。累计账本仍然有依据。这里得到的是普通操作次数界。数值长度和教学记录保留各自的成本边界。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>次事件<phoneme alphabet=\"sapi\" ph=\"ke 2 yi 3\">可以</phoneme>很<phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个组也<phoneme alphabet=\"sapi\" ph=\"ke 2 yi 3\">可以</phoneme>很<phoneme alphabet=\"sapi\" ph=\"da 4\">大</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4\">累计</phoneme>账本仍然<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>依据。<break time=\"400ms\"/>这里<phoneme alphabet=\"sapi\" ph=\"de 2\">得</phoneme>到<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>是普<phoneme alphabet=\"sapi\" ph=\"tong 1\">通</phoneme>操<phoneme alphabet=\"sapi\" ph=\"zuo 4\">作</phoneme>次<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>界。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>值<phoneme alphabet=\"sapi\" ph=\"chang 2 du 4 he 2 jiao 4\">长度和教</phoneme>学记录保留各自<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>成本边界。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "d802a675ece3982aa1bf7987fe832ddf969aefee3017f064cb59b0da6336ce72",
+      "pauses": [
+        {
+          "offset": 9,
+          "breakMs": 200
+        },
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 28,
+          "breakMs": 400
+        },
+        {
+          "offset": 42,
+          "breakMs": 200
+        },
+        {
+          "offset": 61,
+          "breakMs": 400
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "planSha256": "11bc7f32fd259dd3db6d99ffa29028f6d3d24cbe3dadba16f50d9f360e78685a",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "automaticRetries": 0,
+  "published": false,
+  "requests": [
+    {
+      "id": "TW01",
+      "fingerprint": "b5979dbb1698e800a86a6bbbf89f6bcccf946c4458458c9c4287417f51eae9d0",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.726Z",
+      "endedAt": "2026-11-15T07:27:45.321Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW02",
+      "fingerprint": "2a1ace50973a5f49afb048a6f795f0d5b578a25114f02b372c95f37157b47038",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.731Z",
+      "endedAt": "2026-11-15T07:27:38.254Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW03",
+      "fingerprint": "4120153de8ed05c93eef815f07830355b3bdfaafbf918972e004dc88dca07fe1",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.731Z",
+      "endedAt": "2026-11-15T07:27:44.675Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW04",
+      "fingerprint": "ce8a7ebbcde60979ca756a380aedadd4dc725782bacd858c92ff0ffd466e9a6e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.732Z",
+      "endedAt": "2026-11-15T07:27:42.305Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW05",
+      "fingerprint": "22010cfe00b92144487808ffd385dd67f03abf4b82bcd2a3c00abaa161e11ae9",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.733Z",
+      "endedAt": "2026-11-15T07:27:38.724Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW06",
+      "fingerprint": "f350354426994e18b98025c662d2e5a60b596de2c3593779fe31ed7020b23b93",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.733Z",
+      "endedAt": "2026-11-15T07:27:41.922Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW07",
+      "fingerprint": "4848cd2448f3da9238aa6e441686607216a806d80817bd075e66274c671e470e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.734Z",
+      "endedAt": "2026-11-15T07:27:39.769Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW08",
+      "fingerprint": "90a4fc1b0b269e9993f96ebc0374eeeade256f8201b8f113c2314c2152b980b6",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.734Z",
+      "endedAt": "2026-11-15T07:27:37.869Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW09",
+      "fingerprint": "511a52871ef074b7d6ec53e86227a5293bb6b64138e681bc3c475039ccbe5fb6",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.735Z",
+      "endedAt": "2026-11-15T07:27:40.961Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW10",
+      "fingerprint": "95f77dee22aaeaef8f3407a71e85942a14984d4f69a930cb2bf81c02869df6c0",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.735Z",
+      "endedAt": "2026-11-15T07:27:37.454Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW11",
+      "fingerprint": "661ca3d4ee884e6717b81ef0421fa3470a80d081b81ddf829b40a0aeb409e925",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.736Z",
+      "endedAt": "2026-11-15T07:27:39.070Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW12",
+      "fingerprint": "7528415ba98463b8772990117b8c2eb87540d7f96737a45cb67754903ef43a1b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.737Z",
+      "endedAt": "2026-11-15T07:27:44.311Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW13",
+      "fingerprint": "2faf824711c944c7e128891f69de4dd8e9aa92915edeb90f5fd646c2ecbb3836",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.737Z",
+      "endedAt": "2026-11-15T07:27:40.611Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW14",
+      "fingerprint": "f780361c78cc45ffe3e4ba63337e4d66da59300bb6a1c717cd4efec38076d7fe",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.738Z",
+      "endedAt": "2026-11-15T07:27:39.424Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW15",
+      "fingerprint": "12367c620e37b9013136eed197a7cffc3ea33209172b8ec85e8929590b40ccdd",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.738Z",
+      "endedAt": "2026-11-15T07:27:41.270Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW16",
+      "fingerprint": "a3df06dffdefaab21f1f896c0b003b51d57639371dbd2aea1470a19a80910042",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.739Z",
+      "endedAt": "2026-11-15T07:27:43.972Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW17",
+      "fingerprint": "9db033d4ffb115aad5d39606bf70bd98ab3bc0fd9addd7c14a919655209179ec",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.740Z",
+      "endedAt": "2026-11-15T07:27:42.985Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW18",
+      "fingerprint": "1478dd1febd50d0b5731b04282657e1d613370ae5302679e25fc86c2c292e426",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.740Z",
+      "endedAt": "2026-11-15T07:27:45.650Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW19",
+      "fingerprint": "bfa59eb50d1711173532073c25f011a6096409574966973cfd24774b7c50952d",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.741Z",
+      "endedAt": "2026-11-15T07:27:44.999Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW20",
+      "fingerprint": "d7b04c562d8a9e23e1b4f3fbe5eaafa19924a2d3f278fdd2968a772bc3fe4478",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:27:31.741Z",
+      "endedAt": "2026-11-15T07:27:41.607Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW21",
+      "fingerprint": "52541c30f8453ab9a3727f1f9181127a0167f4361c1626878de4fdb6d2b55739",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.793Z",
+      "endedAt": "2026-11-15T07:28:40.269Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW22",
+      "fingerprint": "6d7565a2a6538edc4c5e214cd11723272c3a184a1c8d42ace3fcbef021846889",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.795Z",
+      "endedAt": "2026-11-15T07:28:46.819Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW23",
+      "fingerprint": "84220fe8b4b48b5b37553e0751560880dbef3854959152cecd03deabbcdbc99f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.796Z",
+      "endedAt": "2026-11-15T07:28:47.494Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW24",
+      "fingerprint": "70432acc6e042a609a818357f341926a3b4ee2ba917e5fd9013b2d07653bc170",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.797Z",
+      "endedAt": "2026-11-15T07:28:38.622Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW25",
+      "fingerprint": "653cbe1509d8976dd9c3a296389f05d0c3d3168ae0dc11aca24337068edf95d1",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.797Z",
+      "endedAt": "2026-11-15T07:28:44.054Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW26",
+      "fingerprint": "f1a7f38aa4ac6bce0be102d183ec63137471a313778b1e5185ef6ba266e10a50",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.798Z",
+      "endedAt": "2026-11-15T07:28:39.802Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW27",
+      "fingerprint": "105f8a3354cca129b6f5297d99f301441112413c5334af8d5d58eafb563a3d09",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.799Z",
+      "endedAt": "2026-11-15T07:28:44.393Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW28",
+      "fingerprint": "ba240b745efea6412520d725cc1afe97ea639824342f4c809004900e17abecfb",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.799Z",
+      "endedAt": "2026-11-15T07:28:41.429Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW29",
+      "fingerprint": "94bb22b1a0540a436cf16f58c9666286e0b56e45c0cda06f2b9095360d8809c9",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.800Z",
+      "endedAt": "2026-11-15T07:28:47.852Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW30",
+      "fingerprint": "7195605627686428213e2ee9619abe62e66f917180dad08bde12f2a8aa58f46d",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.801Z",
+      "endedAt": "2026-11-15T07:28:41.794Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW31",
+      "fingerprint": "6a230747a29c61ba46d96b3fd4314a7932375ab8c1ef4d03187b36d0a6cf2706",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.802Z",
+      "endedAt": "2026-11-15T07:28:42.125Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW32",
+      "fingerprint": "5e6dbf8ad2ef22c395baaaa7ae0db326ea4166d72311a1aa69c387189cabb2c9",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.802Z",
+      "endedAt": "2026-11-15T07:28:45.049Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW33",
+      "fingerprint": "d6acebf779d0b3306c2bc6ced3e6335cb10d11004a6223054a78ca70a740653a",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.803Z",
+      "endedAt": "2026-11-15T07:28:47.132Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW34",
+      "fingerprint": "d818892ad96c567d11ef94b1c33c263604ffb92f94f5d5cc68282e02909ce8ac",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.804Z",
+      "endedAt": "2026-11-15T07:28:43.736Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW35",
+      "fingerprint": "f68159ae87b00d9b4fc711a877303d0b6f3dc1571828aa6c34ee9144117a16fc",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.805Z",
+      "endedAt": "2026-11-15T07:28:43.413Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW36",
+      "fingerprint": "151d424bd88545e7328a8e9520bedb64d42149068e721dd214261fa777e7266e",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.805Z",
+      "endedAt": "2026-11-15T07:28:39.378Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW37",
+      "fingerprint": "bcd3a52d537e6314eb74c0c60d3a3e4e215001c1c0c7ba10cdc237ba48981e1b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.806Z",
+      "endedAt": "2026-11-15T07:28:38.995Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW38",
+      "fingerprint": "8bd095fd8403aaebed882136806201b1d959d852aed3caa3aad93a9f81354172",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.809Z",
+      "endedAt": "2026-11-15T07:28:41.090Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW39",
+      "fingerprint": "6215000371795f65d05e80e8a68f78f639da7faa4cf559ca0e4a5ebc8a1fc7f6",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.810Z",
+      "endedAt": "2026-11-15T07:28:45.706Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW40",
+      "fingerprint": "7072545bae0c4a2de89ae1806ed8277bc9fb5a71fcc9c09adf8603019c73a577",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:28:31.810Z",
+      "endedAt": "2026-11-15T07:28:44.723Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW41",
+      "fingerprint": "e3e185b21802e73e08fc76738630dec40c6bf186f83ede5b49b843bc00ea1e25",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:29:31.802Z",
+      "endedAt": "2026-11-15T07:29:36.613Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW42",
+      "fingerprint": "07d511ba4af72a9df313fe00fc17c50fd7f1952dc055f1c4e12c38f58acbf8c2",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:29:31.811Z",
+      "endedAt": "2026-11-15T07:29:37.316Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW43",
+      "fingerprint": "ab2d13e95fb622ede1e431ab966d6fbb3698843e5a673ddf16892eb46ca605b1",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:29:31.813Z",
+      "endedAt": "2026-11-15T07:29:36.946Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW44",
+      "fingerprint": "893280c05e99877736a17cbb96f25b071c4aa896108845fa669c3841d35f260d",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:29:31.814Z",
+      "endedAt": "2026-11-15T07:29:36.281Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW45",
+      "fingerprint": "d802a675ece3982aa1bf7987fe832ddf969aefee3017f064cb59b0da6336ce72",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:29:31.815Z",
+      "endedAt": "2026-11-15T07:29:35.739Z",
+      "diagnostic": ""
+    }
+  ]
+}

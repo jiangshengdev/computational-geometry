@@ -1,0 +1,474 @@
+{
+  "Id": "b70d2f3067d74fe2ae99f3ffede75c5e",
+  "RecognitionStatus": "Success",
+  "Offset": 500000,
+  "Duration": 161900000,
+  "Channel": 0,
+  "DisplayText": "沿完整位置次序走过七个事件，每次参与的组数依次是111411，于是全程事件数是七，累计参与组数是十相交，原始对数是六，原点那一次的局部数目仍然是146。",
+  "SNR": 42.927135,
+  "NBest": [
+    {
+      "Confidence": 0.971739,
+      "Lexical": "沿 完整 位置 次序 走过 七 个 事件 每次 参与 的 组 数 依次 是 一 一 一 四 一 一 于是 全程 事件 数 是 七 累计 参与 组 数 是 十 相交 原始 对数 是 六 原点 那 一次 的 局部 数目 仍然 是 一 四 六",
+      "ITN": "沿 完整 位置 次序 走过 七 个 事件 每次 参与 的 组 数 依次 是 111411 于是 全程 事件 数 是 七 累计 参与 组 数 是 十 相交 原始 对数 是 六 原点 那 一次 的 局部 数目 仍然 是 146",
+      "MaskedITN": "沿完整位置次序走过七个事件每次参与的组数依次是111411于是全程事件数是七累计参与组数是十相交原始对数是六原点那一次的局部数目仍然是146",
+      "Display": "沿完整位置次序走过七个事件，每次参与的组数依次是111411，于是全程事件数是七，累计参与组数是十相交，原始对数是六，原点那一次的局部数目仍然是146。",
+      "PronunciationAssessment": {
+        "AccuracyScore": 89,
+        "FluencyScore": 96,
+        "CompletenessScore": 92,
+        "PronScore": 91
+      },
+      "Words": [
+        {
+          "Word": "沿",
+          "Offset": 500000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "完整",
+          "Offset": 3300000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "位置",
+          "Offset": 6900000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 79,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "次序",
+          "Offset": 9900000,
+          "Duration": 4200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "走过",
+          "Offset": 14200000,
+          "Duration": 3200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "七",
+          "Offset": 17500000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "个",
+          "Offset": 19500000,
+          "Duration": 900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "事件",
+          "Offset": 20500000,
+          "Duration": 5500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 64,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "每次",
+          "Offset": 27500000,
+          "Duration": 5100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 88,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "参与",
+          "Offset": 32700000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 35900000,
+          "Duration": 1100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "组",
+          "Offset": 37100000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "数",
+          "Offset": 38700000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "依次",
+          "Offset": 40100000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 53,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 42900000,
+          "Duration": 1100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 79,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一",
+          "Offset": 44100000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一",
+          "Offset": 47900000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一",
+          "Offset": 51100000,
+          "Duration": 2100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "四",
+          "Offset": 53300000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一",
+          "Offset": 56100000,
+          "Duration": 3900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一",
+          "Offset": 60100000,
+          "Duration": 4200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一",
+          "PronunciationAssessment": {
+            "ErrorType": "Omission"
+          },
+          "Offset": null
+        },
+        {
+          "Word": "于是",
+          "Offset": 66900000,
+          "Duration": 4300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "全程",
+          "Offset": 71300000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "事件",
+          "Offset": 75500000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 65,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "数",
+          "Offset": 78700000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 80300000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "七",
+          "Offset": 81900000,
+          "Duration": 4700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 56,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "累计",
+          "Offset": 87700000,
+          "Duration": 6100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "参与",
+          "Offset": 93900000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "组",
+          "Offset": 97300000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "数",
+          "Offset": 99300000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 101300000,
+          "Duration": 1700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "十",
+          "Offset": 103100000,
+          "Duration": 4700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "相交",
+          "Offset": 108900000,
+          "Duration": 6300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "原始",
+          "Offset": 115300000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 44,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "对数",
+          "Offset": 119100000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 122900000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "六",
+          "Offset": 124300000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 73,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "原点",
+          "Offset": 127900000,
+          "Duration": 7300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 68,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "那",
+          "Offset": 135300000,
+          "Duration": 1100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一次",
+          "Offset": 136500000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 139900000,
+          "Duration": 1000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "局部",
+          "Offset": 141000000,
+          "Duration": 3200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "数目",
+          "Offset": 144300000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 79,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "仍然",
+          "Offset": 148500000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "是",
+          "Offset": 151700000,
+          "Duration": 1200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 67,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一",
+          "Offset": 153000000,
+          "Duration": 1600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "四",
+          "Offset": 154700000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "六",
+          "Offset": 158300000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        }
+      ]
+    }
+  ]
+}

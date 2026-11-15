@@ -1,0 +1,314 @@
+{
+  "Id": "73deaaa7812f4e7dac67da9087149259",
+  "RecognitionStatus": "Success",
+  "Offset": 700000,
+  "Duration": 115000000,
+  "Channel": 0,
+  "DisplayText": "沿用同点报告规则，开始者已经加入，结束者在报告后才退出。所以报告时这四条闭线段分别属于四个不同的非零同线组。",
+  "SNR": 42.135204,
+  "NBest": [
+    {
+      "Confidence": 0.97712165,
+      "Lexical": "沿用 同点 报告 规则 开始 者 已经 加入 结束 者 在 报告 后 才 退出 所以 报告 时 这 四 条 闭线 段 分别 属于 四 个 不同 的 非 零同线 组",
+      "ITN": "沿用 同点 报告 规则 开始 者 已经 加入 结束 者 在 报告 后 才 退出 所以 报告 时 这 四 条 闭线 段 分别 属于 四 个 不同 的 非 零同线 组",
+      "MaskedITN": "沿用同点报告规则开始者已经加入结束者在报告后才退出所以报告时这四条闭线段分别属于四个不同的非零同线组",
+      "Display": "沿用同点报告规则，开始者已经加入，结束者在报告后才退出。所以报告时这四条闭线段分别属于四个不同的非零同线组。",
+      "PronunciationAssessment": {
+        "AccuracyScore": 92,
+        "FluencyScore": 93,
+        "CompletenessScore": 100,
+        "PronScore": 93.8
+      },
+      "Words": [
+        {
+          "Word": "沿用",
+          "Offset": 700000,
+          "Duration": 4300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "同点",
+          "Offset": 5100000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 79,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "报告",
+          "Offset": 9300000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "规则",
+          "Offset": 12300000,
+          "Duration": 6100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "开始",
+          "Offset": 19900000,
+          "Duration": 4900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "者",
+          "Offset": 24900000,
+          "Duration": 2100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 67,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "已经",
+          "Offset": 27100000,
+          "Duration": 2500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "加入",
+          "Offset": 29700000,
+          "Duration": 5500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "结束",
+          "Offset": 36500000,
+          "Duration": 5500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "者",
+          "Offset": 42100000,
+          "Duration": 2500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 73,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "在",
+          "Offset": 44700000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "报告",
+          "Offset": 46300000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "后",
+          "Offset": 49300000,
+          "Duration": 1700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "才",
+          "Offset": 51100000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "退出",
+          "Offset": 52700000,
+          "Duration": 6000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 69,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "所以",
+          "Offset": 62300000,
+          "Duration": 5100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "报告",
+          "Offset": 67500000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "时",
+          "Offset": 71100000,
+          "Duration": 4300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "这",
+          "Offset": 77100000,
+          "Duration": 2500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "四",
+          "Offset": 79700000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 63,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "条",
+          "Offset": 81300000,
+          "Duration": 2300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "闭线",
+          "Offset": 83700000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 94,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "段",
+          "Offset": 87100000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "分别",
+          "Offset": 90700000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "属于",
+          "Offset": 94100000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "四",
+          "Offset": 97700000,
+          "Duration": 1400000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "个",
+          "Offset": 99200000,
+          "Duration": 1000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "不同",
+          "Offset": 100300000,
+          "Duration": 3800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "的",
+          "Offset": 104200000,
+          "Duration": 2000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "非",
+          "Offset": 106300000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "零同线",
+          "Offset": 107700000,
+          "Duration": 5300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "组",
+          "Offset": 113100000,
+          "Duration": 2600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 73,
+            "ErrorType": "None"
+          }
+        }
+      ]
+    }
+  ]
+}

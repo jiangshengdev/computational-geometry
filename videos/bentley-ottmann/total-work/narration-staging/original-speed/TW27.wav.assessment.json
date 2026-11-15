@@ -1,0 +1,368 @@
+{
+  "Id": "9e2039386c3b40449a6415f9c939a199",
+  "RecognitionStatus": "Success",
+  "Offset": 500000,
+  "Duration": 150400000,
+  "Channel": 0,
+  "DisplayText": "新同线成员逐个加入。每次访问旧成员都立即产生一条新结果，每次加入至多做一次空表检查。游标推进也保守按对数成本计费，最后一次失败推进紧随最后一个结果。",
+  "SNR": 41.315994,
+  "NBest": [
+    {
+      "Confidence": 0.97968495,
+      "Lexical": "新同线 成员 逐个 加入 每次 访问 旧 成员 都 立即 产生 一条 新 结果 每次 加入 至多 做 一次 空表 检查 游标 推进 也 保守 按 对数 成本 计费 最后 一次 失败 推进 紧 随 最后 一个 结果",
+      "ITN": "新同线 成员 逐个 加入 每次 访问 旧 成员 都 立即 产生 一条 新 结果 每次 加入 至多 做 一次 空表 检查 游标 推进 也 保守 按 对数 成本 计费 最后 一次 失败 推进 紧 随 最后 一个 结果",
+      "MaskedITN": "新同线成员逐个加入每次访问旧成员都立即产生一条新结果每次加入至多做一次空表检查游标推进也保守按对数成本计费最后一次失败推进紧随最后一个结果",
+      "Display": "新同线成员逐个加入。每次访问旧成员都立即产生一条新结果，每次加入至多做一次空表检查。游标推进也保守按对数成本计费，最后一次失败推进紧随最后一个结果。",
+      "PronunciationAssessment": {
+        "AccuracyScore": 94,
+        "FluencyScore": 94,
+        "CompletenessScore": 95,
+        "PronScore": 94.2
+      },
+      "Words": [
+        {
+          "Word": "新同线",
+          "Offset": 500000,
+          "Duration": 7500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "成员",
+          "Offset": 8100000,
+          "Duration": 4700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "逐个",
+          "Offset": 12900000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "加入",
+          "Offset": 16500000,
+          "Duration": 5800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "每次",
+          "Offset": 23700000,
+          "Duration": 5700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 85,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "访问",
+          "Offset": 29500000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "旧",
+          "Offset": 33100000,
+          "Duration": 1300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 65,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "成员",
+          "Offset": 34500000,
+          "Duration": 6000000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 91,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "都",
+          "Offset": 42100000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "立即",
+          "Offset": 45100000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "产生",
+          "Offset": 47900000,
+          "Duration": 2900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一条",
+          "Offset": 50900000,
+          "Duration": 2700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "新",
+          "Offset": 53700000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "结果",
+          "Offset": 55700000,
+          "Duration": 4600000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "每次",
+          "Offset": 63900000,
+          "Duration": 5500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 48,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "加入",
+          "Offset": 69500000,
+          "Duration": 4300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "至多",
+          "Offset": 73900000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "做",
+          "Offset": 77100000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 88,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一次",
+          "Offset": 78700000,
+          "Duration": 2100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "空表",
+          "Offset": 80900000,
+          "Duration": 3300000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "检查",
+          "Offset": 84300000,
+          "Duration": 5700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "游标",
+          "Offset": 91900000,
+          "Duration": 4700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "推进",
+          "Offset": 96700000,
+          "Duration": 4900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "也",
+          "Offset": 101700000,
+          "Duration": 1500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "保守",
+          "Offset": 103300000,
+          "Duration": 4100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "按",
+          "Offset": 107500000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "对数",
+          "Offset": 109500000,
+          "Duration": 3100000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "成本",
+          "Offset": 112700000,
+          "Duration": 3900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "计费",
+          "Offset": 116700000,
+          "Duration": 4800000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "最后",
+          "Offset": 123100000,
+          "Duration": 4500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一次",
+          "Offset": 127700000,
+          "Duration": 2500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 59,
+            "ErrorType": "Mispronunciation"
+          }
+        },
+        {
+          "Word": "失败",
+          "Offset": 130300000,
+          "Duration": 4500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "推进",
+          "Offset": 134900000,
+          "Duration": 3700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "紧",
+          "Offset": 138700000,
+          "Duration": 1700000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 97,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "随",
+          "Offset": 140500000,
+          "Duration": 1900000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "最后",
+          "Offset": 142500000,
+          "Duration": 2500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "一个",
+          "Offset": 145100000,
+          "Duration": 2200000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 82,
+            "ErrorType": "None"
+          }
+        },
+        {
+          "Word": "结果",
+          "Offset": 147400000,
+          "Duration": 3500000,
+          "PronunciationAssessment": {
+            "AccuracyScore": 100,
+            "ErrorType": "None"
+          }
+        }
+      ]
+    }
+  ]
+}
