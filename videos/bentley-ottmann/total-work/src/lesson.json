@@ -1,0 +1,644 @@
+[
+  {
+    "id": "opening",
+    "title": "第一节：事件少，不代表工作少",
+    "diagram": "multiway",
+    "source": "total-work#events-and-groups",
+    "reference": "same-point-participants SP37–48；overall-correctness OC22–29",
+    "addition": "用同点报告的已知行为引出事件、组、输出三个计费量。",
+    "basis": "",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW01",
+        "text": "一个位置，需要做多少工作？",
+        "captions": [
+          "四条线段所在的直线不同，却都包含原点。",
+          "两条穿过，一条在这里结束，另一条从这里开始。"
+        ],
+        "focus": "原点",
+        "readingSeconds": 17
+      },
+      {
+        "id": "TW02",
+        "text": "报告时：四个组都参与",
+        "captions": [
+          "开始者已加入，结束者在报告后才退出。",
+          "所以报告时有 4 个不同的非零同线组。"
+        ],
+        "focus": "四个组",
+        "readingSeconds": 16
+      },
+      {
+        "id": "TW03",
+        "text": "一个事件，六个新的原始输入对",
+        "captions": [
+          "依次记录 6 个不同的原始无序输入对。",
+          "事件少，不代表这一次要做的工作少。"
+        ],
+        "focus": "六个",
+        "readingSeconds": 19
+      }
+    ]
+  },
+  {
+    "id": "quantities",
+    "title": "把账本中的量分清",
+    "diagram": "ledger",
+    "source": "total-work#quantities",
+    "reference": "pairwise-baseline D23–39；overall-correctness OC03",
+    "addition": "引用既有输入对界，新增 E 与 H 的全程计数。",
+    "basis": "",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW04",
+        "text": "n：原始输入份数；k：相交原始对数",
+        "captions": [
+          "用 n 表示原始输入份数，用 k 表示相交原始无序输入对数。",
+          "每对的完整交集算一条，点和非零闭区间都如此。"
+        ],
+        "focus": "原始",
+        "readingSeconds": 16
+      },
+      {
+        "id": "TW05",
+        "text": "E：不同事件位置数；H：各次参与组数之和",
+        "captions": [
+          "E 累计处理了多少不同位置。",
+          "H 把每次参与的不同非零同线组数加起来。"
+        ],
+        "focus": "参与组数",
+        "readingSeconds": 15
+      },
+      {
+        "id": "TW06",
+        "text": "本例全程：E=7，H=10，k=6",
+        "captions": [
+          "沿完整位置次序走过 7 个事件，参与组数依次为 1、1、1、4、1、1、1。",
+          "所以全程 E=7、H=10、k=6；原点处的局部数目仍是 1、4、6。"
+        ],
+        "focus": "全程",
+        "readingSeconds": 24
+      }
+    ]
+  },
+  {
+    "id": "units",
+    "title": "这份账本按什么单位计费",
+    "diagram": null,
+    "source": "total-work#quantities",
+    "reference": "pairwise-baseline D39；exact-predicates 数值成本边界",
+    "addition": "将比较、算术和基本记录次数设为统一单位。",
+    "basis": "",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW07",
+        "text": "一次精确算术、比较或基本记录操作",
+        "captions": [
+          "本集数精确算术、比较和基本记录操作的次数。",
+          "一次树查找包含多次比较，不能整次免费算作一个基本操作。"
+        ],
+        "focus": "次数",
+        "readingSeconds": 18
+      },
+      {
+        "id": "TW08",
+        "text": "有序容器：按对数成本计费",
+        "captions": [
+          "活动组顺序使用 AVL；队列、固定组查找和成员索引也使用有序容器。",
+          "沿用它们的对数操作成本，不展开平衡维护。"
+        ],
+        "focus": "对数",
+        "readingSeconds": 15
+      },
+      {
+        "id": "TW09",
+        "text": "n≥1；O 表示固定常数倍的上界",
+        "captions": [
+          "先讨论 n≥1；log 的底取 2。",
+          "O 表示固定常数倍的上界，不是每份输入的精确次数。"
+        ],
+        "focus": "上界",
+        "readingSeconds": 15
+      }
+    ]
+  },
+  {
+    "id": "events",
+    "title": "第二节：先给事件数一个上界",
+    "diagram": "sources",
+    "source": "total-work#events-and-groups",
+    "reference": "overall-correctness OC48–50",
+    "addition": "把有限事件来源转成由 n、k 控制的数量界。",
+    "basis": "",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW10",
+        "text": "端点位置至多 2n 个",
+        "captions": [
+          "每份非零输入至多提供两个端点位置，点输入只提供一个。",
+          "共享位置合并只会减少数量，所以端点位置至多 2n 个。"
+        ],
+        "focus": "端点",
+        "readingSeconds": 14
+      },
+      {
+        "id": "TW11",
+        "text": "非端点事件：每个位置选一对真实见证",
+        "captions": [
+          "其余位置来自不同支撑直线上的真实交点。",
+          "每个位置选一对在这里相交的原始输入；同一对至多见证一个位置。"
+        ],
+        "focus": "见证",
+        "readingSeconds": 18
+      },
+      {
+        "id": "TW12",
+        "math": "E\\le 2n+k",
+        "captions": [
+          "因此非端点事件位置至多 k 个，合起来 E≤2n+k。",
+          "重叠区间内的无穷多个点，不会各自成为事件。"
+        ],
+        "focus": "E",
+        "readingSeconds": 16
+      }
+    ]
+  },
+  {
+    "id": "participants",
+    "title": "参与组必须按报告时刻来数",
+    "diagram": "multiway",
+    "source": "total-work#events-and-groups",
+    "reference": "overall-correctness OC22–29",
+    "addition": "定义 h_p、c_p 并包含开始组与报告前结束组。",
+    "basis": "E≤2n+k",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW13",
+        "text": "h_p：位置 p 的不同非零参与组数",
+        "captions": [
+          "在位置 p，处理前经过 p 的旧活动组与本次开始者所属的组合并，同组只算一次。",
+          "点输入不算组；结束者报告后才退出。"
+        ],
+        "focus": "h_p",
+        "readingSeconds": 19
+      },
+      {
+        "id": "TW14",
+        "text": "c_p：这里新报告的跨组原始输入对数",
+        "captions": [
+          "用 c_p 表示这里新报告的跨组非零输入对数。",
+          "原点的报告时刻，h_p=4、c_p=6。"
+        ],
+        "focus": "c_p",
+        "readingSeconds": 17
+      }
+    ]
+  },
+  {
+    "id": "charge",
+    "title": "多组的费用由当场新输出支付",
+    "diagram": "pairs",
+    "source": "total-work#events-and-groups",
+    "reference": "pairwise-baseline D24–28；overall-correctness OC26–29",
+    "addition": "把组对注入原始对并推得线性参与费用。",
+    "basis": "h_p：参与组数；c_p：当场跨组新输出数",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW15",
+        "math": "\\frac{h_p(h_p-1)}{2}\\le c_p",
+        "captions": [
+          "至少两个组时，每组都非空，且各成员包含 p。",
+          "每两个组各选一份成员，得到一个真实新输出；不同组对选出的原始对不同。"
+        ],
+        "focus": "c_p",
+        "readingSeconds": 22
+      },
+      {
+        "id": "TW16",
+        "math": "h_p\\le h_p(h_p-1)\\le 2c_p",
+        "captions": [
+          "h_p≥2 时，h_p−1≥1。",
+          "于是参与组数不超过两倍的当场跨组新输出数。"
+        ],
+        "focus": "2c_p",
+        "readingSeconds": 21
+      },
+      {
+        "id": "TW17",
+        "text": "h_p=1 计在事件本身；h_p=0 无组贡献",
+        "captions": [
+          "单组贡献的一次工作计在事件本身。",
+          "零组没有组贡献，例如孤立的点输入事件。"
+        ],
+        "focus": "事件本身",
+        "readingSeconds": 14
+      }
+    ]
+  },
+  {
+    "id": "sum",
+    "title": "从每次参与，累加到全程",
+    "diagram": "ledger",
+    "source": "total-work#events-and-groups",
+    "reference": "overall-correctness OC26–29、OC55",
+    "addition": "唯一报告使当场账单可跨事件求和。",
+    "basis": "多组 h_p≤2c_p；单组计入一次事件",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW18",
+        "math": "H=\\sum_p h_p\\le E+2\\sum_p c_p",
+        "captions": [
+          "把每次参与组数相加，记作 H。",
+          "每个事件保守记一次，再加两倍的跨组新输出总数，就覆盖所有情况。"
+        ],
+        "focus": "H",
+        "readingSeconds": 22
+      },
+      {
+        "id": "TW19",
+        "math": "H\\le E+2k\\le 2n+3k",
+        "captions": [
+          "跨组唯一报告保证同一原始对不会在别处再次支付费用。",
+          "因此 H≤E+2k≤2n+3k，累计参与组数是 O(n+k)。"
+        ],
+        "focus": "H",
+        "readingSeconds": 23
+      }
+    ]
+  },
+  {
+    "id": "members",
+    "title": "第三节：组里有很多成员怎么办",
+    "diagram": "overlap",
+    "source": "total-work#output",
+    "reference": "overlap-reporting OR09–14、OR27；overlap-discovery OD25",
+    "addition": "用纯结束事件揭示不允许按旧输出反复支付。",
+    "basis": "E=O(n+k)，H=O(n+k)",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW20",
+        "text": "两份长成员 [0,6]；一份短成员 [2,3]",
+        "captions": [
+          "换成三份同线输入：两份覆盖 [0,6]，一份覆盖 [2,3]。",
+          "分行只为区分身份，三份都在同一条直线上。"
+        ],
+        "focus": "短成员",
+        "readingSeconds": 17
+      },
+      {
+        "id": "TW21",
+        "text": "x=0 新增 1 对；x=2 新增 2 对",
+        "captions": [
+          "在 x=0，两个长成员报告完整 [0,6]。",
+          "在 x=2，短成员与两个长成员各报告一条完整 [2,3]。"
+        ],
+        "focus": "新增",
+        "readingSeconds": 18
+      },
+      {
+        "id": "TW22",
+        "text": "x=3：只按结束身份删除短成员",
+        "captions": [
+          "到 x=3，短成员退出，两个长成员和组继续保留。",
+          "不遍历整个旧成员表，也不重新输出；先前的 [0,6] 结果保持完整。"
+        ],
+        "focus": "只按结束身份",
+        "readingSeconds": 22
+      },
+      {
+        "id": "TW23",
+        "text": "四事件的新输出：1、2、0、0",
+        "captions": [
+          "到 x=6，长成员结束，组才变空。",
+          "四次事件的新输出依次为 1、2、0、0，累计仍是 3 对。"
+        ],
+        "focus": "新输出",
+        "readingSeconds": 17
+      }
+    ]
+  },
+  {
+    "id": "expansion",
+    "title": "什么时候才展开成员",
+    "diagram": "expansion",
+    "source": "total-work#expanded-members",
+    "reference": "overlap-reporting OR38–40",
+    "addition": "以新输出支付展开的四种情形。",
+    "basis": "c_p：当场跨组新输出数",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW24",
+        "text": "M_p：非零参与成员总数；t_p：点输入数",
+        "captions": [
+          "用 M_p 表示非零参与成员总数，t_p 表示这个位置的点输入数。",
+          "普通计算只在至少两个组，或者有点输入时展开相关成员。"
+        ],
+        "focus": "展开",
+        "readingSeconds": 19
+      },
+      {
+        "id": "TW25",
+        "text": "h_p≥2：M_p≤2c_p",
+        "captions": [
+          "多组时，每份成员至少与另一个组的一份成员配对。",
+          "按成员参与输出的次数计数，每条跨组结果被数两次，所以 M_p≤2c_p。"
+        ],
+        "focus": "M_p",
+        "readingSeconds": 19
+      },
+      {
+        "id": "TW26",
+        "text": "单组有点：M_p≤t_p M_p；单组无点：不展开",
+        "captions": [
+          "单组且有点输入时，每份成员至少产生一个新的点—段结果。",
+          "单组且没有点输入时，不展开整个旧成员表；零组没有非零成员可展开。"
+        ],
+        "focus": "不展开",
+        "readingSeconds": 18
+      }
+    ]
+  },
+  {
+    "id": "output",
+    "title": "输出之外的循环，也要记账",
+    "diagram": null,
+    "source": "total-work#output",
+    "reference": "overlap-reporting OR09–19、OR38–40；pairwise-baseline D38",
+    "addition": "把游标、外层循环与临时表清理纳入新输出支付。",
+    "basis": "三类报告互斥且唯一；相交原始对总数为 k",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW27",
+        "text": "同线加入：每次访问，立即产生一个新结果",
+        "captions": [
+          "新同线成员逐个加入，每次访问旧成员都产生一条新结果。",
+          "空表检查每次加入至多一次；游标推进也保守按对数成本计费。"
+        ],
+        "focus": "新结果",
+        "readingSeconds": 18
+      },
+      {
+        "id": "TW28",
+        "text": "跨组、点—段、点—点：外层访问一并计入",
+        "captions": [
+          "跨组与点—段配对的成员访问，由本次新结果支付。",
+          "没有非零组时，每个点仍有一次外层开销；所有点身份合计至多 n 份。"
+        ],
+        "focus": "外层",
+        "readingSeconds": 18
+      },
+      {
+        "id": "TW29",
+        "text": "结果构造、追加与临时表销毁都计入",
+        "captions": [
+          "每条结果只保存两个身份，以及一个点或两个区间端点。",
+          "构造与还原计固定次数精确操作；全部追加按摊还保证累计 O(k)。"
+        ],
+        "focus": "都计入",
+        "readingSeconds": 25
+      }
+    ]
+  },
+  {
+    "id": "maintenance",
+    "title": "第四节：把维护放进总账",
+    "diagram": "budget",
+    "source": "total-work#maintenance",
+    "reference": "overlap-discovery OD05、OD25、OD33–39；same-column-events 局部更新",
+    "addition": "累计成员变更和局部组操作；只访问实际相关对象。",
+    "basis": "E≤2n+k；H≤2n+3k",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW30",
+        "text": "准备与两套成员索引：O(n log(n+1))",
+        "captions": [
+          "输入准备、必要剪切、固定组与端点缓存按输入量累计。",
+          "每份成员只加入和退出各一次，两套索引同步增删；最远右端从最大键读取。"
+        ],
+        "focus": "两套成员索引",
+        "readingSeconds": 22
+      },
+      {
+        "id": "TW31",
+        "text": "定位与重插：O((E+H+n) log(n+1))",
+        "captions": [
+          "每次只定位相遇块、访问参与组与常数个边界。",
+          "开始身份总量至多 n；块的移除、过滤、重插按累计参与量计费。"
+        ],
+        "focus": "参与量",
+        "readingSeconds": 24
+      },
+      {
+        "id": "TW32",
+        "text": "局部排序按累计参与量支付",
+        "captions": [
+          "只排序组身份，不移动整组成员；精确斜率提供一致次序。",
+          "最坏对数乘线性排序保证，加上 h_p≤n，就得到累计排序界。"
+        ],
+        "focus": "局部排序",
+        "readingSeconds": 22
+      }
+    ]
+  },
+  {
+    "id": "scheduling",
+    "title": "邻接、覆盖和重复预约都收费",
+    "diagram": "neighbors",
+    "source": "total-work#scheduling",
+    "reference": "overlap-discovery OD37–39；overall-correctness OC35–39",
+    "addition": "将检查次数与尝试次数连接到 H+E。",
+    "basis": "E+H=O(n+k)",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW33",
+        "text": "新块非空：至多 r+1 对；空块：至多 1 对",
+        "captions": [
+          "新块来自本次参与组，r≤h_p；非空时内部至多 r−1 对，两端各至多一对。",
+          "空块只可能接起原来的两侧；覆盖延长后的相关邻接补检也包含在内。"
+        ],
+        "focus": "r+1",
+        "readingSeconds": 19
+      },
+      {
+        "id": "TW34",
+        "text": "总检查量：O(H+E)=O(n+k)",
+        "captions": [
+          "每事件检查量由 h_p+1 控制，累计为 O(H+E)。",
+          "每次用固定直线和真实覆盖检查，不展开两组全部成员对。"
+        ],
+        "focus": "H+E",
+        "readingSeconds": 16
+      },
+      {
+        "id": "TW35",
+        "text": "已预约的位置：查找和尝试仍计费",
+        "captions": [
+          "同一个真实未来位置可能被再次发现，队列只保留一份。",
+          "这次查找和尝试仍然收费；尝试总数不超过检查总数。"
+        ],
+        "focus": "尝试",
+        "readingSeconds": 15
+      }
+    ]
+  },
+  {
+    "id": "queue",
+    "title": "队列大一些，对数费用仍可控制",
+    "diagram": null,
+    "source": "total-work#scheduling",
+    "reference": "pairwise-baseline D24–38；events 本集",
+    "addition": "引用原始输入对上界，将队列对数统一到 n。",
+    "basis": "E≤2n+k；k≤n(n−1) 除以 2；n≥1",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW36",
+        "math": "E+1\\le(n+1)^2\\quad\\Rightarrow\\quad\\log(E+1)\\le2\\log(n+1)",
+        "captions": [
+          "由事件数界和输入对数上界，可得 E+1≤(n+1)^2。",
+          "所以队列的一次对数操作成本，也受 log(n+1) 的常数倍控制。"
+        ],
+        "focus": "\\log",
+        "readingSeconds": 20
+      },
+      {
+        "id": "TW37",
+        "text": "端点登记、预约尝试与 E 次弹出全部计入",
+        "captions": [
+          "初始化至多 2n 次端点登记，之后计入全部预约尝试和 E 次弹出。",
+          "覆盖读取也收费，合计仍是 O((n+k) log(n+1))。"
+        ],
+        "focus": "全部",
+        "readingSeconds": 19
+      }
+    ]
+  },
+  {
+    "id": "total",
+    "title": "第五节：合上普通求交的总账",
+    "diagram": "budget",
+    "source": "total-work#total",
+    "reference": "本集各账单",
+    "addition": "包含必要清理后相加为总界。",
+    "basis": "E≤2n+k；H≤2n+3k",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW38",
+        "text": "临时记录、缓存与结果的清理也有费用",
+        "captions": [
+          "局部组表累计 O(H+E)，必要成员表由新输出支付。",
+          "缓存按实际访问更新；最后释放 O(n) 的几何与组记录，以及 O(k) 的结果。"
+        ],
+        "focus": "清理",
+        "readingSeconds": 20
+      },
+      {
+        "id": "TW39",
+        "math": "O((n+k)\\log(n+1))",
+        "captions": [
+          "各行都受同一个上界控制，固定行数相加只改变常数。",
+          "因此普通求交总计 O((n+k) log(n+1)) 次精确算术、比较及基本状态操作。"
+        ],
+        "focus": "n+k",
+        "readingSeconds": 19
+      },
+      {
+        "id": "TW40",
+        "text": "单输入包含在主界内；空输入另计 O(1)",
+        "captions": [
+          "n=1 时，log(n+1)=1，仍能容纳固定工作。",
+          "空输入另计 O(1)；所有规模可合写 O(1+(n+k) log(n+1))。"
+        ],
+        "focus": "空输入",
+        "readingSeconds": 21
+      }
+    ]
+  },
+  {
+    "id": "boundaries",
+    "title": "同一个事件，分清三种成本",
+    "diagram": "costs",
+    "source": "total-work#cost-boundaries",
+    "reference": "pairwise-baseline D39；exact-predicates 数值成本边界",
+    "addition": "同一真实事件上区分三种计费边界。",
+    "basis": "普通操作总界：O((n+k) log(n+1))，n≥1",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW41",
+        "text": "普通求交：必要局部操作与结果",
+        "captions": [
+          "回到原点事件：定位、局部排序、邻接检查和六条结果，属于普通求交。",
+          "必要成员展开和临时表也已计入，不能划入教学额外成本。"
+        ],
+        "focus": "普通求交",
+        "readingSeconds": 16
+      },
+      {
+        "id": "TW42",
+        "text": "精确数值：一次操作的成本随数字长度变化",
+        "captions": [
+          "有理数分子、分母越长，一次乘除、比较或约分可能越费时。",
+          "操作次数界不能直接当作秒数、固定字节成本或完整位复杂度。"
+        ],
+        "focus": "数字长度",
+        "readingSeconds": 20
+      },
+      {
+        "id": "TW43",
+        "text": "教学记录：快照、格式化、传输与展示另计",
+        "captions": [
+          "教学模式可能在多个停步重复保存全活动状态、成员说明和累计结果。",
+          "这些额外访问未必受 O(n+k) 控制，应加上实际记录、传输与展示成本。"
+        ],
+        "focus": "教学记录",
+        "readingSeconds": 20
+      }
+    ]
+  },
+  {
+    "id": "closing",
+    "title": "总工作量为什么受控",
+    "diagram": "ledger",
+    "source": "total-work#total",
+    "reference": "本集 events、sum、total",
+    "addition": "用已建立账单收束，不增加新前置证明。",
+    "basis": "E≤2n+k；H≤E+2k",
+    "holdAfterSeconds": 2,
+    "steps": [
+      {
+        "id": "TW44",
+        "text": "事件与参与量受控；展开由新输出支付",
+        "captions": [
+          "事件数控制到站次数，累计参与组数控制局部维护。",
+          "成员展开由当场新输出支付，重复预约和清理也已入账。"
+        ],
+        "focus": "新输出",
+        "readingSeconds": 18
+      },
+      {
+        "id": "TW45",
+        "text": "普通操作、数值成本、教学额外成本分别保留",
+        "captions": [
+          "一次事件可以很大，一个组也可以很大；累计账本仍有依据。",
+          "得到的是普通操作次数界，数值长度和教学记录保留各自的成本边界。"
+        ],
+        "focus": "成本边界",
+        "readingSeconds": 15
+      }
+    ]
+  }
+]

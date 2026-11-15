@@ -1,0 +1,2157 @@
+{
+  "multiway": {
+    "case": "multiway-endpoints",
+    "backend": "current local Rust HTTP API; teaching trace records are not counted as ordinary work",
+    "baseline": "1f9eb746af7fbf41ecfb47a769d65ab768389244",
+    "rawTraceSha256": "a789201b9c5536ef925ca80d40c8ef26149dff46e460620eb779e69df11695ac",
+    "events": [
+      {
+        "point": [
+          -3,
+          -3
+        ],
+        "groups": 1,
+        "newPairs": 0,
+        "activeAfter": [
+          0
+        ],
+        "traceStep": 41
+      },
+      {
+        "point": [
+          -3,
+          3
+        ],
+        "groups": 1,
+        "newPairs": 0,
+        "activeAfter": [
+          0,
+          1
+        ],
+        "traceStep": 96
+      },
+      {
+        "point": [
+          -1,
+          -2
+        ],
+        "groups": 1,
+        "newPairs": 0,
+        "activeAfter": [
+          2,
+          0,
+          1
+        ],
+        "traceStep": 151
+      },
+      {
+        "point": [
+          0,
+          0
+        ],
+        "groups": 4,
+        "newPairs": 6,
+        "activeAfter": [
+          1,
+          3,
+          0
+        ],
+        "traceStep": 345
+      },
+      {
+        "point": [
+          2,
+          1
+        ],
+        "groups": 1,
+        "newPairs": 0,
+        "activeAfter": [
+          1,
+          0
+        ],
+        "traceStep": 395
+      },
+      {
+        "point": [
+          3,
+          -3
+        ],
+        "groups": 1,
+        "newPairs": 0,
+        "activeAfter": [
+          0
+        ],
+        "traceStep": 434
+      },
+      {
+        "point": [
+          3,
+          3
+        ],
+        "groups": 1,
+        "newPairs": 0,
+        "activeAfter": [],
+        "traceStep": 473
+      }
+    ],
+    "results": [
+      {
+        "segments": [
+          0,
+          1
+        ],
+        "geometry": {
+          "type": "point",
+          "point": {
+            "x": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      {
+        "segments": [
+          0,
+          2
+        ],
+        "geometry": {
+          "type": "point",
+          "point": {
+            "x": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      {
+        "segments": [
+          0,
+          3
+        ],
+        "geometry": {
+          "type": "point",
+          "point": {
+            "x": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      {
+        "segments": [
+          1,
+          2
+        ],
+        "geometry": {
+          "type": "point",
+          "point": {
+            "x": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      {
+        "segments": [
+          1,
+          3
+        ],
+        "geometry": {
+          "type": "point",
+          "point": {
+            "x": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      {
+        "segments": [
+          2,
+          3
+        ],
+        "geometry": {
+          "type": "point",
+          "point": {
+            "x": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      }
+    ],
+    "selectedSteps": [
+      {
+        "traceStep": 3,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-3",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [],
+        "starts": [
+          0
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 16,
+        "phase": "processing",
+        "action": "join",
+        "subjects": [
+          0
+        ],
+        "current": {
+          "x": {
+            "numerator": "-3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-3",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [],
+        "starts": [
+          0
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 31,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0
+        ],
+        "results": [],
+        "starts": [
+          0
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 41,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0
+        ],
+        "results": [],
+        "starts": [
+          0
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 44,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0
+        ],
+        "results": [],
+        "starts": [
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 57,
+        "phase": "processing",
+        "action": "join",
+        "subjects": [
+          1
+        ],
+        "current": {
+          "x": {
+            "numerator": "-3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0
+        ],
+        "results": [],
+        "starts": [
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 72,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [],
+        "starts": [
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 96,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [],
+        "starts": [
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 99,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-1",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-2",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 112,
+        "phase": "processing",
+        "action": "join",
+        "subjects": [
+          2
+        ],
+        "current": {
+          "x": {
+            "numerator": "-1",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-2",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 127,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-1",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-2",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          2,
+          0,
+          1
+        ],
+        "results": [],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 151,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "-1",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-2",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          2,
+          0,
+          1
+        ],
+        "results": [],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 154,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          2,
+          0,
+          1
+        ],
+        "results": [],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 179,
+        "phase": "processing",
+        "action": "join",
+        "subjects": [
+          3
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 195,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          0,
+          1
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 212,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          0,
+          2
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 229,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          0,
+          3
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 246,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          1,
+          2
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 263,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          1,
+          3
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 280,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          2,
+          3
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 296,
+        "phase": "processing",
+        "action": "leave",
+        "subjects": [
+          2
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 313,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          1,
+          3,
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 345,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          1,
+          3,
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [
+          3
+        ],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 348,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "1",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          1,
+          3,
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          3
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 369,
+        "phase": "processing",
+        "action": "leave",
+        "subjects": [
+          3
+        ],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "1",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          1,
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          3
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 374,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "1",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          1,
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          3
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 395,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "1",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          1,
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          3
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 398,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          1,
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          1
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 419,
+        "phase": "processing",
+        "action": "leave",
+        "subjects": [
+          1
+        ],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          1
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 424,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          1
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 434,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "-3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          1
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 437,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "3",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0
+        ],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          0
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 458,
+        "phase": "processing",
+        "action": "leave",
+        "subjects": [
+          0
+        ],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "3",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          0
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 463,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "3",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          0
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 473,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "3",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "starts": [],
+        "ends": [
+          0
+        ],
+        "passes": []
+      }
+    ],
+    "sourceSha256": {
+      "web/src/algorithms/segment-intersection/cases/presets.ts": "2be20e84b9c4c801da14f81e9830aa0fcc49d6df497ab246e40f06ba942c8bae",
+      "src/algorithms/segment_intersection/bo/sweep/record.rs": "2b00e44a6c60fb5a1492b20dd9544e4ef43ca634d9346be6110bdd682c5af0a5",
+      "src/algorithms/segment_intersection/bo/sweep/activity.rs": "9ad0ffe6a2103550afa0608c405eada5d44fae957fcdf852f0d8ec06469d3261"
+    },
+    "binarySha256": "40bd543f17ec249e9b9dcd5356053c3443e62764ef844c071aac2e44c31f2b17",
+    "binaryVerifiedByLockedBuild": true,
+    "inputCoordinates": [
+      [
+        -3,
+        -3,
+        3,
+        3
+      ],
+      [
+        -3,
+        3,
+        3,
+        -3
+      ],
+      [
+        -1,
+        -2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        1
+      ]
+    ],
+    "projectionNote": "selectedSteps保留当前位置、身份角色、活动身份、结果索引及源轨迹下标；results索引指向本对象results。不保留不参与本集教学的队列字典投影。"
+  },
+  "overlap": {
+    "case": "overlap-group",
+    "backend": "current local Rust HTTP API; teaching trace records are not counted as ordinary work",
+    "baseline": "1f9eb746af7fbf41ecfb47a769d65ab768389244",
+    "rawTraceSha256": "c26155a61205134a129979d06331d513323f96e664f8aba3d8cc1d2deee40bb3",
+    "events": [
+      {
+        "point": [
+          0,
+          0
+        ],
+        "groups": 1,
+        "newPairs": 1,
+        "activeAfter": [
+          0,
+          1
+        ],
+        "traceStep": 76
+      },
+      {
+        "point": [
+          2,
+          0
+        ],
+        "groups": 1,
+        "newPairs": 2,
+        "activeAfter": [
+          0,
+          1,
+          2
+        ],
+        "traceStep": 179
+      },
+      {
+        "point": [
+          3,
+          0
+        ],
+        "groups": 1,
+        "newPairs": 0,
+        "activeAfter": [
+          0,
+          1
+        ],
+        "traceStep": 222
+      },
+      {
+        "point": [
+          6,
+          0
+        ],
+        "groups": 1,
+        "newPairs": 0,
+        "activeAfter": [],
+        "traceStep": 265
+      }
+    ],
+    "results": [
+      {
+        "segments": [
+          0,
+          1
+        ],
+        "geometry": {
+          "type": "overlap",
+          "start": {
+            "x": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "end": {
+            "x": {
+              "numerator": "6",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      {
+        "segments": [
+          0,
+          2
+        ],
+        "geometry": {
+          "type": "overlap",
+          "start": {
+            "x": {
+              "numerator": "2",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "end": {
+            "x": {
+              "numerator": "3",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      {
+        "segments": [
+          1,
+          2
+        ],
+        "geometry": {
+          "type": "overlap",
+          "start": {
+            "x": {
+              "numerator": "2",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "end": {
+            "x": {
+              "numerator": "3",
+              "denominator": "1"
+            },
+            "y": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          }
+        }
+      }
+    ],
+    "selectedSteps": [
+      {
+        "traceStep": 3,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [],
+        "starts": [
+          0,
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 16,
+        "phase": "processing",
+        "action": "join",
+        "subjects": [
+          0
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [],
+        "starts": [
+          0,
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 44,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          1,
+          0
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0
+        ],
+        "starts": [
+          0,
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 51,
+        "phase": "processing",
+        "action": "join",
+        "subjects": [
+          1
+        ],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0
+        ],
+        "starts": [
+          0,
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 66,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [
+          0
+        ],
+        "starts": [
+          0,
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 76,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [
+          0
+        ],
+        "starts": [
+          0,
+          1
+        ],
+        "ends": [],
+        "passes": []
+      },
+      {
+        "traceStep": 79,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [
+          0
+        ],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 118,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          2,
+          0
+        ],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1
+        ],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 147,
+        "phase": "processing",
+        "action": "record",
+        "subjects": [
+          2,
+          1
+        ],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 154,
+        "phase": "processing",
+        "action": "join",
+        "subjects": [
+          2
+        ],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 169,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1,
+          2
+        ],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 179,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "2",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1,
+          2
+        ],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [
+          2
+        ],
+        "ends": [],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 182,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1,
+          2
+        ],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 203,
+        "phase": "processing",
+        "action": "leave",
+        "subjects": [
+          2
+        ],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 212,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 222,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "3",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          2
+        ],
+        "passes": [
+          0,
+          1
+        ]
+      },
+      {
+        "traceStep": 225,
+        "phase": "processing",
+        "action": "take",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "6",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [
+          0,
+          1
+        ],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          0,
+          1
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 246,
+        "phase": "processing",
+        "action": "leave",
+        "subjects": [
+          0
+        ],
+        "current": {
+          "x": {
+            "numerator": "6",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          0,
+          1
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 250,
+        "phase": "processing",
+        "action": "leave",
+        "subjects": [
+          1
+        ],
+        "current": {
+          "x": {
+            "numerator": "6",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          0,
+          1
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 255,
+        "phase": "processing",
+        "action": "reorder",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "6",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          0,
+          1
+        ],
+        "passes": []
+      },
+      {
+        "traceStep": 265,
+        "phase": "processed",
+        "action": "complete",
+        "subjects": [],
+        "current": {
+          "x": {
+            "numerator": "6",
+            "denominator": "1"
+          },
+          "y": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "active": [],
+        "results": [
+          0,
+          1,
+          2
+        ],
+        "starts": [],
+        "ends": [
+          0,
+          1
+        ],
+        "passes": []
+      }
+    ],
+    "sourceSha256": {
+      "web/src/algorithms/segment-intersection/cases/presets.ts": "2be20e84b9c4c801da14f81e9830aa0fcc49d6df497ab246e40f06ba942c8bae",
+      "src/algorithms/segment_intersection/bo/sweep/record.rs": "2b00e44a6c60fb5a1492b20dd9544e4ef43ca634d9346be6110bdd682c5af0a5",
+      "src/algorithms/segment_intersection/bo/sweep/activity.rs": "9ad0ffe6a2103550afa0608c405eada5d44fae957fcdf852f0d8ec06469d3261"
+    },
+    "binarySha256": "40bd543f17ec249e9b9dcd5356053c3443e62764ef844c071aac2e44c31f2b17",
+    "binaryVerifiedByLockedBuild": true,
+    "inputCoordinates": [
+      [
+        0,
+        0,
+        6,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        0
+      ],
+      [
+        2,
+        0,
+        3,
+        0
+      ]
+    ],
+    "projectionNote": "selectedSteps保留当前位置、身份角色、活动身份、结果索引及源轨迹下标；results索引指向本对象results。不保留不参与本集教学的队列字典投影。"
+  }
+}

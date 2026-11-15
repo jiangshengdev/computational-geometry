@@ -1,0 +1,2098 @@
+{
+  "stage": "silent-text-review",
+  "status": "pure-text-frozen; corrected-pinyin-awaiting-two-sequential-independent-full-reviews",
+  "hashes": {
+    "lesson.json": "f5f84e408107ef719ae24e45becf20bc5b0ca587d5239636eb2c2352be334cbb",
+    "narration-text.json": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
+    "sentence-plan.json": "2d908b4f2b232232ee3103b3a8af305679b54bf319344cec88e1093c87f4943b",
+    "speech-text.json": "031a79460b73e37c7dd14d0cfb8b89751db620ea003c83f6301ebba2760f54f7"
+  },
+  "pureText": {
+    "reviewer": "tw_text_review",
+    "coverage": "TW01–TW45; 90 original captions, 259 spoken phrases",
+    "corrections": [
+      "口播逗号与字母边界",
+      "TW13经过当前位置的条件",
+      "TW16乘法指代",
+      "TW21–23 x坐标",
+      "TW25输入身份计数",
+      "TW33非空分支与参与组子集桥梁",
+      "TW41字幕普通成本/教学额外成本反义错误；首次纯文本审校漏识别，视觉审校发现后独立核销"
+    ]
+  },
+  "audio": "not-generated-or-reviewed",
+  "initialAnnotation": {
+    "stage": "首次拼音标注；非审校通过声明",
+    "frozenSha256": "8ed793994dbe4d2d32459f4c4b38b0b334a1b1c8be7937c45676bb37ebc948ba",
+    "coveredIds": [
+      "TW01",
+      "TW02",
+      "TW03",
+      "TW04",
+      "TW05",
+      "TW06",
+      "TW07",
+      "TW08",
+      "TW09",
+      "TW10",
+      "TW11",
+      "TW12",
+      "TW13",
+      "TW14",
+      "TW15",
+      "TW16",
+      "TW17",
+      "TW18",
+      "TW19",
+      "TW20",
+      "TW21",
+      "TW22",
+      "TW23",
+      "TW24",
+      "TW25",
+      "TW26",
+      "TW27",
+      "TW28",
+      "TW29",
+      "TW30",
+      "TW31",
+      "TW32",
+      "TW33",
+      "TW34",
+      "TW35",
+      "TW36",
+      "TW37",
+      "TW38",
+      "TW39",
+      "TW40",
+      "TW41",
+      "TW42",
+      "TW43",
+      "TW44",
+      "TW45"
+    ],
+    "annotationSha256": "19a926c415eefc3cc18fee7ac723d3f4ab2e97724fcccd79707b490b3bd712dd",
+    "principles": [
+      "原查询使用锁定环境的官方 skill 入口，45条完整句保留原结果；pypinyin 不提供释义，不作为规范裁决。",
+      "只选常用多音字、助词轻声及有语境依据的变调，不按全部古字候选全字标注。",
+      "上声非上声前的半上仍记3；词内上上明确记2 3；不强制所有跨词/主谓边界连续变调。",
+      "一的数学数值、枚举值、序数保持1；数量短语按后一量词选2或4。",
+      "普通字符串内独立字母由共享 azure-speech.ts spokenTextXml 自动转换为en-US characters，保留冻结大小写及空格。",
+      "本轮不加break，主代理另对照字幕分句映射；没有合成/试听/导出。"
+    ],
+    "sources": [
+      {
+        "url": "https://www.gsjtxy.edu.cn/jcjxb/content/169/t2024210-169-17094.html",
+        "checked": "正文25–33行",
+        "application": "上声、数量一、序数一、不的连读规则；跨词不机械推断。"
+      },
+      {
+        "url": "https://www.edu.cn/pu_tong_hua_483/20060323/t20060323_19443.shtml",
+        "checked": "四、声调和变调正文",
+        "application": "轻声助词、后缀及连读；非上声前半上不另造音调编号。"
+      }
+    ],
+    "unresolved": [],
+    "status": "首次标注完成，待独立全文盲审，不能据此宣布审校通过",
+    "supplementalAnnotations": [
+      {
+        "id": "TW13",
+        "start": 7,
+        "text": "小写",
+        "pinyin": "xiao2 xie3",
+        "reason": "词内上上连读，首字变阳平；两组为紧连数量短语"
+      },
+      {
+        "id": "TW13",
+        "start": 58,
+        "text": "所属",
+        "pinyin": "suo2 shu3",
+        "reason": "词内上上连读，首字变阳平；两组为紧连数量短语"
+      },
+      {
+        "id": "TW17",
+        "start": 0,
+        "text": "只有",
+        "pinyin": "zhi2 you3",
+        "reason": "词内上上连读，首字变阳平；两组为紧连数量短语"
+      },
+      {
+        "id": "TW26",
+        "start": 0,
+        "text": "只有",
+        "pinyin": "zhi2 you3",
+        "reason": "词内上上连读，首字变阳平；两组为紧连数量短语"
+      },
+      {
+        "id": "TW26",
+        "start": 39,
+        "text": "只有",
+        "pinyin": "zhi2 you3",
+        "reason": "词内上上连读，首字变阳平；两组为紧连数量短语"
+      },
+      {
+        "id": "TW34",
+        "start": 58,
+        "text": "两组",
+        "pinyin": "liang2 zu3",
+        "reason": "词内上上连读，首字变阳平；两组为紧连数量短语"
+      },
+      {
+        "id": "TW40",
+        "start": 0,
+        "text": "只有",
+        "pinyin": "zhi2 you3",
+        "reason": "词内上上连读，首字变阳平；两组为紧连数量短语"
+      }
+    ],
+    "supplementalSelection": "色/绿/结/从/沿/经/别/份/作/那/要/大/写/号/中/通/读/传逐次依据原完整句查询和常用词义纳入；本集均无姓氏或古义语境。",
+    "validation": {
+      "ids": [
+        "TW01",
+        "TW02",
+        "TW03",
+        "TW04",
+        "TW05",
+        "TW06",
+        "TW07",
+        "TW08",
+        "TW09",
+        "TW10",
+        "TW11",
+        "TW12",
+        "TW13",
+        "TW14",
+        "TW15",
+        "TW16",
+        "TW17",
+        "TW18",
+        "TW19",
+        "TW20",
+        "TW21",
+        "TW22",
+        "TW23",
+        "TW24",
+        "TW25",
+        "TW26",
+        "TW27",
+        "TW28",
+        "TW29",
+        "TW30",
+        "TW31",
+        "TW32",
+        "TW33",
+        "TW34",
+        "TW35",
+        "TW36",
+        "TW37",
+        "TW38",
+        "TW39",
+        "TW40",
+        "TW41",
+        "TW42",
+        "TW43",
+        "TW44",
+        "TW45"
+      ],
+      "textUnchanged": true,
+      "noBreaksAdded": true,
+      "englishHandling": "共享spokenTextXml规则",
+      "annotationCount": 646
+    },
+    "queryMethod": "pypinyin 0.55.0; initial full45 input and per-character candidates queried; current annotated manuscript is authoritative, not a parallel inventory"
+  },
+  "initialBlind": {
+    "stage": "independent_full_blind_review_before_history",
+    "reviewer": "tw_pinyin_blind_one",
+    "inputHashes": {
+      "narration-text.json": "8ed793994dbe4d2d32459f4c4b38b0b334a1b1c8be7937c45676bb37ebc948ba",
+      "speech-text.json": "c750e7873030a6a064ee994b2302f83748eecd83656f7788832a78c14d895c45",
+      "sentence-plan.json": "d55ad2f89769dee8a23fe6be429f5898028ead8c422a9b4f05e6a0fc4dfcd2a2"
+    },
+    "coverage": [
+      {
+        "id": "TW01",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW02",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW03",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW04",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW05",
+        "speechSentences": 4,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW06",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW07",
+        "speechSentences": 4,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW08",
+        "speechSentences": 4,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW09",
+        "speechSentences": 4,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW10",
+        "speechSentences": 4,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW11",
+        "speechSentences": 4,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW12",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW13",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW14",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW15",
+        "speechSentences": 8,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW16",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW17",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW18",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW19",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW20",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW21",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW22",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW23",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW24",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW25",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW26",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW27",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW28",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW29",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW30",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW31",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW32",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW33",
+        "speechSentences": 7,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW34",
+        "speechSentences": 4,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW35",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW36",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW37",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW38",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW39",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW40",
+        "speechSentences": 8,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW41",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW42",
+        "speechSentences": 6,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW43",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW44",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      },
+      {
+        "id": "TW45",
+        "speechSentences": 5,
+        "checked": [
+          "全文多音字",
+          "声调",
+          "变调",
+          "轻声",
+          "漏标",
+          "400/200ms语义映射"
+        ]
+      }
+    ],
+    "checks": {
+      "shots": 45,
+      "sentences": 257,
+      "break200": 167,
+      "break400": 90,
+      "frozenTextUnchanged": true,
+      "allBreaksExactlyMatchSentencePlan": true,
+      "semanticCaptionGroupingReviewed": true,
+      "pinyinObjectSyllableCountsMatch": true
+    },
+    "queryEvidence": "/tmp/tw-pinyin-blind-one-queries.json",
+    "querySource": "pypinyin 0.55.0；不是词典规范证据，查询正文曾把真实相交误选 xiang4，审核按语义纠正",
+    "issues": [
+      {
+        "id": "B1-01",
+        "shot": "TW15",
+        "phrase": "就得到一个真实相交的原始输入对。",
+        "current": "相 xiang4",
+        "proposed": "相 xiang1",
+        "classification": "确定标音错误",
+        "reason": "几何相交是交叉/互相相交，不是相貌、察看。全文库查询错误选 xiang4，不能机械采用。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=27877&la=0&powerMode=0"
+      },
+      {
+        "id": "B1-02",
+        "shot": "TW29",
+        "phrase": "也按已经支付的展开量计入。",
+        "current": "量 liang2",
+        "proposed": "量 liang4",
+        "classification": "确定标音错误",
+        "reason": "指展开数量，名词；不是测量动作。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+      },
+      {
+        "id": "B1-03",
+        "shot": "TW30",
+        "phrase": "输入准备、必要剪切、固定组与端点缓存按输入量累计。",
+        "current": "切 qie4",
+        "proposed": "切 qie1",
+        "classification": "确定标音错误",
+        "reason": "剪切指几何切分；不是迫切、切实。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=24798&la=0&powerMode=0"
+      },
+      {
+        "id": "B1-04",
+        "shot": "TW30",
+        "phrase": "不重扫全组。",
+        "current": "不 bu2",
+        "proposed": "不 bu4",
+        "classification": "确定标音错误",
+        "reason": "重读 chong2；不在非去声前保持 bu4，此处不符合去声前变调。",
+        "source": "https://www.moe.gov.cn/moe_879/moe_1252/s8447/201412/t20141204_179444.html"
+      },
+      {
+        "id": "B1-05",
+        "shot": "TW31",
+        "phrase": "块的移除、过滤和重插按累计参与量计费。",
+        "current": "量 liang2",
+        "proposed": "量 liang4",
+        "classification": "确定标音错误",
+        "reason": "参与量是累计数量名词，不是量度动作。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+      },
+      {
+        "id": "B1-06",
+        "shot": "TW32",
+        "phrase": "所以逐次排序成本相加。",
+        "current": "相 xiang4",
+        "proposed": "相 xiang1",
+        "classification": "确定标音错误",
+        "reason": "相加是把成本彼此加起来，不是观察、相貌。",
+        "source": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=7196&la=0&powerMode=0"
+      },
+      {
+        "id": "B1-07",
+        "shot": "TW38",
+        "phrase": "最后释放几何、组和映射的工作按输入量计。",
+        "current": "量 liang2",
+        "proposed": "量 liang4",
+        "classification": "确定标音错误",
+        "reason": "输入量/输出量均是数量名词，不是测量动作。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+      },
+      {
+        "id": "B1-08",
+        "shot": "TW38",
+        "phrase": "逐条释放结果按输出量计。",
+        "current": "量 liang2",
+        "proposed": "量 liang4",
+        "classification": "确定标音错误",
+        "reason": "输入量/输出量均是数量名词，不是测量动作。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+      },
+      {
+        "id": "B1-09",
+        "classification": "局部标注遗漏",
+        "character": "合",
+        "current": "普通字符串，未显式标注",
+        "proposed": "he2",
+        "occurrences": [
+          {
+            "shot": "TW10",
+            "offset": 30,
+            "context": "供一个。共享位置合并只会减少数量。所"
+          },
+          {
+            "shot": "TW13",
+            "offset": 62,
+            "context": "次开始者所属的组合并。同组只算一次。"
+          },
+          {
+            "shot": "TW28",
+            "offset": 66,
+            "context": "所有位置的点身份合计至多有 n 份。"
+          },
+          {
+            "shot": "TW30",
+            "offset": 75,
+            "context": "组。这些有序维护合计为输入份数乘以对"
+          },
+          {
+            "shot": "TW37",
+            "offset": 52,
+            "context": "覆盖读取也收费。合计仍由输入量与输出"
+          },
+          {
+            "shot": "TW40",
+            "offset": 51,
+            "context": "外计常数开销。若合写所有规模。就在主"
+          }
+        ],
+        "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-10",
+        "classification": "局部标注遗漏",
+        "character": "会",
+        "current": "普通字符串，未显式标注",
+        "proposed": "hui4",
+        "occurrences": [
+          {
+            "shot": "TW10",
+            "offset": 33,
+            "context": "。共享位置合并只会减少数量。所以端点"
+          },
+          {
+            "shot": "TW12",
+            "offset": 61,
+            "context": "的无穷多个点。不会各自成为事件。"
+          },
+          {
+            "shot": "TW19",
+            "offset": 19,
+            "context": "。同一个原始对不会在别的事件再次支付"
+          }
+        ],
+        "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-11",
+        "classification": "局部标注遗漏",
+        "character": "提",
+        "current": "普通字符串，未显式标注",
+        "proposed": "ti2",
+        "occurrences": [
+          {
+            "shot": "TW10",
+            "offset": 8,
+            "context": "每份非零输入至多提供两个端点位置。点"
+          },
+          {
+            "shot": "TW10",
+            "offset": 21,
+            "context": "点位置。点输入只提供一个。共享位置合"
+          }
+        ],
+        "reason": "提供，不是提防 dī；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-12",
+        "classification": "局部标注遗漏",
+        "character": "约",
+        "current": "普通字符串，未显式标注",
+        "proposed": "yue1",
+        "occurrences": [
+          {
+            "shot": "TW37",
+            "offset": 26,
+            "context": "。之后计入全部预约尝试和每个事件的一"
+          },
+          {
+            "shot": "TW42",
+            "offset": 40,
+            "context": "长。乘除、比较或约分可能越费时。前面"
+          },
+          {
+            "shot": "TW44",
+            "offset": 42,
+            "context": "支付。再把重复预约和必要清理计入。就"
+          }
+        ],
+        "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-13",
+        "classification": "局部标注遗漏",
+        "character": "稍",
+        "current": "普通字符串，未显式标注",
+        "proposed": "shao1",
+        "occurrences": [
+          {
+            "shot": "TW17",
+            "offset": 52,
+            "context": "入需要的输出工作稍后单独计入。"
+          }
+        ],
+        "reason": "稍后，表示稍微，不是稍息 shào；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-14",
+        "classification": "局部标注遗漏",
+        "character": "说",
+        "current": "普通字符串，未显式标注",
+        "proposed": "shuo1",
+        "occurrences": [
+          {
+            "shot": "TW43",
+            "offset": 23,
+            "context": "全活动状态、成员说明和累计结果。还要"
+          }
+        ],
+        "reason": "说明，不是游说 shuì；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      }
+    ],
+    "acceptedNotes": [
+      "数学单念、列举、序数中的一保留 yi1；量词前一按后字调值变调。",
+      "所以、索引、处理、没有、有理数等已处理词内上声连读；跨词和主谓边界不凭无标点强加连续变调。",
+      "的、了、着、名字、起来等轻声已核对；个的常见本调与弱读不强行统一。",
+      "未将库的古音、姓氏/地名音或所有逐字候选机械列为漏标。"
+    ],
+    "historyReconciliation": {
+      "status": "pending",
+      "note": "未读历史审核、标注查证记录或其他代理结论；请主代理在本报告提交后提供历史问题清单。"
+    },
+    "conclusion": "当前版本存在8处确定标音错误，另6类现代常用多音字显式标注遗漏；未修改输入文件。不能放行，仍须历史核销。",
+    "audio": "未生成、未试听、未导出；本报告不证明音频表现。"
+  },
+  "initialHistory": {
+    "stage": "历史核销附录，保留原盲审不变",
+    "blindOriginal": "/tmp/tw-pinyin-blind-one.json",
+    "inputHashes": {
+      "narration-text.json": "8ed793994dbe4d2d32459f4c4b38b0b334a1b1c8be7937c45676bb37ebc948ba",
+      "speech-text.json": "c750e7873030a6a064ee994b2302f83748eecd83656f7788832a78c14d895c45",
+      "sentence-plan.json": "d55ad2f89769dee8a23fe6be429f5898028ead8c422a9b4f05e6a0fc4dfcd2a2"
+    },
+    "historySource": "/tmp/tw-pinyin-annotation.json",
+    "historySourceSha256": "82a528cacf9074cdb0cfd1617cc92a53ee8383b5bc935038e8db697513cc3369",
+    "historyUnresolved": [],
+    "historyAssessment": "初注未提出遗留项。其原则为常用多音字/语义变调，不把古字候选全字标注；这与本轮排除古音、姓氏音的原则兼容。初注未提供对8处错音的语义支持，也未对合/会/提/约/稍/说16处给出不标注的有效例外。其annotationSha256是加break前版本；本轮结果只绑定当前speech c750e787…版本，未混用。",
+    "perIssue": [
+      {
+        "id": "B1-01",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-01",
+          "shot": "TW15",
+          "phrase": "就得到一个真实相交的原始输入对。",
+          "current": "相 xiang4",
+          "proposed": "相 xiang1",
+          "classification": "确定标音错误",
+          "reason": "几何相交是交叉/互相相交，不是相貌、察看。全文库查询错误选 xiang4，不能机械采用。",
+          "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=27877&la=0&powerMode=0",
+          "sentenceOffset": 37
+        }
+      },
+      {
+        "id": "B1-02",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-02",
+          "shot": "TW29",
+          "phrase": "也按已经支付的展开量计入。",
+          "current": "量 liang2",
+          "proposed": "量 liang4",
+          "classification": "确定标音错误",
+          "reason": "指展开数量，名词；不是测量动作。",
+          "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1",
+          "sentenceOffset": 92
+        }
+      },
+      {
+        "id": "B1-03",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-03",
+          "shot": "TW30",
+          "phrase": "输入准备、必要剪切、固定组与端点缓存按输入量累计。",
+          "current": "切 qie4",
+          "proposed": "切 qie1",
+          "classification": "确定标音错误",
+          "reason": "剪切指几何切分；不是迫切、切实。",
+          "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=24798&la=0&powerMode=0",
+          "sentenceOffset": 0
+        }
+      },
+      {
+        "id": "B1-04",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-04",
+          "shot": "TW30",
+          "phrase": "不重扫全组。",
+          "current": "不 bu2",
+          "proposed": "不 bu4",
+          "classification": "确定标音错误",
+          "reason": "重读 chong2；不在非去声前保持 bu4，此处不符合去声前变调。",
+          "source": "https://www.moe.gov.cn/moe_879/moe_1252/s8447/201412/t20141204_179444.html",
+          "sentenceOffset": 63
+        }
+      },
+      {
+        "id": "B1-05",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-05",
+          "shot": "TW31",
+          "phrase": "块的移除、过滤和重插按累计参与量计费。",
+          "current": "量 liang2",
+          "proposed": "量 liang4",
+          "classification": "确定标音错误",
+          "reason": "参与量是累计数量名词，不是量度动作。",
+          "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1",
+          "sentenceOffset": 36
+        }
+      },
+      {
+        "id": "B1-06",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-06",
+          "shot": "TW32",
+          "phrase": "所以逐次排序成本相加。",
+          "current": "相 xiang4",
+          "proposed": "相 xiang1",
+          "classification": "确定标音错误",
+          "reason": "相加是把成本彼此加起来，不是观察、相貌。",
+          "source": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=7196&la=0&powerMode=0",
+          "sentenceOffset": 69
+        }
+      },
+      {
+        "id": "B1-07",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-07",
+          "shot": "TW38",
+          "phrase": "最后释放几何、组和映射的工作按输入量计。",
+          "current": "量 liang2",
+          "proposed": "量 liang4",
+          "classification": "确定标音错误",
+          "reason": "输入量/输出量均是数量名词，不是测量动作。",
+          "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1",
+          "sentenceOffset": 54
+        }
+      },
+      {
+        "id": "B1-08",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-08",
+          "shot": "TW38",
+          "phrase": "逐条释放结果按输出量计。",
+          "current": "量 liang2",
+          "proposed": "量 liang4",
+          "classification": "确定标音错误",
+          "reason": "输入量/输出量均是数量名词，不是测量动作。",
+          "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1",
+          "sentenceOffset": 74
+        }
+      },
+      {
+        "id": "B1-09",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-09",
+          "classification": "局部标注遗漏",
+          "character": "合",
+          "current": "普通字符串，未显式标注",
+          "proposed": "he2",
+          "occurrences": [
+            {
+              "shot": "TW10",
+              "offset": 30,
+              "context": "供一个。共享位置合并只会减少数量。所"
+            },
+            {
+              "shot": "TW13",
+              "offset": 62,
+              "context": "次开始者所属的组合并。同组只算一次。"
+            },
+            {
+              "shot": "TW28",
+              "offset": 66,
+              "context": "所有位置的点身份合计至多有 n 份。"
+            },
+            {
+              "shot": "TW30",
+              "offset": 75,
+              "context": "组。这些有序维护合计为输入份数乘以对"
+            },
+            {
+              "shot": "TW37",
+              "offset": 52,
+              "context": "覆盖读取也收费。合计仍由输入量与输出"
+            },
+            {
+              "shot": "TW40",
+              "offset": 51,
+              "context": "外计常数开销。若合写所有规模。就在主"
+            }
+          ],
+          "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+          "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+        }
+      },
+      {
+        "id": "B1-10",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-10",
+          "classification": "局部标注遗漏",
+          "character": "会",
+          "current": "普通字符串，未显式标注",
+          "proposed": "hui4",
+          "occurrences": [
+            {
+              "shot": "TW10",
+              "offset": 33,
+              "context": "。共享位置合并只会减少数量。所以端点"
+            },
+            {
+              "shot": "TW12",
+              "offset": 61,
+              "context": "的无穷多个点。不会各自成为事件。"
+            },
+            {
+              "shot": "TW19",
+              "offset": 19,
+              "context": "。同一个原始对不会在别的事件再次支付"
+            }
+          ],
+          "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+          "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+        }
+      },
+      {
+        "id": "B1-11",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-11",
+          "classification": "局部标注遗漏",
+          "character": "提",
+          "current": "普通字符串，未显式标注",
+          "proposed": "ti2",
+          "occurrences": [
+            {
+              "shot": "TW10",
+              "offset": 8,
+              "context": "每份非零输入至多提供两个端点位置。点"
+            },
+            {
+              "shot": "TW10",
+              "offset": 21,
+              "context": "点位置。点输入只提供一个。共享位置合"
+            }
+          ],
+          "reason": "提供，不是提防 dī；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+          "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+        }
+      },
+      {
+        "id": "B1-12",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-12",
+          "classification": "局部标注遗漏",
+          "character": "约",
+          "current": "普通字符串，未显式标注",
+          "proposed": "yue1",
+          "occurrences": [
+            {
+              "shot": "TW37",
+              "offset": 26,
+              "context": "。之后计入全部预约尝试和每个事件的一"
+            },
+            {
+              "shot": "TW42",
+              "offset": 40,
+              "context": "长。乘除、比较或约分可能越费时。前面"
+            },
+            {
+              "shot": "TW44",
+              "offset": 42,
+              "context": "支付。再把重复预约和必要清理计入。就"
+            }
+          ],
+          "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+          "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+        }
+      },
+      {
+        "id": "B1-13",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-13",
+          "classification": "局部标注遗漏",
+          "character": "稍",
+          "current": "普通字符串，未显式标注",
+          "proposed": "shao1",
+          "occurrences": [
+            {
+              "shot": "TW17",
+              "offset": 52,
+              "context": "入需要的输出工作稍后单独计入。"
+            }
+          ],
+          "reason": "稍后，表示稍微，不是稍息 shào；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+          "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+        }
+      },
+      {
+        "id": "B1-14",
+        "status": "仍存在，独立新增发现；不属于重复旧问题",
+        "detail": {
+          "id": "B1-14",
+          "classification": "局部标注遗漏",
+          "character": "说",
+          "current": "普通字符串，未显式标注",
+          "proposed": "shuo1",
+          "occurrences": [
+            {
+              "shot": "TW43",
+              "offset": 23,
+              "context": "全活动状态、成员说明和累计结果。还要"
+            }
+          ],
+          "reason": "说明，不是游说 shuì；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+          "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+        }
+      }
+    ],
+    "finalCounts": {
+      "incorrectPronunciations": 8,
+      "missingAnnotationCategories": 6,
+      "missingAnnotationOccurrences": 16,
+      "priorUnresolved": 0,
+      "withdrawn": 0,
+      "requiresTextChange": 0
+    },
+    "conclusion": "核销完成，8处标音错误与16处漏标维持；不放行。仅需局部拼音调整，冻结文字/标点/句界不必修改。"
+  },
+  "correction": {
+    "stage": "独立拼音修正；不是审核放行",
+    "inputSpeechSha256": "c750e7873030a6a064ee994b2302f83748eecd83656f7788832a78c14d895c45",
+    "frozenNarrationSha256": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
+    "sentencePlanSha256": "2d908b4f2b232232ee3103b3a8af305679b54bf319344cec88e1093c87f4943b",
+    "outputSpeechSha256": "031a79460b73e37c7dd14d0cfb8b89751db620ea003c83f6301ebba2760f54f7",
+    "coverage": [
+      "TW01",
+      "TW02",
+      "TW03",
+      "TW04",
+      "TW05",
+      "TW06",
+      "TW07",
+      "TW08",
+      "TW09",
+      "TW10",
+      "TW11",
+      "TW12",
+      "TW13",
+      "TW14",
+      "TW15",
+      "TW16",
+      "TW17",
+      "TW18",
+      "TW19",
+      "TW20",
+      "TW21",
+      "TW22",
+      "TW23",
+      "TW24",
+      "TW25",
+      "TW26",
+      "TW27",
+      "TW28",
+      "TW29",
+      "TW30",
+      "TW31",
+      "TW32",
+      "TW33",
+      "TW34",
+      "TW35",
+      "TW36",
+      "TW37",
+      "TW38",
+      "TW39",
+      "TW40",
+      "TW41",
+      "TW42",
+      "TW43",
+      "TW44",
+      "TW45"
+    ],
+    "changes": [
+      {
+        "id": "B1-01",
+        "shot": "TW15",
+        "offset": 44,
+        "before": {
+          "text": "相",
+          "pinyin": "xiang4"
+        },
+        "after": {
+          "text": "相",
+          "pinyin": "xiang1"
+        },
+        "reason": "几何相交是交叉/互相相交，不是相貌、察看。全文库查询错误选 xiang4，不能机械采用。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=27877&la=0&powerMode=0"
+      },
+      {
+        "id": "B1-02",
+        "shot": "TW29",
+        "offset": 101,
+        "before": {
+          "text": "量",
+          "pinyin": "liang2"
+        },
+        "after": {
+          "text": "量",
+          "pinyin": "liang4"
+        },
+        "reason": "指展开数量，名词；不是测量动作。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+      },
+      {
+        "id": "B1-03",
+        "shot": "TW30",
+        "offset": 8,
+        "before": {
+          "text": "切",
+          "pinyin": "qie4"
+        },
+        "after": {
+          "text": "切",
+          "pinyin": "qie1"
+        },
+        "reason": "剪切指几何切分；不是迫切、切实。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=24798&la=0&powerMode=0"
+      },
+      {
+        "id": "B1-04",
+        "shot": "TW30",
+        "offset": 63,
+        "before": {
+          "text": "不重扫",
+          "pinyin": "bu2 chong2 sao3"
+        },
+        "after": {
+          "text": "不重扫",
+          "pinyin": "bu4 chong2 sao3"
+        },
+        "reason": "重读 chong2；不在非去声前保持 bu4，此处不符合去声前变调。",
+        "source": "https://www.moe.gov.cn/moe_879/moe_1252/s8447/201412/t20141204_179444.html"
+      },
+      {
+        "id": "B1-05",
+        "shot": "TW31",
+        "offset": 51,
+        "before": {
+          "text": "累计参与量",
+          "pinyin": "lei3 ji4 can1 yu4 liang2"
+        },
+        "after": {
+          "text": "累计参与量",
+          "pinyin": "lei3 ji4 can1 yu4 liang4"
+        },
+        "reason": "参与量是累计数量名词，不是量度动作。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+      },
+      {
+        "id": "B1-06",
+        "shot": "TW32",
+        "offset": 77,
+        "before": {
+          "text": "相",
+          "pinyin": "xiang4"
+        },
+        "after": {
+          "text": "相",
+          "pinyin": "xiang1"
+        },
+        "reason": "相加是把成本彼此加起来，不是观察、相貌。",
+        "source": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=7196&la=0&powerMode=0"
+      },
+      {
+        "id": "B1-07",
+        "shot": "TW38",
+        "offset": 71,
+        "before": {
+          "text": "量",
+          "pinyin": "liang2"
+        },
+        "after": {
+          "text": "量",
+          "pinyin": "liang4"
+        },
+        "reason": "输入量/输出量均是数量名词，不是测量动作。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+      },
+      {
+        "id": "B1-08",
+        "shot": "TW38",
+        "offset": 83,
+        "before": {
+          "text": "量",
+          "pinyin": "liang2"
+        },
+        "after": {
+          "text": "量",
+          "pinyin": "liang4"
+        },
+        "reason": "输入量/输出量均是数量名词，不是测量动作。",
+        "source": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+      },
+      {
+        "id": "B1-09",
+        "shot": "TW10",
+        "offset": 30,
+        "before": {
+          "text": "合",
+          "annotation": null
+        },
+        "after": {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-09",
+        "shot": "TW13",
+        "offset": 62,
+        "before": {
+          "text": "合",
+          "annotation": null
+        },
+        "after": {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-09",
+        "shot": "TW28",
+        "offset": 66,
+        "before": {
+          "text": "合",
+          "annotation": null
+        },
+        "after": {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-09",
+        "shot": "TW30",
+        "offset": 75,
+        "before": {
+          "text": "合",
+          "annotation": null
+        },
+        "after": {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-09",
+        "shot": "TW37",
+        "offset": 52,
+        "before": {
+          "text": "合",
+          "annotation": null
+        },
+        "after": {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-09",
+        "shot": "TW40",
+        "offset": 51,
+        "before": {
+          "text": "合",
+          "annotation": null
+        },
+        "after": {
+          "text": "合",
+          "pinyin": "he2"
+        },
+        "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-10",
+        "shot": "TW10",
+        "offset": 33,
+        "before": {
+          "text": "会",
+          "annotation": null
+        },
+        "after": {
+          "text": "会",
+          "pinyin": "hui4"
+        },
+        "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-10",
+        "shot": "TW12",
+        "offset": 61,
+        "before": {
+          "text": "会",
+          "annotation": null
+        },
+        "after": {
+          "text": "会",
+          "pinyin": "hui4"
+        },
+        "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-10",
+        "shot": "TW19",
+        "offset": 19,
+        "before": {
+          "text": "会",
+          "annotation": null
+        },
+        "after": {
+          "text": "会",
+          "pinyin": "hui4"
+        },
+        "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-11",
+        "shot": "TW10",
+        "offset": 8,
+        "before": {
+          "text": "提",
+          "annotation": null
+        },
+        "after": {
+          "text": "提",
+          "pinyin": "ti2"
+        },
+        "reason": "提供，不是提防 dī；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-11",
+        "shot": "TW10",
+        "offset": 21,
+        "before": {
+          "text": "提",
+          "annotation": null
+        },
+        "after": {
+          "text": "提",
+          "pinyin": "ti2"
+        },
+        "reason": "提供，不是提防 dī；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-12",
+        "shot": "TW37",
+        "offset": 26,
+        "before": {
+          "text": "约",
+          "annotation": null
+        },
+        "after": {
+          "text": "约",
+          "pinyin": "yue1"
+        },
+        "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-12",
+        "shot": "TW42",
+        "offset": 40,
+        "before": {
+          "text": "约",
+          "annotation": null
+        },
+        "after": {
+          "text": "约",
+          "pinyin": "yue1"
+        },
+        "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-12",
+        "shot": "TW44",
+        "offset": 42,
+        "before": {
+          "text": "约",
+          "annotation": null
+        },
+        "after": {
+          "text": "约",
+          "pinyin": "yue1"
+        },
+        "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-13",
+        "shot": "TW17",
+        "offset": 52,
+        "before": {
+          "text": "稍",
+          "annotation": null
+        },
+        "after": {
+          "text": "稍",
+          "pinyin": "shao1"
+        },
+        "reason": "稍后，表示稍微，不是稍息 shào；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      },
+      {
+        "id": "B1-14",
+        "shot": "TW43",
+        "offset": 23,
+        "before": {
+          "text": "说",
+          "annotation": null
+        },
+        "after": {
+          "text": "说",
+          "pinyin": "shuo1"
+        },
+        "reason": "说明，不是游说 shuì；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+        "source": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+      }
+    ],
+    "newFrozenTW33": {
+      "text": "新块只保留参与本次事件的组。因此组数不超过本次参与组数。",
+      "annotations": [
+        "新块",
+        {
+          "text": "只保",
+          "pinyin": "zhi2 bao3"
+        },
+        "留",
+        {
+          "text": "参与",
+          "pinyin": "can1 yu4"
+        },
+        "本次事件",
+        {
+          "text": "的",
+          "pinyin": "de5"
+        },
+        "组。",
+        {
+          "breakMs": 200
+        },
+        "因此组",
+        {
+          "text": "数不",
+          "pinyin": "shu4 bu4"
+        },
+        "超过本次",
+        {
+          "text": "参与",
+          "pinyin": "can1 yu4"
+        },
+        "组",
+        {
+          "text": "数",
+          "pinyin": "shu4"
+        },
+        "。",
+        {
+          "breakMs": 200
+        }
+      ],
+      "query": {
+        "source": "pypinyin",
+        "version": "0.55.0",
+        "query": "新块只保留参与本次事件的组。因此组数不超过本次参与组数。",
+        "contextual": {
+          "symbol": [
+            "xīn",
+            "kuài",
+            "zhǐ",
+            "bǎo",
+            "liú",
+            "cān",
+            "yù",
+            "běn",
+            "cì",
+            "shì",
+            "jiàn",
+            "de",
+            "zǔ",
+            "。",
+            "yīn",
+            "cǐ",
+            "zǔ",
+            "shù",
+            "bù",
+            "chāo",
+            "guò",
+            "běn",
+            "cì",
+            "cān",
+            "yù",
+            "zǔ",
+            "shù",
+            "。"
+          ],
+          "number": [
+            "xin1",
+            "kuai4",
+            "zhi3",
+            "bao3",
+            "liu2",
+            "can1",
+            "yu4",
+            "ben3",
+            "ci4",
+            "shi4",
+            "jian4",
+            "de",
+            "zu3",
+            "。",
+            "yin1",
+            "ci3",
+            "zu3",
+            "shu4",
+            "bu4",
+            "chao1",
+            "guo4",
+            "ben3",
+            "ci4",
+            "can1",
+            "yu4",
+            "zu3",
+            "shu4",
+            "。"
+          ],
+          "plain": [
+            "xin",
+            "kuai",
+            "zhi",
+            "bao",
+            "liu",
+            "can",
+            "yu",
+            "ben",
+            "ci",
+            "shi",
+            "jian",
+            "de",
+            "zu",
+            "。",
+            "yin",
+            "ci",
+            "zu",
+            "shu",
+            "bu",
+            "chao",
+            "guo",
+            "ben",
+            "ci",
+            "can",
+            "yu",
+            "zu",
+            "shu",
+            "。"
+          ]
+        },
+        "characterCandidates": [
+          {
+            "origin": "新",
+            "readings": [
+              "xīn"
+            ]
+          },
+          {
+            "origin": "块",
+            "readings": [
+              "kuài",
+              "yué"
+            ]
+          },
+          {
+            "origin": "只",
+            "readings": [
+              "zhǐ",
+              "zhī"
+            ]
+          },
+          {
+            "origin": "保",
+            "readings": [
+              "bǎo"
+            ]
+          },
+          {
+            "origin": "留",
+            "readings": [
+              "liú",
+              "liù",
+              "liǔ"
+            ]
+          },
+          {
+            "origin": "参",
+            "readings": [
+              "cān",
+              "cēn",
+              "shēn"
+            ]
+          },
+          {
+            "origin": "与",
+            "readings": [
+              "yǔ",
+              "yù",
+              "yú"
+            ]
+          },
+          {
+            "origin": "本",
+            "readings": [
+              "běn",
+              "bēn"
+            ]
+          },
+          {
+            "origin": "次",
+            "readings": [
+              "cì",
+              "zī",
+              "cí"
+            ]
+          },
+          {
+            "origin": "事",
+            "readings": [
+              "shì",
+              "zì"
+            ]
+          },
+          {
+            "origin": "件",
+            "readings": [
+              "jiàn",
+              "móu"
+            ]
+          },
+          {
+            "origin": "的",
+            "readings": [
+              "de",
+              "dī",
+              "dí",
+              "dì"
+            ]
+          },
+          {
+            "origin": "组",
+            "readings": [
+              "zǔ"
+            ]
+          },
+          {
+            "origin": "。",
+            "readings": []
+          },
+          {
+            "origin": "因",
+            "readings": [
+              "yīn"
+            ]
+          },
+          {
+            "origin": "此",
+            "readings": [
+              "cǐ"
+            ]
+          },
+          {
+            "origin": "组",
+            "readings": [
+              "zǔ"
+            ]
+          },
+          {
+            "origin": "数",
+            "readings": [
+              "shù",
+              "shǔ",
+              "shuò"
+            ]
+          },
+          {
+            "origin": "不",
+            "readings": [
+              "bù",
+              "fǒu",
+              "fōu",
+              "fū",
+              "bú"
+            ]
+          },
+          {
+            "origin": "超",
+            "readings": [
+              "chāo",
+              "chǎo",
+              "chào",
+              "tiào"
+            ]
+          },
+          {
+            "origin": "过",
+            "readings": [
+              "guò",
+              "guō"
+            ]
+          },
+          {
+            "origin": "本",
+            "readings": [
+              "běn",
+              "bēn"
+            ]
+          },
+          {
+            "origin": "次",
+            "readings": [
+              "cì",
+              "zī",
+              "cí"
+            ]
+          },
+          {
+            "origin": "参",
+            "readings": [
+              "cān",
+              "cēn",
+              "shēn"
+            ]
+          },
+          {
+            "origin": "与",
+            "readings": [
+              "yǔ",
+              "yù",
+              "yú"
+            ]
+          },
+          {
+            "origin": "组",
+            "readings": [
+              "zǔ"
+            ]
+          },
+          {
+            "origin": "数",
+            "readings": [
+              "shù",
+              "shǔ",
+              "shuò"
+            ]
+          },
+          {
+            "origin": "。",
+            "readings": []
+          }
+        ]
+      },
+      "selection": "只为限制副词zhi3，与保bao3紧接上上变调标zhi2 bao3；参与can1 yu4，的de5，数量数shu4；不后为超chao1故bu4；因此与组跨词边界不强制变调。",
+      "toneSource": "https://www.gsjtxy.edu.cn/jcjxb/content/169/t2024210-169-17094.html"
+    },
+    "verification": {
+      "textMatchesNewFrozenAll45": true,
+      "pauseMappingMatchesPlanAll259": true,
+      "existingPauseValuesUnchanged": true,
+      "pinyinSyllableCountsMatch": true,
+      "incorrectReadingsCorrected": 8,
+      "missingAnnotationsAdded": 16
+    },
+    "sourcesVerified": {
+      "相交": "xiāng jiāo，交叉义；教育部简编本ID27877正文30/40行",
+      "量": "liàng，数量、数目义；ID15048正文32/38行",
+      "切": "qiē，割断、分开义；ID24798正文32/38行",
+      "相": "xiāng，交互义；教育部重编本ID7196正文31–34行",
+      "不": "原moe.gov.cn链接本次超时；采用甘肃交院同一已引教学来源正文33行，只在去声前变阳平；重chong2故bu4",
+      "missing": "复用/tmp/tw-pinyin-blind-one-queries.json pypinyin0.55.0完整查询及逐字候选并依本句词义核实，不称规范词典"
+    },
+    "unresolved": [],
+    "scope": "仅写speech-text.json及本/tmp交接报告；未改冻结文字、字幕、其他项目文件；未调用音频、试听、导出、Git或工单；等待独立全文盲审与历史核销，不宣布审校通过。"
+  }
+}

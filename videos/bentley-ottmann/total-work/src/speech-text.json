@@ -1,0 +1,4376 @@
+{
+  "TW01": [
+    "这四条线段所在",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "直线",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同。",
+    {
+      "breakMs": 200
+    },
+    "却",
+    {
+      "text": "都",
+      "pinyin": "dou1"
+    },
+    "包含原点。",
+    {
+      "breakMs": 400
+    },
+    "蓝",
+    {
+      "text": "色与",
+      "pinyin": "se4 yu3"
+    },
+    "橙",
+    {
+      "text": "色",
+      "pinyin": "se4"
+    },
+    "两条穿过原点。",
+    {
+      "breakMs": 200
+    },
+    "紫",
+    {
+      "text": "色",
+      "pinyin": "se4"
+    },
+    "这",
+    {
+      "text": "一",
+      "pinyin": "yi4"
+    },
+    "条在这里",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "绿色",
+      "pinyin": "lv4 se4"
+    },
+    "这",
+    {
+      "text": "一",
+      "pinyin": "yi4"
+    },
+    "条",
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    "这里开始。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW02": [
+    {
+      "text": "沿",
+      "pinyin": "yan2"
+    },
+    "用同点报告规则。",
+    {
+      "breakMs": 200
+    },
+    "开始者已",
+    {
+      "text": "经",
+      "pinyin": "jing1"
+    },
+    "加入。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束者在报告后才退出。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "所以",
+      "pinyin": "suo2 yi3"
+    },
+    "报告时。",
+    {
+      "breakMs": 200
+    },
+    "这四条闭线段",
+    {
+      "text": "分别属",
+      "pinyin": "fen1 bie2 shu3"
+    },
+    "于四个",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "非零同线组。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW03": [
+    "依次记录这六个",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原始无序输入对。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果",
+    {
+      "text": "都",
+      "pinyin": "dou1"
+    },
+    "位于原点。",
+    {
+      "breakMs": 200
+    },
+    "但每对身",
+    {
+      "text": "份分别",
+      "pinyin": "fen4 fen1 bie2"
+    },
+    "保留。",
+    {
+      "breakMs": 400
+    },
+    "这里",
+    {
+      "text": "只处理一",
+      "pinyin": "zhi3 chu2 li3 yi2"
+    },
+    "个事件位置。",
+    {
+      "breakMs": 200
+    },
+    "却已",
+    {
+      "text": "经要",
+      "pinyin": "jing1 yao4"
+    },
+    "输出六条",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果。",
+    {
+      "breakMs": 200
+    },
+    "事件",
+    {
+      "text": "少",
+      "pinyin": "shao3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "代表这",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次",
+    {
+      "text": "要",
+      "pinyin": "yao4"
+    },
+    "做",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "工",
+    {
+      "text": "作少",
+      "pinyin": "zuo4 shao3"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW04": [
+    "用字母 n 表示原始输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "用字母 k 表示",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "交",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原始无序输入对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "每对",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "完整交集算",
+    {
+      "text": "一",
+      "pinyin": "yi4"
+    },
+    "条。",
+    {
+      "breakMs": 200
+    },
+    "点",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "非零闭",
+    {
+      "text": "区间都",
+      "pinyin": "qu1 jian1 dou1"
+    },
+    "如此。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "重合",
+      "pinyin": "chong2 he2"
+    },
+    "输入仍各算",
+    {
+      "text": "一份",
+      "pinyin": "yi2 fen4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW05": [
+    "用",
+    {
+      "text": "大写",
+      "pinyin": "da4 xie3"
+    },
+    " E ",
+    {
+      "text": "累计处理了",
+      "pinyin": "lei3 ji4 chu2 li3 le5"
+    },
+    "多",
+    {
+      "text": "少不",
+      "pinyin": "shao3 bu4"
+    },
+    "同事件位置。",
+    {
+      "breakMs": 400
+    },
+    "用",
+    {
+      "text": "大写",
+      "pinyin": "da4 xie3"
+    },
+    " H ",
+    {
+      "text": "把",
+      "pinyin": "ba3"
+    },
+    "每次",
+    {
+      "text": "参与的不",
+      "pinyin": "can1 yu4 de5 bu4"
+    },
+    "同非零同线组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "加",
+    {
+      "text": "起来",
+      "pinyin": "qi3 lai5"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "同",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个组在",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同事件",
+    {
+      "text": "参",
+      "pinyin": "can1"
+    },
+    "加。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "要分别",
+      "pinyin": "yao4 fen1 bie2"
+    },
+    "计入。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW06": [
+    {
+      "text": "沿",
+      "pinyin": "yan2"
+    },
+    "完整位置次序走过七个事件。",
+    {
+      "breakMs": 200
+    },
+    "每次",
+    {
+      "text": "参与的",
+      "pinyin": "can1 yu4 de5"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "依次是",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "、",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "、",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "、四、",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "、",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "、",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "于是全程事件",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "是七。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "累计参与",
+      "pinyin": "lei3 ji4 can1 yu4"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "是十。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "交原始对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "是六。",
+    {
+      "breakMs": 200
+    },
+    "原点",
+    {
+      "text": "那一",
+      "pinyin": "na4 yi2"
+    },
+    "次",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "局部",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "目仍然是",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "、四、六。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW07": [
+    "本集",
+    {
+      "text": "数的",
+      "pinyin": "shu3 de5"
+    },
+    "是精确算术、",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "基本记录操",
+    {
+      "text": "作的",
+      "pinyin": "zuo4 de5"
+    },
+    "次",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "例如",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次",
+    {
+      "text": "有理数",
+      "pinyin": "you2 li3 shu4"
+    },
+    "运算、",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次坐标",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较或",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次记录访问。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次树",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "找包含多次",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "能",
+    {
+      "text": "把",
+      "pinyin": "ba3"
+    },
+    "整次",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "找免费算",
+    {
+      "text": "作一",
+      "pinyin": "zuo4 yi2"
+    },
+    "个基本操",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW08": [
+    "活动组顺序使用 A V L 树。",
+    {
+      "breakMs": 200
+    },
+    "队列、固定组",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "找",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "成员",
+    {
+      "text": "索引",
+      "pinyin": "suo2 yin3"
+    },
+    "也使用",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    "序容器。",
+    {
+      "breakMs": 400
+    },
+    "这里",
+    {
+      "text": "沿",
+      "pinyin": "yan2"
+    },
+    "用这些容器",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "操",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "成本。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "展开平衡维护。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW09": [
+    "先讨",
+    {
+      "text": "论",
+      "pinyin": "lun4"
+    },
+    "至",
+    {
+      "text": "少有一份",
+      "pinyin": "shao3 you3 yi2 fen4"
+    },
+    "输入",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "情况。",
+    {
+      "breakMs": 200
+    },
+    "对",
+    {
+      "text": "数的底取",
+      "pinyin": "shu4 de5 di3 qu3"
+    },
+    "二。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "大写",
+      "pinyin": "da4 xie3"
+    },
+    " O 表示操",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "次",
+    {
+      "text": "数可以",
+      "pinyin": "shu4 ke2 yi3"
+    },
+    "由所",
+    {
+      "text": "写",
+      "pinyin": "xie3"
+    },
+    "表达式",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "固定常",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "倍控制。",
+    {
+      "breakMs": 200
+    },
+    "它",
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "是每",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "输入",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "精确次",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW10": [
+    "每",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "非零输入至多",
+    {
+      "text": "提",
+      "pinyin": "ti2"
+    },
+    {
+      "text": "供",
+      "pinyin": "gong1"
+    },
+    "两个端点位置。",
+    {
+      "breakMs": 200
+    },
+    "点输入",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    {
+      "text": "提",
+      "pinyin": "ti2"
+    },
+    {
+      "text": "供一",
+      "pinyin": "gong1 yi2"
+    },
+    "个。",
+    {
+      "breakMs": 400
+    },
+    "共享位置",
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    "并",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    {
+      "text": "会",
+      "pinyin": "hui4"
+    },
+    "减",
+    {
+      "text": "少数量",
+      "pinyin": "shao3 shu4 liang4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以",
+      "pinyin": "suo2 yi3"
+    },
+    "端点位置至多是原始输入",
+    {
+      "text": "份数的",
+      "pinyin": "fen4 shu4 de5"
+    },
+    "两倍。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW11": [
+    "其余事件位置来自",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同支撑直线上",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "真实交点。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "给",
+      "pinyin": "gei3"
+    },
+    "每个这样",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位置选",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "对在这里",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "交",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原始输入",
+    {
+      "text": "作为",
+      "pinyin": "zuo4 wei2"
+    },
+    "见证。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同直线至多",
+    {
+      "text": "有一",
+      "pinyin": "you3 yi2"
+    },
+    "个交点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以",
+      "pinyin": "suo2 yi3"
+    },
+    "同",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "对",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "能",
+    {
+      "text": "给",
+      "pinyin": "gei3"
+    },
+    "两个",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同位置",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "见证。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW12": [
+    "因此。",
+    {
+      "breakMs": 200
+    },
+    "非端点事件位置至多",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    " k 个。",
+    {
+      "breakMs": 200
+    },
+    "加上端点来源。",
+    {
+      "breakMs": 200
+    },
+    "事件",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "至多是输入",
+    {
+      "text": "份数的",
+      "pinyin": "fen4 shu4 de5"
+    },
+    "两倍。",
+    {
+      "breakMs": 200
+    },
+    "再加",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "交原始对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "重叠区间",
+      "pinyin": "chong2 die2 qu1 jian1"
+    },
+    "内",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "无穷多个点。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    {
+      "text": "会",
+      "pinyin": "hui4"
+    },
+    "各自成",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "事件。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW13": [
+    {
+      "text": "任一",
+      "pinyin": "ren4 yi1"
+    },
+    "事件位置用",
+    {
+      "text": "小写",
+      "pinyin": "xiao2 xie3"
+    },
+    " p 表示。",
+    {
+      "breakMs": 200
+    },
+    "用 h 下标 p 表示这里",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "非零",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "处理",
+      "pinyin": "chu2 li3"
+    },
+    "前",
+    {
+      "text": "经",
+      "pinyin": "jing1"
+    },
+    "过",
+    {
+      "text": "当",
+      "pinyin": "dang1"
+    },
+    "前位置",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "旧活动组",
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    "本次开始者",
+    {
+      "text": "所属的",
+      "pinyin": "suo2 shu3 de5"
+    },
+    "组",
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    "并。",
+    {
+      "breakMs": 200
+    },
+    "同组",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "算",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次。",
+    {
+      "breakMs": 400
+    },
+    "点输入",
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "算组。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束者报告后才退出。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW14": [
+    "用 c 下标 p 表示这里新报告",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "跨组非零输入对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "同线对",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "含点输入",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "对",
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "计在",
+    {
+      "text": "这个量中",
+      "pinyin": "zhe4 ge5 liang4 zhong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "回到原点",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "报告时刻。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "是四。",
+    {
+      "breakMs": 200
+    },
+    "这次跨组新输出是六。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW15": [
+    "至",
+    {
+      "text": "少有",
+      "pinyin": "shao3 you3"
+    },
+    "两个组时。",
+    {
+      "breakMs": 200
+    },
+    "每组",
+    {
+      "text": "都",
+      "pinyin": "dou1"
+    },
+    "非",
+    {
+      "text": "空",
+      "pinyin": "kong1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "而且各成员包含",
+    {
+      "text": "当",
+      "pinyin": "dang1"
+    },
+    "前位置。",
+    {
+      "breakMs": 400
+    },
+    "每两个组各选",
+    {
+      "text": "一份",
+      "pinyin": "yi2 fen4"
+    },
+    "成员。",
+    {
+      "breakMs": 200
+    },
+    "就",
+    {
+      "text": "得",
+      "pinyin": "de2"
+    },
+    "到",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个真实",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "交",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原始输入对。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同组对选出",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "原始对",
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "同。",
+    {
+      "breakMs": 200
+    },
+    "因此组对",
+    {
+      "text": "的数量",
+      "pinyin": "de5 shu4 liang4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "超过这",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "跨组新输出",
+    {
+      "text": "数量",
+      "pinyin": "shu4 liang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW16": [
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "至",
+    {
+      "text": "少为",
+      "pinyin": "shao3 wei2"
+    },
+    "二时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "将",
+      "pinyin": "jiang1"
+    },
+    "它减",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "所",
+    {
+      "text": "得的数",
+      "pinyin": "de2 de5 shu4"
+    },
+    "至",
+    {
+      "text": "少为一",
+      "pinyin": "shao3 wei2 yi1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "因此",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数不",
+      "pinyin": "shu4 bu4"
+    },
+    "超过",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数与这个差的乘",
+      "pinyin": "shu4 yu3 zhe4 ge5 cha1 de5 cheng2"
+    },
+    "积。",
+    {
+      "breakMs": 200
+    },
+    "再用上",
+    {
+      "text": "一行的",
+      "pinyin": "yi4 hang2 de5"
+    },
+    "界。",
+    {
+      "breakMs": 200
+    },
+    "就",
+    {
+      "text": "得",
+      "pinyin": "de2"
+    },
+    "到",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数不",
+      "pinyin": "shu4 bu4"
+    },
+    "超过",
+    {
+      "text": "当场",
+      "pinyin": "dang1 chang3"
+    },
+    "跨组新输出",
+    {
+      "text": "数的",
+      "pinyin": "shu4 de5"
+    },
+    "两倍。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW17": [
+    {
+      "text": "只有一",
+      "pinyin": "zhi2 you3 yi2"
+    },
+    "个组时。",
+    {
+      "breakMs": 200
+    },
+    "这",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个组",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "贡献计在事件本身。",
+    {
+      "breakMs": 400
+    },
+    "零个组时",
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "组贡献。",
+    {
+      "breakMs": 200
+    },
+    "例如孤立",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "点输入事件。",
+    {
+      "breakMs": 200
+    },
+    "点输入需",
+    {
+      "text": "要的",
+      "pinyin": "yao4 de5"
+    },
+    "输出工",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    {
+      "text": "稍",
+      "pinyin": "shao1"
+    },
+    "后",
+    {
+      "text": "单",
+      "pinyin": "dan1"
+    },
+    "独计入。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW18": [
+    {
+      "text": "把",
+      "pinyin": "ba3"
+    },
+    "每次事件",
+    {
+      "text": "的参与",
+      "pinyin": "de5 can1 yu4"
+    },
+    "组",
+    {
+      "text": "数相",
+      "pinyin": "shu4 xiang1"
+    },
+    "加。",
+    {
+      "breakMs": 200
+    },
+    "用",
+    {
+      "text": "大写",
+      "pinyin": "da4 xie3"
+    },
+    " H 表示",
+    {
+      "text": "这个和",
+      "pinyin": "zhe4 ge5 he2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "画面上",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "求",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "符",
+    {
+      "text": "号",
+      "pinyin": "hao4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "就是",
+    {
+      "text": "把",
+      "pinyin": "ba3"
+    },
+    "每个位置对",
+    {
+      "text": "应的量",
+      "pinyin": "ying4 de5 liang4"
+    },
+    "加",
+    {
+      "text": "起来",
+      "pinyin": "qi3 lai5"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "每个事件",
+    {
+      "text": "保守",
+      "pinyin": "bao2 shou3"
+    },
+    "记",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次。",
+    {
+      "breakMs": 200
+    },
+    "再加两倍",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "跨组新输出总",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "就覆盖",
+    {
+      "text": "了",
+      "pinyin": "le5"
+    },
+    "零组、",
+    {
+      "text": "单",
+      "pinyin": "dan1"
+    },
+    "组",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "多组情况。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW19": [
+    "上集",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "跨组唯",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "报告保证。",
+    {
+      "breakMs": 200
+    },
+    "同",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个原始对",
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    {
+      "text": "会",
+      "pinyin": "hui4"
+    },
+    "在",
+    {
+      "text": "别的",
+      "pinyin": "bie2 de5"
+    },
+    "事件再次支付费用。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以",
+      "pinyin": "suo2 yi3"
+    },
+    "全部跨组新输出",
+    {
+      "text": "数不",
+      "pinyin": "shu4 bu4"
+    },
+    "超过 k ",
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "总",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "代入事件",
+    {
+      "text": "数的",
+      "pinyin": "shu4 de5"
+    },
+    "界。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "累计参与",
+      "pinyin": "lei3 ji4 can1 yu4"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "至多是输入",
+    {
+      "text": "份数的",
+      "pinyin": "fen4 shu4 de5"
+    },
+    "两倍。",
+    {
+      "breakMs": 200
+    },
+    "再加",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "交原始对",
+    {
+      "text": "数的",
+      "pinyin": "shu4 de5"
+    },
+    "三倍。",
+    {
+      "breakMs": 200
+    },
+    "于是它是输入",
+    {
+      "text": "量与",
+      "pinyin": "liang4 yu3"
+    },
+    "输出",
+    {
+      "text": "量",
+      "pinyin": "liang4"
+    },
+    "之",
+    {
+      "text": "和的",
+      "pinyin": "he2 de5"
+    },
+    "常",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "倍。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW20": [
+    "换成",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个独立",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "三输入案例。",
+    {
+      "breakMs": 200
+    },
+    "两",
+    {
+      "text": "份长成员都",
+      "pinyin": "fen4 chang2 cheng2 yuan2 dou1"
+    },
+    "覆盖",
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    "零到六",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "闭",
+    {
+      "text": "区间",
+      "pinyin": "qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "一份",
+      "pinyin": "yi2 fen4"
+    },
+    "短成员覆盖",
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    "二到三",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "闭",
+    {
+      "text": "区间",
+      "pinyin": "qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "三",
+    {
+      "text": "份都",
+      "pinyin": "fen4 dou1"
+    },
+    "在",
+    {
+      "text": "横轴",
+      "pinyin": "heng2 zhou2"
+    },
+    "上。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "分行只为区分",
+      "pinyin": "fen1 hang2 zhi3 wei4 qu1 fen1"
+    },
+    "身",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "并",
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "改变",
+    {
+      "text": "几",
+      "pinyin": "ji3"
+    },
+    "何高",
+    {
+      "text": "度",
+      "pinyin": "du4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW21": [
+    {
+      "text": "当",
+      "pinyin": "dang1"
+    },
+    " x 坐标",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "零时。",
+    {
+      "breakMs": 200
+    },
+    "两个",
+    {
+      "text": "长成员",
+      "pinyin": "chang2 cheng2 yuan2"
+    },
+    "报告",
+    {
+      "text": "一",
+      "pinyin": "yi4"
+    },
+    "条",
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    "零到六",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "完整",
+    {
+      "text": "重叠区间",
+      "pinyin": "chong2 die2 qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "当",
+      "pinyin": "dang1"
+    },
+    " x 坐标",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "二时。",
+    {
+      "breakMs": 200
+    },
+    "短成员",
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    "两个",
+    {
+      "text": "长成员分别",
+      "pinyin": "chang2 cheng2 yuan2 fen1 bie2"
+    },
+    "报告",
+    {
+      "text": "一",
+      "pinyin": "yi4"
+    },
+    "条",
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    "二到三",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "完整",
+    {
+      "text": "重叠区间",
+      "pinyin": "chong2 die2 qu1 jian1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "前两次事件",
+    {
+      "text": "分别",
+      "pinyin": "fen1 bie2"
+    },
+    "新增",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "对",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "两对。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW22": [
+    "到 x 坐标",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "三时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "按",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束身",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "删除短成员。",
+    {
+      "breakMs": 200
+    },
+    "两个",
+    {
+      "text": "长成员和这个",
+      "pinyin": "chang2 cheng2 yuan2 he2 zhe4 ge5"
+    },
+    "组继续保留。",
+    {
+      "breakMs": 400
+    },
+    "这里",
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "遍历整个旧成员表。",
+    {
+      "breakMs": 200
+    },
+    "也",
+    {
+      "text": "不重新",
+      "pinyin": "bu4 chong2 xin1"
+    },
+    "输出。",
+    {
+      "breakMs": 200
+    },
+    "先前",
+    {
+      "text": "的长区间结",
+      "pinyin": "de5 chang2 qu1 jian1 jie2"
+    },
+    "果始终保持完整。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "能拿它支付每",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次全组",
+    {
+      "text": "扫",
+      "pinyin": "sao3"
+    },
+    "描。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW23": [
+    "到 x 坐标",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "六时。",
+    {
+      "breakMs": 200
+    },
+    "两个",
+    {
+      "text": "长成员结",
+      "pinyin": "chang2 cheng2 yuan2 jie2"
+    },
+    "束。",
+    {
+      "breakMs": 200
+    },
+    "组才变",
+    {
+      "text": "空",
+      "pinyin": "kong1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "四次事件",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "新输出依次是",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "、二、零、零。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "累计",
+      "pinyin": "lei3 ji4"
+    },
+    "仍是三对。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "束事件所做",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "必",
+    {
+      "text": "要",
+      "pinyin": "yao4"
+    },
+    "删除另计。",
+    {
+      "breakMs": 200
+    },
+    "但",
+    {
+      "text": "不重新",
+      "pinyin": "bu4 chong2 xin1"
+    },
+    "枚举这些旧对。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW24": [
+    "用",
+    {
+      "text": "大写",
+      "pinyin": "da4 xie3"
+    },
+    " M 下标 p 表示非零",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "成员总",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "用 t 下标 p 表示",
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "位置",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "点输入",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "普",
+    {
+      "text": "通",
+      "pinyin": "tong1"
+    },
+    "计算",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "在至",
+    {
+      "text": "少有",
+      "pinyin": "shao3 you3"
+    },
+    "两个组。",
+    {
+      "breakMs": 200
+    },
+    "或者",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    "点输入时。",
+    {
+      "breakMs": 200
+    },
+    "才",
+    {
+      "text": "把相",
+      "pinyin": "ba3 xiang1"
+    },
+    "关成员展开成临时列表。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW25": [
+    "至",
+    {
+      "text": "少有",
+      "pinyin": "shao3 you3"
+    },
+    "两个组时。",
+    {
+      "breakMs": 200
+    },
+    "每",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "成员至",
+    {
+      "text": "少与",
+      "pinyin": "shao3 yu3"
+    },
+    "另",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个组",
+    {
+      "text": "的一份",
+      "pinyin": "de5 yi2 fen4"
+    },
+    "成员配对。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "将",
+      "pinyin": "jiang1"
+    },
+    "各成员",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "跨组输出",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "次",
+    {
+      "text": "数相",
+      "pinyin": "shu4 xiang1"
+    },
+    "加。",
+    {
+      "breakMs": 200
+    },
+    "每条",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果被两端各",
+    {
+      "text": "数一",
+      "pinyin": "shu3 yi2"
+    },
+    "次。",
+    {
+      "breakMs": 200
+    },
+    "因此展开",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "成员总",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "超过跨组新输出",
+    {
+      "text": "数的",
+      "pinyin": "shu4 de5"
+    },
+    "两倍。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW26": [
+    {
+      "text": "只有一",
+      "pinyin": "zhi2 you3 yi2"
+    },
+    "个组但",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    "点输入时。",
+    {
+      "breakMs": 200
+    },
+    "每",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "成员至",
+    {
+      "text": "少",
+      "pinyin": "shao3"
+    },
+    "产生",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个新",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "点",
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    "线段",
+    {
+      "text": "的结",
+      "pinyin": "de5 jie2"
+    },
+    "果。",
+    {
+      "breakMs": 200
+    },
+    "足够支付展开。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "只有一",
+      "pinyin": "zhi2 you3 yi2"
+    },
+    "个组而",
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "点输入时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "展开整个旧成员表。",
+    {
+      "breakMs": 200
+    },
+    "零个组时。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "非零成员",
+    {
+      "text": "可",
+      "pinyin": "ke3"
+    },
+    "展开。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW27": [
+    "新同线成员逐个加入。",
+    {
+      "breakMs": 200
+    },
+    "每次访问旧成员。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "都",
+      "pinyin": "dou1"
+    },
+    "立即产生",
+    {
+      "text": "一",
+      "pinyin": "yi4"
+    },
+    "条新",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果。",
+    {
+      "breakMs": 400
+    },
+    "每次加入至多做",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次",
+    {
+      "text": "空",
+      "pinyin": "kong1"
+    },
+    "表检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "游标推进也",
+    {
+      "text": "保守",
+      "pinyin": "bao2 shou3"
+    },
+    "按对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "成本计费。",
+    {
+      "breakMs": 200
+    },
+    "最后",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次失败推进紧随最后",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW28": [
+    "跨组",
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    "点",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "线段配对时。",
+    {
+      "breakMs": 200
+    },
+    "外层成员访问也由这次新",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果支付。",
+    {
+      "breakMs": 200
+    },
+    "点",
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    "点按原始无序对输出。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "没有",
+      "pinyin": "mei2 you3"
+    },
+    "非零组时。",
+    {
+      "breakMs": 200
+    },
+    "每个点仍",
+    {
+      "text": "有一",
+      "pinyin": "you3 yi2"
+    },
+    "次外层开销。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所有",
+      "pinyin": "suo2 you3"
+    },
+    "位置",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "点身",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    "计至多",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    " n ",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW29": [
+    "每条",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "保存两个身",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "以及",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个点或两个",
+    {
+      "text": "区间",
+      "pinyin": "qu1 jian1"
+    },
+    "端点。",
+    {
+      "breakMs": 400
+    },
+    "构造",
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    "坐标",
+    {
+      "text": "还原",
+      "pinyin": "huan2 yuan2"
+    },
+    "需",
+    {
+      "text": "要",
+      "pinyin": "yao4"
+    },
+    "固定次",
+    {
+      "text": "数的",
+      "pinyin": "shu4 de5"
+    },
+    "精确操",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "全部",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果追加按容器",
+    {
+      "text": "的摊还",
+      "pinyin": "de5 tan1 huan2"
+    },
+    "保证",
+    {
+      "text": "累计为",
+      "pinyin": "lei3 ji4 wei2"
+    },
+    "输出",
+    {
+      "text": "数的",
+      "pinyin": "shu4 de5"
+    },
+    "常",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "倍。",
+    {
+      "breakMs": 200
+    },
+    "扩容移动已",
+    {
+      "text": "经",
+      "pinyin": "jing1"
+    },
+    "包括在内。",
+    {
+      "breakMs": 200
+    },
+    "临时成员表",
+    {
+      "text": "的创",
+      "pinyin": "de5 chuang4"
+    },
+    "建",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "销毁。",
+    {
+      "breakMs": 200
+    },
+    "也按已",
+    {
+      "text": "经",
+      "pinyin": "jing1"
+    },
+    "支付",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "展开",
+    {
+      "text": "量",
+      "pinyin": "liang4"
+    },
+    "计入。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW30": [
+    "输入准备、必",
+    {
+      "text": "要",
+      "pinyin": "yao4"
+    },
+    "剪",
+    {
+      "text": "切",
+      "pinyin": "qie1"
+    },
+    "、固定组",
+    {
+      "text": "与",
+      "pinyin": "yu3"
+    },
+    "端点缓存按输入",
+    {
+      "text": "量累计",
+      "pinyin": "liang4 lei3 ji4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "每",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "非零成员",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "加入",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "退出各",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次。",
+    {
+      "breakMs": 200
+    },
+    "两套成员",
+    {
+      "text": "索引",
+      "pinyin": "suo2 yin3"
+    },
+    "同步增删。",
+    {
+      "breakMs": 200
+    },
+    "最远右端",
+    {
+      "text": "从",
+      "pinyin": "cong2"
+    },
+    "最",
+    {
+      "text": "大",
+      "pinyin": "da4"
+    },
+    "键",
+    {
+      "text": "读取",
+      "pinyin": "du2 qu3"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不重扫",
+      "pinyin": "bu4 chong2 sao3"
+    },
+    "全组。",
+    {
+      "breakMs": 200
+    },
+    "这些",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    "序维护",
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    "计",
+    {
+      "text": "为",
+      "pinyin": "wei2"
+    },
+    "输入",
+    {
+      "text": "份数乘",
+      "pinyin": "fen4 shu4 cheng2"
+    },
+    "以对",
+    {
+      "text": "数的数量",
+      "pinyin": "shu4 de5 shu4 liang4"
+    },
+    "级。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW31": [
+    "每次",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "定位",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "遇块。",
+    {
+      "breakMs": 200
+    },
+    "访问",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "常",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "个边界。",
+    {
+      "breakMs": 400
+    },
+    "开始身",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "在全程至多",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    " n ",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "块",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "移除、过滤",
+    {
+      "text": "和重插",
+      "pinyin": "he2 chong2 cha1"
+    },
+    "按",
+    {
+      "text": "累计参与量",
+      "pinyin": "lei3 ji4 can1 yu4 liang4"
+    },
+    "计费。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不扫",
+      "pinyin": "bu4 sao3"
+    },
+    "描其余活动组。",
+    {
+      "breakMs": 200
+    },
+    "于是总账由事件",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "、",
+    {
+      "text": "累计参与",
+      "pinyin": "lei3 ji4 can1 yu4"
+    },
+    "组",
+    {
+      "text": "数和",
+      "pinyin": "shu4 he2"
+    },
+    "输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "共同控制。",
+    {
+      "breakMs": 200
+    },
+    "再",
+    {
+      "text": "乘有",
+      "pinyin": "cheng2 you3"
+    },
+    "序操",
+    {
+      "text": "作的",
+      "pinyin": "zuo4 de5"
+    },
+    "对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "成本。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW32": [
+    "局部排序",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "移动组身",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "移动整组成员。",
+    {
+      "breakMs": 200
+    },
+    "固定",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "精确",
+    {
+      "text": "斜率给",
+      "pinyin": "xie2 lv4 gei3"
+    },
+    "出",
+    {
+      "text": "一致",
+      "pinyin": "yi2 zhi4"
+    },
+    "次序。",
+    {
+      "breakMs": 400
+    },
+    "采用具",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    "最坏情况下对",
+    {
+      "text": "数乘",
+      "pinyin": "shu4 cheng2"
+    },
+    "线性保证",
+    {
+      "text": "的比",
+      "pinyin": "de5 bi3"
+    },
+    "较排序。",
+    {
+      "breakMs": 200
+    },
+    "每次",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数不",
+      "pinyin": "shu4 bu4"
+    },
+    "超过输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "所以",
+      "pinyin": "suo2 yi3"
+    },
+    "逐次排序成本",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "加。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "超过",
+    {
+      "text": "累计参与",
+      "pinyin": "lei3 ji4 can1 yu4"
+    },
+    "组",
+    {
+      "text": "数乘",
+      "pinyin": "shu4 cheng2"
+    },
+    "以对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW33": [
+    {
+      "text": "更新",
+      "pinyin": "geng1 xin1"
+    },
+    "后",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "新块非",
+    {
+      "text": "空",
+      "pinyin": "kong1"
+    },
+    "且",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    " r 个组时。",
+    {
+      "breakMs": 200
+    },
+    "新块",
+    {
+      "text": "只保",
+      "pinyin": "zhi2 bao3"
+    },
+    "留",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "本次事件",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "组。",
+    {
+      "breakMs": 200
+    },
+    "因此组",
+    {
+      "text": "数不",
+      "pinyin": "shu4 bu4"
+    },
+    "超过本次",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "内部邻居对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "至多是组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "减",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "两端各至多",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "对。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "空",
+      "pinyin": "kong1"
+    },
+    "块",
+    {
+      "text": "只可",
+      "pinyin": "zhi3 ke3"
+    },
+    "能接起原来",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "两侧。",
+    {
+      "breakMs": 200
+    },
+    "覆盖延",
+    {
+      "text": "长",
+      "pinyin": "chang2"
+    },
+    "后。",
+    {
+      "breakMs": 200
+    },
+    "即使邻居",
+    {
+      "text": "名字没",
+      "pinyin": "ming2 zi5 mei2"
+    },
+    "变。",
+    {
+      "breakMs": 200
+    },
+    "对",
+    {
+      "text": "相",
+      "pinyin": "xiang1"
+    },
+    "关邻接",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "补检也包含在这里。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW34": [
+    "每次事件",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "检",
+    {
+      "text": "查量",
+      "pinyin": "cha2 liang4"
+    },
+    "由",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "控制。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "累计",
+      "pinyin": "lei3 ji4"
+    },
+    "就是",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组总",
+    {
+      "text": "数与",
+      "pinyin": "shu4 yu3"
+    },
+    "事件",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "之",
+    {
+      "text": "和的数量",
+      "pinyin": "he2 de5 shu4 liang4"
+    },
+    "级。",
+    {
+      "breakMs": 400
+    },
+    "每次用固定直线",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "真实覆盖检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "候选。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "展开",
+    {
+      "text": "两组",
+      "pinyin": "liang2 zu3"
+    },
+    "全部成员对。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW35": [
+    "同",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个真实未来位置",
+    {
+      "text": "可",
+      "pinyin": "ke3"
+    },
+    "能被再次",
+    {
+      "text": "发",
+      "pinyin": "fa1"
+    },
+    "现。",
+    {
+      "breakMs": 200
+    },
+    "队列",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "保留",
+    {
+      "text": "一份",
+      "pinyin": "yi2 fen4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "但这次",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "找",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "尝试仍然收费。",
+    {
+      "breakMs": 200
+    },
+    "尝试总",
+    {
+      "text": "数不",
+      "pinyin": "shu4 bu4"
+    },
+    "超过检",
+    {
+      "text": "查",
+      "pinyin": "cha2"
+    },
+    "总",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "能",
+    {
+      "text": "只数",
+      "pinyin": "zhi3 shu3"
+    },
+    "最后成功新增",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位置。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW36": [
+    "由事件",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "界",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "第",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "章",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "输入对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "上界。",
+    {
+      "breakMs": 200
+    },
+    "事件",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "加",
+    {
+      "text": "一不",
+      "pinyin": "yi1 bu4"
+    },
+    "超过输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "所",
+    {
+      "text": "得的和的",
+      "pinyin": "de2 de5 he2 de5"
+    },
+    "平方。",
+    {
+      "breakMs": 400
+    },
+    "因此。",
+    {
+      "breakMs": 200
+    },
+    "队列",
+    {
+      "text": "的一",
+      "pinyin": "de5 yi2"
+    },
+    "次对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "操",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "成本。",
+    {
+      "breakMs": 200
+    },
+    "也受输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "加",
+    {
+      "text": "一的",
+      "pinyin": "yi1 de5"
+    },
+    "对",
+    {
+      "text": "数的",
+      "pinyin": "shu4 de5"
+    },
+    "常",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "倍控制。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW37": [
+    "初始化至多登记输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "两倍",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "端点身",
+    {
+      "text": "份",
+      "pinyin": "fen4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "之后计入全部预",
+    {
+      "text": "约",
+      "pinyin": "yue1"
+    },
+    "尝试",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "每个事件",
+    {
+      "text": "的一",
+      "pinyin": "de5 yi2"
+    },
+    "次",
+    {
+      "text": "弹出",
+      "pinyin": "tan2 chu1"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "检",
+    {
+      "text": "查中的",
+      "pinyin": "cha2 zhong1 de5"
+    },
+    "覆盖",
+    {
+      "text": "读取",
+      "pinyin": "du2 qu3"
+    },
+    "也收费。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    "计仍由输入",
+    {
+      "text": "量与",
+      "pinyin": "liang4 yu3"
+    },
+    "输出",
+    {
+      "text": "量",
+      "pinyin": "liang4"
+    },
+    "之",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "乘",
+      "pinyin": "cheng2"
+    },
+    "以输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "加",
+    {
+      "text": "一的",
+      "pinyin": "yi1 de5"
+    },
+    "对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "来控制。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW38": [
+    "局部组表",
+    {
+      "text": "累计",
+      "pinyin": "lei3 ji4"
+    },
+    "按",
+    {
+      "text": "参与",
+      "pinyin": "can1 yu4"
+    },
+    "组总",
+    {
+      "text": "数与",
+      "pinyin": "shu4 yu3"
+    },
+    "事件",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "计费。",
+    {
+      "breakMs": 200
+    },
+    "必",
+    {
+      "text": "要",
+      "pinyin": "yao4"
+    },
+    "成员表已",
+    {
+      "text": "经",
+      "pinyin": "jing1"
+    },
+    "由新输出支付。",
+    {
+      "breakMs": 400
+    },
+    "高",
+    {
+      "text": "度",
+      "pinyin": "du4"
+    },
+    "缓存按实际访问",
+    {
+      "text": "更新",
+      "pinyin": "geng1 xin1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "每次",
+    {
+      "text": "重算",
+      "pinyin": "chong2 suan4"
+    },
+    "全部组。",
+    {
+      "breakMs": 200
+    },
+    "最后释放",
+    {
+      "text": "几",
+      "pinyin": "ji3"
+    },
+    "何、组",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "映射",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "工",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "按输入",
+    {
+      "text": "量",
+      "pinyin": "liang4"
+    },
+    "计。",
+    {
+      "breakMs": 200
+    },
+    "逐条释放",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果按输出",
+    {
+      "text": "量",
+      "pinyin": "liang4"
+    },
+    "计。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW39": [
+    "账本里",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "每",
+    {
+      "text": "一行都",
+      "pinyin": "yi4 hang2 dou1"
+    },
+    "受同",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个上界控制。",
+    {
+      "breakMs": 200
+    },
+    "固定",
+    {
+      "text": "行数相",
+      "pinyin": "hang2 shu4 xiang1"
+    },
+    "加",
+    {
+      "text": "只",
+      "pinyin": "zhi3"
+    },
+    "改变常",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    "因此。",
+    {
+      "breakMs": 200
+    },
+    "普",
+    {
+      "text": "通",
+      "pinyin": "tong1"
+    },
+    "求交",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "精确算术、",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "基本状态操",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "次",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "由输入",
+    {
+      "text": "量与",
+      "pinyin": "liang4 yu3"
+    },
+    "输出",
+    {
+      "text": "量",
+      "pinyin": "liang4"
+    },
+    "之",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "乘",
+      "pinyin": "cheng2"
+    },
+    "以输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "加",
+    {
+      "text": "一的",
+      "pinyin": "yi1 de5"
+    },
+    "对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "来控制。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW40": [
+    {
+      "text": "只有一份",
+      "pinyin": "zhi2 you3 yi2 fen4"
+    },
+    "输入时。",
+    {
+      "breakMs": 200
+    },
+    "输入",
+    {
+      "text": "份数",
+      "pinyin": "fen4 shu4"
+    },
+    "加",
+    {
+      "text": "一的",
+      "pinyin": "yi1 de5"
+    },
+    "对",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "等于",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "仍能容纳固定工",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    },
+    {
+      "text": "空",
+      "pinyin": "kong1"
+    },
+    "输入",
+    {
+      "text": "的调用和空",
+      "pinyin": "de5 diao4 yong4 he2 kong1"
+    },
+    "状态",
+    {
+      "text": "处理",
+      "pinyin": "chu2 li3"
+    },
+    "另外计常",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "开销。",
+    {
+      "breakMs": 200
+    },
+    "若",
+    {
+      "text": "合",
+      "pinyin": "he2"
+    },
+    {
+      "text": "写所有",
+      "pinyin": "xie3 suo2 you3"
+    },
+    "规",
+    {
+      "text": "模",
+      "pinyin": "mo2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "就在主界",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "表达式前加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "加",
+    {
+      "text": "一",
+      "pinyin": "yi1"
+    },
+    "是记法选择。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu2"
+    },
+    "是性能改进。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW41": [
+    "回到原点",
+    {
+      "text": "这个",
+      "pinyin": "zhe4 ge5"
+    },
+    "事件。",
+    {
+      "breakMs": 200
+    },
+    "定位、局部排序、邻接检",
+    {
+      "text": "查和",
+      "pinyin": "cha2 he2"
+    },
+    "六条",
+    {
+      "text": "结",
+      "pinyin": "jie2"
+    },
+    "果。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "属",
+      "pinyin": "shu3"
+    },
+    "于普",
+    {
+      "text": "通",
+      "pinyin": "tong1"
+    },
+    "求交。",
+    {
+      "breakMs": 400
+    },
+    "必",
+    {
+      "text": "要的",
+      "pinyin": "yao4 de5"
+    },
+    "成员展开",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "临时表也已",
+    {
+      "text": "经",
+      "pinyin": "jing1"
+    },
+    "计入。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "能",
+    {
+      "text": "把",
+      "pinyin": "ba3"
+    },
+    "这些必",
+    {
+      "text": "要",
+      "pinyin": "yao4"
+    },
+    "工",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "推到",
+    {
+      "text": "教",
+      "pinyin": "jiao4"
+    },
+    "学成本",
+    {
+      "text": "一",
+      "pinyin": "yi4"
+    },
+    "栏。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW42": [
+    "同",
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次精确",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较或算术。",
+    {
+      "breakMs": 200
+    },
+    "成本",
+    {
+      "text": "还取",
+      "pinyin": "hai2 qu3"
+    },
+    "决于",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "字",
+    {
+      "text": "长度",
+      "pinyin": "chang2 du4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "有理数的分子",
+      "pinyin": "you2 li3 shu4 de5 fen1 zi3"
+    },
+    "、",
+    {
+      "text": "分母越长",
+      "pinyin": "fen1 mu3 yue4 chang2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "乘",
+      "pinyin": "cheng2"
+    },
+    "除、",
+    {
+      "text": "比",
+      "pinyin": "bi3"
+    },
+    "较或",
+    {
+      "text": "约",
+      "pinyin": "yue1"
+    },
+    {
+      "text": "分可",
+      "pinyin": "fen1 ke3"
+    },
+    "能越费时。",
+    {
+      "breakMs": 400
+    },
+    "前面",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "操",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "次",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "界。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "不",
+      "pinyin": "bu4"
+    },
+    "能直接",
+    {
+      "text": "当作",
+      "pinyin": "dang4 zuo4"
+    },
+    "秒",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "、固定字节成本或完整",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "位复杂",
+    {
+      "text": "度",
+      "pinyin": "du4"
+    },
+    "定理。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW43": [
+    {
+      "text": "教",
+      "pinyin": "jiao4"
+    },
+    "学",
+    {
+      "text": "模",
+      "pinyin": "mo2"
+    },
+    "式",
+    {
+      "text": "可",
+      "pinyin": "ke3"
+    },
+    "能在多个停步",
+    {
+      "text": "重复",
+      "pinyin": "chong2 fu4"
+    },
+    "保存全活动状态、成员",
+    {
+      "text": "说",
+      "pinyin": "shuo1"
+    },
+    "明",
+    {
+      "text": "和累计结",
+      "pinyin": "he2 lei3 ji4 jie2"
+    },
+    "果。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "还要",
+      "pinyin": "hai2 yao4"
+    },
+    "格式化、",
+    {
+      "text": "传",
+      "pinyin": "chuan2"
+    },
+    "输",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "展示。",
+    {
+      "breakMs": 400
+    },
+    "这些额外访问未必受输入",
+    {
+      "text": "量与",
+      "pinyin": "liang4 yu3"
+    },
+    "输出",
+    {
+      "text": "量",
+      "pinyin": "liang4"
+    },
+    "之",
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "控制。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "教",
+      "pinyin": "jiao4"
+    },
+    "学来自真实执",
+    {
+      "text": "行",
+      "pinyin": "xing2"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    "并",
+    {
+      "text": "不意味着",
+      "pinyin": "bu2 yi4 wei4 zhe5"
+    },
+    "记录免费。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW44": [
+    "事件",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "控制到站次",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "累计参与",
+      "pinyin": "lei3 ji4 can1 yu4"
+    },
+    "组",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "控制局部维护。",
+    {
+      "breakMs": 400
+    },
+    "成员展开由",
+    {
+      "text": "当场的",
+      "pinyin": "dang1 chang3 de5"
+    },
+    "新输出支付。",
+    {
+      "breakMs": 200
+    },
+    "再",
+    {
+      "text": "把重复",
+      "pinyin": "ba3 chong2 fu4"
+    },
+    "预",
+    {
+      "text": "约",
+      "pinyin": "yue1"
+    },
+    {
+      "text": "和",
+      "pinyin": "he2"
+    },
+    "必",
+    {
+      "text": "要",
+      "pinyin": "yao4"
+    },
+    "清理计入。",
+    {
+      "breakMs": 200
+    },
+    "就",
+    {
+      "text": "把",
+      "pinyin": "ba3"
+    },
+    "普",
+    {
+      "text": "通",
+      "pinyin": "tong1"
+    },
+    "求交",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "总工",
+    {
+      "text": "作量",
+      "pinyin": "zuo4 liang4"
+    },
+    "连接到",
+    {
+      "text": "了",
+      "pinyin": "le5"
+    },
+    "输入",
+    {
+      "text": "量与",
+      "pinyin": "liang4 yu3"
+    },
+    "输出",
+    {
+      "text": "量",
+      "pinyin": "liang4"
+    },
+    "。",
+    {
+      "breakMs": 400
+    }
+  ],
+  "TW45": [
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "次事件",
+    {
+      "text": "可以",
+      "pinyin": "ke2 yi3"
+    },
+    "很",
+    {
+      "text": "大",
+      "pinyin": "da4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "一",
+      "pinyin": "yi2"
+    },
+    "个组也",
+    {
+      "text": "可以",
+      "pinyin": "ke2 yi3"
+    },
+    "很",
+    {
+      "text": "大",
+      "pinyin": "da4"
+    },
+    "。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "累计",
+      "pinyin": "lei3 ji4"
+    },
+    "账本仍然",
+    {
+      "text": "有",
+      "pinyin": "you3"
+    },
+    "依据。",
+    {
+      "breakMs": 400
+    },
+    "这里",
+    {
+      "text": "得",
+      "pinyin": "de2"
+    },
+    "到",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "是普",
+    {
+      "text": "通",
+      "pinyin": "tong1"
+    },
+    "操",
+    {
+      "text": "作",
+      "pinyin": "zuo4"
+    },
+    "次",
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "界。",
+    {
+      "breakMs": 200
+    },
+    {
+      "text": "数",
+      "pinyin": "shu4"
+    },
+    "值",
+    {
+      "text": "长度和教",
+      "pinyin": "chang2 du4 he2 jiao4"
+    },
+    "学记录保留各自",
+    {
+      "text": "的",
+      "pinyin": "de5"
+    },
+    "成本边界。",
+    {
+      "breakMs": 400
+    }
+  ]
+}
