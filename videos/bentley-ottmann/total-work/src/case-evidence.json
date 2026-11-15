@@ -1308,7 +1308,7 @@
       "src/algorithms/segment_intersection/bo/sweep/activity.rs": "9ad0ffe6a2103550afa0608c405eada5d44fae957fcdf852f0d8ec06469d3261"
     },
     "binarySha256": "40bd543f17ec249e9b9dcd5356053c3443e62764ef844c071aac2e44c31f2b17",
-    "binaryVerifiedByLockedBuild": true,
+    "binaryVerifiedByLockedBuild": false,
     "inputCoordinates": [
       [
         -3,
@@ -1335,7 +1335,8 @@
         1
       ]
     ],
-    "projectionNote": "selectedSteps保留当前位置、身份角色、活动身份、结果索引及源轨迹下标；results索引指向本对象results。不保留不参与本集教学的队列字典投影。"
+    "projectionNote": "selectedSteps保留当前位置、身份角色、活动身份、结果索引及源轨迹下标；results索引指向本对象results。不保留不参与本集教学的队列字典投影。",
+    "binaryVerificationLimit": "Existing executable used for real HTTP trace; SHA-256 recorded. cargo is unavailable in current PATH, so no successful locked rebuild was verified. Case inputs, event identities and report conditions were separately cross-checked against current source."
   },
   "overlap": {
     "case": "overlap-group",
@@ -2131,7 +2132,7 @@
       "src/algorithms/segment_intersection/bo/sweep/activity.rs": "9ad0ffe6a2103550afa0608c405eada5d44fae957fcdf852f0d8ec06469d3261"
     },
     "binarySha256": "40bd543f17ec249e9b9dcd5356053c3443e62764ef844c071aac2e44c31f2b17",
-    "binaryVerifiedByLockedBuild": true,
+    "binaryVerifiedByLockedBuild": false,
     "inputCoordinates": [
       [
         0,
@@ -2152,6 +2153,7 @@
         0
       ]
     ],
-    "projectionNote": "selectedSteps保留当前位置、身份角色、活动身份、结果索引及源轨迹下标；results索引指向本对象results。不保留不参与本集教学的队列字典投影。"
+    "projectionNote": "selectedSteps保留当前位置、身份角色、活动身份、结果索引及源轨迹下标；results索引指向本对象results。不保留不参与本集教学的队列字典投影。",
+    "binaryVerificationLimit": "Existing executable used for real HTTP trace; SHA-256 recorded. cargo is unavailable in current PATH, so no successful locked rebuild was verified. Case inputs, event identities and report conditions were separately cross-checked against current source."
   }
 }

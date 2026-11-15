@@ -1,6 +1,6 @@
 {
   "stage": "silent-text-review",
-  "status": "pure-text-frozen; corrected-pinyin-awaiting-two-sequential-independent-full-reviews",
+  "status": "passed pure-text and two sequential independent full pinyin blind reviews with history reconciliation on unchanged version",
   "hashes": {
     "lesson.json": "f5f84e408107ef719ae24e45becf20bc5b0ca587d5239636eb2c2352be334cbb",
     "narration-text.json": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
@@ -2094,5 +2094,4822 @@
     },
     "unresolved": [],
     "scope": "仅写speech-text.json及本/tmp交接报告；未改冻结文字、字幕、其他项目文件；未调用音频、试听、导出、Git或工单；等待独立全文盲审与历史核销，不宣布审校通过。"
-  }
+  },
+  "sequentialReviews": [
+    {
+      "blind": {
+        "reviewer": "tw_pinyin_final_one",
+        "stage": "independent-full-blind-review-before-history",
+        "versions": {
+          "narration-text.json": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
+          "speech-text.json": "031a79460b73e37c7dd14d0cfb8b89751db620ea003c83f6301ebba2760f54f7",
+          "sentence-plan.json": "2d908b4f2b232232ee3103b3a8af305679b54bf319344cec88e1093c87f4943b",
+          "lesson.json": "f5f84e408107ef719ae24e45becf20bc5b0ca587d5239636eb2c2352be334cbb"
+        },
+        "coverage": [
+          {
+            "id": "TW01",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "这四条线段所在的直线不同。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "却都包含原点。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "蓝色与橙色两条穿过原点。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "紫色这一条在这里结束。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "绿色这一条从这里开始。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 11
+          },
+          {
+            "id": "TW02",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "沿用同点报告规则。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "开始者已经加入。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "结束者在报告后才退出。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "所以报告时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "这四条闭线段分别属于四个不同的非零同线组。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 7
+          },
+          {
+            "id": "TW03",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "依次记录这六个不同的原始无序输入对。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "结果都位于原点。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "但每对身份分别保留。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "这里只处理一个事件位置。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "却已经要输出六条结果。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "事件少。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "不代表这一次要做的工作少。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 14
+          },
+          {
+            "id": "TW04",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "用字母 n 表示原始输入份数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "用字母 k 表示相交的原始无序输入对数。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "每对的完整交集算一条。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "点和非零闭区间都如此。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "重合输入仍各算一份。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 10
+          },
+          {
+            "id": "TW05",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "用大写 E 累计处理了多少不同事件位置。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "用大写 H 把每次参与的不同非零同线组数加起来。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "同一个组在不同事件参加。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "要分别计入。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 12
+          },
+          {
+            "id": "TW06",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "沿完整位置次序走过七个事件。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "每次参与的组数依次是一、一、一、四、一、一、一。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "于是全程事件数是七。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "累计参与组数是十。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "相交原始对数是六。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "原点那一次的局部数目仍然是一、四、六。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 18
+          },
+          {
+            "id": "TW07",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "本集数的是精确算术、比较和基本记录操作的次数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "例如一次有理数运算、一次坐标比较或一次记录访问。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "一次树查找包含多次比较。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "不能把整次查找免费算作一个基本操作。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 18
+          },
+          {
+            "id": "TW08",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "活动组顺序使用 A V L 树。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "队列、固定组查找和成员索引也使用有序容器。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "这里沿用这些容器的对数操作成本。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "不展开平衡维护。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 9
+          },
+          {
+            "id": "TW09",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "先讨论至少有一份输入的情况。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "对数的底取二。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "大写 O 表示操作次数可以由所写表达式的固定常数倍控制。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "它不是每份输入的精确次数。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 14
+          },
+          {
+            "id": "TW10",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "每份非零输入至多提供两个端点位置。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "点输入只提供一个。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "共享位置合并只会减少数量。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "所以端点位置至多是原始输入份数的两倍。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 12
+          },
+          {
+            "id": "TW11",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "其余事件位置来自不同支撑直线上的真实交点。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "给每个这样的位置选一对在这里相交的原始输入作为见证。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "不同直线至多有一个交点。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "所以同一对不能给两个不同位置作见证。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 16
+          },
+          {
+            "id": "TW12",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "因此。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "非端点事件位置至多有 k 个。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "加上端点来源。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "事件数至多是输入份数的两倍。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "再加相交原始对数。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "重叠区间内的无穷多个点。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "不会各自成为事件。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 10
+          },
+          {
+            "id": "TW13",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "任一事件位置用小写 p 表示。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "用 h 下标 p 表示这里不同的非零参与组数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "处理前经过当前位置的旧活动组与本次开始者所属的组合并。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "同组只算一次。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "点输入不算组。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "结束者报告后才退出。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 17
+          },
+          {
+            "id": "TW14",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "用 c 下标 p 表示这里新报告的跨组非零输入对数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "同线对和含点输入的对不计在这个量中。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "回到原点的报告时刻。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "参与组数是四。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "这次跨组新输出是六。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 9
+          },
+          {
+            "id": "TW15",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "至少有两个组时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "每组都非空。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "而且各成员包含当前位置。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "每两个组各选一份成员。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "就得到一个真实相交的原始输入对。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "不同组对选出的原始对不同。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "因此组对的数量。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 8,
+                "text": "不超过这一次的跨组新输出数量。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 17
+          },
+          {
+            "id": "TW16",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "参与组数至少为二时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "将它减一。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "所得的数至少为一。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "因此参与组数不超过参与组数与这个差的乘积。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "再用上一行的界。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "就得到参与组数不超过当场跨组新输出数的两倍。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 17
+          },
+          {
+            "id": "TW17",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "只有一个组时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "这一个组的贡献计在事件本身。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "零个组时没有组贡献。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "例如孤立的点输入事件。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "点输入需要的输出工作稍后单独计入。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 9
+          },
+          {
+            "id": "TW18",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "把每次事件的参与组数相加。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "用大写 H 表示这个和。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "画面上的求和符号。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "就是把每个位置对应的量加起来。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "每个事件保守记一次。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "再加两倍的跨组新输出总数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "就覆盖了零组、单组和多组情况。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 18
+          },
+          {
+            "id": "TW19",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "上集的跨组唯一报告保证。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "同一个原始对不会在别的事件再次支付费用。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "所以全部跨组新输出数不超过 k 这个总数。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "代入事件数的界。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "累计参与组数至多是输入份数的两倍。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "再加相交原始对数的三倍。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "于是它是输入量与输出量之和的常数倍。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 20
+          },
+          {
+            "id": "TW20",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "换成一个独立的三输入案例。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "两份长成员都覆盖从零到六的闭区间。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "一份短成员覆盖从二到三的闭区间。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "三份都在横轴上。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "分行只为区分身份。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "并没有改变几何高度。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 17
+          },
+          {
+            "id": "TW21",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "当 x 坐标为零时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "两个长成员报告一条从零到六的完整重叠区间。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "当 x 坐标为二时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "短成员与两个长成员分别报告一条从二到三的完整重叠区间。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "前两次事件分别新增一对和两对。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 18
+          },
+          {
+            "id": "TW22",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "到 x 坐标为三时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "只按结束身份删除短成员。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "两个长成员和这个组继续保留。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "这里不遍历整个旧成员表。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "也不重新输出。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "先前的长区间结果始终保持完整。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "不能拿它支付每一次全组扫描。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 11
+          },
+          {
+            "id": "TW23",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "到 x 坐标为六时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "两个长成员结束。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "组才变空。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "四次事件的新输出依次是一、二、零、零。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "累计仍是三对。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "结束事件所做的必要删除另计。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "但不重新枚举这些旧对。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 10
+          },
+          {
+            "id": "TW24",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "用大写 M 下标 p 表示非零参与成员总数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "用 t 下标 p 表示这个位置的点输入数。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "普通计算只在至少有两个组。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "或者有点输入时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "才把相关成员展开成临时列表。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 11
+          },
+          {
+            "id": "TW25",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "至少有两个组时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "每份成员至少与另一个组的一份成员配对。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "将各成员参与跨组输出的次数相加。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "每条结果被两端各数一次。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "因此展开的成员总数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "不超过跨组新输出数的两倍。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 15
+          },
+          {
+            "id": "TW26",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "只有一个组但有点输入时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "每份成员至少产生一个新的点与线段的结果。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "足够支付展开。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "只有一个组而没有点输入时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "不展开整个旧成员表。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "零个组时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "没有非零成员可展开。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 13
+          },
+          {
+            "id": "TW27",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "新同线成员逐个加入。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "每次访问旧成员。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "都立即产生一条新结果。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "每次加入至多做一次空表检查。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "游标推进也保守按对数成本计费。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "最后一次失败推进紧随最后一个结果。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 11
+          },
+          {
+            "id": "TW28",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "跨组与点和线段配对时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "外层成员访问也由这次新结果支付。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "点与点按原始无序对输出。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "没有非零组时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "每个点仍有一次外层开销。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "所有位置的点身份合计至多有 n 份。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 12
+          },
+          {
+            "id": "TW29",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "每条结果只保存两个身份。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "以及一个点或两个区间端点。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "构造与坐标还原需要固定次数的精确操作。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "全部结果追加按容器的摊还保证累计为输出数的常数倍。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "扩容移动已经包括在内。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "临时成员表的创建和销毁。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "也按已经支付的展开量计入。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 21
+          },
+          {
+            "id": "TW30",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "输入准备、必要剪切、固定组与端点缓存按输入量累计。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "每份非零成员只加入和退出各一次。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "两套成员索引同步增删。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "最远右端从最大键读取。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "不重扫全组。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "这些有序维护合计为输入份数乘以对数的数量级。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 18
+          },
+          {
+            "id": "TW31",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "每次只定位相遇块。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "访问参与组和常数个边界。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "开始身份在全程至多有 n 份。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "块的移除、过滤和重插按累计参与量计费。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "不扫描其余活动组。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "于是总账由事件数、累计参与组数和输入份数共同控制。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "再乘有序操作的对数成本。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 19
+          },
+          {
+            "id": "TW32",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "局部排序只移动组身份。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "不移动整组成员。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "固定的精确斜率给出一致次序。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "采用具有最坏情况下对数乘线性保证的比较排序。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "每次参与组数不超过输入份数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "所以逐次排序成本相加。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "不超过累计参与组数乘以对数。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 18
+          },
+          {
+            "id": "TW33",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "更新后的新块非空且有 r 个组时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "新块只保留参与本次事件的组。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "因此组数不超过本次参与组数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "内部邻居对数至多是组数减一。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "两端各至多一对。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "空块只可能接起原来的两侧。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "覆盖延长后。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 8,
+                "text": "即使邻居名字没变。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 9,
+                "text": "对相关邻接的补检也包含在这里。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 21
+          },
+          {
+            "id": "TW34",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "每次事件的检查量由参与组数加一控制。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "累计就是参与组总数与事件数之和的数量级。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "每次用固定直线和真实覆盖检查候选。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "不展开两组全部成员对。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 14
+          },
+          {
+            "id": "TW35",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "同一个真实未来位置可能被再次发现。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "队列只保留一份。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "但这次查找和尝试仍然收费。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "尝试总数不超过检查总数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "不能只数最后成功新增的位置。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 13
+          },
+          {
+            "id": "TW36",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "由事件数界和第一章的输入对数上界。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "事件数加一不超过输入份数加一所得的和的平方。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "因此。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "队列的一次对数操作成本。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "也受输入份数加一的对数的常数倍控制。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 17
+          },
+          {
+            "id": "TW37",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "初始化至多登记输入份数两倍的端点身份。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "之后计入全部预约尝试和每个事件的一次弹出。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "检查中的覆盖读取也收费。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "合计仍由输入量与输出量之和。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "乘以输入份数加一的对数来控制。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 17
+          },
+          {
+            "id": "TW38",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "局部组表累计按参与组总数与事件数计费。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "必要成员表已经由新输出支付。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "高度缓存按实际访问更新。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "不每次重算全部组。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "最后释放几何、组和映射的工作按输入量计。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "逐条释放结果按输出量计。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 17
+          },
+          {
+            "id": "TW39",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "账本里的每一行都受同一个上界控制。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "固定行数相加只改变常数。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "因此。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "普通求交的精确算术、比较和基本状态操作次数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "由输入量与输出量之和。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "乘以输入份数加一的对数来控制。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 19
+          },
+          {
+            "id": "TW40",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "只有一份输入时。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "输入份数加一的对数等于一。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "仍能容纳固定工作。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "空输入的调用和空状态处理另外计常数开销。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "若合写所有规模。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "就在主界的表达式前加一。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 7,
+                "text": "这个加一是记法选择。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 8,
+                "text": "不是性能改进。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 18
+          },
+          {
+            "id": "TW41",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "回到原点这个事件。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "定位、局部排序、邻接检查和六条结果。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "属于普通求交。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "必要的成员展开和临时表也已经计入。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "不能把这些必要工作推到教学成本一栏。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 14
+          },
+          {
+            "id": "TW42",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "同一次精确比较或算术。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "成本还取决于数字长度。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "有理数的分子、分母越长。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "乘除、比较或约分可能越费时。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "前面的操作次数界。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 6,
+                "text": "不能直接当作秒数、固定字节成本或完整的位复杂度定理。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 19
+          },
+          {
+            "id": "TW43",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "教学模式可能在多个停步重复保存全活动状态、成员说明和累计结果。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "还要格式化、传输和展示。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "这些额外访问未必受输入量与输出量之和控制。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "教学来自真实执行。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "并不意味着记录免费。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 15
+          },
+          {
+            "id": "TW44",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "事件数控制到站次数。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "累计参与组数控制局部维护。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "成员展开由当场的新输出支付。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "再把重复预约和必要清理计入。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "就把普通求交的总工作量连接到了输入量与输出量。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 16
+          },
+          {
+            "id": "TW45",
+            "sentences": [
+              {
+                "index": 1,
+                "text": "一次事件可以很大。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 2,
+                "text": "一个组也可以很大。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 3,
+                "text": "累计账本仍然有依据。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 4,
+                "text": "这里得到的是普通操作次数界。",
+                "breakMs": 200,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              },
+              {
+                "index": 5,
+                "text": "数值长度和教学记录保留各自的成本边界。",
+                "breakMs": 400,
+                "pinyinContextReviewed": true,
+                "toneSandhiNeutralAndOmissionReviewed": true
+              }
+            ],
+            "annotationObjects": 16
+          }
+        ],
+        "shotCount": 45,
+        "sentenceCount": 259,
+        "annotationObjectCount": 668,
+        "checks": {
+          "textReconstruction": "exact equality with frozen narration in every shot",
+          "captionMapping": "all sentence-plan captions equal lesson captions in order",
+          "breakMapping": "259 boundaries match sentence-plan: internal 200ms, original caption sentence end 400ms; no missing or repeated break",
+          "manualReview": "read all 45 annotated shots and 259 sentence mappings, checked contextual polyphones, tones, sandhi, neutral tones and omissions"
+        },
+        "findings": [],
+        "pendingEvidence": [],
+        "historyReconciliation": "awaiting parent; not yet read",
+        "sources": [
+          {
+            "type": "library supplemental, not dictionary or normative verdict",
+            "name": "pypinyin",
+            "version": "0.55.0",
+            "queries": "/tmp/tw-pinyin-final-one-queries.json",
+            "coverage": "all 45 complete original narration strings, including library contextual selection and per-character alternatives",
+            "failures": 0
+          },
+          {
+            "url": "https://www.edu.cn/pu_tong_hua_483/20060323/t20060323_19443.shtml",
+            "section": "四、声调和变调",
+            "application": "一在数量短语依后音变调；不在去声前读bu2；语法助词轻声；词内连续上声处理。数值及枚举的一按数值对象保留yi1，不机械跨数位边界变调。"
+          },
+          {
+            "url": "https://www.sxftc.edu.cn/cjc/info/1228/2998.htm",
+            "section": "发音要领",
+            "application": "处理、所以、索引、有理数等词内上声连读与语流节奏区分；不因跨词相邻上声就强行改变当前可接受标注。"
+          },
+          {
+            "url": "https://zdic.net/hans/分子",
+            "section": "国语辞典，数学分数义",
+            "application": "TW42 fen1 zi3 符合数学分子，库对分子选fen4并不适用；网页基本解释与国语辞典不一致，依据明确数学义条目而非顶部概括。"
+          },
+          {
+            "url": "https://zdic.net/hans/还",
+            "section": "基本解释 huán 偿付/恢复；hái 仍然/再",
+            "application": "TW29 摊还、还原 huan2；TW42/43 还 hai2；库的摊还hai2不适用偿付含义。"
+          },
+          {
+            "url": "https://zdic.net/hans/弹",
+            "section": "tán 动词发射/弹出义",
+            "application": "TW37 队列弹出 tan2 chu1，不是名词弹丸dan4；不采库误选。"
+          }
+        ],
+        "specificDecisions": [
+          {
+            "shots": [
+              "TW06",
+              "TW16",
+              "TW23",
+              "TW33",
+              "TW34",
+              "TW36",
+              "TW37",
+              "TW39",
+              "TW40"
+            ],
+            "decision": "列举数值、减一、加一、等于一均保留yi1；上一行、每一行的行读hang2，数量一读yi4。"
+          },
+          {
+            "shots": [
+              "TW09",
+              "TW15",
+              "TW24",
+              "TW25",
+              "TW33",
+              "TW35",
+              "TW40"
+            ],
+            "decision": "至少有、底取、只可能、只数、合写所有等跨词/句法边界不按裸相邻声调机械判错；标注可表达相应教学语流边界，无新增确定错误。"
+          },
+          {
+            "shots": [
+              "TW05",
+              "TW18",
+              "TW33",
+              "TW43"
+            ],
+            "decision": "起来的来、名字的字、的/了/着及这个的个已显式轻声；原调完整内容词与轻声助词区分。"
+          },
+          {
+            "shots": [
+              "TW20",
+              "TW29",
+              "TW37",
+              "TW42"
+            ],
+            "decision": "分行hang2、只为wei4、摊还huan2、弹出tan2、数学分子fen1 zi3均按句内义核对。"
+          }
+        ],
+        "conclusion": "本版本盲审未发现需修正或待查证项；历史核销尚未完成，不据此单独宣布整个全文审校门禁通过。仅文本审查，未生成/调用/试听/导出音频。"
+      },
+      "history": {
+        "stage": "history-reconciliation-after-submitted-blind-review",
+        "blindOriginal": "/tmp/tw-pinyin-final-one.json",
+        "blindOriginalUnchanged": true,
+        "inputHistory": [
+          "/tmp/tw-pinyin-blind-one.json",
+          "/tmp/tw-pinyin-blind-one-reconciliation.json",
+          "/tmp/tw-pinyin-correction.json"
+        ],
+        "versions": {
+          "narration-text.json": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
+          "speech-text.json": "031a79460b73e37c7dd14d0cfb8b89751db620ea003c83f6301ebba2760f54f7",
+          "sentence-plan.json": "2d908b4f2b232232ee3103b3a8af305679b54bf319344cec88e1093c87f4943b",
+          "lesson.json": "f5f84e408107ef719ae24e45becf20bc5b0ca587d5239636eb2c2352be334cbb"
+        },
+        "currentSpeechHashUnchanged": "031a79460b73e37c7dd14d0cfb8b89751db620ea003c83f6301ebba2760f54f7",
+        "perOccurrence": [
+          {
+            "id": "B1-01",
+            "shot": "TW15",
+            "targetOffset": 44,
+            "objectStartOffset": 44,
+            "current": {
+              "text": "相",
+              "pinyin": "xiang1"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "几何相交是交叉/互相相交，不是相貌、察看。全文库查询错误选 xiang4，不能机械采用。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=27877&la=0&powerMode=0"
+          },
+          {
+            "id": "B1-02",
+            "shot": "TW29",
+            "targetOffset": 101,
+            "objectStartOffset": 101,
+            "current": {
+              "text": "量",
+              "pinyin": "liang4"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "指展开数量，名词；不是测量动作。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+          },
+          {
+            "id": "B1-03",
+            "shot": "TW30",
+            "targetOffset": 8,
+            "objectStartOffset": 8,
+            "current": {
+              "text": "切",
+              "pinyin": "qie1"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "剪切指几何切分；不是迫切、切实。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=24798&la=0&powerMode=0"
+          },
+          {
+            "id": "B1-04",
+            "shot": "TW30",
+            "targetOffset": 63,
+            "objectStartOffset": 63,
+            "current": {
+              "text": "不重扫",
+              "pinyin": "bu4 chong2 sao3"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "重读 chong2；不在非去声前保持 bu4，此处不符合去声前变调。",
+            "evidence": "https://www.moe.gov.cn/moe_879/moe_1252/s8447/201412/t20141204_179444.html"
+          },
+          {
+            "id": "B1-05",
+            "shot": "TW31",
+            "targetOffset": 51,
+            "objectStartOffset": 47,
+            "current": {
+              "text": "累计参与量",
+              "pinyin": "lei3 ji4 can1 yu4 liang4"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "参与量是累计数量名词，不是量度动作。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+          },
+          {
+            "id": "B1-06",
+            "shot": "TW32",
+            "targetOffset": 77,
+            "objectStartOffset": 77,
+            "current": {
+              "text": "相",
+              "pinyin": "xiang1"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "相加是把成本彼此加起来，不是观察、相貌。",
+            "evidence": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=7196&la=0&powerMode=0"
+          },
+          {
+            "id": "B1-07",
+            "shot": "TW38",
+            "targetOffset": 71,
+            "objectStartOffset": 71,
+            "current": {
+              "text": "量",
+              "pinyin": "liang4"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "输入量/输出量均是数量名词，不是测量动作。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+          },
+          {
+            "id": "B1-08",
+            "shot": "TW38",
+            "targetOffset": 83,
+            "objectStartOffset": 83,
+            "current": {
+              "text": "量",
+              "pinyin": "liang4"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "输入量/输出量均是数量名词，不是测量动作。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW10",
+            "targetOffset": 30,
+            "objectStartOffset": 30,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW13",
+            "targetOffset": 62,
+            "objectStartOffset": 62,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW28",
+            "targetOffset": 66,
+            "objectStartOffset": 66,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW30",
+            "targetOffset": 75,
+            "objectStartOffset": 75,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW37",
+            "targetOffset": 52,
+            "objectStartOffset": 52,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW40",
+            "targetOffset": 51,
+            "objectStartOffset": 51,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-10",
+            "shot": "TW10",
+            "targetOffset": 33,
+            "objectStartOffset": 33,
+            "current": {
+              "text": "会",
+              "pinyin": "hui4"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-10",
+            "shot": "TW12",
+            "targetOffset": 61,
+            "objectStartOffset": 61,
+            "current": {
+              "text": "会",
+              "pinyin": "hui4"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-10",
+            "shot": "TW19",
+            "targetOffset": 19,
+            "objectStartOffset": 19,
+            "current": {
+              "text": "会",
+              "pinyin": "hui4"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-11",
+            "shot": "TW10",
+            "targetOffset": 8,
+            "objectStartOffset": 8,
+            "current": {
+              "text": "提",
+              "pinyin": "ti2"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "提供，不是提防 dī；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-11",
+            "shot": "TW10",
+            "targetOffset": 21,
+            "objectStartOffset": 21,
+            "current": {
+              "text": "提",
+              "pinyin": "ti2"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "提供，不是提防 dī；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-12",
+            "shot": "TW37",
+            "targetOffset": 26,
+            "objectStartOffset": 26,
+            "current": {
+              "text": "约",
+              "pinyin": "yue1"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-12",
+            "shot": "TW42",
+            "targetOffset": 40,
+            "objectStartOffset": 40,
+            "current": {
+              "text": "约",
+              "pinyin": "yue1"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-12",
+            "shot": "TW44",
+            "targetOffset": 42,
+            "objectStartOffset": 42,
+            "current": {
+              "text": "约",
+              "pinyin": "yue1"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-13",
+            "shot": "TW17",
+            "targetOffset": 52,
+            "objectStartOffset": 52,
+            "current": {
+              "text": "稍",
+              "pinyin": "shao1"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "稍后，表示稍微，不是稍息 shào；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-14",
+            "shot": "TW43",
+            "targetOffset": 23,
+            "objectStartOffset": 23,
+            "current": {
+              "text": "说",
+              "pinyin": "shuo1"
+            },
+            "status": "已修复，逐一核对当前文件",
+            "reason": "说明，不是游说 shuì；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          }
+        ],
+        "TW33Bridge": {
+          "status": "新增两句标注及200ms句界与当前冻结文本和分句映射一致",
+          "text": "新块只保留参与本次事件的组。因此组数不超过本次参与组数。",
+          "review": "只保 zhi2 bao3 可按连续上声处理；参与 can1 yu4，的 de5，数 shu4，不 bu4（后接超chao1）；新增句序与正文及字幕语义映射一致。"
+        },
+        "counts": {
+          "wrongReadingsResolved": 8,
+          "missingAnnotationsResolved": 16,
+          "newBlindIssues": 0,
+          "unresolvedHistory": 0,
+          "pendingEvidence": 0
+        },
+        "conclusion": "本轮全文盲审加历史核销无新增、无遗留、无待查证；可计为当前未变版本的一轮通过，由主代理核对是否已满足连续两轮门禁。不是实际音频验收。"
+      }
+    },
+    {
+      "blind": {
+        "reviewer": "tw_pinyin_final_two",
+        "phase": "independent-full-blind-review-before-history",
+        "versions": {
+          "narration-text.json": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
+          "speech-text.json": "031a79460b73e37c7dd14d0cfb8b89751db620ea003c83f6301ebba2760f54f7",
+          "sentence-plan.json": "2d908b4f2b232232ee3103b3a8af305679b54bf319344cec88e1093c87f4943b",
+          "lesson.json": "f5f84e408107ef719ae24e45becf20bc5b0ca587d5239636eb2c2352be334cbb"
+        },
+        "coverage": {
+          "shots": 45,
+          "sentences": 259,
+          "shotIds": [
+            "TW01",
+            "TW02",
+            "TW03",
+            "TW04",
+            "TW05",
+            "TW06",
+            "TW07",
+            "TW08",
+            "TW09",
+            "TW10",
+            "TW11",
+            "TW12",
+            "TW13",
+            "TW14",
+            "TW15",
+            "TW16",
+            "TW17",
+            "TW18",
+            "TW19",
+            "TW20",
+            "TW21",
+            "TW22",
+            "TW23",
+            "TW24",
+            "TW25",
+            "TW26",
+            "TW27",
+            "TW28",
+            "TW29",
+            "TW30",
+            "TW31",
+            "TW32",
+            "TW33",
+            "TW34",
+            "TW35",
+            "TW36",
+            "TW37",
+            "TW38",
+            "TW39",
+            "TW40",
+            "TW41",
+            "TW42",
+            "TW43",
+            "TW44",
+            "TW45"
+          ],
+          "details": [
+            {
+              "id": "TW01",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "这四条线段所在的直线不同。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "却都包含原点。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "蓝色与橙色两条穿过原点。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "紫色这一条在这里结束。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "绿色这一条从这里开始。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW02",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "沿用同点报告规则。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "开始者已经加入。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "结束者在报告后才退出。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "所以报告时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "这四条闭线段分别属于四个不同的非零同线组。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW03",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "依次记录这六个不同的原始无序输入对。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "结果都位于原点。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "但每对身份分别保留。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "这里只处理一个事件位置。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "却已经要输出六条结果。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "事件少。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "不代表这一次要做的工作少。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW04",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "用字母 n 表示原始输入份数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "用字母 k 表示相交的原始无序输入对数。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "每对的完整交集算一条。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "点和非零闭区间都如此。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "重合输入仍各算一份。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW05",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "用大写 E 累计处理了多少不同事件位置。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "用大写 H 把每次参与的不同非零同线组数加起来。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "同一个组在不同事件参加。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "要分别计入。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW06",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "沿完整位置次序走过七个事件。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "每次参与的组数依次是一、一、一、四、一、一、一。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "于是全程事件数是七。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "累计参与组数是十。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "相交原始对数是六。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "原点那一次的局部数目仍然是一、四、六。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW07",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "本集数的是精确算术、比较和基本记录操作的次数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "例如一次有理数运算、一次坐标比较或一次记录访问。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "一次树查找包含多次比较。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "不能把整次查找免费算作一个基本操作。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW08",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "活动组顺序使用 A V L 树。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "队列、固定组查找和成员索引也使用有序容器。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "这里沿用这些容器的对数操作成本。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "不展开平衡维护。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW09",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "先讨论至少有一份输入的情况。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "对数的底取二。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "大写 O 表示操作次数可以由所写表达式的固定常数倍控制。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "它不是每份输入的精确次数。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW10",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "每份非零输入至多提供两个端点位置。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "点输入只提供一个。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "共享位置合并只会减少数量。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "所以端点位置至多是原始输入份数的两倍。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW11",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "其余事件位置来自不同支撑直线上的真实交点。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "给每个这样的位置选一对在这里相交的原始输入作为见证。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "不同直线至多有一个交点。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "所以同一对不能给两个不同位置作见证。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW12",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "因此。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "非端点事件位置至多有 k 个。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "加上端点来源。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "事件数至多是输入份数的两倍。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "再加相交原始对数。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "重叠区间内的无穷多个点。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "不会各自成为事件。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW13",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "任一事件位置用小写 p 表示。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "用 h 下标 p 表示这里不同的非零参与组数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "处理前经过当前位置的旧活动组与本次开始者所属的组合并。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "同组只算一次。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "点输入不算组。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "结束者报告后才退出。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW14",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "用 c 下标 p 表示这里新报告的跨组非零输入对数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "同线对和含点输入的对不计在这个量中。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "回到原点的报告时刻。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "参与组数是四。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "这次跨组新输出是六。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW15",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "至少有两个组时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "每组都非空。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "而且各成员包含当前位置。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "每两个组各选一份成员。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "就得到一个真实相交的原始输入对。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "不同组对选出的原始对不同。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "因此组对的数量。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 8,
+                  "text": "不超过这一次的跨组新输出数量。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW16",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "参与组数至少为二时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "将它减一。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "所得的数至少为一。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "因此参与组数不超过参与组数与这个差的乘积。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "再用上一行的界。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "就得到参与组数不超过当场跨组新输出数的两倍。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW17",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "只有一个组时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "这一个组的贡献计在事件本身。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "零个组时没有组贡献。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "例如孤立的点输入事件。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "点输入需要的输出工作稍后单独计入。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW18",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "把每次事件的参与组数相加。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "用大写 H 表示这个和。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "画面上的求和符号。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "就是把每个位置对应的量加起来。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "每个事件保守记一次。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "再加两倍的跨组新输出总数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "就覆盖了零组、单组和多组情况。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW19",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "上集的跨组唯一报告保证。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "同一个原始对不会在别的事件再次支付费用。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "所以全部跨组新输出数不超过 k 这个总数。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "代入事件数的界。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "累计参与组数至多是输入份数的两倍。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "再加相交原始对数的三倍。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "于是它是输入量与输出量之和的常数倍。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW20",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "换成一个独立的三输入案例。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "两份长成员都覆盖从零到六的闭区间。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "一份短成员覆盖从二到三的闭区间。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "三份都在横轴上。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "分行只为区分身份。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "并没有改变几何高度。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW21",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "当 x 坐标为零时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "两个长成员报告一条从零到六的完整重叠区间。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "当 x 坐标为二时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "短成员与两个长成员分别报告一条从二到三的完整重叠区间。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "前两次事件分别新增一对和两对。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW22",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "到 x 坐标为三时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "只按结束身份删除短成员。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "两个长成员和这个组继续保留。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "这里不遍历整个旧成员表。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "也不重新输出。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "先前的长区间结果始终保持完整。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "不能拿它支付每一次全组扫描。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW23",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "到 x 坐标为六时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "两个长成员结束。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "组才变空。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "四次事件的新输出依次是一、二、零、零。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "累计仍是三对。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "结束事件所做的必要删除另计。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "但不重新枚举这些旧对。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW24",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "用大写 M 下标 p 表示非零参与成员总数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "用 t 下标 p 表示这个位置的点输入数。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "普通计算只在至少有两个组。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "或者有点输入时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "才把相关成员展开成临时列表。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW25",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "至少有两个组时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "每份成员至少与另一个组的一份成员配对。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "将各成员参与跨组输出的次数相加。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "每条结果被两端各数一次。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "因此展开的成员总数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "不超过跨组新输出数的两倍。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW26",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "只有一个组但有点输入时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "每份成员至少产生一个新的点与线段的结果。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "足够支付展开。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "只有一个组而没有点输入时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "不展开整个旧成员表。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "零个组时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "没有非零成员可展开。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW27",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "新同线成员逐个加入。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "每次访问旧成员。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "都立即产生一条新结果。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "每次加入至多做一次空表检查。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "游标推进也保守按对数成本计费。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "最后一次失败推进紧随最后一个结果。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW28",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "跨组与点和线段配对时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "外层成员访问也由这次新结果支付。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "点与点按原始无序对输出。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "没有非零组时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "每个点仍有一次外层开销。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "所有位置的点身份合计至多有 n 份。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW29",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "每条结果只保存两个身份。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "以及一个点或两个区间端点。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "构造与坐标还原需要固定次数的精确操作。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "全部结果追加按容器的摊还保证累计为输出数的常数倍。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "扩容移动已经包括在内。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "临时成员表的创建和销毁。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "也按已经支付的展开量计入。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW30",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "输入准备、必要剪切、固定组与端点缓存按输入量累计。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "每份非零成员只加入和退出各一次。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "两套成员索引同步增删。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "最远右端从最大键读取。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "不重扫全组。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "这些有序维护合计为输入份数乘以对数的数量级。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW31",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "每次只定位相遇块。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "访问参与组和常数个边界。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "开始身份在全程至多有 n 份。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "块的移除、过滤和重插按累计参与量计费。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "不扫描其余活动组。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "于是总账由事件数、累计参与组数和输入份数共同控制。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "再乘有序操作的对数成本。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW32",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "局部排序只移动组身份。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "不移动整组成员。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "固定的精确斜率给出一致次序。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "采用具有最坏情况下对数乘线性保证的比较排序。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "每次参与组数不超过输入份数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "所以逐次排序成本相加。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "不超过累计参与组数乘以对数。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW33",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "更新后的新块非空且有 r 个组时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "新块只保留参与本次事件的组。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "因此组数不超过本次参与组数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "内部邻居对数至多是组数减一。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "两端各至多一对。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "空块只可能接起原来的两侧。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "覆盖延长后。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 8,
+                  "text": "即使邻居名字没变。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 9,
+                  "text": "对相关邻接的补检也包含在这里。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW34",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "每次事件的检查量由参与组数加一控制。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "累计就是参与组总数与事件数之和的数量级。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "每次用固定直线和真实覆盖检查候选。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "不展开两组全部成员对。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW35",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "同一个真实未来位置可能被再次发现。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "队列只保留一份。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "但这次查找和尝试仍然收费。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "尝试总数不超过检查总数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "不能只数最后成功新增的位置。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW36",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "由事件数界和第一章的输入对数上界。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "事件数加一不超过输入份数加一所得的和的平方。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "因此。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "队列的一次对数操作成本。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "也受输入份数加一的对数的常数倍控制。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW37",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "初始化至多登记输入份数两倍的端点身份。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "之后计入全部预约尝试和每个事件的一次弹出。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "检查中的覆盖读取也收费。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "合计仍由输入量与输出量之和。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "乘以输入份数加一的对数来控制。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW38",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "局部组表累计按参与组总数与事件数计费。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "必要成员表已经由新输出支付。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "高度缓存按实际访问更新。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "不每次重算全部组。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "最后释放几何、组和映射的工作按输入量计。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "逐条释放结果按输出量计。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW39",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "账本里的每一行都受同一个上界控制。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "固定行数相加只改变常数。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "因此。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "普通求交的精确算术、比较和基本状态操作次数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "由输入量与输出量之和。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "乘以输入份数加一的对数来控制。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW40",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "只有一份输入时。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "输入份数加一的对数等于一。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "仍能容纳固定工作。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "空输入的调用和空状态处理另外计常数开销。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "若合写所有规模。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "就在主界的表达式前加一。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 7,
+                  "text": "这个加一是记法选择。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 8,
+                  "text": "不是性能改进。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW41",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "回到原点这个事件。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "定位、局部排序、邻接检查和六条结果。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "属于普通求交。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "必要的成员展开和临时表也已经计入。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "不能把这些必要工作推到教学成本一栏。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW42",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "同一次精确比较或算术。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "成本还取决于数字长度。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "有理数的分子、分母越长。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "乘除、比较或约分可能越费时。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "前面的操作次数界。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 6,
+                  "text": "不能直接当作秒数、固定字节成本或完整的位复杂度定理。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW43",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "教学模式可能在多个停步重复保存全活动状态、成员说明和累计结果。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "还要格式化、传输和展示。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "这些额外访问未必受输入量与输出量之和控制。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "教学来自真实执行。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "并不意味着记录免费。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW44",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "事件数控制到站次数。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "累计参与组数控制局部维护。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "成员展开由当场的新输出支付。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "再把重复预约和必要清理计入。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "就把普通求交的总工作量连接到了输入量与输出量。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            },
+            {
+              "id": "TW45",
+              "sentences": [
+                {
+                  "index": 1,
+                  "text": "一次事件可以很大。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 2,
+                  "text": "一个组也可以很大。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 3,
+                  "text": "累计账本仍然有依据。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 4,
+                  "text": "这里得到的是普通操作次数界。",
+                  "breakMs": 200,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                },
+                {
+                  "index": 5,
+                  "text": "数值长度和教学记录保留各自的成本边界。",
+                  "breakMs": 400,
+                  "review": "逐句核对选音、声调、变调、轻声、应标位置及字幕原句停顿；未发现确定问题"
+                }
+              ]
+            }
+          ]
+        },
+        "issues": [],
+        "pendingVerification": [],
+        "historyReconciliation": "尚未接收历史问题，等待主代理提供；此文件为不可覆盖的盲审原始结果",
+        "checks": {
+          "frozenTextExactReconstruction": true,
+          "annotationSchemaAndSyllableCounts": true,
+          "allSentencePauseMappings": true,
+          "allPlanCaptionsMatchLesson": true,
+          "pauseCounts": {
+            "200": 169,
+            "400": 90
+          }
+        },
+        "queryEvidence": {
+          "path": "/tmp/tw-pinyin-final-two-queries.json",
+          "source": "pypinyin",
+          "version": "0.55.0",
+          "queries": 45,
+          "failed": 0,
+          "meaning": "独立补充库结果，含完整查询文本、上下文选音及逐字候选，不是词典原始标音或规范裁决"
+        },
+        "sources": [
+          {
+            "url": "https://www.edu.cn/pu_tong_hua_483/20060323/t20060323_19443.shtml",
+            "title": "普通话语音",
+            "consulted": "全文网页，第四节声调与变调",
+            "application": "词内上声连读，如所以、索引、所有、可以、处理；三上声按语法结构与重音分析；非上声前保留三声标记表示半上，不一概改二声。轻声用于助词和相应后缀。"
+          },
+          {
+            "url": "https://www.gsjtxy.edu.cn/jcjxb/content/169/t2024210-169-17094.html",
+            "title": "普通话语音基础知识（9）——变调",
+            "consulted": "网页正文",
+            "application": "数量的一在去声前二声、其他声前四声；单念、序数和数值表达保留本调。不在去声前变二声，其他保留四声。"
+          },
+          {
+            "url": "https://zdic.net/hans/摊还",
+            "title": "摊还·国语辞典",
+            "consulted": "正文国语辞典分栏",
+            "entry": "tān huán，分期偿还",
+            "application": "TW29 摊还保证使用 tan1 huan2；库与网页另一分栏给 tan1 hai2 不能覆盖该语境。"
+          },
+          {
+            "url": "https://zdic.net/hans/分子",
+            "title": "分子·国语辞典",
+            "consulted": "正文国语辞典数学义分栏",
+            "entry": "fēn zǐ，数学上指分数中在上面的实数",
+            "application": "TW42 分子 fen1 zi3 与分母相对，子非轻声，不套用社会成员义。"
+          },
+          {
+            "url": "https://zdic.net/hans/当作",
+            "title": "当作",
+            "consulted": "正文词语解释与国语辞典",
+            "entry": "dàng zuò，看成、认为",
+            "application": "TW42 当作 dang4 zuo4 符合语境。"
+          }
+        ],
+        "contextDecisions": [
+          {
+            "scope": "TW06/16/23/33/34/36/37/39/40",
+            "decision": "报数及运算数值一保留 yi1，数量一条/一次/一份等按后续声调变调；第一章为序数。"
+          },
+          {
+            "scope": "TW13",
+            "decision": "任一事件的任一是任选单个的数学量词单元，yi1为可接受保留；不将跨词边界自动改调。"
+          },
+          {
+            "scope": "TW09/15/24/25/33/35/40",
+            "decision": "至少有、只可能、只数、合写所有等跨词或语法边界连读存在组织差异；不凭无显式停顿就强制串行上声变调，依项目问题判定规则接受当前方案。"
+          },
+          {
+            "scope": "TW01–TW45",
+            "decision": "已逐句检查的/了/着、这个、名字、起来等轻声与对应标注；数量词个的非轻读为可接受方案，不强行扩大轻声范围。"
+          },
+          {
+            "scope": "TW01–TW45",
+            "decision": "库的逐字多读音含古读/罕见读；结合本篇现代数学语境筛选，未将所有候选一律当作现代必标多音字。"
+          }
+        ],
+        "limitations": [
+          "仅文本与拼音审校，不是音频读音验收；没有音频/API/试听/导出。",
+          "没有读取历史审校报告；不替主代理宣布两轮门禁通过。",
+          "tavily-search工具不在当前工具列表，使用web搜索并打开原文核对补充来源。",
+          "未修改任何项目文件，未运行Git、安装或工单操作。"
+        ]
+      },
+      "history": {
+        "reviewer": "tw_pinyin_final_two",
+        "stage": "history-reconciliation-after-submitted-blind-review",
+        "blindOriginal": "/tmp/tw-pinyin-final-two.json",
+        "blindOriginalSha256": "b649e07b0f429bee6faa85531eb6f01f79bfbad64123ecfd60216b78436caa56",
+        "blindOriginalUnchanged": true,
+        "versions": {
+          "narration-text.json": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
+          "speech-text.json": "031a79460b73e37c7dd14d0cfb8b89751db620ea003c83f6301ebba2760f54f7",
+          "sentence-plan.json": "2d908b4f2b232232ee3103b3a8af305679b54bf319344cec88e1093c87f4943b",
+          "lesson.json": "f5f84e408107ef719ae24e45becf20bc5b0ca587d5239636eb2c2352be334cbb"
+        },
+        "inputHistory": [
+          "/tmp/tw-pinyin-blind-one.json",
+          "/tmp/tw-pinyin-blind-one-reconciliation.json",
+          "/tmp/tw-pinyin-correction.json",
+          "/tmp/tw-pinyin-final-one.json",
+          "/tmp/tw-pinyin-final-one-reconciliation.json"
+        ],
+        "perOccurrence": [
+          {
+            "id": "B1-01",
+            "shot": "TW15",
+            "targetOffset": 44,
+            "objectStart": 44,
+            "current": {
+              "text": "相",
+              "pinyin": "xiang1"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "几何相交是交叉/互相相交，不是相貌、察看。全文库查询错误选 xiang4，不能机械采用。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=27877&la=0&powerMode=0"
+          },
+          {
+            "id": "B1-02",
+            "shot": "TW29",
+            "targetOffset": 101,
+            "objectStart": 101,
+            "current": {
+              "text": "量",
+              "pinyin": "liang4"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "指展开数量，名词；不是测量动作。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+          },
+          {
+            "id": "B1-03",
+            "shot": "TW30",
+            "targetOffset": 8,
+            "objectStart": 8,
+            "current": {
+              "text": "切",
+              "pinyin": "qie1"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "剪切指几何切分；不是迫切、切实。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=24798&la=0&powerMode=0"
+          },
+          {
+            "id": "B1-04",
+            "shot": "TW30",
+            "targetOffset": 63,
+            "objectStart": 63,
+            "current": {
+              "text": "不重扫",
+              "pinyin": "bu4 chong2 sao3"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "重读 chong2；不在非去声前保持 bu4，此处不符合去声前变调。",
+            "evidence": "https://www.moe.gov.cn/moe_879/moe_1252/s8447/201412/t20141204_179444.html"
+          },
+          {
+            "id": "B1-05",
+            "shot": "TW31",
+            "targetOffset": 51,
+            "objectStart": 47,
+            "current": {
+              "text": "累计参与量",
+              "pinyin": "lei3 ji4 can1 yu4 liang4"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "参与量是累计数量名词，不是量度动作。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+          },
+          {
+            "id": "B1-06",
+            "shot": "TW32",
+            "targetOffset": 77,
+            "objectStart": 77,
+            "current": {
+              "text": "相",
+              "pinyin": "xiang1"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "相加是把成本彼此加起来，不是观察、相貌。",
+            "evidence": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=7196&la=0&powerMode=0"
+          },
+          {
+            "id": "B1-07",
+            "shot": "TW38",
+            "targetOffset": 71,
+            "objectStart": 71,
+            "current": {
+              "text": "量",
+              "pinyin": "liang4"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "输入量/输出量均是数量名词，不是测量动作。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+          },
+          {
+            "id": "B1-08",
+            "shot": "TW38",
+            "targetOffset": 83,
+            "objectStart": 83,
+            "current": {
+              "text": "量",
+              "pinyin": "liang4"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "输入量/输出量均是数量名词，不是测量动作。",
+            "evidence": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=15048&la=0&powerMode=1"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW10",
+            "targetOffset": 30,
+            "objectStart": 30,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW13",
+            "targetOffset": 62,
+            "objectStart": 62,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW28",
+            "targetOffset": 66,
+            "objectStart": 66,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW30",
+            "targetOffset": 75,
+            "objectStart": 75,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW37",
+            "targetOffset": 52,
+            "objectStart": 52,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-09",
+            "shot": "TW40",
+            "targetOffset": 51,
+            "objectStart": 51,
+            "current": {
+              "text": "合",
+              "pinyin": "he2"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "聚合、合计、合写，不是容量单位 gě；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-10",
+            "shot": "TW10",
+            "targetOffset": 33,
+            "objectStart": 33,
+            "current": {
+              "text": "会",
+              "pinyin": "hui4"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-10",
+            "shot": "TW12",
+            "targetOffset": 61,
+            "objectStart": 61,
+            "current": {
+              "text": "会",
+              "pinyin": "hui4"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-10",
+            "shot": "TW19",
+            "targetOffset": 19,
+            "objectStart": 19,
+            "current": {
+              "text": "会",
+              "pinyin": "hui4"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "表示可能/将会，不是会计 kuài；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-11",
+            "shot": "TW10",
+            "targetOffset": 8,
+            "objectStart": 8,
+            "current": {
+              "text": "提",
+              "pinyin": "ti2"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "提供，不是提防 dī；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-11",
+            "shot": "TW10",
+            "targetOffset": 21,
+            "objectStart": 21,
+            "current": {
+              "text": "提",
+              "pinyin": "ti2"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "提供，不是提防 dī；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-12",
+            "shot": "TW37",
+            "targetOffset": 26,
+            "objectStart": 26,
+            "current": {
+              "text": "约",
+              "pinyin": "yue1"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-12",
+            "shot": "TW42",
+            "targetOffset": 40,
+            "objectStart": 40,
+            "current": {
+              "text": "约",
+              "pinyin": "yue1"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-12",
+            "shot": "TW44",
+            "targetOffset": 42,
+            "objectStart": 42,
+            "current": {
+              "text": "约",
+              "pinyin": "yue1"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "预约或数学约分，不是称量 yāo；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-13",
+            "shot": "TW17",
+            "targetOffset": 52,
+            "objectStart": 52,
+            "current": {
+              "text": "稍",
+              "pinyin": "shao1"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "稍后，表示稍微，不是稍息 shào；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          },
+          {
+            "id": "B1-14",
+            "shot": "TW43",
+            "targetOffset": 23,
+            "objectStart": 23,
+            "current": {
+              "text": "说",
+              "pinyin": "shuo1"
+            },
+            "status": "已修复，当前文件逐项验证",
+            "reason": "说明，不是游说 shuì；依据 narration.md 对每一处多音字使用局部 text/pinyin 的要求。不是断言服务必然误读，也不是按罕见库候选一律判错。",
+            "evidence": "独立 pypinyin 0.55.0 全句查询及语境判断；查询文件保留全文与逐字候选。"
+          }
+        ],
+        "TW33Bridge": {
+          "text": "新块只保留参与本次事件的组。因此组数不超过本次参与组数。",
+          "status": "已覆盖当前独立全文盲审，两句各200ms，保持冻结文字；只保zhi2 bao3、参与can1 yu4、的de5、数shu4、不bu4符合当前语境",
+          "note": "是当前冻结版本新增句检查，不与旧257句版本混用"
+        },
+        "counts": {
+          "historicalIncorrectReadingsResolved": 8,
+          "historicalMissingAnnotationsResolved": 16,
+          "historicalRemaining": 0,
+          "newIssues": 0,
+          "pendingVerification": 0,
+          "shots": 45,
+          "sentences": 259
+        },
+        "conclusion": "本轮全文盲审及历史核销完成，无新增、遗留或待查证项；与前轮全文盲审及核销绑定同一版本。仅限文本和拼音，不是音频验收，整体门禁由主代理汇总。"
+      }
+    }
+  ],
+  "consecutiveCleanReviews": 2,
+  "unresolved": [],
+  "finalStop": "silent stage only; no synthesis, listening, measured synchronization or media export"
 }

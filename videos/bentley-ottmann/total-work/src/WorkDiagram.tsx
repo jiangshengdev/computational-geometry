@@ -1,7 +1,4 @@
-import {
-  SvgMathText,
-  MathText,
-} from "../../../shared/ui/SemanticMathText";
+import { SvgMathText, MathText } from "../../../shared/ui/SemanticMathText";
 import { colors, inputColors } from "../../colors.ts";
 import { pages } from "./storyboard";
 import type { TimelineRow, VisualState } from "./timeline";
@@ -31,14 +28,6 @@ const centered = (
     {text}
   </SvgMathText>
 );
-const pairNames = [
-  "S_0,S_1",
-  "S_0,S_2",
-  "S_0,S_3",
-  "S_1,S_2",
-  "S_1,S_3",
-  "S_2,S_3",
-];
 const pairs = [
   [0, 1],
   [0, 2],
@@ -47,6 +36,7 @@ const pairs = [
   [1, 3],
   [2, 3],
 ];
+const pairNames = pairs.map(([a, b]) => `S_${a},S_${b}`);
 const inputs = [
   [-3, -3, 3, 3],
   [-3, 3, 3, -3],
@@ -130,13 +120,12 @@ function Multiway({ row, state }: { row: TimelineRow; state: VisualState }) {
         <>
           {label(525, 380, "报告前均保留")}
           {label(525, 430, row.page === "participants" ? "h_p=4" : "参与组：4")}
-          {row.id !== "TW13" && label(
-            525,
-            475,
-            row.id === "TW14"
-              ? `c_p=${reports}`
-              : `新输出：${reports}`,
-          )}
+          {row.id !== "TW13" &&
+            label(
+              525,
+              475,
+              row.id === "TW14" ? `c_p=${reports}` : `新输出：${reports}`,
+            )}
         </>
       )}
       {pairs.slice(0, reports).map((_, i) => (
@@ -459,6 +448,58 @@ function Overlap({ row, state }: { row: TimelineRow; state: VisualState }) {
   );
 }
 function Expansion({ row, state }: { row: TimelineRow; state: VisualState }) {
+  if (row.id === "TW26") {
+    const hasPoint = state.captionIndex < 1;
+    return (
+      <>
+        {label(20, 40, "单组：点输入决定是否展开")}
+        <rect
+          x={70}
+          y={95}
+          width={210}
+          height={270}
+          rx={12}
+          fill="#edf1f6"
+          stroke={inputColors[0]}
+        />
+        {centered(175, 140, "G_0", inputColors[0])}
+        {hasPoint ? (
+          <>
+            {[0, 1, 2].map((i) => (
+              <g key={i}>
+                <circle
+                  cx={175}
+                  cy={210 + i * 55}
+                  r={10}
+                  fill={inputColors[0]}
+                />
+                <line
+                  x1={185}
+                  x2={585}
+                  y1={210 + i * 55}
+                  y2={265}
+                  stroke={colors.amber}
+                  strokeWidth={2}
+                />
+              </g>
+            ))}
+            <circle cx={595} cy={265} r={10} fill={inputColors[1]} />
+            {centered(595, 210, "一份点输入", inputColors[1])}
+            {label(40, 425, "每份成员 → 一个新的点—段结果")}
+            {label(40, 490, "点输入至少一份，足够支付展开")}
+          </>
+        ) : (
+          <>
+            {centered(175, 240, "成员表保留")}
+            {centered(175, 295, "不展开")}
+            {label(420, 260, "没有点输入")}
+            {label(40, 425, "单组无点：不访问整个旧成员表")}
+            {label(40, 490, "零组：没有非零成员可展开")}
+          </>
+        )}
+      </>
+    );
+  }
   return (
     <>
       {label(20, 40, "一般关系：每份展开成员都有当场支付者")}

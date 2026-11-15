@@ -1,6 +1,69 @@
 {
-  "stage": "silent-review",
-  "status": "independent review passed V1–V7; final report consolidation pending",
-  "automatic": "941 production states PASS; affected-state recheck running",
-  "media": "No audio or media export"
+  "stage": "silent-production-page-review",
+  "reviewer": "tw_visual_alignment",
+  "status": "passed scoped independent visual review; no media acceptance claimed",
+  "hashes": {
+    "TeachingPage.tsx": "23494e1d612559ae5810526b904011fe79d0d9fcab8bd8eff0de6eb2c5f813ee",
+    "WorkDiagram.tsx": "8eae72ef4afcb1d779ebd71372b9f0fbb98b9f06550a3f59e1ab9176125f383a",
+    "timeline.ts": "4cb3ad21176ca53a1dc3f15d7057606306bbdadf8f2d7228370e4ec756cf479d",
+    "lesson.json": "f5f84e408107ef719ae24e45becf20bc5b0ca587d5239636eb2c2352be334cbb",
+    "narration-text.json": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
+    "case-evidence.json": "3804f943cc04fde3e1e7cf8c002b47d15a2b266eb16a32f945eebed8b751a865"
+  },
+  "report": "# 第十集独立画面/教学对齐\n\n范围：本轮未参与制作；只读检查 total-work 初版及作者局部修正。基线由制作方标为1f9eb74；实际被审源码哈希见 /tmp/tw-visual-version.json。未改源码、Git、工单、语音或媒体；未调用导出。\n\n## 实际观察\n\n使用已指定Chrome Headless Shell 158.0.8127.2，自有Playwright会话，访问作者40311 Studio。生产TeachingPage通过LayoutCheck auditShot/auditFrame定位。\n\n- 45镜TW01–45：逐一观察local0、50%动画进度及阅读结束状态。16页开头截图后缀start；29个同页后续镜头local0后缀seam；全45镜中态后缀mid；全45镜阅读结束后缀end。具体中态帧见/tmp/tw-visual-state-index.json；阅读结束帧见/tmp/tw-visual-shots.json。\n- 核对先前教学行留存、字幕同页续留/跨页清除、辅助依据静态、局部重点染色及撤去、数学表达式、图示身份色与标签。无图页正文居中，有图页左图右文。参照第九集TeachingPage实际调用及共享MathLessonPage/TeachingMathLines组合；没有另启旧集Studio作新的可见桌面验收。\n- multiway坐标与案例源相符，4条不同直线在原点共点，闭端点参与；六对身份逐个增加。完整位置账本7事件、组数1/1/1/4/1/1/1、累计H10、k6，与case-evidence及Geometry Lab presets一致。\n- overlap独立输入分行，x0输出完整长区间，x2增加两份短交集；x3只灰掉短成员，长成员及所有已报告完整结果保留，x6组空而结果不消失。新输出1/2/0/0。\n- E与H论证由案例切一般见证/组对计数，继而零/单组边界、求和与唯一性；成员费用、准备/局部维护/排序、邻接覆盖/重复尝试、输出清理及三种成本边界均有对应场景。末尾三栏逐列出现且保留普通必要工作边界。\n- TW18账本不提前展示H≤E+2k、TW24不提前展示成员展开界也已复查。\n\n## 真实1x无声播放抽查（独立于逐状态观察）\n\n通过Studio Play/Pause，播放率保持1x，无音频挂载或调用。观察并留浏览器截图采样：开场从0约18秒，TW14→TW15约04:18.30–04:31.34，TW21→TW22从06:46.40约15秒，最终TW33从10:48.30约22秒跨入TW34。最后一项覆盖TW33完整19秒阅读段、停顿和切入下一镜；两句字幕能在窗口内阅读，r≤h_p桥梁接到下一镜h_p+1，几何及已讲内容保留。\n\n证据为/tmp/tw-visual-play-opening-*、play-pairs-*、play-overlap-*、play-final33-*。这是实际1x播放器运行中的采样观察，不是全片连续播放或逐帧视觉验收。无头预览实测显示帧率约19–49fps，不能声称稳定60fps或可见桌面验收。无声阅读窗口判断不代表未来正式配音语速/同步通过。\n\n## 发现与核销\n\nV1：Multiway x轴正端无箭头；作者拆轴后已在起始、中态、末态与1x开场核销。\nV2：TW13提前显示未定义且错误的c_p=0；现只显h_p=4，TW14定义时显示c_p=6及六对。fixed截图核销。TW06列头提前用h_p也改中文参与组。\nV3：TW25/26示意右下成员无配对边；改为两端每成员都有见证边，fixed及mid截图核销。\nV4：TW41字幕“不能划到教学成本之外”与口播相反；现“不能划入教学额外成本”，fixed截图核销。\nV5：三栏第一栏重复总界窄处折行；作者移除重复式，上方完整已讲总界保留，TW41/43 fixed核销。此原为非阻断排版观察。\nV6：TW21图在第一字幕x0时提前到x2；现local569仍x0+1结果，570同步第二字幕变x2+3累计结果，1110终态留存。recheck-TW21-*核销。\nV7：TW33在辅助依据首次引入r≤h_p且口播缺少r到h_p桥梁；作者把关系移到主图，补字幕/口播。首次布局修复引发关系与说明行重叠，已再次排版。最终TW33 local0/555/1170、TW34 local0/480、TW35 local0/840全部观察并核销；完整TW33 1x抽查亦核销。final-TW33/34/35-*与play-final33-*为最终证据。\n\n当前独立检查范围内无未解决阻断。\n\n## 教学复用核对与限制\n\n通读本集lesson、独立口播及中文版total-work正文；读case-evidence与真实案例presets。直接对照旧口播OC22–29/35/48–50/55、OR09–19/27/38–40、D23–39：本集承接报告、唯一性和无序对上界，新增累计账本及费用支付，没有重证旧唯一性或旧无序对计数。该结论限定相关段落，不冒称全部前集全文已审。\n\n本文不替代制作方全量layout、文本独立审校或后续正式语音/同步/作者成片验收。未实听、未合成、未导出。\n\n最初CLI会话从仓库cwd启动，工具自动写了根.playwright-cli诊断日志/快照；发现后已关闭，后续会话从/tmp启动。已告知制作方按既有清理授权处理，不能盲删可能含其他会话的目录。所有指定审查证据/报告位于/tmp/tw-visual-*。作者Studio保持运行。\n\n## V8 后续针对性复查：TW26单组分支（续查，非新独立审查）\n\n随后规格检查指出TW26仍显示跨组图，不能表达单组有点/无点分支。此前本检查者虽然观察了TW26画面，却在V3修复时只核对了配对边覆盖，未识别场景分支不符。因此此前“无剩余阻断”不应被用来否认这一实际漏识别；原证据保留。\n\n制作方新增专用TW26图，本检查者只读复查以下实际生产状态：TW25 local1199；TW26 local0、30、569、570、1110、1229；TW27 local0、30。证据/tmp/tw-visual-v8-TWxx-frame.png与v8-sheet.png。\n\n第一字幕阶段明确一组G0内三份成员，各向唯一点输入连接一条点—段见证，已无第二组；local569仍该状态。local570与第二字幕同步切为无点：点及三条见证消失，组容器保留“成员表保留/不展开”，另明示零组没有非零成员可展开。1110及1229末态保留到切页。TW25旧多组结论留作同页历史正文，TW27正常换页，不误把单组重新画成跨组。实际标签/公式/字幕无重叠。\n\n另实际1x播放从08:09.30开始约22秒，覆盖TW25尾部、TW26全镜和TW27开头，六个时间采样画面为/tmp/tw-visual-v8-play-0.png至5.png。观察到两分支随字幕切换、重点撤去、页末保留及进入TW27，未发现回退或二次展开。该抽查不等于逐帧观看或全片连续播放，无声音验收。\n\nV8在该修正版核销；受影响范围无剩余阻断。当前受审哈希见/tmp/tw-visual-version-v8.json，初轮哈希保留在version.json。未因本次局部修复重跑未受影响全片。自有复查浏览器已关闭，作者Studio仍保留。\n",
+  "automaticLayout": {
+    "fullProductionStates": 941,
+    "result": "PASS",
+    "affectedFinalStates": 355,
+    "affectedShots": [
+      "TW01",
+      "TW02",
+      "TW03",
+      "TW06",
+      "TW13",
+      "TW14",
+      "TW18",
+      "TW21",
+      "TW24",
+      "TW25",
+      "TW26",
+      "TW33",
+      "TW34",
+      "TW35",
+      "TW41",
+      "TW42",
+      "TW43"
+    ],
+    "finalResult": "PASS",
+    "TW26finalStates": 21
+  },
+  "evidenceNote": "Browser captures are temporary observations, not exported stills; exact states and findings below allow preview reproduction. No full continuous playback or visible desktop acceptance.",
+  "finalDiagramReviewHashes": {
+    "TeachingPage.tsx": "23494e1d612559ae5810526b904011fe79d0d9fcab8bd8eff0de6eb2c5f813ee",
+    "WorkDiagram.tsx": "4425b8754203757be758cd45b4369888e40f13fb8a9eeae3a008d8ff58eadf7b",
+    "timeline.ts": "4cb3ad21176ca53a1dc3f15d7057606306bbdadf8f2d7228370e4ec756cf479d",
+    "lesson.json": "f5f84e408107ef719ae24e45becf20bc5b0ca587d5239636eb2c2352be334cbb",
+    "narration-text.json": "664b09f5f56164b78d59be49179853baac4cacbe5c1eb387038b8ad33c47feff",
+    "case-evidence.json": "3804f943cc04fde3e1e7cf8c002b47d15a2b266eb16a32f945eebed8b751a865"
+  },
+  "versionNotes": "case-evidence metadata corrected after visual review: locked rebuild was not verified because cargo was unavailable; event/input/result data and visuals unchanged.",
+  "codeReview": {
+    "baseline": "1f9eb746af7fbf41ecfb47a769d65ab768389244",
+    "initialCommit": "517addb",
+    "Standards": {
+      "reviewer": "tw_review_standards",
+      "hardFindings": 0,
+      "heuristics": 1,
+      "finding": "pairNames/pairs parallel identity source",
+      "resolution": "Labels now derived from pairs; exact six pairs unchanged"
+    },
+    "Spec": {
+      "reviewer": "tw_review_spec",
+      "findings": 1,
+      "finding": "TW26 reused multi-group witnesses in single-group explanation",
+      "resolution": "Dedicated point-segment / no-point collapsed-member states; source rereview passed and independent V8 visual/playback rereview passed"
+    },
+    "remaining": [],
+    "caseBuildLimit": "Spec rereview accepted real existing-binary HTTP trace with source/input checks; successful locked rebuild is not claimed."
+  }
 }
