@@ -44,8 +44,7 @@ const inputs = [
   [0, 0, 2, 1],
 ];
 function Multiway({ row, state }: { row: TimelineRow; state: VisualState }) {
-  const count =
-    row.id === "TW01" ? Math.min(4, 1 + Math.floor(state.progress * 4)) : 4;
+  const count = 4;
   const reports =
     row.id === "TW03"
       ? Math.min(6, Math.floor(state.progress * 7))
@@ -54,8 +53,7 @@ function Multiway({ row, state }: { row: TimelineRow; state: VisualState }) {
         : 0;
   const x = (v: number) => 260 + 58 * v,
     y = (v: number) => 250 - 58 * v;
-  const selected =
-    row.id === "TW01" ? Math.min(3, Math.floor(state.progress * 4)) : undefined;
+  const selected = row.id === "TW01" ? state.inputSelected : undefined;
   return (
     <>
       {label(18, 30, "原点的一次事件（真实案例）")}
@@ -94,7 +92,7 @@ function Multiway({ row, state }: { row: TimelineRow; state: VisualState }) {
           />
           <circle cx={x(a)} cy={y(b)} r={4} fill={inputColors[i]} />
           <circle cx={x(c)} cy={y(d)} r={4} fill={inputColors[i]} />
-          {selected === i && state.active ? (
+          {(selected === i || (selected === 1 && i === 0)) && state.active ? (
             <line
               x1={x(a)}
               y1={y(b)}
@@ -105,7 +103,7 @@ function Multiway({ row, state }: { row: TimelineRow; state: VisualState }) {
               opacity={0.28}
               pathLength={1}
               strokeDasharray={1}
-              strokeDashoffset={1 - Math.min(1, (state.progress * 4 - i) * 2)}
+              strokeDashoffset={0}
             />
           ) : null}
           {label(
@@ -152,8 +150,7 @@ function Multiway({ row, state }: { row: TimelineRow; state: VisualState }) {
 }
 function Ledger({ row, state }: { row: TimelineRow; state: VisualState }) {
   const events = trace.multiway.events;
-  const revealed =
-    row.id === "TW06" ? Math.min(7, 1 + Math.floor(state.progress * 7)) : 7;
+  const revealed = state.ledgerCount;
   if (row.page === "quantities" && row.step < 3)
     return (
       <>
@@ -336,7 +333,7 @@ function Overlap({ row, state }: { row: TimelineRow; state: VisualState }) {
     row.id === "TW20"
       ? -1
       : row.id === "TW21"
-        ? state.captionIndex < 1
+        ? state.captionSource < 1
           ? 0
           : 1
         : row.id === "TW22"
@@ -357,10 +354,10 @@ function Overlap({ row, state }: { row: TimelineRow; state: VisualState }) {
         : event === 1
           ? [0, 1, 2]
           : event === 2
-            ? state.progress < 0.3
+            ? !state.membersRemoved
               ? [0, 1, 2]
               : [0, 1]
-            : state.progress < 0.4
+            : !state.membersRemoved
               ? [0, 1]
               : [];
   return (
@@ -449,7 +446,7 @@ function Overlap({ row, state }: { row: TimelineRow; state: VisualState }) {
 }
 function Expansion({ row, state }: { row: TimelineRow; state: VisualState }) {
   if (row.id === "TW26") {
-    const hasPoint = state.captionIndex < 1;
+    const hasPoint = state.captionSource < 1;
     return (
       <>
         {label(20, 40, "单组：点输入决定是否展开")}
@@ -596,8 +593,7 @@ function Budget({ row, state }: { row: TimelineRow; state: VisualState }) {
 }
 function Neighbors({ row, state }: { row: TimelineRow; state: VisualState }) {
   const xs = [70, 230, 390, 550, 710];
-  const count =
-    row.id === "TW33" ? Math.min(4, 1 + Math.floor(state.progress * 4)) : 4;
+  const count = state.neighborCount;
   return (
     <>
       {label(25, 35, "当前新块与两侧边界（非执行轨迹）")}
@@ -620,10 +616,10 @@ function Neighbors({ row, state }: { row: TimelineRow; state: VisualState }) {
           )}
         </g>
       ))}
-      {xs.slice(0, count).map((x, i) => (
+      {[1, 2, 0, 3].slice(0, count).map((i) => (
         <path
           key={i}
-          d={`M${x} 200 Q${x + 80} 60 ${xs[i + 1]} 200`}
+          d={`M${xs[i]} 200 Q${xs[i] + 80} 60 ${xs[i + 1]} 200`}
           stroke={colors.amber}
           fill="none"
           strokeWidth={3}

@@ -1,0 +1,41 @@
+{
+  "stage": "measured-narration-synchronization",
+  "baseline": "200c28fb7b1183018f48b1746719fcaccde60e3b",
+  "hashes": {
+    "timeline.ts": "7614b080dd6e930c12f6ecc8047f74c30ca04fe348c929bc66ca6c94c841bde0",
+    "Composition.tsx": "df5b8e4b652faa4505d318b611e7d03efc2f8c3d7a3ce580a4cdbb45334eea0d",
+    "WorkDiagram.tsx": "e75d70f71b5be8d9065a8a6c95aebc0208aa525ad5db82c0cbb4dae1934e1489",
+    "lesson.json": "867ba2658db07c0b7d33321f533ed759e75ed96499ea509f552687f78399610f",
+    "narration-text.json": "e2d2a5e121b17a3f79516cf372b9129dd1ab5f0b949f86690305fbd1c2686869",
+    "speech-text.json": "1269bc613de15307ed422b95ac7a824811f3c6866665228a23e4a613bd41d843",
+    "sentence-plan.json": "915a321c5371defbeb132de9b5a8e950771fb64d2a60fc7e53f4d12ee56cfa72",
+    "audio-timing.json": "22c5f28d3475f7a6c5faa55fd928f1e4f6d53d42dfaa69bab7e0442956a7e632",
+    "captions.json": "94f6ccea37f3bd1fc5f20dc16936e247aabfeb642ddeb7cd7a299c013ae8b6e8"
+  },
+  "audio": {
+    "clips": 45,
+    "seconds": 688.6725,
+    "counts": {
+      "Omission": 0,
+      "Insertion": 0,
+      "Mispronunciation": 43
+    },
+    "actualListeningPerformed": false
+  },
+  "timeline": {
+    "frames": 45479,
+    "fps": 60,
+    "pageHolds": 16,
+    "minimumHoldSeconds": 2
+  },
+  "checks": {
+    "contentAndCompleteDecode": "passed",
+    "sentencePauses": "45 shots, 261 boundaries passed",
+    "existingTimingAndSourceTests": "17 passed",
+    "TW06SubtitleOverflow": "fixed via measured caption subdivisions; 30 production layout states passed"
+  },
+  "independentVisual": "in progress; not an acceptance declaration",
+  "fullContinuousPlayback": false,
+  "actualFilmExport": false,
+  "issueStatesChanged": false
+}

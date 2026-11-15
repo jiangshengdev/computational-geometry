@@ -1,7 +1,7 @@
 {
   "name": "total-work",
   "version": "1.0.0",
-  "description": "第十集：总工作量为什么受控（无声验收阶段）",
+  "description": "第十集：总工作量为什么受控（实测原速配音）",
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
@@ -35,7 +35,9 @@
     "narration:plan": "node scripts/plan-narration.ts",
     "narration:synthesize": "node scripts/synthesize-narration.ts",
     "narration:assess": "node scripts/assess-narration.ts",
-    "narration:check-staged": "node scripts/check-staged-audio.ts"
+    "narration:check-staged": "node scripts/check-staged-audio.ts",
+    "narration:check": "node scripts/check-audio.ts",
+    "narration:captions": "node scripts/write-captions.ts"
   },
   "type": "module"
 }

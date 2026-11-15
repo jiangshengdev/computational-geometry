@@ -1,0 +1,738 @@
+{
+  "authorization": {
+    "thread": "1794658713.127639",
+    "message": "1794729559.073149",
+    "text": "进行接入",
+    "scope": "Adopt selected four wording-v1 clips and 41 original clips; measured synchronization only; no synthesis, export, publication or issue changes."
+  },
+  "baseline": "200c28fb7b1183018f48b1746719fcaccde60e3b",
+  "actualListeningPerformed": false,
+  "notGeneralListeningWaiver": true,
+  "counts": {
+    "Omission": 0,
+    "Insertion": 0,
+    "Mispronunciation": 43
+  },
+  "clips": [
+    {
+      "id": "TW01",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "29e3cd75e29a17bc7d548ce1af32ce51ddd98ef320c22ec8cabf603571df6f91",
+      "duration": 10.8,
+      "fingerprint": "b5979dbb1698e800a86a6bbbf89f6bcccf946c4458458c9c4287417f51eae9d0",
+      "request": {
+        "id": "TW01",
+        "fingerprint": "b5979dbb1698e800a86a6bbbf89f6bcccf946c4458458c9c4287417f51eae9d0",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.726Z",
+        "endedAt": "2026-11-15T07:27:45.321Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW02",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "eb75fd66656941c8e96341f17aacb7c6ecb93a1d0e02bcb1f2efd2a178c7f814",
+      "duration": 11.6,
+      "fingerprint": "2a1ace50973a5f49afb048a6f795f0d5b578a25114f02b372c95f37157b47038",
+      "request": {
+        "id": "TW02",
+        "fingerprint": "2a1ace50973a5f49afb048a6f795f0d5b578a25114f02b372c95f37157b47038",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.731Z",
+        "endedAt": "2026-11-15T07:27:38.254Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW03",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "2da51dc3245c3893f2e06853f08646ef6ec698e30a4d312e562b7aebbbfa9c6f",
+      "duration": 14.44,
+      "fingerprint": "4120153de8ed05c93eef815f07830355b3bdfaafbf918972e004dc88dca07fe1",
+      "request": {
+        "id": "TW03",
+        "fingerprint": "4120153de8ed05c93eef815f07830355b3bdfaafbf918972e004dc88dca07fe1",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.731Z",
+        "endedAt": "2026-11-15T07:27:44.675Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW04",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "fdd1a47393b4b9f8cf3935136b9e1f88d717dd7562b3bd55040a7f8311f990a4",
+      "duration": 13.05,
+      "fingerprint": "ce8a7ebbcde60979ca756a380aedadd4dc725782bacd858c92ff0ffd466e9a6e",
+      "request": {
+        "id": "TW04",
+        "fingerprint": "ce8a7ebbcde60979ca756a380aedadd4dc725782bacd858c92ff0ffd466e9a6e",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.732Z",
+        "endedAt": "2026-11-15T07:27:42.305Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW05",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "866ac772fa43ea1fd151e707cb73225a1cea07389ae3211af62f285cc5bf259e",
+      "duration": 11.53,
+      "fingerprint": "22010cfe00b92144487808ffd385dd67f03abf4b82bcd2a3c00abaa161e11ae9",
+      "request": {
+        "id": "TW05",
+        "fingerprint": "22010cfe00b92144487808ffd385dd67f03abf4b82bcd2a3c00abaa161e11ae9",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.733Z",
+        "endedAt": "2026-11-15T07:27:38.724Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW06",
+      "sourceCommit": "200c28fb7b1183018f48b1746719fcaccde60e3b",
+      "version": "wording-v1",
+      "audioSha256": "492f1eed2d62473816b296b0142733c8bd832f20f2e0c0c076ebff0d58f45d76",
+      "duration": 19.81,
+      "fingerprint": "f81421cdf05ab66dd66b5f4a897d79936d2920c4b5101cf4090573a5cadc561b",
+      "request": {
+        "id": "TW06",
+        "fingerprint": "f81421cdf05ab66dd66b5f4a897d79936d2920c4b5101cf4090573a5cadc561b",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:49:22.014Z",
+        "endedAt": "2026-11-15T07:49:27.057Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW07",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "6bc7fd8022c96d88936e0f01a646537b6b02cd68d165358bcaa074248c5ad943",
+      "duration": 14.68,
+      "fingerprint": "4848cd2448f3da9238aa6e441686607216a806d80817bd075e66274c671e470e",
+      "request": {
+        "id": "TW07",
+        "fingerprint": "4848cd2448f3da9238aa6e441686607216a806d80817bd075e66274c671e470e",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.734Z",
+        "endedAt": "2026-11-15T07:27:39.769Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW08",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "6ad8b32b871b47037496d06df67b1ca5ef137876dbfe1c94942e0fe5fd00cc5a",
+      "duration": 11.83,
+      "fingerprint": "90a4fc1b0b269e9993f96ebc0374eeeade256f8201b8f113c2314c2152b980b6",
+      "request": {
+        "id": "TW08",
+        "fingerprint": "90a4fc1b0b269e9993f96ebc0374eeeade256f8201b8f113c2314c2152b980b6",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.734Z",
+        "endedAt": "2026-11-15T07:27:37.869Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW09",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "f7a83d2121b803a304a7aa1c42ac18a9b6933b7981e0321a32251456eba4e69d",
+      "duration": 11.63,
+      "fingerprint": "511a52871ef074b7d6ec53e86227a5293bb6b64138e681bc3c475039ccbe5fb6",
+      "request": {
+        "id": "TW09",
+        "fingerprint": "511a52871ef074b7d6ec53e86227a5293bb6b64138e681bc3c475039ccbe5fb6",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.735Z",
+        "endedAt": "2026-11-15T07:27:40.961Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW10",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "ba78fc0727c63b7c040b1169ce554be6542e6f12d57a37c67b02e4a0ed5090f0",
+      "duration": 11.58,
+      "fingerprint": "95f77dee22aaeaef8f3407a71e85942a14984d4f69a930cb2bf81c02869df6c0",
+      "request": {
+        "id": "TW10",
+        "fingerprint": "95f77dee22aaeaef8f3407a71e85942a14984d4f69a930cb2bf81c02869df6c0",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.735Z",
+        "endedAt": "2026-11-15T07:27:37.454Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW11",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "f622a8b6e37a3d7477fb2d29adf6d21ef6093141d0f08325627216b7174b8578",
+      "duration": 13.53,
+      "fingerprint": "661ca3d4ee884e6717b81ef0421fa3470a80d081b81ddf829b40a0aeb409e925",
+      "request": {
+        "id": "TW11",
+        "fingerprint": "661ca3d4ee884e6717b81ef0421fa3470a80d081b81ddf829b40a0aeb409e925",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.736Z",
+        "endedAt": "2026-11-15T07:27:39.070Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW12",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "1d87d04c402b0f00b05434ad55bdf1291a8a032bcc213b49c03a602abc1ff3aa",
+      "duration": 13.8575,
+      "fingerprint": "7528415ba98463b8772990117b8c2eb87540d7f96737a45cb67754903ef43a1b",
+      "request": {
+        "id": "TW12",
+        "fingerprint": "7528415ba98463b8772990117b8c2eb87540d7f96737a45cb67754903ef43a1b",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.737Z",
+        "endedAt": "2026-11-15T07:27:44.311Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW13",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "8d7b698c4635055f429ae23129f9adb604449e37bde082e98f1b6c0a5571e1c1",
+      "duration": 17.17,
+      "fingerprint": "2faf824711c944c7e128891f69de4dd8e9aa92915edeb90f5fd646c2ecbb3836",
+      "request": {
+        "id": "TW13",
+        "fingerprint": "2faf824711c944c7e128891f69de4dd8e9aa92915edeb90f5fd646c2ecbb3836",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.737Z",
+        "endedAt": "2026-11-15T07:27:40.611Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW14",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "ef741bd6ebb2795b049c77a5c7519b40b6975703ffe0aa4bd14cceb9b099c3a5",
+      "duration": 13.55,
+      "fingerprint": "f780361c78cc45ffe3e4ba63337e4d66da59300bb6a1c717cd4efec38076d7fe",
+      "request": {
+        "id": "TW14",
+        "fingerprint": "f780361c78cc45ffe3e4ba63337e4d66da59300bb6a1c717cd4efec38076d7fe",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.738Z",
+        "endedAt": "2026-11-15T07:27:39.424Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW15",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "9dcaeb29d4c920788ad00db5530222df0fc3f266d8f26013250279d92c416dc2",
+      "duration": 18.31,
+      "fingerprint": "12367c620e37b9013136eed197a7cffc3ea33209172b8ec85e8929590b40ccdd",
+      "request": {
+        "id": "TW15",
+        "fingerprint": "12367c620e37b9013136eed197a7cffc3ea33209172b8ec85e8929590b40ccdd",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.738Z",
+        "endedAt": "2026-11-15T07:27:41.270Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW16",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "9c4a76dbdfcb471476709499395150c35c0fb56918a874b26a2373ef3715b276",
+      "duration": 15.42,
+      "fingerprint": "a3df06dffdefaab21f1f896c0b003b51d57639371dbd2aea1470a19a80910042",
+      "request": {
+        "id": "TW16",
+        "fingerprint": "a3df06dffdefaab21f1f896c0b003b51d57639371dbd2aea1470a19a80910042",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.739Z",
+        "endedAt": "2026-11-15T07:27:43.972Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW17",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "164b41f8c15167605d49fac3e25588f462d9043d26d320dcee2aae996cc52869",
+      "duration": 11.65,
+      "fingerprint": "9db033d4ffb115aad5d39606bf70bd98ab3bc0fd9addd7c14a919655209179ec",
+      "request": {
+        "id": "TW17",
+        "fingerprint": "9db033d4ffb115aad5d39606bf70bd98ab3bc0fd9addd7c14a919655209179ec",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.740Z",
+        "endedAt": "2026-11-15T07:27:42.985Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW18",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "e79bb9fd69d375db3c2d31870b3c192ebaf93ac7ee0df3dca279bf5301e5ffb2",
+      "duration": 16.39,
+      "fingerprint": "1478dd1febd50d0b5731b04282657e1d613370ae5302679e25fc86c2c292e426",
+      "request": {
+        "id": "TW18",
+        "fingerprint": "1478dd1febd50d0b5731b04282657e1d613370ae5302679e25fc86c2c292e426",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.740Z",
+        "endedAt": "2026-11-15T07:27:45.650Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW19",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "54f82a8871a1282ea7b4eaabcb20598dc488d36b00de8f39f377a21f5fcd4762",
+      "duration": 20.29,
+      "fingerprint": "bfa59eb50d1711173532073c25f011a6096409574966973cfd24774b7c50952d",
+      "request": {
+        "id": "TW19",
+        "fingerprint": "bfa59eb50d1711173532073c25f011a6096409574966973cfd24774b7c50952d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.741Z",
+        "endedAt": "2026-11-15T07:27:44.999Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW20",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "4a893300f88647c15721eaa522eca010e6a8b2e73ddbe632a0b263b1afafc542",
+      "duration": 14.92,
+      "fingerprint": "d7b04c562d8a9e23e1b4f3fbe5eaafa19924a2d3f278fdd2968a772bc3fe4478",
+      "request": {
+        "id": "TW20",
+        "fingerprint": "d7b04c562d8a9e23e1b4f3fbe5eaafa19924a2d3f278fdd2968a772bc3fe4478",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:27:31.741Z",
+        "endedAt": "2026-11-15T07:27:41.607Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW21",
+      "sourceCommit": "200c28fb7b1183018f48b1746719fcaccde60e3b",
+      "version": "wording-v1",
+      "audioSha256": "25dd3470f05703371b0e2288d6934d943012f78a012ffd48b490bff3e488950d",
+      "duration": 16.85,
+      "fingerprint": "86ed9ad6d85be0326f9c8635e37f38356181a5b179b7dbbf704fda06cd97582a",
+      "request": {
+        "id": "TW21",
+        "fingerprint": "86ed9ad6d85be0326f9c8635e37f38356181a5b179b7dbbf704fda06cd97582a",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:49:22.021Z",
+        "endedAt": "2026-11-15T07:49:27.408Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW22",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "b3e3138243cd7daf37465980d0d1447edec03b88382863cddb41df45830b9a93",
+      "duration": 17.04,
+      "fingerprint": "6d7565a2a6538edc4c5e214cd11723272c3a184a1c8d42ace3fcbef021846889",
+      "request": {
+        "id": "TW22",
+        "fingerprint": "6d7565a2a6538edc4c5e214cd11723272c3a184a1c8d42ace3fcbef021846889",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.795Z",
+        "endedAt": "2026-11-15T07:28:46.819Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW23",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "4b641c04b7e48a6f6134dad79470ad2e28ecb82f4b2484d1cc25c6bcb413e4c2",
+      "duration": 14.99,
+      "fingerprint": "84220fe8b4b48b5b37553e0751560880dbef3854959152cecd03deabbcdbc99f",
+      "request": {
+        "id": "TW23",
+        "fingerprint": "84220fe8b4b48b5b37553e0751560880dbef3854959152cecd03deabbcdbc99f",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.796Z",
+        "endedAt": "2026-11-15T07:28:47.494Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW24",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "3af783c1104630faf8541d65856785d601f3af4dd56654ad1e754592fc60f6c0",
+      "duration": 14.75,
+      "fingerprint": "70432acc6e042a609a818357f341926a3b4ee2ba917e5fd9013b2d07653bc170",
+      "request": {
+        "id": "TW24",
+        "fingerprint": "70432acc6e042a609a818357f341926a3b4ee2ba917e5fd9013b2d07653bc170",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.797Z",
+        "endedAt": "2026-11-15T07:28:38.622Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW25",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "a7126ef695c6f33df849a390334d1c1a8140daf5ec2cb158726a2032bf084bb0",
+      "duration": 15.77,
+      "fingerprint": "653cbe1509d8976dd9c3a296389f05d0c3d3168ae0dc11aca24337068edf95d1",
+      "request": {
+        "id": "TW25",
+        "fingerprint": "653cbe1509d8976dd9c3a296389f05d0c3d3168ae0dc11aca24337068edf95d1",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.797Z",
+        "endedAt": "2026-11-15T07:28:44.054Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW26",
+      "sourceCommit": "200c28fb7b1183018f48b1746719fcaccde60e3b",
+      "version": "wording-v1",
+      "audioSha256": "73328b9cf9ec0f3b439cc2831fe43497fef98f8e336ffb02fb7cb48d90773797",
+      "duration": 15.79,
+      "fingerprint": "8c5dada5c79d846dca658e3c6e4b067a5ac428686e08825e2d9070d1c5c34fcf",
+      "request": {
+        "id": "TW26",
+        "fingerprint": "8c5dada5c79d846dca658e3c6e4b067a5ac428686e08825e2d9070d1c5c34fcf",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:49:22.022Z",
+        "endedAt": "2026-11-15T07:49:26.699Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW27",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "07a15bc3d86cfa9e9ea8c982736d0e0f86477396c6526f0b52952c81c417a6ae",
+      "duration": 15.12,
+      "fingerprint": "105f8a3354cca129b6f5297d99f301441112413c5334af8d5d58eafb563a3d09",
+      "request": {
+        "id": "TW27",
+        "fingerprint": "105f8a3354cca129b6f5297d99f301441112413c5334af8d5d58eafb563a3d09",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.799Z",
+        "endedAt": "2026-11-15T07:28:44.393Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW28",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "82afa236242d33fc14624153cdcd5138a6dde85e98147b46ff14590ec64d3da5",
+      "duration": 15.27,
+      "fingerprint": "ba240b745efea6412520d725cc1afe97ea639824342f4c809004900e17abecfb",
+      "request": {
+        "id": "TW28",
+        "fingerprint": "ba240b745efea6412520d725cc1afe97ea639824342f4c809004900e17abecfb",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.799Z",
+        "endedAt": "2026-11-15T07:28:41.429Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW29",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "cfbb2645b0a44534def742164e1dc112694d12557fb1eebbc3319ff06609bd36",
+      "duration": 21.19,
+      "fingerprint": "94bb22b1a0540a436cf16f58c9666286e0b56e45c0cda06f2b9095360d8809c9",
+      "request": {
+        "id": "TW29",
+        "fingerprint": "94bb22b1a0540a436cf16f58c9666286e0b56e45c0cda06f2b9095360d8809c9",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.800Z",
+        "endedAt": "2026-11-15T07:28:47.852Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW30",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "91c5550a555529e31e3de640545a30eff06045e7dbb7a47f3bb122ac94d0e3b3",
+      "duration": 18.87,
+      "fingerprint": "7195605627686428213e2ee9619abe62e66f917180dad08bde12f2a8aa58f46d",
+      "request": {
+        "id": "TW30",
+        "fingerprint": "7195605627686428213e2ee9619abe62e66f917180dad08bde12f2a8aa58f46d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.801Z",
+        "endedAt": "2026-11-15T07:28:41.794Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW31",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "f86b9b8119587d298d75adae52cda80275770e30096df626f9410cf34a7578ea",
+      "duration": 19.44,
+      "fingerprint": "6a230747a29c61ba46d96b3fd4314a7932375ab8c1ef4d03187b36d0a6cf2706",
+      "request": {
+        "id": "TW31",
+        "fingerprint": "6a230747a29c61ba46d96b3fd4314a7932375ab8c1ef4d03187b36d0a6cf2706",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.802Z",
+        "endedAt": "2026-11-15T07:28:42.125Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW32",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "0d87b50e48a9cb956b46cf71f2eabac1d6200786be3442c1275f7d8d57c8492a",
+      "duration": 18.99,
+      "fingerprint": "5e6dbf8ad2ef22c395baaaa7ae0db326ea4166d72311a1aa69c387189cabb2c9",
+      "request": {
+        "id": "TW32",
+        "fingerprint": "5e6dbf8ad2ef22c395baaaa7ae0db326ea4166d72311a1aa69c387189cabb2c9",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.802Z",
+        "endedAt": "2026-11-15T07:28:45.049Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW33",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "9dc0a8375117d253393f32b57bd34bc3b77c804b4ec55e00e4ca39b35d8eaa96",
+      "duration": 21.93,
+      "fingerprint": "d6acebf779d0b3306c2bc6ced3e6335cb10d11004a6223054a78ca70a740653a",
+      "request": {
+        "id": "TW33",
+        "fingerprint": "d6acebf779d0b3306c2bc6ced3e6335cb10d11004a6223054a78ca70a740653a",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.803Z",
+        "endedAt": "2026-11-15T07:28:47.132Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW34",
+      "sourceCommit": "200c28fb7b1183018f48b1746719fcaccde60e3b",
+      "version": "wording-v1",
+      "audioSha256": "35ee132e073633f095e4efe2f85993602eb922527c3d258c837a01222ad7a491",
+      "duration": 13.33,
+      "fingerprint": "d07eafc80b52b21871e5661170a9ee5b8fffa466b132f522f69afb4c329a37a2",
+      "request": {
+        "id": "TW34",
+        "fingerprint": "d07eafc80b52b21871e5661170a9ee5b8fffa466b132f522f69afb4c329a37a2",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:49:22.022Z",
+        "endedAt": "2026-11-15T07:49:26.343Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW35",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "996bc2700447aa57e57c39a469aa586592f0c11d8b732d8d1214a0273a88a1a4",
+      "duration": 12.4,
+      "fingerprint": "f68159ae87b00d9b4fc711a877303d0b6f3dc1571828aa6c34ee9144117a16fc",
+      "request": {
+        "id": "TW35",
+        "fingerprint": "f68159ae87b00d9b4fc711a877303d0b6f3dc1571828aa6c34ee9144117a16fc",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.805Z",
+        "endedAt": "2026-11-15T07:28:43.413Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW36",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "c6b8c4d159b2f1e49801703825de15cbf7c61f8d9a15e0c35187993a836c7169",
+      "duration": 13.7175,
+      "fingerprint": "151d424bd88545e7328a8e9520bedb64d42149068e721dd214261fa777e7266e",
+      "request": {
+        "id": "TW36",
+        "fingerprint": "151d424bd88545e7328a8e9520bedb64d42149068e721dd214261fa777e7266e",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.805Z",
+        "endedAt": "2026-11-15T07:28:39.378Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW37",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "93a09152cd2622f0e891416ce4370527b866a66c164b825872bb457ad488a502",
+      "duration": 15.15,
+      "fingerprint": "bcd3a52d537e6314eb74c0c60d3a3e4e215001c1c0c7ba10cdc237ba48981e1b",
+      "request": {
+        "id": "TW37",
+        "fingerprint": "bcd3a52d537e6314eb74c0c60d3a3e4e215001c1c0c7ba10cdc237ba48981e1b",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.806Z",
+        "endedAt": "2026-11-15T07:28:38.995Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW38",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "a02a81eb6cac66db515b4f9356753282ade9a87ede7eff395f5a869b531bb765",
+      "duration": 17.17,
+      "fingerprint": "8bd095fd8403aaebed882136806201b1d959d852aed3caa3aad93a9f81354172",
+      "request": {
+        "id": "TW38",
+        "fingerprint": "8bd095fd8403aaebed882136806201b1d959d852aed3caa3aad93a9f81354172",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.809Z",
+        "endedAt": "2026-11-15T07:28:41.090Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW39",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "0b49f8a4abd6fc2274c717e4b63b38b03d6ef3b823012c047b4b5e8b3d344aca",
+      "duration": 15.8875,
+      "fingerprint": "6215000371795f65d05e80e8a68f78f639da7faa4cf559ca0e4a5ebc8a1fc7f6",
+      "request": {
+        "id": "TW39",
+        "fingerprint": "6215000371795f65d05e80e8a68f78f639da7faa4cf559ca0e4a5ebc8a1fc7f6",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.810Z",
+        "endedAt": "2026-11-15T07:28:45.706Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW40",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "e0f8697141979b9d6f67b3f11d2cafdeb411b6ddc36f97aa79b7f50977263b74",
+      "duration": 17.81,
+      "fingerprint": "7072545bae0c4a2de89ae1806ed8277bc9fb5a71fcc9c09adf8603019c73a577",
+      "request": {
+        "id": "TW40",
+        "fingerprint": "7072545bae0c4a2de89ae1806ed8277bc9fb5a71fcc9c09adf8603019c73a577",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:28:31.810Z",
+        "endedAt": "2026-11-15T07:28:44.723Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW41",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "16b04d8b338e7b67ffbf0cbc6bacfb7cd8520dc45a487cacbd7b5e5e7af0f2b7",
+      "duration": 13.25,
+      "fingerprint": "e3e185b21802e73e08fc76738630dec40c6bf186f83ede5b49b843bc00ea1e25",
+      "request": {
+        "id": "TW41",
+        "fingerprint": "e3e185b21802e73e08fc76738630dec40c6bf186f83ede5b49b843bc00ea1e25",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:29:31.802Z",
+        "endedAt": "2026-11-15T07:29:36.613Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW42",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "cb11e9c92e550362bda2dac191b9e7e92b32032d78457bba69882d86a08828ce",
+      "duration": 17.07,
+      "fingerprint": "07d511ba4af72a9df313fe00fc17c50fd7f1952dc055f1c4e12c38f58acbf8c2",
+      "request": {
+        "id": "TW42",
+        "fingerprint": "07d511ba4af72a9df313fe00fc17c50fd7f1952dc055f1c4e12c38f58acbf8c2",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:29:31.811Z",
+        "endedAt": "2026-11-15T07:29:37.316Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW43",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "bd9c3a21d85bad26867c20c5f3ae102df7d22c49fec54a3996481e621f3a244c",
+      "duration": 15.5,
+      "fingerprint": "ab2d13e95fb622ede1e431ab966d6fbb3698843e5a673ddf16892eb46ca605b1",
+      "request": {
+        "id": "TW43",
+        "fingerprint": "ab2d13e95fb622ede1e431ab966d6fbb3698843e5a673ddf16892eb46ca605b1",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:29:31.813Z",
+        "endedAt": "2026-11-15T07:29:36.946Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW44",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "1a120eb5647b28f2a64202d8decb6960306d20247c95e8a99a8c225a31a8a40d",
+      "duration": 14.05,
+      "fingerprint": "893280c05e99877736a17cbb96f25b071c4aa896108845fa669c3841d35f260d",
+      "request": {
+        "id": "TW44",
+        "fingerprint": "893280c05e99877736a17cbb96f25b071c4aa896108845fa669c3841d35f260d",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:29:31.814Z",
+        "endedAt": "2026-11-15T07:29:36.281Z",
+        "diagnostic": ""
+      }
+    },
+    {
+      "id": "TW45",
+      "sourceCommit": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+      "version": "original-speed",
+      "audioSha256": "1f6c49568648d552e38bcb8e63d8c52ee7b2df67e84539b55ed08ac5cf817b85",
+      "duration": 11.3,
+      "fingerprint": "d802a675ece3982aa1bf7987fe832ddf969aefee3017f064cb59b0da6336ce72",
+      "request": {
+        "id": "TW45",
+        "fingerprint": "d802a675ece3982aa1bf7987fe832ddf969aefee3017f064cb59b0da6336ce72",
+        "status": "synthesized-and-decoded",
+        "startedAt": "2026-11-15T07:29:31.815Z",
+        "endedAt": "2026-11-15T07:29:35.739Z",
+        "diagnostic": ""
+      }
+    }
+  ]
+}
