@@ -8,6 +8,7 @@ import {
   visualAt,
   fps,
   audioLeadFrames,
+  cuesFor,
   type TimelineRow,
 } from "./timeline";
 import { TeachingPage } from "./TeachingPage";
@@ -21,17 +22,16 @@ export const LayoutCheck = createShotLayoutCheck({
   audioLeadFrames,
   SceneAtFrame,
   captions: captionsFromFrames(rows, fps, audioLeadFrames),
-  extraFrames: (row) => [
-    59,
-    60,
-    120,
-    179,
-    180,
-    ...(row.id === "OC35" ? [209, 210, 743, 744] : []),
-    ...(row.id === "OC39" ? [15, 269, 270, 360, 449, 450] : []),
-    ...(row.id === "OC45" ? [149, 150, 469, 470] : []),
-    ...row.captions.flatMap((c) => [c.start, c.end - 1]),
-  ],
+  extraFrames: (row) =>
+    [
+      ...Object.values(cuesFor(row)).flatMap((frame) => [
+        frame - 1,
+        frame,
+        frame + 1,
+      ]),
+      ...(row.id === "OC39" ? [0, 15, 29, 30] : []),
+      ...row.captions.flatMap((c) => [c.start, c.end - 1]),
+    ].filter((frame) => frame >= 0 && frame < row.durationInFrames),
   auditPage(page, _id, step) {
     const errors: string[] = [];
     checkTeachingPage(page, step, errors);
@@ -45,7 +45,7 @@ export const LayoutCheck = createShotLayoutCheck({
         errors.push("SVG viewport must be 1:1");
     if (page.querySelector(".katex-error")) errors.push("Invalid mathematics");
     if (page.querySelector("audio,video"))
-      errors.push("Silent stage must not mount media");
+      errors.push("Layout-only scene must not mount media");
     return errors;
   },
 });

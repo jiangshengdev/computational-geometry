@@ -1,0 +1,564 @@
+{
+  "id": "OC52",
+  "status": "superseded-candidate-awaiting-listening",
+  "original": {
+    "audioFile": "OC52.wav",
+    "outputFormat": "riff-48khz-16bit-mono-pcm",
+    "audioSha256": "f7ad0abfd35d701efe4592b491dd0bf49bc40bac4b2560ad6b4a583c2c3c7d80",
+    "duration": 10.03,
+    "words": [
+      {
+        "text": "第四",
+        "startMs": 70,
+        "durationMs": 360,
+        "textOffset": 0,
+        "wordLength": 2
+      },
+      {
+        "text": "节",
+        "startMs": 430,
+        "durationMs": 360,
+        "textOffset": 2,
+        "wordLength": 1
+      },
+      {
+        "text": "保证",
+        "startMs": 950,
+        "durationMs": 400,
+        "textOffset": 3,
+        "wordLength": 2
+      },
+      {
+        "text": "Q",
+        "startMs": 1350,
+        "durationMs": 240,
+        "textOffset": 6,
+        "wordLength": 1
+      },
+      {
+        "text": "已经",
+        "startMs": 1590,
+        "durationMs": 280,
+        "textOffset": 8,
+        "wordLength": 2
+      },
+      {
+        "text": "在",
+        "startMs": 1870,
+        "durationMs": 120,
+        "textOffset": 10,
+        "wordLength": 1
+      },
+      {
+        "text": "清单里",
+        "startMs": 1990,
+        "durationMs": 0,
+        "textOffset": 11,
+        "wordLength": 3
+      },
+      {
+        "text": "。",
+        "startMs": 1990,
+        "durationMs": 0,
+        "textOffset": 14,
+        "wordLength": 1
+      },
+      {
+        "text": "这与清单为空",
+        "startMs": 2828,
+        "durationMs": 1080,
+        "textOffset": 15,
+        "wordLength": 6
+      },
+      {
+        "text": "矛",
+        "startMs": 3908,
+        "durationMs": 240,
+        "textOffset": 21,
+        "wordLength": 1
+      },
+      {
+        "text": "盾",
+        "startMs": 4148,
+        "durationMs": 320,
+        "textOffset": 22,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 4468,
+        "durationMs": 0,
+        "textOffset": 23,
+        "wordLength": 1
+      },
+      {
+        "text": "所以",
+        "startMs": 4919,
+        "durationMs": 320,
+        "textOffset": 24,
+        "wordLength": 2
+      },
+      {
+        "text": "全",
+        "startMs": 5239,
+        "durationMs": 240,
+        "textOffset": 26,
+        "wordLength": 1
+      },
+      {
+        "text": "部",
+        "startMs": 5479,
+        "durationMs": 120,
+        "textOffset": 27,
+        "wordLength": 1
+      },
+      {
+        "text": "真实",
+        "startMs": 5599,
+        "durationMs": 280,
+        "textOffset": 28,
+        "wordLength": 2
+      },
+      {
+        "text": "事件都已",
+        "startMs": 5879,
+        "durationMs": 600,
+        "textOffset": 30,
+        "wordLength": 4
+      },
+      {
+        "text": "到",
+        "startMs": 6479,
+        "durationMs": 160,
+        "textOffset": 34,
+        "wordLength": 1
+      },
+      {
+        "text": "达",
+        "startMs": 6639,
+        "durationMs": 280,
+        "textOffset": 35,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 6919,
+        "durationMs": 0,
+        "textOffset": 36,
+        "wordLength": 1
+      },
+      {
+        "text": "第三",
+        "startMs": 7218,
+        "durationMs": 360,
+        "textOffset": 37,
+        "wordLength": 2
+      },
+      {
+        "text": "节也把正",
+        "startMs": 7578,
+        "durationMs": 600,
+        "textOffset": 39,
+        "wordLength": 4
+      },
+      {
+        "text": "确性",
+        "startMs": 8178,
+        "durationMs": 320,
+        "textOffset": 43,
+        "wordLength": 2
+      },
+      {
+        "text": "保持",
+        "startMs": 8498,
+        "durationMs": 280,
+        "textOffset": 45,
+        "wordLength": 2
+      },
+      {
+        "text": "到",
+        "startMs": 8778,
+        "durationMs": 160,
+        "textOffset": 47,
+        "wordLength": 1
+      },
+      {
+        "text": "了最",
+        "startMs": 8938,
+        "durationMs": 239,
+        "textOffset": 48,
+        "wordLength": 2
+      },
+      {
+        "text": "后",
+        "startMs": 9177,
+        "durationMs": 121,
+        "textOffset": 50,
+        "wordLength": 1
+      },
+      {
+        "text": "一个边",
+        "startMs": 9298,
+        "durationMs": 400,
+        "textOffset": 51,
+        "wordLength": 3
+      },
+      {
+        "text": "界",
+        "startMs": 9698,
+        "durationMs": 239,
+        "textOffset": 54,
+        "wordLength": 1
+      },
+      {
+        "text": "。",
+        "startMs": 9937,
+        "durationMs": 0,
+        "textOffset": 55,
+        "wordLength": 1
+      }
+    ],
+    "speech": "第四节保证 Q 已经在清单里。这与清单为空矛盾。所以全部真实事件都已到达。第三节也把正确性保持到了最后一个边界。",
+    "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+    "fingerprint": "a8c1ad4fd5e72ade1a126cf11b99068816d428ed86b03e80a1da9b59d6f3966b"
+  },
+  "request": {
+    "id": "OC52",
+    "audioFile": "OC52.wav",
+    "text": "第四节保证 Q 已经在清单里。这与清单为空矛盾。所以全部真实事件都已到达。第三节也把正确性保持到了最后一个边界。",
+    "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">第四<phoneme alphabet=\"sapi\" ph=\"jie 2\">节</phoneme>保证 <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">Q</say-as></lang> <phoneme alphabet=\"sapi\" ph=\"yi 3 jing 1\">已经</phoneme>在<phoneme alphabet=\"sapi\" ph=\"qing 1 dan 1 li 3\">清单里</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4 yu 3 qing 1 dan 1 wei 2 kong 1\">这与清单为空</phoneme>矛<phoneme alphabet=\"sapi\" ph=\"dun 4\">盾</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"suo 2 yi 3\">所以</phoneme>全<phoneme alphabet=\"sapi\" ph=\"bu 4\">部</phoneme>真实<phoneme alphabet=\"sapi\" ph=\"shi 4 jian 4 dou 1 yi 3\">事件都已</phoneme>到<phoneme alphabet=\"sapi\" ph=\"da 2\">达</phoneme>。<break time=\"200ms\"/>第三<phoneme alphabet=\"sapi\" ph=\"jie 2 ye 2 ba 3 zheng 4\">节也把正</phoneme>确性保持到<phoneme alphabet=\"sapi\" ph=\"le 5 zui 4\">了最</phoneme>后<phoneme alphabet=\"sapi\" ph=\"yi 2 ge 5 bian 1\">一个边</phoneme>界。<break time=\"400ms\"/></voice></speak>",
+    "fingerprint": "a8c1ad4fd5e72ade1a126cf11b99068816d428ed86b03e80a1da9b59d6f3966b",
+    "pauses": [
+      { "offset": 15, "breakMs": 200 },
+      { "offset": 24, "breakMs": 400 },
+      { "offset": 37, "breakMs": 200 },
+      { "offset": 56, "breakMs": 400 }
+    ]
+  },
+  "response": {
+    "Id": "235a11c108c947cb96c5ba8410fd4993",
+    "RecognitionStatus": "Success",
+    "Offset": 400000,
+    "Duration": 99600000,
+    "Channel": 0,
+    "DisplayText": "第四节保证Q已经在清单里，这也清单为空矛盾，所以全部真实事件都已到达。第三节，把正确性保持到了最后一个边界。",
+    "SNR": 45.013306,
+    "NBest": [
+      {
+        "Confidence": 0.96936953,
+        "Lexical": "第四 节 保证 Q 已经 在 清单 里 这 也 清单 为 空 矛盾 所以 全部 真实 事件 都 已 到达 第三 节 把 正确 性 保持 到 了 最后 一个 边界",
+        "ITN": "第四 节 保证 Q 已经 在 清单 里 这 也 清单 为 空 矛盾 所以 全部 真实 事件 都 已 到达 第三 节 把 正确 性 保持 到 了 最后 一个 边界",
+        "MaskedITN": "第四节保证q已经在清单里这也清单为空矛盾所以全部真实事件都已到达第三节把正确性保持到了最后一个边界",
+        "Display": "第四节保证Q已经在清单里，这也清单为空矛盾，所以全部真实事件都已到达。第三节，把正确性保持到了最后一个边界。",
+        "PronunciationAssessment": {
+          "AccuracyScore": 89,
+          "FluencyScore": 93,
+          "CompletenessScore": 94,
+          "PronScore": 90.8
+        },
+        "Words": [
+          {
+            "Word": "第四",
+            "Offset": 400000,
+            "Duration": 3900000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "节",
+            "Offset": 4400000,
+            "Duration": 4100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "保证",
+            "Offset": 8800000,
+            "Duration": 4700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "Q",
+            "Offset": 13600000,
+            "Duration": 2500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "已经",
+            "Offset": 16200000,
+            "Duration": 2400000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "在",
+            "Offset": 18700000,
+            "Duration": 1400000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "清单",
+            "Offset": 20200000,
+            "Duration": 3600000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "里",
+            "Offset": 23900000,
+            "Duration": 2700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "这",
+            "Offset": 27800000,
+            "Duration": 3100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "也",
+            "Offset": 31000000,
+            "Duration": 1500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "ErrorType": "Insertion"
+            }
+          },
+          {
+            "Word": "与",
+            "PronunciationAssessment": { "ErrorType": "Omission" },
+            "Offset": null
+          },
+          {
+            "Word": "清单",
+            "Offset": 32600000,
+            "Duration": 4300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "为",
+            "Offset": 37000000,
+            "Duration": 1300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 91,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "空",
+            "Offset": 38400000,
+            "Duration": 1700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "矛盾",
+            "Offset": 40200000,
+            "Duration": 5600000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "所以",
+            "Offset": 49000000,
+            "Duration": 4300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "全部",
+            "Offset": 53400000,
+            "Duration": 3500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "真实",
+            "Offset": 57000000,
+            "Duration": 2700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 67,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "事件",
+            "Offset": 59800000,
+            "Duration": 3300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 65,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "都",
+            "Offset": 63200000,
+            "Duration": 1300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 97,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "已",
+            "Offset": 64600000,
+            "Duration": 1000000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "到达",
+            "Offset": 65700000,
+            "Duration": 4800000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 91,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "第三",
+            "Offset": 72000000,
+            "Duration": 4700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 94,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "节",
+            "Offset": 76800000,
+            "Duration": 2300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "也",
+            "PronunciationAssessment": { "ErrorType": "Omission" },
+            "Offset": null
+          },
+          {
+            "Word": "把",
+            "Offset": 79200000,
+            "Duration": 1500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "正确",
+            "Offset": 80800000,
+            "Duration": 3100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "性",
+            "Offset": 84000000,
+            "Duration": 1700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "保持",
+            "Offset": 85800000,
+            "Duration": 2800000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "到",
+            "Offset": 88700000,
+            "Duration": 1300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "了",
+            "Offset": 90100000,
+            "Duration": 1100000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "最后",
+            "Offset": 91300000,
+            "Duration": 2500000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "一个",
+            "Offset": 93900000,
+            "Duration": 2300000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 64,
+              "ErrorType": "None"
+            }
+          },
+          {
+            "Word": "边界",
+            "Offset": 96300000,
+            "Duration": 3700000,
+            "PronunciationAssessment": {
+              "AccuracyScore": 100,
+              "ErrorType": "None"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "selectedAudioSha256": "a94115cd7853b54321042c2948dbb6c9f38e9ee4850c8a9da793a4ef98139605",
+  "actualListeningPerformed": false
+}

@@ -1,0 +1,68 @@
+$ node ../../shared/tools/preflight-cli.ts
+Verified Headless Shell 158.0.8127.2: /workspace/.local/share/remotion-browsers/158.0.8127.2/chrome-headless-shell-linux64/chrome-headless-shell
+{"clips":61,"counts":{"Omission":0,"Insertion":0,"Mispronunciation":32},"reviewedRecognition":{"Omission":0,"Insertion":0},"unresolved":{"Omission":0,"Insertion":0},"actualListeningPerformed":false}
+PASS: 23 pages, 61 measured shots, 54504 frames; complete original audio, semantic cue order, subtitle boundaries, same-page retention and 2-second page holds. No listening performed.
+Verified Headless Shell 158.0.8127.2: /workspace/.local/share/remotion-browsers/158.0.8127.2/chrome-headless-shell-linux64/chrome-headless-shell
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 20 pages; PASS
+Checked 17 pages; PASS
+Checked 20 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 20 pages; PASS
+Checked 20 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 20 pages; PASS
+Checked 20 pages; PASS
+Checked 23 pages; PASS
+Checked 18 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 20 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 23 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 17 pages; PASS
+Checked 27 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 20 pages; PASS
+Checked 20 pages; PASS
+Checked 14 pages; PASS
+Checked 22 pages; PASS
+Checked 17 pages; PASS
+Checked 14 pages; PASS
+Checked 14 pages; PASS
+Checked 14 pages; PASS
+Checked 20 pages; PASS
+Checked 17 pages; PASS
+Checked 16 pages; PASS
+Checked 17 pages; PASS
+Checked 17 pages; PASS
+Checked 20 pages; PASS
+Checked 11 pages; PASS
+Checked 14 pages; PASS
+Checked 14 pages; PASS
+Checked 14 pages; PASS
+Checked 14 pages; PASS
+Checked 14 pages; PASS
+Checked 1037 production states; PASS
+Preflight passed. Review the results before continuing.

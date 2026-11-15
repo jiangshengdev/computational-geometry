@@ -1340,16 +1340,12 @@
     {
       "breakMs": 200
     },
+    "用 r i 表",
     {
-      "text": "结",
-      "pinyin": "jie2"
+      "text": "示结束位置的",
+      "pinyin": "shi4 jie2 shu4 wei4 zhi4 de5"
     },
-    "束 x 坐标用 r i 表",
-    {
-      "text": "示",
-      "pinyin": "shi4"
-    },
-    "。",
+    " x 坐标。",
     {
       "breakMs": 400
     },
@@ -1860,15 +1856,20 @@
       "breakMs": 200
     },
     {
-      "text": "内部",
-      "pinyin": "nei4 bu4"
+      "text": "非零",
+      "pinyin": "fei1 ling2"
+    },
+    "输入",
+    {
+      "text": "的内部",
+      "pinyin": "de5 nei4 bu4"
     },
     "严",
     {
-      "text": "格",
-      "pinyin": "ge2"
+      "text": "格位于",
+      "pinyin": "ge2 wei4 yu2"
     },
-    "在开始端点右",
+    "开始端点右",
     {
       "text": "边",
       "pinyin": "bian1"
@@ -1956,6 +1957,10 @@
     {
       "breakMs": 400
     },
+    {
+      "text": "所有",
+      "pinyin": "suo2 you3"
+    },
     "严",
     {
       "text": "格更",
@@ -1968,8 +1973,8 @@
     },
     "真实",
     {
-      "text": "事件已依次正",
-      "pinyin": "shi4 jian4 yi3 yi1 ci4 zheng4"
+      "text": "事件都已经依次正",
+      "pinyin": "shi4 jian4 dou1 yi3 jing1 yi1 ci4 zheng4"
     },
     "确",
     {
@@ -5120,8 +5125,8 @@
       "breakMs": 200
     },
     {
-      "text": "这与清单为空",
-      "pinyin": "zhe4 yu3 qing1 dan1 wei2 kong1"
+      "text": "这就与清单为空产生",
+      "pinyin": "zhe4 jiu4 yu3 qing1 dan1 wei2 kong1 chan3 sheng1"
     },
     "矛",
     {
@@ -5157,13 +5162,23 @@
     },
     "第三",
     {
-      "text": "节也把正",
-      "pinyin": "jie2 ye2 ba3 zheng4"
+      "text": "节",
+      "pinyin": "jie2"
     },
-    "确性保持到",
+    "保证",
     {
-      "text": "了最",
-      "pinyin": "le5 zui4"
+      "text": "正",
+      "pinyin": "zheng4"
+    },
+    "确性",
+    {
+      "text": "一直",
+      "pinyin": "yi4 zhi2"
+    },
+    "保持到",
+    {
+      "text": "最",
+      "pinyin": "zui4"
     },
     "后",
     {

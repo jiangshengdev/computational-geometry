@@ -1,0 +1,82 @@
+{
+  "unresolved": [
+    {
+      "planSha256": "24bd7b83c28ff1d83fd6362db455e7130b0b4ff8c99a54182d4776930b6ae8a6",
+      "id": "OC24",
+      "fingerprint": "f3969585925bd39d0c185d042bf7c2ea1637270c346edb1e72828b1e2e48749b",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.275Z",
+      "endedAt": "2026-11-14T14:36:59.221Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "planSha256": "24bd7b83c28ff1d83fd6362db455e7130b0b4ff8c99a54182d4776930b6ae8a6",
+      "id": "OC27",
+      "fingerprint": "cce0731a266398b82b50e5e44afebcd1aad360a4a60c315cb4e2df28d1a50e7f",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.277Z",
+      "endedAt": "2026-11-14T14:36:59.234Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "planSha256": "24bd7b83c28ff1d83fd6362db455e7130b0b4ff8c99a54182d4776930b6ae8a6",
+      "id": "OC30",
+      "fingerprint": "cd76f218997801a0dbb6ead7e0af6e9071fd66921d92c5fe2c9c6b419e34e1e1",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.279Z",
+      "endedAt": "2026-11-14T14:36:59.242Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    },
+    {
+      "planSha256": "24bd7b83c28ff1d83fd6362db455e7130b0b4ff8c99a54182d4776930b6ae8a6",
+      "id": "OC35",
+      "fingerprint": "648c8e4a3f5d7d945ac6dfa99e32026ba1322a23d6ad9a742c59117248bb6ce2",
+      "status": "request-failed-or-uncertain",
+      "startedAt": "2026-11-14T14:36:58.284Z",
+      "endedAt": "2026-11-14T14:36:59.305Z",
+      "diagnostic": "Azure synthesis failed: Unable to contact server. StatusCode: 1006,\n                    [REDACTED_URL] Reason:  Unexpected server response: 429"
+    }
+  ],
+  "replacements": [
+    {
+      "planSha256": "da8f260bb4bf9fae60f00d3b404fa9d4a23be0a30cfb6b583111019dc9e66c6e",
+      "id": "OC24",
+      "fingerprint": "f3969585925bd39d0c185d042bf7c2ea1637270c346edb1e72828b1e2e48749b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:44:16.469Z",
+      "endedAt": "2026-11-14T14:44:20.678Z",
+      "diagnostic": "",
+      "audioSha256": "3da601dfceb0d00c6a013d207784292ab426c8ef3887d1ded8707cc94240e0cb"
+    },
+    {
+      "planSha256": "da8f260bb4bf9fae60f00d3b404fa9d4a23be0a30cfb6b583111019dc9e66c6e",
+      "id": "OC27",
+      "fingerprint": "cce0731a266398b82b50e5e44afebcd1aad360a4a60c315cb4e2df28d1a50e7f",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:44:20.679Z",
+      "endedAt": "2026-11-14T14:44:24.492Z",
+      "diagnostic": "",
+      "audioSha256": "d592c1e97edd10ebecc73998c7c613b467db60f2293b497b34313afbf2fa6b9f"
+    },
+    {
+      "planSha256": "da8f260bb4bf9fae60f00d3b404fa9d4a23be0a30cfb6b583111019dc9e66c6e",
+      "id": "OC30",
+      "fingerprint": "cd76f218997801a0dbb6ead7e0af6e9071fd66921d92c5fe2c9c6b419e34e1e1",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:44:24.493Z",
+      "endedAt": "2026-11-14T14:44:28.724Z",
+      "diagnostic": "",
+      "audioSha256": "b6acd46498dd0ca062d9e6e6ee1571e4a3d84fb1dd22dd59dfe13c51d01976b2"
+    },
+    {
+      "planSha256": "da8f260bb4bf9fae60f00d3b404fa9d4a23be0a30cfb6b583111019dc9e66c6e",
+      "id": "OC35",
+      "fingerprint": "648c8e4a3f5d7d945ac6dfa99e32026ba1322a23d6ad9a742c59117248bb6ce2",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-14T14:44:28.728Z",
+      "endedAt": "2026-11-14T14:44:32.987Z",
+      "diagnostic": "",
+      "audioSha256": "7d4389c0de26934b5d0a0aef6d23689b2d076d566143b42bee1ac844fe7ccf18"
+    }
+  ]
+}

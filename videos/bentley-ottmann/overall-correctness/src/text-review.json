@@ -4002,5 +4002,20 @@
     "listeningPerformed": false,
     "videoExported": false,
     "stopPoint": "#401–404 completed; stop before synthesis. #405/#406 not started. Issue states unchanged."
+  },
+  "measuredAdoption": {
+    "baselineCommit": "772183feb9e5e473d5d6f5cb9d9e9e763237eb88",
+    "changedShots": ["OC14", "OC19", "OC20", "OC52"],
+    "changedSpokenPhrases": 5,
+    "review": "wording_spec independent local text/pinyin review; measured_spec independent formal subtitle/narration adoption review; no whole-film re-review of unchanged text",
+    "ordinaryWordingSynchronizedToSubtitles": true,
+    "sourceSha256": {
+      "storyboard.ts": "f69ca879b26934ae94f2f5f5315bf0afe50c9b469d8f61adcf06ed3384d4420d",
+      "sentence-plan.json": "403743fc44d828208fa4b0fb37d3eae41a075cab453861222a4744e387650754",
+      "narration-text.json": "097dfc269a3196c69929506c0dc73ad043688914419f49cb0e9b17f98db249d3",
+      "speech-text.json": "e1ecd15e4467bb1769055ba9d70744890113112e02a04896c6d27a076c1e8de2"
+    },
+    "actualListeningPerformed": false,
+    "listeningRequirement": "explicitly-waived-by-user"
   }
 }

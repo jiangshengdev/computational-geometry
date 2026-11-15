@@ -1,112 +1,35 @@
 # 第九章：为什么整个算法始终正确
 
-规格：[CNB #400](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/400)。#401–#404 已验收；现已获准继续 #405→#406，工单状态保持不变。
+规格：[CNB #400](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/400)。正式接入61段原速音频；**54504帧、60fps、15:08.400**。当前61/61段机器评估为 **漏读0、插入0、发音标记32**。用户明确跳过听辨，实际听辨未执行；不将其写成人工验收通过。
 
-**当前停点：原 61 段音频保留；四段措辞候选已局部复测，尚未听辨或正式采用。** 原批次共 809.455 秒，标记为 `Mispronunciation=31`、`Omission=6`、`Insertion=3`。最新 OC14/19/20/52 候选复测为 `Mispronunciation=3`、`Omission=0`、`Insertion=0`，这是四段局部结果，不是全片重测或正式替换。完整前后文案、音频及证据见[候选复核](narration-candidates/REVIEW.md)。实际听辨、实测音画同步和成片验收均未完成；详见 [配音交接](NARRATION_HANDOFF.md)。下文画面和文稿验收是 `5a39664` 及其前序版本的无声阶段证据，不代表当前音频已验收。
+当前状态与证据见[正式音频交接](NARRATION_HANDOFF.md)，作者后续操作见[导出与验收入口](AUTHOR_EXPORT.md)。助手未导出成片；当前环境缺少模板的VideoToolbox硬件编码器，作者成片验收尚未完成。工单状态不变。
 
-## 当前制作入口
+## 唯一生产路径
 
-- `src/storyboard.ts`：五节正文、字幕及逐页 `source` / `reference` / `addition` 对照。OC01–19 对应 #401，OC20–39 对应 #402，OC40–61 对应 #403。
-- `src/TeachingPage.tsx`：复用 `MathLessonPage`、`TeachingMathLines`、`TeachingReferences`，显式左图右文；无图页使用同一布局组件。
-- `src/ProofDiagram.tsx`：本集的一般关系示意。范围分行图明确按身份分行，不作为不同几何高度；不是第八章案例轨迹。
-- `src/CoverageExtension.tsx`：仅 OC35 的闭覆盖前后对照；本组蓝色、邻组紫色，保留标签与闭端点，确认同一候选交点后再显示入列。
-- `src/BoundaryRecords.tsx`：OC39 的 P 前后记录对照，局部穿过组换序、移去当前位置与新增原始输入对报告。
-- `src/NextEventTimeline.tsx`：OC44–45 的完整事件次序与登记／取出关系；OC52 的必达与空清单矛盾仍由 `ProofDiagram.tsx` 呈现。
-- `src/sentence-plan.json`：独立口播分句权威源，保留原字幕语义句与内部短句映射；`video:prepare-text` 派生 `src/narration-text.json`，改动后须重新核对受影响审校。
-- `src/speech-text.json`：独立拼音标注与已审语义句界停顿，逐段拼接与冻结纯文本一致；本次合成未改文字或标音。
-- `scripts/plan-narration.ts` / `synthesize-narration.ts` / `assess-narration.ts`：复用共享计划、限流请求和单并发评估；显式 `--shots` 限定计划与合成范围，不能据此自动重发未决请求。
-- `narration-staging/`：尚未采用的 61 条原始 WAV、原始词事件、识别响应及请求账本。`review.json` 由 `video:report-staged-audio` 离线生成并核对当前文稿指纹、音频哈希和分类计数；不参与播放。
-- `scripts/adopt-measured-audio.ts` / `check-audio.ts`：复用整批采用及正式素材检查。当前采用门禁阻断，尚无正式音频时间线。
-- `src/visual-review.json`：独立生产状态目视覆盖及正常速度播放抽查，绑定源码哈希。
-- `src/text-review.json`：冻结版本、独立文本审校覆盖及后续拼音盲审门禁记录；不参与播放。
-- `src/timeline.ts`：**无音频的暂定阅读时间**，60 fps、字幕前 30 帧、按字幕长度估算阅读窗，各页完整末态保留至少 120 帧。没有虚构实测音频或词时间。后续音频阶段须用真实时间替换，重核字幕与语义提示。
-- `src/Composition.tsx` / `src/Root.tsx`：连续播放 `OverallCorrectness`；`LayoutCheck` 用相同生产组件检查步骤、字幕和停顿状态。
-- `scripts/check-content.ts`：稳定 ID、连续时间线、字幕切换及页末保持；不代替数学证明审查。
-- `scripts/check-layout.ts`：复用共享浏览器布局检查，支持 `--shots=OC01,OC02` 与 `--screenshots`（浏览器截图，不是 Remotion 静帧导出）。
+- `src/storyboard.ts`：五节、23页、61镜，保留来源／前章参考／本章增量映射。仅OC14/19/20/52的五处字幕随已采用口播同步，数学含义不变。
+- `src/sentence-plan.json` → `video:prepare-text` → `src/narration-text.json`：口播分句与纯文本；`src/speech-text.json` 为标音及200/400ms语义句界停顿。
+- `public/narration/*.wav`：服务原始PCM源，完整原速播放。`src/audio-timing.json` 绑定音频哈希、口播指纹、原始评估与词时间；`src/captions.json` 由同一来源生成。
+- `src/timeline.ts`：共享实测时间线；`cuesFor` 显式绑定OC35/39/45/52的真实短语边界。`src/Composition.tsx` 通过共享 `NarratedLesson` 播放完整源文件，无裁切或倍速。
+- `TeachingPage.tsx`／`ProofDiagram.tsx`／`CoverageExtension.tsx`／`BoundaryRecords.tsx`／`NextEventTimeline.tsx`：已审图义与页面保持；没有重做其他画面。
+- `src/audio-review.json`／`src/sync-review.json`：本次实际版本、机器计数、用户听辨豁免，以及分别记录的状态观察与静音播放范围。
+- `src/text-review.json`／`src/visual-review.json`：此前无声阶段的独立审校证据；按各自基线和范围解释，不当作实测时间线的新验收。当前局部文稿采纳记录附于文本审校文件。
+- `narration-staging/`／`narration-candidates/`／`assets/narration-review/`：按用户保留原始素材与对照的要求保留历史证据，不进入生产播放。已退役候选生成器和旧暂存汇总入口；历史文档的命令说明不是当前入口。
 
-## 工程与参考
+## 检查
 
-在空目标目录使用项目规定的原生 `create-video@4.0.541 --yes --blank --no-tailwind` 初始化，保留已验证的 `npm_config_argv` pnpm 兼容参数；代理网络通过 `NODE_USE_ENV_PROXY=1`。初始化模板实际安装 Remotion **4.0.543**，本集独立锁文件及依赖，不借用相邻视频的 node_modules。没有运行配置仓库安装脚本。
-
-参考源码基线为计算几何仓库 `ca41a9a`：
-
-| 能力                                   | 原参考入口                                                | 本集承接与差异                                                                                    |
-| -------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| 页面、字幕、静态历史依据、正文逐步保留 | `../complete-sweep/src/TeachingPage.tsx` 与共享 UI        | 同为左图、basisHeight 105、普通文字 36 px、同一共享数学排版与字幕样式；新证明文本不导入旧案例内容 |
-| 当前步骤与局部重点                     | `../complete-sweep/src/TeachingPage.tsx`                  | 复用当前行提示与 `activeMarks`；图示颜色区分范围和成员，暂定时间不等于实测语义时刻                |
-| 同列中间状态、闭覆盖                   | `../same-column-reasons/src/TeachingPage.tsx`、分镜与口播 | OC12–16、OC32–38 连接到事件边界保证，不复演同列局部证明                                           |
-| 同点收集和局部更新                     | `../same-point-participants`、`../same-point-updates`     | OC22–29、OC32–39 引用完整块与分类检查，新增的是归纳连接                                           |
-| 同线唯一报告、覆盖延长和发现           | `../overlap-reporting`、`../overlap-discovery`            | OC25–31、OC35–45：完整区间按报告时机累计，发现依赖两类检查                                        |
-| 初始化到完整结果的一般连接             | 第九章正文 `overall-correctness.mdx`                      | 第三节条件性保持与第四节必达分开；第五节分别连接终止、清单空的完备性及逆变换                      |
-
-完整制作规则见 [视频规则](../../AGENTS.md) 及其链接。正文数学均用共享 LaTeX 混排；SVG viewport 与 viewBox 为 800×550 的 1:1 比例。页面依据是静态已知结论，不提前放入本页新证明。
-
-## 运行与检查
-
-依赖已按本集 `pnpm-lock.yaml` 安装。执行时关闭隐式依赖安装：
+依赖按本集锁文件维护，Remotion4.0.543、SpeechSDK1.53.0；未升级其他依赖。当前云的匹配Chrome Headless Shell为158.0.8127.2。
 
 ```sh
 cd /workspace/computational-geometry/videos/bentley-ottmann/overall-correctness
-pnpm --config.verify-deps-before-run=false run dev
+export REMOTION_BROWSER_EXECUTABLE=/workspace/.local/share/remotion-browsers/158.0.8127.2/chrome-headless-shell-linux64/chrome-headless-shell
 pnpm --config.verify-deps-before-run=false run lint
-pnpm --config.verify-deps-before-run=false run video:check-content
 pnpm --config.verify-deps-before-run=false run video:check-text
-REMOTION_BROWSER_EXECUTABLE=/workspace/.local/share/remotion-browsers/158.0.8127.2/chrome-headless-shell-linux64/chrome-headless-shell pnpm --config.verify-deps-before-run=false run video:check-layout --screenshots
+pnpm --config.verify-deps-before-run=false run video:check-content --decode
+pnpm --config.verify-deps-before-run=false run video:preflight
 ```
 
-浏览器路径为本次云环境中已核对的 Chrome Headless Shell **158.0.8127.2**，与 Remotion 4.0.543 匹配；环境改变时按共享工具重新核对。只启动无头预览与浏览器检查，不渲染、不导出。
+`video:preflight` 运行完整音频／内容检查和生产布局检查，自动分配独立临时端口；不导出媒体。已有有效检查不要求反复执行。`video:check-layout --shots=OC35,OC39,OC45,OC52 --screenshots` 可检查指定镜，截图是浏览器证据，不是Remotion静帧导出。
 
-## 无声阶段验收记录（截至 5a39664）
+## 审校边界
 
-字幕及纯文本口播已分别完成独立全文审校。纯文本版本与全部片段覆盖见 `src/text-review.json`；独立拼音修正后，同一未改动版本已顺序完成两轮不同新代理的全文盲审及历史核销，新增、遗留、待查证均为零。基线 `5a09560` 的画面独立审查目视全部 61 镜的 246 个不同生产状态，涵盖 124 次字幕出现/切换、38 处同页交界、22 处跨页首引与 23 处页末完整保留；可核验清单见 `src/visual-review.json`。基线正常速度播放只抽查开头及 OC39→40、OC51→52、OC59→60，每处约 10 秒，未声明全片连续播放或稳定 60 fps。OC35 局部增强的替代证据另记于下节及审查记录，不以旧版 OC35 的状态区间证明新版。**#401–#404 无声阶段验收完成，语音合成前置条件已满足；当时停在语音合成前，尚未启动 #405/#406。**
-
-### OC35 闭覆盖对照
-
-仅增强“邻居没换，为什么还要重查”：同尺度对照保持本组与邻组身份、几何位置和闭端点。延长前 Q 在邻组范围内但超出本组右端；延长后 Q 位于双方真实闭范围，随后进入待处理清单。Q 是本图候选交点标签，不附加第四节“最早剩余真实事件”的假设。加入位置仍晚于邻组左端，且早于 Q；前后邻接不变。
-
-OC35 仍从全局帧 33613 到 34553（09:20.217–09:35.900，结束边界不含），局部帧 0–209 保留延长前，210–743 增加延长后，744–940 显示入列。两句原字幕、独立口播和标音稿完全不变；这些是无声暂定阅读窗口，不是实测语音词时间。全片仍为 58912 帧、60 fps（16:21.867）。逐项比较确认全部 61 镜的时间与字幕相同，其余 60 镜逐帧视觉输入相同；既有未受影响证据继续有效。
-
-新代理独立目视 OC35 的 17 个捕获帧，覆盖全部 6 种不同生产状态及两侧接缝，通过局部对齐。另在实际 `OverallCorrectness` 中以 1x 从全局帧 33553 播放至 34809 附近，覆盖 OC34 尾部、OC35 全过程及 OC36 开始；此项为正常速度播放抽查，预览约 37–61 FPS，不代表稳定 60 FPS 或全片重新验收。版本哈希、具体帧和证据位置见 `visual-review.json` 的 `oc35Revision`。
-
-复用现有 ESLint/TypeScript、内容及布局检查；OC34/36 各 14 个状态通过，OC35 标签间距修正后 18 个状态通过。没有新增测试、改动其他镜头、修改工单或配置仓库；没有语音、试听或媒体导出。
-
-### 处理边界与下一处必达的局部补齐
-
-在 `fb01bc5` 基线上只增强以下四镜，OC35 原图及行为保持不变：
-
-| 镜头    | 原有时间位置（结束边界不含） | 新增画面关系                                                                                                                                                                      |
-| ------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| OC39    | 10:24.667–10:44.517          | 两穿过组在 P 相交的局部示意：前后身份色不变，只有当前块改取右序；同列低处右序、高处左序保留。清单移去 P、保留其余位置，结果在此前报告之上新增本次输入对。只短时强调发生变化的项。 |
-| OC44–45 | 11:48.533–12:20.050          | 完整位置次序上的下一处 Q，与此前清单已登记 Q、随后取最小到站分开；到站才收齐参与者并按原始输入对报告。更晚交点不必全部已知。                                                      |
-| OC52    | 13:55.567–14:10.517          | 保留空清单与假设仍有最早 Q 的图，明确必达保证造成矛盾；随后显示全部事件已到达，承接既有逐类报告完整性论证，不用有限终止代替完备性。                                               |
-
-OC39 复用共享 `diagramProgress`，在原有 0–30 帧开口前窗口中让正文平滑让位；局部 270 帧出现处理后，450 帧收束变化提示。OC45 的 150 帧显示取到 Q，470 帧接参与者与报告；OC52 的 350 帧接全部事件已到达。所有时刻都是现有无声阅读窗内的视觉安排，不是实测语音时间。
-
-全部 61 镜的时间、字幕、总 58912 帧及独立口播／标音文件保持原样；其余 57 镜的逐帧既有视觉输入相同，显式传入的 `diagramProgress=1` 等于原默认值。复用原有类型、内容和布局检查；最终 OC39/44/45/52 分别覆盖 21/14/16/14 个布局状态，无新增测试。未重做其他画面，未修改工单、配置或其他仓库；当时停在语音合成前。
-
-新代理独立逐状态目视与三处接缝复核通过，覆盖前后状态、变化提示收束、字幕及页末保持；OC39 连续让位检查开始、中途与完成状态。另在实际 `OverallCorrectness` 中以 1x 分三段播放抽查，并加密观察 OC38→39 让位接缝。无头预览帧率有波动，最低 UI 采样 7.5 FPS，不能声称稳定 60 FPS 或全片连续流畅验收。两类证据、具体帧和版本哈希分别保存在 `visual-review.json` 的 `remainingVisualizationRevision`，不以布局通过替代目视或播放证据。
-
-### 已知问题闭环
-
-| ID    | 位置与证据                                       | 修正及复核                                                                            |
-| ----- | ------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| L01   | OC08、OC19 长字幕在浏览器检查中溢出              | 按自然句拆开；各自全部生产状态定向复查通过                                            |
-| VA-01 | OC15 同一个 i 被同时赋予两个右端                 | 另一成员改 j、r_j=t，字幕介绍身份；独立图面与字幕复核通过                             |
-| VA-02 | OC59 主画面缺新旧坐标定义，字幕以“撇”代数学记号  | 主场景列 (x′,y′)、(x,y)、s；字幕保留符号；独立复核通过                                |
-| V03   | OC22 旧块提到结束者却延后显示；OC35 邻组标签压线 | 结束者自旧块首步保留，标签移开；独立图面复核通过                                      |
-| S1    | OC44–45、51–52 框中文字依赖经验基线位置          | 显式采用矩形中心及 center/middle；源码及独立图面复核通过                              |
-| SP1   | OC35 邻组从 x=300 开始，晚于加入者 x=250         | 邻组从 (150,540) 开始，交点仍 (550,220)，处于延长后真实闭范围；规格与独立图面复核通过 |
-
-S2：注音检查器原可能跳过 null/false/0 根值而报 PASS。现仅 plain 模式可跳过，其余模式先校验根对象及 ID；独立源码复核、实际有效稿件及四类无效根值负例通过。负例只在子进程拦截读取，未修改稿件。
-
-### Standards
-
-独立代码审核已核对新增源码、配置及规则，后续另审文稿生成与检查入口。S1、S2 已修复；未消费的 `motion` 计算作为非阻断简化建议已移除。当前未留明确标准违规；锁文件未逐项审计来源，代码审核不替代画面和文稿验收。
-
-### Spec
-
-独立规格审核发现 SP1，已修复并定向复核。保持、两类检查、必达、有限终止、空队列完备性、逐对报告和逆变换的源码/字幕连接符合本阶段规格，未发现范围扩张。#404 的过程与文稿证据分别保存在 `visual-review.json` 和 `text-review.json`；最终增量复核已核对实际源码/文稿哈希、完整帧区间、两轮原始报告及历史核销，确认阶段门禁成立。
-
-该无声阶段没有语音素材、音频播放器、合成入口或成片产物，没有试听或验收音画同步；当前配音阶段状态见页首与配音交接。所有工单状态保持不变。
-
-必要检查：本集 ESLint/TypeScript、内容时间线与页末停留、浏览器全镜关键状态及修正定向复查、独立注音/冻结文字/330句界结构检查均通过；复用未失效结果。未运行与本次视频无关的算法或 Web 全量测试，未以构建代替视觉验收。工程盘点仅保留当前生效制作源、独立依赖及最小审校记录，临时浏览器日志已清理。
+Standards与Spec新上下文独立复核已核对实测接入及局部字幕同步；实际状态观察与1x静音抽查单独记录，不以源码或构建代替视觉验收。全片原始音频已机器检测，不进行或宣称人工听辨。无当前导出成片，因此不能声明整集最终成片验收完成，亦不发布或关闭任何工单。

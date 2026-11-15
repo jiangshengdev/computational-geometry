@@ -1,0 +1,1540 @@
+{
+  "OC01": [
+    {
+      "text": "第八章跟完了一次扫描。",
+      "startMs": 70,
+      "endMs": 1990,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "现在离开那份案例，说明任意允许输入为什么都成立。",
+      "startMs": 2399,
+      "endMs": 6828,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从空状态起步，连接每次处理、下一处必达和结束时的完整结果。",
+      "startMs": 7289,
+      "endMs": 12370,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC02": [
+    {
+      "text": "输入是有限份闭线段，坐标是精确有理数。",
+      "startMs": 70,
+      "endMs": 4028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "共端点、内部端点、多线共点、同列、重叠、竖直线段和点输入都允许。",
+      "startMs": 4469,
+      "endMs": 10980,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC03": [
+    {
+      "text": "每个相交的原始无序输入对，恰好留下一个完整交集。",
+      "startMs": 70,
+      "endMs": 4250,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "可以是点，也可以是非零长度闭区间。",
+      "startMs": 4569,
+      "endMs": 7878,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不相交的对没有结果。",
+      "startMs": 8309,
+      "endMs": 9970,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "完全重合和端点反向的输入仍保留各自身份。",
+      "startMs": 10279,
+      "endMs": 14078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC04": [
+    {
+      "text": "没有非零竖直输入时，沿用原坐标。",
+      "startMs": 70,
+      "endMs": 3318,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "否则按第七章选安全系数，统一变换全部输入，包括点。",
+      "startMs": 3769,
+      "endMs": 9078,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里使用第七章已证明安全的系数，统一满足保序、非竖直和完整交集保持。",
+      "startMs": 9529,
+      "endMs": 15738,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC05": [
+    {
+      "text": "以下坐标都指实际扫描坐标。",
+      "startMs": 70,
+      "endMs": 2590,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先到 x 坐标较小的位置，同列再从低到高。",
+      "startMs": 2999,
+      "endMs": 6888,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "无须剪切时仍可能同列，不能省掉第二层比较。",
+      "startMs": 7379,
+      "endMs": 11218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两个坐标都相等才合并位置。",
+      "startMs": 11679,
+      "endMs": 13879,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC06": [
+    {
+      "text": "第三章的精确计算用于求交、同点识别、闭范围和次序比较。",
+      "startMs": 70,
+      "endMs": 5390,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "剪切负责满足几何条件，精确计算负责忠实判断。",
+      "startMs": 5799,
+      "endMs": 10448,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "两者不能互相替代。",
+      "startMs": 10889,
+      "endMs": 12289,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC07": [
+    {
+      "text": "第三节先只回答：此前正确，而且这次确实到达下一处，处理后怎样继续正确。",
+      "startMs": 70,
+      "endMs": 6688,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "沿用无事件不换序、完整同点收集、分类报告及同列局部更新的结论和条件。",
+      "startMs": 7189,
+      "endMs": 13269,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC08": [
+    {
+      "text": "第四节再用组发现及同列发现结论，补齐确实到达下一处这个前提。",
+      "startMs": 70,
+      "endMs": 5918,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所需条件是此前正确处理、新邻接与覆盖延长都检查，以及真实预约保留。",
+      "startMs": 6369,
+      "endMs": 12728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "没有假定全部未来交点已登记。",
+      "startMs": 13159,
+      "endMs": 15719,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "OC09": [
+    {
+      "text": "先说明五项记录。",
+      "startMs": 70,
+      "endMs": 1470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前指刚完成一个精确位置，尚未处理下一个位置的时刻。",
+      "startMs": 1849,
+      "endMs": 6578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同列也有进度，不能只给出 x 坐标就认为状态已经确定。",
+      "startMs": 7039,
+      "endMs": 11557,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC10": [
+    {
+      "text": "活动成员从自己的开始事件加入，在自己的结束事件报告后退出。",
+      "startMs": 70,
+      "endMs": 5490,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "点输入只参加自己的位置。",
+      "startMs": 5819,
+      "endMs": 7899,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "非空同线组按当前进度从下到上排列。",
+      "startMs": 8389,
+      "endMs": 11869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "覆盖只由当前成员决定，不由固定同线归属决定。",
+      "startMs": 12359,
+      "endMs": 16428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC11": [
+    {
+      "text": "清单保存尚未取出的端点和已确认的真实未来交点。",
+      "startMs": 70,
+      "endMs": 4750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同位置一份，输入身份全部保留。",
+      "startMs": 5149,
+      "endMs": 7908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "结果按已经发生的报告时机累计完整交集，每对一次。",
+      "startMs": 8339,
+      "endMs": 12968,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不是扫描位置左侧所有几何部分的合集。",
+      "startMs": 13429,
+      "endMs": 16469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC12": [
+    {
+      "text": "左图是一般状态示意，不是某份输入的执行轨迹。",
+      "startMs": 70,
+      "endMs": 3868,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "虚线表示当前列。",
+      "startMs": 4319,
+      "endMs": 5919,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "低处的相遇块已经处理，保留右侧顺序；高处还没处理，仍保留左侧顺序。",
+      "startMs": 6380,
+      "endMs": 13168,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC13": [
+    {
+      "text": "高处尚未处理的结束者仍包含闭端点，不能在低处处理后提前删掉。",
+      "startMs": 70,
+      "endMs": 5278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "只有整列处理完，留下的成员才都继续到该列右侧。",
+      "startMs": 5719,
+      "endMs": 10097,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC14": [
+    {
+      "text": "用 t 表示当前列的 x 坐标，输入身份用 i 表示。",
+      "startMs": 70,
+      "endMs": 4378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "开始 x 坐标用 l_i 表示，用 r_i 表示结束位置的 x 坐标。",
+      "startMs": 4819,
+      "endMs": 10148,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "图中按身份分行展示范围，不表示不同几何高度。",
+      "startMs": 10609,
+      "endMs": 15058,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "OC15": [
+    {
+      "text": "每份当前成员都覆盖这一列，所以左右都允许等号。",
+      "startMs": 70,
+      "endMs": 4528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "紫色行是另一份高处未处理的结束者，编号 j，结束 x 坐标 r_j 等于 t。",
+      "startMs": 4969,
+      "endMs": 15248,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "若改成严格小于，就会把这类成员提前排除。",
+      "startMs": 15699,
+      "endMs": 19798,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "OC16": [
+    {
+      "text": "非空组的当前最远右端，是这些当前成员右端的最大值。",
+      "startMs": 70,
+      "endMs": 4818,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "未来才开始的成员不在集合中，不能提前把空隙填满。",
+      "startMs": 5269,
+      "endMs": 9878,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC17": [
+    {
+      "text": "初始化时尚未处理任何位置。",
+      "startMs": 70,
+      "endMs": 2469,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "活动成员为空，没有非空组、组顺序和覆盖。",
+      "startMs": 2849,
+      "endMs": 6748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "没有到达任何报告时机，结果也为空。",
+      "startMs": 7239,
+      "endMs": 10388,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这些空记录符合刚才的含义。",
+      "startMs": 10829,
+      "endMs": 13029,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC18": [
+    {
+      "text": "端点由输入直接给出。",
+      "startMs": 70,
+      "endMs": 2060,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "非零输入登记两端，点输入登记自己的位置。",
+      "startMs": 2399,
+      "endMs": 6198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同位置合并记录，保留全部身份，再按精确次序排列。",
+      "startMs": 6689,
+      "endMs": 11558,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "图中只画已知位置，不预先加入交点。",
+      "startMs": 11999,
+      "endMs": 15648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC19": [
+    {
+      "text": "任何交集位置都不早于参与输入的开始位置。",
+      "startMs": 70,
+      "endMs": 3230,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "非零输入不竖直，非零输入的内部严格位于开始端点右边。",
+      "startMs": 3599,
+      "endMs": 8817,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以非空输入的最早真实事件必是已登记端点。",
+      "startMs": 9289,
+      "endMs": 12849,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "它之前没有活动成员或应报告的对。",
+      "startMs": 13309,
+      "endMs": 15668,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "空输入直接得到完整空结果。",
+      "startMs": 16129,
+      "endMs": 18640,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 2
+    }
+  ],
+  "OC20": [
+    {
+      "text": "把这次位置记作 P。",
+      "startMs": 190,
+      "endMs": 1750,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所有严格更早的真实事件都已经依次正确处理，而且 P 确实是下一处。",
+      "startMs": 2149,
+      "endMs": 7588,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里只证明满足这两个前提以后怎样保持正确，不假定更晚的交点都已登记。",
+      "startMs": 8039,
+      "endMs": 14337,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC21": [
+    {
+      "text": "从上次处理后到 P 之前，没有跳过别的端点或交点，成员和组顺序仍可用。",
+      "startMs": 70,
+      "endMs": 6528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若 P 在同列高处，使用低处已更新、高处未更新的中间状态。",
+      "startMs": 6989,
+      "endMs": 12048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "第六章保证仍能按高度找齐块。",
+      "startMs": 12479,
+      "endMs": 15278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC22": [
+    {
+      "text": "图中交汇处是 P。",
+      "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "预约对只负责发现这个位置，不限制到站后的参与者数量。",
+      "startMs": 2449,
+      "endMs": 6807,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从正确旧状态找齐经过 P 的组，再展开这些组在这里的全部当前成员。",
+      "startMs": 7239,
+      "endMs": 13218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC23": [
+    {
+      "text": "把在 P 开始的非零输入，以及位于 P 的点输入合进来。",
+      "startMs": 70,
+      "endMs": 4217,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "点输入只参加这个位置，不进入持续活动顺序。",
+      "startMs": 4669,
+      "endMs": 8648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "它的身份来自预先登记的端点记录。",
+      "startMs": 9159,
+      "endMs": 11878,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC24": [
+    {
+      "text": "在 P 结束的成员还没退出，所以共端点接触不会丢。",
+      "startMs": 70,
+      "endMs": 4587,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "端点落在内部时，穿过者来自旧块；多线共点时，整块都收齐。",
+      "startMs": 5109,
+      "endMs": 11340,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC25": [
+    {
+      "text": "两份非零输入同线时，后开始者加入，与仍包含此处的成员配对，留下完整闭交集。",
+      "startMs": 70,
+      "endMs": 8160,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同点开始者按固定身份顺序逐一加入。",
+      "startMs": 8459,
+      "endMs": 11698,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "每对只有一个较晚的加入时机。",
+      "startMs": 12179,
+      "endMs": 14440,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC26": [
+    {
+      "text": "不同组的非零输入在共同位置展开全部跨组成员对，不在这里重报组内对。",
+      "startMs": 70,
+      "endMs": 5688,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不同直线至多有一个交点，这个点就是完整交集，也是唯一报告位置。",
+      "startMs": 6119,
+      "endMs": 12068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC27": [
+    {
+      "text": "至少一份是点输入时，在这个点与其他参与者配对。",
+      "startMs": 70,
+      "endMs": 4257,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "点与点也按无序对各取一次。",
+      "startMs": 4719,
+      "endMs": 6958,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "交集只能是这个点，报告时机只有这一个位置。",
+      "startMs": 7439,
+      "endMs": 10928,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC28": [
+    {
+      "text": "每对要么含点，要么两份都非零；两份都非零时，所在直线要么相同，要么不同。",
+      "startMs": 70,
+      "endMs": 7748,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以三类穷尽且互斥。",
+      "startMs": 8179,
+      "endMs": 10059,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "跨类不会重复，类内唯一性由刚才的规则保证。",
+      "startMs": 10549,
+      "endMs": 14427,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC29": [
+    {
+      "text": "收集既完整，又没有混入不经过 P 的成员。",
+      "startMs": 70,
+      "endMs": 3658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此不漏本次该报的对，也不增加空交集。",
+      "startMs": 4119,
+      "endMs": 7930,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "此前已报告的对不会重报。",
+      "startMs": 8259,
+      "endMs": 10218,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "重复或反向输入仍保留不同身份，交换同一对的次序才不产生新对。",
+      "startMs": 10679,
+      "endMs": 16368,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC30": [
+    {
+      "text": "图中是同线的一对非零输入。",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "为区分身份，把各自的范围分行展示。",
+      "startMs": 2699,
+      "endMs": 6057,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "P 是较晚的开始位置，两份输入的原始端点已经全部给定。",
+      "startMs": 6489,
+      "endMs": 12128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC31": [
+    {
+      "text": "现在就能确定并报告整段闭交集，右端可以在 P 的右边，不必等扫描走到那里。",
+      "startMs": 70,
+      "endMs": 6550,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "累计结果按报告时机成立。",
+      "startMs": 6889,
+      "endMs": 9128,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能把它改写成当前位置左边所有几何部分的合集。",
+      "startMs": 9609,
+      "endMs": 13470,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC32": [
+    {
+      "text": "图中低处是当前的 P，高处是同列尚未处理的位置。",
+      "startMs": 70,
+      "endMs": 4687,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "先报告所有本次该报的对。",
+      "startMs": 5119,
+      "endMs": 7199,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "在 P 结束的成员和点输入，都参加这次报告。",
+      "startMs": 7689,
+      "endMs": 11598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC33": [
+    {
+      "text": "报告完成后，在 P 结束的成员退出，点输入也不留到后面。",
+      "startMs": 70,
+      "endMs": 5198,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "留下穿过者和非零开始者，只把当前块改成右侧顺序。",
+      "startMs": 5689,
+      "endMs": 10417,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "块外保留原状态。",
+      "startMs": 10879,
+      "endMs": 12159,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC34": [
+    {
+      "text": "同列高处尚未处理的结束者仍保留，不能随着低处一起删除或换序。",
+      "startMs": 70,
+      "endMs": 5588,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "低处已处理、高处未处理的约定，就这样延续到下一个位置。",
+      "startMs": 6019,
+      "endMs": 10788,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC35": [
+    {
+      "text": "成员变化后重算当前覆盖。",
+      "startMs": 70,
+      "endMs": 2429,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "图中新增成员使最远右端延长，邻居名字虽然没变，也要补检。",
+      "startMs": 2799,
+      "endMs": 8708,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "确认交点时只能用真实闭范围，不能拿整条支撑直线替代。",
+      "startMs": 9159,
+      "endMs": 13728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC36": [
+    {
+      "text": "若组已没有成员，就退出活动顺序。",
+      "startMs": 150,
+      "endMs": 3438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "以后同线成员开始时再加入。",
+      "startMs": 3869,
+      "endMs": 6309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "尚未开始的部分不能倒过来填补眼前的空隙，也不能提前参与未来检查。",
+      "startMs": 6789,
+      "endMs": 12438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC37": [
+    {
+      "text": "更新形成的新邻接都要检查：新块内部、它与外侧的边界，以及块空时新连上的两侧。",
+      "startMs": 70,
+      "endMs": 6978,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这些新邻接检查与覆盖延长补检，两者缺一不可。",
+      "startMs": 7419,
+      "endMs": 11400,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC38": [
+    {
+      "text": "先确认交点落在真实闭范围，再按 x 坐标优先、同列按高度的完整次序判断严格未来。",
+      "startMs": 70,
+      "endMs": 7578,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同列高处仍可在未来。",
+      "startMs": 8019,
+      "endMs": 10019,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "当前位置和过去不重新加入，已登记的真实未来位置继续保留。",
+      "startMs": 10489,
+      "endMs": 15547,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC39": [
+    {
+      "text": "重复发现只合并位置，不合并原始输入身份。",
+      "startMs": 70,
+      "endMs": 4048,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "成员、顺序、覆盖和累计结果的保证继续成立。",
+      "startMs": 4519,
+      "endMs": 8278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这次还执行了两类检查。",
+      "startMs": 8739,
+      "endMs": 10619,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "接下来单独说明：为什么所假设的下一处不会被清单跳过。",
+      "startMs": 11159,
+      "endMs": 16039,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC40": [
+    {
+      "text": "现在从已正确处理的边界向后看。",
+      "startMs": 70,
+      "endMs": 2710,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若还有真实事件，取按完整次序最早的一个，记为 Q。",
+      "startMs": 3099,
+      "endMs": 9088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这是证明里选择实际几何位置，不是要求算法先枚举全部交点。",
+      "startMs": 9559,
+      "endMs": 14838,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC41": [
+    {
+      "text": "若 Q 带端点或点输入，它在初始化时就已登记。",
+      "startMs": 70,
+      "endMs": 4408,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这个位置尚未处理，记录仍在清单里。",
+      "startMs": 4869,
+      "endMs": 8350,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC42": [
+    {
+      "text": "否则，Q 只能是不同组非零输入的真实交点。",
+      "startMs": 70,
+      "endMs": 4363,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "此前事件已正确处理，两类检查也都执行。",
+      "startMs": 4824,
+      "endMs": 8263,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "当前成员真实覆盖交点，真实预约保留。",
+      "startMs": 8764,
+      "endMs": 12363,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "已有组发现及同列结论于是保证 Q 及时登记。",
+      "startMs": 12804,
+      "endMs": 16804,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC43": [
+    {
+      "text": "有些交点还要等新邻接或覆盖延长才被发现。",
+      "startMs": 70,
+      "endMs": 3670,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "邻居不变而覆盖后来才够到，也已被补检覆盖。",
+      "startMs": 4049,
+      "endMs": 7728,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "图中的顺序是完整位置次序，不只是 x 坐标。",
+      "startMs": 8189,
+      "endMs": 12338,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "同列高处也可能是下一处。",
+      "startMs": 12829,
+      "endMs": 15029,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC44": [
+    {
+      "text": "清单只含真实未处理位置，而且已经包含 Q。",
+      "startMs": 70,
+      "endMs": 4518,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "若还有比 Q 更早的清单位置，它也是真实未处理事件，就与 Q 的选择矛盾。",
+      "startMs": 4969,
+      "endMs": 11038,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC45": [
+    {
+      "text": "所以取清单最小位置，必然取到 Q。",
+      "startMs": 70,
+      "endMs": 3528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这才补上第三节所需的下一处前提。",
+      "startMs": 4019,
+      "endMs": 6930,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同位置合并保证只到站一次。",
+      "startMs": 7239,
+      "endMs": 9679,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "到站后仍收齐全部参与者，保留不同原始输入对。",
+      "startMs": 10159,
+      "endMs": 14438,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC46": [
+    {
+      "text": "第二节建立空状态和第一处。",
+      "startMs": 70,
+      "endMs": 2309,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "第三节在到达那里后保持保证，并执行两类检查。",
+      "startMs": 2699,
+      "endMs": 7098,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这就得到一个新的已正确处理边界。",
+      "startMs": 7539,
+      "endMs": 9979,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC47": [
+    {
+      "text": "从这个边界，第四节保证下一处及时登记并被取到；第三节再说明处理后继续正确。",
+      "startMs": 150,
+      "endMs": 7848,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "每一步只用此前已经建立的状态，没有借用后面的处理结果，因而没有循环论证。",
+      "startMs": 8289,
+      "endMs": 14568,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC48": [
+    {
+      "text": "输入有限，所以端点和点输入位置有限，非零输入的所在直线也有限。",
+      "startMs": 70,
+      "endMs": 6177,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "每两条不同直线至多相交一次，只有落在实际闭范围内的位置才成为事件。",
+      "startMs": 6639,
+      "endMs": 12817,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC49": [
+    {
+      "text": "重叠区间虽然有无穷多个公共点，但在加入时作为完整区间报告。",
+      "startMs": 70,
+      "endMs": 5658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "不会把区间里的每个点都列成事件，因此真实事件位置仍然有限。",
+      "startMs": 6119,
+      "endMs": 11317,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC50": [
+    {
+      "text": "每步只处理有限成员、输入对和检查。",
+      "startMs": 70,
+      "endMs": 2869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "处理后移去当前位置，严格未来比较禁止它重新加入。",
+      "startMs": 3249,
+      "endMs": 7747,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同位置合并也禁止存多份。",
+      "startMs": 8189,
+      "endMs": 10269,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "每次完成一个此前未完成的真实位置，所以只能处理有限次。",
+      "startMs": 10759,
+      "endMs": 15528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC51": [
+    {
+      "text": "有限终止还不等于结果完整。",
+      "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "假设结束时仍有真实事件未处理，就能选出最早的 Q。",
+      "startMs": 2599,
+      "endMs": 7648,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "这里需要第四节的下一处必达，不能只靠刚才的有限性。",
+      "startMs": 8139,
+      "endMs": 12298,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC52": [
+    {
+      "text": "第四节保证 Q 已经在清单里，这就与清单为空产生矛盾。",
+      "startMs": 70,
+      "endMs": 4637,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以全部真实事件都已到达，第三节保证正确性一直保持到最后一个边界。",
+      "startMs": 5069,
+      "endMs": 10598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC53": [
+    {
+      "text": "同线非零相交对的后开始者端点已处理。",
+      "startMs": 70,
+      "endMs": 3400,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "同点开始者也已按固定身份顺序加入。",
+      "startMs": 3749,
+      "endMs": 6789,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此唯一报告时机已经发生，留下完整闭交集，可能是一段区间，也可能只有一个点。",
+      "startMs": 7269,
+      "endMs": 14758,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC54": [
+    {
+      "text": "不同组非零相交对的唯一交点已处理，完整相遇块展开了这一对。",
+      "startMs": 70,
+      "endMs": 5428,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "含点的相交对也在点位置配对完成。",
+      "startMs": 5919,
+      "endMs": 8879,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "这两类都得到那个点。",
+      "startMs": 9339,
+      "endMs": 11019,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC55": [
+    {
+      "text": "三类互斥穷尽、类内唯一，又不报告空交集。",
+      "startMs": 70,
+      "endMs": 4068,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "现在所有报告时机都已发生。",
+      "startMs": 4519,
+      "endMs": 6559,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "所以不漏、不多报、不重复。",
+      "startMs": 7039,
+      "endMs": 9278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "多个输入对可以共享同一结果位置，位置合并不删去不同的对。",
+      "startMs": 9759,
+      "endMs": 14808,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC56": [
+    {
+      "text": "没有输入时，不需要走出第一步，空结果已经完整。",
+      "startMs": 70,
+      "endMs": 4538,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "OC57": [
+    {
+      "text": "只有一份输入时，可能处理它的端点，但没有两份不同输入可配对。",
+      "startMs": 70,
+      "endMs": 5498,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "结果仍为空。",
+      "startMs": 5939,
+      "endMs": 7219,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    }
+  ],
+  "OC58": [
+    {
+      "text": "全部互不相交时，每次也都找不到非空输入对，得到空结果。",
+      "startMs": 70,
+      "endMs": 5410,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "前面的推进和结束理由，从未要求至少有一个交点。",
+      "startMs": 5789,
+      "endMs": 9908,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC59": [
+    {
+      "text": "没有使用剪切时，结果已经是原坐标中的结果。",
+      "startMs": 70,
+      "endMs": 3780,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "使用剪切时，扫描坐标记作 (x',y')，原坐标记作 (x,y)，统一系数仍记作 s。",
+      "startMs": 4119,
+      "endMs": 13598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC60": [
+    {
+      "text": "用第七章的逆变换：原 x 坐标等于扫描 x 坐标减去系数乘扫描 y 坐标，y 坐标不变。",
+      "startMs": 70,
+      "endMs": 9028,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "点还原为点；区间两端逆变换以后，结果是两端之间的整段闭交集，不是两个点结果。",
+      "startMs": 9489,
+      "endMs": 17510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ],
+  "OC61": [
+    {
+      "text": "变换一一对应，身份始终保留，所以不会制造相交对，也不合并重复或反向输入。",
+      "startMs": 70,
+      "endMs": 7278,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "从空状态到每次必达并保持，再到全部报告完成和原坐标还原，整体证明到此闭合。",
+      "startMs": 7709,
+      "endMs": 15118,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    }
+  ]
+}

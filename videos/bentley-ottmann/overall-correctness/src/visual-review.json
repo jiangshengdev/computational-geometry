@@ -1041,5 +1041,6 @@
     "不是全片连续播放或稳定60fps验收。",
     "浏览器截图为本次会话临时证据；稳定ID、捕获帧、等价区间与源码哈希保留以供复核。",
     "没有语音、试听、视频或Remotion静帧导出。"
-  ]
+  ],
+  "currentMeasuredReview": "sync-review.json; historical silent-stage evidence below remains tied to its own baseline"
 }
