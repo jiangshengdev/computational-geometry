@@ -1,0 +1,57 @@
+{
+  "baseline": "f4411934a3dc4a92eb625f0e12626f7d9a1a0490",
+  "scope": [
+    "TW06",
+    "TW21",
+    "TW26",
+    "TW34"
+  ],
+  "changes": [
+    {
+      "id": "TW06",
+      "before": "每次参与的组数依次是一、一、一、四、一、一、一。",
+      "after": [
+        "前三个事件各有一组参与。",
+        "第四个事件有四组参与。",
+        "最后三个事件也各有一组参与。"
+      ],
+      "status": "candidate-only; not adopted",
+      "semanticCheck": "逐位置序列1,1,1,4,1,1,1等价改写，E7/H10/k6及局部1/4/6不变"
+    },
+    {
+      "id": "TW21",
+      "before": "两个长成员报告一条从零到六的完整重叠区间。",
+      "after": [
+        "两份长成员报告一条从零到六的完整重叠区间。"
+      ],
+      "status": "candidate-only; not adopted",
+      "semanticCheck": "两份仍是两个原始长成员；x0与x2两阶段及新输出1/2不变"
+    },
+    {
+      "id": "TW26",
+      "before": "只有一个组而没有点输入时。",
+      "after": [
+        "只有一个组并且没有点输入时。"
+      ],
+      "status": "candidate-only; not adopted",
+      "semanticCheck": "单组且无点为合取条件；有点/无点/零组分支不变"
+    },
+    {
+      "id": "TW34",
+      "before": "不展开两组全部成员对。",
+      "after": [
+        "这里不会展开两组的全部成员对。"
+      ],
+      "status": "candidate-only; not adopted",
+      "semanticCheck": "明确否定不会展开全部成员对；固定直线和真实覆盖检查保留"
+    }
+  ],
+  "pronunciationNotes": [
+    "pypinyin0.55.0实际查询见query.json；不是词典裁决",
+    "长成员按几何长短义沿用chang2，未采用库误选zhang3",
+    "一组按数量短语、组为三声，读yi4；不会的不在去声会前读bu2",
+    "只有、两组沿用上声变调zhi2 you3/liang2 zu3；的为de5；其他未变部分逐字沿用已审标注"
+  ],
+  "adopted": false,
+  "listened": false
+}

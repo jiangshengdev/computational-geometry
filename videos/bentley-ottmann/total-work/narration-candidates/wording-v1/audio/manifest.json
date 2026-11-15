@@ -1,0 +1,41 @@
+{
+  "planSha256": "0ea8d4c7abe1b90bd1bb64770f853c2d51324ac21e8cb79897c3db80aad8c3f5",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "automaticRetries": 0,
+  "published": false,
+  "requests": [
+    {
+      "id": "TW06",
+      "fingerprint": "f81421cdf05ab66dd66b5f4a897d79936d2920c4b5101cf4090573a5cadc561b",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:49:22.014Z",
+      "endedAt": "2026-11-15T07:49:27.057Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW21",
+      "fingerprint": "86ed9ad6d85be0326f9c8635e37f38356181a5b179b7dbbf704fda06cd97582a",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:49:22.021Z",
+      "endedAt": "2026-11-15T07:49:27.408Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW26",
+      "fingerprint": "8c5dada5c79d846dca658e3c6e4b067a5ac428686e08825e2d9070d1c5c34fcf",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:49:22.022Z",
+      "endedAt": "2026-11-15T07:49:26.699Z",
+      "diagnostic": ""
+    },
+    {
+      "id": "TW34",
+      "fingerprint": "d07eafc80b52b21871e5661170a9ee5b8fffa466b132f522f69afb4c329a37a2",
+      "status": "synthesized-and-decoded",
+      "startedAt": "2026-11-15T07:49:22.022Z",
+      "endedAt": "2026-11-15T07:49:26.343Z",
+      "diagnostic": ""
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "mode": "plan-only",
+  "voice": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+  "outputFormat": "riff-48khz-16bit-mono-pcm",
+  "automaticRetries": 0,
+  "requests": 4,
+  "documents": [
+    {
+      "id": "TW06",
+      "audioFile": "TW06.wav",
+      "text": "沿完整位置次序走过七个事件。前三个事件各有一组参与。第四个事件有四组参与。最后三个事件也各有一组参与。于是全程事件数是七。累计参与组数是十。相交原始对数是六。原点那一次的局部数目仍然是一、四、六。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"yan 2\">沿</phoneme>完整位置次序走过七个事件。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"qian 2 san 1 ge 4 shi 4 jian 4 ge 4 you 3 yi 4 zu 3 can 1 yu 4\">前三个事件各有一组参与</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"di 4 si 4 ge 4 shi 4 jian 4 you 3 si 4 zu 3 can 1 yu 4\">第四个事件有四组参与</phoneme>。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zui 4 hou 4 san 1 ge 4 shi 4 jian 4 ye 3 ge 4 you 3 yi 4 zu 3 can 1 yu 4\">最后三个事件也各有一组参与</phoneme>。<break time=\"400ms\"/>于是全程事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>是七。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4 can 1 yu 4\">累计参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>是十。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"xiang 1\">相</phoneme>交原始对<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>是六。<break time=\"200ms\"/>原点<phoneme alphabet=\"sapi\" ph=\"na 4 yi 2\">那一</phoneme>次<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>局部<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>目仍然是<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>、四、六。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "f81421cdf05ab66dd66b5f4a897d79936d2920c4b5101cf4090573a5cadc561b",
+      "pauses": [
+        {
+          "offset": 14,
+          "breakMs": 200
+        },
+        {
+          "offset": 26,
+          "breakMs": 200
+        },
+        {
+          "offset": 37,
+          "breakMs": 200
+        },
+        {
+          "offset": 51,
+          "breakMs": 400
+        },
+        {
+          "offset": 61,
+          "breakMs": 200
+        },
+        {
+          "offset": 70,
+          "breakMs": 200
+        },
+        {
+          "offset": 79,
+          "breakMs": 200
+        },
+        {
+          "offset": 98,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW21",
+      "audioFile": "TW21.wav",
+      "text": "当 x 坐标为零时。两份长成员报告一条从零到六的完整重叠区间。当 x 坐标为二时。短成员与两个长成员分别报告一条从二到三的完整重叠区间。前两次事件分别新增一对和两对。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>零时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"liang 3 fen 4 chang 2 cheng 2 yuan 2\">两份长成员</phoneme>报告<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>条<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>零到六<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>完整<phoneme alphabet=\"sapi\" ph=\"chong 2 die 2 qu 1 jian 1\">重叠区间</phoneme>。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"dang 1\">当</phoneme> <lang xml:lang=\"en-US\"><say-as interpret-as=\"characters\">X</say-as></lang> 坐标<phoneme alphabet=\"sapi\" ph=\"wei 2\">为</phoneme>二时。<break time=\"200ms\"/>短成员<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>两个<phoneme alphabet=\"sapi\" ph=\"chang 2 cheng 2 yuan 2 fen 1 bie 2\">长成员分别</phoneme>报告<phoneme alphabet=\"sapi\" ph=\"yi 4\">一</phoneme>条<phoneme alphabet=\"sapi\" ph=\"cong 2\">从</phoneme>二到三<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>完整<phoneme alphabet=\"sapi\" ph=\"chong 2 die 2 qu 1 jian 1\">重叠区间</phoneme>。<break time=\"200ms\"/>前两次事件<phoneme alphabet=\"sapi\" ph=\"fen 1 bie 2\">分别</phoneme>新增<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>对<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>两对。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "86ed9ad6d85be0326f9c8635e37f38356181a5b179b7dbbf704fda06cd97582a",
+      "pauses": [
+        {
+          "offset": 10,
+          "breakMs": 200
+        },
+        {
+          "offset": 31,
+          "breakMs": 400
+        },
+        {
+          "offset": 41,
+          "breakMs": 200
+        },
+        {
+          "offset": 68,
+          "breakMs": 200
+        },
+        {
+          "offset": 83,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW26",
+      "audioFile": "TW26.wav",
+      "text": "只有一个组但有点输入时。每份成员至少产生一个新的点与线段的结果。足够支付展开。只有一个组并且没有点输入时。不展开整个旧成员表。零个组时。没有非零成员可展开。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\"><phoneme alphabet=\"sapi\" ph=\"zhi 2 you 3 yi 2\">只有一</phoneme>个组但<phoneme alphabet=\"sapi\" ph=\"you 3\">有</phoneme>点输入时。<break time=\"200ms\"/>每<phoneme alphabet=\"sapi\" ph=\"fen 4\">份</phoneme>成员至<phoneme alphabet=\"sapi\" ph=\"shao 3\">少</phoneme>产生<phoneme alphabet=\"sapi\" ph=\"yi 2\">一</phoneme>个新<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>点<phoneme alphabet=\"sapi\" ph=\"yu 3\">与</phoneme>线段<phoneme alphabet=\"sapi\" ph=\"de 5 jie 2\">的结</phoneme>果。<break time=\"200ms\"/>足够支付展开。<break time=\"400ms\"/><phoneme alphabet=\"sapi\" ph=\"zhi 2 you 3 yi 2\">只有一</phoneme>个组<phoneme alphabet=\"sapi\" ph=\"bing 4 qie 3 mei 2 you 3\">并且没有</phoneme>点输入时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"bu 4\">不</phoneme>展开整个旧成员表。<break time=\"200ms\"/>零个组时。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"mei 2 you 3\">没有</phoneme>非零成员<phoneme alphabet=\"sapi\" ph=\"ke 3\">可</phoneme>展开。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "8c5dada5c79d846dca658e3c6e4b067a5ac428686e08825e2d9070d1c5c34fcf",
+      "pauses": [
+        {
+          "offset": 12,
+          "breakMs": 200
+        },
+        {
+          "offset": 32,
+          "breakMs": 200
+        },
+        {
+          "offset": 39,
+          "breakMs": 400
+        },
+        {
+          "offset": 53,
+          "breakMs": 200
+        },
+        {
+          "offset": 63,
+          "breakMs": 200
+        },
+        {
+          "offset": 68,
+          "breakMs": 200
+        },
+        {
+          "offset": 78,
+          "breakMs": 400
+        }
+      ]
+    },
+    {
+      "id": "TW34",
+      "audioFile": "TW34.wav",
+      "text": "每次事件的检查量由参与组数加一控制。累计就是参与组总数与事件数之和的数量级。每次用固定直线和真实覆盖检查候选。这里不会展开两组的全部成员对。",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"zh-CN\"><voice name=\"zh-CN-Xiaoxiao:DragonHDFlashLatestNeural\">每次事件<phoneme alphabet=\"sapi\" ph=\"de 5\">的</phoneme>检<phoneme alphabet=\"sapi\" ph=\"cha 2 liang 4\">查量</phoneme>由<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>加<phoneme alphabet=\"sapi\" ph=\"yi 1\">一</phoneme>控制。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"lei 3 ji 4\">累计</phoneme>就是<phoneme alphabet=\"sapi\" ph=\"can 1 yu 4\">参与</phoneme>组总<phoneme alphabet=\"sapi\" ph=\"shu 4 yu 3\">数与</phoneme>事件<phoneme alphabet=\"sapi\" ph=\"shu 4\">数</phoneme>之<phoneme alphabet=\"sapi\" ph=\"he 2 de 5 shu 4 liang 4\">和的数量</phoneme>级。<break time=\"400ms\"/>每次用固定直线<phoneme alphabet=\"sapi\" ph=\"he 2\">和</phoneme>真实覆盖检<phoneme alphabet=\"sapi\" ph=\"cha 2\">查</phoneme>候选。<break time=\"200ms\"/><phoneme alphabet=\"sapi\" ph=\"zhe 4 li 3 bu 2 hui 4\">这里不会</phoneme>展开<phoneme alphabet=\"sapi\" ph=\"liang 2 zu 3 de 5\">两组的</phoneme>全部成员对。<break time=\"400ms\"/></voice></speak>",
+      "fingerprint": "d07eafc80b52b21871e5661170a9ee5b8fffa466b132f522f69afb4c329a37a2",
+      "pauses": [
+        {
+          "offset": 18,
+          "breakMs": 200
+        },
+        {
+          "offset": 38,
+          "breakMs": 400
+        },
+        {
+          "offset": 55,
+          "breakMs": 200
+        },
+        {
+          "offset": 70,
+          "breakMs": 400
+        }
+      ]
+    }
+  ]
+}

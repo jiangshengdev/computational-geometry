@@ -1,5 +1,7 @@
 # 第十集：总工作量为什么受控
 
+最新局部措辞候选与四段前后对照见 [wording-v1](narration-candidates/wording-v1/REVIEW.md)。候选未采用，原始批次和生产源保持不变。
+
 独立 Remotion 工程。父规格 [CNB #407](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/407)，阶段票 [#408](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/408) → [#409](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/409) → [#410](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/410) → [#411](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/411)；后续配音同步 [#412](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/412)、作者导出与真实成片验收 [#413](https://cnb.cool/jiangshengdev/computational-geometry/-/issues/413) 本轮不执行。
 
 依据为[第十章中文正文](../../../docs-site/i18n/zh-Hans/docusaurus-plugin-content-docs/current/segment-intersection/total-work.mdx)。#396 是文章规格，不是本集父规格。第九集成果不改动。

@@ -1,11 +1,10 @@
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import { synthesizeBatch } from "../../../shared/speech/synthesize-batch.ts";
 import { configureSpeechConfig } from "../../../shared/speech/network.ts";
-import { currentNarrationPlan } from "./narration-plan.ts";
-import speech from "../src/speech-text.json" with { type: "json" };
+import { currentNarrationPlan, narrationSpeech } from "./narration-plan.ts";
 await synthesizeBatch(
   sdk,
-  speech,
+  narrationSpeech,
   () => {
     currentNarrationPlan();
   },
