@@ -32,10 +32,811 @@
     "contentAndCompleteDecode": "passed",
     "sentencePauses": "45 shots, 261 boundaries passed",
     "existingTimingAndSourceTests": "17 passed",
-    "TW06SubtitleOverflow": "fixed via measured caption subdivisions; 30 production layout states passed"
+    "TW06SubtitleOverflow": "fixed via measured caption subdivisions; 30 production layout states passed",
+    "fullLayout": {
+      "initialProductionStates": 838,
+      "initialFailure": "TW06 subtitle overflow only",
+      "fixedShot": "TW06",
+      "fixedProductionStates": 30,
+      "unchangedPassingStates": 809,
+      "currentCombinedCoverage": 839,
+      "result": "PASS after targeted correction; no claim of a second full run"
+    },
+    "lintAndTypes": "PASS after JSON AudioTiming boundary assertion"
   },
-  "independentVisual": "in progress; not an acceptance declaration",
+  "independentVisual": {
+    "reviewer": "tw_measured_visual",
+    "result": "no blocking findings within observed scope",
+    "hashes": {
+      "src/timeline.ts": "7614b080dd6e930c12f6ecc8047f74c30ca04fe348c929bc66ca6c94c841bde0",
+      "src/WorkDiagram.tsx": "e75d70f71b5be8d9065a8a6c95aebc0208aa525ad5db82c0cbb4dae1934e1489",
+      "src/TeachingPage.tsx": "23494e1d612559ae5810526b904011fe79d0d9fcab8bd8eff0de6eb2c5f813ee",
+      "src/captions.json": "94f6ccea37f3bd1fc5f20dc16936e247aabfeb642ddeb7cd7a299c013ae8b6e8",
+      "src/audio-timing.json": "22c5f28d3475f7a6c5faa55fd928f1e4f6d53d42dfaa69bab7e0442956a7e632",
+      "src/speech-text.json": "1269bc613de15307ed422b95ac7a824811f3c6866665228a23e4a613bd41d843",
+      "src/lesson.json": "867ba2658db07c0b7d33321f533ed759e75ed96499ea509f552687f78399610f",
+      "src/narration-text.json": "e2d2a5e121b17a3f79516cf372b9129dd1ab5f0b949f86690305fbd1c2686869"
+    },
+    "report": "# 第十集实测配音接入：独立画面与时间线对齐\n\n检查者：tw_measured_visual。本轮只读、未参与制作；基线 main 200c28fb7b1183018f48b1746719fcaccde60e3b，检查该基线上的当前接入工作树。2026-11-15。生产版本哈希见 /tmp/twm-reviewed-hashes.json。读取根与videos AGENTS、workflow/timeline/presentation/layout/delivery/configuration/operations、当前lesson/TeachingPage/WorkDiagram/timeline及中文版total-work正文。历史visual-review中V1–V8作为已有纠正依据；这次不重复把历史审查称为新发现。\n\n结论：本次实际覆盖内未发现新的阻断性画面、语义切换或实测同步偏差。未实听，不对读音作通过判断；不是全片连续播放、逐帧检查、可见桌面或真实成片验收。\n\n## 逐状态实际目视\n\n只使用指定Chrome Headless Shell 158.0.8127.2、/tmp/tw-browser.json、自有playwright-cli会话twmeasured，访问现有33225 Studio；LayoutCheck使用真实TeachingPage。截图为浏览器截图，没有Remotion静帧或媒体导出。\n\n45镜TW01–45，各查看local0、实测motion区间中点、durationInFrames−1，共135张：/tmp/twm-TWxx-start.png、mid.png、end.png；逐一阅读九张拼接图/tmp/twm-sheet1.png至9.png。精确帧清单 /tmp/tw-measured-states.json；当前实测行 /tmp/tw-measured-rows-final.json。\n\n另看TW21 local423/424和TW26 local493/494，以及17个额外关键状态（/tmp/twm-keys.json，/tmp/twm-key-*.png，拼接图key-sheet0/1），共156个浏览器截图状态。此数量只表示样本覆盖，不是整个视频所有帧。\n\n- 16页起始与所有相邻镜末态/下一镜起态：正文已讲行保留、无图时居中、有图时左图右文；字幕同页续留、跨页清除；最后字幕与结果在末帧可见。读取时间线16页均显式2秒页末停留，末态截图确认内容保留；不称逐帧观察全部停留。\n- TW01 local281/446/558显示穿过的两条、结束、开始的对应强调，几何位置不变，坐标轴箭头存在；TW03起始/中态/末态六个原始无序对由0到3到6。\n- TW06关键帧197/327/342/460/476/605：前三事件从1行累加到3行；第四事件4组使H=7、k=6；最后三事件使E=7、H=10、k=6；同一完整账本留到末态。当前显示字幕源为[0,0,0,1]，合并的“第四个有4组，最后三个也各有1组。”可读；图中两阶段仍用不同实测词锚点。局部原点1/4/6与全程7/10/6分开。\n- TW13不提前显示c_p；TW14有h_p=4、c_p=6；TW18不把H≤E+2k提前放入图；TW19才出现该结果。E≤2n+k、H≤E+2k≤2n+3k符合文章的真实见证、开始组计入和唯一新输出边界。\n- TW21 source0末帧423仍是x=0、长成员与1个完整[0,6]结果；424与“当x坐标为二时。”实测口播起点一致，变为x=2及3份累计结果。图不依赖拆分字幕数组索引。global19423即323.7167s为切换帧。\n- TW22 local294/295只将短成员退出；TW23 local323/324使长成员退出、组空。所有此前报告的完整结果保持绿色独立行，未重输出。四事件新输出1/2/0/0，组与结果语义分开。\n- TW25每份成员有配对见证。TW26 local493仍是单组G0、有点输入和三条点—段见证；494与“只有一个组并且没有点输入时。”同步切为成员表保留/不展开，点和见证消失。后续source1第二字幕“零组没有非零成员可展开”不再次切回或展开。global24650即410.8333s为切换帧；TW27换页正确。\n- TW33 local551/710内部两邻接依次出现，720/806再加两侧；r≤h_p在主图，空块与覆盖补检说明保留；TW34/35承接完整邻接图，未以成功入队数替代重复尝试次数。\n- TW36队列对数界一行保留n≥1依据；TW38–40账本包含清理及空输入O(1)。TW41–43同一原点事件上的普通求交/精确数值/教学记录三栏逐列出现并保留，必要成员展开归普通求交，无秒数/性能声称。TW44/45结尾保留总账与三种成本边界。\n- 上述数学内容直接对照中文版文章相应段落；本次未改教学内容，历史复用审校仍引用无声基线的有效记录，不声称重新通读所有前集。\n\n## 独立于逐状态检查的实际1x播放抽查\n\n在TotalWork正式播放器中用Studio Play/Pause运行，播放率保持1x、静音；运行期间每约4秒采样浏览器画面。没有试听。截图可见播放器进度和播放状态；无头预览显示帧率有波动（已见约15.5–36.8fps），不声称稳定60fps。\n\n- TW06从global4076（67.9333s）起，约24秒运行采样，跨入TW07；play06-0…5.png。观察账本累加、完成后保持、换页。\n- TW21前30帧起global18969（316.15s），约48秒运行采样覆盖TW21、TW22、TW23的主要过程；play21-0…11.png。观察x0→x2、短成员退出、长成员退出及完整旧结果持续留存。该段未宣称观察到下一页TW24。\n- TW26前30帧起global24126（402.1s），约24秒运行采样跨TW27；play26-0…5.png。源切换与图变同步，无点分支及末段保留。\n- TW33前30帧起global32301（538.35s），约28秒运行采样跨TW34；play33-0…6.png。先内部后边界，完整图保留到后继。\n\n媒体实际推进另有原始证据，不能仅以截图/播放计数代替：/tmp/twm-play26.log和/tmp/twm-play33.log的Result记录active audio.currentTime、playbackRate、paused、muted。TW26同源currentTime为2.929061→7.265552→11.410034→15.539878秒，继而TW27为1.349329→5.466839；TW33为2.916641→7.139094→11.450935→15.577933→19.586653秒，继而TW34为1.011593→5.189231。所有采样rate=1、paused=false、muted=true。TW06/TW21脚本只保存截图，console.log未进入CLI结果，因此不把它们说成另有已保留的媒体时钟数据。\n\n## 版本与边界\n\n当前总45479帧/60fps=757.9833秒（12:37.9833）；此处是时间线值，不是导出成片时长。未重新调用合成或识别、未改正式文件/Git配置/工单、未裁切或调速、未触碰第九集、未执行导出。全片机器音频证据45/45及LFS/推送由制作方另验，本报告不冒领这些检查。没有新增待修阻断；听辨、全片真实成片及作者导出仍未由本检查完成。\n\n自有twmeasured浏览器在完成后关闭，作者Studio保留。\n\n## 控制台核查\n\n已读取本会话两份原始console日志（/tmp/.playwright-cli/console-2026-11-15T08-09-00-046Z.log与08-12-55-919Z.log）。ERROR均为https://bugs.remotion.dev/api/4.0.543的ERR_TUNNEL_CONNECTION_FAILED，紧随Could not check for bugs in this version；它是Remotion版本问题查询外网失败，不是narration WAV加载错误。日志内未见其他ERROR/WARN或媒体加载故障；实际媒体推进证据另见上节。不据此宣称所有未采样音频的播放验收。\n",
+    "observedStates": [
+      {
+        "id": "TW01",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW01",
+        "frame": 353,
+        "name": "mid"
+      },
+      {
+        "id": "TW01",
+        "frame": 707,
+        "name": "end"
+      },
+      {
+        "id": "TW02",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW02",
+        "frame": 379,
+        "name": "mid"
+      },
+      {
+        "id": "TW02",
+        "frame": 755,
+        "name": "end"
+      },
+      {
+        "id": "TW03",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW03",
+        "frame": 236,
+        "name": "mid"
+      },
+      {
+        "id": "TW03",
+        "frame": 1016,
+        "name": "end"
+      },
+      {
+        "id": "TW04",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW04",
+        "frame": 421,
+        "name": "mid"
+      },
+      {
+        "id": "TW04",
+        "frame": 842,
+        "name": "end"
+      },
+      {
+        "id": "TW05",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW05",
+        "frame": 376,
+        "name": "mid"
+      },
+      {
+        "id": "TW05",
+        "frame": 751,
+        "name": "end"
+      },
+      {
+        "id": "TW06",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW06",
+        "frame": 625,
+        "name": "mid"
+      },
+      {
+        "id": "TW06",
+        "frame": 1338,
+        "name": "end"
+      },
+      {
+        "id": "TW07",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW07",
+        "frame": 471,
+        "name": "mid"
+      },
+      {
+        "id": "TW07",
+        "frame": 940,
+        "name": "end"
+      },
+      {
+        "id": "TW08",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW08",
+        "frame": 385,
+        "name": "mid"
+      },
+      {
+        "id": "TW08",
+        "frame": 769,
+        "name": "end"
+      },
+      {
+        "id": "TW09",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW09",
+        "frame": 379,
+        "name": "mid"
+      },
+      {
+        "id": "TW09",
+        "frame": 847,
+        "name": "end"
+      },
+      {
+        "id": "TW10",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW10",
+        "frame": 377,
+        "name": "mid"
+      },
+      {
+        "id": "TW10",
+        "frame": 754,
+        "name": "end"
+      },
+      {
+        "id": "TW11",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW11",
+        "frame": 435,
+        "name": "mid"
+      },
+      {
+        "id": "TW11",
+        "frame": 871,
+        "name": "end"
+      },
+      {
+        "id": "TW12",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW12",
+        "frame": 445,
+        "name": "mid"
+      },
+      {
+        "id": "TW12",
+        "frame": 981,
+        "name": "end"
+      },
+      {
+        "id": "TW13",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW13",
+        "frame": 546,
+        "name": "mid"
+      },
+      {
+        "id": "TW13",
+        "frame": 1090,
+        "name": "end"
+      },
+      {
+        "id": "TW14",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW14",
+        "frame": 437,
+        "name": "mid"
+      },
+      {
+        "id": "TW14",
+        "frame": 962,
+        "name": "end"
+      },
+      {
+        "id": "TW15",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW15",
+        "frame": 619,
+        "name": "mid"
+      },
+      {
+        "id": "TW15",
+        "frame": 1158,
+        "name": "end"
+      },
+      {
+        "id": "TW16",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW16",
+        "frame": 493,
+        "name": "mid"
+      },
+      {
+        "id": "TW16",
+        "frame": 985,
+        "name": "end"
+      },
+      {
+        "id": "TW17",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW17",
+        "frame": 379,
+        "name": "mid"
+      },
+      {
+        "id": "TW17",
+        "frame": 848,
+        "name": "end"
+      },
+      {
+        "id": "TW18",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW18",
+        "frame": 522,
+        "name": "mid"
+      },
+      {
+        "id": "TW18",
+        "frame": 1043,
+        "name": "end"
+      },
+      {
+        "id": "TW19",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW19",
+        "frame": 638,
+        "name": "mid"
+      },
+      {
+        "id": "TW19",
+        "frame": 1367,
+        "name": "end"
+      },
+      {
+        "id": "TW20",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW20",
+        "frame": 477,
+        "name": "mid"
+      },
+      {
+        "id": "TW20",
+        "frame": 955,
+        "name": "end"
+      },
+      {
+        "id": "TW21",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW21",
+        "frame": 536,
+        "name": "mid"
+      },
+      {
+        "id": "TW21",
+        "frame": 1071,
+        "name": "end"
+      },
+      {
+        "id": "TW22",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW22",
+        "frame": 542,
+        "name": "mid"
+      },
+      {
+        "id": "TW22",
+        "frame": 1082,
+        "name": "end"
+      },
+      {
+        "id": "TW23",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW23",
+        "frame": 479,
+        "name": "mid"
+      },
+      {
+        "id": "TW23",
+        "frame": 1049,
+        "name": "end"
+      },
+      {
+        "id": "TW24",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW24",
+        "frame": 472,
+        "name": "mid"
+      },
+      {
+        "id": "TW24",
+        "frame": 944,
+        "name": "end"
+      },
+      {
+        "id": "TW25",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW25",
+        "frame": 503,
+        "name": "mid"
+      },
+      {
+        "id": "TW25",
+        "frame": 1006,
+        "name": "end"
+      },
+      {
+        "id": "TW26",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW26",
+        "frame": 504,
+        "name": "mid"
+      },
+      {
+        "id": "TW26",
+        "frame": 1097,
+        "name": "end"
+      },
+      {
+        "id": "TW27",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW27",
+        "frame": 485,
+        "name": "mid"
+      },
+      {
+        "id": "TW27",
+        "frame": 967,
+        "name": "end"
+      },
+      {
+        "id": "TW28",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW28",
+        "frame": 488,
+        "name": "mid"
+      },
+      {
+        "id": "TW28",
+        "frame": 976,
+        "name": "end"
+      },
+      {
+        "id": "TW29",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW29",
+        "frame": 666,
+        "name": "mid"
+      },
+      {
+        "id": "TW29",
+        "frame": 1421,
+        "name": "end"
+      },
+      {
+        "id": "TW30",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW30",
+        "frame": 596,
+        "name": "mid"
+      },
+      {
+        "id": "TW30",
+        "frame": 1192,
+        "name": "end"
+      },
+      {
+        "id": "TW31",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW31",
+        "frame": 613,
+        "name": "mid"
+      },
+      {
+        "id": "TW31",
+        "frame": 1226,
+        "name": "end"
+      },
+      {
+        "id": "TW32",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW32",
+        "frame": 600,
+        "name": "mid"
+      },
+      {
+        "id": "TW32",
+        "frame": 1289,
+        "name": "end"
+      },
+      {
+        "id": "TW33",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW33",
+        "frame": 689,
+        "name": "mid"
+      },
+      {
+        "id": "TW33",
+        "frame": 1375,
+        "name": "end"
+      },
+      {
+        "id": "TW34",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW34",
+        "frame": 430,
+        "name": "mid"
+      },
+      {
+        "id": "TW34",
+        "frame": 859,
+        "name": "end"
+      },
+      {
+        "id": "TW35",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW35",
+        "frame": 403,
+        "name": "mid"
+      },
+      {
+        "id": "TW35",
+        "frame": 893,
+        "name": "end"
+      },
+      {
+        "id": "TW36",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW36",
+        "frame": 442,
+        "name": "mid"
+      },
+      {
+        "id": "TW36",
+        "frame": 883,
+        "name": "end"
+      },
+      {
+        "id": "TW37",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW37",
+        "frame": 484,
+        "name": "mid"
+      },
+      {
+        "id": "TW37",
+        "frame": 1058,
+        "name": "end"
+      },
+      {
+        "id": "TW38",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW38",
+        "frame": 544,
+        "name": "mid"
+      },
+      {
+        "id": "TW38",
+        "frame": 1090,
+        "name": "end"
+      },
+      {
+        "id": "TW39",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW39",
+        "frame": 507,
+        "name": "mid"
+      },
+      {
+        "id": "TW39",
+        "frame": 1013,
+        "name": "end"
+      },
+      {
+        "id": "TW40",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW40",
+        "frame": 563,
+        "name": "mid"
+      },
+      {
+        "id": "TW40",
+        "frame": 1218,
+        "name": "end"
+      },
+      {
+        "id": "TW41",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW41",
+        "frame": 427,
+        "name": "mid"
+      },
+      {
+        "id": "TW41",
+        "frame": 854,
+        "name": "end"
+      },
+      {
+        "id": "TW42",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW42",
+        "frame": 543,
+        "name": "mid"
+      },
+      {
+        "id": "TW42",
+        "frame": 1084,
+        "name": "end"
+      },
+      {
+        "id": "TW43",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW43",
+        "frame": 495,
+        "name": "mid"
+      },
+      {
+        "id": "TW43",
+        "frame": 1079,
+        "name": "end"
+      },
+      {
+        "id": "TW44",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW44",
+        "frame": 450,
+        "name": "mid"
+      },
+      {
+        "id": "TW44",
+        "frame": 902,
+        "name": "end"
+      },
+      {
+        "id": "TW45",
+        "frame": 0,
+        "name": "start"
+      },
+      {
+        "id": "TW45",
+        "frame": 369,
+        "name": "mid"
+      },
+      {
+        "id": "TW45",
+        "frame": 827,
+        "name": "end"
+      },
+      {
+        "id": "TW21",
+        "frame": 423,
+        "name": "423"
+      },
+      {
+        "id": "TW21",
+        "frame": 424,
+        "name": "424"
+      },
+      {
+        "id": "TW26",
+        "frame": 493,
+        "name": "493"
+      },
+      {
+        "id": "TW26",
+        "frame": 494,
+        "name": "494"
+      },
+      {
+        "id": "TW01",
+        "frame": 281
+      },
+      {
+        "id": "TW01",
+        "frame": 446
+      },
+      {
+        "id": "TW01",
+        "frame": 558
+      },
+      {
+        "id": "TW06",
+        "frame": 197
+      },
+      {
+        "id": "TW06",
+        "frame": 327
+      },
+      {
+        "id": "TW06",
+        "frame": 342
+      },
+      {
+        "id": "TW06",
+        "frame": 460
+      },
+      {
+        "id": "TW06",
+        "frame": 476
+      },
+      {
+        "id": "TW06",
+        "frame": 605
+      },
+      {
+        "id": "TW22",
+        "frame": 294
+      },
+      {
+        "id": "TW22",
+        "frame": 295
+      },
+      {
+        "id": "TW23",
+        "frame": 323
+      },
+      {
+        "id": "TW23",
+        "frame": 324
+      },
+      {
+        "id": "TW33",
+        "frame": 551
+      },
+      {
+        "id": "TW33",
+        "frame": 710
+      },
+      {
+        "id": "TW33",
+        "frame": 720
+      },
+      {
+        "id": "TW33",
+        "frame": 806
+      }
+    ],
+    "browserScreenshots": 156,
+    "playback": "1x muted samples, not full continuous playback or listening"
+  },
   "fullContinuousPlayback": false,
   "actualFilmExport": false,
-  "issueStatesChanged": false
+  "issueStatesChanged": false,
+  "codeReview": {
+    "fixedPoint": "200c28fb7b1183018f48b1746719fcaccde60e3b",
+    "implementation": "dbf856c8a9566dd30ee67c1cf889b84a2ab7e78a",
+    "standards": "## Standards\n\n审查范围：`git diff 200c28fb7b1183018f48b1746719fcaccde60e3b...HEAD`，受审提交 `dbf856c8a9566dd30ee67c1cf889b84a2ab7e78a`；只读检查，无仓库修改或外部请求。已搜索，仓库内未发现 CONTRIBUTING / CODING_STANDARDS 文件。\n\n硬性规范违例：**0 项**。生产播放复用 `createNarratedLesson`，时间线复用 `measuredShotRows`，字幕与音频核验复用共享模块；没有新增裁切、速率调整、语音请求或导出路径。TW21/TW26 使用语义 `source`，不依赖拆分后的字幕数组下标；修复口播采用后同步字幕，符合 narration.md 的内容对应要求。旧批次整理为正式素材、四段必要对照及绑定当前音频的评估原始证据，符合 delivery.md 的整洁与可追溯要求。\n\n启发式代码异味：**0 项需报告**。镜头特定语义锚点留在本集时间线，未发现值得扩大重构范围的重复实现或无用抽象。\n\n证据边界：本轴未实际试听、播放或执行浏览器审查；`measured-review.json` 的独立画面检查仍明确标为进行中，不能据本报告宣称视觉或整集验收完成。最终应写入另行观察的有效结果；作者导出及真实成片验收继续保留未完成。已知类型检查问题由制作方修复，属于工具强制项，不重复列为规范发现。\n\n结论：Standards 0 项发现，无阻断项；视觉、推送与远端 LFS 验证不由本轴背书。\n",
+    "spec": "规格轴只读审查：200c28f…dbf856c，依据 CNB #407/#412 完整缓存正文（均 comment_count=0）、项目视频规则及用户 1794729559.073149 接入授权。\n\n(a) 缺失/部分：未发现本次实现缺项。#412 的完整实际播放、读音及真实成片验收仍未完成；README/NARRATION_HANDOFF 已准确保留，不能宣称整票验收完成。独立画面检查进行中，不将占位视为实现缺陷。\n\n(b) 越界：未发现。差异仅第十集；未见重合成、裁切、调速、导出或改第九集。按规则整理旧批次，保留原四段对照及原始评估、Git 历史。\n\n(c) 实现错误：未发现。独立逐一比对45个正式WAV SHA-256/size，均匹配200c28f历史所选四候选及其余41段指针，并匹配当前 audio-timing；合计688.6725秒。共用播放组件完整读取文件，时间窗含原音频及页末停留。TW21/TW26使用captionSource；源1起点6569/7739ms映射local424/494，前一帧仍源0；TW26拆分的第三字幕仍source1。当前四段文稿采用选定措辞，字幕及语义锚点同步。逐状态/真实播放证据由独立视觉轴核验，本审查不声称目视或听辨通过。\n",
+    "findings": {
+      "Standards": 0,
+      "Spec": 0
+    }
+  }
 }
