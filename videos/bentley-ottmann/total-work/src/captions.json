@@ -1,7 +1,7 @@
 {
   "TW01": [
     {
-      "text": "四条线段所在的直线不同，却都包含原点。",
+      "text": "这四条线段所在的直线不同，却都包含原点。",
       "startMs": 70,
       "endMs": 3738,
       "timestampMs": null,
@@ -27,15 +27,23 @@
   ],
   "TW02": [
     {
-      "text": "开始者已加入，结束者在报告后才退出。",
+      "text": "沿用同点报告规则。",
       "startMs": 70,
+      "endMs": 1790,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "开始者已经加入，结束者在报告后才退出。",
+      "startMs": 2028,
       "endMs": 5870,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "所以报告时有 4 个不同的非零同线组。",
+      "text": "所以报告时，这四条闭线段分别属于四个不同的非零同线组。",
       "startMs": 6239,
       "endMs": 11570,
       "timestampMs": null,
@@ -45,7 +53,7 @@
   ],
   "TW03": [
     {
-      "text": "依次记录 6 个不同的原始无序输入对。",
+      "text": "依次记录这 6 个不同的原始无序输入对。",
       "startMs": 70,
       "endMs": 3030,
       "timestampMs": null,
@@ -79,7 +87,7 @@
   ],
   "TW04": [
     {
-      "text": "用 n 表示原始输入份数，用 k 表示相交原始无序输入对数。",
+      "text": "用字母 n 表示原始输入份数，用字母 k 表示相交的原始无序输入对数。",
       "startMs": 70,
       "endMs": 6298,
       "timestampMs": null,
@@ -105,7 +113,7 @@
   ],
   "TW05": [
     {
-      "text": "E 累计处理了多少不同位置。",
+      "text": "用大写 E 累计处理了多少不同事件位置。",
       "startMs": 70,
       "endMs": 3230,
       "timestampMs": null,
@@ -113,7 +121,7 @@
       "source": 0
     },
     {
-      "text": "H 把每次参与的不同非零同线组数加起来。",
+      "text": "用大写 H 把每次参与的不同非零同线组数加起来。",
       "startMs": 3599,
       "endMs": 7799,
       "timestampMs": null,
@@ -147,16 +155,32 @@
       "source": 0
     },
     {
-      "text": "第四个有 4 组，最后三个也各有 1 组。",
+      "text": "第四个事件有 4 组参与，",
       "startMs": 5198,
+      "endMs": 7157,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "最后三个事件也各有 1 组参与。",
+      "startMs": 7418,
       "endMs": 9578,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "所以全程 E=7、H=10、k=6；原点处的局部数目仍是 1、4、6。",
+      "text": "于是全程事件数是 7，累计参与组数是 10，相交原始对数是 6。",
       "startMs": 10009,
+      "endMs": 16088,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "原点那一次的局部数目仍然是 1、4、6。",
+      "startMs": 16398,
       "endMs": 19757,
       "timestampMs": null,
       "confidence": null,
@@ -165,7 +189,7 @@
   ],
   "TW07": [
     {
-      "text": "本集数精确算术、比较和基本记录操作的次数。",
+      "text": "本集数的是精确算术、比较和基本记录操作的次数。",
       "startMs": 70,
       "endMs": 4230,
       "timestampMs": null,
@@ -181,7 +205,7 @@
       "source": 0
     },
     {
-      "text": "一次树查找包含多次比较，不能整次免费算作一个基本操作。",
+      "text": "一次树查找包含多次比较，不能把整次查找免费算作一个基本操作。",
       "startMs": 9169,
       "endMs": 14650,
       "timestampMs": null,
@@ -191,15 +215,23 @@
   ],
   "TW08": [
     {
-      "text": "活动组顺序使用 AVL；队列、固定组查找和成员索引也使用有序容器。",
+      "text": "活动组顺序使用 AVL 树。",
       "startMs": 70,
+      "endMs": 2510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "队列、固定组查找和成员索引也使用有序容器。",
+      "startMs": 2728,
       "endMs": 6968,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "沿用它们的对数操作成本，不展开平衡维护。",
+      "text": "这里沿用这些容器的对数操作成本，不展开平衡维护。",
       "startMs": 7419,
       "endMs": 11768,
       "timestampMs": null,
@@ -209,7 +241,7 @@
   ],
   "TW09": [
     {
-      "text": "先讨论 n≥1；log 的底取 2。",
+      "text": "先讨论至少有一份输入的情况，对数的底取 2。",
       "startMs": 70,
       "endMs": 3968,
       "timestampMs": null,
@@ -217,8 +249,16 @@
       "source": 0
     },
     {
-      "text": "O 表示固定常数倍的上界，不是每份输入的精确次数。",
+      "text": "大写 O 表示操作次数可以由所写表达式的固定常数倍控制。",
       "startMs": 4419,
+      "endMs": 9219,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "它不是每份输入的精确次数。",
+      "startMs": 9518,
       "endMs": 11558,
       "timestampMs": null,
       "confidence": null,
@@ -245,7 +285,7 @@
   ],
   "TW11": [
     {
-      "text": "其余位置来自不同支撑直线上的真实交点。",
+      "text": "其余事件位置来自不同支撑直线上的真实交点。",
       "startMs": 70,
       "endMs": 3670,
       "timestampMs": null,
@@ -253,7 +293,7 @@
       "source": 0
     },
     {
-      "text": "每个这样的位置选一对在这里相交的原始输入作为见证。",
+      "text": "给每个这样的位置选一对在这里相交的原始输入作为见证。",
       "startMs": 4049,
       "endMs": 8049,
       "timestampMs": null,
@@ -261,7 +301,7 @@
       "source": 1
     },
     {
-      "text": "不同直线至多有一个交点，所以同一对不能见证两个不同位置。",
+      "text": "不同直线至多有一个交点，所以同一对不能给两个不同位置作见证。",
       "startMs": 8348,
       "endMs": 13437,
       "timestampMs": null,
@@ -271,8 +311,16 @@
   ],
   "TW12": [
     {
-      "text": "因此非端点事件位置至多 k 个，合起来 E≤2n+k。",
+      "text": "因此，非端点事件位置至多有 k 个。",
       "startMs": 40,
+      "endMs": 3264,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "加上端点来源，事件数至多是输入份数的两倍，再加相交原始对数。",
+      "startMs": 3565,
       "endMs": 9495,
       "timestampMs": null,
       "confidence": null,
@@ -289,7 +337,7 @@
   ],
   "TW13": [
     {
-      "text": "用 p 表示任一事件位置，h_p 表示这里不同的非零参与组数。",
+      "text": "任一事件位置用小写 p 表示，用 h_p 表示这里不同的非零参与组数。",
       "startMs": 70,
       "endMs": 6528,
       "timestampMs": null,
@@ -297,7 +345,7 @@
       "source": 0
     },
     {
-      "text": "处理前经过 p 的旧活动组与本次开始者所属的组合并，同组只算一次。",
+      "text": "处理前经过当前位置的旧活动组与本次开始者所属的组合并，同组只算一次。",
       "startMs": 6798,
       "endMs": 13088,
       "timestampMs": null,
@@ -305,7 +353,7 @@
       "source": 0
     },
     {
-      "text": "点输入不算组；结束者报告后才退出。",
+      "text": "点输入不算组，结束者报告后才退出。",
       "startMs": 13559,
       "endMs": 17140,
       "timestampMs": null,
@@ -331,7 +379,7 @@
       "source": 0
     },
     {
-      "text": "原点的报告时刻，h_p=4、c_p=6。",
+      "text": "回到原点的报告时刻，参与组数是 4，这次跨组新输出是 6。",
       "startMs": 7919,
       "endMs": 13488,
       "timestampMs": null,
@@ -341,7 +389,7 @@
   ],
   "TW15": [
     {
-      "text": "至少两个组时，每组都非空，且各成员包含 p。",
+      "text": "至少有两个组时，每组都非空，而且各成员包含当前位置。",
       "startMs": 70,
       "endMs": 5277,
       "timestampMs": null,
@@ -349,7 +397,7 @@
       "source": 0
     },
     {
-      "text": "每两个组各选一份成员，得到一个真实相交的原始输入对。",
+      "text": "每两个组各选一份成员，就得到一个真实相交的原始输入对。",
       "startMs": 5739,
       "endMs": 11228,
       "timestampMs": null,
@@ -365,7 +413,7 @@
       "source": 1
     },
     {
-      "text": "因此组对数量不超过这一次的跨组新输出数量。",
+      "text": "因此组对的数量，不超过这一次的跨组新输出数量。",
       "startMs": 14128,
       "endMs": 18238,
       "timestampMs": null,
@@ -375,7 +423,7 @@
   ],
   "TW16": [
     {
-      "text": "h_p≥2 时，h_p−1≥1。",
+      "text": "参与组数 h_p≥2 时，将它减一，所得的数 h_p−1≥1。",
       "startMs": 70,
       "endMs": 5308,
       "timestampMs": null,
@@ -383,7 +431,7 @@
       "source": 0
     },
     {
-      "text": "因此 h_p≤h_p(h_p−1)。",
+      "text": "因此参与组数不超过参与组数与这个差的乘积，即 h_p≤h_p(h_p−1)。",
       "startMs": 5789,
       "endMs": 9690,
       "timestampMs": null,
@@ -391,7 +439,7 @@
       "source": 1
     },
     {
-      "text": "再用上一行的界，得到 h_p≤2c_p。",
+      "text": "再用上一行的界，就得到参与组数不超过当场跨组新输出数的两倍，即 h_p≤2c_p。",
       "startMs": 9838,
       "endMs": 15368,
       "timestampMs": null,
@@ -401,7 +449,7 @@
   ],
   "TW17": [
     {
-      "text": "单组贡献的一次工作计在事件本身。",
+      "text": "只有一个组时，这一个组的贡献计在事件本身。",
       "startMs": 70,
       "endMs": 3687,
       "timestampMs": null,
@@ -409,7 +457,7 @@
       "source": 0
     },
     {
-      "text": "零组没有组贡献，例如孤立的点输入事件。",
+      "text": "零个组时没有组贡献，例如孤立的点输入事件。",
       "startMs": 4169,
       "endMs": 8238,
       "timestampMs": null,
@@ -427,16 +475,32 @@
   ],
   "TW18": [
     {
-      "text": "把每次参与组数相加，记作 H。",
+      "text": "把每次事件的参与组数相加，用大写 H 表示这个和。",
       "startMs": 70,
+      "endMs": 4628,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "画面上的求和符号，就是把每个位置对应的量加起来。",
+      "startMs": 4898,
       "endMs": 8657,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "每个事件保守记一次，再加两倍的跨组新输出总数，就覆盖所有情况。",
+      "text": "每个事件保守记一次，再加两倍的跨组新输出总数，",
       "startMs": 9109,
+      "endMs": 13598,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "就覆盖了零组、单组和多组情况。",
+      "startMs": 13878,
       "endMs": 16318,
       "timestampMs": null,
       "confidence": null,
@@ -445,7 +509,7 @@
   ],
   "TW19": [
     {
-      "text": "跨组唯一报告保证同一原始对不会在别处再次支付费用。",
+      "text": "上集的跨组唯一报告保证，同一个原始对不会在别的事件再次支付费用。",
       "startMs": 70,
       "endMs": 5558,
       "timestampMs": null,
@@ -453,7 +517,7 @@
       "source": 0
     },
     {
-      "text": "所以全部跨组新输出数不超过 k。",
+      "text": "所以全部跨组新输出数不超过 k 这个总数。",
       "startMs": 5848,
       "endMs": 9087,
       "timestampMs": null,
@@ -461,8 +525,16 @@
       "source": 0
     },
     {
-      "text": "因此 H≤E+2k≤2n+3k，累计参与组数是 O(n+k)。",
+      "text": "代入事件数的界，累计参与组数至多是输入份数的两倍，再加相交原始对数的三倍。",
       "startMs": 9539,
+      "endMs": 16847,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "于是它是输入量与输出量之和的常数倍。",
+      "startMs": 17168,
       "endMs": 20208,
       "timestampMs": null,
       "confidence": null,
@@ -471,15 +543,23 @@
   ],
   "TW20": [
     {
-      "text": "换成三份同线输入：两份覆盖 [0,6]，一份覆盖 [2,3]。",
+      "text": "换成一个独立的三输入案例。",
       "startMs": 70,
+      "endMs": 2070,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "两份长成员都覆盖闭区间 [0,6]，一份短成员覆盖闭区间 [2,3]。",
+      "startMs": 2278,
       "endMs": 8928,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "分行只为区分身份，三份都在同一条直线上。",
+      "text": "三份都在横轴上。分行只为区分身份，并没有改变几何高度。",
       "startMs": 9389,
       "endMs": 14828,
       "timestampMs": null,
@@ -489,7 +569,7 @@
   ],
   "TW21": [
     {
-      "text": "在 x=0，两份长成员报告完整 [0,6]。",
+      "text": "当 x 坐标为 0 时，两份长成员报告一条完整重叠区间 [0,6]。",
       "startMs": 70,
       "endMs": 6118,
       "timestampMs": null,
@@ -497,7 +577,7 @@
       "source": 0
     },
     {
-      "text": "在 x=2，短成员与两个长成员各报告一条完整 [2,3]。",
+      "text": "当 x 坐标为 2 时，短成员与两个长成员分别报告一条完整重叠区间 [2,3]。",
       "startMs": 6569,
       "endMs": 13898,
       "timestampMs": null,
@@ -515,7 +595,7 @@
   ],
   "TW22": [
     {
-      "text": "到 x=3，只按结束身份删除短成员。",
+      "text": "到 x 坐标为 3 时，只按结束身份删除短成员。",
       "startMs": 70,
       "endMs": 4407,
       "timestampMs": null,
@@ -531,7 +611,7 @@
       "source": 0
     },
     {
-      "text": "不遍历整个旧成员表，也不重新输出。",
+      "text": "这里不遍历整个旧成员表，也不重新输出。",
       "startMs": 7639,
       "endMs": 11330,
       "timestampMs": null,
@@ -539,7 +619,7 @@
       "source": 1
     },
     {
-      "text": "先前的 [0,6] 结果保持完整，不能拿它支付每一次全组扫描。",
+      "text": "先前的长区间结果始终保持完整，不能拿它支付每一次全组扫描。",
       "startMs": 11458,
       "endMs": 16988,
       "timestampMs": null,
@@ -549,7 +629,7 @@
   ],
   "TW23": [
     {
-      "text": "到 x=6，长成员结束，组才变空。",
+      "text": "到 x 坐标为 6 时，两个长成员结束，组才变空。",
       "startMs": 70,
       "endMs": 4898,
       "timestampMs": null,
@@ -575,7 +655,7 @@
   ],
   "TW24": [
     {
-      "text": "用 M_p 表示非零参与成员总数，t_p 表示这个位置的点输入数。",
+      "text": "用 M_p 表示非零参与成员总数，用 t_p 表示这个位置的点输入数。",
       "startMs": 70,
       "endMs": 7278,
       "timestampMs": null,
@@ -583,7 +663,7 @@
       "source": 0
     },
     {
-      "text": "普通计算只在至少两个组，或者有点输入时展开相关成员。",
+      "text": "普通计算只在至少有两个组，或者有点输入时，才把相关成员展开成临时列表。",
       "startMs": 7719,
       "endMs": 14657,
       "timestampMs": null,
@@ -593,7 +673,7 @@
   ],
   "TW25": [
     {
-      "text": "多组时，每份成员至少与另一个组的一份成员配对。",
+      "text": "至少有两个组时，每份成员至少与另一个组的一份成员配对。",
       "startMs": 70,
       "endMs": 4857,
       "timestampMs": null,
@@ -601,8 +681,16 @@
       "source": 0
     },
     {
-      "text": "按成员参与输出的次数计数，每条跨组结果被数两次，所以 M_p≤2c_p。",
+      "text": "将各成员参与跨组输出的次数相加，每条结果被两端各数一次。",
       "startMs": 5319,
+      "endMs": 10847,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "因此展开的成员总数，不超过跨组新输出数的两倍。",
+      "startMs": 11138,
       "endMs": 15707,
       "timestampMs": null,
       "confidence": null,
@@ -611,7 +699,7 @@
   ],
   "TW26": [
     {
-      "text": "只有一个组但有点输入时，每份成员至少产生一个新的点—段结果。",
+      "text": "只有一个组但有点输入时，每份成员至少产生一个新的点与线段的结果。",
       "startMs": 70,
       "endMs": 5780,
       "timestampMs": null,
@@ -635,7 +723,7 @@
       "source": 1
     },
     {
-      "text": "零组没有非零成员可展开。",
+      "text": "零个组时，没有非零成员可展开。",
       "startMs": 12608,
       "endMs": 15728,
       "timestampMs": null,
@@ -645,16 +733,32 @@
   ],
   "TW27": [
     {
-      "text": "新同线成员逐个加入，每次访问旧成员都产生一条新结果。",
+      "text": "新同线成员逐个加入。",
       "startMs": 70,
+      "endMs": 2190,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "每次访问旧成员，都立即产生一条新结果。",
+      "startMs": 2428,
       "endMs": 6030,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "空表检查每次加入至多一次；游标推进也保守按对数成本计费。",
+      "text": "每次加入至多做一次空表检查。",
       "startMs": 6389,
+      "endMs": 8869,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "游标推进也保守按对数成本计费。",
+      "startMs": 9188,
       "endMs": 12067,
       "timestampMs": null,
       "confidence": null,
@@ -671,7 +775,7 @@
   ],
   "TW28": [
     {
-      "text": "跨组与点—段配对的外层成员访问，由本次新结果支付。",
+      "text": "跨组与点和线段配对时，外层成员访问也由这次新结果支付。",
       "startMs": 70,
       "endMs": 5357,
       "timestampMs": null,
@@ -687,8 +791,16 @@
       "source": 0
     },
     {
-      "text": "没有非零组时，每个点仍有一次外层开销；所有点身份合计至多 n 份。",
+      "text": "没有非零组时，每个点仍有一次外层开销；",
       "startMs": 8389,
+      "endMs": 12317,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所有位置的点身份合计至多有 n 份。",
+      "startMs": 12608,
       "endMs": 15208,
       "timestampMs": null,
       "confidence": null,
@@ -713,7 +825,7 @@
       "source": 1
     },
     {
-      "text": "全部结果追加按容器的摊还保证累计 O(k)，扩容移动已包括在内。",
+      "text": "全部结果追加按容器的摊还保证累计 O(k)，扩容移动已经包括在内。",
       "startMs": 9318,
       "endMs": 16147,
       "timestampMs": null,
@@ -765,7 +877,7 @@
   ],
   "TW31": [
     {
-      "text": "每次只定位相遇块、访问参与组与常数个边界。",
+      "text": "每次只定位相遇块，访问参与组和常数个边界。",
       "startMs": 70,
       "endMs": 3957,
       "timestampMs": null,
@@ -773,23 +885,23 @@
       "source": 0
     },
     {
-      "text": "开始身份总量至多 n；块的移除、过滤、重插按累计参与量计费。",
+      "text": "开始身份在全程至多有 n 份。",
       "startMs": 4419,
-      "endMs": 10148,
+      "endMs": 6778,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "不扫描其余活动组。",
-      "startMs": 10438,
+      "text": "块的移除、过滤和重插按累计参与量计费，不扫描其余活动组。",
+      "startMs": 7068,
       "endMs": 12200,
       "timestampMs": null,
       "confidence": null,
       "source": 1
     },
     {
-      "text": "总账由 E、H 和 n 共同控制，再乘有序操作的对数成本。",
+      "text": "于是总账由事件数、累计参与组数和输入份数共同控制，再乘有序操作的对数成本。",
       "startMs": 12358,
       "endMs": 19378,
       "timestampMs": null,
@@ -799,8 +911,16 @@
   ],
   "TW32": [
     {
-      "text": "只排序组身份，不移动整组成员；精确斜率提供一致次序。",
+      "text": "局部排序只移动组身份，不移动整组成员。",
       "startMs": 70,
+      "endMs": 3528,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "固定的精确斜率给出一致次序。",
+      "startMs": 3798,
       "endMs": 6238,
       "timestampMs": null,
       "confidence": null,
@@ -815,8 +935,16 @@
       "source": 1
     },
     {
-      "text": "每次 h_p≤n，所以累计排序成本不超过 H 乘以对数。",
+      "text": "每次参与组数不超过输入份数。",
       "startMs": 11188,
+      "endMs": 13587,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "所以逐次排序成本相加，不超过累计参与组数乘以对数。",
+      "startMs": 13908,
       "endMs": 18938,
       "timestampMs": null,
       "confidence": null,
@@ -825,8 +953,24 @@
   ],
   "TW33": [
     {
-      "text": "新块来自本次参与组，r≤h_p；非空时内部至多 r−1 对，两端各至多一对。",
+      "text": "更新后的新块非空且有 r 个组时，新块只保留参与本次事件的组。",
       "startMs": 70,
+      "endMs": 5547,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "因此组数不超过本次参与组数，即 r≤h_p。",
+      "startMs": 5898,
+      "endMs": 8378,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "内部邻居对数至多是组数减一，两端各至多一对。",
+      "startMs": 8668,
       "endMs": 12928,
       "timestampMs": null,
       "confidence": null,
@@ -841,7 +985,7 @@
       "source": 1
     },
     {
-      "text": "覆盖延长后，即使邻居名字没变，相关邻接的补检也包含在内。",
+      "text": "覆盖延长后，即使邻居名字没变，对相关邻接的补检也包含在这里。",
       "startMs": 15978,
       "endMs": 21900,
       "timestampMs": null,
@@ -851,7 +995,7 @@
   ],
   "TW34": [
     {
-      "text": "每事件检查量由 h_p+1 控制，累计为 O(H+E)。",
+      "text": "每次事件的检查量由 h_p+1 控制，累计就是 O(H+E)。",
       "startMs": 70,
       "endMs": 7077,
       "timestampMs": null,
@@ -877,7 +1021,7 @@
       "source": 0
     },
     {
-      "text": "这次查找和尝试仍然收费；尝试总数不超过检查总数。",
+      "text": "但这次查找和尝试仍然收费，尝试总数不超过检查总数。",
       "startMs": 4719,
       "endMs": 9747,
       "timestampMs": null,
@@ -895,7 +1039,7 @@
   ],
   "TW36": [
     {
-      "text": "由事件数界和输入对数上界，可得 E+1≤(n+1)^2。",
+      "text": "由事件数界和第一章的输入对数上界，E+1≤(n+1)^2。",
       "startMs": 70,
       "endMs": 6908,
       "timestampMs": null,
@@ -903,7 +1047,7 @@
       "source": 0
     },
     {
-      "text": "所以队列的一次对数操作成本，也受 log(n+1) 的常数倍控制。",
+      "text": "因此，队列的一次对数操作成本，也受 log(n+1) 的常数倍控制。",
       "startMs": 7380,
       "endMs": 13665,
       "timestampMs": null,
@@ -913,16 +1057,32 @@
   ],
   "TW37": [
     {
-      "text": "初始化至多 2n 次端点登记，之后计入全部预约尝试和 E 次弹出。",
+      "text": "初始化至多登记 2n 个端点身份。",
       "startMs": 70,
+      "endMs": 3510,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "之后计入全部预约尝试和每个事件的一次弹出。",
+      "startMs": 3728,
       "endMs": 7087,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "覆盖读取也收费，合计仍是 O((n+k) log(n+1))。",
+      "text": "检查中的覆盖读取也收费。",
       "startMs": 7569,
+      "endMs": 9569,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "合计仍由输入量与输出量之和，乘以 log(n+1) 来控制。",
+      "startMs": 9918,
       "endMs": 15078,
       "timestampMs": null,
       "confidence": null,
@@ -931,7 +1091,7 @@
   ],
   "TW38": [
     {
-      "text": "局部组表累计 O(H+E)，必要成员表由新输出支付。",
+      "text": "局部组表累计按参与组总数与事件数计费，必要成员表已经由新输出支付。",
       "startMs": 70,
       "endMs": 6468,
       "timestampMs": null,
@@ -947,7 +1107,7 @@
       "source": 1
     },
     {
-      "text": "最后释放几何、组和映射按输入量计，逐条释放结果按输出量计。",
+      "text": "最后释放几何、组和映射的工作按输入量计，逐条释放结果按输出量计。",
       "startMs": 11288,
       "endMs": 17077,
       "timestampMs": null,
@@ -957,7 +1117,7 @@
   ],
   "TW39": [
     {
-      "text": "各行都受同一个上界控制，固定行数相加只改变常数。",
+      "text": "账本里的每一行都受同一个上界控制，固定行数相加只改变常数。",
       "startMs": 70,
       "endMs": 5538,
       "timestampMs": null,
@@ -965,8 +1125,16 @@
       "source": 0
     },
     {
-      "text": "因此普通求交总计 O((n+k) log(n+1)) 次精确算术、比较及基本状态操作。",
+      "text": "因此，普通求交的精确算术、比较和基本状态操作次数，",
       "startMs": 5980,
+      "endMs": 10495,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "由 (n+k) log(n+1) 的常数倍控制。",
+      "startMs": 10805,
       "endMs": 15825,
       "timestampMs": null,
       "confidence": null,
@@ -975,7 +1143,7 @@
   ],
   "TW40": [
     {
-      "text": "n=1 时，log(n+1)=1，仍能容纳固定工作。",
+      "text": "只有一份输入时，log(n+1)=1，仍能容纳固定工作。",
       "startMs": 70,
       "endMs": 5568,
       "timestampMs": null,
@@ -983,7 +1151,7 @@
       "source": 0
     },
     {
-      "text": "空输入的调用和空状态处理另计 O(1)。",
+      "text": "空输入的调用和空状态处理另外计常数开销。",
       "startMs": 6089,
       "endMs": 10129,
       "timestampMs": null,
@@ -991,7 +1159,7 @@
       "source": 1
     },
     {
-      "text": "所有规模可合写 O(1+(n+k) log(n+1))。",
+      "text": "若合写所有规模，就在主界的表达式前加一。",
       "startMs": 10438,
       "endMs": 14058,
       "timestampMs": null,
@@ -1009,7 +1177,7 @@
   ],
   "TW41": [
     {
-      "text": "回到原点事件：定位、局部排序、邻接检查和六条结果，属于普通求交。",
+      "text": "回到原点这个事件：定位、局部排序、邻接检查和 6 条结果，属于普通求交。",
       "startMs": 70,
       "endMs": 6598,
       "timestampMs": null,
@@ -1017,8 +1185,16 @@
       "source": 0
     },
     {
-      "text": "必要成员展开和临时表也已计入，不能划入教学额外成本。",
+      "text": "必要的成员展开和临时表也已经计入。",
       "startMs": 7039,
+      "endMs": 9918,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 1
+    },
+    {
+      "text": "不能把这些必要工作推到教学成本一栏。",
+      "startMs": 10238,
       "endMs": 13157,
       "timestampMs": null,
       "confidence": null,
@@ -1027,15 +1203,23 @@
   ],
   "TW42": [
     {
-      "text": "有理数分子、分母越长，一次乘除、比较或约分可能越费时。",
+      "text": "同一次精确比较或算术，成本还取决于数字长度。",
       "startMs": 70,
+      "endMs": 4658,
+      "timestampMs": null,
+      "confidence": null,
+      "source": 0
+    },
+    {
+      "text": "有理数的分子、分母越长，乘除、比较或约分可能越费时。",
+      "startMs": 4948,
       "endMs": 9978,
       "timestampMs": null,
       "confidence": null,
       "source": 0
     },
     {
-      "text": "操作次数界不能直接当作秒数、固定字节成本或完整位复杂度。",
+      "text": "前面的操作次数界，不能直接当作秒数、固定字节成本或完整的位复杂度定理。",
       "startMs": 10409,
       "endMs": 17040,
       "timestampMs": null,
@@ -1087,7 +1271,7 @@
       "source": 0
     },
     {
-      "text": "成员展开由当场新输出支付，再把重复预约和必要清理计入。",
+      "text": "成员展开由当场的新输出支付，再把重复预约和必要清理计入，",
       "startMs": 4969,
       "endMs": 9998,
       "timestampMs": null,
@@ -1105,7 +1289,7 @@
   ],
   "TW45": [
     {
-      "text": "一次事件可以很大，一个组也可以很大；累计账本仍有依据。",
+      "text": "一次事件可以很大，一个组也可以很大；累计账本仍然有依据。",
       "startMs": 70,
       "endMs": 4958,
       "timestampMs": null,
@@ -1113,7 +1297,7 @@
       "source": 0
     },
     {
-      "text": "得到的是普通操作次数界，数值长度和教学记录保留各自的成本边界。",
+      "text": "这里得到的是普通操作次数界，数值长度和教学记录保留各自的成本边界。",
       "startMs": 5389,
       "endMs": 11237,
       "timestampMs": null,
